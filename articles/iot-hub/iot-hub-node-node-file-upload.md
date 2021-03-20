@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/28/2017
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: db4f78e14696c421adaedd16b0b3f8d598f12846
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251898"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Fájlok feltöltése az eszközről a felhőbe IoT Hub (Node.js)
@@ -27,7 +27,7 @@ Ez az oktatóanyag a [felhőből az eszközre küldött üzenetek küldésére](
 
 * A fájl feltöltésével kapcsolatos értesítéseket használva aktiválja a fájlt az alkalmazás hátterében lévő IoT Hub.
 
-Az [eszközről az IoT hub-ra való telemetria küldése](quickstart-send-telemetry-node.md) az eszközről a felhőbe irányuló alapszintű üzenetküldési funkciókat mutatja be IoT hub. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Példa:
+Az [eszközről az IoT hub-ra való telemetria küldése](quickstart-send-telemetry-node.md) az eszközről a felhőbe irányuló alapszintű üzenetküldési funkciókat mutatja be IoT hub. Bizonyos helyzetekben azonban nem lehet könnyedén leképezni az eszközök által a IoT Hub által elfogadott viszonylag kis eszközről a felhőbe küldött üzeneteket. Például:
 
 * Képeket tartalmazó nagyméretű fájlok
 * Videók

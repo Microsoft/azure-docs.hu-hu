@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95988008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: Azure Active Directory integráció a TAS-sel
@@ -142,7 +142,7 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
     a. A **név** szövegmezőbe írja be a környezet nevét.
     
-    b. Válassza **SAML2** a egy saml2 **hitelesítési típusként** lehetőséget.
+    b. Válassza  a egy saml2 **hitelesítési típusként** lehetőséget.
 
     c. Az **adja meg az URL-címet** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
@@ -182,7 +182,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

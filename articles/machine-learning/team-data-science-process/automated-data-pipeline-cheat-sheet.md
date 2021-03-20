@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
 ms.openlocfilehash: f60b62faa36352ab1221b23332fca695f32a3d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250640"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Gyorsreferencia az Azure Machine Learning-előrejelzések automatikus folyamatához
@@ -27,7 +27,7 @@ Ez a Cheat-táblázat végigvezeti a szükséges döntéseken, és hivatkozások
 ## <a name="download-the-machine-learning-automated-data-pipeline-cheat-sheet"></a>Töltse le a Machine Learning automatizált adatcsatorna-Cheat lapot
 A Cheat Sheet letöltése után kinyomtathatja azt a bulvárlap méretében (11 x 17 a következőben:.).
 
-Töltse le a Cheat Sheet itt: ** [Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
+Töltse le a Cheat Sheet itt: **[Microsoft Azure Machine learning automatizált adatcsatorna-Cheat Sheet](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
 ![A Microsoft Azure Machine Learning Studio (klasszikus) képességeinek áttekintése][op-cheat-sheet]
 

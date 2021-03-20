@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95974119"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Oktatóanyag: Többtényezős hitelesítés kényszerítése B2B vendégfelhasználók számára
@@ -101,7 +101,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
     ![Képernyőfelvétel – a házirend engedélyezése beállítás beállítása a következőre](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. Kattintson a **Létrehozás** gombra.
+17. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>A What If lehetőség használata a bejelentkezés szimulációjára
 
@@ -141,5 +141,5 @@ Ha már nincs rá szükség, távolítsa el a teszt felhasználót és a feltét
 6.  A **Biztonsági** alatt válassza a **Feltételes hozzáférés** lehetőséget.
 7.  A **Szabályzatnév** listában válassza a tesztszabályzathoz tartozó helyi menüt (...), majd kattintson a **Törlés** lehetőségre. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy a vendég felhasználók az MFA-t használják az egyik felhőalapú alkalmazásba való bejelentkezéskor. Az együttműködő vendégfelhasználók hozzáadásáról további tudnivalók: [Azure Active Directory B2B együttműködő felhasználók hozzáadása az Azure portálon](add-users-administrator.md).

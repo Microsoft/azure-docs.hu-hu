@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95975955"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Egyéni mintavétel létrehozása Application Gatewayhoz a portál használatával
@@ -49,7 +49,7 @@ A mintavétel két lépésből álló folyamaton keresztül történik a portál
    |**Név**|customProbe|Ez az érték a portálon elérhető mintavételhez megadott rövid név.|
    |**Protokoll**|HTTP vagy HTTPS | Az állapotfelmérés által használt protokoll. |
    |**Állomás**|azaz contoso.com|Ez az érték annak a virtuális gazdagépnek a neve (amely eltér a virtuálisgép-állomásnévtől), amely az alkalmazáskiszolgáló kiszolgálón fut. A mintavétel a \<protocol\> :// \<host name\> :\<port\>/\<urlPath\>|
-   |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|Beállítja a *host* mintavételben szereplő állomásfejléc nevét annak a http-beállításoknak az állomásnevét, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
+   |**Állomásnév kiválasztása a háttérbeli HTTP-beállításokból**|Igen vagy nem|Beállítja a  mintavételben szereplő állomásfejléc nevét annak a http-beállításoknak az állomásnevét, amelyhez ez a mintavétel hozzá van rendelve. Kifejezetten a több-bérlős háttérrendszer, például az Azure app Service esetében szükséges. [További információ](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
    |**Válasszon portot a háttérbeli HTTP-beállítások közül**| Igen vagy nem|Beállítja az állapot-mintavétel *portját* arra a http-beállítások portra, amelyhez ez a mintavétel hozzá van rendelve. Ha a nem lehetőséget választja, megadhatja a használni kívánt egyéni célport-portot |
    |**Port**| 1-65535 | Az állapot-mintavételhez használandó egyéni port | 
    |**Elérési út**|/vagy bármely érvényes elérési út|Az egyéni mintavétel teljes URL-címének fennmaradó része. Egy érvényes elérési út a következővel kezdődik: "/". A http:/contoso.com alapértelmezett elérési útja \/ csak a "/" értéket használja |
@@ -121,7 +121,7 @@ Most, hogy létrejött a mintavétel, itt az ideje, hogy hozzáadja az átjáró
 2. A **appGatewayBackEndHttpSettings** -beállítások lapon jelölje be az **Egyéni mintavétel használata** jelölőnégyzetet, és válassza ki a mintavétel [létrehozása](#createprobe) szakaszban létrehozott mintavételt az **Egyéni** mintavétel legördülő menüben.
    Ha elkészült, kattintson a **Mentés** gombra, és alkalmazza a beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a háttérbeli erőforrások állapotát a [háttér állapot nézet](./application-gateway-diagnostics.md#back-end-health)alapján, a mintavétel alapján.
 

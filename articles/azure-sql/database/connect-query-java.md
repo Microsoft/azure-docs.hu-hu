@@ -1,5 +1,5 @@
 ---
-title: A Java és a JDBC használata Azure SQL Database
+title: A Java és a JDBC használata az Azure SQL Database-szel
 description: Ismerje meg, hogyan használható a Java és a JDBC egy Azure SQL Database.
 services: sql-database
 author: jdubois
@@ -11,10 +11,10 @@ ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95972674"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>A Java és a JDBC használata Azure SQL Database
@@ -494,7 +494,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)  
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: b3806d768e8335801e2dd097eac7a440b157de38
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92444699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Oktatóanyag: Azure Active Directory integráció a HighGear
@@ -61,13 +61,13 @@ A HighGear Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **HighGear**kifejezést, válassza a **HighGear** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **HighGear** kifejezést, válassza a **HighGear** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![HighGear az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebből a szakaszból megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezést a HighGear-rendszerrel a **Britta Simon**nevű teszt felhasználó alapján.
+Ebből a szakaszból megtudhatja, hogyan konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezést a HighGear-rendszerrel a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a HighGear-rendszeren lévő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés HighGear-rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti az Azure AD egyszeri be
 
 Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **HighGear** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **HighGear** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -145,7 +145,7 @@ Az egyszeri bejelentkezés HighGear konfigurálásához jelentkezzen be a HighGe
 
 ![Az egyetlen Sign-On beállítások menüelem](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Az **identitás-szolgáltató neve**mezőbe írjon be egy rövid leírást, amely megjelenik a HighGear egyetlen Sign-On gombján a bejelentkezési oldalon. Például: Azure AD
+1. Az **identitás-szolgáltató neve** mezőbe írjon be egy rövid leírást, amely megjelenik a HighGear egyetlen Sign-On gombján a bejelentkezési oldalon. Például: Azure AD
 
 2. A HighGear **Sign-On (SSO) URL-címe** mezőben illessze be az értéket a **bejelentkezési URL** -cím mezőből, amely az Azure-beli **HighGear beállítása** szakaszban található.
 
@@ -163,7 +163,7 @@ Az egyszeri bejelentkezés HighGear konfigurálásához jelentkezzen be a HighGe
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -188,15 +188,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a HighGear hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **HighGear**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **HighGear** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **HighGear**lehetőséget.
+2. Az alkalmazások listában válassza a **HighGear** lehetőséget.
 
     ![Az HighGear hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

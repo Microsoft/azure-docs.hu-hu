@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: a14503bc56777563b6360143efaa86a136b22278
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340515"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Azure Cosmos DB "a kérelem fejléce túl nagy" üzenet diagnosztizálása és megoldása
@@ -48,6 +48,6 @@ Az 400-es hibás kérelem olyan lekérdezési műveletekben fordul elő, ahol a 
 1. Kövesse a [.net v3](performance-tips-dotnet-sdk-v3-sql.md) vagy a [.NET v2](performance-tips.md) teljesítménnyel kapcsolatos tippek című cikk útmutatását. Alakítsa át az alkalmazást a közvetlen kapcsolati mód használatára a TCP protokollal. A TCP protokollal létesített közvetlen kapcsolati mód nem rendelkezik a fejléc méretére vonatkozó korlátozással, például a HTTP protokollal, így elkerülhető a probléma. 
 1. Ha a TCP protokollal létesített közvetlen kapcsolati mód nem választható a munkaterhelés számára, állítsa be a `ResponseContinuationTokenLimitInKb` beállítást. Ezt a lehetőséget a v2-ben `FeedOptions` vagy a v3-ben is megtalálhatja `QueryRequestOptions` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB .NET SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-dot-net-sdk.md) .
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md)teljesítményére vonatkozó irányelvek ismertetése.

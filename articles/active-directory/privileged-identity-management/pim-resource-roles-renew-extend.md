@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f0d22fc540aae448a3da731b709a3b4ea13a69d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742233"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-privileged-identity-management"></a>Az Azure erőforrás-szerepkörök hozzárendeléseinek kiterjesztése vagy megújítása Privileged Identity Management
@@ -55,7 +55,7 @@ A szerepkör-hozzárendelés kiterjesztésének igényléséhez válassza a **ki
 
 ![Szerepkör-hozzárendelési ablaktábla kiterjesztése egy ok mezővel](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
 
-Az eredeti hozzárendeléssel kapcsolatos információk megtekintéséhez bontsa ki a **hozzárendelés részletei**elemet. Adja meg a bővítmény kérelmének okát, majd válassza a **kiterjesztés**lehetőséget.
+Az eredeti hozzárendeléssel kapcsolatos információk megtekintéséhez bontsa ki a **hozzárendelés részletei** elemet. Adja meg a bővítmény kérelmének okát, majd válassza a **kiterjesztés** lehetőséget.
 
 >[!NOTE]
 >Azt javasoljuk, hogy a bővítmény miért szükséges, és hogy mennyi ideig kell megadni a bővítményt (ha rendelkezik ezekkel az információkkal).
@@ -78,7 +78,7 @@ Amellett, hogy az e-mail-hivatkozás követése mellett a rendszergazdák jóvá
 
 ![Azure-erőforrások – a kérelmek jóváhagyása lap felsorolja a kérelmeket és a jóváhagyásra vagy elutasításra mutató hivatkozásokat](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget, a rendszer megjeleníti a kérés részleteit, valamint egy mezőt, amely üzleti indoklást biztosít a naplók számára.
+Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás** lehetőséget, a rendszer megjeleníti a kérés részleteit, valamint egy mezőt, amely üzleti indoklást biztosít a naplók számára.
 
 ![Szerepkör-hozzárendelési kérelem jóváhagyása a kérelmező okának, a hozzárendelés típusa, a kezdési idő, a Befejezés időpontja és az ok alapján](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
@@ -102,7 +102,7 @@ Azok a felhasználók, akik már nem férnek hozzá az erőforrásokhoz, akár 3
 
 ![Szerepkörök lap – lejárt szerepkörök lap](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
 
-A szerepkörök listája a **jogosult szerepkörök**alapértelmezett értékeit jeleníti meg. Használja a legördülő menüt a jogosult és az aktív hozzárendelt szerepkörök közötti váltáshoz.
+A szerepkörök listája a **jogosult szerepkörök** alapértelmezett értékeit jeleníti meg. Használja a legördülő menüt a jogosult és az aktív hozzárendelt szerepkörök közötti váltáshoz.
 
 A listában szereplő bármelyik szerepkör-hozzárendelés megújításának kéréséhez válassza ki a **megújítási** műveletet. Ezután adja meg a kérelem okát. Hasznos lehet időtartamot biztosítani az olyan további kontextusok vagy üzleti indoklások mellett, amelyek segítségével az erőforrás-rendszergazda jóváhagyhatja vagy megtagadhatja a jóváhagyást.
 
@@ -116,7 +116,7 @@ Az erőforrás-rendszergazdák hozzáférhetnek a megújítási kérelemhez az e
 
 ![Azure-erőforrások – a kérelmek jóváhagyása lap felsorolja a kérelmeket és a jóváhagyásra vagy elutasításra mutató hivatkozásokat](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget, a rendszer a kérés részleteit jeleníti meg egy mezővel együtt, amely üzleti indoklást biztosít a naplók számára.
+Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás** lehetőséget, a rendszer a kérés részleteit jeleníti meg egy mezővel együtt, amely üzleti indoklást biztosít a naplók számára.
 
 ![Szerepkör-hozzárendelési kérelem jóváhagyása a kérelmező okának, a hozzárendelés típusa, a kezdési idő, a Befejezés időpontja és az ok alapján](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
@@ -126,11 +126,11 @@ A szerepkör-hozzárendelés megújítására vonatkozó kérelem jóváhagyása
 
 Az erőforrás-rendszergazdák egy erőforrás bal oldali navigációs menüjének **tagok** lapján megújítják a lejárt szerepkör-hozzárendeléseket. Egy erőforrás-szerepkör **lejárt** szerepkörök lapján is megújítják a lejárt szerepkör-hozzárendeléseket.
 
-Az összes lejárt szerepkör-hozzárendelés listájának megtekintéséhez a **tagok** képernyőn válassza a **lejárt szerepkörök**elemet.
+Az összes lejárt szerepkör-hozzárendelés listájának megtekintéséhez a **tagok** képernyőn válassza a **lejárt szerepkörök** elemet.
 
 ![Azure-erőforrások – a tagok lap a megújításra mutató hivatkozásokkal rendelkező lejárt szerepkörök listázása](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)

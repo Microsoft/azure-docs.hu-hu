@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/11/2020
 ms.author: alkohli
 ms.openlocfilehash: 2984f7990b9570c5ec57633de7f7e50162fb6f46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96582320"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway általános elérhetőségi kibocsátási megjegyzések
@@ -40,14 +40,14 @@ A GA-kiadás a szoftverek verziószámának felel meg:
 
 A következő táblázat összefoglalja az Data Box Gateway futó kiadásának ismert problémáit.
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Fájltípusok | A következő fájltípusok nem támogatottak: karakterek, fájlok, szoftvercsatornák, csövek és szimbolikus hivatkozások.  |Ezeknek a fájloknak a másolása az NFS-megosztáson létrehozott, 0 hosszúságú fájlokat eredményez. Ezek a fájlok hibás állapotban maradnak, és *error.xmlban* is szerepelnek. <br> A címtárakra mutató szimbolikus hivatkozások azt eredményezik, hogy a címtárak soha nem jelennek meg offline állapotban. Ennek eredményeképpen előfordulhat, hogy nem látja a szürke keresztet azon könyvtárakon, amelyek jelzik, hogy a címtárak offline állapotban vannak, és az összes kapcsolódó tartalmat teljesen feltöltötte az Azure-ba. |
 | **2.** |Törlés | A jelen kiadás hibája miatt, ha egy NFS-megosztást törölnek, akkor előfordulhat, hogy nem törli a megosztást. A megosztás állapota a *törlést* fogja megjeleníteni.  |Ez csak akkor fordul elő, ha a megosztás nem támogatott fájlnevet használ. |
 | **3.** |Másolás | Az adatmásolási hiba a következő hibával meghiúsul: a kért műveletet nem lehetett befejezni a fájlrendszer korlátozása miatt.  |A 128 KB-nál nagyobb fájlmérethez társított alternatív adatfolyam (ADS) nem támogatott.   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés a Azure Data Box Gateway üzembe helyezésére](data-box-gateway-deploy-prep.md).
 - [Felkészülés a Azure Data Box Edge üzembe helyezésére](../databox-online/azure-stack-edge-deploy-prep.md).

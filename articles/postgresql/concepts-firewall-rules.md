@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: ba353cf41cf3876a681f8f18d4121401260ff4ff
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98877170"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Tűzfalszabályok Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -72,7 +72,7 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
 * **A tűzfalszabály IPv6 formátum esetén nem érhető el:** A tűzfalszabályok IPv4-formátumúnak kell lenniük. Ha a tűzfalszabályok IPv6-formátumban vannak megadva, az érvényesítési hiba jelenik meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-firewall-using-portal.md)
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](howto-manage-firewall-using-cli.md)
 * [VNet szolgáltatásbeli végpontok a Azure Database for PostgreSQL](./concepts-data-access-and-security-vnet.md)

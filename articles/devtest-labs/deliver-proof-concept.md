@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan teheti elérhetővé a koncepciót, hogy Azure 
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87288018"
 ---
 # <a name="deliver-a-proof-of-concept"></a>A koncepció igazolása 
 
-Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Példák erre vonatkozóan:
+Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Példák:
 
 * Fejlesztői asztalok létrehozása a felhőben.
 * Környezetek konfigurálása teszteléshez.
@@ -123,7 +123,7 @@ A teljes DevTest Labs-megoldás kiadása előtt fontos tervezési és kialakít�
 
 A várt beolvasás után itt az ideje, hogy elvégezze a próbaüzem befejezését. Itt az ideje, hogy visszajelzést kapjon a felhasználóktól, megállapítsa, hogy a próbaüzem sikeres volt-e, és döntse el, hogy a szervezet a DevTest Labs a vállalaton belüli bevezetésén halad-e. Emellett érdemes megfontolni a DevTest Labs és a kapcsolódó erőforrások üzembe helyezésének automatizálását is, hogy az egységesség biztosítható legyen a teljes körű bevezetés során. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 * [DevTest Labs vállalati dokumentáció](devtest-lab-guidance-prescriptive-adoption.md)
 * [Vállalati hivatkozási architektúra](devtest-lab-reference-architecture.md)

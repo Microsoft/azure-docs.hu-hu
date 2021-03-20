@@ -6,17 +6,17 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.openlocfilehash: d6ecacf9aa1a7e650de74a412ed4f161ed0e0790
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91253802"
 ---
 # <a name="migration-in-luis"></a>Migrálás a LUISban
 
 Több elem is áttelepítési útvonalon található. A következő táblázat segítségével megismerheti, hogy milyen hatással van a rendszer, és ha teljes áttelepítésre van szüksége.
 
-|Terület|Leírás|Áttelepítés befejezésének dátuma|
+|Terület|Description|Áttelepítés befejezésének dátuma|
 |--|--|--|
 |[Előrejelzési API-k](luis-migration-api-v3.md)|Migrálás a V3 API-ra.|TBD|
 |[API-k készítése](luis-migration-authoring-entities.md)|Migrálás a V3 API-ra.|TBD|

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95973422"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: az eszköz visszaírási engedélyezése
@@ -96,7 +96,7 @@ Első lépések:
 * Győződjön meg arról, hogy az inicializálási parancsfájlban megadott fiók valójában a Active Directory-összekötő által használt helyes felhasználó. Ennek ellenőrzéséhez kövesse az alábbi lépéseket:
   * A Start menüben nyissa meg a **szinkronizálási szolgáltatást**.
   * Nyissa meg az **Összekötők** lapot.
-  * Keresse meg a Active Directory tartományi szolgáltatások típusú összekötőt, és jelölje ki.
+  * Keresse meg a Active Directory Domain Services típusú összekötőt, és jelölje ki.
   * A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.
   * Lépjen a **kapcsolódás Active Directory erdőhöz**. Ellenőrizze, hogy az ezen a képernyőn megadott tartomány-és Felhasználónév megegyezik-e a parancsfájlhoz megadott fiókkal.
     ![Összekötő fiók szinkronizált Service Manager](./media/how-to-connect-device-writeback/connectoraccount.png)
@@ -129,5 +129,5 @@ Konfiguráció ellenőrzése Active Directoryban:
 * [Kockázatkezelés feltételes hozzáféréssel](../conditional-access/overview.md)
 * [Helyszíni feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../devices/overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

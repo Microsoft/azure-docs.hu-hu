@@ -12,10 +12,10 @@ ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659971"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
@@ -180,7 +180,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       Opcionális URL-cím [ad hoc sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban tárolódik. A tárolt hozzáférési házirenddel rendelkező SAS **nem** támogatott. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
 :::row-end:::
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
 A Batch-átírás képes a nyilvánosan látható internetes URI-n keresztül olvasni a hanganyagot, és az [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md)-t használó sas URI-val képes hang-és írási átírásokat olvasni.
 

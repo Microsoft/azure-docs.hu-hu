@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 06/01/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: b97702bb84eb38d185fe97ffcc596e374f28fbe2
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339665"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-an-arm-template"></a>Rövid útmutató: Azure Cosmos DB és tároló létrehozása ARM-sablonnal
@@ -63,20 +63,20 @@ További Azure Cosmos DB-sablonok a gyorsindítási [sablonok](https://azure.mic
 
     Ha meg van adva, használja az alapértelmezett értékeket az Azure Cosmos-erőforrások létrehozásához.
 
-    * **Előfizetés** : válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport** : válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
-    * **Hely** : válasszon ki egy helyet.  Például: **USA középső régiója**.
-    * **Fiók neve** : adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
-    * **Hely** : adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
-    * **Elsődleges régió** : az Azure Cosmos-fiók elsődleges replika régiója.
-    * **Másodlagos régió** : az Azure Cosmos-fiók másodlagos replika régiója.
-    * **Alapértelmezett konzisztencia-szint** : az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje.
-    * **Maximális elavultság előtagja** : az elavult kérelmek maximális száma. A BoundedStaleness szükséges.
-    * **Maximális időköz (másodperc** ): maximális késési idő. A BoundedStaleness szükséges.
-    * **Adatbázis neve** : az Azure Cosmos-adatbázis neve.
-    * **Tároló neve** : az Azure Cosmos-tároló neve.
-    * **Átviteli sebesség** : a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s.
-    * **Elfogadom a fenti használati feltételeket** : Válassza ezt.
+    * **Előfizetés**: válasszon ki egy Azure-előfizetést.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
+    * **Hely**: válasszon ki egy helyet.  Például: **USA középső régiója**.
+    * **Fiók neve**: adja meg az Azure Cosmos-fiók nevét. Globálisan egyedinek kell lennie.
+    * **Hely**: adjon meg egy helyet, ahol létre szeretné hozni az Azure Cosmos-fiókot. Az Azure Cosmos-fiók ugyanazon a helyen lehet, mint az erőforráscsoport.
+    * **Elsődleges régió**: az Azure Cosmos-fiók elsődleges replika régiója.
+    * **Másodlagos régió**: az Azure Cosmos-fiók másodlagos replika régiója.
+    * **Alapértelmezett konzisztencia-szint**: az Azure Cosmos-fiók alapértelmezett konzisztencia-szintje.
+    * **Maximális elavultság előtagja**: az elavult kérelmek maximális száma. A BoundedStaleness szükséges.
+    * **Maximális időköz (másodperc**): maximális késési idő. A BoundedStaleness szükséges.
+    * **Adatbázis neve**: az Azure Cosmos-adatbázis neve.
+    * **Tároló neve**: az Azure Cosmos-tároló neve.
+    * **Átviteli sebesség**: a tároló átviteli sebessége, a minimális átviteli sebesség 400 ru/s.
+    * **Elfogadom a fenti használati feltételeket**: Válassza ezt.
 
 3. Válassza a **Beszerzés** lehetőséget. Miután sikeresen telepítette az Azure Cosmos-fiókot, értesítést kap:
 

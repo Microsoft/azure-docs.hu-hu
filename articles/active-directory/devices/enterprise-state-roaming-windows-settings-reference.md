@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252967"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
@@ -30,7 +30,7 @@ A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keret
 | --- | --- | --- |
 | Azure Active Directory: szinkronizálás |Igen |Nem |
 | Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
-| Microsoft-fiók: szinkronizálás |Igen |Igen |
+| Microsoft-fiók: szinkronizálás |Igen |Yes |
 | Microsoft-fiók: biztonsági mentés/visszaállítás |Nem |Igen |
 
 ## <a name="what-is-backup"></a>Mi az a biztonsági mentés?
@@ -74,7 +74,7 @@ A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 | **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |
 | **Speciális mobil szélessáv**: internetkapcsolat megosztási hálózatának neve (lehetővé teszi a mobil Wi-Fi-pontok automatikus észlelését Bluetooth-kapcsolaton keresztül) |X |X |Jelszavak |
-| **Alkalmazásadatok: az**egyes alkalmazások szinkronizálhatja az adatszinkronizálást |biztonsági másolat szinkronizálása |biztonsági másolat szinkronizálása |belső |
+| **Alkalmazásadatok: az** egyes alkalmazások szinkronizálhatja az adatszinkronizálást |biztonsági másolat szinkronizálása |biztonsági másolat szinkronizálása |belső |
 | **Alkalmazások listája**: telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: minden Bluetooth-beállítás |X |X | |
 | **Parancssor**: parancssor "Defaults" beállítások |szinkronizálás |X |belső |
@@ -184,6 +184,6 @@ A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
 A Windows Creators Update minimális támogatott operációsrendszer-verziója (Build 15063). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

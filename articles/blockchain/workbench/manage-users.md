@@ -5,10 +5,10 @@ ms.date: 07/15/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: be078e7149ba008ab8b7ad44a016a0d1cf82df0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91263011"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Felhasználók kezelése az Azure Blockchain Workbenchben
@@ -27,9 +27,9 @@ Az Blockchain Workbench felhasználóinak az Azure AD-bérlőben kell léteznie 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a fiókját a jobb felső sarokban, és váltson a Blockchain Workbenchhez társított Azure AD-bérlőre.
-1. Válassza **Azure Active Directory > felhasználók**lehetőséget. Megjelenik a címtárban található felhasználók listája.
-1. Ha felhasználókat szeretne hozzáadni a címtárhoz, válassza az **új felhasználó**lehetőséget. Külső felhasználók esetében válassza az **új vendég felhasználó**lehetőséget.
-1. Töltse ki az új felhasználóhoz szükséges mezőket. Kattintson a **Létrehozás** gombra.
+1. Válassza **Azure Active Directory > felhasználók** lehetőséget. Megjelenik a címtárban található felhasználók listája.
+1. Ha felhasználókat szeretne hozzáadni a címtárhoz, válassza az **új felhasználó** lehetőséget. Külső felhasználók esetében válassza az **új vendég felhasználó** lehetőséget.
+1. Töltse ki az új felhasználóhoz szükséges mezőket. Válassza a **Létrehozás** lehetőséget.
 
 Az Azure ad-ben található felhasználók kezelésével kapcsolatos további információkért látogasson el az [Azure ad](../../active-directory/fundamentals/add-users-azure-active-directory.md) dokumentációjában.
 
@@ -41,13 +41,13 @@ Felhasználók hozzáadása a **rendszergazda** csoporthoz az Azure ad-címtárb
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Ellenőrizze, hogy a Blockchain Workbenchhez társított Azure AD-bérlőben van-e, és válassza ki a fiókját a jobb felső sarokban.
-1. Válassza **Azure Active Directory > vállalati alkalmazások**lehetőséget.
-1. Módosítsa az **alkalmazás típusa** legördülő szűrőt az **összes alkalmazásra** , majd válassza az **alkalmaz**lehetőséget.
+1. Válassza **Azure Active Directory > vállalati alkalmazások** lehetőséget.
+1. Módosítsa az **alkalmazás típusa** legördülő szűrőt az **összes alkalmazásra** , majd válassza az **alkalmaz** lehetőséget.
 1. Azure AD-ügyfélalkalmazás kiválasztása az Azure Blockchain Workbenchhez
 
     ![Minden vállalati alkalmazás regisztrációja](./media/manage-users/select-blockchain-client-app.png)
 
-1. Válassza **a felhasználók és csoportok lehetőséget > felhasználó hozzáadása**elemet.
+1. Válassza **a felhasználók és csoportok lehetőséget > felhasználó hozzáadása** elemet.
 1. A **Hozzárendelés felvétele** résznél válassza a **Felhasználók** elemet. Válassza ki vagy keresse meg azt a felhasználót, akit rendszergazdaként szeretne felvenni. Kattintson **a kiválasztás** elemre a befejezés után.
 
     ![Hozzárendelés hozzáadása](./media/manage-users/add-user-assignment.png)
@@ -77,7 +77,7 @@ A Blockchain Workbench alkalmazással kezelheti a konzorcium részét képező f
 #### <a name="add-member-to-application"></a>Tag hozzáadása az alkalmazáshoz
 
 1. Válassza ki a tag csempét az aktuális tagok listájának megjelenítéséhez.
-1. Válassza a **Tagok hozzáadása**elemet.
+1. Válassza a **Tagok hozzáadása** elemet.
 
     ![Képernyőfelvétel: az alkalmazás tagsági ablaka, a tag hozzáadása gomb kiemelve.](./media/manage-users/application-add-members.png)
 

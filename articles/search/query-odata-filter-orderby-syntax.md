@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923398"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Az `$filter` `$orderby` `$select` Azure Cognitive Search OData nyelvének áttekintése
 
-Az Azure Cognitive Search a OData Expression szintaxisának egy részhalmazát támogatja **$Filter**, **$OrderBy**és **$Select** kifejezésekhez. A szűrési kifejezéseket a rendszer kiértékeli a lekérdezések elemzése során, megtiltja a keresést adott mezőkre, vagy az index vizsgálata során használt egyezési feltételeket ad hozzá. A sorrend szerinti kifejezéseket a rendszer utólagos feldolgozás utáni lépésként alkalmazza a visszaadott dokumentumok rendezéséhez. Válassza ki azokat a kifejezéseket, amelyek meghatározzák, hogy mely dokumentum mezők szerepeljenek az eredményhalmazban. Ezeknek a kifejezéseknek a szintaxisa különbözik a **keresési** paraméterben használt [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxistól, bár átfedésben van a mezők hivatkozó szintaxisa.
+Az Azure Cognitive Search a OData Expression szintaxisának egy részhalmazát támogatja **$Filter**, **$OrderBy** és **$Select** kifejezésekhez. A szűrési kifejezéseket a rendszer kiértékeli a lekérdezések elemzése során, megtiltja a keresést adott mezőkre, vagy az index vizsgálata során használt egyezési feltételeket ad hozzá. A sorrend szerinti kifejezéseket a rendszer utólagos feldolgozás utáni lépésként alkalmazza a visszaadott dokumentumok rendezéséhez. Válassza ki azokat a kifejezéseket, amelyek meghatározzák, hogy mely dokumentum mezők szerepeljenek az eredményhalmazban. Ezeknek a kifejezéseknek a szintaxisa különbözik a **keresési** paraméterben használt [egyszerű](query-simple-syntax.md) vagy [teljes](query-lucene-syntax.md) lekérdezési szintaxistól, bár átfedésben van a mezők hivatkozó szintaxisa.
 
 Ez a cikk áttekintést nyújt a Filters, Order by és Select kifejezésekben használt OData kifejezés nyelvéről. A nyelv "bottom-up" (alapszintű), a legalapvetőbb elemektől kezdve, és azokra épül. Az egyes paraméterek legfelső szintű szintaxisát külön cikk ismerteti:
 
@@ -42,7 +42,7 @@ A OData-kifejezések egyszerűen és nagyon összetettek, de minden közös elem
 - **Konstansok**, amelyek egy bizonyos adattípushoz tartozó literál értékeket tartalmaznak.
 
 > [!NOTE]
-> Az Azure Cognitive Search terminológiája néhány módon különbözik a [OData standardtól](https://www.odata.org/documentation/) . Az Azure Cognitive Search egyik **mezőjét** nevezzük a OData **tulajdonságának** , és hasonlóképpen a **mező elérési** útja és a **tulajdonság elérési útja**között. Az Azure Cognitive Searchban található **dokumentumokat** tartalmazó **indexet** a OData általánosabban az **entitásokat**tartalmazó **entitásként** említik. Ebben a hivatkozásban az Azure Cognitive Search-terminológiát használjuk.
+> Az Azure Cognitive Search terminológiája néhány módon különbözik a [OData standardtól](https://www.odata.org/documentation/) . Az Azure Cognitive Search egyik **mezőjét** nevezzük a OData **tulajdonságának** , és hasonlóképpen a **mező elérési** útja és a **tulajdonság elérési útja** között. Az Azure Cognitive Searchban található **dokumentumokat** tartalmazó **indexet** a OData általánosabban az **entitásokat** tartalmazó **entitásként** említik. Ebben a hivatkozásban az Azure Cognitive Search-terminológiát használjuk.
 
 ## <a name="field-paths"></a>Mező elérési útjai
 
@@ -70,7 +70,7 @@ Az azonosítók egy adott mező nevére vagy egy, a szűrőben lévő [gyűjtem�
 
 A következő táblázat példákat mutat be a mezők elérési útjaira:
 
-| Mező elérési útja | Leírás |
+| Mező elérési útja | Description |
 | --- | --- |
 | `HotelName` | Az index legfelső szintű mezőjére hivatkozik. |
 | `Address/City` | Az `City` index összetett mezőjének almezőjét jelöli. `Address` ebben a példában a típus `Edm.ComplexType` |
@@ -79,7 +79,7 @@ A következő táblázat példákat mutat be a mezők elérési útjaira:
 | `room/Type` | A `Type` tartomány változójának almezőjére hivatkozik `room` , például a Filter kifejezésben. `Rooms/any(room: room/Type eq 'deluxe')` |
 | `store/Address/Country` | A `Country` `Address` tartomány változó almezőjét jelöli `store` , például a szűrő kifejezésben. `Stores/any(store: store/Address/Country eq 'Canada')` |
 
-A mező elérési útjának jelentése a környezettől függően eltérő. A szűrők területen a mező elérési útja az aktuális dokumentumban lévő mező egy *példányának* értékére hivatkozik. Más környezetekben, például **$OrderBy**, **$Select**vagy a [teljes Lucene szintaxisban található, mezőn belüli keresésben](query-lucene-syntax.md#bkmk_fields)a mező elérési útja magára a mezőre hivatkozik. Ez a különbség bizonyos következményekkel jár, hogy miként használhatók a mezők elérési útjai a szűrőkben.
+A mező elérési útjának jelentése a környezettől függően eltérő. A szűrők területen a mező elérési útja az aktuális dokumentumban lévő mező egy *példányának* értékére hivatkozik. Más környezetekben, például **$OrderBy**, **$Select** vagy a [teljes Lucene szintaxisban található, mezőn belüli keresésben](query-lucene-syntax.md#bkmk_fields)a mező elérési útja magára a mezőre hivatkozik. Ez a különbség bizonyos következményekkel jár, hogy miként használhatók a mezők elérési útjai a szűrőkben.
 
 Vegye figyelembe a mező elérési útját `Address/City` . Egy szűrőben ez az aktuális dokumentum egyetlen városára vonatkozik, például: "San Francisco". Ezzel szemben `Rooms/Type` a `Type` sok szoba (például a "standard", az első szoba, a "Deluxe" a második Teremnél stb.) almezőjét jelenti. Mivel `Rooms/Type` a nem az almező *egyetlen példányára* hivatkozik `Type` , nem használható közvetlenül szűrőben. Ehelyett a szobatípus szűréséhez egy tartomány-változót használó [lambda kifejezést](search-query-odata-collection-operators.md) kellene használni, például:
 
@@ -95,7 +95,7 @@ A mező elérési útjait az [Azure Cognitive Search REST API](/rest/api/searchs
 
 | API | Paraméter neve | Korlátozások |
 | --- | --- | --- |
-| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincs |
+| Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
 | Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
 | Index [létrehozása](/rest/api/searchservice/create-index) vagy [frissítése](/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
 | [Search](/rest/api/searchservice/search-documents) | `search` Ha `queryType` a `full` | Csak **kereshető** mezőkre hivatkozhat |
@@ -211,7 +211,7 @@ A mezők elérési útjai és állandói a OData egyik legalapvetőbb részét k
 
 Azonban a legtöbb esetben összetettebb kifejezésekre lesz szüksége, amelyek egynél több mezőre és állandóra hivatkoznak. Ezek a kifejezések a paramétertől függően különböző módokon vannak felépítve.
 
-A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$filter**, a **$OrderBy**és a **$Select** paraméterek nyelvtanát határozza meg. Ezek az egyszerűbb kifejezésekből épülnek fel, amelyek a mező elérési útjaira és állandóra vonatkoznak:
+A következő EBNF ([Extended Backus-Naur Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) a **$filter**, a **$OrderBy** és a **$Select** paraméterek nyelvtanát határozza meg. Ezek az egyszerűbb kifejezésekből épülnek fel, amelyek a mező elérési útjaira és állandóra vonatkoznak:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -233,7 +233,7 @@ Az interaktív szintaxis diagram is elérhető:
 
 A **$OrderBy** és a **$Select** paraméterek az egyszerűbb kifejezések vesszővel tagolt listája. A **$Filter** paraméter egy egyszerű alkifejezésből álló logikai kifejezés. Ezek az alkifejezések olyan logikai operátorokkal vannak kombinálva, mint a, a, [ `and` `or` `not` és ](search-query-odata-logical-operators.md)az összehasonlító operátorok, például,, stb., és a gyűjtemény operátorai, például a [ `any` és `all` ](search-query-odata-collection-operators.md) [ `eq` `lt` `gt` a](search-query-odata-comparison-operators.md).
 
-A **$Filter**, **$OrderBy**és **$Select** paramétereket részletesebben ismertetjük a következő cikkekben:
+A **$Filter**, **$OrderBy** és **$Select** paramétereket részletesebben ismertetjük a következő cikkekben:
 
 - [OData $filter szintaxis az Azure-ban Cognitive Search](search-query-odata-filter.md)
 - [OData $orderby szintaxis az Azure-ban Cognitive Search](search-query-odata-orderby.md)

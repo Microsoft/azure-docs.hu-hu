@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 76aeb63feb006e6962efeb3687363f18acb59904
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97746694"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Vendégfelhasználói hozzáférés felügyelete az Azure AD hozzáférési felülvizsgálatokkal
@@ -122,6 +122,6 @@ Egyes szervezeteknél előfordulhat, hogy a vendégek nem ismerik a csoport tags
 
 5. Távolítsa el a vendég hozzáférést a megtagadott vendégek számára, nem fejezte be a felülvizsgálatot, vagy korábban nem fogadta el a meghívót. Ha a vendégek némelyike olyan kapcsolattartó, aki kiválasztotta a felülvizsgálatban való részvételt, vagy korábban nem fogadtak el meghívót, letilthatja a fiókjaikat a Azure Portal vagy a PowerShell használatával. Ha a vendégnek már nincs szüksége a hozzáférésre, és nem egy partner, akkor a Azure Portal vagy a PowerShell használatával törölheti a felhasználói objektumot a címtárból a vendég felhasználói objektum törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)

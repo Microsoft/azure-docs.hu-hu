@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, részletes kamera, TOF, alapelvek, teljesítmény, érvénytelenítés
 ms.openlocfilehash: 22f04b983ed7c6a2ab19a5c1c709621655ee31c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277299"
 ---
 # <a name="azure-kinect-dk-depth-camera"></a>Azure Kinect DK – részletes kamera
@@ -44,7 +44,7 @@ A részletes kamera technikai jellemzői a következők:
 
 A részletes kamera a nyers modulált IR-képeket továbbítja a gazdagép SZÁMÍTÓGÉPének. A PC-n a GPU-gyorsított mélységmérő motor szoftvere átalakítja a nyers jeleket a részletes térképekbe.A részletes kamera több módot is támogat. A **keskeny látómező (FOV)** módok ideálisak az X és Y dimenzióban kisebb egységekkel rendelkező jeleneteknél, de nagyobb mértékben a Z-dimenzióban. Ha a jelenet nagy X-és Y-egységekkel rendelkezik, de kisebb Z-tartományokkal rendelkezik, a **széles FOV-üzemmódok** jobban illeszkednek.
 
-A részletes kamera az **2x2 dobozolási módokat** támogatja a Z-tartomány kiterjesztéséhez a megfelelő **unbinned-módokhoz**képest. A dobozolási a képfelbontás csökkentése után kerül sor. Az összes mód akár 30 képkocka/másodperc (FPS) módban is futtatható, kivéve az 1 megapixel (MP) üzemmódot, amely legfeljebb 15 FPS képkockával fut. A részletes kamera a **passzív IR módot**is biztosítja. Ebben a módban a kamera megvilágítói nem aktívak, és csak a környezeti megvilágítás figyelhető meg.
+A részletes kamera az **2x2 dobozolási módokat** támogatja a Z-tartomány kiterjesztéséhez a megfelelő **unbinned-módokhoz** képest. A dobozolási a képfelbontás csökkentése után kerül sor. Az összes mód akár 30 képkocka/másodperc (FPS) módban is futtatható, kivéve az 1 megapixel (MP) üzemmódot, amely legfeljebb 15 FPS képkockával fut. A részletes kamera a **passzív IR módot** is biztosítja. Ebben a módban a kamera megvilágítói nem aktívak, és csak a környezeti megvilágítás figyelhető meg.
 
 ## <a name="camera-performance"></a>Kamera teljesítménye
 
@@ -56,7 +56,7 @@ Szisztematikus hiba van meghatározva a zaj eltávolítása utáni mért mélys�
 
 ![Részletes részletességi hiba](./media/concepts/depth-camera-systematic-error.png)
 
-Ahol *a d<sub>t</sub> * a mérték mélységét jelöli a *t*időpontban, *N* az átlagos eljárásban használt keretek számát, a *d<sub>gt</sub> * pedig a terepi igazság mélységét.
+Ahol *a d <sub>t</sub>* a mérték mélységét jelöli a *t* időpontban, *N* az átlagos eljárásban használt keretek számát, a *d <sub>gt</sub>* pedig a terepi igazság mélységét.
 
 A részletes kamera szisztematikus hibájának specifikációja a többutas interferencia (MPI) kivételével. Az MPI az, amikor az egyik érzékelő képpont integrálja a fényt, amelyet több objektum is tükröz. Az MPI-t részben a nagy modulációs gyakorisággal, valamint a mélységi érvénytelenítéssel együttesen is enyhítjük, amelyet később fogunk bevezetni.
 
@@ -66,7 +66,7 @@ Tegyük fel, hogy ugyanazon objektum 100-es lemezképét vesszük át a kamera �
 
 ![Véletlenszerű mélységi hiba](./media/concepts/depth-camera-random-error.png)
 
-Ahol *N* a mélységi mérések számát jelöli, *a<sub>t</sub> t a* *t* és a *d* időpontra vonatkozó mélységi mérési értéket jelöli *.<sub>t</sub>*
+Ahol *N* a mélységi mérések számát jelöli, *a <sub></sub> t a* *t* és a *d* időpontra vonatkozó mélységi mérési értéket jelöli *.<sub></sub>*
 
 ## <a name="invalidation"></a>Vermek érvénytelenítési
 
@@ -106,6 +106,6 @@ Egy másik gyakori eset a többutas elem, amely tartalmazza az előtérből és 
 
 ![Nem érvényes többutas (élek)](./media/concepts/depth-camera-invalidation-edge.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Koordináta-rendszerek](coordinate-systems.md)

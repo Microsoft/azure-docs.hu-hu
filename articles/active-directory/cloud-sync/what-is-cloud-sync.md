@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3b880d70baf7c160f8235bd01a5000f83825c36
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614842"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Mi az Azure AD Connect Cloud Sync?
@@ -42,7 +42,7 @@ A következő rövid videó kiváló áttekintést nyújt a Azure AD Connect Clo
 
 Az alábbi táblázat a Azure AD Connect és a Azure AD Connect Cloud Sync összehasonlítását tartalmazza:
 
-| Funkció | Azure Active Directory Connect szinkronizálása| Azure Active Directory Connect Cloud Sync |
+| Szolgáltatás | Azure Active Directory Connect szinkronizálása| Azure Active Directory Connect Cloud Sync |
 |:--- |:---:|:---:|
 |Csatlakozás egyetlen helyszíni AD-erdőhöz|● |● |
 | Csatlakozás több helyszíni AD-erdőhöz |● |● |

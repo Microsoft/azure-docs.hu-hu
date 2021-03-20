@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505766"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581116"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -86,12 +86,12 @@ A webalkalmazásnak meg kell kérnie a felhasználót, ha a böngésző bezárá
 
 #### <a name="server-side"></a>Kiszolgálóoldali
 
-Az élő eseményeket a Azure Event Grid eseményekre való feliratkozással figyelheti. További információ: [EventGrid esemény sémája](media-services-event-schemas.md#live-event-types).
+Az élő eseményeket a Azure Event Grid eseményekre való feliratkozással figyelheti. További információ: [EventGrid esemény sémája](monitoring/media-services-event-schemas.md#live-event-types).
 
 A következő lehetőségek közül választhat:
 
-* [Fizessen elő](reacting-to-media-services-events.md) a [Microsoft. Media. LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) eseményeire, és figyelje meg, hogy az élő esemény leállításához és törléséhez nem érkezik Újrakapcsolódás.
-* [Fizessen elő](reacting-to-media-services-events.md) a követési szintű [szívverési](media-services-event-schemas.md#liveeventingestheartbeat) eseményekre. Ha az összes pályán van egy bejövő bitráta 0 vagy az utolsó időbélyeg már nem növekszik, nyugodtan leállíthatja az élő eseményt. A szívverési események minden egyes pályán 20 másodpercenként érkeznek, így lehet, hogy ez egy kicsit részletes.
+* [Fizessen elő](monitoring/reacting-to-media-services-events.md) a [Microsoft. Media. LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) eseményeire, és figyelje meg, hogy az élő esemény leállításához és törléséhez nem érkezik Újrakapcsolódás.
+* [Fizessen elő](monitoring/reacting-to-media-services-events.md) a követési szintű [szívverési](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) eseményekre. Ha az összes pályán van egy bejövő bitráta 0 vagy az utolsó időbélyeg már nem növekszik, nyugodtan leállíthatja az élő eseményt. A szívverési események minden egyes pályán 20 másodpercenként érkeznek, így lehet, hogy ez egy kicsit részletes.
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Hogyan helyezzen el szüneteket/videókat és képbeszúrásokat egy élő adatfolyamban?
 
@@ -117,7 +117,7 @@ További információ: [a tartalom Media Services dinamikus titkosítással val�
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hogyan és hol kapok JWT tokent, mielőtt felhasználom egy licenc vagy kulcs igénylésére?
 
-Éles környezetben a biztonságos jogkivonat-szolgáltatást (azaz egy webszolgáltatást) kell használnia, amely JWT-jogkivonatot ad ki egy HTTPS-kérelem alapján. A teszthez használhatja a `GetTokenAsync` [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)-ben definiált metódusban megjelenő kódot.
+Éles környezetben a biztonságos jogkivonat-szolgáltatást (azaz egy webszolgáltatást) kell használnia, amely JWT-jogkivonatot ad ki egy HTTPS-kérelem alapján. A teszthez használhatja a `GetTokenAsync` [program. cs programban](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)definiált metódusban megjelenő kódot.
 
 A lejátszó kérést küld egy felhasználó hitelesítése után az STS számára egy ilyen jogkivonat számára, és hozzárendeli azt a jogkivonat értékeként. Használhatja a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)-t.
 

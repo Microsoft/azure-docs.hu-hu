@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e56473ae935ec58a6cf6f0ea30fe5f7ccfec3f80
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f82169c084fc65fd483119bb84f29198ed288019
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103017205"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580317"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>A Azure PowerShell modullal engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
@@ -32,7 +32,20 @@ A virtuális gépek méreteit programozott módon is megtalálhatja. Ha szeretn�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldjön egy e-mailt az encryptionAtHost@microsoft.com előfizetési azonosítókkal, hogy a szolgáltatás engedélyezve legyen az előfizetésekhez.
+A virtuális gép/VMSS EncryptionAtHost tulajdonságának használata előtt engedélyeznie kell az előfizetés szolgáltatását. Az előfizetés funkciójának engedélyezéséhez kövesse az alábbi lépéseket:
+
+1.  Futtassa a következő parancsot az előfizetés funkciójának regisztrálásához
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+2.  Győződjön meg arról, hogy a regisztrációs állapot regisztrálva van (néhány percet vesz igénybe) az alábbi parancs használatával, mielőtt kipróbálja a funkciót.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>Azure Key Vault és DiskEncryptionSet létrehozása
 

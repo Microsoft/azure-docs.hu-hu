@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 71de0573f252cab7f2b479212551562de2b1d1c2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Oktatóanyag: Azure Active Directory a szeizmikus integrációval
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.seismic.com/SSO/<ROUTEURL>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez forduljon a szeizmikus ügyfélszolgálati [csapathoz](mailto:support@seismic.com) . A szolgáltatói **metaadatokat** feltöltheti az azonosító érték automatikus feltöltésével is, ha további információt szeretne a szolgáltatói **metaadatokról** , forduljon a [szeizmikus ügyfél-támogatási csoporthoz](mailto:support@seismic.com).
+    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez forduljon a szeizmikus ügyfélszolgálati [csapathoz](mailto:support@seismic.com) . A szolgáltatói **metaadatokat** feltöltheti az azonosító érték automatikus feltöltésével is, ha további információt szeretne a szolgáltatói **metaadatokról**, forduljon a [szeizmikus ügyfél-támogatási csoporthoz](mailto:support@seismic.com).
 
 5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
@@ -107,13 +107,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

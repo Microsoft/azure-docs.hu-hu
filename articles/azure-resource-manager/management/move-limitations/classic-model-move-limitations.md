@@ -4,10 +4,10 @@ description: A Azure Resource Manager használatával helyezheti át a klassziku
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 78b9769a31fa0c96c12e18d05cb9c484aa52a1d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75485285"
 ---
 # <a name="move-guidance-for-classic-deployment-model-resources"></a>Útmutató a klasszikus üzemi modell erőforrásainak üzembe helyezéséhez
@@ -94,7 +94,7 @@ A klasszikus erőforrások új előfizetésre való áthelyezéséhez használja
 
 A művelet több percig is futhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémája van a klasszikus erőforrások áthelyezésekor, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 

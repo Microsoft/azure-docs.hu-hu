@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: alkohli
 ms.openlocfilehash: 15b01f92fe0d39d099c10c7c086790a4dbb91379
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96582105"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Data Box Gateway korlátok
@@ -50,6 +50,6 @@ Az alábbi táblázat a Data Box Gateway eszköz korlátozásait ismerteti.
 
 [!INCLUDE [data-box-gateway-storage-object-limits](../../includes/data-box-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)

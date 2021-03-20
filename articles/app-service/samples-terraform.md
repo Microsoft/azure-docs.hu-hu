@@ -10,17 +10,17 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: f88ccd077c857826271484c9929b37f8c5d751fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88962706"
 ---
 # <a name="terraform-samples-for-azure-app-service"></a>Terraform-minták Azure App Service
 
 A következő táblázat a Terraform parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Script | Leírás |
+| Script | Description |
 |-|-|
 |**Alkalmazás létrehozása**||
 | [Hozzon létre két alkalmazást, és kapcsolódjon biztonságosan a privát végponttal és a VNet-integrációval](./scripts/terraform-secure-backend-frontend.md )| Két App Service alkalmazást hoz létre, és összekapcsolja az alkalmazásokat a privát végponttal és a VNet-integrációval együtt. |

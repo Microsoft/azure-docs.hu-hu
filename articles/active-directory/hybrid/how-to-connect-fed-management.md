@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cc0c8c40e370579100c562e0289c97e3f5ce4236
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91274112"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory összevonási szolgáltatások (AD FS) kezelése és testreszabása Azure AD Connect használatával
@@ -51,14 +51,14 @@ A Azure AD Connect segítségével megtekintheti a AD FS és az Azure AD megbíz
 1. Válassza ki a **HRE és az ADFS-megbízhatóság javítása** elemet a további feladatok listájából.
    ![HRE-és ADFS-megbízhatóság javítása](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
+2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább** gombra.
    ![Képernyőfelvétel: a "kapcsolódás az Azure AD szolgáltatáshoz" oldal, például a megadott hitelesítő adatokkal.](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. A **távelérési hitelesítő adatok** lapon adja meg a tartományi rendszergazda hitelesítő adatait.
 
    ![Képernyőkép, amely a "távelérési hitelesítő adatok" lapot mutatja, például a megadott hitelesítő adatokat.](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    Miután rákattintott a **tovább**gombra, Azure ad Connect ellenőrzi a tanúsítvány állapotát, és megjeleníti a problémákat.
+    Miután rákattintott a **tovább** gombra, Azure ad Connect ellenőrzi a tanúsítvány állapotát, és megjeleníti a problémákat.
 
     ![Tanúsítványok állapota](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
@@ -92,11 +92,11 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 > [!NOTE]
 > AD FS kiszolgáló hozzáadásához Azure AD Connect szükséges a PFX-tanúsítvány. Ezért ezt a műveletet csak akkor hajthatja végre, ha a AD FS farmot Azure AD Connect használatával konfigurálta.
 
-1. Válassza **a további összevonási kiszolgáló telepítése**lehetőséget, majd kattintson a **tovább**gombra.
+1. Válassza **a további összevonási kiszolgáló telepítése** lehetőséget, majd kattintson a **tovább** gombra.
 
    ![További összevonási kiszolgáló](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
+2. A **Kapcsolódás az Azure ad-hoz** lapon adja meg az Azure ad globális rendszergazdai hitelesítő adatait, és kattintson a **tovább** gombra.
 
    ![Képernyőkép, amely a "kapcsolódás az Azure AD-hoz" lapot mutatja a megadott hitelesítő adatokkal.](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
@@ -114,7 +114,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
    ![Kiszolgálók AD FS](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. Kattintson a **tovább**gombra, és folytassa a **konfigurálást** a végső oldalon. Miután Azure AD Connect befejezte a kiszolgálók hozzáadását a AD FS farmhoz, lehetősége lesz ellenőrizni a kapcsolatot.
+6. Kattintson a **tovább** gombra, és folytassa a **konfigurálást** a végső oldalon. Miután Azure AD Connect befejezte a kiszolgálók hozzáadását a AD FS farmhoz, lehetősége lesz ellenőrizni a kapcsolatot.
 
    ![Képernyőfelvétel: a "készen áll a konfigurálásra" oldal, amely a "telepítés" gombra kattintás után végrehajtandó műveletek listáját jeleníti meg.](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
@@ -158,7 +158,7 @@ A AD FS alternatív bejelentkezési AZONOSÍTÓjának konfigurálása két fő l
 
 Egyszerűen hozzáadhat egy tartományt az Azure AD-vel összevont tartományhoz Azure AD Connect használatával. Azure AD Connect hozzáadja a tartományt az összevonáshoz, és módosítja a jogcím szabályait, hogy megfelelően tükrözze a kiállítót, ha több, az Azure AD-vel összevont tartománnyal rendelkezik.
 
-1. Összevont tartomány hozzáadásához válassza a **további Azure ad-tartomány hozzáadása**feladatot.
+1. Összevont tartomány hozzáadásához válassza a **további Azure ad-tartomány hozzáadása** feladatot.
 
    ![További Azure AD-tartomány](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
@@ -200,7 +200,7 @@ Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 > A *TargetName* paraméter megadása kötelező. Az AD FS nevű alapértelmezett téma a default (alapértelmezett).
 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Bejelentkezési Leírás hozzáadása 
-A **bejelentkezési oldal**leírásának hozzáadásához használja a következő Windows PowerShell-parancsmagot és szintaxist.
+A **bejelentkezési oldal** leírásának hozzáadásához használja a következő Windows PowerShell-parancsmagot és szintaxist.
 
 ```azurepowershell-interactive
 Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
@@ -223,9 +223,9 @@ c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccou
 => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 ```
 
-Ebben a szabályban az **MS-DS-consistencyguid** és a **ObjectGUID** értékeit kérdezi le a felhasználó számára a Active Directory. Módosítsa az áruház nevét egy megfelelő tároló nevére a AD FS üzemelő példányában. Módosítsa a jogcím típusát a **ObjectGUID** és az **MS-DS-consistencyguid**számára meghatározott megfelelő jogcím-típusra is.
+Ebben a szabályban az **MS-DS-consistencyguid** és a **ObjectGUID** értékeit kérdezi le a felhasználó számára a Active Directory. Módosítsa az áruház nevét egy megfelelő tároló nevére a AD FS üzemelő példányában. Módosítsa a jogcím típusát a **ObjectGUID** és az **MS-DS-consistencyguid** számára meghatározott megfelelő jogcím-típusra is.
 
-Emellett a **Hozzáadás** és a nem **probléma**használatával nem adhat hozzá kimenő hibát az entitáshoz, és az értékeket közbenső értékként használhatja. A jogcímet egy későbbi szabályban kell kiadnia, miután létrehozta a megváltoztathatatlan AZONOSÍTÓként használandó értéket.
+Emellett a **Hozzáadás** és a nem **probléma** használatával nem adhat hozzá kimenő hibát az entitáshoz, és az értékeket közbenső értékként használhatja. A jogcímet egy későbbi szabályban kell kiadnia, miután létrehozta a megváltoztathatatlan AZONOSÍTÓként használandó értéket.
 
 **2. szabály: annak ellenőrzése, hogy létezik-e ms-DS-consistencyguid a felhasználó számára**
 
@@ -234,7 +234,7 @@ NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsisten
 => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 ```
 
-Ez a szabály egy **idflag** nevű ideiglenes jelzőt határoz meg, amely **useguid** van beállítva, ha nincs **MS-DS-consistencyguid** feltöltve a felhasználó számára. A mögöttes logika az a tény, hogy AD FS nem engedélyezi az üres jogcímeket. Tehát a jogcímek hozzáadásakor `http://contoso.com/ws/2016/02/identity/claims/objectguid` és `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` az 1. szabályban csak akkor fejeződik be egy **msdsconsistencyguid** -jogcím, ha az érték a felhasználó számára van feltöltve. Ha nincs feltöltve, AD FS úgy látja, hogy üres értékkel fog rendelkezni, és azonnal eldobja. Az összes objektum **ObjectGUID**fog rendelkezni, így az 1. szabály végrehajtása után a jogcím mindig ott marad.
+Ez a szabály egy **idflag** nevű ideiglenes jelzőt határoz meg, amely **useguid** van beállítva, ha nincs **MS-DS-consistencyguid** feltöltve a felhasználó számára. A mögöttes logika az a tény, hogy AD FS nem engedélyezi az üres jogcímeket. Tehát a jogcímek hozzáadásakor `http://contoso.com/ws/2016/02/identity/claims/objectguid` és `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` az 1. szabályban csak akkor fejeződik be egy **msdsconsistencyguid** -jogcím, ha az érték a felhasználó számára van feltöltve. Ha nincs feltöltve, AD FS úgy látja, hogy üres értékkel fog rendelkezni, és azonnal eldobja. Az összes objektum **ObjectGUID** fog rendelkezni, így az 1. szabály végrehajtása után a jogcím mindig ott marad.
 
 **3. szabály: az MS-DS-consistencyguid nem módosítható azonosító kiadása, ha van**
 

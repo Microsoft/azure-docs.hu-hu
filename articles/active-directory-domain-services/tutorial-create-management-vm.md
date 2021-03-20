@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: d017fc3fc53c9f89978893670df10ecd731da904
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618178"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
-Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezt a felügyelt tartományt ugyanazzal a Távoli kiszolgálófelügyelet eszközei (RSAT) felügyelheti, mint a helyszíni Active Directory tartományi szolgáltatások tartománnyal. Mivel az Azure AD DS felügyelt szolgáltatás, bizonyos adminisztratív feladatok nem hajthatók végre, például a távoli asztal protokoll (RDP) használata a tartományvezérlőkre való kapcsolódáshoz.
+Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP és a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezt a felügyelt tartományt ugyanazzal a Távoli kiszolgálófelügyelet eszközei (RSAT) felügyelheti, mint a helyszíni Active Directory Domain Services tartománnyal. Mivel az Azure AD DS felügyelt szolgáltatás, bizonyos adminisztratív feladatok nem hajthatók végre, például a távoli asztal protokoll (RDP) használata a tartományvezérlőkre való kapcsolódáshoz.
 
 Ez az oktatóanyag bemutatja, hogyan konfigurálhat egy Windows Server rendszerű virtuális gépet az Azure-ban, és hogyan telepítheti az Azure AD DS felügyelt tartományának felügyeletéhez szükséges eszközöket.
 
@@ -53,7 +53,7 @@ Ebben az oktatóanyagban egy felügyeleti virtuális gépet hoz létre és konfi
 
 ## <a name="available-administrative-tasks-in-azure-ad-ds"></a>Elérhető felügyeleti feladatok az Azure AD DS
 
-Az Azure AD DS felügyelt tartományt biztosít a felhasználók, az alkalmazások és a felhasznált szolgáltatások számára. Ez a megközelítés módosítja az elérhető felügyeleti feladatok némelyikét, és azt, hogy milyen jogosultságokkal rendelkezik a felügyelt tartományon belül. Ezek a feladatok és engedélyek eltérőek lehetnek, mint a hagyományos helyszíni Active Directory tartományi szolgáltatások környezettel kapcsolatos tapasztalatok. A felügyelt tartományhoz tartozó tartományvezérlőkön a Távoli asztal használatával is csatlakozhat.
+Az Azure AD DS felügyelt tartományt biztosít a felhasználók, az alkalmazások és a felhasznált szolgáltatások számára. Ez a megközelítés módosítja az elérhető felügyeleti feladatok némelyikét, és azt, hogy milyen jogosultságokkal rendelkezik a felügyelt tartományon belül. Ezek a feladatok és engedélyek eltérőek lehetnek, mint a hagyományos helyszíni Active Directory Domain Services környezettel kapcsolatos tapasztalatok. A felügyelt tartományhoz tartozó tartományvezérlőkön a Távoli asztal használatával is csatlakozhat.
 
 ### <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Felügyelt tartományon végrehajtható felügyeleti feladatok
 

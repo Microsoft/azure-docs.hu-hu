@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96582408"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása
@@ -107,6 +107,6 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     |    16002           |    RefreshWorkNeededException                              |    Nem sikerült frissíteni a fájlt, mert nincs teljesen feltöltve.                                                                                                                                                                          | 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

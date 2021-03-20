@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84807039"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>LetsEncrypt.org-t használó tanúsítványok használata a Application Gateway AK-fürtökhöz
@@ -58,7 +58,7 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 
     Hozzon létre egy `ClusterIssuer` erőforrást. A ahhoz a hitelesítésszolgáltatóhoz szükséges, `cert-manager` `Lets Encrypt` amely az aláírt tanúsítványokat fogja beszerezni.
 
-    A nem névteret erőforrás használatával a `ClusterIssuer` CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt` az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok konfigurálásáról `ClusterIssuer` . [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer` a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
+    A nem névteret erőforrás használatával a `ClusterIssuer` CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt` az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok konfigurálásáról `ClusterIssuer` . [](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer` a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
 
     Az alábbi YAML az alapértelmezett kérdés típusa a következő: `http01` . Egyéb kihívások dokumentálva vannak a [Letsencrypt.org típusaival](https://letsencrypt.org/docs/challenge-types/) kapcsolatban
 

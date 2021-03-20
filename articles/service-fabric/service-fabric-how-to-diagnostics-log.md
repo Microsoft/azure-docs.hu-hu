@@ -7,10 +7,10 @@ ms.date: 03/27/2018
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a36425acf42a469c7f48b2e954bdacfdfcce1b10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89011480"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása Service Fabric-alkalmazáshoz
@@ -126,7 +126,7 @@ A ASP.NET Core naplózás ([Microsoft. Extensions. Logging NuGet csomag](https:/
 
 Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt módszert használják, beleértve a [Serilog](https://serilog.net/), a [NLog](https://nlog-project.org/)és a [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Mindegyiket csatlakoztathatja ASP.NET Core naplózáshoz, vagy külön is használhatja őket. A Serilog olyan funkcióval rendelkezik, amely a naplózó összes üzenetet gazdagítja. Ez a szolgáltatás hasznos lehet a szolgáltatásnév, a típus és a partíció adatainak kimenete. Ha ezt a funkciót a ASP.NET Core-infrastruktúrában szeretné használni, hajtsa végre a következő lépéseket:
 
-1. Adja hozzá a **Serilog**, a **Serilog. Extensions. Logging**, a **Serilog. mosogatós. írástudó**és a **Serilog. mosogató. megfigyelhető** NuGet-csomagokat a projekthez. 
+1. Adja hozzá a **Serilog**, a **Serilog. Extensions. Logging**, a **Serilog. mosogatós. írástudó** és a **Serilog. mosogató. megfigyelhető** NuGet-csomagokat a projekthez. 
 2. Hozzon létre egy `LoggerConfiguration` és a Logger-példányt.
 
    ```csharp
@@ -139,7 +139,7 @@ Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt m
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. A szolgáltatás konstruktorában a **ServiceTypeName**, **szolgáltatásnév**, **PartitionID**és **InstanceId**tulajdonság-gazdagítók jönnek létre.
+4. A szolgáltatás konstruktorában a **ServiceTypeName**, **szolgáltatásnév**, **PartitionID** és **InstanceId** tulajdonság-gazdagítók jönnek létre.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)

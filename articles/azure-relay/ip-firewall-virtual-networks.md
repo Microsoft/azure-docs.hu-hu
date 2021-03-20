@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a tűzfalszabályok 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: ad8feed5df49dcc4503226a5fae50195bb9d48aa
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999508"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>IP-tűzfal konfigurálása Azure Relay névtérhez
@@ -32,7 +32,7 @@ Ebből a szakaszból megtudhatja, hogyan használhatja a Azure Portal IP-tűzfal
     ![Képernyőfelvétel: a hálózat lap, amelyen a minden hálózat lehetőség be van jelölve.](./media/ip-firewall/all-networks-selected.png)
 1. Ha korlátozni szeretné a hozzáférést bizonyos hálózatokra és IP-címekre, válassza a **kiválasztott hálózatok** lehetőséget. A **tűzfal** szakaszban kövesse az alábbi lépéseket:
     1. Válassza az **ügyfél IP-címének hozzáadása** lehetőséget, hogy a jelenlegi ügyfél IP-címe hozzáférjen a névtérhez. 
-    2. A **címtartomány**mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
+    2. A **címtartomány** mezőben adjon meg egy adott IPv4-címeket vagy IPv4-CÍMTARTOMÁNYT a CIDR-jelölésben. 
 
         ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra az eszköztáron. Várjon néhány percet, hogy a megerősítés megjelenjen a portál értesítésein.
@@ -51,7 +51,7 @@ A sablon egy paramétert vesz igénybe: **ipMask**, amely egyetlen IPv4-cím vag
 > ```json
 > "defaultAction": "Allow"
 > ```
-> a következőre:
+> felhasználóként a(z)
 > ```json
 > "defaultAction": "Deny"
 > ```

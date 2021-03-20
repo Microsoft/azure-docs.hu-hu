@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88926830"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
@@ -32,7 +32,7 @@ ms.locfileid: "88926830"
 
 ## <a name="syntax"></a>Syntax
 
-A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék**vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
+A **$OrderBy** paraméter legfeljebb 32 **ORDER-BY záradék** vesszővel tagolt listáját fogadja el. Az ORDER-BY záradék szintaxisát a következő EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) írja le:
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -58,9 +58,9 @@ Ha több dokumentumra ugyanazok a rendezési feltételek tartoznak, és a `searc
 
 Több rendezési feltételt is megadhat. A kifejezések sorrendje határozza meg a végső rendezési sorrendet. Például a pontszám csökkenő rendezéséhez, amelyet a minősítés követ, a szintaxis a következő: `$orderby=search.score() desc,Rating desc` .
 
-A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is tartalmaznia kell `sortable` .
+A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. `geo.distance` **$OrderBy** használatakor a mezőnek, amelyre az vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is tartalmaznia kell `sortable` .
 
-A $orderby szintaxisa a következő `search.score` **$orderby** : `search.score()` . A függvény `search.score` nem végez paramétereket.
+A $orderby szintaxisa a következő `search.score`  : `search.score()` . A függvény `search.score` nem végez paramétereket.
 
 ## <a name="examples"></a>Példák
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre egy sablonból álló virtuális 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5ae50bd11ab9a8adb769920f6d473a2ff2ce9342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91251495"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Beágyazott virtualizálás engedélyezése Azure Lab Services sablonban lévő virtuális gépen parancsfájl használatával
@@ -23,15 +23,15 @@ A cikk lépései a Windows Server 2016, a Windows Server 2019 vagy a Windows 10 
 
 1. Ha az Internet Explorert használja, előfordulhat, hogy hozzá kell adnia `https://github.com` a megbízható helyek listájához.
     1. Nyissa meg az Internet Explorert.
-    1. Válassza a fogaskerék ikont, majd az **Internetbeállítások**lehetőséget.  
-    1. Amikor megjelenik az **Internetbeállítások** párbeszédpanel, válassza a **Biztonság**, majd a **megbízható helyek**lehetőséget, kattintson a **helyek** gombra.
-    1. Amikor megjelenik a **megbízható helyek** párbeszédpanel, adja hozzá `https://github.com` a megbízható webhelyek listához, majd kattintson a **Bezárás**gombra.
+    1. Válassza a fogaskerék ikont, majd az **Internetbeállítások** lehetőséget.  
+    1. Amikor megjelenik az **Internetbeállítások** párbeszédpanel, válassza a **Biztonság**, majd a **megbízható helyek** lehetőséget, kattintson a **helyek** gombra.
+    1. Amikor megjelenik a **megbízható helyek** párbeszédpanel, adja hozzá `https://github.com` a megbízható webhelyek listához, majd kattintson a **Bezárás** gombra.
 
         ![Megbízható helyek](./media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Töltse le a git-tárház fájljait az alábbi lépésekben leírtak szerint.
     1. Ugrás a következőre:  [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Kattintson a **klón vagy a letöltés** gombra.
-    1. Kattintson a **zip letöltése**elemre.
+    1. Kattintson a **zip letöltése** elemre.
     1. ZIP-fájl kibontása
 
     >[!TIP]

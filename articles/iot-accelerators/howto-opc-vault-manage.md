@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 0829d4b3fca068ddb0db2df53dd635ab7ad80bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91281915"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Az OPC-tár tanúsítvány-szolgáltatásának kezelése
@@ -31,15 +31,15 @@ Az OPC-tároló üzembe helyezése után létre kell hoznia a legfelső szintű 
 1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup-app.azurewebsites.net` , és jelentkezzen be.
 2. Nyissa meg a **Tanúsítványsablonok csoportot**.
 3. Egy alapértelmezett tanúsítványsablon van felsorolva. Válassza a **Szerkesztés** elemet.
-4. A **tanúsítványkezelő részleteinek szerkesztése**lehetőséggel módosíthatja a hitelesítésszolgáltató és az alkalmazások tulajdonosának nevét és élettartamát. A tulajdonos és az élettartamok csak egyszer állíthatók be az első HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiállítása előtt. A műveletek élettartama változása inkonzisztens élettartamot eredményezhet a kiállított tanúsítványokban és a CRL-ben.
+4. A **tanúsítványkezelő részleteinek szerkesztése** lehetőséggel módosíthatja a hitelesítésszolgáltató és az alkalmazások tulajdonosának nevét és élettartamát. A tulajdonos és az élettartamok csak egyszer állíthatók be az első HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiállítása előtt. A műveletek élettartama változása inkonzisztens élettartamot eredményezhet a kiállított tanúsítványokban és a CRL-ben.
 5. Adjon meg egy érvényes tárgyat (például: `CN=My CA Root, O=MyCompany, OU=MyDepartment` ).<br>
    > [!IMPORTANT]
    > Ha módosítja a tárgyat, meg kell újítania a kiállítói tanúsítványt, vagy a szolgáltatás nem fogja aláírni az alkalmazás tanúsítványait. A konfiguráció tárgya az aktív kiállítói tanúsítvány tárgyában van bejelölve. Ha a tulajdonosok nem egyeznek, a rendszer elutasítja a tanúsítvány aláírását.
 6. Kattintson a **Mentés** gombra.
 7. Ha ezen a ponton "tiltott" hibaüzenet jelenik meg, a felhasználói hitelesítő adatai nem rendelkeznek rendszergazdai jogosultsággal az új főtanúsítvány módosításához vagy létrehozásához. Alapértelmezés szerint a szolgáltatást telepítő felhasználó rendelkezik rendszergazdai és aláírási szerepkörökkel a szolgáltatással. Más felhasználókat hozzá kell adni a jóváhagyó, az író vagy a rendszergazdai szerepkörhöz a Azure Active Directory (Azure AD) alkalmazás regisztrációjának megfelelően.
-8. Válassza a **részletek**lehetőséget. Ez a frissített információkat jeleníti meg.
-9. Válassza a **hitelesítésszolgáltatói tanúsítvány megújítása** lehetőséget az első kiállító hitelesítésszolgáltatói tanúsítvány kiállításához, vagy a kiállítói tanúsítvány megújításához. Ezután válassza az **OK** gombot.
-10. Néhány másodperc elteltével látni fogja a **tanúsítvány részleteit**. Ha le szeretné tölteni a legújabb HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és a CRL-t az OPC UA-alkalmazásokba való terjesztéshez, válassza a **kiállító** vagy a **CRL**lehetőséget.
+8. Válassza a **részletek** lehetőséget. Ez a frissített információkat jeleníti meg.
+9. Válassza a **hitelesítésszolgáltatói tanúsítvány megújítása** lehetőséget az első kiállító hitelesítésszolgáltatói tanúsítvány kiállításához, vagy a kiállítói tanúsítvány megújításához. Ez után válassza az **OK** gombot.
+10. Néhány másodperc elteltével látni fogja a **tanúsítvány részleteit**. Ha le szeretné tölteni a legújabb HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és a CRL-t az OPC UA-alkalmazásokba való terjesztéshez, válassza a **kiállító** vagy a **CRL** lehetőséget.
 
 Az OPC UA tanúsítványkezelő szolgáltatás most már készen áll az OPC UA-alkalmazások tanúsítványainak kiállítására.
 
@@ -56,9 +56,9 @@ A következő munkafolyamatban a törölt állapotokban lévő összes tanúsít
 
 1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup.azurewebsites.net` , és jelentkezzen be.
 2. Nyissa meg a **Tanúsítványsablonok** lapot.
-3. Válassza a **részletek**lehetőséget. Ez a tanúsítvány és a CRL aktuális információit jeleníti meg.
+3. Válassza a **részletek** lehetőséget. Ez a tanúsítvány és a CRL aktuális információit jeleníti meg.
 4. Válassza a CRL-visszavonási **lista (CRL) frissítése** lehetőséget, hogy egy frissített CRL-t bocsásson ki az OPC-tároló tárterületén lévő összes aktív kiállító tanúsítványhoz.
-5. Néhány másodperc elteltével látni fogja a **tanúsítvány részleteit**. Ha le szeretné tölteni a legújabb HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és a CRL-t az OPC UA-alkalmazásokba való terjesztéshez, válassza a **kiállító** vagy a **CRL**lehetőséget.
+5. Néhány másodperc elteltével látni fogja a **tanúsítvány részleteit**. Ha le szeretné tölteni a legújabb HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt és a CRL-t az OPC UA-alkalmazásokba való terjesztéshez, válassza a **kiállító** vagy a **CRL** lehetőséget.
 
 ## <a name="manage-user-roles"></a>Felhasználó szerepkörök kezelése
 
@@ -71,8 +71,8 @@ Alapértelmezés szerint a bérlő hitelesített felhasználója olvasóként is
 1. Nyissa meg az Azure Portalt.
 2. Nyissa meg **Azure Active Directory**  >  **vállalati alkalmazásokat**.
 3. Válassza ki az OPC Vault-szolgáltatás regisztrációját (alapértelmezés szerint a `resourceGroupName-service` ).
-4. Nyissa meg a **felhasználók és csoportok**lehetőséget.
-5. Válassza a **felhasználó hozzáadása**elemet.
+4. Nyissa meg a **felhasználók és csoportok** lehetőséget.
+5. Válassza a **felhasználó hozzáadása** elemet.
 6. Válassza ki vagy hívja meg a felhasználót egy adott szerepkörhöz való hozzárendeléshez.
 7. Válassza ki a felhasználók szerepkörét.
 8. Válassza a **Hozzárendelés** elemet.
@@ -83,8 +83,8 @@ Alapértelmezés szerint a bérlő hitelesített felhasználója olvasóként is
 1. Nyissa meg az Azure Portalt.
 2. Nyissa meg **Azure Active Directory**  >  **vállalati alkalmazásokat**.
 3. Válassza ki az OPC Vault-szolgáltatás regisztrációját (alapértelmezés szerint a `resourceGroupName-service` ).
-4. Nyissa meg a **felhasználók és csoportok**lehetőséget.
-5. Válasszon ki egy felhasználót az eltávolítandó szerepkörrel, majd válassza az **Eltávolítás**lehetőséget.
+4. Nyissa meg a **felhasználók és csoportok** lehetőséget.
+5. Válasszon ki egy felhasználót az eltávolítandó szerepkörrel, majd válassza az **Eltávolítás** lehetőséget.
 6. Az eltávolított felhasználók a rendszergazda vagy a jóváhagyó szerepkörben a Azure Key Vault házirendek közül is törlődnek.
 
 ### <a name="add-user-access-policy-to-azure-key-vault"></a>Felhasználói hozzáférési házirend hozzáadása Azure Key Vaulthoz
@@ -99,13 +99,13 @@ Alapértelmezés szerint a szolgáltatás identitása csak korlátozott engedél
 2. Nyissa meg az OPC `resourceGroupName` -tárolót, amelyet az üzembe helyezés során használ.
 3. Lépjen a Key Vault `resourceGroupName-xxxxx` .
 4. Nyissa meg a **hozzáférési házirendeket**.
-5. Válassza az **új hozzáadása**elemet.
+5. Válassza az **új hozzáadása** elemet.
 6. A sablon kihagyása. Nincs olyan sablon, amely megfelel a követelményeknek.
-7. Válassza a **résztvevő kiválasztása**lehetőséget, majd válassza ki a hozzáadni kívánt felhasználót, vagy hívjon fel egy új felhasználót a Bérlőnek.
-8. Válassza ki a következő **fő engedélyeket**: **lekérés**, **Listázás**és **aláírás**.
-9. Válassza ki a következő **titkos engedélyeket**: **beolvasás**, **Listázás**, **beállítás**és **Törlés**.
+7. Válassza a **résztvevő kiválasztása** lehetőséget, majd válassza ki a hozzáadni kívánt felhasználót, vagy hívjon fel egy új felhasználót a Bérlőnek.
+8. Válassza ki a következő **fő engedélyeket**: **lekérés**, **Listázás** és **aláírás**.
+9. Válassza ki a következő **titkos engedélyeket**: **beolvasás**, **Listázás**, **beállítás** és **Törlés**.
 10. Válassza ki a következő **tanúsítvány-engedélyeket**: **lekérés** és **Listázás**.
-11. Válassza **az OK**, majd a **Mentés**lehetőséget.
+11. Válassza **az OK**, majd a **Mentés** lehetőséget.
 
 #### <a name="for-an-administrator-role-the-following-permissions-must-be-added-to-key-vault"></a>Rendszergazdai szerepkör esetén a következő engedélyeket kell hozzáadni a Key Vault
 
@@ -113,13 +113,13 @@ Alapértelmezés szerint a szolgáltatás identitása csak korlátozott engedél
 2. Nyissa meg az OPC `resourceGroupName` -tárolót, amelyet az üzembe helyezés során használ.
 3. Lépjen a Key Vault `resourceGroupName-xxxxx` .
 4. Nyissa meg a **hozzáférési házirendeket**.
-5. Válassza az **új hozzáadása**elemet.
+5. Válassza az **új hozzáadása** elemet.
 6. A sablon kihagyása. Nincs olyan sablon, amely megfelel a követelményeknek.
-7. Válassza a **résztvevő kiválasztása**lehetőséget, majd válassza ki a hozzáadni kívánt felhasználót, vagy hívjon fel egy új felhasználót a Bérlőnek.
-8. Válassza ki a következő **fő engedélyeket**: **lekérés**, **Listázás**és **aláírás**.
-9. Válassza ki a következő **titkos engedélyeket**: **beolvasás**, **Listázás**, **beállítás**és **Törlés**.
-10. Válassza ki a **következő tanúsítvány-engedélyeket**: **beolvasás**, **Listázás**, **frissítés**, **Létrehozás**és **Importálás**.
-11. Válassza **az OK**, majd a **Mentés**lehetőséget.
+7. Válassza a **résztvevő kiválasztása** lehetőséget, majd válassza ki a hozzáadni kívánt felhasználót, vagy hívjon fel egy új felhasználót a Bérlőnek.
+8. Válassza ki a következő **fő engedélyeket**: **lekérés**, **Listázás** és **aláírás**.
+9. Válassza ki a következő **titkos engedélyeket**: **beolvasás**, **Listázás**, **beállítás** és **Törlés**.
+10. Válassza ki a **következő tanúsítvány-engedélyeket**: **beolvasás**, **Listázás**, **frissítés**, **Létrehozás** és **Importálás**.
+11. Válassza **az OK**, majd a **Mentés** lehetőséget.
 
 ### <a name="remove-user-access-policy-from-azure-key-vault"></a>Felhasználói hozzáférési házirend eltávolítása Azure Key Vault
 
@@ -127,7 +127,7 @@ Alapértelmezés szerint a szolgáltatás identitása csak korlátozott engedél
 2. Nyissa meg az OPC `resourceGroupName` -tárolót, amelyet az üzembe helyezés során használ.
 3. Lépjen a Key Vault `resourceGroupName-xxxxx` .
 4. Nyissa meg a **hozzáférési házirendeket**.
-5. Keresse meg az eltávolítandó felhasználót, és válassza a **Törlés**lehetőséget.
+5. Keresse meg az eltávolítandó felhasználót, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

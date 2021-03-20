@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84697442"
 ---
 # <a name="azure-functions-http-output-bindings"></a>HTTP-kimeneti kötések Azure Functions
@@ -23,7 +23,7 @@ A HTTP által aktivált függvények alapértelmezett visszatérési értéke a 
 
 ## <a name="configuration"></a>Konfiguráció
 
-Az alábbi táblázat a *function.js* fájlon beállított kötési konfigurációs tulajdonságait ismerteti. C#-alapú kódtárak esetében nincsenek tulajdonságok, amelyek megfelelnek ezeknek * afunction.jsnak* .
+Az alábbi táblázat a *function.js* fájlon beállított kötési konfigurációs tulajdonságait ismerteti. C#-alapú kódtárak esetében nincsenek tulajdonságok, amelyek megfelelnek ezeknek *afunction.jsnak* .
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -64,7 +64,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Leírás |
+|Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
 | customHeaders|Nincs|Lehetővé teszi egyéni fejlécek beállítását a HTTP-válaszban. Az előző példa hozzáadja a `X-Content-Type-Options` fejlécet a válaszhoz, hogy elkerülje a tartalomtípus-elemzést. |
 |dynamicThrottlesEnabled|igaz<sup>\*</sup>|Ha engedélyezve van, ez a beállítás hatására a kérelmek feldolgozási folyamata rendszeres időközönként ellenőrzi a rendszerteljesítmény-számlálókat, `connections/threads/processes/memory/cpu/etc` és ha ezek a számlálók egy beépített magas küszöbértéken (80%) vannak, akkor a rendszer a kérelmeket csak akkor utasítja el, ha `429 "Too Busy"` a számláló (k) a normál szintre tér vissza.<br/><sup>\*</sup>Az alapértelmezett érték a felhasználási terv `true` . Az alapértelmezett érték egy dedikált csomag `false` .|
@@ -73,6 +73,6 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |maxOutstandingRequests|200<sup>\*</sup>|A függőben lévő kérések maximális száma, amelyek egy adott időpontban vannak tárolva. Ez a korlát olyan kérelmeket tartalmaz, amelyek várólistára kerülnek, de nem indult el, valamint folyamatban van a végrehajtás. Az ezen a korláton túli bejövő kérelmek elutasítása egy 429 "túl elfoglalt" választ tartalmaz. Ez lehetővé teszi, hogy a hívók időalapú újrapróbálkozási stratégiákat alkalmazzanak, és segítséget nyújt a kérelmek maximális késésének szabályozásához is. Ez csak a parancsfájl-gazdagép végrehajtási útvonalán belüli üzenetsor-kezelőt vezérli. Más várólisták, például a ASP.NET kérelmek várólistája továbbra is érvényben marad, és ezt a beállítást nem érinti. <br/><sup>\*</sup>A felhasználási terv alapértelmezett értéke 200. Egy dedikált csomag alapértelmezett értéke nem kötött ( `-1` ).|
 |routePrefix|api|Az útvonal előtagja, amely az összes útvonalra vonatkozik. Az alapértelmezett előtag eltávolításához használjon üres karakterláncot. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása HTTP-kérelemből](./functions-bindings-http-webhook-trigger.md)

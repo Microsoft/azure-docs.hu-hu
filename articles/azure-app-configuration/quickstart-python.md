@@ -9,10 +9,10 @@ ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
 ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91997467"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Gyors útmutató: Python-alkalmazás létrehozása az Azure app Configuration szolgáltatással
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban az Azure app Configuration használatával központ
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
+7.   >    >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban az Azure app Configuration használatával központ
 
 ## <a name="setting-up-the-python-app"></a>A Python-alkalmazás beállítása
 
-1. Ebben az oktatóanyagban létre fog hozni egy új könyvtárat az *app-Configuration-Gyorsindítás*nevű projekthez.
+1. Ebben az oktatóanyagban létre fog hozni egy új könyvtárat az *app-Configuration-Gyorsindítás* nevű projekthez.
 
     ```console
     mkdir app-configuration-quickstart
@@ -77,7 +77,7 @@ Ebben a rövid útmutatóban az Azure app Configuration használatával központ
 
 ## <a name="configure-your-app-configuration-connection-string"></a>Alkalmazás-konfigurációs kapcsolatok karakterláncának konfigurálása
 
-1. Állítson be egy **AZURE_APP_CONFIG_CONNECTION_STRING**nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot:
+1. Állítson be egy **AZURE_APP_CONFIG_CONNECTION_STRING** nevű környezeti változót, és állítsa be az alkalmazás konfigurációs tárolójának hozzáférési kulcsára. A parancssorban futtassa a következő parancsot:
 
     ```cmd
     setx AZURE_APP_CONFIG_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
@@ -102,7 +102,7 @@ Ebben a rövid útmutatóban az Azure app Configuration használatával központ
 Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan végezheti el a gyakori műveleteket a Pythonhoz készült alkalmazás-konfigurációs ügyféloldali kódtár használatával. Adja hozzá ezeket a kódrészleteket a `try` korábban létrehozott *app-Configuration-Quickstart.py* -fájlban található blokkhoz.
 
 > [!NOTE]
-> Az alkalmazás konfigurációs ügyféloldali könyvtára a kulcs-érték objektumra hivatkozik `ConfigurationSetting` . Ezért ebben a cikkben az alkalmazás konfigurációs tárolójának **kulcs-értékeit** **konfigurációs beállításoknak**nevezzük.
+> Az alkalmazás konfigurációs ügyféloldali könyvtára a kulcs-érték objektumra hivatkozik `ConfigurationSetting` . Ezért ebben a cikkben az alkalmazás konfigurációs tárolójának **kulcs-értékeit** **konfigurációs beállításoknak** nevezzük.
 
 * [Kapcsolódás alkalmazás-konfigurációs tárolóhoz](#connect-to-an-app-configuration-store)
 * [Konfigurációs beállítás beolvasása](#get-a-configuration-setting)
@@ -282,7 +282,7 @@ Deleted configuration setting:
 Key: TestApp:Settings:NewSetting, Value: Value has been updated!
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]

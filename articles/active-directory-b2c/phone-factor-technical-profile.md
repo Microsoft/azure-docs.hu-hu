@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 322e4b78fbfb38f1822fb7a7cdcdbfcc0738b303
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950397"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>A telefonos faktor technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -57,10 +57,10 @@ A InputClaimsTransformations elem tartalmazhat olyan bemeneti jogcím-átalakít
 
 A Szabályzattípushoz elemnek tartalmaznia kell a következő jogcímeket. A jogcím nevét a telefonos faktor technikai profilban definiált névre is leképezheti. 
 
-|  Adattípus| Kötelező | Leírás |
+|  Adattípus| Kötelező | Description |
 | --------- | -------- | ----------- | 
-| sztring| Igen | A felhasználó egyedi azonosítója. A jogcím nevét vagy PartnerClaimType kell beállítani `UserId` . Ez a jogcím nem tartalmazhat személyes azonosításra alkalmas adatokat.|
-| sztring| Igen | A jogcím-típusok listája. Minden jogcím egy telefonszámot tartalmaz. Ha a bemeneti jogcímek bármelyike nem tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy regisztrálja és ellenőrizze az új telefonszámot. Az érvényesített telefonszámot kimeneti jogcímként adja vissza a rendszer. Ha a bemeneti jogcímek egyike telefonszámot tartalmaz, a rendszer megkéri a felhasználót, hogy ellenőrizze. Ha több bemeneti jogcím is tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy válasszon ki és ellenőrizze a telefonszámok egyikét. |
+| sztring| Yes | A felhasználó egyedi azonosítója. A jogcím nevét vagy PartnerClaimType kell beállítani `UserId` . Ez a jogcím nem tartalmazhat személyes azonosításra alkalmas adatokat.|
+| sztring| Yes | A jogcím-típusok listája. Minden jogcím egy telefonszámot tartalmaz. Ha a bemeneti jogcímek bármelyike nem tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy regisztrálja és ellenőrizze az új telefonszámot. Az érvényesített telefonszámot kimeneti jogcímként adja vissza a rendszer. Ha a bemeneti jogcímek egyike telefonszámot tartalmaz, a rendszer megkéri a felhasználót, hogy ellenőrizze. Ha több bemeneti jogcím is tartalmaz telefonszámot, a rendszer megkéri a felhasználót, hogy válasszon ki és ellenőrizze a telefonszámok egyikét. |
 
 Az alábbi példa több telefonszám használatát mutatja be. További információ: [Sample Policy](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa).
 
@@ -78,8 +78,8 @@ A OutputClaims elem a telefonos faktor technikai profil által visszaadott jogc�
 
 |  Adattípus| Kötelező | Leírás |
 |  -------- | ----------- |----------- |
-| boolean | Igen | Azt jelzi, hogy a felhasználó megadta-e az új telefonszámot. A jogcím nevét vagy PartnerClaimType úgy kell beállítani, hogy `newPhoneNumberEntered`|
-| sztring| Igen | Az ellenőrzött telefonszám. A jogcím nevét vagy PartnerClaimType kell beállítani `Verified.OfficePhone` .|
+| boolean | Yes | Azt jelzi, hogy a felhasználó megadta-e az új telefonszámot. A jogcím nevét vagy PartnerClaimType úgy kell beállítani, hogy `newPhoneNumberEntered`|
+| sztring| Yes | Az ellenőrzött telefonszám. A jogcím nevét vagy PartnerClaimType kell beállítani `Verified.OfficePhone` .|
 
 A OutputClaimsTransformations elem olyan OutputClaimsTransformation-elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosításához vagy újak létrehozásához használatosak.
 
@@ -92,15 +92,15 @@ A **CryptographicKeys** elem nincs használatban.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| ContentDefinitionReferenceId | Igen | Az ehhez a technikai profilhoz társított [tartalom-definíció](contentdefinitions.md) azonosítója. |
-| ManualPhoneNumberEntryAllowed| Nem | Adja meg, hogy a felhasználó számára engedélyezett-e a telefonszám manuális megadása. Lehetséges értékek: `true` , vagy `false` (alapértelmezett).|
-| Setting. Authenticationmode tulajdonsághoz | Nem | A telefonszám érvényesítésének módszere. Lehetséges értékek: `sms` , `phone` , vagy `mixed` (alapértelmezett).|
-| az automatikus tárcsázás beállítása| Nem| Annak megadása, hogy a technikai profil automatikusan tárcsázjon-e, vagy automatikusan küldjön-e SMS-t. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Az automatikus tárcsázáshoz a `setting.authenticationMode` metaadatokat a vagy a értékre kell beállítani `sms` `phone` . A bemeneti jogcímek gyűjteményének egyetlen telefonszámmal kell rendelkeznie. |
+| ContentDefinitionReferenceId | Yes | Az ehhez a technikai profilhoz társított [tartalom-definíció](contentdefinitions.md) azonosítója. |
+| ManualPhoneNumberEntryAllowed| No | Adja meg, hogy a felhasználó számára engedélyezett-e a telefonszám manuális megadása. Lehetséges értékek: `true` , vagy `false` (alapértelmezett).|
+| Setting. Authenticationmode tulajdonsághoz | No | A telefonszám érvényesítésének módszere. Lehetséges értékek: `sms` , `phone` , vagy `mixed` (alapértelmezett).|
+| az automatikus tárcsázás beállítása| No| Annak megadása, hogy a technikai profil automatikusan tárcsázjon-e, vagy automatikusan küldjön-e SMS-t. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). Az automatikus tárcsázáshoz a `setting.authenticationMode` metaadatokat a vagy a értékre kell beállítani `sms` `phone` . A bemeneti jogcímek gyűjteményének egyetlen telefonszámmal kell rendelkeznie. |
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
 
 A telefonos tényező hitelesítési lapja felhasználói felületi elemei [honosítható](localization-string-ids.md#phone-factor-authentication-page-user-interface-elements).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [közösségi és helyi fiókokat a MFA](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) Starter Pack csomaggal vizsgálhatja meg.

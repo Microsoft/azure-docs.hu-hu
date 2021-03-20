@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4b9cd0db2a3a99aca80f42b6d69485a542bbadb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000436"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580950"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>A Twilio használata a hang-és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -60,7 +60,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a t
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **Hello World** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -86,7 +86,7 @@ Először is, [új Azure Linux virtuális gép beállítása] [azure_vm_setup], 
 ### <a name="add-an-incoming-rule"></a>Bejövő szabály hozzáadása
   1. Nyissa meg a [hálózati biztonsági csoport] [azure_nsg] lapot.
   2. Válassza ki azt a hálózati biztonsági csoportot, amely megfelel a virtuális gépnek.
-  3. A 80-es **porthoz** tartozó hozzáadási és **Kimenő szabály** . Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
+  3. Adjon hozzá egy **kimenő szabályt** a 80-es **porthoz**. Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
 
 ### <a name="set-the-dns-name-label"></a>A DNS-név címke beállítása
   1. Lépjen a [Nyilvános IP-címek] [azure_ips] lapra.
@@ -152,6 +152,9 @@ call = client.calls.create(to=to_number,
 print(call.sid)
 ```
 
+> [!IMPORTANT]
+> A telefonszámokat "+" és "országkód" formátumban kell formázni. Például: + 16175551212 (E. 164 formátum). A Twilio nem formázott US-számokat is elfogad. Például: (415) 555-1212 vagy 415-555-1212.
+
 Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét, hogy megadja a TwiML választ; További információkért lásd: [TwiML-válaszok megadása a saját webhelyéről](#howto_provide_twiml_responses).
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Útmutató: SMS-üzenet küldése
@@ -183,7 +186,7 @@ Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy o
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját helyet, amely visszaadja a HTTP-válaszokat. A helyet bármilyen nyelven létrehozhatja, amely az XML-válaszokat adja vissza; Ez a témakör azt feltételezi, hogy a Python használatával hozza létre a TwiML.
 
-Az alábbi példákban egy TwiML választ fog kiadni, amely a híváson **„Helló világ!” alkalmazás** .
+Az alábbi példákban egy TwiML választ fog kiadni, amely a híváson **Hello World** .
 
 Lombiktal:
 

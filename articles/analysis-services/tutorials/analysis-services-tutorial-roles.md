@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92018695"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
@@ -130,13 +130,13 @@ Ebben a feladatban a [Create](/analysis-services/tmsl/create-command-tmsl) paran
 ## <a name="verify-your-changes"></a>Módosítások ellenőrzése
 
 1. Az **Object Explorerben** kattintson a kiszolgálója nevére, majd kattintson a **Frissítés** lehetőségre, vagy nyomja le az **F5** billentyűt.
-2. Bontsa ki az **adatbázisok**  >  **AdventureWorks**  >  **szerepkörök**elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
+2. Bontsa ki az **adatbázisok**  >  **AdventureWorks**  >  **szerepkörök** elemet. Ellenőrizze, hogy az előző feladatban hozzáadott felhasználói fiók és az új szerepkör-módosítások megjelennek-e.   
 
     ![Ellenőrzés az Object Explorerben](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok**  >  **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés**parancsra.
+Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. Ehhez a **szerepkör-tulajdonságok**  >  **tagság** használatával távolítsa el a felhasználói fiókokat, vagy kattintson a jobb gombbal a szerepkörre, majd kattintson a **Törlés** parancsra.
 
 
 ## <a name="next-steps"></a>Következő lépések

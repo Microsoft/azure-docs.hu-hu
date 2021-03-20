@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85383699"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával
@@ -50,7 +50,7 @@ Ez az útmutató feltételezi, hogy tudja, hogyan:
 
 ### <a name="identity-brokers"></a>Identity Broker
 
-A Microsoft minden olyan mobil platformhoz biztosít alkalmazásokat, amely lehetővé teszi a különböző gyártóktól származó alkalmazások hitelesítő adatainak összekapcsolását, valamint olyan továbbfejlesztett funkciókat, amelyekhez egyetlen biztonságos hely szükséges a hitelesítő adatok érvényesítéséhez. Ezeket **közvetítőknek**nevezzük.
+A Microsoft minden olyan mobil platformhoz biztosít alkalmazásokat, amely lehetővé teszi a különböző gyártóktól származó alkalmazások hitelesítő adatainak összekapcsolását, valamint olyan továbbfejlesztett funkciókat, amelyekhez egyetlen biztonságos hely szükséges a hitelesítő adatok érvényesítéséhez. Ezeket **közvetítőknek** nevezzük.
 
 Az iOS-és Android-eszközökön a közvetítőket olyan letölthető alkalmazásokkal biztosítjuk, amelyeket az ügyfelek önállóan telepítenek vagy továbbítanak az eszközre egy olyan vállalat, aki az alkalmazottak számára az eszközöket felügyeli. A brókerek csak bizonyos alkalmazások vagy a teljes eszköz biztonságának felügyeletét támogatják a rendszergazda konfigurációja alapján. A Windowsban ezt a funkciót egy, az operációs rendszerbe beépített fiók-Chooser biztosítja, amely technikailag a webes hitelesítési közvetítőként is ismert.
 
@@ -243,7 +243,7 @@ Ennyi az egész! Az SDK ekkor megosztja a hitelesítő adatokat az összes alkal
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Az SSO bekapcsolása a közvetítő által támogatott egyszeri bejelentkezéshez
 
-**Alapértelmezés szerint ki van kapcsolva**az alkalmazás azon képessége, hogy bármely, az eszközön telepített közvetítőt használhassanak. Ahhoz, hogy az alkalmazást a közvetítővel használhassa, további konfigurációt kell végrehajtania, és hozzá kell adnia egy kódot az alkalmazáshoz.
+**Alapértelmezés szerint ki van kapcsolva** az alkalmazás azon képessége, hogy bármely, az eszközön telepített közvetítőt használhassanak. Ahhoz, hogy az alkalmazást a közvetítővel használhassa, további konfigurációt kell végrehajtania, és hozzá kell adnia egy kódot az alkalmazáshoz.
 
 A követendő lépések a következők:
 
@@ -323,6 +323,6 @@ ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

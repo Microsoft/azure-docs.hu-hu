@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan dolgozhatja fel az Azure Event hub adat
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85312895"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Az Event hub adatainak feldolgozása Azure Stream Analytics használatával 
@@ -46,14 +46,14 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
 
         Íme egy példa a **táblázat formátumára**:   ![ a táblázat formátumát eredményezi.](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
-        Íme egy példa a **nyers formátumban**tárolt adatmennyiségre: 
+        Íme egy példa a **nyers formátumban** tárolt adatmennyiségre: 
 
         ![A nyers formátum eredménye](./media/process-data-azure-stream-analytics/snapshot-results-raw-format.png)
 1. Válassza a teszt **lekérdezés** lehetőséget a lekérdezés eredményeinek a **teszteredmények** lapon való megjelenítéséhez. Az eredményeket letöltheti is.
 
     ![Lekérdezési eredmények tesztelése](./media/process-data-azure-stream-analytics/test-results.png)
 1. Saját lekérdezést írhat az adatátalakításhoz. Lásd: [stream Analytics lekérdezés nyelvi leírása](/stream-analytics-query/stream-analytics-query-language-reference).
-1. Miután tesztelte a lekérdezést, és az éles környezetben szeretné áthelyezni, válassza a **lekérdezés központi telepítése**lehetőséget. A lekérdezés üzembe helyezéséhez hozzon létre egy Azure Stream Analytics feladatot, amelyen beállíthatja a feladatok kimenetét, és elindíthatja a feladatot. Stream Analytics-feladatok létrehozásához adja meg a feladattípus nevét, majd válassza a **Létrehozás**lehetőséget.
+1. Miután tesztelte a lekérdezést, és az éles környezetben szeretné áthelyezni, válassza a **lekérdezés központi telepítése** lehetőséget. A lekérdezés üzembe helyezéséhez hozzon létre egy Azure Stream Analytics feladatot, amelyen beállíthatja a feladatok kimenetét, és elindíthatja a feladatot. Stream Analytics-feladatok létrehozásához adja meg a feladattípus nevét, majd válassza a **Létrehozás** lehetőséget.
 
       ![Azure Stream Analytics-feladat létrehozása](./media/process-data-azure-stream-analytics/create-stream-analytics-job.png)
 
@@ -77,5 +77,5 @@ A Azure Stream Analytics-feladatainak alapértelmezett értéke három folyamato
 
 ![Folyamatos átviteli egységek méretezése](./media/process-data-azure-stream-analytics/scale.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Stream Analytics lekérdezésekkel kapcsolatos további tudnivalókért tekintse meg a [stream Analytics lekérdezési nyelvét](/stream-analytics-query/built-in-functions-azure-stream-analytics) ismertető témakört.

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89078180"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek méretezése Azure Automation használatával
@@ -126,7 +126,7 @@ Először is szüksége lesz egy Azure Automation fiókra a PowerShell-runbook f
     >[!div class="mx-imgBorder"]
     >![Az Azure Áttekintés oldalának képe, amely az újonnan létrehozott Azure Automation fiókot és runbook jeleníti meg.](media/automation-account.png)
 
-    Ha szeretné megnézni, hogy a webhook hol kell legyen, válassza ki a runbook nevét. Ezután nyissa meg a runbook erőforrásai szakaszt, és válassza a **webhookok**lehetőséget.
+    Ha szeretné megnézni, hogy a webhook hol kell legyen, válassza ki a runbook nevét. Ezután nyissa meg a runbook erőforrásai szakaszt, és válassza a **webhookok** lehetőséget.
 
 ## <a name="create-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók létrehozása
 
@@ -138,17 +138,17 @@ Minden olyan felhasználó, aki tagja az előfizetés-adminisztrátorok szerepk�
 
 Futtató fiók létrehozása a Azure Automation fiókban:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájában adja meg és válassza az **Automation-fiókok**elemet.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájában adja meg és válassza az **Automation-fiókok** elemet.
 
 2. Az **Automation-fiókok** lapon válassza ki a Azure Automation fiókjának nevét.
 
 3. Az ablak bal oldalán lévő ablaktáblán válassza a **futtató fiókok** lehetőséget a **Fiókbeállítások** szakaszban.
 
-4. Válassza az Azure-beli **futtató fiók**lehetőséget. Amikor megjelenik az Azure-beli **futtató fiók hozzáadása** panel, tekintse át az áttekintő információkat, majd kattintson a **Létrehozás** elemre a fiók létrehozási folyamatának elindításához.
+4. Válassza az Azure-beli **futtató fiók** lehetőséget. Amikor megjelenik az Azure-beli **futtató fiók hozzáadása** panel, tekintse át az áttekintő információkat, majd kattintson a **Létrehozás** elemre a fiók létrehozási folyamatának elindításához.
 
 5. Várjon néhány percet, amíg az Azure létrehozza a futtató fiókot. A létrehozási folyamat nyomon követhető a menüben az értesítések területen.
 
-6. A folyamat befejezésekor a rendszer létrehoz egy **azurerunasconnection elemet** nevű eszközt a megadott Azure Automation fiókban. Válassza az Azure-beli **futtató fiók**lehetőséget. A szolgáltatás tartalmazza az alkalmazás AZONOSÍTÓját, a bérlő AZONOSÍTÓját, az előfizetés AZONOSÍTÓját és a tanúsítvány ujjlenyomatát. Jegyezze fel az alkalmazás AZONOSÍTÓját, mert később használni fogja. Ugyanezeket az információkat a **kapcsolatok** oldalon is megtalálhatja. A lap megnyitásához az ablak bal oldalán lévő ablaktáblán válassza a **kapcsolatok** lehetőséget a **megosztott erőforrások** szakaszban, és kattintson a **azurerunasconnection elemet**nevű kapcsolati eszközre.
+6. A folyamat befejezésekor a rendszer létrehoz egy **azurerunasconnection elemet** nevű eszközt a megadott Azure Automation fiókban. Válassza az Azure-beli **futtató fiók** lehetőséget. A szolgáltatás tartalmazza az alkalmazás AZONOSÍTÓját, a bérlő AZONOSÍTÓját, az előfizetés AZONOSÍTÓját és a tanúsítvány ujjlenyomatát. Jegyezze fel az alkalmazás AZONOSÍTÓját, mert később használni fogja. Ugyanezeket az információkat a **kapcsolatok** oldalon is megtalálhatja. A lap megnyitásához az ablak bal oldalán lévő ablaktáblán válassza a **kapcsolatok** lehetőséget a **megosztott erőforrások** szakaszban, és kattintson a **azurerunasconnection elemet** nevű kapcsolati eszközre.
 
 ### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Szerepkör-hozzárendelés létrehozása a Windows rendszerű virtuális asztalon
 
@@ -292,14 +292,14 @@ A kiválasztott Azure Automation-fiók jobb oldalán, a "feladat statisztikái" 
 
 A kibővíthető és a skálázási műveletek naplóit megtekintheti a runbook megnyitásával és a feladatok kiválasztásával.
 
-Navigáljon a Azure Automation fiókot futtató erőforráscsoport runbook, és válassza az **Áttekintés**lehetőséget. Az Áttekintés lapon válasszon ki egy feladatot a **legutóbbi feladatok** területen a méretezési eszköz kimenetének megtekintéséhez, ahogy az alábbi képen is látható.
+Navigáljon a Azure Automation fiókot futtató erőforráscsoport runbook, és válassza az **Áttekintés** lehetőséget. Az Áttekintés lapon válasszon ki egy feladatot a **legutóbbi feladatok** területen a méretezési eszköz kimenetének megtekintéséhez, ahogy az alábbi képen is látható.
 
 >[!div class="mx-imgBorder"]
 >![A skálázási eszköz kimeneti ablakának képe.](media/tool-output.png)
 
 ### <a name="check-the-runbook-script-version-number"></a>A runbook parancsfájl verziószámának keresése
 
-A runbook Azure Automation-fájl megnyitásához nyissa meg a runbook-parancsfájlt, és válassza a **nézet**lehetőséget. A képernyő jobb oldalán megjelenik egy parancsfájl a runbook. A szkriptben a verziószámot a szakasz alatti formátumban fogja látni `v#.#.#` `SYNOPSIS` . [Itt](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/wvd-scaling-script/basicScale.ps1#L1)megtekintheti a legújabb verziószámot. Ha nem lát verziószámot a runbook-szkriptben, ez azt jelenti, hogy a parancsfájl egy korábbi verzióját futtatja, és azonnal frissítenie kell. Ha frissítenie kell a runbook-parancsfájlt, kövesse az [Azure Automation fiók létrehozása vagy frissítése](#create-or-update-an-azure-automation-account)című témakör utasításait.
+A runbook Azure Automation-fájl megnyitásához nyissa meg a runbook-parancsfájlt, és válassza a **nézet** lehetőséget. A képernyő jobb oldalán megjelenik egy parancsfájl a runbook. A szkriptben a verziószámot a szakasz alatti formátumban fogja látni `v#.#.#` `SYNOPSIS` . [Itt](https://github.com/Azure/RDS-Templates/blob/master/wvd-templates/wvd-scaling-script/basicScale.ps1#L1)megtekintheti a legújabb verziószámot. Ha nem lát verziószámot a runbook-szkriptben, ez azt jelenti, hogy a parancsfájl egy korábbi verzióját futtatja, és azonnal frissítenie kell. Ha frissítenie kell a runbook-parancsfájlt, kövesse az [Azure Automation fiók létrehozása vagy frissítése](#create-or-update-an-azure-automation-account)című témakör utasításait.
 
 ### <a name="reporting-issues"></a>Jelentéskészítési problémák
 
@@ -317,7 +317,7 @@ Ha problémát jelent, a következő információkat kell megadnia a hibák mego
     - OMSIngestionAPI
     - Microsoft. RDInfra. RDPowershell
 
-- A [futtató fiók](#create-an-azure-automation-run-as-account)lejárati dátuma. Ennek megkereséséhez nyissa meg Azure Automation-fiókját, majd válassza a **fiók beállításai** alatt a **futtató fiókok** lehetőséget az ablak bal oldalán lévő ablaktáblán. A lejárati dátumnak az Azure-beli **futtató fiók**alatt kell lennie.
+- A [futtató fiók](#create-an-azure-automation-run-as-account)lejárati dátuma. Ennek megkereséséhez nyissa meg Azure Automation-fiókját, majd válassza a **fiók beállításai** alatt a **futtató fiókok** lehetőséget az ablak bal oldalán lévő ablaktáblán. A lejárati dátumnak az Azure-beli **futtató fiók** alatt kell lennie.
 
 ### <a name="log-analytics"></a>Log Analytics
 

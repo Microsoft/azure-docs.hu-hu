@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan hozhat létre labor Services-ütemterveket a cs
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92042337"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>Labor Services-ütemtervek létrehozása és kezelése a csapatokon belül
@@ -28,7 +28,7 @@ A felhasználók a laborok [webhelyén](https://labs.azure.com)ugyanúgy hozhatn
 ## <a name="automatic-shutdown-and-disconnect-settings"></a>Automatikus leállítási és leválasztási beállítások
 
 Több automatikus leállítási költség-vezérlési funkciót is engedélyezhet, hogy proaktív módon meggátolja a további költségeket, ha a virtuális gépeket nem aktívan használják. A következő három automatikus leállítási és leválasztási funkció kombinációja a legtöbb esetben megfogást nyújt, amikor a felhasználók véletlenül elhagyják a virtuális gépeket:
- 
+ 
 - A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint.
 - A virtuális gépek automatikus leállítása a felhasználók leválasztásakor.
 - Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.

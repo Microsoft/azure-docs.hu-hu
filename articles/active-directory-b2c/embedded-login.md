@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 03/16/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9e248c10c15ba0318c6b23fcbf88be04dd9896a2
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 1255c4962de1fce19efa9c0b0e1d28fc348463ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573064"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580147"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
 
@@ -35,7 +36,7 @@ IFrame használatakor vegye figyelembe a következőket:
 - A beágyazott bejelentkezés csak a helyi fiókokat támogatja. A legtöbb közösségi identitás-szolgáltató (például a Google és a Facebook) blokkolja a bejelentkezési oldalaikat a beágyazott keretek között.
 - Mivel az IFRAME-en belüli Azure AD B2C munkamenet-cookie-k harmadik féltől származó cookie-k, bizonyos böngészők (például a Safari vagy a Chrome inkognitóban módban), vagy letilthatják vagy törölhetik ezeket a cookie-kat, ami nem kívánatos felhasználói élményt eredményez. A probléma elkerülése érdekében győződjön meg arról, hogy az alkalmazás tartományneve és a Azure AD B2C tartománya *azonos eredetű*. Ha ugyanazt a forrást szeretné használni, [engedélyezze az egyéni tartományokat](custom-domain.md) Azure ad B2C bérlő számára, majd konfigurálja a webalkalmazást ugyanazzal a forrással. Például a on futtatott alkalmazásnak https://app.contoso.com ugyanaz a forrása, mint a Azure ad B2C fut https://login.contoso.com .
 
-## <a name="perquisites"></a>Perquisites
+## <a name="prerequisites"></a>Előfeltételek
 
 * Hajtsa végre az [első lépések az egyéni házirendek Active Directory B2Cban](custom-policy-get-started.md)című témakör lépéseit.
 * [Engedélyezze az egyéni tartományokat](custom-domain.md) a szabályzatok számára.
@@ -87,7 +88,7 @@ div.api_container{
 
 Bizonyos esetekben érdemes lehet értesíteni az alkalmazást, hogy mely Azure AD B2C oldal jelenleg be van mutatva. Ha például egy felhasználó kiválasztja a regisztrációs lehetőséget, akkor az alkalmazásnak válaszolnia kell a közösségi fiókkal való bejelentkezésre mutató hivatkozások elrejtésével vagy az IFRAME méretének módosításával.
 
-Az aktuális Azure AD B2C oldal alkalmazásának értesítéséhez [engedélyezze a szabályzatot a javascripthez](javascript-samples.md), majd használja a HTML5 post-üzeneteket. A következő JavaScript-kód post-üzenetet küld az alkalmazásnak a következővel `signUp` :
+Az aktuális Azure AD B2C oldal alkalmazásának értesítéséhez [engedélyezze a szabályzatot a javascripthez](./javascript-and-page-layout.md), majd használja a HTML5 post-üzeneteket. A következő JavaScript-kód post-üzenetet küld az alkalmazásnak a következővel `signUp` :
 
 ```javascript
 window.parent.postMessage("signUp", '*');
@@ -155,5 +156,5 @@ Tekintse meg a következő kapcsolódó cikkeket:
 
 - [A felhasználói felület testreszabása](customize-ui.md)
 - [RelyingParty](relyingparty.md) -elem leírása
-- [Szabályzat engedélyezése a JavaScripthez](javascript-samples.md)
+- [Szabályzat engedélyezése a JavaScripthez](./javascript-and-page-layout.md)
 - [Kódminták](code-samples.md)

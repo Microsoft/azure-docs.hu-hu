@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való D
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91254431"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
@@ -53,7 +53,7 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
    > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a DPM-kiszolgálón nem érhető el katalógus-információ (metaadatok). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Válassza az **újrakatalogizálás**lehetőséget.
+3. Válassza az **újrakatalogizálás** lehetőséget.
 
     ![DPM SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -61,10 +61,10 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
 
     ![DPM SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot *sikeresre*változik. Válassza a **Bezárás** lehetőséget.
+    A katalogizálás befejezése után az állapot *sikeresre* változik. Válassza a **Bezárás** gombot.
 
     ![DPM SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a DPM- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
+4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a DPM- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás** lehetőséget.
 
     ![DPM SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.

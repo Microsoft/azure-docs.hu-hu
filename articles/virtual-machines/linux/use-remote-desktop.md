@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564594"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580368"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>A xrdp telepítése és konfigurálása az Ubuntu-Távoli asztal használatára
 
@@ -138,7 +138,7 @@ tail -f /var/log/syslog
 
 Más Linux-disztribúciók, például a Red Hat Enterprise Linux és a SUSE különböző módokon indíthatják újra a szolgáltatásokat és az alternatív naplófájlok helyét az ellenőrzés céljából.
 
-Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](../troubleshooting/troubleshoot-app-connection.md).
+Ha nem kap választ a távoli asztal ügyfelén, és nem lát eseményeket a rendszernaplóban, ez a viselkedés azt jelzi, hogy a távoli asztali forgalom nem tudja elérni a virtuális gépet. Tekintse át a hálózati biztonsági csoport szabályait, és győződjön meg arról, hogy rendelkezik olyan szabállyal, amely engedélyezi a TCP-t a 3389-es port További információ: az [alkalmazások kapcsolódási problémáinak elhárítása](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection).
 
 
 ## <a name="next-steps"></a>Következő lépések

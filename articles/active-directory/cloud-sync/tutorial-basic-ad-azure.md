@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de59b3f26a9a4696c721cab94cd5b96bd0200e9e
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98614574"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
@@ -124,7 +124,7 @@ Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése 
     ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
-Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
+Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory Domain Services telepítését és konfigurálását.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsfájlt.
@@ -325,7 +325,7 @@ Most, hogy már rendelkezik virtuális géppel, a Active Directory telepítése 
     Restart-Computer
     ```
 ### <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
-Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory tartományi szolgáltatások telepítését és konfigurálását.  Tegye a következőket:
+Most, hogy létrehozta a virtuális gépet, és átnevezte, és statikus IP-címmel rendelkezik, megteheti a Active Directory Domain Services telepítését és konfigurálását.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsfájlt.

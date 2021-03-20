@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti a licencelt rendszerképek hasz
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: e2b6e495be2257548782143517f5a970b424860c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91276356"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Licencelt rendszerkép engedélyezése a laborban Azure DevTest Labs
@@ -19,13 +19,13 @@ Az első lépés, amely lehetővé teszi, hogy a felhasználók virtuális gépe
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 1. A laborok listájából válassza ki a kívánt labort.  
 
-1. A bal oldali panel **Beállítások**területén válassza a **konfiguráció és házirendek**elemet.
+1. A bal oldali panel **Beállítások** területén válassza a **konfiguráció és házirendek** elemet.
 
-1. A **virtuális gépek alapjainak**bal oldali paneljén válassza a **piactér lemezképek**lehetőséget. 
+1. A **virtuális gépek alapjainak** bal oldali paneljén válassza a **piactér lemezképek** lehetőséget. 
 
     ![Piactéri rendszerképek menüelem](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-marketplace-images.png)
 
@@ -43,9 +43,9 @@ Annak biztosítása érdekében, hogy a labor felhasználói számára elérhet�
 
 Az alábbi lépéseket követve engedélyezheti a programozott központi telepítést egy licencelt rendszerképhez:
 
-1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)lépjen a **piactér lemezképek**listájára.
+1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)lépjen a **piactér lemezképek** listájára.
 
-1. Azonosítson egy licencelt rendszerképet, amelyhez a felhasználóknak hozzáférésre van szükségük, de a feltételek nem lettek elfogadva. Előfordulhat például, hogy egy olyan Data Science Virtual Machine jelenik meg, amely az **elfogadva** vagy a **feltételek felülvizsgálatához szükséges**állapotot jeleníti meg.
+1. Azonosítson egy licencelt rendszerképet, amelyhez a felhasználóknak hozzáférésre van szükségük, de a feltételek nem lettek elfogadva. Előfordulhat például, hogy egy olyan Data Science Virtual Machine jelenik meg, amely az **elfogadva** vagy a **feltételek felülvizsgálatához szükséges** állapotot jeleníti meg.
 
     ![Képernyőkép, amely megjeleníti Data Science Virtual Machine "a" feltételt, és a "feltételek felülvizsgálata szükséges" állapotú lemezképeket.](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
@@ -54,9 +54,9 @@ Az alábbi lépéseket követve engedélyezheti a programozott központi telepí
    >
    >
 
-1. A rendszerkép **ajánlat állapota** oszlopában válassza a **feltételek felülvizsgálat szükséges**elemet.
+1. A rendszerkép **ajánlat állapota** oszlopában válassza a **feltételek felülvizsgálat szükséges** elemet.
 
-1. A programozott telepítés konfigurálása ablakban válassza az **Engedélyezés**lehetőséget.
+1. A programozott telepítés konfigurálása ablakban válassza az **Engedélyezés** lehetőséget.
 
     ![Programozott telepítés ablakának konfigurálása](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-enable-programmatic-deployment.png)
 

@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 948ca820347c7cdcd560ade46e850f66b25bc88e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987287"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
@@ -29,7 +29,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Nyissa meg az Automation-fiókját.
 
-1. Kattintson a **runbookok** elemre a **folyamat automatizálása**alatt. Megjelenik a runbookok listája.
+1. Kattintson a **runbookok** elemre a **folyamat automatizálása** alatt. Megjelenik a runbookok listája.
 
 1. Kattintson a **Runbook létrehozása** elemre a lista tetején.
 
@@ -37,7 +37,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
    ![Adja meg az Automation-runbook információit az oldalon](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Kattintson a **Létrehozás** elemre. Létrejön a runbook, és megnyílik a PowerShell-runbook szerkesztése oldal.
+1. Kattintson a **Létrehozás** lehetőségre. Létrejön a runbook, és megnyílik a PowerShell-runbook szerkesztése oldal.
 
     :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
 
@@ -55,7 +55,7 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Kattintson a **Save (Mentés** ) gombra a runbook piszkozatának mentéséhez.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-edit-runbook.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése oldalon a jobb oldali ablakban található kóddal.":::
 
 ## <a name="test-the-runbook"></a>A runbook tesztelése
 
@@ -65,13 +65,13 @@ A runbook létrehozása után tesztelje a runbook, és ellenőrizze, hogy műkö
 
 1. Írjon be egy értéket a **Név** mezőbe, és kattintson az **Indítás** gombra. Elindul a tesztfeladat, és megjelenik a feladat állapota és kimenete.
 
-    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+    :::image type="content" source="./media/automation-quickstart-create-runbook/automation-test-runbook.png" alt-text="Képernyőkép a teszt panelről, egy példa értékkel a név mezőben.":::
 
 1. A jobb felső sarokban található **X** gombra kattintva zárjuk be a teszt panelt. A megjelenő felugró ablakban válassza az **OK** lehetőséget.
 
 1. A PowerShell-runbook szerkesztése oldalon kattintson a **Közzététel** lehetőségre, hogy a runbookot a fiókban lévő runbook hivatalos verziójaként tegye közzé.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése oldalról, amelyen a közzététel gomb van kiválasztva.":::
 
 ## <a name="run-the-runbook"></a>A runbook futtatása
 
@@ -79,21 +79,21 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
 1. A runbook áttekintése oldalon kattintson az **Indítás** gombra a runbook Runbook indítása konfigurációs oldalának megnyitásához.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png" alt-text="Képernyőkép a Runbook-konfiguráció elindítása oldalról.":::
 
 1. Hagyja üresen a **Név** mezőt, hogy az alapértelmezett értéket használja, és kattintson az **OK** gombra. A rendszer elküldte a runbook-feladatot, és megjelenik a feladatok lap.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-job-page.png" alt-text="Képernyőkép a feladatok oldaláról, amely a kijelölt kimenet gombot mutatja.":::
 
 1. Ha a feladatok állapota `Running` vagy `Completed` , kattintson a **kimenet** gombra a kimenet ablaktábla megnyitásához, és tekintse meg a runbook kimenetét.
 
-   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Képernyőkép a PowerShell-Runbook szerkesztése lapról.":::
+   :::image type="content" source="./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png" alt-text="Képernyőkép a kimenet panelről, amely a runbook kimenetét mutatja.":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a runbookot. Ehhez válassza ki a runbook listából a runbookot, és kattintson a **Törlés** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott, szerkesztett, tesztelt és közzétett egy runbookot, és elindított egy runbookfeladatot. Az Automation-runbookokkal kapcsolatos további információkért folytassa az Automationben létrehozható és használható különböző runbooktípusokkal foglalkozó cikkel.
 

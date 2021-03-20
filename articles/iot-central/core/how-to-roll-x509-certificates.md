@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92000059"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>X. 509 eszköz tanúsítványának legördülő IoT Central alkalmazásban
@@ -29,11 +29,11 @@ Saját X. 509 tanúsítványokat is létrehozhat egy olyan eszközzel, mint az O
 
 Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretné frissíteni, a következő módszert kell használnia, amely azonnal frissíti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás**lehetőséget.
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás** lehetőséget.
 
-2. Válassza a **regisztrációs csoportok**lehetőséget, majd válassza ki a csoport nevét a listában.
+2. Válassza a **regisztrációs csoportok** lehetőséget, majd válassza ki a csoport nevét a listában.
 
-3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése** vagy a **másodlagos kezelése**lehetőséget.
+3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése** vagy a **másodlagos kezelése** lehetőséget.
 
 4. Adja hozzá és ellenőrizze a root X. 509 tanúsítványt a beléptetési csoportban.
 
@@ -43,11 +43,11 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 Ha a tanúsítványok lejáratának kezelésére végzi a tanúsítványokat, a következő módszer használatával azonnal frissítheti az aktuális tanúsítványt:
 
-1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás**lehetőséget.
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és válassza az **eszköz-kapcsolódás** lehetőséget.
 
-2. Válassza a **regisztrációs csoportok**lehetőséget, majd válassza ki a csoport nevét a listában.
+2. Válassza a **regisztrációs csoportok** lehetőséget, majd válassza ki a csoport nevét a listában.
 
-3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése**lehetőséget.
+3. A tanúsítvány frissítése lapon válassza az **elsődleges kezelése** lehetőséget.
 
 4. Adja hozzá és ellenőrizze a root X. 509 tanúsítványt a beléptetési csoportban.
 
@@ -57,9 +57,9 @@ Ha a tanúsítványok lejáratának kezelésére végzi a tanúsítványokat, a 
 
 Ha a tanúsítványokat biztonsági szabálysértésre válaszul végzi, a következő módszer használatával azonnal frissítheti az aktuális tanúsítványt:
 
-1. Válassza az **eszközök**lehetőséget, és válassza ki az eszközt.
+1. Válassza az **eszközök** lehetőséget, és válassza ki az eszközt.
 
-2. Válassza a **Csatlakozás**lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
+2. Válassza a **Csatlakozás** lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
 
 3. Válassza a **tanúsítványok (X. 509)** lehetőséget a mechanizmusként.
 
@@ -75,9 +75,9 @@ Ha a tanúsítványok lejáratának kezeléséhez a tanúsítványokat végzi, a
 
 Ha a másodlagos tanúsítvány közel van a lejárati időponthoz, és azt el kell érnie, elforgathatja az elsődleges konfiguráció használatával. Az elsődleges és a másodlagos tanúsítványok közötti rotáció csökkenti az állásidőt a kiépíteni próbált eszközök esetében.
 
-1. Válassza az **eszközök**lehetőséget, és válassza ki az eszközt.
+1. Válassza az **eszközök** lehetőséget, és válassza ki az eszközt.
 
-2. Válassza a **Csatlakozás**lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
+2. Válassza a **Csatlakozás** lehetőséget, és válassza a csatlakozás metódust **Egyéni regisztrációként**
 
 3. Válassza a **tanúsítványok (X. 509)** lehetőséget a mechanizmusként.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74951479"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell korlátozásai
@@ -45,7 +45,7 @@ Cloud Shell támogatja a Microsoft Edge, a Microsoft Internet Explorer, a Google
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Egy adott felhasználó esetében csak egy rendszerhéj lehet aktív
 
-A felhasználók egyszerre csak egy típusú rendszerhéjat indíthatnak el, vagy **bash** vagy **PowerShell**használatával. Előfordulhat azonban, hogy egyszerre több bash-vagy PowerShell-példány is fut. A bash vagy a PowerShell közötti váltás a menü használatával Cloud Shell újraindítását eredményezi, amely leállítja a meglévő munkameneteket. Azt is megteheti, hogy a bash-t a PowerShellen belül futtatja, és beírja a `bash` PowerShellt a bashbe `pwsh` .
+A felhasználók egyszerre csak egy típusú rendszerhéjat indíthatnak el, vagy **bash** vagy **PowerShell** használatával. Előfordulhat azonban, hogy egyszerre több bash-vagy PowerShell-példány is fut. A bash vagy a PowerShell közötti váltás a menü használatával Cloud Shell újraindítását eredményezi, amely leállítja a meglévő munkameneteket. Azt is megteheti, hogy a bash-t a PowerShellen belül futtatja, és beírja a `bash` PowerShellt a bashbe `pwsh` .
 
 ### <a name="usage-limits"></a>Használati korlátok
 
@@ -83,7 +83,7 @@ Ha a felhasználó olyan parancsot futtat, amely egy Windows-párbeszédpanelt h
 
 Ha a felhasználó olyan műveletet hajt végre, amely egy folyamatjelzőt jelenít meg, például egy, a meghajtón eltöltött lapot `Azure:` , akkor lehetséges, hogy a kurzor nincs megfelelően beállítva, és egy hézag jelenik meg, ahol a folyamatjelző sáv korábban volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibaelhárítási Cloud Shell](troubleshooting.md) <br>
 [Rövid útmutató a Bash-hez](quickstart.md) <br>

@@ -20,15 +20,15 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88932066"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>OData-gyűjtési szűrők hibaelhárítása Az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search gyűjtemény mezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) a [ `any` és a `all` operátort](search-query-odata-collection-operators.md) **lambda kifejezésekkel**együtt használhatja. A lambda kifejezés a gyűjtemények egyes elemeire alkalmazott alszűrő.
+Az Azure Cognitive Search gyűjtemény mezőinek [szűréséhez](query-odata-filter-orderby-syntax.md) a [ `any` és a `all` operátort](search-query-odata-collection-operators.md) **lambda kifejezésekkel** együtt használhatja. A lambda kifejezés a gyűjtemények egyes elemeire alkalmazott alszűrő.
 
 A szűrési kifejezések nem minden funkciója érhető el lambda kifejezésen belül. A rendelkezésre álló szolgáltatások eltérőek lehetnek attól függően, hogy milyen adattípust szeretne szűrni a begyűjtési mező. Ez hibát okozhat, ha olyan lambda kifejezésben lévő szolgáltatást próbál használni, amely nem támogatott ebben a környezetben. Ha ilyen hibákba ütközik, miközben összetett szűrőt próbál meg gyűjteni a gyűjtemény mezőin, ez a cikk segítséget nyújt a probléma elhárításához.
 
@@ -223,7 +223,7 @@ Példák az érvényes szűrők összeállítására az egyes esetekben: az [ér
 
 Ha gyakran ír szűrőket, és megértette, hogy az első alapelvek szabályai jobban megjegyezik őket, tekintse meg a [OData-gyűjtési szűrők ismertetése az Azure Cognitive Search-ban](search-query-understand-collection-filters.md)című témakört.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search](search-query-understand-collection-filters.md)
 - [Szűrők az Azure Cognitive Search](search-filters.md)

@@ -7,10 +7,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/25/2020
 ms.openlocfilehash: 4df9543e5e747de640562b7e5be224e257e0cfd1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92676104"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezetet (ISE) felügyelete az Azure Logic Appsben
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan végezheti el az [integrációs szolgáltatási kör
 
 ## <a name="view-your-ise"></a>Az ISE megtekintése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A portál keresési mezőjébe írja be az "integrációs szolgáltatási környezetek" kifejezést, majd válassza az **integrációs szolgáltatási környezetek** lehetőséget.
 
@@ -148,11 +148,11 @@ A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több 
 
 ### <a name="custom-autoscale"></a>Egyéni méretezés
 
-1. Miután kiválasztotta az **Egyéni autoskálázást** , az **autoskálázási beállítás neve** mezőben adja meg a beállítás nevét, és szükség esetén válassza ki azt az Azure-erőforráscsoportot, amelyben a beállítás tartozik.
+1. Miután kiválasztotta az **Egyéni autoskálázást**, az **autoskálázási beállítás neve** mezőben adja meg a beállítás nevét, és szükség esetén válassza ki azt az Azure-erőforráscsoportot, amelyben a beállítás tartozik.
 
    ![Adja meg az autoskálázási beállítás nevét, majd válassza az erőforráscsoport lehetőséget.](./media/ise-manage-integration-service-environment/select-custom-autoscale.png)
 
-1. Az **alapértelmezett feltétel beállításnál** válassza ki a **skála alapján mérőszámot** vagy **méretezést egy adott példányszámra** .
+1. Az **alapértelmezett feltétel beállításnál** válassza ki a **skála alapján mérőszámot** vagy **méretezést egy adott példányszámra**.
 
    * Ha a példány-alapú lehetőséget választja, adja meg a feldolgozási egységek számát, amely a 0 és 10 közötti érték.
 
@@ -164,9 +164,9 @@ A prémium ISE alapegység rögzített kapacitással rendelkezik, így ha több 
 
      1. A **példányokra vonatkozó korlátokat** a következő értékek megadásával adhatja meg:
 
-        * **Minimum** : a használandó feldolgozó egységek minimális száma
-        * **Maximum** : a használni kívánt feldolgozási egységek maximális száma
-        * **Alapértelmezett** : Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás az alapértelmezett számú feldolgozási egységre lesz kibővítve. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető a-ben.
+        * **Minimum**: a használandó feldolgozó egységek minimális száma
+        * **Maximum**: a használni kívánt feldolgozási egységek maximális száma
+        * **Alapértelmezett**: Ha bármilyen probléma merül fel az erőforrás-metrikák olvasása közben, és az aktuális kapacitás az alapértelmezett kapacitás alatt van, az automatikus skálázás az alapértelmezett számú feldolgozási egységre lesz kibővítve. Ha azonban az aktuális kapacitás meghaladja az alapértelmezett kapacitást, az automatikus skálázás nem méretezhető a-ben.
 
 1. Egy másik feltétel hozzáadásához válassza a **skálázási feltétel hozzáadása** lehetőséget.
 

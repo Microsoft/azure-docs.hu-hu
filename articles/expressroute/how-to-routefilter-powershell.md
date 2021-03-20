@@ -9,10 +9,10 @@ ms.date: 10/08/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 90d4def5a1c08e305b9315f299e83e2187b6be2c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91969881"
 ---
 # <a name="tutorial-configure-route-filters-for-microsoft-peering-using-powershell"></a>Oktatóanyag: a Microsoft társközi útvonal-szűrőinek konfigurálása a PowerShell használatával
@@ -35,7 +35,7 @@ Az összes Azure-és Microsoft 365-szolgáltatáshoz való kapcsolódás nagy sz
 
 * Adja meg az útvonal-szűrőket, és alkalmazza őket a ExpressRoute-áramkörre. Az útválasztási szűrő egy új erőforrás, amellyel kiválaszthatja a Microsoft-társon keresztül használni kívánt szolgáltatások listáját. A ExpressRoute-útválasztók csak az útválasztási szűrőben azonosított szolgáltatásokhoz tartozó előtagok listáját küldik el.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - BGP-közösségi értékek beolvasása.
 > - Hozzon létre egy útválasztási szűrőt és egy szűrési szabályt.
@@ -147,7 +147,7 @@ $ckt.Peerings[0].RouteFilter = $null
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Csak akkor törölhet egy útvonal-szűrőt, ha nincs csatlakoztatva egyetlen áramkörhöz sem. A törlés megkísérlése előtt gondoskodjon arról, hogy az útválasztási szűrő ne legyen csatlakoztatva egyetlen áramkörhöz sem. Az útvonal-szűrőt a következő paranccsal törölheti:
 

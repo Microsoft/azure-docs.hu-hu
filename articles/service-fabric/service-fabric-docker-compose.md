@@ -4,10 +4,10 @@ description: Az Azure Service Fabric a Docker-összeállítás formátumát, íg
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84691288"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker-összeállítás támogatása az Azure Service Fabric (előzetes verzió)
@@ -127,8 +127,8 @@ Ez az előzetes verzió az összeállítás 3 formátumában lévő konfiguráci
 ### <a name="ports-section"></a>Portok szakasz
 
 A portok szakaszban adjon meg http-vagy HTTPS-protokollt, amelyet a Service Fabric Service-figyelő fog használni. Ezzel biztosíthatja, hogy a végponti protokoll megfelelően legyen közzétéve az elnevezési szolgáltatással, hogy a fordított proxy engedélyezze a kérelmek továbbítását:
-* A nem biztonságos Service Fabric összeállítási szolgáltatásokhoz való átirányításhoz válassza a **/http**lehetőséget. Például **:-"80:80/http"**.
-* A biztonságos Service Fabric összeállításához válassza a **/https**lehetőséget. Például **:-"443:443/https"**.
+* A nem biztonságos Service Fabric összeállítási szolgáltatásokhoz való átirányításhoz válassza a **/http** lehetőséget. Például **:-"80:80/http"**.
+* A biztonságos Service Fabric összeállításához válassza a **/https** lehetőséget. Például **:-"443:443/https"**.
 
 > [!NOTE]
 > A/http és a/https portok szakaszának szintaxisa Service Fabric a megfelelő Service Fabric figyelő URL-címének regisztrálásához.  Ha a Docker-összeállítási fájl szintaxisa programozott módon van érvényesítve, az érvényesítési hibát eredményezhet.
@@ -150,7 +150,7 @@ Például az A ügyfél rendelkezhet olyan alkalmazással, amely a AppTypeA 1,0 
 
 Bár ez a modell rugalmasságot biztosít, azt is tervezzük, hogy egy egyszerűbb, példány-alapú üzembe helyezési modellt is támogatunk, ahol a típusok implicitek a manifest-fájlból. Ebben a modellben minden alkalmazás saját független jegyzékfájlt kap. A Docker-compose. YML, amely egy példány-alapú központi telepítési formátum támogatása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Service Fabric alkalmazás modelljének](service-fabric-application-model.md) olvasása
 * [A Service Fabric parancssori felület használatának első lépései](service-fabric-cli.md)

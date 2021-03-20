@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan használhatja Azure Resource Manager-sablonokat
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 645f1d0717514d2c7e7b16844513327127e4e1a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87272640"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Labs automatikus létrehozása vagy módosítása Azure Resource Manager-sablonokkal és a PowerShell-lel
@@ -36,6 +36,6 @@ A PowerShell használatával számos más gyakori feladat is automatizálható. 
 * [Külső felhasználó hozzáadása laborhoz a PowerShell használatával](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
 * [Egyéni labor-szerepkör létrehozása a PowerShell használatával](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan hozhat létre egy [privát git-tárházat](devtest-lab-add-artifact-repo.md) , ahol a testreszabott sablonokat vagy parancsfájlokat fogja tárolni.
 * Ismerkedjen meg a [Azure Resource Manager-sablonokkal az Azure Gyorsindítás sablon-galériájában](https://github.com/Azure/azure-quickstart-templates).

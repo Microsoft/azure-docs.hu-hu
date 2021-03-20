@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101099103"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588749"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Hozzon létre egy egyéni tartományt az Azure bejárati ajtó standard/Premium SKU (előzetes verzió) használatával a Azure Portal
 
@@ -38,6 +38,9 @@ Miután létrehozta az Azure Door standard/Premium profilt, az alapértelmezett 
 * Ha az Azure-t használja a [DNS-tartományok](../../dns/dns-overview.md)üzemeltetéséhez, akkor a tartományi szolgáltató tartománynevét (DNS) delegálnia kell egy Azure DNS. További információ: [tartomány delegálása Azure DNSra](../../dns/dns-delegate-domain-azure-dns.md). Ha azonban tartományi szolgáltatót használ a DNS-tartomány kezeléséhez, a DNS-alapú TXT-rekordok megadásával manuálisan kell érvényesíteni a tartományt.
 
 ## <a name="add-a-new-custom-domain"></a>Új egyéni tartomány hozzáadása
+
+> [!NOTE]
+> Nyilvános előzetes verzióban a Azure DNS használatával a APEX-tartományok létrehozása nem támogatott az Azure bejárati ajtó standard/Premium kiadásában. Vannak más DNS-szolgáltatók is, amelyek támogatják a CNAME-összeolvasztást vagy a DNS-t, amely lehetővé teszi, hogy a csúcs-tartományok a standard/prémium szintű Azure-ban legyenek használva.
 
 Az egyéni tartományt a portálon a tartományok felügyelik szakaszban találja. Egy egyéni tartomány létrehozható és érvényesíthető egy végponthoz való társítás előtt. Egy egyéni tartomány és az altartományok egyszerre csak egyetlen végponthoz társíthatók. Ugyanakkor különböző altartományokat is használhat ugyanazon egyéni tartományból különböző bejárati ajtók esetén. Más altartományokkal rendelkező egyéni tartományokat is leképezheti ugyanahhoz az előtérben lévő végponthoz.
 

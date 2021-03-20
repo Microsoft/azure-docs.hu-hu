@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 050dfa737ad04127f8c72158fbecb2e8e70e05c1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89075341"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele Azure Firewall Manager-ARM sablon használatával
@@ -46,7 +46,7 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. számítás/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
@@ -63,7 +63,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
 
 2. A portál **biztonságos virtuális hubok** lapján írja be vagy válassza ki a következő értékeket:
    - Előfizetés: válasszon a meglévő előfizetések közül 
-   - Erőforráscsoport: válasszon a meglévő erőforráscsoportok közül, vagy válassza az **új létrehozása**lehetőséget, majd kattintson **az OK gombra**.
+   - Erőforráscsoport: válasszon a meglévő erőforráscsoportok közül, vagy válassza az **új létrehozása** lehetőséget, majd kattintson **az OK gombra**.
    - Hely: válasszon egy helyet
    - Rendszergazdai Felhasználónév: írja be a felhasználónevet a rendszergazda felhasználói fiókhoz. 
    - Rendszergazdai jelszó: írja be a rendszergazda jelszavát vagy kulcsát
@@ -78,7 +78,7 @@ A tűzfalszabályok tesztelésével ellenőrizze, hogy az a vártnak megfelelőe
 2. Csatlakoztasson egy távoli asztalt a **Jump-SRV** virtuális géphez, és jelentkezzen be. Onnan nyisson meg egy távoli asztali kapcsolattal a **munkaterhelés-SRV** magánhálózati IP-címet.
 
 3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: `www.microsoft.com`.
-4. **OK**  >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK**Bezárás** gombra.
+4.   >  Az Internet Explorer biztonsági riasztások ablakában kattintson az OK **Bezárás** gombra.
 
    A Microsoft kezdőlapjának kell megjelennie.
 
@@ -100,7 +100,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a biztonsági partner-szolgáltatókról](trusted-security-partners.md)

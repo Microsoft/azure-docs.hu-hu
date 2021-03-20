@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.openlocfilehash: 2c67cd4d071660da2ca5714623695ca434329263
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91275183"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Táblázatok indexelése az Azure Table Storage-ból az Azure Cognitive Search
@@ -70,7 +70,7 @@ További információ a Create DataSource API-ról: [adatforrás létrehozása](
 A következő módszerek egyikével megadhatja a táblázat hitelesítő adatait: 
 
 - **Felügyelt identitás kapcsolódási karakterlánca**: `ResourceId=/subscriptions/<your subscription ID>/resourceGroups/<your resource group name>/providers/Microsoft.Storage/storageAccounts/<your storage account name>/;` ehhez a kapcsolódási karakterlánchoz nem szükséges a fiók kulcsa, de a [felügyelt identitás használatával kell végrehajtania egy Azure Storage-fiókhoz való kapcsolódás beállításának](search-howto-managed-identities-storage.md)utasításait.
-- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: a `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal kapcsolati karakterláncát a Storage- **fiók**panel  >  **Beállítások**  >  **kulcsa** (klasszikus Storage-fiókok esetében) vagy a **Beállítások**  >  **elérési kulcsa** (Azure Resource Manager Storage-fiókok esetében) lekérheti.
+- **Teljes hozzáférésű Storage-fiók kapcsolati karakterlánca**: a `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Azure Portal kapcsolati karakterláncát a Storage- **fiók** panel  >  **Beállítások**  >  **kulcsa** (klasszikus Storage-fiókok esetében) vagy a **Beállítások**  >  **elérési kulcsa** (Azure Resource Manager Storage-fiókok esetében) lekérheti.
 - **Storage-fiók közös hozzáférési aláírásának kapcsolati karakterlánca**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` a közös hozzáférésű aláírásnak szerepelnie kell a listán, és olvasási engedéllyel kell rendelkeznie a tárolók (ebben az esetben a táblák) és az objektumok (tábla sorai) számára.
 -  **Táblázat megosztott hozzáférésének aláírása**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` a közös hozzáférésű aláírásnak lekérdezési (olvasási) engedélyekkel kell rendelkeznie a táblához.
 

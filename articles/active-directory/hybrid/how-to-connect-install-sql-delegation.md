@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f082ec896bf0542b63c8c1d0257679681334050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85358667"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Az Azure AD Connect telepítése SQL-lel delegált rendszergazdai engedélyekkel
@@ -44,7 +44,7 @@ Az alábbi lépéseket követve kiépítheti az adatbázist sávon kívül, és 
 >Bár ez nem kötelező, **erősen ajánlott** , hogy az adatbázis létrehozásakor a Latin1_General_CI_AS rendezés legyen kiválasztva.
 
 
-1. Az SQL-rendszergazda hozza létre a ADSync-adatbázist a kis-és nagybetűket megkülönböztető rendezési sorrendtel **(Latin1_General_CI_AS)**.  Az adatbázisnak **AdSync**nevűnek kell lennie.  A helyreállítási modell, a kompatibilitási szint és a tároló típusa a Azure AD Connect telepítésekor a megfelelő értékekre frissül.  A rendezési sorrendet azonban az SQL-rendszergazda helyesen kell beállítani, különben a Azure AD Connect letiltja a telepítést.  Az SA helyreállításához törölnie kell az adatbázist, majd újra létre kell hoznia.
+1. Az SQL-rendszergazda hozza létre a ADSync-adatbázist a kis-és nagybetűket megkülönböztető rendezési sorrendtel **(Latin1_General_CI_AS)**.  Az adatbázisnak **AdSync** nevűnek kell lennie.  A helyreállítási modell, a kompatibilitási szint és a tároló típusa a Azure AD Connect telepítésekor a megfelelő értékekre frissül.  A rendezési sorrendet azonban az SQL-rendszergazda helyesen kell beállítani, különben a Azure AD Connect letiltja a telepítést.  Az SA helyreállításához törölnie kell az adatbázist, majd újra létre kell hoznia.
  
    ![Rendezés](./media/how-to-connect-install-sql-delegation/sql4.png)
 2. Adja meg a Azure AD Connect rendszergazdájának és a tartományi szolgáltatás fiókjának a következő engedélyeket:
@@ -63,7 +63,7 @@ Az adatbázis kiépítését követően a Azure AD Connect rendszergazdája kén
 
 Abban az esetben, ha az SQL-rendszergazda visszaállította a ADSync-adatbázist egy korábbi Azure AD Connect biztonsági másolatból, telepítenie kell az új Azure AD Connect-kiszolgálót egy meglévő adatbázis használatával. A Azure AD Connect meglévő adatbázissal történő telepítésével kapcsolatos további információkért lásd: [Azure ad Connect telepítése meglévő AdSync-adatbázis használatával](how-to-connect-install-existing-database.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md)
 - [Az Azure AD Connect testreszabott telepítése](how-to-connect-install-custom.md)
 - [Az Azure AD Connect telepítése meglévő ADSync-adatbázis használatával](how-to-connect-install-existing-database.md)  

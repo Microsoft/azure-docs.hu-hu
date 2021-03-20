@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 31d5c528112ccacab47282729b1b5f8a72f19af0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999287"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet az alábbi *function.jsban*definiált kimeneti kötés használatával.
+Az alábbi példa bemutatja, hogyan küldhet SMS-üzenetet az alábbi *function.jsban* definiált kimeneti kötés használatával.
 
 ```json
     {
@@ -329,13 +329,13 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 | v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|---------|----------------------|
-|**típus**|**típus**| értékre kell állítani `twilioSms` .|
+|**típusa**|**típusa**| értékre kell állítani `twilioSms` .|
 |**irányba**|**irányba**| értékre kell állítani `out` .|
 |**név**|**név**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID () azonosítóját tartalmazza `TwilioAccountSid` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
 |**Aad**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítások nevére kell beállítani, amely a Twilio hitelesítési tokent () tárolja `TwilioAccountAuthToken` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
-|**hogy**| N/A – megadás a kódban | **Művelet**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
-|**a**|**a** | **A**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
+|**felhasználóként a(z)**| N/A – megadás a kódban | **Ide:**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
+|**a**|**a** | **From**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
 |**törzse**|**törzse** | **Törzs**| Ez az érték használható az SMS szöveges üzenet kódolására, ha nem kell dinamikusan beállítania a függvény kódjában. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

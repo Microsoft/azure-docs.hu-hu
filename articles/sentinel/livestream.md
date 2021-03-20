@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 06/14/2020
 ms.author: yelevin
 ms.openlocfilehash: 14928d3c94ced8d1cd0c12e76428be73b68b91d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783163"
 ---
-# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>A fenyegetések észlelése az Azure Sentinelben
+# <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Veszélyforrás-keresés élő streammel az Azure Sentinelben a fenyegetések észleléséhez
 
 A Hunting livestream használatával interaktív munkameneteket hozhat létre, amelyek lehetővé teszik az újonnan létrehozott lekérdezések tesztelését az események bekövetkezésekor, értesítéseket kaphat a munkamenetekről, ha egyezést talál, és szükség esetén elindítja a vizsgálatokat. Gyorsan létrehozhat egy livestream-munkamenetet bármilyen Log Analytics lekérdezés használatával.
 
@@ -48,7 +48,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 1. Livestream-munkamenet létrehozása egy vadászati lekérdezésből:
     
     1. A **lekérdezések** lapon keresse meg a használni kívánt vadászati lekérdezést.
-    1. Kattintson a jobb gombbal a lekérdezésre, és válassza a **Hozzáadás a livestream-hoz**lehetőséget. Például:
+    1. Kattintson a jobb gombbal a lekérdezésre, és válassza a **Hozzáadás a livestream-hoz** lehetőséget. Például:
     
     > [!div class="mx-imgBorder"]
     > ![Livestream-munkamenet létrehozása az Azure Sentinel vadászati lekérdezésből](./media/livestream/livestream-from-query.png)
@@ -56,7 +56,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 1. Livestream-munkamenet létrehozása a semmiből: 
     
     1. A **livestream** lap kiválasztása
-    1. Kattintson az **+ új livestream**elemre.
+    1. Kattintson az **+ új livestream** elemre.
     
 1. A **livestream** panelen:
     
@@ -72,7 +72,7 @@ Létrehozhat egy livestream-munkamenetet egy meglévő vadászati lekérdezésb�
 
 1. Válassza a **Mentés** elemet a parancssorból.
     
-    Ha nem választja a **szüneteltetés**lehetőséget, a munkamenet addig fut, amíg ki nem jelentkezik a Azure Portalból.
+    Ha nem választja a **szüneteltetés** lehetőséget, a munkamenet addig fut, amíg ki nem jelentkezik a Azure Portalból.
 
 ## <a name="view-your-livestream-sessions"></a>A livestream-munkamenetek megtekintése
 
@@ -102,7 +102,7 @@ A livestream-munkamenet egy új riasztáshoz való előléptetéséhez válassza
 
 Ez a művelet megnyitja a szabály létrehozása varázslót, amely előre fel van töltve a livestream-munkamenethez társított lekérdezéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a Hunting livestream-t az Azure Sentinelben. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

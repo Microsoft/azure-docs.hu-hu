@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/2/2017
 ms.author: sumukhs
 ms.openlocfilehash: cdb115bd57cf3d5af4388f4efa03c2522feef9ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75609774"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors konfigurálása – KVSActorStateProvider
@@ -41,7 +41,7 @@ Az alapértelmezett konfigurációt a Visual Studio-sablon hozza létre, és enn
 &lt;ActorName &gt; ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Név | Egység | Alapértelmezett érték | Megjegyzések |
+| Name | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Másodperc |0,015 |Az az időszak, ameddig a másodlagos megvárja a műveletet a művelet fogadása után, mielőtt visszaküldi a nyugtát az elsődlegesnek. Az ezen az intervallumon belül feldolgozott műveletekhez küldendő összes más nyugtát egyetlen válaszként kell elküldeni. |
 | ReplicatorEndpoint |N/A |Nincs alapértelmezett – kötelező paraméter |Az az IP-cím és port, amelyet az elsődleges/másodlagos replikátor a replikakészlet más replikákkal való kommunikációhoz fog használni. Ennek a szolgáltatás jegyzékfájljában a TCP-erőforrás végpontra kell hivatkoznia. A szolgáltatási jegyzékfájlban található végponti erőforrások definiálásával kapcsolatos további információkért tekintse meg a [szolgáltatás jegyzékfájljának erőforrásai](service-fabric-service-manifest-resources.md) című témakört. |
@@ -58,7 +58,7 @@ Az alapértelmezett konfigurációt a Visual Studio-sablon hozza létre, és enn
 &lt;ActorName &gt; ServiceLocalStoreConfig
 
 ### <a name="configuration-names"></a>Konfigurációs nevek
-| Név | Egység | Alapértelmezett érték | Megjegyzések |
+| Name | Unit (Egység) | Alapértelmezett érték | Megjegyzések |
 | --- | --- | --- | --- |
 | MaxAsyncCommitDelayInMilliseconds |Ezredmásodpercben |200 |Beállítja a tartós helyi tárolók végrehajtásának maximális időtartamát. |
 | MaxVerPages |Lapok száma |16384 |A helyi tároló adatbázisában lévő verziók maximális száma. Meghatározza a függőben lévő tranzakciók maximális számát. |

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 05be5295ae5f8c73c916a21bba7dbc98ab0c5e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89002792"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
@@ -283,7 +283,7 @@ A részletes részletezés során általában csak olyan dokumentumokat szeretne
 
 **Aspektusok eredményeinek további szűrőkkel való kivágása**
 
-A dimenziós eredmények olyan keresési eredményekben található dokumentumok, amelyek megfelelnek egy aspektus kifejezésének. A következő példában a *felhőalapú számítástechnika*keresési eredményeiben a 254-es elemek *belső specifikációval* is rendelkeznek, mint a tartalom típusa. Az elemek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel mindkét szűrő feltételeinek, akkor a rendszer minden egyesnek számít. Ez az ismétlődés akkor lehetséges, ha a `Collection(Edm.String)` mezőkre van szükség, amelyek gyakran a dokumentumok címkézésének megvalósítására használatosak.
+A dimenziós eredmények olyan keresési eredményekben található dokumentumok, amelyek megfelelnek egy aspektus kifejezésének. A következő példában a *felhőalapú számítástechnika* keresési eredményeiben a 254-es elemek *belső specifikációval* is rendelkeznek, mint a tartalom típusa. Az elemek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel mindkét szűrő feltételeinek, akkor a rendszer minden egyesnek számít. Ez az ismétlődés akkor lehetséges, ha a `Collection(Edm.String)` mezőkre van szükség, amelyek gyakran a dokumentumok címkézésének megvalósítására használatosak.
 
 ```output
 Search term: "cloud computing"
