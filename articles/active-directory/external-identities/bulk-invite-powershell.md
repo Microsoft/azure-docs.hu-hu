@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e047f11cc243ab1a36a8c61dd1b229d9e115115
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892485"
 ---
 # <a name="tutorial-use-powershell-to-bulk-invite-azure-ad-b2b-collaboration-users"></a>Oktatóanyag: az Azure AD B2B csoportmunka-felhasználók tömeges meghívása a PowerShell használatával
@@ -63,7 +63,7 @@ A kimenet alapján tegye a következők egyikét:
    Install-Module AzureADPreview
    ```
 
-Előfordulhat, hogy egy megjelenő üzenet tájékoztatja Önt, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y** -t a modul telepítéséhez.
+Előfordulhat, hogy egy megjelenő üzenet tájékoztatja Önt, hogy a modult nem megbízható tárházból telepíti. Ez akkor fordul elő, ha korábban még nem állította be megbízható tárháznak a PSGallery tárházat. Nyomja meg **Y**-t a modul telepítéséhez.
 
 ### <a name="get-test-email-accounts"></a>E-mail-tesztfiókok létrehozása
 
@@ -126,9 +126,9 @@ Annak ellenőrzésére, hogy a meghívott felhasználókat hozzáadták-e az Azu
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-A meghívott felhasználókat a következő formátumban kell megjelennie: *emailaddress* #EXT # \@ *tartomány* . Például *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com* , ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
+A meghívott felhasználókat a következő formátumban kell megjelennie: *emailaddress*#EXT # \@ *tartomány*. Például *lstokes_fabrikam. com # ext # \@ contoso.onmicrosoft.com*, ahol a contoso.onmicrosoft.com az a szervezet, amelyről elküldötte a meghívókat.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rájuk szükség, törölheti a tesztfelhasználói fiókokat a címtárban. A felhasználói fiók törléséhez a következő parancsot futtassa:
 

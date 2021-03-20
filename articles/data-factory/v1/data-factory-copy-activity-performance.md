@@ -8,10 +8,10 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100377210"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és finomhangolásához
@@ -272,7 +272,7 @@ Javasoljuk, hogy hajtsa végre ezeket a lépéseket a Data Factory szolgáltatá
 **Átjáró figyelése és vertikális felskálázása**: egy vagy több átjárót tartalmazó logikai átjáró egyszerre több másolási tevékenységet is képes futni. Megtekintheti az erőforrás-felhasználás (CPU, memória, hálózat (in/out), stb.) közel valós idejű pillanatképét, valamint a Azure Portalon futó egyidejű feladatok számát, az [átjáró figyelése a portálon](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal)című témakört. Ha nagy mennyiségű párhuzamos másolási tevékenységre van szüksége a hibrid adatáthelyezéshez, vagy nagyméretű adatmásolási művelettel vagy nagy mennyiségű adattal, vegye fontolóra az [átjáró vertikális felskálázását vagy felskálázását](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) , hogy jobban kihasználja az erőforrást, vagy több erőforrást lehessen kiépíteni a másolásra.
 
 ## <a name="considerations-for-the-source"></a>A forrás szempontjai
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 Ügyeljen arra, hogy az alapul szolgáló adattár ne legyen túlterhelve más, vagy azon kívül futó munkaterhelések között.
 
 A Microsoft adattárak esetében lásd: az adattárakra jellemző [témakörök figyelése és finomhangolása](#performance-reference) , valamint az adattárolási teljesítmény jellemzőinek megértése, a válaszidő csökkentése és az átviteli sebesség maximalizálása.
@@ -294,7 +294,7 @@ Ha a blob Storage-ból másolja az Azure szinapszis Analytics-be, érdemes **leh
 * Az **adatkezelés Gateway** használatát igénylő helyszíni, például a SQL Server és az **Oracle számára a** következő témakörben talál tudnivalókat: adatkezelés Gateway című szakasz.
 
 ## <a name="considerations-for-the-sink"></a>A fogadó szempontjai
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 Ügyeljen arra, hogy az alapul szolgáló adattár ne legyen túlterhelve más, vagy azon kívül futó munkaterhelések között.
 
 A Microsoft-adattárak esetében tekintse meg az adattárakra jellemző [témakörök figyelését és finomhangolását](#performance-reference) . Ezek a témakörök segítenek megérteni az adattár teljesítményének jellemzőit, és azt, hogy miként lehet csökkenteni a válaszidőt és maximalizálni az átviteli sebességet.

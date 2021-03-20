@@ -10,10 +10,10 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.openlocfilehash: 750a2100d34e02cac7c613cc6b95160fc348b535
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576366"
 ---
 # <a name="update-the-rdp-port-range-values"></a>Az RPD-porttartomány értékeinek frissítése
@@ -37,7 +37,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Lekéri a `Microsoft.Network/loadBalancers` erőforrást. |
 |[Set-AzResource](/powershell/module/az.resources/set-azresource)|Frissíti a `Microsoft.Network/loadBalancers` erőforrást.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

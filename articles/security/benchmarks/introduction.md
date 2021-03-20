@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97369191"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Az Azure Security teljesítményteszt bemutatása
@@ -48,7 +48,7 @@ A "Control", a "benchmark" és az "Baseline" kifejezések gyakran az Azure bizto
 
 | Időszak | Leírás | Példa |
 |--|--|--|
-| Vezérlés | A vezérlő egy olyan szolgáltatás vagy tevékenység magas szintű leírása, amelyet kezelni kell, és nem a technológiára vagy a megvalósításra jellemző. | Az adatvédelem az egyik biztonsági vezérlő. Ez a vezérlő olyan konkrét műveleteket tartalmaz, amelyeket meg kell oldani az adatvédelem biztosítása érdekében. |
+| Szabályozás | A vezérlő egy olyan szolgáltatás vagy tevékenység magas szintű leírása, amelyet kezelni kell, és nem a technológiára vagy a megvalósításra jellemző. | Az adatvédelem az egyik biztonsági vezérlő. Ez a vezérlő olyan konkrét műveleteket tartalmaz, amelyeket meg kell oldani az adatvédelem biztosítása érdekében. |
 | Külső viszonyítási alap | A teljesítménytesztek biztonsági javaslatokat tartalmaznak egy adott technológiára, például az Azure-ra. Az ajánlásokat azon vezérlőelem kategorizálja, amelyhez tartoznak. | Az Azure biztonsági teljesítményteszt az Azure platformra jellemző biztonsági ajánlásokat tartalmazza |
 | Alapkonfiguráció | Az alapkonfiguráció a teljesítményteszt megvalósítása az egyes Azure-szolgáltatásokon. Az Azure implementációs hatókörében minden szervezet a teljesítménytesztek ajánlását és a megfelelő konfigurációkat határozza meg. | A contoso vállalat úgy néz ki, hogy az Azure SQL Security alapkonfigurációjában javasolt konfigurációt követve engedélyezi az Azure SQL biztonsági funkcióinak használatát.
 

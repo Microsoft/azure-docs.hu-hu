@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/14/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
 ms.openlocfilehash: 907d402a4b0ef5d5e437322d02431a0ccd2d8da3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89421525"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-grpc-model"></a>Rövid útmutató: élő videó elemzése saját gRPC-modell használatával
@@ -77,7 +77,7 @@ Ez a rövid útmutató bemutatja, hogyan használható a Live Video Analytics a 
 
 Ha más gyors útmutatókat szeretne kipróbálni, tartsa meg a létrehozott erőforrásokat. Ellenkező esetben lépjen a Azure Portalra, nyissa meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben ezt a rövid útmutatót futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Próbálja meg különböző Media Graph-topológiákat futtatni a gRPC protokoll használatával.
 * **Sample Live Video Analytics-(LVA-) bővítmények készítése és futtatása**

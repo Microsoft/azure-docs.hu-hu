@@ -1,5 +1,5 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 description: fájlbefoglalás
 services: app-service
 author: cephalin
@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/27/2019
 ms.author: cephalin
-ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 7803ac9009af1657e7f162d656898492a694e28f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: include file
+ms.openlocfilehash: e6c4b07d01a4992e22107cb7d524646f439c37c6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997920"
 ---
 Az alkalmazáskódból létrehozott konzolnaplók App Service-ben történő eléréséhez kapcsolja be a diagnosztikai naplózást a következő parancs a [Cloud Shellben](https://shell.azure.com) történő futtatásával:

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 91b7c58890518559c046023bd78c9248e9840f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89468749"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>A bash gyors üzembe helyezése Azure Cloud Shell
@@ -53,7 +53,7 @@ Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj a
 > [!TIP]
 > Az előfizetést a későbbi munkamenetek esetén is megjegyezjük `/home/<user>/.azure/azureProfile.json` .
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Hozzon létre egy új erőforráscsoportot a "MyRG" nevű WestUS.
 ```azurecli-interactive
 az group create --location westus --name MyRG

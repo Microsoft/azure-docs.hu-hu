@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: 133674e6764e12742f5b238946e943d9b5011cd2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891329"
 ---
 # <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
@@ -41,7 +41,7 @@ Tömörített fájl (zip vagy KMZ) beolvasásakor a rendszer kibontja és beolva
 
 Az olvasási függvény eredménye egy `SpatialDataSet` objektum. Ez az objektum kiterjeszti a GeoJSON FeatureCollection osztályt. Könnyedén átadható a `DataSource` szolgáltatásnak, hogy egy térképen jelenítse meg a funkcióit. A `SpatialDataSet` nem csak a szolgáltatással kapcsolatos információkat tartalmaz, de tartalmazhat KML-fedéseket, feldolgozási mérőszámokat és egyéb részleteket is, az alábbi táblázatban leírtak szerint.
 
-| Tulajdonság neve | Típus | Leírás | 
+| Tulajdonság neve | Típus | Description | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Az adatkészletben lévő összes adat határoló mezője. |
 | `features` | `Feature[]` | Az adatkészleten belüli GeoJSON-funkciók. |
@@ -57,14 +57,14 @@ A következő kód bemutatja, hogyan olvashatja el a térbeli adatkészleteket, 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Térbeli adatkészletek egyszerű betöltése' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az CodePen-on Azure Maps () segítségével egyszerűen megtekintheti a toll- <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>betöltési térbeli adathalmazt</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Térbeli adatkészletek egyszerű betöltése' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az CodePen-on Azure Maps () segítségével egyszerűen megtekintheti a toll- <a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>betöltési térbeli adathalmazt</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 A következő kód bemutatja, hogyan olvashatja és töltheti be a KML-t és a KMZ-t a térképre. A KML tartalmazhat olyan alapátfedéseket, amelyek a vagy a formában lesznek `ImageLyaer` `OgcMapLayer` . Ezeket a átfedéseket a szolgáltatásokból külön kell felvenni a térképen. Emellett, ha az adatkészlethez egyéni ikonok tartoznak, ezeket az ikonokat a szolgáltatások betöltése előtt be kell tölteni a Maps-erőforrásokba.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='A KML betöltése a térképen' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen-on található Azure Maps () segítségével megtekintheti a KML-t a <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>térképre</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='A KML betöltése a térképen' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>A CodePen-on található Azure Maps () segítségével megtekintheti a KML-t a <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>térképre</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 Opcionálisan megadhat egy proxy szolgáltatást a tartományok közötti olyan adategységek eléréséhez, amelyekhez nem engedélyezett a CORS. Az olvasási függvény megpróbál hozzáférni egy másik tartományban lévő fájlokhoz a CORS használatával. Miután az első alkalommal nem fér hozzá egy másik tartományhoz tartozó erőforráshoz a CORS használatával, csak további fájlokat fog igényelni, ha van megadva proxy szolgáltatás. Az olvasási függvény hozzáfűzi a fájl URL-címét a megadott proxy URL-cím végéhez. Ez a kódrészlet azt mutatja be, hogyan lehet átadni egy proxy szolgáltatást az olvasási függvénynek:
@@ -86,7 +86,7 @@ Az alábbi bemutató bemutatja, hogyan olvashat egy tagolt fájlt, és hogyan je
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Tagolt fájl hozzáadása' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on lévő Azure Maps () által <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>határolt fájl hozzáadásával</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Tagolt fájl hozzáadása' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on lévő Azure Maps () által <a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>határolt fájl hozzáadásával</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="write-spatial-data"></a>Térbeli adatainak írása
@@ -135,7 +135,7 @@ A következő kód bemutatja, hogyan olvashatja el a jól ismert szöveges karak
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Well-Known szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on Azure Maps () <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known szöveggel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Well-Known szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on Azure Maps () <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known szöveggel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 A következő kód a jól ismert szövegek olvasását és írását mutatja be előre és vissza.

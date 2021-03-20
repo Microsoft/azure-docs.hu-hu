@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: d660e62ea293bd3cc377b95612cfaf41a9f1cd6a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793364"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>A rugalmas adatbázis-ügyféloldali kódtár használata jól öltözött
@@ -23,7 +23,7 @@ ms.locfileid: "92793364"
 
 Ez a dokumentum olyan fejlesztők számára készült, akik a kitalált alkalmazások létrehozására támaszkodnak, de a [rugalmas adatbázis-eszközöket](elastic-scale-introduction.md) is szeretnék biztosítani, hogy olyan alkalmazásokat hozzanak létre, amelyek horizontális felskálázást hajtanak végre az adatszinten.  Ez a dokumentum bemutatja a rugalmas adatbázis-eszközökkel való integráláshoz szükséges, jól látható alkalmazások változásait. Célunk, hogy a rugalmas adatbázis-szegmensek kezelését és az Adatfüggő útválasztást takarja. 
 
-**Mintakód** : [rugalmas adatbázis-eszközök Azure SQL Database által jól látható integrációhoz](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Mintakód**: [rugalmas adatbázis-eszközök Azure SQL Database által jól látható integrációhoz](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 A **jól** használható és **DapperExtensions** integrálása a rugalmas adatbázis-ügyféloldali kódtár Azure SQL Database egyszerű. Az alkalmazások az Adatfüggő útválasztást úgy használhatják, hogy megváltoztatják az új [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) -objektumok létrehozását és megnyitását, hogy az [OpenConnectionForKey](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.rangeshardmap-1) hívást használják az [ügyfél könyvtárából](/previous-versions/azure/dn765902(v=azure.100)). Ez korlátozza az alkalmazás változásait, hogy csak az új kapcsolatokat hozza létre és nyissa meg. 
 
@@ -39,7 +39,7 @@ A jól öltözött és a DapperExtensions egy másik előnye, hogy az alkalmazá
 A takaros szerelvények lekéréséhez lásd: [takart pont háló](https://www.nuget.org/packages/Dapper/). A jól öltözött bővítmények esetében lásd: [DapperExtensions](https://www.nuget.org/packages/DapperExtensions).
 
 ## <a name="a-quick-look-at-the-elastic-database-client-library"></a>A rugalmas adatbázis-ügyféloldali kódtár gyors áttekintése
-A rugalmas adatbázis-ügyféloldali kódtár segítségével meghatározhatja az alkalmazásadatok *shardletek* nevű partícióit, leképezheti őket az adatbázisokra, és azonosíthatja őket a *kulcsok* horizontális felskálázásával. Annyi adatbázist használhat, amennyit csak szeretne, és terjesztheti a shardletek az adatbázisok között. A skálázási kulcs értékének az adatbázisokra való hozzárendelését a könyvtár API-jai által biztosított szegmenses Térkép tárolja. Ezt a képességet nevezik a szegmenses **leképezések felügyeletének** . A szegmenses Térkép az adatbázis-kapcsolatok közvetítőjét is szolgálja a horizontális Felskálázási kulcsot tartalmazó kérelmek esetében. Ezt a képességet az **Adatfüggő útválasztásnak** nevezzük.
+A rugalmas adatbázis-ügyféloldali kódtár segítségével meghatározhatja az alkalmazásadatok *shardletek* nevű partícióit, leképezheti őket az adatbázisokra, és azonosíthatja őket a *kulcsok* horizontális felskálázásával. Annyi adatbázist használhat, amennyit csak szeretne, és terjesztheti a shardletek az adatbázisok között. A skálázási kulcs értékének az adatbázisokra való hozzárendelését a könyvtár API-jai által biztosított szegmenses Térkép tárolja. Ezt a képességet nevezik a szegmenses **leképezések felügyeletének**. A szegmenses Térkép az adatbázis-kapcsolatok közvetítőjét is szolgálja a horizontális Felskálázási kulcsot tartalmazó kérelmek esetében. Ezt a képességet az **Adatfüggő útválasztásnak** nevezzük.
 
 ![Szegmens térképek és Adatfüggő Útválasztás][1]
 
@@ -50,9 +50,9 @@ Ahelyett, hogy hagyományos módon hozzon létre kapcsolatokat a takaros kapcsol
 ### <a name="requirements-for-dapper-integration"></a>A jól öltözött integráció követelményei
 Ha a rugalmas adatbázis ügyféloldali függvénytárával és a jól öltözött API-kkal is dolgozik, a következő tulajdonságokat szeretné megőrizni:
 
-* Horizontális **felskálázás** : a többrészes alkalmazás adatszintjéből az alkalmazás kapacitási igényeihez szükséges adatbázisokat szeretnénk hozzáadni vagy eltávolítani. 
-* **Konzisztencia** : mivel az alkalmazás horizontális felskálázással lett kibővítve, az adatoktól függő útválasztást kell végrehajtania. A könyvtár adatkezelési útválasztási funkcióit szeretnénk használni. Különösen fontos, hogy megőrizze az ellenőrzési és a konzisztencia-garanciákat, amelyeket a rendszer a szegmenses Térkép-kezelőn keresztül felügyelt kapcsolatok által biztosított, hogy elkerülje a sérülést vagy a lekérdezés eredményét. Ez biztosítja, hogy az adott shardletbe létesített kapcsolatok elutasításra kerüljenek, vagy le legyenek állítva, ha (például) a shardletbe jelenleg egy másik szegmensbe helyezi át a Split/Merge API-k használatával.
-* **Objektum-hozzárendelés** : szeretnénk megőrizni a jól öltözött leképezések kényelmét az alkalmazás osztályai és a mögöttes adatbázis-struktúrák lefordításához. 
+* Horizontális **felskálázás**: a többrészes alkalmazás adatszintjéből az alkalmazás kapacitási igényeihez szükséges adatbázisokat szeretnénk hozzáadni vagy eltávolítani. 
+* **Konzisztencia**: mivel az alkalmazás horizontális felskálázással lett kibővítve, az adatoktól függő útválasztást kell végrehajtania. A könyvtár adatkezelési útválasztási funkcióit szeretnénk használni. Különösen fontos, hogy megőrizze az ellenőrzési és a konzisztencia-garanciákat, amelyeket a rendszer a szegmenses Térkép-kezelőn keresztül felügyelt kapcsolatok által biztosított, hogy elkerülje a sérülést vagy a lekérdezés eredményét. Ez biztosítja, hogy az adott shardletbe létesített kapcsolatok elutasításra kerüljenek, vagy le legyenek állítva, ha (például) a shardletbe jelenleg egy másik szegmensbe helyezi át a Split/Merge API-k használatával.
+* **Objektum-hozzárendelés**: szeretnénk megőrizni a jól öltözött leképezések kényelmét az alkalmazás osztályai és a mögöttes adatbázis-struktúrák lefordításához. 
 
 A következő szakasz útmutatást nyújt ezekhez a követelményekhez a **takaros** és **DapperExtensions** alapuló alkalmazásokhoz.
 

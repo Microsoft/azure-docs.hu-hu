@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: e10ca98e0c9257187288d02483ed81915a7b321d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92894722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Oktatóanyag: Azure Active Directory integráció a Ziflow
@@ -138,13 +138,13 @@ Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa vég
 
     ![Ziflow-konfiguráció egyetlen](./media/ziflow-tutorial/tutorial_ziflow_page.png)
 
-    a. Adja meg a **típust** **SAML 2.0** -ként.
+    a. Adja meg a **típust** **SAML 2.0**-ként.
 
-    b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
+    b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal másolt.
 
-    c. Töltse fel a Azure Portalból letöltött Base-64 kódolt tanúsítványt a **X509 aláíró tanúsítványba** .
+    c. Töltse fel a Azure Portalból letöltött Base-64 kódolt tanúsítványt a **X509 aláíró tanúsítványba**.
 
-    d. A kijelentkezési **URL-cím** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
+    d. A kijelentkezési **URL-cím** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet**, amelyet a Azure Portal másolt.
 
     e. Az **azonosító szolgáltatójának konfigurációs beállításai** szakaszban másolja ki a kijelölt egyedi azonosító értékét, és fűzze hozzá az azonosítóhoz, majd jelentkezzen be az URL-címre az **ALAPszintű SAML-konfigurációban** Azure Portal.
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Ziflow való konfigurálásához hajtsa vég
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -170,7 +170,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

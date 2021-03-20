@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 568e306979e862c325264a4e12a64d95e6d13c5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575992"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfizmus a Reliable Actors-keretrendszerben
@@ -84,7 +84,7 @@ public class Circle extends ShapeImpl implements Circle
 
 Jegyezze fel az `ActorService` attribútumot a színész típusán. Ez az attribútum tájékoztatja a megbízható szereplői keretrendszert arról, hogy automatikusan létre kell hoznia egy szolgáltatást az ilyen típusú szereplők üzemeltetéséhez. Bizonyos esetekben előfordulhat, hogy olyan alaptípust szeretne létrehozni, amely kizárólag altípusokkal való megosztásra szolgál, és soha nem lesz felhasználva konkrét szereplők létrehozásához. Ezekben az esetekben a `abstract` kulcsszó használatával jelezze, hogy soha nem fog létrehozni egy szereplőt az adott típus alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, [hogyan használja ki a Reliable Actors Framework a Service Fabric platformot](service-fabric-reliable-actors-platform.md) a megbízhatóság, a méretezhetőség és a konzisztens állapot biztosításához.
 * Ismerkedjen meg a [színészi életciklussal](service-fabric-reliable-actors-lifecycle.md).
 

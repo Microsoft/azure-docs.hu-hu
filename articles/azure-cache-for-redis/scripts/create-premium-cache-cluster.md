@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: bb5a6ac082ebaf978023321f15341ec7f35779a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184220"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>Prémium szintű Azure cache létrehozása a fürtözést biztosító Redis
@@ -32,7 +32,7 @@ Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy 6 GB-os prémi
 
 Ez a szkript a következő parancsokat használja egy erőforráscsoport és egy prémium szintű Azure cache létrehozásához a fürtözési engedélyezéssel rendelkező Redis. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az Redis Create](/cli/azure/redis) | Azure cache létrehozása a Redis-példányhoz. |

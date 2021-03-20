@@ -16,10 +16,10 @@ ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6584754edf3ff7ae31c3b9ace72baf16459dbc44
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359993"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Felügyelt identitás-hozzáférés kiosztása erőforráshoz a Azure Portal használatával
@@ -41,7 +41,7 @@ Miután engedélyezte a felügyelt identitást egy Azure-erőforráson, példáu
 
 2. Navigáljon ahhoz a kívánt erőforráshoz, amelyen módosítani szeretné a hozzáférés-vezérlést. Ebben a példában egy Azure-beli virtuális gépet adunk hozzá egy Storage-fiókhoz, ezért navigáljon a Storage-fiókhoz.
 
-3. Válassza ki az erőforrás **hozzáférés-vezérlés (iam)** lapját, és válassza a **+ szerepkör-hozzárendelés hozzáadása** elemet. Ezután adja meg a **szerepkört** , **rendeljen hozzá hozzáférést** , és adja meg a megfelelő **előfizetést**. A keresési feltételek területen tekintse meg az erőforrást. Válassza ki az erőforrást, és kattintson a **Mentés** gombra. 
+3. Válassza ki az erőforrás **hozzáférés-vezérlés (iam)** lapját, és válassza a **+ szerepkör-hozzárendelés hozzáadása** elemet. Ezután adja meg a **szerepkört**, **rendeljen hozzá hozzáférést**, és adja meg a megfelelő **előfizetést**. A keresési feltételek területen tekintse meg az erőforrást. Válassza ki az erőforrást, és kattintson a **Mentés** gombra. 
 
    ![Hozzáférés-vezérlés (IAM) képernyőkép](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
      

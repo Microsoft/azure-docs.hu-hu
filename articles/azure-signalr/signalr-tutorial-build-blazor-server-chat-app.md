@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
 ms.openlocfilehash: b0059e986b9a6ba8152a1a61f8d696f1caa4646a
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97755905"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
@@ -452,7 +452,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 

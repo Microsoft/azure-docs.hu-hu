@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 94b765cbcbdd81505b08052845207ee1d93a28d9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667802"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-purview"></a>Gyakran ismételt kérdések (GYIK) az Azure-beli hatáskörébe
@@ -34,7 +34,7 @@ Ez a gyakori kérdések olyan gyakori kérdésekre válaszolnak, amelyeket az ü
 |Azure Synapse Analytics (SQL DW)|SQL Server |
 |Azure Cosmos DB|Teradata (2020-es végével érhető el)|
 |Felügyelt Azure SQL-példány|SAP ECC (2020-es végével érhető el)|
-|Azure Data Explorer|SAP S/4 HANA (2020-es végével érhető el)|
+|Azure Adatkezelő|SAP S/4 HANA (2020-es végével érhető el)|
 |1. generációs Azure Data Lake Storage|Kaptár Metaadattár (2020-es végével érhető el)|
 |2. generációs Azure Data Lake Storage|Amazon S3|
 |Azure Files|--|

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e9757b94330f889869080a0e961ab2728cee86f6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659930"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>IoT hub létrehozása az Azure CLI használatával
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy IoT hubot az Azure CLI használat�
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Az Azure CLI használatával hozzon létre egy erőforráscsoportot, majd vegyen fel egy IoT hubot.
+Az Azure CLI használatával hozzon létre egy erőforráscsoportot, majd vegyen fel egy IoT Hubot.
 
 1. IoT hub létrehozásakor létre kell hoznia egy erőforráscsoportot. Használhat meglévő erőforráscsoportot, vagy futtathatja a következő [parancsot erőforráscsoport létrehozásához](/cli/azure/resource):
     
@@ -42,7 +42,7 @@ Az Azure CLI használatával hozzon létre egy erőforráscsoportot, majd vegyen
    > ```
    >
 
-2. A következő parancs futtatásával [hozzon létre egy IoT hubot](/cli/azure/iot/hub#az-iot-hub-create) az erőforráscsoporthoz az IoT hub globálisan egyedi nevének használatával:
+2. Futtassa az erőforráscsoporthoz tartozó alábbi [IoT Hub létrehozási parancsot](/cli/azure/iot/hub#az-iot-hub-create) egy globálisan egyedi IoT Hub-név használatával:
     
    ```azurecli-interactive
    az iot hub create --name {your iot hub name} \

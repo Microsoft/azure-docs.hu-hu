@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 57e847116febcea66e1e3ac4ba131617463b6c94
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895766"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
@@ -27,7 +27,7 @@ Azure Maps fiók létrehozása után létrejön az elsődleges és a másodlagos
 A hitelesítési adatokat a Azure Portalban tekintheti meg. A fiókjában a **Beállítások** menüben válassza a **hitelesítés** lehetőséget.
 
 > [!div class="mx-imgBorder"]
-> ![Hitelesítés részletei](./media/how-to-manage-authentication/how-to-view-auth.png)
+> ![Hitelesítési részletek](./media/how-to-manage-authentication/how-to-view-auth.png)
 
 ## <a name="discover-category-and-scenario"></a>Kategória és forgatókönyv felderítése
 
@@ -43,7 +43,7 @@ Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési fo
 > [!IMPORTANT]
 > A Microsoft az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) alkalmazásával javasolja a Azure Active Directory (Azure AD) megvalósítását.
 
-| Használati eset                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
+| Eset                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
 | [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N/A           | Közepes             | Magas               |
 | [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magas          | Alacsony                | Közepes             |

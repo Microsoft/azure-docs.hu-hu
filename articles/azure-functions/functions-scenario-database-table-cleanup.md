@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/02/2019
 ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88207261"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
@@ -44,11 +44,11 @@ A függvények végrehajtásához szükséges gazdaszolgáltatást az Azure-ban 
 
 Előzőleg közzé kell tennie az alkalmazást az Azure-ban. Ha még nem tette meg, [tegye közzé a Function alkalmazást az Azure](functions-develop-vs.md#publish-to-azure)-ban.
 
-1. A Megoldáskezelőban kattintson a jobb gombbal a Function app projektre, **és válassza a**  >  **Szerkesztés Azure app Service beállítások szerkesztése**lehetőséget. Válassza a **beállítás hozzáadása**lehetőséget, az **új Alkalmazásbeállítás neve**mezőbe írja be a nevet `sqldb_connection` , majd kattintson **az OK gombra**.
+1. A Megoldáskezelőban kattintson a jobb gombbal a Function app projektre, **és válassza a**  >  **Szerkesztés Azure app Service beállítások szerkesztése** lehetőséget. Válassza a **beállítás hozzáadása** lehetőséget, az **új Alkalmazásbeállítás neve** mezőbe írja be a nevet `sqldb_connection` , majd kattintson **az OK gombra**.
 
     ![A Function alkalmazás Alkalmazásbeállítások.](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
-1. Az új **sqldb_connection** beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, a helyére `{your_username}` és a `{your_password}` helyőrzőket valós értékekkel. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK**gombot.
+1. Az új **sqldb_connection** beállításban illessze be az előző szakaszban a **helyi** mezőbe másolt, a helyére `{your_username}` és a `{your_password}` helyőrzőket valós értékekkel. Válassza a **helyi érték beszúrása** lehetőséget, hogy a frissített értéket a **távoli** mezőbe másolja, majd válassza az **OK** gombot.
 
     ![Adja meg az SQL-kapcsolatok karakterláncának beállítását.](./media/functions-scenario-database-table-cleanup/functions-app-service-settings-connection-string.png)
 
@@ -60,11 +60,11 @@ Hozzá kell adnia a SqlClient könyvtárat tartalmazó NuGet-csomagot. Ez az ada
 
 1. Nyissa meg a helyi function alkalmazás projektjét a Visual Studio 2019-ben.
 
-1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
 1. A **Tallózás** fülön keresse meg a(z) ```System.Data.SqlClient``` elemet, majd válassza ki.
 
-1. A **System. SqlClient** lapon válassza a verzió lehetőséget, `4.5.1` majd kattintson a **telepítés**gombra.
+1. A **System. SqlClient** lapon válassza a verzió lehetőséget, `4.5.1` majd kattintson a **telepítés** gombra.
 
 1. A telepítés befejezése után tekintse át a módosításokat, majd kattintson az **OK** gombra az **Előnézet** ablak bezárásához.
 
@@ -74,9 +74,9 @@ Most hozzáadhatja a SQL Databasehoz csatlakozó C#-függvény kódját.
 
 ## <a name="add-a-timer-triggered-function"></a>Időzítő által aktivált hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és **Add**válassza az  >  **új Azure-függvény**hozzáadása lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a Function app projektre, és válassza az  >  **új Azure-függvény** hozzáadása lehetőséget.
 
-1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet, `DatabaseCleanup.cs` majd válassza a **Hozzáadás**lehetőséget.
+1. A kiválasztott **Azure functions** sablonnal adja meg az új elemet, `DatabaseCleanup.cs` majd válassza a **Hozzáadás** lehetőséget.
 
 1. Az **új Azure-függvény** párbeszédpanelen válassza az **időzítő trigger** lehetőséget, majd **az OK gombot**. Ez a párbeszédablak létrehoz egy programkódot az időzítő által aktivált függvényhez.
 

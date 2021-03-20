@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192673"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN szabályok motorjának HTTP-változói
@@ -34,11 +34,11 @@ A HTTP-változók biztosítják a HTTP-kérések és-válaszok metaadatainak beo
 A következő táblázat a támogatott HTTP-változókat ismerteti. A rendszer üres értéket ad vissza, ha a GEO-metaadatok (például postai kód) nem érhetők el egy adott kéréshez.
 
 
-| Name (Név) | Változó | Leírás | Mintaérték |
+| Name | Változó | Leírás | Mintaérték |
 | ---- | -------- | ----------- | ------------ |
 | ASN (kérelmező) | % {geo_asnum} | Megadja a kérelmező AS-számát. <br /><br />**Elavult:** % {virt_dst_asnum}. <br />Ez a változó a (z)% {geo_asnum} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | AS15133 |
 | Város (kérelmező) | % {geo_city} | A kérelmező városát jelzi. | Los Angeles |
-| Kontinens (kérelmező) | % {geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Az érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />OC: Ausztrália és Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ez a változó a (z)% {geo_continent} helyett elavult. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| N.A. |
+| Kontinens (kérelmező) | % {geo_continent} | Azt jelzi, hogy a kérelmező kontinense a rövidítése. <br />Az érvényes értékek a következők: <br />AF: Afrika<br />AS: Ázsia<br />EU: Európa<br />NA: Észak-Amerika<br />OC: Ausztrália és Óceánia<br />SA: Dél-Amerika<br /><br />**Elavult:** % {virt_dst_continent}. <br />Ez a változó a (z)% {geo_continent} helyett elavult. <br />Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára.| N/A |
 | Cookie értéke | % {cookie_Cookie} | A cookie-kifejezés által azonosított cookie-kulcsnak megfelelő értéket adja vissza. | Minta használata: <br />% {cookie__utma}<br /><br />Minta értéke:<br />111662281.2.10.1222100123 |
 | Ország/régió (kérelmező) | % {geo_country} | Azt jelzi, hogy a kérelmező országa/régiója az ország/régió kódja alapján van-e. <br />**Elavult:** % {virt_dst_country}. <br /><br />Ez a változó a (z)% {geo_country} helyett elavult. Habár ez az elavult változót használó szabály továbbra is működni fog, frissítenie kell az új változó használatára. | USA |
 | Kijelölt piaci térség (kérelmező) | % {geo_dma_code} |A kérelmező adathordozó-piacát jelzi a régió kódja alapján. <br /><br />Ez a mező csak a Egyesült Államokból származó kérelmekre vonatkozik.| 745 |
@@ -92,7 +92,7 @@ Ha egy HTTP-változó a következő hatások bármelyikét elérheti, elválaszt
 
 Az elhatárolókat az alábbi táblázat ismerteti.
 
-| Elválasztó | Leírás |
+| Elválasztó | Description |
 | --------- | ----------- |
 | := | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha a következők valamelyike: <br />-Hiányzó <br />-NULL értékűre van állítva. |
 | :+ | Azt jelzi, hogy egy alapértelmezett érték lesz hozzárendelve a változóhoz, ha hozzá van rendelve egy érték. |
@@ -110,7 +110,7 @@ Az elhatárolókat az alábbi táblázat ismerteti.
 ## <a name="exceptions"></a>Kivételek
 Az alábbi táblázat azokat a körülményeket ismerteti, amelyekben a megadott szöveg nem a HTTP-változóként van kezelve.
 
-| Condition (Állapot) | Leírás | Példa |
+| Feltétel | Leírás | Példa |
 | --------- | ----------- | --------|
 | Escape-% szimbólum | A százalékos szimbólum egy fordított perjel használatával lehet megszökni. <br />A jobb oldali minta értéket literál értékként, nem pedig HTTP-változóként kezeli a rendszer.| \%gazdagép |
 | Ismeretlen változók | A rendszer mindig üres karakterláncot ad vissza az ismeretlen változókhoz. | % {unknown_variable} |
@@ -125,7 +125,7 @@ Egy alapértelmezett érték rendelhető hozzá egy fejléchez, ha az megfelel a
 
 Az alábbi táblázat leírja, hogyan határozhat meg alapértelmezett értéket.
 
-| Condition (Állapot) | Syntax | Példa | Leírás |
+| Feltétel | Syntax | Példa | Leírás |
 | --------- | ------ | --------| ----------- |
 | Állítsa be az alapértelmezett érték fejlécét, ha az megfelel a következő feltételek bármelyikének: <br /><br />-Hiányzó fejléc <br /><br />– A fejléc értéke NULL értékre van állítva.| % {Változó: = érték} | % {http_referrer: = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* , ha hiányzik vagy NULL értékűre van állítva. Ha be van állítva, semmilyen művelet nem kerül sor. |
 | Ha hiányzik, állítsa be a fejlécet az alapértelmezett értékre. | % {Változó = érték} | % {http_referrer = meghatározatlan} | A hivatkozó fejléc csak akkor lesz *meghatározatlan* értékre állítva, ha hiányzik. Ha be van állítva, semmilyen művelet nem kerül sor. |
@@ -187,7 +187,7 @@ Ebben a példában a *REQUEST_URI* változó a következőre van beállítva:
 
 A következő táblázat bemutatja, hogyan működik ez a szintaxis.
 
-| Minta szintaxisa | Results (Eredmények) | Leírás |
+| Minta szintaxisa | Results (Eredmények) | Description |
 | ------------- | ------- | --- |
 | % {request_uri #/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html? Language = en-US | Mivel a változó a mintával kezdődik, lecserélték. |
 | % {request_uri% HTML} htm | /800001/myorigin/marketing/product.html? Language = en-US | Mivel a változó nem a mintával végződik, nem történt változás.|
@@ -229,13 +229,13 @@ Legfontosabb információk:
 - A mintázat helyőrzője (például $1) a következő jelzők használatával módosítható:
      - U: a kibontott érték nagybetűvel.
 
-         Minta szintaxisa:
+         Mintaszintaxis:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$U2.$3:80}`
 
      - L: a kibontott érték kisbetűs.
 
-         Minta szintaxisa:
+         Mintaszintaxis:
 
          `%{host/=^www\.([^\.]+)\.([^\.:]+)/cdn.$L2.$3:80}`
 

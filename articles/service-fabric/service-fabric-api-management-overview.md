@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan használhatja az Azure API Management-t
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.openlocfilehash: 32f47d62cc9dda7cc88421dbf616bf69ffe152fc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575686"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric és Azure API Management – áttekintés
@@ -103,7 +103,7 @@ A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő ku
 
 ![Diagram, amely azt mutatja, hogy minden egyes szolgáltatási példány particionálva van a Int64 partíciós séma két partícióval és egy, a Int64. MinValue Int64. MaxValue-re kiterjedő kulcsával.][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az [oktatóanyagot](service-fabric-tutorial-deploy-api-management.md) , és állítsa be az első Service Fabric-fürtöt API Management és flow-kérelmekkel a szolgáltatásokra API Managementon keresztül.
 

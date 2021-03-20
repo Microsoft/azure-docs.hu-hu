@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576298"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
@@ -168,7 +168,7 @@ A Reliable Services-keretrendszer számos előre elkészített kommunikációs l
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
 A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](./service-fabric-reliable-services-communication-aspnetcore.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png

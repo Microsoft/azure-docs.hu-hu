@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0d81e0474d898ffee7f128c0bcea61f077c3d758
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92103220"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet-VNet közötti kapcsolatok konfigurálása (klasszikus)
@@ -38,7 +38,7 @@ A virtuális hálózat egy másik virtuális hálózathoz (VNet – VNet) való 
 
 A csatlakoztatott virtuális hálózatok különböző előfizetésekben és különböző régiókban lehet. A VNet kombinálva VNet a többhelyes konfigurációkkal való kommunikációt. Így létrehozhat olyan hálózati topológiákat, amelyek a létesítmények közötti kapcsolatokat a virtuális hálózatok közötti kapcsolatokkal kombinálják.
 
-:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="A klasszikus VNet-VNet architektúrát bemutató ábra":::
+:::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png" alt-text="A kapcsolatokat bemutató diagram":::
 
 ### <a name="why-connect-virtual-networks"></a><a name="why"></a>Miért érdemes összekapcsolni a virtuális hálózatokat?
 
@@ -145,9 +145,9 @@ Ne feledje, hogy az egyes VNet helyi helye a másik VNet.
 
 A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN-eszköz IP-címét, amelyhez kapcsolatot szeretne létesíteni, valamint azokat az IP-címtartományokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva.
 
-1. A VNet lapjának **Beállítások**területén válassza a **helyek közötti kapcsolatok**lehetőséget.
-1. A helyek közötti kapcsolatok lapon válassza a **+ Hozzáadás**lehetőséget.
-1. A **VPN-kapcsolat és-átjáró konfigurálása** lapon a **kapcsolat típusa**beállításnál hagyja kiválasztva a **helyek** közötti beállítást.
+1. A VNet lapjának **Beállítások** területén válassza a **helyek közötti kapcsolatok** lehetőséget.
+1. A helyek közötti kapcsolatok lapon válassza a **+ Hozzáadás** lehetőséget.
+1. A **VPN-kapcsolat és-átjáró konfigurálása** lapon a **kapcsolat típusa** beállításnál hagyja kiválasztva a **helyek** közötti beállítást.
 
    * **VPN-átjáró IP-címe**: Ez a helyszíni hálózaton található VPN-eszköz nyilvános IP-címe. Ebben a gyakorlatban egy dummy-címet helyezhet el, mivel még nem rendelkezik a másik helyhez tartozó VPN-átjáró IP-címével. Például: 5.4.3.2. Később, miután konfigurálta az átjárót a másik VNet, módosíthatja ezt az értéket.
 
@@ -160,7 +160,7 @@ A helyi hely általában a használat helyszínét jelenti. Tartalmazza azon VPN
 
    * **Méret:** Ez a virtuális hálózati átjáró létrehozásához használt átjáró SKU. A klasszikus VPN-átjárók a régi (örökölt) átjáró-termékváltozatokat használják. Az átjárók örökölt termékváltozatairól [a virtuális hálózati átjárók termékváltozatainak (régi termékváltozatok) használatát bemutató](vpn-gateway-about-skus-legacy.md) cikkben talál további információt. Ehhez a gyakorlathoz válassza a **standard** lehetőséget.
 
-   * **Útválasztási típus:** Válassza ki az átjáró útválasztási típusát. Ez VPN-típus néven is ismert. Fontos, hogy a megfelelő típust válassza, mert az átjárót nem lehet egyik típusról a másikra konvertálni. A VPN-eszköznek kompatibilisnek kell lennie a kiválasztott útválasztási típussal. További információ az útválasztási típusról: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype). A „RouteBased” és „PolicyBased” VPN-típusokkal további cikkek is foglalkozhatnak. A „Dynamic” (Dinamikus) a „RouteBased”, a „Static” (Statikus) a „PolicyBased” típusra utal. Ehhez a konfigurációhoz válassza a **dinamikus**lehetőséget.
+   * **Útválasztási típus:** Válassza ki az átjáró útválasztási típusát. Ez VPN-típus néven is ismert. Fontos, hogy a megfelelő típust válassza, mert az átjárót nem lehet egyik típusról a másikra konvertálni. A VPN-eszköznek kompatibilisnek kell lennie a kiválasztott útválasztási típussal. További információ az útválasztási típusról: [Tudnivalók a VPN Gateway beállításairól](vpn-gateway-about-vpn-gateway-settings.md#vpntype). A „RouteBased” és „PolicyBased” VPN-típusokkal további cikkek is foglalkozhatnak. A „Dynamic” (Dinamikus) a „RouteBased”, a „Static” (Statikus) a „PolicyBased” típusra utal. Ehhez a konfigurációhoz válassza a **dinamikus** lehetőséget.
 
    * **Átjáró-alhálózat:** A megadott átjáró-alhálózat mérete a létrehozni kívánt VPN-átjáró konfigurációjától függ. Bár akár /29-es átjáróalhálózatot is létrehozhat, javasolt /27-eset vagy /28-asat használni. Ez nagyobb, több címet tartalmazó alhálózatot hoz létre. Nagyobb átjáróalhálózat használatával elegendő IP-cím áll rendelkezésre az esetleges jövőbeni konfigurációk megvalósításához.
 
@@ -188,7 +188,7 @@ Miután mindkét virtuális hálózatok létrehozta a virtuális hálózati átj
 ### <a name="part-2---modify-the-local-site-properties"></a>2. rész – a helyi hely tulajdonságainak módosítása
 
 1. A helyek közötti kapcsolatok területen válassza ki a kapcsolatot. Például: SiteVNet4.
-1. A helyek közötti kapcsolat **Tulajdonságok** lapján válassza a **helyi hely szerkesztése**lehetőséget.
+1. A helyek közötti kapcsolat **Tulajdonságok** lapján válassza a **helyi hely szerkesztése** lehetőséget.
 1. A **VPN-átjáró IP-címe** mezőben illessze be az előző szakaszban MÁSOLt VPN-átjáró IP-címét.
 1. Válassza az **OK** lehetőséget.
 1. A mező frissült a rendszeren. Ezzel a módszerrel további IP-címet is hozzáadhat a helyhez.
@@ -246,6 +246,6 @@ Ezek a szempontok a klasszikus virtuális hálózatokra és a klasszikus virtuá
 * A VNet összes VPN-alagútja, beleértve a P2S VPN-eket is, megoszthatja a VPN-átjáró számára rendelkezésre álló sávszélességet, valamint az Azure-ban megegyező VPN Gateway-üzemidőt.
 * A VNet-VNet forgalom az Azure-gerincen halad át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ellenőrizze a kapcsolatokat. Lásd: [VPN Gateway-kapcsolatok ellenőrzése](vpn-gateway-verify-connection-resource-manager.md).

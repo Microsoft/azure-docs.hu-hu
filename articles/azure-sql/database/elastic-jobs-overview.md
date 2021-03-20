@@ -12,10 +12,10 @@ ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: f9a026ed47d662b80ef01e505bfbcf8f32d20b04
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792174"
 ---
 # <a name="create-configure-and-manage-elastic-jobs-preview"></a>Rugalmas feladatok létrehozása, konfigurálása és kezelése (előzetes verzió)
@@ -50,11 +50,11 @@ A feladatok [adatbázishoz kötődő hitelesítő adatokat](/sql/t-sql/statement
 
 Lehetséges, hogy a feladatfuttatáshoz szükséges megfelelő hitelesítő adatok beállítása nem egyértelmű, ezért tartsa szem előtt a következőket:
 
-- Az adatbázis-hatókörrel rendelkező hitelesítő adatokat létre kell hozni a *feladatok adatbázisában* .
+- Az adatbázis-hatókörrel rendelkező hitelesítő adatokat létre kell hozni a *feladatok adatbázisában*.
 - Az **összes célként megadott adatbázisnak [megfelelő engedélyekkel](/sql/relational-databases/security/permissions-database-engine) kell rendelkeznie ahhoz, hogy a feladatok sikeresen befejeződik** ( `jobuser` az alábbi ábrán).
 - A hitelesítő adatok újra felhasználhatók a feladatok között, a hitelesítő adatok jelszava pedig titkosítva van, és a feladat objektumaihoz csak olvasási hozzáféréssel rendelkező felhasználók férhetnek hozzá.
 
-Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértéséhez és beállításához. **Ne feledje létrehozni a felhasználót minden olyan adatbázisban (minden *célként megjelölt felhasználói adatbázisban* ), ahol a feladatot futtatni szeretné** .
+Az alábbi kép segítséget nyújt a megfelelő hitelesítő adatok megértéséhez és beállításához. **Ne feledje létrehozni a felhasználót minden olyan adatbázisban (minden *célként megjelölt felhasználói adatbázisban*), ahol a feladatot futtatni szeretné**.
 
 ![Rugalmas feladatokhoz tartozó hitelesítő adatok](./media/elastic-jobs-overview/job-credentials.png)
 

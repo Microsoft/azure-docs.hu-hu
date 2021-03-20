@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 81949736603d22cac779d08d14bd6db65065d730
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Oktatóanyag: Azure Active Directory integráció az LockPath-nal
@@ -62,13 +62,13 @@ Ha az LockPath-t az Azure AD-be szeretné konfigurálni, akkor a katalógusból 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **LockPath-jelzõfény**kifejezést, válassza a **LockPath** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **LockPath-jelzõfény** kifejezést, válassza a **LockPath** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![LockPath-jelzőfény az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a LockPath-fénnyel a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a LockPath-fénnyel a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az LockPath-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **LockPath** -alapú alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **LockPath** -alapú alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -131,15 +131,15 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     a. Jelentkezzen be rendszergazdaként a LockPath.
 
-    b. A felső menüben kattintson a **személy**elemre, majd válassza a **minitelepítés beállítása**lehetőséget.
+    b. A felső menüben kattintson a **személy** elemre, majd válassza a **minitelepítés beállítása** lehetőséget.
 
     ![Képernyőfelvétel: a "személy" ikon kiválasztva és "a" hangjelzés beállítása "beállítás a legördülő menüből.](./media/keylight-tutorial/401.png)
 
-    c. A bal oldali TreeView vezérlőben kattintson az **SAML**elemre.
+    c. A bal oldali TreeView vezérlőben kattintson az **SAML** elemre.
 
     ![Képernyőkép, amely a fanézetben kiválasztott "S A M L" jelölést jeleníti meg.](./media/keylight-tutorial/402.png)
 
-    d. A **SAML-beállítások** párbeszédpanelen kattintson a **Szerkesztés**elemre.
+    d. A **SAML-beállítások** párbeszédpanelen kattintson a **Szerkesztés** elemre.
 
     ![A "szerkesztés" gomb kiválasztásával megjelenő "S M L beállítások" ablak](./media/keylight-tutorial/404.png)
 
@@ -159,13 +159,13 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
     f. Adja meg a **Fényszolgáltatási szolgáltatót** a következő minta használatával: `https://<CompanyName>.keylightgrc.com` .
 
-    : Állítsa be az **automatikus kiépítés a felhasználók** számára **aktív**lehetőséget.
+    : Állítsa be az **automatikus kiépítés a felhasználók** számára **aktív** lehetőséget.
 
-    h. Az **automatikus kiépítés fiók típusának** beállítása a **teljes felhasználó**számára.
+    h. Az **automatikus kiépítés fiók típusának** beállítása a **teljes felhasználó** számára.
 
-    i. Állítsa be az **automatikus kiépítés biztonsági szerepkört**, és válassza **az SAML-t használó általános jogú felhasználó**lehetőséget.
+    i. Állítsa be az **automatikus kiépítés biztonsági szerepkört**, és válassza **az SAML-t használó általános jogú felhasználó** lehetőséget.
 
-    j. Állítsa be az **automatikus kiépítés biztonsági konfigurációját**, majd válassza a **normál felhasználói konfiguráció**lehetőséget.
+    j. Állítsa be az **automatikus kiépítés biztonsági konfigurációját**, majd válassza a **normál felhasználói konfiguráció** lehetőséget.
 
     k. Az **e-mail attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` .
 
@@ -179,7 +179,7 @@ Az Azure AD egyszeri bejelentkezés LockPath-vel való konfigurálásához hajts
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -203,15 +203,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít az LockPath-hez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **LockPath-jelzõfény**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **LockPath-jelzõfény** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **LockPath-világítás**elemet.
+2. Az alkalmazások listában válassza a **LockPath-világítás** elemet.
 
     ![Az LockPath-jelzőfény hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

@@ -7,10 +7,10 @@ ms.date: 08/03/2020
 ms.service: signalr
 ms.topic: conceptual
 ms.openlocfilehash: 37c2e41b5c81f941245b895ecd144baee3b9db6d
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797515"
 ---
 # <a name="authorize-access-to-azure-signalr-service-resources-using-azure-active-directory"></a>Az Azure Signaler szolgáltatás erőforrásaihoz való hozzáférés engedélyezése Azure Active Directory használatával
@@ -50,7 +50,7 @@ Ezzel a szerepkörrel biztosíthatja, hogy a rendszer ideiglenes hozzáférési 
 
 Ezzel a szerepkörrel biztosíthatja, hogy a hozzáférés közvetlenül az Azure Signaler szolgáltatásból kapjon ügyfél-jogkivonatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő kapcsolódó cikkeket:
 

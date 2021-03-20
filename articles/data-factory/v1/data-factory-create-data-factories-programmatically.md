@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1b7f5d1ad671b6d97bd6597386c714b026c02232
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100376853"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure-beli adatüzemek létrehozása, figyelése és kezelése Azure Data Factory .NET SDK használatával
@@ -135,7 +135,7 @@ A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban
     </configuration>
     ```
 5. A App.Config fájlban frissítse az **&lt; &gt; alkalmazás-azonosító**, a **&lt; jelszó &gt;**, az **&lt; előfizetés- &gt; azonosító** és a **&lt; bérlői azonosító &gt;** értékeit a saját értékeivel.
-6. Adja hozzá a következő **using** utasításokat a projekt **program.cs** fájljához.
+6. Adja hozzá a következő **using** utasításokat a **program. cs** fájlhoz a projektben.
 
     ```csharp
     using System.Configuration;

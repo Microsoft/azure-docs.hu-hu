@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d500270d579558a88cc4e5127ee7946b58bddda1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92894717"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Oktatóanyag: Azure Active Directory integráció a ZIVVER
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa vég
 
 2. A böngészőablak bal alsó sarkában kattintson a **szervezeti beállítások** ikonra.
 
-3. Ugrás az **egyszeri bejelentkezésre** .
+3. Ugrás az **egyszeri bejelentkezésre**.
 
 4. Nyissa meg a Azure Portalról letöltött összevonási metaadat XML-fájlt.
 
@@ -166,7 +166,7 @@ Az Azure AD egyszeri bejelentkezés ZIVVER való konfigurálásához hajtsa vég
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -184,7 +184,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

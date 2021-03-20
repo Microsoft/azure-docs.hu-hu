@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98183132"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Az Azure AD-Multi-Factor Authentication felhasználói hitelesítési módszereinek kezelése
 
 Az Azure AD-felhasználók a kapcsolattartási adatok két különböző készletével rendelkeznek:  
 
-- Nyilvános profil elérhetőségi adatai, amelyek a felhasználói profilban kezelhetők, és a szervezet tagjai számára láthatók. A helyszíni Active Directoryról szinkronizált felhasználók esetében ezeket az információkat a helyszíni Windows Server Active Directory tartományi szolgáltatások kezeli.
+- Nyilvános profil elérhetőségi adatai, amelyek a felhasználói profilban kezelhetők, és a szervezet tagjai számára láthatók. A helyszíni Active Directoryról szinkronizált felhasználók esetében ezeket az információkat a helyszíni Windows Server Active Directory Domain Services kezeli.
 - A hitelesítési módszereket, amelyek mindig magánjellegűek, és csak hitelesítésre használják, beleértve a többtényezős hitelesítést (MFA). A rendszergazdák kezelhetik ezeket a metódusokat a felhasználó hitelesítési módszer paneljén, és a felhasználók a MyAccount biztonsági adatok lapján kezelhetik a módszereiket.
 
 Az Azure AD-Multi-Factor Authentication módszereinek a felhasználókhoz való kezelésekor a hitelesítési rendszergazdák a következőket tehetik: 
@@ -44,12 +44,12 @@ A felhasználóhoz a Azure Portal vagy Microsoft Graph használatával adhat hit
 
 Hitelesítési módszerek hozzáadása felhasználóhoz a Azure Portal használatával:  
 
-1. Jelentkezzen be az **Azure Portalon**. 
+1. Jelentkezzen be az **Azure Portalra**. 
 1. Tallózással keresse meg **Azure Active Directory** a  >  **felhasználók**  >  **minden felhasználóját**. 
 1. Válassza ki azt a felhasználót, akivel hozzá szeretné adni a hitelesítési módszert, és válassza a **hitelesítési módszerek** lehetőséget.  
 1. Az ablak tetején válassza a **+ hitelesítési módszer hozzáadása** elemet.
    1. Válasszon egy metódust (telefonszám vagy e-mail-cím). Az e-mailek az önjelszó visszaállítására használhatók, de a hitelesítés nem lehetséges. Telefonszám hozzáadásakor válasszon egy telefonszámot, és adja meg a telefonszámot érvényes formátumban (például + 1 4255551234).
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
 
 > [!NOTE]
 > Az előzetes verzió használata lehetővé teszi a rendszergazdák számára, hogy a felhasználók számára elérhető hitelesítési módszereket adjanak hozzá, míg az eredeti felület csak a telefonos és a másodlagos telefonos módszerek frissítését teszi lehetővé.

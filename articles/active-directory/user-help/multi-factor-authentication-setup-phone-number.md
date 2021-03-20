@@ -11,10 +11,10 @@ ms.topic: end-user-help
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 40af9ac692a226b12f984db447db9635cba655e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530255"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Mobileszköz beállítása kétfaktoros ellenőrzési módszerként
@@ -28,11 +28,11 @@ Beállíthatja, hogy a mobileszköz a kétfaktoros ellenőrzési módszerként m
 
 1. A **további biztonsági ellenőrzés** lapon válassza az **1. lépés:** a **hitelesítési telefon** lehetőséget, majd válassza ki az országot vagy régiót a legördülő listából, majd írja be a mobileszköz telefonszámát.
 
-2. Válassza a **kód küldése SMS-üzenet** alapján lehetőséget a **metódus** területen, majd kattintson a **tovább**gombra.
+2. Válassza a **kód küldése SMS-üzenet** alapján lehetőséget a **metódus** területen, majd kattintson a **tovább** gombra.
 
     ![A "további biztonsági ellenőrzés" oldalt megjelenítő képernyőkép, amely a "hitelesítés telefon" és a "Küldés SMS-ként" üzenetet jeleníti meg.](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Írja be az ellenőrző kódot a Microsoft által küldött szöveges üzenetből a **2. lépés: elküldtem egy szöveges üzenetet a telefon** területére, majd válassza az **ellenőrzés**lehetőséget.
+3. Írja be az ellenőrző kódot a Microsoft által küldött szöveges üzenetből a **2. lépés: elküldtem egy szöveges üzenetet a telefon** területére, majd válassza az **ellenőrzés** lehetőséget.
 
     ![További biztonsági ellenőrzés oldal, hitelesítő telefonnal és szöveges üzenettel](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
@@ -43,13 +43,13 @@ Beállíthatja, hogy a mobileszköz a kétfaktoros ellenőrzési módszerként m
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-5. Válassza a **Done** (Kész) lehetőséget.
+5. Válassza a **Kész** lehetőséget.
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>A mobileszköz beállítása telefonos hívás fogadására
 
 1. A **további biztonsági ellenőrzés** lapon válassza az **1. lépés:** a **hitelesítési telefon** lehetőséget, majd válassza ki az országot vagy régiót a legördülő listából, majd írja be a mobileszköz telefonszámát.
 
-2. Válassza a **metódus** területen a **hívjon** lehetőséget, majd kattintson a **tovább**gombra.
+2. Válassza a **metódus** területen a **hívjon** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![További biztonsági ellenőrzési oldal hitelesítéssel telefon és telefonhívás](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
 
@@ -64,7 +64,7 @@ Beállíthatja, hogy a mobileszköz a kétfaktoros ellenőrzési módszerként m
     >[!Note]
     >További információ az alkalmazás jelszavának régebbi alkalmazásokkal való használatáról: [alkalmazások jelszavainak kezelése](multi-factor-authentication-end-user-app-passwords.md). Csak akkor kell használnia az alkalmazáshoz tartozó jelszavakat, ha továbbra is olyan régebbi alkalmazásokat használ, amelyek nem támogatják a kétfaktoros ellenőrzést.
 
-5. Válassza a **Done** (Kész) lehetőséget.
+5. Válassza a **Kész** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

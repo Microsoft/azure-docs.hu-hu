@@ -4,10 +4,10 @@ description: Az Azure Service Fabric Linux- és Windows-verziója közötti kül
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 4adae60ded804450c25809faa0edca6bb058adf7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574496"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>A Service Fabric Linux és Windows rendszerhez készült verziója közötti különbségek
@@ -77,7 +77,7 @@ Néhány szolgáltatás csak Windows rendszeren támogatott, Linuxon nem. Időve
 * Stop-ServiceFabricRepairTask
 * Update-ServiceFabricRepairTaskHealthPolicy
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A fejlesztőkörnyezet előkészítése Linuxon](service-fabric-get-started-linux.md)
 * [A fejlesztőkörnyezet előkészítése OSX-en](service-fabric-get-started-mac.md)

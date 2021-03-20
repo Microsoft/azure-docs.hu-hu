@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: be87d2af698bb71573952943b5ddc3f0910a3333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85838757"
 ---
 | Szint | Ingyenes | Alapszintű | Standard |
 | --- | --- | --- | --- |
 | API-hívások |500 000 |1 500 000 egységenként |15 000 000 egységenként |
 | Aktív eszközök |500 |Korlátlan |Korlátlan |
-| Méretezés |N.A. |Legfeljebb 6 egység |Korlátlan számú egység |
+| Méretezés |N/A |Legfeljebb 6 egység |Korlátlan számú egység |
 | Leküldéses értesítések |Azure Notification Hubs ingyenes csomag, akár 1 000 000 leküldés |Notification Hubs alapszintű csomag, akár 10 000 000 leküldés |Notification Hubs standard szintű csomag, akár 10 000 000 leküldés |
 | Valós idejű üzenetkezelés/<br/>Webes szoftvercsatornák |Korlátozott |350/mobil szolgáltatás |Korlátlan |
 | Offline szinkronizálások |Korlátozott |Tartalmazza |Tartalmazza |

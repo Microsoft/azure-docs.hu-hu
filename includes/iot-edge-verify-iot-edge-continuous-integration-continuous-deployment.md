@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
 ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89303053"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD ellenőrzése a létrehozási és kiadási folyamatokkal
@@ -21,7 +21,7 @@ A létrehozási feladatok elindításához leküldheti a véglegesítést a forr
 
     ![A létrehozási folyamat manuális elindítása a folyamat futtatása gomb használatával](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/manual-trigger.png)
 
-3. Tekintse át a **folyamat futtatása** beállításait. Ezután válassza a **Futtatás**lehetőséget.
+3. Tekintse át a **folyamat futtatása** beállításait. Ezután válassza a **Futtatás** lehetőséget.
 
     ![A futtatási folyamat beállításainak megadása és a Futtatás kiválasztása](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/run-pipeline-settings.png)
 

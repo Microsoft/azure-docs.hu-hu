@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 18cc42c3447de733447c27db52a9a6d664539464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400355"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
@@ -60,7 +60,7 @@ A git-hozzáférés a REST API használatával történő engedélyezésével va
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>A szolgáltatás konfigurációjának mentése a git-tárházba
 
-A tárház klónozása előtt az első lépés a szolgáltatás konfigurációjának aktuális állapotának mentése a tárházba. Kattintson **a Mentés a tárházba**lehetőségre.
+A tárház klónozása előtt az első lépés a szolgáltatás konfigurációjának aktuális állapotának mentése a tárházba. Kattintson **a Mentés a tárházba** lehetőségre.
 
 Végezze el a kívánt módosításokat a megerősítő képernyőn, majd kattintson a **Save (Mentés** ) gombra a mentéshez.
 
@@ -74,7 +74,7 @@ A műveletnek a REST API használatával történő végrehajtásával kapcsolat
 
 A tárház klónozásához szüksége lesz a tárház, a Felhasználónév és a jelszó URL-címére. A Felhasználónév és az egyéb hitelesítő adatok lekéréséhez kattintson az oldal tetején található **hozzáférési hitelesítő adatok** elemre.
 
-A jelszó létrehozásához először ellenőrizze, hogy a **lejárat** a kívánt lejárati dátumra és időpontra van-e állítva, majd kattintson a **Létrehozás**gombra.
+A jelszó létrehozásához először ellenőrizze, hogy a **lejárat** a kívánt lejárati dátumra és időpontra van-e állítva, majd kattintson a **Létrehozás** gombra.
 
 > [!IMPORTANT]
 > Jegyezze fel ezt a jelszót. Ha elhagyja ezt a lapot, a jelszó nem jelenik meg újra.
@@ -96,7 +96,7 @@ Ha hibaüzenetet kap, próbálja meg módosítani a `git clone` parancsot úgy, 
 git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
-Ha ez hibát jelez, próbálja meg az URL-címet kódolni a parancs jelszó részében. Ennek egyik gyors módja a Visual Studio megnyitása, és a következő parancs kiadása a **parancsablakban**. Az **azonnali ablak**megnyitásához nyisson meg bármilyen megoldást vagy projektet a Visual Studióban (vagy hozzon létre egy új üres konzol alkalmazást), és válassza a **Windows**, **azonnali** lehetőséget a **hibakeresés** menüben.
+Ha ez hibát jelez, próbálja meg az URL-címet kódolni a parancs jelszó részében. Ennek egyik gyors módja a Visual Studio megnyitása, és a következő parancs kiadása a **parancsablakban**. Az **azonnali ablak** megnyitásához nyisson meg bármilyen megoldást vagy projektet a Visual Studióban (vagy hozzon létre egy új üres konzol alkalmazást), és válassza a **Windows**, **azonnali** lehetőséget a **hibakeresés** menüben.
 
 ```
 ?System.Net.WebUtility.UrlEncode("password from the Azure portal")

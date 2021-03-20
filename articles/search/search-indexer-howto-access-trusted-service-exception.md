@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: e139c15ef6de00376a4e1a88000d263c3486994b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92101375"
 ---
 # <a name="indexer-access-to-azure-storage-using-the-trusted-service-exception-azure-cognitive-search"></a>Indexelő hozzáférés az Azure Storage-hoz a megbízható szolgáltatási kivétel (Azure Cognitive Search) használatával
@@ -34,7 +34,7 @@ A Azure Portal navigáljon a Storage-fiók **tűzfalak és virtuális hálózato
 
 Az indexelő mostantól hozzáférhetnek a Storage-fiókban lévő adataihoz, még akkor is, ha a fiók IP-tűzfalszabályok használatával védett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Storage indexelő szolgáltatásáról:
 
