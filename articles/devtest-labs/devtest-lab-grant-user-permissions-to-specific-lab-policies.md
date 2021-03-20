@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat felhasználói engedélyeket a DevTest La
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 976862476d25e4e9a4933d8a5319eec9d77ca39b
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92328470"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Felhasználói engedélyek megadása adott tesztkörnyezet-házirendekhez
@@ -19,7 +19,7 @@ Ahogy az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-
 
 A DevTest Labs szolgáltatásban a szabályzat olyan erőforrástípus, amely lehetővé teszi az Azure RBAC műveletet a **Microsoft. segédösszetevője/Labs/policySets/policies/**. Az egyes tesztkörnyezet-házirendek a házirend-erőforrástípus egyik erőforrása, amely hatókörként is hozzárendelhető egy Azure-szerepkörhöz.
 
-Például ahhoz, hogy a felhasználók olvasási/írási engedélyt adjanak az engedélyezett virtuálisgép- **méretek** házirendjéhez, létre kell hoznia egy egyéni szerepkört, amely együttműködik a **Microsoft. segédösszetevője/Labs/policySets/** policys/Action szolgáltatással, majd hozzárendeli a megfelelő felhasználókat az egyéni szerepkörhöz a **Microsoft. segédösszetevője/Labs/policySets/policies/AllowedVmSizesInLab**hatókörében.
+Például ahhoz, hogy a felhasználók olvasási/írási engedélyt adjanak az engedélyezett virtuálisgép- **méretek** házirendjéhez, létre kell hoznia egy egyéni szerepkört, amely együttműködik a **Microsoft. segédösszetevője/Labs/policySets/** policys/Action szolgáltatással, majd hozzárendeli a megfelelő felhasználókat az egyéni szerepkörhöz a **Microsoft. segédösszetevője/Labs/policySets/policies/AllowedVmSizesInLab** hatókörében.
 
 Ha többet szeretne megtudni az Azure RBAC lévő egyéni szerepkörökről, tekintse meg az [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles.md).
 
@@ -80,7 +80,7 @@ Az előző példában a rendszer a **AllowedVmSizesInLab** szabályzatot haszná
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha meghatározott labor-házirendekhez adott meg felhasználói engedélyeket, a következő lépéseket érdemes figyelembe vennie:
 
 * [Biztonságos hozzáférés a laborhoz](devtest-lab-add-devtest-user.md)

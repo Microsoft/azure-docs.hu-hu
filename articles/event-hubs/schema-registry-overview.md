@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: a876651b76aa259754623854b8fc4a7c6c8a939e
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330495"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
@@ -17,7 +17,7 @@ Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esem�
 Az **Azure Schema Registry** a Event Hubs egyik funkciója, amely egy központi tárházat biztosít a séma dokumentumaihoz az eseményvezérelt és üzenetküldési központú alkalmazásokhoz. Rugalmasságot biztosít a termelő és a fogyasztói alkalmazások számára az adatcseréhez anélkül, hogy a sémákat a közöttük lévő séma kezelése és megosztása, valamint a különböző díjszabások alapján kellene fejlődni. A séma beállításjegyzéke egyszerű irányítási keretrendszert is biztosít az újrafelhasználható sémák számára, és meghatározza a sémák közötti kapcsolatot egy csoportosítási összeállítás (Schema groups) segítségével.
 
 > [!NOTE]
-> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes**verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
+> - A **séma-beállításjegyzék** szolgáltatás jelenleg **előzetes** verzióban érhető el, és éles számítási feladatokhoz nem ajánlott.
 > - A szolgáltatás csak **standard** és **dedikált** szinten érhető el, nem az alapszintű **csomagokban** .
 
 A sémák által vezérelt szerializálási keretrendszerek, például az Apache Avro, a externalizing-szerializálási metaadatok a megosztott sémákban is segíthetnek, ha jelentősen csökkentik az egyes adatkészletekben található, és a címkével ellátott, címkézett formátumokkal (például JSON) ellátott üzenetek és mezőnevek. Az eseményeken és az eseményvezérelt infrastruktúrán belül tárolt sémák biztosítják, hogy a szerializáláshoz és a szerializáláshoz szükséges metaadatok mindig elérhetők legyenek, és a sémák nem lehetnek rossz helyre helyezve. 
@@ -62,7 +62,7 @@ Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrá
 
 Az alkalmazások a Azure Portal használatával történő regisztrálásával kapcsolatos utasításokért lásd: [alkalmazás regisztrálása az Azure ad](../active-directory/develop/quickstart-register-app.md)-ben. Jegyezze fel az ügyfél-azonosítót (az alkalmazás AZONOSÍTÓját), a bérlő AZONOSÍTÓját és a kódban használandó titkot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha meg szeretné tudni, hogyan hozhat létre egy séma-beállításjegyzéket a Azure Portal használatával, tekintse meg a [Event Hubs séma-beállításjegyzék létrehozása a Azure Portal használatával](create-schema-registry.md)című témakört.
 - Tekintse meg az alábbi, **Avro ügyféloldali függvénytár** -mintákat.

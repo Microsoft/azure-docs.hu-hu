@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879292"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Azure-alkalmazás ajánlatának megtervezése a kereskedelmi piactéren
@@ -121,7 +121,7 @@ Amikor új Azure-alkalmazást hoz létre a partner Centerben, szöveget, képet,
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
 7. Összefoglalás
-8. Leírás
+8. Description
 9. Képernyőképek/videók
 
 Az alábbi képernyőképen látható, hogyan jelennek meg az ajánlat adatai a Azure Portalban:
@@ -231,7 +231,7 @@ Kétféle Azure-alkalmazási csomag létezik: _megoldás sablon_ és _felügyelt
  
     Használja a felügyelt alkalmazáscsomag típusát, ha Ön vagy az ügyfél megköveteli, hogy a megoldást egy partner felügyelje, vagy egy előfizetésen alapuló megoldást helyezzen üzembe. További információ a felügyelt alkalmazások előnyeiről és típusairól: az [Azure által felügyelt alkalmazások áttekintése](../azure-resource-manager/managed-applications/overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A megoldási sablon megtervezéséhez lásd: [megoldási sablon tervezése Azure-alkalmazási ajánlathoz](plan-azure-app-solution-template.md).
 - Az Azure által felügyelt alkalmazások megtervezéséhez tekintse meg az Azure [által felügyelt alkalmazások megtervezése Azure-alkalmazásokhoz](plan-azure-app-managed-app.md)című témakört.

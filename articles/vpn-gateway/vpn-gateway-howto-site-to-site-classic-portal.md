@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ad05281f13885327c855a261a3101388f38af83
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878053"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Helyek közötti kapcsolat létrehozása az Azure Portal használatával (klasszikus)
@@ -29,7 +29,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 
 ![Helyek közötti VPN Gateway létesítmények közötti kapcsolathoz – diagram](./media/vpn-gateway-howto-site-to-site-classic-portal/site-to-site-diagram.png)
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -141,7 +141,7 @@ Az Azure VPN Gateway alaphelyzetbe állítása akkor hasznos, ha egy vagy több 
 
 Az átjárók SKU-jának módosításának lépéseiért lásd: [ÁTJÁRÓ SKU-jának átméretezése](vpn-gateway-about-SKUS-legacy.md#classicresize).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](../index.yml).
 * Információk a kényszerített bújtatásról: [Információk a kényszerített bújtatásról](vpn-gateway-about-forced-tunneling.md).

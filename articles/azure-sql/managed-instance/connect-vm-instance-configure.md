@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: a1f496d59fa626dc8750493591128f7363afa40d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91620256"
 ---
 # <a name="quickstart-configure-an-azure-vm-to-connect-to-azure-sql-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép konfigurálása a felügyelt Azure SQL-példányhoz való kapcsolódáshoz
@@ -112,7 +112,7 @@ A következő lépések bemutatják, hogyan csatlakozhat az újonnan létrehozot
 
     ![Képernyőfelvétel: a kiválasztott virtuális gép áttekintő lapját tartalmazó Azure Portal és a Kiemelt kapcsolat.](./media/connect-vm-instance-configure/vm.png)  
 
-2. Kattintson a **Csatlakozás** gombra.
+2. Válassza a **Kapcsolódás** lehetőséget.
 
    A virtuális gép nyilvános IP-címét és portszámát tartalmazó RDP protokoll fájl (. rdp fájl) űrlap jelenik meg.
 
@@ -125,7 +125,7 @@ A következő lépések bemutatják, hogyan csatlakozhat az újonnan létrehozot
 
 4. Zárjuk be a **Kapcsolódás virtuális géphez** űrlapot.
 5. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz.
-6. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget. Mac számítógépen szükség van egy RDP-ügyfélre, például a Mac App Store áruházból [Távoli asztal-ügyfélre](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) .
+6. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Mac számítógépen szükség van egy RDP-ügyfélre, például a Mac App Store áruházból [Távoli asztal-ügyfélre](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) .
 
 7. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd kattintson **az OK gombra**.
 
@@ -138,7 +138,7 @@ A Kiszolgálókezelő irányítópultján csatlakozik a virtuális géphez.
 1. A virtuális gépen nyissa meg a SQL Server Management Studio.
 
    Néhány percet is igénybe vehet, ahogy a konfigurációjának befejezéséhez szükséges, mivel ez az első alkalom, hogy a SSMS elindult.
-2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben. Válassza ki **SQL Server hitelesítést**, adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat**lehetőséget.
+2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben. Válassza ki **SQL Server hitelesítést**, adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat** lehetőséget.
 
     ![SSMS-kapcsolat](./media/connect-vm-instance-configure/ssms-connect.png)  
 

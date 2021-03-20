@@ -12,10 +12,10 @@ ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 875b2a9f35562dd8f0d5df3c631e5ade1e3fbf75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91714527"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz a PowerShell használatával
@@ -32,7 +32,7 @@ Felhasználói delegálási SAS PowerShell-lel történő létrehozásához tele
 
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
-    - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások**területen található **alkalmazások & szolgáltatások** beállítással.
+    - Távolítsa el a Azure PowerShell korábbi telepítését a Windows rendszerből a **Beállítások** területen található **alkalmazások & szolgáltatások** beállítással.
     - Távolítsa el az összes **Azure** -modult `%Program Files%\WindowsPowerShell\Modules` .
 
 1. Győződjön meg arról, hogy a PowerShellGet legújabb verziója van telepítve. Nyisson meg egy Windows PowerShell-ablakot, és futtassa a következő parancsot a legújabb verzió telepítéséhez:
@@ -77,7 +77,7 @@ A PowerShell-lel való bejelentkezéssel kapcsolatos további információkért 
 
 ## <a name="assign-permissions-with-azure-rbac"></a>Engedélyek kiosztása az Azure RBAC
 
-Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, a PowerShellbe való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot*kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni. További információ az Azure RBAC-engedélyekről felhasználói delegálási SAS létrehozásához: **engedélyek kiosztása az Azure RBAC** című rész a [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas)című részben.
+Ha Azure PowerShellból szeretne felhasználói delegálási SAS-t létrehozni, a PowerShellbe való bejelentkezéshez használt Azure AD-fióknak olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Ez az engedély lehetővé teszi, hogy az Azure AD-fiók a *felhasználói delegálási kulcsot* kérje. A felhasználói delegálási kulcs a felhasználói delegálási SAS aláírására szolgál. A **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet biztosító szerepkört a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell hozzárendelni. További információ az Azure RBAC-engedélyekről felhasználói delegálási SAS létrehozásához: **engedélyek kiosztása az Azure RBAC** című rész a [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas)című részben.
 
 Ha nem rendelkezik megfelelő engedélyekkel az Azure-szerepkörök Azure AD-rendszerbiztonsági tag számára való hozzárendeléséhez, akkor előfordulhat, hogy a fiók tulajdonosának vagy a rendszergazdának kell megkérnie a szükséges engedélyek hozzárendelését.
 

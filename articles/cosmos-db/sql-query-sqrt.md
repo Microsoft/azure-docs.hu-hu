@@ -9,10 +9,10 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: ac504baf0f8c59408327bbbf51392428ffee43b8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335360"
 ---
 # <a name="sqrt-azure-cosmos-db"></a>SQRT (Azure Cosmos DB)
@@ -53,7 +53,7 @@ SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Matematikai függvények Azure Cosmos DB](sql-query-mathematical-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

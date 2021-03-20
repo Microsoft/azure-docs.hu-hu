@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492199"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Fejlesztés az Azure Files szolgáltatáshoz a .NET-keretrendszerrel
@@ -54,7 +54,7 @@ Hozzon létre egy új Windows-konzolalkalmazást a Visual Studióban. A követke
 1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **tovább** gombra.
 1. Az **új projekt konfigurálása** lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás** lehetőséget.
 
-Adja hozzá a cikkben szereplő összes példát a Program.cs- `Program` fájl osztályához *Program.cs* .
+Adja hozzá a cikkben szereplő összes példát a `Program` *program. cs* fájl osztályához.
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>A szükséges csomagok telepítése a NuGettel
 
@@ -135,7 +135,7 @@ Cserélje le a `myaccount` nevet a Storage-fiók nevére és a `StorageAccountKe
 
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-A **Megoldáskezelőban** nyissa meg a *program.cs* fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
+A **Megoldáskezelőban** nyissa meg a *program. cs* fájlt, és adja hozzá az alábbi utasításokat a fájl elejéhez.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -156,7 +156,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>A fájlmegosztás szoftveres elérése
 
-A *program.cs* fájlban adja hozzá a következő kódot a fájlmegosztás programozott módon való eléréséhez.
+A *program. cs* fájlban adja hozzá a következő kódot a fájlmegosztás programozott módon való eléréséhez.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -559,7 +559,7 @@ A következő mintakód bemutatja, hogyan használható a .NET ügyféloldali k�
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Először adja hozzá a következő `using` irányelveket a *program.cs* -fájlhoz, a fent hozzáadott jelekkel együtt:
+Először adja hozzá a következő `using` irányelveket a *program. cs* fájlhoz, valamint a fent hozzáadott fájlokat:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
@@ -613,7 +613,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 Ha bármilyen problémába ütközik, tekintse meg a [Windows Azure Files kapcsolatos problémák elhárítása](storage-troubleshoot-windows-file-connection-problems.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Filesről:
 
@@ -627,7 +627,7 @@ További információ a Azure Filesről:
 - [Bevezetés az AzCopy használatába](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Azure Files-problémák hibaelhárítása Windowson](./storage-troubleshoot-windows-file-connection-problems.md)
 
-### <a name="reference"></a>Hivatkozás
+### <a name="reference"></a>Referencia
 
 - [Azure Storage API-k a .NET-hez](/dotnet/api/overview/azure/storage)
 - [A File szolgáltatás REST API-ja](/rest/api/storageservices/File-Service-REST-API)

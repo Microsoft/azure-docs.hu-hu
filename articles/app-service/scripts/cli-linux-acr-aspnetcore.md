@@ -10,10 +10,10 @@ ms.date: 12/13/2018
 ms.author: msangapu
 ms.custom: devx-track-dotnet, mvc, seodec18
 ms.openlocfilehash: b4c96b14a24cdc4b953d072dd51f4cb0ca5d67c8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006055"
 ---
 # <a name="create-an-aspnet-core-app-in-a-docker-container-in-app-service-from-azure-container-registry"></a>ASP.NET Core-alkalmazás létrehozása Docker-tárolóban a App Serviceból a Azure Container Registry
@@ -35,7 +35,7 @@ Az Azure CLI 2.0.52 vagy újabb verziójára lesz szüksége. A verzió megkeres
 
 Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [`az group create`](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |

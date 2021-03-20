@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018579"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Azure CDN gyorsítótárazási viselkedés szabályozása lekérdezési karakterláncokkal – standard szint
 > [!div class="op_single_selector"]
-> * [Standard szint](cdn-query-string.md)
+> * [Standard csomag](cdn-query-string.md)
 > * [Prémium szintű csomag](cdn-query-string-premium.md)
 > 
 

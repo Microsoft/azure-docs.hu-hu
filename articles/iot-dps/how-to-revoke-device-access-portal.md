@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97740368"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz regisztrálása az Azure-ból IoT Hub Device Provisioning Service
@@ -108,6 +108,6 @@ Ha egyetlen eszközt szeretne letiltani egy regisztrációs csoportban, kövesse
 
 A regisztráció sikeres létrehozásakor az **Egyéni regisztrációk** lapon megjelenik a letiltott eszközök regisztrációja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A regisztráció a nagyobb megszüntetési folyamat része is. Az eszközök megszüntetése magában foglalja a kiépítési szolgáltatásból való kivonást és a IoT hub-ból való regisztrációt is. A teljes folyamattal kapcsolatos további tudnivalókért lásd: a [korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) .

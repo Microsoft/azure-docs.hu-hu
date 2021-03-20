@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97734810"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automationban
@@ -36,7 +36,7 @@ Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add
 
 A következő táblázatban található belső parancsmag a runbookok lévő tanúsítványok elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Leírás |
+| Belső parancsmag | Description |
 |:---|:---|
 |`Get-AutomationCertificate`|Lekéri egy runbook vagy DSC-konfigurációban használandó tanúsítványt. Egy [System. Security. kriptográfiai. X509Certificates. x509certificate2)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektumot ad vissza.|
 
@@ -176,7 +176,7 @@ Az alábbi képen egy példa látható a tanúsítvány grafikus runbook való h
 
 ![Képernyőkép egy grafikus szerzői műveletről](../media/certificates/graphical-runbook-add-certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

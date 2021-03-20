@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 19b769d1fff431f95c20e607c17747f2ff483d2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487184"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Keresési kategóriák a Bing helyi üzleti keresési API-hoz
@@ -189,7 +189,7 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Földrajzi keresési határok](specify-geographic-search.md)
 - [Lekérdezés és válasz](local-search-query-response.md)
 - [Gyors útmutató C-ben #](quickstarts/local-quickstart.md)

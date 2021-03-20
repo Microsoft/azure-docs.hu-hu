@@ -9,10 +9,10 @@ author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
 ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879326"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Virtuális gépek ajánlatának megtervezése
@@ -131,7 +131,7 @@ Ha az ajánlatot a partner Centerben hozza létre, megjelenik az **viszonteladá
 > [!NOTE]
 > Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [**Cloud Solution Providers**](./cloud-solution-providers.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuálisgép-ajánlat létrehozása az Azure Marketplace-en](azure-vm-create.md)
 - [Hozzon létre egy virtuális gépet jóváhagyott alap használatával](azure-vm-create-using-approved-base.md) , vagy [hozzon létre egy virtuális gépet saját rendszerkép használatával](azure-vm-create-using-own-image.md).

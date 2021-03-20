@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
 ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879224"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
@@ -41,7 +41,7 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 | [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. Az SaaS-ajánlatok egyszeri bejelentkezési követelményeivel kapcsolatos információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](azure-ad-saas.md). |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez tekintse át a megfelelő cikkben szereplő támogathatósági követelményeket.
 - Tekintse át az egyes online áruházak közzétételi mintáit, példákat arra, hogy a megoldás hogyan mutasson az ajánlat típusára és a konfigurációra.

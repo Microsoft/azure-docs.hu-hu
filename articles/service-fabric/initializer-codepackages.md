@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258977"
 ---
 # <a name="initializer-codepackages"></a>Inicializáló kódcsomagok
@@ -23,12 +23,12 @@ A cikk folytatása előtt javasoljuk, hogy ismerkedjen meg a [Service Fabric alk
  
 ## <a name="semantics"></a>Szemantika
 
-A rendszer inicializáló CodePackage fog futni a **sikeres befejezéshez (kilépési kód: 0)**. A sikertelen inicializálási CodePackage a sikeres befejezésig újraindulnak. Több inicializáló CodePackages is engedélyezve van, és végrehajtása a **sikeres Befejezés**érdekében, **sorrendben**, **egy meghatározott sorrendben** történik, mielőtt más CodePackages is megkezdődik a szervizcsomagok végrehajtásában.
+A rendszer inicializáló CodePackage fog futni a **sikeres befejezéshez (kilépési kód: 0)**. A sikertelen inicializálási CodePackage a sikeres befejezésig újraindulnak. Több inicializáló CodePackages is engedélyezve van, és végrehajtása a **sikeres Befejezés** érdekében, **sorrendben**, **egy meghatározott sorrendben** történik, mielőtt más CodePackages is megkezdődik a szervizcsomagok végrehajtásában.
 
 ## <a name="specifying-initializer-codepackages"></a>Inicializálási CodePackages megadásához
 A CodePackage megadható inicializáló úgy, hogy az **inicializálás** attribútumát **true** értékre állítja a ServiceManifest. Ha több inicializáló CodePackages van, a végrehajtásuk sorrendje a **ExecOrder** attribútumon keresztül adható meg. A **ExecOrder** nem negatív egész számnak kell lennie, és csak inicializáló CodePackages esetén érvényes. Először a **ExecOrder** alacsonyabb értékkel rendelkező inicializáló CodePackages hajtja végre. Ha a **ExecOrder** nincs megadva az inicializálási CodePackage, a rendszer a 0 alapértelmezett értéket feltételezi. A **ExecOrder** azonos értékkel rendelkező inicializáló CodePackages relatív végrehajtási sorrendje nincs meghatározva.
 
-A következő ServiceManifest-kódrészlet három CodePackages tartalmaz, amelyek közül kettőt inicializáló jelöl meg. Ha ez a szervizcsomag aktiválva van, a rendszer először a *InitCodePackage0* hajtja végre, mivel a legalacsonyabb **ExecOrder**értékkel rendelkezik. A *InitCodePackage0*sikeres befejezésekor (0. kilépési kód) a *InitCodePackage1* végrehajtása történik. Végül a *InitCodePackage1*sikeres befejezésekor a rendszer végrehajtja a *WorkloadCodePackage* .
+A következő ServiceManifest-kódrészlet három CodePackages tartalmaz, amelyek közül kettőt inicializáló jelöl meg. Ha ez a szervizcsomag aktiválva van, a rendszer először a *InitCodePackage0* hajtja végre, mivel a legalacsonyabb **ExecOrder** értékkel rendelkezik. A *InitCodePackage0* sikeres befejezésekor (0. kilépési kód) a *InitCodePackage1* végrehajtása történik. Végül a *InitCodePackage1* sikeres befejezésekor a rendszer végrehajtja a *WorkloadCodePackage* .
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -136,7 +136,7 @@ Hi from InitCodePackage1.
 Hi from WorkloadCodePackage.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó információkról a következő cikkekben olvashat.
 

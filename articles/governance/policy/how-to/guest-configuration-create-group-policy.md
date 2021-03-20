@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Ser
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348644"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
 
 Az egyéni házirend-definíciók létrehozása előtt érdemes beolvasni a koncepcionális áttekintési információkat [Azure Policy vendég konfigurációjában](../concepts/guest-configuration.md). A Linux rendszerhez készült egyéni vendég-konfigurációs házirend-definíciók létrehozásával kapcsolatos további információkért lásd: [vendég-konfigurációs szabályzatok létrehozása Linux rendszerhez](./guest-configuration-create-linux.md). További információ a Windows rendszerhez készült egyéni konfigurációs házirend-definíciók létrehozásáról: [vendég konfigurációs szabályzatok létrehozása Windows rendszerhez](./guest-configuration-create.md).
 
-A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése **nem megfelelő** , akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* .
+A Windows naplózásakor a Vendégkonfiguráció egy [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) erőforrásmodul használatával hozza létre a konfigurációs fájlt. A DSC-konfiguráció határozza meg a gép kívánt állapotát. Ha a konfiguráció kiértékelése **nem megfelelő**, akkor a rendszer kiváltja a házirend hatására *auditIfNotExists* .
 [Azure Policy vendég konfiguráció](../concepts/guest-configuration.md) csak a gépeken belüli beállításokat naplózza.
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ Ebből az útmutatóból megtudhatja, hogyan hozhat létre Azure Policy vendég 
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Töltse le a Windows Server 2019 biztonsági alaptervét, és telepítse a kapcsolódó PowerShell-modulokat
 
-A **DSC** , a **GuestConfiguration** , az alapkonfiguráció **kezelése** és a kapcsolódó Azure-modulok telepítése a PowerShellben:
+A **DSC**, a **GuestConfiguration**, az alapkonfiguráció **kezelése** és a kapcsolódó Azure-modulok telepítése a PowerShellben:
 
 1. A PowerShell-parancssorból futtassa a következő parancsot:
 

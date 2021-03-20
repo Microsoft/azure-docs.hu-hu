@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
 ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878189"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
@@ -399,6 +399,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 **Válasz:** Az Amazon Linux rendszerű virtuális gépek nem telepíthetők át, mert az Amazon Linux operációs rendszer csak az AWS-t támogatja.
 Az Amazon Linux rendszeren futó munkaterhelések áttelepítéséhez egy CentOS/RHEL virtuális gépet is üzembe helyezhet az Azure-ban, és áttelepítheti az AWS linuxos gépen futó munkaterhelést a megfelelő munkaterhelés-áttelepítési módszer használatával. Például a munkaterheléstől függően előfordulhat, hogy a munkaterhelés-specifikus eszközök az áttelepítést segítik – például a webkiszolgálók adatbázisai vagy központi telepítési eszközei esetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

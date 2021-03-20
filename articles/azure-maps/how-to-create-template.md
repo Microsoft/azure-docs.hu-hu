@@ -7,10 +7,10 @@ ms.date: 10/20/2020
 ms.topic: how-to
 ms.service: azure-maps
 ms.openlocfilehash: c715c0639e962f76f669515c1d2c826c8cf6cc9e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92525118"
 ---
 # <a name="create-your-azure-maps-account-using-an-arm-template"></a>Azure Maps fiók létrehozása ARM-sablonnal
@@ -27,7 +27,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 A cikk elvégzéséhez:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
@@ -52,13 +52,13 @@ A Azure Maps fiók erőforrása a következő sablonban van definiálva:
     Ha meg van adva, a Azure Maps-fiók létrehozásához használja az alapértelmezett értéket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK**gombra.
-    * **Hely**: válasszon ki egy helyet. Például: **USA 2. nyugati**régiója.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK** gombra.
+    * **Hely**: válasszon ki egy helyet. Például: **USA 2. nyugati** régiója.
     * **Fiók neve**: adja meg a Azure Maps-fiók nevét, amelynek globálisan egyedinek kell lennie.
     * **Árképzési szintek**: válassza ki a megfelelő árképzési szintet, a sablon alapértelmezett értéke S0.
 
-3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
-4. Erősítse meg a beállításokat a felülvizsgálati oldalon, és kattintson a **Létrehozás**gombra. A Azure Maps sikeres üzembe helyezését követően értesítést kap:
+3. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+4. Erősítse meg a beállításokat a felülvizsgálati oldalon, és kattintson a **Létrehozás** gombra. A Azure Maps sikeres üzembe helyezését követően értesítést kap:
 
     ![ARM-sablon üzembe helyezése – portál értesítése](./media/how-to-create-template/resource-manager-template-portal-deployment-notification.png)
 

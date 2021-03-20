@@ -4,10 +4,10 @@ description: Hozzon létre egy privát végpontot egy tároló-beállításjegyz
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93342300"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Privát csatlakozás Azure Container registryhez az Azure Private link használatával
@@ -50,7 +50,7 @@ VM_NAME=<virtual-machine-name>
 
 Ha még nem rendelkezik velük, szüksége lesz egy virtuális hálózat és alhálózat nevére a privát hivatkozás beállításához. Ebben a példában ugyanazt az alhálózatot használja a virtuális géphez és a beállításjegyzék privát végpontja számára. Számos esetben azonban a végpontot külön alhálózatban kell beállítania. 
 
-Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM* nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET* , és egy *myDockerVMSubnet* nevű alhálózattal rendelkezik. Állítsa be ezeket az értékeket környezeti változókba az az [Network vnet List][az-network-vnet-list] parancs futtatásával:
+Amikor létrehoz egy virtuális GÉPET, az Azure alapértelmezés szerint ugyanahhoz az erőforráscsoporthoz hoz létre egy virtuális hálózatot. A virtuális hálózat neve a virtuális gép nevén alapul. Ha például a virtuális gép *myDockerVM* nevezi el, az alapértelmezett virtuális hálózat neve *myDockerVMVNET*, és egy *myDockerVMSubnet* nevű alhálózattal rendelkezik. Állítsa be ezeket az értékeket környezeti változókba az az [Network vnet List][az-network-vnet-list] parancs futtatásával:
 
 ```azurecli
 NETWORK_NAME=$(az network vnet list \
@@ -205,7 +205,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
 ### <a name="create-a-private-endpoint---new-registry"></a>Privát végpont létrehozása – új beállításjegyzék
 
 1. Amikor beállításjegyzéket hoz létre a portálon, az **alapok** lap **SKU** területén válassza a **prémium** lehetőséget.
-1. Válassza a **hálózatkezelés** lapot.
+1. Válassza a **Hálózatkezelés** lapot.
 1. A **hálózati kapcsolat** területen válassza a **privát végpont**  >  **+ Hozzáadás** lehetőséget.
 1. Adja meg vagy válassza ki a következő adatokat:
 
@@ -240,7 +240,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
     | **Példány adatai** |  |
     | Name | Adjon meg egy nevet. |
-    |Régió|Válasszon régiót.|
+    |Region|Válasszon régiót.|
     |||
 5. Válassza a **Tovább: erőforrás** elemet.
 6. Adja meg vagy válassza ki a következő adatokat:
@@ -404,7 +404,7 @@ az group delete --name $RESOURCE_GROUP
 
 A portálon található erőforrások törléséhez navigáljon az erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.
 * Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.

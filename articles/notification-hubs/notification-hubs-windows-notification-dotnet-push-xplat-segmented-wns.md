@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 2c77eba69fd914e8ecc7d08a1b16f61ceefe101b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320577"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazást futtató adott eszközökre
@@ -81,7 +81,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     </Grid>
     ```
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd **Add**válassza az  >  **osztály**hozzáadása elemet. Az **új elem hozzáadása**lapon adja meg az osztály *értesítéseinek*nevét, majd válassza a **Hozzáadás**lehetőséget. Ha szükséges, adja hozzá a `public` módosítót az osztály definícióhoz.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza az  >  **osztály** hozzáadása elemet. Az **új elem hozzáadása** lapon adja meg az osztály *értesítéseinek* nevét, majd válassza a **Hozzáadás** lehetőséget. Ha szükséges, adja hozzá a `public` módosítót az osztály definícióhoz.
 
 1. Adja hozzá a következő `using` utasításokat az új fájlhoz:
 
@@ -143,7 +143,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
 
     További információért lásd a [Sablonok](notification-hubs-templates-cross-platform-push-messages.md) szakaszt.
 
-1. A *app.XAML.cs* projekt fájljában adja hozzá a következő tulajdonságot a `App` osztályhoz:
+1. Az *app. XAML. cs* projektfájl mezőben adja hozzá a következő tulajdonságot a `App` osztályhoz:
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -156,13 +156,13 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
    > [!NOTE]
    > Mivel az ügyfélalkalmazással terjesztett hitelesítő adatok általában nem biztonságosak, csak a *figyelési* hozzáférés kulcsát terjessze az ügyfélalkalmazással. A figyelési hozzáférés lehetővé teszi, hogy az alkalmazás regisztráljon értesítésekre, a meglévő regisztrációkat azonban nem lehet módosítani, és értesítéseket sem lehet küldeni. A teljes körű hozzáférési kulcsot egy biztonságos háttérszolgáltatásban használja a rendszer értesítések kiküldésére és a meglévő regisztrációk módosítására.
 
-1. A *MainPage.XAML.cs* fájlban adja hozzá a következő sort:
+1. A *Főoldal. XAML. cs* fájlban adja hozzá a következő sort:
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-1. A *MainPage.XAML.cs* fájlban adja hozzá a következő metódust:
+1. A *Főoldal. XAML. cs* fájlban adja hozzá a következő metódust:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -194,7 +194,7 @@ Ebben a szakaszban elvégzi az értesítési központban való regisztrációt a
 > [!NOTE]
 > Mivel a Windows Notification Service (WNS) által hozzárendelt csatorna URI bármikor megváltozhat, gyakran regisztráljon az értesítésekre, hogy elkerülhesse az értesítési hibákat. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran használt alkalmazások esetében például naponta többször is kihagyhatja a regisztrációt a sávszélesség megőrzése érdekében, ha a korábbi regisztráció óta kevesebb mint egy nap telt el.
 
-1. Ha az `notifications` osztályt a kategóriák alapján szeretné használni, nyissa meg a *app.XAML.cs* fájlt, és frissítse a `InitNotificationsAsync` metódust.
+1. Ha az `notifications` osztályt a kategóriák alapján szeretné használni, nyissa meg az *app. XAML. cs* fájlt, majd frissítse a `InitNotificationsAsync` metódust.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -206,7 +206,7 @@ Ebben a szakaszban elvégzi az értesítési központban való regisztrációt a
     ```
 
     Ez a folyamat biztosítja, hogy az alkalmazás indításakor beolvassa a kategóriákat a helyi tárolóból. Ezután megkéri a kategóriák regisztrálását. A `InitNotificationsAsync` metódust a küldési értesítések részeként hozta létre [univerzális Windows-platform alkalmazások számára az Azure Notification Hubs oktatóanyag használatával][get-started] .
-2. A *MainPage.XAML.cs* projekt fájljában adja hozzá a következő kódot a `OnNavigatedTo` metódushoz:
+2. A *Főoldal. XAML. cs* projektfájlt adja hozzá a következő kódot a `OnNavigatedTo` metódushoz:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -232,7 +232,7 @@ Az alkalmazás ezzel elkészült. Az eszköz helyi tárolójában a kategóriák
 
    ![Legfrissebb hírek alkalmazás](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-1. Engedélyezzen egy vagy több kategóriát, majd válassza az **előfizetés**lehetőséget.
+1. Engedélyezzen egy vagy több kategóriát, majd válassza az **előfizetés** lehetőséget.
 
    Az alkalmazás címkékké alakítja át a kiválasztott kategóriákat, és új eszközregisztrációt kezdeményez az értesítési központban a kiválasztott címkékre vonatkozóan. Az alkalmazás megjeleníti a regisztrált kategóriákat egy párbeszédpanelen.
 

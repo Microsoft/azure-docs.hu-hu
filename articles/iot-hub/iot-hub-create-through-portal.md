@@ -10,10 +10,10 @@ ms.author: robinsh
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0a54d0c85902915d2ee62acd8a1d38b8db8b221c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536045"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
@@ -36,13 +36,13 @@ A meglévő IoT hub beállításait a IoT Hub panelből való létrehozása utá
 
 Íme néhány, a IoT hub számára beállítható tulajdonság:
 
-**Díjszabás és méretezés** : ezt a tulajdonságot használhatja egy másik szintjére való Migrálás vagy a IoT hub egységek számának megadására. 
+**Díjszabás és méretezés**: ezt a tulajdonságot használhatja egy másik szintjére való Migrálás vagy a IoT hub egységek számának megadására. 
 
-**Műveletek figyelése** : a különböző figyelési kategóriákat be-vagy kikapcsolhatja, például az eszközről a felhőbe irányuló üzenetekkel vagy a felhőből az eszközre irányuló üzenetekkel kapcsolatos események naplózása.
+**Műveletek figyelése**: a különböző figyelési kategóriákat be-vagy kikapcsolhatja, például az eszközről a felhőbe irányuló üzenetekkel vagy a felhőből az eszközre irányuló üzenetekkel kapcsolatos események naplózása.
 
-**IP-szűrő** : olyan IP-címek tartományát határozza meg, amelyeket az IoT hub elfogad vagy visszautasít.
+**IP-szűrő**: olyan IP-címek tartományát határozza meg, amelyeket az IoT hub elfogad vagy visszautasít.
 
-**Tulajdonságok** : megjeleníti a máshol másolható és használható tulajdonságok listáját, például az erőforrás-azonosítót, az erőforráscsoportot, a helyet és így tovább.
+**Tulajdonságok**: megjeleníti a máshol másolható és használható tulajdonságok listáját, például az erőforrás-azonosítót, az erőforráscsoportot, a helyet és így tovább.
 
 ### <a name="shared-access-policies"></a>Megosztott elérési szabályzatok
 
@@ -74,13 +74,13 @@ Kattintson az üzenetküldés lehetőségre az **üzenetkezelés** **területen 
 
 ### <a name="routes"></a>Útvonalak
 
-Az útvonalak az üzenet-útválasztási ablaktábla első lapja. Új útvonal hozzáadásához kattintson a + **Hozzáadás** gombra. A következő képernyő jelenik meg. 
+Az útvonalak az üzenet-útválasztási ablaktábla első lapja. Új útvonal hozzáadásához kattintson a +**Hozzáadás** gombra. A következő képernyő jelenik meg. 
 
 ![Új útvonal hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
 Nevezze el az útvonalat. Az útvonal nevének egyedinek kell lennie az adott hubhoz tartozó útvonalak listáján belül. 
 
-A **végpont** esetében választhat egyet a legördülő listából, vagy hozzáadhat egy újat. Ebben a példában a Storage-fiók és a tároló már elérhető. Ha végpontként szeretné hozzáadni őket, kattintson a + **Hozzáadás** elemre a végpont legördülő menüben, majd válassza a **blob Storage** lehetőséget. Az alábbi képernyőn látható, hol vannak megadva a Storage-fiók és a tároló.
+A **végpont** esetében választhat egyet a legördülő listából, vagy hozzáadhat egy újat. Ebben a példában a Storage-fiók és a tároló már elérhető. Ha végpontként szeretné hozzáadni őket, kattintson a +**Hozzáadás** elemre a végpont legördülő menüben, majd válassza a **blob Storage** lehetőséget. Az alábbi képernyőn látható, hol vannak megadva a Storage-fiók és a tároló.
 
 ![A tárolási végpontok útválasztási szabályhoz való hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
@@ -120,7 +120,7 @@ Az alábbi két módon találhat egy adott IoT hubot az előfizetésében:
 
 IOT hub törléséhez keresse meg a törölni kívánt IoT hub-t, majd kattintson a IoT hub neve alatti **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 1570bd9dfa62caa749d5a3983b93c2555be058ec
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348729"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure-beli virtuális gépek vészhelyreállításának beállítása az Azure PowerShell használatával
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmaggal.
 Connect-AzAccount
 ```
 
-Válassza ki az Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki a parancsmag használatával dolgozni kívánt Azure-előfizetést `Set-AzContext` .
+Válassza ki Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki a parancsmag használatával dolgozni kívánt Azure-előfizetést `Set-AzContext` .
 
 ```azurepowershell
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

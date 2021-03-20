@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
 ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96492386"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása a Azure Portal használatával
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL egykiszolgálós adatbázis létrehozásához nyis
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstart-create-database-portal/search-postgres.png" alt-text="Azure Database for PostgreSQL keresése.":::
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 2. A Azure Database for PostgreSQL létrehozása lapon válassza az  **egyetlen kiszolgáló** lehetőséget.
 
@@ -151,7 +151,7 @@ A kiszolgáló törléséhez kattintson a **Törlés** gombra a kiszolgáló **�
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/postgres-doc-feedback)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálás és importálás használatával](./howto-migrate-using-export-and-import.md) <br/>
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: e2b106e64aed08b0586575d4d77602329454a673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536011"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>IoT Hub-fájlfeltöltés konfigurálása a PowerShell használatával
@@ -99,15 +99,15 @@ Most már beállíthatja, hogy a IoT hub [fájlokat töltsön fel az IoT hubhoz]
 
 A konfigurációhoz a következő értékek szükségesek:
 
-* **Storage Container** : egy Azure Storage-fiókban lévő blob-tároló az aktuális Azure-előfizetésben az IoT hub-hoz való hozzárendeléshez. Az előző szakaszban lekérte a szükséges Storage-fiók adatait. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
+* **Storage Container**: egy Azure Storage-fiókban lévő blob-tároló az aktuális Azure-előfizetésben az IoT hub-hoz való hozzárendeléshez. Az előző szakaszban lekérte a szükséges Storage-fiók adatait. A IoT Hub automatikusan létrehoz egy írási engedéllyel rendelkező SAS URI-t a blob-tárolóhoz a fájlok feltöltésekor használandó eszközökhöz.
 
-* **Értesítések fogadása a feltöltött fájlokról** : a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása.
+* **Értesítések fogadása a feltöltött fájlokról**: a fájlfeltöltés értesítéseinek engedélyezése vagy letiltása.
 
-* **Sas TTL** : Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva.
+* **Sas TTL**: Ez a beállítás a IoT hub által az eszközre visszaadott sas URI-k élettartama. Alapértelmezés szerint egy órára van beállítva.
 
-* **Fájl-értesítési beállítások alapértelmezett élettartama** : a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van állítva.
+* **Fájl-értesítési beállítások alapértelmezett élettartama**: a fájl feltöltésével kapcsolatos értesítési idő a lejárta előtt. Alapértelmezés szerint egy napra van állítva.
 
-* **Fájl értesítéseinek maximális kézbesítési száma** : az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre kell állítani.
+* **Fájl értesítéseinek maximális kézbesítési száma**: az a szám, ahányszor a IoT hub megpróbált kézbesíteni egy fájlfeltöltés-értesítést. Alapértelmezés szerint 10 értékre kell állítani.
 
 A következő PowerShell-parancsmaggal konfigurálhatja a fájlfeltöltés beállításait az IoT hub-ban:
 

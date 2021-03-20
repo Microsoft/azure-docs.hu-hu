@@ -4,10 +4,10 @@ description: A Service Fabric alkalmazás frissítésével kapcsolatos paraméte
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018477"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
@@ -33,7 +33,7 @@ A Visual Studio Service Fabric az alkalmazás frissítési paramétereit a Visua
 ### <a name="required-parameters"></a>Szükséges paraméterek
 (PS = PowerShell, VS = Visual Studio)
 
-| Paraméter | Érvényesség | Leírás |
+| Paraméter | Érvényesség | Description |
 | --- | --- | --- |
 ApplicationName |PS| A frissítendő alkalmazás neve. Példák: Fabric:/VisualObjects, Fabric:/ClusterMonitor. |
 ApplicationTypeVersion|PS|Annak az alkalmazásnak a verziója, amelyet a frissítési célok határoznak meg. |
@@ -48,7 +48,7 @@ UnmonitoredManual | PS | Azt jelzi, hogy a frissítési mód a nem figyelt manu�
 Az állapot-értékelési paraméterek megadása nem kötelező. Ha az állapot-értékelési feltételek nem lettek megadva a frissítés indításakor, Service Fabric az alkalmazás példányának ApplicationManifest.xml megadott alkalmazás-állapot házirendjét használja.
 
 > [!div class="mx-tdBreakAll"]
-> | Paraméter | Érvényesség | Leírás |
+> | Paraméter | Érvényesség | Description |
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Megadja az alkalmazás paramétereinek felülbírálásait.<br>A PowerShell-alkalmazás paraméterei szórótábla név/érték párokként vannak megadva. Például: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>A Visual Studio alkalmazás paramétereinek megadhatók az **alkalmazás-paraméterek fájl** mezőjében a közzététel Service Fabric alkalmazásban párbeszédpanelen.
 > | Jóváhagyás |PS| Az engedélyezett értékek értéke **igaz** és **hamis**. A parancsmag futtatása előtt megerősítést kér. |
@@ -103,7 +103,7 @@ frissítés – tartomány – időtúllépés | Az egyes frissítési tartomán
 frissítés – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a *FailureAction* végrehajtása előtt kell végrehajtani. A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. Az alapértelmezett érték soha nem (végtelen), és megfelelően testre kell szabni az alkalmazáshoz. Alapértelmezett: P10675199DT02H48M 05.4775807 S.|
 Figyelmeztetés – hiba | Az engedélyezett értékek értéke **igaz** és **hamis**. Az alapértelmezett érték **false (hamis**). Jelzőként adható át. Az alkalmazás állapotának kiértékelése során hibaként kezelheti az alkalmazáshoz tartozó figyelmeztetési állapottal kapcsolatos eseményeket. Alapértelmezés szerint a Service Fabric nem értékeli ki a figyelmeztetési állapottal kapcsolatos eseményeket (hibák), így a frissítés akkor is folytatódhat, ha figyelmeztető események vannak. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

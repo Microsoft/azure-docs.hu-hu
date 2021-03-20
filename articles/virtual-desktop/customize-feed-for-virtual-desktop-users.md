@@ -7,10 +7,10 @@ ms.date: 09/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90084294"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>A Windows rendszerű virtuális asztali felhasználók hírcsatornájának testreszabása
@@ -105,9 +105,9 @@ A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy e
 
 2. Keresse meg a **Windows rendszerű virtuális asztalt**.
 
-3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
+3. A szolgáltatások területen válassza a **Windows virtuális asztal** elemet.
 
-4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét. (Ha például szerkeszteni szeretné az asztali alkalmazás csoport megjelenítendő nevét, válassza ki az **asztal**nevű alkalmazást.)
+4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét. (Ha például szerkeszteni szeretné az asztali alkalmazás csoport megjelenítendő nevét, válassza ki az **asztal** nevű alkalmazást.)
 
 5. A képernyő bal oldalán található menüben válassza az **alkalmazások** lehetőséget.
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96488391"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
@@ -229,7 +229,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
         
         c. **A letöltött fájl helyének megadása** párbeszédpanelen adja meg, hogy hová kívánja letölteni a fájlt, és adja meg a fájl kívánt nevét.
 
-        d. Válassza a **Mentés** lehetőséget.
+        d. Kattintson a **Mentés** gombra.
 
     - **Fájl megnyitása a helyi számítógépen**
         
@@ -257,7 +257,7 @@ A következő lépések bemutatják, hogyan kezelhetők a fájlok (és mappák) 
 
         c. Válassza az **Igen** lehetőséget a megerősítési párbeszédpanelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com/).
 

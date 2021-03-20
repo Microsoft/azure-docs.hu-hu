@@ -10,10 +10,10 @@ ms.date: 09/16/2020
 ms.author: victorh
 ms.custom: subject-armqs
 ms.openlocfilehash: 4c5d5c4cafee9402e2afd7ddc047fd3b68e84540
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091321"
 ---
 # <a name="quickstart-create-an-azure-waf-v2-on-application-gateway-using-an-arm-template"></a>Rövid útmutató: Azure WAF v2 létrehozása Application Gateway ARM-sablon használatával
@@ -60,7 +60,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
    [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-wafv2%2Fazuredeploy.json)
 
 2. Válassza ki vagy hozza létre az erőforráscsoportot.
-3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás**lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás** lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -68,7 +68,7 @@ Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozás
 
 Az IIS használata az Application Gateway teszteléséhez:
 
-1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás**lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
+1. Keresse meg az Application Gateway nyilvános IP-címét az **Áttekintés** oldalon. ![ Az Application Gateway nyilvános IP-címének rögzítése ](../../application-gateway/media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) vagy a **minden erőforrás** lehetőség kiválasztásával megadhatja a *myAGPublicIPAddress* kifejezést a keresőmezőbe, majd kiválaszthatja azt a keresési eredmények között. Az Azure megjeleníti a nyilvános IP-címet az **Áttekintés** oldalon.
 2. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába az IP-cím megkereséséhez.
 3. Keresse meg a választ. Egy **403 Tiltott** válasz ellenőrzi, hogy a WAF létrehozása sikeres volt-e, és blokkolja-e a háttér-készlet kapcsolatait.
 4. Módosítsa az egyéni szabályt úgy, hogy **engedélyezze a forgalmat**.

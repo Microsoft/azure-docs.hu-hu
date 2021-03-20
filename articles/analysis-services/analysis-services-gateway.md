@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97739603"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
@@ -46,7 +46,7 @@ Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalo
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Leírás |
+| Tartománynevek | Kimenő portok | Description |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
@@ -61,7 +61,7 @@ A következő az átjáró által használt teljes tartománynevek.
 | *.microsoftonline-p.com |443 |Hitelesítésre használható a konfigurációtól függően. |
 | dc.services.visualstudio.com    |443 |A AppInsights használja a telemetria gyűjtésére. |
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 

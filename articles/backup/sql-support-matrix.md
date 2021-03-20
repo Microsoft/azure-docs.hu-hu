@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
 ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97734793"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
@@ -94,6 +94,6 @@ Differenciál | Elsődleges
 Napló |  Másodlagos
 Copy-Only teljes |  Másodlagos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

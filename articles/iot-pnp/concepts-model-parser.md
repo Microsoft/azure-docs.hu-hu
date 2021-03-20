@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: d68abe8548dac3306228683e4b6ce8935a248ebc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331787"
 ---
 # <a name="understand-the-digital-twins-model-parser"></a>A Digital Twins modellelemző megismerése
@@ -87,6 +87,6 @@ Egy modell a JSON-fájlokban leírt egy vagy több illesztőfelületből is áll
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkben áttekintett Model Parser API számos forgatókönyvet tesz lehetővé a DTDL-modelltől függő feladatok automatizálásához és érvényesítéséhez. Például dinamikusan hozhat létre felhasználói felületet a modellben található információk alapján.

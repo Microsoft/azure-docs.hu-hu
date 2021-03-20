@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 7904efb92aa8362605f1f68ee0b39f4241339031
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92332467"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Feladat létrehozása és kreditek kiosztása
@@ -39,10 +39,10 @@ Ha egy munkahelyi vagy iskolai fiókot (például) az student1@school.edu Azure 
 
 1. Válassza ki a tanuló előfizetéséhez jóváírható alapok mennyiségét. Ha nem minden tanuló kapja meg ugyanazt az összeget, válassza a **módosítás** lehetőséget, és alkalmazzon egyéni összeget minden tanuló vagy projektcsoport számára.
 
-1. Válassza a **hozzárendelés létrehozása**lehetőséget.
+1. Válassza a **hozzárendelés létrehozása** lehetőséget.
 1. Választható A tanuló neve melletti **Eltávolítás** gombra kattintva eltávolíthatja a meglévő tanulókat is.
 1. Ha elkészült, kattintson a **Bezárás** gombra. A további engedélyek a szponzori kreditek kezelése lapon jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Támogatási lehetőségek](educator-service-desk.md)

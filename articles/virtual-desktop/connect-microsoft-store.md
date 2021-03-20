@@ -7,10 +7,10 @@ ms.date: 10/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 9bab2a11ff9e7907621087e5027929e3e42eaf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91744794"
 ---
 # <a name="connect-with-the-microsoft-store-client"></a>Kapcsolódás a Microsoft Store-ügyfélhez
@@ -33,7 +33,7 @@ Fizessen elő a rendszergazda által biztosított munkaterületre, hogy lekérje
 
 Előfizetés munkaterületre:
 
-1. A kapcsolatkezelő képernyőn koppintson a **+ Hozzáadás**elemre, majd koppintson a **munkaterületek**elemre.
+1. A kapcsolatkezelő képernyőn koppintson a **+ Hozzáadás** elemre, majd koppintson a **munkaterületek** elemre.
 2. Adja meg a munkaterület URL-címét a rendszergazda által megadott munkaterület URL-cím mezőbe. A munkaterület URL-címe lehet URL-cím vagy e-mail-cím.
    
    - Ha munkaterület URL-címét használja, használja azt az URL-címet, amelyet a rendszergazda adott Önnek.
@@ -41,7 +41,7 @@ Előfizetés munkaterületre:
        - Windowsos virtuális asztal (klasszikus): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx` .
        - Windowsos virtuális asztal: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery` .
   
-3. Koppintson az **előfizetés**elemre.
+3. Koppintson az **előfizetés** elemre.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
 5. A feliratkozás után a munkaterületek megjelennek a kapcsolatok központban.
 

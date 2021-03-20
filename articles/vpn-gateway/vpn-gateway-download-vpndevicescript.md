@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879494"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>VPN-eszközök konfigurációs parancsfájljainak letöltése S2S VPN-kapcsolatokhoz
@@ -97,6 +97,6 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 A konfigurációs parancsfájl letöltése és ellenőrzése után a következő lépés a parancsfájl alkalmazása a VPN-eszközre. A tényleges eljárás a VPN-eszköz és a modellek alapján változhat. Tekintse át a VPN-eszközök üzemeltetési kézikönyveit vagy a használati útmutató lapjait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [helyek közötti kapcsolat](./tutorial-site-to-site-portal.md)konfigurálását.

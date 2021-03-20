@@ -4,10 +4,10 @@ description: 'Oktatóanyag: Ez a cikk bemutatja, hogyan dolgozhatja fel az Event
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 328537eebd05391fc4c8138395a9c10f0a5d072f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319380"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
@@ -63,7 +63,7 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
     ```
 
     Ez a kód **JSON** formátumban küldi el az eseményre vonatkozó adatokat. Amikor egy stream Analytics-feladathoz konfigurálja a bemenetet, a bemeneti adatok formátuma adja meg a JSON-t. 
-7. **Futtassa a gyártót és a** streamet Event Hubsba. Ha Windows-gépen **Node.js parancssort**használ, váltson át a `azure-event-hubs-for-kafka/quickstart/java/producer` mappára a parancsok futtatása előtt. 
+7. **Futtassa a gyártót és a** streamet Event Hubsba. Ha Windows-gépen **Node.js parancssort** használ, váltson át a `azure-event-hubs-for-kafka/quickstart/java/producer` mappára a parancsok futtatása előtt. 
    
     ```shell
     mvn clean package
@@ -72,7 +72,7 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
 
 ## <a name="verify-that-event-hub-receives-the-data"></a>Annak ellenőrzése, hogy az Event hub fogadja-e az
 
-1. Az **entitások**területen válassza a **Event Hubs** lehetőséget. Ellenőrizze, hogy megjelenik-e egy **teszt**nevű Event hub. 
+1. Az **entitások** területen válassza a **Event Hubs** lehetőséget. Ellenőrizze, hogy megjelenik-e egy **teszt** nevű Event hub. 
 
     ![Event hub – teszt](./media/event-hubs-kafka-stream-analytics/test-event-hub.png)
 2. Győződjön meg arról, hogy az Event hub-ba érkező üzenetek láthatók. 
@@ -101,7 +101,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
 
 1. Az értesítési üzenetben válassza az **Ugrás az erőforráshoz** lehetőséget a **stream Analytics feladatok** lap megjelenítéséhez. 
 2. A bal oldali menüben a **feladatok topológiája** szakaszban válassza a **bemenetek** lehetőséget.
-3. Válassza az **adatfolyam hozzáadása bemenet**lehetőséget, majd válassza az **Event hub**elemet. 
+3. Válassza az **adatfolyam hozzáadása bemenet** lehetőséget, majd válassza az **Event hub** elemet. 
 
     ![Event hub hozzáadása bemenetként](./media/event-hubs-kafka-stream-analytics/select-event-hub-input.png)
 4. Az **Event hub bemeneti** konfigurációja lapon hajtsa végre a következő műveleteket: 
@@ -110,7 +110,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az **Azure-előfizetését**.
     3. Válassza ki a korábban létrehozott **Event hub-névteret** . 
     4. Válassza ki az **Event hub** **tesztjét** . 
-    5. Válassza a **Mentés** lehetőséget. 
+    5. Kattintson a **Mentés** gombra. 
 
         ![Event hub-beli bemeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -123,7 +123,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
     2. Válassza ki az Azure- **előfizetését**. 
     3. Válassza ki az **Azure Storage-fiókját**. 
     4. Adja meg annak a **tárolónak a nevét** , amely a stream Analytics lekérdezésből származó kimeneti adatokat tárolja.
-    5. Válassza a **Mentés** lehetőséget.
+    5. Kattintson a **Mentés** gombra.
 
         ![Blob Storage kimeneti konfiguráció](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -131,7 +131,7 @@ A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végreh
 ### <a name="define-a-query"></a>Lekérdezés meghatározása
 Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfolyam olvasására, a következő lépés egy átalakítás létrehozása, amely valós időben elemzi az adatokat. Az átalakítási lekérdezés definiálásához használja a [Stream Analytics lekérdezési nyelvet](/stream-analytics-query/stream-analytics-query-language-reference). Ebben az útmutatóban egy olyan lekérdezést határoz meg, amely áthalad az adatokon anélkül, hogy átalakítást végezne.
 
-1. Válassza a **lekérdezés**lehetőséget.
+1. Válassza a **lekérdezés** lehetőséget.
 2. A lekérdezési ablakban cserélje le `[YourOutputAlias]` a nevet a korábban létrehozott kimeneti aliasra.
 3. Cserélje le `[YourInputAlias]` a nevet a korábban létrehozott bemeneti aliasra. 
 4. Válassza az eszköztár **Save** (Mentés) elemét. 
@@ -145,7 +145,7 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 2. Válassza az **Indítás** elemet. 
 
     ![Start menü](./media/event-hubs-kafka-stream-analytics/start-menu.png)
-1. A **kezdési feladatok** lapon válassza az **Indítás**lehetőséget. 
+1. A **kezdési feladatok** lapon válassza az **Indítás** lehetőséget. 
 
     ![Kezdési feladatok lap](./media/event-hubs-kafka-stream-analytics/start-job-page.png)
 1. Várjon, amíg a feladatok állapota nem változik a **futtatástól** **kezdve** . 

@@ -11,10 +11,10 @@ ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97739858"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Az adatimportálás Azure Machine Learning designerbe
@@ -114,6 +114,6 @@ A tervezőben lévő modulokat a számítási cél mérete korlátozza. Nagyobb 
 
 Ha a munkaterület virtuális hálózatban található, további konfigurációs lépéseket kell végrehajtania a tervezőben lévő adatok megjelenítéséhez. További információ az adattárolók és adatkészletek virtuális hálózatban való használatáról: [Azure Machine learning Studio használata Azure-beli virtuális hálózaton](how-to-enable-studio-virtual-network.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megismerheti a tervezői alapismereteket [: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md).

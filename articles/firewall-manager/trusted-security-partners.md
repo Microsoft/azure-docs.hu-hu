@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: victorh
 ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96490108"
 ---
 # <a name="what-are-security-partner-providers"></a>Mik azok a biztonságipartner-szolgáltatók?
@@ -64,6 +64,6 @@ Microsoft 365 esetében a hálózati késés és a teljesítmény kritikus fonto
 
 Emellett a Microsoft 365 kapcsolatok titkosítva vannak, és hatékony, védett protokollokat használnak a teljesítménnyel kapcsolatos okokból. Ez a hagyományos hálózati szintű biztonsági megoldásokhoz való csatlakozást nem teszi lehetővé. Ezen okok miatt javasoljuk, hogy az ügyfelek közvetlenül az ágakból küldjenek Microsoft 365 forgalmat az Azure-on keresztüli adatforgalom elküldése előtt. A Microsoft több, az Azure-ral és a Microsoft 365-nal integrált SD-WAN-megoldással rendelkezik, és megkönnyíti az ügyfelek számára Microsoft 365 közvetlen és helyi internetes kitörés engedélyezését. Részletekért lásd: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Telepítsen egy biztonsági partneri ajánlatot egy biztonságos hubhoz a Azure Firewall Manager használatával](deploy-trusted-security-partner.md).

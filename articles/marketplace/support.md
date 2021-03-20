@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 01/19/2020
 ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879241"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
@@ -49,7 +49,7 @@ A következő lehetőségek jelennek meg:
 - Egy másik témakör kiválasztásához kattintson **a másik probléma kiválasztása** lehetőségre.
 - A probléma megoldásához tekintse át az ajánlott lépéseket és dokumentumokat, ha vannak ilyenek.
 
-    ![Ajánlott megoldások](./media/support/recommended-solutions.png)
+    ![Javasolt megoldások](./media/support/recommended-solutions.png)
 
 Ha nem találja a választ a saját súgójában, válassza a **probléma részleteinek megadása** lehetőséget. Fejezze be az összes kötelező mezőt a megoldási folyamat felgyorsításához, majd válassza a **Küldés** lehetőséget.
 
@@ -119,6 +119,6 @@ HAR-fájl létrehozása a **Safari** használatával:
 
     ![HAR-fájl exportálása a Safari alkalmazásba](media/support/safari-network-export-har.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](partner-center-portal/update-existing-offer.md)

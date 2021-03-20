@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86257268"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh üzembe helyezése
@@ -26,14 +26,14 @@ Service Fabric Mesh-erőforrások központi telepítését hozza létre.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --input-YAML-Files [kötelező] | Az összes YAML-fájl vagy a YAML-fájlokat tartalmazó könyvtár relatív vagy abszolút elérési útjának vesszővel tagolt relatív vagy abszolút fájlelérési útja. |
 | – paraméterek | Egy YAML-fájl vagy egy JSON-objektum relatív vagy abszolút elérési útja, amely a felülbírálni kívánt paramétereket tartalmazza. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -61,6 +61,6 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 {'value' : 'my_value'} }"   
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

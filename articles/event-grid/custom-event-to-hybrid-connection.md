@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566826"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Oktatóanyag: egyéni események irányítása Azure Relay Hibrid kapcsolatok az Azure CLI-vel és Event Grid
@@ -23,7 +23,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. A hibrid 
 
 - Ehhez a cikkhez az Azure CLI 2.0.56 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 

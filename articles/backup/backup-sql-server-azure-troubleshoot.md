@@ -4,10 +4,10 @@ description: Hibaelhárítási információk az Azure-beli virtuális gépeken f
 ms.topic: troubleshooting
 ms.date: 06/18/2019
 ms.openlocfilehash: 2cf0ed0200de9b2787f5d9f38bd343f93648bc78
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99557751"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
@@ -164,7 +164,7 @@ Ha a kifogástalan SQL-példányok visszaállítását szeretné elindítani, ha
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információk](/sql/relational-databases/backup-restore/recovery-models-sql-server).
+| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információ](/sql/relational-databases/backup-restore/recovery-models-sql-server).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 

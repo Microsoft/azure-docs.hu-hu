@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94626894"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
@@ -24,13 +24,13 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 
 | Windows-verzió        | SMB-verzió | Azure-beli virtuális gépeken csatlakoztatható | Helyszíni üzembe helyezhető |
 |------------------------|-------------|-----------------------|-----------------------|
-| Windows Server 2019 | SMB 3.0 | Igen | Igen |
-| Windows 10<sup>1</sup> | SMB 3.0 | Igen | Igen |
-| Windows Server féléves csatorna<sup>2</sup> | SMB 3.0 | Igen | Igen |
-| Windows Server 2016 | SMB 3.0 | Igen | Igen |
-| Windows 8.1 | SMB 3.0 | Igen | Igen |
-| Windows Server 2012 R2 | SMB 3.0 | Igen | Igen |
-| Windows Server 2012 | SMB 3.0 | Igen | Igen |
+| Windows Server 2019 | SMB 3.0 | Igen | Yes |
+| Windows 10<sup>1</sup> | SMB 3.0 | Igen | Yes |
+| Windows Server féléves csatorna<sup>2</sup> | SMB 3.0 | Igen | Yes |
+| Windows Server 2016 | SMB 3.0 | Igen | Yes |
+| Windows 8.1 | SMB 3.0 | Igen | Yes |
+| Windows Server 2012 R2 | SMB 3.0 | Igen | Yes |
+| Windows Server 2012 | SMB 3.0 | Igen | Yes |
 | Windows 7<sup>3</sup> | SMB 2.1 | Igen | Nem |
 | Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Igen | Nem |
 
@@ -88,7 +88,7 @@ Ezzel csatlakoztatta az Azure-fájlmegosztást.
     
     ![A Hálózati meghajtó csatlakoztatása legördülő menü képernyőképe](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, az UNC elérési út formátuma `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Például: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
+1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, az UNC elérési út formátuma `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Példa: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![A Hálózati meghajtó csatlakoztatása párbeszédpanel képernyőképe](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
@@ -199,8 +199,8 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 - [Az SMB 1 felfedezése a környezetben DSCEA használatával](/archive/blogs/ralphkyttle/discover-smb1-in-your-environment-with-dscea)
 - [Az SMB 1 letiltása csoportházirend használatával](/archive/blogs/secguide/disabling-smbv1-through-group-policy)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
-- [Gyakori kérdések](./storage-files-faq.md)
+- [GYIK](./storage-files-faq.md)
 - [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)

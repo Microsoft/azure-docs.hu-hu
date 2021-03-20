@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.custom: mvc
 ms.openlocfilehash: 00e44185c938c94903e9b85a4748906721dac27f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100571696"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
@@ -85,7 +85,7 @@ A gépek csak akkor haladnak át egy későbbi fázisban, ha az előzőre kerül
 
 Az értékelésben az Azure használatához szükséges állapotnézet az egyes virtuális gépek készenléti állapotát jeleníti meg.
 
-**Készenlét** | **Állam** | **Részletek**
+**Készenlét** | **Állapot** | **Részletek**
 --- | --- | ---
 Készen áll az Azure-beli használatra | Nincsenek kompatibilitási problémák. A gép telepíthető át az Azure-ba, és az Azure-ban teljes körű Azure-támogatással indul el. | A kész virtuális gépekhez az Azure Migrate javasol egy virtuálisgép-méretet az Azure-ban.
 Feltételesen készen áll az Azure-beli használatra | Előfordulhat, hogy a gép az Azure-ban indul el, de nem rendelkezik teljes körű Azure-támogatással. Például egy olyan gép, amelyen az Azure nem támogatja a Windows Server régebbi verzióját. | A Azure Migrate ismerteti a készültségi problémákat, és szervizelési lépéseket tesz lehetővé.

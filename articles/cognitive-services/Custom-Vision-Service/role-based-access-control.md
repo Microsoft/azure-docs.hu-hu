@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
 ms.openlocfilehash: d265b6698a87c1c651dff1413cf48dd4984cd606
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94616892"
 ---
 # <a name="azure-role-based-access-control"></a>Azure-beli szerepköralapú hozzáférés-vezérlés
@@ -25,7 +25,7 @@ Custom Vision támogatja az Azure szerepköralapú hozzáférés-vezérlést (Az
 
 Az Azure-RBAC hozzárendelhető egy Custom Vision erőforráshoz. Az Azure-erőforrásokhoz való hozzáférés biztosításához hozzá kell adnia egy szerepkör-hozzárendelést.
 1. Az [Azure Portalon](https://ms.portal.azure.com/) válassza a **Minden szolgáltatás** elemet. 
-1. Ezután válassza ki a **Cognitive Services** , és navigáljon az adott Custom Vision képzési erőforráshoz.
+1. Ezután válassza ki a **Cognitive Services**, és navigáljon az adott Custom Vision képzési erőforráshoz.
    > [!NOTE]
    > Az Azure-RBAC a teljes erőforráscsoport, előfizetések és felügyeleti csoportok számára is beállíthatja. Ehhez válassza ki a kívánt hatóköri szintet, majd navigáljon a kívánt elemhez (például válassza az **erőforráscsoportok** lehetőséget, majd kattintson a át a kívánt erőforrás-csoportra).
 1. A bal oldali navigációs ablaktáblán válassza a **hozzáférés-vezérlés (iam)** lehetőséget.

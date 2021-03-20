@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 1f2dbef014f1b48b554e6bc30af83b936fe532a7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944863"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
@@ -118,7 +118,7 @@ A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdez
 >
 > Ha törli a fürtöt, de megtartja a tárolót, használhat olyan segédprogramot, mint a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) vagy a Data Lake Storage Explorer (az [Azure Portalról](https://portal.azure.com)) a lekérdezések lekéréséhez.
 
-## <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények
+## <a name="user-defined-functions"></a>Felhasználó által definiált függvények
 
 A struktúrát a felhasználó által definiált függvények (UDF) használatával is kiterjesztheti. Az UDF használatával olyan funkciót vagy logikát alkalmazhat, amely nem könnyen modellezhető a HiveQL-ben.
 

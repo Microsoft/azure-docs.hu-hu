@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc
 ms.date: 03/30/2018
 ms.openlocfilehash: 90e60044e227ea1a18ea032d302b29abda1ea2e8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92536844"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Oktatóanyag: Gyorsítótár-feltöltési ranglista létrehozása az ASP.NET-en
@@ -216,7 +216,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
 ### <a name="configure-the-layout-view"></a>Az Elrendezés nézet konfigurálása
 
-1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views** (Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
+1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Views**(Nézetek), majd a **Shared** (Közös) mappát, és kattintson duplán a **_Layout.cshtml** fájlra. 
 
     ![_Layout.cshtml](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml.png)
 
@@ -234,7 +234,7 @@ A csomaggal kapcsolatos további információt az [EntityFramework](https://www.
 
     ![Kódmódosítások](./media/cache-web-app-cache-aside-leaderboard/cache-layout-cshtml-code.png)
 
-1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása** , a **Szerkesztés** , a **Részletek** és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure cache-t a Redis-hez az adathozzáférés optimalizálása érdekében, és további funkciókat biztosít az alkalmazás számára.
+1. Az alkalmazás fordításához és futtatásához nyomja le a **Ctrl+F5** billentyűkombinációt. Az alkalmazás ezen verziója az eredményeket közvetlenül az adatbázisból olvassa ki. Figyelje meg, hogy az **Új létrehozása**, a **Szerkesztés**, a **Részletek** és a **Törlés** parancsok az **MVC 5 Controller with views, using Entity Framework** (MVC 5 vezérlő nézetekkel, az Entity Framework használatával) szerkezettel automatikusan bekerültek az alkalmazásba. Az oktatóanyag következő szakaszában hozzáadja az Azure cache-t a Redis-hez az adathozzáférés optimalizálása érdekében, és további funkciókat biztosít az alkalmazás számára.
 
     ![Kezdő szintű alkalmazás](./media/cache-web-app-cache-aside-leaderboard/cache-starter-application.png)
 
@@ -244,13 +244,13 @@ Az oktatóanyag ezen szakaszában úgy konfigurálja a minta alkalmazást, hogy 
 
 ### <a name="add-a-cache-connection-to-the-teams-controller"></a>Gyorsítótár-kapcsolat hozzáadása a Teams Controllerhez
 
-A gyors útmutató során már telepítette a *StackExchange.Redis* ügyféloldali kódtárcsomagját. Emellett már konfigurálta a *CacheConnection* alkalmazásbeállítást a helyi, illetve a közzétett App Service-szel való használatra. Használja ugyanazon ügyféloldali kódtár és *CacheConnection* információit a *TeamsControllerben* .
+A gyors útmutató során már telepítette a *StackExchange.Redis* ügyféloldali kódtárcsomagját. Emellett már konfigurálta a *CacheConnection* alkalmazásbeállítást a helyi, illetve a közzétett App Service-szel való használatra. Használja ugyanazon ügyféloldali kódtár és *CacheConnection* információit a *TeamsControllerben*.
 
 1. A **Solution Explorerben** (Megoldáskezelőben) bontsa ki a **Controllers** (Vezérlők) mappát, majd kattintson duplán a **TeamsController.cs** fájlra annak megnyitásához.
 
     ![Csoportvezérlő](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Adja hozzá a következő két `using` utasítást a **TeamsController.cs** :
+1. Adja hozzá a következő két `using` utasítást a **TeamsController. cs**:
 
     ```csharp
     using System.Configuration;
@@ -674,7 +674,7 @@ Ebben a szakaszban egy új adatbázist fog kiépíteni a SQL Databaseban, hogy a
 
     ![Kapcsolati sztringek megjelenítése](./media/cache-web-app-cache-aside-leaderboard/cache-show-connection-strings.png)
 
-1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások** , majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
+1. Az Azure Portalon navigáljon az App Service-hez, és kattintson az **Alkalmazásbeállítások**, majd az **Új kapcsolati sztring hozzáadása** elemre a Kapcsolati sztringek szakaszban.
 
 1. Adjon hozzá egy *TeamContext* nevű kapcsolati sztringet, amely megegyezik az Entity Framework-adatbáziskörnyezet osztályának nevével. Illessze be az új adatbázis kapcsolati sztringjét az értékként. Cserélje le az alábbi helyőrzőket a kapcsolati sztringben, majd kattintson a **Mentés** elemre:
 
@@ -715,7 +715,7 @@ Az oktatóanyag ezen lépésében közzéteszi az alkalmazás frissítéseit az 
 
 Kattintson néhány műveletre, és kísérletezzen az adatok különböző forrásokból történő lekérdezésével. Figyelje meg az adatbázisból és a gyorsítótárból történő adatlekérdezés különböző módjainak végrehajtásához szükséges időbeli eltéréseket.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte az oktatóanyag mintaalkalmazásának használatát, a költség- és erőforrás-takarékosság érdekében törölheti az ott használt Azure-erőforrásokat. Minden erőforrásnak azonos erőforráscsoportban kell szerepelnie, és az erőforráscsoport törlésével egy művelettel, együttesen is törölheti őket. Ebben a témakörben a *TestResources* nevű erőforráscsoportot használtuk.
 

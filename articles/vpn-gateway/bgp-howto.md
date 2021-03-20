@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878884"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>A BGP konfigurálása Azure VPN Gateway-átjárók esetén
@@ -162,6 +162,6 @@ A **4. ábrára** hivatkozó kontextus esetében, ha a BGP-t le kell tiltani a T
 
 :::image type="content" source="./media/bgp-howto/bgp-crosspremises-v2v.png" alt-text="Teljes hálózatot bemutató diagram" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/windows/quick-create-portal.md).

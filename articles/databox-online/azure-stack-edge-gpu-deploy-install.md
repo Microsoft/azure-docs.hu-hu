@@ -10,10 +10,10 @@ ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97734730"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro telepítése GPU-val
@@ -22,7 +22,7 @@ Ez az oktatóanyag leírja, hogyan telepíthet egy Azure Stack Edge Pro fizikai 
 
 A telepítés elvégzése körülbelül két órát is igénybe vehet.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az eszköz kicsomagolása
@@ -230,7 +230,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
     - Ha a 2-es PORTOT csatlakoztatja, használja az 1-GbE RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + réz kábeleket vagy a szálat. Ha Fiber-t használ, használjon optikai és SFP-adaptert.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta Azure Stack Edge Pro-témaköröket, például a következőket:
 

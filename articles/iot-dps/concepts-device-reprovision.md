@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842852"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>A IoT Hub eszköz újraépítésével kapcsolatos fogalmak
@@ -50,11 +50,11 @@ A forgatókönyvtől függően, ahogy az eszköz az IoT-hubok között mozog, el
 
 A forgatókönyvtől függően az eszköz általában egy kérést küld egy kiépítési szolgáltatási példányra az újraindításkor. Emellett támogatja az igény szerinti kiépítés manuális indításának módszerét is. A beléptetési bejegyzés újraépítési szabályzata határozza meg, hogy az eszköz kiépítési szolgáltatási példánya hogyan kezeli ezeket a kiépítési kérelmeket. A házirend azt is meghatározza, hogy az eszköz állapotát át kell-e telepíteni az Újraépítés során. Ugyanazok a szabályzatok érhetők el az egyes regisztrációk és beléptetési csoportok esetében:
 
-* **Adatok újbóli kiépítése és áttelepítése**: Ez a szabályzat az új beléptetési bejegyzések alapértelmezett értéke. Ez a szabályzat akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új kérelmet küldenek be (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A rendszer az adott kezdeti IoT hub frissített Eszközállapot-információit áttelepíti az új IoT hubhoz (2). Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
+* **Adatok újbóli kiépítése és áttelepítése**: Ez a szabályzat az új beléptetési bejegyzések alapértelmezett értéke. Ez a szabályzat akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új kérelmet küldenek be (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A rendszer az adott kezdeti IoT hub frissített Eszközállapot-információit áttelepíti az új IoT hubhoz (2). Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként** fogja jelenteni.
 
     ![Diagram, amely azt mutatja, hogy egy házirend akkor lép működésbe, amikor a beléptetési bejegyzéshez társított eszközök új kérelmet küldenek.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* A **kezdeti konfiguráció újbóli létrehozása és alaphelyzetbe állítása**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök beküldenek egy új létesítési kérelmet (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A kiépítési szolgáltatás példánya által az eszköz kiosztásakor kapott kezdeti konfigurációs információk az új IoT hub (2) számára lettek kiépítve. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
+* A **kezdeti konfiguráció újbóli létrehozása és alaphelyzetbe állítása**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök beküldenek egy új létesítési kérelmet (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A kiépítési szolgáltatás példánya által az eszköz kiosztásakor kapott kezdeti konfigurációs információk az új IoT hub (2) számára lettek kiépítve. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként** fogja jelenteni.
 
     Ezt a házirendet gyakran használják a gyári beállítások visszaállítására az IoT-hubok módosítása nélkül.
 

@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97739739"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
@@ -188,15 +188,15 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Előfizetés** | Igen | <*Azure-előfizetés – név*> | A környezetéhez használni kívánt Azure-előfizetés |
-   | **Erőforráscsoport** | Igen | <*Azure-Erőforrás-csoport-név*> | Új vagy meglévő Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
-   | **Integrációs szolgáltatási környezet neve** | Igen | <*környezet – név*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ) és pontokat ( `.` ) tartalmazhat. |
-   | **Hely** | Igen | <*Azure-Datacenter – régió*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
-   | **Termékváltozat** | Igen | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
-   | **További kapacitás** | Prémium: <br>Igen <p><p>Fejlesztő <br>Nem alkalmazható | Prémium: <br>0 – 10 <p><p>Fejlesztő <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
-   | **Hozzáférési végpont** | Igen | **Belső** vagy **külső** | Az ISE számára használandó hozzáférési végpontok típusa. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. <p><p>Ha például a következő webhook-alapú eseményindítókat szeretné használni, győződjön meg arról, hogy a **külső** elemet választotta: <p><p>– Azure DevOps <br>– Azure Event Grid <br>– Common Data Service <br>– Office 365 <br>-SAP (ISE-verzió) <p><p>A kiválasztott módszer azt is befolyásolja, hogyan lehet megtekinteni és elérni a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Fontos**: a hozzáférési végpontot csak az ISE létrehozásakor választhatja ki, és később nem módosíthatja ezt a beállítást. |
-   | **Virtuális hálózat** | Igen | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p><p>**Fontos**: ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
-   | **Alhálózatok** | Igen | <*alhálózat – erőforrás-lista*> | Az ISE négy *üres* alhálózatot igényel, amelyek szükségesek az ISE-erőforrások létrehozásához és üzembe helyezéséhez, és amelyeket a belső Logic apps-összetevők, például összekötők és a teljesítmény gyorsítótárazása használ. <p>**Fontos**: Ügyeljen arra, hogy [az alhálózatok létrehozásához tekintse át az alhálózat követelményeit, mielőtt folytatná ezeket a lépéseket](#create-subnet). |
+   | **Előfizetés** | Yes | <*Azure-előfizetés – név*> | A környezetéhez használni kívánt Azure-előfizetés |
+   | **Erőforráscsoport** | Yes | <*Azure-Erőforrás-csoport-név*> | Új vagy meglévő Azure-erőforráscsoport, amelyben létre szeretné hozni a környezetet |
+   | **Integrációs szolgáltatási környezet neve** | Yes | <*környezet – név*> | Az ISE neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ) és pontokat ( `.` ) tartalmazhat. |
+   | **Hely** | Yes | <*Azure-Datacenter – régió*> | Az Azure-adatközpont régiója, ahol üzembe helyezheti a környezetet |
+   | **Termékváltozat** | Yes | **Prémium** vagy **fejlesztői (SLA nélkül)** | A létrehozandó és használandó ISE SKU. Az adatsku-változatok közötti különbségekért lásd: [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)-i. <p><p>**Fontos**: Ez a beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható. |
+   | **További kapacitás** | Prémium: <br>Yes <p><p>Fejlesztő <br>Nem alkalmazható | Prémium: <br>0 – 10 <p><p>Fejlesztő <br>Nem alkalmazható | Az ISE-erőforráshoz használandó további feldolgozási egységek száma. A kapacitás létrehozás utáni hozzáadásával kapcsolatban lásd: [ISE-kapacitás hozzáadása](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
+   | **Hozzáférési végpont** | Yes | **Belső** vagy **külső** | Az ISE számára használandó hozzáférési végpontok típusa. Ezek a végpontok határozzák meg, hogy az ISE-beli logikai alkalmazásokban a kérelmek vagy a webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről. <p><p>Ha például a következő webhook-alapú eseményindítókat szeretné használni, győződjön meg arról, hogy a **külső** elemet választotta: <p><p>– Azure DevOps <br>– Azure Event Grid <br>– Common Data Service <br>– Office 365 <br>-SAP (ISE-verzió) <p><p>A kiválasztott módszer azt is befolyásolja, hogyan lehet megtekinteni és elérni a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit. További információ: [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Fontos**: a hozzáférési végpontot csak az ISE létrehozásakor választhatja ki, és később nem módosíthatja ezt a beállítást. |
+   | **Virtuális hálózat** | Yes | <*Azure-Virtual-Network-name*> | Az Azure-beli virtuális hálózat, ahová be szeretné szúrni a környezetét, hogy a környezetében a logikai alkalmazások hozzáférhessenek a virtuális hálózathoz. Ha nem rendelkezik hálózattal, [először hozzon létre egy Azure-beli virtuális hálózatot](../virtual-network/quick-create-portal.md). <p><p>**Fontos**: ezt az injekciót *csak* akkor hajthatja végre, ha létrehozza az ISE-t. |
+   | **Alhálózatok** | Yes | <*alhálózat – erőforrás-lista*> | Az ISE négy *üres* alhálózatot igényel, amelyek szükségesek az ISE-erőforrások létrehozásához és üzembe helyezéséhez, és amelyeket a belső Logic apps-összetevők, például összekötők és a teljesítmény gyorsítótárazása használ. <p>**Fontos**: Ügyeljen arra, hogy [az alhálózatok létrehozásához tekintse át az alhálózat követelményeit, mielőtt folytatná ezeket a lépéseket](#create-subnet). |
    |||||
 
    <a name="create-subnet"></a>
@@ -306,7 +306,7 @@ Ha nem engedélyezi a hozzáférést ezekhez a függőségekhez, az ISE-telepít
    > [!IMPORTANT]
    > Miután létrehozta az ISE-t, a felügyelt ISE-összekötők elérhetővé válnak a használatra, de nem jelennek meg automatikusan a Logic app Designer összekötő-választójában. Az ISE-összekötők használata előtt [ezeket az összekötőket manuálisan kell hozzáadnia és telepítenie az ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment) -ben, hogy azok megjelenjenek a Logic app Designerben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrás hozzáadása integrációs szolgáltatási környezetekhez](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [Integrációs szolgáltatási környezetek kezelése](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)

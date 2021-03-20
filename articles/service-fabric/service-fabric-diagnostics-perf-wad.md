@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86258621"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Teljesítményfigyelés a Windows Azure Diagnostics bővítménnyel
@@ -191,7 +191,7 @@ A teljesítményszámlálók WAD használatával történő összegyűjtéséhez
 
 1. Ha a frissítés befejeződik (15-45 perc között tart, attól függően, hogy az első telepítés és az erőforráscsoport mérete), a WAD-nek össze kell gyűjtenie a teljesítményszámlálókat, és el kell küldenie azokat a WADPerformanceCountersTable nevű táblába a fürthöz társított Storage-fiókban. Tekintse meg a teljesítményszámlálók Application Insightsban való [hozzáadásával az AI-gyűjtőt a Resource Manager-sablonhoz](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Gyűjtsön további teljesítményszámlálókat a fürthöz. A begyűjtött számlálók listáját a [teljesítmény mérőszámai](service-fabric-diagnostics-event-generation-perf.md) részben tekintheti meg.
 * A [monitorozás és diagnosztika szolgáltatás használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal](../virtual-machines/extensions/diagnostics-template.md) további módosításokat végezhet a alkalmazásban `WadCfg` , beleértve a további Storage-fiókok konfigurálását a diagnosztikai információk küldéséhez.
 * Látogasson el a [WadCfg Builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) webhelyre, és győződjön meg arról, hogy a szintaxis helyes. ( https://azure.github.io/azure-diagnostics-tools/config-builder/) hozzon létre egy sablont a semmiből, és ellenőrizze, hogy helyes-e a szintaxis.

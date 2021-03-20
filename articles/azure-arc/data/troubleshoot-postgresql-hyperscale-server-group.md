@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: caaab07200a8631935a2b5d5368a0c16ea9a60c5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92320216"
 ---
 # <a name="troubleshooting-postgresql-hyperscale-server-groups"></a>A PostgreSQL nagy kapacitású-kiszolgálócsoportok hibaelhárítása
@@ -97,7 +97,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket:  [033-Manage-p
 
 :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási Jegyzetfüzetének megnyitása":::
 
-A **TSG100 – az Azure arc-kompatibilis PostgreSQL nagy kapacitású hibaelhárító jegyzetfüzete** a következőket nyitja meg: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási Jegyzetfüzetének megnyitása":::
+A **TSG100 – az Azure arc-kompatibilis PostgreSQL nagy kapacitású hibaelhárító jegyzetfüzete** a következőket nyitja meg: :::image type="content" source="media/postgres-hyperscale/ads-controller-postgres-troubleshooting-notebook2.jpg" alt-text="Azure Data Studio – a PostgreSQL hibaelhárítási notebookjának használata":::
 
 #### <a name="run-the-scripts"></a>Parancsfájlok futtatása
 Válassza az összes futtatása gombot a lap tetején, hogy egyszerre hajtsa végre a jegyzetfüzetet, vagy az egyes kódrészleteket egyenként is végrehajthatja.

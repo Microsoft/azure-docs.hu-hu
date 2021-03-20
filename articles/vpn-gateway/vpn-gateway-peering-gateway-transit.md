@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: cherylmc
 ms.openlocfilehash: 73a7d76de34d29b2d51c54569b234cd8221b08f8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872179"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>VPN-átjáróval történő adatátvitel konfigurálása virtuális hálózatok közötti társviszony létesítéséhez
@@ -44,8 +44,8 @@ Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e a következő virtuális h
 |VNet|Üzembehelyezési modell| Virtuális hálózati átjáró|
 |---|---|---|---|
 | Hub-RM| [Resource Manager](./tutorial-site-to-site-portal.md)| [Igen](tutorial-create-gateway-portal.md)|
-| Küllő – RM | [Resource Manager](./tutorial-site-to-site-portal.md)| Nem |
-| Spoke-Classic | [Klasszikus](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Nem |
+| Küllő – RM | [Resource Manager](./tutorial-site-to-site-portal.md)| No |
+| Spoke-Classic | [Klasszikus](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | No |
 
 ### <a name="permissions"></a><a name="permissions"></a>Engedélyek
 
@@ -174,7 +174,7 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg alaposabban a [virtuális hálózatok közötti társviszony-létesítés korlátozásaival és működésével](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints), valamint a [virtuális hálózatok közötti társviszonyok beállításaival](../virtual-network/virtual-network-manage-peering.md#create-a-peering), mielőtt virtuális hálózatok közötti társviszonyt hozna létre éles környezetben való használatra.
 * Megtudhatja, [hogyan hozhat létre küllős hálózati topológiát](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) virtuális hálózatok közötti társviszony-létesítéssel és átjáróval történő átvitellel.

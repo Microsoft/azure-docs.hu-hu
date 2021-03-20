@@ -9,10 +9,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: dec9bed0cae503825397920ef8e305c125f43154
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93335585"
 ---
 # <a name="ltrim-azure-cosmos-db"></a>LTRIM (Azure Cosmos DB)
@@ -53,7 +53,7 @@ SELECT LTRIM("  abc") AS l1, LTRIM("abc") AS l2, LTRIM("abc   ") AS l3
 
 Ez a rendszerfüggvény nem fogja használni az indexet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Karakterlánc-függvények Azure Cosmos DB](sql-query-string-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

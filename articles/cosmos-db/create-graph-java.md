@@ -10,10 +10,10 @@ ms.date: 03/26/2019
 ms.author: chrande
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 5a793eb69b344e361679759e46db47c78885831e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360955"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>Gyors útmutató: Graph-adatbázis létrehozása a Java SDK-val és a Azure Cosmos DB Gremlin API-val
@@ -129,7 +129,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
     `username: /dbs/$database$/colls/$collection$`
 
-    a következőre: 
+    felhasználóként a(z) 
 
     `username: /dbs/sample-database/colls/sample-graph`
 
@@ -168,7 +168,7 @@ Lépjen vissza az Azure Portalra a kapcsolati adatokért, majd másolja be azoka
 
 Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott csúcspontokat, valamint további adatpontokat is hozzáadhat.
 
-1. A Azure Portal Azure Cosmos DB-fiókjában válassza a **adatkezelő** , majd a **minta-gráf** csomópontot, válassza a **gráf** lehetőséget, majd válassza a **szűrő alkalmazása** lehetőséget. 
+1. A Azure Portal Azure Cosmos DB-fiókjában válassza a **adatkezelő**, majd a **minta-gráf** csomópontot, válassza a **gráf** lehetőséget, majd válassza a **szűrő alkalmazása** lehetőséget. 
 
    :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png" alt-text="Képernyőfelvétel: a P I-ből kiválasztott gráf a szűrő alkalmazására szolgáló lehetőséggel.":::
 
@@ -184,7 +184,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 5. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához. Egyedi tulajdonságokat hozhat létre a gráfban található minden egyes személy számára. Csak az id kulcsot kötelező megadni.
 
-    kulcs|value|Jegyzetek
+    kulcs|érték|Jegyzetek
     ----|----|----
     id|ashley|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|female| 
@@ -201,7 +201,7 @@ Ezután visszaléphet az Adatkezelőbe, és megtekintheti a gráfhoz hozzáadott
 
 9. Válassza a **tulajdonság hozzáadása** lehetőséget a következő tulajdonságok hozzáadásához:
 
-    kulcs|value|Jegyzetek
+    kulcs|érték|Jegyzetek
     ----|----|----
     id|rakesh|A csúcspont egyedi azonosítója. Ha nem ad meg azonosítót, a rendszer létrehoz egyet.
     gender|male| 
