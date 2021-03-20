@@ -4,13 +4,13 @@ description: A Batch-feladat ütemezett sikertelen eseményének hivatkozása. E
 ms.topic: reference
 ms.date: 09/20/2020
 ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91852141"
 ---
-# <a name="task-schedule-fail-event"></a>Feladat-ütemterv sikertelen eseménye
+# <a name="task-schedule-fail-event"></a>Tevékenységütemezés meghiúsult esemény
 
  Ezt az eseményt akkor bocsátja ki a rendszer, ha egy feladatot nem sikerült ütemezni, és később újra próbálkozik. Ez az erőforrás-korlátozás miatti ideiglenes Hiba a feladatütemezés során, például nem áll rendelkezésre elegendő tárolóhely a csomópontokon a megadott feladat futtatásához `requiredSlots` .
 

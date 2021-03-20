@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727201"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure Information System-összetevők és-határok
@@ -85,7 +85,7 @@ A szolgáltatási csapatok a következők:
 - ISSD: biztonság
 - Többtényezős hitelesítés
 - SQL Database
-- Storage
+- Tárolás
 
 ## <a name="types-of-users"></a>Felhasználók típusai
 A Microsoft alkalmazottai (vagy alvállalkozói) belső felhasználóknak tekintendők. Minden más felhasználó külső felhasználónak számít. Az összes Azure-beli belső felhasználó alkalmazotti állapota olyan érzékenységi szint szerint van kategorizálva, amely meghatározza az ügyféladatok elérését (hozzáférés vagy nincs hozzáférés). Az Azure-ra vonatkozó felhasználói jogosultságok (hitelesítési engedély a hitelesítés után) az alábbi táblázatban olvashatók:
@@ -118,7 +118,7 @@ Az Azure hálózati csapat úgy konfigurálja a hálózati szolgáltatás fióko
 ## <a name="secure-service-administration"></a>Biztonságos szolgáltatás felügyelete
 Az Azure Operations munkatársai a biztonságos rendszergazdai munkaállomások (fűrészek) használatához szükségesek. Az ügyfelek az emelt szintű hozzáférési munkaállomások használatával hasonló vezérlőket valósíthat meg. A fűrészek esetében a felügyeleti személyzet egy külön hozzárendelt rendszergazdai fiókot használ, amely nem azonos a felhasználó szokásos felhasználói fiókjával. A fűrész a fiók elkülönítési gyakorlatán alapul azáltal, hogy megbízható munkaállomást biztosít ezeknek a bizalmas fiókoknak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

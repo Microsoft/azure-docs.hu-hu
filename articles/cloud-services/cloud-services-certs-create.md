@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98739734"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Tanúsítványok áttekintése az Azure Cloud Services (klasszikus)
@@ -92,7 +92,7 @@ Az interneten sok oldal található, amely az IIS használatával foglalkozik. [
 ### <a name="linux"></a>Linux
 [Ez a](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) cikk bemutatja, hogyan hozhat létre a tanúsítványokat SSH-val.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Töltse fel a szolgáltatási tanúsítványt a Azure Portalba](cloud-services-configure-ssl-certificate-portal.md).
 
 Töltsön fel egy [felügyeleti API-tanúsítványt](/previous-versions/azure/azure-api-management-certs) a Azure Portalba.

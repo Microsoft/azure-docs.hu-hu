@@ -8,10 +8,10 @@ ms.date: 08/26/2020
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
 ms.openlocfilehash: 5129fccceb633991767cdd3b52bbb5b6af067270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88891045"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service Azure Resource Manager sablonjai
@@ -20,7 +20,7 @@ Az alábbi táblázat a Azure App Service Azure Resource Manager sablonjaira mut
 
 A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolatos további információkért lásd: [Microsoft. Web Resource types](/azure/templates/microsoft.web/allversions).
 
-| Alkalmazás üzembe helyezése | Leírás |
+| Alkalmazás üzembe helyezése | Description |
 |-|-|
 | [App Service csomag és alapszintű Linux-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Üzembe helyez egy Linux rendszerhez konfigurált App Service alkalmazást. |
 | [App Service csomag és alapszintű Windows-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Központilag telepíti a Windows rendszerhez konfigurált App Service alkalmazást. |

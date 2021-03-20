@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4e7774d2cd100931f92ff80066ebea4463c6f65c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96532652"
 ---
 # <a name="detect-color-schemes-in-images"></a>Képek színsémáinak észlelése
@@ -54,7 +54,7 @@ Az alábbi példa a Computer Vision által visszaadott JSON-választ mutatja be,
 
 A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és képének színét mutatja be.
 
-| Rendszerkép | Domináns színek |
+| Kép | Domináns színek |
 |-------|-----------------|
 |![Fehér virág Zöld háttérrel](./Images/flower.png)| Előtér: fekete<br/>Háttér: fehér<br/>Színek: fekete, fehér, zöld|
 ![Állomáson futó vonat](./Images/train_station.png) | Előtér: fekete<br/>Háttér: fekete<br/>Színek: fekete |
@@ -63,7 +63,7 @@ A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és
 
  A következő táblázat a visszaadott hangsúlyozási színt jeleníti meg hexadecimális HTML színértékként az egyes képképeknél.
 
-| Rendszerkép | Kiegészítő szín |
+| Kép | Kiegészítő szín |
 |-------|--------------|
 |![A napnyugtakor egy hegyi sziklán álló személy](./Images/mountain_vista.png) | #BB6D10 |
 |![Fehér virág Zöld háttérrel](./Images/flower.png) | #C6A205 |
@@ -73,7 +73,7 @@ A következő táblázat az egyes mintaképek előtérbeli, háttérszínét és
 
 A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja a minta lemezképekben.
 
-| Rendszerkép | Fekete & fehér? |
+| Kép | Fekete & fehér? |
 |-------|----------------|
 |![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | true |
 |![Egy kék ház és az első udvar](./Images/house_yard.png) | hamis |

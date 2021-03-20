@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: victorh
 ms.openlocfilehash: 2572e30c02552859eb5c61915a9ef524c0c6cc70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83758962"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Webalkalmazási tűzfal v2 konfigurálása Application Gateway egyéni szabállyal Azure PowerShell használatával
@@ -21,7 +21,7 @@ ms.locfileid: "83758962"
 
 Az egyéni szabályok lehetővé teszik saját szabályok kiértékelését a webalkalmazási tűzfalon (WAF) v2-en keresztül áthaladó kérelmek esetében. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Az egyéni szabályok egy művelettel rendelkeznek (az engedélyezéshez vagy a blokkoláshoz), egy egyeztetési feltételt és egy operátort, amely lehetővé teszi a teljes testreszabást.
 
-Ez a cikk létrehoz egy Application Gateway WAF v2-et, amely egyéni szabályt használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce User-Agent *evilbot*tartalmaz.
+Ez a cikk létrehoz egy Application Gateway WAF v2-et, amely egyéni szabályt használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce User-Agent *evilbot* tartalmaz.
 
 További példák az egyéni szabályokra: [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)
 
@@ -151,6 +151,6 @@ $policy.CustomRules.Add($rule)
 Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a webalkalmazási tűzfalról Application Gateway](ag-overview.md)

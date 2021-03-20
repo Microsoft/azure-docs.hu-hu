@@ -11,10 +11,10 @@ ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
 ms.openlocfilehash: ae7baeac6cee2a692928642e3e38ce0adad17d1c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674891"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Oktatóanyag: a SSMS-t használó, Azure SQL Databaseban található viszonyítási adatbázis tervezése
@@ -48,7 +48,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a kö
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database-in-azure-sql-database"></a>Üres adatbázis létrehozása Azure SQL Database
 
@@ -134,7 +134,7 @@ Kapcsolat létesítése az adatbázissal a [SQL Server Management Studio](/sql/s
    | Beállítás       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Server type (Kiszolgáló típusa)** | Adatbázismotor | Kötelezően megadandó érték. |
-   | **Kiszolgáló neve** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net* . |
+   | **Kiszolgáló neve** | A teljes kiszolgálónév | Például: *YourServer.database.Windows.net*. |
    | **Hitelesítés** | SQL Server-hitelesítés | Az SQL-hitelesítés az egyetlen hitelesítési típus, amelyet ebben az oktatóanyagban konfiguráltunk. |
    | **Bejelentkezés** | A kiszolgálói rendszergazdafiók | Az a fiók, amely a kiszolgáló létrehozásakor lett megadva. |
    | **Jelszó** | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
@@ -231,7 +231,7 @@ Az alábbi ábrán látható, hogyan kapcsolódnak ezek a táblázatok egymásho
 
 3. Nyisson meg egy parancssori ablakot, és navigáljon a *sampleData* mappára.
 
-4. A következő parancsok végrehajtásával szúrhat be mintaadatok a táblázatba, és cserélje le a *kiszolgáló* , az *adatbázis* , a *felhasználó* és a *jelszó* értékeit a környezetéhez tartozó értékekre.
+4. A következő parancsok végrehajtásával szúrhat be mintaadatok a táblázatba, és cserélje le a *kiszolgáló*, az *adatbázis*, a *felhasználó* és a *jelszó* értékeit a környezetéhez tartozó értékekre.
 
    ```cmd
    bcp Course in SampleCourseData -S <server>.database.windows.net -d <database> -U <user> -P <password> -q -c -t ","

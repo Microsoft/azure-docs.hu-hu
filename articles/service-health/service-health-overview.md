@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan biztosíthatja a Service Health egy testreszabh
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 8246b0ab93b95c13858e4ff96d0f24b255d05e55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90967783"
 ---
 # <a name="service-health-overview"></a>Service Health áttekintése
@@ -44,7 +44,7 @@ A **lehetséges hatás** lapon megtekintheti a probléma által befolyásolható
 
 ## <a name="see-emerging-issues-which-may-impact-your-services"></a>Tekintse meg a felmerülő problémákat, amelyek hatással lehetnek a szolgáltatásaira
 
-Előfordulhat, hogy az elterjedt szolgáltatásokkal kapcsolatos problémák az [Azure status lapra](https://status.azure.com) kerülnek, mielőtt a rendszer megcélozta az érintett ügyfelek számára a célként megadott kommunikációt. Annak biztosítása érdekében, hogy a Azure Service Health átfogó képet biztosítson az Ön számára esetlegesen felmerülő problémákról, az aktív Azure Status Page-problémák a *felmerülő problémák*Service Health. Ha egy esemény aktív az Azure status lapon, a rendszer az új problémák szalagcímét Service Health fogja megjelenni. A probléma részletes adatainak megtekintéséhez kattintson a szalagcímre.
+Előfordulhat, hogy az elterjedt szolgáltatásokkal kapcsolatos problémák az [Azure status lapra](https://status.azure.com) kerülnek, mielőtt a rendszer megcélozta az érintett ügyfelek számára a célként megadott kommunikációt. Annak biztosítása érdekében, hogy a Azure Service Health átfogó képet biztosítson az Ön számára esetlegesen felmerülő problémákról, az aktív Azure Status Page-problémák a *felmerülő problémák* Service Health. Ha egy esemény aktív az Azure status lapon, a rendszer az új problémák szalagcímét Service Health fogja megjelenni. A probléma részletes adatainak megtekintéséhez kattintson a szalagcímre.
 
 ![Új szolgáltatási probléma](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
@@ -54,7 +54,7 @@ A probléma kezelésére szolgáló hivatkozásra kattintva kérheti le a probl�
 
 [![Szolgáltatási probléma kezelése – probléma kezelése](./media/service-health-overview/azure-service-health-overview-3.png)](./media/service-health-overview/azure-service-health-overview-3.png#lightbox)
 
-## <a name="get-support-from-microsoft"></a>Támogatás kérése a Microsofttól
+## <a name="get-support-from-microsoft"></a>Támogatáskérés a Microsofttól
 
 Forduljon az ügyfélszolgálathoz, ha az erőforrás a probléma megoldása után is rossz állapotban marad.  Használja az oldal jobb oldalán található támogatási hivatkozásokat.  
 

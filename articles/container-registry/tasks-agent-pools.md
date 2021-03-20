@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: eeb9a71854f52da5c1a9f4befae93c377ad67b05
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98920307"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>ACR-feladat futtatása dedikált ügynök-készleten
@@ -95,11 +95,11 @@ A Task Agent-készletek a következő Azure-szolgáltatásokhoz való hozzáfér
 
 | Irány | Protokoll | Forrás         | Forrásport | Cél          | Cél port | Használt    |
 |-----------|----------|----------------|-------------|----------------------|-----------|---------|
-| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureKeyVault        | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármely         | Tárolás              | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármely         | EventHub             | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureActiveDirectory | 443       | Alapértelmezett |
-| Kimenő  | TCP      | VirtualNetwork | Bármely         | AzureMonitor         | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureKeyVault        | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | Tárolás              | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | EventHub             | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureActiveDirectory | 443       | Alapértelmezett |
+| Kimenő  | TCP      | VirtualNetwork | Bármelyik         | AzureMonitor         | 443       | Alapértelmezett |
 
 > [!NOTE]
 > Ha a feladatok további erőforrásokat igényelnek a nyilvános internetről, adja hozzá a megfelelő szabályokat. Például további szabályokra van szükség a Docker-létrehozási feladat futtatásához, amely lekéri az alaplemezképeket a Docker hub-ból, vagy visszaállítja a NuGet csomagot.

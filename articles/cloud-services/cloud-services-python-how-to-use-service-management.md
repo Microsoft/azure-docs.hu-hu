@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741400"
 ---
 # <a name="use-service-management-from-python"></a>A Service Management használata a Pythonból
@@ -447,7 +447,7 @@ A Linux rendszerű virtuális gépek klasszikus üzemi modellben való rögzít�
 
 A Windows rendszerű virtuális gépek klasszikus üzemi modellben való rögzítésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép rögzítése](/previous-versions/azure/virtual-machines/windows/classic/capture-image-classic).
 
-## <a name="next-steps"></a><a name="What's Next"> </a>További lépések
+## <a name="next-steps"></a><a name="What's Next"> </a>Következő lépések
 Most, hogy megismerte a Service Management alapjait, elérheti az [Azure PYTHON SDK-hoz készült teljes API-dokumentációt](https://azure-sdk-for-python.readthedocs.org/) , és a Python-alkalmazások felügyeletére szolgáló összetett feladatokat is könnyedén elvégezheti.
 
 További információ: [Python fejlesztői központ](https://azure.microsoft.com/develop/python/).

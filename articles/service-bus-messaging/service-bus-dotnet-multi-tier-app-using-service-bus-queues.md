@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029895"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
@@ -344,7 +344,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
     
     ![Képernyőkép a Microsoft Azure számítási emulátor (expressz) párbeszédpanelről.][20]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
 * [Bevezetés a Service Bus-üzenetsorok használatába][sbacomqhowto]

@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan rendelhet biztonsági hozzáférési házirende
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614655"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Biztonsági hozzáférési házirend kiosztása HTTP-és HTTPS-végpontokhoz
-Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy**.  A **SecurityAccessPolicy** biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok megfelelően legyenek korlátozva a szolgáltatás által futtatott felhasználói fiókra. Ellenkező esetben a **http.sys** nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibákhoz juthat. A következő példa egy **végpontneve**nevű végpontra alkalmazza a Customer1-fiókot, amely teljes körű hozzáférési jogosultságokat biztosít.
+Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja deklarálja a HTTP-végpont erőforrásait, meg kell adnia egy **SecurityAccessPolicy**.  A **SecurityAccessPolicy** biztosítja, hogy az ezekhez a végpontokhoz lefoglalt portok megfelelően legyenek korlátozva a szolgáltatás által futtatott felhasználói fiókra. Ellenkező esetben a **http.sys** nem fér hozzá a szolgáltatáshoz, és az ügyféltől érkező hívásokkal kapcsolatos hibákhoz juthat. A következő példa egy **végpontneve** nevű végpontra alkalmazza a Customer1-fiókot, amely teljes körű hozzáférési jogosultságokat biztosít.
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ Ha a futtatási házirendet alkalmazza, és a szolgáltatás jegyzékfájlja dek
 </Policies>
 ```
 
-HTTPS-végpont esetén az ügyfélnek visszaadott tanúsítvány nevét is meg kell adni. A tanúsítványt a **EndpointBindingPolicy**használatával hivatkozhat.  A tanúsítvány az alkalmazás jegyzékfájljának **tanúsítványok** szakaszában van definiálva.
+HTTPS-végpont esetén az ügyfélnek visszaadott tanúsítvány nevét is meg kell adni. A tanúsítványt a **EndpointBindingPolicy** használatával hivatkozhat.  A tanúsítvány az alkalmazás jegyzékfájljának **tanúsítványok** szakaszában van definiálva.
 
 ```xml
 <Policies>

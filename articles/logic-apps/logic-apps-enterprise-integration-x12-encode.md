@@ -9,10 +9,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792347"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek kódolása az Azure Logic Appsben az Enterprise Integration Packkel
@@ -50,7 +50,7 @@ Az alábbi elemek szükségesek:
     | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
     | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás**gombra.
+5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás** gombra.
 
     ![integrációs fiók-csatlakozás létrehozva](./media/logic-apps-enterprise-integration-x12-encode/x12encodeimage2.png)
 
@@ -90,6 +90,6 @@ A X12 kódolású összekötő a következő feladatokat hajtja végre:
 ## <a name="view-the-swagger"></a>A hencegés megtekintése
 Tekintse meg a [hencegés részleteit](/connectors/x12/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

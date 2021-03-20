@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75563326"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
@@ -44,7 +44,7 @@ Néhány ilyen stratégia érdekes, de a Service Fabric fürterőforrás-kezelő
 
 Mivel a fürterőforrás-kezelő felelős a szolgáltatások áthelyezéséhez, egy másik szolgáltatáskészlet-készletet tartalmaz, mint amit a hálózati terheléselosztó talál. Ennek az az oka, hogy a hálózati terheléselosztó olyan hálózati forgalmat biztosít, ahol a szolgáltatások már léteznek, még akkor is, ha az adott hely nem ideális a szolgáltatás futtatására. A Service Fabric fürterőforrás-kezelője alapvetően különböző stratégiákat alkalmaz, amelyekkel biztosítható, hogy a fürt erőforrásai hatékonyan legyenek kihasználva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A fürterőforrás-kezelő architektúrájának és információinak folyamatával kapcsolatos információkért tekintse meg [ezt a cikket.](service-fabric-cluster-resource-manager-architecture.md)
 - A fürterőforrás-kezelő számos lehetőséget kínál a fürt leírására. Ha többet szeretne megtudni a metrikákkal kapcsolatban, tekintse meg ezt a cikket a [Service Fabric-fürt leírásában](service-fabric-cluster-resource-manager-cluster-description.md)
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.

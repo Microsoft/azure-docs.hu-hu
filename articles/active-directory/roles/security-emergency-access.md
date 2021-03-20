@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98740822"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Vészhelyzeti hozzáférési fiókok kezelése az Azure AD-ben
@@ -150,7 +150,7 @@ Ezeket a lépéseket rendszeres időközönként és a legfontosabb változások
 - Ha a közelmúltban módosult az informatikai személyzet, például a feladatok változása, a távozás vagy egy új bérlet
 - Ha a szervezet Azure AD-előfizetései megváltoztak
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez](security-planning.md)
 - [Felhasználók hozzáadása az Azure ad használatával](../fundamentals/add-users-azure-active-directory.md) és [az új felhasználó társítása a globális rendszergazdai szerepkörhöz](../fundamentals/active-directory-users-assign-role-azure-portal.md)

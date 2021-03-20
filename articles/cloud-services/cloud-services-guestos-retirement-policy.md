@@ -14,10 +14,10 @@ ms.workload: tbd
 ms.date: 9/20/2017
 ms.author: raiye
 ms.openlocfilehash: fbe9b3379799fe3cf0a56d921ab257bc87606ca9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945452"
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Az Azure vendég operációs rendszer támogatása és a nyugdíjazási szabályzat
@@ -27,9 +27,9 @@ A Microsoft közzétett [támogatási szabályzattal rendelkezik a vendég oper�
 
 A szabályzat
 
-1. A Microsoft **legalább a vendég operációs rendszer legújabb két családját**fogja támogatni. A család kivonása után az ügyfelek a hivatalos nyugdíjazás dátumától számítva 12 hónapig érvényesek egy újabb támogatott vendég operációsrendszer-családra.
-2. A Microsoft **legalább a támogatott vendég operációs rendszer családjának legújabb két verzióját**fogja támogatni.
-3. A Microsoft **legalább az Azure SDK legújabb két verzióját**fogja támogatni. Az SDK egy verziójának kivonása után az ügyfeleknek 12 hónapig kell eljutniuk a hivatalos nyugdíjazás dátumától a újabb verzióra való frissítéshez.
+1. A Microsoft **legalább a vendég operációs rendszer legújabb két családját** fogja támogatni. A család kivonása után az ügyfelek a hivatalos nyugdíjazás dátumától számítva 12 hónapig érvényesek egy újabb támogatott vendég operációsrendszer-családra.
+2. A Microsoft **legalább a támogatott vendég operációs rendszer családjának legújabb két verzióját** fogja támogatni.
+3. A Microsoft **legalább az Azure SDK legújabb két verzióját** fogja támogatni. Az SDK egy verziójának kivonása után az ügyfeleknek 12 hónapig kell eljutniuk a hivatalos nyugdíjazás dátumától a újabb verzióra való frissítéshez.
 
 Időnként több mint két családot vagy kiadást lehet támogatni. A vendég operációs rendszer hivatalos támogatási információi megjelennek az [Azure vendég operációs rendszer kiadásait és az SDK kompatibilitási mátrixát](cloud-services-guestos-update-matrix.md).
 
@@ -77,5 +77,5 @@ Javasoljuk, hogy a Cloud Services megtervezéséhez használja a legújabb vend�
 
 Ha a webalkalmazás-architektúra az operációs rendszer alapjául szolgáló funkcióktól függ, használja a platform által támogatott funkciókat, például az [indítási feladatokat](cloud-services-startup-tasks.md) vagy más bővíthetőségi mechanizmusokat. Azt is megteheti, hogy az [Azure Virtual Machines](https://azure.microsoft.com/documentation/scenarios/virtual-machines/) (IaaS-infrastruktúra) szolgáltatást is használja, ahol Ön felelős a mögöttes operációs rendszer fenntartásáért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a [vendég operációs rendszer legújabb kiadásait](cloud-services-guestos-update-matrix.md).

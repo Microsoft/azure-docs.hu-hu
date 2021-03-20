@@ -9,10 +9,10 @@ ms.date: 1/17/2021
 ms.topic: article
 ms.service: azure
 ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98558114"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>A ServiceNow-hez készült IoT ICS-kezelési alkalmazás védelmezője
@@ -153,7 +153,7 @@ A szabály meghatározása:
 
 ### <a name="send-defender-for-iot-device-attributes"></a>Defender küldése IoT-eszköz attribútumaihoz
 
-Ez a cikk azt ismerteti, hogyan konfigurálhatja a Defendert a IoT-hez, hogy az eszköz számos attribútumát leküldse a ServiceNow táblákra. A ServiceNow leküldhető információkra vonatkozó részletekért tekintse meg a **_leltári adatokat_*.
+Ez a cikk azt ismerteti, hogyan konfigurálhatja a Defendert a IoT-hez, hogy az eszköz számos attribútumát leküldse a ServiceNow táblákra. A ServiceNow leküldett információk részleteit a ***leltári információkban*** tekintheti meg.
 
 Az attribútumok ServiceNow való elküldéséhez a helyszíni felügyeleti konzolt le kell képeznie egy ServiceNow-példányra. Ez biztosítja, hogy a Defender for IoT platform képes legyen kommunikálni és hitelesíteni a példányt.
 
@@ -161,7 +161,7 @@ ServiceNow-példány hozzáadása:
 
 1. Jelentkezzen be a Defender IoT helyszíni felügyeleti konzolján.
 
-1. Válassza ki a _ *System Settings** elemet, majd a **ServiceNow** a helyszíni felügyeleti konzol integrációs szakaszában.
+1. Válassza ki a **Rendszerbeállítások** elemet, majd a **ServiceNow** a helyszíni felügyeleti konzol integrációja szakaszban.
 
       :::image type="content" source="media/integration-servicenow/servicenow.png" alt-text="Kattintson a ServiceNow gombra.":::
 

@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 4f0ea55149fc8cfeeb6ef719d67346019b81078a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83744468"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>E-mail-cím beállítása ellenőrzési módszerként
@@ -57,18 +57,18 @@ A szervezet beállításaitól függően előfordulhat, hogy az e-mail-címét a
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza az **e-mail** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
+3. A **metódus hozzáadása** lapon válassza az **e-mail** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
     ![Hozzáadási mód mező, e-mailben kiválasztva](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. Az **e-mail** lapon írja be az e-mail-címét (például: alain@gmail.com ), majd kattintson a **tovább**gombra.
+4. Az **e-mail** lapon írja be az e-mail-címét (például: alain@gmail.com ), majd kattintson a **tovább** gombra.
 
     ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-emailaddress.png)
 
     >[!Important]
     >Ez az e-mail-cím nem lehet a munkahelyi vagy iskolai e-mail-címe.
 
-5. Írja be a megadott e-mail-címre küldött kódot, majd kattintson a **tovább**gombra.
+5. Írja be a megadott e-mail-címre küldött kódot, majd kattintson a **tovább** gombra.
 
     ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-emailcode.png)
 
@@ -106,7 +106,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

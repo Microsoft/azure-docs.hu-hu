@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741332"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET-ben
@@ -37,7 +37,7 @@ A **RoleEntryPoint** kiterjesztésekor vegye figyelembe a módszerek következő
 Ha a szerepkör nem indul el, vagy az inicializálás, a foglalt és a leállítási állapotok között újrahasznosítást végez, a kód a szerepkör újraindításakor a rendszer nem kezelt kivételt is tartalmazhat az életciklus-események egyikén belül. Ebben az esetben a [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) esemény segítségével határozza meg a kivétel okát, és megfelelően kezeli azt. A szerepkör a [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) metódusból is visszatérhet, ami a szerepkör újraindítását eredményezi. További információ a központi telepítési állapotokról: a [szerepkörök újrahasznosítását okozó gyakori problémák](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Ha a **Microsoft Visual studióhoz készült Azure-eszközöket** használja az alkalmazás fejlesztéséhez, a szerepkör-projekt sablonjai automatikusan kiterjesztik a **RoleEntryPoint** osztályt a *WebRole.cs* és a *WorkerRole.cs* -fájlokba.
+> Ha a **Microsoft Visual studióhoz készült Azure-eszközöket** használja az alkalmazás fejlesztéséhez, a szerepkör-projekt sablonjai automatikusan kiterjesztik a **RoleEntryPoint** osztályt a *webrole. cs* és a *WorkerRole. cs* fájlokban.
 > 
 > 
 
@@ -78,7 +78,7 @@ A **futtatási** metódus felülbírálása nem kötelező; az alapértelmezett 
 ### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>A ASP.NET életciklus-módszereinek megvalósítása webes szerepkörhöz
 A **RoleEntryPoint** osztály által biztosított ASP.net-életciklusi módszerek mellett a webes szerepkörök inicializálási és leállítási folyamatait is kezelheti. Ez a kompatibilitási célokra hasznos lehet, ha meglévő ASP.NET-alkalmazást PORTOL az Azure-ba. A ASP.NET életciklusának metódusait a rendszer a **RoleEntryPoint** metódusok alapján hívja meg. Az **alkalmazás \_ indítási** módszerét a **RoleEntryPoint. OnStart** metódus befejeződése után hívja meg a rendszer. Az **alkalmazás \_ befejezési** metódusát a rendszer a **RoleEntryPoint. OnStop** metódus meghívása előtt hívja meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [hozhat létre Cloud Service-csomagot](cloud-services-model-and-package.md).
 
 

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68989680"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rövid útmutató: Naplózási jelentés letöltése Azure portál használatával
@@ -33,7 +33,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan tölthető le az elmúlt 24 �
 A következők szükségesek:
 
 * Egy Azure Active Directory-bérlő. 
-* Az a felhasználó, aki a **biztonsági rendszergazda**, a **biztonsági olvasó**vagy a **globális rendszergazdai** szerepkör tagja a Bérlőnek. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
+* Az a felhasználó, aki a **biztonsági rendszergazda**, a **biztonsági olvasó** vagy a **globális rendszergazdai** szerepkör tagja a Bérlőnek. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
 
 ## <a name="quickstart-download-an-audit-report"></a>Első lépések: Naplózási jelentés letöltése
 
@@ -45,7 +45,7 @@ A következők szükségesek:
 
 ![Jelentéskészítés](./media/quickstart-download-audit-report/download-audit-logs.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon](concept-sign-ins.md)
 * [Az Azure Active Directory jelentéskészítés megőrzése](reference-reports-data-retention.md)

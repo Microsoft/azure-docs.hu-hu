@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 317b530fbaa34ca5689bb505126892e4eba06bd9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674804"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database biztonsági beállítások konfigurálása és kezelése geo-visszaállításhoz vagy feladatátvételhez
@@ -82,7 +82,7 @@ WHERE [type_desc] = 'SQL_USER'
 ```
 
 > [!NOTE]
-> A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00** . A **dbo** SID a *0x01060000000001648000000000048454* -vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager** tagja helyett.
+> A **INFORMATION_SCHEMA** és a **sys** felhasználók *Null* SID azonosítóval rendelkeznek, és a **vendég** SID **kell lennie 0x00**. A **dbo** SID a *0x01060000000001648000000000048454*-vel kezdődhet, ha az adatbázis létrehozója a kiszolgáló rendszergazdája volt a **DbManager** tagja helyett.
 
 #### <a name="3-create-the-logins-on-the-target-server"></a>3. a bejelentkezések létrehozása a célkiszolgálón
 

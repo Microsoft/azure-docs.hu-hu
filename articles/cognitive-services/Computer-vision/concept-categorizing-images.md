@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 9721ffa807c9adbeb50839113bc64fd23d8eb13f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533723"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Képek kategorizálása tárgy szerint
@@ -53,7 +53,7 @@ A következő JSON-válasz azt szemlélteti, hogy milyen Computer Vision ad viss
 
 Az alábbi táblázat egy jellemző képkészletet és Computer Vision által visszaadott kategóriát mutat be minden egyes képhez.
 
-| Rendszerkép | Kategória |
+| Kép | Kategória |
 |-------|----------|
 | ![Négy személy jelent együtt családként](./Images/family_photo.png) | people_group |
 | ![Egy kiskutya ült egy füves mezőben](./Images/cute_dog.png) | animal_dog |
@@ -66,6 +66,6 @@ A kategorizálási funkció a [rendszerkép elemzése](https://westcentralus.dev
 
 * [Rövid útmutató: Computer Vision REST API vagy ügyféloldali kódtárak](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a [képek címkézésével](concept-tagging-images.md) és a [képek leírásával](concept-describing-images.md)kapcsolatos fogalmakat.

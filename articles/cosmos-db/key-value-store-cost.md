@@ -9,10 +9,10 @@ ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 9354ae0a22ef2e8ab4ee6a57563d3f3c4c8e4547
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339302"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB Key Value Store-ban – Cost Overview
@@ -47,6 +47,6 @@ Ha 1 000 RU/s-t hoz létre, ez a 3 600 000 RU/óra értékre vonatkozik, és az 
 
 Az alapszintű Blobok vagy objektumok többsége a $0,40/millió olvasási tranzakció és a $5/millió írási tranzakció díjait tárolja. Optimális használat esetén Cosmos DB akár 98%-kal olcsóbb lehet, mint a többi megoldásnál (1 KB-os tranzakció esetén).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [ru-kalkulátor](https://cosmos.azure.com/capacitycalculator/) használatával becsülheti meg a számítási feladatok átviteli sebességét.

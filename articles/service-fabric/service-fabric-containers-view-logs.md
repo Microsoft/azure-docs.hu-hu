@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet megtekinteni egy futó Service Fabric Conta
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75458184"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric tároló szolgáltatás naplófájljainak megtekintése
@@ -16,9 +16,9 @@ Az Azure Service Fabric egy tároló-Orchestrator, és támogatja a [Linux-és W
 ## <a name="access-the-logs-of-a-running-container"></a>Egy futó tároló naplóihoz való hozzáférés
 A tároló naplói [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)használatával érhetők el.  Egy webböngészőben nyissa meg Service Fabric Explorer a fürt felügyeleti végpontján, ehhez navigáljon a következőre: `http://mycluster.region.cloudapp.azure.com:19080/Explorer` .  
 
-A tároló-naplók azon a fürtcsomóponton találhatók, amelyen a Container Service-példány fut. Tegyük fel például, hogy beolvassa a [linuxos szavazási minta alkalmazás](service-fabric-quickstart-containers-linux.md)webes kezelőfelületének naplóit. A fanézetben bontsa ki a **cluster** > **Applications** > **VotingType** > **Fabric:/szavazás/azurevotefront**elemet.  Ezután bontsa ki a partíciót (ebben a példában a d1aa737e-f22a-e347-be16-eec90be24bc1), és ellenőrizze, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
+A tároló-naplók azon a fürtcsomóponton találhatók, amelyen a Container Service-példány fut. Tegyük fel például, hogy beolvassa a [linuxos szavazási minta alkalmazás](service-fabric-quickstart-containers-linux.md)webes kezelőfelületének naplóit. A fanézetben bontsa ki a **cluster** > **Applications** > **VotingType** > **Fabric:/szavazás/azurevotefront** elemet.  Ezután bontsa ki a partíciót (ebben a példában a d1aa737e-f22a-e347-be16-eec90be24bc1), és ellenőrizze, hogy a tároló fut-e a fürtcsomópont *_lnxvm_0*.
 
-A fanézetben keresse meg a *_lnxvm_0* csomóponton található kódot a **csomópontok**kibontásával > **_lnxvm_0** > **Fabric:/szavazó** > **azurevotfrontPkg** > **kód** > **code**.  Ezután válassza a **tárolói naplók** lehetőséget a tároló naplófájljainak megjelenítéséhez.
+A fanézetben keresse meg a *_lnxvm_0* csomóponton található kódot a **csomópontok** kibontásával > **_lnxvm_0** > **Fabric:/szavazó** > **azurevotfrontPkg** > **kód** > .  Ezután válassza a **tárolói naplók** lehetőséget a tároló naplófájljainak megjelenítéséhez.
 
 ![Service Fabric platform][Image1]
 
@@ -65,7 +65,7 @@ Válasz:
 {   "content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A [Linux Container Application alkalmazás létrehozásával foglalkozó oktatóanyagban](service-fabric-tutorial-create-container-images.md)dolgozhat.
 - További információ a [Service Fabric és a tárolók](service-fabric-containers-overview.md) használatáról
 

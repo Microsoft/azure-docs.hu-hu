@@ -4,10 +4,10 @@ description: Ismerje meg az egység tesztelési Service Fabric állapot-nyilván
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75433915"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Állapot-nyilvántartó Service Fabric egység tesztelése
@@ -111,5 +111,5 @@ Hosszú ideig futó vagy aszinkron folyamatok, amelyeket meg kell szüntetni, ha
 #### <a name="verify-which-replicas-should-serve-requests"></a>A kérelmeket kézbesítő replikák ellenőrzése
 A teszteknek meg kell tenniük a várt viselkedést, ha egy kérés nem elsődleges replikához van irányítva. A Service Fabric lehetővé teszi a másodlagos replikák kérések kiszolgálását. A megbízható gyűjteményekbe való írás azonban csak az elsődleges replikából történhet. Ha az alkalmazás csak elsődleges replikákat szándékozik kézbesíteni a kérések kiszolgálásához, vagy csak a kérelmek egy részhalmazát tudja kezelni egy másodlagos, akkor a tesztek a pozitív és a negatív esetek esetében is a várt viselkedést fogják érvényesíteni. A rendszer egy olyan replikára irányítja át a negatív esetet, amely nem kezeli a kérést, és a pozitív az ellenkezője.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan [tesztelheti az állapot-nyilvántartó szolgáltatásokat](service-fabric-how-to-unit-test-stateful-services.md).

@@ -4,10 +4,10 @@ description: Minta Azure Container Registry feladatok (ACR-feladatok) a tároló
 ms.topic: article
 ms.date: 11/14/2019
 ms.openlocfilehash: 49df3bf565052a729ac3c587bd2ba11a299d05f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74456082"
 ---
 # <a name="acr-tasks-samples"></a>ACR-feladatok mintái
@@ -33,7 +33,7 @@ További példákért tekintse meg az [Azure Samples][task-examples] tárházat.
 * **Képek létrehozása és leküldése több**  -  beállításjegyzékbe [YAML](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/testtask.yaml), [Docker](https://github.com/Azure-Samples/acr-tasks/blob/master/multipleRegistries/hello-world.dockerfile)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az ACR-feladatokról:
 

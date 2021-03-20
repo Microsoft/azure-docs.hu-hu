@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan futtathat egy Azure 
 ms.topic: article
 ms.date: 11/24/2020
 ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96030611"
 ---
 # <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Oktatóanyag: ACR-feladat futtatása meghatározott ütemterv szerint
@@ -219,7 +219,7 @@ az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre olyan Azure Container Registry feladatokat, amelyeket egy időzítő automatikusan indít el. 
 

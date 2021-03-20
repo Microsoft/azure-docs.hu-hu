@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95973048"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory átmenő hitelesítés: az előzetes verziójú hitelesítési ügynökök frissítése
@@ -88,5 +88,5 @@ A következő lépésekkel frissítheti a hitelesítési ügynököket más kisz
 >[!NOTE]
 >Ha a fenti lépések elvégzése után bejelöli a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) az átmenő hitelesítés panelt, két hitelesítési ügynök bejegyzés jelenik meg kiszolgálónként – egy bejegyzés, amely a hitelesítési ügynököt **aktívként** és a másikat **inaktívként** jeleníti meg. Ez a _várt_ érték. Az **inaktív** bejegyzés néhány nap múlva automatikusan eldobásra kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.

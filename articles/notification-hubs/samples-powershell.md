@@ -15,16 +15,16 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 720256416ca77b40ca0075f5b227212355dda040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "71213326"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>Azure PowerShell minták az Azure Notification Hubs
 
 Az alábbi táblázat az Azure-Notification Hubs Azure PowerShell parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| Leírás | Hivatkozás |
+| Description | Hivatkozás |
 | ----------- | ---- |
 |[Értesítési központ létrehozása](scripts/create-notification-hub-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-szkript egy minta értesítési központot hoz létre. |

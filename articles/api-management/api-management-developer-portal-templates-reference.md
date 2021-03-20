@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73176789"
 ---
 # <a name="developer-portal-templates"></a>Fejlesztői portál sablonjai
@@ -40,7 +40,7 @@ További információ a sablonok használatáról: [API Management fejlesztői p
         -   [C#](api-management-api-templates.md#CSharp)  
         -   [Java](api-management-api-templates.md#Stub)  
         -   [JavaScript](api-management-api-templates.md#JavaScript)  
-        -   [C célkitűzés](api-management-api-templates.md#ObjectiveC)  
+        -   [Objective C](api-management-api-templates.md#ObjectiveC)  
         -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
         -   [Ruby](api-management-api-templates.md#Ruby)  
@@ -59,10 +59,10 @@ További információ a sablonok használatáról: [API Management fejlesztői p
     -   [Fiókadatok frissítése](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Oldalak](api-management-page-templates.md)  
     -   [Bejelentkezés](api-management-page-templates.md#SignIn)  
-    -   [feliratkozni](api-management-page-templates.md#SignUp)  
+    -   [Regisztráció](api-management-page-templates.md#SignUp)  
     -   [A lap nem található](api-management-page-templates.md#PageNotFound)
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 + [Sablonreferencia](api-management-developer-portal-templates-reference.md)  
 + [Adatmodell-referencia](api-management-template-data-model-reference.md)  

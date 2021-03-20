@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: 6110a7952b7c29609d2b98e135b61032aec3fa52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650395"
 ---
 # <a name="adding-custom-actions-to-azure-rest-api"></a>Egyéni műveletek hozzáadása az Azure REST APIhoz
@@ -132,9 +132,9 @@ az resource invoke-action --action {actionName} \
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-művelet | *igen* | A **ResourceProvider**definiált művelet neve.
-azonosítók | *igen* | A **ResourceProvider**erőforrás-azonosítója.
-kérelem – törzs | *nem* | A **végpontnak**küldendő kérelem törzse.
+művelet | *igen* | A **ResourceProvider** definiált művelet neve.
+azonosítók | *igen* | A **ResourceProvider** erőforrás-azonosítója.
+kérelem – törzs | *nem* | A **végpontnak** küldendő kérelem törzse.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
@@ -186,11 +186,11 @@ Minta Azure Resource Manager sablon:
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-resourceIdentifier | *igen* | A **ResourceProvider**erőforrás-azonosítója.
+resourceIdentifier | *igen* | A **ResourceProvider** erőforrás-azonosítója.
 apiVersion | *igen* | Az erőforrás-futtatókörnyezet API-verziója. Ennek mindig "2018-09-01-Preview" értékűnek kell lennie.
-functionValues | *nem* | A **végpontnak**küldendő kérelem törzse.
+functionValues | *nem* | A **végpontnak** küldendő kérelem törzse.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
 - [Rövid útmutató: Azure egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)

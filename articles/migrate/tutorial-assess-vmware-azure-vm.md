@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: e7251f8b83110bc24a7ba3d7b078993b39a2c001
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98566853"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>Oktatóanyag: VMware virtuális gépek felmérése Azure-beli virtuális gépekre való áttelepítéshez
@@ -21,7 +21,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 Ebből a cikkből megtudhatja, hogyan értékelheti fel a felderített VMware virtuális gépeket (VM) az Azure-beli virtuális gépekre való áttelepítésre való felkészülés során a Azure Migrate: Server Assessment Tool
 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 - Értékelés futtatása a számítógép metaadatai és konfigurációs adatai alapján.
 - Értékelés futtatása a teljesítményadatok alapján.
@@ -197,7 +197,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök](how-to-create-group-machine-dependencies-agentless.md) [nélküli vagy ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

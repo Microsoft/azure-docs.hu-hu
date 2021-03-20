@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983893"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Helyszíni WCF-szolgáltatás közzététele a Felhőbeli webalkalmazásokban Azure Relay használatával
@@ -51,7 +51,7 @@ A megoldások tervezői elkezdték a felhőt használni a méretezési követelm
 
 Ebben az oktatóanyagban egy ASP.NET-webhelyet hoz létre, amely lehetővé teszi, hogy megtekintse a termékek listáját a termék leltározása lapon.
 
-![Forgatókönyv][0]
+![Eset][0]
 
 Az oktatóanyag feltételezi, hogy egy meglévő helyi rendszeren elérhetők a termékek adatai, és hogy az Azure Relay közvetítőn keresztül éri el ezt a rendszert. Egy egyszerű konzolos alkalmazásban futó webszolgáltatás szimulálja ezt a helyzetet. A termék memóriában tárolt készletét tartalmazza. Ezt a konzol alkalmazást futtathatja saját számítógépén, és üzembe helyezheti a webes szerepkört az Azure-ban. Ezzel megtudhatja, hogyan fut az Azure-adatközpontban futó webes szerepkör a számítógépén. Ez a hívás akkor is előfordul, ha a számítógép majdnem legalább egy tűzfalon és egy hálózati címfordítási (NAT-) réteg mögött található.
 
@@ -61,7 +61,7 @@ Az Azure-alkalmazások fejlesztésének megkezdése előtt töltse le az eszköz
 
 1. Telepítse az Azure SDK for .NET-et az SDK [letöltési oldaláról](https://azure.microsoft.com/downloads/).
 1. A **.net** oszlopban válassza ki a használt [Visual Studio](https://www.visualstudio.com) -verziót. Ez az oktatóanyag a Visual Studio 2019-et használja.
-1. Amikor a rendszer kéri a telepítő futtatását vagy mentését, válassza a **Futtatás**lehetőséget.
+1. Amikor a rendszer kéri a telepítő futtatását vagy mentését, válassza a **Futtatás** lehetőséget.
 1. A **webplatform-telepítő** párbeszédpanelen válassza a **telepítés** lehetőséget, és folytassa a telepítést.
 
 A telepítés befejezése után minden szükséges az alkalmazás fejlesztésének megkezdéséhez. Az SDK olyan eszközöket tartalmaz, amelyekkel könnyedén fejleszthet Azure-alkalmazásokat a Visual Studióban.
@@ -76,22 +76,22 @@ Első lépésként létre kell hoznia egy névteret, és meg kell szereznie egy 
 
 Először létrehoz egy szimulált helyszíni Termékkatalógus-rendszerrendszert.  Ez a projekt egy Visual Studio-konzolalkalmazás, és az [Azure Service Bus NuGet-csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) használja a Service Bus-kódtárak és konfigurációs beállítások belefoglalása érdekében. <a name="create-the-project"></a>
 
-1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként**lehetőséget.
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# és a **tovább**gombra.
-1. Nevezze el a projekt *ProductsServer* , és válassza a **Létrehozás**lehetőséget.
+1. Indítsa el a Microsoft Visual studiót rendszergazdaként. Ehhez kattintson a jobb gombbal a Visual Studio program ikonjára, majd válassza a **Futtatás rendszergazdaként** lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget a C# és a **tovább** gombra.
+1. Nevezze el a projekt *ProductsServer* , és válassza a **Létrehozás** lehetőséget.
 
    ![Az új projekt konfigurálása][11]
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a **ProductsServer** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
-1. Válassza a **Tallózás**elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus**elemet. Válassza a **telepítés**lehetőséget, és fogadja el a használati feltételeket.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **ProductsServer** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
+1. Válassza a **Tallózás** elemet, majd keresse meg és válassza a **WindowsAzure. ServiceBus** elemet. Válassza a **telepítés** lehetőséget, és fogadja el a használati feltételeket.
 
    ![NuGet-csomag kiválasztása][13]
 
    A szükséges ügyfél-szerelvények már hivatkoznak rá.
 
-1. Adjon egy új osztályt a termékszerződéshez. A **megoldáskezelő**kattintson a jobb gombbal a **ProductsServer** projektre, **Add**és válassza az  >  **osztály**hozzáadása elemet.
-1. A **név**mezőben adja meg a *ProductsContract.cs* nevet, és válassza a **Hozzáadás**lehetőséget.
+1. Adjon egy új osztályt a termékszerződéshez. A **megoldáskezelő** kattintson a jobb gombbal a **ProductsServer** projektre, és válassza az  >  **osztály** hozzáadása elemet.
+1. A **név** mezőben adja meg a *ProductsContract. cs* nevet, majd válassza a **Hozzáadás** lehetőséget.
 
 Hajtsa végre a következő programkód-módosításokat a megoldásban:
 
@@ -132,7 +132,7 @@ Hajtsa végre a következő programkód-módosításokat a megoldásban:
     }
     ```
 
-1. A *program.cs*cserélje le a névtér definícióját a következő kódra, amely hozzáadja a profil szolgáltatást és a gazdagépet.
+1. A *program. cs* esetében cserélje le a névtér definícióját a következő kódra, amely hozzáadja a profil szolgáltatást és a gazdagépet.
 
     ```csharp
     namespace ProductsServer
@@ -187,7 +187,7 @@ Hajtsa végre a következő programkód-módosításokat a megoldásban:
     }
     ```
 
-1. A **megoldáskezelő**kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban. A elem alján, de még a (z) területen `<system.ServiceModel>` is `<system.ServiceModel>` adja hozzá a következő XML-kódot. Ügyeljen arra, hogy a helyére a `yourServiceNamespace` névtér nevét és `yourKey` a korábban a portálról LEkért sas-kulcsot cserélje le:
+1. A **megoldáskezelő** kattintson duplán a **App.config** lehetőségre a fájl megnyitásához a Visual Studio Editorban. A elem alján, de még a (z) területen `<system.ServiceModel>` is `<system.ServiceModel>` adja hozzá a következő XML-kódot. Ügyeljen arra, hogy a helyére a `yourServiceNamespace` névtér nevét és `yourKey` a korábban a portálról LEkért sas-kulcsot cserélje le:
 
     ```xml
     <system.serviceModel>
@@ -233,27 +233,27 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást hoz létre, amely a termé
 ### <a name="create-the-project"></a>A projekt létrehozása
 
 1. Győződjön meg arról, hogy a Visual Studio rendszergazdaként fut.
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget.
-1. Az **új projekt létrehozása**lapon válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** lehetőséget a C# nyelvhez, majd válassza a **tovább**lehetőséget.
-1. Nevezze el a projekt *ProductsPortal* , és válassza a **Létrehozás**lehetőséget.
-1. Az **új ASP.net-Webalkalmazás létrehozása lapon**válassza az **MVC** lehetőséget, és válassza a **módosítás** a **hitelesítés**alatt lehetőséget.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget.
+1. Az **új projekt létrehozása** lapon válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** lehetőséget a C# nyelvhez, majd válassza a **tovább** lehetőséget.
+1. Nevezze el a projekt *ProductsPortal* , és válassza a **Létrehozás** lehetőséget.
+1. Az **új ASP.net-Webalkalmazás létrehozása lapon** válassza az **MVC** lehetőséget, és válassza a **módosítás** a **hitelesítés** alatt lehetőséget.
 
    ![ASP .NET-alapú webalkalmazás kiválasztása][16]
 
-1. A **hitelesítés módosítása**területen válassza a **Nincs hitelesítés** lehetőséget, majd kattintson **az OK gombra**. Ebben az oktatóanyagban olyan alkalmazást telepít, amelyhez nincs szükség felhasználói bejelentkezésre.
+1. A **hitelesítés módosítása** területen válassza a **Nincs hitelesítés** lehetőséget, majd kattintson **az OK gombra**. Ebben az oktatóanyagban olyan alkalmazást telepít, amelyhez nincs szükség felhasználói bejelentkezésre.
 
     ![Hitelesítés meghatározása][18]
 
 1. **Hozzon létre egy új ASP.net-webalkalmazást**, és válassza a **Létrehozás** lehetőséget az MVC-alkalmazás létrehozásához.
 1. Azure-erőforrások konfigurálása új webalkalmazáshoz. Kövesse a [webalkalmazás közzététele](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)című témakör lépéseit. Ezután térjen vissza ehhez az oktatóanyaghoz, és folytassa a következő lépéssel.
-1. **Megoldáskezelő**kattintson a jobb gombbal a **modellek** elemre, **Add**majd válassza az  >  **osztály**hozzáadása elemet.
-1. Nevezze el az osztály *Product.cs*, majd válassza a **Hozzáadás**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **modellek** elemre, majd válassza az  >  **osztály** hozzáadása elemet.
+1. Nevezze el a *Product. cs* osztályt, majd válassza a **Hozzáadás** lehetőséget.
 
     ![Termékmodell létrehozása][17]
 
 ### <a name="modify-the-web-application"></a>A webalkalmazás módosítása
 
-1. A Visual Studióban található *Product.cs* fájlban cserélje le a meglévő névtér-definíciót a következő kódra:
+1. A Visual Studióban található *Product. cs* fájlban cserélje le a meglévő névtér-definíciót a következő kódra:
 
    ```csharp
     // Declare properties for the products inventory.
@@ -268,8 +268,8 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást hoz létre, amely a termé
     }
     ```
 
-1. A **megoldáskezelő**bontsa ki a **vezérlők**csomópontot, majd kattintson duplán a **HomeController.cs** elemre, és nyissa meg a fájlt a Visual Studióban.
-1. A *HomeController.cs*cserélje le a meglévő névtér-definíciót a következő kódra:
+1. A **megoldáskezelő** bontsa ki a **vezérlők** csomópontot, majd kattintson duplán a **HomeController. cs** fájlra, és nyissa meg a fájlt a Visual Studióban.
+1. A *HomeController. cs* esetében cserélje le a meglévő névtér-definíciót a következő kódra:
 
     ```csharp
     namespace ProductsWeb.Controllers
@@ -291,13 +291,13 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást hoz létre, amely a termé
     }
     ```
 
-1. A **megoldáskezelő**bontsa ki a megosztott **nézetek**csomópontot  >  **Shared**, majd kattintson duplán a **_Layout. cshtml** fájlra a Visual Studio Editorban való megnyitásához.
-1. A `My ASP.NET Application` *Northwind Traders-termékek*összes előfordulásának módosítása.
+1. A **megoldáskezelő** bontsa ki a megosztott **nézetek** csomópontot  >  , majd kattintson duplán a **_Layout. cshtml** fájlra a Visual Studio Editorban való megnyitásához.
+1. A `My ASP.NET Application` *Northwind Traders-termékek* összes előfordulásának módosítása.
 1. Távolítsa el a `Home` , `About` és a `Contact` hivatkozásokat. A következő példában törölje a kiemelt kódot.
 
     ![A generált listaelemek törlése][41]
 
-1. A **megoldáskezelő**területen bontsa ki a **nézetek**  >  **kezdőlapja**elemet, majd kattintson duplán az **index. cshtml** fájlra, és nyissa meg a fájlt a Visual Studio Editorban. Cserélje le a fájl teljes tartalmát a következő kódra:
+1. A **megoldáskezelő** területen bontsa ki a **nézetek**  >  **kezdőlapja** elemet, majd kattintson duplán az **index. cshtml** fájlra, és nyissa meg a fájlt a Visual Studio Editorban. Cserélje le a fájl teljes tartalmát a következő kódra:
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -339,7 +339,7 @@ Ebben a szakaszban egy egyszerű ASP.NET-alkalmazást hoz létre, amely a termé
 
 Futtassa az alkalmazást a működése ellenőrzéséhez.
 
-1. Győződjön meg arról, hogy a **ProductsPortal** az aktív projekt. Kattintson a jobb gombbal a projekt nevére a **megoldáskezelő** , majd válassza a **beállítás indítási projektként**lehetőséget.
+1. Győződjön meg arról, hogy a **ProductsPortal** az aktív projekt. Kattintson a jobb gombbal a projekt nevére a **megoldáskezelő** , majd válassza a **beállítás indítási projektként** lehetőséget.
 1. A Visual Studióban válassza az F5 elemet.
 
 Az alkalmazásának meg kell jelennie egy böngészőben.
@@ -351,10 +351,10 @@ Az alkalmazásának meg kell jelennie egy böngészőben.
 A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalmazáshoz csatlakoztassuk.
 
 1. Ha még nincs megnyitva, a Visual Studióban nyissa meg az [ASP.NET-alkalmazás létrehozása](#create-an-aspnet-application) szakaszban létrehozott **ProductsPortal** projektet.
-1. A helyszíni [kiszolgáló létrehozása](#create-an-on-premises-server) szakasz lépéséhez hasonlóan adja hozzá a NuGet csomagot a projekt hivatkozásaihoz. **Megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. A helyszíni [kiszolgáló létrehozása](#create-an-on-premises-server) szakasz lépéséhez hasonlóan adja hozzá a NuGet csomagot a projekt hivatkozásaihoz. **Megoldáskezelő** kattintson a jobb gombbal a **ProductsPortal** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 1. Keressen a *WindowsAzure.ServiceBus* kifejezésre, és válassza ki az **WindowsAzure.ServiceBus** elemet. Ezután fejezze be a telepítést, és zárjuk be a párbeszédpanelt.
-1. **Megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** projektre, majd válassza **Add**a  >  **meglévő elem hozzáadása elemet**.
-1. Keresse meg a *ProductsContract.cs* fájlt a **ProductsServer** konzolprojektben. Emelje ki a *ProductsContract.cs*. Kattintson a **Hozzáadás**elem melletti lefelé mutató nyílra, majd válassza a **Hozzáadás hivatkozásként**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **ProductsPortal** projektre, majd válassza a  >  **meglévő elem hozzáadása elemet**.
+1. Keresse meg a *ProductsContract.cs* fájlt a **ProductsServer** konzolprojektben. Emelje ki a *ProductsContract. cs* elemet. Kattintson a **Hozzáadás** elem melletti lefelé mutató nyílra, majd válassza a **Hozzáadás hivatkozásként** lehetőséget.
 
    ![Hozzáadás hivatkozásként][24]
 
@@ -400,23 +400,23 @@ A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalma
    }
    ```
 
-1. A **Megoldáskezelőban**kattintson a jobb gombbal a **ProductsPortal** -megoldásra. Győződjön meg arról, hogy a jobb gombbal a megoldásra kattint, és nem a projektre. Válassza **Add**a  >  **meglévő projekt**hozzáadása lehetőséget.
+1. A **Megoldáskezelőban** kattintson a jobb gombbal a **ProductsPortal** -megoldásra. Győződjön meg arról, hogy a jobb gombbal a megoldásra kattint, és nem a projektre. Válassza a  >  **meglévő projekt** hozzáadása lehetőséget.
 1. Keresse meg a **ProductsServer** projektet, és kattintson duplán a *ProductsServer.csproj* megoldásfájlra annak hozzáadásához.
-1. A **ProductsServer** futnia kell a **ProductsPortal**lévő információk megjelenítéséhez. **Megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** -megoldásra, és válassza a **Tulajdonságok** lehetőséget a **tulajdonságlapok**megjelenítéséhez.
-1. Válassza az **Általános tulajdonságok**  >  **indítási projekt** elemet, és válassza a **több indítási projekt**lehetőséget. Győződjön meg arról, hogy a **ProductsServer** és a **ProductsPortal** megjelenik ebben a sorrendben, valamint hogy a **művelet** mindkét esetben **elindul**.
+1. A **ProductsServer** futnia kell a **ProductsPortal** lévő információk megjelenítéséhez. **Megoldáskezelő** kattintson a jobb gombbal a **ProductsPortal** -megoldásra, és válassza a **Tulajdonságok** lehetőséget a **tulajdonságlapok** megjelenítéséhez.
+1. Válassza az **Általános tulajdonságok**  >  **indítási projekt** elemet, és válassza a **több indítási projekt** lehetőséget. Győződjön meg arról, hogy a **ProductsServer** és a **ProductsPortal** megjelenik ebben a sorrendben, valamint hogy a **művelet** mindkét esetben **elindul**.
 
       ![Több indítási projekt][25]
 
 1. Válassza a **közös tulajdonságok**  >  **projekt függőségei** lehetőséget a bal oldalon.
-1. A **projektek**esetében válassza a **ProductsPortal**lehetőséget. Győződjön meg arról, hogy a **ProductsServer** ki van jelölve.
+1. A **projektek** esetében válassza a **ProductsPortal** lehetőséget. Győződjön meg arról, hogy a **ProductsServer** ki van jelölve.
 
     ![Projekt függőségei][26]
 
-1. A **projektek**esetében válassza a **ProductsServer**lehetőséget. Győződjön meg arról, hogy a **ProductsPortal** nincs kijelölve, majd kattintson **az OK** gombra a módosítások mentéséhez.
+1. A **projektek** esetében válassza a **ProductsServer** lehetőséget. Győződjön meg arról, hogy a **ProductsPortal** nincs kijelölve, majd kattintson **az OK** gombra a módosítások mentéséhez.
 
 ## <a name="run-the-project-locally"></a>A projekt helyi futtatása
 
-Az alkalmazás helyi teszteléséhez a Visual Studióban válassza az F5 elemet. Először a helyszíni kiszolgálót, a **ProductsServer**kell elindítania, majd a **ProductsPortal** alkalmazásnak egy böngészőablakban kell kezdődnie. Ekkor láthatja, hogy a termékek leltára a termék helyszíni rendszerből beolvasott adatait listázza.
+Az alkalmazás helyi teszteléséhez a Visual Studióban válassza az F5 elemet. Először a helyszíni kiszolgálót, a **ProductsServer** kell elindítania, majd a **ProductsPortal** alkalmazásnak egy böngészőablakban kell kezdődnie. Ekkor láthatja, hogy a termékek leltára a termék helyszíni rendszerből beolvasott adatait listázza.
 
 ![Webalkalmazás][10]
 
@@ -428,7 +428,7 @@ A következő szakasz folytatása előtt zárjunk be mindkét alkalmazást.
 
 A következő lépés az Azure-webalkalmazás **ProductsPortal** -felületének újbóli közzététele:
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Közzététel**lehetőséget. A **Közzététel** lapon válassza a **Közzététel** elemet.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Közzététel** lehetőséget. A **Közzététel** lapon válassza a **Közzététel** elemet.
 
    > [!NOTE]
    > Előfordulhat, hogy egy hibaüzenet jelenik meg a böngészőablakban, amikor a **ProductsPortal** webprojekt automatikusan elindul a telepítés után. Emiatt nem kell aggódnia, ugyanis az okozza, hogy a **ProductsServer** alkalmazás még nem fut.
@@ -442,15 +442,15 @@ A következő lépés az Azure-webalkalmazás **ProductsPortal** -felületének 
 
 <a name="set-productsportal-as-web-app"></a>Az alkalmazás felhőben való futtatása előtt gondoskodnia kell arról, hogy a **ProductsPortal** a Visual studióból webalkalmazásként induljon el.
 
-1. A Visual Studióban kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Tulajdonságok**lehetőséget.
-1. Válassza a **web**lehetőséget. A **Start művelet**alatt válassza a **kezdő URL-cím**elemet. Adja meg a korábban üzembe helyezett webalkalmazás URL-címét, ebben a példában a következőt: `https://productsportal20190906122808.azurewebsites.net/` .
+1. A Visual Studióban kattintson a jobb gombbal a **ProductsPortal** projektre, és válassza a **Tulajdonságok** lehetőséget.
+1. Válassza a **web** lehetőséget. A **Start művelet** alatt válassza a **kezdő URL-cím** elemet. Adja meg a korábban üzembe helyezett webalkalmazás URL-címét, ebben a példában a következőt: `https://productsportal20190906122808.azurewebsites.net/` .
 
     ![Kezdő URL-cím][27]
 
-1. Válassza **File**  >  **a fájl mentés összes mentése**lehetőséget.
-1. Válassza a **Build újjáépített**  >  **megoldás**lehetőséget.
+1. Válassza   >  **a fájl mentés összes mentése** lehetőséget.
+1. Válassza a **Build újjáépített**  >  **megoldás** lehetőséget.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás létrehozásához és futtatásához nyomja le az F5 billentyűt. A helyszíni kiszolgálónak, amely a **ProductsServer** -konzol alkalmazás, először el kell indulnia, majd a **ProductsPortal** alkalmazásnak egy böngészőablakban kell kezdődnie, ahogy az itt látható:
 

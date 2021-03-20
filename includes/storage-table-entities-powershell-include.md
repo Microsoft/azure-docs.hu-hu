@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/27/2019
 ms.author: tamram
 ms.openlocfilehash: 9a60c624b181a1efd2f6deebd349daa82214a8a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67178794"
 ---
 <!--created by Robin Shahan to go in the articles for table storage w/powershell.
@@ -18,7 +18,7 @@ ms.locfileid: "67178794"
 
 Most, hogy már rendelkezik egy táblázattal, nézzük meg, hogyan kezelheti az entitásokat vagy sorokat a táblában. 
 
-Az entitások legfeljebb 255 tulajdonsággal rendelkezhetnek, beleértve a következő három rendszertulajdonságot: **PartitionKey**, **RowKey**és **timestamp**. A **PartitionKey** és a **RowKey**értékeinek behelyezéséhez és frissítéséhez felelős. A kiszolgáló kezeli az **időbélyeg**értékét, amely nem módosítható. A **PartitionKey** és a **RowKey** együtt egyedileg azonosítják a táblákon belüli összes entitást.
+Az entitások legfeljebb 255 tulajdonsággal rendelkezhetnek, beleértve a következő három rendszertulajdonságot: **PartitionKey**, **RowKey** és **timestamp**. A **PartitionKey** és a **RowKey** értékeinek behelyezéséhez és frissítéséhez felelős. A kiszolgáló kezeli az **időbélyeg** értékét, amely nem módosítható. A **PartitionKey** és a **RowKey** együtt egyedileg azonosítják a táblákon belüli összes entitást.
 
 * **PartitionKey**: meghatározza azt a partíciót, amelyet az entitás tárol.
 * **RowKey**: egyedileg azonosítja az entitást a partíción belül.
@@ -27,7 +27,7 @@ Egy entitáshoz legfeljebb 252 egyéni tulajdonságot adhat meg.
 
 ### <a name="add-table-entities"></a>Tábla entitások hozzáadása
 
-Entitások hozzáadása egy táblához a **Add-AzTableRow**használatával. Ezek a példák az értékekkel rendelkező partíciós kulcsokat használják `partition1` `partition2` , és a sorok kulcsai megegyeznek az állapot rövidítésével. Az egyes entitások tulajdonságai a következők: `username` és `userid` . 
+Entitások hozzáadása egy táblához a **Add-AzTableRow** használatával. Ezek a példák az értékekkel rendelkező partíciós kulcsokat használják `partition1` `partition2` , és a sorok kulcsai megegyeznek az állapot rövidítésével. Az egyes entitások tulajdonságai a következők: `username` és `userid` . 
 
 ```powershell
 $partitionKey1 = "partition1"
@@ -60,7 +60,7 @@ Add-AzTableRow `
 Egy táblában lévő entitásokat a **Get-AzTableRow** parancs használatával kérdezheti le.
 
 > [!NOTE]
-> A Get- **AzureStorageTableRowAll**, a **Get-AzureStorageTableRowByPartitionKey**, a **Get-AzureStorageTableRowByColumnName**és a **Get-AzureStorageTableRowByCustomFilter** parancsmag elavult, és a rendszer eltávolítja a későbbi verziókban.
+> A Get- **AzureStorageTableRowAll**, a **Get-AzureStorageTableRowByPartitionKey**, a **Get-AzureStorageTableRowByColumnName** és a **Get-AzureStorageTableRowByCustomFilter** parancsmag elavult, és a rendszer eltávolítja a későbbi verziókban.
 
 #### <a name="retrieve-all-entities"></a>Az összes entitás beolvasása
 
@@ -127,7 +127,7 @@ Ez a lekérdezés egy rekordot kérdez le.
 
 ### <a name="updating-entities"></a>Entitások frissítése 
 
-Az entitások frissítésének három lépése van. Először kérje le az entitást a módosításhoz. Másodszor, végezze el a módosítást. Harmadszor, véglegesítse a módosítást az **Update-AzTableRow**használatával.
+Az entitások frissítésének három lépése van. Először kérje le az entitást a módosításhoz. Másodszor, végezze el a módosítást. Harmadszor, véglegesítse a módosítást az **Update-AzTableRow** használatával.
 
 Frissítse a username = ' Jessie ' nevű entitást a username = ' Jessie2 ' felhasználónévvel. Ez a példa azt is bemutatja, hogyan hozhatók létre egyéni szűrők .NET-típusok használatával.
 

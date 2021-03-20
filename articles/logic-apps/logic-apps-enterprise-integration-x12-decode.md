@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: 918516a5629f8570d54c641ffc29f2367937266f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74792367"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>X12-üzenetek dekódolása az Azure Logic Appsben az Enterprise Integration Packkel
@@ -34,7 +34,7 @@ Az alábbi elemek szükségesek:
 
 2. Az X12 dekódolása nem rendelkezik eseményindítókkal, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazás indításához, például egy kérelem eseményindítóhoz. A Logic app Designerben adjon hozzá egy triggert, majd adjon hozzá egy műveletet a logikai alkalmazáshoz.
 
-3.  A keresőmezőbe írja be a "x12" kifejezést a szűrőhöz. Válassza a **X12-X12-üzenet dekódolása**lehetőséget.
+3.  A keresőmezőbe írja be a "x12" kifejezést a szűrőhöz. Válassza a **X12-X12-üzenet dekódolása** lehetőséget.
    
     ![A "x12" kifejezés keresése](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
@@ -49,7 +49,7 @@ Az alábbi elemek szükségesek:
     | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
     | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás**gombra.
+5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás** gombra.
    
     ![integrációs fiók kapcsolatának részletei](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
@@ -102,6 +102,6 @@ A X12 dekódolási összekötő a következő feladatokat hajtja végre:
 ## <a name="view-the-swagger"></a>A hencegés megtekintése
 Tekintse meg a [hencegés részleteit](/connectors/x12/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

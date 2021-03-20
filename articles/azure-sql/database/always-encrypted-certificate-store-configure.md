@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
 ms.openlocfilehash: 60dea826a12ea475806adb6db88faa88e26463a1
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674827"
 ---
 # <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted konfigurálása a Windows tanúsítványtároló használatával
@@ -99,7 +99,7 @@ A SSMS a CMK, a CEK és a titkosított oszlopok beállításával megkönnyíti 
 
     ![Képernyőkép, amely megjeleníti a titkosítás Colunns... menüpont a betegek táblában.](./media/always-encrypted-certificate-store-configure/encrypt-columns.png)
 
-A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlop kijelölése** , **főkulcs konfigurálása** (CMK), **Érvényesítés** és **Összefoglalás** .
+A Always Encrypted varázsló a következő szakaszokat tartalmazza: **Oszlop kijelölése**, **főkulcs konfigurálása** (CMK), **Érvényesítés** és **Összefoglalás**.
 
 ### <a name="column-selection"></a>Oszlop kijelölése
 
@@ -190,7 +190,7 @@ Ez a példa a következőket mutatja be:
 * Illessze be az adatbevitelt a titkosított oszlopba.
 * Válasszon egy rekordot egy titkosított oszlop egy adott értékének szűrésével.
 
-Cserélje le a **program.cs** tartalmát a következő kódra. Cserélje le a globális connectionString változó kapcsolati karakterláncát a sorban közvetlenül a Main metódus fölé a Azure Portal érvényes kapcsolati karakterlánccal. Ez az egyetlen módosítás, amelyet ehhez a kódnak kell elvégeznie.
+Cserélje le a **program. cs fájl** tartalmát a következő kódra. Cserélje le a globális connectionString változó kapcsolati karakterláncát a sorban közvetlenül a Main metódus fölé a Azure Portal érvényes kapcsolati karakterlánccal. Ez az egyetlen módosítás, amelyet ehhez a kódnak kell elvégeznie.
 
 Futtassa az alkalmazást Always Encrypted működés közbeni megtekintéséhez.
 
@@ -514,8 +514,8 @@ Láthatja, hogy a titkosított oszlopok nem tartalmaznak egyszerű szöveges inf
 
 Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges információhoz, hozzáadhatja az **oszlop titkosítási beállítás = engedélyezve** paramétert a kapcsolathoz.
 
-1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer** , majd kattintson a **Leválasztás** elemre.
-2. Kattintson az adatbázismotor **kapcsolódása** elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások** elemre.
+1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer**, majd kattintson a **Leválasztás** elemre.
+2. Kattintson az adatbázismotor **kapcsolódása** elemre  >   a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások** elemre.
 3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve** elemre.
 
     ![Képernyőfelvétel: a további kapcsolatok paramétereinek lapja, amelynél az oszlop titkosítási beállítása = engedélyezve típus szerepel a mezőben.](./media/always-encrypted-certificate-store-configure/ssms-connection-parameter.png)

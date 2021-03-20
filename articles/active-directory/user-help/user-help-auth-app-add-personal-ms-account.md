@@ -12,10 +12,10 @@ ms.date: 04/08/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83741632"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Személyes Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
@@ -53,20 +53,20 @@ Személyes Microsoft-fiók a kétfaktoros ellenőrzés bekapcsolásával, majd a
 
     ![a fiók kiválasztási élményének iOS-verziója](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon-ios.png)
 
-1. A **fiók hozzáadása** lapon válassza a **személyes fiók**lehetőséget.
+1. A **fiók hozzáadása** lapon válassza a **személyes fiók** lehetőséget.
 
 1. A fiók hozzáadásához válassza a **Bejelentkezés Microsoft-fiókkal** lehetőséget. A QR-kód használható, ha elérhető, de bármikor felveheti a fiókját, ha bejelentkezik a felhasználónevével és jelszavával.
 
     ![Válasszon ki egy Microsoft-fiók vagy olvassa be a QR-kódot, ha elérhető](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
 
-1. Jelentkezzen be a személyes fiókjába a megfelelő e-mail-cím (például) használatával, alain@outlook.com majd válassza a **tovább**lehetőséget.
+1. Jelentkezzen be a személyes fiókjába a megfelelő e-mail-cím (például) használatával, alain@outlook.com majd válassza a **tovább** lehetőséget.
 
     >[!Note]
     >Ha nincs személyes Microsoft-fiók, [létrehozhat egyet](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index).
 
-1. Adja meg a jelszót, majd válassza a **Bejelentkezés**lehetőséget. A rendszer hozzáadja a személyes fiókját a Microsoft Authenticator alkalmazáshoz.
+1. Adja meg a jelszót, majd válassza a **Bejelentkezés** lehetőséget. A rendszer hozzáadja a személyes fiókját a Microsoft Authenticator alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a hitelesítő alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

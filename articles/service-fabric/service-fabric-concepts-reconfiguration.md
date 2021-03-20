@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75609995"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Újrakonfigurálás az Azure Service Fabric
@@ -48,7 +48,7 @@ Az újrakonfigurálás számos okból *elakadhat* . A leggyakoribb okok a követ
 
 A rendszerösszetevőktől, például a System.FM, a System. RA és a System. RAP szolgáltatásból származó állapotadatok használatával diagnosztizálhatja, hogy az újrakonfigurálás hol ragadt meg. A [rendszerállapot-jelentés lap](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) ismerteti ezeket az állapot-jelentéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [A Reliable Services életciklusa – C#](service-fabric-reliable-services-lifecycle.md)

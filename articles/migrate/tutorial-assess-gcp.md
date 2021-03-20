@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: b5e6a0cd58fca954646640e43a81155822cdba04
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98566996"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Oktatóanyag: Google Cloud Platform (GCP) virtuálisgép-példányok értékelése az Azure-ba való áttelepítéshez
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 
 Ez a cikk bemutatja, hogyan értékelheti Google Cloud Platform (GCP) virtuálisgép-példányait az Azure-ba való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 - Értékelés futtatása a számítógép metaadatai és konfigurációs adatai alapján.
 - Értékelés futtatása a teljesítményadatok alapján.
@@ -192,7 +192,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

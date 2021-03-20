@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
 ms.openlocfilehash: 277faa2d47df9fddd1762d90d9aa2fb5bf00d4df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82508129"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Felügyelt identitással rendelkező Azure felügyelt alkalmazás
@@ -29,7 +29,7 @@ Az alkalmazás két típusú identitást biztosíthat:
 A felügyelt identitás számos forgatókönyvet tesz lehetővé a felügyelt alkalmazásokhoz. A megoldható gyakori forgatókönyvek a következők:
 
 - Meglévő Azure-erőforrásokhoz kapcsolódó felügyelt alkalmazás üzembe helyezése. Egy példa egy Azure-beli virtuális gép (VM) üzembe helyezésére a felügyelt alkalmazásban, amely egy [meglévő hálózati adapterhez](../../virtual-network/virtual-network-network-interface-vm.md)van csatolva.
-- A felügyelt alkalmazás és a közzétevő hozzáférésének biztosítása az Azure-erőforrásokhoz a **felügyelt erőforráscsoport**kívül.
+- A felügyelt alkalmazás és a közzétevő hozzáférésének biztosítása az Azure-erőforrásokhoz a **felügyelt erőforráscsoport** kívül.
 - A felügyelt alkalmazások működési identitásának biztosítása a tevékenység naplója és egyéb szolgáltatásai számára az Azure-on belül.
 
 ## <a name="adding-managed-identity"></a>Felügyelt identitás hozzáadása
@@ -50,7 +50,7 @@ A felügyelt alkalmazások két gyakori módon hozhatók létre az **Identity**:
 
 ### <a name="using-createuidefinition"></a>A CreateUIDefinition használata
 
-A felügyelt alkalmazások a [CreateUIDefinition.json](./create-uidefinition-overview.md)keresztül konfigurálhatók a felügyelt identitással. A [kimenetek szakaszban](./create-uidefinition-overview.md#outputs)a kulcs használható a `managedIdentity` felügyelt alkalmazás sablonjának Identity tulajdonságának felülbírálására. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. A CreateUIDefinition elemek használatával összetettebb identitási objektumok hozhatók létre, amelyekkel megkérheti a fogyasztótól a bemeneteket. Ezek a bemenetek a **felhasználó által hozzárendelt identitással**rendelkező felügyelt alkalmazások létrehozására használhatók.
+A felügyelt alkalmazások a [CreateUIDefinition.json](./create-uidefinition-overview.md)keresztül konfigurálhatók a felügyelt identitással. A [kimenetek szakaszban](./create-uidefinition-overview.md#outputs)a kulcs használható a `managedIdentity` felügyelt alkalmazás sablonjának Identity tulajdonságának felülbírálására. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. A CreateUIDefinition elemek használatával összetettebb identitási objektumok hozhatók létre, amelyekkel megkérheti a fogyasztótól a bemeneteket. Ezek a bemenetek a **felhasználó által hozzárendelt identitással** rendelkező felügyelt alkalmazások létrehozására használhatók.
 
 ```json
 "outputs": {
@@ -132,7 +132,7 @@ A CreateUIDefinition támogatja a beépített [felügyelt identitás-vezérlést
 > A piactéren felügyelt alkalmazás-sablonok automatikusan létrejönnek a Azure Portal-létrehozási élményben részt vevő ügyfelek számára.
 > Ezekben az esetekben a `managedIdentity` CreateUIDefinition kimeneti kulcsát az identitás engedélyezésére kell használni.
 
-A felügyelt identitás Azure Resource Manager-sablonok használatával is engedélyezhető. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. Az összetettebb identitási objektumok a bemenetek megadásához Azure Resource Manager sablon paraméterei segítségével hozhatók létre. Ezek a bemenetek a **felhasználó által hozzárendelt identitással**rendelkező felügyelt alkalmazások létrehozására használhatók.
+A felügyelt identitás Azure Resource Manager-sablonok használatával is engedélyezhető. A mintául szolgáló minta lehetővé teszi a **rendszer által hozzárendelt** identitást a felügyelt alkalmazásban. Az összetettebb identitási objektumok a bemenetek megadásához Azure Resource Manager sablon paraméterei segítségével hozhatók létre. Ezek a bemenetek a **felhasználó által hozzárendelt identitással** rendelkező felügyelt alkalmazások létrehozására használhatók.
 
 #### <a name="when-to-use-azure-resource-manager-templates-for-managed-identity"></a>Mikor kell Azure Resource Manager sablonokat használni a felügyelt identitáshoz
 
@@ -364,7 +364,7 @@ authorizationAudience | A `aud` hozzáférési jogkivonat kérése a (célközö
 resourceId | A kiállított jogkivonat Azure-erőforrás-azonosítója. Ez vagy a felügyelt alkalmazás azonosítója vagy a felhasználó által hozzárendelt azonosító.
 token_type | A jogkivonat típusa.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Felügyelt alkalmazás konfigurálása egyéni szolgáltatóval](../custom-providers/overview.md)

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7577ca4b8a1d7db7ea99aadfef4fd2a445b66425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90940788"
 ---
 # <a name="list-the-azure-arc-enabled-postgresql-hyperscale-server-groups-created-in-an-azure-arc-data-controller"></a>Egy Azure-beli ív-adatvezérlőben létrehozott, Azure arc-alapú PostgreSQL nagy kapacitású-kiszolgálócsoportok listázása
@@ -61,7 +61,7 @@ postgresql-12.arcdata.microsoft.com/postgres02   Ready   3/3          10.0.0.4:3
 kubectl get postgresql-12
 ```
 
-A postgres 11-es verzióját futtató kiszolgálócsoportok listázásához cserélje le a PostgreSQL- _12_ -et a _PostgreSQL-11_értékre.
+A postgres 11-es verzióját futtató kiszolgálócsoportok listázásához cserélje le a PostgreSQL- _12_ -et a _PostgreSQL-11_ értékre.
 
 ## <a name="next-steps"></a>Következő lépések:
 

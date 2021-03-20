@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: Legutóbbi frissítések
       items:
+        - name: Február 2021 új és frissített funkciók
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-february-2021/'
         - name: Január 2021 új és frissített funkciók
           href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-january-2021/'
         - name: '2020. november: új és továbbfejlesztett funkciók'
@@ -129,6 +131,8 @@
       href: core/concepts-architecture.md
     - name: Útmutató eszközfejlesztők számára
       href: core/overview-iot-central-developer.md
+    - name: Kezelői útmutató
+      href: core/overview-iot-central-operator.md
     - name: Megoldás-előkészítő útmutató
       href: core/overview-iot-central-solution-builder.md
     - name: Mik azok az alkalmazássablonok?

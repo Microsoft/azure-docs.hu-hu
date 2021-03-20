@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98741077"
 ---
 # <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Az Azure Cloud Services (klasszikus) üzembe helyezési problémáinak elhárítása
@@ -79,7 +79,7 @@ A probléma elhárításával kapcsolatos további információkért tekintse me
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További [hibaelhárítási cikkek](./cloud-services-allocation-failures.md) a Cloud Services szolgáltatáshoz.
 
 Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

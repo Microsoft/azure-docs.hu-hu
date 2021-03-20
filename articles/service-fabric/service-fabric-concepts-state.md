@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75614570"
 ---
 # <a name="service-state"></a>Szolgáltatás állapota
@@ -26,7 +26,7 @@ Az állapot lehet külsőleg, vagy az állapotot manipuláló kóddal együtt. A
 
 Az állapot az állapotot kezelő kóddal együtt is elhelyezhető. A Service Fabric állapot-nyilvántartó szolgáltatásai általában a modell használatával készültek. Service Fabric biztosítja az infrastruktúrát annak biztosítására, hogy ez az állapot nagyfokú rendelkezésre állású, konzisztens és tartós legyen, és hogy a szolgáltatások így könnyen méretezhetők legyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

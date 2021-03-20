@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "73501770"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Internet Analyzer-teszt létrehozása a Portal használatával (előzetes verzió)
@@ -29,18 +29,18 @@ A nyilvános előzetes verzió globálisan használható; az adattárolás azonb
 ## <a name="basics"></a>Alapvető beállítások
 
 1. Az Internet Analyzer előnézeti hozzáférésének beszerzése a **hogyan az előzetes** verzióban való részvétel után? az [Azure Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című témakörben olvashat.
-2. A [Azure Portal](https://preview.portal.azure.com)kezdőlapján kattintson az **+ erőforrás létrehozása**elemre. Az Internet Analyzer jelenleg csak a Azure Portal előzetes verziójában érhető el.
+2. A [Azure Portal](https://preview.portal.azure.com)kezdőlapján kattintson az **+ erőforrás létrehozása** elemre. Az Internet Analyzer jelenleg csak a Azure Portal előzetes verziójában érhető el.
 3. Az **új** lapon keressen rá az "Internet Analyzer" kifejezésre a *Keresés a piactéren* mezőben.
 4. Kattintson az **Internet Analyzer (előzetes verzió)** elemre. Győződjön meg arról, hogy a közzétevő a *Microsoft* , a kategória pedig *hálózatkezelés*.
 5. Az **Internet Analyzer (előzetes verzió)** lapon kattintson a **Létrehozás** gombra az **Internet Analyzer létrehozása** lap megnyitásához.
 6. Adja meg az alábbi konfigurációs beállításokat az Internet Analyzer-erőforráshoz:
 
-    * **Előfizetés:** Az Azure-előfizetés, amely az új Internet Analyzer-erőforrást üzemelteti. ***Használja ugyanazt az előfizetés-azonosítót, amelyet az előzetes verzióhoz való hozzáférés kérelmezéséhez használ.***
+    * **Előfizetés:** Az Azure-előfizetés, amely az új Internet Analyzer-erőforrást üzemelteti. **_Használja ugyanazt az előfizetés-azonosítót, amelyet az előzetes verzióhoz való hozzáférés kérelmezéséhez használ._**
     * **Erőforráscsoport:** Az az Azure-erőforráscsoport, amelyet az új Internet Analyzer-erőforrás fog létrehozni a alkalmazásban. Ha nem rendelkezik meglévő erőforráscsoporthoz, létrehozhat egy újat.
     * **Név:** Az új Internet Analyzer erőforrás-profil neve.
     * **Régió:** Az Azure nyilvános régiója, amelyben az erőforrás létrejön. Az előzetes verzióban csak az *USA 2. nyugati* régiója érhető el.
 
-7. Ha végzett a Profilbeállítások megadásával, kattintson a **felülvizsgálat + létrehozás**gombra.
+7. Ha végzett a Profilbeállítások megadásával, kattintson a **felülvizsgálat + létrehozás** gombra.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -65,14 +65,14 @@ Az alapszintű lépések végrehajtásának előfeltétele egy teszt konfigurál
 4. A **Hozzáadás** gombra kattintva vegye fel a végpontot a tesztbe.
 5. Ismételje meg a 1-4 lépést a második végpont konfigurálásához. A B végpontot mindig az A végponthoz viszonyítva mérjük – A végpontok konfigurálásakor gondolja át, melyik végpont legyen a tesztelési vezérlő.
 6. A teszt mentéséhez kattintson a **Save (Mentés** ) gombra. A teszt mentése után már nem szerkesztheti egy adott teszt végpontjait.
-7. Válassza ki az elindítani kívánt teszt (eke) t, majd kattintson a **teszt indítása**lehetőségre. Ez a teszt (ek) ***futtatásának*** ***állapotát*** fogja megváltoztatni. A tesztek bármikor elindíthatók, de a JavaScript-ügyfelet be kell ágyazni a tesztbe a mérések gyűjtésének megkezdéséhez.
+7. Válassza ki az elindítani kívánt teszt (eke) t, majd kattintson a **teszt indítása** lehetőségre. Ez a ***teszt (ek) és a (z) _*_futtatásának_ állapotát** fogja megváltoztatni. A tesztek bármikor elindíthatók, de a JavaScript-ügyfelet be kell ágyazni a tesztbe a mérések gyűjtésének megkezdéséhez.
 8. Bármikor hozzáadhat további teszteket. Vegye figyelembe, hogy az egyedi JavaScript-ügyfél nem jön létre, amíg egy teszt létre nem jön.
 
 ## <a name="embed-client"></a>Ügyfél beágyazása
 
-A tesztek elindításához a JavaScript-ügyfelet be kell ágyazni a webalkalmazásba. Legalább egy teszt konfigurálását követően kattintson a **felülvizsgálat + létrehozás**gombra, lépjen a **Beállítások > konfiguráció**elemre, és másolja a JavaScript-ügyfelet. A konkrét utasítások az [Internet Analyzer-ügyfél beágyazása](internet-analyzer-embed-client.md) oldalon találhatók.  
+A tesztek elindításához a JavaScript-ügyfelet be kell ágyazni a webalkalmazásba. Legalább egy teszt konfigurálását követően kattintson a **felülvizsgálat + létrehozás** gombra, lépjen a **Beállítások > konfiguráció** elemre, és másolja a JavaScript-ügyfelet. A konkrét utasítások az [Internet Analyzer-ügyfél beágyazása](internet-analyzer-embed-client.md) oldalon találhatók.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása
 * További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról.

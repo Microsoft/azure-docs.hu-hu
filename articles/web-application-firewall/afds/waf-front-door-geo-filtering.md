@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: fcd7a0fe60639bbb17661a906d15136996b325e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87005446"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door-service"></a>Mi a Geo-szűrés az Azure bejárati ajtó szolgáltatásának tartományán?
@@ -205,7 +205,7 @@ A Geo-szűrési házirendet az előtérben is konfigurálhatja [Azure PowerShell
 | ZM | Zambia|
 | ZW | Zimbabwe|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Front Door alkalmazási rétegbeli biztonságáról](../../frontdoor/front-door-application-security.md).
 - Útmutató a [Front Door létrehozásához](../../frontdoor/quickstart-create-front-door.md).

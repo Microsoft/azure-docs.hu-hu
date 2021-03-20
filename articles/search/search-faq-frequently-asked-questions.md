@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88923092"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYIK)
@@ -97,7 +97,7 @@ További információ a [növekményes dúsításról](cognitive-search-incremen
 
 A legtöbb ügyfél dedikált mezőket választ egy gyűjteményben, amikor különböző területi beállításokat (nyelveket) támogat ugyanabban az indexben. A területi beállításokkal megadott mezők segítségével megfelelő elemzőt rendelhet hozzá. Tegyük fel például, hogy a Microsoft francia analizátort egy francia sztringeket tartalmazó mezőhöz rendeli. Emellett leegyszerűsíti a szűrést. Ha tudja, hogy egy lekérdezés egy fr-fr oldalon van kezdeményezve, a keresési eredmények erre a mezőre korlátozhatók. Vagy hozzon létre egy [pontozási profilt](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , hogy a mező a relatív súlyozást adja. Az Azure Cognitive Search több mint [50 nyelvi elemzőt](./search-language-support.md) támogat, amelyek közül választhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a szolgáltatást a [felhasználói hangposta](https://feedback.azure.com/forums/263029-azure-search)webhelyén.
 
@@ -105,4 +105,4 @@ Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Kérje a s
 
  [StackOverflow: Azure Cognitive Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)  
- [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)
+ [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)

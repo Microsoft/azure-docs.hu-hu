@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztás biztons�
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 34eea8daa6a0a8920c842178664055838b06a78a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94565891"
 ---
 # <a name="back-up-azure-file-shares-with-azure-cli"></a>Azure-fájlmegosztás biztonsági mentése az Azure CLI-vel
@@ -86,7 +86,7 @@ Az igény szerinti biztonsági mentés elindításához a következő paraméter
 * **--Item-Name** annak a fájlmegosztásnak a neve, amelynek el szeretné indítani az igény szerinti biztonsági mentést. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
 * **--megtartás – addig** , amíg meg nem adja a helyreállítási pont megőrzésének dátumát. Az értéket UTC formátumban kell megadni (nn-hh-éééé).
 
-Az alábbi példa egy igény szerinti biztonsági mentést indít el a *afsaccount* -fájlmegosztás lévő *azurefiles* -tárolóban, *20-01-2020* -ig megőrzéssel.
+Az alábbi példa egy igény szerinti biztonsági mentést indít el a *afsaccount* -fájlmegosztás lévő *azurefiles* -tárolóban, *20-01-2020*-ig megőrzéssel.
 
 ```azurecli-interactive
 az backup protection backup-now --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --retain-until 20-01-2020 --output table
