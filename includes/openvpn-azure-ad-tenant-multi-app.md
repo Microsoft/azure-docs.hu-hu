@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3236f9c60cb359349d96e93f674c3e278e44f1e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93375970"
 ---
 ## <a name="1-create-the-azure-ad-tenant"></a><a name="tenant"></a>1. az Azure AD-bérlő létrehozása
@@ -31,7 +31,7 @@ Hozzon létre egy Azure AD-bérlőt az [új bérlő létrehozása](../articles/a
 Ebben a lépésben két Azure AD-bérlői felhasználót hoz létre: egy globális rendszergazdai fiókot és egy fő felhasználói fiókot. A fő felhasználói fiókot a rendszer fő beágyazási fiókként (szolgáltatásfiók) használja. Azure AD-bérlői felhasználói fiók létrehozásakor a címtárbeli szerepkört a létrehozni kívánt felhasználó típusára kell beállítania. Az [ebben a cikkben](../articles/active-directory/fundamentals/add-users-azure-active-directory.md) ismertetett lépések segítségével hozzon létre legalább két felhasználót az Azure ad-bérlőhöz. Ügyeljen arra, hogy a **címtárbeli szerepkört** a fióktípus létrehozásához módosítsa:
 
 * Globális rendszergazda
-* Felhasználó
+* User
 
 ## <a name="3-register-the-vpn-client"></a><a name="register-client"></a>3. regisztrálja a VPN-ügyfelet
 
@@ -95,7 +95,7 @@ Ebben a lépésben további alkalmazásokat fog regisztrálni a különböző fe
 
     ![Azure VPN 2](./media/openvpn-azure-ad-tenant-multi-app/app1.png)
 
-2. Az **alkalmazás regisztrálása** lapon adja meg a **nevet**. Válassza ki a kívánt **támogatott típusú fiókokat** , majd kattintson a **regisztrálás** gombra.
+2. Az **alkalmazás regisztrálása** lapon adja meg a **nevet**. Válassza ki a kívánt **támogatott típusú fiókokat**, majd kattintson a **regisztrálás** gombra.
 
     ![Azure VPN 3](./media/openvpn-azure-ad-tenant-multi-app/app2.png)
 
@@ -103,7 +103,7 @@ Ebben a lépésben további alkalmazásokat fog regisztrálni a különböző fe
 
 4. Kattintson **a + hatókör hozzáadása** lehetőségre.
 
-5. Hagyja meg az alapértelmezett **alkalmazás-azonosító URI** -t. Kattintson **a Mentés és folytatás** gombra.
+5. Hagyja meg az alapértelmezett **alkalmazás-azonosító URI**-t. Kattintson **a Mentés és folytatás** gombra.
 
     ![Azure VPN 4](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 

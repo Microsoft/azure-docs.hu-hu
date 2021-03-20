@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 801702d43bae6d925fa4f7fbc37cf44bf585fa6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531990"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Oktatóanyag: Helyi Service Fabric-fürtön üzembe helyezett Java-alkalmazás hibakeresése
@@ -88,7 +88,7 @@ Most ugyanezeket a lépéseket alkalmazhatja az összes Service Fabric alkalmaz�
 
 Az alábbi lépések bemutatják, hogyan irányíthatja át az alkalmazásnaplókat az alapértelmezett */var/log/syslog* helyről egy egyéni helyre.
 
-1. A Service Fabric Linux-fürtökön futó alkalmazások jelenleg csak egyetlen naplófájl felszedését támogatják. Ha egy alkalmazást úgy szeretne beállítani, hogy a naplók mindig a */tmp/mysfapp0.0.log*legyenek, hozzon létre egy naplózás. properties nevű fájlt a következő helyen: *szavazó/VotingApplication/VotingWebPkg/Code/fakitermelés. properties* , és adja hozzá a következő tartalmat.
+1. A Service Fabric Linux-fürtökön futó alkalmazások jelenleg csak egyetlen naplófájl felszedését támogatják. Ha egy alkalmazást úgy szeretne beállítani, hogy a naplók mindig a */tmp/mysfapp0.0.log* legyenek, hozzon létre egy naplózás. properties nevű fájlt a következő helyen: *szavazó/VotingApplication/VotingWebPkg/Code/fakitermelés. properties* , és adja hozzá a következő tartalmat.
 
     ```
     handlers = java.util.logging.FileHandler
@@ -115,7 +115,7 @@ Az alábbi lépések bemutatják, hogyan irányíthatja át az alkalmazásnapló
 
 Megismerkedett vele, hogyan végezhet hibakeresést, és hogyan érheti el az alkalmazásnaplókat a Service Fabric Java-alkalmazások fejlesztésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

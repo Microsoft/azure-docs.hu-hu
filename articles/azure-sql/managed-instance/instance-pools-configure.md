@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
 ms.openlocfilehash: 732a9bab018103321a9a3a759b31495bd67a209e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793109"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
@@ -35,11 +35,11 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 |Példány-készlet használatának és tulajdonságainak keresése|Nem|Igen |
 |Példány-készlet törlése|Nem|Igen|
 |Felügyelt példány létrehozása egy példány-készleten belül|Nem|Igen|
-|Felügyelt példány erőforrás-használatának frissítése|Igen |Igen|
-|Felügyelt példány használatának és tulajdonságainak keresése|Igen|Igen|
-|Felügyelt példány törlése a készletből|Igen|Igen|
-|Adatbázis létrehozása példányban a készleten belül|Igen|Igen|
-|SQL felügyelt példányról származó adatbázis törlése|Igen|Igen|
+|Felügyelt példány erőforrás-használatának frissítése|Igen |Yes|
+|Felügyelt példány használatának és tulajdonságainak keresése|Igen|Yes|
+|Felügyelt példány törlése a készletből|Igen|Yes|
+|Adatbázis létrehozása példányban a készleten belül|Igen|Yes|
+|SQL felügyelt példányról származó adatbázis törlése|Igen|Yes|
 
 Elérhető [PowerShell-parancsok](/powershell/module/az.sql/):
 
@@ -188,7 +188,7 @@ Csak a tárolási méret frissítése:
 $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-name"
 ```
 
-## <a name="connect"></a>Kapcsolódás 
+## <a name="connect"></a>Csatlakozás 
 
 A készletben lévő felügyelt példányokhoz való kapcsolódáshoz a következő két lépés szükséges:
 

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: c507a4c618713ba83d25b9defa918092db1a3c8e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792089"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Különböző sémákkal rendelkező felhőalapú adatbázisok lekérdezése (előzetes verzió)
@@ -120,8 +120,8 @@ select * from sys.external_tables;
 
 A rugalmas lekérdezés kiterjeszti a meglévő külső tábla szintaxisát, hogy meghatározza a RDBMS típusú külső adatforrásokat használó külső táblákat. A vertikális particionáláshoz tartozó külső tábla definíciója a következő szempontokat tartalmazza:
 
-* **Séma** : a külső tábla DDL definiál egy sémát, amelyet a lekérdezések használhatnak. A külső tábla definíciójában megadott sémának meg kell egyeznie a távoli adatbázisban a tényleges adatokat tároló táblák sémájával.
-* **Távoli adatbázis-hivatkozás** : a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás megadja annak a távoli adatbázisnak a nevét és az adatbázis nevét, ahol a rendszer a tényleges tábla adatokat tárolja.
+* **Séma**: a külső tábla DDL definiál egy sémát, amelyet a lekérdezések használhatnak. A külső tábla definíciójában megadott sémának meg kell egyeznie a távoli adatbázisban a tényleges adatokat tároló táblák sémájával.
+* **Távoli adatbázis-hivatkozás**: a külső tábla DDL egy külső adatforrásra hivatkozik. A külső adatforrás megadja annak a távoli adatbázisnak a nevét és az adatbázis nevét, ahol a rendszer a tényleges tábla adatokat tárolja.
 
 Az előző szakaszban ismertetett külső adatforrás használatával a külső táblák létrehozására szolgáló szintaxis a következő:
 
@@ -135,7 +135,7 @@ A következő DDL-utasítás elveszít egy meglévő külső tábla definíciój
 DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 ```
 
-A **külső tábla létrehozásának/ELdobásának engedélyei** : a külső adatforrásokra vonatkozó engedélyek megváltoztatására van szükség a külső tábla DDL esetében, amelyre az alapul szolgáló adatforrásra is szükség van.  
+A **külső tábla létrehozásának/ELdobásának engedélyei**: a külső adatforrásokra vonatkozó engedélyek megváltoztatására van szükség a külső tábla DDL esetében, amelyre az alapul szolgáló adatforrásra is szükség van.  
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 

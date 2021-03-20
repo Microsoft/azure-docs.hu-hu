@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2396aac67a17352987d9d6e3b49535c19ffe8917
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792378"
 ---
 # <a name="key-vault-versions"></a>Key Vault-verziók
@@ -50,12 +50,12 @@ Ebben az évben megjelent új funkciók és integrációk:
 Az idei évben megjelent új funkciók:
 
 - Felügyelt Storage-fiókok kulcsai. A Storage-fiók kulcsainak funkció az Azure Storage-nal való egyszerűbb integrációt teszi ki. További információért tekintse meg az Áttekintés témakört, amely a [felügyelt Storage-fiókok kulcsairól nyújt áttekintést](../secrets/overview-storage-keys.md).
-- Áltörlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](./soft-delete-overview.md)
+- Helyreállítható törlés. A Soft-delete funkció javítja a kulcstartók és a Key Vault-objektumok adatvédelmi védelmét. További információért lásd az áttekintést [ismertető témakört.](./soft-delete-overview.md)
 
 ## <a name="2015"></a>2015
 
 Az idei évben megjelent új funkciók:
-- Tanúsítványkezelés. Szolgáltatásként hozzáadva a GA 2015-06-01-es verziójához, 2016. szeptember 26-án.
+- Tanúsítványkezelő. Szolgáltatásként hozzáadva a GA 2015-06-01-es verziójához, 2016. szeptember 26-án.
 
 Az általános elérhetőség (2015-06-01-es verzió) a 2015. június 24-én jelent meg. Ebben a kiadásban a következő módosítások történtek: 
 - Törölje a "use" mezőt az eltávolításhoz.

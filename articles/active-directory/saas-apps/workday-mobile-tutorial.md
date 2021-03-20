@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
 ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkanap Mobile alkalmazással
@@ -130,7 +130,7 @@ Annak biztosítása érdekében, hogy az iOS-eszközök csak a mobileszköz-keze
 
 ## <a name="set-up-intune-app-configuration-policies"></a>Intune-alkalmazás konfigurációs házirendjeinek beállítása
 
-| Használati eset | Kulcs érték párok |
+| Eset | Kulcs érték párok |
 |----------------------------------------------------------------------------------------   |-----------|
 | A bérlői és a webes címek mezőinek automatikus feltöltése:<br>● Munkanapokat az Android for Work-profilok engedélyezésekor.<br>● Munkanapokat iPaden és iPhone-on.     | A bérlő konfigurálásához használja ezeket az értékeket: <br>● Konfigurációs kulcs = `UserGroupCode`<br>● Érték típusa = karakterlánc <br>● Konfigurációs érték = a bérlő neve. Például: `gms`<br>A következő értékek használatával konfigurálhatja a webcímet:<br>● Konfigurációs kulcs = `AppServiceHost`<br>● Érték típusa = karakterlánc<br>● Konfigurációs érték = a bérlő alap URL-címe. Például: `https://www.myworkday.com`                                |   |
 | A következő műveletek letiltása a munkanapokon iPaden és iPhone-on:<br>● Kivágás, másolás és beillesztés<br>● Nyomtatás                       | A funkció letiltásához állítsa be a kulcs értékét (Boolean) a `False` következőre:<br>●   `AllowCutCopyPaste`<br>●    `AllowPrint`    |
@@ -168,7 +168,7 @@ Annak biztosítása érdekében, hogy az iOS-eszközök csak a mobileszköz-keze
     </dict>
 
     ```
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. Frissítse az oldalt, és válassza ki az újonnan létrehozott házirendet.
 1. Válassza a **hozzárendelések** lehetőséget, majd válassza ki, hogy ki szeretné alkalmazni az alkalmazást.
 1. Kattintson a **Mentés** gombra.

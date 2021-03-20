@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997783"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Felhasználói bejelentkezési beállítások Azure AD Connect
@@ -155,7 +155,7 @@ A következő információk alapján feltételezzük, hogy az UPN-utótag contos
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>Expressz beállítások/jelszó kivonatának szinkronizálása
 
-| Állam | A felhasználói Azure bejelentkezési felületének hatása |
+| Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
 | Nincs hozzáadva |Ebben az esetben a contoso.com egyéni tartománya nem lett hozzáadva az Azure AD-címtárban. Azok a felhasználók, akik az utótaggal rendelkeznek a helyszíni UPN-vel, @contoso.com nem fogják tudni használni a helyszíni UPN-t az Azure-ba való bejelentkezéshez. Ehelyett egy új UPN-t kell használniuk, amelyet az Azure AD az alapértelmezett Azure AD-címtár utótagjának hozzáadásával biztosít számukra. Ha például a felhasználókat az Azure AD-címtár azurecontoso.onmicrosoft.com szinkronizálja, akkor a helyszíni felhasználó számára a rendszer UPN-t user@contoso.com kap user@azurecontoso.onmicrosoft.com . |
 | Nincs ellenőrizve |Ebben az esetben az Azure AD-címtárban hozzáadott egyéni tartomány contoso.com. Azonban még nincs ellenőrizve. Ha a felhasználókat a tartomány ellenőrzése nélkül szinkronizálja, akkor a felhasználók az Azure AD-ben egy új UPN-t kapnak, akárcsak a "nincs hozzáadott" forgatókönyvben. |
@@ -166,7 +166,7 @@ Nem hozható létre összevonás az alapértelmezett. onmicrosoft.com tartománn
 
 Ha a felhasználói bejelentkezés lehetőséget választotta a **ad FSval való összevonáshoz**, akkor az Azure ad-ben való összevonás folytatásához egyéni tartománnyal kell rendelkeznie. A vitánk során ez azt jelenti, hogy az Azure AD-címtárban hozzá kell adni egy egyéni tartományi contoso.com.
 
-| Állam | A felhasználói Azure bejelentkezési felületének hatása |
+| Állapot | A felhasználói Azure bejelentkezési felületének hatása |
 |:---:|:--- |
 | Nincs hozzáadva |Ebben az esetben Azure AD Connect nem talált egyező egyéni tartományt az UPN-utótag contoso.com az Azure AD-címtárban. Egyéni tartományi contoso.com kell hozzáadnia, ha a felhasználóknak a helyszíni UPN-sel (például) AD FS használatával kell bejelentkezniük user@contoso.com . |
 | Nincs ellenőrizve |Ebben az esetben Azure AD Connect megkéri a megfelelő részleteket arról, hogyan ellenőrizheti a tartományt egy későbbi időpontban. |
@@ -190,6 +190,6 @@ A **felhasználói bejelentkezés** lapon válassza ki a kívánt felhasználói
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a helyszíni [identitások és a Azure Active Directory integrálásáról](whatis-hybrid-identity.md).
 - További információ a [Azure ad Connect kialakításával kapcsolatos fogalmakról](plan-connect-design-concepts.md).

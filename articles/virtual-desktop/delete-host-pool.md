@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007590"
 ---
 # <a name="delete-a-host-pool"></a>Gazdagépkészlet törlése
@@ -39,17 +39,17 @@ Gazdagép-készlet törlése a Azure Portalban:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
+2. Keresse meg és válassza ki a **Windows virtuális asztal** elemet.
 
 3. A lap bal oldalán található menüben válassza a **gazdagép-készletek** lehetőséget, majd válassza ki a törölni kívánt gazdagép-készlet nevét.
 
-4. Az oldal bal oldalán lévő menüben válassza az **alkalmazáscsoport**lehetőséget.
+4. Az oldal bal oldalán lévő menüben válassza az **alkalmazáscsoport** lehetőséget.
 
-5. Válassza ki az összes alkalmazáscsoport elemet a törölni kívánt gazdagépen, majd válassza az **Eltávolítás**lehetőséget.
+5. Válassza ki az összes alkalmazáscsoport elemet a törölni kívánt gazdagépen, majd válassza az **Eltávolítás** lehetőséget.
 
-6. Miután eltávolította az alkalmazás-csoportokat, lépjen a lap bal oldalán található menüre, és válassza az **Áttekintés**lehetőséget.
+6. Miután eltávolította az alkalmazás-csoportokat, lépjen a lap bal oldalán található menüre, és válassza az **Áttekintés** lehetőséget.
 
-7. Válassza az **Eltávolítás**lehetőséget.
+7. Válassza az **Eltávolítás** lehetőséget.
 
 8. Ha vannak olyan munkamenet-gazdagépek a készletben, amelyeket törölni szeretne, megjelenik egy üzenet, amely arra kéri, hogy folytassa a folytatást. Válassza az **Igen** lehetőséget.
 

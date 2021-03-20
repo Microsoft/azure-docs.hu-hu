@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
 ms.openlocfilehash: 5c127010a7988bf08c77340a4fc10bb32dc76f87
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93393884"
 ---
 # <a name="tutorial-fail-back-azure-vm-to-the-primary-region"></a>Oktatóanyag: az Azure-beli virtuális gép visszaállítása az elsődleges régióba
@@ -49,10 +49,10 @@ A virtuális gépek újravédése után szükség szerint visszatérhet az első
     [Az oldal, amely azt mutatja, hogy feladatátvételi teszt nélkül futtatja a feladatátvételt](./media/azure-to-azure-tutorial-failback/no-test.png)
 
 4. A **feladatátvétel** területen jegyezze fel a másodlagosról az elsődlegesre irányt, majd válasszon ki egy helyreállítási pontot. A célként megadott Azure-beli virtuális gép (elsődleges régió) ebben a pontban található adatok használatával jön létre.
-   - **Legutóbb feldolgozott** : a site Recovery által feldolgozott legújabb helyreállítási pontot használja. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, így alacsony helyreállítási időcélkitűzést (RTO) biztosít.
-   -  **Utolsó** : a site Recoveryba elküldett összes adat feldolgozása, hogy minden virtuális gép számára hozzon létre egy helyreállítási pontot, mielőtt a művelet feladatátvételt hajt végre. A a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvétel indításakor a rendszer az összes adatSite Recovery replikálja.
-   - **Legújabb alkalmazás-konzisztens** : Ez a beállítás a virtuális gépeket a legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. Megjelenik az időbélyeg.
-   - **Egyéni** : feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem használ helyreállítási tervet.
+   - **Legutóbb feldolgozott**: a site Recovery által feldolgozott legújabb helyreállítási pontot használja. Megjelenik az időbélyeg. A rendszer nem töltött le időt az adatfeldolgozás során, így alacsony helyreállítási időcélkitűzést (RTO) biztosít.
+   -  **Utolsó**: a site Recoveryba elküldett összes adat feldolgozása, hogy minden virtuális gép számára hozzon létre egy helyreállítási pontot, mielőtt a művelet feladatátvételt hajt végre. A a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvétel indításakor a rendszer az összes adatSite Recovery replikálja.
+   - **Legújabb alkalmazás-konzisztens**: Ez a beállítás a virtuális gépeket a legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre. Megjelenik az időbélyeg.
+   - **Egyéni**: feladatátvétel adott helyreállítási pontra. Az egyéni szolgáltatás csak akkor érhető el, ha egyetlen virtuális gép feladatátvételét hajtja végre, és nem használ helyreállítási tervet.
 
     > [!NOTE]
     > Ha feladatátvételt hajt végre egy olyan virtuális gépen, amelyhez a virtuális gép replikálásának engedélyezése után hozzáadott egy lemezt, a replikációs pontok megjelenítik a helyreállításhoz elérhető lemezeket. Egy második lemez hozzáadása előtt létrehozott replikációs pont például a következő lesz: "1/2 lemez".
@@ -82,7 +82,7 @@ Miután a virtuális gépeket az elsődleges régióba nem sikerült visszaadni,
 
 4. Figyelje a riasztások állapotát az értesítésekben. 
 
-    ![A folyamat ismételt védelemének ismételt védelemmel ](./media/azure-to-azure-tutorial-failback/notification-reprotect-start.png) [Reprotect progress notification](./media/azure-to-azure-tutorial-failback/notification-reprotect-finish.png) kapcsolatos értesítése
+    ![A folyamat ismételt védelemének ismételt védelemmel ](./media/azure-to-azure-tutorial-failback/notification-reprotect-start.png) [](./media/azure-to-azure-tutorial-failback/notification-reprotect-finish.png) kapcsolatos értesítése
     
   
 
@@ -92,7 +92,7 @@ A felügyelt lemezekkel rendelkező virtuális gépek esetében a feladat-vissza
 
 Ha a feladatátvételt követően teljesen letiltja a replikálást, Site Recovery törli az általa védett gépeket. Ebben az esetben a nem felügyelt lemezeket használó virtuális gépek lemezeit is törli. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a virtuális gépeket a másodlagos régióról az elsődlegesre visszaküldte. Ez a folyamat utolsó lépése, amely magában foglalja a virtuális gép replikálásának engedélyezését, a vész-helyreállítási gyakorlat kipróbálását, az elsődleges régióról a másodlagosra történő feladatátvételt, végül pedig a feladat-visszavételt.
 

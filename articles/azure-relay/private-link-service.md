@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálható Azure Relay az Azure Private lin
 ms.date: 09/24/2020
 ms.topic: article
 ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98134381"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>Azure Relay integrálása az Azure Private-hivatkozással 
@@ -161,7 +161,7 @@ Négy kiépítési állapot létezik:
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. A keresősáv mezőbe írja be a következőt: **Relay**.
 1. Válassza ki a kezelni kívánt **névteret** .
 1. Válassza a **Hálózatkezelés** lapot.

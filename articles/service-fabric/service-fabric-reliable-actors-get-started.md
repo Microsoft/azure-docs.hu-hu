@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 225ccb67153a33ed47af68ebb1549dce37426278
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573461"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
@@ -44,15 +44,15 @@ A megoldás három projektet tartalmaz:
 
 * **Az interface projekt (HelloWorld. interfaces)**. Ez a projekt tartalmazza a színész illesztőfelület-definícióját. A színészi felületek bármilyen nevű projektben meghatározhatók.  A csatoló határozza meg a Actors-szerződést, amelyet a színészi implementáció és a színészet hívó ügyfelek is megosztanak.  Mivel az ügyfelek projektjei függenek tőle, általában logikus, hogy egy olyan szerelvényben definiálják, amely eltér a szereplő implementációtól.
 
-* **A actoring Service projekt (HelloWorld)**. Ez a projekt azt a Service Fabric szolgáltatást határozza meg, amely a szereplőt fogja üzemeltetni. A *HelloWorld.cs* a színész megvalósítását tartalmazza. A Actors implementáció egy olyan osztály, amely az alaptípusból származik `Actor` , és megvalósítja a *MyActor. interfaces* projektben definiált illesztőfelületeket. A Actors osztálynak olyan konstruktort is végre kell hajtania, amely elfogadja a `ActorService` példányt és `ActorId` a-t, és átadja azokat az `Actor` alaposztálynak.
+* **A actoring Service projekt (HelloWorld)**. Ez a projekt azt a Service Fabric szolgáltatást határozza meg, amely a szereplőt fogja üzemeltetni. A *HelloWorld. cs* című színész megvalósítását tartalmazza. A Actors implementáció egy olyan osztály, amely az alaptípusból származik `Actor` , és megvalósítja a *MyActor. interfaces* projektben definiált illesztőfelületeket. A Actors osztálynak olyan konstruktort is végre kell hajtania, amely elfogadja a `ActorService` példányt és `ActorId` a-t, és átadja azokat az `Actor` alaposztálynak.
     
-    Ez a projekt *program.cs* is tartalmaz, amely a Service Fabric Runtime használatával regisztrálja a színészi osztályokat `ActorRuntime.RegisterActorAsync<T>()` . Az `HelloWorld` osztály már regisztrálva van. A projekthez hozzáadott további Actors implementációkat is regisztrálni kell a `Main()` metódusban.
+    Ez a projekt a *program. cs* is tartalmazza, amely a Service Fabric Runtime használatával regisztrálja a színészi osztályokat `ActorRuntime.RegisterActorAsync<T>()` . Az `HelloWorld` osztály már regisztrálva van. A projekthez hozzáadott további Actors implementációkat is regisztrálni kell a `Main()` metódusban.
 
 ## <a name="customize-the-helloworld-actor"></a>A HelloWorld Actor testreszabása
 
-A projekt sablonja meghatároz néhány módszert a `IHelloWorld` felületen, és implementálja azokat a `HelloWorld` színészi implementációban.  Cserélje le ezeket a metódusokat, hogy a Actor szolgáltatás egy egyszerű "„Helló világ!” alkalmazás" karakterláncot ad vissza.
+A projekt sablonja meghatároz néhány módszert a `IHelloWorld` felületen, és implementálja azokat a `HelloWorld` színészi implementációban.  Cserélje le ezeket a metódusokat, hogy a Actor szolgáltatás egy egyszerű "Hello World" karakterláncot ad vissza.
 
-A *HelloWorld. interfaces* projekt *IHelloWorld.cs* fájljában cserélje le az interfész definícióját a következőképpen:
+A *HelloWorld. interfaces* projekt *IHelloWorld. cs* fájljában cserélje le az interfész definícióját a következőképpen:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -61,7 +61,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-A **HelloWorld** projektben a **HelloWorld.cs**-ben cserélje le a teljes osztály definícióját a következőképpen:
+A **HelloWorld** projektben a **HelloWorld. cs** alatt cserélje le a teljes osztály definícióját a következőképpen:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -85,7 +85,7 @@ Nyomja le a **CTRL + SHIFT + B** billentyűkombinációt a projekt létrehozás�
 
 Hozzon létre egy egyszerű konzolos alkalmazást a Actor szolgáltatás meghívásához.
 
-1. Kattintson a jobb gombbal a megoldásra megoldáskezelő > **Add**  >  **új projekt hozzáadása..**. elemre.
+1. Kattintson a jobb gombbal a megoldásra megoldáskezelő >   >  **új projekt hozzáadása..**. elemre.
 
 2. A **.net Core** -projekt típusai területen válassza a **Console app (.net Core)** lehetőséget.  Nevezze el a projekt *ActorClient*.
     
@@ -110,7 +110,7 @@ Hozzon létre egy egyszerű konzolos alkalmazást a Actor szolgáltatás meghív
     
     ![Hivatkozás hozzáadása párbeszédpanel][7]
 
-6. A ActorClient projektben cserélje le a *program.cs* teljes tartalmát a következő kódra:
+6. A ActorClient projektben cserélje le a *program. cs* teljes tartalmát a következő kódra:
     
     ```csharp
     using System;
@@ -147,7 +147,7 @@ Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClie
 > [!TIP]
 > A Service Fabric Actors Runtime a [színészi módszerekhez kapcsolódó eseményeket és](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)teljesítményszámlálókat bocsát ki. Ezek a diagnosztika és a teljesítmény monitorozása során hasznosak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, [hogy Reliable Actors hogyan használják a Service Fabric platformot](service-fabric-reliable-actors-platform.md).
 
 

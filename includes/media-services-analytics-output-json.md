@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179533"
 ---
 A feladat létrehoz egy JSON kimeneti fájlt, amely az észlelt és nyomon követett arcokhoz tartozó metaadatokat tartalmaz. A metaadatok tartalmazzák az arcok helyét jelző koordinátákat, valamint az adott személy nyomon követését jelző Arcfelismerés-számot. A Face ID-számok olyan körülmények között állnak alaphelyzetbe, amikor az elülső arc elveszett vagy átfedésben van a keretben, így egyes személyek több azonosítót kapnak.

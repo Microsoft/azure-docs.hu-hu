@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/28/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: fc60d1266f4aad4c337611f0fa32fe8293744559
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82792275"
 ---
 ## <a name="list-information"></a>Információk listázása
@@ -38,7 +38,7 @@ $imageVersions = Get-AzResource -ResourceType Microsoft.Compute/galleries/images
 $imageVersions.Name
 ```
 
-Rendszerkép verziójának törlése. Ez a példa törli a *1.0.0*nevű rendszerkép-verziót.
+Rendszerkép verziójának törlése. Ez a példa törli a *1.0.0* nevű rendszerkép-verziót.
 
 ```azurepowershell-interactive
 Remove-AzGalleryImageVersion `

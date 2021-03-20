@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 12951f25feb6f3710b8d35fbc682caeeb480e788
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555606"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
@@ -88,7 +88,7 @@ Most, hogy regisztrálta a webes API-t, és hatóköröket és engedélyeket kon
 A cikk előfeltétele, hogy egy [WPF asztali alkalmazást](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) módosítson, hogy engedélyezze a bejelentkezést egy felhasználói folyamattal a Azure ad B2C-bérlőben. Ebben a szakaszban ugyanazt az alkalmazást frissíti, hogy a korábban regisztrált webes API-ra, a *webapi1*-ra hivatkozzon.
 
 1. Nyissa meg az **Active-Directory-B2C-WPF** megoldást ( `active-directory-b2c-wpf.sln` ) a Visual Studióban.
-1. Az **Active Directory-B2C-WPF** projektben nyissa meg a *app.XAML.cs* fájlt, és keresse meg az alábbi változók definícióit.
+1. Az **Active Directory-B2C-WPF** projektben nyissa meg az *app. XAML. cs* fájlt, és keresse meg az alábbi változók definícióit.
     1. Cserélje le a változó értékét `ApiScopes` a **demo. Read** hatókör meghatározásakor korábban rögzített értékre.
     1. Cserélje le a változó értékét `ApiEndpoint` a korábban feljegyzett **átirányítási URI-ra** , amikor a bérlőben regisztrálta a webes API-t (például *webapi1*).
 

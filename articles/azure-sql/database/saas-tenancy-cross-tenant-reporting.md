@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewers: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 18a02b81e459217ccca53d48a08e35a706b071b0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793262"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Több-bérlős jelentéskészítés elosztott lekérdezések használatával
@@ -59,8 +59,8 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-parancsfájljai és az alkalmaz�
 
 Ha több érdekes adathalmazon szeretne lekérdezéseket futtatni, a Ticket-Generator futtatásával hozzon létre jegyeladási adatforgalmat.
 
-1. A *POWERSHELL ISE* -ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentéskészítési \\ *Demo-AdhocReporting.ps1* parancsfájlt, és a következő értéket adja meg:
-   * **$DemoScenario** = 1, **jegyek vásárlása minden helyszínen** .
+1. A *POWERSHELL ISE*-ben nyissa meg a... \\ A képzési modulok \\ operatív elemzési ad \\ hoc jelentéskészítési \\ *Demo-AdhocReporting.ps1* parancsfájlt, és a következő értéket adja meg:
+   * **$DemoScenario** = 1, **jegyek vásárlása minden helyszínen**.
 2. Nyomja le az **F5** billentyűt a szkript futtatásához és a jegyek értékesítésének létrehozásához. A parancsfájl futása közben folytassa az oktatóanyag lépéseit. A jegyeket az *ad hoc elosztott lekérdezések futtatása* szakaszban kérdezi le, ezért várjon, amíg a Ticket Generator befejeződik.
 
 ## <a name="explore-the-global-views"></a>A globális nézetek megismerése
@@ -91,22 +91,22 @@ Ezekben a nézetekben a *VenueId* a helyszín nevének kivonata alapján számí
 
 A *helyszínek* nézet definíciójának vizsgálata:
 
-1. A **Object Explorer** bontsa ki a **contosoconcerthall** -  >  **nézetek** elemet:
+1. A **Object Explorer** bontsa ki a **contosoconcerthall**-  >  **nézetek** elemet:
 
    ![A képernyőkép a nézetek csomópont tartalmát jeleníti meg, beleértve a d b. helyszín négy típusát is.](./media/saas-tenancy-cross-tenant-reporting/views.png)
 
-2. Kattintson a jobb gombbal a dbo elemre **. Helyszínek** .
-3. Válassza ki a **parancsfájl nézetet az**  >  **CREATE To**  >  **Új lekérdezés-szerkesztő ablak** létrehozásához.
+2. Kattintson a jobb gombbal a dbo elemre **. Helyszínek**.
+3. Válassza ki a **parancsfájl nézetet az**  >    >  **Új lekérdezés-szerkesztő ablak** létrehozásához.
 
-Parancsfájl a többi *helyszín* nézeteiből megtudhatja, hogyan adja hozzá a *VenueId* .
+Parancsfájl a többi *helyszín* nézeteiből megtudhatja, hogyan adja hozzá a *VenueId*.
 
 ## <a name="deploy-the-database-used-for-distributed-queries"></a>Az elosztott lekérdezésekhez használt adatbázis üzembe helyezése
 
 Ez a gyakorlat telepíti a _adhocreporting_ -adatbázist. Ez az a fő adatbázis, amely az összes bérlői adatbázis lekérdezéséhez használt sémát tartalmazza. A rendszer telepíti az adatbázist a meglévő Catalog kiszolgálóra, amely a minta alkalmazásban található összes felügyelettel kapcsolatos adatbázishoz használt kiszolgáló.
 
-1. a *POWERSHELL ISE* -ben nyissa meg a... \\ Oktatási modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *Demo-AdhocReporting.ps1* . 
+1. a *POWERSHELL ISE*-ben nyissa meg a... \\ Oktatási modulok \\ operatív elemzési ad \\ hoc jelentéskészítés \\ *Demo-AdhocReporting.ps1*. 
 
-1. Állítsa be **$DemoScenario = 2** , _ad hoc jelentési adatbázis üzembe helyezése_ .
+1. Állítsa be **$DemoScenario = 2**, _ad hoc jelentési adatbázis üzembe helyezése_.
 
 1. Nyomja le az **F5** billentyűt a szkript futtatásához és a *adhocreporting* -adatbázis létrehozásához.
 
@@ -116,7 +116,7 @@ A következő szakaszban sémát ad hozzá az adatbázishoz, hogy az elosztott l
 
 Ez a gyakorlat hozzáadja a sémát (a külső adatforrást és a külső tábla definícióit) a _adhocreporting_ -adatbázishoz, így lehetővé teszi az összes bérlői adatbázis lekérdezését.
 
-1. Nyissa meg SQL Server Management Studio, és kapcsolódjon az előző lépésben létrehozott ad hoc jelentési adatbázishoz. Az adatbázis neve *adhocreporting* .
+1. Nyissa meg SQL Server Management Studio, és kapcsolódjon az előző lépésben létrehozott ad hoc jelentési adatbázishoz. Az adatbázis neve *adhocreporting*.
 2. Nyissa meg a. ..\Learning Modules\Operational Analytics\Adhoc Reporting \ _Initialize-AdhocReportingDB. SQL_ MAPPÁT a SSMS-ben.
 3. Tekintse át az SQL-parancsfájlt, és jegyezze fel:
 
@@ -128,7 +128,7 @@ Ez a gyakorlat hozzáadja a sémát (a külső adatforrást és a külső tábla
 
     ![külső adatforrás létrehozása](./media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   A külső táblák, amelyek az előző szakaszban ismertetett globális nézetekre hivatkoznak, és amelyek a következővel vannak meghatározva: **Distributed = VenueId** . Mivel minden egyes *VenueId* egy különálló adatbázishoz van hozzárendelve, ez számos forgatókönyv esetén javítja a teljesítményt, ahogy azt a következő szakaszban is látható.
+   A külső táblák, amelyek az előző szakaszban ismertetett globális nézetekre hivatkoznak, és amelyek a következővel vannak meghatározva: **Distributed = VenueId**. Mivel minden egyes *VenueId* egy különálló adatbázishoz van hozzárendelve, ez számos forgatókönyv esetén javítja a teljesítményt, ahogy azt a következő szakaszban is látható.
 
     ![külső táblák létrehozása](./media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 

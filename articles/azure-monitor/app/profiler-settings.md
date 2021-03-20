@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86499409"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
@@ -63,7 +63,7 @@ Az oldal ezen szakasza a közelmúltbeli profilkészítési munkamenetekkel kapc
 Aktiválta: | A munkamenet elindítása a trigger, a profil és az alapértelmezett mintavételezés használatával. 
 Alkalmazásnév | A létrehozott alkalmazás neve.
 Gépi példány | Annak a gépnek a neve, amelyen a Profiler-ügynök futott.
-Timestamp | A profil rögzítésének ideje.
+Időbélyeg | A profil rögzítésének ideje.
 Farkas | Az egyes kérelmekhez csatolt Nyomkövetések száma.
 CPU % | A Profiler futása közben használt CPU százaléka.
 Memória | A Profiler futása közben használt memória százalékos aránya.
@@ -78,7 +78,7 @@ A következő részekben bemutatjuk, hogyan működik ez a forgatókönyv:
 
 Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuálisan szeretné előállítani a forgalmat, ugorja át ezt a szakaszt, és folytassa a 2. lépéssel.
 
-1. A Application Insights portálon válassza a **Configure**  >  **teljesítmény-tesztelés**konfigurálása elemet. 
+1. A Application Insights portálon válassza a   >  **teljesítmény-tesztelés** konfigurálása elemet. 
 
 1. Új teljesítményteszt indításához kattintson az **új** gombra.
 
@@ -88,7 +88,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
     ![Terhelési teszt konfigurálása][configure-performance-test]
 
-    Az új tesztet először a rendszer várólistára helyezi, majd a *folyamatban*állapotot követi.
+    Az új tesztet először a rendszer várólistára helyezi, majd a *folyamatban* állapotot követi.
 
     ![A terhelési teszt elküldve és várólistán van][load-test-queued]
 
@@ -105,7 +105,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
 Miután a Profiler befejezte a futtatást, kövesse az értesítésen megjelenő utasításokat a teljesítmény panelre való ugráshoz és a Nyomkövetések megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Profiler engedélyezése és a Nyomkövetések megtekintése](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png

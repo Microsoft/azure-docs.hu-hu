@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 06a4e8aa1ad74f47526f3a39931632953bfaaec2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Oktatóanyag: Azure Active Directory integráció a Kantega SSO-val a FishEye/tégelyek esetében
@@ -67,7 +67,7 @@ A Kantega SSO és a tégelyek Azure AD-ba való integrálásának konfigurálás
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést kell konfigurálnia és tesztelni a Kantega SSO-val a FishEye/tégelyek esetében egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést kell konfigurálnia és tesztelni a Kantega SSO-val a FishEye/tégelyek esetében egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolatot kell létrehozni a Kantega SSO/tégelyek esetében.
 
 Az Azure AD egyszeri bejelentkezés és a halszem/tégelyek Kantega egyszeri bejelentkezésének konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri bejelentkezést a Kantega SSO-val a FishEye/tégelyek esetében:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Kantega SSO for FishEye/tégelyek** alkalmazás-integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Kantega SSO for FishEye/tégelyek** alkalmazás-integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -132,11 +132,11 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 1. Egy másik böngészőablakban jelentkezzen be a FishEye/tégely a helyszíni kiszolgálóra rendszergazdaként.
 
-1. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
+1. Mutasson a fogaskerékre, és kattintson a **bővítmények** elemre.
 
     ![Képernyőfelvétel: a "fogaskerék" ikon és a "bővítmények" be van jelölve.](./media/kantegassoforfisheyecrucible-tutorial/addon1.png)
 
-1. A rendszerbeállítások szakaszban kattintson az **új bővítmények keresése**elemre. 
+1. A rendszerbeállítások szakaszban kattintson az **új bővítmények keresése** elemre. 
 
     ![Képernyőfelvétel: a "rendszerbeállítások" szakasz, amely a "új bővítmények keresése" elemet mutatja.](./media/kantegassoforfisheyecrucible-tutorial/add-on2.png)
 
@@ -164,7 +164,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
     ![Képernyőfelvétel: az "add-ons-Kantega egyszeri bejelentkezés" oldal, amelyen az "Identity Provider hozzáadása" legördülő menü és a "Azure Active Directory (Azure AD)" lehetőség van kiválasztva. ](./media/kantegassoforfisheyecrucible-tutorial/addon4.png)
 
-1. Válassza az előfizetési szint **alapszintű**lehetőséget.
+1. Válassza az előfizetési szint **alapszintű** lehetőséget.
 
     ![Képernyőkép: "alapszintű", "alapszintű", "az Azure A D" szakaszának előkészítése.](./media/kantegassoforfisheyecrucible-tutorial/addon5.png)
 
@@ -192,7 +192,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
     b. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**gombra.   
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább** gombra.   
 
     ![Képernyőkép, amely az "aláírás-ellenőrzés" szakaszt és a "Next" gombot mutatja.](./media/kantegassoforfisheyecrucible-tutorial/addon9.png)
 
@@ -222,7 +222,7 @@ A következő lépések végrehajtásával konfigurálhatja az Azure AD egyszeri
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -246,15 +246,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a Kantega egyszeri bejelentkezéshez a halszem/tégelyekhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Kantega egyszeri bejelentkezés a FishEye/tégelyhez**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Kantega egyszeri bejelentkezés a FishEye/tégelyhez** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Kantega egyszeri bejelentkezés a FishEye/tégelyhez**lehetőséget.
+2. Az alkalmazások listában válassza a **Kantega egyszeri bejelentkezés a FishEye/tégelyhez** lehetőséget.
 
     ![Az alkalmazások listájában a halszem/tégelyek hivatkozásához tartozó Kantega SSO](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -276,11 +276,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók a FishEye/tégelybe j
 
 1. Jelentkezzen be a tégelybe a helyszíni kiszolgálóra rendszergazdaként.
 
-1. Mutasson a fogaskerékre, majd kattintson a **felhasználók**elemre.
+1. Mutasson a fogaskerékre, majd kattintson a **felhasználók** elemre.
 
     ![Képernyőkép, amely megjeleníti a "fogaskerék" ikont, a "felhasználók" lehetőséget pedig a legördülő listából.](./media/kantegassoforfisheyecrucible-tutorial/user1.png)
 
-1. A **felhasználók** lap szakaszban kattintson a **felhasználó hozzáadása**elemre.
+1. A **felhasználók** lap szakaszban kattintson a **felhasználó hozzáadása** elemre.
 
     ![A "felhasználók" szakaszt tartalmazó képernyőkép, amely a "felhasználó hozzáadása" gomb kiválasztásával jelenik meg.](./media/kantegassoforfisheyecrucible-tutorial/user2.png)
 

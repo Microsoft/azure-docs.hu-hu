@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 0c49f5ab9f10456c32f7f8516cba0e851fa80e74
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392333"
 ---
 # <a name="configure-azure-sql-edge"></a>Az Azure SQL Edge konfigurálása
@@ -32,7 +32,7 @@ Az Azure SQL Edge számos különböző környezeti változót tesz elérhetőv�
 
 A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez. 
 
-| Környezeti változó | Leírás | Értékek |     
+| Környezeti változó | Description | Értékek |     
 |-----|-----| ---------- | 
 | **PlanId** | Megadja az inicializálás során használandó Azure SQL Edge SKU-t. Ez a környezeti változó csak akkor szükséges, ha Azure IoT Edge használatával telepíti az Azure SQL Edge-t. | **asde-Developer-on-IOT-Edge** vagy **asde-Premium-on-IOT-Edge** | 
 | **MSSQL_TELEMETRY_ENABLED** | A használati és diagnosztikai adatok gyűjtésének engedélyezése vagy letiltása. | TRUE (igaz) vagy FALSE (hamis) |  
@@ -42,7 +42,7 @@ A következő új környezeti változók lettek hozzáadva az Azure SQL Edge-hez
 
 Az Azure SQL Edge nem támogatja az alábbi SQL Server on Linux környezeti változót. Ha meg van adva, a rendszer a tároló inicializálása során figyelmen kívül hagyja ezt a környezeti változót.
 
-| Környezeti változó | Leírás |
+| Környezeti változó | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Rendelkezésre állási csoport engedélyezése. Az **1** érték például engedélyezve van, és a **0** le van tiltva. |
 
@@ -95,7 +95,7 @@ A következő MSSQL. conf beállítások nem alkalmazhatók az SQL Edge-re:
 |**Ügyfélvisszajelzés** | Válassza ki, hogy SQL Server küldjön-e visszajelzést a Microsoftnak. |
 |**Adatbázisbeli levelezési profil** | Állítsa be SQL Server on Linux alapértelmezett adatbázis-levelezési profilját. |
 |**Magas rendelkezésre állás** | Rendelkezésre állási csoportok engedélyezése. |
-|**Microsoft Elosztott tranzakciók koordinátora** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**Microsoft Distributed Transaction Coordinator** | Az MSDTC konfigurálása és hibakeresése Linux rendszeren. További elosztott tranzakciókkal kapcsolatos konfigurációs beállítások nem támogatottak az SQL Edge esetében. További információ ezekről a további konfigurációs lehetőségekről: az [MSDTC konfigurálása](/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
 |**A ML-szolgáltatások végfelhasználói licencszerződései** | Az R-és Python-LICENCSZERZŐDÉSek elfogadása Azure Machine Learning csomagokhoz. Csak SQL Server 2019-es verzióra vonatkozik.|
 |**outboundnetworkaccess** |Engedélyezze a kimenő hálózati hozzáférést [Machine learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R-, Python-és Java-bővítményekhez.|
 
@@ -230,7 +230,7 @@ Adatmennyiség-tároló eltávolításához használja az `docker volume rm` par
 > Ha törli az adatmennyiség-tárolót, a tárolóban lévő összes Azure SQL Edge-adatbázis *véglegesen* törölve lesz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolódás az Azure SQL Edge-hez](connect.md)
 - [Teljes körű IoT-megoldás kiépítése az SQL Edge használatával](tutorial-deploy-azure-resources.md)

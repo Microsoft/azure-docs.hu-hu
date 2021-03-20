@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 8bc9f03f05d52df6e400be5c57033ab2a38fa8eb
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92102965"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Feladatok futtatása párhuzamosan a Batch számítási csomópontok használatának maximalizálása érdekében
@@ -46,7 +46,7 @@ Az egyidejű feladatok engedélyezésekor fontos megadnia, hogyan szeretné elos
 
 A [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonság használatával megadhatja, hogy a tevékenységek egyenletesen legyenek hozzárendelve a készlet összes csomópontján ("terjesztés"). Azt is megadhatja, hogy a lehető legtöbb feladat legyen hozzárendelve az egyes csomópontokhoz, mielőtt a feladatok hozzá vannak rendelve a készlet egy másik csomópontjára ("csomagolás").
 
-Tegyük fel például, hogy a [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) értékkel konfigurált [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontok készletét (a fenti példában). Ha a [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) konfigurálva van egy [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) , az maximalizálja az egyes csomópontok 16 maggal való *használatát, és*lehetővé teszi az automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok (csomópontok nélküli csomópontok) eltávolítását a készletből. Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
+Tegyük fel például, hogy a [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) értékkel konfigurált [standard \_ D14](../cloud-services/cloud-services-sizes-specs.md) -csomópontok készletét (a fenti példában). Ha a [CloudPool. TaskSchedulingPolicy](/dotnet/api/microsoft.azure.batch.cloudpool) konfigurálva van egy [ComputeNodeFillType](/dotnet/api/microsoft.azure.batch.common.computenodefilltype) , az maximalizálja az egyes csomópontok 16 maggal való *használatát, és* lehetővé teszi az automatikus [skálázási készlet](batch-automatic-scaling.md) számára a nem használt csomópontok (csomópontok nélküli csomópontok) eltávolítását a készletből. Ez csökkenti az erőforrás-használatot, és pénzt takarít meg.
 
 ## <a name="define-variable-slots-per-task"></a>Változó tárolóhelyek definiálása feladat szerint
 
@@ -197,7 +197,7 @@ Tasks: 32
 Duration: 00:08:48.2423500
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Próbálja ki a [Batch Explorer](https://azure.github.io/BatchExplorer/) Heat térképet. A Batch Explorer egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure Batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. A [ParallelTasks](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ParallelTasks) -minta alkalmazás végrehajtásakor a Batch Explorer Heat Map szolgáltatás lehetővé teszi a párhuzamos feladatok végrehajtásának egyszerű megjelenítését az egyes csomópontokon.
 - Ismerkedjen [meg Azure batch mintákkal a githubon](https://github.com/Azure/azure-batch-samples).

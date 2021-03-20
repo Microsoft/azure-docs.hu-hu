@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88236318"
 ---
 # <a name="guidelines-for-table-design"></a>Irányelvek táblatervezéshez
@@ -22,10 +22,10 @@ Az Azure Storage Table szolgáltatással való használatra szolgáló táblák 
 ## <a name="design-your-table-service-solution-to-be-read-efficient"></a>Tervezze meg Table service-megoldását olvasásra és hatékonyságra
 
 * ***Az olvasási és a nagy teljesítményű alkalmazásokban való lekérdezés tervezése.*** A táblázatok tervezésekor gondolja át a lekérdezéseket (különösen a késési különbségeket), amelyeket a rendszer az entitások frissítésének megkezdése előtt végrehajt. Ez általában egy hatékony és nagy teljesítményű megoldás eredményét eredményezi.  
-* ***Adja meg a PartitionKey és a RowKey is a lekérdezésekben.*** A *pontok lekérdezései* , például ezek a leghatékonyabb Table Service-lekérdezések.  
+* ***Adja meg a PartitionKey és a RowKey is a lekérdezésekben.** _ _Point lekérdezések * például ezek a leghatékonyabb Table Service-lekérdezések.  
 * ***Érdemes lehet az entitások duplikált példányait tárolni.*** A Table Storage olcsó, ezért a hatékonyabb lekérdezések lehetővé tételéhez ugyanazt az entitást többször kell tárolni (különböző kulcsokkal).  
 * ***Érdemes lehet az adatai denormalizálása.*** A Table Storage olcsó, ezért érdemes lehet az adatai denormalizálása. Tárolhatja például az összegző entitásokat, hogy az összesített adatlekérdezések csak egyetlen entitáshoz férhessenek hozzá.  
-* ***Használjon összetett kulcsos értékeket.*** Csak a **PartitionKey** és a **RowKey**kulcsok vannak. Használjon például összetett kulcsos értékeket az entitásokhoz való helyettesítő hozzáférési útvonalak engedélyezéséhez.  
+* ***Használjon összetett kulcsos értékeket.** _ Az egyetlen kulcs, amelyet a _ *PartitionKey** és a **RowKey**. Használjon például összetett kulcsos értékeket az entitásokhoz való helyettesítő hozzáférési útvonalak engedélyezéséhez.  
 * ***Lekérdezési leképezés használata.*** Csökkentheti a hálózaton keresztül átvitt adatok mennyiségét olyan lekérdezések használatával, amelyek csak a szükséges mezőket választják ki.  
 
 ## <a name="design-your-table-service-solution-to-be-write-efficient"></a>Tervezze meg Table service-megoldását, hogy az írható legyen  

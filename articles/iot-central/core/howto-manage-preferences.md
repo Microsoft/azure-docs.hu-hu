@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: 83d8c04765bf9aecc9029cdc8d12461231d191f2
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97795955"
 ---
 # <a name="manage-your-personal-application-preferences"></a>A személyes alkalmazás beállításainak kezelése
@@ -34,7 +34,7 @@ A sötét téma és a világos téma is támogatott. Bár a világos téma az al
 > [!NOTE]
 > A világos és a sötét témák közötti választás nem érhető el, ha a rendszergazda egyéni témát konfigurált az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti a profilját az Azure IoT Centralban, itt látható a következő lépés:
 

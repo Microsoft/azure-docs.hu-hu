@@ -4,15 +4,15 @@ description: A biztonsági mentés által biztosított beépített Azure-szabál
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.openlocfilehash: 4658d1beffe707682e173491edea1eac0db9c811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82183619"
 ---
 # <a name="supported-vm-skus-for-azure-policy"></a>Az Azure Policy támogatott virtuálisgép-termékváltozatai
 
-A Azure Backup beépített szabályzatot biztosít (Azure Policy használatával), amely az **előfizetésben vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális**géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba **ugyanazon a helyen és előfizetésben**. Az alábbi táblázat felsorolja a szabályzat által támogatott összes VM-SKU-t.
+A Azure Backup beépített szabályzatot biztosít (Azure Policy használatával), amely az **előfizetésben vagy az erőforráscsoport egy adott helyén lévő összes Azure-beli virtuális** géphez hozzárendelhető. Ha a szabályzatot egy adott hatókörhöz rendeli hozzá, az abban a hatókörben létrehozott összes új virtuális gépet a rendszer automatikusan konfigurálja egy meglévő tárolóba **ugyanazon a helyen és előfizetésben**. Az alábbi táblázat felsorolja a szabályzat által támogatott összes VM-SKU-t.
 
 ## <a name="supported-vms"></a>Támogatott virtuális gépek *
 

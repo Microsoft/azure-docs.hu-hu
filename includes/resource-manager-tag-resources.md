@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80132168"
 ---
 Ha a felhasználó nem rendelkezik a címkék alkalmazásához szükséges hozzáféréssel, hozzárendelheti a **tag közreműködői** szerepkört a felhasználóhoz. További információ: [oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával](../articles/role-based-access-control/quickstart-assign-role-user-portal.md).
@@ -35,15 +35,15 @@ Ha a felhasználó nem rendelkezik a címkék alkalmazásához szükséges hozz�
 
    ![Címkék megjelenítése](./media/resource-manager-tag-resources/view-new-tags.png)
 
-1. Címke hozzáadásához vagy törléséhez válassza a **módosítás**lehetőséget.
+1. Címke hozzáadásához vagy törléséhez válassza a **módosítás** lehetőséget.
 
-1. Címke törléséhez válassza a Kuka ikont. Ezután válassza a **Mentés**lehetőséget.
+1. Címke törléséhez válassza a Kuka ikont. Ezután válassza a **Mentés** lehetőséget.
 
    ![Címke törlése](./media/resource-manager-tag-resources/delete-tag.png)
 
 Címkék tömeges kiosztása több erőforráshoz:
 
-1. Az erőforrások listájából válassza ki a címkét hozzárendelni kívánt erőforrások jelölőnégyzetét. Ezután válassza a **címkék kiosztása**elemet.
+1. Az erőforrások listájából válassza ki a címkét hozzárendelni kívánt erőforrások jelölőnégyzetét. Ezután válassza a **címkék kiosztása** elemet.
 
    ![Több erőforrás kiválasztása](./media/resource-manager-tag-resources/select-multiple-resources.png)
 

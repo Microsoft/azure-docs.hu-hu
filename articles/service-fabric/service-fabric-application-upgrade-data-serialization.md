@@ -4,10 +4,10 @@ description: Ajánlott eljárások az adatszerializáláshoz, valamint a működ
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575635"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Az adatszerializálás hatása az alkalmazás frissítésére
@@ -42,7 +42,7 @@ A kód és az adatformátum két verziójának a továbbítás és a visszamenő
 
 Az adategyezmény a javasolt megoldás annak biztosítására, hogy az adatai kompatibilisek legyenek. Jól definiált verziószámozási szabályokkal rendelkezik a mezők hozzáadásához, eltávolításához és módosításához. Emellett támogatja az ismeretlen mezők kezelését, a szerializálási és a deszerializálási folyamat összekötését, valamint az osztály öröklődésének kezelését. További információ: az [adategyezmény használata](/dotnet/framework/wcf/feature-details/using-data-contracts).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

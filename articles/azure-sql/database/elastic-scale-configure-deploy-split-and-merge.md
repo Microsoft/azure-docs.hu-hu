@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 71aad7699c5af6ce2a1b9d82a340138200cfb5e1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792072"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztási-egyesítési szolgáltatás üzembe helyezése a szilánkokra osztott adatbázisok közötti adatáthelyezéshez
@@ -39,7 +39,7 @@ A fájlok a **Microsoft. Azure. SqlDatabase. ElasticScale. Service. SplitMerge. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Nyissa meg az [Azure Portalt](https://portal.azure.com). Hozzon létre egy új **SQL Database** . Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
+1. Hozzon létre egy Azure SQL Database-adatbázist, amely a felosztási-egyesítési állapot-adatbázisként lesz felhasználva. Nyissa meg az [Azure Portal](https://portal.azure.com). Hozzon létre egy új **SQL Database**. Adjon nevet az adatbázisnak, és hozzon létre egy új rendszergazdát és jelszót. Ügyeljen rá, hogy a nevet és a jelszót a későbbi használatra jegyezze fel.
 
 1. Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatások számára a kapcsolódást. A portálon, a **tűzfal beállításainál** ellenőrizze, hogy az **Azure-szolgáltatások hozzáférésének engedélyezése** beállítás be értékre van **-e állítva.** Kattintson a Save (Mentés) ikonra.
 
@@ -104,11 +104,11 @@ Futtassa a következő parancsot ugyanabból az ablakból, amelyben a MakeCert v
 3. Erősítse meg a fájl elérési útját, és kattintson a **tovább** gombra.
 4. Írja be a jelszót, hagyja bejelölve az **összes kiterjesztett tulajdonságot** , és kattintson a **tovább** gombra.
 5. Hagyja **automatikusan a tanúsítványtároló [...] elemet** , és kattintson a **tovább** gombra.
-6. Kattintson a **Befejezés** , majd **az OK gombra** .
+6. Kattintson a **Befejezés** , majd **az OK gombra**.
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>A PFX-fájl feltöltése a Cloud Service-be
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure Portal](https://portal.azure.com).
 2. Válassza a **Cloud Services** lehetőséget.
 3. Válassza ki a fent létrehozott felhőalapú szolgáltatást a felosztás/egyesítés szolgáltatáshoz.
 4. A felső menüben kattintson a **tanúsítványok** elemre.
@@ -324,8 +324,8 @@ A felosztott egyesítési művelet végrehajtásához deklarálnia kell az áthe
 1. Minden egyes többszintű tábla esetében hozzon létre egy **ShardedTableInfo** objektumot, amely leírja a tábla fölérendelt sémájának nevét (nem kötelező, alapértelmezés szerint "dbo"), a tábla nevét és az abban a táblában található oszlopnevet, amely a horizontális kulcsot tartalmazza.
 2. Mindegyik hivatkozási táblázathoz hozzon létre egy **ReferenceTableInfo** objektumot, amely leírja a tábla szülő sémájának nevét (nem kötelező, alapértelmezés szerint "dbo") és a tábla nevét.
 3. Adja hozzá a fenti TableInfo objektumokat egy új **SchemaInfo** objektumhoz.
-4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection** .
-5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection** , amely megadja a szegmens leképezésének nevét.
+4. Szerezzen be egy **ShardMapManager** objektumra mutató hivatkozást, és hívja meg a **GetSchemaInfoCollection**.
+5. Adja hozzá a **SchemaInfo** a **SchemaInfoCollection**, amely megadja a szegmens leképezésének nevét.
 
 Erre egy példa látható a SetupSampleSplitMergeEnvironment.ps1 parancsfájlban.
 

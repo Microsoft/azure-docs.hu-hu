@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86256344"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
@@ -20,10 +20,10 @@ A Azure Portal lehetőséget biztosít a fordított proxy engedélyezésére új
 
 Ha [Azure Portal használatával hoz létre fürtöt](./service-fabric-cluster-creation-via-portal.md), a fordított proxy konfigurálásához tegye a következőket:
 
-1. A **2. lépés: fürtkonfiguráció** **csomópont típusa konfiguráció**területén válassza a **fordított proxy engedélyezése**lehetőséget.
+1. A **2. lépés: fürtkonfiguráció** **csomópont típusa konfiguráció** területén válassza a **fordított proxy engedélyezése** lehetőséget.
 
    ![Fordított proxy engedélyezése a portálon](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Választható A biztonságos fordított proxy konfigurálásához TLS/SSL-tanúsítványt kell konfigurálnia. A **3. lépés: biztonság**, a **fürt biztonsági beállításainak konfigurálása**elemnél, a **konfiguráció típusa**területen válassza az **Egyéni**lehetőséget. Ezután a **fordított proxy SSL-tanúsítványa**alatt válassza az **SSL-tanúsítvány belefoglalása fordított proxyhoz** lehetőséget, és adja meg a tanúsítvány adatait.
+2. Választható A biztonságos fordított proxy konfigurálásához TLS/SSL-tanúsítványt kell konfigurálnia. A **3. lépés: biztonság**, a **fürt biztonsági beállításainak konfigurálása** elemnél, a **konfiguráció típusa** területen válassza az **Egyéni** lehetőséget. Ezután a **fordított proxy SSL-tanúsítványa** alatt válassza az **SSL-tanúsítvány belefoglalása fordított proxyhoz** lehetőséget, és adja meg a tanúsítvány adatait.
 
    ![Biztonságos fordított proxy konfigurálása a portálon](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
         ...
     }
     ```
-3. Ha a fordított proxy portján TLS/SSL-tanúsítványokat szeretne konfigurálni, adja hozzá a tanúsítványt a **Microsoft. ServiceFabric/Clusters** [erőforrástípus szakasz](../azure-resource-manager/templates/template-syntax.md) ***reverseProxyCertificate*** tulajdonságához.
+3. A fordított proxy portján a TLS/SSL-tanúsítványok konfigurálásához adja hozzá a tanúsítványt a ***reverseProxyCertificate** _ tulajdonsághoz a _ *Microsoft. ServiceFabric/Clusters* *  [erőforrástípus szakaszban](../azure-resource-manager/templates/template-syntax.md).
 
     ```json
     {
@@ -174,7 +174,7 @@ A következő lépések bemutatják, hogy milyen beállításokkal engedélyezhe
           ...
        }
    ```
-2. Választható Biztonságos fordított proxy esetén a **Tulajdonságok**területen konfigurálja a tanúsítványt a **Biztonság** szakaszban. 
+2. Választható Biztonságos fordított proxy esetén a **Tulajdonságok** területen konfigurálja a tanúsítványt a **Biztonság** szakaszban. 
    - Fejlesztési vagy tesztelési környezetben használhatja a **ReverseProxyCertificate** beállítást:
 
       ```json
@@ -243,10 +243,10 @@ Ha a fordított proxyt nyilvánosan szeretné kiterjeszteni egy önálló fürth
 ### <a name="expose-the-reverse-proxy-using-azure-portal"></a>Fordított proxy elérhetővé tétele Azure Portal használatával 
 
 1. A Azure Portal kattintson a fürthöz tartozó erőforráscsoporthoz, majd a fürthöz tartozó terheléselosztó elemre.
-2. Ha hozzá szeretne adni egy állapot-mintavételt a fordított proxyhoz, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások**területen kattintson az **állapot**-mintavételek elemre. Ezután kattintson az **Add (Hozzáadás** ) gombra az állapot-mintavételi ablak tetején, és adja meg a fordított proxykiszolgáló részleteit, majd kattintson **az OK**gombra. Alapértelmezés szerint a fordított proxy portja 19081, hacsak nem módosította a fürt létrehozásakor.
+2. Ha hozzá szeretne adni egy állapot-mintavételt a fordított proxyhoz, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások** területen kattintson az **állapot**-mintavételek elemre. Ezután kattintson az **Add (Hozzáadás** ) gombra az állapot-mintavételi ablak tetején, és adja meg a fordított proxykiszolgáló részleteit, majd kattintson **az OK** gombra. Alapértelmezés szerint a fordított proxy portja 19081, hacsak nem módosította a fürt létrehozásakor.
 
    ![Fordított proxy állapot-mintavételének konfigurálása](./media/service-fabric-reverseproxy-setup/lb-rp-probe.png)
-3. Ha Load Balancer szabályt szeretne hozzáadni a fordított proxy portjának megjelenítéséhez, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások**területen kattintson a terheléselosztási **szabályok**elemre. Ezután kattintson a **Hozzáadás** gombra a terheléselosztási szabályok ablak tetején, és adja meg a fordított proxy portszámának részleteit. Győződjön meg arról, hogy **a port értékét arra** a portra állítja be, amelyben a fordított proxy elérhetővé válik, a **háttér port** értéke a fordított proxy engedélyezésekor beállított portra, az **állapot** mintavételi értéke pedig az előző lépésben konfigurált állapot-mintavételi értékre. Szükség szerint adja meg a többi mezőt, majd kattintson **az OK**gombra.
+3. Ha Load Balancer szabályt szeretne hozzáadni a fordított proxy portjának megjelenítéséhez, a terheléselosztó ablak bal oldali ablaktábláján, a **Beállítások** területen kattintson a terheléselosztási **szabályok** elemre. Ezután kattintson a **Hozzáadás** gombra a terheléselosztási szabályok ablak tetején, és adja meg a fordított proxy portszámának részleteit. Győződjön meg arról, hogy **a port értékét arra** a portra állítja be, amelyben a fordított proxy elérhetővé válik, a **háttér port** értéke a fordított proxy engedélyezésekor beállított portra, az **állapot** mintavételi értéke pedig az előző lépésben konfigurált állapot-mintavételi értékre. Szükség szerint adja meg a többi mezőt, majd kattintson **az OK** gombra.
 
    ![Terheléselosztó szabály konfigurálása fordított proxyhoz](./media/service-fabric-reverseproxy-setup/lb-rp-rule.png)
 
@@ -326,6 +326,6 @@ További információ az Azure-fürtökhöz tartozó Fabric-beállítások friss
 
 A rendszer több háló-beállítást használ a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció kialakításához. Ezen beállítások részletes ismertetését lásd: [Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * A fordított proxy konfigurációs beállításaival kapcsolatban lásd: [ApplicationGateway/http szakasz, Service Fabric a fürt beállításainak testreszabása](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

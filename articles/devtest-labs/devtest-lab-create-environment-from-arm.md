@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre több virtuális gépre kiterjed�
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88182408"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal
@@ -41,13 +41,13 @@ Az infrastruktúra-kóddal és a konfigurációval kapcsolatos ajánlott eljár�
 
 A Azure Resource Manager-sablonok egy adattárban való rendszerezéséhez számos szabályt kell követnie:
 
-- A fősablon fájljának nevét *azuredeploy.jsbe*kell jelölnie.
+- A fősablon fájljának nevét *azuredeploy.jsbe* kell jelölnie.
 
 - Ha egy paraméterben definiált paramétereket szeretne használni, akkor a paraméter fájljának a következő névvel kell rendelkeznie: *azuredeploy.parameters.js*.
 
   A paramétereket és a parametersLink URI értékét is felhasználhatja `_artifactsLocation` `_artifactsLocationSasToken` , így a DevTest Labs automatikusan kezelhet beágyazott sablonokat. További információ: [beágyazott Azure Resource Manager-sablonok központi telepítése tesztelési környezetekhez](deploy-nested-template-environments.md).
 
-- A metaadatokat úgy definiálhatja, hogy a sablon megjelenítendő nevét és leírását egy *metadata.js*nevű fájlban adja meg a következő módon:
+- A metaadatokat úgy definiálhatja, hogy a sablon megjelenítendő nevét és leírását egy *metadata.js* nevű fájlban adja meg a következő módon:
 
   ```json
   {
@@ -63,15 +63,15 @@ A Azure Resource Manager-sablonok egy adattárban való rendszerezéséhez szám
 A tárház létrehozása és konfigurálása után a Azure Portal a következő paranccsal adhatja hozzá a laborhoz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A Labs listából válassza ki a kívánt labort.
-1. A labor **Áttekintés** paneljén válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. A labor **Áttekintés** paneljén válassza a **konfiguráció és szabályzatok** lehetőséget.
 
    ![Konfigurálás és szabályzatok](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. A **konfigurációs és házirend** -beállítások listából válassza a **tárak**elemet. A **nyilvános** összetevő tárháza automatikusan létrejön az összes laborhoz, és csatlakozik a [DevTest Labs nyilvános GitHub-tárházához](https://github.com/Azure/azure-devtestlab).
+1. A **konfigurációs és házirend** -beállítások listából válassza a **tárak** elemet. A **nyilvános** összetevő tárháza automatikusan létrejön az összes laborhoz, és csatlakozik a [DevTest Labs nyilvános GitHub-tárházához](https://github.com/Azure/azure-devtestlab).
 
-1. A Azure Resource Manager sablon adattárának hozzáadásához válassza a **Hozzáadás**lehetőséget.
+1. A Azure Resource Manager sablon adattárának hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
    ![Nyilvános tárház](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
@@ -81,8 +81,8 @@ A tárház létrehozása és konfigurálása után a Azure Portal a következő 
    - **Git-klón URL-címe**: adja meg a git HTTPS Clone URL-címét a githubról vagy az Azure Repos-ból.
    - **Ág** (nem kötelező): írja be az ág nevét az Azure Resource Manager sablon definícióinak eléréséhez.
    - **Személyes hozzáférési jogkivonat**: adja meg az adattár biztonságos eléréséhez használt személyes hozzáférési jogkivonatot.
-     - A token Azure reposből való lekéréséhez a profil alatt válassza a **felhasználói beállítások**  >  **biztonsági**  >  **személyes hozzáférési tokenek**lehetőséget.
-     - Ha szeretné lekérni a tokent a githubról, a profil alatt válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **személyes hozzáférési jogkivonatok**lehetőséget.
+     - A token Azure reposből való lekéréséhez a profil alatt válassza a **felhasználói beállítások**  >  **biztonsági**  >  **személyes hozzáférési tokenek** lehetőséget.
+     - Ha szeretné lekérni a tokent a githubról, a profil alatt válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **személyes hozzáférési jogkivonatok** lehetőséget.
    - **Mappa elérési útjai**: adja meg az összetevő-definíciók vagy a Azure Resource Manager-sablon definíciói számára a git-klón URI-hoz viszonyított mappa elérési útját.
 
 1. Kattintson a **Mentés** gombra.
@@ -97,9 +97,9 @@ A labor felhasználói alapértelmezés szerint rendelkeznek **olvasói** szerep
 
 Az alábbi lépéseket követve biztosíthatja, hogy a labor-felhasználók **közreműködő** szerepkörrel szerkesszék a környezetében található erőforrásokat:
 
-1. A [Azure Portal](https://portal.azure.com)a labor **Áttekintés** paneljén válassza a **konfiguráció és házirendek**lehetőséget, majd válassza a **tesztkörnyezet beállításai**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)a labor **Áttekintés** paneljén válassza a **konfiguráció és házirendek** lehetőséget, majd válassza a **tesztkörnyezet beállításai** lehetőséget.
 
-1. A **labor beállításai** ablaktáblán válassza a **közreműködő**lehetőséget, majd válassza a **Mentés** lehetőséget, ha írási engedélyeket szeretne adni a labor felhasználói számára.
+1. A **labor beállításai** ablaktáblán válassza a **közreműködő** lehetőséget, majd válassza a **Mentés** lehetőséget, ha írási engedélyeket szeretne adni a labor felhasználói számára.
 
    ![Tesztkörnyezet felhasználói hozzáférési jogosultságának konfigurálása](./media/devtest-lab-create-environment-from-arm/config-access-rights.png)
 
@@ -111,11 +111,11 @@ Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhaszná
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
 1. A Labs listából válassza ki a kívánt labort.
 
-1. A labor lapon válassza a **Hozzáadás**lehetőséget.
+1. A labor lapon válassza a **Hozzáadás** lehetőséget.
 
 1. Az **alapszintű ablaktábla választása** megjeleníti a használni kívánt alapképeket, valamint a Azure Resource Manager sablonokat. Válassza ki a kívánt Azure Resource Manager sablont.
 
@@ -125,7 +125,7 @@ Miután hozzáadta Azure Resource Manager sablont a laborhoz, a labor felhaszná
 
    A Azure Resource Manager sablon meghatározza a beviteli mezők többi részét. Ha a sablon *azuredeploy.parameter.js* fájl az alapértelmezett értékeket határozza meg, akkor a beviteli mezők ezeket az értékeket mutatják.
 
-   A *Secure string*típusú paraméterek esetében használhatja a Azure Key Vault titkos kulcsait. A titkos kulcsok egy kulcstartóban való tárolásával és a laboratóriumi erőforrások létrehozásakor történő használatával kapcsolatos további információkért lásd: [a titkok tárolása Azure Key Vaultban](devtest-lab-store-secrets-in-key-vault.md).  
+   A *Secure string* típusú paraméterek esetében használhatja a Azure Key Vault titkos kulcsait. A titkos kulcsok egy kulcstartóban való tárolásával és a laboratóriumi erőforrások létrehozásakor történő használatával kapcsolatos további információkért lásd: [a titkok tárolása Azure Key Vaultban](devtest-lab-store-secrets-in-key-vault.md).  
 
    ![Ablaktábla hozzáadása](./media/devtest-lab-create-environment-from-arm/add.png)
 
@@ -162,7 +162,7 @@ A folytatás előtt győződjön meg arról, hogy rendelkezik egy Azure Resource
 
 A következő minta-szkript létrehoz egy környezetet a laborban. A megjegyzések segítenek jobban megérteni a szkriptet.
 
-1. Mentse a következő PowerShell-parancsfájlt a merevlemezre *deployenv.ps1ként *.
+1. Mentse a következő PowerShell-parancsfájlt a merevlemezre *deployenv.ps1ként*.
 
    [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

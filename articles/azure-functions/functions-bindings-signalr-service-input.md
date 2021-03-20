@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 3f3a99c83d4a18f3085419b91be947dd67f8eec4
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763319"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>A signaler szolgáltatás bemeneti kötése Azure Functions
@@ -278,7 +278,7 @@ public SignalRConnectionInfo negotiate(
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Signaler szolgáltatás üzeneteinek kezelése (trigger kötése)](./functions-bindings-signalr-service-trigger.md)
 - [Szignáló szolgáltatás üzeneteinek küldése (kimeneti kötés)](./functions-bindings-signalr-service-output.md) 

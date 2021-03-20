@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ff9aec1904be754990958869666e9d67038e4fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88142502"
 ---
 # <a name="private-cloud-vmware-components"></a>Private Cloud VMware-összetevők
@@ -48,13 +48,13 @@ a vCenter Server Appliance (VCSA) a CloudSimple által biztosított VMware-megol
 
 ### <a name="vcenter-single-sign-on"></a>vCenter egyszeri bejelentkezés
 
-A VCSA Embedded platform Services-vezérlője egy **vCenter egyetlen Sign-On tartománnyal**van társítva.  A tartománynév a **cloudsimple. local**nevet adja meg.  A rendszer létrehoz egy alapértelmezett felhasználót a **CloudOwner@cloudsimple.com** vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](set-vcenter-identity.md).
+A VCSA Embedded platform Services-vezérlője egy **vCenter egyetlen Sign-On tartománnyal** van társítva.  A tartománynév a **cloudsimple. local** nevet adja meg.  A rendszer létrehoz egy alapértelmezett felhasználót a **CloudOwner@cloudsimple.com** vCenter eléréséhez.  Felveheti a helyszíni/Azure Active Directory [Identity sources for vCenter](set-vcenter-identity.md).
 
 ## <a name="vsan-storage"></a>vSAN-tároló
 
 A privát felhők teljesen konfigurált összes Flash vSAN-tárolóval jönnek létre a fürtben.  Az vSAN adattárral rendelkező vSphere-fürtök létrehozásához legalább három csomópontnak kell futnia ugyanazon SKU-ban.  A vSAN adattárolón alapértelmezés szerint engedélyezve van a Duplikálás és a tömörítés.  Két lemezcsoport jön létre a vSphere-fürt minden egyes csomópontján. Mindegyik lemezcsoport egy gyorsítótár-lemezt és három kapacitású lemezt tartalmaz.
 
-A rendszer létrehoz egy alapértelmezett vSAN-tárolási házirendet a vSphere-fürtön, és alkalmazza őket a vSAN adattárra.  Ez a házirend határozza meg, hogy a virtuális gép tárolási objektumai hogyan legyenek kiépítve és lefoglalva az adattáron belül, hogy garantálható legyen a szükséges szolgáltatási szint.  A tárolási házirend határozza meg a **tolerálható (tranzakciós)** és a **hibatűrési módszer**hibáit.  Új tárolási szabályzatokat hozhat létre, és alkalmazhatja őket a virtuális gépekre. Az SLA fenntartása érdekében a 25%-os tartalék kapacitást a vSAN adattáron kell karbantartani.  
+A rendszer létrehoz egy alapértelmezett vSAN-tárolási házirendet a vSphere-fürtön, és alkalmazza őket a vSAN adattárra.  Ez a házirend határozza meg, hogy a virtuális gép tárolási objektumai hogyan legyenek kiépítve és lefoglalva az adattáron belül, hogy garantálható legyen a szükséges szolgáltatási szint.  A tárolási házirend határozza meg a **tolerálható (tranzakciós)** és a **hibatűrési módszer** hibáit.  Új tárolási szabályzatokat hozhat létre, és alkalmazhatja őket a virtuális gépekre. Az SLA fenntartása érdekében a 25%-os tartalék kapacitást a vSAN adattáron kell karbantartani.  
 
 ### <a name="default-vsan-storage-policy"></a>Alapértelmezett vSAN tárolási házirend
 

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997732"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
@@ -50,7 +50,7 @@ A fenti ábra egy olyan hibrid identitási megoldásra mutat példát, amely a f
 
 Ez az útmutató számos olyan lépést és feladatot tartalmaz, amelyeket követve megtervezheti a szervezet egyedi igényeinek megfelelő hibrid identitás-megoldást. A következő lépések és feladatok során az útmutató ismerteti a megfelelő technológiákat és funkciókat, amelyekkel a szervezet működési és szolgáltatási minőségi szintjére vonatkozó követelményekkel találkozhat.
 
-**Feltételezések**: a Windows Server, a Active Directory tartományi szolgáltatások és a Azure Active Directory némi tapasztalattal rendelkezik. Ez a dokumentum azt feltételezi, hogy Ön azt keresi, hogy ezek a megoldások hogyan tudják kielégíteni saját üzleti igényeit, vagy egy integrált megoldásban.
+**Feltételezések**: a Windows Server, a Active Directory Domain Services és a Azure Active Directory némi tapasztalattal rendelkezik. Ez a dokumentum azt feltételezi, hogy Ön azt keresi, hogy ezek a megoldások hogyan tudják kielégíteni saját üzleti igényeit, vagy egy integrált megoldásban.
 
 ## <a name="design-considerations-overview"></a>Tervezési szempontok áttekintése
 Ez a dokumentum olyan lépéseket és feladatokat tartalmaz, amelyeket követve megtervezheti az igényeinek leginkább megfelelő hibrid identitás-megoldást. Az egyes lépések a megfelelő sorrendben követik egymást. A későbbi lépésekben megjelenő tervezési szempontok miatt előfordulhat, hogy módosítania kell a korábbi lépések során hozott döntéseket, azonban ütköző kialakítási lehetőségek miatt. Minden kísérlet során riasztást kap a lehetséges tervezési ütközésekről a dokumentumban. 

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: d78b6e80005e9533ccd5ebfaea853f35ae6004be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171652"
 ---
 # <a name="configure-webhook-subscriber-authentication"></a>Webhook-előfizetők hitelesítésének konfigurálása
@@ -43,7 +43,7 @@ Ez az útmutató példákat mutat be egy Event Grid modul lehetséges webhook-el
  ```
 
 >[!NOTE]
->A tulajdonságot `outbound__webhook__allowUnknownCA` `true` csak tesztelési környezetben állítsa be, mivel általában önaláírt tanúsítványokat használ. Éles számítási feladatokhoz azt javasoljuk, hogy **hamis**értékre állítsa őket.
+>A tulajdonságot `outbound__webhook__allowUnknownCA` `true` csak tesztelési környezetben állítsa be, mivel általában önaláírt tanúsítványokat használ. Éles számítási feladatokhoz azt javasoljuk, hogy **hamis** értékre állítsa őket.
 
 ## <a name="allow-https-subscriber-but-skip-certificate-validation"></a>HTTPS-előfizető engedélyezése, de tanúsítvány-ellenőrzés kihagyása
 

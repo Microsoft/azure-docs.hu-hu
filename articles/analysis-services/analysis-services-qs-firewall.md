@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88192435"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rövid útmutató: Kiszolgálótűzfal konfigurálása – Portál
@@ -33,8 +33,8 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 ## <a name="configure-a-firewall"></a>Tűzfal konfigurálása
 
 1. Kattintson a kiszolgálóra az Áttekintés oldal megnyitásához. 
-2. A **Beállítások**  >  **tűzfala**tűzfal  >  **engedélyezése**területen válassza **a be**lehetőséget.
-3. A Power BI és Power BI Premium közötti kapcsolatok engedélyezéséhez a **Power bi hozzáférés engedélyezése lehetőségnél**válassza **a be**lehetőséget.  
+2. A **Beállítások**  >  **tűzfala** tűzfal  >  **engedélyezése** területen válassza **a be** lehetőséget.
+3. A Power BI és Power BI Premium közötti kapcsolatok engedélyezéséhez a **Power bi hozzáférés engedélyezése lehetőségnél** válassza **a be** lehetőséget.  
 4. (Opcionális) Adjon meg egy vagy több IP-címtartományt. Adjon meg egy nevet, valamint egy kezdő és egy záró IP-címet mindegyik tartomány számára. A tűzfalszabály nevét 128 karakterre kell korlátozni, és csak nagybetűket, kisbetűket, számokat, aláhúzást és kötőjelet tartalmazhatnak. Üres szóközök és egyéb speciális karakterek használata nem engedélyezett.
 5. Kattintson a **Mentés** gombra.
 
@@ -44,7 +44,7 @@ Ez a rövid útmutató segítséget nyújt az Azure Analysis Services-kiszolgál
 
 Ha már nincs rá szükség, törölje az IP-címtartományokat, vagy tiltsa le a tűzfalat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megismerte, hogyan konfigurálhat tűzfalat a kiszolgálójához. Most, hogy tűfalas védelmet biztosított a kiszolgáló számára, hozzáadhat egy alapszintű minta adatmodellt a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és az ügyfélkapcsolatok tesztelését. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]
