@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74082609"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V Azure-ba történő vészhelyreállításához
@@ -97,7 +97,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Directory|(Nem kötelező) Az UNC elérési út vagy azon helyi könyvtár elérési útja, ahol a profilkészítés során létrehozott adatokat tárolni kívánja. Ha nincs név megadva, a rendszer az aktuális elérési úton található ProfiledData könyvtárat használja alapértelmezett könyvtárként.|
 |-Password|(Nem kötelező) A Hyper-V-gazdagéphez való csatlakozáshoz használt jelszó. Ha nem adja meg paraméterként, a rendszer a parancs végrehajtásakor el fogja kérni.|
 |-StorageAccountName|(Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
-|-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt kulcs. Nyissa meg a Azure Portal > **Storage-fiókok**tárolási fiókjának  >  *neve*  >  **Beállítások**  >  **hozzáférési kulcsok**  >  **Key1** (vagy egy klasszikus Storage-fiók elsődleges hozzáférési kulcsát).|
+|-StorageAccountKey|(Nem kötelező) A tárfiók eléréséhez használt kulcs. Nyissa meg a Azure Portal > **Storage-fiókok** tárolási fiókjának  >  *neve*  >  **Beállítások**  >  **hozzáférési kulcsok**  >  **Key1** (vagy egy klasszikus Storage-fiók elsődleges hozzáférési kulcsát).|
 |-Környezet|(Nem kötelező) Az Azure-tárfiók célkörnyezete. A következő három érték egyike lehet: AzureCloud, AzureUSGovernment vagy AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a célként megadott régió az Azure US government vagy az Azure China 21Vianet.|
 
 Javasoljuk, hogy legalább 7 napig végezze a virtuális gépek profiljának készítését. Ha az adatváltozási minta egy hónapon belül változik, javasoljuk, hogy a héten akkor készítsen profilt, amikor a maximális változás tapasztalható. A legjobb megoldás, ha 31 nap alatt készíti el a profilt, így jobb javaslatokat kaphat. 
@@ -157,7 +157,7 @@ Ha megadja a tárfióknevet és -kulcsot, az eszköz a profilkészítés utolsó
 A Azure Site Recovery nem támogatja az iSCSI-és csatlakoztatott lemezekkel rendelkező virtuális gépeket. Az eszköz nem ismeri fel a virtuális gépekhez csatolt iSCSI-és csatlakoztatott lemezeket.
 
 ## <a name="generate-a-report"></a>Jelentés létrehozása
-Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként. Ez az üzembehelyezési javaslatokat foglalja össze. A jelentés neve DeploymentPlannerReport_*egyéni numerikus azonosító*.xlsm, és a megadott könyvtárban lesz elérhető.
+Az eszköz egy makróbarát Microsoft Excel-fájlt (XLSM-fájlt) hoz létre a jelentés kimeneteként. Ez az üzembehelyezési javaslatokat foglalja össze. A jelentés neve DeploymentPlannerReport_ *egyéni numerikus azonosító*.xlsm, és a megadott könyvtárban lesz elérhető.
 
 A profilkészítés befejezése után futtathatja az eszközt jelentéskészítési módban. 
 
@@ -292,7 +292,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Direc
 
 ### <a name="throughput-considerations"></a>Átviteli sebességgel kapcsolatos szempontok
 
-Az eszköz több 64 MB-os asrvhdfile*szám*.vhd nevű fájlt (a *szám* a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárfiókból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
+Az eszköz több 64 MB-os asrvhdfile *szám*.vhd nevű fájlt (a *szám* a fájlok számát jelöli) is létrehoz a megadott könyvtárban. Az eszköz feltölti a fájlokat a tárfiókba az átviteli sebesség megállapításához. Az átviteli sebesség mérése után az eszköz törli az összes fájlt a tárfiókból és a helyi kiszolgálóról. Ha az eszköz bármilyen oknál fogva leáll az átviteli sebesség kiszámítása közben, akkor nem törli a fájlokat a tárfiókból és a helyi kiszolgálóról. Ezeket manuálisan kell törölnie.
 
 Az eszköz egy meghatározott időpontban méri az átviteli sebességet. A kapott érték az Azure Site Recovery által a replikáció során elérhető maximális átviteli sebesség, ha a többi tényező nem változik. Ha például valamelyik alkalmazás több sávszélességet kezd el felhasználni ugyanazon a hálózaton belül, a tényleges átviteli sebesség változhat a replikáció során. Az átviteli sebesség mérésének eredménye eltérő lesz, ha a védett virtuális gépek adatváltozása magas a GetThroughput művelet végrehajtásakor. 
 
@@ -308,5 +308,5 @@ A replikációhoz a helyreállítási időkorlát 100 százalékos eléréséhez
 3. Ellenőrizze a helyi tároló jellemzőit, és állapítsa meg, hogy fejleszthető-e a hardver (pl. váltás HDD-ről SSD-re).
 
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A létrehozott jelentés elemzése](hyper-v-deployment-planner-analyze-report.md)

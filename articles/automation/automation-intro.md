@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
 ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182818"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
@@ -62,7 +62,7 @@ Az Azure Automation megosztott erőforrásainak segítségével könnyebben auto
 * **[Tanúsítványok](./shared-resources/certificates.md)** – a hitelesítéshez és a telepített erőforrások biztonságossá tételéhez használandó információk meghatározása a RUNBOOKOK vagy DSC-konfigurációk futásakor. 
 * **[Változók](./shared-resources/variables.md)** – a runbookok és a konfigurációkon használható tartalmak tárolására szolgáló tartalom. A változók értékeit módosíthatja anélkül, hogy módosítani kellene a rájuk hivatkozó runbookok vagy konfigurációkat.
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 Azure Automation támogatja az Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) az Automation-fiókhoz és erőforrásaihoz való hozzáférés szabályozásához. További információ az Azure-RBAC az Automation-fiókon, a runbookok és a feladatokon való konfigurálásáról: [szerepköralapú hozzáférés-vezérlés a Azure Automationhoz](automation-role-based-access-control.md).
 

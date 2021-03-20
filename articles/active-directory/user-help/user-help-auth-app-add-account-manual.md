@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 3838234f9f65fcf91f8de33e3d7196aa13f2b903
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83741718"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Fiók manuális hozzáadása az alkalmazáshoz
@@ -33,13 +33,13 @@ A fiókokhoz megadott kódok nem tesznek különbséget a kis-és nagybetűk kö
 
     ![A QR-kódot biztosító képernyő](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
-2. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
+2. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók** lehetőséget.
 
 3. Válassza ki **vagy adja meg manuálisan a kódot**.
 
     ![QR-kód beolvasására szolgáló képernyő](./media/user-help-auth-app-add-account-manual/auth-app-manual-code.png)
 
-4. Adja meg a **kódot** és az **URL-címet** az 1. lépésben, majd válassza a **Befejezés**gombot.
+4. Adja meg a **kódot** és az **URL-címet** az 1. lépésben, majd válassza a **Befejezés** gombot.
 
     ![Kód és URL-cím megadására szolgáló képernyő](./media/user-help-auth-app-add-account-manual/auth-app-code-url.png)
 
@@ -53,9 +53,9 @@ A fiókokhoz megadott kódok nem tesznek különbséget a kis-és nagybetűk kö
 
 2. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** elemet a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, válassza a **másik fiók (Google, Facebook stb.)** lehetőséget, majd válassza ki **vagy írja be a kódot manuálisan**.
 
-3. Adja meg a **fiók nevét** (például Google), és írja be a **titkos kulcsot** az 1. lépésben, majd válassza a **Befejezés**gombot.
+3. Adja meg a **fiók nevét** (például Google), és írja be a **titkos kulcsot** az 1. lépésben, majd válassza a **Befejezés** gombot.
 
-4. A **hitelesítő beállítása** lapon adja meg a Google-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés**lehetőséget.
+4. A **hitelesítő beállítása** lapon adja meg a Google-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés** lehetőséget.
 
     Az alkalmazás **fiókok** képernyőjén megjelenik a fiók neve és egy hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
@@ -68,9 +68,9 @@ A fiókokhoz megadott kódok nem tesznek különbséget a kis-és nagybetűk kö
 
 2. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** elemet a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, válassza a **másik fiók (Google, Facebook stb.)** lehetőséget, majd válassza ki **vagy írja be a kódot manuálisan**.
 
-3. Adja meg a **fiók nevét** (például Facebook), és írja be a **titkos kulcsot** az 1. lépésben, majd válassza a **Befejezés**gombot.
+3. Adja meg a **fiók nevét** (például Facebook), és írja be a **titkos kulcsot** az 1. lépésben, majd válassza a **Befejezés** gombot.
 
-4. A számítógép **Kéttényezős hitelesítő** lapján írja be a Facebook-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés**lehetőséget.
+4. A számítógép **Kéttényezős hitelesítő** lapján írja be a Facebook-fiókjához az alkalmazásban megadott hat számjegyű ellenőrző kódot, majd válassza az **ellenőrzés** lehetőséget.
 
     Az alkalmazás **fiókok** képernyőjén megjelenik a fiók neve és egy hat számjegyű ellenőrző kód. A további biztonság érdekében az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot.
 
@@ -89,9 +89,9 @@ A kétfaktoros ellenőrzés bekapcsolásával hozzáadhatja az Amazon-fiókját,
 
 3. Adja meg a **fiók nevét** (például Amazon), és írja be az 1. lépésben szereplő **titkos kulcsot** , majd kattintson a **Befejezés gombra**.
 
-4. Fejezze be a regisztrációs folyamat hátralévő részét, beleértve a biztonsági mentési ellenőrzési módszer hozzáadását, például egy szöveges üzenetet, majd válassza a **kód küldése**lehetőséget.
+4. Fejezze be a regisztrációs folyamat hátralévő részét, beleértve a biztonsági mentési ellenőrzési módszer hozzáadását, például egy szöveges üzenetet, majd válassza a **kód küldése** lehetőséget.
 
-5. A számítógép **biztonsági mentése ellenőrzési módszer hozzáadása** lapján írja be az Amazon-fiókjához tartozó biztonsági mentési ellenőrzési módszer által megadott hat számjegyű ellenőrző kódot, majd válassza a **kód ellenőrzése és folytatás**lehetőséget.
+5. A számítógép **biztonsági mentése ellenőrzési módszer hozzáadása** lapján írja be az Amazon-fiókjához tartozó biztonsági mentési ellenőrzési módszer által megadott hat számjegyű ellenőrző kódot, majd válassza a **kód ellenőrzése és folytatás** lehetőséget.
 
 6. A majdnem kész lapon döntse el, hogy megbízható eszközt kíván-e készíteni a számítógépről, majd válassza a **beolvasás lehetőséget. Two-Step ellenőrzés bekapcsolása**.
 
@@ -100,7 +100,7 @@ A kétfaktoros ellenőrzés bekapcsolásával hozzáadhatja az Amazon-fiókját,
     >[!NOTE]
     >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért tekintse meg a [Two-Step ellenőrzése](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a [Bejelentkezés Two-Step ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című témakört.    
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután hozzáadta a fiókokat az alkalmazáshoz, bejelentkezhet a Microsoft Authenticator alkalmazás használatával az eszközön. További információ: [Bejelentkezés az alkalmazás használatával](user-help-auth-app-sign-in.md).
 

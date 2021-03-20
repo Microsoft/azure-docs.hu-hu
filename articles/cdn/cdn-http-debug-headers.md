@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343020"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-hibakeresés a HTTP-fejlécek Azure CDN Rules Engine-hez
@@ -54,7 +54,7 @@ A hibakeresési gyorsítótár válaszának fejléceit a következő fejléc és
 ## <a name="cache-status-code-information"></a>Gyorsítótár-állapotkód adatai
 Az X-EC-debug válasz fejléce képes azonosítani a kiszolgálót, és hogyan kezeli a választ a következő irányelvek alapján:
 
-Fejléc | Leírás
+Fejléc | Description
 -------|------------
 X-EC-hibakeresés: x-EC-cache | Ezt a fejlécet akkor kell jelenteni, ha a tartalom a CDN-en keresztül van átirányítva. Azonosítja a kérelmet teljesítő POP-kiszolgálót.
 X-EC-Debug: x-EC-cache-Remote | Ezt a fejlécet csak akkor kell jelenteni, ha a kért tartalom a forrásként szolgáló védelmi kiszolgálón vagy az ADN-átjáró kiszolgálón lett gyorsítótárazva.
@@ -120,7 +120,7 @@ A `X-EC-Debug: x-ec-cache-key` Válasz fejléce a kért tartalomhoz társított 
 
 Ez a fizikai gyorsítótár-kulcs egy dupla továbbítási perjel (//) karakterrel kezdődik, amelyet a tartalom kéréséhez használt protokoll (HTTP vagy HTTPS) követ. Ezt a protokollt követi a kért eszköz relatív elérési útja, amely a tartalom-hozzáférési ponttal kezdődik (például _/000001/_).
 
-Alapértelmezés szerint a HTTP *-platformok szabványos gyorsítótár*használatára vannak konfigurálva, ami azt jelenti, hogy a gyorsítótárazási mechanizmus figyelmen kívül hagyja a lekérdezési karakterláncokat. Ez a típusú konfiguráció megakadályozza, hogy a gyorsítótár-kulcs a lekérdezési karakterlánc adatait is tartalmazza.
+Alapértelmezés szerint a HTTP *-platformok szabványos gyorsítótár* használatára vannak konfigurálva, ami azt jelenti, hogy a gyorsítótárazási mechanizmus figyelmen kívül hagyja a lekérdezési karakterláncokat. Ez a típusú konfiguráció megakadályozza, hogy a gyorsítótár-kulcs a lekérdezési karakterlánc adatait is tartalmazza.
 
 Ha egy lekérdezési karakterláncot rögzít a gyorsítótár-kulcsban, azt a rendszer a kivonatának megfelelőre konvertálja, majd beszúrja a kért objektum neve és a hozzá tartozó fájlkiterjesztés közé (például: Asset &lt; hash Value &gt; . html).
 

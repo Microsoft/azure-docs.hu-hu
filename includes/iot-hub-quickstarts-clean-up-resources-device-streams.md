@@ -1,6 +1,6 @@
 ---
 title: fájl belefoglalása (eszköz streamek)
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: iot-hub
 author: robinsh
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.date: 01/15/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 46ab75f161692dd048c19698af7027d0e0622b37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82506440"
 ---
 Ha azt tervezi, hogy folytatja a következő javasolt cikket, megtarthatja és újra használhatja a már létrehozott erőforrásokat.
@@ -29,8 +29,8 @@ Erőforráscsoport törlése név alapján:
 
 1. A **szűrés név alapján** mezőbe írja be az IoT hubot tartalmazó erőforráscsoport nevét.
 
-1. Az eredmény listán az erőforráscsoport jobb oldalán válassza a három pontot (**..**.), majd válassza az **erőforráscsoport törlése**lehetőséget.
+1. Az eredmény listán az erőforráscsoport jobb oldalán válassza a három pontot (**..**.), majd válassza az **erőforráscsoport törlése** lehetőséget.
 
     ![Az "erőforráscsoport törlése" gomb](./media/iot-hub-quickstarts-clean-up-resources-device-streams/iot-hub-delete-resource-group.png)
 
-1. Az erőforráscsoport törlésének megerősítéséhez írja be újra az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. Néhány pillanat elteltével töröljük az erőforráscsoportot és az összes benne foglalt erőforrást.
+1. Az erőforráscsoport törlésének megerősítéséhez írja be újra az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget. Néhány pillanat elteltével töröljük az erőforráscsoportot és az összes benne foglalt erőforrást.

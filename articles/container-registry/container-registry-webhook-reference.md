@@ -4,10 +4,10 @@ description: Hivatkozás egy Azure Container registryben található webhook-ké
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74455975"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Webhook-hivatkozás Azure Container Registry
@@ -36,7 +36,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="push-event-payload"></a>Leküldéses esemény hasznos adatai
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -46,7 +46,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="target"></a><a name="target"></a>cél
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma. Ugyanaz, mint a Length mező.|
@@ -57,7 +57,7 @@ A webhook akkor aktiválódik, amikor egy tároló képét leküldenek egy adatt
 
 ### <a name="request"></a><a name="request"></a>kérelem
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`id`|Sztring|Az eseményt kezdeményező kérelem azonosítója.|
 |`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
@@ -100,7 +100,7 @@ A webhook akkor aktiválódik, ha egy Helm-diagramot egy adattárba küldenek.
 
 ### <a name="chart-push-event-payload"></a>Diagram leküldéses eseményének adattartalma
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -109,7 +109,7 @@ A webhook akkor aktiválódik, ha egy Helm-diagramot egy adattárba küldenek.
 
 ### <a name="target"></a><a name="helm_target"></a>cél
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma.|
@@ -150,7 +150,7 @@ A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékf
 
 ### <a name="delete-event-payload"></a>Esemény-adattartalom törlése
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -160,7 +160,7 @@ A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékf
 
 ### <a name="target"></a><a name="delete_target"></a> cél
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`digest`|Sztring|A tartalom kivonata, amelyet a Registry v2 HTTP API-specifikáció határoz meg.|
@@ -168,7 +168,7 @@ A webhook akkor aktiválódik, amikor egy rendszerkép-tárházat vagy jegyzékf
 
 ### <a name="request"></a><a name="delete_request"></a> kérelem
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`id`|Sztring|Az eseményt kezdeményező kérelem azonosítója.|
 |`host`|Sztring|A beállításjegyzék-példány külsőleg elérhető állomásneve, amelyet a HTTP-állomásfejléc a bejövő kérelmekben megadott.|
@@ -212,7 +212,7 @@ A webhook egy Helm-diagram vagy-adattár törlésekor aktiválódik.
 
 ### <a name="chart-delete-event-payload"></a>Diagram törlése esemény hasznos adatai
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |-------------|----------|-----------|
 |`id`|Sztring|A webhook esemény azonosítója.|
 |`timestamp`|DateTime|Az az idő, amikor a webhook eseményt aktiválták.|
@@ -221,7 +221,7 @@ A webhook egy Helm-diagram vagy-adattár törlésekor aktiválódik.
 
 ### <a name="target"></a><a name="chart_delete_target"></a> cél
 
-|Elem|Típus|Leírás|
+|Elem|Típus|Description|
 |------------------|----------|-----------|
 |`mediaType`|Sztring|A hivatkozott objektum MIME-típusa.|
 |`size`|Int32|A tartalom bájtjainak száma.|
@@ -256,6 +256,6 @@ Példa az [Azure CLI](/cli/azure/acr) -parancsra, amely elindítja a **chart_del
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Container Registry webhookok használata](container-registry-webhook.md)

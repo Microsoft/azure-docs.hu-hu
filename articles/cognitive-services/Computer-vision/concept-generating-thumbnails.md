@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68945234"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Intelligens vágású miniatűrök létrehozása Computer Vision
@@ -25,12 +25,12 @@ A miniatűr a képek csökkentett méretű ábrázolása. A miniatűröket a ké
 A Computer Vision miniatűr létrehozási algoritmus a következőképpen működik:
 
 1. Távolítsa el az elemeket a rendszerképből, és azonosítsa _annak a_ &mdash; képnek a területét, amelyben a fő objektum (ok) megjelenik.
-1. A kép levágása az azonosított _terület_alapján.
+1. A kép levágása az azonosított _terület_ alapján.
 1. Módosítsa a méretarányt úgy, hogy az illeszkedjen a cél miniatűr méreteihez.
 
 ## <a name="area-of-interest"></a>Érdeklődési terület
 
-Amikor feltölt egy rendszerképet, a Computer Vision API elemzi a fontos *terület*meghatározásához. Ennek a régiónak a segítségével meghatározhatja, hogyan vágja le a rendszerképet. A levágási művelet azonban mindig megegyezik a kívánt oldalaránysal, ha van ilyen.
+Amikor feltölt egy rendszerképet, a Computer Vision API elemzi a fontos *terület* meghatározásához. Ennek a régiónak a segítségével meghatározhatja, hogyan vágja le a rendszerképet. A levágási művelet azonban mindig megegyezik a kívánt oldalaránysal, ha van ilyen.
 
 A **areaOfInterest** API meghívásával is lekérheti az azonos *területhez* tartozó nyers határoló mezők koordinátáit. Ezt az információt használhatja, ha szeretné, hogy az eredeti rendszerkép módosítható legyen.
 
@@ -48,6 +48,6 @@ Az alábbi táblázat a Computer Vision által generált tipikus miniatűröket 
 |![Fehér virág Zöld háttérrel](./Images/flower.png) | ![A virág miniatűr nézetének elemzése](./Images/flower_thumbnail.png) |
 |![Egy lakás-épület tetején található nő](./Images/woman_roof.png) | ![egy lakás épületének tetején található nő miniatűrje](./Images/woman_roof_thumbnail.png) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [képek címkézésének](concept-tagging-images.md) és a [képek kategorizálásának](concept-categorizing-images.md)megismerése.

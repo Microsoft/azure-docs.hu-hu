@@ -1,7 +1,7 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 titleSuffix: Azure
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: e2804c8f9b1af89ac0ea86ec14136df66d900060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83846148"
 ---
-1. Válassza az **erőforrás létrehozása**az  >  **összes**megjelenítése lehetőséget.
+1. Válassza az **erőforrás létrehozása** az  >  **összes** megjelenítése lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Keresés a társításban](../media/setup-seeall.png)
@@ -25,7 +25,7 @@ ms.locfileid: "83846148"
     > [!div class="mx-imgBorder"]
     > ![Peering elindítása](../media/setup-launch.png)
 
-1. A **társítás elindítása után** tekintse át a lapot a részletek megismeréséhez. Ha elkészült, válassza a **Létrehozás**lehetőséget.
+1. A **társítás elindítása után** tekintse át a lapot a részletek megismeréséhez. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Peering létrehozása](../media/setup-create.png)
@@ -36,7 +36,7 @@ ms.locfileid: "83846148"
     > ![A peering alapjai lap](../media/setup-basics-tab.png)
 
     * Válassza ki az Azure- **előfizetését**.
-    * Az **erőforráscsoport**esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az **új létrehozása**lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
+    * Az **erőforráscsoport** esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az **új létrehozása** lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
     * A **név** megegyezik az erőforrás nevével, és bármi lehet, amit választ.
     * Ha meglévő erőforráscsoportot választott, akkor a **régiót** a rendszer kijelöli. Ha úgy döntött, hogy új erőforráscsoportot hoz létre, ki kell választania azt az Azure-régiót, ahol az erőforrást tárolni szeretné.
 

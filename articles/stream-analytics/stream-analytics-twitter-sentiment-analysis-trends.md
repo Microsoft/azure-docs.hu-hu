@@ -1,21 +1,21 @@
 ---
-title: A Twitter hangulatának valós idejű elemzése Azure Stream Analytics
-description: Ez a cikk azt ismerteti, hogyan használható a Stream Analytics a valós idejű Twitter-hangulat elemzéséhez. Lépésenkénti útmutató az események generálásához az élő irányítópulton lévő adatokhoz.
+title: Közösségi médiatartalmak elemzése Azure Stream Analytics
+description: Ez a cikk azt ismerteti, hogyan használható a közösségi média-elemzés Stream Analytics a Twitter Client API használatával. Lépésenkénti útmutató az események generálásához az élő irányítópulton lévő adatokhoz.
 services: stream-analytics
 author: enkrumah
 ms.author: ebnkruma
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 02/10/2020
-ms.openlocfilehash: 6a461ad906f7611c8a13e2ee495f4d2f62fedd53
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: e2369e8f4349a3b4a83c1729c6414d319dd8419e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734838"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589667"
 ---
-# <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
+# <a name="social-media-analysis-with-azure-stream-analytics"></a>Közösségi médiatartalmak elemzése Azure Stream Analytics
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre a közösségi média hangulati elemzési megoldását a valós idejű Twitter-események Azure Event Hubsba való bevezetésével. Azure Stream Analytics lekérdezést írhat az adatelemzéshez és az eredmények későbbi használatra történő tárolásához, vagy egy [Power bi](https://powerbi.com/) irányítópult létrehozásához, hogy valós időben szolgáltasson betekintést.
 
@@ -231,7 +231,7 @@ Meg van adva a feladatok bemenete, lekérdezése és kimenete. Készen áll arra
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

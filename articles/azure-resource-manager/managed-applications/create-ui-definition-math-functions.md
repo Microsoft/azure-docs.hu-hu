@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: 022e59d847a4d89b4243223637fc6fd1e73255a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87096946"
 ---
 # <a name="createuidefinition-math-functions"></a>CreateUiDefinition matematikai függvények
@@ -132,6 +132,6 @@ Az alábbi példa a következőt adja vissza `1` :
 "[sub(3, 2)]"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Resource Manager bevezetését lásd: [Azure Resource Manager áttekintése](../management/overview.md).

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 043e61f498417b74831cd49f046f78b02e907964
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84310308"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Nyelvi támogatás a Content Moderator API-hoz
@@ -28,16 +28,16 @@ ms.locfileid: "84310308"
 | Nyelvfelismerés | Trágár kifejezések   | OCR    | Automatikus javítás     |
 | -------------------- |-------------|--------|---------------------|
 | Arab (római)   | búr   | Arab   | Arab |
-| Balinéz | albán | Kínai (egyszerűsített)    | Dán |
+| Balinéz | albán | Kínai (egyszerűsített)    | dán |
 | bengáli | Amhara | Kínai (hagyományos)     | Holland |
-| Buginese | Arab | Cseh                     | Angol |
-| Buhid | örmény | Dán                     | Finn |
+| Buginese | Arab | cseh                     | Angol |
+| Buhid | örmény | dán                     | finn |
 | Carian | Asszámi | Holland                     | Francia |
 | Kínai (egyszerűsített) | Azerbajdzsáni | Angol  | Görög (modern) |
-| Kínai (hagyományos) | Bangla – Banglades | Finn  | Olasz |
+| Kínai (hagyományos) | Bangla – Banglades | finn  | Olasz |
 | Templom (szláv) | Bangla – India | Francia     | Koreai |
 | Kopt | Baszk | Német                      | Norvég |
-| Cseh |  belorusz | Görög (modern)         | Lengyel |
+| cseh |  belorusz | Görög (modern)         | Lengyel |
 | Dhivehi | Bosnyák – cirill betűs | Magyar      | Portugál |
 | Holland | Bosnyák – latin | Olasz             | Román |
 | Angol (kreol) | Breton [nem GeoPol] | Japán  | Orosz |
@@ -46,17 +46,17 @@ ms.locfileid: "84310308"
 | Német | Közép-kurd | Lengyel        | Török |
 | Görög | Cseroki | Portugál | |
 | Haiti | Kínai (egyszerűsített) | Román | |
-| Héber | Kínai (hagyományos) – Hongkong (KKT) | Orosz | |
+| héber | Kínai (hagyományos) – Hongkong (KKT) | Orosz | |
 | Hindi | Kínai (hagyományos) – Tajvan | Szerb cirill betűs | |
 | Hmong | Horvát | Szerb latin | |
-| Magyar | Cseh | Szlovák | |
-| Olasz | Dán | Spanyol | |
-| Japán | Dari | Svéd | |
+| Magyar | cseh | Szlovák | |
+| Olasz | dán | Spanyol | |
+| Japán | Dari | svéd | |
 | Koreai | Holland | Török | |
 | Kurd (arab) | Angol | | |
 | Kurd (latin betűs) | Észt | | |
 | Lepcha | Filipino | | |
-| Pauleczki | Finn | | |
+| Pauleczki | finn | | |
 | Lu | Francia | | |
 | Lycian | Gallego | | |
 | Lídiai | grúz | | |
@@ -64,7 +64,7 @@ ms.locfileid: "84310308"
 | Nko | Görög | | |
 | Norvég (bokmal) | gudzsaráti | | |
 | norvég (nynorsk) |  Hausza | | |
-| Régi (perzsa) | Héber | | |
+| Régi (perzsa) | héber | | |
 | Pasto | Hindi | | |
 | Lengyel | Magyar | | |
 | Portugál | Izlandi | | |
@@ -79,7 +79,7 @@ ms.locfileid: "84310308"
 | Szingaléz | kannada | | |
 | Szlovén | Kazak | | |
 | Spanyol | Khmer | | |
-| Svéd | Quiché | | |
+| svéd | Quiché | | |
 | Sylheti | Kinyarvanda | | |
 | Szír | Kiswahili | | |
 | Tagbanwa | Konkani | | |

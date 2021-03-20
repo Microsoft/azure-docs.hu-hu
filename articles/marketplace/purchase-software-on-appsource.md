@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/20/2020
 ms.openlocfilehash: bfdae8de4c1a460844b09f82048e1e1d6abdb2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708033"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
@@ -35,7 +35,7 @@ Az SaaS-ajánlatok megvásárlásához a következőkre van szüksége:
 
 1. Válassza ki a számlázási országot/régiót a [AppSource](https://appsource.microsoft.com/).
 1. Keresse meg a megvásárolni kívánt alkalmazást.
-1. Válassza a **Letöltés most**lehetőséget.
+1. Válassza a **Letöltés most** lehetőséget.
 1. Válassza ki a csomagot:
 
     1. Ülőhelyek számának beállítása
@@ -45,13 +45,13 @@ Az SaaS-ajánlatok megvásárlásához a következőkre van szüksége:
 1. Adja meg a fizetési módot:
     * Támogatott bankkártyák: Visa, Master Card, American Express, Discover.
     
-1. Válassza a **megrendelés**lehetőséget.
+1. Válassza a **megrendelés** lehetőséget.
 
 ## <a name="how-to-configure-software-post-purchase"></a>A szoftverek vásárlás utáni konfigurálása
 
 A megrendelés kézhezvételét követően több másodpercig is eltarthat, amíg a rendszer megerősíti a kérést. Megjelenik egy hivatkozás, amely az SaaS-előfizetés konfigurálását végzi az oldalon, valamint egy e-mailt, amely megerősíti a vásárlást, és a konfiguráció befejezésére szolgáló hivatkozást.
 
-1. A **megrendelés megerősítése** lapon válassza a **Konfigurálás**lehetőséget. Vagy használhatja a megerősítő e-mailben küldött konfigurációs hivatkozást is.
+1. A **megrendelés megerősítése** lapon válassza a **Konfigurálás** lehetőséget. Vagy használhatja a megerősítő e-mailben küldött konfigurációs hivatkozást is.
 1. Fejezze be az üzembe helyezést, és állítsa be a szoftver szolgáltatójának webhelyén.
 
     > [!Note]
@@ -65,4 +65,4 @@ Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [kül
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Microsoft Marketplace-ügyfél dokumentációja](/marketplace/)
+- [A Microsoft Marketplace ügyfél-dokumentációja](/marketplace/)

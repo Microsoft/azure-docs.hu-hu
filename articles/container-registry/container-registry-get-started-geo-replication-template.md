@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 10/06/2020
 ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91826983"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Gyors útmutató: földrajzilag replikált tároló-beállításjegyzék létrehozása ARM-sablon használatával
@@ -51,21 +51,21 @@ További Azure Container Registry-sablonok a gyorsindítási [sablonok](https://
  1. Válassza ki vagy adja meg a következő értékeket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
-    * **Régió**: válassza ki az erőforráscsoport helyét. Példa: **USA középső**régiója.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
+    * **Régió**: válassza ki az erőforráscsoport helyét. Példa: **USA középső** régiója.
     * **ACR neve**: fogadja el a beállításjegyzék generált nevét, vagy adjon meg egy nevet. Globálisan egyedinek kell lennie.
     * **ACR rendszergazda felhasználó engedélyezve**: fogadja el az alapértelmezett értéket.
-    * **Hely**: fogadja el a beállításjegyzék Kezdőlap replikájának létrehozott helyét, vagy adjon meg egy helyet, például az **USA középső**régióját. 
+    * **Hely**: fogadja el a beállításjegyzék Kezdőlap replikájának létrehozott helyét, vagy adjon meg egy helyet, például az **USA középső** régióját. 
     * **ACR SKU**: fogadja el az alapértelmezett értéket.
     * **ACR-replika helye**: adjon meg egy helyet a beállításjegyzék-replika számára a régió rövid nevének használatával. Ettől eltérőnek kell lennie a Kezdőlap beállításjegyzékének helyétől. Példa: **westeurope**.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Sablon tulajdonságai":::
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, majd tekintse át a használati feltételeket. Ha elfogadja, válassza a **Létrehozás**lehetőséget.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, majd tekintse át a használati feltételeket. Ha elfogadja, válassza a **Létrehozás** lehetőséget.
 
 1. A beállításjegyzék sikeres létrehozása után értesítést kap:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Sablon tulajdonságai":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Portál értesítése":::
 
  Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül a Azure PowerShell, az Azure CLI és a REST API is használható. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -77,17 +77,17 @@ A tároló-beállításjegyzék tulajdonságainak áttekintéséhez használja a
 
 1. Az **Áttekintés** lapon jegyezze fel a beállításjegyzék **bejelentkezési kiszolgálóját** . Akkor használja ezt az URI-t, ha a Docker használatával címkézi és leküldi a lemezképeket a beállításjegyzékbe. További információ: az [első rendszerkép leküldése a Docker CLI használatával](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Sablon tulajdonságai":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="A beállításjegyzék áttekintése":::
 
 1. A **replikálások** lapon erősítse meg a Kezdőlap replika és a sablonon keresztül hozzáadott replika helyét. Ha kívánja, adjon hozzá további replikákat ezen a lapon.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Sablon tulajdonságai":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Beállításjegyzék-replikálások":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a beállításjegyzéket és a beállításjegyzék-replikát. Ehhez nyissa meg a Azure Portal, válassza ki a beállításjegyzéket tartalmazó erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
+Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a beállításjegyzéket és a beállításjegyzék-replikát. Ehhez nyissa meg a Azure Portal, válassza ki a beállításjegyzéket tartalmazó erőforráscsoportot, majd válassza az **erőforráscsoport törlése** lehetőséget.
 
-:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Sablon tulajdonságai":::
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Erőforráscsoport törlése":::
 
 ## <a name="next-steps"></a>Következő lépések
 

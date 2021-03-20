@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "70881008"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure dedikált HSM-támogatás
@@ -89,7 +89,7 @@ Ha az ügyfelek hálózatkezelési hozzáférési problémákat tapasztalnak a H
 A Microsoft támogatási szolgálati szintjeivel kapcsolatban tekintse meg az [Azure támogatási csomagot](https://azure.microsoft.com/support/plans/).
 A Gemalto támogatási szolgáltatási szintjeivel kapcsolatban tekintse meg a [Gemalto-támogatás alapjai című témakört](https://azure.microsoft.com/support/plans/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Javasoljuk, hogy az eszközök kiépítése és az alkalmazások tervezése vagy üzembe helyezése előtt jól megértse a fontos fogalmakat, például a magas rendelkezésre állást és a biztonságot.
 

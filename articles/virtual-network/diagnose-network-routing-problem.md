@@ -16,33 +16,33 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84705049"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Virtuális gép útválasztási problémáinak diagnosztizálása
 
 Ebből a cikkből megtudhatja, hogyan diagnosztizálhatja az útválasztási problémákat úgy, hogy megtekinti a virtuális gép (VM) hálózati adapteréhez érvényes útvonalakat. Az Azure több alapértelmezett útvonalat hoz létre minden egyes virtuális hálózati alhálózathoz. Az Azure alapértelmezett útvonalait az útválasztási táblázatban megadott útvonalak definiálásával felülbírálhatja, majd az útválasztási táblázatot társíthatja egy alhálózathoz. A létrehozott útvonalak, az Azure alapértelmezett útvonalak és a helyszíni hálózatról az Azure VPN Gateway használatával propagált útvonalak kombinációja (ha a virtuális hálózat a helyszíni hálózathoz csatlakozik) a Border Gateway Protocol (BGP) használatával történik, az egy alhálózat összes hálózati adapterének érvényes útvonala. Ha nem ismeri a virtuális hálózatot, a hálózati adaptert vagy az útválasztási fogalmakat, tekintse meg a [virtuális hálózat áttekintése](virtual-networks-overview.md), a [hálózati adapter](virtual-network-network-interface.md)és az [Útválasztás áttekintése](virtual-networks-udr-overview.md)című témakört.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Megpróbál csatlakozni egy virtuális géphez, de a kapcsolat meghiúsul. Annak megállapításához, hogy miért nem tud csatlakozni a virtuális géphez, az Azure [Portal](#diagnose-using-azure-portal), a [PowerShell](#diagnose-using-powershell)vagy az [Azure CLI](#diagnose-using-azure-cli)használatával megtekintheti a hálózati adapter érvényes útvonalait.
 
-Az alábbi lépések feltételezik, hogy rendelkezik egy meglévő virtuális géppel a hatályos útvonalak megtekintéséhez. Ha nem rendelkezik meglévő virtuális géppel, először telepítsen egy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet a cikkben ismertetett feladatok végrehajtásához. A jelen cikkben szereplő példák egy *myVM* nevű virtuális gépre vonatkoznak egy *myVMNic1*nevű hálózati adapterrel. A virtuális gép és a hálózati adapter egy *myResourceGroup*nevű erőforráscsoport, és az *USA keleti* régiójában található. Szükség szerint módosítsa a lépésekben szereplő értékeket arra a virtuális gépre, amelyre a problémát diagnosztizálja.
+Az alábbi lépések feltételezik, hogy rendelkezik egy meglévő virtuális géppel a hatályos útvonalak megtekintéséhez. Ha nem rendelkezik meglévő virtuális géppel, először telepítsen egy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet a cikkben ismertetett feladatok végrehajtásához. A jelen cikkben szereplő példák egy *myVM* nevű virtuális gépre vonatkoznak egy *myVMNic1* nevű hálózati adapterrel. A virtuális gép és a hálózati adapter egy *myResourceGroup* nevű erőforráscsoport, és az *USA keleti* régiójában található. Szükség szerint módosítsa a lépésekben szereplő értékeket arra a virtuális gépre, amelyre a problémát diagnosztizálja.
 
 ## <a name="diagnose-using-azure-portal"></a>Diagnosztizálás a Azure Portal használatával
 
 1. Jelentkezzen be az Azure [Portalra](https://portal.azure.com) egy olyan Azure-fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 2. A Azure Portal tetején adja meg a futó állapotú virtuális gép nevét a keresőmezőbe. Ha a virtuális gép neve megjelenik a keresési eredmények között, válassza ki.
-3. A bal oldali **Beállítások** területen válassza a **hálózatkezelés**lehetőséget, majd a név kiválasztásával navigáljon a hálózati adapter erőforrásához.
+3. A bal oldali **Beállítások** területen válassza a **hálózatkezelés** lehetőséget, majd a név kiválasztásával navigáljon a hálózati adapter erőforrásához.
      ![Hálózati adapterek megtekintése](./media/diagnose-network-routing-problem/view-nics.png)
-4. A bal oldalon válassza a **hatályos útvonalak**lehetőséget. A **myVMNic1** nevű hálózati adapter érvényes útvonalait a következő képen tekintheti meg: az ![ érvényes útvonalak megtekintése](./media/diagnose-network-routing-problem/view-effective-routes.png)
+4. A bal oldalon válassza a **hatályos útvonalak** lehetőséget. A **myVMNic1** nevű hálózati adapter érvényes útvonalait a következő képen tekintheti meg: az ![ érvényes útvonalak megtekintése](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
     Ha a virtuális géphez több hálózati adapter van csatlakoztatva, a kiválasztásával megtekintheti az összes hálózati adapter érvényes útvonalait. Mivel az egyes hálózati adapterek eltérő alhálózatokban is lehetnek, az egyes hálózati adapterek különböző tényleges útvonalakkal rendelkezhetnek.
 
-    Az előző képen látható példában a felsorolt útvonalak az alapértelmezett útvonalak, amelyeket az Azure az egyes alhálózatokhoz hoz létre. A lista legalább ezen útvonalakat tartalmazza, de további útvonalak is lehetnek, attól függően, hogy milyen képességekkel rendelkezett a virtuális hálózatban, például egy másik virtuális hálózattal vagy a helyszíni hálózathoz egy Azure VPN Gateway használatával csatlakoztatva. Ha többet szeretne megtudni az egyes útvonalakról, valamint a hálózati adapterhez kapcsolódó egyéb útvonalakról, tekintse meg a [virtuális hálózati forgalom útválasztását](virtual-networks-udr-overview.md)ismertető témakört. Ha a lista nagy számú útvonalat tartalmaz, akkor könnyebben kiválaszthatja a **Letöltés**lehetőséget, hogy egy. csv-fájlt töltsön le az útvonalak listájával.
+    Az előző képen látható példában a felsorolt útvonalak az alapértelmezett útvonalak, amelyeket az Azure az egyes alhálózatokhoz hoz létre. A lista legalább ezen útvonalakat tartalmazza, de további útvonalak is lehetnek, attól függően, hogy milyen képességekkel rendelkezett a virtuális hálózatban, például egy másik virtuális hálózattal vagy a helyszíni hálózathoz egy Azure VPN Gateway használatával csatlakoztatva. Ha többet szeretne megtudni az egyes útvonalakról, valamint a hálózati adapterhez kapcsolódó egyéb útvonalakról, tekintse meg a [virtuális hálózati forgalom útválasztását](virtual-networks-udr-overview.md)ismertető témakört. Ha a lista nagy számú útvonalat tartalmaz, akkor könnyebben kiválaszthatja a **Letöltés** lehetőséget, hogy egy. csv-fájlt töltsön le az útvonalak listájával.
 
 Bár az előző lépések során a virtuális gépen megtekintett tényleges útvonalakat, a tényleges útvonalakat a következő módon is megtekintheti:
 - **Egyéni hálózati adapter**: megtudhatja, hogyan [tekintheti meg a hálózati adaptereket](virtual-network-network-interface.md#view-network-interface-settings).
@@ -54,7 +54,7 @@ Bár az előző lépések során a virtuális gépen megtekintett tényleges út
 
 Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy futtathatja a PowerShellt a számítógépről. A Azure Cloud Shell egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha a PowerShellt a számítógépről futtatja, szüksége lesz a Azure PowerShell modulra, a 1.0.0 vagy újabb verzióra. Futtassa a parancsot a `Get-Module -ListAvailable Az` számítógépen, és keresse meg a telepített verziót. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor is futtatnia kell, `Connect-AzAccount` hogy az Azure-ba jelentkezzen be egy olyan fiókkal, amely rendelkezik a [szükséges engedélyekkel](virtual-network-network-interface.md#permissions).
 
-Szerezze be a [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)hálózati adapter érvényes útvonalait. A következő példa lekéri a *myVMNic1*nevű hálózati adapter érvényes útvonalait, amely egy *myResourceGroup*nevű erőforráscsoport:
+Szerezze be a [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)hálózati adapter érvényes útvonalait. A következő példa lekéri a *myVMNic1* nevű hálózati adapter érvényes útvonalait, amely egy *myResourceGroup* nevű erőforráscsoport:
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
@@ -87,7 +87,7 @@ Az előző kimenetben a hálózati adapter neve *myVMNic1*.
 
 Az alábbi parancsokat futtathatja a  [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja a CLI-t a számítógépről is. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, a `az login` [szükséges engedélyekkel](virtual-network-network-interface.md#permissions)rendelkező fiókkal is futtatnia kell az Azure-ba, és be kell jelentkeznie.
 
-Szerezze be a hálózati adapter érvényes útvonalait az [az Network NIC show-effektív-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)paranccsal. A következő példa egy *myVMNic1* nevű hálózati adapter érvényes útvonalait olvassa be, amely egy *myResourceGroup*nevű erőforráscsoport:
+Szerezze be a hálózati adapter érvényes útvonalait az [az Network NIC show-effektív-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)paranccsal. A következő példa egy *myVMNic1* nevű hálózati adapter érvényes útvonalait olvassa be, amely egy *myResourceGroup* nevű erőforráscsoport:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -137,7 +137,7 @@ A kommunikációs problémák elhárításakor vegye figyelembe a következő sz
 * Ha [kényszeríti](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a forgalmat egy helyszíni eszközre egy VPN-átjárón vagy NVA keresztül, akkor előfordulhat, hogy nem tud csatlakozni az internetről a virtuális géphez, attól függően, hogy hogyan konfigurálta az útválasztást az eszközökhöz. Győződjön meg arról, hogy az eszközhöz konfigurált Útválasztás a virtuális gép nyilvános vagy magánhálózati IP-címére irányítja a forgalmat.
 * A Network Watcher [kapcsolódási hibaelhárítási](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) funkciója segítségével meghatározhatja a kimenő kommunikációs problémák útválasztását, szűrését és operációs rendszeren belüli okait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [útválasztási táblák és útvonalak](manage-route-table.md)összes feladatának, tulajdonságának és beállításának megismerése.
 - Ismerje meg az összes [következő ugrási típust, a rendszer útvonalait, valamint azt, hogy az Azure hogyan válasszon ki egy útvonalat](virtual-networks-udr-overview.md).

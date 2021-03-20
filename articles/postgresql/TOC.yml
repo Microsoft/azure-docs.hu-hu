@@ -27,6 +27,8 @@
         - name: Migrálás minimális állásidővel a DMS használatával
           href: howto-migrate-online.md
           displayName: 'dms, data migration service'
+        - name: Áttelepítés Oracle-ből
+          href: howto-migrate-from-oracle.md
     - name: Verziókezelési szabályzat
       href: concepts-version-policy.md
       displayName: 'version, postgresql'

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/18/2020
 ms.author: derekol
 ms.openlocfilehash: a52e6038b622c004dc0d133394cd4f53600b2935
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84700042"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Az Azure-alapú társ-kezelés engedélyezése közvetlenül a Azure Portal használatával
@@ -41,7 +41,7 @@ Miután megnyitotta a közvetlen társítást az előző lépésben, engedélyez
 
 A kapcsolódási beállítások módosításához tekintse meg a [közvetlen társítás létrehozása vagy módosítása a portál használatával](howto-direct-portal.md)"közvetlen társítás módosítása" című szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Exchange-társ létrehozása vagy módosítása a portál használatával](howto-exchange-portal.md)
 * [Örökölt Exchange-társ átalakítása Azure-erőforrásra a portál használatával](howto-legacy-exchange-portal.md)

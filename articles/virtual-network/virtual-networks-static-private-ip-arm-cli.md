@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: allensu
 ms.openlocfilehash: c34ab73422d8dd41feb9da542ed63fdba060fe3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84708161"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Magánhálózati IP-címek konfigurálása virtuális géphez az Azure CLI használatával
@@ -35,7 +35,7 @@ ms.locfileid: "84708161"
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Statikus magánhálózati IP-cím megadása virtuális gép létrehozásakor
 
-A következő lépésekkel hozhat létre egy *DNS01* nevű virtuális gépet egy *TestVNet* nevű VNet előtér- *alhálózatában* a *192.168.1.101*statikus magánhálózati IP-címével:
+A következő lépésekkel hozhat létre egy *DNS01* nevű virtuális gépet egy *TestVNet* nevű VNet előtér- *alhálózatában* a *192.168.1.101* statikus magánhálózati IP-címével:
 
 1. Ha még nem tette meg, telepítse és konfigurálja a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
 
@@ -127,7 +127,7 @@ Javasoljuk, hogy a virtuális gép operációs rendszerén belül ne rendeljen s
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Statikus magánhálózati IP-címek adatainak beolvasása egy virtuális géphez
 
-Futtassa az alábbi Azure CLI-parancsot a *MAGÁNHÁLÓZATI IP-foglalási-metódus* és a *magánhálózati IP-cím*értékének megfigyeléséhez:
+Futtassa az alábbi Azure CLI-parancsot a *MAGÁNHÁLÓZATI IP-foglalási-metódus* és a *magánhálózati IP-cím* értékének megfigyeléséhez:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -234,6 +234,6 @@ Ha módosítani szeretné az előző parancsokban használt virtuális gép hál
     > [!NOTE]
     > Ha a virtuális gép mérete elég nagy ahhoz, hogy egynél több hálózati adapterrel rendelkezzen, futtassa az **Azure hálózati NIC delete** parancsot a régi hálózati adapter törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [IP-címek beállításainak](virtual-network-network-interface-addresses.md)kezeléséről.

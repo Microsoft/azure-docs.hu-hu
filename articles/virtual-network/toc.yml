@@ -27,6 +27,8 @@
       href: tutorial-connect-virtual-networks-portal.md
     - name: NAT-átjáró létrehozása és ellenőrzése
       href: tutorial-create-nat-gateway-portal.md
+    - name: NAT-átjáró nyilvános Load Balancer integrálása
+      href: tutorial-nat-gateway-load-balancer-public-portal.md
 - name: Példák
   items:
     - name: Azure CLI

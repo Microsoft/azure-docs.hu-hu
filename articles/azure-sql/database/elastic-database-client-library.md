@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: bfe5dc00ba0255520c04ea85157f0b8bdc71b590
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84050225"
 ---
 # <a name="building-scalable-cloud-databases"></a>Skálázható felhőalapú adatbázisok készítése
@@ -60,7 +60,7 @@ A Elastic Database-eszközöket használó ügyfelek általában teljes T-SQL-fu
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Elastic Database ügyféloldali kódtár ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.net](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – a könyvtár **letöltéséhez** .
 
@@ -69,7 +69,7 @@ A Elastic Database-eszközöket használó ügyfelek általában teljes T-SQL-fu
 - GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.net](https://github.com/Azure/elastic-db-tools)) – a kódhoz való hozzájárulást tesz elérhetővé.
 - [Azure SQL Database rugalmas lekérdezés áttekintése](elastic-query-overview.md) – rugalmas lekérdezések használata.
 
-- Adatáthelyezés a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md) – a **felosztott egyesítés eszköz**használatával kapcsolatos utasításokért.
+- Adatáthelyezés a kibővített [felhőalapú adatbázisok között](elastic-scale-overview-split-and-merge.md) – a **felosztott egyesítés eszköz** használatával kapcsolatos utasításokért.
 
 
 

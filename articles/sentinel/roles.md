@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048216"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580708"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -41,6 +41,8 @@ Három dedikált beépített Azure Sentinel-szerepkör található.
 - Az [Azure Sentinel-válaszadó](../role-based-access-control/built-in-roles.md#azure-sentinel-responder) a fentiek mellett az incidensek (hozzárendelés, Elvetés stb.) kezelésére is képes.
 
 - Az [Azure Sentinel közreműködő](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) a fentiek kiegészítéseként létrehozhat és szerkeszthet munkafüzeteket, elemzési szabályokat és más Azure Sentinel-erőforrásokat.
+
+- Az [Azure Sentinel Automation közreműködője](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor) lehetővé teszi az Azure Sentinel számára az automatizálási szabályokhoz való hozzáadását. Ez a felhasználói fiókok esetében nem jelent meg.
 
 > [!NOTE]
 >

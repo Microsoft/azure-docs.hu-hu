@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84699107"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
@@ -98,7 +98,7 @@ Az 8100-es ház a következőhöz készült standard 19 hüvelykes rack szekrén
 A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is elérhető. A sínek tesztelték a maximális bekerítési súlyt. Ezek a sínek lehetővé teszik több ház telepítését anélkül, hogy helyet szabadítanak fel az állványon belül.
 
 #### <a name="to-install-the-device-on-the-rails"></a>Az eszköz telepítése a Rails-re
-1. Ezt a lépést csak akkor hajtsa végre, ha a belső sínek nincsenek telepítve az eszközön. A belső sínek jellemzően a gyárban települnek. Ha a Rails nincs telepítve, akkor telepítse a bal oldali és a jobb oldali vasúti diát a ház vázájának oldalaira. Mindkét oldalon hat metrikus csavart használnak. A tájolással kapcsolatos segítség érdekében a vasúti diaképek az **LH – eleje** és az **RH – elöl**vannak megjelölve, a ház hátulján elhelyezett végpont pedig kúpos végű.<br/>
+1. Ezt a lépést csak akkor hajtsa végre, ha a belső sínek nincsenek telepítve az eszközön. A belső sínek jellemzően a gyárban települnek. Ha a Rails nincs telepítve, akkor telepítse a bal oldali és a jobb oldali vasúti diát a ház vázájának oldalaira. Mindkét oldalon hat metrikus csavart használnak. A tájolással kapcsolatos segítség érdekében a vasúti diaképek az **LH – eleje** és az **RH – elöl** vannak megjelölve, a ház hátulján elhelyezett végpont pedig kúpos végű.<br/>
    
     ![Vasúti adatkockák csatlakoztatása a ház vázához](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
@@ -184,7 +184,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Leírás |
+   | Címke | Description |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -195,7 +195,7 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
 
     **Az eszköz hálózati kábelezései**
 
-   |Címke | Leírás |
+   |Címke | Description |
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |
@@ -242,6 +242,6 @@ A soros port csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
 Az eszköz most már a Power, a hálózati hozzáférés és a soros kapcsolat számára is kábeles. A következő lépés a szoftver konfigurálása és az eszköz üzembe helyezése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan [helyezheti üzembe és konfigurálhatja helyszíni StorSimple-eszközét](storsimple-8000-deployment-walkthrough-u2.md).
 

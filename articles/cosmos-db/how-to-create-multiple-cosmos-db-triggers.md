@@ -9,10 +9,10 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 78fff48a97965f0b80456cd3e56ed1507bc784fc
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93336690"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
@@ -34,14 +34,14 @@ Cosmos DB esetén a Azure Functions trigger *követelményeit* figyelembe véve 
 
 Itt két lehetőség közül választhat:
 
-* Hozzon létre **egy-egy bérletet egy függvényben** : Ez a módszer további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
+* Hozzon létre **egy-egy bérletet egy függvényben**: Ez a módszer további költségekre is fordítható, kivéve, ha [megosztott átviteli sebességű adatbázist](./set-throughput.md#set-throughput-on-a-database)használ. Ne feledje, hogy a tároló szintjének minimális átviteli [sebessége 400,](./request-units.md)a bérletek tároló esetében pedig csak a folyamat előrehaladásának és karbantartásának ellenőrzéséhez használatos.
 * **Egyetlen címbérleti tárolóval kell megosztania** az összes funkcióját: Ez a második lehetőség a tárolóban lévő kiépített kérések egységének jobb használatát teszi lehetővé, mivel több Azure functions megoszthatja és használhatja ugyanazt a kiosztott átviteli sebességet.
 
 Ennek a cikknek a célja a második lehetőség megvalósítása.
 
 ## <a name="configuring-a-shared-leases-container"></a>Megosztott bérletek tárolójának konfigurálása
 
-A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia, `LeaseCollectionPrefix` [attribute](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) ha C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) használ a JavaScript használata esetén. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
+A megosztott bérletek tárolójának konfigurálásához az eseményindítók esetében az egyetlen további konfigurációt kell hozzáadnia, `LeaseCollectionPrefix` [](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) ha C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) használ a JavaScript használata esetén. Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
 
 Ha például három eseményindítóval rendelkezik: egy olyan e-maileket küld, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, akkor a későbbi elemzéshez az " `LeaseCollectionPrefix` e-mailek" kifejezést hozzárendelheti a másodikhoz, "az" anyagként ", a" Analytics "pedig a harmadikhoz.
 
@@ -109,7 +109,7 @@ A JavaScript esetében a konfigurációt a fájlra is alkalmazhatja a következ�
 > [!NOTE]
 > Mindig figyelje a megosztott bérletek tárolóján kiépített kérelmek egységeit. Minden olyan trigger, amely megosztja azt, növeli az átviteli sebesség átlagos felhasználását, ezért előfordulhat, hogy az azt használó Azure Functions számának növelésével növelheti a kiosztott átviteli sebességet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Cosmos DB Azure functions trigger](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) teljes konfigurációját
 * Keresse meg az összes nyelvhez tartozó [minták kiterjesztett listáját](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) .

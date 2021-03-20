@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 969e60cd08a65adb1dd731aa7c6c3f9872e288fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83835036"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk-preview"></a>A Azure Automation grafikus runbook SDK használata (előzetes verzió)
@@ -139,6 +139,6 @@ var serialized = RunbookSerializer.Serialize(runbook);
 Ezt a karakterláncot a **. graphrunbook** kiterjesztésű fájlba mentheti. A megfelelő runbook importálhatók a Azure Automationba.
 A szerializált formátum változhat a későbbi verzióiban `Orchestrator.GraphRunbook.Model.dll` . Megígérjük a visszamenőleges kompatibilitást: bármely `Orchestrator.GraphRunbook.Model.dll` újabb verzióban deszerializálható bármely, egy régebbi verziójával szerializált runbook. A továbbítási kompatibilitás nem garantált: egy újabb verzióval szerializált runbook nem lehet a régebbi verziókban deszerializálható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [grafikus runbookok készítése Azure Automationban](automation-graphical-authoring-intro.md).

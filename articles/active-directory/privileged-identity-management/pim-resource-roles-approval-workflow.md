@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 096da0547806680f62b569f7c7809a7bbb04cb86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84742079"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
@@ -36,7 +36,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza a **kérelmek jóváhagyása**lehetőséget.
+1. Válassza a **kérelmek jóváhagyása** lehetőséget.
 
     ![Kérések jóváhagyása – Azure-erőforrások lap, amely a felülvizsgálati kérelmet tartalmazza](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
 
@@ -50,7 +50,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 
-1. Válassza a **jóváhagyás**lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
+1. Válassza a **jóváhagyás** lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
 
     ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
 
@@ -62,7 +62,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 
-1. Válassza a **Megtagadás**lehetőséget. Megjelenik egy értesítés az elutasítással.
+1. Válassza a **Megtagadás** lehetőséget. Megjelenik egy értesítés az elutasítással.
 
 ## <a name="workflow-notifications"></a>Munkafolyamat-értesítések
 
@@ -76,7 +76,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-er�
 >[!Note]
 >Egy erőforrás-rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív, el tudja távolítani az aktív szerepkör-hozzárendelést Privileged Identity Management. Bár az erőforrás-rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, kivéve, ha a jóváhagyók, megtekinthetik és megszakítják az összes felhasználóra vonatkozó függőben lévő kérelmek megtekintését Privileged Identity Management.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörök kiterjesztése vagy megújítása Privileged Identity Management](pim-resource-roles-renew-extend.md)
 - [E-mail-értesítések Privileged Identity Management](pim-email-notifications.md)

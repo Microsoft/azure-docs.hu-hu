@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 680e22974aa85ae2d179f0b927a44b3471b4939d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102052"
 ---
 # <a name="what-is-azure-dev-tools-for-teaching"></a>Mi az az Azure Dev Tools for Teaching?
@@ -26,7 +26,7 @@ Az előfizetéshez készült Azure dev Tools rendszergazdája az alábbiakat tes
 
 ## <a name="program-details"></a>Program részletei
 
-Az Azure fejlesztői eszközöket a következő célokra terveztük: STEM-célzott útmutatás. A természettudományokra, technológiákra, mérnöki célokra vagy matematikare összpontosító tananyagok alkalmasak arra, hogy az Azure fejlesztői eszközöket használják tanítási célokra, hogy a tanárok és a diákok hatékonyabban tanuljanak. 
+Az Azure Dev Tools for Teachinget a természettudományos képzésekhez terveztük. Minden olyan kurzus, amelynek a fő témája a természettudományok, a technológia, a mérnöki tudományok vagy a matematika, jogosult használni az Azure Dev Tools for Teachinget, amely az oktatóknak és a tanulóknak egyaránt segítséget jelent a hatékonyabb munkához. 
 
 Az Microsoft Azure fejlesztői eszközök az oktatási előfizetéshez hozzáférést biztosítanak bizonyos szoftverfejlesztői eszközökhöz. Ezek az eszközök ingyenesen letölthetők. Ha egy oktatói tag regisztrálva van egy jóváhagyott tanfolyamon, Ön jogosult az Azure fejlesztői eszközök telepítésére a saját számítógépére nem kereskedelmi célú használatra.
 
@@ -42,7 +42,7 @@ A tanulóknak nem kell regisztrálniuk az Azure-előfizetésre, hogy hozzáférj
 
 [!INCLUDE [Subscription support](../../../includes/edu-dev-tools-program-support.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Regisztráljon most!](enroll-renew-subscription.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74815562"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>A Beszédeszközök SDK hibaelhárítása
@@ -25,16 +25,16 @@ Ez a cikk a Speech Devices SDK használatakor felmerülő problémák megoldás�
 
 Ha a beszédfelismerési szolgáltatás használatakor hibaüzenetet kap, győződjön meg arról, hogy az eszköz rendelkezik a megfelelő dátummal és időponttal:
 
-1. Válassza a **Beállítások lehetőséget**. A **rendszerben**válassza a **dátum & idő**lehetőséget.
+1. Válassza a **Beállítások lehetőséget**. A **rendszerben** válassza a **dátum & idő** lehetőséget.
 
     ![A beállítások területen válassza a dátum & idő lehetőséget.](media/speech-devices-sdk/qsg-12.png)
 
-1. Tartsa meg az **automatikus dátum &** a kiválasztott idő beállítást. Az **időzóna kiválasztása**területen válassza ki az aktuális időzónát.
+1. Tartsa meg az **automatikus dátum &** a kiválasztott idő beállítást. Az **időzóna kiválasztása** területen válassza ki az aktuális időzónát.
 
     ![Dátum-és időzóna beállításainak kiválasztása](media/speech-devices-sdk/qsg-13.png)
 
     Amikor azt látja, hogy a fejlesztői készlet ideje megfelel a számítógépen beállított időpontnak, a fejlesztői csomag csatlakozik az internethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A kibocsátási megjegyzések áttekintése](devices-sdk-release-notes.md)

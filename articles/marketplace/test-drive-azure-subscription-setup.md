@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 11/09/2020
-ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
-ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
+ms.date: 03/16/2020
+ms.openlocfilehash: a7f12891bf394e54ee46c60598536faed1731202
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98986124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600883"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>Azure Marketplace-előfizetés beállítása üzemeltetett tesztelési meghajtókhoz
 
@@ -43,26 +43,18 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
     5. A támogatott fióktípus területen válassza **a fiók lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban**.
     6. Válassza a **Létrehozás** lehetőséget, és várja meg az alkalmazás létrehozását.
     7. Az alkalmazás létrehozása után figyelje meg az **alkalmazás azonosítóját** az áttekintési képernyőn. Erre az értékre később szükség lesz a tesztelési meghajtó konfigurálásakor.
-    8. Nativeclient átirányítási URI-azonosító hozzáadásához válassza a **hitelesítés** panelt. A **platform konfigurálása** területen válassza a **platform**  >  **Mobile**  >  **Desktop** -alkalmazás hozzáadása csempét. Válassza ki a **nativeclient** átirányítási URI-t, és válassza a **Konfigurálás** lehetőséget.
-
-        :::image type="content" source="./media/test-drive/configure-desktop-devices.png" alt-text="Nativeclient átirányítási URI hozzáadása.":::
-
-    9. Az **alkalmazás kezelése** területen válassza az **API-engedélyek** lehetőséget.
-    10. Válassza **az engedély hozzáadása** , majd a **Microsoft Graph API** elemet.
-    11. Válassza ki az **alkalmazás** engedély kategóriát, majd a **könyvtár. Read. All** és **Directory. ReadWrite. All** engedélyeket.
+    8. Az **alkalmazás kezelése** területen válassza az **API-engedélyek** lehetőséget.
+    9. Válassza **az engedély hozzáadása** , majd a **Microsoft Graph API** elemet.
+    10. Válassza ki az **alkalmazás** engedély kategóriát, majd a **User. ReadWrite. All**, a **Directory. Read. All** és a **Directory. ReadWrite. All** engedélyeket.
 
         :::image type="content" source="./media/test-drive/microsoft-graph.png" alt-text="Az alkalmazás engedélyeinek beállítása.":::
 
-    12. Ha hozzá szeretné adni a **Dynamics CRM-felhasználó megszemélyesítési** hozzáférését az engedélyezési lista Azure ad-alkalmazáshoz, válassza az **engedély hozzáadása** újra lehetőséget.
-
-        :::image type="content" source="./media/test-drive/request-api-permissions.png" alt-text="Az alkalmazás engedélyeinek kérelmezése.":::
-
-    13. Az engedély hozzáadása után válassza a **rendszergazdai jóváhagyás megadása a Microsoftnak** lehetőséget.
-    14. Az üzenet riasztása területen válassza az **Igen** lehetőséget.
+    11. Az engedély hozzáadása után válassza a **rendszergazdai jóváhagyás megadása a Microsoftnak** lehetőséget.
+    12. Az üzenet riasztása területen válassza az **Igen** lehetőséget.
 
         [![Az alkalmazáshoz tartozó engedélyek sikeres megadását mutatja.](media/test-drive/api-permissions-confirmation-customer.png)](media/test-drive/api-permissions-confirmation-customer.png#lightbox)
 
-    15. Titkos kód létrehozása a Azure AD alkalmazáshoz:
+    13. Titkos kód létrehozása a Azure AD alkalmazáshoz:
         1. Az **alkalmazás kezelése** lapon válassza a **tanúsítvány és titkos kulcsok** elemet.
         2. Az ügyfél titkos kulcsa területen válassza az **új ügyfél titka** lehetőséget.
         3. Adjon meg egy leírást, például a *Test Drive*-t, és válasszon ki egy megfelelő időtartamot. A teszt meghajtó a kulcs lejárata után megszakad, ekkor új kulcsot kell létrehoznia, és meg kell adnia a AppSource.
@@ -70,8 +62,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="Ügyfél titkos kulcsának hozzáadása.":::
 
-5. Időnként a vártnál hosszabb időt vesz igénybe, hogy szinkronizáljon egy felhasználót az Azure AD-ből egy CRM-példányba. Ennek támogatásához hozzáadunk egy folyamatot a szinkronizálási felhasználó kényszerítéséhez, de az Azure AD-alkalmazást allowlisted kell a partner Center számára. Ehhez tekintse meg a [felhasználó szinkronizálása a Customer engagement-példánnyal](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)című témakört.
-6. Adja hozzá az egyszerű szolgáltatásnév szerepkört az alkalmazáshoz, hogy az Azure AD-alkalmazás eltávolítsa a felhasználókat az Azure-bérlőből.
+5. Adja hozzá az egyszerű szolgáltatásnév szerepkört az alkalmazáshoz, hogy az Azure AD-alkalmazás eltávolítsa a felhasználókat az Azure-bérlőből.
     1. Nyisson meg egy rendszergazdai szintű PowerShell-parancssort.
     2. Install-Module MSOnline (futtassa ezt a parancsot, ha nincs telepítve a MSOnline).
     3. Connect-MsolService (ekkor megjelenik egy előugró ablak, amely az újonnan létrehozott szervezeti Bérlővel jelentkezik be).
@@ -81,7 +72,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
 
         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="Jelentkezzen be a fiókjába.":::
 
-7. Adja hozzá a fenti létrehozott Azure-alkalmazást alkalmazás-felhasználóként a test Drive CRM-példányhoz.
+6. Adja hozzá a fenti létrehozott Azure-alkalmazást alkalmazás-felhasználóként a test Drive CRM-példányhoz.
     1. Új felhasználó hozzáadása **Azure Active Directoryban**. A felhasználó létrehozásához csak a **név** és a **Felhasználónév** érték (ugyanahhoz a bérlőhöz tartozó) szükséges, ezért a többi mezőt hagyja alapértelmezettként. Másolja a username értéket.
     2. Jelentkezzen be a **CRM-példányba** , és válassza a   >  **biztonsági**  >  **felhasználók** beállítása lehetőséget.
     3. Módosítsa a nézetet az **alkalmazás felhasználóira**.
@@ -97,7 +88,8 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="Válassza ki a szerepkör jogosultságokat.":::
 
-    10. Rendelje hozzá az alkalmazás felhasználóját a tesztelési meghajtóhoz létrehozott egyéni biztonsági szerepkörhöz.
+    10. Emellett engedélyezze az **eljárni egy másik felhasználói jogosultság nevében** .
+    11. Rendelje hozzá az alkalmazás felhasználóját a tesztelési meghajtóhoz létrehozott egyéni biztonsági szerepkörhöz.
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>A Dynamics 365 for Operations beállítása
 
@@ -130,7 +122,7 @@ Ez a cikk azt ismerteti, hogyan állítható be az Azure Marketplace-előfizeté
     12. Az engedély hozzáadása után válassza a **rendszergazdai jóváhagyás megadása a Microsoftnak** lehetőséget.
     13. Az üzenet riasztása területen válassza az **Igen** lehetőséget.
 
-        [![Az alkalmazás engedélyeinek megadása sikeres volt.](media/test-drive/api-permissions-confirmation-operations.png)](media/test-drive/api-permissions-confirmation-operations.png#lightbox)
+        [![Azt mutatja, hogy az alkalmazás engedélyei sikeresen meg lettek adva.](media/test-drive/api-permissions-confirmation-operations.png)](media/test-drive/api-permissions-confirmation-operations.png#lightbox)
 
     14. Titkos kód létrehozása a Azure AD alkalmazáshoz:
         1. Az **alkalmazás kezelése** lapon válassza a **tanúsítvány és titkos kulcsok** elemet.

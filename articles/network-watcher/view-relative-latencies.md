@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: 938315dac80ae51984851083753a9cb8f77662b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737903"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Adott helyek és Azure-régiók közötti relatív késés megtekintése
@@ -132,9 +132,9 @@ Az egyes internetszolgáltatók, országok/régiók, Államok és városok szám
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Az adatai csak az előző parancs által visszaadott országok/régiók, Államok és városok esetében érhetők el. Az előző parancshoz meg kell adnia egy meglévő hálózati figyelőt. A példában a *NetworkWatcher_eastus* Network Watcher egy *NetworkWatcherRG*nevű erőforráscsoporthoz lett megadva, de megadhatja a meglévő hálózati figyelőt. Ha nem rendelkezik meglévő hálózati figyelővel, hozzon létre egyet a [Network Watcher létrehozása](#create-a-network-watcher)című témakörben ismertetett feladatok végrehajtásával. 
+Az adatai csak az előző parancs által visszaadott országok/régiók, Államok és városok esetében érhetők el. Az előző parancshoz meg kell adnia egy meglévő hálózati figyelőt. A példában a *NetworkWatcher_eastus* Network Watcher egy *NetworkWatcherRG* nevű erőforráscsoporthoz lett megadva, de megadhatja a meglévő hálózati figyelőt. Ha nem rendelkezik meglévő hálózati figyelővel, hozzon létre egyet a [Network Watcher létrehozása](#create-a-network-watcher)című témakörben ismertetett feladatok végrehajtásával. 
 
-Az előző parancs futtatása után szűrheti a visszaadott kimenetet, ha szükséges, az **ország**, az **állam**és a **város**érvényes értékének megadásával.  Ha például a Seattle-ben elérhető internetszolgáltatók listáját szeretné megtekinteni a Egyesült Államokban, írja be a következő parancsot:
+Az előző parancs futtatása után szűrheti a visszaadott kimenetet, ha szükséges, az **ország**, az **állam** és a **város** érvényes értékének megadásával.  Ha például a Seattle-ben elérhető internetszolgáltatók listáját szeretné megtekinteni a Egyesült Államokban, írja be a következő parancsot:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -146,4 +146,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> Az **ország** számára megadott értéknek kis-és nagybetűnek kell lennie. Az **állapot** és a **város** számára megadott értékeknek kisbetűnek kell lenniük. Az értékeknek szerepelniük kell a megadott kimenetben a parancs futtatása után az **ország**, **állam**és **város**érték nélkül. Ha a helytelen esetet adja meg, vagy olyan értéket ad meg az **ország**, **állam**vagy **város** számára, amely nem szerepel az adott tulajdonság értékeit nem tartalmazó parancs futtatása után, akkor a visszaadott kimenet üres.
+> Az **ország** számára megadott értéknek kis-és nagybetűnek kell lennie. Az **állapot** és a **város** számára megadott értékeknek kisbetűnek kell lenniük. Az értékeknek szerepelniük kell a megadott kimenetben a parancs futtatása után az **ország**, **állam** és **város** érték nélkül. Ha a helytelen esetet adja meg, vagy olyan értéket ad meg az **ország**, **állam** vagy **város** számára, amely nem szerepel az adott tulajdonság értékeit nem tartalmazó parancs futtatása után, akkor a visszaadott kimenet üres.

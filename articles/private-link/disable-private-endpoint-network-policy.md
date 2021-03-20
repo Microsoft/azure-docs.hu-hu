@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737512"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Hálózati házirendek letiltása privát végpontokhoz
@@ -20,7 +20,7 @@ A hálózati házirendek, például a hálózati biztonsági csoportok (NSG) nem
  
 Ha a portál használatával hoz létre privát végpontot, a rendszer automatikusan letiltja ezt a beállítást a létrehozási folyamat részeként. A más ügyfelekkel történő üzembe helyezéshez további lépésre van szükség a beállítás módosításához. A beállítást letilthatja a Cloud Shell használatával a Azure Portal vagy Azure PowerShell helyi telepítése, az Azure CLI vagy a Azure Resource Manager sablonok használatával.  
  
-Az alábbi példák azt írják le, hogyan lehet letiltani a `PrivateEndpointNetworkPolicies` *myVirtualNetwork* nevű virtuális hálózatot egy *myResourceGroup*nevű erőforráscsoport által üzemeltetett *alapértelmezett* alhálózattal.
+Az alábbi példák azt írják le, hogyan lehet letiltani a `PrivateEndpointNetworkPolicies` *myVirtualNetwork* nevű virtuális hálózatot egy *myResourceGroup* nevű erőforráscsoport által üzemeltetett *alapértelmezett* alhálózattal.
 
 ## <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózat magánhálózati végpont-házirendjeit a Azure PowerShell használatával.
@@ -69,6 +69,6 @@ Ez a szakasz azt ismerteti, hogyan lehet letiltani az alhálózati végpont-ház
           } 
 } 
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private-végpontról](private-endpoint-overview.md)
  

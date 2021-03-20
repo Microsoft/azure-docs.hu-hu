@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
 ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74892668"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer-elemzések megtekintése és szerkesztése
@@ -35,7 +35,7 @@ Ez a témakör bemutatja, hogyan tekintheti meg és szerkesztheti a videók Vide
 
     A lejátszó és az adatfelismerés szinkronizálva van. Ha például egy kulcsszóra vagy egy átirat sorra kattint, a lejátszó erre a pillanatra viszi a videót. Az alkalmazásban elérheti a lejátszó/betekintő nézetet és a szinkronizálást. További információ: az [Azure indexelő widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A videók mélyreható bepillantást készíthet](use-editor-create-project.md)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 367aba09f84da1e227c08721077aa1b2132a62bf
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92367973"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Hálózati biztonsági csoportok Site Recoveryvel
@@ -27,9 +27,9 @@ Ez a cikk azt ismerteti, hogyan használhatók a hálózati biztonsági csoporto
 Egy adott alhálózat nulla vagy egy társított NSG is rendelkezhet. Az egyes hálózati adapterek esetében nulla vagy egy társított NSG is tartozhat. Így a virtuális gépek esetében hatékonyan rendelkezhet kettős forgalmi korlátozással, ha először egy alhálózathoz társít egy NSG, majd egy másik NSG a virtuális gép hálózati adapteréhez. Ebben az esetben a NSG-szabályok alkalmazása a forgalom irányát és az alkalmazott biztonsági szabályok prioritását határozza meg.
 
 Vegyünk egy egyszerű példát egy virtuális géppel az alábbiak szerint:
--    A virtuális gép a **contoso-alhálózaton**belül helyezkedik el.
--    A **contoso alhálózat** az **alhálózat NSG**van társítva.
--    A virtuálisgép-hálózati adapter emellett a **virtuális gépek NSG**is társítva van.
+-    A virtuális gép a **contoso-alhálózaton** belül helyezkedik el.
+-    A **contoso alhálózat** az **alhálózat NSG** van társítva.
+-    A virtuálisgép-hálózati adapter emellett a **virtuális gépek NSG** is társítva van.
 
 ![NSG Site Recovery](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 

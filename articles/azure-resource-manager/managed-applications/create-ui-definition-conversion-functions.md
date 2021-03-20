@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: b69cd35b27b343da08727b4c4ee9b4fd025e1df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87096959"
 ---
 # <a name="createuidefinition-conversion-functions"></a>CreateUiDefinition átalakítási függvények
@@ -172,6 +172,6 @@ Az alábbi példa a következőt adja vissza `"{"type":"webapp"}"` :
 "[string({\"type\":\"webapp\"})]"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Resource Manager bevezetését lásd: [Azure Resource Manager áttekintése](../management/overview.md).

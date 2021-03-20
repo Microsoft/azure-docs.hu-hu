@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tárolhatja a Kubernetes-alkalmazásokhoz tarto
 ms.topic: article
 ms.date: 06/12/2020
 ms.openlocfilehash: 69b16f35589586787e1c31a0e9755b9030af755d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86537867"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>A Helm-diagramok leküldése és lekérése egy Azure Container registrybe
@@ -278,7 +278,7 @@ Ha törölni szeretne egy diagramot a tároló-beállításjegyzékből, haszná
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Helm-diagramok létrehozásával és telepítésével kapcsolatos további információkért lásd: [Helm-diagramok fejlesztése][develop-helm-charts].
 * További információ az alkalmazások az [Azure Kubernetes szolgáltatásban (ak)](../aks/kubernetes-helm.md)történő telepítéséről.

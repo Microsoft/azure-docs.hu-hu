@@ -16,10 +16,10 @@ ms.date: 07/22/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3c9ec3b1e96e47dbf46c6acb2c81147b614d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87117429"
 ---
 # <a name="troubleshoot-audit-data-on-verified-domain-change"></a>Hibakeresés: az ellenőrzött tartomány változásának naplózása 
@@ -33,7 +33,7 @@ Megnézem az Azure AD-naplókat, és az Azure AD-bérlőben több felhasználói
 
 ### <a name="cause"></a>Ok
 
- A tömeges objektumok változásainak gyakori oka egy **ProxyCalc**nevű, nem szinkron háttérbeli művelet.  A **ProxyCalc** az Azure ad-felhasználók,-csoportok vagy-névjegyek által frissített megfelelő **userPrincipalName** -és **proxy-címeket**meghatározó logika. A **ProxyCalc** mögötti kialakítás azt biztosítja, hogy a **userPrincipalName** és a **proxy-címek** bármikor konzisztensek legyenek az Azure ad-ben. A **ProxyCalc** olyan explicit módosítással kell elindítani, mint az ellenőrzött tartomány változása, és a háttérben nem fut le állandóan tevékenységként. 
+ A tömeges objektumok változásainak gyakori oka egy **ProxyCalc** nevű, nem szinkron háttérbeli művelet.  A **ProxyCalc** az Azure ad-felhasználók,-csoportok vagy-névjegyek által frissített megfelelő **userPrincipalName** -és **proxy-címeket** meghatározó logika. A **ProxyCalc** mögötti kialakítás azt biztosítja, hogy a **userPrincipalName** és a **proxy-címek** bármikor konzisztensek legyenek az Azure ad-ben. A **ProxyCalc** olyan explicit módosítással kell elindítani, mint az ellenőrzött tartomány változása, és a háttérben nem fut le állandóan tevékenységként. 
 
   
 
@@ -49,7 +49,7 @@ A szinkronizált felhasználók esetében a konzisztencia azt jelenti, hogy a **
 
 A csak felhőalapú felhasználók esetében a konzisztencia azt jelenti, hogy a proxy címei egy ellenőrzött tartományi utótagnak felelnek meg. Inkonzisztens proxy-címek feldolgozása esetén a **ProxyCalc** az alapértelmezett *. onmicrosoft.com tartományi utótagra konvertálja, például: SMTP:username@Contoso.onmicrosoft.com 
 
-A szinkronizált felhasználók esetében a konzisztencia azt jelenti, hogy a proxy címei megfelelnek a helyszíni proxy címe (i) értékének (azaz ShadowProxyAddresses). A **ProxyAddresses** a **ShadowProxyAddresses**szinkronizálásával várható. Ha a szinkronizált felhasználóhoz Exchange-licenc van hozzárendelve, akkor a proxy címének meg kell egyeznie a helyszíni proxy-cím (ek) értékével, és meg kell egyeznie egy ellenőrzött tartományi utótaggal is. Ebben az esetben a **ProxyCalc** megtisztítja az inkonzisztens proxy-címeket egy nem ellenőrzött tartományi utótaggal, és a rendszer eltávolítja az Azure ad-ből származó objektumból. Ha a nem ellenőrzött tartomány ellenőrzése később megtörtént, a **ProxyCalc** újraszámítja és hozzáadja a **SHADOWPROXYADDRESSES** az Azure ad-ben lévő objektumhoz.  
+A szinkronizált felhasználók esetében a konzisztencia azt jelenti, hogy a proxy címei megfelelnek a helyszíni proxy címe (i) értékének (azaz ShadowProxyAddresses). A **ProxyAddresses** a **ShadowProxyAddresses** szinkronizálásával várható. Ha a szinkronizált felhasználóhoz Exchange-licenc van hozzárendelve, akkor a proxy címének meg kell egyeznie a helyszíni proxy-cím (ek) értékével, és meg kell egyeznie egy ellenőrzött tartományi utótaggal is. Ebben az esetben a **ProxyCalc** megtisztítja az inkonzisztens proxy-címeket egy nem ellenőrzött tartományi utótaggal, és a rendszer eltávolítja az Azure ad-ből származó objektumból. Ha a nem ellenőrzött tartomány ellenőrzése később megtörtént, a **ProxyCalc** újraszámítja és hozzáadja a **SHADOWPROXYADDRESSES** az Azure ad-ben lévő objektumhoz.  
 
 > [!NOTE]
 > A szinkronizált objektumok esetében a nem várt eredmények kiszámításának elkerüléséhez érdemes a **ProxyCalc** beállítani egy Azure ad által ellenőrzött tartományhoz a helyszíni objektumon.  
@@ -71,6 +71,6 @@ A ProxyCalc nem okoz változást bizonyos objektumokon:
 
 Emellett a legtöbb esetben a felhasználók nem módosítják a **userPrincipalName** , és a **proxy címeik** konzisztensek, ezért a naplókban csak azok a frissítések jelennek meg, amelyek az objektum tényleges módosítását okozták. Ez a művelet megakadályozza a naplók zajszintjét, és segít a rendszergazdáknak összekapcsolni a megmaradt módosításokat az ellenőrzött tartományi változási eseményeken a fentiekben leírtak szerint. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure AD Connect Sync szolgáltatás árnyék-attribútumai](../hybrid/how-to-connect-syncservice-shadow-attributes.md)

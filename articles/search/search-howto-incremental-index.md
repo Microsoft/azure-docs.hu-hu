@@ -10,16 +10,16 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: a1b317b651b0e17c07eb17dbdb8a7c6657d39564
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90971610"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>A növekményes dúsítás gyorsítótárazásának konfigurálása az Azure-ban Cognitive Search
 
 > [!IMPORTANT] 
-> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> A növekményes gazdagodás jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 > A [REST API előzetes verziójának verziója](search-api-preview.md) biztosítja ezt a szolgáltatást. Jelenleg nem érhető el portál vagy .NET SDK-támogatás.
 
 Ebből a cikkből megtudhatja, hogyan adhat hozzá gyorsítótárazást egy alkoholtartalom-növelési folyamathoz, hogy fokozatosan módosítsa a lépéseket anélkül, hogy minden alkalommal újra kellene építenie. Alapértelmezés szerint a készségkészlet állapota állapot nélküli, és az összeállítás bármely részének megváltoztatásához az indexelő teljes újrafuttatására van szükség. A növekményes bővítéssel az indexelő meg tudja határozni, hogy a készségkészlet vagy az indexelő definíciójában észlelt változások alapján a dokumentum fájának mely részeit kell frissíteni. A meglévő feldolgozott kimenet megmarad, és bárhol felhasználható. 
@@ -114,7 +114,7 @@ Ha most egy másik GET-kérelmet ad ki az indexelő számára, a szolgáltatás 
 
 ### <a name="step-5-run-the-indexer"></a>5. lépés: az indexelő futtatása
 
-Az indexelő futtatásához használhatja a portált vagy az API-t. A portálon az indexelő listából válassza ki az indexelő elemet, majd kattintson a **Futtatás**gombra. A portál használatának egyik előnye, hogy nyomon követheti az indexelő állapotát, megjegyezheti a feladatok időtartamát és a feldolgozott dokumentumok számát. A portál oldalai néhány percenként frissülnek.
+Az indexelő futtatásához használhatja a portált vagy az API-t. A portálon az indexelő listából válassza ki az indexelő elemet, majd kattintson a **Futtatás** gombra. A portál használatának egyik előnye, hogy nyomon követheti az indexelő állapotát, megjegyezheti a feladatok időtartamát és a feldolgozott dokumentumok számát. A portál oldalai néhány percenként frissülnek.
 
 Azt is megteheti, hogy [a REST használatával futtatja az indexelő](/rest/api/searchservice/run-indexer):
 

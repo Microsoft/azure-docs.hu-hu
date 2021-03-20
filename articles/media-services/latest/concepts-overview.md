@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2d388cf6c776e6d30a487ce9e14ba1601dce1d23
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 309ef8baada22f59b1395164626dd664366cb4d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491605"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581133"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services terminológia és fogalmak
 
@@ -38,7 +38,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 
 ## <a name="media-services-v3-concepts"></a>Media Services v3 fogalmak
 
-|Alapelvek|Leírás|Hivatkozások|
+|Alapelvek|Description|Hivatkozások|
 |---|---|---|
 |Eszközök és tartalom feltöltése|Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot, és fel kell töltenie a digitális fájlokat az **eszközökbe**.|[Felhőbe történő feltöltés és tárolás](storage-account-concept.md)<br/><br/>[Eszközök koncepciója](assets-concept.md)|
 |Tartalom kódolása|Miután feltölti a kiváló minőségű digitális médiafájlokat az eszközökbe, kódolhatja azokat formátumokba, amelyek számos böngészőben és eszközön játszhatók le. <br/><br/>Az Media Services v3 kódoláshoz **átalakításokat** és **feladatokat** kell létrehoznia.|[Átalakítások és feladatok](transforms-jobs-concept.md)<br/><br/>[Kódolás Media Services](encoding-concept.md)|
@@ -46,7 +46,7 @@ A fejlesztés megkezdése előtt tekintse át az alábbi témakörökben ismerte
 |Csomagolás és kézbesítés|A tartalom kódolása után igénybe veheti a **dinamikus csomagolás** előnyeit. Media Services a **folyamatos átviteli végpont** az a dinamikus csomagolási szolgáltatás, amellyel a médiatartalom kézbesíthető az ügyfélszámítógépek számára. Ahhoz, hogy a kimeneti eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy **adatfolyam-keresőt** , majd streaming URL-címeket kell létrehoznia. <br/><br/>A **folyamatos átviteli lokátor** létrehozásakor az eszköz neve mellett meg kell adnia a **folyamatos átviteli szabályzatot** is. A **folyamatos átviteli szabályzatok** lehetővé teszik a folyamatos átviteli protokollok és a titkosítási beállítások (ha vannak) definiálását a **streaming-lokátorok** számára. A dinamikus csomagolás a tartalom élő vagy igény szerinti továbbítására szolgál. <br/><br/>Media Services **dinamikus jegyzékfájlok** használatával csak a videó egy adott kiadatását vagy alklipeit továbbíthatja.|[Dinamikus csomagolás](dynamic-packaging-overview.md)<br/><br/>[Folyamatos átviteli végpontok](streaming-endpoint-concept.md)<br/><br/>[Folyamatos átviteli lokátorok](streaming-locators-concept.md)<br/><br/>[Folyamatos átviteli házirendek](streaming-policy-concept.md)<br/><br/>[Dinamikus jegyzékek](filters-dynamic-manifest-overview.md)<br/><br/>[Szűrők](filters-concept.md)|
 |Tartalomvédelem|A Media Services használatával dinamikusan titkosíthatja az élő és igény szerinti tartalmat Advanced Encryption Standard (AES-128) vagy/és a három fő DRM-rendszer valamelyikével: Microsoft PlayReady, Google Widevine és Apple FairPlay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licencek továbbítására a hitelesítő ügyfelek számára. <br/><br/>Ha az adatfolyamban titkosítási beállításokat ad meg, hozza létre a **tartalmi kulcs házirendjét** , és társítsa azt a **folyamatos átviteli lokátorhoz**. A **tartalmi kulcs házirendje** lehetővé teszi annak konfigurálását, hogy a rendszer hogyan továbbítsa a tartalmi kulcsot a végfelhasználók számára.<br/><br/> Próbálja meg újból felhasználni a szabályzatokat, amikor ugyanazok a beállítások szükségesek.| [Tartalmi kulcs házirendjei](content-key-policy-concept.md)<br/><br/>[Tartalomvédelem](content-protection-overview.md)|
 |Live streaming (Élő adatfolyam)|A Media Services lehetővé teszi, hogy élő eseményeket nyújtson az ügyfeleknek az Azure-felhőben. Az **élő események** az élő videóadatok betöltését és feldolgozását végzik. Ha **élő eseményt** hoz létre, a rendszer létrehoz egy bemeneti végpontot, amelynek használatával élő jeleket küldhet egy távoli kódolóból. Ha a stream az **élő eseménybe** áramlik, megkezdheti a folyamatos átviteli eseményt egy **eszköz**, egy **élő kimenet** és a **folyamatos átviteli lokátor** létrehozásával. Az **élő kimenet** archiválja a streamet az objektumba **, és** elérhetővé teszi a nézők számára a **folyamatos átviteli végponton** keresztül. Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). |[Élő közvetítés – áttekintés](live-streaming-overview.md)<br/><br/>[Élő események és élő kimenetek](live-events-outputs-concept.md)|
-|Figyelés Event Grid|A feladatok előrehaladásának megtekintéséhez használja a **Event Grid**. A Media Services az élő események típusát is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. |[Event Grid-események kezelése](reacting-to-media-services-events.md)<br/><br/>[Sémák](media-services-event-schemas.md)|
+|Figyelés Event Grid|A feladatok előrehaladásának megtekintéséhez használja a **Event Grid**. A Media Services az élő események típusát is kibocsátja. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. |[Event Grid-események kezelése](monitoring/reacting-to-media-services-events.md)<br/><br/>[Sémák](monitoring/media-services-event-schemas.md)|
 |Figyelés Azure Monitor|Figyelje a metrikákat és a diagnosztikai naplókat, amelyek segítségével megismerheti, hogy az alkalmazások hogyan működnek együtt a Azure Monitorokkal.|[Metrikák és diagnosztikai naplók](monitoring/monitor-media-services-data-reference.md)<br/><br/>[Diagnosztikai naplók sémái](monitoring/monitor-media-services-data-reference.md)|
 |Lejátszóügyfelek|A Azure Media Player használatával a különböző böngészők és eszközök Media Services által továbbított médiatartalom lejátszását is elvégezheti. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához. |[Az Azure Media Player áttekintése](use-azure-media-player.md)|
 

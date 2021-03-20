@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84737529"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure-beli virtuális hálózat topológiájának megtekintése
@@ -29,10 +29,10 @@ Az [Azure Portal](#azure-portal), az [Azure CLI](#azure-cli)vagy a [PowerShell](
 ## <a name="view-topology---azure-portal"></a><a name = "azure-portal"></a>Topológia megtekintése – Azure Portal
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely rendelkezik a szükséges [engedélyekkel](required-rbac-permissions.md).
-2. A portál bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
+2. A portál bal felső sarkában válassza a **minden szolgáltatás** lehetőséget.
 3. A **minden szolgáltatás** szűrő mezőbe írja be a *Network Watcher*. Ha **Network Watcher** jelenik meg az eredmények között, válassza ki.
-4. Válassza a **Topológia** lehetőséget. A topológia létrehozásához egy olyan hálózati figyelőre van szükség, amely ugyanabban a régióban található, mint ahol az a virtuális hálózat, amelyhez a topológiát létre kívánja hozni. Ha nincs engedélyezve a hálózati figyelő abban a régióban, amelyben az a virtuális hálózat, amelyhez a topológiát létre szeretné hozni, a hálózati figyelők automatikusan létrejönnek az összes régióban. A hálózati figyelők egy **NetworkWatcherRG**nevű erőforráscsoporthoz jönnek létre.
-5. Válasszon ki egy előfizetést, egy virtuális hálózat erőforráscsoporthoz, amelyben meg szeretné tekinteni a topológiát, majd válassza ki a virtuális hálózatot. Az alábbi ábrán egy *MyVnet*nevű virtuális hálózat topológiája látható a *MyResourceGroup*nevű erőforráscsoport esetében:
+4. Válassza a **Topológia** lehetőséget. A topológia létrehozásához egy olyan hálózati figyelőre van szükség, amely ugyanabban a régióban található, mint ahol az a virtuális hálózat, amelyhez a topológiát létre kívánja hozni. Ha nincs engedélyezve a hálózati figyelő abban a régióban, amelyben az a virtuális hálózat, amelyhez a topológiát létre szeretné hozni, a hálózati figyelők automatikusan létrejönnek az összes régióban. A hálózati figyelők egy **NetworkWatcherRG** nevű erőforráscsoporthoz jönnek létre.
+5. Válasszon ki egy előfizetést, egy virtuális hálózat erőforráscsoporthoz, amelyben meg szeretné tekinteni a topológiát, majd válassza ki a virtuális hálózatot. Az alábbi ábrán egy *MyVnet* nevű virtuális hálózat topológiája látható a *MyResourceGroup* nevű erőforráscsoport esetében:
 
     ![Topológia megtekintése](./media/view-network-topology/view-topology.png)
 
@@ -41,7 +41,7 @@ Az [Azure Portal](#azure-portal), az [Azure CLI](#azure-cli)vagy a [PowerShell](
     - A *myVnet* virtuális hálózattal megegyező erőforráscsoport és régió között. Például egy olyan hálózati biztonsági csoport, amely nem *MyResourceGroup*, nem jelenik meg, még akkor sem, ha a hálózati biztonsági csoport a *MyVnet* virtuális hálózat egyik alhálózatához van társítva.
     - A *myVnet* virtuális hálózatán belül vagy ahhoz tartozó erőforrásokhoz társítva. Például egy olyan hálózati biztonsági csoport, amely nincs társítva a *myVnet* virtuális hálózat alhálózatához vagy hálózati adapteréhez, nem jelenik meg, még akkor is, ha a hálózati biztonsági csoport a *MyResourceGroup* -erőforráscsoport tagja.
 
-   A képen látható topológia ahhoz a virtuális hálózathoz lett létrehozva, amelyet az **útvonal forgalmának**az [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)-vel vagy a [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)használatával történő üzembe helyezése után hozott létre.
+   A képen látható topológia ahhoz a virtuális hálózathoz lett létrehozva, amelyet az **útvonal forgalmának** az [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)-vel vagy a [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)használatával történő üzembe helyezése után hozott létre.
 
 6. Válassza a **topológia letöltése** lehetőséget a rendszerkép szerkeszthető fájlként való letöltéséhez SVG formátumban.
 
@@ -70,7 +70,7 @@ A használt fióknak rendelkeznie kell a szükséges [engedélyekkel](required-r
       --enabled true
     ```
 
-3. A topológia megtekintése az [az Network Watcher show-topológia](/cli/azure/network/watcher#az-network-watcher-show-topology)paranccsal. A következő példa egy *MyResourceGroup*nevű erőforráscsoport topológiáját tekinti át:
+3. A topológia megtekintése az [az Network Watcher show-topológia](/cli/azure/network/watcher#az-network-watcher-show-topology)paranccsal. A következő példa egy *MyResourceGroup* nevű erőforráscsoport topológiáját tekinti át:
 
     ```azurecli-interactive
     az network watcher show-topology --resource-group MyResourceGroup
@@ -112,7 +112,7 @@ A használt fióknak rendelkeznie kell a szükséges [engedélyekkel](required-r
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. Topológia beolvasása a [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology). A következő példa egy *MyResourceGroup*nevű erőforráscsoport egy virtuális hálózatának topológiáját kérdezi le:
+4. Topológia beolvasása a [Get-AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology). A következő példa egy *MyResourceGroup* nevű erőforráscsoport egy virtuális hálózatának topológiáját kérdezi le:
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `
@@ -141,11 +141,11 @@ A topológiában visszaadott összes erőforrás a következő tulajdonságokkal
 - **Azonosító**: az erőforrás URI-ja.
 - **Hely**: az az Azure-régió, amelyen az erőforrás megtalálható.
 - **Társítások**: a hivatkozott objektumhoz tartozó társítások listája. Minden társítás a következő tulajdonságokkal rendelkezik:
-    - **AssociationType társítás**: a gyermek objektum és a szülő közötti kapcsolatra hivatkozik. Az érvényes értékek *tartalmazzák* vagy *társítva*vannak.
+    - **AssociationType társítás**: a gyermek objektum és a szülő közötti kapcsolatra hivatkozik. Az érvényes értékek *tartalmazzák* vagy *társítva* vannak.
     - **Name (név**): a hivatkozott erőforrás neve.
     - **ResourceId**: – a társításban hivatkozott erőforrás URI-ja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [diagnosztizálhatja a hálózati forgalom szűrésével kapcsolatos problémát egy virtuális](diagnose-vm-network-traffic-filtering-problem.md) gépről Network Watcher IP-forgalmának ellenőrzése funkcióval
 - Ismerje meg, hogyan [diagnosztizálhatja a hálózati forgalom-útválasztási problémát egy virtuális](diagnose-vm-network-routing-problem.md) gépről a Network Watcher következő ugrási képességének használatával

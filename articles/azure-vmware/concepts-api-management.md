@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan védi a API Management az Azure VMware-megoldá
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: 958cc52c48d1121a69dca2fc901289ad1ed671cb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541963"
 ---
 # <a name="api-management-to-publish-and-protect-apis-running-on-azure-vmware-solution-based-vms"></a>Az Azure VMware megoldáson alapuló virtuális gépeken futó API-k közzétételének és védelemének API Management

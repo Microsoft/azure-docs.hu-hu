@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672417"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>Bejövő IP-cím módosításának előkészítése
@@ -31,16 +31,16 @@ Az alkalmazáshoz megadott új bejövő IP-cím a **virtuális IP-cím** mezőbe
 
 1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-2.  A bal oldali navigációs menüben válassza a **app Services**lehetőséget.
+2.  A bal oldali navigációs menüben válassza a **app Services** lehetőséget.
 
 3.  Válassza ki a App Service alkalmazást a listából.
 
 1.  Ha az alkalmazás egy függvény alkalmazás, tekintse meg a [Function app bejövő IP-címe](../azure-functions/ip-addresses.md#function-app-inbound-ip-address)című témakört.
 
-4.  A **Beállítások** fejléc alatt kattintson a bal oldali navigációs menüben a **Tulajdonságok** elemre, és keresse meg a **virtuális IP-cím**feliratú szakaszt.
+4.  A **Beállítások** fejléc alatt kattintson a bal oldali navigációs menüben a **Tulajdonságok** elemre, és keresse meg a **virtuális IP-cím** feliratú szakaszt.
 
 5. Másolja ki az IP-címet, és konfigurálja újra a tartományi rekordot vagy az IP-mechanizmust.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt ismerteti, hogyan lehet előkészíteni az Azure által kezdeményezett IP-címek változásait. A Azure App Service IP-címeivel kapcsolatos további információkért lásd: [bejövő és kimenő IP-címek a Azure app Serviceban](overview-inbound-outbound-ips.md).
