@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 21076fe23301c189d9987f78706cc81691ce7a4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400534"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell használatával
@@ -61,7 +61,7 @@ A következő táblázat ismerteti a paramétereket:
 
 | Paraméter | Leírás |
 | --- | --- |
-| Name (Név) |Az Traffic Manager-profil erőforrásának neve. Az azonos erőforráscsoporthoz tartozó profiloknak egyedi névvel kell rendelkezniük. Ez a név nem azonos a DNS-lekérdezésekhez használt DNS-névvel. |
+| Név |Az Traffic Manager-profil erőforrásának neve. Az azonos erőforráscsoporthoz tartozó profiloknak egyedi névvel kell rendelkezniük. Ez a név nem azonos a DNS-lekérdezésekhez használt DNS-névvel. |
 | ResourceGroupName |A profil erőforrását tartalmazó erőforráscsoport neve. |
 | TrafficRoutingMethod |Megadja a forgalom-útválasztási módszert, amellyel meghatározható, hogy melyik végpontot adja vissza a rendszer a DNS-lekérdezés válaszában. A lehetséges értékek a következők: "Performance", "súlyozott" vagy "priority". |
 | RelativeDnsName |Megadja a Traffic Manager profil által megadott DNS-név állomásnév részét. Ez az érték az Azure Traffic Manager által használt DNS-tartománynévvel együtt alkotja a profil teljes tartománynevét (FQDN). A "contoso" értékének beállítása például "contoso.trafficmanager.net" lesz. |

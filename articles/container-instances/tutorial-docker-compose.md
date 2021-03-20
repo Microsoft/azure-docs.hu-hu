@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
 ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913840"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Oktatóanyag: több tárolós csoport üzembe helyezése a Docker-összeállítás használatával 
@@ -86,7 +86,7 @@ services:
 
 A `azure-vote-front` konfigurációban hajtsa végre a következő két módosítást:
 
-1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. Előtagként adja meg a rendszerkép nevét az Azure Container Registry ( \<acrName\> . azurecr.IO) bejelentkezési kiszolgálójának nevével. Ha például a beállításjegyzék neve *myregistry* , a bejelentkezési kiszolgáló neve *myregistry.azurecr.IO* (mind kisbetűs), a rendszerkép tulajdonság pedig ezután `myregistry.azurecr.io/azure-vote-front` .
+1. Frissítse a `image` tulajdonságot a `azure-vote-front` szolgáltatásban. Előtagként adja meg a rendszerkép nevét az Azure Container Registry ( \<acrName\> . azurecr.IO) bejelentkezési kiszolgálójának nevével. Ha például a beállításjegyzék neve *myregistry*, a bejelentkezési kiszolgáló neve *myregistry.azurecr.IO* (mind kisbetűs), a rendszerkép tulajdonság pedig ezután `myregistry.azurecr.io/azure-vote-front` .
 1. Módosítsa a leképezést a következőre: `ports` `80:80` . Mentse a fájlt.
 
 A frissített fájlnak a következőhöz hasonlóan kell kinéznie:
@@ -216,9 +216,9 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 A futó alkalmazás Felhőbeli megjelenítéséhez adja meg a megjelenített IP-címet egy helyi böngészőben. Ebben a példában írja be a következőt: `52.179.23.131` . A mintaalkalmazás betöltődik az alábbi példában látható módon:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="A szavazási alkalmazás képe":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Az ACI-beli szavazási alkalmazás képe":::
 
-Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Példa:
+Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Például:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front

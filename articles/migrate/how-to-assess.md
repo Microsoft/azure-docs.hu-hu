@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752260"
 ---
 # <a name="add-assessment-tools"></a>Felmérőeszközök hozzáadása
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure
 
     - Az Azure-ba való áttelepítéshez szükséges gépek és munkaterhelések felderítéséhez és értékeléséhez válassza a **kiszolgálók felmérése és áttelepítése** lehetőséget.
     - A helyszíni SQL Server-adatbázisok értékeléséhez válassza az **adatbázisok felmérése és áttelepíteni** lehetőséget.
-    - A helyszíni webalkalmazások értékeléséhez vagy átköltöztetéséhez válassza a **további Web Apps megismerése** lehetőséget  >  **Web Apps**.
+    - A helyszíni webalkalmazások értékeléséhez vagy átköltöztetéséhez válassza a **további Web Apps megismerése** lehetőséget  >  .
     - A virtuális asztali infrastruktúra értékeléséhez válassza a **további**  >  **virtuális asztali infrastruktúra** megismerése lehetőséget.
 
     ![Az értékelési forgatókönyv kiválasztásának lehetőségei](./media/how-to-assess/assess-scenario.png)
@@ -81,6 +81,6 @@ Ha Azure Migrate projektet hozott létre a portálon a **további**  >  **WebApp
  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Helyszíni gépek felderítése a [VMware](./tutorial-discover-vmware.md) virtuális gépek, a [Hyper-V](./tutorial-discover-hyper-v.md)vagy a [fizikai kiszolgálók](./tutorial-discover-physical.md) Azure Migrate Server Assessment Tool használatával történő értékeléséhez

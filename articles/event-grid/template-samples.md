@@ -4,10 +4,10 @@ description: Ez a cikk a GitHub-Azure Event Grid Azure Resource Manager sablonj�
 ms.topic: sample
 ms.date: 07/07/2020
 ms.openlocfilehash: 910012adf2dc930e6f1a26f1a7fc41f5ed0580c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86119055"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Azure Resource Manager-sablonok az Event Gridhez
@@ -20,7 +20,7 @@ A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez l�
 - [Azure-előfizetés vagy erőforráscsoport-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) – előfizet egy erőforráscsoport vagy Azure-előfizetés eseményeire. Az üzembe helyezés során célként megadott erőforráscsoport az események forrása. A feliratkozás egy webhookot használ végpontként. 
 - [Blob Storage-fiók és-előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) – üzembe helyez egy Azure Blob Storage-fiókot, és előfizet az adott tárolási fiók eseményeire. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő mintákat:
 
 - [PowerShell-példák](powershell-samples.md)

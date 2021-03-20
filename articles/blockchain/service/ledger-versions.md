@@ -5,10 +5,10 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: ea7c54e229178320329204a3199ab2b4c44058fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85807740"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Támogatott Azure Blockchain Service Ledger-verziók
@@ -68,6 +68,6 @@ admin.nodeInfo.protocols
 ```
 Az API-t geth-konzol vagy web3-könyvtár használatával hívhatja meg. A geth használatával kapcsolatos további információkért lásd: gyors útmutató [: a geth használata Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz való csatoláshoz](connect-geth.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Korlátok az Azure Blockchain szolgáltatásban](limits.md)

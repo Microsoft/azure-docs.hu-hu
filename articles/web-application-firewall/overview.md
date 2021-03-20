@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: 49024c86d09f5cdd9e8b04d5a49f60021660b0c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "79475787"
 ---
 # <a name="what-is-azure-web-application-firewall"></a>Mi az az Azure Web Application Firewall?
@@ -28,7 +28,7 @@ Az egyes webalkalmazások biztonságossá tétele helyett a WAF-megoldás gyorsa
 
 A WAF az Azure Application Gateway, az Azure bejárati ajtóval és az Azure Content Delivery Network (CDN) szolgáltatással is üzembe helyezhető a Microsofttól. A WAF on Azure CDN jelenleg nyilvános előzetes verzióban érhető el.  A WAF az egyes szolgáltatásokhoz testreszabott funkciókat tartalmaz. Az egyes szolgáltatások WAF funkcióival kapcsolatos további információkért tekintse meg az egyes szolgáltatások áttekintését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Application Gateway webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure Application Gateway](./ag/ag-overview.md).
 - A webalkalmazási tűzfallal kapcsolatos további információkért lásd: [webalkalmazási tűzfal az Azure bejárati ajtó szolgáltatásban](./afds/afds-overview.md).

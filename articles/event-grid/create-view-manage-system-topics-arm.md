@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhatók létre Azure Resource Manager
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 1c8881a2d9dfca43084cc537b106e84b050a18d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86115162"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Rendszertémakörök létrehozása Azure Event Grid Resource Manager-sablonok használatával
@@ -52,7 +52,7 @@ Először hozzon létre egy rendszertémakört egy Azure-forráson, majd hozzon 
             "type": "String",
             "defaultValue": "mystoragesystemtopic",
             "metadata": {
-                "description": "Provide a name for the system topic."
+                "description": "Provide a name for the system topic."
             }
         }
     },
@@ -80,7 +80,7 @@ Először hozzon létre egy rendszertémakört egy Azure-forráson, majd hozzon 
                 "[parameters('storageName')]"
             ],
             "properties": {
-                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
+                "source": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]",
                 "topicType": "Microsoft.Storage.StorageAccounts"
             }
         },
@@ -191,5 +191,5 @@ Ha implicit módon szeretne létrehozni egy rendszertémakört, miközben egy Az
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Event Grid által támogatott rendszertémakörökkel és a témakörökkel kapcsolatos további tudnivalókért tekintse meg [Azure Event Grid szakasz rendszertémaköreit](system-topics.md) . 

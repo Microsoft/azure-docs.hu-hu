@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: 59301e26f4d42056322ba5a7cdaff1555c531096
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96354988"
 ---
 # <a name="best-practices-for-monitoring-azure-database-for-mysql--single-server"></a>Ajánlott eljárások a Azure Database for MySQL figyeléséhez – egyetlen kiszolgáló
@@ -44,7 +44,7 @@ A MySQL-kiszolgáló számára kiosztott [tárolási mennyiség](howto-create-ma
 **Adatbázis-kapcsolatok** – a Azure Database for MySQLhoz kapcsolódó ügyféloldali munkamenetek számát össze kell hangolni a [kiválasztott SKU-méret csatlakozási korlátaival](concepts-server-parameters.md#max_connections) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Database for MySQL teljesítményének bevált gyakorlata](concept-performance-best-practices.md)
 - [Ajánlott eljárás a kiszolgálói műveletek Azure Database for MySQL használatával](concept-operation-excellence-best-practices.md)

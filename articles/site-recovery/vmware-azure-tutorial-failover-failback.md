@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
 ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132006"
 ---
 # <a name="fail-over--vmware-vms"></a>Feladatátvétel VMware virtuális gépeken
@@ -44,11 +44,11 @@ A feladatátvétel futtatása előtt ellenőrizze a virtuális gép tulajdonság
 
 A tulajdonságok ellenőrzése a következőképpen történik:
 
-1. A **védett elemek**területen válassza a **replikált elemek**lehetőséget, majd válassza ki az ellenőrizni kívánt virtuális gépet.
+1. A **védett elemek** területen válassza a **replikált elemek** lehetőséget, majd válassza ki az ellenőrizni kívánt virtuális gépet.
 
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Válassza a **Tulajdonságok** lehetőséget a további részletek megtekintéséhez.
 
-3. A **számítás és hálózat**szolgáltatásban szükség szerint módosíthatja ezeket a tulajdonságokat:
+3. A **számítás és hálózat** szolgáltatásban szükség szerint módosíthatja ezeket a tulajdonságokat:
     * Azure-beli név
     * Erőforráscsoport
     * Cél mérete
@@ -64,11 +64,11 @@ A tulajdonságok ellenőrzése a következőképpen történik:
 
 ## <a name="run-a-failover-to-azure"></a>Feladatátvétel futtatása az Azure-ban
 
-1. A **Beállítások**  >  **replikált elemek**területen válassza ki azt a virtuális gépet, amelyen át szeretné adni a **feladatátvételt**, majd válassza a feladatátvétel lehetőséget.
+1. A **Beállítások**  >  **replikált elemek** területen válassza ki azt a virtuális gépet, amelyen át szeretné adni a **feladatátvételt**, majd válassza a feladatátvétel lehetőséget.
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
    * **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. Ez a legalacsonyabb helyreállítási időkorlátot (RPO) biztosítja, mivel a feladatátvételt követően létrehozott Azure virtuális gép minden olyan adattal rendelkezik, amelyet a feladatátvétel elindításakor Site Recovery replikált a rendszer.
    * **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gépet a site Recovery által feldolgozott legutóbbi helyreállítási pontra nem tudja átvenni. Ez a beállítás alacsony RTO (helyreállítási idő célkitűzés) biztosít, mivel a feldolgozatlan adatmennyiségek feldolgozása nem történik meg.
-   * Az **alkalmazás legújabb konzisztens**beállítása: Ez a beállítás a virtuális gép feladatátvételét a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.
+   * Az **alkalmazás legújabb konzisztens** beállítása: Ez a beállítás a virtuális gép feladatátvételét a site Recovery által feldolgozott legújabb, alkalmazás-konzisztens helyreállítási pontra hajtja végre.
    * **Egyéni**: Ez a beállítás lehetővé teszi egy helyreállítási pont megadását.
 
 3. A feladatátvétel elindítása előtt válassza a **gép leállítása a feladatátvétel** megkezdése előtt lehetőséget. A feladatátvétel akkor is folytatódik, ha a leállás sikertelen. A feladatátvételi folyamat a **feladatok** lapon követhető.
@@ -96,7 +96,7 @@ Bizonyos esetekben a feladatátvételhez további feldolgozásra van szükség, 
 >[!TIP]
 > Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, kövesse a [hibaelhárítási útmutatót](site-recovery-failover-to-azure-troubleshoot.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételt követően az Azure-beli virtuális gépeket a helyszíni környezetbe újra kell védetté tenni. Ezt követően a virtuális gépek ismételt védelemmel és a helyszíni helyre történő replikálásával visszatérhet az Azure-ból, ha elkészült.
 

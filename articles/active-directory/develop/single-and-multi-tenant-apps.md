@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
 ms.openlocfilehash: 0868d87d977b15a552b04d5dbd6d19de6931f0ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91395906"
 ---
-# <a name="tenancy-in-azure-active-directory"></a>Bérlet Azure Active Directory
+# <a name="tenancy-in-azure-active-directory"></a>Bérlői viszony az Azure Active Directoryban
 
-Azure Active Directory (Azure AD) olyan objektumokat szervez, mint a felhasználók és az alkalmazások a *bérlők*nevű csoportokban. A bérlők lehetővé teszik, hogy a rendszergazda szabályzatokat állítson be a szervezeten belüli felhasználókon és a szervezet tulajdonában lévő alkalmazásokkal, hogy azok megfeleljenek a biztonsági és működési házirendeknek. 
+Azure Active Directory (Azure AD) olyan objektumokat szervez, mint a felhasználók és az alkalmazások a *bérlők* nevű csoportokban. A bérlők lehetővé teszik, hogy a rendszergazda szabályzatokat állítson be a szervezeten belüli felhasználókon és a szervezet tulajdonában lévő alkalmazásokkal, hogy azok megfeleljenek a biztonsági és működési házirendeknek. 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Ki tud bejelentkezni az alkalmazásba?
 

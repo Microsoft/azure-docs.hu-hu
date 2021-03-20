@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: duau
 ms.openlocfilehash: 3602c3944e8731263fbb55f024c276783950329f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202361"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Magas rendelkezésre állás tervezése a ExpressRoute
@@ -80,7 +80,7 @@ Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és e
 
 A ExpressRoute támogatja a BFD. A BFD csökkenti a hiba észlelési idejét a 2. rétegbeli hálózat között a Microsoft Enterprise Edge (Msee) és a helyi oldalon lévő BGP-szomszédok között, körülbelül 3 percen belül (alapértelmezett), és kevesebb mint egy másodpercig. A gyors észlelési idő segít felgyorsítani a sikertelen helyreállítást. További információ: [BFD konfigurálása ExpressRoute][BFD]-en keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy ExpressRoute-áramköri kapcsolat magas rendelkezésre állásának kialakítását ismertetjük. Egy ExpressRoute-áramköri pont egy földrajzi helyre van rögzítve, ezért a teljes helyet érintő katasztrofális meghibásodás okozhatja. 
 

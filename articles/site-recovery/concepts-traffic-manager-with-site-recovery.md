@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134951"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
@@ -85,9 +85,9 @@ A katasztrófa betartása esetén a **C vállalat** a helyreállítási Azure-r�
 
 A globális vállalatok gyakran javítják az ügyfelek élményét azáltal, hogy az alkalmazásaikat a regionális igények kiszolgálására szabják. A honosítás és a késés csökkentése az alkalmazás-infrastruktúra régiók közötti felosztásához vezethet. A vállalatokat a regionális adattörvények is kötik bizonyos területeken, és dönthetnek úgy, hogy az alkalmazás-infrastruktúrájuk részét a regionális határokon belül elkülönítik.  
 
-Vegyünk egy példát arra, hogy a **D vállalat** feldarabolta az alkalmazás-végpontokat, hogy külön szolgáljanak Németország és a világ többi részén. A **D vállalat** az Azure Traffic Manager [földrajzi](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) útválasztási módszerét használja a beállításához. A Németországból származó összes forgalmat az 1. **végpontra** irányítja, és a Németországon kívüli forgalom a **2. végpontra**irányul.
+Vegyünk egy példát arra, hogy a **D vállalat** feldarabolta az alkalmazás-végpontokat, hogy külön szolgáljanak Németország és a világ többi részén. A **D vállalat** az Azure Traffic Manager [földrajzi](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) útválasztási módszerét használja a beállításához. A Németországból származó összes forgalmat az 1. **végpontra** irányítja, és a Németországon kívüli forgalom a **2. végpontra** irányul.
 
-Ennek a beállításnak a problémája, hogy ha az **1. végpont** bármilyen okból leáll, nincs átirányítva a **2-es végpontra**irányuló forgalom. A Németországból származó forgalmat továbbra is az **1. végpontra** irányítja a rendszer, függetlenül a végpont állapottól, így a német felhasználók nem férhetnek hozzá a **vállalat D**alkalmazásához. Hasonlóképpen, ha a **2. végpont** offline állapotba kerül, az **1-es végpontra**irányuló forgalom átirányítása nem történik meg.
+Ennek a beállításnak a problémája, hogy ha az **1. végpont** bármilyen okból leáll, nincs átirányítva a **2-es végpontra** irányuló forgalom. A Németországból származó forgalmat továbbra is az **1. végpontra** irányítja a rendszer, függetlenül a végpont állapottól, így a német felhasználók nem férhetnek hozzá a **vállalat D** alkalmazásához. Hasonlóképpen, ha a **2. végpont** offline állapotba kerül, az **1-es végpontra** irányuló forgalom átirányítása nem történik meg.
 
 ![Több régióból álló alkalmazás előtte](./media/concepts-traffic-manager-with-site-recovery/geographic-application-before.png)
 
@@ -115,7 +115,7 @@ Emellett optimalizálhatja a Traffic Manager profilhoz tartozó DNS-élettartam 
 
 Az ügyfél által tapasztalt TTL nem növekszik, ha a DNS-feloldók száma az ügyfél és a mérvadó DNS-kiszolgáló között növekszik. A DNS-feloldók "Count Down" az ÉLETTARTAMot, és csak a rekord gyorsítótárazása óta eltelt időt tükröző TTL-értéket továbbítanak. Ez biztosítja, hogy a DNS-rekord a TTL után frissül az ügyfélen, függetlenül attól, hogy hány DNS-feloldó van a láncban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
 - További információ a [beágyazott Traffic Manager-profilokról](../traffic-manager/traffic-manager-nested-profiles.md).
 - További információ a [végpontok figyeléséről](../traffic-manager/traffic-manager-monitoring.md).

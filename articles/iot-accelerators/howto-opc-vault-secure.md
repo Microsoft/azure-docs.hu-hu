@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: a1b7564988c8a4d63a37b53d18ed3a7359e65d72
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92926410"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
@@ -53,7 +53,7 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 
 #### <a name="request-a-new-certificate-with-a-new-keypair"></a>Új tanúsítvány igénylése új kulcspárt
 
-1. Nyissa meg az **alkalmazásokat** .
+1. Nyissa meg az **alkalmazásokat**.
 3. Válassza ki az **új kérelem** elemet a felsorolt alkalmazásokhoz.
 
    ![A kérelem új tanúsítványának képernyőképe](media/howto-opc-vault-secure/request-new-certificate.png "Új tanúsítvány igénylése")
@@ -78,7 +78,7 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELES
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Új tanúsítvány igénylése CSR-sel 
 
-1. Nyissa meg az **alkalmazásokat** .
+1. Nyissa meg az **alkalmazásokat**.
 3. Válassza ki az **új kérelem** elemet a felsorolt alkalmazásokhoz.
 
    ![A kérelem új tanúsítványának képernyőképe](media/howto-opc-vault-secure/request-new-certificate.png "Új tanúsítvány igénylése")

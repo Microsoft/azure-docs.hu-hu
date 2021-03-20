@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422093"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával
@@ -84,8 +84,8 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
 |**típusa**| Kötelező. Kell lennie `cosmosdb` . |
-|**hitelesítő adatok** | Kötelező. <br/><br/>Felügyelt identitással való kapcsolódás esetén a **hitelesítő adatok** formátumának a következőket kell tartalmaznia: *adatbázis = [adatbázis-név]; ResourceId = [erőforrás-azonosító-string];(ApiKind = [API-Kind];)*<br/> <br/>A ResourceId formátuma: *ResourceId =/Subscriptions/ **az előfizetés-azonosítója** /resourceGroups/ **az erőforráscsoport neve** /Providers/Microsoft.DocumentDB/databaseAccounts/ **a Cosmos db-fiók neve** /;*<br/><br/>SQL-gyűjtemények esetén a ApiKind nem szükséges a kapcsolatok karakterlánca.<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez. <br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/>|
-| **tároló** | A következő elemeket tartalmazza: <br/>**név** : kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés** : nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
+|**hitelesítő adatok** | Kötelező. <br/><br/>Felügyelt identitással való kapcsolódás esetén a **hitelesítő adatok** formátumának a következőket kell tartalmaznia: *adatbázis = [adatbázis-név]; ResourceId = [erőforrás-azonosító-string];(ApiKind = [API-Kind];)*<br/> <br/>A ResourceId formátuma: *ResourceId =/Subscriptions/**az előfizetés-azonosítója**/resourceGroups/**az erőforráscsoport neve**/Providers/Microsoft.DocumentDB/databaseAccounts/**a Cosmos db-fiók neve**/;*<br/><br/>SQL-gyűjtemények esetén a ApiKind nem szükséges a kapcsolatok karakterlánca.<br/><br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez. <br/><br/>A Gremlin gráfok és a Cassandra-táblázatok esetében regisztráljon a [GateD indexelő előzetes](https://aka.ms/azure-cognitive-search/indexer-preview) verziójára, és kérjen hozzáférést az előzetes verzióhoz, és tájékozódjon a hitelesítő adatok formázásáról.<br/>|
+| **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amelyet az Azure Cognitive Search tud indexelni.<br/>A MongoDB API, a Gremlin API és a Cassandra API esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott |
 |**dataDeletionDetectionPolicy** | Választható |
 
@@ -146,6 +146,6 @@ Ha azt tapasztalja, hogy nem tudja indexelni a Cosmos DB adatait, vegye figyelem
 
 1. Ellenőrizze, hogy a Cosmos DB-fiók hozzáférése korlátozott-e a hálózatok kiválasztásához. Ha igen, tekintse át az [Indexelő hozzáférését az Azure hálózati biztonsági funkciói által védett tartalmakhoz](search-indexer-securing-resources.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB-indexelő](search-howto-index-cosmosdb.md)

@@ -4,10 +4,10 @@ description: Ismerje meg, hogy a DevTest Labs hogyan könnyítheti meg az Azure-
 ms.topic: article
 ms.date: 06/20/2020
 ms.openlocfilehash: b7e6493e5fb1c99dfa7962ed464dca3ebc6b0c7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480201"
 ---
 # <a name="about-azure-devtest-labs"></a>Információk az Azure DevTest Labs szolgáltatásról
@@ -23,7 +23,7 @@ A DevTest Labs használatával az alábbi feladatok végrehajtásával ellenőri
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 A DevTest Labs a következő lehetőségeket biztosítja a virtuális gépekkel dolgozó fejlesztők számára:
 
 - Hozzon létre gyorsan virtuális gépeket kevesebb mint öt egyszerű lépés után.
@@ -73,7 +73,7 @@ A fejlesztők az Azure Service Fabric-fürtöket, a Azure App Service és a Shar
 ## <a name="integrate-with-your-existing-toolchain"></a>Integrálás meglévő toolchain
 Az előre elkészített beépülő modulok vagy az API segítségével közvetlenül a kívánt [folyamatos integrációs (CI) eszközről](devtest-lab-integrate-ci-cd.md), az integrált fejlesztői környezetből (ide) vagy az automatizált kiadási folyamatból is kiépítheti a fejlesztési és tesztelési környezeteket. Használhatja az átfogó parancssori eszközt is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - További információ a DevTest Labs szolgáltatásról: [DevTest Labs-fogalmak](devtest-lab-concepts.md).

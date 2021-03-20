@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755062"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
@@ -120,7 +120,7 @@ Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD egy hitelesít�
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A MSAL által támogatott platformok közül több további jogkivonat-gyorsítótárral kapcsolatos információkkal rendelkezik a platform könyvtárának dokumentációjában. Például:
 - [Jogkivonat beszerzése a jogkivonat-gyorsítótárból a MSAL.NET használatával](msal-net-acquire-token-silently.md)

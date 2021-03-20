@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420784"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
@@ -129,6 +129,6 @@ Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolás
 
 Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. a folyamat adataival megtekintheti, hogy mely szöveg-feldolgozási módszerek a leghatékonyabbak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
             
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md)

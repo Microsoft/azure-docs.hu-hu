@@ -4,10 +4,10 @@ description: A HPC és a GPU virtuálisgép-méretek kihasználása Azure Batch 
 ms.topic: how-to
 ms.date: 12/17/2018
 ms.openlocfilehash: 016da7669c9e6a6586a53d379f9665c9ea048b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86147340"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>RDMA-vagy GPU-példányok használata a Batch-készletekben
@@ -65,7 +65,7 @@ A Batch-ben a számítási igényű méretek RDMA vagy GPU-képességei csak biz
 
 A Batch-készlet speciális virtuálisgép-méretének konfigurálásához több lehetőség közül választhat a szükséges szoftverek vagy illesztőprogramok telepítéséhez:
 
-* A virtuális gépek konfigurációjában található készletek esetében válasszon egy előre konfigurált [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) -beli virtuálisgép-rendszerképet, amelyen előre telepített illesztőprogramok és szoftverek találhatók. Példák: 
+* A virtuális gépek konfigurációjában található készletek esetében válasszon egy előre konfigurált [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) -beli virtuálisgép-rendszerképet, amelyen előre telepített illesztőprogramok és szoftverek találhatók. Angol nyelvű Példák: 
 
   * [CentOS-alapú 7,4 HPC](https://azuremarketplace.microsoft.com/marketplace/apps/openlogic.centos-hpc?tab=Overview) – tartalmazza a RDMA-illesztőprogramokat és az Intel MPI 5,1-et
 
@@ -161,7 +161,7 @@ A Batch API-k vagy Azure Portal használatával hozzon létre egy készletet a r
 | **Csomópontok közötti kommunikáció engedélyezve** | Igaz |
 | **Feladatok maximális száma/csomópont** | 1 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az MPI-feladatok Azure Batch készleten való futtatásához tekintse meg a Windows vagy [Linux](/archive/blogs/windowshpc/introducing-mpi-support-for-linux-on-azure-batch) [rendszerű](batch-mpi.md) példákat.
 

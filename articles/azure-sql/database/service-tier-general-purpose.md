@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: ee218253309995e721c97f4a7f7b4547b32f7c36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85986641"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database-and-azure-sql-managed-instance"></a>Általános célú Service réteg-Azure SQL Database és az Azure SQL felügyelt példánya
@@ -53,7 +53,7 @@ Az adatbázismotor vagy az operációs rendszer frissítésekor az alapul szolg�
 
 A általános célú szolgáltatási szinten a Azure SQL Database és az Azure SQL felügyelt példányának alapértelmezett szolgáltatási szintje, amelyet az általános munkaterhelések többsége számára terveztek. Ha a legtöbb esetben egy teljes körűen felügyelt adatbázismotor 99,99%-os SLA-val, valamint 5 és 10 MS közötti tárolási késéssel rendelkezik, amely megfelel az Azure-beli virtuális gépek SQL Servernek a legtöbb esetben, a általános célú szint az Ön számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megkeresheti az [SQL felügyelt példányában](../managed-instance/resource-limits.md#service-tier-characteristics)található általános célú/standard csomag (magok, I/O, memória) erőforrás-jellemzőit (mag, I/O, memória [), valamint](resource-limits-dtu-single-databases.md#single-database-storage-sizes-and-compute-sizes)a [virtuális mag-modellben](resource-limits-vcore-elastic-pools.md#general-purpose---provisioned-compute---gen4) és a [DTU-modellben](resource-limits-dtu-elastic-pools.md#standard-elastic-pool-limits)található [virtuális mag](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) -modellben vagy rugalmas készletben.
 - Ismerkedjen meg [üzletileg kritikus](service-tier-business-critical.md) -és [nagy kapacitású](service-tier-hyperscale.md) -szintekkel.

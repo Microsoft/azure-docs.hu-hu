@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744421"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>A Távoli asztal bővítmény alkalmazása az Azure Cloud Servicesra (bővített támogatás)
@@ -24,7 +24,7 @@ A Azure Portal a távoli asztal bővítmény használatával engedélyezheti a T
 
     :::image type="content" source="media/remote-desktop-1.png" alt-text="A képen a Távoli asztal lehetőség kiválasztását mutatja a Azure Portal":::
 
-2. Válassza a **Hozzáadás** elemet.
+2. Válassza a **Hozzáadás** lehetőséget.
 3. Válassza ki azokat a szerepköröket, amelyekkel engedélyezni szeretné a Távoli asztalt.
 4. Adja meg a Felhasználónév, a jelszó, a lejárat és a tanúsítvány kötelező mezőit (nem kötelező).
 
@@ -47,7 +47,7 @@ Ha a távoli asztal engedélyezve van a szerepkörökön, akkor közvetlenül a 
 4. Nyissa meg a fájlt a szerepkör-példányhoz való kapcsolódáshoz.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).

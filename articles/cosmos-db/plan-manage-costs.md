@@ -1,5 +1,5 @@
 ---
-title: A Azure Cosmos DB költségeinek megtervezése és kezelése
+title: Az Azure Cosmos DB költségeinek megtervezése és kezelése
 description: Megtudhatja, hogyan tervezheti meg és kezelheti Azure Cosmos DB költségeit a Cost Analysis használatával Azure Portalban.
 author: SnehaGunda
 ms.author: sngun
@@ -8,13 +8,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 2bea2324817986654de6689a2be15d0cbf999b38
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602146"
 ---
-# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>A Azure Cosmos DB költségeinek megtervezése és kezelése
+# <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Az Azure Cosmos DB költségeinek megtervezése és kezelése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Ez a cikk a Azure Cosmos DB költségeinek megtervezését és kezelését ismerteti. Először a Azure Cosmos DB kapacitás-kalkulátor használatával becsülje meg a számítási feladatok költségeit, mielőtt erőforrásokat hozna létre. Később megtekintheti a becsült költségeket, és megkezdheti az erőforrások létrehozását.
@@ -83,7 +83,7 @@ A Cost Analysis használatakor különböző időintervallumok esetén megtekint
 
 Azure Cosmos DB költségek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Nyissa meg a hatókört a Azure Portalban, és válassza a menü **Cost Analysis** elemét. Például lépjen az **előfizetések** elemre, válasszon ki egy előfizetést a listából, majd válassza a menü  **Cost Analysis** elemét. Válassza ki a **hatókört** , hogy másik hatókörre váltson a Cost Analysis szolgáltatásban.
 
@@ -105,14 +105,14 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A díjszabással kapcsolatos további információkért tekintse meg a következő cikkeket Azure Cosmos DB:
 
 * [Díjszabási modell az Azure Cosmos DB-ben](how-pricing-works.md)
 * [A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-throughput.md)
 * [A lekérdezési költségek optimalizálása az Azure Cosmos DB-ben](./optimize-cost-reads-writes.md)
-* [A tárolási díj optimalizálása Azure Cosmos DB](optimize-cost-storage.md)
+* [A tárterület költségeinek optimalizálása az Azure Cosmos DB-ben](optimize-cost-storage.md)
 * Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 * További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)szolgáltatással történő kezeléséről.
 * További információ a [váratlan költségek megelőzéséről](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs-erőforrásokhoz való hozzáférés 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85323114"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával
@@ -40,7 +40,7 @@ A házirend-szabály által biztosított jogok a következőket foglalhatják ma
 
 A névtér vagy az entitások házirendje legfeljebb 12 megosztott hozzáférési engedélyezési szabályt tud tárolni, amelyek a három szabály számára biztosítanak helyet, amelyek mindegyike rendelkezik az alapszintű jogokkal, valamint a Küldés és a figyelés kombinációjával. Ez a korlát azt hangsúlyozza, hogy a SAS-szabályzat tárolója nem a felhasználó-vagy szolgáltatásfiók-tároló. Ha az alkalmazásnak hozzáférést kell biztosítania Event Hubs erőforrásokhoz felhasználói vagy szolgáltatásbeli identitások alapján, akkor olyan biztonsági jogkivonat-szolgáltatást kell létrehoznia, amely a hitelesítés és a hozzáférés-ellenőrzések után az SAS-jogkivonatokat bocsát ki.
 
-Az engedélyezési szabályokhoz egy **elsődleges kulcs** és egy **másodlagos kulcs**van rendelve. Ezek a kulcsok titkosítási szempontból erős kulcsok. Ne veszítse el vagy ne szivárogjon. Mindig a Azure Portal lesznek elérhetők. A generált kulcsok bármelyikét használhatja, és bármikor újragenerálhatja őket. Ha újra létrehoz vagy módosít egy kulcsot a házirendben, az adott kulcson alapuló, korábban kiadott jogkivonatok azonnal érvénytelenné válnak. Az ilyen jogkivonatok alapján létrehozott folyamatban lévő kapcsolatok azonban továbbra is működni fognak, amíg a jogkivonat le nem jár.
+Az engedélyezési szabályokhoz egy **elsődleges kulcs** és egy **másodlagos kulcs** van rendelve. Ezek a kulcsok titkosítási szempontból erős kulcsok. Ne veszítse el vagy ne szivárogjon. Mindig a Azure Portal lesznek elérhetők. A generált kulcsok bármelyikét használhatja, és bármikor újragenerálhatja őket. Ha újra létrehoz vagy módosít egy kulcsot a házirendben, az adott kulcson alapuló, korábban kiadott jogkivonatok azonnal érvénytelenné válnak. Az ilyen jogkivonatok alapján létrehozott folyamatban lévő kapcsolatok azonban továbbra is működni fognak, amíg a jogkivonat le nem jár.
 
 Event Hubs névtér létrehozásakor a rendszer automatikusan létrehoz egy **RootManageSharedAccessKey** nevű házirend-szabályt a névtérhez. Ez a szabályzat a teljes névtérre vonatkozó engedélyeket **kezeli** . Javasoljuk, hogy ezt a szabályt rendszergazdai főfiókként kezelje, és ne használja az alkalmazásban. A portálon, a PowerShell vagy az Azure CLI használatával további szabályzatokat hozhat létre a névtér **configure (Konfigurálás** ) lapján.
 
@@ -53,7 +53,7 @@ Ha közös hozzáférési aláírásokat használ az alkalmazásokban, a követk
 A közös hozzáférési aláírások használatára vonatkozó alábbi javaslatok segíthetnek a kockázatok enyhítésében:
 
 - **Ha szükséges, az ügyfelek automatikusan megújítják az SAS**-t, ha szükséges: az ügyfeleknek a lejárat előtt is meg kell újítaniuk a sas-t, hogy az újrapróbálkozások ideje ne legyen elérhető. Ha a SAS-t kis számú azonnali, rövid életű művelethez kívánja használni, amelyeket a lejárati időszakon belül el kell végezni, akkor előfordulhat, hogy az SAS-t nem kell megújítani. Ha azonban olyan ügyfele van, amely az SAS-n keresztül rutinul kéri a kérelmeket, akkor a lejárati lehetőség a lejátszásra kerül. A legfontosabb szempont, hogy az SAS-nek rövid életűnek kell lennie (ahogy azt korábban már említettük) annak biztosításához, hogy az ügyfél kellő időben megújítsa a megújítást (a sikeres megújítás előtt lejáró SAS miatti megszakítás elkerülése érdekében).
-- Ügyeljen **a sas indítási időpontjára**: Ha **most**beállítja az SAS kezdési idejét, majd az óra eldöntése miatt (a különböző gépektől függően a jelenlegi idő eltérése), a hibák időnként megfigyelhetők az első pár percben. Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában a lejárati időre is vonatkozik. Ne feledje, hogy akár 15 perces órajelet is megvizsgálhat a kérések bármelyik irányában. 
+- Ügyeljen **a sas indítási időpontjára**: Ha **most** beállítja az SAS kezdési idejét, majd az óra eldöntése miatt (a különböző gépektől függően a jelenlegi idő eltérése), a hibák időnként megfigyelhetők az első pár percben. Általában úgy állítsa be a kezdési időpontot, hogy legalább 15 perccel korábbi legyen. Vagy ne állítsa be egyáltalán, hogy minden esetben azonnal érvényes lesz. Ugyanez általában a lejárati időre is vonatkozik. Ne feledje, hogy akár 15 perces órajelet is megvizsgálhat a kérések bármelyik irányában. 
 - **Legyen egyedi az elérni kívánt erőforrással**: biztonsági szempontból ajánlott a minimálisan szükséges jogosultságokat biztosítani a felhasználónak. Ha egy felhasználónak csak olvasási hozzáférésre van szüksége egyetlen entitáshoz, akkor olvasási hozzáféréssel kell rendelkeznie az adott entitáshoz, és nem kell olvasási/írási/törlési hozzáférést adni az összes entitáshoz. Emellett segít csökkenteni a károkat abban az esetben, ha egy SAS biztonsága sérül, mert az SAS a támadó kezében kevesebb árammal rendelkezik.
 - **Ne mindig az SAS-t használja**: időnként az adott művelethez kapcsolódó kockázatok meghaladják az SAS előnyeit Event Hubs. Ilyen műveletekhez hozzon létre egy olyan középszintű szolgáltatást, amely az üzleti szabályok érvényesítése, hitelesítése és naplózása után a Event Hubs ír.
 - **Mindig https használata**: sas létrehozása vagy terjesztése mindig HTTPS használatával. Ha a SAS átadása HTTP-n keresztül történik, és a rendszer elvégzi a lehallgatást, az ember által a középső csatolást végző támadó elolvashatja az SAS-t, majd ugyanúgy használhatja azt, mint amennyire a kívánt felhasználó rendelkezhet, esetleg veszélyezteti a bizalmas adatokat, vagy engedélyezheti az adatsérülést a rosszindulatú felhasználó számára.
@@ -61,7 +61,7 @@ A közös hozzáférési aláírások használatára vonatkozó alábbi javaslat
 ## <a name="conclusion"></a>Összegzés
 A hozzáférési aláírások megosztása hasznos lehet a korlátozott engedélyek biztosításához, hogy Event Hubs erőforrásokat az ügyfeleknek. Az Azure Event Hubst használó alkalmazások biztonsági modelljének létfontosságú részét képezik. Ha követi az ebben a cikkben felsorolt ajánlott eljárásokat, az SAS használatával nagyobb rugalmasságot biztosíthat az erőforrásokhoz való hozzáféréshez, az alkalmazás biztonságának veszélyeztetése nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő kapcsolódó cikkeket: 
 
 - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)

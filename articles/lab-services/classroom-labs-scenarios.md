@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f9eb3d44d470a978e676f6268cd693b283dd2703
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433561"
 ---
 # <a name="use-labs-for-trainings"></a>A Labs használata képzésekhez
@@ -29,7 +29,7 @@ Ebben a cikkben megismerheti azokat a különböző Azure Lab Services funkciók
 ## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>A labor-fiók létrehozása Lab-fiók rendszergazdájaként
 A Azure Lab Services használatának első lépéseként létre kell hoznia egy Lab-fiókot a Azure Portalban. Miután egy labor-fiók rendszergazdája létrehozta a labor-fiókot, a rendszergazda hozzáadja azokat a felhasználókat, akik a **labor létrehozói** szerepkörhöz szeretnék létrehozni a laborokat. Az oktatók olyan virtuális gépeket hoznak létre a diákoknak, akik a tanulók számára gyakorlatokat készítenek a tanítás során. Részletekért lásd: [labor-fiók létrehozása és kezelése](how-to-manage-lab-accounts.md).
 
-## <a name="create-and-manage-labs"></a>Laborok létrehozása és kezelése
+## <a name="create-and-manage-labs"></a>Tesztkörnyezetek létrehozása és kezelése
 Egy oktató, aki egy Lab-fiók Lab Creator szerepkörének tagja, létrehozhat egy vagy több labort a labor-fiókban. Az összes szükséges szoftverrel létrehozhatja és konfigurálhatja a sablonhoz tartozó virtuális gépet a tanfolyamon végzett gyakorlatok végrehajtásához. A rendelkezésre álló rendszerképekből kiválaszthatja a tantermi labor létrehozásához szükséges lemezképeket, majd testreszabhatja azt a laborhoz szükséges szoftver telepítésével. Részletekért lásd: [Labs létrehozása és kezelése](how-to-manage-classroom-labs.md).
 
 ## <a name="configure-usage-settings-and-policies"></a>Használati beállítások és szabályzatok konfigurálása
@@ -44,5 +44,5 @@ A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelybő
 ## <a name="use-vms-in-the-classroom-lab"></a>Virtuális gépek használata az osztályterem laborban
 Egy tanuló vagy betanítási résztvevő regisztrálja a labort, és csatlakozik a virtuális géphez, hogy a tanfolyamon gyakorlatokat hajtson végre. Részletekért lásd: a [tantermi labor elérése](how-to-use-classroom-lab.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A labor-fiók létrehozásához a laborban kövesse az alábbi cikket: [oktatóanyag: labor-fiók beállítása Azure Lab Services](tutorial-setup-lab-account.md).

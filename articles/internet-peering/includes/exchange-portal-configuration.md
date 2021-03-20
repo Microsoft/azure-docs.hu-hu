@@ -1,7 +1,7 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 titleSuffix: Azure
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 268703081a2a40e8bcc665889eaeaf8edd673bfd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81680959"
 ---
 1. A társítás **létrehozása** oldalon a **konfiguráció** lapon töltse ki a mezőket az ábrán látható módon.
@@ -20,15 +20,15 @@ ms.locfileid: "81680959"
     > [!div class="mx-imgBorder"]
     > ![Peering Page Exchange-társi típus létrehozása](../media/setup-exchange-conf-tab.png)
 
-    * A **társ**-kezelés típusa beállításnál válassza az **Exchange**lehetőséget.
-    * Válassza **SKU** az SKU **alapszintű ingyenes**lehetőséget.
+    * A **társ**-kezelés típusa beállításnál válassza az **Exchange** lehetőséget.
+    * Válassza  az SKU **alapszintű ingyenes** lehetőséget.
     * Válassza ki azt a **Metro** -helyet, ahol a társítást be szeretné állítani.
 
         > [!NOTE]
         > Ha a kiválasztott **Metro** -helyen már rendelkezik a Microsofttal való kapcsolattal, és a portálon először használja a társítást ezen a helyen, a meglévő társ-összekapcsolási kapcsolatok a megjelenő **kapcsolatok** szakaszban lesznek felsorolva. A Microsoft automatikusan átalakítja ezeket az összekapcsolási kapcsolatokat egy Azure-erőforrásra, így egyetlen helyen kezelheti őket az új kapcsolatokkal együtt. További információ: [örökölt Exchange-társítás átalakítása Azure-erőforrásra a portál használatával](../howto-legacy-exchange-portal.md).
         >
 
-1. A társítási **kapcsolatok**területen válassza az **új létrehozása** lehetőséget, és adjon hozzá egy sort minden új kapcsolathoz, amelyet be szeretne állítani.
+1. A társítási **kapcsolatok** területen válassza az **új létrehozása** lehetőséget, és adjon hozzá egy sort minden új kapcsolathoz, amelyet be szeretne állítani.
 
     * A kapcsolódási beállítások konfigurálásához vagy módosításához kattintson a sor Szerkesztés gombjára.
 
@@ -52,17 +52,17 @@ ms.locfileid: "81680959"
 
 1. Ismételje meg a lépést további kapcsolatok hozzáadásához minden olyan létesítményben, ahol a Microsoft a hálózattal együtt található, a korábban kiválasztott **metrón** belül.
 
-1. Az összes szükséges kapcsolat hozzáadása után válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Az összes szükséges kapcsolat hozzáadása után válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Egyenrangú konfiguráció lap](../media/setup-exchange-conf-tab-final.png)
 
-1. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató*üzenet...
+1. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató* üzenet...
 
     > [!div class="mx-imgBorder"]
     > ![Társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)
 
-1. Az üzenet *sikeres érvényesítése*után ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás**gombra kattintva. A kérelem módosításához válassza az **előző** lehetőséget, majd ismételje meg a lépéseket.
+1. Az üzenet *sikeres érvényesítése* után ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás** gombra kattintva. A kérelem módosításához válassza az **előző** lehetőséget, majd ismételje meg a lépéseket.
 
     > [!div class="mx-imgBorder"]
     > ![Egyenrangú küldés](../media/setup-exchange-review-tab-submit.png)

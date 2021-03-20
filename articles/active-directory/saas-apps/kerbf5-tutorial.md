@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 2fd96c47e98a6f8a66a5fda555304c4448d772e0
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
@@ -345,8 +345,8 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     * Entitás azonosítója *: https://kerb-app.com.cutestat.com
     * SP-név beállításai
     * Séma: https
-    * Gazdagép: kerbapp200. redemo. Live
-    * Leírás: kerbapp200. redemo. Live
+    * Gazdagép: kerbapp200.superdemo.live
+    * Leírás: kerbapp200.superdemo.live
 
      ![Képernyőkép, amely a "General Settings" (általános beállítások) beállítással jeleníti meg az "M L S P szolgáltatás szerkesztése" ablakot.](./media/kerbf5-tutorial/configure25.png)
 
@@ -382,7 +382,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
 1. Kattintson a névre, KerbApp200, végezze el a következő információkat, majd kattintson a **frissítés** gombra.
 
-    * Tartományi cookie: főbemutató. élő
+    * Tartományi cookie: superdemo.live
     * SSO-konfiguráció: KerAppSSO_sso
 
         ![Képernyőkép, amely a "tartomány cookie" szövegmezővel és a "S S O-konfigurációval" legördülő menüből és a "frissítés" gomb kiválasztásával jeleníti meg a "S S D/Auth Domains" lapot.](./media/kerbf5-tutorial/configure31.png)
@@ -397,7 +397,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
     * **Session. Logon. Last. usernameUPN kifejezés {[mcget {Session. SAML. Last. Identity}]}**
 
-    * **Session. ad. lastactualdomain TEXT-bemutató. élő**
+    * **Session. ad. lastactualdomain szöveg superdemo.live**
 
         ![Képernyőfelvétel: a "hozzáférési szabályzat" és a "Active Directory" párbeszédpanel, amely a "SearchFilter" szövegmezőt mutatja.](./media/kerbf5-tutorial/configure35.png)
 
@@ -452,7 +452,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 *  **1. lépés:** Delegálási fiók létrehozása
 
     **Példa**
-    * Tartománynév: **főbemutató. élő**
+    * Tartománynév: **superdemo.Live**
 
     * Sam-fiók neve: **Big-ipuser**
 

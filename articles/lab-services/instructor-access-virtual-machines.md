@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan férhetnek hozzá az oktatók a tanuló
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85445100"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Virtuális gépek elérése tanulóként a pedagógus nézetből
@@ -22,10 +22,10 @@ Itt talál egy olyan forgatókönyvet, amelyben ez a funkció segít. A tanítá
     
     ![Tanuló virtuális gépek elérése](./media/instructors-access-virtual-machines/access-student-virtual-machines.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Kapcsolódás virtuális géphez](how-to-use-classroom-lab.md#connect-to-the-vm)
+- [Csatlakozás virtuális géphez](how-to-use-classroom-lab.md#connect-to-the-vm)
 - [Kapcsolódás virtuális géphez RDP használatával Mac gépen](connect-virtual-machine-mac-remote-desktop.md)
 - [Kapcsolódás virtuális géphez RDP használatával egy Chromebook](connect-virtual-machine-chromebook-remote-desktop.md)
 - [A távoli asztal használata Linux rendszerű virtuális gépekhez](how-to-use-remote-desktop-linux-student.md)

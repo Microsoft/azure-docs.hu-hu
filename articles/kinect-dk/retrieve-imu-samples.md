@@ -8,10 +8,10 @@ ms.prod: kinect-dk
 ms.topic: conceptual
 keywords: Kinect, Azure, konfigurálás, mélység, szín, RBG, kamera, érzékelő, SDK, IMU, mozgásérzékelő, Motion, giroszkóp, giroszkóp, gyorsulásmérő, FPS
 ms.openlocfilehash: 649dd5b9de62d43d59e74d53adff1ec7de8dfd32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277291"
 ---
 # <a name="retrieve-azure-kinect-imu-samples"></a>Azure Kinect IMU-minták beolvasása
@@ -96,7 +96,7 @@ if (imu_sample != NULL)
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan dolgozhat a IMU-mintákkal, lehetősége van arra is, hogy
 >[!div class="nextstepaction"]

@@ -4,10 +4,10 @@ description: Log Analytics diagnosztikai beállítások konfigurálása egy adot
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 55461937381f7551c42714c835d4755ab65f175b
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171533"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Tár diagnosztikai beállításainak konfigurálása nagy méretekben
@@ -22,7 +22,7 @@ A diagnosztikai beállítások méretezésének leegyszerűsítése érdekében 
 
 * A szabályzat egyszerre alkalmazható egy adott előfizetésben található összes Recovery Services-tárolóra (vagy az előfizetésben található erőforráscsoporthoz). A házirendet hozzárendelő felhasználónak **tulajdonosi** hozzáféréssel kell rendelkeznie ahhoz az előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
-* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak rendelkeznie kell **olvasóval**, **közreműködővel**vagy **tulajdonosi** hozzáféréssel ahhoz az előfizetéshez, amelyben a megadott La munkaterület létezik.
+* A felhasználó által megadott LA munkaterület (amely a diagnosztikai adatok küldésére szolgál) különböző előfizetésekben lehet a Szabályzathoz hozzárendelt tárolók között. A felhasználónak rendelkeznie kell **olvasóval**, **közreműködővel** vagy **tulajdonosi** hozzáféréssel ahhoz az előfizetéshez, amelyben a megadott La munkaterület létezik.
 
 * A felügyeleti csoport hatóköre jelenleg nem támogatott.
 
@@ -36,7 +36,7 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a **szabályzat** irányítópultra.
 2. A bal oldali menüben válassza a **definíciók** lehetőséget, hogy lekérje az Azure-erőforrások összes beépített szabályzatának listáját.
-3. A **Kategória = Backup**szolgáltatás listájának szűrése Keresse meg az [előzetes verzió] nevű szabályzatot **: Recovery Services-tároló diagnosztikai beállításainak központi telepítése log Analytics munkaterületre erőforrás-specifikus kategóriákhoz**.
+3. A **Kategória = Backup** szolgáltatás listájának szűrése Keresse meg az [előzetes verzió] nevű szabályzatot **: Recovery Services-tároló diagnosztikai beállításainak központi telepítése log Analytics munkaterületre erőforrás-specifikus kategóriákhoz**.
 
     ![Házirend-definíciós ablaktábla](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
@@ -46,11 +46,11 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 
 5. Kattintson a **hozzárendelés** gombra a panel tetején. A rendszer átirányítja a **házirend-hozzárendelési** panelre.
 
-6. Az **alapok**területen válassza a **hatókör** mező melletti három pontot. Ekkor megnyílik a megfelelő környezeti ablaktábla, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport tárolói esetében legyen alkalmazva.
+6. Az **alapok** területen válassza a **hatókör** mező melletti három pontot. Ekkor megnyílik a megfelelő környezeti ablaktábla, ahol kiválaszthatja az előfizetést, amelyre alkalmazni kívánja a szabályzatot. Kiválaszthat egy erőforráscsoportot is, hogy a házirend csak egy adott erőforráscsoport tárolói esetében legyen alkalmazva.
 
     ![Szabályzat-hozzárendelés alapjai](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
-7. A **Paraméterek**területen adja meg a következő adatokat:
+7. A **Paraméterek** területen adja meg a következő adatokat:
 
     * **Profilnév** – a házirend által létrehozott diagnosztikai beállításokhoz hozzárendelni kívánt név.
     * **Log Analytics munkaterület** – az a log Analytics munkaterület, amelyhez a diagnosztikai beállítást társítani kell. A szabályzat-hozzárendelés hatókörében lévő összes tároló diagnosztikai adatait a rendszer leküldi a megadott LA munkaterületre.
@@ -59,11 +59,11 @@ Az alábbi lépéseket követve rendelheti hozzá a tárolók szabályzatát a s
 
     ![Szabályzat-hozzárendelési paraméterek](./media/backup-azure-policy-configure-diagnostics/policy-assignment-parameters.png)
 
-8. **Szervizelési feladat létrehozása** – ha a szabályzatot egy hatókörhöz rendeli hozzá, a hatókörben létrehozott új tárolók automatikusan beolvassák a beállított La diagnosztikai beállításokat (a tár létrehozásának idejétől számított 30 percen belül). A hatókörben lévő meglévő tárolók diagnosztikai beállításainak hozzáadásához a házirend-hozzárendelési időpontban aktiválhat egy szervizelési feladatot. A Szervizelési feladatok elindításához jelölje be a **szervizelési feladat létrehozása**jelölőnégyzetet.
+8. **Szervizelési feladat létrehozása** – ha a szabályzatot egy hatókörhöz rendeli hozzá, a hatókörben létrehozott új tárolók automatikusan beolvassák a beállított La diagnosztikai beállításokat (a tár létrehozásának idejétől számított 30 percen belül). A hatókörben lévő meglévő tárolók diagnosztikai beállításainak hozzáadásához a házirend-hozzárendelési időpontban aktiválhat egy szervizelési feladatot. A Szervizelési feladatok elindításához jelölje be a **szervizelési feladat létrehozása** jelölőnégyzetet.
 
     ![Szabályzat-hozzárendelés szervizelése](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
-9. Navigáljon a **felülvizsgálat + létrehozás** lapra, és válassza a **Létrehozás**lehetőséget.
+9. Navigáljon a **felülvizsgálat + létrehozás** lapra, és válassza a **Létrehozás** lehetőséget.
 
 ## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Milyen feltételek esetén érvényes a Szervizelési feladat egy tárolóra?
 

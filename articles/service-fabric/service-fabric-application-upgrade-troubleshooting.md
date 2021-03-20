@@ -4,10 +4,10 @@ description: Ez a cikk a Service Fabric-alkalmazások frissítésével és megol
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009347"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
@@ -218,7 +218,7 @@ A frissítési hiba nem fordulhat elő gyorsabban, mint a *HealthCheckWaitDurati
 
 A frissítési tartomány frissítési idejét a *UpgradeDomainTimeout* korlátozza.  Ha a *HealthCheckRetryTimeout* és a *HealthCheckStableDuration* értéke nem nulla, és az alkalmazás állapota továbbra is folyamatosra vált, a frissítés végül a *UpgradeDomainTimeout*-on történik. A *UpgradeDomainTimeout* megkezdi az aktuális frissítési tartomány verziófrissítésének megkezdését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 

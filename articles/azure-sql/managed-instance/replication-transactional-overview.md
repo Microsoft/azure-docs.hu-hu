@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
 ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99225343"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Tranzakciós replikáció az Azure SQL felügyelt példányaival (előzetes verzió)
@@ -48,7 +48,7 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 | **Publisher** | Nem | Igen |
 | **Terjesztő** | Nem | Igen|
 | **Lekéréses előfizető** | Nem | Igen|
-| **Leküldéses előfizető**| Igen | Igen|
+| **Leküldéses előfizető**| Igen | Yes|
 | &nbsp; | &nbsp; | &nbsp; |
 
 A **közzétevő** közzéteszi az egyes táblákon (cikkeken) végrehajtott módosításokat úgy, hogy elküldi a frissítéseket a terjesztőnek. A közzétevő lehet egy Azure SQL felügyelt példány vagy egy SQL Server példány.
@@ -72,10 +72,10 @@ Az Azure SQL felügyelt példánya a következő SQL Server-verziók előfizető
 
 A replikáció különböző [típusú](/sql/relational-databases/replication/types-of-replication):
 
-| Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
+| Replikálás | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
-| [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
+| [**Normál tranzakciós**](/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
+| [**Pillanatkép**](/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
 | [**Replikálás egyesítése**](/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
 | [**Egyenrangú**](/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
 | [**Kétirányú**](/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|

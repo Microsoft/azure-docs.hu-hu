@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80879598"
 ---
 # <a name="azure-blockchain-service-security"></a>Az Azure Blockchain szolgáltatás biztonsága
@@ -57,6 +57,6 @@ A titkos kulcsok a tranzakciók digitális aláírására szolgálnak. A privát
 
 A konstellációs kulcsok a kvórum-csomópontok egyedi azonosítására szolgálnak. A konstellációs kulcsok a csomópont-kiépítés időpontjában jönnek létre, és a kvórumban található privát tranzakció privateFor paraméterében vannak megadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: [Azure Active Directory hozzáférés konfigurálása az Azure Blockchain szolgáltatáshoz](configure-aad.md).

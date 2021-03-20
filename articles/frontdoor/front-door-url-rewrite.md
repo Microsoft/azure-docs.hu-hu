@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: eb5b4ab8a23a374aec54d65dd5390ab3fec3e905
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91445488"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-átírás (egyéni továbbítási útvonal)
@@ -36,7 +36,7 @@ Tekintse át az útválasztási szabályokat a következő, az előtér-gazdagé
 |            | foo\*     |
 |            | /foo/bar/\* |
 
-Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat harmadik és az azt követő oszlopai a konfigurált **Egyéni továbbítási útvonalakra**mutatnak példákat.
+Az alábbi táblázat első oszlopa a beérkező kérelmekre mutat példákat, a második oszlop pedig azt mutatja be, hogy mi lenne a "legpontosabban egyező" útvonal.  A táblázat harmadik és az azt követő oszlopai a konfigurált **Egyéni továbbítási útvonalakra** mutatnak példákat.
 
 Ha például beolvasjuk a második sort, azt mondja, hogy a bejövő kérelem esetében, `www.contoso.com/sub` Ha az egyéni továbbítási útvonal volt `/` , akkor a továbbított elérési út a következő lesz: `/sub` . Ha az egyéni továbbítási útvonal volt `/fwd/` , akkor a továbbított elérési út a következő lesz: `/fwd/sub` . És így tovább, a fennmaradó oszlopokhoz. Az alábbi elérési utak **Kiemelt** részei a helyettesítő karakteres egyezés részét képező részeket jelölik.
 

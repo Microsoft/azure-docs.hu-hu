@@ -4,10 +4,10 @@ description: Futtassa az init-tárolókat a Azure Container Instancesban a telep
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85954281"
 ---
 # <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Inicializálási tároló futtatása a telepítési feladatokhoz egy tároló csoportban
@@ -39,7 +39,7 @@ Először másolja a következő JSON-t egy nevű új fájlba `azuredeploy.json`
 * A *init1* -tároló futtatja a [BusyBox](https://hub.docker.com/_/busybox) -rendszerképet a Docker hub-ból. 60 másodpercig alvó állapotba lép, majd egy parancssori karakterláncot ír egy [emptyDir-kötetben](container-instances-volume-emptydir.md)lévő fájlba.
 * Mindkét alkalmazás-tároló futtatja a Microsoft `aci-wordcount` Container-rendszerképet:
     * A *Hamlet* -tároló az alapértelmezett konfigurációban futtatja a WordCount alkalmazást, és megszámolja a Word-gyakoriságokat a Shakespeare Play *Hamletben*.
-    * A *Júlia* app Container beolvassa a parancssori karakterláncot a emptDir kötetről, hogy a WordCount alkalmazást a Shakespeare *Romeo és Júlia*helyett futtassa.
+    * A *Júlia* app Container beolvassa a parancssori karakterláncot a emptDir kötetről, hogy a WordCount alkalmazást a Shakespeare *Romeo és Júlia* helyett futtassa.
 
 További információt és példákat a `aci-wordcount` rendszerkép használatával kapcsolatban a [környezeti változók beállítása a Container instances](container-instances-environment-variables.md)szolgáltatásban című témakörben talál.
 
@@ -209,11 +209,11 @@ Kimenet:
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az init-tárolók segítségével elvégezheti az alkalmazás-tárolók telepítési és inicializálási feladatait. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
 
-A Azure Container Instances további lehetőségeket biztosít az alkalmazás-tárolók viselkedésének módosítására. Példák erre vonatkozóan:
+A Azure Container Instances további lehetőségeket biztosít az alkalmazás-tárolók viselkedésének módosítására. Példák:
 
 * [Környezeti változók beállítása a Container instances szolgáltatásban](container-instances-environment-variables.md)
 * [A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához](container-instances-start-command.md)

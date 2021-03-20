@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81688094"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez
@@ -67,7 +67,7 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 ## <a name="direct-methods"></a>Közvetlen metódusok
 
-1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen metódus meghívása**lehetőséget. 
+1. Kattintson a jobb gombbal az eszközre, és válassza a **közvetlen metódus meghívása** lehetőséget. 
 
 2. Adja meg a metódus nevét és a hasznos adatokat a beviteli mezőben.
 
@@ -75,7 +75,7 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 ## <a name="read-device-twin"></a>Írásvédett eszköz – Twin
 
-1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése**lehetőséget. 
+1. Kattintson a jobb gombbal az eszközre, és válassza az **eszközök dupla szerkesztése** lehetőséget. 
 
 2. A rendszer egy **azure-iot-device-twin.jst nyit meg** a fájlon a Twin eszköz tartalmával.
 
@@ -91,13 +91,13 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
  
-1. Kattintson a jobb gombbal az eszközre, és válassza az **C2D-üzenet küldése az eszközre**lehetőséget. 
+1. Kattintson a jobb gombbal az eszközre, és válassza az **C2D-üzenet küldése az eszközre** lehetőséget. 
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
 3. Az eredmények a **kimenet**  >  **Azure IoT hub** nézetben jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhatja az Azure IoT Tools bővítményt a Visual Studio Code-hoz különböző felügyeleti lehetőségekkel.
 

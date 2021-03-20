@@ -4,10 +4,10 @@ description: A beállításjegyzék teljesítményével kapcsolatos gyakori prob
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 15129ebe1da2e52fac106a34863f609c440549ad
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148410"
 ---
 # <a name="troubleshoot-registry-performance"></a>Regisztrációs adatbázis teljesítményproblémáinak elhárítása
@@ -80,7 +80,7 @@ Kapcsolódó hivatkozások:
 
 ### <a name="configure-dns-for-geo-replicated-registry"></a>A DNS konfigurálása a földrajzilag replikált beállításjegyzékhez
 
-Ha a földrajzilag replikált beállításjegyzékből lekéréses műveletek lassúak, a DNS-konfiguráció az ügyfélen egy földrajzilag távoli DNS-kiszolgálóra is feloldható. Ebben az esetben előfordulhat, hogy a Traffic Manager a DNS-kiszolgálóhoz, de az ügyféltől távol lévő replikához is útválasztási kérelmek érkeznek. Futtassa `nslookup` `dig` a (z) vagy (Linux rendszeren) eszközt, hogy meghatározza azt a replikát, Traffic Manager a beállításjegyzék-kérelmeket átirányítja. Példa:
+Ha a földrajzilag replikált beállításjegyzékből lekéréses műveletek lassúak, a DNS-konfiguráció az ügyfélen egy földrajzilag távoli DNS-kiszolgálóra is feloldható. Ebben az esetben előfordulhat, hogy a Traffic Manager a DNS-kiszolgálóhoz, de az ügyféltől távol lévő replikához is útválasztási kérelmek érkeznek. Futtassa `nslookup` `dig` a (z) vagy (Linux rendszeren) eszközt, hogy meghatározza azt a replikát, Traffic Manager a beállításjegyzék-kérelmeket átirányítja. Például:
 
 ```console
 nslookup myregistry.azurecr.io

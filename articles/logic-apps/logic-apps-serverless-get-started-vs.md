@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
 ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96749147"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és Azure Functions használatával
@@ -100,7 +100,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
 
 Mielőtt megnyithatja a logikai alkalmazást a Logic app Designerben a Visual Studióban, rendelkeznie kell egy, az Azure-ban már üzembe helyezett Azure-erőforráscsoport használatával. A tervező ezután létrehozhat kapcsolatokat a logikai alkalmazás erőforrásaihoz és szolgáltatásaihoz. Ehhez a feladathoz kövesse az alábbi lépéseket a megoldás Visual studióból a Azure Portalba való üzembe helyezéséhez:
 
-1. Megoldáskezelő az erőforrás-projekt helyi menüjéből válassza az **Deploy**  >  **új** telepítése lehetőséget.
+1. Megoldáskezelő az erőforrás-projekt helyi menüjéből válassza az   >  **új** telepítése lehetőséget.
 
    ![Új központi telepítés létrehozása erőforráscsoport számára](./media/logic-apps-serverless-get-started-vs/deploy.png)
 
@@ -157,6 +157,6 @@ Az Azure-ban már üzembe helyezett Logic apps esetében továbbra is szerkeszth
 
 Ezután letöltheti a már közzétett logikai alkalmazást az erőforráscsoport-projektbe. Így bár lehet, hogy elindított egy logikai alkalmazást a Azure Portalban, továbbra is importálhatja és kezelheti az alkalmazást a Visual Studióban. További információ: [logikai alkalmazások kezelése a Visual Studióval](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Logikai alkalmazások kezelése a Visual Studióval](manage-logic-apps-with-visual-studio.md)

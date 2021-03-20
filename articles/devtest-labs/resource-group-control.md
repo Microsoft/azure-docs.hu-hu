@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan határozhat meg egy erőforráscsoportot a virt
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85483363"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Válasszon erőforráscsoportot a tesztkörnyezet virtuális gépei számára Azure DevTest Labs
@@ -34,7 +34,7 @@ Kövesse az alábbi lépéseket a laborban létrehozott összes virtuális géph
 5. A bal oldali menüben a **Beállítások** szakaszban válassza a **konfiguráció és szabályzatok** lehetőséget. 
 6. A bal oldali menüben válassza a **labor-beállítások** lehetőséget. 
 7. Válassza ki **az összes virtuális gépet egy erőforráscsoporthoz**. 
-8. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából (vagy) válassza az **új létrehozása**lehetőséget, adja meg az erőforráscsoport **nevét** , majd kattintson **az OK gombra**. 
+8. Válasszon ki egy meglévő erőforráscsoportot a legördülő listából (vagy) válassza az **új létrehozása** lehetőséget, adja meg az erőforráscsoport **nevét** , majd kattintson **az OK gombra**. 
 
     ![Válassza ki az erőforráscsoportot az összes laboratóriumi virtuális gép számára](./media/resource-group-control/select-resource-group.png)
 
@@ -103,12 +103,12 @@ Az API használatakor a következő lehetőségek közül választhat labor-tula
 Ez a beállítás a laborban létrehozott új virtuális gépekre vonatkozik. A laborban a saját erőforráscsoportok létrehozott régebbi virtuális gépek érintetlenek maradnak. A laborban létrehozott környezetek továbbra is a saját erőforráscsoportok maradnak.
 
 Az API használata:
-- Az API-verzió **2018_10_15_preview**használata.
+- Az API-verzió **2018_10_15_preview** használata.
 - Ha új erőforráscsoportot ad meg, győződjön meg arról, hogy rendelkezik **írási engedéllyel** az előfizetésben található erőforráscsoportok számára. Ha nem rendelkezik írási engedélyekkel, az új virtuális gépek létrehozása a megadott erőforráscsoporthoz sikertelen lesz.
-- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót**. Például: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
+- Az API használata közben adja át a **teljes erőforráscsoport-azonosítót**. Példa: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`. Győződjön meg arról, hogy az erőforráscsoport ugyanabban az előfizetésben van, mint a labor. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Tesztkörnyezet szabályzatának beállítása](devtest-lab-set-lab-policy.md)

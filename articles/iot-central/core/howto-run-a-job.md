@@ -8,10 +8,10 @@ ms.author: philmea
 ms.date: 11/19/2020
 ms.topic: how-to
 ms.openlocfilehash: 19d8738790b5634b9de989fa94edac6a542f85f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94917341"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Feladatok létrehozása és futtatása az Azure IoT Central alkalmazásban
@@ -117,7 +117,7 @@ A feladatok létrehozása után az **állapot** oszlop a legutóbbi feladatok á
 | Befejeződött            | Ez a feladatok minden eszközön futottak.              |
 | Sikertelen               | A feladatot nem sikerült végrehajtani, és nem futott teljesen teljes mértékben az eszközökön.  |
 | Függőben              | Ez a feladatok még nem kezdődött meg az eszközökön.         |
-| Fut              | Ez a feladatok jelenleg az eszközökön futnak.             |
+| Futó              | Ez a feladatok jelenleg az eszközökön futnak.             |
 | Leállítva              | Egy felhasználó manuálisan leállította ezt a feladatot.           |
 | Megszakítva             | A feladat meg lett szakítva, mert túllépte a **kézbesítési beállítások** lapon beállított küszöbértéket. |
 

@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927447"
 ---
 # <a name="create-an-external-app-service-environment"></a>Külső App Service-környezet létrehozása
@@ -47,9 +47,9 @@ A bekészítés létrehozása után a következők nem módosíthatók:
 
 A következő három módon hozható létre:
 
-- **App Service terv létrehozásakor** . Ez a módszer egyetlen lépésben hozza létre a központot és a App Service tervet.
-- **Önálló műveletként** . Ez a módszer egy önálló beadási módszert hoz létre, amely egy nem megfelelő beadási csomag. Ez a módszer egy fejlettebb folyamat a beadási technológia létrehozásához. Ezzel létrehoz egy ILB-t tartalmazó szolgáltatót.
-- **Egy Azure Resource Manager sablonból** . Ez a módszer speciális felhasználók számára érhető el. További információ: a bekészítés [létrehozása sablonból][MakeASEfromTemplate].
+- **App Service terv létrehozásakor**. Ez a módszer egyetlen lépésben hozza létre a központot és a App Service tervet.
+- **Önálló műveletként**. Ez a módszer egy önálló beadási módszert hoz létre, amely egy nem megfelelő beadási csomag. Ez a módszer egy fejlettebb folyamat a beadási technológia létrehozásához. Ezzel létrehoz egy ILB-t tartalmazó szolgáltatót.
+- **Egy Azure Resource Manager sablonból**. Ez a módszer speciális felhasználók számára érhető el. További információ: a bekészítés [létrehozása sablonból][MakeASEfromTemplate].
 
 A külső kiegészítő szolgáltatás egy nyilvános virtuális IP-címmel rendelkezik, ami azt jelenti, hogy a központba tartozó alkalmazásokra irányuló összes HTTP/HTTPS-forgalom internetről elérhető IP-címet tartalmaz. Egy ILB rendelkező beadási pont IP-címmel rendelkezik a szolgáltató által használt alhálózatból. Az egy ILB-beosztásban üzemeltetett alkalmazások nem jelennek meg közvetlenül az interneten.
 
@@ -75,11 +75,11 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 6. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 
-7. Válassza ki az **árképzési szintet** , és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
+7. Válassza ki az **árképzési szintet**, és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
 
     ![Árképzési szintek kiválasztása][3]
 
-8. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
+8. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net*. Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
 
     ![Új App Service csomag neve][4]
 
@@ -111,11 +111,11 @@ A beApp Servicei csomag létrehozásakor hozzon létre egy kiegészítő csomago
 
 1. A **hely** legördülő listában válassza ki azt a régiót, ahol létre kívánja hozni a központot. Ha kijelöl egy meglévő beadási lehetőséget, akkor a rendszer nem hoz létre új kiegészítőt. A App Service tervet a kiválasztott szakszolgáltatásban hozza létre a rendszer. 
 
-1. Válassza ki az **árképzési szintet** , és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
+1. Válassza ki az **árképzési szintet**, és válasszon az **elkülönített** díjszabási SKU közül. Ha egy **elkülönített** SKU-kártyát és egy olyan helyet választ, amely nem a betekintő, akkor az adott helyen létrejön egy új kiegészítő szolgáltatás. A létrehozási folyamat elindításához válassza a **kiválasztás** lehetőséget. Az **elkülönített** SKU csak a központtal együtt érhető el. Nem használhat más díjszabási SKU-t az **elkülönített** kiegészítő csomagon kívül is. 
 
     ![Árképzési szintek kiválasztása][3]
 
-1. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
+1. Adja meg a beadás nevét. Ez a név az alkalmazások címezhető nevében használatos. Ha a _appsvcenvdemo_ neve, a tartománynév a *. appsvcenvdemo.p.azurewebsites.net*. Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.appsvcenvdemo.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója.
 
     ![Új App Service csomag neve][4]
 
@@ -143,7 +143,7 @@ Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy �
 
 1. Keresse meg **app Service Environment** az Azure Marketplace piactéren, vagy válassza az **erőforrás létrehozása**  >  **web Mobile**  >  **app Service Environment** lehetőséget. 
 
-1. Adja meg a beadás nevét. A rendszer ezt a nevet használja a központhoz létrehozott alkalmazásokhoz. Ha a név *mynewdemoase* , az altartomány neve: *. mynewdemoase.p.azurewebsites.net* . Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.mynewdemoase.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója. Ha ILB használ, a beléptetési név nem használatos az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
+1. Adja meg a beadás nevét. A rendszer ezt a nevet használja a központhoz létrehozott alkalmazásokhoz. Ha a név *mynewdemoase*, az altartomány neve: *. mynewdemoase.p.azurewebsites.net*. Ha létrehoz egy *mytestapp* nevű alkalmazást, a címe a következő címen található: mytestapp.mynewdemoase.p.azurewebsites.net. Nem használhat szóközt a névben. Nagybetűs karakterek használata esetén a tartománynév a név teljes kisbetűs verziója. Ha ILB használ, a beléptetési név nem használatos az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
 
     ![Beosztási elnevezés][5]
 
@@ -167,7 +167,7 @@ Ha önálló kisegítő lehetőséget hoz létre, azzal semmi sincs benne. Egy �
 
 ## <a name="app-service-environment-v1"></a>App Service-környezet v1
 
-Továbbra is létrehozhatja a App Service Environment (ASEv1) első verziójának példányait. A folyamat elindításához keressen a piactéren **app Service Environment v1** . A bevezetőt ugyanúgy hozza létre, mint az önálló központot. Ha elkészült, a ASEv1 két előtérrel és két feldolgozóval rendelkezik. A ASEv1 az előtér-és a feldolgozókat kell kezelnie. Ezeket a rendszer nem adja hozzá automatikusan a App Service csomagok létrehozásakor. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és a feldolgozóknak küldenek forgalmat. A feldolgozók az alkalmazásokat üzemeltető szerepkörök. Az előfizetések mennyiségét és a feldolgozókat a bekészítés után módosíthatja. 
+Továbbra is létrehozhatja a App Service Environment (ASEv1) első verziójának példányait. A folyamat elindításához keressen a piactéren **app Service Environment v1**. A bevezetőt ugyanúgy hozza létre, mint az önálló központot. Ha elkészült, a ASEv1 két előtérrel és két feldolgozóval rendelkezik. A ASEv1 az előtér-és a feldolgozókat kell kezelnie. Ezeket a rendszer nem adja hozzá automatikusan a App Service csomagok létrehozásakor. A kezelőfelületek HTTP/HTTPS-végpontként működnek, és a feldolgozóknak küldenek forgalmat. A feldolgozók az alkalmazásokat üzemeltető szerepkörök. Az előfizetések mennyiségét és a feldolgozókat a bekészítés után módosíthatja. 
 
 További információ a ASEv1: [a app Service Environment v1 bemutatása][ASEv1Intro]. A ASEv1 méretezésével, kezelésével és figyelésével kapcsolatos további információkért lásd: [app Service Environment konfigurálása][ConfigureASEv1].
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: ramamill
 ms.openlocfilehash: a1ea8b6fb9800d796670161288be0d86ce6ffc42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424939"
 ---
 # <a name="service-updates-in-site-recovery"></a>Szolgáltatási frissítések a Site Recovery
@@ -92,9 +92,9 @@ Ebben az esetben erősen ajánlott [engedélyezni az automatikus frissítéseket
 
 Ha manuálisan szeretné kezelni a frissítéseket, az alábbi lehetőségek közül választhat:
 
-1. Ha egy új ügynök frissítése elérhetővé válik, Site Recovery a lap tetején lévő értesítéseket biztosít a tárolóban. A tárolóban > **replikált elemek**területen kattintson az értesítésre a képernyő tetején: 
+1. Ha egy új ügynök frissítése elérhetővé válik, Site Recovery a lap tetején lévő értesítéseket biztosít a tárolóban. A tárolóban > **replikált elemek** területen kattintson az értesítésre a képernyő tetején: 
     
-    **Az új Site Recovery replikációs ügynök frissítése elérhető. Kattintson ide a következő telepítéséhez: >** <br/><br/>Válassza ki azokat a virtuális gépeket, amelyekre alkalmazni kívánja a frissítést, majd kattintson **az OK**gombra.
+    **Az új Site Recovery replikációs ügynök frissítése elérhető. Kattintson ide a következő telepítéséhez: >** <br/><br/>Válassza ki azokat a virtuális gépeket, amelyekre alkalmazni kívánja a frissítést, majd kattintson **az OK** gombra.
 
 2. A virtuális gép vész-helyreállítási áttekintése lapon megtalálja az "ügynök állapota" mezőt, amely a "kritikus frissítés" lehetőséget fogja kimutatni, ha az ügynök lejár. Kattintson rá, és kövesse a következő utasításokat a virtuális gép manuális frissítéséhez.
 
