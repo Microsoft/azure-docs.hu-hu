@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80881077"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Útmutató: az iOS-és macOS-alapú TLS/SSL-problémák MSAL hibaelhárítása
@@ -43,6 +43,6 @@ Az SHA-1 kivonatokat használó tanúsítványok ismert biztonsági réseket tar
 
 A céges portál egy weblapot jelenít meg a felhasználónak, amikor először fér hozzá egy Wi-Fi hálózathoz, és még nem kapott hozzáférést ehhez a hálózathoz. Elfogja az internetes forgalmat, amíg a felhasználó nem teljesíti a portál követelményeit. Hálózati hibák, mert a felhasználó nem tud csatlakozni a hálózati erőforrásokhoz, amíg a felhasználó nem csatlakozik a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a [fogságban lévő portálokat](https://en.wikipedia.org/wiki/Captive_portal) és az Apple új [app TRANSPORT Security (ATS)](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW35) szolgáltatását.

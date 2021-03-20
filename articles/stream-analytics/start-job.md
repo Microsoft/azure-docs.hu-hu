@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/03/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 79149d8e9862ece24b4b2da4c2ca4afcceb23d63
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016252"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics-feladatok indítása
@@ -56,7 +56,7 @@ Három lehetőség áll rendelkezésre a **OutputStartMode**: *JobStartTime*, *C
 
 A parancsmaggal kapcsolatos további információkért `Start-AzStreamAnalyitcsJob` tekintse meg a [Start-AzStreamAnalyticsJob referenciát](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)

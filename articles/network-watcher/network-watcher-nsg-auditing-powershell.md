@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94948748"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>A NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel
@@ -34,7 +34,7 @@ Ebben az esetben összehasonlítja egy ismert jó alapkonfigurációt a virtuál
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 
 A cikkben ismertetett forgatókönyv beolvassa a virtuális gép biztonsági csoportjának nézetét.
 

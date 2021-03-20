@@ -4,10 +4,10 @@ description: A Azure Data Box használatával a kezdeti biztonsági mentési ada
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752549"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offline előkészítés a DPM és a MABS Azure Data Box használatával (előzetes verzió)
@@ -255,13 +255,13 @@ A DPM/MABS-kiszolgálóról, amelyen az offline biztonsági mentést kívánja k
     > Az Azure User ID beszerzéséhez hajtsa végre az alábbi műveletek egyikét:
     >
     >- Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
-    > - Navigáljon az CurrentUserId nevű beállításjegyzékbeli elérési útra `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` . *CurrentUserId*
+    > - Navigáljon az CurrentUserId nevű beállításjegyzékbeli elérési útra `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` . 
 
 6. Kattintson a jobb gombbal a fenti lépésben hozzáadott sztringre, majd válassza a **módosítás** lehetőséget. Az érték mezőben adja meg a **2. pontban** exportált tanúsítvány ujjlenyomatát, és kattintson az **OK gombra**.
 7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra, majd válassza a **részletek**  elemet, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza ki az **ujjlenyomatot** , és másolja az értéket.
 
    ![Ujjlenyomat értéke](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Offline előkészítés saját lemez használatával (az Azure import/export szolgáltatás használatával)](backup-azure-backup-server-import-export.md)

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
 ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87985631"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
@@ -45,7 +45,7 @@ Az Azure saját DNS a következő előnyöket biztosítja:
 
 * **Minden Azure-régióban elérhető**. Az Azure DNS Private Zones szolgáltatás az Azure nyilvános felhőben található összes Azure-régióban elérhető.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Azure DNS a következő képességeket biztosítja:
 
@@ -68,7 +68,7 @@ A Azure DNS a következő korlátozásokkal rendelkezik:
 
 A díjszabással kapcsolatos információkért tekintse meg a [Azure DNS díjszabását](https://azure.microsoft.com/pricing/details/dns/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

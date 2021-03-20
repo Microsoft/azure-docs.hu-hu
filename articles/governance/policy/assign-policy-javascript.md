@@ -5,10 +5,10 @@ ms.date: 09/24/2020
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91349001"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a JavaScript használatával
@@ -58,7 +58,7 @@ Annak engedélyezéséhez, hogy a JavaScript működjön a Azure Policyval, a k�
    ```
 
    > [!NOTE]
-   > A (z) _package.json_ `@azure/arm-policy` verzió **3.1.0** vagy újabb verziója a következő: 3.2.0 vagy újabb verzió, `@azure/arm-policyinsights` és **3.2.0** `@azure/ms-rest-nodeauth` **3.0.5** vagy újabb verziójú.
+   > A (z) _package.json_ `@azure/arm-policy` verzió **3.1.0** vagy újabb verziója a következő: 3.2.0 vagy újabb verzió, `@azure/arm-policyinsights` és  `@azure/ms-rest-nodeauth` **3.0.5** vagy újabb verziójú.
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
@@ -110,12 +110,12 @@ Az előző parancsok a következő információkat használják:
 
 - **subID** – a hitelesítési környezet előfizetés-azonosítója. Ne felejtse el lecserélni az `{subscriptionId}` előfizetését.
 - **név** – a házirend-hozzárendelési objektum egyedi neve. A fenti példa a _manageddisks-_ t használja.
-- **DisplayName** – a szabályzat-hozzárendelés megjelenítendő neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_történik.
+- **DisplayName** – a szabályzat-hozzárendelés megjelenítendő neve. Ebben az esetben a _virtuális gépek naplózása felügyelt lemezek hozzárendelése nélkül_ történik.
 - **policyDefID** – a házirend-definíció elérési útja, amely alapján létrehozza a hozzárendelést. Ebben az esetben ez a házirend-definíciós _virtuális gépek azonosítója, amelyek nem használnak felügyelt lemezeket_.
 - **description (Leírás** ) – mélyebb magyarázat arról, hogy mit tesz a szabályzat, vagy miért van hozzárendelve ehhez a hatókörhöz.
 - **hatókör** – a hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrásokat vagy erőforrásokat kíván érvényesíteni. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
   - Felügyeleti csoport: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Előfizetés `/subscriptions/{subscriptionId}`
+  - Előfizetés: `/subscriptions/{subscriptionId}`
   - Erőforráscsoport: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - Erőforrás `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -189,7 +189,7 @@ Az eredmények megegyeznek a szabályzat-hozzárendelés **erőforrás-megfelel�
   npm uninstall @azure/arm-policy @azure/arm-policyinsights @azure/ms-rest-nodeauth yargs
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 

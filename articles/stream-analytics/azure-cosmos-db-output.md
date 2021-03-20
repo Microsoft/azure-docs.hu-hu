@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016577"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Cosmos DB kimenete
@@ -25,7 +25,7 @@ Stream Analytics Azure Cosmos DB kimenete jelenleg nem érhető el az Azure Chin
 
 Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságait ismerteti.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Az Stream Analytics-lekérdezésben ezt a kimenetet meghívó alias. |
 | Sink (Fogadó) | Azure Cosmos DB. |
@@ -44,7 +44,7 @@ A partíciós kulcs a lekérdezés PARTITION BY záradékán alapul. A kimeneti 
 
 Az üzenetek maximális méretéhez lásd: [Azure Cosmos db korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). A köteg mérete és az írási gyakoriság a Azure Cosmos DB válaszok alapján dinamikusan módosul. A Stream Analytics nem rendelkezik előre meghatározott korlátozásokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

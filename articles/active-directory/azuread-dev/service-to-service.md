@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154763"
 ---
 # <a name="service-to-service-apps"></a>Szolgáltatások közötti alkalmazások
@@ -61,14 +61,14 @@ Tekintse meg a Daemon vagy a Server Application webes API-forgatókönyvekre von
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-* Egyetlen bérlő – az alkalmazás identitása és a delegált felhasználó identitása esetében a démont vagy a kiszolgálói alkalmazást ugyanabban a címtárban kell regisztrálni az Azure AD-ben. A webes API beállítható úgy, hogy a démon vagy a kiszolgáló erőforrásaihoz való hozzáférés korlátozására szolgáló engedélyek körét tegye elérhetővé. Ha a delegált felhasználói azonosító típusa használatban van, a kiszolgálói alkalmazásnak ki kell választania a kívánt engedélyeket. Az alkalmazás regisztrációjának **API-engedély** lapján az **engedély hozzáadása** és az API-család kiválasztása után válassza a **delegált engedélyek**lehetőséget, majd válassza ki az engedélyeket. Ez a lépés nem kötelező, ha az alkalmazás identitásának típusa használatban van.
+* Egyetlen bérlő – az alkalmazás identitása és a delegált felhasználó identitása esetében a démont vagy a kiszolgálói alkalmazást ugyanabban a címtárban kell regisztrálni az Azure AD-ben. A webes API beállítható úgy, hogy a démon vagy a kiszolgáló erőforrásaihoz való hozzáférés korlátozására szolgáló engedélyek körét tegye elérhetővé. Ha a delegált felhasználói azonosító típusa használatban van, a kiszolgálói alkalmazásnak ki kell választania a kívánt engedélyeket. Az alkalmazás regisztrációjának **API-engedély** lapján az **engedély hozzáadása** és az API-család kiválasztása után válassza a **delegált engedélyek** lehetőséget, majd válassza ki az engedélyeket. Ez a lépés nem kötelező, ha az alkalmazás identitásának típusa használatban van.
 * Több-bérlős – először a démon vagy a kiszolgálóalkalmazás úgy van konfigurálva, hogy jelezze a működéséhez szükséges engedélyeket. A szükséges engedélyek listája egy párbeszédpanelen jelenik meg, ha a célként megadott könyvtárban lévő felhasználó vagy rendszergazda beleegyezik az alkalmazásba, ami elérhetővé teszi a szervezet számára. Egyes alkalmazásokhoz csak felhasználói szintű engedélyek szükségesek, amelyeket a szervezet bármely felhasználója jóváhagyhat. Más alkalmazásokhoz rendszergazdai szintű engedélyek szükségesek, amelyeket a szervezet felhasználója nem tud jóváhagyni. Csak a címtár-rendszergazda engedélyezheti az ilyen szintű engedélyeket igénylő alkalmazásokhoz való hozzáférést. A felhasználó vagy a rendszergazda beleegyezése esetén mindkét webes API regisztrálva van a címtárában.
 
 ## <a name="token-expiration"></a>Jogkivonat lejárata
 
 Ha az első alkalmazás az engedélyezési kódját használja egy JWT hozzáférési jogkivonat beszerzéséhez, akkor a JWT frissítési tokent is kap. Ha a hozzáférési jogkivonat lejár, a frissítési token használatával újra hitelesítheti a felhasználót a hitelesítő adatok kérése nélkül. Ezt a frissítési tokent a rendszer a felhasználó hitelesítésére használja, amely új hozzáférési jogkivonatot és frissítési jogkivonatot eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
 - Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

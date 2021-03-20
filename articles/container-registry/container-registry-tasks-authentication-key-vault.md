@@ -4,10 +4,10 @@ description: Konfiguráljon egy Azure Container Registry feladatot (ACR-feladato
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 0bc43f958a14016146160a06372af0b36a9fff75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86058129"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
@@ -218,7 +218,7 @@ Run ID: cf24 was successful after 15s
 
 A rendszerkép leküldésének megerősítéséhez keresse meg a saját Docker hub-tárházban található címkét ( `cf24` ebben a példában).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [felügyelt identitások ACR-feladatokban való engedélyezéséről](container-registry-tasks-authentication-managed-identity.md).
 * Lásd az [ACR-feladatok YAML-referenciáját](container-registry-tasks-reference-yaml.md)

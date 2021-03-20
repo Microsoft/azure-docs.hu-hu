@@ -7,10 +7,10 @@ ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007166"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>A grafikus teljesítménnyel kapcsolatos problémák diagnosztizálása a Távoli asztalban
@@ -33,11 +33,11 @@ A grafikus teljesítményszámlálók azonosításához szüksége lesz a távol
 
 Miután meghatározta a távoli munkamenet nevét, kövesse az alábbi utasításokat, hogy összegyűjtse a távoli munkamenethez tartozó távoli grafikus teljesítményszámlálókat.
 
-1. Válassza **Start**a  >  **felügyeleti eszközök**  >  **Teljesítményfigyelő**indítása elemet.
-2. A **Teljesítményfigyelő** párbeszédpanelen bontsa ki a **figyelési eszközök**elemet, válassza a **Teljesítményfigyelő**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. Válassza a  >  **felügyeleti eszközök**  >  **Teljesítményfigyelő** indítása elemet.
+2. A **Teljesítményfigyelő** párbeszédpanelen bontsa ki a **figyelési eszközök** elemet, válassza a **Teljesítményfigyelő** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 3. A **számlálók hozzáadása** párbeszédpanelen, a **rendelkezésre álló számlálók** listából bontsa ki a távoli rendszerképekhez tartozó szakaszt.
 4. Válassza ki a figyelni kívánt számlálókat.
-5. A **kiválasztott objektumok** listájának példányai listában válassza ki a kijelölt számlálók számára figyelni kívánt példányokat, majd válassza a **Hozzáadás**lehetőséget. Az összes rendelkezésre álló számláló-példány kiválasztásához válassza a **minden példány**lehetőséget.
+5. A **kiválasztott objektumok** listájának példányai listában válassza ki a kijelölt számlálók számára figyelni kívánt példányokat, majd válassza a **Hozzáadás** lehetőséget. Az összes rendelkezésre álló számláló-példány kiválasztásához válassza a **minden példány** lehetőséget.
 6. A számlálók hozzáadása után kattintson **az OK gombra**.
 
 A kiválasztott teljesítményszámlálók megjelennek a Teljesítményfigyelő képernyőjén.

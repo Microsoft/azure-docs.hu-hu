@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.custom: mvc
 ms.openlocfilehash: c7faeecfcc3a1d006cc923b48339a1242a0b9e9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148603"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances és Container-szervezők
 
-A kis méret és az alkalmazási irányultság miatt a tárolók jól illeszkednek az agilis kézbesítési környezetekhez és a Service-alapú architektúrához. A nagy mennyiségű tároló automatizálásának és kezelésének *, valamint a*velük való interakciónak a feladatát a rendszer hangolja. A népszerű Container-szervezők közé tartozik a Kubernetes, a DC/OS és a Docker Swarm.
+A kis méret és az alkalmazási irányultság miatt a tárolók jól illeszkednek az agilis kézbesítési környezetekhez és a Service-alapú architektúrához. A nagy mennyiségű tároló automatizálásának és kezelésének *, valamint a* velük való interakciónak a feladatát a rendszer hangolja. A népszerű Container-szervezők közé tartozik a Kubernetes, a DC/OS és a Docker Swarm.
 
 A Azure Container Instances a koordináló platformok alapszintű ütemezési funkcióit biztosítja. Noha nem fedi le a platform által biztosított magasabb értékű szolgáltatásokat, Azure Container Instances is kiegészítheti őket. Ez a cikk ismerteti a Azure Container Instances-kezelők hatókörét, valamint azt, hogy a teljes tárolók hogyan kezelhetik azt.
 

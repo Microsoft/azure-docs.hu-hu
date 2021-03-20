@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: c23dca40d50c5837bd9ff45bc3c3d7fb2581685b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420750"
 ---
 # <a name="join-data"></a>Csatlakozás adatokhoz
@@ -47,17 +47,17 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
    
 1. Az **összekapcsolás típusa** legördülő listával adhatja meg, hogy az adatkészletek hogyan legyenek egyesítve.  
   
-    * **Belső illesztés** : a leggyakoribb csatlakozási művelet a *belső* illesztés. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
+    * **Belső illesztés**: a leggyakoribb csatlakozási művelet a *belső* illesztés. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
   
-    * **Bal külső illesztés** : a bal oldali *külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
+    * **Bal külső illesztés**: a bal oldali *külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
   
-    * **Teljes külső illesztés** : a *teljes külső illesztés* a bal oldali táblából ( **tábla1** ) és a jobb oldali táblából ( **table2** ) származó összes sort adja vissza.  
+    * **Teljes külső illesztés**: a *teljes külső illesztés* a bal oldali táblából (**tábla1**) és a jobb oldali táblából (**table2**) származó összes sort adja vissza.  
   
          A másik tábla minden olyan sorához, amely nem rendelkezik egyező sorokkal, az eredmény tartalmaz egy sort, amely a hiányzó értékeket tartalmazza.  
   
-    * **Bal oldali félig illesztés** : a *bal oldali fél* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
+    * **Bal oldali félig illesztés**: a *bal oldali fél* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
 
-1. A **jobb oldali kulcsok oszlopai az összekapcsolt táblában** :
+1. A **jobb oldali kulcsok oszlopai az összekapcsolt táblában**:
 
     * Ezzel a beállítással mindkét bemeneti táblából megtekintheti a kulcsokat.
     * Törölje a jelölést, hogy csak a bal oldali bemenetből származó kulcs oszlopokat adja vissza.
@@ -66,6 +66,6 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
 
 1. Az eredmények megtekintéséhez kattintson a jobb gombbal a **csatlakozásra** , majd válassza a **Megjelenítés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

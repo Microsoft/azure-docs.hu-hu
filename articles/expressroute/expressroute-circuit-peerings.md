@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
 ms.openlocfilehash: 87fed1d2ac4f5fa85c01d7af10bec10c1412744f
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202344"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-kapcsolatcsoportok és -társviszonyok
@@ -44,13 +44,13 @@ Egy ExpressRoute-áramkörhöz több útválasztási tartomány/társ tartozik: 
 
 ![Ábra, amely bemutatja, hogyan vannak konfigurálva az Azure nyilvános, az Azure Private-és a Microsoft-partnerek egy ExpressRoute-áramkörben.](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 
-### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure-beli privát társviszony
+### <a name="azure-private-peering"></a><a name="privatepeering"></a>Azure-beli privát társhálózat-létesítés
 
 A virtuális hálózatokon belül üzembe helyezett Azure számítási szolgáltatások, nevezetesen a virtuális gépek (IaaS-EK) és a Cloud Services (Pásti) a privát társ-létrehozási tartományon keresztül csatlakoztathatók. A privát társ-létrehozási tartomány az alapvető hálózat megbízható kiterjesztésének tekintendő Microsoft Azureba. Az alapvető hálózat és az Azure-beli virtuális hálózatok (virtuális hálózatok-EK) között kétirányú kapcsolat is beállítható. Ez a társítás lehetővé teszi a virtuális gépekhez és a felhőalapú szolgáltatásokhoz való közvetlen kapcsolódást a magánhálózati IP-címeken.  
 
 Több virtuális hálózatot is összekapcsolhat a privát társ-létrehozási tartományhoz. A korlátozásokkal és korlátozásokkal kapcsolatos információkért tekintse át a [GYIK oldalt](expressroute-faqs.md) . Az [Azure-előfizetések és-szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md) ismertető oldalt megtekintheti a korlátozásokkal kapcsolatos naprakész információkhoz.  Az útválasztási konfigurációval kapcsolatos részletes információkért tekintse meg az [Útválasztás](expressroute-routing.md) lapot.
 
-### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoftos társviszony
+### <a name="microsoft-peering"></a><a name="microsoftpeering"></a>Microsoft-partnerek
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 629a154c89ad301a3e200b1d6cd04c62057d9959
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016541"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>1. generációs kimenet Azure Data Lake Storage Azure Stream Analytics
@@ -23,7 +23,7 @@ Stream Analytics Azure Data Lake Storage kimenete nem érhető el az Azure China
 
 A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tartozó leírásokat a Data Lake Storage 1. generációs kimenetének konfigurálásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének Data Lake Storeba való irányítására szolgál. |
 | Előfizetés | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
@@ -45,7 +45,7 @@ A partíciós kulcshoz használja a {Date} és az {Time} tokent az elérési út
 
 Az üzenetek maximális méretéhez lásd: [Data Lake Storage korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits). A köteg méretének optimalizálása érdekében írási művelet esetén akár 4 MB-ot is használhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával (előzetes verzió)](stream-analytics-managed-identities-adls.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)

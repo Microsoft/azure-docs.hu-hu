@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: 6df47d3fd62083a5d0940a1d6da50ac5d7d955f4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92150905"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
@@ -58,7 +58,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Adja meg a következő információkat:
 
-    | Név | Érték |
+    | Name | Érték |
     |---|---|
     | Erőforrás neve | A SignalR Service-példány egyedi neve |
     | Erőforráscsoport | Új erőforráscsoport létrehozása egyedi névvel |
@@ -67,7 +67,7 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Kattintson a **Létrehozás** lehetőségre.
 
-1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
+1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló* nélkülire.
 
     ![Jelző szolgáltatás üzemmódja](media/signalr-concept-azure-functions/signalr-service-mode.png)
     
@@ -317,17 +317,17 @@ Eddig mind a függvényalkalmazást, mind a csevegőalkalmazást helyileg futtat
 
 1. A bejelentkezési folyamat végrehajtásához kövesse a böngészőben megjelenő utasításokat.
 
-### <a name="create-a-storage-account"></a>Tárfiók létrehozása
+### <a name="create-a-storage-account"></a>Storage-fiók létrehozása
 
 Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége. A csevegés felhasználói felületének weblapját az Azure Storage statikus webhelyek funkciójának használatával is üzemeltetheti.
 
 1. A Azure Portal kattintson az **erőforrás létrehozása** ( **+** ) gombra egy új Azure-erőforrás létrehozásához.
 
-1. Válassza ki a **tárolási** kategóriát, majd válassza a **Storage-fiók**lehetőséget.
+1. Válassza ki a **tárolási** kategóriát, majd válassza a **Storage-fiók** lehetőséget.
 
 1. Adja meg a következő információkat:
 
-    | Név | Érték |
+    | Name | Érték |
     |---|---|
     | Előfizetés | Válassza ki a Signaler Service-példányt tartalmazó előfizetést. |
     | Erőforráscsoport | Azonos erőforráscsoport kiválasztása |
@@ -338,17 +338,17 @@ Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége.
     | Replikáció | Helyileg redundáns tárolás (LRS) |
     | Hozzáférési szintek | Gyakori |
 
-1. Kattintson a **felülvizsgálat + létrehozás**, majd a **Létrehozás**elemre.
+1. Kattintson a **felülvizsgálat + létrehozás**, majd a **Létrehozás** elemre.
 
 ### <a name="configure-static-websites"></a>Statikus webhelyek konfigurálása
 
 1. A Storage-fiók létrehozása után nyissa meg a Azure Portal.
 
-1. Válassza a **statikus webhely**lehetőséget.
+1. Válassza a **statikus webhely** lehetőséget.
 
 1. Válassza az **engedélyezve** lehetőséget a statikus webhely funkció engedélyezéséhez.
 
-1. Az **index dokumentum neve**mezőbe írja be *index.html*értéket.
+1. Az **index dokumentum neve** mezőbe írja be *index.html* értéket.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -360,9 +360,9 @@ Eddig a csevegőalkalmazás névtelenül működött. Az Azure-ban az [App Servi
 
 Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott ügyfélnek, vagy csak az adott felhasználó esetében hitelesített ügyfeleknek küldje-e el.
 
-1. A VS Code-ban nyissa meg az **egyeztetés/function.jsa**következőn:.
+1. A VS Code-ban nyissa meg az **egyeztetés/function.jsa** következőn:.
 
-1. A*SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](../azure-functions/functions-triggers-bindings.md): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
+1. A *SignalRConnectionInfo* kötés *userId* tulajdonságában adjon meg egy [kötési kifejezést](../azure-functions/functions-triggers-bindings.md): `{headers.x-ms-client-principal-name}`. Ez az értéket a hitelesített felhasználó felhasználónevére állítja be. Az attribútumnak most így kell kinéznie:
 
     ```json
     {
@@ -390,7 +390,7 @@ Az alkalmazás eldöntheti, hogy az egyes üzeneteket minden csatlakoztatott üg
     | Függvényalkalmazás | Válassza ki a **Create New Function App** (Új függvényalkalmazás létrehozása) elemet |
     | Függvényalkalmazás neve | Adjon meg egy egyedi nevet |
     | Erőforráscsoport | Azt az erőforráscsoportot válassza ki, amelyikbe a SignalR Service-példány is tartozik. |
-    | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
+    | A(z) | Válassza ki a korábban létrehozott Storage-fiókot |
 
     Az Azure-ban létrejön egy új függvényalkalmazás, és megindul az üzembehelyezési folyamat. Várjon, amíg az üzembe helyezés befejeződik.
 
@@ -421,7 +421,7 @@ Az App Service-hitelesítés a Microsoft-fiókkal végzett, illetve az Azure Act
 
 1. Válassza ki az előfizetés és a függvényalkalmazás nevét az alkalmazás megnyitásához az Azure Portalon.
 
-1. A portálon megnyitott Function alkalmazásban keresse meg a **platform szolgáltatásai** lapot, majd válassza a **hitelesítés/engedélyezés**lehetőséget.
+1. A portálon megnyitott Function alkalmazásban keresse meg a **platform szolgáltatásai** lapot, majd válassza a **hitelesítés/engedélyezés** lehetőséget.
 
 1. Kapcsolja **Be** az App Service-hitelesítést.
 
@@ -461,10 +461,10 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
 
 1. Írja be a következő értékeket:
 
-    | Név | Érték |
+    | Name | Érték |
     |---|---|
     | Előfizetés | Az előfizetés kiválasztása |
-    | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
+    | A(z) | Válassza ki a korábban létrehozott Storage-fiókot |
     | Folder to deploy (Üzembe helyezni kívánt mappa) | Válassza a **Tallózás** lehetőséget, és válassza ki a *tartalom* mappát. |
 
 A *tartalom* mappában lévő fájlokat most telepíteni kell a statikus webhelyre.
@@ -475,7 +475,7 @@ Bár a **local.settings.json** fájlban lehetőség van a CORS beállítására,
 
 1. Nyissa meg a függvényalkalmazást az Azure Portalon.
 
-1. A **platform szolgáltatásai** lapon válassza a **CORS**lehetőséget.
+1. A **platform szolgáltatásai** lapon válassza a **CORS** lehetőséget.
 
     ![A CORS helye](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 

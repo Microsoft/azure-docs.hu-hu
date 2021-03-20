@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142460"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
@@ -40,7 +40,7 @@ Ha többet szeretne megtudni ezekről a képességekről, tekintse meg a követk
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy **LockDoor**nevű közvetlen metódust megvalósító eszközt, amelyet a háttérbeli alkalmazás meghívhat.
+* Hozzon létre egy **LockDoor** nevű közvetlen metódust megvalósító eszközt, amelyet a háttérbeli alkalmazás meghívhat.
 
 * Hozzon létre egy háttérbeli alkalmazást, amely létrehoz egy feladatot a **LockDoor** Direct metódus több eszközön való meghívásához. Egy másik feladatot a kívánt tulajdonságok frissítései több eszközre küldenek.
 
@@ -70,15 +70,15 @@ Az oktatóanyag végén két .NET-es (C#) konzolos alkalmazás található:
 
 Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megoldás hátterében meghívott közvetlen metódusra válaszol.
 
-1. A Visual Studióban válassza az **új projekt létrehozása**lehetőséget, majd válassza a **Console app (.NET-keretrendszer)** projekt sablonját. A folytatáshoz válassza a **Tovább** gombot.
+1. A Visual Studióban válassza az **új projekt létrehozása** lehetőséget, majd válassza a **Console app (.NET-keretrendszer)** projekt sablonját. A folytatáshoz válassza a **Tovább** gombot.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a projekt *SimulateDeviceMethods*, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** lapon nevezze el a projekt *SimulateDeviceMethods*, majd válassza a **Létrehozás** lehetőséget.
 
     ![A SimulateDeviceMethods-projekt konfigurálása](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
-1. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
+1. A **NuGet csomagkezelő** területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client** elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
@@ -167,15 +167,15 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
 
 Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a C# használatával), amely feladatokkal hívja meg a **LockDoor** Direct metódust, és több eszközre küldi a kívánt tulajdonságokat.
 
-1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. Az **új projekt létrehozása**területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget. Az **új projekt létrehozása** területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább** gombra.
 
-1. Az **új projekt konfigurálása**területen nevezze el a projekt *ScheduleJob*. A **megoldáshoz**válassza a **Hozzáadás a megoldáshoz**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** területen nevezze el a projekt *ScheduleJob*. A **megoldáshoz** válassza a **Hozzáadás a megoldáshoz** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
     ![ScheduleJob-projekt neve és konfigurálása](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
-1. Megoldáskezelő kattintson a jobb gombbal a **ScheduleJob** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Megoldáskezelő kattintson a jobb gombbal a **ScheduleJob** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. A **NuGet csomagkezelő**lapon válassza a **Tallózás**lehetőséget, keresse meg a **Microsoft. Azure. Devices**elemet, majd válassza a **telepítés**lehetőséget.
+1. A **NuGet csomagkezelő** lapon válassza a **Tallózás** lehetőséget, keresse meg a **Microsoft. Azure. Devices** elemet, majd válassza a **telepítés** lehetőséget.
 
    Ez a lépés letölti, telepíti és hozzáadja az [Azure IoT Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet csomagra és annak függőségeire mutató hivatkozást.
 
@@ -293,13 +293,13 @@ Ebben a szakaszban létrehoz egy .NET-konzol alkalmazást (a C# használatával)
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása** lehetőséget.
 
-1. Válassza az **Általános tulajdonságok**  >  **indítási projekt**elemet, majd válassza a **több indítási projekt**lehetőséget.
+1. Válassza az **Általános tulajdonságok**  >  **indítási projekt** elemet, majd válassza a **több indítási projekt** lehetőséget.
 
 1. Győződjön meg arról, hogy a `SimulateDeviceMethods` lista tetején található, majd a `ScheduleJob` . Állítsa be mindkét műveletét a **kezdéshez** , majd kattintson **az OK gombra**.
 
-1. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása**parancsra.
+1. A projektek futtatásához kattintson a **Start** gombra, vagy lépjen a **hibakeresés** menüre, és kattintson a **hibakeresés indítása** parancsra.
 
    Az eszköz és a háttérbeli alkalmazások kimenete is megjelenik.
 

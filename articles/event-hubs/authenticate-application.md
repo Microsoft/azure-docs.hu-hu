@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Active Directory Azure Event Hubs-erőforrások e
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: 25ec5f11ca7b5e801e18155f1a3da6474c8e66e2
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913313"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
@@ -43,7 +43,7 @@ Az Azure AD Event Hubs erőforrások engedélyezésére való használatának el
 
 A következő képek a webalkalmazások regisztrálásának lépéseit mutatják be:
 
-![Alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
+![Egy alkalmazás regisztrálása](./media/authenticate-application/app-registrations-register.png)
 
 > [!Note]
 > Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az átirányítási URI-hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.

@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: System Architecture'
 ms.openlocfilehash: 9ff8ebeaf7c4a219bc403c81dfea62f4657a1fd8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148341"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Az IoT Hub-eszközfelügyelet áttekintése
@@ -89,7 +89,7 @@ A teljes megoldás megvalósításához számos eszközkezelői követelménynek
     * [IoT-eszközök konfigurálása és figyelése nagy méretekben](./iot-hub-automatic-device-management.md)
     * [Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül](iot-hub-configuration-best-practices.md)
 
-* **Kivonás: az**eszközök lecserélése vagy leszerelése meghibásodás után, frissítési ciklus vagy a szolgáltatás élettartama végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
+* **Kivonás: az** eszközök lecserélése vagy leszerelése meghibásodás után, frissítési ciklus vagy a szolgáltatás élettartama végén.  Az ikereszközök használatával az eszközinformációk abban az esetben is megőrizhetők, ha a fizikai eszközt kicserélik vagy a kivonás során archiválják. Az IoT Hub-identitásjegyzék alkalmazásával lehetséges az eszközidentitások és -hitelesítő adatok biztonságos visszahívása.
   
     *További olvasnivalók*: 
     * [Az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)

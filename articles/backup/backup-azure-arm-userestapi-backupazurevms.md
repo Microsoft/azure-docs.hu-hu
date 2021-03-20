@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 9ba22c51c7a6c26a232ed20aec21fc83d2c54b37
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92171463"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Azure-beli virtuális gép biztonsági mentése Azure Backup használatával REST API
@@ -41,7 +41,7 @@ A "refresh" művelet egy [aszinkron művelet](../azure-resource-manager/manageme
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |204 nincs tartalom     |         |  Nem visszaadott tartalommal rendelkező OK      |
 |202 elfogadva     |         |     Elfogadva    |
@@ -104,7 +104,7 @@ A *Get* URI az összes szükséges paraméterrel rendelkezik. Nincs szükség to
 
 #### <a name="responses-to-get-operation"></a>Válaszok a lekérési műveletre
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Védett elem létrehozásához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem erőforrás tulajdonságai         |
 
@@ -208,7 +208,7 @@ A védett elemek létrehozása egy [aszinkron művelet](../azure-resource-manage
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 elfogadva     |         |     Elfogadva    |
@@ -298,10 +298,10 @@ A fenti kérelem törzsében a biztonsági mentésre kerülő lemezek listáját
 
 |Tulajdonság  |Érték  |
 |---------|---------|
-|diskLunList     | A lemez LUN listája az *adatlemezek logikai egységeit*tartalmazó lista. **Az operációsrendszer-lemez mindig biztonsági mentés alatt áll, ezért nem kell megemlíteni**.        |
+|diskLunList     | A lemez LUN listája az *adatlemezek logikai egységeit* tartalmazó lista. **Az operációsrendszer-lemez mindig biztonsági mentés alatt áll, ezért nem kell megemlíteni**.        |
 |IsInclusionList     | **Igaz** értéknek kell lennie ahhoz, hogy a logikai egységek szerepeljenek a biztonsági mentés során. Ha **hamis**, a fent említett logikai egységek ki lesznek zárva.         |
 
-Ha tehát a követelmény, hogy csak az operációsrendszer-lemezt készítsen biztonsági másolatot, az _összes_ adatlemezt ki kell zárni. A legegyszerűbben azt mondhatjuk, hogy a rendszer nem tartalmaz adatlemezt. Így a lemez LUN listája üres lesz, a **IsInclusionList** pedig **igaz**lesz. Hasonlóképpen gondoljon arra is, hogy mi a könnyebb kiválasztani egy részhalmazt: néhány lemezt mindig ki kell zárni, vagy néhány lemezt mindig fel kell venni. Válassza ki a LUN-listát és a logikai változó értékét ennek megfelelően.
+Ha tehát a követelmény, hogy csak az operációsrendszer-lemezt készítsen biztonsági másolatot, az _összes_ adatlemezt ki kell zárni. A legegyszerűbben azt mondhatjuk, hogy a rendszer nem tartalmaz adatlemezt. Így a lemez LUN listája üres lesz, a **IsInclusionList** pedig **igaz** lesz. Hasonlóképpen gondoljon arra is, hogy mi a könnyebb kiválasztani egy részhalmazt: néhány lemezt mindig ki kell zárni, vagy néhány lemezt mindig fel kell venni. Válassza ki a LUN-listát és a logikai változó értékét ennek megfelelően.
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Igény szerinti biztonsági mentés elindítása egy védett Azure-beli virtuális gépen
 
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Az igény szerinti biztonsági mentés elindításához kövesse a kérelem törzsének összetevőit.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource tulajdonságai         |
 
@@ -348,7 +348,7 @@ Az igény szerinti biztonsági mentés indítása [aszinkron művelet](../azure-
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 200 (OK), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |202 elfogadva     |         |     Elfogadva    |
 
@@ -477,7 +477,7 @@ A védelem *törlése* [aszinkron művelet](../azure-resource-manager/management
 
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, majd 204 (nincs tartalom), amikor a művelet befejeződik.
 
-|Név  |Típus  |Leírás  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
 |204 tartalom     |         |  Nincs tartalom       |
 |202 elfogadva     |         |     Elfogadva    |

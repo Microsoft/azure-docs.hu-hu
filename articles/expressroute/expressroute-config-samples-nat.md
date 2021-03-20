@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/07/2021
 ms.author: duau
 ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012665"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>Útválasztó-konfigurációs minták a NAT beállításához és kezeléséhez
@@ -360,6 +360,6 @@ Tekintse át a mintákat az [útválasztási konfigurációs minták](expressrou
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 

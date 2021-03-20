@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
 ms.openlocfilehash: 3b9edab6e908b4506a92c78aa8f3f53277b9c17b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91360871"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépekről az elsődleges régióba irányuló feladatátvételhez kapcsolódó védelem-visszaállítási művelet meghiúsult
@@ -29,7 +29,7 @@ Ha az Azure-beli virtuális gépeket az egyik régióból a másikba [Azure site
 
 ## <a name="reprotect-a-vm"></a>Virtuális gép újravédése
 
-1. A **tárolóban**  >  **replikált elemek**területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
+1. A **tárolóban**  >  **replikált elemek** területen kattintson a jobb gombbal a feladatátvételen átadott virtuális gépre, majd válassza az **ismételt védelem** lehetőséget. Az ismételt védelem irányának másodlagosról elsődlegesre kell mutatnia.
 
    ![A képernyőképen egy olyan virtuális gép látható, amelynek a helyi menüje a kijelölés ismételt védelemmel van ellátva.](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
@@ -46,7 +46,7 @@ Az ismételt védelem során a cél virtuális gép alábbi tulajdonságait szab
 
 |Tulajdonság |Jegyzetek  |
 |---------|---------|
-|Cél erőforráscsoport | Módosítsa a célként megadott erőforráscsoportot, amelyben a virtuális gép létrejött. Az ismételt védelem részeként a cél virtuális gép törlődik. Kiválaszthat egy új erőforráscsoportot, amely alatt a virtuális gépet a feladatátvételt követően hozza létre. |
+|Cél-erőforráscsoport | Módosítsa a célként megadott erőforráscsoportot, amelyben a virtuális gép létrejött. Az ismételt védelem részeként a cél virtuális gép törlődik. Kiválaszthat egy új erőforráscsoportot, amely alatt a virtuális gépet a feladatátvételt követően hozza létre. |
 |Célként megadott virtuális hálózat | A célként megadott hálózat nem módosítható az újravédelemi feladatokban. A hálózat módosításához ismételje meg a hálózati leképezést. |
 |Cél tárterület (a másodlagos virtuális gép nem használ felügyelt lemezeket) | Módosíthatja azt a Storage-fiókot, amelyet a virtuális gép a feladatátvételt követően használ. |
 |Replika által felügyelt lemezek (a másodlagos virtuális gép felügyelt lemezeket használ) | A Site Recovery replika felügyelt lemezeket hoz létre az elsődleges régióban, hogy tükrözze a másodlagos virtuális gép felügyelt lemezeit. |

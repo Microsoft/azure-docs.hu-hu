@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12f722977329bd5d79d4d0e410a29c730faf00c5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92145099"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>A feltételes hozzáféréssel kapcsolatos bejelentkezési problémák elhárítása
@@ -58,7 +58,7 @@ A problémáról további információt a kezdeti hiba oldalon található **Tov
 Annak megállapítása, hogy milyen feltételes hozzáférési szabályzatot vagy házirendeket alkalmaztak, és miért nem az alábbiakat.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy globális olvasóként.
-1. Tallózással keresse meg **Azure Active Directory**a  >  **bejelentkezéseket**.
+1. Tallózással keresse meg **Azure Active Directory** a  >  **bejelentkezéseket**.
 1. Keresse meg az eseményt, amelyről át szeretné tekinteni a bejelentkezést. Szűrők és oszlopok hozzáadása vagy eltávolítása a szükségtelen információk kiszűréséhez.
    1. Szűrők hozzáadása a hatókör szűkítéséhez:
       1. **Korrelációs azonosító** , ha egy konkrét eseményt kell kivizsgálni.
@@ -70,8 +70,8 @@ Annak megállapítása, hogy milyen feltételes hozzáférési szabályzatot vag
 
 1. Ha a felhasználó bejelentkezési hibájának megfelelő bejelentkezési esemény található, válassza a **feltételes hozzáférés** lapot. A feltételes hozzáférés lapon megjelenik a bejelentkezési megszakítást eredményező házirend vagy szabályzat.
    1. A **Hibaelhárítás és támogatás** lapon található információk egyértelmű indoklást adhatnak arról, hogy miért nem sikerült a bejelentkezés, például olyan eszköz, amely nem felelt meg a megfelelőségi követelményeknek.
-   1. Ha további vizsgálatot szeretne végezni, tekintse meg a házirendek konfigurációját a **házirend nevére**kattintva. A **szabályzat nevére** kattintva megtekintheti a házirend-konfiguráció felhasználói felületét a kiválasztott házirend felülvizsgálatához és szerkesztéséhez.
-   1. A feltételes hozzáférési szabályzat értékeléséhez használt **ügyfél-felhasználó** és- **eszköz adatai** az **alapinformációk**, a **hely**, az **eszköz adatai**, a **hitelesítés részletei**és a bejelentkezési esemény **További részletek** lapjain is elérhetők.
+   1. Ha további vizsgálatot szeretne végezni, tekintse meg a házirendek konfigurációját a **házirend nevére** kattintva. A **szabályzat nevére** kattintva megtekintheti a házirend-konfiguráció felhasználói felületét a kiválasztott házirend felülvizsgálatához és szerkesztéséhez.
+   1. A feltételes hozzáférési szabályzat értékeléséhez használt **ügyfél-felhasználó** és- **eszköz adatai** az **alapinformációk**, a **hely**, az **eszköz adatai**, a **hitelesítés részletei** és a bejelentkezési esemény **További részletek** lapjain is elérhetők.
 
 ### <a name="policy-details"></a>Szabályzat részletei
 
@@ -83,7 +83,7 @@ Ha kijelöli a házirend jobb oldalán lévő három pontot a bejelentkezési es
 
 A bal oldali oldalon a bejelentkezéskor gyűjtött adatok szerepelnek, és a jobb oldalon részletesen ismertetjük, hogy az adatok megfelelnek-e az alkalmazott feltételes hozzáférési szabályzatok követelményeinek. A feltételes hozzáférési szabályzatok csak akkor érvényesek, ha az összes feltétel teljesül vagy nincs konfigurálva.
 
-Ha az eseményben szereplő információk nem elegendőek a bejelentkezési eredmények megismeréséhez, vagy a szabályzatot úgy állítja be, hogy a kívánt eredményt kapja, akkor előfordulhat, hogy egy támogatási incidens is megnyitható. Navigáljon a bejelentkezési esemény **hibaelhárítási és támogatási** lapjára, és válassza az **új támogatási kérelem létrehozása**lehetőséget.
+Ha az eseményben szereplő információk nem elegendőek a bejelentkezési eredmények megismeréséhez, vagy a szabályzatot úgy állítja be, hogy a kívánt eredményt kapja, akkor előfordulhat, hogy egy támogatási incidens is megnyitható. Navigáljon a bejelentkezési esemény **hibaelhárítási és támogatási** lapjára, és válassza az **új támogatási kérelem létrehozása** lehetőséget.
 
 ![A bejelentkezési esemény hibaelhárítás és támogatás lapja](./media/troubleshoot-conditional-access/image6.png)
 

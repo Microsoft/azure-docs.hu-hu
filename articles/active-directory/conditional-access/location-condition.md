@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97615711"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
@@ -199,7 +199,7 @@ Az elnevezett helyszínek Graph API előzetes verziója érhető el, további in
 > [!NOTE]
 > A PowerShell-megjelenítéssel létrehozott elnevezett helyszínek csak névvel ellátott helyen (előzetes verzió) jelennek meg. A nevesített helyszínek nem láthatók a régi nézetben.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
 - A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)

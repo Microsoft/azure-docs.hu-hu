@@ -13,15 +13,15 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: b75e859fc1237bc88bee464cef423b7289810fa8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147793"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása az IoT Hubból
 
-IoT Hub lehetővé teszi közvetlen metódusok meghívását a felhőből származó eszközökön. A közvetlen metódusok a kérés-válasz interakciót egy olyan eszközhöz hasonlítják, amely a HTTP-híváshoz hasonlóan sikeres vagy sikertelen (a felhasználó által megadott időtúllépés után). Ez a megközelítés olyan esetekben hasznos, amikor az azonnali művelet végrehajtása eltérő lehet attól függően, hogy az eszköz válaszol-e.
+IoT Hub lehetővé teszi közvetlen metódusok meghívását a felhőből származó eszközökön. A közvetlen metódusok a kérés-válasz interakciót egy olyan eszközhöz hasonlítják, amely a HTTP-híváshoz hasonlóan sikeres vagy sikertelen (a felhasználó által megadott időtúllépés után). Ez a módszer olyan helyzetekben hasznos, amikor az azonnali művelet végrehajtása eltérő attól függően, hogy az eszköz válaszképes volt-e.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

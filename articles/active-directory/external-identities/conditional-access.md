@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646282"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Feltételes hozzáférés VÁLLALATKÖZI együttműködéssel rendelkező felhasználók számára
@@ -28,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a szervezetek a VÁLLALATKÖZI ve
 
 Az alábbi ábrán a flow: ![ kép mutatja a hitelesítési folyamatot a B2B vendég felhasználók számára egy külső címtárból](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Lépés | Leírás |
+| Lépés | Description |
 |--------------|-----------------------|
 | 1. | A B2B vendég felhasználó egy erőforráshoz való hozzáférést kér. Az erőforrás átirányítja a felhasználót az erőforrás-bérlőre, egy megbízható identitásszolgáltató.|
 | 2. | Az erőforrás-bérlő külsőként azonosítja a felhasználót, és átirányítja a felhasználót a B2B vendég felhasználó identitásszolgáltató. A felhasználó elsődleges hitelesítést hajt végre a identitásszolgáltató.
@@ -39,7 +39,7 @@ Az alábbi ábrán a flow: ![ kép mutatja a hitelesítési folyamatot a B2B ven
 
 Az alábbi ábrán a folyamat látható: a ![ kép a vállalatközi vendég felhasználói számára egyszeri jelszóval rendelkező hitelesítési folyamatot mutatja.](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Lépés | Leírás |
+| Lépés | Description |
 |--------------|-----------------------|
 | 1. |A felhasználó hozzáférést kér egy másik bérlő erőforrásához. Az erőforrás átirányítja a felhasználót az erőforrás-bérlőre, egy megbízható identitásszolgáltató.|
 | 2. | Az erőforrás-bérlő azonosítja a felhasználót egy [külső e-mail-jelszó (OTP) felhasználóként](./one-time-passcode.md) , és e-mailt küld a felhasználónak az egyszeri jelszavas hitelesítéssel.|

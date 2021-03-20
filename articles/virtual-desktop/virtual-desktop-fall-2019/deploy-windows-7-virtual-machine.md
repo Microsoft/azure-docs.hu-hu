@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005063"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows 7 rendszerű virtuális gép üzembe helyezése Windowsos virtuális asztalon (klasszikus)
@@ -37,7 +37,7 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
 5. Nyissa meg a Windows Updatet a virtuális gépen.
 6. Telepítse az összes Windows-frissítést a fontos kategóriába.
 7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ezzel telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)), amelyre el kell végeznie ezeket az utasításokat.
-8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **távoli munkamenet-környezete**elemre.
+8. Nyissa meg a Helyicsoportházirend-szerkesztő, és navigáljon a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **távoli munkamenet-környezete** elemre.
 9. Engedélyezze a RDP protokoll 8,0 szabályzatot.
 10. Csatlakoztassa a virtuális gépet a Active Directory tartományhoz.
 11. Indítsa újra a virtuális gépet a következő parancs futtatásával:

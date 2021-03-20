@@ -7,10 +7,10 @@ ms.date: 02/28/2020
 ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: 8891c29e5d8d06df6292d06ec06e5e57fb9880e7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422841"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Oktatóanyag: előre betanított rendszerkép-besorolási modell üzembe helyezése a PyTorch-vel való Azure Functions
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Pythont, a PyTorch-t és a
 > * Helyi környezet inicializálása a Python-Azure Functions fejlesztéséhez.
 > * Előre betanított PyTorch Machine learning-modell importálása egy Function alkalmazásba.
 > * Hozzon létre egy kiszolgáló nélküli HTTP API-t, amely a rendszerképek egyikét 1000 ImageNet [osztályba](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a)sorolja.
-> * Használja az API-t egy webalkalmazásból.
+> * Az API használata webalkalmazásból.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -115,7 +115,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az *\_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json* , amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./create-first-function-cli-python.md#optional-examine-the-file-contents) a Python rövid útmutatójában.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az *\_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json*, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./create-first-function-cli-python.md#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása
@@ -128,7 +128,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
 
 1. Ha megjelenik a `classify` végpont a kimenetben, keresse meg az URL-címet ```http://localhost:7071/api/classify?name=Azure``` . A "Hello Azure!" üzenet meg kell jelennie a kimenetben.
 
-1. **Ctrl** - A gazdagép leállításához használja a CTRL **C** billentyűt.
+1.  - A gazdagép leállításához használja a CTRL **C** billentyűt.
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>A PyTorch-modell importálása és a segítő kód hozzáadása
@@ -172,7 +172,7 @@ Ha módosítani szeretné a `classify` függvényt, hogy a tartalmaik alapján o
     torchvision==0.6.0+cpu
     ```
 
-1. Mentse *requirements.txt* , majd futtassa a következő parancsot a *Start* mappából a függőségek telepítéséhez.
+1. Mentse *requirements.txt*, majd futtassa a következő parancsot a *Start* mappából a függőségek telepítéséhez.
 
 
     ```
@@ -258,7 +258,7 @@ Ha tesztelni szeretné a függvény végpontját egy másik webalkalmazásból, 
 
 Mivel az oktatóanyag teljes egészében helyileg fut a gépen, nincs szükség Azure-erőforrásokra vagy-szolgáltatásokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és szabhat testre egy HTTP API-végpontot a Azure Functions használatával a rendszerképek PyTorch-modell használatával történő besorolásához. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból. Az oktatóanyagban található technikák használatával bármilyen bonyolultságú API-t építhet ki, miközben a Azure Functions által biztosított kiszolgáló nélküli számítási modellen fut.
 

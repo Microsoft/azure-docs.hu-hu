@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: mbullwin
 ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420959"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrikák Advisor – gyakori kérdések
@@ -109,7 +109,7 @@ A részletekért tekintse meg a [anomáliák észlelésének konfigurációit](h
 
 1.  Az előfizetés-rendszergazda vagy erőforráscsoport-rendszergazdai jogosultsággal rendelkező felhasználónak meg kell nyitnia a Azure Portalban létrehozott metrikai tanácsadói erőforrást, és ki kell választania a **hozzáférés-vezérlés (iam)** lapot. 
 2.  Válassza a **szerepkör-hozzárendelések hozzáadása** lehetőséget
-3.  Válasszon egy szerepkört **Cognitive Services metrikai tanácsadó rendszergazdájának** , válassza ki a fiókját az alábbi képen.
+3.  Válasszon egy szerepkört **Cognitive Services metrikai tanácsadó rendszergazdájának**, válassza ki a fiókját az alábbi képen.
 4.  Kattintson a **Save (Mentés** ) gombra, és a rendszer sikeresen felvette a metrikák Advisor-erőforrás rendszergazdájaként. Vegye figyelembe, hogy a fenti műveleteket az előfizetés rendszergazdája vagy az erőforráscsoport rendszergazdája hajthatja végre. 
 
 :::image type="content" source="media/access-control.png" alt-text="Hozzáférés-vezérlés (IAM) menü oldal, a szerepkör-hozzárendelés hozzáadása lehetőséggel, majd egy olyan mező, amely hozzáférést rendel a kiválasztott felhasználóhoz Cognitive Services metrikai tanácsadói rendszergazda hozzáférési szerepkörével, majd a kiválasztott felhasználói felület Save (Mentés) gombjára kattintva megjelenítheti a felhasználók keresésének lépéseit, és adott szintű hozzáférési engedélyeket adhat hozzá." lightbox="media/access-control.png":::

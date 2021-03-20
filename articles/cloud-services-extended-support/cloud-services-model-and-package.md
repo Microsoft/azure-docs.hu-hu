@@ -9,10 +9,10 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 3baea92d78cf15c35d2fb36692dab1edfd950699
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744523"
 ---
 # <a name="what-is-the-azure-cloud-service-model-and-how-do-i-package-it"></a>Mi az Azure Cloud Service-modell, és hogyan lehet becsomagolni?
@@ -274,7 +274,7 @@ Ahol a változók a következőképpen vannak meghatározva:
 | \[PhysicalPath\] |A szolgáltatás definíciójának hely csomópontjában meghatározott virtuális elérési utak tartalmának fizikai könyvtára. |
 | \[RoleAssemblyName\] |A szerepkör bináris fájljának neve. |
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - Tekintse át a Cloud Services [üzembe helyezésének előfeltételeit](deploy-prerequisite.md) (kiterjesztett támogatás).
 - A [Azure Portal](deploy-portal.md), a [PowerShell](deploy-powershell.md), a [sablon](deploy-template.md) vagy a [Visual Studio](deploy-visual-studio.md)használatával üzembe helyezhet egy felhőalapú szolgáltatást (kiterjesztett támogatás).
 - Tekintse át a Cloud Servicesra vonatkozó [gyakori kérdéseket](faq.md) (kiterjesztett támogatás).

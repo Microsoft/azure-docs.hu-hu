@@ -4,10 +4,10 @@ description: Az Azure-beli delegált erőforrás-kezelés az Azure világítóto
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92203857"
 ---
 # <a name="azure-delegated-resource-management"></a>Az Azure által delegált erőforrás-kezelés
@@ -43,7 +43,7 @@ Magas szinten a következőképpen működik az Azure-beli delegált erőforrás
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Azure-beli delegált erőforrás-kezelés támogatása
 
-Ha segítségre van szüksége az Azure-beli delegált erőforrás-kezeléshez, egy támogatási kérést is megnyithat a Azure Portal. A **probléma típusa**beállításnál válassza a **technikai**lehetőséget. Válasszon ki egy előfizetést, majd válassza a **világítótorony** lehetőséget (a **figyelés & felügyelet**alatt).
+Ha segítségre van szüksége az Azure-beli delegált erőforrás-kezeléshez, egy támogatási kérést is megnyithat a Azure Portal. A **probléma típusa** beállításnál válassza a **technikai** lehetőséget. Válasszon ki egy előfizetést, majd válassza a **világítótorony** lehetőséget (a **figyelés & felügyelet** alatt).
 
 ## <a name="next-steps"></a>Következő lépések
 

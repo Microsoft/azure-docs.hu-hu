@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.openlocfilehash: 97051e97ec9868f6941b579241e16e62fdd2162b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96751784"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
@@ -27,8 +27,8 @@ Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure M
 
     - Ha gépeket és számítási feladatokat szeretne áttelepíteni az Azure-ba, válassza a **kiszolgálók felmérése és áttelepíteni** lehetőséget.
     - A helyszíni adatbázisok átköltöztetéséhez válassza az **adatbázisok felmérése és áttelepíteni** lehetőséget.
-    - Ha helyszíni webalkalmazásokat szeretne áttelepíteni, válassza a **további Web Apps megismerése** lehetőséget  >  **Web Apps**.
-    - Ha az adatmezővel szeretne áttelepíteni az Azure-ba az adataikat, válassza a **további** adatmezők feltárása lehetőséget  >  **Data box**.
+    - Ha helyszíni webalkalmazásokat szeretne áttelepíteni, válassza a **további Web Apps megismerése** lehetőséget  >  .
+    - Ha az adatmezővel szeretne áttelepíteni az Azure-ba az adataikat, válassza a **további** adatmezők feltárása lehetőséget  >  .
 
     ![Az áttelepítési forgatókönyv kiválasztásának lehetőségei](./media/how-to-migrate/migrate-scenario.png)
 
@@ -89,6 +89,6 @@ Nagy mennyiségű adatok Azure-ba történő átmásolásához rendelhet egy Azu
 4. Az **átvitel típusa** az Azure-ba való importálás. Adja meg azt az országot, amelyben az adatok találhatók, valamint azt az Azure-régiót, amelybe az adatok átvitelét el szeretné helyezni. 
 5. A beállítások mentéséhez kattintson az **alkalmaz** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Hyper-V](tutorial-migrate-hyper-v.md) vagy a [VMware](tutorial-migrate-vmware.md) virtuális gépek Azure Migrate Server áttelepítési eszközével próbálja ki az áttelepítést.

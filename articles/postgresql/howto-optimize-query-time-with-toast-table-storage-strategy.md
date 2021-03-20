@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 3f1fa0affb821b00d4f5529841533e854e634377
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86116182"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>A lekérdezési idő optimalizálása a pirítós táblázat tárolási stratégiájával 
@@ -28,7 +28,7 @@ Ha a lekérdezések a PIRÍTÓSt használó adattípusokhoz férnek hozzá, érd
 
 Ha olyan számítási feladattal rendelkezik, amely széles táblázatokkal és nagy méretű karakterekkel rendelkező sémát használ, érdemes lehet PostgreSQL TOAST-táblákat használni. Egy példaként szolgáló Customer tábla több mint 350 oszlopot tartalmaz, amelyek több, 255 karakterből álló oszloppal rendelkeznek. Miután áttért a TOAST Table fő stratégiájára, a teljesítményteszt lekérdezési ideje 4203 másodperctől 467 másodpercre csökkent. Ez 89 százalékos javulást jelent.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át az előző jellemzőkre vonatkozó számítási feladatokat. 
 
 Tekintse át a következő PostgreSQL-dokumentációt: 

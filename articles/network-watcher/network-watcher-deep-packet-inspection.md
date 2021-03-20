@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 3bd85d6faf05fcf659e9335ee9de3d64198dfa08
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011169"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Csomagok ellenőrzése az Azure Network Watcher
@@ -29,7 +29,7 @@ Ez a cikk a korábban futtatott csomagok rögzítésének egyes előre konfigur�
 
 Ez a forgatókönyv feltételezi, hogy már futtatta a csomagok rögzítését egy virtuális gépen. Ha meg szeretné tudni, hogyan hozhat létre egy csomagot rögzítő látogatást a csomagok rögzítésének [kezelése a portálon](network-watcher-packet-capture-manage-portal.md) vagy a REST-mel a [csomagok rögzítésének REST API használatával történő kezelésével](network-watcher-packet-capture-manage-rest.md).
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Ebben az esetben a következőket kell tennie:
 
@@ -121,7 +121,7 @@ A szűrő szövegmezőbe írja be a szűrési szöveget, majd nyomja meg az ENTE
 
 Az eredményekből láthatjuk, hogy az összes forgalom az azonos alhálózaton található helyi virtuális gépről érkezik. Ha továbbra sem értjük a forgalom okait, továbbra is ellenőrizheti a csomagokat, hogy megtudja, miért teszi ezeket a hívásokat a 111-as porton. Ezekkel az adatokkal elvégezheti a megfelelő műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Network Watcher egyéb diagnosztikai funkcióiról: az [Azure hálózati monitorozásának áttekintése](network-watcher-monitoring-overview.md)
 

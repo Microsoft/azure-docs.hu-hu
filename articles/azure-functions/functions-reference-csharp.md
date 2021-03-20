@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 48614640660da6d85face5ea416d267fa9f59515
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92164839"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
@@ -213,13 +213,13 @@ Relatív elérési utat is használhat a `#load` direktívával:
 
 * `#load "mylogger.csx"` betölti a Function mappában található fájlt.
 * `#load "loadedfiles\mylogger.csx"` betölt egy fájlt a függvény mappájában található mappában.
-* `#load "..\shared\mylogger.csx"` egy mappában található fájlt tölt be, amely a Function mappával azonos szinten van, közvetlenül a *wwwroot*alatt.
+* `#load "..\shared\mylogger.csx"` egy mappában található fájlt tölt be, amely a Function mappával azonos szinten van, közvetlenül a *wwwroot* alatt.
 
 Az `#load` irányelv csak. *cs* fájlokkal használható *. CSX* -fájlokkal működik.
 
 ## <a name="binding-to-method-return-value"></a>Kötés a metódus visszatérési értékéhez
 
-A kimeneti kötések esetében a metódus visszatérési értéke a `$return` *function.json*értékének használatával használható. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál.
+A kimeneti kötések esetében a metódus visszatérési értéke a `$return` *function.json* értékének használatával használható. Példákat az [Eseményindítók és kötések](./functions-bindings-return-value.md)című témakörben talál.
 
 Csak akkor használja a visszaadott értéket, ha egy sikeres függvény végrehajtása mindig visszatérési értéket ad eredményül a kimeneti kötésnek. Ellenkező esetben használja `ICollector` `IAsyncCollector` a vagy a beállítást, ahogy az a következő szakaszban látható.
 
@@ -493,7 +493,7 @@ A [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Mic
 
 ### <a name="multiple-attribute-example"></a>Több attribútum – példa
 
-Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Példa:
+Az előző példában beolvassa a Function alkalmazás fő Storage-fiókjának (azaz) az alkalmazás beállítását `AzureWebJobsStorage` . A Storage-fiókhoz a [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) hozzáadásával és az attribútum tömbbe való átadásával adhat meg egyéni alkalmazás-beállítást `BindAsync<T>()` . Használjon `Binder` paramétert, nem `IBinder` .  Például:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -529,7 +529,7 @@ A következő táblázat felsorolja az egyes kötési típusok .NET-attribútuma
 > | Storage-tábla | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

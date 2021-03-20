@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878969"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Schedulerben
@@ -48,9 +48,9 @@ Ha a modell használatával ad hozzá hitelesítést `ClientCertificate` , adja 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítés** (szülő elem) | SSL/TLS-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **típusa** | Igen | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a következő: `ClientCertificate` . |
-| **pfx** | Igen | A PFX-fájl Base64 kódolású tartalma |
-| **alaphelyzetbe állítása** | Igen | A PFX-fájl eléréséhez használt jelszó |
+| **típusa** | Yes | A hitelesítési típus. Az SSL/TLS-Ügyféltanúsítványok esetében az érték a következő: `ClientCertificate` . |
+| **pfx** | Yes | A PFX-fájl Base64 kódolású tartalma |
+| **alaphelyzetbe állítása** | Yes | A PFX-fájl eléréséhez használt jelszó |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>Válasz törzse – ügyféltanúsítvány 
@@ -168,9 +168,9 @@ Ha a modell használatával ad hozzá hitelesítést `Basic` , adja meg ezeket a
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
 | **hitelesítés** (szülő elem) | Az alapszintű hitelesítés használatára szolgáló hitelesítési objektum | 
-| **típusa** | Igen | A hitelesítési típus. Az alapszintű hitelesítés esetében az érték a következő: `Basic` . | 
-| **username** | Igen | A hitelesíteni kívánt Felhasználónév | 
-| **alaphelyzetbe állítása** | Igen | A hitelesíteni kívánt jelszó |
+| **típusa** | Yes | A hitelesítési típus. Az alapszintű hitelesítés esetében az érték a következő: `Basic` . | 
+| **username** | Yes | A hitelesíteni kívánt Felhasználónév | 
+| **alaphelyzetbe állítása** | Yes | A hitelesíteni kívánt jelszó |
 |||| 
 
 ### <a name="response-body---basic"></a>Válasz törzse – alapszintű
@@ -285,12 +285,12 @@ Ha a modell használatával ad hozzá hitelesítést `ActiveDirectoryOAuth` , ad
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülő elem) | Igen | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
-| **típusa** | Igen | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . |
-| **bérlő** | Igen | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez futtassa a `Get-AzureAccount` következőt: Azure PowerShell. |
-| **célközönség** | Igen | Ez az érték a következőre van beállítva: `https://management.core.windows.net/` . | 
-| **clientId** | Igen | Az Azure AD-alkalmazás ügyfél-azonosítója | 
-| **titkos** | Igen | A jogkivonatot kérő ügyfél titka | 
+| **hitelesítés** (szülő elem) | Yes | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
+| **típusa** | Yes | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . |
+| **bérlő** | Yes | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez futtassa a `Get-AzureAccount` következőt: Azure PowerShell. |
+| **célközönség** | Yes | Ez az érték a következőre van beállítva: `https://management.core.windows.net/` . | 
+| **clientId** | Yes | Az Azure AD-alkalmazás ügyfél-azonosítója | 
+| **titkos kód** | Yes | A jogkivonatot kérő ügyfél titka | 
 |||| 
 
 ### <a name="response-body---active-directory-oauth"></a>Válasz törzse – Active Directory OAuth
@@ -404,7 +404,7 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
 * [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

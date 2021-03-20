@@ -9,16 +9,16 @@ ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
 ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744566"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Az Azure Cloud Services (kiterjesztett támogatás) szolgáltatással kapcsolatos gyakori kérdések
 Ez a cikk az Azure Cloud Servicesokkal kapcsolatos gyakori kérdéseket ismerteti (kiterjesztett támogatás).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-the-resource-name-for-cloud-services-classic--cloud-services-extended-support"></a>Mi az erőforrás neve Cloud Services (klasszikus) & Cloud Services (bővített támogatás)?
 - Cloud Services (klasszikus): `microsoft.classiccompute/domainnames`
@@ -60,7 +60,7 @@ Cloud Services (kiterjesztett támogatás) központi telepítések nem méretezh
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Van-e díjszabási különbség a Cloud Services (klasszikus) és a Cloud Services (bővített támogatás) között?
 Cloud Services (kiterjesztett támogatás) Azure Key Vault és alapszintű (ARM) nyilvános IP-címeket használ.A tanúsítványokat igénylő ügyfeleknek Azure Key Vault kell használniuk a Tanúsítványkezelők[számára (További információ a](https://azure.microsoft.com/pricing/details/key-vault/) Azure Key Vault díjszabásáról.)   A Cloud Services (kiterjesztett támogatás) minden nyilvános IP-címét külön számítjuk[fel (További információ a](https://azure.microsoft.com/pricing/details/ip-addresses/) nyilvános IP-címek díjszabásáról.) 
-## <a name="resources"></a>További források 
+## <a name="resources"></a>Erőforrások 
 
 ### <a name="what-resources-linked-to-a-cloud-services-extended-support-deployment-need-to-live-in-the-same-resource-group"></a>Milyen erőforrásokhoz kell kapcsolódnia egy Cloud Serviceshoz (kiterjesztett támogatás)?
 A terheléselosztó, a hálózati biztonsági csoportok és az útválasztási tábláknak ugyanabban a régióban és erőforráscsoporthoz kell rendelkezniük. 
@@ -119,5 +119,5 @@ Cloud Services (kiterjesztett támogatás) ugyanezt a folyamatot fogadta el, min
 ### <a name="can-i-use-one-key-vault-for-all-my-deployments-in-all-regions"></a>Használhatok egy Key Vault az összes saját üzembe helyezéséhez az összes régióban?
 Nem. Key Vault regionális erőforrás, és az ügyfeleknek egy Key Vault kell rendelkezniük az egyes régiókban. Az adott régióban lévő összes központi telepítéshez azonban egy Key Vault is használható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Cloud Services használatának megkezdéséhez tekintse meg [a Cloud Service (kiterjesztett támogatás) üzembe helyezése a PowerShell használatával](deploy-powershell.md) című témakört.

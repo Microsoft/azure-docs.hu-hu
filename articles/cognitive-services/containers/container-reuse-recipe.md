@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80875078"
 ---
 # <a name="create-containers-for-reuse"></a>Tárolók létrehozása újbóli felhasználáshoz
@@ -148,7 +148,7 @@ Az alábbi lépéseket követve használhatja a Docker, és elhelyezheti az új 
     docker push <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure Container instance létrehozása és használata](azure-container-instance-recipe.md)

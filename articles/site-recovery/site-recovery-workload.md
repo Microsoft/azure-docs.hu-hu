@@ -4,10 +4,10 @@ description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet v�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80062844"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Információk a helyszíni alkalmazások vészhelyreállításáról
@@ -40,17 +40,17 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 
 | **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |Igen |Igen |Igen |Igen |Igen|
-| Webalkalmazások (IIS, SQL) |Igen |Igen |Igen |Igen |Igen|
-| System Center Operations Manager |Igen |Igen |Igen |Igen |Igen|
-| SharePoint |Igen |Igen |Igen |Igen |Igen|
+| Active Directory, DNS |Igen |Igen |Igen |Igen |Yes|
+| Webalkalmazások (IIS, SQL) |Igen |Igen |Igen |Igen |Yes|
+| System Center Operations Manager |Igen |Igen |Igen |Igen |Yes|
+| SharePoint |Igen |Igen |Igen |Igen |Yes|
 | SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által)|
-| Exchange (nem DAG) |Igen |Igen |Igen |Igen |Igen|
-| Távoli asztal/VDI |Igen |Igen |Igen |Igen |Igen|
+| Exchange (nem DAG) |Igen |Igen |Igen |Igen |Yes|
+| Távoli asztal/VDI |Igen |Igen |Igen |Igen |Yes|
 | Linux (operációs rendszer és alkalmazások) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által)|
-| Dynamics AX |Igen |Igen |Igen |Igen |Igen|
-| Windows fájlkiszolgáló |Igen |Igen |Igen |Igen |Igen|
-| Citrix XenApp és XenDesktop |Igen|N/A |Igen |N/A |Igen |
+| Dynamics AX |Igen |Igen |Igen |Igen |Yes|
+| Windows fájlkiszolgáló |Igen |Igen |Igen |Igen |Yes|
+| Citrix XenApp és XenDesktop |Yes|N.A. |Igen |N.A. |Igen |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 
@@ -106,11 +106,11 @@ A Azure Site Recovery a következő szolgáltatásokat lehet replikálni:
 
 A következő táblázat a replikációs beállításokat tartalmazza:
 
-| **RDS** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása egy másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
+| **Távoli asztali szolgáltatások** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása egy másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Készletbe vont virtuális asztalok (nem felügyelt)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
 | **Készletbe vont virtuális asztalok (felügyelt, UPD nélkül)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
-| **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen|Igen |Igen |Igen |Igen |Igen |Igen |
+| **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen|Igen |Igen |Igen |Igen |Igen |Yes |
 
 [További](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) információ az RDS-sel kapcsolatos vész-helyreállításról.
 
@@ -160,6 +160,6 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemel�
 
 [További](site-recovery-citrix-xenapp-and-xendesktop.md) információ a Citrix XenApp és a XenDesktop üzemelő példányok vész-helyreállításáról. Vagy tekintse át a [Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr)tanulmányt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](azure-to-azure-quickstart.md) információ az Azure-beli virtuális gépek vész-helyreállításáról.

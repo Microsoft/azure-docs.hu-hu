@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: amsriva
 ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631690"
 ---
-# <a name="application-gateway-tls-policy-overview"></a>Application Gateway TLS-házirend áttekintése
+# <a name="application-gateway-tls-policy-overview"></a>Az Application Gateway TLS-szabályzatának áttekintése
 
 Az Azure Application Gateway segítségével központosíthatja a TLS/SSL-tanúsítványok kezelését, és csökkentheti a háttérbeli kiszolgálófarm titkosítási és visszafejtési terhelését. Ez a központosított TLS-kezelési szolgáltatás azt is lehetővé teszi, hogy megadhat egy központi TLS-házirendet, amely megfelel a szervezeti biztonsági követelményeknek. Ez segít a megfelelőségi követelmények, valamint a biztonsági irányelvek és a javasolt eljárások teljesítésében.
 

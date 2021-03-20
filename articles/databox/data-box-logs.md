@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: a9304936f746b82b59550d62e8b60a9e0035d188
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147939"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy importálási sorrend
@@ -354,13 +354,13 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>Rendelés előzményeinek letöltése
 
-A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei**elemre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
+A rendelési előzmények a Azure Portalban érhetők el. Ha a megrendelés befejeződött, és az eszköz tisztítása (a lemezekről történő adattörlés) befejeződött, lépjen az eszköz sorrendjébe, és navigáljon a **Rendelés részletei** elemre. Elérhető a **Rendelés előzményeinek letöltése** lehetőség. További információ: a [rendelési előzmények letöltése](data-box-portal-admin.md#download-order-history).
 
 Ha a sorrendet az előzmények között görgeti, a következőt látja:
 
 - Az eszköz hordozófrekvencia-követési adatai.
 - Események *SecureErase* -tevékenységgel. Ezek az események a lemezen tárolt adattörlésnek felelnek meg.
-- Data Box a napló hivatkozásait. A naplók elérési *útjait, a* *másolási naplókat*és az *Anyagjegyzék* -fájlokat mutatjuk be.
+- Data Box a napló hivatkozásait. A naplók elérési *útjait, a* *másolási naplókat* és az *Anyagjegyzék* -fájlokat mutatjuk be.
 
 Az alábbi példa az Azure Portal:
 

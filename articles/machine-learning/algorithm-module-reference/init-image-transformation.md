@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: fc0eb196ed24e413c35d64f0571ff29dc3725032
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421277"
 ---
 # <a name="init-image-transformation"></a>Képátalakítás indítása
@@ -35,9 +35,9 @@ Ez a cikk azt ismerteti, hogyan használható az **init rendszerkép-átalakít�
 6.  A **szürkeárnyalatos** beállításnál megadhatja, hogy a képet szürkeárnyalatos szeretné-e konvertálni.
 
 7.  A **véletlenszerű átméretezett termés** esetében adja meg, hogy a megadott PIL-kép véletlenszerű méretre és méretarányra van-e leképezve. A véletlenszerű méret (0,08 és 1,0 közötti tartomány) és az eredeti oldalarány (3/4 – 4/3 közötti tartomány) termése. Ez a termés végül átméretezi a megadott méretet.
-    Ezt gyakran használják a kezdeti hálózatok betanításához. Ha az "igaz" értéket választja, akkor az egyes élek várt kimeneti mérete **véletlenszerűen** , alapértelmezés szerint 256.
+    Ezt gyakran használják a kezdeti hálózatok betanításához. Ha az "igaz" értéket választja, akkor az egyes élek várt kimeneti mérete **véletlenszerűen**, alapértelmezés szerint 256.
 
-8.  **Véletlenszerű körülvágás** esetén adja meg, hogy a megadott PIL-képet véletlenszerűen szeretné-e kivágni. Ha az "igaz" értéket választja, a termés kívánt kimeneti mérete **véletlenszerűen** , alapértelmezés szerint 224.
+8.  **Véletlenszerű körülvágás** esetén adja meg, hogy a megadott PIL-képet véletlenszerűen szeretné-e kivágni. Ha az "igaz" értéket választja, a termés kívánt kimeneti mérete **véletlenszerűen**, alapértelmezés szerint 224.
 
 9.  **Véletlenszerű vízszintes tükrözés** esetén adja meg, hogy a megadott PIL-képet vízszintesen kell-e véletlenszerűen megfordítani a 0,5-as valószínűséggel.
 
@@ -67,36 +67,36 @@ Az átalakítás befejezése után a [rendszerkép-átalakítási](apply-image-t
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name                    | Tartomány   | Típus    | Alapértelmezett | Leírás                              |
+| Name                    | Tartomány   | Típus    | Alapértelmezett | Description                              |
 | ----------------------- | ------- | ------- | ------- | ---------------------------------------- |
-| Átméretezés                  | Bármely     | Logikai | Igaz    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
+| Átméretezés                  | Bármelyik     | Logikai | Igaz    | A bemeneti PIL-rendszerkép átméretezése a megadott méretre |
 | Méret                    | >= 1     | Egész szám | 256     | A kívánt kimeneti méret megadása          |
-| Középpont – növénytermesztés             | Bármely     | Logikai | Igaz    | Megvágja a megadott PIL-képet a központban  |
+| Középpont – növénytermesztés             | Bármelyik     | Logikai | Igaz    | Megvágja a megadott PIL-képet a központban  |
 | Vágási méret               | >= 1     | Egész szám | 224     | A körülvágás kívánt kimeneti méretének megadása |
-| Pad                     | Bármely     | Logikai | Hamis   | A megadott PIL-képet a megadott "pad" értékkel rendelkező összes oldalon pad |
+| Pad                     | Bármelyik     | Logikai | Hamis   | A megadott PIL-képet a megadott "pad" értékkel rendelkező összes oldalon pad |
 | Kitöltés                 | >= 0     | Egész szám | 0       | Kitöltés az egyes szegélyeken                   |
-| Szín vibrálása            | Bármely     | Logikai | Hamis   | A kép fényességének, kontrasztjának és telítettségének véletlenszerű módosítása |
-| Szürkeárnyalatos               | Bármely     | Logikai | Hamis   | Rendszerkép átalakítása szürkeárnyalatos               |
-| Véletlenszerűen átméretezett termés     | Bármely     | Logikai | Hamis   | A megadott PIL-kép véletlenszerű méretének és oldalarányának kivágása |
+| Szín vibrálása            | Bármelyik     | Logikai | Hamis   | A kép fényességének, kontrasztjának és telítettségének véletlenszerű módosítása |
+| Szürkeárnyalatos               | Bármelyik     | Logikai | Hamis   | Rendszerkép átalakítása szürkeárnyalatos               |
+| Véletlenszerűen átméretezett termés     | Bármelyik     | Logikai | Hamis   | A megadott PIL-kép véletlenszerű méretének és oldalarányának kivágása |
 | Véletlenszerű méret             | >= 1     | Egész szám | 256     | Az egyes szegélyek várható kimeneti mérete        |
-| Véletlenszerű körülvágás             | Bármely     | Logikai | Hamis   | A megadott PIL-kép kivágása véletlenszerű helyen |
+| Véletlenszerű körülvágás             | Bármelyik     | Logikai | Hamis   | A megadott PIL-kép kivágása véletlenszerű helyen |
 | Véletlenszerű körülvágási méret        | >= 1     | Egész szám | 224     | A termés kívánt kimeneti mérete          |
-| Véletlenszerű vízszintes tükrözés  | Bármely     | Logikai | Igaz    | A megadott PIL-rendszerkép vízszintes tükrözése egy adott valószínűséggel |
-| Véletlenszerű Függőleges tükrözés    | Bármely     | Logikai | Hamis   | A megadott PIL-képek függőleges tükrözése véletlenszerűen egy adott valószínűséggel |
-| Véletlenszerű rotáció         | Bármely     | Logikai | Hamis   | A kép elforgatása szög alapján                |
+| Véletlenszerű vízszintes tükrözés  | Bármelyik     | Logikai | Igaz    | A megadott PIL-rendszerkép vízszintes tükrözése egy adott valószínűséggel |
+| Véletlenszerű Függőleges tükrözés    | Bármelyik     | Logikai | Hamis   | A megadott PIL-képek függőleges tükrözése véletlenszerűen egy adott valószínűséggel |
+| Véletlenszerű rotáció         | Bármelyik     | Logikai | Hamis   | A kép elforgatása szög alapján                |
 | Véletlenszerű rotációs fok | [0180] | Egész szám | 0       | A kiválasztani kívánt fok tartománya          |
-| Véletlenszerű affin           | Bármely     | Logikai | Hamis   | Véletlenszerű affin-átalakítás a Képközpont invariánsával |
+| Véletlenszerű affin           | Bármelyik     | Logikai | Hamis   | Véletlenszerű affin-átalakítás a Képközpont invariánsával |
 | Véletlenszerű affin fok   | [0180] | Egész szám | 0       | A kiválasztani kívánt fok tartománya          |
-| Véletlenszerű szürkeárnyalatos        | Bármely     | Logikai | Hamis   | A rendszerképet véletlenszerűen konvertálhatja szürkeárnyalatos a 0,1-as valószínűséggel |
-| Véletlenszerű perspektíva      | Bármely     | Logikai | Hamis   | A megadott PIL-rendszerkép perspektivikus átalakítását hajtja végre véletlenszerűen a 0,5-as valószínűséggel |
-| Véletlenszerű törlés          | Bármely     | Logikai | Hamis   | Véletlenszerűen kiválaszt egy téglalap-régiót egy képen, és törli a képpontot a 0,5 valószínűséggel |
+| Véletlenszerű szürkeárnyalatos        | Bármelyik     | Logikai | Hamis   | A rendszerképet véletlenszerűen konvertálhatja szürkeárnyalatos a 0,1-as valószínűséggel |
+| Véletlenszerű perspektíva      | Bármelyik     | Logikai | Hamis   | A megadott PIL-rendszerkép perspektivikus átalakítását hajtja végre véletlenszerűen a 0,5-as valószínűséggel |
+| Véletlenszerű törlés          | Bármelyik     | Logikai | Hamis   | Véletlenszerűen kiválaszt egy téglalap-régiót egy képen, és törli a képpontot a 0,5 valószínűséggel |
 
 ###  <a name="output"></a>Kimenet  
 
-| Név                        | Típus                    | Leírás                              |
+| Név                        | Típus                    | Description                              |
 | --------------------------- | ----------------------- | ---------------------------------------- |
 | Kimeneti rendszerkép átalakítása | TransformationDirectory | A rendszerkép- **átalakítási modul alkalmazásához** csatlakoztatható kimeneti képátalakítás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

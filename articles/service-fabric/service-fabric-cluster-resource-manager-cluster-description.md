@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5d27a09f0ff38ec7422636ef0933552aa310c387
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92911766"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
@@ -64,7 +64,7 @@ Hogyan néznek ki a kiegyensúlyozatlan tartományok? Az alábbi ábrán két k�
 
 Az Azure-ban a kiválasztható, hogy melyik tartalék tartomány tartalmaz egy csomópontot, a rendszer felügyeli. Azonban a kiépített csomópontok számától függően továbbra is előfordulhat, hogy a tartalék tartományok több csomóponttal rendelkeznek, mint másokban.
 
-Tegyük fel például, hogy öt tartalék tartomány van a fürtben, de hét csomópontot helyez üzembe a csomópont típusa ( **NodeType** ) számára. Ebben az esetben az első két tartalék tartomány több csomóponttal fejeződik be. Ha továbbra is több **NodeType** -példányt telepít, és csak néhány példánya van, a probléma rosszabb lesz. Ezért azt javasoljuk, hogy a csomópontok száma az egyes csomópont-típusokban a tartalék tartományok számának többszöröse legyen.
+Tegyük fel például, hogy öt tartalék tartomány van a fürtben, de hét csomópontot helyez üzembe a csomópont típusa (**NodeType**) számára. Ebben az esetben az első két tartalék tartomány több csomóponttal fejeződik be. Ha továbbra is több **NodeType** -példányt telepít, és csak néhány példánya van, a probléma rosszabb lesz. Ezért azt javasoljuk, hogy a csomópontok száma az egyes csomópont-típusokban a tartalék tartományok számának többszöröse legyen.
 
 ## <a name="upgrade-domains"></a>Frissítési tartományok
 
@@ -119,7 +119,7 @@ Tegyük fel például, hogy van egy hat csomóponttal rendelkező fürt, amely �
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
-Most tegyük fel, hogy létrehozunk egy szolgáltatást egy **TargetReplicaSetSize** (vagy egy állapot nélküli szolgáltatáshoz, **InstanceCount** ), öt értékkel. A replikák az N1-N5. Valójában az N6-ot soha nem használták, hogy hány szolgáltatást hoz létre. De miért? Nézzük meg, mi a különbség az aktuális elrendezés és a mi történne, ha az N6-ot választja.
+Most tegyük fel, hogy létrehozunk egy szolgáltatást egy **TargetReplicaSetSize** (vagy egy állapot nélküli szolgáltatáshoz, **InstanceCount**), öt értékkel. A replikák az N1-N5. Valójában az N6-ot soha nem használták, hogy hány szolgáltatást hoz létre. De miért? Nézzük meg, mi a különbség az aktuális elrendezés és a mi történne, ha az N6-ot választja.
 
 Itt látható az elrendezés, valamint a replikák száma a hibák és a frissítési tartományok esetében:
 
@@ -179,7 +179,7 @@ A fürterőforrás-kezelő a hiba-és frissítési tartományok korlátozásána
 > [!NOTE]
 > Állapot-nyilvántartó szolgáltatás esetén a *kvórum elvesztését* olyan helyzetben adjuk meg, amikor a partíció replikáinak többsége nem áll le egyszerre. Ha például a **TargetReplicaSetSize** értéke öt, a három replika egy halmaza a kvórumot jelöli. Hasonlóképpen, ha a **TargetReplicaSetSize** hat, négy replikára van szükség a kvórumhoz. Mindkét esetben nem lehet kettőnél több replikát leállítani, ha a partíció szokásos módon kívánja folytatni a működést.
 >
-> Állapot nélküli szolgáltatás esetén nincs olyan dolog, mint a *kvórum elvesztése* . Az állapot nélküli szolgáltatások általában akkor is működnek, ha a példányok többsége egy időben leáll. Ezért az állapot-nyilvántartó szolgáltatásokra koncentrálunk a cikk további részében.
+> Állapot nélküli szolgáltatás esetén nincs olyan dolog, mint a *kvórum elvesztése*. Az állapot nélküli szolgáltatások általában akkor is működnek, ha a példányok többsége egy időben leáll. Ezért az állapot-nyilvántartó szolgáltatásokra koncentrálunk a cikk további részében.
 >
 
 Térjünk vissza az előző példához. A megkötés "kvórum biztonságos" verziójában mindhárom elrendezés érvényes lesz. Még ha a FD0 sikertelen volt a második elrendezésben, vagy a UD1 nem sikerült a harmadik elrendezésben, a partíció továbbra is kvórumot eredményezne. (A replikák többsége továbbra is fennáll.) A megkötés ezen verziójában az N6-ot szinte mindig ki lehet használni.
@@ -343,7 +343,7 @@ Néha (valójában az idő nagy részében) érdemes biztosítani, hogy bizonyos
 
 Nagyszerű példa arra, hogy a hardverek konkrét számítási feladatokhoz való célzása szinte minden n szintű architektúra. Bizonyos gépek az alkalmazás előtér-vagy API-kiszolgálóként szolgálnak, és elérhetők az ügyfelek vagy az Internet számára. A különböző gépek – gyakran különböző hardveres erőforrásokkal – kezelik a számítási vagy tárolási rétegek munkáját. Ezeket általában _nem_ közvetlenül az ügyfelek vagy az Internet teszi elérhetővé.
 
-Service Fabric bizonyos esetekben várhatóan bizonyos számítási feladatoknak bizonyos hardveres konfigurációkon is futniuk kell. Példa:
+Service Fabric bizonyos esetekben várhatóan bizonyos számítási feladatoknak bizonyos hardveres konfigurációkon is futniuk kell. Például:
 
 * Egy meglévő n szintű alkalmazás "felemelve és áthelyezve" lett egy Service Fabric környezetbe.
 * A munkaterhelést meghatározott hardveren kell futtatni teljesítmény-, méretezési vagy biztonsági elkülönítési okokból.
@@ -355,7 +355,7 @@ Az ilyen típusú konfigurációk támogatásához Service Fabric tartalmaz olya
 
 ### <a name="built-in-node-properties"></a>Beépített csomópont tulajdonságai
 
-Service Fabric definiál néhány alapértelmezett csomópont-tulajdonságot, amelyet automatikusan használhat, így nem kell megadnia azokat. Az egyes csomópontokon definiált alapértelmezett tulajdonságok a **NodeType** és a **csomópontnév** .
+Service Fabric definiál néhány alapértelmezett csomópont-tulajdonságot, amelyet automatikusan használhat, így nem kell megadnia azokat. Az egyes csomópontokon definiált alapértelmezett tulajdonságok a **NodeType** és a **csomópontnév**.
 
 Például megadhat egy elhelyezési korlátozást a következőként: `"(NodeType == NodeType03)"` . A **NodeType** egy általánosan használt tulajdonság. Ez azért hasznos, mert megfelel a 1:1-nek a gép egy típusával. Minden típusú gép egy hagyományos n szintű alkalmazásban a számítási feladatok típusának felel meg.
 
@@ -473,7 +473,7 @@ Az elhelyezési korlátozásokhoz és a csomópontok tulajdonságaihoz hasonlóa
 
 ## <a name="capacity"></a>Kapacitás
 
-Ha kikapcsolta az összes erőforrás- *kiegyenlítést* , Service Fabric a fürterőforrás-kezelő továbbra is gondoskodik arról, hogy egyetlen csomópont sem haladja meg a kapacitását. A kapacitás-túllépések kezelése csak akkor lehetséges, ha a fürt túl teljes, vagy a munkaterhelés nagyobb, mint bármely csomópont. A kapacitás egy másik *korlátozás* , amelyet a fürterőforrás-kezelő használ annak megértéséhez, hogy egy adott erőforrás mekkora része a csomópontnak. A fennmaradó kapacitást is nyomon követheti a fürt teljes egészében.
+Ha kikapcsolta az összes erőforrás- *kiegyenlítést*, Service Fabric a fürterőforrás-kezelő továbbra is gondoskodik arról, hogy egyetlen csomópont sem haladja meg a kapacitását. A kapacitás-túllépések kezelése csak akkor lehetséges, ha a fürt túl teljes, vagy a munkaterhelés nagyobb, mint bármely csomópont. A kapacitás egy másik *korlátozás* , amelyet a fürterőforrás-kezelő használ annak megértéséhez, hogy egy adott erőforrás mekkora része a csomópontnak. A fennmaradó kapacitást is nyomon követheti a fürt teljes egészében.
 
 A szolgáltatás szintjén a kapacitás és a felhasználás is mérőszámok alapján van kifejezve. Előfordulhat például, hogy a metrika "ClientConnections", és egy csomópont 32 768-as "ClientConnections" képességgel rendelkezik. Más csomópontok rendelkezhetnek más korlátozásokkal. A csomóponton futó szolgáltatás azt is megteheti, hogy jelenleg a (z) "ClientConnections" metrika 32 256.
 
@@ -566,7 +566,7 @@ A túlfoglalási kapacitás is megadható a végtelen értékre. Ebben az esetbe
 
 Egy metrika nem rendelkezhet egyszerre a csomópont-pufferrel és a hozzájuk megadott túlfoglalási kapacitással.
 
-Az alábbi példa bemutatja, hogyan határozhatja meg a csomópontok pufferét vagy a túlfoglalási kapacitásokat a *ClusterManifest.xmlban* :
+Az alábbi példa bemutatja, hogyan határozhatja meg a csomópontok pufferét vagy a túlfoglalási kapacitásokat a *ClusterManifest.xmlban*:
 
 ```xml
 <Section Name="NodeBufferPercentage">

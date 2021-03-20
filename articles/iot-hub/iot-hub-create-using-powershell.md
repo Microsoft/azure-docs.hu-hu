@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
 ms.openlocfilehash: da021e3ba0fd93a182ea76a1ba4b7042b325aacc
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142371"
 ---
 # <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>IoT hub létrehozása a New-AzIotHub parancsmag használatával
@@ -37,9 +37,9 @@ Ha a Cloud Shell használja, már be van jelentkezve az előfizetésbe. Ha ehely
 Login-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az IoT hub üzembe helyezéséhez erőforráscsoport szükséges. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat.
+Az IoT hub üzembe helyezéséhez erőforráscsoport szükséges. Használhat egy meglévő erőforráscsoportot, vagy hozzon létre egy újat.
 
 Az IoT hub-hoz tartozó erőforráscsoport létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) parancsot. Ez a példa létrehoz egy **MyIoTRG1** nevű ERŐFORRÁSCSOPORTOT az **USA keleti** régiójában:
 

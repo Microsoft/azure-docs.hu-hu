@@ -4,17 +4,17 @@ description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a te
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376774"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
 Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával visszaállítani egy teljes fájlmegosztást vagy adott fájlokat a [Azure Backup](./backup-overview.md)által létrehozott visszaállítási pontról.
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 * Teljes Azure-fájlmegosztás visszaállítása.
 * Egyéni fájlok vagy mappák visszaállítása.
@@ -32,11 +32,11 @@ A visszaállítási művelet végrehajtásához kövesse az alábbi lépéseket.
 
     ![Biztonsági másolati elemek kiválasztása](./media/restore-afs/backup-items.png)
 
-1. A **biztonsági másolati elemek**kiválasztása után megnyílik egy új ablaktábla, amely felsorolja az összes biztonságimásolat-kezelési típust az Áttekintés ablaktábla mellett.
+1. A **biztonsági másolati elemek** kiválasztása után megnyílik egy új ablaktábla, amely felsorolja az összes biztonságimásolat-kezelési típust az Áttekintés ablaktábla mellett.
 
     ![Biztonságimásolat-felügyeleti típusok](./media/restore-afs/backup-management.png)
 
-1. A **biztonsági mentési elemek** ablaktáblán, a **biztonsági mentési felügyelet típusa**területen válassza az **Azure Storage (Azure Files)** lehetőséget. Ekkor megjelenik az összes fájlmegosztás és a hozzájuk tartozó Storage-fiókok listája a tároló használatával.
+1. A **biztonsági mentési elemek** ablaktáblán, a **biztonsági mentési felügyelet típusa** területen válassza az **Azure Storage (Azure Files)** lehetőséget. Ekkor megjelenik az összes fájlmegosztás és a hozzájuk tartozó Storage-fiókok listája a tároló használatával.
 
     ![Az összes fájlmegosztás listája](./media/restore-afs/file-shares.png)
 
@@ -50,7 +50,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
 
    ![Megosztás visszaállításának kiválasztása](./media/restore-afs/restore-share.png)
 
-1. A **megosztás visszaállítása**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához válassza **a hivatkozás szövege** a **visszaállítási pont** szövegmező alatt elemet.
+1. A **megosztás visszaállítása** lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához válassza **a hivatkozás szövege** a **visszaállítási pont** szövegmező alatt elemet.
 
     ![Válassza ki a visszaállítási pontot a kiválasztás lehetőség kiválasztásával](./media/restore-afs/select-restore-point.png)
 
@@ -61,14 +61,14 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
     >[!NOTE]
     >Alapértelmezés szerint a **visszaállítási pont kiválasztása** ablaktábla felsorolja az elmúlt 30 nap visszaállítási pontjait. Ha egy adott időtartam alatt létrehozott visszaállítási pontokat szeretné megtekinteni, adja meg a tartományt a megfelelő **kezdési** és **befejezési időpont** kiválasztásával, majd kattintson a **frissítés** gombra.
 
-1. A következő lépés a **visszaállítás helyének**kiválasztása. A **Helyreállítás célhelye** szakaszban adja meg, hogy hol vagy hogyan szeretné visszaállítani az adatgyűjtést. A váltógomb használatával válassza ki a következő két lehetőség egyikét:
+1. A következő lépés a **visszaállítás helyének** kiválasztása. A **Helyreállítás célhelye** szakaszban adja meg, hogy hol vagy hogyan szeretné visszaállítani az adatgyűjtést. A váltógomb használatával válassza ki a következő két lehetőség egyikét:
 
     * **Eredeti hely**: állítsa vissza a teljes fájlmegosztást ugyanarra a helyre, mint az eredeti forrást.
     * **Másik hely**: állítsa vissza a teljes fájlmegosztást egy másik helyre, és tartsa meg az eredeti fájlmegosztást.
 
 #### <a name="restore-to-the-original-location-full-share-recovery"></a>Visszaállítás az eredeti helyre (teljes megosztás helyreállítása)
 
-1. Válassza ki a **helyreállítási célhelyként**az **eredeti helyet** , és válassza ki, hogy az ütközések esetén ki kell-e hagyni vagy felülírja a megfelelő lehetőséget az **ütközések** legördülő listájának kiválasztásával.
+1. Válassza ki a **helyreállítási célhelyként** az **eredeti helyet** , és válassza ki, hogy az ütközések esetén ki kell-e hagyni vagy felülírja a megfelelő lehetőséget az **ütközések** legördülő listájának kiválasztásával.
 
 1. A visszaállítási művelet elindításához válassza a **visszaállítás** lehetőséget.
 
@@ -93,7 +93,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Fájl helyreállításának kiválasztása](./media/restore-afs/file-recovery.png)
 
-1. A fájl- **helyreállítás**lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához jelölje be a hivatkozás szövegének **kiválasztása** a **visszaállítási pont** szövegmező alatt jelölőnégyzetet.
+1. A fájl- **helyreállítás** lehetőség kiválasztását követően megnyílik a **visszaállítás** panel. A visszaállítási művelet végrehajtásához használni kívánt visszaállítási pont kiválasztásához jelölje be a hivatkozás szövegének **kiválasztása** a **visszaállítási pont** szövegmező alatt jelölőnégyzetet.
 
     ![A kijelölési hivatkozás kiválasztásával válassza a visszaállítási pont lehetőséget.](./media/restore-afs/select-restore-point.png)
 
@@ -101,7 +101,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Visszaállítási pont kiválasztása](./media/restore-afs/restore-point.png)
 
-1. A következő lépés a **visszaállítás helyének**kiválasztása. A **Helyreállítás célhelye** szakaszban adja meg, hogy hol vagy hogyan szeretné visszaállítani az adatgyűjtést. A váltógomb használatával válassza ki a következő két lehetőség egyikét:
+1. A következő lépés a **visszaállítás helyének** kiválasztása. A **Helyreállítás célhelye** szakaszban adja meg, hogy hol vagy hogyan szeretné visszaállítani az adatgyűjtést. A váltógomb használatával válassza ki a következő két lehetőség egyikét:
 
     * **Eredeti hely**: a kijelölt fájlok vagy mappák visszaállítása az eredeti forrással megegyező fájlmegosztást.
     * **Másik hely**: állítsa vissza a kijelölt fájlokat vagy mappákat egy másik helyre, és tartsa meg az eredeti fájlmegosztás tartalmát.
@@ -116,7 +116,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Válassza a fájl hozzáadása lehetőséget](./media/restore-afs/add-file.png)
 
-1. Jelölje be a visszaállítani kívánt fájlhoz vagy mappához tartozó jelölőnégyzetet, majd válassza a **kiválasztás**lehetőséget.
+1. Jelölje be a visszaállítani kívánt fájlhoz vagy mappához tartozó jelölőnégyzetet, majd válassza a **kiválasztás** lehetőséget.
 
     ![Fájl vagy mappa kiválasztása](./media/restore-afs/select-file-folder.png)
 
@@ -136,7 +136,7 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
     ![Válassza ki azokat az elemeket, amelyeket vissza szeretne állítani a másik helyre](./media/restore-afs/restore-to-alternate-location.png)
 
-1. Jelölje be a visszaállítani kívánt fájlhoz vagy mappához tartozó jelölőnégyzetet, majd válassza a **kiválasztás**lehetőséget.
+1. Jelölje be a visszaállítani kívánt fájlhoz vagy mappához tartozó jelölőnégyzetet, majd válassza a **kiválasztás** lehetőséget.
 
     ![Helyreállítási célhely kiválasztása](./media/restore-afs/recovery-destination.png)
 

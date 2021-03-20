@@ -13,15 +13,15 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 ms.openlocfilehash: 0e0ca8a787145fb40087a2d99be85607404eebfa
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152140"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához
 
-Az Azure IoT Hub és az Azure Event Grid integrációja révén eseményekkel kapcsolatos értesítéseket küldhet más szolgáltatásokba, és alsóbb rétegbeli folyamatokat aktiválhat. Üzleti alkalmazásait úgy konfigurálhatja, hogy figyeljék az IoT Hub-eseményeket, így megbízható, skálázható és biztonságos módon reagálhat a kritikus eseményekre.Készíthet például olyan alkalmazást, amely frissít egy adatbázist, létrehoz egy munkajegyet és e-mail-értesítést küld minden alkalommal, amikor új IoT-eszközt regisztrálnak az IoT-központba.
+Az Azure IoT Hub és az Azure Event Grid integrációja révén eseményekkel kapcsolatos értesítéseket küldhet más szolgáltatásokba, és alsóbb rétegbeli folyamatokat aktiválhat. Üzleti alkalmazásait úgy konfigurálhatja, hogy figyeljék az IoT Hub-eseményeket, így megbízható, skálázható és biztonságos módon reagálhat a kritikus eseményekre. Készíthet például olyan alkalmazást, amely frissít egy adatbázist, létrehoz egy munkajegyet és e-mail-értesítést küld minden alkalommal, amikor új IoT-eszközt regisztrálnak az IoT-központba.
 
 A [Azure Event Grid](../event-grid/overview.md) egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely egy közzétételi és előfizetési modellt használ. Event Grid beépített támogatást biztosít az Azure-szolgáltatásokhoz, például a [Azure Functionshoz](../azure-functions/functions-overview.md) és a [Azure Logic Appshoz](../logic-apps/logic-apps-overview.md), és az események riasztásait a nem Azure-szolgáltatásokhoz webhookok használatával lehet kézbesíteni. A Event Grid által támogatott eseménykezelők teljes listájáért tekintse [meg a Azure Event Grid bemutatása](../event-grid/overview.md)című témakört.
 

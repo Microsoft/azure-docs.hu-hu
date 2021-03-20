@@ -18,10 +18,10 @@ ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014501"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Oktatóanyag: Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása az Azure Portal használatával
@@ -36,7 +36,7 @@ A virtuális gép (VM) telepítésekor az Azure számos alapértelmezett útvona
 
 Igény szerint az [Azure CLI](diagnose-vm-network-routing-problem-cli.md) vagy az [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md) használatával is diagnosztizálhatja egy virtuális gép hálózati útválasztási problémáit.
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -50,7 +50,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|myVM|
+    |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
@@ -116,7 +116,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy virtuális gépet, és diagnosztizálta a hálózati útválasztást a virtuális géptől. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

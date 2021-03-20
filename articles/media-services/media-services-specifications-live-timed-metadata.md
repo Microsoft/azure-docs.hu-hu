@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336394"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
@@ -208,7 +208,7 @@ Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van de
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
-| Séma AZONOSÍTÓjának URI-ja                 | Leírás                                                                                                                                                                                                                                          |
+| Séma AZONOSÍTÓjának URI-ja                 | Description                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/emsg/ID3 | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -419,7 +419,7 @@ A keretek pontos beszúrásához a kódolónak fel kell osztania a töredéket a
 
 A **ritka számot be kell jelenteni** az élő kiszolgáló jegyzékfájljában egy **\<textstream\>** bejegyzéssel, és **tartalmaznia** kell a következő attribútumokat:
 
-| **Attribútum neve** | **Mező típusa** | **Szükséges?** | **Leírás**                                                                                                                                                                                                              |
+| **Attribútum neve** | **Mező típusa** | **Kötelező?** | **Leírás**                                                                                                                                                                                                              |
 | ------------------ | -------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | systemBitrate      | Szám         | Kötelező      | "0" értéknek **kell lennie** , amely egy ismeretlen, változó bitsebességű számot jelez.                                                                                                                                                          |
 | parentTrackName    | Sztring         | Kötelező      | A fölérendelt nyomon követési időszaknak **kell lennie** , amelyhez a ritka nyomon követési időkódok időkerete igazított. A szülő nyomon követése nem lehet ritka.                                                                             |
@@ -437,7 +437,7 @@ A Movie Box ("Moov") az élő kiszolgáló jegyzékfájljának részeként köve
 
 A "Moov" mezőnek tartalmaznia **kell** egy **TrackHeaderBox ("tkhd")** , az [ISO-14496-12] mezőben meghatározottak szerint, a következő korlátozásokkal:
 
-| **Mező neve** | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                                    |
+| **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                    |
 | -------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
 | duration       | 64 bites előjel nélküli egész szám | Kötelező      | 0 értékűnek **kell lennie** , mivel a Track Box nulla mintákat tartalmaz, a számok teljes időtartama pedig 0. |
 
@@ -445,7 +445,7 @@ A "Moov" mezőnek tartalmaznia **kell** egy **TrackHeaderBox ("tkhd")** , az [IS
 
 A "Moov" mezőnek tartalmaznia **kell** egy **HandlerBox ("hdlr")** az [ISO-14496-12] definiált módon az alábbi korlátozásokkal:
 
-| **Mező neve** | **Mező típusa**          | **Szükséges?** | **Leírás**       |
+| **Mező neve** | **Mező típusa**          | **Kötelező?** | **Leírás**       |
 | -------------- | ----------------------- | ------------- | --------------------- |
 | handler_type   | 32 bites előjel nélküli egész szám | Kötelező      | **A "** meta" értéknek kell lennie. |
 
@@ -463,7 +463,7 @@ A ritka követési töredékek egy film töredékét ("moof") és egy adathordoz
 
 A MovieFragmentBox ("moof") mezőben szerepelnie **kell** egy, az [MS-SSTR] mezőben definiált **TrackFragmentExtendedHeaderBox (UUID)** , amely a következő mezőket tartalmazza:
 
-| **Mező neve**         | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                           |
+| **Mező neve**         | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                           |
 | ---------------------- | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------- |
 | fragment_absolute_time | 64 bites előjel nélküli egész szám | Kötelező      | Az esemény érkezési időpontjának **kell lennie** . Ez az érték az üzenetet a fölérendelt nyomon követéssel igazítja.           |
 | fragment_duration      | 64 bites előjel nélküli egész szám | Kötelező      | Az esemény időtartamának **kell lennie** . Az időtartam nulla lehet, jelezve, hogy az időtartam ismeretlen. |
@@ -473,7 +473,7 @@ A MovieFragmentBox ("moof") mezőben szerepelnie **kell** egy, az [MS-SSTR] mez�
 
 A MediaDataBox ("mdat") mezőnek a következő formátumúnak kell **lennie** :
 
-| **Mező neve**          | **Mező típusa**                   | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Mező neve**          | **Mező típusa**                   | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                 | 32 bites előjel nélküli egész szám (uimsbf) | Kötelező      | Meghatározza a "mdat" mező tartalmának formátumát. Ismeretlen verziók figyelmen kívül lesznek hagyva. Jelenleg az egyetlen támogatott verzió az 1.                                                                                                                                                                                                                                                                                                                                                                      |
 | id                      | 32 bites előjel nélküli egész szám (uimsbf) | Kötelező      | Az üzenet ezen példányát azonosítja. Az egyenértékű szemantikai értékkel rendelkező üzeneteknek azonos értékűeknek kell lenniük; Ez egy, az ugyanazzal az azonosítóval rendelkező esemény-üzenetpanel feldolgozása is elegendő.                                                                                                                                                                                                                                                                                                                            |
@@ -928,7 +928,7 @@ Media Services (2. és 3. verzió) támogatja az EXT-X-CUE címke kimenetét az 
 
 Az "örökölt" EXT-X-CUE címke az alábbi módon van definiálva, és az [Adobe-főkiszolgálói] specifikációban hivatkozott normatíva is lehet. Ezt csak az örökölt SCTE35-jelzésekhez szabad használni, ha szükséges, ellenkező esetben az ajánlott címke a [RFC8216]-ben van definiálva EXT-X-DATERANGE. 
 
-| **Attribútum neve** | **Típus**                      | **Szükséges?**                             | **Leírás**                                                                                                                                                                                                                                                                          |
+| **Attribútum neve** | **Típus**                      | **Kötelező?**                             | **Leírás**                                                                                                                                                                                                                                                                          |
 | ------------------ | ----------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | CUE                | idézett karakterlánc                 | Kötelező                                  | Az üzenet Base64 kódolású karakterláncként van kódolva a következővel: [RFC4648]. A [SCTE-35] üzenetek esetében ez a Base64 kódolású splice_info_section ().                                                                                                                                      |
 | TÍPUS               | idézett karakterlánc                 | Kötelező                                  | Az üzenet sémáját azonosító URN vagy URL-cím. A (z) [SCTE-35] üzenetek esetében a típus a következő speciális értéket veszi fel: "scte35".                                                                                                                                                                          |
@@ -1050,7 +1050,7 @@ Az események manifest (MPD) díszítését az MPD jelzi az EventStream elem has
 
 A EventStream elem a következő attribútumokkal rendelkezik:
 
-| **Attribútum neve** | **Típus**                | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
+| **Attribútum neve** | **Típus**                | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet sémáját azonosító URN-nek vagy URL- **címnek kell** lennie; A támogatott kimeneti schemeId "urn: SCTE: scte35:2014: XML + bin"/[SCTE-214-1] SEC 6.7.4 (MPD) lehet, mivel a szolgáltatás jelenleg csak az "XML + bin"-t támogatja, ha rövid idő alatt az MPD szerepel. |
 | érték              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
@@ -1308,7 +1308,7 @@ A [SCTE-35] sávon belüli üzenetek [SCTE-214-3] SEC 7.3.2 (SCTE 35 Cue-üzenet
 
 A következő részletek felvázolják, hogy az ügyfélnek milyen értékeket kell várnia a "emsg" a [SCTE-214-3] megfelelőséggel:
 
-| **Mező neve**          | **Mező típusa**          | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                        |
+| **Mező neve**          | **Mező típusa**          | **Kötelező?** | **Leírás**                                                                                                                                                                                                                                                                                        |
 | ----------------------- | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | scheme_id_uri           | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet-sémát azonosító URN- **nek** kell lennie. A (z) [SCTE-35] üzenetek **esetében ennek a következőnek kell** lennie: "urn: SCTE: scte35:2013: bin" a [SCTE-214-3] megfelelőséggel          |
 | Érték                   | sztring                  | Kötelező      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az érték az esemény-adatfolyam neve lesz (trackName a Smooth betöltéshez vagy az AMF-üzenet neve az RTMP betöltéséhez). |
@@ -1350,7 +1350,7 @@ Ha teszteli a megvalósítást a Azure Media Services platformmal, először a "
 
 ## <a name="change-history"></a>Korábbi módosítások
 
-| Dátum     | Módosítások                                                                                                             |
+| Date     | Módosítások                                                                                                             |
 | -------- | ------------------------------------------------------------------------------------------------------------------- |
 | 07/2/19  | Felülvizsgált RTMP betöltési támogatás, új RTMP "onCuePoint" az elemek élő működéséhez                                            |
 | 08/22/19 | Frissítve a OnUserDataEvent és az RTMP egyéni metaadatokhoz való hozzáadásához                                                          |

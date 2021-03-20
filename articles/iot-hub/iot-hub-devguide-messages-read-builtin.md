@@ -12,15 +12,15 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 ms.openlocfilehash: 4bb33721625f4fc752745ce2b43051c90b3aaa74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147673"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
-Alapértelmezés szerint az üzenetek a beépített szolgáltatás felé irányuló végponthoz (**üzenetek/események**) lesznek irányítva, amely kompatibilis a [Event Hubsával](https://azure.microsoft.com/documentation/services/event-hubs/). Ez a végpont jelenleg csak a 5671-es porton elérhető [AMQP](https://www.amqp.org/) protokoll használatával érhető el. Az IoT hub a következő tulajdonságokat teszi elérhetővé, hogy lehetővé tegye a beépített Event hub-kompatibilis üzenetküldési végpont **üzeneteinek/eseményeinek**vezérlését.
+Alapértelmezés szerint az üzenetek a beépített szolgáltatás felé irányuló végponthoz (**üzenetek/események**) lesznek irányítva, amely kompatibilis a [Event Hubsával](https://azure.microsoft.com/documentation/services/event-hubs/). Ez a végpont jelenleg csak a 5671-es porton elérhető [AMQP](https://www.amqp.org/) protokoll használatával érhető el. Az IoT hub a következő tulajdonságokat teszi elérhetővé, hogy lehetővé tegye a beépített Event hub-kompatibilis üzenetküldési végpont **üzeneteinek/eseményeinek** vezérlését.
 
 | Tulajdonság            | Leírás |
 | ------------------- | ----------- |
@@ -45,15 +45,15 @@ Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud I
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon az IoT hubhoz.
 
-2. Kattintson a **beépített végpontok**elemre.
+2. Kattintson a **beépített végpontok** elemre.
 
-3. Az **események** szakasz a következő értékeket tartalmazza: **Partitions**, **Event hub-kompatibilis név**, **Event hub-kompatibilis végpont**, **megőrzési idő**és **fogyasztói csoportok**.
+3. Az **események** szakasz a következő értékeket tartalmazza: **Partitions**, **Event hub-kompatibilis név**, **Event hub-kompatibilis végpont**, **megőrzési idő** és **fogyasztói csoportok**.
 
     ![Eszközről a felhőbe irányuló beállítások](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
 A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Név | Érték |
+| Name | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostname (Gazdanév) | abcd1234namespace.servicebus.windows.net |

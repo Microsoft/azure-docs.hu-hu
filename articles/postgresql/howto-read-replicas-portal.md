@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.openlocfilehash: 9fdef187e9bdf77b29c548f767a4b4edfeb62f44
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422178"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal
@@ -39,9 +39,9 @@ A megfelelő naplózási szint konfigurálásához használja az Azure-replikác
 
 1. A Azure Portal válasszon ki egy meglévő Azure Database for PostgreSQL-kiszolgálót, amelyet főkiszolgálóként kíván használni.
 
-2. A kiszolgáló menüjében válassza a **replikálás** lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika** , létrehozhat olvasási replikákat. 
+2. A kiszolgáló menüjében válassza a **replikálás** lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
 
-3. Ha az Azure-beli replikálás támogatása nem a legalább **replika** értékre van beállítva, állítsa be. Válassza a **Mentés** lehetőséget.
+3. Ha az Azure-beli replikálás támogatása nem a legalább **replika** értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/howto-read-replicas-portal/set-replica-save.png" alt-text="Azure Database for PostgreSQL – replikálás – replika beállítása és mentés":::
 
@@ -73,7 +73,7 @@ Olvasási replika létrehozásához kövesse az alábbi lépéseket:
 
 5. Válassza ki a replika helyét. Az alapértelmezett hely ugyanaz, mint az elsődleges kiszolgáló.
 
-    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Válasszon helyet":::
+    :::image type="content" source="./media/howto-read-replicas-portal/location-replica.png" alt-text="Hely kiválasztása":::
 
    > [!NOTE]
    > Ha többet szeretne megtudni arról, hogy mely régiókban hozhat létre replikát, látogasson el a [replika áttekintése című cikkben](concepts-read-replicas.md). 
@@ -186,6 +186,6 @@ A **replika késésének** mérőszáma az utolsó visszajátszott tranzakció �
  
 3. Az **összesítéshez** válassza a **Max** lehetőséget. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ [az olvasási replikákkal kapcsolatban Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI-ben és a REST APIban](howto-read-replicas-cli.md).

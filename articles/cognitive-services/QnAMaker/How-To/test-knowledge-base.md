@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.openlocfilehash: 273548ec095ce04772438a2d732b914d80d976cc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353153"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>A Tudásbázis tesztelése QnA Maker
@@ -320,7 +320,7 @@ Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a
 * az eszköz parancssori példája
 * a TSV bemeneti és kimeneti fájljainak formátuma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis közzététele](../quickstarts/create-publish-knowledge-base.md)

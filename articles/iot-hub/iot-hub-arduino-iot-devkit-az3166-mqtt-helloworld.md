@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: fb8bf593568825793a1a205a2955599b16fa78cf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151763"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése egy MQTT-kiszolgálónak
@@ -46,10 +46,10 @@ Fejezze be a [első lépések útmutatót](./iot-hub-arduino-iot-devkit-az3166-g
 
 ## <a name="open-the-mqttclient-sample"></a>A MQTTClient minta megnyitása
 
-Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > MQTT**, és válassza a **MQTTClient**lehetőséget. Megnyílik egy új VS Code ablak a projekt mappájával.
+Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > MQTT**, és válassza a **MQTTClient** lehetőséget. Megnyílik egy új VS Code ablak a projekt mappájával.
 
 > [!NOTE]
-> Megnyithatja például a parancssorból is. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+> Megnyithatja például a parancssorból is. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino** parancsot, majd keresse meg és válassza ki az **Arduino: példák** elemet.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Az Arduino-vázlat felépítése és feltöltése a fejlesztői készlet
 

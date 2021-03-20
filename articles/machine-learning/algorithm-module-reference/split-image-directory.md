@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 3ee4dd9b2e344ecb3e1a6424ce7310270e7cd076
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421192"
 ---
 # <a name="split-image-directory"></a>Képkönyvtár felosztása
@@ -35,24 +35,24 @@ Ez a modul különösen akkor hasznos, ha a képadatokat betanítási és teszte
 
 ### <a name="expected-inputs"></a>Várt bemenetek
 
-| Név                  | Típus           | Leírás              |
+| Név                  | Típus           | Description              |
 | --------------------- | -------------- | ------------------------ |
 | Bemeneti rendszerkép könyvtára | ImageDirectory | Felosztható Képkönyvtár |
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Név                                   | Típus  | Tartomány | Választható | Leírás                            | Alapértelmezett |
+| Név                                   | Típus  | Tartomány | Választható | Description                            | Alapértelmezett |
 | -------------------------------------- | ----- | ----- | -------- | -------------------------------------- | ------- |
 | Az első kimenetben található rendszerképek töredéke | Float | 0-1   | Kötelező | Az első kimenetben található rendszerképek töredéke | 0,9     |
 
 ### <a name="outputs"></a>Kimenetek
 
-| Név                    | Típus           | Leírás                              |
+| Név                    | Típus           | Description                              |
 | ----------------------- | -------------- | ---------------------------------------- |
 | Kimeneti rendszerkép directory1 | ImageDirectory | A kijelölt lemezképeket tartalmazó könyvtár |
 | Kimeneti rendszerkép directory2 | ImageDirectory | Az összes többi rendszerképet tartalmazó könyvtár |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

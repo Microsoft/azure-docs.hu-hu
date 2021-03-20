@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753109"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Oktatóanyag: kiszolgálók értékelése importált CSV-fájl használatával
@@ -90,7 +90,7 @@ Hozzon létre egy új Azure Migrate projektet, ha még nem rendelkezik ilyennel.
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-import/new-project.png)
 
-7. Kattintson a **Létrehozás** gombra.
+7. Válassza a **Létrehozás** lehetőséget.
 8. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
 
 A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.

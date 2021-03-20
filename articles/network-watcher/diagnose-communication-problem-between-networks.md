@@ -15,10 +15,10 @@ ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013294"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Hálózatok közötti kommunikációs probléma diagnosztizálása az Azure Portal használatával
@@ -109,7 +109,7 @@ Ha csak az oktatóanyag elvégzése érdekében hozott létre egy VPN Gatewayt a
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *TestRG1* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag a virtuális hálózati átjárókkal kapcsolatos problémák diagnosztizálását mutatta be. Érdemes naplózni a virtuális gépek bejövő és kimenő hálózati kommunikációját, hogy átnézhesse a naplókat rendellenességek után kutatva. Ennek megismeréséhez folytassa a következő oktatóanyaggal.
 

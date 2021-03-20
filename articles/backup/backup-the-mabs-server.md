@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan készíthet biztonsági másolatot a Microsoft 
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 81a6ee005e15b1d7ab7b11a938b8ab14143818f4
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172125"
 ---
 # <a name="back-up-the-mabs-server"></a>MABS-kiszolgáló biztonsági mentése
@@ -60,7 +60,7 @@ A MABS biztonsági mentési stratégiájának részeként biztonsági mentést k
 
     Győződjön meg arról, hogy az Azure Recovery Services ügynök telepítése és a MABS-kiszolgáló a Azure Backup-tárolóban való regisztrálása során meg van adva a PIN-kód. Erre a PIN-kódra szüksége lesz a biztonsági mentés visszaállításához.
 
-2. Hozzon létre egy Azure Backup-tárolót, töltse le az Azure Backup-ügynök telepítési fájlját és a tároló hitelesítő adatait. A telepítési fájl futtatásával telepítse az ügynököt a MABS-kiszolgálóra, és a tároló hitelesítő adataival regisztrálja a MABS-kiszolgálót a tárolóban. [További információk](backup-azure-microsoft-azure-backup.md).
+2. Hozzon létre egy Azure Backup-tárolót, töltse le az Azure Backup-ügynök telepítési fájlját és a tároló hitelesítő adatait. A telepítési fájl futtatásával telepítse az ügynököt a MABS-kiszolgálóra, és a tároló hitelesítő adataival regisztrálja a MABS-kiszolgálót a tárolóban. [További információ](backup-azure-microsoft-azure-backup.md).
 
 3. Miután konfigurálta a tárolót, állítson be egy MABS védelmi csoportot, amely tartalmazza a MABS-adatbázist. Válassza ki a lemezre és az Azure-ra történő biztonsági mentést.
 
@@ -68,11 +68,11 @@ A MABS biztonsági mentési stratégiájának részeként biztonsági mentést k
 
 Az adatbázist az Azure-ból a Azure Backup-tárolóban regisztrált bármely MABS-kiszolgálóval helyreállíthatja, a következőképpen:
 
-1. A MABS-konzolon válassza a **helyreállítás**  >  **külső MABS hozzáadása**elemet.
+1. A MABS-konzolon válassza a **helyreállítás**  >  **külső MABS hozzáadása** elemet.
 
 2. Adja meg a tároló hitelesítő adatait (töltse le a Azure Backup-tárból). Ne feledje, hogy a hitelesítő adatok csak két napig érvényesek.
 
-3. A **külső MABS kiválasztása helyreállításhoz**területen válassza ki azt a MABS-kiszolgálót, amelynek helyre kívánja állítani az adatbázisát, írja be a titkosítási jelszót, majd kattintson **az OK gombra.**
+3. A **külső MABS kiválasztása helyreállításhoz** területen válassza ki azt a MABS-kiszolgálót, amelynek helyre kívánja állítani az adatbázisát, írja be a titkosítási jelszót, majd kattintson **az OK gombra.**
 
 4. Válassza ki a használni kívánt helyreállítási pontot az elérhető helyreállítási pontok listájából. Válassza a **külső MABS törlése** lehetőséget a helyi MABS nézethez való visszatéréshez.
 
@@ -81,10 +81,10 @@ Az adatbázist az Azure-ból a Azure Backup-tárolóban regisztrált bármely MA
 > [!NOTE]  
 > Ez a beállítás a MABS és a modern biztonsági másolati tárhely esetében alkalmazható.
 
-1. A MABS-konzolon válassza a **védelem**védelmi  >  **csoport létrehozása**lehetőséget.
-2. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók**elemet.
-3. A **csoporttagok kiválasztása** lapon válassza a **DPM-adatbázis**lehetőséget. Bontsa ki a MABS-kiszolgálót, és válassza a DPMDB lehetőséget.
-4. Az **adatvédelmi módszer kiválasztása** oldalon válassza a **rövid távú védelmet szeretnék a lemez használatával**lehetőséget. Adja meg a rövid távú védelmi házirend beállításait.
+1. A MABS-konzolon válassza a **védelem** védelmi  >  **csoport létrehozása** lehetőséget.
+2. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** elemet.
+3. A **csoporttagok kiválasztása** lapon válassza a **DPM-adatbázis** lehetőséget. Bontsa ki a MABS-kiszolgálót, és válassza a DPMDB lehetőséget.
+4. Az **adatvédelmi módszer kiválasztása** oldalon válassza a **rövid távú védelmet szeretnék a lemez használatával** lehetőséget. Adja meg a rövid távú védelmi házirend beállításait.
 5. A MABS-adatbázis kezdeti replikációja után futtassa a következő SQL-parancsfájlt:
 
 ```SQL
@@ -154,13 +154,13 @@ where ds.datasourcename like '%dpmdb%'
 and servername like '%dpmsqlservername%' --netbios name of server hosting DPMDB
 ```
 
-1. A MABS-konzolon válassza a **védelem**védelmi  >  **csoport létrehozása**lehetőséget.
+1. A MABS-konzolon válassza a **védelem** védelmi  >  **csoport létrehozása** lehetőséget.
 
 2. A **Védelmi csoport típusának kiválasztása** lapon válassza a **Kiszolgálók** elemet.
 
-3. A **csoporttagok kiválasztása** lapon válassza ki a MABS-adatbázist. Bontsa ki a MABS-kiszolgáló elemet, és válassza a **DPMDB**lehetőséget.
+3. A **csoporttagok kiválasztása** lapon válassza ki a MABS-adatbázist. Bontsa ki a MABS-kiszolgáló elemet, és válassza a **DPMDB** lehetőséget.
 
-4. Az  **adatvédelmi módszer kiválasztása** oldalon válassza a **rövid távú védelmet szeretnék a lemez használatával**lehetőséget. Adja meg a rövid távú védelmi házirend beállításait. A MABS-adatbázisok esetében két hetes megőrzési tartományt ajánlunk.
+4. Az  **adatvédelmi módszer kiválasztása** oldalon válassza a **rövid távú védelmet szeretnék a lemez használatával** lehetőséget. Adja meg a rövid távú védelmi házirend beállításait. A MABS-adatbázisok esetében két hetes megőrzési tartományt ajánlunk.
 
 #### <a name="recover-the-database"></a>Adatbázis helyreállítása
 
@@ -178,7 +178,7 @@ Ha a MABS-kiszolgáló továbbra is működőképes, és a tárolási készlet s
 
 4. A CD-t az X: meghajtóra, és navigáljon a MABS-adatbázisfájlok helyére. Másolja őket egy olyan helyre, ahonnan könnyen visszaállíthatja őket. A másolás befejezése után futtassa a PsExec cmd ablakot, és futtassa **diskshadow.exe** , és tegye elérhetővé az X: kötetet.
 
-5. Most visszaállíthatja az adatbázisfájlok SQL Management Studio használatával vagy **DPMSYNC- \- RESTOREDB**futtatásával.
+5. Most visszaállíthatja az adatbázisfájlok SQL Management Studio használatával vagy **DPMSYNC- \- RESTOREDB** futtatásával.
 
 ## <a name="back-up-with-native-sql-server-backup-to-a-local-disk"></a>Natív SQL Server biztonsági mentés helyi lemezre
 
@@ -194,7 +194,7 @@ Ez a biztonsági mentési lehetőség natív SQL-t használ a MABS-adatbázis bi
 
 ### <a name="before-you-start"></a>Előkészületek
 
-1. A SQL Serveron hozzon egy mappát egy olyan meghajtón, amely elegendő szabad hellyel rendelkezik a biztonsági másolat egyetlen másolatának tárolásához. Például: `C:\MABSBACKUP`.
+1. A SQL Serveron hozzon egy mappát egy olyan meghajtón, amely elegendő szabad hellyel rendelkezik a biztonsági másolat egyetlen másolatának tárolásához. Példa: `C:\MABSBACKUP`.
 
 1. Ossza meg a mappát. Például a mappa megosztása `C:\MABSBACKUP` *DPMBACKUP*.
 
@@ -204,7 +204,7 @@ Ez a biztonsági mentési lehetőség natív SQL-t használ a MABS-adatbázis bi
     OSQL -E -S localhost\SQL_INSTANCE_NAME -Q "BACKUP DATABASE DPMDB_NAME TO DISK='C:\DPMBACKUP\dpmdb.bak' WITH FORMAT"
     ```
 
-1. A Jegyzettömb segítségével nyissa **ScriptingConfig.xml** meg a `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` MABS-kiszolgáló mappájában találhatóScriptingConfig.xmlfájlt.
+1. A Jegyzettömb segítségével nyissa  meg a `C:\Program Files\Microsoft System Center\DPM\DPM\Scripting` MABS-kiszolgáló mappájában találhatóScriptingConfig.xmlfájlt.
 
 1. Módosítsa **ScriptingConfig.xml** és módosítsa a **DataSourceName =** értékre a DPMDBBACKUP mappát/megosztást tartalmazó meghajtóbetűjelet. Módosítsa a PreBackupScript bejegyzést a 3. lépésben mentett **bkupdb. cmd** fájl teljes elérési útjára és nevére.
 
@@ -220,15 +220,15 @@ Ez a biztonsági mentési lehetőség natív SQL-t használ a MABS-adatbázis bi
     </ScriptConfiguration>
     ```
 
-1. Mentse **ScriptingConfig.xml**módosításait.
+1. Mentse **ScriptingConfig.xml** módosításait.
 
 1. A C:\MABSBACKUP mappát vagy a `\sqlservername\MABSBACKUP` megosztást a MABS használatával, majd várjon, amíg a kezdeti replika létre nem jön. A **dpmdb. bak** fájlnak a C:\MABSBACKUP mappában kell lennie a-t futtató biztonsági mentés előtti parancsfájl eredményeképpen, amelyet a rendszer a MABS-replikára másolt.
 
 1. Ha nem engedélyezi az önkiszolgáló helyreállítást, néhány további lépésre lesz szüksége a MABSBACKUP mappa megosztásához a replikán:
 
-    1. A MABS-konzolon > a **védelem**területen keresse meg a MABSBACKUP-adatforrást, és jelölje ki. A Részletek szakaszban **kattintson ide, ha meg szeretné tekinteni** a replika elérési útjára mutató hivatkozás részleteit, és másolja az elérési utat a Jegyzettömbbe. Távolítsa el a forrás elérési útját, de őrizze meg a célét. Az elérési útnak a következőhöz hasonlóan kell kinéznie: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
+    1. A MABS-konzolon > a **védelem** területen keresse meg a MABSBACKUP-adatforrást, és jelölje ki. A Részletek szakaszban **kattintson ide, ha meg szeretné tekinteni** a replika elérési útjára mutató hivatkozás részleteit, és másolja az elérési utat a Jegyzettömbbe. Távolítsa el a forrás elérési útját, de őrizze meg a célét. Az elérési útnak a következőhöz hasonlóan kell kinéznie: `C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP` .
 
-    2. Hozzon el egy megosztást az elérési útra a **MABSSERVERNAME-DPMDB**megosztási név használatával. Az alábbi Net Share parancsot egy rendszergazdai parancssorból használhatja.
+    2. Hozzon el egy megosztást az elérési útra a **MABSSERVERNAME-DPMDB** megosztási név használatával. Az alábbi Net Share parancsot egy rendszergazdai parancssorból használhatja.
 
         ```cmd
         Net Share MABSSERVERNAME-dpmdb="C:\Program Files\Microsoft System Center\DPM\DPM\Volumes\Replica\File System\vol_c9aea05f-31e6-45e5-880c-92ce5fba0a58\454d81a0-0d9d-4e07-9617-d49e3f2aa5de\Full\DPMBACKUP"
@@ -287,7 +287,7 @@ A **DpmSync** olyan parancssori eszköz, amely lehetővé teszi a MABS-adatbázi
 | Paraméter      | Leírás    |
 |----------------|-----------------------------|
 | **– RestoreDb**                       | Visszaállítja egy MABS-adatbázist egy adott helyről.|
-| **– Szinkronizálás**                            | Szinkronizálja a visszaállított adatbázisokat. Az adatbázisok visszaállítása után futtatnia kell a **DpmSync – Sync** parancsot. A **DpmSync – Sync**futtatása után előfordulhat, hogy egyes replikák továbbra is hiányzóként vannak megjelölve. |
+| **– Szinkronizálás**                            | Szinkronizálja a visszaállított adatbázisokat. Az adatbázisok visszaállítása után futtatnia kell a **DpmSync – Sync** parancsot. A **DpmSync – Sync** futtatása után előfordulhat, hogy egyes replikák továbbra is hiányzóként vannak megjelölve. |
 | **-DbLoc** *helye*                | A MABS-adatbázis biztonsági másolatának helyét azonosítja.|
 | **– Példánynév** <br/>*Server \ példány*     | A példány, amelybe vissza kell állítani a DPMDB.|
 | **– ReallocateReplica**         | A hiányzó replika kötetek újrafoglalása szinkronizálás nélkül. |

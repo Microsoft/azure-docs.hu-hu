@@ -8,10 +8,10 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86129906"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>VMware virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell használatával
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 A tároló környezetének beállítása a Set-ASRVaultContext parancsmaggal. A beállítás után a rendszer a PowerShell-munkamenet következő Azure Site Recovery műveleteit a kijelölt tároló környezetében hajtja végre.
 
 > [!TIP]
-> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok az űrlapot * \<Operation> - **AzRecoveryServicesAsr** \<Object> * , és egyenértékű aliasokkal rendelkeznek, amelyek az * \<Operation> - **ASR** \<Object> *-űrlapot fogadják. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
+> A Azure Site Recovery PowerShell-modul (az. Recoveryservices szolgáltatónál modul) a legtöbb parancsmaghoz egyszerűen használható aliasokat tartalmaz. A modulban lévő parancsmagok az űrlapot *\<Operation> - **AzRecoveryServicesAsr** \<Object>* , és egyenértékű aliasokkal rendelkeznek, amelyek az *\<Operation> - **ASR** \<Object>*-űrlapot fogadják. A egyszerű használat érdekében lecserélheti a parancsmagok aliasait.
 
 Az alábbi példában a $vault változóból származó tár adatait a rendszer a PowerShell-munkamenethez tartozó tár környezetének megadására használja.
 
@@ -172,7 +172,7 @@ Ebben a példában a következőkkel rendelkezünk:
    1     ConfigurationServer
    ```
 
-   A fenti kimenetből ***$ProcessServers [0]*** a *horizontális felskálázás-ProcessServer* és a ***(z) [1] $ProcessServers*** megfelel a Process Server szerepkörnek a *ConfigurationServer*
+   A fenti kimenetből ***$ProcessServers [0]** _ a _horizontális felskálázás-ProcessServer * és a ***$ProcessServers [1]**_ értéknek felel meg a folyamat kiszolgálói szerepkörének _ConfigurationServer *
 
 3. Azonosítsa a konfigurációs kiszolgálón beállított fiókokat.
 
@@ -189,7 +189,7 @@ Ebben a példában a következőkkel rendelkezünk:
    3         LinuxAccount
    ```
 
-   A fenti kimenetből ***$AccountHandles [0]*** a fiókhoz *vCenter_account*, ***$AccountHandles [1]*** , a *WindowsAccount*és a ( ***$AccountHandles [2]*** ) a fiók *LinuxAccount* .
+   A fenti kimenetből ***$AccountHandles [0]** _ a ( _vCenter_account *, ***$AccountHandles [1]**_ fióknak felel meg a _WindowsAccount *, és ***$AccountHandles [2]**_ fiókhoz _LinuxAccount *
 
 ## <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
@@ -342,7 +342,7 @@ A felderített virtuális gépek elleni védelemhez a következő adatokra lesz 
 * A replikálható védett elemek.
 * A virtuális gép (csak a Storage-fiókba való replikálás esetén) replikálására szolgáló Storage-fiók. 
 * A virtuális gépek Premium Storage-fiókba vagy felügyelt lemezre való védeleméhez naplófájlra van szükség.
-* A replikáláshoz használandó folyamat-kiszolgáló. A rendszer beolvasta és mentette a rendelkezésre álló folyamat-kiszolgálók listáját a ***$ProcessServers [0]***  *(horizontális felskálázás-ProcessServer)* és a ***$ProcessServers [1]*** *(ConfigurationServer)* változóban.
+* A replikáláshoz használandó folyamat-kiszolgáló. A rendszer lekérte és mentette a rendelkezésre álló folyamat-kiszolgálók listáját a ***$ProcessServers [0]** _ _(horizontális felskálázás-ProcessServer) * és ***$ProcessServers [1]**_ _ (ConfigurationServer) * változóban.
 * Az a fiók, amellyel leküldheti a mobilitási szolgáltatás szoftverét a gépekre. Az elérhető fiókok listája a ***$AccountHandles*** változóban lett beolvasva és tárolva.
 * A replikáláshoz használni kívánt replikációs házirend védelmi tárolójának leképezése.
 * Az az erőforráscsoport, amelyben a virtuális gépeket létre kell hozni a feladatátvétel során.
@@ -351,7 +351,7 @@ A felderített virtuális gépek elleni védelemhez a következő adatokra lesz 
 Most replikálja a következő virtuális gépeket az ebben a táblázatban megadott beállítások használatával.
 
 
-|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
+|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél-erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – vnet                 |Alhálózat – 1       |   
@@ -496,5 +496,5 @@ Ebben a lépésben a virtuális gép Win2K12VM1 egy adott helyreállítási pont
 
 2. A feladatátvétel sikeres végrehajtása után véglegesítheti a feladatátvételi műveletet, és visszaállíthatja a visszirányú replikálást az Azure-ból a helyszíni VMware-helyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További feladatok automatizálása a [Azure site Recovery PowerShell-hivatkozás](/powershell/module/Az.RecoveryServices)használatával.

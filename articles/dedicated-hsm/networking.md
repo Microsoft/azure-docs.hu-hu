@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91359154"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure dedikált HSM hálózatkezelés
@@ -66,7 +66,7 @@ A helyek közötti virtuális magánhálózat lehetővé teszi az Azure-alapú d
 
 A dedikált HSM tipikus telepítési architektúrája egyetlen virtuális hálózattal és a HSM-eszközök létrehozásához és üzembe helyezéséhez szükséges alhálózattal kezdődik. Ugyanezen a régión belül további virtuális hálózatok és alhálózatok is lehetnek a dedikált HSM-et használó alkalmazás-összetevők számára. Ezen hálózatok közötti kommunikáció engedélyezéséhez Virtual Network-társítást használunk.
 
-### <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
+### <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
 Ha egy régión belül több virtuális hálózat is van, amelyeknek hozzá kell férniük egymás erőforrásaihoz, Virtual Network a társítással biztonságos kommunikációs csatornák hozhatók létre egymás között.  A virtuális hálózatok társítása nemcsak biztonságos kommunikációt tesz lehetővé, hanem alacsony késleltetésű és nagy sávszélességű kapcsolatokat is biztosít az Azure-beli erőforrások között.
 

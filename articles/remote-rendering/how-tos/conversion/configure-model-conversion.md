@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: 1cb5312e164bac09930497c377f1590b6a77ca05
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205319"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
@@ -207,7 +207,7 @@ A formátumok memória-lábnyomai a következők:
 #### <a name="best-practices-for-component-format-changes"></a>Ajánlott eljárások az összetevő formátumának változásaihoz
 
 * `position`: Ritkán fordul elő, hogy a kisebb pontosság elegendő. a **16_16_16_16_FLOAT** a nagy méretű modellek esetében is bevezeti a észlelhető kvantálási összetevőket.
-* `normal`, `tangent` , `binormal` : Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none**értékre állíthatók:
+* `normal`, `tangent` , `binormal` : Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none** értékre állíthatók:
   * `normal`, `tangent` és `binormal` csak akkor szükséges, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha egy [pbr-anyagot](../../overview/features/pbr-materials.md) bármikor használ a modellben.
   * `tangent` és `binormal` csak akkor szükséges, ha a megvilágított anyagok bármelyike normál Térkép textúrát használ.
 * `texcoord0``texcoord1`: A textúra koordinátái használhatnak kisebb pontosságot (**16_16_FLOAT**), ha az értékek a tartományon maradnak, `[0; 1]` és ha a kezelt textúrák maximális mérete 2048 x 2048 képpont. Ha túllépi a korlátokat, a textúra-leképezés minősége is csökkenni fog.

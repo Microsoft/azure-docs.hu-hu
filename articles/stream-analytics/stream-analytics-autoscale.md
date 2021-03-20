@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: a8e089e302e9d40c69cf7ff2a3480c17894e1463
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016286"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics feladatok autoskálázása Azure Automation használatával
@@ -78,6 +78,6 @@ Előfordulhatnak olyan esetek, amikor nem lehet előre jelezni a bemeneti terhel
 
 Az ajánlott eljárás a méretezési tesztek futtatása a feladatok éles környezetben való futtatása előtt. Ha a feladatát különböző bemeneti terhelések ellen teszteli, azzal a feladattal, hogy hány SUs-erőforrásra van szüksége a különböző bemeneti átviteli sebességhez. Ez tájékoztathatja a riasztási szabályokban definiált feltételeket a vertikális Felskálázási és leskálázási műveletek elindításához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Párhuzamosítható-lekérdezések létrehozása a Azure Stream Analyticsban](stream-analytics-parallelization.md)
 * [Azure Stream Analytics feladatok méretezése az átviteli sebesség növelése érdekében](stream-analytics-scale-jobs.md)

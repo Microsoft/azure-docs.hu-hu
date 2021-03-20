@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Data Analytics'
 - devx-track-azurecli
 ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625215"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Oktatóanyag: az Azure CLI és a Azure Portal használatával konfigurálhatja IoT Hub üzenetek útválasztását
@@ -178,7 +178,7 @@ Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirány�
 
    ![Útválasztási lekérdezés létrehozása a Storage-fiókhoz](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
 
-   Válassza a **Mentés** lehetőséget. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
+   Kattintson a **Mentés** gombra. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
 
 ### <a name="route-to-a-service-bus-queue"></a>Útvonal Service Bus üzenetsor felé
 
@@ -214,7 +214,7 @@ Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Lépjen az Üz
 
    ![Útválasztási lekérdezés létrehozása az Service Bus üzenetsor számára](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
-7. Válassza a **Mentés** lehetőséget. Miután visszatért az Útvonalak panelre, láthatja a két új útvonalat, ahogy itt is szerepelnek.
+7. Kattintson a **Mentés** gombra. Miután visszatért az Útvonalak panelre, láthatja a két új útvonalat, ahogy itt is szerepelnek.
 
    ![Az imént beállított útvonalak](./media/tutorial-routing/message-routing-show-both-routes.png)
 

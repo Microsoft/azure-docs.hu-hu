@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753858"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Migrálási terv létrehozása az Azure Migrate-tel
@@ -116,7 +116,7 @@ Néhány javaslat:
 
 - **Gyors WINS rangsorolása**: az értékelési jelentések segítségével azonosíthatja az alacsony terhelésű gyümölcsöket, beleértve a teljes mértékben kész kiszolgálókat és adatbázisokat, és minimális erőfeszítést kell tennie az Azure-ba való Migrálás során. A táblázat néhány módszert foglal össze.
 
-    **Állam** | **Művelet**
+    **Állapot** | **Művelet**
     --- | ---
     **Azure-beli használatra kész virtuális gépek** | Exportálja az értékelési jelentést, és szűrje az Azure- *ra kész* állapotú gépeket. Ez lehet az első olyan csoport, amely az Azure-ba való [átállást, az Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszközt használja.
     **Támogatási operációs rendszerek** | Exportálja az értékelési jelentést, és szűrje a Windows Server 2008 R2/Windows Server 2008 operációs rendszert futtató összes gépet. Ezek az operációs rendszerek a támogatás végén találhatók, és az Azure-ba való Migrálás során csak az Azure nyújt három éves biztonsági frissítést. Ha Azure Hybrid Benefit kombinálja, és a RIs-t használja, a megtakarítás sokkal magasabb lehet.
@@ -145,7 +145,7 @@ Az áttelepítés utáni tesztelési tervnek tartalmaznia kell a működés, az 
 
 Hozzon létre egy áttelepítési ütemtervet, és deklaráljon egy karbantartási időszakot az alkalmazások és adatbázisok áttelepítéséhez minimálisan nulla állásidővel, és korlátozza a lehetséges működési és üzleti hatásokat az áttelepítés során.  
 
-## <a name="migrate"></a>Migrate (Áttelepítés)
+## <a name="migrate"></a>Migrate
 
 Azt javasoljuk, hogy a teljes körű áttelepítés megkezdése előtt futtasson Azure Migrate tesztelési tesztet. A tesztelési folyamat segítségével megbecsülheti a szóban forgó időt, és megcsípheti az áttelepítési tervet. Lehetőséget biztosít az esetleges problémák felderítésére, és a teljes áttelepítés előtt kijavítani azokat.
 
@@ -154,7 +154,7 @@ Ha készen áll az áttelepítésre, használja a Azure Migrate: Server áttelep
 - A kiszolgáló áttelepítési eszköze segítségével áttelepítheti a helyszíni virtuális gépeket és kiszolgálókat, illetve más magán-vagy nyilvános felhőben (beleértve az AWS-t, a GCP-t) található virtuális gépeket, a nulla állásidővel.
 - Az Azure DMS egy teljes körűen felügyelt szolgáltatást biztosít, amely lehetővé teszi, hogy a zökkenőmentes áttelepítést több adatbázisból az Azure-adatplatformokra, minimális állásidővel.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate)   Az Azure Cloud bevezetési keretrendszerében.
 - [Gyors áttekintést](migrate-services-overview.md) kaphat a Azure Migrateről, és megtekintheti az [első lépéseket bemutató videót](https://youtu.be/wFfq3YPxYHE).

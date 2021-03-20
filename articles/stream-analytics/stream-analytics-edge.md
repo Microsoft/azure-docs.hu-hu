@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: c2a062b75caa84a0e3c342ca1ce45ccce12f2bb7
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012614"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>IoT Edge-eszközökön futó Azure Stream Analytics
@@ -125,7 +125,7 @@ A verzióra vonatkozó információk utolsó frissítése 2020-09-21:
 ## <a name="get-help"></a>Segítség kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Azure IoT Edge](../iot-edge/about-iot-edge.md)
 * [Stream Analytics IoT Edge oktatóanyag](../iot-edge/tutorial-deploy-stream-analytics.md)

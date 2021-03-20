@@ -4,10 +4,10 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.openlocfilehash: 1e237e63b92468fafff4f8f8f525d1388840d162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89378321"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
@@ -42,7 +42,7 @@ További előfeltételek és korlátozások:
 
 * A SharePoint-adatbázisok SQL Server-adatforrásként nem védhetők meg. Egy farm biztonsági másolatából különálló adatbázisok is helyreállíthatók.
 
-* Ne feledje, hogy a MABS **helyi rendszerként**fut, és a SQL Server adatbázisok biztonsági mentéséhez rendszergazdai jogosultságokkal kell RENDELKEZNIE az SQL Serverhez tartozó fiókban. Az SQL Server, amelyről biztonsági másolatot szeretne készíteni, állítsa be az NT AUTHORITY\SYSTEM-t a **sysadmin (rendszergazda**) értékre.
+* Ne feledje, hogy a MABS **helyi rendszerként** fut, és a SQL Server adatbázisok biztonsági mentéséhez rendszergazdai jogosultságokkal kell RENDELKEZNIE az SQL Serverhez tartozó fiókban. Az SQL Server, amelyről biztonsági másolatot szeretne készíteni, állítsa be az NT AUTHORITY\SYSTEM-t a **sysadmin (rendszergazda**) értékre.
 
 * A farm minden 10 000 000 eleméhez legalább 2 GB szabad területnek kell lennie azon a köteten, ahol a MABS mappa található. Ez a terület a katalógus előállításához szükséges. Annak lehetővé tételéhez, hogy a MABS használatával hajtsa végre az elemek (webhelycsoportok, webhelyek, listák, dokumentumtárak, mappák, egyes dokumentumok és listaelemek) adott helyreállítását, a katalógus létrehozása létrehoz egy listát az egyes tartalom-adatbázisokban található URL-címekről. Az URL-címek listáját a helyreállítható elem ablaktáblán tekintheti meg a MABS felügyeleti konzol helyreállítási feladat területén.
 
@@ -78,33 +78,33 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
 1. Védelmi csoport létrehozásához kattintson a **védelmi**  >  **műveletek**  >  **védelmi csoport létrehozása** elemre az **új védelmi csoport létrehozása** varázsló megnyitásához a MABS-konzolon.
 
-1. A **védelmi csoport típusának kiválasztása**lapon válassza a **kiszolgálók**elemet.
+1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** elemet.
 
-1. A **csoporttagok kiválasztása**területen bontsa ki azt a kiszolgálót, amely a WFE szerepkört tárolja. Ha egynél több WFE-kiszolgáló található, válassza ki a ConfigureSharePoint.exe telepített példányát.
+1. A **csoporttagok kiválasztása** területen bontsa ki azt a kiszolgálót, amely a WFE szerepkört tárolja. Ha egynél több WFE-kiszolgáló található, válassza ki a ConfigureSharePoint.exe telepített példányát.
 
     Ha kibontja a SharePoint Server MABS lekérdezi a VSS-t, hogy megtudja, milyen MABS tud védelemmel ellátni.  Ha a SharePoint-adatbázis távoli, a MABS csatlakozik hozzá. Ha a SharePoint-adatforrások nem jelennek meg, ellenőrizze, hogy a VSS-író fut-e a SharePoint-kiszolgálón és a távoli SQL Serveron, és győződjön meg arról, hogy a MABS-ügynök telepítve van a SharePoint-kiszolgálón és a távoli SQL Server is. Továbbá győződjön meg arról, hogy a SharePoint-adatbázisok nem védettek máshol SQL Server-adatbázisokként.
 
-1. Az **adatvédelmi módszer kiválasztása**lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú \- távú biztonsági mentést. A rövid \- távú biztonsági mentés mindig lemezre történik, és a lemezről az Azure-felhőbe történő biztonsági mentés lehetősége \( rövid vagy hosszú \- távú Azure Backup \) .
+1. Az **adatvédelmi módszer kiválasztása** lapon adja meg, hogyan szeretné kezelni a rövid és a hosszú \- távú biztonsági mentést. A rövid \- távú biztonsági mentés mindig lemezre történik, és a lemezről az Azure-felhőbe történő biztonsági mentés lehetősége \( rövid vagy hosszú \- távú Azure Backup \) .
 
-1. A **rövid \- távú célok kiválasztása**lapon adja meg, hogyan szeretné biztonsági mentést készíteni a rövid \- távú lemezes tárolásra.   A **megőrzési** időtartam beállításnál megadhatja, hogy mennyi ideig szeretné megőrizni a lemezen tárolt adatok körét. A **szinkronizálás gyakorisága**beállításnál megadhatja, milyen gyakran szeretne növekményes biztonsági másolatot készíteni lemezre. Ha nem szeretné beállítani a biztonsági mentés időközét, akkor közvetlenül egy helyreállítási pont előtt is megtekintheti, hogy a MABS expressz teljes biztonsági mentést futtasson közvetlenül az egyes helyreállítási pontok ütemezése előtt.
+1. A **rövid \- távú célok kiválasztása** lapon adja meg, hogyan szeretné biztonsági mentést készíteni a rövid \- távú lemezes tárolásra.   A **megőrzési** időtartam beállításnál megadhatja, hogy mennyi ideig szeretné megőrizni a lemezen tárolt adatok körét. A **szinkronizálás gyakorisága** beállításnál megadhatja, milyen gyakran szeretne növekményes biztonsági másolatot készíteni lemezre. Ha nem szeretné beállítani a biztonsági mentés időközét, akkor közvetlenül egy helyreállítási pont előtt is megtekintheti, hogy a MABS expressz teljes biztonsági mentést futtasson közvetlenül az egyes helyreállítási pontok ütemezése előtt.
 
 1. A lemez lefoglalásának áttekintése lapon tekintse át a védelmi csoport számára lefoglalt tárterület lemezterületét.
 
     A **teljes adatméret** a biztonsági mentéshez használni kívánt adatmennyiség, a **MABS** pedig a lemezterület, amelyet a MABS a védelmi csoport számára ajánl. A MABS a beállítások alapján kiválasztja az ideális biztonsági mentési kötetet. Lehetőség van azonban arra, hogy a **Disk allocation details** (Lemezfoglalás részletei) panelen módosítsa a biztonsági mentési kötetek választási lehetőségeit. A munkaterhelésekhez válassza ki a legördülő menüből az előnyben részesített tárhelyet. A módosítások megváltoztatják az **Összes tárhely** és a **Szabad tárterület** értékeit az **Elérhető lemezterület** ablaktáblán. A kiépített terület az a tárolási MABS, amely a kötethez való hozzáadást javasolja, hogy zökkenőmentesen folytassa a biztonsági mentéseket a jövőben.
 
-1. A **replika-létrehozási módszer**kiválasztása lapon válassza ki, hogyan szeretné kezelni a kezdeti teljes adatreplikációt.  Ha a hálózaton keresztüli replikálást választja, javasoljuk, hogy válasszon ki egy off-Peak időpontot. Nagyobb adatmennyiségeknél vagy nem optimális hálózati állapotok esetén érdemes lehet az adatokat kapcsolat nélküli módban, cserélhető adathordozó segítségével replikálni.
+1. A **replika-létrehozási módszer** kiválasztása lapon válassza ki, hogyan szeretné kezelni a kezdeti teljes adatreplikációt.  Ha a hálózaton keresztüli replikálást választja, javasoljuk, hogy válasszon ki egy off-Peak időpontot. Nagyobb adatmennyiségeknél vagy nem optimális hálózati állapotok esetén érdemes lehet az adatokat kapcsolat nélküli módban, cserélhető adathordozó segítségével replikálni.
 
-1. A **Konzisztencia-ellenőrzési beállítások** lépésben válassza ki, hogyan szeretné automatizálni a konzisztencia-ellenőrzéseket. Beállíthatja hogy a rendszer ütemezés szerint futtasson ellenőrzést, vagy csak akkor, amikor a replikaadatok inkonzisztenssé válnak. Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, bármikor lefuttathat egy manuális ellenőrzést, ha a jobb gombbal a MABS-konzol **védelem** területén található védelmi csoportra kattint, és kiválasztja a **konzisztencia-ellenőrzés végrehajtása**elemet.
+1. A **Konzisztencia-ellenőrzési beállítások** lépésben válassza ki, hogyan szeretné automatizálni a konzisztencia-ellenőrzéseket. Beállíthatja hogy a rendszer ütemezés szerint futtasson ellenőrzést, vagy csak akkor, amikor a replikaadatok inkonzisztenssé válnak. Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, bármikor lefuttathat egy manuális ellenőrzést, ha a jobb gombbal a MABS-konzol **védelem** területén található védelmi csoportra kattint, és kiválasztja a **konzisztencia-ellenőrzés végrehajtása** elemet.
 
 1. Ha azt választotta, hogy a felhőbe készít biztonsági másolatot az Azure Backup szolgáltatással, akkor ellenőrizze, hogy **Az online védelem adatainak megadása** oldalon ki vannak-e jelölve azok a munkaterhelések, amelyekről biztonsági másolatot szeretne készíteni az Azure-ba.
 
-1. Az **online biztonsági mentés ütemezésének megadása**területen határozza meg, hogy milyen gyakran történjen növekményes biztonsági mentés az Azure-ba. Napi, heti, havi és éves rendszerességet is beállíthat, és megadhatja a futtatás kívánt dátumát és időpontját is. Naponta legfeljebb kétszer történhet biztonsági mentés. Minden alkalommal, amikor egy biztonsági mentés fut, egy adathelyreállítási pont jön létre az Azure-ban a MABS lemezen tárolt biztonsági másolati adatok másolatával.
+1. Az **online biztonsági mentés ütemezésének megadása** területen határozza meg, hogy milyen gyakran történjen növekményes biztonsági mentés az Azure-ba. Napi, heti, havi és éves rendszerességet is beállíthat, és megadhatja a futtatás kívánt dátumát és időpontját is. Naponta legfeljebb kétszer történhet biztonsági mentés. Minden alkalommal, amikor egy biztonsági mentés fut, egy adathelyreállítási pont jön létre az Azure-ban a MABS lemezen tárolt biztonsági másolati adatok másolatával.
 
-1. Az **online megőrzési szabály meghatározása lapon**megadhatja, hogy a rendszer hogyan őrizze meg a napi/heti/havi/éves biztonsági másolatokből létrehozott helyreállítási pontokat az Azure-ban.
+1. Az **online megőrzési szabály meghatározása lapon** megadhatja, hogy a rendszer hogyan őrizze meg a napi/heti/havi/éves biztonsági másolatokből létrehozott helyreállítási pontokat az Azure-ban.
 
-1. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](./backup-azure-backup-import-export.md).
+1. Az **online replikáció kiválasztása** lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](./backup-azure-backup-import-export.md).
 
-1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása**lehetőséget, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
+1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása** lehetőséget, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -118,11 +118,11 @@ A védelmi csoport létrehozása után a rendszer elindítja a kezdeti replikál
 
 1. A MABS felügyeleti konzol válassza a **figyelés**  >  **műveleti**  >  **Beállítások lehetőséget**.
 
-2. Válassza az **SMTP-kiszolgáló**lehetőséget, írja be a kiszolgáló nevét, a portot és az e-mail-címet, amelyről az értesítéseket küldi a rendszer. A címnek érvényesnek kell lennie.
+2. Válassza az **SMTP-kiszolgáló** lehetőséget, írja be a kiszolgáló nevét, a portot és az e-mail-címet, amelyről az értesítéseket küldi a rendszer. A címnek érvényesnek kell lennie.
 
-3. A **hitelesített SMTP-kiszolgáló**területen írjon be egy felhasználónevet és egy jelszót. A felhasználónévnek és a jelszónak az előző lépésben megadott "feladó" címről származó személy tartományi fiókjának kell lennie. Ellenkező esetben az értesítés kézbesítése sikertelen lesz.
+3. A **hitelesített SMTP-kiszolgáló** területen írjon be egy felhasználónevet és egy jelszót. A felhasználónévnek és a jelszónak az előző lépésben megadott "feladó" címről származó személy tartományi fiókjának kell lennie. Ellenkező esetben az értesítés kézbesítése sikertelen lesz.
 
-4. Az SMTP-kiszolgáló beállításainak teszteléséhez válassza a **Tesztüzenet küldése**lehetőséget, írja be azt az e-mail címet, AHOVÁ a MABS elküldeni a tesztüzenet, majd kattintson **az OK gombra**. Válassza a **Beállítások**  >  **értesítések** lehetőséget, és válassza ki, hogy milyen típusú riasztásokat szeretne kapni a címzetteknek. A **címzettek** mezőbe írja be az egyes címzettek e-mail címét, akiknek a MABS szeretné elküldeni az értesítések másolatait.
+4. Az SMTP-kiszolgáló beállításainak teszteléséhez válassza a **Tesztüzenet küldése** lehetőséget, írja be azt az e-mail címet, AHOVÁ a MABS elküldeni a tesztüzenet, majd kattintson **az OK gombra**. Válassza a **Beállítások**  >  **értesítések** lehetőséget, és válassza ki, hogy milyen típusú riasztásokat szeretne kapni a címzetteknek. A **címzettek** mezőbe írja be az egyes címzettek e-mail címét, akiknek a MABS szeretné elküldeni az értesítések másolatait.
 
 ### <a name="publish-operations-manager-alerts"></a>Riasztások közzététele az Operations Managerben
 
@@ -144,14 +144,14 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 3. A SharePointban a *SharePoint-elem* helyreállítása a helyreállítási pont tartományán belüli helyettesítő karakteres keresés használatával végezhető el.
 
     ![MABS SharePoint-Protection6](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection7.png)
-4. Válassza ki a megfelelő helyreállítási pontot a keresési eredmények közül, kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
-5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő**lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
+4. Válassza ki a megfelelő helyreállítási pontot a keresési eredmények közül, kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás** lehetőséget.
+5. A helyreállításhoz különböző helyreállítási pontokat is megkereshet, és kiválaszthatja a helyreállítani kívánt adatbázist vagy elemet. Válassza a **dátum > a helyreállítási idő** lehetőséget, majd válassza ki a megfelelő **adatbázist > SharePoint-farm > helyreállítási pont > elem**.
 
     ![MABS SharePoint-Protection7](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection8.png)
-6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló**megnyitásához. Kattintson a **Tovább** gombra.
+6. Kattintson a jobb gombbal az elemre, majd **válassza a helyreállítás elemet** a **helyreállítási varázsló** megnyitásához. Kattintson a **Tovább** gombra.
 
     ![Visszaállítási kijelölés áttekintése](./media/backup-azure-backup-sharepoint/review-recovery-selection.png)
-7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább**gombra.
+7. Válassza ki a végrehajtani kívánt helyreállítás típusát, majd kattintson a **tovább** gombra.
 
     ![Helyreállítási típus](./media/backup-azure-backup-sharepoint/select-recovery-type.png)
 
@@ -203,7 +203,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
    > Mivel a SharePoint-farm védelme hosszú távú adatmegőrzést biztosít az Azure-ban, a MABS-kiszolgálón nem érhető el katalógus-információ (metaadatok). Ennek eredményeképpen, amikor egy időponthoz tartozó SharePoint tartalmi adatbázist helyre kell állítani, újra kell katalogizálni a SharePoint-farmot.
    >
    >
-3. Válassza az **újrakatalogizálás**lehetőséget.
+3. Válassza az **újrakatalogizálás** lehetőséget.
 
     ![MABS SharePoint-Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 
@@ -211,10 +211,10 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
 
     ![MABS SharePoint-Protection11](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection13.png)
 
-    A katalogizálás befejezése után az állapot *sikeresre*változik. Válassza a **Bezárás** lehetőséget.
+    A katalogizálás befejezése után az állapot *sikeresre* változik. Válassza a **Bezárás** gombot.
 
     ![MABS SharePoint-Protection12](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
-4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a MABS- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás**lehetőséget.
+4. A tartalom-adatbázis struktúrájának lekéréséhez válassza ki a MABS- **helyreállítás** lapon megjelenő SharePoint-objektumot. Kattintson a jobb gombbal az elemre, majd válassza a **helyreállítás** lehetőséget.
 
     ![MABS SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
@@ -249,7 +249,7 @@ Az alábbi eljárás egy kiszolgálófarm példáját használja két előtér-w
 
 1. A *Kiszolgáló2*-on a parancssorban módosítsa a könyvtárat, `_MABS installation location_\bin\` és futtassa a **ConfigureSharepoint**. További információ a ConfigureSharePoint: a [biztonsági mentés konfigurálása](#configure-backup).
 
-1. Válassza ki azt a védelmi csoportot, amelyhez a kiszolgálófarm tartozik, majd válassza a **védelmi csoport módosítása**lehetőséget.
+1. Válassza ki azt a védelmi csoportot, amelyhez a kiszolgálófarm tartozik, majd válassza a **védelmi csoport módosítása** lehetőséget.
 
 1. A csoport módosítása varázslóban a **csoporttagok kiválasztása** lapon bontsa ki a *Kiszolgáló2* elemet, és válassza ki a kiszolgálófarmot, majd fejezze be a varázslót.
 

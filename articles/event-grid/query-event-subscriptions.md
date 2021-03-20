@@ -4,10 +4,10 @@ description: Ez a cikk az Azure-előfizetésben található Event Grid-előfizet
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 3d700f543bc5e3c7add2a346c10acf975e1c2462
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86120449"
 ---
 # <a name="query-event-grid-subscriptions"></a>Event Grid-előfizetések lekérdezése 
@@ -36,7 +36,7 @@ Set-AzContext -Subscription "My Azure Subscription"
 Get-AzEventGridSubscription
 ```
 
-Az Azure-előfizetéshez tartozó Event Grid-előfizetések beszerzéséhez adja meg a **Microsoft. Resources. Subscriptions**témakör típusát.
+Az Azure-előfizetéshez tartozó Event Grid-előfizetések beszerzéséhez adja meg a **Microsoft. Resources. Subscriptions** témakör típusát.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -50,7 +50,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.Resources.Subscriptions"
 ```
 
-Az Azure-előfizetésben lévő összes erőforráscsoport Event Grid-előfizetésének beszerzéséhez adja meg a **Microsoft. Resources. ResourceGroups**témakör típusát.
+Az Azure-előfizetésben lévő összes erőforráscsoport Event Grid-előfizetésének beszerzéséhez adja meg a **Microsoft. Resources. ResourceGroups** témakör típusát.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -110,7 +110,7 @@ PowerShell esetén használja az alábbi parancsot:
 Get-AzEventGridSubscription -TopicTypeName "Microsoft.EventGrid.Topics" -Location westus2
 ```
 
-Egy adott helyhez tartozó Storage-fiókokra vonatkozó előfizetések lekéréséhez adja meg a **Microsoft. Storage. StorageAccounts**helyét és a témakör típusát.
+Egy adott helyhez tartozó Storage-fiókokra vonatkozó előfizetések lekéréséhez adja meg a **Microsoft. Storage. StorageAccounts** helyét és a témakör típusát.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -154,7 +154,7 @@ $resourceid = (Get-AzResource -Name mystorage -ResourceGroupName myResourceGroup
 Get-AzEventGridSubscription -ResourceId $resourceid
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

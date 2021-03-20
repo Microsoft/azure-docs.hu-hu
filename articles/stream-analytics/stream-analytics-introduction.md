@@ -8,10 +8,10 @@ ms.topic: overview
 ms.custom: mvc, contperf-fy21q2
 ms.date: 11/12/2020
 ms.openlocfilehash: 5aea6460f3a876d63544ce8422f9f205c22f2a0f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015249"
 ---
 # <a name="welcome-to-azure-stream-analytics"></a>Üdvözli a Azure Stream Analytics
@@ -102,7 +102,7 @@ Azure Stream Analytics az [Azure megfelelőségének áttekintése](https://gall
 
 A Stream Analytics másodpercenként több millió eseményt képes feldolgozni, és az eredményeket rendkívül alacsony késéssel kézbesítheti. Lehetővé teszi a vertikális felskálázást és a méretezést a nagy valós idejű és összetett eseménykezelő alkalmazások kezeléséhez. Stream Analytics a particionálás nagyobb teljesítményt nyújt, és lehetővé teszi, hogy az összetett lekérdezések párhuzamosak legyenek, és több folyamatos átviteli csomóponton fussanak. A Azure Stream Analytics a [trilla](https://github.com/Microsoft/Trill)-ra épülő, nagy teljesítményű, memóriabeli adatfolyam-elemzési motor, amely a Microsoft Research szolgáltatással együttműködve lett kifejlesztve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk az Azure Stream Analytics szolgáltatásról nyújtott áttekintést. Ezután megismerheti a részleteket, és létrehozhatja első Stream Analytics-feladatát:
 

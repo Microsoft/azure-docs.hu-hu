@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 60be22f439547d006f54e489833b63171e617e3e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913993"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>A Fortinet és az Azure Sentinel összekötése
@@ -50,7 +50,7 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
     - Ha a CEF formátumot szeretné engedélyezni a korai FortiOS-verziókban, előfordulhat, hogy futtatnia kell a **CSV-letiltási** parancsot.
  
    > [!NOTE] 
-   > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását** .
+   > További információért keresse fel a [Fortinet dokumentumtárat](https://aka.ms/asi-syslog-fortinet-fortinetdocumentlibrary). Válassza ki a verziót, és használja a **kézikönyv** és a **napló üzenetének hivatkozását**.
 
 1. Ha a megfelelő sémát szeretné használni Azure Monitor Log Analytics a Fortinet-eseményekhez, keresse meg a következőt: `CommonSecurityLog` .
 

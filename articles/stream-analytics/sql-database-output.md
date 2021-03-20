@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: 631fdba451f69e44a675d396a42e1cddaea50a3b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98013957"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL Database kimenete
@@ -23,14 +23,14 @@ Az [Azure SQL felügyelt példányát](../azure-sql/managed-instance/sql-managed
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL Database kimenet létrehozásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 | Adatbázis | Annak az adatbázisnak a neve, ahová a kimenetet küldi. |
 | Kiszolgálónév | A logikai SQL-kiszolgáló neve vagy a felügyelt példány neve. SQL felügyelt példány esetén a 3342-es portot kell megadnia. Például: *sampleserver. public. database. Windows. net, 3342* |
 | Felhasználónév | Az adatbázishoz írási hozzáféréssel rendelkező Felhasználónév. A Stream Analytics csak az SQL-hitelesítést támogatja. |
 | Jelszó | Az adatbázishoz való kapcsolódáshoz használt jelszó. |
-| Táblázat | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával. |
+| Tábla | A tábla neve, ahol a kimenet meg van írva. A tábla neve megkülönbözteti a kis-és nagybetűket. A táblázat sémájának pontosan meg kell egyeznie a feladatok által létrehozott mezők és típusok számával. |
 |Partíciós séma öröklése| Az előző lekérdezési lépés particionálási sémájának öröklésére szolgáló lehetőség, amely lehetővé teszi, hogy teljesen párhuzamos topológiát engedélyezzen több íróival a táblához. További információ: [Azure stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md).|
 |Kötegek maximális száma| Az összes tömeges beszúrási tranzakcióval ellátott rekordok számának ajánlott felső korlátja.|
 
@@ -48,7 +48,7 @@ A particionálásnak engedélyezve kell lennie, és a lekérdezésben a PARTITIO
 
 Az üzenetek maximális méretét a **kötegek maximális száma** beállítással állíthatja be. Az alapértelmezett maximális érték 10 000, és az alapértelmezett minimum a 100 sor egy tömeges beszúrással. További információ: [Azure SQL-korlátok](../azure-sql/database/resource-limits-logical-server.md). A kötegek kezdetben tömegesen vannak beszúrva a kötegek maximális számával. A Batch az SQL-újrapróbálkozást lehetővé tevő hibák alapján fél (a minimális kötegek száma) között oszlik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felügyelt identitások használata Azure SQL Database vagy Azure szinapszis Analytics eléréséhez egy Azure Stream Analytics feladatokból (előzetes verzió)](sql-database-output-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)

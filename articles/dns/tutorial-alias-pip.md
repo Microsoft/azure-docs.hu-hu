@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80985439"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Oktatóanyag: Aliasrekord konfigurálása egy nyilvános Azure IP-címre való hivatkozáshoz 
@@ -38,11 +38,11 @@ Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön
 Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webkiszolgálók elhelyezéséhez.
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza a portál bal felső sarkában az **Erőforrás létrehozása** lehetőséget. Írja be a keresőmezőbe az *erőforráscsoport* kifejezést, és hozzon létre egy **RG-DNS-Alias-pip** nevű erőforráscsoportot.
-3. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
+3. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat** lehetőséget.
 4. Hozzon létre egy **VNet-Server** nevű virtuális hálózatot. Helyezze az **RG-DNS-Alias-pip** erőforráscsoportba, és adja az **SN-Web** nevet az alhálózatnak.
 
 ## <a name="create-a-web-server-virtual-machine"></a>Webkiszolgálót futtató virtuális gép létrehozása
-1. Válassza **az erőforrás létrehozása**  >  **Windows Server 2016 virtuális gép**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **Windows Server 2016 virtuális gép** lehetőséget.
 2. Adja meg a **Web-01** nevet, és helyezze el a virtuális gépet az **RG-DNS-Alias-TM** erőforráscsoportban. Adjon meg egy felhasználónevet és egy jelszót, és válassza az **OK** lehetőséget.
 3. A **Méret** mezőben válasszon ki egy 8 GB RAM-mal rendelkező SKU-t.
 4. A **Beállítások** területen válassza a **VNet-Servers** virtuális hálózatot és az **SN-Web** alhálózatot. Nyilvános bejövő portok esetében válassza a **http**  >  **https**  >  **RDP (3389)** lehetőséget, majd kattintson **az OK gombra**.
@@ -89,7 +89,7 @@ Ez az eljárás sikeres, mivel nem pedig standard A rekorddal, hanem egy aliasre
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti az **RG-DNS-Alias-pip** erőforráscsoportot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy aliasrekordot egy nyilvános Azure IP-címre való hivatkozáshoz. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca4943293f9474d4089267d05460d6d8766b79e6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101646384"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Gyakori kérdések (GYIK) a hibrid FIDO2 biztonsági kulcsaihoz az Azure AD-ben 
@@ -231,7 +231,7 @@ A HTTP-kérelem egy szabványos elsődleges frissítési jogkivonat-(PRT-) kére
 
 Az Azure AD a titkosított ügyfél kulcsát és az üzenet pufferét a PRT-válaszban további tulajdonságokként ötvözi. Az adattartalom titkosítása az Azure AD-eszköz munkamenet-kulcsa alapján történik.
 
-| Mező              | Típus   | Leírás  |
+| Mező              | Típus   | Description  |
 |--------------------|--------|--------------|
 | tgt_client_key     | sztring | Base64 kódolású ügyfél kulcsa (titkos kulcs). Ez a kulcs a TGT elleni védelemhez használt ügyfél titka. Ebben a jelszó nélküli forgatókönyvben az ügyfél titkos kulcsát a kiszolgáló hozza létre az egyes TGT-kérések részeként, majd visszaküldi az ügyfélnek a válaszban. |
 | tgt_key_type       | int    | A helyszíni AD DS a KERB_MESSAGE_BUFFERban található ügyfél-kulcshoz és Kerberos-munkamenethez használt kulcs típusa. |

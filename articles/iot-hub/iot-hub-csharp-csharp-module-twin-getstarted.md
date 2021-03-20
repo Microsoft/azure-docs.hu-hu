@@ -10,10 +10,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: daba400b9daadf464c4c125ad266745237e71367
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92142508"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (.NET)
@@ -54,21 +54,21 @@ Az oktatóanyag végén két .NET-konzolalkalmazással fog rendelkezni:
 
 Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Navigáljon a hubhoz, és válassza a **IoT-eszközök**elemet. **MyFirstDevice**keresése. Válassza a **myFirstDevice** lehetőséget a megnyitásához, majd kattintson a **myFirstModule** elemre a megnyitásához. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)** , ha szükséges az alábbi eljárásban.
+Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Navigáljon a hubhoz, és válassza a **IoT-eszközök** elemet. **MyFirstDevice** keresése. Válassza a **myFirstDevice** lehetőséget a megnyitásához, majd kattintson a **myFirstModule** elemre a megnyitásához. A **modul identitásának részleteiben** másolja a **kapcsolati karakterláncot (elsődleges kulcs)** , ha szükséges az alábbi eljárásban.
 
    ![Az Azure Portal moduladatai](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
+1. A Visual Studióban vegyen fel egy új projektet a megoldásba a **fájl**  >  **új**  >  **projekt** lehetőség kiválasztásával. Az új projekt létrehozása területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
 
-1. Adja a projektnek az *UpdateModuleTwinReportedProperties* nevet. A **megoldás**mezőben válassza a **Hozzáadás a megoldáshoz**lehetőséget. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
+1. Adja a projektnek az *UpdateModuleTwinReportedProperties* nevet. A **megoldás** mezőben válassza a **Hozzáadás a megoldáshoz** lehetőséget. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja.
 
     ![Visual Studio-projekt létrehozása](./media/iot-hub-csharp-csharp-module-twin-getstarted/configure-update-twins-csharp1.png)
 
-1. Válassza a **Létrehozás** lehetőséget a projekt létrehozásához.
+1. A projekt létrehozásához válassza a **Létrehozás** elemet.
 
 1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza a **Tallózás** lapot.
 
-1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client**elemet, majd válassza a **telepítés**lehetőséget.
+1. Keresse meg és válassza ki a **Microsoft. Azure. Devices. Client** elemet, majd válassza a **telepítés** lehetőséget.
 
     ![Képernyőkép, amely megjeleníti a "Microsoft. Azure. Devices. Client" elemet, és a "telepítés" gomb kiemelve.](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-client-sdk.png)
 
@@ -167,9 +167,9 @@ Mielőtt elkezdené, szerezze be a modulhoz tartozó kapcsolási karakterláncot
 
 Most már futtathatja az alkalmazásokat.
 
-1. A Visual Studióban **megoldáskezelő**kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása**lehetőséget.
+1. A Visual Studióban **megoldáskezelő** kattintson a jobb gombbal a megoldásra, majd válassza az **indítási projektek beállítása** lehetőséget.
 
-1. Az **Általános tulajdonságok**területen válassza az **indítási projekt elemet.**
+1. Az **Általános tulajdonságok** területen válassza az **indítási projekt elemet.**
 
 1. Válasszon **több indítási projektet**, majd válassza a **Start** lehetőséget az alkalmazások művelete elemnél, és az **OK gombra** kattintva fogadja el a módosításokat.
 

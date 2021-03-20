@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.openlocfilehash: 3bd35df91e836245de52d8959dff0671582ebc3f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012444"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
@@ -58,7 +58,7 @@ A valós idejű csalások észlelését ismertető oktatóanyagban a kimenetet a
 
 4. Miután kiválasztotta az **Engedélyezés** lehetőséget, megjelenik egy előugró ablak, ahol meg kell adnia a hitelesítő adatait a Power BI-fiókja hitelesítéséhez. A sikeres hitelesítés után válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
-8. Kattintson a **Létrehozás** gombra.
+8. Kattintson a **Létrehozás** lehetőségre.
 
 Az adatkészlet a következő beállításokkal jön létre:
 
@@ -226,7 +226,7 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Stream Analytics kimenetek](stream-analytics-define-outputs.md)

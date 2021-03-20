@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742b9fc79489feba8192b6e62a6431bb37f55ad4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98613749"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Az Azure AD Connect létesítési ügynök telepítése
@@ -74,7 +74,7 @@ Az ügynök ellenőrzése a Azure Portal és az ügynököt futtató helyi kiszo
 ### <a name="azure-portal-agent-verification"></a>Azure Portal ügynök ellenőrzése
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban.
 
- 1. Jelentkezzen be az Azure portálra.
+ 1. Jelentkezzen be az Azure Portalra.
  2. A bal oldalon válassza a **Azure Active Directory**  >  **Azure ad Connect** lehetőséget. A központban válassza a **Felhőbeli szinkronizálás kezelése** lehetőséget.
 
    ![Azure Portal](media/how-to-install/install-6.png)</br>

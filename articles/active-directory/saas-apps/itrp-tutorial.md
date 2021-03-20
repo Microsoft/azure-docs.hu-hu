@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459679"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Azure Active Directory integráció a ITRP
@@ -155,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     1. A **Tanúsítvány ujjlenyomata** mezőben illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -225,7 +225,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
 1. Új személy hozzáadásához válassza a pluszjelet ( **+** ):
 
-    ![Plusz jel kiválasztása](./media/itrp-tutorial/ic775576.png "Plusz jel kiválasztása")
+    ![Kattintson a pluszjelre](./media/itrp-tutorial/ic775576.png "Kattintson a pluszjelre")
 
 1. Az **új személy hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket.
 
@@ -233,7 +233,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     1. Adja meg a hozzáadni kívánt érvényes Azure AD-fiók nevét és e-mail-címét.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez a ITRP által biztosított felhasználói fiók-létrehozási eszközt vagy API-t használhatja.
