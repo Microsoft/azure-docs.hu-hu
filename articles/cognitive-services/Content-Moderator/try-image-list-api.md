@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 0035d367017c92bd151c27e14d744ef41eace069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85800148"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Mérsékelt és egyéni képlista az API-konzolon
@@ -42,17 +42,17 @@ Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfiz
 
 Miután módosította a Képlista módosításait, frissítenie kell az indexét, hogy a módosítások szerepeljenek a későbbi vizsgálatokban. Ez a lépés hasonló ahhoz, ahogy a keresőmotor az asztalon (ha engedélyezve van), vagy egy webkeresőmotor folyamatosan frissíti az indexét új fájlok vagy lapok felvételéhez.
 
-1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták**lehetőséget, majd kattintson a **keresési index frissítése**elemre.
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták** lehetőséget, majd kattintson a **keresési index frissítése** elemre.
 
    Megnyílik a **képek listája – keresési index frissítése** lap.
 
-2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
+2. Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
  
     ![Képlista – keresési index frissítése oldal régiójának kiválasztása](images/test-drive-region.png)
 
     Megnyílik a **Képlisták – a keresési indexelés API-** konzoljának frissítése.
 
-3. A **listId** mezőben adja meg a lista azonosítóját. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
+3. A **listId** mezőben adja meg a lista azonosítóját. Adja meg az előfizetési kulcsot, majd válassza a **Küldés** lehetőséget.
 
    ![Képlista – a keresési index frissítése a konzol válaszának tartalma mező](images/try-image-list-refresh-1.png)
 
@@ -63,7 +63,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
    Megnyílik a **képek listája – létrehozás** lap. 
 
-3. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.
+3. Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.
 
    ![Képlista – oldal régiójának létrehozása kijelölés](images/test-drive-region.png)
 
@@ -71,7 +71,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
  
 4. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
-5. A **kérelem törzse** mezőben adja meg a **név** (például MyList) és a **Leírás**értékeit.
+5. A **kérelem törzse** mezőben adja meg a **név** (például MyList) és a **Leírás** értékeit.
 
    ![Képlista – a konzol kérelem törzsének neve és leírása](images/try-terms-list-create-1.png)
 
@@ -91,27 +91,27 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
    Adja hozzá a lista metaadatait kulcs-érték párokként, nem pedig a tényleges képeket.
  
-7. Válassza a **Küldés** lehetőséget. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Ehhez az AZONOSÍTÓhoz más képlista-felügyeleti függvények szükségesek.
+7. Kattintson a **Küldés** gombra. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Ehhez az AZONOSÍTÓhoz más képlista-felügyeleti függvények szükségesek.
 
    ![Képlisták – a konzol válaszának létrehozása mező megjeleníti a lista AZONOSÍTÓját](images/try-terms-list-create-2.png)
  
-8. Ezután adja hozzá a képeket a MyList. A bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza a **rendszerkép hozzáadása**elemet.
+8. Ezután adja hozzá a képeket a MyList. A bal oldali menüben válassza a **rendszerkép** lehetőséget, majd válassza a **rendszerkép hozzáadása** elemet.
 
    Megnyílik a rendszerkép **hozzáadása** lap. 
 
-9. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.
+9. Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.
 
    ![Rendszerkép – rendszerkép hozzáadása oldal régiójának kiválasztása](images/test-drive-region.png)
 
    Megnyílik a rendszerkép **– rendszerkép hozzáadása API-** konzol.
  
-10. A **listId** mezőbe írja be a GENERÁLT lista azonosítóját, majd adja meg a hozzáadni kívánt rendszerkép URL-címét. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
+10. A **listId** mezőbe írja be a GENERÁLT lista azonosítóját, majd adja meg a hozzáadni kívánt rendszerkép URL-címét. Adja meg az előfizetési kulcsot, majd válassza a **Küldés** lehetőséget.
 
-11. Annak ellenőrzéséhez, hogy a rendszerkép hozzá lett-e adva a listához, a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza az **összes rendszerkép-azonosító lekérése**lehetőséget.
+11. Annak ellenőrzéséhez, hogy a rendszerkép hozzá lett-e adva a listához, a bal oldali menüben válassza a **rendszerkép** lehetőséget, majd válassza az **összes rendszerkép-azonosító lekérése** lehetőséget.
 
     Megnyílik a rendszerkép **– az összes Képazonosítós API-konzol beolvasása** .
   
-12. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Válassza a **Küldés** lehetőséget.
+12. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Kattintson a **Küldés** gombra.
 
     ![Kép – az összes rendszerkép-azonosító konzol válaszának tartalma mező felsorolja a beírt képeket](images/try-image-list-create-11.png)
  
@@ -127,11 +127,11 @@ Egy rendszerkép vagy lista törlése egyszerű. Az API használatával a követ
 
 Ez a példa egyetlen rendszerképet töröl:
 
-1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza a **Törlés**lehetőséget. 
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **rendszerkép** lehetőséget, majd válassza a **Törlés** lehetőséget. 
 
    Megnyílik a **rendszerkép – törlés** lap.
 
-2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
+2. Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét. 
 
    ![Rendszerkép – az oldal régiójának kiválasztása](images/test-drive-region.png)
  
@@ -139,9 +139,9 @@ Ez a példa egyetlen rendszerképet töröl:
  
 3. A **listId** mezőben adja meg annak a listának az azonosítóját, amelyből a képet törölni szeretné.  Ezt a számot adja vissza a **rendszerképben – a MyList összes rendszerkép-azonosítójának lekérése** konzol. Ezután adja meg a törölni kívánt rendszerkép **ImageId** . 
 
-A példánkban a lista azonosítója **58953**, a **ContentSource**értéke. A rendszerkép azonosítója **59021**, a **ContentIds**értéke.
+A példánkban a lista azonosítója **58953**, a **ContentSource** értéke. A rendszerkép azonosítója **59021**, a **ContentIds** értéke.
 
-1. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
+1. Adja meg az előfizetési kulcsot, majd válassza a **Küldés** lehetőséget.
 
 1. Annak ellenőrzéséhez, hogy a rendszerkép törölve lett-e, használja a rendszerkép **– az összes rendszerkép-azonosító beolvasása** konzolt.
  
@@ -149,11 +149,11 @@ A példánkban a lista azonosítója **58953**, a **ContentSource**értéke. A r
 
 Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
 
-1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták**lehetőséget, majd válassza a **részletek frissítése**elemet. 
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták** lehetőséget, majd válassza a **részletek frissítése** elemet. 
 
    Megnyílik a **képek listája – részletek frissítése** oldal.
 
-2. Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.  
+2. Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a legszorosabban leírja a helyét.  
 
     ![Képlista – részletek frissítése oldal régió kiválasztása](images/test-drive-region.png)
 
@@ -166,6 +166,6 @@ Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
    ![Képlista – a details konzolra vonatkozó kérelem törzsének módosítása](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [képet a .net](image-lists-quickstart-dotnet.md) rövid útmutatóval.

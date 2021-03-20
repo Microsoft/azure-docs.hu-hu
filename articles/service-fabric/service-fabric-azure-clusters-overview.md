@@ -6,10 +6,10 @@ documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97882211"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
@@ -68,14 +68,14 @@ Az ügyféltanúsítványok mellett Azure Active Directory is konfigurálható �
 
 További információért olvassa el az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security)
 
-### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+### <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi az Azure-erőforrások részletes hozzáférés-vezérlésének hozzárendelését.  Különböző hozzáférési szabályokat rendelhet hozzá az előfizetésekhez, az erőforráscsoportokhöz és az erőforrásokhoz.  Az Azure RBAC-szabályok öröklik az erőforrás-hierarchiát, kivéve, ha a felülbírálása alacsonyabb szinten történik.  Az Azure RBAC-szabályokkal bármilyen felhasználói vagy felhasználói csoportot hozzárendelhet a HRE, így a kijelölt felhasználók és csoportok módosíthatják a fürtöt.  További információért olvassa el az [Azure RBAC áttekintését](../role-based-access-control/overview.md).
 
 A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.  
 
 További információért olvassa el [Service Fabric szerepköralapú hozzáférés-vezérlés](service-fabric-cluster-security.md#service-fabric-role-based-access-control)című témakört.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok 
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
 
 További információkért lásd: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md)
@@ -96,15 +96,15 @@ A következő operációs rendszereket futtató virtuális gépeken hozhat létr
 
 | Operációs rendszer | A legkorábbi támogatott Service Fabric verziója | Az utolsó támogatott Service Fabric verziója |
 | --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | N.A. |
-| Windows Server 2016 | Az összes verzió | N.A. |
-| Windows Server 20H2 | 7.2.445.9590 | N.A. |
+| Windows Server 2019 | 6.4.654.9590 | N/A |
+| Windows Server 2016 | Az összes verzió | N/A |
+| Windows Server 20H2 | 7.2.445.9590 | N/A |
 | Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
 | Windows Server 1803 | 6.4 | 7.2.445.9590 |
 | Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | Az összes verzió | N.A. | 
-| Linux Ubuntu 16,04 | 6.0 | N.A. |
-| Linux Ubuntu 18,04 | 7.1 | N.A. |
+| Windows Server 2012 | Az összes verzió | N/A | 
+| Linux Ubuntu 16,04 | 6.0 | N/A |
+| Linux Ubuntu 18,04 | 7.1 | N/A |
 
 További információ: [támogatott fürtözött verziók az Azure-ban](./service-fabric-versions.md#supported-operating-systems)
 
@@ -113,7 +113,7 @@ További információ: [támogatott fürtözött verziók az Azure-ban](./servic
 >
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure-fürtök [biztonságossá](service-fabric-cluster-security.md)tételéről, [méretezéséről](service-fabric-cluster-scaling.md)és [frissítéséről](service-fabric-cluster-upgrade.md) .
 
 További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).

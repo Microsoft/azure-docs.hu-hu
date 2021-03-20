@@ -13,10 +13,10 @@ ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34b554fbef63f23b3540fe49e5c45976122add25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89268604"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
@@ -40,7 +40,7 @@ Ahhoz, hogy egy Windows 10-es eszköz használhassa a Enterprise State Roaming s
 
 ## <a name="data-storage"></a>Adattárolás
 
-Enterprise State Roaming az adatai egy vagy több olyan [Azure-régióban](https://azure.microsoft.com/regions/) vannak tárolva, amelyek a legjobban megfelelnek a Azure Active Directory példányban beállított ország/régió értéknek. Enterprise State Roaming az adatai a három fő földrajzi régió alapján vannak particionálva: Észak-Amerika, EMEA és APAC. Enterprise State Roaming a bérlői adatai helyileg találhatók a földrajzi régióval, és nem replikálódnak a régiók között.  Példa:
+Enterprise State Roaming az adatai egy vagy több olyan [Azure-régióban](https://azure.microsoft.com/regions/) vannak tárolva, amelyek a legjobban megfelelnek a Azure Active Directory példányban beállított ország/régió értéknek. Enterprise State Roaming az adatai a három fő földrajzi régió alapján vannak particionálva: Észak-Amerika, EMEA és APAC. Enterprise State Roaming a bérlői adatai helyileg találhatók a földrajzi régióval, és nem replikálódnak a régiók között.  Például:
 
 | Ország/régió érték | a szolgáltatásban tárolt |
 | -------------------- | ------------------------ |
@@ -56,9 +56,9 @@ Az ország/régió érték az Azure AD-címtár létrehozási folyamatának rés
 Az alábbi lépéseket követve megtekintheti a felhasználónkénti eszköz szinkronizálási állapotáról szóló jelentést.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/).
-1. Válassza **Azure Active Directory**  >  **Users**  >  **minden felhasználó**lehetőséget.
-1. Válassza ki a felhasználót, majd válassza az **eszközök**lehetőséget.
-1. A **Megjelenítés**területen válassza ki a **beállítások és alkalmazásadatok szinkronizálása** a szinkronizálási állapot megjelenítéséhez eszközt.
+1. Válassza **Azure Active Directory**  >    >  **minden felhasználó** lehetőséget.
+1. Válassza ki a felhasználót, majd válassza az **eszközök** lehetőséget.
+1. A **Megjelenítés** területen válassza ki a **beállítások és alkalmazásadatok szinkronizálása** a szinkronizálási állapot megjelenítéséhez eszközt.
   
    ![az eszköz-szinkronizálási adatok beállításának képe](./media/enterprise-state-roaming-enable/sync-status.png)
   
@@ -76,11 +76,11 @@ Az explicit törlés akkor történik meg, amikor egy Azure-rendszergazda törö
 
 * **Felhasználó törlése**: Amikor töröl egy felhasználót az Azure ad-ben, a rendszer 90 és 180 nap után törli a felhasználói fiók barangolási szolgáltatását. 
 * **Címtár törlése**: egy teljes címtár törlése az Azure ad-ben azonnali művelet. A címtárhoz társított összes beállítási adattal 90 és 180 nap után törlődnek. 
-* **Kérelem törlése**esetén: Ha az Azure ad-rendszergazda manuálisan szeretné törölni egy adott felhasználó adatvagyra vonatkozó beállításait, a rendszergazda az [Azure-támogatással](https://azure.microsoft.com/support/)jegyet tud beküldeni. 
+* **Kérelem törlése** esetén: Ha az Azure ad-rendszergazda manuálisan szeretné törölni egy adott felhasználó adatvagyra vonatkozó beállításait, a rendszergazda az [Azure-támogatással](https://azure.microsoft.com/support/)jegyet tud beküldeni. 
 
 ### <a name="stale-data-deletion"></a>Elavult adatok törlése
 
-Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülnek, és törölhetők a Microsoft Cloud-ból. A megőrzési időtartam változhat, de nem lesz kevesebb, mint 90 nap. Az elavult adatmennyiség lehet a Windows/Alkalmazásbeállítások vagy a felhasználó összes beállítása. Példa:
+Az egy évig nem elért adatok ("a megőrzési időszak") elavultnak minősülnek, és törölhetők a Microsoft Cloud-ból. A megőrzési időtartam változhat, de nem lesz kevesebb, mint 90 nap. Az elavult adatmennyiség lehet a Windows/Alkalmazásbeállítások vagy a felhasználó összes beállítása. Például:
 
 * Ha egyetlen eszköz sem fér hozzá egy adott beállítási gyűjteményhez (például egy alkalmazás el lesz távolítva az eszközről, vagy egy beállításcsoport, például a "téma" le van tiltva az összes felhasználó eszközén), akkor a gyűjtemény a megőrzési időtartam után elavult lesz, és törölhető. 
 * Ha a felhasználó minden eszközén kikapcsolta a beállítások szinkronizálását, akkor a rendszer nem fér hozzá a beállításokhoz, és az adott felhasználóhoz tartozó összes beállítási információ elavult lesz, és a megőrzési időszak után törölhető. 

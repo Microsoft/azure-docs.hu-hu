@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798426"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Hozzáférés-vezérlés delegálása az Azure AD-jogosultságok kezelésében az alkotók katalógusában
@@ -35,9 +35,9 @@ Kövesse az alábbi lépéseket egy felhasználó hozzárendeléséhez a kataló
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
-1. A bal oldali menüben, a **jogosultságok kezelése** szakaszban kattintson a **Beállítások**elemre.
+1. A bal oldali menüben, a **jogosultságok kezelése** szakaszban kattintson a **Beállítások** elemre.
 
 1. Kattintson a **Szerkesztés** gombra.
 
@@ -55,11 +55,11 @@ Ha engedélyezni szeretné a delegált szerepköröket, például a katalógus-l
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd a **felhasználók**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd a **felhasználók** elemre.
 
-1. A bal oldali menüben kattintson a **felhasználói beállítások**elemre.
+1. A bal oldali menüben kattintson a **felhasználói beállítások** elemre.
 
-1. Győződjön meg arról, hogy az **Azure ad felügyeleti portálhoz való hozzáférés korlátozása** **nem**értékre van állítva.
+1. Győződjön meg arról, hogy az **Azure ad felügyeleti portálhoz való hozzáférés korlátozása** **nem** értékre van állítva.
 
     ![Azure AD felhasználói beállítások – felügyeleti portál](./media/entitlement-management-delegate-catalog/user-settings.png)
 

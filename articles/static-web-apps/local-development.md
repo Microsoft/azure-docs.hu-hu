@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: buhollan
 ms.custom: devx-track-js
 ms.openlocfilehash: 4d6dae8a4f4ed83af3103e95e711bacdb62cf522
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326167"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Helyi fejlesztés beállítása az Azure statikus Web Apps előzetes verziójához
@@ -65,7 +65,7 @@ A Visual Studio Code-hoz készült Live Server-bővítmény egy helyi fejleszté
 
 #### <a name="create-a-repository"></a>Adattár létrehozása
 
-1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és navigáljon a [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) **Vanilla-API**nevű új GitHub-projekthez, és hozzon létre egy, a sablon használatával.
+1. Győződjön meg arról, hogy be van jelentkezve a GitHubba, és navigáljon a [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) **Vanilla-API** nevű új GitHub-projekthez, és hozzon létre egy, a sablon használatával.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub – új tárház ablak":::
 
@@ -73,9 +73,9 @@ A Visual Studio Code-hoz készült Live Server-bővítmény egy helyi fejleszté
 
 1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
 
-1. A keresőmezőbe írja be a **klón** kifejezést, majd válassza a **git: Clone**lehetőséget.
+1. A keresőmezőbe írja be a **klón** kifejezést, majd válassza a **git: Clone** lehetőséget.
 
-    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/command-palette-git-clone.png" alt-text="git-klón lehetőség a Visual Studio Code-ban":::
 
 1. Adja meg a következő értéket a **tárház URL-címéhez**.
 
@@ -85,9 +85,9 @@ A Visual Studio Code-hoz készült Live Server-bővítmény egy helyi fejleszté
 
 1. Válassza ki az új projekthez tartozó mappa helyét.
 
-1. Amikor a rendszer rákérdez a klónozott tárház megnyitására, válassza a **Megnyitás**lehetőséget.
+1. Amikor a rendszer a klónozott adattár megnyitására kéri, válassza a **Megnyitás** gombot.
 
-    :::image type="content" source="media/local-development/open-new-window.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/open-new-window.png" alt-text="Megnyitás új ablakban":::
 
 A Visual Studio Code megnyitja a klónozott projektet a szerkesztőben.
 
@@ -99,7 +99,7 @@ A Visual Studio Code megnyitja a klónozott projektet a szerkesztőben.
 
     Megnyílik egy böngésző lap az alkalmazás megjelenítéséhez.
 
-    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/vanilla-api-site.png" alt-text="A böngészőben futó egyszerű statikus hely":::
 
     Ez az alkalmazás HTTP-kérelmet tesz elérhetővé a `api/message` végpontnak. Jelenleg a kérelem meghiúsul, mert az alkalmazás API-részének el kell indulnia.
 
@@ -113,13 +113,13 @@ Az API-létrehozási folyamat részeként létrejön egy indítási konfiguráci
 
 1. Megnyílik egy új terminál-példány, amely az API-létrehozási folyamat kimenetét mutatja.
 
-    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/terminal-api-debug.png" alt-text="A Visual Studio Code terminalban futó API":::
 
    A Visual Studio Code-ban az állapotjelző sáv már narancssárga. Ez a szín azt jelzi, hogy az API már fut, és a hibakereső csatolva van.
 
 1. Ezután nyomja le a **CTRL/cmd** billentyűkombinációt, és kattintson a terminál URL-címére, és nyissa meg az API-t meghívó böngészőablakot.
 
-    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/hello-from-api-endpoint.png" alt-text="Az API-hívás eredményének megjelenítése a böngészőben":::
 
 ### <a name="debugging-the-api"></a>Az API hibakeresése
 
@@ -127,19 +127,19 @@ Az API-létrehozási folyamat részeként létrejön egy indítási konfiguráci
 
 1. A Töréspont beállításához kattintson a 2. sorban lévő bal oldali margóra. Megjelenik egy piros pont, amely azt jelzi, hogy a Töréspont be van állítva.
 
-    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/breakpoint-set.png" alt-text="Töréspont a Visual Studio Code-ban":::
 
 1. A böngészőben frissítse a következő helyen futó oldalt: <http://127.0.0.1:7071/api/message> .
 
 1. A rendszer szünetelteti a töréspontot a Visual Studio Code-ban, és a program végrehajtása szünetel.
 
-   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="GitHub – új tárház ablak":::
+   :::image type="content" source="media/local-development/breakpoint-hit.png" alt-text="Töréspont találat a Visual Studio Code-ban":::
 
    A [Visual Studio Code-ban teljes körű hibakeresési élmény érhető](https://code.visualstudio.com/Docs/editor/debugging) el az API-hoz.
 
 1. A végrehajtás folytatásához nyomja meg a **Continue (folytatás** ) gombot a hibakeresési sávon.
 
-    :::image type="content" source="media/local-development/continue-button.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/continue-button.png" alt-text="Folytatás gomb a Visual Studio Code-ban":::
 
 ### <a name="calling-the-api-from-the-application"></a>Az API meghívása az alkalmazásból
 
@@ -190,17 +190,17 @@ Az előtér-JavaScript-keretrendszerek és-kódtárak környezeti fájljainak ko
 
 1. Az **F1** billentyű lenyomásával megnyithatja a parancs palettáját a Visual Studio Code-ban.
 
-1. Írja be az élő **kiszolgáló** elemet, és válassza az élő kiszolgáló **: az élő kiszolgáló leállítása**lehetőséget.
+1. Írja be az élő **kiszolgáló** elemet, és válassza az élő kiszolgáló **: az élő kiszolgáló leállítása** lehetőséget.
 
-    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/stop-live-server.png" alt-text="Az élő kiszolgáló parancs leállítása a Visual Studio Command paletta-ban":::
 
 1. Nyissa meg a Parancskatalógust az **F1** billentyűvel.
 
-1. Írja be az élő **kiszolgáló** elemet, és válassza **az élő kiszolgáló: Megnyitás élő kiszolgálóval**lehetőséget.
+1. Írja be az élő **kiszolgáló** elemet, és válassza **az élő kiszolgáló: Megnyitás élő kiszolgálóval** lehetőséget.
 
 1. Frissítse a (z) rendszert futtató alkalmazást `http://locahost:3000` . A böngésző most megjeleníti az API által visszaadott üzenetet.
 
-    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="GitHub – új tárház ablak":::
+    :::image type="content" source="media/local-development/hello-from-api.png" alt-text="Hello a böngészőben megjelenő API-ból":::
 
 ## <a name="next-steps"></a>Következő lépések
 

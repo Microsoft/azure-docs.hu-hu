@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87505990"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Kiemelt jogosultságú hozzáférési csoport hozzárendeléseinek (előzetes verzió) kiterjesztése vagy megújítása Privileged Identity Management
@@ -72,7 +72,7 @@ Amellett, hogy az e-mail-hivatkozás követése mellett a rendszergazdák jóvá
 
 ![Kiemelt jogosultságú hozzáférési csoport hozzárendelései – a kérelmek jóváhagyása lap a kérelmek és a jóváhagyásra vagy elutasításra mutató hivatkozások listázása](media/groups-renew-extend/group-assignment-extend-admin-approve.png)
 
-Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget, a rendszer megjeleníti a kérés részleteit, valamint egy mezőt, amely üzleti indoklást biztosít a naplók számára.
+Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás** lehetőséget, a rendszer megjeleníti a kérés részleteit, valamint egy mezőt, amely üzleti indoklást biztosít a naplók számára.
 
 ![Csoport-hozzárendelési kérelem jóváhagyása a kérelmező okának, a hozzárendelés típusa, a kezdési idő, a Befejezés időpontja és az ok alapján](media/groups-renew-extend/group-assignment-extend-admin-approve-reason.png)
 
@@ -96,7 +96,7 @@ Azok a felhasználók, akik már nem férnek hozzá az erőforrásokhoz, akár 3
 
 ![Saját szerepkörök lap – lejárt hozzárendelések lap](media/groups-renew-extend/groups-renew-from-my-roles.png)
 
-A hozzárendelések listája a **jogosult hozzárendelések**alapértelmezett értékeit jeleníti meg. Használja a legördülő menüt a jogosult és az aktív hozzárendelések közötti váltáshoz.
+A hozzárendelések listája a **jogosult hozzárendelések** alapértelmezett értékeit jeleníti meg. Használja a legördülő menüt a jogosult és az aktív hozzárendelések közötti váltáshoz.
 
 Ha a listában szereplő bármelyik csoport-hozzárendelésre vonatkozó megújítást szeretne kérni, válassza a **megújítási** műveletet. Ezután adja meg a kérelem okát. Hasznos lehet időtartamot biztosítani az olyan további kontextusok vagy üzleti indoklások mellett, amelyek segítségével az erőforrás-rendszergazda jóváhagyhatja vagy megtagadhatja a jóváhagyást.
 
@@ -108,11 +108,11 @@ A kérés elküldése után az erőforrás-rendszergazdák értesítést kapnak 
 
 Az erőforrás-rendszergazdák hozzáférhetnek a megújítási kérelemhez az e-mail-értesítésben szereplő hivatkozáson Privileged Identity Management keresztül, vagy a Azure Portal, és a bal oldali ablaktáblán a **kérések jóváhagyása** lehetőség kiválasztásával
 
-Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás**lehetőséget, a rendszer a kérés részleteit jeleníti meg egy mezővel együtt, amely üzleti indoklást biztosít a naplók számára.
+Ha egy rendszergazda kiválasztja a **jóváhagyás** vagy a **Megtagadás** lehetőséget, a rendszer a kérés részleteit jeleníti meg egy mezővel együtt, amely üzleti indoklást biztosít a naplók számára.
 
 A csoport-hozzárendelés megújítására vonatkozó kérelem jóváhagyásakor az erőforrás-rendszergazdáknak új kezdési dátumot, záró dátumot és hozzárendelési típust kell megadniuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Jogosultsági szintű hozzáférési csoport hozzárendeléseire vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](groups-approval-workflow.md)
 - [Privilegizált hozzáférési csoport beállításainak konfigurálása Privileged Identity Management](groups-role-settings.md)

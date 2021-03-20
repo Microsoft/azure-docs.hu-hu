@@ -6,15 +6,15 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: e899b249261ea3238695a2e2be6001cb6a9bc763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91318058"
 ---
 # <a name="convert-models"></a>Modellek konvertálása
 
-Az Azure Remote rendering lehetővé teszi a nagyon összetett modellek megjelenítését. A maximális teljesítmény eléréséhez az adatfeldolgozást úgy kell megadni, hogy optimális formátumban legyenek. Az adatmennyiségtől függően ez a lépés hosszabb időt is igénybe vehet. A modell betöltése során ez az idő nem lenne praktikus. Emellett a folyamat többször is megismételheti ezt a folyamatot több munkamenet esetében is. Ezen okok miatt az ARR szolgáltatás egy dedikált *konverziós szolgáltatást*biztosít, amelyet az idő előtt futtathat.
+Az Azure Remote rendering lehetővé teszi a nagyon összetett modellek megjelenítését. A maximális teljesítmény eléréséhez az adatfeldolgozást úgy kell megadni, hogy optimális formátumban legyenek. Az adatmennyiségtől függően ez a lépés hosszabb időt is igénybe vehet. A modell betöltése során ez az idő nem lenne praktikus. Emellett a folyamat többször is megismételheti ezt a folyamatot több munkamenet esetében is. Ezen okok miatt az ARR szolgáltatás egy dedikált *konverziós szolgáltatást* biztosít, amelyet az idő előtt futtathat.
 Az átalakítás után egy modell tölthető be egy Azure Storage-fiókból.
 
 ## <a name="supported-source-formats"></a>Támogatott források formátuma

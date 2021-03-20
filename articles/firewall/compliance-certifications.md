@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: fa61046ee87c1cac3c8a8bb93ed97b577019e016
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94628441"
 ---
 # <a name="azure-firewall-certifications"></a>Azure Firewall minősítések
 
-A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a Nemzetközi Szabványügyi Szervezet (ISO), a ICSA Labs és a HITRUST megfelelője.
+A Azure Firewall a Payment Card Industry (PCI), a Service Organization Controls (SOC), a International Organization for Standardization (ISO), a ICSA Labs és a HITRUST megfelelője.
 
 A következő minősítések a globális Azure-ra és a Azure Governmentra vonatkoznak.
 
@@ -117,7 +117,7 @@ A ICSA Labs egy vezető gyártó a harmadik féltől származó biztonsági és 
 Azure Firewall az első felhőalapú tűzfal-szolgáltatás a ICSA Labs vállalati tűzfal-tanúsítványának eléréséhez. A Azure Firewall minősítési jelentéssel kapcsolatban lásd: [ICSA Labs minősítési teszt és naplózási jelentés](https://aka.ms/ICSALabsCertification). További információkért lásd a [ICSA Labs-tűzfal minősítési programjának](https://www.icsalabs.com/technology-program/firewalls) oldalát.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft megfelelőségi szolgáltatásával kapcsolatos további információkért tekintse meg a következő információkat.
 

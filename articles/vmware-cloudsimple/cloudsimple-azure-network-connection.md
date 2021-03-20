@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77025078"
 ---
 # <a name="azure-network-connections-overview"></a>Az Azure hálózati kapcsolatainak áttekintése
@@ -61,7 +61,7 @@ A helyszíni hálózatról és az Azure Virtual Network hálózatról érkező C
 * A CloudSimple **nem** hirdeti meg az alapértelmezett útvonalat a ExpressRoute-kapcsolatokhoz
 * Ha a helyszíni útválasztó meghirdeti az alapértelmezett útvonalat, a CloudSimple hálózatról és az Azure Virtual networkről érkező forgalom a meghirdetett alapértelmezett útvonalat fogja használni.  Ennek eredményeképpen az Azure-beli virtuális gépek nem érhetők el nyilvános IP-címek használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-beli virtuális hálózat összekötése a CloudSimple a ExpressRoute használatával](virtual-network-connection.md)
 * [Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával](on-premises-connection.md)

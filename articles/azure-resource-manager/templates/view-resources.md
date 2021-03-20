@@ -4,10 +4,10 @@ description: Az erőforrás-tulajdonságok keresésének módját ismerteti.
 ms.topic: conceptual
 ms.date: 06/10/2020
 ms.openlocfilehash: c8bbe0dcb1bc9dc9751a1dc0d0b98a6368473546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327748"
 ---
 # <a name="discover-resource-properties"></a>Erőforrás-tulajdonságok felderítése
@@ -41,7 +41,7 @@ A bővítmény a konfigurációs tulajdonságok listáján is megjeleníti a be�
 A sablon sémájának legátfogóbb erőforrása a Azure Resource Manager sablonra mutató hivatkozás. Megtalálhatja az API-verziókat, a sablon formátumát és a tulajdonságok adatait.
 
 1. Tallózással keresse meg [Azure Resource Manager sablon hivatkozását](/azure/templates/).
-1. A bal oldali navigációs sávon válassza a **tárterület**lehetőséget, majd válassza az **összes erőforrás**lehetőséget. A minden erőforrás lap összefoglalja az erőforrástípusok és a verziók összefoglalását.
+1. A bal oldali navigációs sávon válassza a **tárterület** lehetőséget, majd válassza az **összes erőforrás** lehetőséget. A minden erőforrás lap összefoglalja az erőforrástípusok és a verziók összefoglalását.
 
     ![sablon-hivatkozási erőforrás-verziók](./media/view-resources/resource-manager-template-reference-resource-versions.png)
 
@@ -72,16 +72,16 @@ Erőforrás-kezelő be van ágyazva a Azure Portalba. A metódus használata el�
 [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A keresőmezőbe írja be az **erőforrás-kezelő**kifejezést, majd válassza a **erőforrás-kezelő**lehetőséget.
+1. A keresőmezőbe írja be az **erőforrás-kezelő** kifejezést, majd válassza a **erőforrás-kezelő** lehetőséget.
 
     ![A képernyőképen a Azure Portal erőforrás-kezelő keresését láthatja.](./media/view-resources/azure-portal-resource-explorer.png)
 
-1. A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az Azure-előfizetését. A Storage-fiókot a **szolgáltatók** vagy a **ResourceGroups**között találja.
+1. A bal oldalon bontsa ki az **előfizetések** elemet, majd bontsa ki az Azure-előfizetését. A Storage-fiókot a **szolgáltatók** vagy a **ResourceGroups** között találja.
 
     ![Azure Portal erőforrás-kezelő](./media/view-resources/azure-portal-resource-explorer-home.png)
 
     - **Szolgáltatók**: bontsa ki a **szolgáltatók**  ->  **Microsoft. Storage**  ->  **storageAccounts**, majd válassza ki a Storage-fiókját.
-    - **ResourceGroups**: válassza ki azt az erőforráscsoportot, amely tartalmazza a Storage-fiókot, válassza az **erőforrások**lehetőséget, majd válassza ki a Storage-fiókot.
+    - **ResourceGroups**: válassza ki azt az erőforráscsoportot, amely tartalmazza a Storage-fiókot, válassza az **erőforrások** lehetőséget, majd válassza ki a Storage-fiókot.
 
     A jobb oldalon a meglévő Storage-fiók SKU-konfigurációja a következőhöz hasonló:
 
@@ -100,15 +100,15 @@ Annak bemutatásához, hogyan kérhető le a séma adatai az eszköz használat�
 [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json)
 
 1. Tallózással keresse meg a [Resources.Azure.com](https://resources.azure.com/). Néhány percet vesz igénybe, hogy az eszköz népszerű legyen a bal oldali panelen.
-1. Válassza az **előfizetések**lehetőséget.
+1. Válassza az **előfizetések** lehetőséget.
 
     ![resource.azure.com API-hozzárendelés](./media/view-resources/resources-azure-com-api-mapping.png)
 
     A bal oldali csomópont megfelel az API-hívásnak a jobb oldalon. Az API-hívást a **Get (Letöltés** ) gombra kattintva teheti meg.
-1. A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az Azure-előfizetését. A Storage-fiókot a **szolgáltatók** vagy a **ResourceGroups**között találja.
+1. A bal oldalon bontsa ki az **előfizetések** elemet, majd bontsa ki az Azure-előfizetését. A Storage-fiókot a **szolgáltatók** vagy a **ResourceGroups** között találja.
 
     - **Szolgáltatók**: bontsa ki a **szolgáltatók**  ->  **Microsoft. Storage**  ->  **storageAccounts**, és keresse meg a Storage-fiókot.
-    - **ResourceGroups**: válassza ki azt az erőforráscsoportot, amely tartalmazza a Storage-fiókot, majd válassza az **erőforrások**lehetőséget.
+    - **ResourceGroups**: válassza ki azt az erőforráscsoportot, amely tartalmazza a Storage-fiókot, majd válassza az **erőforrások** lehetőséget.
 
     A jobb oldalon a meglévő Storage-fiók SKU-konfigurációja a következőhöz hasonló:
 

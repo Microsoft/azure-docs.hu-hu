@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59dc94e37dfa1ef8b0b079bf5d78d0504e0cb8c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91313620"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése
@@ -53,7 +53,7 @@ A kép hatókörét a következőként kell olvasni: (részleg = IT és ország 
 
 A hatókör-modul a következő műveleteket támogatja.
 
-| Művelet | Leírás |
+| Művelet | Description |
 | --- | --- |
 | EGYENLŐ, NOTEQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték egyenlő-e az attribútum értékével. A többértékű attribútumok esetében lásd: ISIN és ISNOTIN. |
 | LESSTHAN, LESSTHAN_OR_EQUAL |Karakterlánc-összehasonlítás, amely kiértékeli, hogy az érték kisebb-e, mint az attribútumban szereplő érték. |
@@ -77,7 +77,7 @@ Az illesztések egy vagy több csoportként vannak meghatározva. Egy csoporton 
 ![Csatlakozás definíciója](./media/concept-azure-ad-connect-sync-declarative-provisioning/join2.png)  
 A képen lévő illesztések felülről lefelé haladva lesznek feldolgozva. Először a szinkronizálási folyamat látja, hogy van-e egyezés az Alkalmazottkód-ben. Ha nem, a második szabály azt látja, hogy a fiók neve használható-e az objektumok összekapcsolásához. Ha ez nem egyezik, a harmadik és a végső szabály a felhasználó nevével megegyezőnek tekintendő.
 
-Ha az összes csatlakozási szabály ki lett értékelve, és nincs pontosan egy egyezés, a **Leírás** lapon a **hivatkozás típusa** lesz használatban. Ha ez a beállítás a **kiépítés**értékre van állítva, a rendszer létrehoz egy új objektumot a célhelyen.  
+Ha az összes csatlakozási szabály ki lett értékelve, és nincs pontosan egy egyezés, a **Leírás** lapon a **hivatkozás típusa** lesz használatban. Ha ez a beállítás a **kiépítés** értékre van állítva, a rendszer létrehoz egy új objektumot a célhelyen.  
 ![A "hivatkozás típusa" legördülő menü megnyitására szolgáló képernyőkép.](./media/concept-azure-ad-connect-sync-declarative-provisioning/join3.png)  
 
 Az objektumnak csak egyetlen szinkronizálási szabállyal kell rendelkeznie a hatókörben lévő csatlakoztatási szabályokkal. Ha több szinkronizálási szabály van megadva a csatlakozáshoz, hiba történik. A kapcsolódási ütközések feloldásához a rendszer nem használja a prioritást. Egy objektumnak rendelkeznie kell egy JOIN szabálysal a hatókörben ahhoz, hogy az attribútumok ugyanazzal a bejövő/kimenő irányba haladjanak. Ha a bejövő és a kimenő attribútumokat is ugyanarra az objektumra kell átadnia, akkor a bejövő és a kimenő szinkronizálási szabállyal is csatlakoznia kell.
@@ -92,7 +92,7 @@ Egy metaverse-objektum addig marad mindaddig, amíg egyetlen szinkronizálási s
 Egy metaverse-objektum törlésekor a rendszer minden **, a** kiépítésre kijelölt kimenő szinkronizálási szabállyal társított objektumot megjelöl a törléshez.
 
 ## <a name="transformations"></a>Átalakítások
-Az átalakítások segítségével határozható meg, hogy az attribútumok hogyan legyenek a forrástól a célhelyig áramlanak. A folyamatokhoz a következő **típusú**folyamatok tartozhatnak: közvetlen, állandó vagy kifejezés. A közvetlen folyamat egy attribútum értékének átirányítása, amely nem rendelkezik további átalakításokkal. Egy konstans érték beállítja a megadott értéket. Egy kifejezés a deklaratív kiépítési kifejezés nyelvét használja, hogy kifejezze az átalakítást. A kifejezés nyelvének részletei a [deklaratív üzembe helyezési kifejezés nyelvének ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) című témakörben találhatók.
+Az átalakítások segítségével határozható meg, hogy az attribútumok hogyan legyenek a forrástól a célhelyig áramlanak. A folyamatokhoz a következő **típusú** folyamatok tartozhatnak: közvetlen, állandó vagy kifejezés. A közvetlen folyamat egy attribútum értékének átirányítása, amely nem rendelkezik további átalakításokkal. Egy konstans érték beállítja a megadott értéket. Egy kifejezés a deklaratív kiépítési kifejezés nyelvét használja, hogy kifejezze az átalakítást. A kifejezés nyelvének részletei a [deklaratív üzembe helyezési kifejezés nyelvének ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) című témakörben találhatók.
 
 ![Kiépítés vagy csatlakozás](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -103,9 +103,9 @@ Az attribútum folyamataiban van egy beállítás, amely meghatározza, hogy a t
 
 ![Képernyőkép: az "átalakítások hozzáadása" szakasz "Merge Types" (egyesítési típusok) legördülő menüjének megnyitása.](./media/concept-azure-ad-connect-sync-declarative-provisioning/mergetype.png)  
 
-**Egyesítés** és **MergeCaseInsensitive**is. Ezek a beállítások lehetővé teszik különböző forrásokból származó értékek egyesítését. Használhatja például a tag vagy a proxyAddresses attribútum egyesítését több különböző erdőből. Ha ezt a beállítást használja, az objektum hatókörében lévő összes szinkronizálási szabálynak ugyanazt az egyesítési típust kell használnia. Nem határozhat meg **frissítést** egyetlen összekötőről, és **egyesítheti** azt egy másikból. Ha megpróbálja, hibaüzenetet kap.
+**Egyesítés** és **MergeCaseInsensitive** is. Ezek a beállítások lehetővé teszik különböző forrásokból származó értékek egyesítését. Használhatja például a tag vagy a proxyAddresses attribútum egyesítését több különböző erdőből. Ha ezt a beállítást használja, az objektum hatókörében lévő összes szinkronizálási szabálynak ugyanazt az egyesítési típust kell használnia. Nem határozhat meg **frissítést** egyetlen összekötőről, és **egyesítheti** azt egy másikból. Ha megpróbálja, hibaüzenetet kap.
 
-Az **Egyesítés** és a **MergeCaseInsensitive** közötti különbség a duplikált attribútumok értékének feldolgozása. A Szinkronizáló motor ellenőrzi, hogy az ismétlődő értékek nincsenek-e beszúrva a TARGET attribútumba. A **MergeCaseInsensitive**esetében a duplikált értékek csak akkor jelennek meg, ha nem jelennek meg. Például nem láthatja SMTP:bob@contoso.com a "" és "" kifejezést smtp:bob@contoso.com a TARGET attribútumban. Az **Egyesítés** csak a pontos értékeket és a több értéket vizsgálja, ahol ebben az esetben csak a különbség áll fenn.
+Az **Egyesítés** és a **MergeCaseInsensitive** közötti különbség a duplikált attribútumok értékének feldolgozása. A Szinkronizáló motor ellenőrzi, hogy az ismétlődő értékek nincsenek-e beszúrva a TARGET attribútumba. A **MergeCaseInsensitive** esetében a duplikált értékek csak akkor jelennek meg, ha nem jelennek meg. Például nem láthatja SMTP:bob@contoso.com a "" és "" kifejezést smtp:bob@contoso.com a TARGET attribútumban. Az **Egyesítés** csak a pontos értékeket és a több értéket vizsgálja, ahol ebben az esetben csak a különbség áll fenn.
 
 A **replace** kapcsoló ugyanaz, mint a **frissítés**, de nem használja.
 
@@ -118,7 +118,7 @@ A bejövő szinkronizálási szabályok esetében a literál **Null** érték az
 
 A literál **AuthoritativeNull** hasonló a **nullához** , de azzal a különbséggel, hogy az alacsonyabb prioritási szabályok nem járulnak hozzá az értékhez.
 
-Az **IgnoreThisFlow**is használhatnak. Hasonló a NULL értékhez abban az értelemben, hogy az azt jelzi, hogy semmi nem járul hozzá. A különbség az, hogy nem távolítja el a már meglévő értéket a célhelyen. Olyan, mint az attribútum folyamata még soha nem volt ott.
+Az **IgnoreThisFlow** is használhatnak. Hasonló a NULL értékhez abban az értelemben, hogy az azt jelzi, hogy semmi nem járul hozzá. A különbség az, hogy nem távolítja el a már meglévő értéket a célhelyen. Olyan, mint az attribútum folyamata még soha nem volt ott.
 
 Alább bemutatunk egy példát:
 

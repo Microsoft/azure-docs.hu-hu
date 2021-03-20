@@ -4,10 +4,10 @@ description: Service Fabric Explorer egy Microsoft Azure Service Fabric-fürtön
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574055"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>A fürt megjelenítése a Service Fabric Explorerrel
@@ -81,7 +81,7 @@ A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontok
 ## <a name="actions"></a>Műveletek
 A Service Fabric Explorer gyors módszert kínál a csomópontokon, alkalmazásokon és szolgáltatásokon belüli műveletek meghívására a fürtön belül.
 
-Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az **Actions**  >  **alkalmazás törlése** műveletet.
+Például egy alkalmazás-példány törléséhez válassza ki az alkalmazást a bal oldali fában, majd válassza az   >  **alkalmazás törlése** műveletet.
 
 ![Alkalmazás törlése Service Fabric Explorer][sfx-delete-application]
 
@@ -131,7 +131,7 @@ A következő műveletek lehetségesek:
 * Egy partíció aktiválását és nyomon követését.
 
 A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért tekintse meg a [REST API referenciát](/rest/api/servicefabric/sfclient-index-backuprestore).
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric alkalmazás központi telepítése a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 

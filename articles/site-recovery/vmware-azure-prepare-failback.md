@@ -4,10 +4,10 @@ description: A VMware virtuális gépek feladatátvétel utáni visszavételéne
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85847740"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>VMware rendszerű virtuális gépek védelmének újbóli beállítása és feladat-visszavétele
@@ -70,6 +70,6 @@ Egy számú portnak nyitva kell lennie az ismételt védelemhez/feladat-visszav�
 10. Győződjön meg arról, hogy az ESXi-gazdagép, amelyen a fő célként megadott virtuális gép rendelkezik legalább egy, a hozzá csatolt virtuálisgép-fájlrendszerbeli (VMFS) adattárral. Ha nincsenek csatolva VMFS adattárolók, akkor az adattároló bemenete üres, és a művelet nem folytatható.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy virtuális gép [újravédése](vmware-azure-reprotect.md) .

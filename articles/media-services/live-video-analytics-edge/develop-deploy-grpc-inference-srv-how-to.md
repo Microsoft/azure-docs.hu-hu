@@ -4,10 +4,10 @@ description: Ez a cikk útmutatást nyújt egy gRPC következtetési kiszolgál�
 ms.topic: how-to
 ms.date: 12/02/2020
 ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881652"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Útmutató: gRPC-következtetési kiszolgáló fejlesztése és üzembe helyezése
@@ -148,7 +148,7 @@ A gRPC-kiszolgáló fejlesztésével kapcsolatos információk megismeréséhez 
 1. Indítsa el a VSCode, és navigáljon a/src/edge/modules/grpcExtension mappára.
 1. Végezzük el a fájlok gyors áttekintését:
 
-    1. **Program.cs**: ez az alkalmazás belépési pontja. A felelős a gRPC-kiszolgáló inicializálásához és kezeléséhez, amely gazdagépként fog működni. A példában a gRPC-ügyfelektől érkező bejövő gRPC (például az élő videó Analytics) figyelésére szolgáló portot a (z) AppConfig.jsgrpcBindings konfigurációs eleme határozza meg.
+    1. **Program. cs**: ez az alkalmazás belépési pontja. A felelős a gRPC-kiszolgáló inicializálásához és kezeléséhez, amely gazdagépként fog működni. A példában a gRPC-ügyfelektől érkező bejövő gRPC (például az élő videó Analytics) figyelésére szolgáló portot a (z) AppConfig.jsgrpcBindings konfigurációs eleme határozza meg.
     
         ```json    
         {
@@ -191,7 +191,7 @@ Most, hogy konfiguráltuk és inicializálta a gRPC-kiszolgáló portjának kapc
               }
             }
             ```
-        * A Appconfig.jsban lévő batchSize értékétől függően a kiszolgáló továbbra is fogadja az üzeneteket, és a listában tárolja a videó kereteit. Miután elérte a batchSize korlátot, a függvény meghívja a függvényt vagy azt a fájlt, amely feldolgozza a képet. Esetünkben a metódus egy BatchImageProcessor.cs nevű fájlt hív meg.
+        * A Appconfig.jsban lévő batchSize értékétől függően a kiszolgáló továbbra is fogadja az üzeneteket, és a listában tárolja a videó kereteit. Miután elérte a batchSize korlátot, a függvény meghívja a függvényt vagy azt a fájlt, amely feldolgozza a képet. Esetünkben a metódus egy BatchImageProcessor. cs nevű fájlt hív meg
     1. **Processors\BatchImageProcessor.cs**: ez az osztály felelős a rendszerkép (ek) feldolgozásához. Ebben a példában a rendszerkép besorolási modelljét használtuk. Minden feldolgozandó rendszerkép esetében a használt algoritmus a következő:
 
         1. A rendszerkép konvertálása bájtos tömbben feldolgozásra. Lásd a metódust: `GetBytes(Bitmap image)`
@@ -207,7 +207,7 @@ Most, hogy konfiguráltuk és inicializálta a gRPC-kiszolgáló portjának kapc
     IEnumerable<Inference> ProcessImage(List<Image> images) 
     ```
 
-    Miután hozzáadta az új osztályt, frissítenie kell a MediaGraphExtensionService.cs, hogy létrehozza az osztályt, és meghívja a ProcessImage metódust a feldolgozási logika futtatásához. 
+    Miután hozzáadta az új osztályt, frissítenie kell a MediaGraphExtensionService. cs-t, hogy létrehozza az osztályt, és meghívja a ProcessImage metódust a feldolgozási logika futtatásához. 
 
 ## <a name="connect-with-live-video-analytics-module"></a>Kapcsolat az élő videó elemzési modullal
 
@@ -228,7 +228,7 @@ Most, hogy létrehozta a gRPC-bővítmény modult, most létrehozjuk és üzembe
 
     * C2D-Console-app. csproj – a Project fájl a Visual Studio Code-hoz.
     * operations.json – a program futtatásához használni kívánt műveletek listája.
-    * Program.cs – a minta programkódja. Ez a kód:
+    * Program. cs – a minta programkódja. Ez a kód:
 
         * Betölti az alkalmazás beállításait.
         * Közvetlen metódusokat hív meg, amelyeket az élő videó Analytics IoT Edge modulban tesz elérhetővé. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md)meghívásával.
@@ -306,6 +306,6 @@ Ebben a szakaszban az Edge-modulok üzembe helyezése a IoT Edge eszközön megk
 
 :::image type="content" source="./media/develop-deploy-grpc-inference-srv-how-to/devices.png" alt-text="Új modul lett üzembe helyezve lvaExtension néven":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A minta futtatásához és az eredmények értelmezéséhez kövesse a felkészülés az [élő videók elemzése a modell](use-your-model-quickstart.md) rövid útmutatója című témakörben említett **események figyelése** című szakaszát. Tekintse meg a példaként szolgáló gRPC-topológiákat is: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), [EVRtoAssetsByGrpcExtension és [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).

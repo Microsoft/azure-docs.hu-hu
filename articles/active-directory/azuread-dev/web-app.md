@@ -15,10 +15,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: e4a7fb72d40f5db65e8e30264e9d68b2727749e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154406"
 ---
 # <a name="web-apps"></a>Webalkalmazások
@@ -53,7 +53,7 @@ Webalkalmazás regisztrálásához tekintse meg [az alkalmazás regisztrálása]
 
 A felhasználó munkamenete lejár, ha az Azure AD által kiadott jogkivonat élettartama lejár. Az alkalmazás igény szerint lerövidítheti ezt az időtartamot, például a felhasználók inaktivitási időtartam alapján történő kijelentkezését. A munkamenet lejáratakor a rendszer kérni fogja a felhasználótól, hogy jelentkezzen be újra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
 * Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

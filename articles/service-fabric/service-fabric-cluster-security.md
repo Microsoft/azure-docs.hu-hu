@@ -4,10 +4,10 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573068"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
@@ -140,7 +140,7 @@ Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokka
 > [!NOTE]
 > Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md)
 * [Fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)

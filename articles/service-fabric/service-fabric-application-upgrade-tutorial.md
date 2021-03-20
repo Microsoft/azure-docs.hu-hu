@@ -4,10 +4,10 @@ description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helye
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996236"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric alkalmazás-frissítési oktatóanyag a Visual Studióval
@@ -37,7 +37,7 @@ Most kattintson a **Közzététel** lehetőségre a párbeszédpanelen. [A Servi
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: a vizuális objektumok mintájának frissítése
 Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül lépjen a metódusra `MoveObject` , a megjegyzésbe `visualObject.Move(false)` és a megjegyzésbe `visualObject.Move(true)` . A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés* lehetőséget választja, frissítenie kell az összes projekt verzióját.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, majd nyissa meg a **VisualObjectActor. cs** fájlt. A fájlon belül lépjen a metódusra `MoveObject` , a megjegyzésbe `visualObject.Move(false)` és a megjegyzésbe `visualObject.Move(true)` . A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés* lehetőséget választja, frissítenie kell az összes projekt verzióját.
 
 Az alkalmazás verziószámát is meg kell adni. Ha módosítani szeretné a verziót, miután a jobb gombbal a **VisualObjects** projektre kattint, használhatja a Visual Studio **jegyzékfájl-verziójának szerkesztése** lehetőséget. A beállítás kiválasztásával megjelenik a kiadási verziók párbeszédpanelje a következő módon:
 
@@ -62,7 +62,7 @@ Néhány percen belül minden frissítési tartományt frissíteni kell (befejez
 
 Érdemes lehet megváltoztatnia a verziókat, és az 2.0.0 verzióról a 3.0.0 verzióra, vagy akár a 2.0.0 verzióról a 1.0.0 verzióra vált. Az időkorláttal és az állapottal foglalkozó szabályzatokkal megismerheti őket. Ha egy Azure-fürtre helyez üzembe egy helyi fürt helyett, a használt paraméterek eltérőek lehetnek. Javasoljuk, hogy a konzervatív időkorlátot állítsa be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
 A frissítési paraméterek használatával szabályozhatja az alkalmazás [frissítésének](service-fabric-application-upgrade-parameters.md)módját.

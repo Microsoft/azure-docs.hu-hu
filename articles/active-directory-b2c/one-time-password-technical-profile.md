@@ -12,10 +12,10 @@ ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881191"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
@@ -53,7 +53,7 @@ A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójá
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| azonosító | Igen | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
+| azonosító | Yes | Az azonosító annak a felhasználónak a azonosításához, akinek később ellenőriznie kell a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
@@ -63,7 +63,7 @@ A **OutputClaims** elem az egyszeri jelszavas protokoll szolgáltatója által l
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| otpGenerated | Igen | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
+| otpGenerated | Yes | Az a generált kód, amelynek a munkamenetét Azure AD B2C kezeli. |
 
 A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a kimeneti jogcímek módosítására vagy újak előállítására szolgálnak.
 
@@ -73,13 +73,13 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . Minden alkalommal, amikor kódot adnak meg (ugyanazt a kódot használja `ReuseSameCode` , vagy egy új kódot használ), a kód lejárata kiterjeszthető. Ez az idő az újrapróbálkozási időtúllépés beállítására is használatos (a maximális próbálkozások elérésekor a felhasználó ki van zárva az új kódok megszerzésére, amíg az idő lejár) |
-| CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
-| CharacterSet | Nem | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
-| NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
-| NumCodeGenerationAttempts | Nem | A kód generálására irányuló kísérletek maximális száma azonosító alapján. Ha nincs megadva, az alapértelmezett érték 10. |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `GenerateCode` . |
-| ReuseSameCode | Nem | Azt határozza meg, hogy ugyanazt a kódot kell-e megadnia ahelyett, hogy új kódot generáljon, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`.  |
+| CodeExpirationInSeconds | No | A kód lejárati ideje másodpercben. Minimum: `60` ; Maximum: `1200` ; Alapértelmezett: `600` . Minden alkalommal, amikor kódot adnak meg (ugyanazt a kódot használja `ReuseSameCode` , vagy egy új kódot használ), a kód lejárata kiterjeszthető. Ez az idő az újrapróbálkozási időtúllépés beállítására is használatos (a maximális próbálkozások elérésekor a felhasználó ki van zárva az új kódok megszerzésére, amíg az idő lejár) |
+| CodeLength | No | A kód hossza. Az alapértelmezett érték `6`. |
+| CharacterSet | No | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
+| NumRetryAttempts | No | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
+| NumCodeGenerationAttempts | No | A kód generálására irányuló kísérletek maximális száma azonosító alapján. Ha nincs megadva, az alapértelmezett érték 10. |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges érték: `GenerateCode` . |
+| ReuseSameCode | No | Azt határozza meg, hogy ugyanazt a kódot kell-e megadnia ahelyett, hogy új kódot generáljon, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`.  |
 
 
 
@@ -119,8 +119,8 @@ A **szabályzattípushoz** elem az egyszeri jelszavas protokoll szolgáltatójá
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| azonosító | Igen | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
-| otpToVerify | Igen | A felhasználó által megadott ellenőrző kód. |
+| azonosító | Yes | Azon felhasználó azonosítására szolgáló azonosító, aki korábban létrehozta a kódot. Általában annak a célhelynek az azonosítója, ahol a kód kézbesítése történik, például az e-mail cím vagy a telefonszám. |
+| otpToVerify | Yes | A felhasználó által megadott ellenőrző kód. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak, mielőtt elküldené az egyszeri jelszavas protokoll szolgáltatójának.
 
@@ -136,7 +136,7 @@ A következő beállítások használhatók a kód-ellenőrzési mód használat
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `VerifyCode` . |
+| Művelet | Yes | A végrehajtandó művelet. Lehetséges érték: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
@@ -145,12 +145,12 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | Nem | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
-| UserMessageIfMaxRetryAttempted | Nem | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
-| UserMessageIfMaxNumberOfCodeGenerated | Nem | A felhasználónak megjelenítendő üzenet, ha a kód létrehozása túllépte a kísérletek maximálisan megengedett számát. |
-| UserMessageIfInvalidCode | Nem | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
-| UserMessageIfVerificationFailedRetryAllowed | Nem | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg, és a felhasználó megadhatja a megfelelő kódot.  |
-|UserMessageIfSessionConflict|Nem| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
+| UserMessageIfSessionDoesNotExist | No | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
+| UserMessageIfMaxRetryAttempted | No | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
+| UserMessageIfMaxNumberOfCodeGenerated | No | A felhasználónak megjelenítendő üzenet, ha a kód létrehozása túllépte a kísérletek maximálisan megengedett számát. |
+| UserMessageIfInvalidCode | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
+| UserMessageIfVerificationFailedRetryAllowed | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg, és a felhasználó megadhatja a megfelelő kódot.  |
+|UserMessageIfSessionConflict|No| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
 
 ### <a name="example"></a>Példa
 
@@ -170,7 +170,7 @@ A következő példa `TechnicalProfile` egy kód ellenőrzéséhez használható
 </TechnicalProfile>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan használhatja az egyéni e-mail-ellenőrzéssel rendelkező egyszeri jelszavas technikai profilt:
 

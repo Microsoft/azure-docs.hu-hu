@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7da3c78e00f5d7e41a5396603cf4885a50cb6e5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89146351"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Feladatok ütemezése a hatékony végrehajtás érdekében
@@ -43,7 +43,7 @@ Ne **futtassa azt követően**: az itt beállított idő után nem futnak felada
 
 **Kezdési ablak**: Itt adhatja meg azt az időintervallumot, amelytől kezdve az ütemezés azt jelzi, hogy melyik feladatot kell létrehozni, amíg be nem fejeződik. Ha az aktuális feladattípus nem fejeződött be az ablakában, a következő feladatot nem fogja elindítani.
 
-Az alapszintű űrlap alján adja meg azt a készletet, amelyen futtatni szeretné a feladatot. A készlet AZONOSÍTÓjának adatainak megkereséséhez válassza a **frissítés**lehetőséget. 
+Az alapszintű űrlap alján adja meg azt a készletet, amelyen futtatni szeretné a feladatot. A készlet AZONOSÍTÓjának adatainak megkereséséhez válassza a **frissítés** lehetőséget. 
 
 ![Készlet meghatározása][2]
 
@@ -56,13 +56,13 @@ Az alapszintű űrlap alján adja meg azt a készletet, amelyen futtatni szeretn
 
 **Maximális falióra-idő**: állítsa be azt a maximális időtartamot, ameddig a feladatot futtatni lehet. Ha az idő keretén belül nem fejeződik be, a Batch leállítja a feladatot. Ha ezt nem teszi meg, akkor a feladatokhoz nincs időkorlát.
 
-**Feladat-újrapróbálkozások maximális**száma: Itt adhatja meg, hogy hány alkalommal próbálkozzon újra egy tevékenység legfeljebb négyszer. Ez nem ugyanaz, mint az API-hívások újrapróbálkozások száma.
+**Feladat-újrapróbálkozások maximális** száma: Itt adhatja meg, hogy hány alkalommal próbálkozzon újra egy tevékenység legfeljebb négyszer. Ez nem ugyanaz, mint az API-hívások újrapróbálkozások száma.
 
 **Ha az összes feladat befejeződött**: az alapértelmezett érték nincs művelet.
 
 **Ha egy feladat meghiúsul**: az alapértelmezett érték nincs művelet. Egy feladat meghiúsul, ha az újrapróbálkozások száma kimerült, vagy hiba történt a feladat indításakor. 
 
-Ha a **Mentés**gombra kattint, ha a bal oldali navigációs sávon a **feladatok ütemterve** lehetőségre kattint, a **végrehajtási adatok**lehetőség választásával nyomon követheti a feladatok végrehajtását.
+Ha a **Mentés** gombra kattint, ha a bal oldali navigációs sávon a **feladatok ütemterve** lehetőségre kattint, a **végrehajtási adatok** lehetőség választásával nyomon követheti a feladatok végrehajtását.
 
 
 ## <a name="for-more-information"></a>További tudnivalók

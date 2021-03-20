@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 08/28/2020
 ms.author: victorh
 ms.openlocfilehash: 7966cbe44fc8984cf3c3d9e2d08a11bf599ff158
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89079132"
 ---
 # <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Rövid útmutató: Azure Firewall és IP-csoportok létrehozása – ARM-sablon
@@ -46,7 +46,7 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
 - [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. számítás/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
@@ -59,7 +59,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
 
 2. A portálon az **Azure Firewall létrehozása a IpGroups** lapon írja be vagy válassza ki a következő értékeket:
    - Előfizetés: válasszon a meglévő előfizetések közül 
-   - Erőforráscsoport: válasszon a meglévő erőforráscsoportok közül, vagy válassza az **új létrehozása**lehetőséget, majd kattintson **az OK gombra**.
+   - Erőforráscsoport: válasszon a meglévő erőforráscsoportok közül, vagy válassza az **új létrehozása** lehetőséget, majd kattintson **az OK gombra**.
    - Hely: válasszon egy helyet
    - Virtual Network neve: írja be az új virtuális hálózat (VNet) nevét. 
    - 1. IP-csoport neve: írja be az 1. IP-csoport nevét 
@@ -68,7 +68,7 @@ Az ARM-sablon üzembe helyezése az Azure-ban:
    - Hitelesítés: válassza a sshPublicKey vagy a jelszó lehetőséget 
    - Rendszergazdai jelszó: írja be a rendszergazda jelszavát vagy kulcsát
 
-3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás**lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
+3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás** lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -76,7 +76,7 @@ A Azure Portal tekintse át az üzembe helyezett erőforrásokat, különösen a
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP-csoportok.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="IP-csoportok.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Hálózati szabályok.":::
 
 A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól további információt a [Microsoft. Network azureFirewalls-sablon referenciája](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)című témakörben talál.
 
@@ -90,7 +90,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md)

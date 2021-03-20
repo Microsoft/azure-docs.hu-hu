@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 3baf2d7ed7c326895ae40948fc2d0a4cc03021f9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788366"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-azure-sql-managed-instance-from-on-premises"></a>Gyors útmutató: pont – hely kapcsolat konfigurálása az Azure SQL felügyelt példányához a helyszíni környezetből
@@ -65,7 +65,7 @@ Ez a rövid útmutató:
 
 ## <a name="create-a-vpn-connection"></a>VPN-kapcsolat létrehozása
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg azt az erőforráscsoportot, amelyben létrehozta a virtuális hálózati átjárót, majd nyissa meg a virtuális hálózati átjáró erőforrását.
 3. Válassza a **pont – hely konfiguráció** lehetőséget, majd válassza a **VPN-ügyfél letöltése** lehetőséget.
 
@@ -80,7 +80,7 @@ Ez a rövid útmutató:
 
 ## <a name="connect-to-the-vpn-connection"></a>Csatlakozás a VPN-kapcsolathoz
 
-1. Nyissa meg a **VPN** -t a **hálózati & interneten** a helyi ügyfélszámítógépen, és válassza ki az SQL felügyelt példányának virtuális hálózatát, hogy kapcsolatot létesítsen ehhez a VNet. A következő képen a VNet neve **MyNewVNet** .
+1. Nyissa meg a **VPN** -t a **hálózati & interneten** a helyi ügyfélszámítógépen, és válassza ki az SQL felügyelt példányának virtuális hálózatát, hogy kapcsolatot létesítsen ehhez a VNet. A következő képen a VNet neve **MyNewVNet**.
 
     ![VPN-kapcsolat](./media/point-to-site-p2s-configure/vpn-connection.png)  
 2. Válassza a **Kapcsolódás** lehetőséget.
@@ -98,7 +98,7 @@ Ez a rövid útmutató:
 
 1. A helyszíni ügyfélszámítógépen nyissa meg a SQL Server Management Studio.
 2. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen adja meg a felügyelt példány teljes **állomásnevét** a **kiszolgáló neve** mezőben.
-3. Válassza ki **SQL Server hitelesítést** , adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat** lehetőséget.
+3. Válassza ki **SQL Server hitelesítést**, adja meg felhasználónevét és jelszavát, majd válassza a **kapcsolat** lehetőséget.
 
     ![SSMS-kapcsolat](./media/point-to-site-p2s-configure/ssms-connect.png)  
 

@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 908c9f1d05c83eaa58f77b79a32d956898c35076
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93348253"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
@@ -118,7 +118,7 @@ Az SQL audit beállítása az események VNet vagy tűzfal mögötti Storage-fi�
    }
    ```
 
-2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)** , majd kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködő** Azure-szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
+2. Nyissa meg az [Azure Portalt](https://portal.azure.com). Nyissa meg a tárfiókot. Keresse meg **Access Control (iam)**, majd kattintson a **szerepkör-hozzárendelés hozzáadása** lehetőségre. Rendeljen hozzá **Storage blob-adatközreműködő** Azure-szerepkört a Azure Active Directory (Azure ad) szolgáltatásban regisztrált adatbázist futtató kiszolgálóhoz az előző lépésben leírtak szerint.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg az [Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).

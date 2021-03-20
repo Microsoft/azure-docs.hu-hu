@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85850965"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-hivatkozás
@@ -1085,7 +1085,7 @@ Az engedélyek szigorítása a következő lépésekkel jár:
 Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 3. Rendelje hozzá ezeket a konkrét engedélyeket:
 
-   | Típus | Name (Név) | Hozzáférés | Érvényesség |
+   | Típus | Name | Access | Érvényesség |
    |------|------|--------|------------|
    | Engedélyezés | RENDSZER | Teljes hozzáférés | Ez az objektum |
    | Engedélyezés | Vállalati rendszergazdák | Teljes hozzáférés | Ez az objektum |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 9c734ff03b1cf277c7e0967d8b76b1941434f414
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050469"
 ---
 Ebben az eljárásban a következőket kell tennie:
@@ -21,7 +21,7 @@ Ebben az eljárásban a következőket kell tennie:
 #### <a name="to-prepare-to-run-the-maintainer"></a>Felkészülés a karbantartó futtatására
 1. A webes előtér-kiszolgálón nyissa meg a SharePoint 2013 felügyeleti rendszerhéjt rendszergazdaként.
 2. Navigáljon a mappa *rendszerindítási meghajtó*: \PROGRAM Files\Microsoft SQL távoli Blob Storage 10.50 \ karbantartó\.
-3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** átnevezése **web.configra **.
+3. **Microsoft.Data.SqlRemoteBlobs.Maintainer.exe.config** átnevezése **web.configra**.
 4. Használja az `aspnet_regiis -pdf connectionStrings` web.config fájl visszafejtéséhez.
 5. A visszafejtett web.config fájlban a csomópont alatt `connectionStrings` adja hozzá az SQL Server-példány és a tartalom-adatbázis nevét. Tekintse meg a következő példát.
    
@@ -38,7 +38,7 @@ Ebben az eljárásban a következőket kell tennie:
 
     `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’time 00:00:00’`
 
-2. A webes előtér-kiszolgálón a **központi felügyelet**területen szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár ideiglenes letiltásához. Ez a művelet a kapcsolódó webhelycsoportok esetében is üresen fogja hagyni a Lomtár használatát. Ehhez kattintson a **központi adminisztrációs**  ->  **alkalmazás-kezelés**  ->  **webalkalmazások (webalkalmazások kezelése)**  ->  **SharePoint-80**  ->  **általános Alkalmazásbeállítások**elemre. Állítsa ki a **Lomtár állapotát** **ki**értékre.
+2. A webes előtér-kiszolgálón a **központi felügyelet** területen szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár ideiglenes letiltásához. Ez a művelet a kapcsolódó webhelycsoportok esetében is üresen fogja hagyni a Lomtár használatát. Ehhez kattintson a **központi adminisztrációs**  ->  **alkalmazás-kezelés**  ->  **webalkalmazások (webalkalmazások kezelése)**  ->  **SharePoint-80**  ->  **általános Alkalmazásbeállítások** elemre. Állítsa ki a **Lomtár állapotát** **ki** értékre.
    
     ![Webalkalmazás általános beállításai](./media/storsimple-sharepoint-adapter-garbage-collection/HCS_WebApplicationGeneralSettings-include.png)
 
@@ -62,5 +62,5 @@ Ebben az eljárásban a következőket kell tennie:
       `exec mssqlrbs.rbs_sp_set_config_value ‘delete_scan_period’ , ’days 30’`
    
       `exec mssqlrbs.rbs_sp_set_config_value ‘orphan_scan_period’ , ’days 30’`
-2. A webes előtér-kiszolgálón a **központi felügyelet**lapon szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár újbóli engedélyezéséhez. Ehhez kattintson a **központi adminisztrációs**  ->  **alkalmazás-kezelés**  ->  **webalkalmazások (webalkalmazások kezelése)**  ->  **SharePoint-80**  ->  **általános Alkalmazásbeállítások**elemre. A Lomtár állapotának beállítása **a**következőre:.
+2. A webes előtér-kiszolgálón a **központi felügyelet** lapon szerkessze a **webalkalmazás általános beállításait** a kívánt tartalom-adatbázishoz a Lomtár újbóli engedélyezéséhez. Ehhez kattintson a **központi adminisztrációs**  ->  **alkalmazás-kezelés**  ->  **webalkalmazások (webalkalmazások kezelése)**  ->  **SharePoint-80**  ->  **általános Alkalmazásbeállítások** elemre. A Lomtár állapotának beállítása **a** következőre:.
 

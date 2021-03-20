@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: c053a7830e02eb7c460bd030ca3c6a10c00ea78a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323637"
 ---
 # <a name="understand-app-and-deployment-in-azure-spring-cloud"></a>Az alkalmazások és az üzembe helyezés ismertetése az Azure Spring Cloud-ban
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java ✔️ C #
 
-Az Azure Spring Cloud erőforrás-modelljében az **alkalmazás** és a **telepítés** a két kulcsfontosságú fogalom. Az Azure Spring Cloud-ban az *alkalmazások* egy üzleti alkalmazás vagy egy szolgáltatás absztrakciója.  Egy *központi telepítésben*az *alkalmazás* futtatásakor telepített kód vagy bináris fájl egy verziója.  Az alkalmazások egy *Azure Spring Cloud Service-példányban*, vagy egyszerűen a *Service-példányban*futnak, ahogy azt a következő mutatja.
+Az Azure Spring Cloud erőforrás-modelljében az **alkalmazás** és a **telepítés** a két kulcsfontosságú fogalom. Az Azure Spring Cloud-ban az *alkalmazások* egy üzleti alkalmazás vagy egy szolgáltatás absztrakciója.  Egy *központi telepítésben* az *alkalmazás* futtatásakor telepített kód vagy bináris fájl egy verziója.  Az alkalmazások egy *Azure Spring Cloud Service-példányban*, vagy egyszerűen a *Service-példányban* futnak, ahogy azt a következő mutatja.
 
  ![Alkalmazások és központi telepítések](./media/spring-cloud-app-and-deployment/app-deployment-rev.png)
 
@@ -29,25 +29,25 @@ Az Azure Spring Cloud standard csomag lehetővé teszi, hogy egy alkalmazás egy
 ## <a name="app"></a>Alkalmazás
 Az alkalmazás szintjén az alábbi funkciók/tulajdonságok vannak meghatározva.
 
-| Szolgáltatások | Leírás |
+| Funkciók | Description |
 |:--|:----------------|
 | Nyilvános</br>Végpont | Az alkalmazás eléréséhez használt URL-cím |
 | Egyéni</br>Tartomány | Az egyéni tartomány védelmét biztosító CNAME-rekord |
 | Szolgáltatás</br>Kötés | Egyéb Azure-szolgáltatásokkal létesített kapcsolatok |
 | Felügyelt</br>Identitás | A felügyelt identitás Azure Active Directory lehetővé teszi, hogy az alkalmazás könnyedén hozzáférhessen más Azure AD-védelemmel ellátott erőforrásokhoz, például a Azure Key Vault |
-| Állandó</br>Storage | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
+| Állandó</br>Tárolás | Beállítás, amely lehetővé teszi, hogy az alkalmazások az alkalmazás újraindítása után is megmaradjanak |
 
 ## <a name="deployment"></a>Üzembe helyezés
 
 A következő funkciók/tulajdonságok a telepítési szinten vannak meghatározva, és az üzemi/átmeneti telepítés cseréjekor lesznek kicserélve.
 
-| Szolgáltatások | Leírás |
+| Funkciók | Leírás |
 |:--|:----------------|
 | CPU | Virtuális mag-példányok száma |
 | Memória | GB memória/alkalmazás példánya|
 | Példány</br>Darabszám | Az alkalmazás példányainak száma, manuális vagy automatikus beállítás |
 | Automatikus méretezés | A példányok számának automatikus méretezése előre definiált szabályok és ütemtervek alapján |
-| JVM</br>Lehetőségek | JVM beállítások megadása  |
+| JVM</br>Beállítások | JVM beállítások megadása  |
 | Környezet</br>Változók | Környezeti változók beállítása |
 | Futtatókörnyezet</br>Verzió | Java 8/Java 11|
 

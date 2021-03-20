@@ -5,10 +5,10 @@ ms.custom: references_regions
 ms.topic: conceptual
 ms.date: 1/4/2021
 ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97860978"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Mi a BareMetal-infrastruktúra előzetes verziója az Azure-on?
@@ -71,13 +71,13 @@ Az elérhető linuxos operációsrendszer-verziók a következők:
    - SLES 12 SP5
    - SLES 15 SP1
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 Az adott SKU-típuson alapuló BareMetal-példányok előre definiált NFS-tárolóval rendelkeznek az adott munkaterhelés-típushoz. A BareMetal kiépítésekor a becsült növekedés alapján több tárhelyet is kiépítheti egy támogatási kérelem elküldésével. Az összes tárterület a 4,2-es verzióban található, az NFSv3-t és a Nfsv4 névleképezője-t támogató összes flash-lemezt tartalmaz. A 4,5 NVMe SSD újabb verziója elérhető lesz. A tárolók méretezésével kapcsolatos további információkért tekintse meg a [BareMetal munkaterhelés típusa](../../../virtual-machines/workloads/sap/get-started.md) szakaszt.
 
 >[!NOTE]
 >A BareMetal-hez használt tárterület megfelel a [Federal Information Processing standard (FIPS) 140-2-es kiadványnak](/microsoft-365/compliance/offering-fips-140-2) , amely alapértelmezés szerint a titkosítást kínál a nyugalmi állapotban. Az adatlemezek tárolása biztonságos.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 Az Azure hálózati szolgáltatások architektúrája kulcsfontosságú összetevő a speciális számítási feladatok BareMetal-példányokban való sikeres üzembe helyezéséhez. Valószínű, hogy az összes IT-rendszer nem az Azure-ban található. Az Azure olyan hálózati technológiát kínál, amellyel az Azure úgy néz ki, mint egy virtuális adatközpont a helyszíni szoftverek központi telepítéséhez. Az BareMetal-példányokhoz szükséges Azure-hálózati funkciók a következőek:
 
 - Az Azure-beli virtuális hálózatok a helyszíni hálózati eszközökhöz csatlakozó ExpressRoute-áramkörhöz csatlakoznak.
@@ -98,7 +98,7 @@ A bemutatott architektúra három szakaszra oszlik:
    >[!TIP]
    >Ennek támogatásához a ExpressRoute-átjárónak UltraPerformance kell lennie.  További információ: [a ExpressRoute virtuális hálózati átjárók ismertetése](../../../expressroute/expressroute-about-virtual-network-gateways.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépés, hogy megtudja, hogyan azonosíthatja és kezelheti a BareMetal-példányok egységeit a Azure Portalon keresztül.
 

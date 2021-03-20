@@ -8,17 +8,17 @@ ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97862403"
 ---
 # <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
 A Azure Functions kiszolgáló nélküli megoldás, amely lehetővé teszi kevesebb kód írására, kevesebb infrastruktúra fenntartására és költségek megtakarítására. Ahelyett, hogy a kiszolgálók üzembe helyezésével és karbantartásával kellene foglalkoznia, a felhőalapú infrastruktúra biztosítja az alkalmazások futtatásához szükséges összes naprakész erőforrást.
 
-Az Ön számára leginkább fontos kódrészletekre koncentrálhat, és Azure Functions kezeli a többiet.<br /><br />
+Így Ön a legfontosabb kódolási feladatokra koncentrálhat, a többit pedig az Azure Functionsre bízhatja.<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
@@ -61,7 +61,7 @@ A függvények összeállításakor a következő lehetőségek és erőforráso
 
 - **Rugalmas díjszabási lehetőségek**: a [használati csomaggal csak a függvények](./pricing.md) futása után kell fizetnie, a [prémium](./pricing.md) és [app Service](./pricing.md) csomagok pedig speciális igényekhez nyújtanak szolgáltatásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a leckék, minták és interaktív oktatóanyagok használatával](./functions-get-started.md)

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a26cfaca466e01b154c65b27895f3004f6320e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326337"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
@@ -83,7 +83,7 @@ Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy al
 
 Nyisson meg egy webböngészőt, és keresse meg az új projektet a következő helyen: [https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Válassza a **folyamatok** fület, majd a **buildek**, majd az **új folyamat**elemet.
+Válassza a **folyamatok** fület, majd a **buildek**, majd az **új folyamat** elemet.
 
 ![Új folyamat][new-pipeline]
 
@@ -91,15 +91,15 @@ A manuális és ütemezett buildek esetében válassza az **Azure Repos git** as
 
 ![Tárház kiválasztása][select-repo]
 
-A **sablon kiválasztása**lapon válassza ki az **Azure Service Fabric alkalmazás** sablont, és kattintson az **alkalmaz**gombra.
+A **sablon kiválasztása** lapon válassza ki az **Azure Service Fabric alkalmazás** sablont, és kattintson az **alkalmaz** gombra.
 
 ![Buildsablon kiválasztása][select-build-template]
 
-A **feladatok**területen adja meg az "üzemeltetett VS2017" **ügynököt**.
+A **feladatok** területen adja meg az "üzemeltetett VS2017" **ügynököt**.
 
 ![Feladatok kiválasztása][save-and-queue]
 
-A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. **Ág-szűrőkön**belül a **Branch specifikáció** alapértelmezett értéke a **Master**. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
+A **Triggers** (Eseményindítók) lehetőségnél engedélyezze a folyamatos integrációt az **Enable continuous integration** (Folyamatos integráció engedélyezése) bejelölésével. **Ág-szűrőkön** belül a **Branch specifikáció** alapértelmezett értéke a **Master**. Válassza ki a **Save and queue** (Mentés és üzenetsorba helyezés) elemet a build manuális elindításához.
 
 ![Eseményindítók kiválasztása][save-and-queue2]
 
@@ -107,11 +107,11 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A létreh
 
 ### <a name="create-a-release-pipeline"></a>Kiadási folyamat létrehozása
 
-Válassza a **folyamatok** fület, majd a **releases**, majd az **+ új folyamat**elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza a **folyamatok** fület, majd a **releases**, majd az **+ új folyamat** elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
-Válassza **Tasks** -> az**1** . feladat-környezet, majd az **+ új** lehetőséget az új fürthöz való kapcsolódáshoz.
+Válassza  -> az **1** . feladat-környezet, majd az **+ új** lehetőséget az új fürthöz való kapcsolódáshoz.
 
 ![Fürtkapcsolat hozzáadása][add-cluster-connection]
 

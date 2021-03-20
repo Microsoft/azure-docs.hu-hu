@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs Apache Kafka támogatásáról nyújt
 ms.topic: article
 ms.date: 09/25/2020
 ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861340"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Az Azure Event Hubs használata Apache Kafka alkalmazásokból
@@ -141,5 +141,5 @@ A felsorolt szolgáltatások és keretrendszerek általában a különböző for
 
 Ha az Azure-beli Kafka Streams keretrendszert kell használnia, [Apache Kafka a HDInsight-on](../hdinsight/kafka/apache-kafka-introduction.md) keresztül biztosítjuk Önnek ezt a lehetőséget. A Apache Kafka on HDInsight teljes körűen szabályozhatja Apache Kafka összes konfigurációs aspektusát, miközben az Azure platform különböző szempontjaival teljes mértékben integrálva van, a hiba/frissítés tartományból a hálózat elkülönítésére az integráció figyelése érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk a Kafka-Event Hubs bevezetését ismertette. További információ: [Apache Kafka fejlesztői útmutató az Azure Event Hubshoz](apache-kafka-developer-guide.md).

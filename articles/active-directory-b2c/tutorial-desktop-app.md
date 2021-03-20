@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 06d27c3a3daa4702653a2063d0ac70fd094e2d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78186199"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>Oktatóanyag: felhasználók hitelesítése natív asztali ügyfélprogramban Azure Active Directory B2C használatával
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 Ha frissíteni szeretné az alkalmazást a Azure AD B2C-Bérlővel való együttműködésre, és az alapértelmezett bemutató bérlője helyett meghívja a felhasználói folyamatokat:
 
 1. Nyissa meg az **Active-Directory-B2C-WPF** megoldást ( `active-directory-b2c-wpf.sln` ) a Visual Studióban.
-2. Az **Active Directory-B2C-WPF** projektben nyissa meg a *app.XAML.cs* fájlt, és keresse meg az alábbi változók definícióit. A helyére cserélje le a `{your-tenant-name}` Azure ad B2C bérlő nevét és `{application-ID}` a korábban feljegyzett alkalmazás-azonosítót.
+2. Az **Active Directory-B2C-WPF** projektben nyissa meg az *app. XAML. cs* fájlt, és keresse meg az alábbi változók definícióit. A helyére cserélje le a `{your-tenant-name}` Azure ad B2C bérlő nevét és `{application-ID}` a korábban feljegyzett alkalmazás-azonosítót.
 
     ```csharp
     private static readonly string Tenant = "{your-tenant-name}.onmicrosoft.com";

@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta példa arra, hogyan használható a házire
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: f1da9bd153707db35c07ed3c176542797a694d7a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92073036"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy minta: hatások
@@ -16,7 +16,7 @@ Azure Policy számos [effektussal](../concepts/effects.md) rendelkezik, amelyek 
 
 ## <a name="sample-1-simple-effect"></a>1. minta: egyszerű hatás
 
-Ez a szabályzat-definíció ellenőrzi, hogy a **TagName** paraméterben meghatározott címke létezik-e a kiértékelt erőforráson. Ha a címke még nem létezik, a [módosítás](../concepts/effects.md#modify) hatása aktiválódik, hogy hozzáadja a címkét a **tagValue**paraméterben szereplő értékkel.
+Ez a szabályzat-definíció ellenőrzi, hogy a **TagName** paraméterben meghatározott címke létezik-e a kiértékelt erőforráson. Ha a címke még nem létezik, a [módosítás](../concepts/effects.md#modify) hatása aktiválódik, hogy hozzáadja a címkét a **tagValue** paraméterben szereplő értékkel.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
@@ -28,7 +28,7 @@ A **módosítási** effektushoz a **' policyrule osztály. then. details** blokk
 
 ## <a name="sample-2-complex-effect"></a>2. minta: összetett hatás
 
-Ez a házirend-definíció az egyes virtuális gépeket naplózza, ha a paraméterek **közzétevője** és **típusa mezőben**definiált bővítmény nem létezik. A [auditIfNotExists](../concepts/effects.md#auditifnotexists) használatával vizsgálja meg a virtuális géphez kapcsolódó erőforrásokat, és ellenőrizze, hogy létezik-e olyan példány, amely megfelel a megadott paramétereknek. Ez a példa a **bővítmények** típusát ellenőrzi.
+Ez a házirend-definíció az egyes virtuális gépeket naplózza, ha a paraméterek **közzétevője** és **típusa mezőben** definiált bővítmény nem létezik. A [auditIfNotExists](../concepts/effects.md#auditifnotexists) használatával vizsgálja meg a virtuális géphez kapcsolódó erőforrásokat, és ellenőrizze, hogy létezik-e olyan példány, amely megfelel a megadott paramétereknek. Ez a példa a **bővítmények** típusát ellenőrzi.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json":::
 

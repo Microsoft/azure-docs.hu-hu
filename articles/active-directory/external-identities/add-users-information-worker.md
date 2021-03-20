@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98219912"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
@@ -86,7 +86,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 3. Válassza a **csoportok** lehetőséget.
 4. A **Beállítások** területen válassza az **általános** lehetőséget.
 5. Az **önkiszolgáló csoport felügyelete** alatt **a tulajdonosok lehetőség mellett a hozzáférési panelen is kezelhet csoporttagság-kérelmeket**, és válassza az **Igen** lehetőséget.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Hozzon létre egy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz, és tegye a felhasználót a tulajdonosnak
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként vagy globális rendszergazdaként.

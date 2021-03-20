@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92784098"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
@@ -59,8 +59,8 @@ Ezért nem célszerű egyetlen válaszban lévő összes objektumot listázni. E
 
 A szegmentált listázási műveletre adott válasz az alábbiakat tartalmazza:
 
-* *_segment* , amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
-* *continuation_token* , amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
+* *_segment*, amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
+* *continuation_token*, amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
 
 A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a [mintákban](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)érhető el:
 

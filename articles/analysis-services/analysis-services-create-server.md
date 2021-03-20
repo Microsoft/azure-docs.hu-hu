@@ -8,10 +8,10 @@ ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 488e7c84e481edd1b136fe90ab948d3cfb51ed2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89230780"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Gyors útmutató: Kiszolgáló létrehozása – Portal
@@ -30,7 +30,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre erőforrást egy Azure An
 
 ## <a name="create-a-server"></a>A kiszolgáló létrehozása
 
-1. Kattintson **az + erőforrás létrehozása**  >  **elemzési**  >  **Analysis Services**lehetőségre.
+1. Kattintson **az + erőforrás létrehozása**  >  **elemzési**  >  **Analysis Services** lehetőségre.
 
     ![Portál](./media/analysis-services-create-server/aas-create-server-portal.png)
 
@@ -54,7 +54,7 @@ Ha már nincs rá szükség, törölje a kiszolgálót. Nyissa meg a kiszolgál�
  ![Felesleges tartalmak törlése](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a rövid útmutatóból megtudta, hogyan hozhat létre kiszolgálót az Azure-előfizetésében. Most, hogy már rendelkezik kiszolgálóval, biztonságosabbá teheti azt egy (nem kötelező) kiszolgálótűzfal konfigurálásával. Hozzáadhat a kiszolgálóhoz egy alapszintű minta adatmodellt is közvetlenül a portálról. A mintamodell azért hasznos, mert segít megismerni a modell adatbázis-szerepkörök konfigurálását és tesztelni az ügyfélkapcsolatokat. További tudnivalókért folytassa a mintamodell hozzáadását ismertető oktatóanyaggal.
 
 > [!div class="nextstepaction"]

@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98882382"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
@@ -119,7 +119,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Leírás | PerfMon | Iostat |
+| Számláló | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -155,7 +155,7 @@ A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a
 | **Lemez mérete** |Használjon olyan méretű IOPS, amely nagyobb, mint az alkalmazásra vonatkozó követelmény. |Az alkalmazásra vonatkozó követelménynél nagyobb méretű adatátviteli korláttal rendelkező lemezeket használjon. |Használjon olyan méretű lemezt, amely az alkalmazás követelményeinél nagyobb léptéket biztosít. |
 | **VIRTUÁLIS gépek és lemezek méretezési korlátai** |A kiválasztott virtuálisgép-méret IOPS-korlátjának nagyobbnak kell lennie, mint a IOPS csatlakoztatott tárolók teljes száma. |A kiválasztott virtuális gép maximális átviteli sebességének nagyobbnak kell lennie, mint a Premium Storage-lemezek által csatlakoztatott teljes átviteli sebesség. |A kiválasztott virtuálisgép-méret skálázási korlátjának nagyobbnak kell lennie a csatolt Premium Storage-lemezek teljes méretezési korlátainál. |
 | **Lemezes gyorsítótárazás** |A magasabb olvasási IOPS érdekében engedélyezze az írásvédett gyorsítótárat a prémium szintű Storage-lemezeken. | &nbsp; |A prémium szintű Storage-lemezek írásvédett gyorsítótárazásának engedélyezése kész, nagy mennyiségű olvasási késést biztosító műveletekkel. |
-| **Lemezek csíkozása** |Több lemezt is használhat, és összekapcsolhatja őket, hogy egy kombinált, magasabb szintű IOPS és adatátviteli korlátot kapjon. A virtuális gépek összesített korlátjának nagyobbnak kell lennie, mint a csatlakoztatott prémium szintű lemezek összesített korlátai. | &nbsp; | &nbsp; |
+| **Lemez felosztása adatcsíkokra** |Több lemezt is használhat, és összekapcsolhatja őket, hogy egy kombinált, magasabb szintű IOPS és adatátviteli korlátot kapjon. A virtuális gépek összesített korlátjának nagyobbnak kell lennie, mint a csatlakoztatott prémium szintű lemezek összesített korlátai. | &nbsp; | &nbsp; |
 | **Sáv mérete** |Kisebb szalagos méret a OLTP-alkalmazásokban látott véletlenszerű, kisméretű i/o-mintákhoz. Például a 64 KB-os sáv méretének használata SQL Server OLTP alkalmazáshoz. |Nagyobb szalagos méret az adatraktár-alkalmazásokban látott szekvenciális, nagy i/o-mintázathoz. Például 256 KB-os sáv méretet használhat SQL Server adatraktár-alkalmazáshoz. | &nbsp; |
 | **Több szál használata** |A többszálas küldéssel nagyobb számú kérést küldhet Premium Storagenak, ami magasabb IOPS és átviteli sebességhez vezet. SQL Server például magas MAXDOP értéket állít be, hogy több processzort foglaljon le a SQL Server. | &nbsp; | &nbsp; |
 | **Várólista mélysége** |A nagyobb várólista-mélység nagyobb IOPS eredményez. |A nagyobb várólista-mélység nagyobb átviteli sebességet eredményez. |A kisebb várólista-mélység kisebb késéseket eredményez. |
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -376,7 +376,7 @@ A csíkozott kötetek esetében elég magas a várólista mélységének megőrz
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a lemez teljesítménytesztét szeretné használni, tekintse meg a következő cikkeket: a lemez teljesítményértékelése:
 
