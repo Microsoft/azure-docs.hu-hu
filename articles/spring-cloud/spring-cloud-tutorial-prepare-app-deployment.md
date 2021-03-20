@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98874142"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
@@ -57,7 +57,7 @@ A Steeltoe 3,0-es verziójában adja hozzá a legújabb [Microsoft. Azure. Sprin
 </ItemGroup>
 ```
 
-## <a name="update-programcs"></a>Program.cs frissítése
+## <a name="update-programcs"></a>Program frissítése. cs
 
 A `Program.Main` metódusban hívja meg a `UseAzureSpringCloudService` metódust.
 
@@ -317,7 +317,7 @@ Adja meg a következő függőséget a `spring-cloud-sleuth-zipkin` pom.xml fáj
 * [Spring rövid útmutató](https://spring.io/quickstart)
 * [Spring boot – dokumentáció](https://spring.io/projects/spring-boot)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 

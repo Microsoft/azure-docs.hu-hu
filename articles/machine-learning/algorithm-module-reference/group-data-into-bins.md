@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/13/2020
 ms.openlocfilehash: 392cb9b4c2ded1b98b79ce8dcd780ac59e96b78a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91998495"
 ---
 # <a name="group-data-into-bins-module"></a>Adatcsoportosítás a Raktárhelyek modulba
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a csoportba foglalt adatok a Azur
 A csoportosítási adatként a dobozolási több beállítást is támogat. Testre szabhatja a Raktárhelyek szegélyének beállítását, valamint azt, hogy az értékek hogyan legyenek kiosztva a rekeszekben. Például a következőket teheti:  
 
 + Adja meg manuálisan az értékek egy sorozatát, amely raktárhely határként szolgál.  
-+ Értékeket rendelhet a raktárhelyekhez a *quantiles*vagy a percentilis sorainak használatával.  
++ Értékeket rendelhet a raktárhelyekhez a *quantiles* vagy a percentilis sorainak használatával.  
 + Az értékek egyenletes eloszlásának kényszerítése a raktárhelyekre.  
 
 ## <a name="more-about-binning-and-grouping"></a>További információ a dobozolási és a csoportosításról
@@ -51,7 +51,7 @@ Mivel az adatok csoportosítása számos módon történik, az összes testresza
 
 ## <a name="how-to-configure-group-data-into-bins"></a>A csoportosítási adatkészletek beállítása a raktárhelyekre
 
-1. Adja hozzá a **csoport adatait a tárolók** modulhoz a tervezőben a folyamathoz. Ez a modul az **adatátalakítás**kategóriában található.
+1. Adja hozzá a **csoport adatait a tárolók** modulhoz a tervezőben a folyamathoz. Ez a modul az **adatátalakítás** kategóriában található.
 
 2. Kösse össze a numerikus adatokat tartalmazó adatkészletet a bin értékkel. A kvantálás csak numerikus értékeket tartalmazó oszlopokra alkalmazható. 
 
@@ -70,16 +70,16 @@ Mivel az adatok csoportosítása számos módon történik, az összes testresza
     > [!Note]
     > Az *ENTRÓPIA mdl* mód a Studióban (klasszikus) van definiálva, és nincs megfelelő nyílt forráskódú csomag, amely a tervezőben még nem használható.        
 
-4. Ha a **Quantiles** és az **egyenlő szélességű** dobozolási módot használja, a **raktárhelyek száma** beállítással megadhatja, hogy hány raktárhelyet vagy *Quantiles*kíván létrehozni.
+4. Ha a **Quantiles** és az **egyenlő szélességű** dobozolási módot használja, a **raktárhelyek száma** beállítással megadhatja, hogy hány raktárhelyet vagy *Quantiles* kíván létrehozni.
 
-5. Az **oszlopok raktárhelyre**való kiválasztásához használja az oszlop-választót, és válassza ki azokat az oszlopokat, amelyeknek a raktárhelyét szeretné kijelölni. Az oszlopoknak numerikus adattípusnak kell lenniük.
+5. Az **oszlopok raktárhelyre** való kiválasztásához használja az oszlop-választót, és válassza ki azokat az oszlopokat, amelyeknek a raktárhelyét szeretné kijelölni. Az oszlopoknak numerikus adattípusnak kell lenniük.
 
     Ugyanazt a dobozolási szabályt alkalmazza a rendszer az összes kiválasztott oszlopra. Ha egyes oszlopokat más módszer használatával kell kiosztania, használja a csoport adatai egy külön példányát a rekeszek modulba az egyes oszlopok oszlopaihoz.
 
     > [!WARNING]
     > Ha olyan oszlopot választ, amely nem engedélyezett típusú, futásidejű hiba jön létre. A modul hibát ad vissza, amint megkeresi a nem engedélyezett típusok bármelyik oszlopát. Ha hibaüzenetet kap, tekintse át az összes kijelölt oszlopot. A hiba nem sorolja fel az összes érvénytelen oszlopot.
 
-6. **Kimeneti mód**esetén adja meg, hogyan szeretné kiadni a kvantálási értékeket:
+6. **Kimeneti mód** esetén adja meg, hogyan szeretné kiadni a kvantálási értékeket:
 
     + **Hozzáfűzés**: egy új oszlopot hoz létre a dobozolni értékekkel, és hozzáfűzi a bemeneti táblához.
 
@@ -111,7 +111,7 @@ Mivel az adatok csoportosítása számos módon történik, az összes testresza
 
 A csoportosítási adatok a rekeszek modulba olyan adatkészletet ad vissza, amelyben az egyes elemek a megadott mód alapján dobozolni. 
 
-Egy *dobozolási-transzformációt*is visszaad. Ezt a függvényt átadhatja az [átalakítási modul alkalmazásával](apply-transformation.md) az új minták az adatoknak az azonos dobozolási mód és paraméterek használatával történő kiosztásához.  
+Egy *dobozolási-transzformációt* is visszaad. Ezt a függvényt átadhatja az [átalakítási modul alkalmazásával](apply-transformation.md) az új minták az adatoknak az azonos dobozolási mód és paraméterek használatával történő kiosztásához.  
 
 > [!TIP]
 > Ha a dobozolási használja a betanítási adataihoz, ugyanazt a dobozolási módszert kell használnia a teszteléshez és előrejelzéshez használt adataihoz. Ugyanezeket a raktárhelyeket és a Raktárhelyek szélességét is fel kell használni. 

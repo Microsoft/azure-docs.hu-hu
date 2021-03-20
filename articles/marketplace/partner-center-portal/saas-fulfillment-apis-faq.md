@@ -8,10 +8,10 @@ ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88606804"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>SaaS-megvalósítási API-kkal kapcsolatos gyakori kérdések
@@ -38,9 +38,9 @@ A SaaS-ajánlatra való feliratkozáskor a felhasználó beleegyezett, hogy a Mi
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Hogyan történik az értesítés, amikor egy felhasználó előfizet az SaaS-ajánlatra?
 
-Az ajánlatra való feliratkozás után az Azure-felhasználó felderítheti és kezelheti az összes ajánlatát az Azure-ban. Alapértelmezés szerint az újonnan előfizetett SaaS-ajánlatok állapota **kiépítés, beteljesülés függőben**. Ebben az állapotban az Azure-felhasználót a rendszer a **fiók konfigurálására**szolgáló művelettel fogja kérni, hogy megkeresse a Azure Portal a SaaS-előfizetés kezelési felületét.
+Az ajánlatra való feliratkozás után az Azure-felhasználó felderítheti és kezelheti az összes ajánlatát az Azure-ban. Alapértelmezés szerint az újonnan előfizetett SaaS-ajánlatok állapota **kiépítés, beteljesülés függőben**. Ebben az állapotban az Azure-felhasználót a rendszer a **fiók konfigurálására** szolgáló művelettel fogja kérni, hogy megkeresse a Azure Portal a SaaS-előfizetés kezelési felületét.
 
-Amikor a felhasználó kiválasztja a **fiók konfigurálása**lehetőséget, a rendszer átirányítja az SaaS szolgáltatás webhelyére. A közzétevő az ajánlat közzétételének időpontjában konfigurálta az URL-címet. Ezt a lapot a közzétevő kezdőlapjának nevezzük. Az Azure-felhasználók az Azure-ban meglévő HRE hitelesítő adataik alapján jelentkeznek be az SaaS-kezdőlapra.
+Amikor a felhasználó kiválasztja a **fiók konfigurálása** lehetőséget, a rendszer átirányítja az SaaS szolgáltatás webhelyére. A közzétevő az ajánlat közzétételének időpontjában konfigurálta az URL-címet. Ezt a lapot a közzétevő kezdőlapjának nevezzük. Az Azure-felhasználók az Azure-ban meglévő HRE hitelesítő adataik alapján jelentkeznek be az SaaS-kezdőlapra.
 
 Ha az Azure-felhasználót átirányítják a kezdőlapra, a rendszer tokent ad hozzá a lekérdezési URL-címhez. Ez a jogkivonat rövid életű, és 24 óra időtartamra érvényes. Ezt követően észlelhető a jogkivonat jelenléte, és meghívhatja a Microsoft API-ját, hogy a tokenhez több környezet legyen társítva.
 
@@ -83,6 +83,6 @@ Az alábbi kódrészlet rögzíti a folyamatot, amikor az Azure-felhasználó le
 
 ![Az ügyfél lemond a Microsoft Online áruházában](media/saas-metering-service-integration-flow-e.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Marketplace metering service API-k](./marketplace-metering-service-apis.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: d4b21f092733f6ebb3c2bf5aa06c1d2782323730
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87099055"
 ---
 # <a name="microsoftsolutionsresourceselector-ui-element"></a>Microsoft. Solutions. ResourceSelector FELHASZNÁLÓIFELÜLET-elem
@@ -51,7 +51,7 @@ A `resourceType` tulajdonságban adja meg a listában megjeleníteni kívánt er
 
 A `filter` tulajdonság korlátozza az erőforrások rendelkezésre álló beállításait. Az eredményeket hely vagy előfizetés alapján korlátozhatja. Ha csak azokat az erőforrásokat szeretné megjeleníteni, amelyek megfelelnek az alapvető beállításoknak, használja az elemet `onBasics` . Az összes erőforrás megjelenítéséhez használja a következőt: `all` . Az alapértelmezett érték `all`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

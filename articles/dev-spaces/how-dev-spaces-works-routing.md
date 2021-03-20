@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 2d2c6f336222b4ae0907d6579289a8cad8d73aa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91977969"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
@@ -28,7 +28,7 @@ Amikor HTTP-kérést végeznek a fürtön kívüli szolgáltatásra, a kérés a
 
 Amikor HTTP-kérést végez egy másik szolgáltatásból a fürtön belül, a kérelem először a hívó szolgáltatás devspaces-tárolóján halad végig. A devspaces-proxy tároló a HTTP-kérést tekinti át, és ellenőrzi a `azds-route-as` fejlécet. A fejléc alapján a devspaces tároló a fejléc értékéhez tartozó szolgáltatás IP-címét fogja megkeresni. Ha a rendszer IP-címet talál, a devspaces tároló átirányítja a kérést az adott IP-címhez. Ha nem található IP-cím, a devspaces tároló továbbítja a kérést a szülő alkalmazás tárolójába.
 
-Az Applications *servicea* és a *serviceB* például az *alapértelmezett*nevű szülő fejlesztői területre van telepítve. a *servicea* a *serviceB* -ra TÁMASZKODik, és http-hívásokat tesz lehetővé. Az Azure-felhasználó létrehoz egy gyermek-fejlesztési helyet az *azureuser*nevű *alapértelmezett* hely alapján. Az Azure User a *servicea* saját verzióját is üzembe helyezi a gyermek területére. Kérelem küldése *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+Az Applications *servicea* és a *serviceB* például az *alapértelmezett* nevű szülő fejlesztői területre van telepítve. a *servicea* a *serviceB* -ra TÁMASZKODik, és http-hívásokat tesz lehetővé. Az Azure-felhasználó létrehoz egy gyermek-fejlesztési helyet az *azureuser* nevű *alapértelmezett* hely alapján. Az Azure User a *servicea* saját verzióját is üzembe helyezi a gyermek területére. Kérelem küldése *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Az Azure dev Spaces útválasztása](media/how-dev-spaces-works/routing.svg)
 
@@ -38,7 +38,7 @@ Az Applications *servicea* és a *serviceB* például az *alapértelmezett*nevű
 1. A servicea devspaces-tárolója *. az azureuser* Pod a servicea *. azureuser* POD szolgáltatásban továbbítja a kérést *a servicea alkalmazás* tárolójába.
 1. A servicea *. azureuser* *Pod szolgáltatásbeli alkalmazása* meghívja a *serviceB*. A *servicea* alkalmazás emellett kódot is tartalmaz a meglévő fejléc megőrzése érdekében `azds-route-as` , ami ebben az esetben a következő: `azds-route-as: azureuser` .
 1. A servicea devspaces-tárolója *. az azureuser* Pod fogadja a kérést, és a fejléc értéke alapján megkeresi a *serviceB* IP-címét `azds-route-as` .
-1. A *servicea. azureuser* Pod devspaces-proxy tárolója nem talál IP-címet a *serviceB. azureuser*számára.
+1. A *servicea. azureuser* Pod devspaces-proxy tárolója nem talál IP-címet a *serviceB. azureuser* számára.
 1. A *servicea. azureuser* Pod devspaces-proxy tárolója megkeresi a *serviceB* lévő IP-címet a szülő térben, amely a *serviceB. default*.
 1. A servicea devspaces-tárolója *. az azureuser* Pod megkeresi a *serviceB. default* IP-címét, és átirányítja a kérést a *serviceB. default* Pod-ra.
 1. A *serviceB. default* Pod devspaces-tárolója megkapja a kérést, és átirányítja a kérést a *serviceB. default* Pod *serviceB* -alkalmazás tárolójába.
@@ -59,10 +59,10 @@ A származtatott fejlesztői terület is intelligens módon irányítja a kérel
 
 Például:
 * A fejlesztői terület *alapértelmezett értéke* az Applications *Servicea* és a *serviceB*.
-* A dev Space *Azureus* az *alapértelmezett értékből*származik.
+* A dev Space *Azureus* az *alapértelmezett értékből* származik.
 * A *servicea* frissített verziója van üzembe helyezve az *azureuser*-ben.
 
-Az *azureuser*használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
+Az *azureuser* használatakor a *servicea szolgáltatásnak* küldött összes kérelem a frissített verzióra lesz irányítva az *azureuser*-ben. A *serviceB* iránti kérés először a *serviceB* *azureuser* -verziójára lesz irányítva. Mivel nem létezik, a rendszer a *serviceB* *alapértelmezett* verziójára irányítja át. Ha a *servicea szolgáltatáshoz* tartozó *azureuser* verziója el lett távolítva, a *servicea* szolgáltatáshoz intézett összes kérelem vissza fog térni a *servicea* *alapértelmezett* verziójának használatára.
 
 ## <a name="next-steps"></a>Következő lépések
 

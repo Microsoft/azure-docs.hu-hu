@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Grid-témakör vagy egy tartomány diagnos
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.openlocfilehash: 36ade14932b5d25c7a1fe05632da671de68ba3bb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574986"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnosztikai naplók Azure Event Grid témakörökhöz/tartományokhoz
@@ -38,5 +38,5 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretné megtudni, hogyan engedélyezheti a diagnosztikai naplókat a témakörök vagy tartományok számára, olvassa el a [diagnosztikai naplók engedélyezése](enable-diagnostic-logs-topic.md)című témakört.

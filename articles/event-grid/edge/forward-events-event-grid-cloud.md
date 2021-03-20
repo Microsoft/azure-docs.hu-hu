@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171601"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
@@ -38,7 +38,7 @@ Ha például létrehozta az `testegcloudtopic` USA nyugati régiójában elnevez
 
 * **TopicUrl**: `https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
 * **TopicName**: `testegcloudtopic`
-* **SasKey**: a témakör **AccessKey** alatt érhető el. **Key1**használata.
+* **SasKey**: a témakör **AccessKey** alatt érhető el. **Key1** használata.
 
 ## <a name="create-event-grid-topic-at-the-edge"></a>Event Grid-témakör létrehozása a peremhálózat szélén
 
@@ -103,7 +103,7 @@ Ha például létrehozta az `testegcloudtopic` USA nyugati régiójában elnevez
    >[!NOTE]
    > A **endpointUrl** megadja, hogy a Event Grid témakör URL-címe a felhőben. A **sasKey** Event Grid Felhőbeli témakör kulcsára hivatkozik. A rendszer az **topicName** -ben lévő értéket fogja használni az összes kimenő esemény Event Grid. Ez akkor lehet hasznos, ha Event Grid tartományi témakörbe való feladást végez. További információ a Event Grid tartományi témakörről: [esemény-tartományok](../event-domains.md)
 
-    Például:
+    Példa:
   
     ```json
         {
@@ -193,7 +193,7 @@ A Felhőbeli témakör által megjelenített események megtekintésével kapcso
 
 * A felhőben (Azure Event Grid) létrehozott témaköröket és előfizetéseket is törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy eseményt tett közzé az Edge-ben, és továbbítottuk az Azure-felhőben lévő Event Gridra. Most, hogy ismeri a felhőben való Event Gridre való továbbítás alapvető lépéseit:
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
 ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878544"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>IPsec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz: Azure Portal
@@ -28,8 +28,10 @@ Ez a cikk útmutatást nyújt az IPsec/IKE-szabályzatok létrehozásához és k
 ### <a name="considerations"></a>Megfontolandó szempontok
 
 * Az IPsec/IKE-házirend csak a következő átjárók esetében működik:
-  * ***VpnGw1 ~ 5 és VpnGw1AZ ~ 5Az** _ _ ***standard** _ és _*_HighPerformance_*_ _ az adott kapcsolatok esetében csak **egy** házirend-kombinációt adhat meg.
-  _ Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
+  * ***VpnGw1 ~ 5 és VpnGw1AZ ~ 5AZ***
+  * ***Standard** _ és _ *_HighPerformance_**
+* Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
+* Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
 * A VPN-eszközök gyártójának specifikációit megkeresve ellenőrizze, hogy a helyi VPN-eszközökön támogatott-e a házirend. A S2S-vagy VNet-VNet kapcsolatok nem tudják létrehozni, ha a házirendek nem kompatibilisek.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Munkafolyamat
@@ -205,6 +207,6 @@ Az IPsec/IKE-szabályzattal VNet és VNet közötti kapcsolat létrehozásának 
 
 3. A **Mentés** gombra kattintva távolítsa el az egyéni házirendet, és állítsa vissza az alapértelmezett IPSec/IKE-beállításokat a kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További részletekért lásd: [több helyszíni házirend-alapú VPN-eszköz csatlakoztatása](vpn-gateway-connect-multiple-policybased-rm-ps.md) a házirend-alapú forgalmi választókkal kapcsolatban.

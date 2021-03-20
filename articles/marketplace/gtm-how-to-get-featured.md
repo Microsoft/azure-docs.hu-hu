@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
 ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878714"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>A Kiemelt funkciók beszerzése a AppSource-ben és az Azure Marketplace-en
@@ -42,7 +42,7 @@ A Kiemelt alkalmazások promóciók a keresési algoritmustól függetlenül mű
 
 A GTM-támogatás magában foglalja az önsegítő sablonok, a webes tartalmak, a képzések és az eszközök teljes könyvtárát is, amely segít a listák és a vállalata további előléptetésében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](gtm-your-marketplace-benefits.md).
 

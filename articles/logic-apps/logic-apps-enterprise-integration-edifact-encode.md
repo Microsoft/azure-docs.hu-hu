@@ -9,10 +9,10 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: cee97fddc619840de821ebb70d32e0cab1bbe040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82106525"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek kódolása Enterprise Integration Pack
@@ -39,7 +39,7 @@ Az alábbi elemek szükségesek:
 
 2. Az EDIFACT kódolása nem rendelkezik eseményindítókkal, ezért hozzá kell adnia egy eseményindítót a logikai alkalmazás indításához, például egy kérelem eseményindítóhoz. A Logic app Designerben adjon hozzá egy triggert, majd adjon hozzá egy műveletet a logikai alkalmazáshoz.
 
-3.  A keresőmezőbe írja be szűrőként a "EDIFACT" kifejezést. Válassza a **EDIFACT-üzenet kódolása a szerződés neve szerint** vagy **a kódolás EDIFACT üzenet alapján identitások szerint**lehetőséget.
+3.  A keresőmezőbe írja be szűrőként a "EDIFACT" kifejezést. Válassza a **EDIFACT-üzenet kódolása a szerződés neve szerint** vagy **a kódolás EDIFACT üzenet alapján identitások szerint** lehetőséget.
    
     ![EDIFACT keresése](media/logic-apps-enterprise-integration-edifact-encode/edifactdecodeimage1.png)  
 
@@ -54,7 +54,7 @@ Az alábbi elemek szükségesek:
     | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
     | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás**gombra.
+5.  Ha elkészült, a kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie. A kapcsolódás létrehozásához kattintson a **Létrehozás** gombra.
 
     ![integrációs fiók kapcsolatának részletei](media/logic-apps-enterprise-integration-edifact-encode/edifactencodeimage2.png)
 
@@ -95,6 +95,6 @@ A kódolás EDIFACT-összekötő a következő feladatokat hajtja végre:
 ## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
 A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

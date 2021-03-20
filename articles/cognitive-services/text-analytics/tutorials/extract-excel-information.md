@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: 197d28b2ac3d94b6639a6611b2919bdeb2b182e2
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93359901"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Adatok kinyerése az Excelben a Text Analytics és a Power automatizálás használatával 
@@ -170,7 +170,7 @@ A **Ha igen** feltétel mezőben írja be az Excelben a **sor frissítése** leh
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 6":::
 
-Adja meg az Excel-adatokat, és frissítse a **kulcs oszlopot** , a **kulcs értékét** és a **PersonName** mezőt. Ez a művelet hozzáfűzi az API által az Excel-táblázathoz észlelt nevet. 
+Adja meg az Excel-adatokat, és frissítse a **kulcs oszlopot**, a **kulcs értékét** és a **PersonName** mezőt. Ez a művelet hozzáfűzi az API által az Excel-táblázathoz észlelt nevet. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz. 7":::
@@ -218,7 +218,7 @@ A **Ha nincs** feltételben kattintson a **művelet hozzáadása** lehetőségre
 
 ## <a name="test-the-workflow"></a>A munkafolyamat tesztelése
 
-A képernyő jobb felső sarkában kattintson a **Mentés** , majd a **teszt** elemre. Jelölje be  **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt** , **folyamat futtatása** , majd a **kész** lehetőségre.
+A képernyő jobb felső sarkában kattintson a **Mentés**, majd a **teszt** elemre. Jelölje be  **az trigger művelet végrehajtása műveletet**. Kattintson a **mentés & teszt**, **folyamat futtatása**, majd a **kész** lehetőségre.
 
 Az Excel-fájl frissülni fog a OneDrive-fiókjában. A következőhöz hasonlóan fog kinézni.
 

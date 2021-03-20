@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: tomfitz
 ms.openlocfilehash: bb168a4bff6d2570f539307530232b5063bb535c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87098536"
 ---
 # <a name="microsoftcommonslider-ui-element"></a>Microsoft. Common. Slider FELHASZNÁLÓIFELÜLET-elem
@@ -52,7 +52,7 @@ A csúszka vezérlőelem lehetővé teszi a felhasználók számára, hogy az en
 - A `showStepMarkers` tulajdonság értéke TRUE (igaz). A lépés jelölők csak akkor jelennek meg, ha a min és a Max közötti tartomány 100 vagy annál kisebb.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

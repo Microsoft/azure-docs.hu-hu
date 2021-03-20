@@ -7,13 +7,13 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 2231c2969bbfce1668002ad4f5f719e0b8e13de5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81726556"
 ---
-# <a name="accessibility"></a>Kisegítő lehetőségek #
+# <a name="accessibility"></a>Akadálymentesség #
 
 A Azure Media Player képernyőolvasó funkciókkal, például a Windows Narrátorával és az Apple OSX/iOS-kommentárokkal működik. A felhasználói felület gombjaihoz alternatív címkék érhetők el, a képernyőolvasó pedig képes olvasni ezeket az alternatív címkéket, amikor a felhasználó navigál. Az operációs rendszer szintjén további konfigurációk is megadhatók.
 
@@ -46,7 +46,7 @@ Azure Media Player támogatja a billentyűzeten keresztüli gyors vezérlést. E
 | 0,1,2,3,4,5,6,7,8,9  | A videó előrehaladása a \- lenyomott billentyűtől függően 0% 90%-ra változik |
 | Kattintson a művelet elemre.         | Lejátssza vagy szünetelteti a videót.                                                   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!---Some context for the following links goes here--->
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

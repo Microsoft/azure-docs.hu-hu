@@ -4,10 +4,10 @@ description: A Azure Container Instances által támogatott YAML-fájlra mutató
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: d0ec8d13eebba1c60f5a52f8c43bdd8b90eeb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87084760"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-hivatkozás: Azure Container Instances
@@ -158,12 +158,12 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  name | sztring | Igen | A tároló csoport neve. |
-|  apiVersion | Enum | Igen | 2018-10-01 |
+|  name | sztring | Yes | A tároló csoport neve. |
+|  apiVersion | Enum | Yes | 2018-10-01 |
 |  location | sztring | No | Az erőforrás helye. |
-|  tags | object | Nem | Az erőforrás-címkék. |
-|  identity | object | Nem | A tároló csoport identitása, ha be van állítva. - [ContainerGroupIdentity objektum](#containergroupidentity-object) |
-|  properties | object | Igen | [ContainerGroupProperties objektum](#containergroupproperties-object) |
+|  tags | object | No | Az erőforrás-címkék. |
+|  identity | object | No | A tároló csoport identitása, ha be van állítva. - [ContainerGroupIdentity objektum](#containergroupidentity-object) |
+|  properties | object | Yes | [ContainerGroupProperties objektum](#containergroupproperties-object) |
 
 
 
@@ -172,8 +172,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  típus | Enum | Nem | A tároló csoporthoz használt identitás típusa A "SystemAssigned, UserAssigned" típus egy implicit módon létrehozott identitást és egy felhasználó által hozzárendelt identitást is tartalmaz. A "None" típus eltávolítja az összes identitást a tároló csoportjából. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, none |
-|  userAssignedIdentities | object | Nem | A tároló csoporthoz társított felhasználói identitások listája. A felhasználói azonosító szótár kulcsára vonatkozó hivatkozások a következő formában lesznek Azure Resource Manager erőforrás-azonosítók: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". |
+|  típus | Enum | No | A tároló csoporthoz használt identitás típusa A "SystemAssigned, UserAssigned" típus egy implicit módon létrehozott identitást és egy felhasználó által hozzárendelt identitást is tartalmaz. A "None" típus eltávolítja az összes identitást a tároló csoportjából. -SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, none |
+|  userAssignedIdentities | object | No | A tároló csoporthoz társított felhasználói identitások listája. A felhasználói azonosító szótár kulcsára vonatkozó hivatkozások a következő formában lesznek Azure Resource Manager erőforrás-azonosítók: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". |
 
 
 
@@ -182,18 +182,18 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  tárolók | array | Igen | A tároló csoportban lévő tárolók. - [Tároló objektum](#container-object) |
-|  imageRegistryCredentials | array | Nem | A rendszerkép beállításjegyzékbeli hitelesítő adatai, amelyek alapján a rendszer létrehozza a tároló csoportját. - [ImageRegistryCredential objektum](#imageregistrycredential-object) |
-|  restartPolicy | Enum | Nem | A tároló csoportban lévő összes tárolóra vonatkozó újraindítási szabályzat. - `Always` Mindig újraindítás – `OnFailure` Újraindítás hiba esetén – `Never` Soha ne indítsa újra a rendszert. -Mindig, OnFailure, soha |
-|  IP-cím | object | Nem | A tároló csoport IP-címének típusa. - [IP-cím objektum](#ipaddress-object) |
-|  osType | Enum | Igen | A tároló csoportban lévő tárolók által igényelt operációs rendszer típusa. – Windows vagy Linux |
-|  volumes | array | Nem | Azoknak a köteteknek a listája, amelyeket tárolók csatlakoztatnak a tároló csoportba. - [Kötet objektum](#volume-object) |
-|  diagnosztika | object | Nem | Egy tároló csoport diagnosztikai adatai. - [ContainerGroupDiagnostics objektum](#containergroupdiagnostics-object) |
-|  networkProfile | object | Nem | Egy tároló csoport hálózati profiljának adatai. - [ContainerGroupNetworkProfile objektum](#containergroupnetworkprofile-object) |
-|  dnsConfig | object | Nem | Egy tároló csoport DNS-konfigurációs adatai. - [DnsConfiguration objektum](#dnsconfiguration-object) |
-| SKU | Enum | Nem | A Container Group standard vagy dedikált SKU |
-| encryptionProperties | object | Nem | Egy tároló csoport titkosítási tulajdonságai. - [EncryptionProperties objektum](#encryptionproperties-object) | 
-| initContainers | array | Nem | A tárolók csoportjához tartozó init-tárolók. - [InitContainerDefinition objektum](#initcontainerdefinition-object) |
+|  tárolók | array | Yes | A tároló csoportban lévő tárolók. - [Tároló objektum](#container-object) |
+|  imageRegistryCredentials | array | No | A rendszerkép beállításjegyzékbeli hitelesítő adatai, amelyek alapján a rendszer létrehozza a tároló csoportját. - [ImageRegistryCredential objektum](#imageregistrycredential-object) |
+|  restartPolicy | Enum | No | A tároló csoportban lévő összes tárolóra vonatkozó újraindítási szabályzat. - `Always` Mindig újraindítás – `OnFailure` Újraindítás hiba esetén – `Never` Soha ne indítsa újra a rendszert. -Mindig, OnFailure, soha |
+|  IP-cím | object | No | A tároló csoport IP-címének típusa. - [IP-cím objektum](#ipaddress-object) |
+|  osType | Enum | Yes | A tároló csoportban lévő tárolók által igényelt operációs rendszer típusa. – Windows vagy Linux |
+|  volumes | array | No | Azoknak a köteteknek a listája, amelyeket tárolók csatlakoztatnak a tároló csoportba. - [Kötet objektum](#volume-object) |
+|  diagnosztika | object | No | Egy tároló csoport diagnosztikai adatai. - [ContainerGroupDiagnostics objektum](#containergroupdiagnostics-object) |
+|  networkProfile | object | No | Egy tároló csoport hálózati profiljának adatai. - [ContainerGroupNetworkProfile objektum](#containergroupnetworkprofile-object) |
+|  dnsConfig | object | No | Egy tároló csoport DNS-konfigurációs adatai. - [DnsConfiguration objektum](#dnsconfiguration-object) |
+| SKU | Enum | No | A Container Group standard vagy dedikált SKU |
+| encryptionProperties | object | No | Egy tároló csoport titkosítási tulajdonságai. - [EncryptionProperties objektum](#encryptionproperties-object) | 
+| initContainers | array | No | A tárolók csoportjához tartozó init-tárolók. - [InitContainerDefinition objektum](#initcontainerdefinition-object) |
 
 
 
@@ -202,8 +202,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  name | sztring | Igen | A tároló példány felhasználó által megadott neve. |
-|  properties | object | Igen | A tároló példányának tulajdonságai. - [ContainerProperties objektum](#containerproperties-object) |
+|  name | sztring | Yes | A tároló példány felhasználó által megadott neve. |
+|  properties | object | Yes | A tároló példányának tulajdonságai. - [ContainerProperties objektum](#containerproperties-object) |
 
 
 
@@ -212,8 +212,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  kiszolgáló | sztring | Igen | A Docker-rendszerkép beállításjegyzék-kiszolgálója olyan protokoll nélkül, mint a "http" és a "https". |
-|  username | sztring | Igen | A privát beállításjegyzék felhasználóneve. |
+|  kiszolgáló | sztring | Yes | A Docker-rendszerkép beállításjegyzék-kiszolgálója olyan protokoll nélkül, mint a "http" és a "https". |
+|  username | sztring | Yes | A privát beállításjegyzék felhasználóneve. |
 |  jelszó | sztring | No | A privát beállításjegyzék jelszava. |
 
 
@@ -223,8 +223,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  ports | array | Igen | A tároló csoporton elérhető portok listája. - [Port objektum](#port-object) |
-|  típus | Enum | Igen | Meghatározza, hogy az IP-cím elérhető-e a nyilvános internethez vagy a privát VNET. -Nyilvános vagy privát |
+|  ports | array | Yes | A tároló csoporton elérhető portok listája. - [Port objektum](#port-object) |
+|  típus | Enum | Yes | Meghatározza, hogy az IP-cím elérhető-e a nyilvános internethez vagy a privát VNET. -Nyilvános vagy privát |
 |  IP | sztring | No | A nyilvános internethez elérhető IP-cím. |
 |  dnsNameLabel | sztring | No | Az IP-címhez tartozó DNS-név címkéje. |
 
@@ -235,11 +235,11 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  name | sztring | Igen | A kötet neve. |
-|  azureFile | object | Nem | Az Azure-fájl kötete. - [AzureFileVolume objektum](#azurefilevolume-object) |
-|  emptyDir | object | Nem | Az üres könyvtár kötete. |
-|  titkos kód | object | Nem | A titkos kötet. |
-|  gitRepo | object | Nem | A git-tárház kötete. - [GitRepoVolume objektum](#gitrepovolume-object) |
+|  name | sztring | Yes | A kötet neve. |
+|  azureFile | object | No | Az Azure-fájl kötete. - [AzureFileVolume objektum](#azurefilevolume-object) |
+|  emptyDir | object | No | Az üres könyvtár kötete. |
+|  titkos kód | object | No | A titkos kötet. |
+|  gitRepo | object | No | A git-tárház kötete. - [GitRepoVolume objektum](#gitrepovolume-object) |
 
 
 
@@ -248,7 +248,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  logAnalytics | object | Nem | A Container Group log Analytics információi. - [LogAnalytics objektum](#loganalytics-object) |
+|  logAnalytics | object | No | A Container Group log Analytics információi. - [LogAnalytics objektum](#loganalytics-object) |
 
 
 
@@ -257,7 +257,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  id | sztring | Igen | Egy hálózati profil azonosítója. |
+|  id | sztring | Yes | Egy hálózati profil azonosítója. |
 
 
 
@@ -266,7 +266,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  Névkiszolgálók | array | Igen | A tároló csoport DNS-kiszolgálói. -string |
+|  Névkiszolgálók | array | Yes | A tároló csoport DNS-kiszolgálói. -string |
 |  searchDomains | sztring | No | A DNS-keresési tartományok az állomásnév kereséséhez a tároló csoportban. |
 |  beállítások | sztring | No | A tároló csoport DNS-beállításai. |
 
@@ -275,30 +275,30 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 | Név  | Típus  | Kötelező  | Érték |
 |  ---- | ---- | ---- | ---- |
-| vaultBaseUrl  | sztring    | Igen   | A kulcstartó alap URL-címe. |
-| Kulcsnév   | sztring    | Igen   | A titkosítási kulcs neve. |
-| Verziószám    | sztring    | Igen   | A titkosítási kulcs verziója. |
+| vaultBaseUrl  | sztring    | Yes   | A kulcstartó alap URL-címe. |
+| Kulcsnév   | sztring    | Yes   | A titkosítási kulcs neve. |
+| Verziószám    | sztring    | Yes   | A titkosítási kulcs verziója. |
 
 ### <a name="initcontainerdefinition-object"></a>InitContainerDefinition objektum
 
 | Név  | Típus  | Kötelező  | Érték |
 |  ---- | ---- | ---- | ---- |
-| name  | sztring |  Igen | Az init-tároló neve. |
-| properties    | object    | Igen   | Az init-tároló tulajdonságai. - [InitContainerPropertiesDefinition objektum](#initcontainerpropertiesdefinition-object)
+| name  | sztring |  Yes | Az init-tároló neve. |
+| properties    | object    | Yes   | Az init-tároló tulajdonságai. - [InitContainerPropertiesDefinition objektum](#initcontainerpropertiesdefinition-object)
 
 
 ### <a name="containerproperties-object"></a>ContainerProperties objektum
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  image | sztring | Igen | A Container-példány létrehozásához használt rendszerkép neve. |
-|  command | array | Nem | A tároló-példányon belül végrehajtandó parancsok az exec formában. -string |
-|  ports | array | Nem | A tároló példányon elérhető portok. - [ContainerPort objektum](#containerport-object) |
-|  environmentVariables | array | Nem | A tároló-példányban beállított környezeti változók. - [EnvironmentVariable objektum](#environmentvariable-object) |
-|  resources | object | Igen | A Container-példány erőforrás-követelményei. - [ResourceRequirements objektum](#resourcerequirements-object) |
-|  volumeMounts | array | Nem | A tároló példány számára elérhető kötetek csatlakoztatása. - [VolumeMount objektum](#volumemount-object) |
-|  livenessProbe | object | Nem | Az élettartam-mintavétel. - [ContainerProbe objektum](#containerprobe-object) |
-|  readinessProbe | object | Nem | A készültségi mintavétel. - [ContainerProbe objektum](#containerprobe-object) |
+|  image | sztring | Yes | A Container-példány létrehozásához használt rendszerkép neve. |
+|  command | array | No | A tároló-példányon belül végrehajtandó parancsok az exec formában. -string |
+|  ports | array | No | A tároló példányon elérhető portok. - [ContainerPort objektum](#containerport-object) |
+|  environmentVariables | array | No | A tároló-példányban beállított környezeti változók. - [EnvironmentVariable objektum](#environmentvariable-object) |
+|  resources | object | Yes | A Container-példány erőforrás-követelményei. - [ResourceRequirements objektum](#resourcerequirements-object) |
+|  volumeMounts | array | No | A tároló példány számára elérhető kötetek csatlakoztatása. - [VolumeMount objektum](#volumemount-object) |
+|  livenessProbe | object | No | Az élettartam-mintavétel. - [ContainerProbe objektum](#containerprobe-object) |
+|  readinessProbe | object | No | A készültségi mintavétel. - [ContainerProbe objektum](#containerprobe-object) |
 
 
 
@@ -307,8 +307,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  protokoll | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
-|  port | egész szám | Igen | A portszám. |
+|  protokoll | Enum | No | A porthoz társított protokoll. -TCP vagy UDP |
+|  port | egész szám | Yes | A portszám. |
 
 
 
@@ -317,9 +317,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  shareName | sztring | Igen | A kötetként csatlakoztatni kívánt Azure-fájlmegosztás neve. |
-|  readOnly | boolean | Nem | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
-|  storageAccountName | sztring | Igen | Az Azure-fájlmegosztást tartalmazó Storage-fiók neve. |
+|  shareName | sztring | Yes | A kötetként csatlakoztatni kívánt Azure-fájlmegosztás neve. |
+|  readOnly | boolean | No | Az a jelző, amely azt jelzi, hogy a kötetként csatlakoztatott Azure-fájl írásvédett-e. |
+|  storageAccountName | sztring | Yes | Az Azure-fájlmegosztást tartalmazó Storage-fiók neve. |
 |  storageAccountKey | sztring | No | Az Azure-fájlmegosztás eléréséhez használt Storage-fiók elérési kulcsa. |
 
 
@@ -330,7 +330,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
 |  címtár | sztring | No | Célkönyvtár neve. A nem tartalmazhat ".." karaktert.  Ha a "." meg van adva, a kötet könyvtára lesz a git-tárház.  Ellenkező esetben, ha meg van adva, a kötet a megadott nevű alkönyvtárban található git-tárházat fogja tartalmazni. |
-|  tárház | sztring | Igen | Tárház URL-címe |
+|  repository | sztring | Yes | Tárház URL-címe |
 |  változat | sztring | No | A megadott változat kivonatának véglegesítve. |
 
 
@@ -339,10 +339,10 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  workspaceId | sztring | Igen | A log Analytics-munkaterület azonosítója |
-|  workspaceKey | sztring | Igen | A log Analytics-munkaterület kulcsa |
-|  logType | Enum | Nem | A használandó naplózási típus. -ContainerInsights vagy ContainerInstanceLogs |
-|  metaadatok | object | Nem | A log Analytics metaadatai. |
+|  workspaceId | sztring | Yes | A log Analytics-munkaterület azonosítója |
+|  workspaceKey | sztring | Yes | A log Analytics-munkaterület kulcsa |
+|  logType | Enum | No | A használandó naplózási típus. -ContainerInsights vagy ContainerInstanceLogs |
+|  metaadatok | object | No | A log Analytics metaadatai. |
 
 
 ### <a name="initcontainerpropertiesdefinition-object"></a>InitContainerPropertiesDefinition objektum
@@ -350,16 +350,16 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 | Név  | Típus  | Kötelező  | Érték |
 |  ---- | ---- | ---- | ---- |
 | image | sztring    | No    | Az init-tároló képe. |
-| command   | array | Nem    | Az init-tárolón belül végrehajtandó parancs exec formában. -string |
-| environmentVariables | array  | Nem |Az init-tárolóban beállított környezeti változók. - [EnvironmentVariable objektum](#environmentvariable-object)
-| volumeMounts |array   | Nem    | Az init-tároló számára elérhető kötetek csatlakoztatása. - [VolumeMount objektum](#volumemount-object)
+| command   | array | No    | Az init-tárolón belül végrehajtandó parancs exec formában. -string |
+| environmentVariables | array  | No |Az init-tárolóban beállított környezeti változók. - [EnvironmentVariable objektum](#environmentvariable-object)
+| volumeMounts |array   | No    | Az init-tároló számára elérhető kötetek csatlakoztatása. - [VolumeMount objektum](#volumemount-object)
 
 ### <a name="containerport-object"></a>ContainerPort objektum
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  protokoll | Enum | Nem | A porthoz társított protokoll. -TCP vagy UDP |
-|  port | egész szám | Igen | A tároló csoporton belül elérhető portszám. |
+|  protokoll | Enum | No | A porthoz társított protokoll. -TCP vagy UDP |
+|  port | egész szám | Yes | A tároló csoporton belül elérhető portszám. |
 
 
 
@@ -368,7 +368,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  name | sztring | Igen | A környezeti változó neve. |
+|  name | sztring | Yes | A környezeti változó neve. |
 |  érték | sztring | No | A környezeti változó értéke. |
 |  Securevalue paraméterét | sztring | No | A biztonságos környezeti változó értéke. |
 
@@ -379,8 +379,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  kérelmek | object | Igen | A tároló-példány erőforrás-kérései. - [ResourceRequests objektum](#resourcerequests-object) |
-|  határértékeket | object | Nem | A tároló-példány erőforrás-korlátai. - [ResourceLimits objektum](#resourcelimits-object) |
+|  kérelmek | object | Yes | A tároló-példány erőforrás-kérései. - [ResourceRequests objektum](#resourcerequests-object) |
+|  határértékeket | object | No | A tároló-példány erőforrás-korlátai. - [ResourceLimits objektum](#resourcelimits-object) |
 
 
 
@@ -389,9 +389,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  name | sztring | Igen | A kötet csatlakoztatásának neve. |
-|  mountPath | sztring | Igen | Az elérési út a tárolón belül, ahol a kötetet csatlakoztatni kell. Nem tartalmazhat kettőspontot (:). |
-|  readOnly | boolean | Nem | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
+|  name | sztring | Yes | A kötet csatlakoztatásának neve. |
+|  mountPath | sztring | Yes | Az elérési út a tárolón belül, ahol a kötetet csatlakoztatni kell. Nem tartalmazhat kettőspontot (:). |
+|  readOnly | boolean | No | Az a jelző, amely azt jelzi, hogy a kötet csatlakoztatása írásvédett-e. |
 
 
 
@@ -400,13 +400,13 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  exec | object | Nem | A [ContainerExec objektum](#containerexec-object) végrehajtási parancsa |
-|  httpGet | object | Nem | A http-lekérési beállítások mintavételi [ContainerHttpGet objektum](#containerhttpget-object) |
-|  initialDelaySeconds | egész szám | Nem | A kezdeti késleltetés másodpercben. |
-|  periodSeconds | egész szám | Nem | Az időtartam másodpercben. |
-|  failureThreshold | egész szám | Nem | A hiba küszöbértéke. |
-|  successThreshold | egész szám | Nem | A siker küszöbértéke. |
-|  timeoutSeconds | egész szám | Nem | Az időkorlát másodpercben. |
+|  exec | object | No | A [ContainerExec objektum](#containerexec-object) végrehajtási parancsa |
+|  httpGet | object | No | A http-lekérési beállítások mintavételi [ContainerHttpGet objektum](#containerhttpget-object) |
+|  initialDelaySeconds | egész szám | No | A kezdeti késleltetés másodpercben. |
+|  periodSeconds | egész szám | No | Az időtartam másodpercben. |
+|  failureThreshold | egész szám | No | A hiba küszöbértéke. |
+|  successThreshold | egész szám | No | A siker küszöbértéke. |
+|  timeoutSeconds | egész szám | No | Az időkorlát másodpercben. |
 
 
 
@@ -415,9 +415,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | szám | Igen | A tároló példányának GB-ban megadott memória-kérelem. |
-|  CPU | szám | Igen | A tároló-példány CPU-kérelme. |
-|  GPU | object | Nem | A tároló-példány GPU-kérelme. - [GpuResource objektum](#gpuresource-object) |
+|  memoryInGB | szám | Yes | A tároló példányának GB-ban megadott memória-kérelem. |
+|  CPU | szám | Yes | A tároló-példány CPU-kérelme. |
+|  GPU | object | No | A tároló-példány GPU-kérelme. - [GpuResource objektum](#gpuresource-object) |
 
 
 
@@ -426,9 +426,9 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  memoryInGB | szám | Nem | A tároló példány GB-ban megadott memória-korlátja. |
-|  CPU | szám | Nem | A tároló-példány CPU-korlátja. |
-|  GPU | object | Nem | A Container-példány GPU-korlátja. - [GpuResource objektum](#gpuresource-object) |
+|  memoryInGB | szám | No | A tároló példány GB-ban megadott memória-korlátja. |
+|  CPU | szám | No | A tároló-példány CPU-korlátja. |
+|  GPU | object | No | A Container-példány GPU-korlátja. - [GpuResource objektum](#gpuresource-object) |
 
 
 
@@ -437,7 +437,7 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  command | array | Nem | A tárolón belül végrehajtandó parancsok. -string |
+|  command | array | No | A tárolón belül végrehajtandó parancsok. -string |
 
 
 
@@ -447,8 +447,8 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
 |  path | sztring | No | A mintavétel elérési útja. |
-|  port | egész szám | Igen | A mintavételhez használandó portszám. |
-|  séma | Enum | Nem | A séma. -http vagy https |
+|  port | egész szám | Yes | A mintavételhez használandó portszám. |
+|  séma | Enum | No | A séma. -http vagy https |
 
 
 
@@ -457,11 +457,11 @@ A következő táblázatok ismertetik a sémában beállítani kívánt értéke
 
 |  Név | Típus | Kötelező | Érték |
 |  ---- | ---- | ---- | ---- |
-|  count | egész szám | Igen | A GPU-erőforrás száma. |
-|  SKU | Enum | Igen | A GPU-erőforrás SKU-jának. -K80, P100, V100 |
+|  count | egész szám | Yes | A GPU-erőforrás száma. |
+|  SKU | Enum | Yes | A GPU-erőforrás SKU-jának. -K80, P100, V100 |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [többtárolós csoport üzembe helyezése YAML-fájl használatával](container-instances-multi-container-yaml.md)című oktatóanyagot.
 

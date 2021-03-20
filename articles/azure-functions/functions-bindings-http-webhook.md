@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 5236a3be9f8908d886274764dfc0c0da5b3565bc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92104478"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Functions HTTP-eseményindítók és-kötések áttekintése
@@ -45,7 +45,7 @@ Az trigger és a kötések használata megköveteli, hogy a megfelelő csomagra 
 
 A functions 1. x alkalmazások automatikusan hivatkoznak a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet-csomagra, 2. x verzióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Függvény futtatása HTTP-kérelemből](./functions-bindings-http-webhook-trigger.md)
 - [HTTP-válasz visszaadása függvényből](./functions-bindings-http-webhook-output.md)

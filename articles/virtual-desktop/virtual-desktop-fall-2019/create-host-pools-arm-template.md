@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008321"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Gazdagép létrehozása a Windows Virtual Desktopban (klasszikus) Azure Resource Manager sablonnal
@@ -42,7 +42,7 @@ Ha vállalati előfizetésben végzi a üzembe helyezést, görgessen le, és v�
 
 Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi lépéseket az Azure-ba való üzembe helyezéshez:
 
-1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
+1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása** lehetőséget.
 2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
 3. Közvetlenül a " https://portal.azure.com/ " után és a hashtag (#) előtt adja meg a (z) (@) jelet, amelyet a bérlői tartomány neve követ. Íme egy példa a használni kívánt formátumra: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.

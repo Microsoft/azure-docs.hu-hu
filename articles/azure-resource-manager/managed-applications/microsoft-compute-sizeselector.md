@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: d6408f8c08694ae681d302ae35f5778894091733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063664"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft. számítás. SizeSelector FELHASZNÁLÓIFELÜLET-elem
@@ -72,11 +72,11 @@ A vezérlő kiválasztása után a felhasználó az elérhető méretek kibőví
 - `constraints.allowedSizes` és `constraints.excludedSizes` mindkettő nem kötelező, de nem használható egyszerre. Az elérhető méretek listája az [előfizetéshez tartozó elérhető virtuálisgép-méretek](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)meghívásával határozható meg. A nem megadott méret `constraints.allowedSizes` rejtett, és a nem megadott méret `constraints.excludedSizes` jelenik meg.
 - `osPlatform` kötelező megadni, és lehet **Windows** vagy **Linux**. A virtuális gépek hardveres költségeinek meghatározására szolgál.
 - `imageReference` a rendszer kihagyja az első féltől származó rendszerképeket, de a harmadik féltől származó képekhez van megadva. A virtuális gépek szoftveres költségeinek meghatározására szolgál.
-- `count` az elem megfelelő szorzójának beállítására szolgál. Egy statikus értéket, például **2**vagy egy másik elemből származó dinamikus értéket támogat, például: `[steps('step1').vmCount]` . Az alapértelmezett érték **1**.
+- `count` az elem megfelelő szorzójának beállítására szolgál. Egy statikus értéket, például **2** vagy egy másik elemből származó dinamikus értéket támogat, például: `[steps('step1').vmCount]` . Az alapértelmezett érték **1**.
 - A `numAvailabilityZonesRequired` lehet 1, 2 vagy 3.
 - Alapértelmezés szerint `hideDiskTypeFilter` **hamis**. A lemez típusa szűrő lehetővé teszi a felhasználó számára az összes lemez típusának vagy csak SSD megjelenítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

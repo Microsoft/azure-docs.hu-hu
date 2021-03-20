@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: a96be6d4da3d292b2e9881652aad28f318ccee8a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92107572"
 ---
 # <a name="azure-data-studio-dashboards"></a>Irányítópultok Azure Data Studio
@@ -68,7 +68,7 @@ Jegyezze fel az IP-címét, ahogy a következő lépésben használni fogja.
 
 1. Válassza a bal oldali **kapcsolatok** fület
 
-Az oldal alján bontsa ki az **Azure arc-vezérlők**nevű panelt.
+Az oldal alján bontsa ki az **Azure arc-vezérlők** nevű panelt.
 
 Kattintson a + ikonra egy új adatvezérlő-kapcsolatok hozzáadásához.
 
@@ -80,7 +80,7 @@ Most, hogy csatlakozott egy adatkezelőhöz, megtekintheti az adatvezérlő irá
 
 ## <a name="view-the-data-controller-dashboard"></a>Az adatvezérlő irányítópultjának megtekintése
 
-Kattintson a jobb gombbal az adatvezérlőre az **ív-vezérlők** kibontható paneljének kapcsolatok paneljén, és válassza a **kezelés**lehetőséget.
+Kattintson a jobb gombbal az adatvezérlőre az **ív-vezérlők** kibontható paneljének kapcsolatok paneljén, és válassza a **kezelés** lehetőséget.
 
 Itt megtekintheti az adatkezelő erőforrás részleteit, például a nevet, a régiót, a kapcsolat módját, az erőforráscsoportot, az előfizetést, a vezérlő végpontját és a névteret.  Megtekintheti az adatkezelő által kezelt összes felügyelt adatbázis-erőforrás listáját is.
 

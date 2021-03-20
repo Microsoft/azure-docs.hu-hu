@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87070315"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – a Azure Portal előkészítése
@@ -128,8 +128,8 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 #### <a name="to-get-the-virtual-array-image"></a>A virtuális tömb rendszerképének beolvasása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
-2. A Azure Portal kattintson a **tallózás > StorSimple-eszközkezelők**elemre.
-3. Válasszon ki egy meglévő StorSimple Eszközkezelő szolgáltatást. A **StorSimple Eszközkezelő** panelen kattintson az **gyorskonfigurálás**elemre. 
+2. A Azure Portal kattintson a **tallózás > StorSimple-eszközkezelők** elemre.
+3. Válasszon ki egy meglévő StorSimple Eszközkezelő szolgáltatást. A **StorSimple Eszközkezelő** panelen kattintson az **gyorskonfigurálás** elemre. 
 4. Kattintson a Microsoft letöltőközpontból letölteni kívánt rendszerképhez tartozó hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.
    
    * VHDX a Hyper-V-hez a Windows Server 2012-es és újabb verzióiban
@@ -152,7 +152,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
 3. Kattintson a **Hozzáadás** parancsra.
 4. A **Storage-fiók hozzáadása** panelen tegye a következőket:
    
-   1. Az **előfizetés**mezőben válassza az **aktuális**lehetőséget.
+   1. Az **előfizetés** mezőben válassza az **aktuális** lehetőséget.
    
    2. Adja meg az Azure Storage-fiók nevét.
    

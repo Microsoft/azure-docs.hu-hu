@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88165481"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása csatlakoztatott szolgáltatások használatával a Visual Studióban
@@ -36,15 +36,15 @@ A Active Directory csatlakoztatott szolgáltatás jelenleg nem támogatja ASP.NE
 
 1. Válassza ki a **projektet > csatlakoztatott szolgáltatás hozzáadása...** menü parancsát, vagy kattintson duplán a projektben található **csatlakoztatott szolgáltatások** csomópontra megoldáskezelő.
 
-1. A **csatlakoztatott szolgáltatások** lapon válassza a **hitelesítés Azure Active Directorykal**lehetőséget.
+1. A **csatlakoztatott szolgáltatások** lapon válassza a **hitelesítés Azure Active Directorykal** lehetőséget.
 
     ![Csatlakoztatott szolgáltatások lap](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
-1. A **Bevezetés** lapon válassza a **tovább**lehetőséget. Ha a lapon hibákat lát, tekintse meg a [hibák diagnosztizálása a Azure Active Directory csatlakoztatott szolgáltatással](vs-active-directory-error.md)című témakört.
+1. A **Bevezetés** lapon válassza a **tovább** lehetőséget. Ha a lapon hibákat lát, tekintse meg a [hibák diagnosztizálása a Azure Active Directory csatlakoztatott szolgáltatással](vs-active-directory-error.md)című témakört.
 
     ![Bevezetés oldal](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a**fájl > Fiókbeállítások...**). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például: `mydomain.onmicrosoft.com` . Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
+1. Az **egyszeri bejelentkezés** lapon válasszon ki egy tartományt a **tartomány** legördülő listából. A lista tartalmazza a Visual Studio Fiókbeállítások párbeszédpanelén felsorolt fiókok által elérhető összes tartományt (a **fájl > Fiókbeállítások...**). Másik lehetőségként megadhatja a tartománynevet, ha nem találja a keresett nevet, például: `mydomain.onmicrosoft.com` . Lehetőség van Azure Active Directory alkalmazás létrehozására, vagy egy meglévő Azure Active Directory alkalmazás beállításainak használatára. Ha elkészült, válassza a **tovább** lehetőséget.
 
     ![Egyszeri bejelentkezés lap](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 

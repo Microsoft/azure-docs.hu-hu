@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
 ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88263112"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure-beli fájlok helyreállítása Windows Serverre
@@ -35,15 +35,15 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
     ![Adatok helyreállítása elem kiválasztása](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. A **első lépések** lapon válassza ki **ezt a kiszolgálót (kiszolgáló neve)** , majd kattintson a **tovább**gombra.
+3. A **első lépések** lapon válassza ki **ezt a kiszolgálót (kiszolgáló neve)** , majd kattintson a **tovább** gombra.
 
 4. A **helyreállítási mód kiválasztása** lapon válassza az **egyes fájlok és mappák** lehetőséget, majd a **tovább** gombra kattintva indítsa el a helyreállítási pont kiválasztási folyamatát.
 
-5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely a visszaállítani kívánt fájlokat vagy mappákat tartalmazza, majd válassza a **Csatlakoztatás**lehetőséget. Válassza ki a dátumot, és válassza ki a helyreállítási pontnak megfelelő időpontot a legördülő menüből. A **félkövérrel** szedett dátumok azt jelzik, hogy legalább egy helyreállítási pont áll rendelkezésre az adott napon.
+5. A **kötet és dátum kiválasztása** lapon válassza ki azt a kötetet, amely a visszaállítani kívánt fájlokat vagy mappákat tartalmazza, majd válassza a **Csatlakoztatás** lehetőséget. Válassza ki a dátumot, és válassza ki a helyreállítási pontnak megfelelő időpontot a legördülő menüből. A **félkövérrel** szedett dátumok azt jelzik, hogy legalább egy helyreállítási pont áll rendelkezésre az adott napon.
 
     ![Kötet és dátum kiválasztása](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    A **Csatlakoztatás**lehetőség kiválasztásakor a Azure Backup lemezként elérhetővé teszi a helyreállítási pontot. Keresse meg a fájlokat a lemezen, és végezze el a helyreállítást.
+    A **Csatlakoztatás** lehetőség kiválasztásakor a Azure Backup lemezként elérhetővé teszi a helyreállítási pontot. Keresse meg a fájlokat a lemezen, és végezze el a helyreállítást.
 
 ## <a name="restore-items-from-a-recovery-point"></a>Elemek visszaállítása a helyreállítási pontból
 
@@ -57,7 +57,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
     ![Fájlok és mappák másolása](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. Ha befejezte a fájlok és mappák visszaállítását, az **adatok helyreállítása** varázsló **Tallózás és helyreállítási fájlok** lapján válassza a **Leválasztás**lehetőséget.
+3. Ha befejezte a fájlok és mappák visszaállítását, az **adatok helyreállítása** varázsló **Tallózás és helyreállítási fájlok** lapján válassza a **Leválasztás** lehetőséget.
 
     ![Válassza a leválasztás lehetőséget](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
@@ -65,7 +65,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynökkel együtt egy Microsoft A
 
     A pillanatkép leválasztása után az ügynökkonzol **Feladatok** ablaktábláján a **Feladat befejezve** üzenet jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel befejeződik az oktatóanyag-sorozat, amely a Windows Server adatainak az Azure-ba történő biztonsági mentését és visszaállítását ismerteti. Az Azure Backuppal kapcsolatos további információért tekintse meg a titkosított virtuális gépek biztonsági mentéséhez készült PowerShell-mintát.
 

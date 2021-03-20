@@ -8,10 +8,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 33b1ad381b3f7865768f9e39295a2985f8aa5234
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100375102"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
@@ -140,7 +140,7 @@ Az alábbi képek a adatkezelés Gateway használatát mutatják be a helyszíni
 
 ### <a name="firewall-configurations-and-filtering-ip-address-of-gateway"></a>Tűzfal-konfigurációk és az átjáró IP-címének szűrése
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz    
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Helyszíni/privát hálózatok tűzfalkövetelményei    
 A vállalatokban a **vállalati tűzfal** a szervezet központi útválasztóján fut. A **Windows tűzfal** démonként fut azon a helyi gépen, amelyen az átjáró telepítve van. 
 
 A következő táblázat a **vállalati tűzfal** **kimenő portokra** és tartományokra vonatkozó követelményeit tartalmazza.

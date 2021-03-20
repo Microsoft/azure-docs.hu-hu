@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat labor-identitásokat az Azure De
 ms.topic: article
 ms.date: 08/20/2020
 ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88719686"
 ---
 # <a name="configure-a-lab-identity"></a>Tesztkörnyezet identitásának konfigurálása
@@ -39,7 +39,7 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a labor identitás-házirendjét
 > Az 8/10/2020-et követően létrehozott új laborok esetében a labor rendszerhez rendelt identitása alapértelmezés szerint be van állítva, és a labor tulajdonosa nem fogja tudni kikapcsolni a labor életciklusát.  
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keressen rá a **DevTest Labs**kifejezésre.
+1. Keressen rá a **DevTest Labs** kifejezésre.
 1. A Labs listából válassza ki a kívánt labort.
 1. Válassza **a konfiguráció és szabályzatok**  ->  **identitás (előzetes verzió)** lehetőséget. 
 
@@ -55,6 +55,6 @@ A DevTest Labs a virtuális gépekhez és Azure Resource Manager-alapú környez
 - [Felhasználó által hozzárendelt identitás hozzáadása labor Azure Resource Manager környezetek üzembe helyezéséhez](use-managed-identities-environments.md)
 - [Felhasználó által hozzárendelt identitások hozzáadása a tesztkörnyezet virtuális gépei üzembe helyezéséhez](enable-managed-identities-lab-vms.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Cost Management konfigurálásának](devtest-lab-configure-cost-management.md) áttekintése

@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti a projekt előkészítését az Azure dev Spaces működésével
 keywords: azds. YAML, Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: d2da69dd8a8c2683ff584dfd0ffc61cb023f2ece
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91968157"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Projekt előkészítése az Azure dev Spaces működéséhez
@@ -34,7 +34,7 @@ A `prep` parancs megtekinti a projektben lévő fájlokat, és megpróbálja lé
 * Node.js
 * .NET Core
 
-A *must* `prep` parancsot olyan könyvtárból kell futtatnia, amely forráskódot tartalmaz. Ha a `prep` parancsot a megfelelő könyvtárból futtatja, lehetővé teszi, hogy az ügyféloldali eszköz azonosítsa a nyelvet, és megfelelő Docker hozzon létre az alkalmazás tárolóba helyezése. A `prep` parancsot egy olyan könyvtárból is futtathatja, amely a Java-projektekhez *pom.xml* fájlt tartalmaz.
+A  `prep` parancsot olyan könyvtárból kell futtatnia, amely forráskódot tartalmaz. Ha a `prep` parancsot a megfelelő könyvtárból futtatja, lehetővé teszi, hogy az ügyféloldali eszköz azonosítsa a nyelvet, és megfelelő Docker hozzon létre az alkalmazás tárolóba helyezése. A `prep` parancsot egy olyan könyvtárból is futtathatja, amely a Java-projektekhez *pom.xml* fájlt tartalmaz.
 
 Ha olyan könyvtárból futtatja a `prep` parancsot, amely nem tartalmaz forráskódot, az ügyféloldali eszközkészlet nem hoz majd Docker. Emellett a következő hibaüzenetet is megjeleníti: *a Docker nem hozható létre a nem támogatott nyelv miatt*. Ez a hiba akkor is előfordulhat, ha az ügyféloldali eszközkészlet nem ismeri fel a projekt típusát.
 

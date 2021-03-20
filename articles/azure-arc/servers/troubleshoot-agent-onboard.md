@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 36feb6a65ec52d99dfd664ae54cb099ea6a7e239
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900686"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>A csatlakoztatott gépi ügynök kapcsolódási problémáinak elhárítása
@@ -44,7 +44,7 @@ A következő példa arra a parancsra mutat példát, amely lehetővé teszi a r
 A következő példa arra a parancsra mutat példát, amely lehetővé teszi a részletes naplózást a Linux rendszerhez csatlakoztatott gépi ügynökkel, ha interaktív telepítést végez.
 
 >[!NOTE]
->A **azcmagent**futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
+>A **azcmagent** futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
 ```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
@@ -89,4 +89,4 @@ Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, pr
 
 * A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
 
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése** lehetőséget.

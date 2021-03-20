@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86261026"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server önálló csomagjának Service Fabric tartalma
 A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag a következő fájlokat fogja megtalálni:
 
-| **Fájl neve** | **Rövid leírás** |
+| **Fájlnév** | **Rövid leírás** |
 | --- | --- |
 | CreateServiceFabricCluster.ps1 |Egy PowerShell-parancsfájl, amely létrehozza a fürtöt a ClusterConfig.jsbeállításainak használatával. |
 | RemoveServiceFabricCluster.ps1 |Egy PowerShell-parancsfájl, amely eltávolítja a fürtöt a ClusterConfig.jsbeállításainak használatával. |
@@ -33,7 +33,7 @@ A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric �
 
 **Sablonok** 
 
-| **Fájl neve** | **Rövid leírás** |
+| **Fájlnév** | **Rövid leírás** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.jsbekapcsolva |Egy, a nem biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó beállításokat tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürt egyes csomópontjainak információit. |
 | ClusterConfig.Unsecure.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely egy nem védett, többszámítógépes (vagy virtuális gép) fürt beállításait tartalmazza, beleértve a fürtben lévő egyes gépek adatait is. |

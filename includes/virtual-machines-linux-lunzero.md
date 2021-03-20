@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77590754"
 ---
 Adatlemezek Linux rendszerű virtuális gépekhez való hozzáadásakor hibák merülhetnek fel, ha egy lemez nem létezik a LUN 0 helyen. Ha manuálisan ad hozzá lemezt a `az vm disk attach -new` paranccsal, és egy LUN () értéket ad meg `--lun` , és nem engedélyezi az Azure platform számára a megfelelő logikai egység meghatározását, ügyeljen arra, hogy a (z) 0. logikai egységben már létezik a lemez. 

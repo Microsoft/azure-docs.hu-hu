@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
 ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135707"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Rövid útmutató: vész-helyreállítás beállítása egy másodlagos Azure-régióba Azure-beli virtuális gépen
@@ -33,10 +33,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 A következő lépésekkel engedélyezheti a virtuális gépek replikálását egy másodlagos helyre.
 
 1. A Azure Portal a **Kezdőlap**  >  **virtuális gépek** menüjében válasszon ki egy virtuális gépet a replikáláshoz.
-1. A **műveletek** területen válassza a vész- **helyreállítás**lehetőséget.
-1. Az **alapvető**  >  **célkitűzések**területen válassza ki a kívánt régiót.
-1. A replikálási beállítások megtekintéséhez válassza a **felülvizsgálat + replikáció indítása**lehetőséget. Ha módosítania kell az alapértelmezett beállításokat, válassza a **Speciális beállítások**lehetőséget.
-1. A virtuális gépek replikálását engedélyező feladatok elindításához válassza a **replikáció indítása**lehetőséget.
+1. A **műveletek** területen válassza a vész- **helyreállítás** lehetőséget.
+1. Az **alapvető**  >  **célkitűzések** területen válassza ki a kívánt régiót.
+1. A replikálási beállítások megtekintéséhez válassza a **felülvizsgálat + replikáció indítása** lehetőséget. Ha módosítania kell az alapértelmezett beállításokat, válassza a **Speciális beállítások** lehetőséget.
+1. A virtuális gépek replikálását engedélyező feladatok elindításához válassza a **replikáció indítása** lehetőséget.
 
    :::image type="content" source="media/azure-to-azure-quickstart/enable-replication1.png" alt-text="Replikáció engedélyezése.":::
 
@@ -45,10 +45,10 @@ A következő lépésekkel engedélyezheti a virtuális gépek replikálását e
 A replikációs feladatok befejeződése után ellenőrizheti a replikálás állapotát, módosíthatja a replikálási beállításokat, és tesztelheti a telepítést.
 
 1. A Azure Portal menüben válassza a **virtuális gépek** lehetőséget, és válassza ki a replikált virtuális gépet.
-1. A **műveletek** területen válassza a vész- **helyreállítás**lehetőséget.
-1. A replikálás részleteit az **Áttekintés** Select Essentials ( **alapismeretek**) lapján tekintheti meg. További részletek az állapot és az **állapot**, a **feladatátvételi készültség**és az infrastruktúra- **nézet** térképe látható.
+1. A **műveletek** területen válassza a vész- **helyreállítás** lehetőséget.
+1. A replikálás részleteit az **Áttekintés** Select Essentials ( **alapismeretek**) lapján tekintheti meg. További részletek az állapot és az **állapot**, a **feladatátvételi készültség** és az infrastruktúra- **nézet** térképe látható.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Replikáció engedélyezése.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/replication-status.png" alt-text="Replikálás állapota.":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -61,13 +61,13 @@ Ha le szeretné állítani a virtuális gép replikálását az elsődleges rég
 A replikáció letiltásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal menüben válassza a **virtuális gépek** lehetőséget, és válassza ki a replikált virtuális gépet.
-1. A **műveletek** területen válassza a vész- **helyreállítás**lehetőséget.
-1. Az **Áttekintés**területen válassza a **replikáció letiltása**lehetőséget.
+1. A **műveletek** területen válassza a vész- **helyreállítás** lehetőséget.
+1. Az **Áttekintés** területen válassza a **replikáció letiltása** lehetőséget.
 1. A site Recovery bővítmény eltávolításához nyissa meg a virtuális gép **Beállítások**  >  **bővítményeit**.
 
-   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Replikáció engedélyezése.":::
+   :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Tiltsa le a replikációt.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy virtuális gépet replikált egy másodlagos régióba. Ezután állítson be több Azure-beli virtuális gép replikálását.
 

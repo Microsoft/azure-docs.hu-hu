@@ -8,10 +8,10 @@ ms.date: 04/10/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: ec87c5523d6f608363ca615037f20365705609df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90892853"
 ---
 # <a name="understanding-app-status-in-azure-spring-cloud"></a>Az Azure Spring Cloud alkalmazásállapotainak ismertetése
@@ -42,7 +42,7 @@ Egy alkalmazás típusának általános állapotának megtekintéséhez válassz
 | Enumeráció | Definíció |
 |:--:|:----------------:|
 | Létrehozás | Az erőforrás létrehozása. |
-| Frissítése | Az erőforrás frissítése folyamatban van. |
+| Frissítés | Az erőforrás frissítése folyamatban van. |
 | Sikeres | A rendszer sikeresen biztosította az erőforrásokat, és üzembe helyezi a bináris fájlt. |
 | Sikertelen | Nem sikerült elérni a *sikeres* célt. |
 | Törlés | Az erőforrás törlése folyamatban van. Ez megakadályozza a műveletet, és az erőforrás nem érhető el ebben az állapotban. |

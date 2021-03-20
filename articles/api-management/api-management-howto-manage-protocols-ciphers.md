@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
 ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86250311"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Protokollok és titkosítások kezelése az Azure API Managementben
@@ -40,7 +40,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 3. A kívánt protokollok vagy titkosítások engedélyezése vagy letiltása.
 4. Kattintson a **Mentés** gombra. A módosítások egy órán belül lesznek alkalmazva.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [TLS-ről (Transport Layer Security)](/dotnet/framework/network-programming/tls).
 * További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
