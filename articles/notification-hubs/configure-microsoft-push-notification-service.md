@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87760991"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>A Microsoft leküldéses értesítési szolgáltatás (MPNS) beállításainak konfigurálása a Azure Portal
@@ -33,16 +33,16 @@ Az alábbi eljárás ismerteti, hogyan konfigurálhatja az értesítési közpon
 1. A Azure Portal az **értesítési központ** lapon válassza a **Windows Phone-telefon (MPNS)** elemet a bal oldali menüben.
 2. Nem hitelesített vagy hitelesített leküldéses értesítések engedélyezése:
 
-   a. A nem hitelesített leküldéses értesítések engedélyezéséhez válassza a nem **hitelesített leküldéses**  >  **Mentés**engedélyezése lehetőséget.
+   a. A nem hitelesített leküldéses értesítések engedélyezéséhez válassza a nem **hitelesített leküldéses**  >  **Mentés** engedélyezése lehetőséget.
 
       ![A nem hitelesített leküldéses értesítések engedélyezését bemutató képernyőkép](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
    b. Hitelesített leküldéses értesítések engedélyezése:
-      * Az eszköztáron válassza a **tanúsítvány feltöltése**lehetőséget.
+      * Az eszköztáron válassza a **tanúsítvány feltöltése** lehetőséget.
       * Válassza ki a fájl ikont, majd válassza ki a tanúsítványfájl.
       * Adja meg a tanúsítványhoz tartozó jelszót.
-      * Kattintson az **OK** gombra.
-      * A **Windows Phone-telefon (MPNS)** lapon válassza a **Mentés**lehetőséget.
+      * Válassza az **OK** lehetőséget.
+      * A **Windows Phone-telefon (MPNS)** lapon válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

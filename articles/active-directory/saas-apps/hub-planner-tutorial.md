@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 2d9dc483a9d60dc395c0aff52b721690d4fc701d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442422"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hub Plannervel
@@ -48,15 +48,15 @@ A hub Planner Azure AD-integrációjának konfigurálásához hozzá kell adnia 
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a " **hub Planner** " kifejezést a keresőmezőbe.
 1. Válassza ki a **hub Plannert** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-hub-planner"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a hub Plannerhez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a hub Planner segítségével egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a hub Plannerben.
+Konfigurálja és tesztelje az Azure AD SSO-t a hub Planner segítségével egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a hub Plannerben.
 
 Az Azure AD SSO és a hub Planner konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -71,8 +71,8 @@ Az Azure AD SSO és a hub Planner konfigurálásához és teszteléséhez hajtsa
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **hub Planner** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **hub Planner** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -112,13 +112,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a hub Planner elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **hub Planner**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **hub Planner** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -135,24 +135,24 @@ Ha be szeretné állítani az egyszeri bejelentkezést a **hub Planner** oldalon
 Az egyszeri bejelentkezés funkció engedélyezéséhez először engedélyeznie kell a bővítményt. A fiók tulajdonosaként vagy ezzel egyenértékű engedélyekkel hajtsa végre a következő lépéseket:
 
 1. Válassza a **Beállítások lehetőséget**.
-1. Az oldalsó menüben válassza a bővítmények **kezelése**bővítmények  >  **hozzáadása/eltávolítása**lehetőséget.
+1. Az oldalsó menüben válassza a bővítmények **kezelése** bővítmények  >  **hozzáadása/eltávolítása** lehetőséget.
 1. Keresse meg az egyszeri bejelentkezés bővítményét, és vegyen fel vagy próbálkozzon ingyen.
-1. Ha a rendszer kéri, fogadja el a feltételeket és kikötéseket, majd válassza a **Hozzáadás most**lehetőséget.
+1. Ha a rendszer kéri, fogadja el a feltételeket és kikötéseket, majd válassza a **Hozzáadás most** lehetőséget.
 
 ### <a name="enable-sso"></a>Egyszeri bejelentkezés engedélyezése
 
 A bővítmény engedélyezése után engedélyeznie kell az egyszeri bejelentkezést a fiókjához. 
 
 1. Válassza a **Beállítások lehetőséget**.
-1. Az oldalsó menüben válassza a **hitelesítés**lehetőséget.
+1. Az oldalsó menüben válassza a **hitelesítés** lehetőséget.
 1. Válassza az **egyszeri bejelentkezés (SSO)** lehetőséget.
-1. Adja meg a további hitelesítési adatokat az alábbi ábrán látható módon, majd kattintson a **Mentés**gombra.
+1. Adja meg a további hitelesítési adatokat az alábbi ábrán látható módon, majd kattintson a **Mentés** gombra.
 
 ![Az SSO-beállítások képernyőképe](media/hub-planner-tutorial/sso-settings.png)
 
 ### <a name="create-hub-planner-test-user"></a>Hub Planner tesztelési felhasználó létrehozása
 
-Ha más felhasználókat szeretne felvenni, válassza az **Settings**  >  **erőforrások kezelése** lehetőséget, és adja hozzá a felhasználókat innen. Ügyeljen arra, hogy hozzáadja az e-mail-címét, és meghívja őket. A meghívást követően a rendszer e-mailt küld, és az SSO-n keresztül tud belépni. 
+Ha más felhasználókat szeretne felvenni, válassza az   >  **erőforrások kezelése** lehetőséget, és adja hozzá a felhasználókat innen. Ügyeljen arra, hogy hozzáadja az e-mail-címét, és meghívja őket. A meghívást követően a rendszer e-mailt küld, és az SSO-n keresztül tud belépni. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

@@ -4,10 +4,10 @@ description: Az SSH-vagy RDP-portok elérésének konfigurálása vagy letiltás
 ms.topic: how-to
 ms.date: 02/13/2018
 ms.openlocfilehash: 4e7df7da539be75ef1befdff4b4e1fe5244c1702
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109306"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>A Azure Batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása
@@ -28,7 +28,7 @@ Minden NAT-készlet konfigurációja tartalmaz egy vagy több [hálózati bizton
 
 ## <a name="example-deny-all-rdp-traffic"></a>Példa: az összes RDP-forgalom tiltása
 
-A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot egy Windows-készlet számítási csomópontjain az összes hálózati forgalom megtagadásához. A végpont a *60000-60099*tartományba tartozó portok egy frontend-készletét használja. 
+A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot egy Windows-készlet számítási csomópontjain az összes hálózati forgalom megtagadásához. A végpont a *60000-60099* tartományba tartozó portok egy frontend-készletét használja. 
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -45,7 +45,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 
 ## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Példa: az internetről érkező összes SSH-forgalom tiltása
 
-A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon az összes internetes forgalom megtagadásához. A végpont a *4000-4100*tartományba tartozó portok egy frontend-készletét használja. 
+A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon az összes internetes forgalom megtagadásához. A végpont a *4000-4100* tartományba tartozó portok egy frontend-készletét használja. 
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -71,7 +71,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 
 ## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Példa: egy adott IP-címről érkező RDP-forgalom engedélyezése
 
-A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot egy Windows-készlet számítási csomópontjain úgy, hogy csak az IP- *198.51.100.7*engedélyezze az RDP-hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az IP-címnek.
+A következő C# kódrészlet bemutatja, hogyan konfigurálhatja az RDP-végpontot egy Windows-készlet számítási csomópontjain úgy, hogy csak az IP- *198.51.100.7* engedélyezze az RDP-hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az IP-címnek.
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -89,7 +89,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 
 ## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Példa: egy adott alhálózat SSH-forgalmának engedélyezése
 
-A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon, hogy csak a *192.168.1.0/24*alhálózatról engedélyezze a hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az alhálózatnak.
+A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon, hogy csak a *192.168.1.0/24* alhálózatról engedélyezze a hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az alhálózatnak.
 
 ```python
 pool.network_configuration = batchmodels.NetworkConfiguration(
@@ -118,7 +118,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/network-security-groups-overview.md).

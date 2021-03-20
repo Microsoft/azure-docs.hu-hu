@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4478c9c286c06d5d6c5593195a0e93abd286b8c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371511"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Az Azure AD-szerepkörök felügyeleti képességei Privileged Identity Management
@@ -42,8 +42,8 @@ Sok esetben akkor is, ha nem szeretné, hogy a felhasználók jogosultak legyene
 
 Az Azure AD-szerepkörök új beállításait is hozzáadjuk.
 
-- **Korábban**csak az aktiválási beállításokat konfigurálhatja szerepkör alapján. Az aktiválási beállítások, például a többtényezős hitelesítési követelmények, valamint az incidens/kérelmek jegyre vonatkozó követelmények az adott szerepkörre jogosult összes felhasználóra érvényesek voltak.
-- **Most**beállíthatja, hogy egy adott felhasználónak a többtényezős hitelesítést kell-e végrehajtania, mielőtt aktiválni tudná a szerepkört. Emellett speciális vezérléssel láthatja el az adott szerepkörökhöz kapcsolódó Privileged Identity Management e-maileket.
+- **Korábban** csak az aktiválási beállításokat konfigurálhatja szerepkör alapján. Az aktiválási beállítások, például a többtényezős hitelesítési követelmények, valamint az incidens/kérelmek jegyre vonatkozó követelmények az adott szerepkörre jogosult összes felhasználóra érvényesek voltak.
+- **Most** beállíthatja, hogy egy adott felhasználónak a többtényezős hitelesítést kell-e végrehajtania, mielőtt aktiválni tudná a szerepkört. Emellett speciális vezérléssel láthatja el az adott szerepkörökhöz kapcsolódó Privileged Identity Management e-maileket.
 
 ## <a name="extend-and-renew-assignments"></a>Hozzárendelések kiterjesztése és megújítása
 

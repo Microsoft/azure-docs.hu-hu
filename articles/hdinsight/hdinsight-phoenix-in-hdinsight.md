@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 3af48c93633709c9b5814caa99c222e24e402a4a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98945229"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
@@ -36,7 +36,7 @@ CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) IN
 
 Ez a megközelítés jelentős teljesítménybeli növekedést eredményezhet az egyetlen indexelt lekérdezések végrehajtásakor. Ez a típusú másodlagos index egy leképező **index**, amely a lekérdezésben szereplő összes oszlopot tartalmazza. Ezért a tábla keresése nem kötelező, és az index megfelel a teljes lekérdezésnek.
 
-### <a name="views"></a>Nézetek
+### <a name="views"></a>Megjelenítések
 
 A Phoenix-nézetek segítségével leküzdheti a HBase korlátozásokat, ahol a teljesítmény a 100-nál több fizikai tábla létrehozásakor csökken. A Phoenix-nézetek lehetővé teszik több *virtuális tábla* számára, hogy megosszák egy mögöttes fizikai HBase-táblázatot.
 

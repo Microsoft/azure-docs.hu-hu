@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 0e017f4df413d6db528bb99756646859d9a74aea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545395"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>IoT-eszközök és -modulok automatikus felügyelete az Azure Portal használatával
@@ -31,7 +31,7 @@ Az automatikus eszközkezelés úgy működik, hogy az ikrek vagy a modul-modulo
 
 * A **célként megadott tartalom** határozza meg a kívánt tulajdonságokat, amelyeket hozzá kell adni, vagy frissíteni kell a megcélzott eszköz ikrek vagy moduljában. A tartalom a módosítani kívánt tulajdonságok szakaszának elérési útját tartalmazza.
 
-* A **metrikák** határozzák meg a különböző konfigurációs állapotok, például a **sikeres** , **folyamatban lévő** és **hiba** összegzésének számát. Egyéni metrikák vannak megadva lekérdezésként a Twin jelentett tulajdonságainál.  A rendszermetrikák az alapértelmezett mérőszámok, amelyek a kettős frissítési állapotot mérik, például a megcélozott ikrek számát és a sikeresen frissített ikrek számát.
+* A **metrikák** határozzák meg a különböző konfigurációs állapotok, például a **sikeres**, **folyamatban lévő** és **hiba** összegzésének számát. Egyéni metrikák vannak megadva lekérdezésként a Twin jelentett tulajdonságainál.  A rendszermetrikák az alapértelmezett mérőszámok, amelyek a kettős frissítési állapotot mérik, például a megcélozott ikrek számát és a sikeresen frissített ikrek számát.
 
 Az automatikus konfigurációk az első alkalommal futnak a konfiguráció létrehozása után, majd öt percenként. A metrikák lekérdezései minden alkalommal futnak, amikor az automatikus konfiguráció fut.
 
@@ -70,7 +70,7 @@ A konfiguráció létrehozásához öt lépés szükséges. A következő szakas
 
 1. Adjon egy egyedi nevet a konfigurációnak, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /` .
 
-2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név** , **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
+2. Címkék hozzáadása a konfigurációk nyomon követése érdekében. A címkék **név**, **érték** párok, amelyek leírják a konfigurációt. Például `HostPlatform, Linux` vagy `Version, 3.0.1`.
 
 3. A **tovább** gombra kattintva lépjen a következő lépésre. 
 
@@ -138,7 +138,7 @@ Az automatikus eszköz-konfigurációk csak az eszköz kettős címkéit célozz
 
 Mivel több konfiguráció is megcélozhatja ugyanazt az eszközt vagy modult, minden konfigurációnak prioritási számra van szüksége. Ütközés esetén a legmagasabb prioritású WINS-konfigurációt. 
 
-1. Adjon meg egy pozitív egész számot a konfigurációs **prioritáshoz** . A legmagasabb numerikus érték a legmagasabb prioritást veszi figyelembe. Ha két konfigurációban ugyanaz a prioritási szám, akkor a legutóbb létrehozott WINS. 
+1. Adjon meg egy pozitív egész számot a konfigurációs **prioritáshoz**. A legmagasabb numerikus érték a legmagasabb prioritást veszi figyelembe. Ha két konfigurációban ugyanaz a prioritási szám, akkor a legutóbb létrehozott WINS. 
 
 2. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök vagy modulok lesznek megcélozva ezzel a konfigurációval. A feltétel a kettős címkék vagy a Twin jelentett tulajdonságok alapján történik, és egyeznie kell a kifejezés formátumával. 
 
@@ -150,7 +150,7 @@ Mivel több konfiguráció is megcélozhatja ugyanazt az eszközt vagy modult, m
 
 ### <a name="review-configuration"></a>Konfiguráció áttekintése
 
-Tekintse át a konfigurációs információkat, majd kattintson a **Submit (Küldés** ) gombra.
+Tekintse át a konfigurációs információkat, majd kattintson a **Submit (Küldés**) gombra.
 
 ## <a name="monitor-a-configuration"></a>Konfiguráció figyelése
 

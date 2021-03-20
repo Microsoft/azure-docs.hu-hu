@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 3097041c96f70dda384f0b116bbbc9bc9130be4d
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93395750"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Az üzletmenet folytonosságának áttekintése Microsoft Genomics
@@ -45,5 +45,5 @@ Ha egy adatközpont-kimaradás esetén a gyorsabb helyreállításról van szó,
 * Azonosítsa a megfelelő másodlagos régiót, és proaktív módon hozzon létre egy genomikai fiókot az adott régióban
 * Duplikálja az adatait az elsődleges és a másodlagos régióban, hogy az adatai azonnal elérhetők legyenek a másodlagos régióban. Ezt manuálisan is megteheti, vagy az Azure Storage-ban elérhető [geo-redundáns tárolási](../storage/common/storage-redundancy.md) funkciót használhatja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan használhatja az üzletmenet folytonosságát és a vész-helyreállítási lehetőségeket a Microsoft Genomics szolgáltatás használatakor. Az üzletmenet folytonosságával és az Azure-beli vész-helyreállítással kapcsolatos további információkért lásd: az [Azure rugalmasságának technikai útmutatója.](/azure/architecture/resiliency/recovery-loss-azure-region)

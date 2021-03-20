@@ -8,10 +8,10 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 9abe306668a4b20e42e45c498bf85b540dfaaee5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94630192"
 ---
 # <a name="configuring-dns-forwarding-for-azure-files"></a>DNS-továbbítás konfigurálása az Azure Fileshoz
@@ -110,7 +110,7 @@ New-AzDnsForwarder `
 
 Emellett hasznos/szükséges lehet a további paraméterek biztosításához:
 
-| Paraméter neve | Típus | Leírás |
+| Paraméter neve | Típus | Description |
 |----------------|------|-------------|
 | `DnsServerResourceGroupName` | `string` | Alapértelmezés szerint a DNS-kiszolgálók a virtuális hálózattal megegyező erőforráscsoporthoz lesznek telepítve. Ha ez nem megfelelő, ez a paraméter lehetővé teszi, hogy kiválasszon egy másik erőforráscsoportot, amelybe telepíteni kívánja őket. |
 | `DnsForwarderRootName` | `string` | Alapértelmezés szerint az Azure-ban üzembe helyezett DNS-kiszolgálóknak vannak a nevei `DnsFwder-*` , ahol a csillagot egy iteráció tölti ki. Ez a paraméter megváltoztatja a név gyökerét (azaz `DnsFwder` ). |
@@ -151,7 +151,7 @@ Ha már beállított egy VPN-vagy ExpressRoute-kapcsolat használatát, azt is m
 Test-NetConnection -ComputerName storageaccount.file.core.windows.net -CommonTCPPort SMB
 ```
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
 - [Azure Files hálózati végpontok konfigurálása](storage-files-networking-endpoints.md)

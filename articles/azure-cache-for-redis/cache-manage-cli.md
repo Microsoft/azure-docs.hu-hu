@@ -8,10 +8,10 @@ ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537694"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure cache létrehozása és kezelése a Redis a klasszikus Azure CLI használatával
@@ -37,7 +37,7 @@ Az Azure cache Redis-példányok Azure-beli klasszikus CLI használatával tört
 ## <a name="azure-cache-for-redis-properties"></a>Azure cache a Redis tulajdonságaihoz
 Az Redis-példányok Azure gyorsítótárának létrehozásakor és frissítésekor a következő tulajdonságok használatosak.
 
-| Tulajdonság | Kapcsoló (switch) | Description (Leírás) |
+| Tulajdonság | Kapcsoló (switch) | Description |
 | --- | --- | --- |
 | name |-n,--név |A Redis tartozó Azure cache neve. |
 | erőforráscsoport |-g,--Resource-Group |Az erőforráscsoport neve. |

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.subservice: application-insights
 ms.openlocfilehash: 0a18088fa434efa76007607c067feec107bdae57
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572353"
 ---
 # <a name="application-insights-standard-metrics"></a>Standard mérőszámok Application Insights
@@ -56,31 +56,31 @@ A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós 
 
 |Mértékegység|Támogatott összesítések| Támogatott méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>Ügyfél feldolgozási ideje (browserTiming/processingDuration)
 
 |Mértékegység|Támogatott összesítések|Támogatott méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Oldal betöltési hálózati kapcsolati ideje (browserTimings/networkDuration)
 
 |Mértékegység|Támogatott összesítések| Támogatott méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Válasz fogadása (browserTimings/receiveDuration)
 
 |Mértékegység|Támogatott összesítések| Támogatott méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Kérelem küldésének ideje (browserTimings/sendDuration)
 
 |Mértékegység|Támogatott összesítések| Támogatott méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ## <a name="failure-metrics"></a>Hiba mérőszámai
 

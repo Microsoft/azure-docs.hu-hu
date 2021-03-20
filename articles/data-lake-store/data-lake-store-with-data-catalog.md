@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106620"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Adatok regisztrálása Azure Data Lake Storage Gen1ról Azure Data Catalog
@@ -21,7 +21,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Engedélyezze Data Lake Storage Gen1 Azure-előfizetését** . Lásd: [utasítások](data-lake-store-get-started-portal.md).
-* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ebben az oktatóanyagban hozzon létre egy **datacatalogstore**nevű Data Lake Storage Gen1 fiókot.
+* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ebben az oktatóanyagban hozzon létre egy **datacatalogstore** nevű Data Lake Storage Gen1 fiókot.
 
     Miután létrehozta a fiókot, töltsön fel egy minta adathalmazt. Ebben az oktatóanyagban töltse fel a **AmbulanceData** mappában található összes. csv fájlt a [Azure Data Lake git-tárházban](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Az adatok blob-tárolóba való feltöltéséhez különböző ügyfeleket, például [Azure Storage Explorereket](https://storageexplorer.com/)használhat.
 * **Azure Data Catalog**. A szervezetnek már létre kell hoznia egy Azure Data Catalog a szervezet számára. Minden szervezet esetében csak egy katalógus engedélyezett.
@@ -30,18 +30,18 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
-1. Nyissa meg a t `https://azure.microsoft.com/services/data-catalog` , és kattintson az első **lépések**elemre.
+1. Nyissa meg a t `https://azure.microsoft.com/services/data-catalog` , és kattintson az első **lépések** elemre.
 1. Jelentkezzen be az Azure Data Catalog-portálra, majd kattintson a **Publish data** (Adatok közzététele) lehetőségre.
 
     ![Adatforrás regisztrálása](./media/data-lake-store-with-data-catalog/register-data-source.png "Adatforrás regisztrálása")
-1. A következő lapon kattintson az **alkalmazás indítása**lehetőségre. Ekkor a rendszer letölti az alkalmazás jegyzékfájlját a számítógépen. Az alkalmazás elindításához kattintson duplán a manifest-fájlra.
-1. Az Üdvözöljük lapon kattintson a **Bejelentkezés**elemre, és adja meg a hitelesítő adatait.
+1. A következő lapon kattintson az **alkalmazás indítása** lehetőségre. Ekkor a rendszer letölti az alkalmazás jegyzékfájlját a számítógépen. Az alkalmazás elindításához kattintson duplán a manifest-fájlra.
+1. Az Üdvözöljük lapon kattintson a **Bejelentkezés** elemre, és adja meg a hitelesítő adatait.
 
     ![Üdvözlőképernyő](./media/data-lake-store-with-data-catalog/welcome.screen.png "Üdvözlőképernyő")
-1. Az adatforrás kiválasztása lapon válassza a **Azure Data Lake Store**lehetőséget, majd kattintson a **tovább**gombra.
+1. Az adatforrás kiválasztása lapon válassza a **Azure Data Lake Store** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Adatforrás kiválasztása](./media/data-lake-store-with-data-catalog/select-source.png "Adatforrás kiválasztása")
-1. A következő lapon adja meg a Data Catalog regisztrálni kívánt Data Lake Storage Gen1 fiók nevét. Hagyja meg a többi beállítást alapértelmezettként, majd kattintson a **kapcsolat**gombra.
+1. A következő lapon adja meg a Data Catalog regisztrálni kívánt Data Lake Storage Gen1 fiók nevét. Hagyja meg a többi beállítást alapértelmezettként, majd kattintson a **kapcsolat** gombra.
 
     ![Kapcsolódás adatforráshoz](./media/data-lake-store-with-data-catalog/connect-to-source.png "Kapcsolódás adatforráshoz")
 1. A következő oldal a következő szegmensekre osztható.

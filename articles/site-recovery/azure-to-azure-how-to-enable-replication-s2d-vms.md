@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: f438fadb73f7e3bd25cd7ab9aef0bc46285e30e2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92424822"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Közvetlen tárolóhelyek-t futtató Azure-beli virtuális gépek replikálása egy másik régióba
@@ -80,7 +80,7 @@ A virtuális gépek csomópontjait is át kell adni a Site Recovery [helyreáll�
 3.  Kattintson a **Feladatátvétel tesztelése** elemre.
 4.  A feladatátvételi teszt folyamatának elindításához válassza ki a helyreállítási pontot és az Azure-beli virtuális hálózatot.
 5.  Ha a másodlagos környezet működik, végezze el az érvényesítést.
-6.  Az érvényesítések befejezése után a feladatátvételi környezet tisztításához válassza a **feladatátvételi teszt**lehetőséget.
+6.  Az érvényesítések befejezése után a feladatátvételi környezet tisztításához válassza a **feladatátvételi teszt** lehetőséget.
 
 További információ: a [feladatátvétel tesztelése az Azure-ban site Recovery](site-recovery-test-failover-to-azure.md).
 
@@ -92,6 +92,6 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 4.  A feladatátvételi folyamat elindításához válassza ki a helyreállítási pontot.
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](./azure-to-azure-tutorial-failover-failback.md) információ a feladat-visszavétel futtatásáról.

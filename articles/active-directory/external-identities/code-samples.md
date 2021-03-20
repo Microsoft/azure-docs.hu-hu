@@ -13,10 +13,10 @@ ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcf6e7a4fb5e76dddba6162bbabfdc5abc806a20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87905905"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták
@@ -26,7 +26,7 @@ Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban
 
 1. Készítse elő a .CSV-fájlt. Hozzon létre egy új CSV-fájlt, és adja neki az „invitations.csv” nevet. Ebben a példában a fájlt a C:\Data helyre mentjük, és a következő információkat tartalmazza:
 
-   Név                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
+   Name                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
    --------------------- | --------------------------
    Gmail B2B Invitee (Gmail B2B meghívott személy)     | b2binvitee@gmail.com
    Outlook B2B Invitee (Outlook B2B meghívott személy)   | b2binvitee@outlook.com
@@ -80,7 +80,7 @@ namespace SampleInviteApp
         static readonly string InviteEndPoint = "https://graph.microsoft.com/v1.0/invitations";
 
         /// <summary>
-        ///  Authentication endpoint to get token.
+        ///  Authentication endpoint to get token.
         /// </summary>
         static readonly string EstsLoginEndpoint = "https://login.microsoftonline.com";
 
@@ -229,6 +229,6 @@ namespace SampleInviteApp
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az az Azure AD B2B együttműködés?](what-is-b2b.md)

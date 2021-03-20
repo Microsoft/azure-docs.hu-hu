@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 24e56736e0d033420f9aaf976b0fb7d9727c1a5b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143220"
 ---
 # <a name="configure-network-access-control"></a>A hálózati hozzáférés-vezérlés konfigurálása
@@ -41,7 +41,7 @@ Az Azure Signaler szolgáltatás hálózati hozzáférés-vezérlését az Azure
 
 1. Nyissa meg a védeni kívánt Azure-jelző szolgáltatást.
 
-1. Kattintson a **hálózati hozzáférés-vezérlés**beállítások menüre.
+1. Kattintson a **hálózati hozzáférés-vezérlés** beállítások menüre.
 
     ![Hálózati ACL a portálon](media/howto-network-access-control/portal.png)
 
@@ -50,11 +50,11 @@ Az Azure Signaler szolgáltatás hálózati hozzáférés-vezérlését az Azure
     > [!TIP]
     > Az alapértelmezett művelet az a művelet, amelyet akkor teszünk, ha nincs ACL-szabály egyezése. Ha például az alapértelmezett művelet meg van **tagadva**, akkor a rendszer megtagadja az alább nem explicit módon jóváhagyott kérelmeket.
 
-1. A nyilvános hálózati szabály szerkesztéséhez válassza a **nyilvános hálózatban**lévő engedélyezett típusú kérelmek lehetőséget.
+1. A nyilvános hálózati szabály szerkesztéséhez válassza a **nyilvános hálózatban** lévő engedélyezett típusú kérelmek lehetőséget.
 
     ![Nyilvános hálózati hozzáférés-vezérlési lista szerkesztése a portálon ](media/howto-network-access-control/portal-public-network.png)
 
-1. A magánhálózati végpontok hálózati szabályainak szerkesztéséhez válassza az egyes sorokban a **magánhálózati végponti kapcsolatok**alatt található kérelmek megengedett típusai lehetőséget.
+1. A magánhálózati végpontok hálózati szabályainak szerkesztéséhez válassza az egyes sorokban a **magánhálózati végponti kapcsolatok** alatt található kérelmek megengedett típusai lehetőséget.
 
     ![Privát végponti ACL szerkesztése a portálon ](media/howto-network-access-control/portal-private-endpoint.png)
 

@@ -12,10 +12,10 @@ manager: celestedg
 ms.workload: identity
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983a803245467145a0b1161a4495e8045759e7ab
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92442065"
 ---
 # <a name="billing-model-for-azure-ad-external-identities"></a>Számlázási modell az Azure AD külső identitásokhoz
@@ -51,25 +51,25 @@ Egy Azure AD-bérlőt egy Azure-előfizetéshez kell kapcsolni a megfelelő szá
 
     ![Válassza ki a címtár + előfizetés ikont](media/external-identities-pricing/portal-mau-pick-directory.png)
 
-3. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
+3. Az **Azure-szolgáltatások** területen válassza a **Azure Active Directory** lehetőséget.
 
-4. A bal oldali menüben válassza a **külső identitások**lehetőséget.
+4. A bal oldali menüben válassza a **külső identitások** lehetőséget.
 
-5. Az **előfizetések**területen válassza a **társított előfizetések**elemet.
+5. Az **előfizetések** területen válassza a **társított előfizetések** elemet.
 
-6. A bérlő listában jelölje be a bérlő melletti jelölőnégyzetet, majd válassza az **előfizetés csatolása**lehetőséget.
+6. A bérlő listában jelölje be a bérlő melletti jelölőnégyzetet, majd válassza az **előfizetés csatolása** lehetőséget.
 
     ![Válassza ki a bérlőt, és csatolja az előfizetést](media/external-identities-pricing/linked-subscriptions.png)
 
 7. Az előfizetés csatolása ablaktáblán válassza ki az **előfizetést** és az **erőforráscsoportot**. Ezután válassza az **Alkalmaz** lehetőséget.
 
    > [!NOTE]
-   > Ha nincsenek felsorolt előfizetések, hozzárendelhet [egy előfizetést a bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Másik lehetőségként új előfizetést is hozzáadhat, ha még **nincs előfizetése, akkor**a hivatkozásra kattintva létrehozhat egyet.
+   > Ha nincsenek felsorolt előfizetések, hozzárendelhet [egy előfizetést a bérlőhöz](../fundamentals/active-directory-how-subscriptions-associated-directory.md). Másik lehetőségként új előfizetést is hozzáadhat, ha még **nincs előfizetése, akkor** a hivatkozásra kattintva létrehozhat egyet.
 
     ![Előfizetés és erőforráscsoport kiválasztása](media/external-identities-pricing/link-subscription-resource.png)
 
 A lépések elvégzése után az Azure-előfizetését az Azure Direct vagy a Nagyvállalati Szerződés részletei alapján számítjuk fel, ha van ilyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A legfrissebb díjszabási információkért lásd: [Azure Active Directory díjszabása](https://azure.microsoft.com/pricing/details/active-directory/).

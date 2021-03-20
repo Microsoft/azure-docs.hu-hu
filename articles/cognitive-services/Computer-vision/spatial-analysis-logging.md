@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
 ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98186022"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
@@ -103,7 +103,7 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ### <a name="system-health-events"></a>Rendszerállapot-események
 
-| Esemény neve | Leírás|
+| Esemény neve | Description|
 |------|---------|
 |archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
 |archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
@@ -216,9 +216,9 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 
 1. Lépjen a IoT Hub-portál lapra, válassza az **Edge-eszközök** lehetőséget, majd válassza ki az eszközt és a diagnosztikai modult. 
-2. Nyissa meg a modul részletek lapját, és kattintson a **_közvetlen metódus_* _ lapra.
+2. Lépjen a modul részletek lapjára, és kattintson a ***közvetlen metódus*** fülre.
 3. Írja be `getRTCVLogs` a metódus nevét, és egy JSON formátumú karakterláncot a hasznos adatok között. Megadhatja `{}` , amely üres adattartalom. 
-4. Állítsa be a kapcsolat és a metódus időtúllépését, majd kattintson az _ * metódus meghívása * * elemre.
+4. Állítsa be a kapcsolat és a metódus időtúllépését, és kattintson a **metódus meghívása** elemre.
 5. Válassza ki a tárolót, és hozzon létre egy hasznos adattartalom JSON-karakterláncot a **naplózási szintaxis** szakaszban leírt paraméterek használatával. A kérelem végrehajtásához kattintson a **metódus meghívása** elemre.
 
 >[!NOTE]
@@ -232,7 +232,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható paramétereket.
 
-| Kulcsszó | Leírás | Alapértelmezett érték |
+| Kulcsszó | Description | Alapértelmezett érték |
 |--|--|--|
 | StartTime | A kívánt naplók kezdő időpontja ezredmásodpercben (UTC). | `-1`, a tároló futtatókörnyezetének kezdete. Amikor `[-1.-1]` időtartományként használja az API-t, az elmúlt egy órában visszaadja a naplókat.|
 | EndTime | A kívánt naplók befejezési időpontja ezredmásodpercben (UTC). | `-1`, az aktuális idő. `[-1.-1]`Az időtartomány használatakor az API az elmúlt egy óra naplóit adja vissza. |
@@ -243,9 +243,9 @@ Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható param
 
 A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 
-| Kulcsszó | Leírás|
+| Kulcsszó | Description|
 |--|--|
-|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron** _ adatokat adja vissza. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók _*_aszinkron_*_ feltöltését indítja el.|
+|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron** _ adatokat adja vissza. Amikor úgy dönt, hogy feltölti a naplókat, az API a 200 értéket adja vissza, ha a kérelem érvényes, és elkezdi a naplók feltöltését. *_aszinkron módon_* *.|
 |TimeFilter| A naplókra alkalmazott Időszűrő.|
 |ValueFilters| A naplókra alkalmazott kulcsszavak szűrői. |
 |Időbélyeg| Metódus végrehajtásának kezdési ideje. |
@@ -298,7 +298,7 @@ A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 }
 ```
 
-A beolvasási napló sorainak, idejének és méretének beolvasása, ha ezek a beállítások kitűnnek a _*_DoPost_*_ értékre, `true` és a rendszer leküldi a naplókat ugyanazzal a szűrőkkel a célhelyekre. 
+A beolvasási napló sorainak, idejének és méretének beolvasása, ha ezek a beállítások kitűnnek a ***DoPost*** értékre, `true` és a rendszer leküldi a naplókat ugyanazzal a szűrőkkel a célhelyekre. 
 
 Hibaelhárítási problémák esetén a naplókat az Azure Blob Storage is exportálhatja. 
 
@@ -316,7 +316,7 @@ A következő szakasz segítséget nyújt az Azure Stack Edge-eszköz állapotá
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Hozzáférés a Kubernetes API-végponthoz. 
 
-1. Az eszköz helyi felhasználói felületén nyissa meg az _ *eszközök** lapot. 
+1. Az eszköz helyi felhasználói felületén nyissa meg az **eszközök** lapot. 
 2. Másolja a Kubernetes API szolgáltatás végpontját az **eszközök végpontjai** területen. Ez a végpont egy karakterlánc a következő formátumban: `https://compute..[device-IP-address]` .
 3. Mentse a végponti karakterláncot. Ezt később fogja használni `kubectl` , amikor a Kubernetes-fürthöz való hozzáférést konfigurálja.
 

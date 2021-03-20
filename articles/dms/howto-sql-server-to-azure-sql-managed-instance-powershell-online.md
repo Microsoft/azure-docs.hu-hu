@@ -13,10 +13,10 @@ ms.custom: ''
 ms.topic: how-to
 ms.date: 12/16/2020
 ms.openlocfilehash: 7f09db2e1f98d48e91dfea2642969ff4ca360967
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98697796"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-online-with-powershell--azure-database-migration-service"></a>SQL Server migrálása az SQL felügyelt példányára online a PowerShell-& Azure Database Migration Service
@@ -355,6 +355,6 @@ Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 
 További információkat a további áttelepítési forgatókönyvekről (forrás/cél párok) a Microsoft [Database áttelepítési útmutatójában](https://datamigration.microsoft.com/)talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet a Azure Database Migration Serviceről a cikk [Mi a Azure Database Migration Service?](./dms-overview.md)című cikkben.

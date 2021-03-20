@@ -10,10 +10,10 @@ ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
 ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371987"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gépről vagy fizikai gépről az Azure-ba irányuló feladatátvétel hibaelhárítása
@@ -46,7 +46,7 @@ Site Recovery nem tudott létrehozni feladatátvételi virtuális gépet az Azur
 
 Ahhoz, hogy az Azure-ban bármilyen gépet felvigyen, az Azure-környezetnek a rendszerindítási indítási állapotban kell lennie, a DHCP pedig az autostart állapotban van. Így a hidratációs tevékenység a feladatátvétel időpontjában átalakítja az **ATAPI, a Intelide, a storflt, a VMBus és a storvsc illesztőprogramok** indítási típusát a rendszerindítás indítására. Emellett átalakítja a néhány szolgáltatás indítási típusát, például a DHCP-t az automatikus indításhoz. Ez a tevékenység környezet-specifikus problémák miatt sikertelen lehet. 
 
-A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indítási típusának manuális módosításához kövesse az alábbi lépéseket:
+A **Windows vendég operációs rendszerhez** tartozó illesztőprogramok indítási típusának manuális módosításához kövesse az alábbi lépéseket:
 
 1. [Töltse le](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) a nem hidratációs szkriptet, és futtassa a következő módon. Ez a szkript ellenőrzi, hogy a virtuális gép igényel-e hidratációt.
 
@@ -85,11 +85,11 @@ Az SSH-problémákról részletes hibaelhárítási utasításokért tekintse me
 Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csatlakozás** ) gomb szürkén jelenik meg, és nem csatlakozik az Azure-hoz az expressz útvonalon vagy a helyek közötti VPN-kapcsolaton keresztül, akkor
 
 1. Nyissa meg a **virtuális gép**  >  **hálózatkezelését**, és kattintson a szükséges hálózati adapter nevére.  ![A képernyőfelvételen a hálózati csatoló nevét tartalmazó virtuális gép hálózatkezelési lapja látható.](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigáljon az **IP-konfigurációk**elemre, majd kattintson a szükséges IP-konfiguráció név mezőjére. ![Képernyőfelvétel: a hálózati adapter I p-konfigurációk lapja, amely a kiválasztott I P konfiguráció nevét tartalmazza.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. A nyilvános IP-cím engedélyezéséhez kattintson az **Engedélyezés**gombra. ![IP-cím engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Kattintson a **kötelező beállítások konfigurálása**  >  **új létrehozása**lehetőségre. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Adja meg a nyilvános címek nevét, válassza ki az **SKU** és a **hozzárendelés**alapértelmezett beállításait, majd kattintson az **OK**gombra.
-6. Most a módosítások mentéséhez kattintson a **Mentés**gombra.
+2. Navigáljon az **IP-konfigurációk** elemre, majd kattintson a szükséges IP-konfiguráció név mezőjére. ![Képernyőfelvétel: a hálózati adapter I p-konfigurációk lapja, amely a kiválasztott I P konfiguráció nevét tartalmazza.](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. A nyilvános IP-cím engedélyezéséhez kattintson az **Engedélyezés** gombra. ![IP-cím engedélyezése](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
+4. Kattintson a **kötelező beállítások konfigurálása**  >  **új létrehozása** lehetőségre. ![Új létrehozása](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
+5. Adja meg a nyilvános címek nevét, válassza ki az **SKU** és a **hozzárendelés** alapértelmezett beállításait, majd kattintson az **OK** gombra.
+6. Most a módosítások mentéséhez kattintson a **Mentés** gombra.
 7. Zárja be a paneleket, és navigáljon a virtuális gép **Áttekintés** szakaszához a kapcsolódáshoz/RDP-hez.
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nem lehet csatlakozni/RDP/SSH-VM-csatlakozás gomb elérhető

@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140632"
 ---
 # <a name="vpn-gateways-overview"></a>VPN-átjárók – áttekintés
@@ -52,7 +52,7 @@ A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási pa
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
 | Diffie Hellman-csoport (DH-csoport) | 2 | 2 | 2 |
 | Üzemidő | 28 800 másodperc | 28 800 másodperc | 28 800 másodperc |
-| Adatméret | 4 GB | 4 GB | 4 GB |
+| Adatok mérete | 4 GB | 4 GB | 4 GB |
 
 #### <a name="phase-2-proposals"></a>2. fázis – javaslatok
 
@@ -60,9 +60,9 @@ A helyek közötti VPN-kapcsolat a következő alapértelmezett titkosítási pa
 |-----------|------------|------------|------------|
 | Titkosítás | AES 128 | AES 256 | AES 256 |
 | Kivonatoló algoritmus| SHA 256 | SHA 256 | SHA 1 |
-| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | Nincs | Nincs | Nincs |
+| Tökéletes továbbítási titoktartási csoport (PFS-csoport) | Nincsenek | Nincsenek | Nincsenek |
 | Üzemidő | 1 800 másodperc | 1 800 másodperc | 1 800 másodperc |
-| Adatméret | 4 GB | 4 GB | 4 GB |
+| Adatok mérete | 4 GB | 4 GB | 4 GB |
 
 
 > [!IMPORTANT]

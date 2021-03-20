@@ -8,10 +8,10 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
 ms.openlocfilehash: 7030ffeb49c0a3919894f6dcf81e7252777267c5
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629597"
 ---
 # <a name="how-to-configure-virtual-machine-offer-listing-details"></a>A virtuális gépek ajánlati listájának konfigurálása – részletek
@@ -23,7 +23,7 @@ Az ajánlati **lista** lapon (válassza ki a partner Center bal oldali navigáci
 
 ## <a name="marketplace-details"></a>Piactér – részletek
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címeként. Ez a mező automatikusan ki van töltve az ajánlat- **alias** mezőben megadott névvel az ajánlat létrehozásakor. A név:
 
@@ -39,7 +39,7 @@ Adja meg az ajánlat rövid leírását az Azure Marketplace keresési eredmény
 
 Adja meg az ajánlat az Azure piactér keresési eredményeiben való megjelenítésének további leírását. Akár 256 karaktert is tartalmazhat.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](includes/long-description-1.md)]
 
@@ -55,8 +55,8 @@ Adja meg a szervezete adatvédelmi szabályzatának webcímet (URL-címét). Gy�
 
 Adja meg az ajánlatával kapcsolatos kiegészítő online dokumentumokat. Hivatkozás hozzáadásához válassza a **hivatkozás hozzáadása** lehetőséget, és végezze el a következő mezőket:
 
-- **Név** : az ügyfelek a részleteket tartalmazó oldalon fogják látni a nevet.
-- **Hivatkozás** : adjon meg egy webcímet, amely lehetővé teszi az ügyfelek számára az online dokumentum megtekintését.
+- **Név**: az ügyfelek a részleteket tartalmazó oldalon fogják látni a nevet.
+- **Hivatkozás**: adjon meg egy webcímet, amely lehetővé teszi az ügyfelek számára az online dokumentum megtekintését.
 
 ## <a name="customer-support-links"></a>Ügyfélszolgálati hivatkozások
 
@@ -67,15 +67,15 @@ Adja meg a támogatási webhelyet, ahol az ügyfelek elérheti a támogatási cs
 
 ## <a name="partner-support-contact"></a>Partneri támogatási kapcsolattartó
 
-Adja meg a Microsoft-partnerek **nevét** , **e-mail-címét** és **telefonszámát** , amelyet akkor kell használni, amikor az ügyfelek egy támogatási jegyet nyitnak meg. Ez az információ nem szerepel az Azure Marketplace-en.
+Adja meg a Microsoft-partnerek **nevét**, **e-mail-címét** és **telefonszámát** , amelyet akkor kell használni, amikor az ügyfelek egy támogatási jegyet nyitnak meg. Ez az információ nem szerepel az Azure Marketplace-en.
 
 ## <a name="engineering-contact"></a>Mérnöki kapcsolattartó
 
-Adja meg a Microsoft számára a **nevet** , **e-mailt** és **telefont** , ha az ajánlattal kapcsolatos problémák merülnek fel, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
+Adja meg a Microsoft számára a **nevet**, **e-mailt** és **telefont** , ha az ajánlattal kapcsolatos problémák merülnek fel, beleértve a minősítéssel kapcsolatos problémákat is. Ez az információ nem szerepel az Azure Marketplace-en.
 
 ## <a name="cloud-solution-provider-program-contact"></a>Cloud Solution Provider programbeli kapcsolat
 
-Adja meg a CSP-programot kezelő személy **nevét** , **e-mail-címét** és **telefonszámát** (ha van ilyen). Ez az információ nem szerepel az Azure Marketplace-en. A **CSP-program marketing anyagainál** adja meg azt a webcímet, ahol a programban résztvevő partnerek megtekinthetik a marketing-anyagokat.
+Adja meg a CSP-programot kezelő személy **nevét**, **e-mail-címét** és **telefonszámát** (ha van ilyen). Ez az információ nem szerepel az Azure Marketplace-en. A **CSP-program marketing anyagainál** adja meg azt a webcímet, ahol a programban résztvevő partnerek megtekinthetik a marketing-anyagokat.
 
 ## <a name="marketplace-media"></a>Piactéri adathordozó
 
@@ -112,6 +112,6 @@ További információforrások a piactéren: ajánlott [eljárások a Piactéri 
 
 A bal oldali navigációs menü következő lapjának folytatásához kattintson a **Piszkozat mentése** lehetőségre, és **tekintse meg a célközönséget**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Előzetes verzió célközönségének létrehozása](azure-vm-create-preview.md)

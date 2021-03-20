@@ -5,15 +5,15 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 07/13/2020
 ms.openlocfilehash: 3ab9161c006a88a254b247a921512698ed46fa95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87352777"
 ---
 1. Nyissa meg az Azure IoT Explorert.
 
-1. Ha még nem adott meg kapcsolódást az IoT hubhoz, a **IoT hubok** lapon válassza a **+ Kapcsolódás hozzáadása**elemet. Adja meg a korábban létrehozott IoT hub kapcsolatok karakterláncát, és válassza a **Mentés**lehetőséget.
+1. Ha még nem adott meg kapcsolódást az IoT hubhoz, a **IoT hubok** lapon válassza a **+ Kapcsolódás hozzáadása** elemet. Adja meg a korábban létrehozott IoT hub kapcsolatok karakterláncát, és válassza a **Mentés** lehetőséget.
 
 1. A **IoT Plug and Play beállítások** lapon válassza a **+ > helyi mappa hozzáadása** lehetőséget, és válassza ki a helyi *modellek* mappát, ahová a modell fájljait mentette.
 
@@ -33,7 +33,7 @@ ms.locfileid: "87352777"
 
 1. A **Tulajdonságok (írható)** lapon megtekintheti az adott összetevőhöz frissíthető írható tulajdonságokat.
 
-1. Válasszon ki egy tulajdonságot a **neve**alapján, adjon meg egy új értéket, és válassza a **kívánt érték frissítése**lehetőséget.
+1. Válasszon ki egy tulajdonságot a **neve** alapján, adjon meg egy új értéket, és válassza a **kívánt érték frissítése** lehetőséget.
 
 1. Az új érték megjelenítéséhez kattintson a **frissítés** gombra.
 

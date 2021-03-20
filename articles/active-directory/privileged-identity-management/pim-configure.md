@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; azuread-video-2020
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3c7003ce3e8c65f6fdb7f3d847947114aee251f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370185"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Mi az az Azure AD Privileged Identity Management?
@@ -47,7 +47,7 @@ A Privileged Identity Management időalapú és jóváhagyási alapú szerepkör
 
 ## <a name="what-can-i-do-with-it"></a>Mire használhatom?
 
-A Privileged Identity Management beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés**és a **tevékenységek** beállításai. Rendszergazdaként olyan lehetőségek közül választhat, mint például az **Azure ad-szerepkörök**kezelése, az **Azure-erőforrások** szerepköreinek kezelése vagy a privilegizált hozzáférési csoportok. Ha kiválasztja, hogy mit szeretne kezelni, megjelenik az adott lehetőséghez tartozó megfelelő beállítások.
+A Privileged Identity Management beállítása után a bal oldali navigációs menüben megjelennek a **feladatok**, a **kezelés** és a **tevékenységek** beállításai. Rendszergazdaként olyan lehetőségek közül választhat, mint például az **Azure ad-szerepkörök** kezelése, az **Azure-erőforrások** szerepköreinek kezelése vagy a privilegizált hozzáférési csoportok. Ha kiválasztja, hogy mit szeretne kezelni, megjelenik az adott lehetőséghez tartozó megfelelő beállítások.
 
 ![A Azure Portal Privileged Identity Management képernyőképe](./media/pim-configure/pim-quickstart.png)
 
@@ -83,7 +83,7 @@ A Privileged Identity Management a következő forgatókönyveket támogatja:
 
 A Privileged Identity Management és a dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
-| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Leírás |
+| Kifejezés vagy fogalom | Szerepkör-hozzárendelési kategória | Description |
 | --- | --- | --- |
 | támogatható | Típus | Szerepkör-hozzárendelés, amely megköveteli, hogy a felhasználó egy vagy több műveletet hajtson végre a szerepkör használatához. Ha egy felhasználó jogosult a szerepkörre, az azt jelenti, hogy aktiválhatja a szerepkört, amikor kiemelt feladatokat kell elvégeznie. A hozzáférés nem különbözik a jogosult szerepkör-hozzárendeléssel rendelkező valakinek. Az egyetlen különbség, hogy néhány embernek nincs szüksége arra, hogy minden alkalommal hozzáférjen. |
 | active | Típus | Szerepkör-hozzárendelés, amely nem követeli meg, hogy a felhasználó bármilyen műveletet hajtson végre a szerepkör használatához. Az aktívként hozzárendelt felhasználók rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal. |

@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: 78005ba46952bcf05b19c7627feecb1ec30ac651
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429352"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-nodejs"></a>Gyors útmutató: szimmetrikus kulcsú eszköz kiépítése Node.js használatával
@@ -142,7 +142,7 @@ A kiépítési kód az eszköz hitelesítéséhez a következő változók alapj
     node register_symkey.js
     ```
 
-5. A várt kimenetnek az alábbihoz hasonlóan kell kinéznie, amely megjeleníti a csatolt IoT hubot, amelyhez az eszköz hozzá lett rendelve az egyes regisztrációs beállítások alapján. A rendszer tesztüzenetként egy "„Helló világ!” alkalmazás" karakterláncot küld a hubhoz:
+5. A várt kimenetnek az alábbihoz hasonlóan kell kinéznie, amely megjeleníti a csatolt IoT hubot, amelyhez az eszköz hozzá lett rendelve az egyes regisztrációs beállítások alapján. A rendszer tesztüzenetként egy "Hello World" karakterláncot küld a hubhoz:
 
     ```output
     D:\Docs\test\azure-iot-sdk-node\provisioning\device\samples>node register_symkey.js
@@ -170,7 +170,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációinak kezelése** elemet, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a központhoz, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Windows-alapú szimmetrikus kulcsú eszközt telepített a IoT hub-hoz a IoT Hub Device Provisioning Service használatával. Ha meg szeretné tudni, hogyan kell X. 509 tanúsítványokat kiépíteni a Node.js használatával, folytassa az alábbi rövid útmutatóval X. 509 eszközök esetén. 
 

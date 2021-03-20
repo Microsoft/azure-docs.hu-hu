@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4662e9fb537a93cb87c554e319256e2eca40d2e7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92372429"
 ---
 # <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Az Azure AD szerepköreinek felderítése és bepillantást nyerhet (korábban biztonsági varázsló)
@@ -43,7 +43,7 @@ Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó 
 
     ![Azure AD-szerepkörök – felderítési és észlelési oldal, amely a 3 lehetőséget mutatja](./media/pim-security-wizard/new-preview-link.png)
 
-1. Válassza a **globális rendszergazdák csökkentése**lehetőséget.
+1. Válassza a **globális rendszergazdák csökkentése** lehetőséget.
 
     ![Képernyőfelvétel: a "felderítés és elemzések (előzetes verzió)" a "globális rendszergazdák csökkentése" művelet kiválasztásával.](./media/pim-security-wizard/new-preview-page.png)
 
@@ -51,7 +51,7 @@ Emellett a szerepkör-hozzárendelések állandók maradnak, ha a felhasználó 
 
     ![Globális rendszergazdák csökkentése – szerepkörök ablaktábla, amely az összes globális rendszergazdát megjeleníti](./media/pim-security-wizard/new-global-administrator-list.png)
 
-1. A **tovább** gombra kattintva válassza ki azokat a felhasználókat vagy csoportokat, akik számára jogosult szeretne lenni, majd válassza a **jogosult** vagy a **hozzárendelés eltávolítása**lehetőséget.
+1. A **tovább** gombra kattintva válassza ki azokat a felhasználókat vagy csoportokat, akik számára jogosult szeretne lenni, majd válassza a **jogosult** vagy a **hozzárendelés eltávolítása** lehetőséget.
 
     ![Tagok átalakítása jogosult lapra lehetőséggel kiválaszthatja azokat a tagokat, akik számára jogosult lehet a szerepkörökre.](./media/pim-security-wizard/new-global-administrator-buttons.png)
 

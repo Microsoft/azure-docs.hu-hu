@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018902"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric szolgáltatások rendelkezésre állása
@@ -31,7 +31,7 @@ Ha az elsődleges replika leáll, Service Fabric teszi az új elsődleges replik
 
 A replika fogalma elsődleges vagy aktív másodlagos, azaz *replika szerepkör*. Ezeket a replikákat a [replikák és példányok](service-fabric-concepts-replica-lifecycle.md) című cikkben találja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Service Fabric szolgáltatások skálázása](service-fabric-concepts-scalability.md)

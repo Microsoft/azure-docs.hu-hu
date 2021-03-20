@@ -4,10 +4,10 @@ description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 6e4cf16118e748e3ee1d1ff4899730463565ec70
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92108031"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásban tárolt adatok titkosítása az ügyfél által felügyelt kulcsok használatával
@@ -71,7 +71,7 @@ Az Alkalmazásbeállítás frissítése azt eredményezi, hogy a Function alkalm
 
 Az ajánlott eljárás a Storage-fiók SAS-kulcsának rendszeres elforgatása. Annak biztosítása érdekében, hogy a Function alkalmazás véletlenül ne legyen laza hozzáférés, az SAS URL-címét is frissítenie kell Key Vaultban.
 
-1. Forgassa el az SAS-kulcsot úgy, hogy a Azure Portalban navigál a Storage-fiókjához. A **Beállítások**  >  **hozzáférési kulcsok**területen kattintson az ikonra az SAS-kulcs elforgatásához.
+1. Forgassa el az SAS-kulcsot úgy, hogy a Azure Portalban navigál a Storage-fiókjához. A **Beállítások**  >  **hozzáférési kulcsok** területen kattintson az ikonra az SAS-kulcs elforgatásához.
 
 1. Másolja az új SAS URL-címet, és a következő parancs használatával állítsa be a frissített SAS URL-címet a kulcstartóban:
 
@@ -99,7 +99,7 @@ Ha a rendszer elforgatja a Storage-fiók SAS-kulcsát, a Function alkalmazás m�
 
 A Function alkalmazás hozzáférését visszavonhatja a hely adatához, ha letiltja a Function alkalmazás hozzáférését a Key Vaulthoz. Ehhez távolítsa el a Function alkalmazás identitásához tartozó hozzáférési szabályzatot. Ez ugyanaz az identitás, amelyet korábban hozott létre a Key Vault-referenciák konfigurálása során.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alkalmazás fájljai mostantól titkosítva vannak a Storage-fiókban. A Function alkalmazás indításakor lekéri a SAS URL-címét a kulcstartóból. Végül a Function alkalmazás betölti az alkalmazás fájljait a Storage-fiókból. 
 
@@ -117,7 +117,7 @@ Csak az Azure Storage-fiókhoz társított költségek és a kimenő forgalomra 
 - A TAR és a GZIP formátum nem támogatott.
 - Ez a funkció nem kompatibilis a helyi gyorsítótárral.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [App Service Key Vault referenciái](../app-service/app-service-key-vault-references.md)
 - [Inaktív adatok Azure Storage-titkosítása](../storage/common/storage-service-encryption.md)

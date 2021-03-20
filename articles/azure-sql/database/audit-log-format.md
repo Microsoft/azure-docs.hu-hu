@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 06/03/2020
 ms.openlocfilehash: f5c176db4f679c79bb42c6ceb46b3588e9440874
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100572217"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database napló formátuma
@@ -38,11 +38,11 @@ A [csak olvasható replikák](read-scale-out.md) naplófájljai ugyanabban a tá
 
 ### <a name="event-hub"></a>Eseményközpont
 
-A naplózási eseményeket a rendszer az auditálási konfiguráció során meghatározott névtérre és az Event hub-ra írja, és az [Apache Avro](https://avro.apache.org/) -események törzsében rögzíti őket, és a JSON-formázással, UTF-8 kódolással tárolja őket. A naplók olvasásához használhat [Avro-eszközöket](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) vagy hasonló eszközöket, amelyek ezt a formátumot dolgozzák fel.
+A rendszer a naplózás konfigurálása során meghatározott névtérbe és Event Hubba írja a naplóeseményeket, és az [Apache Avro](https://avro.apache.org/)-események törzsében rögzíti őket, a tárolásukat pedig UTF-8 kódolással, JSON-formátummal végzi. A naplók olvasásához [Avro-eszközöket](../../event-hubs/event-hubs-capture-overview.md#use-avro-tools) vagy a formátum feldolgozására képes hasonló eszközöket használhat.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-A naplózási eseményeket a rendszer a naplózási konfiguráció során definiált Log Analytics munkaterületre írja az adott `AzureDiagnostics` kategóriába tartozó táblázatba `SQLSecurityAuditEvents` . További hasznos információk a Log Analytics keresési nyelvről és parancsokról: [log Analytics keresési referenciák](../../azure-monitor/logs/log-query-overview.md).
+A rendszer a naplózás konfigurálása során meghatározott Log Analytics-munkaterület `AzureDiagnostics` táblázatába írja a naplóeseményeket a következő kategóriával: `SQLSecurityAuditEvents`. A Log Analytics keresési nyelvével és parancsaival kapcsolatban a következő témakörben tekinthet meg hasznos információt: [Log Analytics – keresési referencia](../../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Naplózási napló mezői
 

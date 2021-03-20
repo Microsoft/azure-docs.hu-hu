@@ -4,10 +4,10 @@ description: Az Service Fabric rendszeres biztonsági mentési és visszaállít
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018885"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
@@ -143,7 +143,7 @@ Miután meghatározta a biztonsági mentési szabályzatot az adatbiztonsági me
 >
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>A biztonsági mentési szabályzat hierarchikus propagálása
-Service Fabric az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [alkalmazás modelljében](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési szabályzat egy _alkalmazással_, _szolgáltatással_ vagy a hierarchiában található _partícióval_ is társítható. A biztonsági mentési szabályzat hierarchikusan propagálja a következő szintre. Feltéve, hogy csak egy biztonsági mentési szabályzatot hozott létre és társít egy _alkalmazáshoz_, az összes _megbízható állapot-nyilvántartó szolgáltatáshoz_ és az alkalmazás _Reliable Actors_ tartozó összes _application_ állapot-nyilvántartó partíciót a biztonsági mentési szabályzattal kell elkészíteni. Ha a biztonsági mentési szabályzat _megbízható állapot-nyilvántartó szolgáltatáshoz_ van társítva, a biztonsági mentési szabályzattal minden partíciója biztonsági mentésre kerül.
+Service Fabric az alkalmazás, a szolgáltatás és a partíciók közötti kapcsolat hierarchikus az [alkalmazás modelljében](./service-fabric-application-model.md)leírtak szerint. A biztonsági mentési szabályzat egy _alkalmazással_, _szolgáltatással_ vagy a hierarchiában található _partícióval_ is társítható. A biztonsági mentési szabályzat hierarchikusan propagálja a következő szintre. Feltéve, hogy csak egy biztonsági mentési szabályzatot hozott létre és társít egy _alkalmazáshoz_, az összes _megbízható állapot-nyilvántartó szolgáltatáshoz_ és az alkalmazás _Reliable Actors_ tartozó összes  állapot-nyilvántartó partíciót a biztonsági mentési szabályzattal kell elkészíteni. Ha a biztonsági mentési szabályzat _megbízható állapot-nyilvántartó szolgáltatáshoz_ van társítva, a biztonsági mentési szabályzattal minden partíciója biztonsági mentésre kerül.
 
 ### <a name="overriding-backup-policy"></a>Biztonsági mentési szabályzat felülbírálása
 Előfordulhat, hogy az alkalmazás összes szolgáltatásához azonos biztonsági mentési ütemtervtel rendelkező adatbiztonsági mentésre van szükség, kivéve azokat a szolgáltatásokat, amelyekhez szükség van az adatbiztonsági mentésre a magasabb gyakoriságú ütemterv használatával, vagy a biztonsági mentést egy másik Storage-fiókra vagy fájlmegosztás. Az ilyen forgatókönyvek kezeléséhez a Backup Restore Service lehetővé teszi a propagált házirend felülbírálását a szolgáltatás és a partíció hatókörén. Ha a biztonsági mentési szabályzat _szolgáltatáshoz_ vagy _partícióhoz_ van társítva, akkor felülbírálja a propagált biztonsági mentési szabályzatot, ha van ilyen.
@@ -184,7 +184,7 @@ Az alábbi ábra a explicit módon engedélyezett biztonsági mentési házirend
 ![Service Fabric alkalmazás-hierarchia][0]
 
 ## <a name="disable-backup"></a>Biztonsági mentés letiltása
-A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiztonsági mentésre. Az _alkalmazásban_ engedélyezett biztonsági mentési szabályzatot csak az alkalmazás-biztonsági mentési API [letiltásával](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) lehet letiltani, és a _szolgáltatásban_ engedélyezett biztonsági mentési szabályzat a _service_ [szolgáltatás biztonsági mentési API-k letiltásával](/rest/api/servicefabric/sfclient-api-disableservicebackup) is letiltható. _a partíciós_ biztonsági [mentési API](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) letiltásával _ugyanazon a_ _partíción_ is letiltható.
+A biztonsági mentési szabályzatok letilthatók, ha nincs szükség az adatbiztonsági mentésre. Az _alkalmazásban_ engedélyezett biztonsági mentési szabályzatot csak az alkalmazás-biztonsági mentési API [letiltásával](/rest/api/servicefabric/sfclient-api-disableapplicationbackup) lehet letiltani, és a _szolgáltatásban_ engedélyezett biztonsági mentési szabályzat a  [szolgáltatás biztonsági mentési API-k letiltásával](/rest/api/servicefabric/sfclient-api-disableservicebackup) is letiltható. _a partíciós_ biztonsági [mentési API](/rest/api/servicefabric/sfclient-api-disablepartitionbackup) letiltásával _ugyanazon a_ _partíción_ is letiltható.
 
 * Egy _alkalmazás_ biztonsági mentési szabályzatának letiltása leállítja az összes rendszeres biztonsági mentést a biztonsági mentési szabályzat propagálásának eredményeképpen, megbízható állapot-nyilvántartó partíciók vagy megbízható szereplők partíciói számára.
 
@@ -256,7 +256,7 @@ Az alábbiakban a támogatott változatokkal kapcsolatos rövid információk sz
  
 - [Partíció biztonsági mentési listájának beolvasása](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Biztonsági mentés visszaállítása REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

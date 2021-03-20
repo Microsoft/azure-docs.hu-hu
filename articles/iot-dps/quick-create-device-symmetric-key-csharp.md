@@ -10,10 +10,10 @@ services: iot-dps
 manager: eliotgra
 ms.custom: mvc
 ms.openlocfilehash: f97840a05115bf5659a6f7579b72786e890051a2
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92429369"
 ---
 # <a name="quickstart-provision-a-symmetric-key-device-using-c"></a>Gyors útmutató: szimmetrikus kulcsú eszköz kiépítése C használatával #
@@ -61,7 +61,7 @@ A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az e
 
 4. Miután mentette a regisztrációt, a rendszer létrehozza az **elsődleges kulcsot** és a **másodlagos kulcsot** , és hozzáadja a beléptetési bejegyzéshez. A szimmetrikus kulcsú eszközök beléptetése **Symm-Key-csharp-Device-01** néven jelenik meg az *Egyéni* regisztrációk lap *regisztrációs azonosító* oszlopában. 
 
-5. Nyissa meg a beléptetést, és másolja ki a generált **elsődleges kulcs** és **másodlagos kulcs**értékét. Ezt a kulcs értéket és a **regisztrációs azonosítót** később fogja használni, amikor környezeti változókat ad hozzá az eszköz kiépítési mintakód használatával történő használathoz.
+5. Nyissa meg a beléptetést, és másolja ki a generált **elsődleges kulcs** és **másodlagos kulcs** értékét. Ezt a kulcs értéket és a **regisztrációs azonosítót** később fogja használni, amikor környezeti változókat ad hozzá az eszköz kiépítési mintakód használatával történő használathoz.
 
 
 
@@ -98,7 +98,7 @@ A kiépítési kód az eszköz hitelesítéséhez a következő változók alapj
     cd provisioning\Samples\device\SymmetricKeySample
     ```
 
-3. A *SymmetricKeySample* mappában Nyissa meg a *program.cs* egy szövegszerkesztőben, és keresse meg a `individualEnrollmentPrimaryKey` és karakterláncokat beállító kód sorait `individualEnrollmentSecondaryKey` . A következő módon frissítse a kód sorait, hogy a rendszer a kulcsok kódolása helyett a környezeti változókat használja.
+3. A *SymmetricKeySample* mappában Nyissa meg a *program. cs* szöveget egy szövegszerkesztőben, és keresse meg a `individualEnrollmentPrimaryKey` és karakterláncokat beállító kód sorait `individualEnrollmentSecondaryKey` . A következő módon frissítse a kód sorait, hogy a rendszer a kulcsok kódolása helyett a környezeti változókat használja.
  
     ```csharp
         //These are the two keys that belong to your individual enrollment. 
@@ -119,7 +119,7 @@ A kiépítési kód az eszköz hitelesítéséhez a következő változók alapj
         private static string registrationId = Environment.GetEnvironmentVariable("PROVISIONING_REGISTRATION_ID");;
     ```
 
-    Mentse a módosításokat a *program.cs*.
+    Mentse a *program. cs* fájl módosításait.
 
 3. A parancssorban adja hozzá az azonosító hatókör, a regisztrációs azonosító, az elsődleges és a másodlagos szimmetrikus kulcsok környezeti változóit, amelyeket az előző szakaszban lévő egyéni regisztrációból másolt.  
 
@@ -178,7 +178,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációinak kezelése** elemet, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközöket** a központhoz, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Windows-alapú szimmetrikus kulcsú eszközt telepített a IoT hub-hoz a IoT Hub Device Provisioning Service használatával. Az x. 509 tanúsítványok C# használatával történő kiépítésének megismeréséhez folytassa az alábbi rövid útmutatót X. 509 eszközök esetén. 
 

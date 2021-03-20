@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/30/2020
 ms.author: duau
 ms.openlocfilehash: 15cdcefe628a392704e650b560243e2f6a134ec2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94629988"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>Gyakori útválasztási problémák elhárítása
@@ -113,7 +113,7 @@ A tünet több lehetséges oka is lehet:
 
 Létrehozott egy Azure Front Door-példányt, és konfigurált egy előtér-gazdagépet, egy háttér-készletet legalább egy háttérrel, valamint egy útválasztási szabályt, amely összekapcsolja a frontend-gazdagépet a háttér-készlettel. Úgy tűnik, hogy a tartalom nem érhető el, ha egy kérelem a beállított előtér-gazdagépre kerül, mert a rendszer HTTP 411 állapotkódot ad vissza.
 
-Az ezekre a kérelmekre adott válaszok a válasz törzsében is tartalmazhatnak egy HTML-hibaüzenetet, amely tartalmaz egy magyarázó utasítást is. Például: `HTTP Error 411. The request must be chunked or have a content length`.
+Az ezekre a kérelmekre adott válaszok a válasz törzsében is tartalmazhatnak egy HTML-hibaüzenetet, amely tartalmaz egy magyarázó utasítást is. Példa: `HTTP Error 411. The request must be chunked or have a content length`.
 
 ### <a name="cause"></a>Ok
 

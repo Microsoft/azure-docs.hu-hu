@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92427207"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
@@ -153,7 +153,7 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
 1. Navigáljon a kiválasztott vagy létrehozott Azure AD-bérlőhöz.
 1. A menüből válassza a **Azure Active Directory** lehetőséget.
 1. A menüből válassza a **Alkalmazásregisztrációk** lehetőséget.
-1. Kattintson az **+ új regisztráció**elemre.
+1. Kattintson az **+ új regisztráció** elemre.
 1. Nevezze el az alkalmazás *LicenseDeliveryResource2* (ahol a 2 a HRE v2 végpontot jelzi).
 1. **Csak a szervezeti címtárban válassza a fiókok lehetőséget ([*a bérlő neve*] csak egyetlen bérlő)**. Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válassza a további több-bérlős lehetőségek egyikét.
 1. Az **átirányítási URI** nem kötelező, és később is módosítható.
@@ -163,7 +163,7 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
 1. Módosítsa a értékét `groupMembershipClaims` *"SecurityGroup"* értékre (idézőjelekkel).
 1. Kattintson a **Mentés** gombra.
 1. Válassza ki az **API közzététele** lehetőséget a menüből. Ekkor megjelenik a hatókör hozzáadása nézet. (Az Azure egy alkalmazás-azonosító URI-t biztosít, de ha módosítani szeretné, szerkesztheti az alkalmazás-azonosító URI-ja mezőben.)
-1. Kattintson **a Mentés és folytatás**gombra. A nézet meg fog változni. Az alábbi táblázat Setting (beállítás) oszlopában az érték oszlopban adja meg az értéket, majd kattintson a **hatókör hozzáadása**elemre.
+1. Kattintson **a Mentés és folytatás** gombra. A nézet meg fog változni. Az alábbi táblázat Setting (beállítás) oszlopában az érték oszlopban adja meg az értéket, majd kattintson a **hatókör hozzáadása** elemre.
 
 | Beállítás | Érték | Leírás |
 | ------- | ----- | ----------- |
@@ -180,16 +180,16 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
 1. Navigáljon a kiválasztott vagy létrehozott Azure AD-bérlőhöz.
 1. A menüből válassza a **Azure Active Directory** lehetőséget.
 1. A menüből válassza a **Alkalmazásregisztrációk** lehetőséget.
-1. Kattintson az **+ új regisztráció**elemre.
+1. Kattintson az **+ új regisztráció** elemre.
 1. Adja meg az ügyfélalkalmazás nevét, például: *AMS hre Content Protection*.
 1. **Csak a szervezeti címtárban válassza a fiókok lehetőséget ([*a bérlő neve*] csak egyetlen bérlő)**. Ha több bérlő számára is engedélyezni szeretné a hozzáférést, válassza a további több-bérlős lehetőségek egyikét.
 1. Az **átirányítási URI** nem kötelező, és később is módosítható.
 1. Kattintson a **Regisztrálás** parancsra.
 1. Válassza ki az **API-engedélyeket** a menüből.
-1. Kattintson **az + engedély hozzáadása**lehetőségre. Ekkor megnyílik a kérelem API-engedélyeinek nézete.
+1. Kattintson **az + engedély hozzáadása** lehetőségre. Ekkor megnyílik a kérelem API-engedélyeinek nézete.
 1. Kattintson a **saját API** fülre, és válassza ki az utolsó szakaszban létrehozott *LicenseDeliveryResource2* alkalmazást.
 1. Kattintson a DRM nyílra, és jelölje be a DRM-t *. Licenc. Delivery* engedély.
-1. Kattintson az **engedélyek hozzáadása**lehetőségre. Az engedélyek hozzáadása nézet be lesz zárva.
+1. Kattintson az **engedélyek hozzáadása** lehetőségre. Az engedélyek hozzáadása nézet be lesz zárva.
 1. Válassza ki a **jegyzékfájlt** a menüből. Ekkor megjelenik a jegyzékfájl nézet.
 1. Keresse meg és adja hozzá a következő érték párokat az `replyUrlsWithType` attribútumhoz:
 
@@ -210,7 +210,7 @@ Válasszon ki egy Azure AD-bérlőt, amelyet teljes mintaként használhat. Erre
     > Ezen a ponton még nem rendelkezik a Player-alkalmazás URL-címével.  Ha az alkalmazást a localhost webkiszolgálóról futtatja, akkor csak a localhost érték párokat használhatja. A Player alkalmazás üzembe helyezése után itt adhatja hozzá a bejegyzést a központilag telepített URL-címhez.  Ha elfelejti, hibaüzenet jelenik meg az Azure AD-bejelentkezésben.
 
 1. Kattintson a **Mentés** gombra.
-1. Végül ellenőrizze, hogy a konfiguráció megfelelő-e, majd válassza a **hitelesítés**lehetőséget.  Ekkor megjelenik a hitelesítési nézet. Az ügyfélalkalmazás egy egyoldalas alkalmazásként (SPA) jelenik meg, az átirányítási URI a listáról lesz listázva, a Grant típus pedig a PKCE-vel való engedélyezési kód lesz.
+1. Végül ellenőrizze, hogy a konfiguráció megfelelő-e, majd válassza a **hitelesítés** lehetőséget.  Ekkor megjelenik a hitelesítési nézet. Az ügyfélalkalmazás egy egyoldalas alkalmazásként (SPA) jelenik meg, az átirányítási URI a listáról lesz listázva, a Grant típus pedig a PKCE-vel való engedélyezési kód lesz.
 
 ### <a name="set-up-the-media-services-account-content-key-policy-and-streaming-policies"></a>A Media Services fiók tartalmi kulcsára vonatkozó házirend és folyamatos átviteli szabályzatok beállítása
 
@@ -263,14 +263,14 @@ A Player alkalmazás beállítása két lehetőség közül választhat:
 
 ### <a name="option-1"></a>1\. lehetőség
 
-1. Indítsa el a Visual Studio Code-ot.
+1. A Visual Studio Code elindítása.
 1. A projekt megnyitásához kattintson a fájl-> mappa megnyitása lehetőségre, > tallózással keresse meg és válassza ki a fájl *package.jsjának* szülő mappáját.
 1. Nyissa meg a JavaScript *-fájl nyilvános/JavaScript/constants.js*.
 1. Cserélje le `OAUTH2_CONST.CLIENT_ID` a `client_id` regisztrált ÜGYFÉLALKALMAZÁS a HRE-bérlőben.  A `client_id` Azure Portal található regisztrált alkalmazás Áttekintés szakaszában talál. Megjegyzés: ez az ügyfél-azonosító, nem objektumazonosító.
 1. Cserélje le `OAUTH2_CONST.TENANT_ID` az `tenant_id` Azure ad-bérlőre. A `tenant_id` Azure Active Directory menüre kattintva érheti el. A tenant_id megjelenik az Áttekintés szakaszban.
 1. Helyettesítse `OAUTH2_CONST.SCOPE` be a regisztrált ügyfélalkalmazás által hozzáadott hatókört. A hatókört úgy tekintheti meg, hogy a **Alkalmazásregisztrációk** menüből navigál a regisztrált ügyfélalkalmazás számára, majd kiválasztja az ügyfélalkalmazás:
     1. Válassza ki az ügyfélalkalmazás, kattintson az **API-engedélyek** menüre, majd válassza ki a hatókört a DRM-hez *. Licenc. Delivery* az API engedély *LicenseDeliveryResource2*. Az engedélynek a következő formátumúnak kell lennie: *API://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM. Licenc. Delivery*. **Fontos**: tartsa meg a helyet a ( `offline_access` z `OAUTH2_CONST.SCOPE` ) előtt.
-1. Cserélje le a két konstans karakterláncot az `AMS_CONST` alább látható módon. Az egyik a tesztelési eszköz védett adatfolyam-továbbítási URL-címe, a másik az FPS-alkalmazás tanúsítványának URL-címe, ha meg szeretné adni a FairPlay tesztelési esetét is. Ellenkező esetben hagyja a következőt: `AMS_CONST.APP_CERT_URL` . Ezután kattintson a **Mentés**gombra.
+1. Cserélje le a két konstans karakterláncot az `AMS_CONST` alább látható módon. Az egyik a tesztelési eszköz védett adatfolyam-továbbítási URL-címe, a másik az FPS-alkalmazás tanúsítványának URL-címe, ha meg szeretné adni a FairPlay tesztelési esetét is. Ellenkező esetben hagyja a következőt: `AMS_CONST.APP_CERT_URL` . Ezután kattintson a **Mentés** gombra.
 
 ```javascript
 //defaults in ams.js
@@ -287,7 +287,7 @@ class AMS_CONST {
 
 Helyi tesztelés:
 
-1. A Visual Studio Code (VSC) eszközben válassza a **nézet** lehetőséget a főmenüben, majd a **terminál**elemet.
+1. A Visual Studio Code (VSC) eszközben válassza a **nézet** lehetőséget a főmenüben, majd a **terminál** elemet.
 1. Ha még nem telepítette a NPM-et, a parancssorba írja be a parancsot `npm install` .
 1. Írja be `npm start` a parancsot a parancssorba. (Ha a NPM nem indul el, próbálja meg módosítani a könyvtárat a `npmweb` parancssorba való beírásával `cd npmweb` .)
 1. Böngésző használatával keresse meg a következőt: `http://localhost:3000` .
@@ -328,7 +328,7 @@ Ez egy gyakori ügyfél-követelmény, hogy a hitelesített felhasználók egy r
 
 #### <a name="set-up-the-media-services-account"></a>A Media Services fiók beállítása
 
-Módosítsa `ContentKeyPolicyRestriction` (ahogy az a fenti részben látható a Media Service-fiókban), adjon hozzá egy *csoportok*nevű jogcímet, ahol `ida_EntitledGroupObjectId` a *PremiumGroup* objektumazonosító értéke:
+Módosítsa `ContentKeyPolicyRestriction` (ahogy az a fenti részben látható a Media Service-fiókban), adjon hozzá egy *csoportok* nevű jogcímet, ahol `ida_EntitledGroupObjectId` a *PremiumGroup* objektumazonosító értéke:
 
 ```dotnetcli
 
@@ -379,7 +379,7 @@ Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

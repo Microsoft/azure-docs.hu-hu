@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92545072"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése az Azure CLI használatával
@@ -89,11 +89,11 @@ A konfigurálható CLI-paraméterek teljes listájáért tekintse meg az Azure C
 Az az **MySQL flexibilis-Server Firewall-Rule** parancs az Azure CLI-ből a tűzfalszabályok létrehozásához, törléséhez, listázásához, megjelenítéséhez és frissítéséhez használható.
 
 Parancsok
-- **Létrehozás** : rugalmas kiszolgálói tűzfalszabály létrehozása.
-- **lista** : a rugalmas kiszolgálói tűzfalszabályok listázása.
-- **frissítés** : egy rugalmas kiszolgálói tűzfalszabály frissítése.
-- **Megjelenítés** : egy rugalmas kiszolgálói tűzfalszabály részleteit jeleníti meg.
-- **Törlés** : egy rugalmas kiszolgálói tűzfalszabály törlése.
+- **Létrehozás**: rugalmas kiszolgálói tűzfalszabály létrehozása.
+- **lista**: a rugalmas kiszolgálói tűzfalszabályok listázása.
+- **frissítés**: egy rugalmas kiszolgálói tűzfalszabály frissítése.
+- **Megjelenítés**: egy rugalmas kiszolgálói tűzfalszabály részleteit jeleníti meg.
+- **Törlés**: egy rugalmas kiszolgálói tűzfalszabály törlése.
 
 A konfigurálható CLI-paraméterek teljes listájáért tekintse meg az Azure CLI [dokumentációját](/cli/azure/mysql/flexible-server) . Az alábbi parancsokban például megadhatja az erőforráscsoportot is.
 

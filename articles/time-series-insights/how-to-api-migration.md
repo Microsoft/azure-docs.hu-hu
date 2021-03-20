@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
 ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97740555"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Áttelepítés új Azure Time Series Insights Gen2 API-verzióra
@@ -84,7 +84,7 @@ Ha az egyéni alkalmazás a következő REST-végpontokra hívja fel a hívást,
 
 - Idősorozat-modell API-k
   - Modell beállítások API-k
-    - [Get](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [Lekérés](/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [Frissítés](/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - Példány API-k
     - [Az összes batch-művelet](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
@@ -385,6 +385,6 @@ Ha a következő hibaüzenet jelenik meg, akkor az új API-verziót () használj
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A környezetet a [Azure Time Series Insights Explorerrel](./concepts-ux-panels.md) vagy az egyéni alkalmazáson keresztül tesztelheti.

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
 ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98201025"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
@@ -161,7 +161,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 | `count_star` | bigint (20) | NO| A lekérdezés intervallumában mintavétel alatt álló várakozási események száma |
 | `sum_timer_wait_ms` | double | NO| A lekérdezés teljes várakozási ideje (ezredmásodpercben) az intervallumban |
 
-### <a name="functions"></a>Függvények
+### <a name="functions"></a>Functions
 
 | **Név**| **Leírás** |
 |---|---|

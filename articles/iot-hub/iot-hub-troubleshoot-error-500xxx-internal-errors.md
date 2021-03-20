@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1333a135f3e123757e268513f73e8329537e630b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538204"
 ---
 # <a name="500xxx-internal-errors"></a>500xxx Belső hibák
@@ -23,13 +23,13 @@ Ez a cikk a **belső hibák 500xxx** okait és megoldásait ismerteti.
 
 Az IoT Hubre irányuló kérelme egy, a 500-as és/vagy valamilyen "kiszolgálóhiba" típusú hibával meghiúsul. Néhány lehetőség:
 
-* **500001 ServerError** : IoT hub egy kiszolgálóoldali hibába ütközött.
+* **500001 ServerError**: IoT hub egy kiszolgálóoldali hibába ütközött.
 
-* **500008 GenericTimeout** : a IoT hub időtúllépés előtt nem tudta befejezni a kapcsolatkérelem-kérést.
+* **500008 GenericTimeout**: a IoT hub időtúllépés előtt nem tudta befejezni a kapcsolatkérelem-kérést.
 
-* **ServiceUnavailable (nincs hibakód)** : IoT hub belső hibát észlelt.
+* **ServiceUnavailable (nincs hibakód)**: IoT hub belső hibát észlelt.
 
-* **InternalServerError (nincs hibakód)** : IoT hub belső hibát észlelt.
+* **InternalServerError (nincs hibakód)**: IoT hub belső hibát észlelt.
 
 ## <a name="cause"></a>Ok
 

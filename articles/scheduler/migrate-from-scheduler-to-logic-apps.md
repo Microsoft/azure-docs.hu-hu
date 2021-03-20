@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 02/29/2020
 ms.openlocfilehash: 0e9ca2c7b5d15fcc6be451bbe215c8b85d5309eb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368264"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
@@ -65,9 +65,9 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
 
    Ha nem rendelkezik sémával, de JSON formátumú minta-adattartalommal rendelkezik, létrehozhat egy sémát ebből a hasznos adatból.
 
-   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
+   1. A kérelem triggerben válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget.
 
-   1. A **minta JSON-adattartalom megadása vagy beillesztése**területen adja meg a minta hasznos adatait, majd válassza a **kész**lehetőséget, például:
+   1. A **minta JSON-adattartalom megadása vagy beillesztése** területen adja meg a minta hasznos adatait, majd válassza a **kész** lehetőséget, például:
 
       ![Minta hasznos adat](./media/migrate-from-scheduler-to-logic-apps/sample-payload.png)
 
@@ -78,7 +78,7 @@ Egyetlen logikai alkalmazás létrehozásával több egyszeri feladatot is futta
       }
       ```
 
-1. A trigger alatt válassza a **következő lépés**lehetőséget.
+1. A trigger alatt válassza a **következő lépés** lehetőséget.
 
 1. A keresőmezőbe írja be `delay until` szűrőként a kifejezést. A műveletek listában válassza a következő műveletet: **késleltetés, amíg**
 
@@ -151,7 +151,7 @@ Logic Apps minden egyszeri feladatot egyetlen logikai alkalmazás futtatási pé
 
    További információ a speciális ütemezési lehetőségekről: [ismétlődő feladatok és munkafolyamatok létrehozása és futtatása Azure Logic Appsokkal](../connectors/connectors-native-recurrence.md).
 
-1. További műveleteket is hozzáadhat, ha [több száz használatra kész](../connectors/apis-list.md)alkalmazást választ ki. A trigger alatt válassza a **következő lépés**lehetőséget. Keresse meg és válassza ki a kívánt műveleteket.
+1. További műveleteket is hozzáadhat, ha [több száz használatra kész](../connectors/apis-list.md)alkalmazást választ ki. A trigger alatt válassza a **következő lépés** lehetőséget. Keresse meg és válassza ki a kívánt műveleteket.
 
    Megadhat például egy HTTP-műveletet, amely egy kérést küld egy URL-címre, vagy olyan műveleteket, amelyek a tárolási várólistákkal, Service Bus várólistákkal vagy Service Bus témakörökkel működnek:
 
@@ -169,7 +169,7 @@ Az alábbi módokon testreszabhatja a feladatait.
 
 Annak szabályozásához, hogy egy művelet megpróbáljon újrafutni a logikai alkalmazásban az időszakos hibák bekövetkezésekor, beállíthatja az [újrapróbálkozási szabályzatot](../logic-apps/logic-apps-exception-handling.md#retry-policies) minden egyes művelet beállításaiban, például:
 
-1. Nyissa meg a művelet ellipsziseit (**..**.), és válassza a **Beállítások**lehetőséget.
+1. Nyissa meg a művelet ellipsziseit (**..**.), és válassza a **Beállítások** lehetőséget.
 
    ![Művelet beállításainak megnyitása](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -181,7 +181,7 @@ Annak szabályozásához, hogy egy művelet megpróbáljon újrafutni a logikai 
 
 Ha az Azure Schedulerben nem sikerül futtatni az alapértelmezett műveletet, futtathat egy vértisztító műveletet, amely a hiba feltételét tárgyalja. A Azure Logic Appsban ugyanezt a feladatot is végrehajthatja.
 
-1. A Logic app Designerben a kezelni kívánt művelet felett vigye az egérmutatót a lépések közötti nyíl fölé, és válassza a **párhuzamos ág hozzáadása**elemet.
+1. A Logic app Designerben a kezelni kívánt művelet felett vigye az egérmutatót a lépések közötti nyíl fölé, és válassza a **párhuzamos ág hozzáadása** elemet.
 
    ![Párhuzamos ág hozzáadása](./media/migrate-from-scheduler-to-logic-apps/add-parallel-branch.png)
 
@@ -189,7 +189,7 @@ Ha az Azure Schedulerben nem sikerül futtatni az alapértelmezett műveletet, f
 
    ![Párhuzamos művelet hozzáadása](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. Az alternatív műveletnél nyissa meg az ellipszisek (**..**.) menüt, majd válassza a **Futtatás után**lehetőséget.
+1. Az alternatív műveletnél nyissa meg az ellipszisek (**..**.) menüt, majd válassza a **Futtatás után** lehetőséget.
 
    ![Futtatás konfigurálása a következő után](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
@@ -209,7 +209,7 @@ További információ a kivételek kezeléséről: [hibák és kivételek kezel�
 **A**: az Azure Scheduler a 2019. december 31-én teljes kivonásra van ütemezve. A dátum és a részletes ütemterv elvégzéséhez szükséges lépésekért lásd: [a Scheduler nyugdíjazási dátumának meghosszabbítása 2019. december 31-ig](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Általános frissítések: [Azure Updates-Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **K**: mi történik a feladat-gyűjtemények és-feladatok után a szolgáltatás újragumiabroncsai után? <br>
-Válasz **: a**Feladatütemező és a feladatok összes futtatása leáll, és törlődik a rendszerből.
+Válasz **: a** Feladatütemező és a feladatok összes futtatása leáll, és törlődik a rendszerből.
 
 **K**: a Feladatütemező feladatainak Logic Appsre való áttelepítése előtt készítsen biztonsági mentést, vagy hajtson végre más feladatokat? <br>
 **A**: ajánlott eljárásként mindig biztonsági másolatot készíteni a munkáról. Győződjön meg arról, hogy a létrehozott logikai alkalmazások a várt módon futnak a Scheduler-feladatok törlése vagy letiltása előtt.
@@ -224,18 +224,18 @@ Válasz **: a**Feladatütemező és a feladatok összes futtatása leáll, és t
 
 Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai támogatási kérést hozhat létre a Azure Portal. Ellenkező esetben választhat másik támogatási lehetőséget is.
 
-1. A [Azure Portal](https://portal.azure.com) Főmenüben válassza a **Súgó + támogatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com) Főmenüben válassza a **Súgó + támogatás** lehetőséget.
 
-1. A **támogatás** menüben válassza az **új támogatási kérelem**lehetőséget. Adja meg a kérelmére vonatkozó információkat:
+1. A **támogatás** menüben válassza az **új támogatási kérelem** lehetőséget. Adja meg a kérelmére vonatkozó információkat:
 
    | Tulajdonság | Érték |
    |---------|-------|
    | **Probléma típusa** | **Műszaki** |
    | **Előfizetés** | <*saját Azure-előfizetés*> |
-   | **Szolgáltatás** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
+   | **Szolgáltatás** | A **figyelés &** felügyelet területen válassza az **ütemező** lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
    ||| 
 
-1. Válassza ki a kívánt támogatási lehetőséget. Ha fizetős támogatási csomaggal rendelkezik, válassza a **tovább**lehetőséget.
+1. Válassza ki a kívánt támogatási lehetőséget. Ha fizetős támogatási csomaggal rendelkezik, válassza a **tovább** lehetőséget.
 
 **Közösség**
 

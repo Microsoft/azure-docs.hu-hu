@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b484b19282c8ad42890f6e04f03563c29baa49dd
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97745997"
 ---
 # <a name="view-requests-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelmek megtekintése az Azure AD-jogosultságok kezelésében
@@ -41,7 +41,7 @@ Az Azure AD-jogosultságok kezelése szolgáltatásban megtekintheti, hogy ki k�
 
     ![Hozzáférési csomagra vonatkozó kérelmek listája](./media/entitlement-management-access-package-requests/requests-list.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomag kérelem-és jóváhagyási beállításainak módosítása](entitlement-management-access-package-request-policy.md)
 - [Hozzáférési csomag hozzárendeléseinek megtekintése, hozzáadása és eltávolítása](entitlement-management-access-package-assignments.md)

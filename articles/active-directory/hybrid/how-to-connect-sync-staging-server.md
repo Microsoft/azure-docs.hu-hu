@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48584fa4042cf53fa1084e519dca0e64f530ca59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90090125"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
@@ -58,16 +58,16 @@ A metódus alkalmazásához kövesse az alábbi lépéseket:
 #### <a name="prepare"></a>Előkészítés
 1. Telepítse a Azure AD Connectt, válassza ki az **átmeneti üzemmódot**, és törölje a **szinkronizálás elindítása** a telepítővarázsló utolsó lapján. Ez a mód lehetővé teszi a szinkronizálási motor manuális futtatását.
    ![A képernyőképen látható a konfigurálásra kész lap a Azure AD Connect párbeszédpanelen.](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Jelentkezzen ki/jelentkezzen be, és a Start menüben válassza a **szinkronizálási szolgáltatás**elemet.
+2. Jelentkezzen ki/jelentkezzen be, és a Start menüben válassza a **szinkronizálási szolgáltatás** elemet.
 
 #### <a name="configuration"></a>Konfiguráció
 Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és össze szeretné hasonlítani a konfigurációt az átmeneti kiszolgálóval, akkor a [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter)használatával kell összehasonlítania.
 
 #### <a name="import-and-synchronize"></a>Importálás és szinkronizálás
-1. Válassza az **Összekötők**lehetőséget, majd válassza ki az első összekötőt **Active Directory tartományi szolgáltatások**típussal. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**. Hajtsa végre ezeket a lépéseket az összes ilyen típusú összekötőhöz.
-2. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**.
-3. Győződjön meg arról, hogy a TAB-összekötők továbbra is ki vannak választva. Minden **Active Directory tartományi szolgáltatások**típusú összekötőhöz kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
-4. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
+1. Válassza az **Összekötők** lehetőséget, majd válassza ki az első összekötőt **Active Directory Domain Services** típussal. Kattintson a **Futtatás** elemre, válassza a **teljes importálás** lehetőséget, majd **az OK gombot**. Hajtsa végre ezeket a lépéseket az összes ilyen típusú összekötőhöz.
+2. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás** elemre, válassza a **teljes importálás** lehetőséget, majd **az OK gombot**.
+3. Győződjön meg arról, hogy a TAB-összekötők továbbra is ki vannak választva. Minden **Active Directory Domain Services** típusú összekötőhöz kattintson a **Futtatás** elemre, válassza a **különbözeti szinkronizálás** lehetőséget, majd **az OK gombot**.
+4. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás** elemre, válassza a **különbözeti szinkronizálás** lehetőséget, majd **az OK gombot**.
 
 Ezzel elvégezte az Azure AD és a helyszíni Active Directory módosításainak exportálását (ha az Exchange hibrid üzembe helyezést használja). A következő lépésekkel megvizsgálhatja, hogy mi a változás, mielőtt ténylegesen elindítja az exportálást a címtárakba.
 
@@ -102,7 +102,7 @@ A megvalósítási terv része annak a megtervezése, hogy mi a teendő abban az
 A kérdésekre adott válaszoktól és a szervezet házirendjétől függően az alábbi stratégiák egyike valósítható meg:
 
 * Szükség esetén építse újra.
-* Tartalék készenléti kiszolgálóval rendelkezik, amelyet **átmeneti üzemmódnak**nevezünk.
+* Tartalék készenléti kiszolgálóval rendelkezik, amelyet **átmeneti üzemmódnak** nevezünk.
 * Virtuális gépek használata.
 
 Ha nem használja a beépített SQL Express-adatbázist, tekintse át az [SQL magas rendelkezésre állási](#sql-high-availability) szakaszt is.
@@ -113,7 +113,7 @@ Egy életképes stratégia a kiszolgáló újraépítésének megtervezése, ha 
 A szinkronizálási motor kiszolgálója nem tárol semmilyen állapotot az objektumokról, így az adatbázis újraépíthető a Active Directory és az Azure AD-ben lévő adatokból. A **sourceAnchor** attribútum a helyszíni és a felhőből származó objektumok csatlakoztatására szolgál. Ha a kiszolgálót a helyszíni és a Felhőbeli meglévő objektumokkal építi újra, akkor a szinkronizálási motor az újratelepítéskor újra összehasonlítja ezeket az objektumokat. A dokumentálni és menteni kívánt dolgok a kiszolgálón végrehajtott konfigurációs változások, például a szűrési és szinkronizálási szabályok. Ezeket az egyéni konfigurációkat újra kell alkalmazni a szinkronizálás megkezdése előtt.
 
 ### <a name="have-a-spare-standby-server---staging-mode"></a>Készenléti kiszolgáló – átmeneti üzemmód
-Ha összetettebb környezettel rendelkezik, egy vagy több készenléti kiszolgáló használata javasolt. A telepítés során engedélyezheti, hogy a kiszolgáló **átmeneti módban**legyen.
+Ha összetettebb környezettel rendelkezik, egy vagy több készenléti kiszolgáló használata javasolt. A telepítés során engedélyezheti, hogy a kiszolgáló **átmeneti módban** legyen.
 
 További információ: [átmeneti üzemmód](#staging-mode).
 
@@ -151,9 +151,9 @@ write-host "Importing XML" -ForegroundColor Yellow
 $resolvedXMLtoimport=Resolve-Path -Path ([Environment]::ExpandEnvironmentVariables($xmltoimport))
 
 #use an XmlReader to deal with even large files
-$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
+$result=$reader = [System.Xml.XmlReader]::Create($resolvedXMLtoimport) 
 $result=$reader.ReadToDescendant('cs-object')
-do 
+do 
 {
     #create the object placeholder
     #adding them up here means we can enforce consistency

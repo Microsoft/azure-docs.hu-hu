@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe0c7eec5c023fcba3152ad6329d318210a0c2ab
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370933"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory
@@ -49,11 +49,11 @@ Az Azure AD-szerepkörök felhasználóhoz való hozzárendelésének általáno
 
       ![Minden felhasználó lap – válassza ki a felhasználót](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
 
-5. Az **Alain Charon-profil** lapon válassza a **hozzárendelt szerepkörök**elemet.
+5. Az **Alain Charon-profil** lapon válassza a **hozzárendelt szerepkörök** elemet.
 
     Megjelenik az **Alain Charon-rendszergazdai szerepkörök** lap.
 
-6. Válassza a **hozzárendelések hozzáadása**lehetőséget, válassza ki az Alain-hoz hozzárendelni kívánt szerepkört (például _alkalmazás-rendszergazda_), majd válassza a **kiválasztás**lehetőséget.
+6. Válassza a **hozzárendelések hozzáadása** lehetőséget, válassza ki az Alain-hoz hozzárendelni kívánt szerepkört (például _alkalmazás-rendszergazda_), majd válassza a **kiválasztás** lehetőséget.
 
     ![Hozzárendelt szerepkörök lap – a kiválasztott szerepkör megjelenítése](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
@@ -65,9 +65,9 @@ Ha el kell távolítania a szerepkör-hozzárendelést egy felhasználótól, az
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>Szerepkör-hozzárendelés eltávolítása a felhasználótól
 
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, majd keresse meg és válassza ki azt a felhasználót, aki a szerepkör-hozzárendelést eltávolítja. Például _Alain Charon_.
+1. Válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd keresse meg és válassza ki azt a felhasználót, aki a szerepkör-hozzárendelést eltávolítja. Például _Alain Charon_.
 
-2. Válassza a **hozzárendelt szerepkörök**lehetőséget, válassza az **alkalmazás rendszergazdája**lehetőséget, majd válassza a **hozzárendelés eltávolítása**lehetőséget.
+2. Válassza a **hozzárendelt szerepkörök** lehetőséget, válassza az **alkalmazás rendszergazdája** lehetőséget, majd válassza a **hozzárendelés eltávolítása** lehetőséget.
 
     ![Hozzárendelt szerepkörök lap, amely megjeleníti a kiválasztott szerepkört és az Eltávolítás lehetőséget.](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 

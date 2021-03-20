@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 71fa9ef4da8081a167b68553e2e3eac8477e8aee
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881720"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric
@@ -58,7 +58,7 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 
 - A felügyelt identitások Service Fabric támogatása jelenleg nincs integrálva a [AzureServiceTokenProvider](/dotnet/api/overview/azure/service-to-service-authentication).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új Azure Service Fabric-fürt üzembe helyezése felügyelt identitások támogatásával](./configure-new-azure-service-fabric-enable-managed-identity.md)
 - [Felügyelt identitás támogatásának engedélyezése meglévő Azure Service Fabric-fürtben](./configure-existing-cluster-enable-managed-identity-token-service.md)

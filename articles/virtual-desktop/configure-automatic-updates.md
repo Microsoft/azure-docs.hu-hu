@@ -8,10 +8,10 @@ ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
 ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88010123"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>A Microsoft Endpoint Configuration Manager konfigurálása
@@ -31,12 +31,12 @@ A Windows 10 Enterprise multi-session-munkamenet frissítéseinek fogadásához 
 
 Frissítések fogadása:
 
-1. Nyissa meg a Microsoft Endpoint Configuration Managert, és válassza a **helyek**lehetőséget.
-2. Válassza a **hely összetevőinek konfigurálása**lehetőséget.
+1. Nyissa meg a Microsoft Endpoint Configuration Managert, és válassza a **helyek** lehetőséget.
+2. Válassza a **hely összetevőinek konfigurálása** lehetőséget.
 3. Válassza a **szoftverfrissítési pont** lehetőséget a legördülő menüben.
 4. Válassza a **Products** (Termékek) lapot.
-5. Jelölje be a **Windows Server 1903-es és újabb verziójának**bejelölését.
-6. Nyissa meg a **szoftver-függvénytár**  >  **Áttekintés**  >  **szoftverfrissítéseket**  >  **All Software Updates** , és válassza a **szoftverfrissítések szinkronizálása**lehetőséget.
+5. Jelölje be a **Windows Server 1903-es és újabb verziójának** bejelölését.
+6. Nyissa meg a **szoftver-függvénytár**  >  **Áttekintés**  >  **szoftverfrissítéseket**  >   , és válassza a **szoftverfrissítések szinkronizálása** lehetőséget.
 7. Ellenőrizze a Wsyncmgr. log fájlt a **Program Files**  >  **Microsoft Configuration Manager**  >  **naplóban** , hogy megbizonyosodjon róla, hogy mentette a módosításokat. A frissítések szinkronizálása néhány percet is igénybe vehet.
 
 ## <a name="create-a-query-based-collection"></a>Lekérdezésen alapuló gyűjtemény létrehozása
@@ -45,12 +45,12 @@ Windows 10 Enterprise rendszerű, több munkamenetből álló virtuális gépek 
 
 Gyűjtemény létrehozása:
 
-1. Válassza **az eszközök és megfelelőség**lehetőséget.
+1. Válassza **az eszközök és megfelelőség** lehetőséget.
 2. Nyissa meg az **áttekintő**  >  **eszközök gyűjteményeit** , és kattintson a jobb gombbal az **eszközök** gyűjteménye elemre, majd válassza a legördülő menü **eszköz gyűjtemény létrehozása** elemét
-3. A megnyíló menü **általános** lapján adjon meg egy nevet, amely leírja a gyűjteményt a **név** mezőben. A **Megjegyzés** mezőben további információkat adhat meg, amely leírja, hogy mi a gyűjtemény. A **gyűjtemény korlátozása**területen határozza meg, hogy mely gépeket kívánja megadni a gyűjtemény lekérdezésében.
-4. A **tagsági szabályok** lapon adjon hozzá egy szabályt a lekérdezéshez Ehhez válassza a **szabály hozzáadása**, majd a **lekérdezési szabály**lehetőséget.
-5. A **lekérdezési szabály tulajdonságainál**adja meg a szabály nevét, majd a **lekérdezési utasítás szerkesztése**lehetőség kiválasztásával adja meg a szabály paramétereit.
-6. Válassza a **lekérdezési utasítás megjelenítése**lehetőséget.
+3. A megnyíló menü **általános** lapján adjon meg egy nevet, amely leírja a gyűjteményt a **név** mezőben. A **Megjegyzés** mezőben további információkat adhat meg, amely leírja, hogy mi a gyűjtemény. A **gyűjtemény korlátozása** területen határozza meg, hogy mely gépeket kívánja megadni a gyűjtemény lekérdezésében.
+4. A **tagsági szabályok** lapon adjon hozzá egy szabályt a lekérdezéshez Ehhez válassza a **szabály hozzáadása**, majd a **lekérdezési szabály** lehetőséget.
+5. A **lekérdezési szabály tulajdonságainál** adja meg a szabály nevét, majd a **lekérdezési utasítás szerkesztése** lehetőség kiválasztásával adja meg a szabály paramétereit.
+6. Válassza a **lekérdezési utasítás megjelenítése** lehetőséget.
 7. Az utasításban adja meg a következő karakterláncot:
 
     ```syntax

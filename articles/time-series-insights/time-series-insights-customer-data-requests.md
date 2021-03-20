@@ -10,10 +10,10 @@ services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019072"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
@@ -66,7 +66,7 @@ A Time Series Insights jelenleg nem támogatja az adattárolás részletes törl
 
 További információért olvassa el az [adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [a Azure Time Series Insights-környezet adatelérésének biztosításáról](./concepts-access-policies.md).
 

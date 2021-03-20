@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az Apache flink e
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 1d382270248e95b1b973f57f67ebf81160f03a16
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369505"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache Flink használata az Apache Kafkához készült Event Hubs szolgáltatással
