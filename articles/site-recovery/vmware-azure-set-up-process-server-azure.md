@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008479"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Azure-beli folyamatkiszolgálók beállítása feladat-visszavételhez
@@ -28,7 +28,7 @@ További információ az ismételt [védelemről](vmware-azure-reprotect.md) és
 
 ## <a name="deploy-a-process-server-in-azure"></a>Folyamat-kiszolgáló üzembe helyezése az Azure-ban
 
-1. A tárolóban > **site Recovery infrastruktúra** a >  **Manage**  >  **konfigurációs kiszolgálók** kezelése lapon válassza ki a konfigurációs kiszolgálót.
+1. A tárolóban > **site Recovery infrastruktúra** a >    >  **konfigurációs kiszolgálók** kezelése lapon válassza ki a konfigurációs kiszolgálót.
 2. A kiszolgáló lapon kattintson a **+ folyamat kiszolgáló** elemre.
 3. A **folyamat-kiszolgáló hozzáadása** oldalon, és válassza a Process Server üzembe helyezése az Azure-ban lehetőséget.
 4. Itt adhatja meg az Azure-beállításokat, beleértve a feladatátvételhez használt előfizetést, az erőforráscsoportot, a feladatátvételhez használt Azure-régiót, valamint azt a virtuális hálózatot, amelyben az Azure-beli virtuális gépek találhatók. Ha több Azure-hálózatot is használt, mindegyikhez szükség van egy Process Serverre.

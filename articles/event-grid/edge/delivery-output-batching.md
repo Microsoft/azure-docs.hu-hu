@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171635"
 ---
 # <a name="output-batching"></a>Kimenet kötegelése
@@ -75,7 +75,7 @@ A Event Grid batching viselkedése előfizetőként testreszabható, az alábbi 
 
 A következő üzembe helyezési idő beállítások az esemény-előfizetés létrehozásakor engedélyezett maximális értéket vezérlik.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A forgatógomb számára engedélyezett maximális érték `PreferredBatchSizeInKilobytes` Alapértelmezett érték `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | A forgatógomb számára engedélyezett maximális érték `MaxEventsPerBatch` Alapértelmezett érték `50` .
@@ -84,7 +84,7 @@ A következő üzembe helyezési idő beállítások az esemény-előfizetés l�
 
 A következő üzembe helyezési idő beállításai vezérlik az egyes gombok futásidejű alapértelmezett értékét, ha az esemény-előfizetésben nincs megadva. Az ismételt próbálkozáshoz be kell állítani legalább egy gombot az esemény-előfizetésre, hogy bekapcsolja a kötegelt működést.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak meg `MaxEventsPerBatch` van adva. Alapértelmezett érték `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak meg `MaxBatchSizeInBytes` van adva. Alapértelmezett érték `10` .

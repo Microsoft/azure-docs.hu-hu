@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
 ms.openlocfilehash: f1846c126e81ca5851cfbb1d782e5315ae10a82a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92152264"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése Azure Cloud Shell
@@ -66,7 +66,7 @@ A bash-ben futtatott aktuális régió megkereséséhez `env` Keresse meg a vál
 
 Cloud Shell gépek léteznek a következő régiókban:
 
-|Terület|Régió|
+|Terület|Region|
 |---|---|
 |Észak-, Dél- és Közép-Amerika|USA keleti régiója, USA déli középső régiója, USA nyugati régiója|
 |Európa|Észak-Európa, Nyugat-Európa|
@@ -142,7 +142,7 @@ További részletek megtekintéséhez futtassa a következőt `clouddrive mount 
 ### <a name="unmount-clouddrive"></a>Clouddrive leválasztása
 Bármikor leválaszthatja a Cloud Shellhoz csatlakoztatott fájlmegosztást. Mivel a Cloud Shell csatlakoztatott fájlmegosztást kell használni, a rendszer felszólítja, hogy hozzon létre és csatoljon egy másik fájlmegosztást a következő munkamenetben.
 
-1. A `clouddrive unmount` parancs futtatása.
+1. Futtassa az `clouddrive unmount` parancsot.
 2. Nyugtázza és erősítse meg a kéréseket.
 
 A fájlmegosztás továbbra is fennáll, hacsak nem törli manuálisan. A következő munkamenetekben a Cloud Shell többé nem fogja megkeresni ezt a fájlmegosztást. További részletek megtekintéséhez futtassa a következőt `clouddrive unmount -h` :

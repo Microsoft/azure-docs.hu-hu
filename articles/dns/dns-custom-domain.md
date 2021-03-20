@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: 4d8af5815e544698ab833001e5ce6d0f4a30a264
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487398"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Az Azure-szolgáltatás egyéni tartományi beállításainak megadása a Azure DNS használatával
@@ -28,7 +28,7 @@ Az [Azure Function apps](#azure-function-app), a [nyilvános IP-címek](#public-
 
 Az Azure Function apps egyéni tartományának konfigurálásához létre kell hoznia egy CNAME rekordot, valamint magát a Function alkalmazás konfigurációját is.
  
-Navigáljon **függvényalkalmazás** , és válassza ki a Function alkalmazást. Kattintson a **platform szolgáltatások** elemre, majd a **hálózat** területen kattintson az **Egyéni tartományok**elemre.
+Navigáljon **függvényalkalmazás** , és válassza ki a Function alkalmazást. Kattintson a **platform szolgáltatások** elemre, majd a **hálózat** területen kattintson az **Egyéni tartományok** elemre.
 
 ![function alkalmazás panel](./media/dns-custom-domain/functionapp.png)
 
@@ -36,7 +36,7 @@ Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a c
 
 ![egyéni tartomány panel](./media/dns-custom-domain/functionshostname.png)
 
-Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
+Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító** elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
@@ -46,9 +46,9 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | adatumfunction.azurewebsites.net        | Az aliast létrehozó DNS-név, ebben a példában ez a adatumfunction.azurewebsites.net DNS-név, amely alapértelmezés szerint a Function alkalmazáshoz van megadva.        |
 
-Váltson vissza a Function alkalmazásra, kattintson a **platform szolgáltatásai**lehetőségre, majd a **hálózat** területen kattintson az **Egyéni tartományok**lehetőségre, majd az **Egyéni állomásnevek** elemre, végül az **állomásnév hozzáadása**lehetőségre.
+Váltson vissza a Function alkalmazásra, kattintson a **platform szolgáltatásai** lehetőségre, majd a **hálózat** területen kattintson az **Egyéni tartományok** lehetőségre, majd az **Egyéni állomásnevek** elemre, végül az **állomásnév hozzáadása** lehetőségre.
 
-Az **állomásnév hozzáadása** panelen írja be a CNAME rekordot az **állomásnév** szövegmezőbe, majd kattintson az **Érvényesítés**elemre. Ha a rekord megtalálható, megjelenik az **állomásnév hozzáadása** gomb. Az alias hozzáadásához kattintson az **állomásnév hozzáadása** elemre.
+Az **állomásnév hozzáadása** panelen írja be a CNAME rekordot az **állomásnév** szövegmezőbe, majd kattintson az **Érvényesítés** elemre. Ha a rekord megtalálható, megjelenik az **állomásnév hozzáadása** gomb. Az alias hozzáadásához kattintson az **állomásnév hozzáadása** elemre.
 
 ![function apps – állomásnév hozzáadása panel](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -56,11 +56,11 @@ Az **állomásnév hozzáadása** panelen írja be a CNAME rekordot az **állom�
 
 Ha egyéni tartományt szeretne konfigurálni olyan szolgáltatások számára, amelyek nyilvános IP-cím erőforrást használnak, például A Application Gateway, A Load Balancer, A Cloud Service, A Resource Manager-alapú virtuális gépek és a klasszikus virtuális gépek egy rekordot használnak.
 
-Navigáljon a **hálózat**  >  **nyilvános IP-címéhez**, válassza ki a nyilvános IP-címet, és kattintson a **konfiguráció**elemre. A megjelenített IP-cím.
+Navigáljon a **hálózat**  >  **nyilvános IP-címéhez**, válassza ki a nyilvános IP-címet, és kattintson a **konfiguráció** elemre. A megjelenített IP-cím.
 
 ![nyilvános IP-cím panel](./media/dns-custom-domain/publicip.png)
 
-Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
+Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító** elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
 |Tulajdonság  |Érték  |Leírás  |
@@ -81,13 +81,13 @@ Az a rekord létrehozása után futtassa a parancsot a `nslookup` rekord felold�
 
 Az alábbi lépések végigvezetik az egyéni tartomány konfigurálásának lépésein egy app Service-webalkalmazáshoz.
 
-Navigáljon **app Servicere** , és válassza ki az egyéni tartománynevet konfiguráló erőforrást, majd kattintson az **Egyéni tartományok**elemre.
+Navigáljon **app Servicere** , és válassza ki az egyéni tartománynevet konfiguráló erőforrást, majd kattintson az **Egyéni tartományok** elemre.
 
 Jegyezze fel az aktuális URL-címet az **Egyéni tartományok** panelen, ez a cím lesz a létrehozott DNS-rekord aliasa.
 
 ![Egyéni tartományok panel](./media/dns-custom-domain/url.png)
 
-Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
+Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító** elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
 |Tulajdonság  |Érték  |Leírás  |
@@ -101,7 +101,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 
 ![CNAME-rekord létrehozása](./media/dns-custom-domain/createcnamerecord.png)
 
-Váltson vissza az egyéni tartománynévhez konfigurált app Service-be. Kattintson az **Egyéni tartományok**, majd az **állomásnevek**elemre. A létrehozott CNAME rekord hozzáadásához kattintson a **+ állomásnév hozzáadása**lehetőségre.
+Váltson vissza az egyéni tartománynévhez konfigurált app Service-be. Kattintson az **Egyéni tartományok**, majd az **állomásnevek** elemre. A létrehozott CNAME rekord hozzáadásához kattintson a **+ állomásnév hozzáadása** lehetőségre.
 
 ![Képernyőfelvétel: a + állomásnév hozzáadása gomb.](./media/dns-custom-domain/figure1.png)
 
@@ -119,11 +119,11 @@ Ha egyéni tartományt kell vásárolnia, látogasson el az [Azure Web Apps Egy�
 
 A következő lépések végigvezetik a blob Storage-fiókhoz tartozó CNAME-rekordok konfigurálásának lépésein a asverify metódus használatával. Ez a módszer biztosítja, hogy nincs leállás.
 
-Navigáljon a **Storage**  >  **Storage-fiókok**elemre, válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány**lehetőségre. A 2. lépés alatt található teljes tartománynevet az első CNAME rekord létrehozásához használja a rendszer.
+Navigáljon a **Storage**  >  **Storage-fiókok** elemre, válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány** lehetőségre. A 2. lépés alatt található teljes tartománynevet az első CNAME rekord létrehozásához használja a rendszer.
 
 ![BLOB Storage – egyéni tartomány](./media/dns-custom-domain/blobcustomdomain.png)
 
-Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
+Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító** elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 
 |Tulajdonság  |Érték  |Leírás  |
@@ -134,7 +134,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Az aliast létrehozó DNS-név, ebben a példában ez a asverify.adatumfunctiona9ed.blob.core.windows.net DNS-név, amely alapértelmezés szerint a Storage-fiókhoz van megadva.        |
 
-A Storage-fiókok elemre **kattintva térjen**vissza a Storage-fiókra  >  **Storage Accounts**, válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány**lehetőségre. Írja be a asverify előtag nélkül létrehozott aliast a szövegmezőbe, jelölje be a **közvetett CNAME ellenőrzés használata**jelölőnégyzetet, majd kattintson a **Mentés**gombra. Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a asverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal.
+A Storage-fiókok elemre **kattintva térjen** vissza a Storage-fiókra  >  , válassza ki a Storage-fiókját, és kattintson az **egyéni tartomány** lehetőségre. Írja be a asverify előtag nélkül létrehozott aliast a szövegmezőbe, jelölje be a **közvetett CNAME ellenőrzés használata** jelölőnégyzetet, majd kattintson a **Mentés** gombra. Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a asverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal.
 
 ![Képernyőkép, amely az egyéni tartomány lapot mutatja.](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -146,13 +146,13 @@ További információ az egyéni tartomány blob Storage-végpontra való lekép
 
 A következő lépések végigvezetik a cdnverify metódus használatával a CDN-végpont CNAME rekordjának konfigurálásán. Ez a módszer biztosítja, hogy nincs leállás.
 
-Navigáljon a **Network**  >  **CDN-profilok**elemre, és válassza ki a CDN-profilját.
+Navigáljon a **Network**  >  **CDN-profilok** elemre, és válassza ki a CDN-profilját.
 
-Válassza ki azt a végpontot, amellyel dolgozik, és kattintson az **+ egyéni tartomány**lehetőségre. Jegyezze fel a **végpont állomásnévjét** , mert ez az érték az a rekord, amelyet a CNAME-rekord mutat.
+Válassza ki azt a végpontot, amellyel dolgozik, és kattintson az **+ egyéni tartomány** lehetőségre. Jegyezze fel a **végpont állomásnévjét** , mert ez az érték az a rekord, amelyet a CNAME-rekord mutat.
 
 ![Egyéni CDN-tartomány](./media/dns-custom-domain/endpointcustomdomain.png)
 
-Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
+Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító** elemre. Adja meg a következő információkat a **rekordazonosító hozzáadása** panelen, és kattintson **az OK** gombra a létrehozásához.
 
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
@@ -162,7 +162,7 @@ Navigáljon a DNS-zónához, és kattintson a **+ rekordazonosító**elemre. Adj
 |TTL-egység     | Óra        | A rendszer órákat használ az idő méréséhez         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Az aliast létrehozó DNS-név, ebben a példában ez a cdnverify.adatumcdnendpoint.azureedge.net DNS-név, amely alapértelmezés szerint a Storage-fiókhoz van megadva.        |
 
-Váltson vissza a CDN-végpontra a **hálózati**  >  **CDN-profilok**elemre kattintva, és válassza ki a CDN-profilját. Kattintson az **+ egyéni tartomány** lehetőségre, és adja meg a CNAME rekord aliasát a cdnverify előtag nélkül, majd kattintson a **Hozzáadás**gombra.
+Váltson vissza a CDN-végpontra a **hálózati**  >  **CDN-profilok** elemre kattintva, és válassza ki a CDN-profilját. Kattintson az **+ egyéni tartomány** lehetőségre, és adja meg a CNAME rekord aliasát a cdnverify előtag nélkül, majd kattintson a **Hozzáadás** gombra.
 
 Ha ez a lépés elkészült, térjen vissza a DNS-zónához, és hozzon létre egy CNAME-rekordot a cdnverify előtag nélkül.  Ezután nyugodtan törölheti a CNAME-rekordot a cdnverify előtaggal. A CDN-ről és az egyéni tartománynak a közbenső regisztrációs lépés nélküli konfigurálásával kapcsolatos további információkért tekintse meg a [Azure CDN tartalmat egy egyéni tartományra](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json).
 

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171567"
 ---
 # <a name="event-schemas"></a>Eseménysémák
@@ -55,12 +55,12 @@ Minden esemény a következő legfelső szintű adattal rendelkezik:
 | Tulajdonság | Típus | Kötelező | Leírás |
 | -------- | ---- | ----------- |-----------
 | témakör | sztring | No | Meg kell egyeznie azzal a témával, amelyen közzé lett téve. Event Grid feltölti azt a témakör nevével, amelyen közzé van téve, ha nincs meghatározva. |
-| tulajdonos | sztring | Igen | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
-| eventType | sztring | Igen | Az eseményforrás eseménytípus, például BlobCreated. |
-| eventTime | sztring | Igen | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| tárgy | sztring | Yes | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| eventType | sztring | Yes | Az eseményforrás eseménytípus, például BlobCreated. |
+| eventTime | sztring | Yes | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | ID (Azonosító) | sztring | No | Az esemény egyedi azonosítója. |
-| adatok | object | Nem | A közzétételi entitásra jellemző esemény-adatmennyiség rögzítésére szolgál. |
-| dataVersion | sztring | Igen | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| adatok | object | No | A közzétételi entitásra jellemző esemény-adatmennyiség rögzítésére szolgál. |
+| dataVersion | sztring | Yes | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | No | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 ### <a name="example--eventgrid-schema-event"></a>Példa: EventGrid-séma esemény

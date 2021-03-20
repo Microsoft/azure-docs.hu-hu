@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: db4b676e65d36a9476fd72b66cc8ccfa38af4d85
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144502"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (.NET)
@@ -41,13 +41,13 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 1. A Visual Studióban hozzon létre egy Visual C# Windows klasszikus asztali projektet a **Console app (.NET-keretrendszer)** projekt sablon használatával. Nevezze el a projekt **CreateIoTHub**.
 
-2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd kattintson a **NuGet-csomagok kezelése**elemre.
+2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd kattintson a **NuGet-csomagok kezelése** elemre.
 
-3. A NuGet csomagkezelő területén tekintse meg az **előzetes kiadást**, majd a **Tallózás** oldalon keresse meg a **Microsoft. Azure. Management. erőforráskezelő**. Válassza ki a csomagot, kattintson a **telepítés**gombra, a **változások áttekintése** **elemre**, majd kattintson az **Elfogadom** gombra a licencek elfogadásához.
+3. A NuGet csomagkezelő területén tekintse meg az **előzetes kiadást**, majd a **Tallózás** oldalon keresse meg a **Microsoft. Azure. Management. erőforráskezelő**. Válassza ki a csomagot, kattintson a **telepítés** gombra, a **változások áttekintése** **elemre**, majd kattintson az **Elfogadom** gombra a licencek elfogadásához.
 
-4. A NuGet csomagkezelő eszközben keressen rá a **Microsoft. IdentityModel. clients. ActiveDirectory**kifejezésre.  Kattintson a **telepítés**gombra, a **változások áttekintése** lapon kattintson **az OK**gombra, majd kattintson az **Elfogadom** gombra a licenc elfogadásához.
+4. A NuGet csomagkezelő eszközben keressen rá a **Microsoft. IdentityModel. clients. ActiveDirectory** kifejezésre.  Kattintson a **telepítés** gombra, a **változások áttekintése** lapon kattintson **az OK** gombra, majd kattintson az **Elfogadom** gombra a licenc elfogadásához.
 
-5. A Program.cs-ben cserélje le a meglévő **using** utasításokat a következő kódra:
+5. A program. cs esetében cserélje le a meglévő **using** utasításokat a következő kódra:
 
     ```csharp
     using System;
@@ -57,7 +57,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
     using Microsoft.Rest;
     ```
 
-6. A Program.cs-ben adja hozzá a következő statikus változókat a helyőrző értékeinek cseréjéhez. Az oktatóanyag korábbi részében az **ApplicationId**, a **SubscriptionId**, a **TenantId**és a **Password** megjegyzését készítettük. Az **Azure Storage-fiók neve** annak az Azure Storage-fióknak a neve, ahol a Azure Resource Manager sablonfájlokat tárolja. Az **erőforráscsoport neve** az IoT hub létrehozásakor használt erőforráscsoport neve. A név lehet egy már meglévő vagy egy új erőforráscsoport. A **központi telepítés neve** a központi telepítés neve, például **Deployment_01**.
+6. A program. cs programban adja hozzá a következő statikus változókat a helyőrző értékeinek kiváltásához. Az oktatóanyag korábbi részében az **ApplicationId**, a **SubscriptionId**, a **TenantId** és a **Password** megjegyzését készítettük. Az **Azure Storage-fiók neve** annak az Azure Storage-fióknak a neve, ahol a Azure Resource Manager sablonfájlokat tárolja. Az **erőforráscsoport neve** az IoT hub létrehozásakor használt erőforráscsoport neve. A név lehet egy már meglévő vagy egy új erőforráscsoport. A **központi telepítés neve** a központi telepítés neve, például **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -75,7 +75,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot az erőforráscsoporthoz. A meglévő IoT hub-t egy Azure Resource Manager sablonnal is módosíthatja.
 
-1. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **template.js** nevű JSON-fájlt a projektbe.
+1. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem** lehetőségre. Vegyen fel egy **template.js** nevű JSON-fájlt a projektbe.
 
 2. Ha standard IoT hub-t szeretne felvenni az **USA keleti** régiójába, cserélje le a **template.js** tartalmát a következő erőforrás-definícióval. Az IoT Hubt támogató régiók aktuális listájának megtekintéséhez tekintse meg az [Azure status][lnk-status]:
 
@@ -113,7 +113,7 @@ A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot
     }
     ```
 
-3. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem**lehetőségre. Vegyen fel egy **parameters.js** nevű JSON-fájlt a projektbe.
+3. Megoldáskezelőban kattintson a jobb gombbal a projektre, kattintson a **Hozzáadás**, majd az **új elem** lehetőségre. Vegyen fel egy **parameters.js** nevű JSON-fájlt a projektbe.
 
 4. Cserélje le a **parameters.js** tartalmát a következő paraméter-információra, amely az új IoT hub nevét állítja be, például **{a Monogram} mynewiothub**. Az IoT hub nevének globálisan egyedinek kell lennie, ezért tartalmaznia kell a nevét vagy a monogramját:
 
@@ -128,15 +128,15 @@ A JSON-sablon és a paraméter fájl használatával hozzon létre egy IoT hubot
     ```
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-5. A **Server Explorerben**kapcsolódjon az Azure-előfizetéséhez, és az Azure Storage-fiókban hozzon létre egy **templates**nevű tárolót. A **Tulajdonságok** panelen állítsa a **sablonok** tárolóhoz tartozó **nyilvános olvasási hozzáférési** engedélyeket a **blob**elemre.
+5. A **Server Explorerben** kapcsolódjon az Azure-előfizetéséhez, és az Azure Storage-fiókban hozzon létre egy **templates** nevű tárolót. A **Tulajdonságok** panelen állítsa a **sablonok** tárolóhoz tartozó **nyilvános olvasási hozzáférési** engedélyeket a **blob** elemre.
 
-6. A **Server Explorerben**kattintson a jobb gombbal a **sablonok** tárolóra, majd kattintson a **blob-tároló megtekintése**elemre. Kattintson a **blob feltöltése** gombra, jelölje ki a két fájlt, **parameters.js** be és **templates.js**be, majd kattintson a **Megnyitás** gombra, és töltse fel a JSON-fájlokat a **sablonok** tárolóba. A JSON-fájlokat tartalmazó Blobok URL-címei a következők:
+6. A **Server Explorerben** kattintson a jobb gombbal a **sablonok** tárolóra, majd kattintson a **blob-tároló megtekintése** elemre. Kattintson a **blob feltöltése** gombra, jelölje ki a két fájlt, **parameters.js** be és **templates.js** be, majd kattintson a **Megnyitás** gombra, és töltse fel a JSON-fájlokat a **sablonok** tárolóba. A JSON-fájlokat tartalmazó Blobok URL-címei a következők:
 
     ```csharp
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
-7. Adja hozzá a következő metódust a Program.cs:
+7. Adja hozzá a következő metódust a program. cs:
 
     ```csharp
     static void CreateIoTHub(ResourceManagementClient client)
@@ -192,7 +192,7 @@ Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** m
     Console.ReadLine();
     ```
 
-2. Kattintson a **Létrehozás** , majd a **megoldás létrehozása**lehetőségre. Javítsa ki az esetleges hibákat.
+2. Kattintson a **Létrehozás** , majd a **megoldás létrehozása** lehetőségre. Javítsa ki az esetleges hibákat.
 
 3. Kattintson a **hibakeresés** elemre, majd **indítsa el a hibakeresést** az alkalmazás futtatásához. A központi telepítés futtatása több percet is igénybe vehet.
 

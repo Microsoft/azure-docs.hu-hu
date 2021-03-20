@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 84ce5920af95113801f468e3149421f3b9bd8901
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91530000"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure-ban Service Fabric
@@ -53,7 +53,7 @@ A *GS-Spring-boot/Complete* könyvtáron belül futtassa az alábbi parancsot az
 
     ![Spring boot Yeoman bejegyzései](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. A *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* mappában hozzon létre egy *entryPoint.sh*nevű fájlt. Adja hozzá a következő kódot a *entryPoint.sh* fájlhoz. 
+1. A *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* mappában hozzon létre egy *entryPoint.sh* nevű fájlt. Adja hozzá a következő kódot a *entryPoint.sh* fájlhoz. 
 
     ```bash
     #!/bin/bash
@@ -150,13 +150,13 @@ A Service Fabric Explorer az összes Service Fabric-fürtben fut. Az eléréséh
 A webes előtér-szolgáltatás skálázásához tegye a következőket:
 
 1. Nyissa meg a Service Fabric Explorert a fürtben – például: `http://localhost:19080`.
-1. Válassza a fanézetben a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópont melletti három pontot (**..**.), és válassza a **méretezési szolgáltatás**elemet.
+1. Válassza a fanézetben a **Fabric:/SpringServiceFabric/SpringGettingStarted** csomópont melletti három pontot (**..**.), és válassza a **méretezési szolgáltatás** elemet.
 
     ![Service Fabric Explorer méretezési szolgáltatás mintája](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     Most már méretezheti a szolgáltatás példányainak számát.
 
-1. Módosítsa a számot **3** értékre, majd válassza a **méretezési szolgáltatás**elemet.
+1. Módosítsa a számot **3** értékre, majd válassza a **méretezési szolgáltatás** elemet.
 
     A szolgáltatás parancssorral történő skálázása a következőképpen is végrehajtható.
 
@@ -188,7 +188,7 @@ A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorer
 
     ![Service Fabric Explorer a csomópont újraindítása sikerült](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

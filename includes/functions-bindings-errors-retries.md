@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/01/2020
 ms.author: glenga
 ms.openlocfilehash: 2ccff72be66a88b9bf0a5e9eb9c29ade8397804b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96356193"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
@@ -293,13 +293,13 @@ Itt látható az újrapróbálkozási szabályzat a fájl *function.jsjában* :
 ```
 ---
 
-|function.jsa tulajdonságon  |Attribútum tulajdonsága | Leírás |
+|function.jsa tulajdonságon  |Attribútum tulajdonsága | Description |
 |---------|---------|---------| 
-|stratégia|n/a|Kötelező. A használt újrapróbálkozási stratégia. Az érvényes értékek a következők: `fixedDelay` vagy `exponentialBackoff` .|
-|Maxretrycount csak|n/a|Kötelező. Az újrapróbálkozások maximális száma egy függvény végrehajtásakor. `-1` azt jelenti, hogy határozatlan ideig próbálkozik.|
-|delayInterval|n/a|Az újrapróbálkozások között a stratégia használatakor használt késleltetés `fixedDelay` .|
-|minimumInterval|n/a|A stratégia használatának minimális újrapróbálkozási késleltetése `exponentialBackoff` .|
-|maximumInterval|n/a|A stratégia használatának maximális újrapróbálkozási késleltetése `exponentialBackoff` .| 
+|stratégia|n.a.|Kötelező. A használt újrapróbálkozási stratégia. Az érvényes értékek a következők: `fixedDelay` vagy `exponentialBackoff` .|
+|Maxretrycount csak|n.a.|Kötelező. Az újrapróbálkozások maximális száma egy függvény végrehajtásakor. `-1` azt jelenti, hogy határozatlan ideig próbálkozik.|
+|delayInterval|n.a.|Az újrapróbálkozások között a stratégia használatakor használt késleltetés `fixedDelay` .|
+|minimumInterval|n.a.|A stratégia használatának minimális újrapróbálkozási késleltetése `exponentialBackoff` .|
+|maximumInterval|n.a.|A stratégia használatának maximális újrapróbálkozási késleltetése `exponentialBackoff` .| 
 
 ### <a name="retry-limitations-during-preview"></a>Újrapróbálkozási korlátozások az előzetes verzióban
 

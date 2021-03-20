@@ -4,10 +4,10 @@ description: Témakörök és esemény-előfizetések figyelése
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171533"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Témakörök és esemény-előfizetések figyelése
@@ -43,7 +43,7 @@ A témakörök és az esemény-előfizetések mérőszámokat bocsátanak ki, ho
 
 ### <a name="topic-metrics"></a>Témakör metrikái
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------ | ----------- |
 | EventsReceived | A témakörben közzétett események száma
 | UnmatchedEvents | A témakörben közzétett események száma, amelyek nem felelnek meg az esemény-előfizetésnek, és el lettek dobva
@@ -55,7 +55,7 @@ A témakörök és az esemény-előfizetések mérőszámokat bocsátanak ki, ho
 
 ### <a name="event-subscription-metrics"></a>Esemény-előfizetési metrikák
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------ | ----------- |
 | DeliverySuccessCounts | A konfigurált végponthoz sikeresen küldött események száma
 | DeliveryFailureCounts | A konfigurált végpontnak sikertelenül küldött események száma

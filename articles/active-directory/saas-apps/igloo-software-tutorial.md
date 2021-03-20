@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Oktatóanyag: Azure Active Directory integráció a jégkunyhó szoftverrel
@@ -62,13 +62,13 @@ A jégkunyhó-szoftverek Azure AD-be való integrálásának konfigurálásához
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **jégkunyhó szoftver**kifejezést, válassza a **jégkunyhó Software** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **jégkunyhó szoftver** kifejezést, válassza a **jégkunyhó Software** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Jégkunyhó szoftver az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést jégkunyhó szoftverrel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést jégkunyhó szoftverrel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a jégkunyhó szoftverben található kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **jégkunyhó Software** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **jégkunyhó Software** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -133,11 +133,11 @@ Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálás
 
      ![Vezérlőpult](./media/igloo-software-tutorial/ic799949.png "Vezérlőpult")
 
-3. A **tagság** lapon kattintson a **bejelentkezési beállítások**elemre.
+3. A **tagság** lapon kattintson a **bejelentkezési beállítások** elemre.
 
     ![Bejelentkezési beállítások](./media/igloo-software-tutorial/ic783968.png "Bejelentkezési beállítások")
 
-4. Az SAML-konfiguráció szakaszban kattintson az **SAML-hitelesítés konfigurálása**elemre.
+4. Az SAML-konfiguráció szakaszban kattintson az **SAML-hitelesítés konfigurálása** elemre.
 
     ![SAML-konfiguráció](./media/igloo-software-tutorial/ic783969.png "SAML-konfiguráció")
 
@@ -151,31 +151,31 @@ Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálás
 
     c. A **identitásszolgáltató kijelentkezési URL-címe** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
 
-    d. Válassza a **Válasz kijelentkezése és a http-típus kérése** **POSTként**lehetőséget.
+    d. Válassza a **Válasz kijelentkezése és a http-típus kérése** **POSTként** lehetőséget.
 
     e. Nyissa meg az **alapszintű 64** -kódolású tanúsítványt a jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be a **nyilvános tanúsítvány** szövegmezőbe.
 
-6. A **Válasz és hitelesítés konfigurációjában**hajtsa végre a következő lépéseket:
+6. A **Válasz és hitelesítés konfigurációjában** hajtsa végre a következő lépéseket:
 
     ![Válasz-és hitelesítési konfiguráció](./media/igloo-software-tutorial/IC783971.png "Válasz-és hitelesítési konfiguráció")
   
-    a. **Identitás-szolgáltatóként**válassza a **Microsoft ADFS**elemet.
+    a. **Identitás-szolgáltatóként** válassza a **Microsoft ADFS** elemet.
 
-    b. Az **azonosító típusa**mezőben válassza az **e-mail cím**elemet. 
+    b. Az **azonosító típusa** mezőben válassza az **e-mail cím** elemet. 
 
     c. Az **e-mail-attribútum** szövegmezőbe írja be a következőt: **EmailAddress**.
 
     d. Az **Utónév attribútum** szövegmezőbe írja be a következőt: **givenName**.
 
-    e. A vezetéknév **attribútum** szövegmezőbe írja be a **surname**következőt: név.
+    e. A vezetéknév **attribútum** szövegmezőbe írja be a következőt: név.
 
 7. A konfigurálás befejezéséhez hajtsa végre a következő lépéseket:
 
     ![Felhasználó létrehozása bejelentkezéskor](./media/igloo-software-tutorial/IC783972.png "Felhasználó létrehozása bejelentkezéskor") 
 
-    a. Amikor **a felhasználó létrehozza a bejelentkezést**, válassza az **új felhasználó létrehozása a webhelyen a bejelentkezéskor**lehetőséget.
+    a. Amikor **a felhasználó létrehozza a bejelentkezést**, válassza az **új felhasználó létrehozása a webhelyen a bejelentkezéskor** lehetőséget.
 
-    b. **Bejelentkezési beállításokként**jelölje be a **"Bejelentkezés" képernyőn az SAML-gomb használata**jelölőnégyzetet.
+    b. **Bejelentkezési beállításokként** jelölje be a **"Bejelentkezés" képernyőn az SAML-gomb használata** jelölőnégyzetet.
 
     c. Kattintson a **Mentés** gombra.
 
@@ -183,7 +183,7 @@ Az Azure AD egyszeri bejelentkezés jégkunyhó szoftverrel való konfigurálás
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -208,7 +208,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a jégkunyhó szoftverhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **jégkunyhó szoftver**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **jégkunyhó szoftver** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -216,7 +216,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Az jégkunyhó szoftver hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

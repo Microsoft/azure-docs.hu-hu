@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: ba9f42bc932a37e1052f17db2ae00413e0769d59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91355737"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-funkciók
 
-Az [Azure Application Gateway](overview.md) egy webes forgalomra vonatkozó terheléselosztó, amellyel kezelheti a webalkalmazásai forgalmát.
+Az [Azure Application Gateway](overview.md) egy webes forgalmi terheléselosztó, amely lehetővé teszi a webes alkalmazások forgalmának kezelését.
 
 ![Application Gateway fogalma](media/overview/figure1-720.png)
 
@@ -58,7 +58,7 @@ A Standard_v2 Application Gateway több Availability Zonesra terjedhet ki, így 
 
 Az Application Gateway Standard_v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím még a Application Gateway élettartama alatt sem változik.
 
-## <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
+## <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 
 A webalkalmazási tűzfal (WAF) egy olyan szolgáltatás, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen. A WAF a [OWASP (webalkalmazás-biztonsági projekt megnyitása) alapszabálya](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) , a 3,1 (csak WAF_v2), a 3,0 és a 2.2.9. 
 
@@ -149,7 +149,7 @@ További információt a [HTTP-fejlécek és URL-cím újraírása](rewrite-http
 
 Application Gateway Standard_v2 konfigurálható automatikus skálázáshoz vagy rögzített méretű központi telepítésekhez. A v2 SKU nem biztosít különböző méretű példányokat. A v2 teljesítményével és díjszabásával kapcsolatos további információkért lásd az automatikus [skálázás v2](application-gateway-autoscaling-zone-redundant.md) és a [díjszabás megismerése](understanding-pricing.md)című témakört.
 
-A Application Gateway standard (v1) a következő három méretben érhető el: **kicsi**, **közepes**és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
+A Application Gateway standard (v1) a következő három méretben érhető el: **kicsi**, **közepes** és **nagy**. A Kicsi méret ideális fejlesztési és tesztelési célokra.
 
 Az Application Gateway korlátainak teljes listáját lásd: [Az Application Gateway szolgáltatási korlátozásai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 

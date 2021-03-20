@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
 ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81458283"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Key Vault titok elérése Azure Managed Applications telepítésekor
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Key Vault a felügyelt alkalm
 
 1. A portálon válassza ki a Key Vault.
 
-1. Válassza a **hozzáférési szabályzatok**lehetőséget.   
+1. Válassza a **Hozzáférési szabályzatok** lehetőséget.   
 
    ![Hozzáférési szabályzatok kiválasztása](./media/key-vault-access/select-access-policies.png)
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Key Vault a felügyelt alkalm
 
    ![Speciális hozzáférési szabályzatok megjelenítése](./media/key-vault-access/advanced.png)
 
-1. Jelölje be **a Azure Resource Manager hozzáférésének engedélyezése a sablonok üzembe helyezéséhez**lehetőséget. Ezután válassza a **Mentés**lehetőséget.
+1. Jelölje be **a Azure Resource Manager hozzáférésének engedélyezése a sablonok üzembe helyezéséhez** lehetőséget. Ezután válassza a **Mentés** lehetőséget.
 
    ![Sablon központi telepítésének engedélyezése](./media/key-vault-access/enable-template.png)
 
@@ -162,7 +162,7 @@ Ha át szeretne adni egy titkos kulcsot egy Key Vault a felügyelt alkalmazásba
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Úgy konfigurálta a Key Vault, hogy elérhető legyen egy felügyelt alkalmazás telepítése során.
 

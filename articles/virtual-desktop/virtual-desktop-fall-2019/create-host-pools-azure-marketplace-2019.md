@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008593"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>Oktatóanyag: gazdagép létrehozása a Windows Virtual Desktopban (klasszikus)
@@ -52,7 +52,7 @@ Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
 
 1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 1. A piactér keresési ablakában adja meg a **Windows virtuális asztal** kifejezést.
-1. Válassza **a Windows virtuális asztal – címkészlet kiépítése**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+1. Válassza **a Windows virtuális asztal – címkészlet kiépítése** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
 Ezután kövesse a következő szakaszban található utasításokat a megfelelő lapokra vonatkozó információk megadásához.
 
@@ -61,12 +61,12 @@ Ezután kövesse a következő szakaszban található utasításokat a megfelel�
 Az **alapok** lapon a következő műveleteket végezheti el:
 
 1. Válasszon egy **előfizetést**.
-1. Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adja meg az új erőforráscsoport nevét.
+1. Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adja meg az új erőforráscsoport nevét.
 1. Válasszon **régiót**.
 1. Adja meg a Windows rendszerű virtuális asztali bérlőn belül egyedi alkalmazáskészlet nevét.
-1. Válassza az **asztal típusa**lehetőséget. Ha a **személyes**lehetőséget választja, a gazdagéphez csatlakozó összes felhasználó véglegesen hozzá van rendelve egy virtuális géphez.
+1. Válassza az **asztal típusa** lehetőséget. Ha a **személyes** lehetőséget választja, a gazdagéphez csatlakozó összes felhasználó véglegesen hozzá van rendelve egy virtuális géphez.
 1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést és a hozzáférést szeretné használni `user1@contoso.com` `user2@contoso.com` , írja be a következőt: *`user1@contoso.com,user2@contoso.com`*
-1. A **szolgáltatás metaadatainak helye**területen válassza ki a virtuális hálózattal megegyező helyet, amely kapcsolódik a Active Directory-kiszolgálóhoz.
+1. A **szolgáltatás metaadatainak helye** területen válassza ki a virtuális hálózattal megegyező helyet, amely kapcsolódik a Active Directory-kiszolgálóhoz.
 
    >[!IMPORTANT]
    >Ha tiszta Azure Active Directory Domain Services (Azure AD DS) és Azure Active Directory (Azure AD) megoldást használ, ügyeljen arra, hogy az Azure-AD DS azonos régióban telepítse a gazdagép-készletet, hogy elkerülje a tartományhoz való csatlakozást és a hitelesítő adatokat.
@@ -82,14 +82,14 @@ A **virtuális gépek konfigurálása** lapon:
     >[!NOTE]
     >Ha a keresett virtuálisgép-méret nem jelenik meg a méret-választóban, ez azért van, mert még nem készítettük el az Azure Marketplace eszközre. A méret igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
 
-1. Adja meg a virtuális gépek neveinek előtagját. Ha például az *előtagot*adja meg, a virtuális gépek neve **előtag-0**, **előtag-1**, és így tovább.
-1. Válassza a **Tovább: virtuális gép beállításai**lehetőséget.
+1. Adja meg a virtuális gépek neveinek előtagját. Ha például az *előtagot* adja meg, a virtuális gépek neve **előtag-0**, **előtag-1**, és így tovább.
+1. Válassza a **Tovább: virtuális gép beállításai** lehetőséget.
 
 ### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
 
 A **virtuális gép beállításai** lapon:
 
-1. A **képforráshoz**válassza ki a forrást, és adja meg a megfelelő információkat a megkereséséhez és tárolásához. A lehetőségek különböznek a blob Storage-hoz, a felügyelt rendszerképekhez és a gyűjteményekhez.
+1. A **képforráshoz** válassza ki a forrást, és adja meg a megfelelő információkat a megkereséséhez és tárolásához. A lehetőségek különböznek a blob Storage-hoz, a felügyelt rendszerképekhez és a gyűjteményekhez.
 
    Ha úgy dönt, hogy nem használja a felügyelt lemezeket, válassza ki azt a Storage-fiókot, amely a *. vhd* -fájlt tartalmazza.
 1. Adja meg az egyszerű felhasználónevet és a jelszót. Ennek a fióknak a tartományi fióknak kell lennie, amely a virtuális gépeket a Active Directory tartományhoz fogja csatlakoztatni. Ugyanezt a felhasználónevet és jelszót a rendszer helyi fiókként hozza létre a virtuális gépeken. Ezeket a helyi fiókokat később is visszaállíthatja.
@@ -106,18 +106,18 @@ A **virtuális gép beállításai** lapon:
 
 A **Windows rendszerű virtuális asztali bérlő adatai** lapon:
 
-1. A **Windows rendszerű virtuális asztali bérlői csoport neve**mezőbe írja be a bérlőt tartalmazó bérlői csoport nevét. Hagyja meg az alapértelmezett értéket, ha megadott egy bérlői csoport nevét.
-1. A **Windows rendszerű virtuális asztali bérlő neve**mezőbe írja be annak a bérlőnek a nevét, ahol a gazdagépet létrehozza.
+1. A **Windows rendszerű virtuális asztali bérlői csoport neve** mezőbe írja be a bérlőt tartalmazó bérlői csoport nevét. Hagyja meg az alapértelmezett értéket, ha megadott egy bérlői csoport nevét.
+1. A **Windows rendszerű virtuális asztali bérlő neve** mezőbe írja be annak a bérlőnek a nevét, ahol a gazdagépet létrehozza.
 1. Adja meg, hogy milyen típusú hitelesítő adatokat kíván használni a Windows rendszerű virtuális asztali bérlői RDS-tulajdonosként való hitelesítéshez. Adja meg az egyszerű felhasználónevet vagy szolgáltatásnevet, valamint egy jelszót.
 
-   Ha végrehajtotta az [egyszerű szolgáltatásnév és a szerepkör-hozzárendelések létrehozása a PowerShell-lel oktatóanyagot](create-service-principal-role-powershell.md), válassza az **egyszerű szolgáltatásnév**lehetőséget.
+   Ha végrehajtotta az [egyszerű szolgáltatásnév és a szerepkör-hozzárendelések létrehozása a PowerShell-lel oktatóanyagot](create-service-principal-role-powershell.md), válassza az **egyszerű szolgáltatásnév** lehetőséget.
 
-1. Az **egyszerű szolgáltatásnév**esetében az **Azure ad-bérlő azonosítója**mezőben adja meg az egyszerű szolgáltatásnevet tartalmazó Azure ad-példány bérlői rendszergazdai fiókját. Csak a jelszavas hitelesítő adatokkal rendelkező egyszerű szolgáltatások támogatottak.
+1. Az **egyszerű szolgáltatásnév** esetében az **Azure ad-bérlő azonosítója** mezőben adja meg az egyszerű szolgáltatásnevet tartalmazó Azure ad-példány bérlői rendszergazdai fiókját. Csak a jelszavas hitelesítő adatokkal rendelkező egyszerű szolgáltatások támogatottak.
 1. Válassza a **Tovább: Ellenőrzés és létrehozás** lehetőségre.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>A telepítés befejezése és a virtuális gép létrehozása
 
-A **felülvizsgálat és létrehozás**lapon tekintse át a telepítési adatokat. Ha módosítania kell valamit, lépjen vissza, és végezze el a módosításokat. Ha elkészült, válassza a **Létrehozás** lehetőséget a gazdagép-készlet telepítéséhez.
+A **felülvizsgálat és létrehozás** lapon tekintse át a telepítési adatokat. Ha módosítania kell valamit, lépjen vissza, és végezze el a módosításokat. Ha elkészült, válassza a **Létrehozás** lehetőséget a gazdagép-készlet telepítéséhez.
 
 Attól függően, hogy hány virtuális gépet hoz létre, ez a folyamat 30 percet vagy akár több időt is igénybe vehet.
 

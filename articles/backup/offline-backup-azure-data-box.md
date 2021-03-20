@@ -4,10 +4,10 @@ description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Da
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96752583"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
@@ -284,7 +284,7 @@ Jelentkezzen be a Mohácsi felhasználói felületén megjelenő PowerShellbe eg
 Ha egy másik kiszolgáló nem rendelkezik kapcsolat nélküli előkészítéssel, és az alkalmazástól nem függ más kiszolgáló `AzureOfflineBackup_<Azure User Id>` , törölje az alkalmazást. Válassza ki **Azure Portal**  >  **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 
 >[!NOTE]
-> Ellenőrizze, hogy az `AzureOfflineBackup_<Azure User Id>` alkalmazás nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és hogy nem függ-e az alkalmazástól más kiszolgálók. **Settings**  >  A **nyilvános kulcsok** szakaszban lépjen a beállítások **kulcsra** . Nem adhat hozzá további nyilvános kulcsokat. Tekintse meg a következő képernyőképet a hivatkozáshoz.
+> Ellenőrizze, hogy az `AzureOfflineBackup_<Azure User Id>` alkalmazás nem rendelkezik-e más kapcsolat nélküli előkészítéssel, és hogy nem függ-e az alkalmazástól más kiszolgálók.   >  A **nyilvános kulcsok** szakaszban lépjen a beállítások **kulcsra** . Nem adhat hozzá további nyilvános kulcsokat. Tekintse meg a következő képernyőképet a hivatkozáshoz.
 >
 >![Nyilvános kulcsok](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -310,7 +310,7 @@ Az offline biztonsági mentéshez konfigurálni kívánt kiszolgálóról végez
     >- Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
     > - Nyissa meg a beállításjegyzék elérési útját `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` a *CurrentUserId* néven.
 
-6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás** lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Kattintson az **OK** gombra.
+6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás** lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Válassza az **OK** lehetőséget.
 
 7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra. Válassza a **részletek** lapot, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza az **ujjlenyomat** lehetőséget, és másolja ki az értéket.
 

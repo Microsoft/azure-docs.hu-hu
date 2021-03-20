@@ -8,10 +8,10 @@ ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
 ms.openlocfilehash: fd6ac8c4d4fc4c3fec4f549f8ef4f955e2b1c637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89439214"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hogyan méretezheti a Signaler szolgáltatást több példányon?
@@ -220,13 +220,13 @@ Az `ServiceEndpoint` objektum `EndpointType` tulajdonsága értéke `primary` va
 
 `primary` a végpontok előnyben részesített végpontok az ügyfél forgalmának fogadására, és megbízhatóbb hálózati kapcsolatnak tekintendők. a `secondary` végpontoknak kevesebb megbízható hálózati kapcsolattal kell rendelkezniük, és csak azért használják a kiszolgálót az ügyfelek forgalmára, mint például a szórási üzenetek, nem pedig az ügyfél és a kiszolgáló közötti adatforgalom.
 
-Régiók közötti esetekben a hálózat instabil lehet. Az *USA keleti*régiójában található egyik app Server esetében az UGYANABBAN az USA-beli *keleti* régióban található Signal Service-végpont konfigurálható `primary` más régiókban, illetve végpontként is `secondary` . Ebben a konfigurációban a más régiókban lévő szolgáltatási végpontok **fogadhatnak** e-maileket erről az USA-beli *East* app Server-kiszolgálóról, de nem lesznek átirányítva **régiók közötti** ügyfelek az adott app Serverhez. Az architektúra az alábbi ábrán látható:
+Régiók közötti esetekben a hálózat instabil lehet. Az *USA keleti* régiójában található egyik app Server esetében az UGYANABBAN az USA-beli *keleti* régióban található Signal Service-végpont konfigurálható `primary` más régiókban, illetve végpontként is `secondary` . Ebben a konfigurációban a más régiókban lévő szolgáltatási végpontok **fogadhatnak** e-maileket erről az USA-beli *East* app Server-kiszolgálóról, de nem lesznek átirányítva **régiók közötti** ügyfelek az adott app Serverhez. Az architektúra az alábbi ábrán látható:
 
 ![Földrajzilag átnyúló infra](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
 Ha az ügyfél az `/negotiate` alapértelmezett útválasztóval próbálkozik az App Serverrel, az SDK **véletlenszerűen kiválaszt** egy végpontot az elérhető `primary` végpontok készletéről. Ha az elsődleges végpont nem érhető el, az SDK **véletlenszerűen kiválasztja** az összes elérhető `secondary` végpontot. A végpont **elérhetőként** van megjelölve, ha a kiszolgáló és a szolgáltatási végpont közötti kapcsolat él.
 
-Régiók közötti forgatókönyv esetén, amikor `/negotiate` az ügyfél az *USA keleti*régiójában üzemeltetett app Serverrel próbálkozik, alapértelmezés szerint mindig az `primary` ugyanabban a régióban található végpontot adja vissza. Ha az összes *kelet-amerikai* végpont nem érhető el, a rendszer átirányítja az ügyfelet más régiókban lévő végpontokra. Az alábbi feladatátvételi szakasz részletesen ismerteti a forgatókönyvet.
+Régiók közötti forgatókönyv esetén, amikor `/negotiate` az ügyfél az *USA keleti* régiójában üzemeltetett app Serverrel próbálkozik, alapértelmezés szerint mindig az `primary` ugyanabban a régióban található végpontot adja vissza. Ha az összes *kelet-amerikai* végpont nem érhető el, a rendszer átirányítja az ügyfelet más régiókban lévő végpontokra. Az alábbi feladatátvételi szakasz részletesen ismerteti a forgatókönyvet.
 
 ![Normál egyeztetés](./media/signalr-howto-scale-multi-instances/normal_negotiate.png)
 

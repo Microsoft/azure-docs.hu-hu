@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre ütemterveket a laborokhoz a Azur
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434025"
 ---
 # <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>Labs-ütemtervek létrehozása és kezelése Azure Lab Services 
@@ -71,7 +71,7 @@ Az **ütemezett esemény szerkesztése** lapon frissítheti az ütemezést, és 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1b3d7c47ff0a2c533bf12a67958a913b22915f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87909561"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Példa: közvetlen összevonás Active Directory összevonási szolgáltatások (AD FS) (AD FS) (előzetes verzió)
@@ -57,9 +57,9 @@ Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót
 
 ### <a name="add-the-claim-description"></a>Jogcím leírásának hozzáadása
 
-1. A AD FS-kiszolgálón válassza az **eszközök**  >  **AD FS felügyelet**lehetőséget.
+1. A AD FS-kiszolgálón válassza az **eszközök**  >  **AD FS felügyelet** lehetőséget.
 2. A navigációs ablaktáblán válassza ki a **szolgáltatási**  >  **jogcímek leírását**.
-3. A **műveletek**területen válassza a **jogcím hozzáadása leírást**.
+3. A **műveletek** területen válassza a **jogcím hozzáadása leírást**.
 4. A **jogcím leírásának hozzáadása** ablakban adja meg a következő értékeket:
 
    - **Megjelenítendő név**: állandó azonosító
@@ -71,26 +71,26 @@ Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót
 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának és a jogcím szabályainak hozzáadása
 
-1. A AD FS-kiszolgálón lépjen az **eszközök**  >  **AD FS felügyelet**elemre.
-2. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok**függő entitások  >  **megbízhatóságai**lehetőséget.
-3. A **műveletek**területen válassza a **függő entitás megbízhatóságának hozzáadása**lehetőséget. 
-4. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához**használja az **adatimportálás lehetőséget a függő entitás online vagy helyi hálózaton közzétett adatainak importálása**lehetőséggel. Az összevonási metaadatok URL-címének megadása – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás** lehetőséget.
+1. A AD FS-kiszolgálón lépjen az **eszközök**  >  **AD FS felügyelet** elemre.
+2. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok** függő entitások  >  **megbízhatóságai** lehetőséget.
+3. A **műveletek** területen válassza a **függő entitás megbízhatóságának hozzáadása** lehetőséget. 
+4. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához** használja az **adatimportálás lehetőséget a függő entitás online vagy helyi hálózaton közzétett adatainak importálása** lehetőséggel. Az összevonási metaadatok URL-címének megadása – https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml . Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás** gombot.
 5. Megnyílik a **jogcím-szabályok szerkesztése** varázsló.
-6. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A **szabály típusának kiválasztása**területen válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget. Kattintson a **Tovább** gombra.
-7. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
+6. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása** elemet. A **szabály típusának kiválasztása** területen válassza az **LDAP-attribútumok küldése jogcímként** lehetőséget. Kattintson a **Tovább** gombra.
+7. A **jogcím beállítása szabályban** adja meg a következő értékeket: 
 
    - **Jogcím-szabály neve**: e-mail-jogcím szabálya 
    - **Attribútum-tároló**: Active Directory 
    - **LDAP-attribútum**: E-mail-címek 
    - **Kimenő jogcím típusa**: E-mail cím
 
-8. Válassza a **Befejezés** lehetőséget.
+8. Válassza a **Befejezés** gombot.
 9. A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra. 
 10. Kattintson az **OK** gombra.  
 
 ### <a name="create-an-email-transform-rule"></a>E-mail átalakítási szabály létrehozása
-1. Lépjen a **jogcím szabályainak szerkesztése** elemre, majd kattintson a **szabály hozzáadása**lehetőségre. A **szabály típusának kiválasztása**területen válassza a **bejövő jogcím átalakítása** lehetőséget, majd kattintson a **tovább**gombra. 
-2. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
+1. Lépjen a **jogcím szabályainak szerkesztése** elemre, majd kattintson a **szabály hozzáadása** lehetőségre. A **szabály típusának kiválasztása** területen válassza a **bejövő jogcím átalakítása** lehetőséget, majd kattintson a **tovább** gombra. 
+2. A **jogcím beállítása szabályban** adja meg a következő értékeket: 
 
    - **Jogcím-szabály neve**: e-mail-átalakítási szabály 
    - **Bejövő jogcím típusa**: E-mail cím 
@@ -127,28 +127,28 @@ Az eljárás megkezdése előtt már be kell állítania egy AD FS-kiszolgálót
 
 
 ### <a name="add-the-relying-party-trust-and-claim-rules"></a>A függő entitás megbízhatóságának és a jogcím szabályainak hozzáadása 
-1. A AD FS-kiszolgálón lépjen az **eszközök**  >  **AD FS felügyelet**elemre. 
-1. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok**függő entitások  >  **megbízhatóságai**lehetőséget. 
-1. A **műveletek**területen válassza a **függő entitás megbízhatóságának hozzáadása**lehetőséget.  
-1. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához**használja a **függő entitás online vagy helyi hálózaton közzétett adatainak importálása**lehetőséget. Itt adhatja meg az összevonási metaadatok URL-címét: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás** lehetőséget.
+1. A AD FS-kiszolgálón lépjen az **eszközök**  >  **AD FS felügyelet** elemre. 
+1. A navigációs ablaktáblán válassza a **megbízhatósági kapcsolatok** függő entitások  >  **megbízhatóságai** lehetőséget. 
+1. A **műveletek** területen válassza a **függő entitás megbízhatóságának hozzáadása** lehetőséget.  
+1. A függő entitás megbízhatóságának hozzáadása varázslóban az **adatforrás kiválasztásához** használja a **függő entitás online vagy helyi hálózaton közzétett adatainak importálása** lehetőséget. Itt adhatja meg az összevonási metaadatok URL-címét: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml` .  Hagyja meg az egyéb alapértelmezett beállításokat. Válassza a **Bezárás** gombot.
 1. Megnyílik a **jogcím-szabályok szerkesztése** varázsló. 
-1. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A **szabály típusának kiválasztása**területen válassza **a jogcímek küldése egyéni szabállyal**lehetőséget. Kattintson a *Tovább* gombra. 
-1. A **jogcím beállítása szabályban**adja meg a következő értékeket:
+1. A **jogcím szabályainak szerkesztése** varázslóban válassza a **szabály hozzáadása** elemet. A **szabály típusának kiválasztása** területen válassza **a jogcímek küldése egyéni szabállyal** lehetőséget. Kattintson a *Tovább* gombra. 
+1. A **jogcím beállítása szabályban** adja meg a következő értékeket:
 
    - **Jogcím-szabály neve**: nem módosítható azonosító kiadása  
    - **Egyéni szabály**: `c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"] => issue(store = "Active Directory", types = ("http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID"), query = "samAccountName={0};objectGUID;{1}", param = regexreplace(c.Value, "(?<domain>[^\\]+)\\(?<user>.+)", "${user}"), param = c.Value);`
 
-1. Válassza a **Befejezés** lehetőséget. 
+1. Válassza a **Befejezés** gombot. 
 1. A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra.  
-1. A **jogcímek szerkesztése** varázslóban válassza a **szabály hozzáadása**elemet. A összetartozó **szabály típusa**területen válassza az **LDAP-attribútumok küldése jogcímként**lehetőséget. Kattintson a **Tovább** gombra.
-1. A **jogcím beállítása szabályban**adja meg a következő értékeket: 
+1. A **jogcímek szerkesztése** varázslóban válassza a **szabály hozzáadása** elemet. A összetartozó **szabály típusa** területen válassza az **LDAP-attribútumok küldése jogcímként** lehetőséget. Kattintson a **Tovább** gombra.
+1. A **jogcím beállítása szabályban** adja meg a következő értékeket: 
 
    - **Jogcím-szabály neve**: e-mail-jogcím szabálya  
    - **Attribútum-tároló**: Active Directory  
    - **LDAP-attribútum**: E-mail-címek  
    - **Kimenő jogcím típusa**: E-mail cím 
 
-1.  Válassza a **Befejezés** lehetőséget. 
+1.  Válassza a **Befejezés** gombot. 
 1.  A **jogcímek szerkesztése** ablakban megjelenik az új szabály. Kattintson az **Alkalmaz** gombra.  
 1.  Kattintson az **OK** gombra. A AD FS-kiszolgáló mostantól a WS-fed használatával történő közvetlen összevonás használatára van konfigurálva.
 

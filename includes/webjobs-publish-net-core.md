@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: app-service
 author: ggailey777
 ms.service: app-service
@@ -9,19 +9,19 @@ ms.date: 06/26/2020
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: e208b52c67f173bd0d289715b63562df656b1ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88009768"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
-1. A **Közzététel** párbeszédpanelen válassza az **Azure** a **cél**számára lehetőséget, majd kattintson a **tovább**gombra. 
+1. A **Közzététel** párbeszédpanelen válassza az **Azure** a **cél** számára lehetőséget, majd kattintson a **tovább** gombra. 
 
-1. Válassza ki az **adott cél** **Azure WebJobs** , majd válassza a **tovább**lehetőséget.
+1. Válassza ki az **adott cél** **Azure WebJobs** , majd válassza a **tovább** lehetőséget.
 
-1. Válassza **az új Azure-Webjobs létrehozása**lehetőséget.
+1. Válassza **az új Azure-Webjobs létrehozása** lehetőséget.
 
    ![Közzététel célhelyének kiválasztása](./media/webjobs-publish-netcore/pick-publish-target.png)
 

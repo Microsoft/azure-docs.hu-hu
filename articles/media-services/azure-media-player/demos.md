@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/24/2020
 ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82139302"
 ---
 # <a name="azure-media-player-demos"></a>Azure Media Player-bemutatók
@@ -19,11 +19,11 @@ Az alábbi lista a Azure Media Player bemutatóinak hivatkozásait tartalmazza. 
 
 ## <a name="demo-listing"></a>Bemutató listája
 
-| Minta neve | Programozás JavaScript használatával | Statikus HTML5-videó elem használatával | Leírás |
+| Minta neve | Programozás JavaScript használatával | Statikus HTML5-videó elem használatával | Description |
 | ------------|----------------------------|-------------------------------------|--------------|
 | Alapszintű |
 | Forrás beállítása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_setsource.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_setsource.html) |Nem védett tartalom lejátszása.|
-| Szolgáltatások |
+| Funkciók |
 | VOD ad-Beszúrás – nagy méretű | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | N/A | Helyezzen be a nagy számú előre középre és post-roll-hirdetéseket egy VOD-eszközbe. |
 | Lejátszás sebessége | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| N/A | Lehetővé teszi a nézők számára a videó megtekintését a következő helyen:. |
 | AMP flush-felszín | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_flush_skin.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_flush_skin.html) | Engedélyezi az új AMP Skin használatát. **Megjegyzés:** Az AMP flush csak a 2.1.0 + AMP verziókban támogatott |
@@ -33,7 +33,7 @@ Az alábbi lista a Azure Media Player bemutatóinak hivatkozásait tartalmazza. 
 | Progresszív videó MP4 | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveVideo.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveVideo.html) | Progresszív hang MP4 lejátszása. |
 | Progresszív hang MP3 | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveAudio.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveAudio.html) | Progresszív hang MP3 lejátszása. |
 | DD + | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_dolbyDigitalPlus.html) | N/A | Tartalom lejátszása a DD + hangal. |
-| Lehetőségek |
+| Beállítások |
 | Heurisztikus profil | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_heuristicsProfile.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_heuristicsProfile.html) | A heurisztikus profil módosítása |
 | Honosítás | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_localization.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_localization.html) |
 Honosítás beállítása |
@@ -65,7 +65,7 @@ Az alapértelmezett felszín hangsávok menüjének megjelenítésére szolgál�
 | Bitráta kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectBitrate.html) | N/A | A bitráták listájából válassza ki a bitrátát. Ez a minta csak bizonyos technológiákon működik. |
 | Hangstream kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectAudioStream.html) | N/A | Egy hangstream kiválasztása az elérhető hangstreamek listájából. Ez a minta csak bizonyos technológiákon működik. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!---Some context for the following links goes here--->
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

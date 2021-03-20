@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-csharp
 ms.date: 02/14/2019
 ms.openlocfilehash: a4fe9e54e5e03a8dbf2a727b22f784c36d6c65f9
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100517586"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Gépi tanulási modell újratanítása és üzembe helyezése
@@ -66,7 +66,7 @@ A következő lépések végrehajtásával hívhatja meg az átképzési API-kat
 1. Kattintson arra a webszolgáltatásra, amelyen dolgozik.
 1. Kattintson **a** felhasználás gombra.
 1. **A felhasználás lap** alján, a **mintakód** szakaszban kattintson a **Batch** elemre.
-1. Másolja a minta C#-kódot a Batch-végrehajtáshoz, és illessze be a Program.cs fájlba. Győződjön meg arról, hogy a névtér érintetlen marad.
+1. Másolja a minta C#-kódot a Batch-végrehajtáshoz, és illessze be a program. cs fájlba. Győződjön meg arról, hogy a névtér érintetlen marad.
 
 Adja hozzá a Microsoft. AspNet. WebApi. Client NuGet-csomagot a megjegyzésekben megadott módon. A Microsoft.WindowsAzure.Storage.dllre mutató hivatkozás hozzáadásához előfordulhat, hogy telepítenie kell az [Azure Storage-szolgáltatáshoz tartozó ügyféloldali kódtárat](https://www.nuget.org/packages/WindowsAzure.Storage).
 

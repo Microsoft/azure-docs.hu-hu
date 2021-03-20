@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 35fa0fc134045585eebd21324352f9b4ff272e87
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954239"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>A StorSimple Snapshot Manager felhasználói felület használata a biztonsági mentési feladatok és a biztonságimásolat-katalógus kezeléséhez
@@ -67,14 +67,14 @@ A **fájl** menü megjelenítéséhez kattintson a menüsorban található **fá
 #### <a name="menu-description"></a>Menü leírása
 A következő táblázat a **fájl** menüben megjelenő elemeket ismerteti.
 
-| Menüelem | Leírás |
+| Menüelem | Description |
 |:--- |:--- |
 | Új |Az **új** gombra kattintva hozzon létre egy új konzolt a StorSimple Snapshot Manager alapján. |
 | Megnyitás |Egy meglévő konzol megnyitásához kattintson a **Megnyitás** gombra. |
 | Mentés |Az aktuális konzol mentéséhez kattintson a **Mentés** gombra. |
 | Mentés másként |Kattintson a **Save as (Mentés másként** ) lehetőségre az aktuális konzol új, átnevezett példányának létrehozásához. A **Mentés másként** lehetőséggel testre szabhatja a nézetet, és mentheti későbbi lekérésre. Létrehozhat például olyan StorSimple Snapshot Manager beépülő modulokat, amelyek adott kiszolgálókra mutatnak. |
 | Beépülő modul hozzáadása/eltávolítása |Kattintson a **beépülő modul hozzáadása/eltávolítása** elemre beépülő modulok hozzáadásához vagy eltávolításához, illetve a csomópontok rendszerezéséhez a **hatókör** ablaktáblán. További információkért ugorjon a [beépülő modulok és bővítmények hozzáadása, eltávolítása és rendszerezése az MMC 3,0-ben](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc722035(v=ws.11))című témakörben. |
-| Lehetőségek |Kattintson a **Beállítások lehetőségre** a konzol ikonjának módosításához, a felhasználói hozzáférési módok és engedélyek megadásához, vagy a konzol fájljainak törléséhez, hogy növelje a rendelkezésre álló lemezterületet. |
+| Beállítások |Kattintson a **Beállítások lehetőségre** a konzol ikonjának módosításához, a felhasználói hozzáférési módok és engedélyek megadásához, vagy a konzol fájljainak törléséhez, hogy növelje a rendelkezésre álló lemezterületet. |
 | Fájlelérési utak listája |Kattintson egy elérési útra a számozott listában egy nemrég megnyitott fájl újbóli megnyitásához. |
 | Kilépés |Kattintson a **Kilépés** gombra a **fájl** menü bezárásához. |
 
@@ -107,7 +107,7 @@ A következő táblázat a StorSimple Snapshot Manager műveletek betűrendes li
 > 
 > 
 
-| Műveletek | Navigáció | Leírás |
+| Művelet | Navigáció | Description |
 |:--- |:--- |:--- |
 | Hitelesítés |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |Kattintson a **hitelesítés** gombra az eszközhöz konfigurált jelszó megadásához. |
 | Klónozás |Bontsa ki a **biztonsági mentési katalógus**, majd a **Felhőbeli Pillanatképek** csomópontot, kattintson egy elavult biztonsági mentésre, majd válasszon ki egy kötetet az **eredmények** ablaktáblán |Kattintson a **klónozás** gombra a Felhőbeli pillanatkép másolatának létrehozásához, és tárolja azt egy Ön által kijelölt helyen. |
@@ -118,7 +118,7 @@ A következő táblázat a StorSimple Snapshot Manager műveletek betűrendes li
 | Részletek |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |A **részletek** elemre kattintva megtekintheti az eszköz konfigurációs adatait. |
 | Szerkesztés |Kattintson a **biztonsági mentési házirendek** elemre, majd kattintson a jobb gombbal egy házirendre az **eredmények** ablaktábláján. |A kötetek biztonsági mentési ütemtervének módosításához kattintson a **Szerkesztés** gombra. |
 | Exportálási lista |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **lista exportálása** lehetőségre egy lista vesszővel tagolt (CSV-) fájlban való mentéséhez. Ezt követően importálhatja ezt a fájlt egy táblázatkezelő alkalmazásba elemzés céljából. |
-| Súgó |Kattintson bármelyik csomópontra vagy eredményre. (Ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **Súgó** lehetőségre az online súgó megnyitásához egy külön böngészőablakban. |
+| Help |Kattintson bármelyik csomópontra vagy eredményre. (Ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **Súgó** lehetőségre az online súgó megnyitásához egy külön böngészőablakban. |
 | Új ablak innen |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Új StorSimple Snapshot Manager ablak megnyitásához kattintson **az új ablak** elemre. |
 | Frissítés |Kattintson bármelyik csomópontra vagy eredményre (ez az elem megjelenik az összes **művelet** menük és **műveletek** ablaktáblán.) |Kattintson a **frissítés** gombra az aktuálisan megjelenített StorSimple Snapshot Manager ablak frissítéséhez. |
 | Eszköz frissítése |Kattintson az **eszközök** csomópontra, majd kattintson a jobb gombbal az eszközre az **eredmények** ablaktábláján. |Kattintson az **eszköz frissítése** gombra egy adott csatlakoztatott eszköz StorSimple Snapshot Manager való szinkronizálásához. |
@@ -139,7 +139,7 @@ A **nézet** menü a menüsávon vagy a **műveletek** ablaktáblán érhető el
 #### <a name="menu-description"></a>Menü leírása
 A következő táblázat a **nézet** menüben megjelenő elemeket ismerteti.
 
-| Menüelem | Leírás |
+| Menüelem | Description |
 |:--- |:--- |
 | Oszlopok hozzáadása/eltávolítása |Az oszlopok hozzáadásához vagy eltávolításához kattintson az oszlopok **hozzáadása/eltávolítása** elemre az **eredmények** ablaktábláján. |
 | Testreszabás |Kattintson a **Testreszabás** elemre az elemek megjelenítéséhez vagy elrejtéséhez a StorSimple Snapshot Manager-konzol ablakban. |
@@ -155,7 +155,7 @@ A **Kedvencek** menüt a menüsávon érheti el.
 #### <a name="menu-description"></a>Menü leírása
 A következő táblázat a **Kedvencek** menüben megjelenő elemeket ismerteti.
 
-| Menüelem | Leírás |
+| Menüelem | Description |
 |:--- |:--- |
 | Hozzáadás a kedvencekhez |Kattintson a **Hozzáadás a kedvencekhez** gombra, hogy hozzáadja az aktuális nézetet a kedvencek listájához. |
 | Kedvencek rendszerezése |Kattintson a **Kedvencek rendszerezése** lehetőségre a Kedvencek mappa tartalmának rendszerezéséhez. |
@@ -173,7 +173,7 @@ A menü alján található számozott lista a jelenleg megnyitott Windows-t jele
 #### <a name="menu-description"></a>Menü leírása
 A következő táblázat a ablak menüjében megjelenő elemeket ismerteti.
 
-| Menüelem | Leírás |
+| Menüelem | Description |
 |:--- |:--- |
 | Új ablak |Kattintson az **új ablak** lehetőségre egy új konzolablak megnyitásához (a meglévő ablakon kívül). |
 | Cascade |Kattintson a **Cascade (lépcsőzetes** ) elemre a megnyitott konzol ablakának egy lépcsőzetes stílusban való megjelenítéséhez. |
@@ -190,7 +190,7 @@ A menüsávon a **Súgó** menüt érheti el. A StorSimple Snapshot Manager a **
 #### <a name="menu-description"></a>Menü leírása
 A következő táblázat a Súgó menüben megjelenő elemeket ismerteti.
 
-| Menüelem | Leírás |
+| Menüelem | Description |
 |:--- |:--- |
 | Súgó a StorSimple Snapshot Manager |Kattintson a **Súgó a StorSimple Snapshot Manager** lehetőségre a StorSimple Snapshot Manager súgójának egy külön ablakban való megnyitásához. |
 | Súgótémakörök |Kattintson a **súgótémakörök** lehetőségre az MMC online súgójának különálló ablakban való megnyitásához. |
@@ -204,7 +204,7 @@ A menüsáv alatt lévő eszköztár navigációs és feladat ikonokat tartalmaz
 ### <a name="icon-descriptions"></a>Ikon leírása
 Az alábbi táblázat az eszköztáron megjelenő ikonokat ismerteti. 
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Balra nyíl](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Kattintson a balra mutató nyíl ikonra az előző lapra való visszatéréshez. |
 | ![Jobb nyílbillentyű](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Kattintson a jobbra mutató nyílra a következő lapra való ugráshoz (ha a nyíl szürke, a művelet nem érhető el). |
@@ -337,7 +337,7 @@ A StorSimple Snapshot Manager lehetővé teszi a Windows operációs rendszer é
 ### <a name="keyboard-navigation-keys"></a>Billentyűzet navigációs kulcsai
 A következő táblázat azokat a kulcsokat ismerteti, amelyeket a StorSimple Snapshot Manager felhasználói felületén való böngészéshez használhat. 
 
-| Navigációs kulcs | Műveletek |
+| Navigációs kulcs | Művelet |
 |:--- |:--- |
 | Lefelé nyíl gomb |A lefelé mutató nyíl gomb használatával függőlegesen mozoghat a menü vagy ablaktábla következő eleméhez. |
 | Enter |Nyomja le az ENTER billentyűt egy művelet végrehajtásához, majd folytassa a következő lépéssel. Az ENTER billentyű lenyomásával például kiválaszthatja a **tovább**, **az OK** vagy a **Létrehozás** lehetőséget, majd a varázsló következő lépésére léphet. |
@@ -373,7 +373,7 @@ Az alábbi táblázat a menüsáv billentyűparancsait ismerteti. A billentyűpa
 | ALT+O |A **Kedvencek** menü megnyitása. |A |Megnyitja a **Hozzáadás a kedvencekhez** lapot. |
 |  |O |Megnyitja a **Kedvencek rendszerezése** lapot. | |
 | ALT + W |Megnyitja a **ablak** menüt. |N |Egy másik StorSimple Snapshot Manager ablak megnyitása. |
-|  |C# |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
+|  |C |Megjeleníti az összes megnyitott konzol ablakát egy lépcsőzetes stílusban. | |
 |  |T |Megjeleníti az összes megnyitott konzolos ablakot egy rácsos mintában. | |
 |  |I |A képernyő alján található vízszintes sorba rendezi az ikonokat. | |
 | ALT + H |A **Súgó** menü megnyitása. |H |Az online súgó megnyitása. |
@@ -393,7 +393,7 @@ A következő táblázatok a **hatókör** panel egyes csomópontjainak billenty
 #### <a name="devices-node-shortcut-keys"></a>Eszközök csomópontjának billentyűparancsai
 | Helyi menü | Eredmény |
 |:--- |:--- |
-| C# |Megnyitja az **eszköz konfigurálása** lapot. |
+| C |Megnyitja az **eszköz konfigurálása** lapot. |
 | T |Frissíti az eszközök és az eszköz adatainak listáját. |
 | V |Megnyitja a **nézet** menüt. |
 | W |Új StorSimple Snapshot Manager-konzol megnyitása a **részletek** csomópontra összpontosítva. |

@@ -7,10 +7,10 @@ ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c8a4b22966c3d4db268e212bb3f2d1bbb78fee74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89400636"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-web-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz a webes ügyféllel
@@ -51,7 +51,7 @@ A bejelentkezést követően meg kell jelennie az erőforrások listájának. Az
 
 ## <a name="using-an-input-method-editor"></a>A bemeneti módszer szerkesztőjének használata
 
-A webes ügyfél a **1.0.21.16 vagy újabb**verzióban a távoli munkamenetben támogatja a bemeneti metódus-szerkesztő (IME) használatát. A távoli munkamenetben használni kívánt billentyűzet nyelvi csomagját telepíteni kell a gazdagép virtuális gépre. Ha többet szeretne megtudni a nyelvi csomagok távoli munkamenetben való beállításáról, tekintse meg a [nyelvi csomagok hozzáadása Windows 10-es többmunkamenetes rendszerképhez](language-packs.md)című részt.
+A webes ügyfél a **1.0.21.16 vagy újabb** verzióban a távoli munkamenetben támogatja a bemeneti metódus-szerkesztő (IME) használatát. A távoli munkamenetben használni kívánt billentyűzet nyelvi csomagját telepíteni kell a gazdagép virtuális gépre. Ha többet szeretne megtudni a nyelvi csomagok távoli munkamenetben való beállításáról, tekintse meg a [nyelvi csomagok hozzáadása Windows 10-es többmunkamenetes rendszerképhez](language-packs.md)című részt.
 
 IME-bemenet engedélyezése a webes ügyfél használatával:
 

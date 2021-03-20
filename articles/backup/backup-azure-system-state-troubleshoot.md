@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
 ms.openlocfilehash: 7c8e68da1c5da7b25d1385a82bf7dcc2f876306d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376281"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
@@ -22,7 +22,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Ellenőrizze, hogy van-e hálózati kapcsolat a MARS-ügynök és az Azure között](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Szükség esetén indítsa újra, és ismételje meg a műveletet.
-- [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Ügyeljen arra, hogy a szabad lemezterület 5-10%-a a mappa helyén legyen elérhető](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
 - [Az ütemezett biztonsági mentés meghiúsul, de a manuális biztonsági mentés sikeres](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Ellenőrizze, hogy az operációs rendszer rendelkezik-e a legújabb frissítésekkel
@@ -52,7 +52,7 @@ Győződjön meg arról, hogy a Windows Server biztonsági másolat telepítve v
 Get-WindowsFeature Windows-Server-Backup
  ```
 
-Ha a kimenet a telepítési **állapotot** **elérhetőként**jeleníti meg, akkor az azt jelenti, hogy a Windows Server biztonsági másolat szolgáltatás elérhető a telepítéshez, de nincs telepítve a kiszolgálón. Ha azonban Windows Server biztonsági másolat nincs telepítve, a telepítéshez használja az alábbi módszerek egyikét.
+Ha a kimenet a telepítési **állapotot** **elérhetőként** jeleníti meg, akkor az azt jelenti, hogy a Windows Server biztonsági másolat szolgáltatás elérhető a telepítéshez, de nincs telepítve a kiszolgálón. Ha azonban Windows Server biztonsági másolat nincs telepítve, a telepítéshez használja az alábbi módszerek egyikét.
 
 #### <a name="method-1-install-windows-server-backup-using-powershell"></a>1. módszer: Windows Server biztonsági másolat telepítése a PowerShell használatával
 
@@ -66,16 +66,16 @@ Windows Server biztonsági másolat a PowerShell használatával történő tele
 
 A Windows Server biztonsági másolat Kiszolgálókezelő használatával történő telepítéséhez hajtsa végre a következő lépéseket:
 
-1. A **Server Managerben**válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
+1. A **Server Managerben** válassza a **szerepkörök és szolgáltatások hozzáadása** lehetőséget. Megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** .
 
     ![Irányítópult](./media/backup-azure-system-state-troubleshoot/server_management.jpg)
 
-2. Válassza a **telepítés típusa** lehetőséget, majd válassza a **tovább**lehetőséget.
+2. Válassza a **telepítés típusa** lehetőséget, majd válassza a **tovább** lehetőséget.
 
     ![Telepítés típusa](./media/backup-azure-system-state-troubleshoot/install_type.jpg)
 
-3. Válasszon ki egy kiszolgálót a kiszolgáló készletéből, és kattintson a **tovább**gombra. A kiszolgálói szerepkörben hagyja meg az alapértelmezett beállítást, és kattintson a **Tovább gombra**.
-4. Válassza a **Windows Server biztonsági másolat** elemet a **szolgáltatások** lapon, és kattintson a **tovább**gombra.
+3. Válasszon ki egy kiszolgálót a kiszolgáló készletéből, és kattintson a **tovább** gombra. A kiszolgálói szerepkörben hagyja meg az alapértelmezett beállítást, és kattintson a **Tovább gombra**.
+4. Válassza a **Windows Server biztonsági másolat** elemet a **szolgáltatások** lapon, és kattintson a **tovább** gombra.
 
     ![Szolgáltatások kiválasztása ablak](./media/backup-azure-system-state-troubleshoot/features.png)
 
@@ -92,7 +92,7 @@ Győződjön meg arról, hogy a helyi rendszer teljes hozzáféréssel rendelkez
 
 Győződjön meg arról, hogy az alábbi szolgáltatások futó állapotban vannak:
 
-**Szolgáltatásnév** | **Indítási típus**
+**Szolgáltatás neve** | **Indítási típus**
 --- | ---
 Távoli eljáráshívás (RPC) | Automatikus
 COM+ Event System (EventSystem) | Automatikus

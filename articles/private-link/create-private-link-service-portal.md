@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
 ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98746407"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával
@@ -46,7 +46,7 @@ Ebben a szakaszban egy virtuális hálózatot és alhálózatot hoz létre a pri
     | Erőforráscsoport   | **CreatePrivLinkService kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | Válassza az **USA 2. keleti** régióját |
+    | Region           | Válassza az **USA 2. keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -84,7 +84,7 @@ A portál használatával hozzon létre egy standard belső terheléselosztó.
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az előző lépésben létrehozott **CreatePrivLinkService-RG** elemet.|
     | Name                   | **MyLoadBalancer** megadása                                   |
-    | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
+    | Region         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **belső** lehetőséget.                                        |
     | Termékváltozat           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
@@ -192,7 +192,7 @@ Ebben a szakaszban egy, a standard Load Balancer mögötti privát kapcsolati sz
     | Erőforráscsoport | Válassza a **CreatePrivLinkService-RG** elemet. |
     | **Példány adatai** |  |
     | Name | Adja meg a **myPrivateLinkService**. |
-    | Régió | Válassza az **USA 2. keleti régiója** lehetőséget. |
+    | Region | Válassza az **USA 2. keleti régiója** lehetőséget. |
 
 6. Válassza ki a **kimenő beállítások** lapot, vagy válassza a **következő: kimenő beállítások** elemet az oldal alján.
 
@@ -237,7 +237,7 @@ Ebben a szakaszban a Private link Service-t egy privát végpontra képezi le. A
     | Erőforráscsoport   | **CreatePrivLinkService kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNetPE** megadása                                    |
-    | Régió           | Válassza az **USA 2. keleti** régióját |
+    | Region           | Válassza az **USA 2. keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -281,7 +281,7 @@ Ebben a szakaszban a Private link Service-t egy privát végpontra képezi le. A
     | Erőforráscsoport | Válassza a **CreatePrivLinkService-RG** elemet. Ezt az erőforráscsoportot az előző szakaszban hozta létre.|
     | **Példány adatai** |  |
     | Name  | Adja meg a **myPrivateEndpoint** nevet. |
-    | Régió | Válassza az **USA 2. keleti régiója** lehetőséget. |
+    | Region | Válassza az **USA 2. keleti régiója** lehetőséget. |
 
 6. Válassza ki az **erőforrás** lapot vagy a **következő: erőforrás** gombot az oldal alján.
     

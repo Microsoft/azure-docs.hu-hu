@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86131174"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Támogatási mátrix Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállításához
@@ -53,14 +53,14 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 **Konfigurálás** | **Támogatott**  
 --- | --- 
-Gazdagép – hálózati adapterek összevonása | Igen 
-Gazdagép – VLAN | Igen 
-Gazdagép – IPv4 | Igen 
-Gazdagép – IPv6 | Nem 
-Vendég virtuális hálózati adapterek összevonása | Nem
-Vendég virtuális gép – IPv4 | Igen
-Vendég virtuális gép – IPv6 | Nem
-Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
+Gazdagép – hálózati adapterek összevonása | Yes 
+Gazdagép – VLAN | Yes 
+Gazdagép – IPv4 | Yes 
+Gazdagép – IPv6 | No 
+Vendég virtuális hálózati adapterek összevonása | No
+Vendég virtuális gép – IPv4 | Yes
+Vendég virtuális gép – IPv6 | No
+Vendég virtuális gép – Windows/Linux – statikus IP-cím | Yes
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
@@ -71,9 +71,9 @@ Vendég virtuális gép – több hálózati adapter | Igen
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
 NFS | N/A
-SMB 3.0 |  Igen
-SAN (ISCSI) | Igen
-Több elérési út (MPIO) | Igen
+SMB 3.0 |  Yes
+SAN (ISCSI) | Yes
+Több elérési út (MPIO) | Yes
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
@@ -81,37 +81,37 @@ Több elérési út (MPIO) | Igen
 --- | --- | 
 VMDK |  N/A
 VHD/VHDX | Igen (legfeljebb 16 lemez)
-2. generációs VM | Igen
-Megosztott fürtözött lemez | Nem
-Titkosított lemez | Nem
+2. generációs VM | Yes
+Megosztott fürtözött lemez | No
+Titkosított lemez | No
 UEFI| N/A
-NFS | Nem
-SMB 3.0 | Nem
+NFS | No
+SMB 3.0 | No
 RDM | N/A
-Lemez > 1 TB | Igen
-Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
-Tárolóhelyek | Igen
-Lemez gyors hozzáadása/eltávolítása | Nem
-Lemez kizárása | Igen
-Több elérési út (MPIO) | Igen
+Lemez > 1 TB | Yes
+Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Yes
+Tárolóhelyek | Yes
+Lemez gyors hozzáadása/eltávolítása | No
+Lemez kizárása | Yes
+Több elérési út (MPIO) | Yes
 
 ## <a name="vaults"></a>Kulcstartók
 
 **Művelet** | **Támogatott**
 --- | --- 
-Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  Nem
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | Nem
+Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) |  No
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | No
 
 ## <a name="azure-site-recovery-provider"></a>Azure Site Recovery szolgáltató
 
 A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt. 
 
-**Legutóbbi** | **Frissítések**
+**Legújabb** | **Frissítések**
 --- | --- 
 5.1.19 ([elérhető a portálról](https://aka.ms/downloaddra) | [Legújabb funkciók és javítások](https://support.microsoft.com/kb/3155002)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)

@@ -11,10 +11,10 @@ ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953355"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C lévő szabályzati kulcsok áttekintése
@@ -38,9 +38,9 @@ A Azure AD B2C található házirend-kulcsok legfelső szintű erőforrása a **
 
 | Attribútum |  Kötelező | Megjegyzések |
 | --- | --- |--- |
-| `use` | Igen | Használat: a nyilvános kulcs rendeltetésszerű használatát azonosítja. Adattitkosítás `enc` vagy az aláírás ellenőrzése az adatain `sig` .|
-| `nbf`| Nem | Aktiválás dátuma és időpontja. |
-| `exp`| Nem | Lejárati dátum és idő. |
+| `use` | Yes | Használat: a nyilvános kulcs rendeltetésszerű használatát azonosítja. Adattitkosítás `enc` vagy az aláírás ellenőrzése az adatain `sig` .|
+| `nbf`| No | Aktiválás dátuma és időpontja. |
+| `exp`| No | Lejárati dátum és idő. |
 
 Javasoljuk, hogy a kulcs aktiválását és a lejárati értékeket a PKI-szabványoknak megfelelően állítsa be. Előfordulhat, hogy ezeket a tanúsítványokat időnként biztonsági vagy házirendi okokból kell elforgatnia. Előfordulhat például, hogy egy szabályzattal minden évben el szeretné forgatni a tanúsítványokat.
 

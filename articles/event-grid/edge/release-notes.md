@@ -4,10 +4,10 @@ description: IoT Edge kibocsátási megjegyzések Azure Event Grid
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: a7582750f5230f02c784b14f50dfc6efa7af8698
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171414"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>Kibocsátási megjegyzések: Azure Event Grid IoT Edge

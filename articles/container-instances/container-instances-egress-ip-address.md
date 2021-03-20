@@ -4,10 +4,10 @@ description: Az Azure tűzfal és a felhasználó által megadott útvonalak kon
 ms.topic: article
 ms.date: 07/16/2020
 ms.openlocfilehash: 497645b9fe7f908cc9b8b4d7ed0ba5e201570160
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89566568"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Egyetlen nyilvános IP-cím konfigurálása a kimenő és a bejövő forgalom számára egy tároló csoportba
@@ -31,7 +31,7 @@ Egy tipikus esetben előfordulhat, hogy már rendelkezik egy Azure-beli virtuál
 
 A tároló csoport egy kisméretű webalkalmazást futtat a `aci-helloworld` rendszerképből. Ahogy az a dokumentáció más cikkeiben is látható, ez a rendszerkép egy olyan Node.js írt kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt szolgál ki.
 
-Ha szüksége van erre, először hozzon létre egy Azure-erőforráscsoportot az az [Group Create][az-group-create] paranccsal. Példa:
+Ha szüksége van erre, először hozzon létre egy Azure-erőforráscsoportot az az [Group Create][az-group-create] paranccsal. Például:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

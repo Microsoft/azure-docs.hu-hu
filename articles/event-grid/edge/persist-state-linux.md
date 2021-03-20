@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 92333c2528303a6fa53fa30f47def33c33235d39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171482"
 ---
 # <a name="persist-state-in-linux"></a>Állapot megőrzése Linuxon
@@ -40,7 +40,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyekkel üzembe helyezheti a Event 
 ```
 
 >[!IMPORTANT]
->Ne módosítsa a kötési érték második részét. Egy adott helyre mutat a modulon belül. A Linux Event Grid moduljának **/app/metadataDb**kell lennie.
+>Ne módosítsa a kötési érték második részét. Egy adott helyre mutat a modulon belül. A Linux Event Grid moduljának **/app/metadataDb** kell lennie.
 
 A következő konfiguráció például azt eredményezi, hogy a kötet **egmetadataDbVol** hozza létre, ahol a metaadatok megmaradnak.
 
@@ -92,7 +92,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
    md <your-directory-name-here>
    ```
 
-    A következő parancs futtatása például létrehoz egy **myhostdir**nevű könyvtárat.
+    A következő parancs futtatása például létrehoz egy **myhostdir** nevű könyvtárat.
 
     ```sh
     md /myhostdir
@@ -103,7 +103,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Például:
+    Példa:
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
@@ -121,7 +121,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
     }
     ```
 
-    Például:
+    Példa:
 
     ```json
     {

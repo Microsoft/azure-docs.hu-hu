@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92913245"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Szervezetek váltása egy portálon
@@ -30,7 +30,7 @@ A szervezeti kapcsoló a következő portálokon érhető el:
 - [**Saját hozzáférés**](https://myaccess.microsoft.com)
 - [**Saját munkatársak**](https://mystaff.microsoft.com)
 
-A bekapcsolási szervezetek nem érhetők el a **bejelentkezések** , a **biztonsági adatok** vagy **a saját csoportok** számára.
+A bekapcsolási szervezetek nem érhetők el a **bejelentkezések**, a **biztonsági adatok** vagy **a saját csoportok** számára.
 
 ## <a name="switch-organizations"></a>Váltás másik szervezetre
 
@@ -39,7 +39,7 @@ A következőképpen válthat másik szervezetre. Ez a példa a **saját fiók**
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a [saját fiók](https://myaccount.microsoft.com) lapot.
 1. Válassza ki a szervezet kapcsolójának :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="ikonját"::: az oldal tetején, a fiók fényképe mellett.
 
-    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="ikonját":::
+    :::image type="content" source="media/cross-tenant-switcher/switcher-location.png" alt-text="Azon szervezetek menüje, amelyekre váltani lehet":::
 
 1. Válassza ki azt a szervezetet, amelyre váltani szeretne. A rendszer automatikusan átvált a kiválasztott szervezetre.
 

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98014295"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Az események rendezésére vonatkozó szabályzatok konfigurálása Azure Stream Analyticshoz
@@ -80,6 +80,6 @@ Ez akkor történik meg, ha van olyan bemeneti partíció, amely soha nem kapott
 
 Ha egy partícióhoz nem tartozik több, mint a beállított késői érkezési küszöbérték, a stream Analytics az alkalmazás időbélyegét az esemény rendezési szempontjai című szakaszban ismertetett módon részletezi. Ehhez a becsült érkezési időt kell megbecsülni. Ha a partíció soha nem tartalmazott semmilyen adatforrást, a stream Analytics *helyi idő szerint (5 másodperc*) megbecsüli az érkezési időt. Az olyan partíciók miatt, amelyek soha nem voltak adatai, 5 másodperces vízjel-késleltetést mutatnak.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Időkezelési megfontolások](stream-analytics-time-handling.md)
 * [Stream Analytics elérhető metrikák](./stream-analytics-monitoring.md#metrics-available-for-stream-analytics)

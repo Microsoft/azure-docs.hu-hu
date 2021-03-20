@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: ramamill
 ms.openlocfilehash: a141280338632fdad7053cbbe76c8bdf2797443d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89424871"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbookok hozzáadása helyreállítási tervekhez
@@ -115,14 +115,14 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 ## <a name="customize-the-recovery-plan"></a>A helyreállítási terv testreszabása
 
 1. A tárolóban válassza a **helyreállítási tervek (site Recovery) lehetőséget.**
-2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információk](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
-3. A helyreállítási terv lapon kattintson a **Testreszabás**elemre.
+2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv** elemre. [További információ](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
+3. A helyreállítási terv lapon kattintson a **Testreszabás** elemre.
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson a három pontra (...) az **1. csoport:** a  >  **post művelet hozzáadása**lehetőségre.
-3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét (**„Helló világ!” alkalmazás**).
-4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
+2. Kattintson a három pontra (...) az **1. csoport:** a  >  **post művelet hozzáadása** lehetőségre.
+3. A **beszúrási művelet** területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét (**Hello World**).
+4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK** gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Runbook-szkript újrafelhasználása

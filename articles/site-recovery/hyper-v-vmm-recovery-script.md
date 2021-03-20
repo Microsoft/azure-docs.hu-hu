@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89425874"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>VMM-parancsfájl hozzáadása helyreállítási tervhez
@@ -43,15 +43,15 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
   Ha a megosztott kódtár elérési útja távoli (vagy helyi, de nem a MSCVMMLibrary van megosztva), a következőképpen konfigurálja a megosztást a \\ libserver2. contoso. com\share\ használatával példaként:
   
-  1. Nyissa meg a Beállításszerkesztőt, majd lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**elemre.
+  1. Nyissa meg a Beállításszerkesztőt, majd lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration** elemre.
 
-  1. Módosítsa a **ScriptLibraryPath** értékét a ** \\ \libserver2.contoso.com\share \\ **értékre. A teljes FQDN meghatározása. Adja meg a megosztási hely engedélyeit. Ez a megosztás legfelső szintű csomópontja. A legfelső szintű csomópont kereséséhez a VMM-ben nyissa meg a könyvtárban található legfelső szintű csomópontot. A megnyíló elérési út az elérési út gyökerét képezi. Ezt az elérési utat kell használnia a változóban.
+  1. Módosítsa a **ScriptLibraryPath** értékét a **\\ \libserver2.contoso.com\share \\** értékre. A teljes FQDN meghatározása. Adja meg a megosztási hely engedélyeit. Ez a megosztás legfelső szintű csomópontja. A legfelső szintű csomópont kereséséhez a VMM-ben nyissa meg a könyvtárban található legfelső szintű csomópontot. A megnyíló elérési út az elérési út gyökerét képezi. Ezt az elérési utat kell használnia a változóban.
 
   1. Tesztelje a parancsfájlt egy olyan felhasználói fiók használatával, amely azonos szintű felhasználói jogosultságokkal rendelkezik, mint a VMM-szolgáltatásfiók. Ezen felhasználói jogosultságok használata ellenőrzi, hogy az önálló, tesztelt parancsfájlok ugyanúgy futnak-e, mint a helyreállítási tervekben. A VMM-kiszolgálón a következőképpen állítsa be a végrehajtási házirendet a mellőzésre:
 
      a. Nyissa meg a **64 bites Windows PowerShell-** konzolt rendszergazdaként.
      
-     b. Adja meg a **Set-ExecutionPolicy mellőzése**értéket. További információ: [a Set-ExecutionPolicy parancsmag használata](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
+     b. Adja meg a **Set-ExecutionPolicy mellőzése** értéket. További információ: [a Set-ExecutionPolicy parancsmag használata](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > Set **-ExecutionPolicy kitérő** beállítása csak a 64 bites PowerShell-konzolon. Ha a 32 bites PowerShell-konzolra állítja be, a parancsfájlok nem futnak.
@@ -69,9 +69,9 @@ Ha rendelkezik VMM, létrehozhat egy parancsfájlt a VMM-kiszolgálón. Ezután 
 Miután hozzáadta a virtuális gépeket vagy replikációs csoportokat egy helyreállítási tervhez, és létrehozta a csomagot, hozzáadhatja a parancsfájlt a csoporthoz.
 
 1. Nyissa meg a helyreállítási tervet.
-1. A **lépés** listában válasszon ki egy elemet. Ezután válassza a **parancsfájl** vagy a **manuális művelet**lehetőséget.
+1. A **lépés** listában válasszon ki egy elemet. Ezután válassza a **parancsfájl** vagy a **manuális művelet** lehetőséget.
 1. Adja meg, hogy a parancsfájlt vagy műveletet a kijelölt elem előtt vagy után kívánja-e hozzáadni. Ha feljebb **vagy lejjebb szeretné** helyezni a szkript pozícióját, válassza a **feljebb és lejjebb** gombokat.
-1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkriptet**. A **parancsfájl elérési útja**mezőben adja meg a megosztás relatív elérési útját. Adja meg például a következőt: **\RPScripts\RPScript.PS1**.
+1. Ha VMM-parancsfájlt ad hozzá, válassza a **FELADATÁTVÉTEL VMM szkriptet**. A **parancsfájl elérési útja** mezőben adja meg a megosztás relatív elérési útját. Adja meg például a következőt: **\RPScripts\RPScript.PS1**.
 1. Ha hozzáad egy Azure Automation runbook, adja meg azt az Automation-fiókot, amelyben a runbook található. Ezután válassza ki a használni kívánt Azure runbook-szkriptet.
 1. Annak érdekében, hogy a parancsfájl a várt módon működjön, végezzen feladatátvételi tesztet a helyreállítási tervből.
 

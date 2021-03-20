@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 0d16d7a6dbf903ae790015c12e3d34e4a2a553d3
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92139346"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
@@ -55,7 +55,7 @@ Egy eszközidentitáson belül legfeljebb 20 modulidentitás hozható létre. Id
 
 1. Az előző szakaszban létrehozott eszközhöz válassza a modul- **identitás hozzáadása** elemet az első modul identitásának létrehozásához.
 
-1. Adja meg a *myFirstModule*nevet. Mentse a modul identitását.
+1. Adja meg a *myFirstModule* nevet. Mentse a modul identitását.
 
     ![Modul identitásának hozzáadása](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve hozhat létre egy alkalmazást, amely frissíti 
 
 1. A Visual Studióban válassza az **új projekt létrehozása**, majd a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és kattintson a **Tovább gombra**.
 
-1. Az **új projekt konfigurálása**területen adja meg a *UpdateModuleTwinReportedProperties* **nevet a projekt neveként**. A folytatáshoz válassza a **Létrehozás** lehetőséget.
+1. Az **új projekt konfigurálása** területen adja meg a *UpdateModuleTwinReportedProperties* **nevet a projekt neveként**. A folytatáshoz válassza a **Létrehozás** lehetőséget.
 
     ![A Visual Studio-projekt konfigurálása](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
@@ -85,7 +85,7 @@ A modul identitása és a Twin modul nyilvános előzetes verzióban érhető el
 
 1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**.
 
-1. Válassza a **Tallózás**lehetőséget, majd válassza az **előzetes verzió belefoglalása**lehetőséget. Keressen rá a *Microsoft. Azure. Devices. Client*kifejezésre. Válassza ki a legújabb verziót, és telepítse.
+1. Válassza a **Tallózás** lehetőséget, majd válassza az **előzetes verzió belefoglalása** lehetőséget. Keressen rá a *Microsoft. Azure. Devices. Client* kifejezésre. Válassza ki a legújabb verziót, és telepítse.
 
     ![Az Azure IoT Hub .NET Service SDK előzetes verziójának telepítése](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
@@ -97,9 +97,9 @@ Szüksége lesz a konzolos alkalmazáshoz tartozó modul-csatlakoztatási karakt
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-1. Navigáljon az IoT hubhoz, és válassza a **IoT-eszközök**elemet. Nyissa meg a **myFirstDevice** , és láthatja, hogy a **myFirstModule** létrehozása sikeresen megtörtént.
+1. Navigáljon az IoT hubhoz, és válassza a **IoT-eszközök** elemet. Nyissa meg a **myFirstDevice** , és láthatja, hogy a **myFirstModule** létrehozása sikeresen megtörtént.
 
-1. Válassza ki a **myFirstModule** elemet a **modul-identitások**területen. A **modul identitásának részleteiben**másolja a **kapcsolati karakterláncot (elsődleges kulcs)**.
+1. Válassza ki a **myFirstModule** elemet a **modul-identitások** területen. A **modul identitásának részleteiben** másolja a **kapcsolati karakterláncot (elsődleges kulcs)**.
 
     ![Az Azure Portal moduladatai](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
@@ -180,7 +180,7 @@ Az alkalmazás létrehozásához kövesse az alábbi lépéseket:
   }
   ```
   
-  Ezt az alkalmazást az **F5**használatával hozhatja létre és futtathatja.
+  Ezt az alkalmazást az **F5** használatával hozhatja létre és futtathatja.
 
 A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 

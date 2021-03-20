@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: damaerte
 ms.openlocfilehash: f824bddf833a1e2c01a3b779abc2c5252d8e0547
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89468657"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
@@ -45,9 +45,9 @@ A Cloud Shell három módon érheti el:
 
     A **TRY IT (kipróbálás** ) gomb a Cloud Shell közvetlenül a dokumentáció mellett a bash (Azure CLI-kódrészletek) vagy a PowerShell (Azure PowerShell kódrészletek esetében) használatával nyitja meg.
 
-    A parancs futtatásához használja a **Másolás** parancsot a kódrészletben, a **CTRL** + **SHIFT** + **v** (Windows/Linux) vagy a **cmd** + **SHIFT** + **v** (MacOS) használatával illessze be a parancsot, majd nyomja le az **ENTER**billentyűt.
+    A parancs futtatásához használja a **Másolás** parancsot a kódrészletben, a **CTRL** + **SHIFT** + **v** (Windows/Linux) vagy a **cmd** + **SHIFT** + **v** (MacOS) használatával illessze be a parancsot, majd nyomja le az **ENTER** billentyűt.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 
@@ -57,11 +57,11 @@ A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, 
 
 A felhasználók a bash vagy a PowerShell közül választhatnak.
 
-1. Válassza a **Cloud Shell**lehetőséget.
+1. Válassza a **Cloud Shell** lehetőséget.
 
     ![Cloud Shell ikon](media/overview/overview-cloudshell-icon.png)
 
-2. Válassza a **bash** vagy a **PowerShell**lehetőséget.
+2. Válassza a **bash** vagy a **PowerShell** lehetőséget.
 
     ![Válassza a bash vagy a PowerShell lehetőséget.](media/overview/overview-choices.png)
 

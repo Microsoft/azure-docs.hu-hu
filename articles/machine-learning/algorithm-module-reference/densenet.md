@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: d21c7443f6b30d0b7d6e8295c0c9b060a80d9a62
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421328"
 ---
 # <a name="densenet"></a>DenseNet
@@ -54,18 +54,18 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name             | Tartomány | Típus    | Alapértelmezett     | Leírás                              |
+| Name             | Tartomány | Típus    | Alapértelmezett     | Description                              |
 | ---------------- | ----- | ------- | ----------- | ---------------------------------------- |
-| Modell neve       | Bármely   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
-| Imagenet       | Bármely   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
-| Hatékony memória | Bármely   | Logikai | Hamis       | Az ellenőrzőpontok használata, amely sokkal nagyobb memória-hatékonyságot, de lassabb |
+| Modell neve       | Bármelyik   | Mód    | densenet201 | Egy bizonyos DenseNet-struktúra neve     |
+| Imagenet       | Bármelyik   | Logikai | Igaz        | Azt határozza meg, hogy az ImageNet-on előre betanított modellt használ-e |
+| Hatékony memória | Bármelyik   | Logikai | Hamis       | Az ellenőrzőpontok használata, amely sokkal nagyobb memória-hatékonyságot, de lassabb |
 
 ###  <a name="output"></a>Kimenet  
 
-| Név            | Típus                    | Leírás                              |
+| Név            | Típus                    | Description                              |
 | --------------- | ----------------------- | ---------------------------------------- |
 | Nem betanított modell | UntrainedModelDirectory | Egy képzetlen DenseNet-modell, amely csatlakoztatható a Pytorch-modellhez. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

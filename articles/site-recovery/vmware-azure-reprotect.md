@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 6a11e3d0cb41383b44b76975ecbd1c2ae2825015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89441493"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Ismételt védelem – Azure-ból helyszíni rendszerbe
@@ -58,10 +58,10 @@ Engedélyezze a replikációt. Az adott virtuális gépek vagy helyreállítási
 
 A következőképpen engedélyezheti az ismételt védelmet:
 
-1. Válassza **a**tár  >  **replikált elemek**lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem**lehetőséget.
+1. Válassza **a** tár  >  **replikált elemek** lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem** lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem** lehetőséget.
 2. Ellenőrizze, hogy be van-e jelölve az **Azure és a** helyszíni védelem iránya.
-3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló**területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
-4. Az **adattár**mezőben válassza ki azt az adattárolót, amelyre a helyi lemezeket helyre kívánja állítani. Ez a beállítás akkor használható, ha a helyszíni virtuális gép törlődik, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
+3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló** területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
+4. Az **adattár** mezőben válassza ki azt az adattárolót, amelyre a helyi lemezeket helyre kívánja állítani. Ez a beállítás akkor használható, ha a helyszíni virtuális gép törlődik, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
 5. Válassza ki az adatmegőrzési meghajtót.
 6. A feladat-visszavételi szabályzat automatikusan ki van jelölve.
 7. A védelem megkezdéséhez kattintson **az OK gombra** .

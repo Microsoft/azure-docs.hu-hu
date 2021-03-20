@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 3c3f776ad0996fa0b7422f0fca2d899a35e853d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016133"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>CI/CD implementálása IoT Edge Stream Analyticshoz API-k használatával
@@ -254,7 +254,7 @@ Telepítési jegyzékfájl mintája:
 Az üzembe helyezési jegyzék konfigurálását követően tekintse át a [Azure IoT Edge-modulok üzembe helyezése az Azure CLI-vel üzembe helyezését ismertető témakört](../iot-edge/how-to-deploy-modules-cli.md) .
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
  
 * [IoT Edge-eszközökön futó Azure Stream Analytics](stream-analytics-edge.md)
 * [ASA IoT Edge oktatóanyag](../iot-edge/tutorial-deploy-stream-analytics.md)

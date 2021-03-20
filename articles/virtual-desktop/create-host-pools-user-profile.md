@@ -7,10 +7,10 @@ ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88002599"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
@@ -33,8 +33,8 @@ A virtuális gép létrehozásakor ügyeljen arra, hogy ugyanazt a virtuális h�
 A virtuális gép létrehozása után csatlakoztassa azt a tartományhoz a következő műveletek végrehajtásával:
 
 1. [Kapcsolódjon a virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
-2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer**elemet.
-3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása**lehetőséget, majd válassza a **módosítás...** lehetőséget.
+2. A virtuális gépen indítsa el a **Vezérlőpultot** , és válassza a **rendszer** elemet.
+3. Válassza ki a **számítógép nevét**, válassza a **beállítások módosítása** lehetőséget, majd válassza a **módosítás...** lehetőséget.
 4. Válassza a **tartomány** lehetőséget, majd adja meg a Active Directory tartományt a virtuális hálózaton.
 5. A hitelesítést olyan tartományi fiókkal végezze el, amely jogosultságokkal rendelkezik a tartományhoz csatlakozó gépekhez.
 
@@ -45,10 +45,10 @@ A virtuális gépeknek a felhasználói profilok fájlmegosztásként való elő
 1. Adja hozzá a Windows rendszerű virtuális asztali Active Directory felhasználókat egy [Active Directory biztonsági csoporthoz](/windows/security/identity-protection/access-control/active-directory-security-groups/). Ez a biztonsági csoport fogja használni a Windows rendszerű virtuális asztali felhasználókat az imént létrehozott fájlmegosztás virtuális gépre.
 2. [Kapcsolódjon a fájlmegosztás virtuális géphez](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine).
 3. A fájlmegosztás virtuális gépen hozzon létre egy mappát a **C meghajtón** , amelyet a rendszer a profil megosztásaként fog használni.
-4. Kattintson a jobb gombbal az új mappára, válassza a **Tulajdonságok**lehetőséget, válassza a **megosztás**, majd a **speciális megosztás**lehetőséget.
-5. Jelölje be **a mappa megosztása**jelölőnégyzetet, majd válassza az **engedélyek...** lehetőséget, majd kattintson a **Hozzáadás...** elemre.
-6. Keresse meg azt a biztonsági csoportot, amelyhez hozzáadta a Windows rendszerű virtuális asztali felhasználókat, majd győződjön meg arról, hogy a csoport **teljes hozzáféréssel**rendelkezik.
-7. A biztonsági csoport hozzáadása után kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok parancsot**, válassza a **megosztás**lehetőséget, majd másolja le a **hálózati elérési utat** későbbi használatra.
+4. Kattintson a jobb gombbal az új mappára, válassza a **Tulajdonságok** lehetőséget, válassza a **megosztás**, majd a **speciális megosztás** lehetőséget.
+5. Jelölje be **a mappa megosztása** jelölőnégyzetet, majd válassza az **engedélyek...** lehetőséget, majd kattintson a **Hozzáadás...** elemre.
+6. Keresse meg azt a biztonsági csoportot, amelyhez hozzáadta a Windows rendszerű virtuális asztali felhasználókat, majd győződjön meg arról, hogy a csoport **teljes hozzáféréssel** rendelkezik.
+7. A biztonsági csoport hozzáadása után kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok parancsot**, válassza a **megosztás** lehetőséget, majd másolja le a **hálózati elérési utat** későbbi használatra.
 
 Az engedélyekkel kapcsolatos további információkért tekintse meg a [FSLogix dokumentációját](/fslogix/fslogix-storage-config-ht/).
 
@@ -61,7 +61,7 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 3. Navigáljon a \\ \\ \\ \\ \\ \\ . zip fájl Win32 vagy x64 kiadására, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](/fslogix/install-ht/).
 4. Navigáljon a **Program Files**  >  **FSLogix**  >  **alkalmazásokhoz** , és erősítse meg az ügynök telepítését.
 5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon a **számítógép \\ HKEY_LOCAL_MACHINE \\ szoftver \\ FSLogix**.
-6. Hozzon létre egy **profilok**nevű kulcsot.
+6. Hozzon létre egy **profilok** nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
 | Név                | Típus               | Az adatértékek/értékek                        |

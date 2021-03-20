@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: a4140a0b22f7ca8164d50cf60fe57c861f826eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132516"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Hyper-V virtuális gépek Azure-ba történő vészhelyreállításának beállítása a PowerShell és az Azure Resource Manager használatával
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kövesse az alábbi lépéseket:
 
-1. A következő parancs futtatásával bontsa ki a fájlokat a _AzureSiteRecoveryProvider.exeból _ egy helyi könyvtárba:
+1. A következő parancs futtatásával bontsa ki a fájlokat a _AzureSiteRecoveryProvider.exeból_ egy helyi könyvtárba:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -142,7 +142,7 @@ Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kö
    .\setupdr.exe /i
    ```
 
-   Az eredmények naplózása _%ProgramData%\ASRLogs\DRASetupWizard.log_történik.
+   Az eredmények naplózása _%ProgramData%\ASRLogs\DRASetupWizard.log_ történik.
 
 1. Regisztrálja a kiszolgálót a következő parancs futtatásával:
 
@@ -263,6 +263,6 @@ A Kezdés előtt a megadott Storage-fióknak ugyanabban az Azure-régióban kell
    $TFjob = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](/powershell/module/az.recoveryservices) információ a Azure site Recovery Azure Resource Manager PowerShell-parancsmagokkal.

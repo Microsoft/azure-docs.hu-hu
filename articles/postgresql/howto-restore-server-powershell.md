@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fffb5998b0b6a245db3f1c8fcf16f2d576936e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92489761"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
@@ -41,7 +41,7 @@ A kiszolgáló létrehozásakor választhat, hogy a kiszolgálót helyileg redun
 > [!NOTE]
 > A kiszolgáló létrehozása után a redundancia nem módosítható, földrajzilag redundáns, a helyileg redundáns.
 
-A kiszolgáló parancson keresztüli létrehozása közben `New-AzPostgreSqlServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve**van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva**, a rendszer helyileg redundáns biztonsági mentéseket végez.
+A kiszolgáló parancson keresztüli létrehozása közben `New-AzPostgreSqlServer` a **GeoRedundantBackup** paraméter határozza meg a biztonsági mentési redundancia beállítást. Ha **engedélyezve** van, a rendszer redundáns biztonsági mentéseket végez. Ha **le van tiltva**, a rendszer helyileg redundáns biztonsági mentéseket végez.
 
 A biztonsági mentés megőrzési időtartamát a **BackupRetentionDay** paraméter állítja be.
 
@@ -106,7 +106,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzPostgreSqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-Ez a példa egy **mydemoserver-georestored** nevű új kiszolgálót hoz létre az USA keleti régiójában, amely a következőhöz tartozik: **myresourcegroup**. Ez egy általános célú, Gen 5 kiszolgáló 8 virtuális mag. A kiszolgáló a **mydemoserver**a Geo-redundáns biztonsági másolatból jön létre, az erőforráscsoport **myresourcegroup**is.
+Ez a példa egy **mydemoserver-georestored** nevű új kiszolgálót hoz létre az USA keleti régiójában, amely a következőhöz tartozik: **myresourcegroup**. Ez egy általános célú, Gen 5 kiszolgáló 8 virtuális mag. A kiszolgáló a **mydemoserver** a Geo-redundáns biztonsági másolatból jön létre, az erőforráscsoport **myresourcegroup** is.
 
 Ha az új kiszolgálót egy másik erőforráscsoporthoz szeretné létrehozni a meglévő kiszolgálóról, az alábbi példában látható módon adja meg az új erőforráscsoport-nevet a **ResourceGroupName** paraméter használatával:
 

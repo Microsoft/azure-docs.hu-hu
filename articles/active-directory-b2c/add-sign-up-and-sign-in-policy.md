@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97618753"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Regisztrációs és bejelentkezési folyamat beállítása Azure Active Directory B2C
@@ -93,7 +93,7 @@ Az egyéni házirendek olyan XML-fájlok készletei, amelyeket feltölt a Azure 
 
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Vegyen fel egy [bejelentkezést a közösségi identitás-szolgáltatóval](add-identity-provider.md).
 * Állítsa be a [jelszó-visszaállítási folyamatot](add-password-reset-policy.md).
