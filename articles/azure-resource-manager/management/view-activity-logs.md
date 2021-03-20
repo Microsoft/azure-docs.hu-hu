@@ -4,10 +4,10 @@ description: A felhasználói műveletek és hibák áttekintéséhez használja
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: 14015e9b2792515e6818af551b8bd9f54c686bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91371592"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez
@@ -30,11 +30,11 @@ A tevékenység naplóiból információkat kérhet le a portálon, a PowerShell
 
 Az alábbi lépéseket követve tekintheti meg a tevékenységek naplóit a portálon:
 
-1. A Azure Portal menüben válassza a **figyelés**lehetőséget, vagy keresse meg, majd válassza a **figyelés** lehetőséget bármelyik oldalon.
+1. A Azure Portal menüben válassza a **figyelés** lehetőséget, vagy keresse meg, majd válassza a **figyelés** lehetőséget bármelyik oldalon.
 
     ![Figyelő kiválasztása](./media/view-activity-logs/select-monitor-from-menu.png)
 
-1. Válassza a **műveletnapló**lehetőséget.
+1. Válassza a **műveletnapló** lehetőséget.
 
     ![Műveletnapló kiválasztása](./media/view-activity-logs/select-activity-log.png)
 
@@ -42,7 +42,7 @@ Az alábbi lépéseket követve tekintheti meg a tevékenységek naplóit a port
 
     ![Legutóbbi műveletek összegzésének megtekintése](./media/view-activity-logs/audit-summary.png)
 
-1. Előre definiált szűrők gyors futtatásához válassza a **gyors elemzések**lehetőséget.
+1. Előre definiált szűrők gyors futtatásához válassza a **gyors elemzések** lehetőséget.
 
     ![Gyors áttekintések kiválasztása](./media/view-activity-logs/select-quick-insights.png)
 
@@ -58,7 +58,7 @@ Az alábbi lépéseket követve tekintheti meg a tevékenységek naplóit a port
 
     ![Szűrő beállításainak megadása](./media/view-activity-logs/set-filter.png)
 
-1. Ha később újra kell futtatnia a lekérdezést, válassza az **aktuális szűrők rögzítése**lehetőséget.
+1. Ha később újra kell futtatnia a lekérdezést, válassza az **aktuális szűrők rögzítése** lehetőséget.
 
     ![Szűrők rögzítése](./media/view-activity-logs/pin-filters.png)
 

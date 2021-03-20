@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96750220"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Javaslatok és ajánlott eljárások Azure Active Directory B2C
@@ -24,17 +24,17 @@ Az alábbi ajánlott eljárások és javaslatok az Azure Active Directory (Azure
 
 ## <a name="fundamentals"></a>Alapismeretek
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | A legtöbb forgatókönyv esetén válassza a felhasználói folyamatok lehetőséget | A Azure AD B2C identitási élményének keretrendszere a szolgáltatás alapvető erőssége. A szabályzatok teljes mértékben leírják a személyazonossággal kapcsolatos tapasztalatokat, például a regisztrálást, a bejelentkezést vagy a profil szerkesztését. A leggyakoribb identitási feladatok beállításához a Azure AD B2C-portál a felhasználói folyamatok nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamatok esetében percek alatt hozhat létre nagyszerű felhasználói élményt, mindössze néhány kattintással. [Ismerje meg, hogy mikor használhatja a felhasználói folyamatokat és az egyéni házirendeket](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | Alkalmazásregisztrációk | A védett összes alkalmazást (webes, natív) és API-t regisztrálni kell Azure AD B2Cban. Ha egy alkalmazásnak az iOS és az Android rendszerhez készült webes és natív verziója is van, akkor egyetlen alkalmazásként regisztrálhatja őket Azure AD B2C ugyanazzal az ügyfél-AZONOSÍTÓval. Ismerje meg, hogyan [regisztrálhat OIDC-, SAML-, web-és natív alkalmazásokat](./tutorial-register-applications.md?tabs=applications). További információ a [Azure ad B2C használható alkalmazási típusokról](./application-types.md). |
-| Áttérés a havi aktív felhasználók számlázására | Azure AD B2C a havi aktív hitelesítéstől a havi aktív felhasználók (MAU) számlázására került. A legtöbb ügyfél költséghatékonyan fogja megtalálni ezt a modellt. [További információ a havi aktív felhasználók számlázásáról](https://azure.microsoft.com/updates/mau-billing/). [A hivatkozás mentése](b2clogin.md) |
+| Áttérés a havi aktív felhasználók számlázására | Azure AD B2C a havi aktív hitelesítéstől a havi aktív felhasználók (MAU) számlázására került. A legtöbb ügyfél költséghatékonyan fogja megtalálni ezt a modellt. [További információ a havi aktív felhasználók számlázásáról](https://azure.microsoft.com/updates/mau-billing/). |
 
 ## <a name="planning-and-design"></a>Tervezés és kialakítás
 
 Határozza meg az alkalmazás és a szolgáltatás architektúráját, a leltár jelenlegi rendszereit, és tervezze meg az áttelepítést Azure AD B2Cra.
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | Teljes körű megoldás az építész számára | Az összes alkalmazás függőségeinek belefoglalása Azure AD B2C integráció tervezésekor. Vegye figyelembe az összes olyan szolgáltatást és terméket, amely jelenleg a környezetben van, vagy amelyet hozzá kell adni a megoldáshoz, például Azure Functions, ügyfélkapcsolat-kezelési (CRM) rendszerek, Azure API Management Gateway és Storage Services. Vegye figyelembe az összes szolgáltatás biztonságát és méretezhetőségét. |
 | Dokumentálja felhasználói élményeit | Részletesen megtekintheti, hogy az ügyfelek milyen felhasználói élményt nyújtanak az alkalmazásban. Minden képernyő és elágazó folyamat belefoglalása, amelyek az alkalmazás identitás-és profil-szempontjaival való interakció során előfordulhatnak. A tervezéshez a használhatóság, a hozzáférhetőség és a honosítás is használható. |
@@ -50,7 +50,7 @@ Határozza meg az alkalmazás és a szolgáltatás architektúráját, a leltár
 
 A megvalósítási fázisban vegye figyelembe az alábbi javaslatokat.
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | Egyéni szabályzatok szerkesztése a Visual Studio Code-hoz készült Azure AD B2C bővítménnyel | Töltse le a Visual Studio Code-ot és a Közösség által készített [bővítményt a Visual Studio Code piactérről](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). Habár nem hivatalos Microsoft-termék, a Visual Studio Code-hoz készült Azure AD B2C-bővítmény számos olyan funkciót tartalmaz, amelyek megkönnyítik az egyéni házirendek használatát. |
 | Tudnivalók a Azure AD B2C hibakereséséről | Ismerje meg, hogy miként lehet [elhárítani az egyéni házirendeket](./troubleshoot-custom-policies.md?tabs=applications) a fejlesztés során. Megtudhatja, hogyan néz ki egy normál hitelesítési folyamat a rendellenességek és hibák felderítésére szolgáló eszközök használatával. Például a [Application Insights](troubleshoot-with-application-insights.md) segítségével tekintheti át a felhasználói útvonalak kimeneti naplóit. |
@@ -60,7 +60,7 @@ A megvalósítási fázisban vegye figyelembe az alábbi javaslatokat.
 
 Tesztelje és automatizálja Azure AD B2C megvalósítását.
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | Fiók a globális forgalomhoz | Különböző globális címről származó adatforgalmi források használatával tesztelheti a teljesítménnyel és a honosítással kapcsolatos követelményeket. Győződjön meg arról, hogy az összes HTML, CSS és függőség megfelel a teljesítmény igényeinek. |
 | Funkcionális és felhasználói felületi tesztelés | Tesztelje a felhasználó végpontok közötti folyamatát. Vegyen fel néhány percenként szintetikus teszteket a szelén, a VS web test stb. használatával. |
@@ -70,24 +70,24 @@ Tesztelje és automatizálja Azure AD B2C megvalósítását.
 | Throttling |  A Azure AD B2C szabályozza a forgalmat, ha túl sok kérelmet továbbítanak ugyanabból a forrásból rövid idő alatt. A tesztelés során több forgalmi forrást is használhat, és szabályosan kezelheti a `AADB2C90229` hibakódot az alkalmazásaiban. |
 | Automation | A folyamatos integrációs és kézbesítési (CI/CD) folyamatokkal automatizálhatja a tesztelést és az üzembe helyezést, például az [Azure DevOps](deploy-custom-policies-devops.md)-t. |
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 Kezelheti Azure AD B2C-környezetét.
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | Több környezet létrehozása | A könnyebb működés és üzembe helyezés érdekében hozzon létre külön környezetet a fejlesztéshez, teszteléshez, üzem előtti és éles környezetekhez. Hozzon létre Azure AD B2C bérlőket mindegyikhez. |
 | Az egyéni szabályzatok verziókövetés használata | Vegye fontolóra a GitHub, az Azure Repos vagy más felhőalapú verziókövető rendszer használatát a Azure AD B2C egyéni szabályzatokhoz. |
-| A B2C-bérlők felügyeletének automatizálásához használja a Microsoft Graph API-t | Microsoft Graph API-k:<br/>Az [identitási élmény keretrendszere](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta) (egyéni szabályzatok) kezelése<br/>[Kulcsok](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[Felhasználói folyamatok](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
+| A B2C-bérlők felügyeletének automatizálásához használja a Microsoft Graph API-t | Microsoft Graph API-k:<br/>Az [identitási élmény keretrendszere](/graph/api/resources/trustframeworkpolicy?preserve-view=true&view=graph-rest-beta) (egyéni szabályzatok) kezelése<br/>[Kulcsok](/graph/api/resources/trustframeworkkeyset?preserve-view=true&view=graph-rest-beta)<br/>[Felhasználókövetés](/graph/api/resources/identityuserflow?preserve-view=true&view=graph-rest-beta) |
 | Integrálás az Azure DevOps | A [CI/CD-folyamat](deploy-custom-policies-devops.md) lehetővé teszi a különböző környezetek közötti váltást, és minden alkalommal biztosítja a termelési készültséget.   |
 | Integrálás Azure Monitor | A [naplózási naplózási események](view-audit-logs.md) csak hét napig őrződnek meg. A [Azure monitor integrálása](azure-monitor.md) a naplófájlok hosszú távú használatra való megőrzéséhez, illetve a harmadik féltől származó biztonsági információkkal és ESEMÉNYKEZELŐ (SIEM) eszközök integrálásához, hogy betekintést nyerjen a környezetbe. |
 | Aktív riasztások és figyelés beállítása | A [felhasználó viselkedésének nyomon követése](./analytics-with-application-insights.md) Azure AD B2C a Application Insights használatával. |
 
 ## <a name="support-and-status-updates"></a>Támogatás és állapot frissítései
-## <a name="todays-support-and-status-updates"></a>Mai támogatás és állapot-frissítések
+
 Maradjon naprakész a szolgáltatás állapotával és támogatási lehetőségekkel.
 
-| Ajánlott eljárás | Leírás |
+| Ajánlott eljárás | Description |
 |--|--|
 | [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Naprakészen tarthatja Azure AD B2C termék frissítéseit és hirdetményeit. |
 | [Microsoft támogatási szolgálat](support-options.md) | Támogatási kérelem nyújtása Azure AD B2C technikai problémákhoz. A számlázási és előfizetés-kezelési támogatást díjmentesen biztosítjuk. |

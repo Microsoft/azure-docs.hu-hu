@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
 ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132326"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Vész-helyreállítás beállítása a Active Directory és a DNS-hez
@@ -79,7 +79,7 @@ A legtöbb alkalmazáshoz tartományvezérlő vagy DNS-kiszolgáló jelenléte s
 1. Hozzon létre egy elkülönített hálózatot. Az Azure-ban létrehozott bármely virtuális hálózat alapértelmezés szerint el van különítve más hálózatokból. Azt javasoljuk, hogy használja ugyanazt az IP-címtartományt ehhez a hálózathoz, amelyet az üzemi hálózatában használ. Ne engedélyezze a helyek közötti kapcsolatot ezen a hálózaton.
 1. Adjon meg egy DNS IP-címet az elkülönített hálózatban. Használja azt az IP-címet, amelyre a DNS-virtuális gép beolvasása várható. Ha az Azure-ba végzi a replikálást, adja meg a feladatátvételhez használt virtuális gép IP-címét. Az IP-cím megadásához a replikált virtuális gép **számítási és hálózati** beállításainál válassza ki a **cél IP-** beállításokat.
 
-   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-hálózat":::
+   :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure test Network":::
 
    > [!TIP]
    > Site Recovery a virtuális gép **számítási és hálózati** beállításaiban megadott IP-cím használatával megkísérli létrehozni a teszt virtuális gépeket egy azonos nevű alhálózatban. Ha az azonos nevű alhálózat nem érhető el a feladatátvételi teszthez megadott Azure-beli virtuális hálózaton, a teszt virtuális gép a betűrendbe szedett első alhálózatban jön létre.
@@ -102,9 +102,9 @@ Ha feladatátvételi tesztet kezdeményez, ne adja meg az összes tartományvez�
 > [!IMPORTANT]
 > Az ebben a szakaszban leírt konfigurációk némelyike nem szabványos vagy Alapértelmezett tartományvezérlői konfiguráció. Ha nem szeretné, hogy ezek a módosítások egy éles tartományvezérlőn legyenek, létrehozhat egy Site Recovery dedikált tartományvezérlőt, amelyet a feladatátvételi teszthez kíván használni. Hajtsa végre ezeket a módosításokat csak a tartományvezérlőn.
 
-A Windows Server 2012-től kezdve a [további óvintézkedések Active Directory tartományi szolgáltatásokba (AD DS) épülnek](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezek a védelmi intézkedések segítenek a virtualizált tartományvezérlők védelmében a frissítési sorszám (USN) visszaállításakor, ha az alapul szolgáló hypervisor platform támogatja a virtuális gépek **GenerationID**. Az Azure támogatja a **virtuális gépek GenerationID**. Emiatt a Windows Server 2012-es vagy újabb verzióit futtató tartományvezérlők az Azure Virtual Machines szolgáltatásban rendelkeznek ezekkel a további garanciákkal.
+A Windows Server 2012-től kezdve a [további óvintézkedések Active Directory Domain Servicesba (AD DS) épülnek](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Ezek a védelmi intézkedések segítenek a virtualizált tartományvezérlők védelmében a frissítési sorszám (USN) visszaállításakor, ha az alapul szolgáló hypervisor platform támogatja a virtuális gépek **GenerationID**. Az Azure támogatja a **virtuális gépek GenerationID**. Emiatt a Windows Server 2012-es vagy újabb verzióit futtató tartományvezérlők az Azure Virtual Machines szolgáltatásban rendelkeznek ezekkel a további garanciákkal.
 
-A **virtuális gép GenerationID** alaphelyzetbe állításakor a AD DS adatbázis **InvocationID** értékét is alaphelyzetbe állítja. Emellett a rendszer elveti a relatív azonosító (RID) készletet, és a `SYSVOL` mappa nem mérvadóként van megjelölve. További információ: [Bevezetés a Active Directory tartományi szolgáltatások virtualizációba](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és a [elosztott fájlrendszer replikáció biztonságos virtualizálása (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
+A **virtuális gép GenerationID** alaphelyzetbe állításakor a AD DS adatbázis **InvocationID** értékét is alaphelyzetbe állítja. Emellett a rendszer elveti a relatív azonosító (RID) készletet, és a `SYSVOL` mappa nem mérvadóként van megjelölve. További információ: [Bevezetés a Active Directory Domain Services virtualizációba](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) és a [elosztott fájlrendszer replikáció biztonságos virtualizálása (DFSR)](https://techcommunity.microsoft.com/t5/storage-at-microsoft/safely-virtualizing-dfsr/ba-p/424671).
 
 Az Azure-ba való feladatátvétel a **VM-GenerationID** alaphelyzetbe állítását okozhatja. A **VM-GenerationID** alaphelyzetbe állítása további óvintézkedéseket indít, amikor a tartományvezérlő virtuális gépe elindul az Azure-ban. Ez jelentős késleltetést eredményezhet a tartományvezérlő virtuális gépre való bejelentkezéshez.
 
@@ -118,21 +118,21 @@ Ha a virtualizálási garanciákat egy feladatátvételi teszt után indítja el
 
 - A **GenerationID** értéke megváltozik:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Azure-hálózat":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2170.png" alt-text="Létrehozás-azonosító módosítása":::
 
 - A **InvocationID** értéke megváltozik:
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Azure-hálózat":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event1109.png" alt-text="Meghívási azonosító változása":::
 
 - `SYSVOL` a mappa és a `NETLOGON` megosztások nem érhetők el.
 
-  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="Azure-hálózat":::
+  :::image type="content" source="./media/site-recovery-active-directory/sysvolshare.png" alt-text="SYSVOL mappa megosztása":::
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="Azure-hálózat":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event13565.png" alt-text="NtFrs SYSVOL mappa":::
 
 - A rendszer törli a DFSR-adatbázisokat.
 
-  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="Azure-hálózat":::
+  :::image type="content" source="./media/site-recovery-active-directory/Event2208.png" alt-text="DFSR-adatbázisok törölve":::
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>Tartományvezérlői hibák elhárítása a feladatátvételi teszt során
 
@@ -171,7 +171,7 @@ Ha az előző feltételek teljesülnek, valószínű, hogy a tartományvezérlő
 
    További információ [: a 4013-es DNS-eseményazonosító hibáinak megoldása: a DNS-kiszolgáló nem tudta betölteni az ad integrált DNS-zónákat](https://support.microsoft.com/kb/2001093).
 
-1. Tiltsa le azt a követelményt, hogy a globáliskatalógus-kiszolgáló elérhető legyen a felhasználói bejelentkezés érvényesítéséhez. Ehhez a helyszíni tartományvezérlőn állítsa be a következő beállításkulcsot **1**értékre. Ha a `DWORD` nem létezik, akkor az **LSA** csomópontban hozhatja létre.
+1. Tiltsa le azt a követelményt, hogy a globáliskatalógus-kiszolgáló elérhető legyen a felhasználói bejelentkezés érvényesítéséhez. Ehhez a helyszíni tartományvezérlőn állítsa be a következő beállításkulcsot **1** értékre. Ha a `DWORD` nem létezik, akkor az **LSA** csomópontban hozhatja létre.
 
    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 
@@ -206,6 +206,6 @@ Ha a DNS nem ugyanazon a virtuális gépen található, mint a tartományvezérl
    dnscmd /config contoso.com /allowupdate 1
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-workload.md) információ a vállalati munkaterhelések Azure site Recoverysal való védelméről.

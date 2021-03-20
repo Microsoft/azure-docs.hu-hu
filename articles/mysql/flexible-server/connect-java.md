@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 01/16/2021
 ms.openlocfilehash: 93a8a7644c7ca729f0e4fd201b88e995576d4bda
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98606117"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql-flexible-server"></a>Rövid útmutató: a Java és a JDBC használata Azure Database for MySQL rugalmas kiszolgálóval
@@ -484,7 +484,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [MySQL-adatbázis migrálása a MySQL-hez készült Azure Database-be memóriakép és visszaállítás használatával](../concepts-migrate-dump-restore.md)

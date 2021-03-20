@@ -8,10 +8,10 @@ ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
 ms.openlocfilehash: 483d261a8cc107d01cfb7a405eac43667d7efcc6
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92131836"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
@@ -293,15 +293,15 @@ Ismerje meg, hogy a CRS-szabályok hogyan működnek, és hogy a CRS-ek 3,0-as v
 
 Az első bejegyzést a rendszer naplózza, mert a felhasználó egy numerikus IP-címet használt a Application Gatewayhoz való kapcsolódáshoz, amely ebben az esetben figyelmen kívül hagyható.
 
-A második (942130-es szabály) az egyik érdekes. Megtekintheti a részleteket, amelyek megfelelnek egy mintának (1 = 1), és a mező neve **TEXT1**. Az előző lépések végrehajtásával zárja ki a **kérelem attribútumának nevét** , amely **1 = 1**értékkel **egyenlő** .
+A második (942130-es szabály) az egyik érdekes. Megtekintheti a részleteket, amelyek megfelelnek egy mintának (1 = 1), és a mező neve **TEXT1**. Az előző lépések végrehajtásával zárja ki a **kérelem attribútumának nevét** , amely **1 = 1** értékkel **egyenlő** .
 
 ## <a name="finding-request-header-names"></a>Kérelmek fejlécének neveinek keresése
 
-A Hegedűs egy hasznos eszköz a kérelmek fejlécének neveinek megkereséséhez. A következő képernyőképen megtekintheti a GET kérelem fejléceit, amelyek közé tartozik a *Content-Type*, a *User-Agent*stb.
+A Hegedűs egy hasznos eszköz a kérelmek fejlécének neveinek megkereséséhez. A következő képernyőképen megtekintheti a GET kérelem fejléceit, amelyek közé tartozik a *Content-Type*, a *User-Agent* stb.
 
 :::image type="content" source="../media/web-application-firewall-troubleshoot/fiddler-2.png" alt-text="Képernyőkép a Telerik Hegedűs web Debugger folyamatáról. A nyers lap felsorolja a kérelmek fejlécének részleteit, például a kapcsolat, a tartalom típusát és a felhasználói ügynököt." border="false":::
 
-A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja**meg  ->  a**fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
+A kérések és válaszok fejlécek megtekintésének egy másik módja, ha a Chrome fejlesztői eszközein belül keres. Nyomja le az F12 billentyűt, vagy kattintson a jobb gombbal > **vizsgálja** meg  ->  a **fejlesztői eszközök**, majd válassza a **hálózat** fület. töltsön be egy weblapot, és kattintson a vizsgálni kívánt kérelemre.
 
 ![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 

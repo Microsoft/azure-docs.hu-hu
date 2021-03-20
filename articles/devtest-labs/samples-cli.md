@@ -4,17 +4,17 @@ description: Ez a cikk felsorolja az Azure CLI-szkriptek azon mintáit, amelyek 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: f184d6753fc0280eae1d46b676f160778070fa3a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86166093"
 ---
 # <a name="azure-cli-samples-for-azure-lab-services"></a>Azure CLI-minták a Azure Lab Serviceshoz
 
 Az alábbi táblázat a Azure Lab Services Azure CLI-parancsfájlokkal létrehozott bash-szkriptekre mutató hivatkozásokat tartalmaz. 
 
-| Script | Leírás |
+| Script | Description |
 |---|---|
 | [Virtuális gép létrehozása és az elérhetőségének ellenőrzése](scripts/create-verify-virtual-machine-in-lab-cli.md) | Egy minimális konfigurációval rendelkező Windows rendszerű virtuális gépet hoz létre. |
 | [Virtuális gép elindítása](scripts/start-connect-virtual-machine-in-lab-cli.md) | Elindítja a virtuális gépet. |

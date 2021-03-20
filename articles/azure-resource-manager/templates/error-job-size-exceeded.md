@@ -4,10 +4,10 @@ description: Leírja, hogyan lehet elhárítani a hibákat, amikor a feladatok m
 ms.topic: troubleshooting
 ms.date: 01/19/2021
 ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98610403"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Túllépte a feladatokhoz tartozó hibák elhárítását
@@ -22,10 +22,10 @@ A sablonok telepítésekor hibaüzenetet kap, amely túllépte az üzemelő pél
 
 Ez a hibaüzenet akkor jelenik meg, ha az üzemelő példány túllépi az engedélyezett határértékek valamelyikét. Ez a hiba általában akkor jelenik meg, ha a sablon vagy a központi telepítést futtató művelet túl nagy.
 
-Az üzembe helyezési feladatok nem haladhatják meg az 1 MB-ot. A feladatban szerepelnek metaadatok a kérelemről. Nagyméretű sablonok esetén a sablonnal összevont metaadatok meghaladják a feladatok megengedett méretét.
+Az üzembe helyezési feladatok nem haladhatják meg az 1 MB-ot. A feladat metaadatokat tartalmaz a kérésről. A nagyobb sablonoknál előfordulhat, hogy a metaadatok és a sablon mérete együttesen meghaladja a feladatok megengedett méretét.
 
 
-A sablon mérete nem haladhatja meg a 4 MB-ot. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután kibővítettük azokat az erőforrás-definíciókat, amelyek számos példány létrehozásához a [másolást](copy-resources.md) használják. A végső állapot a változók és paraméterek megoldott értékeit is tartalmazza.
+A sablon mérete nem haladhatja meg a 4 MB-ot. A 4 MB-os korlát a sablon végső állapotára vonatkozik, miután kibővítettük azokat az erőforrás-definíciókat, amelyek számos példány létrehozásához a [másolást](copy-resources.md) használják. A végső állapotba beleszámítanak a változók és paraméterek feloldott értékei is.
 
 A sablon egyéb korlátai a következők:
 

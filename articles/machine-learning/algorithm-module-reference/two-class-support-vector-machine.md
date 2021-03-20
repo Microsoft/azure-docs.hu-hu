@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 46cfdd319fc89e569d165dc2e11303e67c6dd54e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420563"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Two-Class a Vector Machine modul támogatása
@@ -42,9 +42,9 @@ Ennél a modellnél javasolt az adatkészlet normalizálása, mielőtt az osztá
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.  
+    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.  
 
-    -   **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
+    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
 
 3.  Az **Ismétlések számának** megadásához írjon be egy számot, amely a modell létrehozásakor használt ismétlések számát jelöli.  
   
@@ -54,7 +54,7 @@ Ennél a modellnél javasolt az adatkészlet normalizálása, mielőtt az osztá
   
      Ez a regularizációs együttható a modell finomhangolására használható. Nagyobb értékek szankcionálják az összetettebb modelleket.  
   
-5.  Válassza ki a lehetőséget, **normalizálja a szolgáltatásokat** , ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
+5.  Válassza ki a lehetőséget, **normalizálja a szolgáltatásokat**, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   
      Ha a normalizálás alkalmazása előtt betanítást alkalmaz, az adatpontok középpontba kerülnek és méretezhetők, hogy a szórás egy egysége legyen.
   
@@ -89,6 +89,6 @@ A betanítás befejezése után:
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

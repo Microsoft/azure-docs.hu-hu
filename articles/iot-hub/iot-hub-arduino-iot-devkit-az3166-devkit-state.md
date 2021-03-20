@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: 8c43c8a0b9fdf30b5ce5ae6ecbf123b563099ff6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148784"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -51,7 +51,7 @@ Ezt a példát követve figyelheti a MXChip IoT fejlesztői készlet WiFi-inform
    > [!NOTE]
    > Ha már rendelkezik ingyenes IoT Hub, kihagyhatja ezt a lépést.
 
-5. Ha a rendszer arra kéri, hogy az *IoT hub melyik*üzenetet szeretné kiválasztani, válasszon ki vagy hozzon létre egy IoT hub.
+5. Ha a rendszer arra kéri, hogy az *IoT hub melyik* üzenetet szeretné kiválasztani, válasszon ki vagy hozzon létre egy IoT hub.
 
 6. A következőhöz hasonló *: Function app Name: xxx*, üzenet jelenik meg. Jegyezze fel a Function alkalmazás nevét; ezt egy későbbi lépésben fogjuk használni.
 

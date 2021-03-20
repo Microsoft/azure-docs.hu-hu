@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2f393701b97be76acab49a627a195b337018fa29
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92144431"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>IoT hub létrehozása az erőforrás-szolgáltató REST API (.NET) használatával
@@ -38,13 +38,13 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 1. A Visual Studióban hozzon létre egy Visual C# Windows klasszikus asztali projektet a **Console app (.NET-keretrendszer)** projekt sablon használatával. Nevezze el a projekt **CreateIoTHubREST**.
 
-2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd kattintson a **NuGet-csomagok kezelése**elemre.
+2. Megoldáskezelő kattintson a jobb gombbal a projektre, majd kattintson a **NuGet-csomagok kezelése** elemre.
 
-3. A NuGet csomagkezelő területén tekintse meg az **előzetes kiadást**, majd a **Tallózás** oldalon keresse meg a **Microsoft. Azure. Management. erőforráskezelő**. Válassza ki a csomagot, kattintson a **telepítés**gombra, a **változások áttekintése** **elemre**, majd kattintson az **Elfogadom** gombra a licencek elfogadásához.
+3. A NuGet csomagkezelő területén tekintse meg az **előzetes kiadást**, majd a **Tallózás** oldalon keresse meg a **Microsoft. Azure. Management. erőforráskezelő**. Válassza ki a csomagot, kattintson a **telepítés** gombra, a **változások áttekintése** **elemre**, majd kattintson az **Elfogadom** gombra a licencek elfogadásához.
 
-4. A NuGet csomagkezelő eszközben keressen rá a **Microsoft. IdentityModel. clients. ActiveDirectory**kifejezésre.  Kattintson a **telepítés**gombra, a **változások áttekintése** lapon kattintson **az OK**gombra, majd kattintson az **Elfogadom** gombra a licenc elfogadásához.
+4. A NuGet csomagkezelő eszközben keressen rá a **Microsoft. IdentityModel. clients. ActiveDirectory** kifejezésre.  Kattintson a **telepítés** gombra, a **változások áttekintése** lapon kattintson **az OK** gombra, majd kattintson az **Elfogadom** gombra a licenc elfogadásához.
 
-5. A Program.cs-ben cserélje le a meglévő **using** utasításokat a következő kódra:
+5. A program. cs esetében cserélje le a meglévő **using** utasításokat a következő kódra:
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
     using System.Threading;
     ```
 
-6. A Program.cs-ben adja hozzá a következő statikus változókat a helyőrző értékeinek cseréjéhez. Az oktatóanyag korábbi részében az **ApplicationId**, a **SubscriptionId**, a **TenantId**és a **Password** megjegyzését készítettük. Az **erőforráscsoport neve** az IoT hub létrehozásakor használt erőforráscsoport neve. Már meglévő vagy új erőforráscsoportot is használhat. **IoT hub neve** a létrehozott IoT hub neve, például **MyIoTHub**. Az IoT hub nevének globálisan egyedinek kell lennie. A **központi telepítés neve** a központi telepítés neve, például **Deployment_01**.
+6. A program. cs programban adja hozzá a következő statikus változókat a helyőrző értékeinek kiváltásához. Az oktatóanyag korábbi részében az **ApplicationId**, a **SubscriptionId**, a **TenantId** és a **Password** megjegyzését készítettük. Az **erőforráscsoport neve** az IoT hub létrehozásakor használt erőforráscsoport neve. Már meglévő vagy új erőforráscsoportot is használhat. **IoT hub neve** a létrehozott IoT hub neve, például **MyIoTHub**. Az IoT hub nevének globálisan egyedinek kell lennie. A **központi telepítés neve** a központi telepítés neve, például **Deployment_01**.
 
     ```csharp
     static string applicationId = "{Your ApplicationId}";
@@ -80,7 +80,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 A [IoT hub erőforrás-szolgáltató REST API](/rest/api/iothub/iothubresource) használatával hozzon létre egy IoT hubot az erőforráscsoporthoz. Az erőforrás-szolgáltató REST API segítségével módosíthatja a meglévő IoT hubot.
 
-1. Adja hozzá a következő metódust a Program.cs:
+1. Adja hozzá a következő metódust a program. cs:
 
     ```csharp
     static void CreateIoTHub(string token)
@@ -162,7 +162,7 @@ Most már elvégezheti az alkalmazást úgy, hogy meghívja a **CreateIoTHub** m
     Console.ReadLine();
     ```
 
-2. Kattintson a **Létrehozás** , majd a **megoldás létrehozása**lehetőségre. Javítsa ki az esetleges hibákat.
+2. Kattintson a **Létrehozás** , majd a **megoldás létrehozása** lehetőségre. Javítsa ki az esetleges hibákat.
 
 3. Kattintson a **hibakeresés** elemre, majd **indítsa el a hibakeresést** az alkalmazás futtatásához. A központi telepítés futtatása több percet is igénybe vehet.
 

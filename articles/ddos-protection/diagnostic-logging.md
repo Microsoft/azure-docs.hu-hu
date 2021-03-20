@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: cc5b3b85d6d13fda532da0993fa7f733126b8eae
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100591874"
 ---
 # <a name="view-and-configure-ddos-diagnostic-logging"></a>DDoS-diagnosztikai naplózás megtekintése és konfigurálása
 
-Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A riasztás konfigurálható a DDoS Protection által elérhetővé tett Azure Monitor metrikák bármelyikéhez. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
+Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A DDoS Protection által közzétett Azure Monitor-metrikákhoz konfigurálhatók riasztások. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
 
 A következő diagnosztikai naplók érhetők el Azure DDoS Protection standardhoz: 
 
@@ -40,18 +40,18 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Az oktatóanyag lépéseinek elvégzése előtt először létre kell hoznia egy [Azure DDoS standard Protection-csomagot](manage-ddos-protection.md) , és a DDoS Protection szabványnak engedélyezve kell lennie egy virtuális hálózaton.
-- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.    
+- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nincsenek nyilvános IP-címmel rendelkező erőforrások a virtuális hálózatban, először létre kell hoznia egy nyilvános IP-című erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.    
 
 ## <a name="configure-ddos-diagnostic-logs"></a>DDoS diagnosztikai naplók konfigurálása
 
 Ha automatikusan engedélyezni szeretné a diagnosztikai naplózást az összes nyilvános IP-címen egy adott környezetben, ugorjon a [diagnosztikai naplózás engedélyezése az összes nyilvános IP](#enable-diagnostic-logging-on-all-public-ips)-címen lehetőségre.
 
-1. A portál bal oldalán válassza a **minden szolgáltatás** lehetőséget.
-2. A **szűrő** mezőbe írja be a *figyelőt* . Ha a **figyelő** megjelenik az eredmények között, válassza ki.
-3. A **Beállítások** területen válassza a **diagnosztikai beállítások** elemet.
-4. Válassza ki azt az **előfizetést** és **erőforráscsoportot** , amely tartalmazza a NAPLÓZNI kívánt nyilvános IP-címet.
+1. Válassza a **Minden szolgáltatás** lehetőséget a portál bal felső részén.
+2. A **Szűrő** mezőbe írja be a *Monitorozás* kifejezést. Amikor a **Monitorozás** elem megjelenik az eredmények között, válassza ki.
+3. A **Beállítások** alatt válassza a **Diagnosztikai beállítások** elemet.
+4. Válassza ki az **előfizetést** és azt az **erőforráscsoportot,** amely a naplózni kívánt IP-címet tartalmazza.
 5. Válassza ki a **nyilvános IP-címet** az **erőforrástípus mezőben**, majd válassza ki azt az adott nyilvános IP-címet, amelyen engedélyezni szeretné a naplókat.
-6. Válassza a **Diagnosztikai beállítások megadása** lehetőséget. A **Kategória részletei** területen válassza ki a kívánt beállítások közül az alábbi lehetőségek közül, majd kattintson a **Mentés** gombra.
+6. Válassza a **Diagnosztikai beállítások megadása** lehetőséget. A **Kategória részletei** területen válassza ki az összes kívánt lehetőséget, majd kattintson a **Mentés** gombra.
 
     ![DDoS diagnosztikai beállítások](./media/ddos-attack-telemetry/ddos-diagnostic-settings.png)
 

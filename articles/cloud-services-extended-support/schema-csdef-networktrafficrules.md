@@ -9,10 +9,10 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0064794701e87419da086c458673f7ccee4f37dd
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98744550"
 ---
 # <a name="azure-cloud-services-extended-support-definition-networktrafficrules-schema"></a>Azure Cloud Services (bővített támogatás) definíciós NetworkTrafficRules séma
@@ -72,7 +72,7 @@ Az `Destinations` elem a RoleEndpoints gyűjteményét írja le, amely a haszná
 ##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a> RoleEndpoint elem
 Az `RoleEndpoint` elem egy olyan szerepkörhöz tartozó végpontot ismertet, amely lehetővé teszi a kommunikációt a szolgáltatással. Több elemet is megadhat, `RoleEndpoint` Ha a szerepkörhöz több végpont is van.
 
-| Attribútum      | Típus     | Leírás |
+| Attribútum      | Típus     | Description |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Kötelező. Annak a végpontnak a neve, amely engedélyezi a forgalmat.|
 | `roleName`     | `string` | Kötelező. Annak a webes szerepkörnek a neve, amely lehetővé teszi a kommunikációt.|
@@ -83,14 +83,14 @@ Az `AllowAllTraffic` elem egy olyan szabály, amely lehetővé teszi, hogy az ö
 ##  <a name="whensource-element"></a><a name="WhenSource"></a> WhenSource elem
 Az `WhenSource` elem olyan szerepkörök gyűjteményét írja le, amelyek nem tudnak kommunikálni a csomópontban definiált végpontokkal `Destinations` .
 
-| Attribútum | Típus     | Leírás |
+| Attribútum | Típus     | Description |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Kötelező. Meghatározza a kommunikáció engedélyezésekor alkalmazandó szabályt. Az egyetlen érvényes érték jelenleg `AnyRule` .|
   
 ##  <a name="fromrole-element"></a><a name="FromRole"></a> FromRole elem
 Az `FromRole` elem meghatározza azokat a szerepköröket, amelyek kommunikálhatnak a csomópontban definiált végpontokkal `Destinations` . Több elemet is megadhat, `FromRole` Ha több olyan szerepkör is van, amely képes kommunikálni a végpontokkal.
 
-| Attribútum  | Típus     | Leírás |
+| Attribútum  | Típus     | Description |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Kötelező. Annak a szerepkörnek a neve, amelyről engedélyezni szeretné a kommunikációt.|
 

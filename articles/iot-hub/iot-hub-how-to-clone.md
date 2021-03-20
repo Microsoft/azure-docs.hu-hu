@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: 370ea2f16632ae18142f0770742e5a52d3cabae0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151648"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
@@ -107,7 +107,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti hubot, és exportálja egy erőforrás-sablonba.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt hubot tartalmazza. Az **erőforrásokra** is rákereshet, és megkeresheti a hubot. Válassza ki a hubot.
 
@@ -123,7 +123,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 1. Nyissa meg a letöltések mappát (vagy a sablon exportálásakor használt mappát), és keresse meg a zip-fájlt. Nyissa meg a zip-fájlt, és keresse meg a nevű fájlt `template.json` . Jelölje ki, majd válassza a CTRL + C billentyűkombinációt a sablon másolásához. Lépjen egy másik mappába, amely nem szerepel a zip-fájlban, és illessze be a fájlt (CTRL + V). Most már szerkesztheti is.
  
-    Az alábbi példa egy általános, útválasztási konfiguráció nélküli hubhoz mutat. Ez egy, a **ContosoTestHub29358** nevű S1 szintű hub (1 egység) a **westus**régióban. Itt látható az exportált sablon.
+    Az alábbi példa egy általános, útválasztási konfiguráció nélküli hubhoz mutat. Ez egy, a **ContosoTestHub29358** nevű S1 szintű hub (1 egység) a **westus** régióban. Itt látható az exportált sablon.
 
     ``` json
     {
@@ -300,7 +300,7 @@ Ha olyan hubhoz exportálja a Resource Manager-sablont, amely rendelkezik konfig
 
 1. Kérje le az útválasztási erőforrásokhoz szükséges kulcsokat, és helyezze azokat a sablonba. A kulcs (oka) t a [Azure Portal](https://portal.azure.com)lévő erőforrásból kérheti le. 
 
-   Ha például egy Storage-tárolóba irányítja az üzeneteket, keresse meg a Storage-fiókot a portálon. A beállítások szakaszban válassza a **hozzáférési kulcsok**elemet, majd másolja ki az egyik kulcsot. A kulcs a sablon első exportálásakor a következőhöz hasonlít:
+   Ha például egy Storage-tárolóba irányítja az üzeneteket, keresse meg a Storage-fiókot a portálon. A beállítások szakaszban válassza a **hozzáférési kulcsok** elemet, majd másolja ki az egyik kulcsot. A kulcs a sablon első exportálásakor a következőhöz hasonlít:
 
    ```json
    "connectionString": "DefaultEndpointsProtocol=https;
@@ -347,23 +347,23 @@ Most már rendelkezik egy olyan sablonnal, amely egy olyan új hubot hoz létre,
 
 Hozza létre az új hubot az új helyen a sablon használatával. Ha útválasztási erőforrásokkal rendelkezik, amelyeket át szeretne helyezni, az erőforrásokat az új helyen kell beállítani, és a sablonban szereplő hivatkozások a megfelelő értékre frissülnek. Ha nem helyezi át az útválasztási erőforrásokat, a frissített kulcsokkal rendelkező sablonban kell lenniük.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
 1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
 
-1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
+1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Válassza a **Létrehozás** lehetőséget. Ekkor az alábbi képernyő jelenik meg:
 
    ![A saját sablon létrehozásához szükséges parancsot ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
 1. Válassza a **saját sablon létrehozása lehetőséget a szerkesztőben**, amely lehetővé teszi a sablon feltöltését egy fájlból. 
 
-1. Válassza a **fájl betöltése**lehetőséget. 
+1. Válassza a **fájl betöltése** lehetőséget. 
 
    ![A sablonfájl feltöltésére szolgáló parancsot megjelenítő képernyőkép](./media/iot-hub-how-to-clone/iot-hub-upload-file.png)
 
-1. Keresse meg a szerkesztett új sablont, és válassza ki, majd kattintson a **Megnyitás**gombra. A sablon betöltődik a szerkesztési ablakba. Kattintson a **Mentés** gombra. 
+1. Keresse meg a szerkesztett új sablont, és válassza ki, majd kattintson a **Megnyitás** gombra. A sablon betöltődik a szerkesztési ablakba. Kattintson a **Mentés** gombra. 
 
    ![A sablon betöltését bemutató képernyőkép](./media/iot-hub-how-to-clone/iot-hub-loading-template.png)
 
@@ -393,7 +393,7 @@ Ha nem használta a DPS-t az eszközök kiépítéséhez, ugorja át a következ
 
 Ha a DPS használatával szeretné áthelyezni az eszközöket az új helyre, olvassa el az [eszközök újbóli kiépítése](../iot-dps/how-to-reprovision.md)című témakört. Ha elkészült, megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , és ellenőrizheti, hogy azok az új helyen találhatók-e.
 
-Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök**lehetőséget. Megtekintheti a klónozott hubhoz újra kiépített eszközöket. Megtekintheti a klónozott központ tulajdonságait is. 
+Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök** lehetőséget. Megtekintheti a klónozott hubhoz újra kiépített eszközöket. Megtekintheti a klónozott központ tulajdonságait is. 
 
 Ha implementálta az útválasztást, ellenőrizze, hogy az üzenetek megfelelően vannak-e irányítva az erőforrásokhoz.
 
@@ -473,7 +473,7 @@ A parancssor a következő példához hasonlóan fog kinézni:
    export STORAGE_ACCT_CONN_STRING="<put connection string to the storage account here>"
    ```
 
-1. Az IoT hub kapcsolódási karakterláncai esetében lépjen a portál minden központjának helyére. Kereshet a hub **erőforrásai** között. Ha ismeri az erőforráscsoportot, lépjen az **erőforráscsoportok**elemre, válassza ki az erőforráscsoportot, majd válassza ki a hubot az adott erőforráscsoport eszközeinek listájából. 
+1. Az IoT hub kapcsolódási karakterláncai esetében lépjen a portál minden központjának helyére. Kereshet a hub **erőforrásai** között. Ha ismeri az erőforráscsoportot, lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, majd válassza ki a hubot az adott erőforráscsoport eszközeinek listájából. 
 
 1. A hub beállításai közül válassza a **megosztott elérési szabályzatok** lehetőséget, majd válassza a **iothubowner** lehetőséget, és másolja a kapcsolati karakterláncok egyikét. Tegye ugyanezt a célként megadott hubhoz. Adja hozzá őket a megfelelő SET parancsokhoz.
 
@@ -524,9 +524,9 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
    IoTHubServiceSamples.sln
    ```
     
-1. Kattintson a jobb gombbal a projekt *ImportExportDevicesSample* , és válassza a **beállítás indítási projektként**lehetőséget.    
+1. Kattintson a jobb gombbal a projekt *ImportExportDevicesSample* , és válassza a **beállítás indítási projektként** lehetőséget.    
     
-1. Állítsa be a változókat a Program.cs tetején a ImportExportDevicesSample mappában az öt lehetőséghez.
+1. Állítsa be a változókat a program. cs felső részén a ImportExportDevicesSample mappában az öt lehetőséghez.
 
    ``` csharp
    // Add randomly created devices to the source hub.
@@ -547,7 +547,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 Megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , és ellenőrizheti, hogy azok az új helyen találhatók-e.
 
-1. Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök**lehetőséget. A régi központból a klónozott hubhoz másolt eszközök láthatók. Megtekintheti a klónozott központ tulajdonságait is. 
+1. Nyissa meg az új hubot a [Azure Portal](https://portal.azure.com)használatával. Válassza ki a hubot, majd válassza az **IoT-eszközök** lehetőséget. A régi központból a klónozott hubhoz másolt eszközök láthatók. Megtekintheti a klónozott központ tulajdonságait is. 
 
 1. Az importálási/exportálási hibák ellenőrzéséhez lépjen a [Azure Portal](https://portal.azure.com) Azure Storage-fiókjába, és tekintse meg a `devicefiles` tárolóját `ImportErrors.log` . Ha a fájl üres (a méret 0), nem történt hiba. Ha ugyanazt az eszközt többször próbálja meg importálni, a rendszer visszautasítja az eszközt a második alkalommal, és hibaüzenetet küld a naplófájlba.
 

@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519964"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása Facebook-Bejelentkezés használatára
@@ -27,20 +27,20 @@ A cikkben ismertetett eljárás végrehajtásához olyan Facebook-fiókra van sz
 1. Nyissa meg a [Facebook Developers] webhelyet, és jelentkezzen be Facebook-fiókjának hitelesítő adataival.
 
    Ha nem rendelkezik Facebook for Developers-fiókkal, kattintson az első **lépések** lehetőségre, és kövesse a regisztrációs lépéseket.
-1. Válassza **a saját alkalmazások**  >  **új alkalmazás hozzáadása**lehetőséget.
+1. Válassza **a saját alkalmazások**  >  **új alkalmazás hozzáadása** lehetőséget.
 1. A **megjelenítendő név** mezőben:
    1. Adjon egyedi nevet az alkalmazásnak.
    1. Adja meg a **kapcsolattartási E-mail címét**.
-   1. Válassza az **alkalmazás-azonosító létrehozása**lehetőséget.
+   1. Válassza az **alkalmazás-azonosító létrehozása** lehetőséget.
    1. Fejezze be a biztonsági ellenőrzését.
 
    Megnyílik az új Facebook-alkalmazás fejlesztői irányítópultja.
-1. Válassza az **irányítópult**  >  **Facebook-Bejelentkezés**  >  **Set up**  >  **webes**beállítása lehetőséget.
-1. A **Facebook-Bejelentkezés**alatt a bal oldali navigációs sávon válassza a **Beállítások**lehetőséget.
+1. Válassza az **irányítópult**  >  **Facebook-Bejelentkezés**  >    >  **webes** beállítása lehetőséget.
+1. A **Facebook-Bejelentkezés** alatt a bal oldali navigációs sávon válassza a **Beállítások** lehetőséget.
 1. Az **érvényes OAuth átirányítási URI** -k mezőben adja meg a értéket `https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` . Ne felejtse el helyettesíteni a `<app-name>` Azure app Service alkalmazás nevét.
-1. Válassza a **módosítások mentése**lehetőséget.
-1. A bal oldali ablaktáblán válassza a **Beállítások**  >  **alapszintű**lehetőséget. 
-1. Az **alkalmazás titkos kulcsa** mezőben válassza a **Megjelenítés**lehetőséget. Másolja az alkalmazás- **azonosító** és az **alkalmazás titkos kulcsának**értékeit. Később a App Service alkalmazást az Azure-ban konfigurálhatja.
+1. Válassza a **módosítások mentése** lehetőséget.
+1. A bal oldali ablaktáblán válassza a **Beállítások**  >  **alapszintű** lehetőséget. 
+1. Az **alkalmazás titkos kulcsa** mezőben válassza a **Megjelenítés** lehetőséget. Másolja az alkalmazás- **azonosító** és az **alkalmazás titkos kulcsának** értékeit. Később a App Service alkalmazást az Azure-ban konfigurálhatja.
 
    > [!IMPORTANT]
    > Az alkalmazás titkos kulcsa egy fontos biztonsági hitelesítő adat. Ezt a titkos kódot Ne ossza meg senkivel, vagy Ossza szét egy ügyfélalkalmazás alkalmazásán belül.
@@ -48,13 +48,13 @@ A cikkben ismertetett eljárás végrehajtásához olyan Facebook-fiókra van sz
 
 1. Az alkalmazás regisztrálásához használt Facebook-fiók az alkalmazás rendszergazdája. Ezen a ponton csak a rendszergazdák jelentkezhetnek be ebbe az alkalmazásba.
 
-   Más Facebook-fiókok hitelesítéséhez válassza az **alkalmazás felülvizsgálata** lehetőséget, és engedélyezze, hogy a ** \<your-app-name> nyilvános** felhasználók a Facebook-hitelesítés használatával hozzáférjenek az alkalmazáshoz.
+   Más Facebook-fiókok hitelesítéséhez válassza az **alkalmazás felülvizsgálata** lehetőséget, és engedélyezze, hogy a **\<your-app-name> nyilvános** felhasználók a Facebook-hitelesítés használatával hozzáférjenek az alkalmazáshoz.
 
 ## <a name="add-facebook-information-to-your-application"></a><a name="secrets"> </a>Facebook-információk hozzáadása az alkalmazáshoz
 
 1. Jelentkezzen be a [Azure Portalba] , és navigáljon a app Service alkalmazáshoz.
-1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
-1. Válassza a **Facebook**lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
+1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés** lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **Facebook** lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
 1. Válassza az **OK** lehetőséget.
 
    ![Képernyőkép a Mobile App Facebook beállításairól][0]
@@ -69,7 +69,7 @@ A cikkben ismertetett eljárás végrehajtásához olyan Facebook-fiókra van sz
 
 Most már készen áll a Facebook használatára a hitelesítéshez az alkalmazásban.
 
-## <a name="next-steps"></a><a name="related-content"> </a>További lépések
+## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

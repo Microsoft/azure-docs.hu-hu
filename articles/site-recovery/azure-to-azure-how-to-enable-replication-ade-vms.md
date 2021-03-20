@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135793"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
@@ -46,7 +46,7 @@ Az engedélyek kezeléséhez nyissa meg a Key Vault-erőforrást a portálon. Ad
 
    ![Key Vault-engedélyek ablak](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
 
-2. Láthatja, hogy nincsenek felhasználói engedélyek. Válassza az **új hozzáadása**elemet. Adja meg a felhasználó és az engedélyek adatait.
+2. Láthatja, hogy nincsenek felhasználói engedélyek. Válassza az **új hozzáadása** elemet. Adja meg a felhasználó és az engedélyek adatait.
 
    ![Kulcstartó engedélyei](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
@@ -78,7 +78,7 @@ Az engedélyek hibaelhárításához tekintse meg a cikk későbbi részében ta
 
 Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos régió pedig Dél-Kelet-Ázsia.
 
-1. A tárolóban válassza a **+ replikálás**lehetőséget.
+1. A tárolóban válassza a **+ replikálás** lehetőséget.
 2. Jegyezze fel a következő mezőket.
     - **Forrás**: a virtuális gépek származási helye, amely ebben az esetben az **Azure**.
     - **Forrás helye**: az az Azure-régió, ahol a virtuális gépeket el szeretné látni. Ebben a példában a forrás helye: "Kelet-Ázsia."
@@ -86,9 +86,9 @@ Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos rég
     - **Forrás-előfizetés**: az előfizetés, amelyhez a forrás virtuális gépek tartoznak. Minden olyan előfizetés lehet, amely ugyanabban a Azure Active Directory bérlőben található, mint a Recovery Services-tároló.
     - **Erőforráscsoport**: az erőforráscsoport, amelyhez a forrás virtuális gépek tartoznak. A következő lépésben a kiválasztott erőforráscsoport összes virtuális gépe szerepel a védelemben.
 
-3. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson **az OK gombra**.
+3. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ez után válassza az **OK** gombot.
 
-4. A **Beállítások**területen a következő cél-hely beállításokat állíthatja be.
+4. A **Beállítások** területen a következő cél-hely beállításokat állíthatja be.
 
     - **Cél helye**: a forrásként szolgáló virtuális gép adatai replikálásának helye. Site Recovery a kiválasztott gép helyétől függően a megfelelő célcsoportok listáját jeleníti meg. Azt javasoljuk, hogy ugyanazt a helyet használja, mint a Recovery Services tároló helye.
     - **Cél-előfizetés**: a vész-helyreállítási célra használt cél-előfizetés. Alapértelmezés szerint a cél-előfizetés megegyezik a forrás-előfizetéssel.
@@ -109,17 +109,17 @@ Az alábbi lépéseket követve módosíthatja a Site Recovery alapértelmezett 
 1. Az alapértelmezett cél-előfizetés módosításához kattintson a "cél előfizetés" elem melletti **Testreszabás** lehetőségre. Válassza ki az előfizetést az Azure AD-bérlőben elérhető előfizetések listájából.
 
 2. A következő alapértelmezett beállítások módosításához válassza az "erőforráscsoport, hálózat, tárterület és rendelkezésre állási csoportok" melletti **Testreszabás** lehetőséget:
-    - A **cél erőforráscsoport**területen válassza ki az erőforráscsoportot az előfizetés célhelyén található erőforráscsoportok listájából.
-    - A **célként megadott virtuális hálózat**esetében válassza ki a hálózatot a célhelyen lévő virtuális hálózatok listájából.
-    - A **rendelkezésre állási csoport**számára a rendelkezésre állási csoport beállításait hozzáadhatja a virtuális géphez, ha azok egy rendelkezésre állási csoport részét képezik a forrás régióban.
-    - A **cél Storage-fiókok**esetében válassza ki a használni kívánt fiókot.
+    - A **cél erőforráscsoport** területen válassza ki az erőforráscsoportot az előfizetés célhelyén található erőforráscsoportok listájából.
+    - A **célként megadott virtuális hálózat** esetében válassza ki a hálózatot a célhelyen lévő virtuális hálózatok listájából.
+    - A **rendelkezésre állási csoport** számára a rendelkezésre állási csoport beállításait hozzáadhatja a virtuális géphez, ha azok egy rendelkezésre állási csoport részét képezik a forrás régióban.
+    - A **cél Storage-fiókok** esetében válassza ki a használni kívánt fiókot.
 
 2. A következő alapértelmezett beállítások módosításához válassza a "titkosítási beállítások" melletti **Testreszabás** elemet:
-   - A céllemez **titkosítási kulcstárolójának**kiválasztásához válassza ki a cél lemez titkosítási kulcstárolót az előfizetés célhelyén található kulcstartók listájából.
-   - A **cél kulcsú titkosítási Key**Vault esetében válassza ki a célként megadott kulcs titkosítási kulcsának tárolóját az előfizetés célhelyén található kulcstartók listájából.
+   - A céllemez **titkosítási kulcstárolójának** kiválasztásához válassza ki a cél lemez titkosítási kulcstárolót az előfizetés célhelyén található kulcstartók listájából.
+   - A **cél kulcsú titkosítási Key** Vault esetében válassza ki a célként megadott kulcs titkosítási kulcsának tárolóját az előfizetés célhelyén található kulcstartók listájából.
 
-3. Válassza a **cél erőforrás létrehozása**a  >  **replikáció engedélyezése**lehetőséget.
-4. Miután a virtuális gépek engedélyezettek a replikáláshoz, a virtuális gépek állapotát a **replikált elemek**területen tekintheti meg.
+3. Válassza a **cél erőforrás létrehozása** a  >  **replikáció engedélyezése** lehetőséget.
+4. Miután a virtuális gépek engedélyezettek a replikáláshoz, a virtuális gépek állapotát a **replikált elemek** területen tekintheti meg.
 
 >[!NOTE]
 >A kezdeti replikálás során előfordulhat, hogy az állapot frissítése hosszabb ideig is eltarthat. Kattintson a **frissítés**  gombra a legutóbbi állapot lekéréséhez.
@@ -129,7 +129,7 @@ A következő esetekben frissítenie kell a cél virtuális gép titkosítási b
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később engedélyezte a lemez titkosítását a forrásoldali virtuális gépen.
   - Engedélyezte Site Recovery replikációt a virtuális gépen. Később megváltoztatta a lemez titkosítási kulcsát vagy a kulcs titkosítási kulcsát a forrás virtuális gépen.
 
-[Egy parancsfájl](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) használatával másolhatja a titkosítási kulcsokat a célként megadott régióba, majd frissítheti a cél titkosítási beállításokat a **Recovery Services**-tároló  >  *replikált elemek*  >  **tulajdonságai**  >  **számítás és hálózat**lehetőségnél.
+[Egy parancsfájl](#copy-disk-encryption-keys-to-the-dr-region-by-using-the-powershell-script) használatával másolhatja a titkosítási kulcsokat a célként megadott régióba, majd frissítheti a cél titkosítási beállításokat a **Recovery Services**-tároló  >  *replikált elemek*  >  **tulajdonságai**  >  **számítás és hálózat** lehetőségnél.
 
 ![Az ADE-beállítások frissítése párbeszédpanel](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 
@@ -153,8 +153,8 @@ A forrástartomány Key Vault összes engedélyével rendelkezik. A védelem sor
 
 A [célként megadott Key vaulthoz](#required-user-permissions) szükséges engedély
 
-**A javítás módja:** Lépjen a **Home**kulcstartók  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
+**A javítás módja:** Lépjen a **Home** kulcstartók  >    >  **ContosotargetKeyvault**  >  **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

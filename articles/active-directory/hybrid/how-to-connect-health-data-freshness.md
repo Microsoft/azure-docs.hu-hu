@@ -16,10 +16,10 @@ ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 00518eb91e57efaacb7abc63b6ad4531619be2ce
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98012869"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Az állapotfigyelő szolgáltatás nem naprakész állapotú riasztás
@@ -67,7 +67,7 @@ A probléma diagnosztizálásához szükséges lépések alább láthatók. Az e
 * Ha HTTP-proxyval rendelkezik, kövesse az alábbi [konfigurációs lépéseket](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a fenti lépések bármelyike problémát észlelt, javítsa ki, és várjon, amíg a riasztás feloldódik. A riasztások hátterének folyamata 2 óránként fut, így a riasztás feloldása akár 2 óráig is eltarthat. 
 
 * [Adatmegőrzési szabályzat Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)

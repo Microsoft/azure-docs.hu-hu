@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 0196522618d4b61f615f7cc6faeacbe9a8c7c5b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171346"
 ---
 # <a name="common-issues"></a>Gyakori problémák
@@ -58,7 +58,7 @@ sudo docker logs eventgridmodule
 
 ## <a name="unable-to-make-http-requests"></a>A HTTP-kérések nem hajthatók végre
 
-* Először győződjön meg arról, Event Grid modul **bejövő: serverAuth: tlsPolicy** **engedélyezve** vagy **Letiltva**értékre van állítva.
+* Először győződjön meg arról, Event Grid modul **bejövő: serverAuth: tlsPolicy** **engedélyezve** vagy **Letiltva** értékre van állítva.
 
 * Ha a modul – modul kommunikációja, győződjön meg arról, hogy az **5888** -es porton hívja meg a hívást, és a modul neve megegyezik a telepített szolgáltatással. 
 
@@ -104,6 +104,6 @@ Ennek jellemző okai a következők:
 
 * A metrikák bekapcsolásához állítsa be a **metrikákat: reportertype = Console** , és telepítse újra Event Grid modult. Az azt követő műveletek a Event Grid modul konzolján naplózzák a metrikákat, amelyek a további hibakereséshez használhatók. Javasoljuk, hogy a mérőszámok bekapcsolásához csak a hibakereséshez és a befejezéshez a metrikák beállításával kapcsolja ki a metrikákat **: reportertype = none** és Event Grid modul újbóli üzembe helyezése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Bármilyen problémát jelenthet, a Event Grid használatával kapcsolatos javaslatok a IoT Edge címen [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .

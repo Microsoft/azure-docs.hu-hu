@@ -9,10 +9,10 @@ ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: b46a2ea12a697afde8223cc3595365c1286512c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86132462"
 ---
 # <a name="fail-over-hyper-v-vms-to-azure"></a>Hyper-V virtuális gépek feladatátvétele az Azure-ba
@@ -58,7 +58,7 @@ A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetős
 
 ## <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-ba
 
-1. A **Beállítások**  >  **replikált elemek**területen kattintson a virtuális gép > **feladatátvétel**elemre.
+1. A **Beállítások**  >  **replikált elemek** területen kattintson a virtuális gép > **feladatátvétel** elemre.
 2. A **Feladatátvétel** területen válassza a **Legújabb** helyreállítási pontot. 
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery a feladatátvitel indítása előtt megkísérli leállítani a forrás virtuális gépeket. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamat a **feladatok** lapon követhető.
 4. A feladatátvétel ellenőrzése után kattintson a **Véglegesítés** lehetőségre. Ez törli az összes rendelkezésre álló helyreállítási pontot.
@@ -78,6 +78,6 @@ A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetős
 > Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, kövesse a [hibaelhárítási útmutatót](site-recovery-failover-to-azure-troubleshoot.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladatátvételt követően újra kell védetté tenni az Azure-beli virtuális gépeket, hogy azok az Azure-ból a helyszíni rendszerbe replikálódnak. Ezt követően a virtuális gépek ismételt védelemmel és a helyszíni helyre történő replikálásával visszatérhet az Azure-ból, ha elkészült.

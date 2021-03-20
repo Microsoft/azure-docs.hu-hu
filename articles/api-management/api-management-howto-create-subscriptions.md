@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 191323a4c150c00c93245be35c9c8af381e26b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87904859"
 ---
 # <a name="create-subscriptions-in-azure-api-management"></a>Előfizetések létrehozása az Azure API Managementben
@@ -35,7 +35,7 @@ A cikkben ismertetett lépések végrehajtásához az előfeltételek a követke
 ## <a name="create-a-new-subscription"></a>Új előfizetés létrehozása
 
 1. Válassza az **előfizetések** lehetőséget a bal oldali menüben.
-2. Válassza az **előfizetés hozzáadása**lehetőséget.
+2. Válassza az **előfizetés hozzáadása** lehetőséget.
 3. Adja meg az előfizetés nevét, és válassza ki a hatókört.
 4. Ha szeretné, válassza ki, hogy az előfizetést társítani kell-e egy felhasználóhoz.
 5. Kattintson a **Mentés** gombra.

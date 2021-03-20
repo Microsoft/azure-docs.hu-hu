@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 73b25ce1093ce697aa0937161d2af49526c231b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352354"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>A Bing Custom Search API nyelvi és területi támogatása
@@ -34,7 +34,7 @@ A `Accept-Language` fejléc és a `setLang` lekérdezési paraméter kölcsönö
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Kód|
+|Ország/régió|Code|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|
@@ -87,7 +87,7 @@ A `Accept-Language` fejléc és a `setLang` lekérdezési paraméter kölcsönö
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|dán|da-DK|
+|Dánia|Dán|da-DK|
 |Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|

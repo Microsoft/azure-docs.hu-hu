@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171448"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
@@ -41,11 +41,11 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
 1. Navigáljon a IoT Hub.
 1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
 1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
-1. Válassza a **modulok beállítása**lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
+1. Válassza a **modulok beállítása** lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
 
 ### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása** és az **üzembe helyezés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
@@ -107,8 +107,8 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
 ### <a name="submit-the-deployment-request"></a>A központi telepítési kérelem elküldése
 
 1. A felülvizsgálati szakasz megjeleníti a JSON-telepítési jegyzékfájlt, amelyet az előző szakaszban megadott beállítások alapján hoztak létre. Győződjön meg arról, hogy a következő modulok szerepelnek a JSON-ban: **eventgridmodule** és **előfizető** . 
-1. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget. A telepítés elküldése után visszatérhet az **eszköz** oldalára.
-1. A **modulok szakaszban**ellenőrizze, hogy a **eventgrid** és az **előfizetői** modulok is szerepelnek-e a listáján. És ellenőrizze, hogy a **telepítésben megadott** és az **eszköz oszlopai által jelentett** oszlopok értéke **Igen**.
+1. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés** lehetőséget. A telepítés elküldése után visszatérhet az **eszköz** oldalára.
+1. A **modulok szakaszban** ellenőrizze, hogy a **eventgrid** és az **előfizetői** modulok is szerepelnek-e a listáján. És ellenőrizze, hogy a **telepítésben megadott** és az **eszköz oszlopai által jelentett** oszlopok értéke **Igen**.
 
     Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 
@@ -279,7 +279,7 @@ Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha b�
 * Törölje az előfizetői modult a IoT Edge eszközről.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést és közzétett eseményeket. Most, hogy már ismeri az alapszintű lépéseket, tekintse meg a következő cikkeket: 
 
 - A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).

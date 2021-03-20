@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143118"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Helyi hálózati átjáró beállításainak módosítása az Azure Portal használatával
@@ -32,7 +32,7 @@ Az alábbi képernyőképen egy helyi hálózati átjáró erőforrásának **ko
 
 Ez a konfigurációs oldal FQDN-végponttal:
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="IP-cím beállításai":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="FQDN-beállítások":::
 
 ## <a name="to-modify-the-gateway-ip-address-or-fqdn"></a><a name="ip"></a>Az átjáró IP-címének vagy teljes tartománynevének módosítása
 
@@ -42,13 +42,13 @@ Ez a konfigurációs oldal FQDN-végponttal:
 
 Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta a nyilvános IP-címét, módosítsa a helyi hálózati átjárót a következő lépésekkel:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. Az **IP-cím** mezőben módosítsa az IP-címet.
 3. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
 Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta a teljes tartománynevet (teljes tartománynév), módosítsa a helyi hálózati átjárót a következő lépésekkel:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. A **teljes** tartománynév mezőben módosítsa a tartománynevet.
 3. A beállítások mentéséhez válassza a **Mentés** lehetőséget.
 
@@ -56,29 +56,29 @@ Ha a VPN-eszköz, amelyhez csatlakozni szeretne, megváltoztatta a teljes tartom
 
 További címelőtagok felvétele:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. Adja hozzá az IP-címtartományt a *további címtartomány hozzáadása* mezőben.
 3. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
 Címelőtagok eltávolítása:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. Válassza a **"..."** lehetőséget az eltávolítani kívánt előtagot tartalmazó sorban.
-3. Válassza az **Eltávolítás**lehetőséget.
+3. Válassza az **Eltávolítás** lehetőséget.
 4. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
 ## <a name="to-modify-bgp-settings"></a><a name="bgp"></a>A BGP-beállítások módosítása
 
 BGP-beállítások hozzáadása vagy frissítése:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. A **"BGP-beállítások konfigurálása"** lehetőség kiválasztásával megjelenítheti vagy frissítheti a helyi hálózati átjáró BGP-konfigurációit
 3. Az autonóm rendszerszám vagy BGP-társ IP-cím hozzáadása vagy frissítése a megfelelő mezőkben
 4. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
 A BGP-beállítások eltávolítása:
 
-1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás**lehetőséget.
+1. A helyi hálózati átjáró erőforrás **Beállítások** szakaszában válassza a **Konfigurálás** lehetőséget.
 2. A **"BGP-beállítások konfigurálása"** lehetőség kiválasztásával távolítsa el a meglévő BGP ASN-és BGP-társ IP-címét
 3. A beállítások mentéséhez kattintson a **Mentés** gombra.
 

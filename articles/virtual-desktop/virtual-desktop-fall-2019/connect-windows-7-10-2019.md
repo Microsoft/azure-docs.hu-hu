@@ -7,10 +7,10 @@ ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008357"
 ---
 # <a name="connect-with-the-windows-desktop-classic-client"></a>Kapcsolódjon a Windows asztali (klasszikus) ügyfélprogrammal
@@ -41,7 +41,7 @@ Válassza ki azt az ügyfelet, amely megfelel a Windows-verziójának:
 
 Telepítheti az aktuális felhasználóhoz tartozó ügyfelet, amely nem követeli meg a rendszergazdai jogosultságokat, vagy a rendszergazda telepítheti és konfigurálhatja az ügyfelet, hogy az eszköz összes felhasználója hozzáférhessen.
 
-A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal**keresésével.
+A telepítést követően a-ügyfél a Start menüből indítható el **Távoli asztal** keresésével.
 
 ## <a name="subscribe-to-a-workspace"></a>Előfizetés munkaterületre
 
@@ -52,15 +52,15 @@ A munkaterületekre kétféleképpen lehet előfizetni. Az ügyfél megpróbálh
 
 ### <a name="subscribe-with-a-user-account"></a>Előfizetés felhasználói fiókkal
 
-1. Az ügyfél főoldalán válassza az **előfizetés**lehetőséget.
+1. Az ügyfél főoldalán válassza az **előfizetés** lehetőséget.
 2. Ha a rendszer kéri, jelentkezzen be a felhasználói fiókjával.
 3. Az erőforrások megjelennek a kapcsolatok központjában, és a munkaterület szerint vannak csoportosítva.
 
 ### <a name="subscribe-with-a-url"></a>Előfizetés URL-címmel
 
-1. Az ügyfél főoldalán válassza az **előfizetés URL-lel**lehetőséget.
+1. Az ügyfél főoldalán válassza az **előfizetés URL-lel** lehetőséget.
 2. Adja meg a munkaterület URL-címét vagy e-mail-címét:
-   - Ha a **munkaterület URL-címét**használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
+   - Ha a **munkaterület URL-címét** használja, használja a rendszergazda által megadott címet. Ha a Windows virtuális asztalról fér hozzá az erőforrásokhoz, a következő URL-címek egyikét használhatja:
      - Windowsos virtuális asztal (klasszikus): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows rendszerű virtuális asztal: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - Ha ehelyett az **e-mail** mezőt használja, adja meg az e-mail-címét. Ez azt jelzi, hogy az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda beállította az [e-mail felderítését](/windows-server/remote/remote-desktop-services/rds-email-discovery).

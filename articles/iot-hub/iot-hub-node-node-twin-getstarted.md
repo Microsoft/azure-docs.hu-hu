@@ -10,10 +10,10 @@ ms.date: 08/26/2019
 ms.author: elioda
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 65ced3812072bd2650fc36bbb7a7b0f3f75e0def
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336785"
 ---
 # <a name="get-started-with-device-twins-nodejs"></a>Ismerkedés az eszközök ikrekkel (Node.js)
@@ -40,7 +40,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -58,7 +58,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 Ebben a szakaszban egy Node.js Console-alkalmazást hoz létre, amely a hely metaadatainak hozzáadását teszi elérhetővé a **myDeviceId**-hez társított eszközökhöz. Ezután lekérdezi az IoT hub-ban tárolt, az USA-ban található eszközöket, majd a mobil kapcsolatot jelentő eszközöket.
 
-1. Hozzon létre egy új, **addtagsandqueryapp**nevű üres mappát. A **addtagsandqueryapp** mappában hozzon létre egy új package.jsfájlt a következő parancs parancssorba való beírásával. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
+1. Hozzon létre egy új, **addtagsandqueryapp** nevű üres mappát. A **addtagsandqueryapp** mappában hozzon létre egy új package.jsfájlt a következő parancs parancssorba való beírásával. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
 
     ```cmd/sh
     npm init --yes
@@ -153,13 +153,13 @@ A következő szakaszban létrehoz egy olyan eszközt, amely jelentést készít
 
 Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely a **myDeviceId**-hez csatlakozik a központhoz, majd frissíti az eszköz két jelentett tulajdonságát, hogy tartalmazza a mobilhálózat használatával csatlakoztatott adatokat.
 
-1. Hozzon létre egy új, **reportconnectivity**nevű üres mappát. A **reportconnectivity** mappában hozzon létre egy új package.jsfájlt a következő parancs parancssorba való beírásával. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
+1. Hozzon létre egy új, **reportconnectivity** nevű üres mappát. A **reportconnectivity** mappában hozzon létre egy új package.jsfájlt a következő parancs parancssorba való beírásával. A `--yes` paraméter fogadja az összes alapértelmezett értéket.
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. A **reportconnectivity** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device**és az **Azure-IOT-Device-mqtt** csomagok telepítéséhez:
+2. A **reportconnectivity** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device** és az **Azure-IOT-Device-mqtt** csomagok telepítéséhez:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save

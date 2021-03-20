@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96007409"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: a SQL Server használata
@@ -78,7 +78,7 @@ Ahogy a [terv a környezeti](plan-your-environment.md) útmutatóban is láthat�
 * Az Azure-blobokban tárolt adatmennyiségek, majd a Model in Azure Machine Learning
 * Töltse be az SQL Server adatbázisba, majd a modellbe Azure Machine Learning
 
-Ebben az oktatóanyagban az adat párhuzamos tömeges importálását mutatjuk be egy SQL Serverba, az adatfeltárásba, a szolgáltatások fejlesztésére, valamint a SQL Server Management Studio és a IPython notebook használatával végzett mintavételezésre. [Sample scripts](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) A IPython- [jegyzetfüzetek](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) a githubon vannak megosztva. Az Azure-blobokban tárolt adatmennyiségű IPython-jegyzetfüzet ugyanazon a helyen is elérhető.
+Ebben az oktatóanyagban az adat párhuzamos tömeges importálását mutatjuk be egy SQL Serverba, az adatfeltárásba, a szolgáltatások fejlesztésére, valamint a SQL Server Management Studio és a IPython notebook használatával végzett mintavételezésre. [](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) A IPython- [jegyzetfüzetek](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) a githubon vannak megosztva. Az Azure-blobokban tárolt adatmennyiségű IPython-jegyzetfüzet ugyanazon a helyen is elérhető.
 
 Az Azure-beli adatelemzési környezet beállítása:
 

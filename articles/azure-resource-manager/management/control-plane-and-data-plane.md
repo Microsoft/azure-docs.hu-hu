@@ -4,10 +4,10 @@ description: Leírja a vezérlési sík és az adatsík műveletek közötti kü
 ms.topic: conceptual
 ms.date: 09/10/2020
 ms.openlocfilehash: f478037c3e83c1d28cc900d64512a41619628dd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91371269"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure-vezérlési sík és adatsík
@@ -16,7 +16,7 @@ Az Azure-műveletek két kategóriára oszthatók: vezérlő síkja és adatsík
 
 Az előfizetése erőforrásainak kezeléséhez használja a vezérlési síkot. Az adatsíkon az erőforrástípus példányai által közzétett képességeket használhatja.
 
-Példa:
+Például:
 
 * A virtuális gépet a vezérlési síkon kell létrehoznia. A virtuális gép létrehozása után az adatsík műveletein keresztül kommunikál, például RDP protokoll (RDP).
 

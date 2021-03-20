@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86130286"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Nyilvános IP-címek beállítása a feladatátvétel után
@@ -53,7 +53,7 @@ A telepítés a következő:
 - Az **elsődleges** végpont lehet az [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) vagy a [külső](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) , attól függően, hogy a forrás-környezet az Azure-on belül vagy kívül van-e.
 - A **feladatátvételi** végpont **Azure** -végpontként jön létre. **Statikus nyilvános IP-címet** használjon, mivel ez a katasztrófa-esemény Traffic Manager külső végpontja lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Traffic Managerról Azure site Recovery](../site-recovery/concepts-traffic-manager-with-site-recovery.md)
 - További információ a Traffic Manager [útválasztási módszerekről](../traffic-manager/traffic-manager-routing-methods.md).
 - További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

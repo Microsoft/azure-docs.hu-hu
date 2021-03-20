@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 986a7c8f1282b76c2ae94eebcc2c31dc3b3e7cad
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96352014"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Egyéni automatikus kiegészítési élmény konfigurálása
@@ -91,7 +91,7 @@ Minden javaslat tartalmaz egy `displayText` és egy `query` mezőt. A `displayTe
 Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési karakterláncot a `query` mezőben a [Bing Custom Search API](overview.md)hívásakor.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni javaslatok lekérése]()
 - [Egyéni példány keresése](./search-your-custom-view.md)

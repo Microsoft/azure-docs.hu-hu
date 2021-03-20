@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 517fed0dd9eb1736344546bde9f79e52ee17182f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91333103"
 ---
 # <a name="troubleshooting-azure-sql-edge-deployments"></a>Azure SQL Edge-telepítések hibaelhárítása 
@@ -58,7 +58,7 @@ Ha az SQL Edge-tárolót nem sikerül futtatni, próbálja ki a következő tesz
 
 - Ha Docker-vagy kubernetes-alapú telepítést használ, győződjön meg arról, hogy a `docker run` parancs megfelelően van formázva. További információkért lásd: az [Azure SQL Edge üzembe helyezése a Docker-vel](disconnected-deployment.md) és az [Azure SQL Edge-tároló üzembe helyezése a Kubernetes-ben](deploy-kubernetes.md).
 
-- Ha olyan hibaüzenetet kap, mint például `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` a, a 1433-es tároló-portot egy már használatban lévő portra kísérli meg leképezni. Ez akkor fordulhat elő, ha az SQL Edge szolgáltatást helyileg futtatja a gazdagépen. Akkor is előfordulhat, ha két SQL Edge-tárolót indít el, és mindkettőt ugyanarra a gazdagép-portra próbálja hozzárendelni. Ha ez történik, a `-p` paraméter használatával rendelje hozzá a 1433-es tároló-portot egy másik gazdagép-porthoz. Példa: 
+- Ha olyan hibaüzenetet kap, mint például `failed to create endpoint CONTAINER_NAME on network bridge. Error starting proxy: listen tcp 0.0.0.0:1433 bind: address already in use.` a, a 1433-es tároló-portot egy már használatban lévő portra kísérli meg leképezni. Ez akkor fordulhat elő, ha az SQL Edge szolgáltatást helyileg futtatja a gazdagépen. Akkor is előfordulhat, ha két SQL Edge-tárolót indít el, és mindkettőt ugyanarra a gazdagép-portra próbálja hozzárendelni. Ha ez történik, a `-p` paraméter használatával rendelje hozzá a 1433-es tároló-portot egy másik gazdagép-porthoz. Például: 
 
     ```bash
     sudo docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge-developer.
