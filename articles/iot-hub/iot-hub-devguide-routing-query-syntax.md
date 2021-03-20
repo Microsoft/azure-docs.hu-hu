@@ -11,10 +11,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 ms.openlocfilehash: 83c290adea02915db1dc52bd359b4d3165611522
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92547707"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT-központ üzenet-útválasztásának lekérdezési szintaxisa
@@ -53,7 +53,7 @@ A IoT Hub a protokollok közötti együttműködés [általános formátumát](i
 
 A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának azonosításában. 
 
-| Tulajdonság | Típus | Description (Leírás) |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | contentType | sztring | A felhasználó az üzenet tartalmának típusát adja meg. Az üzenet törzse lekérdezésének engedélyezéséhez ennek az értéknek az Application/JSON értéket kell beállítania. |
 | contentEncoding | sztring | A felhasználó megadja az üzenet kódolási típusát. Az engedélyezett értékek: UTF-8, UTF-16, UTF-32, ha a contentType alkalmazás/JSON értékre van beállítva. |
@@ -62,7 +62,7 @@ A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának 
 | DT – DataSchema | sztring |  Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. A lekérdezéshez használja a következőt: `$dt-dataschema` . |
 | DT – tárgy | sztring | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. A lekérdezéshez használja a következőt: `$dt-subject` . |
 
-A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. Az előző táblázat fenti tulajdonságai mellett a **connectionModuleId** is lekérdezheti a **connectionDeviceId** .
+A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. Az előző táblázat fenti tulajdonságai mellett a **connectionModuleId** is lekérdezheti a **connectionDeviceId**.
 
 ### <a name="application-properties"></a>Az alkalmazás tulajdonságai
 
@@ -146,7 +146,7 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Ez azt mutatja be, hogyan kezelhető a törzs kódolása a JavaScriptben. Ha a C#-ban szeretné megtekinteni a mintát, töltse le az [Azure IoT c#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a master.zip fájlt. A Visual Studio megoldás *SimulatedDevice* program.cs-fájlja azt mutatja be, hogyan lehet üzeneteket kódolni és elküldeni egy IoT hubba. Ez ugyanaz a minta, amely az üzenet-útválasztás tesztelésére szolgál az üzenet- [útválasztási oktatóanyagban](tutorial-routing.md)leírtak szerint. A Program.cs alján is van egy módszer az egyik kódolt fájl olvasására, dekódolására, és az ASCII-ként való kiírására, hogy el tudja olvasni. 
+> Ez azt mutatja be, hogyan kezelhető a törzs kódolása a JavaScriptben. Ha a C#-ban szeretné megtekinteni a mintát, töltse le az [Azure IoT c#-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Bontsa ki a master.zip fájlt. A Visual Studio Solution *SimulatedDevice* program. cs fájlja azt mutatja be, hogyan lehet üzeneteket kódolni és elküldeni egy IoT hubba. Ez ugyanaz a minta, amely az üzenet-útválasztás tesztelésére szolgál az üzenet- [útválasztási oktatóanyagban](tutorial-routing.md)leírtak szerint. A program. cs alján egy metódust is olvashat az egyik kódolt fájl olvasásához, dekódolja azt, és az ASCII-ként írja vissza, hogy elolvassa. 
 
 
 ### <a name="query-expressions"></a>Lekérdezési kifejezések

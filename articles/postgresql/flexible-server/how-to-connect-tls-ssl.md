@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 0ba04ff14e62cd411515a765dc95ef7a3e72b709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90935927"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>Titkosított kapcsolat a Transport Layer Security használatával Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL – a rugalmas kiszolgáló támogatja az ügyfél
 Azure Database for PostgreSQL – a rugalmas kiszolgáló támogatja a titkosított kapcsolatokat Transport Layer Security (TLS 1.2 +) használatával, és a TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. A TLS-kapcsolatok kényszerítését engedélyező rugalmas kiszolgálók esetében a TLS/SSL nem tiltható le a rugalmas kiszolgálóhoz való csatlakozáshoz.
 
 ## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>A TLS/SSL-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. Azure Database for PostgreSQL – a rugalmas kiszolgáló a *DigiCert globális legfelső szintű hitelesítésszolgáltatóját*használja. Töltse le ezt a tanúsítványt az SSL protokollon keresztüli kommunikációhoz a [DigiCert globális legfelső szintű hitelesítésszolgáltatótól](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) , és mentse a tanúsítványt a kívánt helyre. Ez az oktatóanyag például a következőt használja: `c:\ssl` .
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. Azure Database for PostgreSQL – a rugalmas kiszolgáló a *DigiCert globális legfelső szintű hitelesítésszolgáltatóját* használja. Töltse le ezt a tanúsítványt az SSL protokollon keresztüli kommunikációhoz a [DigiCert globális legfelső szintű hitelesítésszolgáltatótól](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) , és mentse a tanúsítványt a kívánt helyre. Ez az oktatóanyag például a következőt használja: `c:\ssl` .
 
 
 ### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával

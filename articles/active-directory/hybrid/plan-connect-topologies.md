@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d3f8e9441064a5d2d1372e3f177534b8dfefb93
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359832"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Leírás | Szimbólum |
+| Description | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/legendad1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/legendad2.png) |
@@ -95,7 +95,7 @@ Ez a topológia különbözik attól, hogy az egyes Azure AD-bérlőhöz csatlak
 Ebben a környezetben az összes helyszíni erdő külön entitásként lesz kezelve. Egy másik erdőben sem található felhasználó. Minden erdő saját Exchange-szervezettel rendelkezik, és nincs GALSync az erdők között. Ez a topológia lehet az egyesítés/beszerzés vagy egy olyan szervezet esetében, amelyben az egyes üzleti egységek egymástól függetlenül működnek. Ezek az erdők ugyanabban a szervezetben találhatók az Azure AD-ben, és egyesített GAL-vel jelennek meg. Az előző ábrán az egyes erdőkben lévő összes objektum a metaverse-ben szerepel, és a cél Azure AD-bérlőn összesítve jelenik meg.
 
 ### <a name="multiple-forests-match-users"></a>Több erdő: a felhasználók egyeztetése
-Az ilyen forgatókönyvek esetében gyakori, hogy a terjesztési és biztonsági csoportok felhasználók, névjegyek és külső rendszerbiztonsági tag (FSP-EK) kombinációját is tartalmazhatják. Active Directory tartományi szolgáltatások (AD DS) FSP használják a biztonsági csoportban lévő más erdők tagjainak ábrázolására. Az összes FSP az Azure AD-ben lévő valódi objektumra lesz feloldva.
+Az ilyen forgatókönyvek esetében gyakori, hogy a terjesztési és biztonsági csoportok felhasználók, névjegyek és külső rendszerbiztonsági tag (FSP-EK) kombinációját is tartalmazhatják. Active Directory Domain Services (AD DS) FSP használják a biztonsági csoportban lévő más erdők tagjainak ábrázolására. Az összes FSP az Azure AD-ben lévő valódi objektumra lesz feloldva.
 
 ### <a name="multiple-forests-full-mesh-with-optional-galsync"></a>Több erdő: teljes háló opcionális GALSync
 ![A mail attribútum használatának lehetősége a különböző címtárakban található felhasználói identitások egyeztetéséhez](./media/plan-connect-topologies/multiforestusersmail.png)
@@ -130,7 +130,7 @@ Ha nagyobb szervezet, akkor érdemes megfontolnia a [Microsoft 365 PreferredData
 ## <a name="staging-server"></a>Átmeneti kiszolgáló
 ![Átmeneti kiszolgáló a topológiában](./media/plan-connect-topologies/multiforeststaging.png)
 
-Azure AD Connect támogatja a második kiszolgáló *átmeneti módban*való telepítését. Az ebben a módban lévő kiszolgálók beolvasják az összes csatlakoztatott könyvtár adatait, de nem írnak semmit a csatlakoztatott címtárakba. A normál szinkronizálási ciklust használja, ezért az azonosító adatok frissített másolatával rendelkezik.
+Azure AD Connect támogatja a második kiszolgáló *átmeneti módban* való telepítését. Az ebben a módban lévő kiszolgálók beolvasják az összes csatlakoztatott könyvtár adatait, de nem írnak semmit a csatlakoztatott címtárakba. A normál szinkronizálási ciklust használja, ezért az azonosító adatok frissített másolatával rendelkezik.
 
 Abban az esetben, ha az elsődleges kiszolgáló meghibásodik, feladatátvételt hajthat végre az átmeneti kiszolgálóval. Ezt a Azure AD Connect varázslóban teheti meg. Ez a második kiszolgáló egy másik adatközpontban is található, mert az elsődleges kiszolgálóval egyetlen infrastruktúra sincs megosztva. Manuálisan kell átmásolnia az elsődleges kiszolgálón végrehajtott konfigurációs módosításokat a második kiszolgálóra.
 

@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f92625131a35dc91c860923ec6523c189830f65
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bab8e8c6dfb944e496c636d53217e63175be9fbc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552150"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587848"
 ---
 # <a name="securing-service-principals"></a>Az egyszerű szolgáltatások biztonságossá tétele
 
-Egy Azure Active Directory (Azure AD) [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) egy alkalmazás-objektum helyi ábrázolása egyetlen bérlőben vagy címtárban.  A funkció az alkalmazás példányának identitása. Az egyszerű szolgáltatások határozzák meg, hogy ki férhet hozzá az alkalmazáshoz, és milyen erőforrásokhoz férhet hozzá. A rendszer minden olyan bérlőn létrehoz egy szolgáltatásnevet, amelyben az alkalmazás használatban van, és hivatkozik a globálisan egyedi alkalmazásobjektum-objektumra. A bérlő gondoskodik az egyszerű szolgáltatás bejelentkezéséről és az erőforrásokhoz való hozzáférésről.  
+Egy Azure Active Directory (Azure AD) [egyszerű szolgáltatásnév](../develop/app-objects-and-service-principals.md) egy alkalmazás-objektum helyi ábrázolása egyetlen bérlőben vagy címtárban.  A funkció az alkalmazás példányának identitása. Az egyszerű szolgáltatások határozzák meg, hogy ki férhet hozzá az alkalmazáshoz, és milyen erőforrásokhoz férhet hozzá. A rendszer minden olyan bérlőn létrehoz egy szolgáltatásnevet, amelyben az alkalmazás használatban van, és hivatkozik a globálisan egyedi alkalmazásobjektum-objektumra. A bérlő gondoskodik az egyszerű szolgáltatás bejelentkezéséről és az erőforrásokhoz való hozzáférésről.  
 
 ### <a name="tenant-service-principal-relationships"></a>Bérlői szolgáltatások – egyszerű kapcsolatok
 Egy egybérlős alkalmazás csak egy egyszerű szolgáltatásnevet tartalmaz a saját bérlőben. A több-bérlős webalkalmazások vagy API-k minden bérlőhöz igényelnek szolgáltatásnevet. Egy egyszerű szolgáltatásnév akkor jön létre, amikor az adott bérlő felhasználója beleegyezett az alkalmazás vagy az API használatára. Ez a beleegyezés egy-a-többhöz kapcsolatot hoz létre a több-bérlős alkalmazás és a hozzá tartozó egyszerű szolgáltatások között.
@@ -39,7 +39,7 @@ Egy adott alkalmazás példányának két különböző tulajdonsága van: a App
 
 A ApplicationID a globális alkalmazást jelöli, és megegyezik a bérlők összes alkalmazási példánya esetében. A ObjectID egy alkalmazás-objektum egyedi értéke, amely az egyszerű szolgáltatásnevet jelöli. A felhasználókhoz, csoportokhoz és egyéb erőforrásokhoz hasonlóan a ObjectID is segít egyedileg azonosítani az Azure AD-beli alkalmazás-példányokat.
 
-További információ erről a témakörről: az [alkalmazás-és szolgáltatásnév kapcsolata](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+További információ erről a témakörről: az [alkalmazás-és szolgáltatásnév kapcsolata](../develop/app-objects-and-service-principals.md).
 
 A Azure PowerShell, az Azure CLI, a Microsoft Graph, a Azure Portal és más eszközök használatával is létrehozhat egy alkalmazást és a szolgáltatás egyszerű objektumát (ObjectID). 
 
@@ -63,7 +63,7 @@ A tanúsítványok biztonságosabbak: ha lehetséges, használjon ügyféltanús
 
 * jelszavak 
 
-További információ a Azure Key Vaultről és használatáról a tanúsítványok és a titkos kódok kezeléséhez: [Tudnivalók a Azure Key Vaultról](https://docs.microsoft.com/azure/key-vault/general/overview) és a [Key Vault hozzáférési szabályzat hozzárendeléséről a Azure Portal használatával](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal). 
+További információ a Azure Key Vaultről és használatáról a tanúsítványok és a titkos kódok kezeléséhez: [Tudnivalók a Azure Key Vaultról](../../key-vault/general/overview.md) és a [Key Vault hozzáférési szabályzat hozzárendeléséről a Azure Portal használatával](../../key-vault/general/assign-access-policy-portal.md). 
 
  ### <a name="challenges-and-mitigations"></a>Kihívások és enyhítések
 Az alábbi táblázat az egyszerű szolgáltatások használata során felmerülő kihívásokat mutatja be.
@@ -89,7 +89,7 @@ A PowerShell használata
 `Get-AzureADServicePrincipal -All:$true` 
 
 
-További információ: [Get-azureadserviceprincipal parancsmagot](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipal)
+További információ: [Get-azureadserviceprincipal parancsmagot](/powershell/module/azuread/get-azureadserviceprincipal)
 
 ## <a name="assess-service-principal-security"></a>Az egyszerű szolgáltatás biztonságának felmérése
 
@@ -105,7 +105,7 @@ Az egyszerű szolgáltatásokhoz való bejelentkezést nem lehet feltételes hoz
 | Az alapértelmezett Azure RBAC szerepkör a közreműködő. |Értékelje ki az igényeket, és alkalmazza a szerepkört a lehető legkevesebb jogosultsággal az igény kielégítéséhez.|
 
 ## <a name="move-from-a-user-account-to-a-service-principal"></a>Áthelyezés felhasználói fiókból egy egyszerű szolgáltatásba  
-Ha Azure-beli felhasználói fiókot használ szolgáltatásnévként, akkor kiértékelheti, hogy áthelyezhető-e egy [felügyelt identitásra](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet) vagy egy egyszerű szolgáltatásra. Ha nem tud felügyelt identitást használni, hozzon létre egy egyszerű szolgáltatásnevet, amely a szükséges feladatok futtatásához elég engedélyekkel és hatókörrel rendelkezik. Egyszerű szolgáltatást [egy alkalmazás regisztrálásával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)-lel hozhat létre.
+Ha Azure-beli felhasználói fiókot használ szolgáltatásnévként, akkor kiértékelheti, hogy áthelyezhető-e egy [felügyelt identitásra](../../app-service/overview-managed-identity.md?tabs=dotnet) vagy egy egyszerű szolgáltatásra. Ha nem tud felügyelt identitást használni, hozzon létre egy egyszerű szolgáltatásnevet, amely a szükséges feladatok futtatásához elég engedélyekkel és hatókörrel rendelkezik. Egyszerű szolgáltatást [egy alkalmazás regisztrálásával](../develop/howto-create-service-principal-portal.md)vagy a [PowerShell](../develop/howto-authenticate-service-principal-powershell.md)-lel hozhat létre.
 
 Microsoft Graph használatakor tekintse meg az adott API dokumentációját, például [ebben a példában](/powershell/azure/create-azure-service-principal-azureps), és győződjön meg arról, hogy az alkalmazáshoz tartozó engedély típusa támogatott.
 
@@ -115,7 +115,7 @@ Microsoft Graph használatakor tekintse meg az adott API dokumentációját, pé
 
 [Egyszerű szolgáltatás létrehozása](../develop/howto-create-service-principal-portal.md)
 
- [Egyszerű szolgáltatás-bejelentkezések figyelése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report)
+ [Egyszerű szolgáltatás-bejelentkezések figyelése](../reports-monitoring/concept-sign-ins.md#sign-ins-report)
 
 **További információ a szolgáltatásfiókok biztonságossá tételéről:**
 

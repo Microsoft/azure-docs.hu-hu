@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e02df83d4b7874a1d158aae45f1619eb543e0aec
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92362450"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Mi az Azure AD Identity Governance?
@@ -74,7 +74,7 @@ A [Azure ad Privileged Identity Management (PIM)](../privileged-identity-managem
 
 A fent felsorolt funkciók mellett további Azure AD-funkciók is gyakran használatosak az identitás-irányítási forgatókönyvek biztosításához:
 
-| Képesség | Használati eset |Szolgáltatás
+| Képesség | Eset |Szolgáltatás
 | ------- | --------------------- |-----|
 |Identitás életciklusa (alkalmazottak)|A rendszergazdák engedélyezhetik a felhasználói fiókok üzembe helyezését a munkanap vagy a SuccessFactors Cloud HR vagy a helyszíni HR használatával.|[Felhőbeli HR – Azure AD-felhasználók üzembe helyezése](../app-provisioning/plan-cloud-hr-provision.md)|
 |Identitás életciklusa (vendég)|A rendszergazdák engedélyezhetik az önkiszolgáló vendég felhasználói számára egy másik Azure AD-bérlőből, közvetlen összevonásból, egyszeri jelszóból (OTP) vagy Google-fiókokból való bevezetést.  A vendég felhasználókat a rendszer automatikusan kiépíti és kiépíti életciklus-szabályzatok alapján.|[Jogosultságok kezelése](entitlement-management-overview.md) [B2B](../external-identities/what-is-b2b.md) használatával|

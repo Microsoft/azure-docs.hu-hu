@@ -8,19 +8,19 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/21/2020
 ms.openlocfilehash: 413f5fc1f6579102b62042c1470816470c2e1449
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546551"
 ---
-# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>A PostgreSQL-hez készült Azure Database-hez készült kapcsolat és lekérdezés áttekintése – egyetlen kiszolgáló
+# <a name="connect-and-query-overview-for-azure-database-for-postgresql--single-server"></a>Az Azure Database for PostgreSQL egykiszolgálós üzemének csatlakozási és lekérdezési áttekintése
 
 Az alábbi dokumentum olyan példákra mutató hivatkozásokat tartalmaz, amelyek bemutatják, hogyan csatlakozhat és végezhet lekérdezéseket Azure Database for PostgreSQL egyetlen kiszolgálóval. Ez az útmutató a TLS-ajánlásokat és-bővítményeket is tartalmazza, amelyek segítségével az alábbi támogatott nyelveken csatlakozhat a kiszolgálóhoz.
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-| Első lépések | Leírás |
+| Gyorsútmutató | Description |
 |---|---|
 |[PgAdmin](https://www.pgadmin.org/)|A pgAdmin használatával csatlakozhat a kiszolgálóhoz, és leegyszerűsíti az adatbázis-objektumok létrehozását, karbantartását és használatát.|
 |[psql Azure Cloud Shell](quickstart-create-server-database-azure-cli.md#connect-to-the-azure-database-for-postgresql-server-by-using-psql)|Ez a cikk bemutatja, hogyan futtathat [**psql**](https://www.postgresql.org/docs/current/static/app-psql.html) -t a [Azure Cloud Shell](../cloud-shell/overview.md) a kiszolgálóhoz való kapcsolódáshoz, majd az utasítások futtatásához az adatbázisban lévő adatokat lekérdezni, beszúrni, frissíteni és törölni. A **psql** futtatható, ha telepítve van a fejlesztési környezetében|
@@ -48,7 +48,7 @@ A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a
 
 További részletek: a [PostgreSQL-bővítmények használata egyetlen kiszolgálón](concepts-extensions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatáttelepítés a memóriakép és a visszaállítás használatával](howto-migrate-using-dump-and-restore.md)
 - [Az adatáttelepítés importálással és exportálással](howto-migrate-using-export-and-import.md)

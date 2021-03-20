@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: 7926d5dd33df5538713f8de152dbbace2bc29864
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90890293"
 ---
 # <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adatkészlet modulban
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
-Ezzel a modullal kiválaszthatja az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát. A modul nem távolítja el fizikailag az oszlopokat a forrás adatkészletből; Ehelyett egy adatbázis- *nézethez* vagy *kivetítéshez*hasonlóan az oszlopok egy részhalmazát hozza létre.
+Ezzel a modullal kiválaszthatja az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát. A modul nem távolítja el fizikailag az oszlopokat a forrás adatkészletből; Ehelyett egy adatbázis- *nézethez* vagy *kivetítéshez* hasonlóan az oszlopok egy részhalmazát hozza létre.
 
 Ez a modul akkor lehet hasznos, ha korlátozni szeretné az alsóbb rétegbeli művelethez rendelkezésre álló oszlopokat, vagy ha csökkenteni kívánja az adatkészlet méretét a szükségtelen oszlopok eltávolításával.
 
@@ -44,8 +44,8 @@ A modulban több lehetőség is van az oszlopok név szerinti kiválasztására:
 
     Jelölje ki az oszlopokat, és kattintson a jobbra mutató nyílra a kijelölt oszlopok a jobb oldali ablaktáblán a listára való áthelyezéséhez.
 
-    + Az oszlopnevek folytonos tartományának kiválasztásához nyomja le a **SHIFT + kattintás**billentyűkombinációt.
-    + Ha egyes oszlopokat szeretne hozzáadni a kijelöléshez, nyomja le a **CTRL + kattintás**billentyűkombinációt.
+    + Az oszlopnevek folytonos tartományának kiválasztásához nyomja le a **SHIFT + kattintás** billentyűkombinációt.
+    + Ha egyes oszlopokat szeretne hozzáadni a kijelöléshez, nyomja le a **CTRL + kattintás** billentyűkombinációt.
 
     Kattintson a pipa gombra a mentéshez és a bezáráshoz.
 
@@ -62,7 +62,7 @@ A modulban több lehetőség is van az oszlopok név szerinti kiválasztására:
     Ha az adatkészlet széles, egyszerűbb lehet az indexek vagy a generált Névlista használata ahelyett, hogy külön oszlopokat kellene kiválasztania. Feltételezve, hogy előkészítette a listát előre:
 
     1. Kattintson a **with Rules (szabályokkal** ) lehetőségre. 
-    2. Válassza a **nem oszlopok**lehetőséget, válassza a  **Belefoglalás**lehetőséget, majd kattintson a piros felkiáltójelet tartalmazó szövegmezőbe. 
+    2. Válassza a **nem oszlopok** lehetőséget, válassza a  **Belefoglalás** lehetőséget, majd kattintson a piros felkiáltójelet tartalmazó szövegmezőbe. 
     3. Illessze be vagy írja be a korábban érvényesített oszlopnevek vesszővel tagolt listáját. A modul nem menthető, ha bármelyik oszlop érvénytelen névvel rendelkezik, ezért ügyeljen arra, hogy a neveket előre ellenőrizze.
     
     Ezzel a módszerrel az oszlopok listáját is megadhatja az index értékei alapján. 
@@ -79,7 +79,7 @@ A **kezdete** beállítás határozza meg a kiindulási pontot, és fontos az er
 
 + Ha a **nincs oszlop** lehetőséget választja, az oszlopok listája üresen elindul. Ezután megadhatja az oszlopok listához való *hozzáadásának* feltételeit. 
 
-    Ha több szabályt alkalmaz, minden feltétel **adalékanyag**. Tegyük fel például, hogy nem oszlopokat ad meg, majd hozzáad egy szabályt az összes numerikus oszlop beolvasásához. Az autó árát tartalmazó adatkészletben 16 oszlopot eredményez. Ezután kattintson a **+** jelre egy új feltétel hozzáadásához, majd válassza a **minden szolgáltatás belefoglalása**lehetőséget. Az eredményül kapott adatkészlet tartalmazza az összes numerikus oszlopot, valamint az összes funkció oszlopát, beleértve a karakterlánc-funkciók egyes oszlopait is.
+    Ha több szabályt alkalmaz, minden feltétel **adalékanyag**. Tegyük fel például, hogy nem oszlopokat ad meg, majd hozzáad egy szabályt az összes numerikus oszlop beolvasásához. Az autó árát tartalmazó adatkészletben 16 oszlopot eredményez. Ezután kattintson a **+** jelre egy új feltétel hozzáadásához, majd válassza a **minden szolgáltatás belefoglalása** lehetőséget. Az eredményül kapott adatkészlet tartalmazza az összes numerikus oszlopot, valamint az összes funkció oszlopát, beleértve a karakterlánc-funkciók egyes oszlopait is.
 
 ### <a name="choose-by-column-index"></a>Oszlopos index választása
 

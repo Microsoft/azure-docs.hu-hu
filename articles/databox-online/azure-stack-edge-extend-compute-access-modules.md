@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
 ms.openlocfilehash: 19c92deb58ac51aa882e7123b9a90aa3eae627d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90894117"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Számítási hálózat engedélyezése a Azure Stack Edge Pro-ban
@@ -40,7 +40,7 @@ Ha külső hálózaton keresztül szeretné elérni az eszközön futó moduloka
 
 A számítási beállítások konfigurálásához hajtsa végre a következő lépéseket a helyi webes felületen.
 
-1. A helyi webes KEZELŐFELÜLETen lépjen a **konfiguráció > számítási beállítások**elemre.  
+1. A helyi webes KEZELŐFELÜLETen lépjen a **konfiguráció > számítási beállítások** elemre.  
 
 2. **Engedélyezze** az eszközön futtatni kívánt számítási modulhoz való kapcsolódáshoz használni kívánt hálózati adaptert.
 
@@ -58,12 +58,12 @@ A számítási beállítások konfigurálásához hajtsa végre a következő l�
 A következő lépésekkel adhat hozzá egy webkiszolgáló-modult az Azure Stack Edge Pro-eszközhöz.
 
 1. Lépjen az Azure Stack Edge Pro-eszközhöz társított IoT Hub erőforráshoz, majd válassza ki **IoT Edge eszközt**.
-2. Válassza ki az Azure Stack Edge Pro-eszközhöz társított IoT Edge eszközt. Az **eszköz részletei**lapon válassza a **modulok beállítása**lehetőséget. A **modulok hozzáadása**lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult**.
+2. Válassza ki az Azure Stack Edge Pro-eszközhöz társított IoT Edge eszközt. Az **eszköz részletei** lapon válassza a **modulok beállítása** lehetőséget. A **modulok hozzáadása** lapon válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult**.
 3. A **IoT Edge egyéni modulok** panelen:
 
     1. Adja meg a telepíteni kívánt webkiszolgáló-modul **nevét** .
     2. Adjon meg egy **rendszerkép-URI** -t a modul rendszerképéhez. A megadott névvel és címkékkel egyező modul beolvasása. Ebben az esetben `nginx:stable` egy stabil Nginx-rendszerképet fog lekérni a nyilvános [Docker-tárházból](https://hub.docker.com/_/nginx/).
-    3. Illessze be a következő mintakód a **tároló létrehozási beállításai**között:  
+    3. Illessze be a következő mintakód a **tároló létrehozási beállításai** között:  
 
         ```
         {
@@ -87,7 +87,7 @@ A következő lépésekkel adhat hozzá egy webkiszolgáló-modult az Azure Stac
 
 ## <a name="verify-module-access"></a>Modul-hozzáférés ellenőrzése
 
-1. Ellenőrizze, hogy a modul telepítése sikeres volt-e, és fut-e. Az **eszköz adatai** lap **modulok** lapján a modul futásidejű állapotának **futnia**kell.  
+1. Ellenőrizze, hogy a modul telepítése sikeres volt-e, és fut-e. Az **eszköz adatai** lap **modulok** lapján a modul futásidejű állapotának **futnia** kell.  
 2. Kapcsolódjon a webkiszolgáló-alkalmazás modulhoz. Nyisson meg egy böngészőablakot, és írja be a következőt:
 
     `http://<compute-network-IP-address>:8080`

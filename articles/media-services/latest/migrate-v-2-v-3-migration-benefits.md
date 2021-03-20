@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb3e09cefa7f87fe2eb1e5013854c7965ea9330e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b6d51e05598f60de0e9c8fb85472b7c14bba990e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698841"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598388"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>1. lépés – a Media Services API v3-re való Migrálás előnyeinek megismerése
 
@@ -58,8 +58,8 @@ A v3-as Media Services jelentős mértékben javult.
 |**Tartalomvédelem** ||
 | [Tartalomvédelem](content-key-policy-concept.md)   támogatja a többkulcsos funkciókat. | Az ügyfelek mostantól több tartalom titkosítási kulcsot is használhatnak a streaming-lokátorokban. |
 | **Figyelés** | |
-| [Azure EventGrid](reacting-to-media-services-events.md) Notification-támogatás | A EventGrid-értesítések több funkciója is gazdag. Több típusú értesítés is létezik, szélesebb körű SDK-támogatás az értesítések saját alkalmazásban való fogadásához, valamint a meglévő Azure-szolgáltatások, amelyek eseménykezelőként működhetnek. |
-| [Azure Monitor támogatás és integráció a Azure Portal](monitor-events-portal-how-to.md) | Ez lehetővé teszi az ügyfeleknek, hogy megjelenítsék Media Services fiók kvótájának felhasználását, a valós idejű statisztikát a folyamatos átviteli végpontokról, valamint az élő események betöltésére és archiválására vonatkozó statisztikát. Az ügyfelek mostantól riasztásokat állíthatnak be, és valós idejű metrikus adatokon alapuló szükséges műveleteket hajthatnak végre. |
+| [Azure EventGrid](monitoring/reacting-to-media-services-events.md) Notification-támogatás | A EventGrid-értesítések több funkciója is gazdag. Több típusú értesítés is létezik, szélesebb körű SDK-támogatás az értesítések saját alkalmazásban való fogadásához, valamint a meglévő Azure-szolgáltatások, amelyek eseménykezelőként működhetnek. |
+| [Azure Monitor támogatás és integráció a Azure Portal](monitoring/monitor-events-portal-how-to.md) | Ez lehetővé teszi az ügyfeleknek, hogy megjelenítsék Media Services fiók kvótájának felhasználását, a valós idejű statisztikát a folyamatos átviteli végpontokról, valamint az élő események betöltésére és archiválására vonatkozó statisztikát. Az ügyfelek mostantól riasztásokat állíthatnak be, és valós idejű metrikus adatokon alapuló szükséges műveleteket hajthatnak végre. |
 
 ## <a name="next-steps"></a>Következő lépések
 

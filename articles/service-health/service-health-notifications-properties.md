@@ -4,10 +4,10 @@ description: A szolgáltatás állapotával kapcsolatos értesítések segítsé
 ms.topic: conceptual
 ms.date: 4/12/2018
 ms.openlocfilehash: 4f2b4a0779d775ed5be5bfa28831cccc68c33caf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86529012"
 ---
 # <a name="use-the-azure-portal-to-view-service-health-notifications"></a>A szolgáltatás állapotával kapcsolatos értesítések megtekintése a Azure Portal használatával
@@ -24,7 +24,7 @@ A Service Health értesítéseinek különböző osztályai vannak:
 
 Az egyes szolgáltatások állapotáról szóló értesítések a hatókörről és az erőforrások hatásáról tartalmaznak részleteket. A részletek a következők:
 
-Tulajdonság neve | Leírás
+Tulajdonság neve | Description
 -------- | -----------
 csatornák | A következő értékek egyike: **rendszergazda** vagy **művelet**.
 correlationId | Általában egy GUID formátumú karakterlánc. Az ugyanahhoz a művelethez tartozó események általában ugyanazt a correlationId használják.
@@ -37,18 +37,18 @@ Részállapot | Általában a megfelelő REST-hívás HTTP-állapotkód, de tart
 eventTimestamp | Időbélyeg, amikor az Azure-szolgáltatás létrehozta az eseményt az eseménynek megfelelő kérelem feldolgozásakor.
 submissionTimestamp | Időbélyeg, ha az esemény elérhetővé válik a lekérdezéshez.
 subscriptionId | Az Azure-előfizetés, amelyben az esemény naplózva lett.
-status | A művelet állapotát leíró karakterlánc. Néhány gyakori érték: **elindítva**, **folyamatban**, **sikeres**, **sikertelen**, **aktív**és **megoldott**.
+status | A művelet állapotát leíró karakterlánc. Néhány gyakori érték: **elindítva**, **folyamatban**, **sikeres**, **sikertelen**, **aktív** és **megoldott**.
 operationName | A művelet neve.
 category | Ez a tulajdonság mindig **ServiceHealth**.
 resourceId | Az érintett erőforrás erőforrás-azonosítója.
 Tulajdonságok. cím | A kommunikáció honosított címe. Az alapértelmezett érték az angol.
 Tulajdonságok. kommunikáció | A HTML-jelöléssel folytatott kommunikáció honosított adatai. Az alapértelmezett érték az angol.
-Properties. incidentType | A következő értékek egyike: **beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartás**vagy **Biztonság**.
+Properties. incidentType | A következő értékek egyike: **beavatkozás szükséges**, **tájékoztató**, **incidens**, **karbantartás** vagy **Biztonság**.
 Properties. trackingId | Az az incidens, amellyel ez az esemény társítva van. Ezzel a művelettel korrelálhatja az incidensekhez kapcsolódó eseményeket.
 Properties. impactedServices | Egy Escape-JSON-blob, amely leírja az incidens által érintett szolgáltatásokat és régiókat. A tulajdonság tartalmazza azon szolgáltatások listáját, amelyek mindegyike **szolgáltatásnév**, valamint az érintett régiók listája, amelyek mindegyike rendelkezik **RegionName**.
 Properties. defaultLanguageTitle | Az angol nyelvű kommunikáció.
 Properties. defaultLanguageContent | Az angol nyelvű kommunikáció HTML-kódban vagy egyszerű szövegként.
-Tulajdonságok. fázis | Az **incidens**lehetséges értékei, valamint a **Biztonság** **aktív,** **megoldott** vagy **RCA**. A **beavatkozás szükséges** vagy a **tájékoztatási** szolgáltatás esetében az egyetlen érték **aktív.** A **karbantartáshoz** a következők tartoznak: **aktív**, **tervezett**, **befejezetlen**, **megszakított**, **újraütemezett**, **megoldott**vagy **befejezett**.
+Tulajdonságok. fázis | Az **incidens** lehetséges értékei, valamint a **Biztonság** **aktív,** **megoldott** vagy **RCA**. A **beavatkozás szükséges** vagy a **tájékoztatási** szolgáltatás esetében az egyetlen érték **aktív.** A **karbantartáshoz** a következők tartoznak: **aktív**, **tervezett**, **befejezetlen**, **megszakított**, **újraütemezett**, **megoldott** vagy **befejezett**.
 Properties. communicationId | Az a kommunikáció, amellyel ez az esemény társítva van.
 
 ### <a name="details-on-service-health-level-information"></a>A szolgáltatás állapotára vonatkozó információk részletei

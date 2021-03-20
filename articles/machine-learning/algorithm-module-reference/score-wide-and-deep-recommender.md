@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/12/2020
 ms.openlocfilehash: 9a1a3892e6a47aabd9b5129ca551900494616bc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905175"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Wide and Deep ajánló pontozása
@@ -27,7 +27,7 @@ A széles és mély ajánló két különböző előrejelzést készíthet:
 - [Elemek ajánlása egy adott felhasználónak](#recommend-items)
 
 
-Az utóbbi típusú előrejelzések létrehozásakor akár *üzemi módban* , akár *kiértékelési módban*is működhet.
+Az utóbbi típusú előrejelzések létrehozásakor akár *üzemi módban* , akár *kiértékelési módban* is működhet.
 
 - Az **éles üzemmód** minden felhasználót vagy elemet figyelembe vesz, és általában egy webszolgáltatásban használatos. Új felhasználók számára is létrehozhat pontszámokat, nem csak a betanítás során látott felhasználókat. 
 
@@ -48,7 +48,7 @@ A minősítések előrejelzése során a modell kiszámítja, hogy egy adott fel
 
 1. Vegyen fel egy betanított, széles körű & mélyreható javaslatot a kísérletbe, és kapcsolja össze azt a **széles körű és mélyreható javaslati modellel**.  A modellt a [Wide és a Deep ajánló](train-wide-and-deep-recommender.md)használatával kell létrehoznia.
 
-2. **Ajánlói előrejelző típus**: válassza a **minősítési előrejelzés**lehetőséget. Nincs szükség további paraméterekre.
+2. **Ajánlói előrejelző típus**: válassza a **minősítési előrejelzés** lehetőséget. Nincs szükség további paraméterekre.
 
 3. Adja hozzá azokat az adatokat, amelyekhez előrejelzéseket kíván készíteni, majd a **pontszámhoz kapcsolódjon az adatkészlethez**.
 
@@ -60,7 +60,7 @@ A minősítések előrejelzése során a modell kiszámítja, hogy egy adott fel
 
     A felhasználói szolgáltatások adatkészletében szerepelnie kell a felhasználói azonosítónak az első oszlopban. A fennmaradó oszlopoknak tartalmazniuk kell a felhasználókat jellemző értékeket, például a nemet, a beállításokat, a helyet stb.
   
-    A betanítási adatkészletben a minősítéssel rendelkező felhasználók funkcióit a rendszer figyelmen kívül hagyja a **pontszám széles és mély ajánlása**alapján, mivel azokat a képzés során már megtanulták. Ezért az adathalmazt előre szűrheti, hogy csak a *hidegindító felhasználókat*, vagy azokat a felhasználókat tartalmazza, akik nem értékelték az elemeket.
+    A betanítási adatkészletben a minősítéssel rendelkező felhasználók funkcióit a rendszer figyelmen kívül hagyja a **pontszám széles és mély ajánlása** alapján, mivel azokat a képzés során már megtanulták. Ezért az adathalmazt előre szűrheti, hogy csak a *hidegindító felhasználókat*, vagy azokat a felhasználókat tartalmazza, akik nem értékelték az elemeket.
 
     > [!WARNING]
     > Ha a modell a felhasználói funkciók használata nélkül lett betanítva, nem lehet felhasználói funkciókat bevezetni a pontozás során.
@@ -100,7 +100,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
     - Nem **értékelt elemektől (új elemek a felhasználók számára)**: válassza ezt a lehetőséget, ha azt szeretné, hogy a modul csak a nem értékelt betanítási adatkészletben lévő elemekről tegyen javaslatot. 
 4. Adja hozzá azt az adatkészletet, amelyhez előrejelzéseket kíván készíteni, majd a pontszámhoz kapcsolódjon az **adatkészlethez**.
 
-    - Ha a lehetőséget választja, az **összes elemnél**a bemeneti adatkészletnek egy és csak egy oszlopból kell állnia, amely tartalmazza azon felhasználók azonosítóit, akik számára javaslatokat szeretne tenni.
+    - Ha a lehetőséget választja, az **összes elemnél** a bemeneti adatkészletnek egy és csak egy oszlopból kell állnia, amely tartalmazza azon felhasználók azonosítóit, akik számára javaslatokat szeretne tenni.
 
         Az adatkészlet tartalmazhatja az elemek azonosítóinak és minősítésének két további oszlopát is, de ez a két oszlop figyelmen kívül lesz hagyva. 
 
@@ -112,7 +112,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
         Az adatkészlet tartalmazhat a felhasználói elemek minősítésének harmadik oszlopát is, de ez az oszlop figyelmen kívül lesz hagyva.
 
-5. (Nem kötelező). Ha a **felhasználói szolgáltatások**adatkészletével rendelkezik, kapcsolja össze a **felhasználói szolgáltatásokkal**.
+5. (Nem kötelező). Ha a **felhasználói szolgáltatások** adatkészletével rendelkezik, kapcsolja össze a **felhasználói szolgáltatásokkal**.
 
     A felhasználói szolgáltatások adatkészletének első oszlopában szerepelnie kell a felhasználói azonosítónak. A fennmaradó oszlopoknak tartalmazniuk kell a felhasználót jellemző értékeket, például a nemet, a beállításokat, a helyet stb.
 
@@ -121,11 +121,11 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
     > [!WARNING]
     >  Ha a modell a felhasználói funkciók használata nélkül lett betanítva, nem használhatja a funkciók alkalmazása funkciót a pontozás során.
 
-6. Választható Ha rendelkezik az **elem funkcióinak**adatkészletével, azt összekapcsolhatjuk az **elem szolgáltatásaival**.
+6. Választható Ha rendelkezik az **elem funkcióinak** adatkészletével, azt összekapcsolhatjuk az **elem szolgáltatásaival**.
 
     Az elem funkciói adatkészlet első oszlopának tartalmaznia kell az elem azonosítóját. A fennmaradó oszlopoknak tartalmazniuk kell az elemeket jellemző értékeket.
 
-    A minősítéssel rendelkező elemek jellemzőit a **pontszám széles és mély ajánlója**figyelmen kívül hagyja, mivel ezek a funkciók már megtanulták a képzés során. Ezért a pontozási adatkészletet letilthatja a *hidegindító elemekre*vagy olyan elemekre, amelyeket egyetlen felhasználó sem értékelt ki.
+    A minősítéssel rendelkező elemek jellemzőit a **pontszám széles és mély ajánlója** figyelmen kívül hagyja, mivel ezek a funkciók már megtanulták a képzés során. Ezért a pontozási adatkészletet letilthatja a *hidegindító elemekre* vagy olyan elemekre, amelyeket egyetlen felhasználó sem értékelt ki.
 
     > [!WARNING]
     >  Ha a modellt cikk-funkciók használata nélkül tanítják meg, ne használja az elem funkcióit pontozáskor.  
@@ -136,7 +136,7 @@ A felhasználókra vonatkozó elemek ajánlásához adja meg a felhasználók é
 
     Ezt a beállítást csak akkor kell használni, ha próbaverziós módban van. A beállítás nem érhető el, ha az **összes elemből** vagy **a nem értékelt elemek közül a lehetőséget választja (új elemeket javasol a felhasználóknak)**.
 
-9. A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** használja a **betanítási adatok**nevű harmadik bemeneti portot, hogy eltávolítsa azokat az elemeket, amelyek már a jóslat eredményeiből lettek kiértékelve.
+9. A nem **értékelt elemek esetében (az új elemek felhasználók számára történő javaslatához)** használja a **betanítási adatok** nevű harmadik bemeneti portot, hogy eltávolítsa azokat az elemeket, amelyek már a jóslat eredményeiből lettek kiértékelve.
 
     A szűrő alkalmazásához az eredeti betanítási adatkészletet a bemeneti porthoz kell kapcsolni.
 

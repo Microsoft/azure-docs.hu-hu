@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023227"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Kis méretű adathalmazok átvitele kis vagy közepes hálózati sávszélességen
@@ -49,7 +49,7 @@ Az ebben a forgatókönyvben javasolt beállítások a következők:
 
 Az alábbi táblázat a fő képességek közötti különbségeket összegzi.
 
-| Funkció | Azure Storage Explorer | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API-k vagy SDK-k |
+| Szolgáltatás | Azure Storage Explorer | Azure Portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API-k vagy SDK-k |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Rendelkezésre állás | Letöltés és telepítés <br>Önálló eszköz | Webalapú feltárási eszközök a Azure Portal | Parancssori eszköz |Programozható felületek a .NET, a Java, a Python, a JavaScript, a C++, a go, a Ruby és a PHP használatával |
 | Grafikus felület | Igen | Igen | Nem | Nem |
@@ -61,7 +61,7 @@ Az alábbi táblázat a fő képességek közötti különbségeket összegzi.
 | Engedélyezett üzenetsor-tárolás | Kezelés | Nem  |Nem | Igen, testreszabható|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [viheti át az adatátvitelt Azure Storage Explorer](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md)használatával.
 - [Adatok áthelyezése az AzCopyval](./storage-use-azcopy-v10.md)

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91756816"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Gyors útmutató: felügyelt HSM kiépítése és aktiválása az Azure CLI-vel
@@ -63,7 +63,7 @@ Felügyelt HSM-erőforrás létrehozásához a következő bemeneteket kell mega
 - Azure-beli hely.
 - A kezdeti rendszergazdák listája.
 
-Az alábbi példa egy **ContosoMHSM**nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup**, amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
+Az alábbi példa egy **ContosoMHSM** nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup**, amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: app-service
 author: cephalin
 ms.service: app-service
@@ -9,19 +9,19 @@ ms.date: 06/11/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 020e59f029b09f3c7656f67039731e4141e68d31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "67179723"
 ---
 Ha a Python hibát észlel az alkalmazás elindítása közben, csak egy egyszerű hibaüzenet jelenik meg (például "a lap nem jeleníthető meg, mert belső kiszolgálóhiba történt.").
 
 Python-alkalmazások hibáinak rögzítése:
 
-1. A Azure Portal a webalkalmazásban válassza a **Beállítások**lehetőséget.
-2. A **Beállítások** lapon válassza az **Alkalmazásbeállítások**lehetőséget.
-3. Az **Alkalmazásbeállítások**területen adja meg a következő kulcs/érték párokat:
+1. A Azure Portal a webalkalmazásban válassza a **Beállítások** lehetőséget.
+2. A **Beállítások** lapon válassza az **Alkalmazásbeállítások** lehetőséget.
+3. Az **Alkalmazásbeállítások** területen adja meg a következő kulcs/érték párokat:
     * Kulcs: WSGI_LOG
     * Érték: D:\home\site\wwwroot\logs.txt (adja meg a választott fájlnevet)
 

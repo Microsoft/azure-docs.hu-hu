@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 295897be03a7dd8e397e8202ff1cf10e6d59cdfb
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 19ead7fe063992e95588641f7fd739081cf54a2f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753858"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578413"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
@@ -33,6 +33,20 @@ ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+```Java
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```JavaScript
+const tokenRequest = {
+    scopes: [process.env.GRAPH_ENDPOINT + '.default'], // e.g. 'https://graph.microsoft.com/.default'
+};
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 A MSAL Pythonban a konfigurációs fájl az alábbi kódrészlethez hasonlít:
@@ -41,12 +55,6 @@ A MSAL Pythonban a konfigurációs fájl az alábbi kódrészlethez hasonlít:
 {
     "scope": ["https://graph.microsoft.com/.default"],
 }
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-```Java
-final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
 ---
@@ -96,30 +104,6 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 
 A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken *XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-# The pattern to acquire a token looks like this.
-result = None
-
-# First, the code looks up a token from the cache.
-# Because we're looking for a token for the current app, not for a user,
-# use None for the account parameter.
-result = app.acquire_token_silent(config["scope"], account=None)
-
-if not result:
-    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
-    result = app.acquire_token_for_client(scopes=config["scope"])
-
-if "access_token" in result:
-    # Call a protected API with the access token.
-    print(result["token_type"])
-else:
-    print(result.get("error"))
-    print(result.get("error_description"))
-    print(result.get("correlation_id"))  # You might need this when reporting a bug.
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Ez a kód a [MSAL Java dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/)lett kinyerve.
@@ -167,6 +151,43 @@ private static IAuthenticationResult acquireToken() throws Exception {
      }
      return result;
  }
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Az alábbi kódrészlet szemlélteti a tokenek beszerzését egy MSAL-csomópont bizalmas ügyfélalkalmazás:
+
+```JavaScript
+try {
+    const authResponse = await cca.acquireTokenByClientCredential(tokenRequest);
+    console.log(authResponse.accessToken) // display access token
+} catch (error) {
+    console.log(error);
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+# The pattern to acquire a token looks like this.
+result = None
+
+# First, the code looks up a token from the cache.
+# Because we're looking for a token for the current app, not for a user,
+# use None for the account parameter.
+result = app.acquire_token_silent(config["scope"], account=None)
+
+if not result:
+    logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
+    result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token.
+    print(result["token_type"])
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You might need this when reporting a bug.
 ```
 
 ---
@@ -235,18 +256,22 @@ Ha saját webes API-t hív meg, és nem tudott alkalmazás-engedélyt adni az al
 
 Részletekért lásd: [alkalmazás engedélyeinek kimutatása (alkalmazás-szerepkörök)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) , és különösen [annak biztosítása, hogy az Azure ad a webes API-hoz tartozó jogkivonatokat csak az ügyfelek számára engedélyezzék](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=dotnet)-t hív meg.
 
-# <a name="python"></a>[Python](#tab/python)
-
-A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=python)-t hív meg.
-
 # <a name="java"></a>[Java](#tab/java)
 
 A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=java)-t hív meg.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=nodejs)-t hív meg.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A forgatókönyvben a következő cikkre léphet, amely [egy webes API](./scenario-daemon-call-api.md?tabs=python)-t hív meg.
 
 ---

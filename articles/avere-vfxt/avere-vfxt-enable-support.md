@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/14/2019
 ms.author: rohogue
 ms.openlocfilehash: 93b99aa624a21d9312297e4279b1dcf053c79ae3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88272728"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
@@ -28,14 +28,14 @@ A támogatás aktiválásához kövesse az alábbi lépéseket a avere Vezérlő
 
 1. A támogatás konfigurálása lapon nyissa meg az **ügyfél adatai** szakaszt a bal oldali háromszögre kattintva.
 1. Kattintson a **feltöltési adatok újraérvényesítése** gombra.
-1. Adja meg a fürt támogatásának nevét az **egyedi fürt neve**alatt. Győződjön meg arról, hogy ez a név egyedileg azonosítja a fürtöt a munkatársak támogatásához.
-1. A **statisztikák figyelésére**, az **általános adatok feltöltésére**és az **Összeomlási adatok feltöltésére**vonatkozó jelölőnégyzeteket itt találja.
+1. Adja meg a fürt támogatásának nevét az **egyedi fürt neve** alatt. Győződjön meg arról, hogy ez a név egyedileg azonosítja a fürtöt a munkatársak támogatásához.
+1. A **statisztikák figyelésére**, az **általános adatok feltöltésére** és az **Összeomlási adatok feltöltésére** vonatkozó jelölőnégyzeteket itt találja.
 1. Kattintson a **Submit (Küldés**) gombra.
 
    ![A támogatási beállítások oldalának Completed Customer info szakaszt tartalmazó képernyőképe](media/avere-vfxt-support-info.png)
 
 1. Kattintson a **biztonságos proaktív támogatás (SPS)** bal oldalán található háromszögre a szakasz kibontásához.
-1. Jelölje be az **SPS-hivatkozás engedélyezése**jelölőnégyzetet.
+1. Jelölje be az **SPS-hivatkozás engedélyezése** jelölőnégyzetet.
 1. Kattintson a **Submit (Küldés**) gombra.
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/avere-vfxt-support-sps.png)

@@ -4,10 +4,10 @@ description: A Service Fabric-fürtök Windows Serveren és Linuxon futnak, ami 
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: a3162a3d02510ce8efab6c5bcac0f1fdd2b2539b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94683998"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Önálló fürtök Service Fabric áttekintése
@@ -54,7 +54,7 @@ Az alkalmazás iránti igények időbeli változása. Előfordulhat, hogy növel
 
 További információért olvassa el az [önálló fürtök méretezését](service-fabric-cluster-scaling-standalone.md)ismertető témakört.
 
-## <a name="upgrading"></a>Frissítése
+## <a name="upgrading"></a>Frissítés
 
 Az önálló fürt olyan erőforrás, amely teljesen saját maga. A mögöttes operációs rendszer javítása és a háló frissítéseinek kezdeményezése felelős. Beállíthatja, hogy a fürt automatikusan megkapja az automatikus futtatókörnyezet-frissítéseket, amikor a Microsoft új verziót szabadít fel, vagy egy támogatott futásidejű verziót szeretne kiválasztani. A háló frissítésein kívül az operációs rendszert és a fürt konfigurációját is frissítheti, például a tanúsítványokat vagy az alkalmazás portját. 
 

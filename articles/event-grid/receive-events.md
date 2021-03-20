@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023717"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
@@ -399,7 +399,7 @@ Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálr�
 
 [!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [SDK-k Azure Event Grid felügyeletének és közzétételének](./sdk-overview.md) megismerése
 * Útmutató [Egyéni témakörhöz való közzétételhez](./post-to-custom-topic.md)

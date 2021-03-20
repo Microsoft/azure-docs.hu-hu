@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: sharrai
 ms.openlocfilehash: aeb89a9d18e4550fa1d6162920d60507fd50c208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359866"
 ---
 # <a name="monitoring-churn-patterns-on-virtual-machines"></a>A virtuális gépek adatforgalmi mintáinak figyelése
@@ -19,9 +19,9 @@ Ez a cikk áttekintést nyújt a virtuális gépek adatváltozási mintáinak fi
 
 ## <a name="for-azure-virtual-machines-windows-or-linux"></a>Azure-beli virtuális gépekhez (Windows vagy Linux)
 
-Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információk](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
+Ha a gép az Azure-ban üzemel, és felügyelt vagy nem felügyelt lemezt használ a tároláshoz, a lemez metrikáinak nyomon követésével könnyedén nyomon követheti a teljesítményt. Ez lehetővé teszi, hogy az alkalmazás használati mintájának megfelelően gondosan figyelje és kiválassza a megfelelő lemezt. Azt is felhasználhatja, hogy riasztásokat, diagnosztikai és automatizálási felépítést hozzon létre. [További információ](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/).
 
-Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információk](./monitor-log-analytics.md).
+Ha a gépeket a Azure Site Recovery segítségével védi, a gépeket Azure Monitor naplók és Log Analytics használatával figyelheti. [További információ](./monitor-log-analytics.md).
 
 Vannak olyan operációs rendszerre vonatkozó eszközök is, amelyeket használhat.
 
@@ -35,7 +35,7 @@ A lemez használatának ellenőrzése mellett a Feladatkezelő szolgáltatásban
 
 A **erőforrás-figyelő** valós időben jeleníti meg a hardveres és a szoftveres erőforrások használatáról szóló információkat. A erőforrás-figyelő Windows rendszerű gépen való futtatásához kövesse az alábbi lépéseket –
 
-1. Nyomja meg a Win + R és a _ResMon_típust.
+1. Nyomja meg a Win + R és a _ResMon_ típust.
 1. Ha a ResMon, azaz erőforrás-figyelő, az ablak megnyílik a lemez lapra. A következő nézetet nyújtja:
 
     ![erőforrás-figyelő lemez lap](./media/monitoring-high-churn/resmon-disk-tab.png)
@@ -48,7 +48,7 @@ Miután azonosította az alkalmazásokat, amelyek nagy adatváltozást okoznak a
 
 A Teljesítményfigyelő különböző tevékenységeket **figyel** a számítógépen, például a CPU-vagy memóriahasználat. A Teljesítményfigyelő Windows rendszerű gépen való futtatásához kövesse az alábbi lépéseket –
 
-1. Nyomja meg a Win + R és a _perfmon_típust.
+1. Nyomja meg a Win + R és a _perfmon_ típust.
 1. Ha a perfmon, azaz a Teljesítményfigyelő, ablak nyílik meg, a következő nézetet nyújtja:
 
     ![Teljesítményfigyelő 1. lépés](./media/monitoring-high-churn/perfmon-step1.png)

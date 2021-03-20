@@ -13,26 +13,26 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92363453"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>Alkalmazás ellenőrzött közzétevővel rendelkezőként való megjelölése
 
 Ha egy alkalmazás regisztrálása ellenőrzött közzétevővel rendelkezik, az azt jelenti, hogy az alkalmazás közzétevője [ellenőrizte](/partner-center/verification-responses) az identitását a Microsoft Partner Network (MPN) fiók használatával, és társítja ezt az MPN-fiókot az alkalmazás regisztrálásával. Ez a cikk bemutatja, hogyan végezheti el a [közzétevő ellenőrzési](publisher-verification-overview.md) folyamatát.
 
-## <a name="quickstart"></a>Első lépések
+## <a name="quickstart"></a>Gyorsútmutató
 Ha már regisztrált a Microsoft Partner Network (MPN) szolgáltatásban, és teljesítette az [előfeltételeket](publisher-verification-overview.md#requirements), azonnal megkezdheti az első lépéseket: 
 
 1. Bejelentkezés az [alkalmazás regisztrációs portálján](https://aka.ms/PublisherVerificationPreview) a [multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) használatával
 
-1. Válasszon ki egy alkalmazást, és kattintson a **branding**elemre. 
+1. Válasszon ki egy alkalmazást, és kattintson a **branding** elemre. 
 
 1. Kattintson az **MPN-azonosító hozzáadása elemre a közzétevő ellenőrzéséhez** és a felsorolt követelmények áttekintéséhez.
 
-1. Adja meg az MPN-azonosítót, és kattintson az **ellenőrzés és mentés**gombra.
+1. Adja meg az MPN-azonosítót, és kattintson az **ellenőrzés és mentés** gombra.
 
 Az egyes előnyökkel, követelményekkel és gyakori kérdésekkel kapcsolatos további információkért tekintse meg az [áttekintést](publisher-verification-overview.md).
 
@@ -62,11 +62,11 @@ Győződjön meg arról, hogy teljesítette az [előfeltételeket](publisher-ver
 
     - A szervezethez tartozó partner globális fiók (PGA). 
 
-1. Kattintson **az ellenőrzés és mentés**gombra. 
+1. Kattintson **az ellenőrzés és mentés** gombra. 
 
 1. Várjon, amíg a rendszer feldolgozza a kérést, ez eltarthat néhány percig. 
 
-1. Ha az ellenőrzés sikeres volt, a közzétevő ellenőrzési ablaka be lesz zárva, és visszatér a branding (védjegyezés) panelre. Az ellenőrzött **közzétevők megjelenítendő neve**mellett egy kékan ellenőrzött jelvény jelenik meg. 
+1. Ha az ellenőrzés sikeres volt, a közzétevő ellenőrzési ablaka be lesz zárva, és visszatér a branding (védjegyezés) panelre. Az ellenőrzött **közzétevők megjelenítendő neve** mellett egy kékan ellenőrzött jelvény jelenik meg. 
 
 1. Azok a felhasználók, akik megkérik az alkalmazás belefoglalását, azonnal megkezdik a jelvény megtekintését, miután sikeresen elvégezte a folyamatot, bár ez eltarthat egy ideig, amíg a rendszer replikálja. 
 

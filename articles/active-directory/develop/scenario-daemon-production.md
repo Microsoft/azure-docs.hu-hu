@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8dc9bff86a07f3d4a0ec6fd224de6d5633165a6d
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: d903f04055d1607ee782bd502d99a8fd9cde87ca
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582841"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578447"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó Daemon-alkalmazás – áttérés éles környezetbe
 
@@ -54,18 +54,43 @@ Meg kell magyaráznia ügyfeleinek, hogy miként hajtják végre ezeket a művel
 
     ![topology](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Próbálja ki a rövid útmutató [beszerzése tokent, és hívja meg Microsoft Graph API-t egy Java-konzol alkalmazásból az alkalmazás identitásával](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+- További információkért lásd:
+  - A [konfiguráció](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/configuration.md) ismertetése
+  - [ConfidentialClientApplication](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/initialize-confidential-client-application.md) példányának példányai
+  - [GYIK](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-node/docs/faq.md)
+- Egyéb minták/oktatóanyagok:
+  - [MSAL Node Console Daemon-minta](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-console)
+
+# <a name="python"></a>[Python](#tab/python)
+
+Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](quickstart-v2-python-daemon.md).
+
 ---
 
 ## <a name="next-steps"></a>Következő lépések
 
 Íme néhány hivatkozás, amely segítséget nyújt a további információk megismeréséhez:
 
-# <a name="python"></a>[Python](#tab/python)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-python-daemon.md).
+Próbálja ki [, hogyan szerezzen be egy tokent, és hívja meg Microsoft Graph API-t egy .net Core Console-alkalmazásból az alkalmazás identitásával](quickstart-v2-netcore-daemon.md).
 
 # <a name="java"></a>[Java](#tab/java)
 
-Próbálja ki a rövid útmutató [beszerzése tokent, és hívja meg Microsoft Graph API-t egy Java-konzol alkalmazásból az alkalmazás identitásával](./quickstart-v2-java-daemon.md).
+Próbálja ki a rövid útmutató [beszerzése tokent, és hívja meg Microsoft Graph API-t egy Java-konzol alkalmazásból az alkalmazás identitásával](quickstart-v2-java-daemon.md).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Próbálja ki a rövid útmutatóban a [token beszerzése és a Microsoft Graph API meghívása egy Node.js Console-alkalmazásból az alkalmazás identitását használva](quickstart-v2-nodejs-console.md).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Próbálja ki [, hogyan szerezzen be tokent, és hívja meg Microsoft Graph API-t egy Python-konzol alkalmazásból az alkalmazás identitásával](quickstart-v2-python-daemon.md).
 
 ---

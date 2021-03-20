@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
 ms.openlocfilehash: 23dfee7b78f2606c54525391e1260af69a9b0779
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90898409"
 ---
 # <a name="score-vowpal-wabbit-model"></a>Vowpal Wabbit modell pontozása
@@ -29,7 +29,7 @@ Ez a modul a Vowpal Wabbit Framework legújabb verzióját, a 8.8.1 verzióját 
     > [!NOTE]
     > Csak a Vowpal Wabbit 8.8.1-modellek támogatottak; más algoritmusok használatával nem csatlakoztathatók a mentett modellek.
   
-3.  Adja hozzá a tesztelési adatkészletet, és kapcsolódjon a jobb oldali bemeneti porthoz. Ha a teszt adatkészlet egy olyan könyvtár, amely tartalmazza a teszt adatfájlját, adja meg a test adatfájljának **nevét a**teszt adatfájljának nevével. Ha a teszt adatkészlet egyetlen fájl, hagyja üresen **a teszt adatfájl nevét** .
+3.  Adja hozzá a tesztelési adatkészletet, és kapcsolódjon a jobb oldali bemeneti porthoz. Ha a teszt adatkészlet egy olyan könyvtár, amely tartalmazza a teszt adatfájlját, adja meg a test adatfájljának **nevét a** teszt adatfájljának nevével. Ha a teszt adatkészlet egyetlen fájl, hagyja üresen **a teszt adatfájl nevét** .
 
 4. A **VW-argumentumok** szövegmezőbe írja be az érvényes parancssori argumentumok készletét a Vowpal Wabbit végrehajtható fájlba.  
 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 952bd6dddf9f276ed1a4a18f03799147f1902198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90934873"
 ---
 # <a name="restart-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL újraindítása – rugalmas kiszolgáló
@@ -33,9 +33,9 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 A rugalmas kiszolgáló újraindításához kövesse az alábbi lépéseket.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki az újraindítani kívánt rugalmas kiszolgálót.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki az újraindítani kívánt rugalmas kiszolgálót.
 
-2.  Kattintson az **Áttekintés** elemre a bal oldali panelen, majd kattintson az **Újraindítás**elemre.
+2.  Kattintson az **Áttekintés** elemre a bal oldali panelen, majd kattintson az **Újraindítás** elemre.
    
      :::image type="content" source="./media/how-to-restart-server-portal/restart-base-page.png" alt-text="Kijelölés újraindítása":::
 
@@ -43,11 +43,11 @@ A rugalmas kiszolgáló újraindításához kövesse az alábbi lépéseket.
 
 4.  Ha folytatni szeretné a folytatást, kattintson az **Igen** gombra.
    
-     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Kijelölés újraindítása":::
+     :::image type="content" source="./media/how-to-restart-server-portal/restart-pop-up.png" alt-text="Újraindítás megerősítése":::
  
 6.  Ekkor megjelenik egy értesítés, amely szerint az újraindítási művelet megkezdődött.
 
 ## <a name="next-steps"></a>Következő lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
--   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)
+-   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)

@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 5548717b25ea3ec027ba5f588e5e28faafbb5d6f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00109de349c1fdfdbaff9de30d18f64d8b986a59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703681"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587644"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -167,6 +167,18 @@ A parancs kimenetének meg kell jelennie a {SID} {DBNAME} kulcsnak, amely a felh
 
 >[!NOTE]
 > Győződjön meg arról, hogy rendelkezik a SSFS-fájlok egyedi készletével `/usr/sap/{SID}/home/.hdb/` . Ezen az elérési úton csak egy mappa lehet.
+
+Az alábbi összefoglalás az előzetes regisztrációs parancsfájl futtatásához szükséges lépéseket foglalja le.
+
+|ki  |Forrás  |Mit kell futtatni?  |Megjegyzések  |
+|---------|---------|---------|---------|
+|```<sid>```adm (operációs rendszer)     |  HANA OPERÁCIÓS RENDSZER       |   Oktatóanyag beolvasása és a regisztráció előtti parancsfájl letöltése      |   Olvassa el a [fenti előfeltételeket](#prerequisites)    az előzetes regisztrációs parancsfájl [letöltése innen](https://aka.ms/scriptforpermsonhana)  |
+|```<sid>```adm (operációs rendszer) és rendszerfelhasználó (HANA)    |      HANA OPERÁCIÓS RENDSZER   |   Hdbuserstore-Set parancs futtatása      |   pl. hdbuserstore set SYSTEM hostname>:3 ```<Instance#>``` 13 ```<password>``` **rendszermegjegyzés:**  ügyeljen arra, hogy az IP-cím vagy a teljes tartománynév helyett az állomásnév legyen használatban.      |
+|```<sid>```adm (operációs rendszer)    |   HANA OPERÁCIÓS RENDSZER      |  Hdbuserstore-lista futtatása parancs       |   Ellenőrizze, hogy az eredmény tartalmazza-e az alapértelmezett tárolót, például az alábbiakat: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
+|Gyökér (operációs rendszer)     |   HANA OPERÁCIÓS RENDSZER        |    Azure Backup HANA előzetes regisztrációs parancsfájl futtatása      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
+|```<sid>```adm (operációs rendszer)    |  HANA OPERÁCIÓS RENDSZER       |   Hdbuserstore-lista futtatása parancs      |    Ellenőrizze, hogy az eredmény tartalmazza-e az alábbi új sorokat:  ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+
+Miután sikeresen futtatta az előzetes regisztrációs parancsfájlt, és ellenőrizte, folytathatja [a kapcsolódási követelmények](#set-up-network-connectivity) ellenőrzését, majd a [biztonsági mentés konfigurálását](#discover-the-databases) a Recovery Services-tárolóból.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 

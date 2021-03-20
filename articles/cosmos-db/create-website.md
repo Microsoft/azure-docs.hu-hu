@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
 ms.openlocfilehash: 55d58a6c4724bd01325db029ed75d77ccc96d0f8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93333579"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-with-a-web-app-from-github-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és Azure App Service üzembe helyezése a GitHub webalkalmazásával egy Azure Resource Manager sablon használatával
@@ -114,7 +114,7 @@ Végül telepíteni kell a webalkalmazást a GitHubról a App Serviceba. Ezt az 
 
 :::image type="content" source="./media/create-website/deploy-from-github.png" alt-text="Üzembe helyezés a GitHubról":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Telepítette Azure Cosmos DB, Azure App Service és egy minta webalkalmazást, amely automatikusan rendelkezik a Cosmos DBhoz való kapcsolódáshoz szükséges kapcsolódási adatokkal, egyetlen művelettel, és a bizalmas adatok kivágása és beillesztése nélkül. A sablon kiindulási pontként való használata lehetővé teszi, hogy a saját webalkalmazásait ugyanúgy telepítse.
 

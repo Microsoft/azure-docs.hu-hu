@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90934867"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL-rugalmas kiszolgáló számára a Azure Portal használatával
@@ -28,11 +28,11 @@ Ebben a cikkben a PostgreSQL-kiszolgáló **nyilvános hozzáféréssel (engedé
 ## <a name="create-a-firewall-rule-when-creating-a-server"></a>Tűzfalszabály létrehozása kiszolgáló létrehozásakor
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
-2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL**elemet. A **PostgreSQL** -t a keresőmezőbe is megadhatja a szolgáltatás megtalálásához.
+2. Válassza az **adatbázisok**  >  **Azure Database for PostgreSQL** elemet. A **PostgreSQL** -t a keresőmezőbe is megadhatja a szolgáltatás megtalálásához.
 3. Központi telepítési lehetőségként válassza a **rugalmas kiszolgáló** lehetőséget.
 4. Töltse ki az **alapvető beállítások** űrlapot.
 5. Lépjen a **hálózat** lapra, és konfigurálja, hogyan szeretne csatlakozni a kiszolgálóhoz.
-6. A **kapcsolódási módszer**területen válassza a *nyilvános hozzáférés (engedélyezett IP-címek)* lehetőséget. A **Tűzfalszabályok**létrehozásához adja meg a tűzfalszabály nevét és az egyetlen IP-címet, vagy egy címtartományt. Ha a szabályt egyetlen IP-címhez szeretné korlátozni, írja be a címet a kezdő IP-cím és a záró IP-cím mezőbe. A tűzfal megnyitása lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazások számára a PostgreSQL-kiszolgálón található bármely adatbázis elérését, amelyhez érvényes hitelesítő adatok tartoznak.
+6. A **kapcsolódási módszer** területen válassza a *nyilvános hozzáférés (engedélyezett IP-címek)* lehetőséget. A **Tűzfalszabályok** létrehozásához adja meg a tűzfalszabály nevét és az egyetlen IP-címet, vagy egy címtartományt. Ha a szabályt egyetlen IP-címhez szeretné korlátozni, írja be a címet a kezdő IP-cím és a záró IP-cím mezőbe. A tűzfal megnyitása lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazások számára a PostgreSQL-kiszolgálón található bármely adatbázis elérését, amelyhez érvényes hitelesítő adatok tartoznak.
    > [!Note]
    > Azure Database for PostgreSQL – a rugalmas kiszolgáló egy tűzfalat hoz létre a kiszolgáló szintjén. Ez megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan szabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat.
 7. A rugalmas kiszolgáló konfigurációjának áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
@@ -67,7 +67,7 @@ Ebben a cikkben a PostgreSQL-kiszolgáló **nyilvános hozzáféréssel (engedé
 
 Érdemes lehet engedélyezni az Azure-ban üzembe helyezett erőforrásokat vagy alkalmazásokat a rugalmas kiszolgálóhoz való kapcsolódáshoz. Ide tartoznak a Azure App Serviceban üzemeltetett webalkalmazások, amelyek egy Azure-beli virtuális gépen, egy Azure Data Factory adatkezelési átjárón és sok más szolgáltatáson futnak. 
 
-Ha egy Azure-beli alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. A beállítás engedélyezéséhez válassza az Azure **-szolgáltatások és-erőforrások nyilvános hozzáférésének engedélyezése az Azure-ban erre a kiszolgálóra** lehetőségre a **hálózat** lapon, majd a **Mentés**lehetőséget.
+Ha egy Azure-beli alkalmazás megpróbál csatlakozni a kiszolgálóhoz, a tűzfal ellenőrzi, hogy az Azure-kapcsolatok engedélyezettek-e. A beállítás engedélyezéséhez válassza az Azure **-szolgáltatások és-erőforrások nyilvános hozzáférésének engedélyezése az Azure-ban erre a kiszolgálóra** lehetőségre a **hálózat** lapon, majd a **Mentés** lehetőséget.
 
 Az erőforrásoknak nem kell ugyanabban a virtuális hálózatban (VNet) vagy erőforráscsoporthoz a tűzfalszabály számára engedélyezniük a kapcsolatokat. Ha a kapcsolódási kísérlet nem engedélyezett, a kérés nem éri el a Azure Database for PostgreSQL-rugalmas kiszolgálót.
 

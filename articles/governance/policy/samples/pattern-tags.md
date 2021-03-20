@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta példákat tartalmaz a paraméteres címké
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88545556"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure Policy minta: Címkék
@@ -31,7 +31,7 @@ Ebben a példában a **mód** az _összes_ , mert egy erőforráscsoportot célo
 
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-1.json" range="26-36" highlight="7-8":::
 
-A házirend-definíció ezen részében a `concat` a paraméteres **TagName** paraméter és a `tags['name']` Tell **mező** formátuma határozza meg, hogy a **tagValue**paraméter kiértékelje a címkét.
+A házirend-definíció ezen részében a `concat` a paraméteres **TagName** paraméter és a `tags['name']` Tell **mező** formátuma határozza meg, hogy a **tagValue** paraméter kiértékelje a címkét.
 A **notEquals** használata esetén, ha **a \[ címkék \] TagName** nem egyenlő **tagValue**, a rendszer elindítja a **módosítás** hatását.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-1.json" range="43-47" highlight="3-4":::
@@ -52,13 +52,13 @@ Ebben a példában a **mód** _indexelve_ értékre van állítva, mert nem cél
 
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-2.json" range="19-29" highlight="3-4,7-8":::
 
-A **' policyrule osztály. if** `concat` például [minta #1](#sample-1-parameterize-tags) használja a **TagName**értékének kiértékeléséhez, de a `resourceGroup()` függvénnyel összehasonlítja a szülő erőforráscsoport azonos címkéjének értékével. A második záradék itt ellenőrzi, hogy az erőforráscsoport címkéje tartalmaz-e értéket, és nem null értékű.
+A **' policyrule osztály. if** `concat` például [minta #1](#sample-1-parameterize-tags) használja a **TagName** értékének kiértékeléséhez, de a `resourceGroup()` függvénnyel összehasonlítja a szülő erőforráscsoport azonos címkéjének értékével. A második záradék itt ellenőrzi, hogy az erőforráscsoport címkéje tartalmaz-e értéket, és nem null értékű.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-tags-2.json" range="36-40" highlight="3-4":::
 
 Itt az erőforráshoz tartozó **TagName** -címkéhez rendelt érték a `resourceGroup()` szülő erőforráscsoport értékének beolvasására is a függvényt használja. Így örökölheti a címkéket a szülő erőforráscsoportokből. Ha már létrehozta az erőforrást, de nem adta hozzá a címkét, akkor ugyanez a házirend-definíció és egy [szervizelési feladat](../how-to/remediate-resources.md) frissítheti a meglévő erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

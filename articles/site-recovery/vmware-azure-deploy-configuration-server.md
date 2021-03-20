@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: a8ceb3df68ebe42f83c70ed62327bf59c0dfc225
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92359815"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
@@ -38,13 +38,13 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 
 1. Alkalmazás létrehozásához a felhasználónak alkalmazás-fejlesztői szerepkörrel kell rendelkeznie.
     - Az ellenőrzéshez jelentkezzen be a Azure Portalba.</br>
-    - Lépjen **Azure Active Directory**  >  **szerepkörök és rendszergazdák**lehetőségre.</br>
+    - Lépjen **Azure Active Directory**  >  **szerepkörök és rendszergazdák** lehetőségre.</br>
     - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
     - Jelentkezzen be az Azure Portalra.
     - Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
-    - A **Alkalmazásregisztrációk**alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen**lehetőséget.
+    - A **Alkalmazásregisztrációk** alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen** lehetőséget.
 
       ![Azure-AD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
@@ -78,7 +78,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 7. A varázsló többi lapján fogadja el az alapértelmezett beállításokat.
 8. A **Ready to complete** (Befejezésre kész) területen:
 
-    * Ha az alapértelmezett beállításokkal szeretné beállítani a virtuális gépet, válassza a **bekapcsolás lehetőséget az üzembe helyezés**  >  **befejezése**után.
+    * Ha az alapértelmezett beállításokkal szeretné beállítani a virtuális gépet, válassza a **bekapcsolás lehetőséget az üzembe helyezés**  >  **befejezése** után.
     * További hálózati adapter hozzáadásához törölje **a bekapcsolást a telepítés után**, majd kattintson a **Befejezés gombra**. Alapértelmezés szerint a konfigurációs kiszolgáló sablonját a rendszer egyetlen hálózati adapterre telepíti. Az üzembe helyezés után további hálózati adaptereket is hozzáadhat.
 
 > [!IMPORTANT]
@@ -94,7 +94,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
 3. Válassza ki a hálózati adapter típusát és a hálózatot.
-4. Ha a virtuális hálózati adaptert a virtuális gép bekapcsolása után szeretné összekapcsolni, válassza a **Csatlakozás a Power-on**lehetőséget. Ezután válassza a **következő**  >  **Befejezés**  >  **OK**elemet.
+4. Ha a virtuális hálózati adaptert a virtuális gép bekapcsolása után szeretné összekapcsolni, válassza a **Csatlakozás a Power-on** lehetőséget. Ezután válassza a **következő**  >  **Befejezés**  >  **OK** elemet.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>A konfigurációs kiszolgáló regisztrálása Azure Site Recovery szolgáltatásokkal
 
@@ -111,7 +111,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
-1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
+1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása** lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
 2. A **Recovery Services**-tároló kiválasztása lapon jelentkezzen be a Microsoft Azure a [konfigurációs kiszolgáló regisztrálása a Azure site Recovery Services szolgáltatással](#register-the-configuration-server-with-azure-site-recovery-services)című 6. lépésében használt hitelesítő adatokkal.
 3. Bejelentkezés után válassza ki az Azure-előfizetését, valamint a megfelelő erőforráscsoportot és tárolót.
 
@@ -121,18 +121,18 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 4. **Külső gyártótól származó szoftverek telepítése**:
 
-    |Használati eset   |Követendő lépések  |
+    |Eset   |Követendő lépések  |
     |---------|---------|
-    |Letölthetem és telepíthetem a MySQL-t manuálisan?     |  Igen. Töltse le a MySQL-alkalmazást, helyezze azt a **C:\Temp\ASRSetup**mappába, majd telepítse manuálisan. A feltételek elfogadása és a **letöltés és telepítés**kiválasztása után a portál *már telepítve van*. Folytassa a következő lépéssel.       |
-    |El tudom kerülni a MySQL online letöltését?     |   Igen. Helyezze a MySQL Installer-alkalmazást a **C:\Temp\ASRSetup**mappába. Fogadja el a feltételeket, válassza a **letöltés és telepítés**lehetőséget, és a portál az alkalmazás telepítéséhez hozzáadott telepítőt használja. A telepítés befejeződése után folytassa a következő lépéssel.    |
-    |A MySQL-t a Azure Site Recovery használatával szeretném letölteni és telepíteni.    |  Fogadja el a licencszerződést, és válassza a **letöltés és telepítés**lehetőséget. A telepítés befejeződése után folytassa a következő lépéssel.       |
+    |Letölthetem és telepíthetem a MySQL-t manuálisan?     |  Igen. Töltse le a MySQL-alkalmazást, helyezze azt a **C:\Temp\ASRSetup** mappába, majd telepítse manuálisan. A feltételek elfogadása és a **letöltés és telepítés** kiválasztása után a portál *már telepítve van*. Folytassa a következő lépéssel.       |
+    |El tudom kerülni a MySQL online letöltését?     |   Igen. Helyezze a MySQL Installer-alkalmazást a **C:\Temp\ASRSetup** mappába. Fogadja el a feltételeket, válassza a **letöltés és telepítés** lehetőséget, és a portál az alkalmazás telepítéséhez hozzáadott telepítőt használja. A telepítés befejeződése után folytassa a következő lépéssel.    |
+    |A MySQL-t a Azure Site Recovery használatával szeretném letölteni és telepíteni.    |  Fogadja el a licencszerződést, és válassza a **letöltés és telepítés** lehetőséget. A telepítés befejeződése után folytassa a következő lépéssel.       |
 
-5. A **berendezés konfigurációjának ellenőrzésekor**a folytatás előtt ellenőrizze az előfeltételek ellenőrzését.
-6. A **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása**területen adja meg annak a vCenter-kiszolgálónak vagy vSphere-állomásnak a teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
-7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza a **Hozzáadás**  >  **Folytatás**lehetőséget. Az itt megadott hitelesítő adatok helyileg mentve.
-8. A **virtuális gép hitelesítő adatainak konfigurálása**területen adja meg a virtuális gépek felhasználónevét és jelszavát, hogy a replikáció során automatikusan telepítse a mobilitási szolgáltatást. **Windows rendszerű** gépek esetén a fióknak helyi rendszergazdai jogosultságokkal kell rendelkeznie a replikálni kívánt gépeken. **Linux**esetén adja meg a legfelső szintű fiók részleteit.
+5. A **berendezés konfigurációjának ellenőrzésekor** a folytatás előtt ellenőrizze az előfeltételek ellenőrzését.
+6. A **vCenter Server/vSphere ESXi-kiszolgáló konfigurálása** területen adja meg annak a vCenter-kiszolgálónak vagy vSphere-állomásnak a teljes tartománynevét vagy IP-címét, ahol a replikálni kívánt virtuális gépek találhatók. Adja meg a portot, amelyen a kiszolgáló figyel. Adja meg a VMware-kiszolgáló rövid nevét, amelyet a tárolóban használni fog.
+7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza a **Hozzáadás**  >  **Folytatás** lehetőséget. Az itt megadott hitelesítő adatok helyileg mentve.
+8. A **virtuális gép hitelesítő adatainak konfigurálása** területen adja meg a virtuális gépek felhasználónevét és jelszavát, hogy a replikáció során automatikusan telepítse a mobilitási szolgáltatást. **Windows rendszerű** gépek esetén a fióknak helyi rendszergazdai jogosultságokkal kell rendelkeznie a replikálni kívánt gépeken. **Linux** esetén adja meg a legfelső szintű fiók részleteit.
 9. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
-10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services**-tárolóban  >  **Manage**  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**kezelése.
+10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services**-tárolóban  >    >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók** kezelése.
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
@@ -175,7 +175,7 @@ Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a
     Nem. Ne módosítsa a konfigurációs kiszolgáló jelszavát. A jelszó módosítása megszakítja a védett gépek replikálását, és kritikus állapotba vezet.
 * Honnan tölthetők le a tároló regisztrációs kulcsai?
 
-    **Recovery Services**-tárolóban válassza **Manage**a  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**kezelése lehetőséget. A **kiszolgálók**területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
+    **Recovery Services**-tárolóban válassza a  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók** kezelése lehetőséget. A **kiszolgálók** területen válassza a **regisztrációs kulcs letöltése** lehetőséget a tár hitelesítő adatainak fájljának letöltéséhez.
 * Megtehetem a meglévő konfigurációs kiszolgáló klónozását és a replikálási folyamathoz való használatát?
 
     Nem. A klónozott konfigurációs kiszolgáló összetevő használata nem támogatott. Egy kibővíthető folyamat kiszolgálójának klónozása nem támogatott forgatókönyv is. A klónozás Site Recovery összetevők hatással vannak a folyamatos replikációra.

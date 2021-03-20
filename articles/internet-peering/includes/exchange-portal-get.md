@@ -1,7 +1,7 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 titleSuffix: Azure
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: e139954e6550e33edb75d01ab9dbec0bba543ea6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548212"
 ---
-Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, a következő lépésekkel tekintheti meg.
+Miután a  társítási erőforrás üzembe helyezése sikeres volt, a következő lépésekkel tekintheti meg.
 
 1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amelyet a társítási **erőforrás** létrehozásakor kiválasztott. Ha túl sok erőforráscsoportot használ, használja a **szűrő** mezőt.
 
@@ -44,7 +44,7 @@ Miután a **Peering** társítási erőforrás üzembe helyezése sikeres volt, 
 
     * A **kapcsolódási állapot** megfelel a társ-összekapcsolási beállítás állapotának. Az ebben a mezőben megjelenített állapotok az Exchange-társítási [útmutatóban](../walkthrough-exchange-all.md)látható állapotjelző diagramot követik.
     * Az **IPv4-munkamenet állapota** és az **IPv6-munkamenet állapota** az IPv4-és IPv6 BGP-munkamenet-állapotoknak felel meg.  
-    * Amikor kiválaszt egy sort a képernyő felső részén, a lenti **kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. A nyilak segítségével bontsa ki a **konfiguráció** , az **IPv4-cím** és az **IPv6-cím** elemet.
+    * Amikor kiválaszt egy sort a képernyő felső részén, a lenti **kapcsolat** szakasz az egyes kapcsolatok részleteit jeleníti meg. A nyilak segítségével bontsa ki a **konfiguráció**, az **IPv4-cím** és az **IPv6-cím** elemet.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép, amely kiemel egy szakaszt kibontó nyilat.](../media/setup-exchange-get-connectionsipv4.png)

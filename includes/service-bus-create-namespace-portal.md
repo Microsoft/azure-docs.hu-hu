@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,10 +9,10 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d2c309340155bc626d4da94d74aee9be51bde510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90606361"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
@@ -21,19 +21,19 @@ A Service Bus-üzenetküldési entitások Azure-ban való használatának megkez
 Névtér létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-2. A portál bal oldali navigációs paneljén válassza az **+ erőforrás létrehozása**lehetőséget, válassza az **integráció**lehetőséget, majd válassza a **Service Bus**lehetőséget.
+2. A portál bal oldali navigációs paneljén válassza az **+ erőforrás létrehozása** lehetőséget, válassza az **integráció** lehetőséget, majd válassza a **Service Bus** lehetőséget.
 
     ![Hozzon létre egy erőforrás-> integráció-> Service Bus](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. A **névtér létrehozása** párbeszédpanelen hajtsa végre a következő lépéseket: 
     1. Adja meg **a névtér nevét**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e. A névterek elnevezésére vonatkozó szabályok listáját lásd: [névtér létrehozása REST API](/rest/api/servicebus/create-namespace).
     2. Válassza ki a névtérhez tartozó díjszabási szintet (alapszintű, standard vagy prémium). Ha [témaköröket és előfizetéseket](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)szeretne használni, válassza a standard vagy a prémium lehetőséget. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
     3. Ha a **prémium** szintű díjszabást választotta, kövesse az alábbi lépéseket: 
-        1. Az **üzenetkezelési egységek**számának meghatározása. A prémium szint erőforrás-elkülönítést biztosít a processzor és a memória szintjén, így az egyes számítási feladatok elkülönítésben futnak. Ennek az erőforrás-tárolónak a neve üzenetkezelési egység. A prémium szintű névterek legalább egy üzenetkezelő egységgel rendelkeznek. Az egyes Service Bus prémium szintű névterekhez 1, 2 vagy 4 üzenetkezelési egység is kiválasztható. További információ: [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
+        1. Az **üzenetkezelési egységek** számának meghatározása. A prémium szint erőforrás-elkülönítést biztosít a processzor és a memória szintjén, így az egyes számítási feladatok elkülönítésben futnak. Ennek az erőforrás-tárolónak a neve üzenetkezelési egység. A prémium szintű névterek legalább egy üzenetkezelő egységgel rendelkeznek. Az egyes Service Bus prémium szintű névterekhez 1, 2 vagy 4 üzenetkezelési egység is kiválasztható. További információ: [Service Bus Premium Messaging](../articles/service-bus-messaging/service-bus-premium-messaging.md).
         2. Itt adhatja meg, hogy redundánsan kívánja-e a névtér **zónáját**. A zóna-redundancia nagyobb rendelkezésre állást biztosít azáltal, hogy a replikákat az egyik régióban lévő rendelkezésre állási zónák között terjeszti fel, külön díj nélkül. További információ: [rendelkezésre állási zónák az Azure-ban](../articles/availability-zones/az-overview.md).
-    4. Az **előfizetés**mezőben válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni a névteret.
-    5. Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér él, vagy hozzon létre egy újat.      
-    6. A **hely**mezőben válassza ki azt a régiót, amelyben a névteret üzemeltetni szeretné.
-    7. Kattintson a **Létrehozás** gombra. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
+    4. Az **előfizetés** mezőben válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni a névteret.
+    5. Az **erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, amelyben a névtér él, vagy hozzon létre egy újat.      
+    6. A **hely** mezőben válassza ki azt a régiót, amelyben a névteret üzemeltetni szeretné.
+    7. Válassza a **Létrehozás** lehetőséget. A rendszer ekkor létrehozza és engedélyezi a névteret. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiosztja az erőforrásokat a fiókja számára.
    
         ![Névtér létrehozása](./media/service-bus-create-namespace-portal/create-namespace.png)
 4. Győződjön meg arról, hogy a Service Bus-névtér üzembe helyezése sikeresen megtörtént. Az értesítések megtekintéséhez válassza a **harang ikont (riasztások)** az eszköztáron. Válassza ki az **erőforráscsoport nevét** az értesítésben a képen látható módon. Megjelenik a Service Bus-névteret tartalmazó erőforráscsoport.

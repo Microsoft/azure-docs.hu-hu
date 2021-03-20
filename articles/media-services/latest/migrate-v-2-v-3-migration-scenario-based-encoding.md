@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: e093e22e2f1db3b432fdf328a077e56a8e56d92b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612497"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598405"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>Kódolási forgatókönyv-alapú áttelepítési útmutató
 
@@ -76,7 +76,7 @@ Az alábbi képre kattintva megtekintheti a nagyobb verziót.
         - Kimeneti eszköz (ek)
         - Egy erőforráscsoport
         - AMS-fiók neve  
-1. A feladatok figyeléséhez használja a [Event Grid](monitor-events-portal-how-to.md) .
+1. A feladatok figyeléséhez használja a [Event Grid](monitoring/monitor-events-portal-how-to.md) .
 1. Küldje el a feladatot.
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>Egyéni készletek v2 és v3 közötti kódolásra

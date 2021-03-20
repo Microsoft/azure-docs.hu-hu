@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 73a34cc27eaba33d04f4d31585c7f494f58e7274
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334072"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
@@ -124,7 +124,7 @@ A Azure Functions lehetővé teszi, hogy méretezhető munkaegységeket vagy oly
 
 A kiszolgáló nélküli számítási architektúra ajánlott adatbázisa a következő okok miatt Azure Cosmos DB:
 
-* **Azonnali hozzáférés az összes adattal** : minden tárolt értékhez részletesen hozzáférhet, mivel Azure Cosmos db alapértelmezés szerint [automatikusan indexeli](index-policy.md) az összes adatokat, és azonnal elérhetővé teszi ezeket az indexeket. Ez azt jelenti, hogy folyamatosan kérdezheti, frissítheti és új elemeket adhat hozzá az adatbázishoz, és Azure Functionson keresztül azonnal hozzáférhet.
+* **Azonnali hozzáférés az összes adattal**: minden tárolt értékhez részletesen hozzáférhet, mivel Azure Cosmos db alapértelmezés szerint [automatikusan indexeli](index-policy.md) az összes adatokat, és azonnal elérhetővé teszi ezeket az indexeket. Ez azt jelenti, hogy folyamatosan kérdezheti, frissítheti és új elemeket adhat hozzá az adatbázishoz, és Azure Functionson keresztül azonnal hozzáférhet.
 
 * **Séma** nélküli. A Azure Cosmos DB séma nélküli, így egyedi módon kezelhető az Azure-függvények adatkimenete. Ez a "bármit kezel" megközelítés egyszerűvé teszi a Azure Cosmos DB összes kimenetének számos funkciójának létrehozását.
 
@@ -144,7 +144,7 @@ A Azure Functions előnyei:
 
 Ha nem biztos abban, hogy a folyamat, a Logic Apps, a Azure Functions vagy a webjobs a legmegfelelőbb a megvalósításhoz, tekintse meg a következőt: [választás a flow, a Logic apps, a functions és a webjobs között](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most kapcsolódjon Azure Cosmos DB és Azure Functions a Realhoz: 
 

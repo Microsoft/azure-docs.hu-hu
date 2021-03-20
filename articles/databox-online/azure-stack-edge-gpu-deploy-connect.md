@@ -10,17 +10,17 @@ ms.date: 08/29/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: f069f711ccf5672041ea6f3b15a52fa2b3ba2022
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90900025"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Kapcsolódás Azure Stack Edge Pro-hoz GPU használatával
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a Azure Stack Edge Pro-eszközhöz egy beépített GPU-val a helyi webes felhasználói felület használatával.
 
-A kapcsolódási folyamat körülbelül 5 percet vesz igénybe.
+A csatlakozási folyamat körülbelül 5 percig tart.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -41,7 +41,7 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 
 1. Konfigurálja az Ethernet-adaptert a számítógépén az Azure Stack Edge Pro-eszközhöz a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címével való csatlakozáshoz.
 
-2. A számítógép csatlakoztatása az 1. PORThoz az eszközön. Ha a számítógépet közvetlenül csatlakoztatja az eszközhöz (kapcsoló nélkül), használjon egy fordított kábelt vagy egy USB Ethernet-adaptert. Az alábbi ábra segítségével azonosíthatja az eszközön az 1. PORTOT.
+2. Csatlakoztassa a számítógépet az eszközön a PORT 1-hez. Ha a számítógépet közvetlenül (kapcsoló nélkül) csatlakoztatja az eszközhöz, használjon fordított bekötésű kábelt vagy USB Ethernet-adaptert. A következő ábra alapján azonosíthatja eszközén a PORT 1-et.
 
     ![Egy bekábelezett eszköz hátlapja](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
@@ -55,7 +55,7 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
    
     ![A webhely biztonsági tanúsítványának hibaüzenete](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
-4. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget.  
+4. Válassza **a folytatás ehhez a weboldalhoz** lehetőséget.  
     Ezek a lépések eltérők lehetnek, attól függően, hogy milyen böngészőt használ.
 
 5. Jelentkezzen be az eszköz webes felhasználói felületére. Az alapértelmezett jelszó a *jelszó1*. 
@@ -63,12 +63,12 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
     ![Azure Stack Edge Pro-eszköz bejelentkezési lapja](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
 6. A parancssorban módosítsa az eszköz rendszergazdai jelszavát.  
-    Az új jelszónak 8 és 16 karakter közöttinek kell lennie. A következő karakterek közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
+    Az új jelszó 8–16 karakterből állhat. A következő karakterek közül háromfélét tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek.
 
 Most már **megtekintheti** az eszköz áttekintés lapját. A következő lépés az eszköz hálózati beállításainak konfigurálása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

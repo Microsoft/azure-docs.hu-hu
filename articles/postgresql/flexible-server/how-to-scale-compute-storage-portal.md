@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.openlocfilehash: 1542bba53b51ffdf2129953a81e5d13975ade434
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90936124"
 ---
 # <a name="scale-operations-in-flexible-server"></a>Skálázási műveletek rugalmas kiszolgálón
@@ -35,26 +35,26 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 A számítási szintek kiválasztásához kövesse az alábbi lépéseket.
  
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyen vissza szeretné állítani a biztonsági mentést.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyen vissza szeretné állítani a biztonsági mentést.
 
-2.  Kattintson a **számítás + tárolás**elemre.
+2.  Kattintson a **számítás + tárolás** elemre.
 
 3.  Megjelenik az aktuális beállításokkal rendelkező oldal.
  :::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="számítási és tárolási nézet":::
 
 4.  Kiválaszthatja a számítási osztályt a feltört, az általános célú és a memóriára optimalizált rétegek között.
-   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="számítási és tárolási nézet":::
+   :::image type="content" source="./media/how-to-scale-compute-storage-portal/list-compute-tiers.png" alt-text="számítási rétegek listázása":::
 
 
 5.  Ha jó az alapértelmezett virtuális mag és a memória méretével, kihagyhatja a következő lépést.
 
 6.  Ha módosítani szeretné a virtuális mag számát, kattintson a **számítási méret** legördülő listára, és a listából válassza ki a kívánt virtuális mag/memória értéket.
     
-    - Feltört számítási szint: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="számítási és tárolási nézet":::
+    - Feltört számítási szint: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-burstable-dropdown.png" alt-text="feltört számítás":::
 
-    - Általános célú számítási réteg: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="számítási és tárolási nézet":::
+    - Általános célú számítási réteg: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-general-purpose-dropdown.png" alt-text="általános célú számítás":::
 
-    - Memória-optimalizált számítási szintek: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="számítási és tárolási nézet":::
+    - Memória-optimalizált számítási szintek: :::image type="content" source="./media/how-to-scale-compute-storage-portal/compute-memory-optimized-dropdown.png" alt-text="memória-optimalizált számítás":::
 
 7.  Kattintson a **Mentés** gombra. 
 8.  Megerősítő üzenet jelenik meg. Ha folytatni szeretné a folytatást, kattintson **az OK gombra** . 
@@ -65,19 +65,19 @@ A számítási szintek kiválasztásához kövesse az alábbi lépéseket.
 
 A tárterület méretének növeléséhez kövesse az alábbi lépéseket.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyhez a tárterület méretét szeretné emelni.
-2.  Kattintson a **számítás + tárolás**elemre.
+1.  A [Azure Portal](https://portal.azure.com/)válassza ki a rugalmas kiszolgálót, amelyhez a tárterület méretét szeretné emelni.
+2.  Kattintson a **számítás + tárolás** elemre.
 
 3.  Megjelenik az aktuális beállításokkal rendelkező oldal.
    
-:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="számítási és tárolási nézet":::
+:::image type="content" source="./media/how-to-scale-compute-storage-portal/click-compute-storage.png" alt-text="kattintson a számítás + tárolás elemre.":::
 4.  A mező **tárolási mérete a GIB-ban** egy görgetősávmal jelenik meg az aktuális mérettel.
 
 5.  Csúsztassa a sávot a kívánt méretre. A megfelelő IOPS-szám jelenik meg. A IOPS a számítási szintjétől és mérettől függ. A költségadatok is megjelennek. 
 
- :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="számítási és tárolási nézet":::
+ :::image type="content" source="./media/how-to-scale-compute-storage-portal/storage-scaleup.png" alt-text="tárterület felskálázása":::
 
-6.  Ha jó a tárterület mérete, kattintson a **Mentés**gombra. 
+6.  Ha jó a tárterület mérete, kattintson a **Mentés** gombra. 
 7.  Megerősítő üzenet jelenik meg. Ha folytatni szeretné a folytatást, kattintson **az OK gombra** . 
 8.  Értesítés a skálázási műveletről.
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre olyan összetevőket, amelyekkel 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270682"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Egyéni összetevők létrehozása a DevTest Labs virtuális géphez
@@ -44,15 +44,15 @@ A következő példa egy definíciós fájl alapszerkezetét alkotó szakaszt mu
   }
 ```
 
-| Elem neve | Kötelező? | Leírás |
+| Elem neve | Kötelező? | Description |
 | --- | --- | --- |
-| $schema |Nem |A JSON-séma fájljának helye. A JSON-sémafájl segítségével tesztelheti a definíciós fájl érvényességét. |
-| cím |Igen |A laborban megjelenő összetevő neve. |
-| leírás |Igen |A laborban megjelenő összetevő leírása. |
-| iconUri |Nem |A laborban megjelenő ikon URI-ja. |
-| targetOsType |Igen |Azon virtuális gép operációs rendszere, amelyen az összetevő telepítve van. A támogatott beállítások a Windows és a Linux. |
-| parameters |Nem |Azok az értékek, amelyek akkor jelennek meg, amikor az összetevő telepítési parancsa fut a gépen. Ez segít testreszabni az összetevőt. |
-| ParancsFuttatása |Igen |A virtuális gépen végrehajtott telepítési parancs. |
+| $schema |No |A JSON-séma fájljának helye. A JSON-sémafájl segítségével tesztelheti a definíciós fájl érvényességét. |
+| cím |Yes |A laborban megjelenő összetevő neve. |
+| leírás |Yes |A laborban megjelenő összetevő leírása. |
+| iconUri |No |A laborban megjelenő ikon URI-ja. |
+| targetOsType |Yes |Azon virtuális gép operációs rendszere, amelyen az összetevő telepítve van. A támogatott beállítások a Windows és a Linux. |
+| parameters |No |Azok az értékek, amelyek akkor jelennek meg, amikor az összetevő telepítési parancsa fut a gépen. Ez segít testreszabni az összetevőt. |
+| ParancsFuttatása |Yes |A virtuális gépen végrehajtott telepítési parancs. |
 
 ### <a name="artifact-parameters"></a>Összetevő paraméterei
 A definíciós fájl parameters (paraméterek) részében adja meg, hogy a felhasználó mely értékeket vihet be az összetevők telepítésekor. Ezeket az értékeket az összetevő telepítési parancsában tekintheti meg.
@@ -69,11 +69,11 @@ Paraméterek definiálásához használja az alábbi struktúrát:
   }
 ```
 
-| Elem neve | Kötelező? | Leírás |
+| Elem neve | Kötelező? | Description |
 | --- | --- | --- |
-| típus |Igen |A paraméter értékének típusa. Az engedélyezett típusok listáját az alábbi listában tekintheti meg. |
-| displayName |Igen |A tesztkörnyezetben a felhasználó számára megjelenített paraméter neve. |
-| leírás |Igen |A laborban megjelenő paraméter leírása. |
+| típus |Yes |A paraméter értékének típusa. Az engedélyezett típusok listáját az alábbi listában tekintheti meg. |
+| displayName |Yes |A tesztkörnyezetben a felhasználó számára megjelenített paraméter neve. |
+| leírás |Yes |A laborban megjelenő paraméter leírása. |
 
 Az engedélyezett típusok a következők:
 

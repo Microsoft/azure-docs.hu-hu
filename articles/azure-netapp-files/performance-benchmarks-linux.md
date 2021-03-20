@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b763a734866dd5fed5bf0500d4d52b9324c92a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82614589"
 ---
 # <a name="azure-netapp-files-performance-benchmarks-for-linux"></a>A Linux rendszerre vonatkozó teljesítménytesztek Azure NetApp Files
@@ -75,6 +75,6 @@ Az alábbi grafikonok véletlenszerű írásokat mutatnak a ~ 135 000 írási IO
 
 ![Linux-írási IOPS](../media/azure-netapp-files/performance-benchmarks-linux-write-iops.png)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure NetApp Files: a lehető legtöbbet hozza ki a felhőalapú tárterületről](https://cloud.netapp.com/hubfs/Resources/ANF%20PERFORMANCE%20TESTING%20IN%20TEMPLATE.pdf?hsCtaTracking=f2f560e9-9d13-4814-852d-cfc9bf736c6a%7C764e9d9c-9e6b-4549-97ec-af930247f22f)

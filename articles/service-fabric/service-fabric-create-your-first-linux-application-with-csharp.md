@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Service
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82193649"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
@@ -120,7 +120,7 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Az `yo azuresfcsharp:AddService` parancs futtatása
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Service Fabric-fürtök használata a Service Fabric parancssori felületén](service-fabric-cli.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

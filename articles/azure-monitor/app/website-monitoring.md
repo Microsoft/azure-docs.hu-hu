@@ -2,14 +2,14 @@
 title: 'Gyors útmutató: webhelyek figyelése Azure Monitor Application Insights'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be az ügyfél-és böngészőalapú webhelyek figyelését Azure Monitor Application Insights.
 ms.topic: quickstart
-ms.date: 08/19/2020
+ms.date: 03/19/2021
 ms.custom: mvc
-ms.openlocfilehash: 1773ebb9c490420451a119c8343fb613ff50f029
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 0e10db39c8dbbf81087d696cfbb5b2ded1ae79ac
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488579"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654940"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
 
@@ -60,9 +60,9 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK konfigurálása
 
-1. Válassza az **Áttekintés**  >  **Essentials** lehetőséget, majd másolja az alkalmazás kialakítási **kulcsát**.
+1. Válassza az **Áttekintés** lehetőséget, majd másolja az alkalmazáshoz tartozó **kapcsolatok karakterláncát**. Ebben a példában csak a kapcsolati karakterlánc rendszerállapot-kulcs részét kell megadnia `InstrumentationKey=00000000-0000-0000-0000-000000000000;` .
 
-   ![Új Application Insights-erőforrás űrlap](media/website-monitoring/instrumentation-key-001.png)
+    :::image type="content" source="media/website-monitoring/keys.png" alt-text="Képernyőkép az áttekintő oldalról a kialakítási kulcs és a kapcsolatok karakterlánca mellett.":::
 
 1. Adja hozzá a következő parancsfájlt a ``hello_world.html`` fájlhoz a záró ``</head>`` címke előtt:
 
@@ -76,7 +76,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
     crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag
     // onInit: null, // Once the application insights instance has loaded and initialized this callback function will be called with 1 argument -- the sdk instance (DO NOT ADD anything to the sdk.queue -- As they won't get called)
     cfg: { // Application Insights Configuration
-        instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+        connectionString:"InstrumentationKey=YOUR_INSTRUMENTATION_KEY_GOES_HERE;" 
         /* ...Other Configuration Options... */
     }});
     </script>
@@ -84,7 +84,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
     > [!NOTE]
     > A jelenlegi kódrészlet (fent felsorolt) az "5", a verzió a kódrészletben a következő: "#", a [jelenlegi verzió és a konfiguráció részletei pedig elérhetők a githubon](https://go.microsoft.com/fwlink/?linkid=2156318).
-   
+
 1. Szerkessze a ``hello_world.html`` fájlt, és adja hozzá az eszközkulcsát.
 
 1. Nyissa meg a ``hello_world.html`` fájlt egy helyi böngésző-munkamenetben. Ez a művelet létrehoz egy egyoldalas nézetet. A böngésző frissítésével több tesztoldalt is létrehozhat.
@@ -95,7 +95,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
    Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél/böngésző oldali interakciókat a JavaScript SDK-val alakítjuk ki, ez az adott nézet nem érvényes, kivéve, ha egy kiszolgálóoldali SDK is telepítve van.
 
-1. Válassza az **elemzési** ![ alkalmazás Térkép ikont ](media/website-monitoring/006.png) .  Ez a művelet megnyitja az **elemzést**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Az ügyféloldali böngésző kéréseivel kapcsolatos adatmegjelenítéshez futtassa a következő lekérdezést:
+1. Válassza a **naplók** lehetőséget.  Ez a művelet megnyitja a **naplókat**, amelyek részletes lekérdezési nyelvet biztosítanak a Application Insights által gyűjtött adatok elemzéséhez. Az ügyféloldali böngésző kéréseivel kapcsolatos adatmegjelenítéshez futtassa a következő lekérdezést:
 
     ```kusto
     // average pageView duration by name
@@ -112,19 +112,15 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
     | render timechart
     ```
 
-   ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/website-monitoring/analytics-query.png)
+   :::image type="content" source="media/website-monitoring/log-query.png" alt-text="Képernyőkép a felhasználói kérések log Analytics-gráfról egy adott időszakra vonatkozóan.":::
 
-1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt válassza a **böngésző**, majd a **teljesítmény** lehetőséget.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](./transaction-diagnostics.md)eléréséhez választhat **mintákat** .
+1. Térjen vissza az **Áttekintés** oldalra. A **vizsgálat** fejléc alatt kattintson a **teljesítmény** elemre, majd válassza a **böngésző** fület.  A webhely teljesítményével kapcsolatos metrikák jelennek meg. A hibák és kivételek elemzéséhez egy megfelelő nézet tartozik a webhelyén. A [végpontok közötti tranzakció részleteinek](./transaction-diagnostics.md)eléréséhez választhat **mintákat** .
 
-   ![Kiszolgálómetrikák diagram](./media/website-monitoring/browser-performance.png)
+     :::image type="content" source="media/website-monitoring/performance.png" alt-text="Képernyőkép a teljesítmény lapról a böngésző metrikáinak gráfjában.":::
 
-1. A fő Application Insights menüben a **használat** fejléc alatt válassza a [**felhasználók**](./usage-segmentation.md) lehetőséget a [felhasználói viselkedés elemzési eszközeinek](./usage-overview.md)megkezdéséhez. Mivel egyetlen gépről próbálunk tesztelni, csak egy felhasználó adatait fogjuk látni. Az élő webhelyek esetében a felhasználók eloszlása így néz ki:
-
-     ![Felhasználók diagram](./media/website-monitoring/usage-users.png)
+1. A fő Application Insights menüben a **használat** fejléc alatt válassza a [**felhasználók**](./usage-segmentation.md) lehetőséget a [felhasználói viselkedés elemzési eszközeinek](./usage-overview.md)megkezdéséhez. Mivel egyetlen gépről próbálunk tesztelni, csak egy felhasználó adatait fogjuk látni.
 
 1. Több oldalt tartalmazó összetettebb webhelyhez a [**Felhasználókövetés**](./usage-flows.md) eszközzel nyomon követheti a látogatók által a webhely különböző részein áthaladó útvonalakat.
-
-   ![Felhasználókövetés vizualizációja](./media/website-monitoring/user-flows.png)
 
 A webhelyek figyelésére szolgáló speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK API-referenciáját](./javascript.md).
 

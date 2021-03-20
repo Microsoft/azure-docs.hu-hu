@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88a7600239d6e960fa2e635c9e7d9049a7c02db3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4584b0a605bd63c1f71082014d3c0622ca7d2c37
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032355"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587831"
 ---
 # <a name="securing-managed-identities"></a>Felügyelt identitások biztonságossá tétele
 
@@ -50,11 +50,11 @@ Az Azure vezérlési síkon és adatsíkon is rendelkezik. A vezérlő síkon er
 
 Ha a célként megadott rendszer elfogadja a jogkivonatot a hitelesítéshez, a vezérlési síkon és az adatsíkon eltérő mechanizmusokat is támogathat.
 
-Az Azure összes vezérlési síkra vonatkozó műveletét a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) felügyeli, és az [Azure szerepköralapú Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview)használja. Az adatsíkon minden célrendszer saját engedélyezési mechanizmussal rendelkezik. Az Azure Storage támogatja az Azure-RBAC az adatsíkon. Az Azure App Servicest használó alkalmazások például beolvashatják az Azure Storage-ból származó adatokat, és az Azure Kubernetes szolgáltatást használó alkalmazások beolvashatják a Azure Key Vaultban tárolt titkos kódokat.
+Az Azure összes vezérlési síkra vonatkozó műveletét a [Azure Resource Manager](../../azure-resource-manager/management/overview.md) felügyeli, és az [Azure szerepköralapú Access Control](../../role-based-access-control/overview.md)használja. Az adatsíkon minden célrendszer saját engedélyezési mechanizmussal rendelkezik. Az Azure Storage támogatja az Azure-RBAC az adatsíkon. Az Azure App Servicest használó alkalmazások például beolvashatják az Azure Storage-ból származó adatokat, és az Azure Kubernetes szolgáltatást használó alkalmazások beolvashatják a Azure Key Vaultban tárolt titkos kódokat.
 
-További információ a vezérlési és az adatsíkokról: [vezérlési sík és adatsík műveletek – Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/control-plane-and-data-plane).
+További információ a vezérlési és az adatsíkokról: [vezérlési sík és adatsík műveletek – Azure Resource Manager](../../azure-resource-manager/management/control-plane-and-data-plane.md).
 
-Az összes Azure-szolgáltatás végül támogatni fogja a felügyelt identitásokat. További információ: [felügyelt identitásokat támogató szolgáltatások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).
+Az összes Azure-szolgáltatás végül támogatni fogja a felügyelt identitásokat. További információ: [felügyelt identitásokat támogató szolgáltatások az Azure-erőforrásokhoz](../managed-identities-azure-resources/services-support-managed-identities.md).
 
 ##  
 
@@ -116,7 +116,7 @@ Ezt a magas jogosultsági szintű csoportok tagjainak a PowerShell-lel való enu
 
    `Get-AzureADGroupMember -ObjectId <String> [-All <Boolean>] [-Top <Int32>] [<CommonParameters>]`
 
-* [Gondoskodjon arról, hogy a felügyelt identitás milyen erőforrásokhoz férhet hozzá](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell).
+* [Gondoskodjon arról, hogy a felügyelt identitás milyen erőforrásokhoz férhet hozzá](../../role-based-access-control/role-assignments-list-powershell.md).
 
 ## <a name="move-to-managed-identities"></a>Áthelyezés a felügyelt identitásokra
 
@@ -126,11 +126,11 @@ Ha egyszerű szolgáltatásnevet vagy Azure AD-felhasználói fiókot használ, 
 
 **A felügyelt identitások létrehozásával kapcsolatos információkért lásd:** 
 
-[Hozzon létre egy felhasználóhoz rendelt felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal). 
+[Hozzon létre egy felhasználóhoz rendelt felügyelt identitást](../managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
 
-[Rendszerhez rendelt felügyelt identitás engedélyezése az erőforrások létrehozásakor](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Rendszerhez rendelt felügyelt identitás engedélyezése az erőforrások létrehozásakor](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-[Rendszerhez rendelt felügyelt identitás engedélyezése meglévő erőforráson](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+[Rendszerhez rendelt felügyelt identitás engedélyezése meglévő erőforráson](../managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **A szolgáltatásfiókok további információit lásd:**
 
@@ -146,4 +146,3 @@ Ha egyszerű szolgáltatásnevet vagy Azure AD-felhasználói fiókot használ, 
 
  
 
- 

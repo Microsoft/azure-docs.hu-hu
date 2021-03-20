@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 9b7da2fcc1310f03f894e048089658f25be3a149
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708849"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>Az Azure Kubernetes szolgáltatás és Azure Database for PostgreSQL – egyetlen kiszolgáló csatlakoztatása
@@ -26,7 +26,7 @@ Az AK november 2018-én támogatja a gyorsított hálózatkezelést a támogatot
 Megerősítheti, hogy az AK-fürt felgyorsult hálózattal rendelkezik-e:
 1. Nyissa meg a Azure Portal, és válassza ki az AK-fürtöt.
 2. Válassza a Properties (Tulajdonságok) lapot.
-3. Másolja az **infrastruktúra-erőforráscsoport**nevét.
+3. Másolja az **infrastruktúra-erőforráscsoport** nevét.
 4. Az infrastruktúra-erőforráscsoport megkereséséhez és megnyitásához használja a portál keresési sávját.
 5. Válasszon ki egy virtuális gépet az adott erőforráscsoporthoz.
 6. Nyissa meg a virtuális gép **hálózatkezelés** lapját.

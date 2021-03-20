@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366190"
 ---
 # <a name="conditional-access-block-access"></a>Feltételes hozzáférés: hozzáférés letiltása
@@ -38,42 +38,42 @@ A feltételes hozzáférési szabályzatok hatékony eszközök, ezért javasolj
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
-A következő lépések segítséget nyújtanak a feltételes hozzáférési szabályzatok létrehozásához, hogy letiltsák a hozzáférést az összes alkalmazáshoz, kivéve az [Office 365](concept-conditional-access-cloud-apps.md#office-365) -at, ha a felhasználók nem megbízható hálózaton vannak. Ezek a szabályzatok a [csak jelentési üzemmódba](howto-conditional-access-insights-reporting.md) kerülnek, így a rendszergazdák meghatározhatják, hogy milyen hatással lesznek a meglévő felhasználókra. Ha a rendszergazdák kényelmesek, hogy a szabályzatok a kívánt módon érvényesek **, a**következőre válthatnak.
+A következő lépések segítséget nyújtanak a feltételes hozzáférési szabályzatok létrehozásához, hogy letiltsák a hozzáférést az összes alkalmazáshoz, kivéve az [Office 365](concept-conditional-access-cloud-apps.md#office-365) -at, ha a felhasználók nem megbízható hálózaton vannak. Ezek a szabályzatok a [csak jelentési üzemmódba](howto-conditional-access-insights-reporting.md) kerülnek, így a rendszergazdák meghatározhatják, hogy milyen hatással lesznek a meglévő felhasználókra. Ha a rendszergazdák kényelmesek, hogy a szabályzatok a kívánt módon érvényesek **, a** következőre válthatnak.
 
 Az első házirend blokkolja a hozzáférést az összes alkalmazáshoz, kivéve Microsoft 365 alkalmazásokat, ha nem megbízható helyen van.
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy műveletek**területen válassza ki a következő beállításokat:
-   1. A **Belefoglalás**területen válassza a **minden felhőalapú alkalmazás**lehetőséget.
-   1. A **kizárás**területen válassza az **Office 365**lehetőséget, válassza a **kiválasztás**lehetőséget, majd válassza a **kész**lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy műveletek** területen válassza ki a következő beállításokat:
+   1. A **Belefoglalás** területen válassza a **minden felhőalapú alkalmazás** lehetőséget.
+   1. A **kizárás** területen válassza az **Office 365** lehetőséget, válassza a **kiválasztás** lehetőséget, majd válassza a **kész** lehetőséget.
 1. **Feltételek**:
-   1. A **feltételek**  >  **helye**alatt.
+   1. A **feltételek**  >  **helye** alatt.
       1. **Konfigurálás** beállítása **Igen** értékre
-      1. A **Belefoglalás**területen válassza ki **a kívánt helyet**.
-      1. A **kizárás**területen válassza ki **az összes megbízható helyet**.
-      1. Válassza a **Done** (Kész) lehetőséget.
-   1. Az **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen**értékre a **configure** beállítást, majd válassza a **kész**, majd a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés letiltása**, majd a **kiválasztás**lehetőséget.
+      1. A **Belefoglalás** területen válassza ki **a kívánt helyet**.
+      1. A **kizárás** területen válassza ki **az összes megbízható helyet**.
+      1. Válassza a **Kész** lehetőséget.
+   1. Az **ügyfélalkalmazások (előzetes verzió)** területen állítsa az **Igen** értékre a **configure** beállítást, majd válassza a **kész**, majd a **kész** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés letiltása**, majd a **kiválasztás** lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **házirendet** **csak jelentésre**.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 Az alábbiakban egy második szabályzatot hozhat létre a többtényezős hitelesítés megkövetelése vagy egy megfelelő eszköz számára a Microsoft 365 felhasználói számára.
 
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy műveletek**területen  >  **Include**válassza az **alkalmazások kiválasztása**, az **Office 365**lehetőséget, majd a **kiválasztás**, majd a **kész**lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés engedélyezése**lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy műveletek** területen  >  válassza az **alkalmazások kiválasztása**, az **Office 365** lehetőséget, majd a **kiválasztás**, majd a **kész** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés engedélyezése** lehetőséget.
    1. Válassza a **többtényezős hitelesítés megkövetelése** és az **eszköz megfelelőként való megjelölésének megkövetelése** **jelölőnégyzetet.**
    1. Győződjön meg arról, hogy **az összes kijelölt vezérlő** be van jelölve.
    1. Válassza a **Kiválasztás** lehetőséget.
