@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87542942"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure-infrastruktúra figyelése   
@@ -32,7 +32,7 @@ Az Azure-alapú szolgáltatásokhoz szükséges alapkonfigurációkat az Azure b
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 A biztonsági frissítés kezelése segít a rendszerek ismert biztonsági rések elleni védelmében. Az Azure integrált központi telepítési rendszereket használ a Microsoft szoftverhez készült biztonsági frissítések terjesztésének és telepítésének kezeléséhez. Az Azure képes a Microsoft Security Response Center (MSRC) erőforrásaira is felhívni. Az MSRC azonosítja, figyeli, válaszol, és a biztonsági incidenseket és a Felhőbeli biztonsági réseket az év minden napján megoldotta.
 
-## <a name="vulnerability-scanning"></a>Sebezhetőségi vizsgálat
+## <a name="vulnerability-scanning"></a>Biztonsági rések vizsgálata
 A biztonsági rések vizsgálata kiszolgálói operációs rendszereken, adatbázisokon és hálózati eszközökön történik. A biztonsági rések vizsgálatait negyedévente, minimális szinten hajtjuk végre. Azure-szerződések független értékelők használatával az Azure-határ behatolásának teszteléséhez. A Red-Team gyakorlatokat is rendszeresen hajtják végre, és a rendszer az eredményeket használja a biztonsági funkciók növelésére.
 
 ## <a name="protective-monitoring"></a>Védelmi monitorozás

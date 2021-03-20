@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: f63ab040e750c0c642c9656a5482529b926e9295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392112"
 ---
 # <a name="data-streaming-in-azure-sql-edge"></a>Adatfolyamok az Azure SQL Edge-ben
@@ -35,15 +35,15 @@ A T-SQL streaming pontosan ugyanolyan módon működik, mint a [Azure stream Ana
 
 A stream Analytics-feladatok a következőkből állnak:
 
-- **Stream bemenete** : Ez határozza meg az adatforrással létesített kapcsolatokat, hogy beolvassa az adatfolyamot a rendszerből. Az Azure SQL Edge jelenleg a következő stream típusú bemeneti típusokat támogatja:
+- **Stream bemenete**: Ez határozza meg az adatforrással létesített kapcsolatokat, hogy beolvassa az adatfolyamot a rendszerből. Az Azure SQL Edge jelenleg a következő stream típusú bemeneti típusokat támogatja:
     - Peremhálózati hub
     - Kafka (a Kafka-bemenetek támogatása jelenleg csak az Azure SQL Edge Intel/AMD64 verziójában érhető el.)
 
-- **Stream kimenete** : Ez határozza meg az adatforráshoz való kapcsolódást az adatfolyamnak a szolgáltatásba való írásához. Az Azure SQL Edge jelenleg a következő stream-kimeneti típusokat támogatja
+- **Stream kimenete**: Ez határozza meg az adatforráshoz való kapcsolódást az adatfolyamnak a szolgáltatásba való írásához. Az Azure SQL Edge jelenleg a következő stream-kimeneti típusokat támogatja
     - Peremhálózati hub
     - SQL (az SQL-kimenet lehet az Azure SQL Edge példányán belüli helyi adatbázis, illetve távoli SQL Server vagy Azure SQL Database.) 
 
-- **Stream-lekérdezés** : Ez határozza meg a bemeneti adatfolyamra alkalmazni kívánt átalakítást, összesítéseket, szűrést, rendezést és illesztéseket, mielőtt az adatfolyam kimenetére íródik. Az adatfolyam-lekérdezés ugyanarra a lekérdezési nyelvre épül, mint amelyet a Stream Analytics használ. További információ: [stream Analytics lekérdezési nyelv](/stream-analytics-query/stream-analytics-query-language-reference).
+- **Stream-lekérdezés**: Ez határozza meg a bemeneti adatfolyamra alkalmazni kívánt átalakítást, összesítéseket, szűrést, rendezést és illesztéseket, mielőtt az adatfolyam kimenetére íródik. Az adatfolyam-lekérdezés ugyanarra a lekérdezési nyelvre épül, mint amelyet a Stream Analytics használ. További információ: [stream Analytics lekérdezési nyelv](/stream-analytics-query/stream-analytics-query-language-reference).
 
 > [!IMPORTANT]
 > A T-SQL streaming a Stream Analyticstól eltérően jelenleg nem támogatja a keresések [és az UDF és a uda adatfolyam-](../stream-analytics/streaming-technologies.md#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c) [feladatokban](../stream-analytics/stream-analytics-use-reference-data.md) való használatát.
@@ -60,7 +60,7 @@ A következő korlátozások és korlátozások érvényesek a T-SQL streamingre
 - Ha leállított egy folyamatos átviteli feladatot az Azure SQL Edge-ben, a következő folyamatos átviteli feladatok elindításához némi késés fordulhat elő. Ez a késleltetés azért van bevezetve, mert az alapul szolgáló folyamatos átviteli folyamatot le kell állítani a leállítási kérelemre adott válaszban, majd újra kell indítani az indítási feladatra vonatkozó kérelemre. 
 - A T-SQL streaming upto 32 partíciót egy Kafka-adatfolyamhoz. A magasabb partíciók számának konfigurálására tett kísérletek hibát eredményeznek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben ](create-stream-analytics-job.md)
 - [A stream-feladatokhoz kapcsolódó metaadatok megtekintése az Azure SQL Edge-ben ](streaming-catalog-views.md)

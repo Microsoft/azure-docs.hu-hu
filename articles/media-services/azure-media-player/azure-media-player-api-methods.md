@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81727267"
 ---
 # <a name="api"></a>API #
@@ -39,7 +39,7 @@ A videó és az API beállításához szükséges Azure Media Player idő a hasz
     });
 ```
 
-VAGY
+OR
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -70,7 +70,7 @@ Az eseményeket közvetlenül a lejátszó inicializálását követően kell re
     //add other event listeners
 ```
 
-## <a name="next-steps"></a>További lépések ##
+## <a name="next-steps"></a>Következő lépések ##
 
 <!---Some context for the following links goes here--->
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

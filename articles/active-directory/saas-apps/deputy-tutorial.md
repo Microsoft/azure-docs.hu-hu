@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3061a4f0b6a41e5057436e15cabd2db0cbec5c00
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92454881"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
@@ -61,13 +61,13 @@ Az Azure AD-beli helyettes integrálásának konfigurálásához hozzá kell adn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **helyettes**kifejezést, válassza az eredmény panel **helyettes** elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **helyettes** kifejezést, válassza az eredmény panel **helyettes** elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Helyettes az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
 Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **helyettese** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **helyettese** lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -169,7 +169,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
 ### <a name="configure-deputy-single-sign-on"></a>Önálló Sign-On-helyettes konfigurálása
 
-1. Navigáljon a következő URL-címre: `https://(your-subdomain).deputy.com/exec/config/system_config` . Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
+1. Navigáljon a következő URL-címre: `https://(your-subdomain).deputy.com/exec/config/system_config` . Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés** elemre.
    
     ![Képernyőkép, amely a "biztonsági beállítások – szerkesztés" gomb kiválasztásával jeleníti meg a "rendszer konfigurációja" lapot.](./media/deputy-tutorial/tutorial_deputy_004.png)
 
@@ -187,13 +187,13 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
    
     e. Az SAML SSO URL szövegmezőben cserélje le a `<saml sso url>` elemet a Azure Portalból másolt **bejelentkezési URL-címre** .
    
-    f. Kattintson a **Beállítások mentése**gombra.
+    f. Kattintson a **Beállítások mentése** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -218,15 +218,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a helyettesnek.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **helyettes**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **helyettes** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **helyettes**elemet.
+2. Az alkalmazások listában válassza a **helyettes** elemet.
 
     ![A helyettes hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -248,15 +248,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a He
 
 1. Jelentkezzen be a vállalati webhelyre rendszergazdaként.
 
-2. A felső navigációs ablaktáblán kattintson a **személyek**elemre.
+2. A felső navigációs ablaktáblán kattintson a **személyek** elemre.
    
     ![People](./media/deputy-tutorial/tutorial_deputy_001.png "People")
 
-3. Kattintson a **személyek hozzáadása** gombra, és kattintson az **egyetlen személy hozzáadása**lehetőségre.
+3. Kattintson a **személyek hozzáadása** gombra, és kattintson az **egyetlen személy hozzáadása** lehetőségre.
    
     ![Személyek hozzáadása](./media/deputy-tutorial/tutorial_deputy_002.png "Személyek hozzáadása")
 
-4. Hajtsa végre a következő lépéseket, és kattintson a **mentés & meghívás**gombra.
+4. Hajtsa végre a következő lépéseket, és kattintson a **mentés & meghívás** gombra.
    
     ![Új felhasználó](./media/deputy-tutorial/tutorial_deputy_003.png "Új felhasználó")
 

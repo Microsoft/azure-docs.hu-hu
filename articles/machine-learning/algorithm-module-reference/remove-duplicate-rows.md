@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: bf35d08128aa8a3e8f545ed7184866694219f2cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905222"
 ---
 # <a name="remove-duplicate-rows-module"></a>Ismétlődő sorok moduljának eltávolítása
@@ -42,7 +42,7 @@ Egyértelmű, hogy ez a példa több, potenciálisan ismétlődő adattal rendel
 
 + Másik lehetőségként dönthet úgy is, hogy engedélyezi az ismétlődéseket az azonosító mezőben, és más fájlok kombinációját használja az egyedi rekordok, például az utónév, a vezetéknév, az életkor és a nemek kereséséhez.  
 
-Ha meg szeretné határozni, hogy egy sor duplikált-e vagy sem, akkor adja meg a **kulcsként**használni kívánt egyetlen oszlopot vagy oszlopokat. Két sor csak akkor tekinthető ismétlődőnek, ha az **összes** kulcs oszlop értékei egyenlőek. Ha bármelyik sorban hiányzik a **kulcsok**értéke, nem lesznek ismétlődő sorok. Ha például a nemek és a kor értéke kulcsokként van beállítva a fenti táblázatban, a 6. és a 7. sor nem duplikált sorokból áll, mert az életkorban hiányzik az érték.
+Ha meg szeretné határozni, hogy egy sor duplikált-e vagy sem, akkor adja meg a **kulcsként** használni kívánt egyetlen oszlopot vagy oszlopokat. Két sor csak akkor tekinthető ismétlődőnek, ha az **összes** kulcs oszlop értékei egyenlőek. Ha bármelyik sorban hiányzik a **kulcsok** értéke, nem lesznek ismétlődő sorok. Ha például a nemek és a kor értéke kulcsokként van beállítva a fenti táblázatban, a 6. és a 7. sor nem duplikált sorokból áll, mert az életkorban hiányzik az érték.
 
 Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok halmazát adja vissza, amelyek nem rendelkeznek ismétlődéssel a megadott oszlopok között.
 
@@ -51,15 +51,15 @@ Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok 
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Ismétlődő sorok eltávolításának használata
 
-1. Adja hozzá a modult a folyamathoz. Az **ismétlődő sorok eltávolítása** modult az **adatátalakítás**, a **manipuláció**lehetőség alatt találja.  
+1. Adja hozzá a modult a folyamathoz. Az **ismétlődő sorok eltávolítása** modult az **adatátalakítás**, a **manipuláció** lehetőség alatt találja.  
 
 2. Kösse össze az adatkészletet, amelynek ismétlődő sorait szeretné megkeresni.
 
-3. A **Tulajdonságok** ablaktáblában a **kulcs oszlop kiválasztása szűrő kifejezés**alatt kattintson az **oszlop kiválasztásának indítása**lehetőségre az ismétlődések azonosításához használandó oszlopok kiválasztásához.
+3. A **Tulajdonságok** ablaktáblában a **kulcs oszlop kiválasztása szűrő kifejezés** alatt kattintson az **oszlop kiválasztásának indítása** lehetőségre az ismétlődések azonosításához használandó oszlopok kiválasztásához.
 
-    Ebben a kontextusban a **kulcs** nem egy egyedi azonosítót jelent. Az oszlop Választójának használatával kiválasztott összes oszlop **kulcs oszlopként**van megjelölve. Az összes nem kijelölt oszlop nem kulcsfontosságú oszlopnak minősül. A kulcsként kiválasztott oszlopok kombinációja határozza meg a rekordok egyediségét. (Úgy gondolja, hogy olyan SQL-utasításként működik, amely több egyenlő illesztést használ.)
+    Ebben a kontextusban a **kulcs** nem egy egyedi azonosítót jelent. Az oszlop Választójának használatával kiválasztott összes oszlop **kulcs oszlopként** van megjelölve. Az összes nem kijelölt oszlop nem kulcsfontosságú oszlopnak minősül. A kulcsként kiválasztott oszlopok kombinációja határozza meg a rekordok egyediségét. (Úgy gondolja, hogy olyan SQL-utasításként működik, amely több egyenlő illesztést használ.)
 
-    Példák:
+    Angol nyelvű Példák:
 
     + "Szeretném biztosítani, hogy az azonosítók egyediek legyenek": csak az azonosító oszlopot válassza ki.
     + "Szeretném biztosítani, hogy az utónév, a vezetéknév és az azonosító kombinációja egyedi legyen": mindhárom oszlop kijelölése.
@@ -71,7 +71,7 @@ Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok 
 
 5. A folyamat elküldése.
 
-6. Az eredmények áttekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. 
+6. Az eredmények áttekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés** lehetőséget. 
 
 > [!TIP]
 > Ha az eredmények nehezen érthetőek, vagy ha ki szeretne zárni egyes oszlopokat a megfontolásból, eltávolíthatja az oszlopokat az [adatkészlet kiválasztása](./select-columns-in-dataset.md) modulban.

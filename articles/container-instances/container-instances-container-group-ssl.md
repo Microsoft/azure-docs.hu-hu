@@ -4,10 +4,10 @@ description: Hozzon létre egy SSL-vagy TLS-végpontot egy Azure Container Insta
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558079"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>TLS-végpont engedélyezése oldalkocsi-tárolóban
@@ -232,7 +232,7 @@ A böngésző segítségével navigáljon a Container Group nyilvános IP-címé
 
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja, hogyan állíthat be egy Nginx-tárolót a TLS-kapcsolatok a Container csoportban futó webalkalmazások számára történő engedélyezéséhez. Ezt a példát olyan alkalmazásokhoz igazíthatja, amelyek a 80-es porton kívül is figyelik a portokat. Az Nginx konfigurációs fájlját úgy is frissítheti, hogy automatikusan átirányítsa a kiszolgálói kapcsolatokat a 80-as porton (HTTP) a HTTPS használatára.
 

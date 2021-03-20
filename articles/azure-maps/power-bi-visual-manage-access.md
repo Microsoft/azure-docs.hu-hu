@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 2f7372d522c02eb86f1cc6470cefa9cb299605a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86261853"
 ---
 # <a name="manage-the-azure-maps-visual-within-your-organization"></a>A Azure Maps vizualizáció kezelése a szervezeten belül
@@ -22,18 +22,18 @@ A Power BI a tervezők és a bérlői rendszergazdák számára lehetővé teszi
 
 ### <a name="designer-options"></a>Tervezői lehetőségek
 
-Power BI Desktop a tervezők letilthatják a Azure Maps vizualizációt a biztonság lapon. Válassza **File** &gt; **a fájl beállításai és beállítások** lehetőséget, majd válassza a **Beállítások** &gt; **előnézet funkciók**lehetőséget. Ha le van tiltva, akkor a Azure Maps alapértelmezés szerint nem töltődik be.  
+Power BI Desktop a tervezők letilthatják a Azure Maps vizualizációt a biztonság lapon. Válassza  &gt; **a fájl beállításai és beállítások** lehetőséget, majd válassza a **Beállítások** &gt; **előnézet funkciók** lehetőséget. Ha le van tiltva, akkor a Azure Maps alapértelmezés szerint nem töltődik be.  
   
 ![Power BI beállítások panel, amely a Azure Maps vizualizáció előzetes verziójának funkcióit jeleníti meg](media/power-bi-visual/preview-options-panel.png)
 
 ## <a name="tenant-admin-options"></a>Bérlői rendszergazdai beállítások
 
-A PowerBI.com-ben a bérlői rendszergazdák kikapcsolhatják a Azure Maps vizualizációt az összes felhasználó számára. Válassza a **Beállítások** &gt; **felügyeleti** **portál** &gt; **bérlői beállítások**lehetőséget. Ha le van tiltva, Power BI a vizualizációk ablaktáblán már nem jeleníti meg a Azure Maps vizualizációt.
+A PowerBI.com-ben a bérlői rendszergazdák kikapcsolhatják a Azure Maps vizualizációt az összes felhasználó számára. Válassza a **Beállítások** &gt; **felügyeleti** **portál** &gt; **bérlői beállítások** lehetőséget. Ha le van tiltva, Power BI a vizualizációk ablaktáblán már nem jeleníti meg a Azure Maps vizualizációt.
 
 > [!div class="mx-imgBorder"]
 > ![A Azure Maps vizualizáció bérlői beállításait bemutató Power BI felügyeleti portál](media/power-bi-visual/tenant-admin-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Maps Power BI vizualizációról:
 

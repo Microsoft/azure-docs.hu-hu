@@ -12,10 +12,10 @@ ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 3f0879aa9b6f9e084d0c51f0bb371740d333c1b6
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98683256"
 ---
 # <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Csoportosítási lehetőségek a dedikált SQL-készletek számára az Azure szinapszis Analyticsben
@@ -52,7 +52,7 @@ GROUP BY ROLLUP (
 A kumulatív használatával az előző példa a következő összesítéseket kéri:
 
 * Ország és régió
-* Country
+* Ország
 * Végösszeg
 
 Ha az ÖSSZESÍTÉSt cserélni szeretné, és ugyanazokat az eredményeket adja vissza, használhatja a UNION ALL utasítást, és explicit módon megadhatja a szükséges összesítéseket:

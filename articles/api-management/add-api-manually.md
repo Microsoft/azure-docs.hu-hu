@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96183855"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
@@ -40,7 +40,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 3. Válassza az **Üres API** elemet a listából.  
     ![Üres API](media/add-api-manually/blank-api.png)  
 4. Adja meg az API beállításait. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-5. Kattintson a **Létrehozás** gombra.
+5. Válassza a **Létrehozás** lehetőséget.
 
 Ezen a ponton nincsenek olyan API Management műveletek, amelyek a háttér-API műveleteire mutatnak. Ha olyan műveletet hív meg, amely a háttérön keresztül érhető el, de nem a API Managementon keresztül, akkor a rendszer **404**-as számot kap.
 

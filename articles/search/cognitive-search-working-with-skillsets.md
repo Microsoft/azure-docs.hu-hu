@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: b5a893ee1923ba4b2bec53b20fb164337bd65902
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96558113"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Az Azure Cognitive Search készségkészlet kapcsolatos fogalmak
@@ -98,8 +98,8 @@ Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és
 |AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N.A. |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N.A.|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
  A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. 
 
@@ -389,7 +389,7 @@ A beágyazott alakítási megközelítés nem igényel formálói képességet, 
   
 A megközelítések közül az egyik megfigyelés, hogy az értékek hogyan lesznek kiértékelve `"Keyphrases"` a használatával `"sourceContext"` . A `"Keyphrases"` karakterláncok gyűjteményét tartalmazó csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (karakterlánc), a a `"sourceContext"` kulcs kifejezést egy nevesített tulajdonsággal rendelkező objektumba csomagolja. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésként hozza létre az első készségkészlet kognitív ismeretekkel.
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 5397dd2745a0d4e61804cf631014846ae15ec4e1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91971540"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Rövid útmutató: ExpressRoute-kör létrehozása és módosítása Azure PowerShell használatával
@@ -63,8 +63,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 Győződjön meg arról, hogy a megfelelő SKU-szintet és SKU-családot adta meg:
 
-* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket*is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
-* Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *MeteredData* a forgalmi díjas csomaghoz és a *UnlimitedData* korlátlan adatcsomag esetén. A számlázási típust a *MeteredData* és a *UnlimitedData*között is módosíthatja, de a típus nem módosítható a *UnlimitedData* értékről a *MeteredData*-re. A *helyi* áramkör mindig *UnlimitedData*.
+* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket* is. A SKU nem módosítható a *standard/prémium* szintről a *helyi* értékre.
+* Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *MeteredData* a forgalmi díjas csomaghoz és a *UnlimitedData* korlátlan adatcsomag esetén. A számlázási típust a *MeteredData* és a *UnlimitedData* között is módosíthatja, de a típus nem módosítható a *UnlimitedData* értékről a *MeteredData*-re. A *helyi* áramkör mindig *UnlimitedData*.
 
 > [!IMPORTANT]
 > A ExpressRoute-áramkör számlázása a szolgáltatási kulcs kiállításának pillanatától számítva történik. Győződjön meg arról, hogy ezt a műveletet akkor hajtja végre, ha a kapcsolati szolgáltató készen áll az áramkör kiépítésére.
@@ -167,7 +167,7 @@ CircuitProvisioningState         : Enabled
 ```
 
 ### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
-Az állapot és a szolgáltatási kulcs állapotának ellenőrzése után megtudhatja, hogy a szolgáltató kiosztotta-e az áramkört. Az áramkör konfigurálása után a *ServiceProviderProvisioningState* *kiépítve*jelenik meg, ahogy az az alábbi példában is látható:
+Az állapot és a szolgáltatási kulcs állapotának ellenőrzése után megtudhatja, hogy a szolgáltató kiosztotta-e az áramkört. Az áramkör konfigurálása után a *ServiceProviderProvisioningState* *kiépítve* jelenik meg, ahogy az az alábbi példában is látható:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -369,9 +369,9 @@ Tekintse meg az alábbi információkat:
 
 * Az összes virtuális hálózatot le kell kapcsolni a ExpressRoute áramkörből. Ha a művelet meghiúsul, ellenőrizze, hogy a virtuális hálózatok az áramkörhöz vannak-e kapcsolva.
 * Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
-* Ha a szolgáltató kivette az áramkört, ami azt jelenti, hogy a szolgáltató kiépítési állapota **nem kiépítve**értékre van állítva, akkor törölheti az áramkört. Az áramkör számlázása ezután leáll.
+* Ha a szolgáltató kivette az áramkört, ami azt jelenti, hogy a szolgáltató kiépítési állapota **nem kiépítve** értékre van állítva, akkor törölheti az áramkört. Az áramkör számlázása ezután leáll.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 

@@ -9,10 +9,10 @@ ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
 ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97803629"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Adatok beolvasása Apache Kafkaból Azure Cosmos DB Cassandra API a Kafka-kapcsolat használatával
@@ -187,7 +187,7 @@ select * from weather.data_by_station where station_id IN ('station-2', 'station
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Átviteli sebesség kiosztása tárolókra és adatbázisokra](set-throughput.md) 
 * [A partíciós kulcs ajánlott eljárásai](partitioning-overview.md#choose-partitionkey)

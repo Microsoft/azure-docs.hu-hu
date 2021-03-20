@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: a737fada3e019029967bc752aaa0dedc354fa880
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92078323"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management-szabályzatok beállítása és szerkesztése
@@ -37,7 +37,7 @@ A szabályzatok beállításához vagy szerkesztéséhez kövesse az alábbi lé
 
 4. Válassza ki az egyik korábban importált API-t.
 5. Válassza ki a **Tervezés** fület.
-6. Válasszon ki egy műveletet, amelyre alkalmazni kívánja a házirendet. Ha az összes műveletre alkalmazni szeretné a szabályzatot, válassza a **minden művelet**lehetőséget.
+6. Válasszon ki egy műveletet, amelyre alkalmazni kívánja a házirendet. Ha az összes műveletre alkalmazni szeretné a szabályzatot, válassza a **minden művelet** lehetőséget.
 7. Válassza a **</>** (Kódszerkesztő) ikont a **bejövő feldolgozás** vagy a **kimenő feldolgozás** szakaszban.
 8. Illessze be a kívánt szabályzat kódját az egyik megfelelő blokkba.
 
@@ -71,14 +71,14 @@ A házirend-hatókörök kiértékelése a következő sorrendben történik:
 
 A szabályzatokon belüli utasítások kiértékelése az elem elhelyezése szerint történik `base` , ha van ilyen. A globális házirend nem rendelkezik szülő-házirenddel, és nem `<base>` befolyásolja az elem használatát.
 
-Ha meg szeretné tekinteni az aktuális hatókör házirendjeit a házirend-szerkesztőben, kattintson a hatályos **házirend újraszámítása a kijelölt hatókörhöz**elemre.
+Ha meg szeretné tekinteni az aktuális hatókör házirendjeit a házirend-szerkesztőben, kattintson a hatályos **házirend újraszámítása a kijelölt hatókörhöz** elemre.
 
 ### <a name="global-scope"></a>Globális hatókör
 
 A globális hatókör a APIM-példányban található **összes API** -hoz konfigurálva van.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és navigáljon a APIM-példányhoz.
-2. Kattintson **a minden API**elemre.
+2. Kattintson **a minden API** elemre.
 
     ![Globális hatókör](./media/api-management-howto-policies/global-scope.png)
 
@@ -93,12 +93,12 @@ A globális hatókör a APIM-példányban található **összes API** -hoz konfi
 
 A termék hatóköre konfigurálva van a kiválasztott termékhez.
 
-1. Kattintson a **termékek**elemre.
+1. Kattintson a **termékek** elemre.
 
     ![Termék hatóköre](./media/api-management-howto-policies/product-scope.png)
 
 2. Válassza ki azt a terméket, amelyre alkalmazni kívánja a házirendeket.
-3. Kattintson a **házirendek**elemre.
+3. Kattintson a **házirendek** elemre.
 4. Házirendek hozzáadása vagy szerkesztése.
 5. Kattintson a **Mentés** gombra. 
 
@@ -136,4 +136,4 @@ Tekintse meg a következő kapcsolódó témaköröket:
 
 + [API-k átalakítása](transform-api.md)
 + Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
-+ [Házirend-minták](./policy-reference.md)
++ [Szabályzatminták](./policy-reference.md)

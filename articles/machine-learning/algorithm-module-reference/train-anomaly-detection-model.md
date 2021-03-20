@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: edf35fada4233fbe43bc7f859c2414bfb8130714
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90905721"
 ---
 # <a name="train-anomaly-detection-model-module"></a>A Train rendellenesség észlelési modell modulja
@@ -34,7 +34,7 @@ A tervezőben elérhető anomália-észlelési algoritmusokkal kapcsolatos tová
 
 3.  Konfigurálja az anomáliák észlelése modult a Label (címke) oszlop kiválasztásával, és az algoritmushoz tartozó egyéb paraméterek megadásával.  
 
-4.  Csatoljon egy betanítási adatkészletet a **vonat anomália észlelési modell**jobb oldali bemenetéhez.  
+4.  Csatoljon egy betanítási adatkészletet a **vonat anomália észlelési modell** jobb oldali bemenetéhez.  
 
 5.  A folyamat elküldése.  
 
@@ -42,7 +42,7 @@ A tervezőben elérhető anomália-észlelési algoritmusokkal kapcsolatos tová
 
 A betanítás befejezése után:
 
-+ A modell paramétereinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. 
++ A modell paramétereinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés** lehetőséget. 
 
 + Az előrejelzések létrehozásához használja a [score Model](score-model.md) modult az új bemeneti adatokkal.
 

@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: cf378e0676d39adf8eaddb8a2173d32c2cfda431
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102044"
 ---
 # <a name="getting-started-with-azure-education-hub"></a>Első lépések az Azure Education-központ
@@ -22,7 +22,7 @@ A Education-központ első lépések oldal gyors hivatkozásokat biztosít a Edu
 
 A későbbi bejelentkezések után a rendszer alapértelmezés szerint az Áttekintés lapot fogja látni. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az akadémiai támogatás kezelése az Áttekintés oldalon](hub-overview-page.md)
 

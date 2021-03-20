@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88140836"
 ---
 # <a name="cloudsimple-nodes-overview"></a>A CloudSimple-csomópontok áttekintése
@@ -36,9 +36,9 @@ A kiépített csomópontok utólagos elszámolású kapacitást biztosítanak. A
 
 A következő típusú csomópontok érhetők el a kiépítés vagy a foglalás számára.
 
-| SKU           | CS28 – csomópont                 | CS36 – csomópont                 | CS36m – csomópont                |
+| Termékváltozat           | CS28 – csomópont                 | CS36 – csomópont                 | CS36m – csomópont                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
-| Régió        | USA keleti régiója, USA nyugati régiója            | USA keleti régiója, USA nyugati régiója            | Nyugat-Európa                 |
+| Region        | USA keleti régiója, USA nyugati régiója            | USA keleti régiója, USA nyugati régiója            | Nyugat-Európa                 |
 | CPU           | 2x 2.2 GHz, 28 mag (56 HT) | 2x 2.3 GHz, 36 mag (72 HT) | 2x 2.3 GHz, 36 mag (72 HT) |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | Lemez gyorsítótára    | 1,6 – TB NVMe                 | 3,2 – TB NVMe                 | 3,2 – TB NVMe                 |

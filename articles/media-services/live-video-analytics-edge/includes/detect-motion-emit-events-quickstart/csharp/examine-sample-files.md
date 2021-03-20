@@ -1,19 +1,19 @@
 ---
 ms.openlocfilehash: 1e3ba4b39baa045f35c232fa97c14bc78d8de5ca
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88690982"
 ---
-1. A Visual Studio Code-ban lépjen az *src/Edge*elemre. Ekkor megjelenik a *. env* fájl és néhány központi telepítési sablon fájl.
+1. A Visual Studio Code-ban lépjen az *src/Edge* elemre. Ekkor megjelenik a *. env* fájl és néhány központi telepítési sablon fájl.
 
     A központi telepítési sablon a peremhálózati eszköz központi telepítési jegyzékére hivatkozik, ahol egyes tulajdonságok esetében változókat kell használni. A *. env* fájl tartalmazza a változók értékeit.
 1. Lépjen a *src/Cloud-to-Device-Console-app* mappába. Itt láthatja a fájl *appsettings.jsét* és néhány további fájlt:
 
     * ***C2D-Console-app. csproj*** – a Project fájl a Visual Studio Code-hoz.
     * ***operations.json*** – a program futtatásához használni kívánt műveletek listája.
-    * ***Program.cs*** – a minta programkódja. Ez a kód:
+    * ***Program. cs*** – a minta programkódja. Ez a kód:
     
       * Betölti az alkalmazás beállításait.
       * Az élő videó Analytics IoT Edge modulban elérhető közvetlen metódusokat hívja meg. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](../../../direct-methods.md)meghívásával.

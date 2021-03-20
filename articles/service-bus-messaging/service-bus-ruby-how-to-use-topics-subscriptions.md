@@ -7,10 +7,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067562"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Ruby használatával
@@ -126,13 +126,13 @@ end
 A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörökben tárolt üzenetek száma korlátlan, a témakörök által tárolt üzenetek teljes mérete azonban korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Az üzenetek az `receive_subscription_message()` **Azure:: ServiceBusService** objektum metódusának használatával érkeznek az előfizetésből. Alapértelmezés szerint az üzenetek olvasási (csúcs) és zárolva vannak anélkül, hogy törölné az előfizetésből. Az üzenetet az előfizetésből olvashatja és törölheti, ha a `peek_lock` beállítást **hamis**értékre állítja.
+Az üzenetek az `receive_subscription_message()` **Azure:: ServiceBusService** objektum metódusának használatával érkeznek az előfizetésből. Alapértelmezés szerint az üzenetek olvasási (csúcs) és zárolva vannak anélkül, hogy törölné az előfizetésből. Az üzenetet az előfizetésből olvashatja és törölheti, ha a `peek_lock` beállítást **hamis** értékre állítja.
 
 Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a metódus meghívásával végrehajtja a fogadási folyamat második szakaszát, `delete_subscription_message()` és megadja az üzenet paraméterként való törlését. A `delete_subscription_message()` metódus felhasználja az üzenetet, és eltávolítja azt az előfizetésből.
 
-Ha a `:peek_lock` paraméter **hamis**értékre van beállítva, az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
+Ha a `:peek_lock` paraméter **hamis** értékre van beállítva, az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó kiadja a fogadási kérelmet, majd összeomlik a feldolgozás előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, akkor az alkalmazás újraindításakor és az üzenetek újbóli használatának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a használatával `receive_subscription_message()` . A példa először fogad és töröl egy üzenetet az `low-messages` előfizetésből `:peek_lock` **hamis**értékre állítva, majd egy másik üzenetet kap, `high-messages` majd törli az üzenetet a következő használatával `delete_subscription_message()` :
+Az alábbi példa bemutatja, hogyan fogadhatók és dolgozhatók fel az üzenetek a használatával `receive_subscription_message()` . A példa először fogad és töröl egy üzenetet az `low-messages` előfizetésből `:peek_lock` **hamis** értékre állítva, majd egy másik üzenetet kap, `high-messages` majd törli az üzenetet a következő használatával `delete_subscription_message()` :
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -165,7 +165,7 @@ azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * Lásd: [várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md).

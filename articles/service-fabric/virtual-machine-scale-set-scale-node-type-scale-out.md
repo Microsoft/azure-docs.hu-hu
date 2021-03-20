@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan bővítheti Service Fabric-fürtöt egy virtuá
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: efd329c07b4881c6710d4173857b4186965438d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88719325"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Service Fabric-fürt méretezése virtuálisgép-méretezési csoport hozzáadásával
@@ -52,7 +52,7 @@ Emellett ezt az új csomópont-típust is hozzá kell adnia a Service Fabric fü
 <snip>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [méretezheti fel az elsődleges csomópont típusát](service-fabric-scale-up-primary-node-type.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.

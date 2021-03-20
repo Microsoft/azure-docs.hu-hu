@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e322f78468c89a549955a01f73952e8cde7a13c8
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98872824"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Kockázatok szervizelése és a felhasználók blokkolásának feloldása
@@ -95,6 +95,6 @@ A Microsoft Graph PowerShell SDK előzetes verziójú moduljának használatáva
 
 A tárházban található `Invoke-AzureADIPDismissRiskyUser.ps1` parancsfájl lehetővé teszi a szervezetek számára, hogy a címtárában lévő összes kockázattal rendelkező felhasználót utasítsa el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview-identity-protection.md).

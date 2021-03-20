@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 7615e1dbce040002d9d1a13502637f78100965fb
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99538907"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Az Azure Cognitive Search funkciói
@@ -21,7 +21,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 ## <a name="indexing-features"></a>Indexelési funkciók
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 | Adatforrások | A keresési indexek bármilyen forrásból fogadhatnak szöveget, feltéve, hogy azt JSON-dokumentumként küldi el a rendszer. <br/><br/> Az [**Indexelő**](search-indexer-overview.md) automatizálja az adatok feldolgozását a támogatott Azure-adatforrásokból, és kezeli a JSON-szerializálást. Csatlakozhat [Azure SQL Databasehoz](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DBhoz](search-howto-index-cosmosdb.md)vagy az [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) -hoz, hogy kinyerje a kereshető tartalmat az elsődleges adattárakban. Az Azure Blob-indexelők képesek *dokumentumfeltörést* végezni [szövegek kinyeréséhez a leggyakoribb fájlformátumokból](search-howto-indexing-azure-blob-storage.md), ideértve a Microsoft Office-, a PDF- és a HTML-dokumentumokat. |
 | Hierarchikus és beágyazott adatstruktúrák | Az [**összetett típusok**](search-howto-complex-data-types.md) és gyűjtemények lehetővé teszik gyakorlatilag bármilyen típusú JSON-struktúra modellezését egy keresési indexen belül. Egy-a-többhöz és több-a-többhöz számos fajta lehet natív módon kifejezni gyűjtemények, összetett típusok és összetett típusú gyűjtemények formájában.|
@@ -29,7 +29,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 ## <a name="ai-enrichment-and-knowledge-mining"></a>AI-bővítések és-ismeretek bányászata
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 |AI-feldolgozás az indexelés során | A képek és a szövegek elemzésére szolgáló [**AI**](cognitive-search-concept-intro.md) -bővítés alkalmazható egy indexelési folyamatra a szöveges információk nyers tartalomból való kinyeréséhez. A [beépített képességek](cognitive-search-predefined-skills.md) között szerepel például az optikai karakterfelismerés (beolvasott JPEG-fájlok kereshetővé tétele), az entitásfelismerés (cég vagy intézmény, név vagy hely azonosítása), valamint a kulcskifejezések felismerése. [Egyéni képességeket is kódolhat](cognitive-search-create-custom-skill-example.md), amelyeket a folyamathoz lehet kapcsolni. Emellett [Azure Machine learning szerzői ismereteket is integrálhat](./cognitive-search-tutorial-aml-custom-skill.md). |
 | A dúsított tartalom tárolása nem keresési helyzetekben történő elemzéshez és felhasználáshoz | A [**Knowledge Store**](knowledge-store-concept-intro.md) egy indexelési folyamat alternatív kimenete. A jogkivonatos kifejezések indexbe küldése helyett az indexelési folyamat által létrehozott gazdagított dokumentumokat az Azure Blob Storage-ban vagy a Table Storage-ban, a konfigurációtól függően a Tudásbázisban lehet elküldeni. A tudásbázisok AI-alapú indexelésből (szakértelmével) jönnek létre. A Tudásbázis célja az alsóbb rétegbeli elemzés vagy feldolgozás támogatása. A Tudásbázis új információi és struktúrái segítségével csatlakoztathatja azt egy gépi tanulási folyamathoz, vagy kapcsolódhat a Power BI az adatok feltárásához.<br/><br/> |
@@ -37,7 +37,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 ## <a name="query-and-user-experience"></a>Lekérdezés és felhasználói élmény
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 |Szabad formátumú szöveges keresés | A [**teljes szöveges keresés**](search-lucene-query-architecture.md) elsődleges használati eset a legtöbb keresési alkalmazáshoz. A lekérdezéseket a támogatott szintaxisok segítségével állíthatja össze. <br/><br/>Az [**egyszerű lekérdezési szintaxis**](query-simple-syntax.md) logikai operátorokat, kifejezéskeresési operátorokat, utótag-operátorokat és prioritási operátorokat tartalmaz.<br/><br/>A [**teljes Lucene lekérdezési szintaxisa**](query-lucene-syntax.md) tartalmazza az egyszerű szintaxisú összes műveletet, a fuzzy kereséshez, a közelségi kereséshez, a kifejezés fokozásához és a reguláris kifejezésekhez tartozó bővítményeket.|
 | Relevancia | Az [**egyszerű pontozás**](index-add-scoring-profiles.md) az Azure Cognitive Search egyik legfőbb előnye. A pontozási profilok segítségével a relevancia magukban a dokumentumokban lévő értékeknek a függvényeként modellezhető. Beállíthatja például, hogy az újabb termékek vagy az akciós termékek magasabb prioritással jelenjenek meg a keresési eredményben. Emellett hozhat létre pontozási profilokat címkékkel, ha a külön nyomon követett és tárolt felhasználói keresési beállítások alapján személyre szabott pontozást szeretne nyújtani. |
@@ -47,7 +47,7 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 ## <a name="security-features"></a>Biztonsági funkciók
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 | Adattitkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encryption) a belső tároló rétegbe van beépítve, és visszavonhatatlan. <br/><br/>Az [**ügyfél által felügyelt**](search-security-manage-encryption-keys.md) , Azure Key Vaultban létrehozott és kezelt titkosítási kulcsok az indexek és a szinonima térképek kiegészítő titkosításához használhatók. A 1 2020 augusztusában létrehozott szolgáltatások esetében a CMK titkosítás az ideiglenes lemezeken lévő adatokat az indexelt tartalom teljes dupla titkosítására terjeszti.|
 | Endpoint Protection | A [**bejövő tűzfal támogatásának IP-szabályai**](service-configure-firewall.md) lehetővé teszik olyan IP-tartományok beállítását, amelyeken keresztül a keresési szolgáltatás fogadja a kérelmeket.<br/><br/>[**Hozzon létre egy privát végpontot**](service-create-private-endpoint.md) az Azure Private link használatával, amellyel kényszerítheti az összes kérést egy virtuális hálózaton keresztül. |
@@ -55,14 +55,14 @@ Az Azure Cognitive Search teljes szöveges keresőmotort, a keresési indexek á
 
 ## <a name="portal-features"></a>Portál funkciói
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 | Eszközök prototípus-készítéshez és vizsgálatokhoz | Az [**index hozzáadása**](search-what-is-an-index.md) a portálon található index-tervező, amelynek segítségével létrehozhat egy alapszintű sémát, amely a megadott mezőkből és néhány egyéb beállításból áll. Az index mentése után feltöltheti azt egy SDK-val vagy a REST API az adatok megadásához. <br/><br/>[**Az adatimportálás varázsló**](search-import-data-portal.md) indexeket, indexelő, szakértelmével és adatforrás-definíciókat hoz létre. Ha az adatai megtalálhatók az Azure-ban, akkor a varázsló jelentős időt és fáradságot takaríthat meg, különösen a koncepciós vizsgálat és a felderítés tekintetében. <br/><br/>A [**Search Explorer**](search-explorer.md) a lekérdezések tesztelésére és a pontozási profilok pontosítására szolgál.<br/><br/>A [**create bemutató alkalmazással**](search-create-app-portal.md) LÉTREHOZHAT egy HTML-oldalt, amely a keresési élmény tesztelésére használható.  |
 | Monitorozás és diagnosztika | A [**figyelési funkciók lehetővé teszik**](search-monitor-usage.md) , hogy a portálon mindig megjelenjenek a metrikák – dióhéjban. Emellett a rendszer alapértelmezés szerint gyűjti a lekérdezések másodpercenkénti számának, a késésnek és a leszabályozásnak a metrikáit, melyek megtekinthetők jelentésként a portállapokon.|
 
 ## <a name="programmability"></a>Programozhatóság
 
-| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Szolgáltatások |
+| Kategória&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkciók |
 |-------------------|----------|
 | REST | A [**Service REST API**](/rest/api/searchservice/) az adatsíkok műveleteire vonatkozik, beleértve az indexeléssel, lekérdezésekkel és mesterséges intelligenciával kapcsolatos összes műveletet. Ezen az ügyféloldali függvénytáron is lekérheti a rendszerinformációkat és a statisztikát. <br/><br/>A [**felügyeleti REST API**](/rest/api/searchmanagement/) a szolgáltatás létrehozása és a Azure Resource Manager megtisztítása. Ezt az API-t használhatja a kulcsok kezeléséhez és a szolgáltatások kiépítéséhez is.|
 | Azure SDK for .NET | [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) az adatsíkok műveleteihez, beleértve az indexeléssel, lekérdezésekkel és mesterséges intelligenciával kapcsolatos összes műveletet. Ezen az ügyféloldali függvénytáron is lekérheti a rendszerinformációkat és a statisztikát. <br/><br/>[**Microsoft. Azure. Management. Search**](/dotnet/api/microsoft.azure.management.search) szolgáltatás létrehozása és Azure Resource Manageron keresztüli tisztítása. Ezt az API-t használhatja a kulcsok kezeléséhez és a szolgáltatások kiépítéséhez is.|

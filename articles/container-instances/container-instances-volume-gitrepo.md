@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csatlakoztathat egy Gitrepo típusú-kötetet a
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260709"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
@@ -26,8 +26,8 @@ A *gitrepo típusú* kötet csatlakoztat egy könyvtárat, és a tároló indít
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
 | `repository` | Igen | A klónozott git-tárház teljes URL-címe, beleértve a vagy a-t is `http://` `https://` .|
-| `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhat vagy kezdődhet a következővel: " `..` ".  Ha a "" lehetőséget választja `.` , a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
-| `revision` | Nem | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozásra kerül. |
+| `directory` | No | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhat vagy kezdődhet a következővel: " `..` ".  Ha a "" lehetőséget választja `.` , a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
+| `revision` | No | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozásra kerül. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Gitrepo típusú-kötet csatlakoztatása: Azure CLI
 
@@ -101,7 +101,7 @@ GitHub: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz][pat
 
 Azure Repos: [személyes hozzáférési tokenek létrehozása a hozzáférés hitelesítéséhez][pat-repos]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 

@@ -11,10 +11,10 @@ ms.author: euang
 ms.reviewer: euang
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.openlocfilehash: 3aedef8452ad3e972f78958fc0765639692d76d6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98121056"
 ---
 # <a name="hyperspace-an-indexing-subsystem-for-apache-spark"></a>Hipertér: Apache Spark indexelési alrendszere
@@ -32,7 +32,7 @@ Jogi nyilatkozat: a hipertér két esetben segít felgyorsítani a számítási 
 
 Ez a dokumentum a következő jegyzetfüzet-formában is elérhető: [Python](https://github.com/microsoft/hyperspace/blob/master/notebooks/python/Hitchhikers%20Guide%20to%20Hyperspace.ipynb), [C#](https://github.com/microsoft/hyperspace/blob/master/notebooks/csharp/Hitchhikers%20Guide%20to%20Hyperspace.ipynb)és [Scala](https://github.com/microsoft/hyperspace/blob/master/notebooks/scala/Hitchhikers%20Guide%20to%20Hyperspace.ipynb).
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 A kezdéshez indítson el egy új Spark-munkamenetet. Mivel ez a dokumentum csupán azt mutatja be, hogy milyen hipertér tud ajánlani, egy olyan konfigurációs módosítást fog végezni, amely lehetővé teszi számunkra, hogy kiemelje, milyen hipertér végez a kis adatkészleteken. 
 

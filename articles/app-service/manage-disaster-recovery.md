@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87073742"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service alkalmazás áthelyezése másik régióba
@@ -27,7 +27,7 @@ Azonosítsa az összes olyan App Service erőforrást, amelyet a érintett alkal
 
 - App Service-alkalmazások
 - [App Service-csomagok](overview-hosting-plans.md)
-- [Üzembehelyezési pontok](deploy-staging-slots.md)
+- [Üzembe helyezési pontok](deploy-staging-slots.md)
 - [Az Azure-ban vásárolt egyéni tartományok](manage-custom-dns-buy-domain.md)
 - [SSL-tanúsítványok](configure-ssl-certificate.md)
 - [Azure Virtual Network integráció](web-sites-integrate-with-vnet.md)
@@ -45,7 +45,7 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
     ![Képernyőkép az érintett alkalmazás oldaláról. Megjelenik egy figyelmeztető értesítés, amely leírja a helyzetet, és hivatkozást biztosít az alkalmazás visszaállításához.](media/manage-disaster-recovery/restore-start.png)
 
-1. A **biztonsági mentés visszaállítása** lapon konfigurálja a visszaállítási műveletet az alábbi táblázat szerint. Ha elkészült, kattintson **az OK**gombra.
+1. A **biztonsági mentés visszaállítása** lapon konfigurálja a visszaállítási műveletet az alábbi táblázat szerint. Ha elkészült, kattintson **az OK** gombra.
 
    | Beállítás | Érték | Leírás |
    |-|-|-|
@@ -63,7 +63,7 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
 Ha csak az érintett alkalmazásból kívánja helyreállítani a fájlokat a visszaállítás nélkül, kövesse az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az érintett alkalmazás felügyeleti lapjára, és kattintson a **közzétételi profil beolvasása**elemre.
+1. A [Azure Portal](https://portal.azure.com)navigáljon az érintett alkalmazás felügyeleti lapjára, és kattintson a **közzétételi profil beolvasása** elemre.
 
     ![Képernyőkép az érintett alkalmazás oldaláról. Egy figyelmeztető értesítés látható, de nincs kiemelve. A közzétételi profil beolvasása eleme kiemelve.](media/manage-disaster-recovery/get-publish-profile.png)
 
@@ -86,5 +86,5 @@ Ha csak az érintett alkalmazásból kívánja helyreállítani a fájlokat a vi
 
     ![Képernyőkép egy FileZilla-fájl hierarchiáról. A WWWroot mappa ki van emelve, és a helyi menü látható. Ebben a menüben a letöltés kiemelve.](media/manage-disaster-recovery/download-content.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure-beli alkalmazás visszaállítása pillanatképből](app-service-web-restore-snapshots.md)

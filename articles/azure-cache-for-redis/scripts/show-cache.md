@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184246"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>A Redis készült Azure cache részleteinek beolvasása
@@ -30,7 +30,7 @@ Ebből a forgatókönyvből megtudhatja, hogyan kérhet le egy Azure cache Redis
 
 Ez a szkript a következő parancsokat használja a Redis-példányhoz tartozó Azure cache részleteinek lekéréséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [az Redis show](/cli/azure/redis) | A Redis-példányhoz tartozó Azure cache részleteinek beolvasása. |
 

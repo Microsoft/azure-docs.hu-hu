@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81259926"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>A standard szintű szabályok motorjában szereplő feltételek egyeztetése Azure CDN
@@ -170,7 +170,7 @@ Operátor | URL-cím kérése | Eset átalakítása
 
 #### <a name="key-information"></a>Legfontosabb információk
 
-- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: * https://www . \<yourdomain\> . com*.
+- A szabály feltételének használatakor ügyeljen arra, hogy a protokoll információit tartalmazza. Például: *https://www . \<yourdomain\> . com*.
 
 ### <a name="url-file-extension"></a>URL-fájlkiterjesztés
 
@@ -184,7 +184,7 @@ Operátor | Mellék | Eset átalakítása
 
 #### <a name="key-information"></a>Legfontosabb információk
 
-- A bővítményhez ne adjon meg egy kezdő időszakot; a *. html*helyett például *HTML* -t használjon.
+- A bővítményhez ne adjon meg egy kezdő időszakot; a *. html* helyett például *HTML* -t használjon.
 
 ### <a name="url-file-name"></a>URL-fájl neve
 
@@ -238,9 +238,9 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 - Nem nagyobb, mint
 - Nem nagyobb vagy egyenlő
 
-A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Ebben az esetben az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amelynek meg kell egyeznie az összehasonlítani kívánt hosszsal. 
+A (z) *vagy* annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Ebben az esetben az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amelynek meg kell egyeznie az összehasonlítani kívánt hosszsal. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [A Standard szabálymotor referenciája](cdn-standard-rules-engine-reference.md)

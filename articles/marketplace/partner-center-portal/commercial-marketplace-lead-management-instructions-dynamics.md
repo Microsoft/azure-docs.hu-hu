@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98199774"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
@@ -192,7 +192,7 @@ Az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálása 
     ![Office 365 Felhasználónév mező](media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
 
 1. A **kapcsolattartási e-mail** cím mezőbe írja be az e-mail-címeket a vállalat azon tagjai számára, akik új érdeklődő fogadásakor e-mail-értesítéseket kapnak. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

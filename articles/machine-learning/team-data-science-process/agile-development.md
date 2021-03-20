@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89440286"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
@@ -35,7 +35,7 @@ Az alábbi ábra egy adatelemzési projekt tipikus Sprint-tervezését, kódolá
 
 ##  <a name="work-item-types"></a><a name='Terminology-1'></a>Munkaelemek típusai
 
-A TDSP Sprint tervezési keretrendszere négy gyakran használt *munkaelem* -típust *tartalmaz: funkciók*, *felhasználói történetek*, *feladatok*és *hibák*. Az összes munkaelem várakozó értéke a projekt szintjén van, nem a git-tárház szintjén. 
+A TDSP Sprint tervezési keretrendszere négy gyakran használt *munkaelem* -típust *tartalmaz: funkciók*, *felhasználói történetek*, *feladatok* és *hibák*. Az összes munkaelem várakozó értéke a projekt szintjén van, nem a git-tárház szintjén. 
 
 Itt láthatók a munkaelem-típusok definíciói:
 
@@ -72,13 +72,13 @@ Az Azure-táblák Sprint-tervezésével kapcsolatos további információkért l
 
 A projekt és a projekt kódjának tárházának létrehozása után hozzáadhat egy funkciót a várakozó fájlok számára a projekt munkájának ábrázolásához.
 
-1. A projekt lapon válassza **Boards**  >  **Backlogs** a bal oldali navigációs sávon a táblákat. 
+1. A projekt lapon válassza   >   a bal oldali navigációs sávon a táblákat. 
    
-1. A **várakozó** fájlok lapon, ha a felső sávban a munkaelem típusa a **történetek**, a legördülő menüben válassza a **funkciók**lehetőséget. Ezután válassza az **új munkaelem lehetőséget.**
+1. A **várakozó** fájlok lapon, ha a felső sávban a munkaelem típusa a **történetek**, a legördülő menüben válassza a **funkciók** lehetőséget. Ezután válassza az **új munkaelem lehetőséget.**
    
    ![Új munkaelem kiválasztása](./media/agile-development/2-sprint-team-overview.png)
    
-1. Adja meg a szolgáltatás címét, általában a projekt nevét, majd válassza a **Hozzáadás a tetejére**lehetőséget. 
+1. Adja meg a szolgáltatás címét, általában a projekt nevét, majd válassza a **Hozzáadás a tetejére** lehetőséget. 
    
    ![Adjon meg egy címet, és válassza a Hozzáadás a tetejére lehetőséget](./media/agile-development/3-sprint-team-add-work.png)
    
@@ -86,7 +86,7 @@ A projekt és a projekt kódjának tárházának létrehozása után hozzáadhat
    
    A funkció a projekt Azure Repos-kódjának tárházához is összekapcsolható a **fejlesztési** szakasz **hivatkozás hozzáadása** lehetőségével. 
    
-   A szolgáltatás szerkesztése után válassza a **mentés & Bezárás**lehetőséget.
+   A szolgáltatás szerkesztése után válassza a **mentés & Bezárás** lehetőséget.
    
    ![Szerkessze a funkciót, és válassza a Mentés & Bezárás lehetőséget.](./media/agile-development/3a-add-link-repo.png)
 
@@ -106,13 +106,13 @@ A szolgáltatás alatt felhasználói történeteket adhat hozzá a projekt vég
    
    ![Hivatkozás hozzáadása](./media/agile-development/5-sprint-edit-story.png)
    
-1. Ha végzett a felhasználói történet szerkesztésével, válassza a **mentés & Bezárás**lehetőséget. 
+1. Ha végzett a felhasználói történet szerkesztésével, válassza a **mentés & Bezárás** lehetőséget. 
 
 ## <a name="add-a-task-to-a-user-story"></a><a name='AddTaskunderstory-5'></a>Feladat hozzáadása egy felhasználói történethez 
 
 A feladatok az egyes felhasználói történetek végrehajtásához szükséges részletes lépések. Egy felhasználói történet összes feladatának befejezése után a felhasználói történetet is el kell végezni. 
 
-Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, jelölje be a **+** felhasználói szövegegység elem melletti gombot, és válassza a **feladat**elemet. Adja meg a címet és az egyéb információkat a feladatban.
+Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, jelölje be a **+** felhasználói szövegegység elem melletti gombot, és válassza a **feladat** elemet. Adja meg a címet és az egyéb információkat a feladatban.
 
 ![Feladat hozzáadása egy felhasználói történethez](./media/agile-development/7-sprint-add-task.png)
 
@@ -130,42 +130,42 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
 
 1. Az Azure DevOps-szervezet főoldalán válassza a **szervezeti beállítások** lehetőséget a bal oldali navigációs sávon. 
    
-1. A **szervezeti beállítások** bal oldali navigációs sávján **válassza a** **folyamat**elemet. 
+1. A **szervezeti beállítások** bal oldali navigációs sávján **válassza a** **folyamat** elemet. 
    
-1. A **minden folyamat** ablaktáblán válassza a **...** elemet az **agilis**elem mellett, majd válassza az **örökölt folyamat létrehozása**lehetőséget.
+1. A **minden folyamat** ablaktáblán válassza a **...** elemet az **agilis** elem mellett, majd válassza az **örökölt folyamat létrehozása** lehetőséget.
    
    ![Örökölt folyamat létrehozása az agilis rendszerből](./media/agile-development/10-settings.png) 
    
-1. Az **örökölt folyamat létrehozása az agilis** párbeszédpanelen írja be a *AgileDataScienceProcess*nevet, majd válassza a **folyamat létrehozása**lehetőséget.
+1. Az **örökölt folyamat létrehozása az agilis** párbeszédpanelen írja be a *AgileDataScienceProcess* nevet, majd válassza a **folyamat létrehozása** lehetőséget.
    
    ![AgileDataScienceProcess folyamat létrehozása](./media/agile-development/11-agileds.png)
    
-1. Az **összes folyamat**területen válassza ki az új **AgileDataScienceProcess**. 
+1. Az **összes folyamat** területen válassza ki az új **AgileDataScienceProcess**. 
    
-1. A **munkaelem-típusok** lapon tiltsa le az **Epic**, a **Feature**, a **User Story**és a **Task** elemet. ehhez kattintson a **...** elemre az egyes elemek mellett, majd válassza a **Letiltás**lehetőséget. 
+1. A **munkaelem-típusok** lapon tiltsa le az **Epic**, a **Feature**, a **User Story** és a **Task** elemet. ehhez kattintson a **...** elemre az egyes elemek mellett, majd válassza a **Letiltás** lehetőséget. 
    
    ![Munkaelem-típusok letiltása](./media/agile-development/12-disable.png)
    
-1. A **minden folyamat**területen válassza a **várakozó szintek** lapot. A **portfóliók**csomópontok alatt válassza a **...** lehetőséget az **Epic (letiltva)** elem mellett, majd válassza a **Szerkesztés/Átnevezés**lehetőséget. 
+1. A **minden folyamat** területen válassza a **várakozó szintek** lapot. A **portfóliók** csomópontok alatt válassza a **...** lehetőséget az **Epic (letiltva)** elem mellett, majd válassza a **Szerkesztés/Átnevezés** lehetőséget. 
    
 1. A **várakozó fájlok szintjének szerkesztése** párbeszédpanelen:
-   1. A **név**alatt cserélje le az **EPICT** *TDSP-projektekkel*. 
-   1. A **várakozó munkaelemek**területen válassza az **új munkaelem típusa**lehetőséget, írja be a *TDSP projektet*, és válassza a **Hozzáadás**lehetőséget. 
-   1. Az **alapértelmezett munkaelem típusa**területen válassza a legördülő listát, majd a **TDSP projektet**. 
+   1. A **név** alatt cserélje le az **EPICT** *TDSP-projektekkel*. 
+   1. A **várakozó munkaelemek** területen válassza az **új munkaelem típusa** lehetőséget, írja be a *TDSP projektet*, és válassza a **Hozzáadás** lehetőséget. 
+   1. Az **alapértelmezett munkaelem típusa** területen válassza a legördülő listát, majd a **TDSP projektet**. 
    1. Kattintson a **Mentés** gombra.
    
    ![Portfólió-várakozó fájlok szintjének beállítása](./media/agile-development/13-rename.png)  
    
-1. Kövesse ugyanezen lépéseket a **szolgáltatások** *TDSP szakaszokra*való átnevezéséhez, és adja hozzá a következő új munkaelem-típusokat:
+1. Kövesse ugyanezen lépéseket a **szolgáltatások** *TDSP szakaszokra* való átnevezéséhez, és adja hozzá a következő új munkaelem-típusokat:
    
    - *Üzleti ismeretek*
    - *Adatgyűjtés*
    - *Modellezés*
    - *Üzembe helyezés*
    
-1. A **követelmény**maradása területen **nevezze át a** *TDSP alszakaszokat*, adja hozzá az új munkaelem típusú *TDSP alfázist*, és állítsa be az alapértelmezett munkaelemet a **TDSP alszakaszra**.
+1. A **követelmény** maradása területen **nevezze át a** *TDSP alszakaszokat*, adja hozzá az új munkaelem típusú *TDSP alfázist*, és állítsa be az alapértelmezett munkaelemet a **TDSP alszakaszra**.
    
-1. Az **Ismétlési**várakozási sor területen adjon hozzá egy új munkaelem típusú *TDSP-feladatot*, és állítsa be úgy, hogy az alapértelmezett munkaelem típusú legyen. 
+1. Az **Ismétlési** várakozási sor területen adjon hozzá egy új munkaelem típusú *TDSP-feladatot*, és állítsa be úgy, hogy az alapértelmezett munkaelem típusú legyen. 
    
 A lépések elvégzése után a várakozó fájlok szintjének a következőképpen kell kinéznie:
    
@@ -175,23 +175,23 @@ A lépések elvégzése után a várakozó fájlok szintjének a következőkép
 
 Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létre, és nyomon követheti a TDSP életciklusának szakaszaihoz tartozó munkaelemeket.
 
-1. Az Azure DevOps-szervezet főoldalán válassza az **új projekt**lehetőséget. 
+1. Az Azure DevOps-szervezet főoldalán válassza az **új projekt** lehetőséget. 
    
-1. Az **új projekt létrehozása** párbeszédpanelen adja meg a projekt nevét, majd válassza a **speciális**lehetőséget. 
+1. Az **új projekt létrehozása** párbeszédpanelen adja meg a projekt nevét, majd válassza a **speciális** lehetőséget. 
    
-1. A **munkaelem folyamata**alatt válassza a legördülő menü **AgileDataScienceProcess**elemét, majd válassza a **Létrehozás**lehetőséget.
+1. A **munkaelem folyamata** alatt válassza a legördülő menü **AgileDataScienceProcess** elemét, majd válassza a **Létrehozás** lehetőséget.
    
    ![TDSP-projekt létrehozása](./media/agile-development/15-newproject.png)
    
-1. Az újonnan létrehozott projektben válassza **Boards**  >  **Backlogs** a bal oldali navigációs sávon a táblákat.
+1. Az újonnan létrehozott projektben válassza   >   a bal oldali navigációs sávon a táblákat.
    
-1. A TDSP-projektek láthatóvá tételéhez válassza a **csoport beállításainak konfigurálása** ikont. A **Beállítások** képernyőn jelölje be a **TDSP-projektek** jelölőnégyzetet, majd kattintson a **Mentés és bezárás**gombra.
+1. A TDSP-projektek láthatóvá tételéhez válassza a **csoport beállításainak konfigurálása** ikont. A **Beállítások** képernyőn jelölje be a **TDSP-projektek** jelölőnégyzetet, majd kattintson a **Mentés és bezárás** gombra.
    
    ![TDSP-projektek kijelölése jelölőnégyzet](./media/agile-development/16-enabledsprojects1.png)
    
-1. Adatelemzésre vonatkozó TDSP projekt létrehozásához válassza a felső sávban a **TDSP projektek** elemet, majd válassza az **új munkaelem**lehetőséget. 
+1. Adatelemzésre vonatkozó TDSP projekt létrehozásához válassza a felső sávban a **TDSP projektek** elemet, majd válassza az **új munkaelem** lehetőséget. 
    
-1. A felugró ablakban adja meg a TDSP projekt munkaelemének nevét, majd válassza a **Hozzáadás a tetejére**lehetőséget.
+1. A felugró ablakban adja meg a TDSP projekt munkaelemének nevét, majd válassza a **Hozzáadás a tetejére** lehetőséget.
    
    ![Adatelemzési projekt munkaelemének létrehozása](./media/agile-development/17-dsworkitems0.png)
    
@@ -199,7 +199,7 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
    
    ![Adatelemzési munkaelem típusának kiválasztása](./media/agile-development/17-dsworkitems1.png)
    
-1. Adja meg a részleteket az új munkaelemben, majd válassza a **mentés & Bezárás**lehetőséget.
+1. Adja meg a részleteket az új munkaelemben, majd válassza a **mentés & Bezárás** lehetőséget.
    
 1. Folytassa a **+** munkaelemek melletti szimbólumok kijelölésével új TDSP szakaszok, alszakaszok és feladatok hozzáadásához. 
    

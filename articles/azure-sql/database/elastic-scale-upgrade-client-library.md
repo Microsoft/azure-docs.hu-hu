@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 74aed815d011503cb6caea56cfad5e076bdcbfbd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793415"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Alkalmazás frissítése a rugalmas adatbázis legújabb ügyféloldali függvénytárának használatára
@@ -33,9 +33,9 @@ A lépések végrehajtásával biztosíthatja, hogy az ügyféloldali kódtár r
 
 **1. frissítse alkalmazásait.** A Visual Studióban töltse le és hivatkozzon az ügyféloldali kódtár legújabb verziójára a könyvtárat használó összes fejlesztési projektben. Ezután hozza létre és telepítse újra.
 
-* A Visual Studio-megoldásban válassza az **eszközök**  -->  **NuGet csomagkezelő**  -->   **NuGet-csomagok kezelése megoldást** .
+* A Visual Studio-megoldásban válassza az **eszközök**  -->  **NuGet csomagkezelő**  -->   **NuGet-csomagok kezelése megoldást**.
 * (Visual Studio 2013) A bal oldali panelen válassza a **frissítések** lehetőséget, majd válassza ki a **frissítés** gombot a csomagban **Azure SQL Database rugalmas skálázási ügyféloldali kódtár** , amely megjelenik az ablakban.
-* (Visual Studio 2015) Állítsa be a szűrő mezőt az **elérhető frissítéshez** . Válassza ki a frissíteni kívánt csomagot, majd kattintson a **frissítés** gombra.
+* (Visual Studio 2015) Állítsa be a szűrő mezőt az **elérhető frissítéshez**. Válassza ki a frissíteni kívánt csomagot, majd kattintson a **frissítés** gombra.
 * (Visual Studio 2017) A párbeszédpanel tetején válassza a **frissítések** lehetőséget. Válassza ki a frissíteni kívánt csomagot, majd kattintson a **frissítés** gombra.
 * Létrehozás és üzembe helyezés.
 
@@ -43,9 +43,9 @@ A lépések végrehajtásával biztosíthatja, hogy az ügyféloldali kódtár r
 
 **3. frissítse a Split-Merge szolgáltatást.** Ha a rugalmas adatbázis felosztása és egyesítése eszközt használja a töredezett adatmennyiség átrendezéséhez, [töltse le és telepítse az eszköz legújabb verzióját](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). A szolgáltatás részletes frissítési lépései [itt](elastic-scale-overview-split-and-merge.md)találhatók.
 
-**4. frissítse a szegmens Map Manager adatbázisait** . Frissítse a szegmenses térképeket támogató metaadatokat Azure SQL Database.  Ezt kétféleképpen hajthatja végre a PowerShell vagy a C# használatával. Az alábbiakban mindkét beállítás látható.
+**4. frissítse a szegmens Map Manager adatbázisait**. Frissítse a szegmenses térképeket támogató metaadatokat Azure SQL Database.  Ezt kétféleképpen hajthatja végre a PowerShell vagy a C# használatával. Az alábbiakban mindkét beállítás látható.
 
-**_1. lehetőség: metaadatok frissítése a PowerShell _ használatával_*
+***1. lehetőség: metaadatok frissítése a PowerShell használatával***
 
 1. Töltse le a NuGet legújabb parancssori segédprogramját [, és mentse](https://nuget.org/nuget.exe) egy mappába.
 2. Nyisson meg egy parancssort, navigáljon ugyanahhoz a mappához, és adja ki a következő parancsot: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
@@ -53,7 +53,7 @@ A lépések végrehajtásával biztosíthatja, hogy az ügyféloldali kódtár r
 4. Töltse le a rugalmas adatbázis-ügyfél frissítési parancsfájlját a [parancsfájl-központból](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9), és mentse a DLL-fájlt tartalmazó mappába.
 5. Ebből a mappából futtassa a "PowerShell .\upgrade.ps1" parancsot a parancssorból, és kövesse az utasításokat.
 
-_*_2. lehetőség: metaadatok frissítése a C használatával #_*_
+***2. lehetőség: metaadatok frissítése a C használatával #***
 
 Azt is megteheti, hogy létrehoz egy Visual Studio-alkalmazást, amely megnyitja a ShardMapManager, megismétli az összes szegmenst, és elvégzi a metaadatok frissítését úgy, hogy meghívja a [UpgradeLocalStore](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) és a [UpgradeGlobalStore](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) metódusokat a jelen példában látható módon
 
@@ -72,7 +72,7 @@ Azt is megteheti, hogy létrehoz egy Visual Studio-alkalmazást, amely megnyitja
 
 A metaadatok frissítésére szolgáló technikák többször is alkalmazhatók ártalmak nélkül. Ha például egy régebbi verziójú ügyfél véletlenül létrehoz egy szegmenst a már meglévő frissítés után, akkor a frissítést újra futtathatja az összes szegmensen, hogy a legújabb metaadat-verzió a teljes infrastruktúrában megtalálható legyen.
 
-_ *Megjegyzés:* az ügyféloldali kódtár új verziói a mai napig továbbra is együttműködnek a szegmens Map Manager metaadatainak korábbi verzióival Azure SQL Databaseon, és fordítva.   A legújabb ügyfél új funkcióinak kihasználásához azonban frissíteni kell a metaadatokat.   Vegye figyelembe, hogy a metaadatok frissítése nem érinti a felhasználó-vagy alkalmazásspecifikus adatokat, csak a szegmenses Térkép-kezelő által létrehozott és használt objektumokat.  Az alkalmazások továbbra is működnek a fent ismertetett frissítési folyamaton keresztül.
+**Megjegyzés:**  Az ügyféloldali kódtár új verziói a mai napig továbbra is együttműködnek a szegmens Map Manager metaadatainak korábbi verzióival Azure SQL Databaseon, és fordítva.   A legújabb ügyfél új funkcióinak kihasználásához azonban frissíteni kell a metaadatokat.   Vegye figyelembe, hogy a metaadatok frissítése nem érinti a felhasználó-vagy alkalmazásspecifikus adatokat, csak a szegmenses Térkép-kezelő által létrehozott és használt objektumokat.  Az alkalmazások továbbra is működnek a fent ismertetett frissítési folyamaton keresztül.
 
 ## <a name="elastic-database-client-version-history"></a>Rugalmas adatbázis-ügyfél korábbi verziói
 

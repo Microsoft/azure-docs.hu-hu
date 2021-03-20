@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9dfce7b76eed5bfc9f4979c0e3041b6c65c28422
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88749379"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer használata az Azure Managed Disks kezeléséhez
@@ -33,7 +33,7 @@ Ha a Storage Explorer nem csatlakozik az Azure-hoz, nem fogja tudni használni a
 
     ![Kattintson a beépülő modul ikonjára](media/disks-upload-vhd-to-managed-disk-storage-explorer/plug-in-icon.png)
 
-1. Válassza **Az Azure-fiók hozzáadása**lehetőséget, majd kattintson a **tovább**gombra.
+1. Válassza **Az Azure-fiók hozzáadása** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Azure-fiók hozzáadása](media/disks-upload-vhd-to-managed-disk-storage-explorer/connect-to-azure.png)
 
@@ -64,7 +64,7 @@ Ha a Storage Explorer nem csatlakozik az Azure-hoz, nem fogja tudni használni a
 
     ![Feltöltés állapota](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-uploading.png)
 
-1. Ha a feltöltés befejeződött, és a jobb oldali ablaktáblában nem jelenik meg a lemez, válassza a **frissítés**lehetőséget.
+1. Ha a feltöltés befejeződött, és a jobb oldali ablaktáblában nem jelenik meg a lemez, válassza a **frissítés** lehetőséget.
 
 ## <a name="download-a-managed-disk"></a>Felügyelt lemez letöltése
 
@@ -79,7 +79,7 @@ A következő lépések azt ismertetik, hogyan tölthető le egy felügyelt leme
 
     ![Felügyelt lemez letöltése](media/disks-upload-vhd-to-managed-disk-storage-explorer/download-button.png)
 
-1. Válassza a **Mentés** lehetőséget, és a lemez letöltése megkezdődik. A letöltés állapota a **tevékenységekben**fog megjelenni.
+1. Válassza a **Mentés** lehetőséget, és a lemez letöltése megkezdődik. A letöltés állapota a **tevékenységekben** fog megjelenni.
 
     ![Letöltés állapota](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-downloading.png)
 
@@ -91,7 +91,7 @@ A Storage Explorer segítségével a különböző régiókban lévő, vagy azok
 
     ![1. erőforráscsoport kiválasztása](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. A jobb oldali ablaktáblán válassza ki a másolni kívánt lemezt, majd válassza a **Másolás**lehetőséget.
+1. A jobb oldali ablaktáblán válassza ki a másolni kívánt lemezt, majd válassza a **Másolás** lehetőséget.
 
     ![Felügyelt lemez másolása](media/disks-upload-vhd-to-managed-disk-storage-explorer/copy-button.png)
 
@@ -107,7 +107,7 @@ A Storage Explorer segítségével a különböző régiókban lévő, vagy azok
 
     ![Lemez beillesztése párbeszédpanel](media/disks-upload-vhd-to-managed-disk-storage-explorer/paste-disk-dialog.png)
 
-1. Válassza a **Beillesztés** lehetőséget, és a lemez a másolás megkezdése után az állapot megjelenik a **tevékenységek**területen.
+1. Válassza a **Beillesztés** lehetőséget, és a lemez a másolás megkezdése után az állapot megjelenik a **tevékenységek** területen.
 
     ![Beillesztési állapot másolása](media/disks-upload-vhd-to-managed-disk-storage-explorer/activity-copying.png)
 
@@ -117,11 +117,11 @@ A Storage Explorer segítségével a különböző régiókban lévő, vagy azok
 
     ![1. erőforráscsoport kiválasztása](media/disks-upload-vhd-to-managed-disk-storage-explorer/select-rg1.png)
 
-1. A jobb oldalon válassza ki azt a lemezt, amelyről pillanatképet szeretne készíteni, majd válassza a **pillanatkép létrehozása**lehetőséget.
+1. A jobb oldalon válassza ki azt a lemezt, amelyről pillanatképet szeretne készíteni, majd válassza a **pillanatkép létrehozása** lehetőséget.
 
     ![Pillanatkép létrehozása](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-button.png)
 
-1. A **pillanatkép létrehozása**lapon adja meg a pillanatkép nevét, valamint azt az erőforráscsoportot, amelyben létre kívánja hozni. Ezután válassza a **Létrehozás** elemet.
+1. A **pillanatkép létrehozása** lapon adja meg a pillanatkép nevét, valamint azt az erőforráscsoportot, amelyben létre kívánja hozni. Ezután kattintson a **Létrehozás** elemre.
 
     ![Pillanatkép létrehozása párbeszédpanel](media/disks-upload-vhd-to-managed-disk-storage-explorer/create-snapshot-dialog.png)
 
@@ -129,7 +129,7 @@ A Storage Explorer segítségével a különböző régiókban lévő, vagy azok
 
     ![Pillanatkép megnyitása a portálon](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 Megtudhatja, hogyan [hozhat létre virtuális gépet virtuális merevlemezről a Azure Portal használatával](windows/create-vm-specialized-portal.md).

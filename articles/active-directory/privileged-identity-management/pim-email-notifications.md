@@ -17,10 +17,10 @@ ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe57a44a5a6fa9a631604d92419fd8f5ebcce50a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93394730"
 ---
 # <a name="email-notifications-in-pim"></a>E-mail-értesítések a PIM-ben
@@ -48,7 +48,7 @@ Privileged Identity Management e-maileket küld, ha az alábbi események tört�
 
 Kik kapják meg ezeket az e-maileket az Azure AD-szerepkörökhöz a szerepkörtől, az eseménytől és az értesítések beállításától függően:
 
-| Felhasználó | A szerepkör aktiválása jóváhagyásra vár | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
+| User | A szerepkör aktiválása jóváhagyásra vár | Szerepkör-aktiválási kérelem befejeződött | A PIM engedélyezve van |
 | --- | --- | --- | --- |
 | Kiemelt szerepkörű rendszergazda</br>(Aktivált/jogosult) | Yes</br>(csak akkor, ha nincs megadva explicit jóváhagyó) | Igen* | Yes |
 | Biztonsági rendszergazda</br>(Aktivált/jogosult) | No | Igen* | Yes |
@@ -68,7 +68,7 @@ Az Azure AD-szerepkörökhöz hetente Privileged Identity Management összefogla
 
 Az e-mail négy csempét tartalmaz:
 
-| Csempe | Leírás |
+| Csempe | Description |
 | --- | --- |
 | **Aktivált felhasználók** | Az a szám, ahányszor a felhasználók aktiválták a jogosult szerepkört a szervezeten belül. |
 | **Felhasználó által állandó** | A jogosult hozzárendeléssel rendelkező felhasználók száma állandó. |
@@ -114,7 +114,7 @@ Az alábbi példa egy olyan e-mailt mutat be, amelyet a rendszer akkor küld, am
 
 ![Új Privileged Identity Management e-mail az Azure-erőforrás szerepköreihez](./media/pim-email-notifications/email-resources-new.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)
 - [Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](azure-ad-pim-approval-workflow.md)

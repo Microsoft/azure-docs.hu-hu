@@ -6,10 +6,10 @@ author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
 ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82137586"
 ---
 # <a name="liveness-probe"></a>Élő mintavétel
@@ -34,21 +34,21 @@ A tárolók esetében csak egy élettartam-mintavételt adhat meg, és a követk
 
 * `successThreshold`: Hiba esetén a mintavétel sikeresnek tekintendő, ezért az érték sikeres futtatására van szükséges. A támogatott érték **int**. Az alapértelmezett érték 1, a minimum pedig 1.
 
-Legfeljebb egy mintavételt lehet egyszerre egy tárolóba. Ha a mintavétel nem fejeződik be a **timeoutSeconds**megadott időpontban, várjon, és számoljon a **failureThreshold**felé. 
+Legfeljebb egy mintavételt lehet egyszerre egy tárolóba. Ha a mintavétel nem fejeződik be a **timeoutSeconds** megadott időpontban, várjon, és számoljon a **failureThreshold** felé. 
 
 Emellett Service Fabric a következő mintavételi [állapot-jelentéseket][health-introduction-link] fogja felvenni a **DeployedServicePackage**:
 
 * `OK`: A mintavétel sikeres a **successThreshold**-ben beállított értéknél.
 
-* `Error`: A mintavételi **failureCount**  ==   **failureThreshold**a tároló újraindítása előtt.
+* `Error`: A mintavételi **failureCount**  ==   **failureThreshold** a tároló újraindítása előtt.
 
 * `Warning`: 
-    * A mintavétel meghiúsul, és a **failureCount**  <  **failureThreshold**. Ez az állapotjelentés addig marad, amíg a **failureCount** el nem éri a **FailureThreshold** vagy a **successThreshold**értékben beállított értéket.
+    * A mintavétel meghiúsul, és a **failureCount**  <  **failureThreshold**. Ez az állapotjelentés addig marad, amíg a **failureCount** el nem éri a **FailureThreshold** vagy a **successThreshold** értékben beállított értéket.
     * A hiba után a figyelmeztetés továbbra is a frissített egymást követő sikeres sikereket követően marad.
 
 ## <a name="specifying-a-liveness-probe"></a>Az élő mintavétel meghatározása
 
-A mintavételt a **ServiceManifestImport**alatti ApplicationManifest.xml fájlban adhatja meg.
+A mintavételt a **ServiceManifestImport** alatti ApplicationManifest.xml fájlban adhatja meg.
 
 A mintavétel a következők bármelyikéhez tartozhat:
 
@@ -139,7 +139,7 @@ Ez a mintavétel egy **exec** parancsot ad ki a tárolóba, és megvárja, amíg
   </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kapcsolódó információk a következő cikkben találhatók:
 * [Service Fabric és tárolók][containers-introduction-link]
 

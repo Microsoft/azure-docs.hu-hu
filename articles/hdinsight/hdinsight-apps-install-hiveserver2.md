@@ -9,10 +9,10 @@ ms.author: kecheung
 author: kcheeeung
 ms.date: 08/12/2020
 ms.openlocfilehash: d0a0df4791492c1c9f0d600630d723024c46c1b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88227193"
 ---
 # <a name="scale-hiveserver2-on-azure-hdinsight-clusters-for-high-availability"></a>Az Azure HDInsight-fürtök HiveServer2 méretezése magas rendelkezésre állás érdekében
@@ -37,13 +37,13 @@ Ebben a szakaszban egy további HiveServer2 fog telepíteni a cél gazdagépekre
 
 2. Kattintson a Hozzáadás gombra, és kattintson a HiveServer2 elemre.
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="A Ambari gazdagépek menüje.":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-b.png" alt-text="Adja hozzá a HiveServer2 panelt a gazdagéphez.":::
 
 3. Erősítse meg, hogy a folyamat futni fog. Ismételje meg a 1-3-et az összes kívánt gazdagép esetében.
 
 4. A telepítés befejezése után indítsa újra az összes szolgáltatást elavult konfigurációkkal, és indítsa el a HiveServer2.
 
-:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="A Ambari gazdagépek menüje.":::
+:::image type="content" source="media/hdinsight-apps-install-hiveserver2/hdinsight-install-hiveserver2-c.png" alt-text="Indítsa el a HiveServer2 panelt.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

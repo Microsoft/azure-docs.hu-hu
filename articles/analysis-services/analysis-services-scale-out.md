@@ -8,10 +8,10 @@ ms.date: 09/10/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 24ee31b941d836d296c30927cfb9636f3023fa89
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019433"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
@@ -68,7 +68,7 @@ A SSMS használatával állítsa be a ReplicaSyncMode a speciális tulajdonságo
 
 ![RelicaSyncMode-beállítás](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
 
-Ha a **ReplicaSyncMode = 2**értéket állítja be, attól függően, hogy a gyorsítótár mekkora részét szeretné frissíteni, a lekérdezési replikák további memóriát is felhasználhat. Ahhoz, hogy az adatbázis online állapotú legyen, és lekérdezésekhez is elérhető legyen, attól függően, hogy az adott adat mekkora mértékben módosult, a művelet megkövetelheti a replika *memóriájának megduplázását* , mivel a régi és az új szegmensek egyszerre is megmaradnak a memóriában. A replika-csomópontok ugyanazzal a memóriával rendelkeznek, mint az elsődleges csomópont, és a frissítési műveletek esetében általában extra memória van az elsődleges csomóponton, így valószínűleg nem valószínű, hogy a replikák elfogynak a memóriából. Emellett a gyakori forgatókönyv az, hogy az adatbázis növekményes frissítése az elsődleges csomóponton történik, ezért a memória kétszeres megkötésének követelménye nem lehet gyakori. Ha a szinkronizálási művelet hibát észlel, akkor az alapértelmezett technikát fogja használni (kettő csatlakoztatása/leválasztása egyszerre). 
+Ha a **ReplicaSyncMode = 2** értéket állítja be, attól függően, hogy a gyorsítótár mekkora részét szeretné frissíteni, a lekérdezési replikák további memóriát is felhasználhat. Ahhoz, hogy az adatbázis online állapotú legyen, és lekérdezésekhez is elérhető legyen, attól függően, hogy az adott adat mekkora mértékben módosult, a művelet megkövetelheti a replika *memóriájának megduplázását* , mivel a régi és az új szegmensek egyszerre is megmaradnak a memóriában. A replika-csomópontok ugyanazzal a memóriával rendelkeznek, mint az elsődleges csomópont, és a frissítési műveletek esetében általában extra memória van az elsődleges csomóponton, így valószínűleg nem valószínű, hogy a replikák elfogynak a memóriából. Emellett a gyakori forgatókönyv az, hogy az adatbázis növekményes frissítése az elsődleges csomóponton történik, ezért a memória kétszeres megkötésének követelménye nem lehet gyakori. Ha a szinkronizálási művelet hibát észlel, akkor az alapértelmezett technikát fogja használni (kettő csatlakoztatása/leválasztása egyszerre). 
 
 ### <a name="separate-processing-from-query-pool"></a>Külön feldolgozás a lekérdezési készletből
 
@@ -84,10 +84,10 @@ Egy másik jó mérőszámot kell figyelni a ServerResourceType átlagos QPU. Ez
 
 **A QPU konfigurálása a ServerResourceType szerint**
 
-1. A mérőszámok sorában kattintson a **metrika hozzáadása**lehetőségre. 
-2. Az **erőforrás**területen válassza ki a kiszolgálót, majd a **metrikai névtérben**válassza ki **Analysis Services standard mérőszámok**elemet, majd a **metrika**területen válassza a **QPU**lehetőséget, majd az **Összesítés**területen válassza az **AVG**elemet. 
-3. Kattintson a **felosztás alkalmazása**lehetőségre. 
-4. Az **értékek**területen válassza a **ServerResourceType**lehetőséget.  
+1. A mérőszámok sorában kattintson a **metrika hozzáadása** lehetőségre. 
+2. Az **erőforrás** területen válassza ki a kiszolgálót, majd a **metrikai névtérben** válassza ki **Analysis Services standard mérőszámok** elemet, majd a **metrika** területen válassza a **QPU** lehetőséget, majd az **Összesítés** területen válassza az **AVG** elemet. 
+3. Kattintson a **felosztás alkalmazása** lehetőségre. 
+4. Az **értékek** területen válassza a **ServerResourceType** lehetőséget.  
 
 ### <a name="detailed-diagnostic-logging"></a>Részletes diagnosztikai naplózás
 
@@ -98,9 +98,9 @@ Használjon Azure Monitor naplókat a kibővíthető kiszolgáló erőforrásain
 
 ### <a name="in-azure-portal"></a>Azure Portal
 
-1. A portálon kattintson a **kibővítés**elemre. A csúszka segítségével válassza ki a lekérdezési replika kiszolgálók számát. A kiválasztott replikák száma a meglévő kiszolgálón kívül történik.  
+1. A portálon kattintson a **kibővítés** elemre. A csúszka segítségével válassza ki a lekérdezési replika kiszolgálók számát. A kiválasztott replikák száma a meglévő kiszolgálón kívül történik.  
 
-2. A **feldolgozó kiszolgáló leválasztása a lekérdezési készletből**beállításnál válassza az Igen lehetőséget, ha ki szeretné zárni a feldolgozó kiszolgálót a lekérdezési kiszolgálókról. Az [connections](#connections) alapértelmezett kapcsolati karakterláncot (nem) használó ügyfélkapcsolatokat `:rw` a rendszer átirányítja a lekérdezési készlet replikái között. 
+2. A **feldolgozó kiszolgáló leválasztása a lekérdezési készletből** beállításnál válassza az Igen lehetőséget, ha ki szeretné zárni a feldolgozó kiszolgálót a lekérdezési kiszolgálókról. Az [](#connections) alapértelmezett kapcsolati karakterláncot (nem) használó ügyfélkapcsolatokat `:rw` a rendszer átirányítja a lekérdezési készlet replikái között. 
 
    ![Felskálázási csúszka](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -164,7 +164,7 @@ A kiszolgáló áttekintő oldalán két kiszolgálónév található. Ha még n
 
 A végfelhasználói ügyfélkapcsolatok, például az Power BI Desktop, az Excel és az egyéni alkalmazások esetében használja a **kiszolgálónév nevet**. 
 
-A SSMS, a Visual Studio és a kapcsolatok karakterláncai a PowerShellben, az Azure Function Appsben és az AMO-ben a **felügyeleti kiszolgáló nevét**használják. A felügyeleti kiszolgáló neve egy speciális `:rw` (írható-olvasható) minősítőt tartalmaz. Az összes feldolgozási művelet az (elsődleges) felügyeleti kiszolgálón történik.
+A SSMS, a Visual Studio és a kapcsolatok karakterláncai a PowerShellben, az Azure Function Appsben és az AMO-ben a **felügyeleti kiszolgáló nevét** használják. A felügyeleti kiszolgáló neve egy speciális `:rw` (írható-olvasható) minősítőt tartalmaz. Az összes feldolgozási művelet az (elsődleges) felügyeleti kiszolgálón történik.
 
 ![Kiszolgálók nevei](media/analysis-services-scale-out/aas-scale-out-name.png)
 
@@ -174,7 +174,7 @@ Az árképzési szintet egy több replikával rendelkező kiszolgálón is módo
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-**Probléma:** A felhasználó által lekérdezett hiba nem találja a (z) " ** \<Name of the server> " kiszolgáló példányát a (z) "ReadOnly" kapcsolatok módban.**
+**Probléma:** A felhasználó által lekérdezett hiba nem találja a (z) " **\<Name of the server> " kiszolgáló példányát a (z) "ReadOnly" kapcsolatok módban.**
 
 **Megoldás:** Amikor kiválasztja a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** lehetőséget, a rendszer az alapértelmezett kapcsolati karakterláncot (nem) használó ügyfélkapcsolatokat a `:rw` lekérdezési készlet replikáinak átirányítja. Ha a lekérdezési készlet replikái még nincsenek online állapotban, mert a szinkronizálás még nem fejeződött be, az átirányított ügyfélkapcsolatok sikertelenek lehetnek. A sikertelen kapcsolatok megelőzése érdekében a lekérdezési készletben legalább két kiszolgálónak kell lennie a szinkronizálás végrehajtásához. Minden kiszolgáló külön van szinkronizálva, míg mások online állapotban maradnak. Ha úgy dönt, hogy nem rendelkezik a feldolgozási kiszolgálóval a lekérdezési készletben a feldolgozás során, dönthet úgy, hogy a készletből eltávolítja a feldolgozást, majd a feldolgozás befejezése után visszaadja azt a készletbe, de a szinkronizálás előtt. A szinkronizálási állapot figyeléséhez használja a memória és a QPU metrikáját.
 

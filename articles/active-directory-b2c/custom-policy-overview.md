@@ -12,17 +12,17 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 043cf83d804803e1b5b47d3ac51bbccaa06e4e87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87116415"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Egyéni házirendek a Azure Active Directory B2Cban
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure AD B2C) bérlő viselkedését. A felhasználói folyamatok előre definiálva vannak a Azure AD B2C-portálon a leggyakoribb identitási feladatokhoz. Az egyéni házirendek teljes mértékben szerkeszthetők egy identitás-fejlesztőtől számos különböző feladat elvégzéséhez.
+Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározható az Azure Active Directory B2C- (Azure AD B2C-) bérlő viselkedése. Az Azure AD B2C Portal több előre meghatározott felhasználói folyamatot tartalmaz a leggyakoribb identitáskezelési feladatokhoz. Az identitásfejlesztők teljeskörűen szerkeszthetik az egyéni szabályzatokat számos különböző feladat végrehajtásához.
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Felhasználói folyamatok és egyéni házirendek összehasonlítása
 
@@ -66,7 +66,7 @@ Az egyéni szabályzatok egy vagy több XML formátumú fájlként jelennek meg,
 
 Amikor egy alkalmazás meghívja az RP-házirend fájlját, a Azure AD B2C Identity Experience Framework az alapfájlból származó összes elemet hozzáadja a kiterjesztések fájlból, majd az RP-házirend fájlból az aktuális házirend összeállításához.  Az RP-fájlban szereplő azonos típusú és nevű elemek felülbírálják a bővítmények és a bővítmények felülbírálásának alapjait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni szabályzatok – első lépések](custom-policy-get-started.md)

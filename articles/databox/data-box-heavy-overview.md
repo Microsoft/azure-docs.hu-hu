@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437773"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Mi az az Azure Data Box Heavy?
@@ -59,7 +59,7 @@ Data Box Heavy úgy lett kialakítva, hogy nagy mennyiségű adatmennyiséget he
 
 A Data Box Heavy eszköz ebben a kiadásban a következő funkciókkal rendelkezik.
 
-| Specifikációk                                          | Leírás              |
+| Specifikációk                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Tömeg                                                  | ~ 500 lbs. <br>Az eszköz, amely a kerekek zárolását a szállításhoz|
 | Dimenziók                                              | Szélesség: 26 hüvelyk magasság: 28 cm hosszúság: 48 hüvelyk |
@@ -118,7 +118,7 @@ A Data Box Heavy regisztrálásához hajtsa végre a következő lépéseket:
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com).
 2. Kattintson az **+ erőforrás létrehozása** lehetőségre egy új erőforrás létrehozásához. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
-3. Kattintson a **Létrehozás** elemre.
+3. Kattintson a **Létrehozás** lehetőségre.
 4. Válassza ki a Data Box Heavyhoz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
 5. Válaszoljon az adatforgalomra, a hálózati sávszélességre és az adatátviteli gyakoriságra vonatkozó, az adatok tartózkodási országával/régiójával, az időkerettel és az Azure-szolgáltatással kapcsolatos kérdésekre. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
 

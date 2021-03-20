@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358758"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>Fájlok feltöltése az Azure Blob Storage-ba az AzCopy v10 használatával
@@ -28,7 +28,7 @@ Tekintse meg az első [lépések a AzCopy](storage-use-azcopy-v10.md) című cik
 > [!NOTE] 
 > A cikkben szereplő példák azt feltételezik, hogy Azure Active Directory (Azure AD) használatával adta meg az engedélyezési hitelesítő adatokat.
 >
-> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
+> Ha inkább SAS-tokent használ a blob-adathozzáférés engedélyezéséhez, akkor a tokent az erőforrás URL-címéhez is hozzáfűzheti az egyes AzCopy-parancsokban. Példa: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
@@ -177,7 +177,7 @@ Az alábbi példák bemutatják, hogyan használhatja a `--blob-tags` kapcsolót
 
 A feltöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 
-|Forgatókönyv|Jelölő|
+|Eset|Jelölő|
 |---|---|
 |Fájlok feltöltése hozzáfűző blobként vagy lapblobként.|**– blob típusú** = \[ BlockBlob \| PageBlob \| AppendBlob\]|
 |Feltöltés egy adott hozzáférési szintre (például az archív szintre).|**--Block-blob-réteg** = \[ Nincs \| gyors elérésű \| \| Archívum\]|

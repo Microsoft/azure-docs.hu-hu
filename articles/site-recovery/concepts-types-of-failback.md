@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
 ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84691084"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>VMware virtuális gépek feladat-visszavétele az Azure-ba történő vészhelyreállítás után
@@ -21,7 +21,7 @@ Miután elvégezte a feladatátvételt az Azure-ba a vész-helyreállítási fol
 - Feladat-visszavétel az eredeti helyre 
 - Feladat-visszavétel másik helyre
 
-Ha a feladatátvételt egy VMware virtuális gépen végzi, akkor a feladatátvételt a helyszíni virtuális gépekre is visszaállíthatja, ha még létezik. Ebben az esetben csak a módosítások replikálódnak vissza. Ez a forgatókönyv **eredeti helyre történő helyreállítás**néven ismert. Ha a helyszíni virtuális gép nem létezik, a forgatókönyv egy **másik helyre történő helyreállítás**.
+Ha a feladatátvételt egy VMware virtuális gépen végzi, akkor a feladatátvételt a helyszíni virtuális gépekre is visszaállíthatja, ha még létezik. Ebben az esetben csak a módosítások replikálódnak vissza. Ez a forgatókönyv **eredeti helyre történő helyreállítás** néven ismert. Ha a helyszíni virtuális gép nem létezik, a forgatókönyv egy **másik helyre történő helyreállítás**.
 
 > [!NOTE]
 > Csak az eredeti vCenter és a konfigurációs kiszolgálóra lehet visszaadni. Nem telepíthet új konfigurációs kiszolgálót, és nem végezheti el a feladat-visszavételt. Emellett nem adhat hozzá új vCenter a meglévő konfigurációs kiszolgálóhoz és a feladat-visszavételhez az új vCenter.
@@ -48,7 +48,7 @@ Ha a helyszíni virtuális gép nem létezik a virtuális gép újbóli megóvá
 > [!NOTE]
 > Egy fizikai gép, amikor a feladatátvételt az Azure-ba küldi, csak VMware virtuális gép lehet. Ez ugyanazt a munkafolyamatot követi, mint a másik helyre történő helyreállítás. Győződjön meg arról, hogy legalább egy fő célkiszolgáló és a szükséges ESX/ESXi-gazdagépek felderítésére van szükség, amelyekre vissza kell állítania.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse a feladat- [visszavételi művelet](vmware-azure-failback.md)végrehajtásához szükséges lépéseket.
 
