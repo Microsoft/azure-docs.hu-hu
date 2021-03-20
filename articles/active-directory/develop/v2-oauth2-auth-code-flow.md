@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: aeed031025b9c494b35886861c273e2a7f9d2ac4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653728"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > A kérelem végrehajtásához kattintson az alábbi hivatkozásra. A bejelentkezést követően a böngészőt át kell irányítani a `https://localhost/myapp/` `code` címsorába.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Paraméter    | Kötelező/nem kötelező | Leírás |
+| Paraméter    | Kötelező/nem kötelező | Description |
 |--------------|-------------|--------------|
 | `tenant`    | kötelező    | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** .  |
@@ -124,7 +124,7 @@ error=access_denied
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód  | Leírás    | Ügyfél művelete   |
+| Hibakód  | Description    | Ügyfél művelete   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki és küldje el újra a kérelmet. Ez a kezdeti tesztelés során általában felmerülő fejlesztési hiba. |
 | `unauthorized_client` | Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. | Ez a hiba általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -206,7 +206,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `code` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Paraméter  | Kötelező/nem kötelező | Leírás     |
+| Paraméter  | Kötelező/nem kötelező | Description     |
 |------------|-------------------|----------------|
 | `tenant`   | kötelező   | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | kötelező  | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap alkalmazás-(ügyfél-) azonosítója. |
@@ -269,7 +269,7 @@ A következőhöz hasonló hibaüzenetek jelennek meg:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Hibakódok jogkivonat-végponti hibákhoz
 
-| Hibakód         | Leírás        | Ügyfél művelete    |
+| Hibakód         | Description        | Ügyfél művelete    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollhiba, például hiányzó kötelező paraméter. | Javítsa ki a kérést vagy az alkalmazást, és küldje el újra a kérelmet.   |
 | `invalid_grant`    | Az engedélyezési kód vagy a PKCE-ellenőrző érvénytelen vagy lejárt. | Próbálkozzon egy új kéréssel a `/authorize` végponton, és ellenőrizze, hogy helyesek-e a code_verifier paraméter.  |
@@ -328,7 +328,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Próbálja meg végrehajtani a kérelmet postán! (Ne felejtse el lecserélni a `refresh_token` ) [ ![ Próbálja meg futtatni ezt a kérelmet postán](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| Paraméter     | Típus           | Leírás        |
+| Paraméter     | Típus           | Description        |
 |---------------|----------------|--------------------|
 | `tenant`        | kötelező     | A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek:,, `common` `organizations` `consumers` és bérlői azonosítók. További részletek: [protokoll alapjai](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | kötelező    | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |

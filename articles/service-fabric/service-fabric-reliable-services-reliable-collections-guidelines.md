@@ -4,10 +4,10 @@ description: Irányelvek és javaslatok Service Fabric megbízható gyűjtemény
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784325"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure-Service Fabric megbízható gyűjteményekhez
@@ -54,7 +54,7 @@ Az illékony megbízható gyűjtemények használatának eldöntése során vegy
 * A felejtő partíció Kvórumának elvesztése a teljes adatvesztést eredményezi
 * A biztonsági mentés és a visszaállítás nem érhető el a felejtő szolgáltatásokhoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Az adatkezelés

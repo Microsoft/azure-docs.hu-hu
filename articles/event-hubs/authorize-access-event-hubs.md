@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 5fc35387f4ac28ad4dd28bea0013bcdf1e1e9f02
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92332382"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
@@ -39,7 +39,7 @@ Alapértelmezés szerint az összes Event Hubs erőforrás biztonságos, és csa
 
 Az SAS használatával történő engedélyezéssel kapcsolatos további információkért lásd: [hozzáférés engedélyezése Event Hubs erőforrásokhoz közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a GitHub-tárházban közzétett [Azure RBAC-mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) . 
 - Lásd az alábbi cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
 ms.openlocfilehash: f0fbd93e2a5f4e92089e10e75dc17e304ff80bf6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93147079"
 ---
 # <a name="weather-partner-integration-with-farmbeats"></a>Időjárási partner-integráció a FarmBeats
@@ -47,7 +47,7 @@ A FarmBeats olyan lib-t biztosít, amelyet használhat. A lib jelenleg a [hivatk
 
 **Hitelesítés FarmBeats API-kkal**
 
-A FarmBeats tulajdonosi hitelesítést használ. Az API-kat a kérelem fejléc szakaszában található hozzáférési jogkivonat megadásával érheti el. Például:
+A FarmBeats tulajdonosi hitelesítést használ. Az API-kat a kérelem fejléc szakaszában található hozzáférési jogkivonat megadásával érheti el. Bemutatunk egy példát:
 
 ```
 headers = *{"Authorization": "Bearer " + access_token, …}*
@@ -61,7 +61,7 @@ A hozzáférési jogkivonat csak néhány órára érvényes. Ha lejár, újra m
 
 **Hitelesítés a partner oldali API-kkal**
 
-Ha a Docker-feladatot futtató partneri API-kkal szeretne hitelesítést végezni, az ügyfeleknek meg kell adniuk a hitelesítő adatokat a partner regisztrálása során. Például:
+Ha a Docker-feladatot futtató partneri API-kkal szeretne hitelesítést végezni, az ügyfeleknek meg kell adniuk a hitelesítő adatokat a partner regisztrálása során. Bemutatunk egy példát:
 
 ```json
 {
@@ -75,7 +75,7 @@ Az API szolgáltatás szerializálja ezt a dict, és egy [kulcstartóban](../../
 
 A [Azure Data Factory](../../data-factory/introduction.md) az időjárási feladatok előkészítésére szolgál. Felgyorsítja az erőforrásokat a Docker-kód futtatásához. A Data Factory az adatok biztonságos leküldését is lehetővé teszi a virtuális gépre, amelyen a Docker-feladatok futnak. Az API hitelesítő adatait a Key Vault biztonságosan tárolja. 
 
-A hitelesítő adatok biztonságos sztringként lesznek beolvasva a Key vaultból. A Docker-tároló munkakönyvtárában kiterjesztett tulajdonságokként vannak megadva. A fájl elérési útja */mnt/working_dir/activity.js* . 
+A hitelesítő adatok biztonságos sztringként lesznek beolvasva a Key vaultból. A Docker-tároló munkakönyvtárában kiterjesztett tulajdonságokként vannak megadva. A fájl elérési útja */mnt/working_dir/activity.js*. 
 
 A Docker-kód a Futtatás ideje alatt beolvashatja a *activity.jsról a* hitelesítő adatokat az ügyfélhez tartozó partneri API-k eléréséhez. A JSON-fájlban a hitelesítő adatok a következőhöz hasonlóan jelennek meg:
 
@@ -117,8 +117,8 @@ A Docker programnak két összetevőt kell tartalmaznia: a rendszerindítást é
 
 A rendszerindítási összetevőnek akkor kell futnia, amikor az ügyfél elindítja a Docker-regisztrációt a FarmBeats. A program a következő argumentumokat ( `arg1` és `arg2` ) fogadja el:
 
-- **FARMBEATS API-végpont** : az API-kérelmek FarmBeats API-végpontja. Ez a végpont API-hívásokat kezdeményez a FarmBeats üzemelő példányához.
-- **Azure functions URL-cím** : saját végpont. Ez az URL-cím biztosítja a FarmBeats API-k hozzáférési jogkivonatát. Az URL-cím meghívásával lekérheti `GET` a hozzáférési tokent.
+- **FARMBEATS API-végpont**: az API-kérelmek FarmBeats API-végpontja. Ez a végpont API-hívásokat kezdeményez a FarmBeats üzemelő példányához.
+- **Azure functions URL-cím**: saját végpont. Ez az URL-cím biztosítja a FarmBeats API-k hozzáférési jogkivonatát. Az URL-cím meghívásával lekérheti `GET` a hozzáférési tokent.
 
 A bootstrap létrehozza azokat a metaadatokat, amelyeket a felhasználóknak az időjárási adatok beolvasásához el kell végezniük a feladatok futtatásához. További információ: a [hivatkozás implementációja](https://github.com/azurefarmbeats/noaa_docker). 
 
@@ -127,8 +127,8 @@ Ha testreszabja a *bootstrap_manifest.jsa* fájlban, akkor a hivatkozás rendsze
  > [!NOTE]
  > Ha a *bootstrap_manifest.jsa* fájlon frissíti a [hivatkozás implementációja](https://github.com/azurefarmbeats/noaa_docker) című témakörben leírtak szerint, nem kell létrehoznia a következő metaadatokat. A rendszerindítási program a jegyzékfájlt fogja használni a szükséges metaadatok létrehozásához.
 
-- /**WeatherDataModel** : a WeatherDataModel-metaadatok időjárási adatokat jelölnek. Megfelel a forrás által biztosított adatkészleteknek. Előfordulhat például, hogy egy DailyForecastSimpleModel naponta egyszer átlagos hőmérséklet-, páratartalom-és csapadék-információkat biztosít. Ezzel szemben a DailyForecastAdvancedModel sokkal több információt biztosítanak óránkénti részletességgel. Tetszőleges számú időjárási adatmodellt hozhat létre.
-- /**JobType** : a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket és API-kat fog tartalmazni (például GetDailyForecasts). A JobType használatával engedélyezheti ezeket az adatkészleteket és API-kat a FarmBeats-ben. A feladattípus létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy a helyükhöz vagy a hozzájuk tartozó farmhoz tartozó időjárási adatokhoz lehessen jutni. További információ: JobType és Job API-k a [FarmBeats hencegő](https://aka.ms/farmbeatsswagger)szolgáltatásban.
+- /**WeatherDataModel**: a WeatherDataModel-metaadatok időjárási adatokat jelölnek. Megfelel a forrás által biztosított adatkészleteknek. Előfordulhat például, hogy egy DailyForecastSimpleModel naponta egyszer átlagos hőmérséklet-, páratartalom-és csapadék-információkat biztosít. Ezzel szemben a DailyForecastAdvancedModel sokkal több információt biztosítanak óránkénti részletességgel. Tetszőleges számú időjárási adatmodellt hozhat létre.
+- /**JobType**: a FarmBeats bővíthető felügyeleti rendszerrel rendelkezik. Időjárási adatszolgáltatóként különböző adatkészleteket és API-kat fog tartalmazni (például GetDailyForecasts). A JobType használatával engedélyezheti ezeket az adatkészleteket és API-kat a FarmBeats-ben. A feladattípus létrehozása után az ügyfél elindíthatja az adott típusú feladatokat, hogy a helyükhöz vagy a hozzájuk tartozó farmhoz tartozó időjárási adatokhoz lehessen jutni. További információ: JobType és Job API-k a [FarmBeats hencegő](https://aka.ms/farmbeatsswagger)szolgáltatásban.
 
 ### <a name="jobs"></a>Feladatok
 

@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015247"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL Database-projekt használata a Azure Data Lake U-SQL-adatbázis fejlesztéséhez
@@ -119,7 +119,7 @@ Egy U-SQL-projekt hivatkozhat egy U-SQL Database-projektre. A hivatkozás két m
 
     ![Data Lake Tools for Visual Studio adatbázis-projekt-hivatkozás hozzáadása varázsló](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference-wizard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md)

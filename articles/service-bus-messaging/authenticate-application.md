@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Service Bus entitások (várólisták, témakör�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518228"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
@@ -43,7 +43,7 @@ Mielőtt Azure-szerepkört rendeljen egy rendszerbiztonsági tag számára, hat�
 
 Az alábbi lista azokat a szinteket ismerteti, amelyekkel a Service Bus erőforrásaihoz férhet hozzá, a legszűkebb hatókörtől kezdve:
 
-- **Üzenetsor**, **témakör**vagy **előfizetés**: a szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. A Azure Portal jelenleg nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten Service Bus Azure-szerepkörökhöz. 
+- **Üzenetsor**, **témakör** vagy **előfizetés**: a szerepkör-hozzárendelés az adott Service Bus entitásra vonatkozik. A Azure Portal jelenleg nem támogatja a felhasználók/csoportok/felügyelt identitások hozzárendelését az előfizetési szinten Service Bus Azure-szerepkörökhöz. 
 - **Service Bus névtér**: a szerepkör-hozzárendelés a névtér és a hozzá társított fogyasztói csoport teljes Service Bus topológiáját fedi le.
 - **Erőforráscsoport**: a szerepkör-hozzárendelés az erőforráscsoport összes Service Bus erőforrására vonatkozik.
 - **Előfizetés**: a szerepkör-hozzárendelés az előfizetés összes erőforrás-csoportjának összes Service Bus erőforrására vonatkozik.
@@ -65,7 +65,7 @@ Miután meghatározta a szerepkör-hozzárendelés megfelelő hatókörét, navi
 1. A [Azure Portal](https://portal.azure.com/)navigáljon a Service Bus-névtérhez. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget a névtér hozzáférés-vezérlési beállításainak megjelenítéséhez. Ha Service Bus névteret kell létrehoznia, kövesse a cikk utasításait: [hozzon létre egy Service Bus üzenetküldési névteret](service-bus-create-namespace-portal.md).
 
     ![Access Control kiválasztása a bal oldali menüben](./media/authenticate-application/select-access-control-menu.png)
-1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet. 
+1. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez. Kattintson a **Hozzáadás** gombra az eszköztáron, majd válassza a **szerepkör-hozzárendelés hozzáadása** elemet. 
 
     ![Hozzáadás gomb az eszköztáron](./media/authenticate-application/role-assignments-add-button.png)
 1. A **szerepkör-hozzárendelés hozzáadása** oldalon hajtsa végre a következő lépéseket:
@@ -98,7 +98,7 @@ A következő képek a webalkalmazások regisztrálásának lépéseit mutatják
 > [!Note]
 > Ha natív alkalmazásként regisztrálja az alkalmazást, megadhat bármely érvényes URI-t az átirányítási URI-hoz. Natív alkalmazások esetén ennek az értéknek nem kell valódi URL-címnek lennie. Webalkalmazások esetén az átirányítási URI azonosítónak érvényes URI-nak kell lennie, mert meghatározza azt az URL-címet, amelyhez a tokenek meg vannak határozva.
 
-Az alkalmazás regisztrálását követően megjelenik az **alkalmazás (ügyfél) azonosítója** a **Beállítások**területen:
+Az alkalmazás regisztrálását követően megjelenik az **alkalmazás (ügyfél) azonosítója** a **Beállítások** területen:
 
 ![A regisztrált alkalmazás alkalmazás-azonosítója](./media/authenticate-application/application-id.png)
 
@@ -112,10 +112,10 @@ Az alkalmazásnak szüksége van egy ügyfél titkos kulcsára, hogy igazolja az
 
 1. Ha még nem szerepel az oldalon, navigáljon az alkalmazás regisztrálásához a Azure Portal.
 1. Válassza ki a **tanúsítványok & Secrets** elemet a bal oldali menüben.
-1. Az **ügyfél**titkos kulcsa területen válassza az **új** titkos kulcs lehetőséget egy új titok létrehozásához.
+1. Az **ügyfél** titkos kulcsa területen válassza az **új** titkos kulcs lehetőséget egy új titok létrehozásához.
 
     ![Új ügyfél titka – gomb](./media/authenticate-application/new-client-secret-button.png)
-1. Adja meg a titkos kulcs leírását, és válassza ki a kívánt lejárati időközt, majd kattintson a **Hozzáadás**gombra.
+1. Adja meg a titkos kulcs leírását, és válassza ki a kívánt lejárati időközt, majd kattintson a **Hozzáadás** gombra.
 
     ![Ügyfél titkos oldalának hozzáadása](./media/authenticate-application/add-client-secret-page.png)
 1. Az új titok értékének azonnali másolása biztonságos helyre. A kitöltési érték csak egyszer jelenik meg.

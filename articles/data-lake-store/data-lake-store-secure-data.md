@@ -13,10 +13,10 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: ac7666f4c4e68d24499f9c097dc9bd021d270355
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370695"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1-ben tárolt adatok védelme
@@ -53,7 +53,7 @@ Az Azure AD biztonsági csoportok létrehozásával és a felhasználók csoport
 ## <a name="assign-users-or-security-groups-to-data-lake-storage-gen1-accounts"></a>Felhasználók vagy biztonsági csoportok társítása Data Lake Storage Gen1 fiókokhoz
 Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Storage Gen1 fiókokhoz, a Azure Portal és a Azure Resource Manager API-k használatával vezérelheti a fiók felügyeleti műveleteinek elérését. 
 
-1. Nyisson meg egy Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás**lehetőségre, majd a minden erőforrás panelen kattintson arra a fiók nevére, amelyhez felhasználót vagy biztonsági csoportot szeretne rendelni.
+1. Nyisson meg egy Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás** lehetőségre, majd a minden erőforrás panelen kattintson arra a fiók nevére, amelyhez felhasználót vagy biztonsági csoportot szeretne rendelni.
 
 2. A Data Lake Storage Gen1-fiók panelen kattintson a **Access Control (iam)** elemre. A panel alapértelmezés szerint a tulajdonosként listázza az előfizetés tulajdonosait.
    
@@ -68,7 +68,7 @@ Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Sto
     Az adatműveletek esetében egyéni fájlrendszerbeli engedélyek határozzák meg, hogy a felhasználók mit tehetnek. Ezért az olvasó szerepkörrel rendelkező felhasználók csak a fiókhoz társított felügyeleti beállításokat tekinthetik meg, de a hozzájuk rendelt fájlrendszer-engedélyek alapján is olvashatók és írhatók. Data Lake Storage Gen1 fájlrendszerbeli engedélyeket [a biztonsági csoport társítása ACL-ként a Azure Data Lake Storage Gen1 fájlrendszerhez](#filepermissions)című témakörben talál.
 
     > [!IMPORTANT]
-    > Csak a **tulajdonosi** szerepkör engedélyezi automatikusan a fájlrendszer-hozzáférést. A **közreműködő**, az **olvasó**és az összes többi szerepkör hozzáférés-vezérlési listákat igényel a mappákhoz és fájlokhoz való hozzáférés bármely szintjének engedélyezéséhez.  A **tulajdonosi** szerepkör olyan felügyelői fájl-és mappaengedélyek-engedélyeket biztosít, amelyeket nem lehet felülbírálni az ACL-eken keresztül. Az Azure RBAC-szabályzatok az adatokhoz való hozzáférésével kapcsolatos további információkért lásd: [Azure RBAC for Account Management](data-lake-store-security-overview.md#azure-rbac-for-account-management).
+    > Csak a **tulajdonosi** szerepkör engedélyezi automatikusan a fájlrendszer-hozzáférést. A **közreműködő**, az **olvasó** és az összes többi szerepkör hozzáférés-vezérlési listákat igényel a mappákhoz és fájlokhoz való hozzáférés bármely szintjének engedélyezéséhez.  A **tulajdonosi** szerepkör olyan felügyelői fájl-és mappaengedélyek-engedélyeket biztosít, amelyeket nem lehet felülbírálni az ACL-eken keresztül. Az Azure RBAC-szabályzatok az adatokhoz való hozzáférésével kapcsolatos további információkért lásd: [Azure RBAC for Account Management](data-lake-store-security-overview.md#azure-rbac-for-account-management).
 
 4. Ha olyan csoportot/felhasználót szeretne hozzáadni, amely nem szerepel az **engedélyek hozzáadása** panelen, meghívja őket úgy, hogy beírja az e-mail-címét a **kijelölés** szövegmezőbe, majd kiválasztja őket a listából.
    
@@ -83,10 +83,10 @@ Amikor felhasználókat vagy biztonsági csoportokat rendel hozzá Data Lake Sto
 ## <a name="assign-users-or-security-groups-as-acls-to-the-data-lake-storage-gen1-file-system"></a><a name="filepermissions"></a>Felhasználók vagy biztonsági csoportok társítása ACL-ként a Data Lake Storage Gen1 fájlrendszerhez
 Ha felhasználói/biztonsági csoportokat rendel hozzá a Data Lake Storage Gen1 fájlrendszerhez, a Data Lake Storage Gen1 tárolt adathozzáférés-vezérlést kell megadnia.
 
-1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
+1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő** elemre.
    
     ![Az adatmegjelenítés Adatkezelő használatával](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Az adatmegjelenítés Adatkezelő használatával")
-2. A **adatkezelő** panelen kattintson arra a mappára, amelyhez konfigurálni szeretné az ACL-t, majd kattintson a **hozzáférés**elemre. Ha ACL-eket szeretne hozzárendelni egy fájlhoz, először a fájlra kell kattintania az előnézethez, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre.
+2. A **adatkezelő** panelen kattintson arra a mappára, amelyhez konfigurálni szeretné az ACL-t, majd kattintson a **hozzáférés** elemre. Ha ACL-eket szeretne hozzárendelni egy fájlhoz, először a fájlra kell kattintania az előnézethez, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre.
    
     ![ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben")
 3. A **hozzáférés** panel felsorolja azokat a tulajdonosokat és hozzárendelt engedélyeket, amelyek már hozzá vannak rendelve a gyökérkönyvtárhoz. További hozzáférési ACL-ek hozzáadásához kattintson a **Hozzáadás** ikonra.
@@ -99,10 +99,10 @@ Ha felhasználói/biztonsági csoportokat rendel hozzá a Data Lake Storage Gen1
    * A **hozzárendelt engedélyek** a POSIX ACL-ek, amelyek lehetővé teszik a fájl tulajdonosán vagy csoportján kívüli meghatározott felhasználók vagy csoportok engedélyeinek beállítását. 
      
      További információ: [HDFS ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)-EK. Az ACL-ek Data Lake Storage Gen1-ben való megvalósításával kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
-4. Kattintson a **Hozzáadás** ikonra az **engedélyek kiosztása** panel megnyitásához. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása**elemre, majd a **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott biztonsági csoportot Azure Active Directory. Ha sok csoporttal rendelkezik a kereséshez, a felül található szövegmezővel szűrheti a csoport nevét. Kattintson a hozzáadni kívánt csoportra, majd a **kiválasztás**elemre.
+4. Kattintson a **Hozzáadás** ikonra az **engedélyek kiosztása** panel megnyitásához. Ezen a panelen kattintson a **felhasználó vagy csoport kiválasztása** elemre, majd a **felhasználó vagy csoport kiválasztása** panelen keresse meg a korábban létrehozott biztonsági csoportot Azure Active Directory. Ha sok csoporttal rendelkezik a kereséshez, a felül található szövegmezővel szűrheti a csoport nevét. Kattintson a hozzáadni kívánt csoportra, majd a **kiválasztás** elemre.
    
     ![Csoport hozzáadása](./media/data-lake-store-secure-data/adl.acl.3.png "Csoport hozzáadása")
-5. Kattintson az **engedélyek kiválasztása**elemre, jelölje ki az engedélyeket, hogy az engedélyeket rekurzív módon kell-e alkalmazni, és hogy szeretné-e hozzárendelni az engedélyeket hozzáférési ACL-ként, alapértelmezett ACL-ként vagy mindkettőként. Kattintson az **OK** gombra.
+5. Kattintson az **engedélyek kiválasztása** elemre, jelölje ki az engedélyeket, hogy az engedélyeket rekurzív módon kell-e alkalmazni, és hogy szeretné-e hozzárendelni az engedélyeket hozzáférési ACL-ként, alapértelmezett ACL-ként vagy mindkettőként. Kattintson az **OK** gombra.
    
     ![Képernyőkép az engedélyek kiosztása panelről, a kinevezett engedélyek kiválasztása lehetőséggel és az engedélyek kiválasztása panelen, az OK lehetőség kiválasztásával.](./media/data-lake-store-secure-data/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
    
@@ -112,10 +112,10 @@ Ha felhasználói/biztonsági csoportokat rendel hozzá a Data Lake Storage Gen1
     ![Képernyőkép a hozzáférés panelről, az adatmérnöki lehetőséggel.](./media/data-lake-store-secure-data/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
    
    > [!IMPORTANT]
-   > A jelenlegi kiadásban a **hozzárendelt engedélyek**alatt legfeljebb 28 bejegyzés adható meg. Ha több mint 28 felhasználót szeretne hozzáadni, hozzon létre biztonsági csoportokat, adja hozzá a felhasználókat a biztonsági csoportokhoz, adja hozzá a hozzáférést a Data Lake Storage Gen1 fiókhoz a biztonsági csoportokhoz.
+   > A jelenlegi kiadásban a **hozzárendelt engedélyek** alatt legfeljebb 28 bejegyzés adható meg. Ha több mint 28 felhasználót szeretne hozzáadni, hozzon létre biztonsági csoportokat, adja hozzá a felhasználókat a biztonsági csoportokhoz, adja hozzá a hozzáférést a Data Lake Storage Gen1 fiókhoz a biztonsági csoportokhoz.
    > 
    > 
-7. Ha szükséges, a hozzáférési engedélyeket a csoport hozzáadása után is módosíthatja. Törölje vagy jelölje be a jelölőnégyzetet az egyes engedélyek típusaihoz (olvasás, írás, végrehajtás) attól függően, hogy el kívánja-e távolítani vagy hozzárendelni az engedélyt a biztonsági csoporthoz. Kattintson a **Save (Mentés** ) gombra a módosítások mentéséhez, vagy a módosítások visszavonásához. **Discard**
+7. Ha szükséges, a hozzáférési engedélyeket a csoport hozzáadása után is módosíthatja. Törölje vagy jelölje be a jelölőnégyzetet az egyes engedélyek típusaihoz (olvasás, írás, végrehajtás) attól függően, hogy el kívánja-e távolítani vagy hozzárendelni az engedélyt a biztonsági csoporthoz. Kattintson a **Save (Mentés** ) gombra a módosítások mentéséhez, vagy a módosítások visszavonásához. 
 
 ## <a name="set-ip-address-range-for-data-access"></a>IP-címtartomány beállítása adateléréshez
 Data Lake Storage Gen1 lehetővé teszi, hogy hálózati szinten tovább zárolja az adattárhoz való hozzáférést. Engedélyezheti a tűzfalat, megadhat egy IP-címet, vagy megadhat egy IP-címtartományt a megbízható ügyfelek számára. Ha engedélyezve van, csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak az áruházhoz.
@@ -137,13 +137,13 @@ Az adathozzáférés nem változik, és továbbra is a hozzáférési ACL-ek kez
 ## <a name="remove-security-group-acls-from-a-data-lake-storage-gen1-file-system"></a>Biztonsági csoport ACL-listáinak eltávolítása Data Lake Storage Gen1 fájlrendszerből
 Ha a biztonsági csoport ACL-jeit egy Data Lake Storage Gen1 fájlrendszerből távolítja el, akkor a Data Lake Storage Gen1-fiókban lévő adatokhoz való hozzáférést kell megváltoztatnia.
 
-1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
+1. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő** elemre.
    
     ![Könyvtárak létrehozása Data Lake Storage Gen1 fiókban](./media/data-lake-store-secure-data/adl.start.data.explorer.png "Könyvtárak létrehozása Data Lake Storage Gen1 fiókban")
-2. A **adatkezelő** panelen kattintson arra a mappára, amelyről el szeretné távolítani az ACL-t, majd kattintson a **hozzáférés**elemre. A fájlokhoz tartozó ACL-ek eltávolításához először a fájlra kell kattintania, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre. 
+2. A **adatkezelő** panelen kattintson arra a mappára, amelyről el szeretné távolítani az ACL-t, majd kattintson a **hozzáférés** elemre. A fájlokhoz tartozó ACL-ek eltávolításához először a fájlra kell kattintania, majd a **fájl előnézete panelen** kattintson a **hozzáférés** elemre. 
    
     ![ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben](./media/data-lake-store-secure-data/adl.acl.1.png "ACL-ek beállítása Data Lake Storage Gen1 fájlrendszerben")
-3. A **hozzáférés** panelen kattintson az eltávolítani kívánt biztonsági csoportra. A **hozzáférési részletek** panelen kattintson az **Eltávolítás**elemre.
+3. A **hozzáférés** panelen kattintson az eltávolítani kívánt biztonsági csoportra. A **hozzáférési részletek** panelen kattintson az **Eltávolítás** elemre.
    
     ![Képernyőkép a hozzáférés panelről, az adatmérnöki lehetőséggel és a hozzáférés részletei panelen, az Eltávolítás lehetőséggel.](./media/data-lake-store-secure-data/adl.remove.acl.png "Engedélyek kiosztása a csoportnak")
 

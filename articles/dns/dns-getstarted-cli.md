@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94561369"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Rövid útmutató: Azure DNS-zóna és -rekord létrehozása az Azure CLI használatával
@@ -42,7 +42,7 @@ az group create --name MyResourceGroup --location "East US"
 
 A DNS-zóna az `az network dns zone create` parancs használatával hozható létre. A paranccsal kapcsolatos súgó megtekintéséhez írja be a következőt: `az network dns zone create -h`.
 
-Az alábbi példa egy *contoso. xyz* nevű DNS-zónát hoz létre az erőforráscsoport *MyResourceGroup*. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
+A következő példa egy *contoso.xyz* nevű DNS-zónát hoz létre az erőforráscsoport *MyResourceGroup*. A példát követve, és az értékeket a sajátjaira cserélve hozza létre a DNS-zónát.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -52,7 +52,7 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 DNS-rekordokat az `az network dns record-set [record type] add-record` paranccsal lehet létrehozni. Az A-rekordokkal kapcsolatos segítségért lásd: `azure network dns record-set A add-record -h`.
 
-A következő példa létrehoz egy rekordot a "www" relatív névvel a "contoso. xyz" DNS-zónában a "MyResourceGroup" erőforráscsoport-csoportban. A rekord teljes neve "www. contoso. xyz". A rekord típusa "A", az IP-cím "10.10.10.10", és az alapértelmezett élettartam 3600 másodperc (1 óra).
+Az alábbi példa egy "www" relatív névvel rendelkező rekordot hoz létre a "MyResourceGroup" erőforráscsoport "contoso.xyz" DNS-zónájában. A rekord teljes neve "www.contoso.xyz". A rekord típusa "A", az IP-cím "10.10.10.10", és az alapértelmezett élettartam 3600 másodperc (1 óra).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
@@ -96,7 +96,7 @@ Most, hogy rendelkezik egy "A" teszttel rendelkező DNS-zónával, tesztelheti a
 
    ![Képernyőfelvétel: a parancssori ablak n s keresési paranccsal, valamint a kiszolgáló, a címe, a név és a címe értékeit jeleníti meg.](media/dns-getstarted-portal/nslookup.PNG)
 
-A **www \. contoso. xyz** nevű állomásnév a **10.10.10.10** hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
+A **www \. contoso.xyz** állomásnév a **10.10.10.10** hasonlóan oldódik meg, ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

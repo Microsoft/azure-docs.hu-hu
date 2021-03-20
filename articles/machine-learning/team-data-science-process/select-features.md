@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 940d4c465acb5e8478d2b204ab5b9b18c79254f0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321327"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Funkcióválasztás a csoportos adatelemzési folyamatban (TDSP)
@@ -23,8 +23,8 @@ Ez a cikk ismerteti a szolgáltatások kiválasztásának célját, és példák
 
 A szolgáltatások mérnöki és kiválasztási funkciója a csoportos adatelemzési folyamat (TDSP) egyik része, amely a következő cikkben található: [Mi a csoportos adatelemzési folyamat?](overview.md). A funkciók mérnöki és kiválasztási funkciója a TDSP **szolgáltatások fejlesztése** lépésének részei.
 
-* **szolgáltatás-mérnöki** : Ez a folyamat megkísérli további releváns funkciók létrehozását az adatok meglévő nyers szolgáltatásaiból, és a prediktív teljesítmény növelését a tanulási algoritmusra.
-* **funkció kiválasztása** : Ez a folyamat kiválasztja az eredeti adatszolgáltatások kulcsának részhalmazát, hogy megpróbálja csökkenteni a dimenzióját.
+* **szolgáltatás-mérnöki**: Ez a folyamat megkísérli további releváns funkciók létrehozását az adatok meglévő nyers szolgáltatásaiból, és a prediktív teljesítmény növelését a tanulási algoritmusra.
+* **funkció kiválasztása**: Ez a folyamat kiválasztja az eredeti adatszolgáltatások kulcsának részhalmazát, hogy megpróbálja csökkenteni a dimenzióját.
 
 A rendszer általában a szolgáltatások **fejlesztését** alkalmazza a további funkciók létrehozásához, majd a **funkció kiválasztása** lépéssel megszünteti a lényegtelen, redundáns vagy szorosan korrelált funkciókat.
 

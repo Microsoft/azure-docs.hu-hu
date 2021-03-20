@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 702cc1fc8b135b2eb4af9106a81946873918c4fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101694393"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure szinapszis Analytics – munkaterhelés felügyeleti portál monitorozás
@@ -26,7 +26,7 @@ A munkaterhelés-kezelés figyeléséhez két különböző kategóriájú munka
 
 ## <a name="workload-management-metric-definitions"></a>Munkaterhelés-kezelési metrika definíciói
 
-|Metrika neve                    |Leírás  |Aggregáció típusa |
+|Metrika neve                    |Description  |Aggregáció típusa |
 |-------------------------------|-------------|-----------------|
 |Érvényes Cap-erőforrás százaléka | A *tényleges Cap-erőforrás százalékos* értéke a munkaterhelés-csoport által elérhető erőforrások százalékos arányának korlátozása, amely az egyéb munkaterhelés-csoportok számára kiosztott *tényleges minimális erőforrás-százalékos arányt* veszi figyelembe. A *tényleges Cap-erőforrás százalékos* mérőszáma a `CAP_PERCENTAGE_RESOURCE` [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) szintaxisban található paraméterrel konfigurálható.  A hatályos érték itt van leírva.<br><br>Ha például egy munkaterhelés-csoport a `DataLoads` `CAP_PERCENTAGE_RESOURCE` = 100-as és egy másik munkaterhelés-csoporttal jön létre, és a tényleges minimális erőforrás-százalékos érték 25%, akkor a munkaterhelés-csoport *tényleges maximális erőforrás* -százalékos `DataLoads` értéke 75%.<br><br>A *tényleges Cap-erőforrás százaléka* határozza meg a munkaterhelés (és így lehetséges átviteli sebesség) felső határát.  Ha további átviteli sebességre van szükség a jelenlegi *Cap-erőforrás százalékos* mérőszáma által aktuálisan jelentettnél, növelje a t `CAP_PERCENTAGE_RESOURCE` , csökkentse a `MIN_PERCENTAGE_RESOURCE` többi munkaterhelés-csoportot, vagy bővítse a példányt további erőforrások hozzáadásával.  A csökkentheti a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` párhuzamosságot, de előfordulhat, hogy a teljes átviteli sebesség nem növekszik.| Minimum, átlag, maximum |
 |Effektív minimális erőforrás százaléka |A *tényleges minimális erőforrás-százalékos* érték a munkaterhelés csoport számára fenntartott és elkülönített erőforrások minimális százalékaránya, amely a szolgáltatási szint minimumát veszi figyelembe.  A tényleges minimális erőforrás-százalékos metrika a `MIN_PERCENTAGE_RESOURCE` [MUNKATERHELÉS-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) szintaxisban megadott paraméterrel konfigurálható.  A hatályos érték [itt](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)van leírva.<br><br>A Sum aggregációs típust akkor használja, ha ez a metrika nem szűrt, és nincs szétosztva a rendszeren konfigurált teljes munkaterhelés-elkülönítés figyeléséhez.<br><br>A *tényleges minimális erőforrás-százalékos* érték határozza meg, hogy a munkaterhelés-csoport a garantált Egyidejűség (és így garantált átviteli sebesség) alsó határát is elérheti.  Ha további garantált erőforrásokra van szükség a *tényleges minimális erőforrás-százalékos* metrika által jelenleg jelentettnél, növelje a `MIN_PERCENTAGE_RESOURCE` munkaterhelés-csoporthoz konfigurált paramétert.  A csökkentheti a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` párhuzamosságot, de előfordulhat, hogy a teljes átviteli sebesség nem növekszik. |Minimum, átlag, maximum|

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: bafec2c1b857d3220089e2ca41190987de33edb6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-namely"></a>Oktatóanyag: Azure Active Directory integráció a következőkkel
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
  
     a. Kattintson az **SAML engedélyezése** lehetőségre. 
 
-    b. Az **Identity Provider SSO URL** szövegmezőben illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
+    b. Az **Identity Provider SSO URL** szövegmezőben illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portalból másolt.
     
     c. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben, másolja a tartalmat, majd illessze be az **Identity Provider tanúsítvány** szövegmezőbe.
      
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a következő lépéseke
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,7 +223,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót, azaz.
 
 5. Az **új személy hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    a. A **Utónév** szövegmezőbe írja be a következőt: **Britta** .
+    a. A **Utónév** szövegmezőbe írja be a következőt: **Britta**.
 
     b. A vezetéknév szövegmezőbe írja be a **Simon** **nevet** .
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 06c0b25bcf64cfce01b4144550ef69da8c96ee0e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785854"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Oktatóanyag: automatikus kiegészítés és javaslatok hozzáadása a .NET SDK használatával
@@ -466,7 +466,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Mindig tesztelje az autocomplete függvényeket a bemenet összes formájával.
 * A **setInterval** függvény használata hasznos lehet a felhasználói felületi elemek ellenőrzése és javítása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyagban megvizsgáljuk a felhasználói élmény javításának egy másik módját, a dimenziók használatával szűkítheti a keresést egyetlen kattintással.
 

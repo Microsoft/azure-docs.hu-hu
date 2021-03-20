@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97672899"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Oktatóanyag: az Amazon Business integrálása a Azure Active Directory
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. Az **azonosító (Entity ID)** szövegmezőben írja be az URL-címet a következő minták egyikének használatával:
 
-       | URL-cím | Régió |
+       | URL-cím | Region |
        |-|-|
        | `https://www.amazon.com`| Észak-Amerika |
        | `https://www.amazon.co.jp`| Kelet-Ázsia |
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     1. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minták egyikének használatával:
 
-       | URL-cím | Régió |
+       | URL-cím | Region |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Észak-Amerika |
        | `https://www.amazon.co.jp/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kelet-Ázsia |
@@ -212,7 +212,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Azure AD biztonsági csoport létrehozása a Azure Portalban
 

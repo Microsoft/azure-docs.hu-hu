@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 8563804a736c37acc9a96eb4a186933507f34200
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98760666"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-java"></a>Hibák és kivételek kezelése a Javához készült MSAL-ben
@@ -84,6 +84,6 @@ A MSAL egy mezőt tesz elérhetővé `reason` , amelynek segítségével jobb fe
 
 [!INCLUDE [Active directory error handling retries](../../../includes/active-directory-develop-error-handling-retries.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibák diagnosztizálásához és hibakereséséhez érdemes lehet engedélyezni a [MSAL-ban való naplózást a Javához](msal-logging-java.md) .

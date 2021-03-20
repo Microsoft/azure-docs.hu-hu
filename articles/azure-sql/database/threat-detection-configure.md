@@ -11,10 +11,10 @@ ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 12/01/2020
 ms.openlocfilehash: 1425003c718ca52c0bea712e9d25cd3e4c035cf1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453955"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Az összetett veszélyforrások elleni védelem konfigurálása Azure SQL Database
@@ -41,7 +41,7 @@ A komplex [veszélyforrások elleni védelem](threat-detection-overview.md) az [
 
 A parancsfájlokra példa: a [naplózás és az összetett veszélyforrások elleni védelem konfigurálása a PowerShell használatával](scripts/auditing-threat-detection-powershell-configure.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a komplex [veszélyforrások elleni védelemről](threat-detection-overview.md).
 - További információ a komplex [veszélyforrások elleni védelemről az SQL felügyelt példányában](../managed-instance/threat-detection-configure.md).  

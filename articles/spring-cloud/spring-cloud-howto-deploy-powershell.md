@@ -9,13 +9,13 @@ ms.devlang: azurepowershell
 ms.date: 11/16/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3cb320a37818084f2fbcad22a3cc992655b19c3d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95550011"
 ---
-# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Az Azure Spring Cloud üzembe helyezése Azure PowerShell
+# <a name="deploy-azure-spring-cloud-with-azure-powershell"></a>Azure Spring Cloud üzembe helyezése az Azure PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan hozható létre az Azure Spring Cloud egy példánya az az [. SpringCloud](/powershell/module/Az.SpringCloud) PowerShell-modul használatával.
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre az Azure Spring Cloud egy péld�
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Míg az az **. SpringCloud** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak része lesz, és alapértelmezés szerint elérhető a Azure Cloud Shellon belülről.
+  > Míg az az **. SpringCloud** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.SpringCloud
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre az Azure Spring Cloud egy péld�
   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
   ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 

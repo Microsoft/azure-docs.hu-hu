@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96450923"
 ---
 # <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>Apache Spark feladatok optimalizálása az Azure szinapszis Analyticsben
@@ -176,7 +176,7 @@ Ha például nem megváltoztathatatlan típust ( `string` ) használ az összes�
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hangolás Apache Spark](https://spark.apache.org/docs/2.4.5/tuning.html)
 - [A Apache Spark-feladatok tényleges finomhangolása](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)

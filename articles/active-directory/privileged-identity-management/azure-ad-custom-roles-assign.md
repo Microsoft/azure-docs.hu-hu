@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75e004980ada23a616b57e3c7eb1afb241e09598
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371647"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör kiosztása Privileged Identity Management
@@ -58,23 +58,23 @@ A Privileged Identity Management a Azure Active Directory (Azure AD) alkalmazás
 
     ![Válassza ki a felhasználóhoz rendelendő jogosult szerepkört](./media/azure-ad-custom-roles-assign/select-role.png)
 
-1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás**gombra. Megnyílik a **tag kiválasztása** lista.
+1. Válassza ki a hozzárendelni kívánt szerepkört, majd kattintson a **kiválasztás** gombra. Megnyílik a **tag kiválasztása** lista.
 
     ![Válassza ki azt a felhasználót, akihez a szerepkört hozzárendeli](./media/azure-ad-custom-roles-assign/select-member.png)
 
-1. Válassza ki a szerepkörhöz hozzárendelni kívánt felhasználót, majd kattintson a **kiválasztás**gombra. Megnyílik a **tagsági beállítások** listája.
+1. Válassza ki a szerepkörhöz hozzárendelni kívánt felhasználót, majd kattintson a **kiválasztás** gombra. Megnyílik a **tagsági beállítások** listája.
 
     ![A szerepkör-hozzárendelés típusának beállítása a jogosult vagy az aktív értékre](./media/azure-ad-custom-roles-assign/membership-settings.png)
 
-1. A **tagsági beállítások** lapon válassza a **jogosult** vagy az **aktív**lehetőséget:
+1. A **tagsági beállítások** lapon válassza a **jogosult** vagy az **aktív** lehetőséget:
 
     - A **jogosult** hozzárendelésekhez szükség van a szerepkörhöz hozzárendelt felhasználóra, mielőtt használni tudná a szerepkört. A műveletek lehetnek például a multi-Factor Authentication-ellenőrzések átadása, az üzleti indoklás vagy a kijelölt jóváhagyók jóváhagyásának kérése.
     - Az **aktív** hozzárendelésekhez nincs szükség a hozzárendelt felhasználóra a szerepkör használatára vonatkozó művelet végrehajtásához. Az aktív felhasználók mindig rendelkeznek a szerepkörhöz hozzárendelt jogosultságokkal.
 
 1. Ha az **állandó** jelölőnégyzet be van kapcsolva és elérhető (a szerepkör beállításaitól függően), megadhatja, hogy a hozzárendelés állandó-e. Jelölje be a jelölőnégyzetet, hogy a hozzárendelés tartósan jogosult vagy véglegesen hozzá legyen rendelve. Törölje a jelölőnégyzet jelölését a hozzárendelés időtartamának megadásához.
-1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Mentés** , majd a **Hozzáadás**elemre. Megjelenik egy értesítés a hozzárendelési folyamat állapotáról.
+1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Mentés** , majd a **Hozzáadás** elemre. Megjelenik egy értesítés a hozzárendelési folyamat állapotáról.
 
-A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések**hozzárendelés lehetőséget,  >  **Assign** és ellenőrizze, hogy a szerepkör-hozzárendelés megfelelően van-e azonosítva a jogosult vagy az aktív módon.
+A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések** hozzárendelés lehetőséget,  >   és ellenőrizze, hogy a szerepkör-hozzárendelés megfelelően van-e azonosítva a jogosult vagy az aktív módon.
 
  ![Ellenőrizze, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként jelenik-e meg](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 

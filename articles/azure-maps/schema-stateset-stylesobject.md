@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 08379e66c97d34eea53410190475e90e156a58e2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903343"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
@@ -88,9 +88,9 @@ Az alábbi JSON-példa a három stílus típusának használatát mutatja be.  A
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `keyName` | sztring | Az *állapot* vagy a dinamikus tulajdonság neve. Az értéknek `keyName` egyedinek kell lennie a `StyleObject` tömb belsejében.| Igen |
-| `type` | sztring | Az érték "numerikus". | Igen |
-| `rules` | [`NumberRuleObject`](#numberruleobject)[]| Numerikus stílusú tartományok tömbje, amelyekhez társított színek tartoznak. Az egyes tartományok olyan színeket határoznak meg, amelyeket akkor kell használni, ha az *állapot* megfelel a tartománynak.| Igen |
+| `keyName` | sztring | Az *állapot* vagy a dinamikus tulajdonság neve. Az értéknek `keyName` egyedinek kell lennie a `StyleObject` tömb belsejében.| Yes |
+| `type` | sztring | Az érték "numerikus". | Yes |
+| `rules` | [`NumberRuleObject`](#numberruleobject)[]| Numerikus stílusú tartományok tömbje, amelyekhez társított színek tartoznak. Az egyes tartományok olyan színeket határoznak meg, amelyeket akkor kell használni, ha az *állapot* megfelel a tartománynak.| Yes |
 
 ### <a name="numberruleobject"></a>NumberRuleObject
 
@@ -125,8 +125,8 @@ A következő JSON-mintában mindkét tartomány igaz értéket fog tartani, ha 
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `range` | [RangeObject](#rangeobject) | A [RangeObject](#rangeobject) logikai tartományra vonatkozó feltételeket határoz meg, amelyek esetében az `true` *állapot* megjelenítési színét a tulajdonságban megadott színre kell módosítani `color` . Ha `range` nincs megadva, akkor a tulajdonságban definiált szín `color` mindig fel lesz használva.   | Nem |
-| `color` | sztring | Az a szín, amelyet akkor kell használni, ha az állapot értéke a tartományba esik. A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul> | Igen |
+| `range` | [RangeObject](#rangeobject) | A [RangeObject](#rangeobject) logikai tartományra vonatkozó feltételeket határoz meg, amelyek esetében az `true` *állapot* megjelenítési színét a tulajdonságban megadott színre kell módosítani `color` . Ha `range` nincs megadva, akkor a tulajdonságban definiált szín `color` mindig fel lesz használva.   | No |
+| `color` | sztring | Az a szín, amelyet akkor kell használni, ha az állapot értéke a tartományba esik. A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul> | Yes |
 
 ### <a name="rangeobject"></a>RangeObject
 
@@ -134,10 +134,10 @@ A `RangeObject` meghatározza az a numerikus tartomány értékét [`NumberRuleO
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `minimum` | double | Az x ≥ x `minimum` . szám.| Nem |
-| `maximum` | double | Az x összes x ≤ betűje `maximum` . | Nem |
-| `exclusiveMinimum` | double | Az x által > x szám `exclusiveMinimum` .| Nem |
-| `exclusiveMaximum` | double | Az x által < x szám `exclusiveMaximum` .| Nem |
+| `minimum` | double | Az x ≥ x `minimum` . szám.| No |
+| `maximum` | double | Az x összes x ≤ betűje `maximum` . | No |
+| `exclusiveMinimum` | double | Az x által > x szám `exclusiveMinimum` .| No |
+| `exclusiveMaximum` | double | Az x által < x szám `exclusiveMaximum` .| No |
 
 ### <a name="example-of-numerictypestylerule"></a>Példa NumericTypeStyleRule
 
@@ -172,9 +172,9 @@ A a `StringTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tula
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a  `StyleObject` tömb belsejében.| Igen |
-| `type` | sztring |Az érték a "string". | Igen |
-| `rules` | [`StringRuleObject`](#stringruleobject)[]| N számú *állapotinformációkat* tartalmazó tömb.| Igen |
+| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a  `StyleObject` tömb belsejében.| Yes |
+| `type` | sztring |Az érték a "string". | Yes |
+| `rules` | [`StringRuleObject`](#stringruleobject)[]| N számú *állapotinformációkat* tartalmazó tömb.| Yes |
 
 ### <a name="stringruleobject"></a>StringRuleObject
 
@@ -184,9 +184,9 @@ A karakterlánc-érték egyeztetése megkülönbözteti a kis-és nagybetűket.
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `stateValue1` | sztring | A szín, ha az érték karakterlánca stateValue1. | Nem |
-| `stateValue2` | sztring | A szín, ha az érték karakterlánca stateValue. | Nem |
-| `stateValueN` | sztring | A szín, ha az érték karakterlánca stateValueN. | Nem |
+| `stateValue1` | sztring | A szín, ha az érték karakterlánca stateValue1. | No |
+| `stateValue2` | sztring | A szín, ha az érték karakterlánca stateValue. | No |
+| `stateValueN` | sztring | A szín, ha az érték karakterlánca stateValueN. | No |
 
 ### <a name="example-of-stringtypestylerule"></a>Példa StringTypeStyleRule
 
@@ -214,9 +214,9 @@ A a `BooleanTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tul
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a `StyleObject`  tömb belsejében.| Igen |
-| `type` | sztring |Az érték "boolean". | Igen |
-| `rules` | [`BooleanRuleObject`](#booleanruleobject)1| Logikai pár, amely színekkel `true` és `false` *állapotokkal* rendelkezik.| Igen |
+| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a `StyleObject`  tömb belsejében.| Yes |
+| `type` | sztring |Az érték "boolean". | Yes |
+| `rules` | [`BooleanRuleObject`](#booleanruleobject)1| Logikai pár, amely színekkel `true` és `false` *állapotokkal* rendelkezik.| Yes |
 
 ### <a name="booleanruleobject"></a>BooleanRuleObject
 
@@ -224,8 +224,8 @@ A `BooleanRuleObject` meghatározza a színeket `true` és az `false` értékeke
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `true` | sztring | Az *állapot* értékének megadásakor használandó szín `true` A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul>| Igen |
-| `false` | sztring | Az *állapot* értékének megadásakor használandó szín `false` | Igen |
+| `true` | sztring | Az *állapot* értékének megadásakor használandó szín `true` A `color` tulajdonság egy JSON-karakterlánc a következő formátumok valamelyikében: <ul><li> HTML-stílusú hexadecimális értékek </li><li> RGB ("#ff0", "#ffff00", "RGB (255, 255, 0)")</li><li> RGBA ("RGBA (255, 255, 0, 1)")</li><li> HSL ("HSL (100, 50%, 50%)")</li><li> HSLA ("HSLA (100, 50%, 50%, 1)")</li><li> Előre definiált HTML-színek nevei, például sárga és kék.</li></ul>| Yes |
+| `false` | sztring | Az *állapot* értékének megadásakor használandó szín `false` | Yes |
 
 ### <a name="example-of-booleantypestylerule"></a>Példa BooleanTypeStyleRule
 

@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 898360d8e22803e17ff4da7d3b63f5595cad47ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015485"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Az Azure Blockchain Workbench-adatbázis adatainak lekérése
@@ -41,7 +41,7 @@ Az adatbázishoz való csatlakozáshoz:
 
 Az adatbázis-kiszolgáló neve és az adatbázisnév használatával csatlakozhat a Blockchain Workbench-adatbázishoz a saját fejlesztési vagy jelentéskészítő eszközével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)

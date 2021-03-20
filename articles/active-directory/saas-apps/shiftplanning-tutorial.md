@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Oktatóanyag: Azure Active Directory integráció az emberiséggel
@@ -61,13 +61,13 @@ Az emberiség Azure AD-be való integrálásának konfigurálásához hozzá kel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **emberiség**kifejezést, válassza az **emberiség** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **emberiség** kifejezést, válassza az **emberiség** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Emberiség az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az emberiséggel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az emberiséggel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az emberiség kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **emberi** alkalmazások integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **emberi** alkalmazások integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,10 +126,10 @@ Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához h
 
 1. Egy másik böngészőablakban jelentkezzen be az **emberiség** céges webhelyére rendszergazdaként.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
+2. A felső menüben kattintson a **rendszergazda** elemre.
 
     ![Felügyelet](./media/shiftplanning-tutorial/iC786619.png "Rendszergazda")
-3. Az **integráció**alatt kattintson az **egyszeri bejelentkezés**elemre.
+3. Az **integráció** alatt kattintson az **egyszeri bejelentkezés** elemre.
 
     ![Képernyőfelvétel: az integrációs menüből kiválasztható egyetlen Sign-On.](./media/shiftplanning-tutorial/iC786620.png "Egyszeri bejelentkezés")
 
@@ -137,9 +137,9 @@ Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához h
 
     ![Képernyőfelvétel: az egyetlen Sign-On szakasz, ahol megadhatja a leírt értékeket.](./media/shiftplanning-tutorial/iC786905.png "Egyszeri bejelentkezés")
 
-    a. Válassza az **SAML engedélyezve**lehetőséget.
+    a. Válassza az **SAML engedélyezve** lehetőséget.
 
-    b. Jelölje be a **jelszó-bejelentkezés engedélyezése**jelölőnégyzetet.
+    b. Jelölje be a **jelszó-bejelentkezés engedélyezése** jelölőnégyzetet.
 
     c. Az **SAML kiállító URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
 
@@ -147,13 +147,13 @@ Az Azure AD egyszeri bejelentkezés az emberiséggel való konfigurálásához h
 
     e. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja vágólapra a tartalmát, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
-    f. Kattintson a **Beállítások mentése**gombra.
+    f. Kattintson a **Beállítások mentése** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -178,15 +178,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az emberiség számára való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **emberiség**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **emberiség** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **emberiség**lehetőséget.
+2. Az alkalmazások listában válassza az **emberiség** lehetőséget.
 
     ![Az emberiség hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -208,15 +208,15 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az Emberiségbe, az embe
 
 1. Jelentkezzen be az **emberiség** vállalatának webhelyére rendszergazdaként.
 
-2. Kattintson a **rendszergazda**elemre.
+2. Kattintson a **rendszergazda** elemre.
 
     ![Felügyelet](./media/shiftplanning-tutorial/iC786619.png "Rendszergazda")
 
-3. Kattintson a **személyzet**elemre.
+3. Kattintson a **személyzet** elemre.
 
     ![Személyzet](./media/shiftplanning-tutorial/ic786623.png "Személyzet")
 
-4. A **műveletek**területen kattintson az **alkalmazottak hozzáadása**lehetőségre.
+4. A **műveletek** területen kattintson az **alkalmazottak hozzáadása** lehetőségre.
 
     ![Alkalmazottak hozzáadása](./media/shiftplanning-tutorial/iC786624.png "Alkalmazottak hozzáadása")
 
@@ -224,9 +224,9 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek az Emberiségbe, az embe
 
     ![Alkalmazottak mentése](./media/shiftplanning-tutorial/iC786625.png "Alkalmazottak mentése")
 
-    a. Írja be egy érvényes Azure AD-fiók **utónevét**, **vezetéknevét**és **e-mail-címét** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
+    a. Írja be egy érvényes Azure AD-fiók **utónevét**, **vezetéknevét** és **e-mail-címét** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
 
-    b. Kattintson az **alkalmazottak mentése**gombra.
+    b. Kattintson az **alkalmazottak mentése** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, az emberiség által biztosított felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

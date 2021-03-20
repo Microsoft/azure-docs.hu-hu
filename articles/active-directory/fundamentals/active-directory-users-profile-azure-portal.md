@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27896bac6f5436fb6717e4bc1ab0a1f9381904ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92370916"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Felhasználói profil adatainak hozzáadása vagy frissítése az Azure Active Directory használatával
@@ -28,7 +28,7 @@ Ahogy látja, a felhasználó profiljában további információk érhetők el, 
 ## <a name="to-add-or-change-profile-information"></a>Profil adatainak hozzáadása vagy módosítása
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) felhasználói rendszergazdaként a szervezet számára.
 
-2. Válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**lehetőséget, majd válasszon ki egy felhasználót. Például _Alain Charon_.
+2. Válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válasszon ki egy felhasználót. Például _Alain Charon_.
 
     Megjelenik az **Alain Charon-profil** lap.
 
@@ -50,7 +50,7 @@ Ahogy látja, a felhasználó profiljában további információk érhetők el, 
 
     - **Hitelesítési kapcsolattartási adatok.** Ellenőrizze ezeket az adatokat, és győződjön meg arról, hogy a felhasználó számára aktív telefonszám és e-mail-cím található. Ezeket az információkat a Azure Active Directory használja annak biztosítására, hogy a felhasználó valóban a felhasználó legyen a bejelentkezés során. A hitelesítési kapcsolattartási adatokat csak globális rendszergazda frissítheti.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
     A rendszer minden módosítást elment a felhasználó számára.
 

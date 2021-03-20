@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 1ae35d1ac35dacfab2690980d57973dce050382b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242857"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privát hivatkozás a Azure Database for MySQL
@@ -41,7 +41,7 @@ A telepítés végén az Azure-beli virtuális gép csak az USA nyugati régiój
 
 A privát hivatkozással mostantól olyan hálózati hozzáférés-vezérlőket állíthat be, mint például a NSG a privát végponthoz való hozzáférés korlátozására. Az egyes Azure-beli Pásti-erőforrások ezután adott privát végpontokra vannak leképezve. A rosszindulatú bennfentesek csak a leképezett (például egy Azure Database for MySQL) erőforráshoz férnek hozzá, és nincs más erőforrás.
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat privát társon keresztül
+## <a name="on-premises-connectivity-over-private-peering"></a>Helyi kapcsolat privát társhálózat-létesítésen keresztül
 
 Amikor a helyi gépekről csatlakozik a nyilvános végponthoz, az IP-címet egy kiszolgálói szintű tűzfalszabály használatával kell hozzáadnia az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
 

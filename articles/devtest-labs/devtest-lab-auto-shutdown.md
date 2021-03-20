@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be az automatikus leállítási sz
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cd7974580ea30c9d0591c88380a4e626711bad1e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93318978"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Az automatikus leállítás konfigurálása a tesztkörnyezet és a számítási virtuális gépek számára a Azure DevTest Labsban
@@ -43,7 +43,7 @@ A laborhoz tartozó szabályzatok megtekintéséhez vagy módosításához köve
      ![Automatikus leállítás részletei](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 4. Ha engedélyezi ezt a házirendet, az aktuális laborban lévő összes virtuális gép leállításához válassza ki az időt (és az időzónát).
 5. Adja meg az **Igen** vagy a **nem** lehetőséget arra a lehetőségre, hogy 30 perccel a megadott automatikus leállítási idő előtt küldjön értesítést. Ha az **Igen** lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
     Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről el szeretné távolítani ezt a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus leállítási** beállítást.
 
@@ -72,9 +72,9 @@ Ha a laborban ezt a házirendet állítja be, a labor-felhasználók nem tudják
 
 1. A **virtuális gép** lapon válassza az **automatikus leállítás** lehetőséget a **műveletek** szakasz bal oldali menüjében.
 2. Az **automatikus leállítás** lapon válassza **a** be lehetőséget a szabályzat engedélyezéséhez **, majd a** letiltásához.
-3. Ha engedélyezi ezt a házirendet, itt adhatja meg a virtuális gép leállításának **időpontját** (és **időzónáját** ).
+3. Ha engedélyezi ezt a házirendet, itt adhatja meg a virtuális gép leállításának **időpontját** (és **időzónáját**).
 4. Válassza az **Igen** vagy a **nem** lehetőséget, ha 30 perccel a megadott automatikus leállítási időpont előtt szeretne értesítést küldeni. Ha az **Igen** lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 
     ![Automatikus leállítás beállítása számítási virtuális géphez](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
 

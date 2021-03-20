@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 7ef219ca147fe96fc65f14bbf3ba6a565adc95ec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520914"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az MS Azure SSO-hozzáféréssel a Ethidex-megfelelőségi iroda számára™
@@ -47,14 +47,14 @@ A Ethidex megfelelőségi Office-™ Azure AD-ba történő MS Azure SSO-hozzáf
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **MS Azure SSO-hozzáférés Ethidex megfelelőségi iroda™** a keresőmezőbe.
 1. Válassza az **MS Azure SSO-hozzáférés lehetőséget a Ethidex megfelelőségi iroda™** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ms-azure-sso-access-for-ethidex-compliance-office"></a>Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az MS Azure SSO-hozzáféréshez a Ethidex megfelelőségi iroda™
 
-Konfigurálja és tesztelje az Azure AD SSO-t MS Azure SSO-hozzáféréssel a Ethidex megfelelőségi iroda™ egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között, amely MS Azure SSO-hozzáférést biztosít a Ethidex megfelelőségi iroda™.
+Konfigurálja és tesztelje az Azure AD SSO-t MS Azure SSO-hozzáféréssel a Ethidex megfelelőségi iroda™ egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között, amely MS Azure SSO-hozzáférést biztosít a Ethidex megfelelőségi iroda™.
 
 Az Azure AD SSO konfigurálásához és teszteléséhez MS Azure SSO-hozzáféréssel a Ethidex megfelelőségi iroda™éhez végezze el a következő építőelemeket:
 
@@ -69,8 +69,8 @@ Az Azure AD SSO konfigurálásához és teszteléséhez MS Azure SSO-hozzáfér�
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)az **MS Azure SSO-hozzáférés a Ethidex megfelelőségi iroda™** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **MS Azure SSO-hozzáférés a Ethidex megfelelőségi iroda™** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot [az MS Azure SSO-hozzáféréssel a Ethidex megfelelőségi iroda™ támogatási csapatának](mailto:support@ethidex.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. MS Azure SSO-hozzáférés a Ethidex-megfelelőségi iroda™ Application Application az SAML-kijelentéseket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. A Ethidex megfelelőségi iroda MS Azure SSO-hozzáférése™ alkalmazás a **User. mail**használatával rendeli hozzá a **NameIdentifier** , ezért az attribútum-hozzárendelést úgy kell szerkesztenie, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútum-hozzárendelést.
+1. MS Azure SSO-hozzáférés a Ethidex-megfelelőségi iroda™ Application Application az SAML-kijelentéseket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName** leképezéssel van leképezve. A Ethidex megfelelőségi iroda MS Azure SSO-hozzáférése™ alkalmazás a **User. mail** használatával rendeli hozzá a **NameIdentifier** , ezért az attribútum-hozzárendelést úgy kell szerkesztenie, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútum-hozzárendelést.
 
     ![image](common/edit-attribute.png)
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -112,13 +112,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatát teszi lehetővé a B. Simon számára, hogy hozzáférést biztosítson az MS Azure SSO-hozzáféréshez a Ethidex megfelelőségi iroda™.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **MS Azure SSO-hozzáférés a Ethidex megfelelőségi iroda™**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **MS Azure SSO-hozzáférés a Ethidex megfelelőségi iroda™** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 

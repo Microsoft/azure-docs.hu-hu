@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: victorh
 ms.openlocfilehash: 3c61dc689d19e1a7d6f9b6dbefae846e9458d750
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146858"
 ---
-# <a name="secure-virtual-hubs-using-check-point-cloudguard-connect"></a>Virtuális hubok védelme a Cloudguard-kapcsolódási ponttal
+# <a name="secure-virtual-hubs-using-check-point-cloudguard-connect"></a>Virtuális központok védelme a Check Point Cloudguard Connecttel
 
 A CloudGuard-kapcsolódási pont megbízható biztonsági partner a Azure Firewall Managerben. Védelmet nyújt a globálisan elosztott fiókirodák számára az internetre (B2I) vagy a Virtual Network to Internet (V2I) kapcsolatokra a fejlett veszélyforrások elleni megelőzéssel. 
 

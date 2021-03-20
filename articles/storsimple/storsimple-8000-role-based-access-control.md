@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 49c38e23ddbbfe983ff82ad25363c744292d4d69
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92518976"
 ---
 # <a name="azure-role-based-access-control-for-storsimple"></a>Azure szerepköralapú hozzáférés-vezérlés a StorSimple-hez
@@ -37,7 +37,7 @@ Az Azure RBAC a szerepkörök alapján rendelhető hozzá. A szerepkörök bizon
 
 * **Egyéni szerepkörök** – ha a beépített szerepkörök nem felelnek meg az igényeinek, létrehozhat egyéni Azure-szerepköröket a StorSimple. Egyéni Azure-szerepkör létrehozásához hozzon létre egy beépített szerepkört, szerkessze, majd importálja újra a környezetbe. A szerepkör letöltése és feltöltése Azure PowerShell vagy az Azure CLI használatával történik. További információ: [Egyéni szerepkörök létrehozása szerepköralapú Access Controlhoz](../role-based-access-control/custom-roles.md).
 
-Ha szeretné megtekinteni a StorSimple-eszköz felhasználóinak számára elérhető különböző szerepköröket a Azure Portalban, lépjen a StorSimple Eszközkezelő szolgáltatáshoz, és lépjen a **hozzáférés-vezérlés (iam) > szerepkörök**elemre.
+Ha szeretné megtekinteni a StorSimple-eszköz felhasználóinak számára elérhető különböző szerepköröket a Azure Portalban, lépjen a StorSimple Eszközkezelő szolgáltatáshoz, és lépjen a **hozzáférés-vezérlés (iam) > szerepkörök** elemre.
 
 
 ## <a name="create-a-custom-role-for-storsimple-infrastructure-administrator"></a>Egyéni szerepkör létrehozása a StorSimple-infrastruktúra rendszergazdájához
@@ -58,7 +58,7 @@ Az alábbi példában a beépített szerepkör- **olvasóval** kezdjük, amellye
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Nyissa meg a JSON-fájlt a Visual Studióban. Láthatja, hogy egy tipikus Azure-szerepkör három fő szakaszból, **műveletből**, nem **tapintatokból**és **AssignableScopes**áll.
+4. Nyissa meg a JSON-fájlt a Visual Studióban. Láthatja, hogy egy tipikus Azure-szerepkör három fő szakaszból, **műveletből**, nem **tapintatokból** és **AssignableScopes** áll.
 
     A **művelet** szakaszban megjelenik a szerepkörre vonatkozó összes engedélyezett művelet. Minden művelet hozzá van rendelve egy erőforrás-szolgáltatóhoz. StorSimple-infrastruktúra rendszergazdája használja az erőforrás- `Microsoft.StorSimple` szolgáltatót.
 
@@ -70,7 +70,7 @@ Az alábbi példában a beépített szerepkör- **olvasóval** kezdjük, amellye
 
     A **tapintatok** szakaszban az adott Azure-szerepkörre vonatkozó összes korlátozott művelet szerepel a felsorolásban. Ebben a példában egyetlen művelet sincs korlátozva.
     
-    A **AssignableScopes**alatt az előfizetési azonosítók szerepelnek a felsorolásban. Győződjön meg arról, hogy az Azure-szerepkör tartalmazza a explicit előfizetés-azonosítót, ahol a használatban van. Ha nincs megadva a megfelelő előfizetés-azonosító, nem importálhatja a szerepkört az előfizetésében.
+    A **AssignableScopes** alatt az előfizetési azonosítók szerepelnek a felsorolásban. Győződjön meg arról, hogy az Azure-szerepkör tartalmazza a explicit előfizetés-azonosítót, ahol a használatban van. Ha nincs megadva a megfelelő előfizetés-azonosító, nem importálhatja a szerepkört az előfizetésében.
 
     Szerkessze a fájlt, és vegye figyelembe az előző szempontokat.
 
@@ -183,9 +183,9 @@ A **felhasználói értesítések hozzáadásával** nyomon követheti a folyama
 
 A szerepkör létrehozása után megtekintheti a szerepkörhöz társított engedélyeket a Azure Portal.
 
-1. A szerepkörhöz társított engedélyek megtekintéséhez lépjen a **hozzáférés-vezérlés (iam) > szerepkörök > StorSimple-infrastruktúra rendszergazdája**elemre. Megjelenik a szerepkörben lévő felhasználók listája.
+1. A szerepkörhöz társított engedélyek megtekintéséhez lépjen a **hozzáférés-vezérlés (iam) > szerepkörök > StorSimple-infrastruktúra rendszergazdája** elemre. Megjelenik a szerepkörben lévő felhasználók listája.
 
-2. Válasszon ki egy StorSimple-infrastruktúra rendszergazdai felhasználót, és kattintson az **engedélyek**elemre.
+2. Válasszon ki egy StorSimple-infrastruktúra rendszergazdai felhasználót, és kattintson az **engedélyek** elemre.
 
     ![Az StorSimple infra rendszergazdai szerepkör engedélyeinek megtekintése](./media/storsimple-8000-role-based-access-control/rbac-roles-view-permissions.png)
 

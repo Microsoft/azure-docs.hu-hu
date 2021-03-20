@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: db2cfc8ba0389f98d6f9407d7b4a31612e28b46a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519010"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindtickle"></a>Oktatóanyag: Azure Active Directory integráció a MindTickle
@@ -63,13 +63,13 @@ A MindTickle Azure AD-be való integrálásának konfigurálásához hozzá kell
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **MindTickle**kifejezést, válassza a **MindTickle** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **MindTickle** kifejezést, válassza a **MindTickle** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![MindTickle az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az MindTickle-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az MindTickle-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a MindTickle kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés MindTickle való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés MindTickle való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **MindTickle** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **MindTickle** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -99,13 +99,13 @@ Az Azure AD egyszeri bejelentkezés MindTickle való konfigurálásához hajtsa 
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
+4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal** rendelkezik, hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **metaadat-fájl feltöltése**elemre.
+    a. Kattintson a **metaadat-fájl feltöltése** elemre.
 
     ![Metaadat-fájl feltöltése](common/upload-metadata.png)
 
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés** elemre.
 
     ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
 
@@ -140,7 +140,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **MindTickle** oldalon,
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -165,15 +165,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a MindTickle hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **MindTickle**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **MindTickle** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **MindTickle**lehetőséget.
+2. Az alkalmazások listában válassza a **MindTickle** lehetőséget.
 
     ![Az MindTickle hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -189,7 +189,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-mindtickle-test-user"></a>MindTickle-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a MindTickle-ben. A MindTickle támogatja az **igény szerinti felhasználói üzembe**helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a MindTickle-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a MindTickle-ben. A MindTickle támogatja az **igény szerinti felhasználói üzembe** helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a MindTickle-ben, a rendszer egy újat hoz létre a hitelesítés után.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ba7b8af9b50b9173f5e2040bb8b623eeafdd538
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453862"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
@@ -149,7 +149,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 1. Illessze be a szövegmezőbe másolt SSH-kulcsot, és mentse a fájlt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Teljes körű útmutatók, amelyek bemutatják a folyamat összes lépését az **adott forgatókönyvek** esetében is. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példa útmutatói](walkthroughs.md) című témakörben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 

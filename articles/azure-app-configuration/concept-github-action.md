@@ -7,10 +7,10 @@ ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 1c290032f7a33079b560d3c4cc1fcb9526e70331
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762157"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
@@ -308,16 +308,16 @@ A bemeneti paraméterek a művelet által a Futtatás során használt adatokat 
 
 | Bemeneti név | Kötelező? | Érték |
 |----|----|----|
-| configurationFile | Igen | A tárházban található konfigurációs fájl relatív elérési útja.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
-| formátumban | Igen | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
-| connectionString | Igen | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
-| elválasztó | Igen | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |
-| előtag | Nem | A kulcsok elejéhez hozzáadandó előtag. |
-| címke | Nem | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
-| szigorú | Nem | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték a hamis. |
-| mélység | Nem | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
-| tags | Nem | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
+| configurationFile | Yes | A tárházban található konfigurációs fájl relatív elérési útja.  A glob-minták támogatottak, és több fájlt is tartalmazhatnak. |
+| formátumban | Yes | A konfigurációs fájl fájlformátuma.  Az érvényes formátumok a következők: JSON, YAML, Properties. |
+| connectionString | Yes | Az alkalmazás konfigurációs példányához tartozó kapcsolatok karakterlánca. A rendszer a GitHub-tárházban titkosként tárolja a kapcsolatok karakterláncát, és csak a titkos nevet kell használni a munkafolyamatban. |
+| elválasztó | Yes | A konfigurációs fájl kulcs-érték párokra való összeolvasztásakor használt elválasztó.  Az érvényes értékek a következők:. , ; : - _ __ / |
+| előtag | No | A kulcsok elejéhez hozzáadandó előtag. |
+| címke | No | Kulcs-érték párok beállításakor használt címke Ha nincs megadva, a rendszer null címkét használ. |
+| szigorú | No | Logikai érték, amely meghatározza, hogy engedélyezve van-e a szigorú üzemmód. Az alapértelmezett érték a hamis. |
+| mélység | No | A konfigurációs fájl összeolvasztásának maximális mélysége.  A mélységnek pozitív számnak kell lennie.  Az alapértelmezett érték nem rendelkezik maximális mélységgel. |
+| tags | No | Megadja a kulcs-érték párokon beállított címkét.  A várt formátum a következő alakzat JSON-objektumának sztringesített formája: {[propertyName: string]: string;} Minden tulajdonságnév-érték címkévé válik. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan automatizálható az alkalmazás konfigurációjának szinkronizálása a GitHub művelettel, és hogyan használható az alkalmazás-konfigurációs példány frissítéseinek automatizálására. A következő [cikkből](./concept-app-configuration-event.md)megtudhatja, hogy az Azure-alkalmazások konfigurációjának hogyan működik a kulcs-érték párok változásaira.

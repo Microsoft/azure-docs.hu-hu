@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96862309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a helyi SharePoint-környezettel
@@ -154,7 +154,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
     1. Válassza a **megbízható identitás-szolgáltató** lehetőséget, majd válassza ki az imént regisztrált szolgáltatót a *AzureAD*.
 
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
     ![A hitelesítési szolgáltató konfigurálása](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
@@ -176,7 +176,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Azure
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
     1. Most már megoszthatja a webhelyet, TestUser@contoso.com és engedélyezheti, hogy ez a felhasználó hozzáférjen.
 

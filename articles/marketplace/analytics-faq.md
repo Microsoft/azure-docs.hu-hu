@@ -8,10 +8,10 @@ ms.date: 11/10/2020
 author: sayantanroy83
 ms.author: sroy
 ms.openlocfilehash: 1b98948100c06868cd14f636f2049ca515fec18d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94564804"
 ---
 # <a name="commercial-marketplace-analytics-common-questions"></a>Kereskedelmi piactér Analytics – gyakori kérdések
@@ -30,7 +30,7 @@ Miért érdemes ezt az üzenetet látni:
 
 - Jelenleg nem léteznek beszerzések a közzétett ajánlatokhoz a kereskedelmi piactéren. Ez azt jelentheti, hogy az ajánlatok a kereskedelmi piactéren működnek, és az ügyfelek megtekintik a Terméklista lapjait, de az ügyfelek még nem tettek lépéseket a vásárlásra és a telepítésre.
 - Lehetséges, hogy az ajánlat közzététele folyamatban van, de még nem él. Az ügyfelek csak élő ajánlatokat szerezhetnek be. Az ajánlatok állapotának vizsgálatához tekintse meg az **Összefoglalás** oldalt az [elemzés irányítópulton](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary). További információ: [Összefoglalás irányítópult a kereskedelmi piactér elemzésében](summary-dashboard.md).
-- Az ajánlatok **felvehetik Önnel a kapcsolatot velem** , amelyek csak a listában szereplő ajánlatok, és nem vásárolhatók meg a kereskedelmi piactéren lévő ügyfelek. Bár ezek az ajánlatok létrehoznak érdeklődőket, és megosztották Önnel, a megrendelések nem jönnek létre ezekhez az ajánlatokhoz, mert nem vásárolhatók meg. Az ajánlat-lista típusának megadásához nyissa meg az ajánlat telepítési lapját.
+- Az ajánlatok **felvehetik Önnel a kapcsolatot velem**, amelyek csak a listában szereplő ajánlatok, és nem vásárolhatók meg a kereskedelmi piactéren lévő ügyfelek. Bár ezek az ajánlatok létrehoznak érdeklődőket, és megosztották Önnel, a megrendelések nem jönnek létre ezekhez az ajánlatokhoz, mert nem vásárolhatók meg. Az ajánlat-lista típusának megadásához nyissa meg az ajánlat telepítési lapját.
 
 ### <a name="i-know-i-have-analytics-data-so-why-does-the-no-analytics-available-message-appear"></a>Tudom, hogy van Analytics-adatszolgáltatásom, hogy miért nem jelenik meg a nem elérhető Analitika üzenet?
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762166"
 ---
 # <a name="workflow"></a>Munkafolyamat
@@ -51,6 +51,6 @@ Az alábbi általános lépések egy tipikus TPM enklávé-igazolási munkafolya
 
 ![TPM-ellenőrzési folyamat](./media/tpm-validation-flow.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

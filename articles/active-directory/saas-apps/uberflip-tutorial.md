@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 6bf3eccec70619bf73397e315c6d851f753ec52f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521832"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Oktatóanyag: Azure Active Directory integráció a Uberflip
@@ -55,7 +55,7 @@ A Uberflip Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
    ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -63,13 +63,13 @@ A Uberflip Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
    ![Az új alkalmazás lehetőség](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **Uberflip**kifejezést. A keresési eredmények között válassza a **Uberflip**lehetőséget, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
+1. A keresőmezőbe írja be a **Uberflip** kifejezést. A keresési eredmények között válassza a **Uberflip** lehetőséget, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
    ![Uberflip az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Uberflip-mel konfigurálja és teszteli a **B Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és egy kapcsolódó felhasználó között a Uberflip-ben.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Uberflip-mel konfigurálja és teszteli a **B Simon** nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és egy kapcsolódó felhasználó között a Uberflip-ben.
 
 Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Uberflip** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Uberflip** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési lehetőség konfigurálása](common/select-sso.png)
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés Uberflip való konfigurálásához hajtsa v�
      > [!NOTE]
      > Ez az érték nem valós. Frissítse ezt az értéket a tényleges válasz URL-címével. A tényleges érték beszerzéséhez lépjen kapcsolatba a [Uberflip támogatási csapatával](mailto:support@uberflip.com). A Azure Portal **alapszintű SAML-konfiguráció** paneljén látható mintázatokat is megtekintheti.
 
-   * Az alkalmazás SP-ben kezdeményezett egyszeri bejelentkezéses módban való konfigurálásához válassza a **további URL-címek beállítása**lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet:
+   * Az alkalmazás SP-ben kezdeményezett egyszeri bejelentkezéses módban való konfigurálásához válassza a **további URL-címek beállítása** lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következő URL-címet:
 
      `https://app.uberflip.com/users/login`
 
@@ -135,11 +135,11 @@ Az egyszeri bejelentkezés az Uberflip oldalon való konfigurálásához el kell
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 
     ![A felhasználók és a "minden felhasználó" lehetőség](common/users.png)
 
-1. A képernyő felső részén válassza az **+ új felhasználó**lehetőséget.
+1. A képernyő felső részén válassza az **+ új felhasználó** lehetőséget.
 
     ![Új felhasználói beállítás](common/new-user.png)
 
@@ -149,37 +149,37 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 
     1. A név mezőbe írja be a **BSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BSimon \@ \<yourcompanydomain> . \<extension> **. Például **BSimon \@ contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BSimon \@ \<yourcompanydomain> . \<extension>**. Például **BSimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Uberflip.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Uberflip**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Uberflip** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **Uberflip**lehetőséget.
+1. Az alkalmazások listában válassza a **Uberflip** lehetőséget.
 
     ![Uberflip az alkalmazások listájában](common/all-applications.png)
 
-1. A bal oldali ablaktábla **kezelés**területén válassza a **felhasználók és csoportok**lehetőséget.
+1. A bal oldali ablaktábla **kezelés** területén válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" lehetőség](common/users-groups-blade.png)
 
-1. Válassza a **+ felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **+ felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** panelen válassza a **B Simon** elemet a **felhasználók** listában, majd válassza a **Kiválasztás elemet** a panel alján.
 
-1. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. A panel alján válassza a **kiválasztás**lehetőséget.
+1. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. A panel alján válassza a **kiválasztás** lehetőséget.
 
-1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-an-uberflip-test-user"></a>Uberflip-teszt felhasználó létrehozása
 

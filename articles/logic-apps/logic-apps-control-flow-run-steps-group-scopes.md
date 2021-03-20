@@ -7,17 +7,17 @@ ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 95b5cc191ac6857bf8e1b09e70b22d928473fe03
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92314844"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Műveletek futtatása a csoport állapota alapján a Azure Logic Apps hatókörök használatával
 
-Ha csak a műveletek egy másik csoportjának sikeres vagy sikertelen végrehajtása után szeretne műveleteket futtatni, csoportosítsa ezeket a műveleteket egy *hatókörön*belül. Ez a struktúra akkor hasznos, ha a műveleteket logikai csoportként szeretné szervezni, kiértékeli a csoport állapotát, és végrehajtja a hatókör állapotán alapuló műveleteket. A hatókör összes műveletének futása után a hatókör a saját állapotát is lekéri. Például hatóköröket alkalmazhat, ha a [kivételt és a hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes)megvalósítását szeretné végrehajtani. 
+Ha csak a műveletek egy másik csoportjának sikeres vagy sikertelen végrehajtása után szeretne műveleteket futtatni, csoportosítsa ezeket a műveleteket egy *hatókörön* belül. Ez a struktúra akkor hasznos, ha a műveleteket logikai csoportként szeretné szervezni, kiértékeli a csoport állapotát, és végrehajtja a hatókör állapotán alapuló műveleteket. A hatókör összes műveletének futása után a hatókör a saját állapotát is lekéri. Például hatóköröket alkalmazhat, ha a [kivételt és a hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes)megvalósítását szeretné végrehajtani. 
 
-A hatókör állapotának vizsgálatához használhatja a logikai alkalmazások futtatási állapotának meghatározására használt feltételeket, például **sikeres**, **sikertelen**, **megszakított**és így tovább. Alapértelmezés szerint ha a hatókör összes művelete sikeres, a hatókör állapota **sikeresként**van megjelölve. Ha azonban a hatókörben lévő bármelyik művelet meghiúsul vagy meg lett szakítva, a hatókör állapota **nem**megfelelőként van megjelölve. A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
+A hatókör állapotának vizsgálatához használhatja a logikai alkalmazások futtatási állapotának meghatározására használt feltételeket, például **sikeres**, **sikertelen**, **megszakított** és így tovább. Alapértelmezés szerint ha a hatókör összes művelete sikeres, a hatókör állapota **sikeresként** van megjelölve. Ha azonban a hatókörben lévő bármelyik művelet meghiúsul vagy meg lett szakítva, a hatókör állapota **nem** megfelelőként van megjelölve. A hatókörök korlátozásait lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
 Íme például egy olyan magas szintű logikai alkalmazás, amely egy hatókör használatával futtat adott műveleteket és egy feltételt a hatókör állapotának vizsgálatához. Ha a hatókörben lévő műveletek végrehajtása sikertelen vagy váratlanul véget ért, akkor a hatókör **hibásként** van megjelölve vagy **megszakítva** , és a logikai alkalmazás "hatóköre sikertelen" üzenetet küld. Ha az összes hatókörrel rendelkező művelet sikeres, a logikai alkalmazás "hatókör sikeres" üzenetet küld.
 
@@ -78,7 +78,7 @@ A logikai alkalmazást bármikor mentheti, így gyakran mentheti a munkáját.
       | **1. útvonalpont** | <*Start*> | Adja meg az útvonal forrását. | 
       | **2. útvonalpont** | <*végén*> | Adja meg az útvonal célhelyét. | 
       | **Elkerülés** | Nincsenek | Adja meg azokat az elemeket, amelyeket el szeretne kerülni az útvonalon, például autópályákon, útdíjon és így tovább. A lehetséges értékekért lásd: [útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route). | 
-      | **Optimalizálás** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
+      | **Optimalizálása** | timeWithTraffic | Válasszon egy paramétert az útvonal optimalizálásához, például a távolságot, az aktuális forgalmi információkkal rendelkező időt és így tovább. Ez a példa a következő értéket használja: "timeWithTraffic" | 
       | **Távolság mértékegysége** | <*saját preferencia*> | Adja meg az útvonal kiszámításához használandó távolsági egységet. Ez a példa a következő értéket használja: "Mile" | 
       | **Közlekedési mód** | Vezetés | Adja meg az útvonal utazási módját. Ez a példa a "vezetés" értéket használja. | 
       | **Tranzit dátuma és időpontja** | Nincsenek | Csak az átviteli módra vonatkozik. | 
@@ -161,7 +161,7 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
 1. Adjon hozzá egy hatókört a kívánt munkafolyamat-helyhez. Ha például egy hatókört szeretne hozzáadni a logikai alkalmazás munkafolyamatának meglévő lépései között, kövesse az alábbi lépéseket: 
 
    1. Vigye az egérmutatót arra a nyílra, amelyhez hozzá szeretné adni a hatókört. 
-   Válassza a **pluszjelet** ( **+** ) > a **művelet hozzáadása**lehetőséget.
+   Válassza a **pluszjelet** ( **+** ) > a **művelet hozzáadása** lehetőséget.
 
       ![Hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
@@ -185,10 +185,10 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
   
 1. A feltételben adja hozzá ezeket a kifejezéseket, és győződjön meg arról, hogy a hatókör állapota "sikertelen" vagy "megszakított" értékű-e. 
 
-   1. További sor hozzáadásához válassza a **Hozzáadás**lehetőséget. 
+   1. További sor hozzáadásához válassza a **Hozzáadás** lehetőséget. 
 
    1. Az egyes sorokban kattintson a bal oldali mezőbe, hogy megjelenjen a dinamikus tartalmak listája. 
-   A dinamikus tartalom listából válassza a **kifejezés**lehetőséget. A Szerkesztés mezőbe írja be ezt a kifejezést, majd kattintson **az OK gombra**: 
+   A dinamikus tartalom listából válassza a **kifejezés** lehetőséget. A Szerkesztés mezőbe írja be ezt a kifejezést, majd kattintson **az OK gombra**: 
    
       `result('Scope')[0]['status']`
 
@@ -205,7 +205,7 @@ Ezután adjon hozzá egy hatókört, hogy csoportosítsa az adott műveleteket, 
 
       Most állítsa be a feltétel `runAfter` tulajdonságát, hogy a feltétel ellenőrizze a hatókör állapotát, és futtatja a későbbi lépésekben definiált egyezési műveletet.
 
-   1. A **Ha a hatókör sikertelen** állapotban van, válassza a **három** pontot (...), majd a **Futtatás a konfigurálás után**lehetőséget.
+   1. A **Ha a hatókör sikertelen** állapotban van, válassza a **három** pontot (...), majd a **Futtatás a konfigurálás után** lehetőséget.
 
       ![A "runAfter" tulajdonság konfigurálása](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
 
@@ -228,7 +228,7 @@ A kész logikai alkalmazás most már a következő példához hasonlít:
 
 ## <a name="test-your-work"></a>A munka tesztelése
 
-A tervező eszköztárán válassza a **Futtatás**lehetőséget. Ha az összes hatókörrel rendelkező művelet sikeres, a "hatókör sikeres" üzenet jelenik meg. Ha bármelyik hatókörrel rendelkező művelet nem sikerül, a "hatókör sikertelen" üzenet jelenik meg. 
+A tervező eszköztárán válassza a **Futtatás** lehetőséget. Ha az összes hatókörrel rendelkező művelet sikeres, a "hatókör sikeres" üzenet jelenik meg. Ha bármelyik hatókörrel rendelkező művelet nem sikerül, a "hatókör sikertelen" üzenet jelenik meg. 
 
 <a name="scopes-json"></a>
 

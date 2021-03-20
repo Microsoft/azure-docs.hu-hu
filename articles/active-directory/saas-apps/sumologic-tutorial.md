@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 2dcc52688cabebaa6eb813e3240150ea8774e716
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521894"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SumoLogic
@@ -47,14 +47,14 @@ A SumoLogic Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **SumoLogic** kifejezést a keresőmezőbe.
 1. Válassza ki a **SumoLogic** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sumologic"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a SumoLogic
 
-Konfigurálja és tesztelje az Azure AD SSO-t a SumoLogic a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SumoLogic-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a SumoLogic a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SumoLogic-ben.
 
 Az Azure AD SSO és a SumoLogic konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -69,8 +69,8 @@ Az Azure AD SSO és a SumoLogic konfigurálásához és teszteléséhez hajtsa v
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **SumoLogic** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SumoLogic** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -128,7 +128,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -140,13 +140,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a SumoLogic.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **SumoLogic**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **SumoLogic** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -158,15 +158,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be a SumoLogic vállalati webhelyre rendszergazdaként.
 
-1. Lépjen a ** \> biztonság kezelése**gombra.
+1. Lépjen a **\> biztonság kezelése** gombra.
 
     ![Kezelés](./media/sumologic-tutorial/ic778556.png "Kezelés")
 
-1. Kattintson az **SAML**elemre.
+1. Kattintson az **SAML** elemre.
 
     ![Globális biztonsági beállítások](./media/sumologic-tutorial/ic778557.png "Globális biztonsági beállítások")
 
-1. A **válasszon ki egy konfigurációt, vagy hozzon létre egy újat** listából válassza az **Azure ad**lehetőséget, majd kattintson a **Konfigurálás**elemre.
+1. A **válasszon ki egy konfigurációt, vagy hozzon létre egy újat** listából válassza az **Azure ad** lehetőséget, majd kattintson a **Konfigurálás** elemre.
 
     ![Képernyőfelvétel: az SAML 2,0 konfigurálása, ahol kiválaszthatja az Azure A D-t.](./media/sumologic-tutorial/ic778558.png "SAML 2,0 konfigurálása")
 
@@ -174,21 +174,21 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőfelvétel: az SAML 2,0 konfigurálása párbeszédpanel, ahol megadhatja a leírt értékeket.](./media/sumologic-tutorial/ic778559.png "SAML 2,0 konfigurálása")
 
-    a. A **konfiguráció neve** szövegmezőbe írja be az **Azure ad**nevet.
+    a. A **konfiguráció neve** szövegmezőbe írja be az **Azure ad** nevet.
 
-    b. Válassza a **hibakeresési mód**lehetőséget.
+    b. Válassza a **hibakeresési mód** lehetőséget.
 
-    c. A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
+    c. A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    d. A **Authn-kérelem URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    d. A **Authn-kérelem URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     e. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja vágólapra a tartalmát, majd illessze be a teljes tanúsítványt **X. 509 tanúsítvány** szövegmezőbe.
 
-    f. **E-mail-attribútumként**válassza az **SAML-tárgy használata**lehetőséget.  
+    f. **E-mail-attribútumként** válassza az **SAML-tárgy használata** lehetőséget.  
 
-    : Válassza az **SP kezdeményezett bejelentkezési konfiguráció**elemet.
+    : Válassza az **SP kezdeményezett bejelentkezési konfiguráció** elemet.
 
-    h. A **bejelentkezési útvonal** szövegmezőbe írja be az **Azure** nevet, majd kattintson a **Mentés**gombra.
+    h. A **bejelentkezési útvonal** szövegmezőbe írja be az **Azure** nevet, majd kattintson a **Mentés** gombra.
 
 ### <a name="create-sumologic-test-user"></a>SumoLogic-tesztelési felhasználó létrehozása
 
@@ -198,7 +198,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a SumoLogic, a SumoLogic
 
 1. Jelentkezzen be a **SumoLogic** -bérlőbe.
 
-1. Lépjen a ** \> felhasználók kezelése**gombra.
+1. Lépjen a **\> felhasználók kezelése** gombra.
 
     ![A képernyőfelvételen a kezelés menüből kiválasztott felhasználók láthatók.](./media/sumologic-tutorial/ic778561.png "Felhasználók")
 
@@ -210,11 +210,11 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a SumoLogic, a SumoLogic
 
     ![Új felhasználó](./media/sumologic-tutorial/ic778563.png "Új felhasználó")
 
-    a. Írja be annak az Azure AD-fióknak a kapcsolódó adatait, amelyet az **Utónév**, a **vezetéknév**és az **e-mail** szövegmezőbe szeretne kiépíteni.
+    a. Írja be annak az Azure AD-fióknak a kapcsolódó adatait, amelyet az **Utónév**, a **vezetéknév** és az **e-mail** szövegmezőbe szeretne kiépíteni.
   
     b. Válasszon egy szerepkört.
   
-    c. **Állapotként**válassza az **aktív**lehetőséget.
+    c. **Állapotként** válassza az **aktív** lehetőséget.
   
     d. Kattintson a **Mentés** gombra.
 

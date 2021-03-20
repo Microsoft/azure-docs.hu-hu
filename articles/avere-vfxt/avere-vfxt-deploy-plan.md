@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: 9f852ec056f3252005bba0bc142c05a9cfbe6c20
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342399"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
@@ -74,7 +74,7 @@ Kövesse az alábbi irányelveket a avere vFXT-fürt hálózati infrastruktúrá
   | Erőforrás | Meglévőt használ? | Követelmények |
   |----------|-----------|----------|
   | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie|
-  | Tárfiók | **Igen** , ha a fürt létrehozása után csatlakoztat egy meglévő BLOB-tárolót <br/>  **Nem** , ha új BLOB-tárolót hoz létre a fürt létrehozása során | A meglévő blob-tárolónak üresnek kell lennie <br/> &nbsp; |
+  | A(z) | **Igen** , ha a fürt létrehozása után csatlakoztat egy meglévő BLOB-tárolót <br/>  **Nem** , ha új BLOB-tárolót hoz létre a fürt létrehozása során | A meglévő blob-tárolónak üresnek kell lennie <br/> &nbsp; |
   | Virtuális hálózat | Yes | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
   | Alhálózat | Yes | Nem szerepelhet más erőforrás |
 
@@ -86,7 +86,7 @@ A avere vFXT-fürt a következő IP-címeket használja:
 
 * Egy fürt felügyeleti IP-címe. Ez a címe szükség szerint áthelyezhető a csomópontról a fürt csomópontjaira, hogy mindig elérhető legyen. Ezzel a címtől csatlakozhat a avere Vezérlőpult-konfigurációs eszközhöz.
 * Minden fürtcsomóponton:
-  * Legalább egy ügyfél felé irányuló IP-cím. (Az összes ügyfél felé irányuló címet a fürt *VServer*kezeli, és szükség szerint áthelyezheti az IP-címeket a csomópontok között.)
+  * Legalább egy ügyfél felé irányuló IP-cím. (Az összes ügyfél felé irányuló címet a fürt *VServer* kezeli, és szükség szerint áthelyezheti az IP-címeket a csomópontok között.)
   * Egy IP-cím a fürt kommunikációjához
   * Egy példány IP-címe (a virtuális géphez rendelve)
 
@@ -161,7 +161,7 @@ Egy nyilvános IP-címmel rendelkező vezérlő biztonságának növelése érde
 
 A fürt létrehozásakor megadhatja, hogy létre kell-e hozni egy nyilvános IP-címet a fürt vezérlőjén.
 
-* Ha **új virtuális hálózatot** vagy **új alhálózatot**hoz létre, a rendszer egy **nyilvános** IP-címet rendel hozzá a fürthöz.
+* Ha **új virtuális hálózatot** vagy **új alhálózatot** hoz létre, a rendszer egy **nyilvános** IP-címet rendel hozzá a fürthöz.
 * Ha egy meglévő virtuális hálózatot és alhálózatot választ ki, akkor a fürt csak **privát** IP-címmel rendelkezik.
 
 ## <a name="vm-access-roles"></a>VIRTUÁLIS gépek hozzáférési szerepkörei

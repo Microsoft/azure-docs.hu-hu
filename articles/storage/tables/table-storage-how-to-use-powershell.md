@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: tables
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9a7502d48095fe18b983c1971d5145f51e766c95
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93306911"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table Storage-műveletek végrehajtása a Azure PowerShell 
@@ -57,7 +57,7 @@ Add-AzAccount
 
 ## <a name="retrieve-list-of-locations"></a>Helyszínek listájának beolvasása
 
-Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezek a példák a **eastus** -t használják. Tárolja ezt az értéket a változó **helyén** későbbi használatra.
+Ha nem tudja, melyik helyet szeretné használni, kilistázhatja az elérhető helyeket. A megjelenő listában keresse meg a használni kívánt helyet. Ezek a példák a **eastus**-t használják. Tárolja ezt az értéket a változó **helyén** későbbi használatra.
 
 ```powershell
 Get-AzLocation | select Location
@@ -120,7 +120,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 > [!IMPORTANT]
 > A CloudTable használata kötelező, ha a **AzTable** PowerShell-modullal dolgozik. Hívja meg a **Get-AzStorageTable** parancsot az objektumra mutató hivatkozás beszerzéséhez. Ez a parancs a táblát is létrehozza, ha még nem létezik.
 
-Ha a **AzTable** -t használó táblán műveleteket szeretne végrehajtani, akkor egy adott tábla CloudTable tulajdonságára kell hivatkoznia.
+Ha a **AzTable**-t használó táblán műveleteket szeretne végrehajtani, akkor egy adott tábla CloudTable tulajdonságára kell hivatkoznia.
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable

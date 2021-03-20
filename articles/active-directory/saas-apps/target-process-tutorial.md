@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: ef21ba46ff64ec2b3c47e9659660fd51f84fbf2e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Oktatóanyag: Azure Active Directory integráció a TargetProcess
@@ -62,13 +62,13 @@ A TargetProcess Azure AD-be való integrálásának konfigurálásához hozzá k
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **TargetProcess**kifejezést, válassza a **TargetProcess** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **TargetProcess** kifejezést, válassza a **TargetProcess** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![TargetProcess az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Az Azure AD SSO konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TargetProcess-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TargetProcess-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TargetProcess kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **TargetProcess** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **TargetProcess** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
 ### <a name="configure-targetprocess-single-sign-on"></a>TargetProcess egyetlen Sign-On konfigurálása
 
-1. A **TargetProcess**belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A **TargetProcess** belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
@@ -137,9 +137,9 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
 1. Jelentkezzen be rendszergazdaként a TargetProcess alkalmazásba.
 
-1. A felső menüben kattintson a **telepítés**elemre.
+1. A felső menüben kattintson a **telepítés** elemre.
 
-    ![Telepítés](./media/target-process-tutorial/tutorial_target_process_05.png)
+    ![Beállítás](./media/target-process-tutorial/tutorial_target_process_05.png)
 
 1. Kattintson a **Beállítások** fülre.
 
@@ -153,13 +153,13 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     ![Egyetlen Sign-On konfigurálása](./media/target-process-tutorial/tutorial_target_process_08.png)
 
-    a. Kattintson az **egyszeri bejelentkezés engedélyezése**lehetőségre.
+    a. Kattintson az **egyszeri bejelentkezés engedélyezése** lehetőségre.
 
     b. A **bejelentkezési URL** szövegmezőben illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
     c. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben, másolja a tartalmat, majd illessze be a **tanúsítvány** szövegmezőbe.
 
-    d. kattintson az **JIT-kiépítés engedélyezése**lehetőségre.
+    d. kattintson az **JIT-kiépítés engedélyezése** lehetőségre.
 
     e. Kattintson a **Mentés** gombra.
 
@@ -167,7 +167,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -192,15 +192,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a TargetProcess hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **TargetProcess**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **TargetProcess** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **TargetProcess**lehetőséget.
+2. Az alkalmazások listában válassza a **TargetProcess** lehetőséget.
 
     ![Az TargetProcess hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

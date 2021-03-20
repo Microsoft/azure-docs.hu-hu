@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: 95b5a7650e0990f13149daeed87da8e261ec37e4
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241123"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Azure Database for MySQL adattitkosításának hibáinak megoldása
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan azonosíthatók és oldhatók meg a Azure Databa
 
 ## <a name="introduction"></a>Bevezetés
 
-Ha úgy konfigurálja az adattitkosítást, hogy Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálók folyamatos hozzáférést igényelnek a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és megváltoztatja az állapotát * nem **elérhető** _ értékre a Azure Portal.
+Ha úgy konfigurálja az adattitkosítást, hogy Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálók folyamatos hozzáférést igényelnek a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
 
 Ha már nincs szüksége egy nem elérhető Azure Database for MySQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes` (felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
 
@@ -44,12 +44,12 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 #### <a name="disabled-key-vault"></a>A Key Vault letiltva
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _ * Magyarázat * *: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
+- **Magyarázat**: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
 
 #### <a name="missing-key-vault-permissions"></a>Hiányzó Key Vault-engedélyek
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Magyarázat** : a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
+- **Magyarázat**: a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
 
 ### <a name="mitigation"></a>Kockázatcsökkentés
 

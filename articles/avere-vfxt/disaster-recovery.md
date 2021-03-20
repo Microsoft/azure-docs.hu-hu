@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 5cc4678b082aa5a4a3f90518ff8fac448f414f1a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92342246"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Vész-helyreállítási útmutató az Azure-hoz készült avere-vFXT
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve hozzon létre egy adatbiztonsági mentést egy m
 
    Jegyezze fel az alapszintű Filer nevét és a csatlakozási információkat (a Vezérlőpult **névtér** lapján), hogy replikálja a tárolót a biztonsági mentést követően.
 
-   Távolítsa el a Core filert a fürt Vezérlőpultjának használatával. [Nyissa meg a fürt Vezérlőpultját](avere-vfxt-cluster-gui.md) , és válassza a **Core**Filer  >  **Manage Core filers**elemet. Keresse meg azt a tárolási rendszert, amelyről biztonsági másolatot szeretne készíteni, majd az **Eltávolítás** gombbal törölje azt a fürtből.
+   Távolítsa el a Core filert a fürt Vezérlőpultjának használatával. [Nyissa meg a fürt Vezérlőpultját](avere-vfxt-cluster-gui.md) , és válassza a **Core** Filer  >  **Manage Core filers** elemet. Keresse meg azt a tárolási rendszert, amelyről biztonsági másolatot szeretne készíteni, majd az **Eltávolítás** gombbal törölje azt a fürtből.
 
 1. Hozzon létre egy új, üres blob Storage-tárolót egy másik tárolási fiókban egy másik régióban.
 
@@ -108,7 +108,7 @@ Ha a biztonsági mentési tárolót az Azure-fürthöz tartozó avere-vFXT szere
 
 1. Vegyen fel egy új, az ismétlődő blob-tárolóra mutató Cloud Core filert.
 
-   Győződjön meg arról, hogy a célként megadott tároló már tartalmaz adatmennyiséget az alapszintű Filer-létrehozási varázsló **gyűjtői tartalom** beállítása területén. (A rendszernek riasztást kell kapnia, ha véletlenül **üresen**hagyja ezt a tulajdonságot.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
+   Győződjön meg arról, hogy a célként megadott tároló már tartalmaz adatmennyiséget az alapszintű Filer-létrehozási varázsló **gyűjtői tartalom** beállítása területén. (A rendszernek riasztást kell kapnia, ha véletlenül **üresen** hagyja ezt a tulajdonságot.)  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
 
 1. Ha szükséges, frissítse az ügyfeleket úgy, hogy az új fürtöt vagy az új Core Filer-t az eredeti helyett csatlakoztassa. (Ha a Replacement Core filert az eredeti tárolóval megegyező névvel és csatlakozási útvonallal adja hozzá, akkor nem kell frissítenie az ügyfelek folyamatait, kivéve, ha új IP-címen kell csatlakoztatnia az új fürtöt.)
 

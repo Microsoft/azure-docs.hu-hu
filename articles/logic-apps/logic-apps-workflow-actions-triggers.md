@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ea4a4a47e91e88c00ca8a4e886d0372a24482907
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784308"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>A séma-referenciák útmutatója az triggerekhez és a műveletek típusaihoz Azure Logic Apps
@@ -47,7 +47,7 @@ Az eseményindítók ezekkel a legfelső szintű elemekkel rendelkeznek, bár eg
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*trigger – név*> | Sztring | Az trigger neve | 
 | <*trigger-típus*> | Sztring | Az trigger típusa (például "http" vagy "ApiConnection") | 
@@ -58,7 +58,7 @@ Az eseményindítók ezekkel a legfelső szintű elemekkel rendelkeznek, bár eg
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*tömb – feltételek*> | Tömb | Olyan tömb, amely egy vagy több olyan [feltételt](#trigger-conditions) tartalmaz, amely meghatározza, hogy futtatni kell-e a munkafolyamatot. Csak eseményindítók számára érhető el. | 
 | <*futtatókörnyezet – konfiguráció – beállítások*> | JSON-objektum | Az aktiválási futtatókörnyezet viselkedését a tulajdonságok beállításával módosíthatja `runtimeConfiguration` . További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
@@ -72,7 +72,7 @@ Minden trigger típushoz eltérő illesztőfelület és bemenet tartozik, amelye
 
 ### <a name="built-in-triggers"></a>Beépített eseményindítók
 
-| Trigger típusa | Leírás | 
+| Trigger típusa | Description | 
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | Ellenőrzi vagy *lekérdezi* a végpontokat. Ennek a végpontnak meg kell felelnie egy adott trigger-szerződésnek, akár `202` aszinkron mintával, akár tömb visszaküldésével. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Létrehoz egy hívható végpontot a logikai alkalmazáshoz, de meghívja a megadott URL-címet a regisztrációhoz vagy a regisztráció megszüntetéséhez. |
@@ -82,7 +82,7 @@ Minden trigger típushoz eltérő illesztőfelület és bemenet tartozik, amelye
 
 ### <a name="managed-api-triggers"></a>Felügyelt API-eseményindítók
 
-| Trigger típusa | Leírás | 
+| Trigger típusa | Description | 
 |--------------|-------------| 
 | [**ApiConnection**](#apiconnection-trigger) | A [Microsoft által felügyelt API-](../connectors/apis-list.md)k használatával ellenőrzi vagy *lekérdezi* a végpontot. | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | Létrehoz egy hívható végpontot a logikai alkalmazáshoz a [Microsoft által felügyelt API-](../connectors/apis-list.md) k felhívásával és lemondásával. | 
@@ -127,7 +127,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 *Kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*APIConnection_trigger_name*> | Sztring | Az trigger neve |
 | <*kapcsolattípus*> | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve |
@@ -139,7 +139,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
 | <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással felvenni kívánt lekérdezési paraméterek. Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` hívást. | 
@@ -151,7 +151,7 @@ Ez az aktiválás a [Microsoft által felügyelt API-](../connectors/apis-list.m
 
 *Kimenetek*
  
-| Elem | Típus | Leírás |
+| Elem | Típus | Description |
 |---------|------|-------------|
 | fejlécek | JSON-objektum | A válaszból származó fejlécek |
 | body (Törzs) | JSON-objektum | A válasz törzse |
@@ -221,7 +221,7 @@ Ez az trigger egy [Microsoft által felügyelt API-](../connectors/apis-list.md)
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*kapcsolattípus*> | Sztring | A munkafolyamat által használt felügyelt API-hoz való kapcsolódás neve | 
 | <*törzs – tartalom*> | JSON-objektum | Bármely, a felügyelt API-nak adattartalomként küldendő üzenet | 
@@ -229,7 +229,7 @@ Ez az trigger egy [Microsoft által felügyelt API-](../connectors/apis-list.md)
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. |
 | <*lekérdezés – paraméterek*> | JSON-objektum | Az API-hívással belefoglalható lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` hívást. |
@@ -302,7 +302,7 @@ Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a 
 
 *Kötelező*
 
-| Tulajdonság | Érték | Típus | Leírás |
+| Tulajdonság | Érték | Típus | Description |
 |----------|-------|------|-------------|
 | `method` | <*metódus típusa*> | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
 | `uri` | <*HTTP-vagy-HTTPS-Endpoint-URL*> | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
@@ -312,7 +312,7 @@ Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a 
 
 *Nem kötelező*
 
-| Tulajdonság | Érték | Típus | Leírás |
+| Tulajdonság | Érték | Típus | Description |
 |----------|-------|------|-------------|
 | `headers` | <*fejléc – tartalom*> | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*lekérdezés – paraméterek*> | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` kérést. |
@@ -326,7 +326,7 @@ Ez az eseményindító kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak a 
 
 *Kimenetek*
 
-| Elem | Típus | Leírás |
+| Elem | Típus | Description |
 |---------|------|-------------|
 | `headers` | JSON-objektum | A válaszból származó fejlécek |
 | `body` | JSON-objektum | A válasz törzse |
@@ -339,9 +339,9 @@ Ahhoz, hogy megfelelően működjön a logikai alkalmazással, a végpontnak meg
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
-| Állapotkód | Igen | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. |
-| Újrapróbálkozás a fejléc után | Nem | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot |
-| Hely fejléce | Nem | A következő lekérdezési intervallumban hívni kívánt URL-cím. Ha nincs megadva, a rendszer az eredeti URL-címet használja. |
+| Állapotkód | Yes | A "200 OK" állapotkód elindítja a futtatást. Minden más állapotkód nem indít el futtatást. |
+| Újrapróbálkozás a fejléc után | No | Azon másodpercek száma, ameddig a logikai alkalmazás újra le nem kérdezi a végpontot |
+| Hely fejléce | No | A következő lekérdezési intervallumban hívni kívánt URL-cím. Ha nincs megadva, a rendszer az eredeti URL-címet használja. |
 |||| 
 
 *Példa a különböző kérelmek viselkedésére*
@@ -398,7 +398,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*metódus típusa*> | Sztring | Az előfizetési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
 | <*végpont – előfizetés – URL*> | Sztring | Az előfizetési kérést küldő végpont URL-címe | 
@@ -406,7 +406,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*metódus típusa*> | Sztring | A törlési kérelemhez használt HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
 | <*végpont – leiratkozás – URL*> | Sztring | Az a végpont URL-címe, ahová el kell küldeni a lemondási kérelmet | 
@@ -420,7 +420,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Kimenetek* 
 
-| Elem | Típus | Leírás |
+| Elem | Típus | Description |
 |---------|------|-------------| 
 | fejlécek | JSON-objektum | A válaszból származó fejlécek | 
 | body (Törzs) | JSON-objektum | A válasz törzse | 
@@ -492,7 +492,7 @@ Ez az eseményindító a megadott ismétlődési ütemterv alapján fut, és egy
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*időegység*> | Sztring | Az az időegység, amely leírja, hogy az eseményindító milyen gyakran következik be: "Second", "minute", "Hour", "Day", "Week", "Month" | 
 | <*időegységek száma*> | Egész szám | Egy érték, amely azt határozza meg, hogy az eseményindító milyen gyakran indul el a gyakoriság alapján, amely a megvárni kívánt időegységek száma <p>Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap </br>-Nap: 1-500 nap </br>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Month", az ismétlődés 6 havonta történik. | 
@@ -500,7 +500,7 @@ Ez az eseményindító a megadott ismétlődési ütemterv alapján fut, és egy
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*kezdő-dátum-idő-formátum-éééé-hh-NNTóó: PP: mm*> | Sztring | A kezdő dátum és idő ebben a formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát ad meg <p>-vagy- <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem ad meg időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és adja meg az időzónát, például "csendes-óceáni téli idő", vagy adja meg a "2017-09-18T14:00:00Z" időzóna nélküli beállítását. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, fel kell vennie a "Z" betűt a végén szóköz nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. A kezdő dátummal és időpontokkal kapcsolatos további információkért lásd: a [rendszeresen futó feladatok létrehozása és rendszeres futtatása](../connectors/connectors-native-recurrence.md). | 
 | <*időzóna*> | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Itt adhatja meg az alkalmazni kívánt időzónát. | 
@@ -601,7 +601,7 @@ Az trigger meghívásához az `listCallbackUrl` API-t kell használnia, amelyet 
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*tulajdonság neve*> | Sztring | A JSON-sémában található egyik tulajdonság neve, amely leírja a hasznos adatokat | 
 | <*tulajdonság típusa*> | Sztring | A tulajdonság típusa | 
@@ -609,7 +609,7 @@ Az trigger meghívásához az `listCallbackUrl` API-t kell használnia, amelyet 
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*metódus típusa*> | Sztring | A bejövő kérelmek által a logikai alkalmazás meghívásához használt metódusnak a "GET", a "PUT", a "POST", a "javítás", a "DELETE" utasítással kell rendelkeznie. |
 | <*relatív elérési út – elfogadás – paraméter*> | Sztring | Annak a paraméternek a relatív elérési útja, amelyet a végpont URL-címe el tud fogadni | 
@@ -773,7 +773,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|
 | <*művelet – név*> | Sztring | A művelet neve | 
 | <*művelet típusa*> | Sztring | A művelet típusa, például "http" vagy "ApiConnection"| 
@@ -784,7 +784,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az újrapróbálkozási szabályzatok című témakörben talál. | 
 | <*futtatókörnyezet – konfiguráció – beállítások*> | JSON-objektum | Egyes műveletek esetében a tulajdonságok beállításával módosíthatja a művelet viselkedését futás közben `runtimeConfiguration` . További információ: [futásidejű konfigurációs beállítások](#runtime-config-options). | 
@@ -817,7 +817,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 
 ### <a name="built-in-actions"></a>Beépített műveletek
 
-| Művelettípus | Leírás | 
+| Művelettípus | Description | 
 |-------------|-------------| 
 | [**Összeállítás**](#compose-action) | Egyetlen kimenetet hoz létre bemenetből, amely különböző típusokkal rendelkezhet. | 
 | [**JavaScript-kód végrehajtása**](#run-javascript-code) | JavaScript-kódrészletek futtatása, amelyek megfelelnek a megadott feltételeknek. A kódokra vonatkozó követelmények és további információk: kódrészletek [hozzáadása és futtatása beágyazott kóddal](../logic-apps/logic-apps-add-run-inline-code.md). |
@@ -838,7 +838,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 
 ### <a name="managed-api-actions"></a>Felügyelt API-műveletek
 
-| Művelettípus | Leírás | 
+| Művelettípus | Description | 
 |-------------|-------------|  
 | [**ApiConnection**](#apiconnection-action) | HTTP-végpontot hív meg egy [Microsoft által felügyelt API](../connectors/apis-list.md)használatával. | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-action) | Ugyanúgy működik, mint a HTTP-webhook, de egy [Microsoft által felügyelt API-](../connectors/apis-list.md)t használ. | 
@@ -850,7 +850,7 @@ A Azure Logic Apps különböző típusú műveleteket biztosít – mindegyiket
 
 Ezek a műveletek segítenek a munkafolyamat-végrehajtás szabályozásában, és más műveleteket is tartalmazhatnak. A vezérlési munkafolyamat műveletein kívül közvetlenül is hivatkozhat a műveletekre a vezérlés munkafolyamat-művelet belsejében. Ha például egy `Http` művelet egy hatókörön belül van, a `@body('Http')` kifejezésre hivatkozhat a munkafolyamat tetszőleges pontjáról. A vezérlési munkafolyamaton belül meglévő műveletek azonban csak "Futtatás után" futhatnak, amelyek ugyanabban a vezérlési munkafolyamat-struktúrában találhatók.
 
-| Művelettípus | Leírás | 
+| Művelettípus | Description | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Futtasson ugyanazokat a műveleteket egy hurokban egy tömb minden eleméhez. | 
 | [**Ha**](#if-action) | Műveletek futtatása attól függően, hogy a megadott feltétel igaz vagy hamis. | 
@@ -889,7 +889,7 @@ Ez a művelet HTTP-kérést küld egy [Microsoft által felügyelt API-](../conn
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*művelet – név*> | Sztring | Az összekötő által megadott művelet neve | 
 | <*API – név*> | Sztring | A kapcsolatban használt Microsoft által felügyelt API neve | 
@@ -899,7 +899,7 @@ Ez a művelet HTTP-kérést küld egy [Microsoft által felügyelt API-](../conn
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*egyéb művelet-specifikus – input – tulajdonságok*> | JSON-objektum | Az adott műveletre vonatkozó egyéb beviteli tulajdonságok | 
 | <*újrapróbálkozási viselkedés*> | JSON-objektum | Testreszabja az újrapróbálkozási viselkedést olyan időszakos hibák esetén, amelyeknél a 408, a 429 és a 5XX állapotkód, valamint a kapcsolódási kivételek. További információt az [újrapróbálkozási szabályzatok](../logic-apps/logic-apps-exception-handling.md#retry-policies)című témakörben talál. | 
@@ -969,7 +969,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*művelet – név*> | Sztring | Az összekötő által megadott művelet neve | 
 | <*metódus típusa*> | Sztring | A végpontról való feliratkozáshoz vagy leiratkozáshoz használandó HTTP-módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" | 
@@ -978,7 +978,7 @@ Egyes értékek, például a <*módszer típusú*> elérhetők mind a, mind az `
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*API – leiratkozás – URL*> | Sztring | Az API-ból való leiratkozáshoz használandó URI | 
 | <*fejléc – tartalom*> | JSON-objektum | A kérelemben küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1008,9 +1008,9 @@ Ez a művelet egyetlen kimenetet hoz létre több bemenetből, beleértve a kife
 
 *Kötelező* 
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
-| <*bemenetek és összeállítások*> | Bármely | Egyetlen kimenet létrehozására szolgáló bemenetek | 
+| <*bemenetek és összeállítások*> | Bármelyik | Egyetlen kimenet létrehozására szolgáló bemenetek | 
 |||| 
 
 *1\. példa*
@@ -1069,7 +1069,7 @@ Ez a művelet egy JavaScript kódrészletet futtat, és visszaadja az eredménye
 
 *Kötelező*
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*JavaScript – kódrészlet*> | Változó | A futtatni kívánt JavaScript-kód. A kódokra vonatkozó követelmények és további információk: kódrészletek [hozzáadása és futtatása beágyazott kóddal](../logic-apps/logic-apps-add-run-inline-code.md). <p>Az `code` attribútumban a kódrészlet a írásvédett `workflowContext` objektumot bemenetként használhatja. Ez az objektum olyan altulajdonságokkal rendelkezik, amelyek lehetővé tennék a kód elérését a munkafolyamatban lévő trigger és előző műveletek eredményeihez. További információ az `workflowContext` objektumról: az [trigger és a művelet eredményei a kódban](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext). |
 ||||
@@ -1080,7 +1080,7 @@ Az `explicitDependencies` attribútum azt adja meg, hogy explicit módon kíván
 
 Az `includeTrigger` attribútum esetében megadhatja vagy megadhatja az `true` `false` értékeket.
 
-| Érték | Típus | Leírás |
+| Érték | Típus | Description |
 |-------|------|-------------|
 | <*előző műveletek*> | Sztringtömb | Egy tömb a megadott műveleti nevekkel. Használja a munkafolyamat-definícióban megjelenő műveletek neveit, ahol a műveleti nevek aláhúzást (_) használnak, nem szóközöket (""). |
 ||||
@@ -1146,7 +1146,7 @@ Ez a művelet egy korábban létrehozott [Azure-függvényt](../azure-functions/
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|  
 | <*Azure-Function-ID*> | Sztring | A hívni kívánt Azure-függvény erőforrás-azonosítója. Itt látható az érték formátuma:<p>"/Subscriptions/<*Azure-előfizetés-azonosító*>/ResourceGroups/<*Azure-resource-group*>/Providers/Microsoft.Web/Sites/<*Azure-function-app-Name*>/functions/<*Azure-Function-Name*>" | 
 | <*metódus típusa*> | Sztring | A függvény hívásához használandó HTTP-metódus: "GET", "PUT", "POST", "PATCH" vagy "DELETE" <p>Ha nincs megadva, az alapértelmezett érték a "POST" metódus. | 
@@ -1154,7 +1154,7 @@ Ez a művelet egy korábban létrehozott [Azure-függvényt](../azure-functions/
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|  
 | <*fejléc – tartalom*> | JSON-objektum | A hívással küldendő fejlécek <p>Például a nyelv és a típus megadásához a kérelemben: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*törzs – tartalom*> | JSON-objektum | A kérelemben küldendő üzenet tartalma | 
@@ -1224,7 +1224,7 @@ Ez a művelet egy kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak, és el
 
 *Kötelező*
 
-| Tulajdonság | Érték | Típus | Leírás |
+| Tulajdonság | Érték | Típus | Description |
 |----------|-------|------|-------------|
 | `method` | <*metódus típusa*> | Sztring | A kimenő kérelem küldéséhez használt módszer: "GET", "PUT", "POST", "PATCH" vagy "DELETE" |
 | `uri` | <*HTTP-vagy-HTTPS-Endpoint-URL*> | Sztring | A HTTP-vagy HTTPS-végpont URL-címe, ahová el szeretné küldeni a kimenő kérést. Maximális sztring mérete: 2 KB <p>Egy Azure-szolgáltatás vagy-erőforrás esetében ez az URI-szintaxis magában foglalja az erőforrás-azonosítót és az elérni kívánt erőforrás elérési útját. |
@@ -1232,7 +1232,7 @@ Ez a művelet egy kérelmet küld a megadott HTTP-vagy HTTPS-végpontnak, és el
 
 *Nem kötelező*
 
-| Tulajdonság | Érték | Típus | Leírás |
+| Tulajdonság | Érték | Típus | Description |
 |----------|-------|------|-------------|
 | `headers` | <*fejléc – tartalom*> | JSON-objektum | A kéréssel felvenni kívánt fejlécek <p>Például a nyelv és a típus megadásához: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*lekérdezés – paraméterek*> | JSON-objektum | A kérelemben használni kívánt lekérdezési paraméterek <p>Az `"queries": { "api-version": "2018-01-01" }` objektum például hozzáadja a `?api-version=2018-01-01` hívást. |
@@ -1276,7 +1276,7 @@ Ez a művelet létrehoz egy karakterláncot egy tömb összes eleméről, és el
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*tömb*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. | 
 | <*elválasztó*> | Egyetlen karakterből álló karakterlánc | A karakterláncban szereplő egyes elemeket elválasztó karakter | 
@@ -1320,7 +1320,7 @@ Ez a művelet felhasználóbarát mezőket vagy *jogkivonatokat* hoz létre a JS
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*JSON-forrás*> | JSON-objektum | Az elemezni kívánt JSON-tartalom | 
 | <*JSON – séma*> | JSON-objektum | Az alapul szolgáló JSON-tartalmat leíró JSON-séma, amelyet a művelet a forrás JSON-tartalom elemzéséhez használ. <p>**Tipp**: Logic apps Designerben megadhatja a sémát, vagy megadhat egy minta adattartalmat, hogy a művelet előállíthatja a sémát. | 
@@ -1422,7 +1422,7 @@ Ez a művelet egy tömböt hoz létre egy másik tömb elemeiből egy megadott f
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*tömb*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Ha megad egy kifejezést, a kifejezést idézőjelek közé kell foglalni. |
 | <*feltétel vagy szűrő*> | Sztring | A forrás tömbben lévő elemek szűréséhez használt feltétel <p>**Megjegyzés**: Ha egyik érték sem felel meg a feltételnek, akkor a művelet egy üres tömböt hoz létre. |
@@ -1463,14 +1463,14 @@ Ez a művelet létrehozza a HTTP-kérelemre adott válasz adattartalmát.
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*Válasz-állapot kódja*> | Egész szám | A bejövő kérelembe küldendő HTTP-állapotkód. Az alapértelmezett kód "200 OK", de a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx, de nem a 3XXX szint or-vel kezdődik. | 
 |||| 
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*Válasz – fejlécek*> | JSON-objektum | Egy vagy több, a válaszban szerepeltetni kívánt fejléc | 
 | <*Válasz – törzs*> | Különböző | A válasz törzse, amely lehet karakterlánc, JSON-objektum vagy akár bináris tartalom egy korábbi műveletből | 
@@ -1538,7 +1538,7 @@ Ez a művelet JSON-objektumokból álló tömböt hoz létre egy másik tömb el
 
 *Kötelező* 
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*tömb*> | Tömb | A forrás elemeket biztosító tömb vagy kifejezés. Győződjön meg arról, hogy idézőjelek közé kell foglalnia egy kifejezést. <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres tömböt hoz létre. | 
 | <*kulcs neve*> | Sztring | Az eredményhez hozzárendelt <*kifejezésből* származó tulajdonság neve> <p>Ha új tulajdonságot szeretne hozzáadni a kimeneti tömb összes objektumához, adjon meg egy <*kulcsnév*> a tulajdonsághoz, valamint egy <*kifejezést*> a tulajdonság értékeként. <p>Ha el szeretne távolítani egy tulajdonságot a tömbben lévő összes objektumból, hagyja ki az adott tulajdonsághoz tartozó <*Key-name*>. | 
@@ -1636,7 +1636,7 @@ Ez a művelet létrehoz egy CSV-vagy HTML-táblázatot egy tömbből. A JSON-obj
 
 *Kötelező* 
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | \<CSV *or* HTML>| Sztring | A létrehozni kívánt tábla formátuma | 
 | <*tömb*> | Tömb | A táblához tartozó forrásadatokat biztosító tömb vagy kifejezés <p>**Megjegyzés**: Ha a forrás tömb üres, a művelet egy üres táblát hoz létre. | 
@@ -1646,10 +1646,10 @@ Ez a művelet létrehoz egy CSV-vagy HTML-táblázatot egy tömbből. A JSON-obj
 
 Az oszlopfejlécek és az értékek megadásához és testreszabásához használja a `columns` tömböt. Ha `header-value` a pároknak ugyanaz a fejléc neve, azok értékei ugyanabban az oszlopban jelennek meg, mint a fejléc neve. Ellenkező esetben az egyes egyedi fejlécek egyedi oszlopot határoznak meg.
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*oszlop neve*> | Sztring | Egy oszlop fejlécének neve | 
-| <*oszlop – érték*> | Bármely | Az oszlopban szereplő érték | 
+| <*oszlop – érték*> | Bármelyik | Az oszlopban szereplő érték | 
 |||| 
 
 *1\. példa*
@@ -1749,7 +1749,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatását, megszakítja a
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*állapota*> | Sztring | A futtatáshoz visszatérési állapot: "sikertelen", "megszakított" vagy "sikeres" |
 |||| 
@@ -1758,7 +1758,7 @@ Ez a művelet leállítja a munkafolyamat-példány futtatását, megszakítja a
 
 A "runStatus" objektum tulajdonságai csak akkor érvényesek, ha a "runStatus" tulajdonság "sikertelen" állapotra van állítva.
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*hiba-kód-vagy-név*> | Sztring | A hiba kódja vagy neve |
 | <*hiba – üzenet*> | Sztring | A hibát leíró üzenet vagy szöveg, valamint az alkalmazás felhasználója által elvégezhető műveletek | 
@@ -1819,7 +1819,7 @@ Ez a művelet szünetelteti a munkafolyamat-végrehajtást a megadott intervallu
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*egységek száma*> | Egész szám | A **késleltetési** művelethez a várakozási egységek száma | 
 | <*időköz*> | Sztring | A **késleltetési** művelethez a várakozási időköz: "Second", "minute", "Hour", "Day", "Week", "Month" | 
@@ -1892,7 +1892,7 @@ A Logic Apps motor ellenőrzi a hívni kívánt trigger elérését, ezért győ
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*beágyazott-Logic-app-Name*> | Sztring | A hívni kívánt logikai alkalmazás neve | 
 | <*trigger – név*> | Sztring | A meghívni kívánt beágyazott logikai alkalmazásban lévő trigger neve | 
@@ -1903,7 +1903,7 @@ A Logic Apps motor ellenőrzi a hívni kívánt trigger elérését, ezért győ
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|  
 | <*fejléc – tartalom*> | JSON-objektum | A hívással küldendő fejlécek | 
 | <*törzs – tartalom*> | JSON-objektum | A hívással küldendő üzenet tartalma | 
@@ -1969,7 +1969,7 @@ Ez a Looping művelet egy tömbön keresztül ismétli meg a műveleteket, és m
 
 *Kötelező* 
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*művelet – 1... n*> | Sztring | Az egyes tömb elemein futó műveletek nevei | 
 | <*művelet-definíció-1... n*> | JSON-objektum | A-t futtató műveletek definíciói | 
@@ -1978,7 +1978,7 @@ Ez a Looping művelet egy tömbön keresztül ismétli meg a műveleteket, és m
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*száma*> | Egész szám | Alapértelmezés szerint az "minden" hurok-iteráció egyszerre fut (egyidejűleg vagy párhuzamosan) az [alapértelmezett korlátig](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Ha módosítani szeretné ezt a korlátot úgy, hogy új <*count*> értéket állít be, tekintse meg a ["minden" hurok egyidejűségének módosítása](#change-for-each-concurrency)című témakört. | 
 | <*művelet – beállítás*> | Sztring | Ha egymás után párhuzamosan szeretné futtatni a "minden" ciklust, állítsa be a <*művelet – lehetőség*> `Sequential` vagy <*darabszám*> a értékre `1` , de mindkettő nem lehet. További információ: ["az egyes ciklusok egymás utáni futtatása](#sequential-for-each)". | 
@@ -2042,7 +2042,7 @@ Ez a művelet, amely *feltételes utasítás*, kiértékel egy kifejezést, amel
 }
 ```
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*feltétel*> | JSON-objektum | A feltétel, amely lehet egy kifejezés, hogy kiértékelje | 
 | <*művelet – 1*> | JSON-objektum | A <*feltételnél* futtatandó művelet> igaz értékre való kiértékelése | 
@@ -2132,7 +2132,7 @@ Ez a művelet logikailag csoportosítja a műveleteket *hatókörökre*, amelyek
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------|  
 | <*belső művelet – 1... n*> | JSON-objektum | Egy vagy több olyan művelet, amely a hatókörön belül fut |
 | <*művelet – bemenetek*> | JSON-objektum | Az egyes műveletek bemenetei |
@@ -2173,7 +2173,7 @@ Ez a művelet, más néven *switch-utasítás*, más műveleteket is szervez az 
 
 *Kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*kifejezés-objektum-vagy token*> | Változó | A kiértékelni kívánt kifejezés, JSON-objektum vagy jogkivonat | 
 | <*művelet – név*> | Sztring | Az egyező esethez futtatandó művelet neve | 
@@ -2183,7 +2183,7 @@ Ez a művelet, más néven *switch-utasítás*, más műveleteket is szervez az 
 
 *Nem kötelező*
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*alapértelmezett – művelet neve*> | Sztring | A futtatandó alapértelmezett művelet neve, ha nem létezik egyező eset | 
 | <*alapértelmezett – művelet – definíció*> | JSON-objektum | Annak a műveletnek a definíciója, amely akkor fut, ha nem létezik egyező eset | 
@@ -2299,7 +2299,7 @@ Ez a hurok-művelet olyan műveleteket tartalmaz, amelyek addig futnak, amíg a 
 }
 ```
 
-| Érték | Típus | Leírás | 
+| Érték | Típus | Description | 
 |-------|------|-------------| 
 | <*művelet – név*> | Sztring | A hurokon belül futtatni kívánt művelet neve | 
 | <*művelet típusa*> | Sztring | A futtatni kívánt Művelettípus | 
@@ -2381,7 +2381,7 @@ Az eseményindítók és műveletek esetében a tulajdonság hozzáadásával ko
 
 Az eseményindítók és műveletek alapértelmezett futásidejű viselkedését az `runtimeConfiguration` eseményindító vagy a művelet definíciójának hozzáadásával módosíthatja.
 
-| Tulajdonság | Típus | Leírás | Trigger vagy művelet | 
+| Tulajdonság | Típus | Description | Trigger vagy művelet | 
 |----------|------|-------------|-------------------| 
 | `runtimeConfiguration.concurrency.runs` | Egész szám | Módosítsa az [*alapértelmezett korlátot*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) azon munkafolyamat-példányok számánál, amelyek egyszerre futhatnak (egyidejűleg vagy párhuzamosan). Ennek az értéknek a módosítása segíthet a háttérrendszer által fogadott kérelmek számának korlátozásában. <p>Ha a `runs` tulajdonságot úgy állítja be, hogy az `1` ugyanúgy működjön, mint a `operationOptions` tulajdonság beállítása `SingleInstance` . Beállíthatja az egyik tulajdonságot, de mindkettőt nem. <p>Az alapértelmezett korlát módosításához lásd: [trigger egyidejűségének módosítása](#change-trigger-concurrency) vagy [példányok elindítása szekvenciálisan](#sequential-trigger). | Minden eseményindító | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Egész szám | Módosítsa az [*alapértelmezett korlátot*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) azon munkafolyamat-példányok számán, amelyeknek várnia kell, ha a logikai alkalmazás már futtatja az egyidejű példányok maximális számát. <p>Az alapértelmezett korlát módosításához tekintse meg a [várakozó futtatások korlátjának módosítása](#change-waiting-runs)című témakört. | Minden eseményindító | 
@@ -2397,7 +2397,7 @@ Az eseményindítók és műveletek alapértelmezett futásidejű viselkedését
 
 Megváltoztathatja az eseményindítók és műveletek alapértelmezett viselkedését az `operationOptions` eseményindító vagy a művelet definíciójában található tulajdonsággal.
 
-| Művelet beállítása | Típus | Leírás | Trigger vagy művelet | 
+| Művelet beállítása | Típus | Description | Trigger vagy művelet | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | Sztring | Aszinkron módon futtassa a HTTP-alapú műveleteket szinkronban. <p><p>A beállítás megadásához tekintse meg a [Műveletek szinkron módon történő futtatását](#disable-asynchronous-pattern)ismertető témakört. | Műveletek <p>[ApiConnection](#apiconnection-action), <br>[Http](#http-action), <br>[Válasz](#response-action) | 
 | `IncludeAuthorizationHeadersInOutputs` | Sztring | Azon logikai alkalmazások esetében, amelyek [lehetővé teszik Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) számára a bejövő hívások hozzáférésének engedélyezését a kérelmeken alapuló trigger végpontja számára, belefoglalja a `Authorization` fejlécet a OAuth hozzáférési jogkivonatában az trigger kimenetében. További információ: [az "engedélyezés" fejléc belefoglalása a kérelem-trigger kimenetében](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header). | Eseményindítók <p>[Kérelem](#request-trigger), <br>[HTTP Webhook](#http-webhook-trigger) | 
@@ -2717,6 +2717,6 @@ A művelet mögöttes JSON-definíciójában adja hozzá és állítsa be a ["op
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontok elérésére irányuló kérések elvégzéséhez használt trigger vagy művelet alapján különböző hitelesítési típusok közül választhat. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [munkafolyamat-definíciós nyelvről](../logic-apps/logic-apps-workflow-definition-language.md)

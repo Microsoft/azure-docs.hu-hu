@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 7ff8193e87d138878d95e783d144d445436e7a08
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452998"
 ---
 # <a name="what-is-the-right-iot-solution-for-your-business"></a>Mi a megfelelő IoT megoldás vállalata számára?
@@ -39,7 +39,7 @@ Hová szeretné tölteni a rendszerkezelés idejét és erőforrásait?
 
 - Válassza ki a felügyelt alkalmazás platformját, hogy kihasználhassa a IoT-alkalmazások és-eszközök méretezését, biztonságát és felügyeletét kezelő platformot.
 
-## <a name="control"></a>Vezérlés
+## <a name="control"></a>Szabályozás
 
 Milyen elemeket szeretne testreszabni a megoldásban?
 
@@ -55,7 +55,7 @@ Milyen díjszabási struktúra a legjobban megfelel az igényeinek?
 
 - Válassza ki a felügyelt alkalmazás platformjának megközelítését egy egyszerű, kiszámítható díjszabási struktúrához.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A platform szolgáltatásainak megközelítése a felhőalapú megoldással és az eszköz szakértelmével kapcsolatos üzleti megoldások esetében megfelelő.
 
@@ -69,7 +69,7 @@ A felügyelt alkalmazás platformjának megközelítése olyan vállalkozás sz�
 - Kiszámítható árképzési struktúrát szeretne.
 - Bizonyos testreszabási képességeket szeretne.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző szolgáltatások és platformok részletes ismertetését, valamint a használatuk módját lásd: az [Azure IoT Services és Technologies](iot-services-and-technologies.md).
 

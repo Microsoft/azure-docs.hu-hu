@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 42bac2df7abe00be8c0e6ffddcc9bef7ef28ba9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93309529"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
@@ -39,7 +39,7 @@ Az itt leírt eljárásokhoz a következők szükségesek:
 * Hozzáférés egy **Azure SQL Databasehoz**. Ha be kell állítania egy Azure SQL Databaset, [első lépések a Microsoft Azure SQL Database](../../azure-sql/database/single-database-create-quickstart.md) a Azure SQL Database új példányának kiépítésével kapcsolatos információkat tartalmaz.
 * **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
-**Adat** : az áttelepítési folyamatokat a [New York-i taxi adatkészlet](https://chriswhong.com/open-data/foil_nyc_taxi/)mutatja be. A New York-i taxi adatkészlet az utazási adatokról és a vásárokról tartalmaz információkat, és az Azure Blob Storage-ban érhető el: a [NYC-taxi adatai](https://www.andresmh.com/nyctaxitrips/). Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
+**Adat**: az áttelepítési folyamatokat a [New York-i taxi adatkészlet](https://chriswhong.com/open-data/foil_nyc_taxi/)mutatja be. A New York-i taxi adatkészlet az utazási adatokról és a vásárokról tartalmaz információkat, és az Azure Blob Storage-ban érhető el: a [NYC-taxi adatai](https://www.andresmh.com/nyctaxitrips/). Ezen fájlok mintáját és leírását a [New York-i taxis adatkészletének leírásában](sql-walkthrough.md#dataset)ismertetjük.
 
 Az itt ismertetett eljárásokat a saját adataihoz igazíthatja, vagy a New York-i taxi adatkészletének használatával követheti a leírt lépéseket. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
