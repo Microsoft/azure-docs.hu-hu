@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
 ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98601301"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Az Azure Blob Storage költségeinek megtervezése és kezelése
@@ -88,7 +88,7 @@ A Cost Analysis használatakor különböző időintervallumok esetén megtekint
 
 Az Azure Storage költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Nyissa meg a **Cost Management + számlázás** ablakot, válassza ki a menüből a **Cost Management** elemet, majd válassza a **Cost Analysis** lehetőséget. Ezután módosíthatja egy adott előfizetés hatókörét a **hatókör** legördülő menüből.
 
@@ -106,7 +106,7 @@ Az előző példában a szolgáltatás aktuális díja látható. Az Azure-régi
 
 A költségadatok a Storage-fiókba is [exportálhatók](../../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ arról, hogyan működik az árképzés az Azure Storage-ban. Lásd: az [Azure Storage áttekintésének díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 - [A blob Storage költségeinek optimalizálása a fenntartott kapacitással](../blobs/storage-blob-reserved-capacity.md).

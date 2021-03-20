@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 04/14/2020
 ms.openlocfilehash: 02e64c6c6e5ab2ef77f02959ada6f95d1042b76d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94488757"
 ---
 # <a name="support-for-the-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
@@ -42,7 +42,7 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 | E-mail [gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
 | E-mail [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Látogasson el a [kereskedelmi piactér közzétevői útmutató oldalára](index.yml).
 * További információ [a kereskedelmi piactér program támogatásáról a partner Centerben](support.md).

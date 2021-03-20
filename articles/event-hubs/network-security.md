@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a 
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010996"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
@@ -78,7 +78,7 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 További információ: [privát végpontok konfigurálása az Event hub-hoz](private-link-service.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Az IP-tűzfal konfigurálása az Event hub esetében](event-hubs-ip-filtering.md)

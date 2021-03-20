@@ -7,15 +7,15 @@ ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: 2a5204be638f108b40e431b148c9cb97788c4a52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91400757"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára Azure Logic Apps
 
-**2020. május 1-től**a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy a-val végződő e-mail-címmel @gmail.com @googlemail.com ) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat.
+**2020. május 1-től** a Google [adatbiztonsági és adatvédelmi szabályzatai](https://www.blog.google/technology/safety-security/project-strobe/) miatti változások befolyásolhatják a [Gmail-összekötőt](/connectors/gmail/)használó logikai alkalmazás-munkafolyamatokat. Ha a Logic apps a Gmail-összekötőt egy Gmail-beli felhasználói fiókkal (a vagy a-val végződő e-mail-címmel @gmail.com @googlemail.com ) használja, a Logic apps csak meghatározott [Google által jóváhagyott eseményindítókat, műveleteket és összekötőket](#approved-connectors)használhat.
 
 > [!NOTE]
 > Ha a Logic apps a Gmail-összekötőt a G-Suite üzleti fiókkal (az egyéni tartománnyal rendelkező e-mail-címmel) használja, akkor a logikai alkalmazások nem érintik, és nem korlátozzák a Gmail-összekötő használatát.
@@ -105,13 +105,13 @@ Az ügyfél-azonosító és az ügyfél titkos kódjának a Gmail-triggerben vag
    | **Ügyfél titka** | <*ügyfél – titok*> | Az ügyfél titkos kulcsa a Google-ügyfélprogramból |
    ||||
 
-1. Ha elkészült, válassza **a bejelentkezés**lehetőséget.
+1. Ha elkészült, válassza **a bejelentkezés** lehetőséget.
 
    Megjelenik egy lap, amely megjeleníti a létrehozott ügyfélalkalmazás-alkalmazást. Ha Gmail-alapú fogyasztói fiókot használ, akkor előfordulhat, hogy egy olyan oldalt kap, amely azt mutatja, hogy a Google nem ellenőrzi az ügyfélalkalmazás használatát, és felszólítja, hogy először engedélyezze a Google-fiókhoz való hozzáférést.
 
    ![Rákérdezés a Google-fiókhoz való hozzáférésre](./media/connectors-google-data-security-privacy-policy/allow-access-authorized-domain.png)
 
-1. Ha szükséges, válassza az **Engedélyezés**lehetőséget.
+1. Ha szükséges, válassza az **Engedélyezés** lehetőséget.
 
    Mostantól korlátozás nélkül is használhatja a Gmail-összekötőt a logikai alkalmazásban.
 

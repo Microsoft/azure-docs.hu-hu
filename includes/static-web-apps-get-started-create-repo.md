@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 06a54456a076ae425866c1fa502bd97c505e41c6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96356443"
 ---
 ## <a name="create-a-repository"></a>Adattár létrehozása
@@ -44,6 +44,6 @@ Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első
 
 ---
 
-Válassza **a tárház létrehozása sablonból** lehetőséget.
+Válassza az **Adattár létrehozása sablonból** lehetőséget.
 
 :::image type="content" source="../articles/static-web-apps/media/getting-started/create-template.png" alt-text="Tárház létrehozása sablonból":::

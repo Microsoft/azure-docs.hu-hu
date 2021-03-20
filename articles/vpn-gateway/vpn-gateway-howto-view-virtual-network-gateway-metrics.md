@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: alzam
 ms.openlocfilehash: 4b33af3e64726e124373f57920836bce145cd891
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89443177"
 ---
 # <a name="view-vpn-gateway-metrics"></a>VPN Gateway-metrikák megtekintése
@@ -19,7 +19,7 @@ ms.locfileid: "89443177"
 Azure Monitor használatával figyelheti az Azure VPN-átjárókat. Ez a cikk a portálon keresztül elérhető metrikákat ismerteti. A metrikák egyszerűek, és a közel valós idejű forgatókönyveket támogatják, így a riasztások és a gyors problémák észlelése is hasznos lehet.
 
 
-|**Metrika**   | **Egység** | **Részletesség** | **Leírás** | 
+|**Metrika**   | **Unit (Egység)** | **Részletesség** | **Leírás** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| Bájt/s  | 5 perc| Az átjárón a helyek közötti kapcsolatok átlagos összesített sávszélesség-kihasználtsága.     |
 |**P2SBandwidth**| Bájt/s  | 1 perc  | Az átjárón az összes pont – hely kapcsolat átlagos összesített sávszélesség-kihasználtsága.    |
@@ -41,7 +41,7 @@ Azure Monitor használatával figyelheti az Azure VPN-átjárókat. Ez a cikk a 
 
 3. A fent felsorolt egyéb mérőszámok megtekintéséhez. Kattintson a **metrikák** szakaszra a virtuális hálózati átjáró erőforrás alatt, és válassza ki a metrikát a legördülő listából.
 
-   ![A Select (kiválasztás) gomb és a VPN-átjáró az erőforrások listájában](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/metrics.png "Kiválasztás")
+   ![A Select (kiválasztás) gomb és a VPN-átjáró az erőforrások listájában](./media/vpn-gateway-howto-view-virtual-network-gateway-metrics/metrics.png "Válassza ezt:")
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754650"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Válasz az Azure Defender for Resource Manager-riasztásokra
+# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Válaszadás a Resource Managerhez készült Azure Defender-riasztásokra
 
 Ha az Azure Defender for Resource Manager riasztást kap, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Resource Manager védi az összes kapcsolódó erőforrást, így még akkor is, ha már ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy ellenőrizze az összes riasztást körülvevő helyzetet.  
 
@@ -45,7 +45,7 @@ Ha az Azure Defender for Resource Manager riasztást kap, javasoljuk, hogy vizsg
     - A gépek alaphelyzetbe állítása kártevők nélküli forrásból
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal az Azure Defender for Resource Manager szolgáltatással kapcsolatos riasztásokra adott válasz folyamatát ismerteti. A kapcsolódó információk a következő lapokon találhatók:
 

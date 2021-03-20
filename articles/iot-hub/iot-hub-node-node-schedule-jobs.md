@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: e1992c806619154fa7b3c33500b2e54fbc919f20
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151430"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (Node.js)
@@ -69,7 +69,7 @@ Az oktatóanyag végén két Node.js alkalmazást használhat:
 
 Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol, amely egy szimulált **lockDoor** metódust indít el.
 
-1. Hozzon létre egy új, **simDevice**nevű üres mappát.  A **simDevice** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **simDevice** nevű üres mappát.  A **simDevice** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
 
    ```console
    npm init
@@ -146,7 +146,7 @@ Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely a fe
 
 Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely egy közvetlen metódus használatával kezdeményez egy távoli **lockDoor** az eszközön, és frissíti az eszköz Twin tulajdonságait.
 
-1. Hozzon létre egy új, **scheduleJobService**nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **scheduleJobService** nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban.  Fogadja el az összes alapértelmezett beállítást:
 
     ```console
     npm init
@@ -169,7 +169,7 @@ Ebben a szakaszban egy olyan Node.js Console-alkalmazást hoz létre, amely egy 
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Adja hozzá a következő változó deklarációkat. A helyőrző értékét cserélje le az `{iothubconnectionstring}` [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
+5. Adja hozzá a következő változó deklarációkat. A helyőrző értékét cserélje le az `{iothubconnectionstring}` [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId** eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';

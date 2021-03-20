@@ -11,10 +11,10 @@ ms.date: 03/07/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: af1685f6455c0642800cba7dd604fcc836bcd7a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147906"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Shake, Shake for a tweet – Twitter-üzenet beolvasása Azure Functions
@@ -50,10 +50,10 @@ Először nyissa meg a Project mappát.
 
 ### <a name="open-the-arduino-examples-folder"></a>Az Arduino-példák mappa megnyitása
 
-Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **ShakeShake**lehetőséget. Megnyílik egy új VS Code ablak, amely megjeleníti a projekt mappáját. Ha nem látja a MXCHIP AZ3166 szakaszt, győződjön meg arról, hogy az eszköz megfelelően van csatlakoztatva, és indítsa újra a Visual Studio Code-ot.  
+Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **ShakeShake** lehetőséget. Megnyílik egy új VS Code ablak, amely megjeleníti a projekt mappáját. Ha nem látja a MXCHIP AZ3166 szakaszt, győződjön meg arról, hogy az eszköz megfelelően van csatlakoztatva, és indítsa újra a Visual Studio Code-ot.  
 a ![ mini-Solution példák](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-A minta projektet a parancs palettáról is megnyithatja. Kattintson `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) a parancs paletta megnyitásához, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+A minta projektet a parancs palettáról is megnyithatja. Kattintson `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) a parancs paletta megnyitásához, írja be az **Arduino** parancsot, majd keresse meg és válassza ki az **Arduino: példák** elemet.
 
 ## <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 
@@ -180,7 +180,7 @@ Tesztelési célból a minta projekt előre konfigurált Twitter-tulajdonosi jog
   
    ![Képernyőfelvétel: a függvény C# kódját jeleníti meg, ahol megadhatja a tokent.](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
-6. Mentse a fájlt, és kattintson a **Futtatás**gombra.
+6. Mentse a fájlt, és kattintson a **Futtatás** gombra.
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 

@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763791"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
@@ -60,7 +60,7 @@ Akkor használja a Ethereum Blockchain-eseményindítókat, ha azt szeretné, ho
     | **Esemény neve** | Válasszon ki egy intelligens szerződési eseményt az ellenõrzéshez. Az esemény elindítja a logikai alkalmazást. |
     | **Intervallum** és **gyakoriság** | Válassza ki, hogy milyen gyakran szeretné megkeresni az eseményt. |
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A logikai alkalmazás befejezéséhez hozzáadhat egy új lépést, amely a Ethereum Blockchain esemény eseményindítóján alapuló műveletet hajt végre. Küldjön például egy e-mailt.
 
@@ -283,6 +283,6 @@ A szarvasgomba az intelligens szerződés üzembe helyezése után megjeleníti 
 
 ![Metaadatok a Visual Studio Code-ban található címtartomány értékével](./media/ethereum-logic-app/contract-address-metadata.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a videó gyakori forgatókönyveit a [Logic Appsával](https://channel9.msdn.com/Shows/Blocktalk/Doing-more-with-Logic-Apps?term=logic%20apps%20blockchain&lang-en=true).

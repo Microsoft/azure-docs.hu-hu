@@ -10,10 +10,10 @@ ms.date: 10/08/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 6fd791495602846b95e2dd3e99423db5505f5307
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600921"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A fenntartott kapacitású Blob Storage költségeinek optimalizálása
@@ -88,7 +88,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartoznak a következők: *LRS*, *ZRS*, *GRS*, *GZRS*, *ra-GRS* és *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |
    | **Számlázási gyakoriság** | Azt jelzi, hogy a fiók milyen gyakran kerül kiszámlázásra a foglaláshoz. A lehetőségek közé tartoznak a *havonta* vagy a *kezdeti* beállítások. |
    | **Méret** | A lefoglalni kívánt kapacitás mennyisége. |
-   |**Kifejezés**  | Egy vagy három év.   |
+   |**Időszak**  | Egy vagy három év.   |
 
 1. A foglalás paramétereinek kiválasztása után a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka.
 

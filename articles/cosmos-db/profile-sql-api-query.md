@@ -9,10 +9,10 @@ ms.date: 05/17/2019
 ms.author: girobins
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 66aefea441d78303ccd611d9df10eea985d61e7c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097396"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>SQL-lekérdezés végrehajtási metrikáinak lekérése és a lekérdezési teljesítmény elemzése a .NET SDK használatával
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan lehet profilt felvenni az SQL-lekérdezés teljesít
 
 A [DocumentClient. CreateDocumentQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentquery) összes túlterhelése egy opcionális [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions) paramétert is igénybe veheti. Ez a beállítás lehetővé teszi, hogy a lekérdezés-végrehajtás beállítható és paraméteres legyen. 
 
-Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez be kell állítania a [PopulateQueryMetrics](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert [FeedOptions](/dotnet/api/microsoft.azure.documents.client.feedoptions) a FeedOptions `true` . A True értékre állításával `PopulateQueryMetrics` a rendszer a `FeedResponse` megfelelőt fogja tartalmazni `QueryMetrics` . 
+Az SQL-lekérdezés végrehajtási metrikáinak összegyűjtéséhez be kell állítania a [PopulateQueryMetrics](/dotnet/api/microsoft.azure.documents.client.feedoptions.populatequerymetrics#P:Microsoft.Azure.Documents.Client.FeedOptions.PopulateQueryMetrics) paramétert [](/dotnet/api/microsoft.azure.documents.client.feedoptions) a FeedOptions `true` . A True értékre állításával `PopulateQueryMetrics` a rendszer a `FeedResponse` megfelelőt fogja tartalmazni `QueryMetrics` . 
 
 ## <a name="get-query-metrics-with-asdocumentquery"></a>Lekérdezési metrikák beolvasása a AsDocumentQuery ()
 Az alábbi mintakód bemutatja, hogyan kérhet le mérőszámokat a [AsDocumentQuery ()](/dotnet/api/microsoft.azure.documents.linq.documentqueryable.asdocumentquery) metódus használatakor:

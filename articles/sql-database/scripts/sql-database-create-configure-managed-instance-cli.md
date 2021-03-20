@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497273"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>Azure SQL felügyelt példány létrehozása a CLI használatával
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network Route-Table](/cli/azure/network/route-table) | Hálózati útválasztási táblázat parancsai. |
 | [az SQL mi](/cli/azure/sql/mi) | SQL felügyelt példányok parancsai. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

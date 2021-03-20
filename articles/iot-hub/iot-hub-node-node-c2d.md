@@ -14,10 +14,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: e398138f12c38e5235a0004679d9574dbde607db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91446873"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>A felhőből az eszközre irányuló üzenetek küldése IoT Hub (Node.js)
@@ -38,7 +38,7 @@ A felhőből az eszközre irányuló üzenetekről a [IoT hub fejlesztői útmut
 
 Az oktatóanyag végén két Node.js Console-alkalmazást futtat:
 
-* A **SimulatedDevice**az alkalmazás egy olyan módosított verziója, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-node.md), amely csatlakozik a IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
+* A **SimulatedDevice** az alkalmazás egy olyan módosított verziója, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-node.md), amely csatlakozik a IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
 
 * A **SendCloudToDeviceMessage**, amely egy felhőből az eszközre irányuló üzenetet küld a szimulált eszköz alkalmazásnak IoT hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
 
@@ -84,7 +84,7 @@ A AMQP és a HTTPS használatával, de nem MQTT, az eszköz a következőket is 
 * Hagyjon ki egy üzenetet, amely IoT Hub az üzenet megtartását az eszköz várólistájában a későbbi felhasználás érdekében.
 * Egy üzenet elutasítása, amely véglegesen eltávolítja az üzenetet az eszköz várólistáról.
 
-Ha valami történik, amely megakadályozza, hogy az eszköz elvégezze, lemondsa vagy elutasítja az üzenetet, IoT Hub a rögzített időtúllépési időszak után az üzenetet újra kézbesíti. Emiatt az *idempotens*logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
+Ha valami történik, amely megakadályozza, hogy az eszköz elvégezze, lemondsa vagy elutasítja az üzenetet, IoT Hub a rögzített időtúllépési időszak után az üzenetet újra kézbesíti. Emiatt az *idempotens* logikának kell lennie az eszköz alkalmazásában, hogy ugyanazt az üzenetet kapja többször is ugyanez az eredmény.
 
 További információ arról, hogy a IoT Hub hogyan dolgozza fel a felhőből az eszközre irányuló üzeneteket, beleértve a felhőből az eszközre irányuló üzenetek életciklusának részleteit is: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](iot-hub-devguide-messages-c2d.md).
   
@@ -102,7 +102,7 @@ Ebben a cikkben egy háttér-szolgáltatást hoz létre a felhőből az eszközr
 
 Ebben a szakaszban egy Node.js Console-alkalmazást hoz létre, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszköz alkalmazásnak. Szüksége lesz annak az eszköznek az eszköz-AZONOSÍTÓJÁRA, amelyet a [telemetria küldése az eszközről az IoT hub](quickstart-send-telemetry-node.md) -gyors üzembe helyezéshez adott meg. Szüksége lesz a korábban átmásolt IoT hub-kapcsolatok karakterláncára is a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)című részében.
 
-1. Hozzon létre egy **sendcloudtodevicemessage**nevű üres mappát. A **sendcloudtodevicemessage** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban. Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy **sendcloudtodevicemessage** nevű üres mappát. A **sendcloudtodevicemessage** mappában hozzon létre egy package.jsfájlt a következő parancs futtatásával a parancssorban. Fogadja el az összes alapértelmezett beállítást:
 
     ```shell
     npm init

@@ -12,10 +12,10 @@ ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
 ms.openlocfilehash: e8c222d7cdcdb203cd323cde38818e5b51643159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91443378"
 ---
 # <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>Áttelepítés az új rugalmas adatbázis-feladatokra (előzetes verzió)
@@ -46,7 +46,7 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 # Restart your powershell session with administrative access
 
 # Places Az.Sql preview cmdlets side by side with existing Az.Sql version
-Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
+Install-Module -Name Az.Sql -RequiredVersion 1.1.1-preview -AllowPrerelease
 
 # Import the Az.Sql module
 Import-Module Az.Sql -RequiredVersion 1.1.1
@@ -89,7 +89,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 Most, hogy a régi és az új rugalmas feladatok parancsmag is inicializálva van, telepítse át a feladat hitelesítő adatait, céljait és feladatait az új *feladat-adatbázisba*.
 

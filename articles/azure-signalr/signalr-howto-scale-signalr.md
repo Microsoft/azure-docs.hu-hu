@@ -8,10 +8,10 @@ ms.date: 9/9/2020
 ms.author: zhshang
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: bb01f2f96e5db4c94e759b114818360e6084255f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89595767"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure Signaler Service-példány skálázása
@@ -32,9 +32,9 @@ További információ az egyéni szignáló szolgáltatás díjszabásáról és
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a böngészőjében.
 
-2. A Signaler szolgáltatás lapjának bal oldali menüjében válassza a **skála**lehetőséget.
+2. A Signaler szolgáltatás lapjának bal oldali menüjében válassza a **skála** lehetőséget.
    
-3. Válassza ki az árképzési szintet, majd kattintson a **kiválasztás**elemre. Állítsa be a **standard** szint egységének darabszámát.
+3. Válassza ki az árképzési szintet, majd kattintson a **kiválasztás** elemre. Állítsa be a **standard** szint egységének darabszámát.
    
     ![Méretezés a portálon](./media/signalr-howto-scale/signalr-howto-scale.png)
 

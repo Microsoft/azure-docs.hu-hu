@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 81ded79ee72fb7c2d89898595602cb3e6d7ae5e2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011064"
 ---
 # <a name="import-soap-api"></a>SOAP API importálása
@@ -59,7 +59,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
     * **Kezdő**
     * **Korlátlan**   
 8. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Az új API tesztelése a felügyeleti portálon
 
@@ -78,7 +78,7 @@ A műveleteket meg lehet hívni közvetlenül a felügyeleti portálról, ami k�
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

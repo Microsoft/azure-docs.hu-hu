@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
 ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87843827"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>SOAP API importálása és konvertálása REST-té
@@ -59,7 +59,7 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
 
     * **Kezdő**
     * **Korlátlan**   
-10. Kattintson a **Létrehozás** gombra.
+10. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 
@@ -78,7 +78,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

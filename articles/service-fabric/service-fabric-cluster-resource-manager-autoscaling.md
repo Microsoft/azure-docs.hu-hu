@@ -7,10 +7,10 @@ ms.date: 04/17/2018
 ms.author: miradic
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 060bb9dcdd504846c76ab4c782b2857fdddfa394
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91354802"
 ---
 # <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
@@ -131,7 +131,7 @@ Ugyanaz, mint a méretezést használó mechanizmusokhoz példányok hozzáadás
 * A _példányok minimális száma_ határozza meg a skálázás legalacsonyabb korlátját. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
 
 > [!WARNING] 
-> A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül**fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Felskálázási művelet esetén az új partíciók üresek lesznek, és a méretezési művelet esetén a **partíció a benne található összes adattal együtt törölve**lesz.
+> A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül** fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Felskálázási művelet esetén az új partíciók üresek lesznek, és a méretezési művelet esetén a **partíció a benne található összes adattal együtt törölve** lesz.
 
 ## <a name="setting-auto-scaling-policy-for-partition-based-scaling"></a>Az automatikus skálázási szabályzat beállítása a particionálásra alapuló skálázáshoz
 

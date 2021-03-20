@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 56f9976faf2a803e747bce8b851a3555e6d746b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231146"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
@@ -32,11 +32,11 @@ Az Azure AD jelentéskészítési architektúrája a következő elemekből áll
 
 - **Tevékenységjelentések** 
     - [Bejelentkezések](concept-sign-ins.md) – információkat biztosít a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról
-    - [Auditnaplók](concept-audit-logs.md) – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. 
+    - [Naplók](concept-audit-logs.md) – az Azure ad-n belüli különböző szolgáltatások által végzett módosítások naplókban való nyomon követését teszi lehetővé. 
     
 - **Biztonsági jelentések** 
-    - [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
-    - [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
+    - [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – a kockázatos bejelentkezés egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek. 
+    - [Kockázatnak](../identity-protection/overview-identity-protection.md) kitett felhasználók – a kockázatos felhasználók egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült. 
 
 Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 

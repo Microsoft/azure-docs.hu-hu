@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22aa97c6e627c2072636ca2e079877ff0f608b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798800"
 ---
 # <a name="hide-or-delete-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag elrejtése vagy törlése az Azure AD-jogosultságok kezelésében
@@ -35,17 +35,17 @@ Kövesse az alábbi lépéseket egy hozzáférési csomag **rejtett** beállít�
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
-1. Az Áttekintés lapon kattintson a **Szerkesztés**elemre.
+1. Az Áttekintés lapon kattintson a **Szerkesztés** elemre.
 
 1. Állítsa be a **rejtett** beállítást.
 
-    Ha a **nem**értékre van állítva, a hozzáférési csomag a felhasználó saját hozzáférési portálján jelenik meg.
+    Ha a **nem** értékre van állítva, a hozzáférési csomag a felhasználó saját hozzáférési portálján jelenik meg.
 
-    Ha az **Igen**értékre van állítva, a hozzáférési csomag nem jelenik meg a felhasználó saját hozzáférési portálján. Az egyetlen mód, amikor a felhasználó megtekintheti a hozzáférési csomagot, ha a közvetlen hozzáférési portál a hozzáférési csomagra **mutató hivatkozást** tartalmaz. További információ: [megosztási hivatkozás a hozzáférési csomag igényléséhez](entitlement-management-access-package-settings.md).
+    Ha az **Igen** értékre van állítva, a hozzáférési csomag nem jelenik meg a felhasználó saját hozzáférési portálján. Az egyetlen mód, amikor a felhasználó megtekintheti a hozzáférési csomagot, ha a közvetlen hozzáférési portál a hozzáférési csomagra **mutató hivatkozást** tartalmaz. További információ: [megosztási hivatkozás a hozzáférési csomag igényléséhez](entitlement-management-access-package-settings.md).
 
 ## <a name="delete-an-access-package"></a>Hozzáférési csomag törlése
 
@@ -53,15 +53,15 @@ Hozzáférési csomag csak akkor törölhető, ha nem rendelkezik aktív felhasz
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
+1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás** elemre.
 
 1. A bal oldali menüben kattintson a **hozzáférési csomagok** elemre, majd nyissa meg a hozzáférési csomagot.
 
 1. A bal oldali menüben kattintson a **hozzárendelések** elemre, és távolítsa el az összes felhasználó hozzáférését.
 
-1. A bal oldali menüben kattintson az **Áttekintés** , majd a **Törlés**elemre.
+1. A bal oldali menüben kattintson az **Áttekintés** , majd a **Törlés** elemre.
 
-1. A megjelenő törlési üzenetben kattintson az **Igen**gombra.
+1. A megjelenő törlési üzenetben kattintson az **Igen** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

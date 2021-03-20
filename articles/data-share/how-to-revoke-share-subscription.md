@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 102a0099c95073793ba6a1a85f518c7539327bf3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87511853"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>Fogyasztó megosztás-előfizetésének visszavonása az Azure-beli adatmegosztásban
@@ -23,7 +23,7 @@ Az Azure-adatmegosztás területen navigáljon az elküldett megosztáshoz, és 
 
 ![Megosztás-előfizetés visszavonása](./media/how-to/how-to-revoke-share-subscription/revoke-share-subscription.png) 
 
-Jelölje be azon címzettek jelölőnégyzetét, akiknek a megosztási előfizetéseit törölni szeretné, majd kattintson a **Visszavonás**gombra. A fogyasztó már nem kap frissítéseket az adatkezeléshez.
+Jelölje be azon címzettek jelölőnégyzetét, akiknek a megosztási előfizetéseit törölni szeretné, majd kattintson a **Visszavonás** gombra. A fogyasztó már nem kap frissítéseket az adatkezeléshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [adatmegosztások figyeléséről](how-to-monitor.md).

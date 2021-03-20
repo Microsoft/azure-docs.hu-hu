@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798443"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag önálló felülvizsgálata az Azure AD-jogosultságok kezelésében
@@ -54,7 +54,7 @@ A hozzáférési felülvizsgálat megnyitása után láthatja a hozzáférést. 
     >[!NOTE]
     >Ha kijelentette, hogy már nincs szüksége a hozzáférésre, nem távolítja el azonnal a hozzáférési csomagból. A rendszer eltávolítja a hozzáférési csomagból a felülvizsgálat végén, vagy ha a rendszergazda leállítja a felülvizsgálatot.
 
-1.  Ha az **Igen**gombra kattintott, előfordulhat, hogy az **OK** mezőben szerepelnie kell egy indoklási utasításnak.
+1.  Ha az **Igen** gombra kattintott, előfordulhat, hogy az **OK** mezőben szerepelnie kell egy indoklási utasításnak.
 
 1.  Kattintson a **Submit (Küldés**) gombra.
 

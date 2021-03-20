@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 7ff75bf9d45803dd96927bcf7c70e7c7912db979
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097158"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Apache Spark-összekötő a Core (SQL) API-hoz: kibocsátási megjegyzések és erőforrások
@@ -44,7 +44,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 
 | Összetevő | Verzió |
 |---------|-------|
-| Apache Spark | 2,4. *x* , 2,3. *x* , 2,2. *x* és 2,1. *x* |
+| Apache Spark | 2,4.*x*, 2,3. *x*, 2,2. *x* és 2,1. *x* |
 | Scala | 2,11 |
 | Azure Databricks (futtatókörnyezet verziója) | Később, mint 3,4 |
 
@@ -54,7 +54,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > A Cosmos DB Cassandra API használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 | Erőforrás | Hivatkozás |
 |---|---|

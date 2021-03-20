@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e1d84483a701bf7fb4e6c50b9dc4f4f89993c64d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96355032"
 ---
 # <a name="best-practices-for-server-operations-on-azure-database-for-mysql--single-server"></a>Ajánlott eljárások a kiszolgálói műveletekhez Azure Database for MySQL – egyetlen kiszolgálón
@@ -72,6 +72,6 @@ A következő működési irányelvek szükségesek, amelyeket követni kell, am
 
 * Több MySQL-kiszolgálót is használhat, és eloszthatja a táblákat a kiszolgálók között. Ne helyezze el túl sok táblát egyetlen kiszolgálón, ha körülbelül 10000 vagy több táblázata van. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az Azure Database for MySQL teljesítményének bevált gyakorlata](concept-performance-best-practices.md)
 - [Ajánlott eljárás a Azure Database for MySQL monitorozásához](concept-monitoring-best-practices.md)

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: d2c1ddd1e0b5a080050e1ffeb28eded98dbfea3f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652109"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Vész-helyreállítás egy több-bérlős SaaS-alkalmazáshoz az adatbázis-geo-replikáció használatával
@@ -52,7 +52,7 @@ A Geo-replikáción alapuló DR-terv három különálló részből áll:
 
 Minden résznek körültekintően kell megfontolnia, különösen, ha nagy léptékben működik. Összességében a tervnek számos célt kell végrehajtania:
 
-* Telepítés
+* Beállítás
     * Hozzon létre és őrizzen meg egy tükrözési környezetet a helyreállítási régióban. A rugalmas készletek létrehozása és az ebben a helyreállítási környezetben található adatbázisok replikálása a helyreállítási régióban foglalt kapacitást is fenntartja. A környezet fenntartása magában foglalja az új bérlői adatbázisok replikálását az üzembe helyezés során.  
 * Helyreállítási
     * Ha a napi költségek csökkentése érdekében a méretezhető helyreállítási környezetet használják, a készleteket és az adatbázisokat fel kell mérni a helyreállítási régióban a teljes működési kapacitás megszerzéséhez.

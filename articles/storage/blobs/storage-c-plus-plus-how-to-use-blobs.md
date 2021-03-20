@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011098"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>BLOB Storage használata a C++-ból
@@ -254,7 +254,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a blob Storage alapjait, az alábbi hivatkozásokat követve további információkat tudhat meg az Azure Storage-ról.
 
 - [A Queue Storage használata C++-szal](../queues/storage-c-plus-plus-how-to-use-queues.md)

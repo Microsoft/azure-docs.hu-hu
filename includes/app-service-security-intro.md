@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: cephalin
 ms.openlocfilehash: 0fccb1ed092190f88d197c9bf2cd17678a4d1731
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83649053"
 ---
 A App Service platform-összetevői, beleértve az Azure-beli virtuális gépeket, a tárhelyet, a hálózati kapcsolatokat, a webes keretrendszereket, a felügyeleti és integrációs funkciókat, aktívan biztosítva és megerősítve. App Service a folyamatos megfelelőség ellenőrzése folyamatosan történik, hogy megbizonyosodjon róla, hogy:

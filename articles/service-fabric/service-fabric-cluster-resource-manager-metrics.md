@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a7dedea2937c9cafb4216da3628aa1360ad6993
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92173011"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Az erőforrás-felhasználás és a terhelések kezelése a metrikákkal Service Fabric
@@ -25,7 +25,7 @@ Tegyük fel, hogy meg szeretné kezdeni a szolgáltatás írását és üzembe h
   - ReplicaCount – a csomóponton található állapot-nyilvántartó replikák száma
   - Az összes szolgáltatási objektum (állapot nélküli és állapot-nyilvántartó) száma a csomóponton
 
-| Metrika | Állapot nélküli példányok betöltése | Állapot-nyilvántartó másodlagos terhelés | Állapot-nyilvántartó elsődleges terhelés | Tömeg |
+| Metric | Állapot nélküli példányok betöltése | Állapot-nyilvántartó másodlagos terhelés | Állapot-nyilvántartó elsődleges terhelés | Tömeg |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Magas |
 | ReplicaCount |0 |1 |1 |Közepes |
@@ -138,11 +138,11 @@ Most nézzük át ezeket a beállításokat részletesebben, és beszéljünk az
 ## <a name="load"></a>Betöltés
 A metrikák definiálásának lényege, hogy bizonyos terhelést képviselnek. A *betöltési* érték azt adja meg, hogy egy adott metrika mekkora részét használja egy adott csomópont egyes szolgáltatási példányai vagy replikái. A betöltés szinte bármilyen ponton konfigurálható. Például:
 
-  - A terhelést a szolgáltatás létrehozásakor lehet meghatározni. Ezt a típusú betöltési konfigurációt _alapértelmezett betöltésnek_nevezzük.
-  - A szolgáltatáshoz tartozó metrikai információk, beleértve az alapértelmezett terheléseket is, a szolgáltatás létrehozása után frissíthetők. Ez a metrikák frissítése _egy szolgáltatás frissítésével_történik.
-  - Egy adott partíció terhelése visszaállítható a szolgáltatás alapértelmezett értékeire. Ezt a metrikát a _partíció betöltésének visszaállítására_hívják.
-  - A betöltést szolgáltatási objektum alapján, dinamikusan, futásidőben lehet jelenteni. Ezt a metrikai frissítést _jelentési betöltésnek_nevezzük.
-  - A partíció replikáinak vagy példányainak betöltését a Fabric API-híváson keresztül a betöltési értékek jelentésével is frissítheti. Ezt a metrikai frissítést _egy partíció jelentési terhelésének_nevezzük.
+  - A terhelést a szolgáltatás létrehozásakor lehet meghatározni. Ezt a típusú betöltési konfigurációt _alapértelmezett betöltésnek_ nevezzük.
+  - A szolgáltatáshoz tartozó metrikai információk, beleértve az alapértelmezett terheléseket is, a szolgáltatás létrehozása után frissíthetők. Ez a metrikák frissítése _egy szolgáltatás frissítésével_ történik.
+  - Egy adott partíció terhelése visszaállítható a szolgáltatás alapértelmezett értékeire. Ezt a metrikát a _partíció betöltésének visszaállítására_ hívják.
+  - A betöltést szolgáltatási objektum alapján, dinamikusan, futásidőben lehet jelenteni. Ezt a metrikai frissítést _jelentési betöltésnek_ nevezzük.
+  - A partíció replikáinak vagy példányainak betöltését a Fabric API-híváson keresztül a betöltési értékek jelentésével is frissítheti. Ezt a metrikai frissítést _egy partíció jelentési terhelésének_ nevezzük.
 
 Az összes ilyen stratégia az adott szolgáltatáson belül is felhasználható élettartama alatt.
 
@@ -236,7 +236,7 @@ OperationResult<UpdatePartitionLoadResultList> updatePartitionLoadResults =
         cancellationToken);
 ```
 
-Ebben a példában egy partíció _53df3d7f-5471-403b-b736-bde6ad584f42_tartozó utolsó jelentett terhelés frissítését fogja végrehajtani. A metrikus _CustomMetricName0_ elsődleges replikájának terhelése a 100 értékkel lesz frissítve. Ugyanakkor a csomópont _NodeName0_található, egy adott másodlagos replika esetében az azonos metrikához tartozó terhelést a 200 értékkel frissíti a rendszer.
+Ebben a példában egy partíció _53df3d7f-5471-403b-b736-bde6ad584f42_ tartozó utolsó jelentett terhelés frissítését fogja végrehajtani. A metrikus _CustomMetricName0_ elsődleges replikájának terhelése a 100 értékkel lesz frissítve. Ugyanakkor a csomópont _NodeName0_ található, egy adott másodlagos replika esetében az azonos metrikához tartozó terhelést a 200 értékkel frissíti a rendszer.
 
 ### <a name="updating-a-services-metric-configuration"></a>A szolgáltatás metrika-konfigurációjának frissítése
 A szolgáltatáshoz társított mérőszámok listája és a metrikák tulajdonságai dinamikusan frissíthetők a szolgáltatás élő állapotában. Ez lehetővé teszi a kísérletezést és a rugalmasságot. Néhány példa, ha ez hasznos:

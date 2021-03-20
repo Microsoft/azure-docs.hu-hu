@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: afd3979690b8952c915a49099ee04b3d416031fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88189727"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forrás-környezet beállítása a VMware – Azure replikáláshoz
@@ -31,9 +31,9 @@ A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 
 1. A **Helyreállítási tárak** listából válassza ki a tár nevét. Ehhez a forgatókönyvhöz a **ContosoVMVault** nevet használjuk.
 2. Az **Első lépések** területen válassza ki a Site Recovery elemet. Ezután válassza **Az infrastruktúra előkészítése** lehetőséget.
-3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a**helyszíni lehetőséget.
+3. A **védelmi cél**  >  ,**ahol a gépek találhatók**, válassza **a** helyszíni lehetőséget.
 4. A **Hová szeretné replikálni a gépeket?** területen válassza **Az Azure-ba** lehetőséget.
-5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ezután válassza az **OK** gombot.
+5. A **Virtualizáltak a gépek?** területen válassza az **Igen, a VMware vSphere hipervizorral** lehetőséget. Ez után válassza az **OK** gombot.
 
 ## <a name="set-up-the-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 

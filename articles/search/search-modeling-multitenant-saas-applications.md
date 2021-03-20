@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: cd21197d6d1559b681ae622b974f6eb7ba95ad3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91397368"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Tervezési minták a több-bérlős SaaS-alkalmazásokhoz és az Azure Cognitive Search
@@ -26,9 +26,9 @@ A szolgáltatásként nyújtott keresési megoldásként az [Azure Cognitive Sea
 
 A tervezési minták megtárgyalása előtt fontos megérteni néhány alapvető fogalmat.
 
-Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra*van előfizetve. Az Azure Cognitive Searchba való feltöltéskor a rendszer a keresési szolgáltatásban található *indexben* tárolja azt. Egy szolgáltatáson belül több index is lehet. Az adatbázisok ismerős fogalmait használva a keresési szolgáltatás egy adatbázishoz hasonlítható, míg a szolgáltatásban lévő indexek az adatbázisban lévő táblákhoz is hasonlóvá lehetnek.
+Az Azure Cognitive Search használatakor az egyik a *keresési szolgáltatásra* van előfizetve. Az Azure Cognitive Searchba való feltöltéskor a rendszer a keresési szolgáltatásban található *indexben* tárolja azt. Egy szolgáltatáson belül több index is lehet. Az adatbázisok ismerős fogalmait használva a keresési szolgáltatás egy adatbázishoz hasonlítható, míg a szolgáltatásban lévő indexek az adatbázisban lévő táblákhoz is hasonlóvá lehetnek.
 
-A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező*határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok*formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
+A keresési szolgáltatásban található minden egyes index saját sémával rendelkezik, amelyet számos testreszabható *mező* határoz meg. Az Azure Cognitive Search indexbe kerülnek az egyes *dokumentumok* formájában. Minden dokumentumot fel kell tölteni egy adott indexbe, és hozzá kell férnie az index sémájának. Amikor az Azure Cognitive Search használatával keres adatokat, a teljes szöveges keresési lekérdezések egy adott indexre lesznek kiadva.  Ha össze szeretné hasonlítani ezeket a fogalmakat egy adatbázishoz, a mezőket a táblázat oszlopaihoz lehet hasonlítani, és a dokumentumok a sorokhoz is összehasonlíthatók.
 
 ### <a name="scalability"></a>Méretezhetőség
 A standard szintű [díjszabásban](https://azure.microsoft.com/pricing/details/search/) szereplő Azure Cognitive Search-szolgáltatások két dimenzióban méretezhetők: tárterület és rendelkezésre állás.
@@ -95,7 +95,7 @@ Ha az indexek teljes száma túl nagyra nő egyetlen szolgáltatás esetében, e
 
 ## <a name="2-service-per-tenant"></a>2. szolgáltatás/bérlő
 
-:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Az index/bérlői modell ábrázolása" border="false":::
+:::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="A szolgáltatás/bérlői modell ábrázolása" border="false":::
 
 A szolgáltatás-bérlői architektúrában minden bérlő saját keresési szolgáltatással rendelkezik.
 

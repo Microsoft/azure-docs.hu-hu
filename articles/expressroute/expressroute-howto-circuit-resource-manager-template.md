@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
 ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92202055"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kör létrehozása Azure Resource Manager sablon használatával
@@ -63,8 +63,8 @@ ExpressRoute-kör létrehozása sablon üzembe helyezésével:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * Az **SKU-szint** meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket*is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
-   * Az **SKU termékcsalád** meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata*között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. Egy *helyi* áramkör csak *Unlimiteddata* .
+   * Az **SKU-szint** meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket* is. A SKU nem módosítható a *standard/prémium* szintről a *helyi* értékre.
+   * Az **SKU termékcsalád** meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata* között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. Egy *helyi* áramkör csak *Unlimiteddata* .
    * A társítás **helye** az a fizikai hely, ahol a Microsofttal való együttműködésre van szükség.
 
      > [!IMPORTANT]
@@ -73,7 +73,7 @@ ExpressRoute-kör létrehozása sablon üzembe helyezésével:
     Az erőforráscsoport neve a Service Bus-névtér neve, **RG** hozzáfűzéssel.
 
 2. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
-3. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
+3. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés** lehetőséget.
 
 Az Event hub létrehozása néhány percet vesz igénybe.
 

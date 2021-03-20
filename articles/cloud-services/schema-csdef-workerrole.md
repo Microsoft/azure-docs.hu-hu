@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743134"
 ---
 # <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure Cloud Services (klasszikus) definíciós WorkerRole séma
@@ -148,7 +148,7 @@ Az `WorkerRole` elem olyan szerepkört ír le, amely az általánosított fejles
 
 Az alábbi táblázat az elem attribútumait ismerteti `WorkerRole` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A feldolgozói szerepkör neve. A szerepkör nevének egyedinek kell lennie.|
 |enableNativeCodeExecution|boolean|Választható. Az alapértelmezett érték `true` :; a natív kód végrehajtása és a teljes megbízhatóság alapértelmezés szerint engedélyezve van. Ezt az attribútumot úgy állítsa be, hogy `false` letiltsa a natív kód végrehajtását a feldolgozói szerepkörben, és használja helyette az Azure részleges megbízhatóságát.|
@@ -162,7 +162,7 @@ Az `Setting` elem egy név és egy érték párokat ír le, amely meghatározza 
 
 Az alábbi táblázat az elem attribútumait ismerteti `Setting` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A konfigurációs beállítás egyedi neve.|
 
@@ -179,7 +179,7 @@ Az `LocalStorage` elem egy helyi tárolási erőforrást azonosít, amely a szol
 
 Az alábbi táblázat az elem attribútumait ismerteti `LocalStorage` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A helyi tároló egyedi neve.|
 |cleanOnRoleRecycle|boolean|Választható. Azt jelzi, hogy a helyi tárolót meg kell-e tisztítani a szerepkör újraindításakor. Az alapértelmezett érték `true`.|
@@ -202,7 +202,7 @@ Több végpontot is megadhat, amelyek a HTTP-, HTTPS-, UDP-és TCP-végpontok ko
 
 Az alábbi táblázat az elem attribútumait ismerteti `InputEndpoint` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A külső végpont egyedi neve.|
 |protokoll|sztring|Kötelező. A külső végpont átviteli protokollja. Feldolgozói szerepkör esetén a lehetséges értékek a következők:,, `HTTP` `HTTPS` `UDP` vagy `TCP` .|
@@ -217,7 +217,7 @@ Az `InternalEndpoint` elem a feldolgozói szerepkör belső végpontját ismerte
 
 Az alábbi táblázat az elem attribútumait ismerteti `InternalEndpoint` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A belső végpont egyedi neve.|
 |protokoll|sztring|Kötelező. A belső végpont átviteli protokollja. A lehetséges értékek:,, `HTTP` `TCP` `UDP` vagy `ANY` .<br /><br /> A érték `ANY` azt határozza meg, hogy bármely protokoll, bármely port engedélyezett-e.|
@@ -230,7 +230,7 @@ Az `InstanceInputEndpoint` elem csak az Azure SDK 1,7-es vagy újabb verzióján
 
 Az alábbi táblázat az elem attribútumait ismerteti `InstanceInputEndpoint` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A végpont egyedi neve.|
 |localPort|int|Kötelező. Meghatározza azt a belső portot, amelyet az összes szerepkör-példány figyelni fog a terheléselosztó által továbbított bejövő forgalom fogadásához. A lehetséges értékek tartománya 1 és 65535 között van, beleértve a értéket.|
@@ -248,7 +248,7 @@ Az `FixedPort` elem csak az Azure SDK 1,3-es vagy újabb verziójának használa
 
 Az alábbi táblázat az elem attribútumait ismerteti `FixedPort` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |port|int|Kötelező. A belső végpont portja. Ennek ugyanaz a hatása, mint a `FixedPortRange` min és a Max beállítása ugyanahhoz a porthoz.<br /><br /> A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|
 
@@ -262,7 +262,7 @@ Az `FixedPortRange` elem csak az Azure SDK 1,3-es vagy újabb verziójának hasz
 
 Az alábbi táblázat az elem attribútumait ismerteti `FixedPortRange` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |p|int|Kötelező. A tartomány minimális portszáma. A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|
 |max.|sztring|Kötelező. A tartományon belüli maximális port. A lehetséges értékek tartománya 1 és 65535 között van (az Azure SDK 1,7-es vagy újabb verziója).|
@@ -275,7 +275,7 @@ Az `Certificate` elem egy feldolgozói szerepkörhöz társított tanúsítvány
 
 Az alábbi táblázat az elem attribútumait ismerteti `Certificate` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A tanúsítvány neve, amely akkor használható, ha egy HTTPS-elemmel társítva van `InputEndpoint` .|
 |storeLocation|sztring|Kötelező. Azon tanúsítványtároló helye, ahol ez a tanúsítvány megtalálható a helyi gépen. A lehetséges értékek a következők: `CurrentUser` és `LocalMachine` .|
@@ -294,7 +294,7 @@ Az `Import` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatá
 
 Az alábbi táblázat az elem attribútumait ismerteti `Import` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |moduleName|sztring|Kötelező. Az importálandó modul neve. Az érvényes importálási modulok a következők:<br /><br /> – RemoteAccess<br />- RemoteForwarder<br />-Diagnosztika<br /><br /> A RemoteAccess és a RemoteForwarder modulok lehetővé teszik a szerepkör-példány konfigurálását a távoli asztali kapcsolatokhoz. További információ: [Távoli asztali kapcsolat engedélyezése](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> A diagnosztikai modul lehetővé teszi a szerepkör-példány diagnosztikai adatainak gyűjtését|
 
@@ -305,7 +305,7 @@ Az `Runtime` elem csak az Azure SDK 1,3-es vagy újabb verziójának használat�
 
 A következő táblázat a elem attribútumait ismerteti `Runtime` :
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |executionContext|sztring|Választható. Meghatározza azt a környezetet, amelyben a szerepkör-folyamat elindul. Az alapértelmezett környezet: `limited` .<br /><br /> -   `limited` – A folyamat rendszergazdai jogosultságok nélkül indul el.<br />-   `elevated` – A folyamat rendszergazdai jogosultságokkal van elindítva.|
 
@@ -319,7 +319,7 @@ Az `Variable` elem csak az Azure SDK 1,3-es vagy újabb verziójának használat
 
 A következő táblázat a elem attribútumait ismerteti `Variable` :
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A beállítani kívánt környezeti változó neve.|
 |érték|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
@@ -329,7 +329,7 @@ Az `RoleInstanceValue` elem azt az xPath-értéket adja meg, amelyből be kell o
 
 Az alábbi táblázat az elem attribútumait ismerteti `RoleInstanceValue` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |XPath|sztring|Választható. A példány telepítési beállításainak helyének elérési útja. További információ: [konfigurációs változók az XPath](cloud-services-role-config-xpath.md)-ban.<br /><br /> Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
 
@@ -346,7 +346,7 @@ Az `NetFxEntryPoint` elem meghatározza a szerepkörhöz futtatandó programot.
 
 Az alábbi táblázat az elem attribútumait ismerteti `NetFxEntryPoint` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |assemblyName|sztring|Kötelező. A belépési pontot tartalmazó szerelvény elérési útja és fájlneve. Az elérési út a **\\ %ROLEROOT%\Approot** mappához képest relatív (ne határozza meg a **\\ %ROLEROOT%\Approot** a alkalmazásban `commandLine` , feltételezve). **% ROLEROOT%** az Azure által fenntartott környezeti változó, amely a szerepkör gyökérkönyvtárának helyét jelöli. A **\\ %ROLEROOT%\Approot** mappa a szerepkörhöz tartozó alkalmazás mappáját jelöli.|
 |targetFrameworkVersion|sztring|Kötelező. A .NET-keretrendszer azon verziója, amelyen a szerelvény létrejött. Például: `targetFrameworkVersion="v4.0"`.|
@@ -359,7 +359,7 @@ Az `ProgramEntryPoint` elem meghatározza a szerepkörhöz futtatandó programot
 
 Az alábbi táblázat az elem attribútumait ismerteti `ProgramEntryPoint` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |commandLine|sztring|Kötelező. A végrehajtandó program elérési útja, fájlneve és bármely parancssori argumentuma. Az elérési út a **%ROLEROOT%\Approot** mappához viszonyítva (ne határozza meg a **%ROLEROOT%\Approot** a parancssorban, feltételezve). **% ROLEROOT%** az Azure által fenntartott környezeti változó, amely a szerepkör gyökérkönyvtárának helyét jelöli. A **%ROLEROOT%\Approot** mappa a szerepkörhöz tartozó alkalmazás mappáját jelöli.<br /><br /> Ha a program véget ér, a rendszer újrahasznosítja a szerepkört, így általában úgy állítja be a programot, hogy továbbra is fusson, ahelyett, hogy olyan programot futtasson, amely egy véges feladatot futtat.|
 |setReadyOnProcessStart|boolean|Kötelező. Azt adja meg, hogy a szerepkör-példány megvárja-e a parancssori program elindítását. Ezt az értéket most kell beállítani `true` . Az érték beállítása `false` későbbi használatra van fenntartva.|
@@ -369,7 +369,7 @@ Az `Startup` elem a szerepkör indításakor futtatott feladatok gyűjteményét
 
 Az alábbi táblázat az elem attribútumát ismerteti `Startup` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |prioritású|int|Csak belső használatra.|
 
@@ -380,7 +380,7 @@ Az `Task` elem csak az Azure SDK 1,3-es vagy újabb verziójának használatáva
 
 Az alábbi táblázat az elem attribútumait ismerteti `Task` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |commandLine|sztring|Kötelező. Egy parancsfájl, például egy CMD-fájl, amely a futtatandó parancsokat tartalmazza. Az indítási parancsot és a Batch-fájlokat ANSI formátumban kell menteni. A byte-Order jelölőt a fájl elején beállított fájlformátumok nem fognak megfelelően feldolgozni.|
 |executionContext|sztring|Meghatározza azt a környezetet, amelyben a parancsfájl fut.<br /><br /> -   `limited` [Alapértelmezett] – futtassa ugyanazokkal a jogosultságokkal, mint a folyamatot üzemeltető szerepkör.<br />-   `elevated` – Futtatás rendszergazdai jogosultságokkal.|
@@ -398,7 +398,7 @@ Az `Content` elem csak az Azure SDK 1,5-es vagy újabb verziójának használat�
 
 Az alábbi táblázat az elem attribútumait ismerteti `Content` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |destination|sztring|Kötelező. Annak az Azure-beli virtuális gépnek a helye, ahová a tartalom kerül. Ez a hely a **%ROLEROOT%\Approot** mappához képest relatív.|
 
@@ -411,7 +411,7 @@ Az `SourceDirectory` elem csak az Azure SDK 1,5-es vagy újabb verziójának has
 
 Az alábbi táblázat az elem attribútumait ismerteti `SourceDirectory` .
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Típus | Description |
 | --------- | ---- | ----------- |
 |path|sztring|Kötelező. Egy helyi könyvtár relatív vagy abszolút elérési útja, amelynek tartalmát a rendszer az Azure-beli virtuális gépre másolja. A környezeti változók kiterjesztése a könyvtár elérési útjában támogatott.|
 

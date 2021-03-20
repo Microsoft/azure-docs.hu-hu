@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91316000"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan regisztrálhat eszközöket több
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,10 +45,10 @@ A regisztrációs lista megmondja a Device Provisioning Service-nek, hogy melyik
 
 ## <a name="set-the-device-provisioning-service-allocation-policy"></a>A Device Provisioning Service kiosztási szabályzatának beállítása
 
-A kiosztási szabályzat egy Device Provisioning Service-beállítás, amely meghatározza az eszközök IoT hubokhoz való hozzárendelésének módját. Három támogatott kiosztási szabályzat létezik: 
+A kiosztási szabályzat egy Device Provisioning Service-beállítás, amely meghatározza az eszközök IoT hubokhoz való hozzárendelésének módját. Három támogatott kiosztási szabályzat létezik: 
 
 1. **Legkisebb mértékű késleltetés**: Az eszközök abban az IoT-központban lesznek kiépítve, amely a legkisebb mértékű késleltetéssel rendelkezik az adott eszköz irányába.
-2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Az eszközök egyforma valószínűséggel lesznek kiépítve a csatolt IoT-központokban. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
+2. **Egyenletesen súlyozott elosztás** (alapértelmezett): Az eszközök egyforma valószínűséggel lesznek kiépítve a csatolt IoT-központokban. Ez az alapértelmezett beállítás. Akkor érdemes megtartani, ha csak egy IoT-központban épít ki eszközöket. 
 3. **Statikus konfigurálás a regisztrációs listán keresztül**: A regisztrációs listában meghatározott IoT-központ elsőbbséget élvez a Device Provisioning Service-szintű kiosztási szabályzattal szemben.
 
 Kövesse az alábbi lépéseket a kiosztási szabályzat beállításához:
@@ -75,7 +75,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652228"
 ---
-# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware-ről Azure-ba történő vészhelyreállítás architektúrája
+# <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vész-helyreállítási architektúra
 
 Ez a cikk azokat az architektúrákat és folyamatokat ismerteti, amelyeket a rendszer a helyszíni VMware-hely és az Azure között a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával végez a helyreállítási replikáció, a feladatátvétel és a VMWare virtuális gépek (VM-EK) helyreállítási folyamatainak telepítésekor.
 
@@ -45,9 +45,9 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
-| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Replikálás               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
 
 A helyszíni Azure Site Recovery infrastruktúra és az Azure-szolgáltatások közötti kommunikációra szűrni kívánt URL-címek teljes listájáért tekintse meg [a hálózati követelmények szakaszt az előfeltételek című cikkben](vmware-azure-deploy-configuration-server.md#prerequisites).

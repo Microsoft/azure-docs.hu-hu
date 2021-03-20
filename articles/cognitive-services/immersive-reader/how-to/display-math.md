@@ -11,16 +11,16 @@ ms.date: 01/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js
 ms.openlocfilehash: 75b748604e8faa502970ac71e3fec4fae2774c19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91334514"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>A matematika megjelenítése a lebilincselő olvasóban
 
 A magával ragadó olvasó matematikai Markup Language ([MathML](https://developer.mozilla.org/docs/Web/MathML)) formában jeleníti meg a matematikai elemeket.
-A MIME-típus a magától megtekinthető olvasó [chunk](../reference.md#chunk)adattömbökön állítható be. További információ: [támogatott MIME-típusok](../reference.md#supported-mime-types) .
+A MIME-típus a magától megtekinthető olvasó [](../reference.md#chunk)adattömbökön állítható be. További információ: [támogatott MIME-típusok](../reference.md#supported-mime-types) .
 
 ## <a name="send-math-to-the-immersive-reader"></a>Matematikai küldése a magára olvasónak
 Ha matematikai küldést szeretne küldeni a lebilincselő olvasónak, adjon meg egy MathML tartalmazó adathalmazt, és állítsa a MIME-típust a következőre: ```application/mathml+xml``` ;

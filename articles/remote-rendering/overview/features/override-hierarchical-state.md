@@ -7,10 +7,10 @@ ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 851a87885ac765c829e8c2be9fd1205e22906ca9
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445154"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
@@ -28,32 +28,32 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 
 A felülbírálható állapotok rögzített halmaza:
 
-* **`Hidden`** : A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
-* **`Tint color`** : Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
+* **`Hidden`**: A jelenet gráfban található megfelelő rácsvonalak rejtettek vagy láthatók.
+* **`Tint color`**: Egy megjelenített objektum színezhető színezhető az egyedi színárnyalat és a színárnyalat súlyozásával. Az alábbi képen egy kerék peremének színárnyalata látható.
   
   ![Objektum zöldre kapcsolásához használt színárnyalat](./media/color-tint.png)
 
-* **`See-through`** : A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
+* **`See-through`**: A geometria félig transzparens módon jelenik meg, például egy objektum belső részeinek megjelenítéséhez. Az alábbi képen látható, hogy a teljes autó a látható módon jelenik meg, kivéve a piros fék vastagságát:
 
   ![A kijelölt objektumok transzparensvé tételéhez használt, áttekinthető mód](./media/see-through.png)
 
   > [!IMPORTANT]
   > A megtekintési effektus csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
-* **`Shell`** : A geometriát átlátszó, de telített rendszerhéjként jeleníti meg a rendszer. Ez a mód lehetővé teszi a jelenet nem fontos részeinek kifakulását, miközben továbbra is megőrzi az alakzat és a relatív pozicionálás érzését. A rendszerhéj megjelenítésének módosításához használja a [ShellRenderingSettings](shell-effect.md) állapotot. Tekintse meg a következő rendszerképet, amely az autós modell esetében teljes mértékben héj által megjelenített, a kék források kivételével:
+* **`Shell`**: A geometriát átlátszó, de telített rendszerhéjként jeleníti meg a rendszer. Ez a mód lehetővé teszi a jelenet nem fontos részeinek kifakulását, miközben továbbra is megőrzi az alakzat és a relatív pozicionálás érzését. A rendszerhéj megjelenítésének módosításához használja a [ShellRenderingSettings](shell-effect.md) állapotot. Tekintse meg a következő rendszerképet, amely az autós modell esetében teljes mértékben héj által megjelenített, a kék források kivételével:
 
   ![Adott objektumok kihalványítására szolgáló rendszerhéj-mód](./media/shell.png)
 
   > [!IMPORTANT]
   > A rendszerhéj hatása csak akkor működik, ha a *TileBasedComposition* [renderelési módot](../../concepts/rendering-modes.md) használja.
 
-* **`Selected`** : A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
+* **`Selected`**: A geometria egy [kijelölési körvonalsal](outlines.md)jelenik meg.
 
   ![Kijelölt rész kiemelésére szolgáló tagolási beállítás](./media/selection-outline.png)
 
-* **`DisableCollision`** : A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
+* **`DisableCollision`**: A geometria mentesül a [térbeli lekérdezések](spatial-queries.md)alól. A **`Hidden`** jelző nem befolyásolja az ütközési állapot jelzőjét, így a két jelzőt gyakran együtt kell beállítani.
 
-* **`UseCutPlaneFilterMask`** : A kivágási sík kijelölésének vezérléséhez használjon egyéni szűrő bitet. Ez a jelző határozza meg, hogy az egyes szűrő maszkot kell-e használni vagy örökölni a szülőtől. A szűrő Bite maszkja maga a tulajdonságon keresztül van beállítva `CutPlaneFilterMask` . A szűrés működésével kapcsolatos részletes információkért tekintse meg a [szelektív kivágású síkok című bekezdést](cut-planes.md#selective-cut-planes). Tekintse meg a következő példát, ahol csak a gumiabroncs és a RIM kerül kivágásra, miközben a jelenet többi része érintetlen marad.
+* **`UseCutPlaneFilterMask`**: A kivágási sík kijelölésének vezérléséhez használjon egyéni szűrő bitet. Ez a jelző határozza meg, hogy az egyes szűrő maszkot kell-e használni vagy örökölni a szülőtől. A szűrő Bite maszkja maga a tulajdonságon keresztül van beállítva `CutPlaneFilterMask` . A szűrés működésével kapcsolatos részletes információkért tekintse meg a [szelektív kivágású síkok című bekezdést](cut-planes.md#selective-cut-planes). Tekintse meg a következő példát, ahol csak a gumiabroncs és a RIM kerül kivágásra, miközben a jelenet többi része érintetlen marad.
 ![Szelektív kivágott síkok](./media/selective-cut-planes-hierarchical-override.png)
 
 
@@ -115,7 +115,7 @@ Az átlátszó renderelés több számítási feladatot tesz lehetővé a kiszol
 * [C# HierarchicalStateOverrideComponent osztály](/dotnet/api/microsoft.azure.remoterendering.hierarchicalstateoverridecomponent)
 * [C++ HierarchicalStateOverrideComponent osztály](/cpp/api/remote-rendering/hierarchicalstateoverridecomponent)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerteti](../../overview/features/outlines.md)
 * [Renderelési módok](../../concepts/rendering-modes.md)

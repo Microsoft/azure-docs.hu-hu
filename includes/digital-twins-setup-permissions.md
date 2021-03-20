@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: baanders
 ms.openlocfilehash: 919cc934920d922a82ceb9e30630006627af44e9
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205486"
 ---
 ## <a name="prerequisites-permission-requirements"></a>Előfeltételek: engedélyezési követelmények
@@ -18,7 +18,7 @@ A cikkben szereplő összes lépés végrehajtásához rendelkeznie kell egy oly
 * Azure-erőforrások létrehozása és kezelése
 * Az Azure-erőforrásokhoz való felhasználói hozzáférés kezelése (beleértve az engedélyek megadását és delegálását)
 
-A követelménynek megfelelő általános szerepkörök a *tulajdonos*, a *fiók rendszergazdája*vagy a *felhasználói hozzáférés rendszergazdája* és a *közreműködő*kombinációja. A szerepkörök és engedélyek teljes körű ismertetését, beleértve a más szerepkörökhöz tartozó engedélyeket, a [*klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md) az Azure RBAC dokumentációjában találhatja meg.
+A követelménynek megfelelő általános szerepkörök a *tulajdonos*, a *fiók rendszergazdája* vagy a *felhasználói hozzáférés rendszergazdája* és a *közreműködő* kombinációja. A szerepkörök és engedélyek teljes körű ismertetését, beleértve a más szerepkörökhöz tartozó engedélyeket, a [*klasszikus előfizetés-rendszergazdai szerepköröket, az Azure-szerepköröket és az Azure ad-szerepköröket*](../articles/role-based-access-control/rbac-and-directory-admin-roles.md) az Azure RBAC dokumentációjában találhatja meg.
 
 Ha szeretné megtekinteni a szerepkörét az előfizetésében, látogasson el a Azure Portal [előfizetések oldalára](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) (ezt a hivatkozást használhatja, vagy keresse meg az *előfizetéseket* a portál keresősáv használatával). Keresse meg az Ön által használt előfizetés nevét, és tekintse meg a szerepkörét a *saját szerepkör* oszlopban:
 

@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: a5ecd8f13a3255a565168f62f358a6a38e3cbab4
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94445217"
 ---
 # <a name="managed-hsm-local-rbac-built-in-roles"></a>Felügyelt HSM helyi RBAC beépített szerepkörei
@@ -21,7 +21,7 @@ A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amely
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
 
-|Szerepkör neve|Description|ID (Azonosító)|
+|Szerepkör neve|Leírás|ID (Azonosító)|
 |---|---|---|
 |Felügyelt HSM-rendszergazda| Teljes hozzáférést biztosít az összes adat-művelethez.|a290e904-7015-4bba-90c8-60543313cdb4|
 |Felügyelt HSM titkosítási igazgató| Teljes hozzáférést biztosít az összes kulcsfontosságú felügyeleti és kulcs titkosítási művelethez|515eb02d-2335-4d2d-92f2-b1cbdf9c3778|
@@ -44,7 +44,7 @@ A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amely
 /securitydomain/upload/action|<center>X</center>||||||
 /securitydomain/upload/read|<center>X</center>||||||
 /securitydomain/transferkey/read|<center>X</center>||||||
-|**Kulcskezelő**|
+|**Kulcskezelés**|
 |/keys/read/action|<center>X</center>|<center>X</center>|<center>X</center>||<center>X</center>||<center>X</center>|
 |/keys/write/action|<center>X</center>|<center>X</center>|<center>X</center>||||
 |/keys/create|<center>X</center>|<center>X</center>|<center>X</center>||||
@@ -75,7 +75,7 @@ A felügyelt HSM helyi RBAC számos beépített szerepkörrel rendelkezik, amely
 |/restore/status/action|<center>X</center>||||||
 ||||||||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md)áttekintését.
 - A [felügyelt HSM szerepkör-kezelésről](role-management.md) szóló oktatóanyag megtekintése

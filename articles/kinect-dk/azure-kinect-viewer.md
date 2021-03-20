@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, érzékelő, megjelenítő, vizualizáció, mélység, RGB, szín, IMU, hang, mikrofon, pont felhő
 ms.openlocfilehash: f411de5854d516586dc64701cca729c692ce40e0
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92166105"
 ---
 # <a name="azure-kinect-viewer"></a>Azure Kinect Viewer
@@ -40,7 +40,7 @@ Indítsa el az alkalmazást a futtatásával `k4aviewer.exe` .
 
 ### <a name="use-the-viewer-with-live-data"></a>A megjelenítő használata élő adatértékekkel
 
-1. Az **eszköz megnyitása** szakaszban válassza ki a megnyitni kívánt eszköz **sorozatszámát** . Ezután válassza a **frissítés**lehetőséget, ha az eszköz hiányzik.
+1. Az **eszköz megnyitása** szakaszban válassza ki a megnyitni kívánt eszköz **sorozatszámát** . Ezután válassza a **frissítés** lehetőséget, ha az eszköz hiányzik.
 2. Kattintson az **eszköz megnyitása** gombra.
 3. A **Start** gombra kattintva megkezdheti az adatátvitelt az alapértelmezett beállításokkal.
 
@@ -108,7 +108,7 @@ A konfiguráció módosításakor vagy a szinkronizálási kábel beszúrásakor
 
 ![Külső szinkronizációs vezérlő](./media/how-to-guides/sync-control.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[Külső szinkronizálás telepítési útmutatója](https://support.microsoft.com/help/4494429/sync-multiple-azure-kinect-dk-devices)

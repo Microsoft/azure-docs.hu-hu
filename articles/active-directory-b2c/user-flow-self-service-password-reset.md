@@ -11,10 +11,10 @@ ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0c9edaf3356ea4c1a521a89f2ec60a4b6ba1a5ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87481495"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Önkiszolgáló jelszó-visszaállítás beállítása ügyfelei számára
@@ -30,8 +30,8 @@ Alapértelmezés szerint a címtárban nincs bekapcsolva az önkiszolgáló jels
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) előfizetés-rendszergazdaként. Ez ugyanaz a munkahelyi vagy iskolai fiók, vagy ugyanaz a Microsoft-fiók, amelyet a címtár létrehozásához használt.
 2. Nyissa meg **Azure Active Directory** (a bal oldali navigációs sávon).
-3. Görgessen le a beállítások panelen, és válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
-4. Állítsa be az **önkiszolgáló jelszó-visszaállítás**  beállítást az **összes**értékre.
+3. Görgessen le a beállítások panelen, és válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
+4. Állítsa be az **önkiszolgáló jelszó-visszaállítás**  beállítást az **összes** értékre.
 5. Kattintson az oldal tetején lévő **Mentés** elemre. Ennyi az egész!
 
 A teszteléshez használja a "Futtatás most" funkciót minden olyan bejelentkezési felhasználói folyamatnál, amely rendelkezik identitás-szolgáltatóként helyi fiókkal. A helyi fiók bejelentkezési oldalán (ahol meg kell adnia egy e-mail címet és egy jelszót, vagy egy felhasználónevet és egy jelszót), kattintson a **nem fér hozzá a fiókjához?** a felhasználói élmény ellenőrzéséhez.

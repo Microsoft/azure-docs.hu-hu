@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98600290"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Ügyfélalkalmazások inicializálása a MSAL.NET használatával
@@ -96,7 +96,7 @@ Az alkalmazás-építőket használó kódrészletekben számos `.With` metódus
 
 A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithAuthority()` 7 felülbírálás | Az alkalmazás alapértelmezett szolgáltatóját egy Azure AD-szolgáltatóra állítja be, és kiválaszthatja az Azure-felhőt, a célközönséget, a bérlőt (bérlői azonosítót vagy tartománynevet), vagy közvetlenül a szolgáltatói URI-t.|
 |`.WithAdfsAuthority(string)` | Az alkalmazás alapértelmezett szolgáltatójának beállítása ADFS-szolgáltatóként.|
@@ -115,7 +115,7 @@ A nyilvános ügyfélen vagy a bizalmas ügyfélalkalmazás-szerkesztőben beál
 
 A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Csak Xamarin. iOS esetén**: beállítja az iOS-kulcstartó biztonsági csoportját (a gyorsítótár megőrzéséhez).|
 
@@ -123,7 +123,7 @@ A Xamarin. iOS nyilvános ügyfélalkalmazás-építője számára beállíthat�
 
 A bizalmas ügyfélalkalmazás-szerkesztőben beállítható módosítók a következők:
 
-|Módosító | Leírás|
+|Módosító | Description|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Beállítja az alkalmazást az Azure AD-vel azonosító tanúsítványt.|
 |`.WithClientSecret(string clientSecret)` | Az alkalmazás az Azure AD-vel való azonosítására szolgáló ügyfél titkos kulcsának (alkalmazás jelszavának) beállítása.|
@@ -167,7 +167,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfélalkalmazás inicializálását követően a következő feladat a felhasználói bejelentkezés, a hitelesítő API-hozzáférés vagy mindkettő támogatásának hozzáadása.
 

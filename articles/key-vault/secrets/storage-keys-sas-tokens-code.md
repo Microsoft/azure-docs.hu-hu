@@ -10,10 +10,10 @@ manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2a0202c5259ccebedf03ade217f57b6305b9fa1b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94444928"
 ---
 # <a name="create-sas-definition-and-fetch-shared-access-signature-tokens-in-code"></a>SAS-definíció létrehozása és közös hozzáférésű aláírási jogkivonatok beolvasása a kódban
@@ -46,7 +46,7 @@ A Key Vault SAS-tokenről az Azure Storage-szolgáltatásokhoz való hozzáfér�
 > [!NOTE]
 > Az alkalmazásnak fel kell készülnie az SAS frissítésére, ha az 403 a tárterületről, így kezelheti azt az esetet, amikor a kulcsot feltörték, és a normál rotációs időszaknál gyorsabban kell elforgatni. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [biztosíthat korlátozott hozzáférést az Azure Storage-erőforrásokhoz sas használatával](../../storage/common/storage-sas-overview.md).
 - Ismerje meg, hogyan [kezelheti a Storage-fiókok kulcsait Key Vault és az Azure CLI](overview-storage-keys.md) vagy [Azure PowerShell](overview-storage-keys-powershell.md)használatával.
 - Lásd: [felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

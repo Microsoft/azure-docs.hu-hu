@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: duau
 ms.openlocfilehash: e402a87ae441ed98a9da93f8b9e347c38c48126f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89398817"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Újdonságok az Azure-beli bejárati ajtón?
@@ -36,6 +36,6 @@ Az Azure bejárati ajtaja folyamatosan frissül. A legfrissebb fejlesztésekkel 
 | Szabályok motor (előzetes verzió) | Testreszabhatja a HTTP-kérelmek kezelését a peremhálózat szélén. További információt a [szabályok motor áttekintése](front-door-rules-engine.md)című témakörben talál. |2020. április |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure bejáratáról: [Mi az az Azure](front-door-overview.md) bejárati ajtó?

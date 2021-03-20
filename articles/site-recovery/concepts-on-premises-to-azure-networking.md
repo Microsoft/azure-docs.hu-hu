@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
 ms.openlocfilehash: 123a68885346062b9e8a53b8d5066204b6b20f5e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89568778"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
@@ -37,7 +37,7 @@ Az Azure-beli virtuális gépekhez való csatlakozás biztosításához a felada
 
 Helyszíni Windows rendszerű gépeken tegye a következőket:
 
-1. Konfigurálja a Windows beállításait. Ilyenek például a statikus állandó útvonalak vagy a WinHTTP-proxyk eltávolítása, valamint a lemez TÁROLÓHÁLÓZATI házirend **OnlineAll**való beállítása. [Kövesse](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) ezeket az utasításokat.
+1. Konfigurálja a Windows beállításait. Ilyenek például a statikus állandó útvonalak vagy a WinHTTP-proxyk eltávolítása, valamint a lemez TÁROLÓHÁLÓZATI házirend **OnlineAll** való beállítása. [Kövesse](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) ezeket az utasításokat.
 
 2. Győződjön meg arról, hogy [ezek a szolgáltatások](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) futnak.
 
@@ -96,7 +96,7 @@ Az IP-címek megtartásához a következő lépések szükségesek:
 
 ### <a name="failover-example"></a>Példa feladatátvételre
 
-Lássunk egy példát.
+Lássunk erre egy példát.
 
 - A fiktív vállalati Woodgrove Bank a helyileg üzemeltetett üzleti alkalmazásokat üzemelteti a mobil alkalmazásaikat az Azure-ban.
 - A helyek közötti VPN-kapcsolaton keresztül csatlakoznak a helyszínről az Azure-hoz. 
@@ -137,10 +137,10 @@ A címek megőrzése érdekében a következő műveleteket végzi el.
 
 A feladatátvétel előtt a célként megadott Azure-beli virtuális gép hálózati beállításait és IP-címét kell megadnia.
 
-1.  A Recovery Services-tároló – > **replikált elemek**területen válassza a helyszíni gépet.
-2. A gép **számítási és hálózati** lapján kattintson a **Szerkesztés**elemre a cél Azure-beli virtuális gép hálózati és adapter-beállításainak konfigurálásához.
-3. A **hálózati tulajdonságok**területen válassza ki azt a célként megadott hálózatot, amelyben az Azure-beli virtuális gép a feladatátvételt követően jön létre.
-4. A **hálózati**adapterek területen konfigurálja a hálózati adaptereket a célként megadott hálózatban. Alapértelmezés szerint Site Recovery az összes észlelt hálózati adaptert megjeleníti a helyszíni gépen.
+1.  A Recovery Services-tároló – > **replikált elemek** területen válassza a helyszíni gépet.
+2. A gép **számítási és hálózati** lapján kattintson a **Szerkesztés** elemre a cél Azure-beli virtuális gép hálózati és adapter-beállításainak konfigurálásához.
+3. A **hálózati tulajdonságok** területen válassza ki azt a célként megadott hálózatot, amelyben az Azure-beli virtuális gép a feladatátvételt követően jön létre.
+4. A **hálózati** adapterek területen konfigurálja a hálózati adaptereket a célként megadott hálózatban. Alapértelmezés szerint Site Recovery az összes észlelt hálózati adaptert megjeleníti a helyszíni gépen.
     - A **célként megadott hálózati adapter típusa** beállításnál az egyes hálózati adapterek **elsődleges**, **másodlagos**, vagy **nem hozhatók létre** , ha nincs szüksége a célként megadott hálózati adapterre. Az egyik hálózati adaptert elsődlegesként kell beállítani a feladatátvételhez. Vegye figyelembe, hogy a célként megadott hálózat módosítása hatással van az Azure-beli virtuális gép összes hálózati adapterére.
     - Kattintson a hálózati adapter nevére annak az alhálózatnak a megadásához, amelyben az Azure-beli virtuális gép telepítve lesz.
     - Írja felül a **dinamikus** felülírást azzal a magánhálózati IP-címmel, amelyet hozzá szeretne rendelni a célként megadott Azure-beli virtuális géphez. Ha nincs megadva IP-cím, Site Recovery a következő elérhető IP-címet fogja hozzárendelni az alhálózatban lévő hálózati ADAPTERhez a feladatátvételkor.
@@ -153,7 +153,7 @@ Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvé
 
 1. Nyissa meg a **replikált elemeket**.
 2. Válassza ki a kívánt Azure-beli virtuális gépet.
-3. Válassza a **számítás és hálózat** lehetőséget, majd válassza a **Szerkesztés**lehetőséget.
+3. Válassza a **számítás és hálózat** lehetőséget, majd válassza a **Szerkesztés** lehetőséget.
 
      ![A feladatátvételi hálózati konfigurációk testreszabása](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
@@ -161,7 +161,7 @@ Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvé
 
     ![A NIC-konfiguráció szerkesztése](media/azure-to-azure-customize-networking/nic-drilldown.png)
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 A Site Recovery mostantól tiszteletben tartja ezeket a beállításokat, és gondoskodik arról, hogy a feladatátvételen a virtuális gép a megfelelő IP-címen keresztül kapcsolódjon a kiválasztott erőforráshoz, ha az elérhető a cél IP-tartományban. Ebben az esetben nincs szükség a teljes alhálózat feladatátvételére. DNS-frissítésre lesz szükség a sikertelenül átadott gép rekordjainak frissítéséhez, hogy a virtuális gép új IP-címére mutasson.
 

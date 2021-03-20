@@ -8,17 +8,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91360888"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Mi az Internet Analyzer? (Előzetes verzió)
 
 Az Internet Analyzer egy ügyféloldali mérési platform, amellyel tesztelheti, hogy a hálózati infrastruktúra milyen hatással van az ügyfelek teljesítményére. Akár a helyszínről migrál az Azure-ba, akár egy új Azure-szolgáltatást értékel, az Internet Analyzer lehetővé teszi, hogy a migrálás előtt a felhasználók adatai és a Microsoft részletes elemzései alapján jobban megérthesse és optimalizálhassa a hálózati architektúrát az Azure-ral.
 
-Az Internet Analyzer egy kisméretű JavaScript-ügyfelet használ a webalkalmazásba, amely a végfelhasználók által a kiválasztott hálózati célhelyek késését méri, a _végpontokat_hívjuk. Az Internet Analyzer lehetővé teszi több párhuzamos tesztelés beállítását, amely lehetővé teszi különböző forgatókönyvek kiértékelését az infrastruktúra és az ügyfél igényei szerint. Az Internet Analyzer egyéni és előre konfigurált végpontokat biztosít, így biztosítva a kényelmet és a rugalmasságot, hogy megbízható teljesítménybeli döntéseket hozhasson a végfelhasználók számára. 
+Az Internet Analyzer egy kisméretű JavaScript-ügyfelet használ a webalkalmazásba, amely a végfelhasználók által a kiválasztott hálózati célhelyek késését méri, a _végpontokat_ hívjuk. Az Internet Analyzer lehetővé teszi több párhuzamos tesztelés beállítását, amely lehetővé teszi különböző forgatókönyvek kiértékelését az infrastruktúra és az ügyfél igényei szerint. Az Internet Analyzer egyéni és előre konfigurált végpontokat biztosít, így biztosítva a kényelmet és a rugalmasságot, hogy megbízható teljesítménybeli döntéseket hozhasson a végfelhasználók számára. 
 
 
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ Az előzetes verzió ideje alatt a következő előre konfigurált végpontok é
 * **Azure-régiók**
     * Dél-Brazília
     * Közép-India
-    * USA középső régiója
+    * Az USA középső régiója
     * Kelet-Ázsia
     * USA keleti régiója
     * Nyugat-Japán
@@ -104,7 +104,7 @@ A teszt elindítását követően a telemetria adatai megjelennek az Internet An
 A scorecardokkal kapcsolatos további információkért tekintse meg a [Scorecardok értelmezését](internet-analyzer-scorecard.md) ismertető oldalt. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhatja létre az első Internet Analyzer-erőforrását](internet-analyzer-create-test-portal.md).
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt. 

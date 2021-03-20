@@ -10,10 +10,10 @@ ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97968187"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Oktatóanyag: az adatátalakítás a Azure Stack Edge Pro-val speciális üzembe helyezési folyamat esetén
@@ -26,7 +26,7 @@ A számítás konfigurálható az eszköz egyszerű vagy speciális üzembe hely
 |------------------|--------------------------------------------------|---------------------------------------|
 | A következőre szánt     | IT-rendszergazdák                                | Fejlesztők                            |
 | Típus             | Azure Stack Edge szolgáltatás használata modulok üzembe helyezéséhez      | A IoT Hub szolgáltatás használata modulok üzembe helyezéséhez |
-| Üzembe helyezett modulok | Egyszeres                                           | Láncolt vagy több modul           |
+| Üzembe helyezett modulok | Egyirányú                                           | Láncolt vagy több modul           |
 
 
 Ez az eljárás körülbelül 20 – 30 percet vesz igénybe.
@@ -68,11 +68,11 @@ A Azure Stack Edge Pro-ban való számítás konfigurálásához létre kell hoz
     |Előfizetés     |Válasszon egy előfizetést a IoT Hub erőforráshoz. Kiválaszthatja ugyanazt az előfizetést, mint amelyet az Azure Stack Edge-erőforrás használ.        |
     |Erőforráscsoport     |Adja meg a IoT Hub erőforráshoz tartozó erőforráscsoport nevét. Kiválaszthatja ugyanazt az erőforráscsoportot, mint amelyet az Azure Stack Edge-erőforrás használ.         |
     |IoT Hub     | Válasszon az **új** vagy a **meglévő** listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást.      |
-    |Név     |Fogadja el az alapértelmezett értéket, vagy adja meg a IoT Hub erőforrás nevét.         |
+    |Name     |Fogadja el az alapértelmezett értéket, vagy adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a 3. számítási feladatokkal](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Válassza a **felülvizsgálat + létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrehozása után az **áttekintő** frissítések jelzik, hogy a IoT Edge szolgáltatás fut. 
+4. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. A IoT Hub erőforrás létrehozása néhány percet vesz igénybe. A IoT Hub erőforrás létrehozása után az **áttekintő** frissítések jelzik, hogy a IoT Edge szolgáltatás fut. 
 
     Ha a IoT Edge szolgáltatás a peremhálózati eszközön van konfigurálva, két eszközt hoz létre: egy IoT-eszközt és egy IoT Edge-eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. Ezen a IoT Edge eszközön a IoT Edge futtatókörnyezet is fut. Ezen a ponton csak a Linux platform érhető el a IoT Edge eszközhöz.
 

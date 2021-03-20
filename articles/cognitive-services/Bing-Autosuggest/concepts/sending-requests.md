@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
 ms.openlocfilehash: dd845c0fb877afa76b84eb5c2d86392f763eccf7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353391"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Kérelmek küldése a Bing Autosuggest APInak.
@@ -178,7 +178,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Bing Autosuggest?](../get-suggested-search-terms.md)
 - [A Bing Autosuggest API 7-es verziójának referenciája](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
