@@ -7,10 +7,10 @@ ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97830700"
 ---
 # <a name="get-service-access-tokens"></a>Szolgáltatás-hozzáférési jogkivonatok lekérése
@@ -29,7 +29,7 @@ Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltat�
 
 ### <a name="get-token-request"></a>"Jogkivonat beolvasása" kérés
 
-| URI | Módszer |
+| URI | Metódus |
 |-----------|:-----------|
 | /accounts/**accountId**/token | GET |
 
@@ -43,7 +43,7 @@ Cserélje le a *accountId* és a *accountKey* a megfelelő adataira.
 
 | Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken: karakterlánc | Success |
+| 200 | AccessToken: karakterlánc | Siker |
 
 | Fejléc | Cél |
 |--------|:------|
@@ -67,7 +67,7 @@ Write-Output "Token: $($response.AccessToken)"
 
 A szkript egyszerűen kinyomtatja a tokent a kimenetre, ahonnan másolhatja & beillesztheti. Valós projekt esetén automatizálja ezt a folyamatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)
 * [Azure frontend API-k](../how-tos/frontend-apis.md)

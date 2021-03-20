@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, koordináta rendszer, kalibrálás, függvények, kamera, belső, külső, projekt, nem projekt, átalakítás, RGB-d, pont felhő
 ms.openlocfilehash: a501765222154bde4ed35e878a9d18042893fca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85277288"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>Az Azure Kinect kalibrációs függvények használata
@@ -54,7 +54,7 @@ A [k4a_calibration_2d_to_2d ()](https://microsoft.github.io/Azure-Kinect-Sensor-
 - [Torzítási példa](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/undistort)
 - [Példa gyors felhőre](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/fastpointcloud)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a kamera-kalibrálásokat, megtudhatja, hogyan lehet
 >[!div class="nextstepaction"]

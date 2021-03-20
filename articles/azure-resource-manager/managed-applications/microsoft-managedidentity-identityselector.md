@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: 91e3cd0b99825fd72eb342ce7a8555b046455538
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063382"
 ---
 # <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. ManagedIdentity. IdentitySelector FELHASZNÁLÓIFELÜLET-elem
@@ -22,7 +22,7 @@ A vezérlő a következő elemekből áll:
 
 ![Microsoft. ManagedIdentity. IdentitySelector – első lépés](./media/managed-application-elements/microsoft-managedidentity-identityselector-1.png)
 
-Amikor a felhasználó kiválasztja a **Hozzáadás**lehetőséget, megnyílik a következő űrlap. A felhasználó kijelölhet egy vagy több felhasználó által hozzárendelt identitást az erőforráshoz.
+Amikor a felhasználó kiválasztja a **Hozzáadás** lehetőséget, megnyílik a következő űrlap. A felhasználó kijelölhet egy vagy több felhasználó által hozzárendelt identitást az erőforráshoz.
 
 ![Microsoft. ManagedIdentity. IdentitySelector második lépés](./media/managed-application-elements/microsoft-managedidentity-identityselector-2.png)
 
@@ -78,7 +78,7 @@ A kiválasztott identitások a táblázatban jelennek meg. A felhasználó hozz�
 - Ha a **Options. hideSystemAssignedIdentity** értéke **true (igaz**), akkor a rendszerhez rendelt identitás konfigurálására szolgáló felhasználói felület nem jelenik meg. A beállítás alapértelmezett értéke **hamis**.
 - Ha a **Options. hideUserAssignedIdentity** értéke **true (igaz**), a felhasználó által hozzárendelt identitás konfigurálására szolgáló felhasználói felület nem jelenik meg. Az erőforráshoz nincs hozzárendelve felhasználóhoz rendelt identitás. A beállítás alapértelmezett értéke **hamis**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 - A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

@@ -4,10 +4,10 @@ description: A DevTest Labs olyan információkat biztosít, amelyek segítség�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85480813"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Az összetevők hibáinak diagnosztizálása a laborban 
@@ -23,7 +23,7 @@ Miután létrehozott egy összetevőt, megtekintheti, hogy sikeres vagy sikertel
 
 1. A Azure Portal az erőforrások listájában válassza ki a labort.
 2. Válassza ki azt a Windows rendszerű virtuális gépet, amely tartalmazza a vizsgálni kívánt összetevőt.
-3. A bal oldali panelen az **általános**területen válassza az **összetevők elemet.** Megjelenik az adott virtuális géphez társított összetevők listája. Az összetevő neve és az összetevő állapota jelezve.
+3. A bal oldali panelen az **általános** területen válassza az **összetevők elemet.** Megjelenik az adott virtuális géphez társított összetevők listája. Az összetevő neve és az összetevő állapota jelezve.
 
    ![Összetevő állapota](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure-new.png)
 
@@ -47,6 +47,6 @@ A naplófájlok **Linux** rendszerű virtuális gépen való megtalálásával k
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 * [Virtuális gép csatlakoztatása meglévő Active Directory tartományhoz egy Resource Manager-sablonnal a DevTest Labs szolgáltatásban](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá git-tárházat a laborhoz](devtest-lab-add-artifact-repo.md).
 

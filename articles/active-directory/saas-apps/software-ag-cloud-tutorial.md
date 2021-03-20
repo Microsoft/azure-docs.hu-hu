@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
 ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98726117"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Software AG Cloud-nal
@@ -153,6 +153,6 @@ Ebben a szakaszban a következő lehetőséggel tesztelheti az Azure AD egyszeri
 
 Feltételezve, hogy a Microsoft Azure szolgáltatóként van konfigurálva a Software AG-felhőben, navigáljon, `www.softwareag.cloud` és kattintson a Bejelentkezés gombra, és adja meg a környezet nevét. A következő képernyőn kattintson a "bejelentkezés <IDP NAME> " hivatkozásra, és adja meg a hitelesítő adatokat. A hitelesítés után a rendszer bejelentkezik, és átveszi a Software AG Cloud kezdőlapjára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Software AG Cloud konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

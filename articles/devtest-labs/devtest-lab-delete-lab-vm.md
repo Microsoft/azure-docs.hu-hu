@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan törölheti a labort, vagy törölhet e
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481221"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
@@ -28,7 +28,7 @@ Labor törléséhez hajtsa végre a következő műveleteket:
 3. A **DevTest labor** lapon kattintson a **Törlés** elemre az eszköztáron. 
 
     ![Törlés gomb](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. A **jóváhagyás** lapon adja meg a labor **nevét** , és válassza a **Törlés**lehetőséget. 
+4. A **jóváhagyás** lapon adja meg a labor **nevét** , és válassza a **Törlés** lehetőséget. 
 
     ![Jóváhagyás](media/devtest-lab-delete-lab-vm/confirm-delete.png)
 5. A művelet állapotának megtekintéséhez válassza az **értesítések** ikon (harang) lehetőséget. 
@@ -50,7 +50,7 @@ A laborban lévő virtuális gépek törléséhez hajtsa végre a következő m�
 2. Válassza a bal oldali menü **minden erőforrás** elemét, válassza ki a **DevTest Labs** lehetőséget a szolgáltatás típusához, és válassza ki a labort.
 
     ![Válassza ki a labort](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Válassza a **... lehetőséget. (három pont)** a virtuális gépek listájában, és válassza a **Törlés**lehetőséget. 
+3. Válassza a **... lehetőséget. (három pont)** a virtuális gépek listájában, és válassza a **Törlés** lehetőséget. 
 
     ![Virtuális gép törlése a menüben](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
 4. A **megerősítő** párbeszédpanelen kattintson **az OK gombra**. 
@@ -61,7 +61,7 @@ Ha törölni szeretne egy virtuális **gépet a virtuális gép lapról**, vála
 ![Virtuális gép törlése a virtuális gép lapról](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha labort szeretne létrehozni, tekintse meg a következő cikkeket: 
 
 - [Labor létrehozása](devtest-lab-create-lab.md)

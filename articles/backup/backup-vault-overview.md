@@ -4,10 +4,10 @@ description: A Backup-tárolók áttekintése.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92091287"
 ---
 # <a name="backup-vaults-overview"></a>Backup-tárolók áttekintése
@@ -47,13 +47,13 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen.
 ### <a name="create-backup-vault"></a>Backup-tároló létrehozása
 
 1. A keresőmezőbe írja be a **Backup-tárolók** kifejezést.
-1. A **szolgáltatások**területen válassza a **Backup-tárolók**lehetőséget.
-1. A **Backup-tárolók** lapon válassza a **Hozzáadás**lehetőséget.
-1. Az **alapvető beállítások lap** **projekt részletei**területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. A név mezőbe írja be a *myResourceGroup* nevet.
+1. A **szolgáltatások** területen válassza a **Backup-tárolók** lehetőséget.
+1. A **Backup-tárolók** lapon válassza a **Hozzáadás** lehetőséget.
+1. Az **alapvető beállítások lap** **projekt részletei** területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva, majd válassza az **Új erőforráscsoport létrehozása** lehetőséget. A név mezőbe írja be a *myResourceGroup* nevet.
 
   ![Új erőforráscsoport létrehozása](./media/backup-vault-overview/new-resource-group.png)
 
-1. A **példány részletei**területen írja *myVault* be a myVault **nevet a Backup-tároló neveként** , és válassza ki a választott régiót, ebben az esetben az *USA keleti* **régióját**.
+1. A **példány részletei** területen írja  be a myVault **nevet a Backup-tároló neveként** , és válassza ki a választott régiót, ebben az esetben az *USA keleti* **régióját**.
 1. Most válassza ki a **tárhely-redundanciát**. A tárterület-redundancia nem módosítható az elemek tárolóba való védelme után.
 1. Javasoljuk, hogy ha az Azure-t elsődleges biztonsági mentési tárolási végpontként használja, folytassa az alapértelmezett **geo-redundáns** beállítás használatát.
 1. Ha nem az Azure-t használja az elsődleges biztonsági mentési tároló végpontjaként, válassza a **Helyileg redundáns** lehetőséget, amellyel csökkentheti az Azure Storage-költségeit.
@@ -96,7 +96,7 @@ A lépések elvégzése után továbbra is törölheti a tárolót.
 
 Ha nincs több elem a tárolóban, válassza a **Törlés** lehetőséget a tároló irányítópultján. Egy megerősítő szöveg jelenik meg, amely megkérdezi, hogy szeretné-e törölni a tárolót.
 
-![Tár törlése](./media/backup-vault-overview/delete-vault.png)
+![Tároló törlése](./media/backup-vault-overview/delete-vault.png)
 
 1. Válassza az **Igen** lehetőséget annak ellenőrzéséhez, hogy törölni kívánja-e a tárolót. A tár törölve. A portál visszatér az **új** szolgáltatás menüjébe.
 

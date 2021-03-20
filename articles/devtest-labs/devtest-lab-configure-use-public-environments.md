@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan konfigurálhat és használhat nyilván
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 61cabdb296c3fff75137c7ce7e87652241fd2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85482666"
 ---
 # <a name="configure-and-use-public-environments-in-azure-devtest-labs"></a>Nyilvános környezetek konfigurálása és használata Azure DevTest Labs
@@ -24,8 +24,8 @@ A meglévő Labs esetében a nyilvános környezet tárháza nincs engedélyezve
 A tesztkörnyezetben engedélyezheti vagy letilthatja a nyilvános környezeteket, és a következő lépésekkel csak meghatározott környezeteket lehet elérhetővé tenni a tesztkörnyezet felhasználói számára: 
 
 1. Válassza ki a laborhoz tartozó **konfigurációt és szabályzatokat** . 
-2. A **virtuális gépek alapjai** szakaszban válassza a **nyilvános környezetek**lehetőséget.
-3. A tesztkörnyezet nyilvános környezetének engedélyezéséhez válassza az **Igen**lehetőséget. Egyéb esetben a **Nem** választógombot jelölje be. 
+2. A **virtuális gépek alapjai** szakaszban válassza a **nyilvános környezetek** lehetőséget.
+3. A tesztkörnyezet nyilvános környezetének engedélyezéséhez válassza az **Igen** lehetőséget. Egyéb esetben a **Nem** választógombot jelölje be. 
 4. Ha engedélyezte a nyilvános környezeteket, a tárház összes környezete alapértelmezés szerint engedélyezve van. Kiválaszthat egy környezetet, hogy az ne legyen elérhető a labor felhasználói számára. 
 
 ![Nyilvános környezetek lap](media/devtest-lab-configure-use-public-environments/public-environments-page.png)
@@ -35,5 +35,5 @@ Labor-felhasználóként létrehozhat egy új környezetet az engedélyezett kö
 
 ![Nyilvános környezeti sablonok](media/devtest-lab-configure-use-public-environments/public-environment-templates.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a tárház egy nyílt forráskódú tárház, amellyel a saját gyakran használt és hasznos Resource Manager-sablonokat is felveheti. A hozzájáruláshoz egyszerűen küldje el a lekéréses kérelmet az adattárhoz.  

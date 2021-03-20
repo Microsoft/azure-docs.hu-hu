@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "78183905"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: hitelesítési protokollok
@@ -53,7 +53,7 @@ Szinte minden OAuth és OpenID Connect-folyamathoz négy fél vesz részt az Exc
 ## <a name="policies-and-user-flows"></a>Házirendek és felhasználói folyamatok
 Azure AD B2C szabályzatok vitathatatlanul a szolgáltatás legfontosabb funkciói. A Azure AD B2C kiterjeszti a standard OAuth 2,0 és az OpenID Connect protokollokat a szabályzatok bevezetésével. Ezek lehetővé teszik, hogy a Azure AD B2C sokkal több, mint egyszerű hitelesítést és engedélyezést végezzen.
 
-A leggyakoribb identitási feladatok beállításához a Azure AD B2C-portál a **felhasználói folyamatok**nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamatok teljes mértékben leírják a fogyasztói identitások élményét, beleértve a regisztrációt, a bejelentkezést és a profil szerkesztését. A felhasználói folyamatok egy felügyeleti felületen definiálhatók. A HTTP-hitelesítési kérelmek speciális lekérdezési paramétere segítségével hajthatók végre.
+A leggyakoribb identitási feladatok beállításához a Azure AD B2C-portál a **felhasználói folyamatok** nevű előre definiált, konfigurálható szabályzatokat tartalmazza. A felhasználói folyamatok teljes mértékben leírják a fogyasztói identitások élményét, beleértve a regisztrációt, a bejelentkezést és a profil szerkesztését. A felhasználói folyamatok egy felügyeleti felületen definiálhatók. A HTTP-hitelesítési kérelmek speciális lekérdezési paramétere segítségével hajthatók végre.
 
 A szabályzatok és a felhasználói folyamatok nem szabványos funkciók a OAuth 2,0 és az OpenID Connect szolgáltatáshoz, ezért érdemes megismernie a szükséges időt. További információ: [Azure ad B2C felhasználói folyamatokra vonatkozó útmutató](user-flow-overview.md).
 

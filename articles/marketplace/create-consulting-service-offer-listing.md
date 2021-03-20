@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92754514"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>A tanácsadási szolgáltatás ajánlati adatainak megadása
@@ -29,7 +29,7 @@ Az **ajánlati lista** lapon adja meg az alább ismertetett információkat. Ha 
 1.  A **név** mező előre ki van töltve az **új ajánlat** párbeszédpanelen korábban megadott névvel, de bármikor módosítható. Ez a név jelenik meg az ajánlatnak az online áruházban való listájában.
 
     > [!IMPORTANT]
-    > Az ajánlat nevének a következő formátumúnak kell lennie *: időtartam + típus* . További információ: az [ajánlat részletei](./plan-consulting-service-offer.md#offer-listing-details).
+    > Az ajánlat nevének a következő formátumúnak kell lennie *: időtartam + típus*. További információ: az [ajánlat részletei](./plan-consulting-service-offer.md#offer-listing-details).
 
 2. A **találatok összegzése** mezőben adja meg az ajánlat célját vagy célját 200 karakternél vagy annál kevesebb karakternél.
 3. A **Leírás** mezőben írja le a tanácsadási szolgáltatás ajánlatát. A leírást a HTML-címkék használatával formázhatja. Ebben a mezőben legfeljebb 2 000 karaktert adhat meg, beleértve a HTML-címkéket és a szóközöket is. További információ a HTML-formázásról: [az ajánlat leírásában támogatott HTML-címkék](./supported-html-tags.md).
@@ -76,8 +76,8 @@ Az ajánlatot bemutató YouTube-vagy Vimeo-videókra mutató hivatkozásokat is 
 3.  Húzzon át egy elemet. PNG-fájl (1280 x 720 képpont) a szürke miniatűr dobozba.
 4.  Egy másik videó hozzáadásához ismételje meg az 1 – 3. lépést.
 
-A következő lapra történő továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: **díjszabás és rendelkezésre állás** .
+A következő lapra történő továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: **díjszabás és rendelkezésre állás**.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A díjszabás és a rendelkezésre állás konfigurálása](create-consulting-service-pricing-availability.md)
+* [Díjszabás és rendelkezésre állás konfigurálása](create-consulting-service-pricing-availability.md)

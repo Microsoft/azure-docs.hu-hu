@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csatlakoztathat egy emptyDir-kötetet a tárol�
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77117740"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>EmptyDir-kötet csatlakoztatása Azure Container Instances
@@ -44,7 +44,7 @@ A következő Resource Manager-sablon például egy két tárolóból álló tá
 
 A Container Group telepítésére vonatkozó példákat lásd: [többtárolós csoport üzembe helyezése Resource Manager-sablonnal](container-instances-multi-container-group.md) és [egy többtárolós csoport üzembe helyezése YAML-fájl használatával](container-instances-multi-container-yaml.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 

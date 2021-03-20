@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan helyezhet üzembe beágyazott Azure Resource Ma
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481340"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Beágyazott Azure Resource Manager-sablonok üzembe helyezése tesztelési környezetekhez
@@ -57,7 +57,7 @@ Az alábbi egyszerű példa egy beágyazott üzembe helyezésre:
 "outputs": {}
 ```
 
-A sablont tartalmazó tárház mappája tartalmaz egy almappát `nestedtemplates` , amely tartalmazza a **NestOne.js** és a **NestOne.parameters.js**. A **azuredeploy.json**a sablon URI-ja az összetevők helye, a beágyazott sablon mappája, a beágyazott sablonfájl neve alapján készült. Hasonlóképpen, a paraméterek URI-ja az összetevők helye, a beágyazott sablon mappája és a beágyazott sablonhoz tartozó paraméter fájl használatával készült. 
+A sablont tartalmazó tárház mappája tartalmaz egy almappát `nestedtemplates` , amely tartalmazza a **NestOne.js** és a **NestOne.parameters.js**. A **azuredeploy.json** a sablon URI-ja az összetevők helye, a beágyazott sablon mappája, a beágyazott sablonfájl neve alapján készült. Hasonlóképpen, a paraméterek URI-ja az összetevők helye, a beágyazott sablon mappája és a beágyazott sablonhoz tartozó paraméter fájl használatával készült. 
 
 Itt látható a Visual Studióban megjelenő projekt struktúrájának képe: 
 
@@ -65,7 +65,7 @@ Itt látható a Visual Studióban megjelenő projekt struktúrájának képe:
 
 Az elsődleges mappában további mappák is hozzáadhatók, de nem lehetnek mélyebbek, mint egyetlen szinten. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
 
 - [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)

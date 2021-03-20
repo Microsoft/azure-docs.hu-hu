@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87320561"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
@@ -17,7 +17,7 @@ A kérelem telemetria eleme ( [Application Insights](./app-insights-overview.md)
 
 A telemetria kérése támogatja a standard bővíthetőségi modellt a Custom és a használatával `properties` `measurements` .
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Name
 
 A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL-cím elérési útját jelöli, mint `GET /values/{id}` a tényleges `id` érték nélkül.
 
@@ -53,7 +53,7 @@ A kérelem végrehajtásának eredménye. A HTTP-kérelmek HTTP-állapotkódot. 
 
 Maximális hossz: 1024 karakter
 
-## <a name="success"></a>Success
+## <a name="success"></a>Siker
 
 A sikeres vagy sikertelen hívás megjelölése. A mező kitöltése kötelező. Ha nincs explicit módon beállítva a `false` – a kérelem sikeresnek tekintendő. Állítsa be ezt az értéket arra az `false` esetre, ha a művelet kivétel miatt megszakadt, vagy a hiba eredményének kódját adta vissza.
 
@@ -71,7 +71,7 @@ További információ: kérelem eredményének kódja és állapotkód a [blogbe
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni kérelem telemetria írása](./api-custom-events-metrics.md#trackrequest)
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.

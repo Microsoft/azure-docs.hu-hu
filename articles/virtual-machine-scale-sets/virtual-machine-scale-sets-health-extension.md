@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84783044"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
@@ -57,7 +57,7 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | dátum |
 | közzétevő | `Microsoft.ManagedServices` | sztring |
@@ -66,7 +66,7 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 
 ### <a name="settings"></a>Beállítások
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ----
 | protokoll | `http`vagy `https``tcp` | sztring |
 | port | Nem kötelező, ha protokoll `http` vagy `https``tcp` | int |
@@ -179,5 +179,5 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.ManagedServices.ApplicationHealthWindows\
 
 A naplók rendszeresen rögzítik az alkalmazás állapotának állapotát is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

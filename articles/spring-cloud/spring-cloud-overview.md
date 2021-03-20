@@ -8,10 +8,10 @@ ms.date: 12/02/2020
 ms.author: brendm
 ms.custom: devx-track-java, contperf-fy21q2
 ms.openlocfilehash: b7f5d4206140bf2101c10b1cd4ac46d80bdd3342
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98881703"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
@@ -52,7 +52,7 @@ Ez a dokumentáció azokat a szakaszokat ismerteti, amelyekkel megtudhatja, hogy
     * [Az első alkalmazás elindítása](spring-cloud-quickstart.md)
     * [Azure Spring Cloud-szolgáltatás kiépítése](spring-cloud-quickstart-provision-service-instance.md)
     * [A konfigurációs kiszolgáló beállítása]()
-    * [Alkalmazások létrehozása és üzembe helyezése](spring-cloud-quickstart-deploy-apps.md)
+    * [Alkalmazások készítése és üzembe helyezése](spring-cloud-quickstart-deploy-apps.md)
     * [Naplók metrikáinak és nyomkövetésének használata](spring-cloud-quickstart-logs-metrics-tracing.md)
 * Használati útmutató
     * [Fejlesztés](spring-cloud-tutorial-prepare-app-deployment.md): meglévő Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez. Ha megfelelően van konfigurálva, az Azure Spring Cloud robusztus szolgáltatásokat biztosít a Java Spring Cloud-alkalmazások monitorozásához, méretezéséhez és frissítéséhez.
@@ -66,7 +66,7 @@ Ez a dokumentáció azokat a szakaszokat ismerteti, amelyekkel megtudhatja, hogy
     * [Problémamegoldás](spring-cloud-howto-self-diagnose-solve.md): az Azure Spring Cloud Diagnostics interaktív élményt nyújt az alkalmazások hibakereséséhez. Nem igényel konfigurálást. Ha problémákat tapasztal, az Azure Spring Cloud Diagnostics észleli a problémákat, és útmutatást nyújt a problémák elhárításához és megoldásához.
     * [Migrálás](/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): meglévő Spring Cloud Application vagy Spring boot-alkalmazás migrálása az Azure Spring Cloud-on való futtatáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként fejezze be a [Spring Cloud](spring-cloud-quickstart.md) gyors útmutatóját
 

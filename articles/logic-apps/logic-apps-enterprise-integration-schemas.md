@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75979376"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az XML érvényességének ellenőrzése sémákkal az Azure Logic Appsben az Enterprise Integration Pack segítségével
@@ -40,7 +40,7 @@ Az integrációs fiókokhoz és összetevőkhöz (például sémák) kapcsolód�
   A Storage Explorer használatához válassza az alábbi lehetőségek egyikét:
   
     * A Azure Portal keresse meg és válassza ki a Storage-fiókját. 
-    A Storage-fiók menüjében válassza a **Storage Explorer**lehetőséget.
+    A Storage-fiók menüjében válassza a **Storage Explorer** lehetőséget.
 
     * Az asztali verziónál [töltse le és telepítse a Azure Storage Explorer](https://www.storageexplorer.com/). 
     Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. 
@@ -52,7 +52,7 @@ Sémák létrehozásakor és hozzáadásakor nincs szükség logikai alkalmazás
 
 1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
 
-1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok**elemet.
+1. Az integrációs fiók megkereséséhez és megnyitásához az Azure főmenüjében válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be az "integrációs fiók" kifejezést. Válassza az **integrációs fiókok** elemet.
 
    ![Integrációs fiók keresése](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
@@ -60,11 +60,11 @@ Sémák létrehozásakor és hozzáadásakor nincs szükség logikai alkalmazás
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **sémák** csempét.
 
    ![Válassza a "sémák" lehetőséget.](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-1. A **sémák** lap megnyitása után válassza a **Hozzáadás**lehetőséget.
+1. A **sémák** lap megnyitása után válassza a **Hozzáadás** lehetőséget.
 
    ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
@@ -74,7 +74,7 @@ A séma (. xsd) fájljának mérete alapján végezze el a [2](#smaller-schema) 
 
 ### <a name="add-schemas-up-to-2-mb"></a>Sémák hozzáadása 2 MB-ig
 
-1. A **séma hozzáadása**területen adja meg a séma nevét. 
+1. A **séma hozzáadása** területen adja meg a séma nevét. 
    **Kis fájlok** kiválasztásának megtartása. A **séma** mező mellett válassza a mappa ikont. Keresse meg és válassza ki a feltölteni kívánt sémát, például:
 
    ![Kisebb séma feltöltése](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
@@ -93,15 +93,15 @@ Nagyobb sémák hozzáadásához feltöltheti a sémát egy Azure Blob-tárolób
 
 1. Nyissa meg Azure Storage Explorer. Az Explorer ablakban bontsa ki az Azure-előfizetését, ha még nincs kibontva.
 
-1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók**elemet. Válassza ki a BLOB-tárolót.
+1. Bontsa ki a **Storage-fiókok** > {*a-Storage-Account*} > **blob-tárolók** elemet. Válassza ki a BLOB-tárolót.
 
-1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása**lehetőséget.
+1. A blob-tároló helyi menüjében válassza a **nyilvános hozzáférési szint beállítása** lehetőséget.
 
-   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access)
+   * Ha a blob-tároló legalább nyilvános hozzáféréssel rendelkezik, válassza a **Mégse** lehetőséget, majd kövesse az alábbi lépéseket ezen az oldalon: [feltöltés a nyilvános hozzáféréssel rendelkező tárolók számára](#public-access)
 
      ![Nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse**lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#public-access)
+   * Ha a blob-tároló nem rendelkezik nyilvános hozzáféréssel, válassza a **Mégse** lehetőséget, majd kövesse az alábbi lépéseket az oldalon: [feltöltés nyilvános hozzáférés nélküli tárolókban](#public-access)
 
      ![Nincs nyilvános hozzáférés](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -110,7 +110,7 @@ Nagyobb sémák hozzáadásához feltöltheti a sémát egy Azure Blob-tárolób
 #### <a name="upload-to-containers-with-public-access"></a>Nyilvános hozzáféréssel rendelkező tárolók feltöltése
 
 1. Töltse fel a sémát a Storage-fiókjába. 
-   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
+   A jobb oldali ablakban válassza a **feltöltés** lehetőséget.
 
 1. A feltöltés befejezése után válassza ki a feltöltött sémát. Az eszköztáron válassza az **URL másolása** lehetőséget, hogy a séma URL-címét másolja.
 
@@ -123,28 +123,28 @@ Nagyobb sémák hozzáadásához feltöltheti a sémát egy Azure Blob-tárolób
 1. A **tartalom URI-ja** mezőbe illessze be a séma URL-címét. 
    Fejezze be a séma hozzáadását.
 
-Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
+Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
 
 <a name="no-public-access"></a>
 
 #### <a name="upload-to-containers-without-public-access"></a>Nyilvános hozzáférés nélküli tárolók feltöltése
 
 1. Töltse fel a sémát a Storage-fiókjába. 
-   A jobb oldali ablakban válassza a **feltöltés**lehetőséget.
+   A jobb oldali ablakban válassza a **feltöltés** lehetőséget.
 
 1. A feltöltés befejezése után létrehoz egy közös hozzáférési aláírást (SAS) a sémához. 
-   A séma helyi menüjében válassza a **közös hozzáférési aláírás beolvasása**elemet.
+   A séma helyi menüjében válassza a **közös hozzáférési aláírás beolvasása** elemet.
 
-1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI**  >  **létrehozása**lehetőséget. 
-   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás**lehetőséget.
+1. A **közös hozzáférési aláírás** ablaktáblán válassza a **tároló szintű közös hozzáférésű aláírás-URI**  >  **létrehozása** lehetőséget. 
+   A SAS URL-cím generálása után az **URL-cím** mező mellett válassza a **Másolás** lehetőséget.
 
-1. Térjen vissza a Azure Portal, ahol a **séma hozzáadása** panel meg van nyitva. Válassza a **nagyméretű fájl**lehetőséget.
+1. Térjen vissza a Azure Portal, ahol a **séma hozzáadása** panel meg van nyitva. Válassza a **nagyméretű fájl** lehetőséget.
 
    A **tartalom URI-ja** mező ekkor megjelenik a **séma** mező helyett.
 
 1. A **tartalom URI-ja** mezőben illessze be a korábban létrehozott sas URI-t. Fejezze be a séma hozzáadását.
 
-Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők**területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
+Miután a séma befejezte a feltöltést, a séma megjelenik a **sémák** listájában. Az integrációs fiók **áttekintő** lapjának **összetevők** területén a **sémák** csempe most a feltöltött sémák számát jeleníti meg.
 
 ## <a name="edit-schemas"></a>Sémák szerkesztése
 
@@ -152,18 +152,18 @@ Egy meglévő séma frissítéséhez fel kell töltenie egy új, a kívánt mód
 
 1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+1. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. 
    A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
-   Válassza az **integrációs fiókok**elemet.
+   Válassza az **integrációs fiókok** elemet.
 
 1. Válassza ki azt az integrációs fiókot, ahol frissíteni szeretné a sémát.
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **sémák** csempét.
 
 1. A **sémák** lap megnyitása után válassza ki a sémát. 
-   Először a séma letöltéséhez és szerkesztéséhez válassza a **Letöltés**lehetőséget, majd mentse a sémát.
+   Először a séma letöltéséhez és szerkesztéséhez válassza a **Letöltés** lehetőséget, majd mentse a sémát.
 
-1. Amikor készen áll a frissített séma feltöltésére, a **sémák** lapon válassza ki a frissíteni kívánt sémát, és válassza a **frissítés**lehetőséget.
+1. Amikor készen áll a frissített séma feltöltésére, a **sémák** lapon válassza ki a frissíteni kívánt sémát, és válassza a **frissítés** lehetőséget.
 
 1. Keresse meg és válassza ki a frissített sémát, amelyet fel szeretne tölteni. 
    Miután a sémafájl befejezte a feltöltést, **a sémák listájában** megjelenik a frissített séma.
@@ -172,19 +172,19 @@ Egy meglévő séma frissítéséhez fel kell töltenie egy új, a kívánt mód
 
 1. A <a href="https://portal.azure.com" target="_blank">Azure Portalban</a>keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+1. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. 
    A keresőmezőbe írja be az "integrációs fiók" kifejezést. 
-   Válassza az **integrációs fiókok**elemet.
+   Válassza az **integrációs fiókok** elemet.
 
 1. Válassza ki azt az integrációs fiókot, ahol törölni szeretné a sémát.
 
-1. Az integrációs fiók **áttekintése** oldal **összetevők**területén válassza a **sémák** csempét.
+1. Az integrációs fiók **áttekintése** oldal **összetevők** területén válassza a **sémák** csempét.
 
-1. A **sémák** lap megnyitása után válassza ki a sémát, és válassza a **Törlés**lehetőséget.
+1. A **sémák** lap megnyitása után válassza ki a sémát, és válassza a **Törlés** lehetőséget.
 
-1. Annak megerősítéséhez, hogy törölni kívánja a sémát, válassza az **Igen**lehetőséget.
+1. Annak megerősítéséhez, hogy törölni kívánja a sémát, válassza az **Igen** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
 * [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md)

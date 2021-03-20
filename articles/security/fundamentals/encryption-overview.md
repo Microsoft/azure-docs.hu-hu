@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879714"
 ---
 # <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
@@ -199,7 +199,7 @@ A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhata
 
 A Key Vault leveszi a vállalatok válláról a hardveres biztonsági modulok (HSM-ek) és a kulcskezelő szoftverek konfigurálásának, frissítésének és karbantartásának terhét. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure biztonsági szolgáltatásainak áttekintése](./overview.md)
 - [A nagyvállalati hálózati biztonság áttekintése](network-overview.md)

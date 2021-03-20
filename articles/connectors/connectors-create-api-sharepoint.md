@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: c72330792e508361830c1bf391f85eefe78bdd1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87283979"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>SharePoint-erőforrások monitorozása és kezelése az Azure Logic Appsszel
@@ -61,14 +61,14 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
    -vagy-
 
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez SharePoint-műveletet kíván hozzáadni, válassza az **új lépés**lehetőséget. 
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez SharePoint-műveletet kíván hozzáadni, válassza az **új lépés** lehetőséget. 
    A keresőmezőbe írja be a "SharePoint" kifejezést a szűrőként. 
    A műveletek listában válassza ki a kívánt műveletet.
 
    A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
-   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. Amikor a rendszer kéri, hogy jelentkezzen be, adja meg a szükséges kapcsolódási adatokat. Ha a SharePoint Servert használja, ügyeljen arra, hogy **a helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget. Ha elkészült, kattintson a **Létrehozás** gombra.
+1. Amikor a rendszer kéri, hogy jelentkezzen be, adja meg a szükséges kapcsolódási adatokat. Ha a SharePoint Servert használja, ügyeljen arra, hogy **a helyszíni adatátjárón keresztül válassza a kapcsolat** lehetőséget. Ha elkészült, kattintson a **Létrehozás** gombra.
 
 1. Adja meg a kiválasztott trigger vagy művelet szükséges adatait, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 

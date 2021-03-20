@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f290395f4bd7afccace5067a97e63dda553f183c
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91999723"
 ---
 # <a name="toggle-live-chat"></a>Élő csevegés ki-/bekapcsolása
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan válthat az élő csevegés a IoT Central alkalmazá
 
 ## <a name="chat-with-us"></a>Csevegés velünk
 
-A technikai támogatás megszerzéséhez nyissa meg a IoT Central alkalmazást, és válassza a **csevegés velünk**lehetőséget.
+A technikai támogatás megszerzéséhez nyissa meg a IoT Central alkalmazást, és válassza a **csevegés velünk** lehetőséget.
 
 ![Csevegés velünk](media/howto-show-hide-chat/chat-with-us.png)
 

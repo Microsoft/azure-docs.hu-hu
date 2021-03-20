@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta azt szemlélteti, hogyan használható a Va
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 8392c69ff3d63ff4ecad2a26d5d914b4766147b8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92072883"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy minta: az érték operátor
@@ -27,7 +27,7 @@ Ez a szabályzat-definíció hozzáadja vagy lecseréli a **TagName** (_karakter
 
 :::code language="json" source="~/policy-templates/patterns/pattern-value-operator.json" range="20-30" highlight="7,8":::
 
-Az **érték** operátor a ' policyrule osztály belül használatos **. Ha** a **tulajdonságban**blokk található. Ebben a példában a [logikai operátor](../concepts/definition-structure.md#logical-operators) **allOf** azt adja meg, hogy mindkét feltételes utasításnak igaznak kell lennie a hatás, a **módosítás**, a végrehajtás érdekében.
+Az **érték** operátor a ' policyrule osztály belül használatos **. Ha** a **tulajdonságban** blokk található. Ebben a példában a [logikai operátor](../concepts/definition-structure.md#logical-operators) **allOf** azt adja meg, hogy mindkét feltételes utasításnak igaznak kell lennie a hatás, a **módosítás**, a végrehajtás érdekében.
 
 az **érték** a [resourceGroup ()](../../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup) függvény eredményét értékeli ki egy üres érték **notEquals** . Ha a szülő erőforráscsoport **TagName** megadott címke neve létezik, a feltételes kiértékelés igaz értéket ad vissza.
 

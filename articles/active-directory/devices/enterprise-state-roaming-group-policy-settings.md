@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab24b3113f9dc69b8f3907037e228ba212a03106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85252933"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Csoportházirend és MDM beállítások
@@ -57,6 +57,6 @@ Ezek a beállítások a következő helyeken találhatók: `Computer Configurati
 | Alkalmazás-beállítások szinkronizálásának mellőzése |Az alkalmazásadatok barangolásának letiltása |
 | Ne szinkronizáljon indítási beállításokat |Ne használja; nincs hatása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

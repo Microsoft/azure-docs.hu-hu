@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85444998"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Tesztkörnyezet beállítása a MATLAB tanításához
@@ -30,7 +30,7 @@ Ha a licenckiszolgáló helyi hálózaton vagy egy Azure-beli magánhálózaton 
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez.  Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is.  Új Labor-fiók létrehozásához tekintse meg a [labor-fiók beállítása című oktatóanyagot](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez.  Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is.  Új Labor-fiók létrehozásához tekintse meg a [labor-fiók beállítása című oktatóanyagot](tutorial-setup-lab-account.md).
 
 Új Labor létrehozásához kövesse [az osztályterem Lab-oktatóanyag beállítása](tutorial-setup-classroom-lab.md)című témakört.  Alkalmazza a következő beállításokat:
 
@@ -57,18 +57,18 @@ A MATLAB telepítése több részből álló folyamat lesz.  Az első rész let�
 A telepítési fájlok letöltéséhez, valamint a licencfájl és a fájl telepítési kulcsának beszerzéséhez licenc-rendszergazdának kell lennie.  A telepítési fájlok letöltésének lépései a következők:
 
 1. Jelentkezzen be a fiókjába [https://www.mathworks.com](https://www.mathworks.com) .
-2. Válassza **a saját fiók**lehetőséget.
+2. Válassza **a saját fiók** lehetőséget.
 3. A fiók lap **saját szoftverek** szakasza alatt kattintson a laborhoz tartozó Network License Manager-beállításhoz csatolt licencre.
-4. A licenc részletei lapon kattintson a **termékek letöltése**elemre.
+4. A licenc részletei lapon kattintson a **termékek letöltése** elemre.
 5. Várjon, amíg a telepítő önállóan kinyeri.
 6. Indítsa el a telepítőt.  
 7. A **Bejelentkezés a MathWorks-fiókba** lapon adja meg a MathWorks-fiókját.
 8. A **MathWorks-licencszerződés** lapon fogadja el a kifejezést, és kattintson a **tovább** gombra.
-9. Kattintson a **Speciális beállítások** legördülő menüre, és válassza a **telepítés nélkül szeretnék letölteni**lehetőséget.
-10. A **célmappa kijelölése**lapon kattintson a **tovább**gombra.
+9. Kattintson a **Speciális beállítások** legördülő menüre, és válassza a **telepítés nélkül szeretnék letölteni** lehetőséget.
+10. A **célmappa kijelölése** lapon kattintson a **tovább** gombra.
 11. Válassza a **Windows** lehetőséget annak a számítógépnek a platformja, amelyre a MATLAB-t telepíteni fogja.
 12. A **termék kiválasztása** lapon győződjön meg róla, hogy a MATLAB lehetőség van kiválasztva a telepíteni kívánt többi MathWorks-termékkel együtt.
-13. A **kiválasztás és a letöltés megerősítése** lapon kattintson a **Letöltés megkezdése**elemre.  
+13. A **kiválasztás és a letöltés megerősítése** lapon kattintson a **Letöltés megkezdése** elemre.  
 14. Várja meg a kiválasztott termékek letöltését.  Kattintson a **Finish** (Befejezés) gombra.
 
 Az ISO-rendszerképet a MathWorks webhelyről is letöltheti.
@@ -87,13 +87,13 @@ A fájlok letöltése után a második lépés a telepítő futtatása. A lépé
 2. Indítsa el a MATLAB telepítőjét.
 3. A **Bejelentkezés a MathWorks-fiókba** lapon adja meg a MathWorks-fiókját.
 4. A **MathWorks-licencszerződés** lapon fogadja el a kifejezést, és kattintson a **tovább** gombra.
-5. Kattintson a **Speciális beállítások** legördülő menüre, és válassza a **fájl telepítési kulcsa**lehetőséget.
+5. Kattintson a **Speciális beállítások** legördülő menüre, és válassza a **fájl telepítési kulcsa** lehetőséget.
 6. A **telepítés a telepítőfájl használatával** lapon adja meg a licenckiszolgáló fájljának telepítési kulcsát.   Kattintson a **Tovább** gombra.
 7. A **licencfájl kiválasztása** lapon navigáljon a korábban a telepítési fájlok letöltésekor mentett licencfájl eléréséhez.
-8. A **célmappa kiválasztása** lapon kattintson a **tovább**gombra.
-9. A **termékek kiválasztása** lapon kattintson a **tovább**gombra.
-10. A **beállítások kiválasztása** lapon kattintson a **tovább**gombra.
-11. A **kijelölések és telepítések megerősítése** lapon kattintson a **telepítés megkezdése**elemre.
+8. A **célmappa kiválasztása** lapon kattintson a **tovább** gombra.
+9. A **termékek kiválasztása** lapon kattintson a **tovább** gombra.
+10. A **beállítások kiválasztása** lapon kattintson a **tovább** gombra.
+11. A **kijelölések és telepítések megerősítése** lapon kattintson a **telepítés megkezdése** elemre.
 12. A **telepítés kész** lapon ellenőrizze, hogy be van-e JELÖLVE a **MATLAB aktiválása** jelölőnégyzet.  Kattintson a **Finish** (Befejezés) gombra.
 
 ## <a name="cost-estimate"></a>Költségbecslés
@@ -107,7 +107,7 @@ Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkoz�
 >[!IMPORTANT]
 > A költségbecslés csak példaként szolgál.  A díjszabással kapcsolatos aktuális információk: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

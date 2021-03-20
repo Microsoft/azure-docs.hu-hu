@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 1fcfc7a9e632e5db1fb809dba7a938c8641c9ddc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92048100"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Mi az Azure Certified eszköz program?
@@ -45,7 +45,7 @@ Az [Azure Certified-eszköz portálon](https://aka.ms/acdp)az eszközök tanús�
 
 ### <a name="company-profile"></a>Vállalati profil
 
-Ha a vállalati profilt az Azure Certified Device portálon szeretné kezelni, válassza a **vállalati profil**lehetőséget. A vállalati profil tartalmazza a vállalati URL-címet, az e-mail-címet és az emblémát. A minősítési műveletek folytatása előtt fogadja el a programra vonatkozó szerződést ezen a lapon.
+Ha a vállalati profilt az Azure Certified Device portálon szeretné kezelni, válassza a **vállalati profil** lehetőséget. A vállalati profil tartalmazza a vállalati URL-címet, az e-mail-címet és az emblémát. A minősítési műveletek folytatása előtt fogadja el a programra vonatkozó szerződést ezen a lapon.
 
 Az Azure Certified Device Catalog eszköz Leírás lapja a vállalati profil adatait használja.
 
@@ -72,7 +72,7 @@ A _IoT Plug and Play minősítést_, az Azure Certified minősítésű tanúsít
 Az _Edge által felügyelt minősítés_, az Azure Certified minősítésű tanúsítvány növekményes minősítése a Windows, Linux vagy RTOS rendszerű Azure IoT-eszközökre koncentrál. Jelenleg ez a program-minősítés a modul üzembe helyezésének és felügyeletének Edge Runtime-kompatibilitására koncentrál.
 
 > [!TIP]
-> A program korábbi neve _IoT Edge minősítési program_volt.
+> A program korábbi neve _IoT Edge minősítési program_ volt.
 
 - További információt a [minősítési követelmények](https://aka.ms/acdedgemanagedrequirements)című témakörben talál.
 - További információ a IoT Edgeről: [IoT Edge Overview (áttekintés](../iot-edge/about-iot-edge.md)).

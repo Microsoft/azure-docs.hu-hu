@@ -8,10 +8,10 @@ ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
 ms.openlocfilehash: 0b797e2416b4d8849da19e4e75127f86a6f17322
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102180"
 ---
 # <a name="quickstart-set-up-a-course-and-create-a-classroom"></a>Rövid útmutató: tanfolyam beállítása és tanterem létrehozása
@@ -45,19 +45,19 @@ Az alábbi lépéseket követve létrehozhat egy tanfolyamot és egy osztályter
 
 1. A létrehozási munkafolyamat elindításához válassza a tábla bal felső sarkában található **+ Hozzáadás** ikont.
 
-    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Azure Education-központ tanfolyamok oldal" border="false":::
+    :::image type="content" source="media/set-up-course-classroom/courses-add.png" alt-text="Kurzus hozzáadása az Azure Education-központhoz" border="false":::
 
 1. Létrehozhat egy tanfolyami névsort két módszer használatával: egy névsor feltöltésével vagy egy meghívás kódjával.
     - **Beosztás**: Ha már rendelkezik az összes tanuló nevével és bejelentkezésével, feltöltheti és feltölthet egy névsort tartalmazó fájlt. A beosztások feltöltéséhez szükséges. csv fájlból származó minta fájl letöltéséhez válassza a **Fájl letöltése** hivatkozást a jobb felső sarokban.
     - **Meghívó kódja**: Ha a Meghívó kód használatát választja, döntse el, hogy hány kód váltható be és mikor lejár. A következő hivatkozásra kattintva elküldheti a tanulóknak a kód beváltásához: https://aka.ms/joinedu .
 
-      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Azure Education-központ tanfolyamok oldal" border="false":::
+      :::image type="content" source="media/set-up-course-classroom/enter-invitation-code.png" alt-text="Adja meg a meghívó kódját az Azure-ban Education-központ" border="false":::
 
 1. Válassza az **osztályterem létrehozása** lehetőséget a jobb alsó sarokban. Ez néhány percet is igénybe vehet.
 
-   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Azure Education-központ tanfolyamok oldal" border="false":::
+   :::image type="content" source="media/set-up-course-classroom/create-classroom.png" alt-text="Osztályterem létrehozása az Azure-ban Education-központ" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Feladat létrehozása és kreditek kiosztása](create-assignment-allocate-credit.md)

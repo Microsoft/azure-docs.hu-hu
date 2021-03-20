@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8091890d174ae68f012a6ec24685a0e705100f8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84743677"
 ---
 # <a name="review-access-to-azure-resource-roles-in-privileged-identity-management"></a>Tekintse át az Azure erőforrás-szerepkörökhöz való hozzáférést Privileged Identity Management
@@ -39,15 +39,15 @@ Az alábbi lépéseket követve megkeresheti és elvégezheti a hozzáférési f
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza ki **Azure Active Directory** és nyissa meg **Privileged Identity Management**.
-1. Válassza a **hozzáférés áttekintése**lehetőséget.
+1. Válassza a **hozzáférés áttekintése** lehetőséget.
 
    ![Képernyőkép a Privileged Identity Management alkalmazásról, a hozzáférés megtekintése panel kijelölésével](media/pim-resource-roles-perform-access-review/rbac-access-review-complete.png)
 
 1. Válassza ki a végrehajtani kívánt felülvizsgálatot.
-1. Válassza a **jóváhagyás** vagy a **Megtagadás**lehetőséget. Az **adjon meg egy okot mezőben**adjon meg egy üzleti indoklást a döntéshez, ha szükséges.
+1. Válassza a **jóváhagyás** vagy a **Megtagadás** lehetőséget. Az **adjon meg egy okot mezőben** adjon meg egy üzleti indoklást a döntéshez, ha szükséges.
 
    ![A részletek áttekintése lap képernyőképe](media/pim-resource-roles-perform-access-review/rbac-access-review-choice.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök hozzáférési felülvizsgálatának elvégzése Privileged Identity Management](pim-how-to-perform-security-review.md)

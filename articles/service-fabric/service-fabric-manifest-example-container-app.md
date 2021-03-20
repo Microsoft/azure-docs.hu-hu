@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84701166"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
@@ -17,7 +17,7 @@ A következő példák a többtárolós Service Fabric alkalmazás alkalmazás-�
 
 A következő funkciók jelennek meg:
 
-|Jegyzék|Szolgáltatások|
+|Jegyzék|Funkciók|
 |---|---|
 |[Alkalmazásjegyzék](#application-manifest)| a [környezeti változók felülbírálása](service-fabric-get-started-containers.md#configure-and-set-environment-variables), a [tároló-portok közötti megfeleltetés konfigurálása](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery), a [tároló beállításjegyzék-hitelesítésének](service-fabric-get-started-containers.md#configure-container-repository-authentication)konfigurálása, az [erőforrás-szabályozás](service-fabric-resource-governance.md), az [elkülönítési mód beállítása](service-fabric-get-started-containers.md#configure-isolation-mode), az [operációs rendszer Build-specifikus rendszerképének megadása](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService szolgáltatás jegyzékfájlja](#frontendservice-service-manifest)| [környezeti változók beállítása](service-fabric-get-started-containers.md#configure-and-set-environment-variables), [végpont konfigurálása](service-fabric-get-started-containers.md#configure-communication), parancsok továbbítása a tárolóhoz, [tanúsítvány importálása tárolóba](service-fabric-securing-containers.md)| 

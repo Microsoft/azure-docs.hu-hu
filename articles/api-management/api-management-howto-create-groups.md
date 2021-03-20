@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: ea674981036b4be292329a4b30b43180ed26d642
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92092783"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata fejlesztői fiókok kezeléséhez az Azure API Managementben
@@ -49,13 +49,13 @@ A cikkben található feladatok végrehajtása: [Azure API Management-példány 
 Ez a szakasz bemutatja, hogyan vehet fel új csoportot a API Management-fiókjába.
 
 1. Válassza a **csoportok** fület a képernyő bal oldalán.
-2. Kattintson a **+ Hozzáadás**gombra.
+2. Kattintson a **+ Hozzáadás** gombra.
 3. Adjon meg egy egyedi nevet a csoportnak, és egy opcionális leírást.
 4. Nyomja meg a **Create** (Létrehozás) gombot.
 
     ![Új csoport hozzáadása](./media/api-management-howto-create-groups/groups001.png)
 
-A csoport létrehozása után a rendszer hozzáadja a **csoportok** listájához. <br/>A csoport **nevének** vagy **leírásának** szerkesztéséhez kattintson a csoport és a **Beállítások**nevére.<br/>A csoport törléséhez kattintson a csoport nevére, majd nyomja le a **delete**billentyűt.
+A csoport létrehozása után a rendszer hozzáadja a **csoportok** listájához. <br/>A csoport **nevének** vagy **leírásának** szerkesztéséhez kattintson a csoport és a **Beállítások** nevére.<br/>A csoport törléséhez kattintson a csoport nevére, majd nyomja le a **delete** billentyűt.
 
 Most, hogy létrejött a csoport, hozzá lehet rendelni a termékekhez és a fejlesztőhöz.
 
@@ -63,15 +63,15 @@ Most, hogy létrejött a csoport, hozzá lehet rendelni a termékekhez és a fej
 
 1. Válassza a bal oldali **termékek** lapot.
 2. Kattintson a kívánt termék nevére.
-3. Kattintson a **hozzáférés-vezérlés**gombra.
-4. Kattintson a **+ Csoport hozzáadása**elemre.
+3. Kattintson a **hozzáférés-vezérlés** gombra.
+4. Kattintson a **+ Csoport hozzáadása** elemre.
 
     ![Képernyőfelvétel: a csoport hozzáadása gomb kiemelése.](./media/api-management-howto-create-groups/groups002.png)
 5. Válassza ki a hozzáadni kívánt csoportot.
 
     ![A kiválasztott csoportot megjelenítő képernyőkép, amely kiemeli a kiválasztás gombot.](./media/api-management-howto-create-groups/groups003.png)
 
-    Ha el szeretne távolítani egy csoportot a termékből, kattintson a **Törlés**gombra.
+    Ha el szeretne távolítani egy csoportot a termékből, kattintson a **Törlés** gombra.
 
     ![Csoport törlése](./media/api-management-howto-create-groups/groups004.png)
 
@@ -91,7 +91,7 @@ Ez a szakasz bemutatja, hogyan lehet csoportokat társítani a tagokkal.
 3. Kattintson a **+ Hozzáadás** gombra, és válasszon ki egy tagot.
 
     ![Képernyőfelvétel: a Hozzáadás gomb, a kiválasztott felhasználó és a kiválasztás gomb.](./media/api-management-howto-create-groups/groups006.png)
-4. Kattintson a **kiválasztás**gombra.
+4. Kattintson a **kiválasztás** gombra.
 
 Miután hozzáadta a társítást a fejlesztőhöz és a csoporthoz, a **felhasználók** lapon tekintheti meg.
 

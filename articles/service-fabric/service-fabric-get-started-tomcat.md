@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96534029"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat Servert futtató Service Fabric tároló létrehozása Linux rendszeren
@@ -84,7 +84,7 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
 
    A többi paraméterrel kapcsolatos további tudnivalókért tekintse meg a [Docker-futtatási dokumentációt](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg a következő URL-címek egyikét. Ekkor megjelenik a "„Helló világ!” alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
+1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg a következő URL-címek egyikét. Ekkor megjelenik a "Hello World!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
@@ -210,13 +210,13 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Ha a Tomcat-kiszolgálón szeretné elérni az alkalmazást, nyisson meg egy böngészőablakot, és adja meg a következő URL-címek bármelyikét. Ha központilag telepítette a helyi fürtöt, használja a *localhost* elemet a *PublicIPorFQDN*. Ekkor megjelenik a "„Helló világ!” alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
+1. Ha a Tomcat-kiszolgálón szeretné elérni az alkalmazást, nyisson meg egy böngészőablakot, és adja meg a következő URL-címek bármelyikét. Ha központilag telepítette a helyi fürtöt, használja a *localhost* elemet a *PublicIPorFQDN*. Ekkor megjelenik a "Hello World!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello
    * http://PublicIPorFQDN:8080/hello/sayhi
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 A sablonban megadott eltávolítási parancsfájl használatával törölje az alkalmazás példányát a fürtből, és törölje az alkalmazás típusának regisztrációját.
 
 ```bash
@@ -230,7 +230,7 @@ docker rmi tomcattest
 docker rmi myregistry.azurecr.io/samples/tomcattest
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Linux-tárolók további funkcióinak gyors lépéseihez olvassa el [az első Service Fabric Container-alkalmazás létrehozása Linux](service-fabric-get-started-containers-linux.md)rendszeren című témakört.
 * A Linux-tárolókkal kapcsolatos részletesebb lépésekért olvassa el a [Linux Container App-alkalmazás létrehozása oktatóanyagot](service-fabric-tutorial-create-container-images.md) .
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).

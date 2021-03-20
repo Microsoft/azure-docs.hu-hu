@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: alkohli
 ms.openlocfilehash: e8df77356b6b5b1b40e2abd772e13c2e811413ae
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950312"
 ---
 # <a name="preserving-file-acls-attributes-and-timestamps-with-azure-data-box"></a>Fájl ACL-ek, attribútumok és időbélyegek megőrzése Azure Data Box
@@ -21,7 +21,7 @@ A Azure Data Box lehetővé teszi a hozzáférés-vezérlési listák (ACL-ek), 
 
 A metaadatok Windows-és Linux-alapú adatmásolási eszközökkel történő másolásához adott lépések vannak megadva. A metaadatok nem őrződnek meg az adatok blob Storage-ba való továbbításakor.
 
-Ebben a cikkben a továbbított ACL-ek, időbélyegek és fájlattribútumok közösen *metaadatokként*vannak hivatkozva.
+Ebben a cikkben a továbbított ACL-ek, időbélyegek és fájlattribútumok közösen *metaadatokként* vannak hivatkozva.
 
 ## <a name="transferred-metadata"></a>Átvitt metaadatok
 
@@ -114,6 +114,6 @@ cp -aR /etc /opt/
 rsync -avP /etc /opt (-a copies a directory)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatok másolása az Azure Data Boxra SMB-n keresztül](./data-box-deploy-copy-data.md)

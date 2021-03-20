@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96533774"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
@@ -146,7 +146,7 @@ Miután a tároló elindult, keresse meg az IP-címét, hogy böngészőből is 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja **NetworkSettings** -> meg az IP-címhez tartozó NetworkSettings **Networks** elemet:
+Ha a parancs nem ad vissza semmit, futtassa a következő parancsot, és vizsgálja  -> meg az IP-címhez tartozó NetworkSettings **Networks** elemet:
 ```
 docker inspect my-web-site
 ```
@@ -334,7 +334,7 @@ Az alkalmazás akkor kész, amikor ```Ready``` állapotba kerül: ![Kész][2]
 
 Nyisson meg egy böngészőt, majd lépjen a következő helyre: `http://containercluster.westus2.cloudapp.azure.com:8081`. A „Hello World!” címsornak kell megjelennie a böngészőben.
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
@@ -599,7 +599,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

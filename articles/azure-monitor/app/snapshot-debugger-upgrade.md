@@ -7,10 +7,10 @@ ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77671392"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>A Snapshot Debugger frissítése
@@ -20,12 +20,12 @@ Az adatok lehető legjobb biztonságának biztosítása érdekében a Microsoft 
 ## <a name="upgrading-the-site-extension"></a>A hely kiterjesztésének frissítése
 
 > [!IMPORTANT]
-> A Application Insights régebbi verziói a _Azure App Service Application Insights bővítményét_használták a Private site bővítménnyel. Az aktuális Application Insights-élmény engedélyezve van az Alkalmazásbeállítások megadásával egy előre telepített hely bővítményének megvilágításához.
+> A Application Insights régebbi verziói a _Azure App Service Application Insights bővítményét_ használták a Private site bővítménnyel. Az aktuális Application Insights-élmény engedélyezve van az Alkalmazásbeállítások megadásával egy előre telepített hely bővítményének megvilágításához.
 > Az ütközések elkerülése érdekében, ami miatt előfordulhat, hogy a hely működése leáll, fontos, hogy először törölje a Private site bővítményt. Lásd az alábbi 4. lépést.
 
 Ha engedélyezte a pillanatkép-hibakeresőt a hely bővítménnyel, a következő eljárással frissítheti az alkalmazást:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Navigáljon az erőforráshoz, amelyen engedélyezve van a Application Insights és a Snapshot Debugger. Egy webalkalmazás esetében például navigáljon a App Service erőforráshoz:
 
    ![Képernyőkép a DiagService01 nevű egyéni App Service erőforrásról](./media/snapshot-debugger-upgrade/app-service-resource.png)
@@ -42,15 +42,15 @@ Ha engedélyezte a pillanatkép-hibakeresőt a hely bővítménnyel, a következ
 
    ![Képernyőfelvétel három gombról. Application Insights nevű középső gomb van kiválasztva](./media/snapshot-debugger-upgrade/application-insights-button.png)
 
-6. Ha első alkalommal tekinti meg a App Service Application Insights paneljét, a rendszer felszólítja, hogy kapcsolja be Application Insights. Jelölje be **a Application Insights bekapcsolása**elemet.
+6. Ha első alkalommal tekinti meg a App Service Application Insights paneljét, a rendszer felszólítja, hogy kapcsolja be Application Insights. Jelölje be **a Application Insights bekapcsolása** elemet.
  
    ![Képernyőfelvétel: a Application Insights panel első idejű élménye, a bekapcsolás Application Insights gomb kiemelve](./media/snapshot-debugger-upgrade/turn-on-application-insights.png)
 
-7. Megjelenik az aktuális Application Insights beállítások. Hacsak nem szeretné módosítani a beállításokat, meghagyhatja őket. A panel alján található **Apply (alkalmaz** ) gomb alapértelmezés szerint nincs engedélyezve, és az egyik beállítást be kell váltania a gomb aktiválásához. Nem kell módosítania az aktuális beállításokat, hanem módosíthatja a beállítást, majd azonnal visszaállíthatja azt. Javasoljuk, hogy állítsa be a Profiler-beállítást, majd válassza az **alkalmaz**lehetőséget.
+7. Megjelenik az aktuális Application Insights beállítások. Hacsak nem szeretné módosítani a beállításokat, meghagyhatja őket. A panel alján található **Apply (alkalmaz** ) gomb alapértelmezés szerint nincs engedélyezve, és az egyik beállítást be kell váltania a gomb aktiválásához. Nem kell módosítania az aktuális beállításokat, hanem módosíthatja a beállítást, majd azonnal visszaállíthatja azt. Javasoljuk, hogy állítsa be a Profiler-beállítást, majd válassza az **alkalmaz** lehetőséget.
 
    ![Képernyőkép a Application Insights App Service konfigurációs oldaláról a piros színnel jelölt Apply (alkalmaz) gombbal](./media/snapshot-debugger-upgrade/view-application-insights-data.png)
 
-8. Miután rákattintott az **alkalmaz**gombra, a rendszer megkéri, hogy erősítse meg a módosításokat.
+8. Miután rákattintott az **alkalmaz** gombra, a rendszer megkéri, hogy erősítse meg a módosításokat.
 
     > [!NOTE]
     > A rendszer a frissítési folyamat részeként újraindítja a helyet.

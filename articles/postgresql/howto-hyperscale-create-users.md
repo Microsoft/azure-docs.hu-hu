@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
 ms.openlocfilehash: 3d23ee6119b625e11ce44bb9ad11ce4b3ee0280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91295736"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Felhasználók létrehozása a Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -46,13 +46,13 @@ A `citus` szerepkörnek például vannak korlátai:
 
 Ahogy említettük, a `citus` rendszergazdai fióknak nincs engedélye további felhasználók létrehozására. Felhasználó hozzáadásához használja a Azure Portal felületet.
 
-1. Lépjen a nagy kapacitású (Citus) csoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás**gombra:
+1. Lépjen a nagy kapacitású (Citus) csoport **szerepkörök** lapjára, majd kattintson a **+ Hozzáadás** gombra:
 
    :::image type="content" source="media/howto-hyperscale-create-users/1-role-page.png" alt-text="A szerepkörök lap":::
 
 2. Adja meg a szerepkör nevét és jelszavát. Kattintson a **Mentés** gombra.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="A szerepkörök lap":::
+   :::image type="content" source="media/howto-hyperscale-create-users/2-add-user-fields.png" alt-text="Szerepkör hozzáadása":::
 
 A felhasználó a kiszolgálócsoport koordinátor csomópontján jön létre, és az összes munkavégző csomópontra propagálva lesz. A Azure Portal által létrehozott szerepkörök rendelkeznek az `LOGIN` attribútummal, ami azt jelenti, hogy azok az igaz felhasználók, akik bejelentkezhetnek az adatbázisba.
 
@@ -77,7 +77,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 Egy felhasználó frissítéséhez keresse fel a nagy kapacitású (Citus) kiszolgálócsoport **szerepkörök** lapját, és kattintson a felhasználó melletti három pontra. **..** Az ellipszisek menüt nyitnak meg a felhasználó törléséhez vagy a jelszavuk alaphelyzetbe állításához.
 
-   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="A szerepkörök lap":::
+   :::image type="content" source="media/howto-hyperscale-create-users/edit-role.png" alt-text="Szerepkör szerkesztése":::
 
 A `citus` szerepkör jogosultsággal rendelkezik, és nem törölhető.
 

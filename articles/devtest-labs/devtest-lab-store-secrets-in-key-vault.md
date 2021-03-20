@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tárolhatja a titkokat egy Azure Key Vault, és
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85481646"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Titkos kulcsok tárolása Azure DevTest Labsban található kulcstartóban
@@ -30,8 +30,8 @@ Ha Azure Key Vault szeretné menteni a titkot, hajtsa végre a következő lép�
 ## <a name="use-a-secret-from-azure-key-vault"></a>Titkos kód használata Azure Key Vault
 Ha egy titkot kell megadnia egy virtuális gép, egy képlet vagy egy környezet létrehozásához, manuálisan is megadhat egy titkos kulcsot, vagy kijelölhet egy mentett titkot a kulcstartóból. A Key vaultban tárolt titkos kód használatához hajtsa végre a következő műveleteket:
 
-1. Válassza **a mentett titkos kód használata**lehetőséget. 
-2. A **titkos**kód kiválasztásához válassza ki a titkot a legördülő listából. 
+1. Válassza **a mentett titkos kód használata** lehetőséget. 
+2. A **titkos** kód kiválasztásához válassza ki a titkot a legördülő listából. 
 
     ![Titok használata a virtuális gépen](media/devtest-lab-store-secrets-in-key-vault/secret-store-pick-a-secret.png)
 
@@ -40,7 +40,7 @@ Megadhatja a titkos kulcs nevét egy olyan Azure Resource Manager sablonban, ame
 
 ![Titkos kód használata a képletben vagy a környezetben](media/devtest-lab-store-secrets-in-key-vault/secret-store-arm-template.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális gép létrehozása a titok használatával](devtest-lab-add-vm.md) 
 - [Képlet létrehozása a titkos kód használatával](devtest-lab-manage-formulas.md)

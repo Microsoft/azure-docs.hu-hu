@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97347812"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
@@ -24,7 +24,7 @@ A piacon elérhető legtöbb kereskedelmi forgalomban kapható elosztott NoSQL-a
 - *Kötött elavultság*
 - *Munkamenet*
 - *Konzisztens előtag*
-- *Esetleges*
+- *Végleges*
 
 Minden szint rendelkezésre állási és teljesítménybeli kompromisszumokat biztosít. A következő képen a különböző konzisztencia-szintek láthatók spektrumként.
 
@@ -146,10 +146,10 @@ A pontos RTT késés a fénysebességi távolság és az Azure hálózati topol�
 |**Konzisztenciaszint**|**Kvórum olvasási**|**Kvórum írása**|
 |--|--|--|
 |**Erős**|Helyi kisebbség|Globális többség|
-|**Kötött elavultság**|Helyi kisebbség|Helyi többség|
+|**Korlátozott frissesség**|Helyi kisebbség|Helyi többség|
 |**Munkamenet**|Egyetlen replika (munkamenet-jogkivonat használatával)|Helyi többség|
 |**Konzisztens előtag**|Egyetlen replika|Helyi többség|
-|**Esetleges**|Egyetlen replika|Helyi többség|
+|**Végleges**|Egyetlen replika|Helyi többség|
 
 > [!NOTE]
 > A helyi kisebbségek olvasásának RU/s-díja kétszer szerepel a gyengébb konzisztencia szintjein, mert az olvasások két replikából származnak, és az erős és a határos elavulás érdekében konzisztens garanciákat biztosítanak.
