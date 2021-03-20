@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 11bd79a1bc88d2605a20744f5a6b6536d754c100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91576642"
 ---
 # <a name="override-materials-during-model-conversion"></a>Anyagok felülírása a modellátalakítás során
@@ -109,7 +109,7 @@ A kimeneti tárolóba írt [információs fájl](get-information.md#information-
 
 ## <a name="json-schema"></a>JSON-séma
 
-Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a esetében a (z) és a (z) és a (z) a (z) és a (z) a (z) és a (z) és a (z `unlit` `ignoreTextureMaps` ) [color material](../../overview/features/color-materials.md) [PBR material](../../overview/features/pbr-materials.md)
+Az anyagokhoz tartozó fájlok teljes JSON-sémája itt van megadva. A és a esetében a (z) és a (z) és a (z) a (z) és a (z) a (z) és a (z) és a (z `unlit` `ignoreTextureMaps` ) [](../../overview/features/color-materials.md) [](../../overview/features/pbr-materials.md)
 
 ```json
 {

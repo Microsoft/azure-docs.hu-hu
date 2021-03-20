@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: 11efdb727bacadb674fb49374ef1c70fcc788ecc
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219989"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Felhasználó által definiált U-SQL-operátorok fejlesztése (Udo)
@@ -19,9 +19,9 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 
 ### <a name="to-create-and-submit-a-u-sql-job"></a>U-SQL-feladatok létrehozása és elküldése
 
-1. A Visual Studióban válassza a **fájl > új > project > U-SQL-projekt**elemet.
+1. A Visual Studióban válassza a **fájl > új > project > U-SQL-projekt** elemet.
 2. Kattintson az **OK** gombra. A Visual Studio létrehoz egy megoldást egy script. usql fájllal.
-3. A **megoldáskezelő**bontsa ki a script. usql elemet, majd kattintson duplán a **script.usql.cs**elemre.
+3. A **megoldáskezelő** bontsa ki a script. usql csomópontot, majd kattintson duplán a **script. Usql. cs parancsfájlra**.
 4. A fájlba illessze be az alábbi kódot:
 
    ```usql
@@ -118,9 +118,9 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 
 ### <a name="to-see-the-output"></a>A kimenet megtekintéséhez
 
-1. A **Server Explorerben**bontsa ki az **Azure**elemet, bontsa ki **Data Lake Analytics**, bontsa ki a Data Lake Analytics fiókot, bontsa ki a **Storage-fiókok**csomópontot, kattintson a jobb gombbal az alapértelmezett tárolóra, **majd kattintson a**
+1. A **Server Explorerben** bontsa ki az **Azure** elemet, bontsa ki **Data Lake Analytics**, bontsa ki a Data Lake Analytics fiókot, bontsa ki a **Storage-fiókok** csomópontot, kattintson a jobb gombbal az alapértelmezett tárolóra, **majd kattintson a**
 
-2. Bontsa ki a minták, majd a kimenetek csomópontot, majd kattintson duplán a **Drivers.csv**elemre.
+2. Bontsa ki a minták, majd a kimenetek csomópontot, majd kattintson duplán a **Drivers.csv** elemre.
 
 ## <a name="next-steps"></a>Következő lépések
 

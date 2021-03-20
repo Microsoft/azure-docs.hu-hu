@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
 ms.openlocfilehash: a7032c64efa486c65830e013373239647a368540
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92311143"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Egyéni tartománynév beállítása az Azure API Management-példányhoz
 
-Amikor létrehoz egy Azure API Management Service-példányt, az Azure a (például) altartományát rendeli hozzá `azure-api.net` `apim-service-name.azure-api.net` . Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
+Amikor létrehoz egy Azure API Management Service-példányt, az Azure a (például) altartományát rendeli hozzá `azure-api.net` `apim-service-name.azure-api.net` . Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com** teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
 
 > [!IMPORTANT]
 > A API Management csak olyan kérelmeket fogad el, amelyek [állomásfejléc](https://tools.ietf.org/html/rfc2616#section-14.23) -értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
@@ -45,7 +45,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name"></a>Egyéni tartománynév beállítása a Azure Portal használatával
 
 1. Navigáljon a API Management-példányhoz a [Azure Portal](https://portal.azure.com/).
-1. Válassza az **Egyéni tartományok**lehetőséget.
+1. Válassza az **Egyéni tartományok** lehetőséget.
 
     Több végpont is van, amelyekhez egyéni tartománynevet rendelhet hozzá. Jelenleg a következő végpontok érhetők el:
 
@@ -62,10 +62,10 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > A **prémium** szint támogatja több állomásnév beállítását az **átjáró** végpontja számára.
 
 1. Válassza ki a frissíteni kívánt végpontot.
-1. A jobb oldali ablakban kattintson az **Egyéni**elemre.
+1. A jobb oldali ablakban kattintson az **Egyéni** elemre.
 
-    - Az **egyéni tartomány neve**mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`.
-    - A **tanúsítványban**válasszon ki egy tanúsítványt Key Vault. Egy érvényes is feltölthető. PFX-fájl, és adja meg a **jelszavát**, ha a tanúsítvány jelszavas védelemmel van ellátva.
+    - Az **egyéni tartomány neve** mezőben adja meg a használni kívánt nevet. Például: `api.contoso.com`.
+    - A **tanúsítványban** válasszon ki egy tanúsítványt Key Vault. Egy érvényes is feltölthető. PFX-fájl, és adja meg a **jelszavát**, ha a tanúsítvány jelszavas védelemmel van ellátva.
 
     > [!NOTE]
     > A helyettesítő tartománynevek, például `*.contoso.com` az összes szinten támogatottak, kivéve a felhasználási szintet.

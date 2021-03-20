@@ -12,10 +12,10 @@ ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f690f4a416e86b02de0d35fc673849c1293df577
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095765"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Egyszeri bejelentkezés munkamenet-kezelés a Azure Active Directory B2C-ben
@@ -28,7 +28,7 @@ Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
 |Munkamenet-szolgáltató  |Hatókör  |
 |---------|---------|
-|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Nincs       |       
+|[NoopSSOSessionProvider](#noopssosessionprovider)     |  Nincsenek       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C belső munkamenet-kezelő.      |       
 |[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C és OAuth1, a OAuth2 vagy az OpenId Connect Identity Provider között.        |         |
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | Egy OAuth2 vagy OpenId Connect függő entitás alkalmazás és Azure AD B2C között.        |        
@@ -120,7 +120,7 @@ Ez a szolgáltató a "személyazonossági szolgáltató választása" képernyő
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| AlwaysFetchClaimsFromProvider | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható. |
+| AlwaysFetchClaimsFromProvider | No | Jelenleg nincs használatban, figyelmen kívül hagyható. |
 
 ### <a name="oauthssosessionprovider"></a>OAuthSSOSessionProvider
 
@@ -162,8 +162,8 @@ Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-service-provider.md
 
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
-| IncludeSessionIndex | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható.|
-| RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
+| IncludeSessionIndex | No | Jelenleg nincs használatban, figyelmen kívül hagyható.|
+| RegisterServiceProviders | No | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 
 ## <a name="next-steps"></a>Következő lépések

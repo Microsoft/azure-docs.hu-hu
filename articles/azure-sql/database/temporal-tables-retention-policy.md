@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619389"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>A múltbeli adatok kezelése adatmegőrzési házirenddel rendelkező időbeli táblákban
@@ -148,7 +148,7 @@ A fenti utasítás végrehajtására tett kísérlet a következő hibával megh
 
 ## <a name="querying-tables-with-retention-policy"></a>Táblák lekérdezése adatmegőrzési házirenddel
 
-Az időbeli táblázat összes lekérdezése automatikusan kiszűri a véges adatmegőrzési szabályzatnak megfelelő korábbi sorokat, így elkerülhetők a kiszámíthatatlan és inkonzisztens eredmények, mivel a karbantartási feladat az elavult sorokat bármikor törölheti, *és tetszőleges sorrendben*is.
+Az időbeli táblázat összes lekérdezése automatikusan kiszűri a véges adatmegőrzési szabályzatnak megfelelő korábbi sorokat, így elkerülhetők a kiszámíthatatlan és inkonzisztens eredmények, mivel a karbantartási feladat az elavult sorokat bármikor törölheti, *és tetszőleges sorrendben* is.
 
 Az alábbi képen egy egyszerű lekérdezésre vonatkozó lekérdezési terv látható:
 
@@ -168,7 +168,7 @@ Ne bízza az üzleti logikát a megőrzési időszakon túli olvasási előzmén
 
 ## <a name="point-in-time-restore-considerations"></a>Időponthoz való visszaállítás szempontjai
 
-Amikor új adatbázist [hoz létre egy meglévő adatbázis egy adott időpontra való visszaállításával](recovery-using-backups.md), az adatbázis szintjén le van tiltva az időbeli megőrzés. (**is_temporal_history_retention_enabled** jelző BEÁLLÍTVA kikapcsolva). Ez a funkció lehetővé teszi a visszaállítás során az összes korábbi sor vizsgálatát anélkül, hogy a lekérdezés előtt el kellene távolítani az elavult sorokat. Ezzel a *beállítással megvizsgálhatja a konfigurált megőrzési időtartamon túli korábbi adatok vizsgálatát*is.
+Amikor új adatbázist [hoz létre egy meglévő adatbázis egy adott időpontra való visszaállításával](recovery-using-backups.md), az adatbázis szintjén le van tiltva az időbeli megőrzés. (**is_temporal_history_retention_enabled** jelző BEÁLLÍTVA kikapcsolva). Ez a funkció lehetővé teszi a visszaállítás során az összes korábbi sor vizsgálatát anélkül, hogy a lekérdezés előtt el kellene távolítani az elavult sorokat. Ezzel a *beállítással megvizsgálhatja a konfigurált megőrzési időtartamon túli korábbi adatok vizsgálatát* is.
 
 Tegyük fel, hogy egy időbeli táblának van meghatározott egy hónapos megőrzési időtartama. Ha az adatbázis prémium szintű szolgáltatási szinten lett létrehozva, akkor a múltban akár 35 napig is létrehozhat adatbázis-másolatot az adatbázis-állapottal. Ez gyakorlatilag azt teszi lehetővé, hogy a korábbi sorokat akár 65 naposra elemezze az előzmények tábla közvetlen lekérdezésével.
 

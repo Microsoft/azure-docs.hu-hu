@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2d00d489ff248ecf5599d78e0a351c93248cf8ee
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018089"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics kimenet Azure Cosmos DB  
@@ -145,7 +145,7 @@ Ha egy átmeneti hiba, a szolgáltatás nem érhető el, vagy a szabályozás ne
 
 3. Az `Id` oszlop nem létezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Stream Analytics kimenetének megismerése](stream-analytics-define-outputs.md) 
 * [Azure Stream Analytics kimenet Azure SQL Database](stream-analytics-sql-output-perf.md)

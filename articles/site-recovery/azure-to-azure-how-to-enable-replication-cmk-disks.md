@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: mayg
 ms.openlocfilehash: 9f9052f51c5bab0ea738e9fd15d8f62f45ff0c9b
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146535"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Gépek replikálása ügyfél által kezelt kulcsokkal (CMK-) kompatibilis lemezekkel
@@ -27,26 +27,26 @@ Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos rég
 
 1. A tárolóban válassza a **+ replikálás** lehetőséget.
 2. Jegyezze fel a következő mezőket.
-    - **Forrás** : a virtuális gépek származási helye, amely ebben az esetben az **Azure** .
-    - **Forrás helye** : az az Azure-régió, ahol a virtuális gépeket el szeretné látni. Ebben a példában a forrás helye: "Kelet-Ázsia."
-    - **Üzembe helyezési modell** : a forrásoldali gépek Azure-beli üzembe helyezési modellje.
-    - **Forrás-előfizetés** : az előfizetés, amelyhez a forrás virtuális gépek tartoznak. Minden olyan előfizetés lehet, amely ugyanabban a Azure Active Directory bérlőben található, mint a Recovery Services-tároló.
-    - **Erőforráscsoport** : az erőforráscsoport, amelyhez a forrás virtuális gépek tartoznak. A következő lépésben a kiválasztott erőforráscsoport összes virtuális gépe szerepel a védelemben.
+    - **Forrás**: a virtuális gépek származási helye, amely ebben az esetben az **Azure**.
+    - **Forrás helye**: az az Azure-régió, ahol a virtuális gépeket el szeretné látni. Ebben a példában a forrás helye: "Kelet-Ázsia."
+    - **Üzembe helyezési modell**: a forrásoldali gépek Azure-beli üzembe helyezési modellje.
+    - **Forrás-előfizetés**: az előfizetés, amelyhez a forrás virtuális gépek tartoznak. Minden olyan előfizetés lehet, amely ugyanabban a Azure Active Directory bérlőben található, mint a Recovery Services-tároló.
+    - **Erőforráscsoport**: az erőforráscsoport, amelyhez a forrás virtuális gépek tartoznak. A következő lépésben a kiválasztott erőforráscsoport összes virtuális gépe szerepel a védelemben.
 
-3. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget** , és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson **az OK gombra** .
+3. **Virtual Machines**  >  **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ez után válassza az **OK** gombot.
 
 4. A **Beállítások** területen a következő cél-hely beállításokat állíthatja be.
 
-    - **Cél helye** : a forrásként szolgáló virtuális gép adatai replikálásának helye. Site Recovery a kiválasztott gép helyétől függően a megfelelő célcsoportok listáját jeleníti meg. Azt javasoljuk, hogy ugyanazt a helyet használja, mint a Recovery Services tároló helye.
-    - **Cél-előfizetés** : a vész-helyreállítási célra használt cél-előfizetés. Alapértelmezés szerint a cél-előfizetés megegyezik a forrás-előfizetéssel.
-    - **Cél erőforráscsoport** : az az erőforráscsoport, amelyhez a replikált virtuális gépek tartoznak. Alapértelmezés szerint a Site Recovery új erőforráscsoportot hoz létre a célként megadott régióban. A név lekéri az `asr` utótagot. Ha már létezik olyan erőforráscsoport, amelyet Azure Site Recovery hozott létre, a rendszer újra felhasználja. Azt is megteheti, hogy testreszabja, ahogy az a következő szakaszban is látható. A célként megadott erőforráscsoport helye bármely Azure-régió lehet, kivéve a forrásként szolgáló virtuális gépeket tároló régiót.
-    - **Cél virtuális hálózat** : alapértelmezés szerint a site Recovery új virtuális hálózatot hoz létre a céltartományban. A név lekéri az `asr` utótagot. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](./azure-to-azure-network-mapping.md) információ a hálózati leképezésről.
-    - **Cél Storage-fiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)** : alapértelmezés szerint a site Recovery egy új célként megadott Storage-fiókot hoz létre a forrásként szolgáló virtuális gép tárolási konfigurációjának használatával. Ha már létezik egy Storage-fiók, az újra felhasználható.
-    - **Replikált felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)** : a site Recovery új replika felügyelt lemezeket hoz létre a céltartományban, hogy a forrás virtuális gép felügyelt lemezeit a forrásként szolgáló virtuális gép felügyelt lemezei alapján tükrözze (standard vagy prémium).
-    - **Gyorsítótár-tárolási fiókok** : site Recovery a forrás régióban a *cache Storage* nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépek összes módosítását nyomon követi és továbbítja a gyorsítótárbeli Storage-fiókba. Ezután a rendszer replikálja őket a célhelyre.
-    - **Rendelkezésre állási csoport** : alapértelmezés szerint a site Recovery új rendelkezésre állási készletet hoz létre a célként megadott régióban. A név `asr` utótagot tartalmaz. Ha Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
-    - **Lemezes titkosítási készletek (des)** : site Recovery a replikához és a célként felügyelt lemezekhez használandó lemez-titkosítási készlet (eke) t igényli. A replikáció engedélyezése előtt előre létre kell hoznia a DES-t a cél előfizetésben és a célként megadott régióban. Alapértelmezés szerint a DES nincs kiválasztva. A "Testreszabás" gombra kattintva válassza ki a DES-t a forrásoldali lemezen.
-    - **Replikációs házirend** : a helyreállítási pontok megőrzési előzményeinek és az alkalmazás-konzisztens Pillanatképek gyakoriságának beállításait határozza meg. Alapértelmezés szerint a Site Recovery egy új replikációs házirendet hoz létre, amely a helyreállítási pontok megőrzésének *24 óráját* és *60 percet* vesz igénybe az alkalmazás-konzisztens pillanatkép gyakorisága esetében.
+    - **Cél helye**: a forrásként szolgáló virtuális gép adatai replikálásának helye. Site Recovery a kiválasztott gép helyétől függően a megfelelő célcsoportok listáját jeleníti meg. Azt javasoljuk, hogy ugyanazt a helyet használja, mint a Recovery Services tároló helye.
+    - **Cél-előfizetés**: a vész-helyreállítási célra használt cél-előfizetés. Alapértelmezés szerint a cél-előfizetés megegyezik a forrás-előfizetéssel.
+    - **Cél erőforráscsoport**: az az erőforráscsoport, amelyhez a replikált virtuális gépek tartoznak. Alapértelmezés szerint a Site Recovery új erőforráscsoportot hoz létre a célként megadott régióban. A név lekéri az `asr` utótagot. Ha már létezik olyan erőforráscsoport, amelyet Azure Site Recovery hozott létre, a rendszer újra felhasználja. Azt is megteheti, hogy testreszabja, ahogy az a következő szakaszban is látható. A célként megadott erőforráscsoport helye bármely Azure-régió lehet, kivéve a forrásként szolgáló virtuális gépeket tároló régiót.
+    - **Cél virtuális hálózat**: alapértelmezés szerint a site Recovery új virtuális hálózatot hoz létre a céltartományban. A név lekéri az `asr` utótagot. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](./azure-to-azure-network-mapping.md) információ a hálózati leképezésről.
+    - **Cél Storage-fiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a site Recovery egy új célként megadott Storage-fiókot hoz létre a forrásként szolgáló virtuális gép tárolási konfigurációjának használatával. Ha már létezik egy Storage-fiók, az újra felhasználható.
+    - **Replikált felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: a site Recovery új replika felügyelt lemezeket hoz létre a céltartományban, hogy a forrás virtuális gép felügyelt lemezeit a forrásként szolgáló virtuális gép felügyelt lemezei alapján tükrözze (standard vagy prémium).
+    - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a *cache Storage* nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépek összes módosítását nyomon követi és továbbítja a gyorsítótárbeli Storage-fiókba. Ezután a rendszer replikálja őket a célhelyre.
+    - **Rendelkezésre állási csoport**: alapértelmezés szerint a site Recovery új rendelkezésre állási készletet hoz létre a célként megadott régióban. A név `asr` utótagot tartalmaz. Ha Site Recovery által létrehozott rendelkezésre állási csoport már létezik, a rendszer újra felhasználja.
+    - **Lemezes titkosítási készletek (des)**: site Recovery a replikához és a célként felügyelt lemezekhez használandó lemez-titkosítási készlet (eke) t igényli. A replikáció engedélyezése előtt előre létre kell hoznia a DES-t a cél előfizetésben és a célként megadott régióban. Alapértelmezés szerint a DES nincs kiválasztva. A "Testreszabás" gombra kattintva válassza ki a DES-t a forrásoldali lemezen.
+    - **Replikációs házirend**: a helyreállítási pontok megőrzési előzményeinek és az alkalmazás-konzisztens Pillanatképek gyakoriságának beállításait határozza meg. Alapértelmezés szerint a Site Recovery egy új replikációs házirendet hoz létre, amely a helyreállítási pontok megőrzésének *24 óráját* és *60 percet* vesz igénybe az alkalmazás-konzisztens pillanatkép gyakorisága esetében.
 
     ![A CMK-kompatibilis lemezekkel rendelkező gép replikálásának engedélyezése](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-enable-dr.png)
 

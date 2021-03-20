@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: sarbar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f9a51c10a4f390e5627bccf35ab5dc74689e9c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91566822"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Mi az Azure Active Directory-jelentés?
@@ -52,7 +52,7 @@ A biztonsági jelentések segítenek a szervezet identitásának védelmében. A
 
 Az Azure AD minden kiadása biztosítja a kockázatos és kockázatos bejelentkezési jelentésekhez megjelölt felhasználókat. A jelentések részletességi szintje azonban különbözik a kiadások között: 
 
-- A **ingyenes Azure Active Directory és az alapszintű kiadásokban**a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
+- A **ingyenes Azure Active Directory és az alapszintű kiadásokban** a kockázatok és a kockázatos bejelentkezések számára megjelölt felhasználók listája jelenik meg. 
 
 - A **prémium szintű Azure Active Directory 1** kiadás kiterjeszti ezt a modellt azáltal, hogy megvizsgálja az egyes jelentésekhez észlelt mögöttes kockázati észlelések némelyikét is. 
 
@@ -105,7 +105,7 @@ A bejelentkezési tevékenységjelentés eléréséhez a bérlőnek prémium szi
 
 A felhasználói felületen kívül az Azure AD [programozott hozzáférést](concept-reporting-api.md) is biztosít a jelentések adatokhoz a REST-alapú API-k segítségével. Különböző programnyelvekkel és eszközökkel hívhatja ezeket az API-kat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kockázatos bejelentkezési jelentések](../identity-protection/overview-identity-protection.md)
 - [Naplók jelentés](concept-audit-logs.md)

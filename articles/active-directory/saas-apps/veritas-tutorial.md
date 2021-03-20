@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory a Veritas Enterprise Vaulttal való integrációt. Felhőbeli SSO | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Veritas Enterprise Vault között. Felhőbeli egyszeri bejelentkezés.
+title: 'Oktatóanyag: Azure Active Directory-integráció a Veritas Enterprise Vault.cloud SSO-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Veritas Enterprise Vault.cloud SSO között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 5e777a27e793b1f4ef5489248c170824d69d615c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517684"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Oktatóanyag: Azure Active Directory a Veritas Enterprise Vaulttal való integrációt. Felhőbeli egyszeri bejelentkezés
+# <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Oktatóanyag: Azure Active Directory-integráció a Veritas Enterprise Vault.cloud SSO-val
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Veritas Enterprise Vault. Cloud SSO-t Azure Active Directory (Azure AD) használatával.
-A Veritas Enterprise Vault integrálása. a felhőalapú egyszeri bejelentkezés az Azure AD-vel a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Veritas Enterprise Vault.cloud SSO-t Azure Active Directory (Azure AD-val).
+A Veritas Enterprise Vault.cloud SSO és az Azure AD integrálásával a következő előnyöket nyújtja:
 
-* Az Azure AD-ben szabályozhatja, hogy kik férhetnek hozzá a Veritas Enterprise Vaulthoz. felhőalapú egyszeri bejelentkezés.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Veritas Enterprise Vaultba. felhőalapú egyszeri bejelentkezés (egyszeri bejelentkezés) Azure AD-fiókjával.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Veritas Enterprise Vault.cloud SSO-hoz.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Veritas Enterprise Vault.cloud SSO-ba (egyszeri bejelentkezés) az Azure AD-fiókkal.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
@@ -32,22 +32,22 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció a Veritas Enterprise Vaulttal való konfigurálásához. Felhőbeli egyszeri bejelentkezés esetén a következő elemek szükségesek:
+Az Azure AD-integráció a Veritas Enterprise Vault.cloud SSO-val való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
-* Veritas Enterprise Vault. felhőalapú egyszeri bejelentkezéses egyszeri bejelentkezésre alkalmas előfizetés
+* A Veritas Enterprise Vault.cloud egyszeri bejelentkezéses egyszeri bejelentkezésre engedélyezett előfizetése
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Veritas Enterprise Vault. a Cloud SSO támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Veritas Enterprise Vault.cloud SSO támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>A Veritas Enterprise Vault hozzáadása. Felhőbeli egyszeri bejelentkezés a katalógusból
+## <a name="adding-veritas-enterprise-vaultcloud-sso-from-the-gallery"></a>A Veritas Enterprise Vault.cloud SSO hozzáadása a katalógusból
 
-A Veritas Enterprise Vault. Cloud SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Veritas Enterprise Vault. Cloud SSO elemet a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Veritas Enterprise Vault.cloud SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Veritas Enterprise Vault.cloud SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A Veritas Enterprise Vault. Cloud SSO a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**A Veritas Enterprise Vault.cloud SSO a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
@@ -61,31 +61,31 @@ A Veritas Enterprise Vault. Cloud SSO Azure AD-be való integrálásának konfig
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **Veritas Enterprise Vault. Cloud SSO**, válassza a **Veritas Enterprise Vault elemet. FELHŐbeli egyszeri bejelentkezés** az eredmény panelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Veritas enterprise Vault.Cloud SSO** kifejezést, válassza a **Veritas Enterprise Vault.Cloud SSO** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Veritas Enterprise Vault. Cloud SSO az eredmények listájában](common/search-new-app.png)
+     ![A Veritas Enterprise Vault.cloud SSO az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Veritas Enterprise Vaulttal. felhőalapú egyszeri bejelentkezés egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a Veritas Enterprise Vault kapcsolódó felhasználója közötti kapcsolati kapcsolat szükséges. a Felhőbeli egyszeri bejelentkezést kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Veritas Enterprise Vault.cloud SSO-val egy **Britta Simon** nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Veritas Enterprise Vault.cloud SSO-beli kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Veritas Enterprise Vault használatával. felhőalapú egyszeri bejelentkezés esetén a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vault.cloud SSO-val való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Veritas Enterprise Vault konfigurálása. FELHŐALAPÚ SSO egyszeri bejelentkezés](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
+2. A **[Veritas Enterprise Vault.Cloud SSO egyszeri bejelentkezés beállítása](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. A **[Veritas Enterprise Vault létrehozása. Felhőbeli SSO-teszt felhasználó](#create-veritas-enterprise-vaultcloud-sso-test-user)** – a Britta Simon partnere a Veritas Enterprise vaultban. felhőalapú egyszeri bejelentkezés, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
+5. A **[Veritas enterprise Vault.Cloud SSO-teszt felhasználójának létrehozása](#create-veritas-enterprise-vaultcloud-sso-test-user)** – a felhasználó Azure ad-Britta kapcsolódó, a veritas Enterprise Vault.Cloud SSO-hoz tartozó "
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigurálásához. felhőalapú egyszeri bejelentkezés, hajtsa végre a következő lépéseket:
+Ha az Azure AD egyszeri bejelentkezést a Veritas Enterprise Vault.cloud SSO-val szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Veritas Enterprise Vault. Cloud SSO** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Veritas Enterprise Vault.Cloud SSO** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![A Veritas Enterprise Vault. Cloud SSO tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
+    ![A Veritas Enterprise Vault.cloud SSO-tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>`
 
@@ -120,13 +120,13 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
     | Ázsia és a Csendes-óceáni térség| `https://auth.syd.archivecloud.net`|
 
     > [!NOTE]
-    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a [Veritas Enterprise vaulthoz. FELHŐALAPÚ SSO-ügyfél támogatási csapata](https://www.veritas.com/support/.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a [Veritas Enterprise Vault.Cloud SSO ügyfél-támogatási csapatához](https://www.veritas.com/support/.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A **Veritas Enterprise Vault. Cloud SSO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Veritas Enterprise Vault.Cloud SSO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -136,15 +136,15 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>A Veritas Enterprise Vault konfigurálása. felhőalapú egyszeri bejelentkezés – egyetlen Sign-On
+### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>A Veritas Enterprise Vault.cloud egyszeri bejelentkezéses egyszeri Sign-On konfigurálása
 
-Az egyszeri bejelentkezés a **Veritas Enterprise vaultban való konfigurálásához. a Felhőbeli SSO** oldalon el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket az Azure Portalról a [Veritas Enterprise Vaultba. Felhőbeli SSO-támogatási csapat](https://www.veritas.com/support/.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha be szeretné állítani az egyszeri bejelentkezést a **Veritas enterprise Vault.Cloud SSO** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket Azure Portalról a [Veritas Enterprise Vault.Cloud SSO támogatási csapatának](https://www.veritas.com/support/.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -166,17 +166,17 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a Veritas Enterprise Vaulthoz. Felhőbeli egyszeri bejelentkezés.
+Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a Veritas Enterprise Vault.cloud SSO-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Veritas Enterprise Vault. Cloud SSO**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Veritas Enterprise Vault.Cloud SSO** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Veritas Enterprise Vault. Cloud SSO**elemet.
+2. Az alkalmazások listában válassza a **Veritas Enterprise Vault.Cloud SSO** elemet.
 
-    ![A Veritas Enterprise Vault. Cloud SSO hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![A Veritas Enterprise Vault.cloud SSO hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -190,15 +190,15 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>Veritas Enterprise Vault létrehozása. Felhőbeli SSO-teszt felhasználó
+### <a name="create-veritas-enterprise-vaultcloud-sso-test-user"></a>A Veritas Enterprise Vault.cloud SSO-teszt felhasználójának létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Veritas Enterprise Vaultban. Felhőbeli egyszeri bejelentkezés. A [Veritas Enterprise Vault használata. a FELHŐALAPÚ SSO-támogatással rendelkező csapat](https://www.veritas.com/support/.html) felveheti a felhasználókat a Veritas Enterprise vaultba. Cloud SSO platform. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Veritas Enterprise Vault.cloud SSO-ban. A [Veritas enterprise Vault.Cloud SSO támogatási csapatának](https://www.veritas.com/support/.html) használata a felhasználók hozzáadásához a veritas Enterprise Vault.Cloud SSO platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor rákattint a Veritas Enterprise Vault. Cloud SSO csempére a hozzáférési panelen, automatikusan be kell jelentkeznie a Veritas Enterprise Vaultba. Cloud SSO, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+Ha a hozzáférési panelen a Veritas Enterprise Vault.cloud SSO csempére kattint, automatikusan be kell jelentkeznie a Veritas vállalati Vault.cloud SSO-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>További források
 

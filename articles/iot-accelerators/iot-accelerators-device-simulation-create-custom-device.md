@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96852387"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
@@ -56,14 +56,14 @@ Adja meg az alábbi adatokat az űrlapon:
 | ------------------- | ---------------------------------------------------- |
 | Eszközmodell neve   | Hűtő                                         |
 | Modell leírása   | Hőmérséklet- és páratartalom-érzékelőkkel rendelkező hűtő |
-| Verzió             | 1,0                                                  |
+| Verzió             | 1.0                                                  |
 
 > [!NOTE]
 > Az eszközmodell nevének egyedinek kell lennie.
 
 Kattintson az **+ Adatpont hozzáadása** elemre a hőmérséklet- és páratartalom-adatpontok hozzáadásához az alábbi értékekkel:
 
-| Adatpont          | Viselkedés        | Minimális érték | Maximális érték | Egység |
+| Adatpont          | Működés        | Minimális érték | Maximális érték | Unit (Egység) |
 | ------------------- | --------------- | --------- | --------- | ---- |
 | Hőmérséklet         | Véletlenszerű          | -50       | 100       | F    |
 | Páratartalom            | Véletlenszerű          | 0         | 100       | %    |

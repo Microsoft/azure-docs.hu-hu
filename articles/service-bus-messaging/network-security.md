@@ -4,10 +4,10 @@ description: Ez a cikk a hálózati biztonsági funkciókat, például a szolgá
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: db0dd89d1f902699c27b724609505ba681757454
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92310465"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus hálózati biztonsága 
@@ -26,11 +26,11 @@ A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](.
 
 | Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
+| **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Yes |
 
 
 > [!NOTE]
-> A szolgáltatási címkéket csak a **prémium** szintű névterek esetében használhatja. Ha **standard** névteret használ, használja a következő parancs futtatásakor megjelenő IP-címet: `nslookup <host name for the namespace>` . Például: `nslookup contosons.servicebus.windows.net`. 
+> A szolgáltatási címkéket csak a **prémium** szintű névterek esetében használhatja. Ha **standard** névteret használ, használja a következő parancs futtatásakor megjelenő IP-címet: `nslookup <host name for the namespace>` . Példa: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét.
@@ -65,7 +65,7 @@ Ez azt jelenti, hogy a biztonsági szempontból bizalmas Felhőbeli megoldások 
 
 A *virtuális hálózati szabályok* a tűzfal biztonsági funkciója, amely azt szabályozza, hogy a Azure Service Bus-kiszolgáló egy adott virtuális hálózati alhálózat kapcsolatait fogadja-e.
 
-A Service Bus névterek virtuális hálózathoz való kötése kétlépéses folyamat. Először létre kell hoznia egy **Virtual Network szolgáltatási végpontot** egy Virtual Network alhálózaton, és engedélyeznie kell azt a **Microsoft. ServiceBus** számára a [szolgáltatási végpont áttekintése című](service-bus-service-endpoints.md)részben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Service Bus névteret egy **virtuális hálózati szabállyal**kell kötnie.
+A Service Bus névterek virtuális hálózathoz való kötése kétlépéses folyamat. Először létre kell hoznia egy **Virtual Network szolgáltatási végpontot** egy Virtual Network alhálózaton, és engedélyeznie kell azt a **Microsoft. ServiceBus** számára a [szolgáltatási végpont áttekintése című](service-bus-service-endpoints.md)részben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Service Bus névteret egy **virtuális hálózati szabállyal** kell kötnie.
 
 A virtuális hálózati szabály a Service Bus névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Service Bus névtérhez. Service Bus maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kapnak hozzáférést az alhálózathoz.
 

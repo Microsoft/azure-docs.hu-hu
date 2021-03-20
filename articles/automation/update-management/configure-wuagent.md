@@ -1,18 +1,18 @@
 ---
-title: Azure Automation Update Management Windows Update beállításainak konfigurálása
+title: Windows Update-beállítások konfigurálása az Azure Automation frissítéskezelési szolgáltatásához
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Windows Update beállításait Azure Automation Update Management való működéshez.
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: a1f95ca856223628974a9519b7c4811bde43965e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222160"
 ---
-# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Automation Update Management Windows Update beállításainak konfigurálása
+# <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Windows Update-beállítások konfigurálása az Azure Automation frissítéskezelési szolgáltatásához
 
 Azure Automation Update Management a [Windows Update ügyfélen](/windows/deployment/update/windows-update-overview) támaszkodik a Windows-frissítések letöltésére és telepítésére. A Windows Update-ügyfél az Windows Server Update Services (WSUS) vagy a Windows Updatehoz való csatlakozáskor adott beállításokat használ. Ezen beállítások közül sokat a következővel kezelhet:
 

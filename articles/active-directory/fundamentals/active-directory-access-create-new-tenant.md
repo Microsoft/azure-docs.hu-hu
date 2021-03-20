@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96437240"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Gyors útmutató: új bérlő létrehozása Azure Active Directory
@@ -49,7 +49,7 @@ Miután bejelentkezett az Azure portálra, létrehozhat egy új bérlőt a szerv
     
     - Írja be a _contoso-szervezet_ **nevet a szervezet neve** mezőbe.
 
-    - Írja _Contosoorg_ be a Contosoorg **nevet a kezdeti tartománynév** mezőbe.
+    - Írja  be a Contosoorg **nevet a kezdeti tartománynév** mezőbe.
 
     - Hagyja meg az _Egyesült Államok_ beállítást az **Ország vagy régió** mezőben.
 
@@ -69,7 +69,7 @@ Ha nem folytatja az alkalmazás használatát, a következő lépésekkel törö
 
     <kbd>![Áttekintő lap, a kijelölt könyvtár törlése gombbal](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tartománynevek módosítása és továbbiak felvétele: [Egyéni tartománynév hozzáadása az Azure Active Directoryhoz](add-custom-domain.md)
 
 - Felhasználók felvétele: [Új felhasználó hozzáadása és törlése](add-users-azure-active-directory.md)

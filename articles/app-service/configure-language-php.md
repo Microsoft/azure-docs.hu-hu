@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90055299"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Servicehoz
@@ -119,7 +119,7 @@ Véglegesítse az összes módosítást, és telepítse a kódot a git használa
 
 Ha azt szeretné, hogy a App Service a népszerű Automation-eszközöket az üzembe helyezési időben, például a morog, a Bower vagy a Nyelő használatával futtassa, [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)kell megadnia. App Service futtatja ezt a parancsfájlt a git-vel való üzembe helyezéskor, vagy ha engedélyezve van a Build Automation szolgáltatással rendelkező [zip-telepítés](deploy-zip.md) . 
 
-Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Példa:
+Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Például:
 
 ```json
 "dependencies": {
@@ -203,7 +203,7 @@ fi
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
-1. A `php composer.phar install` parancs futtatása.
+1. Futtassa az `php composer.phar install` parancsot.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
@@ -318,7 +318,7 @@ Egy fájl használata helyett használhatja a `.user.ini` [ini_set ()](https://w
 
 PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
 
-A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Példa:
+A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Például:
 
 ```
 php_value upload_max_filesize 1000M
@@ -332,7 +332,7 @@ php_value upload_max_filesize 10M
 
 Telepítse újra az alkalmazást a módosításokkal, majd indítsa újra. Ha a kudu (például a [git](deploy-local-git.md)használatával) telepíti azt, akkor a telepítés után automatikusan újraindul.
 
-A *. htaccess*használatának alternatívájaként a [ini_set ()](https://www.php.net/manual/function.ini-set.php) alkalmazással is testreszabhatja ezeket a nem PHP_INI_SYSTEM irányelveket.
+A *. htaccess* használatának alternatívájaként a [ini_set ()](https://www.php.net/manual/function.ini-set.php) alkalmazással is testreszabhatja ezeket a nem PHP_INI_SYSTEM irányelveket.
 
 ::: zone-end
 
@@ -469,8 +469,8 @@ A standard [error_log ()](https://php.net/manual/function.error-log.php) segédp
 Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Példa:
-    - A *composer.jstól*függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
+- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Például:
+    - A *composer.jstól* függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
 - Az alkalmazást hibakeresési módban App Service futtathatja. A [Laravel](https://meanjs.org/)-ben például beállíthatja, hogy az alkalmazás a hibakeresési üzeneteket az éles környezetben állítsa be úgy, hogy [az `APP_DEBUG` `true` alkalmazás beállítását ](configure-common.md#configure-app-settings)adja meg.

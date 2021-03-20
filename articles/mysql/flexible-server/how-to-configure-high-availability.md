@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241735"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>A zóna redundáns magas rendelkezésre állásának kezelése Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
@@ -32,7 +32,7 @@ Ez az oldal útmutatást nyújt a magas rendelkezésre állás engedélyezéséh
 
 Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lépések végrehajtásával magas rendelkezésre állást helyezhet üzembe a rugalmas kiszolgáló létrehozása során.
 
-1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgáló elemet, majd kattintson a **Létrehozás** gombra.  A részleteket, például az **előfizetést** , az **erőforráscsoportot** , a **kiszolgálónevet** , a **régiót** és az egyéb mezőket a kiszolgáló létrehozásának dokumentációjában találja.
+1.  A [Azure Portal](https://portal.azure.com/)válassza a rugalmas kiszolgáló elemet, majd kattintson a **Létrehozás** gombra.  A részleteket, például az **előfizetést**, az **erőforráscsoportot**, a **kiszolgálónevet**, a **régiót** és az egyéb mezőket a kiszolgáló létrehozásának dokumentációjában találja.
 
 2.  A rendelkezésre állási lehetőségnél kattintson a **zóna redundáns magas rendelkezésre állása** jelölőnégyzetére.
 
@@ -41,9 +41,9 @@ Ez a szakasz részletesen ismerteti a HA kapcsolódó mezőket. Az alábbi lép�
 4.  Ha a magas rendelkezésre állás beállítás be van jelölve, a feltört szint nem lesz elérhető a választáshoz. Kiválaszthatja az **általános célú** vagy a **memóriára optimalizált** számítási szinteket is.
 
     > [!IMPORTANT]
-    > Az * *_általános célú_* _ és a _*_memória optimalizált_*_ díjszabási szintjéhez csak a zóna redundáns magas rendelkezésre állását támogatjuk.
+    > Csak a zóna redundáns magas rendelkezésre állását támogatjuk az ***általános célú** _ és a *_memória-optimalizált_** díjszabási szinten.
 
-5.  Válassza ki a legördülő menüből választott _ *számítási méretet* *.
+5.  Válassza ki a legördülő menüből választott **számítási méretet** .
 
 6.  A kicsúsztatható sáv használatával válassza ki a **Storage-méretet** , és válassza ki a **biztonsági mentés megőrzési időtartamát** 7 nap és 35 nap között.   
 

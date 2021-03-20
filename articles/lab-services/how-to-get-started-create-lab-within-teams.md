@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan kezdheti el és hozhat létre Azure Lab Service
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433971"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Első lépések és labor Services-tesztkörnyezet létrehozása a csapatokon belül
@@ -57,7 +57,7 @@ Csapatának tulajdonosaként közvetlenül is hozzáadhat **Azure Lab Services**
 
 A labor-fiók kiválasztása után a csapat tulajdonosai létrehozhatnak Labs-t a csapat számára. A teljes tesztkörnyezet-létrehozási folyamat és a labor szinten található összes feladat elvégezhető a csapatokon belül. A felhasználók több labort is létrehozhatnak ugyanazon a csapaton belül, és a csapat tulajdonosa, a megfelelő hozzáféréssel a labor fiók szintjén, csak az adott csapathoz társított Labs-t fogja látni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha labort hoz létre a csapatokon belül, a rendszer automatikusan kitölti és szinkronizálja a labor felhasználói listáját a csoport tagságával. A csapat minden tagja, beleértve a tulajdonosokat, a tagokat és a vendégeket is, automatikusan hozzáadja a labor felhasználói listához. Az Azure Lab Services 24 óránként szinkronizálja a csoport tagságát, és automatikus szinkronizálást indít el. Részletes információ:
 

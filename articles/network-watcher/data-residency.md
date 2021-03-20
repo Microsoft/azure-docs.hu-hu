@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: b5aa8167031c3b871c6a6a4d84159c3c284bf241
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018428"
 ---
 # <a name="data-residency-for-azure-network-watcher"></a>Adattárolás az Azure Network Watcher
@@ -30,6 +30,6 @@ A Csatlakozáskezelő (előzetes verzió) szolgáltatás az ügyféladatokat tá
 ## <a name="data-residency"></a>Adattárolási hely
 Az Azure-ban az ügyféladatok egyetlen régióban való tárolását lehetővé tevő funkció jelenleg csak az Ázsia és a Csendes-óceáni térség geo és Dél-Brazília (Sao Paulo állam) régiójában, a brazíliai geo régióban érhető el. Az összes többi régió esetében az ügyféladatokat a Geo tárolja. További információ: [Adatvédelmi központ](https://azuredatacentermap.azurewebsites.net/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el a [Network Watcher](./network-watcher-monitoring-overview.md)áttekintése című témakört.

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 08/20/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 86e84d825bd1dd3774cfd2774e0b96e540bb3cd2
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218476"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics kezelése Java-alkalmazás használatával
@@ -73,7 +73,7 @@ A következő kódrészlet kódot biztosít a **nem interaktív** hitelesítésh
 </dependencies>
 ```
 
-Lépjen a **fájl > beállítások > Build > végrehajtás > központi telepítés**. Válassza a **Build Tools > Maven > importálás**lehetőséget. Ezután jelölje be a **Maven-projektek automatikus importálását**.
+Lépjen a **fájl > beállítások > Build > végrehajtás > központi telepítés**. Válassza a **Build Tools > Maven > importálás** lehetőséget. Ezután jelölje be a **Maven-projektek automatikus importálását**.
 
 Nyissa meg `Main.java` és cserélje le a meglévő kódrészletet a következő kódra:
 

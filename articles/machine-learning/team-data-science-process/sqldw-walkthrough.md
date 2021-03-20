@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b638cb2b33f24220e7ceb852402862c707cc7bc6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93316000"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
@@ -63,8 +63,8 @@ Az utazáshoz és az utazási viteldíjhoz való csatlakozáshoz használt **egy
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Az előrejelzési feladatok három típusának kezelése
 Három előrejelzési problémát fogalmazunk meg a *Tipp \_ összege* alapján, amely háromféle modellezési feladatot ábrázol:
 
-1. **Bináris besorolás** : Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp- \_ összeg* pozitív példa, míg az $0-es *tip- \_ mennyiség* negatív példa.
-2. **Többosztályos besorolás** : az utazáshoz fizetett tipp tartományának előrejelzése. A *Tipp \_ összegét* öt raktárhelyre vagy osztályra osztjuk:
+1. **Bináris besorolás**: Ha meg szeretné jósolni, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz az $0-nál nagyobb *Tipp- \_ összeg* pozitív példa, míg az $0-es *tip- \_ mennyiség* negatív példa.
+2. **Többosztályos besorolás**: az utazáshoz fizetett tipp tartományának előrejelzése. A *Tipp \_ összegét* öt raktárhelyre vagy osztályra osztjuk:
 
 `Class 0 : tip_amount = $0`
 
@@ -76,7 +76,7 @@ Három előrejelzési problémát fogalmazunk meg a *Tipp \_ összege* alapján,
 
 `Class 4 : tip_amount > $20`
 
-3. **Regressziós feladat** : az utazáshoz fizetett tipp mennyiségének előrejelzése.
+3. **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
 ## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Az Azure adatelemzési környezet beállítása a speciális elemzésekhez
 Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lépéseket.
@@ -93,7 +93,7 @@ Az Azure-beli adatelemzési környezet beállításához kövesse az alábbi lé
 **Az Azure szinapszis Analytics-példány kiépítése.**
 Az Azure szinapszis Analytics-példány kiépítéséhez kövesse a [Azure Portal Azure szinapszis Analytics létrehozása és lekérdezése](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) című dokumentumát. Győződjön meg arról, hogy a következő Azure szinapszis Analytics-beli hitelesítő adatokkal rendelkezik, amelyeket a későbbi lépésekben fog használni.
 
-* **Kiszolgáló neve** : \<server Name> . database.Windows.net
+* **Kiszolgáló neve**: \<server Name> . database.Windows.net
 * **SQLDW (adatbázis) neve**
 * **Felhasználónév**
 * **Jelszó**
@@ -154,7 +154,7 @@ Amikor a PowerShell-parancsfájl első alkalommal fut, a rendszer arra kéri, ho
 
 Ez a **PowerShell-parancsfájl** a következő feladatokat hajtja végre:
 
-* **Letölti és telepíti a AzCopy** , ha a AzCopy még nincs telepítve
+* **Letölti és telepíti a AzCopy**, ha a AzCopy még nincs telepítve
 
   ```azurepowershell
   $AzCopy_path = SearchAzCopy
@@ -937,9 +937,9 @@ pd.read_sql(query,conn)
 ## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Modellek készítése Azure Machine Learning
 Most már készen áll az építés és a modell üzembe helyezésének modellezésére [Azure Machine Learningban](https://studio.azureml.net). Az adatgyűjtés készen áll arra, hogy a korábban azonosított előrejelzési problémák bármelyikében felhasználható legyen, nevezetesen:
 
-1. **Bináris besorolás** : megjósolhatja, hogy fizetett-e borravalót egy útra.
-2. **Többosztályos besorolás** : a kifizetett tipp tartományának előrejelzéséhez a korábban definiált osztályok alapján.
-3. **Regressziós feladat** : az utazáshoz fizetett tipp mennyiségének előrejelzése.
+1. **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra.
+2. **Többosztályos besorolás**: a kifizetett tipp tartományának előrejelzéséhez a korábban definiált osztályok alapján.
+3. **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
 A modellezési gyakorlat megkezdéséhez jelentkezzen be a **Azure Machine learning (klasszikus)** munkaterületre. Ha még nem hozott létre Machine learning-munkaterületet, tekintse meg a [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../classic/create-workspace.md)című témakört.
 
@@ -968,7 +968,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az Azure szinapszis A
 2. Válassza a **Azure SQL Database** lehetőséget a **Tulajdonságok** panelen lévő **adatforrásként** .
 3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
-5. Adja meg az *SQL-felhasználónevet* a **kiszolgáló felhasználói fiókjának nevében** , és a *jelszót* a **kiszolgáló felhasználói fiókjának jelszavában**.
+5. Adja meg az *SQL-felhasználónevet* a **kiszolgáló felhasználói fiókjának nevében**, és a *jelszót* a **kiszolgáló felhasználói fiókjának jelszavában**.
 7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
 
 Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szinapszis Analytics-adatbázisból olvassa be az adatot, az alábbi ábrán látható (ne felejtse el lecserélni a táblanév nyctaxi_trip és nyctaxi_fare a séma neve és a forgatókönyvben használt táblanév alapján). A többosztályos besoroláshoz és a regressziós problémákhoz hasonló kísérletek is létrehozhatók.
@@ -976,7 +976,7 @@ Példa egy bináris besorolási kísérletre, amely közvetlenül az Azure szina
 ![Azure ML-vonat][10]
 
 > [!IMPORTANT]
-> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát** , a **Tipp \_ összegét** és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
+> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát**, a **Tipp \_ összegét** és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
 >
 > A szükségtelen oszlopok vagy a célzott szivárgások kizárásához használja az [Oszlopok kiválasztása az adatkészlet][select-columns] modulban vagy a [metaadatok szerkesztése][edit-metadata]lehetőséget. További információ: [Oszlopok kiválasztása az adatkészletben][select-columns] és a [metaadatokat][edit-metadata] tartalmazó hivatkozások szerkesztése.
 >
@@ -1012,7 +1012,7 @@ Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, lét
 ### <a name="license-information"></a>Licencelési információk
 Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a GitHubon található mintakód könyvtárában lévő LICENSE.txt fájlt.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 - [Andrés Monroy NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)
 - [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [A New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

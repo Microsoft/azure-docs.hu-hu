@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131190"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Bejövő adatvezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
@@ -41,7 +41,7 @@ A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. Windows
 > A következő példa egy Kubernetes névteret hoz létre a bejövő erőforrások *– alapszintű* forgalomhoz. Szükség szerint adja meg a saját környezetének névterét.
 
 > [!TIP]
-> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében* . Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
+> Ha engedélyezni szeretné az [ügyfél forrásának IP-megőrzését][client-source-ip] a fürtben lévő tárolók kéréseire, adja hozzá `--set controller.service.externalTrafficPolicy=Local` a parancsot a Helm install parancshoz. Az ügyfél forrásának IP-címét a kérelem fejlécében tárolja a rendszer az *X által továbbított – esetében*. Ha olyan bejövő adatkezelőt használ, amelyen engedélyezve van az ügyfél forrásának IP-címe, az SSL-továbbítás nem fog működni.
 
 ```console
 # Create a namespace for your ingress resources
@@ -223,15 +223,15 @@ ingress.extensions/hello-world-ingress-static created
 
 ## <a name="test-the-ingress-controller"></a>A bejövő vezérlő tesztelése
 
-A bejövő vezérlő útvonalának teszteléséhez tallózzon a két alkalmazás között. Nyisson meg egy webböngészőt az NGINX beáramló vezérlő IP-címéhez, például *EXTERNAL_IP* . Az első bemutató alkalmazás megjelenik a böngészőben, ahogy az a következő példában látható:
+A bejövő vezérlő útvonalának teszteléséhez tallózzon a két alkalmazás között. Nyisson meg egy webböngészőt az NGINX beáramló vezérlő IP-címéhez, például *EXTERNAL_IP*. Az első bemutató alkalmazás megjelenik a böngészőben, ahogy az a következő példában látható:
 
 ![Első alkalmazás, amely a bejövő vezérlő mögött fut](media/ingress-basic/app-one.png)
 
-Most adja hozzá a */Hello-World-Two* elérési útját az IP-címhez, például *EXTERNAL_IP/Hello-World-Two* . Megjelenik a második bemutató alkalmazás az egyéni címmel:
+Most adja hozzá a */Hello-World-Two* elérési útját az IP-címhez, például *EXTERNAL_IP/Hello-World-Two*. Megjelenik a második bemutató alkalmazás az egyéni címmel:
 
 ![A bejövő vezérlő mögött futó második alkalmazás](media/ingress-basic/app-two.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramló összetevők és a minta alkalmazások telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 

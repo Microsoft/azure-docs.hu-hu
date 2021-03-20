@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 2d3989b3c477a35d602f1ccf3e45d6f597f5d78d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011565"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>DNS-rekordok és-rekordhalmazok kezelése Azure DNS az Azure CLI használatával
@@ -289,7 +289,7 @@ az network dns record-set a delete --resource-group myresourcegroup --zone-name 
 
 A rendszer felszólítja, hogy erősítse meg a törlési műveletet. A kérdés mellőzéséhez használja a `--yes` kapcsolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Azure DNS található zónákkal és rekordokkal](dns-zones-records.md)kapcsolatban.
 <br>

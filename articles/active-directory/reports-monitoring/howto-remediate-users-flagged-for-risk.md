@@ -16,10 +16,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23bd7a26bc6215f50a2860ab4aac84f1b46301f5
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92308946"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználók szervizelése az Azure Active Directory portálon
@@ -44,15 +44,15 @@ További információ: [a kockázat biztonsági jelentésére megjelölt felhasz
 
 ### <a name="azure-ad-subscription-for-microsoft-365-customers"></a>Azure AD-előfizetés Microsoft 365 ügyfeleknek
 
-A Microsoft 365 hitelesítő adatait is használhatja az **Azure felügyeleti központ**eléréséhez. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
+A Microsoft 365 hitelesítő adatait is használhatja az **Azure felügyeleti központ** eléréséhez. Miután aktiválta Azure AD-hozzáférését, a rendszer átirányítja az Azure AD portáljára. Az alapszintű előfizetési szinten a jelentésekben biztosított adatok mennyisége korlátozott. Az Azure Premium-előfizetők további adatokat és elemzéseket érhetnek el.
 
 A kockázati jelentésekhez **megjelölt felhasználók** elérése a Microsoft 365 felügyeleti központban:
 
-1.  A bal oldali navigációs menüből válassza a **felügyeleti központok**lehetőséget. 
-2.  Válassza az **Azure ad**lehetőséget.
+1.  A bal oldali navigációs menüből válassza a **felügyeleti központok** lehetőséget. 
+2.  Válassza az **Azure ad** lehetőséget.
 3.  Jelentkezzen be az **Azure Active Directory felügyeleti központba**.
-4.  Ha megjelenik egy szalagcím az oldal tetején, amely azt jelzi, hogy az **új portálra**kattint, válassza ki a hivatkozást.
-4.  A bal oldali navigációs menüben válassza a **Azure Active Directory**lehetőséget. 
+4.  Ha megjelenik egy szalagcím az oldal tetején, amely azt jelzi, hogy az **új portálra** kattint, válassza ki a hivatkozást.
+4.  A bal oldali navigációs menüben válassza a **Azure Active Directory** lehetőséget. 
 5.  A navigációs ablaktáblán válassza ki a **Biztonság** szakaszban a **kockázatként megjelölt felhasználókat** .
 
 ## <a name="remediation-actions"></a>Szervizelési műveletek

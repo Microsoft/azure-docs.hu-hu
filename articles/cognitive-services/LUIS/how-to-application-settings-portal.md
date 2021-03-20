@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: aabe05924e781fbab5f92bd620ddcd566365f7e8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436640"
 ---
 # <a name="application-and-version-settings"></a>Alkalmazás-és verzió beállításai
@@ -41,7 +41,7 @@ Ha módosítani szeretné a beállításokat, válassza ki a lapot az oldalon.
 
 [!INCLUDE [Version settings](includes/app-version-settings.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Együttműködés](luis-how-to-collaborate.md) más szerzőkkel
 * [Publish settings](luis-how-to-publish-app.md#configuring-publish-settings) (Közzétételi beállítások)

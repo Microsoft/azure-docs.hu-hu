@@ -17,10 +17,10 @@ ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
 ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94518101"
 ---
 # <a name="security-frame-session-management"></a>Biztonsági keret: munkamenet-kezelés
@@ -292,7 +292,7 @@ A következő konfiguráció a megfelelő konfigurációt jeleníti meg:
 ```
 
 ### <a name="example"></a>Példa
-Egyszerre a HTML. AntiForgeryToken () egy __RequestVerificationToken nevű cookie-t ad a látogatónak, amelynek értéke megegyezik a fent látható véletlenszerű rejtett értékkel. Ezután a bejövő űrlap bejegyzésének érvényesítéséhez adja hozzá a [ValidateAntiForgeryToken] szűrőt a cél műveleti metódushoz. Ilyenek többek között:
+Egyszerre a HTML. AntiForgeryToken () egy __RequestVerificationToken nevű cookie-t ad a látogatónak, amelynek értéke megegyezik a fent látható véletlenszerű rejtett értékkel. Ezután a bejövő űrlap bejegyzésének érvényesítéséhez adja hozzá a [ValidateAntiForgeryToken] szűrőt a cél műveleti metódushoz. Például:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -536,7 +536,7 @@ A fenti példában a következőhöz hasonló kimenet fog kinézni:
 ```
 
 ### <a name="example"></a>Példa
-Egyszerre a HTML. AntiForgeryToken () egy __RequestVerificationToken nevű cookie-t ad a látogatónak, amelynek értéke megegyezik a fent látható véletlenszerű rejtett értékkel. Ezután a bejövő űrlap bejegyzésének érvényesítéséhez adja hozzá a [ValidateAntiForgeryToken] szűrőt a cél műveleti metódushoz. Ilyenek többek között:
+Egyszerre a HTML. AntiForgeryToken () egy __RequestVerificationToken nevű cookie-t ad a látogatónak, amelynek értéke megegyezik a fent látható véletlenszerű rejtett értékkel. Ezután a bejövő űrlap bejegyzésének érvényesítéséhez adja hozzá a [ValidateAntiForgeryToken] szűrőt a cél műveleti metódushoz. Például:
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()

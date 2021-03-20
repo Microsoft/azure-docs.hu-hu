@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 1e913e3a5356ad7f49d8b3066f5bd3da7eddd2c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308777"
 ---
 # <a name="publisher-verification"></a>Közzétevő ellenőrzése
@@ -33,11 +33,11 @@ Ez a funkció elsősorban olyan fejlesztők számára készült, akik több-bér
 
 ## <a name="benefits"></a>Előnyök
 A kiadói ellenőrzés a következő előnyöket biztosítja:
-- **Megnövekedett átláthatóság és a kockázatok csökkentése az ügyfelek számára** – ez a funkció segíti az ügyfeleket abban, hogy a szervezetében használt alkalmazásokat az általuk megbízhatónak tartott fejlesztők teszik közzé. 
+- **Megnövekedett átláthatóság és a kockázatok csökkentése az ügyfelek számára**– ez a funkció segíti az ügyfeleket abban, hogy a szervezetében használt alkalmazásokat az általuk megbízhatónak tartott fejlesztők teszik közzé. 
 
-- **Továbbfejlesztett védjegyezés** – az "ellenőrzött" jelvény jelenik meg az Azure ad- [hozzájárulási kérdés](application-consent-experience.md), a vállalati alkalmazások lapon, valamint a végfelhasználók és a rendszergazdák által használt további UX-felületek. 
+- **Továbbfejlesztett védjegyezés**– az "ellenőrzött" jelvény jelenik meg az Azure ad- [hozzájárulási kérdés](application-consent-experience.md), a vállalati alkalmazások lapon, valamint a végfelhasználók és a rendszergazdák által használt további UX-felületek. 
 
-- **Gördülékeny nagyvállalati elfogadás** – a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé.
+- **Gördülékeny nagyvállalati elfogadás**– a rendszergazdák a [felhasználói jóváhagyási házirendeket](../manage-apps/configure-user-consent.md)konfigurálhatják, a közzétevő ellenőrzési állapotát pedig az elsődleges házirend feltételei közé.
 
 > [!NOTE]
 > November 2020-től kezdve a végfelhasználók nem tudnak jóváhagyást adni a legtöbb újonnan regisztrált több-bérlős alkalmazásnak ellenőrzött közzétevők nélkül. Ez a november 8th 2020 után regisztrált alkalmazásokra vonatkozik, és a OAuth 2.0-s verzióját használja az alapszintű bejelentkezés és a felhasználói profil olvasása után, valamint a különböző bérlők felhasználói számára történő kérésének megadására, ha az alkalmazás regisztrálva van. Egy figyelmeztetés jelenik meg a jóváhagyás képernyőn, amely tájékoztatja a felhasználókat arról, hogy ezek az alkalmazások kockázatos, és nem ellenőrzött közzétevők.    

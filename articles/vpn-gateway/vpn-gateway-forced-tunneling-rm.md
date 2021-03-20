@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: cherylmc
 ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96855039"
 ---
 # <a name="configure-forced-tunneling"></a>Kényszerített bújtatás konfigurálása
@@ -51,7 +51,7 @@ Az alábbi eljárás segítséget nyújt egy erőforráscsoport és egy VNet lé
 
 Az eljárás lépései a "DefaultSiteHQ" értéket adja meg a kényszerített bújtatáshoz tartozó alapértelmezett helyként, és az "egy midtier" és a "háttér" alhálózatokat kényszerített bújtatás használatára konfigurálja.
 
-## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 Telepítse az Azure Resource Manager PowerShell-parancsmagjainak legújabb verzióját. A PowerShell-parancsmagok telepítésével kapcsolatban további információ: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 

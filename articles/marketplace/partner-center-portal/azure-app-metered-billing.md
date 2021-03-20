@@ -8,10 +8,10 @@ ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: d015cec30e516541b50c2acfac38fad898965e1b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436351"
 ---
 # <a name="managed-application-metered-billing"></a>Felügyelt alkalmazás mért számlázása 
@@ -67,7 +67,7 @@ A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva. Eg
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva. Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására. Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
 
 * Azonosító
-* Név
+* Name
 * Mértékegység
 
 A dimenziók egyéb attribútumai az egyes csomagokra jellemzőek, és a tervtől eltérő értékekkel rendelkezhetnek.  A terv közzététele előtt módosíthatja ezeket az értékeket, és csak ezt a csomagot fogja érinteni. Miután közzétette a csomagot, ezek az attribútumok többé nem lesznek szerkeszthetve. Az attribútumok a következők:
@@ -93,7 +93,7 @@ A Marketplace-mérési szolgáltatással használt dimenzió azt mutatja be, hog
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
 * Azonosító
-* Név
+* Name
 * Mértékegység
 
 A csomag közzététele után a terv szintű részletek már nem módosíthatók:
@@ -119,6 +119,6 @@ Ha az alábbi problémák valamelyikével rendelkezik, nyisson meg egy támogat�
 
 Kövesse a [partner Center kereskedelmi piactér programjának támogatását](../support.md) ismertető témakör útmutatását a kiadói támogatási lehetőségek megismeréséhez és a Microsoft támogatási jegyének megnyitásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

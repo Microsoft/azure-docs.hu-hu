@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: e76386c8c276c6c8c07751474b3718f98af18f4b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Oktatóanyag: Azure Active Directory integráció a Sprinklerrel
@@ -61,13 +61,13 @@ A sprinkler Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **sprinkler**kifejezést, válassza ki a **sprinkler** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **sprinkler** kifejezést, válassza ki a **sprinkler** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![A kipermetező az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon**nevű teszt felhasználója konfigurálja és teszteli a sprinklertel.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon** nevű teszt felhasználója konfigurálja és teszteli a sprinklertel.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a permetező kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **sprinkler** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **sprinkler** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfi
 
     ![Partner kezelése](./media/sprinklr-tutorial/ic782908.png "Partner kezelése")
 
-1. Kattintson az **+ egyszeri bejelentkezések hozzáadása**lehetőségre.
+1. Kattintson az **+ egyszeri bejelentkezések hozzáadása** lehetőségre.
 
     ![A képernyőképen az egyszeri bejelentkezések hozzáadása gomb látható.](./media/sprinklr-tutorial/ic782909.png "Egyetlen Sign-Ons")
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfi
 
     b. Válassza az **Engedélyezve** lehetőséget.
 
-    c. Válassza **az új SSO-tanúsítvány használata**lehetőséget.
+    c. Válassza **az új SSO-tanúsítvány használata** lehetőséget.
 
     d. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az identitás- **szolgáltatói tanúsítvány** szövegmezőbe.
 
@@ -156,9 +156,9 @@ Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfi
 
     : Illessze be a **kijelentkezési URL-címet** , amelyet az Azure Portalról másolt a **személyazonosság-szolgáltató kijelentkezési URL-címe** szövegmezőbe.
 
-    h. Az **SAML felhasználói azonosító típusa**beállításnál válassza az **állítás a felhasználó sprinklr.com felhasználónevét tartalmazza**lehetőséget.
+    h. Az **SAML felhasználói azonosító típusa** beállításnál válassza az **állítás a felhasználó sprinklr.com felhasználónevét tartalmazza** lehetőséget.
 
-    i. Az **SAML felhasználói azonosító helyeként**válassza a **felhasználói azonosító elemet a tulajdonos utasítás név azonosító elemében**.
+    i. Az **SAML felhasználói azonosító helyeként** válassza a **felhasználói azonosító elemet a tulajdonos utasítás név azonosító elemében**.
 
     j. Kattintson a **Mentés** gombra.
 
@@ -168,7 +168,7 @@ Az Azure AD egyszeri bejelentkezés a sprinkler használatával történő konfi
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -193,15 +193,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Sprinklerhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **sprinkler**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **sprinkler** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **sprinkler**elemet.
+2. Az alkalmazások listában válassza a **sprinkler** elemet.
 
     ![Az alkalmazások listán szereplő sprinkler hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -237,11 +237,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     a. Az **e-mail**, **Utónév** és **vezetéknév** szövegmezőbe írja be a kiépíteni kívánt Azure ad-felhasználói fiók adatait.
 
-    b. Válassza a **jelszó letiltva**lehetőséget.
+    b. Válassza a **jelszó letiltva** lehetőséget.
 
     c. Válassza a **Language (nyelv**) lehetőséget.
 
-    d. Válassza a **felhasználó típusa**lehetőséget.
+    d. Válassza a **felhasználó típusa** lehetőséget.
 
     e. Kattintson a **Frissítés** parancsra.
 
@@ -252,7 +252,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Partneri szerepkörök](./media/sprinklr-tutorial/ic782917.png "Partneri szerepkörök")
 
-    a. A **globális** listából válassza a **ALL_Permissions**lehetőséget.  
+    a. A **globális** listából válassza a **ALL_Permissions** lehetőséget.  
 
     b. Kattintson a **Frissítés** parancsra.
 

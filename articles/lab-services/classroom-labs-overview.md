@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre gyorsan egy tantermi tesztkörnye
 ms.topic: overview
 ms.date: 06/26/2020
 ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434804"
 ---
 # <a name="introduction-to-labs"></a>A Labs bemutatása
@@ -27,7 +27,7 @@ Tartsa meg a költségvetését ellenőrzés alatt, hogy pontosan hány óra ala
 ## <a name="example-class-types"></a>Példa típusú osztályok
 A Azure Lab Services használatával számos különböző típusú osztályhoz beállíthat Labs-t. Tekintse [meg](class-types.md) az egyes példákat a Azure Lab Services cikkben, amely néhány példát mutat be, amelyekkel a laborokat beállíthatja a Azure Lab Services. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Első lépésként az Azure Lab Services használatával hozzon létre egy tesztkörnyezetfiókot, amely az osztálytermi tesztkörnyezetek létrehozásához szükséges:
 
 - [Tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md)

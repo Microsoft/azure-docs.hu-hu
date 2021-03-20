@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.openlocfilehash: 7ec27cc4f28151214ca97ffb5113607d6b60ee36
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240579"
 ---
 # <a name="validating-data-encryption-for-azure-database-for-postgresql"></a>Az Azure Database for PostgreSQL adattitkosításának ellenőrzése
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogy az adattitkosítás az ügyfél által felü
     * Válassza ki a kiszolgáló titkosításához használt kulcsot.
     * Állítsa **a kulcs állapotát** a **nem** értékre.
   
-       Némi idő után ( **~ 15 perc** ) a Azure Database for PostgreSQL kiszolgáló **állapota** nem **érhető** el. A kiszolgálón végrehajtott összes I/O-művelet sikertelen lesz, amely ellenőrzi, hogy a kiszolgáló valóban titkosítva van-e az ügyfelek kulcsával, és a kulcs jelenleg nem érvényes.
+       Némi idő után (**~ 15 perc**) a Azure Database for PostgreSQL kiszolgáló **állapota** nem **érhető** el. A kiszolgálón végrehajtott összes I/O-művelet sikertelen lesz, amely ellenőrzi, hogy a kiszolgáló valóban titkosítva van-e az ügyfelek kulcsával, és a kulcs jelenleg nem érvényes.
     
         Annak érdekében, hogy a kiszolgáló **elérhető** legyen, újraérvényesítheti a kulcsot. 
     

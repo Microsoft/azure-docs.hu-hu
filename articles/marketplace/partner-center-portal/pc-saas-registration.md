@@ -8,10 +8,10 @@ ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 39a0830806d2d9c7358d175cae703e9c81c45b02
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130017"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
@@ -33,8 +33,8 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
     ![SaaS AD-alkalmazások regisztrációi](./media/saas-offer-app-registration-v1.png)
 
 4. A létrehozás lapon adja meg az alkalmazás \' regisztrációs adatait:
-    -   **Név** : adjon meg egy értelmes alkalmazásnév-nevet
-    -   **Alkalmazás típusa** :  
+    -   **Név**: adjon meg egy értelmes alkalmazásnév-nevet
+    -   **Alkalmazás típusa**:  
         
         Válassza ki a **webalkalmazást/API** -t az [ügyfélalkalmazások](../../active-directory/develop/developer-glossary.md#client-application)számára), valamint az [erőforrás-/API-alkalmazásokat](../../active-directory/develop/developer-glossary.md#resource-server), amelyek a biztonságos kiszolgálóra vannak telepítve. Ez a beállítás a bizalmas [webes ügyfelek](../../active-directory/develop/developer-glossary.md#web-client)OAuth, valamint a nyilvános, [felhasználói ügynökön alapuló ügyfelek](../../active-directory/develop/developer-glossary.md#user-agent-based-client)esetében használatos.
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
@@ -89,7 +89,7 @@ Közzététel<br>
 
 ##### <a name="response"></a>*Válasz*
 
-|  Név     |  Típus         |  Leírás |
+|  Név     |  Típus         |  Description |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  A kérelem sikeres volt. |
 

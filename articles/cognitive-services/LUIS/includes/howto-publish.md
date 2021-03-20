@@ -9,10 +9,10 @@ ms.date: 05/19/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.openlocfilehash: 8068199f2737367a8582820df151f74c9117170a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93135658"
 ---
 Ahhoz, hogy a LUIS-előrejelzést egy csevegési robot vagy más ügyfélalkalmazás fogadja, közzé kell tennie az alkalmazást az előrejelzési végponton.

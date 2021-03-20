@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.openlocfilehash: 6b386238bd759714bc0c8ad81d67c29aa1774aba
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96780229"
 ---
 # <a name="how-to-configure-your-consulting-service-pricing-and-availability"></a>A tanácsadási szolgáltatás díjszabásának és rendelkezésre állásának konfigurálása
@@ -58,6 +58,6 @@ Az átalakítás érvényesítéséhez, illetve az egyéni árak egyéni piacon 
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felülvizsgálat és közzététel](review-publish-offer.md)

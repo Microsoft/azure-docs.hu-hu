@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9ae4549fe343422bbf60275a97768ca407f2dc7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321377"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
@@ -257,9 +257,9 @@ sqlResultsDF.show(3)
 
 | fare_amount | passenger_count | tip_amount | végű |
 | --- | --- | --- | --- |
-|        13,5 |1,0 |2.9 |1,0 |
-|        16,0 |2,0 |3.4 |1,0 |
-|        10,5 |2,0 |1,0 |1,0 |
+|        13,5 |1.0 |2.9 |1.0 |
+|        16,0 |2.0 |3.4 |1.0 |
+|        10,5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Adatfelderítés és-vizualizáció
 Miután a Sparkba helyezte az információt, az adatelemzési folyamat következő lépése az adatelemzési és vizualizációs eredmények mélyebb megismerése. Ebben a szakaszban az SQL-lekérdezések használatával vizsgálja meg a taxi-adatforrásokat. Ezt követően importálja az eredményeket egy adatkeretbe, hogy az automatikus vizualizáció Jupyter funkció használatával kirajzolja a célzott változókat és a vizuális ellenőrzéshez szükséges jövőbeli funkciókat.
@@ -353,7 +353,7 @@ A Spark ML-ből és a MLlib-ből származó famodelles modellezési függvények
 1. Hozzon létre egy új szolgáltatást **dobozolási** órával a forgalmi idő gyűjtőbe.
 2. Alkalmazzon **indexelést és egy gyors kódolást** a kategorikus funkciókra.
 3. **Kóstolja meg és ossza szét az adathalmazt** képzésbe és tesztelési frakcióba.
-4. **Adja meg a betanítási változót és a funkciókat** , majd hozzon létre indexelt vagy egy gyors kódolású betanítást, és tesztelje a bemeneti feliratú pont rugalmas elosztott adatkészleteit (RDD) vagy adatkereteket.
+4. **Adja meg a betanítási változót és a funkciókat**, majd hozzon létre indexelt vagy egy gyors kódolású betanítást, és tesztelje a bemeneti feliratú pont rugalmas elosztott adatkészleteit (RDD) vagy adatkereteket.
 5. A gépi tanulási modellekhez bemenetként használandó **funkciók és célok automatikus kategorizálása és vektorizálhatja** .
 
 ### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Hozzon létre egy új szolgáltatást dobozolási órával a forgalmi idő gyűjtők számára
@@ -922,7 +922,7 @@ Ebben a szakaszban a fejlesztők által gyakran használt gépi tanulási segéd
 * A modell optimalizálása a Spark ML CrossValidator funkciójának (bináris besorolás) használatával történő átállítási és a Hyper-paraméteres Elvetés használatával
 * Optimalizálja a modellt egyéni, átellenőrzési és paraméter-elsöprő kód használatával bármely Machine learning-függvény és-paraméter használatára (lineáris regresszió)
 
-A többszörös **Érvényesítés** egy olyan technika, amely kiértékeli, hogy az ismert adathalmazon alapuló modellek mennyire jól általánosítják az olyan adatkészletek funkcióinak előrejelzését, amelyeken még nincs betanítva. Ennek a technikának az általános ötlete, hogy a modell az ismert adatok adathalmazára van betanítva, és az előrejelzések pontossága egy független adatkészleten van tesztelve. A közös megvalósítás egy adatkészlet felosztása a *k* -redők közé, majd a modell betanítása egy ciklikus multiplexelés, de az egyik hajtogatási módszer.
+A többszörös **Érvényesítés** egy olyan technika, amely kiértékeli, hogy az ismert adathalmazon alapuló modellek mennyire jól általánosítják az olyan adatkészletek funkcióinak előrejelzését, amelyeken még nincs betanítva. Ennek a technikának az általános ötlete, hogy a modell az ismert adatok adathalmazára van betanítva, és az előrejelzések pontossága egy független adatkészleten van tesztelve. A közös megvalósítás egy adatkészlet felosztása a *k*-redők közé, majd a modell betanítása egy ciklikus multiplexelés, de az egyik hajtogatási módszer.
 
 A **Hyper-paraméter optimalizálása** olyan Hyper-paraméterek kiválasztásának a problémája, amely egy tanulási algoritmushoz szükséges, általában azzal a céllal, hogy az algoritmus teljesítményének mértékét egy független adathalmazon optimalizálja. A Hyper-paraméter olyan érték, amelyet a modell betanítási eljárásán kívül kell megadnia. A Hyper-paraméterek értékeivel kapcsolatos feltételezések befolyásolhatják a modell rugalmasságát és pontosságát. A döntési fák olyan Hyper-paraméterekkel rendelkeznek, mint például a kívánt mélység és a fában lévő levelek száma. A támogatási vektoros gép (SVM) esetében meg kell adni egy téves besorolási szankciót.
 

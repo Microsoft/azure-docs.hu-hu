@@ -14,10 +14,10 @@ ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755727"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>A Directory sémakezelő bővítmény attribútumainak használata a jogcímek között
@@ -71,6 +71,6 @@ Ahol a *xxxxxxx* annak az alkalmazásnak az azonosítója, amelyben a bővítmé
 >
 > A beépített címtár attribútumaihoz használt "id" paraméter a "ExtensionID" a címtár-bővítmény attribútumaihoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [adhat hozzá egyéni vagy további jogcímeket a SAML 2,0 és a JSON web tokens (JWT) jogkivonatokhoz](active-directory-optional-claims.md).
 - Megtudhatja, hogyan [szabhatja testre a jogkivonatokban kibocsátott jogcímeket egy adott alkalmazáshoz](active-directory-claims-mapping.md).

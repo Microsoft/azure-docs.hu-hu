@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 493750e69b1fdc935b04d6dc705cfd046b6b086e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011659"
 ---
 # <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>1. generációs Azure Time Series Insights-erőforrások létrehozása Azure Resource Manager-sablonok használatával
@@ -253,6 +253,6 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
        <img src="https://azuredeploy.net/deploybutton.png" alt="The Deploy to Azure button."/>
     </a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A REST API-k használatával történő Azure Time Series Insights erőforrások programozott kezelésével kapcsolatos információkért olvassa el [Azure Time Series Insights felügyelet](/rest/api/time-series-insights-management/)című témakört.

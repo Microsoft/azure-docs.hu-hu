@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.openlocfilehash: 2d69427f9f11a47cedeccb4b1da38b770952f029
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240766"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
@@ -18,7 +18,7 @@ ms.locfileid: "93240766"
 > [!IMPORTANT] 
 > Azure Database for MySQL – a rugalmas kiszolgáló jelenleg nyilvános előzetes verzióban érhető el.
 
-Azure Database for MySQL rugalmas kiszolgáló, a automatikusan létrehozza a kiszolgáló biztonsági másolatait, és biztonságosan tárolja azokat a helyi redundáns tárolóban a régión belül. A biztonsági másolatokkal a kiszolgáló adott időpontnak megfelelő állapotra állítható vissza. A biztonsági mentés és a visszaállítás fontos részét képezi az üzletmenet folytonossági stratégiájának, mivel ezek az adatok a véletlen sérüléstől vagy törléstől védve vannak.
+Azure Database for MySQL rugalmas kiszolgáló, a automatikusan létrehozza a kiszolgáló biztonsági másolatait, és biztonságosan tárolja azokat a helyi redundáns tárolóban a régión belül. A biztonsági másolatokkal a kiszolgáló adott időpontnak megfelelő állapotra állítható vissza. A biztonsági mentés és helyreállítás minden üzletmenet-folytonossági stratégia elengedhetetlen része, hiszen ez védi meg az adatokat a véletlen sérülésektől és törléstől.
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
@@ -68,8 +68,8 @@ Az időponthoz való visszaállítás több esetben is hasznos lehet. A gyakori 
 
 A legutóbbi visszaállítási pont és az egyéni visszaállítási pont között [Azure Portal](how-to-restore-server-portal.md)használatával választhat.
 
--   **Legutóbbi visszaállítási pont** : a legújabb visszaállítási pont segítségével visszaállíthatja a kiszolgálót a forráskiszolgálón végrehajtott utolsó biztonsági mentésre. A visszaállítás időbélyege a portálon is megjelenik. Ez a beállítás akkor hasznos, ha gyorsan vissza szeretné állítani a kiszolgálót a legfrissített állapotba.
--   **Egyéni visszaállítási pont** : Ez lehetővé teszi, hogy az adott időpontot a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül kiválassza. Ez a beállítás akkor hasznos, ha a kiszolgálót a pontos időpontban szeretné visszaállítani a felhasználói hibákból való helyreállításhoz.
+-   **Legutóbbi visszaállítási pont**: a legújabb visszaállítási pont segítségével visszaállíthatja a kiszolgálót a forráskiszolgálón végrehajtott utolsó biztonsági mentésre. A visszaállítás időbélyege a portálon is megjelenik. Ez a beállítás akkor hasznos, ha gyorsan vissza szeretné állítani a kiszolgálót a legfrissített állapotba.
+-   **Egyéni visszaállítási pont**: Ez lehetővé teszi, hogy az adott időpontot a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül kiválassza. Ez a beállítás akkor hasznos, ha a kiszolgálót a pontos időpontban szeretné visszaállítani a felhasználói hibákból való helyreállításhoz.
 
 A helyreállítás becsült ideje számos tényezőtől függ, többek között az adatbázis méretétől, a tranzakciós napló biztonsági másolati mérettől, a SKU számítási méretétől és a visszaállítás időpontjától. A visszaállítási folyamat részeként a tranzakciós napló helyreállítása a legtöbb időt vesz igénybe. Ha a visszaállítási idő a teljes vagy a különbözeti pillanatkép biztonsági mentésének időpontjához közelebb van kiválasztva, a visszaállítók gyorsabbak, mivel a tranzakciós napló alkalmazása minimális. A kiszolgáló pontos helyreállítási idejének becsléséhez javasoljuk, hogy tesztelje a környezetében, mert túl sok környezeti változóval rendelkezik.
 

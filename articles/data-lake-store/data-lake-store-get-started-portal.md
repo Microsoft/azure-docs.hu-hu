@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 428ed96c3223e644b0c78712723231a5fabbdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91578580"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>A Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal
@@ -35,7 +35,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
 
 1. Jelentkezzen be az új [Azure Portalra](https://portal.azure.com).
-2. Kattintson **az erőforrás létrehozása > Storage > Data Lake Storage Gen1**elemre.
+2. Kattintson **az erőforrás létrehozása > Storage > Data Lake Storage Gen1** elemre.
 3. Az **új Data Lake Storage Gen1** panelen adja meg az értékeket az alábbi képernyőfelvételen látható módon:
 
     ![Új Data Lake Storage Gen1 fiók létrehozása](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "Új Data Lake Storage Gen1 fiók létrehozása")
@@ -84,8 +84,8 @@ Ha egy Azure Key Vault kulcsait használta a titkosítás konfigurálásához a 
 
 Az adatkezeléshez és az adattároláshoz a Data Lake Storage Gen1 fiók alatt hozhat létre mappákat.
 
-1. Nyissa meg a létrehozott Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás**lehetőségre, majd a **minden erőforrás** panelen kattintson arra a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
-2. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő**elemre.
+1. Nyissa meg a létrehozott Data Lake Storage Gen1 fiókot. A bal oldali panelen kattintson a **minden erőforrás** lehetőségre, majd a **minden erőforrás** panelen kattintson arra a fiók nevére, amelyben mappákat kíván létrehozni. Ha rögzítette a fiókot a kezdőpulton, kattintson a fiók csempéjére.
+2. A Data Lake Storage Gen1-fiók paneljén kattintson az **adatkezelő** elemre.
 
     ![Képernyőkép a Data Lake Storage Gen 1 fiók panelről, az adatkezelő lehetőségével.](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Mappák létrehozása Data Lake Storage Gen1 fiókban")
 3. A Data Explorer (Adatkezelő) panelen kattintson a **New Folder** (Új mappa) elemre, adjon nevet az új mappának, majd kattintson az **OK** gombra.
@@ -119,7 +119,7 @@ Azure Active Directory és hozzáférés-vezérlés (ACL-ek) használatával biz
 
 ## <a name="delete-your-account"></a>Fiók törlése
 
-Data Lake Storage Gen1 fiók törléséhez a Data Lake Storage Gen1 paneljén kattintson a **Törlés**elemre. A művelet megerősítéséhez a rendszer a törölni kívánt fiók nevének megadását kéri. Adja meg a fiók nevét, majd kattintson a **Delete** (Törlés) gombra.
+Data Lake Storage Gen1 fiók törléséhez a Data Lake Storage Gen1 paneljén kattintson a **Törlés** elemre. A művelet megerősítéséhez a rendszer a törölni kívánt fiók nevének megadását kéri. Adja meg a fiók nevét, majd kattintson a **Delete** (Törlés) gombra.
 
 ![Data Lake Storage Gen1 fiók törlése](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake-fiók törlése")
 

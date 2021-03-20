@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: b2648382fb19fafcfc342379aa9da974f6f8d1ff
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90528419"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált TPM-eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service C# eszközoldali SDK-val
@@ -49,7 +49,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
 ## <a name="provision-the-simulated-device"></a>A szimulált eszköz kiépítése
 
-1. Jelentkezzen be az Azure portálra. Válassza a **minden erőforrás** gombot a bal oldali menüben, és nyissa meg az eszköz kiépítési szolgáltatását. Az **Áttekintés** panelen jegyezze fel az **_azonosító hatókörének_** értékét.
+1. Jelentkezzen be az Azure Portalra. Válassza a **minden erőforrás** gombot a bal oldali menüben, és nyissa meg az eszköz kiépítési szolgáltatását. Az **Áttekintés** panelen jegyezze fel az **_azonosító hatókörének_** értékét.
 
     ![Másolja ki a kiépítési szolgáltatás azonosítójának hatókörét a portál paneljéről](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -73,7 +73,7 @@ Ez a cikk az egyéni regisztrációkat ismerteti.
 
     ![A parancsablak kimenete](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-1. A Azure Portal eszköz kiépítési szolgáltatás menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
+1. A Azure Portal eszköz kiépítési szolgáltatás menüjében válassza a **regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
 1. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
@@ -105,7 +105,7 @@ Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldal
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 1. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Az **Áttekintés** panel felső részén kattintson a **Törlés** gombra a ablaktábla tetején.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy TPM-mel szimulált eszközt a gépen, és kiosztotta azt az IoT hubhoz a IoT Hub Device Provisioning Service használatával. A TPM-eszköz programozott módon történő regisztrálásának megismeréséhez folytassa a TPM-eszköz programozott beléptetését bemutató rövid útmutatóval. 
 

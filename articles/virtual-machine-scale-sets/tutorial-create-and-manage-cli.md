@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 0f94823b958ae5f95789dd4ef9a62057bdf764a8
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517461"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI használatával
@@ -33,7 +33,7 @@ A virtuálisgép-méretezési csoportok segítségével azonos, automatikus ská
 - Ehhez a cikkhez az Azure CLI 2.0.29 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. 
 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuálisgép-méretezési csoport létrejötte előtt létre kell hozni. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot hozunk létre az *eastus* régióban. 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ Az alábbi példa kimenetében két virtuálisgép-példány látható a mérete
 ```
 
 
-A kimenet első oszlopa az *InstanceId* paramétert mutatja. Az egy adott virtuálisgép-példánnyal kapcsolatos további információk megtekintéséhez adja hozzá a `--instance-id` paramétert az [az vmss get-instance-view](/cli/azure/vmss) parancshoz. A következő példa információkat tekint meg az *1* -es számú virtuálisgép-példányról:
+A kimenet első oszlopa az *InstanceId* paramétert mutatja. Az egy adott virtuálisgép-példánnyal kapcsolatos további információk megtekintéséhez adja hozzá a `--instance-id` paramétert az [az vmss get-instance-view](/cli/azure/vmss) parancshoz. A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -183,7 +183,7 @@ az vmss create \
 
 
 ## <a name="understand-vm-instance-sizes"></a>A virtuálisgép-példányok méreteinek ismertetése
-A virtuálisgép-példány mérete, más néven *SKU* , a virtuálisgép-példány által elérhető számítási erőforrások, azaz a processzor, a grafikus processzor és a memória mennyiségét határozza meg. A méretezési csoportban lévő virtuálisgép-példányokat a várható számítási igényeknek megfelelően kell méretezni.
+A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példány által elérhető számítási erőforrások, azaz a processzor, a grafikus processzor és a memória mennyiségét határozza meg. A méretezési csoportban lévő virtuálisgép-példányokat a várható számítási igényeknek megfelelően kell méretezni.
 
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
@@ -239,7 +239,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
 Az oktatóanyag kezdetén létrehozott méretezési csoporthoz alapértelmezés szerint két virtuálisgép-példányt telepített. Az `--instance-count` paraméter [az vmss create](/cli/azure/vmss) parancshoz történő hozzáadásával módosíthatja a méretezési csoporttal létrehozott példányok számát. A meglévő méretezési csoportban lévő virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez manuálisan módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges számú virtuálisgép-példányt, majd konfigurálja a terheléselosztót a forgalom elosztásához.
 
-A méretezési csoportban lévő virtuálisgép-példányok számának manuális növeléséhez vagy csökkentéséhez használja az [az vmss scale](/cli/azure/vmss) parancsot. Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3* -ra állítja:
+A méretezési csoportban lévő virtuálisgép-példányok számának manuális növeléséhez vagy csökkentéséhez használja az [az vmss scale](/cli/azure/vmss) parancsot. Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
 
 ```azurecli-interactive
 az vmss scale \
@@ -290,7 +290,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 ```
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás, azaz a virtuálisgép-példányok, a virtuális hálózat és a lemezek is törölve lesznek. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive

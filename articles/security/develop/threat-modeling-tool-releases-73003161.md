@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 03/22/2020
 ms.openlocfilehash: e182d40d20529b5743fa9105c68108a8ae55d943
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516900"
 ---
 # <a name="threat-modeling-tool-update-release-73003161---03222020"></a>Threat Modeling Tool Update kiadás 7.3.00316.1-03/22/2020
@@ -38,7 +38,7 @@ Az Exportálás CSV-fájlba funkció inkonzisztensen ki lett választva, hogy me
 
 Új DiagramReader funkció lett hozzáadva a főmenüben, miközben a modell meg van nyitva. Ez a funkció átalakítja a modell grafikus ábrázolását egy szöveges elbeszélésbe. 
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 - Támogatott operációs rendszerek:
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ed54fda744978ac43bbffc6a70d6b331e85dc5e7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305590"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa
@@ -43,8 +43,8 @@ A TDSP életciklusa ismétlődő lépések sorozatából áll, amely útmutatás
 
 Az egyes fázisok esetében a következő információkat adjuk meg:
 
-   * **Célok** : az adott célkitűzések.
-   * **Útmutató** : a feladatok végrehajtásának részletes ismertetése és útmutatása.
+   * **Célok**: az adott célkitűzések.
+   * **Útmutató**: a feladatok végrehajtásának részletes ismertetése és útmutatása.
    * Összetevők **: a** termékek és a hozzájuk tartozó támogatás.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: 5f7afe044ab4f782f2028598c2c56e75edf95860
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92317379"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Gyakori forgatókönyvek, példák, oktatóanyagok és útmutatók Azure Logic Apps
@@ -117,7 +117,7 @@ A Visual Studióval, az Azure DevOps vagy bármely más verziókövetés és aut
 * [Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk számára](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 * [Integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps](../logic-apps/ise-manage-integration-service-environment.md)
 
-### <a name="monitor"></a>Figyelés
+### <a name="monitor"></a>Monitor
 
 * [Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez](../logic-apps/monitor-logic-apps.md)
 * [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](../logic-apps/monitor-logic-apps-log-analytics.md)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 757782e8842fbcaca9c8d95ec8086dd5791a817b
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240613"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Adattitkosítás Azure Database for PostgreSQL önálló kiszolgáló számára az Azure CLI használatával
@@ -46,10 +46,10 @@ Ismerje meg, hogyan állíthatja be és kezelheti az Azure Database for PostgreS
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
       ```
 
-* A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
+* A kulcsnak az alábbi attribútumokkal kell rendelkeznie felhasználó által felügyelt kulcsként:
   * Nincs lejárati dátum
   * Nincs letiltva
-  * **Lekérési** , **becsomagolási** és **kicsomagolási** műveletek végrehajtása
+  * **Lekérési**, **becsomagolási** és **kicsomagolási** műveletek végrehajtása
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>A megfelelő engedélyek beállítása a kulcsfontosságú műveletekhez
 
@@ -67,7 +67,7 @@ Ismerje meg, hogyan állíthatja be és kezelheti az Azure Database for PostgreS
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. Állítsa be a **legfontosabb engedélyeket** ( **Get** , **wrap** , **dewrap** ) a **rendszerbiztonsági tag** számára, amely a PostgreSQL egykiszolgálós kiszolgáló neve.
+2. Állítsa be a **legfontosabb engedélyeket** (**Get**, **wrap**, **dewrap**) a **rendszerbiztonsági tag** számára, amely a PostgreSQL egykiszolgálós kiszolgáló neve.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

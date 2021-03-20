@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a09c4513206bea3462577ecba49b5d77b655b0e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91628264"
 ---
 # <a name="conditional-access-sign-in-risk-based-conditional-access"></a>Feltételes hozzáférés: bejelentkezési kockázatalapú feltételes hozzáférés
@@ -30,34 +30,34 @@ A házirendet két helyen lehet hozzárendelni. A szervezeteknek a következő l
 
 1. Jelentkezzen be a **Azure Portal** globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférést biztosító rendszergazdaként.
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférését**.
-1. Válassza az **új szabályzat**lehetőséget.
+1. Válassza az **új szabályzat** lehetőséget.
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget.
-1. A **Conditions**  >  **bejelentkezési kockázat**beállításnál állítsa az **Igen**értékre a **configure (Konfigurálás** ) beállítást. **A bejelentkezés kockázati szintjének kiválasztása területen a szabályzat érvényes lesz a következőre** : 
-   1. Válassza a **magas** és **közepes**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
-1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
+   1. Válassza a **Kész** lehetőséget.
+1. A **Cloud apps vagy a műveletek** területen válassza a  >   **minden felhőalapú alkalmazás** lehetőséget.
+1. A   >  **bejelentkezési kockázat** beállításnál állítsa az **Igen** értékre a **configure (Konfigurálás** ) beállítást. **A bejelentkezés kockázati szintjének kiválasztása területen a szabályzat érvényes lesz a következőre** : 
+   1. Válassza a **magas** és **közepes** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. A **hozzáférés-vezérlés**  >  **megadása** területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás** lehetőséget.
+1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva** értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
 
 ## <a name="enable-through-identity-protection"></a>Engedélyezés az Identity Protection használatával
 
 1. Jelentkezzen be az **Azure Portalra**.
-1. Válassza a **minden szolgáltatás**lehetőséget, majd keresse meg **Azure ad Identity Protection**.
-1. Válassza **a bejelentkezési kockázati házirend**elemet.
-1. A **hozzárendelések**alatt válassza a **felhasználók**lehetőséget.
-   1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. A **kizárás**területen válassza a **kizárt felhasználók kiválasztása**lehetőséget, válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat, és válassza a **kiválasztás**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **feltételek**területen válassza a **bejelentkezési kockázat**lehetőséget, majd válassza a **közepes vagy újabb**lehetőséget.
-   1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
-1. A **Controls**  >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése**lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése**jelölőnégyzetet.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd keresse meg **Azure ad Identity Protection**.
+1. Válassza **a bejelentkezési kockázati házirend** elemet.
+1. A **hozzárendelések** alatt válassza a **felhasználók** lehetőséget.
+   1. A **Belefoglalás** területen válassza a **minden felhasználó** lehetőséget.
+   1. A **kizárás** területen válassza a **kizárt felhasználók kiválasztása** lehetőséget, válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat, és válassza a **kiválasztás** lehetőséget.
+   1. Válassza a **Kész** lehetőséget.
+1. A **feltételek** területen válassza a **bejelentkezési kockázat** lehetőséget, majd válassza a **közepes vagy újabb** lehetőséget.
+   1. Válassza a **kiválasztás**, majd a **kész** lehetőséget.
+1. A   >  **hozzáférés**-vezérlés területen válassza a **hozzáférés engedélyezése** lehetőséget, majd jelölje be a **többtényezős hitelesítés megkövetelése** jelölőnégyzetet.
    1. Válassza a **Kiválasztás** lehetőséget.
-1. **Házirend kényszerített** értékének beállítása **a**következőre:.
+1. **Házirend kényszerített** értékének beállítása **a** következőre:.
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések

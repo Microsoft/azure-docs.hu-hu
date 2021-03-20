@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: luquinta
 ms.reviewer: jrasnick
 ms.openlocfilehash: 895d766cc1e70e6a001904770d6f3ef12b6945cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018661"
 ---
 # <a name="use-net-for-apache-spark-with-azure-synapse-analytics"></a>Az Apache Sparkhoz készült .NET használata az Azure Stream Analyticsszel
@@ -94,7 +94,7 @@ A következő szolgáltatások érhetők el, ha a .NET-et használja a Apache Sp
 * A Spark-feladatok kimenetének a különböző diagramok (például a vonal, a sáv vagy a hisztogram) és az elrendezés (például egyetlen, átfedésben lévő stb.) használatával történő megjelenítésének támogatása a `XPlot.Plotly` könyvtár segítségével.
 * NuGet-csomagok belefoglalása a C# jegyzetfüzetbe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [.NET Apache Spark dokumentációhoz](/dotnet/spark/)
 * [.NET Apache Spark interaktív útmutatókhoz](/dotnet/spark/how-to-guides/dotnet-interactive-udf-issue)

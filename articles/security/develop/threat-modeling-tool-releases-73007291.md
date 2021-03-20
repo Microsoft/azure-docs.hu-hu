@@ -7,10 +7,10 @@ ms.service: security
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 3e6fcd52ad9cb6c127c14bac2f33223fb921519e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516373"
 ---
 # <a name="threat-modeling-tool-update-release-73007291---07292020"></a>Threat Modeling Tool Update kiadás 7.3.00729.1-07/29/2020
@@ -37,7 +37,7 @@ Ez a hiba azért fordul elő, mert egyes böngészők nem támogatják natív m�
 
 Ez a hiba továbbra is megjelenik, ha a Threat Modeling Tool elindul, ha duplán kattint a TMT7. Application fájlra. A hiba megkerülése után azonban az eszköz rendesen fog működni. A Threat Modeling Tool elindítása helyett a TMT7. Application fájlra duplán kattintva a felhasználóknak a telepítés során a Windows menüjében létrehozott parancsikonokat kell használniuk a Threat Modeling Tool elindításához.
 
-## <a name="system-requirements"></a>Rendszerkövetelmények
+## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 
 - Támogatott operációs rendszerek
   - [Microsoft Windows 10 évfordulós frissítés](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) vagy újabb
