@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 079e8e3e39bd306332abb43fa2ae1f8cc04e305b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91410494"
 ---
 # <a name="quickstart-deploy-a-service-fabric-managed-cluster-preview-with-an-azure-resource-manager-template"></a>Gyors útmutató: Service Fabric felügyelt fürt üzembe helyezése (előzetes verzió) Azure Resource Manager sablonnal
@@ -46,7 +46,7 @@ Jegyezze fel a tanúsítvány ujjlenyomatát, mert a következő lépésben a sa
     Ebben a rövid útmutatóban adja meg a saját értékeit a következő sablon paramétereinek:
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget. Adja meg az erőforráscsoport egyedi nevét, például *myResourceGroup*, majd kattintson **az OK gombra**.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget. Adja meg az erőforráscsoport egyedi nevét, például *myResourceGroup*, majd kattintson **az OK gombra**.
     * **Hely**: válasszon egy helyet, például **eastus2**. Service Fabric felügyelt fürtök előzetes verziójának támogatott régiói a következők:,,,, `centraluseuap` `eastus2euap` `eastasia` `northeurope` `westcentralus` és `eastus2` .
     * **Fürt neve**: adjon meg egy egyedi nevet a fürtnek, például *mysfcluster*.
     * **Rendszergazdai Felhasználónév**: adjon meg egy nevet a fürtben található mögöttes virtuális gépeken az RDP-hez használt rendszergazda számára.
@@ -55,7 +55,7 @@ Jegyezze fel a tanúsítvány ujjlenyomatát, mert a következő lépésben a sa
     * **Csomópont típusa neve**: adjon meg egy egyedi nevet a csomópont-típushoz, például *NT1*.
     * **Elfogadom a fenti feltételeket és kikötéseket**: jelölje be ezt a jelölőnégyzetet az egyeztetéshez. 
 
-3. Válassza a **Vásárlás** lehetőséget.
+3. Válassza a **Beszerzés** lehetőséget.
 
 4. A felügyelt Service Fabric-fürt üzembe helyezése néhány percet vesz igénybe. Várjon, amíg a telepítés sikeresen befejeződik, mielőtt továbblép a következő lépésekre.
 
@@ -76,7 +76,7 @@ Ha már nincs rá szükség, törölje a Service Fabric felügyelt fürthöz tar
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy felügyelt Service Fabric-fürtöt telepített. A fürtök méretezésével kapcsolatos további tudnivalókért tekintse meg a következőt:
 

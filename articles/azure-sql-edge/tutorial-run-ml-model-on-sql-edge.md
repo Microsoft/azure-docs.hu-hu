@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 9e5bb037b88b7c370e31d05c2d20fc6f558a8b39
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422195"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
@@ -25,7 +25,7 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
 
 ## <a name="key-components"></a>Kulcsfontosságú összetevők
 
-1. A megoldás alapértelmezett 500 ezredmásodpercet használ a peremhálózati hubhoz küldött üzenetek között. Ez módosítható a **program.cs** fájlban. 
+1. A megoldás alapértelmezett 500 ezredmásodpercet használ a peremhálózati hubhoz küldött üzenetek között. Ez a **program. cs** fájljában módosítható 
    ```json
    TimeSpan messageDelay = configuration.GetValue("MessageDelay", TimeSpan.FromMilliseconds(500));
    ```
@@ -73,6 +73,6 @@ A három részből álló, az Azure SQL Edge-beli Iron Ore-szennyeződések elő
 5. Állítsa a rendszermagot a Python 3 értékre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A ONNX-modellek Azure SQL Edge-ben történő használatáról további információt a [Machine learning és a AI a ONNX az SQL Edge-ben](onnx-overview.md)című témakörben talál.

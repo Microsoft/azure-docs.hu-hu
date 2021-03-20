@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86133824"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
@@ -43,9 +43,9 @@ Ennek a cikknek a létrehozása céljából a VMware virtuális gépeket a Dynam
 
 **Forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
-**Hyper-V** | Igen | Igen
-**VMware** | Igen | Igen
-**Fizikai kiszolgáló** | Igen | Igen
+**Hyper-V** | Igen | Yes
+**VMware** | Igen | Yes
+**Fizikai kiszolgáló** | Igen | Yes
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>A Dynamics AX-alkalmazás vész-helyreállításának engedélyezése Site Recovery használatával
 ### <a name="protect-your-dynamics-ax-application"></a>A Dynamics AX-alkalmazás megóvása
@@ -99,7 +99,7 @@ A feladatátvételi folyamat automatizálásához létrehozhat egy helyreállít
 
 1. Válassza ki az előfizetéshez tartozó Site Recovery-tárolót, és válassza a **helyreállítási tervek** csempét.
 
-2. Válassza a **+ helyreállítási terv**lehetőséget, és adjon meg egy nevet.
+2. Válassza a **+ helyreállítási terv** lehetőséget, és adjon meg egy nevet.
 
 3. Válassza ki a **forrást** és a **célt**. A cél lehet Azure vagy másodlagos hely. Ha az Azure-t választja, meg kell adnia a telepítési modellt.
 
@@ -153,7 +153,7 @@ A feladatátvételi teszt végrehajtásával kapcsolatos további információk�
 
 2. Válassza ki a Dynamics AX-hoz létrehozott helyreállítási tervet.
 
-3. Válassza a **feladatátvétel**lehetőséget, majd válassza a **feladatátvétel**lehetőséget.
+3. Válassza a **feladatátvétel** lehetőséget, majd válassza a **feladatátvétel** lehetőséget.
 
 4. Válassza ki a célként kijelölt hálózatot, és válassza a **✓** lehetőséget a feladatátvételi folyamat elindításához.
 
@@ -167,9 +167,9 @@ A feladat-visszavétel során SQL Server vonatkozó szempontokat lásd: [alkalma
 
 2. Válassza ki a Dynamics AX-hoz létrehozott helyreállítási tervet.
 
-3. Válassza a **feladatátvétel**lehetőséget, majd válassza a **feladatátvétel**lehetőséget.
+3. Válassza a **feladatátvétel** lehetőséget, majd válassza a **feladatátvétel** lehetőséget.
 
-4. Válassza a **változás iránya**lehetőséget.
+4. Válassza a **változás iránya** lehetőséget.
 
 5. Válassza ki a megfelelő beállításokat: az adatszinkronizálást és a virtuális gépek létrehozását.
 
@@ -181,5 +181,5 @@ A feladat-visszavétel végrehajtásával kapcsolatos további információkért
 ## <a name="summary"></a>Összefoglalás
 Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet a Dynamics AX-alkalmazáshoz. Megszakítás esetén másodpercek alatt kezdeményezheti a feladatátvételt, és percek alatt üzembe helyezheti és futtathatja az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a vállalati munkaterhelések Site Recovery használatával történő védelméről, tekintse meg a [milyen számítási feladatokat?](site-recovery-workload.md)című témakört.

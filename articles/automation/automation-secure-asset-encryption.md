@@ -10,10 +10,10 @@ ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
 ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86185840"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Biztonságos eszközök titkosítása az Azure Automationben
@@ -94,7 +94,7 @@ Az Automation-fiók rendszerhez rendelt identitását a következőhöz hasonló
 
 ### <a name="configuration-of-the-key-vault-access-policy"></a>A Key Vault hozzáférési szabályzat konfigurálása
 
-Ha egy felügyelt identitás hozzá van rendelve az Automation-fiókhoz, az ügyfél által felügyelt kulcsokat tároló kulcstartó elérését konfigurálja. Azure Automation az ügyfél által felügyelt kulcsokra vonatkozó **Get**, **Recover**, **wrapKey**és **UnwrapKey** szükséges.
+Ha egy felügyelt identitás hozzá van rendelve az Automation-fiókhoz, az ügyfél által felügyelt kulcsokat tároló kulcstartó elérését konfigurálja. Azure Automation az ügyfél által felügyelt kulcsokra vonatkozó **Get**, **Recover**, **wrapKey** és **UnwrapKey** szükséges.
 
 Az ilyen hozzáférési szabályzatok a következő REST API hívásával állíthatók be:
 
@@ -187,7 +187,7 @@ A kulcs elforgatása nem aktiválja a biztonságos eszközök újratitkosítás�
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](/powershell/module/az.keyvault/) vagy [Azure Key Vault parancssori](/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja az Automation-fiókban található összes biztonságos objektum elérését, mivel a titkosítási kulcs nem érhető el Azure Automation.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Key Vault megismeréséhez tekintse meg a [Mi az Azure Key Vault?](../key-vault/general/overview.md)című témakört.
 - A tanúsítványok kezeléséhez lásd: [tanúsítványok kezelése Azure Automationban](shared-resources/certificates.md).

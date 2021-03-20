@@ -8,10 +8,10 @@ ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86220558"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Alkalmazások méretezése egy App Service Environment v1-ben
@@ -39,11 +39,11 @@ Több app Service-csomagot is létrehozhat különböző munkavégző készletek
 ### <a name="scaling-the-number-of-instances"></a>A példányok számának méretezése
 Amikor először hozza létre a webalkalmazást egy App Service Environment, akkor 1 példánnyal kezdődik.  Ezután további példányokat is kibővítheti, hogy további számítási erőforrásokat biztosítson az alkalmazáshoz.   
 
-Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a ***skálázást*** a ***manuálisan megadott példányszámra***.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
+Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a ***skálázást** _ értékre *_egy olyan példányszámot, amelyet manuálisan adtam meg_* *.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
 
 ![Képernyőfelvétel: Itt állíthatja be, hogy hol állítható be az ASP méretezése, illetve hogyan konfigurálható az ASP-re vonatkozó autoskálázási szabályok konfigurálása.][2] 
 
-Egy olyan ASP-ben lévő ASP-re vonatkozó autoskálázási szabályok ugyanúgy működnek, mint a szokásos módon.  Kiválaszthatja a ***CPU százalékos arányát*** a ***méretezési*** lehetőség alatt, és létrehozhat az ASP-hez a CPU százalékán alapuló autoskálázási szabályokat, vagy az ***ütemterv és a teljesítmény szabályok***használatával összetettebb szabályokat is létrehozhat.  Az autoscale konfigurálásával kapcsolatos további részletekért tekintse meg az [alkalmazás méretezése Azure app Serviceban][AppScale]című útmutatót. 
+Egy olyan ASP-ben lévő ASP-re vonatkozó autoskálázási szabályok ugyanúgy működnek, mint a szokásos módon.  A ***CPU százalékos** arányát a _*_Scale by (méret_*_ ) lehetőségnél kiválaszthatja, és létrehozhat az ASP számára a CPU százalékán alapuló autoskálázási szabályokat, vagy összetettebb szabályokat is létrehozhat a _ *_Schedule és Performance Rules_* * használatával.  Az autoscale konfigurálásával kapcsolatos további részletekért tekintse meg az [alkalmazás méretezése Azure app Serviceban][AppScale]című útmutatót. 
 
 ### <a name="worker-pool-selection"></a>Munkavégző készlet kiválasztása
 Ahogy azt korábban említettük, a munkavégző készlet kiválasztása az ASP felhasználói felületéről érhető el.  Nyissa meg a méretezni kívánt ASP panelt, és válassza a munkavégző készlet lehetőséget.  Megjelenik az összes munkavégző készlet, amelyet a App Service Environment konfigurált.  Ha csak egy munkavégző készlettel rendelkezik, akkor csak a felsorolt készlet jelenik meg.  Ha módosítani szeretné a munkavégző készletet az ASP-ben, egyszerűen válassza ki azt a munkavégző készletet, amelyre a App Service tervet szeretné áthelyezni.  

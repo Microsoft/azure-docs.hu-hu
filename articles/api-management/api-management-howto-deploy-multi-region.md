@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 427ebfe865002612be2f9aeb9db416f5c2f41e52
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88065454"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
@@ -60,7 +60,7 @@ A rendszer földrajzi eloszlásának teljes kihasználásához az Azure API Mana
 
 1. Navigáljon az Azure API Management-példányhoz, és kattintson a bal oldali menü **API** -k elemére.
 2. Válassza ki a kívánt API-t.
-3. Kattintson a **Kódszerkesztő** gombra a **bejövő feldolgozás**nyíl legördülő menüjéből.
+3. Kattintson a **Kódszerkesztő** gombra a **bejövő feldolgozás** nyíl legördülő menüjéből.
 
     ![API-kód szerkesztője](./media/api-management-howto-deploy-multi-region/api-management-api-code-editor.png)
 

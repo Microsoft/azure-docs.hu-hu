@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: data-factory
 author: memildin
 ms.service: data-factory
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 55390a3eb2a074729b4a0868416a95e208325b76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91401085"
 ---
 ```json
@@ -71,7 +71,7 @@ ms.locfileid: "91401085"
 |**IsIncident**|Logikai|Ez a mező határozza meg, hogy a riasztás incidens-e (több riasztás összetett csoportosítása) vagy egyetlen riasztás. A mező alapértelmezett értéke "false" (azaz egyetlen riasztás).|
 |**ProcessingEndTime**|DateTime|Az az idő, ameddig a riasztás elérhető volt a végfelhasználónak a riasztást birtokló eredeti termékben.|
 |**ProductName**|Sztring|A riasztást közzétevő termék neve (Azure Security Center, Azure ATP, Microsoft Defender ATP, MCAS stb.).|
-|**RemediationSteps**|Listáját<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
+|**RemediationSteps**|Lista<String>|A riasztás kijavításához szükséges kézi műveleti elemek.|
 |**ResourceIdentifiers**|Lista (erőforrás-azonosítók)|A riasztáshoz tartozó erőforrás-azonosítók, amelyek segítségével a riasztást a megfelelő termék-expozíciós csoportba (bérlő, munkaterület, előfizetés stb.) lehet irányítani. A riasztások több különböző típusú azonosítóval is rendelkezhetnek.|
 |**Súlyosság**|Enumeráció|A szolgáltató által jelentett riasztás súlyossága. Lehetséges értékek: tájékoztató, alacsony, közepes és magas.|
 |**StartTimeUtc**|DateTime|A riasztásban szereplő első esemény vagy tevékenység időpontja. A mezőnek olyan karakterláncnak kell lennie, amely megfelel a ISO8601 formátumának, beleértve az UTC időzónára vonatkozó információkat is.|

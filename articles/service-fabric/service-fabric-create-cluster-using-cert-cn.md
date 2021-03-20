@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre Service Fabric-fürtöt a tanús�
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: c852b40d35f936753d3c16420159676da239b6c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86246435"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése ujjlenyomat helyett
@@ -78,7 +78,7 @@ Először nyissa meg a *azuredeploy.parameters.js* fájlt egy szövegszerkesztő
 },
 ```
 
-Ezután állítsa be a *certificateCommonName*, a *SourceVaultValue*és a *certificateUrlValue* paraméter értékét az előző parancsfájl által visszaadott értékekre:
+Ezután állítsa be a *certificateCommonName*, a *SourceVaultValue* és a *certificateUrlValue* paraméter értékét az előző parancsfájl által visszaadott értékekre:
 ```json
 "certificateCommonName": {
     "value": "myclustername.southcentralus.cloudapp.azure.com"
@@ -94,7 +94,7 @@ Ezután állítsa be a *certificateCommonName*, a *SourceVaultValue*és a *certi
 },
 ```
 
-### <a name="update-the-template-file"></a>A sablonfájl frissítése
+### <a name="update-the-template-file"></a>A sablonfájl módosítása
 Ezután nyissa meg a *azuredeploy.js* fájlt egy szövegszerkesztőben, és három frissítést készítsen a tanúsítvány köznapi nevének támogatásához.
 
 1. A **Parameters (paraméterek** ) szakaszban adjon hozzá egy *certificateCommonName* paramétert:
@@ -113,14 +113,14 @@ Ezután nyissa meg a *azuredeploy.js* fájlt egy szövegszerkesztőben, és hár
     },
     ```
 
-    Érdemes megfontolni a *certificateThumbprint*eltávolítását is, ha már nincs rá szükség.
+    Érdemes megfontolni a *certificateThumbprint* eltávolítását is, ha már nincs rá szükség.
 
 2. Állítsa a *sfrpApiVersion* változó értékét "2018-02-01" értékre:
     ```json
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile** -> **extensionProfile**- -> **bővítmények** -> **Tulajdonságok** -> **beállításainak** -> **tanúsítványa**területen adja hozzá a 
+3. A **Microsoft. számítási/virtualMachineScaleSets** erőforrásban frissítse a virtuálisgép-bővítményt, hogy az ujjlenyomat helyett az általános nevet használja a tanúsítvány beállításainál.  A **virtualMachineProfile** -> **extensionProfile**- -> **bővítmények** -> **Tulajdonságok** -> **beállításainak** -> **tanúsítványa** területen adja hozzá a 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"

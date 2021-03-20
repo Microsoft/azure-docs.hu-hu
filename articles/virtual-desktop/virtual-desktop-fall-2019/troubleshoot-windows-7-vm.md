@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005414"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows 7 rendszerű virtuális gépek hibáinak megoldása a Windows Virtual Desktopban (klasszikus)
@@ -30,7 +30,7 @@ A Windows rendszerű virtuális asztali számítógépeken a Windows 7 nem támo
 
 A Windows virtuális asztal csak a Windows 7 teljes asztalait tudja virtualizálni.
 
-Habár az automatikus DPI-méretezés nem támogatott, manuálisan módosíthatja a virtuális gép felbontását úgy, hogy a jobb gombbal az Távoli asztal-ügyfél ikonjára kattint, és kiválasztja a **feloldás**elemet.
+Habár az automatikus DPI-méretezés nem támogatott, manuálisan módosíthatja a virtuális gép felbontását úgy, hogy a jobb gombbal az Távoli asztal-ügyfél ikonjára kattint, és kiválasztja a **feloldás** elemet.
 
 ## <a name="error-cant-access-the-remote-desktop-user-group"></a>Hiba: nem érhető el a Távoli asztal felhasználói csoport
 
@@ -43,7 +43,7 @@ A hiba elhárításához vegye fel a felhasználót a Távoli asztal felhasznál
 
 1. Nyissa meg az Azure Portalt.
 2. Válassza ki azt a virtuális gépet, amelyen a hibaüzenet jelenik meg.
-3. Válassza **a parancs futtatása**lehetőséget.
+3. Válassza **a parancs futtatása** lehetőséget.
 4. Futtassa a következő parancsot, és a `<username>` helyére írja be a hozzáadni kívánt felhasználó nevét:
 
    ```cmd

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 61077c7900530fd4c5be64054bedd9c5d087fe77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91442049"
 ---
 # <a name="url-redirect"></a>URL-átirányítás
@@ -35,7 +35,7 @@ Az átirányítási típus beállítja az ügyfelekre vonatkozó válasz állapo
 ## <a name="redirection-protocol"></a>Átirányítási protokoll
 Beállíthatja azt a protokollt, amelyet az átirányítás használni fog. Az átirányítási funkció leggyakoribb felhasználási esetei a HTTP és a HTTPS közötti átirányítás beállítása.
 
-- **Csak HTTPS**esetén: a PROTOKOLLT csak HTTPS értékre állítsa be, ha http-ről HTTPS-re szeretné átirányítani a forgalmat. Az Azure bejárati ajtó azt javasolja, hogy mindig csak HTTPS-re állítsa be az átirányítást.
+- **Csak HTTPS** esetén: a PROTOKOLLT csak HTTPS értékre állítsa be, ha http-ről HTTPS-re szeretné átirányítani a forgalmat. Az Azure bejárati ajtó azt javasolja, hogy mindig csak HTTPS-re állítsa be az átirányítást.
 - **Csak http**: átirányítja a bejövő kérelmet a http-re. Ezt az értéket csak akkor használja, ha a forgalmat nem titkosított HTTP-n szeretné megőrizni.
 - **Kérelem egyeztetése**: ezzel a beállítással megtarthatja a bejövő kérelem által használt protokollt. Így a HTTP-kérések HTTP-n maradnak, és a HTTPS-kérések HTTPS post átirányítás maradnak.
 

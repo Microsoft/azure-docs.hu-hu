@@ -6,21 +6,21 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245585"
 ---
 # <a name="sfctl-settings"></a>sfctl-beállítások
 Konfigurálja a helyi beállításokat a sfctl ezen példánya számára.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Leírás|
+|Alcsoport|Description|
 | --- | --- |
 | [telemetria](service-fabric-sfctl-settings-telemetry.md) | Konfigurálja a helyi telemetria-beállításokat a sfctl ezen példányára. |
 
 
-## <a name="next-steps"></a>További lépések   
+## <a name="next-steps"></a>Következő lépések   
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.   
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

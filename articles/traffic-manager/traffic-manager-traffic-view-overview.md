@@ -13,10 +13,10 @@ ms.date: 01/22/2021
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 66376655c61903761d93ea228c6d72fa05734353
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743049"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager forgalomáttekintő
@@ -99,7 +99,7 @@ Forgalomáttekintő használatakor a rendszer az elemzések létrehozásához ha
 
 * [Hogyan működik forgalomáttekintő számlázás?](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)

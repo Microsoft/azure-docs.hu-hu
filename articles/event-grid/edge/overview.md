@@ -4,10 +4,10 @@ description: A modulok, peremhálózati eszközök és a felhő közötti továb
 ms.topic: overview
 ms.date: 07/08/2020
 ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171516"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Mi a Azure IoT Edge Azure Event Grid?
@@ -71,14 +71,14 @@ A Azure Event Grid öt fogalommal rendelkezik, amelyek lehetővé teszik az els�
 * **Esemény-előfizetések** – az események továbbítására szolgáló végpont vagy beépített mechanizmus, esetenként több kezelőhöz. Az előfizetéseket a kezelők is használják a bejövő események intelligens szűrésére.
 * **Eseménykezelők** – az eseményre redolgozó alkalmazás vagy szolgáltatás.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 
 A nyilvános előzetes verzióban a Event Grid on IoT Edge ingyenes.
 
-## <a name="issues"></a>Hibák
+## <a name="issues"></a>Problémák
 A Event Grid IoT Edge használatával kapcsolatos esetleges problémák jelentése a következő helyen: [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közzététel, előfizetés helyi eseményekre](pub-sub-events-webhook-local.md)
 * [Közzététel, előfizetés a Felhőbeli eseményekre](pub-sub-events-webhook-cloud.md)

@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80348381"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain Service Development áttekintése
@@ -44,7 +44,7 @@ További információ: gyors útmutató [: a geth használata Azure Blockchain s
 A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz szerződéses adatvédelmet és új konszenzusi mechanizmusokat is alkalmaz. A legfontosabb fejlesztések Go-Ethereum többek között:
 
 * **Adatvédelem** – a kvórum az állami és a magánjellegű állapot elkülönítésével támogatja a privát tranzakciókat és a privát szerződéseket, és a személyes adatoknak a hálózati résztvevők felé irányított továbbítására szolgáló, társ-társ titkosítású üzenetváltást használ.
-* **Alternatív konszenzusi mechanizmusok** – nem szükségesek a működést igazoló vagy a bizonyítékokra vonatkozó konszenzus az engedéllyel rendelkező hálózatokhoz. A kvórum több konszenzusos mechanizmust kínál, amelyek olyan konzorciumi láncok számára lettek kialakítva, mint például a TUTAJ és a IBFT.Az Azure Blockchain Service a IBFT konszenzusi mechanizmust használja.
+* **Alternatív konszenzusi mechanizmusok** – nem szükségesek a működést igazoló vagy a bizonyítékokra vonatkozó konszenzus az engedéllyel rendelkező hálózatokhoz. A kvórum több konszenzusos mechanizmust kínál, amelyek olyan konzorciumi láncok számára lettek kialakítva, mint például a TUTAJ és a IBFT.  Az Azure Blockchain Service a IBFT konszenzusi mechanizmust használja.
 * **Társ-jogosultság** – a csomópont-és társ-jogosultságok intelligens szerződések használatával biztosítják, hogy csak ismert felek csatlakozhassanak a hálózathoz.
 * **Nagyobb teljesítmény** – a kvórum nagyobb teljesítményt nyújt, mint a nyilvános geth.
 
@@ -61,7 +61,7 @@ A Blockchain Data Manager és Azure Cosmos DB használatával is létrehozhatja 
 
 Mivel a blockchain több vállalati forgatókönyvben is használatos, a másodpercenkénti tranzakciók (TPS) sebessége fontos a szűk keresztmetszetek és a rendszer elégtelenségének elkerülése érdekében. A magas tranzakciós sebességet nehéz fenntartani egy decentralizált blockchain belül. A pontos TPS-mérést befolyásolhatja különböző tényezők, például a kiszolgálói szál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. Ha a fejlesztés során mérni kell a TPS sebességet, egy népszerű, nyílt forráskódú eszköz is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon ki egy rövid útmutatót az Azure Blockchain Development Kit használatával a Ethereum számára az Azure Blockchain Service-hez készült konzorciumhoz való csatlakoztatáshoz.
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárol
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169663"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
@@ -138,7 +138,7 @@ Ha a tároló elkészült, elérheti a webalkalmazást úgy is, hogy az IP-címe
 > A készültségi mintavétel továbbra is fut a tároló csoport élettartama során. Ha a készültségi parancs későbbi időpontban meghiúsul, a tároló újra elérhetetlenné válik. 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A készültségi mintavétel hasznos lehet olyan helyzetekben, amelyek függő tárolók álló többtárolós csoportokat érintenek. További információ a többtárolós forgatókönyvekről: [Container groups in Azure Container instances](container-instances-container-groups.md).
 

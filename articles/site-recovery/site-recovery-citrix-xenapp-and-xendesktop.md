@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134836"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>vész-helyreállítás beállítása többrétegű Citrix-XenApp és XenDesktop-telepítéshez
@@ -56,9 +56,9 @@ Ebben a cikkben a vSphere 6,0/System Center VMM 2012 R2 által felügyelt VMware
 
 **Forgatókönyv** | **Egy másodlagos helyre** | **Az Azure-ba**
 --- | --- | ---
-**Hyper-V** | Nincs a hatókörben | Igen
-**VMware** | Nincs a hatókörben | Igen
-**Fizikai kiszolgáló** | Nincs a hatókörben | Igen
+**Hyper-V** | Nincs a hatókörben | Yes
+**VMware** | Nincs a hatókörben | Yes
+**Fizikai kiszolgáló** | Nincs a hatókörben | Yes
 
 ### <a name="versions"></a>Verziók
 Az ügyfelek a Hyper-V-n vagy VMware-en vagy fizikai kiszolgálókon futó Virtual Machines XenApp-összetevőket telepíthetnek. Azure Site Recovery az Azure-ban fizikai és virtuális üzemelő példányok is védhetők.
@@ -190,6 +190,6 @@ Kövesse [ezt az útmutatót](site-recovery-test-failover-to-azure.md) a feladat
 
 Ha feladatátvételt végez, kövesse [ezt az útmutatót](site-recovery-failover.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](https://aka.ms/citrix-xenapp-xendesktop-with-asr) információ a Citrix XenApp és a XenDesktop üzemelő példányok replikálásáról ebben a tanulmányban. Tekintse meg az útmutatást [más alkalmazások replikálásához](site-recovery-workload.md) site Recovery használatával.

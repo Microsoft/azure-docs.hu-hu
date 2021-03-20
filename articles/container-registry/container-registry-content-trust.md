@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti a tartalom megbízhatóságát 
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148573"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>A tartalmak megbízhatósága az Azure Container Registryben
@@ -38,7 +38,7 @@ A tartalommegbízhatóság titkosítási aláírókulcsok használatával valós
 
 Első lépésként az adatbázis szintjén kell engedélyezni a tartalommegbízhatóságot. Miután engedélyezte a tartalommegbízhatóságot, az ügyfelek (felhasználók és szolgáltatások) aláírt rendszerképeket a küldhetnek az adatbázisba. Ha a tartalommegbízhatóság engedélyezve van az adatbázisban, az nem korlátozza az adatbázis használatát azokra a felhasználókra, akiknél az szintén engedélyezve van. Azok a felhasználók, akiknél nincs engedélyezve, továbbra is a szokott módon használhatják az adatbázist. Azok a felhasználók azonban, akik engedélyezték a tartalommegbízhatóságot az ügyfeleiken, *kizárólag* az aláírt rendszerképeket látják majd az adatbázisban.
 
-A tartalommegbízhatóság az adatbázisban való engedélyezéséhez először lépjen az adatbázishoz az Azure Portalon. A **házirendek**területen válassza a **tartalom-megbízhatóság**  >  **engedélyezve**  >  **Mentés**lehetőséget. Az Azure CLI-ben az az [ACR config Content-Trust Update][az-acr-config-content-trust-update] parancsot is használhatja.
+A tartalommegbízhatóság az adatbázisban való engedélyezéséhez először lépjen az adatbázishoz az Azure Portalon. A **házirendek** területen válassza a **tartalom-megbízhatóság**  >  **engedélyezve**  >  **Mentés** lehetőséget. Az Azure CLI-ben az az [ACR config Content-Trust Update][az-acr-config-content-trust-update] parancsot is használhatja.
 
 ![A képernyőképen látható, hogy a Azure Portal beállításjegyzékében engedélyezve van-e a tartalom megbízhatósága.][content-trust-01-portal]
 
@@ -80,7 +80,7 @@ Az alábbiakban ismertetjük az `AcrImageSigner` szerepkör az Azure Portalon é
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Keresse meg a beállításjegyzéket a Azure Portalban, majd válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés hozzáadása**elemet. A **szerepkör-hozzárendelés hozzáadása**területen válassza a `AcrImageSigner` **szerepkör**lehetőséget, majd **Jelöljön ki** egy vagy több felhasználót vagy szolgáltatásnevet, majd **mentse a Mentés**elemet.
+Keresse meg a beállításjegyzéket a Azure Portalban, majd válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelés hozzáadása** elemet. A **szerepkör-hozzárendelés hozzáadása** területen válassza a `AcrImageSigner` **szerepkör** lehetőséget, majd **Jelöljön ki** egy vagy több felhasználót vagy szolgáltatásnevet, majd **mentse a Mentés** elemet.
 
 Ebben a példában két entitás lett hozzárendelve a `AcrImageSigner` következő szerepkörhöz: egy "szolgáltatásnév" nevű egyszerű szolgáltatásnév és egy "Azure user" nevű felhasználó.
 
@@ -195,7 +195,7 @@ Ha nem fér hozzá a legfelső szintű kulcshoz, az adott kulccsal aláírt cím
 > [!WARNING]
 > Az adatbázis tartalommegbízhatóságának letiltása és ismételt engedélyezése **az adatbázis összes adattárában törli az összes aláírt címke megbízhatósági adatait**. Ez a művelet nem vonható vissza – az Azure Container Registry nem képes visszaállítani a törölt megbízhatósági adatokat. A tartalommegbízhatóság letiltásával maguk a rendszerképek nem lesznek törölve.
 
-A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adatbázishoz az Azure Portalon. A **házirendek**területen válassza a **tartalom-megbízhatóság**  >  **Letiltva**  >  **Mentés**lehetőséget. A rendszer figyelmezteti, hogy az adatbázisban lévő összes aláírás elvész. Az adatbázis összes aláírásának végleges törléséhez kattintson az **OK** gombra.
+A tartalommegbízhatóság az adatbázisban való letiltásához lépjen az adatbázishoz az Azure Portalon. A **házirendek** területen válassza a **tartalom-megbízhatóság**  >  **Letiltva**  >  **Mentés** lehetőséget. A rendszer figyelmezteti, hogy az adatbázisban lévő összes aláírás elvész. Az adatbázis összes aláírásának végleges törléséhez kattintson az **OK** gombra.
 
 ![Tartalommegbízhatóság letiltása egy adatbázisban az Azure Portalon][content-trust-03-portal]
 

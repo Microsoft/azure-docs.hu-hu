@@ -9,10 +9,10 @@ ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
 ms.openlocfilehash: 15c0df33b8f09ec71f2be913d72f0785dc766375
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027533"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Üzenetküldés a felhőből az eszközre IoT Hub (iOS)
@@ -27,15 +27,15 @@ Ez az oktatóanyag a következőket mutatja be:
 
 * A felhőből az eszközre irányuló üzenetek fogadása az eszközön.
 
-* A megoldási háttérből kérjen kézbesítési visszaigazolást ( *visszajelzés* ) a IoT hub eszközről küldött üzenetekhez.
+* A megoldási háttérből kérjen kézbesítési visszaigazolást (*visszajelzés*) a IoT hub eszközről küldött üzenetekhez.
 
 A felhőből az eszközre irányuló üzenetekről a [IoT hub fejlesztői útmutató üzenetkezelés szakaszában](iot-hub-devguide-messaging.md)talál további információt.
 
 A cikk végén két gyors iOS-projektet futtat:
 
-* **minta – eszköz** , ugyanaz az alkalmazás, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-ios.md), amely csatlakozik az IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
+* **minta – eszköz**, ugyanaz az alkalmazás, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-ios.md), amely csatlakozik az IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
 
-* **minta-szolgáltatás** , amely egy felhőből az eszközre irányuló üzenetet küld a szimulált eszköz alkalmazásnak IoT hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
+* **minta-szolgáltatás**, amely egy felhőből az eszközre irányuló üzenetet küld a szimulált eszköz alkalmazásnak IoT hubon keresztül, majd megkapja a kézbesítési visszaigazolást.
 
 > [!NOTE]
 > A IoT Hub számos eszköz platformjának és nyelvének (például C, Java, Python és JavaScript) támogatásával rendelkezik az Azure IoT Device SDK-k használatával. Az eszköznek az oktatóanyag kódjához való csatlakoztatásának részletes ismertetését, és általában az Azure IoT Hub az Azure [IoT fejlesztői központját](https://www.azure.com/develop/iot)tekintheti meg.

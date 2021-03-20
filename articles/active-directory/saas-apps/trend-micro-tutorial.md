@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trend Micro Web Security (TMWS) szolgáltatással
@@ -95,7 +95,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az előző képernyőképen lévő attribútumok mellett a TMWS két további attribútumot vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Az attribútumok előre ki vannak töltve, de megváltoztathatók a követelmények teljesítése érdekében.
     
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | uPN | User. userPrincipalName |
@@ -118,7 +118,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A név mezőbe írja be a **nevet** `B.Simon` .  
    1. A **Felhasználónév** mezőbe írja be a **_Felhasználónév_ @* cégestartomány *.* bővítmény * * *. Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>Az Azure AD-felhasználó hozzáférésének engedélyezése a TMWS
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az új vállalati alkalmazást az **összes alkalmazás** területen.
 
-1. A **kezelés** területen válassza a **tanúsítványok & Secrets** elemet.
+1. A **Kezelés** területen válassza a **Tanúsítványok és titkos kódok** lehetőséget.
 
 1. Az **ügyfél titkai** területen válassza az **új ügyfél titka** elemet.
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure-fo
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88080334"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>A DevTest Labs használata az Azure Pipelines buildelési és kiadási folyamataiban
@@ -81,7 +81,7 @@ A kiadási folyamat két feladattal hozható létre: **Azure-telepítés: erőfo
 
 Az első feladathoz adja meg az erőforráscsoport nevét és helyét. A sablon helye egy csatolt összetevő. Ha a Resource Manager-sablon csatolt sablonokat tartalmaz, egy egyéni erőforráscsoport-telepítést kell megvalósítani. A sablon a közzétett drop-összetevőben van. A Resource Manager-sablonhoz tartozó sablon paramétereinek felülbírálása. A többi beállítás alapértelmezett értékekkel is meghagyható. 
 
-A második feladathoz **Azure app Service üzembe helyezéséhez**adja meg az Azure-előfizetést, válassza a **webalkalmazás** lehetőséget az **alkalmazás típusaként**, a **$ (webhely)** pedig a **app Service nevet**. A többi beállítás alapértelmezett értékekkel is meghagyható. 
+A második feladathoz **Azure app Service üzembe helyezéséhez** adja meg az Azure-előfizetést, válassza a **webalkalmazás** lehetőséget az **alkalmazás típusaként**, a **$ (webhely)** pedig a **app Service nevet**. A többi beállítás alapértelmezett értékekkel is meghagyható. 
 
 ## <a name="test-run"></a>Teszt futtatása
 Most, hogy mindkét folyamat be van állítva, manuálisan hozza létre a buildet, és nézze meg, hogy működik-e. A következő lépés a megfelelő trigger beállítása a létrehozáshoz és a build és a kiadási folyamat összekapcsolása.

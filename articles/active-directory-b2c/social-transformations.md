@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94953117"
 ---
 # <a name="social-accounts-claims-transformations"></a>A közösségi fiókok jogcímei átalakítások
@@ -41,7 +41,7 @@ Ez a cikk példákat mutat be a közösségi fiókra vonatkozó jogcímek átala
 
 A felhasználó alternativeSecurityId tulajdonságának JSON-ábrázolását hozza létre, amely a Azure Active Directory hívásokban használható. További információ: [AlternativeSecurityId](/graph/api/resources/alternativesecurityid) séma.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | kulcs | sztring | A ClaimType, amely a közösségi identitás szolgáltatója által használt egyedi felhasználói azonosítót határozza meg. |
 | InputClaim | identityProvider | sztring | Az a ClaimType, amely megadja a közösségi fiók identitás-szolgáltatójának nevét, például facebook.com. |
@@ -73,7 +73,7 @@ A jogcímek átalakítása claimType létrehozásához `alternativeSecurityId` .
 
 Egy jogcím hozzáadására szolgál `AlternativeSecurityId` `alternativeSecurityIdCollection` .
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
 | InputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes, ha elérhetők a házirendben. Ha meg van adni, a jogcím-átalakítás hozzáadja a `item` gyűjtemény végéhez. |
@@ -110,7 +110,7 @@ Az alábbi példa egy új közösségi identitást csatol egy meglévő fiókkal
 
 A **alternativeSecurityIdCollection** jogcím kiállítóinak listáját adja vissza egy új **StringCollection stb** -jogcímbe.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | Az ClaimType (kiállító) listájának beolvasásához használandó alkalmazás. |
 | OutputClaim | identityProvidersCollection | StringCollection stb | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. Az alternativeSecurityIdCollection bemeneti jogcímevel társított Identitáskezelő-szolgáltatók listája |
@@ -137,7 +137,7 @@ A következő jogcím-átalakítás beolvassa a felhasználói **alternativeSecu
 
 Eltávolít egy **AlternativeSecurityId** egy **alternativeSecurityIdCollection** -jogcímből.
 
-| Item | TransformationClaimType | Adattípus | Megjegyzések |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | sztring | Az a ClaimType, amely tartalmazza a gyűjteményből eltávolítandó identitás-szolgáltató nevét. |
 | InputClaim | gyűjtemény | alternativeSecurityIdCollection | A jogcím-átalakítás által használt ClaimTypes. A jogcím-átalakítás eltávolítja a identityProvider a gyűjteményből. |

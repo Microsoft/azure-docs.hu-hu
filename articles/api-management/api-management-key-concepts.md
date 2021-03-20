@@ -14,10 +14,10 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86254656"
 ---
 # <a name="about-api-management"></a>Az API Management ismertetése
@@ -76,12 +76,12 @@ Az API-k az API Management szolgáltatáspéldányok alapjai. Minden API egy, a 
 
 További információkért lásd: [API-k létrehozása][How to create APIs] és [Műveletek hozzáadása API-khoz][How to add operations to an API].
 
-## <a name="products"></a><a name="products"> </a> Termékek
+## <a name="products"></a><a name="products"></a> Termékek
 Az API-k a termékeken keresztül válnak elérhetővé a fejlesztők számára. Az API Management szolgáltatásban a termékek egy vagy több API-val rendelkeznek, emellett címmel, leírással és használati feltételekkel vannak konfigurálva. A termékeknek két típusa létezik: **Nyílt** és **Védett**. A védett termékeket csak előfizetők használhatják, míg a nyílt termékeket előfizetés nélkül is lehet használni. Amikor egy termék készen áll a fejlesztők általi használatra, közzé lehet tenni. A közzététel után a fejlesztők meg tudják tekinteni, védett termékek esetén pedig elő tudnak rájuk fizetni. Az előfizetés jóváhagyása a termék szintjén van konfigurálva, és vagy rendszergazdai jóváhagyás kell hozzá, vagy automatikusan jóvá lesz hagyva.
 
 A csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. A csoportok számára a termékek biztosítanak láthatóságot, a fejlesztők pedig megtekinthetik a csoportjuk számára látható termékeket és előfizethetnek rájuk. 
 
-## <a name="groups"></a><a name="groups"> </a> Csoportok
+## <a name="groups"></a><a name="groups"></a> Csoportok
 A csoportok használatával szabályozható a fejlesztők hozzáférése a termékhez. Az API Management az alábbi megváltoztathatatlan rendszercsoportokkal rendelkezik:
 
 * **Rendszergazdák** – A csoportot Azure-előfizető rendszergazdák alkotják. A rendszergazdák kezelik az API Management szolgáltatáspéldányokat, valamint ők hozzák létre az API-kat, a műveleteket és a fejlesztők által használt termékeket.
@@ -92,14 +92,14 @@ Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni c
 
 További információkért lásd: [Csoportok létrehozása és használata][How to create and use groups].
 
-## <a name="developers"></a><a name="developers"> </a> Fejlesztők
+## <a name="developers"></a><a name="developers"></a> Fejlesztők
 A fejlesztők képviselik a felhasználói fiókokat az API Management szolgáltatáspéldányban. A fejlesztőket létrehozhatják vagy meghívhatják a rendszergazdák, vagy a [Fejlesztői portálon][Developer portal] is regisztrálhatnak. Minden fejlesztő egy vagy több csoport tagja, és előfizethet azokra a termékekre, amelyek láthatóságot biztosítanak a csoportjaik számára.
 
 Amikor a fejlesztők előfizetnek egy termékre, megkapják a termék elsődleges és másodlagos azonosítóját. Ezt az azonosítót akkor kell használniuk, amikor a termék API-jait meghívják.
 
 További információkért lásd: [Fejlesztők létrehozása vagy meghívása][How to create or invite developers] és [Csoportok társítása a fejlesztőkhöz][How to associate groups with developers].
 
-## <a name="policies"></a><a name="policies"> </a> Szabályzatok
+## <a name="policies"></a><a name="policies"></a> Szabályzatok
 A házirend az API Management kiemelkedő funkciója, amely lehetővé teszi az Azure Portal számára, hogy konfigurálással módosítsa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ra, a hívások sebességének korlátozása a fejlesztőktől érkező hívások számának korlátozásához és számos más elérhető házirend.
 
 A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [Vezérlés folyamata](./api-management-advanced-policies.md#choose) és a [Változó beállítása](./api-management-advanced-policies.md#set-variable) házirend-kifejezéseken alapul. További információ: [Speciális szabályzatok](./api-management-advanced-policies.md#AdvancedPolicies) és [Szabályzatkifejezések](./api-management-policy-expressions.md).
@@ -108,7 +108,7 @@ A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként 
 Az API Management házirendek teljes listájáért tekintse meg a [Házirend-referencia][Policy reference] szakaszt. További információ a házirendek használatáról és konfigurálásáról: [API Management házirendek][API Management policies]. Ha egy sebességkorlát- és kvótaházirendekkel rendelkező termék létrehozásához keres oktatóanyagot, tekintse meg a [Speciális termékbeállítások létrehozása és konfigurálása][How create and configure advanced product settings] című szakaszt.
 
 
-## <a name="developer-portal"></a><a name="developer-portal"> </a> Fejlesztői portál
+## <a name="developer-portal"></a><a name="developer-portal"></a> Fejlesztői portál
 A fejlesztők a fejlesztői portálon ismerhetik meg az API-kat, tekinthetik meg és hívhatják meg a műveleteket, és ott fizethetnek elő a termékekre. A leendő ügyfelek meglátogathatják a fejlesztői portált, megtekinthetik az API-kat és a műveleteket, illetve regisztrálhatnak. A fejlesztői portál URL-címe az API Management szolgáltatáspéldányhoz tartozó Azure Portal irányítópultján található.
 
 A fejlesztői portál megjelenését és működését egyéni tartalom hozzáadásával, a stílusok testre szabásával és a vállalat emblémájának hozzáadásával lehet személyre szabni.
@@ -121,7 +121,7 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hajtsa végre az alábbi gyors útmutatót, és kezdje el használni az Azure API Management szolgáltatást:
 

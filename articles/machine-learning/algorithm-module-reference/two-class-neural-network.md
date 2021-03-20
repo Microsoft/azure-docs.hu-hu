@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 9131a2439facef00cae818bffef38e536a40a2fd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421158"
 ---
 # <a name="two-class-neural-network-module"></a>Two-Class neurális hálózati modul
@@ -38,17 +38,17 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
   
 ## <a name="how-to-configure"></a>Konfigurálás
 
-1.  Adja hozzá a **kétosztályos neurális hálózati** modult a folyamathoz. Ezt a modult a **besorolás** kategóriában, a **Machine learning** , az **inicializálás** lehetőség alatt találja.  
+1.  Adja hozzá a **kétosztályos neurális hálózati** modult a folyamathoz. Ezt a modult a **besorolás** kategóriában, a **Machine learning**, az **inicializálás** lehetőség alatt találja.  
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter** : akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
+    -   **Egyetlen paraméter**: akkor válassza ezt a lehetőséget, ha már tudja, hogyan szeretné konfigurálni a modellt.
 
-    -   **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.  
+    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.  
 
 3.  A **rejtett réteg specifikációja** mezőben válassza ki a létrehozandó hálózati architektúra típusát.  
   
-    -   **Teljes mértékben csatlakoztatott eset** : az alapértelmezett neurális hálózati architektúrát használja, amelyet a kétosztályos neurális hálózatok határoznak meg a következőképpen:
+    -   **Teljes mértékben csatlakoztatott eset**: az alapértelmezett neurális hálózati architektúrát használja, amelyet a kétosztályos neurális hálózatok határoznak meg a következőképpen:
   
         -   Egy rejtett réteggel rendelkezik.
   
@@ -99,6 +99,6 @@ A betanítás befejezése után:
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

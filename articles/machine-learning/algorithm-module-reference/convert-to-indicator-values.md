@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: 81b3c113f46428327842c1555fdd1934e9ae8762
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420852"
 ---
 # <a name="convert-to-indicator-values"></a>Átalakítás mutatóértékekké
@@ -71,8 +71,8 @@ Most már használhatja a három kijelző oszlopokat a Machine learning-modellek
 
 A modul két kimenetet ad vissza:
 
-- **Results adatkészlet** : az átalakított kijelző értékeit tartalmazó adatkészlet. A tisztításra kijelölt oszlopok is áthaladnak.
-- A **kijelző értékeinek átalakítása** : a kijelzőre való átalakításra használt adatátalakítás, amely menthető a munkaterületre, és később is alkalmazható az új adatokra.
+- **Results adatkészlet**: az átalakított kijelző értékeit tartalmazó adatkészlet. A tisztításra kijelölt oszlopok is áthaladnak.
+- A **kijelző értékeinek átalakítása**: a kijelzőre való átalakításra használt adatátalakítás, amely menthető a munkaterületre, és később is alkalmazható az új adatokra.
 
 ## <a name="apply-a-saved-indicator-values-operation-to-new-data"></a>Mentett kijelző értékeit tartalmazó művelet alkalmazása új adatokra
 
@@ -115,6 +115,6 @@ Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a
 - Ha nem szeretné, hogy túl sok dimenzió legyen hozzáadva az adatkészlethez. Javasoljuk, hogy először tekintse meg az oszlopban szereplő értékek számát, és az adatok megfelelő kiosztását vagy kvantálását.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

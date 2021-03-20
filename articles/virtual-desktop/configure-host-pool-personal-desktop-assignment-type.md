@@ -7,10 +7,10 @@ ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88007811"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
@@ -71,16 +71,16 @@ Ha közvetlenül szeretne hozzárendelni egy felhasználót egy munkamenet-gazda
 
 1. Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen.
 2. Adja meg a **Windows rendszerű virtuális asztalt** a keresősávban.
-3. A **szolgáltatások**területen válassza a **Windows virtuális asztal**elemet.
-4. A Windows rendszerű virtuális asztal lapon lépjen az ablak bal oldalán található menüre, és válassza a **gazdagép-készletek**lehetőséget.
+3. A **szolgáltatások** területen válassza a **Windows virtuális asztal** elemet.
+4. A Windows rendszerű virtuális asztal lapon lépjen az ablak bal oldalán található menüre, és válassza a **gazdagép-készletek** lehetőséget.
 5. Válassza ki a frissíteni kívánt gazdagép-készlet nevét.
-6. Ezután nyissa meg az ablak bal oldalán található menüt, és válassza az **alkalmazáscsoport**lehetőséget.
+6. Ezután nyissa meg az ablak bal oldalán található menüt, és válassza az **alkalmazáscsoport** lehetőséget.
 7. Válassza ki a szerkeszteni kívánt asztali alkalmazás-csoport nevét, majd válassza a **hozzárendelések** lehetőséget az ablak bal oldalán található menüben.
-8. Válassza a **+ Hozzáadás**lehetőséget, majd válassza ki azokat a felhasználókat vagy felhasználói csoportokat, akik számára közzé szeretné tenni ezt az asztali alkalmazást.
+8. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki azokat a felhasználókat vagy felhasználói csoportokat, akik számára közzé szeretné tenni ezt az asztali alkalmazást.
 9. Válassza az információs sávban a **virtuális gép kiosztása** lehetőséget, ha egy munkamenet-gazdagépet szeretne hozzárendelni egy felhasználóhoz.
-10. Válassza ki azt a munkamenet-gazdagépet, amelyet hozzá szeretne rendelni a felhasználóhoz, majd válassza a **hozzárendelés**lehetőséget.
+10. Válassza ki azt a munkamenet-gazdagépet, amelyet hozzá szeretne rendelni a felhasználóhoz, majd válassza a **hozzárendelés** lehetőséget.
 11. Válassza ki azt a felhasználót, akihez a munkamenet-gazdagépet hozzá szeretné rendelni az elérhető felhasználók listájából.
-12. Ha elkészült, válassza a **kiválasztás**lehetőséget.
+12. Ha elkészült, válassza a **kiválasztás** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

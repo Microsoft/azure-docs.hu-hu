@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: 8da1130809c1802f4db963f4b4b000a848e9abaa
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98011101"
 ---
 # <a name="quickstart-deploy-and-manage-nsg-flow-logs-using-azure-policy"></a>Gyors útmutató: NSG-folyamatok naplófájljainak üzembe helyezése és kezelése Azure Policy használatával 
@@ -132,7 +132,7 @@ A szabályzatnak a következő képernyőképen kell megjelennie. Ha a házirend
 ![A házirend eredményeinek megtekintése](./media/network-watcher-builtin-policy/7_2_dine-policy-results.png)  
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 -   Ebben az [oktatóanyagban](./quickstart-configure-network-security-group-flow-logs-from-arm-template.md) mélyebben használhatja az ARM-sablonokat a flow-naplók és a Traffic Analytics üzembe helyezéséhez.
 -   További információ a [Network Watcher](./index.yml)

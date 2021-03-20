@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3a559b8c65ab57b0144b807a3b4cc1faa912d430
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422739"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Tűzfalszabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI használatával
@@ -79,7 +79,7 @@ az postgres server firewall-rule delete --resource-group myresourcegroup --serve
 ```
 A művelet sikere esetén nincs kimenet. Hiba esetén a rendszer a hibaüzenet szövegét adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ehhez hasonlóan webböngészővel is [létrehozhat és kezelhet Azure Database for PostgreSQL tűzfalszabályok használatát a Azure Portal használatával](howto-manage-firewall-using-portal.md).
 - További információ a [Azure Database for PostgreSQL kiszolgálói tűzfalszabályok](concepts-firewall-rules.md)használatáról.
 - A kiszolgálóhoz való további biztonságos hozzáférés [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével az Azure CLI használatával](howto-manage-vnet-using-cli.md).

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2f608843e27b79d02697df8e2a7f2aba6695e10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80878425"
 ---
 # <a name="configure-face-docker-containers"></a>Arc Docker-tárolók konfigurálása
@@ -51,7 +51,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne feledje, hogy a példában látható módon hozzáadja az _arc_ -útválasztást a végpont URI-hoz. 
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](face-how-to-install-containers.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -61,7 +61,7 @@ Ne feledje, hogy a példában látható módon hozzáadja az _arc_ -útválaszt�
 
 A szakaszban található konfigurációs beállítások a `CloudAI` tárolóra jellemző egyedi beállításokat biztosítanak. A következő beállítások és objektumok támogatottak a szakasz Face tárolójában: `CloudAI`
 
-| Név | Adattípus | Leírás |
+| Name | Adattípus | Leírás |
 |------|-----------|-------------|
 | `Storage` | Objektum | A Face tároló által használt tárolási forgatókönyv. További információ a tárolási forgatókönyvekről és az objektumhoz kapcsolódó beállításokról `Storage` : [tárolási forgatókönyv beállításai](#storage-scenario-settings) |
 
@@ -80,7 +80,7 @@ A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaa
 
 A tárolási forgatókönyveket és a társított konfigurációs beállításokat az objektum felügyeli `Storage` , a `CloudAI` konfigurációs szakaszban. A következő konfigurációs beállítások érhetők el az `Storage` objektumban:
 
-| Név | Adattípus | Leírás |
+| Name | Adattípus | Leírás |
 |------|-----------|-------------|
 | `StorageScenario` | Sztring | A tároló által támogatott tárolási forgatókönyv. A következő értékek érhetők el<br/>`Memory` – Alapértelmezett érték. A tároló nem állandó, nem elosztott és memóriában tárolt tárterületet használ egycsomópontos, ideiglenes használathoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megsemmisül.<br/>`Azure` – A Container Azure-erőforrásokat használ a tároláshoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megmarad.|
 | `ConnectionStringOfAzureStorage` | Sztring | A tároló által használt Azure Storage-erőforráshoz tartozó kapcsolatok karakterlánca.<br/>Ez a beállítás csak akkor érvényes `Azure` , ha meg van adva a `StorageScenario` konfigurációs beállításhoz. |
@@ -122,7 +122,7 @@ A Face containers nem használ bemeneti vagy kimeneti csatlakoztatásokat a kép
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](face-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Név | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | A Face containers nem használja ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -145,7 +145,7 @@ Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](face-how-to-install-containers.md#billing).
-> A ApiKey értéke az Azure **Key** `Cognitive Services` Resource Keys oldal kulcsa. 
+> A ApiKey értéke az Azure  `Cognitive Services` Resource Keys oldal kulcsa. 
 
 ## <a name="face-container-docker-examples"></a>Face Container Docker-példák
 
@@ -170,6 +170,6 @@ A következő Docker-példák a Face tárolóra vonatkoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](face-how-to-install-containers.md) áttekintése

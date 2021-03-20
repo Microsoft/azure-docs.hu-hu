@@ -4,10 +4,10 @@ description: A Microsoft Azure Backup-kiszolgáló továbbfejlesztett biztonság
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: 39050d0f658e29b82f270f1fe53026e2fb80bfa1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91332763"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>A Microsoft Azure Backup-kiszolgáló újdonságai (MABS)
@@ -128,6 +128,6 @@ További információ [a MABS telepítési](./backup-azure-microsoft-azure-backu
 Megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelés védelmét:
 
 * [A biztonsági mentési kiszolgáló munkaterhelésének előkészítése](backup-azure-microsoft-azure-backup.md)
-* [Egy VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
-* [Biztonsági másolat készítése a Backup Server használatával SQL Server](backup-azure-sql-mabs.md)
+* [VMware-kiszolgáló biztonsági mentése a Backup Server használatával](backup-azure-backup-server-vmware.md)
+* [Az SQL Server biztonsági mentése a Backup Server használatával](backup-azure-sql-mabs.md)
 * [modern biztonsági másolati tárhely használata a Backup Serverrel](backup-mabs-add-storage.md)

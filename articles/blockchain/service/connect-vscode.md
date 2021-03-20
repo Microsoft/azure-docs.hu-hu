@@ -5,10 +5,10 @@ ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
 ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96763298"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: Azure Blockchain Service Consortium-hálózathoz való kapcsolódás a Visual Studio Code használatával
@@ -71,7 +71,7 @@ A konzorcium és a blockchain tagjai a VS Code Explorer oldalsó sávján jelenn
 
 ![A konzorcium megjelenik az Explorerben](./media/connect-vscode/consortium-node.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a Ethereum VS Code bővítményhez készült Azure Blockchain Development Kit használta az Azure Blockchain Service-konzorciumhoz való csatlakoztatáshoz. Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005894"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple sávszélesség-sablonjainak kezelésére
@@ -169,7 +169,7 @@ Kövesse az alábbi ajánlott eljárásokat a StorSimple-eszközhöz:
 * Konfigurálja a sávszélesség-sablonokat az eszközön, hogy az eszköz különböző időpontokban beállítsa a hálózati átviteli sebesség változó szabályozását. Ezek a sávszélesség-sablonok a biztonsági mentési ütemtervek használata esetén a Felhőbeli műveletekhez további hálózati sávszélességet használhatnak a munkaidőn kívüli időszakokban.
 * Kiszámítja az adott telepítéshez szükséges tényleges sávszélességet a központi telepítés méretétől és a szükséges helyreállítási időre vonatkozó célkitűzéstől (RTO) függően.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

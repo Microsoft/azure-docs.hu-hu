@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743032"
 ---
 # <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Szerepkör-példányok kommunikációjának engedélyezése az Azure Cloud Services (klasszikus)
@@ -368,7 +368,7 @@ A csak a **Webrole1 webes** **WorkerRole1**, a **webrole1 webes** **és a** **Wo
 
 [Itt](/previous-versions/azure/reference/gg557551(v=azure.100))talál egy XML-séma-referenciát a fent használt elemekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tudjon meg többet a Cloud Service- [modellről](cloud-services-model-and-package.md).
 
 

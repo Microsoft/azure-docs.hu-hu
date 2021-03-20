@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245041"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
@@ -183,7 +183,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysf
 > [!NOTE]
 > Az országos felhőknél (például Azure Government, Azure China, Azure Germany) a paramétert kell megadnia `-Location` .
 
-A *TenantId*vagy a könyvtár azonosítóját a [Azure Portalban](https://portal.azure.com)találja. Válassza ki **Azure Active Directory**  >  **tulajdonságokat** , és másolja a **címtár-azonosító** értékét.
+A *TenantId* vagy a könyvtár azonosítóját a [Azure Portalban](https://portal.azure.com)találja. Válassza ki **Azure Active Directory**  >  **tulajdonságokat** , és másolja a **címtár-azonosító** értékét.
 
 A *ClusterName* a parancsfájl által létrehozott Azure ad-alkalmazások előtagját használja. Nem kell pontosan megegyeznie a fürt tényleges nevével. Ez a művelet csak az Azure AD-összetevők leképezését teszi lehetővé a használatban lévő Service Fabric-fürthöz.
 
@@ -705,7 +705,7 @@ Get-ServiceFabricClusterHealth
 
 Az oktatóanyag-Sorozat további cikkei a létrehozott fürtöt használják. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan méretezheti a fürtöt.
 

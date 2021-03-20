@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
 ms.openlocfilehash: 18225703b2a390f64b4bebd58b0167dd77c454d0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98930374"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight Azure Portal használatával
@@ -46,7 +46,7 @@ A Azure Portal használatával olyan HDInsight-fürtöt hozhat létre, amely Azu
     |Előfizetés  | A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport | A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Fürt neve | Adjon meg egy globálisan egyedi nevet.|
-    |Régió   | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták. |
+    |Region   | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták. |
     |Fürt típusa| A lista megnyitásához válassza a fürt típusának kiválasztása lehetőséget. A listából válassza a **Spark** elemet.|
     |Fürt verziója|Ez a mező automatikusan feltölti az alapértelmezett verziót a fürt típusának kiválasztása után.|
     |Fürt bejelentkezési felhasználóneve| Adja meg a fürt bejelentkezési felhasználónevét.  Az alapértelmezett név a **rendszergazda**. Ezzel a fiókkal jelentkezhet be a Jupyter Notebookba a rövid útmutatóban később. |

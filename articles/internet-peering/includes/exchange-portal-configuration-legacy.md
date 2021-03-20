@@ -1,7 +1,7 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 titleSuffix: Azure
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81678550"
 ---
 1. A társítás **létrehozása** lap **konfiguráció** lapján adja meg az itt látható mezőket.
@@ -20,23 +20,23 @@ ms.locfileid: "81678550"
     > [!div class="mx-imgBorder"]
     > ![Peering Page Exchange-társi típus létrehozása](../media/setup-exchange-conf-tab.png)
 
-    * A **társ**-kezelés típusa beállításnál válassza az **Exchange**lehetőséget.
-    * Válassza **SKU** az SKU **alapszintű ingyenes**lehetőséget.
+    * A **társ**-kezelés típusa beállításnál válassza az **Exchange** lehetőséget.
+    * Válassza  az SKU **alapszintű ingyenes** lehetőséget.
     * Válassza ki azt a **Metro** -helyet, ahová át szeretné alakítani az Azure-erőforrást. Ha a kiválasztott **metróban** nem Azure-erőforrásra konvertált kapcsolattal rendelkezik a Microsofttal, akkor ezek a kapcsolatok a megjelenő **kapcsolatok** szakaszban jelennek meg. Most már konvertálhatja ezeket a társ-kapcsolatokat egy Azure-erőforráshoz.
 
         > [!div class="mx-imgBorder"]
         > ![Egyenrangú kapcsolatok listája](../media/setup-exchange-legacy-conf-tab.png)
 
         > [!NOTE]
-        > Az örökölt kapcsolati kapcsolatok beállításai nem módosíthatók. Ha további összekapcsolási kapcsolatokat szeretne hozzáadni a Microsofthoz a kiválasztott **metró** helyén, válassza az **új létrehozása**lehetőséget. További információ: [Exchange-társ létrehozása vagy módosítása a portál használatával](../howto-exchange-portal.md).
+        > Az örökölt kapcsolati kapcsolatok beállításai nem módosíthatók. Ha további összekapcsolási kapcsolatokat szeretne hozzáadni a Microsofthoz a kiválasztott **metró** helyén, válassza az **új létrehozása** lehetőséget. További információ: [Exchange-társ létrehozása vagy módosítása a portál használatával](../howto-exchange-portal.md).
         >
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató*üzenet...
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Figyelje meg, hogy a portál a beírt adatok alapszintű érvényesítését futtatja. A felső menüszalagon megjelenik a *végső érvényesítést futtató* üzenet...
 
     > [!div class="mx-imgBorder"]
     > ![Társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)
 
-1. Az üzenet *sikeres érvényesítése*után ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás**gombra kattintva. Ha módosítania kell a kérést, válassza az **előző** lehetőséget, és ismételje meg a lépéseket.
+1. Az üzenet *sikeres érvényesítése* után ellenőrizze az adatokat. Küldje el a kérelmet a **Létrehozás** gombra kattintva. Ha módosítania kell a kérést, válassza az **előző** lehetőséget, és ismételje meg a lépéseket.
 
     > [!div class="mx-imgBorder"]
     > ![Egyenrangú küldés](../media/setup-exchange-review-tab-submit.png)

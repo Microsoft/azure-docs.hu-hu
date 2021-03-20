@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171754"
 ---
 # <a name="rest-api"></a>REST API
@@ -33,7 +33,7 @@ Minden API-kérelemhez a következő lekérdezési karakterlánc paraméter szü
 ### <a name="request-content-type"></a>Kérelem tartalmának típusa
 Minden API-kérelemnek tartalmaznia kell egy **Content-Type értéket**.
 
-**EventGridSchema** vagy **CustomSchema**esetén a Content-Type érték a következő értékek egyike lehet:
+**EventGridSchema** vagy **CustomSchema** esetén a Content-Type érték a következő értékek egyike lehet:
 
 ```Content-Type: application/json```
 
@@ -74,7 +74,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 **Kérelem**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 
 ```json
     {
@@ -88,7 +88,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 
 ```json
 {
@@ -109,7 +109,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>",
@@ -129,7 +129,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 ```json
 [
     {
@@ -168,7 +168,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 **Kérelem**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 ```json
 {
     "name": "<subscription_name>", // optional, inferred from URL. If specified must match URL subscription_name
@@ -268,7 +268,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 
 ```json
 {
@@ -375,7 +375,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 ```json
 {
     "id": "/iotHubs/<iot_hub_name>/devices/<iot_edge_device_id>/modules/<eventgrid_module_name>/topics/<topic_name>/eventSubscriptions/<subscription_name>",
@@ -480,7 +480,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 **Válasz**: http 200
 
-**Hasznos**adatok:
+**Hasznos** adatok:
 ```json
 [
     {
@@ -557,7 +557,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 ## <a name="examples"></a>Példák
 
 ### <a name="set-up-topic-with-eventgrid-schema"></a>Témakör beállítása a EventGrid-sémával
-Egy olyan témakört állít be, amely az események **eventgridschema**való közzétételét igényli.
+Egy olyan témakört állít be, amely az események **eventgridschema** való közzétételét igényli.
 
 ```json
     {

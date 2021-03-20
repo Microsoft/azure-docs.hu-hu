@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: b8f12b6d55cb11c0cfeda5331072127ea4a696bc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Azure Active Directory integráció a InsideView
@@ -60,7 +60,7 @@ A InsideView Azure AD-be való integrálásának beállításához hozzá kell a
 
     ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **InsideView**kifejezést. A keresési eredmények között válassza a **InsideView** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **InsideView** kifejezést. A keresési eredmények között válassza a **InsideView** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
     ![Keresési eredmények](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést fogja engedélyezni a Az
 
 Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)InsideView alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget:
+1. A [Azure Portal](https://portal.azure.com/)InsideView alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget:
 
     ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
@@ -125,7 +125,7 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
 
 1. Egy új böngészőablakban jelentkezzen be a InsideView vállalati webhelyre rendszergazdaként.
 
-1. Az ablak **tetején válassza a**felügyelet, **SingleSignon beállítások**, majd az **SAML hozzáadása**elemet.
+1. Az ablak **tetején válassza a** felügyelet, **SingleSignon beállítások**, majd az **SAML hozzáadása** elemet.
    
    ![SAML egyszeri bejelentkezés beállításai](./media/insideview-tutorial/ic794135.png "SAML egyszeri bejelentkezés beállításai")
 
@@ -147,13 +147,13 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
 
     1. A **CRM-LastName leképezése** mezőbe írja be a értéket **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .  
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget:
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válassza a **minden felhasználó** lehetőséget:
 
     ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
@@ -167,29 +167,29 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Például: BrittaSimon@contoso.com .)
 
-    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
+    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a InsideView.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **InsideView**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **InsideView** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **InsideView**lehetőséget.
+2. Az alkalmazások listájában válassza a **InsideView** lehetőséget.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
+3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok** lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
@@ -197,7 +197,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 6. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Kattintson az ablak alján található **kiválasztás** gombra.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-an-insideview-test-user"></a>InsideView-teszt felhasználó létrehozása
 

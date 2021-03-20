@@ -8,10 +8,10 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b0ffe022f6c61cf7d06c510c4f8fa5c764d72b42
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88067188"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával
@@ -95,7 +95,7 @@ A sablon Service Bus API-verziója.
 
 ## <a name="resources-to-deploy"></a>Üzembe helyezendő erőforrások
 
-Létrehoz egy **üzenetküldés**típusú standard Service Bus névteret, valamint egy Service Bus engedélyezési szabályt a névtérhez és az entitáshoz.
+Létrehoz egy **üzenetküldés** típusú standard Service Bus névteret, valamint egy Service Bus engedélyezési szabályt a névtérhez és az entitáshoz.
 
 ```json
 "resources": [

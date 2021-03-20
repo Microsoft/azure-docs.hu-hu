@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96779974"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Több feldolgozó csomópont hozzáadásával bővítheti az Azure arc-alapú PostgreSQL nagy kapacitású-kiszolgáló csoportját
@@ -33,7 +33,7 @@ Ha már ismeri az Azure arc engedélyezése PostgreSQL nagy kapacitású vagy Az
 
 > \* A fenti dokumentumokban hagyja ki a **bejelentkezett szakaszt a Azure Portalba**, & **hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus)**. Implementálja az Azure arc üzembe helyezésének hátralévő lépéseit. Ezek a részek Azure Database for PostgreSQL az Azure-felhőben nagy kapacitású (Citus) jellemzőek, de a dokumentumok egyéb részei közvetlenül alkalmazhatók az Azure arc-kompatibilis PostgreSQL-nagy kapacitású.
 
-## <a name="scenario"></a>Használati példa
+## <a name="scenario"></a>Eset
 Ez a forgatókönyv a PostgreSQL nagy kapacitású-kiszolgáló csoportra hivatkozik, amely az [Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport](create-postgresql-hyperscale-server-group.md) dokumentációjának létrehozása című témakörben példaként jött létre.
 
 ### <a name="load-test-data"></a>Tesztadatok betöltése
@@ -236,7 +236,7 @@ Jegyezze fel a végrehajtási időt.
 >* [HTAP-alkalmazások fejlesztése a Python & Azure PostgreSQL nagy kapacitású (Citus) használatával](https://www.youtube.com/watch?v=YDT8_riLLs0)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el, hogyan [méretezhető fel és le (memória, virtuális mag) az Azure arc engedélyezve PostgreSQL nagy kapacitású Server Group](scale-up-down-postgresql-hyperscale-server-group-using-cli.md)
 - Olvassa el, hogyan állíthatja be a kiszolgálói paramétereket az Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálói csoportban

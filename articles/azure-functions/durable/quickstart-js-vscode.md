@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
 ms.custom: devx-track-js
 ms.openlocfilehash: f8ffa90ba0f1ac32d4691165fabf3d8eb9fb7605
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91335449"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
@@ -43,9 +43,9 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create New Project...` .
 
-    ![Függvény létrehozása](media/quickstart-js-vscode/functions-create-project.png)
+    ![Create függvény](media/quickstart-js-vscode/functions-create-project.png)
 
-1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
+1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás** lehetőséget.
 
 1. Az utasításokat követve adja meg a következő információkat:
 
@@ -102,9 +102,9 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység | Tevékenységi függvény létrehozása |
-    | Adja meg a függvény nevét | helló | A tevékenység függvényének neve |
+    | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
 
-Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/index.jst * , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
+Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/index.jst* , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
 Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a koordinálást.
 
@@ -120,7 +120,7 @@ Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a
     | Adja meg a függvény nevét | DurableFunctionsHttpStart | A tevékenység függvényének neve |
     | Engedélyszint | Névtelen | Bemutató céljából engedélyezze, hogy a függvény hitelesítés nélkül legyen meghívva |
 
-Olyan HTTP által aktivált függvényt adott hozzá, amely egy előkészítést indít el. Nyissa meg a *DurableFunctionsHttpStart/index.jst * , és tekintse meg, hogy az `client.startNew` új előkészítés elindításához használja-e. Ezután egy olyan `client.createCheckStatusResponse` http-választ ad vissza, amely URL-címeket tartalmaz, amelyek az új előkészítés figyelésére és kezelésére használhatók.
+Olyan HTTP által aktivált függvényt adott hozzá, amely egy előkészítést indít el. Nyissa meg a *DurableFunctionsHttpStart/index.jst* , és tekintse meg, hogy az `client.startNew` új előkészítés elindításához használja-e. Ezután egy olyan `client.createCheckStatusResponse` http-választ ad vissza, amely URL-címeket tartalmaz, amelyek az új előkészítés figyelésére és kezelésére használhatók.
 
 Most már rendelkezik egy Durable Functions alkalmazással, amely helyileg futtatható és üzembe helyezhető az Azure-ban.
 
@@ -133,7 +133,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     > [!NOTE]
     > A hibakereséssel kapcsolatos további információkért tekintse meg a [Durable functions diagnosztikát](durable-functions-diagnostics.md#debugging) .
 
-1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása**lehetőséget.
+1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása** lehetőséget.
 
     ![Storage-fiók létrehozása](media/quickstart-js-vscode/functions-select-storage.png)
 
@@ -190,7 +190,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával JavaScript tartós Function-alkalmazást hozhat létre és tehet közzé.
 

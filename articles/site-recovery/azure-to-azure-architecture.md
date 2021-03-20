@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97652245"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
@@ -43,7 +43,7 @@ Amikor engedélyezi a replikációt egy virtuális gép számára, Site Recovery
 **Célerőforrás** | **Alapértelmezett beállítás**
 --- | ---
 **Cél-előfizetés** | Ugyanaz, mint a forrás-előfizetés.
-**Cél erőforráscsoport** | Az erőforráscsoport, amelyhez a virtuális gépek a feladatátvételt követően tartoznak.<br/><br/> Bármely Azure-régióban lehet, kivéve a forrás-régiót.<br/><br/> A Site Recovery egy új erőforráscsoportot hoz létre a célként megadott régióban egy "ASR" utótaggal.<br/><br/>
+**Cél-erőforráscsoport** | Az erőforráscsoport, amelyhez a virtuális gépek a feladatátvételt követően tartoznak.<br/><br/> Bármely Azure-régióban lehet, kivéve a forrás-régiót.<br/><br/> A Site Recovery egy új erőforráscsoportot hoz létre a célként megadott régióban egy "ASR" utótaggal.<br/><br/>
 **Cél VNet** | A virtuális hálózat (VNet), amelyben a replikált virtuális gépek a feladatátvétel után találhatók. A rendszer a forrás és a cél virtuális hálózatok között hozza létre a hálózati leképezést, és fordítva.<br/><br/> A Site Recovery egy új VNet és alhálózatot hoz létre az "ASR" utótaggal.
 **Cél Storage-fiók** |  Ha a virtuális gép nem felügyelt lemezt használ, akkor ez az a Storage-fiók, amelybe a rendszer replikálja az adattárakat.<br/><br/> A Site Recovery egy új Storage-fiókot hoz létre a célként megadott régióban, hogy tükrözze a forrásként szolgáló Storage-fiókot.
 **Replika által felügyelt lemezek** | Ha a virtuális gép felügyelt lemezt használ, akkor azokat a felügyelt lemezeket, amelyekhez az adatreplikációt végzi.<br/><br/> A Site Recovery replika felügyelt lemezeket hoz létre a tárolási régióban a forrás tükrözéséhez.
@@ -130,9 +130,9 @@ Ha a virtuális gépek kimenő hozzáférése URL-címekkel van vezérelve, enge
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
-| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Replikálás               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
 | Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Lehetővé teszi a hozzáférést az ADE-kompatibilis virtuális gépek replikálásának engedélyezéséhez a portálon keresztül |
 | Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Lehetővé teszi a mobilitási ügynöknek a portálon keresztüli replikált elemek automatikus frissítésének engedélyezését |

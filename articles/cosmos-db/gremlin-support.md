@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
 ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97630751"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin Graph támogatás és kompatibilitás az TinkerPop-funkciókkal
@@ -169,31 +169,31 @@ Az Azure Cosmos DB által biztosított, írásra optimalizált motor alapértelm
 
 ## <a name="behavior-differences"></a>Viselkedési különbségek
 
-* Azure Cosmos DB gráf motorja a ***szélesség-első** _ bejárást futtatja, miközben a TinkerPop Gremlin a mélysége – először. Ez a viselkedés jobb teljesítményt érhet el vízszintesen méretezhető, például Cosmos DB.
+* Azure Cosmos DB gráf motorja a ***szélesség – első*** bejárást futtatja, miközben a TinkerPop-Gremlin a mélysége. Ez a viselkedés jobb teljesítményt érhet el vízszintesen méretezhető, például Cosmos DB.
 
 ## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-A _ ***[Gremlin bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)** _ a Graph bejárásokat programozási nyelvének agnosztikus-specifikációja. Cosmos DB gráf még nem támogatja. `GremlinClient.SubmitAsync()`A bejárást szöveges karakterláncként használja és adja át.
+* A ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** egy programnyelvfüggetlen specifikáció gráfbejárásokhoz. Cosmos DB gráf még nem támogatja. `GremlinClient.SubmitAsync()`A bejárást szöveges karakterláncként használja és adja át.
 
-_ * **`property(set, 'xyz', 1)`** _ a set Cardinals jelenleg nem támogatott. A `property(list, 'xyz', 1)` használható helyette. További információ: [Vertex Properties with TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`*** a kardinális beállítása jelenleg nem támogatott. A `property(list, 'xyz', 1)` használható helyette. További információ: [Vertex Properties with TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-_ A ***`match()` Step** _ jelenleg nem érhető el. Ez a lépés deklaratív lekérdezési képességeket biztosít.
+* A ***`match()` lépés*** jelenleg nem érhető el. Ez a lépés deklaratív lekérdezési képességeket biztosít.
 
-_ ***Az objektumok, mint tulajdonságok,** a csúcspontokon vagy éleken nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
+* A csúcspontokon vagy éleken lévő ***Tulajdonságok*** nem támogatottak. A tulajdonságok csak egyszerű típusok vagy tömbök lehetnek.
 
-_ ***A tömb tulajdonságainak rendezése** _ `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
+* ***Rendezés tömb tulajdonságai szerint*** `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
 
-_ ***Nem PRIMITÍV JSON-típusok** _ nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null` az értékek nem támogatottak. 
+* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null` az értékek nem támogatottak. 
 
-_ * A **GraphSONv3** _ szerializáló jelenleg nem támogatott. `GraphSONv2`Szerializáló, olvasó és író osztályok használata a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
+* A ***GraphSONv3*** szerializáló jelenleg nem támogatott. `GraphSONv2`Szerializáló, olvasó és író osztályok használata a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
 
-_ **Lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magában foglalja a `.map{<expression>}` , a `.by{<expression>}` , és a `.filter{<expression>}` függvényeket. Ha többet szeretne megtudni, és meg szeretné tudni, hogyan írhatók újra a Gremlin lépések használatával, tekintse [meg a lambdas-ról szóló megjegyzést](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
+* **A lambda kifejezések és függvények** jelenleg nem támogatottak. Ez magában foglalja a `.map{<expression>}` , a `.by{<expression>}` , és a `.filter{<expression>}` függvényeket. Ha többet szeretne megtudni, és meg szeretné tudni, hogyan írhatók újra a Gremlin lépések használatával, tekintse [meg a lambdas-ról szóló megjegyzést](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
-* *A rendszer elosztott jellege miatt a **tranzakciók** száma nem támogatott.  Konfigurálja a megfelelő konzisztencia-modellt a Gremlin-fiókban a "saját írások olvasása" elemre, és használja az optimista párhuzamosságot az ütköző írások feloldásához.
+* A rendszer elosztott jellege miatt a ***tranzakciók*** nem támogatottak.  Konfigurálja a megfelelő konzisztencia-modellt a Gremlin-fiókban a "saját írások olvasása" elemre, és használja az optimista párhuzamosságot az ütköző írások feloldásához.
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-_ **Gremlin lekérdezések indexelése a bejárási `.V()` lépésekkel**: jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
+* A **Gremlin lekérdezések használatának indexelése a bejárási `.V()` lépésekkel**: jelenleg csak a `.V()` bejárások első hívása fogja használni az indexet az ahhoz csatolt szűrők vagy predikátumok feloldásához. A következő hívások nem fogják megkeresni az indexet, ami növelheti a lekérdezés késését és költségeit.
     
 Az alapértelmezett indexelés feltételezi, hogy a lépéssel kezdődő tipikus olvasási Gremlin-lekérdezés `.V()` paramétereket használ a csatolt szűrési lépéseiben, például a `.has()` vagy a `.where()` segítségével optimalizálja a lekérdezés költségeit és teljesítményét. Például:
 

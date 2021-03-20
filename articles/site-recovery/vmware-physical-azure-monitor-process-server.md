@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86134744"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
@@ -76,12 +76,12 @@ A Process Server számos, az alábbi táblázatban összefoglalt állapot-riaszt
 
 A folyamat-kiszolgálók állapotát a következőképpen figyelheti: 
 
-1. Egy replikált gép replikálási állapotának és állapotának figyeléséhez, valamint a folyamat kiszolgálójának a tárolóban > **replikált elemek**területen kattintson a figyelni kívánt gépre.
-2. A **replikálás**állapota területen figyelheti a virtuális gép állapotának állapotát. A hiba részleteinek részletezéséhez kattintson az állapotra.
+1. Egy replikált gép replikálási állapotának és állapotának figyeléséhez, valamint a folyamat kiszolgálójának a tárolóban > **replikált elemek** területen kattintson a figyelni kívánt gépre.
+2. A **replikálás** állapota területen figyelheti a virtuális gép állapotának állapotát. A hiba részleteinek részletezéséhez kattintson az állapotra.
 
     ![Kiszolgáló állapotának feldolgozása a virtuális gép irányítópultján](./media/vmware-physical-azure-monitor-process-server/vm-ps-health.png)
 
-4. A **Process Server Health**szolgáltatásban nyomon követheti a folyamat kiszolgálójának állapotát. Részletes részletezés.
+4. A **Process Server Health** szolgáltatásban nyomon követheti a folyamat kiszolgálójának állapotát. Részletes részletezés.
 
     ![Kiszolgáló adatainak feldolgozása a virtuális gép irányítópultján](./media/vmware-physical-azure-monitor-process-server/ps-summary.png)
 
@@ -90,10 +90,10 @@ A folyamat-kiszolgálók állapotát a következőképpen figyelheti:
     - Ha a Process Server az alapértelmezett központi telepítésben fut a konfigurációs kiszolgálón, a konfigurációs kiszolgáló ennek megfelelően lesz kiemelve.
     - A részletezéshez kattintson a konfigurációs kiszolgálóra vagy a Process Server elemre. Jegyezze fel a problémákat és az esetleges szervizelési javaslatokat.
 
-A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése**területen kattintson a **konfigurációs kiszolgálók**elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
+A **site Recovery infrastruktúra** alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése** területen kattintson a **konfigurációs kiszolgálók** elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
 - Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 

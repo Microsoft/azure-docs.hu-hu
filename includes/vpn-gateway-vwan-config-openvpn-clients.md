@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80986714"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-ügyfelek
@@ -25,7 +25,7 @@ ms.locfileid: "80986714"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) utasítások
    
    * [Virtuális WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) -utasítások
-5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a *. pfx*fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a gépen egy módszer. A *profileinfo.txt* fájl tartalmazza a titkos kulcsot, valamint a hitelesítésszolgáltató és az ügyféltanúsítvány ujjlenyomatát. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
+5. Bontsa ki a titkos kulcsot és a Base64 ujjlenyomatot a *. pfx* fájlból. Ezt többféleképpen megteheti. Az OpenSSL használata a gépen egy módszer. A *profileinfo.txt* fájl tartalmazza a titkos kulcsot, valamint a hitelesítésszolgáltató és az ügyféltanúsítvány ujjlenyomatát. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
@@ -92,7 +92,7 @@ ms.locfileid: "80986714"
 
 9. Ha nem látja a **Másolás az OpenVPN-be** lehetőséget, koppintson a **továbbiak** elemre.
 
-    ![Továbbiak](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
+    ![Kibontás](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
 
 10. Koppintson a **Másolás az OpenVPN-** re lehetőségre 
 
@@ -165,8 +165,8 @@ ms.locfileid: "80986714"
     ```
 12. A grafikus felhasználói felülettel való kapcsolódáshoz lépjen a rendszerbeállítások elemre.
 13. **+** Új VPN-kapcsolat hozzáadásához kattintson ide.
-14. A **VPN hozzáadása**területen válassza **az importálás fájlból lehetőséget..** .
-15. Tallózással keresse meg a profil fájlt, és kattintson rá duplán, vagy válassza a **Megnyitás**lehetőséget.
+14. A **VPN hozzáadása** területen válassza **az importálás fájlból lehetőséget..** .
+15. Tallózással keresse meg a profil fájlt, és kattintson rá duplán, vagy válassza a **Megnyitás** lehetőséget.
 16. A **VPN hozzáadása** ablakban kattintson a **Hozzáadás** gombra.
   
     ![Importálás fájlból](./media/vpn-gateway-vwan-config-openvpn-clients/import.png)

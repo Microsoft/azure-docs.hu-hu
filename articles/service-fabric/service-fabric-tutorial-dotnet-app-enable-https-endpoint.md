@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: c675f8ece8369bcfc0055343221ac82aea59dec1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91326235"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
@@ -360,7 +360,7 @@ Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatá
 
 Mielőtt telepítené az alkalmazást az Azure-ban, telepítse a tanúsítványt a `Cert:\LocalMachine\My` távoli fürtcsomópontok tárolójába.  A szolgáltatások a fürt különböző csomópontjaira léphetnek át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm. msc alkalmazást, és navigáljon a **személyes** > **tanúsítványok**elemre.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza a **minden feladat** > **Exportálás**lehetőséget.
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm. msc alkalmazást, és navigáljon a **személyes** > **tanúsítványok** elemre.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza a **minden feladat** > **Exportálás** lehetőséget.
 
 ![Tanúsítvány exportálása][image4]
 
@@ -424,7 +424,7 @@ Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd ke
 
 ![Képernyőkép az URL-címet tartalmazó böngészőablakban futó Service Fabric szavazási minta alkalmazásról https://mycluster.region.cloudapp.azure.com:443 .][image3]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

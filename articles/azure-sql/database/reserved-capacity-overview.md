@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
 ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602512"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Fenntartott kapacitással rendelkező erőforrások költségeinek mentése – Azure SQL Database & SQL felügyelt példánya
@@ -57,16 +57,16 @@ Tegyük fel például, hogy egy általános célt futtat, Gen5 – 16 virtuális
     
     | Mező      | Leírás|
     |------------|--------------|
-    |Előfizetés|A kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a foglalás előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek (az MS-AZR-0017P vagy MS-AZR-0148P) vagy az utólagos elszámolású díjszabásnak (az MS-AZR-0003P vagy az MS-AZR-0023P) megfelelő egyedi szerződésnek kell lennie. A nagyvállalati előfizetések esetében a díjakat a beléptetési Azure-előfizetésből (korábban pénzügyi kötelezettségvállalásnak nevezett) egyenlegből és a túlterhelésnek megfelelően kell levonni. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.|
+    |Előfizetés|A kapacitás foglalásának megfizetéséhez használt előfizetés. Az előfizetéshez tartozó fizetési módot a foglalás előzetes költségei alapján számítjuk fel. Az előfizetés típusának nagyvállalati szerződésnek (az MS-AZR-0017P vagy MS-AZR-0148P) vagy az utólagos elszámolású díjszabásnak (az MS-AZR-0003P vagy az MS-AZR-0023P) megfelelő egyedi szerződésnek kell lennie. Nagyvállalati előfizetésnél a díjak a regisztrációhoz tartozó Azure-előrefizetés (korábbi nevén pénzügyi keret) egyenlegéből lesznek levonva, illetve túlhasználatként lesznek számlázva. Az utólagos elszámolású előfizetések esetében az előfizetés díjait a bankkártya vagy a számla fizetési módja alapján számítjuk fel.|
     |Hatókör       |A virtuális mag foglalási hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a lehetőséget választja <br/><br/>**Megosztva** a virtuális mag foglalási kedvezményt a számlázási környezetben lévő előfizetésekben futó adatbázisra vagy felügyelt példányra alkalmazza a rendszer. A vállalati ügyfelek esetében a közös hatókör a regisztráció, és a regisztráción belüli összes előfizetés szerepel. A használatalapú fizetéses ügyfelek esetében a megosztott hatókör a fiókadminisztrátor által létrehozott, használatalapú fizetéses előfizetéseket foglalja magában.<br/><br/>**Egyszeri előfizetés** esetén a virtuális mag foglalási kedvezményt az előfizetésben lévő adatbázisokra vagy felügyelt példányokra alkalmazza a rendszer. <br/><br/>**Egy erőforráscsoport**, a foglalási kedvezmény a kiválasztott előfizetésben található adatbázisok vagy felügyelt példányok példányaira, valamint az adott előfizetéshez tartozó kiválasztott erőforráscsoporthoz lesz alkalmazva.|
     |Region      |Az Azure-régió, amelyre a kapacitás foglalása vonatkozik.|
     |Központi telepítés típusa|Az az SQL-erőforrástípus, amelyre a foglalást megvásárolni szeretné.|
     |Teljesítményszint|Az adatbázisok vagy a felügyelt példányok szolgáltatási szintje. |
-    |Kifejezés        |Egy vagy három év.|
+    |Időszak        |Egy vagy három év.|
     |Mennyiség    |A kapacitás-foglalás keretében megvásárolt számítási erőforrások mennyisége. A mennyiség a kiválasztott Azure-régióban és a lefoglalt teljesítményszint virtuális mag, és a számlázási kedvezményt kapja. Ha például futtatja vagy tervezi több adatbázis futtatását az USA keleti régiójában lévő Gen5 16 virtuális mag teljes számítási kapacitásával, akkor a mennyiséget 16-ra kell beállítania, hogy maximalizálja az összes adatbázis előnyeit. |
 
 1. Tekintse át a kapacitás foglalásának költségeit a costs ( **költségek** ) szakaszban.
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 1. Válassza a **foglalás megtekintése** lehetőséget a vásárlás állapotának megtekintéséhez.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése

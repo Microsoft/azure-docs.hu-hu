@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80398475"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Az Azure egyéni erőforrás-szolgáltatók áttekintése
@@ -25,7 +25,7 @@ Az Azure egyéni erőforrás-szolgáltatók egy bővíthető platform az Azure-h
 > [!IMPORTANT]
 > Az egyéni szolgáltatók jelenleg nyilvános előzetes verzióban érhetők el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="what-can-custom-resource-providers-do"></a>Mit tehet az egyéni erőforrás-szolgáltatók?
 
@@ -37,11 +37,11 @@ Az Azure egyéni erőforrás-szolgáltatók egy bővíthető platform az Azure-h
 
 ## <a name="what-is-a-custom-resource-provider"></a>Mi az egyéni erőforrás-szolgáltató?
 
-Az Azure egyéni erőforrás-szolgáltatói az Azure és a végpont közötti szerződés létrehozásával készülnek. Ez a szerződés egy új erőforrás, a **Microsoft. CustomProviders/resourceProviders**használatával határozza meg az új erőforrások és műveletek listáját. Az egyéni erőforrás-szolgáltató ezután elérhetővé teszi ezeket az új API-kat az Azure-ban. Az Azure egyéni erőforrás-szolgáltató három részből áll: az egyéni erőforrás-szolgáltatóból, a **végpontokból**és az egyéni erőforrásokból.
+Az Azure egyéni erőforrás-szolgáltatói az Azure és a végpont közötti szerződés létrehozásával készülnek. Ez a szerződés egy új erőforrás, a **Microsoft. CustomProviders/resourceProviders** használatával határozza meg az új erőforrások és műveletek listáját. Az egyéni erőforrás-szolgáltató ezután elérhetővé teszi ezeket az új API-kat az Azure-ban. Az Azure egyéni erőforrás-szolgáltató három részből áll: az egyéni erőforrás-szolgáltatóból, a **végpontokból** és az egyéni erőforrásokból.
 
 ## <a name="how-to-build-custom-resource-providers"></a>Egyéni erőforrás-szolgáltatók létrehozása
 
-Az egyéni erőforrás-szolgáltatók az Azure és a végpontok közötti szerződések listája. Ez a szerződés azt ismerteti, hogy az Azure hogyan működjön együtt egy végponttal. Az erőforrás-szolgáltató úgy viselkedik, mint egy proxy, és továbbítja a kéréseket és a válaszokat a megadott **végpontra**. Egy erőforrás-szolgáltató két típusú szerződést tud megadni: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) és [**műveletek**](./custom-providers-action-endpoint-how-to.md). Ezek a végpont-definíciók segítségével engedélyezettek. A végpontok definíciója három mezőből áll: **név**, **routingType**és **végpont**.
+Az egyéni erőforrás-szolgáltatók az Azure és a végpontok közötti szerződések listája. Ez a szerződés azt ismerteti, hogy az Azure hogyan működjön együtt egy végponttal. Az erőforrás-szolgáltató úgy viselkedik, mint egy proxy, és továbbítja a kéréseket és a válaszokat a megadott **végpontra**. Egy erőforrás-szolgáltató két típusú szerződést tud megadni: [**resourceTypes**](./custom-providers-resources-endpoint-how-to.md) és [**műveletek**](./custom-providers-action-endpoint-how-to.md). Ezek a végpont-definíciók segítségével engedélyezettek. A végpontok definíciója három mezőből áll: **név**, **routingType** és **végpont**.
 
 Példa végpontra:
 
@@ -82,7 +82,7 @@ Példa egyéni erőforrás-szolgáltatóra a **resourceTypes**:
 
 Az Azure-hoz a fenti mintához hozzáadott API-k:
 
-HttpMethod | Minta URI-ja | Leírás
+HttpMethod | Minta URI-ja | Description
 ---|---|---
 PUT | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>szolgáltatók/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018 – 09 -01 – előzetes verzió | Az Azure REST API hívást indít egy új erőforrás létrehozásához.
 DELETE | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>szolgáltatók/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomResources/{customResourceName}? API-Version = 2018 – 09 -01 – előzetes verzió | Az Azure REST API egy meglévő erőforrás törlését hívja meg.
@@ -91,7 +91,7 @@ GET | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>szo
 
 ### <a name="building-custom-actions"></a>Egyéni műveletek készítése
 
-A **műveletek** az Azure-ba felvett új műveleteket írják le. Ezek az erőforrás-szolgáltatón vagy egy **resourceType**belül lehetnek elérhetők. [További információ az egyéni műveletek létrehozásáról](./custom-providers-action-endpoint-how-to.md)
+A **műveletek** az Azure-ba felvett új műveleteket írják le. Ezek az erőforrás-szolgáltatón vagy egy **resourceType** belül lehetnek elérhetők. [További információ az egyéni műveletek létrehozásáról](./custom-providers-action-endpoint-how-to.md)
 
 Példa egyéni erőforrás-szolgáltatóra a **műveletekkel**:
 
@@ -112,7 +112,7 @@ Példa egyéni erőforrás-szolgáltatóra a **műveletekkel**:
 
 Az Azure-hoz a fenti mintához hozzáadott API-k:
 
-HttpMethod | Minta URI-ja | Leírás
+HttpMethod | Minta URI-ja | Description
 ---|---|---
 POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>szolgáltatók/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>myCustomAction? API-Version = 2018-09 -01-előzetes verzió | Az Azure REST API hívást indít a művelet aktiválásához.
 
@@ -120,7 +120,7 @@ POST | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>sz
 
 Ha kérdése van az Azure egyéni erőforrás-szolgáltatói fejlesztéséhez, próbálkozzon a [stack Overflowával](https://stackoverflow.com/questions/tagged/azure-custom-providers). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke hozzáadásával ```azure-custom-providers``` gyors választ kaphat!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta az egyéni szolgáltatókat. Az egyéni szolgáltató létrehozásához nyissa meg a következő cikket.
 
