@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86243154"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon adatmodell-referenciája
@@ -41,7 +41,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 -   [Fejléc](#Header)  
 -   [HTTP-kérés](#HTTPRequest)  
 -   [HTTP-válasz](#HTTPResponse)  
--   [Probléma](#Issue)  
+-   [Kérdés](#Issue)  
 -   [Művelet](#Operation)  
 -   [Művelet menü](#Menu)  
 -   [Művelet menüpont](#MenuItem)  
@@ -127,7 +127,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="comment"></a><a name="Comment"></a> Megjegyzés  
  Az `API` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Id`|szám|A Megjegyzés azonosítója.|  
 |`CommentText`|sztring|A Megjegyzés törzse. Tartalmazhat HTML-kódot.|  
@@ -184,7 +184,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="http-response"></a><a name="HTTPResponse"></a> HTTP-válasz  
  Ez a szakasz a `response` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`statusCode`|pozitív egész szám|Művelet válaszának állapota kód.|  
 |`description`|sztring|Művelet válaszának leírása.|  
@@ -227,7 +227,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="paging"></a><a name="Paging"></a> Lapozófájl  
  Az `paging` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Page`|szám|Az aktuális oldalszám.|  
 |`PageSize`|szám|Az egyetlen oldalon megjelenítendő eredmények maximális száma.|  
@@ -264,7 +264,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="provider"></a><a name="Provider"></a> Szolgáltató  
  Az `provider` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`Properties`|karakterlánc-szótár|A hitelesítési szolgáltató tulajdonságai.|  
 |`AuthenticationType`|sztring|A szolgáltató típusa (Azure Active Directory, Facebook-Bejelentkezés, Google-fiók, Microsoft-fiók, Twitter).|  
@@ -346,7 +346,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a> Felhasználó regisztrálása  
  Az `user sign up` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Típus|Description|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|boolean|A [regisztrálási](api-management-page-controls.md#sign-up)bejelentkezési vezérlő által használt érték.|  
 |`Password`|sztring|Felhasználói fiók jelszava.|  
@@ -361,5 +361,5 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 |`NameIdentifier`|sztring|A [regisztrálási](api-management-page-controls.md#sign-up)bejelentkezési vezérlő által használt érték.|  
 |`ProviderName`|sztring|Hitelesítési szolgáltató neve.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

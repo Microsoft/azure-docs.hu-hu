@@ -4,10 +4,10 @@ description: Ismerteti, hogyan engedélyezhető a biztonsági mentés, ha Azure-
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: ad81300545686d61f42cdd8684e502c937b4fd43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89377335"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
@@ -26,13 +26,13 @@ Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [Azure Portalba](htt
 
 ## <a name="create-a-vm-with-backup-configured"></a>Virtuális gép létrehozása a Backup szolgáltatással konfigurálva
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 
-2. Az Azure Marketplace-en válassza a **számítás**lehetőséget, majd válasszon ki egy virtuálisgép-rendszerképet.
+2. Az Azure Marketplace-en válassza a **számítás** lehetőséget, majd válasszon ki egy virtuálisgép-rendszerképet.
 
 3. Állítsa be a virtuális gépet a [Windows](../virtual-machines/windows/quick-create-portal.md) -vagy [Linux](../virtual-machines/linux/quick-create-portal.md) -utasításoknak megfelelően.
 
-4. A **kezelés** lap **biztonsági mentés engedélyezése**területén válassza **a be**lehetőséget.
+4. A **kezelés** lap **biztonsági mentés engedélyezése** területén válassza **a be** lehetőséget.
 5. Azure Backup biztonsági mentéseket egy Recovery Services-tárolóba. Válassza az **új létrehozása** lehetőséget, ha nem rendelkezik meglévő tárolóval.
 6. Fogadja el a javasolt tár nevét, vagy adja meg a sajátját.
 7. Itt adhatja meg vagy hozhatja létre azt az erőforráscsoportot, amelyben a tároló található. Az erőforráscsoport-tároló eltérő lehet a virtuálisgép-erőforráscsoporthoz.
@@ -76,7 +76,7 @@ A virtuális gép biztonsági mentése a biztonsági mentési szabályzatnak meg
 
 A virtuális gép létrehozása után tegye a következőket:
 
-1. A virtuális gép tulajdonságainál válassza a **biztonsági mentés**lehetőséget. A virtuális gép állapota kezdeti biztonsági mentés, amíg a kezdeti biztonsági mentés nem fut.
+1. A virtuális gép tulajdonságainál válassza a **biztonsági mentés** lehetőséget. A virtuális gép állapota kezdeti biztonsági mentés, amíg a kezdeti biztonsági mentés nem fut.
 2. Az igény szerinti biztonsági mentés futtatásához kattintson a **biztonsági** Mentés gombra.
 
     ![Igény szerinti biztonsági mentések futtatása](./media/backup-during-vm-creation/run-backup.png)

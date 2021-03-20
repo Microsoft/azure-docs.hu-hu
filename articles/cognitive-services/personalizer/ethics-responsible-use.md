@@ -9,10 +9,10 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005979"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutatás a személyre szabáshoz
@@ -199,6 +199,6 @@ A Microsoft folyamatosan olyan eszközöket és dokumentumokat tesz elérhetőv�
 * [A FATML alapelvei a fiókhoz tartozó algoritmusokhoz](https://www.fatml.org/resources/principles-for-accountable-algorithms)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Funkciók: művelet és környezet](concepts-features.md).

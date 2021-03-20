@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 375a81127a000741ca5e0397642800794610bcda
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754671"
 ---
-# <a name="respond-to-azure-defender-for-dns-alerts"></a>Válaszadás az Azure Defender DNS-riasztásokra
+# <a name="respond-to-azure-defender-for-dns-alerts"></a>Válaszadás a DNS-hez készült Azure Defender-riasztásokra
 
 Ha riasztást kap a DNS-hez készült Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. A DNS-hez készült Azure Defender védi az összes kapcsolódó erőforrást, így még akkor is, ha ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos ellenőrizni az összes riasztást körülvevő helyzetet.  
 
@@ -34,7 +34,7 @@ Ha riasztást kap a DNS-hez készült Azure Defendertől, javasoljuk, hogy vizsg
 1. Javítsa ki a gép Azure Security Center javaslatait, és szervizelését a jövőbeli jogsértések megelőzése érdekében kiemelt biztonsági problémákat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oldal az Azure Defender for DNS szolgáltatással kapcsolatos riasztásra adott válasz folyamatát ismerteti. A kapcsolódó információk a következő lapokon találhatók:
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77594311"
 ---
 # <a name="about-service-meshes"></a>A szolgáltatás rácsvonalai
@@ -38,7 +38,7 @@ Az **adatsík** jellemzően olyan proxyból áll, amely transzparens módon van 
 
 ![Jellemző a Service Mesh architektúrája](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az egyes szolgáltatásokhoz tartozó rácsvonalak természetes illeszkedéssel rendelkeznek, és a konkrét forgatókönyvek támogatására összpontosítanak, de általában úgy találja, hogy a legtöbb esetben a következő lehetőségek közül több is megvalósítható.
 
@@ -77,7 +77,7 @@ A szolgáltatás hálójának kiválasztása előtt győződjön meg róla, hogy
 
 - **Szükségtelen a további bonyolultság?** – Ha a szolgáltatás hálójának telepítésének oka az, hogy olyan képességet szerezzen, amely nem feltétlenül kritikus fontosságú az üzleti vagy az operatív csapat számára, akkor vegye figyelembe, hogy a telepítés, a karbantartás és a konfiguráció további összetettsége is megéri-e.
 
-- **Elfogadható a növekményes megközelítés?** – A számos képességet biztosító szolgáltatási rácsvonalak több növekményes megközelítésben is megadhatók. Csak azokat az összetevőket telepítse, amelyek szükségesek a sikeres sikeresség biztosításához. Ha jobban bízik, és további funkciókra van szükség, akkor vizsgálja meg ezeket. A kezdeti lépések elvégzésével a késztetésnek kell elállnia. *everything*
+- **Elfogadható a növekményes megközelítés?** – A számos képességet biztosító szolgáltatási rácsvonalak több növekményes megközelítésben is megadhatók. Csak azokat az összetevőket telepítse, amelyek szükségesek a sikeres sikeresség biztosításához. Ha jobban bízik, és további funkciókra van szükség, akkor vizsgálja meg ezeket. A kezdeti lépések elvégzésével a késztetésnek kell elállnia. 
 
 Ha alapos megfontolás után úgy dönt, hogy szükség van egy szolgáltatási hálóra a szükséges képességek biztosításához, akkor a következő döntés a *Service Mesh?*
 
@@ -92,7 +92,7 @@ Vegye figyelembe a következő területeket, és ezek közül a leginkább igazo
 - **Biztonság** – hitelesítés, identitás, tanúsítványkezelő és rotáció, csatlakoztatott külső hitelesítésszolgáltató
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi dokumentáció további információkat tartalmaz az Azure Kubernetes Service (ak) szolgáltatásban kipróbálható szolgáltatási hálókkal kapcsolatban:
 

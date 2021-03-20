@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: adamwa
 ms.openlocfilehash: 76a29af80891142fcf7f56f93f5c7acc5c58ab04
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92165145"
 ---
 # <a name="design-assistant-experiences-for-windows-10"></a>Tervezési asszisztensi tapasztalatok a Windows 10 rendszerhez
@@ -145,11 +145,11 @@ A contoso Assistant otthona van a tálcán: az örvénylő, körkörös ikon.
 
 ![Képernyőkép a Windowson futó hangsegédről tálca ikon előtti aktiváláskor](media/voice-assistants/windows_voice_assistant/pre_compact_view.png)
 
-Az **aktiválás előrehaladtával**a Segéd a háttér-aktiválást kéri. A Segéd egy kis betekintő ablaktáblát kap (az alapértelmezett szélesség 408 és magasság: 248). Ha a kiszolgálóoldali Hangaktiválás meghatározza, hogy a jel hamis pozitív volt, ez a nézet a minimális megszakítás miatt figyelmen kívül hagyható.
+Az **aktiválás előrehaladtával** a Segéd a háttér-aktiválást kéri. A Segéd egy kis betekintő ablaktáblát kap (az alapértelmezett szélesség 408 és magasság: 248). Ha a kiszolgálóoldali Hangaktiválás meghatározza, hogy a jel hamis pozitív volt, ez a nézet a minimális megszakítás miatt figyelmen kívül hagyható.
 
 ![Képernyőfelvétel a Windowsról készült hangsegédről kompakt nézetben az aktiválás ellenőrzése közben](media/voice-assistants/windows_voice_assistant/compact_view_activating.png)
 
-A **végleges aktiválás megerősítésekor**a Segéd a figyelő UX-t is megjeleníti. A Hangaktiválás előzetes verziójának jobb felső részén a Segédnek mindig el kell készítenie az X. elvet.
+A **végleges aktiválás megerősítésekor** a Segéd a figyelő UX-t is megjeleníti. A Hangaktiválás előzetes verziójának jobb felső részén a Segédnek mindig el kell készítenie az X. elvet.
 
 ![A hangsegéd képernyőképe a Windows figyelése kompakt nézetben](media/voice-assistants/windows_voice_assistant/compact_view_listening.png)
 
@@ -161,7 +161,7 @@ A **gyors válaszok** a Hangaktiválás előzetes verziójában is megjelennek. 
 
 ![A hangsegéd képernyőképei a Windowsban a kompakt nézet bővítése előtt és után](media/voice-assistants/windows_voice_assistant/compact_transition.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a hangsegéd fejlesztésével](how-to-windows-voice-assistants-get-started.md)

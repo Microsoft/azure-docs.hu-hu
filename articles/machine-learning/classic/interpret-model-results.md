@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
 ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100516124"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
@@ -23,7 +23,7 @@ Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejel
 
 A gépi tanulási modellek négy fő típusa Azure Machine Learning Studio (klasszikus):
 
-* Besorolás
+* Osztályozás
 * Fürtözés
 * Regresszió
 * Ajánló rendszerek
@@ -40,7 +40,7 @@ A modellek kiértékeléséről a [modell teljesítményének kiértékelését]
 
 Ha új ML Studio (klasszikus), [Ismerje meg, hogyan hozhat létre egy egyszerű kísérletet](create-experiment.md).
 
-## <a name="classification"></a>Besorolás
+## <a name="classification"></a>Osztályozás
 A besorolási problémák két alkategóriája van:
 
 * Problémák csak két osztállyal (kétosztályos vagy bináris besorolású)

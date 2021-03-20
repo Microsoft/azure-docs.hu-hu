@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 1716db0476169e12822b3f47f7199bf6e2c4ee92
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96753773"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Felkészülés az ISV-eszköz vagy a mozgató tevékenységre
@@ -59,7 +59,7 @@ management.azure.com | Azure Resource Manager hívásokat kezdeményez a Azure M
 1. Ha még nem rendelkezik licenccel vagy ingyenes próbaverzióval az eszközhöz, a Azure Migrate eszköz bejegyzésében, a **regisztráció** területen válassza a **továbbiak** lehetőséget.
 2. Az eszközben kövesse az utasításokat az eszközről a Azure Migrate projekthez való hivatkozáshoz, és az adatok Azure Migrateba való küldéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az ISV vagy a mozgató utasításait az adatok Azure Migrate való elküldéséhez.
 

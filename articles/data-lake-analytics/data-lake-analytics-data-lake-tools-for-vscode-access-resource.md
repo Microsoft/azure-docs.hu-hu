@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: d04f108b45070b27c4ff9ed833e8fb77b74cd597
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96754658"
 ---
 # <a name="accessing-resources-with-azure-data-lake-tools"></a>Erőforrások elérése Azure Data Lake eszközökkel
@@ -228,7 +228,7 @@ A VS Code-hoz készült Data Lake Tools a következő funkciókat támogatja:
 > [!NOTE]
 > Javasoljuk, hogy a Visual Studio 2.3.3000.4 vagy újabb verziójára frissítsen Azure Data Lake-eszközökre. A korábbi verziók már nem tölthetők le, és mostantól elavultnak számítanak.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A U-SQL fejlesztése Python, R és C Sharp Azure Data Lake Analytics a VS Code-ban](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [U-SQL helyi Futtatás és helyi hibakeresés a Visual Studio Code-ban](data-lake-tools-for-vscode-local-run-and-debug.md)

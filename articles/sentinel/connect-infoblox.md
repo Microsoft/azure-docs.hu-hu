@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567437"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>A Infoblox-NIOS összekötése az Azure Sentinel használatával
@@ -50,7 +50,7 @@ A sikeres kapcsolatok létrejötte után az adat Log Analytics a syslog alatt je
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a Infoblox NIOS az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

@@ -5,10 +5,10 @@ ms.topic: sample
 ms.date: 11/29/2018
 ms.custom: mvc
 ms.openlocfilehash: 4b85fd604eb27f0963af882b41e823d800005dda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86187098"
 ---
 # <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell-minták
@@ -17,7 +17,7 @@ A következő táblázat a Service Fabric-fürtöket, -alkalmazásokat és -szol
 
 [!INCLUDE [links to azure CLI and service fabric CLI](../../includes/service-fabric-powershell.md)]
 
-| Script | Leírás |
+| Script | Description |
 |-|-|
 | **Fürt létrehozása** ||
 | [Fürt létrehozása (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Létrehoz egy Azure Service Fabric-fürtöt. |

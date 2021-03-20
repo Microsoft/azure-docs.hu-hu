@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhatja a labor által használt Azure
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: dcede89fb23c532742e41121688bcb51a5a73833
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92149311"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>A labor által használt Azure Storage titkosítása Azure DevTest Labs
@@ -16,7 +16,7 @@ A Azure DevTest Labsban létrehozott összes labor egy társított Azure Storage
 - A virtuális gépek létrehozásához használható [képletek](devtest-lab-manage-formulas.md) tárolására szolgáló dokumentumok tárolása.
 - Az összetevők alkalmazásával létrehozott, üzembe helyezési és kiterjesztési naplókat tartalmazó leletek eredményeinek tárolása. 
 - [Virtuális merevlemezek (VHD-k) feltöltése Egyéni rendszerképek létrehozásához a laborban.](devtest-lab-create-template.md)
-- A gyorsítótárazás gyakran [artifacts](add-artifact-vm.md) használt összetevőket és [Azure Resource Manager sablonokat](devtest-lab-create-environment-from-arm.md) a virtuális gép/környezet létrehozása során felmerülő gyorsabb lekéréshez.
+- A gyorsítótárazás gyakran [](add-artifact-vm.md) használt összetevőket és [Azure Resource Manager sablonokat](devtest-lab-create-environment-from-arm.md) a virtuális gép/környezet létrehozása során felmerülő gyorsabb lekéréshez.
 
 > [!NOTE]
 > A fenti információk kritikus fontosságúak a labor működéséhez. A tesztkörnyezet élettartama (és a Labor erőforrásai) tárolása, kivéve, ha explicit módon törölve van. Ezeknek az erőforrásoknak a manuális törlése hibákat eredményezhet a laboratóriumi virtuális gépek és/vagy a későbbi használat során megsérült képletek létrehozásához. 
@@ -28,15 +28,15 @@ A Azure DevTest Labsban létrehozott összes labor egy társított Azure Storage
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon":::
 1. Válassza ki a labor Azure Storage-fiókját. A labor Storage-fiók elnevezési konvenciója a következő: `a<labNameWithoutInvalidCharacters><4-digit number>` . Ha például a labor neve `contosolab` , a Storage-fiók neve lehet `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Válassza ki a Storage-fiókot a tesztkörnyezet erőforráscsoporthoz.":::
 3. A **Storage-fiók** lapon válassza a bal oldali menüben a **Storage Explorer (előzetes verzió)** lehetőséget, majd válassza a blob- **tárolók** lehetőséget a kapcsolódó laborokkal kapcsolatos tartalom megtalálásához. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Storage Explorer (előzetes verzió)" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>A labor Storage-fiók titkosítása
 Az Azure Storage automatikusan titkosítja az adatait, ha a felhőben is megmarad. Az Azure Storage-titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
 
-A Lab Storage-fiókban tárolt adatforgalom **Microsoft által felügyelt kulccsal**van titkosítva. Hivatkozhat a Microsoft által felügyelt kulcsokra az adatok titkosításához, vagy kezelheti a titkosítást a saját kulcsaival. Ha úgy dönt, hogy a labor Storage-fiókjához tartozó saját kulcsokkal kezeli a titkosítást, megadhat egy **ügyfél által felügyelt kulcsot** , amely Azure Key Vault használható a blob Storage-ban és a Azure Filesban tárolt adattitkosításhoz/visszafejtéshez. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfelek által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../storage/common/customer-managed-keys-overview.md).
+A Lab Storage-fiókban tárolt adatforgalom **Microsoft által felügyelt kulccsal** van titkosítva. Hivatkozhat a Microsoft által felügyelt kulcsokra az adatok titkosításához, vagy kezelheti a titkosítást a saját kulcsaival. Ha úgy dönt, hogy a labor Storage-fiókjához tartozó saját kulcsokkal kezeli a titkosítást, megadhat egy **ügyfél által felügyelt kulcsot** , amely Azure Key Vault használható a blob Storage-ban és a Azure Filesban tárolt adattitkosításhoz/visszafejtéshez. Az ügyfél által felügyelt kulcsokkal kapcsolatos további információkért lásd: [ügyfelek által felügyelt kulcsok használata Azure Key Vault az Azure Storage-titkosítás kezeléséhez](../storage/common/customer-managed-keys-overview.md).
 
 A következő cikkekből megtudhatja, hogyan konfigurálhat ügyfél által felügyelt kulcsokat az Azure Storage encryption szolgáltatáshoz: 
 

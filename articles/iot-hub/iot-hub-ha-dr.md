@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
 ms.openlocfilehash: c665e30ed9b284f7c93cf8588b710c9f22457a0a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92151669"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub magas rendelkezésre állása és vészhelyreállítása
@@ -62,7 +62,7 @@ Miután az IoT hub feladatátvételi művelete befejeződött, az eszközről é
 > [!CAUTION]
 > - A IoT Hub beépített események végpontjának az Event hub-kompatibilis neve és végpontja módosult a feladatátvétel után. Ha az Event hub-ügyfél vagy az esemény-feldolgozó gazdagép használatával fogad telemetria üzeneteket a beépített végpontról, az [IoT hub kapcsolati karakterláncát kell használnia](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a kapcsolat létrehozásához. Ez biztosítja, hogy a háttérbeli alkalmazások a feladatátvétel utáni manuális beavatkozás nélkül is működjenek. Ha az Event hub-kompatibilis nevet és végpontot használja közvetlenül az alkalmazásban, akkor a művelet folytatásához le kell [kérnie az új Event hub-kompatibilis végpontot](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) a feladatátvétel után. 
 >
-> - Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített események végponthoz, előfordulhat, hogy **újra kell indítania**a műveletet. Ennek az az oka, hogy a feladatátvétel során a korábbi eltolások már nem érvényesek.
+> - Ha Azure Functions vagy Azure Stream Analytics használatával csatlakozik a beépített események végponthoz, előfordulhat, hogy **újra kell indítania** a műveletet. Ennek az az oka, hogy a feladatátvétel során a korábbi eltolások már nem érvényesek.
 >
 > - A tárolóba való útválasztás esetén ajánlott a Blobok vagy fájlok listázása, majd az azokhoz való iteráció, hogy a rendszer minden blobot vagy fájlt beolvasson a partíciós feltételezések elkészítése nélkül. A partíció tartománya esetleg változhat a Microsoft által kezdeményezett feladatátvétel vagy manuális feladatátvétel során. A [Blobok listázása API](/rest/api/storageservices/list-blobs) -val enumerálhatja a Blobok listáját vagy a lista [ADLS Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/list) -ját a fájlok listájához. További információ: [Azure Storage útválasztási végpontként](iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint).
 

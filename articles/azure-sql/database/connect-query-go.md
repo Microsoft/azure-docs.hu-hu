@@ -5,7 +5,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: sqldbrb=2
 ms.devlang: go
 ms.topic: quickstart
 author: David-Engel
@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: b4a22c734d2afb90d5ea7bc1bda17d3f8fcf585a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91327544"
 ---
 # <a name="quickstart-use-golang-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: adatbázis lekérdezése Azure SQL Database vagy Azure SQL felügyelt példányban
@@ -333,7 +333,7 @@ Az adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasás
    Deleted 1 row(s) successfully.
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [A SQL Server Golang-illesztőprogramja](https://github.com/denisenkom/go-mssqldb)

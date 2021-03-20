@@ -4,10 +4,10 @@ description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információka
 ms.date: 02/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 4908b8ed97bad43d9d24427660a8691ee43d7eaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376978"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
@@ -51,7 +51,7 @@ Próbálja megismételni a regisztrációt. Ha a probléma továbbra is fennáll
 
 ### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Nem sikerült törölni a Recovery Services tárolót a fájlmegosztás feloldása után
 
-A Azure Portal nyissa **meg a**  >  tároló**biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait**. Válassza a **regisztráció** törlése elemet a Storage-fiókok Recovery Services-tárolóból való eltávolításához.
+A Azure Portal nyissa **meg a**  >  tároló **biztonsági mentési infrastruktúrájának**  >  **Storage-fiókjait**. Válassza a **regisztráció** törlése elemet a Storage-fiókok Recovery Services-tárolóból való eltávolításához.
 
 >[!NOTE]
 >Recovery Services-tárolót csak a tárolóban regisztrált összes Storage-fiók regisztrációjának törlése után lehet törölni.
@@ -261,7 +261,7 @@ Hibakód: UserErrorAnotherRestoreInProgressOnSameTarget
 
 Hibaüzenet: egy másik visszaállítási művelet van folyamatban ugyanazon a célfájl-megosztáson
 
-Használjon másik célfájl-megosztást. Másik lehetőségként megszakíthatja vagy megvárhatja, hogy a másik visszaállítás befejeződjön.
+Használjon másik célfájl-megosztást. Másik lehetőségként megszakíthatja a műveletet, vagy megvárhatja, amíg a másik helyreállítási művelet befejeződik.
 
 ## <a name="common-modify-policy-errors"></a>Gyakori szabályzat-módosítási hibák
 

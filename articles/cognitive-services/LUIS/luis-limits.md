@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
 ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97976792"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
@@ -39,7 +39,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | [Előre összeállított entitások](./howto-add-prebuilt-models.md) | korlátlan|
 | [Reguláriskifejezés-entitások](./luis-concept-entity-types.md)|20 entitás<br>500 karakter max. /reguláris kifejezési entitás mintája|
 | [Szerepkörök](./luis-concept-entity-types.md)|300 szerepkör egy alkalmazásban. 10 szerepkör/entitás|
-| [Kimondott szöveg][utterances] | 500 karakter<br><br>Ha ezen a karakternél hosszabb szöveg van, a kiírást a LUIS-be való bevitel előtt kell megadnia, és minden szegmensre külön szándékot kell kapnia. Nyilvánvaló megszakítások is használhatók, például írásjelek és a beszéd hosszú szüneteltetése.|
+| [Beszédelem][utterances] | 500 karakter<br><br>Ha ezen a karakternél hosszabb szöveg van, a kiírást a LUIS-be való bevitel előtt kell megadnia, és minden szegmensre külön szándékot kell kapnia. Nyilvánvaló megszakítások is használhatók, például írásjelek és a beszéd hosszú szüneteltetése.|
 | [Példák a teljes kifejezésekre][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján<br><br>Ha több példával kell betanítania az alkalmazást, használja a [küldő](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) modell megközelítését. Az egyes LUIS-alkalmazásokat (más néven alárendelt alkalmazásokat a fölérendelt küldő alkalmazásba) egy vagy több szándékkal kell elképeznie, majd betanítani egy olyan küldő alkalmazást, amely az egyes gyermek LUIS-alkalmazások hosszúságú kimondott szöveg mintákat küld, hogy az előrejelzési kérést a megfelelő alárendelt alkalmazásra irányítsa. |
 | [Versions](./luis-concept-app-iteration.md) (Verziók)| 100 verzió/alkalmazás |
 | [Verzió neve][luis-how-to-manage-versions] | 128 karakter |
@@ -108,7 +108,7 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlőelem
 
-|Billentyűzet bemenete | Leírás |
+|Billentyűzet bemenete | Description |
 |--|--|
 |Vezérlő + E|a jogkivonatok és entitások közötti váltás a hosszúságú kimondott szöveg listán|
 

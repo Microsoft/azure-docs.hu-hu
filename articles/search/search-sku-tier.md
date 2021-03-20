@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: df218c2a4c066343ef571c6f24554ecaa806b639
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99987883"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
@@ -56,7 +56,7 @@ A legtöbb funkció minden szinten elérhető, beleértve az ingyenes szintet is
 | Szolgáltatás | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben.  |
-| [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
+| [AI-gazdagodás](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
 | [A kimenő (indexelő) hozzáféréshez kezelt vagy megbízható identitások](search-howto-managed-identities-data-sources.md) | Az ingyenes szinten nem érhető el.|
 | [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
 | [IP-tűzfal-hozzáférés](service-configure-firewall.md) | Az ingyenes szinten nem érhető el. |

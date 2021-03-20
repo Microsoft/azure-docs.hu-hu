@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027703"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Logic Apps-alkalmazások tesztelése statikus eredmények beállításával
@@ -37,7 +37,7 @@ Ha például az Outlook 365 küldési műveletének statikus eredményeit állí
 
 1. Hajtsa végre az alábbi lépéseket azon a műveleten, amelynek statikus eredményeit szeretné beállítani: 
 
-   1. A művelet jobb felső sarkában válassza a három pontot ( *..* .), és válassza a **statikus eredmény** lehetőséget, például:
+   1. A művelet jobb felső sarkában válassza a három pontot (*..*.), és válassza a **statikus eredmény** lehetőséget, például:
 
       ![Válassza a "statikus eredmény" > "statikus eredmény engedélyezése" lehetőséget.](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
@@ -132,7 +132,7 @@ A statikus eredmények kikapcsolása nem dobja el az utolsó beállítás érté
 
    ![A képernyőképen egy H T T P művelet látható, ahol kiválaszthatja a teszt főzőpohár ikonját.](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. Válassza a **statikus eredmény letiltása** lehetőséget  >  **Done** .
+1. Válassza a **statikus eredmény letiltása** lehetőséget  >  .
 
    ![A képernyőfelvételen a statikus eredmény letiltása lehetőség látható.](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 

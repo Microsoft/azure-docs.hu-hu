@@ -9,23 +9,23 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
 ms.openlocfilehash: aaaeed9d8d6a2d84fa13f495f581dc1f5fdc19e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323424"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>A TLS-megszakítás konfigurálása Key Vault tanúsítványokkal a Azure PowerShell használatával
 
 A [Azure Key Vault](../key-vault/general/overview.md) egy platform által felügyelt titkos tároló, amely a titkok, a kulcsok és a TLS/SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault-integrációját. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
 
-További információ: TLS- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+További információért lásd [a Key Vault tanúsítványokkal való TLS-megszakításról szóló részt](key-vault-certs.md).
 
 Ez a cikk bemutatja, hogyan használható egy Azure PowerShell parancsfájl a kulcstartó és az Application Gateway közötti integrációhoz a TLS/SSL-megszakítási tanúsítványokhoz.
 
 Ehhez a cikkhez Azure PowerShell-modul 1.0.0-es vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. A cikkben szereplő parancsok futtatásához a futtatásával is létre kell hoznia egy, az Azure-nal való kapcsolódást `Connect-AzAccount` .
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

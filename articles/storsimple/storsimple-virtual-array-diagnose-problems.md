@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 6cb78a7042ca3acbb27f510207783b97f733cfb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005843"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>A StorSimple Virtual Array hibaelhárítása a StorSimple-eszközkezelő szolgáltatással
@@ -42,6 +42,6 @@ Megtekintheti a StorSimple virtuális tömbökkel kapcsolatos gyakori problémá
 
 3. Ha nem talál hivatkozást a problémára, vagy nem oldja meg, forduljon Microsoft ügyfélszolgálata további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [támogatási jegyek naplózásáról](storsimple-virtual-array-log-support-ticket.md)
 

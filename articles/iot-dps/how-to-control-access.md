@@ -10,10 +10,10 @@ ms.date: 04/09/2019
 ms.author: wesmc
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 024dbf6518748a4048873de4eb54a53f9d9a6362
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954324"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Az Azure IoT Hub Device Provisioning Service hozzáférés-vezérlése
@@ -178,7 +178,7 @@ A következő témakörök további információkat nyújtanak a IoT-eszközök 
 
 A következő táblázat felsorolja azokat az engedélyeket, amelyek segítségével szabályozhatja a IoT-eszközök kiépítési szolgáltatásának elérését.
 
-| Engedély | Megjegyzések |
+| Engedély | Jegyzetek |
 | --- | --- |
 | **ServiceConfig** |Hozzáférést biztosít a szolgáltatás konfigurációinak módosításához. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |
 | **EnrollmentRead** |Olvasási hozzáférést biztosít az eszközök regisztrálásához és a beléptetési csoportokhoz. <br/>Ezt az engedélyt a háttérbeli Cloud Services használja. |

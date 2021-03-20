@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,16 +9,16 @@ ms.date: 07/09/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 999f3fb054eedab64a1f7bcebd9788e1edbf29f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86220600"
 ---
 Ebben a lépésben létrehozza a kapcsolatot a hub és a VNet között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
 
-1. A virtuális WAN lapján válassza a **virtuális hálózati kapcsolatok**elemet.
-1. A virtuális hálózati kapcsolatok lapon válassza a **+ kapcsolatok hozzáadása**elemet.
+1. A virtuális WAN lapján válassza a **virtuális hálózati kapcsolatok** elemet.
+1. A virtuális hálózati kapcsolatok lapon válassza a **+ kapcsolatok hozzáadása** elemet.
 1. A **Kapcsolat hozzáadása** lapon töltse ki a következő mezőket:
 
     * **Kapcsolat neve** – Nevezze el a kapcsolatot.

@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, MashaMSFT
 ms.date: 07/10/2020
 ms.openlocfilehash: 2da7311e61aa39be69a6a0a29eff686baaad7ebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91323192"
 ---
 # <a name="overview-of-azure-sql-managed-instance-management-operations"></a>Az Azure SQL Managed Instance felügyeleti műveleteinek áttekintése
@@ -50,7 +50,7 @@ A következő értékek általában várhatóan a meglévő szolgáltatás-telem
 Emellett a példányok kezelése az üzemeltetett adatbázisokra vonatkozó egyik műveletet is magában foglalhat, ami hosszabb időtartamot eredményez:
 
 - **Adatbázisfájlok csatolása az Azure Storage-ból**: egy szinkron lépés, például méretezési számítás (virtuális mag), illetve a általános célú szolgáltatási szinten felfelé vagy lefelé történő tárterület. <br/>a **műveletek 90%-a 5 percen belül befejeződik**.
-- **Always On rendelkezésre állási csoport**beültetése: egy szinkron lépés, például a számítási (virtuális mag) vagy a tárolási skálázás a üzletileg kritikus szolgáltatási rétegben, valamint a szolgáltatási réteg általános célúról üzletileg kritikusra (vagy fordítva) való megváltoztatására. A művelet időtartama a teljes adatbázis méretével, valamint az aktuális adatbázis-tevékenységgel (aktív tranzakciók száma) arányos. Az adatbázis-tevékenység egy példány frissítésekor jelentős variancia bevezetését jelentheti a teljes időtartamra. <br/>a **műveletek 90%-a 220 GB/óra vagy újabb**.
+- **Always On rendelkezésre állási csoport** beültetése: egy szinkron lépés, például a számítási (virtuális mag) vagy a tárolási skálázás a üzletileg kritikus szolgáltatási rétegben, valamint a szolgáltatási réteg általános célúról üzletileg kritikusra (vagy fordítva) való megváltoztatására. A művelet időtartama a teljes adatbázis méretével, valamint az aktuális adatbázis-tevékenységgel (aktív tranzakciók száma) arányos. Az adatbázis-tevékenység egy példány frissítésekor jelentős variancia bevezetését jelentheti a teljes időtartamra. <br/>a **műveletek 90%-a 220 GB/óra vagy újabb**.
 
 A következő táblázatok összefoglalják a műveleteket és a jellemző általános időtartamokat a művelet kategóriája alapján:
 
@@ -69,7 +69,7 @@ A következő táblázatok összefoglalják a műveleteket és a jellemző álta
 
 |Művelet  |Hosszan futó szegmens  |Becsült időtartam  |
 |---------|---------|---------|
-|Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N.A.|Legfeljebb 1 perc.|
+|Példány tulajdonságainak módosítása (rendszergazdai jelszó, Azure AD-bejelentkezés, Azure Hybrid Benefit jelző)|N/A|Legfeljebb 1 perc.|
 |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Adatbázisfájlok csatolása|a műveletek 90%-a 5 percen belül befejeződik.|
 |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-a, 2,5 óra + idő alatt az összes adatbázist (220 GB/óra) kell befejeznie.|
 |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 2,5 órában fejeződik be.|
@@ -116,7 +116,7 @@ A felügyeleti műveletek több lépésből állnak. Az [Operations API](managem
 |Virtuális fürt átméretezése/létrehozása |Az alhálózat állapotától függően a virtuális fürt létrehozása vagy átméretezése folyamatban van. |
 |Új SQL-példány indítása | Az SQL-folyamat elindult a telepített virtuális fürtön. |
 |Adatbázisfájlok kivetése/adatbázisfájlok csatolása |A frissítési művelet típusától függően az adatbázis-előkészítés vagy az adatbázisfájlok csatolása történik. |
-|Feladatátvétel és feladatátvétel előkészítése |Miután a rendszer elvégezte az adatfeldolgozást vagy az adatbázisfájlok újracsatolását, a rendszer előkészíti a feladatátvételt. Ha minden be van állítva, a feladatátvétel **rövid állásidővel**történik. |
+|Feladatátvétel és feladatátvétel előkészítése |Miután a rendszer elvégezte az adatfeldolgozást vagy az adatbázisfájlok újracsatolását, a rendszer előkészíti a feladatátvételt. Ha minden be van állítva, a feladatátvétel **rövid állásidővel** történik. |
 |Régi SQL-példányok karbantartása |A régi SQL-folyamat eltávolítása a virtuális fürtből |
 
 > [!NOTE]

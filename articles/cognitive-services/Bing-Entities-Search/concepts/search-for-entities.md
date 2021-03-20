@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 9dabceda17defb24f2a916cd641f625feb551c6a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353289"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Entitások keresése a Bing Entity API-val
@@ -336,6 +336,6 @@ Amennyiben nem biztos benne, hogy egy művelet vagy szándék felfogható-e kere
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Próbáljon ki egy rövid](../quickstarts/csharp.md) útmutatót, amellyel megkezdheti az entitások keresését a Bing Entity Search API.

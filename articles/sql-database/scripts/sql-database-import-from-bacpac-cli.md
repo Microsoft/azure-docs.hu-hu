@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
 ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87503803"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>BACPAC-fájl importálása a parancssori felület használatával SQL Database
@@ -51,7 +51,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
 | [az SQL db import](/cli/azure/sql/db#az-sql-db-import) | Adatbázis-importálási parancs. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

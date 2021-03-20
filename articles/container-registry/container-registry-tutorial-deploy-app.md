@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148434"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: webalkalmazás üzembe helyezése egy földrajzilag replikált Azure Container registryből
@@ -37,7 +37,7 @@ Ebben a lépésben létrehoz egy Web App for Containers-példányt az *USA nyuga
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és lépjen az előző oktatóanyagban létrehozott regisztrációs adatbázisra.
 
-Válassza **ki**  >  az**ACR-HelloWorld**adattárakat, majd kattintson a jobb gombbal a **v1** címkére a **címkék** területen, majd válassza a **telepítés a webalkalmazásba**lehetőséget:
+Válassza **ki**  >  az **ACR-HelloWorld** adattárakat, majd kattintson a jobb gombbal a **v1** címkére a **címkék** területen, majd válassza a **telepítés a webalkalmazásba** lehetőséget:
 
 ![Üzembe helyezés az App Service-ben az Azure Portalon][deploy-app-portal-01]
 
@@ -50,7 +50,7 @@ Az „Üzembe helyezés a webalkalmazásban” kiválasztása után megjeleníte
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-westus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
 | **App Service-csomag/hely** | Hozzon létre `plan-westus` nevű új csomagot az **USA nyugati régiójában**. |
-| **Rendszerkép** | `acr-helloworld:v1` |
+| **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
 
 > [!NOTE]
@@ -83,7 +83,7 @@ Kövesse az előző szakaszban leírt eljárást egy második webalkalmazás az 
 | **Hely neve** | A webalkalmazás globálisan egyedi neve. Ebben a példában az `<acrName>-eastus` formátumot használjuk, hogy könnyen azonosítani lehessen a regisztrációs adatbázist és a régiót, amelyből a webalkalmazás telepítve lesz. |
 | **Erőforráscsoport** | **Meglévő használata** > `myResourceGroup` |
 | **App Service-csomag/hely** | Hozzon létre `plan-eastus` nevű új csomagot az **USA keleti régiójában**. |
-| **Rendszerkép** | `acr-helloworld:v1` |
+| **Kép** | `acr-helloworld:v1` |
 | **Operációs rendszer** | Linux |
 
 Válassza a **Létrehozás** lehetőséget a webalkalmazás az *USA keleti régiójában* való üzembe helyezéséhez.

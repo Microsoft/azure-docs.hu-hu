@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/15/2021
 ms.author: mbaldwin
 ms.openlocfilehash: 85aa9d355b2440535ea13c8c15e95500bac22352
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567260"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure dedikált HSM – magas rendelkezésre állás
@@ -31,7 +31,7 @@ A következő ábra egy magasan elérhető architektúrát mutat be. Több eszk�
 
 ![Magas rendelkezésre állási diagram](media/high-availability/high-availability.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Javasoljuk, hogy a szolgáltatás alapvető fogalmait, például a magas rendelkezésre állást és a biztonságot is jól megértse az eszköz kiépítése és az alkalmazások tervezése vagy üzembe helyezése előtt.
 További fogalmi szintű témakörök:

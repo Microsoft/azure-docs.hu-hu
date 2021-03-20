@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csatolhat vagy leválaszthat egy adatlemezt egy
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91328513"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Adatlemez csatolása vagy leválasztása virtuális géphez Azure DevTest Labs
@@ -25,17 +25,17 @@ Az adatlemez virtuális géphez való csatolása előtt tekintse át a következ
 Az alábbi lépéseket követve hozzon létre és csatoljon új felügyelt adatlemezt egy Azure DevTest Labs-beli virtuális géphez.
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. Válassza a **minden szolgáltatás** lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 1. A laborok listájából válassza ki a kívánt labort. 
-1. A **virtuális gépek**listájából válassza ki a futó virtuális gépet.
-1. A bal oldali menüben válassza a **lemezek**lehetőséget.
+1. A **virtuális gépek** listájából válassza ki a futó virtuális gépet.
+1. A bal oldali menüben válassza a **lemezek** lehetőséget.
 1. Válassza az **új csatolás** lehetőséget az új adatlemez létrehozásához és a virtuális géphez csatolásához.
 
     ![Új adatlemez csatlakoztatása virtuális géphez](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new.png)
 1. Töltse ki az **új lemez csatolása** panelt az adatlemez nevének, típusának és méretének megadásával.
 
     ![Fejezze be az "új lemez csatolása" űrlapot](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Néhány pillanat elteltével létrejön az új adatlemez a virtuális géphez, és megjelenik az adott virtuális géphez tartozó **adatlemezek** listájában.
 
@@ -43,7 +43,7 @@ Néhány pillanat elteltével létrejön az új adatlemez a virtuális géphez, 
 Kövesse az alábbi lépéseket egy meglévő elérhető adatlemez egy futó virtuális géphez való újracsatolásához. 
 
 1. Válassza ki azt a futó virtuális gépet, amelyhez adatlemezt kíván csatlakoztatni.
-1. A bal oldali menüben válassza a **lemezek**lehetőséget.
+1. A bal oldali menüben válassza a **lemezek** lehetőséget.
 1. Válassza a **meglévő csatolása** lehetőséget, hogy egy rendelkezésre álló adatlemezt csatoljon a virtuális géphez.
 
     ![A "lemezek" beállítás kijelölését és a "meglévő csatolás" kijelölését bemutató képernyőkép.](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
@@ -61,8 +61,8 @@ Ha újra szeretné használni a lemezen lévő meglévő adatlemezeket, akkor az
 
 ### <a name="detach-from-the-vms-management-pane"></a>Leválasztás a virtuális gép felügyeleti paneljéről
 1. A virtuális gépek listájából válassza ki azt a virtuális GÉPET, amelyhez adatlemez van csatolva.
-1. A bal oldali menüben válassza a **lemezek**lehetőséget.
-1. Az **adatlemezek**listájából válassza ki a leválasztani kívánt adatlemezt.
+1. A bal oldali menüben válassza a **lemezek** lehetőséget.
+1. Az **adatlemezek** listájából válassza ki a leválasztani kívánt adatlemezt.
 
     ![Adatlemezek kiválasztása virtuális géphez](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. Válassza a **Leválasztás** lehetőséget a lemez részletek paneljének tetején.
@@ -72,14 +72,14 @@ Ha újra szeretné használni a lemezen lévő meglévő adatlemezeket, akkor az
 
 A lemez le van választva, és elérhető egy másik virtuális géphez való csatoláshoz. 
 ### <a name="detach-from-the-labs-main-pane"></a>Leválasztás a labor fő paneljéről
-1. A labor fő ablaktábláján válassza **a saját adatlemezek**lehetőséget.
-1. Kattintson a jobb gombbal a leválasztani kívánt adatlemezre – vagy válassza ki a három pontot (**...**), és válassza a **Leválasztás**lehetőséget.
+1. A labor fő ablaktábláján válassza **a saját adatlemezek** lehetőséget.
+1. Kattintson a jobb gombbal a leválasztani kívánt adatlemezre – vagy válassza ki a három pontot (**...**), és válassza a **Leválasztás** lehetőséget.
 
     ![Adatlemez leválasztása](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk.png)
 1. Az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani.
 
    > [!NOTE]
-   > Ha egy adatlemez már le van választva, a **Törlés**lehetőség kiválasztásával eltávolíthatja azt az elérhető adatlemezek listájáról.
+   > Ha egy adatlemez már le van választva, a **Törlés** lehetőség kiválasztásával eltávolíthatja azt az elérhető adatlemezek listájáról.
    >
    >
 

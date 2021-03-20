@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.openlocfilehash: 178bdca78c6f011c607de8e1f5d5eabcdbaab7d4
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98567691"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure-beli virtuális gép felmérésének létrehozása
@@ -182,7 +182,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan hozhat létre nagy megbízhatóságú csoportokat a [függőségi leképezés](how-to-create-group-machine-dependencies.md) használatával.
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

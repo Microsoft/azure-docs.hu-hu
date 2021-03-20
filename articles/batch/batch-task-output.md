@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85965110"
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
@@ -73,9 +73,9 @@ A Batch-megoldás tervezésekor vegye figyelembe a feladatok és a tevékenység
 
 - **Kimenet beolvasása**: a tevékenység kimenetét közvetlenül a készletben lévő számítási csomópontokból, illetve az Azure Storage-ból vagy egy másik adattárból is lekérheti, ha megtartotta a feladat kimenetét. Ha közvetlenül egy számítási csomópontból szeretné lekérni a tevékenység kimenetét, szüksége lesz a fájl nevére és a kimeneti helyére a csomóponton. Ha a feladat kimenetét az Azure Storage-ba tartja, akkor az Azure Storage-beli fájl teljes elérési útját kell használnia a kimeneti fájlok letöltéséhez az Azure Storage SDK-val.
 
-- **Kimenet megtekintése**: ha a Azure Portal egy batch-feladatra navigál, és kiválasztja a **fájlok a csomóponton**lehetőséget, akkor a feladathoz tartozó összes fájl, nem csak a kívánt kimeneti fájlok jelennek meg. A számítási csomópontokon lévő fájlok csak akkor érhetők el, ha a csomópont létezik, és csak a feladathoz beállított megőrzési időn belül van. Az Azure Storage-ban megőrzött tevékenység-kimenet megtekintéséhez használhatja a Azure Portal vagy egy Azure Storage-ügyfélalkalmazás, például a [Azure Storage Explorer][storage_explorer]. Ha meg szeretné tekinteni a kimeneti adatokat az Azure Storage-ban a portálon vagy egy másik eszközön, ismernie kell a fájl helyét, és közvetlenül hozzá kell navigálnia.
+- **Kimenet megtekintése**: ha a Azure Portal egy batch-feladatra navigál, és kiválasztja a **fájlok a csomóponton** lehetőséget, akkor a feladathoz tartozó összes fájl, nem csak a kívánt kimeneti fájlok jelennek meg. A számítási csomópontokon lévő fájlok csak akkor érhetők el, ha a csomópont létezik, és csak a feladathoz beállított megőrzési időn belül van. Az Azure Storage-ban megőrzött tevékenység-kimenet megtekintéséhez használhatja a Azure Portal vagy egy Azure Storage-ügyfélalkalmazás, például a [Azure Storage Explorer][storage_explorer]. Ha meg szeretné tekinteni a kimeneti adatokat az Azure Storage-ban a portálon vagy egy másik eszközön, ismernie kell a fájl helyét, és közvetlenül hozzá kell navigálnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a Batch szolgáltatás API új funkcióival, hogy a Batch szolgáltatás API-val megőrzött tevékenységadatok maradjanak a [feladat adataiban az Azure Storage](batch-task-output-files.md)-ban.
 - Ismerje meg, hogyan használható a Batch file Conventions Library for .NET a [feladat-és tevékenységadatok megőrzése az Azure Storage-ban a .net-hez készült batch file Conventions Library](batch-task-output-file-conventions.md)használatával.

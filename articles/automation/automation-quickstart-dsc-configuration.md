@@ -8,10 +8,10 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86186078"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapot-konfigurációval
@@ -48,10 +48,10 @@ Számos különböző módszerrel engedélyezheti a gép számára az állapot-k
 
 A modulok DSC-erőforrásokat tartalmaznak, és számos megtalálható a [PowerShell-Galéria](https://www.powershellgallery.com). A konfigurációban használt összes erőforrást a fordítás előtt importálni kell az Automation-fiókba. Ebben az oktatóanyagban az **nx** nevű modulra van szükség.
 
-1. Az Automation-fiók bal oldali ablaktábláján válassza a **modulok gyűjtemény** elemet a **megosztott erőforrások**területen.
+1. Az Automation-fiók bal oldali ablaktábláján válassza a **modulok gyűjtemény** elemet a **megosztott erőforrások** területen.
 1. Keresse meg az importálni kívánt modult a név egy részének beírásával: `nx` .
 1. Kattintson az importálni kívánt modulra.
-1. Kattintson az **Importálás**gombra.
+1. Kattintson az **Importálás** gombra.
 
 ![DSC-modul importálása](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 
@@ -59,7 +59,7 @@ A modulok DSC-erőforrásokat tartalmaznak, és számos megtalálható a [PowerS
 
 Ez a rövid útmutató a gépen Apache HTTP-kiszolgálót, MySQL-t és PHP-t konfiguráló DSC-konfigurációt használ. Lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations).
 
-Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **AMPServer.ps1ként **.
+Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **AMPServer.ps1ként**.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -105,7 +105,7 @@ Ahhoz, hogy hozzá lehessen rendelni egy csomópontot, le kell fordítania egy D
 
 1. Az Automation-fiók bal oldali ablaktábláján válassza az **állapot konfigurálása (DSC)** lehetőséget, majd kattintson a **konfigurációk** fülre.
 1. Válassza ki a konfigurációt `LAMPServer` .
-1. A menüpontok között válassza a **fordítás** lehetőséget, majd kattintson az **Igen**gombra.
+1. A menüpontok között válassza a **fordítás** lehetőséget, majd kattintson az **Igen** gombra.
 1. A konfiguráció nézetben megjelenik egy új fordítási feladatok várólistára helyezése. Amikor a feladat sikeresen elkészül, továbbléphet a következő lépésre. Ha bármilyen hiba merül fel, a részletekért kattintson a fordítási feladatra.
 
 ## <a name="assign-a-node-configuration"></a>Csomópont-konfiguráció hozzárendelése
@@ -115,7 +115,7 @@ Lefordított csomópont-konfigurációt hozzárendelhet egy DSC-csomóponthoz. A
 1. Az Automation-fiók bal oldali ablaktábláján válassza az **állapot-konfiguráció (DSC)** elemet, majd kattintson a **csomópontok** fülre.
 1. Válassza ki azt a csomópontot, amelyhez hozzá szeretné rendelni a konfigurációt.
 1. Kattintson a **Csomópont-konfiguráció hozzárendelése** elemre
-1. Válassza ki a csomópont `LAMPServer.localhost` -konfigurációt, és kattintson **az OK**gombra. Az állapot-konfiguráció most hozzárendeli a lefordított konfigurációt a csomóponthoz, és a csomópont állapota módosul `Pending` . A következő rendszeres vizsgálat során a csomópont lekéri a konfigurációt, alkalmazza azt és a jelentések állapotát. A csomópont beállításaitól függően akár 30 percet is igénybe vehet, amíg a csomópont beolvassa a konfigurációt. 
+1. Válassza ki a csomópont `LAMPServer.localhost` -konfigurációt, és kattintson **az OK** gombra. Az állapot-konfiguráció most hozzárendeli a lefordított konfigurációt a csomóponthoz, és a csomópont állapota módosul `Pending` . A következő rendszeres vizsgálat során a csomópont lekéri a konfigurációt, alkalmazza azt és a jelentések állapotát. A csomópont beállításaitól függően akár 30 percet is igénybe vehet, amíg a csomópont beolvassa a konfigurációt. 
 1. Az azonnali ellenőrzés kényszerítéséhez futtassa a következő parancsot helyileg a Linux rendszerű virtuális gépen: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![Csomópont-konfiguráció hozzárendelése](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)
@@ -126,7 +126,7 @@ Az Automation-fiókban megtekintheti az állapot konfigurációjának összes fe
 
 ![DSC-csomópont állapota](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban engedélyezte a Linux rendszerű virtuális gépet az állapot konfigurálásához, létrehozta a LAMP-verem konfigurációját, és telepítette a konfigurációt a virtuális gépre. Ha szeretné megtudni, hogyan használhatja Azure Automation állapot konfigurációját a folyamatos üzembe helyezés engedélyezéséhez, folytassa a cikket:
 

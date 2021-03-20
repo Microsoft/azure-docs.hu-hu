@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 36dc7d098892fb2be7c2ba3d75de7c7adef1a4f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86171550"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: események továbbítása a IoTHub
@@ -137,7 +137,7 @@ Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továb
 1. Navigáljon a **IoT hub**.
 1. **IoT Edge** kiválasztása a menüből
 1. Válassza ki a cél eszköz AZONOSÍTÓját az eszközök listájából.
-1. Válassza a **modulok beállítása**lehetőséget.
+1. Válassza a **modulok beállítása** lehetőséget.
 1. Válassza a **Next (tovább** ) és az útvonalak szakaszt.
 1. Az útvonalakban adjon hozzá egy új útvonalat
 
@@ -145,7 +145,7 @@ Frissítse az Edge hub útvonalát az esemény-előfizetés eseményeinek továb
   "fromEventGridToIoTHub":"FROM /messages/modules/eventgridmodule/outputs/sampleSub4 INTO $upstream"
   ```
 
-  Például:
+  Példa:
 
   ```json
   {
@@ -203,7 +203,7 @@ Az események megtekintéséhez szükséges lépéseket a IoT Hub [útválasztá
     ```
 * Törölje az IoTHub-útválasztás felhőben való beállítása során létrehozott erőforrásokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, az Edge hub-előfizetést és a közzétett eseményeket. Most, hogy már ismeri az egy peremhálózati hubhoz való továbbítás alapvető lépéseit, tekintse meg a következő cikkeket:
 

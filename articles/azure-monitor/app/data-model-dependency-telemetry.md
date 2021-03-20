@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87315971"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
 
 A függőségi telemetria ( [Application Insights](./app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Name
 
 A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
 
@@ -43,7 +43,7 @@ Kérelem időtartama (formátum `DD.HH:MM:SS.MMMMMM` ):. Rövidebbnek kell lenni
 
 A függőségi hívás eredményének kódja. Ilyenek például az SQL-hibakódok és a HTTP-állapotkód.
 
-## <a name="success"></a>Success
+## <a name="success"></a>Siker
 
 A sikeres vagy sikertelen hívás megjelölése.
 
@@ -56,7 +56,7 @@ A sikeres vagy sikertelen hívás megjelölése.
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Függőségi követés beállítása a [.net](./asp-net-dependencies.md)-hez.
 - A függőség nyomon követésének beállítása a [Javához](./java-agent.md).

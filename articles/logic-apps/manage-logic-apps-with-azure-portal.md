@@ -10,10 +10,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006098"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logikai alkalmazások kezelése a Azure Portalban
@@ -222,6 +222,6 @@ A Logic apps verziójának vezérlésére a Azure Portal használhatja. Megtalá
 
    Ha újra [megtekinti a logikai alkalmazás verziójának előzményeit](#find-version-history) , akkor a lista tetején megjelenik az előléptetett verzió, és új azonosítóval rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Logikai alkalmazások figyelése](monitor-logic-apps.md)

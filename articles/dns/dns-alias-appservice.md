@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
 ms.openlocfilehash: 72adb2732eb0832589cbc25fb7e4288eb1899214
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94954511"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Elosztott terhelésű Azure Web Apps a zóna csúcsán
@@ -34,7 +34,7 @@ A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért l
 
 Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot, amely az ebben a cikkben használt összes erőforrást tárolni fogja.
 
@@ -55,7 +55,7 @@ Hozzon létre két webalkalmazást, egyet az egyes App Service-csomagokban.
 1. Az Azure Portal lap bal felső sarkában válassza az **erőforrás létrehozása** lehetőséget.
 2. Írja be a **webalkalmazás** kifejezést a keresősávba, majd nyomja le az ENTER billentyűt.
 3. Válassza a **webalkalmazás** lehetőséget.
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 5. Fogadja el az alapértelmezett értékeket, és a következő táblázat segítségével konfigurálja a két webalkalmazást:
 
    |Name<br>(a. azurewebsites.net belül egyedinek kell lennie)|Erőforráscsoport |Futtatókörnyezet verme|Region|App Service csomag/hely
@@ -84,7 +84,7 @@ Most már létrehozhatja a két webalkalmazáshoz tartozó végpontokat.
 
 1. Nyissa meg az erőforráscsoportot, és válassza ki a Traffic Manager-profilt.
 2. A bal oldali oszlopban válassza a **végpontok** lehetőséget.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A végpontok konfigurálásához használja a következő táblázatot:
 
    |Típus  |Name  |Cél  |Hely  |Egyéni fejléc beállításai|
@@ -134,7 +134,7 @@ Most adjon hozzá egy alias-rekordot a zóna csúcsához.
 
    |Név  |Típus  |Aliasrekord-halmaz  |Alias típusa  |Azure-erőforrás|
    |---------|---------|---------|---------|-----|
-   |@     |A|Igen|Azure-erőforrás|Traffic Manager – a profil|
+   |@     |A|Yes|Azure-erőforrás|Traffic Manager – a profil|
 
 
 ## <a name="test-your-web-apps"></a>Webes alkalmazások tesztelése

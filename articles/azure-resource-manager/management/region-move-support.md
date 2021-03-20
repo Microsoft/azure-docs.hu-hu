@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
 ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100094015"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
@@ -205,7 +205,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | domainservices | Nem | 
+> | domainservices | No | 
 
 
 ## <a name="microsoftaadiam"></a>Microsoft. aadiam
@@ -213,71 +213,71 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | diagnosticsettings | Nem |
-> | diagnosticsettingscategories | Nem |
-> | privatelinkforazuread | Nem |
-> | bérlők |  Nem |
+> | diagnosticsettings | No |
+> | diagnosticsettingscategories | No |
+> | privatelinkforazuread | No |
+> | bérlők |  No |
 
 ## <a name="microsoftaddons"></a>Microsoft. Addons
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | supportproviders | Nem |
+> | supportproviders | No |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | aadsupportcases | Nem |
-> | addsservices | Nem | 
-> | ügynökök | Nem | 
-> | anonymousapiusers | Nem |
-> | konfiguráció | Nem | 
-> | naplók | Nem | 
-> | jelentések | Nem | 
-> | servicehealthmetrics | Nem | 
-> | services | Nem | 
+> | aadsupportcases | No |
+> | addsservices | No | 
+> | ügynökök | No | 
+> | anonymousapiusers | No |
+> | konfiguráció | No | 
+> | naplók | No | 
+> | jelentések | No | 
+> | servicehealthmetrics | No | 
+> | services | No | 
 
 ## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | konfigurációk | Nem | 
-> | generaterecommendations | Nem |
-> | metaadatok | Nem |
-> | javaslatok | Nem |
-> | fóliakondenzát | Nem | 
+> | konfigurációk | No | 
+> | generaterecommendations | No |
+> | metaadatok | No |
+> | javaslatok | No |
+> | fóliakondenzát | No | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | actionrules | Nem | 
-> | riasztások | Nem | 
-> | alertslist | Nem | 
-> | alertsmetadata | Nem | 
-> | alertssummary | Nem | 
-> | alertssummarylist | Nem | 
-> | smartdetectoralertrules | Nem | 
-> | smartgroups | Nem | 
+> | actionrules | No | 
+> | riasztások | No | 
+> | alertslist | No | 
+> | alertsmetadata | No | 
+> | alertssummary | No | 
+> | alertssummarylist | No | 
+> | smartdetectoralertrules | No | 
+> | smartgroups | No | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kiszolgálók | Nem |
+> | kiszolgálók | No |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | reportfeedback | Nem |
+> | reportfeedback | No |
 > | szolgáltatás |  Igen (sablon használatával) <br/><br/> [API Management áthelyezése a régiók között](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
@@ -285,15 +285,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | configurationstores | Nem | 
-> | configurationstores / eventgridfilters | Nem |
+> | configurationstores | No | 
+> | configurationstores / eventgridfilters | No |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | Spring | Nem | 
+> | Spring | No | 
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
@@ -301,36 +301,36 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | apiapps | Igen (sablon használatával)<br/><br/> [App Service alkalmazás áthelyezése másik régióba](../../app-service/manage-move-across-regions.md) | 
-> | appidentities | Nem | 
-> | átjárók | Nem | 
+> | appidentities | No | 
+> | átjárók | No | 
 
 ## <a name="microsoftattestation"></a>Microsoft. igazolás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | attestationproviders | Nem | 
+> | attestationproviders | No | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | classicadministrators | Nem | 
-> | dataaliases | Nem | 
-> | denyassignments | Nem | 
-> | elevateaccess | Nem | 
-> | findorphanroleassignments | Nem | 
-> | zárak | Nem | 
-> | engedélyek | Nem | 
-> | policyassignments | Nem | 
-> | policydefinitions | Nem | 
-> | policysetdefinitions | Nem | 
-> | privatelinkassociations | Nem | 
-> | resourcemanagementprivatelinks | Nem | 
-> | RoleAssignments | Nem | 
-> | roleassignmentsusagemetrics | Nem | 
-> | roledefinitions | Nem | 
+> | classicadministrators | No | 
+> | dataaliases | No | 
+> | denyassignments | No | 
+> | elevateaccess | No | 
+> | findorphanroleassignments | No | 
+> | zárak | No | 
+> | engedélyek | No | 
+> | policyassignments | No | 
+> | policydefinitions | No | 
+> | policysetdefinitions | No | 
+> | privatelinkassociations | No | 
+> | resourcemanagementprivatelinks | No | 
+> | RoleAssignments | No | 
+> | roleassignmentsusagemetrics | No | 
+> | roledefinitions | No | 
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -338,15 +338,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | automationaccounts | Igen (sablon használatával) <br/><br/> [Geo-replikáció használata](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
-> | automationaccounts/konfigurációk | Nem | 
-> | automationaccounts/runbookok | Nem | 
+> | automationaccounts/konfigurációk | No | 
+> | automationaccounts/runbookok | No | 
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | Előfizetés |
 > | ------------- | ----------- | 
-> | privateclouds | Nem | 
+> | privateclouds | No | 
 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
@@ -354,36 +354,36 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | b2cdirectories | Nem | 
-> | b2ctenants | Nem | 
+> | b2cdirectories | No | 
+> | b2ctenants | No | 
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | datacontrollers | Nem | 
-> | hybriddatamanagers | Nem | 
-> | postgresinstances | Nem | 
-> | sqlinstances | Nem | 
-> | sqlmanagedinstances | Nem |
-> | sqlserverinstances | Nem | 
-> | sqlserverregistrations | Nem |
+> | datacontrollers | No | 
+> | hybriddatamanagers | No | 
+> | postgresinstances | No | 
+> | sqlinstances | No | 
+> | sqlmanagedinstances | No |
+> | sqlserverinstances | No | 
+> | sqlserverregistrations | No |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | cloudmanifestfiles | Nem |
-> | regisztrációk | Nem | 
+> | cloudmanifestfiles | No |
+> | regisztrációk | No | 
 
 ## <a name="microsoftazurestackhci"></a>Microsoft. AzureStackHCI
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | fürtök | Nem | 
+> | fürtök | No | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -397,46 +397,46 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | billingaccounts | Nem | 
-> | billingperiods | Nem | 
-> | billingpermissions | Nem | 
-> | billingproperty | Nem | 
-> | billingroleassignments | Nem | 
-> | billingroledefinitions | Nem | 
-> | részlegek | Nem | 
-> | enrollmentaccounts | Nem | 
-> | számlák | Nem | 
-> | transzferek | Nem | 
+> | billingaccounts | No | 
+> | billingperiods | No | 
+> | billingpermissions | No | 
+> | billingproperty | No | 
+> | billingroleassignments | No | 
+> | billingroledefinitions | No | 
+> | részlegek | No | 
+> | enrollmentaccounts | No | 
+> | számlák | No | 
+> | transzferek | No | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | mapapis | Nem | 
+> | mapapis | No | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft. BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | biztalk | Nem | 
+> | biztalk | No | 
 
 ## <a name="microsoftblockchain"></a>Microsoft. Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | blockchainmembers | Nem <br/><br/> A blockchain-hálózat nem rendelkezhet különböző régiókban található csomópontokkal. 
-> | cordamembers | Nem |
-> | Watchers | Nem | 
+> | blockchainmembers | No <br/><br/> A blockchain-hálózat nem rendelkezhet különböző régiókban található csomópontokkal. 
+> | cordamembers | No |
+> | Watchers | No | 
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tokenservices | Nem |
+> | tokenservices | No |
 
 
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
@@ -444,57 +444,57 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | blueprintassignments | Nem | 
-> | tervrajzok | Nem |
+> | blueprintassignments | No | 
+> | tervrajzok | No |
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | botservices | Nem | 
+> | botservices | No | 
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | Redis | Nem | 
-> | redisenterprise | Nem | 
+> | Redis | No | 
+> | redisenterprise | No | 
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | appliedreservations | Nem | 
-> | calculateexchange | Nem | 
-> | calculateprice | Nem | 
-> | calculatepurchaseprice | Nem | 
-> | katalógusok | Nem | 
-> | commercialreservationorders | Nem | 
-> | Exchange | Nem |
-> | reservationorders | Nem | 
-> | foglalások | Nem | 
-> | resources | Nem | 
-> | validatereservationorder | Nem | 
+> | appliedreservations | No | 
+> | calculateexchange | No | 
+> | calculateprice | No | 
+> | calculatepurchaseprice | No | 
+> | katalógusok | No | 
+> | commercialreservationorders | No | 
+> | Exchange | No |
+> | reservationorders | No | 
+> | foglalások | No | 
+> | resources | No | 
+> | validatereservationorder | No | 
 
 ## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | cdnwebapplicationfirewallpolicies | Nem |
-> | edgenodes | Nem
-> | profilok | Nem | 
-> | profilok/végpontok | Nem | 
+> | cdnwebapplicationfirewallpolicies | No |
+> | edgenodes | No
+> | profilok | No | 
+> | profilok/végpontok | No | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tanúsítványrendelések | Nem | 
+> | tanúsítványrendelések | No | 
 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
@@ -502,61 +502,61 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | képességek | Nem | 
+> | képességek | No | 
 > | tartománynevek | Igen | Nem |
-> | kvóták | Nem | 
-> | resourcetypes | Nem |
-> | validatesubscriptionmoveavailability | Nem | 
-> | virtualmachines | Nem 
+> | kvóták | No | 
+> | resourcetypes | No |
+> | validatesubscriptionmoveavailability | No | 
+> | virtualmachines | No 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | classicinfrastructureresources | Nem | 
+> | classicinfrastructureresources | No | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | képességek | Nem | 
-> | expressroutecrossconnections | Nem | 
-> | expressroutecrossconnections/társak | Nem | 
-> | gatewaysupporteddevices | Nem | 
-> | networksecuritygroups | Nem |
-> | kvóták | Nem |
-> | reservedips | Nem | 
-> | virtualnetworks | Nem | 
+> | képességek | No | 
+> | expressroutecrossconnections | No | 
+> | expressroutecrossconnections/társak | No | 
+> | gatewaysupporteddevices | No | 
+> | networksecuritygroups | No |
+> | kvóták | No |
+> | reservedips | No | 
+> | virtualnetworks | No | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | lemezek | Nem | 
-> | images | Nem | 
-> | osimages | Nem | 
-> | osplatformimages | Nem | 
-> | publicimages | Nem | 
-> | kvóták | Nem | 
-> | storageaccounts | Igen |  
-> | lemezképet | Nem |
+> | lemezek | No | 
+> | images | No | 
+> | osimages | No | 
+> | osplatformimages | No | 
+> | publicimages | No | 
+> | kvóták | No | 
+> | storageaccounts | Yes |  
+> | lemezképet | No |
 
 ## <a name="microsoftclassicsubscription"></a>Microsoft. ClassicSubscription
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | műveletek | Nem | 
+> | műveletek | No | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 > | Cognitive Search | Manuális lépések esetén támogatott.<br/><br/> Ismerje meg [, hogyan helyezheti át Azure Cognitive Search szolgáltatását egy másik régióba](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
@@ -564,60 +564,60 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | ratecard | Nem | 
-> | usageaggregates | Nem | 
+> | ratecard | No | 
+> | usageaggregates | No | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | availabilitysets | Igen <br/><br/> A rendelkezésre állási csoportok áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
-> | diskaccesses | Nem |
-> | diskencryptionsets | Nem | 
-> | lemezek | Igen <br/><br/> Az Azure-beli virtuális gépek és a kapcsolódó lemezek áthelyezéséhez használja az [Azure Resource mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
-> | katalógusok | Nem | 
-> | galériák/lemezképek | Nem | 
-> | galériák/lemezképek/verziók | Nem | 
-> | hostgroups | Nem | 
-> | hostgroups/gazdagépek | Nem | 
-> | images | Nem | 
-> | proximityplacementgroups | Nem | 
-> | restorepointcollections | Nem | 
-> | sharedvmimages | Nem | 
-> | sharedvmimages/verziók | Nem | 
-> | pillanatképek | Nem | 
-> | sshpublickeys | Nem |
-> | virtualmachines | Igen <br/><br/> Azure-beli virtuális gépek áthelyezése az Azure-beli [erőforrás-mozgató](../../resource-mover/tutorial-move-region-virtual-machines.md) használatával. | 
-> | virtualmachines/bővítmények | Nem | 
-> | virtualmachinescalesets | Nem | 
+> | availabilitysets | Yes <br/><br/> A rendelkezésre állási csoportok áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
+> | diskaccesses | No |
+> | diskencryptionsets | No | 
+> | lemezek | Yes <br/><br/> Az Azure-beli virtuális gépek és a kapcsolódó lemezek áthelyezéséhez használja az [Azure Resource mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
+> | katalógusok | No | 
+> | galériák/lemezképek | No | 
+> | galériák/lemezképek/verziók | No | 
+> | hostgroups | No | 
+> | hostgroups/gazdagépek | No | 
+> | images | No | 
+> | proximityplacementgroups | No | 
+> | restorepointcollections | No | 
+> | sharedvmimages | No | 
+> | sharedvmimages/verziók | No | 
+> | pillanatképek | No | 
+> | sshpublickeys | No |
+> | virtualmachines | Yes <br/><br/> Azure-beli virtuális gépek áthelyezése az Azure-beli [erőforrás-mozgató](../../resource-mover/tutorial-move-region-virtual-machines.md) használatával. | 
+> | virtualmachines/bővítmények | No | 
+> | virtualmachinescalesets | No | 
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | aggregatedcost | Nem | 
-> | elosztja | Nem | 
-> | költségvetése | Nem | 
-> | díjak | Nem | 
-> | costtags | Nem | 
-> | hitelek | Nem | 
-> | események | Nem | 
-> | előrejelzések | Nem | 
-> | számos | Nem | 
-> | piacterek | Nem | 
-> | pricesheets | Nem | 
-> | termékek | Nem | 
-> | reservationdetails | Nem | 
-> | reservationrecommendationdetails | Nem | 
-> | reservationrecommendations | Nem | 
-> | reservationsummaries | Nem | 
-> | reservationtransactions | Nem | 
-> | tags | Nem | 
-> | bérlők | Nem | 
-> | feltételek | Nem | 
-> | UsageDetails | Nem | 
+> | aggregatedcost | No | 
+> | elosztja | No | 
+> | költségvetése | No | 
+> | díjak | No | 
+> | costtags | No | 
+> | hitelek | No | 
+> | események | No | 
+> | előrejelzések | No | 
+> | számos | No | 
+> | piacterek | No | 
+> | pricesheets | No | 
+> | termékek | No | 
+> | reservationdetails | No | 
+> | reservationrecommendationdetails | No | 
+> | reservationrecommendations | No | 
+> | reservationsummaries | No | 
+> | reservationtransactions | No | 
+> | tags | No | 
+> | bérlők | No | 
+> | feltételek | No | 
+> | UsageDetails | No | 
 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -625,8 +625,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | containergroups | Nem | 
-> | serviceassociationlinks | Nem |
+> | containergroups | No | 
+> | serviceassociationlinks | No |
 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
@@ -634,178 +634,178 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kibocsátásiegység | Nem |  
-> | kibocsátásiegység-forgalmi jegyzékek/agentpools | Nem | 
-> | kibocsátásiegység-forgalmi jegyzékek/buildtasks | Nem |  
-> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Nem | 
-> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Nem |  
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Nem | 
+> | kibocsátásiegység | No |  
+> | kibocsátásiegység-forgalmi jegyzékek/agentpools | No | 
+> | kibocsátásiegység-forgalmi jegyzékek/buildtasks | No |  
+> | kibocsátásiegység-forgalmi jegyzékek/replikálások | No | 
+> | kibocsátásiegység-forgalmi jegyzékek/feladatok | No |  
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok | No | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | containerservices | Nem |
-> | managedclusters | Nem | 
-> | openshiftmanagedclusters | Nem | 
+> | containerservices | No |
+> | managedclusters | No | 
+> | openshiftmanagedclusters | No | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft. ContentModerator
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | alkalmazások | Nem | 
+> | alkalmazások | No | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | riasztások | Nem | 
-> | billingaccounts | Nem | 
-> | költségvetése | Nem | 
-> | cloudconnectors | Nem | 
-> | összekötők | Nem | 
-> | részlegek | Nem | 
-> | Méretek | Nem | 
-> | enrollmentaccounts | Nem | 
-> | export | Nem | 
-> | externalbillingaccounts | Nem | 
-> | forecast | Nem | 
-> | lekérdezés | Nem | 
-> | Regisztráció | Nem | 
-> | reportconfigs | Nem | 
-> | jelentések | Nem | 
-> | beállítások | Nem | 
-> | showbackrules | Nem | 
-> | kilátással | Nem | 
+> | riasztások | No | 
+> | billingaccounts | No | 
+> | költségvetése | No | 
+> | cloudconnectors | No | 
+> | összekötők | No | 
+> | részlegek | No | 
+> | Méretek | No | 
+> | enrollmentaccounts | No | 
+> | export | No | 
+> | externalbillingaccounts | No | 
+> | forecast | No | 
+> | lekérdezés | No | 
+> | Regisztráció | No | 
+> | reportconfigs | No | 
+> | jelentések | No | 
+> | beállítások | No | 
+> | showbackrules | No | 
+> | kilátással | No | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft. CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | Hubs | Nem |  
+> | Hubs | No |  
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft. CustomerLockbox
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | kérelmek | Nem | 
+> | kérelmek | No | 
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | szövetségek | Nem |
-> | resourceproviders | Nem | 
+> | szövetségek | No |
+> | resourceproviders | No | 
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | feladatok | Nem | 
+> | feladatok | No | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | availableskus | Nem |
-> | databoxedgedevices | Nem | 
+> | availableskus | No |
+> | databoxedgedevices | No | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | munkaterületek | Nem | 
+> | munkaterületek | No | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | katalógusok | Nem | 
-> | datacatalogs | Nem | 
+> | katalógusok | No | 
+> | datacatalogs | No | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft. DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | connectionmanagers | Nem | 
+> | connectionmanagers | No | 
 
 ## <a name="microsoftdataexchange"></a>Microsoft. DataExchange
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | csomagok | Nem | 
-> | tervek | Nem | 
+> | csomagok | No | 
+> | tervek | No | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | datafactories | Nem | 
-> | előállítók | Nem |  
+> | datafactories | No | 
+> | előállítók | No |  
 
 ## <a name="microsoftdatalake"></a>Microsoft. DataLake
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | datalakeaccounts | Nem | 
+> | datalakeaccounts | No | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | services | Nem | 
-> | szolgáltatások/projektek | Nem | 
-> | bővítőhely | Nem | 
+> | services | No | 
+> | szolgáltatások/projektek | No | 
+> | bővítőhely | No | 
 
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | ---------- |
-> | backupvaults | Nem | 
+> | backupvaults | No | 
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
@@ -826,21 +826,21 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | servergroups | Nem | 
+> | servergroups | No | 
 > | kiszolgálók | Egy meglévő kiszolgáló áthelyezéséhez a régiók közötti olvasási replikát használhat. [További információ](../../postgresql/howto-move-regions-portal.md).
-> | serversv2 | Nem | 
+> | serversv2 | No | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | artifactsources | Nem | 
-> | kibocsátások | Nem |  
-> | servicetopologies | Nem | 
-> | servicetopologies/szolgáltatások | Nem |  
-> | servicetopologies/szolgáltatások/serviceunits | Nem | 
-> | lépések | Nem | 
+> | artifactsources | No | 
+> | kibocsátások | No |  
+> | servicetopologies | No | 
+> | servicetopologies/szolgáltatások | No |  
+> | servicetopologies/szolgáltatások/serviceunits | No | 
+> | lépések | No | 
 
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
@@ -848,8 +848,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | applicationgroups | Nem | 
-> | munkaterületek | Nem | 
+> | applicationgroups | No | 
+> | munkaterületek | No | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -859,14 +859,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | elasticpools | Nem. Az erőforrás nincs kitéve.
 > | elasticpools / iothubtenants | Nem. Az erőforrás nincs kitéve.
 > | iothubs | Igen. [További információ](../../iot-hub/iot-hub-how-to-clone.md)
-> | provisioningservices | Nem | 
+> | provisioningservices | No | 
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartományvezérlők | Nem | 
+> | tartományvezérlők | No | 
 
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
@@ -874,20 +874,20 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartományvezérlők | Nem | 
-> | AK-fürt | Nem<br/><br/> [További](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) információ a másik régióba való áttérésről.
+> | tartományvezérlők | No | 
+> | AK-fürt | No<br/><br/> [További](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) információ a másik régióba való áttérésről.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | labcenters | Nem | 
-> | Labs | Nem | 
-> | Labs/környezetek | Nem |  
-> | Labor/servicerunners | Nem | 
-> | Labor/virtualmachines | Nem |  
-> | menetrend | Nem |  
+> | labcenters | No | 
+> | Labs | No | 
+> | Labs/környezetek | No |  
+> | Labor/servicerunners | No | 
+> | Labor/virtualmachines | No |  
+> | menetrend | No |  
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
@@ -901,107 +901,107 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | databaseaccounts | Nem | 
-> | databaseaccounts | Nem | 
+> | databaseaccounts | No | 
+> | databaseaccounts | No | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartományok | Nem | 
-> | generatessorequest | Nem | 
-> | topleveldomains | Nem | 
-> | validatedomainregistrationinformation | Nem |
+> | tartományok | No | 
+> | generatessorequest | No | 
+> | topleveldomains | No | 
+> | validatedomainregistrationinformation | No |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | services | Nem |  
+> | services | No |  
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartományok | Nem | 
-> | eventsubscriptions | Nem |
-> | extensiontopics | Nem | 
-> | partnernamespaces | Nem | 
-> | partnerregistrations | Nem | 
-> | partnertopics | Nem | 
-> | systemtopics | Nem | 
-> | témakörök | Nem | 
-> | topictypes | Nem | 
+> | tartományok | No | 
+> | eventsubscriptions | No |
+> | extensiontopics | No | 
+> | partnernamespaces | No | 
+> | partnerregistrations | No | 
+> | partnertopics | No | 
+> | systemtopics | No | 
+> | témakörök | No | 
+> | topictypes | No | 
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fürtök | Nem |  
+> | fürtök | No |  
 > | névterek | Igen (sablonnal)<br/><br/> [Event hub-névtér áthelyezése másik régióba](../../event-hubs/move-across-regions.md) | 
-> | SKU | Nem |  
+> | SKU | No |  
 
 ## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | experimentworkspaces | Nem | 
+> | experimentworkspaces | No | 
 
 ## <a name="microsoftfalcon"></a>Microsoft. Falcon
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | névterek | Nem | 
+> | névterek | No | 
 
 ## <a name="microsoftfeatures"></a>Microsoft. features
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | featureproviders | Nem | 
-> | funkciók | Nem | 
-> | szolgáltatók | Nem | 
-> | subscriptionfeatureregistrations | Nem | 
+> | featureproviders | No | 
+> | funkciók | No | 
+> | szolgáltatók | No | 
+> | subscriptionfeatureregistrations | No | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | automanagedaccounts | Nem | 
-> | automanagedvmconfigurationprofiles | Nem | 
-> | guestconfigurationassignments | Nem | 
-> | szoftver | Nem | 
-> | softwareupdateprofile | Nem | 
-> | softwareupdates | Nem | 
+> | automanagedaccounts | No | 
+> | automanagedvmconfigurationprofiles | No | 
+> | guestconfigurationassignments | No | 
+> | szoftver | No | 
+> | softwareupdateprofile | No | 
+> | softwareupdates | No | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | hanainstances | Nem | 
-> | sapmonitors | Nem |  
+> | hanainstances | No | 
+> | sapmonitors | No |  
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | dedicatedhsms | Nem | 
+> | dedicatedhsms | No | 
 
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
@@ -1009,52 +1009,52 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fürtök | Nem | 
+> | fürtök | No | 
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | services | Nem |  
+> | services | No |  
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | gépek | Nem | 
-> | gépek/bővítmények | Nem |
+> | gépek | No | 
+> | gépek/bővítmények | No |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | datamanagers |  Nem | 
+> | datamanagers |  No | 
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | eszközök | Nem | 
-> | vnfs | Nem | 
+> | eszközök | No | 
+> | vnfs | No | 
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | összetevők | Nem | 
-> | networkscopes | Nem | 
+> | összetevők | No | 
+> | networkscopes | No | 
 
 ## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | feladatok |  Nem | 
+> | feladatok |  No | 
 
 ## <a name="microsoftinsights"></a>Microsoft. bepillantások
 
@@ -1062,43 +1062,43 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | fiókok | Nem. [További információ](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region).
-> | actiongroups |  Nem | 
-> | activitylogalerts | Nem | 
-> | alertrules |  Nem | 
-> | autoscalesettings |  Nem | 
-> | alapkonfiguráció | Nem |
-> | összetevők |  Nem |  
-> | datacollectionrules | Nem | 
-> | diagnosticsettings | Nem | 
-> | diagnosticsettingscategories | Nem | 
-> | eventcategories | Nem | 
-> | eventtypes | Nem | 
-> | extendeddiagnosticsettings | Nem | |
-> | guestdiagnosticsettings | Nem | 
-> | listmigrationdate | Nem | 
-> | logdefinitions | Nem | 
-> | logprofiles | Nem | 
+> | actiongroups |  No | 
+> | activitylogalerts | No | 
+> | alertrules |  No | 
+> | autoscalesettings |  No | 
+> | alapkonfiguráció | No |
+> | összetevők |  No |  
+> | datacollectionrules | No | 
+> | diagnosticsettings | No | 
+> | diagnosticsettingscategories | No | 
+> | eventcategories | No | 
+> | eventtypes | No | 
+> | extendeddiagnosticsettings | No | |
+> | guestdiagnosticsettings | No | 
+> | listmigrationdate | No | 
+> | logdefinitions | No | 
+> | logprofiles | No | 
 > | naplók | Nem | Nem |
-> | metricalerts | Nem | 
-> | metricbaselines | Nem | 
-> | metricbatch | Nem | 
-> | metricdefinitions | Nem | 
-> | metricnamespaces | Nem | 
-> | metrics | Nem | 
-> | migratealertrules | Nem |
-> | migratetonewpricingmodel | Nem | 
-> | myworkbooks | Nem |
-> | notificationgroups | Nem | 
-> | privatelinkscopes | Nem |
-> | rollbacktolegacypricingmodel | Nem |
-> | scheduledqueryrules |  Nem | 
-> | topology | Nem |
-> | transactions | Nem |
-> | vminsightsonboardingstatuses | Nem |
-> | webteszteket |  Nem | 
-> | webtesztek/gettestresultfile | Nem |
-> | munkafüzetek |  Nem |  
-> | workbooktemplates | Nem |
+> | metricalerts | No | 
+> | metricbaselines | No | 
+> | metricbatch | No | 
+> | metricdefinitions | No | 
+> | metricnamespaces | No | 
+> | metrics | No | 
+> | migratealertrules | No |
+> | migratetonewpricingmodel | No | 
+> | myworkbooks | No |
+> | notificationgroups | No | 
+> | privatelinkscopes | No |
+> | rollbacktolegacypricingmodel | No |
+> | scheduledqueryrules |  No | 
+> | topology | No |
+> | transactions | No |
+> | vminsightsonboardingstatuses | No |
+> | webteszteket |  No | 
+> | webtesztek/gettestresultfile | No |
+> | munkafüzetek |  No |  
+> | workbooktemplates | No |
 
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
@@ -1106,8 +1106,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | apptemplates | Nem | 
-> | iotapps | Nem | 
+> | apptemplates | No | 
+> | iotapps | No | 
 
 
 
@@ -1123,54 +1123,54 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése |
 > | ------------- | ----------- | 
-> | Graph | Nem | 
+> | Graph | No | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | deletedvaults | Nem |
-> | hsmpools | Nem | 
-> | managedhsms | Nem |
-> | boltívek |  Nem | 
+> | deletedvaults | No |
+> | hsmpools | No | 
+> | managedhsms | No |
+> | boltívek |  No | 
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | connectedclusters | Nem | 
-> | registeredsubscriptions | Nem | 
+> | connectedclusters | No | 
+> | registeredsubscriptions | No | 
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | sourcecontrolconfigurations | Nem | 
+> | sourcecontrolconfigurations | No | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fürtök |  Nem |  
+> | fürtök |  No |  
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | labaccounts | Nem | 
-> | felhasználók | Nem | 
+> | labaccounts | No | 
+> | felhasználók | No | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft. LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft. LocationServices
 
@@ -1184,36 +1184,36 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | hostingenvironments | Nem | 
-> | integrationaccounts |  Nem |  
-> | integrationserviceenvironments | Nem | 
-> | integrationserviceenvironments/król | Nem |
-> | isolatedenvironments | Nem | 
-> | munkafolyamatok |  Nem |  
+> | hostingenvironments | No | 
+> | integrationaccounts |  No |  
+> | integrationserviceenvironments | No | 
+> | integrationserviceenvironments/król | No |
+> | isolatedenvironments | No | 
+> | munkafolyamatok |  No |  
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | commitmentplans |  Nem | 
-> | WebServices |  Nem | 
-> | munkaterületek |  Nem | 
+> | commitmentplans |  No | 
+> | WebServices |  No | 
+> | munkaterületek |  No | 
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | operationalizationclusters |  Nem | 
+> | operationalizationclusters |  No | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
-> | teamaccounts | Nem | 
+> | fiókok | No | 
+> | teamaccounts | No | 
 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft. MachineLearningModelManagement
@@ -1221,7 +1221,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
@@ -1229,7 +1229,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | munkaterületek | Nem | 
+> | munkaterületek | No | 
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
@@ -1238,46 +1238,46 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | configurationassignments | Igen. [További információ](../../virtual-machines/move-region-maintenance-configuration.md) | 
 > | maintenanceconfigurations | Igen. [További információ](../../virtual-machines/move-region-maintenance-configuration-resources.md) |
-> | frissítések | Nem | 
+> | frissítések | No | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | identitások | Nem | 
-> | userassignedidentities | Nem | 
+> | identitások | No | 
+> | userassignedidentities | No | 
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft. ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | managednetworks | Nem | 
-> | managednetworks / managednetworkgroups | Nem |
-> | managednetworks / managednetworkpeeringpolicies | Nem | 
-> | értesítés | Nem | 
+> | managednetworks | No | 
+> | managednetworks / managednetworkgroups | No |
+> | managednetworks / managednetworkpeeringpolicies | No | 
+> | értesítés | No | 
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | marketplaceregistrationdefinitions | Nem | 
-> | registrationassignments | Nem |
-> | registrationdefinitions | Nem | 
+> | marketplaceregistrationdefinitions | No | 
+> | registrationassignments | No |
+> | registrationdefinitions | No | 
 
 ## <a name="microsoftmanagement"></a>Microsoft. Management
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | getentities | Nem | 
-> | managementgroups | Nem | 
-> | managementgroups/beállítások | Nem | 
-> | resources | Nem | 
-> | starttenantbackfill | Nem | 
-> | tenantbackfillstatus | Nem | 
+> | getentities | No | 
+> | managementgroups | No | 
+> | managementgroups/beállítások | No | 
+> | resources | No | 
+> | starttenantbackfill | No | 
+> | tenantbackfillstatus | No | 
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
@@ -1285,141 +1285,141 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
 > | fiókok |  Nem, Azure Maps térinformatikai szolgáltatás. 
-> | fiókok/privateatlases | Nem
+> | fiókok/privateatlases | No
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kínál | Nem | 
-> | offertypes | Nem | 
-> | privategalleryitems | Nem | 
-> | privatestoreclient | Nem | 
-> | privatestores | Nem | 
-> | termékek | Nem | 
-> | közzétevők | Nem | 
-> | Regisztráció | Nem | 
+> | kínál | No | 
+> | offertypes | No | 
+> | privategalleryitems | No | 
+> | privatestoreclient | No | 
+> | privatestores | No | 
+> | termékek | No | 
+> | közzétevők | No | 
+> | Regisztráció | No | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | classicdevservices | Nem | 
+> | classicdevservices | No | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. MarketplaceOrdering
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | megállapodások | Nem | 
-> | offertypes | Nem | 
+> | megállapodások | No | 
+> | offertypes | No | 
 
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | Mediaservices |  Nem | 
-> | Mediaservices/liveevents |  Nem | 
-> | Mediaservices/streamingendpoints |  Nem | 
+> | Mediaservices |  No | 
+> | Mediaservices/liveevents |  No | 
+> | Mediaservices/streamingendpoints |  No | 
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | appclusters | Nem | 
+> | appclusters | No | 
 
 ## <a name="microsoftmigrate"></a>Microsoft. Migrálás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | assessmentprojects | Nem | 
-> | migrateprojects | Nem | 
-> | movecollections | Nem
-> | projektek | Nem | 
+> | assessmentprojects | No | 
+> | migrateprojects | No | 
+> | movecollections | No
+> | projektek | No | 
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | ---------- |
-> | holographicsbroadcastaccounts | Nem | 
-> | objectunderstandingaccounts | Nem | 
-> | remoterenderingaccounts | Nem | 
-> | spatialanchorsaccounts | Nem | 
+> | holographicsbroadcastaccounts | No | 
+> | objectunderstandingaccounts | No | 
+> | remoterenderingaccounts | No | 
+> | spatialanchorsaccounts | No | 
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | netappaccounts | Nem | 
-> | netappaccounts / capacitypools | Nem | 
-> | netappaccounts/capacitypools/kötetek | Nem | 
-> | netappaccounts/capacitypools/kötetek/mounttargets | Nem | 
-> | netappaccounts/capacitypools/kötetek/Pillanatképek | Nem | 
+> | netappaccounts | No | 
+> | netappaccounts / capacitypools | No | 
+> | netappaccounts/capacitypools/kötetek | No | 
+> | netappaccounts/capacitypools/kötetek/mounttargets | No | 
+> | netappaccounts/capacitypools/kötetek/Pillanatképek | No | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | applicationgateways | Nem |
-> | applicationgatewaywebapplicationfirewallpolicies | Nem | 
-> | applicationsecuritygroups |  Nem |  
-> | azurefirewalls |  Nem |  
-> | bastionhosts | Nem | 
-> | bgpservicecommunities | Nem |
-> | kapcsolatok |  Nem | 
-> | ddoscustompolicies |  Nem | 
-> | ddosprotectionplans | Nem | 
-> | dnszones |  Nem | 
-> | expressroutecircuits | Nem | 
-> | expressroutegateways | Nem | 
-> | expressrouteserviceproviders | Nem | 
-> | firewallpolicies | Nem |
-> | frontdoors | Nem | 
-> | ipallocations | Nem |
-> | ipgroups | Nem |
-> | loadbalancers | Igen <br/><br/> Az [Azure](../../resource-mover/tutorial-move-region-virtual-machines.md) -beli erőforrás-mozgató használatával belső és külső terheléselosztó helyezhető át. |
-> | localnetworkgateways |  Nem | 
-> | natgateways |  Nem | 
-> | networkexperimentprofiles | Nem |
-> | networkintentpolicies |  Nem | 
-> | networkinterfaces | Igen <br/><br/> A hálózati adapterek áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
-> | networkprofiles | Nem | 
-> | networksecuritygroups | Igen <br/><br/> A hálózati biztonsági csoportok (NGSs) áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
-> | networkwatchers |  Nem |  
-> | networkwatchers / connectionmonitors |  Nem | 
-> | networkwatchers / flowlogs |  Nem | 
-> | networkwatchers / pingmeshes |  Nem | 
-> | p2svpngateways | Nem | 
-> | privatednszones |  Nem |  
-> | privatednszones / virtualnetworklinks | Nem |> | privatednszonesinternal | Nem |
-> | privateendpointredirectmaps | Nem |
-> | privateendpoints | Nem | 
-> | privatelinkservices | Nem | 
-> | nyilvános IP | Igen<br/><br/> A nyilvános IP-címek áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . |
-> | publicipprefixes | Nem | 
-> | routefilters | Nem | 
-> | routetables |  Nem | 
-> | securitypartnerproviders | Nem |
-> | serviceendpointpolicies |  Nem | 
-> | trafficmanagergeographichierarchies | Nem | 
-> | trafficmanagerprofiles |  Nem | 
-> | trafficmanagerusermetricskeys | Nem |
-> | virtualhubs | Nem | 
-> | virtualnetworkgateways |  Nem |  
-> | virtualnetworks |  Nem | 
-> | virtualnetworktaps | Nem | 
-> | virtualwans | Nem | 
-> | vpngateways (virtuális WAN) | Nem | 
-> | vpnsites (virtuális WAN) | Nem | 
-> | vpnsites (virtuális WAN) | Nem |
+> | applicationgateways | No |
+> | applicationgatewaywebapplicationfirewallpolicies | No | 
+> | applicationsecuritygroups |  No |  
+> | azurefirewalls |  No |  
+> | bastionhosts | No | 
+> | bgpservicecommunities | No |
+> | kapcsolatok |  No | 
+> | ddoscustompolicies |  No | 
+> | ddosprotectionplans | No | 
+> | dnszones |  No | 
+> | expressroutecircuits | No | 
+> | expressroutegateways | No | 
+> | expressrouteserviceproviders | No | 
+> | firewallpolicies | No |
+> | frontdoors | No | 
+> | ipallocations | No |
+> | ipgroups | No |
+> | loadbalancers | Yes <br/><br/> Az [Azure](../../resource-mover/tutorial-move-region-virtual-machines.md) -beli erőforrás-mozgató használatával belső és külső terheléselosztó helyezhető át. |
+> | localnetworkgateways |  No | 
+> | natgateways |  No | 
+> | networkexperimentprofiles | No |
+> | networkintentpolicies |  No | 
+> | networkinterfaces | Yes <br/><br/> A hálózati adapterek áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
+> | networkprofiles | No | 
+> | networksecuritygroups | Yes <br/><br/> A hálózati biztonsági csoportok (NGSs) áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . | 
+> | networkwatchers |  No |  
+> | networkwatchers / connectionmonitors |  No | 
+> | networkwatchers / flowlogs |  No | 
+> | networkwatchers / pingmeshes |  No | 
+> | p2svpngateways | No | 
+> | privatednszones |  No |  
+> | privatednszones / virtualnetworklinks | No |> | privatednszonesinternal | No |
+> | privateendpointredirectmaps | No |
+> | privateendpoints | No | 
+> | privatelinkservices | No | 
+> | nyilvános IP | Yes<br/><br/> A nyilvános IP-címek áthelyezéséhez használja az [Azure erőforrás-mozgatót](../../resource-mover/tutorial-move-region-virtual-machines.md) . |
+> | publicipprefixes | No | 
+> | routefilters | No | 
+> | routetables |  No | 
+> | securitypartnerproviders | No |
+> | serviceendpointpolicies |  No | 
+> | trafficmanagergeographichierarchies | No | 
+> | trafficmanagerprofiles |  No | 
+> | trafficmanagerusermetricskeys | No |
+> | virtualhubs | No | 
+> | virtualnetworkgateways |  No |  
+> | virtualnetworks |  No | 
+> | virtualnetworktaps | No | 
+> | virtualwans | No | 
+> | vpngateways (virtuális WAN) | No | 
+> | vpnsites (virtuális WAN) | No | 
+> | vpnsites (virtuális WAN) | No |
 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
@@ -1427,36 +1427,36 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | névterek |  Nem | 
-> | névterek/notificationhubs |  Nem |  
+> | névterek |  No | 
+> | névterek/notificationhubs |  No |  
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | osnamespaces | Nem | 
+> | osnamespaces | No | 
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | hypervsites | Nem | 
-> | importsites | Nem | 
-> | serversites | Nem | 
-> | vmwaresites | Nem | 
+> | hypervsites | No | 
+> | importsites | No | 
+> | serversites | No | 
+> | vmwaresites | No | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fürtök | Nem | 
-> | deletedworkspaces | Nem | 
-> | linktargets | Nem | 
-> | storageinsightconfigs | Nem |
-> | munkaterületek | Nem |
+> | fürtök | No | 
+> | deletedworkspaces | No | 
+> | linktargets | No | 
+> | storageinsightconfigs | No |
+> | munkaterületek | No |
 
 
 
@@ -1465,43 +1465,43 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | managementassociations | Nem |
-> | managementconfigurations |  Nem | 
-> | megoldások | Nem |
-> | kilátással |  Nem | 
+> | managementassociations | No |
+> | managementconfigurations |  No | 
+> | megoldások | No |
+> | kilátással |  No | 
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | legacypeerings | Nem | 
-> | peerasns | Nem | 
-> | peeringlocations | Nem | 
-> | társviszonyok | Nem | 
-> | peeringservicecountries | Nem | 
-> | peeringservicelocations | Nem | 
-> | peeringserviceproviders | Nem | 
-> | peeringservices | Nem | 
+> | legacypeerings | No | 
+> | peerasns | No | 
+> | peeringlocations | No | 
+> | társviszonyok | No | 
+> | peeringservicecountries | No | 
+> | peeringservicelocations | No | 
+> | peeringserviceproviders | No | 
+> | peeringservices | No | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | policyevents | Nem | 
-> | policystates | Nem | 
-> | policytrackedresources | Nem | 
-> | szervizelések | Nem | 
+> | policyevents | No | 
+> | policystates | No | 
+> | policytrackedresources | No | 
+> | szervizelések | No | 
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> |  -konzolok | Nem |
-> | irányítópultok | Nem | 
-> | usersettings | Nem | 
+> |  -konzolok | No |
+> | irányítópultok | No | 
+> | usersettings | No | 
 
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
@@ -1509,44 +1509,44 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | workspacecollections |  Nem | 
+> | workspacecollections |  No | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kapacitások |  Nem | 
+> | kapacitások |  No | 
 
 ## <a name="microsoftpurview"></a>Microsoft. hatáskörébe
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fiókok | Nem | 
+> | fiókok | No | 
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | availableaccounts | Nem | 
-> | providerregistrations | Nem | 
-> | kibocsátások | Nem | 
+> | availableaccounts | No | 
+> | providerregistrations | No | 
+> | kibocsátások | No | 
 
 ## <a name="microsoftquantum"></a>Microsoft. Quantum
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | munkaterületek | Nem | 
+> | munkaterületek | No | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | replicationeligibilityresults | Nem |
+> | replicationeligibilityresults | No |
 > | boltívek | Nem.<br/><br/> Az Azure-régiók Azure Backup Recovery Services-tárolóinak áthelyezése nem támogatott.<br/><br/> Azure Site Recovery Recovery Services-tárolójában [letilthatja és újból létrehozhatja](../../site-recovery/move-vaults-across-regions.md) a tárolót a célhelyen. | 
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
@@ -1554,53 +1554,53 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | openshiftclusters | Nem | 
+> | openshiftclusters | No | 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | névterek |  Nem | 
+> | névterek |  No | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | lekérdezések |  Nem |  
-> | resourcechangedetails | Nem | 
-> | resourcechanges | Nem | 
-> | resources | Nem | 
-> | resourceshistory | Nem | 
-> | subscriptionsstatus | Nem | 
+> | lekérdezések |  No |  
+> | resourcechangedetails | No | 
+> | resourcechanges | No | 
+> | resources | No | 
+> | resourceshistory | No | 
+> | subscriptionsstatus | No | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | childresources | Nem | 
-> | emergingissues | Nem | 
-> | események | Nem | 
-> | metaadatok | Nem | 
-> | értesítések | Nem | 
+> | childresources | No | 
+> | emergingissues | No | 
+> | események | No | 
+> | metaadatok | No | 
+> | értesítések | No | 
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése |
 > | ------------- | ----------- |
-> | deploymentScripts |  Igen<br/><br/>[A Microsoft. Resources erőforrásainak áthelyezése új régióba](microsoft-resources-move-regions.md) |
-> | templateSpecs |  Igen<br/><br/>[A Microsoft. Resources erőforrásainak áthelyezése új régióba](microsoft-resources-move-regions.md) |  
+> | deploymentScripts |  Yes<br/><br/>[A Microsoft. Resources erőforrásainak áthelyezése új régióba](microsoft-resources-move-regions.md) |
+> | templateSpecs |  Yes<br/><br/>[A Microsoft. Resources erőforrásainak áthelyezése új régióba](microsoft-resources-move-regions.md) |  
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | alkalmazások |  Nem | 
-> | saasresources | Nem | 
+> | alkalmazások |  No | 
+> | saasresources | No | 
 
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
@@ -1608,8 +1608,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | resourcehealthmetadata | Nem |
-> | searchservices |  Nem | 
+> | resourcehealthmetadata | No |
+> | searchservices |  No | 
 
 
 ## <a name="microsoftsecurity"></a>Microsoft. Security
@@ -1617,165 +1617,165 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | adaptivenetworkhardenings | Nem | 
-> | advancedthreatprotectionsettings | Nem | 
-> | riasztások | Nem | 
-> | allowedconnections | Nem | 
-> | applicationwhitelistings | Nem | 
-> | assessmentmetadata | Nem | 
-> | értékelések | Nem | 
-> | autodismissalertsrules | Nem | 
-> | automatizálások szabványának létrehozásában | Nem | 
-> | autoprovisioningsettings | Nem |
-> | complianceresults | Nem | 
-> | felelésről | Nem | 
-> | datacollectionagents | Nem | 
-> | devicesecuritygroups | Nem | 
-> | discoveredsecuritysolutions | Nem | 
-> | externalsecuritysolutions | Nem | 
-> | informationprotectionpolicies | Nem | 
-> | iotsecuritysolutions | Nem | 
-> | iotsecuritysolutions / analyticsmodels | Nem | 
-> | iotsecuritysolutions / analyticsmodels / aggregatedalerts | Nem | 
-> | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | Nem | 
-> | jitnetworkaccesspolicies | Nem | 
-> | policies | Nem | 
-> | pricings | Nem | 
-> | regulatorycompliancestandards | Nem | 
-> | regulatorycompliancestandards / regulatorycompliancecontrols | Nem | 
-> | regulatorycompliancestandards / regulatorycompliancecontrols / regulatorycomplianceassessments | Nem | 
-> | securitycontacts | Nem | 
-> | securitysolutions | Nem | 
-> | securitysolutionsreferencedata | Nem | 
-> | securitystatuses | Nem | 
-> | securitystatusessummaries | Nem | 
-> | servervulnerabilityassessments | Nem | 
-> | beállítások | Nem | 
-> | alértékelések | Nem |
-> | feladatok | Nem | 
-> | topológiák | Nem | 
-> | workspacesettings | Nem | 
+> | adaptivenetworkhardenings | No | 
+> | advancedthreatprotectionsettings | No | 
+> | riasztások | No | 
+> | allowedconnections | No | 
+> | applicationwhitelistings | No | 
+> | assessmentmetadata | No | 
+> | értékelések | No | 
+> | autodismissalertsrules | No | 
+> | automatizálások szabványának létrehozásában | No | 
+> | autoprovisioningsettings | No |
+> | complianceresults | No | 
+> | felelésről | No | 
+> | datacollectionagents | No | 
+> | devicesecuritygroups | No | 
+> | discoveredsecuritysolutions | No | 
+> | externalsecuritysolutions | No | 
+> | informationprotectionpolicies | No | 
+> | iotsecuritysolutions | No | 
+> | iotsecuritysolutions / analyticsmodels | No | 
+> | iotsecuritysolutions / analyticsmodels / aggregatedalerts | No | 
+> | iotsecuritysolutions / analyticsmodels / aggregatedrecommendations | No | 
+> | jitnetworkaccesspolicies | No | 
+> | policies | No | 
+> | pricings | No | 
+> | regulatorycompliancestandards | No | 
+> | regulatorycompliancestandards / regulatorycompliancecontrols | No | 
+> | regulatorycompliancestandards / regulatorycompliancecontrols / regulatorycomplianceassessments | No | 
+> | securitycontacts | No | 
+> | securitysolutions | No | 
+> | securitysolutionsreferencedata | No | 
+> | securitystatuses | No | 
+> | securitystatusessummaries | No | 
+> | servervulnerabilityassessments | No | 
+> | beállítások | No | 
+> | alértékelések | No |
+> | feladatok | No | 
+> | topológiák | No | 
+> | workspacesettings | No | 
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | összesítések | Nem | 
-> | alertrules | Nem | 
-> | alertruletemplates | Nem | 
-> | automationrules | Nem |
-> | esetekben | Nem | 
-> | dataconnectors | Nem | 
-> | szervezetek | Nem | 
-> | entityqueries | Nem |
-> | incidensek | Nem | 
-> | officeconsents | Nem | 
-> | beállítások | Nem | 
-> | threatintelligence | Nem | 
+> | összesítések | No | 
+> | alertrules | No | 
+> | alertruletemplates | No | 
+> | automationrules | No |
+> | esetekben | No | 
+> | dataconnectors | No | 
+> | szervezetek | No | 
+> | entityqueries | No |
+> | incidensek | No | 
+> | officeconsents | No | 
+> | beállítások | No | 
+> | threatintelligence | No | 
 
 ## <a name="microsoftserialconsole"></a>Microsoft. SerialConsole
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | consoleservices | Nem | 
+> | consoleservices | No | 
 
 ## <a name="microsoftservermanagement"></a>Microsoft. ServerManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | átjárók | Nem | 
-> | csomópontok | Nem | 
+> | átjárók | No | 
+> | csomópontok | No | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | névterek |  Nem | 
-> | premiummessagingregions | Nem | 
-> | SKU | Nem | 
+> | névterek |  No | 
+> | premiummessagingregions | No | 
+> | SKU | No | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | alkalmazások | Nem | 
-> | fürtök |  Nem |  
-> | containergroups | Nem | 
-> | containergroupsets | Nem | 
-> | edgeclusters | Nem | 
-> | managedclusters | Nem |
-> | hálózatok | Nem | 
-> | secretstores | Nem | 
-> | volumes | Nem | 
+> | alkalmazások | No | 
+> | fürtök |  No |  
+> | containergroups | No | 
+> | containergroupsets | No | 
+> | edgeclusters | No | 
+> | managedclusters | No |
+> | hálózatok | No | 
+> | secretstores | No | 
+> | volumes | No | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | alkalmazások |  Nem | 
-> | containergroups | Nem | 
-> | átjárók |  Nem | 
-> | hálózatok |  Nem | 
-> | titkok |  Nem | 
-> | volumes |  Nem |  
+> | alkalmazások |  No | 
+> | containergroups | No | 
+> | átjárók |  No | 
+> | hálózatok |  No | 
+> | titkok |  No | 
+> | volumes |  No |  
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | kibocsátások | Nem | 
+> | kibocsátások | No | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | signalr |  Nem |  
+> | signalr |  No |  
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | hybridusebenefits | Nem | 
+> | hybridusebenefits | No | 
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | appliancedefinitions | Nem | 
-> | berendezések | Nem | 
-> | jitrequests | Nem | 
+> | appliancedefinitions | No | 
+> | berendezések | No | 
+> | jitrequests | No | 
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | instancepools | Nem | 
-> | helyek | Nem |
-> | managedinstances | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a felügyelt példányok régiók közötti áthelyezéséről. | 
-> | managedinstances/adatbázisok | Igen | 
-> | kiszolgálók | Igen | 
-> | kiszolgálók/adatbázisok | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ az adatbázisok régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL Database-adatbázisok áthelyezéséhez való használatáról.  | 
-> | kiszolgálók/elasticpools | Igen <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a rugalmas készletek régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL rugalmas készletek áthelyezéséhez való használatáról.  | 
-> | virtualclusters | Igen | 
+> | instancepools | No | 
+> | helyek | No |
+> | managedinstances | Yes <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a felügyelt példányok régiók közötti áthelyezéséről. | 
+> | managedinstances/adatbázisok | Yes | 
+> | kiszolgálók | Yes | 
+> | kiszolgálók/adatbázisok | Yes <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ az adatbázisok régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL Database-adatbázisok áthelyezéséhez való használatáról.  | 
+> | kiszolgálók/elasticpools | Yes <br/><br/> [További](../../azure-sql/database/move-resources-across-regions.md) információ a rugalmas készletek régiók közötti áthelyezéséről.<br/><br/> [További](../../resource-mover/tutorial-move-region-sql.md) információ az Azure-beli erőforrás-mozgató Azure SQL rugalmas készletek áthelyezéséhez való használatáról.  | 
+> | virtualclusters | Yes | 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | sqlvirtualmachinegroups |  Nem |  
-> | sqlvirtualmachines |  Nem |  
+> | sqlvirtualmachinegroups |  No |  
+> | sqlvirtualmachines |  No |  
 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -1783,50 +1783,50 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storageaccounts | Igen<br/><br/> [Azure Storage-fiók áthelyezése másik régióba](../../storage/common/storage-account-move.md) | 
+> | storageaccounts | Yes<br/><br/> [Azure Storage-fiók áthelyezése másik régióba](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | gyorsítótárak | Nem | 
+> | gyorsítótárak | No | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storagesyncservices |  Nem | 
+> | storagesyncservices |  No | 
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storagesyncservices | Nem | 
+> | storagesyncservices | No | 
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft. StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storagesyncservices | Nem | 
+> | storagesyncservices | No | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | kezelők | Nem | 
+> | kezelők | No | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | fürtök | Nem |
-> | streamingjobs |  Nem |  
+> | fürtök | No |
+> | streamingjobs |  No |  
 
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
@@ -1834,32 +1834,32 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | környezetben | Nem | 
-> | esetben | Nem | 
+> | környezetben | No | 
+> | esetben | No | 
 
 ## <a name="microsoftsubscription"></a>Microsoft. előfizetés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | előfizetések | Nem | 
+> | előfizetések | No | 
 
 ## <a name="microsoftsupport"></a>Microsoft. support
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | services | Nem | 
-> | supporttickets | Nem | 
+> | services | No | 
+> | supporttickets | No | 
 
 ## <a name="microsoftsynapse"></a>Microsoft. szinapszis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | munkaterületek | Nem | 
-> | munkaterületek/bigdatapools | Nem | 
-> | munkaterületek/sqlpools | Nem | 
+> | munkaterületek | No | 
+> | munkaterületek/bigdatapools | No | 
+> | munkaterületek/sqlpools | No | 
 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
@@ -1867,70 +1867,70 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | környezetben |  Nem | 
-> | környezetek/eventsources |  Nem |  
-> | környezetek/referencedatasets |  Nem | 
+> | környezetben |  No | 
+> | környezetek/eventsources |  No |  
+> | környezetek/referencedatasets |  No | 
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tárolja | Nem | 
+> | tárolja | No | 
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | imagetemplates | Nem | 
+> | imagetemplates | No | 
 
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | account |  Nem | 
-> | fiók/bővítmény |  Nem | 
-> | fiók/projekt |  Nem | 
+> | account |  No | 
+> | fiók/bővítmény |  No | 
+> | fiók/projekt |  No | 
 
 ## <a name="microsoftvmware"></a>Microsoft. VMware
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | arczones | Nem | 
-> | resourcepools | Nem | 
-> | vCenter | Nem | 
-> | virtualmachines | Nem | 
-> | virtualmachinetemplates | Nem | 
-> | virtualnetworks | Nem | 
+> | arczones | No | 
+> | resourcepools | No | 
+> | vCenter | No | 
+> | virtualmachines | No | 
+> | virtualmachinetemplates | No | 
+> | virtualnetworks | No | 
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | dedicatedcloudnodes | Nem | 
-> | dedicatedcloudservices | Nem | 
-> | virtualmachines | Nem | 
+> | dedicatedcloudnodes | No | 
+> | dedicatedcloudservices | No | 
+> | virtualmachines | No | 
 
 ## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | eszközök | Nem | 
-> | vnfs | Nem | 
+> | eszközök | No | 
+> | vnfs | No | 
 
 ## <a name="microsoftvsonline"></a>Microsoft. VSOnline
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | fiókok | Nem | 
-> | tervek | Nem | 
-> | registeredsubscriptions | Nem |
+> | fiókok | No | 
+> | tervek | No | 
+> | registeredsubscriptions | No |
 
 
 ## <a name="microsoftweb"></a>Microsoft. Web
@@ -1938,60 +1938,60 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | availablestacks | Nem | 
-> | billingmeters | Nem | 
-> | tanúsítványok | Nem | 
-> | connectiongateways |  Nem |  
-> | kapcsolatok |  Nem |  
-> | customapis |  Nem | 
-> | deletedsites | Nem | 
-> | deploymentlocations | Nem | 
-> | georegions | Nem | 
-> | hostingenvironments | Nem | 
-> | kubeenvironments | Nem | 
-> | publishingusers | Nem |
-> | javaslatok | Nem | 
-> | resourcehealthmetadata | Nem | 
-> | Runtimes | Nem | 
-> | kiszolgálófarmok | Nem |  
+> | availablestacks | No | 
+> | billingmeters | No | 
+> | tanúsítványok | No | 
+> | connectiongateways |  No |  
+> | kapcsolatok |  No |  
+> | customapis |  No | 
+> | deletedsites | No | 
+> | deploymentlocations | No | 
+> | georegions | No | 
+> | hostingenvironments | No | 
+> | kubeenvironments | No | 
+> | publishingusers | No |
+> | javaslatok | No | 
+> | resourcehealthmetadata | No | 
+> | Runtimes | No | 
+> | kiszolgálófarmok | No |  
 > | kiszolgálófarmok/eventgridfilters | N
-> | helyek |  Nem | 
-> | helyek/premieraddons |  Nem |  
-> | helyek/bővítőhelyek |  Nem |  
-> | sourcecontrols | Nem |
-> | staticsites | Nem | 
+> | helyek |  No | 
+> | helyek/premieraddons |  No |  
+> | helyek/bővítőhelyek |  No |  
+> | sourcecontrols | No |
+> | staticsites | No | 
 
 ## <a name="microsoftwindowsesu"></a>Microsoft. WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | multipleactivationkeys | Nem |
+> | multipleactivationkeys | No |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | deviceservices | Nem | 
+> | deviceservices | No | 
 
 ## <a name="microsoftworkloadbuilder"></a>Microsoft. WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | számítási feladatok | Nem | 
+> | számítási feladatok | No | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- | 
-> | összetevők | Nem |
-> | componentssummary | Nem | 
-> | monitorinstances | Nem | 
-> | monitorinstancessummary | Nem | 
-> | figyeli | Nem | 
+> | összetevők | No |
+> | componentssummary | No | 
+> | monitorinstances | No | 
+> | monitorinstancessummary | No | 
+> | figyeli | No | 
 ## <a name="third-party-services"></a>Harmadik féltől származó szolgáltatások
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.

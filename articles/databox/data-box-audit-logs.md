@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 50dbe9ab649a708fb36b1c9e4fe89bccadc7ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86209682"
 ---
 # <a name="audit-logs-for-your-azure-data-box-and-azure-data-box-heavy"></a>Naplófájlok a Azure Data Box és Azure Data Box Heavy
@@ -65,9 +65,9 @@ A rendszer a következő biztonsági naplózási események azonosítóit gyűjt
 
 A következő alkalmazásnapló-események azonosítóit a rendszer a csomag naplófájljainak részeként gyűjti a Data Box.     
 
-- **Microsoft-Azure-DataBox-Oobe-audit** -a helyi felhasználói felületen előforduló eseményeket tartalmazza. 
+- **Microsoft-Azure-DataBox-Oobe-audit** -a helyi felhasználói felületen előforduló eseményeket tartalmazza. 
 - **Microsoft-Azure-DataBox – Újraépítés – naplózás** – a Data Box eszköz újralétesítésével kapcsolatos eseményeket tartalmazza. A Data Box újraépítése akkor következik be, amikor az eszköz alaphelyzetbe áll a helyi felhasználói felületen keresztül. Ezt a beállítást akkor válassza, ha a meglévő megosztások eltávolításával és a megosztások újbóli létrehozásával vagy az eszköz alaphelyzetbe állításával szeretné törölni a másolt adatmennyiséget.
-- **Microsoft-Azure-DataBox-HcsMgmt-audit** -a csak a **szállítás előkészítése** lépéshez kapcsolódó eseményeket tartalmazza, mielőtt az eszközt visszaszállították az Azure-adatközpontba. 
+- **Microsoft-Azure-DataBox-HcsMgmt-audit** -a csak a **szállítás előkészítése** lépéshez kapcsolódó eseményeket tartalmazza, mielőtt az eszközt visszaszállították az Azure-adatközpontba. 
 - **Microsoft-Azure-DataBox-IfxAudit** -a termék különböző entitásai által naplózott üzeneteket tartalmazza a feladatokról, naplókat, amelyek további információkat jeleznek arról, hogy mi történik a folyamatokban.
 
 Itt látható egy táblázat, amely összegzi a különböző esemény-szolgáltatókat és az egyes esetekben gyűjtött megfelelő eseményazonosítóket.
@@ -115,6 +115,6 @@ Ezek a naplók az Azure-ban tárolódnak, és nem érhetők el közvetlenül. Ha
 A támogatási jegy benyújtása után a Microsoft letölti és megadja a hozzáférést ezekhez a naplókhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogy miként lehet [elhárítani a Data Box és Data Box Heavy kapcsolatos problémákat](data-box-troubleshoot.md).

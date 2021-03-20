@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86218445"
 ---
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
@@ -49,7 +49,7 @@ ms.locfileid: "86218445"
     |-----------|-------------|
     | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |
     | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |
-    | Modell                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |
+    | Modellezés                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |
     | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |
     | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |
     | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |

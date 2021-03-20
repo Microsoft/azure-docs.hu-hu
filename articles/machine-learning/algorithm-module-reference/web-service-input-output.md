@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/13/2020
 ms.openlocfilehash: 475ad3de8e0a7636a14949d4fcd8a5ec2812ad5e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421124"
 ---
 # <a name="web-service-input-and-web-service-output-modules"></a>Webszolgáltatás bemeneti és webszolgáltatási kimeneti moduljai
@@ -47,7 +47,7 @@ A folyamat elküldése és a Futtatás sikeres befejezése után üzembe helyezh
 > [!NOTE]
 >  Az előző példában az **adatok manuális megadása** a webszolgáltatás bemeneti adatsémáját adja meg, és a valós idejű végpont üzembe helyezéséhez szükséges. Általában mindig csatlakoztatnia kell egy modult vagy adatkészletet ahhoz a porthoz, ahol a **webszolgáltatás bemenete** csatlakozik az Adatséma biztosításához.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ [a valós idejű végpont üzembe helyezéséről](../tutorial-designer-automobile-price-deploy.md#deploy-the-real-time-endpoint).
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

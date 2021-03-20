@@ -4,10 +4,10 @@ description: Azure Container Instances különböző konfigurációkban való ü
 ms.topic: article
 ms.date: 03/07/2019
 ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169646"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances Azure Resource Manager sablonjai
@@ -18,7 +18,7 @@ Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#
 
 ## <a name="sample-templates"></a>Példasablonok
 
-| Sablon | Leírás |
+| Sablon | Description |
 |-|-|
 | **Alkalmazások** ||
 | [WordPress][app-wp] | Létrehoz egy WordPress-webhelyet és a MySQL-adatbázisát egy tároló csoportban. A WordPress-webhely tartalma és a MySQL-adatbázis egy Azure Files megosztásban marad. Létrehoz egy Application Gateway-t is, amely nyilvános hálózati hozzáférést tesz elérhetővé a WordPress számára. |
@@ -26,7 +26,7 @@ Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#
 | **Kötetek** ||
 | [emptyDir][vol-emptydir] | Két Linux-tárolót telepít, amelyek osztoznak egy emptyDir-köteten. |
 | [gitRepo][vol-gitrepo] | Üzembe helyez egy GitHub-tárházat klónozott Linux-tárolót, és kötetként csatlakoztatja azt. |
-| [titkos][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
+| [titkos kód][vol-secret] | Egy Linux-tárolót helyez üzembe egy titkos kötetként csatlakoztatott PFX-tanúsítványsal. |
 | **Hálózat** ||
 | [UDP-vel feltett tároló][net-udp] | Egy olyan Windows vagy Linux rendszerű tároló üzembe helyezése, amely egy UDP-portot tesz elérhetővé. |
 | [Linux-tároló nyilvános IP-címmel][net-publicip] | Egyetlen linuxos tárolót helyez üzembe egy nyilvános IP-címen keresztül. |

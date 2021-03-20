@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
 ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86241896"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tároló hálózatkezelési módjai
@@ -194,7 +194,7 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
    |Beállítás |Érték |
    | --- | --- |
    |Prioritás |2000 |
-   |Name (Név) |Custom_Dns  |
+   |Name |Custom_Dns  |
    |Forrás |VirtualNetwork |
    |Destination (Cél) | VirtualNetwork |
    |Szolgáltatás | DNS (UDP/53) |
@@ -261,7 +261,7 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
             ],          
  ``` 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 * [További információ a Service Fabric Service manifest-erőforrásokról](./service-fabric-service-manifest-resources.md)
 * [Windows-tároló üzembe helyezése Service Fabric Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)

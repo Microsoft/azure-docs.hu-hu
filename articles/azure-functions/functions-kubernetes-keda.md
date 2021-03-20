@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
 ms.openlocfilehash: 525635ef40437fe308c52e2d5aba2c97ed8f20e7
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927532"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
@@ -80,7 +80,7 @@ A KEDA eltávolításának lépései dokumentálva vannak [a KEDA webhelyen](htt
 A KEDA a következő Azure Function triggereket támogatja:
 
 * [Azure Storage-üzenetsorok](functions-bindings-storage-queue.md)
-* [Azure Service Bus várólisták](functions-bindings-service-bus.md)
+* [Azure Service Bus-üzenetsorok](functions-bindings-service-bus.md)
 * [Azure Event/IoT hubok](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
 * [RabbitMQ-várólista](https://github.com/azure/azure-functions-rabbitmq-extension)
