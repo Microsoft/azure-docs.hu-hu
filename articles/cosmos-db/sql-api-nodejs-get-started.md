@@ -10,10 +10,10 @@ ms.date: 04/20/2020
 ms.author: dech
 ms.custom: devx-track-js
 ms.openlocfilehash: 1115d7bb0d6857aa39f246743df54a6cf3fd3676
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93098658"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
@@ -86,7 +86,7 @@ Most, hogy az alkalmazás már létezik, meg kell győződnie arról, hogy tud b
 
 1. Nyissa meg a *config.js* fájlt a kedvenc szövegszerkesztőben.
 
-1. Másolja és illessze be a következő kódrészletet a *config.js* fájlba, és állítsa be a tulajdonságokat `endpoint` és a `key` Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek** értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category** .
+1. Másolja és illessze be a következő kódrészletet a *config.js* fájlba, és állítsa be a tulajdonságokat `endpoint` és a `key` Azure Cosmos db végponti URI-t és az elsődleges kulcsot. Az adatbázis, a tárolók nevei a **feladatok** és **elemek** értékre vannak beállítva. Az alkalmazáshoz használni kívánt partíciós kulcs **/category**.
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
@@ -124,7 +124,7 @@ A *app.js* fájlban másolja és illessze be a következő kódot, hogy a koráb
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
 
 > [!Note]
-> Ha csatlakozik a **Cosmos db emulátorhoz** , tiltsa le a TLS-ellenőrzést a csomóponti folyamathoz:
+> Ha csatlakozik a **Cosmos db emulátorhoz**, tiltsa le a TLS-ellenőrzést a csomóponti folyamathoz:
 >   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
@@ -138,7 +138,7 @@ Azure Cosmos DB támogatja az egyes tárolókban tárolt JSON-elemek részletes 
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="QueryItems":::
 
-## <a name="create-an-item"></a><a id="CreateItem"></a>Elemek létrehozása
+## <a name="create-an-item"></a><a id="CreateItem"></a>Elem létrehozása
 
 Egy tétel a osztály Create függvényével hozható létre `Items` . Az SQL API használatakor az elemek dokumentumokként vannak kiképezve, amelyek felhasználó által definiált (tetszőleges) JSON-tartalmak. Ebben az oktatóanyagban egy új elem jön létre a feladatok adatbázisán belül.
 
@@ -215,7 +215,7 @@ Majd a terminálban keresse meg az ```app.js``` fájlt, és futtassa az alábbi 
 node app.js 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha ezekre az erőforrásokra már nincs szükség, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Azure Cosmos DB fiókhoz használt erőforráscsoportot, válassza a **Törlés** lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 

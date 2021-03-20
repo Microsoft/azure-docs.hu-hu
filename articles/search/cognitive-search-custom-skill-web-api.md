@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: cb5ee7d3549e433fb184b8c55c28b9a28ed89272
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011931"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni webes API-képesség egy Azure Cognitive Search alkoholtartalom-növelési folyamatban
@@ -197,7 +197,7 @@ A "kimenet" a webes API által visszaadott válasznak felel meg. A webes API-nak
 Amellett, hogy a webes API nem érhető el, vagy a nem sikeres állapotkódot küldi el, a következők hibás eseteknek minősülnek:
 
 * Ha a webes API sikeres állapotkódot ad vissza, de a válasz azt jelzi, hogy `application/json` a válasz érvénytelennek minősül, és a rendszer nem hajtja végre a dúsítást.
-* Ha **érvénytelen** ( `recordId` nem az eredeti kérelemben vagy ismétlődő értékekkel) rekord szerepel a válasz `values` tömbben, a rendszer nem hajtja végre a rekordok dúsítását **those** .
+* Ha **érvénytelen** ( `recordId` nem az eredeti kérelemben vagy ismétlődő értékekkel) rekord szerepel a válasz `values` tömbben, a rendszer nem hajtja végre a rekordok dúsítását  .
 
 Azokban az esetekben, amikor a webes API nem érhető el vagy HTTP-hibát ad vissza, a HTTP-hibával kapcsolatos összes rendelkezésre álló adathoz tartozó rövid hiba lesz hozzáadva az indexelő végrehajtási előzményeihez.
 

@@ -8,10 +8,10 @@ author: rajap
 ms.author: rajap
 ms.date: 12/11/2019
 ms.openlocfilehash: 379047532542fdb45a4378687a4c6b99f6cdcd77
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96444427"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi piactérről származó analitikai jelentések elérése
@@ -25,7 +25,7 @@ A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés]
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](../analytics-faq.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](../summary-dashboard.md).
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](../orders-dashboard.md).

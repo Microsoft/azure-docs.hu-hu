@@ -11,15 +11,15 @@ ms.date: 09/06/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dc536fa4292d794e8d89a2564ad10a3c10dd0a3d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94560854"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: bővítmények alkalmazás
 
-Egy Azure AD B2C könyvtár létrehozásakor a rendszer automatikusan létrehoz egy nevű alkalmazást `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` az új könyvtáron belül. Ez az alkalmazás a **B2C-Extensions-app** néven látható *Alkalmazásregisztrációkban*. A Azure AD B2C szolgáltatás a felhasználókra és az egyéni attribútumokra vonatkozó információk tárolására szolgál. Ha az alkalmazás törölve lett, Azure AD B2C nem fog megfelelően működni, és az éles környezet is érintett lesz.
+Egy Azure AD B2C könyvtár létrehozásakor a rendszer automatikusan létrehoz egy nevű alkalmazást `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` az új könyvtáron belül. Ez az alkalmazás a **B2C-Extensions-app** néven látható *Alkalmazásregisztrációkban*. A Azure AD B2C szolgáltatás a felhasználókra és az egyéni attribútumokra vonatkozó információk tárolására szolgál. Az alkalmazás törlése esetén az Azure AD B2C nem fog megfelelően működni, ami hatással lesz az éles környezetre.
 
 > [!IMPORTANT]
 > Ne törölje a B2C-Extensions-app eszközt, ha nem tervezi azonnal törölni a bérlőjét. Ha az alkalmazás 30 napnál hosszabb ideig törölve marad, a felhasználói adatok véglegesen el lesznek veszítve.

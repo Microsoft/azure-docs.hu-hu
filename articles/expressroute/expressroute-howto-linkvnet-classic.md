@@ -9,10 +9,10 @@ ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0e8a1d48934d73f1035c6f2c4c76e56d9a0e4052
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206970"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a PowerShell (klasszikus) használatával
@@ -77,7 +77,7 @@ A nagyméretű felhőben lévő kisebb felhőket a szervezeten belüli különb�
 ![Előfizetések közötti kapcsolat](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
 
 ### <a name="administration"></a>Felügyelet
-Az *áramkör tulajdonosa* annak az előfizetésnek a rendszergazdája/rendszergazdája, amelyben az ExpressRoute-áramkör létrejött. Az áramkör tulajdonosa engedélyezheti a más előfizetések rendszergazdái vagy rendszergazdái *számára, hogy*a saját dedikált áramkört használják. Azok a felhasználók, akik jogosultak a szervezet ExpressRoute-áramkör használatára, az előfizetésben lévő virtuális hálózatot a hitelesítésük után a ExpressRoute-áramkörhöz kapcsolhatják.
+Az *áramkör tulajdonosa* annak az előfizetésnek a rendszergazdája/rendszergazdája, amelyben az ExpressRoute-áramkör létrejött. Az áramkör tulajdonosa engedélyezheti a más előfizetések rendszergazdái vagy rendszergazdái *számára, hogy* a saját dedikált áramkört használják. Azok a felhasználók, akik jogosultak a szervezet ExpressRoute-áramkör használatára, az előfizetésben lévő virtuális hálózatot a hitelesítésük után a ExpressRoute-áramkörhöz kapcsolhatják.
 
 Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedélyeket. Az engedélyek visszavonása az összes olyan hivatkozás törlését eredményezi, amelynek a hozzáférését visszavonták.
 

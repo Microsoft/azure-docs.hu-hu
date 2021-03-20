@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alkohli
 ms.openlocfilehash: 18de1f445990f167041c755aa5e7d909819319b1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96446467"
 ---
 # <a name="azure-stack-edge-pro-power-cord-specifications"></a>Azure Stack Edge Pro tápkábel specifikációi
@@ -156,6 +156,6 @@ A következő táblázat segítségével megkeresheti a régiójának megfelelő
 |Zambia|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 |Zimbabwe|250|5|H05VV-F 3x 0,75|BS 1363/SS145/A|C13|1800|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Stack Edge Pro technikai specifikációi](./azure-stack-edge-technical-specifications-compliance.md)

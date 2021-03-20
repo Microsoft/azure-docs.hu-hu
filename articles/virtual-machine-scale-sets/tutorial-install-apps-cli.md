@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: d9969cf0fa453f857de421dd10934f63f5773f6c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94516747"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure CLI-vel
@@ -128,7 +128,7 @@ Ne zárja be a böngészőt, hogy megtekinthesse a frissített verziót a követ
 ## <a name="update-app-deployment"></a>Alkalmazástelepítés frissítése
 A méretezési csoport életciklusa során előfordulhat, hogy telepítenie kell az alkalmazás frissített verzióját. Az egyéni szkriptek bővítményével hivatkozhat egy frissített telepítési szkriptre, majd alkalmazhatja ismét a bővítményt a méretezési csoporton. Ha a méretezési csoport egy korábbi lépésben lett létrehozva, a `--upgrade-policy-mode` beállítás értéke *automatikus*. Ez a beállítás lehetővé teszi a méretezési csoportban található virtuálisgép-példányok számára az automatikus frissítést és az alkalmazás legfrissebb verziójának alkalmazását.
 
-Az aktuális parancshéjban hozzon létre egy *customConfigv2.json* nevű fájlt, és illessze bele a következő konfigurációt. A definíció az alkalmazástelepítési szkript frissített ( *v2* ) verzióját futtatja:
+Az aktuális parancshéjban hozzon létre egy *customConfigv2.json* nevű fájlt, és illessze bele a következő konfigurációt. A definíció az alkalmazástelepítési szkript frissített (*v2*) verzióját futtatja:
 
 ```json
 {
@@ -154,7 +154,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 ![Frissített weboldal az NGINX-ben](media/tutorial-install-apps-cli/running-nginx-updated.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive

@@ -10,10 +10,10 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
 ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012782"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
@@ -359,7 +359,7 @@ Ezen a ponton elindíthatja a lapot, és kísérletet tehet a blob Storage műk�
 
 A rövid útmutató során létrehozott erőforrások törléséhez nyissa meg a [Azure Portal](https://portal.azure.com) , és törölje az előfeltételek szakaszban létrehozott erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy egyszerű webhelyet, amely hozzáfér a blob Storage-hoz a böngésző alapú JavaScriptből. Ha szeretné megtudni, hogyan üzemeltetheti a webhelyeket a blob Storage szolgáltatásban, folytassa a következő oktatóanyaggal:
 

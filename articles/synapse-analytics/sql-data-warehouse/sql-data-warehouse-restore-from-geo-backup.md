@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 4683bd84873506483209f4a0eb3751a1b163ed48
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96449883"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Dedikált SQL-készlet geo visszaállítása az Azure szinapszis Analyticsben
@@ -83,7 +83,7 @@ Kövesse az alábbi lépéseket a dedikált SQL-készlet (korábban SQL DW) egy 
 
 1. Kattintson a Hozzáadás gombra, és töltse ki az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
 
-   ![Alapbeállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 1. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 

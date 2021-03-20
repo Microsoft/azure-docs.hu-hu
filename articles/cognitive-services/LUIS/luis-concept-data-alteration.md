@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 621a41f743b751a8c24bf6f6ad8497fb5c79775c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026010"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>A kiírási adatértékek módosítása az előrejelzés előtt vagy közben
@@ -114,7 +114,7 @@ DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Helyesírási hibák javítása ezzel az Oktatóanyaggal](luis-tutorial-bing-spellcheck.md)

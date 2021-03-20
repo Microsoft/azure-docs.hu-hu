@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 30e94c9737241ff49c29898adcc5e50c6b73a9b1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Oktatóanyag: Azure Active Directory integráció a SkyDesk e-mail-címmel
@@ -67,7 +67,7 @@ A SkyDesk e-mailek Azure AD-be való integrálásának konfigurálásához hozz�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SkyDesk e-mailben konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az SkyDesk e-mailben konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SkyDesk e-mailben a kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **SkyDesk e-mail alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **SkyDesk e-mail alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
 1. Egy másik böngészőben jelentkezzen be a SkyDesk e-mail-fiókjába rendszergazdaként.
 
-1. A felső menüben kattintson a **telepítés**elemre, majd válassza a **szervezeti**elemet.
+1. A felső menüben kattintson a **telepítés** elemre, majd válassza a **szervezeti** elemet.
 
     ![Képernyőfelvétel: a beállítás menüből kiválasztva látható.](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
     ![A képernyőképen a Vezérlőpulton kiválasztott tartományok láthatók.](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
-1. Kattintson a **tartomány hozzáadása**lehetőségre.
+1. Kattintson a **tartomány hozzáadása** lehetőségre.
 
     ![Képernyőfelvétel: a kijelölt tartomány hozzáadása.](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
@@ -155,13 +155,13 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
-    b. A **kijelentkezési** URL szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-cím**értékét, amelyet a Azure Portalból másolt.
+    b. A **kijelentkezési** URL szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     c. A **jelszó módosítása URL-cím** megadása nem kötelező, ezért hagyja üresen.
 
     d. Kattintson a **kulcs lekérése fájlból** lehetőségre a letöltött tanúsítvány Azure Portal való kiválasztásához, majd kattintson a **Megnyitás** gombra a tanúsítvány feltöltéséhez.
 
-    e. **Algoritmusként**válassza az **RSA**lehetőséget.
+    e. **Algoritmusként** válassza az **RSA** lehetőséget.
 
     f. A módosítások mentéséhez kattintson **az OK** gombra.
 
@@ -169,7 +169,7 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -194,7 +194,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a SkyDesk e-mailekhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **SkyDesk e-mailt**.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **SkyDesk e-mailt**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -202,7 +202,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Az SkyDesk E-mail hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

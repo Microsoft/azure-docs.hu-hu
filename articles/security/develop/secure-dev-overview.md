@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94517172"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Biztonságos fejlesztés – ajánlott eljárások az Azure-ban
@@ -59,7 +59,7 @@ A szervezet olyan formális alkalmazás-biztonsági programmal rendelkezhet, ame
 
 Tisztában vagyunk azzal, hogy számos olvasó nem rendelkezhet biztonsági vagy megfelelőségi csapattal a részvételhez. Ezek a cikkek segítséget nyújtanak az SDL egyes fázisaiban megfontolandó biztonsági kérdések és döntések meghozatalában.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 A következő források segítségével többet tudhat meg a biztonságos alkalmazások fejlesztéséről és az Azure-beli alkalmazások biztonságossá tételéről:
 

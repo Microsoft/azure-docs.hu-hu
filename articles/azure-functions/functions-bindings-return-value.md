@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
 ms.openlocfilehash: 58ee9b682bc97dc4044d811392cf4ff5b51a69fd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491358"
 ---
 # <a name="using-the-azure-function-return-value"></a>Az Azure Function Return értékének használata
@@ -195,7 +195,7 @@ public static String run(
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions kötési hibák kezelése](./functions-bindings-errors.md)

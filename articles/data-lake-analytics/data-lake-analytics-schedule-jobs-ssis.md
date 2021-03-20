@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/17/2018
 ms.openlocfilehash: b080b433f5af49e970faba02003fb68e21a08365
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221451"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>U-SQL-feladatok ütemezett SQL Server Integration Services (SSIS) használatával
@@ -57,9 +57,9 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Azure Data Lake Store fájlrendszer feladat konfigurálása
 
-1. Állítsa be a **műveletet** a **CopyFromADLS**értékre.
-2. **AzureDataLakeConnection**beállítása, további információ a [Azure Data Lake Store-Csatlakozáskezelőről](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
-3. **AzureDataLakeDirectory**beállítása. Mutasson arra a mappára, amely a U-SQL-parancsfájlokat tárolja. Relatív elérési út használata a Azure Data Lake Store fiók gyökérkönyvtárához képest.
+1. Állítsa be a **műveletet** a **CopyFromADLS** értékre.
+2. **AzureDataLakeConnection** beállítása, további információ a [Azure Data Lake Store-Csatlakozáskezelőről](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
+3. **AzureDataLakeDirectory** beállítása. Mutasson arra a mappára, amely a U-SQL-parancsfájlokat tárolja. Relatív elérési út használata a Azure Data Lake Store fiók gyökérkönyvtárához képest.
 4. Állítsa a **célhelyet** olyan mappára, amely gyorsítótárazza a letöltött U-SQL-parancsfájlokat. Ez a mappa elérési útja a U-SQL-feladatok beküldéséhez használt foreach loop-tárolóban lesz használatban. 
 
 ![Azure Data Lake Store fájlrendszer feladat konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
@@ -82,20 +82,20 @@ A SSIS-csomag Tervező nézetében adjon hozzá egy **Azure Data Lake Store fáj
 
 ### <a name="configure-azure-data-lake-analytics-task"></a>Azure Data Lake Analytics feladat konfigurálása 
 
-1. Állítsa **SourceType** a forrás típusa **FileConnection**értékre.
+1. Állítsa  a forrás típusa **FileConnection** értékre.
 
 2. Állítsa be a **FileConnection** a foreach loop-tárolóból visszaadott fájl objektumra mutató kapcsolódási pontra.
     
     A kapcsolatfájl létrehozása:
 
    1. Válassza **\<New Connection...>** a FileConnection beállítást.
-   2. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
+   2. Állítsa a **használati típust** **meglévő fájl** értékre, és állítsa a **fájlt** bármely létező fájl elérési útjára.
 
        ![Képernyőfelvétel: a "meglévő fájl" beállítással rendelkező fájlkezelő szerkesztő a "használat típusa" lehetőségre.](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-   3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
+   3. A **Csatlakozáskezelő** nézetben kattintson a jobb gombbal a most létrehozott fájlra, majd válassza a **Tulajdonságok** lehetőséget.
 
-   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések**elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált változóra, például: `@[User::FileName]` .
+   4. A **Tulajdonságok** ablakban bontsa ki a **kifejezések** elemet, és állítsa a **ConnectionString** értéket a foreach loop-tárolóban definiált változóra, például: `@[User::FileName]` .
 
        ![Foreach hurok tárolójának konfigurálása](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
@@ -124,16 +124,16 @@ A vezérlési folyamat az alábbihoz hasonló.
 
 A felhőben tárolt U-SQL-fájlok használata mellett a helyi gépen vagy a SSIS-csomagokban üzembe helyezett fájlokon is használhat fájlokat.
 
-1. Kattintson a jobb gombbal a SSIS projektben található **kapcsolatkezelő** elemre, és válassza az **új Csatlakozáskezelő**elemet.
+1. Kattintson a jobb gombbal a SSIS projektben található **kapcsolatkezelő** elemre, és válassza az **új Csatlakozáskezelő** elemet.
 
 2. Válassza a **Fájltípus** lehetőséget, majd kattintson a **Hozzáadás...** elemre.
 
-3. Állítsa a **használati típust** **meglévő fájl**értékre, és állítsa be a **fájlt** a helyi gépen lévő fájlra.
+3. Állítsa a **használati típust** **meglévő fájl** értékre, és állítsa be a **fájlt** a helyi gépen lévő fájlra.
 
     ![Kapcsolatfájl hozzáadása a helyi fájlhoz](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
 4. **Azure Data Lake Analytics** feladat hozzáadása és:
-    1. Állítsa **SourceType** a forrás típusa **FileConnection**értékre.
+    1. Állítsa  a forrás típusa **FileConnection** értékre.
     2. Állítsa be a **FileConnection** a most létrehozott kapcsolatfájl számára.
 
 5. Azure Data Lake Analytics feladat egyéb konfigurációinak befejezése.
@@ -147,7 +147,7 @@ Bizonyos esetekben előfordulhat, hogy dinamikusan kell létrehoznia a U-SQL-uta
 2. Adjon hozzá egy SSIS változót, és állítsa be közvetlenül az értéket, vagy használja a **kifejezést** az érték létrehozásához.
 
 3. **Azure Data Lake Analytics feladat** hozzáadása és:
-    1. Állítsa **SourceType** a forrás típusa **változóra**.
+    1. Állítsa  a forrás típusa **változóra**.
     2. Állítsa be a **SourceVariable** a most létrehozott SSIS-változóra.
 
 4. Azure Data Lake Analytics feladat egyéb konfigurációinak befejezése.

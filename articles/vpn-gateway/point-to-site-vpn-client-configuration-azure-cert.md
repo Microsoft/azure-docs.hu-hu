@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 11/11/2020
 ms.author: cherylmc
 ms.openlocfilehash: c7b186aa1a6f63b1bc3e9dbefa5001faac967762
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94556164"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése az Azure natív tanúsítványalapú hitelesítést használó pont–hely kapcsolatokhoz
@@ -34,7 +34,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az összes csatlakozó felhas
 
 Az ügyfél-konfigurációs fájlokat a PowerShell-lel vagy a Azure Portal használatával is létrehozhatja. Bármelyik metódus ugyanazt a zip-fájlt adja vissza. Bontsa ki a fájlt a következő mappák megtekintéséhez:
 
-* **WindowsAmd64** és **WindowsX86** , amelyek tartalmazzák a Windows 32 bites és a 64 bites telepítési csomagokat. A **WindowsAmd64** telepítőcsomag az összes támogatott 64-bites Windows-ügyfélhez használható, nem csak az AMD.
+* **WindowsAmd64** és **WindowsX86**, amelyek tartalmazzák a Windows 32 bites és a 64 bites telepítési csomagokat. A **WindowsAmd64** telepítőcsomag az összes támogatott 64-bites Windows-ügyfélhez használható, nem csak az AMD.
 * **Általános, amely** a saját VPN-ügyfél konfigurációjának létrehozásához használt általános információkat tartalmazza. Az általános mappa akkor van megadva, ha a IKEv2 vagy az SSTP + IKEv2 konfigurálva lett az átjárón. Ha csak az SSTP van konfigurálva, akkor az általános mappa nem jelenik meg.
 
 ### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Fájlok előállítása a Azure Portal használatával
@@ -66,8 +66,8 @@ Az ügyfél-konfigurációs fájlokat a PowerShell-lel vagy a Azure Portal haszn
 
  A natív IKEv2 VPN-ügyfelet manuálisan kell konfigurálnia az Azure-hoz csatlakozó Mac gépek mindegyikén. Az Azure nem biztosít mobilkonfigurációs fájlt a natív Azure-tanúsítványhitelesítéshez. Az **általános** tartalmazza az összes, a konfigurációhoz szükséges információt. Ha nem látja a Generic mappát a letöltésben, valószínűleg nem az IKEv2 lett kiválasztva alagúttípusként. Vegye figyelembe, hogy a VPN Gateway alapszintű SKU nem támogatja a IKEv2. Az IKEv2 kiválasztását követően hozza létre újból a ZIP-fájlt a Generic mappa lekéréséhez.<br>A Generic mappa az alábbi fájlokat tartalmazza:
 
-* **VpnSettings.xml** , amely olyan fontos beállításokat tartalmaz, mint a kiszolgáló címe és az alagút típusa. 
-* **VpnServerRoot. cer** , amely tartalmazza az Azure-VPN Gateway ellenőrzéséhez szükséges főtanúsítványt a P2S-kapcsolatok beállítása során.
+* **VpnSettings.xml**, amely olyan fontos beállításokat tartalmaz, mint a kiszolgáló címe és az alagút típusa. 
+* **VpnServerRoot. cer**, amely tartalmazza az Azure-VPN Gateway ellenőrzéséhez szükséges főtanúsítványt a P2S-kapcsolatok beállítása során.
 
 A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számítógépen a tanúsítványalapú hitelesítéshez. Ezeket a lépéseket minden olyan Mac gépen végre kell hajtania, amely csatlakozni fog az Azure-hoz:
 
@@ -88,7 +88,7 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
 1. Az **általános** mappában, a **VpnSettings.xml** fájlból másolja a **VpnServer** címke értékét. Illessze be ezt az értéket a profil **kiszolgáló címe** és a **Távoli azonosító** mezőibe.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/server.png" alt-text="A képernyőképen a kiszolgáló adatai láthatók.":::
-1. Válassza a **hitelesítési beállítások** lehetőséget, és válassza a **tanúsítvány** lehetőséget. A **Catalina** esetében válassza a **nincs** , majd a **tanúsítvány** elemet.
+1. Válassza a **hitelesítési beállítások** lehetőséget, és válassza a **tanúsítvány** lehetőséget. A **Catalina** esetében válassza a **nincs**, majd a **tanúsítvány** elemet.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/authentication-settings.png" alt-text="A képernyőképen a hitelesítési beállítások láthatók.":::
 
@@ -99,7 +99,7 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
 1. Kattintson a **kijelölés...** lehetőségre. Válassza ki a hitelesítéshez használni kívánt ügyféltanúsítványt. Ez az a tanúsítvány, amelyet a 2. lépésben telepített.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png" alt-text="A képernyőfelvételen a hálózati ablak a hitelesítési beállításokkal látható, ahol kiválaszthat egy tanúsítványt.":::
-1. **Válasszon ki egy identitást** a tanúsítványok listájának megjelenítéséhez. Válassza ki a megfelelő tanúsítványt, majd kattintson a **Continue (folytatás** ) gombra.
+1. **Válasszon ki egy identitást** a tanúsítványok listájának megjelenítéséhez. Válassza ki a megfelelő tanúsítványt, majd kattintson a **Continue (folytatás**) gombra.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/identity.png" alt-text="Képernyőfelvétel: az identitás kiválasztása párbeszédpanel, ahol kiválaszthatja a megfelelő tanúsítványt.":::
 
@@ -129,7 +129,7 @@ Az alábbi utasítások az Ubuntu 18.0.4 lettek létrehozva. Az Ubuntu-16.0.10 n
    ```
    sudo apt install network-manager-strongswan
    ```
-1. Válassza a **Beállítások** , majd a **hálózat** lehetőséget. Az **+** új kapcsolatok létrehozásához kattintson a gombra.
+1. Válassza a **Beállítások**, majd a **hálózat** lehetőséget. Az **+** új kapcsolatok létrehozásához kattintson a gombra.
 
    :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/edit-connections.png" alt-text="Képernyőfelvétel: a hálózati kapcsolatok lap.":::
 
@@ -169,7 +169,7 @@ Ha még nem hozott létre tanúsítványokat, kövesse az alábbi lépéseket:
 1. Töltse le a ügyfele csomagot a Azure Portalról.
 1. Bontsa ki a fájlt.
 1. Az **általános** mappában másolja vagy helyezze át a **VpnServerRoot. cer fájlba** a **/etc/IPSec.d/cacerts**.
-1. A **CP Client. P12** másolása vagy áthelyezése a **/etc/IPSec.d/Private/** -be. Ez a fájl a VPN-átjáróhoz tartozó ügyféltanúsítvány.
+1. A **CP Client. P12** másolása vagy áthelyezése a **/etc/IPSec.d/Private/**-be. Ez a fájl a VPN-átjáróhoz tartozó ügyféltanúsítvány.
 1. Nyissa meg a **VpnSettings.xml** fájlt, és másolja az `<VpnServer>` értéket. Ezt az értéket a következő lépésben fogja használni.
 1. Módosítsa az alábbi példában szereplő értékeket, majd adja hozzá a példát a **/etc/IPSec.conf** -konfigurációhoz.
   

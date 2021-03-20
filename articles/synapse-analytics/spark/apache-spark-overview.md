@@ -10,13 +10,13 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: b31fe5daaa0882dc0927c1340902b20df56eb6b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96450441"
 ---
-# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark az Azure szinapszis Analyticsben
+# <a name="apache-spark-in-azure-synapse-analytics"></a>Apache Spark az Azure Synapse Analyticsben
 
 A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatanalitikai alkalmazások teljesítményének növelése érdekében. Az Azure szinapszis Analytics Apache Spark a Microsoft egyike a Felhőbeli Apache Spark megvalósításának. Az Azure szinapszis segítségével egyszerűen hozhat létre és konfigurálhat egy kiszolgáló nélküli Apache Spark készletet az Azure-ban. Az Azure Szinapszisban található Spark-készletek kompatibilisek az Azure Storage szolgáltatással és Azure Data Lake 2. generációs tárolóval. A Spark-készletek használatával feldolgozhatja az Azure-ban tárolt adatait.
 
@@ -30,7 +30,7 @@ A Apache Spark primitíveket biztosít a memóriabeli fürtök számítástechni
 
 Az Azure Szinapszisban a Spark-készletek teljes körűen felügyelt Spark szolgáltatást biztosítanak. Itt találja a Spark-készletek Azure szinapszis Analyticsben való létrehozásának előnyeit.
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | Gyorsaság és hatékonyság |A Spark-példányok körülbelül 2 percen belül kezdődnek, kevesebb mint 60 csomópontot, és körülbelül 5 percet vesznek igénybe több mint 60 csomópont. A példány alapértelmezés szerint 5 perccel az utolsó feladatot követően leáll, kivéve, ha egy jegyzetfüzet-kapcsolatban nem tartja életben. |
 | Könnyű létrehozás |Az Azure Szinapszisban létrehozhat egy új Spark-készletet percek alatt a Azure Portal, Azure PowerShell vagy a szinapszis Analytics .NET SDK használatával. Lásd: a [Spark-készletek első lépései az Azure szinapszis Analyticsben](../quickstart-create-apache-spark-pool-studio.md). |
@@ -84,7 +84,7 @@ Az alábbi cikkekben további tudnivalókat talál az Azure szinapszis Analytics
 > [!NOTE]
 > A hivatalos Apache Spark dokumentációja a Spark-konzollal való használatra támaszkodik, ez az Azure szinapszis Sparkon nem érhető el, hanem a notebook-vagy IntelliJ-élmények használatával
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben bemutatjuk az Azure szinapszis Analytics Apache Sparkának alapvető ismereteit. A következő cikkből megtudhatja, hogyan hozhat létre egy Spark-készletet az Azure szinapszis Analyticsben:
 

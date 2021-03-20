@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631367"
 ---
 # <a name="common-errors"></a>Gyakori hibák
@@ -25,9 +25,9 @@ A fenti hiba a sikeres bejelentkezés után következik be, de a munkamenet lét
 
 Vannak olyan kiszolgálói paraméterek, mint a require_secure_transport, amelyek a munkamenet szintjén nem támogatottak, ezért a paraméterek értékének módosítását a init_connect használatával a 1184-as hiba okozhatja a MySQL-kiszolgálóhoz való csatlakozáskor az alábbi ábrán látható módon.
 
-MySQL> adatbázisok megjelenítése; HIBA 2006 (HY000): a MySQL-kiszolgáló nem lépett fel a kapcsolatok között. Kísérlet az újracsatlakozásra... Kapcsolódási azonosító: 64897 aktuális adatbázis: * * * nincs * * _ hiba 1184 (08S01): a megszakított kapcsolódás a 22-es adatbázishoz: "db-Name" felhasználó: "user" host: "hostIP" (init_connect parancs sikertelen)
+MySQL> adatbázisok megjelenítése; HIBA 2006 (HY000): a MySQL-kiszolgáló nem lépett fel a kapcsolatok között. Kísérlet az újracsatlakozásra... Kapcsolódási azonosító: 64897 aktuális adatbázis: * * * nincs * * * hiba 1184 (08S01): a megszakított kapcsolódás a 22-es adatbázishoz: "db-Name" felhasználó: "user" host: "hostIP" (init_connect parancs sikertelen)
 
-_ *Megoldás**: alaphelyzetbe kell állítania init_connect értéket a Azure Portal kiszolgálói paraméterek lapján, és csak a támogatott kiszolgálói paramétereket kell beállítania a init_connect paraméter használatával. 
+**Megoldás** : állítsa alaphelyzetbe init_connect értéket a Azure Portal kiszolgálói paraméterek lapján, és csak a támogatott kiszolgálói paramétereket adja meg init_connect paraméter használatával. 
 
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>A SUPER Privilege és a DBA szerepkör hiánya miatti hibák

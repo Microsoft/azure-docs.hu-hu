@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
 ms.openlocfilehash: fc3774a01665b88ccae2e25ae8382497f8010c35
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102096972"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
@@ -44,7 +44,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a folyamatos exportálást Log Anal
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|<ul><li>**Biztonsági rendszergazda** vagy az erőforráscsoport **tulajdonosa**</li><li>Írási engedélyek a célként megadott erőforráshoz</li><li>Ha az alábbiakban ismertetett Azure Policy "DeployIfNotExist" szabályzatot használja, a szabályzatok hozzárendelésére vonatkozó engedélyekre is szüksége lesz</li></ul>|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Igen](./media/icons/yes-icon.png) Kínai gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov, egyéb gov<br>![Yes](./media/icons/yes-icon.png) Kínai gov|
 |||
 
 

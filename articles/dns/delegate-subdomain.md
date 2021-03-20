@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011540"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS altartomány delegálása
@@ -33,10 +33,10 @@ Először hozza létre a zónát a **mérnöki** altartományhoz.
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 2. A keresőmezőbe írja be a **DNS** kifejezést, majd válassza a **DNS-zóna** lehetőséget.
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. A **DNS-zóna létrehozása** panelen írja be a **Engineering.contoso.com** **nevet a név** szövegmezőbe.
 5. Válassza ki a zónához tartozó erőforráscsoportot. Előfordulhat, hogy ugyanazt az erőforráscsoportot szeretné használni, mint a szülő zónát, hogy a hasonló erőforrások együtt maradjanak.
-6. Kattintson a **Létrehozás** gombra.
+6. Kattintson a **Létrehozás** lehetőségre.
 7. Az üzembe helyezés sikeres végrehajtása után lépjen az új zónára.
 
 ## <a name="note-the-name-servers"></a>Jegyezze fel a névkiszolgálók nevét
@@ -68,6 +68,6 @@ A delegálás teszteléséhez használja az nslookupt.
 2. A parancssorba írja be a következőt: `nslookup www.engineering.contoso.com.`
 3. Meg kell kapnia egy nem mérvadó választ, amely a **10.10.10.10**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [konfigurálhat fordított DNS-t az Azure-ban üzemeltetett szolgáltatásokhoz](dns-reverse-dns-for-azure-services.md).

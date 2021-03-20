@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 7c4d32dd63120a52fd7351977943574455e5cfad
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146654"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API-k exportálása az Azure API Managementról a Power platformra 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014890"
 ---
 # <a name="clip-values"></a>Értékek levágása
@@ -118,6 +118,6 @@ Most próbálja meg ugyanazt a folyamatot a 60-as értékkel, mint a felső perc
 |-------------------|--------------------------|----------------------------|  
 |1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|IGAZ<br /><br /> IGAZ<br /><br /> 3, HAMIS<br /><br /> 4, HAMIS<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, HAMIS<br /><br /> 8, HAMIS<br /><br /> 9, HAMIS<br /><br /> IGAZ|4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ| 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

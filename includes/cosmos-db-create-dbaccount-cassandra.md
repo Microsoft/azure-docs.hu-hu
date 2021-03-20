@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.date: 10/01/2020
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: 30a7f3ae878cebcd1e58287fc59241651dac2bfd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94503895"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -36,9 +36,9 @@ ms.locfileid: "94503895"
     Hely|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.
     Kapacitásmód|Kiosztott átviteli sebesség vagy kiszolgáló nélküli|Válassza a **kiépített átviteli sebesség** lehetőséget egy fiók [kiépített átviteli](../articles/cosmos-db/set-throughput.md) módban való létrehozásához. [Kiszolgáló nélküli módban lévő](../articles/cosmos-db/serverless.md) fiók létrehozásához válassza a **kiszolgáló** nélküli lehetőséget.
 
-    Válassza a **felülvizsgálat + létrehozás** lehetőséget. Kihagyhatja a **hálózatkezelés** , a **biztonsági mentés** , a **titkosítás** és a **címkék** szakaszt. 
+    Válassza a **felülvizsgálat + létrehozás** lehetőséget. Kihagyhatja a **hálózatkezelés**, a **biztonsági mentés**, a **titkosítás** és a **címkék** szakaszt. 
 
-    ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
+    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 
 4. A fiók létrehozása eltarthat néhány percig. Várja meg, amíg a portálon megjelenik a **gratuláló oldal. A Azure Cosmos DB-fiókja létrejött**.
 

@@ -15,10 +15,10 @@ ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
 ms.openlocfilehash: b8408dde86d1902cf5b4899c4783c9dd185449ee
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92515746"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
@@ -123,7 +123,7 @@ A ActiveMQ-leképezésből származó metrikákat összekapcsolhatja, amelyek me
 
 
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 Ha át szeretné telepíteni a meglévő JMS 2,0 alkalmazást a Service Bus való interakcióra, kövesse a következő szakasz lépéseit.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 64e40341ec56a2e1c561b2bcbb5e584830c14015
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93145582"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Több-bérlős támogatás a VMware vész-helyreállításhoz az Azure-ban a CSP használatával – áttekintés
@@ -24,11 +24,11 @@ Ez a cikk áttekintést nyújt a több-bérlős VMware-ről az Azure-ba történ
 
 Három fő több-bérlős modell létezik:
 
-* **Megosztott üzemeltetési szolgáltatások szolgáltatója (HSP)** : a partner tulajdonosa a fizikai infrastruktúra, és megosztott erőforrásokat (vCenter, adatközpontokat, fizikai tárhelyet stb.) használ a több bérlős virtuális gép ugyanazon az infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is saját vész-helyreállítási megoldást kínál.
+* **Megosztott üzemeltetési szolgáltatások szolgáltatója (HSP)**: a partner tulajdonosa a fizikai infrastruktúra, és megosztott erőforrásokat (vCenter, adatközpontokat, fizikai tárhelyet stb.) használ a több bérlős virtuális gép ugyanazon az infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is saját vész-helyreállítási megoldást kínál.
 
-* **Dedikált üzemeltetési szolgáltató** : a partner a fizikai infrastruktúrát használja, de dedikált erőforrásokat (több vCenter, fizikai adattárolót stb.) használ az egyes bérlők virtuális gépei külön infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is rendelkezhet.
+* **Dedikált üzemeltetési szolgáltató**: a partner a fizikai infrastruktúrát használja, de dedikált erőforrásokat (több vCenter, fizikai adattárolót stb.) használ az egyes bérlők virtuális gépei külön infrastruktúrán való üzemeltetéséhez. A partner felügyelt szolgáltatásként is biztosíthatja a vész-helyreállítási felügyeletet, a bérlő pedig önkiszolgáló megoldásként is rendelkezhet.
 
-* **Felügyelt szolgáltató (msp)** : az ügyfél tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúra, a partner pedig vész-helyreállítási engedélyezést és felügyeletet biztosít.
+* **Felügyelt szolgáltató (msp)**: az ügyfél tulajdonosa a virtuális gépeket üzemeltető fizikai infrastruktúra, a partner pedig vész-helyreállítási engedélyezést és felügyeletet biztosít.
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Közös üzemeltetésű szolgáltatók (HSP)
 
@@ -56,9 +56,9 @@ A partner által felügyelt különálló felskálázású folyamat-kiszolgáló
 
 A több-bérlős forgatókönyvben szereplő összes konfigurációs kiszolgáló két fiókot használ:
 
-- **vCenter hozzáférési fiók** : Ez a fiók a bérlői virtuális gépek felderítésére szolgál. Hozzá van rendelve vCenter hozzáférési engedélyekkel. Ha el szeretné kerülni a hozzáférési szivárgások elkerülését, javasoljuk, hogy a partnerek ezeket a hitelesítő adatokat saját maguk adja meg a konfigurációs eszközben.
+- **vCenter hozzáférési fiók**: Ez a fiók a bérlői virtuális gépek felderítésére szolgál. Hozzá van rendelve vCenter hozzáférési engedélyekkel. Ha el szeretné kerülni a hozzáférési szivárgások elkerülését, javasoljuk, hogy a partnerek ezeket a hitelesítő adatokat saját maguk adja meg a konfigurációs eszközben.
 
-- **Virtuális gép hozzáférési fiókja** : Ez a fiók használható a mobilitási szolgáltatás ügynökének a bérlői virtuális gépeken való telepítésére, automatikus leküldéses küldéssel. Általában egy olyan tartományi fiók, amelyet a bérlő egy partnernek vagy egy olyan fióknak ad meg, amelyet a partner közvetlenül kezelhet. Ha a bérlő nem szeretné közvetlenül megosztani az adatokat a partnerrel, a konfigurációs kiszolgálóhoz való korlátozott hozzáféréssel megadhatja a hitelesítő adatokat. Vagy a partner segítségével manuálisan is telepíthetik a mobilitási szolgáltatás ügynökét.
+- **Virtuális gép hozzáférési fiókja**: Ez a fiók használható a mobilitási szolgáltatás ügynökének a bérlői virtuális gépeken való telepítésére, automatikus leküldéses küldéssel. Általában egy olyan tartományi fiók, amelyet a bérlő egy partnernek vagy egy olyan fióknak ad meg, amelyet a partner közvetlenül kezelhet. Ha a bérlő nem szeretné közvetlenül megosztani az adatokat a partnerrel, a konfigurációs kiszolgálóhoz való korlátozott hozzáféréssel megadhatja a hitelesítő adatokat. Vagy a partner segítségével manuálisan is telepíthetik a mobilitási szolgáltatás ügynökét.
 
 ## <a name="vcenter-account-requirements"></a>vCenter-fiókra vonatkozó követelmények
 
@@ -75,11 +75,11 @@ Konfigurálja a konfigurációs kiszolgálót egy olyan fiókkal, amelyhez hozz�
 1. Hozzon létre egy új szerepkört az előre meghatározott *írásvédett* szerepkör klónozásával, majd adjon meg egy kényelmes nevet (például Azure_Site_Recovery, ahogy az ebben a példában látható).
 2. Rendelje hozzá a következő engedélyeket ehhez a szerepkörhöz:
 
-   * **Adattár** : tárhely kiosztása, adattár tallózása, alacsony szintű fájl műveletei, fájl eltávolítása, virtuálisgép-fájlok frissítése
-   * **Hálózat** : hálózati hozzárendelés
-   * **Erőforrás** : virtuális gép kiosztása erőforráskészlet számára, áttelepítési virtuális gép, Migrálás virtuális gépen
-   * **Feladatok** : létrehozási feladat, feladat frissítése
-   * **Virtuális gép – konfiguráció** : mind
+   * **Adattár**: tárhely kiosztása, adattár tallózása, alacsony szintű fájl műveletei, fájl eltávolítása, virtuálisgép-fájlok frissítése
+   * **Hálózat**: hálózati hozzárendelés
+   * **Erőforrás**: virtuális gép kiosztása erőforráskészlet számára, áttelepítési virtuális gép, Migrálás virtuális gépen
+   * **Feladatok**: létrehozási feladat, feladat frissítése
+   * **Virtuális gép – konfiguráció**: mind
    * **Virtuális gép – interakció** > válasz kérdés, eszköz kapcsolat, CD-adathordozó konfigurálása, hajlékonylemez-adathordozó konfigurálása, kikapcsolás, bekapcsolás, VMware-eszközök telepítése
    * **Virtuális gépek – leltár** > létrehozás meglévőből, új létrehozása, regisztráció, regisztráció törlése
    * Virtuálisgép **-kiépítés** > a virtuális gépek letöltésének engedélyezése, a virtuális gépek fájljainak feltöltése
@@ -120,7 +120,7 @@ Ha a vész-helyreállítási műveleteket csak feladatátvételre szeretné korl
 
 1. A Azure Portal a korábban létrehozott tárolóban regisztrálja a vCenter-kiszolgálót a konfigurációs kiszolgálón a létrehozott vCenter-fiók használatával.
 2. Fejezze be az "infrastruktúra előkészítése" folyamatot Site Recovery a szokásos folyamat során.
-3. A virtuális gépek most már készen állnak a replikálásra. Győződjön meg arról, hogy csak a bérlő virtuális gépei jelennek meg a **replikálás**  >  **területen válassza a virtuális gépek lehetőséget** .
+3. A virtuális gépek most már készen állnak a replikálásra. Győződjön meg arról, hogy csak a bérlő virtuális gépei jelennek meg a **replikálás**  >  **területen válassza a virtuális gépek lehetőséget**.
 
 ## <a name="dedicated-hosting-solution"></a>Dedikált üzemeltetési megoldás
 

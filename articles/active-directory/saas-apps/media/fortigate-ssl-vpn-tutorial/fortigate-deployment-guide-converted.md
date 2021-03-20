@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: jeedes
 ms.openlocfilehash: cdaa6a9601452100ab90ef8b0f2191002f256b74
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025465"
 ---
 # <a name="fortigate-azure-virtual-machine-deployment-guide"></a>FortiGate Azure-beli virtuális gépek üzembe helyezési útmutatója
@@ -33,7 +33,7 @@ Ha FortiGate-licencet vásárolt a Fortinet-ből a BYOL virtuális gép üzembe 
 A Fortinet FortiGate Azure-beli virtuális gép az írás időpontjában nem az SAML-hitelesítéshez szükséges belső vezérlőprogram-verziót szállítja. A legújabb verziót a Fortinet-ből kell beszerezni.
 
 1. Jelentkezzen be a következő címen: https://support.fortinet.com/ .
-2. Válassza a **Download**  >  **belső vezérlőprogram lemezképének** letöltése lehetőséget.
+2. Válassza a   >  **belső vezérlőprogram lemezképének** letöltése lehetőséget.
 3. A **kibocsátási megjegyzések** jobb oldalán válassza a **Letöltés** lehetőséget.
 4. Válassza a **v 6,00**  >  **6,4**  >  **6.4.2** elemet.
 5. Töltse le **FGT_VM64_AZURE-v6-build1723-Fortinet. out** -t úgy, hogy kijelöli a **https** -hivatkozást ugyanazon a sorban.
@@ -43,9 +43,9 @@ A Fortinet FortiGate Azure-beli virtuális gép az írás időpontjában nem az 
 
 1. Lépjen a Azure Portalra, és jelentkezzen be az előfizetésbe, amelybe telepíteni fogja a FortiGate virtuális gépet.
 2. Hozzon létre egy új erőforráscsoportot, vagy nyissa meg azt az erőforráscsoportot, amelybe telepíteni fogja a FortiGate virtuális gépet.
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **Keresés a piactéren** mezőbe írja be a *Forti*. Válassza a **Fortinet FortiGate következő generációs tűzfal** lehetőséget.
-5. Válassza ki a szoftvercsomagot (bring-your-own-License, ha rendelkezik licenccel vagy utólagos elszámolással). Kattintson a **Létrehozás** gombra.
+5. Válassza ki a szoftvercsomagot (bring-your-own-License, ha rendelkezik licenccel vagy utólagos elszámolással). Válassza a **Létrehozás** lehetőséget.
 6. Töltse fel a virtuális gép konfigurációját.
 
     ![Képernyőkép a virtuális gép létrehozásáról.](virtual-machine.png)
@@ -77,7 +77,7 @@ Ha a FortiGate virtuális gép üzembe helyezéséhez nyilvánosan irányíthat�
 
     ![Képernyőkép a bejövő biztonsági szabály hozzáadásáról.](port-rule.png)
 
-5. Válassza a **Hozzáadás** elemet.
+5. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="create-a-second-virtual-nic-for-the-vm"></a>Hozzon létre egy második virtuális NIC-t a virtuális GÉPHEZ
 
@@ -149,7 +149,7 @@ Az alábbi szakaszokból megtudhatja, hogyan állíthatja be a FortiGate virtuá
 2. Folytassa a tanúsítvány esetleges hibáit.
 3. Jelentkezzen be a FortiGate virtuális gép telepítése során megadott rendszergazdai hitelesítő adatok használatával.
 4. A bal oldali **menüben válassza a**  >  **rendszertanúsítványok** lehetőséget.
-5. Válassza **Import** a  >  **távoli tanúsítvány** importálása lehetőséget.
+5. Válassza a  >  **távoli tanúsítvány** importálása lehetőséget.
 6. Tallózással keresse meg a FortiGate egyéni alkalmazás telepítése az Azure-bérlőben letöltött tanúsítványát. Jelölje ki, majd kattintson **az OK gombra**.
 
 ### <a name="upload-and-configure-a-custom-ssl-certificate"></a>Egyéni SSL-tanúsítvány feltöltése és konfigurálása
@@ -161,12 +161,12 @@ Előfordulhat, hogy a FortiGate virtuális gépet saját SSL-tanúsítvánnyal s
 2. Folytassa a tanúsítvány esetleges hibáit.
 3. Jelentkezzen be a FortiGate virtuális gép telepítése során megadott rendszergazdai hitelesítő adatok használatával.
 4. A bal oldali **menüben válassza a**  >  **rendszertanúsítványok** lehetőséget.
-5. Válassza **Import** a  >  **helyi tanúsítvány**  >  **PKCS #12 tanúsítvány** importálása lehetőséget.
+5. Válassza a  >  **helyi tanúsítvány**  >  **PKCS #12 tanúsítvány** importálása lehetőséget.
 6. Tallózással keresse meg a következőt:. Az SSL-tanúsítványt és a titkos kulcsot tartalmazó PFX-fájl.
 7. Adja meg a. PFX-jelszó és a tanúsítvány kifejező neve. Ez után válassza az **OK** gombot.
 8. A bal oldali **menüben válassza a**  >  **Rendszerbeállítások** elemet.
 9. Az **Adminisztráció beállításai** területen bontsa ki a **https-kiszolgálói tanúsítvány** melletti listát, és válassza ki a korábban importált SSL-tanúsítványt.
-10. Kattintson az **Alkalmaz** elemre.
+10. Kattintson az **Alkalmaz** gombra.
 11. Zárjuk be a böngészőablakot, és nyissa meg a következőt: `https://<address>:8443` .
 12. Jelentkezzen be a FortiGate rendszergazdai hitelesítő adataival. Ekkor látnia kell a megfelelő SSL-tanúsítványt a használatban.
 

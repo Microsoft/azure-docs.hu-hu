@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2021
 ms.author: jeedes
 ms.openlocfilehash: 96118a840c57932ae8e99b084766bf12493d9f7a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>Oktatóanyag: Azure Active Directory integráció a SolarWinds Service Desk szolgáltatással (korábban Samanage)
@@ -159,7 +159,7 @@ SolarWinds esetén a kiépítés manuális feladat.
 
 2. Kattintson az **irányítópult** elemre, és válassza a **beállítás** elemet a bal oldali navigációs sávon.
    
-    ![Beállítás](./media/samanage-tutorial/tutorial-samanage-1.png "Telepítés")
+    ![Beállítás](./media/samanage-tutorial/tutorial-samanage-1.png "Beállítás")
 
 3. Kattintson a **felhasználók** lapra
    

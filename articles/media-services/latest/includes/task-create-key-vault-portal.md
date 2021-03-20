@@ -6,10 +6,10 @@ ms.date: 11/04/2020
 ms.author: inhenkel
 ms.custom: portal
 ms.openlocfilehash: 2756145ce7f385ab02e70b3f232743ae51b9f453
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013231"
 ---
 <!--Create a key vault in the portal-->
@@ -18,7 +18,7 @@ ms.locfileid: "96013231"
 
 1. A Azure Portal kezdőképernyőn válassza az **erőforrás létrehozása** lehetőséget.
 1. Adja meg a *Key vaultot* a **piactér** keresési mezőjében, és válassza ki **Key Vault** , amikor megjelenik a keresési eredmények között.
-1. Kattintson a **Létrehozás** gombra.  Megjelenik a Key Vault létrehozása képernyő.
+1. Válassza a **Létrehozás** lehetőséget.  Megjelenik a Key Vault létrehozása képernyő.
 1. Válassza ki a használni kívánt **erőforráscsoportot** , vagy hozzon létre egy újat.
 1. Adja meg a Key Vault nevet a **Key Vault** mezőbe való beírásával.
 1. Ebben a példában az alapértelmezett beállítást kell meghagynia a **helyreállítási beállításokhoz**.

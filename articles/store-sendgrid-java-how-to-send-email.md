@@ -17,10 +17,10 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015451"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mailek küldése a SendGrid használatával Java-ból
@@ -198,7 +198,7 @@ InternetAddress("john@contoso.com"));
 ## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid-szolgáltatások használata
 A SendGrid olyan webes API-kat kínál, amelyek segítségével további SendGrid funkciókat alkalmazhat az Azure-alkalmazásból. További részletekért tekintse meg a [SENDGRID API dokumentációját][SendGrid API documentation].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * Minta, amely bemutatja, hogyan használható az SendGrid egy Azure-beli üzemelő példányban: az [e-mailek küldése a SendGrid-ből Java-ban Azure-környezetben](store-sendgrid-java-how-to-send-email-example.md)

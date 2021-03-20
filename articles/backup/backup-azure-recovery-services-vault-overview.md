@@ -4,10 +4,10 @@ description: Recovery Services-tárolók áttekintése.
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98755113"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
@@ -40,7 +40,7 @@ Ez a szakasz a Recovery Services-tárolóban tárolt biztonsági másolatok titk
 
 Alapértelmezés szerint az összes adatait a platform által felügyelt kulcsok használatával titkosítja a rendszer. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtani a végponttól. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
 
-### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatai titkosítása az ügyfél által felügyelt kulcsokkal
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Biztonsági mentési adatok titkosítása ügyfelek által felügyelt kulcsok használatával
 
 Dönthet úgy, hogy az Ön által birtokolt és felügyelt titkosítási kulcsok használatával titkosítja az adatait. Azure Backup lehetővé teszi, hogy a Azure Key Vault tárolt RSA-kulcsait a biztonsági mentések titkosításához használja. A biztonsági mentések titkosításához használt titkosítási kulcs különbözhet a forráshoz használttól. Az adatait egy AES 256-alapú adattitkosítási kulccsal (ADATTITKOSÍTÁSI kulcsot) védik, amely viszont a kulcsok használatával védett. Ez teljes körű irányítást biztosít az adat és a kulcsok felett. A titkosítás engedélyezéséhez a Recovery Services-tárolónak hozzáférést kell biztosítania a Azure Key Vault található titkosítási kulcshoz. Ha szükséges, letilthatja a kulcsot, vagy visszavonhatja a hozzáférést. A titkosítást azonban a kulcsok használatával kell engedélyeznie, mielőtt bármilyen elemet a tárolóhoz próbál védelemmel ellátni.
 
@@ -59,7 +59,7 @@ A Azure Advisor óránként [javaslatokat](../advisor/advisor-high-availability-
 - [Tár támogatott és nem támogatott forgatókönyvek](backup-support-matrix.md#vault-support)
 - [Tár – gyakori kérdések](backup-azure-backup-faq.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek használhatók:
 

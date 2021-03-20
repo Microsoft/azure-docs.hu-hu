@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: e153edd807dcb119c34f60dc34e33fed510916bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011523"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
@@ -24,7 +24,7 @@ Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartom�
 
 Miután létrehozta a bejárati ajtót, az alapértelmezett előtér-gazdagép, amely a (z) altartománya `azurefd.net` , az URL-cím tartalmazza a háttérbeli tartalomnak a háttérből alapértelmezés szerint történő kézbesítéséhez (például https: \/ /contoso-frontend.azurefd.net/activeusers.htm). A kényelmes használat érdekében az Azure Front Door lehetőséget ad arra, hogy egyéni tartományt társítson az alapértelmezett gazdagéphez. Ezzel a lehetőséggel a tartalom továbbításakor az egyéni tartomány neve lesz az URL-címben a Front Door tulajdonában lévő tartománynév helyett (például https:\//www.contoso.com/photo.png). 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - CNAME DNS-rekord létrehozása.
 > - Az egyéni tartomány társítása a Front Doorral.
@@ -116,7 +116,7 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a Front Doorho
 
 5. Az **Egyéni gazdagépnév** mezőben adja meg az egyéni tartomány nevét az altartomány nevével együtt, amelyet a CNAME rekord forrástartományaként fog használni. Például: www \. contoso.com vagy CDN.contoso.com. Ne használja az afdverify altartománynevet.
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
    Az Azure ellenőrzi, hogy a megadott egyéni tartománynév esetében létezik-e a CNAME rekord. Ha a CNAME helyes, az egyéni tartomány érvényesítve lesz.
 

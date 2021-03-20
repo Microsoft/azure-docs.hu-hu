@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 674f267d3d99dd22c1ae06b6d32587761d5983ce
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93124917"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Az Azure AD és a transactd SaaS-ajánlatok a kereskedelmi piactéren
@@ -35,7 +35,7 @@ Az Azure AD a kereskedelmi Piactéri megoldások zökkenőmentes megvásárlás�
 
 Ahogy az 1. ábrán is látható, amikor a vevő kiválasztja az ajánlatot, elindítanak egy munkafolyamatok láncát, amely tartalmazza a vásárlást, az előfizetést és a felhasználói felügyeletet. Ezen a láncon belül Ön, ahogy a kiadó felelős az egyes követelményekért, a Microsoft a kulcsfontosságú pontokat támogató támogatást nyújt.
 
-**_1. ábra: az Azure ad for SaaS-ajánlatok használata a kereskedelmi piactéren_* _
+***1. ábra: az Azure AD for SaaS-ajánlatok használata a kereskedelmi piactéren***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
 
@@ -45,14 +45,14 @@ A következő szakaszokban részletesen ismertetjük az egyes folyamatok lépés
 
 Ez az ábra a vásárlás felügyeletének négy folyamat lépését mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="A vásárlások kezelésének négy folyamatának lépéseit mutatja be.":::
 
 Ez a táblázat a vásárlás felügyeleti folyamatának lépéseit ismerteti.
 
 | Folyamat lépése | Közzétevői művelet | A közzétevők számára ajánlott vagy kötelező |
 | ------------ | ------------- | ------------- |
-| 1. a vásárló bejelentkezik a kereskedelmi piactéren az Azure ID-identitással, és kiválasztja az SaaS-ajánlatot. | Nincs szükség közzétevői műveletre. | Nem értelmezhető |
-| 2. a vásárlást követően a vevő kiválasztja az Azure Marketplace-en a *fiók konfigurálása* * vagy a AppSource **konfigurálása** lehetőséget, amely a vásárlót a kiadó kezdőlapján irányítja. A vásárlónak képesnek kell lennie arra, hogy bejelentkezzen a közzétevő SaaS-alkalmazásba az Azure AD SSO-val, és csak olyan minimális hozzájárulást kérjen, amely nem igényli az Azure AD-rendszergazda jóváhagyását. | Tervezze meg az [ajánlat kezdőlapját](azure-ad-transactable-saas-landing-page.md) , hogy az Azure ad-vagy Microsoft-fiók-(MSA-) identitással rendelkező felhasználót kapjon, és megkönnyíti a szükséges további kiépítést vagy beállítást. | Kötelező |
+| 1. a vásárló bejelentkezik a kereskedelmi piactéren az Azure ID-identitással, és kiválasztja az SaaS-ajánlatot. | Nincs szükség közzétevői műveletre. | Nem alkalmazható |
+| 2. a vásárlást követően a vevő kiválasztja a **fiók konfigurálása** az Azure piactéren vagy a AppSource **konfigurálása** lehetőséget, amely a vásárlót a kiadó kezdőlapjának adja át ehhez az ajánlathoz. A vásárlónak képesnek kell lennie arra, hogy bejelentkezzen a közzétevő SaaS-alkalmazásba az Azure AD SSO-val, és csak olyan minimális hozzájárulást kérjen, amely nem igényli az Azure AD-rendszergazda jóváhagyását. | Tervezze meg az [ajánlat kezdőlapját](azure-ad-transactable-saas-landing-page.md) , hogy az Azure ad-vagy Microsoft-fiók-(MSA-) identitással rendelkező felhasználót kapjon, és megkönnyíti a szükséges további kiépítést vagy beállítást. | Kötelező |
 | 3. a közzétevő a SaaS-teljesítési API-ból vásárolja meg a vásárlás részleteit. | A Kezdőlap alkalmazás-AZONOSÍTÓjában létrehozott [hozzáférési jogkivonat](./partner-center-portal/pc-saas-registration.md) használatával [hívja meg a feloldási végpontot](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) a vásárlással kapcsolatos részletek lekéréséhez. | Kötelező |
 | 4. az Azure AD-n és a Microsoft Graph API-n keresztül a kiadó összegyűjti a vállalat és a felhasználó adatait a közzétevő SaaS-alkalmazásban való kiépítéséhez.  | Az Azure AD felhasználói jogkivonat lebontása a név és az e-mail kereséséhez, vagy [a Microsoft Graph API meghívásához](/graph/use-the-api) , valamint a delegált engedélyek használata a bejelentkezett felhasználó [adatainak lekéréséhez](/graph/api/user-get) . | Kötelező |
 ||||
@@ -61,7 +61,7 @@ Ez a táblázat a vásárlás felügyeleti folyamatának lépéseit ismerteti.
 
 Ez az ábra az előfizetés-kezelés két folyamatának lépéseit mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Az előfizetés-kezelés két folyamatának lépéseit mutatja be.":::
 
 Ez a táblázat az előfizetés-kezelési folyamat lépéseinek részleteit ismerteti.
 
@@ -75,13 +75,13 @@ Ez a táblázat az előfizetés-kezelési folyamat lépéseinek részleteit isme
 
 Ez az ábra a felhasználói felügyelet három folyamatának lépéseit mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="A felhasználói felügyelet három választható folyamatának lépéseit mutatja be.":::
 
 A 7 – 9. lépést feldolgozhatja a felhasználói felügyeleti folyamatok opcionális lépéseivel. Az Azure AD egyszeri bejelentkezést (SSO) támogató kiadók számára további előnyöket biztosítanak. Ez a táblázat a felhasználói felügyeleti folyamat lépéseinek részleteit ismerteti.
 
 | Folyamat lépése | Közzétevői művelet | A közzétevők számára ajánlott vagy kötelező |
 | ------------ | ------------- | ------------- |
-| 7. az Azure AD-rendszergazdák az Azure AD-n keresztül igény szerint kezelhetik a felhasználók és csoportok hozzáférését. | Ha az Azure AD SSO felhasználói számára van beállítva (9. lépés), nincs szükség közzétevői műveletre. | Nem értelmezhető |
+| 7. az Azure AD-rendszergazdák az Azure AD-n keresztül igény szerint kezelhetik a felhasználók és csoportok hozzáférését. | Ha az Azure AD SSO felhasználói számára van beállítva (9. lépés), nincs szükség közzétevői műveletre. | Nem alkalmazható |
 | 8. az Azure AD-kiépítési szolgáltatás kommunikál az Azure AD és a közzétevő SaaS-alkalmazásának változásaival. | [Hozzon létre egy scim-végpontot](../active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md) a frissítések Azure ad-től való fogadásához, mivel a felhasználók hozzáadása és eltávolítása megtörtént. | Ajánlott |
 | 9. az alkalmazás jogosultságának és üzembe helyezésének engedélyezése után a vásárló vállalatának felhasználói az Azure AD SSO használatával jelentkezhetnek be a közzétevő SaaS-alkalmazásba. | Az [Azure ad SSO használatával](../active-directory/manage-apps/what-is-single-sign-on.md) engedélyezheti, hogy a felhasználók egyszer jelentkezzenek be egy fiókkal a közzétevő SaaS-alkalmazásával. | Ajánlott |
 ||||

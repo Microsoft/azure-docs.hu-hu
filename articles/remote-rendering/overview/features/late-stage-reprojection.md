@@ -6,10 +6,10 @@ ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92205642"
 ---
 # <a name="late-stage-reprojection"></a>Újravetítés késői fázisban
@@ -18,7 +18,7 @@ A *késői fázisok újravetítése* (LSR) egy hardveres szolgáltatás, amely s
 
 A statikus modellek várhatóan megőrzik a helyüket, amikor mozgatják őket. Ha instabilnak tűnik, ez a viselkedés LSR problémákra utalhat. Vegye figyelembe, hogy további dinamikus átalakítások, például animációk vagy alábontási nézetek is felfedik ezt a viselkedést.
 
-Két különböző LSR mód közül választhat, azaz a **SÍKBELI LSR** vagy a **mélységi LSR**is. Azt határozza meg, hogy az ügyfélalkalmazás egy mélységi puffert küld-e el.
+Két különböző LSR mód közül választhat, azaz a **SÍKBELI LSR** vagy a **mélységi LSR** is. Azt határozza meg, hogy az ügyfélalkalmazás egy mélységi puffert küld-e el.
 
 Mindkét LSR mód javítja a hologramos stabilitást, bár ezek eltérő korlátozásokkal rendelkeznek. Első lépésként próbálja ki a mélységi LSR, mivel ez vitathatatlanul jobb eredményeket biztosít a legtöbb esetben.
 
@@ -46,7 +46,7 @@ A síkbeli LSR újratervezi azokat az objektumokat, amelyek a megadott síkon k�
 
 ### <a name="configure-planar-lsr-in-unity"></a>Síkbeli LSR konfigurálása az egységben
 
-A sík paramétereit egy úgynevezett *fókuszpontból*származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . A részletekért tekintse meg az [Unity Focus Point API](/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
+A sík paramétereit egy úgynevezett *fókuszpontból* származtatják, amelynek minden keretét meg kell adnia `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` . A részletekért tekintse meg az [Unity Focus Point API](/windows/mixed-reality/focus-point-in-unity) -t. Ha nem állít be fókuszt, a rendszer tartalékot választ Önnek. Az automatikus tartalék azonban gyakran az optimálisnál rosszabb eredményeket eredményez.
 
 Saját maga is kiszámíthatja a fókuszt, bár érdemes lehet a távoli renderelési gazdagép alapján kiszámítani. Meghívásával szerezze be a következőt: `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` . A rendszer arra kéri, hogy adjon meg egy koordináta-keretet, amelyben kifejezni szeretné a fókuszt. A legtöbb esetben csak az eredményt szeretné megadni `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` .
 

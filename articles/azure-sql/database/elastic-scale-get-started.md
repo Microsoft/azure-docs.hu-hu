@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919544"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés a Elastic Database eszközökkel
@@ -104,13 +104,13 @@ Gratulálunk! Sikeresen felépítette és futtatta az első felhalmozott alkalma
 
 ## <a name="key-pieces-of-the-code-sample"></a>A mintakód legfontosabb darabjai
 
-* Szegmensek **és szegmens térképek kezelése**: a kód azt mutatja be, hogyan használhatók a *ShardManagementUtils.cs* -fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
+* Szegmensek **és szegmens térképek kezelése**: a kód azt szemlélteti, hogyan használhatók a *ShardManagementUtils. cs* fájlban a szegmensek, tartományok és leképezések. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).  
 
-* **Adatfüggő útválasztás**: a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample.cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
+* **Adatfüggő útválasztás**: a jobb oldali szegmenshez tartozó tranzakciók útválasztása a *DataDependentRoutingSample. cs* fájlban látható. További információ: [az Adatkezeléstől függő útválasztás](https://go.microsoft.com/?linkid=9862596).
 
-* **Több szegmensre történő lekérdezés**: a *MultiShardQuerySample.cs* -fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
+* **Több szegmensre történő lekérdezés**: a *MultiShardQuerySample. cs* fájlban láthatók a több szegmens közötti lekérdezések. További információ: [több szegmensből álló lekérdezés](https://go.microsoft.com/?linkid=9862597).
 
-* **Üres** szegmensek hozzáadása: az új üres szegmensek ismétlődő hozzáadását a *CreateShardSample.cs* -fájlban található kód hajtja végre. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).
+* **Üres** szegmensek hozzáadása: az új üres szegmensek iterációs hozzáadását a *CreateShardSample. cs* fájl kódja hajtja végre. További információ: adatbázisok horizontális [Felskálázása a szegmenses Térkép kezelőjével](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Egyéb rugalmas skálázási műveletek
 

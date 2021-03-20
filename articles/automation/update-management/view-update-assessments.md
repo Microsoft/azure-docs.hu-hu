@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 09/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 39df5888a330a92ae043e34c3043da5b1f566345
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92222209"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Frissítési értékelések megtekintése Update Management
@@ -22,13 +22,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
-Ha egy Azure-beli virtuális gépről szeretné megtekinteni a frissítési értékelést, navigáljon **Virtual Machines** , és válassza ki a virtuális gépet a listából. A bal oldali menüben válassza ki a **vendég + gazdagép frissítései**elemet, majd válassza a **Ugrás a Update Managementra** lehetőséget a **vendég + gazdagép frissítései** lapon.
+Ha egy Azure-beli virtuális gépről szeretné megtekinteni a frissítési értékelést, navigáljon **Virtual Machines** , és válassza ki a virtuális gépet a listából. A bal oldali menüben válassza ki a **vendég + gazdagép frissítései** elemet, majd válassza a **Ugrás a Update Managementra** lehetőséget a **vendég + gazdagép frissítései** lapon.
 
 Update Managementban megtekintheti a gép adatait, a hiányzó frissítéseket, a frissítések központi telepítését és az ütemezett frissítések központi telepítését.
 
 [![Az Azure-beli virtuális gép Update Management értékelés nézete](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-Ha egy arc-kompatibilis kiszolgálóról szeretné megtekinteni a frissítési értékelést, navigáljon a **kiszolgálók – Azure arc** elemre, és válassza ki a kiszolgálót a listából. A bal oldali menüben válassza a **vendég és a gazdagép frissítése**lehetőséget. A **vendég + gazdagép frissítései** lapon válassza a **Update Management ugrás**lehetőséget.
+Ha egy arc-kompatibilis kiszolgálóról szeretné megtekinteni a frissítési értékelést, navigáljon a **kiszolgálók – Azure arc** elemre, és válassza ki a kiszolgálót a listából. A bal oldali menüben válassza a **vendég és a gazdagép frissítése** lehetőséget. A **vendég + gazdagép frissítései** lapon válassza a **Update Management ugrás** lehetőséget.
 
 Update Managementban megtekintheti az ív használatára képes géppel, a hiányzó frissítésekkel, a frissítések központi telepítésével és az ütemezett frissítések telepítésével kapcsolatos információkat.
 
@@ -42,7 +42,7 @@ A környezet frissítései a **frissítés kezelése** oldalon találhatók. Ha 
 
 A **megfelelőség** oszlopban megtekintheti a gép legutóbbi értékelésének időpontját. Az **ügynök készültségének frissítése** oszlopban láthatja a frissítési ügynök állapotát. Ha probléma merül fel, kattintson a hivatkozásra a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
 
-Az **információ hivatkozás**alatt válassza ki a frissítésre mutató hivatkozást a támogatási cikk megnyitásához, amely fontos információkat nyújt a frissítésről.
+Az **információ hivatkozás** alatt válassza ki a frissítésre mutató hivatkozást a támogatási cikk megnyitásához, amely fontos információkat nyújt a frissítésről.
 
 [![Frissítési állapot megtekintése](./media/view-update-assessments/missing-updates.png)](./media/view-update-assessments/missing-updates-expanded.png#lightbox)
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015196"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
@@ -316,7 +316,7 @@ Ha HIPAA-sémákkal és a 277-es vagy 837-es típusú üzenettel dolgozik, néh�
 
 Ez a táblázat felsorolja az érintett üzenetek típusait, a különböző változatokat, valamint a dokumentum verziószámait, amelyek az adott típusú üzenetekhez vannak leképezve:
 
-| Üzenet típusa vagy Variant |  Leírás | Dokumentum verziószáma (GS8) |
+| Üzenet típusa vagy Variant |  Description | Dokumentum verziószáma (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Egészségügyi információk állapotáról szóló értesítés | 005010X212 |
 | 837_I | Health Care-jogcím – intézményi | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
@@ -386,6 +386,6 @@ Az összekötővel kapcsolatos további technikai részleteket, például az ös
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók [a Logic apps-összekötők](../connectors/apis-list.md) használatáról

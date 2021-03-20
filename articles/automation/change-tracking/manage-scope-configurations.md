@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6eb9a20920f0a340491459f0875fc85b90dfa193
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92209680"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>A Change Tracking és a leltár központi telepítési hatókörének korlátozása
@@ -26,19 +26,19 @@ A Change Tracking hatókörének és a leltár üzembe helyezésének korlátoz�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza az **Automation-fiókok** elemet.
+2. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a bemenet alapján szűri a javaslatokat. Válassza az **Automation-fiókok** elemet.
 
 3. Az Automation-fiókok listájában válassza ki azt a fiókot, amelyet a Change Tracking és a leltár engedélyezésekor választott ki.
 
-4. Az Automation-fiókban a **kapcsolódó erőforrások**területen válassza a **csatolt munkaterület** lehetőséget.
+4. Az Automation-fiókban a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 
-5. Kattintson **a munkaterület ugrása**elemre.
+5. Kattintson **a munkaterület ugrása** elemre.
 
-6. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások**területen.
+6. Válassza ki a **hatókör-konfigurációk (előzetes verzió)** elemet a **munkaterület-adatforrások** területen.
 
-7. Válassza ki a hatókör-konfigurációtól jobbra található három pontot  `MicrosoftDefaultScopeConfig-ChangeTracking` , majd kattintson a **Szerkesztés**gombra.
+7. Válassza ki a hatókör-konfigurációtól jobbra található három pontot  `MicrosoftDefaultScopeConfig-ChangeTracking` , majd kattintson a **Szerkesztés** gombra.
 
-8. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. A Change Tracking és a leltár által használt mentett keresés:
+8. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása** lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. A Change Tracking és a leltár által használt mentett keresés:
 
     |Name     |Kategória  |Alias  |
     |---------|---------|---------|
