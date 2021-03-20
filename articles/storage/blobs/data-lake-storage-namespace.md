@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95912994"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchikus névtér Azure Data Lake Storage Gen2
@@ -45,6 +45,6 @@ A hierarchikus névtér engedélyezésének okait a TCO-elemzés határozza meg.
 
 Az adattárolási árak, a tranzakciós árak és a tárolási kapacitás foglalási díjszabása közötti különbségeket elemezheti az olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek, és hierarchikus névtereket is tartalmaz: [Azure Data Lake Storage Gen2 díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Storage-fiók létrehozása](../common/storage-account-create.md)

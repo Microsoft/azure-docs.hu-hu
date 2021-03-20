@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
 ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91651428"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Az Azure HPC Cache csatlakoztatása
@@ -115,7 +115,7 @@ Robusztus ügyfél csatlakoztatása esetén adja át ezeket a beállításokat �
 
 > Mount-o Hard, proto = TCP, mountproto = TCP, újrapróbálkozás = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| Javasolt csatlakoztatási parancs beállításai | Leírás |
+| Javasolt csatlakoztatási parancs beállításai | Description |
 --- | ---
 ``hard`` | Az Azure HPC cache-hez való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel jár.
 ``proto=tcp`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.

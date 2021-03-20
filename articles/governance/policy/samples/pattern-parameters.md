@@ -4,10 +4,10 @@ description: Ez a Azure Policy minta azt szemlélteti, hogyan használhatók a k
 ms.date: 08/17/2020
 ms.topic: sample
 ms.openlocfilehash: 7bb991c43a1deee39dd047aa7d814c124712fe69
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89649952"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy minta: paraméterek
@@ -29,7 +29,7 @@ Ez a házirend-definíció két paramétert használ: **TagName** és **tagValue
 
 A házirend-definíció ezen részében a **TagName** paraméter _karakterláncként_ van definiálva, és a használathoz Leírás van megadva.
 
-Ezt a paramétert a ' Policyrule osztály használja a rendszer **. Ha** a Letiltás letiltja a szabályzatot. Itt megadhatja a kiértékelt mezőt, amely a **TagName**értékkel rendelkező címke.
+Ezt a paramétert a ' Policyrule osztály használja a rendszer **. Ha** a Letiltás letiltja a szabályzatot. Itt megadhatja a kiértékelt mezőt, amely a **TagName** értékkel rendelkező címke.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json" range="22-27" highlight="3":::
 
@@ -43,17 +43,17 @@ Ez a házirend-definíció egyetlen paramétert használ a **listOfBandwidthinMb
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="6-12":::
 
-A házirend-definíció ezen részében a **listOfBandwidthinMbps** paraméter _tömbként_ van definiálva, és a használathoz Leírás van megadva. _Tömbként_több értéket kell megegyeznie.
+A házirend-definíció ezen részében a **listOfBandwidthinMbps** paraméter _tömbként_ van definiálva, és a használathoz Leírás van megadva. _Tömbként_ több értéket kell megegyeznie.
 
 Ezután a paramétert a ' Policyrule osztály fogja használni **. Ha** a blokkot használja. _Tömb_ paraméterként a _tömb_ 
- [feltételeit](../concepts/definition-structure.md#conditions)vagy **in** **notIn** kell használni.
+ [feltételeit](../concepts/definition-structure.md#conditions)vagy  **notIn** kell használni.
 Itt a rendszer a **szolgáltató. bandwidthInMbps** aliast használja a definiált értékek egyikére.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
 
 ## <a name="sample-3-parameterized-effect"></a>3. minta: paraméteres hatás
 
-A házirend-definíciók újrahasználhatóságának általános módja, ha maga a hatás parametrizálja. Ez a példa egyetlen paramétert használ, ami **hatással**van. A Parameterizing lehetővé teszi, hogy ugyanazokat a definíciókat a különböző hatókörű hatókörökhöz rendelje.
+A házirend-definíciók újrahasználhatóságának általános módja, ha maga a hatás parametrizálja. Ez a példa egyetlen paramétert használ, ami **hatással** van. A Parameterizing lehetővé teszi, hogy ugyanazokat a definíciókat a különböző hatókörű hatókörökhöz rendelje.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
 
@@ -61,13 +61,13 @@ A házirend-definíciók újrahasználhatóságának általános módja, ha maga
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
 
-A házirend-definíció ezen részében a **Effect** paraméter _karakterláncként_van definiálva. A házirend-definíció beállítja egy hozzárendelés alapértelmezett értékét a _naplózáshoz_ , és korlátozza a _letiltott_ és a _megtagadási_egyéb beállításokat.
+A házirend-definíció ezen részében a **Effect** paraméter _karakterláncként_ van definiálva. A házirend-definíció beállítja egy hozzárendelés alapértelmezett értékét a _naplózáshoz_ , és korlátozza a _letiltott_ és a _megtagadási_ egyéb beállításokat.
 
 Ezután a paramétert a ' Policyrule osztály használja a rendszer, **majd** letiltja a _hatást_.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a többi mintázatot és a beépített definíciókat](./index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91565071"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Kereskedelmi partnerek hozzáadása az Azure Logic Apps integrációs fiókjaihoz
@@ -37,11 +37,11 @@ Egy megállapodásban megadhatja a fogadó partner szemszögéből érkező bej�
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok**elemet.
+1. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok** elemet.
 
    ![Integrációs fiókok kiválasztása](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
 
-1. Az **integrációs fiókok**területen válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a partnereit.
+1. Az **integrációs fiókok** területen válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a partnereit.
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
 
@@ -49,15 +49,15 @@ Egy megállapodásban megadhatja a fogadó partner szemszögéből érkező bej�
 
    ![Képernyőkép, amely a partnerek csempét jeleníti meg.](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
 
-1. A **partnerek**területen válassza a **Hozzáadás**lehetőséget. A **Partner hozzáadása**területen adja meg a partner adatait az alábbi táblázatban leírtak szerint.
+1. A **partnerek** területen válassza a **Hozzáadás** lehetőséget. A **Partner hozzáadása** területen adja meg a partner adatait az alábbi táblázatban leírtak szerint.
 
    ![Válassza a "Hozzáadás" lehetőséget, és adja meg a partner adatait](./media/logic-apps-enterprise-integration-partners/add-partners.png)
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Igen | A partner neve |
-   | **Selejtező** | Igen | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns**lehetőséget, amely a standard. |
-   | **Érték** | Igen | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
+   | **Név** | Yes | A partner neve |
+   | **Selejtező** | Yes | Az a hitelesítő szervezet, amely egyedi üzleti identitásokat biztosít a szervezeteknek, például **D-U-N-S (Dun & bradstreettől)**. <p>A partnerek kölcsönösen meghatározott üzleti identitást választhatnak. Ezekben az esetekben válassza a **kölcsönösen meghatározott** EDIFACT vagy **kölcsönösen definiált (X12)** beállítást a X12 számára. <p>A RosettaNet esetében válassza a csak a **Duns** lehetőséget, amely a standard. |
+   | **Érték** | Yes | Egy érték, amely azonosítja a logikai alkalmazások által fogadott dokumentumokat. <p>A RosettaNet esetében ennek az értéknek egy kilenc számjegyű számnak kell lennie, amely megfelel a DUNS számának. |
    ||||
 
    > [!NOTE]
@@ -78,20 +78,20 @@ Válassza ki a **partnerek** csempét.
 
    ![Válassza a "partnerek" csempét](./media/logic-apps-enterprise-integration-partners/edit.png)
 
-1. A **partnerek**területen válassza ki a szerkeszteni kívánt partnert, és válassza a **Szerkesztés**lehetőséget. A **Szerkesztés**területen hajtsa végre a módosításokat.
+1. A **partnerek** területen válassza ki a szerkeszteni kívánt partnert, és válassza a **Szerkesztés** lehetőséget. A **Szerkesztés** területen hajtsa végre a módosításokat.
 
    ![A módosítások elvégzése és mentése](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
 
-   A RosettaNet a **RosettaNet-partner tulajdonságai**területen megadhatja ezt a további információt:
+   A RosettaNet a **RosettaNet-partner tulajdonságai** területen megadhatja ezt a további információt:
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Partner besorolása** | Nem | A partner szervezeti típusa |
-   | **Ellátási lánc kódja** | Nem | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
-   | **Kapcsolattartó neve** | Nem | A partner kapcsolattartójának neve |
-   | **E-mail** | Nem | A partner e-mail-címe |
-   | **Fax** | Nem | A partner faxszáma |
-   | **Telefon** | Nem | A partner telefonszáma |
+   | **Partner besorolása** | No | A partner szervezeti típusa |
+   | **Ellátási lánc kódja** | No | A partner ellátási láncának kódja, például "információs technológia" vagy "elektronikus összetevők" |
+   | **Kapcsolattartó neve** | No | A partner kapcsolattartójának neve |
+   | **E-mail** | No | A partner e-mail-címe |
+   | **Fax** | No | A partner faxszáma |
+   | **Telefon** | No | A partner telefonszáma |
    ||||
 
 1. Ha elkészült, kattintson **az OK** gombra a módosítások mentéséhez.
@@ -102,7 +102,7 @@ Válassza ki a **partnerek** csempét.
 
    ![Képernyőkép, amely megjeleníti a partnereknek a kiválasztott partnerek csempéjét.](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
 
-1. A **partnerek**területen válassza ki a törölni kívánt partnert. Válassza a **Törlés** elemet.
+1. A **partnerek** területen válassza ki a törölni kívánt partnert. Válassza a **Törlés** elemet.
 
    ![Partner törlése](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
 

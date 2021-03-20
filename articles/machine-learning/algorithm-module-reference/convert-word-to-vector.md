@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
 ms.openlocfilehash: 5fad3e4862b0c40c9edd00a5b9d47b245e529396
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91536732"
 ---
 # <a name="convert-word-to-vector-module"></a>A Word átalakítása vektoros modulba
@@ -51,37 +51,37 @@ Ehhez a modulhoz olyan adatkészlet szükséges, amely egy szöveges oszlopot ta
 
 2. A modul bemenete adjon meg egy adatkészletet, amely egy vagy több szöveges oszlopot tartalmaz.
 
-3. A **cél oszlop**esetében csak egy olyan oszlopot válasszon, amely feldolgozni kívánt szöveget tartalmaz.
+3. A **cél oszlop** esetében csak egy olyan oszlopot válasszon, amely feldolgozni kívánt szöveget tartalmaz.
 
     Mivel ez a modul szövegből hoz létre egy szókincset, az oszlopok tartalma eltér, ami különböző szókincs-tartalmakhoz vezet. Ezért a modul csak egy cél oszlopot fogad el.
 
-4. A  **Word2Vec stratégia**esetében válasszon a következő, az **előképzésen átadott angol modellből**, a **Gensim Word2Vec**és a **Gensim FastText**.
+4. A  **Word2Vec stratégia** esetében válasszon a következő, az **előképzésen átadott angol modellből**, a **Gensim Word2Vec** és a **Gensim FastText**.
 
 5. Ha a **Word2Vec stratégia** a **Gensim Word2Vec** vagy a **Gensim FastText**:
 
-    + **Word2Vec betanítási algoritmus**esetén válasszon a **Skip_gram** és a **CBOW**közül. A különbség az [eredeti dokumentumban (PDF)](https://arxiv.org/pdf/1301.3781.pdf)van bevezetve.
+    + **Word2Vec betanítási algoritmus** esetén válasszon a **Skip_gram** és a **CBOW** közül. A különbség az [eredeti dokumentumban (PDF)](https://arxiv.org/pdf/1301.3781.pdf)van bevezetve.
 
         Az alapértelmezett módszer a **Skip_gram**.
 
-    + A **Word beágyazásának hosszához**a Word-vektorok dimenzióját kell megadni. Ez a beállítás megfelel a `size` Gensim paraméterének.
+    + A **Word beágyazásának hosszához** a Word-vektorok dimenzióját kell megadni. Ez a beállítás megfelel a `size` Gensim paraméterének.
 
         Az alapértelmezett beágyazási méret 100.
 
-    + A **környezeti ablak méretéhez**határozza meg az előre jelzett szó és az aktuális szó közötti maximális távolságot. Ez a beállítás megfelel a `window` Gensim paraméterének.
+    + A **környezeti ablak méretéhez** határozza meg az előre jelzett szó és az aktuális szó közötti maximális távolságot. Ez a beállítás megfelel a `window` Gensim paraméterének.
 
         Az alapértelmezett ablakméret 5.
 
-    + Az **időpontok számának**megadásához adja meg az időpontok számát (iteráció) a corpuson. Megfelel a `iter` paraméternek a Gensim.
+    + Az **időpontok számának** megadásához adja meg az időpontok számát (iteráció) a corpuson. Megfelel a `iter` paraméternek a Gensim.
 
         Az alapértelmezett alapérték 5.
 
-6. A **szókincs maximális méretéhez**a generált szókincsben szereplő szavak maximális számát határozza meg.
+6. A **szókincs maximális méretéhez** a generált szókincsben szereplő szavak maximális számát határozza meg.
 
     Ha a maximális méretnél több egyedi szó van, a nem gyakoriak.
 
     Az alapértelmezett szókincs mérete 10 000.
 
-7. A **szavak minimális száma**mezőben adja meg a minimális számú szót. A modul figyelmen kívül hagyja az összes olyan szót, amelynek a gyakorisága ennél az értéknél kisebb.
+7. A **szavak minimális száma** mezőben adja meg a minimális számú szót. A modul figyelmen kívül hagyja az összes olyan szót, amelynek a gyakorisága ennél az értéknél kisebb.
 
     Az alapértelmezett érték 5.
 
@@ -126,7 +126,7 @@ Campus|– 0,281835|0,29312|0,106966|– 0,031385|0,100777|– 0,061452|...|0,05
 végtelen|– 0,263074|0,245753|0,07058|– 0,164666|0,162857|– 0,027345|...|– 0,0525
 hurok|– 0,391421|0,52366|0,141503|– 0,105423|0,084503|– 0,018424|...|– 0,0521
 
-Ebben a példában a **Word2Vec-stratégia**alapértelmezett **Gensim-Word2Vec** használtuk, és a **betanítási algoritmus** **kihagyása – gramm**. **A Word beágyazás hossza** 100, ezért 100 beágyazási oszlopokat tartalmaz.
+Ebben a példában a **Word2Vec-stratégia** alapértelmezett **Gensim-Word2Vec** használtuk, és a **betanítási algoritmus** **kihagyása – gramm**. **A Word beágyazás hossza** 100, ezért 100 beágyazási oszlopokat tartalmaz.
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 

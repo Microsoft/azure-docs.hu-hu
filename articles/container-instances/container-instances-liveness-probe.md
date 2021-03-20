@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat élő mintavételt a nem megfele
 ms.topic: article
 ms.date: 07/02/2020
 ms.openlocfilehash: befe9693be1413abf455d915814c53aab20db53c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169697"
 ---
 # <a name="configure-liveness-probes"></a>Üzemelési tesztek konfigurálása
@@ -99,7 +99,7 @@ Ha az élettartam-mintavétel folyamatosan leáll, és túl sok újraindítást 
 
 Az újraindítási szabályzatok felülírják az élő tesztek által aktivált újraindítási viselkedést. Ha például beállít egy `restartPolicy = Never` *és* egy élő tesztet, a tároló csoport nem indul újra, mert sikertelen az élettartam-ellenőrzési művelet. A tároló csoport Ehelyett a tároló csoport újraindítási házirendjét követi `Never` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladaton alapuló forgatókönyvek esetében szükség lehet az automatikus újraindításra, ha az előfeltételként szükséges függvény nem működik megfelelően. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [tárolós feladatok futtatása Azure Container Instancesban](container-instances-restart-policy.md).
 

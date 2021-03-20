@@ -4,10 +4,10 @@ description: Ismerteti, hogyan használhatók a házirendek a szabályzatok szab
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 15b03b5a40cba1290859b02883df70e3df54c5cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89645520"
 ---
 # <a name="regulatory-compliance-in-azure-policy"></a>Jogszabályoknak való megfelelés Azure Policy
@@ -21,7 +21,7 @@ A Microsoft által felelős ellenőrzések `type` [statikusak](./definition-stru
 
 ## <a name="regulatory-compliance-defined"></a>Szabályozási megfelelőség definiálva
 
-A szabályozás megfelelősége egy kezdeményezési definíció [csoportosítási](./initiative-definition-structure.md#policy-definition-groups) részére épül. A beépített modulokban a kezdeményezési definícióban szereplő egyes csoportok egy nevet (**vezérlőelemet**), egy kategóriát (**megfelelőségi tartományt**) határoznak meg, és olyan hivatkozást biztosítanak a [policyMetadata](./initiative-definition-structure.md#metadata-objects) objektumra, amely az adott **vezérlőre**vonatkozó információkat tartalmaz. A szabályzatok megfelelőségi kezdeményezésének definíciójában a `category` tulajdonságot **szabályozási megfelelőségre**kell beállítani. A standard szintű kezdeményezési definíciók szerint a szabályozási megfelelőségi kezdeményezések a dinamikus hozzárendelések létrehozásához is támogatják a [paramétereket](./initiative-definition-structure.md#parameters) .
+A szabályozás megfelelősége egy kezdeményezési definíció [csoportosítási](./initiative-definition-structure.md#policy-definition-groups) részére épül. A beépített modulokban a kezdeményezési definícióban szereplő egyes csoportok egy nevet (**vezérlőelemet**), egy kategóriát (**megfelelőségi tartományt**) határoznak meg, és olyan hivatkozást biztosítanak a [policyMetadata](./initiative-definition-structure.md#metadata-objects) objektumra, amely az adott **vezérlőre** vonatkozó információkat tartalmaz. A szabályzatok megfelelőségi kezdeményezésének definíciójában a `category` tulajdonságot **szabályozási megfelelőségre** kell beállítani. A standard szintű kezdeményezési definíciók szerint a szabályozási megfelelőségi kezdeményezések a dinamikus hozzárendelések létrehozásához is támogatják a [paramétereket](./initiative-definition-structure.md#parameters) .
 
 Az ügyfelek létrehozhatják saját szabályozási megfelelőségi kezdeményezéseiket. Ezek a definíciók lehetnek eredetiek, vagy a meglévő beépített definíciók alapján másolhatók. Ha beépített szabályozási megfelelőségi kezdeményezési javaslattal rendelkezik referenciáként, javasoljuk, hogy figyelje a szabályozási megfelelőségi definíciók forrását a [Azure Policy GitHub](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance)-tárházban.
 
@@ -35,16 +35,16 @@ Ha egy kezdeményezési definíciót [csoportokkal](./initiative-definition-stru
 
 :::image type="content" source="../media/regulatory-compliance/regulatory-compliance-overview.png" alt-text="Képernyőkép a megfelelőségi és nem megfelelő vezérlőket megjelenítő, a NIST SP 800-53 R4 beépített definíciójának szabályozásáról.":::
 
-A **vezérlő** kiválasztásával megnyílik egy oldal, amely a vezérlő részleteit ismerteti. Az **Áttekintés** a és a adatait `description` tartalmazza `requirements` . A **szabályzatok** lapon az összes olyan házirend-definíció szerepel a kezdeményezésben, amely hozzájárul ehhez a **vezérlőhöz**. Az **erőforrás-megfelelőség** lapon részletesen áttekintheti az összes olyan erőforrást, amelyet a jelenleg megtekintett **vezérlő**egyik tagja értékel ki.
+A **vezérlő** kiválasztásával megnyílik egy oldal, amely a vezérlő részleteit ismerteti. Az **Áttekintés** a és a adatait `description` tartalmazza `requirements` . A **szabályzatok** lapon az összes olyan házirend-definíció szerepel a kezdeményezésben, amely hozzájárul ehhez a **vezérlőhöz**. Az **erőforrás-megfelelőség** lapon részletesen áttekintheti az összes olyan erőforrást, amelyet a jelenleg megtekintett **vezérlő** egyik tagja értékel ki.
 
 > [!NOTE]
 > A **Microsoft által felügyelt** kiértékelés típusa [statikus](./definition-structure.md#type) házirend-definíció `type` .
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Képernyőkép a megfelelőségi és nem megfelelő vezérlőket megjelenítő, a NIST SP 800-53 R4 beépített definíciójának szabályozásáról.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-policies.png" alt-text="Képernyőfelvétel: a NIST SP 800-53 R4 beépített definíciójának határos védelmi szabályozásának szabályozási megfelelőségi részletei.":::
 
-Ugyanabból a **vezérlőből** az **erőforrás-megfelelőség** lapra való váltáskor az összes olyan erőforrás látható, amely a **vezérlő**házirend-definíciói közé tartozik. A szűrők a név vagy az azonosító, a megfelelőségi állapot, az erőforrás típusa és a hely számára érhetők el.
+Ugyanabból a **vezérlőből** az **erőforrás-megfelelőség** lapra való váltáskor az összes olyan erőforrás látható, amely a **vezérlő** házirend-definíciói közé tartozik. A szűrők a név vagy az azonosító, a megfelelőségi állapot, az erőforrás típusa és a hely számára érhetők el.
 
-:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Képernyőkép a megfelelőségi és nem megfelelő vezérlőket megjelenítő, a NIST SP 800-53 R4 beépített definíciójának szabályozásáról.":::
+:::image type="content" source="../media/regulatory-compliance/regulatory-compliance-resources.png" alt-text="Képernyőkép az erőforrás-megfelelőségről a NIST SP 800-53 R4 beépített definíciójának határos védelmi vezérlőjével.":::
 
 ## <a name="regulatory-compliance-in-sdk"></a>Szabályozási megfelelőség az SDK-ban
 

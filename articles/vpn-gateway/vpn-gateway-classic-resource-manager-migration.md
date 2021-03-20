@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
 ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96488204"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Klasszikusról VPN Gateway a Resource Manager-áttelepítésre
@@ -65,5 +65,5 @@ Mivel a VNet-t a helyi telephelyek megkövetelése nélkül VNet a kapcsolatra, 
 * Engedélyezze a BGP-t a közösen és a helyszíni kapcsolattal összekapcsolt VPN-átjárók esetében. A BGP engedélyezése a kapcsolat más konfigurációs változások nélkül visszaállítja a kapcsolatot, mivel az útvonalak megtanultak, és a VNet-átjárók között hirdetik őket. Vegye figyelembe, hogy a BGP-beállítás csak a standard és a magasabb SKU-ban érhető el.
 * Hozzon létre explicit kapcsolatot az érintett VNet a helyszíni helyet képviselő helyi hálózati átjáróval. Ehhez az IPsec-alagút létrehozásához és konfigurálásához a helyszíni útválasztón is módosítani kell a konfigurációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A VPN Gateway áttelepítési támogatásának megismerése után lépjen a [platform által támogatott IaaS-erőforrások áttelepítésére a Klasszikusból a Resource Managerbe](../virtual-machines/migration-classic-resource-manager-ps.md) a kezdéshez.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/19/2020
 ms.author: derekol
 ms.openlocfilehash: 7e10cd91eadd338217845b1504e8e9160bccfc98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537191"
 ---
 # <a name="create-or-modify-an-exchange-peering-with-route-server-in-azure-portal"></a>Exchange-társ létrehozása vagy módosítása a Azure Portal a Route Serverrel
@@ -65,13 +65,13 @@ Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kéré
     > ![Útvonal-kiszolgáló konfigurálása](./media/setup-exchange-conf-tab-routeserver.png)
  
     * A Társrendszer típusa beállításnál válassza a **közvetlen** lehetőséget.
-    * A Microsoft Network esetében válassza **a AS8075 Exchange Route Server**lehetőséget. 
-    * Válassza az SKU **alapszintű ingyenes**lehetőséget. Ne válassza a prémium szintű ingyenes lehetőséget, mert speciális alkalmazások számára van fenntartva.
+    * A Microsoft Network esetében válassza **a AS8075 Exchange Route Server** lehetőséget. 
+    * Válassza az SKU **alapszintű ingyenes** lehetőséget. Ne válassza a prémium szintű ingyenes lehetőséget, mert speciális alkalmazások számára van fenntartva.
     * Válassza ki azt a **metró** helyet, ahová a társítást telepíteni kívánja.
 
-1. A társítási **kapcsolatok**területen válassza az **új létrehozása** lehetőséget.
+1. A társítási **kapcsolatok** területen válassza az **új létrehozása** lehetőséget.
 
-1.  A **közvetlen**társítási kapcsolat területen adja meg a következő BGP-munkamenet részleteit:
+1.  A **közvetlen** társítási kapcsolat területen adja meg a következő BGP-munkamenet részleteit:
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel: a közvetlen társas kapcsolat ablaktábla, amely tartalmazza a részleteket.](./media/setup-exchange-conf-tab-direct-route.png)
@@ -86,7 +86,7 @@ Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kéré
      * A meghirdetett IPv4-előtag legfeljebb 20000 lehet. 
      * A for peering szolgáltatás használata alapértelmezés szerint le van tiltva. Ez akkor engedélyezhető, ha az Exchange-szolgáltató egy társ-szolgáltatási szerződést írt alá a Microsofttal.
 
-1. A befejezést követően kattintson a **Mentés**gombra. 
+1. A befejezést követően kattintson a **Mentés** gombra. 
 
 1. A társítás létrehozása területen látni fogja az érvényesítést. Az érvényesítést követően kattintson a **Létrehozás** gombra.
 

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-bel
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 7dd8d8d54fa7d33bb4a0935357597d19dd2368c5
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97734402"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
@@ -214,6 +214,6 @@ A másodlagos régió visszaállítási felhasználói felülete hasonló lesz a
 
     ![Biztonsági mentési feladatok szűrve](./media/backup-azure-sql-database/backup-jobs-secondary-region.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kezelés és figyelés](manage-monitor-sql-database-backup.md) SQL Server a Azure Backup által biztonsági mentést tartalmazó adatbázisokat.

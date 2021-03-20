@@ -4,16 +4,16 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható a virtuális gépe
 ms.topic: article
 ms.date: 08/17/2020
 ms.openlocfilehash: c0a147a81aaed88313a1b9aa4b0754d9a3badcb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91650034"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Virtuális gépek automatikus leállításának beállítása labor-fiókhoz
 
 Több automatikus leállítási költség-vezérlési funkciót is engedélyezhet, hogy proaktív módon meggátolja a további költségeket, ha a virtuális gépeket nem használják aktívan. A következő három automatikus leállítási és leválasztási funkció kombinációja a legtöbb esetben megfogást nyújt, amikor a felhasználók véletlenül elhagyják a virtuális gépeket:
- 
+ 
 - A felhasználók automatikus leválasztása a virtuális gépekről, amelyeket az operációs rendszer tétlennek tekint.
 - A virtuális gépek automatikus leállítása a felhasználók leválasztásakor.
 - Automatikusan leállítja az elindított virtuális gépeket, de a felhasználók nem csatlakoznak.

@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/30/2020
 ms.openlocfilehash: dd5ed52187a7cd23142b59e20c91c6d125946a72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91613781"
 ---
 # <a name="quickstart-explore-azure-time-series-insights-gen1"></a>Gyors útmutató: Azure Time Series Insights Gen1 megismerése
@@ -49,13 +49,13 @@ Ez a Azure Time Series Insights Explorer rövid útmutató a funkciók interakt�
 
    [![Időkiválasztás panel](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
-1. Válasszon ki egy időkeretet, és húzza a régióba. Ezután válassza a **Keresés**lehetőséget.
+1. Válasszon ki egy időkeretet, és húzza a régióba. Ezután válassza a **Keresés** lehetőséget.
 
    [![Időkeret kiválasztása](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    Azure Time Series Insights megjeleníti a megadott időkeret diagramjának vizualizációját. A vonalas diagramon különböző műveleteket végezhet el. Például szűrheti, rögzítheti, rendezheti és halmozhatja fel.
 
-   Az **időkijelölési panelre**való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
+   Az **időkijelölési panelre** való visszatéréshez kattintson a lefelé mutató nyílra az ábrán látható módon:
 
    [![Diagram](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
@@ -89,9 +89,9 @@ A rövid útmutató befejezése után a mintaadatokkal kísérletezve különbö
 
 Most, hogy elvégezte az oktatóanyagot, törölje a létrehozott erőforrásokat:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás** lehetőséget, keresse meg a Azure Time Series Insights erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Készen áll a saját Azure Time Series Insights környezet létrehozására. Olvassa el [a Azure Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md)című cikkét.

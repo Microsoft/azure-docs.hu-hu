@@ -7,10 +7,10 @@ ms.date: 08/28/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 760e0212d2d863e6b869c23c2e523a0e056a28ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90033030"
 ---
 # <a name="how-to-resolve-azure-advisor-recommendations"></a>Azure Advisor javaslatok megoldása
@@ -34,7 +34,7 @@ Ellenőrzési környezet engedélyezése:
 
 2. Ezután válassza ki azt az alkalmazáskészletet, amelyet éles környezetből egy ellenőrzési környezetbe szeretne váltani.
 
-3. A gazdagép-készletben válassza a bal oldali oszlopban a **Tulajdonságok** elemet. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza az **Igen**, majd az **alkalmaz**lehetőséget.
+3. A gazdagép-készletben válassza a bal oldali oszlopban a **Tulajdonságok** elemet. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza az **Igen**, majd az **alkalmaz** lehetőséget.
 
 >[!div class="mx-imgBorder"]
 >![A Tulajdonságok menü képernyőképe Az "érvényesítési környezet" vörös színnel van kiemelve, és az "igen" buborék van kiválasztva.](media/validation-yes.png)
@@ -58,7 +58,7 @@ A figyelmeztetés feloldása:
 
 2. Válassza ki azt a gazdagép-készletet, amelyet szeretne módosítani az érvényesítéstől az éles környezetbe.
 
-3. A gazdagép medencéjében válassza a **Tulajdonságok** fület a képernyő jobb oldalán található oszlopban. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza a **nem**, majd az **alkalmaz**lehetőséget.
+3. A gazdagép medencéjében válassza a **Tulajdonságok** fület a képernyő jobb oldalán található oszlopban. Ezután görgessen lefelé, amíg meg nem jelenik az "érvényesítési környezet". Válassza a **nem**, majd az **alkalmaz** lehetőséget.
 
 >[!div class="mx-imgBorder"]
 >![A Tulajdonságok menü képernyőképe Az "érvényesítési környezet" vörös színnel van kiemelve, és a "No" buborék van kiválasztva.](media/validation-no.png)

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80437903"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure App Service forgalom szabályozása az Azure-Traffic Manager
@@ -24,10 +24,10 @@ Az Azure Traffic Manager használatával irányíthatja, hogyan legyenek elosztv
 ## <a name="routing-methods"></a>Útválasztási módszerek
 Az Azure Traffic Manager négy különböző útválasztási módszert használ. Ezek a módszerek a következő listában vannak felsorolva, mivel azok Azure App Servicera vonatkoznak.
 
-* ** [Prioritás](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** használjon egy elsődleges alkalmazást az összes forgalomhoz, és adja meg a biztonsági mentéseket abban az esetben, ha az elsődleges vagy a biztonsági mentési alkalmazások nem érhetők el.
-* ** [Súlyozott](../traffic-manager/traffic-manager-routing-methods.md#weighted):** a forgalom elosztása az alkalmazások egy csoportján belül, akár egyenletesen, akár súlyok szerint, amelyet Ön határoz meg.
-* ** [Teljesítmény](../traffic-manager/traffic-manager-routing-methods.md#performance):** ha különböző földrajzi helyekről származó alkalmazásokkal rendelkezik, a legalacsonyabb hálózati késés szempontjából használja a "legközelebbi" alkalmazást.
-* ** [Földrajzi](../traffic-manager/traffic-manager-routing-methods.md#geographic):** azok a felhasználók, amelyek alapján a DNS-lekérdezésből származnak, adott alkalmazásokhoz irányítják a felhasználókat. 
+* **[Prioritás](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** használjon egy elsődleges alkalmazást az összes forgalomhoz, és adja meg a biztonsági mentéseket abban az esetben, ha az elsődleges vagy a biztonsági mentési alkalmazások nem érhetők el.
+* **[Súlyozott](../traffic-manager/traffic-manager-routing-methods.md#weighted):** a forgalom elosztása az alkalmazások egy csoportján belül, akár egyenletesen, akár súlyok szerint, amelyet Ön határoz meg.
+* **[Teljesítmény](../traffic-manager/traffic-manager-routing-methods.md#performance):** ha különböző földrajzi helyekről származó alkalmazásokkal rendelkezik, a legalacsonyabb hálózati késés szempontjából használja a "legközelebbi" alkalmazást.
+* **[Földrajzi](../traffic-manager/traffic-manager-routing-methods.md#geographic):** azok a felhasználók, amelyek alapján a DNS-lekérdezésből származnak, adott alkalmazásokhoz irányítják a felhasználókat. 
 
 További információ: [Traffic Manager útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md).
 
@@ -45,7 +45,7 @@ Az Azure Traffic Manager az Azure-ban való használatakor vegye figyelembe a k�
 * Csak standard vagy prémium módban lévő alkalmazásokat adhat hozzá egy Azure Traffic Manager-profilhoz.
 * Az alkalmazások Traffic Manager profilba való felvételével az alkalmazás újraindul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure Traffic Manager fogalmi és technikai áttekintését lásd: [Traffic Manager áttekintése](../traffic-manager/traffic-manager-overview.md).
 
 

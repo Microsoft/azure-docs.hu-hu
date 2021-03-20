@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91534420"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Jogosultsági szintű hozzáférési csoport (előzetes verzió) kiosztása Privileged Identity Management
@@ -42,7 +42,7 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy e
 
     ![A Privileged Identity Management felület megnyitása](./media/groups-assign-member-owner/groups-discover-groups.png)
 
-1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget.
 
     ![Új hozzárendelés ablaktábla](./media/groups-assign-member-owner/groups-add-assignment.png)
 
@@ -54,7 +54,7 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy e
 
     ![Tag vagy csoport ablaktábla kiválasztása](./media/groups-assign-member-owner/assignment-duration.png)
 
-1. A **hozzárendelés típusa** listában válassza a **jogosult** vagy az **aktív**lehetőséget. A Kiemelt jogosultságú hozzáférési csoportok két különböző hozzárendelési típust biztosítanak:
+1. A **hozzárendelés típusa** listában válassza a **jogosult** vagy az **aktív** lehetőséget. A Kiemelt jogosultságú hozzáférési csoportok két különböző hozzárendelési típust biztosítanak:
 
     - A **jogosult** hozzárendelésekhez a szerepkör tagjának kell lennie a szerepkör használatára vonatkozó művelet végrehajtásához. A műveletek tartalmazhatják a többtényezős hitelesítés (MFA) ellenőrzését, üzleti indoklást biztosítanak, vagy a kijelölt jóváhagyók jóváhagyását kérik.
 
@@ -62,9 +62,9 @@ Kövesse az alábbi lépéseket, hogy a felhasználók jogosultak legyenek egy e
 
 1. Ha a hozzárendelésnek állandónak kell lennie (tartósan jogosult vagy véglegesen kiosztott), jelölje be a **véglegesen** jelölőnégyzetet. A szervezet beállításaitól függően előfordulhat, hogy a jelölőnégyzet nem jelenik meg, vagy előfordulhat, hogy nem szerkeszthető.
 
-1. Ha elkészült, válassza a **hozzárendelés**lehetőséget.
+1. Ha elkészült, válassza a **hozzárendelés** lehetőséget.
 
-1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás**lehetőséget. Megjelenik az állapot értesítése.
+1. Az új szerepkör-hozzárendelés létrehozásához válassza a **Hozzáadás** lehetőséget. Megjelenik az állapot értesítése.
 
     ![Új hozzárendelés – értesítés](./media/groups-assign-member-owner/groups-assignment-notification.png)
 

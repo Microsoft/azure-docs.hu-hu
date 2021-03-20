@@ -8,10 +8,10 @@ ms.service: iot-hub
 ms.custom: subject-monitoring
 ms.date: 10/22/2020
 ms.openlocfilehash: 6c7fd0a310663b664d33027951ade885b83d458a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100570955"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Az Azure IoT Hub adatreferenciájának monitorozása
@@ -83,10 +83,10 @@ A legtöbb mérőszám esetében az összes összesítési típus érvényes; a 
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|C2D-üzenetek lejárt (előzetes verzió)|C2DMessagesExpired|Darabszám|Összesen|A felhőből az eszközre irányuló lejárt üzenetek száma|Nincs|
-|C2D-üzenetek kézbesítésének befejezése|C2D. commands. kimenő. Complete. success|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|Nincs|
-|C2D üzenetek elhagyva|C2D. commands. kimenő. elhagyása. sikeres|Darabszám|Összesen|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|Nincs|
-|C2D-üzenetek elutasítva|C2D. commands. kimenő. elutasítás. sikeres|Darabszám|Összesen|Az eszköz által visszautasított felhőből eszközre irányuló üzenetek száma|Nincs|
+|C2D-üzenetek lejárt (előzetes verzió)|C2DMessagesExpired|Darabszám|Összesen|A felhőből az eszközre irányuló lejárt üzenetek száma|Nincsenek|
+|C2D-üzenetek kézbesítésének befejezése|C2D. commands. kimenő. Complete. success|Darabszám|Összesen|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|Nincsenek|
+|C2D üzenetek elhagyva|C2D. commands. kimenő. elhagyása. sikeres|Darabszám|Összesen|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|Nincsenek|
+|C2D-üzenetek elutasítva|C2D. commands. kimenő. elutasítás. sikeres|Darabszám|Összesen|Az eszköz által visszautasított felhőből eszközre irányuló üzenetek száma|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -94,10 +94,10 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Sikertelen közvetlen metódusok meghívása|C2D. Methods. failure|Darabszám|Összesen|A sikertelen közvetlen metódusok összes hívásának száma.|Nincs|
-|A közvetlen metódus meghívásának mérete|C2D. Methods. requestSize|Bájt|Átlag|A közvetlen metódusok összes sikeres kérelmének száma.|Nincs|
-|A közvetlen metódus-meghívások válaszának mérete|C2D. Methods. responseSize|Bájt|Átlag|Az összes sikeres közvetlen metódus válaszának száma.|Nincs|
-|Közvetlen metódusok sikeres meghívása|C2D. Methods. success|Darabszám|Összesen|Az összes sikeres közvetlen metódus hívásának száma.|Nincs|
+|Sikertelen közvetlen metódusok meghívása|C2D. Methods. failure|Darabszám|Összesen|A sikertelen közvetlen metódusok összes hívásának száma.|Nincsenek|
+|A közvetlen metódus meghívásának mérete|C2D. Methods. requestSize|Bájt|Átlag|A közvetlen metódusok összes sikeres kérelmének száma.|Nincsenek|
+|A közvetlen metódus-meghívások válaszának mérete|C2D. Methods. responseSize|Bájt|Átlag|Az összes sikeres közvetlen metódus válaszának száma.|Nincsenek|
+|Közvetlen metódusok sikeres meghívása|C2D. Methods. success|Darabszám|Összesen|Az összes sikeres közvetlen metódus hívásának száma.|Nincsenek|
 
 Az **egységnyi** értékkel rendelkező mérőszámok esetében **a csak összeg** (Sum) összesítés érvényes. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -105,12 +105,12 @@ Az **egységnyi** értékkel rendelkező mérőszámok esetében **a csak össze
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Sikertelen dupla olvasások a háttérből|C2D. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|Nincs|
-|Sikertelen dupla frissítések a háttérből|C2D. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|Nincs|
-|Dupla olvasások válaszának mérete a háttérből|C2D. Twin. Read. size|Bájt|Átlag|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|Nincs|
-|Dupla frissítések mérete a háttérből|C2D. Twin. Update. size|Bájt|Átlag|Az összes sikeres háttér által kezdeményezett dupla frissítés teljes mérete.|Nincs|
-|Sikeres dupla olvasások a háttérből|C2D. Twin. Read. success|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|Nincs|
-|Sikeres dupla frissítések a háttérből|C2D. Twin. Update. success|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|Nincs|
+|Sikertelen dupla olvasások a háttérből|C2D. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|Nincsenek|
+|Sikertelen dupla frissítések a háttérből|C2D. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|Nincsenek|
+|Dupla olvasások válaszának mérete a háttérből|C2D. Twin. Read. size|Bájt|Átlag|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|Nincsenek|
+|Dupla frissítések mérete a háttérből|C2D. Twin. Update. size|Bájt|Átlag|Az összes sikeres háttér által kezdeményezett dupla frissítés teljes mérete.|Nincsenek|
+|Sikeres dupla olvasások a háttérből|C2D. Twin. Read. success|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|Nincsenek|
+|Sikeres dupla frissítések a háttérből|C2D. Twin. Update. success|Darabszám|Összesen|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -118,7 +118,7 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Konfigurációs mérőszámok|konfigurációk|Darabszám|Összesen|Az eszközök konfigurálásához és IoT Edge üzembe helyezéséhez végrehajtott összes szifilisz-művelet száma a céleszköz készletén. Ebbe beletartozik azoknak a műveleteknek a száma is, amelyek az eszköz Twin vagy modulját módosítják ezen konfigurációk miatt.|Nincs|
+|Konfigurációs mérőszámok|konfigurációk|Darabszám|Összesen|Az eszközök konfigurálásához és IoT Edge üzembe helyezéséhez végrehajtott összes szifilisz-művelet száma a céleszköz készletén. Ebbe beletartozik azoknak a műveleteknek a száma is, amelyek az eszköz Twin vagy modulját módosítják ezen konfigurációk miatt.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -126,9 +126,9 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Az eszköz összes adatfelhasználása|deviceDataUsage|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincs|
-|Az eszköz összes adatfelhasználása (előzetes verzió)|deviceDataUsageV2|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincs|
-|A felhasznált üzenetek teljes száma|dailyMessageQuotaUsed|Darabszám|Átlag|A jelenleg használt üzenetek teljes száma. Ez egy kumulatív érték, amely minden nap 00:00-kor, a nulla időpontra visszaáll.|Nincs|
+|Az eszköz összes adatfelhasználása|deviceDataUsage|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincsenek|
+|Az eszköz összes adatfelhasználása (előzetes verzió)|deviceDataUsageV2|Bájt|Összesen|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|Nincsenek|
+|A felhasznált üzenetek teljes száma|dailyMessageQuotaUsed|Darabszám|Átlag|A jelenleg használt üzenetek teljes száma. Ez egy kumulatív érték, amely minden nap 00:00-kor, a nulla időpontra visszaáll.|Nincsenek|
 
 A *felhasznált üzenetek teljes száma* csak a minimális, a maximális és az átlagos összesítések támogatottak. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -136,10 +136,10 @@ A *felhasznált üzenetek teljes száma* csak a minimális, a maximális és az 
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Összes eszköz (elavult)|Devices. totalDevices|Darabszám|Összesen|Az IoT hub-ban regisztrált eszközök száma|Nincs|
-|Csatlakoztatott eszközök (elavult) |Devices. connectedDevices. allProtocol|Darabszám|Összesen|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincs|
-|Összes eszköz (előzetes verzió)|totalDeviceCount|Darabszám|Átlag|Az IoT hub-ban regisztrált eszközök száma|Nincs|
-|Csatlakoztatott eszközök (előzetes verzió)|connectedDeviceCount|Darabszám|Átlag|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincs|
+|Összes eszköz (elavult)|Devices. totalDevices|Darabszám|Összesen|Az IoT hub-ban regisztrált eszközök száma|Nincsenek|
+|Csatlakoztatott eszközök (elavult) |Devices. connectedDevices. allProtocol|Darabszám|Összesen|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincsenek|
+|Összes eszköz (előzetes verzió)|totalDeviceCount|Darabszám|Átlag|Az IoT hub-ban regisztrált eszközök száma|Nincsenek|
+|Csatlakoztatott eszközök (előzetes verzió)|connectedDeviceCount|Darabszám|Átlag|Az IoT hub-hoz csatlakoztatott eszközök száma|Nincsenek|
 
 Az *összes eszköz (elavult* ) és a *csatlakoztatott eszközök (elavult)* esetében csak a Total (Sum) összesítés érvényes. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -151,9 +151,9 @@ A *csatlakoztatott eszközök (előzetes verzió)* és az *összes eszköz (elő
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Szabályozási hibák száma|D2C. telemetria. beáramló. sendThrottle|Darabszám|Összesen|Az eszköz átviteli sebessége miatti szabályozási hibák száma|Nincs|
-|Telemetria üzenetek küldése|D2C. telemetria. beáramló. allProtocol|Darabszám|Összesen|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|Nincs|
-|Telemetria üzenetek elküldése|D2C. telemetria. beáramló. sikeres|Darabszám|Összesen|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|Nincs|
+|Szabályozási hibák száma|D2C. telemetria. beáramló. sendThrottle|Darabszám|Összesen|Az eszköz átviteli sebessége miatti szabályozási hibák száma|Nincsenek|
+|Telemetria üzenetek küldése|D2C. telemetria. beáramló. allProtocol|Darabszám|Összesen|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|Nincsenek|
+|Telemetria üzenetek elküldése|D2C. telemetria. beáramló. sikeres|Darabszám|Összesen|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -161,12 +161,12 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Sikertelen dupla olvasások az eszközökről|D2C. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|Nincs|
-|Sikertelen dupla frissítések az eszközökről|D2C. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|Nincs|
-|Az eszközökről érkező kettős olvasások válaszának mérete|D2C. Twin. Read. size|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|Nincs|
-|Az eszközökből származó kettős frissítések mérete|D2C. Twin. Update. size|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla frissítés teljes mérete.|Nincs|
-|Sikeres dupla olvasások az eszközökről|D2C. Twin. Read. success|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|Nincs|
-|Sikeres dupla frissítések az eszközökről|D2C. Twin. Update. success|Darabszám|Összesen|Az eszköz által kezdeményezett két frissítés sikeres száma.|Nincs|
+|Sikertelen dupla olvasások az eszközökről|D2C. Twin. Read. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|Nincsenek|
+|Sikertelen dupla frissítések az eszközökről|D2C. Twin. Update. failure|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|Nincsenek|
+|Az eszközökről érkező kettős olvasások válaszának mérete|D2C. Twin. Read. size|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|Nincsenek|
+|Az eszközökből származó kettős frissítések mérete|D2C. Twin. Update. size|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla frissítés teljes mérete.|Nincsenek|
+|Sikeres dupla olvasások az eszközökről|D2C. Twin. Read. success|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|Nincsenek|
+|Sikeres dupla frissítések az eszközökről|D2C. Twin. Update. success|Darabszám|Összesen|Az eszköz által kezdeményezett két frissítés sikeres száma.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -183,18 +183,18 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Befejezett feladatok|feladatok. kész|Darabszám|Összesen|Az összes befejezett feladat száma.|Nincs|
-|Sikertelen hívások a feladatok listázásához|feladatok. listJobs. hiba|Darabszám|Összesen|A feladatokat listázó sikertelen hívások száma.|Nincs|
-|Nem sikerült létrehozni a metódus Meghívási feladatait|feladatok. createDirectMethodJob. hiba|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikertelen létrehozásának száma.|Nincs|
-|A kettős frissítési feladatok sikertelen létrehozása|feladatok. createTwinUpdateJob. hiba|Darabszám|Összesen|A kettős frissítési feladatok sikertelen létrehozásának száma.|Nincs|
-|Sikertelen feladatok megszakítása|feladatok. cancelJob. hiba|Darabszám|Összesen|A feladat megszakítására irányuló sikertelen hívások száma.|Nincs|
-|Sikertelen feladatok lekérdezése|feladatok. queryJobs. hiba|Darabszám|Összesen|A lekérdező feladatok összes sikertelen hívásának száma.|Nincs|
-|Sikertelen feladatok|feladatok. sikertelen|Darabszám|Összesen|Az összes sikertelen feladat száma.|Nincs|
-|Sikeres hívások a feladatok listázásához|feladatok. listJobs. sikeres|Darabszám|Összesen|A feladatok listázására irányuló sikeres hívások száma.|Nincs|
-|Metódus-Meghívási feladatok sikeres létrehozása|feladatok. createDirectMethodJob. sikeres|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikeres létrehozásának száma.|Nincs|
-|A kettős frissítési feladatok sikeres létrehozása|Jobs. createTwinUpdateJob.<br>sikeres|Darabszám|Összesen|A kettős frissítési feladatok sikeres létrehozásának száma.|Nincs|
-|Sikeres feladatok törlése|feladatok. cancelJob. sikeres|Darabszám|Összesen|A feladat megszakítására irányuló sikeres hívások száma.|Nincs|
-|Sikeres feladatok lekérdezése|feladatok. queryJobs. sikeres|Darabszám|Összesen|A lekérdezési feladatok összes sikeres hívásának száma.|Nincs|
+|Befejezett feladatok|feladatok. kész|Darabszám|Összesen|Az összes befejezett feladat száma.|Nincsenek|
+|Sikertelen hívások a feladatok listázásához|feladatok. listJobs. hiba|Darabszám|Összesen|A feladatokat listázó sikertelen hívások száma.|Nincsenek|
+|Nem sikerült létrehozni a metódus Meghívási feladatait|feladatok. createDirectMethodJob. hiba|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikertelen létrehozásának száma.|Nincsenek|
+|A kettős frissítési feladatok sikertelen létrehozása|feladatok. createTwinUpdateJob. hiba|Darabszám|Összesen|A kettős frissítési feladatok sikertelen létrehozásának száma.|Nincsenek|
+|Sikertelen feladatok megszakítása|feladatok. cancelJob. hiba|Darabszám|Összesen|A feladat megszakítására irányuló sikertelen hívások száma.|Nincsenek|
+|Sikertelen feladatok lekérdezése|feladatok. queryJobs. hiba|Darabszám|Összesen|A lekérdező feladatok összes sikertelen hívásának száma.|Nincsenek|
+|Sikertelen feladatok|feladatok. sikertelen|Darabszám|Összesen|Az összes sikertelen feladat száma.|Nincsenek|
+|Sikeres hívások a feladatok listázásához|feladatok. listJobs. sikeres|Darabszám|Összesen|A feladatok listázására irányuló sikeres hívások száma.|Nincsenek|
+|Metódus-Meghívási feladatok sikeres létrehozása|feladatok. createDirectMethodJob. sikeres|Darabszám|Összesen|A közvetlen metódus meghívásával kapcsolatos feladatok sikeres létrehozásának száma.|Nincsenek|
+|A kettős frissítési feladatok sikeres létrehozása|Jobs. createTwinUpdateJob.<br>sikeres|Darabszám|Összesen|A kettős frissítési feladatok sikeres létrehozásának száma.|Nincsenek|
+|Sikeres feladatok törlése|feladatok. cancelJob. sikeres|Darabszám|Összesen|A feladat megszakítására irányuló sikeres hívások száma.|Nincsenek|
+|Sikeres feladatok lekérdezése|feladatok. queryJobs. sikeres|Darabszám|Összesen|A lekérdezési feladatok összes sikeres hívásának száma.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -205,23 +205,23 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 | Útválasztási kézbesítési kísérletek (előzetes verzió) |RoutingDeliveries | Darabszám | Összesen |Ez az útválasztási kézbesítési metrika. A méretek segítségével azonosíthatja egy adott végpont vagy egy adott útválasztási forrás kézbesítési állapotát.| Eredmény,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Végpontneve<br>*További információ: [metrikus dimenziók](#metric-dimensions)*. |
 | A kézbesítési adatmennyiség mérete bájtban (előzetes verzió)|RoutingDataSizeInBytesDelivered| Bájt | Összesen |A IoT Hub által az egyéni végponthoz és a beépített végponthoz irányított bájtok teljes száma. A méretek használatával azonosíthatja az adott végponthoz vagy egy adott útválasztási forráshoz irányított adatméretet.| RoutingSource,<br>EndpointType<br>Végpontneve<br>*További információ: [metrikus dimenziók](#metric-dimensions)*.|
 | Útválasztási késés (előzetes verzió) |RoutingDeliveryLatency| Ezredmásodpercben | Átlag |Ez az útválasztási kézbesítés késésének mérőszáma. A méretek segítségével azonosíthatja egy adott végpont késését, vagy egy adott útválasztási forrás esetében.| RoutingSource,<br>EndpointType,<br>Végpontneve<br>*További információ: [metrikus dimenziók](#metric-dimensions)*.|
-|Útválasztás: tárolóba szállított Blobok|D2C. endpoints. kimenő. Storage. Blobok|Darabszám|Összesen|A Blobok tárolási végpontokra IoT Hub útvonalának száma.|Nincs|
-|Útválasztás: a tárolóba szállított adatmennyiség|D2C. endpoints. kimenő. Storage. Bytes|Bájt|Összesen|A tárolási végpontoknak továbbított adatmennyiség (bájt) IoT Hub útválasztás.|Nincs|
-|Útválasztás: az Event hub üzenetének késése|D2C. endpoints. késleltetés. eventHubs|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) az Event hub típusú egyéni végpontokra. Ez nem tartalmazza a beépített végponthoz (eseményekhez) tartozó üzenetek útvonalait.|Nincs|
-|Útválasztás: Service Bus üzenetsor üzenet-késése|D2C. endpoints. késleltetés. serviceBusQueues|Ezredmásodpercben|Átlag|A Service Bus üzenetsor-végpontba beérkező üzenetek IoT Hub és az üzenetbe való belépések közötti átlagos késés (ezredmásodpercben).|Nincs|
-|Útválasztás: Service Bus témakör üzenetének késése|D2C. endpoints. késleltetés. serviceBusTopics|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) Service Bus témakör-végpontba.|Nincs|
-|Útválasztás: üzenetek/események üzenetének késése|D2C. endpoints. késleltetés. beépített. események|Ezredmásodpercben|Átlag|A bejövő végpont (üzenetek/események) és a tartalék útvonal között a IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben).|Nincs|
-|Útválasztás: üzenetek késése a tároláshoz|D2C. endpoints. látencia. Storage|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő elérésének átlagos késése (ezredmásodpercben) a tárolási végpontba.|Nincs|
-|Útválasztás: az Event hub számára továbbított üzenetek|D2C. endpoints. kimenő. eventHubs|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket az Event hub típusú egyéni végpontokra. Ez nem tartalmazza a beépített végponthoz (eseményekhez) tartozó üzenetek útvonalait.|Nincs|
-|Útválasztás: Service Bus üzenetsor számára továbbított üzenetek|D2C. endpoints. kimenő. serviceBusQueues|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus üzenetsor-végpontoknak.|Nincs|
-|Útválasztás: Service Bus témakörbe küldött üzenetek|D2C. endpoints. kimenő. serviceBusTopics|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus témakör-végpontoknak.|Nincs|
-|Útválasztás: tartalékként továbbított üzenetek|D2C. telemetria. kimenő. tartalék|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás a tartalék útvonalhoz társított végpontnak küldött üzeneteket.|Nincs|
-|Útválasztás: üzenetek/események küldésére küldött üzenetek|D2C. endpoints. kimenő. beépített. események|Darabszám|Összesen|Azon esetek száma, IoT Hub az Útválasztás sikeresen leküldte az üzeneteket a beépített végpontba (üzenetek/események) és a tartalék útvonalba.|Nincs|
-|Útválasztás: a tárolóba küldött üzenetek|D2C. endpoints. kimenő. Storage|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a tárolási végpontoknak.|Nincs|
-|Útválasztás: telemetria üzenetek kézbesítése|D2C. telemetria. kimenő. sikeres|Darabszám|Összesen|A IoT Hub útválasztást használó összes végponthoz tartozó üzenetek sikeres kézbesítésének száma. Ha egy üzenet több végponthoz van irányítva, ez az érték eggyel nő minden sikeres kézbesítésnél. Ha egy üzenet többször is ugyanarra a végpontra érkezik, az érték minden sikeres kézbesítés esetén eggyel nő.|Nincs|
-|Útválasztás: telemetria üzenetek elvetve |D2C. telemetria. kimenő. eldobott|Darabszám|Összesen|A letiltott végpontok miatt IoT Hub útválasztás által eldobott üzenetek száma. Ez az érték nem számítja ki a tartalék útvonalra küldött üzeneteket, mert az eldobott üzenetek nem kerülnek oda.|Nincs|
-|Útválasztás: Inkompatibilis telemetria-üzenetek|D2C. telemetria. kimenő. érvénytelen|Darabszám|Összesen|Azon időpontok száma IoT Hub az Útválasztás nem tudott kézbesíteni üzeneteket, mert nem kompatibilis a végponttal. Egy üzenet nem kompatibilis egy végponttal, amikor az IOT hub megkísérli az üzenetet egy végpontnak kézbesíteni, és nem átmeneti hibával meghiúsul. Érvénytelen üzenetek nem lesznek újrapróbálkozva. Ez az érték nem tartalmazza az újrapróbálkozásokat.|Nincs|
-|Útválasztás: árva telemetria üzenetek |D2C. telemetria. kimenő. árva|Darabszám|Összesen|Az üzenetek számának IoT Hub az útválasztása, mert nem feleltek meg egyetlen útválasztási lekérdezésnek sem, ha a tartalék útvonal le van tiltva.|Nincs|
+|Útválasztás: tárolóba szállított Blobok|D2C. endpoints. kimenő. Storage. Blobok|Darabszám|Összesen|A Blobok tárolási végpontokra IoT Hub útvonalának száma.|Nincsenek|
+|Útválasztás: a tárolóba szállított adatmennyiség|D2C. endpoints. kimenő. Storage. Bytes|Bájt|Összesen|A tárolási végpontoknak továbbított adatmennyiség (bájt) IoT Hub útválasztás.|Nincsenek|
+|Útválasztás: az Event hub üzenetének késése|D2C. endpoints. késleltetés. eventHubs|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) az Event hub típusú egyéni végpontokra. Ez nem tartalmazza a beépített végponthoz (eseményekhez) tartozó üzenetek útvonalait.|Nincsenek|
+|Útválasztás: Service Bus üzenetsor üzenet-késése|D2C. endpoints. késleltetés. serviceBusQueues|Ezredmásodpercben|Átlag|A Service Bus üzenetsor-végpontba beérkező üzenetek IoT Hub és az üzenetbe való belépések közötti átlagos késés (ezredmásodpercben).|Nincsenek|
+|Útválasztás: Service Bus témakör üzenetének késése|D2C. endpoints. késleltetés. serviceBusTopics|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) Service Bus témakör-végpontba.|Nincsenek|
+|Útválasztás: üzenetek/események üzenetének késése|D2C. endpoints. késleltetés. beépített. események|Ezredmásodpercben|Átlag|A bejövő végpont (üzenetek/események) és a tartalék útvonal között a IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben).|Nincsenek|
+|Útválasztás: üzenetek késése a tároláshoz|D2C. endpoints. látencia. Storage|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő elérésének átlagos késése (ezredmásodpercben) a tárolási végpontba.|Nincsenek|
+|Útválasztás: az Event hub számára továbbított üzenetek|D2C. endpoints. kimenő. eventHubs|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket az Event hub típusú egyéni végpontokra. Ez nem tartalmazza a beépített végponthoz (eseményekhez) tartozó üzenetek útvonalait.|Nincsenek|
+|Útválasztás: Service Bus üzenetsor számára továbbított üzenetek|D2C. endpoints. kimenő. serviceBusQueues|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus üzenetsor-végpontoknak.|Nincsenek|
+|Útválasztás: Service Bus témakörbe küldött üzenetek|D2C. endpoints. kimenő. serviceBusTopics|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus témakör-végpontoknak.|Nincsenek|
+|Útválasztás: tartalékként továbbított üzenetek|D2C. telemetria. kimenő. tartalék|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás a tartalék útvonalhoz társított végpontnak küldött üzeneteket.|Nincsenek|
+|Útválasztás: üzenetek/események küldésére küldött üzenetek|D2C. endpoints. kimenő. beépített. események|Darabszám|Összesen|Azon esetek száma, IoT Hub az Útválasztás sikeresen leküldte az üzeneteket a beépített végpontba (üzenetek/események) és a tartalék útvonalba.|Nincsenek|
+|Útválasztás: a tárolóba küldött üzenetek|D2C. endpoints. kimenő. Storage|Darabszám|Összesen|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a tárolási végpontoknak.|Nincsenek|
+|Útválasztás: telemetria üzenetek kézbesítése|D2C. telemetria. kimenő. sikeres|Darabszám|Összesen|A IoT Hub útválasztást használó összes végponthoz tartozó üzenetek sikeres kézbesítésének száma. Ha egy üzenet több végponthoz van irányítva, ez az érték eggyel nő minden sikeres kézbesítésnél. Ha egy üzenet többször is ugyanarra a végpontra érkezik, az érték minden sikeres kézbesítés esetén eggyel nő.|Nincsenek|
+|Útválasztás: telemetria üzenetek elvetve |D2C. telemetria. kimenő. eldobott|Darabszám|Összesen|A letiltott végpontok miatt IoT Hub útválasztás által eldobott üzenetek száma. Ez az érték nem számítja ki a tartalék útvonalra küldött üzeneteket, mert az eldobott üzenetek nem kerülnek oda.|Nincsenek|
+|Útválasztás: Inkompatibilis telemetria-üzenetek|D2C. telemetria. kimenő. érvénytelen|Darabszám|Összesen|Azon időpontok száma IoT Hub az Útválasztás nem tudott kézbesíteni üzeneteket, mert nem kompatibilis a végponttal. Egy üzenet nem kompatibilis egy végponttal, amikor az IOT hub megkísérli az üzenetet egy végpontnak kézbesíteni, és nem átmeneti hibával meghiúsul. Érvénytelen üzenetek nem lesznek újrapróbálkozva. Ez az érték nem tartalmazza az újrapróbálkozásokat.|Nincsenek|
+|Útválasztás: árva telemetria üzenetek |D2C. telemetria. kimenő. árva|Darabszám|Összesen|Az üzenetek számának IoT Hub az útválasztása, mert nem feleltek meg egyetlen útválasztási lekérdezésnek sem, ha a tartalék útvonal le van tiltva.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 
@@ -229,9 +229,9 @@ A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Tot
 
 |Metrika megjelenítendő neve|Metric|Unit (Egység)|Aggregáció típusa|Description|Dimenziók|
 |---|---|---|---|---|---|
-|Sikertelen dupla lekérdezések|twinQueries. hiba|Darabszám|Összesen|Az összes sikertelen dupla lekérdezés száma.|Nincs|
-|Sikeres Twin-lekérdezések|twinQueries. success|Darabszám|Összesen|Az összes sikeres dupla lekérdezés száma.|Nincs|
-|Dupla lekérdezések eredményének mérete|twinQueries.resultSize|Bájt|Átlag|Az összes sikeres dupla lekérdezés eredményének teljes mérete.|Nincs|
+|Sikertelen dupla lekérdezések|twinQueries. hiba|Darabszám|Összesen|Az összes sikertelen dupla lekérdezés száma.|Nincsenek|
+|Sikeres Twin-lekérdezések|twinQueries. success|Darabszám|Összesen|Az összes sikeres dupla lekérdezés száma.|Nincsenek|
+|Dupla lekérdezések eredményének mérete|twinQueries.resultSize|Bájt|Átlag|Az összes sikeres dupla lekérdezés eredményének teljes mérete.|Nincsenek|
 
 A **darabszám** **értékkel** rendelkező metrikák esetében érvényes a Total (Sum) összesítés. A minimális, maximális és átlagos összesítések mindig 1 értéket adnak vissza. További információ: [támogatott összesítések](#supported-aggregations).
 

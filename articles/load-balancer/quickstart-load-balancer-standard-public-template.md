@@ -16,10 +16,10 @@ ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97008435"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
@@ -123,7 +123,7 @@ Ha látni szeretné, hogy a terheléselosztó mindhárom virtuális gépen osztj
 Ha már nincs szüksége rájuk, törölje a következőket: 
 
 * Erőforráscsoport
-* Terheléselosztó
+* Terheléselosztóval
 * Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
 Nyissa meg a Azure Portalt, válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó elemet, majd válassza az **erőforráscsoport törlése** lehetőséget.

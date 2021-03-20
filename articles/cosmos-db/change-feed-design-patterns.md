@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 443d00e61e593daacca04a4451b90bb78cc7d854
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334585"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>A hírcsatorna kialakítási mintáinak módosítása Azure Cosmos DB
@@ -114,7 +114,7 @@ Minden ügyfél esetében az aktuális bevásárlókocsi tartalmának egy lénye
 - [IoT-használati eset a változási csatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 - [Kiskereskedelmi használati eset a változási hírcsatorna köré](https://github.com/AzureCosmosDB/scenario-based-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Változáscsatorna áttekintése](change-feed.md)
 * [Beállítások a változási csatorna olvasásához](read-change-feed.md)

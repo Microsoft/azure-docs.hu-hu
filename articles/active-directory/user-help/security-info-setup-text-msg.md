@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537033"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Szöveges üzenetküldés beállítása ellenőrzési módszerként
@@ -46,15 +46,15 @@ A szervezet beállításaitól függően előfordulhat, hogy a szöveges üzenet
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza a **telefon** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás**gombra.
+3. A **metódus hozzáadása** lapon válassza a **telefon** lehetőséget a legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
     ![Hozzáadás a Method Box-hoz, a kiválasztott telefonnal](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-4. A **Phone (telefon** ) lapon írja be a mobileszköz telefonszámát, válassza ki a **kód szövegét**, majd kattintson a **tovább**gombra.
+4. A **Phone (telefon** ) lapon írja be a mobileszköz telefonszámát, válassza ki a **kód szövegét**, majd kattintson a **tovább** gombra.
 
     ![A "Phone" (telefonos) lapot megjelenítő képernyőkép, amely a "szöveg nekem kód" lehetőséget választotta.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
-5. Írja be a mobileszközön a szöveges üzenetben küldött kódot, majd válassza a **tovább**lehetőséget.
+5. Írja be a mobileszközön a szöveges üzenetben küldött kódot, majd válassza a **tovább** lehetőséget.
 
     ![Telefonszám hozzáadása és szöveges üzenetek kiválasztása](media/security-info/securityinfo-myprofile-phonetext-entercode.png)
 

@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb102c23d80095b8eb79fc25d1c1fd9d7f374fce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91529694"
 ---
 # <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
@@ -49,7 +49,7 @@ Ha a Graph Explorer segítségével teszteli a hívásokat, megadhatja az enged�
 
 1. Jelentkezzen be a [Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer) globális rendszergazdaként.
 
-1. Kattintson az **engedélyek módosítása**elemre.
+1. Kattintson az **engedélyek módosítása** elemre.
 
     ![Képernyőkép: a "Graph Explorer" oldal, amelyen az "engedélyek módosítása" művelet van kiválasztva.](./media/pim-apis/graph-explorer.png)
 

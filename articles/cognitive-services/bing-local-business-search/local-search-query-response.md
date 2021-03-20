@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 70a33774ac82312660d887fb86f7e2a482c30a0c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96487167"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing helyi üzleti keresési API-lekérdezések és válaszok küldése és használata
@@ -151,7 +151,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Helyi üzleti keresés – rövid útmutató](quickstarts/local-quickstart.md)
 - [Helyi üzleti keresés – Java rövid útmutató](quickstarts/local-search-java-quickstart.md)
 - [Helyi üzleti keresési csomópont rövid útmutatója](quickstarts/local-search-node-quickstart.md)

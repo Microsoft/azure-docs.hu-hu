@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179748"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
@@ -131,14 +131,14 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
 - /**SensorModel**: a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mértékét, például a környezeti hőmérsékletet és a nyomást.
 - /**Érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 
-  DeviceModel | Leírás |
+  DeviceModel | Description |
   --- | ---
   Típus (csomópont, átjáró)  | Az eszköz – csomópont vagy átjáró típusa |
   Gyártó  | A gyártó neve |
   ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
   Portok  | A port neve és típusa, amely digitális vagy analóg.  |
   Name  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
-  Leírás  | Adjon meg egy értelmes leírást a modellről. |
+  Description  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
   **Eszköz** | **Leírás** |
   DeviceModelId  |A társított eszköz-modell azonosítója. |
@@ -147,7 +147,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
   ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
   Name  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
-  Leírás  | Adjon meg egy értelmes leírást.  |
+  Description  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
   **SensorModel** | **Leírás** |
   Típus (analóg, digitális)  |Említi az analóg vagy a digitális érzékelőt.|
@@ -161,7 +161,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
   Name  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-  Leírás  | Adjon meg egy értelmes leírást a modellről.
+  Description  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
   **Érzékelő**  | **Leírás** |
   HardwareId  | A gyártó által beállított érzékelő egyedi azonosítója.
@@ -170,7 +170,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
   Name  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
-  Leírás  | Adjon meg egy értelmes leírást.
+  Description  | Adjon meg egy értelmes leírást.
   Tulajdonságok  | További tulajdonságok a gyártótól.
 
  Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).

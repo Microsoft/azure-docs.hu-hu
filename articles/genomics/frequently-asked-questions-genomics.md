@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018324"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: gyakori kérdések
@@ -84,7 +84,7 @@ a msgen a következő formátumban értelmezi a konfigurációs fájlokat:
   |`-k/--access-key KEY`            | *access_key: kulcs*              |      
   |`-pa/--process-args R=B37m1`     | *process_args: R-b37m1*        |  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Genomics használatának megkezdéséhez használja az alábbi forrásokat:
 - Első lépésként futtassa az első munkafolyamatot a Microsoft Genomics szolgáltatáson keresztül. [Munkafolyamat futtatása a Microsoft Genomics szolgáltatással](quickstart-run-genomics-workflow-portal.md)

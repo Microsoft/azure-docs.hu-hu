@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89231061"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Az Azure Active Directory jelentéskészítés késése
@@ -54,8 +54,8 @@ Ha már rendelkezik a tevékenységek adataival az ingyenes licenccel, akkor azo
 
 A biztonsági jelentések két típusa létezik:
 
-- [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. 
-- [Kockázatosként megjelölt felhasználók](../identity-protection/overview-identity-protection.md) – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. 
+- [Kockázatos bejelentkezések](../identity-protection/overview-identity-protection.md) – a kockázatos bejelentkezés egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek. 
+- [Kockázatnak](../identity-protection/overview-identity-protection.md) kitett felhasználók – a kockázatos felhasználók egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült. 
 
 A következő táblázat a biztonsági jelentések késési információit sorolja fel.
 
@@ -66,7 +66,7 @@ A következő táblázat a biztonsági jelentések késési információit sorol
 
 ## <a name="risk-detections"></a>Kockázatészlelések
 
-Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy **kockázati észlelésnek**nevezett rekordban tárol.
+Az Azure AD adaptív gépi tanulási algoritmusokat és heurisztikus műveleteket használ a felhasználói fiókokhoz kapcsolódó gyanús műveletek észlelésére. A rendszer minden észlelt gyanús műveletet egy **kockázati észlelésnek** nevezett rekordban tárol.
 
 A következő táblázat a kockázati észlelések késési információit sorolja fel.
 

@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: e89189b22b144d9e92ee8315bc6fd9aabe699eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91531649"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>A Azure Time Series Insights Gen1 késésének csökkentése a szabályozás monitorozásával és enyhítésével
@@ -45,11 +45,11 @@ A következő esetekben valószínűleg késést és szabályozást tapasztal:
 
 A riasztások segíthetnek a környezetében előforduló késési problémák diagnosztizálásában és enyhítésében.
 
-1. A Azure Portal válassza ki Azure Time Series Insights-környezetét. Ezután válassza a **riasztások**lehetőséget.
+1. A Azure Portal válassza ki Azure Time Series Insights-környezetét. Ezután válassza a **riasztások** lehetőséget.
 
    [![Riasztás hozzáadása a Azure Time Series Insights-környezethez](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Válassza a **+ Új riasztási szabály** lehetőséget. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
+1. Válassza a **+ Új riasztási szabály** lehetőséget. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel** alatt.
 
    [![Riasztás panel hozzáadása](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
@@ -59,17 +59,17 @@ A riasztások segíthetnek a környezetében előforduló késési problémák d
 
    Innentől kezdve a következő feltételek valamelyikével konfigurálhatja a riasztásokat:
 
-   |Metrika  |Leírás  |
+   |Metric  |Leírás  |
    |---------|---------|
    |**Bejövő fogadott bájtok száma**     | Az esemény forrásaiból beolvasott nyers bájtok száma. A nyers darabszám általában a tulajdonság nevét és értékét tartalmazza.  |  
    |**A bejövő forgalom érvénytelen üzeneteket kapott**     | Az összes Azure-Event Hubs vagy az Azure IoT Hub-eseményforrás által beolvasott érvénytelen üzenetek száma.      |
    |**Bejövő fogadott üzenetek**   | Az összes Event Hubs vagy IoT hub-eseményforrás által olvasott üzenetek száma.        |
    |**Bejövő forgalomban tárolt bájtok**     | A lekérdezéshez tárolt és elérhető események teljes mérete. A méret kiszámítása csak a tulajdonság értékén történik.        |
-   |**Bejövő tárolt események**    |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
-   |**Beérkező üzenetek időeltolódása**   |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
-   |**Bejövő fogadott üzenetek számának késése**   |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
+   |**Bejövő tárolt események**     |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
+   |**Beérkező üzenetek időeltolódása**    |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
+   |**Bejövő fogadott üzenetek számának késése**    |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
-   Válassza a **Done** (Kész) lehetőséget.
+   Válassza a **Kész** lehetőséget.
 
 1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 

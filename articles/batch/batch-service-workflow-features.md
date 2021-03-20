@@ -4,10 +4,10 @@ description: Ismerje meg a Batch szolgáltatás funkcióit és a fejlesztési sz
 ms.topic: conceptual
 ms.date: 05/12/2020
 ms.openlocfilehash: 76a0b140f3bea4b07a6de632abbcbc3fd26e582d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85965212"
 ---
 # <a name="batch-service-workflow-and-resources"></a>A Batch szolgáltatás munkafolyamata és erőforrásai
@@ -42,7 +42,7 @@ Az alábbi témakörök ismertetik az elosztott számítási forgatókönyveket 
 - [Feladatok és tevékenységek](jobs-and-tasks.md)
 - [Fájlok és könyvtárak](files-and-directories.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.

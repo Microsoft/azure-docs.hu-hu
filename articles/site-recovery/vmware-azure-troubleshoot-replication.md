@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
 ms.openlocfilehash: 8b44a1d6119cc658b9460e0a52fa0629f759964a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91336205"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációs problémáinak hibaelhárítása
@@ -47,7 +47,7 @@ Ha a Site Recovery használatával szeretné engedélyezni a replikálást, a g�
 * **Azure site Recovery felügyeleti kiszolgálók**: Ha a virtuális gépet felügyeleti kiszolgálóként használják a következő szerepkörök közül egy vagy több alatt – a konfigurációs kiszolgáló/scale-out vagy fő célkiszolgáló, akkor nem fogja tudni kiválasztani a virtuális gépet a portálról. A felügyeleti kiszolgálók nem replikálhatók.
 * **Már védett/átadott feladatátvétel Azure site Recovery-szolgáltatásokon keresztül**: Ha a virtuális gép már védett, vagy site Recoveryon keresztül átadja a feladatátvételt, a virtuális gép nem érhető el a portálon a védelem kiválasztásához. Győződjön meg arról, hogy a portálon keresett virtuális gépet más felhasználók vagy más előfizetések már nem védik.
 * a **vCenter nincs csatlakoztatva**: Ellenőrizze, hogy a vCenter csatlakoztatott állapotban van-e. Az ellenőrzéshez nyissa meg a Recovery Services-tárolót > Site Recovery infrastruktúra > konfigurációs kiszolgálók > kattintson a megfelelő konfigurációs kiszolgálóra, > egy panel megnyílik a jobb oldalon a társított kiszolgálók részleteivel. Ellenőrizze, hogy a vCenter csatlakoztatva van-e. Ha "nincs csatlakoztatva" állapotú, oldja meg a problémát, majd frissítse a [konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
-* **ESXi**kikapcsolva: Ha ESXi-állomás, amelyben a virtuális gép található, kikapcsolt állapotban van, a virtuális gép nem lesz listázva, vagy nem lesz kiválasztható a Azure Portal. Kapcsolja be az ESXi-gazdagépet, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
+* **ESXi** kikapcsolva: Ha ESXi-állomás, amelyben a virtuális gép található, kikapcsolt állapotban van, a virtuális gép nem lesz listázva, vagy nem lesz kiválasztható a Azure Portal. Kapcsolja be az ESXi-gazdagépet, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server) a portálon. Ezt követően a virtuális gép fel lesz sorolva a portálon.
 * **Újraindítás függőben**: Ha a virtuális gépen újraindításra vár, nem fogja tudni kiválasztani a gépet Azure Portal. Győződjön meg arról, hogy elvégezte a függőben lévő újraindítási tevékenységeket, [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép fel lesz sorolva a portálon.
 * Az **IP-cím nem található**: Ha a virtuális gépnek nincs érvényes IP-címe társítva, akkor nem fogja tudni kiválasztani a gépet Azure Portal. Győződjön meg arról, hogy érvényes IP-címet rendel a virtuális géphez, és [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Ezt követően a virtuális gép fel lesz sorolva a portálon.
 
@@ -172,7 +172,7 @@ A fenti példában a **2147754994** a hibakód, amely az alább látható hibáv
 **Javítás**: az alkalmazás konzisztencia-címkézésének létrehozásához Azure site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Telepíti a VSS-szolgáltatót a működéséhez, hogy az alkalmazás konzisztencia-pillanatképeket készítsen. Ez a VSS-szolgáltató szolgáltatásként van telepítve. Ha a VSS-szolgáltató szolgáltatás le van tiltva, az alkalmazás konzisztencia-pillanatképének létrehozása meghiúsul a következő hibakóddal: "a megadott szolgáltatás le van tiltva, és nem indítható el (0x80070422)". </br>
 
 - Ha a VSS le van tiltva,
-    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
+    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus** értékre van-e állítva.
     - Indítsa újra a következő szolgáltatásokat:
         - VSS szolgáltatás
         - Azure Site Recovery VSS-szolgáltató
@@ -187,7 +187,7 @@ Ellenőrizze, hogy telepítve van-e a Azure Site Recovery VSS-szolgáltató szol
 - Meglévő szolgáltató eltávolítása: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
 - Újratelepítés: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Install. cmd
 
-Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
+Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus** értékre van-e állítva.
     - Indítsa újra a következő szolgáltatásokat:
         - VSS szolgáltatás
         - Azure Site Recovery VSS-szolgáltató

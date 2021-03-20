@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.custom: how-to, automl
 ms.openlocfilehash: 4fb147dc5c57c3a98607a025f566fa583bf87460
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93358813"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>Előrejelzések készítése AutoML ONNX-modellel a .NET-ben
@@ -50,7 +50,7 @@ Ebben a példában a a .NET Core parancssori felülete használatával hozza lé
 
 ## <a name="add-software-packages"></a>Szoftvercsomagok hozzáadása
 
-1. Telepítse a **Microsoft.ml** , a **Microsoft. ml. OnnxRuntime** és a **Microsoft. ml. OnnxTransformer** NuGet-csomagokat a a .net Core parancssori felülete használatával.
+1. Telepítse a **Microsoft.ml**, a **Microsoft. ml. OnnxRuntime** és a **Microsoft. ml. OnnxTransformer** NuGet-csomagokat a a .net Core parancssori felülete használatával.
 
     ```dotnetcli
     dotnet add package Microsoft.ML
@@ -60,7 +60,7 @@ Ebben a példában a a .NET Core parancssori felülete használatával hozza lé
 
     Ezek a csomagok tartalmazzák azokat a függőségeket, amelyek szükségesek egy ONNX-modell .NET-alkalmazásokban való használatához. A ML.NET olyan API-t biztosít, amely a [ONNX futtatókörnyezetet](https://github.com/Microsoft/onnxruntime) használja az előrejelzésekhez.
 
-1. Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` utasításokat a megfelelő csomagokra való hivatkozáshoz.
+1. Nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` utasításokat a felső részen a megfelelő csomagokra való hivatkozáshoz.
 
     ```csharp
     using System.Linq;
@@ -88,7 +88,7 @@ Adjon hozzá egy hivatkozást a ONNX-modell fájljához az alkalmazásban
 
     Ebben az esetben a ONNX-modell fájljának neve *automl. ONNX*.
 
-1. Nyissa meg a *program.cs* fájlt, és adja hozzá a következő sort az `Program` osztályban belül.
+1. Nyissa meg a *program. cs* fájlt, és adja hozzá a következő sort az `Program` osztályban belül.
 
     ```csharp
     static string ONNX_MODEL_PATH = "automl-model.onnx";
@@ -130,7 +130,7 @@ A modell bemeneteit és kimeneteit például a Netron eszközzel ellenőrizheti.
 
 ### <a name="define-model-input-schema"></a>Modell bemeneti sémájának definiálása
 
-Hozzon létre egy új, nevű osztályt a `OnnxInput` következő tulajdonságokkal a *program.cs* fájlban.
+Hozzon létre egy új, nevű osztályt a `OnnxInput` *program. cs* fájljában a következő tulajdonságokkal.
 
 ```csharp
 public class OnnxInput
@@ -165,7 +165,7 @@ Az adatattribútumokkal kapcsolatos további tudnivalókért tekintse meg a [ml.
 
 ### <a name="define-model-output-schema"></a>Modell kimeneti sémájának definiálása
 
-Az adatfeldolgozás után egy adott formátum kimenetét állítja elő. Adja meg az adatkimeneti sémát. Hozzon létre egy új, nevű osztályt a `OnnxOutput` következő tulajdonságokkal a *program.cs* fájlban.
+Az adatfeldolgozás után egy adott formátum kimenetét állítja elő. Adja meg az adatkimeneti sémát. Hozzon létre egy új, nevű osztályt a `OnnxOutput` *program. cs* fájljában a következő tulajdonságokkal.
 
 ```csharp
 public class OnnxOutput

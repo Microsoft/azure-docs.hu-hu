@@ -10,10 +10,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: d041f864c6c8cd3ae9c522d79447d71c86f9ac04
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98875604"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Pillanatkép létrehozása a portál vagy az Azure CLI használatával
@@ -68,6 +68,6 @@ az snapshot list \
 9. Kattintson a **Létrehozás** lehetőségre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez létrehozásával a pillanatképből, majd csatlakoztassa az új felügyelt lemezt az operációsrendszer-lemezként. További információ: [virtuális gép létrehozása pillanatkép-](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot?toc=%2fcli%2fmodule%2ftoc.json) parancsfájlból.

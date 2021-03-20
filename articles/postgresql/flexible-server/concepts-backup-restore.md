@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92532645"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Biztonsági mentés és visszaállítás Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -71,9 +71,9 @@ Az időponthoz való visszaállítás több esetben is hasznos lehet. Ha példá
 
 A legkorábbi visszaállítási pont és az egyéni visszaállítási pont közül választhat.
 
--   **Legkorábbi visszaállítási pont** : a megőrzési időszaktól függően ez lesz a legkorábbi időpont, ameddig vissza lehet állítani. A legrégebbi biztonsági mentési idő automatikusan ki lesz választva, és megjelenik a portálon. Ez akkor lehet hasznos, ha meg szeretné vizsgálni, vagy végre kell hajtania egy tesztelési időszakot.
+-   **Legkorábbi visszaállítási pont**: a megőrzési időszaktól függően ez lesz a legkorábbi időpont, ameddig vissza lehet állítani. A legrégebbi biztonsági mentési idő automatikusan ki lesz választva, és megjelenik a portálon. Ez akkor lehet hasznos, ha meg szeretné vizsgálni, vagy végre kell hajtania egy tesztelési időszakot.
 
--   **Egyéni visszaállítási pont** : Ez a beállítás lehetővé teszi, hogy bármilyen időpontot válasszon a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül. Alapértelmezés szerint az UTC legkésőbbi időpontja automatikusan be van jelölve, és hasznos, ha vissza szeretné állítani az utolsó véglegesített tranzakciót a tesztelési célokra. Igény szerint más napokat és időpontokat is választhat. 
+-   **Egyéni visszaállítási pont**: Ez a beállítás lehetővé teszi, hogy bármilyen időpontot válasszon a rugalmas kiszolgáló számára meghatározott megőrzési időtartamon belül. Alapértelmezés szerint az UTC legkésőbbi időpontja automatikusan be van jelölve, és hasznos, ha vissza szeretné állítani az utolsó véglegesített tranzakciót a tesztelési célokra. Igény szerint más napokat és időpontokat is választhat. 
 
 A helyreállítás becsült ideje több tényezőtől függ, többek között az adatbázis méretétől, a feldolgozandó tranzakciós naplók mennyiségétől, a hálózati sávszélességtől és az azonos régióban található adatbázisok teljes számától. A teljes helyreállítási idő általában néhány perctől akár néhány óráig is eltarthat.
 
@@ -98,7 +98,7 @@ Az adatbázis visszaállítása után a következő feladatokat végezheti el a 
 -  Ha a magas rendelkezésre állással konfigurálta az adatbázist, és ha a visszaállított kiszolgálót magas rendelkezésre állással szeretné konfigurálni, kövesse [a lépéseket](./how-to-manage-high-availability-portal.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   Az [üzletmenet folytonosságának](./concepts-business-continuity.md) megismerése
 -   További információ a [zónák redundáns magas rendelkezésre állásáról](./concepts-high-availability.md)

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "82160153"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
@@ -29,7 +29,7 @@ A félvezető-és a chip-kialakítási iparág szempontjából a piacra jutási 
 
 A tesztek három forgatókönyvet tartalmaznak a következő konfigurációkkal. 
 
-|    Forgatókönyv    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
+|    Eset    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
 |    Eggyel         |    1          |    1                           |
 |    Kettővel         |    6          |    24                          |
@@ -43,7 +43,7 @@ A második és a harmadik forgatókönyv egyetlen Azure NetApp Files végpont ko
 
 A következő táblázat összefoglalja a tesztelési forgatókönyvek eredményeit.
 
-|    Forgatókönyv       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
+|    Eset       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
 |-------------------|---------------------------|--------------------------------|-----------------------------|----------------------------------|
 |    1 kötet       |    39 601                 |    49 502                      |    692 MiB/s                 |    866 MiB/s                      |
 |    6 kötet      |    255 613                |    317 000                     |    4 577 MiB/s               |    5 568 MiB/s                    |
@@ -83,6 +83,6 @@ A fenti gráfokban a teljesítmény nagy része a számítási feladatok szekven
 
 Összefoglalva, az Azure-beli számítási feladatokhoz a Azure NetApp Files for EDA kialakításával méretezhető sávszélességet érhet el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megoldásarchitektúrák az Azure NetApp Filesszal](azure-netapp-files-solution-architectures.md)

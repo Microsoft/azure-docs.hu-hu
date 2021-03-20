@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: a8b7d20c3eee57d10a7025b05605603f82437cdb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97006415"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Webalkalmazás visszaállítása egy biztonsági másolatból a CLI használatával
@@ -36,7 +36,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Lekéri egy webalkalmazás biztonsági másolatainak listáját. |
 | [`az webapp config backup restore`](/cli/azure/webapp/config/backup#az-webapp-config-backup-restore) | Visszaállít egy webalkalmazást egy biztonsági másolatból. |

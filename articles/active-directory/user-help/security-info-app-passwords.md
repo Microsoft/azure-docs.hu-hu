@@ -12,13 +12,13 @@ ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91537004"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Alkalmazás jelszavának létrehozása a biztonsági adatok (előzetes verzió) lapról
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Alkalmazásjelszavak létrehozása a Biztonsági adatok (előzetes verzió) oldalról
 
 Bizonyos alkalmazások, például az Outlook 2010, nem támogatják a kétlépéses ellenőrzést. Ez a támogatás hiánya azt jelenti, hogy ha kétlépéses ellenőrzést használ a szervezetében, az alkalmazás nem fog működni. A probléma megkerüléséhez létrehozhat egy automatikusan generált jelszót, amelyet az egyes nem böngésző alkalmazásokhoz használhat, a normál jelszótól eltérő módon.
 
@@ -53,15 +53,15 @@ Ha kétlépéses ellenőrzést használ a munkahelyi vagy iskolai fiókjával, �
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza ki az **alkalmazás jelszava** elemet a legördülő listából, majd kattintson a **Hozzáadás**gombra.
+3. A **metódus hozzáadása** lapon válassza ki az **alkalmazás jelszava** elemet a legördülő listából, majd kattintson a **Hozzáadás** gombra.
 
     ![Hozzáadás a Method Box-hoz, az alkalmazás jelszava kiválasztva](media/security-info/securityinfo-myprofile-addpassword.png)
 
-4. Írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább**gombra.
+4. Írja be annak az alkalmazásnak a nevét, amelyhez az alkalmazás jelszava szükséges, majd kattintson a **tovább** gombra.
 
     ![Képernyőkép, amely az "alkalmazás jelszava" lapot mutatja a megadott alkalmazás nevével.](media/security-info/securityinfo-myprofile-password-appname.png)
 
-5. Másolja a jelszót a **jelszó** mezőbe, illessze be a jelszót az alkalmazás jelszó területére (ebben a példában az Outlook 2010), majd válassza a **kész**gombot.
+5. Másolja a jelszót a **jelszó** mezőbe, illessze be a jelszót az alkalmazás jelszó területére (ebben a példában az Outlook 2010), majd válassza a **kész** gombot.
 
     ![Alkalmazás jelszava lap az alkalmazás nevével](media/security-info/securityinfo-myprofile-password-copytext.png)
 
@@ -80,7 +80,7 @@ Ha már nincs szüksége az alkalmazás jelszavát igénylő alkalmazás haszná
 
     ![Az alkalmazás jelszava módszerének törlésére szolgáló hivatkozás a biztonsági adatokból](media/security-info/securityinfo-myprofile-password-appdelete.png)
 
-2. Az **alkalmazás jelszavának**törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. Az alkalmazás jelszavának törlése után a rendszer eltávolítja a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
+2. Az **alkalmazás jelszavának** törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. Az alkalmazás jelszavának törlése után a rendszer eltávolítja a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
 
 ## <a name="for-more-information"></a>További tudnivalók
 

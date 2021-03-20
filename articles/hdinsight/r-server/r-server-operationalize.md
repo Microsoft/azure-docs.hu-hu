@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944005"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Működővé tenni ML Services-fürt az Azure HDInsight
@@ -186,7 +186,7 @@ Miután az összes leszerelt feldolgozó csomópont konfigurálva van a számít
 
 1. Jelentkezzen be SSH-n keresztül az élcsomópontba.
 
-1. Futtassa a `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` parancsot.
+1. Futtassa az `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` parancsot.
 
 1. Keresse meg az "URI-k" szakaszt, és adja hozzá a feldolgozói csomópont IP-címét és portjának adatait.
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18
 ms.openlocfilehash: e1b50675bef0f883ff617b3098a742d3491b3c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89484298"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
@@ -31,7 +31,7 @@ A útmutató elvégzéséhez:
 
 Egyéni tartomány megelőző jelleggel kötése esetén a következő műveleteket hajthatja végre a meglévő DNS-rekordok módosítása előtt:
 
-- Tartomány tulajdonjogának ellenőrzése
+- A tartomány tulajdonjogának igazolása
 - Az alkalmazás tartománynevének engedélyezése
 
 Ha végül áttelepíti az egyéni DNS-nevet a régi helyről a App Service alkalmazásba, a DNS-feloldás nem lesz leállás.
@@ -59,11 +59,11 @@ A DNS-rekordok oldalon jegyezze fel az áttelepíteni kívánt DNS-név bejegyz�
 
 ### <a name="enable-the-domain-for-your-app"></a>Az alkalmazás tartományának engedélyezése
 
-1. A [Azure Portal](https://portal.azure.com)az alkalmazás lap bal oldali navigációs sávján válassza az **Egyéni tartományok**elemet. 
+1. A [Azure Portal](https://portal.azure.com)az alkalmazás lap bal oldali navigációs sávján válassza az **Egyéni tartományok** elemet. 
 
     ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-1. Az **Egyéni tartományok** lapon válassza az **egyéni tartomány hozzáadása**elemet.
+1. Az **Egyéni tartományok** lapon válassza az **egyéni tartomány hozzáadása** elemet.
 
     ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
@@ -103,7 +103,7 @@ A tartományi szolgáltató DNS-rekordok lapján válassza ki a felvenni kíván
 
 A `contoso.com` legfelső szintű tartományhoz például a következő táblázatban szereplő példákhoz hasonló módon kell felvennie az a vagy a CNAME rekordot: 
 
-| Példa FQDN-re | Rekordtípus | Gazda | Érték |
+| Példa FQDN-re | Rekordtípus | Gazdagép | Érték |
 | - | - | - | - |
 | contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 | www \. -contoso.com (Sub) | CNAME | `www` | _&lt;AppName>. azurewebsites.net_ |

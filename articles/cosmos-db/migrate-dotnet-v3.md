@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: 514a6c6daccfe63865ae0b2b9f5bf29c5cbedc29
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93334021"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Az alkalmazás migrálása a Azure Cosmos DB .NET SDK v3 használatára
@@ -437,7 +437,7 @@ private static async Task DeleteContainers(DocumentClient client)
 
 ## <a name="item-and-query-operations"></a>Elemek és lekérdezési műveletek
 
-### <a name="create-an-item"></a>Elemek létrehozása
+### <a name="create-an-item"></a>Elem létrehozása
 
 # <a name="net-sdk-v3"></a>[.NET SDK v3](#tab/dotnet-v3)
 
@@ -640,7 +640,7 @@ private static async Task DeleteItemAsync(DocumentClient client)
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Konzolos alkalmazás létrehozása](sql-api-get-started.md) Azure Cosmos db SQL API-alapú adatkezeléshez a v3 SDK használatával
 * További információ [a v3 SDK-val kapcsolatos lehetőségekről](sql-api-dotnet-v3sdk-samples.md)

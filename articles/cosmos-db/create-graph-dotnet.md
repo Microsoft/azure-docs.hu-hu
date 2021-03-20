@@ -10,10 +10,10 @@ ms.date: 02/21/2020
 ms.author: chrande
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 1953f4a21df6f550320592fbe009834a7b573887
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93360530"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
@@ -124,7 +124,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Nyissa meg a *program.cs* fájlt, és frissítse az "adatbázis és a" tároló "változókat az adatbázissal és a tárolóval (amely egyben a gráf neve is) a fent létrehozott nevekkel.
+1. Nyissa meg a *program. cs* fájlt, és frissítse az "adatbázis és a" tároló "változókat az adatbázissal és a tárolóval (amely egyben a gráf neve is) a fent létrehozott nevekkel.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
 ms.openlocfilehash: 41209233ec59f578db4ff7fd344bb96aefeb975e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95994740"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API-alkalmazás importálása API-ként
@@ -57,7 +57,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
     * **Kezdő**
     * **Korlátlan**   
 7. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 
@@ -76,7 +76,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

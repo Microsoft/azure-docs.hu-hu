@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
 ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "81687124"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus felismerése nyelvazonosítási modellel
@@ -64,7 +64,7 @@ A modell domináns nyelve az adatellenőrzési JSON-ban az `sourceLanguage` attr
 * A modellhez legalább egy perces beszéd szükséges a hanganyagban.
 * A modell úgy lett kialakítva, hogy felismerje a spontán társalgási beszédeket (nem hangparancsokat, éneklést stb.).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Áttekintés](video-indexer-overview.md)
 * [Többnyelvű tartalom automatikus azonosítása és átírása](multi-language-identification-transcription.md)

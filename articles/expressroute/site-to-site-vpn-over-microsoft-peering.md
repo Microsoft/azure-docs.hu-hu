@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 366f27a0e2a22e9aa10dda20e105bf644255bdd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89393139"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Helyek közötti VPN konfigurálása ExpressRoute Microsoft-partneri kapcsolaton keresztül
@@ -71,9 +71,9 @@ Az útvonalszűrőkkel azonosíthatja az ExpressRoute-kapcsolatcsoport Microsoft
 
 ![útvonal szűrője](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
-Ebben a példában a központi telepítés csak az *USA 2. nyugati* régiójában található. Az útvonal-szűrési szabály hozzáadása lehetővé teszi, hogy csak az Azure West US 2 regionális előtagjainak hirdetményét engedélyezze, amelynek a BGP közösségi értéke *12076:51026*. A **szabály kezelése**lehetőség kiválasztásával adhatja meg a regionális előtagokat, amelyeket engedélyezni szeretne.
+Ebben a példában a központi telepítés csak az *USA 2. nyugati* régiójában található. Az útvonal-szűrési szabály hozzáadása lehetővé teszi, hogy csak az Azure West US 2 regionális előtagjainak hirdetményét engedélyezze, amelynek a BGP közösségi értéke *12076:51026*. A **szabály kezelése** lehetőség kiválasztásával adhatja meg a regionális előtagokat, amelyeket engedélyezni szeretne.
 
-Az útvonal-szűrőn belül ki kell választania azokat a ExpressRoute-áramköröket, amelyekhez az útválasztási szűrő vonatkozik. A ExpressRoute-áramköröket az **áramkör hozzáadása**lehetőség kiválasztásával választhatja ki. Az előző ábrán az útválasztási szűrő a példa ExpressRoute áramkörhöz van társítva.
+Az útvonal-szűrőn belül ki kell választania azokat a ExpressRoute-áramköröket, amelyekhez az útválasztási szűrő vonatkozik. A ExpressRoute-áramköröket az **áramkör hozzáadása** lehetőség kiválasztásával választhatja ki. Az előző ábrán az útválasztási szűrő a példa ExpressRoute áramkörhöz van társítva.
 
 ### <a name="21-configure-the-route-filter"></a><a name="configfilter"></a>2,1 az útvonal-szűrő konfigurálása
 
@@ -143,7 +143,7 @@ Ebben a példában a változó deklarációi a példában szereplő hálózatnak
 
 * A **localAddressPrefix** változó a helyszíni IP-címek egy tömbje, amely megszünteti az IPSec-alagutakat.
 * A **gatewaysku paraméterben** határozza meg a VPN átviteli sebességét. A Gatewaysku paraméterben és a vpnType kapcsolatos további információkért lásd: [VPN Gateway konfigurációs beállítások](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). A díjszabással kapcsolatban lásd: [VPN Gateway díjszabása](https://azure.microsoft.com/pricing/details/vpn-gateway).
-* Állítsa a **VpnType** **útvonalalapú**értékre.
+* Állítsa a **VpnType** **útvonalalapú** értékre.
 
 ```json
 "variables": {
@@ -239,7 +239,7 @@ Rendeljen hozzá egy nyilvános IP-címet a VPN-átjáró minden példányához.
 
 ### <a name="34-specify-the-on-premises-vpn-tunnel-termination-local-network-gateway"></a><a name="termination"></a>3,4 a helyszíni VPN-alagút lezárásának (helyi hálózati átjáró) meghatározása
 
-A helyszíni VPN-eszközöket a **helyi hálózati átjárónak**nevezzük. A következő JSON-kódrészlet a távoli BGP-társak adatait is megadja:
+A helyszíni VPN-eszközöket a **helyi hálózati átjárónak** nevezzük. A következő JSON-kódrészlet a távoli BGP-társak adatait is megadja:
 
 ```json
 {
