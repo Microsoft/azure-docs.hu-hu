@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 2d0c8433fff58854cb77a4e806058eae1937e71b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93101119"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Ruby nyelvvel
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatai
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Azure Storage-fiók létrehozása**
+**Azure-tárfiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -68,7 +68,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Ezeket az értékeket a következőképp kérheti le egy klasszikus vagy Resource Manager-tárfiókból az Azure Portalon:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 2. Lépjen a használni kívánt tárfiókra.
 3. A jobb oldali Beállítások panelen kattintson az **Hozzáférési kulcsok** lehetőségre.
 4. A megjelenő Hozzáférési kulcsok panelen láthatja az 1. és a 2. hozzáférési kulcsot. Ezek bármelyikét használhatja.
@@ -127,7 +127,7 @@ Ha az **update_entity()** és a **merge_entity()** használatakor a frissítend�
 
 ## <a name="work-with-groups-of-entities"></a>Entitáscsoportok használata
 
-Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez először hozzon létre egy **Batch** -objektumot, majd használja az **execute_batch()** metódust a **TableService** -en. Az alábbi példa két entitás egy kötegben való elküldését mutatja be (az entitások RowKey tulajdonságának értéke 2 és 3). Vegye figyelembe, hogy ez csak az azonos PartitionKey tulajdonsággal rendelkező entitások esetén működik.
+Annak biztosításához, hogy a kiszolgáló elvégezze a kérés elemi feldolgozását, néha érdemes több műveletet egyszerre, egy kötegben elküldeni. Ehhez először hozzon létre egy **Batch**-objektumot, majd használja az **execute_batch()** metódust a **TableService**-en. Az alábbi példa két entitás egy kötegben való elküldését mutatja be (az entitások RowKey tulajdonságának értéke 2 és 3). Vegye figyelembe, hogy ez csak az azonos PartitionKey tulajdonsággal rendelkező entitások esetén működik.
 
 ```ruby
 azure_table_service = Azure::TableService.new

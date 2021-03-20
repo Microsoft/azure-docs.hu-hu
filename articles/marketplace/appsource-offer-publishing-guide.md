@@ -8,17 +8,17 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 8b500a87613dee094c63e71fc76fb751d72aa049
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491154"
 ---
 # <a name="offer-publishing-guide-for-microsoft-365-dynamics-365-power-apps-and-power-bi"></a>A Microsoft 365, a Dynamics 365, a Power apps és a Power BI közzétételi útmutatója
 
 A Microsoft AppSource olyan ajánlatokat tartalmaz, amelyek Microsoft 365, Dynamics 365, Power apps és Power BI-ra épülő vagy azokon kiterjeszthető. Ezen termékek mindegyike rendelkezik egy adott dokumentációval, amely végigvezeti Önt a közzétételi folyamaton. 
 
-A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és a listázási *lehetőséggel azonnal* *kapcsolatba léphet velem* , és *kipróbálhatja*.
+A AppSource fizetős, listázási és próbaverziós ajánlatokat tartalmaz, és a listázási *lehetőséggel azonnal* *kapcsolatba léphet velem*, és *kipróbálhatja*.
 
 ## <a name="product-specific-guides"></a>Termékspecifikus útmutatók
 
@@ -35,7 +35,7 @@ Az egyes ajánlati típusokhoz kapcsolódó folyamatok és irányelvek közzét�
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 

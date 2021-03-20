@@ -4,10 +4,10 @@ description: A harmadik féltől származó Event Grid SaaS-és Pásti-partnerek
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94506146"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partneri események a Azure Event Gridban (előzetes verzió)
@@ -58,7 +58,7 @@ Ha azt szeretné, hogy egy harmadik féltől származó szolgáltatás a Event G
 ## <a name="resources-managed-by-event-publishers"></a>Az esemény-közzétevők által kezelt erőforrások
 Az Event Publisher a következő erőforrásokat hozza létre és kezeli:
 
-### <a name="partner-registration"></a>Partner regisztrációja
+### <a name="partner-registration"></a>Partnerregisztráció
 A regisztráció a közzétevővel kapcsolatos általános információkat tartalmazza. Meghatározza a partneri témakört, amely akkor jelenik meg a Azure Portalban, amikor a felhasználók megpróbálnak létrehozni egy partneri témakört. A kiadó több partneri témakört is közzétehet, hogy megfeleljen az előfizetők igényeinek. Ez azt is megteheti, hogy a kiadó külön regisztrációkat (partneri témákat) hoz létre különböző szolgáltatásokból származó eseményekhez. Például az emberi erőforrások (HR) szolgáltatás esetében a közzétevő definiálhat egy partneri témakört olyan eseményekhez, mint például az alkalmazott, az alkalmazott, az alkalmazott pedig elhagyta a vállalatot. 
 
 Tartsa szem előtt az alábbi szempontokat:
@@ -82,12 +82,12 @@ Az alábbi képen a vezérlési sík műveleteinek folyamata látható.
 
 1. A közzétevő **partneri regisztrációt** hoz létre. A partnerek regisztrációi globálisak. Tehát nem egy adott Azure-régióhoz vannak társítva. Ez a lépés nem kötelező.
 1. A közzétevő **partneri névteret** hoz létre egy adott régióban.
-1. Ha az 1. előfizető megpróbál létrehozni egy partneri témakört, akkor először a közzétevő Azure-előfizetésében jön létre egy **Event Channel** , 1. esemény-csatorna.
-1. Ezután létrejön egy **partneri témakör** , 1. partneri témakör, amely az előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
+1. Ha az 1. előfizető megpróbál létrehozni egy partneri témakört, akkor először a közzétevő Azure-előfizetésében jön létre egy **Event Channel**, 1. esemény-csatorna.
+1. Ezután létrejön egy **partneri témakör**, 1. partneri témakör, amely az előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
 1. Az 1. előfizető létrehoz egy **Azure Logic apps-előfizetést** az 1. partneri témakörben.
 1. Az 1. előfizető **Azure Blob Storage-előfizetést** hoz létre az 1. partneri témakörben. 
-1. Ha a 2. előfizető megpróbál létrehozni egy partneri témakört, egy másik **Event Channel** -et, az Event Channel 2-et, először a kiadó Azure-előfizetésében hozza létre. 
-1. Ezután létrejön a **partneri témakör** , a 2. partneri témakör, amely a második előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
+1. Ha a 2. előfizető megpróbál létrehozni egy partneri témakört, egy másik **Event Channel**-et, az Event Channel 2-et, először a kiadó Azure-előfizetésében hozza létre. 
+1. Ezután létrejön a **partneri témakör**, a 2. partneri témakör, amely a második előfizető Azure-előfizetésében jön létre. Az előfizetőnek aktiválnia kell a partneri témakört. 
 1. A 2. előfizető létrehoz egy **Azure functions-előfizetést** a 2. partneri témakörben. 
 
 ## <a name="pricing"></a>Díjszabás

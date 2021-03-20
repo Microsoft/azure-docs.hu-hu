@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: duau
-ms.openlocfilehash: 17677ea89b04659de66b9bda35975b96ff33473a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6c6d33a36c4a0b71932e8c19c8f6dd105c33817c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740783"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
@@ -133,7 +133,12 @@ Adja meg az Azure-előfizetési engedélyt a Azure Key Vault fiókban találhat�
     Az Azure bejárati ajtó a következő információkat tartalmazza: 
     - Az előfizetés azonosítójához tartozó Key Vault-fiókok. 
     - A kiválasztott Key Vaultban található tanúsítványok (titkos kódok). 
-    - A tanúsítvány elérhető verziói.
+    - A tanúsítvány elérhető verziói. 
+
+> [!NOTE]
+> Ha üresen hagyja a tanúsítvány verzióját, a következőhöz vezetne:
+> - A tanúsítvány legújabb verziója kiválasztva.
+> - A tanúsítványok a legújabb verzióra való automatikus elforgatása, amikor a tanúsítvány egy újabb verziója érhető el a Key Vault.
  
 5. Saját tanúsítvány használatakor nem szükséges tartományérvényesítés. Lépjen tovább a [Várakozás a propagálásra](#wait-for-propagation) részhez.
 
@@ -273,9 +278,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Töltse fel a tanúsítványt a Key Vaultba.
 * Tartomány érvényesítése.
-* Engedélyezze a HTTPS protokollt az egyéni tartományhoz.
+* Engedélyezze a HTTPS-t az egyéni tartományhoz.
 
-Ha meg szeretné tudni, hogyan állíthat be egy geo-szűrési szabályzatot az előtérben, folytassa a következő oktatóanyaggal.
+Ha meg szeretné tudni, hogyan állíthatja be a Geo-szűrési szabályzatot a bejárati ajtóhoz, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Geo-szűrési szabályzat beállítása](front-door-geo-filtering.md)

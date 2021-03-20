@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 5920f2b5823e568d56d13107200eb0025a654db0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219921"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL Azure Data Lake Analytics
@@ -19,8 +19,8 @@ Az U-SQL egy olyan nyelv, amely a deklaratív SQL-t a kényszerített C# haszná
 ## <a name="learning-resources"></a>Képzési források
 
 * A [u-SQL-oktatóanyag](https://aka.ms/usqltutorial) az u-SQL nyelvének többségét bemutató interaktív útmutatót nyújt. Ez a dokumentum az U-SQL-t megtanulni kívánó fejlesztők számára ajánlott olvasmány.
-* Az **u-SQL nyelvi szintaxissal**kapcsolatos részletes információkért tekintse meg az [u-SQL nyelvi referenciáját](/u-sql/).
-* Az **u-SQL tervezési filozófiájának**megismeréséhez tekintse meg a Visual Studio blogbejegyzését, amely bemutatja az [u-SQL-t – egy olyan nyelvet, amely megkönnyíti a Big adatfeldolgozást](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
+* Az **u-SQL nyelvi szintaxissal** kapcsolatos részletes információkért tekintse meg az [u-SQL nyelvi referenciáját](/u-sql/).
+* Az **u-SQL tervezési filozófiájának** megismeréséhez tekintse meg a Visual Studio blogbejegyzését, amely bemutatja az [u-SQL-t – egy olyan nyelvet, amely megkönnyíti a Big adatfeldolgozást](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

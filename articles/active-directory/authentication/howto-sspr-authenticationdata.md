@@ -13,15 +13,15 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: ed93944c2a94370250fb75a679c1ac37a2a8418c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861153"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Felhasználói hitelesítési kapcsolattartási adatok előzetes feltöltése Azure Active Directory önkiszolgáló jelszó-visszaállításhoz (SSPR)
 
-A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) használatához a felhasználó hitelesítési kapcsolattartási adatai jelennek meg. Egyes szervezetek maguk is regisztrálják a hitelesítési jelszavukat. Más szervezetek is szívesebben szinkronizálnak a Active Directory tartományi szolgáltatások (AD DS) már létező hitelesítési adatokból. A szinkronizált adatokat az Azure AD és a SSPR felhasználói beavatkozás nélkül elérhetővé teszi. Ha a felhasználóknak meg kell változtatniuk vagy alaphelyzetbe kell állítaniuk a jelszavukat, akkor is megtehetik, ha korábban még nem regisztrálták a kapcsolattartási adatokat.
+A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) használatához a felhasználó hitelesítési kapcsolattartási adatai jelennek meg. Egyes szervezetek maguk is regisztrálják a hitelesítési jelszavukat. Más szervezetek is szívesebben szinkronizálnak a Active Directory Domain Services (AD DS) már létező hitelesítési adatokból. A szinkronizált adatokat az Azure AD és a SSPR felhasználói beavatkozás nélkül elérhetővé teszi. Ha a felhasználóknak meg kell változtatniuk vagy alaphelyzetbe kell állítaniuk a jelszavukat, akkor is megtehetik, ha korábban még nem regisztrálták a kapcsolattartási adatokat.
 
 Ha megfelel a következő követelményeknek, előre feltöltheti a hitelesítési kapcsolattartási adatokat:
 

@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: aa0ce6a5f909e67f0551c8667bb7e5c5e6d7eb04
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92275614"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
@@ -32,13 +32,13 @@ Ez a cikk segítséget nyújt a konfigurációs fájl különböző beállítás
 
 | Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 |-----------|------------|-------------|-------|
-| `client_id` | Sztring | Igen | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
-| `redirect_uri`   | Sztring | Igen | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
-| `broker_redirect_uri_registered` | Logikai | Nem | Lehetséges értékek: `true` , `false` |
-| `authorities` | Listáját\<Authority> | Nem | Az alkalmazás által igényelt hatóságok listája |
-| `authorization_user_agent` | AuthorizationAgent (enumerálás) | Nem | Lehetséges értékek: `DEFAULT` , `BROWSER` , `WEBVIEW` |
-| `http` | HttpConfiguration | Nem | Konfigurálás `HttpUrlConnection` `connect_timeout` és `read_timeout` |
-| `logging` | LoggingConfiguration | Nem | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
+| `client_id` | Sztring | Yes | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
+| `redirect_uri`   | Sztring | Yes | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
+| `broker_redirect_uri_registered` | Logikai | No | Lehetséges értékek: `true` , `false` |
+| `authorities` | Lista\<Authority> | No | Az alkalmazás által igényelt hatóságok listája |
+| `authorization_user_agent` | AuthorizationAgent (enumerálás) | No | Lehetséges értékek: `DEFAULT` , `BROWSER` , `WEBVIEW` |
+| `http` | HttpConfiguration | No | Konfigurálás `HttpUrlConnection` `connect_timeout` és `read_timeout` |
+| `logging` | LoggingConfiguration | No | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
 
 ### <a name="client_id"></a>client_id
 
@@ -109,17 +109,17 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|-----------|--------|
-| `type` | Sztring | Igen | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` , `B2C` |
-| `audience` | Objektum | Nem | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
-| `authority_url` | Sztring | Igen | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
-| `default` | boolean | Igen | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
+| `type` | Sztring | Yes | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` , `B2C` |
+| `audience` | Objektum | No | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
+| `authority_url` | Sztring | Yes | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
+| `default` | boolean | Yes | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
 
 #### <a name="audience-properties"></a>Célközönség tulajdonságai
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 |-----------|-------------|------------|-------|
-| `type` | Sztring | Igen | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
-| `tenant_id` | Sztring | Igen | Csak akkor szükséges, ha `"type":"AzureADMyOrg"` . Egyéb értékekhez nem kötelező megadni `type` . Ez lehet egy bérlői tartomány, például `contoso.com` , vagy egy bérlői azonosító, például a ( `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
+| `type` | Sztring | Yes | Meghatározza azt a célközönséget, amelyet az alkalmazás szeretne megcélozni. Lehetséges értékek: `AzureADandPersonalMicrosoftAccount` , `PersonalMicrosoftAccount` , `AzureADMultipleOrgs` , `AzureADMyOrg` |
+| `tenant_id` | Sztring | Yes | Csak akkor szükséges, ha `"type":"AzureADMyOrg"` . Egyéb értékekhez nem kötelező megadni `type` . Ez lehet egy bérlői tartomány, például `contoso.com` , vagy egy bérlői azonosító, például a ( `72f988bf-86f1-41af-91ab-2d7cd011db46` ) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
@@ -146,8 +146,8 @@ Konfigurálja a HTTP-időtúllépések globális beállításait, például:
 
 | Tulajdonság | Adattípus | Kötelező | Jegyzetek |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Nem | Idő ezredmásodpercben |
-| `read_timeout` | int | Nem | Idő ezredmásodpercben |
+| `connect_timeout` | int | No | Idő ezredmásodpercben |
+| `read_timeout` | int | No | Idő ezredmásodpercben |
 
 ### <a name="logging"></a>naplózás
 
@@ -155,9 +155,9 @@ A következő globális beállítások állnak a naplózásra:
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boolean | Nem | Személyes adatkibocsátás |
+| `pii_enabled`  | boolean | No | Személyes adatkibocsátás |
 | `log_level`   | sztring | No | A kimenő üzenetek naplózása. A támogatott naplózási szintek a következők:,, `ERROR` `WARNING` `INFO` és `VERBOSE` . |
-| `logcat_enabled` | boolean | Nem | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
+| `logcat_enabled` | boolean | No | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
 
 ### <a name="account_mode"></a>account_mode
 

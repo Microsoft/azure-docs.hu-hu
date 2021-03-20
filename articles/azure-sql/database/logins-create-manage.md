@@ -14,10 +14,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
 ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452432"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Adatbázis-hozzáférés engedélyezése az SQL Database-hez, a felügyelt SQL-példányhoz és az Azure Synapse Analyticshez
@@ -169,6 +169,6 @@ A hatékony hozzáférés-vezérlés Active Directory biztonsági csoportokhoz, 
 - Az [adatmaszkolás](dynamic-data-masking-overview.md) használatával korlátozhatja a bizalmas adatok megjelenítését.
 - A [tárolt eljárások](/sql/relational-databases/stored-procedures/stored-procedures-database-engine) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az összes Azure SQL Database és SQL felügyelt példány biztonsági funkciójának áttekintését lásd: [biztonsági áttekintés](security-overview.md).

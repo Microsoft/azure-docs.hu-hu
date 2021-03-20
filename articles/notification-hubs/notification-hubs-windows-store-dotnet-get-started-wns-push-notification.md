@@ -16,10 +16,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.openlocfilehash: 4f55b6eafe230f722979d535111ce45aa35981f0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93125037"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazások számára az Azure-ban Notification Hubs
@@ -41,7 +41,7 @@ Hajtsa végre a következő lépéseket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Azure-előfizetés** . Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
+- **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
 - Microsoft Visual Studio 2017 vagy újabb verzió. Az oktatóanyagban szereplő példa a [Visual Studio 2019](https://www.visualstudio.com/products)-et használja.
 - [UWP-alkalmazások telepített fejlesztőeszközei](/windows/uwp/get-started/get-set-up)
 - Aktív Windows Áruházbeli fiók
@@ -63,7 +63,7 @@ A leküldéses értesítések UWP-alkalmazásokba irányuló küldéséhez társ
 2. Írja be az alkalmazás nevét, majd válassza a **Reserve product name** (Terméknév lefoglalása) lehetőséget. Ezzel létrehoz egy új Windows Áruházbeli regisztrációt az alkalmazás számára.
 
     ![Áruházbeli alkalmazásnév](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. Bontsa ki a **termékmenedzsment** csomópontot, válassza a **WNS/MPNS** , majd az **élő szolgáltatások webhely** lehetőséget. Jelentkezzen be Microsoft-fiókjába. Megnyílik az alkalmazás regisztrálása lap egy új lapon. Azt is megteheti, hogy közvetlenül a [saját alkalmazások](https://apps.dev.microsoft.com) lapra navigál, és kijelöli az alkalmazás nevét, hogy erre a lapra kerüljön.
+3. Bontsa ki a **termékmenedzsment** csomópontot, válassza a **WNS/MPNS**, majd az **élő szolgáltatások webhely** lehetőséget. Jelentkezzen be Microsoft-fiókjába. Megnyílik az alkalmazás regisztrálása lap egy új lapon. Azt is megteheti, hogy közvetlenül a [saját alkalmazások](https://apps.dev.microsoft.com) lapra navigál, és kijelöli az alkalmazás nevét, hogy erre a lapra kerüljön.
 
     ![A WNS/MPNS lap](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
 4. Jegyezze fel az **alkalmazás titkos kulcsának** jelszavát, valamint a **csomag biztonsági azonosítóját (SID)** és az **alkalmazás identitását** is a Windows áruház szakaszban.
@@ -87,7 +87,7 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
 
 ## <a name="create-a-sample-windows-app"></a>Windows-mintaalkalmazás létrehozása
 
-1. A Visual Studióban nyissa meg a **fájl** menüt, válassza az **új** , majd a **projekt** elemet.
+1. A Visual Studióban nyissa meg a **fájl** menüt, válassza az **új**, majd a **projekt** elemet.
 2. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket:
 
     1. A felső keresőmezőbe írja be a **Windows Universal** kifejezést.
@@ -149,7 +149,7 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
 
     Ez a művelet garantálja, hogy a csatorna URI-ja regisztrálva lesz az értesítési központban az alkalmazás minden indításakor.
 
-12. Kattintson a jobb gombbal a elemre `Package.appxmanifest` , és válassza a kód megtekintése ( **F7** ) lehetőséget. Keresse meg  `<Identity .../>` és cserélje le az értéket az **alkalmazás identitására** a [korábban](#create-an-app-in-windows-store)létrehozott WNS.
+12. Kattintson a jobb gombbal a elemre `Package.appxmanifest` , és válassza a kód megtekintése (**F7**) lehetőséget. Keresse meg  `<Identity .../>` és cserélje le az értéket az **alkalmazás identitására** a [korábban](#create-an-app-in-windows-store)létrehozott WNS.
 
 13. Az alkalmazás futtatásához nyomja le a billentyűzet **F5** billentyűjét. Ekkor megjelenik a regisztrációs kulcsot tartalmazó párbeszédpanel. A párbeszédpanel bezárásához kattintson **az OK** gombra.
 
@@ -167,7 +167,7 @@ Ha gyorsan le szeretné tesztelni, hogyan fogadja az alkalmazás az értesítés
 2. A **Tesztküldés** ablakban hajtsa végre az alábbi műveleteket:
     1. A **Platformok** beállításnál válassza a **Windows** lehetőséget.
     2. Az **Értesítés típusa** beállításnál válassza a **Bejelentés** lehetőséget.
-    3. Válassza a **Küldés** lehetőséget.
+    3. Kattintson a **Küldés** gombra.
 
         ![A Tesztküldés panel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 3. A Küldés művelet eredményét az ablak alján található **Eredmény** listában láthatja. Emellett egy figyelmeztető üzenet is megjelenik.

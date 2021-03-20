@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 4c10a91971357001723adcb783253c9867cf6d87
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019057"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Valós idejű elemzési és adatfolyam-feldolgozási technológia kiválasztása az Azure-ban
@@ -49,7 +49,7 @@ A Azure Stream Analytics támogatja a felhasználó által definiált függvény
 
 Azure Stream Analytics a Microsoft saját technológiája, és csak az Azure-ban érhető el. Ha a megoldás a felhőben vagy a helyszínen is hordozható, olyan nyílt forráskódú technológiákat kell figyelembe venni, mint a Spark strukturált streaming vagy a Storm.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Stream Analytics-feladat létrehozása az Azure PowerShell használatával](stream-analytics-quick-create-powershell.md)

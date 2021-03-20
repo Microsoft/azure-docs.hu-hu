@@ -4,10 +4,10 @@ description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és l
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98624489"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
@@ -222,7 +222,7 @@ Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP 
 | --- | --- | --- |
 | üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
-| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Ide:](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| felhasználóként a(z) |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Ide:](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | tárgy |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -359,10 +359,10 @@ A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |sztring |**Put-token** |
-| típus |Nem |sztring |A felhelyezni kívánt jogkivonat típusa. |
-| name |Nem |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
-| lejárati |Igen |időbélyeg |A jogkivonat lejárati ideje. |
+| művelet |No |sztring |**Put-token** |
+| típus |No |sztring |A felhelyezni kívánt jogkivonat típusa. |
+| name |No |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
+| lejárati |Yes |időbélyeg |A jogkivonat lejárati ideje. |
 
 A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
 
@@ -378,8 +378,8 @@ A válaszüzenet a következő *alkalmazás-tulajdonságok* értékekkel rendelk
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapot kódja |Nem |int |HTTP-válasz kódja **[RFC2616]**. |
-| állapot – Leírás |Igen |sztring |Az állapot leírása. |
+| állapot kódja |No |int |HTTP-válasz kódja **[RFC2616]**. |
+| állapot – Leírás |Yes |sztring |Az állapot leírása. |
 
 Az ügyfél többször is meghívhatja a *put-tokent* , illetve az üzenetkezelési infrastruktúra bármely entitására. A jogkivonatok hatóköre az aktuális ügyfél, és az aktuális kapcsolatra van rögzítve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
 

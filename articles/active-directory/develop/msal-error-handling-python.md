@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, rayluo
 ms.custom: aaddev
 ms.openlocfilehash: 3046787393d38ed60b54236f33acc065db90321d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761088"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-python"></a>Hibák és kivételek kezelése a Pythonhoz készült MSAL-ben
@@ -39,6 +39,6 @@ A MSAL for Python esetében a kivételek ritkák, mivel a legtöbb hibát egy hi
 
 [!INCLUDE [Active directory error handling retries](../../../includes/active-directory-develop-error-handling-retries.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vegye fontolóra a [MSAL for Python naplózásának](msal-logging-python.md) engedélyezését a problémák diagnosztizálásához és hibakereséséhez.

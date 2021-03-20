@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: e4578b41e5cbb62c8a1bfa0c48d4fd60d042a506
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361519"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webes tevékenység Azure Data Factory
@@ -98,7 +98,7 @@ A következő táblázat a JSON-tartalomra vonatkozó követelményeket mutatja 
 
 Az alábbiakban láthatók a webes tevékenységben támogatott hitelesítési típusok.
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>Nincsenek
 
 Ha nincs szükség hitelesítésre, ne adja meg a "hitelesítés" tulajdonságot.
 

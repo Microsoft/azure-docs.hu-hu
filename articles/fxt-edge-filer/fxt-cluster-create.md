@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: d019f5df4bba6d223076c8ce35151510afedf2e9
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220805"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Oktatóanyag: az Azure FXT Edge Filer-fürt létrehozása
@@ -152,7 +152,7 @@ A többi beállítást ritkán használják:
 
 A következő képernyőn az új fürt beállításainak konfigurálását kéri.
 
-Az oldal két fő szakaszra, **alapszintű konfigurációra** és **hálózati konfigurációra**van osztva. A hálózatkezelési konfiguráció szakasz a következő alszakaszokat is tartalmazza: egy a **felügyeleti** hálózathoz, egy pedig a **fürthöz** .
+Az oldal két fő szakaszra, **alapszintű konfigurációra** és **hálózati konfigurációra** van osztva. A hálózatkezelési konfiguráció szakasz a következő alszakaszokat is tartalmazza: egy a **felügyeleti** hálózathoz, egy pedig a **fürthöz** .
 
 ### <a name="basic-configuration"></a>Alapszintű konfiguráció
 
@@ -177,7 +177,7 @@ A felső szakaszban adja meg az új fürt alapvető információit.
   
   Egyéni felhasználói fiókokat kell beállítania minden olyan személy számára, aki felügyeli a fürtöt, de nem távolíthatja el a felhasználót `admin` . Jelentkezzen be, `admin` Ha további felhasználókat kell létrehoznia.
 
-  A jelszót a `admin` **Administration**  >  fürt Vezérlőpultjának adminisztráció**felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
+  A jelszót a `admin`   >  fürt Vezérlőpultjának adminisztráció **felhasználói** beállítások lapján módosíthatja. Részletekért olvassa el a **felhasználói** dokumentációt a [fürtkonfiguráció útmutatóban](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_users.html).
 
 <!-- to do: update "legacy" URLs when docs are ported to Microsoft site -->
 
@@ -227,7 +227,7 @@ A fürt hálózati beállításai a fürtcsomópontok között, valamint a fürt
 
 * **Első IP** -cím és **utolsó IP** – adja meg azokat az IP-címeket, amelyek meghatározzák a fürt belső kommunikációjához használt tartományt. Az itt használt IP-címeknek összefüggőnek kell lennie, és a DHCP nem rendeli hozzá őket.
 
-  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt**  >  **hálózati** beállításait tartalmazó lapot (a[fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
+  A fürt létrehozása után további IP-címeket is hozzáadhat. Használja a **fürt**  >  **hálózati** beállításait tartalmazó lapot (a [fürt konfigurációs útmutatójának dokumentációja](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cluster_networks.html#gui-cluster-networks)).
 
   A tartományban lévő **IP-címek számának** értékét a rendszer automatikusan kiszámítja és megjeleníti.
 
@@ -378,13 +378,13 @@ A támogatási feltöltések beállításához kövesse az alábbi lépéseket.
 1. Kattintson az **ügyféladatok** bal oldalán található háromszögre a szakasz kibontásához.
 1. Kattintson a **feltöltési adatok újraérvényesítése** gombra.
 1. Adja meg a fürt támogatási nevét az **egyedi fürt neve** alatt – ügyeljen arra, hogy a fürt egyedi módon azonosítható legyen a munkatársak támogatásához.
-1. A **statisztikák figyelésére**, az **általános adatok feltöltésére**és az **Összeomlási adatok feltöltésére**vonatkozó jelölőnégyzeteket itt találja.
+1. A **statisztikák figyelésére**, az **általános adatok feltöltésére** és az **Összeomlási adatok feltöltésére** vonatkozó jelölőnégyzeteket itt találja.
 1. Kattintson a **Submit (Küldés**) gombra.  
 
    ![A támogatási beállítások oldalának Completed Customer info szakaszt tartalmazó képernyőképe](media/fxt-cluster-create/fxt-support-info.png)
 
 1. Kattintson a **biztonságos proaktív támogatás (SPS)** bal oldalán található háromszögre a szakasz kibontásához.
-1. Jelölje be az **SPS-hivatkozás engedélyezése**jelölőnégyzetet.
+1. Jelölje be az **SPS-hivatkozás engedélyezése** jelölőnégyzetet.
 1. Kattintson a **Submit (Küldés**) gombra.
 
    ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/fxt-cluster-create/fxt-support-sps.png)

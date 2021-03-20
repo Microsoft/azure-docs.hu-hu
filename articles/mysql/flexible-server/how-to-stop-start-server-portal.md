@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/29/2020
 ms.openlocfilehash: 15b08ea67afe0d307470b5a4fb0f7d26e0f4ea82
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93241922"
 ---
 # <a name="stopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL rugalmas kiszolgáló leállítása/elindítása (előzetes verzió)
@@ -36,7 +36,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 3.  A kiszolgáló leállításának megerősítéséhez kattintson az **Igen** gombra.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Állítsa le a rugalmas kiszolgálót."::: 
+    :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Erősítse meg a rugalmas kiszolgáló leállítását."::: 
 
 > [!NOTE]
 > A kiszolgáló leállítása után a többi felügyeleti művelet nem érhető el a rugalmas kiszolgáló számára.
@@ -47,7 +47,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 2.  Az **Áttekintés** lapon kattintson a **Start** gombra az eszköztáron.
 
-    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Állítsa le a rugalmas kiszolgálót.":::  
+    :::image type="content" source="media/how-to-stop-start-server-portal/start-server.png" alt-text="Indítsa el a rugalmas kiszolgálót.":::  
 
 > [!NOTE]
 > A kiszolgáló elindítása után az összes felügyeleti művelet elérhető lesz a rugalmas kiszolgáló számára.

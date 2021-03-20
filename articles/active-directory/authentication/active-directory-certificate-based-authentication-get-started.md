@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861340"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
@@ -104,7 +104,7 @@ A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verz
 
 Első konfigurálási lépésként létre kell hoznia egy kapcsolatot a Bérlővel. Amint létezik a bérlőhöz való kapcsolódás, áttekintheti, hozzáadhatja, törölheti és módosíthatja a címtárban definiált megbízható hitelesítésszolgáltatók listáját.
 
-### <a name="connect"></a>Kapcsolódás
+### <a name="connect"></a>Csatlakozás
 
 Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/powershell/module/azuread/connect-azuread) parancsmagot:
 

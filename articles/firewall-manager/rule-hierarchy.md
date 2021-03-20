@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: victorh
 ms.openlocfilehash: 1ba683e3d616f52854f1055dab9b9fe2d389116a
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92331736"
 ---
 # <a name="use-azure-firewall-policy-to-define-a-rule-hierarchy"></a>Szabály-hierarchia definiálása Azure Firewall házirend használatával
@@ -48,7 +48,7 @@ Szabályzatok létrehozása az egyes alkalmazási csapatokhoz:
 - Egy adatbázis-tűzfal házirend. Az adatbázis-tűzfal házirendje örökli az alapszintű tűzfal házirendjét.
 - Egy mérnöki tűzfal házirendje. A mérnöki tűzfal házirendje szintén örökli az alapszintű tűzfal-házirendet.
 
-:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Csapatok és követelmények" border="false":::
+:::image type="content" source="media/rule-hierarchy/policy-hierarchy.png" alt-text="Házirend-hierarchia" border="false":::
 
 ### <a name="create-custom-roles-to-access-the-rule-collection-groups"></a>Egyéni szerepkörök létrehozása a szabálygyűjtemény-csoportok eléréséhez 
 
@@ -97,7 +97,7 @@ Egyéni szerepkörök definiálásához használja a következő magas szintű e
 
    Explicit előfizetési azonosítókat kell megadnia, különben nem importálhatja a szerepkört az előfizetésébe.
 7. Törölje az **azonosító**   tulajdonság sorát, és módosítsa a **IsCustom**   tulajdonságot True értékre.
-8. A **név**   és a **Leírás**   tulajdonságainak módosítása a AZFM-szabálygyűjtemény és a *szerepkörhöz tartozó felhasználók számára a tűzfalszabályok szerkesztési csoportjai* *AZFM Rule Collection Group Author*
+8. A  **név**   és a  **Leírás**   tulajdonságainak módosítása a AZFM-szabálygyűjtemény és a *szerepkörhöz tartozó felhasználók számára a tűzfalszabályok szerkesztési csoportjai* 
 
 A JSON-fájlnak az alábbi példához hasonlóan kell kinéznie:
 
@@ -132,11 +132,11 @@ Az összes egyéni szerepkör listázásához használhatja a Get-AzRoleDefiniti
 
    `Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom`
 
-A Azure Portal egyéni szerepkörei is megtekinthetők. Nyissa meg az előfizetését, és válassza a **hozzáférés-vezérlés (iam)**, majd a **szerepkörök**lehetőséget.
+A Azure Portal egyéni szerepkörei is megtekinthetők. Nyissa meg az előfizetését, és válassza a **hozzáférés-vezérlés (iam)**, majd a **szerepkörök** lehetőséget.
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="Csapatok és követelmények":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy.png" alt-text="SalesAppPolicy":::
 
-:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="Csapatok és követelmények":::
+:::image type="content" source="media/rule-hierarchy/sales-app-policy-read.png" alt-text="SalesAppPolicy olvasási engedélye":::
 
 További információ: [oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](../role-based-access-control/tutorial-custom-role-powershell.md).
 
@@ -145,7 +145,7 @@ További információ: [oktatóanyag: egyéni Azure-szerepkör létrehozása Azu
 A portálon felhasználókat adhat hozzá a AZFM-szabályok gyűjtési csoportjának szerzők szerepkörhöz, és hozzáférést biztosíthat a tűzfal házirendjeihez.
 
 1. A portálon válassza ki az alkalmazás csapatának tűzfal-házirendjét (például SalesAppPolicy).
-2. Válassza a **Access Control**lehetőséget.
+2. Válassza a **Access Control** lehetőséget.
 3. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 4. Vegyen fel felhasználókat vagy felhasználói csoportokat (például az értékesítési csapatot) a szerepkörbe.
 
@@ -162,7 +162,7 @@ A felhasználók nem rendelkeznek a következő engedélyekkel:
 
 A biztonsági rendszergazdák az alapházirenddel kikényszerítik a guardrails, és letilthatják bizonyos típusú forgalmat (például az ICMP-t) a vállalatuk igényei szerint. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Azure Firewall házirendről](policy-overview.md).
 

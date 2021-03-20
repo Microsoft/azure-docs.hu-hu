@@ -7,10 +7,10 @@ ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
 ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92316671"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
@@ -51,7 +51,7 @@ A .NET Core/C# fejlesztéshez a következő előfeltételeket kell telepíteni:
 * [.Net Core](https://www.microsoft.com/net/learn/get-started) (2.0.0 vagy újabb verzió)
 * [C# for Visual Studio Code (OmniSharp-alapú) vs Code-bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) A C#-szolgáltatások hibakereséséhez szükséges. A-t a VS Code **tevékenység sávján** található Extensions (bővítmények) ikonra kattintva telepítheti, és megkeresheti a bővítményt, vagy a vs Code piactéren is.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 1. Nyissa meg a VS Code-ot.
 2. Kattintson a VS Code bal oldalán található **Activity sávban** a bővítmények ikonra. Keressen rá a "Service Fabric" kifejezésre. Kattintson a **telepítés** elemre a Service Fabric Reliable Services bővítményhez.

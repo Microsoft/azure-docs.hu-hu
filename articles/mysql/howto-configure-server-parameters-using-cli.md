@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a5a84d93400e713f66545387fd146148ee735c06
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541538"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-cli"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MySQL az Azure CLI használatával
@@ -53,7 +53,7 @@ Ha alaphelyzetbe kívánja állítani egy konfigurációs paraméter értékét,
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Ez a kód visszaállítja a **lassú \_ lekérdezési \_ napló** konfigurációját az **OFF** alapértelmezett értékre. 
+Ez a kód visszaállítja a **lassú \_ lekérdezési \_ napló** konfigurációját az alapértelmezett értékre. 
 
 ## <a name="setting-parameters-not-listed"></a>Nem felsorolt paraméterek beállítása
 Ha a frissíteni kívánt kiszolgálói paraméter nem szerepel a Azure Portalban, akkor opcionálisan a paramétert is megadhatja a kapcsolódási szinten a használatával `init_connect` . Ezzel beállítja a kiszolgálóhoz csatlakozó egyes ügyfelek kiszolgálói paramétereit. 

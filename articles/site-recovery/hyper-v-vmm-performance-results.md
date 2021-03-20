@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 6c8219214e7053dcf6b119f6cd5dc97daaa355f7
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92327637"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A Hyper-V replikálásának tesztelési eredményei másodlagos helyre
@@ -106,10 +106,10 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 ![Elsődleges hardverkövetelmények](./media/hyper-v-vmm-performance-results/IC744922.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftverek |
+| Kiszolgáló | RAM | Modellezés | Processzor | Processzorok száma | Hálózati adapter | Szoftverek |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST11<br />ESTLAB-HOST12<br />ESTLAB-HOST13<br />ESTLAB-HOST14<br />ESTLAB-HOST25 |128<br />ESTLAB – a HOST25 256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbit/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="secondary-site"></a>Másodlagos hely
 
@@ -118,12 +118,12 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 ![Elsődleges hardver specifikációja](./media/hyper-v-vmm-performance-results/IC744923.png)
 
-| Kiszolgáló | RAM | Modell | Processzor | Processzorok száma | Hálózati adapter | Szoftverek |
+| Kiszolgáló | RAM | Modellezés | Processzor | Processzorok száma | Hálózati adapter | Szoftverek |
 | --- | --- | --- | --- | --- | --- | --- |
 | Hyper-V-kiszolgálók a fürtben: <br />ESTLAB-HOST07<br />ESTLAB-HOST08<br />ESTLAB-HOST09<br />ESTLAB-HOST10 |96 |Dell™ PowerEdge™ R720 |Intel (R) Xeon (R) CPU E5 – 2630 0 \@ 2.30 GHz |2 |1 GB/s x 4 |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | ESTLAB-HOST17 |128 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |4 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
 | ESTLAB-HOST24 |256 |Dell™ PowerEdge™ R820 |Intel (R) Xeon (R) CPU E5 – 4620 0 \@ 2.20 GHz |2 | |Windows Server Datacenter 2012 R2 (x64) + Hyper-V szerepkör |
-| VMM-kiszolgáló |2 | | |2 |1 Gbit/s |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
+| VMM-kiszolgáló |2 | | |2 |1 Gbps |Windows Server Database 2012 R2 (x64) + VMM 2012 R2 |
 
 ### <a name="server-workloads"></a>Kiszolgáló munkaterhelései
 
@@ -170,7 +170,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 A tábla összegzi az üzemelő példányban mért teljesítmény-mérőszámokat és számlálókat.
 
-| Metrika | Számláló |
+| Metric | Számláló |
 | --- | --- |
 | CPU |\Processor(_Total)\% Processor Time |
 | Igénybe vehető memória |\Memory\Available MB-ban |
@@ -180,6 +180,6 @@ A tábla összegzi az üzemelő példányban mért teljesítmény-mérőszámoka
 | Virtuális gép olvasási átviteli sebessége |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Read sebesség (bájt/s) |
 | Virtuális gép írási sebessége |\Hyper-V virtuális tárolóeszköz ( \<VHD> ) \Write sebesség (bájt/s) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Replikáció beállítása](hyper-v-vmm-disaster-recovery.md)

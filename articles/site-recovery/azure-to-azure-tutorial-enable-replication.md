@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
 ms.openlocfilehash: 473a264ef497cab4bd4f88372600161b33178099
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656869"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Oktatóanyag: vész-helyreállítás beállítása Azure-beli virtuális gépekhez
@@ -79,9 +79,9 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 | **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
+| Tárolás                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
-| Replikáció               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
+| Replikálás               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Lehetővé teszi a virtuális gép és a Site Recovery szolgáltatás közötti kommunikációt. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Lehetővé teszi a virtuális gép számára a Site Recovery monitorozási és diagnosztikai adatainak írását. |
 
 #### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
@@ -119,7 +119,7 @@ Hozzon létre egy Recovery Services-tárolót bármely régióban, kivéve azt a
 5. Az **erőforráscsoport** területen válasszon ki egy meglévő erőforráscsoportot a tárolóhoz, vagy hozzon létre egy újat.
 6. A tár **neve** mezőben adjon meg egy rövid nevet a tároló azonosításához.
 7. A **régió** területen válassza ki azt az Azure-régiót, amelyben a tárolót helyezni kívánja. [Keresse meg a támogatott régiókat](https://azure.microsoft.com/pricing/details/site-recovery/).
-8. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+8. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
    ![Tároló beállításai a lapon új tár létrehozásához](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 

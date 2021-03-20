@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 05502b344b1224dff5d12f95b96b05baace98970
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491001"
 ---
 # <a name="configure-an-openvpn-client-for-azure-virtual-wan"></a>OpenVPN-ügyfél konfigurálása az Azure Virtual WAN-hoz
@@ -24,7 +24,7 @@ Hozzon létre egy felhasználói VPN (pont – hely) konfigurációt. Győződj�
 
 [!INCLUDE [configuration steps](../../includes/vpn-gateway-vwan-config-openvpn-clients.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói VPN-kapcsolatokról (pont – hely) a [felhasználói VPN-kapcsolatok létrehozása](virtual-wan-point-to-site-portal.md)című témakörben olvashat bővebben.
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012527"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 A Service Fabric szolgáltatás végrehajtható fájljának elindítása előtt szükség lehet néhány konfiguráció vagy beállítás futtatására.  Például a környezeti változók konfigurálása. Megadhat egy parancsfájlt, amelyet a szolgáltatás végrehajtható fájljának a szolgáltatáshoz tartozó szolgáltatási jegyzékfájlban való elindítása előtt szeretne futtatni. A szolgáltatás telepítési belépési pontjához tartozó futtató házirend konfigurálásával megváltoztathatja, hogy a telepítő végrehajtható fájlja melyik fiókon fusson.  Egy különálló telepítési belépési pont lehetővé teszi, hogy rövid idő alatt magas jogosultsági szintű konfigurációt futtasson, így a szolgáltatás-gazdagép végrehajtható fájljának nem kell magas szintű jogosultságokkal rendelkeznie a hosszabb ideig.
 
-A telepítési belépési pont **SetupEntryPoint** (a SetupEntryPoint [) egy](service-fabric-application-and-service-manifests.md)emelt szintű belépési pont, amely alapértelmezés szerint ugyanazokkal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a *NetworkService* fiók) a többi belépési pont előtt. A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. A **BelépésiPont** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása megkezdődött, és újra megkezdődik a **SetupEntryPoint** , ha még leáll vagy összeomlik. 
+A telepítési belépési pont (a SetupEntryPoint [) egy](service-fabric-application-and-service-manifests.md)emelt szintű belépési pont, amely alapértelmezés szerint ugyanazokkal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a *NetworkService* fiók) a többi belépési pont előtt. A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. A **BelépésiPont** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása megkezdődött, és újra megkezdődik a **SetupEntryPoint** , ha még leáll vagy összeomlik. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
 Az alábbiakban egy olyan állapot nélküli szolgáltatás egyszerű szolgáltatási jegyzékfájlja látható, amely a szolgáltatás **SetupEntryPoint** *MySetup.bat* telepítési parancsfájlt határoz meg.  A **argumentumok** argumentumokat adnak át a parancsfájlnak a futtatásakor.
@@ -131,7 +131,7 @@ Gyakran érdemes az indítási parancsfájlt helyi rendszerfiókkal futtatni, ne
 ```
 
 > [!NOTE]
-> Linux-fürtök esetén a szolgáltatás vagy a telepítési belépési pont **gyökérként** való futtatásához megadhatja **AccountType** a AccountType **LocalSystemként**.
+> Linux-fürtök esetén a szolgáltatás vagy a telepítési belépési pont **gyökérként** való futtatásához megadhatja  a AccountType **LocalSystemként**.
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Parancsfájl futtatása a telepítési belépési pontról
 Most adjon hozzá egy indítási parancsfájlt a projekthez, hogy rendszergazdai jogosultságok alatt fusson. 
@@ -229,7 +229,7 @@ Echo "Test console redirection which writes to the application log folder on the
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tudnivalók az alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
 * [Az alkalmazás modelljének megismerése](service-fabric-application-model.md)
 * [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.openlocfilehash: f32823686dca37cb992746924cbaff0695660242
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019805"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Az Azure Network Watchersal létesített kapcsolatok hibáinak megoldása a PowerShell használatával
@@ -301,7 +301,7 @@ Hops             : [
                    ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Állapítsa meg, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md)meglátogatásával meg kell-e adni bizonyos forgalmat a virtuális gépen vagy kívülről.
 

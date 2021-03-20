@@ -8,10 +8,10 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.openlocfilehash: de8405477611d62b8a46e8b6b645887cc4d30099
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784241"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>Az Azure ExpressRoute költségeinek megtervezése és kezelése
@@ -88,7 +88,7 @@ A Cost Analysis használatakor a diagramokban és táblákban megjelenő Express
 
 A ExpressRoute költségeinek megtekintése a Cost Analysis szolgáltatásban:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 1. Lépjen az **előfizetések** elemre, válasszon ki egy előfizetést a listából, majd válassza a menü  **Cost Analysis** elemét. Válassza ki a **hatókört** , hogy másik hatókörre váltson a Cost Analysis szolgáltatásban. Alapértelmezés szerint a szolgáltatások díjszabása az első fánk-diagramon látható.
 
@@ -115,7 +115,7 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a díjszabás működéséről az Azure ExpressRoute. Lásd: az [Azure ExpressRoute áttekintésének díjszabása](https://azure.microsoft.com/en-us/pricing/details/expressroute/).
 - Megtudhatja [, hogyan optimalizálhatja a felhőalapú befektetéseit Azure Cost Managementokkal](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

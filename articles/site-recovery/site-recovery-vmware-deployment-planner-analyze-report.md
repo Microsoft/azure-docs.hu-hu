@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: ramamill
 ms.openlocfilehash: 7e2db720bb37a25b8511bd1c42c0c18e139aa216
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93186603"
 ---
 # <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>A VMware vész-helyreállítási Deployment Planner jelentés elemzése az Azure-ba
@@ -28,7 +28,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt arról a VMware-körn
 
 **Number of compatible virtual machines** (Kompatibilis virtuális gépek száma): Ez azon kompatibilis virtuális gépek teljes számát jelöli, amelyekhez a rendszer kiszámolta szükséges hálózati sávszélességet, valamint a szükséges tárfiókok, Microsoft Azure-magok, illetve konfigurációs és további folyamatkiszolgálók számát.
 
-**Total number of disks across all compatible virtual machines** (Lemezek teljes száma az összes kompatibilis virtuális gépen): Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
+**Total number of disks across all compatible virtual machines**(Lemezek teljes száma az összes kompatibilis virtuális gépen): Ez a szám az egyik olyan bemenet, amely alapján a rendszer meghatározza az üzemelő példányban használandó konfigurációs kiszolgálók és további folyamatkiszolgálók számát.
 
 **Average number of disks per compatible virtual machine** (Lemezek átlagos száma kompatibilis virtuális gépenként): Az összes kompatibilis virtuális gép alapján számított átlagos lemezszám.
 
@@ -65,7 +65,7 @@ A VMware – Azure jelentés javaslati táblázatában a következő részletek 
 
 **Incompatible Virtual Machines** (Nem kompatibilis virtuális gépek): Azon virtuális gépek száma, amelyekről profil készült, és amelyek nem védhetők Site Recoveryvel. Az inkompatibilitás okait a „Nem kompatibilis virtuális gépek” című szakaszban olvashatja. Ha a VMListFile olyan virtuális gépek nevét is tartalmazza, amelyekről nem készült profil, a rendszer nem számítja bele őket a nem kompatibilis virtuális gépek számába. Az ilyen virtuális gépek az „Incompatible VMs” (Nem kompatibilis virtuális gépek) szakasz végén, „Data not found” (Nem található adat) megjelöléssel láthatók.
 
-**Desired RPO** (Kívánt RPO): A kívánt helyreállítási időkorlát, percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15 (alapértelmezett érték), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található Desired RPO (Kívánt RPO) legördülő listából. Ha egyéni értékű *-DesiredRPO* paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a Kívánt helyreállítási időkorlát legördülő listában.
+**Desired RPO**(Kívánt RPO): A kívánt helyreállítási időkorlát, percben megadva. Az eszköz három helyreállítási időkorlát értékről készít jelentést: 15 (alapértelmezett érték), 30 és 60 perc. A jelentésben szereplő ajánlott sávszélesség attól függően változik, hogy melyik lehetőséget választja a munkalap jobb felső sarkában található Desired RPO (Kívánt RPO) legördülő listából. Ha egyéni értékű *-DesiredRPO* paraméterrel készítette el a jelentést, ez az egyéni érték jelenik meg alapértelmezett értékként a Kívánt helyreállítási időkorlát legördülő listában.
 
 ### <a name="required-network-bandwidth-mbps"></a>Szükséges hálózati sávszélesség (Mbps)
 
@@ -130,13 +130,13 @@ Az összefoglalás segít megismerni a tárolás, számítás, hálózat és lic
 
 A költségeket havi vagy éves bontásban tekintheti meg. További információkat olvashat a [támogatott célrégiókról](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions) és a [támogatott pénznemekről](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).
 
-**Összetevők szerinti költségek** : A vészhelyreállítás teljes költsége négy összetevőből áll: Számítás, Tárterület, Hálózat és az Azure Site Recovery licencköltségei. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a számítás, tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint az Azure Site Recovery licence DR működési ideje során lépnek fel.
+**Összetevők szerinti költségek**: A vészhelyreállítás teljes költsége négy összetevőből áll: Számítás, Tárterület, Hálózat és az Azure Site Recovery licencköltségei. A költségeket a használat alapján számoljuk ki, amely költségek a replikáció során és a számítás, tárterület (prémium és standard), a helyszíni hely és az Azure között konfigurált ExpressRoute/VPN, valamint az Azure Site Recovery licence DR működési ideje során lépnek fel.
 
-**Állapot szerinti költségek** : A vészhelyreállítás (DR) teljes költségeinek kategóriái két különböző állapoton alapulnak – Replikáció és DR működése.
+**Állapot szerinti költségek**: A vészhelyreállítás (DR) teljes költségeinek kategóriái két különböző állapoton alapulnak – Replikáció és DR működése.
 
-**Replikáció költségei** : A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit.
+**Replikáció költségei**: A replikáció során felmerülő költségek. Ez fedezi a tárolás, a hálózat és az Azure Site Recovery-licenc költségeit.
 
-**DR működés költségei** : A feladatátvételi tesztek során felmerülő költségek. Az Azure Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik.
+**DR működés költségei**: A feladatátvételi tesztek során felmerülő költségek. Az Azure Site Recovery virtuális gépeket indít el a feladatátvételi tesztek során. A DR működési költségei a futó virtuális gépek számítási és tárolási költségeit fedezik.
 
 **Az Azure Storage tárterület éves/havi költségei** A tárterület teljes költségeit mutatja, amelyek a replikációhoz és a DR működésekor használt prémium és standard tárterület esetén merülnek fel.
 A virtuális gépenkénti részletes költségelemzést a [Költségbecslés](site-recovery-vmware-deployment-planner-cost-estimation.md) táblázatban tekintheti meg.
@@ -161,15 +161,15 @@ Előfordulhat olyan helyzet, hogy legfeljebb x Mbps sávszélességet tud beáll
 
 ![Virtuálisgép-tároló elhelyezése](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Replikációs tár típusa** : vagy egy standard vagy prémium szintű felügyelt lemez, amely a **virtuális gépekről** az oszlopba helyezendő összes megfelelő virtuális gép replikálására szolgál.
+**Replikációs tár típusa**: vagy egy standard vagy prémium szintű felügyelt lemez, amely a **virtuális gépekről** az oszlopba helyezendő összes megfelelő virtuális gép replikálására szolgál.
 
-**Log Storage-fiók típusa** : az összes replikációs naplót egy standard Storage-fiók tárolja.
+**Log Storage-fiók típusa**: az összes replikációs naplót egy standard Storage-fiók tárolja.
 
-A **Storage-fiók javasolt előtagja** : a javasolt három karakterből álló előtag, amelyet a cache Storage-fiók elnevezéséhez használhat. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](/en-in/azure/storage/blobs/storage-performance-checklist).
+A **Storage-fiók javasolt előtagja**: a javasolt három karakterből álló előtag, amelyet a cache Storage-fiók elnevezéséhez használhat. Saját előtagot is használhat, de az eszköz által javasolt nevek követik a [tárfiókok partíció-elnevezési szabályait](/en-in/azure/storage/blobs/storage-performance-checklist).
 
-**Javasolt log-fiók neve** : a tárolási fiók neve, miután belefoglalta a javasolt előtagot. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
+**Javasolt log-fiók neve**: a tárolási fiók neve, miután belefoglalta a javasolt előtagot. Cserélje le a csúcsos zárójelben (< és >) lévő nevet a kívánt értékre.
 
-**Elhelyezés összegzése** : a virtuális gépeknek a tárolási típus szerint történő védelméhez szükséges lemezek összegzése. Magában foglalja a virtuális gépek teljes számát, a teljes kiosztott méretet az összes lemezen, valamint a lemezek teljes számát.
+**Elhelyezés összegzése**: a virtuális gépeknek a tárolási típus szerint történő védelméhez szükséges lemezek összegzése. Magában foglalja a virtuális gépek teljes számát, a teljes kiosztott méretet az összes lemezen, valamint a lemezek teljes számát.
 
 **Virtual Machines to Place** (Elhelyezendő virtuális gépek): Az összes olyan virtuális gép listája, amelyet az optimális teljesítmény és használat érdekében az adott tárfiókon ajánlott elhelyezni.
 
@@ -178,7 +178,7 @@ A **Storage-fiók javasolt előtagja** : a javasolt három karakterből álló e
 
 **VM Name** (Virtuális gép neve): Jelentés létrehozásakor a VMListFile-ban használt virtuálisgépnév vagy IP-cím. Ez az oszlop a virtuális gépekhez csatolt lemezek (VMDK-k) listáját is megjeleníti. Az ismétlődő nevű vagy IP-című vCenter-beli virtuális gépek megkülönböztetésére a nevek tartalmazzák az ESXi-gazdagépnevet is. A feltüntetett ESXi-gazdagép az a számítógép, ahol a virtuális gép megtalálható volt, amikor az eszköz először felderítette azt a profilkészítés során.
 
-**Virtuális gépek kompatibilitása** : az értékek **Igen** és **Igen \* *_. _* igen** \* , olyan példányok esetén, amelyekben a virtuális gép a [prémium SSD](../virtual-machines/disks-types.md)-k számára alkalmas. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
+**Virtuális gépek kompatibilitása**: az értékek **Igen** és **Igen \* *_. _* igen** \* , olyan példányok esetén, amelyekben a virtuális gép a [prémium SSD](../virtual-machines/disks-types.md)-k számára alkalmas. Itt a profilkészítés során megállapított magas adatváltozású vagy IOPS-értékű lemez megfelel a P20-as vagy P30-as kategóriának, de a lemez mérete miatt a rendszer P10-es vagy P20-as kategóriába sorolja be. A tárfiók a lemez mérete alapján dönti el, hogy melyik prémium szintű lemeztípushoz rendelje hozzá a lemezt. Például:
 * 128 GB alatt P10.
 * 128 GB és 256 GB között P15
 * 256 GB és 512 GB között P20.
@@ -190,7 +190,7 @@ Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába he
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 
-**Replikációhoz létrehozott Asrseeddisk (felügyelt lemez)** : a replikáció engedélyezésekor létrehozott lemez neve. Az Azure-ban tárolja az adattárakat és annak pillanatképeit.
+**Replikációhoz létrehozott Asrseeddisk (felügyelt lemez)**: a replikáció engedélyezésekor létrehozott lemez neve. Az Azure-ban tárolja az adattárakat és annak pillanatképeit.
 
 **Peak R/W IOPS (with Growth Factor)** (Írási/olvasási IOPS-csúcsérték (növekedési tényezővel)): A lemez írási/olvasási IOPS-csúcsértéke (az alapértelmezett érték a 95. percentilis), beleértve a későbbi növekedési faktort is (az alapértelmezett érték: 30%). Vegye figyelembe, hogy egy virtuális gép teljes írási/olvasási IOPS-értéke nem mindig egyezik meg az egyes virtuálisgép-lemezek írási/olvasási IOPS-értékeinek összegével. Ez azért van, mert a virtuális gép írási/olvasási IOPS-csúcsértéke az egyes lemezeken a profilkészítési időszak alatt percenként mért írási/olvasási IOPS-értékek legmagasabb összege.
 
@@ -210,7 +210,7 @@ Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába he
 
 **Boot Type** (Rendszerindítás típusa): A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.  Jelenleg az Azure Site Recovery támogatja a Windows Server EFI típusú virtuális gépeket (Windows Server 2012, 2012 R2 és 2016) abban az esetben, ha a rendszerindító lemez partícióinak száma kevesebb mint 4, a rendszerindító szektor mérete pedig 512 bájt. Az EFI típusú virtuális gépek védelme érdekében az Azure Site Recovery mobilitási szolgáltatás verziójának legalább 9.13-asnak kell lennie. Az EFI virtuális gépek esetében kizárólag a feladatátvétel támogatott. A feladat-visszavétel nem támogatott.  
 
-**Operációs rendszer típusa** : a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.  
+**Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.  
 
 ## <a name="incompatible-vms"></a>Nem kompatibilis virtuális gépek
 
@@ -255,7 +255,7 @@ Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába he
 
 **Boot Type** (Rendszerindítás típusa): A virtuális gép rendszerindítási típusa. Ez BIOS vagy EFI lehet.  Jelenleg az Azure Site Recovery támogatja a Windows Server EFI típusú virtuális gépeket (Windows Server 2012, 2012 R2 és 2016) abban az esetben, ha a rendszerindító lemez partícióinak száma kevesebb mint 4, a rendszerindító szektor mérete pedig 512 bájt. Az EFI típusú virtuális gépek védelme érdekében az Azure Site Recovery mobilitási szolgáltatás verziójának legalább 9.13-asnak kell lennie. Az EFI virtuális gépek esetében kizárólag a feladatátvétel támogatott. A feladat-visszavétel nem támogatott.
 
-**Operációs rendszer típusa** : a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.
+**Operációs rendszer típusa**: a virtuális gép operációs rendszerének típusa. Ennek értéke Windows, Linux vagy egyéb lehet a virtuális gép létrehozása során a VMware vSphere használatával kiválasztott sablon alapján.
 
 ## <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a saját tesztjeinken alapulnak, de nem fedhetik le az alkalmazások minden lehetséges I/O-kombinációját. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak. A legjobb eredmények érdekében még az üzembe helyezés megtervezése után is ajánlott az alkalmazás alapos tesztelése feladatátvételi tesztek használatával, így valós képet kaphat az alkalmazás teljesítményéről.
@@ -281,5 +281,5 @@ Ezek átlagos értékek, amelyek 30 százalékos I/O-átfedést feltételeznek. 
 További információk a [költségbecslésről](site-recovery-vmware-deployment-planner-cost-estimation.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a [költségbecslésről](site-recovery-vmware-deployment-planner-cost-estimation.md).

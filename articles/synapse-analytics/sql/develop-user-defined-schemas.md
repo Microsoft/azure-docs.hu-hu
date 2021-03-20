@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6920d6cd190927747a69fc4dc0f0791278665abe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451689"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Felhasználó által definiált sémák a szinapszis SQL-en belül
@@ -120,6 +120,6 @@ FROM    [edw].customer
 
 Ha további részletességi engedélyek szükségesek, akkor használhatja az adatbázis-szerepköröket. Az adatbázis-szerepkörökkel kapcsolatos további információkért tekintse meg az [adatbázis-szerepkörök és-felhasználók kezelése](../../analysis-services/analysis-services-database-users.md) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippek: a [SZINAPSZIS SQL-fejlesztés áttekintése](develop-overview.md).

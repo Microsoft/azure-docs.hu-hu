@@ -8,10 +8,10 @@ ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436062"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Marketplace mért számlázási API-k
@@ -275,6 +275,6 @@ Egy meglévő élő ajánlathoz is használhat privát csomagot, hogy a tesztel�
 
 Kövesse a [partner Center kereskedelmi piactér programjának támogatásával](../support.md) kapcsolatos útmutatást a közzétevők támogatási lehetőségeinek megismeréséhez, és nyisson meg egy támogatási jegyet a Microsofttal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service API-k mérésével kapcsolatos további információkért lásd: a [piactér-mérési szolgáltatás API-jai – gyakori kérdések](./marketplace-metering-service-apis-faq.md).

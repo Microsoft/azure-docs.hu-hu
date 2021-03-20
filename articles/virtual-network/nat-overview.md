@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
 ms.openlocfilehash: 75a2bb187b2ed7a234e99d8cd293cb30148bcb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91667197"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az Virtual Network NAT?
@@ -61,7 +61,7 @@ A terheléselosztó kimenő SNAT eltérően a NAT nem rendelkezik korlátozások
 
 A NAT a következő szabványos SKU-erőforrásokkal kompatibilis:
 
-- Terheléselosztó
+- Terheléselosztóval
 - Nyilvános IP-cím
 - Nyilvános IP-előtag
 

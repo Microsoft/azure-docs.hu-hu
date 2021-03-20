@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 ms.openlocfilehash: e16cc8934407a5c54c84fd045c99e28116e656c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93310466"
 ---
 # <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-üzenetek fogadása és megerősítése Azure Logic Apps és Enterprise Integration Pack használatával
@@ -77,7 +77,7 @@ Most adja hozzá a használni kívánt B2B-műveleteket. Ez a példa AS2-és X12
 
      ![Válassza ki a "Body" értéket az triggerből](./media/logic-apps-enterprise-integration-b2b/select-body-content-from-trigger.png)
 
-   * Ha meg szeretne adni egy kifejezést, amely az trigger `body` kimenetére hivatkozik, kattintson az **üzenetben a Decode (dekódolás** ) mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés** lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra** :
+   * Ha meg szeretne adni egy kifejezést, amely az trigger `body` kimenetére hivatkozik, kattintson az **üzenetben a Decode (dekódolás** ) mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés** lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra**:
 
      `triggerOutputs()['body']`
 
@@ -95,7 +95,7 @@ Most adja hozzá a használni kívánt B2B-műveleteket. Ez a példa AS2-és X12
 
       ![Képernyőfelvétel: "az üzenetek fejlécének átváltása a szöveg módba" beállítás be van jelölve.](./media/logic-apps-enterprise-integration-b2b/as2-decode-switch-text-mode.png)
 
-   1. Kattintson az **üzenetek fejléce** mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés** lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra** :
+   1. Kattintson az **üzenetek fejléce** mezőre. A dinamikus tartalom lista megjelenése után válassza a **kifejezés** lehetőséget. Adja meg a kifejezést a kifejezés-szerkesztőben, majd kattintson **az OK gombra**:
 
       `triggerOutputs()['Headers']`
 

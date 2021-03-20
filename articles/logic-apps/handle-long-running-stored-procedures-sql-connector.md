@@ -7,10 +7,10 @@ ms.reviewer: camerost, logicappspm
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.openlocfilehash: f5b04c563dc81497f591788dc4890d379c0f898f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93102967"
 ---
 # <a name="handle-stored-procedure-timeouts-in-the-sql-connector-for-azure-logic-apps"></a>Tárolt eljárások időtúllépésének kezelése az SQL-összekötőben Azure Logic Apps
@@ -40,7 +40,7 @@ END
 Ahelyett, hogy közvetlenül meghívja a tárolt eljárást, aszinkron módon futtathatja az eljárást a háttérben a feladat- *ügynök* használatával. A bemeneti és kimeneti adatokat egy olyan állapot táblában tárolhatja, amelyet aztán a logikai alkalmazáson keresztül kezelhet. Ha nincs szüksége a bemenetekre és a kimenetekre, vagy ha már megírta az eredményeket a tárolt eljárás egyik táblájába, egyszerűbbé teheti ezt a megközelítést.
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy a tárolt eljárás és az összes feladat *idempotens* , ami azt jelenti, hogy az eredmények befolyásolása nélkül többször is futhatnak. Ha az aszinkron feldolgozás sikertelen vagy időtúllépés miatt leáll, a feladat ügynöke újra próbálkozhat a lépéssel, így a tárolt eljárás többször is elvégezhető. Ha el szeretné kerülni a kimenet ismétlődését, mielőtt objektumokat hozna létre, tekintse át az [ajánlott eljárásokat és megközelítéseket](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
+> Győződjön meg arról, hogy a tárolt eljárás és az összes feladat *idempotens*, ami azt jelenti, hogy az eredmények befolyásolása nélkül többször is futhatnak. Ha az aszinkron feldolgozás sikertelen vagy időtúllépés miatt leáll, a feladat ügynöke újra próbálkozhat a lépéssel, így a tárolt eljárás többször is elvégezhető. Ha el szeretné kerülni a kimenet ismétlődését, mielőtt objektumokat hozna létre, tekintse át az [ajánlott eljárásokat és megközelítéseket](../azure-sql/database/elastic-jobs-overview.md#idempotent-scripts).
 
 A következő szakasz azt ismerteti, hogyan használható az Azure rugalmas feladatok ügynöke a Azure SQL Databasehoz. SQL Server és az Azure SQL felügyelt példányai esetében használhatja a SQL Server Agent. Néhány felügyeleti részlet eltérő lesz, de az alapvető lépések változatlanok maradnak, mint a Azure SQL Database-feladatok ügynökének beállítása.
 
@@ -48,7 +48,7 @@ A következő szakasz azt ismerteti, hogyan használható az Azure rugalmas fela
 
 ## <a name="job-agent-for-azure-sql-database"></a>Azure SQL Databasei feladatkártya
 
-A [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)tárolt eljárás futtatására képes feladat létrehozásához használja az [Azure rugalmas feladat ügynökét](../azure-sql/database/elastic-jobs-overview.md). Hozzon létre egy feladatot a Azure Portalban. Ez a módszer több tárolt eljárást is felvesz az ügynök által használt adatbázishoz, más néven az ügynök- *adatbázishoz* . Ezután létrehozhat egy olyan feladatot, amely futtatja tárolt eljárását a célként megadott adatbázisban, és a kimenetet a befejezés után rögzíti.
+A [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md)tárolt eljárás futtatására képes feladat létrehozásához használja az [Azure rugalmas feladat ügynökét](../azure-sql/database/elastic-jobs-overview.md). Hozzon létre egy feladatot a Azure Portalban. Ez a módszer több tárolt eljárást is felvesz az ügynök által használt adatbázishoz, más néven az ügynök- *adatbázishoz*. Ezután létrehozhat egy olyan feladatot, amely futtatja tárolt eljárását a célként megadott adatbázisban, és a kimenetet a befejezés után rögzíti.
 
 A feladatok létrehozása előtt be kell állítania az engedélyeket, a csoportokat és a célokat az [Azure rugalmas feladatok ügynökének teljes dokumentációjában](../azure-sql/database/elastic-jobs-overview.md)leírtak szerint. A következő szakaszokban leírtak szerint létre kell hoznia egy támogató táblát is a céladatbázisben.
 

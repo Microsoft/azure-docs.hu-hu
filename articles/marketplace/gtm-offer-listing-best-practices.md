@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 07/06/2020
 ms.openlocfilehash: 3ea6a0035a9f9354be5c14699936c6a07dea1150
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94492089"
 ---
 # <a name="offer-listing-best-practices"></a>Ajánlatlistákra vonatkozó ajánlott eljárások
@@ -130,14 +130,14 @@ A kulcsszavak segítségével az ügyfelek megkereshetik az ajánlatot a keresé
 ## <a name="link-to-your-offer-page-from-your-website"></a>Az ajánlat lapjára mutató hivatkozás a webhelyről
 
 Ha a webhelyen lévő AppSource vagy az Azure Marketplace jelvényt a kereskedelmi piactéren található listára csatolja, akkor az URL-cím végén a következő lekérdezési paraméterekkel is támogathatja az erős elemzést és jelentéskészítést:
-* **src** : adja meg azt a forrást, amelyről a forgalmat át kell irányítani a AppSource (például webhely, LinkedIn vagy Facebook).
-* **mktcmpid** : a marketing kampány azonosítója, amely akár 16 karaktert is tartalmazhat betűk, számok, aláhúzások és kötőjelek (például *blogpost_12* ) tetszőleges kombinációjában.
+* **src**: adja meg azt a forrást, amelyről a forgalmat át kell irányítani a AppSource (például webhely, LinkedIn vagy Facebook).
+* **mktcmpid**: a marketing kampány azonosítója, amely akár 16 karaktert is tartalmazhat betűk, számok, aláhúzások és kötőjelek (például *blogpost_12*) tetszőleges kombinációjában.
 
 A következő példában szereplő URL-cím az előző lekérdezési paramétereket is tartalmazza: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
 Ha hozzáadja a paramétereket a AppSource URL-címhez, a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/)elemzési irányítópultján ellenőrizheti a kampány hatékonyságát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [kereskedelmi piactér előnyeiről](./gtm-your-marketplace-benefits.md).
 

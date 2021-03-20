@@ -9,20 +9,20 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f085858a9d550623704efd4f051ed525e55a37e0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557666"
 ---
-# <a name="project-cerberus"></a>Projekt Cerberus
+# <a name="project-cerberus"></a>Project Cerberus
 
 A Cerberus egy NIST 800-193-kompatibilis hardveres megbízhatósági kapcsolat, amely nem klónozásra alkalmas identitással rendelkezik. A Cerberus úgy lett kialakítva, hogy tovább növelje az Azure-infrastruktúra biztonsági állapotát azáltal, hogy erős megbízhatósági kapcsolatot biztosít a belső vezérlőprogram integritása szempontjából.
 
 ## <a name="enabling-an-anchor-of-trust"></a>Megbízhatósági kapcsolat engedélyezése
 Minden Cerberus-lapka egyedi titkosítási identitással rendelkezik, amely egy Microsoft hitelesítésszolgáltató (CA) által feltört aláírt tanúsítványlánc használatával lett létrehozva. A Cerberus által beszerzett mérések az összetevők integritásának ellenőrzéséhez használhatók, például:
 
-- Gazda
+- Gazdagép
 - Alaplapi felügyeleti vezérlő (BMC)
 - Minden periféria, beleértve a hálózati adaptert és a [System-on-a-chipet](https://en.wikipedia.org/wiki/System_on_a_chip) (SoC)
 
@@ -44,8 +44,8 @@ A gazda-igazolási szolgáltatással együtt a Cerberus képességei javítják 
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a platform integritásának és biztonságának elvégzéséről, olvassa el a következőt:
 
-- [Belső vezérlőprogram biztonsága](firmware.md)
+- [A belső vezérlőprogram biztonsága](firmware.md)
 - [Biztonságos rendszerindítás](secure-boot.md)
 - [Mért rendszerindítás és gazdagép-igazolás](measured-boot-host-attestation.md)
 - [Titkosítás inaktív állapotban](encryption-atrest.md)
-- [A hypervisor biztonsága](hypervisor.md)
+- [A hipervizor biztonsága](hypervisor.md)

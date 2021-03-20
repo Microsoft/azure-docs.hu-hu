@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 192aca589c3b1e660667dbe8377afe7802b56f17
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146194"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>A Service Fabric-fürt kiegyensúlyozása
@@ -76,10 +76,10 @@ A fürterőforrás-kezelő jelenleg csak az egyik műveletet hajtja végre egysz
 
 Ha például a csomópontok meghibásodnak, akkor a teljes tartalék tartományok egyszerre is megadhatók. Ezeket a hibákat a rendszer a *PLBRefreshGap* utáni következő állapot frissítése során rögzíti. A javítások meghatározása a következő elhelyezés, a korlátozás-ellenőrzés és a kiegyenlítés futtatása során történik. Alapértelmezés szerint a fürterőforrás-kezelő nem ellenőrzi a fürt változásainak időpontját, és az összes módosítást egyszerre próbálja meg kezelni. Ennek eredményeképpen a forgalom feltört.
 
-A fürterőforrás-kezelőnek további információra van szüksége annak megállapításához, hogy a fürt kiegyensúlyozva van-e. A következő két konfigurációval rendelkezünk: *BalancingThresholds* és *ActivityThresholds* .
+A fürterőforrás-kezelőnek további információra van szüksége annak megállapításához, hogy a fürt kiegyensúlyozva van-e. A következő két konfigurációval rendelkezünk: *BalancingThresholds* és *ActivityThresholds*.
 
 ## <a name="balancing-thresholds"></a>Kiegyensúlyozási küszöbértékek
-A kiegyensúlyozás kiváltásának fő vezérlője a kiegyensúlyozó küszöbérték. A metrika kiegyensúlyozási küszöbértéke egy _arány_ . Ha a legtöbbet betöltött csomóponton lévő metrika terhelése a legkevésbé betöltött csomópont terhelésének mértékével meghaladja a mérőszám *BalancingThreshold* , a fürt kiegyensúlyozatlan. Ennek eredményeképpen a rendszer a fürterőforrás-kezelő legközelebb ellenőrzi a terheléselosztást. A *MinLoadBalancingInterval* időzítő határozza meg, hogy a fürterőforrás-kezelő milyen gyakran ellenőrizze, hogy szükség van-e a kiegyensúlyozásra. Az ellenőrzés nem jelenti azt, hogy bármi történik. 
+A kiegyensúlyozás kiváltásának fő vezérlője a kiegyensúlyozó küszöbérték. A metrika kiegyensúlyozási küszöbértéke egy _arány_. Ha a legtöbbet betöltött csomóponton lévő metrika terhelése a legkevésbé betöltött csomópont terhelésének mértékével meghaladja a mérőszám *BalancingThreshold*, a fürt kiegyensúlyozatlan. Ennek eredményeképpen a rendszer a fürterőforrás-kezelő legközelebb ellenőrzi a terheléselosztást. A *MinLoadBalancingInterval* időzítő határozza meg, hogy a fürterőforrás-kezelő milyen gyakran ellenőrizze, hogy szükség van-e a kiegyensúlyozásra. Az ellenőrzés nem jelenti azt, hogy bármi történik. 
 
 Az egyensúlyi küszöbértékek meghatározása a fürt definíciójának részeként, metrikus alapon történik. A metrikákkal kapcsolatos további információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
 
@@ -130,7 +130,7 @@ Az alsó példában a csomópontok maximális terhelése 10, míg a minimum kett
 > A "kiegyensúlyozás" két különböző stratégiát kezel a fürt terhelésének kezeléséhez. A fürterőforrás-kezelő által használt alapértelmezett stratégia a terhelés elosztása a fürt csomópontjai között. A másik stratégia a [Töredezettségmentesítés](service-fabric-cluster-resource-manager-defragmentation-metrics.md). A Lemeztöredezettség-mentesítést ugyanabban az egyenlegező futtatásban hajtja végre a rendszer. Az egyenlegező és a töredezettségmentesítés stratégiák különböző mérőszámokhoz használhatók ugyanazon a fürtön belül. A szolgáltatások mind az egyenlegező, mind a Lemeztöredezettség-mentesítő metrikával rendelkezhetnek. A Lemeztöredezettség-mentesítő metrikák esetében a fürtben betöltött terhelések aránya akkor aktiválódik, ha a terheléselosztási küszöbérték _alá_ esik. 
 >
 
-Az elosztási küszöbérték alá való beszerzés nem kifejezett cél. Az egyenlegező küszöbértékek csak *triggerek* . A kiegyenlítő futtatásakor a fürterőforrás-kezelő meghatározza, hogy milyen módosításokat végezhet, ha van ilyen. Csak azért, mert egy kiegyenlítő keresés kiindul, nem jelent semmi lépést. Előfordulhat, hogy a fürt kiegyensúlyozatlan, de túl van korlátozva. Alternatív megoldásként a tökéletesítésekhez túl [költséges](service-fabric-cluster-resource-manager-movement-cost.md)mozgások szükségesek.
+Az elosztási küszöbérték alá való beszerzés nem kifejezett cél. Az egyenlegező küszöbértékek csak *triggerek*. A kiegyenlítő futtatásakor a fürterőforrás-kezelő meghatározza, hogy milyen módosításokat végezhet, ha van ilyen. Csak azért, mert egy kiegyenlítő keresés kiindul, nem jelent semmi lépést. Előfordulhat, hogy a fürt kiegyensúlyozatlan, de túl van korlátozva. Alternatív megoldásként a tökéletesítésekhez túl [költséges](service-fabric-cluster-resource-manager-movement-cost.md)mozgások szükségesek.
 
 ## <a name="activity-thresholds"></a>Tevékenység küszöbértékei
 Időnként, bár a csomópontok viszonylag kiegyensúlyozva vannak, a fürt terhelésének *teljes* mennyisége alacsony. A terhelés hiánya átmeneti dip lehet, vagy mert a fürt új, és csak a bootstrapped. Mindkét esetben előfordulhat, hogy nem kíván időt fordítani a fürtre, mert kevés a kinyerhető. Ha a fürt egyensúlyba került, a hálózat és a számítási erőforrások elköltésével bármilyen nagy *abszolút* különbség nélkül mozgathatja a dolgokat. A szükségtelen mozgatások elkerülése érdekében egy másik, a tevékenység küszöbértékének nevezett vezérlőelem van. A tevékenységi küszöbértékek lehetővé teszik a tevékenységhez tartozó abszolút alsó határ megadását. Ha egyetlen csomópont sem haladja meg a küszöbértéket, akkor a rendszer nem aktiválja a kiegyenlítést, még akkor sem, ha a kiegyenlítési küszöbérték teljesül.

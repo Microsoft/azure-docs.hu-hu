@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013088"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
@@ -27,7 +27,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 2. Válassza az Azure Portal bal felső sarkában található **Erőforrás létrehozása** lehetőséget.
 
-3. Keresse meg és válassza ki a **Maps** elemet. Ezután válassza a **Létrehozás** elemet.
+3. Keresse meg és válassza ki a **Maps** elemet. Ezután kattintson a **Létrehozás** elemre.
 
 4. Adja meg az új fiók adatait.
 
@@ -41,7 +41,7 @@ A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, �
 
 Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hitelesítés beállítása a Azure Maps és a Azure Maps előfizetési kulcs beszerzésének megismerése:
 > [!div class="nextstepaction"]

@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: d0e94fda1fb21be1a01516f4cecf657426ae867e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019448"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
@@ -51,7 +51,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés élő bemeneti forrásai](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Event Hub** | Bemeneti forrás típusa|
@@ -67,7 +67,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Munkaköri diagram helyi bemeneti forrásai](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -78,7 +78,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés lekérdezési lépése](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**TripData**|Az ideiglenes eredményhalmaz neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -88,7 +88,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![A helyi kimeneti mosogatókat bemutató feladatütemezés.](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Események**|A nyelők számára Kimenõ események száma.|
@@ -97,7 +97,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Helyi kimenet**| Eredmény kimenete egy helyi fájlba.|
@@ -120,7 +120,7 @@ A felugró konzolon megjelennek a feladatok szintjének egyéb mérőszámai. Ha
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

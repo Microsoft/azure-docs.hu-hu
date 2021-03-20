@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240970"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>A webes tartalmak elévülésének kezelése Azure CDN-ben
@@ -67,21 +67,21 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
 
    Ez a globális gyorsítótárazási szabály egy óra gyorsítótári időtartamát állítja be, és a végpontra irányuló összes kérést érinti. Felülbírálja `Cache-Control` `Expires` a végpont által megadott forráskiszolgáló által elküldett bármely vagy HTTP-fejlécet.   
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 **Webkiszolgáló-fájl Cache-Control fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
 
 1. Az **Egyéni gyorsítótárazási szabályok** alatt hozzon létre két egyeztetési feltételt:
 
-     a. Az első egyeztetési feltétel beállításnál állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/webfolder1/*` az **egyezési értéket** . Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 4 értéket a **napok** mezőben.
+     a. Az első egyeztetési feltétel beállításnál állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/webfolder1/*` az **egyezési értéket**. Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 4 értéket a **napok** mezőben.
 
-     b. A második egyeztetési feltételnél állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/webfolder1/file1.txt` az **egyezési értéket** . Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 2 értéket a **napok** mezőben.
+     b. A második egyeztetési feltételnél állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/webfolder1/file1.txt` az **egyezési értéket**. Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 2 értéket a **napok** mezőben.
 
     ![CDN – egyéni gyorsítótárazási szabályok – példa](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
     Az első egyéni gyorsítótárazási szabály a `/webfolder1` végpont által megadott forráskiszolgáló mappájában lévő fájlok esetében négy órányi gyorsítótári időtartamot állít be. A második szabály csak a fájl első szabályát felülbírálja, `file1.txt` és két órás gyorsítótári időtartamot állít be.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-Control fejlécek beállítása konfigurációs fájlok használatával
@@ -129,7 +129,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ```
 
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
-Könnyedén ellenőrizheti a webes tartalom ÉLETTARTAMának beállításait. A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)ellenőrizze, hogy a webes tartalom tartalmazza-e a `Cache-Control` Válasz fejlécét. Olyan eszközt is használhat, mint például a **wget** , a [Poster](https://www.getpostman.com/)vagy a [Hegedűs](https://www.telerik.com/fiddler) , és megvizsgálhatja a válasz fejléceit.
+Könnyedén ellenőrizheti a webes tartalom ÉLETTARTAMának beállításait. A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)ellenőrizze, hogy a webes tartalom tartalmazza-e a `Cache-Control` Válasz fejlécét. Olyan eszközt is használhat, mint például a **wget**, a [Poster](https://www.getpostman.com/)vagy a [Hegedűs](https://www.telerik.com/fiddler) , és megvizsgálhatja a válasz fejléceit.
 
 ## <a name="next-steps"></a>Következő lépések
 * [A **clientCache** elem részleteinek olvasása](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)

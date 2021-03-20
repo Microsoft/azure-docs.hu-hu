@@ -13,10 +13,10 @@ ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756160"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
@@ -49,7 +49,7 @@ Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonat
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
@@ -340,7 +340,7 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló cikkek sorozatában.
 

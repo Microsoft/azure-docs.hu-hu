@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ee3837b75d586238e7ca6ac85434cc56f592929d
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98763400"
 ---
 # <a name="logging-in-msal-for-iosmacos"></a>Naplózás az iOS-hez/macOS-hez készült MSAL-ben
@@ -78,7 +78,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Level  |Leírás |
+|Level  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
@@ -155,7 +155,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szint beállításához használja a következő értékek egyikét:
 
-|Level  |Leírás |
+|Level  |Description |
 |---------|---------|
 | `MSALLogLevelNothing`| Az összes naplózás letiltása |
 | `MSALLogLevelError` | Alapértelmezett szint, csak akkor jeleníti meg az adatokat, ha hibák történnek |
@@ -181,6 +181,6 @@ A korrelációs azonosítók és időbélyegek megadása a problémák nyomon k�
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákért tekintse meg a [Microsoft Identity platform Code Samples](sample-v2-code.md)című témakört.

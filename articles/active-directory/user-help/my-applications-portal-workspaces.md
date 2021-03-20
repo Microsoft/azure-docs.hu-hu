@@ -13,10 +13,10 @@ ms.date: 10/19/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: d27e5b22fc0e24850a8c454ef1f07e77341ac15a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282530"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a saját alkalmazások portálján
@@ -30,7 +30,7 @@ A gyűjtemények különböző alkalmazás-nézetek, amelyeket a **saját alkalm
 
 ## <a name="access-apps-using-collections"></a>Alkalmazások elérése gyűjtemények használatával
 
-A **saját alkalmazások** portálon található gyűjtemények listájának alapértelmezett értéke egy elnevezett **összes**alkalmazás megjelenítése, amelynek minden alkalmazásához hozzáférése van:
+A **saját alkalmazások** portálon található gyűjtemények listájának alapértelmezett értéke egy elnevezett **összes** alkalmazás megjelenítése, amelynek minden alkalmazásához hozzáférése van:
 
 ![A My apps portál összes alkalmazás lapja](media/my-applications-portal-workspaces/my-apps-all-apps.png)
 

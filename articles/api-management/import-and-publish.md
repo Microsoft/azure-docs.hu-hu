@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 9ff64f57e61002101b4e2c560bdcd91863cc461e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91626959"
 ---
 # <a name="tutorial-import-and-publish-your-first-api"></a>Oktatóanyag: az első API importálása és közzététele
@@ -43,12 +43,12 @@ Ez a szakasz bemutatja, hogyan importálhat és tehet közzé egy OpenAPI-specif
 
 1. Az API Management-példány bal oldali navigációs sávján válassza az **API**-k lehetőséget.
 1. Válassza a **OpenAPI** csempét.
-1. A **Létrehozás a OpenAPI specifikációja** ablakban válassza a **teljes**lehetőséget.
+1. A **Létrehozás a OpenAPI specifikációja** ablakban válassza a **teljes** lehetőséget.
 1. Adja meg az értékeket az alábbi táblázatból. Ezután válassza a **Létrehozás** lehetőséget az API létrehozásához.
 
    Az API-értékeket a létrehozás során vagy később is beállíthatja a **Beállítások** lapon.
 
-   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="Új API a API Management":::
+   :::image type="content" source="media/import-and-publish/create-api.png" alt-text="API létrehozása":::
 
 
    |Beállítás|Érték|Leírás|
@@ -67,7 +67,7 @@ Ez a szakasz bemutatja, hogyan importálhat és tehet közzé egy OpenAPI-specif
    > [!NOTE]
    > Az API API-felhasználóknak való közzétételéhez társítsa azt egy termékhez.
 
-2. Kattintson a **Létrehozás** gombra.
+2. Válassza a **Létrehozás** lehetőséget.
 
 Ha problémája van az API-definíciók importálásával, tekintse meg az [ismert problémák és korlátozások listáját](api-management-api-import-restrictions.md).
 
@@ -75,11 +75,11 @@ Ha problémája van az API-definíciók importálásával, tekintse meg az [isme
 
 Az API-műveleteket közvetlenül a Azure Portal hívhatja, amely kényelmes módot biztosít a műveletek megtekintésére és tesztelésére.
 
-1. Az API Management-példány bal oldali navigációs sávján válassza az **API**-k  >  **bemutató konferencia API**elemet.
-1. Válassza a **teszt** fület, majd válassza a **GetSpeakers**lehetőséget. A lapon láthatók a **lekérdezési paraméterek** és a **fejlécek**, ha vannak ilyenek. Az **OCP-APIM-Subscription-Key** automatikusan ki van töltve az ehhez az API-hoz társított előfizetési kulcshoz.
-1. Válassza a **Küldés** lehetőséget.
+1. Az API Management-példány bal oldali navigációs sávján válassza az **API**-k  >  **bemutató konferencia API** elemet.
+1. Válassza a **teszt** fület, majd válassza a **GetSpeakers** lehetőséget. A lapon láthatók a **lekérdezési paraméterek** és a **fejlécek**, ha vannak ilyenek. Az **OCP-APIM-Subscription-Key** automatikusan ki van töltve az ehhez az API-hoz társított előfizetési kulcshoz.
+1. Kattintson a **Küldés** gombra.
 
-   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Új API a API Management":::
+   :::image type="content" source="media/import-and-publish/01-import-first-api-01.png" alt-text="Az API tesztelése Azure Portal":::
 
    A háttér **200 OK** és néhány adattal válaszol.
 

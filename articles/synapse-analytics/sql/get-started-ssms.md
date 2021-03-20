@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451621"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Kapcsolódás a szinapszis SQLhoz a SQL Server Management Studio (SSMS) használatával
@@ -21,7 +21,7 @@ ms.locfileid: "96451621"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
@@ -43,7 +43,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következő el�
 * Dedikált SQL-készlet esetén egy meglévő adattárházra van szükség. A létrehozáshoz tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](../quickstart-create-sql-pool-portal.md)című témakört. A kiszolgáló nélküli SQL-készlethez az egyik a munkaterületen, a létrehozáskor már beépített, beépített néven van kiépítve. 
 * A teljesen minősített SQL Server neve. A név megkereséséhez lásd: [Kapcsolódás a SZINAPSZIS SQL](connect-overview.md)-hez.
 
-## <a name="connect"></a>Kapcsolódás
+## <a name="connect"></a>Csatlakozás
 
 ### <a name="dedicated-sql-pool"></a>Dedikált SQL-készlet
 
@@ -124,7 +124,7 @@ Most, hogy létrehozta az adatbázis-kapcsolatokat, lekérdezheti az adatforrás
    
     ![Lekérdezés eredménye 2](./media/get-started-ssms/results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
 
 A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés a SZINAPSZIS SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)-ben.

@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
 ms.openlocfilehash: cbd12481312d310add15bf3d41e21e9c416f1c39
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491075"
 ---
 # <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>A Marketo használata a kereskedelmi Piactéri érdeklődők kezelésére
@@ -79,14 +79,14 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
     ![Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-marketo/choose-lead-destination.png)
 
-1. Adja meg a **kiszolgáló azonosítóját** , a **Munchkin** és az **űrlap azonosítóját**.
+1. Adja meg a **kiszolgáló azonosítóját**, a **Munchkin** és az **űrlap azonosítóját**.
 
     > [!NOTE]
     > Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt. 
 
 1. A **kapcsolattartási e-mail** cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mail-címet is megadhat.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
    Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés** lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

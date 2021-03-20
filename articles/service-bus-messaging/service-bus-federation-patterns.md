@@ -4,10 +4,10 @@ description: Ez a cikk részletes útmutatást nyújt az egyes üzenet-replikác
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: d823ee7ccd4f53bfc3e10211a4f44908273a110d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97657502"
 ---
 # <a name="message-replication-tasks-patterns"></a>Az üzenet-replikációs feladatok mintái
@@ -16,7 +16,7 @@ Az [összevonás áttekintése](service-bus-federation-overview.md) és a [repli
 
 Ebben a cikkben részletesen ismertetjük a megvalósítási útmutatót az Áttekintés szakaszban Kiemelt minták közül. 
 
-## <a name="replication"></a>Replikáció 
+## <a name="replication"></a>Replikálás 
 
 A replikációs minta üzeneteket másol egy várólistából vagy témakörből a következőre, vagy egy várólistából vagy témakörből egy másik célhelyre, például egy Event hub-ra. Az üzenetek továbbítása az üzenet tartalmának módosítása nélkül történik. 
 
@@ -107,16 +107,16 @@ Az utolsó forgatókönyvhöz a már replikált üzenetek replikálásának ism�
 
 A szerkesztő minta a [replikálási](#replication) mintára épül, de a továbbított üzenetek a továbbítás előtt módosulnak. Ilyen módosítások például a következők:
 
-- **_Átkódolás_* _ – ha az üzenet tartalma (más néven "szövegtörzs" vagy "hasznos adat") a forrástól a _Apache Avro * formátummal vagy valamilyen saját szerializálási formátummal van kódolva, azonban a cél tulajdonosának az a célja, hogy a tartalom *JSON* -kódolású legyen, egy átkódoló replikációs feladat először Deszerializálja az *Apache Avro* adattartalmát a memóriában lévő Object gráfba, majd szerializálja a gráfot a továbbított üzenet *JSON* -formátumára. A transcoding a **tartalom tömörítési** és kibontási feladatait is tartalmazza.
-- **_Átalakítás_* _ – a strukturált adatmennyiséget tartalmazó üzenetek esetében szükség lehet arra, hogy az alsóbb rétegbeli fogyasztók könnyebben átformálják ezeket az adatmennyiségeket. Ez magában foglalhat olyan munkát, mint a beágyazott struktúrák összeolvasztása, a felesleges adatelemek metszése vagy a hasznos adatok átalakítása, hogy pontosan illeszkedjenek az adott sémához.
-- _*_Kötegelt feldolgozás_*_ – előfordulhat, hogy az üzenetek kötegekben (több üzenet egyetlen átvitelben) érkeznek a forrásokból, de egy célhoz kell továbbítani őket, vagy fordítva. Egy feladat ezért több üzenetet is továbbíthat egy bemeneti üzenet átvitele vagy egy olyan üzenet összevonása alapján, amelyet aztán együtt továbbítanak. 
-- _*_Ellenőrzés_*_ – a külső forrásokból származó üzenetek adatait gyakran ellenőrizni kell, hogy azok megfelelnek-e a szabályoknak, mielőtt azok továbbítva lesznek. A szabályok sémák vagy kódok használatával adhatók meg. azok az üzenetek, amelyek nem felelnek meg a megfelelőségnek, eldobásra kerülhetnek, a naplókban feljegyzett problémával, vagy egy speciális célhelyre továbbítva a további kezelés érdekében.   
-- A _*_dúsítás_*_ – egyes forrásokból érkező üzenet-adatok esetében a további kontextushoz is szükség lehet, ha a cél rendszerekben használható. Ez magában foglalhatja a hivatkozási adatok megkeresését és az adatok beágyazását az üzenettel, illetve a replikálási feladat által ismert forrással kapcsolatos adatok hozzáadását, az üzenetekben nem szereplő adatokat. 
-- _*_Szűrés_*_ – előfordulhat, hogy néhány szabály alapján a forrástól érkező üzeneteket vissza kell tartani a célhelyről. A szűrő ellenőrzi az üzenetet egy szabályhoz, és eldobja az üzenetet, ha az üzenet nem felel meg a szabálynak. Az ismétlődő üzenetek kiszűrése bizonyos feltételek betartásával és a további, azonos értékekkel rendelkező üzenetek eldobásával a szűrés formája.
-- _*_Útválasztás és particionálás_*_ – néhány replikációs feladat engedélyezheti két vagy több alternatív célpont használatát, és meghatározhatja azokat a szabályokat, amelyek esetében a replikációs cél az üzenet metaadatai vagy tartalma alapján van kiválasztva egy adott üzenethez. Az Útválasztás egy speciális formája a particionálás, ahol a feladat explicit módon hozzárendeli a partíciókat egy replikációs célhoz a szabályok alapján.
-- _*_Titkosítás_*_ – előfordulhat, hogy a replikációs feladatnak vissza kell fejtenie a forrásból érkező tartalmat, és/vagy titkosítania kell a tartalmat a célhelyre, és/vagy a tartalom és a metaadatok integritását ellenőrizni kell az üzenetben végzett aláíráshoz képest, vagy csatolnia kell az aláírást. 
-- _*_Igazolás_*_ – a replikálási feladat a digitális aláírással potenciálisan védett metaadatokat is csatolhat egy olyan üzenethez, amely tanúsítja, hogy az üzenet egy adott csatornán vagy adott időpontban érkezett.     
-- _ *_Láncolás_** – egy replikációs feladat aláírásokat alkalmazhat az üzenetek sorozatából, hogy a sorozat integritása védve legyen, és a rendszer a hiányzó üzeneteket is észlelje.
+- ***Átkódolás*** – ha az üzenet tartalma (más néven "szövegtörzs" vagy "hasznos adat") az *Apache Avro* -formátummal vagy valamilyen saját szerializálási formátummal van kódolva, azonban a cél tulajdonosának az a célja, hogy a tartalom *JSON* -kódolású legyen, egy átkódoló replikációs feladat először deszerializálja az *Apache Avro* adattartalmát a memóriában lévő Object gráfba, majd Szerializálja a gráfot a továbbított üzenet *JSON* -formátumára. A transcoding a **tartalom tömörítési** és kibontási feladatait is tartalmazza.
+- ***Átalakítás*** – a strukturált adatmennyiséget tartalmazó üzenetek esetében szükség lehet arra, hogy az alsóbb rétegbeli fogyasztók könnyebben átformálják ezeket az adatmennyiségeket. Ez magában foglalhat olyan munkát, mint a beágyazott struktúrák összeolvasztása, a felesleges adatelemek metszése vagy a hasznos adatok átalakítása, hogy pontosan illeszkedjenek az adott sémához.
+- ***Kötegelt feldolgozás*** – előfordulhat, hogy az üzenetek kötegekben (több üzenet egyetlen átvitelben) érkeznek a forrásokból, de egy célhoz kell továbbítani őket, vagy fordítva. Egy feladat ezért több üzenetet is továbbíthat egy bemeneti üzenet átvitele vagy egy olyan üzenet összevonása alapján, amelyet aztán együtt továbbítanak. 
+- ***Ellenőrzés*** – a külső forrásokból származó üzenetek adatait gyakran ellenőrizni kell, hogy azok megfelelnek-e a szabályoknak, mielőtt azok továbbítva lesznek. A szabályok sémák vagy kódok használatával adhatók meg. azok az üzenetek, amelyek nem felelnek meg a megfelelőségnek, eldobásra kerülhetnek, a naplókban feljegyzett problémával, vagy egy speciális célhelyre továbbítva a további kezelés érdekében.   
+- A ***dúsítás*** – egyes forrásokból érkező üzenet-adatok esetében a további kontextushoz is szükség lehet, ha a cél rendszerekben használható. Ez magában foglalhatja a hivatkozási adatok megkeresését és az adatok beágyazását az üzenettel, illetve a replikálási feladat által ismert forrással kapcsolatos adatok hozzáadását, az üzenetekben nem szereplő adatokat. 
+- ***Szűrés*** – előfordulhat, hogy néhány szabály alapján a forrástól érkező üzeneteket vissza kell tartani a célhelyről. A szűrő ellenőrzi az üzenetet egy szabályhoz, és eldobja az üzenetet, ha az üzenet nem felel meg a szabálynak. Az ismétlődő üzenetek kiszűrése bizonyos feltételek betartásával és a további, azonos értékekkel rendelkező üzenetek eldobásával a szűrés formája.
+- ***Útválasztás és particionálás*** – néhány replikációs feladat engedélyezheti két vagy több alternatív célpont használatát, és meghatározhatja azokat a szabályokat, amelyek esetében a replikációs cél az üzenet metaadatai vagy tartalma alapján van kiválasztva egy adott üzenethez. Az Útválasztás egy speciális formája a particionálás, ahol a feladat explicit módon hozzárendeli a partíciókat egy replikációs célhoz a szabályok alapján.
+- ***Titkosítás*** – előfordulhat, hogy a replikációs feladatnak vissza kell fejtenie a forrásból érkező tartalmat, és/vagy titkosítania kell a tartalmat a célhelyre, és/vagy a tartalom és a metaadatok integritását ellenőrizni kell az üzenetben végzett aláíráshoz képest, vagy csatolnia kell az aláírást. 
+- ***Igazolás*** – a replikálási feladat a digitális aláírással potenciálisan védett metaadatokat is csatolhat egy olyan üzenethez, amely tanúsítja, hogy az üzenet egy adott csatornán vagy adott időpontban érkezett.     
+- ***Láncolás*** – egy replikációs feladat aláírásokat alkalmazhat az üzenetek sorozatából, hogy a sorozat integritása védve legyen, és a rendszer hiányzó üzeneteket észlel.
 
 Ezek a minták a Azure Functions használatával valósíthatók meg, az [üzenetsor-trigger](../azure-functions/functions-bindings-service-bus-trigger.md) használatával az üzenetek beszerzéséhez, valamint az üzenetsor [vagy a témakör kimeneti kötéseinek](../azure-functions/functions-bindings-service-bus-output.md) kézbesítéséhez. 
 

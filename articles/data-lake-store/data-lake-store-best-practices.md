@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452219"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Ajánlott eljárások Azure Data Lake Storage Gen1 használatához
@@ -102,9 +102,9 @@ Alább láthatók az első három ajánlott lehetőség a Data Lake Storage Gen1
 |---------|---------|---------|---------|
 |**Skálázási korlátok**     | Munkavégző csomópontok kötik        | A Felhőbeli adatáthelyezési egységek maximális száma        | Elemzési egységek kötik        |
 |**Támogatja a különbözetek másolását**     |   Igen      | Nem         | Nem         |
-|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Igen        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
+|**Beépített előkészítés**     |  Nem (Oozie légáram vagy cron-feladatok használata)       | Yes        | Nem (Azure Automation vagy Windows Feladatütemező használata)         |
 |**Támogatott fájlrendszerek**     | ADL, HDFS, WASB, S3, GS, CFS        |Számos, lásd: [Összekötők](../data-factory/connector-azure-blob-storage.md).         | ADL – ADL, WASB – ADL (csak azonos régió)        |
-|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N.A.          | Windows 10         |
+|**Operációs rendszer támogatása**     |Minden Hadoop-t futtató operációs rendszer         | N/A          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Distcp használata két helyszín közötti adatáthelyezéshez
 
@@ -138,7 +138,7 @@ Ha több valós idejű riasztásra van szükség, és többet szeretne vezéreln
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Hibakeresési szintű naplózás bekapcsolása a HDInsight-ben
 
-Ha Data Lake Storage Gen1 napló szállítása nincs bekapcsolva, az Azure HDInsight lehetővé teszi az [ügyféloldali naplózás](data-lake-store-performance-tuning-mapreduce.md) bekapcsolását a log4j-on keresztüli Data Lake Storage Gen1. A következő tulajdonságot kell megadnia a **Ambari**  >  **fonál**  >  **Config**  >  **-konfiguráció Advanced fonal-log4j konfigurációjában**:
+Ha Data Lake Storage Gen1 napló szállítása nincs bekapcsolva, az Azure HDInsight lehetővé teszi az [ügyféloldali naplózás](data-lake-store-performance-tuning-mapreduce.md) bekapcsolását a log4j-on keresztüli Data Lake Storage Gen1. A következő tulajdonságot kell megadnia a **Ambari**  >  **fonál**  >    >  **-konfiguráció Advanced fonal-log4j konfigurációjában**:
 
 `log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
@@ -189,7 +189,7 @@ NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
 
 A közvetlenül az adatbázisokba (például a kaptárba vagy a hagyományos SQL-adatbázisba) feldolgozott batch-adatokat nem kell **/in** vagy **/out** mappához adni, mivel a kimenet már egy különálló mappába kerül a kaptár-tábla vagy a külső adatbázis számára. Például az ügyfelek napi kinyerése a saját mappáiba kerül, és a Azure Data Factory, az Apache Oozie vagy az Apache légáram egy olyan napi struktúrát vagy Spark-feladatot indít el, amely feldolgozza és beírja az adatait egy kaptár-táblába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)
 * [Access Control a Azure Data Lake Storage Gen1](data-lake-store-access-control.md)

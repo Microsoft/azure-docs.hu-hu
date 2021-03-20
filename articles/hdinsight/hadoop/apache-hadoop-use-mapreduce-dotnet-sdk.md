@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/15/2020
 ms.openlocfilehash: 8fbcb66be11c7c77a9bfaf0e6ec790622dcbbda7
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98932187"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>MapReduce feladatok futtatása HDInsight .NET SDK segítségével
@@ -39,7 +39,7 @@ A HDInsight .NET SDK .NET-ügyfélszoftvereket biztosít, amelyek megkönnyítik
     Install-Package Microsoft.Azure.Management.HDInsight.Job
     ```
 
-1. Másolja az alábbi kódot a **program.cs**. Ezután szerkessze a kódot a következő értékek megadásával:,,, `existingClusterName` `existingClusterPassword` `defaultStorageAccountName` `defaultStorageAccountKey` és `defaultStorageContainerName` .
+1. Másolja az alábbi kódot a **program. cs**-ba. Ezután szerkessze a kódot a következő értékek megadásával:,,, `existingClusterName` `existingClusterPassword` `defaultStorageAccountName` `defaultStorageAccountKey` és `defaultStorageContainerName` .
 
     ```csharp
     using System.Collections.Generic;

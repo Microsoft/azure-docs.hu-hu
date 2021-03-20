@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451594"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Csatlakozás a Synapse SQL-hez a Visual Studióval és az SSDT-vel
@@ -22,7 +22,7 @@ ms.locfileid: "96451594"
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [sqlcmd](get-started-connect-sqlcmd.md) 
+> * [Sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
@@ -42,7 +42,7 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
 
 ## <a name="1-connect-to-a-dedicated-sql-pool"></a>1. kapcsolódás dedikált SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. Nyissa meg a SQL Server Object Explorer a **nézet** SQL Server Object Explorer lehetőség kiválasztásával  >  **SQL Server Object Explorer**.
+2. Nyissa meg a SQL Server Object Explorer a **nézet** SQL Server Object Explorer lehetőség kiválasztásával  >  .
    
     ![SQL Server Object Explorer](./media/get-started-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -79,7 +79,7 @@ Most, hogy létrejött egy kapcsolódás az adatbázishoz, meg kell írnia egy l
    
     ![Lekérdezés eredményei](./media/get-started-visual-studio/query-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy tud-e kapcsolatot létesíteni és lekérdezni, próbálja meg [az Power bi segítségével megjeleníteni az adatmegjelenítést](get-started-power-bi-professional.md).
 A környezet Azure Active Directory hitelesítéshez való konfigurálásával kapcsolatban lásd: [hitelesítés DEDIKÁLT SQL-készletbe](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
  

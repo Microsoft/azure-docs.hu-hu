@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
 ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91631562"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Gyors útmutató: Traffic Manager profil létrehozása egy kiválóan elérhető webalkalmazáshoz Azure PowerShell használatával
@@ -68,7 +68,7 @@ New-AzTrafficManagerProfile `
 
 ## <a name="create-web-apps"></a>Web Apps létrehozása
 
-Ebben a rövid útmutatóban két különböző Azure-régióban (az USA*nyugati* régiójában és az *USA keleti*régiójában) üzembe helyezett webalkalmazás két példánya szükséges. Mindegyik a Traffic Manager elsődleges és feladatátvételi végpontjának fogja szolgálni.
+Ebben a rövid útmutatóban két különböző Azure-régióban (az USA *nyugati* régiójában és az *USA keleti* régiójában) üzembe helyezett webalkalmazás két példánya szükséges. Mindegyik a Traffic Manager elsődleges és feladatátvételi végpontjának fogja szolgálni.
 
 ### <a name="create-web-app-service-plans"></a>Webes App Service csomagok létrehozása
 Hozzon létre webalkalmazás-szolgáltatási csomagokat a [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) használatával a webalkalmazás két különböző Azure-régióban üzembe helyezett példányain.
@@ -135,7 +135,7 @@ Másolja a **RelativeDnsName** értéket. Traffic Manager profiljának DNS-neve 
 1. A webböngészőben adja meg a Traffic Manager profil (*http://<* relativednsname *>. trafficmanager.net*) DNS-nevét a webalkalmazás alapértelmezett webhelyének megtekintéséhez.
 
     > [!NOTE]
-    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányítja át. Az **1-es prioritásra**van beállítva.
+    > Ebben a rövid útmutatóban az összes kérelem az elsődleges végpontra irányítja át. Az **1-es prioritásra** van beállítva.
 2. Ha Traffic Manager feladatátvételt szeretné megtekinteni működés közben, tiltsa le az elsődleges helyet a [disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint)használatával.
 
    ```azurepowershell-interactive
@@ -156,7 +156,7 @@ Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az �
 Remove-AzResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt, amely magas rendelkezésre állást biztosít a webalkalmazás számára. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 

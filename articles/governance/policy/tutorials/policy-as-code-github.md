@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy Azure Policy fog megvalósítani az ex
 ms.date: 10/20/2020
 ms.topic: tutorial
 ms.openlocfilehash: 76a46adc3fc8efab4f7a2d6e656e83c2537dd037
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92326146"
 ---
 # <a name="tutorial-implement-azure-policy-as-code-with-github"></a>Oktatóanyag: Azure Policy implementálása kóddal a GitHubon
@@ -58,7 +58,7 @@ A házirend-definíció Azure Portalból való exportálásához kövesse az al�
 
 1. Tekintse meg a GitHub-tárház, az ág és a _gyökér szintű mappát_ , és ellenőrizze, hogy a kiválasztott erőforrások mostantól a verziókövetés felé lettek-e exportálva.
 
-A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szintű mappa_következő struktúrájába lesznek exportálva:
+A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szintű mappa_ következő struktúrájába lesznek exportálva:
 
 ```text
 |
@@ -79,7 +79,7 @@ A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szi
 
 1. Ez a munkafolyamat-fájl a [Azure Policy kezelése](https://github.com/marketplace/actions/manage-azure-policy) művelettel küldi el a módosításokat a GitHub-tárházban lévő exportált házirend-objektumokon a Azure Policyba. Alapértelmezés szerint a művelet csak azokat a fájlokat veszi figyelembe és szinkronizálja, amelyek eltérnek az Azure-ban meglévőtől. A `assignments` művelet paraméterét is használhatja, hogy csak az adott hozzárendelési fájlokon végzett módosításokat szinkronizálja. Ezzel a paraméterrel csak egy adott környezetre vonatkozó házirend-hozzárendeléseket lehet alkalmazni. További információ: [Azure Policy adattár kezelése – readme](https://github.com/Azure/manage-azure-policy).
 
-1. Alapértelmezés szerint a munkafolyamatot manuálisan kell elindítani. Ehhez használja a GitHubon a **műveleteket** , válassza ki a `manage-azure-policy-<randomLetters>` munkafolyamatot, válassza a **munkafolyamat futtatása**lehetőséget, majd futtassa újra a **munkafolyamatot** .
+1. Alapértelmezés szerint a munkafolyamatot manuálisan kell elindítani. Ehhez használja a GitHubon a **műveleteket** , válassza ki a `manage-azure-policy-<randomLetters>` munkafolyamatot, válassza a **munkafolyamat futtatása** lehetőséget, majd futtassa újra a **munkafolyamatot** .
 
    :::image type="content" source="../media/policy-as-code-github/manually-trigger-workflow.png" alt-text="Képernyőfelvétel a művelet lap, a munkafolyamat és a munkafolyamat futtatása gombokról a GitHub webes felületén.":::
 
@@ -88,11 +88,11 @@ A Azure Policy-erőforrások a kiválasztott GitHub-adattár és a _gyökér szi
 
 1. A munkafolyamat szinkronizálja a házirend-objektumokon végzett módosításokat az Azure-ban, és megadja a naplókban található állapotot.
 
-   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Képernyőfelvétel a művelet lap, a munkafolyamat és a munkafolyamat futtatása gombokról a GitHub webes felületén.":::
+   :::image type="content" source="../media/policy-as-code-github/workflow-logging.png" alt-text="Képernyőkép a működés közbeni munkafolyamatról és a naplókban naplózott adatokról.":::
 
 1. A munkafolyamat a nyomon követéshez Azure Policy-objektumok adatait is hozzáadja `properties.metadata` .
 
-   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Képernyőfelvétel a művelet lap, a munkafolyamat és a munkafolyamat futtatása gombokról a GitHub webes felületén.":::
+   :::image type="content" source="../media/policy-as-code-github/updated-definition-metadata.png" alt-text="Képernyőfelvétel: a Azure Portal Azure Policy definíciójának frissítése a GitHub művelettel kapcsolatos metaadatokkal.":::
 
 ### <a name="trigger-compliance-scans-using-github-action"></a>Megfelelőségi vizsgálatok indítása a GitHub-művelettel
 

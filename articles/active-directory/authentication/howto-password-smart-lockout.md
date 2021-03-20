@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99255373"
 ---
-# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok elleni védelem Azure Active Directory intelligens zárolással
+# <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Felhasználói fiókok támadások elleni védelme az Azure Active Directory intelligens zárolással
 
-Az intelligens zárolás segít kizárni a felhasználók jelszavait kitaláló rossz szereplőket, vagy felhasználni a találgatásos módszerekkel. Az intelligens zárolás felismeri az érvényes felhasználóktól érkező bejelentkezéseket, és a támadók és más ismeretlen forrásoktól eltérően kezeli őket. A támadók kizárják a felhasználókat, míg a felhasználók továbbra is hozzáférhetnek a fiókjához, és hatékonyak lehetnek.
+Az intelligens zárolás segít kizárni azokat a kártékony elemeket, amelyek megpróbálják kitalálni a felhasználó jelszavát, vagy találgatásos módszerrel próbálnak meg bejutni. Az intelligens zárolás felismeri az érvényes felhasználóktól érkező bejelentkezéseket, és a támadóktól és más ismeretlen forrásoktól érkező bejelentkezésektől eltérően kezeli őket. A támadók ki lesznek zárva, miközben a felhasználók továbbra is hozzáférnek a fiókjukhoz, és folytathatják a hatékony munkavégzést.
 
 ## <a name="how-smart-lockout-works"></a>Hogyan működik az intelligens zárolás?
 
