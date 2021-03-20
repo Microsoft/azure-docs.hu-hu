@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ff74232edf5c96f091082f8486c44fed6125b0b1
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97825839"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Gyors útmutató: Azure Container Registry létrehozása a Azure Portal használatával
@@ -78,7 +78,7 @@ Az erőforrások tisztításához navigáljon az **myResourceGroup** erőforrás
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-08.png" alt-text="Erőforráscsoport törlése a portálon":::
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registryt a Azure Portal, leküldte a tároló képét, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

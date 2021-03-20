@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936928"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
@@ -111,7 +111,7 @@ Egyetlen fájl feltöltéséhez egy helyettesítő karakter nélküli fájlt kel
 
 A [OutputFileUploadOptions. UploadCondition](/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) tulajdonság a kimeneti fájlok feltételes feltöltését teszi lehetővé. Gyakori eset, ha a feladat sikeres, és egy másik fájl, ha sikertelen, fel kell töltenie egy-egy készletet. Előfordulhat például, hogy csak akkor szeretné feltölteni a részletes naplófájlokat, ha a feladat meghiúsul, és nem nulla kilépési kóddal kilép. Hasonlóképpen előfordulhat, hogy csak akkor szeretné feltölteni az eredményeket, ha a feladat sikeres, mivel előfordulhat, hogy a fájlok hiányoznak vagy hiányosak, ha a feladat meghiúsul.
 
-A fenti mintakód a **UploadCondition** tulajdonságot **TaskCompletion**értékre állítja. Ezzel a beállítással adható meg, hogy a rendszer feltöltse-e a fájlt a feladatok befejeződése után, a kilépési kód értékétől függetlenül.
+A fenti mintakód a **UploadCondition** tulajdonságot **TaskCompletion** értékre állítja. Ezzel a beállítással adható meg, hogy a rendszer feltöltse-e a fájlt a feladatok befejeződése után, a kilépési kód értékétől függetlenül.
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 

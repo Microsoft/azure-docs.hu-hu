@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87027393"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Klasszikus szabályzat migrálása a Azure Portal
@@ -32,8 +32,8 @@ Az áttelepítési folyamat a következő lépésekből áll:
 
 ## <a name="open-a-classic-policy"></a>Klasszikus szabályzat megnyitása
 
-1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**lehetőséget.
-1. Válassza a **klasszikus szabályzatok**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés** lehetőséget.
+1. Válassza a **klasszikus szabályzatok** lehetőséget.
 
    ![Klasszikus szabályzatok nézet](./media/policy-migration-mfa/12.png)
 
@@ -41,25 +41,25 @@ Az áttelepítési folyamat a következő lépésekből áll:
 
 ## <a name="create-a-new-conditional-access-policy"></a>Új feltételes hozzáférési szabályzat létrehozása
 
-1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**lehetőséget.
-1. Új feltételes hozzáférési szabályzat létrehozásához válassza az **új szabályzat**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés** lehetőséget.
+1. Új feltételes hozzáférési szabályzat létrehozásához válassza az **új szabályzat** lehetőséget.
 1. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét.
-1. A **hozzárendelések** szakaszban kattintson a **felhasználók és csoportok**elemre.
-   1. Ha a klasszikus szabályzatban minden felhasználó van kiválasztva, kattintson a **minden felhasználó**elemre. 
-   1. Ha a klasszikus szabályzatban csoportok vannak kiválasztva, kattintson a **felhasználók és csoportok kiválasztása**elemre, majd válassza ki a szükséges felhasználókat és csoportokat.
+1. A **hozzárendelések** szakaszban kattintson a **felhasználók és csoportok** elemre.
+   1. Ha a klasszikus szabályzatban minden felhasználó van kiválasztva, kattintson a **minden felhasználó** elemre. 
+   1. Ha a klasszikus szabályzatban csoportok vannak kiválasztva, kattintson a **felhasználók és csoportok kiválasztása** elemre, majd válassza ki a szükséges felhasználókat és csoportokat.
    1. Ha a kizárt csoportok vannak, kattintson a **kizárás** lapra, majd válassza ki a szükséges felhasználókat és csoportokat. 
    1. Válassza a **kész** lehetőséget
-1. A **hozzárendelés** szakaszban kattintson a **felhőalapú alkalmazások vagy műveletek**elemre.
+1. A **hozzárendelés** szakaszban kattintson a **felhőalapú alkalmazások vagy műveletek** elemre.
 1. A **Cloud apps vagy Actions** oldalon hajtsa végre a következő lépéseket:
-   1. Kattintson az **alkalmazások kiválasztása**elemre.
+   1. Kattintson az **alkalmazások kiválasztása** elemre.
    1. Kattintson a **Kiválasztás** elemre.
-   1. A **kiválasztás** lapon válassza ki a felhőalapú alkalmazást, majd kattintson a **kiválasztás**elemre.
-   1. A **Cloud apps** lapon kattintson a **kész**gombra.
+   1. A **kiválasztás** lapon válassza ki a felhőalapú alkalmazást, majd kattintson a **kiválasztás** elemre.
+   1. A **Cloud apps** lapon kattintson a **kész** gombra.
 1. Ha a **többtényezős hitelesítés** van kiválasztva:
    1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
-   1. A **támogatás** lapon kattintson a **hozzáférés engedélyezése**elemre, majd kattintson a **többtényezős hitelesítés megkövetelése**lehetőségre.
+   1. A **támogatás** lapon kattintson a **hozzáférés engedélyezése** elemre, majd kattintson a **többtényezős hitelesítés megkövetelése** lehetőségre.
    1. Kattintson a **Kiválasztás** elemre.
-1. Kattintson **a** be gombra a szabályzat engedélyezéséhez, majd válassza a **Mentés**lehetőséget.
+1. Kattintson **a** be gombra a szabályzat engedélyezéséhez, majd válassza a **Mentés** lehetőséget.
 
    ![Feltételes hozzáférési szabályzat létrehozása](./media/policy-migration-mfa/conditional-access-policy-migration.png)
 
@@ -69,7 +69,7 @@ A klasszikus szabályzat letiltásához kattintson a **Letiltás** gombra a **r�
 
 ![Klasszikus szabályzatok letiltása](./media/policy-migration-mfa/14.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A klasszikus házirendek áttelepítésével kapcsolatos további információkért lásd: [klasszikus szabályzatok áttelepítése a Azure Portal](policy-migration.md).
 - [A feltételes hozzáféréshez csak jelentési módot használhat az új házirend-döntések hatásának megállapításához.](concept-conditional-access-report-only.md)

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
 ms.openlocfilehash: f4996943fd95252be45f7a270d143f14e7f2d48a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96181271"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workware"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Workware
@@ -139,7 +139,7 @@ A Workware SSO funkciójának használatához a következő telepítést kell v�
     1. Az **Identitáskezelő kijelentkezési URL-címe** szövegmezőbe írja be a **kijelentkezési URL** értékét, amelyet a Azure Portal másolt.
     1. Kattintson az **Engedélyezés** gombra.
     1. Töltse fel a letöltött **tanúsítványt** az **identitás-szolgáltatói tanúsítványba** a Azure Portalból.
-    1. Kattintson a **Mentés** gombra
+    1. Kattintson a **Mentés** gombra.
 
 
 ### <a name="create-workware-test-user"></a>Workware-tesztelési felhasználó létrehozása

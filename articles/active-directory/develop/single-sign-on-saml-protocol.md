@@ -15,13 +15,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 40bf202e0f14f18d817e4e918f8372ba3c0a4ad8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91950669"
 ---
-# <a name="single-sign-on-saml-protocol"></a>Egy Sign-On SAML protokoll
+# <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
 
 Ez a cikk az SAML 2,0 hitelesítési kéréseit és válaszait ismerteti, amelyeket Azure Active Directory (Azure AD) támogat egyetlen Sign-On (SSO) számára.
 
@@ -55,7 +55,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | ForceAuthn | Választható | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
 | IsPassive | Választható | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
 
-`AuthnRequest`A **rendszer figyelmen kívül hagyja**az összes többi attribútumot, például a beleegyezett, a célhelyet, a AssertionConsumerServiceIndex, a AttributeConsumerServiceIndex és a ProviderName.
+`AuthnRequest`A **rendszer figyelmen kívül hagyja** az összes többi attribútumot, például a beleegyezett, a célhelyet, a AssertionConsumerServiceIndex, a AttributeConsumerServiceIndex és a ProviderName.
 
 Az Azure AD emellett figyelmen kívül hagyja a `Conditions` elemet a alkalmazásban `AuthnRequest` .
 

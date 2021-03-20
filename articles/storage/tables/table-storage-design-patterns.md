@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879595"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
@@ -1125,7 +1125,7 @@ Ebben az aszinkron példában a szinkron verzió következő változásai látha
 
 Az ügyfélalkalmazás több aszinkron metódust is meghívhat, mint például ez, és minden metódus meghívása külön szálon fut.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)
 - [Tervezés lekérdezéshez](table-storage-design-for-query.md)

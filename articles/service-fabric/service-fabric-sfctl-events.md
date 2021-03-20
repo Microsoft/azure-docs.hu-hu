@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76906105"
 ---
 # <a name="sfctl-events"></a>sfctl események
@@ -40,7 +40,7 @@ A válasz a ApplicationEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Start-time-UTC [kötelező] | Egy keresési lekérdezés kezdési ideje ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -51,7 +51,7 @@ A válasz a ApplicationEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -66,7 +66,7 @@ A válasz a NodeEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Start-time-UTC [kötelező] | Egy keresési lekérdezés kezdési ideje ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -77,7 +77,7 @@ A válasz a NodeEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -92,7 +92,7 @@ A válasz a PartitionEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Start-time-UTC [kötelező] | Egy keresési lekérdezés kezdési ideje ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -103,7 +103,7 @@ A válasz a PartitionEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -118,7 +118,7 @@ A válasz a ServiceEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Start-time-UTC [kötelező] | Egy keresési lekérdezés kezdési ideje ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -129,7 +129,7 @@ A válasz a ServiceEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -144,7 +144,7 @@ A válasz a ApplicationEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -156,7 +156,7 @@ A válasz a ApplicationEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -171,7 +171,7 @@ A válasz a ClusterEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Start-time-UTC [kötelező] | Egy keresési lekérdezés kezdési ideje ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
@@ -182,7 +182,7 @@ A válasz a ClusterEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -197,7 +197,7 @@ A válasz a NodeEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Node-Name [kötelező] | A csomópont neve. |
@@ -209,7 +209,7 @@ A válasz a NodeEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -224,7 +224,7 @@ A válasz a ReplicaEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -236,7 +236,7 @@ A válasz a ReplicaEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -251,7 +251,7 @@ A válasz a PartitionEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -263,7 +263,7 @@ A válasz a PartitionEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -278,7 +278,7 @@ A válasz a ReplicaEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -291,7 +291,7 @@ A válasz a ReplicaEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -306,7 +306,7 @@ A válasz a ServiceEvent objektumok listája.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --befejezési idő – UTC [kötelező] | A keresési lekérdezés befejezési időpontja az ISO UTC éééé-hh-NNTóó \: mm \: ssz. |
 | --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric \: /MyApp/App1/svc1", a szolgáltatás identitása "SajátPr \~ App1 svc1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1/svc1" értékében. |
@@ -318,7 +318,7 @@ A válasz a ServiceEvent objektumok listája.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |

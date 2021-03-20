@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96176290"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: egyetlen AD-erdős környezet összevonása a felhőbe
@@ -130,7 +130,7 @@ Restart-Computer
 ```
 
 ## <a name="create-a-windows-server-ad-environment"></a>Windows Server AD-környezet létrehozása
-Most, hogy létrehozta a virtuális gépet, és átnevezték, és statikus IP-címmel rendelkezik, a Active Directory tartományi szolgáltatások telepítését és konfigurálását is elvégezheti.  Tegye a következőket:
+Most, hogy létrehozta a virtuális gépet, és átnevezték, és statikus IP-címmel rendelkezik, a Active Directory Domain Services telepítését és konfigurálását is elvégezheti.  Tegye a következőket:
 
 1. Nyissa meg rendszergazdaként a PowerShell ISE-t.
 2. Futtassa az alábbi parancsfájlt.
@@ -204,9 +204,9 @@ Most létre kell hozni egy Azure AD-bérlőt, hogy szinkronizálni lehessen a fe
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. Válassza ki a **plusz ikont (+)** és keresse meg az **Azure Active Directoryt**.
 3. Válassza ki az **Azure Active Directoryt** a keresési eredmények közül.
-4. Kattintson a **Létrehozás** gombra.</br>
+4. Válassza a **Létrehozás** lehetőséget.</br>
 ![Képernyőkép, amely bemutatja, hogyan hozhat létre egy Azure AD-bérlőt.](media/tutorial-password-hash-sync/create1.png)</br>
-5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután válassza a **Létrehozás** elemet. Ezzel létrejön a címtár.
+5. Adja meg a **szervezet nevét** a **kezdeti tartománynevet**. Ezután kattintson a **Létrehozás** elemre. Ezzel létrejön a címtár.
 6. Miután ez befejeződik, kattintson az **ide** hivatkozásra a címtár kezeléséhez.
 
 ## <a name="create-a-global-administrator-in-azure-ad"></a>Globális rendszergazda létrehozása az Azure AD-ben

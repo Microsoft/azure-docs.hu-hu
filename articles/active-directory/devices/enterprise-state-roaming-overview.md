@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77194279"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Mi az az Enterprise State Roaming?
@@ -28,7 +28,7 @@ A Windows 10 [Azure Active Directory (Azure ad)](../fundamentals/active-director
 
 Enterprise State Roaming több Azure-régióban is elérhető. Az elérhető régiók frissített listáját az [Azure-szolgáltatások régiók](https://azure.microsoft.com/regions/#services) szerint lapján találja Azure Active Directory alatt.
 
-| Cikk | Leírás |
+| Cikk | Description |
 | --- | --- |
 | [A vállalati állapothordozás engedélyezése az Azure Active Directoryban](enterprise-state-roaming-enable.md) |Enterprise State Roaming bármely, prémium szintű Azure Active Directory (Azure AD-) előfizetéssel rendelkező szervezet számára elérhető. Az Azure AD-előfizetés beszerzésével kapcsolatos további információkért tekintse meg az [Azure ad termékét](https://azure.microsoft.com/services/active-directory) ismertető oldalt. |
 | [Beállítások és adatroaming GYIK](enterprise-state-roaming-faqs.md) |Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beállítások és az alkalmazásadatok szinkronizálásával rendelkezhetnek. |
@@ -36,6 +36,6 @@ Enterprise State Roaming több Azure-régióban is elérhető. Az elérhető ré
 | [Windows 10 roaming beállítások referenciája](enterprise-state-roaming-windows-settings-reference.md) |A Windows 10 rendszerben barangolni és/vagy biztonsági mentésre kerülő beállítások listája. |
 | [Hibaelhárítás](enterprise-state-roaming-troubleshooting.md) |Ez a cikk néhány alapvető lépést ismertet a hibaelhárításhoz, és tartalmazza az ismert problémák listáját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a vállalati állapot barangolásának engedélyezéséről: a [vállalati állapot barangolásának engedélyezése](enterprise-state-roaming-enable.md).

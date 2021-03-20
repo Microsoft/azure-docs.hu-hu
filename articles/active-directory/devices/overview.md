@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87025591"
 ---
 # <a name="what-is-a-device-identity"></a>Mi az az eszközidentitás?
@@ -47,7 +47,7 @@ Az eszköz Azure AD-ben való beszerzéséhez több lehetőség közül választ
       - Windows 10 
       - [Az Azure-ban futó Windows Server 2019 Virtual Machines](howto-vm-sign-in-azure-ad-windows.md) (Server Core nem támogatott)
 - **csatlakozik a Hibrid Azure AD-hez**
-   - A hibrid Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában vannak, és az adott szervezethez tartozó Active Directory tartományi szolgáltatások fiókkal jelentkeznek be. A felhőben és a helyszínen vannak.
+   - A hibrid Azure AD-hez csatlakoztatott eszközök egy szervezet tulajdonában vannak, és az adott szervezethez tartozó Active Directory Domain Services fiókkal jelentkeznek be. A felhőben és a helyszínen vannak.
       - Windows 7, 8,1 vagy 10
       - Windows Server 2008 vagy újabb
 
@@ -86,7 +86,7 @@ Az Azure AD-hez csatlakoztatott vagy hibrid Azure AD-hez csatlakoztatott eszköz
 
 Az eszközök Azure AD-be való beszerzése önkiszolgáló módon vagy a rendszergazdák által felügyelt kiépítési folyamattal végezhető el.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 
@@ -97,7 +97,7 @@ Az eszközök Identitáskezelés az Azure AD-ben a következőket teheti:
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
 - További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)

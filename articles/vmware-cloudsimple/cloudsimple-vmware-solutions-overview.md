@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77024874"
 ---
 # <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Mi az Azure VMware-megoldás a CloudSimple
@@ -21,7 +21,7 @@ A **CloudSimple által nyújtott Azure VMware-megoldás** egy teljes körűen fe
 
 ![VMware-megoldás az Azure-ban a CloudSimple áttekintése](media/azure-vmware-solution-by-cloudsimple.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 * VMware felhőalapú környezetek igény szerinti, önkiszolgáló üzembe helyezése. Kapacitás igény szerinti hozzáadásának és eltávolításának lehetősége.
 * VMware platform üzembe helyezése, frissítés, felügyeleti sík biztonsági mentése, állapot/kapacitás figyelése, riasztások, hibaelhárítás és szervizelés.
@@ -38,7 +38,7 @@ A **CloudSimple által nyújtott Azure VMware-megoldás** egy teljes körűen fe
 
 * **Működési folytonosság**. A CloudSimple natív hozzáférést biztosít a VMware platformokhoz. A CloudSimple architektúra kompatibilis a meglévővel:
     * Alkalmazások
-    * Műveletek
+    * Üzemeltetés
     * Biztonság
     * Backup
     * Vészhelyreállítás
@@ -63,7 +63,7 @@ A **CloudSimple által nyújtott Azure VMware-megoldás** egy teljes körűen fe
 
 ![Forgatókönyvek](media/cloudsimple-scenarios.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [CloudSimple szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
 * [Privát felhő létrehozása](quickstart-create-private-cloud.md)

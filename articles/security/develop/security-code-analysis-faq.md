@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879915"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -192,11 +192,11 @@ A tartalmi kereső a következőképpen van definiálva:
 
 #### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Mik azok a gyakori hibák, amikor a-elemzők feladatait használják?
 
-##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>A projekt nem megfelelő Microsoft. NETCore. app verzióval lett visszaállítva
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>A projekt nem megfelelő Microsoft.NETCore.App-verzióval lett visszaállítva
 
 A teljes hibaüzenet:
 
-"Hiba: a projekt a Microsoft. NETCore. app *x. x. x* verziójával lett visszaállítva, de az aktuális beállításokkal az *y. y. y* verzió lesz használatban. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
+"Hiba: a projekt a Microsoft.NETCore.App *x. x. x* verziójának használatával lett visszaállítva, de az aktuális beállításokkal az *y. y. y* verziója lesz használva. A probléma megoldásához ellenőrizze, hogy ugyanazokat a beállításokat használja-e a rendszer a visszaállításhoz és a későbbi műveletekhez, például a létrehozáshoz vagy a közzétételhez. Ez a probléma általában akkor fordulhat elő, ha a RuntimeIdentifier tulajdonságot a Build vagy a publish elemnél állítja be, de a visszaállítás során nem. "
 
 Mivel a (z) a (z) a gyűjtemény részeként futtatott a a-elemzők, a kiépíthető állapotban kell lennie a forrás fájának.
 
@@ -222,7 +222,7 @@ A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a [Microsoft.net
 
 A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló Azure-beli az MSBuild-Build feladatból. Ha az analizátor feladat közvetlenül az MSBuild feladat után fut, a napló még nem lesz elérhető. Helyezzen el más feladatokat az MSBuild-feladat és a a a a a a a a a a a a a a ( További feladatok például a BinSkim és a kártevők elleni képolvasó.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
 

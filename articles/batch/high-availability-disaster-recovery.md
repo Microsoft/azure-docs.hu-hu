@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális
 ms.topic: how-to
 ms.date: 12/30/2020
 ms.openlocfilehash: 51bcb0cfa35aacd24c0f79082491ef1fc7040889
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97831006"
 ---
 # <a name="design-your-batch-application-for-high-availability"></a>A Batch-alkalmazás tervezése a magas rendelkezésre állás érdekében
@@ -37,7 +37,7 @@ A feladatátvételt biztosító megoldás tervezésekor vegye figyelembe a köve
 - Az alkalmazásban a Batch, a Storage és bármely más szolgáltatás meghívásával egyszerűen átválthatja az ügyfeleket, illetve a terhelést különböző régiókba.
 - A normál működés részeként érdemes gyakran átváltani egy másik régióra. Ha például két üzemelő példány külön régióban található, váltson át minden hónapban a másik régióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Batch-fiókok [Azure Portal](batch-account-create-portal.md), az [Azure CLI](./scripts/batch-cli-sample-create-account.md), a [POWERSHELL](batch-powershell-cmdlets-get-started.md)vagy a [Batch Management API](batch-management-dotnet.md)használatával történő létrehozásáról.
 - Ismerje meg a [Batch-fiókhoz társított alapértelmezett kvótákat](batch-quota-limit.md) és a kvóták növelésének módját.

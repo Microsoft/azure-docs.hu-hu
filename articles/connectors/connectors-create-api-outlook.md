@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75707186"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>E-mailek, naptárak és névjegyek kezelése a Outlook.com-ben Azure Logic Apps használatával
@@ -49,7 +49,7 @@ Az [eseményindító](../logic-apps/logic-apps-overview.md#logic-app-concepts) e
 
    Ha például 15 percenként szeretné lekérdezni a triggert, állítsa a **gyakoriságot** **percre**, és állítsa be az **intervallumot** **15**-re.
 
-1. A tervező eszköztárán válassza a **Mentés**lehetőséget, amely menti a logikai alkalmazást.
+1. A tervező eszköztárán válassza a **Mentés** lehetőséget, amely menti a logikai alkalmazást.
 
 Az triggerre való reagáláshoz adjon hozzá egy újabb műveletet. Felveheti például a Twilio- **üzenet küldése** műveletet, amely szöveget küld egy e-mail érkezésekor.
 
@@ -59,20 +59,20 @@ A [művelet](../logic-apps/logic-apps-overview.md#logic-app-concepts) egy olyan 
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés**lehetőséget. 
+1. Ha egy műveletet a munkafolyamat utolsó lépéseként szeretne hozzáadni, válassza az **új lépés** lehetőséget. 
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza **az E-mail küldése**lehetőséget. 
+1. A keresőmezőbe írja be szűrőként a "outlook.com" kifejezést. Ebben a példában válassza **az E-mail küldése** lehetőséget. 
 
 1. Ha a rendszer kéri, hogy jelentkezzen be, adja meg a Outlook.com hitelesítő adatait, hogy a logikai alkalmazás csatlakozhasson a fiókjához. Ellenkező esetben, ha a kapcsolat már létezik, adja meg a művelet tulajdonságaira vonatkozó információkat.
 
-1. A tervező eszköztárán válassza a **Mentés**lehetőséget, amely menti a logikai alkalmazást.
+1. A tervező eszköztárán válassza a **Mentés** lehetőséget, amely menti a logikai alkalmazást.
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő hencegő fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/outlook/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

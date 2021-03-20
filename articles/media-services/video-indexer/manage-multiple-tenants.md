@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76990504"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
@@ -77,6 +77,6 @@ Ha ezt az architektúrát használja, minden bérlő saját Azure-előfizetésse
 * Ez az egyetlen olyan lehetőség, amely lehetővé teszi a számlázás elkülönítését.
 * Ez az integráció több felügyeleti terheléssel rendelkezik, mint a Video Indexer-fiók. Ha a számlázás nem követelmény, javasoljuk, hogy használja az ebben a cikkben ismertetett egyéb lehetőségek egyikét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](video-indexer-overview.md)

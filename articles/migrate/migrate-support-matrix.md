@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 0e1cb33ca0a5fb9a1c7ddb2c4625dfef4acd3a1e
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627398"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate támogatási mátrix
@@ -23,7 +23,7 @@ A táblázat összefoglalja a támogatott felderítési, felmérési és áttele
 
 **Üzembe helyezés** | **Részletek** 
 --- | --- 
-**Felfedezés** | Felderítheti a gépek metaadatait és a dinamikus teljesítményadatokat is.
+**Felderítés** | Felderítheti a gépek metaadatait és a dinamikus teljesítményadatokat is.
 **Alkalmazás – felderítés** | A VMware virtuális gépeken futó alkalmazásokat, szerepköröket és szolgáltatásokat is felderítheti. Ez a funkció jelenleg csak felderítésre korlátozódik. Az értékelés jelenleg a számítógép szintjén történik. Még nem kínálunk alkalmazás-, szerepkör-vagy szolgáltatás-alapú értékeléseket. 
 **Értékelés** | A VMware virtuális gépeken, Hyper-V virtuális gépeken és fizikai kiszolgálókon futó helyszíni munkaterhelések és adatok értékelése. Értékelje Azure Migrate használatával: Server Assessment, Microsoft Data Migration Assistant (DMA), valamint más eszközöket és ISV-ajánlatokat.
 **Migrálás** | Áttelepítheti a fizikai kiszolgálókon, a VMware virtuális gépeken, a Hyper-V virtuális gépeken, a fizikai kiszolgálókon és a felhőalapú virtuális gépeken futó számítási feladatokat és az Azure-ba. Migrálás Azure Migrate használatával: Server Assessment and Azure Database Migration Service (DMS), valamint más eszközök és ISV-ajánlatok.
@@ -124,7 +124,7 @@ Cél replikációja | Egyesült Államok | Célcsoportok: US DoD – középső 
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
-- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információk](whats-new.md).
+- **Aktuális verzió**: ezzel a verzióval új Azure Migrate projekteket hozhat létre, felderítheti a helyszíni értékeléseket, és összehangolhatja az értékeléseket és áttelepítéseket. [További információ](whats-new.md).
 - **Előző verzió**: a Azure Migrate korábbi verzióját használó ügyfelek esetében (csak a helyszíni VMWare virtuális gépek felmérése támogatott), most az aktuális verziót kell használnia. Az előző verzióban nem hozhat létre új Azure Migrate projekteket, és nem végezhet új felfedezéseket.
 
 ## <a name="next-steps"></a>Következő lépések

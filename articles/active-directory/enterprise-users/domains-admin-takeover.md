@@ -14,10 +14,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0af74967e2de47afeb357e2ac31b1a0ee849ef36
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547100"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként az Azure Active Directoryban
@@ -45,7 +45,7 @@ Egyes, a SharePoint-és OneDrive tartalmazó termékek, például a Microsoft 36
   
    ![a rendszergazdai jogosultságok első képernyőképe](./media/domains-admin-takeover/become-admin-first.png)
   
-5. Adja hozzá a TXT-rekordot, hogy igazolja, hogy a tartománynév-regisztrálónál a **fourthcoffee. xyz** nevű tartománynév van. Ebben a példában ez a GoDaddy.com.
+5. A TXT-rekord hozzáadásával igazolhatja, hogy a tartománynév-regisztráló **fourthcoffee.xyz** a tartománynevet. Ebben a példában ez a GoDaddy.com.
   
    ![TXT-rekord hozzáadása a tartománynévhez](./media/domains-admin-takeover/become-admin-txt-record.png)
 
@@ -71,7 +71,7 @@ Az előző lépések elvégzése után a Microsoft 365 negyedik kávéházának 
    ![Az Azure AD-hez hozzáadott tartomány ellenőrizve](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akiknek a Microsoft 365 szervezethez hozzárendelt licenccel rendelkeznek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. A felhasználóknak olyan felhasználónévvel kell bejelentkezniük, mint a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* , nem pedig a *User \@ fourthcoffee. xyz* néven.
+> A Power BI vagy az Azure Rights Management szolgáltatás azon felhasználóinak, akiknek a Microsoft 365 szervezethez hozzárendelt licenccel rendelkeznek, menteniük kell az irányítópultokat, ha a tartománynév el lett távolítva. Felhasználói *\@ fourthcoffee.xyz* helyett felhasználói névvel kell bejelentkezniük, például a *felhasználói \@ fourthcoffeexyz.onmicrosoft.com* .
 
 ## <a name="external-admin-takeover"></a>Külső rendszergazdai átvétel
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 69b84a3edb606ed99b6aaca7db5ad0e57124f1b9
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91948935"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
@@ -40,7 +40,7 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                                          |
+| Bemeneti név      | Description                                          |
 |---------------|------------------------------------------------------|
 | `image`         | Összetett típus. A jelenleg csak az Azure Blob indexelő által létrehozott "/Document/normalized_images" mezővel működik, ha a értéke nem a (z ```imageAction``` ) értékre van állítva ```none``` . További információért tekintse meg a [mintát](#sample-output) .|
 
@@ -512,7 +512,7 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
 ## <a name="error-cases"></a>Hibák esetei
 A következő hiba esetekben egyetlen elem sincs kibontva.
 
-| Hibakód | Leírás |
+| Hibakód | Description |
 |------------|-------------|
 | `NotSupportedLanguage` | A megadott nyelv nem támogatott. |
 | `InvalidImageUrl` | A képurl-cím helytelen formátumú vagy nem érhető el.|

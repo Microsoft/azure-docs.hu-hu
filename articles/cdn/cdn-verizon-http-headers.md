@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
 ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84343217"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>A Azure CDN Rules Engine Verizon-specifikus HTTP-fejlécei
@@ -42,7 +42,7 @@ X-Host | Megadja a kérelem állomásnevét. | cdn.mydomain.com
 X – Midgress | Azt jelzi, hogy a kérés egy másik CDN-kiszolgálón keresztül lett-e proxyn. Például egy POP-kiszolgáló – forrás védelmi kiszolgáló vagy egy POP-kiszolgáló – ADN átjárókiszolgáló. <br />Ezt a fejlécet csak akkor adja hozzá a rendszer a kéréshez, ha a midgress forgalom történik. Ebben az esetben a fejléc 1 értékre van állítva, jelezve, hogy a kérés egy további CDN-kiszolgálón keresztül lett proxyn.| 1
 [Állomás](#host-request-header) | Azonosítja a gazdagépet és azt a portot, ahol a kért tartalom található. | marketing.mydomain.com:80
 [X-Gateway-List](#x-gateway-list-request-header) | ADN: az ügyfél-forráshoz rendelt ADN Gateway-kiszolgálók feladatátvételi listáját azonosítja. <br />Origin Shield: az ügyfél-forráshoz rendelt Origin Shield-kiszolgálók készletét jelzi. | `icn1,hhp1,hnd1`
-X-EC-_ &lt; name &gt; _ | Az *x-EC* -vel kezdődő kérelmek fejlécei (például az x-EC-tag, az [x-EC-debug](cdn-http-debug-headers.md)) a CDN használatára vannak fenntartva.| WAF – éles üzem
+X-EC-_&lt; name &gt;_ | Az *x-EC* -vel kezdődő kérelmek fejlécei (például az x-EC-tag, az [x-EC-debug](cdn-http-debug-headers.md)) a CDN használatára vannak fenntartva.| WAF – éles üzem
 
 ## <a name="via-request-header"></a>Kérelem fejléce
 Az `Via` alábbi szintaxissal adható meg, hogy a kérelem fejléce milyen formátumban adja meg a pop-kiszolgálót:

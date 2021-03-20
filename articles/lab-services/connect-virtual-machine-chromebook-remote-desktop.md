@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 74135c0b36f533ebfbba6422bc79af47825a1a3b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97813224"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Kapcsolódás virtuális géphez RDP protokoll használatával Chromebook
@@ -41,7 +41,7 @@ Ez a szakasz azt mutatja be, hogy egy tanuló hogyan tud csatlakozni egy osztál
 
 1. Látnia kell a virtuális gép asztalát, amelyhez csatlakozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Linux rendszerű virtuális gépekhez való csatlakozásról: [Csatlakozás Linux rendszerű virtuális gépekhez](how-to-use-remote-desktop-linux-student.md)
 

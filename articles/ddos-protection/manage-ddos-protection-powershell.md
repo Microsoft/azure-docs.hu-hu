@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97814142"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása Azure PowerShell használatával
@@ -109,7 +109,7 @@ $vnet | Set-AzVirtualNetwork
 
 Ha törölni szeretné a DDoS Protection-csomagot, először el kell távolítania az összes virtuális hálózatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan tekintheti meg és konfigurálhatja a DDoS elleni védelmi terv telemetria, folytassa az oktatóanyagokkal.
 

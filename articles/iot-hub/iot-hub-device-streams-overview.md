@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Technical Support'
 ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97825166"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz streamek (előzetes verzió)
@@ -142,7 +142,7 @@ Az alábbi lépéseket követve hozzon létre egy diagnosztikai beállítást, h
 
 Ha többet szeretne megtudni a Azure Monitor és a IoT Hub használatáról, tekintse meg a következőt: [monitoring IoT hub](monitor-iot-hub.md). További információ a IoT Hub rendelkezésre álló összes erőforrás-naplóról, metrikáról és táblázatról: az [Azure IoT hub adathivatkozásának figyelése](monitor-iot-hub-reference.md).
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A nyilvános előzetes verzióban IoT Hub eszköz streamek az USA középső régiójában, az USA középső – EUAP, Észak-Európában és Délkelet-ázsiai régióban érhetők el. Győződjön meg arról, hogy az egyik régióban hozza létre a hubot.
 
@@ -212,7 +212,7 @@ Az alábbi hivatkozásokra kattintva megtudhatja, hogyan futtathatja a helyi pro
 
 * [C eszköz program](quickstart-device-streams-proxy-c.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg az eszközök streamekről.
 

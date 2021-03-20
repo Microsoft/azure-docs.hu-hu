@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: article
 keywords: Kinect, Windows, v2, Azure Kinect, összehasonlítás, SDK, különbségek, hardver, szoftver
 ms.openlocfilehash: 0a8d399370f354524858bdd658ffd65c0494dd4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87031575"
 ---
 # <a name="azure-kinect-and-kinect-windows-v2-comparison"></a>Az Azure Kinect és a Kinect Windows v2 összehasonlítása
@@ -24,14 +24,14 @@ Az Azure Kinect Development Kit és a Windows v2 rendszerhez készült Kinect k�
 
 | Szolgáltatás | Típus | Azure Kinect DK | Windows v2 Kinect |
 | ------- | ---- | --------------- | --------------------- |
-| **Hang** | Részletek  | 7 – MIC kör alakú tömb | 4 – MIC lineáris fázisú tömb |
+| **Audió** | Részletek  | 7 – MIC kör alakú tömb | 4 – MIC lineáris fázisú tömb |
 | **Mozgásérzékelő** | Részletek | 3 tengelyes gyorsulásmérő 3 tengelyes giroszkóp | 3 tengelyes gyorsulásmérő |
 | **RGB-kamera**    | Részletek | 3840 x 2160 px @30 fps | 1920 x 1080 px @30 fps |
 | **Részletes kamera**  | Metódus   | Repülési idő | Repülési idő |
 |                   | Feloldás | 640 x 576 px @30 fps | 512 x 424 px @ 30 fps |
 |                   |            | 512 x 512 px @30 fps |                       |
 |                   |            | 1024x1024 px @15 fps |                       |
-| **Kapcsolatok** | Adatok | USB 3.1 Gen 1, USB-C típussal  | USB 3,1 Gen 1|
+| **Kapcsolódás** | Adatok | USB 3.1 Gen 1, USB-C típussal  | USB 3,1 Gen 1|
 |  | Energiaellátás | Külső PSU vagy USB-C | Külső PSU |
 |  | Szinkronizálás | RGB & belső, külső eszköz – eszköz| RGB & csak belső mélységben |
 | **Elejét vehesse** | Dimenziók | 103 x 39 x 126 mm | 249 x 66 x 67 mm |
@@ -49,7 +49,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 | **Mélység** | ✔️ | ✔️ |    |   |
 | **IR** | ✔️ | ✔️ |  |
 | **Szín** | ✔️ | ✔️ | A Színformátum támogatja a különbségeket, az Azure Kinect DK a következő kamera-vezérlőket támogatja: expozíció, fehéregyensúly, fényerő, kontraszt, telítettség, élesség és hozzáférés |
-| **Hang** | ✔️ | ✔️ | Az Azure Kinect DK mikrofonok a Speech SDK vagy a Windows natív API használatával érhetők el |
+| **Audió** | ✔️ | ✔️ | Az Azure Kinect DK mikrofonok a Speech SDK vagy a Windows natív API használatával érhetők el |
 | **IMU** | ✔️ |  | Az Azure Kinect DK teljes 6 tengelyes IMU rendelkezik, a Windows Kinect pedig csak 1 tengelyt biztosít. |
 | **Kalibrálási adatértékek** | ✔️ | ✔️ | OpenCV-kompatibilis kamera-modell kalibrálása |
 | **Mélység – RGB belső szinkronizálás** | ✔️ | ✔️ |  |
@@ -57,7 +57,7 @@ Az alábbi táblázat az alacsony szintű eszköz-érzékelő hozzáférési ké
 | **Hozzáférés megosztása több ügyféllel** | | ✔️ | Az Azure Kinect Sensor SDK az WinUSB/libUSB az eszköz elérésére támaszkodik, és nem rendelkezik olyan szolgáltatással, amely lehetővé teszi az eszközök hozzáférésének több folyamattal való megosztását. |
 | **Stream Record/lejátszás eszköz** | ✔️ | ✔️ | Az Azure Kinect DK nyílt forráskódú Matroska Container-alapú implementációt használ |
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2 szolgáltatástól, az alábbiakban részletezett módon:
 
@@ -73,6 +73,6 @@ Az Azure Kinect SDK szolgáltatáskészlet különbözik a Kinect for Windows v2
 |Arcfelismerés | FaceFrame | [Cognitive Services: Face](https://azure.microsoft.com/services/cognitive-services/face/)       |
 |    Beszédfelismerés    |    N/A                      |    [Cognitive Services: beszéd](https://azure.microsoft.com/services/cognitive-services/directory/speech/)     |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kinect a Windows fejlesztői oldalaihoz](https://developer.microsoft.com/windows/kinect)

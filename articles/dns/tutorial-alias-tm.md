@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77149949"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: aliasrekord konfigurálása a hogy, támogassa a legfelső szintű tartományneveket a Traffic Managerrel 
@@ -42,11 +42,11 @@ Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön
 Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webkiszolgálók elhelyezéséhez.
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Válassza a portál bal felső sarkában az **Erőforrás létrehozása** lehetőséget. Írja be a keresőmezőbe az *erőforráscsoport* kifejezést, és hozzon létre egy **RG-DNS-Alias-TM** nevű erőforráscsoportot.
-3. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
+3. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat** lehetőséget.
 4. Hozzon létre egy **VNet-Servers** nevű virtuális hálózatot. Helyezze az **RG-DNS-Alias-TM** erőforráscsoportba, és adja az **SN-Web** nevet az alhálózatnak.
 
 ## <a name="create-two-web-server-virtual-machines"></a>Két webkiszolgáló virtuális gép létrehozása
-1. Válassza **az erőforrás létrehozása**  >  **Windows Server 2016 virtuális gép**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **Windows Server 2016 virtuális gép** lehetőséget.
 2. Adja meg a **Web-01** nevet, és helyezze el a virtuális gépet az **RG-DNS-Alias-TM** erőforráscsoportban. Adjon meg egy felhasználónevet és egy jelszót, és válassza az **OK** lehetőséget.
 3. A **Méret** mezőben válasszon ki egy 8 GB RAM-mal rendelkező SKU-t.
 4. A **Beállítások** területen válassza a **VNet-Servers** virtuális hálózatot és az **SN-Web** alhálózatot.
@@ -73,7 +73,7 @@ Telepítse az IIS-t mind a **Web-01**, mind a **Web-02** virtuális gépen.
 2. A **Kiszolgálókezelő** irányítópulton válassza a **Szerepkörök és szolgáltatások hozzáadása** elemet.
 3. Kattintson háromszor a **Tovább** gombra. A **Kiszolgálói szerepkörök** lapon válassza a **Webkiszolgáló (IIS)** elemet.
 4. Válassza a **Szolgáltatások hozzáadása**, majd a **Tovább** elemet.
-5. Kattintson négyszer a **Tovább** gombra. Ezután válassza a **telepítés**lehetőséget. Ez az eljárás néhány percet vehet igénybe.
+5. Kattintson négyszer a **Tovább** gombra. Ezután válassza a **telepítés** lehetőséget. Ez az eljárás néhány percet vehet igénybe.
 6. A telepítés befejezése után válassza a **Bezárás** elemet.
 7. Nyisson meg egy webböngészőt. Nyissa meg a **localhost** címet, és győződjön meg róla, hogy az IIS alapértelmezett weblapja megjelenik.
 
@@ -83,9 +83,9 @@ Ismételje meg az eljárást az IIS **Web-02** virtuális gépen való telepít�
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
 1. Nyissa meg az **RG-DNS-Alias-TM** erőforráscsoportot, és válassza a **Web-01-ip** nyilvános IP-címet. Jegyezze fel az IP-címet későbbi használatra. Ismételje meg ezt a lépést a **Web-02-ip** nyilvános IP-címhez.
-1. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil** lehetőséget.
 2. Adja meg a **TM-alias-test** nevet. Helyezze az **RG-DNS-Alias-TM** erőforráscsoportba.
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 4. Az üzembe helyezés befejezése után válassza az **Erőforrás megnyitása** elemet.
 5. A Traffic Manager-profillap **Beállítások** területén válassza a **Végpontok** elemet.
 6. Válassza a **Hozzáadás** lehetőséget.
@@ -117,7 +117,7 @@ Hozzon létre egy aliasrekordot, amely a Traffic Manager-profilra mutat.
 
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti az **RG-DNS-Alias-TM** erőforráscsoportot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy aliasrekordot, hogy a legfelső szintű tartománynevet használhassa egy Traffic Manager-profilra való hivatkozáshoz. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

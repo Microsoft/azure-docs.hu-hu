@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: a3b073cdb90e0c427bfbca15c1440b9122672610
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880135"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
@@ -43,7 +43,7 @@ Először adja hozzá a projekt szintű környezeti változókat. Keresse meg a 
 * `FORMS_RECOGNIZER_RETRY_DELAY` a 1000 értékre van beállítva. Ez az érték azt az időpontot ezredmásodpercben, ameddig a program megvárja a lekérdezés újbóli megkísérlése előtt.
 * `FORMS_RECOGNIZER_MAX_ATTEMPTS` a 100 értékre van beállítva. Ez az érték az a szám, ahányszor a program lekérdezi a szolgáltatást, miközben megpróbál sikeres választ kapni.
 
-Ezután nyissa meg a _AnalyzeForm.cs_ , és keresse meg a `fieldMappings` változót, amely a fájl *field-mappings.js* hivatkozik. Ez a fájl (és az azt hivatkozó változó) meghatározza az űrlapokból kinyerni kívánt kulcsok listáját, valamint az egyes kulcsok egyéni címkéjét. Egy érték például `{ "Address:", "address" }, { "Invoice For:", "recipient" }` azt jelenti, hogy a parancsfájl csak az észlelt és a mezők értékeit fogja menteni `Address:` `Invoice For:` , és az értékeket a és a értékre fogja címkézni `"address"` `"recipient"` .
+Ezután nyissa meg a _AnalyzeForm. cs_ fájlt, és keresse meg a `fieldMappings` változót, amely a fájl *field-mappings.js* hivatkozik. Ez a fájl (és az azt hivatkozó változó) meghatározza az űrlapokból kinyerni kívánt kulcsok listáját, valamint az egyes kulcsok egyéni címkéjét. Egy érték például `{ "Address:", "address" }, { "Invoice For:", "recipient" }` azt jelenti, hogy a parancsfájl csak az észlelt és a mezők értékeit fogja menteni `Address:` `Invoice For:` , és az értékeket a és a értékre fogja címkézni `"address"` `"recipient"` .
 
 Végezetül jegyezze fel a `contentType` változót. Ez a parancsfájl az URL-cím által hivatkozott távoli dokumentumokon futtatja a megadott űrlap-felismerő modellt, így a tartalomtípus a következő: `application/json` . Ha a helyi fájlokat a HTTP-kérelmekben foglalt bájtok alapján szeretné elemezni, akkor módosítania kell a `contentType` fájlt a megfelelő [MIME-típusra](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) .
 
@@ -160,7 +160,7 @@ Ahhoz, hogy ezt a képességet egy Cognitive Search folyamat használja, hozzá 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban létrehozott egy egyéni képességet az Azure Form-felismerő szolgáltatásból. Az egyéni ismeretekkel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat. 
 

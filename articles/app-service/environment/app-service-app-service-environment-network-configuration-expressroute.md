@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961822"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Hálózati konfiguráció részletei App Service Environment PowerApps az Azure ExpressRoute
@@ -87,7 +87,7 @@ Ez a szakasz a App Service Environment UDR-konfigurációját mutatja be.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést. **Command-line tools**  >  A legújabb PowerShell-parancsmagok telepítéséhez a parancssori eszközök**Windows PowerShell**területén válassza a **telepítés** lehetőséget.
+* Telepítse a Azure PowerShellt az [Azure letöltések oldaláról][AzureDownloads]. Válasszon egy, a 2015-es vagy újabb verziót tartalmazó letöltést.   >  A legújabb PowerShell-parancsmagok telepítéséhez a parancssori eszközök **Windows PowerShell** területén válassza a **telepítés** lehetőséget.
 
 * Hozzon létre egy egyedi alhálózatot, amely kizárólagos használatra App Service Environment. Az egyedi alhálózat biztosítja, hogy az alhálózatra alkalmazott UDR csak App Service Environment számára legyen nyitott kimenő forgalom.
 

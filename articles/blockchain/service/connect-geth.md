@@ -5,10 +5,10 @@ ms.date: 05/26/2020
 ms.topic: quickstart
 ms.reviewer: maheshna
 ms.openlocfilehash: 2c5b6a56d96ac132949052e9879c8f61d41ffb06
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83994783"
 ---
 # <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Gyors útmutató: Azure Blockchain szolgáltatásbeli tranzakciós csomóponthoz való csatolás geth használata
@@ -31,7 +31,7 @@ A Azure Portal Azure Blockchain szolgáltatásbeli tranzakciós csomópontjához
 
     ![Alapértelmezett tranzakciós csomópont kiválasztása](./media/connect-geth/transaction-nodes.png)
 
-1. Válassza a **kapcsolatok karakterláncok**lehetőséget.
+1. Válassza a **kapcsolatok karakterláncok** lehetőséget.
 1. Másolja a kapcsolati karakterláncot a https-ről **(1. hozzáférési kulcs)**. A következő szakaszhoz szüksége lesz a karakterláncra.
 
     ![Kapcsolati sztring](./media/connect-geth/connection-string.png)
@@ -59,7 +59,7 @@ A Azure Portal Azure Blockchain szolgáltatásbeli tranzakciós csomópontjához
 
 1. A konzolról való leválasztáshoz írja be a következőt: `exit` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a geth-ügyfelet használta egy geth-példányhoz való csatoláshoz egy Azure Blockchain szolgáltatás-tranzakciós csomóponton. Próbálja ki a következő oktatóanyagot a Ethereum készült Azure Blockchain Development Kit használatával egy intelligens szerződési funkció létrehozásához, összeállításához, üzembe helyezéséhez és végrehajtásához tranzakción keresztül.
 

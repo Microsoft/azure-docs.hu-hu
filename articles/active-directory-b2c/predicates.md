@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97108416"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
@@ -36,7 +36,7 @@ A **predikátumok** elemnek közvetlenül a [BuildingBlocks](buildingblocks.md) 
 
 A **predikátumok** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Predikátum | 1: n | Predikátumok listája. |
 
@@ -50,20 +50,20 @@ A **predikátum** elem a következő attribútumokat tartalmazza:
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Elavult Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. |
 | Paraméterek | 1:1 | A karakterlánc-érvényesítési metódus típusának paraméterei |
 
 A **Parameters (paraméterek** ) elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Paraméter | 1: n | A karakterlánc-érvényesítési metódus típusának paraméterei |
 
 A **paraméter** elem a következő attribútumokat tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Id | 1:1 | A paraméter azonosítója. |
 
@@ -172,7 +172,7 @@ A **PredicateValidations** elemnek közvetlenül kell szerepelnie a **predikátu
 
 A **PredicateValidations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | A predikátum érvényesítésének listája. |
 
@@ -184,13 +184,13 @@ A **PredicateValidation** elem a következő attribútumot tartalmazza:
 
 A **PredicateValidation** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Predikátum-csoportok listája. |
 
 A **PredicateGroups** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Predikátumok listája. |
 
@@ -202,7 +202,7 @@ A **PredicateGroup** elem a következő attribútumot tartalmazza:
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  A predikátum leírása, amely hasznos lehet a felhasználók számára, hogy tudják, milyen értékeket kell beírniuk. |
 | PredicateReferences | 1: n | A predikátumokra vonatkozó hivatkozások listája. |
@@ -215,7 +215,7 @@ A **PredicateReferences** elem a következő attribútumokat tartalmazza:
 
 A **PredicateReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Egy predikátumra mutató hivatkozás. |
 

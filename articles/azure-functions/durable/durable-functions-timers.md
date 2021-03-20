@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
 ms.openlocfilehash: bb91f205a9b83b0b4b410644ef6c0fcbbf60876a
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91876447"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Időzítők Durable Functions (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) A Durable functions *tartós időzítőket* biztosít a Orchestrator függvényekben a késések megvalósításához, illetve az aszinkron műveletek időtúllépésének beállításához. Tartós időzítőket kell használni a és a ( `Thread.Sleep` `Task.Delay` C#) és a `setTimeout()` `setInterval()` (JavaScript), vagy `time.sleep()` (Python) helyett a Orchestrator függvényekben.
+[](durable-functions-overview.md) A Durable functions *tartós időzítőket* biztosít a Orchestrator függvényekben a késések megvalósításához, illetve az aszinkron műveletek időtúllépésének beállításához. Tartós időzítőket kell használni a és a ( `Thread.Sleep` `Task.Delay` C#) és a `setTimeout()` `setInterval()` (JavaScript), vagy `time.sleep()` (Python) helyett a Orchestrator függvényekben.
 
 Egy tartós időzítőt úgy hozhat létre, hogy meghívja a `CreateTimer` (.net) metódust vagy a `createTimer` (JavaScript) metódust a koordinációs [trigger kötéséhez](durable-functions-bindings.md#orchestration-trigger). A metódus egy olyan feladatot ad vissza, amely egy adott dátumon és időpontban fejeződik be.
 

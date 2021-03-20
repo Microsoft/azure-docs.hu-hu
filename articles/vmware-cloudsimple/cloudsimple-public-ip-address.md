@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77024976"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple nyilvános IP-cím áttekintése
@@ -31,6 +31,6 @@ Nyilvános IP-cím használata a bejövő kommunikációhoz:
 * A forgalom figyelése és a gyakori hálózati szintű támadások valós idejű enyhítése. Ezek a védelem a Microsoft online szolgáltatások által használt védelem.
 * Az Azure globális hálózatának teljes skálája. A hálózat használható a különböző régiók közötti támadási forgalom elosztására és enyhítésére.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató [nyilvános IP-cím lefoglalásához](public-ips.md)

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan kezelheti Azure Lab Services felhasználói lis
 ms.topic: article
 ms.date: 10/07/2020
 ms.openlocfilehash: fa8f96a84be5c4c91e0153216e15963ec0e3d6f8
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91946649"
 ---
 # <a name="manage-lab-services-user-lists-from-teams"></a>A labor Services felhasználói listájainak kezelése a csapatokból
@@ -29,7 +29,7 @@ Az automatikus vagy manuális szinkronizálás befejeződése után az alábbiak
     * Ha a csapat új kiegészítésekkel bővül, az új virtuális gépek jönnek létre.
     * Ha bármelyik felhasználó törölve lett a csapatból, akkor a társított virtuális gép is törlődik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a sablon virtuális gépe be van állítva, és amikor a pedagógus kiválasztja a sablon közzétételét, a rendszer létrehozza a labor felhasználói listájában lévő felhasználók számával megegyező virtuális gépek számát. Miután a labor közzé lett téve, és virtuális gépek jönnek létre, a rendszer automatikusan regisztrálja a felhasználókat a laborban, és az első bejelentkezéskor a virtuális gépek hozzá lesznek rendelve a Azure Lab Serviceshoz, amikor először hozzáférnek a laphoz **Azure Lab Services** alkalmazással. 
 

@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6c5f5b8e437ad2dc2e8a3be3f3f2ed03a613b44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75650525"
 ---
 # <a name="adding-custom-resources-to-azure-rest-api"></a>Egyéni erőforrások hozzáadása az Azure REST APIhoz
@@ -18,7 +18,7 @@ Ez a cikk az egyéni erőforrásokat megvalósító Azure-beli egyéni erőforr�
 
 ## <a name="how-to-define-a-resource-endpoint"></a>Erőforrás-végpont definiálása
 
-A **végpont** olyan URL-cím, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést az IT és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta egy, **resourceType** a `myCustomResource` által megvalósított resourceType rendelkezik `endpointURL` .
+A **végpont** olyan URL-cím, amely egy szolgáltatásra mutat, amely megvalósítja az alapul szolgáló szerződést az IT és az Azure között. A végpont az egyéni erőforrás-szolgáltatóban van definiálva, és bármely nyilvánosan elérhető URL-cím lehet. Az alábbi minta egy,  a `myCustomResource` által megvalósított resourceType rendelkezik `endpointURL` .
 
 Minta **ResourceProvider**:
 
@@ -56,7 +56,7 @@ Az összes erőforrás lekérése ( `GET` ):
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResource
 ```
 
-Egyéni erőforrások esetében az egyéni erőforrás-szolgáltatók kétféle **routingTypes**kínálnak: " `Proxy` " és "" `Proxy, Cache` .
+Egyéni erőforrások esetében az egyéni erőforrás-szolgáltatók kétféle **routingTypes** kínálnak: " `Proxy` " és "" `Proxy, Cache` .
 
 ### <a name="proxy-routing-type"></a>proxy útválasztási típusa
 
@@ -106,7 +106,7 @@ Paraméter | Kötelező | Leírás
 ---|---|---
 teljes objektum | *igen* | Azt jelzi, hogy a tulajdonságok objektum olyan egyéb beállításokat tartalmaz, mint például a hely, a címkék, az SKU és/vagy a csomag.
 id | *igen* | Az egyéni erőforrás erőforrás-azonosítója. Ez a **ResourceProvider** kívül van
-properties | *igen* | A **végpontnak**küldendő kérelem törzse.
+properties | *igen* | A **végpontnak** küldendő kérelem törzse.
 
 Egyéni Azure-erőforrás törlése:
 
@@ -116,7 +116,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Paraméter | Kötelező | Leírás
 ---|---|---
-id | *igen* | Az egyéni erőforrás erőforrás-azonosítója. Ez a **ResourceProvider**kívülről is fennáll.
+id | *igen* | Az egyéni erőforrás erőforrás-azonosítója. Ez a **ResourceProvider** kívülről is fennáll.
 
 Egyéni Azure-erőforrás beolvasása:
 
@@ -131,7 +131,7 @@ id | *igen* | Az egyéni erőforrás erőforrás-azonosítója. Ez a **ResourceP
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
 
 > [!NOTE]
-> Az erőforrásokhoz szükséges, hogy a válasz megfelelő `id` , `name` és `type` a **végponttól**is tartalmazzon.
+> Az erőforrásokhoz szükséges, hogy a válasz megfelelő `id` , `name` és `type` a **végponttól** is tartalmazzon.
 
 Azure Resource Manager-sablonokhoz `id` a, a `name` és a rendszernek megfelelően kell visszaadni `type` az alsóbb rétegbeli végpontot. A visszaadott erőforrás-válasznak a következő formában kell szerepelnie:
 
@@ -180,7 +180,7 @@ resourceTypeName | *igen* | Az egyéni szolgáltatóban definiált **resourceTyp
 resourceProviderName | *igen* | Az egyéni erőforrás-szolgáltató példányának neve.
 customResourceName | *igen* | Az egyéni erőforrás neve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](overview.md)
 - [Rövid útmutató: Azure egyéni erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)

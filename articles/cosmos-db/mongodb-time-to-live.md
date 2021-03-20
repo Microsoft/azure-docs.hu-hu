@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 12/26/2018
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 6ef3092c611e1eede2be1e0994ce69959a46f1d7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340923"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Adatok lejárttá tétele a MongoDB-hez készült Azure Cosmos DB API-val
@@ -79,6 +79,6 @@ A dokumentumon belüli TTL funkció a Azure Cosmos DB API-MongoDB is aktiválhat
 
 :::image type="content" source="./media/mongodb-ttl/mongodb_portal_ttl.png" alt-text="Képernyőkép a dokumentumon belüli TTL funkció aktiválásáról a portálon":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Cosmos DB automatikusan lejár az idő az élettartammal](../cosmos-db/time-to-live.md)
 * [A Cosmos-adatbázis indexelése a MongoDB Azure Cosmos DB API-val konfigurálva](../cosmos-db/mongodb-indexing.md)

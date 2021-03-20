@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880152"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>A partneri VPN-eszközök konfigurációinak áttekintése
@@ -148,5 +148,5 @@ A S2S VPN-kapcsolat létrehozásakor igény szerint [a BGP-t is használhatja a 
     New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az aktív-aktív VPN-átjárók beállításával kapcsolatos részletes utasításokért lásd: [aktív-aktív VPN-átjárók konfigurálása a létesítmények közötti és VNet-VNet kapcsolatokhoz](vpn-gateway-activeactive-rm-powershell.md).

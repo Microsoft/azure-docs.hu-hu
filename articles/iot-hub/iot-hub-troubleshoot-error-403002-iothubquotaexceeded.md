@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 8312c3267e826088f34b3bffe1520703eec00bdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76961113"
 ---
 # <a name="403002-iothubquotaexceeded"></a>403002 IoTHubQuotaExceeded
@@ -31,7 +31,7 @@ Túllépte az IoT hub napi üzenetre vonatkozó kvótáját.
 
 [Frissítse vagy növelje az IoT hub egységeit](iot-hub-upgrade.md) , vagy várjon a következő UTC napra a napi kvóta frissítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogy a műveletek hogyan számítanak bele a kvótába, mint például a Twin-lekérdezések és a közvetlen metódusok, tekintse meg a [IoT hub díjszabását](iot-hub-devguide-pricing.md#charges-per-operation)
 * A napi kvóta-használat figyelésének beállításához állítson be egy riasztást a *felhasznált üzenetek teljes számával*. Részletes útmutatásért lásd: [mérőszámok és riasztások beállítása IoT hub](tutorial-use-metrics-and-diags.md#set-up-metrics) használatával

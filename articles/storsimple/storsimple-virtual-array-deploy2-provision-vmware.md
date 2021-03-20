@@ -9,14 +9,14 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87021477"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple virtuális tömb üzembe helyezése VMware-ben
-![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra.A második lépés második része a VMware-ben kiépítve van, és ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
+![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra. A második lépés második része a VMware-ben kiépítve van, és ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Áttekintés
 
@@ -83,7 +83,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 3. Az vSphere-ügyfélben a bal oldali ablaktábla leltár területén válassza ki az ESXi-kiszolgálót.
 
    ![Képernyőkép a vSphere-ügyfél főoldaláról. A leltár szakaszban az ESXi-kiszolgáló ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image2.png)
-4. Töltse fel a VMDK-t az ESXi-kiszolgálóra. Navigáljon a **konfiguráció** lapra a jobb oldali ablaktáblán. A **hardver**területen válassza a **tároló**elemet.
+4. Töltse fel a VMDK-t az ESXi-kiszolgálóra. Navigáljon a **konfiguráció** lapra a jobb oldali ablaktáblán. A **hardver** területen válassza a **tároló** elemet.
 
    ![A vSphere-ügyfél konfiguráció lapját ábrázoló képernyőkép. A hardver szakaszban a tárterület ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image3.png)
 5. A jobb oldali panelen a **Datastores** (Adattárak) területen válassza ki azt az adattárat, amelybe fel kívánja tölteni a VMDK-t. Az adattárnak elegendő szabad hellyel kell rendelkeznie az operációs rendszer és az adatlemezek számára.
@@ -101,7 +101,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 9. Az új mappa megjelenik a **Datastore Browser** (Adattártallózó) bal oldali panelén.
 
    ![Képernyőkép egy adattár-böngészőről, amely az új mappában látható a mappa-hierarchiában.](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Kattintson a feltöltés ikonra :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png"::: , és válassza a **fájl feltöltése**lehetőséget.
+10. Kattintson a feltöltés ikonra :::image type="icon" source="./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png"::: , és válassza a **fájl feltöltése** lehetőséget.
 
     ![Képernyőfelvétel: a feltöltés ikon helyi menüjének megjelenítése. A fájl feltöltése elemet választotta ki.](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Tallózással keresse meg a letöltött VMDK-fájlokat. Kettő fájl érhető el. Válasszon ki egy feltöltendő fájlt.
@@ -113,7 +113,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
     ![Képernyőfelvétel egy adattár-böngészőről. Az új mappa ki van emelve a mappa-hierarchiában, és a feltöltött fájl látható a mappában.](./media/storsimple-virtual-array-deploy2-provision-vmware/image14.png)
 
     Most töltse fel a második VMDK-fájlt is ugyanarra az adattárra.
-14. Lépjen vissza a vSphere-ügyfél ablakába. Ha az ESXi-kiszolgáló ki van választva, kattintson a jobb gombbal, és válassza az **új virtuális gép**lehetőséget.
+14. Lépjen vissza a vSphere-ügyfél ablakába. Ha az ESXi-kiszolgáló ki van választva, kattintson a jobb gombbal, és válassza az **új virtuális gép** lehetőséget.
 
     ![Képernyőfelvétel az ESXi-kiszolgáló helyi menüjéről. Az új virtuálisgép-eleme ki van választva.](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
 15. Ekkor megjelenik az **új virtuális gép létrehozása** ablak. A **konfiguráció** lapon válassza az **Egyéni** lehetőséget. Kattintson a **Tovább** gombra.
@@ -124,10 +124,10 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 17. A **tárterület** lapon válassza ki a virtuális gép kiépítéséhez használni kívánt adattárt.
 
     ![Képernyőkép az új virtuális gép létrehozása ablak Storage oldaláról. Egy adattár van kiválasztva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. A **virtuális gép verziója** lapon válassza a **virtuális gép verziója: 8**elemet.
+18. A **virtuális gép verziója** lapon válassza a **virtuális gép verziója: 8** elemet.
 
     ![Képernyőkép a virtuális gép verziójának oldaláról. A virtuális gép 8-as verziója beállítás ki van választva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. A **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszert** **windowsként**. **Verzió**esetén a legördülő listából válassza a **Microsoft Windows Server 2012 (64 bites)** lehetőséget.
+19. A **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszert** **windowsként**. **Verzió** esetén a legördülő listából válassza a **Microsoft Windows Server 2012 (64 bites)** lehetőséget.
 
     ![Képernyőfelvétel a vendég operációs rendszer oldaláról a Windows kiválasztásával, a Microsoft Windows Server 2012 (64 bites) verzióra beállított verzió, majd a következő Kiemelt elem.](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. A **processzorok** lapon állítsa be a virtuális szoftvercsatornák **számát** és a **magok számát virtuális socket** -ként, hogy a **magok teljes száma** 4 (vagy több) legyen. Kattintson a **Tovább** gombra.
@@ -142,28 +142,28 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 23. Az **SCSI-vezérlő** lapon fogadja el az alapértelmezett **LSI Logic sas-vezérlőt**.
 
     ![Képernyőkép az SCSI-vezérlő oldaláról. Az L S I Logic S A S beállítás van kiválasztva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
-24. A **lemez kiválasztása** lapon válassza a **meglévő virtuális lemez használata**lehetőséget. Kattintson a **Tovább** gombra.
+24. A **lemez kiválasztása** lapon válassza a **meglévő virtuális lemez használata** lehetőséget. Kattintson a **Tovább** gombra.
 
     ![Képernyőfelvétel a lemez kiválasztása lapról, a meglévő virtuális lemez használata lehetőség kiválasztásával és a Tovább gombot kiemelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
-25. A **meglévő lemez kijelölése** lap **lemez elérési útja**területén kattintson a **Tallózás**gombra. Ekkor megnyílik a **tallózási** adattárolók párbeszédpanel. Navigáljon arra a helyre, ahová a VMDK feltöltötte. Most már csak egy fájl jelenik meg az adattárban, mert az eredetileg feltöltött két fájl össze lett fésülve. Válassza ki a fájlt, majd kattintson **az OK**gombra. Kattintson a **Tovább** gombra.
+25. A **meglévő lemez kijelölése** lap **lemez elérési útja** területén kattintson a **Tallózás** gombra. Ekkor megnyílik a **tallózási** adattárolók párbeszédpanel. Navigáljon arra a helyre, ahová a VMDK feltöltötte. Most már csak egy fájl jelenik meg az adattárban, mert az eredetileg feltöltött két fájl össze lett fésülve. Válassza ki a fájlt, majd kattintson **az OK** gombra. Kattintson a **Tovább** gombra.
 
     ![Képernyőkép a meglévő lemez kiválasztása oldalról. A Tallózás gomb ki van emelve, és egy párbeszédpanel egy fájlt és egy kiemelt OK gombot tartalmaz.](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
-26. A **Speciális beállítások** lapon fogadja el az alapértelmezett beállítást, és kattintson a **tovább**gombra.
+26. A **Speciális beállítások** lapon fogadja el az alapértelmezett beállítást, és kattintson a **tovább** gombra.
 
     ![Képernyőkép a speciális beállítások lapról. A tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image27.png)
 27. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. **A befejezés előtt keresse meg a virtuális gép beállításainak szerkesztését**. Kattintson a **Folytatás** gombra.
 
     ![Képernyőkép a készen áll a befejezésről oldalon egy kiemelt folytatás gombbal. A virtuális gép beállításainak szerkesztése a befejezés előtt beállítás be van jelölve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. A **Virtual Machines tulajdonságok** lap **hardver** lapján keresse meg az eszköz hardverét. Válassza az **új merevlemez**lehetőséget. Kattintson a **Hozzáadás** parancsra.
+28. A **Virtual Machines tulajdonságok** lap **hardver** lapján keresse meg az eszköz hardverét. Válassza az **új merevlemez** lehetőséget. Kattintson a **Hozzáadás** parancsra.
 
     ![Képernyőkép a Virtual Machines Tulajdonságok lap hardver lapján. Az új merevlemez ki van választva a hardverek listájában. A Hozzáadás gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
-29. Ekkor megjelenik a **hardver hozzáadása** ablak. Az **eszköz típusa** lapon, **a válassza ki a hozzáadni kívánt eszköz típusát**területen válassza a **merevlemez**lehetőséget, majd kattintson a **tovább**gombra.
+29. Ekkor megjelenik a **hardver hozzáadása** ablak. Az **eszköz típusa** lapon, **a válassza ki a hozzáadni kívánt eszköz típusát** területen válassza a **merevlemez** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Képernyőkép a hardver hozzáadása ablak eszköz típusa lapján. A merevlemez-eszköz ki van választva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
-30. A **lemez kiválasztása** lapon válassza az **új virtuális lemez létrehozása**lehetőséget. Kattintson a **Tovább** gombra.
+30. A **lemez kiválasztása** lapon válassza az **új virtuális lemez létrehozása** lehetőséget. Kattintson a **Tovább** gombra.
 
     ![Képernyőkép a lemez kiválasztása lapról. Az új virtuális lemez létrehozása lehetőség ki van választva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. A **lemez létrehozása** lapon módosítsa a **lemez méretét** 500 GB-ra (vagy akár többre). A minimális követelmény a 500 GB, így mindig nagyobb méretű lemez helyezhető üzembe. Vegye figyelembe, hogy a kiépítés után nem lehet kibontani vagy csökkenteni a lemezt. A kiépíthető lemez méretével kapcsolatos további információkért tekintse át az [ajánlott eljárásokat tartalmazó dokumentum](storsimple-ova-best-practices.md)méretezési szakaszát. A **lemez kiépítése**területen válassza a **vékony kiépítés**lehetőséget. Kattintson a **Tovább** gombra.
+31. A **lemez létrehozása** lapon módosítsa a **lemez méretét** 500 GB-ra (vagy akár többre). A minimális követelmény a 500 GB, így mindig nagyobb méretű lemez helyezhető üzembe. Vegye figyelembe, hogy a kiépítés után nem lehet kibontani vagy csökkenteni a lemezt. A kiépíthető lemez méretével kapcsolatos további információkért tekintse át az [ajánlott eljárásokat tartalmazó dokumentum](storsimple-ova-best-practices.md)méretezési szakaszát. A **lemez kiépítése** területen válassza a **vékony kiépítés** lehetőséget. Kattintson a **Tovább** gombra.
 
     ![Képernyőkép a lemez létrehozása lapról. A lemez mérete 500 GB, a vékony kiépítés lehetőség van kiválasztva, és a tovább gomb kiemelve jelenik meg.](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. A **Speciális beállítások** lapon fogadja el az alapértelmezett értéket.
@@ -240,6 +240,6 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 * Diagnosztikai tesztek futtatása a [webes felhasználói felület beállításának hibakereséséhez](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Naplófájlok előállítása és a naplófájlok megtekintése](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A StorSimple virtuális tömb beállítása fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 * [A StorSimple virtuális tömb beállítása iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

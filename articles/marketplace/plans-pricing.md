@@ -8,10 +8,10 @@ author: mingshen
 ms.author: mingshen
 ms.date: 09/02/2020
 ms.openlocfilehash: e97171e61814b832e78f7bd815d8d6f341a90840
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91858172"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>A kereskedelmi Piactéri ajánlatok csomagjai és díjszabása
@@ -114,15 +114,15 @@ A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos
 
 A Egyesült Államok dollárban beállított díjak (USD) az összes kiválasztott piac helyi pénznemére lesznek átalakítva, az aktuális árfolyamok alapján, a mentéskor. A közzététel előtt érvényesítse ezeket az árakat az árképzési táblázat exportálásával, és tekintse át az árat a kiválasztott piacokon.
 
-1. Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását. A **díjszabás és rendelkezésre állás** lap alján kattintson a **Piszkozat mentése**gombra.
-1. A **díjszabás**területen válassza ki az **exportálási díjszabási** hivatkozást.
+1. Először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását. A **díjszabás és rendelkezésre állás** lap alján kattintson a **Piszkozat mentése** gombra.
+1. A **díjszabás** területen válassza ki az **exportálási díjszabási** hivatkozást.
 1. Nyissa meg a exportedPrice.xlsx fájlt a Microsoft Excelben.
 1. A számolótáblában végezze el a kívánt frissítéseket a díjszabási adatokhoz, majd mentse a következőt:. CSV-fájl.
     > [!NOTE]
     > Előfordulhat, hogy a fájl frissítése előtt engedélyeznie kell a szerkesztést az Excelben.
-1. A díjszabás **és rendelkezésre állás** lapon, a **díjszabás**területen válassza a **díjszabási adat importálása** hivatkozást.
-1. A megjelenő párbeszédpanelen válassza az **Igen**lehetőséget.
-1. Válassza ki a frissített exportedPrice.xlsx fájlt, majd kattintson a **Megnyitás**gombra.
+1. A díjszabás **és rendelkezésre állás** lapon, a **díjszabás** területen válassza a **díjszabási adat importálása** hivatkozást.
+1. A megjelenő párbeszédpanelen válassza az **Igen** lehetőséget.
+1. Válassza ki a frissített exportedPrice.xlsx fájlt, majd kattintson a **Megnyitás** gombra.
 
 ## <a name="plan-visibility"></a>Terv láthatósága
 

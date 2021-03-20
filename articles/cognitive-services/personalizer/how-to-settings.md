@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 9b7347cb98bcbf2e1d92f115d404197083acef4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91292608"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Személyre szabott tanulási hurok konfigurálása
@@ -51,7 +51,7 @@ Konfigurálja a szolgáltatást a tanulási ciklusban a jutalmak használatára.
 |Alapértelmezett jutalom|Ha nem fogadja el a személyre szabott jutalmat a rangsorolási várakozási idő időszaka alatt, a személyre szabási híváshoz rendelt jutalmazási időablakban az alapértelmezett jutalom lesz hozzárendelve. Alapértelmezés szerint a legtöbb esetben az alapértelmezett jutalom nulla (0).|
 |Jutalom összesítése|Ha ugyanahhoz a Range API-híváshoz több jutalom érkezik, a rendszer ezt az összesítési módszert használja: **Sum** vagy **legkorábbi**. A legkorábbi pontszámot kapott, és elveti a többit. Ez akkor hasznos, ha egyedi jutalmat szeretne használni a lehetséges duplikált hívások között. |
 
-Az értékek módosítása után válassza a **Mentés**lehetőséget.
+Az értékek módosítása után válassza a **Mentés** lehetőséget.
 
 ## <a name="configure-exploration-to-allow-the-learning-loop-to-adapt"></a>A felderítés konfigurálása, amely lehetővé teszi, hogy a tanulási hurok alkalmazkodjon
 
@@ -61,7 +61,7 @@ Az érték módosításakor a rendszer alaphelyzetbe állítja az aktuális szem
 
 ![A feltárási érték határozza meg, hogy a rangsorolási hívások hány százalékát kell megválaszolni a feltárással](media/settings/configure-exploration-setting.png)
 
-Az érték módosítása után válassza a **Mentés**lehetőséget.
+Az érték módosítása után válassza a **Mentés** lehetőséget.
 
 <a name="model-update-frequency"></a>
 
@@ -77,13 +77,13 @@ A **modell frissítési gyakorisága** határozza meg, hogy a modell milyen gyak
 
 ![A modell frissítési gyakorisága határozza meg, hogy milyen gyakran van új személyre szabott modell újratanítása.](media/settings/configure-model-update-frequency-settings-15-minutes.png)
 
-Az érték módosítása után válassza a **Mentés**lehetőséget.
+Az érték módosítása után válassza a **Mentés** lehetőséget.
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
 **Az adatmegőrzési időszak** azt állítja be, hogy hány nap személy tartja az adatnaplókat. Az [Offline értékelések](concepts-offline-evaluation.md)végrehajtásához múltbeli adatnaplókra van szükség, amelyek a személyre szabott és a tanulási szabályzatok optimalizálására szolgálnak.
 
-Az érték módosítása után válassza a **Mentés**lehetőséget.
+Az érték módosítása után válassza a **Mentés** lehetőséget.
 
 
 

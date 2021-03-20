@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 1/13/2021
 ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98209763"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
@@ -219,7 +219,7 @@ Engedélyezett régiók:
 
 Ezek a nagy kapacitású szolgáltatási szintjére vonatkozó jelenlegi korlátozások a GA-ban.  Aktívan dolgozunk azon, hogy minél több korlátozást távolítson el.
 
-| Probléma | Leírás |
+| Probléma | Description |
 | :---- | :--------- |
 | A kiszolgálók biztonsági mentések panelje nem jeleníti meg a nagy kapacitású-adatbázisokat. Ezek a nézet alapján lesznek szűrve.  | A nagy kapacitású külön módszert biztosít a biztonsági mentések kezeléséhez, így a Long-Term megőrzési és időponthoz tartozó biztonsági mentési adatmegőrzési beállítások nem érvényesek. Ennek megfelelően a nagy kapacitású-adatbázisok nem jelennek meg a biztonsági mentés kezelése ablaktáblán.<br><br>A más Azure SQL Database nagy kapacitású áttelepített adatbázisok esetében a rendszer megőrzi az áttelepítés előtti biztonsági mentéseket a forrásadatbázis [biztonsági mentési megőrzési](automated-backups-overview.md#backup-retention) idejének időtartamára. Ezek a biztonsági másolatok a forrásadatbázis az áttelepítés előtti időpontra történő [visszaállítására](recovery-using-backups.md#programmatic-recovery-using-automated-backups) használhatók.|
 | Adott időpontnak megfelelő helyreállítás | Nem nagy kapacitású adatbázis nem állítható vissza nagy kapacitású-adatbázisként, és a nagy kapacitású-adatbázis nem állítható vissza nem nagy kapacitású-adatbázisként. Egy olyan nem nagy kapacitású adatbázis esetében, amely a nagy kapacitású való áttelepítéssel lett áttelepítve, és az adatbázis biztonsági mentésének megőrzési időszakán belül egy adott időpontra van állítva, a rendszer [programozott](recovery-using-backups.md#programmatic-recovery-using-automated-backups)módon támogatja a visszaállítást. A visszaállított adatbázis nem nagy kapacitású lesz. |

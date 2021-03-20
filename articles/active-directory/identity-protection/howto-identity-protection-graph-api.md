@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2db8cfe652c0fca4b68b00d846e345c1b60cd05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880236"
 ---
 # <a name="azure-active-directory-identity-protection-and-the-microsoft-graph-powershell-sdk"></a>Azure Active Directory Identity Protection és az Microsoft Graph PowerShell SDK
@@ -70,7 +70,7 @@ Ebben a példában olyan alkalmazás-engedélyeket konfigurálunk, amelyek lehet
 1. A létrehozott **alkalmazásból** válassza a **tanúsítványok & Secrets** elemet.
 1. A **tanúsítványok** területen válassza a **tanúsítvány feltöltése** lehetőséget.
    1. Válassza ki a korábban exportált tanúsítványt a megnyíló ablakból.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
 1. Jegyezze fel a tanúsítvány **ujjlenyomatát** , mert erre az információra szüksége lesz a következő lépésben.
 
 ## <a name="list-risky-users-using-powershell"></a>Kockázatos felhasználók listázása a PowerShell használatával
@@ -91,7 +91,7 @@ Connect-MgGraph -ClientId $ClientID -TenantId $tenantdomain -CertificateThumbpri
 Get-MgRiskyUser -All
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedés a Microsoft Graph PowerShell SDK-val](/graph/powershell/get-started)
 - [Oktatóanyag: kockázatok azonosítása és szervizelése Microsoft Graph API-k használatával](/graph/tutorial-riskdetection-api)

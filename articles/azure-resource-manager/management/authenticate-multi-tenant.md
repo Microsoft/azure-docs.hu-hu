@@ -4,10 +4,10 @@ description: Leírja, hogyan kezeli a Azure Resource Manager a különböző bé
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.openlocfilehash: 7a13ba6f6cbfc10c52484c45e4011da7a0d8ee4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75478824"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Kérelmek hitelesítése a bérlők között
@@ -18,7 +18,7 @@ Több-bérlős alkalmazások létrehozásakor előfordulhat, hogy a különböz�
 
 A kérelem a következő hitelesítési fejléc-értékekkel rendelkezik:
 
-| Fejléc neve | Leírás | Példaérték |
+| Fejléc neve | Description | Példaérték |
 | ----------- | ----------- | ------------ |
 | Engedélyezés | Elsődleges jogkivonat | Tulajdonos &lt; elsődleges – token&gt; |
 | x-MS-Authorization-kiegészítő | Kiegészítő tokenek | Tulajdonos &lt; -kiegészítő – token1 &gt; , EncryptedBearer &lt; -kiegészítő – token2 &gt; , tulajdonosi &lt; segéd – token3&gt; |
@@ -33,7 +33,7 @@ Amikor az alkalmazás egy kérelmet küld a Resource managernek, a rendszer az e
 
 Ha a kérelem egy másik bérlőtől származó erőforrásra hivatkozik, a Resource Manager ellenőrzi a kisegítő jogkivonatokat annak megállapításához, hogy a kérés feldolgozható-e. A fejlécben szereplő összes kiegészítő tokennek érvényesnek és lejártnak kell lennie. Ha bármelyik jogkivonat lejárt, a Resource Manager egy 401-es választ ad vissza. A válasz tartalmazza az ügyfél-azonosítót és a bérlő AZONOSÍTÓját, amely érvénytelen a jogkivonat esetében. Ha a kiegészítő fejléc érvényes jogkivonatot tartalmaz a bérlőhöz, a rendszer feldolgozza a több-bérlős kérelmet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hitelesítési kérelmekkel kapcsolatos további tudnivalókért lásd: [hitelesítési folyamatok és alkalmazási forgatókönyvek](../../active-directory/develop/authentication-flows-app-scenarios.md).
 * További információ a tokenekről: [Azure Active Directory hozzáférési tokenek](../../active-directory/develop/access-tokens.md).

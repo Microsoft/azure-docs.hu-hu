@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75692576"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
@@ -32,7 +32,7 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
    2. Válasszon ki egy Azure- **előfizetést** , amely az Event hub-t tartalmazza.
    3. Válassza ki vagy hozza létre az Event hub-t tartalmazó **erőforráscsoportot** .
    4. Válasszon egy **helyet** , amelyben létre kívánja hozni az erőforrást. 
-   5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+   5. Válassza az **Áttekintés + létrehozás** lehetőséget.
    
         ![Felülvizsgálat + létrehozás, Storage-fiók létrehozása, Microsoft Azure Portal](./media/event-hubs-create-storage/review-create.png)
 
@@ -42,13 +42,13 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
 5. Miután megtalálta a **központi telepítések sikeres** üzenetét az értesítésekben, válassza az **erőforrás** megnyitása lehetőséget a Storage-fiók lap megnyitásához. Azt is megteheti, hogy kibontja a **központi telepítés részleteit** , majd kiválasztja az új erőforrást az erőforrások listájából.  
 
     ![Ugrás az erőforrás, a Storage-fiók üzembe helyezése, Microsoft Azure Portal](./media/event-hubs-create-storage/go-to-resource.png) 
-6. Válassza a **tárolók**lehetőséget.
+6. Válassza a **tárolók** lehetőséget.
 
     ![Válassza ki a Blobok tároló szolgáltatást, a Storage-fiókokat, Microsoft Azure Portal](./media/event-hubs-create-storage/select-blob-container-service.png)
 7. Válassza a felső **+ tároló** elemet, adja meg a tároló **nevét** , majd kattintson **az OK gombra**. 
 
     ![Új blob-tároló, Storage-fiók létrehozása Microsoft Azure Portal](./media/event-hubs-create-storage/create-new-blob-container.png)
-8. Válassza a **hozzáférési kulcsok** elemet a **Storage-fiók** lap menüjében, és másolja a **key1**értékét.
+8. Válassza a **hozzáférési kulcsok** elemet a **Storage-fiók** lap menüjében, és másolja a **key1** értékét.
 
     Mentse a következő értékeket a Jegyzettömbbe vagy egy másik ideiglenes helyre.
     - A Storage-fiók neve

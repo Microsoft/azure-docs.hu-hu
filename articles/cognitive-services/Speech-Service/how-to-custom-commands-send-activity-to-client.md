@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94566095"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
@@ -86,7 +86,7 @@ Mivel létrehozott egy JSON-adattartalmat, a deszerializálás kezeléséhez hoz
 
 1. A jobb ügyfél a megoldás.
 1. Válassza **a megoldás NuGet-csomagok kezelése** lehetőséget, majd kattintson a **Tallózás gombra** . 
-1. Ha már telepített **Newtonsoft.jsa-on** , győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez** , és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
+1. Ha már telepített **Newtonsoft.jsa-on**, győződjön meg arról, hogy a verziószáma legalább 12.0.3. Ha nem, lépjen a **NuGet-csomagok kezelése a megoldáshoz-frissítésekhez**, és keressen rá **Newtonsoft.jsa** frissítéshez. Ez az útmutató a 12.0.3 verzióját használja.
 
     > [!div class="mx-imgBorder"]
     > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-json-nuget.png)

@@ -9,10 +9,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 136853182e353ad5cd71981db5935fc3babe162e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93339601"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Az adatáttelepítés Azure Cosmos DB SQL API-fiókba a Striim használatával
@@ -30,13 +30,13 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle-adatbázisb�
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>A Striim Marketplace-megoldás üzembe helyezése
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza az **erőforrás létrehozása** lehetőséget, és keresse meg a **Striim** az Azure Marketplace-en. Válassza ki az első lehetőséget, és **hozzon létre**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-azure-marketplace.png" alt-text="Striim Marketplace-tétel keresése":::
 
-1. Ezután adja meg a Striim-példány konfigurációs tulajdonságait. A Striim-környezet üzembe helyezése egy virtuális gépen történik. Az **alapvető beállítások** panelen adja meg a virtuális gép **felhasználónevét** , a **virtuális gép jelszavát** (ezt a jelszót használja a rendszer az SSH-ba a virtuális géphez). Válassza ki az **előfizetését** , az **erőforráscsoportot** és a **hely részleteit** , ahol a Striim telepíteni szeretné. Ha elkészült, kattintson **az OK gombra**.
+1. Ezután adja meg a Striim-példány konfigurációs tulajdonságait. A Striim-környezet üzembe helyezése egy virtuális gépen történik. Az **alapvető beállítások** panelen adja meg a virtuális gép **felhasználónevét**, a **virtuális gép jelszavát** (ezt a jelszót használja a rendszer az SSH-ba a virtuális géphez). Válassza ki az **előfizetését**, az **erőforráscsoportot** és a **hely részleteit** , ahol a Striim telepíteni szeretné. Ha elkészült, kattintson **az OK gombra**.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-configure-basic-settings.png" alt-text="A Striim alapszintű beállításainak konfigurálása":::
 
@@ -50,7 +50,7 @@ Ez a cikk bemutatja, hogyan telepítheti át az Striim egy **Oracle-adatbázisb�
 
    Az űrlap kitöltése után a folytatáshoz kattintson **az OK gombra** .
 
-1. A **Striim-hozzáférési beállítások** panelen konfigurálja a **nyilvános IP-címet** (válassza ki az alapértelmezett értékeket), a **Striim** , a Striim felhasználói felületére való bejelentkezéshez használni kívánt **rendszergazdai jelszót** . Konfigurálja a VNET és az alhálózatot (válassza az alapértelmezett értékeket). A részletek kitöltése után kattintson **az OK gombra** a folytatáshoz.
+1. A **Striim-hozzáférési beállítások** panelen konfigurálja a **nyilvános IP-címet** (válassza ki az alapértelmezett értékeket), a **Striim**, a Striim felhasználói felületére való bejelentkezéshez használni kívánt **rendszergazdai jelszót** . Konfigurálja a VNET és az alhálózatot (válassza az alapértelmezett értékeket). A részletek kitöltése után kattintson **az OK gombra** a folytatáshoz.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-access-settings.png" alt-text="Striim hozzáférési beállításai":::
 
@@ -130,7 +130,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/striim-login-ui.png" alt-text="Bejelentkezés a Striim":::
 
-1. Most megérkezik a Striim kezdőlapján. Három különböző ablaktábla van – **irányítópultok** , **alkalmazások** és **SourcePreview**. Az irányítópultok panelen valós időben helyezheti át az adatátvitelt, és megjelenítheti azt. Az alkalmazások ablaktábla tartalmazza a folyamatos átviteli adatfolyamatokat vagy az adatfolyamatokat. Az oldal jobb oldalán a SourcePreview, ahol megtekintheti az adatait a mozgatás előtt.
+1. Most megérkezik a Striim kezdőlapján. Három különböző ablaktábla van – **irányítópultok**, **alkalmazások** és **SourcePreview**. Az irányítópultok panelen valós időben helyezheti át az adatátvitelt, és megjelenítheti azt. Az alkalmazások ablaktábla tartalmazza a folyamatos átviteli adatfolyamatokat vagy az adatfolyamatokat. Az oldal jobb oldalán a SourcePreview, ahol megtekintheti az adatait a mozgatás előtt.
 
 1. Válassza az **alkalmazások** panelt, és most erre a panelre fogunk összpontosítani. A Striim megtanulásához számos különböző minta alkalmazás használható, ebben a cikkben azonban a sajátját fogja létrehozni. Kattintson az **alkalmazás hozzáadása** gombra a jobb felső sarokban.
 
@@ -146,7 +146,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
 1. A következő oldalon nevezze el az alkalmazást. Megadhat egy nevet, például **oraToCosmosDB** , majd a **Mentés** lehetőséget.
 
-1. Ezután adja meg a forrás Oracle-példány forrás-konfigurációját. Adja meg a **forrás nevének** értékét. A forrás neve csak a Striim alkalmazás elnevezési konvenciója, például **src_onPremOracle** használhat. Adja meg a forrás paraméterek **URL-címének** , a **felhasználónévnek** és a **jelszónak** a többi értékét, válassza a **LogMiner** lehetőséget az Oracle-adatok olvasására szolgáló olvasóként. A folytatáshoz válassza a **Tovább** gombot.
+1. Ezután adja meg a forrás Oracle-példány forrás-konfigurációját. Adja meg a **forrás nevének** értékét. A forrás neve csak a Striim alkalmazás elnevezési konvenciója, például **src_onPremOracle** használhat. Adja meg a forrás paraméterek **URL-címének**, a **felhasználónévnek** és a **jelszónak** a többi értékét, válassza a **LogMiner** lehetőséget az Oracle-adatok olvasására szolgáló olvasóként. A folytatáshoz válassza a **Tovább** gombot.
 
    :::image type="content" source="./media/cosmosdb-sql-api-migrate-data-striim/configure-source-parameters.png" alt-text="Forrás paramétereinek konfigurálása":::
 
@@ -164,7 +164,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
    * **Cél neve** – adjon egy rövid nevet a célnak. 
    * **Bemenet** – a legördülő listából válassza ki a forrás Oracle-konfigurációban létrehozott bemeneti adatfolyamot. 
-   * **Gyűjtemények** – adja meg a cél Azure Cosmos db konfigurációjának tulajdonságait. A gyűjtemények szintaxisa: **SourceSchema. SourceTable forrástábla neveként, TargetDatabase. TargetContainer**. Ebben a példában az érték a "SYSTEM. ORDERs, StriimDemo. Orders ". 
+   * **Gyűjtemények**– adja meg a cél Azure Cosmos db konfigurációjának tulajdonságait. A gyűjtemények szintaxisa: **SourceSchema. SourceTable forrástábla neveként, TargetDatabase. TargetContainer**. Ebben a példában az érték a "SYSTEM. ORDERs, StriimDemo. Orders ". 
    * **AccessKey** – az Azure Cosmos-fiók PrimaryKey.
    * **ServiceEndpoint** – az Azure Cosmos-fiók URI-ja a Azure Portal **kulcsok** szakaszában található. 
 
@@ -197,7 +197,7 @@ Ebben a szakaszban a Azure Cosmos DB SQL API-fiókot fogja konfigurálni az adat
 
 Az Azure-beli Striim megoldás használatával folyamatosan áttelepítheti az adatok Azure Cosmos DB különböző forrásokból, például Oracle, Cassandra, MongoDB és másoktól, hogy Azure Cosmos DB. Ha többet szeretne megtudni, látogasson el a [Striim webhelyére](https://www.striim.com/), [töltse le a Striim 30 napos ingyenes próbaverzióját](https://go2.striim.com/download-free-trial), és az áttelepítési útvonal a Striim-vel való beállításakor vegye fel a [támogatási kérelmet.](https://go2.striim.com/request-support-striim)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha Azure Cosmos DB SQL API-ra végez áttelepítést, olvassa el az [adatáttelepítés Cassandra API-fiókba az Striim használatával](cosmosdb-cassandra-api-migrate-data-striim.md) című témakört.
 

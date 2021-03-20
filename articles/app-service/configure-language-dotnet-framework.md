@@ -6,10 +6,10 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 ms.openlocfilehash: 8ed6835583cc4881b19eee14ed392b193324535e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92744166"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>ASP.NET-alkalmazás konfigurálása Azure App Servicehoz
@@ -91,7 +91,7 @@ Ha a ASP.NET-alkalmazás kivételt hoz létre a Visual Studio debuggerben, a bö
 </system.web>
 ```
 
-Telepítse újra az alkalmazást a frissített *Web.config* . Ekkor ugyanazt a részletes kivételt ismertető oldalt kell látnia.
+Telepítse újra az alkalmazást a frissített *Web.config*. Ekkor ugyanazt a részletes kivételt ismertető oldalt kell látnia.
 
 ## <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 

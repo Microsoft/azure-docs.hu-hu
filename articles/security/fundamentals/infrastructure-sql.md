@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84021857"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL Database biztonsági funkciók    
@@ -92,7 +92,7 @@ A változások figyelése sikeres. Meghibásodási forgatókönyv esetén a rend
 
 Hasonlóképpen, a hardver-és hálózati változások ellenőrzési lépéseket tettek a létrehozási követelmények betartásának kiértékeléséhez. A kiadásokat a rendszer áttekinti és engedélyezi a megfelelő csoportok összevetését a veremben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 56e9820c5e3a750a35b7271b86750df00eb4784e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92677055"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Az Azure AD-kapcsolat hibáinak megoldása
@@ -44,7 +44,7 @@ A proxykiszolgáló számára is meg kell nyitni a szükséges URL-címeket. A h
 
 Ezen URL-címek közül az alábbi táblázat az Azure AD-hez való kapcsolódáshoz szükséges abszolút minimális érték. A lista nem tartalmaz olyan választható szolgáltatásokat, mint a jelszó-visszaírási vagy a Azure AD Connect Health. Itt dokumentáljuk a kezdeti konfiguráció hibaelhárításának segítségét.
 
-| URL-cím | Port | Leírás |
+| URL-cím | Port | Description |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |CRL-listák letöltésére használatos. |
 | \*. verisign.com |HTTP/80 |CRL-listák letöltésére használatos. |
@@ -62,7 +62,7 @@ Ezen URL-címek közül az alábbi táblázat az Azure AD-hez való kapcsolódá
 | \*. ocsp.msocsp.com |HTTP/80 |A tanúsítványok ellenőrzéséhez használatos. |
 
 ## <a name="errors-in-the-wizard"></a>Hibák a varázslóban
-A telepítővarázsló két különböző biztonsági kontextust használ. Az oldalon az **Azure ad** -hez való kapcsolódáskor a jelenleg bejelentkezett felhasználót használja. Az oldalon **konfigurálja** azt a fiókot, amely a [szolgáltatást futtatja a Szinkronizáló motorhoz](reference-connect-accounts-permissions.md#adsync-service-account). Ha probléma merül fel, valószínűleg már a **Csatlakozás az Azure ad-hoz** a varázslóban, mivel a proxy konfigurálása globális.
+A telepítővarázsló két különböző biztonsági kontextust használ. Az oldalon az **Azure ad**-hez való kapcsolódáskor a jelenleg bejelentkezett felhasználót használja. Az oldalon **konfigurálja** azt a fiókot, amely a [szolgáltatást futtatja a Szinkronizáló motorhoz](reference-connect-accounts-permissions.md#adsync-service-account). Ha probléma merül fel, valószínűleg már a **Csatlakozás az Azure ad-hoz** a varázslóban, mivel a proxy konfigurálása globális.
 
 A következő problémák a telepítővarázsló leggyakoribb hibái.
 
@@ -95,7 +95,7 @@ A PowerShell a machine.config fájl konfigurációját használja a proxyval val
 
 Ha a proxy megfelelően van konfigurálva, akkor sikeres állapotot kell kapnia: ![ képernyőfelvétel, amely a sikeres állapotot jeleníti meg, ha a proxy megfelelően van konfigurálva.](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-Ha nem **tud csatlakozni a távoli kiszolgálóhoz** , a PowerShell a proxy vagy a DNS használata nélkül próbál közvetlen hívást végrehajtani, és nem megfelelően van konfigurálva. Győződjön meg arról, hogy a **machine.config** fájl megfelelően van konfigurálva.
+Ha nem **tud csatlakozni a távoli kiszolgálóhoz**, a PowerShell a proxy vagy a DNS használata nélkül próbál közvetlen hívást végrehajtani, és nem megfelelően van konfigurálva. Győződjön meg arról, hogy a **machine.config** fájl megfelelően van konfigurálva.
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 Ha a proxy helytelenül van konfigurálva, hibaüzenet jelenik meg: ![ proxy200 ](./media/tshoot-connect-connectivity/invokewebrequest403.png)
@@ -119,32 +119,32 @@ Ha követte ezeket az előző lépéseket, és továbbra sem tud kapcsolatot lé
 ### <a name="reference-proxy-logs"></a>Hivatkozási proxy naplói
 Itt látható egy, a tényleges proxy naplóból és a telepítővarázsló oldaláról származó memóriakép, amelyből a rendszer létrehozta az adatokat (a duplikált bejegyzéseket ugyanahhoz a végponthoz eltávolították). Ez a szakasz a saját proxy-és hálózati naplókra mutató hivatkozásként használható. A tényleges végpontok eltérőek lehetnek a környezetben (különösen a *dőlt* URL-címeknél).
 
-**Csatlakozás az Azure AD szolgáltatáshoz**
+**Kapcsolódás az Azure AD-hez**
 
 | Idő | URL-cím |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect:// *bba800 – Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:32 |connect://*bba800 – Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:33 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
+| 1/11/2016 8:33 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
 
 **Konfigurálás**
 
 | Idő | URL-cím |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
-| 1/11/2016 8:43 |connect:// *bba800 – Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:43 |connect://*bba800 – Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba900 – Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba900 – Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:44 |connect:// *bba800 – Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:44 |connect://*bba800 – Anchor*. microsoftonline.com:443 |
 | 1/11/2016 8:44 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:46 |connect://provisioningapi.microsoftonline.com:443 |
-| 1/11/2016 8:46 |connect:// *bwsc02-Relay* . microsoftonline.com:443 |
+| 1/11/2016 8:46 |connect://*bwsc02-Relay*. microsoftonline.com:443 |
 
 **Kezdeti szinkronizálás**
 
@@ -152,8 +152,8 @@ Itt látható egy, a tényleges proxy naplóból és a telepítővarázsló olda
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba900 – Anchor* . microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect:// *bba800 – Anchor* . microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba900 – Anchor*. microsoftonline.com:443 |
+| 1/11/2016 8:49 |connect://*bba800 – Anchor*. microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 Ez a szakasz azokat a hibákat mutatja be, amelyeket a ADAL (a Azure AD Connect által használt hitelesítési függvénytár) és a PowerShell adhat vissza. A hiba magyarázata segít megérteni a következő lépéseket.
