@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cbc7c82803115f71db233be94d62a857ba050b63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86050486"
 ---
 #### <a name="to-download-hotfixes"></a>Gyorsjavítások letöltése
@@ -20,13 +20,13 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
 
     ![Katalógus telepítése](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
 
-3. A Microsoft Update katalógus keresőmező mezőjébe írja be a letölteni kívánt gyorsjavítás (Tudásbázis) számát, például **4037264**, majd kattintson a **Keresés**gombra.
+3. A Microsoft Update katalógus keresőmező mezőjébe írja be a letölteni kívánt gyorsjavítás (Tudásbázis) számát, például **4037264**, majd kattintson a **Keresés** gombra.
    
     Megjelenik a gyorsjavítások listája, például a **StorSimple 8000 sorozat összesített szoftvercsomag-frissítése 5,0**.
    
     ![Keresés a katalógusban](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. Kattintson a **Letöltés**gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a fájlok a megadott helyre és mappára való letöltéséhez. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
+4. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a fájlok a megadott helyre és mappára való letöltéséhez. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 5. Keresse meg a fenti táblázatban felsorolt további gyorsjavításokat (**4037266**), majd töltse le a megfelelő fájlokat az előző táblázatban látható módon az adott mappákba.
 
 > [!NOTE]

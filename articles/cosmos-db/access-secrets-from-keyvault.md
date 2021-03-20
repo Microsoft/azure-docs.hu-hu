@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359322"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
@@ -61,7 +61,7 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 1. Hozzon létre egy Azure-webalkalmazást, vagy töltse le az alkalmazást a [GitHub-adattárból](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo). Ez egy egyszerű MVC-alkalmazás.  
 
-2. Bontsa ki a letöltött alkalmazást, és nyissa meg a **HomeController.cs** fájlt. Frissítse a titkos azonosítót a következő sorba:
+2. Bontsa ki a letöltött alkalmazást, és nyissa meg a **HomeController. cs** fájlt. Frissítse a titkos azonosítót a következő sorba:
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 

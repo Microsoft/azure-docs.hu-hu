@@ -10,10 +10,10 @@ ms.date: 03/11/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87875472"
 ---
 # <a name="get-started-with-device-twins-python"></a>Ismerkedés a Device Twins (Python) eszközzel
@@ -34,7 +34,7 @@ Az oktatóanyag végén két Python-konzolos alkalmazás lesz:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
             print("IoT Hub Device Twin service sample stopped")
     ```
 
-    A **IoTHubRegistryManager** objektum az összes olyan metódust elérhetővé teszi, amely az eszközökhöz tartozó ikrek szolgáltatással való interakcióhoz szükséges. A kód először inicializálja a **IoTHubRegistryManager** objektumot, majd frissíti az eszközt a **DEVICE_ID**számára, és végül két lekérdezést futtat. Az első kiválasztja a **Redmond43** -üzemben található eszközökből származó ikreket, a második pedig csak azokat az eszközöket választja ki, amelyek mobil hálózaton keresztül is csatlakoznak.
+    A **IoTHubRegistryManager** objektum az összes olyan metódust elérhetővé teszi, amely az eszközökhöz tartozó ikrek szolgáltatással való interakcióhoz szükséges. A kód először inicializálja a **IoTHubRegistryManager** objektumot, majd frissíti az eszközt a **DEVICE_ID** számára, és végül két lekérdezést futtat. Az első kiválasztja a **Redmond43** -üzemben található eszközökből származó ikreket, a második pedig csak azokat az eszközöket választja ki, amelyek mobil hálózaton keresztül is csatlakoznak.
 
 6. Adja hozzá a következő kódot a  **AddTagsAndQuery.py** végén a **iothub_service_sample_run** függvény megvalósításához:
 

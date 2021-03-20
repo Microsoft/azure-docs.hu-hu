@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan frissítheti a Microsoft Azure Recovery Service
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: a1ee26db962781643e9599069282647658301bac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89181476"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS-) ügynök frissítése
@@ -23,11 +23,11 @@ Azure Backup ügynök és Azure Backup kiszolgáló telepítése esetén:
 
 1. Navigáljon ahhoz a Recovery Services-tárolóhoz, amelyen regisztrálta azokat a kiszolgálókat, amelyek biztonsági mentése az ügynök régebbi verzióival lehetséges. A régebbi Azure Backup ügynökökkel rendelkező tárolók listáját a Azure Backup frissítési riasztások az Azure-ban című részében találja.
 1. A Recovery Services-tároló bal oldali **Beállítások** szakaszában válassza a **kezelés** szakasz **biztonsági mentési infrastruktúra** elemét.
-1. A Azure Backup Server-telepítések részeként telepített Azure Backup-ügynökök felderítéséhez tekintse meg a **felügyeleti kiszolgálók**alatt lévő **biztonsági mentési felügyeleti kiszolgálókat** . Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup Server-telepítések szerepelnek a társított Azure Backup-ügynök verziószámával együtt.
+1. A Azure Backup Server-telepítések részeként telepített Azure Backup-ügynökök felderítéséhez tekintse meg a **felügyeleti kiszolgálók** alatt lévő **biztonsági mentési felügyeleti kiszolgálókat** . Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup Server-telepítések szerepelnek a társított Azure Backup-ügynök verziószámával együtt.
 
     ![A Azure Backup Server-telepítések részeként telepített MARS-ügynökök listája](./media/upgrade-mars-agent/backup-management-servers.png)
 
-1. A Microsoft Azure Recovery Services-(MARS-) ügynök telepítéséhez vagy a Azure Backup-ügynökhöz tartozó ügynökök verzióinak vizsgálatához a **felügyeleti kiszolgálók**területen válassza a **védett kiszolgálók** lehetőséget. Ezután válassza ki **Azure Backup ügynököt** a biztonsági mentési felügyelet típusa területen. Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup ügynök telepítései szerepelnek, valamint a telepítés verziószáma.
+1. A Microsoft Azure Recovery Services-(MARS-) ügynök telepítéséhez vagy a Azure Backup-ügynökhöz tartozó ügynökök verzióinak vizsgálatához a **felügyeleti kiszolgálók** területen válassza a **védett kiszolgálók** lehetőséget. Ezután válassza ki **Azure Backup ügynököt** a biztonsági mentési felügyelet típusa területen. Ez a lista azokat a kiszolgálókat sorolja fel, amelyeken Azure Backup ügynök telepítései szerepelnek, valamint a telepítés verziószáma.
 
     ![Azon kiszolgálók listája, amelyeken telepítve van a MARS-ügynök](./media/upgrade-mars-agent/protected-servers.png)
 
@@ -73,7 +73,7 @@ Miután azonosította a Azure Backup ügynök frissítését igénylő kiszolgá
 
 1. Kattintson a **Tovább** gombra.
 
-1. Válassza a **frissítés**lehetőséget.
+1. Válassza a **Frissítés** lehetőséget.
 
     ![Az Microsoft Azure Recovery Services-ügynök telepítése](./media/upgrade-mars-agent/upgrade-installation.png)
 

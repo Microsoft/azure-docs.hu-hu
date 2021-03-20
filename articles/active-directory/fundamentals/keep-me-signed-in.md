@@ -13,10 +13,10 @@ ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89320256"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurálja a "Stay bejelentkezve?" Azure AD-fiókok bekérése
@@ -33,22 +33,27 @@ A következő ábrán látható a felügyelt bérlő és az összevont bérlő f
 ## <a name="configure-kmsi"></a>KMSI konfigurálása
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **vállalati védjegyezés**lehetőséget, majd válassza a **Konfigurálás**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget, válassza a **vállalati védjegyezés** lehetőséget, majd válassza a **Konfigurálás** lehetőséget.
 1. A **Speciális beállítások** szakaszban keresse meg a show (megjelenítés) lehetőséget, hogy a beállítás **bejelentkezve maradjon** .
 
    Ezzel a beállítással kiválaszthatja, hogy a felhasználók továbbra is bejelentkeznek-e az Azure AD-ba, amíg a kijelentkezés nem történik meg.
-   * Ha a **nem**lehetőséget választja, a **bejelentkezett marad?** beállítás rejtett, miután a felhasználó sikeresen bejelentkezik, és a felhasználónak minden alkalommal be kell jelentkeznie, amikor a böngésző be van zárva, és újra megnyílik.
-   * Ha az **Igen**lehetőséget választja, a **bejelentkezett marad?** lehetőség jelenik meg a felhasználó számára.
+   * Ha a **nem** lehetőséget választja, a **bejelentkezett marad?** beállítás rejtett, miután a felhasználó sikeresen bejelentkezik, és a felhasználónak minden alkalommal be kell jelentkeznie, amikor a böngésző be van zárva, és újra megnyílik.
+   * Ha az **Igen** lehetőséget választja, a **bejelentkezett marad?** lehetőség jelenik meg a felhasználó számára.
 
-    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="A felügyelt vagy összevont bérlő felhasználói bejelentkezési folyamatát bemutató ábra":::
+    :::image type="content" source="./media/keep-me-signed-in/kmsi-company-branding-advanced-settings-kmsi-1.png" alt-text="Képernyőfelvétel: a megjelenítési lehetőség, hogy továbbra is be legyen jelentkezve beállítás":::
 
 ## <a name="troubleshoot-sign-in-issues"></a>Bejelentkezési problémák elhárítása
 
 Ha a felhasználó nem a **bejelentkezett marad?** üzenet jelenik meg, ahogy az a következő ábrán is látható, de a bejelentkezési kísérlet megszűnik, egy bejelentkezési naplóbejegyzés jelenik meg, amely jelzi a megszakítást.
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="A felügyelt vagy összevont bérlő felhasználói bejelentkezési folyamatát bemutató ábra" megszakítás miatt történt.
+:::image type="content" source="./media/keep-me-signed-in/kmsi-stay-signed-in-prompt.png" alt-text="Megjeleníti a bejelentkezett maradni? gyors":::
 
-:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="A felügyelt vagy összevont bérlő felhasználói bejelentkezési folyamatát bemutató ábra":::
+A bejelentkezési hibával kapcsolatos részletek a következőképpen jelennek meg, és a példában vannak kiemelve.
+
+* **Bejelentkezési hibakód**: 50140
+* **Hiba oka**: Ez a hiba a felhasználó bejelentkezésekor a "Bejelentkezés megtartása" megszakítás miatt történt.
+
+:::image type="content" source="./media/keep-me-signed-in/kmsi-sign-ins-log-entry.png" alt-text="Példa bejelentkezési naplóbejegyzést a Keep Me bejelentkezett megszakítással":::
 
 Leállíthatja a felhasználókat, hogy meglássák a megszakítást úgy, **hogy a Megjelenítés lehetőséget** úgy állítja be, hogy a **nem** értékre legyen állítva a speciális védjegyezési beállításokban. Ez letiltja az Azure AD-címtár összes felhasználójának KMSI-kérését.
 

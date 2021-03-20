@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 9e8625724f67caac99ae799674f9db9399e11ad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89294254"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search indexelő és SQL felügyelt példány közötti kapcsolatok konfigurálása
@@ -25,7 +25,7 @@ Hozzon létre egy felügyelt SQL-példányt a **nyilvános végpont engedélyez�
    ![Nyilvános végpont engedélyezése](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "Nyilvános végpont engedélyezése")
 
 ## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Az Azure SQL felügyelt példány nyilvános végpontjának engedélyezése
-Egy meglévő SQL felügyelt példányon is engedélyezheti a nyilvános végpontot a **biztonsági**  >  **virtuális hálózat**  >  **nyilvános végpontjának**  >  **engedélyezése**lehetőség alatt.
+Egy meglévő SQL felügyelt példányon is engedélyezheti a nyilvános végpontot a **biztonsági**  >  **virtuális hálózat**  >  **nyilvános végpontjának**  >  **engedélyezése** lehetőség alatt.
 
    ![Nyilvános végpont engedélyezése a felügyelt példányok VNET](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "Nyilvános végpont engedélyezése")
 

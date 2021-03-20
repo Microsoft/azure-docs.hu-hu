@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
 ms.openlocfilehash: 8a8d434fca7cab4432f38fc64093cf1fe060bd5f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92019086"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
@@ -51,7 +51,7 @@ Miután létrehozott egy logikai alkalmazást:
 
 Ez a lépés a logikai alkalmazás mentése után a HTTP POST URL-címével lesz feltöltve.
 
-2. Adjon hozzá egy új lépést, és keressen rá a **http**kifejezésre.  
+2. Adjon hozzá egy új lépést, és keressen rá a **http** kifejezésre.  
 
    ![Képernyőkép a "művelet kiválasztása" szakaszról a "HTTP" csempe kiválasztásával.](./media/analysis-services-async-refresh-logic-app/9.png)
 
@@ -80,7 +80,7 @@ Példa:
 
 ![Befejezett HTTP-tevékenység](./media/analysis-services-async-refresh-logic-app/7.png)
 
-Most tesztelje a logikai alkalmazást.  A Logic app Designerben kattintson a **Futtatás**elemre.
+Most tesztelje a logikai alkalmazást.  A Logic app Designerben kattintson a **Futtatás** elemre.
 
 ![A logikai alkalmazás tesztelése](./media/analysis-services-async-refresh-logic-app/8.png)
 
@@ -102,7 +102,7 @@ A fenti példa használatával törölje az első tevékenységet, és cserélje
 
 ![Képernyőkép, amely megjeleníti az "eseményindítók" lapot.](./media/analysis-services-async-refresh-logic-app/13.png)
 
-Ez a példa az **ismétlődést**fogja használni.
+Ez a példa az **ismétlődést** fogja használni.
 
 Miután hozzáadta a tevékenységet, konfigurálja az intervallumot és a gyakoriságot, majd adjon hozzá egy új paramétert, és válassza ki **ezeket az órákat**.
 

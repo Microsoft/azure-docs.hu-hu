@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: bb5561ced93c3f5a899c6e48fdab0f14e52914bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89291551"
 ---
 # <a name="filters"></a>Szűrők
@@ -43,7 +43,7 @@ A szűrők két típusa létezik:
 * [Fiókok szűrői](/rest/api/media/accountfilters) (globális) – a Azure Media Services fiókban található bármely eszközre alkalmazható, és a fiók élettartama is megoldható.
 * Adategység- [szűrők](/rest/api/media/assetfilters) (helyi) – csak olyan objektumra alkalmazhatók, amelynél a szűrő a létrehozáskor hozzá volt rendelve, az eszköz élettartama. 
 
-A **fiókok** és az **eszközök szűrőinek** típusai pontosan ugyanazok a tulajdonságok a szűrő definiálásához/leírásához. Az **eszközcsoport**létrehozásakor meg kell adnia azt az objektum nevét, amellyel hozzá szeretné rendelni a szűrőt.
+A **fiókok** és az **eszközök szűrőinek** típusai pontosan ugyanazok a tulajdonságok a szűrő definiálásához/leírásához. Az **eszközcsoport** létrehozásakor meg kell adnia azt az objektum nevét, amellyel hozzá szeretné rendelni a szűrőt.
 
 A forgatókönyvtől függően eldöntheti, hogy a szűrő milyen típusú legyen alkalmasabb (az eszköz szűrője vagy a fiók szűrője). A fiókok szűrői megfelelőek az eszközök profiljaihoz (a kiadatási szűréshez), ahol az adategységek szűrői használhatók egy adott eszköz kivágásához.
 
@@ -57,7 +57,7 @@ A szűrők leírásához a következő tulajdonságokat használhatja.
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
 
-Ezt a tulajdonságot használja az **Asset Filters**használatával. A tulajdonságot nem ajánlott a **fiók szűrőinek**beállításával beállítani.
+Ezt a tulajdonságot használja az **Asset Filters** használatával. A tulajdonságot nem ajánlott a **fiók szűrőinek** beállításával beállítani.
 
 |Név|Leírás|
 |---|---|
@@ -152,7 +152,7 @@ Lásd az alábbi példákat:
  
 A **folyamatos átviteli lokátor** nem frissíthető a szűrők frissítése közben. 
 
-Nem ajánlott frissíteni egy aktívan közzétett **adatfolyam-keresőhöz**társított szűrők definícióját, különösen akkor, ha a CDN engedélyezve van. A streaming-kiszolgálók és a CDNs belső gyorsítótárral rendelkezhetnek, amelyek miatt a rendszer elavult gyorsítótárazott értékeket adhat vissza. 
+Nem ajánlott frissíteni egy aktívan közzétett **adatfolyam-keresőhöz** társított szűrők definícióját, különösen akkor, ha a CDN engedélyezve van. A streaming-kiszolgálók és a CDNs belső gyorsítótárral rendelkezhetnek, amelyek miatt a rendszer elavult gyorsítótárazott értékeket adhat vissza. 
 
 Ha módosítani kell a szűrő definícióját, érdemes létrehozni egy új szűrőt, és hozzá kell adni azt a **streaming-lokátor** URL-címéhez, vagy közzé kell tennie egy új **streaming-keresőt** , amely közvetlenül hivatkozik a szűrőre.
 

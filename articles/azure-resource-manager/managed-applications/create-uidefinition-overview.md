@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89319567"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
@@ -52,7 +52,7 @@ A createUiDefinition létrehozásához JSON-szerkesztőt használhat, majd a [cr
 
 ## <a name="config"></a>Konfigurálás
 
-A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lépés alapértelmezett viselkedésének felülbírálását, vagy állítsa be a felületet lépésről lépésre varázslóként. Ha a `config` használatban van, akkor ez az első tulajdonság **createUiDefinition.json** a fájl `parameters` szakaszánakcreateUiDefinition.js. A következő példában az elérhető tulajdonságok láthatók.
+A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lépés alapértelmezett viselkedésének felülbírálását, vagy állítsa be a felületet lépésről lépésre varázslóként. Ha a `config` használatban van, akkor ez az első tulajdonság  a fájl `parameters` szakaszánakcreateUiDefinition.js. A következő példában az elérhető tulajdonságok láthatók.
 
 ```json
 "config": {
@@ -107,7 +107,7 @@ A `config` tulajdonság megadása nem kötelező. Használja az alapszintű lép
 
 A `isWizard` tulajdonság lehetővé teszi az egyes lépések sikeres érvényesítését, mielőtt továbblép a következő lépésre. Ha a `isWizard` tulajdonság nincs megadva, az alapértelmezett érték a **false**, és a lépésenkénti ellenőrzés nem szükséges.
 
-Ha `isWizard` engedélyezve van, állítsa az **igaz**értékre, az **alapok** lap elérhető, és az összes többi lap le van tiltva. Ha a **tovább** gomb be van jelölve, a TAB ikon azt jelzi, hogy a TAB érvényesítése sikeres vagy sikertelen volt-e. A lap kötelező mezőinek befejezése és ellenőrzése után a **következő** gomb lehetővé teszi a navigálást a következő lapra. Ha az összes lap átadja az érvényesítést, lépjen a **felülvizsgálat és létrehozás** lapra, és válassza a **Létrehozás** gombot az üzembe helyezés megkezdéséhez.
+Ha `isWizard` engedélyezve van, állítsa az **igaz** értékre, az **alapok** lap elérhető, és az összes többi lap le van tiltva. Ha a **tovább** gomb be van jelölve, a TAB ikon azt jelzi, hogy a TAB érvényesítése sikeres vagy sikertelen volt-e. A lap kötelező mezőinek befejezése és ellenőrzése után a **következő** gomb lehetővé teszi a navigálást a következő lapra. Ha az összes lap átadja az érvényesítést, lépjen a **felülvizsgálat és létrehozás** lapra, és válassza a **Létrehozás** gombot az üzembe helyezés megkezdéséhez.
 
 :::image type="content" source="./media/create-uidefinition-overview/tab-wizard.png" alt-text="Lap varázsló":::
 
@@ -129,7 +129,7 @@ A esetében válassza ki a `location` felülbírálni kívánt hely vezérlőele
 
 Az **alapismeretek** lépés az első lépés, amikor a Azure Portal elemzi a fájlt. Alapértelmezés szerint az alapvető lépések lépés lehetővé teszi a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztását.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Lap varázsló":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Alapértelmezett alapbeállítások":::
 
 Ebben a szakaszban további elemeket is hozzáadhat. Ha lehetséges, adjon hozzá olyan elemeket, amelyek a központi telepítési szintű paramétereket kérdezik le, például egy fürt vagy egy rendszergazdai hitelesítő adatok nevét.
 

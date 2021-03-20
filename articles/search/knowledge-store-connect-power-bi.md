@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 91e75b60f5324288c9f1adac59e31b9c1a1b0e9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89289171"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
@@ -41,53 +41,53 @@ Kattintson a **Beolvasás Power bi sablon** lehetőségre a **kognitív képess�
 
 ## <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
-1. Indítsa el Power BI Desktop és kattintson **az adatlekérdezés**gombra.
+1. Indítsa el Power BI Desktop és kattintson **az adatlekérdezés** gombra.
 
-1. Az **adatlekérdezés** ablakban válassza az **Azure**lehetőséget, majd válassza az **Azure Table Storage**elemet.
+1. Az **adatlekérdezés** ablakban válassza az **Azure** lehetőséget, majd válassza az **Azure Table Storage** elemet.
 
 1. Kattintson a **Csatlakozás** gombra.
 
-1. A **fiók neve vagy URL-címe**mezőben adja meg az Azure Storage-fiók nevét (a teljes URL-cím lesz létrehozva).
+1. A **fiók neve vagy URL-címe** mezőben adja meg az Azure Storage-fiók nevét (a teljes URL-cím lesz létrehozva).
 
 1. Ha a rendszer kéri, adja meg a Storage-fiók kulcsát.
 
 1. Válassza ki azokat a táblákat, amelyek tartalmazzák az előző forgatókönyvek által létrehozott, a Hotel által áttekintett adatelemzési 
 
-   + A portál útmutatójában a *hotelReviewsSsDocument*, a *hotelReviewsSsEntities*, a *hotelReviewsSsKeyPhrases*és a *hotelReviewsSsPages*tábla neve szerepel. 
+   + A portál útmutatójában a *hotelReviewsSsDocument*, a *hotelReviewsSsEntities*, a *hotelReviewsSsKeyPhrases* és a *hotelReviewsSsPages* tábla neve szerepel. 
    
-   + A REST-útmutatóban a *hotelReviewsDocument*, a *hotelReviewsPages*, a *hotelReviewsKeyPhrases*és a *hotelReviewsSentiment*tábla neve szerepel.
+   + A REST-útmutatóban a *hotelReviewsDocument*, a *hotelReviewsPages*, a *hotelReviewsKeyPhrases* és a *hotelReviewsSentiment* tábla neve szerepel.
 
-1. Kattintson a **Betöltés**elemre.
+1. Kattintson a **Betöltés** elemre.
 
-1. A felső menüszalagon kattintson a **lekérdezések szerkesztése** elemre a **Power Query-szerkesztő**megnyitásához.
+1. A felső menüszalagon kattintson a **lekérdezések szerkesztése** elemre a **Power Query-szerkesztő** megnyitásához.
 
    ![Power Query megnyitása](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query megnyitása")
 
-1. Válassza a *hotelReviewsSsDocument*lehetőséget, majd távolítsa el a *PartitionKey*, a *RowKey*és az *időbélyegző* oszlopokat. 
+1. Válassza a *hotelReviewsSsDocument* lehetőséget, majd távolítsa el a *PartitionKey*, a *RowKey* és az *időbélyegző* oszlopokat. 
    ![Táblák szerkesztése](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Táblák szerkesztése")
 
-1. A *tartalom*kibontásához kattintson a táblázat jobb felső sarkában található, ellentétes nyíllal ellátott ikonra. Amikor megjelenik az oszlopok listája, válassza a minden oszlop lehetőséget, majd törölje a metaadatokkal kezdődő oszlopokat. A kijelölt oszlopok megjelenítéséhez kattintson **az OK** gombra.
+1. A *tartalom* kibontásához kattintson a táblázat jobb felső sarkában található, ellentétes nyíllal ellátott ikonra. Amikor megjelenik az oszlopok listája, válassza a minden oszlop lehetőséget, majd törölje a metaadatokkal kezdődő oszlopokat. A kijelölt oszlopok megjelenítéséhez kattintson **az OK** gombra.
 
    ![Tartalom kibontása](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Tartalom kibontása")
 
 1. Módosítsa a következő oszlopok adattípusát az oszlop bal felső részén található ABC-123 ikonra kattintva.
 
-   + A *Content. Latitude* és a *Content. hosszúság*esetében válassza a **decimális szám**lehetőséget.
-   + *Content.reviews_date* és *Content.reviews_dateAdded*válassza a **dátum/idő**lehetőséget.
+   + A *Content. Latitude* és a *Content. hosszúság* esetében válassza a **decimális szám** lehetőséget.
+   + *Content.reviews_date* és *Content.reviews_dateAdded* válassza a **dátum/idő** lehetőséget.
 
    ![Adattípusok módosítása](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Adattípusok módosítása")
 
-1. Válassza a *hotelReviewsSsPages*lehetőséget, majd ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom*kibontásához.
+1. Válassza a *hotelReviewsSsPages* lehetőséget, majd ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom* kibontásához.
 1. Módosítsa a *Content. SentimentScore* adattípus adattípusát **decimális számra**.
-1. Válassza ki a *hotelReviewsSsKeyPhrases* , és ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom*kibontásához. Ehhez a táblához nincs Adattípus-módosítás.
+1. Válassza ki a *hotelReviewsSsKeyPhrases* , és ismételje meg a 9. és a 10. lépést az oszlopok törléséhez és a *tartalom* kibontásához. Ehhez a táblához nincs Adattípus-módosítás.
 
-1. A parancssorban kattintson a **Bezárás és alkalmaz**gombra.
+1. A parancssorban kattintson a **Bezárás és alkalmaz** gombra.
 
 1. A bal oldali navigációs ablaktáblán kattintson a modell csempére, és ellenőrizze, hogy Power BI a három tábla közötti kapcsolatokat jeleníti-e meg.
 
    ![Kapcsolatok ellenőrzése](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Kapcsolatok ellenőrzése")
 
-1. Kattintson duplán az egyes kapcsolatokra, és győződjön meg arról, hogy a **kereszt-szűrés iránya** **mindkettőre**van beállítva.  Ez lehetővé teszi, hogy a vizualizációk egy szűrő alkalmazása esetén frissüljenek.
+1. Kattintson duplán az egyes kapcsolatokra, és győződjön meg arról, hogy a **kereszt-szűrés iránya** **mindkettőre** van beállítva.  Ez lehetővé teszi, hogy a vizualizációk egy szűrő alkalmazása esetén frissüljenek.
 
 1. A bal oldali navigációs panelen kattintson a jelentés csempére az adatvizualizációk használatával való ismerkedéshez. A szöveges mezőkhöz a táblázatok és a kártyák hasznos vizualizációk. A táblázat vagy kártya kitöltéséhez a három tábla mezői közül választhat. 
 

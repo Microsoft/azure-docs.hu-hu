@@ -16,10 +16,10 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fe6af43c9ca44095c328356e8171da10717875e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728237"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Duplikált attribútumok szinkronizálási hibáinak diagnosztizálása és javítása
@@ -142,7 +142,7 @@ Az Azure AD-beli felhőalapú felhasználónak nem lehet forrás-horgonya. Ebben
 A [Azure ad Connectban](./how-to-connect-preview.md#user-writeback) megadott beállítások (például a UserWriteback) nem támogatottak. Tiltsa le a beállításokat a beállításokban. 
 
 ## <a name="faq"></a>GYIK
-**Q.** Mi történik, ha az **Apply javítás** végrehajtása sikertelen?  
+**K.** Mi történik, ha az **Apply javítás** végrehajtása sikertelen?  
 **Egy.** Ha a végrehajtás meghiúsul, lehetséges, hogy Azure AD Connect exportálási hibát futtat. Frissítse a portál oldalt, és próbálkozzon újra a következő szinkronizálás után. Az alapértelmezett szinkronizálási ciklus 30 perc. 
 
 

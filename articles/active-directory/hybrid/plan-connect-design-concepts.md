@@ -18,17 +18,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89279652"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: tervezési fogalmak
 A dokumentum célja, hogy leírja, milyen területeken kell átgondolni a Azure AD Connect megvalósításának tervezése során. Ez a dokumentum részletesen ismerteti az egyes területeket, és ezeket a fogalmakat röviden ismertetjük más dokumentumokban is.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-A sourceAnchor attribútum az *objektum élettartama során*nem módosítható attribútumként van definiálva. Egyedileg azonosít egy objektumot a helyszínen és az Azure AD-ben azonos objektumként. Az attribútum neve **immutableId** , és a két név is felcserélhetőként használható.
+A sourceAnchor attribútum az *objektum élettartama során* nem módosítható attribútumként van definiálva. Egyedileg azonosít egy objektumot a helyszínen és az Azure AD-ben azonos objektumként. Az attribútum neve **immutableId** , és a két név is felcserélhetőként használható.
 
 A dokumentum nem módosítható, mert az nem változtatható meg. Mivel ez az attribútum értéke nem módosítható a beállítás után, fontos, hogy olyan kialakítást válasszon, amely támogatja a forgatókönyvet.
 
@@ -62,7 +62,7 @@ Ha több erdővel rendelkezik, és nem helyezi át a felhasználókat az erdők 
 
 Ha a felhasználókat erdők és tartományok között helyezi át, akkor olyan attribútumot kell keresnie, amely nem változik, vagy áthelyezhető a felhasználókkal az áthelyezés során. A javasolt módszer egy szintetikus attribútum bevezetése. Olyan attribútum, amely alkalmas lehet a GUID azonosítóhoz hasonló érték tárolására. Az objektum létrehozásakor létrejön egy új GUID-azonosító, amely a felhasználóra van pecsételve. A szinkronizálási motor kiszolgálójában létrehozhat egy egyéni szinkronizálási szabályt, amely a **ObjectGUID** alapján hozza létre ezt az értéket, és frissíti a kiválasztott attribútumot a hozzáadások lehetőséggel. Az objektum áthelyezésekor ügyeljen arra, hogy az érték tartalmát is másolja.
 
-Egy másik megoldás egy meglévő attribútum kiválasztása, amelyről tudja, hogy nem változik. A gyakran használt attribútumok közé tartozik az **AlkalmazottKód**. Ha olyan attribútumot használ, amely betűket tartalmaz, győződjön meg róla, hogy a kis-és nagybetűk nem változnak az attribútum értékének megváltozása esetén. A helytelen attribútumok nem használhatók a felhasználó nevével. Házasság vagy házasság felbontása esetén a nevet várhatóan módosítani kell, ami nem engedélyezett ehhez az attribútumhoz. Ez az egyik oka annak, hogy az attribútumok, például a **userPrincipalName**, a **mail**és a **targetAddress** nem is választhatók a Azure ad Connect telepítővarázslójának kiválasztásához. Ezek az attribútumok a " \@ " karaktert is tartalmazzák, amely nem engedélyezett a sourceAnchor.
+Egy másik megoldás egy meglévő attribútum kiválasztása, amelyről tudja, hogy nem változik. A gyakran használt attribútumok közé tartozik az **AlkalmazottKód**. Ha olyan attribútumot használ, amely betűket tartalmaz, győződjön meg róla, hogy a kis-és nagybetűk nem változnak az attribútum értékének megváltozása esetén. A helytelen attribútumok nem használhatók a felhasználó nevével. Házasság vagy házasság felbontása esetén a nevet várhatóan módosítani kell, ami nem engedélyezett ehhez az attribútumhoz. Ez az egyik oka annak, hogy az attribútumok, például a **userPrincipalName**, a **mail** és a **targetAddress** nem is választhatók a Azure ad Connect telepítővarázslójának kiválasztásához. Ezek az attribútumok a " \@ " karaktert is tartalmazzák, amely nem engedélyezett a sourceAnchor.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>A sourceAnchor attribútum módosítása
 A sourceAnchor attribútum értéke nem módosítható, miután létrejött az objektum az Azure AD-ben, és az identitás szinkronizálva van.
@@ -134,11 +134,11 @@ Váltás a objectGUID és a ConsistencyGuid között a forrás-horgony attribút
 
 1. Indítsa el a Azure AD Connect varázslót, és kattintson a **configure (Konfigurálás** ) gombra a feladatok képernyőre való ugráshoz.
 
-2. Jelölje be a **forrás-rögzítési feladat konfigurálása** beállítást, majd kattintson a **tovább**gombra.
+2. Jelölje be a **forrás-rögzítési feladat konfigurálása** beállítást, majd kattintson a **tovább** gombra.
 
    ![ConsistencyGuid engedélyezése meglévő központi telepítéshez – 2. lépés](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
-3. Adja meg az Azure AD-rendszergazdai hitelesítő adatait, és kattintson a **tovább**gombra.
+3. Adja meg az Azure AD-rendszergazdai hitelesítő adatait, és kattintson a **tovább** gombra.
 
 4. Azure AD Connect varázsló elemzi az MS-DS-ConsistencyGuid attribútum állapotát a helyszíni Active Directory. Ha az attribútum nincs konfigurálva a címtár egyik objektumán sem, Azure AD Connect azt a következtetést vonja le, hogy egy másik alkalmazás jelenleg nem használja az attribútumot, és biztonságos a forrás-szerkesztőpont attribútumként használni. A folytatáshoz kattintson a **Tovább** gombra.
 
@@ -183,7 +183,7 @@ Ha kiválasztja az attribútumot az Azure-ban használandó egyszerű felhaszná
 * Az attribútum értékei megfelelnek az UPN-szintaxisnak (RFC 822), vagyis a Felhasználónév tartományának kell lennie \@
 * Az értékek utótagja megegyezik az Azure AD-ben ellenőrzött egyéni tartományok valamelyikével
 
-Az expressz beállításokban az attribútum feltételezett megválasztása userPrincipalName. Ha a userPrincipalName attribútum nem tartalmazza azt az értéket, amelyet a felhasználóknak be kell jelentkezniük az Azure-ba, akkor **Egyéni telepítést**kell választania.
+Az expressz beállításokban az attribútum feltételezett megválasztása userPrincipalName. Ha a userPrincipalName attribútum nem tartalmazza azt az értéket, amelyet a felhasználóknak be kell jelentkezniük az Azure-ba, akkor **Egyéni telepítést** kell választania.
 
 ### <a name="custom-domain-state-and-upn"></a>Egyéni tartomány állapota és UPN
 Fontos, hogy ellenőrizze, hogy van-e ellenőrzött tartomány az UPN-utótaghoz.

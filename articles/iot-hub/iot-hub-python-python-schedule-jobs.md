@@ -10,10 +10,10 @@ ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
 ms.openlocfilehash: 733e3be21a1a1305b5c7947de1ae54ddce5e0d2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876682"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Feladatok ütemezett és szórása (Python)
@@ -58,7 +58,7 @@ a **scheduleJobService.py**, amely közvetlen metódust hív meg a szimulált es
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
+## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -155,21 +155,21 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
 
 Ebben a cikkben egy háttér-szolgáltatást hoz létre, amely egy közvetlen metódust hív meg egy eszközön, és frissíti az eszközt. A szolgáltatásnak szüksége van a **szolgáltatás csatlakozási** engedélyére, hogy közvetlen metódust hívjon az eszközön. A szolgáltatásnak szüksége van a **beállításjegyzék olvasási** és **beállításjegyzék-írási** engedélyeire is az azonosító beállításjegyzékének olvasásához és írásához. Nincs olyan alapértelmezett megosztott hozzáférési szabályzat, amely csak ezeket az engedélyeket tartalmazza, ezért létre kell hoznia egyet.
 
-Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely a **szolgáltatás kapcsolódását**, a **beállításjegyzék olvasási**és **beállításjegyzék-írási** engedélyeit, valamint a szabályzat kapcsolati karakterláncának lekérését kéri, kövesse az alábbi lépéseket:
+Ha olyan megosztott hozzáférési szabályzatot szeretne létrehozni, amely a **szolgáltatás kapcsolódását**, a **beállításjegyzék olvasási** és **beállításjegyzék-írási** engedélyeit, valamint a szabályzat kapcsolati karakterláncának lekérését kéri, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com). Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok**kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
+1. Nyissa meg az IoT hubot a [Azure Portal](https://portal.azure.com). Az IoT hub kiválasztásának legegyszerűbb módja az **erőforráscsoportok** kiválasztása. Válassza ki azt az erőforráscsoportot, ahol az IoT hub található, majd válassza ki az IoT hubot az erőforrások listájából.
 
-2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek**elemet.
+2. Az IoT hub bal oldali ablaktábláján válassza a **megosztott hozzáférési házirendek** elemet.
 
-3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás**lehetőséget.
+3. A szabályzatok listájának felső menüjében válassza a **Hozzáadás** lehetőséget.
 
-4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek**területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a**beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután válassza a **Létrehozás** elemet.
+4. A **megosztott hozzáférési házirend hozzáadása** panelen adjon meg egy leíró nevet a szabályzatnak; például: *serviceAndRegistryReadWrite*. Az **engedélyek** területen válassza a **szolgáltatás kapcsolódása** és a **beállításjegyzék írása** lehetőséget (a **beállításjegyzék olvasása** beállítás automatikusan kiválasztásra kerül a beállításjegyzék **írásakor**). Ezután kattintson a **Létrehozás** elemre.
 
     ![Új megosztott elérési házirend hozzáadásának megjelenítése](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
 5. A **megosztott hozzáférési szabályzatok** panelen válassza ki az új házirendet a házirendek listájából.
 
-6. A **megosztott elérési kulcsok**területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
+6. A **megosztott elérési kulcsok** területen válassza a **kapcsolati sztring – elsődleges kulcs** másolási ikonját, és mentse az értéket.
 
     ![A kapcsolati karakterlánc lekérésének megjelenítése](./media/iot-hub-python-python-schedule-jobs/get-connection-string.png)
 

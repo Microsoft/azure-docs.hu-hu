@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 10/08/2020
 ms.author: mathoma
 ms.openlocfilehash: 19b4b7407468b19419e2f85193b1f8fb6ace39c3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359404"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Funkciók együttműködése az AG-val és a DNN-figyelővel 
@@ -67,7 +67,7 @@ Ha az alapértelmezett 1433-as port, akkor kihagyhatja a portot az URL-címben. 
 
 Az elosztott rendelkezésre állási csoportok jelenleg nem támogatottak a DNN-figyelővel. 
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 Tranzakciós, egyesítési és pillanatkép-replikáció – a VNN-figyelőt a DNN figyelővel és a figyelőhöz csatlakozó replikációs objektumok portjával helyettesíti. 
 
@@ -125,7 +125,7 @@ Konfigurálja a csatolt kiszolgálót az AG DNN figyelő neve és port használa
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: 
+További információkért lásd: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [Always On rendelkezésre állási csoport](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

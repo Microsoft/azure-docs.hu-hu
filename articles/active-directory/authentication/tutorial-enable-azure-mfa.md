@@ -11,10 +11,10 @@ author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881310"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Oktatóanyag: a felhasználói bejelentkezési események biztonságossá tétele az Azure AD-vel Multi-Factor Authentication
@@ -123,7 +123,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 1. Válassza a **feltételes hozzáférés** lehetőséget, majd válassza ki a létrehozott szabályzatot, például *MFA Pilot*
 1. Válassza a **Törlés** lehetőséget, majd erősítse meg, hogy törölni kívánja a szabályzatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD Multi-Factor Authentication feltételes hozzáférési szabályzatok használatával a felhasználók egy kiválasztott csoportjára vonatkozóan. Megtanulta végrehajtani az alábbi műveleteket:
 

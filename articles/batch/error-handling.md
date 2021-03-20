@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan kezelheti a Batch szolgáltatás munkafolyamata
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 3bd460598dae08fa18415e1c9865249f3ca4c9c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85964277"
 ---
 # <a name="error-handling-and-detection-in-azure-batch"></a>Hibakezelés és észlelés a Azure Batchban
@@ -106,7 +106,7 @@ Ha hiba lép fel, a Batch API-k értesítik. Mindegyiket újra lehet próbálni,
 
 Hiba után várjon egy kicsit (több másodpercet az újrapróbálkozások között) az újrapróbálkozás előtt. Ha túl gyakran vagy túl gyorsan próbálkozik újra, a rendszer az újrapróbálkozási kezelőt fogja szabályozni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [készlet-és csomópont-hibák kereséséhez](batch-pool-node-error-checking.md).
 - Útmutató a [feladatok és a feladatok hibáinak kereséséhez](batch-job-task-error-checking.md).

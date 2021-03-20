@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 4e069effae0cb7f834b2c3dac696d05304d841a7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92014834"
 ---
 # <a name="best-practices-for-long-running-operations"></a>Ajánlott eljárások a hosszú ideig futó műveletekhez
@@ -49,5 +49,5 @@ Ha csak olvasható lekérdezési replikákat használ, míg a frissítések köt
 
 [Aszinkron frissítés a REST API-val](analysis-services-async-refresh.md)  
 [Az Azure Analysis Services horizontális felskálázása](analysis-services-scale-out.md)  
-[Analysis Services magas rendelkezésre állás](analysis-services-bcdr.md)  
+[Az Analysis Services magas rendelkezésre állása](analysis-services-bcdr.md)  
 [Újrapróbálkozási útmutató az Azure-szolgáltatásokhoz](/azure/architecture/best-practices/retry-service-specific)

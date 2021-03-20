@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-js
 ms.date: 04/30/2020
 ms.openlocfilehash: 621e3e1cef39e34656c094a39d218d5d5866fa26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91309081"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban ARM-sablon használatával
@@ -48,8 +48,8 @@ További Azure Container Instances-sablonok a gyorsindítási [sablonok](https:/
  2. Válassza ki vagy adja meg a következő értékeket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
-    * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
-    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Példa: **USA középső**régiója.
+    * **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
+    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Példa: **USA középső** régiója.
     * **Név**: fogadja el a példány generált nevét, vagy adjon meg egy nevet.
     * **Rendszerkép**: fogadja el az alapértelmezett rendszerkép nevét. Ez a minta linuxos rendszerkép egy olyan kisméretű webalkalmazást csomagol, amely egy statikus HTML-oldalt kiszolgáló Node.js. 
 
@@ -83,15 +83,15 @@ A tároló példány tulajdonságainak áttekintéséhez használja a Azure Port
 
 A tárolópéldányok naplóinak megtekintése hasznos lehet a tárolóval vagy az azon futtatott alkalmazással kapcsolatos hibák elhárítása során.
 
-A tároló naplóinak megtekintéséhez a **Beállítások**területen válassza a **tárolók**  >  **naplók**lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
+A tároló naplóinak megtekintéséhez a **Beállítások** területen válassza a **tárolók**  >  **naplók** lehetőséget. Látnia kell a HTTP GET kérést is, amely akkor jött létre, amikor megtekintette az alkalmazást a böngészőjében.
 
 ![Tárolónaplók az Azure Portalon](media/container-instances-quickstart-template/aci-logs.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
+Ha elkészült a tárolóval, a tároló példányának **Áttekintés** lapján válassza a **Törlés** lehetőséget. A rendszer kérésére erősítse meg a törlést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
 ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98880927"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Az animált karakterfelismerés (előzetes verzió) használata a portál és az API használatával 
@@ -204,6 +204,6 @@ Tekintse meg az animált karaktereket a generált JSON-fájlban.
 * A videóban kis vagy nagy méretű karakterek nem azonosíthatók megfelelően, ha a videó minősége gyenge.
 * Javasoljuk, hogy az animált karakterek (például egy animált sorozat) esetében használjon modellt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

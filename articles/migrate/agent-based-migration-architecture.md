@@ -7,10 +7,10 @@ ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861951"
 ---
 # <a name="agent-based-migration-architecture"></a>Ügynökalapú migrálási architektúra
@@ -123,6 +123,6 @@ Az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad á
     3. A **szabályozás** alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése** jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [VMware](tutorial-migrate-vmware-agent.md) vagy a [fizikai kiszolgálók](tutorial-migrate-physical-virtual-machines.md) [ügynök-alapú áttelepítését](tutorial-migrate-vmware-agent.md) .

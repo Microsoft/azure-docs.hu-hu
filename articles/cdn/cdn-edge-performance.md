@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d8119c56c26ed32db136064d93775d21a71f238f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778657"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Az élcsomópontok teljesítményének elemzése a Microsoft Azure CDN szolgáltatásban
@@ -143,7 +143,7 @@ A modul minden jelentése tartalmaz egy diagramot és statisztikát a különbö
     ![CDN-profil panel kezelése gomb](./media/cdn-edge-performance/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson a **nagyméretű http-objektumra** .
+2. Vigye az egérmutatót az **elemzés** lapra, majd vigye az egérmutatót az **Edge Performance Analytics** menü fölé.  Kattintson a **nagyméretű http-objektumra**.
    
     Megjelenik az Edge Node Analytics-jelentések képernyője.
 

@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89299864"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rövid útmutató: Nevesített helyek konfigurálása Azure Active Directory használatával
@@ -43,7 +43,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget, majd a **biztonsági** szakaszban válassza a **feltételes hozzáférés** lehetőséget.
+2. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, majd a **biztonsági** szakaszban válassza a **feltételes hozzáférés** lehetőséget.
 
     ![Feltételes hozzáférés lap](./media/quickstart-configure-named-locations/entrypoint.png)
 
@@ -55,11 +55,11 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 
    * A **Név** mezőbe írja be a megnevezett hely nevét.
    * Az **IP-címtartományok** mezőbe írja be az IP-címtartományt CIDR formátumban.  
-   * Kattintson a **Létrehozás** elemre.
+   * Kattintson a **Létrehozás** lehetőségre.
     
      ![Az új panel](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd:
 

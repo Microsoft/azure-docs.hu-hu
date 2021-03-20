@@ -16,10 +16,10 @@ ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97357976"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>A feladatátvevő fürt példányának VNN Azure Load Balancer konfigurálása
@@ -47,9 +47,9 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A Azure Portal lépjen a virtuális gépeket tartalmazó erőforráscsoporthoz.
 
-1. Válassza a **Hozzáadás** elemet. **Load Balancer** keresése az Azure Marketplace-en. Válassza a **Load Balancer** lehetőséget.
+1. Válassza a **Hozzáadás** lehetőséget. **Load Balancer** keresése az Azure Marketplace-en. Válassza a **Load Balancer** lehetőséget.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Állítsa be a terheléselosztó értékét a következő értékek használatával:
 
@@ -84,7 +84,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A terheléselosztó ablaktáblán válassza az **állapot**-mintavételek elemet.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Az állapot-mintavétel **hozzáadása** panelen állítsa be <span id="probe"></span> a következő állapot-mintavételi paramétereket:
 
@@ -100,7 +100,7 @@ A terheléselosztó létrehozásához használja a [Azure Portal](https://portal
 
 1. A terheléselosztó panelen válassza a **terheléselosztási szabályok** elemet.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be a terheléselosztási szabály paramétereit:
 
@@ -138,8 +138,8 @@ A következő táblázat ismerteti a frissíteni kívánt értékeket:
 
 |**Érték**|**Leírás**|
 |---------|---------|
-|`Cluster Network Name`| A hálózat Windows Server feladatátvevő fürtjének neve. **Feladatátvevőfürt-kezelő**  >  **hálózatok** területen kattintson a jobb gombbal a hálózatra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **általános** lap **név** területén található.|
-|`SQL Server FCI/AG listener IP Address Resource Name`|Az SQL Server a vagy AG figyelő IP-címéhez tartozó erőforrás neve. **Feladatátvevőfürt-kezelő**  >  **szerepkörökben**, a **kiszolgáló neve** alatt, a SQL Server-es verzió szerepkör alatt kattintson a jobb gombbal az IP-cím erőforrásra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **általános** lap **név** területén található.|
+|`Cluster Network Name`| A hálózat Windows Server feladatátvevő fürtjének neve. **Feladatátvevőfürt-kezelő**  >  **hálózatok** területen kattintson a jobb gombbal a hálózatra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **Általános lap** **Név** részén található.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|Az SQL Server a vagy AG figyelő IP-címéhez tartozó erőforrás neve. **Feladatátvevőfürt-kezelő**  >  **szerepkörökben**, a **kiszolgáló neve** alatt, a SQL Server-es verzió szerepkör alatt kattintson a jobb gombbal az IP-cím erőforrásra, és válassza a **Tulajdonságok** lehetőséget. A helyes érték az **Általános lap** **Név** részén található.|
 |`ILBIP`|A belső terheléselosztó (ILB) IP-címe. Ez a címe a Azure Portal a ILB frontend-címeként van konfigurálva. Ez az SQL Server-es IP-cím is. **Feladatátvevőfürt-kezelő** megtalálhatja ugyanazon tulajdonságlapon, ahol a található `<SQL Server FCI/AG listener IP Address Resource Name>` .|
 |`nnnnn`|A terheléselosztó állapotának mintavételében konfigurált mintavételi port. A nem használt TCP-portok mindegyike érvényes.|
 |SubnetMask| A fürt paraméteréhez tartozó alhálózati maszk. A TCP IP-szórási címnek kell lennie: `255.255.255.255` .| 

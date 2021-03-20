@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89265269"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Azure Media Services élő stream létrehozása
@@ -20,7 +20,7 @@ ms.locfileid: "89265269"
 
 Ez a rövid útmutató segítséget nyújt egy Azure Media Services élő stream létrehozásához a Azure Portal és a Wirecast használatával. Feltételezi, hogy rendelkezik Azure-előfizetéssel, és létrehozott egy Media Services fiókot.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -86,7 +86,7 @@ A dolgok egyszerű megtartása érdekében a Wirecast, az áteresztő felhő-kó
 1. Válassza a menüben a **hangrögzítés** lehetőséget, majd válassza ki a használni kívánt hangbemenetet.
 
    ![Bemenetek hangfelvételhez](media/live-events-wirecast-quickstart/audio-shot-select.png)
-1. A főmenüben válassza a **kimeneti beállítások**lehetőséget. Megjelenik a **kimeneti célhely kiválasztása** párbeszédpanel.
+1. A főmenüben válassza a **kimeneti beállítások** lehetőséget. Megjelenik a **kimeneti célhely kiválasztása** párbeszédpanel.
 1. Válassza a **Azure Media Services** elemet a **cél** legördülő listából. A Azure Media Services kimeneti beállítása automatikusan kitölti a kimeneti beállítások *többségét* .
 
    ![Wirecast kimeneti beállítások képernyő](media/live-events-wirecast-quickstart/azure-media-services.png)
@@ -123,7 +123,7 @@ Ez a rész beállítja a kimeneteket, és lehetővé teszi az élő stream rögz
    
    ![Lokátor neve mező](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. A képernyő minden más elemének kihagyása egyelőre.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="start-the-broadcast"></a>A közvetítés elindítása
 
@@ -163,18 +163,18 @@ Ez a rész beállítja a kimeneteket, és lehetővé teszi az élő stream rögz
 Ha úgy gondolja, hogy elég tartalmat továbbított, állítsa le a szórást.
 
 1. A Wirecast területen válassza a **szórás** gombot. Ez a lépés leállítja a szórást a Wirecast.
-1. A portálon válassza a **Leállítás**lehetőséget. Ekkor megjelenik egy figyelmeztető üzenet arról, hogy az élő stream leáll, de a kimenet egy igény szerinti eszköz lesz.
+1. A portálon válassza a **Leállítás** lehetőséget. Ekkor megjelenik egy figyelmeztető üzenet arról, hogy az élő stream leáll, de a kimenet egy igény szerinti eszköz lesz.
 1. Kattintson a **Leállítás** gombra a figyelmeztető üzenetben. Azure Media Player mostantól hibaüzenetet jelenít meg, mert az élő stream már nem érhető el.
 
 ## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>Az igény szerinti kimenet lejátszása Azure Media Player használatával
 
 A létrehozott kimenet elérhető az igény szerinti folyamatos átvitelhez, ha a streaming végpontja fut.
 
-1. Nyissa meg az Media Services listáját, és válassza az **eszközök**elemet.
+1. Nyissa meg az Media Services listáját, és válassza az **eszközök** elemet.
 1. Keresse meg a korábban létrehozott esemény kimenetét, és válassza ki az eszközre mutató hivatkozást. Megnyílik az eszköz kimenete lap.
 1. Másolja a streaming URL-címet az adott eszközhöz tartozó videolejátszó alá.
 1. Térjen vissza Azure Media Player a böngészőben, és illessze be a streaming URL-címet az URL mezőbe.
-1. Válassza a **lejátszó frissítése**lehetőséget.
+1. Válassza a **lejátszó frissítése** lehetőséget.
 1. Az igény szerinti eszköz megtekintéséhez válassza a videó **Lejátszás** ikonját.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -184,13 +184,13 @@ A létrehozott kimenet elérhető az igény szerinti folyamatos átvitelhez, ha 
 
 A folyamatos átviteli végpont leállítása:
 
-1. A Media Services listában válassza a **folyamatos átviteli végpontok**lehetőséget.
+1. A Media Services listában válassza a **folyamatos átviteli végpontok** lehetőséget.
 2. Válassza ki a korábban elindított alapértelmezett adatfolyam-végpontot. Ez a lépés megnyitja a végpont lapját.
-3. Válassza a **Leállítás**lehetőséget.
+3. Válassza a **Leállítás** lehetőséget.
 
 > [!TIP]
 > Ha nem szeretné megtartani az adott eseményből származó eszközöket, ne felejtse el törölni őket, hogy ne kelljen fizetnie a tárterületért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Élő események és élő kimenetek Media Services](./live-events-outputs-concept.md)

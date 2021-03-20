@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89180575"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
@@ -75,13 +75,13 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
 
 1. A tároló irányítópultjának menüjében válassza a **biztonsági** mentés lehetőséget a biztonsági mentés menü megnyitásához.
 
-1. A Biztonsági mentés célja alatt, a **Hol futnak az alkalmazások és szolgáltatások?** legördülő menüből válassza az *Azure* lehetőséget. A **Miről szeretne biztonsági másolatot készíteni** legördülő menüből válassza a *virtuális gép*lehetőséget, és válassza a **biztonsági mentés**lehetőséget.
+1. A Biztonsági mentés célja alatt, a **Hol futnak az alkalmazások és szolgáltatások?** legördülő menüből válassza az *Azure* lehetőséget. A **Miről szeretne biztonsági másolatot készíteni** legördülő menüből válassza a *virtuális gép* lehetőséget, és válassza a **biztonsági mentés** lehetőséget.
 
     Ezek a műveletek előkészítik a helyreállítási tárat a virtuális géppel folytatott interakcióra. A helyreállítási tárak rendelkeznek egy alapértelmezett szabályzattal, amely naponta hoz létre egy visszaállítási pontot, és aztán 30 napig meg is őrzi.
 
     ![Biztonsági mentés célja](./media/tutorial-backup-vm-at-scale/backup-goal.png)
 
-1. Új szabályzat létrehozásához a biztonsági mentési házirend menüben válassza a **biztonsági mentési házirend kiválasztása** legördülő menüt, majd az *új házirend létrehozása*lehetőséget.
+1. Új szabályzat létrehozásához a biztonsági mentési házirend menüben válassza a **biztonsági mentési házirend kiválasztása** legördülő menüt, majd az *új házirend létrehozása* lehetőséget.
 
     ![Új szabályzat létrehozása](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
@@ -98,7 +98,7 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
 
      A biztonsági mentési szabályzat létrehozása után társítsa a szabályzatot a virtuális gépekkel.
 
-1. A **Virtual Machines**területen válassza a **Hozzáadás**lehetőséget.
+1. A **Virtual Machines** területen válassza a **Hozzáadás** lehetőséget.
 
      ![Virtuális gépek hozzáadása](./media/tutorial-backup-vm-at-scale/add-virtual-machines.png)
 
@@ -108,7 +108,7 @@ A helyreállítási tár létrehozása után a következő lépés a tároló ko
 
     ![Válassza ki a védelemmel ellátni kívánt virtuális gépeket](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
-1. A virtuális gépek kiválasztása után válassza a **biztonsági mentés engedélyezése**lehetőséget.
+1. A virtuális gépek kiválasztása után válassza a **biztonsági mentés engedélyezése** lehetőséget.
 
     Ha az üzembe helyezés befejeződött, értesítést fog kapni arról, hogy a telepítés sikeresen befejeződött.
 
@@ -118,7 +118,7 @@ Engedélyezte a biztonsági mentést a Recovery Services-tárolók számára, de
 
 Biztonsági mentési feladat manuális futtatása:
 
-1. A tároló irányítópultján **kattintson a** **biztonsági másolati elemek elemre**a biztonsági másolati elemek menü megnyitásához.
+1. A tároló irányítópultján **kattintson a** **biztonsági másolati elemek elemre** a biztonsági másolati elemek menü megnyitásához.
 
     ![Biztonsági másolati elemek](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
@@ -132,7 +132,7 @@ Biztonsági mentési feladat manuális futtatása:
 
     ![Biztonsági mentési feladat elindul](./media/tutorial-backup-vm-at-scale/initial-backup-context-menu.png)
 
-1. A **biztonsági mentési elemek** listában válassza a három pontot a **...** helyi menü megnyitásához.
+1. A **biztonsági mentési elemek** listában válassza a három pontot a  helyi menü megnyitásához.
 
 1. A helyi menüben válassza a **Biztonsági mentés** elemet.
 
@@ -183,7 +183,7 @@ Ha azt tervezi, hogy az ezt követő oktatóanyagokkal dolgozik tovább, akkor n
     >[!NOTE]
     >A törölt elemek 14 napig őrzik meg a helyreállított törlési állapotot. Csak az adott időszak után törölhető a tároló. További információ: [Azure Backup Recovery Services](backup-azure-delete-vault.md)-tároló törlése.
 
-1. Ha nincs több elem a tárolóban, válassza a **Törlés**lehetőséget.
+1. Ha nincs több elem a tárolóban, válassza a **Törlés** lehetőséget.
 
     ![Törlés kiválasztása](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 

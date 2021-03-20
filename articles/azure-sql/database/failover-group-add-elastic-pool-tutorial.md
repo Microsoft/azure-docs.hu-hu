@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/27/2019
 ms.openlocfilehash: cdbc44158de2f24d7d33d68311979c3b8bdda85d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94593977"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Oktatóanyag: Azure SQL Database rugalmas készlet hozzáadása egy feladatátvételi csoporthoz
@@ -55,14 +55,14 @@ Hozzon létre rugalmas készletet a Azure Portal használatával.
     ![Rugalmas készlet kiválasztása](./media/failover-group-add-elastic-pool-tutorial/select-azure-sql-elastic-pool.png)
 
 1. Állítsa be a rugalmas készletet a következő értékekkel:
-   - **Név** : adjon egyedi nevet a rugalmas készletnek, például: `myElasticPool` .
-   - **Előfizetés** : válassza ki az előfizetését a legördülő menüből.
-   - **ResourceGroup** : válassza ki `myResourceGroup` a legördülő menüből az 1. szakaszban létrehozott erőforráscsoportot.
-   - **Kiszolgáló** : válassza ki az 1. szakaszban létrehozott kiszolgálót a legördülő menüből.  
+   - **Név**: adjon egyedi nevet a rugalmas készletnek, például: `myElasticPool` .
+   - **Előfizetés**: válassza ki az előfizetését a legördülő menüből.
+   - **ResourceGroup**: válassza ki `myResourceGroup` a legördülő menüből az 1. szakaszban létrehozott erőforráscsoportot.
+   - **Kiszolgáló**: válassza ki az 1. szakaszban létrehozott kiszolgálót a legördülő menüből.  
 
        ![Új kiszolgáló létrehozása rugalmas készlethez](./media/failover-group-add-elastic-pool-tutorial/use-existing-server-for-elastic-pool.png)
 
-   - **Számítás + tárolás** : válassza a **rugalmas készlet beállítása** lehetőséget a számítási és tárolási beállítások konfigurálásához, és adja hozzá az önálló adatbázist a rugalmas készlethez. A **készlet beállításai** lapon hagyja meg az alapértelmezett Gen5, 2 virtuális mag és 32gb értékkel.
+   - **Számítás + tárolás**: válassza a **rugalmas készlet beállítása** lehetőséget a számítási és tárolási beállítások konfigurálásához, és adja hozzá az önálló adatbázist a rugalmas készlethez. A **készlet beállításai** lapon hagyja meg az alapértelmezett Gen5, 2 virtuális mag és 32gb értékkel.
 
 1. A **configure (Konfigurálás** ) lapon válassza az **adatbázisok** fület, majd válassza az **adatbázis hozzáadása** elemet. Válassza ki az 1. szakaszban létrehozott adatbázist, majd válassza az **alkalmaz** lehetőséget a rugalmas készlethez való hozzáadásához. A rugalmas készlet beállításainak alkalmazásához és a **configure (Konfigurálás** ) lap bezárásához kattintson ismét az **alkalmaz** gombra.
 
@@ -144,12 +144,12 @@ Hozza létre a feladatátvételi csoportot a Azure Portal használatával.
     ![Új feladatátvételi csoport hozzáadása](./media/failover-group-add-elastic-pool-tutorial/elastic-pool-failover-group.png)
 
 1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a következő értékeket, majd válassza a **Létrehozás** lehetőséget:
-    - **Feladatátvételi csoport neve** : adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
-    - **Másodlagos kiszolgáló** : válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása** lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. Miután megadta a következő értékeket az új másodlagos kiszolgálóhoz, válassza a **kiválasztás** lehetőséget.
-        - **Kiszolgáló neve** : írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
-        - **Kiszolgáló-rendszergazdai bejelentkezés** : típus `azureuser`
-        - **Password (jelszó** ): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
-        - **Hely** : válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
+    - **Feladatátvételi csoport neve**: adjon meg egy egyedi feladatátvételi csoport nevét (például `failovergrouptutorial` ).
+    - **Másodlagos kiszolgáló**: válassza a *szükséges beállítások konfigurálását* , majd válassza az **új kiszolgáló létrehozása** lehetőséget. Másik lehetőségként már meglévő kiszolgálót is választhat másodlagos kiszolgálóként. Miután megadta a következő értékeket az új másodlagos kiszolgálóhoz, válassza a **kiválasztás** lehetőséget.
+        - **Kiszolgáló neve**: írjon be egy egyedi nevet a másodlagos kiszolgálónak, például: `mysqlsecondary` .
+        - **Kiszolgáló-rendszergazdai bejelentkezés**: típus `azureuser`
+        - **Password (jelszó**): írjon be egy olyan összetett jelszót, amely megfelel a jelszó követelményeinek.
+        - **Hely**: válasszon ki egy helyet a legördülő menüből, például: `East US` . Ez a hely nem lehet ugyanazon a helyen, mint az elsődleges kiszolgáló.
 
        > [!NOTE]
        > A kiszolgáló bejelentkezési és tűzfalbeállítások meg kell egyeznie az elsődleges kiszolgálóval.

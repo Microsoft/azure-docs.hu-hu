@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97881633"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>A Azure.Search.Documents használata C# .NET-alkalmazásokban
@@ -288,8 +288,8 @@ Az index pontosan egy mezőjének a dokumentum kulcsának () kell lennie `IsKey 
 | Mező típusa | Leírás és használat |
 |------------|-----------------------|
 | [`SearchField`](/dotnet/api/azure.search.documents.indexes.models.searchfield) | Alaposztály, a legtöbb tulajdonság NULL értékre van állítva, kivéve `Name` , ami kötelező, és `AnalyzerName` amely alapértelmezés szerint a standard Lucene. |
-| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Segítő modell. Bármilyen adattípus lehet, mindig nem kereshető (figyelmen kívül hagyva a teljes szöveges keresési lekérdezéseknél), és lekérhető (nem rejtett). A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Használhat olyan `SimpleField` dokumentum-azonosítókat vagy mezőket, amelyek csak szűrők, dimenziók vagy pontozási profilok esetében használhatók. Ha igen, ügyeljen arra, hogy a forgatókönyvhöz szükséges attribútumokat (például `IsKey = true` egy dokumentum azonosítóját) alkalmazza. További információ: [SimpleFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) a forráskódban. |
-| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Segítő modell. Karakterláncnak kell lennie, és mindig kereshető és lekérhető. A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Mivel ez a mezőtípus kereshető, támogatja a szinonimákat és az analizátor összes tulajdonságának teljes kiegészítését. További információ: [SearchableFieldAttribute.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) a forráskódban. |
+| [`SimpleField`](/dotnet/api/azure.search.documents.indexes.models.simplefield) | Segítő modell. Bármilyen adattípus lehet, mindig nem kereshető (figyelmen kívül hagyva a teljes szöveges keresési lekérdezéseknél), és lekérhető (nem rejtett). A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Használhat olyan `SimpleField` dokumentum-azonosítókat vagy mezőket, amelyek csak szűrők, dimenziók vagy pontozási profilok esetében használhatók. Ha igen, ügyeljen arra, hogy a forgatókönyvhöz szükséges attribútumokat (például `IsKey = true` egy dokumentum azonosítóját) alkalmazza. További információ: [SimpleFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SimpleFieldAttribute.cs) a forráskódban. |
+| [`SearchableField`](/dotnet/api/azure.search.documents.indexes.models.searchablefield) | Segítő modell. Karakterláncnak kell lennie, és mindig kereshető és lekérhető. A többi attribútum alapértelmezés szerint ki van kapcsolva, de engedélyezve lehet. Mivel ez a mezőtípus kereshető, támogatja a szinonimákat és az analizátor összes tulajdonságának teljes kiegészítését. További információ: [SearchableFieldAttribute. cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/src/Indexes/SearchableFieldAttribute.cs) a forráskódban. |
 
 Függetlenül attól, hogy az alapszintű `SearchField` API-t vagy a segítő modellek valamelyikét használja-e, explicit módon engedélyeznie kell a szűrő, a dimenzió és a rendezési attribútumot. Például a [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), a [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable)és a [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explicit módon kell szerepelnie a fenti mintában látható módon.
 
@@ -637,7 +637,7 @@ WriteDocuments(results);
 
 Ez a szakasz a .NET SDK bevezetését vonja le, de itt nem áll le. A következő szakasz további forrásokat javasol az Azure Cognitive Search programozásával kapcsolatos további információk megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + Az [Azure.Search.Documents](/dotnet/api/azure.search.documents) és [REST API](/rest/api/searchservice/) API-referenciájának dokumentációja
 

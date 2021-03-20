@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02490839a9e35695ae2e8b3f750e139ad7413aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280213"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Azure AD Connect szinkronizálás: a deklaratív kiépítési kifejezések ismertetése
@@ -82,7 +82,7 @@ A kezelők kiértékelése balról jobbra történik, és ugyanaz a kiértékel�
 ## <a name="multi-valued-attributes"></a>Többértékű attribútumok
 A függvények egyértékű és több értékű attribútumokon is működhetnek. A többértékű attribútumok esetében a függvény minden értéknél működik, és minden értékhez ugyanazt a függvényt alkalmazza.
 
-Példa:  
+Például:  
 `Trim([proxyAddresses])` Végezze el a proxyAddress attribútum minden értékének vágását.  
 `Word([proxyAddresses],1,"@") & "@contoso.com"` A-val minden értéknél @-sign cserélje le a tartományt a következőre: @contoso.com .  
 `IIF(InStr([proxyAddresses],"SIP:")=1,NULL,[proxyAddresses])` Keresse meg a SIP-címeket, és távolítsa el az értékek közül.

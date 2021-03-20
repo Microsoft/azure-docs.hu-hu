@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/14/2019
 ms.openlocfilehash: 09bb7cb2344e3e708a64842916e6e483136da3bb
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94594283"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
@@ -52,7 +52,7 @@ Hozza létre a feladatátvételi csoportot, és adja hozzá az önálló adatbá
 
 1. A **feladatátvételi csoport** lapon adja meg vagy válassza ki a szükséges értékeket, majd válassza a **Létrehozás** lehetőséget.
 
-   - **Csoportba tartozó adatbázisok** : válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
+   - **Csoportba tartozó adatbázisok**: válassza ki a feladatátvételi csoportba felvenni kívánt adatbázist. Ha hozzáadja az adatbázist a feladatátvételi csoporthoz, a automatikusan elindítja a Geo-replikálási folyamatot.
 
    ![SQL Database hozzáadása a feladatátvételi csoporthoz](./media/auto-failover-group-configure/add-sqldb-to-failover-group.png)
 
@@ -514,7 +514,7 @@ Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használat�
     1. Válassza ki előfizetését a legördülő listából.
     1. Válassza ki a felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből.
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből.
-1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra** :
+1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
     1. Válassza ki az **első virtuális hálózati átjáró** elsődleges hálózati átjáróját, például: `Primary-Gateway` .  
     1. Válassza ki a **második virtuális hálózati átjáró** másodlagos hálózati átjáróját, például: `Secondary-Gateway` .
     1. Jelölje be a **kétirányú kapcsolat létesítése** melletti jelölőnégyzetet.

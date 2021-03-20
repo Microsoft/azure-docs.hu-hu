@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-relay
 author: clemensv
 ms.service: service-bus-relay
@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ce29cd03de46e1d93d7f1f28f9f5184cd59a57e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "79200294"
 ---
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
@@ -25,7 +25,7 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 2. Válassza az **Előzetes verzió belefoglalása** lehetőséget. 
-3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. A keresési eredmények között válassza a  **Microsoft Azure Relay**lehetőséget.
+3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. A keresési eredmények között válassza a  **Microsoft Azure Relay** lehetőséget.
 4. Válassza a **2.0.0-preview1-20180523** lehetőséget a verzió megadásakor. 
 5. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
 

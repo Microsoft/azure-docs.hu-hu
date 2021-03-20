@@ -4,17 +4,17 @@ description: Ismerje meg a fájlokat és a címtárakat, valamint azt, hogyan ha
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.openlocfilehash: eafea6c234c3b261521f8a791b7a03e25388f02a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87552636"
 ---
 # <a name="files-and-directories-in-azure-batch"></a>Fájlok és könyvtárak Azure Batch
 
 Azure Batch minden egyes feladathoz tartozik egy munkakönyvtár, amelyben létrehozhat fájlokat és címtárakat. Ez a munkakönyvtár használható a tevékenység által futtatott program, az ez által feldolgozott adatok, valamint az eredményként létrejövő kimenet tárolására. A tevékenységhez tartozó összes fájlnak és könyvtárnak a tevékenység felhasználója a tulajdonosa.
 
-A Batch szolgáltatás *gyökérkönyvtárként*elérhetővé teszi a csomópont fájlrendszerének egy részét. Ez a gyökérkönyvtár a virtuális gép ideiglenes tárolóeszközén található, nem közvetlenül az operációsrendszer-meghajtón.
+A Batch szolgáltatás *gyökérkönyvtárként* elérhetővé teszi a csomópont fájlrendszerének egy részét. Ez a gyökérkönyvtár a virtuális gép ideiglenes tárolóeszközén található, nem közvetlenül az operációsrendszer-meghajtón.
 
 A tevékenységek az `AZ_BATCH_NODE_ROOT_DIR` környezeti változóra hivatkozva tudják elérni a gyökérkönyvtárat. A környezeti változók használatával kapcsolatos további információért lásd: [Környezeti beállítások tevékenységekhez](jobs-and-tasks.md#environment-settings-for-tasks).
 

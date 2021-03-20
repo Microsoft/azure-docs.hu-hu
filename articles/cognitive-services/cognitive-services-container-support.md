@@ -12,10 +12,10 @@ ms.date: 12/16/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, Kubernetes
 ms.openlocfilehash: f5caac0a0da3595075dddd5a273a6883a0cca468
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861836"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-tárolók
@@ -41,13 +41,13 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 
 ### <a name="decision-containers"></a>Döntési tárolók
 
-| Szolgáltatás |  Tároló | Leírás | Rendelkezésre állás |
+| Szolgáltatás |  Tároló | Description | Rendelkezésre állás |
 |--|--|--|--|
 | [Anomália detektor][ad-containers] | **Anomália detektor** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-decision-anomaly-detector))  | A rendellenesség-Kiderítő API lehetővé teszi, hogy az idősoros adataiban a gépi tanulással figyelje és azonosítsa a rendellenességeket. | Általánosan elérhető |
 
 ### <a name="language-containers"></a>Nyelvtárolók
 
-| Szolgáltatás |  Tároló | Leírás | Rendelkezésre állás |
+| Szolgáltatás |  Tároló | Description | Rendelkezésre állás |
 |--|--|--|--|
 | [LUIS][lu-containers] |  **Luis** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Betölti a betanított vagy közzétett Language Understanding modellt, más néven LUIS alkalmazást egy Docker-tárolóba, és hozzáférést biztosít a tároló API-végpontjai lekérdezési előrejelzéséhez. Lekérdezési naplókat gyűjthet a tárolóból, és feltöltheti ezeket a [Luis-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében. | Általánosan elérhető |
 | [Text Analytics][ta-containers-keyphrase] | **Kulcsszókeresés** ([rendszerkép](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | A fő pontok azonosítására szolgáló legfontosabb kifejezések kibontása. Például „Az étel finom volt, és a személyzet kedves volt” bemeneti szövegből az API a következő fő pontokat adja vissza: „étel” és „személyzet kedves”. | Előnézet |
@@ -60,7 +60,7 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 > [!NOTE]
 > A beszédfelismerési tárolók használatához el kell végeznie egy [online kérelem űrlapját](https://aka.ms/csgate).
 
-| Szolgáltatás |  Tároló | Leírás | Rendelkezésre állás |
+| Szolgáltatás |  Tároló | Description | Rendelkezésre állás |
 |--|--|--|
 | [Speech Service API][sp-containers-stt] |  **Beszéd – szöveg** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | Folyamatos, valós idejű beszédet szöveggé alakít. | Általánosan elérhető |
 | [Speech Service API][sp-containers-cstt] | **Custom Speech – szöveg** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-speechservices-custom-speech-to-text)) | A folyamatos valós idejű beszédet szövegbe helyezi egy egyéni modell használatával. | Általánosan elérhető |
@@ -74,7 +74,7 @@ Az Azure Cognitive Services tárolók a következő Docker-tárolókat biztosít
 > [!WARNING]
 > 2020. június 11-én a Microsoft bejelentette, hogy nem értékesít arcfelismerő technológiát az Egyesült Államok rendőrségének egészen addig, amíg az emberi jogokra alapozott erős szabályozást nem vezetnek be. Ilyen esetben előfordulhat, hogy az ügyfelek nem használhatják az Azure-szolgáltatások (például a Face vagy a Video Indexer) arc-felismerési funkcióit és funkcióit, ha az ügyfél vagy a által a Egyesült Államok egy rendőrségi részlege által vagy a szolgáltatásban való használatát engedélyezte.
 
-| Szolgáltatás |  Tároló | Leírás | Rendelkezésre állás |
+| Szolgáltatás |  Tároló | Description | Rendelkezésre állás |
 |--|--|--|--|
 | [Computer Vision][cv-containers] | **OCR olvasása** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-read)) | Az olvasási OCR-tároló lehetővé teszi a nyomtatott és a kézírásos szöveg kinyerését képekből és dokumentumokból JPEG-, PNG-, BMP-, PDF-és TIFF-fájlformátumok támogatásával. További információ az API-k [olvasása dokumentációban](./computer-vision/concept-recognizing-text.md)található. | Megtekintett előzetes verzió. [Hozzáférés kérése][request-access]. |
 | [Térbeli elemzés][spa-containers] | **Térbeli elemzés** ([rendszerkép](https://hub.docker.com/_/microsoft-azure-cognitive-services-vision-spatial-analysis)) | A valós idejű adatfolyam-továbbítási videót elemzi a személyek közötti térbeli kapcsolatok, a mozgásuk és a fizikai környezetekben található objektumok közötti interakciók megismerése érdekében. | Megtekintett előzetes verzió. [Hozzáférés kérése][request-access]. |
@@ -113,7 +113,7 @@ Az egyes tárolók saját követelményeiket is magukban foglalhatják, beleért
 
 A fejlesztői minták a GitHub- [tárházban](https://github.com/Azure-Samples/cognitive-services-containers-samples)érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Cognitive Services használható [tároló-receptek](containers/container-reuse-recipe.md) megismerése.
 

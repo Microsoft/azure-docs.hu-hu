@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "79117269"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Biztonság és adatvédelem Azure Data Box Disk
@@ -76,7 +76,7 @@ Az Azure Data Box Disk a szolgáltatás alábbi főbb példányaiban gyűjt és 
   - Utca, házszám
   - City
   - Irányítószám
-  - Állam
+  - Állapot
   - Ország/tartomány/régió
   - Meghajtóazonosító
   - Szállítmányozó fiókszáma
@@ -89,7 +89,7 @@ Az Azure Data Box Disk a szolgáltatás alábbi főbb példányaiban gyűjt és 
 További információkért lásd a Microsoft szabályzatát a [biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.

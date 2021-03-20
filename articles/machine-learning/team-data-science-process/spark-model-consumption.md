@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: bb38a76de41885b6f39a1c6dce7c44bcb52a4d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86027443"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Működővé tenni Spark – beépített gépi tanulási modellek
@@ -545,7 +545,7 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
 A Spark lehetővé teszi a Batch-feladatok vagy interaktív lekérdezések távoli beküldését egy Livy nevű összetevővel rendelkező REST-felületen keresztül. A Livy alapértelmezés szerint engedélyezve van a HDInsight Spark-fürtön. A Livy kapcsolatos további információkért lásd: [Spark-feladatok távoli elküldése a Livy használatával](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 A Livy használatával távolról is elküldhet egy olyan feladatot, amely egy Azure-blobban tárolt fájlt szerzi be, majd az eredményeket egy másik blobba írja. Ehhez töltse fel a Python-szkriptet a következőből:  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) a Spark-fürt blobján. A szkript a fürt blobba másolásához használhatja a **Microsoft Azure Storage Explorer** vagy a **AzCopy** eszközt. Ebben az esetben feltöltöttük a szkriptet a ***wasb:///example/Python/ConsumeGBNYCReg.py***.   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) a Spark-fürt blobján. A szkript a fürt blobba másolásához használhatja a **Microsoft Azure Storage Explorer** vagy a **AzCopy** eszközt. Ebben az esetben feltöltöttük a szkriptet a **_wasb:///example/Python/ConsumeGBNYCReg.py_**.   
 
 > [!NOTE]
 > A szükséges hozzáférési kulcsok a-portálon találhatók a Spark-fürthöz társított Storage-fiókhoz. 
@@ -601,8 +601,8 @@ Azt is megteheti, hogy ezt a Python-kódot [Azure functions](https://azure.micro
 
 Ha a kód ingyenes felhasználói felületét szeretné használni, használja a [Azure Logic apps](https://azure.microsoft.com/documentation/services/app-service/logic/) a Spark batch pontozás meghívásához egy HTTP-művelet definiálásával a **Logic apps Designerben** , és állítsa be a paramétereit. 
 
-* Azure Portal hozzon létre egy új logikai alkalmazást az **+ új**  ->  **web és mobil**  ->  **Logic app**lehetőség kiválasztásával. 
-* A **Logic apps Designer**kiépítéséhez adja meg a logikai alkalmazás nevét és a app Service tervet.
+* Azure Portal hozzon létre egy új logikai alkalmazást az **+ új**  ->  **web és mobil**  ->  **Logic app** lehetőség kiválasztásával. 
+* A **Logic apps Designer** kiépítéséhez adja meg a logikai alkalmazás nevét és a app Service tervet.
 * Válasszon ki egy HTTP-műveletet, és adja meg a következő ábrán látható paramétereket:
 
 ![Logic Apps Designer](./media/spark-model-consumption/spark-logica-app-client.png)

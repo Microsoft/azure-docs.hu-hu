@@ -10,10 +10,10 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python
 ms.openlocfilehash: ad6399a4713520ca0550d143cf3f19f87d55337c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87876801"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Python)
@@ -34,7 +34,7 @@ A felhőből az eszközre irányuló üzenetekről a [IoT hub fejlesztői útmut
 
 Az oktatóanyag végén két Python-konzolos alkalmazást fog futtatni:
 
-* A **SimulatedDevice.py**az alkalmazás egy olyan módosított verziója, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-python.md), amely csatlakozik a IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
+* A **SimulatedDevice.py** az alkalmazás egy olyan módosított verziója, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-python.md), amely csatlakozik a IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
 
 * **SendCloudToDeviceMessage.py**, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszköz alkalmazásnak a IoT hubon keresztül.
 
@@ -56,7 +56,7 @@ Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja 
     pip install azure-iot-device
     ```
 
-1. Egy szövegszerkesztővel hozzon létre egy **SimulatedDevice.py**nevű fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **SimulatedDevice.py** nevű fájlt.
 
 1. Adja hozzá a következő `import` utasításokat és változókat a **SimulatedDevice.py** fájl elejéhez:
 
@@ -138,7 +138,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
    pip install azure-iot-hub
    ```
 
-1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py**nevű fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py** nevű fájlt.
 
 1. Adja hozzá a következő `import` utasításokat és változókat a **SendCloudToDeviceMessage.py** fájl elejéhez:
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 12ef895c8b16fe18ed02ebf01d17624ac71c2f3e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97861454"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>Többhelyes és többrégiós összevonás
@@ -185,7 +185,7 @@ Az ASA képes a [CSV-, JSON-és Apache Avro-formátumokban](../stream-analytics/
 
 Az összes olyan replikációs feladathoz, ahol az esemény-adatfolyamokat "állapotba" kell másolni, és nem kell megérinteni a hasznos adatokat, vagy ha egy útválasztót kell megvalósítani, a titkosítási feladatokat kell végrehajtania, módosítania kell a hasznos adatok kódolását, vagy ha más esetben teljes mértékben meg kell határoznia az adatfolyam tartalmát, Azure Functions a legjobb megoldás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben számos összevonási mintát ismertetünk, és kifejtjük Azure Functions szerepét az Azure-beli esemény-és üzenetkezelési replikálási futtatókörnyezetként.
 

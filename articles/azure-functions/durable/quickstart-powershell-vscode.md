@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/10/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: edd02085abe63b124082255247362f096248ba82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91317259"
 ---
 # <a name="create-your-first-durable-function-in-powershell"></a>Az első tartós függvény létrehozása a PowerShellben
@@ -40,9 +40,9 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Create New Project...` .
 
-    ![Függvény létrehozása](media/quickstart-js-vscode/functions-create-project.png)
+    ![Create függvény](media/quickstart-js-vscode/functions-create-project.png)
 
-1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
+1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás** lehetőséget.
 
 1. Az utasításokat követve adja meg a következő információkat:
 
@@ -106,9 +106,9 @@ Ezután adja hozzá a hivatkozott `Hello` tevékenység függvényt.
     | Adatkérés | Érték | Leírás |
     | ------ | ----- | ----------- |
     | Sablon kiválasztása a függvényhez | Durable Functions tevékenység (előzetes verzió) | Tevékenységi függvény létrehozása |
-    | Adja meg a függvény nevét | helló | A tevékenység függvényének neve |
+    | Adja meg a függvény nevét | Üdvözöljük | A tevékenység függvényének neve |
 
-Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/run.ps1t * , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
+Hozzáadta a `Hello` Orchestrator által meghívott tevékenység-függvényt. Nyissa meg a *Hello/run.ps1t* , és tekintse meg, hogy bemenetként és Üdvözlésként adja meg a nevet. A Activity függvény olyan műveleteket hajt végre, mint például egy adatbázis hívása vagy egy számítási művelet végrehajtása.
 
 Végül egy HTTP által aktivált függvényt fog hozzáadni, amely elindítja a koordinálást.
 
@@ -137,7 +137,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     > [!NOTE]
     > A hibakereséssel kapcsolatos további információkért tekintse meg a [Durable functions diagnosztikát](durable-functions-diagnostics.md#debugging) .
 
-1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása**lehetőséget.
+1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása** lehetőséget.
 
     ![Storage-fiók létrehozása](media/quickstart-js-vscode/functions-select-storage.png)
 
@@ -198,13 +198,13 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
     ![A projekt közzététele az Azure-ban](../../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
-1. Adja meg a következő információkat a kérdésekben:
+1. Amikor a rendszer kéri, adja meg az alábbi információkat:
 
     + **Mappa kiválasztása**: válasszon egy mappát a munkaterületről, vagy tallózással keresse meg a Function alkalmazást tartalmazó mappát. Ez nem jelenik meg, ha már nyitva van egy érvényes Function alkalmazás.
 
     + **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a lehetőséget `+ Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
+    + **Azure-beli Függvényalkalmazás kiválasztása**: Válassza a `+ Create new Function App` elemet. (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
       
     + **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen. 
 
@@ -225,7 +225,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés.
 
-1. <a name="update-function-app-ps7"></a>Ha korábban nem tudta kijelölni a *PowerShell 7* alkalmazást a Function alkalmazás létrehozásakor, nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs palettájának megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Upload Local Settings...` . A megjelenő utasításokat követve válassza ki a létrehozott Function alkalmazást. Ha a rendszer felszólítja a meglévő beállítások felülírására, válassza a *nem az összes*lehetőséget.
+1. <a name="update-function-app-ps7"></a>Ha korábban nem tudta kijelölni a *PowerShell 7* alkalmazást a Function alkalmazás létrehozásakor, nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs palettájának megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Upload Local Settings...` . A megjelenő utasításokat követve válassza ki a létrehozott Function alkalmazást. Ha a rendszer felszólítja a meglévő beállítások felülírására, válassza a *nem az összes* lehetőséget.
     
 1. Válassza ki az értesítés **kimenetének megtekintése** lehetőséget a létrehozási és a telepítési eredmények megtekintéséhez, beleértve a létrehozott Azure-erőforrásokat is. Ha kihagyja az értesítést, válassza a jobb alsó sarokban található harang ikont az újbóli megjelenítéshez.
 
@@ -238,7 +238,7 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Visual Studio Code használatával egy PowerShell tartós Function-alkalmazást hozhat létre és tehet közzé.
 

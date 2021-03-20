@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89280145"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory átmenő hitelesítés biztonsági mélye
@@ -144,7 +144,7 @@ Az átmenő hitelesítés a következő módon kezeli a felhasználó bejelentke
 8. Az Azure AD STS elhelyezi a jelszó-ellenőrzési kérelmet, amely a felhasználónevet és a titkosított jelszó értékét tartalmazza a bérlőre jellemző Service Bus várólistára.
 9. Mivel a inicializált hitelesítési ügynökök tartósan csatlakoztatva vannak a Service Bus-várólistához, az egyik rendelkezésre álló hitelesítési ügynök lekéri a jelszó-ellenőrzési kérelmet.
 10. A hitelesítési ügynök megkeresi a titkosított jelszó értékét, amely a nyilvános kulcsra vonatkozik, azonosító használatával, majd visszafejti azt a titkos kulcs használatával.
-11. A hitelesítési ügynök megkísérli érvényesíteni a felhasználónevet és a jelszót a helyszíni Active Directory a [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera) -val a **dwLogonType** paraméterrel **LOGON32_LOGON_NETWORK**értékre állítva. 
+11. A hitelesítési ügynök megkísérli érvényesíteni a felhasználónevet és a jelszót a helyszíni Active Directory a [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera) -val a **dwLogonType** paraméterrel **LOGON32_LOGON_NETWORK** értékre állítva. 
     - Ez az API ugyanaz az API, amelyet a Active Directory összevonási szolgáltatások (AD FS) (AD FS) használ a felhasználók bejelentkezésére egy összevont bejelentkezési forgatókönyvben.
     - Ez az API a Windows Server standard megoldási folyamatán alapul a tartományvezérlő megkereséséhez.
 12. A hitelesítési ügynök megkapja a Active Directory eredményét, például a sikeres, a Felhasználónév vagy a jelszó helytelen, vagy a jelszó lejárt.

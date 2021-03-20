@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: e69b407bc7d58a83616daa44272ec008ccff9fad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85846654"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric események listája 
@@ -31,7 +31,7 @@ Itt látható az entitások által rendezett Service Fabric események listája.
 
 A fürt frissítéseivel kapcsolatos további részletek [itt](service-fabric-cluster-upgrade-windows-server.md)találhatók.
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level | 
 | --- | --- | --- | --- | --- | --- | 
 | 29627 | ClusterUpgradeStarted | Frissítés | A fürt frissítése megkezdődött | CM | Tájékoztató |
 | 29628 | ClusterUpgradeCompleted | Frissítés | A fürt frissítése befejeződött | CM | Tájékoztató | 
@@ -43,7 +43,7 @@ A fürt frissítéseivel kapcsolatos további részletek [itt](service-fabric-cl
 
 **Csomópont-Életciklus eseményei** 
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint |
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level |
 | --- | --- | ---| --- | --- | --- | 
 | 18602 | NodeDeactivateCompleted | Statetransition sablontípus | A csomópont inaktiválása befejeződött | FM | Tájékoztató | 
 | 18603 | NodeUp | Statetransition sablontípus | A fürt egy olyan csomópontot észlelt, amely elindult | FM | Tájékoztató | 
@@ -60,17 +60,17 @@ A fürt frissítéseivel kapcsolatos további részletek [itt](service-fabric-cl
 
 **Alkalmazás-Életciklus eseményei**
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level | 
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | Életciklus | Új alkalmazás lett létrehozva | CM | Tájékoztató | 
 | 29625 | ApplicationDeleted | Életciklus | Meglévő alkalmazás törölve | CM | Tájékoztató | 
-| 23083 | ApplicationProcessExited | Életciklus | Egy alkalmazáson belüli folyamat kilépett | Hosting | Tájékoztató | 
+| 23083 | ApplicationProcessExited | Életciklus | Egy alkalmazáson belüli folyamat kilépett | Üzemeltetés | Tájékoztató | 
 
 **Alkalmazás-frissítési események**
 
 Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)talál további információt.
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level | 
 | --- | --- | ---| --- | --- | --- | 
 | 29621 | ApplicationUpgradeStarted | Frissítés | Egy alkalmazás frissítése megkezdődött | CM | Tájékoztató | 
 | 29622 | ApplicationUpgradeCompleted | Frissítés | Egy alkalmazás frissítése befejeződött | CM | Tájékoztató | 
@@ -82,7 +82,7 @@ Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)t
 
 **Szolgáltatás-Életciklus eseményei**
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level | 
 | --- | --- | ---| --- | --- | --- |
 | 18657 | ServiceCreated | Életciklus | Új szolgáltatás lett létrehozva | FM | Tájékoztató | 
 | 18658 | ServiceDeleted | Életciklus | Meglévő szolgáltatás törölve | FM | Tájékoztató | 
@@ -91,7 +91,7 @@ Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)t
 
 **Partíciók áthelyezése események**
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint | 
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level | 
 | --- | --- | ---| --- | --- | --- |
 | 18940 | PartitionReconfigured | Életciklus | A partíció újrakonfigurálása befejeződött | RA | Tájékoztató | 
 
@@ -99,7 +99,7 @@ Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)t
 
 **Replika életciklusával kapcsolatos események**
 
-| Napszállta | Name (Név) | Kategória | Leírás |Forrás (feladat) | Szint |
+| Napszállta | Name | Kategória | Leírás |Forrás (feladat) | Level |
 | --- | --- | ---| --- | --- | --- |
 | 61701 | ReliableDictionaryOpened | Életciklus | Megbízható szótár megnyitva | DistributedDictionary | Tájékoztató |
 | 61702 | ReliableDictionaryClosed | Életciklus | A megbízható szótár bezárult | DistributedDictionary | Tájékoztató |
@@ -133,11 +133,11 @@ Az alkalmazások frissítéseiről [itt](service-fabric-application-upgrade.md)t
 
 **Tároló életciklusával kapcsolatos események** 
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | Egy tároló elindult | Hosting | Tájékoztató | 1 |
-| 23075 | ContainerDeactivated | Egy tároló leállt | Hosting | Tájékoztató | 1 |
-| 23082 | ContainerExited | Egy tároló kilépett – jelölje be a UnexpectedTermination jelzőt. | Hosting | Tájékoztató | 1 |
+| 23074 | ContainerActivated | Egy tároló elindult | Üzemeltetés | Tájékoztató | 1 |
+| 23075 | ContainerDeactivated | Egy tároló leállt | Üzemeltetés | Tájékoztató | 1 |
+| 23082 | ContainerExited | Egy tároló kilépett – jelölje be a UnexpectedTermination jelzőt. | Üzemeltetés | Tájékoztató | 1 |
 
 ## <a name="health-reports"></a>Állapotjelentés
 
@@ -149,21 +149,21 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 **Fürt állapotáról szóló jelentés eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | --- | --- | --- | --- |
 | 54428 | ClusterNewHealthReport | Új fürt állapot-jelentés érhető el | HM | Tájékoztató | 1 |
 | 54437 | ClusterHealthReportExpired | Egy meglévő fürterőforrás-jelentés lejárt | HM | Tájékoztató | 1 |
 
 **Csomópont állapotáról szóló jelentés eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 54423 | NodeNewHealthReport | Új Node Health-jelentés érhető el | HM | Tájékoztató | 1 |
 | 54432 | NodeHealthReportExpired | Egy meglévő Node Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
 **Az alkalmazás állapotáról szóló jelentés eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 54425 | ApplicationNewHealthReport | Új alkalmazás-állapotjelentés lett létrehozva. Ez a nem telepített alkalmazások esetében használható. | HM | Tájékoztató | 1 |
 | 54426 | DeployedApplicationNewHealthReport | A rendszer létrehozta egy új, központilag telepített Application Health-jelentést | HM | Tájékoztató | 1 |
@@ -174,21 +174,21 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 **Szolgáltatás állapotáról szóló jelentés eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 54424 | ServiceNewHealthReport | Új szolgáltatás-állapotjelentés lett létrehozva | HM | Tájékoztató | 1 |
 | 54433 | ServiceHealthReportExpired | Egy meglévő Service Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
 **Partíciós állapot jelentésének eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 54422 | PartitionNewHealthReport | Új Partition Health-jelentés lett létrehozva | HM | Tájékoztató | 1 |
 | 54431 | PartitionHealthReportExpired | Egy meglévő Partition Health-jelentés lejárt | HM | Tájékoztató | 1 |
 
 **Replika állapotáról szóló jelentés eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 54429 | StatefulReplicaNewHealthReport | Állapot-nyilvántartó replika állapotáról készült jelentés létrehozva | HM | Tájékoztató | 1 |
 | 54430 | StatelessInstanceNewHealthReport | Új állapot nélküli példány állapotára vonatkozó jelentés lett létrehozva. | HM | Tájékoztató | 1 |
@@ -199,28 +199,28 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 **Chaos-munkamenet eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 50021 | ChaosStarted | A Chaos-tesztelési munkamenet elindult | Testability | Tájékoztató | 1 |
 | 50023 | ChaosStopped | A káosz tesztelési munkamenete leállt | Testability | Tájékoztató | 1 |
 
 **Chaos Node-események**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 50033 | ChaosNodeRestartScheduled | Egy csomópont egy Chaos-tesztelési munkamenet részeként ütemezett újraindításra van ütemezve | Testability | Tájékoztató | 1 |
 | 50087 | ChaosNodeRestartCompleted | Egy csomópont befejezte az újraindítást egy Chaos-tesztelési munkamenet részeként | Testability | Tájékoztató | 1 |
 
 **Chaos-alkalmazás eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 50053 | ChaosCodePackageRestartScheduled | A rendszer újraindítást végez egy Chaos-tesztelési munkamenet során. | Testability | Tájékoztató | 1 |
 | 50101 | ChaosCodePackageRestartCompleted | A kód-csomag újraindítása a Chaos-tesztelési munkamenet során befejeződött | Testability | Tájékoztató | 1 |
 
 **Chaos Partition-események**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 50069 | ChaosPartitionPrimaryMoveScheduled | Egy elsődleges partíció egy Chaos-tesztelési munkamenet részeként van ütemezve. | Testability | Tájékoztató | 1 |
 | 50077 | ChaosPartitionSecondaryMoveScheduled | Egy másodlagos partíció egy Chaos-tesztelési munkamenet részeként van ütemezve. | Testability | Tájékoztató | 1 |
@@ -228,7 +228,7 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 **Chaos replika eseményei**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 50047 | ChaosReplicaRestartScheduled | A replika újraindítása a Chaos-tesztelési munkamenet részeként lett ütemezve | Testability | Tájékoztató | 1 |
 | 50051 | ChaosReplicaRemovalScheduled | A replika eltávolítása egy Chaos-tesztelési munkamenet részeként lett ütemezve | Testability | Tájékoztató | 1 |
@@ -238,7 +238,7 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 **Korrelációs események**
 
-| Napszállta | Név | Leírás |Forrás (feladat) | Szint | Verzió |
+| Napszállta | Név | Leírás |Forrás (feladat) | Level | Verzió |
 | --- | --- | ---| --- | --- | --- |
 | 65011 | CorrelationOperational | A rendszer korrelációt észlelt | Testability | Tájékoztató | 1 |
 
@@ -246,7 +246,7 @@ A [Service Fabric Health Model](service-fabric-health-introduction.md) sokoldal�
 
 Itt látható a 6,2-es verzió előtti Service Fabric által biztosított események átfogó listája.
 
-| Napszállta | Name (Név) | Forrás (feladat) | Szint |
+| Napszállta | Name | Forrás (feladat) | Level |
 | --- | --- | --- | --- |
 | 25620 | NodeOpening | FabricNode | Tájékoztató |
 | 25621 | NodeOpenedSuccess | FabricNode | Tájékoztató |
@@ -260,8 +260,8 @@ Itt látható a 6,2-es verzió előtti Service Fabric által biztosított esemé
 | 29629 | ClusterUpgradeRollback | CM | Tájékoztató |
 | 29630 | ClusterUpgradeRollbackComplete | CM | Tájékoztató |
 | 29631 | ClusterUpgradeDomainComplete | CM | Tájékoztató |
-| 23074 | ContainerActivated | Hosting | Tájékoztató |
-| 23075 | ContainerDeactivated | Hosting | Tájékoztató |
+| 23074 | ContainerActivated | Üzemeltetés | Tájékoztató |
+| 23075 | ContainerDeactivated | Üzemeltetés | Tájékoztató |
 | 29620 | ApplicationCreated | CM | Tájékoztató |
 | 29621 | ApplicationUpgradeStart | CM | Tájékoztató |
 | 29622 | ApplicationUpgradeComplete | CM | Tájékoztató |
@@ -272,7 +272,7 @@ Itt látható a 6,2-es verzió előtti Service Fabric által biztosított esemé
 | 18566 | ServiceCreated | FM | Tájékoztató |
 | 18567 | ServiceDeleted | FM | Tájékoztató |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [diagnosztika áttekintése Service Fabric](service-fabric-diagnostics-overview.md)
 * További információ a EventStore [Service Fabric EventStore – áttekintés](service-fabric-diagnostics-eventstore.md)

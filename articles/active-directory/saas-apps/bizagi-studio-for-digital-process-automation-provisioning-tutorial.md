@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
 ms.openlocfilehash: 72e021f47bb8db4dedf0e434d0d94bb2118a4c00
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728159"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Oktatóanyag: a bizarr Studio konfigurálása a digitális folyamatok automatizálásához a felhasználók automatikus üzembe helyezéséhez
@@ -58,7 +58,7 @@ A bizarr Studio for digitális folyamatok automatizálásának konfigurálásáh
 
    ![Képernyőkép a bizarr-ről, a OAuth 2 alkalmazással kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 4. A **támogatás típusa** mezőben válassza a **tulajdonosi jogkivonat** lehetőséget. Az **engedélyezett hatókör** beállításnál válassza az **API** és a **felhasználói szinkronizálás** lehetőséget. Kattintson a **Mentés** gombra.
 
    ![Képernyőkép az alkalmazás regisztrálása beállításról, a támogatás típusa és a megengedett hatókör kiemelve.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)

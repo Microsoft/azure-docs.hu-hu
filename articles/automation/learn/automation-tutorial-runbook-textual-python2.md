@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87847924"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
@@ -28,7 +28,7 @@ Ez az oktatóanyag végigvezeti egy [Python-runbook](../automation-runbook-types
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
+Az oktatóanyag elvégzéséhez az alábbiakra lesz szüksége:
 
 - Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Automation-fiók](../index.yml) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="create-a-new-runbook"></a>Új runbook létrehozása
 
-Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *„Helló világ!” alkalmazás*szöveget.
+Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *Hello World* szöveget.
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
 
@@ -46,7 +46,7 @@ Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *„Hell
 
 3. Új runbook létrehozásához válassza **a Runbook hozzáadása** elemet.
 
-4. Adja meg a runbook a **MyFirstRunbook-Python**nevet.
+4. Adja meg a runbook a **MyFirstRunbook-Python** nevet.
 
 5. Válassza a **Python 2** lehetőséget a **Runbook típushoz**.
 
@@ -85,7 +85,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
 2. Ha balra görgetve megtekinti a runbook a Runbookok lapon, a **közzétett** **szerzői állapot** jelenik meg.
 
-3. Görgessen vissza jobbra a **MyFirstRunbook-Python**ablaktáblájának megtekintéséhez.
+3. Görgessen vissza jobbra a **MyFirstRunbook-Python** ablaktáblájának megtekintéséhez.
 
    A felső beállítások lehetővé teszik a runbook elindítását, megtekintheti a runbook, vagy ütemezhet úgy, hogy később elkezdődjön.
 
@@ -95,7 +95,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
 6. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 
-7. Miután a runbook állapota megjelenik, kattintson a **kimenet**elemre. Megnyílik a kimeneti ablaktábla, ahol megtekintheti a következőt: `Hello World` .
+7. Miután a runbook állapota megjelenik, kattintson a **kimenet** elemre. Megnyílik a kimeneti ablaktábla, ahol megtekintheti a következőt: `Hello World` .
 
 8. Zárja be a Kimenet panelt.
 
@@ -242,7 +242,7 @@ except Exception as detail:
 > [!NOTE]
 > A Azure Automation nem támogatja `sys.stderr` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.
 - A grafikus runbookok megkezdéséhez tekintse meg [a grafikus Runbook létrehozását](automation-tutorial-runbook-graphical.md)ismertető témakört.
