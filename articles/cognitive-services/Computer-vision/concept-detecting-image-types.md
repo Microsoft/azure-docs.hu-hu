@@ -12,10 +12,10 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96532601"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Rendszerképek típusának észlelése Computer Vision
@@ -26,7 +26,7 @@ A [kép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/servic
 
 Computer Vision elemez egy rendszerképet, és az alábbi táblázatban leírtak szerint a képfájlnak azt a valószínűségét határozza meg, hogy a kép egy 0 és 3 közötti skálán legyen.
 
-| Érték | Jelentés |
+| Érték | Értelmezés |
 |-------|---------|
 | 0 | Nem ClipArt |
 | 1 | Nem egyértelmű |

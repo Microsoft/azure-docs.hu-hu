@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225234"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588613"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Gyors útmutató: Azure felügyelt példány létrehozása az Apache Cassandra-fürthöz a Azure Portal (előzetes verzió)
  
@@ -89,7 +89,6 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="Tekintse meg a fürt erőforrásait." lightbox="./media/create-cluster-portal/resources.png" border="true":::
 
 
-
 ## <a name="connecting-to-your-cluster"></a>Csatlakozás a fürthöz
 
 Az Apache Cassandra Azure felügyelt példánya nem hoz létre nyilvános IP-címekkel rendelkező csomópontokat, így az újonnan létrehozott Cassandra-fürthöz való kapcsolódáshoz létre kell hoznia egy másik erőforrást a VNet belül. Ez lehet egy alkalmazás, vagy egy olyan virtuális gép, amelyen az Apache nyílt forráskódú lekérdezési eszköze [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) van telepítve. Az Ubuntu rendszerű virtuális gépeket [sablon](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/) használatával is üzembe helyezheti. Üzembe helyezéskor az SSH használatával csatlakozzon a géphez, és telepítse a CQLSH az alábbi parancsokkal:
@@ -113,6 +112,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+Ha a Virtual Networkre vonatkozó engedélyek alkalmazása során hibát tapasztal, például *nem találja a felhasználó vagy az egyszerű szolgáltatásnév kifejezést a Graph adatbázisban a "e5007d2c-4b13-4a74-9b6a-605d99f03501"* értékre, akkor ugyanezt az engedélyt manuálisan is alkalmazhatja a Azure Portal. Az engedélyek a portálról való alkalmazásához lépjen a meglévő virtuális hálózat **hozzáférés-vezérlés (iam)** paneljére, és adjon hozzá egy szerepkör-hozzárendelést a "Azure Cosmos db" szerepkörhöz a "hálózati rendszergazda" szerepkörhöz. Ha két bejegyzés jelenik meg, amikor a "Azure Cosmos DB" kifejezésre keres rá, adja hozzá a bejegyzéseket a következő képen látható módon: 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="Engedélyek alkalmazása" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> A Azure Cosmos DB szerepkör-hozzárendelés csak telepítési célokra szolgál. Az Apache Cassandra által felügyelt Azure-példányok nem rendelkeznek háttérbeli függőségekkel Azure Cosmos DB.   
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

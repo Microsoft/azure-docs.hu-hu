@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75445736"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
@@ -49,7 +49,7 @@ Ha egy stabil címkével rendelkező képet frissít, a korábban címkézett Re
 Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe leküldött összes rendszerkép egyedi címkével rendelkezik. A címkék nem lesznek újra felhasználva. Az egyedi címkék létrehozásához több minta is készíthető, többek között a következők:
 
 * **Dátum-idő bélyegző** – ez a megközelítés meglehetősen gyakori, mivel a rendszerkép létrehozásakor egyértelműen megtudhatja, hogy mikor készült. De hogyan lehet összekapcsolni a Build-rendszerrel? Meg kell keresnie az adott időpontban befejezett buildet? Milyen időzóna van? Az összes Build rendszerét UTC-re kalibrálták?
-* **Git-véglegesítés**  – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig*stabil címkét biztosít.
+* **Git-véglegesítés**  – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig* stabil címkét biztosít.
 * **Manifest Digest** – a tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép egy jegyzékfájlhoz van társítva, amely egyedi SHA-256 kivonattal vagy kivonattal van azonosítva. Míg egyedi, a kivonat hosszú, nehezen olvasható és nem korrelál a Build-környezettel.
 * **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
 
@@ -61,7 +61,7 @@ Ajánlott eljárásként Azt javasoljuk, hogy az attribútumának beállításá
 
 Az üzembe helyezett lemezkép zárolása továbbra is lehetővé teszi, hogy a beállításjegyzékben a többi, nem telepített lemezképet eltávolítsa a beállításjegyzékből Azure Container Registry szolgáltatások használatával. Például a címkézetlen jegyzékfájlok [automatikus kiürítése](container-registry-auto-purge.md) vagy a megadott időtartamnál régebbi lemezképek kijavítása, illetve a címkézetlen jegyzékfájlok [megőrzési szabályának](container-registry-retention-policy.md) beállítása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ebben a cikkben szereplő fogalmak részletesebb ismertetését lásd [: Docker-címkék címkézése és a Docker-rendszerképek verziószámozására vonatkozó ajánlott eljárások](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/).
 

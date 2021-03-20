@@ -1,7 +1,7 @@
 ---
 title: Megosztott eszköz mód Android-eszközökhöz
 titleSuffix: Microsoft identity platform | Azure
-description: Megtudhatja, hogyan engedélyezheti a Firstline-feldolgozók számára az Android-eszközök megosztását a megosztott eszköz mód használatával
+description: Megtudhatja, hogyan engedélyezheti a megosztott eszközök üzemmódját, hogy az élvonalbeli feldolgozók megosszák egy Android-eszközt
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: a67e0d851ab544f737097eff9a884752cff9f5fc
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: bafd6dade626376f216a271c7b3cadc9b429989a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491548"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578821"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Megosztott eszköz mód Android-eszközökhöz
 
-A Firstline-feldolgozók, például a kiskereskedelmi munkatársak, a hajózószemélyzet tagjai és a helyszíni szolgáltatások dolgozói gyakran közös mobileszköz használatával végzik munkájukat. Ez akkor válik problémamentesnek, amikor megkezdik a jelszavak megosztását, és a megosztott eszközön lévő ügyfél-és üzleti adatokhoz a PIN-kódok számát használják
+A feldolgozók, például a kiskereskedelmi munkatársak, a hajózószemélyzet tagjai és a terepi szolgáltatások feldolgozói gyakran közös mobileszköz használatával végzik munkájukat. Ez akkor válik problémamentesnek, amikor megkezdik a jelszavak megosztását, és a megosztott eszközön lévő ügyfél-és üzleti adatokhoz a PIN-kódok számát használják
 
 A megosztott eszköz mód lehetővé teszi az Android-eszközök konfigurálását úgy, hogy az egyszerűen több alkalmazott számára is megosztható legyen. Az alkalmazottak gyorsan jelentkezhetnek be és érhetik el az ügyfelek adatait. Ha végzett a váltással vagy a feladattal, akkor kijelentkezhetnek az eszközről, és azonnal készen állnak a következő alkalmazott használatára.
 
@@ -85,7 +85,7 @@ Az alábbi különbségek attól függően változnak, hogy az alkalmazás megos
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>Miért érdemes csak egy egyfiókos üzemmódot támogatni
 
-Ha olyan alkalmazást ír, amely csak megosztott eszköz használatával firstline-feldolgozók számára lesz használatban, javasoljuk, hogy az alkalmazás csak az egyfiókos üzemmódot támogassa. Ez magában foglalja a legtöbb olyan alkalmazást, amely a feladathoz tartozik, például a Medical Records-alkalmazások, a számlafogadó-alkalmazások és a legtöbb üzletági alkalmazás. Csak az egyfiókos üzemmód támogatása egyszerűsíti a fejlesztést, mivel nem kell megvalósítani a több fiókból álló alkalmazások részét képező további szolgáltatásokat.
+Ha olyan alkalmazást ír, amely egy megosztott eszköz használatával csak Frontline-feldolgozók számára lesz felhasználva, javasoljuk, hogy az alkalmazás csak az egyfiókos üzemmódot támogassa. Ez magában foglalja a legtöbb olyan alkalmazást, amely a feladathoz tartozik, például a Medical Records-alkalmazások, a számlafogadó-alkalmazások és a legtöbb üzletági alkalmazás. Csak az egyfiókos üzemmód támogatása egyszerűsíti a fejlesztést, mivel nem kell megvalósítani a több fiókból álló alkalmazások részét képező további szolgáltatásokat.
 
 ## <a name="what-happens-when-the-device-mode-changes"></a>Mi történik az eszköz üzemmódjának módosításakor
 
@@ -103,4 +103,4 @@ Az alábbi ábrán az alkalmazás teljes életciklusa látható, valamint az alk
 
 ## <a name="next-steps"></a>Következő lépések
 
-Próbálja ki az [Android-alkalmazás megosztott eszközének használatát](tutorial-v2-shared-device-mode.md) ismertető oktatóanyagot, amely bemutatja, hogyan futtathat egy firstline Worker alkalmazást egy megosztott módú Android-eszközön.
+Próbálja ki a [Shared-Device üzemmódot az Android-alkalmazás](tutorial-v2-shared-device-mode.md) oktatóanyagában, amely bemutatja, hogyan futtathat egy Frontline Worker alkalmazást egy megosztott módú Android-eszközön.

@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.openlocfilehash: 6db036752bab7b84b72a37b148eaec7aa5765ef3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538595"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Az Azure Cache for Redis adatvesztéssel járó hibáinak elhárítása
@@ -27,7 +27,7 @@ A Redis készült Azure cache nem törli a kulcsokat, miután a memóriában tá
 
 Ha úgy találja, hogy a kulcsok eltűntek a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Leírás |
+| Ok | Description |
 |---|---|
 | [Kulcs lejárata](#key-expiration) | A kulcsok el lesznek távolítva a rájuk vonatkozó időtúllépés miatt. |
 | [Kulcs kizárása](#key-eviction) | A kulcsok el lesznek távolítva a memória nyomása alatt. |
@@ -86,7 +86,7 @@ A standard vagy a prémium szinten lévő Redis-példányok bármely Azure cache
 
 Ha a legtöbb vagy az összes kulcs eltűnt a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Leírás |
+| Ok | Description |
 |---|---|
 | [Kulcs kiürítése](#key-flushing) | A kulcsok törlése manuálisan megtörtént. |
 | [Helytelen adatbázis-kijelölés](#incorrect-database-selection) | A Redis-hez készült Azure cache nem alapértelmezett adatbázis használatára van beállítva. |
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Helytelen adatbázis-kijelölés
 
-A Redis-hez készült Azure cache alapértelmezés szerint a **db0** adatbázist használja. Ha átvált egy másik adatbázisra (például **db1** ), és megpróbálja beolvasni a kulcsokat, az Azure cache for Redis nem fogja tudni megkeresni azokat. Minden adatbázis logikailag különálló egység, és egy másik adatkészletet tárol. A [Select](https://redis.io/commands/select) parancs használatával más elérhető adatbázisokat is használhat, és mindegyikben megkeresheti a kulcsokat.
+A Redis-hez készült Azure cache alapértelmezés szerint a **db0** adatbázist használja. Ha átvált egy másik adatbázisra (például **db1**), és megpróbálja beolvasni a kulcsokat, az Azure cache for Redis nem fogja tudni megkeresni azokat. Minden adatbázis logikailag különálló egység, és egy másik adatkészletet tárol. A [Select](https://redis.io/commands/select) parancs használatával más elérhető adatbázisokat is használhat, és mindegyikben megkeresheti a kulcsokat.
 
 ### <a name="redis-instance-failure"></a>Redis-példány hibája
 

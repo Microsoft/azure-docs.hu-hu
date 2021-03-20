@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: aahi
 ms.openlocfilehash: 324b70fc810acc4faba4f488f821049f7eb0875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86538003"
 ---
 # <a name="configure-form-recognizer-containers"></a>Űrlap-felismerő tárolók konfigurálása
@@ -35,7 +35,7 @@ Az űrlap-felismerő tároló futásidejű környezetét a `docker run` parancs 
 
 A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. A ApiKey értékének érvényes kulcsnak kell lennie a "számlázási konfigurációs beállítás" szakaszban megadott, az űrlap- _felismerő_ erőforrás számára `Billing` .
 
-Ez a beállítás a Azure Portalban, a **kulcsok**területen, az **űrlap-felismerő erőforrás-kezelés**szakaszban található.
+Ez a beállítás a Azure Portalban, a **kulcsok** területen, az **űrlap-felismerő erőforrás-kezelés** szakaszban található.
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-beállítás
 
@@ -45,9 +45,9 @@ Ez a beállítás a Azure Portalban, a **kulcsok**területen, az **űrlap-felism
 
 A `Billing` beállítás megadja az Azure-beli _űrlap-felismerő_ erőforrás végpont-URI-ját, amely a tároló számlázási adatainak mérésére szolgál. A konfigurációs beállítás értékének érvényes végponti URI-nak kell lennie az Azure-beli _űrlap-felismerő_ erőforráshoz. A tároló 10 – 15 percen belül jelentést készít a használatról.
 
-Ez a beállítás a Azure Portalban, az űrlap- **felismerő áttekintés**területén, a **végpont**területen található.
+Ez a beállítás a Azure Portalban, az űrlap- **felismerő áttekintés** területén, a **végpont** területen található.
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](form-recognizer-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -76,7 +76,7 @@ Az űrlap-felismerő tárolóhoz bemeneti csatlakoztatás és kimeneti csatlakoz
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](form-recognizer-container-howto.md#the-host-computer) csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók engedélyei és a gazdagép csatlakoztatási helyének engedélyei ütköznek.
 
-|Választható| Name (Név) | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Kötelező| `Input` | Sztring | A bemeneti csatlakoztatás célja. Az alapértelmezett érték `/input`.    <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Kötelező| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`.  <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -137,6 +137,6 @@ FormRecognizer:ComputerVisionEndpointUri={COMPUTER_VISION_ENDPOINT_URI}
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át [a tárolók telepítése és futtatása](form-recognizer-container-howto.md)című ismertetőt.

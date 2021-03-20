@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: cherylmc
 ms.openlocfilehash: 39585a68c5cddc50cd04e82caca71209270f7b68
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91874118"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>Virtuális hálózati átjáró törlése a PowerShell (klasszikus) használatával
@@ -133,7 +133,7 @@ Ebben a példában csak a Site3 távolítjuk el.
 
 ### <a name="client-addresspool"></a><a name="clientaddresss"></a>Ügyfél-címkészlete
 
-Ha P2S-kapcsolatban állt a VNet, egy **címtérről**fog rendelkezni. Távolítsa el a törölt virtuális hálózati átjárónak megfelelő ügyféloldali címkészlet-készleteket.
+Ha P2S-kapcsolatban állt a VNet, egy **címtérről** fog rendelkezni. Távolítsa el a törölt virtuális hálózati átjárónak megfelelő ügyféloldali címkészlet-készleteket.
 
 ```
 <Gateway>

@@ -4,10 +4,10 @@ description: Frissítse az önálló Service Fabric-fürtöt futtató Azure Serv
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91842937"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó Service Fabric verziójának frissítése 
@@ -24,7 +24,7 @@ A fürtöt csak akkor frissítheti az új verzióra, ha éles stílusú csomópo
 Két különálló munkafolyamat képes frissíteni a fürtöt a legújabb verzióra vagy egy támogatott Service Fabric-verzióra. Az egyik munkafolyamat olyan fürtökhöz tartozik, amelyeknek a kapcsolata automatikusan letölti a legújabb verziót. A másik munkafolyamat olyan fürtök esetében használható, amelyek nem rendelkeznek a legújabb Service Fabric verzió letöltéséhez szükséges kapcsolattal.
 
 ## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>A fürt Service Fabric verziójának automatikus verziófrissítésének engedélyezése
-Ha úgy szeretné beállítani a fürtöt, hogy letöltse Service Fabric frissítéseit, amikor a Microsoft új verziót szabadít fel, állítsa igaz értékre a `fabricClusterAutoupgradeEnabled` fürt konfigurációját. *true* Ha az Service Fabric támogatott verzióját szeretné manuálisan kiválasztani, amelyet a fürtnek be szeretne állítani, állítsa a `fabricClusterAutoupgradeEnabled` fürt konfigurációját *hamis*értékre.
+Ha úgy szeretné beállítani a fürtöt, hogy letöltse Service Fabric frissítéseit, amikor a Microsoft új verziót szabadít fel, állítsa igaz értékre a `fabricClusterAutoupgradeEnabled` fürt konfigurációját.  Ha az Service Fabric támogatott verzióját szeretné manuálisan kiválasztani, amelyet a fürtnek be szeretne állítani, állítsa a `fabricClusterAutoupgradeEnabled` fürt konfigurációját *hamis* értékre.
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>A legújabb kód és konfiguráció letöltésére szolgáló kapcsolattal rendelkező fürtök frissítése
 Ezekkel a lépésekkel frissítheti a fürtöt egy támogatott verzióra, ha a fürtcsomópontok internetkapcsolattal rendelkeznek a [Microsoft letöltőközpontból](https://download.microsoft.com).

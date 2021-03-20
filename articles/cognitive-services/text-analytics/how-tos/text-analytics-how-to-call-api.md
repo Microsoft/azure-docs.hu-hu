@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 9302bde13a303dda2107900dc0c10cc180669a18
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 3c6fb1ca23bcc9c57e73bcaf960e0387611fcff3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650728"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599211"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics meghívása REST API
 
@@ -66,6 +66,7 @@ Az alábbi táblázatból megtudhatja, hogy mely szolgáltatásokat lehet aszink
 | Vélemény bányászata | ✔ |  |
 | Kulcskifejezések kinyerése | ✔ | ✔* |
 | Elnevezett entitások felismerése (beleértve a személyes és a PHI-t) | ✔ | ✔* |
+| Entitás összekapcsolása | ✔ | ✔* |
 | Text Analytics for Health (tároló) | ✔ |  |
 | Text Analytics for Health (API) |  | ✔  |
 
@@ -118,8 +119,9 @@ A következő példa egy API-kérést mutat be a szinkron Text Analytics végpon
 
 A `/analyze` végpont lehetővé teszi, hogy kiválassza, hogy a támogatott Text Analytics mely funkciókat szeretné használni egyetlen API-hívásban. Ez a végpont jelenleg a következőket támogatja:
 
-* fő kifejezés kibontása 
+* Kulcskifejezések kinyerése 
 * Elnevezett entitások felismerése (beleértve a személyes és a PHI-t)
+* Entitáskapcsolás
 
 | Elem | Érvényes értékek | Kötelező? | Használat |
 |---------|--------------|-----------|-------|
@@ -128,7 +130,7 @@ A `/analyze` végpont lehetővé teszi, hogy kiválassza, hogy a támogatott Tex
 |`documents` | Az `id` alábbi és `text` mezőket tartalmazza | Kötelező | Az elküldött dokumentumok adatait és a dokumentum nyers szövegét tartalmazza. |
 |`id` | Sztring | Kötelező | Az Ön által megadott azonosítók a kimenet strukturálása céljából használatosak. |
 |`text` | Strukturálatlan nyers szöveg, legfeljebb 125 000 karakter hosszú lehet. | Kötelező | Angol nyelven kell lennie, amely jelenleg csak az egyetlen támogatott nyelv. |
-|`tasks` | A a következő Text Analytics funkciókat tartalmazza `entityRecognitionTasks` : `keyPhraseExtractionTasks` vagy `entityRecognitionPiiTasks` . | Kötelező | Egy vagy több használni kívánt Text Analytics-szolgáltatás. Vegye figyelembe, hogy a (z) és a (z `entityRecognitionPiiTasks` ) választható paramétere nem lehet `domain` `pii` `phi` . Ha nincs megadva, a rendszer alapértelmezés szerint a következőt adja meg: `pii` . |
+|`tasks` | A a következő Text Analytics funkciókat tartalmazza: `entityRecognitionTasks` , `entityLinkingTasks` , `keyPhraseExtractionTasks` vagy `entityRecognitionPiiTasks` . | Kötelező | Egy vagy több használni kívánt Text Analytics-szolgáltatás. Vegye figyelembe, hogy a `entityRecognitionPiiTasks` `domain` (z `pii` `phi` ) vagy a (z) és a (z) és a (z) választható paramétere a `pii-categories` kiválasztott entitások típusának észlelése Ha a `domain` paraméter nincs megadva, a rendszer alapértelmezés szerint a következőt adja meg: `pii` . |
 |`parameters` | Az `model-version` alábbi és `stringIndexType` mezőket tartalmazza | Kötelező | Ez a mező a fenti szolgáltatás kiválasztott feladatai között szerepel. A használni kívánt modell verziójával és az index típusával kapcsolatos információkat tartalmaznak. |
 |`model-version` | Sztring | Kötelező | Itt adhatja meg, hogy a rendszer melyik verzióját kívánja használni.  |
 |`stringIndexType` | Sztring | Kötelező | Adja meg a programozási környezetnek megfelelő szöveges dekódert.  Támogatott típusok: `textElement_v8` (alapértelmezett), `unicodeCodePoint` , `utf16CodeUnit` . További információért tekintse meg a [Szöveg eltolása című cikket](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
@@ -158,6 +160,14 @@ A `/analyze` végpont lehetővé teszi, hogy kiválassza, hogy a támogatott Tex
                 }
             }
         ],
+        "entityLinkingTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
         "keyPhraseExtractionTasks": [{
             "parameters": {
                 "model-version": "latest"
@@ -165,7 +175,10 @@ A `/analyze` végpont lehetővé teszi, hogy kiválassza, hogy a támogatott Tex
         }],
         "entityRecognitionPiiTasks": [{
             "parameters": {
-                "model-version": "latest"
+                "model-version": "latest",
+                "stringIndexType": "TextElements_v8",
+                "domain": "phi",
+                "pii-categories":"default"
             }
         }]
     }
@@ -231,16 +244,16 @@ A poster (vagy egy másik webes API-tesztelési eszköz) területen adja hozzá 
 
 | Szolgáltatás | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
-| Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
-| Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
+| Elemzési feladatok elküldése | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| Elemzési állapot és eredmények beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
 ### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Végpontok aszinkron kérelmek küldéséhez a `/health` végpontra
 
 | Szolgáltatás | Kérelemtípus | Erőforrás-végpontok |
 |--|--|--|
-| Text Analytics beküldése a Health-feladatokhoz  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
-| Feladatok állapotának és eredményeinek beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
-| Feladat megszakítása | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
+| Text Analytics beküldése a Health-feladatokhoz  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| Feladatok állapotának és eredményeinek beolvasása | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Feladat megszakítása | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
@@ -266,7 +279,7 @@ Miután elvégezte a végpontot, a poster (vagy egy másik webes API-tesztelési
 
       + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)
       + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md)
-      + [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md)
+      + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)
       + [Entitások felismerése](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>A kérelem elküldése
@@ -278,7 +291,7 @@ Ha kezdeményezte az aszinkron `/analyze` vagy a `/health` végpontok hívását
 1. Az API-válaszban keresse meg az `Operation-Location` elemet a fejlécből, amely az API-nak küldött feladatot azonosítja. 
 2. Hozzon létre egy GET-kérést a használt végponthoz. a végpont formátumához tekintse meg a [fenti táblázatot](#set-up-a-request) , és tekintse át az [API-referenciák dokumentációját](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Például:
 
-    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
+    `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
 3. Adja hozzá a `Operation-Location` -t a kérelemhez.
 
@@ -296,7 +309,7 @@ A szinkron végpontokra adott válaszok a használt végponttól függően vált
 
 + [Nyelvfelismerés](text-analytics-how-to-language-detection.md#step-3-view-the-results)
 + [Fő kifejezés kibontása](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [Hangulat elemzése](text-analytics-how-to-sentiment-analysis.md#view-the-results)
++ [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitások felismerése](text-analytics-how-to-entity-linking.md#view-results)
 
 # <a name="asynchronous"></a>[Aszinkron](#tab/asynchronous)

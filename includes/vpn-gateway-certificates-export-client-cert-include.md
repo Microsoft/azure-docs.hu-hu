@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,15 +9,15 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 018cf621c65e86877a76c9861c999caf67f3b8cf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553124"
 ---
 Ügyféltanúsítvány létrehozásakor a rendszer automatikusan telepíti azt a számítógépre, amelyet a létrehozásához használt. Ha az ügyféltanúsítványt egy másik ügyfélszámítógépen szeretné telepíteni, exportálnia kell a létrehozott ügyféltanúsítványt.
 
-1. Ügyféltanúsítvány exportálásához nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. A létrehozott Ügyféltanúsítványok alapértelmezés szerint a "Certificates-current User\Personal\Certificates" mappában találhatók. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítvány elemre, kattintson a **minden feladat** , majd az **Exportálás** elemre a **Tanúsítvány exportálása varázsló** megnyitásához.
+1. Ügyféltanúsítvány exportálásához nyissa meg a **Felhasználói tanúsítványok kezelése** elemet. A létrehozott Ügyféltanúsítványok alapértelmezés szerint a "Certificates-current User\Personal\Certificates" mappában találhatók. Kattintson a jobb gombbal az exportálni kívánt ügyféltanúsítvány elemre, kattintson a **minden feladat**, majd az **Exportálás** elemre a **Tanúsítvány exportálása varázsló** megnyitásához.
 
    ![Képernyőfelvétel: az aktuális felhasználóhoz tartozó tanúsítványok ablak, amely a kijelölt tanúsítványokat és az összes tevékenység közül kiválasztott exportálást tartalmazza.](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
 2. A tanúsítvány exportálása varázslóban kattintson a tovább **gombra a** folytatáshoz.

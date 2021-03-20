@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934752"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
@@ -39,7 +39,7 @@ Miután a modell sikeresen közzé lett téve, megjelenik egy "közzétett" feli
 
 ## <a name="get-the-url-and-prediction-key"></a>Az URL és az előrejelzési kulcs megszerzése
 
-Ha a modell közzé lett téve, az __előrejelzési URL-cím__kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az __előrejelzési kulcsot__.
+Ha a modell közzé lett téve, az __előrejelzési URL-cím__ kiválasztásával kérheti le a szükséges információkat. Ekkor megnyílik egy párbeszédpanel, amely az előrejelzési API használatára vonatkozó információkat tartalmazza, beleértve az __előrejelzési URL-címet__ és az __előrejelzési kulcsot__.
 
 ![A teljesítmény lap az előrejelzési URL-cím gombját körülvevő piros négyszögtel jelenik meg.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
@@ -131,7 +131,7 @@ Az alkalmazás futtatásakor a rendszer felszólítja egy képfájl elérési ú
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan küldhet képeket az egyéni rendszerkép-osztályozó/detektorba, és hogyan kaphat választ programozott módon a C# SDK-val. Következő lépésként megtudhatja, hogyan végezheti el a teljes körű forgatókönyvek megvalósítását a C# használatával, vagy egy másik nyelvi SDK használatának megkezdését.
 

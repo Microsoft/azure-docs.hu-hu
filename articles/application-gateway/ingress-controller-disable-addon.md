@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/10/2020
 ms.author: caya
 ms.openlocfilehash: fe4da0435731c536a723cb2cb43428166456360b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84807954"
 ---
 # <a name="disable-and-re-enable-agic-add-on-for-your-aks-cluster"></a>Az AGIC-bővítmény letiltása és újbóli engedélyezése az AK-fürthöz
@@ -40,5 +40,5 @@ appgwId=$(az network application-gateway show -n <application-gateway-name> -g <
 az aks enable-addons -n <AKS-cluster-name> -g <AKS-cluster-resource-group> -a ingress-appgw --appgw-id $appgwId
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A AGIC-bővítmény meglévő Application Gateway és AK-fürttel való engedélyezésével kapcsolatos további információkért lásd: a [AGIC bővítmény rozsdaövezetek rehabilitálása telepítése](tutorial-ingress-controller-add-on-existing.md).

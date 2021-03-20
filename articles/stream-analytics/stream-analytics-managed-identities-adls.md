@@ -5,16 +5,16 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 04/08/2019
+ms.date: 03/16/2021
 ms.custom: seodec18
-ms.openlocfilehash: d7e9b1ecef9cfda804b89f0ba1beeb54d7d48b98
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d5b406d260b1c6518d9227c51d84ab7eb3754329
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020349"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598150"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával (előzetes verzió)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics hitelesítése Azure Data Lake Storage Gen1 felügyelt identitások használatával
 
 Azure Stream Analytics támogatja a felügyelt identitások hitelesítését Azure Data Lake Storage (ADLS) Gen1 kimenettel. Az identitás egy Azure Active Directoryban regisztrált felügyelt alkalmazás, amely egy adott Stream Analytics feladatnak felel meg, és használható a megcélozható erőforráshoz való hitelesítésre. A felügyelt identitások megszüntetik a felhasználó-alapú hitelesítési módszerek korlátozásait, például a jelszó-változtatások vagy a felhasználói jogkivonatok lejárata miatti újrahitelesítést, amelyek 90 naponta történnek. Emellett a felügyelt identitások segítenek a Stream Analytics feladatok automatizálásában, amelyek Azure Data Lake Storage Gen1nak a kimenetet.
 
@@ -36,7 +36,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
  
    Az egyszerű szolgáltatásnév neve megegyezik a Stream Analytics feladatokkal. Ha például a feladatainak neve **MyASAJob**, a létrehozott egyszerű szolgáltatásnév neve is **MyASAJob**.
 
-3. A ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakában kattintson a hitelesítési mód legördülő menüre, és válassza a * * felügyelt identitás * * elemet.
+3. A ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakában kattintson a hitelesítési mód legördülő listára, és válassza a **felügyelt identitás** elemet.
 
 4. Adja meg a többi tulajdonságot. Ha többet szeretne megtudni a ADLS-kimenet létrehozásáról, olvassa el a következő témakört: [create a Network Store a stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md). Amikor végzett, kattintson a **Mentés** gombra.
 
@@ -70,7 +70,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitást e
 
    ![Stream Analytics feladatok konfigurációjának felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. A ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakában kattintson a hitelesítési mód legördülő menüre, és válassza a * * felügyelt identitás * * elemet.
+2. A ADLS Gen1 kimeneti fogadó kimeneti tulajdonságok ablakában kattintson a hitelesítési mód legördülő listára, és válassza a **felügyelt identitás** elemet.
 
    ![ADLS kimeneti felügyelt identitások](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
@@ -186,7 +186,7 @@ Ez a funkció nem támogatja a következőket:
 
 2. **[Felhasználóhoz rendelt identitás](../active-directory/managed-identities-azure-resources/overview.md)**: nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet a Azure Stream Analytics hozza létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A stream Analytics kimenetének létrehozása a adattó-tárolóban](../data-lake-store/data-lake-store-stream-analytics.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan lehet letiltani egy parancsfájlt a fájlmegosz
 ms.topic: sample
 ms.date: 02/02/2020
 ms.openlocfilehash: 172a7bd19ffd07ca7900a457c447362343e5f185
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84122795"
 ---
 # <a name="disable-soft-delete-for-file-shares-in-a-storage-account"></a>A fájlmegosztás törlésének letiltása egy Storage-fiókban
@@ -52,7 +52,7 @@ Kövesse az alábbi lépéseket:
 
 3. Tartsa kéznél a Storage-fiók Azure Resource Manager (ARM) AZONOSÍTÓját. Például: `/subscriptions/37aa2d43-d4f5-4322-bae0-6ee11c627f50/resourceGroups/afsshare/providers/Microsoft.Storage/storageAccounts/inquirytest`
 
-4. Jelentkezzen be a hitelesítő adataival a **armclient-bejelentkezés**futtatásával.
+4. Jelentkezzen be a hitelesítő adataival a **armclient-bejelentkezés** futtatásával.
 
 5. Szerezze be a fájlmegosztás aktuális törlési tulajdonságait a Storage-fiókban.
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: 53a5df430a3ea57201ecb19bac68ef9f073beb14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90980970"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése PowerShell-lel
@@ -113,7 +113,7 @@ Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
 Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tekintse át](backup-azure-vms-automation.md) az Azure-beli virtuális gépek PowerShell-lel történő biztonsági mentésének és visszaállításának részletes ismertetését.
 * [Azure-beli virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: ba531164e024f96d3bdd23912f3f6e90275edda4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83589737"
 ---
 # <a name="configure-rhelcentos-7-for-speech-sdk"></a>A RHEL/CentOS 7 beállítása a Speech SDK-hoz
@@ -65,10 +65,10 @@ CXXABI_1.3.7
 ...
 ```
 
-A Speech SDK használatához a **CXXABI_1.3.9** és a **GLIBCXX_3.4.21**szükséges. Ezt az információt a `ldd libMicrosoft.CognitiveServices.Speech.core.so` Linux-csomagból a SPEECH SDK könyvtáraiban futtatva érheti el.
+A Speech SDK használatához a **CXXABI_1.3.9** és a **GLIBCXX_3.4.21** szükséges. Ezt az információt a `ldd libMicrosoft.CognitiveServices.Speech.core.so` Linux-csomagból a SPEECH SDK könyvtáraiban futtatva érheti el.
 
 > [!NOTE]
-> Azt javasoljuk, hogy a rendszerre telepített GCC-verziónak legalább **5.4.0**kell lennie, a megfelelő futásidejű könyvtárakkal.
+> Azt javasoljuk, hogy a rendszerre telepített GCC-verziónak legalább **5.4.0** kell lennie, a megfelelő futásidejű könyvtárakkal.
 
 ## <a name="example"></a>Példa
 
@@ -158,7 +158,7 @@ export LD_LIBRARY_PATH=/path/to/extracted/SpeechSDK-Linux-1.10.0/lib/x64:$LD_LIB
 python3 -m pip install azure-cognitiveservices-speech --user
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Speech SDK ismertetése](speech-sdk.md)

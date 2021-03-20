@@ -9,10 +9,10 @@ ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6cc0855d3a4540de780a566a4613b4dbc647cfc5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369488"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 rendszert futtató kiszolgálók migrálása az Azure-ba
@@ -100,7 +100,7 @@ Az Azure-előfizetés és a helyszíni VMware-/fizikai környezet előkészíté
 ### <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com)  >  **Recovery Servicesba**.
-2. Kattintson **az erőforrás létrehozása**  >  **felügyeleti eszközök**  >  **biztonsági mentése és site Recovery**elemre.
+2. Kattintson **az erőforrás létrehozása**  >  **felügyeleti eszközök**  >  **biztonsági mentése és site Recovery** elemre.
 3. A **Név** mezőben adja meg a **W2K8-migration** rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 4. Hozza létre a **w2k8migrate** erőforráscsoportot.
 5. Válassza ki a kívánt Azure-régiót. A támogatott régiók kereséséhez tekintse meg a földrajzi elérhetőség [Azure site Recovery díjszabását](https://azure.microsoft.com/pricing/details/site-recovery/).
@@ -120,14 +120,14 @@ Az új tároló megjelenik az **Irányítópult****Minden erőforrás** részéb
 
 Válassza ki és ellenőrizze a célerőforrásokat.
 
-1. Kattintson az **infrastruktúra előkészítése**  >  **cél**elemre, majd válassza ki a használni kívánt Azure-előfizetést.
+1. Kattintson az **infrastruktúra előkészítése**  >  **cél** elemre, majd válassza ki a használni kívánt Azure-előfizetést.
 2. Adja meg a Resource Manager-alapú üzemi modell beállítást.
 3. A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-tárfiókkal és -hálózattal.
 
 
 ### <a name="set-up-a-replication-policy"></a>Replikációs szabályzat beállítása
 
-1. Új replikációs házirend létrehozásához kattintson **site Recovery infrastruktúra**-  >  **replikációs házirendek**  >  **+ replikációs házirend**elemre.
+1. Új replikációs házirend létrehozásához kattintson **site Recovery infrastruktúra**-  >  **replikációs házirendek**  >  **+ replikációs házirend** elemre.
 2. A **Replikációs szabályzat létrehozása** beállításnál adja meg a szabályzat nevét.
 3. Az **RPO küszöbértéke** beállításnál adja meg a helyreállítási időkorlátot (RPO). A rendszer riasztást ad, ha a replikációs RPO túllépi ezt a korlátot.
 4. A **Helyreállítási pont megőrzése** beállításnál azt adhatja meg, hogy milyen hosszú (hány órás) legyen az egyes helyreállítási pontok adatmegőrzési időtartama. A replikált kiszolgálók az ablak bármely pontjára visszaállíthatók. A rendszer a prémium tárolóra replikált gépek esetében 24 órás, a standard tárolóra replikált gépek esetében 72 órás megőrzést támogat.
@@ -161,11 +161,11 @@ A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futta
 
 Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
-1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
+1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel** elemre.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery megkísérli leállítani a kiszolgálót a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamat a **feladatok** lapon követhető.
 4. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
-5. A **replikált elemek**területen kattintson a jobb gombbal a kiszolgálóra > a **teljes áttelepítést**. Ez a következő műveleteket végzi el:
+5. A **replikált elemek** területen kattintson a jobb gombbal a kiszolgálóra > a **teljes áttelepítést**. Ez a következő műveleteket végzi el:
 
     - Befejezi az áttelepítési folyamatot, leállítja a kiszolgáló replikálását, és leállítja a kiszolgálás Site Recovery számlázását.
     - Ezzel a lépéssel megtisztítja a replikációs adatvédelmet. Nem törli az áttelepített virtuális gépeket.

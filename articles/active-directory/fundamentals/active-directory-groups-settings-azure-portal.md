@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c346877d29c5fef03b45c895cbf8d462f90d0979
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92369131"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatainak szerkesztése Azure Active Directory használatával
@@ -27,7 +27,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
 ## <a name="to-edit-your-group-settings"></a>A csoport beállításainak szerkesztése
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. Válassza a **Azure Active Directory**, majd a **csoportok**lehetőséget.
+2. Válassza a **Azure Active Directory**, majd a **csoportok** lehetőséget.
 
     Megjelenik a **csoportok – minden csoport** lap, amely az összes aktív csoportot megjeleníti.
 
@@ -37,7 +37,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
 
     ![Minden csoport lap, a keresési szöveg szövegmezőben](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
 
-4. Válassza ki a **Mdm házirend-Nyugat**lehetőséget, majd válassza a **Tulajdonságok** lehetőséget a **kezelés** területen.
+4. Válassza ki a **Mdm házirend-Nyugat** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget a **kezelés** területen.
 
     ![Csoport áttekintése lap, a tag lehetőséggel és a Kiemelt információkkal](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
@@ -49,7 +49,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
     
     - **Csoport leírása** A meglévő csoport leírásának szerkesztése.
 
-    - **Csoport típusa** A csoport típusa nem módosítható a létrehozása után. A **csoport típusának**módosításához törölnie kell a csoportot, és létre kell hoznia egy újat.
+    - **Csoport típusa** A csoport típusa nem módosítható a létrehozása után. A **csoport típusának** módosításához törölnie kell a csoportot, és létre kell hoznia egy újat.
     
     - **Tagság típusa** Módosítsa a tagság típusát. További információ a különböző rendelkezésre álló tagsági típusokról [: útmutató: alapszintű csoport létrehozása és Tagok hozzáadása a Azure Active Directory portál használatával](active-directory-groups-create-azure-portal.md).
     

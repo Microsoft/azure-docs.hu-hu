@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: acb056fb959fda320a14059e2b36a0f5e3fb0b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83837185"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Runbookok hitelesítése az Amazon Web Services segítségével
@@ -33,10 +33,10 @@ Az AWS hitelesítő adatait a Azure Automation eszközeiként kell tárolnia. A 
 
 Miután létrehozta és átmásolta az AWS biztonsági kulcsait, létre kell hoznia egy hitelesítőadat-eszközt az Automation-fiókkal. Az eszköz lehetővé teszi az AWS-kulcsok biztonságos tárolását, és azok hivatkozását a runbookok. Lásd: [új hitelesítőadat-eszköz létrehozása a Azure Portal](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal). Adja meg a következő AWS-adatokat a megadott mezőkben:
     
-* **Név**  -  **AWScred**vagy az elnevezési szabványokat követő megfelelő érték
+* **Név**  -  **AWScred** vagy az elnevezési szabványokat követő megfelelő érték
 * **Felhasználónév** – a hozzáférési azonosító
 * **Jelszó** – a titkos kulcs neve 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan hozhat létre runbookok az AWS-feladatok automatizálásához, tekintse meg a [Amazon Web Services virtuális gép üzembe helyezése runbook](automation-scenario-aws-deployment.md)című témakört.

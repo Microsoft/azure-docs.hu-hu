@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.openlocfilehash: 37ff94608e9756142f70a4f3c64d0a6f7eeea685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88932899"
 ---
 # <a name="get-customer-managed-key-information-from-indexes-and-synonym-maps"></a>Az ügyfelek által felügyelt legfontosabb információk beolvasása az indexekről és a szinonimák térképe
@@ -62,7 +62,7 @@ $uri= 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/<YOUR-INDEX-NAME
 Invoke-RestMethod -Uri $uri -Headers $headers | ConvertTo-Json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogy melyik titkosítási kulcsot és verziót használja a rendszer, a kulcsot Azure Key Vault vagy más konfigurációs beállításokat is megtekintheti.
 

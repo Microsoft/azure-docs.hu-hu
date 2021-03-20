@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75430631"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Oldalak tartalmának és elrendezésének módosítása a fejlesztői portálon az Azure API Managementben
@@ -55,7 +55,7 @@ A fejlesztői portál elérhető az Azure Portalról.
 
 Most már a fejlesztői portál mindegyik oldalán az új fejléc fog megjelenni.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 * [A teljes fejlesztői portál oldalelemeihez használt stílusok frissítése][customize-styles]
 * [A portál által létrehozott oldalakhoz használt sablonok módosítása][portal-templates] (például API-dokumentáció, termékek, felhasználói hitelesítés stb.)
 

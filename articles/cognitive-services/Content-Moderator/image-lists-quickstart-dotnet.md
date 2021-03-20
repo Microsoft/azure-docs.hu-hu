@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bec31f830adddfc7251ce36e13ef0bfaa0af7638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88931709"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>Mérsékelt egyéni képlisták a C-ben #
@@ -35,7 +35,7 @@ Ez a cikk a [.net-hez készült Content MODERATOR SDK a következőhöz](https:/
 
 Az útmutatóhoz tartozó konzolszoftver szimulálja a rendszerkép-lista API-val végrehajtható feladatokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/). 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
@@ -1079,6 +1079,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Szerezze be a kapcsolódó [Content Moderator .NET SDK-t](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

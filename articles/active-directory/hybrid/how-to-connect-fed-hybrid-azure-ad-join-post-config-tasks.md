@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88612469"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Hibrid Azure AD-csatlakozás konfigurálása utáni feladatok
@@ -88,5 +88,5 @@ Ez a telepítő egy ütemezett feladatot hoz létre a felhasználó környezeté
 
 További információ a hibrid Azure AD JOIN egyéni eszközökhöz való engedélyezéséről: [hibrid Azure ad-csatlakozás vezérelt](../devices/hybrid-azuread-join-control.md)ellenőrzése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az eszköz visszaírási konfigurálása](how-to-connect-device-writeback.md)

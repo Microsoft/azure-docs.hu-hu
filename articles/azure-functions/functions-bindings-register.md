@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 08/16/2020
 ms.author: cshoe
 ms.openlocfilehash: 942ca3229808b57894598c3477e9dc97e40e8c80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88689557"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
@@ -41,7 +41,7 @@ A bővítmények a functions futtatókörnyezet 2. x vagy újabb verzióival is 
 
 A kiterjesztési csomagok verziószáma. Az egyes verziók a kötési bővítmények egy adott készletét tartalmazzák, amelyeket a rendszer a közös munkához ellenőriz. Válasszon egy köteg-verziót az alkalmazásban szükséges bővítmények alapján.
 
-Ha bővítményt szeretne hozzáadni a Function alkalmazáshoz, adja hozzá a `extensionBundle` szakaszt *host.jsa*következőhöz:. Sok esetben a Visual Studio Code és a Azure Functions Core Tools automatikusan hozzáadja az Ön számára.
+Ha bővítményt szeretne hozzáadni a Function alkalmazáshoz, adja hozzá a `extensionBundle` szakaszt *host.jsa* következőhöz:. Sok esetben a Visual Studio Code és a Azure Functions Core Tools automatikusan hozzáadja az Ön számára.
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
@@ -65,7 +65,7 @@ A C# szintű függvénytár-alapú függvények projekthez közvetlenül kell te
 
 ### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a> C \# osztályú könyvtár a Visual Studióval
 
-A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [Install-Package](/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
+A **Visual Studióban** a Package Manager konzolon telepítheti a csomagokat az [Install-Package](/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -91,6 +91,6 @@ A helyére írja be annak a `<BINDING_TYPE_NAME>` csomagnak a nevét, amely a sz
 
 Cserélje le a `<TARGET_VERSION>` példát a csomag egy adott verziójára, például: `3.0.0-beta5` . Az érvényes verziók a [NuGet.org](https://nuget.org)-on található egyedi csomag oldalain találhatók. Az 1. x vagy 2. x függvényeknek megfelelő főverziók a kötésre vonatkozó hivatkozási cikkben vannak megadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Az Azure Function trigger és a kötési példa](./functions-bindings-example.md)

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bc731f6f6a5a60bce0851bf8fe5874f7149f3899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90901454"
 ---
 # <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>Lekérdezési statisztikák gyűjtésének optimalizálása egy Azure Database for PostgreSQL egyetlen kiszolgálón
@@ -32,7 +32,7 @@ A következő beállításhoz `pg_stat_statements.track = NONE` :
 - Használja az [Azure CLI](howto-configure-server-parameters-using-cli.md) az postgres Server Configuration set to `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value NONE` .
 
 ## <a name="use-the-query-store"></a>A lekérdezési tároló használata 
-A Azure Database for PostgreSQL [lekérdezés-tárolási](concepts-query-store.md) funkciója hatékonyabb módszert biztosít a lekérdezési statisztikák nyomon követésére. Ezt a funkciót a *pg_stats_statements*használatának alternatívájaként ajánljuk. 
+A Azure Database for PostgreSQL [lekérdezés-tárolási](concepts-query-store.md) funkciója hatékonyabb módszert biztosít a lekérdezési statisztikák nyomon követésére. Ezt a funkciót a *pg_stats_statements* használatának alternatívájaként ajánljuk. 
 
 ## <a name="next-steps"></a>Következő lépések
 Vegye fontolóra a beállítást `pg_stat_statements.track = NONE` a [Azure Portal](howto-configure-server-parameters-using-portal.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md)használatával.

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cd0b9d1369fb1c0e662de83b7056da0ff7c83bd1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090828"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588383"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Az Azure Spring Cloud és az Azure Load Balancer-megoldások integrálása
 
@@ -39,7 +39,7 @@ Az Azure Spring Cloud és a Traffic Manager együttes integrálásához adja hoz
 
 ### <a name="add-endpoint-in-traffic-manager"></a>Végpont hozzáadása Traffic Manager
 Végpontok hozzáadása a Traffic Managerben:
-1.  *Külső végpontként*adja meg a **típust** .
+1.  *Külső végpontként* adja meg a **típust** .
 1.  Minden Azure Spring Cloud nyilvános végpont teljes tartományneve (FQDN).
 1. Kattintson az **OK** gombra.
 
@@ -71,11 +71,22 @@ Az Azure Spring Cloud Service-sel való integrációhoz végezze el a következ�
 
 ### <a name="configure-http-setting"></a>Http-beállítás konfigurálása
 1.  Válassza a **http-beállítások** , majd a **Hozzáadás** lehetőséget a http-beállítás hozzáadásához.
-1.  **Felülbírálás új állomásnévvel:** válassza az *Igen*lehetőséget.
-1.  **Állomásnév felülbírálása**: válassza ki **az állomásnév kiválasztása a háttér**céljából lehetőséget.
+1.  **Felülbírálás új állomásnévvel:** válassza az *Igen* lehetőséget.
+1.  **Állomásnév felülbírálása**: válassza ki **az állomásnév kiválasztása a háttér** céljából lehetőséget.
 1.  **Egyéni mintavétel használata**: válassza az *Igen* lehetőséget, és válassza ki a fent létrehozott egyéni mintavételt.
 
     ![3. alkalmazás-átjáró](media/spring-cloud-load-balancers/app-gateway-3.png)
+
+### <a name="configure-rewrite-set"></a>Újraírási készlet konfigurálása
+1.  Válassza az **újraírások** , majd a **készlet újraírása** lehetőséget az Újraírási készlet hozzáadásához.
+1.  Válassza ki azokat az útválasztási szabályokat, amelyek átirányítják a kérelmeket az Azure Spring Cloud nyilvános végpontokra.
+1.  Az **Újraírási szabály konfigurálása** lapon válassza az **Újraírási szabály hozzáadása** elemet.
+1.  **Újraírás típusa**: a **kérelem fejlécének** kiválasztása
+1.  **Művelet típusa**: válassza a **Törlés** lehetőséget
+1.  **Fejléc neve**: Select **Common header**
+1.  **Common header (közös fejléc**): válassza az **X-továbbított-proto** lehetőséget
+
+    ![4. alkalmazás-átjáró](media/spring-cloud-load-balancers/app-gateway-4.png)
 
 ## <a name="integrate-azure-spring-cloud-with-azure-front-door"></a>Az Azure Spring Cloud integrálása az Azure bejárati ajtóval
 

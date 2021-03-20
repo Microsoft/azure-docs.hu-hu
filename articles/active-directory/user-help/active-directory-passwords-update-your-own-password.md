@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
 ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91827775"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
@@ -37,9 +37,9 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
 ### <a name="to-reset-your-password-and-get-back-into-your-account"></a>A jelszó alaphelyzetbe állítása és visszahívása a fiókjába
 
-1. A **jelszó megadása** képernyőn válassza az **elfelejtettem a jelszavam**lehetőséget.
+1. A **jelszó megadása** képernyőn válassza az **elfelejtettem a jelszavam** lehetőséget.
 
-2. A **fiók beolvasása** képernyőn írja be a munkahelyi vagy iskolai **felhasználói azonosítóját** (például az e-mail-címét), és igazolja, hogy nem robot a képernyőn megjelenő karakterek beírásával, majd válassza a **tovább**lehetőséget.
+2. A **fiók beolvasása** képernyőn írja be a munkahelyi vagy iskolai **felhasználói azonosítóját** (például az e-mail-címét), és igazolja, hogy nem robot a képernyőn megjelenő karakterek beírásával, majd válassza a **tovább** lehetőséget.
 
    ![Vissza a fiók képernyőjére](media/security-info/security-info-back-into-acct.png)
 
@@ -55,37 +55,37 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
 - **Jelszó alaphelyzetbe állítása e-mail-cím használatával.** E-mailt küld a korábban a kétlépéses ellenőrzés vagy biztonsági információ alapján beállított e-mail-címre. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, további információt talál a [biztonsági adatok beállítása e-mailek használatára (előzetes verzió)](security-info-setup-email.md) című cikkben található e-mail-cím beállításával kapcsolatban. Ha még nem használja a biztonsági adatokat, további információt talál az e-mail-cím beállításáról a [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben. 
 
-    1. Válassza **a másodlagos**e-mail cím lehetőséget, majd válassza az **e-mail**lehetőséget.
+    1. Válassza **a másodlagos** e-mail cím lehetőséget, majd válassza az **e-mail** lehetőséget.
 
-    2. Írja be az e-mailben szereplő ellenőrző kódot a mezőbe, majd kattintson a **tovább**gombra.
+    2. Írja be az e-mailben szereplő ellenőrző kódot a mezőbe, majd kattintson a **tovább** gombra.
 
     3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
 - **Jelszó alaphelyzetbe állítása szöveges üzenet használatával.** Szöveges üzenetet küld a korábban a biztonsági adatokban beállított telefonszámra. Ha a rendszergazda bekapcsolta a biztonsági információk felületét, további információt talál a szöveges üzenetküldés beállításáról a [biztonsági információk beállítása szöveges üzenetküldés (előzetes verzió)](security-info-setup-text-msg.md) című cikkben. Ha még nem használja a biztonsági adatokat, a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben talál további információt a szöveges üzenetküldés beállításáról.
 
-    1. Válassza a **mobil telefon**lehetőséget, írja be a telefonszámát, majd válassza a **text (szöveg**) lehetőséget.
+    1. Válassza a **mobil telefon** lehetőséget, írja be a telefonszámát, majd válassza a **text (szöveg**) lehetőséget.
 
-    2. Írja be az ellenőrző kódot a szöveges üzenetből a mezőbe, majd kattintson a **tovább**gombra.
+    2. Írja be az ellenőrző kódot a szöveges üzenetből a mezőbe, majd kattintson a **tovább** gombra.
 
     3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
 - **A jelszó alaphelyzetbe állítása telefonszám használatával.** Elhelyez egy automatikus hanghívást a korábban a biztonsági adatokban beállított telefonszámon. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos élményt, további információt talál a telefonszám beállítása a [biztonsági adatok beállítása telefonhívás (előzetes verzió)](security-info-setup-phone-number.md) című cikkben. Ha még nem használja a biztonsági adatokat, további információt talál a telefonos [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben.
 
-    1. Válassza a **mobil telefon hívása**lehetőséget, adja meg a telefonszámát, majd válassza a **hívás**lehetőséget.
+    1. Válassza a **mobil telefon hívása** lehetőséget, adja meg a telefonszámát, majd válassza a **hívás** lehetőséget.
 
-    2. Válaszolja meg a telefonhívást, és kövesse az utasításokat az identitás ellenőrzéséhez, majd válassza a **tovább**lehetőséget.
+    2. Válaszolja meg a telefonhívást, és kövesse az utasításokat az identitás ellenőrzéséhez, majd válassza a **tovább** lehetőséget.
 
     3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
 - **A jelszó alaphelyzetbe állítása biztonsági kérdések használatával.** A biztonsági adatokban beállított biztonsági kérdések listáját jeleníti meg. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, további információt talál a biztonsági kérdések beállításáról a biztonsági [információk beállítása az előre definiált biztonsági kérdések használatára (előzetes verzió)](security-info-setup-questions.md) című cikkben. Ha még nem használja a biztonsági adatokat, további információt talál a biztonsági kérdések beállításáról a [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben.
 
-    1. Válassza a **biztonsági kérdések megválaszolása**lehetőséget, válaszoljon a kérdésekre, majd válassza a **tovább**lehetőséget.
+    1. Válassza a **biztonsági kérdések megválaszolása** lehetőséget, válaszoljon a kérdésekre, majd válassza a **tovább** lehetőséget.
 
     2. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
 - **A jelszó alaphelyzetbe állítása a hitelesítő alkalmazásból származó értesítés használatával.** Jóváhagyási értesítés küldése a hitelesítő alkalmazásnak. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos felhasználói élményt, további információt talál a hitelesítő alkalmazások beállításáról, hogy értesítést küldjön a [hitelesítési alkalmazás beállítása (előzetes verzió)](security-info-setup-auth-app.md) című cikkben. Ha még nem használja a biztonsági adatokat, a hitelesítő alkalmazás beállításával kapcsolatos további információkért tekintse meg az értesítéseket a [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben.
 
-    1. Válassza **az értesítés jóváhagyása a saját hitelesítő alkalmazásban**lehetőséget, majd válassza az **Értesítés küldése**lehetőséget.
+    1. Válassza **az értesítés jóváhagyása a saját hitelesítő alkalmazásban** lehetőséget, majd válassza az **Értesítés küldése** lehetőséget.
 
     2. Hagyja jóvá a bejelentkezést a hitelesítő alkalmazásból.
 
@@ -93,9 +93,9 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
 - **A jelszó alaphelyzetbe állítása a hitelesítő alkalmazás kódjának használatával.** A hitelesítési alkalmazás által biztosított véletlenszerű kód elfogadása. Ha a rendszergazda bekapcsolta a biztonsági információk felületét, további információt talál a hitelesítő alkalmazás beállításáról, amely lehetővé teszi, hogy a [hitelesítési alkalmazás (előzetes verzió) használatára vonatkozó biztonsági információ beállítása](security-info-setup-auth-app.md) kód megadásával adja meg a kódot. Ha még nem használja a biztonsági adatokat, a hitelesítő alkalmazás beállításával kapcsolatos további információkért tekintse meg a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben található kódot.
 
-  1. Válassza **a kód megadása a saját hitelesítő alkalmazásból**lehetőséget, majd válassza az **Értesítés küldése**lehetőséget.
+  1. Válassza **a kód megadása a saját hitelesítő alkalmazásból** lehetőséget, majd válassza az **Értesítés küldése** lehetőséget.
 
-  2. Nyissa meg a hitelesítő alkalmazást, írja be a fiókhoz tartozó ellenőrző kódot a mezőbe, majd kattintson a **tovább**gombra.
+  2. Nyissa meg a hitelesítő alkalmazást, írja be a fiókhoz tartozó ellenőrző kódot a mezőbe, majd kattintson a **tovább** gombra.
 
   3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
@@ -115,9 +115,9 @@ Akkor használja ezt a módszert, ha általában az Office-portálon keresztül 
 
 1. Jelentkezzen be az [Office 365-fiókjába](https://portal.office.com)meglévő jelszava használatával.
 
-2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **fiók megtekintése**lehetőséget.
+2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **fiók megtekintése** lehetőséget.
 
-3. Válassza a **biztonsági & adatvédelem**  >  **jelszava**lehetőséget.
+3. Válassza a **biztonsági & adatvédelem**  >  **jelszava** lehetőséget.
 
 4. Írja be a régi jelszót, hozza létre és erősítse meg az új jelszót, majd kattintson a **Submit (elküldés**) gombra.
 
@@ -127,9 +127,9 @@ Akkor használja ezt a módszert, ha általában a saját alkalmazások portálr
 
 1. Jelentkezzen be a [saját alkalmazások portálra](https://myapps.microsoft.com/)meglévő jelszava használatával.
 
-2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **profil**lehetőséget.
+2. Válassza ki a profilt a jobb felső oldalon, majd válassza a **profil** lehetőséget.
 
-3. Válassza a **jelszó módosítása**lehetőséget.
+3. Válassza a **jelszó módosítása** lehetőséget.
 
 4. Írja be a régi jelszót, hozza létre és erősítse meg az új jelszót, majd kattintson a **Submit (elküldés**) gombra.
 
@@ -143,11 +143,11 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 
 3. Válassza ki és erősítse meg a kapcsolattartási módszert az ellenőrzéshez. Ha szükséges, válasszon egy második ellenőrzési lehetőséget, amely eltér az előzőtől, és töltse ki a szükséges adatokat.
 
-4. Az **új jelszó létrehozása** lapon írja be és erősítse meg az új jelszót, majd kattintson a **tovább**gombra.
+4. Az **új jelszó létrehozása** lapon írja be és erősítse meg az új jelszót, majd kattintson a **tovább** gombra.
 
     Az erős jelszavak általában 8 – 16 karakterből állnak, beleértve a kis-és nagybetűket, legalább egy számot, valamint legalább egy speciális karaktert.
 
-5. Miután megkapta az üzenetet, amely azt jelzi, hogy a jelszó alaphelyzetbe lett állítva, válassza a **Befejezés**lehetőséget.
+5. Miután megkapta az üzenetet, amely azt jelzi, hogy a jelszó alaphelyzetbe lett állítva, válassza a **Befejezés** lehetőséget.
 
     Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
 

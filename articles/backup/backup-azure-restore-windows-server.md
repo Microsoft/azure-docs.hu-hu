@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91813253"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
@@ -31,7 +31,7 @@ Az Azure Portal Recovery Services tárolókkal való azonnali visszaállítást 
 
 Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a gépre (amelyről a biztonsági mentés készül), a következő lépések segítenek az adatok helyreállításában.
 
-1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Microsoft Azure Backup**a számítógépet vagy a kiszolgálót.
+1. Nyissa meg a **Microsoft Azure Backup** beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Microsoft Azure Backup** a számítógépet vagy a kiszolgálót.
 
     Az asztali alkalmazásnak meg kell jelennie a keresési eredmények között.
 
@@ -39,7 +39,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
 
     ![Képernyőkép a Azure Backupről, az adatok kiemelésével (visszaállítás ugyanarra a gépre)](./media/backup-azure-restore-windows-server/recover.png)
 
-3. A **első lépések** lapon a következőt válassza a **kiszolgáló ( `<server name>` )** elemre, ha az adatvisszaállítást ugyanarra a kiszolgálóra vagy számítógépre szeretné visszaállítani  >  **Next**.
+3. A **első lépések** lapon a következőt válassza a **kiszolgáló ( `<server name>` )** elemre, ha az adatvisszaállítást ugyanarra a kiszolgálóra vagy számítógépre szeretné visszaállítani  >  .
 
     ![Képernyőfelvétel az adatok helyreállítása varázsló Első lépések oldaláról (visszaállítás ugyanarra a gépre)](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -58,7 +58,7 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
 
     ![Képernyőfelvétel az adatok helyreállítása varázsló kötet és dátum kiválasztása lapján (visszaállítás ugyanarra a gépre)](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. Miután kiválasztotta a helyreállítási pontot a visszaállításhoz, válassza a **Csatlakoztatás**lehetőséget.
+6. Miután kiválasztotta a helyreállítási pontot a visszaállításhoz, válassza a **Csatlakoztatás** lehetőséget.
 
     Azure Backup csatlakoztatja a helyi helyreállítási pontot, és helyreállítási kötetként használja.
 
@@ -70,12 +70,12 @@ Ha véletlenül törölt egy fájlt, és vissza szeretné állítani ugyanarra a
 
     ![Képernyőfelvétel a Windows Intézőben, a másolás kiemelve (ugyanarra a gépre való visszaállítás)](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás**lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+9. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás** lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
     ![Képernyőfelvétel az adatok helyreállítása varázsló Tallózás és helyreállítás fájlok lapján (visszaállítás ugyanarra a gépre) – a helyreállítási kötet leválasztásának megerősítése](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
+    > Ha nem választja ki a **Leválasztás** lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Az egy másik gépre való visszaállításhoz használja az azonnali visszaállítást
@@ -97,7 +97,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 
 2. Győződjön meg arról, hogy a célszámítógép és a forrásszámítógép ugyanahhoz a Recovery Services-tárolóhoz van regisztrálva.
 
-3. Válassza az **adatok helyreállítása** lehetőséget az **adatok helyreállítása varázsló**megnyitásához.
+3. Válassza az **adatok helyreállítása** lehetőséget az **adatok helyreállítása varázsló** megnyitásához.
 
     ![Képernyőkép a Azure Backupről, az adatok kiemelésével (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/recover.png)
 
@@ -113,7 +113,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 
     ![Képernyőkép az adatok helyreállítása varázsló biztonsági mentési kiszolgáló kiválasztása lapján (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. A **helyreállítási mód kiválasztása** lapon válassza ki az **egyes fájlok és mappák**lehetőséget a  >  **Tovább gombra**.
+7. A **helyreállítási mód kiválasztása** lapon válassza ki az **egyes fájlok és mappák** lehetőséget a  >  **Tovább gombra**.
 
     ![Képernyőkép az adatok helyreállítása varázsló helyreállítási mód kiválasztása lapján (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
@@ -133,12 +133,12 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 
     ![Képernyőfelvétel a Windows Intézőről, a másolás kiemelve (visszaállítás másodlagos gépre)](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás**lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
+12. Ha elkészült, a **Fájlok tallózása és helyreállítása** lapon válassza a **Leválasztás** lehetőséget. Ezután az **Igen** gombra kattintva erősítse meg, hogy le kívánja választani a kötetet.
 
     ![Kötet leválasztása (visszaállítás másik gépre)](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
+    > Ha nem választja ki a **Leválasztás** lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
     >
 
 ## <a name="next-steps"></a>Következő lépések

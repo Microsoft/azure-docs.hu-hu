@@ -20,17 +20,17 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 376cece922ca424ec78011224852b1fa5499da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934837"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban – `geo.distance` és `geo.intersects`
 
 Az Azure Cognitive Search támogatja a Geo-térbeli lekérdezéseket a [OData-szűrési kifejezésekben](query-odata-filter-orderby-syntax.md) a `geo.distance` és `geo.intersects` függvények használatával. A `geo.distance` függvény két pont közötti távolságot adja vissza, amelyek közül az egyik egy mező-vagy tartomány-változó, és a szűrő részeként egy konstans lett átadva. A `geo.intersects` függvény akkor adja vissza `true` , ha egy adott pont egy adott sokszögen belül van, ahol a pont egy mező-vagy tartomány-változó, és a sokszög a szűrő részeként megadott konstansként van megadva.
 
-A `geo.distance` függvény a [ **$OrderBy** paraméterben](search-query-odata-orderby.md) is használható a keresési eredmények rendezésére egy adott pont távolsága alapján. A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. A `geo.distance` **$OrderBy**használatakor a mezőnek, amelyre az alkalmazás vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is **rendezve**kell lennie.
+A `geo.distance` függvény a [ **$OrderBy** paraméterben](search-query-odata-orderby.md) is használható a keresési eredmények rendezésére egy adott pont távolsága alapján. A `geo.distance` **$OrderBy** szintaxisa megegyezik a **$Filter**. A `geo.distance` **$OrderBy** használatakor a mezőnek, amelyre az alkalmazás vonatkozik, típusnak kell lennie, `Edm.GeographyPoint` és azt is **rendezve** kell lennie.
 
 > [!NOTE]
 > A `geo.distance` **$OrderBy** paraméter használatakor a függvénynek átadott mezőnek csak egyetlen földrajzi pontot kell tartalmaznia. Más szóval a típusnak és nem típusúnak kell lennie `Edm.GeographyPoint` `Collection(Edm.GeographyPoint)` . Az Azure Cognitive Searchban nem rendezhető a gyűjtemény mezői.
@@ -97,7 +97,7 @@ Az Azure Cognitive Search-ban a 180 fokos hosszúságú földrajzi térbeli lek�
 Az Azure Cognitive Search összes többi nem gyűjteményéhez hasonlóan a típusú mezők `Edm.GeographyPoint` is tartalmazhatnak `null` értékeket. Amikor az Azure Cognitive Search kiértékel `geo.intersects` egy mezőt `null` , az eredmény mindig a következő lesz: `false` . Ebben az esetben a viselkedése a `geo.distance` kontextustól függ:
 
 - A szűrők `geo.distance` `null` területen egy mező eredményét jeleníti meg `null` . Ez azt jelenti, hogy a dokumentum nem fog megegyezni, mert a `null` nem null értékhez képest kiértékeli a értéket `false` .
-- Ha az eredményeket **$OrderBy**használatával rendezi, a `geo.distance` mező a `null` lehető legnagyobb távolságot eredményezi. Az ilyen mezőkkel rendelkező dokumentumok a rendezési irány használatakor alacsonyabbak lesznek, mint az összes többinél `asc` (az alapértelmezett érték), és a többinél nagyobb, mint az irány `desc` .
+- Ha az eredményeket **$OrderBy** használatával rendezi, a `geo.distance` mező a `null` lehető legnagyobb távolságot eredményezi. Az ilyen mezőkkel rendelkező dokumentumok a rendezési irány használatakor alacsonyabbak lesznek, mint az összes többinél `asc` (az alapértelmezett érték), és a többinél nagyobb, mint az irány `desc` .
 
 ## <a name="examples"></a>Példák
 
@@ -129,7 +129,7 @@ Rendezheti a szállodákat csökkenő sorrendben `search.score` , a és a alapj�
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: c66fbe59fd5b2660d02bfca285f78666d64569fe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555600"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
@@ -36,7 +36,7 @@ Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
 
 A modul bemenetként akár három adatkészletet is igénybe vehet. Ha az egyes bemeneti portokhoz kapcsolódó adatkészletekre hivatkozik, akkor a és a nevet kell használnia `t1` `t2` `t3` . A tábla száma a bemeneti port indexét jelzi.  
 
-Az alábbi mintakód bemutatja, hogyan csatlakozhat két táblához. a T1 és a T2 két olyan adathalmaz, amely a bal és a középső bemeneti porton csatlakozik az **SQL-transzformáció alkalmazásához** :
+Az alábbi mintakód bemutatja, hogyan csatlakozhat két táblához. a T1 és a T2 két olyan adathalmaz, amely a bal és a középső bemeneti porton csatlakozik az **SQL-transzformáció alkalmazásához**:
 
 ```sql
 SELECT t1.*

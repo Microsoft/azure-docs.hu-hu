@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 4b86d0c189bcf0687a703f2338188df2090feaf0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368026"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
@@ -85,14 +85,14 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 ### <a name="throttle-bandwidth"></a>Sávszélesség szabályozása
 
 1. Nyissa meg a Azure Backup MMC beépülő modult a folyamat-kiszolgálóként használt gépen. Alapértelmezés szerint a biztonsági mentés parancsikonja az asztalon vagy a következő mappában érhető el: C:\Program Files\Microsoft Azure Recovery Services Agent\bin.
-2. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
+2. A beépülő modulban válassza a **Tulajdonságok módosítása** lehetőséget.
 
     ![Képernyőkép a Azure Backup MMC beépülő modul lehetőségről a tulajdonságok módosításához](./media/site-recovery-vmware-to-azure/throttle1.png)
-3. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
+3. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez** lehetőséget. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 
     ![A Azure Backup tulajdonságai párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Íme egy példa:
+A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Bemutatunk egy példát:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -104,9 +104,9 @@ A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szü
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>A virtuális gép hálózati sávszélességének módosítása
 
-1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**elemre.
-   * A replikálási lemez sávszélesség-forgalmának megváltoztatásához módosítsa a **UploadThreadsPerVM**értékét. Ha nem létezik, hozza létre a kulcsot.
-   * Ha módosítani szeretné az Azure-beli feladat-visszavételi forgalom sávszélességét, módosítsa a **DownloadThreadsPerVM**értékét.
+1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** elemre.
+   * A replikálási lemez sávszélesség-forgalmának megváltoztatásához módosítsa a **UploadThreadsPerVM** értékét. Ha nem létezik, hozza létre a kulcsot.
+   * Ha módosítani szeretné az Azure-beli feladat-visszavételi forgalom sávszélességét, módosítsa a **DownloadThreadsPerVM** értékét.
 2. Az egyes kulcsok alapértelmezett értéke **4**. A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximálisan használható érték **32**. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
 
 ## <a name="set-up-the-site-recovery-infrastructure-to-protect-more-than-500-vms"></a>A Site Recovery infrastruktúra beállítása több mint 500 virtuális gép elleni védelemhez
@@ -126,13 +126,13 @@ Ha az üzembe helyezést az 200-as számú forrásoldali gépen túlra bővíti,
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Gépek migrálása az új Process Server használatára
 
-1. Válassza a **Beállítások**  >  **site Recovery kiszolgálók**lehetőséget. Válassza ki a konfigurációs kiszolgálót, majd bontsa ki a **folyamat-kiszolgálók**elemet.
+1. Válassza a **Beállítások**  >  **site Recovery kiszolgálók** lehetőséget. Válassza ki a konfigurációs kiszolgálót, majd bontsa ki a **folyamat-kiszolgálók** elemet.
 
     ![A folyamat-kiszolgáló párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/migrate-ps2.png)
-2. Kattintson a jobb gombbal a jelenleg használt Process Server elemre, majd válassza a **váltás**lehetőséget.
+2. Kattintson a jobb gombbal a jelenleg használt Process Server elemre, majd válassza a **váltás** lehetőséget.
 
     ![A konfigurációs kiszolgáló párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/migrate-ps3.png)
-3. A **cél-feldolgozási kiszolgáló kiválasztása**lapon válassza ki a használni kívánt új folyamatot. Ezután válassza ki azokat a virtuális gépeket, amelyeket a kiszolgáló kezelni fog. Ha információt szeretne kapni a kiszolgálóról, válassza ki az információs ikont. A betöltési döntések elvégzéséhez az egyes kiválasztott virtuális gépeknek az új folyamat-kiszolgálóra való replikálásához szükséges átlagos terület jelenik meg. Jelölje be a jelölőnégyzetet, ha meg szeretné kezdeni az új folyamat-kiszolgálóra való replikálást.
+3. A **cél-feldolgozási kiszolgáló kiválasztása** lapon válassza ki a használni kívánt új folyamatot. Ezután válassza ki azokat a virtuális gépeket, amelyeket a kiszolgáló kezelni fog. Ha információt szeretne kapni a kiszolgálóról, válassza ki az információs ikont. A betöltési döntések elvégzéséhez az egyes kiválasztott virtuális gépeknek az új folyamat-kiszolgálóra való replikálásához szükséges átlagos terület jelenik meg. Jelölje be a jelölőnégyzetet, ha meg szeretné kezdeni az új folyamat-kiszolgálóra való replikálást.
 
 ## <a name="deploy-additional-master-target-servers"></a>További fő célkiszolgáló üzembe helyezése
 
@@ -146,26 +146,26 @@ A Linux-alapú virtuális gépek fő célkiszolgáló hozzáadásával kapcsolat
 
 Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
 
-1. Nyissa meg **Recovery Services**tároló  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók**lehetőséget.
-2. Válassza ki a szükséges konfigurációs kiszolgálót, majd válassza a **fő célkiszolgáló**elemet.
+1. Nyissa meg **Recovery Services** tároló  >  **site Recovery infrastruktúra**-  >  **konfigurációs kiszolgálók** lehetőséget.
+2. Válassza ki a szükséges konfigurációs kiszolgálót, majd válassza a **fő célkiszolgáló** elemet.
 
     ![A fő célkiszolgáló hozzáadása gombot megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/add-master-target-server.png)
 3. Töltse le az egyesített telepítő fájlt, majd futtassa a fájlt a virtuális gépen a fő célkiszolgáló beállításához.
-4. Válassza a **fő cél telepítése**  >  **tovább**lehetőséget.
+4. Válassza a **fő cél telepítése**  >  **tovább** lehetőséget.
 
     ![A fő cél telepítése lehetőség kiválasztását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/choose-MT.PNG)
-5. Válassza ki az alapértelmezett telepítési helyet, majd válassza a **telepítés**lehetőséget.
+5. Válassza ki az alapértelmezett telepítési helyet, majd válassza a **telepítés** lehetőséget.
 
      ![Az alapértelmezett telepítési helyet megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/MT-installation.PNG)
-6. Ha a fő célt a konfigurációs kiszolgálóval szeretné regisztrálni, válassza a **Folytatás a konfigurációhoz**lehetőséget.
+6. Ha a fő célt a konfigurációs kiszolgálóval szeretné regisztrálni, válassza a **Folytatás a konfigurációhoz** lehetőséget.
 
     ![A folytatás a konfigurációhoz gombot megjelenítő képernyőkép](media/site-recovery-plan-capacity-vmware/MT-proceed-configuration.PNG)
 7. Adja meg a konfigurációs kiszolgáló IP-címét, majd írja be a jelszót. A hozzáférési kód létrehozásával kapcsolatos további információkért lásd: [konfigurációs kiszolgáló jelszavainak](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)létrehozása. 
 
     ![A konfigurációs kiszolgáló IP-címének és jelszavának megadását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Válassza a **Regisztráció** lehetőséget. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
+8. Válassza a **Regisztráció** lehetőséget. A regisztráció befejeződése után válassza a **Befejezés** lehetőséget.
 
-A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services**tárolóban  >  **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók**csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
+A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services** tárolóban  >  **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók** csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
 
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.

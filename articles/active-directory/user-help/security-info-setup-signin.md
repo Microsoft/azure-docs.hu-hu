@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 04/07/2020
 ms.author: curtand
 ms.openlocfilehash: 016e0de26bf3a9513940be161cfecf6d1c2b9d02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88798499"
 ---
 # <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Biztonsági adatok beállítása bejelentkezési kérésből
@@ -57,22 +57,22 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
    > [!Note]
    > Ha a Microsoft Authenticator alkalmazástól eltérő hitelesítő alkalmazást szeretne használni, válassza a **másik hitelesítő alkalmazás használata** hivatkozást.
    >
-   > Ha a szervezete lehetővé teszi, hogy egy másik módszert válasszon a hitelesítő alkalmazás mellett, akkor válassza a **másik módszer csatolása**lehetőséget.
+   > Ha a szervezete lehetővé teszi, hogy egy másik módszert válasszon a hitelesítő alkalmazás mellett, akkor válassza a **másik módszer csatolása** lehetőséget.
 
     ![Tartsa a fiókja biztonságban varázslót, amely az Auth alkalmazás letöltési oldalát jeleníti meg](media/security-info/securityinfo-prompt-get-auth-app.png)
 
-2. Válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább**lehetőséget. További információ az alkalmazás letöltéséről és telepítéséről: [a Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md).
+2. Válassza a **Letöltés most** lehetőséget, hogy letöltse és telepítse a Microsoft Authenticator alkalmazást a mobileszközön, majd válassza a **tovább** lehetőséget. További információ az alkalmazás letöltéséről és telepítéséről: [a Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md).
 
     ![Tartsa meg a fiókja védelmét, és jelenítse meg a fiókját a hitelesítő beállítása oldalon](media/security-info/securityinfo-prompt-auth-app-setup-acct.png)
 
 3. Maradjon a **fiók beállítása** oldalon, miközben beállítja a Microsoft Authenticator alkalmazást a mobileszközön.
 
-4. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók**lehetőséget.
+4. Nyissa meg a Microsoft Authenticator alkalmazást, jelölje be az értesítések engedélyezését (ha a rendszer kéri), válassza a **fiók hozzáadása** lehetőséget a **Testreszabás és vezérlés** ikonban a jobb felső sarokban, majd válassza a **munkahelyi vagy iskolai fiók** lehetőséget.
 
     >[!Note]
     >Ha első alkalommal állítja be a Microsoft Authenticator alkalmazást, megkérdezheti, hogy engedélyezi-e az alkalmazásnak a kamera (iOS) elérését, vagy hogy az alkalmazás képeket készítsen, és videót rögzítsen (Android). Az **Engedélyezés lehetőséget** kell választania, hogy a hitelesítő alkalmazás hozzáférhessen a kamerához, hogy a következő lépésben képet készítsen a QR-kódból. Ha nem engedélyezi a kamerát, akkor továbbra is beállíthatja a hitelesítő alkalmazást, de a kód adatait manuálisan kell hozzáadnia. A kód manuális hozzáadásával kapcsolatos további információkért lásd: [fiók manuális hozzáadása az alkalmazáshoz](user-help-auth-app-add-account-manual.md).
 
-5. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább**lehetőséget.
+5. Térjen vissza a **fiók beállítása** lapra a számítógépen, majd válassza a **tovább** lehetőséget.
 
     Megjelenik a **QR-kód vizsgálata** lap.
 
@@ -88,34 +88,34 @@ A következő lépésekkel állíthatja be a munkahelyi vagy iskolai fiókjához
 
     ![A fiók tesztelése a hitelesítő alkalmazással](media/security-info/securityinfo-prompt-test-app.png)
 
-8. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább**gombra.
+8. Hagyja jóvá az értesítést a Microsoft Authenticator alkalmazásban, majd kattintson a **tovább** gombra.
 
     ![Sikeres értesítés, az alkalmazás és a fiók csatlakoztatása](media/security-info/securityinfo-prompt-auth-app-success.png)
 
     A biztonsági adatokat a rendszer úgy frissíti, hogy a Microsoft Authenticator alkalmazás alapértelmezés szerint a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során ellenőrizze az identitást.
 
-9. A **telefon** beállítása lapon válassza ki, hogy szöveges üzenetet vagy telefonhívást szeretne kapni, majd válassza a **tovább**lehetőséget. Ebben a példában szöveges üzeneteket használunk, ezért egy telefonszámot kell használnia egy olyan eszközhöz, amely képes szöveges üzeneteket fogadni.
+9. A **telefon** beállítása lapon válassza ki, hogy szöveges üzenetet vagy telefonhívást szeretne kapni, majd válassza a **tovább** lehetőséget. Ebben a példában szöveges üzeneteket használunk, ezért egy telefonszámot kell használnia egy olyan eszközhöz, amely képes szöveges üzeneteket fogadni.
 
     ![A telefonszám beállításának megkezdése szöveges üzenetküldéshez](media/security-info/securityinfo-prompt-text-msg.png)
 
     A rendszer szöveges üzenetet küld a telefonszámára. Ha telefonhívást szeretne kapni, a folyamat ugyanaz. Egy szöveges üzenet helyett egy utasításokat tartalmazó telefonhívást fog kapni.
 
-10. Adja meg a mobileszközön küldött szöveges üzenet által megadott kódot, majd kattintson a **tovább**gombra.
+10. Adja meg a mobileszközön küldött szöveges üzenet által megadott kódot, majd kattintson a **tovább** gombra.
 
     ![A fiók tesztelése a szöveges üzenettel](media/security-info/securityinfo-prompt-text-msg-enter-code.png)
 
-11. Tekintse át a sikeres értesítéseket, majd kattintson a **kész**gombra.
+11. Tekintse át a sikeres értesítéseket, majd kattintson a **kész** gombra.
 
     ![Sikeres értesítés](media/security-info/securityinfo-prompt-call-answered-success.png)
 
     A biztonsági adatokat a rendszer úgy frissíti, hogy a szöveges üzenetküldés biztonsági mentési módszerként való használatával igazolja az identitását a kétlépéses ellenőrzés vagy a jelszó alaphelyzetbe állítása során.
 
-12. A **siker** lapon ellenőrizheti, hogy sikeresen beállította-e a Microsoft Authenticator alkalmazást és a telefont (SMS vagy telefonhívás) a biztonsági adatokhoz, majd válassza a **kész**lehetőséget.
+12. A **siker** lapon ellenőrizheti, hogy sikeresen beállította-e a Microsoft Authenticator alkalmazást és a telefont (SMS vagy telefonhívás) a biztonsági adatokhoz, majd válassza a **kész** lehetőséget.
 
     ![A varázsló sikeresen befejezve oldal](media/security-info/securityinfo-prompt-setup-success.png)
 
     >[!Note]
-    >Ha a szervezete megköveteli az alkalmazások jelszavainak használatát, a varázsló további szakasza is megjelenik, ahol beállíthatja. Ha egy harmadik, az **alkalmazás jelszavai**nevű szakaszt lát, ki kell töltenie azt, hogy el tudja végezni a varázslót. Az alkalmazás jelszavának hozzáadásával kapcsolatos lépésekért tekintse meg a jelen cikk az [alkalmazás jelszavainak kezelése](#manage-your-app-passwords) című szakaszát.
+    >Ha a szervezete megköveteli az alkalmazások jelszavainak használatát, a varázsló további szakasza is megjelenik, ahol beállíthatja. Ha egy harmadik, az **alkalmazás jelszavai** nevű szakaszt lát, ki kell töltenie azt, hogy el tudja végezni a varázslót. Az alkalmazás jelszavának hozzáadásával kapcsolatos lépésekért tekintse meg a jelen cikk az [alkalmazás jelszavainak kezelése](#manage-your-app-passwords) című szakaszát.
 
 ### <a name="manage-your-app-passwords"></a>Az alkalmazás jelszavának kezelése
 
@@ -136,7 +136,7 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
 1. Miután befejezte a varázsló előző szakaszait, kattintson a **Tovább gombra** , és fejezze be az **alkalmazás jelszavának** szakaszát.
 
-2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010` , majd kattintson a **tovább**gombra.
+2. Írja be a jelszót igénylő alkalmazás nevét, például `Outlook 2010` , majd kattintson a **tovább** gombra.
 
     ![Adja hozzá az alkalmazás jelszava nevet a varázslóban.](media/security-info/app-password-app-password.png)
 
@@ -144,11 +144,11 @@ Az alkalmazások jelszavainak használatakor fontos megjegyezni:
 
     ![Alkalmazás jelszava lap, a másoláshoz használt jelszóval](media/security-info/app-password-copy-password.png)
 
-4. Miután átmásolta a jelszót, és beillesztette az alkalmazásba, térjen vissza ehhez a varázslóhoz, és győződjön meg arról, hogy a bejelentkezési módszer összes adata pontos, majd válassza a **kész**lehetőséget.
+4. Miután átmásolta a jelszót, és beillesztette az alkalmazásba, térjen vissza ehhez a varázslóhoz, és győződjön meg arról, hogy a bejelentkezési módszer összes adata pontos, majd válassza a **kész** lehetőséget.
 
     ![Alkalmazás jelszava lap, a befejezési megjegyzéssel](media/security-info/app-password-complete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A biztonsági adatok alapértelmezett módszereinek módosításához, törléséhez vagy frissítéséhez lásd:
 

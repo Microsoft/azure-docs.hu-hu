@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt az élő videók elemzéséről IoT 
 ms.topic: conceptual
 ms.date: 05/30/2020
 ms.openlocfilehash: e3a77b69adf2241a4af2652db4edb6673a63b4f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88690612"
 ---
 # <a name="terminology"></a>Terminológia
@@ -42,7 +42,7 @@ Az [RTSP](https://tools.ietf.org/html/rfc2326) Real-Time Streaming Protocol-ra h
 
 ## <a name="streaming"></a>Streamelés
 
-Ha olyan szolgáltatásokból nézte meg a videót, mint a Netflix, a YouTube és más szolgáltatások, akkor tapasztalt videóval is rendelkezik. A lejátszás a "Play" (ha elegendő sávszélességgel rendelkezik) után azonnal megkezdődik, és a videó idővonalán vissza is kérheti. A streaming esetében az a gondolat, hogy csak az éppen figyelt videó részét adja meg, és lehetővé teszi, hogy a megjelenítő elkezdje lejátszani a videót, miközben az adatok átvitele egy kiszolgálóról a lejátszási ügyfélre történik. A Azure Media Services kontextusában a [streaming](https://en.wikipedia.org/wiki/Streaming_media) arra a folyamatra utal, amely az adathordozók [Azure Media Servicesról](../azure-media-player/azure-media-player-overview.md) egy streaming-ügyfélre való továbbítását jelenti (például Azure Media Player). A Azure Media Services segítségével az iparági szabványnak megfelelő HTTP-alapú médiaadatfolyam-továbbítási protokollok [(például http Live Streaming (HLS)](https://developer.apple.com/streaming/) és [MPEG-Dash](https://dashif.org/about/)) használatával továbbíthatja a videókat az ügyfeleknek. A HLS-t a Azure Media Player, valamint a webkiszolgálók, például a [JW Player](https://www.jwplayer.com/), a [hls.js](https://github.com/video-dev/hls.js/), a [VideoJS](https://videojs.com/), a [Google](https://github.com/google/shaka-player), a Exoplayer, illetve a Mobile apps natív módon is elvégezheti az Android [Exoplayer](https://github.com/google/ExoPlayer) és az iOS [AV Foundation](https://developer.apple.com/av-foundation/)használatával. Az Azure Media Player támogatja az MPEG-DASH-t, és [megkeresi az ezen a lapon található ügyfelek listáját](https://dashif.org/clients/). 
+Ha olyan szolgáltatásokból nézte meg a videót, mint a Netflix, a YouTube és más szolgáltatások, akkor tapasztalt videóval is rendelkezik. A lejátszás a "Play" (ha elegendő sávszélességgel rendelkezik) után azonnal megkezdődik, és a videó idővonalán vissza is kérheti. A streaming esetében az a gondolat, hogy csak az éppen figyelt videó részét adja meg, és lehetővé teszi, hogy a megjelenítő elkezdje lejátszani a videót, miközben az adatok átvitele egy kiszolgálóról a lejátszási ügyfélre történik. A Azure Media Services kontextusában a [streaming](https://en.wikipedia.org/wiki/Streaming_media) arra a folyamatra utal, amely az adathordozók [Azure Media Servicesról](../azure-media-player/azure-media-player-overview.md) egy streaming-ügyfélre való továbbítását jelenti (például Azure Media Player). A Azure Media Services segítségével az iparági szabványnak megfelelő HTTP-alapú médiaadatfolyam-továbbítási protokollok [(például http Live Streaming (HLS)](https://developer.apple.com/streaming/) és [MPEG-Dash](https://dashif.org/about/)) használatával továbbíthatja a videókat az ügyfeleknek. A HLS-t a Azure Media Player, valamint a webkiszolgálók, például a [JW Player](https://www.jwplayer.com/), a [hls.js](https://github.com/video-dev/hls.js/), a [VideoJS](https://videojs.com/), a [Google](https://github.com/google/shaka-player), a Exoplayer, illetve a Mobile apps natív módon is elvégezheti az Android [](https://github.com/google/ExoPlayer) és az iOS [AV Foundation](https://developer.apple.com/av-foundation/)használatával. Az Azure Media Player támogatja az MPEG-DASH-t, és [megkeresi az ezen a lapon található ügyfelek listáját](https://dashif.org/clients/). 
 
 Ha a [Media Graph](#media-graph)s használatával videót szeretne felvenni a Azure Media Servicesban lévő egyik eszközre, Media Services streaming-képességgel is elvégezheti a videó streamek továbbítását a HLS és a Dash-ben. Erről további információt [a videolejátszás című cikkben talál](video-playback-concept.md) .
 
@@ -50,6 +50,6 @@ Ha a [Media Graph](#media-graph)s használatával videót szeretne felvenni a Az
 
 A [virtuális gépek](https://en.wikipedia.org/wiki/Video_management_system) egy video Management rendszerre hivatkoznak. Ilyen rendszerek a CCTV kamerák konfigurálására és vezérlésére, valamint videók rögzítésére és rögzítésére szolgálnak. Ezek a rendszerek is biztosítanak ügyfélalkalmazások számára a rögzített videó lejátszását
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Adathordozó-diagramok](media-graph-concept.md)

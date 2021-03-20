@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 07/27/2020
 ms.openlocfilehash: 0f5cebcb2711ca63833b6c7e285483f4e3ca6eb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88934276"
 ---
 # <a name="release-notes---application-insights"></a>Kibocsátási megjegyzések – Application Insights
@@ -30,7 +30,7 @@ Ez az oldal ismerteti, hol találhat részletes kibocsátási megjegyzéseket az
 
 Olvassa el a [blogokkal](https://azure.microsoft.com/blog/tag/application-insights/) és [szolgáltatásokkal kapcsolatos frissítéseket](https://azure.microsoft.com/updates/?service=application-insights) is, amelyek a Application Insights szolgáltatás jelentős fejlesztéseit összegzik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az első lépések a Code uncode-figyelő kód figyelésével:
 

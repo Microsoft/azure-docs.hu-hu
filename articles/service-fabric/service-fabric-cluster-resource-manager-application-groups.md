@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75452149"
 ---
 # <a name="introduction-to-application-groups"></a>Alkalmazás-csoportok bemutatása
@@ -201,7 +201,7 @@ A korlátozások az alkalmazások létrehozásakor és frissítéseikor is érv�
 - Ne próbálja meg az Application Group funkcióit használni, hogy az alkalmazás a csomópontok egy _adott_ részhalmazára legyen korlátozva. Más szóval azt is megadhatja, hogy az alkalmazás legfeljebb öt csomóponton fusson, de nem a fürtben lévő öt csomópontot. Az alkalmazások adott csomópontokra való korlátozásával a szolgáltatások elhelyezési korlátozásai is elérhetők.
 - Ne próbálja meg az alkalmazás kapacitását használni, hogy az azonos alkalmazásból származó két szolgáltatás ugyanahhoz a csomóponthoz legyen helyezve. Ehelyett használjon [affinitást](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md) vagy [elhelyezési korlátozásokat](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 - Ha szeretné megtudni, hogy a fürterőforrás-kezelő hogyan kezeli és kiegyenlíti a fürt terhelését, tekintse meg a [terhelés kiegyensúlyozásáról](service-fabric-cluster-resource-manager-balancing.md) szóló cikket.
 - Kezdje a kezdetektől, és [Ismerkedjen meg a Service Fabric fürterőforrás-kezelővel](service-fabric-cluster-resource-manager-introduction.md)

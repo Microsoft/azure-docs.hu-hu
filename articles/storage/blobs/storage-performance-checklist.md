@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544751"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
@@ -33,9 +33,9 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Méretezhetőségi célok |[Egyszerre több ügyfél fér hozzá egyetlen blobhoz?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Méretezhetőségi célok |[Az alkalmazása a méretezhetőségi célokon belül marad egyetlen blob esetében?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Particionálás |[Az elnevezési konvenció úgy lett kialakítva, hogy jobb terheléselosztást lehessen kialakítani?](#partitioning) |
-| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
 | &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás gyorsítótárazza a gyakran használt és ritkán módosított adatait?](#reading-data) |
 | &nbsp; |Gyorsítótárazás |[Az alkalmazás batch-frissítése az ügyfélen végzett gyorsítótárazással történik, majd feltölti őket nagyobb készletekbe?](#uploading-data-in-batches) |
@@ -116,7 +116,7 @@ Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott elj
   
 - Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 

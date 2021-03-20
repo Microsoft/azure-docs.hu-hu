@@ -11,10 +11,10 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88648564"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Tervezési szempontok a méretezési csoportokhoz
@@ -39,7 +39,7 @@ Néhány funkció jelenleg csak virtuális gépeken érhető el:
 - Áttelepítheti az egyes virtuális gépeket a natív lemezekről a felügyelt lemezekre, de a méretezési csoportokban nem telepíthet át virtuálisgép-példányokat.
 - IPv6 nyilvános IP-címeket rendelhet az egyes VM virtuális hálózati adapterekhez (NIC), de a méretezési csoportokban lévő virtuálisgép-példányokhoz nem. Az IPv6-alapú nyilvános IP-címeket az egyes virtuális gépek vagy a méretezési csoport virtuális gépei előtt is hozzárendelheti.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Méretezési készletek az Azure Managed Disks
 A méretezési csoportokat a hagyományos Azure Storage-fiókok helyett [Azure-Managed Disks](../virtual-machines/managed-disks-overview.md) lehet létrehozni. Managed Disks a következő előnyöket biztosítja:

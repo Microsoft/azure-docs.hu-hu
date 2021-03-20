@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75464700"
 ---
 # <a name="performance-metrics"></a>Teljesítmény-mérőszámok
@@ -78,7 +78,7 @@ Ha Reliable Services vagy szolgáltatás-távelérést használ, `Service Fabric
 Ha megbízható gyűjteményeket használ, javasoljuk, hogy vegye `Avg. Transaction ms/Commit` fel a-t a `Service Fabric Transactional Replicator` használatával a tranzakciós metrikák átlagos végrehajtási késésének összegyűjtéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ [az események létrehozásáról a platform szintjén](service-fabric-diagnostics-event-generation-infra.md) Service Fabric
 * Teljesítmény-metrikák összegyűjtése [log Analytics ügynökön](service-fabric-diagnostics-oms-agent.md) keresztül

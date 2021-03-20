@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: a812704c42a4da5ddf89fe6c5ba0c9a684047f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88919488"
 ---
 # <a name="get-started-with-the-azure-cdn-library-for-net"></a>Ismerkedés a .NET-hez készült Azure CDN-függvénytárral
@@ -43,26 +43,26 @@ Az oktatóanyag elvégzéséhez szüksége lesz a Visual Studio 2015-re.  A [Vis
 ## <a name="create-your-project-and-add-nuget-packages"></a>A projekt létrehozása és Nuget-csomagok hozzáadása
 Most, hogy létrehozott egy erőforráscsoportot a CDN-profilokhoz, és az Azure AD-alkalmazás engedélyt kapott a CDN-profilok és-végpontok kezelésére a csoporton belül, elkezdheti az alkalmazás létrehozását.
 
-A Visual Studio 2015-es verziójában kattintson a **fájl**, **új**, **projekt...** elemre az új projekt párbeszédpanel megnyitásához.  Bontsa ki a **Visual C#** elemet, majd a bal oldali ablaktáblán válassza a **Windows** lehetőséget.  Kattintson a **konzol alkalmazás** elemre a középső ablaktáblán.  Nevezze el a projektet, majd kattintson **az OK**gombra.
+A Visual Studio 2015-es verziójában kattintson a **fájl**, **új**, **projekt...** elemre az új projekt párbeszédpanel megnyitásához.  Bontsa ki a **Visual C#** elemet, majd a bal oldali ablaktáblán válassza a **Windows** lehetőséget.  Kattintson a **konzol alkalmazás** elemre a középső ablaktáblán.  Nevezze el a projektet, majd kattintson **az OK** gombra.
 
 ![Új projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
 A projektünk Nuget-csomagokban található Azure-kódtárakat fog használni.  Vegyük fel ezeket a projektbe.
 
-1. Kattintson az **eszközök** menüre, a **Nuget csomagkezelő**, majd a **Package Manager konzol**elemre.
+1. Kattintson az **eszközök** menüre, a **Nuget csomagkezelő**, majd a **Package Manager konzol** elemre.
 
     ![Nuget-csomagok kezelése](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. A Package Manager konzolon hajtsa végre a következő parancsot a **Active Directory-hitelesítési tár telepítéséhez (ADAL)**:
 
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
-3. A **Azure CDN felügyeleti könyvtár**telepítéséhez hajtsa végre a következő műveleteket:
+3. A **Azure CDN felügyeleti könyvtár** telepítéséhez hajtsa végre a következő műveleteket:
 
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Irányelvek, állandók, Main metódus és segítő módszerek
 Nézzük meg a programunk alapszintű szerkezetét.
 
-1. A Program.cs lapon vissza kell cserélnie a `using` felül található irányelveket a következőkkel:
+1. Lépjen vissza a program. cs lapra, és cserélje le a `using` felül található irányelveket a következőre:
 
     ```csharp
     using System;
@@ -74,7 +74,7 @@ Nézzük meg a programunk alapszintű szerkezetét.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  A `Program` osztályban, de a metódus előtt `Main` adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a ** &lt; zárójeleket &gt; **is beleértve, szükség esetén a saját értékeivel.
+2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  A `Program` osztályban, de a metódus előtt `Main` adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a **&lt; zárójeleket &gt;** is beleértve, szükség esetén a saját értékeivel.
 
     ```csharp
     //Tenant app constants

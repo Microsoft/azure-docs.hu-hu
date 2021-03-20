@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84887225"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN valós idejű statisztikái
@@ -66,7 +66,7 @@ Az **állapotkódok** gráf azt jelzi, hogy milyen gyakran fordul elő bizonyos 
 > 
 > 
 
-A HTTP-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése**elemre. 
+A HTTP-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése** elemre. 
 
 Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat.  A jelmagyarázat alatt közvetlenül a gráf alatt kattintson az elrejteni kívánt állapotkódot. Az állapotkód azonnal el lesz rejtve a gráfból. Ha ismét rákattint erre az állapotkódre, akkor a beállítás újból megjelenik.
 
@@ -80,7 +80,7 @@ A **cache statuss (gyorsítótár állapota** ) gráf azt jelzi, hogy milyen gya
 > 
 > 
 
-A gyorsítótár-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése**elemre. 
+A gyorsítótár-állapotkódok listája közvetlenül a gráf felett jelenik meg. Ez a lista minden olyan állapotkódot jelez, amely szerepelhet a vonalas diagramban, valamint az adott állapotkód számára másodpercenként előforduló előfordulások számát. Alapértelmezés szerint a diagramon minden egyes állapotkód esetében sor jelenik meg. Dönthet azonban úgy is, hogy csak a CDN-konfigurációhoz különleges jelentőséggel rendelkező állapotkódot figyeli. Ehhez jelölje ki a kívánt állapotkódot, és törölje az összes többi beállítást, majd kattintson a **Graph frissítése** elemre. 
 
 Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat.  A jelmagyarázat alatt közvetlenül a gráf alatt kattintson az elrejteni kívánt állapotkódot. Az állapotkód azonnal el lesz rejtve a gráfból. Ha ismét rákattint erre az állapotkódre, akkor a beállítás újból megjelenik.
 
@@ -89,7 +89,7 @@ Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat. 
 
 Ez a gráf azt jelzi, hogy hány kapcsolat lett létrehozva a peremhálózati kiszolgálókhoz. Egy adategységre vonatkozó minden kérelem, amely a CDN-eredményeken keresztül halad a kapcsolatok között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Valós idejű riasztások](cdn-real-time-alerts.md) beszerzése Azure CDN
 * Mélyebb kiásás a [speciális http-jelentésekkel](cdn-advanced-http-reports.md)
 * [Használati minták](cdn-analyze-usage-patterns.md) elemzése

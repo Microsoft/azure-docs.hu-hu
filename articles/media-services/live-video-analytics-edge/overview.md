@@ -4,10 +4,10 @@ description: Ez a témakör áttekintést nyújt a IoT Edge élő videók elemz�
 ms.topic: overview
 ms.date: 05/27/2020
 ms.openlocfilehash: b9b8726c5e8ad6850e05aeee48fccabee703080e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90904348"
 ---
 # <a name="what-is-live-video-analytics-on-iot-edge-preview"></a>Mi a IoT Edge Live Video Analytics? (előzetes verzió)
@@ -44,7 +44,7 @@ Olvassa el a következő fogalmakat, majd próbáljon ki egy rövid útmutatót 
 * [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
 * [Live Video Analytics videófelvétel nélkül](analyze-live-video-concept.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Kövesse a gyors útmutató [: élő videó elemzés futtatása saját modell](use-your-model-quickstart.md) használatával című cikket, amelyből megtudhatja, hogyan futtathatja a mozgásérzékelőt élő videó-hírcsatornán.
 * [Terminológia](terminology.md) áttekintése

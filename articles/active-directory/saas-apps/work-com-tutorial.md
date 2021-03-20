@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: a77b6472ea91a6ba4b6e31d1b7739aae236a1783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636153"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Azure Active Directory integráció a Work.com
@@ -127,23 +127,23 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 1. Jelentkezzen be rendszergazdaként a Work.com-bérlőbe.
 
-2. Nyissa meg a **telepítőt** .
+2. Nyissa meg a **telepítőt**.
    
-    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Beállítás")
 
 3. A bal oldali navigációs ablaktábla **felügyelet** szakaszában kattintson a **tartományi felügyelet** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **saját tartomány** lehetőségre a **saját tartomány** lap megnyitásához. 
    
     ![Képernyőfelvétel: a tartomány kiválasztott tartományának felügyelete az adminisztráció ablaktáblán.](./media/work-com-tutorial/ic767825.png "Saját tartomány")
 
-4. Annak ellenőrzéséhez, hogy a tartomány megfelelően van-e beállítva, győződjön meg arról, hogy a " **4. lépés központi telepítése a felhasználók számára** " értékre van állítva, és tekintse át a " **saját tartomány beállításai** " című részt.
+4. Annak ellenőrzéséhez, hogy a tartomány megfelelően van-e beállítva, győződjön meg arról, hogy a "**4. lépés központi telepítése a felhasználók számára**" értékre van állítva, és tekintse át a "**saját tartomány beállításai**" című részt.
    
     ![A felhasználó számára központilag telepített tartomány](./media/work-com-tutorial/ic784377.png "A felhasználó számára központilag telepített tartomány")
 
 5. Jelentkezzen be a Work.com-bérlőbe.
 
-6. Nyissa meg a **telepítőt** .
+6. Nyissa meg a **telepítőt**.
     
-    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Beállítás")
 
 7. Bontsa ki a **biztonsági vezérlők** menüt, majd kattintson az **egyszeres Sign-On beállítások** elemre.
     
@@ -174,13 +174,13 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
     
     e. **SAML-identitás típusaként** válassza **az érvényesítés az összevonási azonosítót tartalmazza a felhasználói objektumból** lehetőséget.
     
-    f. **SAML-identitás helyeként** válassza az **identitás elemet a tulajdonos utasítás NameIdentfier elemében** .
+    f. **SAML-identitás helyeként** válassza az **identitás elemet a tulajdonos utasítás NameIdentfier elemében**.
     
     : Az **Identity Provider bejelentkezési URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
     h. Az **Identity Provider kijelentkezési URL-címe** szövegmezőbe illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portal másolt.
     
-    i. Ha a **szolgáltató kezdeményezte a kérelem kötését** , válassza a **http post** lehetőséget.
+    i. Ha a **szolgáltató kezdeményezte a kérelem kötését**, válassza a **http post** lehetőséget.
     
     j. Kattintson a **Mentés** gombra.
 
@@ -200,7 +200,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -218,7 +218,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -254,9 +254,9 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
 
 1. Jelentkezzen be a Work.com vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg a **telepítőt** .
+2. Nyissa meg a **telepítőt**.
    
-    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Telepítés")
+    ![Képernyőfelvétel: a felhasználó menüből kiválasztott beállítás.](./media/work-com-tutorial/ic794108.png "Beállítás")
 
 3. Nyissa meg a **felhasználók kezelése \>** lehetőséget.
    
@@ -272,7 +272,7 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
    
     a. A **Utónév** szövegmezőbe írja be a felhasználó **Britta** **utónevét** .
     
-    b. A **vezetéknév** szövegmezőbe írja be a Simon **nevű felhasználó vezetéknevét** . **Simon**
+    b. A **vezetéknév** szövegmezőbe írja be a Simon **nevű felhasználó vezetéknevét** . 
     
     c. Az **alias** szövegmezőbe írja be a felhasználó **BrittaS** **nevét** .
     
@@ -282,7 +282,7 @@ Ahhoz Azure Active Directory, hogy a felhasználók bejelentkezhetnek, a Work.co
     
     f. A **Nick neve** szövegmezőbe írja be a **Simon** felhasználó **nick-nevét** .
     
-    : Válassza a **szerepkör** , a **felhasználói licenc** és a **profil** lehetőséget.
+    : Válassza a **szerepkör**, a **felhasználói licenc** és a **profil** lehetőséget.
     
     h. Kattintson a **Mentés** gombra.  
       

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 3db1c8bfc3a11151342589af0873d88e3d90c6a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91825621"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Az API Management és az Application Gateway integrálása egy belső VNET-en
 
-## <a name="overview"></a><a name="overview"> </a> Áttekintés
+## <a name="overview"></a><a name="overview"></a> Áttekintés
 
 A API Management szolgáltatás belső módban is konfigurálható Virtual Network, amely csak a Virtual Networkon keresztül érhető el. Az Azure Application Gateway egy olyan Pásti szolgáltatás, amely egy 7. rétegbeli Load balancert biztosít. Fordított proxy szolgáltatásként működik, és biztosítja a webalkalmazási tűzfal (WAF) ajánlatát.
 
@@ -47,7 +47,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 * Tanúsítványok – pfx és CER az API állomásneve és a pfx a fejlesztői portál állomásneve számára.
 
-## <a name="scenario"></a><a name="scenario"> </a> Forgatókönyv
+## <a name="scenario"></a><a name="scenario"></a> Forgatókönyv
 
 Ez a cikk azt ismerteti, hogyan használható egyetlen API Management szolgáltatás a belső és a külső felhasználók számára, és hogyan működhet egyetlen előtérben a helyszíni és a felhőalapú API-k esetében is. Azt is megtudhatja, hogyan teheti elérhetővé az API-k csak egy részhalmazát (a példában zöld színnel kiemelve) a külső felhasználásra a Application Gateway-ben rendelkezésre álló útválasztási funkciók használatával.
 
@@ -55,7 +55,7 @@ Az első telepítési példában az összes API-t csak a Virtual Networkon belü
 
 ![URL-útvonal](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Kezdés előtt
+## <a name="before-you-begin"></a><a name="before-you-begin"></a> Kezdés előtt
 
 * Ügyeljen arra, hogy az Azure PowerShell legújabb verzióját használja. Tekintse meg a telepítési utasításokat a következő helyen: [Install Azure PowerShell](/powershell/azure/install-az-ps). 
 
@@ -69,7 +69,7 @@ Az első telepítési példában az összes API-t csak a Virtual Networkon belü
 * **Egyéni állapot** mintavétele: Application Gateway alapértelmezés szerint az IP-címeken alapuló mintavételeket használja annak megállapítására, hogy a BackendAddressPool mely kiszolgálók aktívak. A API Management szolgáltatás csak a megfelelő állomásfejléc-fejlécre vonatkozó kérelmekre válaszol, ezért az alapértelmezett mintavételek sikertelenek lesznek. Meg kell határozni egy egyéni állapot-mintavételt, hogy az Application Gateway megtudja, hogy a szolgáltatás életben van, és továbbítania kell a kérelmeket.
 * **Egyéni tartományi tanúsítványok:** Az internetről API Management eléréséhez létre kell hoznia az állomásnév CNAME hozzárendelését az Application Gateway előtér-DNS-névre. Ezzel biztosíthatja, hogy a API Management Application Gateway küldött állomásnév fejléce és tanúsítványa egy APIM legyen felismerhető. Ebben a példában két tanúsítványt fogunk használni – a háttérrendszer és a fejlesztői portál számára.  
 
-## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> API Management és Application Gateway integrálásához szükséges lépések
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"></a> API Management és Application Gateway integrálásához szükséges lépések
 
 1. Egy erőforráscsoport létrehozása a Resource Manager számára.
 2. Hozzon létre egy Virtual Network, alhálózat és nyilvános IP-címet a Application Gateway számára. Hozzon létre egy másik alhálózatot a API Managementhoz.
@@ -368,10 +368,10 @@ A Application Gateway DNS-nevét olyan CNAME rekord létrehozásához kell haszn
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"></a><a name="summary"> </a> Összefoglalás
+## <a name="summary"></a><a name="summary"></a> Összefoglalás
 A VNET konfigurált Azure API Management egyetlen átjáró felületet biztosít az összes konfigurált API-hoz, függetlenül attól, hogy azok a helyszínen vagy a felhőben vannak tárolva. A Application Gateway és az API Management integrációja biztosítja a rugalmasságot, hogy az egyes API-k szelektíven elérhetők legyenek az interneten, valamint a webalkalmazási tűzfalat is biztosítson az API Management-példányhoz.
 
-## <a name="next-steps"></a><a name="next-steps"> </a> További lépések
+## <a name="next-steps"></a><a name="next-steps"></a> További lépések
 * További információ az Azure Application Gateway
   * [Application Gateway áttekintése](../application-gateway/overview.md)
   * [Webalkalmazási tűzfal Application Gateway](../web-application-firewall/ag/ag-overview.md)

@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673053"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599127"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Útmutató: az érzelmek elemzése és a vélemények bányászata
 
-A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végpont használatával is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat biztosít a (például a termékek vagy szolgáltatások attribútumai) szöveggel kapcsolatos véleményekről. 
+A Text Analytics API Hangulatelemzés szolgáltatása két módszert biztosít a pozitív és negatív érzelmek észlelésére. Ha Hangulatelemzés kérelmet küld, az API az érzelmeket tartalmazó címkéket (például "negatív", "semleges" és "pozitív") és megbízhatósági pontszámokat ad vissza a mondat és a dokumentum szintjén. A Hangulatelemzés végponton keresztül is küldhet vélemény-adatbányászati kérelmeket, amely részletes információkat tartalmaz a szavakhoz (például a termékek vagy szolgáltatások attribútumaihoz) kapcsolódó véleményekről a szövegben. 
 
 Az API által használt AI-modelleket a szolgáltatás nyújtja, csak tartalmat kell elküldeni az elemzéshez.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Verziók és szolgáltatások Hangulatelemzés
 
-| Funkció                                   | Hangulatelemzés v3 | Hangulatelemzés v 3.1 (előzetes verzió) |
+| Szolgáltatás                                   | Hangulatelemzés v3 | Hangulatelemzés v 3.1 (előzetes verzió) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Egyszeri és batch-kérelmek módszerei    | X                     | X                                 |
 | Pontszámok és címkézés Hangulatelemzés             | X                     | X                                 |
@@ -49,9 +49,9 @@ A megbízhatósági pontszámok 1-től 0-ig terjedhetnek. Az 1-nél közelebbi p
 
 ## <a name="opinion-mining"></a>Vélemény bányászata
 
-A kivonás a Hangulatelemzés egyik funkciója, amely az 3,1-es verzió előzetes verziójától kezdődően érhető el. Ez a funkció a természetes nyelvi feldolgozásban (például a termékek vagy szolgáltatások attribútumaiban) lévő véleményekkel kapcsolatos részletesebb információkat tartalmaz a szövegben található, aspektusokon alapuló Hangulatelemzésként is.
+A kivonás a Hangulatelemzés egyik funkciója, amely az 3,1-es verzió előzetes verziójától kezdődően érhető el. Ez a funkció a természetes nyelvi feldolgozás (NLP) aspektus-alapú Hangulatelemzés is ismert, és részletesebb információkat nyújt a termékek vagy szolgáltatások attribútumaival kapcsolatos véleményekről. Az API-felületek célja (főnév vagy művelet) és értékelés (melléknév).
 
-Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például a "The Room nagyszerű volt, de a személyzet nem volt barátja.", a kisegítő adatbányászat megkeresi a szövegben szereplő szempontokat, valamint a hozzájuk kapcsolódó véleményeket és érzelmeit. Hangulatelemzés lehet, hogy csak negatív véleményét jelentse.
+Ha például egy ügyfél visszajelzést küld egy olyan szállodáról, mint például "a szoba nagyszerű volt, de a személyzet nem volt barátja.", a kisegítő adatbányászat megkeresi a célkitűzéseket (aspektusokat) a szövegben, valamint a hozzájuk kapcsolódó értékeléseket (véleményeket) és a véleményét. Hangulatelemzés lehet, hogy csak negatív véleményét jelentse.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="A vélemény bányászati példájának ábrája" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ A dokumentum méretének 5 120 karakternél rövidebbnek kell lennie a dokumentu
 
 Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) vagy az API- **tesztelési konzolt** a következő hivatkozásokra kattintva gyorsan strukturálhatja és küldheti el. 
 
-#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
 
 [Hangulatelemzés v 3.1 – dokumentáció](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ Hozzon létre egy POST kérést. A [Poster](text-analytics-how-to-call-api.md) v
 > [!NOTE]
 > A Text Analytics erőforráshoz tartozó kulcsot és végpontot a Azure Portalban találja. Ezek az erőforrás **gyors üzembe helyezés** lapján, az **Erőforrás-kezelés** területen találhatók. 
 
-#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
 
 **Hangulatelemzés**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **Vélemény bányászata**
 
 A vélemény adatbányászati eredményeinek beszerzéséhez meg kell adnia a `opinionMining=true` paramétert. Például:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 Ez a paraméter alapértelmezés szerint be van állítva `false` . 
 
@@ -142,7 +142,7 @@ A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen a
 
 A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is továbbíthatja, amely fogadja a JSON-t, vagy mentse a kimenetet egy fájlba a helyi rendszeren. Ezután importálja a kimenetet egy olyan alkalmazásba, amelyet az adatrendezéshez, kereséshez és kezeléshez használhat. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információkért lásd: [eltolások feldolgozása](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Hangulatelemzés és vélemény bányászati példája
 
@@ -151,97 +151,99 @@ A kimenetet visszaadása azonnali. Az eredményeket egy olyan alkalmazásba is t
 
 A Hangulatelemzés v 3.1 a Hangulatelemzés és a közvélemény számára is visszatérhet a válasz objektumokra.
   
-Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők.
+Az érzelmek elemzése a teljes dokumentumra vonatkozó hangulati címkét és megbízhatósági pontszámot ad vissza, valamint minden mondatot. Az 1-nél közelebbi pontszámok nagyobb megbízhatóságot jeleznek a címke besorolásában, míg az alacsonyabb pontszámok alacsonyabb megbízhatóságot jeleznek. A dokumentumok több mondattal is rendelkezhetnek, és az egyes dokumentumokban vagy mondatokban lévő megbízhatósági pontszámok akár 1-re is felvehetők. értékelések 
 
-A kisegítő csoportok megkeresik a szöveg szempontjait, valamint a hozzájuk kapcsolódó véleményeket és érzelmeit. Az alábbi válaszban az *étterem nagy élelmiszerekkel rendelkezett, és a várt* két aspektusa van: az *élelmiszer* és a *pincér*. Az egyes aspektusok `relations` tulajdonsága egy értéket tartalmaz, `ref` amelynek URI-hivatkozása a társított `documents` , `sentences` és `opinions` objektumokra vonatkozik.
+A kisegítő adatbányászat a szövegben, valamint a hozzájuk kapcsolódó felmérésben (melléknév) keres célokat. Az alábbi válaszban azt a mondatot, amelyben *az étterem nagy élelmiszereket tartalmaz, és a pincérnek barátságos* két célja van: az *élelmiszer* és a *pincér*. Minden cél `relations` tulajdonsága tartalmaz egy `ref` értéket a társított `documents` , `sentences` és objektumokra mutató URI-hivatkozással `assessments` .
+
+Az API a véleményeket cél (főnév vagy művelet) és értékelés (melléknév) alapján adja vissza.
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

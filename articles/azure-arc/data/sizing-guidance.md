@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94542677"
 ---
 # <a name="sizing-guidance"></a>Méretezési útmutató
@@ -124,9 +124,9 @@ A következő példa egy méretezési számítást mutat be.
 
 Követelmények:
 
-- **"SQL1"** : 1 SQL felügyelt példány 16 GB RAM-mal, 4 mag
-- **"SQL2"** : 1 SQL felügyelt példány 256 GB RAM-mal, 16 mag
-- **"Postgres1"** : 1 PostgreSQL nagy kapacitású-kiszolgálócsoport 4 feldolgozóval 12 GB RAM-mal, 4 mag
+- **"SQL1"**: 1 SQL felügyelt példány 16 GB RAM-mal, 4 mag
+- **"SQL2"**: 1 SQL felügyelt példány 256 GB RAM-mal, 16 mag
+- **"Postgres1"**: 1 PostgreSQL nagy kapacitású-kiszolgálócsoport 4 feldolgozóval 12 GB RAM-mal, 4 mag
 
 Méretezési számítások:
 

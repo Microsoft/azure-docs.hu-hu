@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
 ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96531837"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Interconnect Kínával az Azure Virtual WAN és a Secure hub használatával
@@ -147,7 +147,7 @@ Jelenleg a ExpressRoute Global Reach minden országban/régióban nem érhető e
 
 Beállíthat például egy ExpressRoute a Microsoft-partnerekkel, és egy VPN-alagutat is összekapcsolhat az Azure Virtual WAN-hoz. Most, hogy engedélyezte, újra áthaladt a VPN és a ExpressRoute közötti átvitel Global Reach és külső szolgáltató és szolgáltatás nélkül, például a Megaport Cloud.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a következő cikkekben talál:
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96029347"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
@@ -93,6 +93,6 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

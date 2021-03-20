@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdaaed72b85bc3c0196a8897be311efa5fb714e2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92366343"
 ---
 # <a name="common-conditional-access-policies"></a>Gyakori feltételes hozzáférési szabályzatok
@@ -45,7 +45,7 @@ További információ a segélyhívó fiókokról és azok fontos okairól a kö
 * [Bejelentkezési kockázat alapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk.md)
 * [Felhasználói kockázat alapú feltételes hozzáférés (prémium szintű Azure AD P2 szükséges)](howto-conditional-access-policy-risk-user.md)
 * [Megbízható helyek megkövetelése az MFA-regisztrációhoz](howto-conditional-access-policy-registration.md)
-* [Hozzáférés letiltása hely alapján](howto-conditional-access-policy-location.md)
+* [Hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)
 * [Megfelelő eszköz megkövetelése](howto-conditional-access-policy-compliant-device.md)
 * [Hozzáférés letiltása adott alkalmazások kivételével](howto-conditional-access-policy-block-access.md)
 

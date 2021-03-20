@@ -1,5 +1,5 @@
 ---
-title: Application Gateway-összetevők
+title: Az Application Gateway összetevői
 description: Ez a cikk az Application Gateway különböző összetevőivel kapcsolatos információkat tartalmaz
 services: application-gateway
 author: surajmb
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88723316"
 ---
-# <a name="application-gateway-components"></a>Application Gateway-összetevők
+# <a name="application-gateway-components"></a>Az Application Gateway összetevői
 
  Az Application Gateway az ügyfelek számára egyetlen kapcsolódási pontként szolgál. A bejövő alkalmazások forgalmát több háttér-készlet között osztja el, többek között az Azure-beli virtuális gépeket, a virtuálisgép-méretezési csoportokat, a Azure App Servicet és a helyszíni/külső kiszolgálókat. A forgalom terjesztéséhez az Application Gateway számos, a jelen cikkben ismertetett összetevőt használ.
 
@@ -148,10 +148,10 @@ Amellett, hogy az alapértelmezett állapot mintavételi figyelését is haszná
 
 További információ: [az Application Gateway állapotának figyelése](../application-gateway/application-gateway-probe-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Application Gateway létrehozása:
 
-* [Az Azure Portalon](quick-create-portal.md)
+* [A Azure Portal](quick-create-portal.md)
 * [Azure PowerShell használatával](quick-create-powershell.md)
 * [Az Azure CLI használatával](quick-create-cli.md)

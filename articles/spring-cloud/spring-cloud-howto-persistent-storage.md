@@ -8,10 +8,10 @@ ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 9d769cb6e2cc33df259da46a82ad27a8bfd9e74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90888529"
 ---
 # <a name="use-persistent-storage-in-azure-spring-cloud"></a>Állandó tárolók használata az Azure Spring Cloudban
@@ -32,7 +32,7 @@ Az állandó tárterület egy, az Azure által kezelt fájlmegosztás-tároló, 
 
 ## <a name="use-the-azure-portal-to-enable-persistent-storage"></a>Az állandó tárterület engedélyezése a Azure Portal használatával
 
-1. A Azure Portal **kezdőlapján** válassza az **összes erőforrás**lehetőséget.
+1. A Azure Portal **kezdőlapján** válassza az **összes erőforrás** lehetőséget.
 
     >![A minden erőforrás ikon megkeresése](media/portal-all-resources.jpg)
 
@@ -40,7 +40,7 @@ Az állandó tárterület egy, az Azure által kezelt fájlmegosztás-tároló, 
 
     > ![Alkalmazás kiválasztása](media/select-service.jpg)
 
-1. A **Beállítások** fejléc alatt válassza az **alkalmazások**lehetőséget.
+1. A **Beállítások** fejléc alatt válassza az **alkalmazások** lehetőséget.
 
 1. Az Azure Spring Cloud Services egy táblában jelenik meg.  Válassza ki azt a szolgáltatást, amelyhez állandó tárolót kíván hozzáadni. Ebben a példában az **átjáró** szolgáltatás van kiválasztva.
 
@@ -48,7 +48,7 @@ Az állandó tárterület egy, az Azure által kezelt fájlmegosztás-tároló, 
 
 1. A szolgáltatás konfigurációja lapon válassza a **Konfigurálás** lehetőséget.
 
-1. Válassza ki az **állandó tárterület** fület, és válassza az **Engedélyezés**lehetőséget.
+1. Válassza ki az **állandó tárterület** fület, és válassza az **Engedélyezés** lehetőséget.
 
     > ![Állandó tárterület engedélyezése](media/enable-persistent-storage.jpg)
 

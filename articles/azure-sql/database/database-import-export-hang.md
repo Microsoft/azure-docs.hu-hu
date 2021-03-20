@@ -11,10 +11,10 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 ms.openlocfilehash: e69bba858ccf62f1b3a3b45b08771ddba71f11cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92671395"
 ---
 # <a name="azure-sql-database-and-managed-instance-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>A Azure SQL Database és a felügyelt példány importálási/exportálási szolgáltatása hosszú időt vesz igénybe az adatbázisok importálásához vagy exportálásához.
@@ -36,7 +36,7 @@ A Azure SQL Database importálási/exportálási szolgáltatás korlátozott sz�
 > [!NOTE]
 > Ha a kérést négy napon belül nem dolgozzák fel, a szolgáltatás automatikusan megszakítja a kérést.
 
-## <a name="recommended-solutions"></a>Ajánlott megoldások
+## <a name="recommended-solutions"></a>Javasolt megoldások
 
 Ha az adatbázis-exportálást csak a véletlen adattörlésből történő helyreállításra használja, az összes Azure SQL Database kiadás a rendszer által létrehozott biztonsági másolatok önkiszolgáló visszaállítási funkcióját biztosítja. Ha azonban szükség van ezekre az exportálásokra más okokból, és ha következetesen gyorsabb vagy kiszámítható importálási/exportálási teljesítményre van szüksége, vegye figyelembe a következő lehetőségeket:
 

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 9ad6f89392846564631b70f0acfb5658a050be80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88922820"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` függvény az Azure Cognitive Search
@@ -74,7 +74,7 @@ A függvénynek két túlterhelése van `search.in` :
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Leírás |
+| Paraméter neve | Típus | Description |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Egy karakterlánc-mezőre mutató hivatkozás (vagy egy tartománybeli változó egy karakterlánc-gyűjtési mezőn keresztül abban az esetben, ha az `search.in` egy `any` vagy kifejezésen belül használatos `all` ). |
 | `valueList` | `Edm.String` | A paraméternek megfelelő értékek tagolt listáját tartalmazó karakterlánc `variable` . Ha a `delimiters` paraméter nincs megadva, az alapértelmezett határolójelek a szóköz és a vessző. |
@@ -118,7 +118,7 @@ A "Motel" vagy a "cabin'" címke nélküli összes Hotel megkeresése:
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
 ```
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Szűrők az Azure Cognitive Search](search-filters.md)
 - [Az Azure Cognitive Search OData kifejezés nyelvének áttekintése](query-odata-filter-orderby-syntax.md)

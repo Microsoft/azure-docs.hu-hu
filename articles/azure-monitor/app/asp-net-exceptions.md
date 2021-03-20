@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88936503"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
@@ -76,7 +76,7 @@ Erre számos lehetősége van:
 * A [TrackException () verem-](#exceptions) nyomkövetéseket küld. [További információ a kivételekről](#exceptions).
 * Ha már olyan naplózási keretrendszert használ, mint például a Log4Net vagy a NLog, [rögzítheti ezeket a naplókat](asp-net-trace-logs.md) , és megtekintheti azokat a diagnosztikai keresésben a kérelem és a kivétel adatai mellett.
 
-Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](./diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus**lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
+Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](./diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus** lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
 
 ![Részletezés](./media/asp-net-exceptions/customevents.png)
 
@@ -184,7 +184,7 @@ public class GoodController : ApiController
 ## <a name="web-forms"></a>Webes űrlapok
 A webes űrlapok esetében a HTTP-modul képes lesz összegyűjteni a kivételeket, ha nincsenek átirányítások konfigurálva a CustomErrors.
 
-Ha azonban aktív átirányítással rendelkezik, adja hozzá a következő sorokat az Application_Error függvényhez a Global.asax.cs-ben. (Adjon hozzá egy Global. asax fájlt, ha még nem rendelkezik ilyennel.)
+Ha azonban aktív átirányítással rendelkezik, adja hozzá a következő sorokat a Application_Error függvényhez a Global. asax. cs. (Adjon hozzá egy Global. asax fájlt, ha még nem rendelkezik ilyennel.)
 
 ```csharp
     void Application_Error(object sender, EventArgs e)
@@ -256,10 +256,10 @@ Cserélje le a HandleError attribútumot a vezérlők új attribútumára.
     ...
 ```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[Sample](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Regisztrálás `AiHandleErrorAttribute` globális szűrőként a Global.asax.cs-ben:
+Regisztráljon globális `AiHandleErrorAttribute` szűrőként a Global. asax. cs:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -271,10 +271,10 @@ Regisztrálás `AiHandleErrorAttribute` globális szűrőként a Global.asax.cs-
      ...
 ```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[Sample](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
-A AiHandleErrorAttribute regisztrálása globális szűrőként a FilterConfig.cs-ben:
+Regisztrálja a AiHandleErrorAttribute globális szűrőként a FilterConfig. cs:
 
 ```csharp
     public class FilterConfig
@@ -287,7 +287,7 @@ A AiHandleErrorAttribute regisztrálása globális szűrőként a FilterConfig.c
     }
 ```
 
-[Minta](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[Sample](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Webes API
 A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verzióktól) kezdve a Application Insights a vezérlő metódusokban automatikusan kiváltott kezeletlen kivételeket gyűjt a WebAPI 2 +-hoz. Ha korábban már hozzáadott egy egyéni kezelőt az ilyen kivételek nyomon követéséhez (az alábbi példákban leírtak szerint), akkor előfordulhat, hogy a kivételek kétszeres nyomon követésének megakadályozásához eltávolíthatja azt.
@@ -355,7 +355,7 @@ Ezt a felülbírált attribútumot adott vezérlőkhöz hozzáadhatja, vagy hozz
     }
 ```
 
-[Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[Sample](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Webes API 2. x
 Adja hozzá a Iexceptionlogger felület implementációját:
@@ -410,7 +410,7 @@ Adja hozzá ezt a WebApiConfig-szolgáltatásokhoz:
      }
 ```
 
-[Minta](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[Sample](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 Alternatív megoldásként a következőket teheti:
 
@@ -480,18 +480,18 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[Minta](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[Sample](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Kivételi teljesítményszámlálók
 Ha [telepítette a Application Insights ügynököt](./monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.
 
-Nyisson meg egy mérőszám-kezelő lapot, adjon hozzá egy új diagramot, és válassza a **kivételek aránya**elemet a teljesítményszámlálók területen.
+Nyisson meg egy mérőszám-kezelő lapot, adjon hozzá egy új diagramot, és válassza a **kivételek aránya** elemet a teljesítményszámlálók területen.
 
 A .NET-keretrendszer kiszámítja az arányt a kivételek számának és az intervallum hosszának megszámlálásával.
 
 Ez eltér a "kivételek" számával, amelyet a Application Insights-portál a TrackException jelentéseinek számlálása alapján számít ki. A mintavételi időközök eltérőek, és az SDK nem küld TrackException-jelentéseket az összes kezelt és nem kezelt kivételhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A REST, az SQL és más függőségek hívásának figyelése](./asp-net-dependencies.md)
 * [Az oldal betöltési idejének, a böngésző kivételeinek és az AJAX-hívások figyelése](./javascript.md)
 * [Teljesítményszámlálók figyelése](./performance-counters.md)

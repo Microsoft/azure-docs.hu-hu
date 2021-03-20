@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3111b3a102abd923169cf655f1d71e79b19f7d5d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875009"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598133"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Az Azure szinapszis Analytics regisztrálása és vizsgálata
 
@@ -127,7 +127,7 @@ Ha új Azure szinapszis Analytics-kiszolgálót szeretne regisztrálni a Data Ca
 A **források regisztrálása (Azure szinapszis Analytics)** képernyőn tegye a következőket:
 
 1. Adja meg azt a **nevet** , amelyben az adatforrás szerepelni fog a katalógusban.
-1. Válassza ki, hogyan szeretné a kívánt Storage-fiókra mutatni:
+1. Válassza ki, hogyan szeretné a kívánt logikai SQL Serverra mutatni:
    1. Válasszon az **Azure-előfizetésből**, válassza ki a megfelelő előfizetést az **Azure-előfizetés** legördülő listából, és a megfelelő kiszolgálót a **kiszolgáló neve** legördülő listából.
    1. Az **ENTER billentyűt manuálisan** is kiválaszthatja, és megadhatja a **kiszolgáló nevét**.
 1. **Fejezze** be az adatforrás regisztrálását.
@@ -136,7 +136,7 @@ A **források regisztrálása (Azure szinapszis Analytics)** képernyőn tegye a
 
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása](how-to-browse-catalog.md)
 - [Keresés az Azure-beli hatáskörébe Data Catalog](how-to-search-catalog.md)

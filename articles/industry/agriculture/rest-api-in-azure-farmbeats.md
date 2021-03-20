@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92674507"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API-k
@@ -29,7 +29,7 @@ A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. Az API-kkal �
 
 A következő táblázat összefoglalja a FarmBeats-Datahub található összes objektumot és erőforrást:
 
-| Objektumok és erőforrások | Leírás
+| Objektumok és erőforrások | Description
 --- | ---|
 Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval. |
 Eszköz  | Az eszköz megfelel a farmon található fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszközök általában Farm-AZONOSÍTÓval rendelkező farmhoz vannak kiépítve.
@@ -107,9 +107,9 @@ Ha például lekérdezi az eszközök listáját (/Device hívása), a következ
 
 Az Azure FarmBeats Datahub API-jai a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
 
- |Hibakód             | Leírás |
+ |Hibakód             | Description |
  |---                    | --- |
- |200                    | Success |
+ |200                    | Siker |
  |201                    | Sikeres létrehozás (post) |
  |400                    | Hibás kérelem. Hiba történt a kérelemben. |
  |401                    | Jogosulatlan. Az API hívója nem jogosult az erőforrás elérésére. |
@@ -147,19 +147,19 @@ Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció
 2. Új fiók esetén tegye a következőket:
 
     - Adjon meg egy nevet.
-    - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)** .
+    - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)**.
     - Használja a többi mező alapértelmezett értékeit.
     - Válassza a **Regisztráció** lehetőséget.
 
 3. Az új és meglévő alkalmazás-regisztráció **– Áttekintés** panelen tegye a következőket:
 
-    - Rögzítse az **ügyfél-azonosítót** és a **bérlő azonosítóját** .
-    - Nyissa meg a **tanúsítványokat és a titkokat** egy új ügyfél-titkos kód létrehozásához, és rögzítse az **ügyfél titkos kulcsát** .
+    - Rögzítse az **ügyfél-azonosítót** és a **bérlő azonosítóját**.
+    - Nyissa meg a **tanúsítványokat és a titkokat** egy új ügyfél-titkos kód létrehozásához, és rögzítse az **ügyfél titkos kulcsát**.
     - Lépjen vissza az **Áttekintés** elemre, és válassza az **alkalmazás kezelése a helyi címtárban** lehetőséget.
     - Az **objektumazonosító** rögzítéséhez lépjen a **Tulajdonságok menüpontba** .
 
 4. Nyissa meg a Datahub hencegő (https:// <yourdatahub> . azurewebsites.net/swagger/index.html), és tegye a következőket:
-    - Nyissa meg a **ROLEASSIGNMENT API** -t.
+    - Nyissa meg a **ROLEASSIGNMENT API**-t.
     - A POST művelettel hozzon létre egy **RoleAssignment** objektumot az imént létrehozott **objektumazonosító** számára.
  
 ```json
