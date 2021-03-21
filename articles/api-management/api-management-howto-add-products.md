@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
 ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100545156"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Oktatóanyag: termék létrehozása és közzététele  
@@ -45,8 +45,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Megjelenített név             | A név, ahogy szeretné, hogy megjelenjen a [fejlesztői portálon](api-management-howto-developer-portal.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | Leírás              | Adja meg a termékkel kapcsolatos információkat, például a célját, az API-kat, amelyek hozzáférést biztosítanak a szolgáltatáshoz és egyéb részletekhez.                                                                                                                                               |
-    | Állam                    | Válassza a **közzétett** elemet, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a  **rendszergazdák** csoport számára láthatók.                                                                                      |
+    | Description              | Adja meg a termékkel kapcsolatos információkat, például a célját, az API-kat, amelyek hozzáférést biztosítanak a szolgáltatáshoz és egyéb részletekhez.                                                                                                                                               |
+    | Állapot                    | Válassza a **közzétett** elemet, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a  **rendszergazdák** csoport számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Válassza ki, hogy a termék használatához szükség van-e a felhasználó előfizetésére.                                                                                                                                                                                                                                   |
     | Jóváhagyást igényel        | Jelölje be, ha azt szeretné, hogy a rendszergazda áttekintse és elfogadja vagy elutasítja az előfizetési kísérleteket a termékre. Ha nincs bejelölve, a rendszer automatikusan jóváhagyja az előfizetési kísérleteket.                                                                                                                         |
     | Előfizetések számának korlátozása | Opcionálisan korlátozhatja több egyidejű előfizetés számát.                                                                                                                                                                                                                                |

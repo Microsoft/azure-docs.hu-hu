@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/07/2021
 ms.custom: devx-track-js
 ms.openlocfilehash: 971fb2a3239614a708e14c109e567081f1ec9ff6
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102614904"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 A függvénynek átadott környezet egy tulajdonságot tesz elérhetővé `executionContext` , amely egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság neve  | Típus  | Leírás |
+| Tulajdonság neve  | Típus  | Description |
 |---------|---------|---------|
 | `invocationId` | Sztring | Egyedi azonosítót biztosít az adott függvény meghívásához. |
 | `functionName` | Sztring | A futó függvény nevét adja meg. |

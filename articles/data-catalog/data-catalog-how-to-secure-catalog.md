@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 537254d7fb153e182be8ece13675a357a9a3e24e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017304"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674818"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A adatforrásokhoz és adateszközökhöz való hozzáférés biztonságossá tétele
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 > [!IMPORTANT]
 > Ez a funkció csak a Azure Data Catalog standard kiadásában érhető el.
@@ -62,6 +64,6 @@ Az adatkatalógushoz való hozzáférés biztosítása egy felhasználónak vagy
 - A biztonsági csoportokhoz hozzárendelt engedélyek az adalékanyag. Tegyük fel, hogy a felhasználó két csoportban van. Az egyik csoport Megjegyzés-jogosultságokkal rendelkezik, és az egyéb csoportok nem rendelkeznek megjegyzési engedélyekkel. Ezután a felhasználó jegyzetekkel rendelkezik engedéllyel. 
 - A felhasználóhoz explicit módon hozzárendelt engedélyek felülbírálják a felhasználóhoz tartozó csoportokhoz rendelt engedélyeket. Az előző példában tegyük fel, hogy explicit módon felvette a felhasználót a katalógusba a felhasználók számára, és nem rendel hozzá feliratozási engedélyeket. A felhasználó nem láthatja az adategységeket, annak ellenére, hogy a felhasználó egy olyan csoport tagja, amelynek van jegyzetekkel kapcsolatos engedélye.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)

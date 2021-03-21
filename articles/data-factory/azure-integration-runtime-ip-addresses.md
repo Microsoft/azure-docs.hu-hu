@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
 ms.openlocfilehash: 7b663c8d6e5849d39bb8366c82f45e0fd66d77dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371396"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
@@ -27,7 +27,7 @@ A Azure Integration Runtime által használt IP-címek attól a régiótól füg
 
 ## <a name="azure-integration-runtime-ip-addresses-specific-regions"></a>Azure Integration Runtime IP-címek: adott régiók
 
-Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók. A szolgáltatási címkék IP-címtartományok listáját a [szolgáltatás címkék IP-címtartomány letöltési hivatkozásával](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)érheti el. Ha például az Azure-régió **AustraliaEast**, akkor a **DataFactory. AustraliaEast** IP-címtartomány listáját szerezheti be.
+Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom engedélyezése az adott Azure-régióban, ahol az erőforrások találhatók. A szolgáltatáscímkék IP-címtartományainak listáját a [szolgáltatáscímkék IP-tartományának letöltési hivatkozásán](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) keresztül kérheti le. Ha például az Azure-régió **AustraliaEast**, akkor a **DataFactory. AustraliaEast** IP-címtartomány listáját szerezheti be.
 
 
 ## <a name="known-issue-with-azure-storage"></a>Ismert probléma az Azure Storage-ban

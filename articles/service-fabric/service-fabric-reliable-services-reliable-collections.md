@@ -4,10 +4,10 @@ description: Service Fabric állapot-nyilvántartó szolgáltatások megbízhat�
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 7d705f81b4ad31559886e43226febcd4cf1d345d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784376"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban
@@ -44,7 +44,7 @@ Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjtemén
 * [Megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1): a replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue** hasonlóan az érték bármilyen típusú lehet.
 * [Megbízható párhuzamos üzenetsor](service-fabric-reliable-services-reliable-concurrent-queue.md): a nagy átviteli sebesség érdekében a rendszer replikált, tranzakciós és aszinkron módon kezeli a legjobb rendezési várakozási sort. A **ConcurrentQueue** hasonlóan az érték bármilyen típusú lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megbízható gyűjteményekre vonatkozó irányelvek & javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)

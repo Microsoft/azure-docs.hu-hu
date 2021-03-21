@@ -10,39 +10,39 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c5595dc64b46e1c30f3c36866e0efbbd8d3c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 27cc53c3eef1bb2a9962d2c21ae80db3c8b0383d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674127"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585434"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Táblázatok kialakítása a szinapszis SQL használatával az Azure szinapszis Analyticsben
 
 Ez a dokumentum a táblázatok dedikált SQL-készlettel és kiszolgáló nélküli SQL-készlettel való tervezésével kapcsolatos főbb fogalmakat tartalmazza.  
 
-A [kiszolgáló nélküli SQL-készlet](on-demand-workspace-overview.md) egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Nem rendelkezik helyi tárterülettel az adatfeldolgozáshoz. A [DEDIKÁLT SQL-készlet](best-practices-sql-pool.md) a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. A dedikált SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
+A [kiszolgáló nélküli SQL-készlet](on-demand-workspace-overview.md) egy lekérdezési szolgáltatás a adatközpontban található adaton keresztül. Nem rendelkezik helyi tárterülettel az adatfeldolgozáshoz. A [DEDIKÁLT SQL-készlet](best-practices-dedicated-sql-pool.md) a szinapszis SQL használatakor kiépített analitikus erőforrások gyűjteményét jelöli. A dedikált SQL-készlet méretét az adattárház-egységek (DWU-EK) határozzák meg.
 
 A következő táblázat felsorolja a dedikált SQL-készlethez és a kiszolgáló nélküli SQL-készlethez kapcsolódó témaköröket:
 
 | Témakör                                                        | dedikált SQL-készlet | kiszolgáló nélküli SQL-készlet |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Táblázat kategóriájának meghatározása](#determine-table-category)        | Igen                | Nem                      |
-| [Sémák nevei](#schema-names)                                | Igen                | Igen                     |
+| [Sémák nevei](#schema-names)                                | Igen                | Yes                     |
 | [Táblák nevei](#table-names)                                  | Igen                | Nem                      |
 | [Tábla megőrzése](#table-persistence)                      | Igen                | Nem                      |
 | [Normál tábla](#regular-table)                              | Igen                | Nem                      |
-| [Ideiglenes tábla](#temporary-table)                          | Igen                | Igen                     |
-| [Külső tábla](#external-table)                            | Igen                | Igen                     |
-| [Adattípusok](#data-types)                                    | Igen                | Igen                     |
+| [Ideiglenes tábla](#temporary-table)                          | Igen                | Yes                     |
+| [Külső tábla](#external-table)                            | Igen                | Yes                     |
+| [Adattípusok](#data-types)                                    | Igen                | Yes                     |
 | [Elosztott táblák](#distributed-tables)                    | Igen                | Nem                      |
 | [Kivonat alapján elosztott táblák](#hash-distributed-tables)          | Igen                | Nem                      |
 | [Replikált táblák](#replicated-tables)                      | Igen                | Nem                      |
 | [Ciklikus időszeletelésű táblák](#round-robin-tables)                    | Igen                | Nem                      |
 | [Gyakori terjesztési módszerek a táblákhoz](#common-distribution-methods-for-tables) | Igen                | Nem                      |
-| [Partíciók](#partitions)                                    | Igen                | Igen                     |
+| [Partíciók](#partitions)                                    | Igen                | Yes                     |
 | [Oszlopcentrikus indexek](#columnstore-indexes)                  | Igen                | Nem                      |
-| [Statisztika](#statistics)                                    | Igen                | Igen                     |
+| [Statisztika](#statistics)                                    | Igen                | Yes                     |
 | [Elsődleges kulcs és egyedi kulcs](#primary-key-and-unique-key)    | Igen                | Nem                      |
 | [Táblázatok létrehozásához szükséges parancsok](#commands-for-creating-tables) | Igen                | Nem                      |
 | [Forrásadatok igazítása az adatraktárhoz](#align-source-data-with-the-data-warehouse) | Igen                | Nem                      |
@@ -206,7 +206,7 @@ A dedikált SQL-készlet esetében az elsődleges kulcs csak akkor támogatott, 
 
 A dedikált SQL-készlet esetében új üres táblaként hozhat létre táblát. Létrehozhat és fel is tölthet egy táblát a SELECT utasítás eredményeivel. A következő a T-SQL-parancsok egy tábla létrehozásához.
 
-| T-SQL-utasítás | Leírás |
+| T-SQL-utasítás | Description |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true) | Egy üres táblát hoz létre a tábla összes oszlopának és beállításának definiálásával. |
 | [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&preserve-view=true) | Létrehoz egy külső táblát. A tábla definícióját a dedikált SQL-készlet tárolja. A tábla az Azure Blob Storage-ban vagy Azure Data Lake Storageban tárolódik. |

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 2ff07995cab2da6e53600be9bf60b30d1896cc9d
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 40fa1bc776c5cd457e57cf170f629b6cf92800fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102664503"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585995"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Mi az a Azure Stack Edge Pro R?
 
@@ -78,6 +78,8 @@ Azure Stack Edge Pro R fizikai eszköz, az Azure-erőforrás és a célként meg
 - **Eszköz rendelkezésre állása** – az összes olyan országban, ahol az Azure stack Edge Pro r-eszköz elérhető, lépjen a **rendelkezésre állás** szakaszra az **Azure Stack Edge Pro R** lapján [Azure stack Edge Pro r díjszabásához](https://azure.microsoft.com/pricing/details/azure-stack/edge/#azureStackEdgeProR).
 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro R-adatait el kell helyezni, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
+
+Azure Stack Edge szolgáltatás nem regionális szolgáltatás. További információ: [régiók és Availability Zones az Azure-ban](https://docs.microsoft.com/azure/availability-zones/az-overview). Az Azure Stack Edge szolgáltatás nem függ egy adott Azure-régiótól, így rugalmasan kihasználható a zónákra kiterjedő kimaradások és az egész régióra kiterjedő kimaradások terén.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,16 +10,16 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: 578f0d1ca742fe4445b8aeed6876d1a73fd3f79e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0c72eda59f375c70274b17796ca53614ef95505b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92376206"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669508"
 ---
 # <a name="upload-usage-data-to-azure-monitor"></a>Használati adatok feltöltése a Azure Monitorba
 
-Rendszeres időközönként exportálhatja a használati adatokat. Ezeknek az adatoknak az exportálásával és feltöltésével létrehozhatja és frissítheti az adatkezelőt, az SQL felügyelt példányát és a PostgreSQL nagy kapacitású Server Group-erőforrásait az Azure-ban.
+Rendszeres időközönként exportálhatja a használati adatokat. Az adatok exportálása és feltöltése létrehozza és frissíti az adatkezelőt, az SQL felügyelt példányát és a PostgreSQL nagy kapacitású Server Group erőforrásait az Azure-ban.
 
 > [!NOTE] 
 > Az előzetes verzió ideje alatt az Azure arc-kompatibilis adatszolgáltatások használata díjmentes.
@@ -64,7 +64,7 @@ A következő kétlépéses módon töltheti fel az Azure-ba a használati adato
 
 Ha a mérőszámokat és a naplókat ütemezett alapon szeretné feltölteni, létrehozhat egy parancsfájlt, és néhány percenként elvégezheti az időzítő futtatását. Az alábbi példa a feltöltések automatizálását mutatja be egy linuxos rendszerhéj-parancsfájl használatával.
 
-A kedvenc szöveg/kód szerkesztőjében adja hozzá a következő parancsfájlt a fájlhoz, és mentse parancsfájlként végrehajtható fájlként, például. sh (Linux/Mac) vagy. cmd,. bat,. ps1.
+A kedvenc szöveg/kód szerkesztőjében adja hozzá a következő parancsfájlt a fájlhoz, és mentse parancsfájlként végrehajtható fájlként, például `.sh` (Linux/Mac) vagy, `.cmd` `.bat` vagy `.ps1` .
 
 ```console
 azdata arc dc export --type metrics --path metrics.json --force

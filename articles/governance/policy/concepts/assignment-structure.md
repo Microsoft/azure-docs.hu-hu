@@ -1,14 +1,14 @@
 ---
 title: A szabályzat-hozzárendelési struktúra részletei
 description: Az Azure Policy által használt szabályzat-hozzárendelési definíciót ismerteti az erőforrásokhoz a kiértékeléshez.
-ms.date: 01/29/2021
+ms.date: 03/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 625314a8b83a4d0cc76eae51eae8d357e39d2a6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 909c1c361e092c512a73854a40e22a67efe5f2f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581957"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604865"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -89,6 +89,9 @@ Ebben a mezőben egy házirend-definíció vagy egy kezdeményezési definíció
 ## <a name="non-compliance-messages"></a>Nem megfelelőségi üzenetek
 
 Ha olyan egyéni üzenetet szeretne beállítani, amely leírja, hogy egy erőforrás miért nem felel meg a szabályzatnak vagy a kezdeményezési definíciónak, állítsa be `nonComplianceMessages` a hozzárendelés definíciójában. Ez a csomópont a bejegyzések tömbje `message` . Ez az egyéni üzenet a nem megfelelőségre vonatkozó alapértelmezett hibaüzeneten felül nem kötelező.
+
+> [!IMPORTANT]
+> A meg nem felelés esetén az egyéni üzenetek csak a [Resource Manager-módok](./definition-structure.md#resource-manager-modes) definícióit tartalmazó definíciók vagy kezdeményezések esetén támogatottak.
 
 ```json
 "nonComplianceMessages": [

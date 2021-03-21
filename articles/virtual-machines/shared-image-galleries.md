@@ -10,10 +10,10 @@ ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102609141"
 ---
 # <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
@@ -137,7 +137,7 @@ Kiválaszthatja az egyes célcsoportok fiókjának típusát is. Az alapértelme
 
 ![ZRS mutató ábra](./media/shared-image-galleries/zrs.png)
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 A megosztott képkatalógus lehetővé teszi a képek más Azure-régiókba történő automatikus replikálását is. Az egyes megosztott rendszerkép-verziók különböző régiókba replikálhatók, attól függően, hogy mi értelme van a szervezetnek. Az egyik példa az, hogy mindig replikálja a legújabb rendszerképet több régióban, míg az összes régebbi verzió csak 1 régióban érhető el. Ez a megosztott rendszerkép-verziók tárolási költségeinek megtakarítását is lehetővé teheti. 
 
 Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létrehozási idő után frissítheti. A különböző régiókba való replikáláshoz szükséges idő a másolt adatok mennyiségétől és a verzió által replikált régiók számától függ. Bizonyos esetekben ez néhány órát is igénybe vehet. A replikáció során régiónként is megtekintheti a replikálás állapotát. Ha a lemezkép replikálása egy régióban fejeződött be, akkor az adott lemezkép verziójának használatával üzembe helyezhet egy virtuális gépet vagy méretezési készletet a régióban.
@@ -170,12 +170,12 @@ Tegyük fel például, hogy rendelkezik egy 127 GB-OS operációsrendszer-lemezz
 A létrehozás után módosításokat végezhet a Képtár erőforrásaiban. Ezek a következőkre korlátozódnak:
  
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:

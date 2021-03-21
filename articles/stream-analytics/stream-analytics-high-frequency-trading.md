@@ -5,14 +5,14 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 03/16/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f8f7744e07abb56d825ce44d5bb30190e7e87c4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: f632c916c3de61b94532e96be23da511ad5863ea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020417"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593033"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Nagy gyakoriságú kereskedelmi szimuláció a Stream Analyticsszel
 Az Azure Stream Analyticsben az SQL-nyelv, illetve a felhasználó által definiált JavaScript-függvények (UDF-ek) és felhasználó által definiált összesítések (UDA-k) kombinációja lehetővé teszi, hogy a felhasználók fejlett elemzéseket végezzenek. A fejlett elemzések magukban foglalhatnak például online gépi tanulásra vonatkozó tanítási és pontozási, valamint állapotalapú folyamat-szimulációkat. Ez a cikk bemutatja, hogyan történik egy nagy gyakoriságú kereskedelmi forgatókönyvben a folyamatos tanítási és pontozási folyamatokat végrehajtó lineáris regressziós modell futtatása egy Azure Stream Analytics-feladatban.
@@ -349,7 +349,7 @@ A JavaScript UDA inicializálja az `init` függvény összes gyűjtőjét, kisz�
 - Akkor adunk el, amikor eladási jelet kapunk, és állománytartási rendelkezés van érvényben.
 - Akkor shortolunk, ha nincs érvényben állománytartási rendelkezés. 
 
-Shortolási helyzetben vagy ha vételi jelet kapunk, vásárolunk. Ebben a szimulációban sosem tartunk meg vagy shortolunk 10 részvényt egy készletből. A tranzakciós költség 8 dollár.
+Shortolási helyzetben vagy ha vételi jelet kapunk, vásárolunk. Ebben a szimulációban egy készletből vagy rövid 10 részvényből állunk. A tranzakciós költség 8 dollár.
 
 ```javascript
 function main() {
@@ -454,7 +454,7 @@ FROM simulation /* output trade simulation to PBI */
 ![PNL Power BI diagram vizualizáció](./media/stream-analytics-high-frequency-trading/pnl-power-bi-chart.png)
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az Azure Stream Analyticsben valósághű nagy gyakoriságú kereskedelmi modellt hozhatunk létre egy közepesen összetett lekérdezéssel. A beépített lineáris regressziós funkció hiánya miatt le kell egyszerűsítenünk a modellt úgy, hogy öt bemeneti változó helyett csak kettőt használjon. Az eltökélt felhasználók számára azonban a több dimenzióval rendelkező és kifinomultabb algoritmusok implementálhatóak JavaScript UDA-ként is. 
 
 Érdemes megjegyezni, hogy a legtöbb lekérdezés (a JavaScript UDA kivételével) tesztelése és hibakeresése elvégezhető a [Visual Studióhoz készült Azure Stream Analytics](stream-analytics-tools-for-visual-studio-install.md) eszközökkel a Visual Studióban. A kezdeti lekérdezés megírását követően a szerző kevesebb mint 30 percet töltött teszteléssel és hibakereséssel a Visual Studióban. 

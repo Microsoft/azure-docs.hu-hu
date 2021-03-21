@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614326"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589871"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 teljesítménybeli megfontolások az Azure Blob Storage-ban (előzetes verzió)
 
@@ -46,7 +46,7 @@ A következő diagram minden sávja a prémium és a standard teljesítményű S
 > [!div class="mx-imgBorder"]
 > ![Relatív teljesítmény](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>A gyakori felülírások elkerülésének dátuma
+## <a name="avoid-frequent-overwrites-on-data"></a>Az adatfeldolgozások gyakori felülírásának elkerülése
 
 Hosszabb időt vesz igénybe, mint egy új írási művelet végrehajtása. Ennek oka az, hogy egy NFS-felülírási művelet, különösen a részleges helyi fájl szerkesztése, több mögöttes blob-művelet kombinációja: olvasási, módosítási és írási művelet. Ezért az olyan alkalmazások esetében, amelyekben gyakoriak a helyben végzett módosítások, nem alkalmasak az NFS-kompatibilis blob Storage-fiókokhoz. 
 

@@ -7,10 +7,10 @@ ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784579"
 ---
 # <a name="reliable-services-notifications"></a>Értesítések Reliable Services
@@ -207,7 +207,7 @@ A következő szempontokat érdemes figyelembe venni:
 * A több műveletet tartalmazó tranzakciók esetében a rendszer az elsődleges replikán a felhasználótól kapott sorrendben alkalmazza a műveleteket.
 * A hamis folyamat feldolgozásának részeként előfordulhat, hogy egyes műveletek visszavonhatók. A rendszer értesítést küld az ilyen visszavonási műveletekről, és Visszagörgeti a replika állapotát egy stabil pontra. A visszavonási értesítések egyik fontos különbsége az, hogy az ismétlődő kulcsokkal rendelkező események összesítve lesznek. Ha például a T1 tranzakciót visszavonja, egyetlen értesítést fog látni a törléshez (X).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)

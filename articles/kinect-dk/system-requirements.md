@@ -1,22 +1,22 @@
 ---
 title: Az Azure Kinect Sensor SDK rendszerkövetelményei
 description: Ismerje meg az Azure Kinect Sensor SDK rendszerkövetelményeit Windows és Linux rendszeren.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: Azure, Kinect, rendszerkövetelmények, CPU, GPU, USB, beállítás, telepítés, minimum, követelmények
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277590"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656974"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Az Azure Kinect Sensor SDK rendszerkövetelményei
 
@@ -52,7 +52,7 @@ A Body Tracking PC-gazdagépre vonatkozó követelmény szigorúbb, mint az ált
 
 - Hetedik generációs Intel &reg; Core i5 processzor (Quad Core 2,4 GHz vagy gyorsabb)
 - 4 GB memória
-- NVIDIA GEFORCE GTX 1070 vagy jobb
+- NVIDIA GEFORCE GTX 1050 vagy azzal egyenértékű
 - Dedikált USB3-port
 
 Az ajánlott minimális konfiguráció az 5 személy 30fps követése K4A_DEPTH_MODE_NFOV_UNBINNED mélységi módot feltételezi. Az alacsonyabb vagy régebbi processzorok és az NVIDIA GPU-k is működhetnek a használati esettől függően.
@@ -61,7 +61,7 @@ Az ajánlott minimális konfiguráció az 5 személy 30fps követése K4A_DEPTH_
 
 Az USB-állomások ismert kompatibilitási problémákkal rendelkeznek. További információt a [hibaelhárítási oldalon](troubleshooting.md#usb3-host-controller-compatibility) talál
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Kinect DK áttekintése](about-azure-kinect-dk.md)
 

@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 47531da9c1e508281a57074df7aa10ffffe78810
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518738"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML futtatási naplók és metrikák figyelése és megtekintése
@@ -127,7 +127,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` mappa
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |20_image_build_log.txt     | Docker-rendszerkép-létrehozási napló a betanítási környezethez, nem kötelező, egy Futtatás. Csak a környezet frissítésekor alkalmazható. Máskülönben a pénzmosás felhasználja a gyorsítótárazott rendszerképet. Ha a művelet sikeres, a rendszerkép beállításjegyzékének részleteit tartalmazza a megfelelő rendszerképhez.         |
 |55_azureml-Execution-<node_id # C1.txt     | StdOut/stderr log of Host Tool, egy csomóponton. A rendszerkép lekérése a számítási célra. Megjegyzés: Ez a napló csak akkor jelenik meg, ha biztonságos számítási erőforrásokkal rendelkezik.         |
@@ -140,7 +140,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` mappa
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   rendszernapló a feladat-előkészítéshez        |
@@ -150,7 +150,7 @@ Az alábbi táblázat a naplófájlok tartalmát mutatja az ebben a szakaszban l
 
 Ha az oldalkocsi engedélyezve van, a feladatok előkészítési és a feladatok kiadására szolgáló szkriptek az oldalkocsis tárolón belül lesznek futtatva.  Mindegyik csomóponthoz egy mappa van. 
 
-|Fájl  |Leírás  |
+|Fájl  |Description  |
 |---------|---------|
 |start_cms.txt     |  Az oldalkocsi-tároló indításakor megjelenő folyamat naplózása       |
 |prep_cmd.txt      |   A futtatáskor megadott ContextManagers naplója `job_prep.py` (ennek egy része a következőre lesz továbbítva: `azureml-logs/65-job_prep` )       |

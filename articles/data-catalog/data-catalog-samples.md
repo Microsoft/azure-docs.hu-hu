@@ -6,14 +6,16 @@ author: JasonWHowell
 ms.author: jasonh
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 7d0e27802745dda62f87e412053650907e9b812c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15b48bc41e230ca5b9003675e2caab25741bcbfd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68950161"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674767"
 ---
 # <a name="azure-data-catalog-developer-samples"></a>Azure Data Catalog fejlesztői minták
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Ismerkedjen meg Azure Data Catalog alkalmazások fejlesztésével a Data Catalog REST API használatával. A Data Catalog REST API egy REST-alapú API, amely programozott hozzáférést biztosít Data Catalog erőforrásokhoz az adategységek programozott módon történő regisztrálásához, feliratozásához és kereséséhez.
 
@@ -47,5 +49,5 @@ Ismerkedjen meg Azure Data Catalog alkalmazások fejlesztésével a Data Catalog
 
    Ebből a példából megtudhatja, hogyan teheti közzé programozási módon a kapcsolati adatokat egy adatkatalógusban.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure Data Catalog REST API-hivatkozás](/rest/api/datacatalog/)
