@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023040"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klónozás a StorSimple virtuális tömb biztonsági másolatából
@@ -124,7 +124,7 @@ Minden megosztáshoz tartozik egy *. Backups* mappa, amely a legújabb biztonsá
    
    Az utolsó öt biztonsági mentés így jelenik meg, és az elemszintű helyreállítás végrehajtásához használható. Az öt legutóbbi biztonsági mentés tartalmazza az alapértelmezett ütemezett és a manuális biztonsági mentést is.
    
-   * **Scheduled backups** Az &lt; &gt; tulajdonsággal-ÉÉÉÉHHNN-HHMMSS-UTC néven nevű ütemezett biztonsági mentések.
+   *  Az &lt; &gt; tulajdonsággal-ÉÉÉÉHHNN-HHMMSS-UTC néven nevű ütemezett biztonsági mentések.
    * Az ad-hoc-ÉÉÉÉHHNN-HHMMSS-UTC nevű **manuális biztonsági másolatok** .
      
      ![A. Backups mappát megjelenítő fájlkezelő képernyőképe. A mappában a manuális biztonsági másolatok mappa van kiválasztva.](./media/storsimple-virtual-array-clone/image14.png)
@@ -135,7 +135,7 @@ Minden megosztáshoz tartozik egy *. Backups* mappa, amely a legújabb biztonsá
 
 4. Másolja a fájlt vagy a mappát a megfelelő megosztásba a StorSimple fájlkiszolgálón.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).
 

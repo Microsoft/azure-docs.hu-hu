@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: normesta
 ms.openlocfilehash: ac91ef5a56fe234cba47b430b78e74ce81c9d504
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96536992"
 ---
 Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Monitorban.
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
 | Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |

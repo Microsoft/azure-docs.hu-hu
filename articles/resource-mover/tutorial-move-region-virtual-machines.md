@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5712448c8c5248d3c84ce43f8a41c669355f1d43
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102565733"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Oktatóanyag: Azure-beli virtuális gépek áthelyezése régiók között
@@ -94,7 +94,7 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 > [!NOTE]
 > - A hozzáadott erőforrások *előkészítésre váró* állapotban vannak.
 > - A virtuális gépek erőforráscsoport hozzáadása automatikusan megtörténik.
-> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információk](remove-move-resources.md).
+> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információ](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.openlocfilehash: 2ac4b81a284ed8c38bc9cefccd08db5afa51d600
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575941"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terminológia áttekintése
@@ -173,7 +173,7 @@ A következő táblázat ismerteti a különböző alkalmazás-modelleket, valam
 | Service Fabric Mesh-alkalmazások | Erőforrás-modell (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott – csak Mesh környezet | Nem támogatott|
 |Natív alkalmazások Service Fabric | Natív alkalmazás modellje (XML) | VS 2017 és VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Service Fabricról:
 

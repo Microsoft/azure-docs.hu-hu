@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96187374"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid
@@ -44,7 +44,7 @@ Hozzon létre egy Automation-fiókot a [Azure Portalon](https://portal.azure.com
 
 1.  A keresősáv legördülő listájának **szolgáltatások** szakaszában válassza az **Automation-fiókok** elemet.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
     ![Automation-fiókok ablaktábla](../media/event-grid-tutorial-2.png)
 
@@ -141,7 +141,7 @@ Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com
 
 1.  Válassza a **kijelölés megerősítése** elemet a helyi ablaktáblán.
 
-1.  Kattintson a **Létrehozás** gombra.
+1.  Válassza a **Létrehozás** lehetőséget.
 
     ![Esemény-előfizetés létrehozása](../media/event-grid-tutorial-8.png)
 

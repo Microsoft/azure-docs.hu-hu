@@ -4,10 +4,10 @@ description: A szolgáltatások közötti kommunikáció egy Service Fabric alka
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575924"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric tesztelési forgatókönyvek: szolgáltatás-kommunikáció
@@ -79,7 +79,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 Ebben a példában azt szeretnénk jelezni, hogy az `QuorumLossMode` `QuorumReplicas` összes replika leállása nélkül szeretnénk kiváltani a kvórum elvesztését. Így az olvasási műveletek továbbra is lehetségesek. Egy olyan forgatókönyv teszteléséhez, amelyben a teljes partíció nem érhető el, ezt a kapcsolót állíthatja be `AllReplicas` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a tesztelési műveletekről](service-fabric-testability-actions.md)
 
 [További információ a tesztelési forgatókönyvekről](service-fabric-testability-scenarios.md)

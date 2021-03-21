@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5e27cfec0a3f0a58c1e94a822e0c831f4efa1b32
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94535537"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a MySQL Workbench használata az Azure Database for MySQL-beli adatlekérdezéshez
@@ -35,7 +35,7 @@ Kérje le a MySQL-hez készült Azure Database-hez való csatlakozáshoz szüks�
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
 
-2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver** ).
+2. Az Azure Portal bal oldali menüjében kattintson a **Minden erőforrás** lehetőségre, és keressen rá a létrehozott kiszolgálóra (például **mydemoserver**).
 
 3. Kattintson a kiszolgálónévre.
 
@@ -111,7 +111,7 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
 A MySQL Workbench használatával csatlakozott az Azure Database for MySQL kiszolgálóhoz, és az SQL nyelv használatával lekérdezte az adatokat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
 

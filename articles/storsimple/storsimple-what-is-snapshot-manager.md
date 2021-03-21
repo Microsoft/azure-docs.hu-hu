@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2214f085c30419cefb3f6f84139d5592873173f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017984"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Bevezetés a StorSimple Snapshot Manager
@@ -137,6 +137,6 @@ A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a közelg
 
 További információ a biztonsági mentési feladatok figyeléséről: a [StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez](storsimple-snapshot-manager-manage-backup-jobs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 * Töltse le a [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).

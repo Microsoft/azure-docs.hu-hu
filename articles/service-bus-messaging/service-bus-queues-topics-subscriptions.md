@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési e
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: b8fb68509ad920fc6911290377f49b89ec610b58
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101096334"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)

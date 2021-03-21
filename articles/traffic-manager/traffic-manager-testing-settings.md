@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
 ms.openlocfilehash: 4bb7458d4258dffb074d663e5cf712c7a0245cc7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022326"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager-beállítások ellenőrzése
@@ -68,7 +68,7 @@ A teljesítmény-forgalom útválasztási módszerének hatékony teszteléséhe
 
 Azt is megteheti, hogy elérhetővé vált a webes DNS-keresés és a kiásási szolgáltatás. Ezen eszközök némelyike lehetővé teszi a DNS-névfeloldás ellenőrzését a világ különböző helyeiről. Példák esetén keressen rá a "DNS-címkeresés" kifejezésre. A harmadik féltől származó szolgáltatások, például a Gomez vagy a Keynote használatával ellenőrizhetik, hogy a profilok a várt módon forgalmazzák-e a forgalmat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tudnivalók a Traffic Manager forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)
 * [A Traffic Manager teljesítményével kapcsolatos megfontolások](traffic-manager-performance-considerations.md)

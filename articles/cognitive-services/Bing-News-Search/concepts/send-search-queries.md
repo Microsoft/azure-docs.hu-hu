@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: ac214f158703fdfeaddfa4052a83481adebda060
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348228"
 ---
 # <a name="sending-queries-to-the-bing-news-search-api"></a>Lekérdezések küldése a Bing News Search API
@@ -287,7 +287,7 @@ BingAPIs-Market: en-US
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Bing News Search?](../search-the-web.md) 
 * [A mai legfontosabb hírek beszerzése](search-for-news.md#get-todays-top-news)

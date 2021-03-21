@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
 ms.openlocfilehash: 1babf1feb550109486089c45469ab4ce32f72cb3
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097414"
 ---
 # <a name="data-driven-style-expressions-android-sdk"></a>Adatvezérelt stílusú kifejezések (Android SDK)
@@ -24,7 +24,7 @@ Az adatvezérelt stílusok csökkentik az üzleti logika stíluson belüli megva
 
 A Azure Maps Android SDK szinte teljesen azonos stílusú kifejezéseket támogat, mint a Azure Maps web SDK, így az [adatvezérelt stílusú kifejezésekben (web SDK)](data-driven-style-expressions-web-sdk.md) megjelenő fogalmak az Android-alkalmazásokban is elvégezhetők. A Azure Maps Android SDK-ban található összes stílus kifejezés a névtér alatt érhető el `com.microsoft.azure.maps.mapcontrol.options.Expression` . Számos különböző típusú kifejezés létezik.
 
-| Kifejezések típusa | Leírás |
+| Kifejezések típusa | Description |
 |---------------------|-------------|
 | [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
 | [Színkifejezések](#color-expressions) | A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését. |
@@ -219,7 +219,7 @@ Ez a videó áttekintést nyújt a Azure Maps adatvezérelt stílusáról.
 
 Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `accumulated()` | szám | Lekérdezi a fürt eddig felhalmozott tulajdonságának értékét. |
 | `at(number | Expression, Expression)` | érték | Egy elem lekérése egy tömbből. |
@@ -380,7 +380,7 @@ has("fillColor", get("_style"))
 
 A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `abs(number | Expression)` | szám | Kiszámítja a megadott szám abszolút értékét. |
 | `acos(number | Expression)` | szám | Kiszámítja a megadott szám szám arkusz koszinuszát. |
@@ -415,7 +415,7 @@ A logikai kifejezések logikai operátorok egy készletét biztosítják a logik
 
 Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `all(Expression...)` | boolean | Visszaadja `true` , ha az összes bemenet `true` , `false` ellenkező esetben. |
 | `any(Expression...)` | boolean | Visszaadja `true` , ha a bemenetek bármelyike `true` , `false` ellenkező esetben. |
@@ -680,7 +680,7 @@ val layer = SymbolLayer(source,
 
 A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `array(Expression)` | Objektum [] | Azt állítja be, hogy a bemenet egy tömb. |
 | `bool(Expression)` | boolean | Azt állítja be, hogy a bemeneti érték logikai. |
@@ -699,7 +699,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 
 A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `color(int)` | szín | Egy szín egész értékének átalakítása színkifejezésre. |
 | `rgb(Expression red, Expression green, Expression blue)` \| `rgb(number red, number green, number blue)` | szín | Egy színértéket hoz létre a *vörös*, *zöld* és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
@@ -806,7 +806,7 @@ val layer = BubbleLayer(source,
 
 A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `concat(string...)` \| `concat(Expression...)` | sztring | Több karakterlánc összefűzése egymással. Minden értéknek sztringnek kell lennie. Ha szükséges, használja a `toString` Type kifejezést más típusú értékek karakterlánccá alakításához. |
 | `downcase(string)` \| `downcase(Expression)` | sztring | A megadott karakterláncot kisbetűsre alakítja. |
@@ -1286,7 +1286,7 @@ val layer = HeatMapLayer(source,
 
 Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
-| Expression | Visszatérési típus | Leírás |
+| Expression | Visszatérési típus | Description |
 |--------------|---------------|--------------|
 | `let(Expression... input)` | | Egy vagy több értéket tárol változóként az `var` eredményt visszaadó gyermek kifejezésben szereplő kifejezés használatával. |
 | `var(Expression expression)` \| `var(string variableName)` | Objektum | A kifejezés használatával létrehozott változóra hivatkozik `let` . |

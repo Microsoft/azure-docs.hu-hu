@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/10/2020
 ms.openlocfilehash: 1b5fd10b3e0bd84aa7d34a918f4f2376130d2e45
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052262"
 ---
 # <a name="vm-insights-guest-health-alerts-preview"></a>A virtuális gépekkel kapcsolatos vendég állapottal kapcsolatos riasztások (előzetes verzió)

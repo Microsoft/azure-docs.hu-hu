@@ -4,10 +4,10 @@ description: A következőképpen engedélyezheti a felügyelt identitások tám
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: ae4fec452a2342a68843d874ba955b594014c46d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574666"
 ---
 # <a name="configure-managed-identity-support-for-a-new-service-fabric-cluster"></a>Felügyelt identitás támogatásának konfigurálása új Service Fabric-fürthöz
@@ -53,7 +53,7 @@ Ha az üzembe helyezés ezzel az üzenettel meghiúsul, az azt jelenti, hogy a f
 
 * [Felügyelt identitás támogatásának engedélyezése meglévő Azure Service Fabric-fürtben](./configure-existing-cluster-enable-managed-identity-token-service.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)

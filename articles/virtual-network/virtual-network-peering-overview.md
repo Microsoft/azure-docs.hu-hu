@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98216750"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
@@ -39,7 +39,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 

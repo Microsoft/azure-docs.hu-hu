@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
 ms.openlocfilehash: 4773446ec0007ffbed99bc01939d1f92f5823d99
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95562506"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek kiosztása identitáshoz
@@ -122,7 +122,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 5. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a célként megadott felhasználónevet, amelynek engedélyt szeretne adni az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
 7.    Válassza az **OK** lehetőséget.
 8.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
-9.    Kattintson az **Alkalmaz** elemre.
+9.    Kattintson az **Alkalmaz** gombra.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS-engedélyek konfigurálása icacls-val
 

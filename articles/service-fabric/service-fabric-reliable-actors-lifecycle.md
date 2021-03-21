@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576043"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
@@ -106,7 +106,7 @@ Egy színész soha nem kerül begyűjtésre, amíg az egyik módszert futtatja, 
 ## <a name="manually-deleting-actors-and-their-state"></a>A szereplők és állapotuk manuális törlése
 A deaktivált szereplők szemét-gyűjteménye csak a Actor objektumot törli, de nem távolítja el a szereplő állapot-kezelőjében tárolt adatmennyiséget. Ha egy szereplő újra aktiválódik, a rendszer ismét elérhetővé teszi az adatforrást az állami kezelőn keresztül. Azokban az esetekben, amikor a szereplők az állapot-kezelőben tárolják az adattárolást, és inaktiválva vannak, de soha nem aktiválják őket, szükség lehet az Adattisztításra.  Példák a szereplők törlésére, a [szereplők törlésére és azok állapotára](service-fabric-reliable-actors-delete-actors.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Színészi időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)

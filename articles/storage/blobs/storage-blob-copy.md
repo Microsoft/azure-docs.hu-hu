@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 28b23555f97e58dde038c5e3e12a4b741b81776d
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059041"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>BLOB másolása az Azure Storage ügyféloldali kódtárakkal
@@ -188,7 +188,7 @@ További információ az Azure SDK-k használatáról:
  - [Azure SDK for Python](https://github.com/azure/azure-sdk-for-python)
  - [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő témakörök a Blobok másolásával és a folyamatban lévő másolási műveletek megszakításával kapcsolatos információkat tartalmazzák az Azure REST API-k használatával.
 

@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879258"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581303"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
-Ez a cikk ismerteti a szoftverek szolgáltatásként (SaaS) való közzétételének különböző lehetőségeit és követelményeit a Microsoft kereskedelmi piactéren. Az SaaS-ajánlatok lehetővé teszik, hogy az egyes számítógépeken a helyi telepítés helyett Online előfizetéssel biztosítson szoftveres megoldásokat ügyfeleinek. Ez a cikk segít felkészülni az ajánlat közzétételére a kereskedelmi piactéren a partner centerrel.
+Ez a cikk ismerteti a Microsoft kereskedelmi piactéren szolgáltatott szoftverként (SaaS) való közzététel különböző lehetőségeit és követelményeit. Az SaaS-ajánlatok lehetővé teszik a szoftveres megoldások online előfizetésekkel történő továbbítását és licencelését. SaaS-közzétevőként Ön kezeli és fizeti az Ön ajánlata ügyfelei általi használatát támogató infrastruktúrát. Ez a cikk segít felkészülni az ajánlat közzétételére a kereskedelmi piactéren a partner centerrel.
 
 ## <a name="listing-options"></a>Terméklistázási lehetőségek
 
@@ -114,7 +114,7 @@ Ha az SaaS-ajánlat *az IT* -megoldás (Azure Marketplace) és egy üzleti megol
 | Mért számlázás | Nyilvános csomag | Saját csomag | Elérhető itt: |
 |---|---|---|---|
 | Igen             | Igen         | Nem           | Azure Marketplace és Azure Portal |
-| Igen             | Igen         | Igen          | Azure Marketplace és Azure Portal * |
+| Igen             | Igen         | Yes          | Azure Marketplace és Azure Portal * |
 | Igen             | Nem          | Igen          | Csak Azure Portal |
 | Nem              | Nem          | Igen          | Csak Azure Portal |
 |||||
@@ -150,7 +150,7 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
 8. Összefoglalás
-9. Leírás
+9. Description
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -260,7 +260,7 @@ Dönthet úgy, hogy a Microsoft által támogatott marketing-és értékesítés
 
 - **Közös értékesítés a Microsofttal**: Ez a beállítás lehetővé teszi, hogy a Microsoft értékesítési csapatai az ügyfelek igényeinek kiértékelése során fontolják meg az Ön IP-címének közös értékesítését. A közös értékesítésre vonatkozó jogosultsággal kapcsolatos részletekért lásd: [a közös értékesítésre vonatkozó követelmények](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status). Az ajánlat értékelésre való előkészítésével kapcsolatos részletes információkért lásd: [közös értékesítés lehetőség a partner Centerben](commercial-marketplace-co-sell.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SaaS-ajánlat létrehozása a kereskedelmi piactéren](create-new-saas-offer.md)
 - [Ajánlatlistákra vonatkozó ajánlott eljárások](gtm-offer-listing-best-practices.md)

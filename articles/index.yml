@@ -13,12 +13,12 @@ metadata:
   ms.date: 03/03/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 323172092a6530e97de36c1cf50fea855f38da28
-  ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+  ms.openlocfilehash: b7dceb243f0a85166cd1d7180198c6aac95fab7d
+  ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/11/2021
-  ms.locfileid: "103011170"
+  ms.lasthandoff: 03/19/2021
+  ms.locfileid: "104601057"
 highlightedContent:
   items:
   - title: Azure fejlesztői útmutató az első lépésekhez
@@ -1384,3 +1384,11 @@ additionalContent:
     - title: Azure China 21Vianet
       summary: Kínában található, a 21Vianet által működtetett dedikált felhő.
       url: /azure/china/
+  - title: Partneri megoldások
+    items:
+    - title: Azure partneri megoldások
+      summary: Integrált partneri megoldások, amelyeket az Azure-ban használhat a felhőalapú infrastruktúra fejlesztéséhez.
+      url: ./partner-solutions/overview.md
+    - title: Kereskedelmi piactér
+      summary: Független szoftvergyártói partnereinktől származó alkalmazások és szolgáltatások online piactére.
+      url: ./marketplace/index.yml

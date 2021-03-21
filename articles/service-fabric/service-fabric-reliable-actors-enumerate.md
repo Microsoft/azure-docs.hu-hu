@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11742d1a1c0837588e7122ee615f3f7929aae363
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571350"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric enumerálása Reliable Actors
@@ -57,7 +57,7 @@ while (continuationToken != null);
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
 * [A Actors API-dokumentációja](/previous-versions/azure/dn971626(v=azure.100))

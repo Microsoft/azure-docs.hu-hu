@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
 ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96339745"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Kapcsolódási problémák elhárítása – Azure Event Grid
@@ -118,6 +118,6 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 
 Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

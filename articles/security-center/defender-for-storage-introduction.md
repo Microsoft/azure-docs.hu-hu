@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 42aa07ccf8d886dc7eb7109bc405c730331b2c3b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095629"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Az Azure Defender tároláshoz bemutatása
@@ -27,7 +27,7 @@ A biztonsági riasztások akkor aktiválódnak, ha a tevékenységben rendellene
 |Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|A Storage-hoz készült **Azure Defender** számlázása [Security Center díjszabás](https://azure.microsoft.com/pricing/details/security-center/) szerint történik|
 |Védett tárolási típusok:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Files](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov|
 |||
 
 

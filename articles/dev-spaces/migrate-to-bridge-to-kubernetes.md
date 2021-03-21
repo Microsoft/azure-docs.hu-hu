@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Az Azure dev Spaces és a Kubernetes közötti áttelepítési folyamat ismertetése
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, híd a Kubernetes-hoz
 ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888521"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrálás a Bridge to Kubernetesre
@@ -51,21 +51,21 @@ Az Azure dev Spaces és a Bridge to Kubernetes hasonló funkciókkal rendelkezik
 | Független a Kubernetes és a Docker-összetevőktől  | Nem  | Igen   |
 | Módosítások automatikus visszaállítása, hibakeresés utáni  | Nem  | Igen   |
 | **Támogatott ügyfél-eszközök** |
-| Együttműködik a Visual Studio 2019-mel  | Igen  | Igen   |
-| Működik a Visual Studio Code-ban  | Igen  | Igen   |
+| Együttműködik a Visual Studio 2019-mel  | Igen  | Yes   |
+| Működik a Visual Studio Code-ban  | Igen  | Yes   |
 | A parancssori felülettel működik  | Igen  | Nem   |
 | **Operációs rendszer kompatibilitása** |
-| Windows 10 rendszeren működik  | Igen  | Igen  |
-| Linux rendszeren működik  | Igen  | Igen  |
-| MacOS rendszeren működik  | Igen  | Igen  |
+| Windows 10 rendszeren működik  | Igen  | Yes  |
+| Linux rendszeren működik  | Igen  | Yes  |
+| MacOS rendszeren működik  | Igen  | Yes  |
 | **Képességek** |
-| Fejlesztői elkülönítés vagy csoportmunka  | Igen  | Igen  |
+| Fejlesztői elkülönítés vagy csoportmunka  | Igen  | Yes  |
 | Környezeti változók szelektív felülírása  | Nem  | Igen  |
 | Docker és Helm diagram létrehozása  | Igen  | Nem  |
 | Kód állandó üzembe helyezése a Kubernetes-ben  | Igen  | Nem  |
 | Távoli hibakeresés a Kubernetes Pod-ban  | Igen  | Nem  |
 | Helyi hibakeresés, csatlakozás a Kubernetes-hez  | Nem  | Igen  |
-| Egyszerre több szolgáltatás hibakeresése ugyanazon a munkaállomáson  | Igen  | Igen  |
+| Egyszerre több szolgáltatás hibakeresése ugyanazon a munkaállomáson  | Igen  | Yes  |
 
 ## <a name="kubernetes-inner-loop-development"></a>Kubernetes belső hurok fejlesztése
 

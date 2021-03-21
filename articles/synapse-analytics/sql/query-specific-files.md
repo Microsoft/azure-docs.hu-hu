@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96299615"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Fájl metaadatainak használata kiszolgáló nélküli SQL Pool-lekérdezésekben
@@ -28,7 +28,7 @@ Használhatja a függvényt, és visszaállíthatja a `filepath` `filename` fáj
 
 Első lépésként létre kell **hoznia egy adatbázist** egy olyan adatforrással, amely a Storage-fiókra hivatkozik. Ezután inicializálja az objektumokat a [telepítési parancsfájl](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) végrehajtásával az adatbázison. Ez a telepítési parancsfájl létrehozza az adatforrásokat, az adatbázis-hatókörrel rendelkező hitelesítő adatokat, valamint az ezekben a mintákban használt külső fájlformátumokat.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 ### <a name="filename"></a>Filename
 

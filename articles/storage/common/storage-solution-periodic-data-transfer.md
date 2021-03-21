@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96573918"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Időszakos adatátviteli megoldások
@@ -52,18 +52,18 @@ Az alábbi táblázat a fő képességek közötti különbségeket összegzi.
 
 ### <a name="continuous-data-ingestion-over-network"></a>Folyamatos adatfeldolgozás hálózaton keresztül
 
-| Funkció                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
+| Szolgáltatás                                       | Data Box Gateway | Data Box Edge   | Azure Data Factory        |
 |----------------------------------|-----------------------------------------|--------------------------|---------------------------|
 | Űrlap tényező                                   | Virtuális eszköz             | Fizikai eszköz          | Szolgáltatás Azure Portalban, helyszíni ügynök                                                            |
 | Hardver                                      | A hypervisor            | Microsoft által biztosított    | NA                                                            |
 | Kezdeti beállítási erőfeszítés                          | Alacsony (<30 perc.)            | Mérsékelt (~ pár óra) | Nagyméretű (~ nap)                                                 |
 | Adatformátum                                   | Azure-Blobok, Azure Files   | Azure-Blobok, Azure Files | [70 + adatösszekötőt támogat az adattárakhoz és a formátumokhoz](../../data-factory/copy-activity-overview.md#supported-data-stores-and-formats)|
-| Adatfeldolgozás előtti                           | Nem                         | Igen, Edge-számításon keresztül    | Igen                                                           |
+| Adatfeldolgozás előtti                           | No                         | Igen, Edge-számításon keresztül    | Yes                                                           |
 | Helyi gyorsítótár<br>(a helyszíni adattároláshoz)    | Igen                        | Igen                      | Nem                                                            |
 | Átvitel más felhőkből                    | Nem                         | Nem                       | Igen                                                           |
 | Díjszabás                                       | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Adatok átvitele a AzCopy](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 - [További információ a Storage REST API-kkal való adatátvitelről](/dotnet/api/overview/azure/storage).

@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836835"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Általános üzemeltetési útmutató Azure Active Directory
@@ -172,7 +172,7 @@ A [réteg modell](/windows-server/identity/securing-privileged-access/securing-p
 
 A tartományvezérlők esetében ugyanúgy zárja be a helyszíni identitás-összetevők, például a Azure AD Connect, a AD FS és az SQL-szolgáltatások elérését.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának hét aspektusa van. Ez a lista segít megtalálni azokat a műveleteket, amelyeket el kell végeznie a Azure Active Directory (Azure AD) műveleteinek optimalizálása érdekében.
 

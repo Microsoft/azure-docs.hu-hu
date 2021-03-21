@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 04/16/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: e6caf3fed708e89b55a88719ca5358f6174c2ac8
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98896528"
 ---
 # <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Az állapot-konfigurációval kapcsolatos problémák elhárítása Azure Automation
@@ -107,7 +107,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Ezt a problémát rossz vagy lejárt tanúsítvány okozza. Lásd: [csomópont ismételt regisztrálása](../automation-dsc-onboarding.md#re-register-a-node).
 
-Ezt a problémát az is okozhatja, hogy a proxy konfigurációja nem engedélyezi a **_. Azure-Automation.net_* elérését. További információ: [magánhálózatok konfigurálása](../automation-dsc-overview.md#network-planning). 
+Ezt a problémát az is okozhatja, hogy a proxy konfigurációja nem engedélyezi a ***. Azure-Automation.net** elérését. További információ: [magánhálózatok konfigurálása](../automation-dsc-overview.md#network-planning). 
 
 ### <a name="resolution"></a>Feloldás
 
@@ -149,7 +149,7 @@ If (($certs.Count) -gt 0)
 
 1. A Azure Portal lépjen a **Home**  >  **Automation-fiókok** > (az Automation-fiók) > **állapot-konfiguráció (DSC)** elemre.
 1. Válassza ki a **csomópontokat**.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. Válassza a hibás csomópontot.
 1. Válassza a **kapcsolat** lehetőséget, és válassza ki a kívánt beállításokat.
 

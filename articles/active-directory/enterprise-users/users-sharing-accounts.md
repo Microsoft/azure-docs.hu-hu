@@ -16,10 +16,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb088d56879ebdf5d439c913ac47a701db5c4a60
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576247"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
@@ -74,7 +74,7 @@ Ha az Azure AD-t egy fiók megosztására szeretné használni, a következőket
 
 A megosztott fiókot Multi-Factor Authentication (MFA) biztonságosabbá teheti (További információ az [alkalmazások az Azure ad-vel való biztonságossá](../authentication/concept-mfa-howitworks.md)tételéről), és delegálhatja azt a képességet, hogy az [Azure ad](groups-self-service-management.md) önkiszolgáló csoport kezelésével Hogyan férhet hozzá az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
 * [Alkalmazások védelme feltételes hozzáféréssel](../../active-directory-b2c/overview.md)

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 032db324f9dd2f0d6a5dce5c4fd5c64342fed59f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540484"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával
@@ -50,7 +50,7 @@ Ha engedélyezni szeretné, hogy az Azure-alkalmazások csatlakozni tudjanak a A
 ## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>A meglévő kiszolgálói szintű tűzfalszabályok kezelése a Azure Portal használatával
 Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Az aktuális számítógép hozzáadásához kattintson a **+ saját IP-cím hozzáadása** lehetőségre. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* További IP-címek hozzáadásához írja be a **szabály nevét** , az **IP-** cím és a **záró IP** -címet. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* További IP-címek hozzáadásához írja be a **szabály nevét**, az **IP-** cím és a **záró IP**-címet. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály módosításához kattintson a szabály bármelyik mezőjére, majd módosítsa a következőt:. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pontra [...], majd a **Törlés** gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 

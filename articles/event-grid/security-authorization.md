@@ -3,12 +3,12 @@ title: Biztonság és hitelesítés Azure Event Grid
 description: Az Azure Event Gridet és a vele kapcsolatos fogalmakat ismerteti.
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371720"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601040"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
 Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző **felügyeleti műveletek** , például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ.
@@ -31,80 +31,23 @@ A következő műveletek egy potenciálisan titkos információt adnak vissza, a
 
 
 ## <a name="built-in-roles"></a>Beépített szerepkörök
+Event Grid a következő három beépített szerepkört biztosítja. 
 
-A Event Grid két beépített szerepkört biztosít az esemény-előfizetések kezeléséhez. Fontosak az esemény- [tartományok](event-domains.md) megvalósításakor, mert a felhasználóknak az adott esemény tartományában lévő témakörökre való előfizetéshez szükséges engedélyeket adják meg. Ezek a szerepkörök az esemény-előfizetésekre összpontosítanak, és nem biztosítanak hozzáférést olyan műveletekhez, mint például a témakörök létrehozása.
+A Event Grid előfizetés-olvasó és Event Grid előfizetés közreműködői szerepkörei az esemény-előfizetések kezeléséhez szükségesek. Fontosak az esemény- [tartományok](event-domains.md) megvalósításakor, mert a felhasználóknak az adott esemény tartományában lévő témakörökre való előfizetéshez szükséges engedélyeket adják meg. Ezek a szerepkörök az esemény-előfizetésekre összpontosítanak, és nem biztosítanak hozzáférést olyan műveletekhez, mint például a témakörök létrehozása.
 
-[Ezeket a szerepköröket hozzárendelheti egy felhasználóhoz vagy csoportjához](../role-based-access-control/quickstart-assign-role-user-portal.md).
+A Event Grid közreműködő szerepkör lehetővé teszi Event Grid-erőforrások létrehozását és kezelését. 
 
-**EventGrid EventSubscription közreműködő**: Event Grid-előfizetési műveletek kezelése
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| Szerepkör | Leírás |
+| ---- | ----------- | 
+| [Event Grid előfizetés-olvasó](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Lehetővé teszi Event Grid esemény-előfizetési műveletek kezelését. |
+| [Event Grid előfizetés közreműködői](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Lehetővé teszi Event Grid esemény-előfizetések olvasását. |
+| [Event Grid közreműködő](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Event Grid erőforrások létrehozását és kezelését teszi lehetővé. |
 
-**EventGrid EventSubscription-olvasó**: olvasás Event Grid előfizetések
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> Válassza az első oszlopban található hivatkozások elemet egy olyan cikkhez, amely további részleteket tartalmaz a szerepkörről. A felhasználók vagy csoportok RBAC-szerepkörökhöz való hozzárendelésével kapcsolatos utasításokért tekintse meg [ezt a cikket](../role-based-access-control/quickstart-assign-role-user-portal.md).
+
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 08cee87d94b20e99bcc46d42cbac7eb4272561bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Azure Active Directory integráció a végtelen Kampusztal
@@ -62,13 +62,13 @@ A végtelen kampusz Azure AD-be való integrálásának konfigurálásához hozz
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **végtelen Campus**kifejezést, válassza ki a **végtelen Campus** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **végtelen Campus** kifejezést, válassza ki a **végtelen Campus** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Végtelen campus az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a végtelen campuson konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a végtelen campuson konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a végtelen campuson.
 
 Az Azure AD egyszeri bejelentkezés a végtelen Campus használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a végtelen kampusz használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **végtelen kampusz** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **végtelen kampusz** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés a végtelen kampusz használatával történ
 
 1. Egy másik böngészőablakban jelentkezzen be a végtelen Kampuszra biztonsági rendszergazdaként.
 
-2. A menü bal oldalán kattintson a **rendszerfelügyelet**elemre.
+2. A menü bal oldalán kattintson a **rendszerfelügyelet** elemre.
 
     ![A rendszergazda](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
@@ -128,11 +128,11 @@ Az Azure AD egyszeri bejelentkezés a végtelen kampusz használatával történ
 
     ![Az egyszeri bejelentkezés](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
-    a. Válassza **az SAML egyszeri bejelentkezés engedélyezése**lehetőséget.
+    a. Válassza **az SAML egyszeri bejelentkezés engedélyezése** lehetőséget.
 
     b. Az **opcionális attribútum nevének** szerkesztése a **név** tárolására
 
-    c. Az **identitásszolgáltató-kiszolgáló adatainak beolvasására szolgáló lehetőség kiválasztása** szakaszban válassza ki a **metaadatok URL-címét**, illessze be az alkalmazás- **összevonási metaadatok URL-címét** , amelyet a mezőben a Azure Portal másolt, majd kattintson a **szinkronizálás**elemre.
+    c. Az **identitásszolgáltató-kiszolgáló adatainak beolvasására szolgáló lehetőség kiválasztása** szakaszban válassza ki a **metaadatok URL-címét**, illessze be az alkalmazás- **összevonási metaadatok URL-címét** , amelyet a mezőben a Azure Portal másolt, majd kattintson a **szinkronizálás** elemre.
 
     d. A **szinkronizálás** gombra kattintás után automatikusan kitölti az **egyszeri bejelentkezés szolgáltatás szolgáltatójának konfigurációs** lapját. Ezek az értékek a fenti 4. lépésben látható értékeknek megfelelően ellenőrizhetők.
 
@@ -142,7 +142,7 @@ Az Azure AD egyszeri bejelentkezés a végtelen kampusz használatával történ
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -169,15 +169,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a végtelen kampuszhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **végtelen Campus**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **végtelen Campus** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **végtelen Campus**elemet.
+2. Az alkalmazások listában válassza a **végtelen Campus** elemet.
 
     ![A végtelen Campus hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

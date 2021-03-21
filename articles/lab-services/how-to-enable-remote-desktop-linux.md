@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan engedélyezheti a Távoli asztalt a Linux rends
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 34c940fec388bb0e79ab5e1db9be6d52fb223873
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647953"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>A grafikus távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Servicesban
@@ -106,5 +106,5 @@ A X2Go-ügyfél a X2Go konfigurált virtuálisgép-virtuális gépekhez való ka
 ## <a name="next-steps"></a>Következő lépések
 Miután az oktató létrehozta a sablon virtuális gépén az RDP-t vagy a X2Go-t, és közzéteszi, a tanulók a grafikus felhasználói felület távoli asztalán vagy SSH-n keresztül kapcsolódhatnak a virtuális gépekhez.
 
-További információ:
+További információkért lásd:
  - [Csatlakozás Linux rendszerű virtuális géphez](how-to-use-remote-desktop-linux-student.md)

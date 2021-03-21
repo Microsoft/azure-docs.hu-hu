@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótor
 ms.date: 02/16/2021
 ms.topic: how-to
 ms.openlocfilehash: 4487dd82b30e14f9db2001dc10f7437a53e745f3
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100556103"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
@@ -117,7 +117,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager sablon létrehozása
 
-Az ügyfél beléptetéséhez létre kell hoznia egy [Azure Resource Manager](../../azure-resource-manager/index.yml) sablont az ajánlatához a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) .
+Az ügyfél beléptetéséhez létre kell hoznia az ajánlatához egy [Azure Resource Manager](../../azure-resource-manager/index.yml)-sablont a következő információkkal. A **mspOfferName** és a **mspOfferDescription** értékek láthatók lesznek az ügyfél számára a Azure Portal [szolgáltató lapján](view-manage-service-providers.md) .
 
 |Mező  |Meghatározás  |
 |---------|---------|

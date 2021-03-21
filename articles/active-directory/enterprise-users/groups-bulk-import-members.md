@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22d39a2ee66f2c63612ad2cb3cf9ae61f1660de3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96547746"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Csoporttagok tömeges hozzáadása Azure Active Directory
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, hogy az Azu
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt;  &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás

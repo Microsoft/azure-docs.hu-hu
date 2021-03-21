@@ -9,10 +9,10 @@ ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
 ms.openlocfilehash: 2bc56d39de392c9e4c20c25b554e3bdeea048bfb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100361876"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban

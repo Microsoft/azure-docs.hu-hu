@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
 ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575720"
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modelljének áttekintése
@@ -21,7 +21,7 @@ A [vendég végrehajtható fájl](service-fabric-guest-executables-introduction.
 
 Ismerkedés a vendég-végrehajtható fájlokkal az első [vendég végrehajtható alkalmazás](service-fabric-deploy-existing-app.md)üzembe helyezésével.
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Tárolók
 
 Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja a szolgáltatásokat. A Service Fabric [tárolókban](service-fabric-containers-overview.md)is telepíthetnek szolgáltatásokat. Service Fabric támogatja a Linux-tárolók és Windows-tárolók telepítését a Windows Server 2016-es és újabb verzióiban. A tároló lemezképeit bármely tároló adattárból lehívhatja, és üzembe helyezheti a gépre. A meglévő alkalmazásokat vendégként is üzembe helyezheti, Service Fabric állapot nélküli vagy állapot-nyilvántartó megbízható szolgáltatásokat vagy Reliable Actors tárolókban, és az ugyanazon alkalmazásban lévő tárolókban található folyamatokban és szolgáltatásokban is összekeverheti a szolgáltatásokat.
 
@@ -37,7 +37,7 @@ A Service Fabric kizárólagos értéke Reliable Services is lehet, hogy az áll
 
 [Az első megbízható szolgáltatás megírásával többet is](service-fabric-reliable-services-quick-start.md) [megtudhat a Reliable Servicesról](service-fabric-reliable-services-introduction.md) vagy az első lépésekről.
 
-## <a name="aspnet-core"></a>ASP.NET-mag
+## <a name="aspnet-core"></a>ASP.NET Core
 
 A ASP.NET Core egy nyílt forráskódú, többplatformos keretrendszer a modern, felhőalapú internetkapcsolattal rendelkező alkalmazások, például a Web Apps, a IoT-alkalmazások és a mobil háttérrendszer létrehozásához. A Service Fabric integrálható ASP.NET Coreekkel, így olyan állapot nélküli és állapot-nyilvántartó ASP.NET Core is írhat, amely kihasználja a megbízható gyűjtemények előnyeit és Service Fabric speciális előkészítési képességeit.
 
@@ -53,7 +53,7 @@ Mivel a Reliable Actors Reliable Servicesre épülő alkalmazás-keretrendszer, 
 
 [Előtér-szolgáltatás létrehozása ASP.NET Core használatával](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Service Fabric és a tárolók áttekintése](service-fabric-containers-overview.md)
 

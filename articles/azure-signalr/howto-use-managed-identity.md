@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
 ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98731584"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
@@ -44,7 +44,7 @@ A felhasználó által hozzárendelt identitással rendelkező Azure Signaler sz
 
 4. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás** lehetőséget.
 
-5. Keresse meg a korábban létrehozott identitást, és válassza ki azt. Válassza a **Hozzáadás** elemet.
+5. Keresse meg a korábban létrehozott identitást, és válassza ki azt. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Felhasználó által hozzárendelt identitás hozzáadása a portálon":::
 
@@ -111,6 +111,6 @@ Ez a funkció jelenleg a következő helyzetekben használható:
 - [Hivatkozási titok a felsőbb rétegbeli URL-mintában](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](signalr-concept-serverless-development-config.md)

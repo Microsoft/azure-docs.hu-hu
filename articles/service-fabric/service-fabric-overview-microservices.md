@@ -4,10 +4,10 @@ description: Annak áttekintése, hogy miért fontos a Felhőbeli alkalmazások 
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575652"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes alkalmazások létrehozására használni a Service-t
@@ -42,7 +42,7 @@ A szolgáltatások hátránya, hogy több különálló entitást kell kezelnie,
 
 A szabványok a szolgáltatások megközelítését teszik elérhetővé azáltal, hogy a merev szerződések helyett csak azokat a dolgokat kell megadnia, amelyekre szüksége van a szolgáltatástól. Fontos, hogy ezeket a szerződéseket a kialakítás előtt adja meg, mivel a szolgáltatások egymástól függetlenül frissülnek. Egy másik, a Service-szolgáltatásokkal való tervezéshez megalkotott Leírás a "részletes szolgáltatásorientált architektúra (SOA)".
 
-***Legegyszerűbben a szolgáltatásokra vonatkozó tervezési módszer a szolgáltatások leválasztott összevonására vonatkozik, amely az egyes és a kommunikációra vonatkozó elfogadott szabványok egymástól független módosításait tartalmazza.** _
+***Legegyszerűbben a szolgáltatásokra vonatkozó tervezési módszer a szolgáltatások leválasztott összevonására vonatkozik, amely az egyes és a kommunikációra vonatkozó elfogadott szabványok egymástól független módosításait tartalmazza.***
 
 Ahogy egyre több felhőalapú alkalmazás jön létre, az emberek felfedezték, hogy a teljes alkalmazás független, forgatókönyvekre összpontosító szolgáltatásokra való kibontása jobb hosszú távú megközelítés.
 
@@ -66,7 +66,7 @@ Ha a szolgáltatással kapcsolatos módszert használ, számos kis szolgáltatá
 
 A szolgáltatások különböző definíciói vannak. A legtöbb ilyen jellemzőt azonban széles körben elfogadják:
 
-_ Egy ügyfél vagy üzleti forgatókönyv beágyazása. Milyen problémák megoldására?
+* Egy ügyfél vagy üzleti forgatókönyv beágyazása. Milyen problémák megoldására?
 * Egy kisméretű mérnöki csapat fejlesztette ki.
 * Bármilyen programozási nyelven írt, bármilyen keretrendszer használatával.
 * Kód és opcionális állapot, mindkettő egymástól függetlenül, külön verziója, üzembe helyezése és méretezése.
@@ -76,7 +76,7 @@ _ Egy ügyfél vagy üzleti forgatókönyv beágyazása. Milyen problémák mego
 
 Összegzés:
 
-*A **Service-alkalmazások kis, egymástól független verzióval és skálázható, ügyfél-központú szolgáltatásokból állnak, amelyek egymással kommunikálnak a szabványos protokollokkal, jól definiált felületekkel.** _
+***A Service-alkalmazások kis, egymástól független verzióval és skálázható, ügyfél-központú szolgáltatásokból állnak, amelyek egymással kommunikálnak a szabványos protokollokkal, jól definiált felületekkel.***
 
 ### <a name="written-in-any-programming-language-using-any-framework"></a>Bármilyen programozási nyelven írt, bármilyen keretrendszer használatával
 
@@ -94,9 +94,9 @@ Térjen vissza a monolitikus és a Services-szolgáltatások összehasonlítás�
 
 ![Service Fabric platform állapotának tárolása][Image2]
 
-_*_A bal oldalon a monolitikus megközelítés egyetlen adatbázissal és meghatározott technológiákkal rendelkezik._*_
+***A bal oldalon a monolitikus megközelítés egyetlen adatbázissal és meghatározott technológiákkal rendelkezik.***
 
-_*_A jobb oldalon a szolgáltatásokhoz kapcsolódó szolgáltatásokra vonatkozó grafikon látható, ahol az állapot jellemzően a szolgáltatásra terjed ki, és a különböző technológiákat használják._*_
+***A jobb oldalon a szolgáltatásokhoz kapcsolódó szolgáltatásokra vonatkozó grafikon látható, ahol az állapot jellemzően a szolgáltatásra terjed ki, és a különböző technológiákat használják.***
 
 A monolitikus megközelítésben az alkalmazás általában egyetlen adatbázist használ. Az egyetlen adatbázis használatának előnye, hogy egyetlen helyen van, így könnyen üzembe helyezhető. Minden összetevő rendelkezhet egyetlen táblával az állapotának tárolásához. A csapatoknak szigorúan külön kell elkülöníteniük az állapotot, ami kihívást jelent. Elkerülhetetlen, hogy valaki felvesz egy oszlopot egy meglévő ügyfél-táblába, csatlakozhat a táblák között, és függőségeket hoz létre a tárolási rétegben. Ezt követően nem méretezheti az egyes összetevőket.
 
@@ -136,18 +136,18 @@ Tekintse meg az Azure Architecture centert, amely útmutatást nyújt az [Azure-
 
 Az Azure Service Fabric akkor alakult ki, amikor a Microsoft áttért a bekeretezett termékek, amelyek jellemzően monolitikus voltak a szolgáltatások nyújtására. Nagy méretű szolgáltatások (például Azure SQL Database és Azure Cosmos DB, formázott Service Fabric kialakításának és üzemeltetésének élménye. A platform az idő múlásával fejlődött, ahogy egyre több szolgáltatás fogadta el. Service Fabric nem csak az Azure-ban, hanem az önálló Windows Server-példányokban is futtatni kellett.
 
-_*_A Service Fabric célja, hogy megoldja a szolgáltatások kiépítésével és futtatásával, valamint az infrastruktúra-erőforrások hatékony kihasználásával kapcsolatos problémákat, így a csapatok a szolgáltatásokkal kapcsolatos üzleti problémák megoldására használhatók._*_
+***A Service Fabric célja, hogy megoldja a szolgáltatások kiépítésével és futtatásával, valamint az infrastruktúra-erőforrások hatékony kihasználásával kapcsolatos problémákat, így a csapatok a szolgáltatásokkal kapcsolatos üzleti problémák megoldására használhatók.***
 
 Ez a rövid videó bemutatja a Service Fabric platformot és a mikroszolgáltatásokat: 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 A Service Fabric segítségével a következőkkel hozhat létre olyan alkalmazásokat, amelyek a szolgáltatással kapcsolatos megközelítést használnak:
 
--Platform, amely rendszerszolgáltatásokat biztosít a sikertelen szolgáltatások üzembe helyezéséhez, frissítéséhez, észleléséhez és újraindításához, a szolgáltatások felderítéséhez, az üzenetek továbbításához, az állapot kezeléséhez és az állapot figyeléséhez.
+* Platform, amely rendszerszolgáltatásokat biztosít a sikertelen szolgáltatások üzembe helyezésére, frissítésére, észlelésére és újraindítására, a szolgáltatások felderítésére, az üzenetek továbbítására, az állapot kezelésére és az állapot figyelésére.
 * A tárolókban vagy folyamatként futó alkalmazások központi telepítését is lehetővé teszi. Service Fabric tároló-és folyamat-Orchestrator.
 * Produktív programozási API-k, amelyek segítséget nyújtanak az alkalmazások [ASP.net Core, Reliable Actors és Reliable Services](service-fabric-choose-framework.md)létrehozásához. Például beszerezhet állapot-és diagnosztikai adatokat, vagy kihasználhatja a beépített magas rendelkezésre állást is.
 
-***Service Fabric a szolgáltatás felépítésének módjáról van szó, és bármilyen technológia használható. Azonban olyan beépített programozási API-kat biztosít, amelyek megkönnyítik a szolgáltatások kiépítését.** _
+***Service Fabric a szolgáltatás felépítésének módjáról van szó, és bármilyen technológia használható. Azonban olyan beépített programozási API-kat biztosít, amelyek megkönnyítik a szolgáltatások kiépítését.***
 
 ### <a name="migrating-existing-applications-to-service-fabric"></a>Meglévő alkalmazások áttelepítése Service Fabricre
 
@@ -161,11 +161,11 @@ Service Fabric lehetővé teszi a meglévő kódok újbóli felhasználását é
 
 ![Migrálás a Services szolgáltatásba][Image3]
 
-Ne feledje, hogy _start és leállíthatja ezeket a szakaszokat *. A következő szakasznak nem kell haladnia. 
+Ne feledje, hogy *bármelyik szakaszban elindíthatja és leállíthatja*. A következő szakasznak nem kell haladnia. 
 
 Nézzük meg az egyes szakaszokra vonatkozó példákat.
 
-**Migrate (Áttelepítés)**  
+**Migrate**  
 Két okból kifolyólag számos vállalat telepít át meglévő monolitikus alkalmazásokat tárolóba:
 
 * Költségcsökkentés a meglévő hardverek összevonása és eltávolítása, illetve a nagyobb sűrűségű alkalmazások futtatása miatt.
@@ -190,11 +190,11 @@ Talán. A Microsoftnál, ahogy egyre több csapat kezdte meg a felhőbe való ki
 
 Service Fabric célja, hogy csökkentse a Service-alkalmazások kiépítésének bonyolultságát, így nem kell a lehető legtöbb költséges újratervezéssel eljárnia. Kis méretű, méretezhető, ha szükséges, elavult szolgáltatásokat, újakat adhat hozzá, és fejlődik az ügyfelek használatában. Azt is tudjuk, hogy még sok más problémát kell megoldani, hogy a legtöbb fejlesztő számára jobban elérhetővé tegye a szolgáltatást. A tárolók és a színészek programozási modellje példákat mutat be ennek az iránynak a kis lépéseire. Biztosak vagyunk abban, hogy az innovációk könnyebben megkönnyítik a szolgáltatások kialakítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Szolgáltatások: a felhő által működtetett alkalmazás-forradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
 * [Azure Architecture Center: szolgáltatások készítése az Azure-ban](/azure/architecture/microservices/)
-* [Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai](service-fabric-best-practices-overview.md)
+* [Azure Service Fabric-alkalmazás és -fürt – ajánlott eljárások](service-fabric-best-practices-overview.md)
 * [Service Fabric terminológia áttekintése](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png

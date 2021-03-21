@@ -4,10 +4,10 @@ description: Ez a cikk lépésről lépésre bemutatja, hogyan engedélyezheti a
 ms.topic: how-to
 ms.date: 12/03/2020
 ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576451"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Diagnosztikai naplók engedélyezése az Azure Event Grid-témakörökhöz vagy-tartományokhoz
@@ -47,7 +47,7 @@ Ez a cikk részletes útmutatást nyújt a Event Grid témakörök vagy tartomá
         ![A "diagnosztikai beállítások" lapot, amely az "adatfolyam az Event hubhoz" jelölőnégyzetet mutatja be.](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Ha a **küldés log Analytics** lehetőséget választja, válassza ki a log Analytics munkaterületet.
         ![A "Küldés Log Analyticsba" jelölőnégyzettel rendelkező "diagnosztikai beállítások" oldalt megjelenítő képernyőkép.](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-8. Válassza a **Mentés** lehetőséget. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
+8. Kattintson a **Mentés** gombra. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
 9. Most vissza a **diagnosztikai beállítások** lapon ellenőrizze, hogy megjelenik-e új bejegyzés a **diagnosztikai beállítások** táblázatban. 
     ![Képernyőkép: a "diagnosztikai beállítások" oldal, amely egy új bejegyzéssel jelenik meg a "diagnosztikai beállítások" táblában.](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
@@ -77,7 +77,7 @@ Ez a cikk részletes útmutatást nyújt a Event Grid témakörök vagy tartomá
         ![Archiválás Azure Storage-fiókba](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
     - Ha **az adatfolyam lehetőséget választja egy Event hub**-ra, válassza az **Event hub-configure** lehetőséget, majd válassza ki a Event Hubs névteret, az Event hub és a hozzáférési házirendet. 
         ![Streamelés eseményközpontba](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
-8. Válassza a **Mentés** lehetőséget. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
+8. Kattintson a **Mentés** gombra. Ezután a jobb oldali sarokban található **X** gombra kattintva zárhatja be a lapot. 
 9. Most vissza a **diagnosztikai beállítások** lapon ellenőrizze, hogy megjelenik-e új bejegyzés a **diagnosztikai beállítások** táblázatban. 
     ![Diagnosztikai beállítás a listában](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
 
@@ -105,5 +105,5 @@ Ez a cikk részletes útmutatást nyújt a Event Grid témakörök vagy tartomá
         "message": "Message:outcome=NotFound, latencyInMs=2635, id=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx, systemId=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
     }
     ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A naplózási sémával és a témakörök vagy tartományok diagnosztikai naplóival kapcsolatos egyéb fogalmi információkkal kapcsolatban lásd: [diagnosztikai naplók](diagnostic-logs.md).

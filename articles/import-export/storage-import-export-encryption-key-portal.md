@@ -9,10 +9,10 @@ ms.date: 01/14/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 71c322385c9b70eb46e1c478c1322752ee4561e5
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706491"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Az ügyfél által felügyelt kulcsok használata Azure Key Vault importálási/exportálási szolgáltatáshoz
@@ -104,6 +104,6 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | CmkErrorKeyNotFound      | Nem található az ügyfél által felügyelt kulcs. | Igen, ha a kulcsot törölték, de még mindig a kiürítés időtartama alatt van, a Key [Vault-kulcs eltávolításának visszavonása](/powershell/module/az.keyvault/undo-azkeyvaultkeyremoval)funkcióval.<br>Más <ol><li>Igen, ha az ügyfél rendelkezik a kulcs biztonsági mentésével, és visszaállítja azt.</li><li>Nem, ellenkező esetben.</li></ol>
 | CmkErrorVaultNotFound |Nem található az ügyfél által felügyelt kulcs kulcstartója. |   Ha a Key Vault törölve lett:<ol><li>Igen, ha a kiürítés-védelem időtartama alatt van, a [Key Vault helyreállításának](../key-vault/general/soft-delete-overview.md#key-vault-recovery)lépéseit követve.</li><li>Nem, ha meghaladja a kiürítési-védelmi időtartamot.</li></ol><br>Ha a kulcstartó másik bérlőre lett áttelepítve, igen, az alábbi lépések egyikével állítható helyre:<ol><li>A Key Vault visszaállítása a régi bérlőre.</li><li>Állítsa be `Identity = None` , majd állítsa vissza az értéket `Identity = SystemAssigned` . Ezzel törli és újból létrehozza az identitást az új identitás létrehozása után. A `Get` `Wrap` `Unwrap` Key Vault hozzáférési házirendjében engedélyezze az új identitás engedélyezését és engedélyeit.</li></ol>|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault](../key-vault/general/overview.md)?

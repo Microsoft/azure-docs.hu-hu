@@ -4,10 +4,10 @@ description: Ismerje meg az Azure Service Fabric-fürt verziójának vagy konfig
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 028c91f85a6e318f7ea686c1bcd50262eb7c6bf1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571028"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt frissítése
@@ -101,7 +101,7 @@ Számos különböző konfigurációs beállítás testreszabható a fürtön, p
 
 A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
