@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784596"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>A Reliable Services életciklusának áttekintése
@@ -126,7 +126,7 @@ A `ReliableCollections` szolgáltatás életciklus-eseményeinek használatábó
   - Az `OnCloseAsync()` elérési út során `OnAbort()` fellépő hibák meghívását eredményezik, ami a szolgáltatás által igényelt erőforrások törlésére és az azokhoz szükséges összes erőforrás kitakarítására irányuló utolsó esélyes lehetőség. Ez általában akkor fordul elő, ha a csomóponton állandó hibát észlel, vagy ha Service Fabric belső meghibásodások miatt nem tudja megbízhatóan kezelni a szolgáltatási példány életciklusát.
   - `OnChangeRoleAsync()` akkor lesz meghívva, amikor az állapot-nyilvántartó szolgáltatás replikája megváltoztatja a szerepkört, például az elsődleges vagy a másodlagos. Az elsődleges replikák írási állapotot kapnak (a megbízható gyűjtemények létrehozásához és írásához engedélyezett). A másodlagos replikák olvasási állapotot kapnak (csak a meglévő megbízható gyűjteményekből olvashatók be). Egy állapot-nyilvántartó szolgáltatásban a legtöbb munka az elsődleges replikán történik. A másodlagos replikák csak olvasási ellenőrzés, jelentéskészítés, adatbányászat vagy más írásvédett feladatok végrehajtására használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Bevezetés a Reliable Servicesba](service-fabric-reliable-services-introduction.md)
 - [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
 - [Replikák és példányok](service-fabric-concepts-replica-lifecycle.md)

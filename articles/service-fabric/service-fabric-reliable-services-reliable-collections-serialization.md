@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/8/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 29bb9a2dfb028d223d63559b35735e78d7e6bcf8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784359"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Megbízható gyűjteményi objektumok szerializálása az Azure-ban Service Fabric
@@ -138,7 +138,7 @@ Az egyéni szerializálási felhasználóknak meg kell felelniük az általa has
 Az összes verzió támogatásának gyakori módja a méretre vonatkozó információk hozzáadása az elején, és csak opcionális tulajdonságok hozzáadása.
 Így az egyes verziók ugyanúgy olvashatók, mint a stream hátralévő része.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   * [Szerializálás és frissítés](service-fabric-application-upgrade-data-serialization.md)
   * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)
   * [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.

@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098774"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586641"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Python-kódtárak kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
@@ -68,13 +68,13 @@ Ez a példa a csatornákat és a Conda/PyPI függőségeket határozza meg.
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 A környezet. YML fájl létrehozásával kapcsolatos további információkért lásd: [környezet létrehozása környezetből. YML fájl](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually).
 
@@ -140,6 +140,11 @@ Munkaterület-csomagok hozzáadása:
 
 ![A munkaterület-csomagokat kiemelő képernyőkép.](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "Munkaterület-csomagok megtekintése")
 
+>[!WARNING]
+>- Az Azure szinapszison belül egy Apache Spark-készlet képes kihasználni a munkaterület-csomagként feltöltött vagy a jól ismert Azure Data Lake Storage útvonalon belül feltöltött egyéni kódtárakat. Mindkét lehetőség azonban nem használható egyszerre ugyanazon a Apache Spark-készleten belül. Ha a csomagok mindkét módszerrel vannak megadva, akkor a rendszer csak a munkaterület-csomagok listájában megadott felni fájlokat telepíti. 
+>
+>- Ha a munkaterület-csomagok (előzetes verzió) segítségével csomagokat telepítenek egy adott Apache Spark készletre, akkor a csomagok már nem adhatók meg a tárolási fiók elérési útjának használatával ugyanazon a készleten.  
+
 ### <a name="storage-account"></a>A(z)
 Az egyéni Builder-csomagok telepíthetők a Apache Spark készletbe úgy, hogy az összes kerék fájlt feltölti a szinapszis munkaterülethez csatolt Azure Data Lake Storage (Gen2) fiókba. 
 
@@ -149,13 +154,12 @@ A fájlokat a Storage-fiók alapértelmezett tárolójában fel kell tölteni a 
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-Előfordulhat, hogy a mappán belül fel kell vennie a ```python``` mappát, ```libraries``` Ha még nem létezik.
+>[!WARNING]
+> Bizonyos esetekben előfordulhat, hogy a fenti struktúra alapján létre kell hoznia a fájl elérési útját, ha még nem létezik. Előfordulhat például, hogy a mappán belül fel kell vennie a ```python``` mappát, ```libraries``` Ha még nem létezik.
 
 > [!IMPORTANT]
 > Ha az Azure DataLake Storage metódussal szeretne egyéni kódtárakat telepíteni, a **Storage blob-Adatközreműködőinek** vagy a **Storage blob-adattulajdonosi** engedélyekkel kell rendelkeznie az Azure szinapszis Analytics-munkaterülethez kapcsolódó elsődleges Gen2 Storage-fiókban.
 
->[!WARNING]
-> Egyéni kerék-fájlok megadásakor a felhasználók a Storage-fiókban és a munkaterület-függvénytár felületén sem tudnak kerék-fájlokat biztosítani. Ha mindkettő meg van adva, a rendszer csak a munkaterület-csomagok listájában megadott felni fájlokat telepíti. 
 
 ## <a name="session-scoped-packages-preview"></a>Munkamenet-hatókörű csomagok (előzetes verzió)
 A készlet szintjének csomagokon kívül a munkamenet-hatókörű kódtárakat is megadhatja egy jegyzetfüzet-munkamenet elején.  A munkamenet-hatókörű kódtárak segítségével egyéni Python-környezeteket adhat meg és használhat egy jegyzetfüzet-munkamenetben. 

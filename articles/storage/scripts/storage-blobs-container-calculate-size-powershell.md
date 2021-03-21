@@ -12,10 +12,10 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 87ef18530c549396b7d8fe1ec4ff0e08cb8535e8
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784275"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>BLOB-tároló méretének kiszámítása a PowerShell-lel
@@ -50,7 +50,7 @@ Ez a szkript a következő parancsokat használja a Blob Storage-tároló méret
 | [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) | A megadott Storage-fiók vagy az erőforráscsoport vagy az előfizetés összes tárolási fiókjának beolvasása. |
 | [Get-AzStorageBlob](/powershell/module/az.storage/Get-AzStorageBlob) | Egy tárolóban lévő Blobok felsorolása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy olyan parancsfájl esetében, amely kiszámítja a tároló méretét a számlázási célokra, tekintse meg [a blob Storage-tároló méretének kiszámítása számlázási célokra](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)című témakört.
 

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: abarora
 ms.openlocfilehash: 977982bf1a36b4b85524df2513f2272fe4a8d1bf
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701518"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata a leküldéses frissítéssel egy .NET Core-alkalmazásban
@@ -85,7 +85,7 @@ Az erőforrások létrehozása után adja hozzá a következő környezeti vált
 
 ## <a name="register-event-handler-to-reload-data-from-app-configuration"></a>Az eseménykezelő regisztrálása az alkalmazások konfigurációjának betöltéséhez
 
-Nyissa meg a *program.cs* , és frissítse a fájlt a következő kóddal.
+Nyissa meg a *program. cs* fájlt, és frissítse a fájlt a következő kóddal.
 
 ```csharp
 using Microsoft.Azure.ServiceBus;

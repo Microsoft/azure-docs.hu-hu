@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 09b801c48bf2998a2d8926009cae76287c1ac9b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: aeea2905b6bae094c92bd8b5d46523225c745494
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342266"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595637"
 ---
 # <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,17 +45,17 @@ DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 *StartDate*  
     Az UTC dátum és idő ISO 8601 karakterláncának értéke a (z) formátumban `YYYY-MM-DDThh:mm:ss.fffffffZ` :
   
-  |Formátum|Description|
-  |-|-|
-  |ÉÉÉÉ|négyjegyű év|
-  |MM|kétjegyű hónap (01 = Január stb.)|
-  |DD|hónap kétjegyű napja (01 – 31)|
-  |T|az időelemek kezdetének jelölője|
-  |óó|kétjegyű óra (00 – 23)|
-  |hh|kétjegyű perc (00 – 59)|
-  |mm|kétszámjegyű másodperc (00 – 59)|
-  |.fffffff|hét számjegyű tört másodperc|
-  |Z|UTC (egyezményes világidő) jelölő||
+|Formátum|Leírás|
+|-|-|
+|ÉÉÉÉ|négyjegyű év|
+|MM|kétjegyű hónap (01 = Január stb.)|
+|DD|hónap kétjegyű napja (01 – 31)|
+|T|az időelemek kezdetének jelölője|
+|óó|kétjegyű óra (00 – 23)|
+|hh|kétjegyű perc (00 – 59)|
+|mm|kétszámjegyű másodperc (00 – 59)|
+|.fffffff|hét számjegyű tört másodperc|
+|Z|UTC (egyezményes világidő) jelölő|
   
   Az ISO 8601 formátumával kapcsolatos további információkért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
@@ -119,7 +119,7 @@ SELECT DateTimeDiff("hh", "2020-01-01T01:00:00.1234527Z", "2020-01-01T01:59:59.1
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

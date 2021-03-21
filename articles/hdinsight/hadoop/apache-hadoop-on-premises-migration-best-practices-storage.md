@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
 ms.openlocfilehash: 89a2a659e195afcae336c930a101ed0c0b470cb4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101715411"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight
@@ -31,7 +31,7 @@ Az Azure Storage lehet földrajzilag replikálható. Bár a Geo-replikáció fö
 
 Az alábbi formátumok egyike használható az Azure Storage-ban tárolt adateléréshez:
 
-|Adatelérési formátum |Leírás |
+|Adatelérési formátum |Description |
 |---|---|
 |`wasb:///`|Az alapértelmezett tárterületet titkosítatlan kommunikációval érheti el.|
 |`wasbs:///`|Az alapértelmezett tároló elérése titkosított kommunikáció használatával.|
@@ -153,7 +153,7 @@ A HDInsight alapértelmezés szerint teljes hozzáféréssel rendelkezik a fürt
 
 1. Nyissa meg a  [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) fájlt, és módosítsa a következő értékeket:
 
-    |Jogkivonat tulajdonsága|Leírás|
+    |Jogkivonat tulajdonsága|Description|
     |---|---|
     |policy_name|A létrehozandó házirend létrehozásához használandó név.|
     |storage_account_name|A Storage-fiók neve.|

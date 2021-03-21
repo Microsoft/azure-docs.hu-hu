@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6ac21d67f32fbc61db19b348fc29cdf3ee9fd7
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418181"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587899"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Az Azure AD-szolgáltatásfiókok szabályozása
 
@@ -32,7 +32,7 @@ Az Azure Active Directory (Azure AD) háromféle szolgáltatásfiókot támogat:
 
 A szolgáltatásfiók létrehozása vagy egy alkalmazás regisztrálása előtt dokumentálja a szolgáltatásfiók legfontosabb információit. Az információk dokumentálása megkönnyíti a fiók hatékony figyelését és szabályozását. Javasoljuk, hogy az alábbi adatok gyűjtését és nyomon követését a központosított Configuration Management-adatbázisban (CMDB).
 
-| Adatok| Leírás| Részletek |
+| Adatok| Description| Részletek |
 | - | - | - |
 | Tulajdonos| A szolgáltatásfiók felügyeletéhez és figyeléséhez felelős felhasználó vagy csoport.| Hozza létre a tulajdonost a fiók figyeléséhez szükséges engedélyekkel, és hajtsa végre a problémák enyhítésének módját. A probléma enyhítését a tulajdonos vagy egy kérelem útján teheti meg. |
 | Cél| A fiók használatának módja.| Rendelje hozzá a szolgáltatásfiókot egy adott szolgáltatáshoz, alkalmazáshoz vagy parancsfájlhoz. Kerülje a többszörös használatú szolgáltatásfiókok létrehozását. |
@@ -53,7 +53,7 @@ A szolgáltatásfiók-jogosultságok kezeléséhez a következő eljárásokat j
 
 * Ne rendeljen beépített szerepköröket a szolgáltatásfiókokhöz. Ehelyett használja a [OAuth2 engedély engedélyezési modelljét Microsoft Graphhoz](/graph/api/resources/oauth2permissiongrant),
 
-* Ha az egyszerű szolgáltatásnak Kiemelt szerepkörrel kell rendelkeznie, érdemes egy adott, a szükséges jogosultságokkal rendelkező [Egyéni szerepkört](https://docs.microsoft.com/azure/active-directory/roles/custom-create) hozzárendelni egy időben kötött módon.
+* Ha az egyszerű szolgáltatásnak Kiemelt szerepkörrel kell rendelkeznie, érdemes egy adott, a szükséges jogosultságokkal rendelkező [Egyéni szerepkört](../roles/custom-create.md) hozzárendelni egy időben kötött módon.
 
 * Az emelt szintű engedélyekkel rendelkező csoportok tagjaiként ne szerepeljenek a szolgáltatásfiókok. 
 
@@ -63,10 +63,10 @@ A szolgáltatásfiók-jogosultságok kezeléséhez a következő eljárásokat j
    vagy használja  
 `Get-AzureADServicePrincipal | % { Get-AzureADServiceAppRoleAssignment -ObjectId $_ }`
 
-* A [OAuth 2,0 hatókörökkel](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) korlátozhatja, hogy a szolgáltatásfiók milyen funkciókat érhet el egy erőforráson.
+* A [OAuth 2,0 hatókörökkel](../develop/v2-permissions-and-consent.md) korlátozhatja, hogy a szolgáltatásfiók milyen funkciókat érhet el egy erőforráson.
 * Az egyszerű szolgáltatások és a felügyelt identitások a OAuth 2,0 hatóköröket használhatják olyan delegált környezetben, amely egy bejelentkezett felhasználót vagy szolgáltatásfiókot használ az alkalmazási környezetben. Az alkalmazás környezetében nincs bejelentkezve.
 
-* Ellenőrizze, hogy megfelelőek-e a hatókörök szolgáltatásfiók-kérelme az erőforrásokhoz. Ha például egy fiók fájlokat kér. ReadWrite. all, értékelje ki, hogy valójában csak file. Read. All fájlra van szüksége. Az engedélyekkel kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference).
+* Ellenőrizze, hogy megfelelőek-e a hatókörök szolgáltatásfiók-kérelme az erőforrásokhoz. Ha például egy fiók fájlokat kér. ReadWrite. all, értékelje ki, hogy valójában csak file. Read. All fájlra van szüksége. Az engedélyekkel kapcsolatos további információkért lásd: [Microsoft Graph engedélyek referenciája](/graph/permissions-reference).
 
 * Győződjön meg arról, hogy az alkalmazás vagy az API fejlesztője megbízhatónak tekinti az erőforrásokhoz való hozzáférést.
 
@@ -78,9 +78,9 @@ A szolgáltatásfiók-jogosultságok kezeléséhez a következő eljárásokat j
 
 Ha a cél, a hatókör és a szükséges engedélyek egyértelmű megismerését választotta, hozzon létre egy szolgáltatásfiókot. 
 
-[Felügyelt identitások létrehozása és használata](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+[Felügyelt identitások létrehozása és használata](../../app-service/overview-managed-identity.md?tabs=dotnet)
 
-[Egyszerű szolgáltatás létrehozása és használata](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
+[Egyszerű szolgáltatás létrehozása és használata](../develop/howto-create-service-principal-portal.md)
 
 Ha lehetséges, használjon felügyelt identitást. Ha nem használhat felügyelt identitást, használjon egyszerű szolgáltatásnevet. Ha nem tud használni egy egyszerű szolgáltatásnevet, és csak ezután használ egy Azure AD-felhasználói fiókot.
 
@@ -100,7 +100,7 @@ Proaktív módon figyelheti a szolgáltatási fiókokat annak biztosítására, 
 
 * Az Azure ad Sign-In-naplók használata az Azure AD-portálon.
 
-* Az Azure AD Sign-In naplók exportálása az [Azure Storage](https://docs.microsoft.com/azure/storage/)-ba, az [Azure Event Hubsba](https://docs.microsoft.com/azure/event-hubs/)vagy a [Azure monitorba](https://docs.microsoft.com/azure/azure-monitor/logs/data-platform-logs).
+* Az Azure AD Sign-In naplók exportálása az [Azure Storage](../../storage/index.yml)-ba, az [Azure Event Hubsba](../../event-hubs/index.yml)vagy a [Azure monitorba](../../azure-monitor/logs/data-platform-logs.md).
 
 
 ![A szolgáltatás egyszerű bejelentkezési képernyőjét bemutató képernyőfelvétel](./media/securing-service-accounts/service-accounts-govern-azure-1.png)
@@ -172,7 +172,7 @@ Hozzon létre egy felülvizsgálati folyamatot annak biztosítására, hogy a sz
 
 **A megszüntetési folyamatoknak a következő feladatokat kell tartalmazniuk.**
 
-1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins#sign-ins-report) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
+1. Ha a társított alkalmazást vagy parancsfájlt kiépítik, [Figyelje](../reports-monitoring/concept-sign-ins.md#sign-ins-report) a szolgáltatás fiókjának bejelentkezési és erőforrás-hozzáférését.
 
    * Ha a fiók továbbra is aktív, határozza meg, hogyan használja a rendszer a következő lépések megkezdése előtt.
  
@@ -196,4 +196,3 @@ Az Azure-szolgáltatásfiókok biztonságossá tételével kapcsolatos további 
 
  
 
- 

@@ -7,10 +7,10 @@ ms.date: 08/26/2019
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87ac89edc1c9996afc03e7c2bd6743202fdfcb52
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786191"
 ---
 # <a name="scaling-in-service-fabric"></a>Méretezés Service Fabric
@@ -141,7 +141,7 @@ Ez a dinamikus létrehozási minta számos előnnyel jár:
   - Nem futtat olyan szolgáltatási példányokat vagy replikákat, amelyek az ügyfelek számára való várakozás közben vannak
   - Ha egy ügyfél még mindig elhagyja a szolgáltatást, a szolgáltatásból eltávolíthatja az adatait, és a kezelő törli az általa létrehozott szolgáltatást vagy alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

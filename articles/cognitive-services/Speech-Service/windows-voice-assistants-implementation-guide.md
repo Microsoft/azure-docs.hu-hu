@@ -12,10 +12,10 @@ ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98939862"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Hangsegédek implementálása Windows rendszeren
@@ -78,7 +78,7 @@ A `ConversationalAgentSession` Windows SDK osztálya, amely lehetővé teszi, ho
 
 ### <a name="listen-to-the-two-activation-signals-the-onbackgroundactivated-and-onsignaldetected"></a>Hallgassa meg a két aktiváló jelet: a OnBackgroundActivated és a OnSignalDetected
 
-A Windows akkor fogja jelezni az alkalmazást, ha a kulcsszót kétféleképpen észleli. Ha az alkalmazás nem aktív (azaz nincs hivatkozása egy nem eldobott példányra `ConversationalAgentSession` ), akkor elindítja az alkalmazást, és meghívja az OnBackgroundActivated metódust az alkalmazás app.XAML.cs-fájljában. Ha az Event argumentumok `BackgroundActivatedEventArgs.TaskInstance.Task.Name` mező megfelel a "AgentBackgroundTrigger" karakterláncnak, az alkalmazás indítását a Hangaktiválás aktiválja. Az alkalmazásnak felül kell bírálnia ezt a metódust, és le kell kérnie a ConversationalAgentSession egy példányát, hogy jelezze a most aktív Windows rendszernek. Ha az alkalmazás aktív, a Windows az eseményt használva jelzi a Hangaktiválás előfordulását `ConversationalAgentSession.OnSignalDetected` . A lekérése után vegyen fel egy eseménykezelőt erre az eseményre `ConversationalAgentSession` .
+A Windows akkor fogja jelezni az alkalmazást, ha a kulcsszót kétféleképpen észleli. Ha az alkalmazás nem aktív (azaz nincs hivatkozása egy nem eldobott példányra `ConversationalAgentSession` ), akkor elindítja az alkalmazást, és meghívja a OnBackgroundActivated metódust az alkalmazás app. XAML. cs fájljában. Ha az Event argumentumok `BackgroundActivatedEventArgs.TaskInstance.Task.Name` mező megfelel a "AgentBackgroundTrigger" karakterláncnak, az alkalmazás indítását a Hangaktiválás aktiválja. Az alkalmazásnak felül kell bírálnia ezt a metódust, és le kell kérnie a ConversationalAgentSession egy példányát, hogy jelezze a most aktív Windows rendszernek. Ha az alkalmazás aktív, a Windows az eseményt használva jelzi a Hangaktiválás előfordulását `ConversationalAgentSession.OnSignalDetected` . A lekérése után vegyen fel egy eseménykezelőt erre az eseményre `ConversationalAgentSession` .
 
 ## <a name="keyword-verification"></a>Kulcsszó ellenőrzése
 
@@ -122,9 +122,9 @@ Ha egy alkalmazás a zárolás fölött egy nézetet jelenít meg, akkor azt "ki
 
 ### <a name="transitioning-above-lock"></a>Áttérés a fenti zárolás felett
 
-A zárolás fenti aktiválása hasonló a zárolás alatti aktiváláshoz. Ha az alkalmazás nem rendelkezik aktív példányokkal, a háttérben egy új példány lesz elindítva, és a `OnBackgroundActivated` rendszer a app.XAML.cs fogja hívni. Ha az alkalmazás egy példánya van, akkor ez a példány értesítést kap az `ConversationalAgentSession.SignalDetected` eseményen.
+A zárolás fenti aktiválása hasonló a zárolás alatti aktiváláshoz. Ha az alkalmazás nem rendelkezik aktív példányokkal, a háttérben egy új példány lesz elindítva, és `OnBackgroundActivated` az app. XAML. cs néven lesz meghívva. Ha az alkalmazás egy példánya van, akkor ez a példány értesítést kap az `ConversationalAgentSession.SignalDetected` eseményen.
 
-Ha az alkalmazás már nem jelenik meg a zárolás felett, meg kell hívnia a következőt: `ConversationalAgentSession.RequestForegroundActivationAsync` . Ez elindítja a `OnLaunched` metódust a app.XAML.cs-ben, amely a zárolást megelőzően megjelenítendő nézetre fog navigálni.
+Ha az alkalmazás már nem jelenik meg a zárolás felett, meg kell hívnia a következőt: `ConversationalAgentSession.RequestForegroundActivationAsync` . Ez elindítja a `OnLaunched` metódust az app. XAML. cs eszközben, amelynek meg kell nyitnia azt a nézetet, amely a zárolás felett jelenik meg.
 
 ### <a name="detecting-lock-screen-transitions"></a>Zárolási képernyő-átmenetek észlelése
 

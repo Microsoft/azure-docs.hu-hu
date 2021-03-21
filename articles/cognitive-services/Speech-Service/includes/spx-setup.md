@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: c939c1d061f4e01a00bc2b886056e42f0b059ad5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a995a110c4f777603e5b0273b6025cd68fe55b67
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102511123"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102532558"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
@@ -118,7 +118,7 @@ A `spx` tárolóban telepített parancs használatához mindig adja meg a fent l
 Windows rendszeren például a következő parancs állítja be a kulcsot:
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 A parancssori eszközzel való nagyobb körű interakcióhoz egy BelépésiPont paraméter hozzáadásával elindíthat egy tárolót interaktív bash-rendszerhéj használatával.
@@ -171,8 +171,8 @@ A beszédfelismerési parancssori felület használatának megkezdéséhez meg k
 Miután megtörtént az előfizetési kulcs és a régió azonosítója (pl. `eastus`, `westus` ) futtassa a következő parancsokat.
 
 ```console
-spx config --set @key SUBSCRIPTION-KEY
-spx config --set @region REGION
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 Az előfizetés-hitelesítés mostantól a jövőbeli SPX-kérelmekhez van tárolva. Ha el kell távolítania a tárolt értékek valamelyikét, futtassa a vagy a parancsot `spx config @region --clear` `spx config @key --clear` .

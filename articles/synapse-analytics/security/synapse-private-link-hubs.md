@@ -1,19 +1,19 @@
 ---
 title: Csatlakozás a szinapszis studióhoz privát hivatkozások használatával
 description: Ez a cikk bemutatja, hogyan csatlakozhat az Azure szinapszis studióhoz privát hivatkozások használatával
-author: NanditaV
+author: nanditavalsan
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: d39beca60264023c8eb7c1bc78cd1ac15c3b45dc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97586975"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586624"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Csatlakozás az Azure szinapszis studióhoz az Azure Private link hubok használatával 
 
@@ -37,13 +37,15 @@ Csatlakoztatnia kell az Azure-beli virtuális hálózatot a szinapszis Private l
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="A privát Endpoint Connections oldalt bemutató képernyőkép.":::
 
-Győződjön meg arról, hogy a "Resource" (erőforrás) lapon a "Microsoft. szinapszis/privateLinkHubs" erőforrástípus :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="van"::: kiválasztva
+Győződjön meg arról, hogy a "Resource" lapon a "Microsoft. szinapszis/privateLinkHubs" erőforrástípus van kiválasztva.
+
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Képernyőkép, amely a &quot;privát végpont létrehozása&quot; oldalt jeleníti meg az &quot;erőforrás típusa&quot; kiemelésével.":::
 
 A "konfiguráció" lapon válassza a "privatelink.azuresynapse.net" lehetőséget saját DNS zónákhoz a virtuális hálózat és a magánhálózati DNS-zóna integrálásakor.
 
 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-dns-zones.png" alt-text="Privát végpont létrehozása a privát kapcsolati hubhoz":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról](./how-to-connect-to-workspace-from-restricted-network.md)
 

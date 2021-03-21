@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489755"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722769"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -178,7 +178,13 @@ A címke egy Docker-koncepció, amellyel megkülönböztethető a Docker-tárol�
 
 A címkék a IoT Edge-eszközök frissítéseinek betartatásához is segítséget nyújtanak. Ha egy modul frissített verzióját leküldi a tároló-beállításjegyzékbe, növelje a címkét. Ezután leküldheti az eszközökre egy új központi telepítést a címke növelésével. A tároló motor felismeri a megnövelt címkét új verzióként, és lekéri a legújabb modul verziószámát az eszközre.
 
-A címkézési konvencióra példát a [IoT Edge futtatókörnyezet frissítése](how-to-update-iot-edge.md#understand-iot-edge-tags) című témakörben talál, amelyből megtudhatja, hogyan használja a IoT Edge a működés közbeni címkéket és adott címkéket a verziók nyomon követésére.
+#### <a name="tags-for-the-iot-edge-runtime"></a>A IoT Edge futtatókörnyezet címkéi
+
+A IoT Edge-ügynök és a IoT Edge hub-lemezképek a IoT Edge azon verziójával vannak címkézve, amelyhez társítva vannak. A következő két különböző módon használhatja a címkéket a futásidejű lemezképekkel:
+
+* **Jelölő címkék** – csak a verziószám első két értékének beolvasásával kérheti le az adott számjegyeknek megfelelő legújabb képet. Például a 1,1 frissül, amikor új kiadás jelenik meg, amely a legújabb 1.1. x verzióra mutat. Ha a IoT Edge eszközön lévő tároló futtatókörnyezete újra lekéri a lemezképet, a futásidejű modulok a legújabb verzióra frissülnek. Központi telepítések a Azure Portal alapértelmezettről a címkékre. *Ez a megközelítés fejlesztési célokra javasolt.*
+
+* **Megadott címkék** – a verziószám mindhárom értékének használatával explicit módon állíthatja be a rendszerkép verzióját. Például a 1.1.0 nem változik a kezdeti kiadás után. Ha készen áll a frissítésre, deklarálhat egy új verziószámot az üzembe helyezési jegyzékben. *Ezt a megközelítést éles célokra javasoljuk.*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>A saját beállításjegyzékében tárolja a futásidejű tárolókat
 
@@ -201,7 +207,7 @@ Ezután frissítse a képhivatkozásokat a fájl deployment.template.jsa edgeAge
 
     `"image": "<registry name and server>/azureiotedge-hub:1.1",`
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 * **Hasznos**
   * Kimenő/bejövő konfiguráció áttekintése
