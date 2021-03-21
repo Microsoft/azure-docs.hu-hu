@@ -4,10 +4,10 @@ description: A ASP.NET és a ASP.NET Core Application Insights SDK eltávolítá
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1d70413fa6a47e2d41693db6eb705f31b2a2b1b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704310"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Application Insights eltávolítása a Visual Studióban
@@ -72,7 +72,7 @@ Application Insights eltávolításához el kell távolítania az alkalmazás AP
     
     ![A képernyőképen egy párbeszédpanel jelenik meg, amelyen az eltávolítandó függőségek jelennek meg.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Az eltávolítás után a *megoldáskezelő* a "ApplicationInsights.config" és a "AiHandleErrorAttribute.cs" is megjelenik. A két fájlt manuálisan is törölheti.
+1.  A rendszer minden eltávolítása után továbbra is "ApplicationInsights.config" és "AiHandleErrorAttribute. cs" kifejezést láthat a *Megoldáskezelőban*. A két fájlt manuálisan is törölheti.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
@@ -97,7 +97,7 @@ Ha Application Insightst ad hozzá a projekthez, a fájlokat hoz létre, és kó
 Ha Application Insights Telemetria hoz létre egy Visual Studio ASP.NET-projekthez, a következő fájlokat adja hozzá:
 
 - ApplicationInsights.config
-- AiHandleErrorAttribute.cs
+- AiHandleErrorAttribute. cs
 
 A következő kódrészletek lettek hozzáadva:
 
@@ -167,7 +167,7 @@ A következő kódrészletek lettek hozzáadva:
     }
     ```
 
-- FilterConfig.cs
+- FilterConfig. cs
 
     ```csharp
             public static void RegisterGlobalFilters(GlobalFilterCollection filters)

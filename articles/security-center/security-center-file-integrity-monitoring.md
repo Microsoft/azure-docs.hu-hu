@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
 ms.openlocfilehash: b858903b87dc6c4cc1f7c40338c09bf5b8204b3d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176535"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>A fájlok integritásának figyelése Azure Security Center
@@ -56,7 +56,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 Az elemek aktuális állapotának és az előző vizsgálat állapotának összehasonlításával a FIM riasztást küld, ha gyanús módosítások történnek.
 
-A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás** típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtés gyakoriságának részleteiért lásd: [change Tracking adatgyűjtési részletek](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
+A fájlintegritási monitorozás (FIM) az Azure Change Tracking megoldást használja a környezetében történt változások követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás** típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtés gyakoriságának részleteiért lásd: [change Tracking adatgyűjtési részletek](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection).
 
 > [!NOTE]
 > Ha eltávolítja a **change Tracking** -erőforrást, a Security Center a fájl sértetlenségének figyelése funkciót is letiltja.
@@ -247,7 +247,7 @@ Használjon helyettesítő karaktereket a címtárak közötti nyomkövetés egy
 -   Az elérési út beállításakor kerülje el az általános elérési utakat, például a c: \* . * értéket, ami túl sok mappát fog áthaladni.
 
 ## <a name="disable-fim"></a>FIM letiltása
-A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. A FIM letiltásával eltávolítja a Change Tracking megoldást a kiválasztott munkaterületről.
+A FIM letiltható. A fájlintegritási monitorozás (FIM) az Azure Change Tracking megoldást használja a környezetében történt változások követésére és azonosítására. A FIM letiltásával eltávolítja a Change Tracking megoldást a kiválasztott munkaterületről.
 
 1. A FIM letiltásához térjen vissza a **fájl integritásának figyelése** irányítópultra.
 2. Jelöljön ki egy munkaterületet.

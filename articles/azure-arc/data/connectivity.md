@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: d148509af45b93dce8dbd99b9afc674276b149b6
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493972"
 ---
 # <a name="connectivity-modes-and-requirements"></a>Csatlakozási módok és követelmények
@@ -68,16 +68,16 @@ Néhány Azure-hoz kapcsolódó szolgáltatás csak akkor érhető el, ha közve
 
 |**Adattípus**|**Irány**|**Kötelező vagy nem kötelező**|**További költségek**|**A mód megadása kötelező**|**Megjegyzések**|
 |---|---|---|---|---|---|
-|**Tárolólemezképek**|Microsoft Container Registry – > ügyfél|Kötelező|Nem|Közvetett vagy közvetlen|A tároló lemezképei a szoftver terjesztésének módszerei.  Olyan környezetben, amely az interneten keresztül tud csatlakozni a Microsoft Container Registryhoz (MCR), a tároló lemezképei közvetlenül a MCR tölthetők le.  Abban az esetben, ha a telepítési környezet nem rendelkezik közvetlen kapcsolattal, lekérheti a lemezképeket a MCR, és leküldheti azokat egy privát tároló-beállításjegyzékbe a telepítési környezetben.  A létrehozáskor beállíthatja, hogy a létrehozási folyamat a MCR helyett a privát tároló beállításjegyzékből legyen lehívható. Ez az automatikus frissítésekre is vonatkozik.|
-|**Erőforrás-leltár**|Felhasználói környezet – > Azure|Kötelező|Nem|Közvetett vagy közvetlen|Az adatkezelők, az adatbázis-példányok (PostgreSQL és SQL) leltározása az Azure-ban számlázás céljából történik, valamint az adatkezelők és az adatbázis-példányok leltározásának egy helyen történő létrehozása, amely különösen akkor hasznos, ha egynél több környezettel rendelkezik az Azure arc-adatszolgáltatásokkal.  A példányok kiépítésének, megszüntetésének, méretezésének/beépítésének, a készletnek a felskálázása/leállítása érdekében az Azure-ban frissülnek.|
-|**Számlázási telemetria-információk**|Felhasználói környezet – > Azure|Kötelező|Nem|Közvetett vagy közvetlen|Az adatbázis-példányok kihasználtságát számlázási célokra kell elküldeni az Azure-nak.  Az Azure arc-kompatibilis adatszolgáltatások díját az előzetes verzió ideje alatt nem lehet fizetni.|
+|**Tárolólemezképek**|Microsoft Container Registry – > ügyfél|Kötelező|No|Közvetett vagy közvetlen|A tároló lemezképei a szoftver terjesztésének módszerei.  Olyan környezetben, amely az interneten keresztül tud csatlakozni a Microsoft Container Registryhoz (MCR), a tároló lemezképei közvetlenül a MCR tölthetők le.  Abban az esetben, ha a telepítési környezet nem rendelkezik közvetlen kapcsolattal, lekérheti a lemezképeket a MCR, és leküldheti azokat egy privát tároló-beállításjegyzékbe a telepítési környezetben.  A létrehozáskor beállíthatja, hogy a létrehozási folyamat a MCR helyett a privát tároló beállításjegyzékből legyen lehívható. Ez az automatikus frissítésekre is vonatkozik.|
+|**Erőforrás-leltár**|Felhasználói környezet – > Azure|Kötelező|No|Közvetett vagy közvetlen|Az adatkezelők, az adatbázis-példányok (PostgreSQL és SQL) leltározása az Azure-ban számlázás céljából történik, valamint az adatkezelők és az adatbázis-példányok leltározásának egy helyen történő létrehozása, amely különösen akkor hasznos, ha egynél több környezettel rendelkezik az Azure arc-adatszolgáltatásokkal.  A példányok kiépítésének, megszüntetésének, méretezésének/beépítésének, a készletnek a felskálázása/leállítása érdekében az Azure-ban frissülnek.|
+|**Számlázási telemetria-információk**|Felhasználói környezet – > Azure|Kötelező|No|Közvetett vagy közvetlen|Az adatbázis-példányok kihasználtságát számlázási célokra kell elküldeni az Azure-nak.  Az Azure arc-kompatibilis adatszolgáltatások díját az előzetes verzió ideje alatt nem lehet fizetni.|
 |**Az adatkezelés és a naplók figyelése**|Felhasználói környezet – > Azure|Választható|Az adatmennyiségtől függően (lásd: [Azure monitor díjszabás](https://azure.microsoft.com/en-us/pricing/details/monitor/))|Közvetett vagy közvetlen|Előfordulhat, hogy el szeretné küldeni a helyileg összegyűjtött figyelési adatokat és naplókat, hogy Azure Monitor az adatok több környezetből való összesítését egy helyre, valamint Azure Monitor szolgáltatások, például a riasztások használatát, a Azure Machine Learningban található adatok használatával stb.|
-|**Azure szerepköralapú Access Control (Azure RBAC)**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|Nem|Csak közvetlen|Ha az Azure RBAC-t szeretné használni, akkor a kapcsolódást az Azure-ban mindig meg kell teremteni.  Ha nem szeretné használni az Azure RBAC-t, akkor a helyi Kubernetes RBAC is használható.  **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
+|**Azure szerepköralapú Access Control (Azure RBAC)**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|No|Csak közvetlen|Ha az Azure RBAC-t szeretné használni, akkor a kapcsolódást az Azure-ban mindig meg kell teremteni.  Ha nem szeretné használni az Azure RBAC-t, akkor a helyi Kubernetes RBAC is használható.  **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
 |**Azure Active Directory (AD)**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|Lehet, hogy már fizet az Azure AD-nek|Csak közvetlen|Ha az Azure AD-t a hitelesítéshez szeretné használni, akkor a kapcsolatot mindig az Azure-ban kell létrehozni. Ha nem szeretné a hitelesítéshez használni az Azure AD-t, Active Directory összevonási szolgáltatások (AD FS) (ADFS) Active Directoryon keresztül. **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
-|**Biztonsági mentés és visszaállítás**|Felhasználói környezet – > ügyfél-környezet|Kötelező|Nem|Közvetlen vagy közvetett|A biztonsági mentési és visszaállítási szolgáltatás úgy konfigurálható, hogy a helyi tárolási osztályokra mutasson. |
+|**Biztonsági mentés és visszaállítás**|Felhasználói környezet – > ügyfél-környezet|Kötelező|No|Közvetlen vagy közvetett|A biztonsági mentési és visszaállítási szolgáltatás úgy konfigurálható, hogy a helyi tárolási osztályokra mutasson. |
 |**Azure Backup – hosszú távú adatmegőrzés**| Felhasználói környezet – > Azure | Választható| Igen az Azure Storage-hoz | Csak közvetlen |Előfordulhat, hogy olyan biztonsági másolatokat szeretne küldeni, amelyeket helyileg készítettek Azure Backup a biztonsági másolatok hosszú távú megőrzéséhez, és visszaállítják őket a helyi környezetbe a visszaállításhoz. **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
-|**Azure Defender biztonsági szolgáltatások**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|Igen|Csak közvetlen|**Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
-|**Kiépítés és konfigurációs változások Azure Portal**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|Nem|Csak közvetlen|A kiépítés és a konfiguráció módosítása helyileg, Azure Data Studio vagy a használatával végezhető el [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  Közvetlenül csatlakoztatott módban a Azure Portal is kiépítheti és módosíthatja a konfigurációs módosításokat. **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
+|**Azure Defender biztonsági szolgáltatások**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|Yes|Csak közvetlen|**Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
+|**Kiépítés és konfigurációs változások Azure Portal**|Felhasználói környezet – > Azure-> ügyfél-környezet|Választható|No|Csak közvetlen|A kiépítés és a konfiguráció módosítása helyileg, Azure Data Studio vagy a használatával végezhető el [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] .  Közvetlenül csatlakoztatott módban a Azure Portal is kiépítheti és módosíthatja a konfigurációs módosításokat. **Közvetlenül csatlakoztatott üzemmód függőben lévő rendelkezésre állása**|
 
 
 ## <a name="details-on-internet-addresses-ports-encryption-and-proxy-server-support"></a>Információk az internetes címekről, a portokról, a titkosításról és a proxykiszolgáló támogatásáról
@@ -114,11 +114,11 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Használhatja a proxyt
 
-Igen
+Yes
 
 #### <a name="authentication"></a>Hitelesítés
 
-Nincs
+Nincsenek
 
 ### <a name="azure-resource-manager-apis"></a>Azure Resource Manager API-k
 A Azure Data Studio [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] és az Azure CLI a Azure Resource Manager API-khoz csatlakozik az Azure-ba irányuló és onnan érkező adatok bizonyos funkciókhoz való küldéséhez és lekéréséhez.
@@ -154,7 +154,7 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Használhatja a proxyt
 
-Igen
+Yes
 
 #### <a name="authentication"></a>Hitelesítés 
 
@@ -186,7 +186,7 @@ HTTPS
 
 #### <a name="can-use-proxy"></a>Használhatja a proxyt
 
-Igen
+Yes
 
 #### <a name="authentication"></a>Hitelesítés 
 

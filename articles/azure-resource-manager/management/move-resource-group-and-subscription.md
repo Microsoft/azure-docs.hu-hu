@@ -4,18 +4,18 @@ description: Az erőforrások új erőforráscsoporthoz vagy előfizetésbe val�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1218df618f7f5fa0787505cb4fcee67dd264ea76
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601389"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670205"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
 Ebből a cikkből megtudhatja, hogyan helyezheti át az Azure-erőforrásokat egy másik Azure-előfizetésbe vagy egy másik erőforráscsoporthoz ugyanahhoz az előfizetéshez. Az erőforrások áthelyezéséhez az Azure Portal, az Azure PowerShell, az Azure CLI vagy a REST API használható.
 
-A forrásoldali csoport és a célcsoport is zárolva van az áthelyezési művelet során. Az írási és törlési műveletek le vannak tiltva az erőforráscsoportok között, amíg az áthelyezés be nem fejeződik. Ez a zárolás azt jelenti, hogy nem lehet erőforrásokat felvenni, frissíteni vagy törölni az erőforráscsoportok között. Nem jelenti azt, hogy az erőforrások zárolva vannak. Ha például egy SQL Server és az adatbázisát egy új erőforráscsoporthoz helyezi át, az adatbázist használó alkalmazások nem rendelkeznek leállás nélkül. Továbbra is olvashatja és írhatja az adatbázist. A zárolás legfeljebb négy órán át tarthat, de a legtöbb lépés sokkal kevesebb időt vehet igénybe.
+A forrásoldali csoport és a célcsoport is zárolva van az áthelyezési művelet során. Az írási és törlési műveletek le vannak tiltva az erőforráscsoportok között, amíg az áthelyezés be nem fejeződik. Ez a zárolás azt jelenti, hogy nem lehet erőforrásokat felvenni, frissíteni vagy törölni az erőforráscsoportok között. Nem jelenti azt, hogy az erőforrások zárolva vannak. Ha például egy Azure SQL logikai kiszolgálót és az adatbázisait egy új erőforráscsoporthoz vagy előfizetésbe helyezi át, az adatbázisokat használó alkalmazások nem rendelkeznek állásidővel. Továbbra is olvashatnak és írhatnak az adatbázisokat. A zárolás legfeljebb négy órán át tarthat, de a legtöbb lépés sokkal kevesebb időt vehet igénybe.
 
 Az erőforrás az áthelyezése során csak egy új erőforráscsoportba vagy előfizetésbe kerül. Az erőforrás helyét az áthelyezési művelet nem módosítja.
 

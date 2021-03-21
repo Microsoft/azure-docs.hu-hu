@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: contperf-fy21q3
 ms.openlocfilehash: 8ef18ea663f3a77589d61ed89c50df38f5cf0d0e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102176147"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Az Azure Import/Export-feladatok állapotának megtekintése
@@ -39,7 +39,7 @@ Az importálási vagy exportálási feladatok állapotát a Azure Portal **Impor
 
 A következő feladatok egyike jelenik meg attól függően, hogy a meghajtó hol található a folyamatban.
 
-| Feladatok állapota | Leírás |
+| Feladatok állapota | Description |
 |:--- |:--- |
 | Létrehozás | A feladatok létrehozása után az állapota a **Létrehozás** értékre van állítva. Amíg a feladatsor **létrehozza** az állapotot, az importálási/exportálási szolgáltatás feltételezi, hogy nem szállították el az adatközpontba a meghajtókat. A feladatok akár két hétig is maradhatnak ebben az állapotban, ami után a szolgáltatás automatikusan törli azt. |
 | Szállítás | A csomag szállítása után frissítenie kell a követési információkat a Azure Portal.  Így a feladatot a **szállítási** állapotba kapcsolhatja. A feladatok legfeljebb két hétig maradnak a **szállítási** állapotban. 
@@ -55,7 +55,7 @@ Az alábbi táblázat az egyes meghajtók életciklusát mutatja be az importál
 
 A következő táblázat ismerteti az egyes állapotokat, amelyeket a feladatok egyes meghajtói továbbítanak.
 
-| Meghajtó állapota | Leírás |
+| Meghajtó állapota | Description |
 |:--- |:--- |
 | Megadott | Importálási feladatokhoz, ha a feladatot a Azure Portal hozza létre, a meghajtó kezdeti állapota meg van **adva**. Exportálási feladatokhoz, mivel a rendszer nem ad meg meghajtót a feladatok létrehozásakor, a rendszer a kezdeti meghajtó állapotát **fogadja**. |
 | Megérkezett | A meghajtó átvált a **fogadott** állapotba, amikor az importálási/exportálási szolgáltatás feldolgozta az importálási feladatokhoz a hajózási vállalattól érkezett meghajtókat. Exportálási feladatok esetén a kezdeti meghajtó állapota a **fogadott** állapot. |

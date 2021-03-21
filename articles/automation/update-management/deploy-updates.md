@@ -3,14 +3,14 @@ title: Frissítési központi telepítések létrehozása Azure Automation Updat
 description: Ez a cikk a frissítések központi telepítésének ütemezett és állapotának áttekintését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: fb81d38b066e1abb54664225daa6840d895e9ace
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6d35d6b49ab72d8aa7b25506011147ab624273fd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575892"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669678"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Frissítések központi telepítése és eredmények áttekintése
 
@@ -21,6 +21,9 @@ Az egyes forgatókönyvek esetében a központi telepítéshez a kiválasztott g
 * Az operációs rendszer automatikusan ki van választva a gép operációs rendszere alapján
 * A frissítendő célszámítógép automatikusan célként van beállítva
 * Az ütemterv konfigurálásakor megadhatja, hogy a **Frissítés most** megtörténjen, vagy ismétlődő ütemtervet használ.
+
+> [!IMPORTANT]
+> A frissítés központi telepítésének létrehozásával elfogadja az operációs rendszerének frissítését biztosító vállalat által biztosított szoftverlicenc-szerződés (EULA) feltételeit.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

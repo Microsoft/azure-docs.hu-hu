@@ -1,20 +1,20 @@
 ---
 title: Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
-description: Megismerheti, hogyan hozhat létre Azure Nagyvállalati Szerződéshez tartozó előfizetéseket programozott módon a REST API, az Azure CLI és az Azure PowerShell legújabb verziójának használatával.
+description: Megtudhatja, hogyan hozhat létre programozott módon Azure Nagyvállalati Szerződés-előfizetéseket az REST API, az Azure CLI, a Azure PowerShell és a Azure Resource Manager sablonok legújabb verzióinak használatával.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4de89892d27bb811be6670c1a14ca85859342ecc
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 3f07d18ccdca87f6395b24e4e3f9e6ee91cfaee3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102218910"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593975"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Azure Nagyvállalati Szerződéshez tartozó előfizetések létrehozása programozott módon a legújabb API-kkal
 
@@ -41,7 +41,7 @@ Miután hozzáadták Önt egy fióktulajdonoshoz társított regisztrációs fi�
 
 A következő parancsok futtatásához be kell jelentkeznie a fióktulajdonos *kezdőkönyvtárába*, amely az a könyvtár, amelyben az előfizetések alapértelmezetten létrejönnek.
 
-### <a name="rest"></a>[REST](#tab/rest-getEnrollments)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Kérelem azon fiókok felsorolására, amelyekhez hozzáféréssel rendelkezik:
 
@@ -91,17 +91,13 @@ Az API-válasz felsorolja azokat a regisztrációs fiókokat, amelyekhez hozzáf
 
 ```
 
-A számlázási hatókör és az `id` értéke megegyezik. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
+A számlázási hatókör értékei és `id` ugyanazok a dolgok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
 
-<!-- 
-### [PowerShell](#tab/azure-powershell-getEnrollments)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-we're still working on enabling PowerShell SDK for billing APIs. Check back soon.
+Az érték beszerzéséhez használja az Azure CLI-t vagy a REST API.
 
--->
-
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-getEnrollments)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Kérelem azon fiókok felsorolására, amelyekhez hozzáféréssel rendelkezik:
 
@@ -159,7 +155,8 @@ Válasz felsorolja az összes olyan regisztrációs fiókot, amelyhez hozzáfér
     "type": "Microsoft.Billing/billingAccounts"
   },
 ```
-A számlázási hatókör és az `id` értéke megegyezik. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
+
+A számlázási hatókör értékei és `id` ugyanazok a dolgok. A regisztrációs fiókjához tartozó `id` az a számlázási hatókör, amelyben az előfizetésre vonatkozó kérelem el lesz küldve. Fontos, hogy ismerje az azonosítót, mivel ez egy kötelező paraméter, amelyet a cikk későbbi részében az előfizetés létrehozásához fog használni.
 
 ---
 
@@ -167,7 +164,7 @@ A számlázási hatókör és az `id` értéke megegyezik. A regisztrációs fi�
 
 Az alábbi példa egy *Dev Team Subscription* (Fejlesztői csapat előfizetés) nevű előfizetést hoz létre az előző lépésben kiválasztott regisztrációs fiókban. 
 
-### <a name="rest"></a>[REST](#tab/rest-EA)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Az előfizetés-létrehozási kérelem/alias létrehozásához hívja meg a PUT API-t.
 
@@ -227,7 +224,7 @@ GET https://management.azure.com/providers/Microsoft.Subscription/aliases/sample
 
 A rendszer folyamatban lévő állapotot ad vissza `Accepted` állapotként a `provisioningState` alatt.
 
-### <a name="powershell"></a>[PowerShell](#tab/azure-powershell-EA)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A `New-AzSubscriptionAlias` parancsmagot tartalmazó modul legújabb verziójának telepítéséhez futtassa az `Install-Module Az.Subscription` parancsot. A PowerShellGet legújabb verziójának telepítéséhez lásd a [PowerShellGet modul beszerzésével](/powershell/scripting/gallery/installing-psget) foglalkozó témakört.
 
@@ -251,7 +248,7 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 }
 ```
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-EA)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Első lépésként telepítse a bővítményt az `az extension add --name account` és az `az extension add --name alias` futtatásával.
 
@@ -277,6 +274,113 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 ---
 
+## <a name="use-arm-template"></a>ARM-sablon használata
+
+Az előző szakasz azt mutatta be, hogyan lehet előfizetést létrehozni a PowerShell, a CLI vagy a REST API használatával. Ha automatizálni szeretné az előfizetések létrehozását, érdemes lehet egy Azure Resource Manager sablont (ARM-sablont) használni.
+
+A következő sablon létrehoz egy előfizetést. A esetében `billingScope` adja meg a beléptetési fiók azonosítóját. A esetében adja meg azt `targetManagementGroup` a felügyeleti csoportot, amelyben létre szeretné hozni az előfizetést.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionAliasName": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide a name for the alias. This name will also be the display name of the subscription."
+            }
+        },
+        "billingScope": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the full resource ID of billing scope to use for subscription creation."
+            }
+        },
+        "targetManagementGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the target management group to place the subscription."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "name": "[parameters('subscriptionAliasName')]",
+            "type": "Microsoft.Subscription/aliases",
+            "apiVersion": "2020-09-01",
+            "properties": {
+                "workLoad": "Production",
+                "displayName": "[parameters('subscriptionAliasName')]",
+                "billingScope": "[parameters('billingScope')]",
+                "managementGroupId": "[tenantResourceId('Microsoft.Management/managementGroups/', parameters('targetManagementGroup'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Telepítse a sablont a [felügyeleti csoport szintjén](../../azure-resource-manager/templates/deploy-to-management-group.md).
+
+### <a name="rest"></a>[REST](#tab/rest)
+
+```json
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
+```
+
+Kérelem törzse:
+
+```json
+{
+  "location": "eastus",
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json"
+    },
+    "parameters": {
+      "subscriptionAliasName": {
+        "value": "sampleAlias"
+      },
+      "billingScope": {
+        "value": "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321"
+      },
+      "targetManagementGroup": {
+        "value": "mg2"
+      }
+    },
+    "mode": "Incremental"
+  }
+}
+```
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -Name exampledeployment `
+  -Location eastus `
+  -ManagementGroupId mg1 `
+  -TemplateFile azuredeploy.json `
+  -subscriptionAliasName sampleAlias `
+  -billingScope "/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321" `
+  -targetManagementGroup mg2
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az deployment mg create \
+  --name exampledeployment \
+  --location eastus \
+  --management-group-id mg1 \
+  --template-file azuredeploy.json \
+  --parameters subscriptionAliasName='sampleAlias' billingScope='/providers/Microsoft.Billing/BillingAccounts/1234567/enrollmentAccounts/7654321' targetManagementGroup=mg2
+```
+
+---
+
 ## <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Az Azure Enterprise-előfizetések létrehozási API-jára vonatkozó korlátozások
 
 - Az API-val csak Azure Enterprise-előfizetések hozhatók létre.
@@ -289,3 +393,4 @@ A parancsra adott válasz részeként megkapja a subscriptionId paramétert.
 
 * Most, hogy létrehozott egy előfizetést, elérhetővé teheti ezt a képességek más felhasználók és szolgáltatásnevek számára is. További információ: [Hozzáférés biztosítása nagyvállalati Azure-előfizetés létrehozáshoz (előzetes verzió)](grant-access-to-create-subscription.md).
 * Több előfizetés felügyeleti csoportok használatával történő kezeléséről az [erőforrások Azure-beli felügyeleti csoportokkal való rendszerezését](../../governance/management-groups/overview.md) ismertető részben talál további információt.
+* Az előfizetések felügyeleti csoportjának módosításához lásd: [előfizetések áthelyezése](../../governance/management-groups/manage.md#move-subscriptions).

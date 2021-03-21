@@ -8,10 +8,10 @@ ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: d516bcb224f7a7b5943214f28cffb7da3ea0871f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031599"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS virtuálisgép-lemezekről, valamint a felügyelt és nem felügyelt prémium szintű lemezekről
@@ -304,7 +304,7 @@ Nem. Azure Site Recovery Azure-ról Azure-ra, Managed Disks elérhető virtuáli
 
 **Áttelepíthetem a virtuális gépeket olyan nem felügyelt lemezekkel, amelyek olyan tárolási fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
@@ -342,7 +342,7 @@ Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Igen
+Yes
 
 **Egy felügyelt lemezről exportált virtuális merevlemez vagy egy pillanatkép is titkosítva lesz?**
 

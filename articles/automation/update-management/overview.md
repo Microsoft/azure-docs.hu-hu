@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e24a90f05ef52c5164ce966e905e9c27055d1bf4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485673"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670613"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
@@ -76,8 +76,8 @@ A következő táblázat felsorolja a frissítési felmérések és a javításo
 |---------|---------|
 |Windows Server 2019 (Datacenter/standard, beleértve a Server Core-t)<br><br>Windows Server 2016 (Datacenter/standard, a Server Core kivételével)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM és SP1 standard)| Update Management támogatja az operációs rendszer értékeléseit és javításait. A [hibrid Runbook-feldolgozót](../automation-windows-hrw-install.md) a Windows Server 2008 R2 támogatja. |
-|CentOS 6 és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz olyan `yum` biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](view-update-assessments.md#linux)rendszeren.          |
-|Red Hat Enterprise 6 és 7 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
+|CentOS 6, 7 és 8 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz olyan `yum` biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](view-update-assessments.md#linux)rendszeren.          |
+|Red Hat Enterprise 6, 7 és 8 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 12, 15 és 15,1 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A SUSE 15. x esetében a Python 3 szükséges a gépen.      |
 |Ubuntu 14,04 LTS, 16,04 LTS és 18,04 LTS (x64)      |A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.         |
 
@@ -167,7 +167,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |

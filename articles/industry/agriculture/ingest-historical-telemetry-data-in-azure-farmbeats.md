@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-ummehabiba
 ms.custom: has-adal-ref
 ms.openlocfilehash: e4182f3718422be3a0aa99c980d33026df4ce9af
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102173749"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
@@ -108,7 +108,7 @@ Kövesse az alábbi lépéseket:
 | ProductCode | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
 | Portok | A port neve és típusa, amely digitális vagy analóg. |
 | Name | Az erőforrást azonosító név. Például a modell neve vagy a termék neve. |
-| Leírás | Adjon meg egy értelmes leírást a modellről. |
+| Description | Adjon meg egy értelmes leírást a modellről. |
 | Tulajdonságok | További tulajdonságok a gyártótól. |
 | **Eszköz** |  |
 | DeviceModelId | A társított eszköz-modell azonosítója. |
@@ -117,7 +117,7 @@ Kövesse az alábbi lépéseket:
 | Hely | Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
 | ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId. |
 | Name | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats. |
-| Leírás | Adjon meg egy értelmes leírást. |
+| Description | Adjon meg egy értelmes leírást. |
 | Tulajdonságok | További tulajdonságok a gyártótól. |
 | **SensorModel** |  |
 | Típus (analóg, digitális) | Az érzékelő típusa, legyen az analóg vagy a digitális. |
@@ -129,7 +129,7 @@ Kövesse az alábbi lépéseket:
 | SensorMeasures > egység | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nincs egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,. |
 | SensorMeasures > AggregationType | Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation. |
 | Name | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve. |
-| Leírás | Adjon meg egy értelmes leírást a modellről. |
+| Description | Adjon meg egy értelmes leírást a modellről. |
 | Tulajdonságok | További tulajdonságok a gyártótól. |
 | **Érzékelő** |  |
 | HardwareId | A gyártó által beállított érzékelő egyedi azonosítója. |
@@ -138,7 +138,7 @@ Kövesse az alábbi lépéseket:
 | Port > neve | Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
 | DeviceID | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik. |
 | Name | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód. |
-| Leírás | Adjon meg egy értelmes leírást. |
+| Description | Adjon meg egy értelmes leírást. |
 | Tulajdonságok | További tulajdonságok a gyártótól. |
 
 További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).

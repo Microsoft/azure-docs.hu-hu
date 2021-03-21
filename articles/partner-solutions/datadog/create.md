@@ -8,10 +8,10 @@ author: tfitzmac
 ms.author: tomfitz
 ms.custom: references_regions
 ms.openlocfilehash: 7af8b82c5da6c60527b45b6e8e292b9f067016ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101748638"
 ---
 # <a name="quickstart-get-started-with-datadog"></a>Gyors útmutató: Ismerkedés a Datadoggal
@@ -83,7 +83,7 @@ Adja meg a következő értékeket.
 
 Ha egy meglévő Datadoggal-szervezethez kapcsolódik, tekintse meg a következő szakaszt. Ellenkező esetben válassza a **Tovább: mérőszámok és naplók** lehetőséget, és hagyja ki a következő szakaszt.
 
-## <a name="link-to-existing-datadog-organization"></a>Hivatkozás meglévő Datadoggal-szervezetre
+## <a name="link-to-existing-datadog-organization"></a>Csatolás meglévő Datadog-szervezethez
 
 Az új Datadoggal-erőforrást az Azure-ban egy meglévő Datadoggal-szervezethez is összekapcsolhatja.
 

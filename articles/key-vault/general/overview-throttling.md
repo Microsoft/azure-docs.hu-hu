@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7bdc3ac517df6b73fba7231cfe0fdc9855803782
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102175753"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vaultra vonatkozó szabályozási irányelvek
@@ -41,7 +41,7 @@ Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, tölts
 
 | Tároló neve | Tár régiója | Objektumtípus (titok, kulcs vagy tanúsítvány) | Művelet (ek) * | Kulcs típusa | Kulcs hossza vagy görbéje | HSM-kulcs?| Stabil állapot RPS szükséges | Az RPS-csúcs szükséges |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Kulcs | Előjel | EC | P-256 | Nem | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Kulcs | Előjel | EC | P-256 | No | 200 | 1000 |
 
 \* A lehetséges értékek teljes listáját a [Azure Key Vault műveletek](/rest/api/keyvault/key-operations)című részben tekintheti meg.
 

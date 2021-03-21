@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de7d23689ae984ea0abece5edb03cf8a0c3a9be1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331012"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670341"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Kapcsolatok végpontok és űrlap-kapcsolatok karakterláncok beolvasása az ív használatára képes PostgreSQL nagy kapacitású-kiszolgálócsoport számára
 
@@ -39,34 +39,35 @@ azdata login --endpoint https://<external IP address of host/data controller>:30
 ```
 
 #### <a name="2-show-the-connection-endpoints"></a>2. a kapcsolati végpontok megjelenítése
-Futtassa az alábbi parancsot:
+Futtassa a következő parancsot:
 ```console
 azdata arc postgres endpoint list -n <server group name>
 ```
-A következőhöz hasonló kimenetet ad vissza:
+Például:
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+azdata arc postgres endpoint list -n postgres01
+```
+
+Megjeleníti a végpontok listáját: az alkalmazáshoz való kapcsolódáshoz használt PostgreSQL-végpontot, valamint az adatbázis, a Kibana és a Grafana végpontokat a log Analytics és a monitoring szolgáltatáshoz. Például: 
+```console
+Arc
+ ===================================================================================================================
+ Postgres01 Instance
+ -------------------------------------------------------------------------------------------------------------------
+ Description           Endpoint
+
+ PostgreSQL Instance   postgresql://postgres:<replace with password>@12.345.567.89:5432
+ Log Search Dashboard  https://89.345.712.81:30777/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))
+ Metrics Dashboard     https://89.345.712.81:30777/grafana/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01
+
 ```
 A következő végpontok használata:
 - A kapcsolati karakterláncok létrehozása és az ügyféleszközök vagy alkalmazások csatlakoztatása
 - A Grafana- és Kibana-irányítópultok megnyitása a böngészőben
 
-Használhatja például a _PostgreSQL-példány_ nevű végpontot a psql való kapcsolódáshoz a kiszolgálócsoport számára. Példa:
+Használhatja például a _PostgreSQL-példány_ nevű végpontot a psql való kapcsolódáshoz a kiszolgálócsoport számára. Például:
 ```console
-psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
+psql postgresql://postgres:MyPassworkd@12.345.567.89:5432
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))
 WARNING: psql major version 10, server major version 12.
          Some psql features might not work.
@@ -86,11 +87,11 @@ postgres=#
 ## <a name="from-cli-with-kubectl"></a>A CLI és a kubectl használatával
 - Ha a kiszolgálócsoport a 12-es verziójú postgres (alapértelmezett), akkor a következő parancs:
 ```console
-kubectl get postgresql-12/<server group name>
+kubectl get postgresql-12/<server group name> -n <namespace name>
 ```
 - Ha a kiszolgálócsoport postgres 11-es verziójú, akkor a következő parancsot kell bemutatnia:
 ```console
-kubectl get postgresql-11/<server group name>
+kubectl get postgresql-11/<server group name> -n <namespace name>
 ```
 
 Ezek a parancsok az alábbihoz hasonló kimenetet hoznak létre. Ezt az információt használhatja a kapcsolódási karakterláncok létrehozásához:
@@ -149,12 +150,6 @@ dbname='postgres' user='postgres' host='192.168.1.121' password='{your_password_
 
 ```ruby
 host=192.168.1.121; dbname=postgres user=postgres password={your_password_here} port=24276 sslmode=require
-```
-
-### <a name="web-app"></a>Webalkalmazás
-
-```webapp
-Database=postgres; Data Source=192.168.1.121; User Id=postgres; Password={your_password_here}
 ```
 
 ## <a name="next-steps"></a>Következő lépések

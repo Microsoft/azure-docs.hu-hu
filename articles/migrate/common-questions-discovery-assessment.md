@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102032568"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
@@ -39,7 +39,7 @@ Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és
 - Használja az értékelés típusát az **Azure SQL** -ben, ha a VMware-környezetből szeretné felmérni a helyszíni SQL Server a Azure SQL Database vagy az Azure SQL felügyelt példányára való áttelepítéshez. [További információ](concepts-assessment-calculation.md)
 
     > [!Note]
-    > A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+    > A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 - Ha a helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) szeretné felmérni az [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md) való áttelepítéshez, használja az **Azure VMware Solution (AVS)** értékeléseit. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -61,12 +61,12 @@ Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és
 
 ## <a name="why-is-performance-data-missing-for-someall-sql-instancesdatabases-in-my-azure-sql-assessment"></a>Miért hiányoznak a teljesítményadatok az Azure SQL Assessment egyes/összes SQL-példányaihoz/adatbázisaihoz?
 
-A teljesítményadatok gyűjtésének biztosításához ellenőrizze a következőket:
+A teljesítményadatok gyűjtésének biztosításához győződjön meg az alábbiakról:
 
 - Ha az SQL-kiszolgálók be vannak kapcsolva azon időtartamra, amelyhez az értékelést létrehozza
 - Ha a Azure Migrateban található SQL-ügynök kapcsolati állapota "Connected", és ellenőrizze az utolsó szívverést 
 - Ha Azure Migrate az összes SQL-példány kapcsolati állapota "Connected" az észlelt SQL-példány panelen
-- Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS) portok kimenő kapcsolatai engedélyezve vannak.
+- Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS-) portokon engedélyezettek a kimenő kapcsolatok
 
 Ha a teljesítményszámlálók bármelyike hiányzik, az Azure SQL Assessment az adott példány/adatbázis legkisebb Azure SQL-konfigurációját javasolja.
 
@@ -76,45 +76,45 @@ A megbízhatósági minősítés az értékelés kiszámításához szükséges 
 
 - Nem végzett profilkészítést a környezeten abban az időtartamban, amelyre az értékelést létrehozta. Ha például egyhetes teljesítmény-időtartamú értékelést hoz létre, akkor a felderítés indítását követően legalább egy hetet várnia kell az összes adatpont összegyűjtésére. Ha nem tudja megvárni az időtartamot, módosítsa a teljesítmény időtartamát egy kisebb időszakra, és **számítsa ki** újra az értékelést.
  
-- Az értékelés nem tudja összegyűjteni az értékelési időszak egyes vagy összes kiszolgálójának teljesítményadatait. Magas megbízhatósági minősítés esetén ügyeljen a következőre: 
+- Az értékelés nem tud teljesítményadatokat gyűjteni az értékelési időszakban néhány kiszolgálóról vagy egyik kiszolgálóról sem. Magas megbízhatósági minősítés esetén ügyeljen a következőre: 
     - A kiszolgálók az értékelés időtartamára vannak bekapcsolva
     - A 443-es portokon engedélyezett kimenő kapcsolatok engedélyezettek
     - Hyper-V kiszolgálók esetén a dinamikus memória engedélyezve van 
     - A Azure Migrate lévő ügynökök kapcsolati állapota "Connected", és az utolsó szívverést vizsgálja.
     - Az Azure SQL-értékelések esetében Azure Migrate kapcsolati állapota minden SQL-példányhoz "csatlakoztatva" a felderített SQL-példány panelen
 
-    A megbízhatósági minősítés legutóbbi változásainak megfelelően **számítsa ki** újra az értékelést.
+    **Számítsa újra** az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait.
 
 - Az Azure-beli virtuális gépek és az AVS-értékelések esetében kevés kiszolgáló jött létre a felderítés elindítása után. Ha például az elmúlt egy hónap teljesítmény-előzményeire vonatkozó értékelést hoz létre, néhány kiszolgálót azonban csak egy héttel ezelőtt hoztak létre a környezetben. Ebben az esetben az új kiszolgálókhoz tartozó teljesítményadatok nem lesznek elérhetők a teljes időtartamra, és a megbízhatósági minősítés alacsony lenne. [További információ](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 
-- Az Azure SQL-értékelések esetében néhány SQL-példány vagy-adatbázis jött létre a felderítés elindítása után. Ha például az utolsó egy hónap teljesítmény-előzményeire vonatkozó értékelést hoz létre, néhány SQL-példány vagy-adatbázis csak egy héttel ezelőtt jött létre a környezetben. Ebben az esetben az új kiszolgálókhoz tartozó teljesítményadatok nem lesznek elérhetők a teljes időtartamra, és a megbízhatósági minősítés alacsony lenne. [További információ](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+- Azure SQL-értékelések esetén néhány SQL-példány vagy -adatbázis a felderítés elindítása után jött létre. Ha például az utolsó egy hónap teljesítmény-előzményeire vonatkozó értékelést hoz létre, néhány SQL-példány vagy-adatbázis csak egy héttel ezelőtt jött létre a környezetben. Ebben az esetben az új kiszolgálókhoz tartozó teljesítményadatok nem lesznek elérhetők a teljes időtartamra, és a megbízhatósági minősítés alacsony lenne. [További információ](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Szeretném kipróbálni az új Azure SQL Assessment funkciót a Azure Migrate
-A szolgáltatás kipróbálásához használja ezt a [hivatkozást](https://go.microsoft.com/fwlink/?linkid=2155668L) **Kelet-Ausztrália** régióban található projekt létrehozásához.
-- Az első lépésekhez tekintse meg a [felderítési](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) és [értékelési](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) oktatóanyagokat.
-- Vegye figyelembe, hogy a VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése jelenleg előzetes verzióban érhető el.
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Szeretném kipróbálni az új Azure SQL Assessment funkciót az Azure Migrate-ben
+A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [ezzel a hivatkozással](https://go.microsoft.com/fwlink/?linkid=2155668L).
+- A kezdéshez tekintse meg a [felderítéssel](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) és az [értékeléssel](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) kapcsolatos oktatóanyagokat.
+- Vegye figyelembe, hogy a VMware-környezetben futó SQL Server-példányok és -adatbázisok felderítése és értékelése jelenleg előzetes verzióban érhető el.
 
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Nem látok egyes kiszolgálókat, amikor létrehozok egy Azure SQL-értékelést
 
-- Az Azure SQL Assessment csak olyan kiszolgálókon végezhető el, amelyeken SQL-példányokat észleltek. Ha nem látja az értékelni kívánt kiszolgálókat és SQL-példányokat, várjon egy ideig, amíg a felderítés befejeződik, majd hozza létre az értékelést. 
+- Az Azure SQL-értékelés csak olyan futó kiszolgálókon végezhető el, amelyeken SQL-példányok lettek felderítve. Ha nem látja az értékelni kívánt kiszolgálókat és SQL-példányokat, várjon egy ideig, amíg a felderítés befejeződik, majd hozza létre az értékelést. 
 - Ha nem látja a korábban létrehozott csoportot az értékelés létrehozásakor, távolítsa el a nem VMware-kiszolgálókat vagy a csoportból SQL-példány nélküli kiszolgálót.
-- Ha első alkalommal futtatja Azure Migrate Azure SQL-értékeléseket, célszerű létrehozni a kiszolgálók új csoportját.
+- Ha először futtat Azure SQL-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új kiszolgálócsoportot.
 
 ## <a name="i-want-to-understand-how-was-the-readiness-for-my-instance-computed"></a>Szeretném megérteni, hogy a példányok készültsége hogyan lett kiszámítva?
-Az SQL-példányok készültségét az Azure SQL központi telepítési típust (Azure SQL Database vagy az Azure SQL felügyelt példányát) megcélzó szolgáltatás-kompatibilitási ellenőrzés után számítjuk ki. [További információ](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
+Az SQL-példányok kompatibilitásának számítása a cél Azure SQL-környezettípus (Azure SQL-adatbázis vagy felügyelt Azure SQL-példány) funkciókompatibilitási ellenőrzésének a végrehajtása után történik. [További információ](./concepts-azure-sql-assessment-calculation.md#calculate-readiness)
 
 ## <a name="why-is-the-readiness-for-all-my-sql-instances-marked-as-unknown"></a>Miért van az összes ismeretlenként megjelölt SQL-példány készültsége?
-Ha a felderítés a közelmúltban indult el, és még folyamatban van, előfordulhat, hogy az SQL-példányok készültsége ismeretlen. Azt javasoljuk, hogy várjon egy kis ideig, amíg a berendezés felkeresi a környezetet, majd számítsa ki újra az értékelést.
+Ha a felderítés a közelmúltban indult el, és még folyamatban van, előfordulhat, hogy az SQL-példányok készültsége ismeretlen. Javasoljuk, hogy várjon egy kis ideig, amíg a berendezés profilt készít a környezetről, majd számítsa újra az értékelést.
 A rendszer 24 óránként egyszer hajtja végre az SQL-felderítést, és előfordulhat, hogy várnia kell egy napig, amíg a legújabb konfigurációs változások megjelennek. 
 
 ## <a name="why-is-the-readiness-for-some-of-my-sql-instances-marked-as-unknown"></a>Miért van felkészültsége az ismeretlennek jelölt SQL-példányok közül?
 Ez akkor fordulhat elő, ha: 
-- A felderítés még folyamatban van. Azt javasoljuk, hogy várjon egy kis ideig, amíg a berendezés felkeresi a környezetet, majd számítsa ki újra az értékelést.
-- Bizonyos felderítési problémák elhárítása szükséges a hibák és értesítések panelen.
+- A felderítés még folyamatban van. Javasoljuk, hogy várjon egy kis ideig, amíg a berendezés profilt készít a környezetről, majd számítsa újra az értékelést.
+- Vannak olyan felderítési problémák, amelyeket el kell hárítania a hibákat és értesítéseket tartalmazó panelen.
 
 A rendszer 24 óránként egyszer hajtja végre az SQL-felderítést, és előfordulhat, hogy várnia kell egy napig, amíg a legújabb konfigurációs változások megjelennek.
 
-## <a name="my-assessment-is-in-outdated-state"></a>Az értékelés elavult állapotban van
+## <a name="my-assessment-is-in-outdated-state"></a>Az értékelésem állapota Elavult
 
 ### <a name="azure-vmavs-assessment"></a>Azure-beli virtuális gép/AVS-Értékelés
 Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés elavultként van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
@@ -130,33 +130,33 @@ Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek eg
 **Számítsa ki** újra az értékelést, hogy tükrözze az értékelés legújabb változásait.
 
 ### <a name="azure-sql-assessment"></a>Azure SQL-Értékelés
-Ha olyan helyszíni SQL-példányokat és-adatbázisokat módosít, amelyek egy értékelt csoportban vannak, az értékelés **elavultként** van megjelölve:
-- Az SQL-példányt hozzáadták vagy eltávolítottak egy kiszolgálóról
-- SQL-adatbázis hozzáadva vagy eltávolítva egy SQL-példányból
-- Egy SQL-példány adatbázisának teljes mérete több mint 20%-kal módosult
+Ha módosítanak olyan helyszíni SQL-példányokat és -adatbázisokat, amelyek egy értékelt csoportban találhatók, az értékelést **elavultként** jelöli meg a rendszer:
+- SQL-példányt adtak hozzá egy kiszolgálóhoz vagy távolítottak el róla
+- SQL-adatbázist adtak hozzá egy SQL-példányhoz vagy távolítottak el róla
+- Egy SQL-példány teljes adatbázismérete több mint 20%-kal változott
 - Processzor-magok és/vagy lefoglalt memória számának módosítása
 
 **Számítsa ki** újra az értékelést, hogy tükrözze az értékelés legújabb változásait.
 
-## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Miért ajánlott egy adott cél központi telepítési típust használni?
-Azure Migrate egy adott Azure SQL-telepítési típust javasol, amely kompatibilis az SQL-példánnyal. A Microsoft által ajánlott célra való Migrálás csökkenti a teljes áttelepítési erőfeszítést. Ez az Azure SQL-konfiguráció (SKU) az SQL-példány és az általa kezelt adatbázisok teljesítménybeli jellemzőinek mérlegelése után ajánlott. Ha több Azure SQL-konfiguráció is jogosult, javasoljuk, hogy az egyiket, amely a leginkább költséghatékony. [További információ](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
+## <a name="why-was-i-recommended-a-particular-target-deployment-type"></a>Miért ajánlottak számomra egy bizonyos cél üzembehelyezési típust?
+Az Azure Migrate olyan Azure SQL üzembehelyezési típust javasol, amely kompatibilis az SQL-példánnyal. A Microsoft által ajánlott célra való migrálás lerövidíti a teljes migrálási folyamatot. Ezt az Azure SQL-konfigurációt (termékváltozatot) ajánljuk az SQL-példány és az általa kezelt adatbázisok teljesítménybeli jellemzőinek felmérése után. Ha több Azure SQL-konfiguráció is megfelelő, azt javasoljuk, amelyik a leginkább költséghatékony. [További információ](./concepts-azure-sql-assessment-calculation.md#calculate-sizing)
 
-## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>Milyen üzembe helyezési célt kell választani, ha az SQL-példány készen áll az Azure SQL DB és az Azure SQL MI? 
-Ha a példány készen áll az Azure SQL DB-re és az Azure SQL-re is, javasoljuk a cél központi telepítési típust, amelyhez az Azure SQL-konfiguráció becsült díja alacsonyabb.
+## <a name="what-deployment-target-should-i-choose-if-my-sql-instance-is-ready-for-azure-sql-db-and-azure-sql-mi"></a>Milyen üzembehelyezési célt válasszak, ha az SQL-példányom kompatibilis az Azure SQL-adatbázissal és a felügyelt Azure SQL-példánnyal is? 
+Ha a példány az Azure SQL-adatbázissal és a felügyelt Azure SQL-példánnyal egyaránt kompatibilis, célként azt az üzembehelyezési típust javasoljuk, amely esetén az Azure SQL-konfiguráció becsült költsége alacsonyabb.
 
 ## <a name="why-is-my-instance-marked-as-potentially-ready-for-azure-vm-in-my-azure-sql-assessment"></a>Miért van az Azure-beli virtuális gépre felkészült példányom?
-Ez akkor fordulhat elő, ha az értékelés tulajdonságainál kiválasztott cél központi telepítési típus **ajánlott** , és az SQL-példány nem áll készen a Azure SQL Database és az Azure SQL felügyelt példányára. A felhasználónak javasoljuk, hogy hozzon létre egy értékelést az Azure-beli áttelepítés értékelésével Azure-beli **virtuális gépként** annak meghatározásához, hogy a példányt futtató kiszolgáló készen áll-e az Azure-beli virtuális gépre való áttelepítésre.
+Ez akkor fordulhat elő, ha az értékelés tulajdonságai között kiválasztott cél üzembehelyezési típus értéke **Ajánlott**, és az SQL-példány nem kompatibilis az Azure SQL-adatbázissal és felügyelt Azure SQL-példánnyal. A felhasználónak azt javasoljuk, hogy hozzon létre egy értékelést az Azure Migrate-ben **Azure VM** értékelési típussal annak meghatározásához, hogy a példányt futtató kiszolgáló migrálható-e Azure-beli virtuális gépre.
 A felhasználónak javasoljuk, hogy hozzon létre egy értékelést Azure Migrate az értékelés típusaként Azure-beli **virtuális gépet** annak megállapításához, hogy a példányt futtató kiszolgáló készen áll-e az Azure-beli virtuális gépekre való áttelepítésre:
 - Az Azure-beli virtuális gépek felmérései jelenleg a Azure Migrateban vannak, és nem veszik figyelembe az SQL-példányok és-adatbázisok Azure-beli virtuális gépen való futtatásának adott teljesítmény-mérőszámait. 
-- Amikor egy kiszolgálón futtat egy Azure-beli virtuális gép értékelését, az ajánlott méret és költségbecslés a kiszolgálón futó összes példányra vonatkozik, és a kiszolgáló áttelepítési eszköze segítségével áttelepíthetők az Azure-beli virtuális gépekre. A Migrálás előtt [tekintse át az Azure Virtual machines SQL Server teljesítményére vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+- Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
-## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Nem látok néhány adatbázist az értékelésben, annak ellenére, hogy a példány az értékelés részét képezi
+## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>Nem látok néhány adatbázist az értékelésben, pedig a példány az értékelés részét képezi
 
-Az Azure SQL Assessment csak online állapotú adatbázisokat tartalmaz. Ha az adatbázis bármilyen más állapotban van, az értékelés figyelmen kívül hagyja az ilyen adatbázisok készültségét, méretezését és költségszámítását. Ha szeretné kiértékelni az ilyen adatbázisokat, módosítsa az adatbázis állapotát, és számítsa ki újra az értékelést.
+Az Azure SQL-értékelés csak az online állapotú adatbázisokat tartalmazza. Ha az adatbázisok bármilyen más állapotban vannak, az értékelés figyelmen kívül hagyja a kompatibilitás-, méretezési és költségszámítását az ilyen adatbázisokra vonatkozóan. Ha szeretné értékelni ezeket az adatbázisokat, módosítsa az adatbázis állapotát, és számítsa újra az értékelést kis idő elteltével.
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>Szeretném összehasonlítani az SQL-példányok futtatásának költségeit az Azure-beli virtuális gépen vagy Azure SQL Database/Azure SQL felügyelt példányon
 
-Az Azure-beli **virtuális** gépeket ugyanazzal a csoporttal hozhatja létre, mint amelyet az **Azure SQL** Assessment szolgáltatásban használt. Ezután összehasonlíthatja a két jelentést egymás mellett. Bár az Azure-beli virtuális gépek felmérései jelenleg a Azure Migrateban vannak, és az Azure-beli virtuális gépen az SQL-példányok és-adatbázisok futtatásához szükséges teljesítmény-mérőszámok nem jelennek meg. Amikor egy kiszolgálón futtat egy Azure-beli virtuális gép értékelését, az ajánlott méret és költségbecslés a kiszolgálón futó összes példányra vonatkozik, és a kiszolgáló áttelepítési eszköze segítségével áttelepíthetők az Azure-beli virtuális gépekre. A Migrálás előtt [tekintse át az Azure Virtual machines SQL Server teljesítményére vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+Létrehozhat egy értékelést **Azure-beli virtuális gép** típussal ugyanarra a csoportra vonatkozóan, amelyet az **Azure SQL**-értékelésben is használt. Ezután összehasonlíthatja a két jelentést egymás mellett. Az Azure-beli virtuális gépek értékelése az Azure Migrate-ben ugyanakkor jelenleg az átemeléses migrálásra összpontosít, és nem veszi figyelembe az SQL-példányok és -adatbázisok Azure-beli virtuális gépen történő futtatásához szükséges teljesítménymetrikákat. Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Az Azure SQL Assessment szolgáltatás tárolási díja nulla
 Az Azure SQL felügyelt példányai esetében az első 32 GB/példány/hónap tárterülethez nem vehető igénybe tárterület, és a tárterülethez további tárolási díj is hozzáadódik 32GB-onként. [További információ](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
@@ -230,7 +230,7 @@ CSV-fájlon keresztül importált gépek esetén az AVS-felmérésben az alapér
 
 ## <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információk](concepts-dependency-visualization.md).
+A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségek elemzését is használhatja
@@ -244,7 +244,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)és a [függőségi ügynök](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Előfeltételek | [Tekintse át](concepts-dependency-visualization.md#agentless-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket. | [Tekintse át](concepts-dependency-visualization.md#agent-based-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket.
-Log Analytics | Nem szükségesek. | A Azure Migrate a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/logs/log-query-overview.md) a függőségi vizualizációhoz. [További információk](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nem szükségesek. | A Azure Migrate a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/logs/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
 Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizációhoz engedélyezett gépeken. A felderítést követően öt percen belül gyűjti az adatokat. | A gépen telepített Service Map ügynökök gyűjtenek adatokat a TCP-folyamatokról és a bejövő/kimenő kapcsolatokról az egyes folyamatokhoz.
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.

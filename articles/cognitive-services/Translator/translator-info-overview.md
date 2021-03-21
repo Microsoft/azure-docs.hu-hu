@@ -8,20 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
 ms.subservice: translator-text
-ms.date: 02/15/2021
+ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: fordító, szöveg fordítása, gépi fordítás, fordítási szolgáltatás
-ms.openlocfilehash: 72df700d38cad3ee31ef438d7df1c890acde9e6b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec76aa7554110b7440eb825f2d5e86ae2da6baa2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101727974"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657722"
 ---
 # <a name="what-is-the-translator-service"></a>Mi a Translator Service?
 
-A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](../../index.yml?panel=ai&pivot=products) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmények hozzáadását [90 nyelven és dialektusban](./language-support.md). Minden olyan hardveres platformon használható, amely bármilyen operációs rendszerrel rendelkezik szöveges fordításhoz.
+A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](../../index.yml?panel=ai&pivot=products) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi, hogy a többnyelvű felhasználói élményt [90 nyelven és dialektusban](./language-support.md) adja hozzá, és bármilyen operációs rendszer használatával szöveges fordításhoz is használható legyen.
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+
+* [**A gyors**](quickstart-translator.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](translator-how-to-signup.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](character-counts.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
+* Az [**oktatóanyagok**](tutorial-wpf-translation-csharp.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
+
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 
@@ -45,11 +53,9 @@ További információ a [NMT működéséről](https://www.microsoft.com/en-us/t
 
 ## <a name="improve-translations-with-custom-translator"></a>A fordítások javítása egyéni fordítóval
 
- Az egyéni fordító, a Translator Service egy bővítménye a fordítóval együtt használható a neurális fordítási rendszer testreszabásához és az adott terminológia és stílus fordításának javításához.
+ A fordítói szolgáltatás [Egyéni fordítójának](customization.md)a segítségével testre szabhatja a neurális fordítási rendszerét, és javíthatja az adott terminológia és stílus fordítását.
 
 A Custom Translator segítségével fordítási rendszereket építhet ki, amelyekkel kezelheti a saját vállalkozásában vagy iparágában használt terminológiát. A testreszabott fordítási rendszer könnyen integrálható a meglévő alkalmazásokkal, munkafolyamatokkal, webhelyekkel és eszközökkel a normál fordítón keresztül a category paraméter használatával.
-
-További információ a [Custom Translatorről](customization.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

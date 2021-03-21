@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.custom: references_regions
 ms.openlocfilehash: 3bba1155ec57db67968aec95d1d3386fc6cda006
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100634447"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatához
@@ -21,7 +21,7 @@ Az AK-hoz készült Virtual Nodes bővítmény a nyílt forráskódú projekt [v
 
 Ez a cikk áttekintést nyújt a régió rendelkezésre állásáról és a virtuális csomópontok használatának hálózati követelményeiről, valamint az ismert korlátozásokról.
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A virtuális csomópontok üzemelő példányai támogatják az összes régiót, ahol az ACI támogatja az VNET SKU-t.
 

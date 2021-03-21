@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: 0313394ad149460f82c98c63cab95b922b4a3da2
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102519605"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
@@ -57,7 +57,7 @@ A Azure Backup a virtuálisgép-Pillanatképek bővítmény használatával kés
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információk](../virtual-machines/extensions/features-windows.md#network-access).
+- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információ](../virtual-machines/extensions/features-windows.md#network-access).
   - Ha az ügynök nem támogatott verzióját használja, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
   - Ha letiltotta a hozzáférést `168.63.129.16` a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül sikertelenek lesznek. A 80, 443 és 32526 portok szükségesek, [További információ](../virtual-machines/extensions/features-windows.md#network-access).
 

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425624"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604066"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Előzetes verzió: az Azure rendszerkép-szerkesztő áttekintése
 
@@ -70,7 +70,7 @@ Az Azure VM rendszerkép-készítő egy teljes körűen felügyelt Azure-szolgá
 
 A sablon konfigurációit a PowerShell, az parancssori felület, az ARM-sablonok és az Azure VM rendszerkép-készítő DevOps feladatának használatával lehet átadni, amikor beküldi azt a szolgáltatásba, létre fog hozni egy Képsablon-erőforrást. A rendszerkép-sablon erőforrásának létrehozásakor az előfizetésében létrehozott átmeneti erőforráscsoport jelenik meg a következő formátumban: IT_ \<DestinationResourceGroup> _\<TemplateName>_ \( GUID). Az előkészítési erőforráscsoport a fájlban, a rendszerhéjban és a PowerShell-testreszabásban hivatkozott fájlokat és parancsfájlokat tartalmazza a ScriptURI tulajdonságban.
 
-A Build a `Run` lemezkép-sablon erőforráson való futtatásához a szolgáltatás ezután további erőforrásokat helyez üzembe a Build számára, mint például a virtuális gép, a hálózat, a lemez, a hálózati adapter stb. Ha meglévő VNET-rendszerkép használata nélkül hoz létre lemezképet, akkor a szolgáltatás egy nyilvános IP-címet és egy NSG is üzembe helyez, a szolgáltatás SSH vagy WinRM használatával csatlakozik a Build virtuális géphez. Ha kiválaszt egy meglévő VNET, akkor a szolgáltatás az Azure Private link használatával lesz üzembe helyezve, és a nyilvános IP-cím megadása nem kötelező, a rendszerkép-készítő hálózatkezeléssel kapcsolatos további részletekért tekintse meg a [részleteket](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking).
+A Build a `Run` lemezkép-sablon erőforráson való futtatásához a szolgáltatás ezután további erőforrásokat helyez üzembe a Build számára, mint például a virtuális gép, a hálózat, a lemez, a hálózati adapter stb. Ha meglévő VNET-rendszerkép használata nélkül hoz létre lemezképet, akkor a szolgáltatás egy nyilvános IP-címet és egy NSG is üzembe helyez, a szolgáltatás SSH vagy WinRM használatával csatlakozik a Build virtuális géphez. Ha kiválaszt egy meglévő VNET, akkor a szolgáltatás az Azure Private link használatával lesz üzembe helyezve, és a nyilvános IP-cím megadása nem kötelező, a rendszerkép-készítő hálózatkezeléssel kapcsolatos további részletekért tekintse meg a [részleteket](./linux/image-builder-networking.md).
 
 Ha a Build befejezi az összes erőforrást, az előkészítési erőforráscsoport és a Storage-fiók kivételével törölje a Képsablon-erőforrást, vagy hagyja ott a Build újbóli futtatását.
 
@@ -84,7 +84,7 @@ A (z) (AIB) regisztrálásakor a AIB szolgáltatás engedélyt ad az átmeneti e
 
 Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, létre kell hoznia egy Azure-beli felhasználó által hozzárendelt identitást, amely jogosult a képek olvasására és írására. Ha az Azure Storage-hoz fér hozzá, akkor a saját és a nyilvános tárolók olvasásához engedélyre van szüksége.
 
-Az engedélyeket részletesebben ismerteti a [PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell)és [az az parancssori](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli)felület.
+Az engedélyeket részletesebben ismerteti a [PowerShell](./linux/image-builder-permissions-powershell.md)és [az az parancssori](./linux/image-builder-permissions-cli.md)felület.
 
 ## <a name="costs"></a>Költségek
 A lemezképek Azure Image Builder szolgáltatással való létrehozásakor, kiépítésekor és tárolásakor a számítási, hálózati és tárolási költségek is felmerülhetnek. Ezek a költségek hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségekhez. Az erőforrásokra az Azure díjszabása alapján számítunk fel díjat. 
@@ -101,4 +101,3 @@ A rendszerkép-készítő jelenleg csak natív módon támogatja a Hyper-V gener
 ## <a name="next-steps"></a>Következő lépések 
  
 Az Azure Image Builder kipróbálásához tekintse meg a [Linux](./linux/image-builder.md) -és [Windows](./windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.
-

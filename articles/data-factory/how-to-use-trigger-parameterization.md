@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: ''
 ms.topic: conceptual
 ms.date: 03/02/2021
-ms.openlocfilehash: 57024d6cb23ab273aa69bf59f4ec436a6f873a05
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 50a9f9cd59ebeecae89580c878442eb20788f462
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193494"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593645"
 ---
 # <a name="reference-trigger-metadata-in-pipeline-runs"></a>Hivatkozás-trigger metaadatainak a folyamat futtatásakor
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a folyamat futásakor az trigger 
 
 A folyamatnak időnként meg kell ismernie és olvasnia a metaadatokat az triggertől, amely meghívja azt. Ha például az ablak indítási és befejezési időpontját futtató ablakos trigger fut, a folyamat különböző adatszeleteket vagy mappákat fog feldolgozni. Azure Data Factory a paraméterezés és a [System változó](control-flow-system-variables.md) használatával továbbíthatja a metaadatokat az triggerről a folyamatba.
 
-Ez a minta különösen az [ablakos triggerek](how-to-create-tumbling-window-trigger.md)esetében hasznos, ahol a trigger ablak kezdési és befejezési időpontját jeleníti meg.
+Ez a minta különösen az [ablakos eseményindítók](how-to-create-tumbling-window-trigger.md)esetében hasznos, ahol az eseményindító ablak kezdési és befejezési időpontja, valamint az [egyéni esemény eseményindítója](how-to-create-custom-event-trigger.md), ahol a triggerek elemzési és feldolgozási értékeit az [Egyéni definiált _adatok_ mezőben lehet megadni](../event-grid/event-schema.md).
 
 > [!NOTE]
 > A különböző trigger-típusok különböző meta-adatokat biztosítanak. További információ: [System változó](control-flow-system-variables.md)

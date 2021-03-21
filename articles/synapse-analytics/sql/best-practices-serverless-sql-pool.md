@@ -10,28 +10,28 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9e4dc7f50bc3734b78e9053fe2b35072b46af120
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609345"
+ms.locfileid: "104669474"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Ajánlott eljárások kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
 Ebben a cikkben az ajánlott eljárások gyűjteményét találja a kiszolgáló nélküli SQL-készlet használatára. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
 
-## <a name="general-considerations"></a>Általános megfontolások
-
 A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a kiszolgáló nélküli SQL-készleten kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
 
-## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Tároló és kiszolgáló nélküli SQL-készlet közös elhelyezése
+## <a name="storage-and-content-layout"></a>Tárolás és tartalom elrendezése
+
+### <a name="colocate-your-storage-and-serverless-sql-pool"></a>Tároló és kiszolgáló nélküli SQL-készlet közös elhelyezése
 
 A késés csökkentése érdekében keresse meg az Azure Storage-fiókját, vagy a CosmosDB analitikai tárterületet és a kiszolgáló nélküli SQL-készlet végpontját. A munkaterület létrehozása során kiépített Storage-fiókok és-végpontok ugyanabban a régióban találhatók.
 
 Az optimális teljesítmény érdekében, ha a kiszolgáló nélküli SQL-készlettel rendelkező más Storage-fiókokhoz fér hozzá, győződjön meg róla, hogy ugyanabban a régióban vannak. Ha nem ugyanabban a régióban találhatók, az adatok hálózati átvitele nagyobb késéssel jár a távoli régió és a végpont régiója között.
 
-## <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
+### <a name="azure-storage-throttling"></a>Azure Storage-szabályozás
 
 Előfordulhat, hogy több alkalmazás és szolgáltatás fér hozzá a Storage-fiókhoz. A tárolás szabályozása akkor történik meg, ha az alkalmazások, szolgáltatások és kiszolgáló nélküli SQL-készlet számítási feladatainak által generált kombinált IOPS vagy átviteli sebesség meghaladja a Storage-fiók korlátait. Ennek eredményeképpen jelentős negatív hatást tapasztal a lekérdezési teljesítményre.
 
@@ -40,7 +40,13 @@ A szabályozás észlelése esetén a kiszolgáló nélküli SQL-készlet beép�
 > [!TIP]
 > Az optimális lekérdezés-végrehajtás érdekében a lekérdezés végrehajtása során ne hangsúlyozzák a Storage-fiókot más munkaterhelésekkel.
 
-## <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezéshez
+### <a name="azure-ad-pass-through-performance"></a>Azure AD-alapú átmenő teljesítmény
+
+A kiszolgáló nélküli SQL-készlet lehetővé teszi a tárolóban lévő fájlok elérését Azure Active Directory (Azure AD) áteresztő vagy SAS hitelesítő adatok használatával. Előfordulhat, hogy lassabb teljesítményt tapasztal az Azure AD-n keresztül, mint az SAS.
+
+Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz.
+
+### <a name="prepare-files-for-querying"></a>Fájlok előkészítése lekérdezéshez
 
 Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
@@ -50,11 +56,20 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
 - Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja. Lásd: [fájlnév és filepath függvények használata adott partíciók célzásához](#use-filename-and-filepath-functions-to-target-specific-partitions).
 
-## <a name="push-wildcards-to-lower-levels-in-the-path"></a>Helyettesítő karakterek leküldése az elérési út alacsonyabb szintjeire
+## <a name="csv-optimizations"></a>CSV-optimalizálások
 
-Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). A kiszolgáló nélküli SQL-készlet felsorolja a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+### <a name="use-parser_version-20-to-query-csv-files"></a>CSV-fájlok lekérdezése PARSER_VERSION 2,0 használatával
 
-## <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
+A CSV-fájlok lekérdezése teljesítményre optimalizált elemző használatával végezhető el. Részletekért lásd: [PARSER_VERSION](develop-openrowset.md).
+
+### <a name="manually-create-statistics-for-csv-files"></a>CSV-fájlok statisztikáinak manuális létrehozása
+
+A kiszolgáló nélküli SQL-készlet statisztikái támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikák automatikusan létrejönnek a Parquet-fájlok oszlopaihoz, ha szükséges. Jelenleg nem jön létre automatikusan statisztikai adatok a CSV-fájlokban lévő oszlopokhoz, és a lekérdezésekben használt oszlopok esetében manuálisan kell létrehoznia a statisztikát, különösen a DISTINCT, a JOIN, a WHERE, a ORDER BY és a GROUP BY utasításban. A részletekért olvassa [el a kiszolgáló nélküli SQL-készlet statisztikáit](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
+
+
+## <a name="data-types"></a>Adattípusok
+
+### <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
 
 A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Ha követi a következő irányelveket, jobb teljesítményt érhet el: 
 
@@ -66,7 +81,7 @@ A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Ha
 - Ha lehetséges, használja az egész szám alapú adattípust. A RENDEZÉSi, ILLESZTÉSi és csoportosítási műveletek a karakteres adatoknál gyorsabban, egész számokon vannak végrehajtva.
 - Ha séma-következtetést használ, ellenőrizze a [késleltetett adattípusokat](#check-inferred-data-types).
 
-## <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
+### <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
 
 A [séma-következtetések](query-parquet-files.md#automatic-schema-inference) segítségével gyorsan írhat lekérdezéseket, és megvizsgálhatja az adatfájl-sémák ismerete nélkül. Ennek a kényelemnek a díja, hogy a következtetett adattípusok nagyobbak lehetnek, mint a tényleges adattípusok. Ez akkor fordulhat elő, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban. Így a kiszolgáló nélküli SQL-készlet varchar (8000)-ként következtet rá.
 
@@ -109,7 +124,13 @@ FROM
     ) AS nyc;
 ```
 
-## <a name="use-filename-and-filepath-functions-to-target-specific-partitions"></a>Fájlnevek és filepath függvények használata adott partíciók célzásához
+## <a name="filter-optimization"></a>Szűrő optimalizálása
+
+### <a name="push-wildcards-to-lower-levels-in-the-path"></a>Helyettesítő karakterek leküldése az elérési út alacsonyabb szintjeire
+
+Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](query-data-storage.md#query-multiple-files-or-folders). A kiszolgáló nélküli SQL-készlet felsorolja a Storage-fiókban lévő fájlokat, az elsőtől kezdve a Storage API használatával. Kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+
+### <a name="use-filename-and-filepath-functions-to-target-specific-partitions"></a>Fájlnevek és filepath függvények használata adott partíciók célzásához
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. A kiszolgáló nélküli SQL-készletet utasíthatja arra, hogy adott mappákat és fájlokat Kérdezzen le. Ez csökkenti a fájlok számát és a lekérdezés által beolvasott és feldolgozandó adatmennyiséget. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
@@ -123,28 +144,22 @@ További információért olvassa el a [filename](query-data-storage.md#filename
 
 Ha a tárolt adatai nincsenek particionálva, érdemes particionálni. Ezen függvények használatával optimalizálhatja azokat a lekérdezéseket, amelyek a fájlokat célozzák meg. Ha [lekérdezi az Azure szinapszis-táblák particionált Apache Sparkét](develop-storage-files-spark-tables.md) a kiszolgáló nélküli SQL-készletből, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
-## <a name="use-parser_version-20-to-query-csv-files"></a>CSV-fájlok lekérdezése PARSER_VERSION 2,0 használatával
+### <a name="use-proper-collation-to-utilize-predicate-pushdown-for-character-columns"></a>A megfelelő rendezés használata a predikátumok pushdown a karakteres oszlopokhoz
 
-A CSV-fájlok lekérdezése teljesítményre optimalizált elemző használatával végezhető el. Részletekért lásd: [PARSER_VERSION](develop-openrowset.md).
+A parketta-fájlban lévő adatsorok sorba vannak rendezve. A kiszolgáló nélküli SQL-készlet kihagyja a sorcsoport-csoportokat a WHERE záradékban megadott predikátum alapján, így csökkenti az IO-t, ami nagyobb lekérdezési teljesítményt eredményez. 
 
-## <a name="manually-create-statistics-for-csv-files"></a>CSV-fájlok statisztikáinak manuális létrehozása
+Vegye figyelembe, hogy a parketta-fájlokban szereplő pushdown predikátuma csak Latin1_General_100_BIN2_UTF8 rendezés esetén támogatott. Adott oszlop rendezését megadhatja a WITH záradék használatával. Ha ezt a rendezést a WITH záradék használatával nem adhatja meg, a rendszer az adatbázis rendezését fogja használni.
 
-A kiszolgáló nélküli SQL-készlet statisztikái támaszkodik az optimális lekérdezés-végrehajtási tervek létrehozásához. A statisztikák automatikusan létrejönnek a Parquet-fájlok oszlopaihoz, ha szükséges. Jelenleg nem jön létre automatikusan statisztikai adatok a CSV-fájlokban lévő oszlopokhoz, és a lekérdezésekben használt oszlopok esetében manuálisan kell létrehoznia a statisztikát, különösen a DISTINCT, a JOIN, a WHERE, a ORDER BY és a GROUP BY utasításban. A részletekért olvassa [el a kiszolgáló nélküli SQL-készlet statisztikáit](develop-tables-statistics.md#statistics-in-serverless-sql-pool) .
+## <a name="optimize-repeating-queries"></a>Ismétlődő lekérdezések optimalizálása
 
-## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
+### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
 A [CETAS](develop-tables-cetas.md) a kiszolgáló nélküli SQL-készlet legfontosabb funkcióinak egyike. A CETAS egy párhuzamos művelet, amely létrehozza a külső tábla metaadatait, és exportálja a SELECT lekérdezési eredményeket a Storage-fiókban lévő fájlok készletére.
 
-A CETAS használatával a lekérdezések gyakran használt részeit (például az összekapcsolt hivatkozási táblákat) a fájlok új készletéhez is tárolhatja. Ezután ehhez az egyetlen külső táblához csatlakozhat, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
+A CETAS segítségével megadhatja a lekérdezések gyakran használt részeit, például az összekapcsolt hivatkozási táblázatokat egy új fájlhoz. Ezután ehhez az egyetlen külső táblához csatlakozhat, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
 
 Ahogy a CETAS a parketta-fájlokat hozza létre, a rendszer automatikusan létrehozza a statisztikát, amikor az első lekérdezés erre a külső táblára irányul, ami jobb teljesítményt eredményez a CETAS-vel létrehozott táblázat későbbi lekérdezésekhez.
 
-## <a name="azure-ad-pass-through-performance"></a>Azure AD-alapú átmenő teljesítmény
-
-A kiszolgáló nélküli SQL-készlet lehetővé teszi a tárolóban lévő fájlok elérését Azure Active Directory (Azure AD) áteresztő vagy SAS hitelesítő adatok használatával. Előfordulhat, hogy lassabb teljesítményt tapasztal az Azure AD-n keresztül, mint az SAS.
-
-Ha jobb teljesítményre van szüksége, próbálja meg SAS hitelesítő adatok használatával hozzáférni a tárolóhoz, amíg az Azure AD átmenő teljesítmény nem javul.
-
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha kiszolgáló nélküli SQL-készlet helyett dedikált SQL-készlettel dolgozik, tekintse meg az ajánlott [eljárásokat a DEDIKÁLT SQL](best-practices-dedicated-sql-pool.md) -készletekhez az adott útmutatáshoz.
+Tekintse át a gyakori problémák megoldására vonatkozó [hibaelhárítási](resources-self-help-sql-on-demand.md) cikket. Ha kiszolgáló nélküli SQL-készlet helyett dedikált SQL-készlettel dolgozik, tekintse meg az ajánlott [eljárásokat a DEDIKÁLT SQL](best-practices-dedicated-sql-pool.md) -készletekhez az adott útmutatáshoz.
