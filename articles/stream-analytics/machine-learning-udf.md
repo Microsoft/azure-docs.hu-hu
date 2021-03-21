@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: c35d5d2f63f4a7abe80a0ff19e5994013355c386
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020519"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
@@ -186,7 +186,7 @@ Optimális skálázás esetén a Stream Analyticsi feladatnak több párhuzamos 
 
 Az ilyen késések elkerülése érdekében győződjön meg arról, hogy az Azure Kubernetes szolgáltatás (ak) fürtjének [megfelelő számú csomóponttal és replikával](../machine-learning/how-to-deploy-azure-kubernetes-service.md#using-the-cli)lett kiépítve. Fontos, hogy a webszolgáltatás nagy rendelkezésre állású legyen, és sikeres válaszokat ad vissza. Ha a feladat egy szolgáltatás nem érhető el választ (503) kap a webszolgáltatástól, a rendszer folyamatosan újrapróbálkozik az exponenciális visszalépéssel. Ha a sikertől (200) és a szolgáltatástól (503) nem érhető el válasz, a művelet sikertelen állapotba kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei](stream-analytics-javascript-user-defined-functions.md)
 * [Stream Analytics-feladat skálázása Azure Machine Learning Studio (klasszikus) függvénnyel](stream-analytics-scale-with-machine-learning-functions.md)

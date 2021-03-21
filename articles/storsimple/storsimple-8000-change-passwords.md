@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023754"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple jelszavának módosítására
@@ -92,7 +92,7 @@ A StorSimple Snapshot Manager jelszavát a Azure Portal használatával állíth
 
 Most frissíteni kell a StorSimple Snapshot Manager jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple biztonságáról](storsimple-8000-security.md).
 * További információ az [eszköz konfigurációjának módosításáról](storsimple-8000-modify-device-config.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).

@@ -7,10 +7,10 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98895917"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
@@ -176,7 +176,7 @@ Egy figyelő közreműködői beolvashatja az összes figyelési és frissítés
 |Microsoft. AlertsManagement/alertsSummary/*|A riasztási irányítópult kezelése.|
 |Microsoft. bepillantások/AlertRules/*|Riasztási szabályok kezelése.|
 |Microsoft. bepillantások/összetevők/*|Application Insights-összetevők kezelése.|
-|Microsoft. bepillantások/DiagnosticSettings/*|Diagnosztikai beállítások kezelése.|
+|Microsoft.Insights/DiagnosticSettings/*|Diagnosztikai beállítások kezelése.|
 |Microsoft. bepillantások/eventtypes/*|Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában.|
 |Microsoft. bepillantások/LogDefinitions/*|Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. A műveletnapló kategóriáinak listázása a tevékenység naplójában.|
 |Microsoft. bepillantások/MetricDefinitions/*|A metrikai definíciók (az adott erőforráshoz elérhető metrikai típusok listája) olvasása.|

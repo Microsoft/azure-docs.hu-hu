@@ -1,6 +1,6 @@
 ---
 title: Azure AD Domain Services erőforrás-erdő létrehozása a Azure PowerShell használatával | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory Domain Services erőforrás-erdőt és egy kimenő erdőt a helyszíni Active Directory tartományi szolgáltatások-környezethez Azure PowerShell használatával.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Active Directory Domain Services erőforrás-erdőt és egy kimenő erdőt a helyszíni Active Directory Domain Services-környezethez Azure PowerShell használatával.
 author: justinha
 manager: daveba
 ms.service: active-directory
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: justinha
 ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619967"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Hozzon létre egy Azure Active Directory Domain Services erőforrás-erdőt és a kimenő erdőszintű megbízhatóságot a helyszíni tartományba Azure PowerShell
@@ -102,7 +102,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
 1. Tekintse át a parancsfájlhoz szükséges következő paramétereket `New-AzureAaddsForest` . Győződjön meg arról, hogy az előfeltétel **Azure PowerShell** és az **Azure ad PowerShell** -modulok is rendelkezésre állnak. Győződjön meg arról, hogy megtervezte a virtuális hálózati követelményeket az alkalmazás és a helyszíni kapcsolat biztosításához.
 
-    | Név                         | Parancsfájl paramétere          | Leírás |
+    | Name                         | Parancsfájl paramétere          | Leírás |
     |:-----------------------------|---------------------------|:------------|
     | Előfizetés                 | *-azureSubscriptionId*    | Az Azure AD DS számlázáshoz használt előfizetés-azonosító. A [Get-AzureRMSubscription][Get-AzureRMSubscription] parancsmag használatával lekérheti az előfizetések listáját. |
     | Erőforráscsoport               | *-aaddsResourceGroupName* | A felügyelt tartomány és a kapcsolódó erőforrások erőforráscsoport neve. |
@@ -112,7 +112,7 @@ Felügyelt tartományi erőforrás-erdő létrehozásához használja a `New-Azu
 
     A `New-AzureAaddsForest` szkript létrehozhatja az Azure-beli virtuális hálózatot és az azure AD DS alhálózatot, ha ezek az erőforrások még nem léteznek. A parancsfájl opcionálisan létrehozhatja a számítási feladatok alhálózatait, ha meg van adva:
 
-    | Név                              | Parancsfájl paramétere                  | Leírás |
+    | Name                              | Parancsfájl paramétere                  | Description |
     |:----------------------------------|:----------------------------------|:------------|
     | Virtuális hálózat neve              | *-aaddsVnetName*                  | A felügyelt tartomány virtuális hálózatának neve.|
     | Címtér                     | *-aaddsVnetCIDRAddressSpace*      | A virtuális hálózat CIDR jelölése (a virtuális hálózat létrehozásakor).|
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 Most adja meg a parancsfájlt a következő információkkal:
 
-| Név                               | Parancsfájl paramétere     | Leírás |
+| Name                               | Parancsfájl paramétere     | Description |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS tartomány neve            | *-ManagedDomainFqdn* | A felügyelt tartomány teljes tartományneve, például *aaddscontoso.com* |
 | Helyszíni AD DS tartomány neve      | *-TrustFqdn*         | A megbízható erdő teljes tartományneve, például *onprem.contoso.com* |
@@ -299,7 +299,7 @@ A felügyelt tartományi erőforrás-erdőhöz csatlakoztatott Windows Server re
 1. Kattintson a jobb gombbal a tartománynévre, válassza az **új**, majd a **szervezeti egység** elemet.
 1. A név mezőbe írja be a *LocalObjects* nevet, majd kattintson az **OK gombra**.
 1. Válassza ki, majd kattintson a jobb gombbal a **LocalObjects** elemre a navigációs ablaktáblán. Válassza az **új** , majd a **csoport** lehetőséget.
-1. Írja *FileServerAccess* be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra**.
+1. Írja  be a FileServerAccess **nevet a csoport neve** mezőbe. A **Csoport hatóköre** területen válassza a **tartomány helyi** lehetőséget, majd kattintson **az OK gombra**.
 1. A tartalom ablaktáblán kattintson duplán a **FileServerAccess** elemre. Válassza a **tagok** lehetőséget, válassza a **Hozzáadás**, majd a **helyszínek** lehetőséget.
 1. Válassza ki a helyszíni Active Directory a **hely** nézetből, majd kattintson **az OK gombra**.
 1. Írja be a *tartományi felhasználók* értéket az **adja meg a kijelölendő objektumok nevét** mezőbe. Jelölje be a Névellenőrzés **jelölőnégyzetet**, adja meg a helyszíni Active Directory hitelesítő adatait, majd kattintson **az OK gombra**.
@@ -392,7 +392,7 @@ Ha el szeretné távolítani az egyirányú bejövő megbízhatóságot a helysz
 1. Válassza a **Megbízhatóságok** lapot, majd válassza ki a felügyelt tartomány erdőből a meglévő bejövő megbízhatóságot.
 1. Válassza az **Eltávolítás** lehetőséget, majd erősítse meg, hogy el kívánja távolítani a bejövő megbízhatóságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98033778"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Table Storage – bemeneti kötések Azure Functions
@@ -590,12 +590,12 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `Table` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `table` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `in` . A rendszer automatikusan beállítja ezt a tulajdonságot, amikor létrehozza a kötést a Azure Portalban. |
 |**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában szereplő táblát vagy entitást jelképezi. | 
-|**tableName** | **Táblanév** | A tábla neve.| 
+|**Táblanév** | **TableName** | A tábla neve.| 
 |**partitionKey** | **PartitionKey** |Választható. Az olvasni kívánt tábla entitás partíciós kulcsa. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**rowKey** |**RowKey** | Választható. Az olvasni kívánt tábla entitáshoz tartozó sor kulcsa. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
 |**eltarthat** |**Eltarthat** | Választható. A JavaScriptben olvasható entitások maximális száma. Tekintse meg a [használat](#usage) című szakaszt, amely útmutatást nyújt ennek a tulajdonságnak a használatáról.| 
@@ -650,6 +650,6 @@ A tábla adatát a rendszer JSON-karakterláncként adja át a függvénynek. Az
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Táblázatos tárolási adatok írása függvényből](./functions-bindings-storage-table-output.md)

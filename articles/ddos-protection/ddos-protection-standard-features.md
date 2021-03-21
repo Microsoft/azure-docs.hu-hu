@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
 ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97746558"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Az Azure DDoS Protection Standard szolgáltatásai
@@ -86,6 +86,6 @@ Az alkalmazások egymástól függetlenül figyelhetők. Egy alkalmazás normál
 
 Ismerje meg, hogyan reagálnak a szolgáltatások a támadásokra a [szimulációk tesztelésével](test-through-simulations.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre DDoS Protection-tervet](manage-ddos-protection.md).

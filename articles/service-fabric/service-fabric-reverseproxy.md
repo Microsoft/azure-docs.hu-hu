@@ -7,10 +7,10 @@ ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791104"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Fordított proxy az Azure-ban Service Fabric
@@ -150,7 +150,7 @@ A helyi fürt esetében alapértelmezés szerint a `Fabric_NodeIPOrFQDN` "localh
 
 Service Fabric Docker-összeállítási tárolókban futó szolgáltatások speciális Docker-compose igényelnek. a YML- *portok szakasz* http: vagy https: Configuration. További információ: [Docker-összeállítás támogatása az Azure Service Fabricban](service-fabric-docker-compose.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Fordított proxy eseményeinek diagnosztizálása](service-fabric-reverse-proxy-diagnostics.md)

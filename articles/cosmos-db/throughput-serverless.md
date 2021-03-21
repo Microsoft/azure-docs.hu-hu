@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98049830"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>A kiépített átviteli sebesség és a kiszolgáló nélküli választás
@@ -54,7 +54,7 @@ Bizonyos helyzetekben előfordulhat, hogy nem egyértelmű, hogy egy adott szám
 > [!NOTE]
 > Az előző példában bemutatott költségek csak demonstrációs célokat szolgálnak. A legfrissebb díjszabási információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [adatforgalom kiépítési teljesítményéről Azure Cosmos db](set-throughput.md)
 - További információ a [Azure Cosmos db kiszolgáló](serverless.md) nélküli használatáról

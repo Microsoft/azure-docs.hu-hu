@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d58deccb124e451106f43ae30c2fe910b3d41b54
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102634114"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Az Azure szinapszis Analytics adatkezelési partnerei
@@ -23,7 +23,7 @@ ms.locfileid: "102634114"
 Ez a cikk a Microsoft partner vállalatait mutatja be az Azure Szinapszisot támogató adatkezelési eszközökkel és megoldásokkal.
 
 ## <a name="data-management-partners"></a>Adatkezelési partnerek
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Aginity](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**Aginity**<br>A Aginity egy elemzési fejlesztési eszköz. A Microsoft szinapszis-platformjának teljes erejét az elemzők és mérnökök kezében teszi. A gazdag és intuitív SQL-fejlesztési környezet lehetővé teszi, hogy a csapattagok több mint egy tucat piacvezető elemzési platformon csatlakozzanak a csapat tagjaihoz. Lehetővé teszi a felhasználók számára az adatok különböző formátumokban való betöltését, valamint az üzleti intelligencia és a Machine Learning használati esetek kiszolgálása érdekében a komplex üzleti számítás gyors kialakítását. A teljes alkalmazás egy központi katalógus köré épül fel, amely az elemzési csapaton belüli együttműködést teszi lehetővé, és a kifinomult felügyeleti képességekkel és a részletes biztonsággal is rendelkezik. |[Termék lap](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>A Alation adatkatalógusa jelentősen javítja a termelékenységet, növeli a pontosságot, és az adatvezérelt döntéshozatalt segíti az elemzők számára. A Alation adatkatalógusa a szervezeten belüli mindenki számára lehetővé teszi az információk megtalálását, megértését és szabályozását. |[Termék lap](https://www.alation.com/product/data-catalog/)<br> |

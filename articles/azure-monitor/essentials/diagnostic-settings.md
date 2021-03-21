@@ -7,10 +7,10 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 254d403adc687074eae772bcdcc55793bb25b336
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048913"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
@@ -42,7 +42,7 @@ Az alábbi videó végigvezeti az útválasztási platform naplófájljainak a d
 ## <a name="destinations"></a>Célhelyek
 A platform naplói és metrikái a következő táblázatban található célhelyekre küldhetők. 
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | [Log Analytics munkaterület](../logs/design-logs-deployment.md) | A naplók és mérőszámok Log Analytics-munkaterületre való küldése lehetővé teszi, hogy a Azure Monitor által gyűjtött más figyelési adatokkal elemezze azokat a hatékony naplózási lekérdezésekkel, valamint más Azure Monitor funkciók, például riasztások és vizualizációk kihasználása érdekében. |
 | [Event Hubs](../../event-hubs/index.yml) | A naplók és metrikák küldésének Event Hubs lehetővé teszi az adatok továbbítását külső rendszerekre, például harmadik féltől származó SIEM-re és más log Analytics-megoldásokra.  |

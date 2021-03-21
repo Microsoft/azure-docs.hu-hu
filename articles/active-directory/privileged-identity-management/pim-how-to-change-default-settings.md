@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708483"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Azure AD-szerepkör beállításainak konfigurálása Privileged Identity Management
@@ -163,7 +163,7 @@ További információkért tekintse [meg az e-mailes értesítéseket Privileged
 
 Az **incidens/kérelem jegy** kapcsolójának használatával megkövetelheti, hogy a jogosult rendszergazdák a szerepkörük aktiválása után is tartalmazzák a jegy számát. Ezzel a gyakorlattal hatékonyabbá teheti a szerepkör-hozzáférés naplózását.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Használja a **multi-Factor Authentication** kapcsolót annak megadásához, hogy a felhasználóknak meg kell-e adniuk identitását az MFA-ban, mielőtt aktiválni tudják a szerepköreiket. Csak egyszer kell meggyőződniük a saját identitásukat, nem minden alkalommal, amikor aktiválnak egy szerepkört. Az MFA engedélyezésekor két tippet kell szem előtt tartani:
 
@@ -210,7 +210,7 @@ Ha a szükséges jóváhagyást delegálni szeretné a szerepkör aktiválásáh
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD-szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Azure AD-szerepkörökhöz tartozó biztonsági riasztások konfigurálása Privileged Identity Management](pim-how-to-configure-security-alerts.md)

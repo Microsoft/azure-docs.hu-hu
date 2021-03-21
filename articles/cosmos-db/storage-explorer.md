@@ -8,10 +8,10 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348653"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
@@ -278,7 +278,7 @@ Ha Storage Explorer megtalál egy önaláírt tanúsítványt, nem tudja, hogy a
 1. Végrehajtás `s_client -showcerts -connect microsoft.com:443` .
 1. Keresse meg az önaláírt tanúsítványokat. Ha nem biztos abban, hogy önaláírtak, akkor keresse meg a tárgy ("s:") és a kiállító ("i:") megegyezőjét.
 1. Ha bármilyen önaláírt tanúsítványt talál, másolja ki és illessze be a **-----a tanúsítvány megkezdése-----** , hogy **-----a záró tanúsítvány-----** egy újat. A CER-fájl mindegyikhez.
-1. Nyissa meg Storage Explorer, majd lépjen **Edit** az  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok** módosítása elemre. A file Picker használatával keresse meg, válassza ki, majd nyissa meg a következőt:. A létrehozott CER-fájlok.
+1. Nyissa meg Storage Explorer, majd lépjen az  >  **SSL-tanúsítványok**  >  **importálása tanúsítványok** módosítása elemre. A file Picker használatával keresse meg, válassza ki, majd nyissa meg a következőt:. A létrehozott CER-fájlok.
 
 Ha nem talál önaláírt tanúsítványokat, küldjön visszajelzést további segítségért.
 
@@ -355,7 +355,7 @@ Próbálja ki ezeket a javaslatokat:
 * Ellenőrizze, hogy a Azure Cosmos DB-fiók üzembe helyezése folyamatban van-e. Próbálkozzon újra, ha a fiók létrehozása sikeres volt.
 * Ha a fiók a **gyors hozzáférés** vagy a **helyi és a csatlakoztatott** csomópontok alatt van, ellenőrizze, hogy a fiók törölve van-e. Ha igen, manuálisan kell eltávolítania a csomópontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg ezt a videót, amelyből megtudhatja, hogyan használhatja a Azure Cosmos DB a Azure Storage Explorerban: [Azure Cosmos db használata a Azure Storage Explorerban](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](../vs-azure-tools-storage-manage-with-storage-explorer.md).

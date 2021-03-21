@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996542"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
 A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. A Microsoft 365 számítási feladatokat, például az Exchange Online-t és a Skype vállalati verziókat használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
 
-Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Néhány példa:
+Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Íme néhány példa:
 
 * A [multi-Azure ad címtár-topológiát](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)tervezi használni. Ezután egy szűrőt kell alkalmaznia annak szabályozására, hogy mely objektumok legyenek szinkronizálva egy adott Azure AD-címtárral.
 * Az Azure-hoz vagy a Microsoft 365hoz tartozó próbaverziót futtat, és csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
@@ -109,7 +109,7 @@ A tartományi szűrő beállításához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
 2. Indítsa el a **szinkronizálási szolgáltatást** a **Start** menüből.
-3. Válassza az **Összekötők** lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory tartományi szolgáltatások**. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.  
+3. Válassza az **Összekötők** lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory Domain Services**. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.  
    ![Összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Kattintson a címtárpartíciók **konfigurálása** elemre.
 5. A **Select Directory Partitions (címtárpartíciók kiválasztása** ) listában válassza ki és válassza ki a kívánt tartományokat. Győződjön meg arról, hogy csak a szinkronizálni kívánt partíciók vannak kiválasztva.  
@@ -166,7 +166,7 @@ A szervezeti egység-alapú szűrés konfigurálásához hajtsa végre a követk
 
 1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
 2. Indítsa el a **szinkronizálási szolgáltatást** a **Start** menüből.
-3. Válassza az **Összekötők** lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory tartományi szolgáltatások**. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.  
+3. Válassza az **Összekötők** lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory Domain Services**. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.  
    ![Összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. Kattintson a címtárpartíciók **konfigurálása** elemre, jelölje ki a konfigurálni kívánt tartományt, majd kattintson a **tárolók** elemre.
 5. Ha a rendszer kéri, adjon meg a helyszíni Active Directoryhoz olvasási hozzáféréssel rendelkező hitelesítő adatokat. Nem kell a párbeszédpanelen előre feltöltött felhasználónak lennie.
@@ -328,6 +328,6 @@ Több AD-erdő szinkronizálásakor a csoport-alapú szűrést egy másik csopor
 * Az egyik erdőben van egy olyan felhasználó, amely egy másik erdőben található e-mail-kapcsolattal rendelkezik. Továbbá úgy konfigurálta Azure AD Connect, hogy összekapcsolja a felhasználót a levelezési kapcsolattal. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
 - További információ a helyszíni [identitások Azure ad-vel való integrálásáról](whatis-hybrid-identity.md).

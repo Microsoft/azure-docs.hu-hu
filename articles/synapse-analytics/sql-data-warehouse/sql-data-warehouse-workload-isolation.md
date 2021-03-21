@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734780"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Az Azure szinapszis Analytics munkaterhelési csoport elkülönítése
@@ -85,7 +85,7 @@ A megosztott készlet erőforrásai az erőforrások elkülönítésére nincsen
 
 A megosztott készlet erőforrásaihoz való hozzáférés [fontossági](sql-data-warehouse-workload-importance.md) arányban van kiosztva.  Az azonos fontossági szintű kérelmek a megosztott készlet erőforrásait az első és az első kimenő érték alapján érik el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása](quickstart-configure-workload-isolation-tsql.md)
 - [MUNKATERHELÉS-CSOPORT LÉTREHOZÁSA](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

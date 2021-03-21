@@ -4,10 +4,10 @@ description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos 
 ms.date: 02/05/2021
 ms.topic: overview
 ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99593925"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
@@ -42,7 +42,7 @@ Az Azure-ban az irányítás implementálásának feladatát nagyrészt két szo
 Ez a szolgáltatás a vállalati szabványoknak megfelelően tartja meg ezeket az erőforrásokat.
 A [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) segítségével nyomon követheti az Azure-erőforrások és más felhőalapú szolgáltatók Felhőbeli használatát és kiadásait.
 
-## <a name="secure"></a>Biztonságos
+## <a name="secure"></a>Biztonságossá tétel
 
 Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában foglalja a fenyegetések felmérését, az adatok gyűjtését és elemzését, valamint az alkalmazások és erőforrások megfelelőségét. A biztonsági monitorozási és a veszélyforrások elemzését [Azure Security Center](../security-center/security-center-introduction.md)biztosítja, amely magában foglalja az egységes biztonsági felügyeletet és az összetett veszélyforrások elleni védelmet a hibrid Felhőbeli számítási feladatokban. Lásd: az Azure [Security bemutatása](../security/fundamentals/overview.md) – átfogó információk és útmutatás az Azure-erőforrások biztonságossá tételéhez.
 

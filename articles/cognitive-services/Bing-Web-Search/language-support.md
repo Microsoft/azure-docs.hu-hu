@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96340271"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>A Bing Web Search API nyelvi és területi támogatása
@@ -32,7 +32,7 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Kód|
+|Ország/régió|Code|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|
@@ -84,7 +84,7 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|dán|da-DK|
+|Dánia|Dán|da-DK|
 |Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
@@ -116,6 +116,6 @@ Másik lehetőségként megadhatja a piacot a `mkt` lekérdezési paraméterrel,
 |Egyesült Államok|Angol|en-US|
 |Egyesült Államok|Spanyol|es – USA|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

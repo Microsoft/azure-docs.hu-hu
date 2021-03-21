@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/08/2021
 ms.author: sngun
 ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98045665"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Alapvető ismeretek az Azure Cosmos DB tábla API szolgáltatásáról
@@ -36,7 +36,7 @@ Ezek az Azure Table Storage számára írt alkalmazások kódmódosítás nélk�
 ## <a name="table-offerings"></a>Table ajánlatok
 Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előnyökben részesülhet az Azure Cosmos DB Table API-ra való áttéréskor:
 
-| Funkció | Azure Table Storage | Azure Cosmos DB Table API |
+| Szolgáltatás | Azure Table Storage | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | Késés | Gyors, de nincs felső korlátja a késésnek. | Az olvasások és írások egyszámjegyű ezredmásodperces késése <10 ms-os késéssel, az olvasási és írási műveletek esetében a esetek 99% percentilis esetében, bármilyen méretben, bárhol a világon. |
 | Teljesítmény | Változó teljesítménymodell. A táblák skálázhatósági korlátja másodpercenként 20 000 művelet. | Hatékonyan skálázható a [táblánként dedikált és fenntartott átviteli sebességgel](request-units.md), amelynek rendelkezésre állását SLA-k szavatolják. A fiókokban nincs korlátozva az átviteli sebesség felső határa, és a szolgáltatás táblánként és másodpercenként legalább 10 millió műveletet támogat. |
@@ -47,7 +47,7 @@ Ha jelenleg az Azure Table Storage szolgáltatást használja, az alábbi előny
 | Díjszabás | Fogyasztás-alapú. | Elérhető mind a [fogyasztáson alapuló](serverless.md) , mind a [kiosztott kapacitási](set-throughput.md) módokban. |
 | SLA-k | 99,9% – 99,99% rendelkezésre állás a replikációs stratégiától függően. | 99,999%-os olvasási rendelkezésre állás, 99,99% írási rendelkezésre állás egy egyrégiós fiókon és 99,999% írási rendelkezésre állás a többrégiós fiókokon. A rendelkezésre állást, a késést, az átviteli sebességet és a konzisztenciát [átfogó SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) . |
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azure.com). Ezután első lépésként hajtsa végre a [Table API .NET-keretrendszerrel való használatának rövid útmutatóját](create-table-dotnet.md). 
 
@@ -55,7 +55,7 @@ Hozzon létre egy Azure Cosmos DB-fiókot az [Azure Portalon](https://portal.azu
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Íme, pár hivatkozás az első lépések megtételéhez:
 * [.NET-alkalmazás létrehozása a Table API-val](create-table-dotnet.md)

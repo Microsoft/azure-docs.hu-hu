@@ -9,10 +9,10 @@ ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561579"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák lekérése a Resource Manager-alapú üzemi modellben
@@ -163,7 +163,7 @@ Age InterfaceProperty IpAddress  MacAddress
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszíni/kapcsolati szolgáltató oldalán problémák léptek fel
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP-tábla, ha a helyszín/kapcsolatszolgáltató oldalán problémák léptek fel
 Ha a helyszíni vagy a kapcsolati szolgáltatóval kapcsolatos probléma merül fel, az ARP-tábla két dolog egyikét fogja megjeleníteni. A helyszíni MAC-címek megjelenítése nem fejeződött be, vagy csak a Microsoft bejegyzés jelenik meg az ARP táblában.
   
 ```output
@@ -191,7 +191,7 @@ Age InterfaceProperty IpAddress  MacAddress
 * Ha problémák merülnek fel a Microsoft oldalán, nem jelenik meg a társak számára megjelenített ARP-táblázat. 
 * Nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Adja meg, hogy van-e probléma a 2. rétegbeli kapcsolattal. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ellenőrizze az ExpressRoute áramkör 3. rétegbeli konfigurációit.
   * A BGP-munkamenetek állapotának megállapításához lekérheti az útvonal összegzését.
   * Az útválasztási táblázat lekérésével meghatározhatja, hogy mely előtagokat hirdessen meg a rendszer a ExpressRoute között.

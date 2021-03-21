@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.custom: seodec18, mvc, devx-track-js
 ms.openlocfilehash: c8477bd91c3a02a2cd02d341c38c16da251902ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004806"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban a Azure Portal használatával
@@ -83,7 +83,7 @@ Válassza az **Igen** lehetőséget, amikor a megerősítési párbeszédpanel m
 
 :::image type="content" source="media/container-instances-quickstart-portal/qs-portal-10.png" alt-text="Tároló példány jóváhagyásának törlése a Azure Portal]":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerképből. Ha szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy privát Azure-tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

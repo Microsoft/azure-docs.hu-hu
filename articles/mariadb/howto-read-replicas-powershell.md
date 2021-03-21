@@ -3,15 +3,15 @@ title: Olvasási replikák kezelése – Azure PowerShell-Azure Database for Mar
 description: Ismerje meg, hogyan állíthat be és kezelhet olvasási replikákat Azure Database for MariaDB a PowerShell használatával.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 43f0de153a19c0ee7ef44539407c0af4fda61c72
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98664987"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a PowerShell használatával
@@ -54,7 +54,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 A `New-AzMariaDbServerReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelyben a replika-kiszolgáló létrejön.  |
 | Name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -83,7 +83,7 @@ Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 
 A `Get-AzMariaDReplica` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Leírás  |
+| Beállítás | Példaérték | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | ServerName | mydemoserver | A forráskiszolgáló neve vagy azonosítója. |

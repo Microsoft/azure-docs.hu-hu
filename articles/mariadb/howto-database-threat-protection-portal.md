@@ -3,14 +3,14 @@ title: Komplex veszélyforrások elleni védelem – Azure Portal – Azure Data
 description: A veszélyforrások elleni védelem Azure Database for MariaDB észleli a rendellenes adatbázis-tevékenységeket, amelyek az adatbázis potenciális biztonsági fenyegetéseit jelzik.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 33bc93c62c32010e28cc8bb783bcef6f40700ca0
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98665106"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>Komplex veszélyforrások elleni védelem Azure Database for MariaDB

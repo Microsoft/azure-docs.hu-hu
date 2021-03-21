@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: apimpm
 ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688416"
 ---
 # <a name="api-management-cross-domain-policies"></a>Az API Management tartományközi házirendjei
@@ -53,7 +53,7 @@ A `cross-domain` szabályzat segítségével elérhetővé teheti az API-t az Ad
 
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Igen|
+|tartományok közötti|Gyökérelem. A gyermek elemeknek meg kell felelniük az [Adobe tartományok közötti házirend fájljának specifikációjának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -127,22 +127,22 @@ Ez a példa azt mutatja be, hogyan lehet támogatni a repülés előtti kérelme
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|CORS|Gyökérelem.|Igen|N/A|
-|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins` tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Igen|N/A|
-|forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Igen|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
-|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|Nem|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
+|CORS|Gyökérelem.|Yes|N/A|
+|engedélyezett – eredetek|Olyan `origin` elemeket tartalmaz, amelyek leírják a tartományok közötti kérelmek engedélyezett eredetét. `allowed-origins` tartalmazhat egy olyan `origin` elemet `*` , amely engedélyezi bármely forrás használatát, vagy egy vagy több URI-t `origin` tartalmazó elemet.|Yes|N/A|
+|forrás (origin)|Az érték lehet az `*` összes eredet engedélyezése, vagy egy URI, amely egyetlen forrást határoz meg. Az URI-nak tartalmaznia kell egy sémát, egy gazdagépet és egy portot.|Yes|Ha a portot kihagyja egy URI-ban, a 80-es portot használja a rendszer a HTTP protokollhoz, és a 443-es portot használja a HTTPS protokollhoz.|
+|engedélyezett – metódusok|Ez az elem akkor szükséges, ha a GET vagy a POST metódustól eltérő módszerek engedélyezettek. `method`A támogatott http-műveleteket megadó elemeket tartalmazza. Az érték az `*` összes metódust jelzi.|No|Ha ez a szakasz nem létezik, a GET és a POST is támogatott.|
 |method|HTTP-műveletet ad meg.|`method`Ha a szakasz jelen van, legalább egy elem megadása kötelező `allowed-methods` .|N/A|
-|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|Nem|N/A|
-|fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|Nem|N.A.|
+|engedélyezett – fejlécek|Ez az elem olyan elemeket tartalmaz, `header` amelyek megadják a kérésben szerepeltethető fejlécek nevét.|No|N/A|
+|fejlécek közzététele|Ez az elem olyan elemeket tartalmaz, `header` amelyek az ügyfél által elérhető fejlécek nevét határozzák meg.|No|N.A.|
 |fejléc|Megadja a fejléc nevét.|Legalább egy `header` elemet meg kell adni, `allowed-headers` vagy `expose-headers` Ha a szakasz jelen van.|N/A|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|Nem|hamis|
-|megszakítás – nem egyező – kérelem|Ez az attribútum a CORS házirend-beállításoknak nem megfelelő eltérő eredetű kérelmek feldolgozását vezérli. Ha a OPTIONs kérést repülés előtti kérelemként dolgozza fel, és nem felel meg a CORS házirend-beállításoknak: Ha az attribútum értéke, a rendszer `true` azonnal leállítja a kérést üres 200 OK-válaszsal. Ha az attribútum értéke, akkor `false` ellenőrizze a bejövő elemek közvetlen gyermekeit, és alkalmazza azokat a beérkező más hatókörű CORS-házirendekhez.  Ha nem található CORS-házirend, a kérést üres 200 OK-választal szakítja meg. Ha a GET vagy HEAD kérelem magában foglalja a forrás fejlécet (és ezért a rendszer az eltérő eredetű kérelemként dolgozza fel), és nem felel meg a CORS házirend-beállításoknak: Ha az attribútum értéke, a rendszer `true` azonnal leállítja a kérést üres 200 OK-válaszsal. Ha az attribútum értéke `false` , engedélyezze a kérést a szokásos módon, és ne adjon hozzá CORS-fejléceket a válaszhoz.|Nem|true|
-|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|Nem|0|
+|hitelesítő adatok engedélyezése|Az `Access-Control-Allow-Credentials` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van arra, hogy az ügyfél képes legyen hitelesítő adatokat küldeni a tartományok közötti kérelmekben.|No|hamis|
+|megszakítás – nem egyező – kérelem|Ez az attribútum a CORS házirend-beállításoknak nem megfelelő eltérő eredetű kérelmek feldolgozását vezérli. Ha a OPTIONs kérést repülés előtti kérelemként dolgozza fel, és nem felel meg a CORS házirend-beállításoknak: Ha az attribútum értéke, a rendszer `true` azonnal leállítja a kérést üres 200 OK-válaszsal. Ha az attribútum értéke, akkor `false` ellenőrizze a bejövő elemek közvetlen gyermekeit, és alkalmazza azokat a beérkező más hatókörű CORS-házirendekhez.  Ha nem található CORS-házirend, a kérést üres 200 OK-választal szakítja meg. Ha a GET vagy HEAD kérelem magában foglalja a forrás fejlécet (és ezért a rendszer az eltérő eredetű kérelemként dolgozza fel), és nem felel meg a CORS házirend-beállításoknak: Ha az attribútum értéke, a rendszer `true` azonnal leállítja a kérést üres 200 OK-válaszsal. Ha az attribútum értéke `false` , engedélyezze a kérést a szokásos módon, és ne adjon hozzá CORS-fejléceket a válaszhoz.|No|true|
+|Elővizsgálat – eredmény-Max-Age|Az `Access-Control-Max-Age` elővizsgálati válasz fejléce az attribútum értékére lesz állítva, és hatással van a felhasználói ügynöknek a repülés előtti válasz gyorsítótárazására.|No|0|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -173,13 +173,13 @@ Ha hozzáadja a visszahívási paramétert `?cb=XXX` , a visszaadja a jsnop tám
 
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|jsnop támogatással|Gyökérelem.|Igen|
+|jsnop támogatással|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Igen|N/A|
+|visszahívás – paraméter – név|A tartományok közötti JavaScript-függvény hívása a teljes tartománynévvel, ahol a függvény található.|Yes|N/A|
 
 ### <a name="usage"></a>Használat
 Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.

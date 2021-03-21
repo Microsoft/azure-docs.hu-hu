@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.openlocfilehash: f33c5f0fdf69737df0d8bd83499ded1e0e0f4f88
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898113"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
@@ -49,7 +49,7 @@ Ha a **Check (ellenőrzés**) gombra kattint, a megadott porton lévő virtuáli
 
 ![Virtuális gép csatlakozási eredményeinek ellenőrzése][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Távoli végpont kapcsolatának ellenőrzése
+## <a name="check-remote-endpoint-connectivity"></a>A távoli privát végpont csatlakozásának ellenőrzése
 
 Ha szeretné megnézni a kapcsolatot és a késést egy távoli végponton, akkor a **cél** szakaszban válassza a **manuális megadása** választógombot, adja meg az URL-címet és a portot, majd kattintson az **ellenőrzése** gombra.  Ez a távoli végpontok, például a webhelyek és a tárolási végpontok esetében használatos.
 

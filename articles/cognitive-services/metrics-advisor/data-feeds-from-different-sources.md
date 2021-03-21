@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: mbullwin
 ms.openlocfilehash: c4d1d23da5fd9678cc5b9477ddeed0daf4f5ac36
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348619"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
-| Hitelesítési típusok | Leírás |
+| Hitelesítési típusok | Description |
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
@@ -37,11 +37,11 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 | Adatforrások | Hitelesítési típusok |
 |-------------| ---------------------|
-|[**Azure Application Insights**](#appinsights)|  Alapszintű |
+|[**Azure-Application Insights**](#appinsights)|  Alapszintű |
 |[**Azure Blob Storage (JSON)**](#blob) | Alapszintű<br>Felügyelt identitás|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Alapszintű |
 |[**Azure Data Explorer (Kusto)**](#kusto) | Alapszintű<br>Felügyelt identitás|
-|[**Azure Data Lake Storage Gen2**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
+|[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>Felügyelt identitás<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
 |[**Azure-Table Storage**](#table) | Alapszintű | 
 |[**ElasticSearch**](#es) | Alapszintű |
@@ -53,7 +53,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatforrásokhoz való hitelesítéshez. A következő részekben az *alapszintű* hitelesítéshez szükséges paramétereket kell megadni. 
 
-## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure Application Insights</span>
+## <a name="span-idappinsightsazure-application-insightsspan"></a><span id="appinsights">Azure-Application Insights</span>
 
 * **Alkalmazás azonosítója**: ezt az alkalmazást a Application Insights API használatakor lehet azonosítani. Az alkalmazás AZONOSÍTÓjának lekéréséhez tegye a következőket:
 
@@ -82,7 +82,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
 
 * **Tároló**: a metrikai tanácsadó a blob-fájlként (egy blob/timestamp) tárolt idősoros adatokat vár egyetlen tárolóban. Ez a tároló neve mező.
 
-* **Blob-sablon**: Ez a blob-fájlnevek sablonja. Például: `/%Y/%m/X_%Y-%m-%d-%h-%M.json`. A következő paraméterek támogatottak:
+* **Blob-sablon**: Ez a blob-fájlnevek sablonja. Példa: `/%Y/%m/X_%Y-%m-%d-%h-%M.json`. A következő paraméterek támogatottak:
   * `%Y` az év a következőképpen van formázva `yyyy`
   * `%m` a hónap a következőképpen van formázva `MM`
   * `%d` a nap a következőképpen van formázva `dd`
@@ -232,7 +232,7 @@ The timestamp field must match one of these two formats:
 
 ## <a name="span-idhttphttp-requestspan"></a><span id="http">HTTP-kérelem</span>
 
-* **Kérelem URL-** címe: egy HTTP URL-cím, amely egy JSON-t adhat vissza. A (z)% Y,% m,% d,% h,% M helyőrzők támogatottak:% Y = év a (z) éééé,% m = hónap formátumban,% d = nap a (z) HH formátumban,% h = óra a (z) óó,% M = perc formátumban, mm-ben. Például: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
+* **Kérelem URL-** címe: egy HTTP URL-cím, amely egy JSON-t adhat vissza. A (z)% Y,% m,% d,% h,% M helyőrzők támogatottak:% Y = év a (z) éééé,% m = hónap formátumban,% d = nap a (z) HH formátumban,% h = óra a (z) óó,% M = perc formátumban, mm-ben. Példa: `http://microsoft.com/ProjectA/%Y/%m/X_%Y-%m-%d-%h-%M`.
 * **Http-metódus kérése**: a Get vagy a post használata.
 * **Kérelem fejléce**: hozzáadhat egyszerű hitelesítést. 
 * **Kérelem tartalma**: csak a JSON-adattartalom támogatott. A hasznos adatok helyőrzője @StartTime támogatott. A válasznak a következő JSON formátumúnak kell lennie: [{"Timestamp": "2018-01-01T00:00:00Z", "piac": "en-us", "Count": 11, "bevétel": 1.23}, {"Timestamp": "2018-01-01T00:00:00Z", "piac": "zh-CN", "Count": 22, "bevétel": 4,56}]. (például a 2020-06-21T00:00:00Z betöltését, @StartTime = 2020-06-21T00:00:00.0000000 + 00:00)
@@ -261,7 +261,7 @@ The timestamp field must match one of these two formats:
 * **Kapcsolati sztring**: a POSTGRESQL-adatbázis eléréséhez használt kapcsolati sztring.
 * **Lekérdezés**: egy lekérdezés, amely a többdimenziós idősoros adatsorokba gyűjti az adatgyűjtési és-kialakítási adatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A metrikus adatok rendszerbe való betöltésére való várakozás során olvassa el az [adatcsatorna-konfigurációk kezelésével](how-tos/manage-data-feeds.md)kapcsolatos témakört.
 * A metrikai adatok betöltését követően beállíthatja a [metrikákat és a konfiguráció finomhangolását](how-tos/configure-metrics.md).

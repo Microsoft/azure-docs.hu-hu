@@ -4,10 +4,10 @@ description: Ismerje meg a feladatokat és a feladatokat, valamint azt, hogyan h
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95808592"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Feladatok és feladatok a Azure Batchban
@@ -163,6 +163,6 @@ Az ügyfélalkalmazás vagy szolgáltatás a [Get information about a task](/res
 
 Az összes szolgáltatás által definiált környezeti változót tartalmazó teljes listát megtalálja a [Számítási csomópont környezeti változói](batch-compute-node-environment-variables.md) című részben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [fájlokról és a címtárakról](files-and-directories.md).

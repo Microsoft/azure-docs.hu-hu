@@ -5,10 +5,10 @@ ms.date: 03/10/2021
 ms.topic: reference
 ms.custom: generated
 ms.openlocfilehash: d7b4be0b35fdfebd2f680a299bc7b90375e36afc
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633767"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
@@ -91,7 +91,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Struktúra. streaming/Services (struktúra streaming)
 - inkapszula. WAF/fiókok
 - LiveArena. Broadcast/Services (LiveArena-szórás)
-- Mailjet. email/szolgáltatások (mailjet E-mail szolgáltatás)
+- Mailjet.Email/services (mailjet E-mail szolgáltatás)
 - Microsoft. HRE/domainServices (Azure AD Domain Services)
 - Microsoft. aadiam/azureadmetrics
 - Microsoft. aadiam/privateLinkForAzureAD (privát hivatkozás az Azure AD-hez)
@@ -639,7 +639,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - szolgáltatók. test/statelessresources
 - RavenHq. db/adatbázisok (RavenHQ)
 - Raygun. CrashReporting/apps (Raygun)
-- Sendgrid. email/fiókok (SendGrid-fiókok)
+- Sendgrid.Email/accounts (SendGrid-fiókok)
 - Sparkpost. Basic/Services (SparkPost)
 - stackify. retrace/Services (Stackify)
 - test. Shoebox/testresources

@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: 11c1d76b5784587f234455f81595778897569eb1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99594350"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-r"></a>Oktatóanyag: a hálózat konfigurálása Azure Stack Edge Pro R-hez
@@ -134,7 +134,7 @@ Ez egy opcionális konfiguráció.
 
     1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-    2. A **hitelesítés** területen válassza a **nincs** vagy az **NTLM** lehetőséget. Ha engedélyezi a számítást, és a IoT Edge modult használja a Azure Stack Edge Pro R-eszközön, javasoljuk, hogy a webproxy-hitelesítést a **none** értékre állítsa be. Az **NTLM** nem támogatott.
+    2. A **Hitelesítés** területen válassza a **Nincs** vagy az **NTLM** lehetőséget. Ha engedélyezi a számítást, és a IoT Edge modult használja a Azure Stack Edge Pro R-eszközön, javasoljuk, hogy a webproxy-hitelesítést a **none** értékre állítsa be. Az **NTLM** nem támogatott.
 
     3. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 

@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: d8bcc4b68082fdf0d1f86dc341c3313f9d8788c4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050681"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Teljesítményszámlálók gyűjtése a Azure Monitor linuxos alkalmazásaihoz 
@@ -115,7 +115,7 @@ Miután konfigurálta a Linux Log Analytics-ügynökét, hogy adatokat küldjön
 | Objektum neve | Számláló neve |
 |:--|:--|
 | MySQL-adatbázis | Lemezterület bájtban |
-| MySQL-adatbázis | Táblák |
+| MySQL-adatbázis | Táblázatok |
 | MySQL-kiszolgáló | Megszakított kapcsolatok PCT |
 | MySQL-kiszolgáló | A kapcsolatok használata PCT |
 | MySQL-kiszolgáló | Lemezterület-használat bájtban |

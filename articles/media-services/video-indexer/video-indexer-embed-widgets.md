@@ -12,10 +12,10 @@ ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797788"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
@@ -30,7 +30,7 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
@@ -43,7 +43,7 @@ A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amel
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -57,7 +57,7 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Name|Definíció|Description|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
@@ -291,7 +291,7 @@ Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. `&autoplay=
 
 Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) -tárházat, amely mintákat tartalmaz video Indexer API-hoz és widgetekhez:
 
-| Fájl/mappa                       | Leírás                                |
+| Fájl/mappa                       | Description                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | Videó-indexelő videó betöltése egyéni Azure Media Playerban.                        |
 | `azure-media-player-vi-insights`  | A VI-betekintést egyéni Azure Media Player ágyazhatja be.                             |
@@ -308,7 +308,7 @@ Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-vi
 
 További információ: [támogatott böngészők](video-indexer-overview.md#supported-browsers).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Video Indexer információk megtekintésével és szerkesztésével kapcsolatos információkért lásd: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 

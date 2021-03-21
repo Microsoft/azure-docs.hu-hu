@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: jlian
 ms.openlocfilehash: 6f326bafb311acedc48c5a349c78f1cd6bcebc87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101661154"
 ---
 # <a name="iot-hub-classic-ip-filter-and-how-to-upgrade"></a>Klasszikus IP-szűrés IoT Hub és frissítés 
@@ -20,7 +20,7 @@ A IoT Hub frissített IP-szűrője védi a beépített végpontot, és alapérte
 
 A szolgáltatás megszakadásának elkerülése érdekében az áttelepítési határidő előtt végre kell hajtania az irányított frissítést, ekkor a rendszer automatikusan végrehajtja a frissítést. További információ az áttelepítési idővonalról: [Azure Update](https://aka.ms/ipfilterv2azupdate).
 
-## <a name="how-to-upgrade"></a>A frissítés módja
+## <a name="how-to-upgrade"></a>A frissítés lépései
 
 1.  Látogasson el Azure Portal
 2.  Keresse meg az IoT-központot.

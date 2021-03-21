@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724677"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Hozzon létre rugalmasságot az identitás-és hozzáférés-kezelési infrastruktúrában
@@ -51,7 +51,7 @@ A következő ábra a rugalmasság növelését hat konkrét módon mutatja be. 
   
 ![A rendszergazdai rugalmasság áttekintését bemutató ábra](./media/resilience-in-infrastructure/admin-resilience-overview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Rugalmassági erőforrások rendszergazdák és építészek számára
  
 * [Rugalmasság létrehozása a hitelesítőadat-kezeléssel](resilience-in-credentials.md)

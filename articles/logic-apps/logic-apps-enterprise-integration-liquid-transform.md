@@ -9,10 +9,10 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
 ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992709"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>A JSON és az XML átalakítása folyékony sablonokkal Azure Logic Apps
@@ -66,7 +66,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
    }
    ```
 
-1. Mentse a sablont a bővítmény használatával `.liquid` . Ez a példa a következőt használja: `SimpleJsonToJsonTemplate.liquid` .
+1. Mentse a sablont a bővítmény használatával `.liquid` . Ez a példa a következőt használja: `SimpleJsonToJsonTemplate.liquid`.
 
 ## <a name="upload-the-template"></a>A sablon feltöltése
 

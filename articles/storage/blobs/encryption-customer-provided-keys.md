@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694694"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Titkosítási kulcs megadása a blob Storage-kérelemben
@@ -41,7 +41,7 @@ Minden blob-pillanatképhez saját titkosítási kulcs tartozhat.
 
 REST-hívások esetén az ügyfelek a következő fejlécek segítségével biztonságosan továbbítják a titkosítási kulcs információit a blob Storage-kérelemre:
 
-|Kérelem fejléce | Leírás |
+|Kérelem fejléce | Description |
 |---------------|-------------|
 |`x-ms-encryption-key` |Írási és olvasási kérelmek esetén egyaránt szükséges. Base64 kódolású AES-256 titkosítási kulcs értéke. |
 |`x-ms-encryption-key-sha256`| Írási és olvasási kérelmek esetén egyaránt szükséges. A titkosítási kulcs Base64 kódolású SHA256. |
@@ -76,7 +76,7 @@ A Blobok titkosításához használt titkosítási kulcs elforgatásához tölts
 >
 > Ügyeljen arra, hogy a blob Storage-ba irányuló kérelemben megadott titkosítási kulcsot a Azure Key Vault. Ha a titkosítási kulcs nélküli tárolón vagy blobon próbálkozik írási művelettel, a művelet sikertelen lesz, és nem fog tudni hozzáférni az objektumhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ügyfél által megadott kulcs meghatározása a blob Storage-hoz a .NET-tel](storage-blob-customer-provided-key.md)
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)

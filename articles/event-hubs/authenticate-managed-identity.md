@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98805287"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
@@ -57,8 +57,8 @@ Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon 
 1. A Azure Portal navigáljon a Event Hubs névtérhez, és jelenítse meg a névtér **áttekintését** . 
 1. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez.
 1.  Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
-3.  Válassza a **Hozzáadás**, majd a **szerepkör-hozzárendelés hozzáadása** _ elemet.
-4.  Az _ *szerepkör-hozzárendelés hozzáadása* lapon kövesse az alábbi lépéseket:
+3.  Válassza a **Hozzáadás** lehetőséget, majd válassza a * * szerepkör-hozzárendelés hozzáadása * * * lehetőséget.
+4.  A **szerepkör-hozzárendelés hozzáadása** lapon kövesse az alábbi lépéseket:
     1. A **szerepkör** területen válassza ki a hozzárendelni kívánt Event Hubs szerepkört. Ebben a példában ez az **Azure Event Hubs-adattulajdonos**.
     1. A **hozzáférés hozzárendelése** mezőhöz területen válassza a **app Service** a **rendszerhez rendelt felügyelt identitás** területen. 
     1. Válassza ki azt az **előfizetést** , amelyben a webalkalmazás felügyelt identitása létrejött.
@@ -155,7 +155,7 @@ Apache Kafka alkalmazások használatával üzeneteket küldhet és fogadhat az 
 - [Event Hubs for Kafka – üzenetek küldése és fogadása a felügyelt identitás OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a következő cikket: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
 - Tekintse meg a következő kapcsolódó cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)
