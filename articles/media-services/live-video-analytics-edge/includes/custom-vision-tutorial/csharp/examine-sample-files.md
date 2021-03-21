@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/05/2020
 ms.author: russellcooks
 ms.openlocfilehash: 359c5f93516ea6f0561865bd86e4f51dedb4c3a5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358238"
 ---
 1. A Visual Studio Code-ban keresse meg az src/Edge lehetőséget. A létrehozott. env fájlt a telepítési sablonok néhány fájlja tartalmazza.
@@ -18,7 +18,7 @@ ms.locfileid: "94358238"
 
     * C2D-Console-app. csproj: Ez a Project fájl a Visual Studio Code-hoz.
     * operations.jsbekapcsolva: Ez a fájl felsorolja azokat a különböző műveleteket, amelyeket futtatni kíván a program.
-    * Program.cs: a minta programkódja:
+    * Program. cs: Ez a mintakód:
 
         * Betölti az alkalmazás beállításait.
         * Meghívja az élő videó-elemzést IoT Edge modul közvetlen metódusait a topológia létrehozásához, a gráf létrehozásához és a gráf aktiválásához.

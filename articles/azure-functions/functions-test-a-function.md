@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
 ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98674150"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Kódtesztelési stratégiák az Azure Functions szolgáltatásban
@@ -32,7 +32,7 @@ Az alábbi példa azt ismerteti, hogyan hozhat létre C# Function alkalmazást a
 
 ![Azure Functions tesztelése a C# használatával a Visual Studióban](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Beállítás
 
 A környezet beállításához hozzon létre egy Function és test alkalmazást. A következő lépések segítséget nyújtanak a tesztek támogatásához szükséges alkalmazások és függvények létrehozásában:
 
@@ -51,7 +51,7 @@ A függvények a [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) egy
 
 Létre fog hozni egy nevű új osztályt, `ListLogger` amely a tesztelés során kiértékelésre kerülő üzenetek belső listáját tartalmazza. A szükséges felület megvalósításához `ILogger` az osztálynak hatókörre van szüksége. A következő osztály kigúnyolja az osztálynak átadandó tesztelési esetek hatókörét `ListLogger` .
 
-Hozzon létre egy új osztályt a *functions. tesztek* **NullScope.cs** nevű projektben, és adja meg a következő kódot:
+Hozzon létre egy új osztályt a *functions. tesztek* **NullScope. cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using System;
@@ -69,7 +69,7 @@ namespace Functions.Tests
 }
 ```
 
-Ezután hozzon létre egy új osztályt a *functions. tesztek* **ListLogger.cs** nevű projektben, és adja meg a következő kódot:
+Ezután hozzon létre egy új osztályt a *functions. tesztek* **ListLogger. cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -115,7 +115,7 @@ Az `ListLogger` osztály a következő tagokat valósítja meg, mint az `ILogger
 
 A `Logs` gyűjtemény egy példánya, amely a `List<string>` konstruktorban van inicializálva.
 
-Ezután hozzon létre egy új fájlt a *functions. tesztek* **LoggerTypes.cs** nevű projektben, és adja meg a következő kódot:
+Ezután hozzon létre egy új fájlt a *functions. tesztek* **LoggerTypes. cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 namespace Functions.Tests
@@ -130,7 +130,7 @@ namespace Functions.Tests
 
 Ez az enumerálás meghatározza a tesztek által használt naplózó típusát.
 
-Most hozzon létre egy új osztályt a *functions. tesztek* **TestFactory.cs** nevű projektben, és adja meg a következő kódot:
+Most hozzon létre egy új osztályt a *functions. tesztek* **TestFactory. cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -201,7 +201,7 @@ Az `TestFactory` osztály a következő tagokat valósítja meg:
 
 - **CreateLogger**: a naplózó típus alapján ez a metódus a teszteléshez használt naplózó osztályt adja vissza. A `ListLogger` nyomon követi a naplózott üzeneteket a tesztek kiértékeléséhez.
 
-Végül hozzon létre egy új osztályt a *functions. tesztek* **FunctionsTests.cs** nevű projektben, és adja meg a következő kódot:
+Végül hozzon létre egy új osztályt a *functions. tesztek* **FunctionsTests. cs** nevű projektben, és adja meg a következő kódot:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -269,7 +269,7 @@ Az alábbi példa azt ismerteti, hogyan hozható létre JavaScript-függvény al
 
 ![Azure Functions tesztelése a JavaScripttel a VS Code-ban](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Beállítás
 
 A környezet beállításához a futtatásával inicializáljon egy új Node.js alkalmazást egy üres mappában `npm init` .
 

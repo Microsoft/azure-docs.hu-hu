@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: e7245e8e468ea051ee095d97cc250ad303aa80a5
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619436"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Windows Server rendszerű virtuális gép csatlakoztatása egy Azure Active Directory Domain Services felügyelt tartományhoz Resource Manager-sablon használatával
@@ -135,7 +135,7 @@ Ha meglévő Windows Server rendszerű virtuális gépet szeretne csatlakoztatni
 
 Néhány percet vesz igénybe, hogy a központi telepítés sikeresen befejeződjön. Ha elkészült, a megadott Windows rendszerű virtuális gépek csatlakoznak a felügyelt tartományhoz, és felügyelhetők vagy bejelentkezhetnek a tartományi fiókok használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben a Azure Portal segítségével konfigurálta és telepítette az erőforrásokat sablonok használatával. Az erőforrásokat [Azure PowerShell][deploy-powershell] vagy az [Azure CLI][deploy-cli]használatával is üzembe helyezheti Resource Manager-sablonokkal.
 

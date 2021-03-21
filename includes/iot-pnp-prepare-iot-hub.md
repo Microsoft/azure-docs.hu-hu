@@ -6,15 +6,15 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.custom: references_regions, devx-track-azurecli
 ms.openlocfilehash: ea5d4ef26fb14e22b871bb4bfa1054cb749d38e8
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673025"
 ---
 ## <a name="prepare-an-iot-hub"></a>IoT hub előkészítése
 
-A cikk lépéseinek elvégzéséhez szüksége lesz egy Azure IoT hub-ra az Azure-előfizetésben. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+A cikk lépéseinek elvégzéséhez szüksége lesz egy Azure IoT hub-ra az Azure-előfizetésben. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ha helyileg használja az Azure CLI-t, először jelentkezzen be az Azure-előfizetésbe a használatával `az login` . Ha ezeket a parancsokat a Azure Cloud Shell futtatja, a rendszer automatikusan bejelentkezett.
 

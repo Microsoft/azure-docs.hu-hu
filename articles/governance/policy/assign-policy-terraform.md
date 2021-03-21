@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban a Terraform és a HCL szintaxis haszn�
 ms.date: 10/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: dc4dae2dc6e43e7532117bf64af3ce97ddc7c496
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93106393"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-terraform"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Terraform használatával
@@ -58,7 +58,7 @@ Először konfigurálja a Terraform-konfigurációt, a változót és a kimeneti
 
    A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
 
-   - Előfizetés `/subscriptions/{subscriptionId}`
+   - Előfizetés: `/subscriptions/{subscriptionId}`
    - Erőforráscsoport: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
    - Erőforrás `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]`
 
@@ -94,7 +94,7 @@ Ezután inicializálja a Terraform a szükséges szolgáltatók letöltéséhez,
    terraform plan -out assignment.tfplan
    ```
 
-   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Képernyőkép a Terraform init parancs futtatásáról, amely a azurerm modul letöltését és a sikeres üzenetet mutatja.":::
+   :::image type="content" source="./media/assign-policy-terraform/terraform-plan-out.png" alt-text="Képernyőkép a Terraform terv parancs és az out paraméter futtatásáról a létrehozandó Azure-erőforrás megjelenítéséhez.":::
 
    > [!NOTE]
    > A végrehajtási csomagok és a biztonság megőrzésével kapcsolatos információkért lásd [: Terraform-csomag: biztonsági figyelmeztetés](https://www.terraform.io/docs/commands/plan.html#security-warning).
@@ -109,7 +109,9 @@ Futtassa a [Terraform Apply](https://www.terraform.io/docs/commands/apply.html) 
 terraform apply assignment.tfplan
 ```
 
-:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Képernyőkép a Terraform init parancs futtatásáról, amely a azurerm modul letöltését és a sikeres üzenetet mutatja." üzenet, a szabályzat-hozzárendelés most létrejött. A fájl definiálása óta `outputs.tf` a _hozzárendelés- \_ azonosító_ is visszaadja.
+:::image type="content" source="./media/assign-policy-terraform/terraform-apply.png" alt-text="Képernyőkép a Terraform alkalmazása parancs és az eredményül kapott erőforrás-létrehozás futtatásáról.":::
+
+Az "Apply Complete! Erőforrások: 1 hozzáadva, 0 módosítva, 0 megsemmisült. " üzenet, a szabályzat-hozzárendelés most létrejött. A fájl definiálása óta `outputs.tf` a _hozzárendelés- \_ azonosító_ is visszaadja.
 
 ## <a name="identify-non-compliant-resources"></a>A nem megfelelő erőforrások azonosítása
 
@@ -147,7 +149,7 @@ Az eredmények a következő példához hasonlók:
 
 Az eredmények hasonlók ahhoz, amit általában az Azure Portal nézetében a **Nem megfelelő erőforrások** területen láthat.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A létrehozott hozzárendelés eltávolításához használja az Azure CLI-t, vagy fordítottan a Terraform végrehajtási tervét a következővel: `terraform destroy` .
 

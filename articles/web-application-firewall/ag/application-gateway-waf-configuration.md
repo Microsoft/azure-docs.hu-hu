@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 2d34641fdecfe334e84347efe1a2f64482cae74b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93040262"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
@@ -38,11 +38,11 @@ Megadhat egy pontos kérelem fejlécét, törzsét, cookie-t vagy lekérdezési 
 
 A támogatott egyeztetési feltételek operátorai a következők:
 
-- **Egyenlő** : ez az operátor pontos egyezést használ. Például a **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken** .
-- A következővel **kezdődik** : ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
-- **Végződik** : ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
-- **Tartalmazza** : ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
-- **Egyenlő** : ez az operátor megfelel az összes kérelem mezőnek. * a választók értéke lesz.
+- **Egyenlő**: ez az operátor pontos egyezést használ. Például a **bearerToken** nevű fejléc kiválasztásához használja az Equals operátort a választó **bearerToken**.
+- A következővel **kezdődik**: ez az operátor megegyezik a megadott választó értékkel kezdődő összes mezővel.
+- **Végződik**: ez az operátor a megadott választó értékkel végződő összes kérelem mezőre illeszkedik.
+- **Tartalmazza**: ez az operátor megfelel az összes olyan kérelem mezőnek, amely tartalmazza a megadott választó értéket.
+- **Egyenlő**: ez az operátor megfelel az összes kérelem mezőnek. * a választók értéke lesz.
 
 Minden esetben a nem megkülönbözteti a kis-és nagybetűket, és a reguláris kifejezés nem engedélyezett választóként.
 

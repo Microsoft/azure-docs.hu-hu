@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 56ac58e47bffc73c7079af043ad567a77e8f3323
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735505"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Többrétegű IIS-alapú webalkalmazás vészhelyreállításának beállítása
@@ -60,8 +60,8 @@ A cikkben szereplő példák esetében a VMware virtuális gépeket az IIS 7,5-e
 
 Eset | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
-Hyper-V | Igen | Igen
-VMware | Igen | Igen
+Hyper-V | Igen | Yes
+VMware | Igen | Yes
 Fizikai kiszolgáló | Nem | Igen
 Azure|NA|Igen
 

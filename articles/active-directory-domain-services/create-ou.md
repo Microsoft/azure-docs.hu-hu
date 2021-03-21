@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: fbdfcc23553a27aaa4d7bbd4bff9c4f33cb8fd19
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620018"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Szervezeti egység (OU) létrehozása Azure Active Directory Domain Services felügyelt tartományban
 
-A szervezeti egységek (OU-EK) egy Active Directory tartományi szolgáltatások (AD DS) felügyelt tartományban lehetővé teszik, hogy logikailag csoportosítsa az objektumokat, például a felhasználói fiókokat, a szolgáltatásfiókokat vagy a számítógépfiókokat. Ezután hozzárendelheti a rendszergazdákat adott szervezeti egységekhez, és Csoportházirendet alkalmazhat a megcélzott konfigurációs beállítások betartatására.
+A szervezeti egységek (OU-EK) egy Active Directory Domain Services (AD DS) felügyelt tartományban lehetővé teszik, hogy logikailag csoportosítsa az objektumokat, például a felhasználói fiókokat, a szolgáltatásfiókokat vagy a számítógépfiókokat. Ezután hozzárendelheti a rendszergazdákat adott szervezeti egységekhez, és Csoportházirendet alkalmazhat a megcélzott konfigurációs beállítások betartatására.
 
 Az Azure AD DS felügyelt tartományok a következő két beépített szervezeti egységgel rendelkeznek:
 
@@ -85,7 +85,7 @@ Egyéni szervezeti egység létrehozásához a Active Directory felügyeleti esz
 
     ![A Active Directory felügyeleti központ használható egyéni szervezeti egység](./media/create-ou/create-ou-done.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti eszközök használatával, illetve a szolgáltatásfiókok létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

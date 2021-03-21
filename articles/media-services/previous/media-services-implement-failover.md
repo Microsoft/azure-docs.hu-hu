@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103011935"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Feladatátvételi továbbítás implementálása Media Services v2-vel
@@ -68,7 +68,7 @@ Ebben a szakaszban egy C# konzolos alkalmazás-projektet hoz létre és állít 
 2. Hozza létre a **SupportFiles** mappát ugyanazon a szinten, mint a **HandleRedundancyForOnDemandStreaming. csproj** Project fájl. A **SupportFiles** mappában hozza létre a **OutputFiles** és a **MP4Files** mappát. Másolja egy. MP4-fájlt a **MP4Files** mappába. (Ebben a példában a rendszer a **ignite.mp4** fájlt használja.) 
 3. A **NuGet** használatával a Media Serviceshoz kapcsolódó dll-ekre mutató hivatkozásokat adhat hozzá. A **Visual Studio főmenüjében** válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**. A konzol ablakban írja be a következőt: **Install-Package windowsazure. Mediaservices**, majd nyomja le az ENTER billentyűt.
 4. Adja meg a projekthez szükséges egyéb hivatkozásokat: System. Runtime. szerializálás és System. Web.
-5. Cserélje le a **Programs.cs** -fájlhoz hozzáadott utasítások **használatát** a következő esetekben:
+5. Cserélje le azokat a **using** utasításait, amelyek alapértelmezés szerint a **Programs. cs** fájlhoz lettek adva a következő esetekben:
 
 ```csharp
 using System;

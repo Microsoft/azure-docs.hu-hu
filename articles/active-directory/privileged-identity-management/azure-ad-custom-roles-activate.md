@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c0d98641f8e2040de8350b7dd0231c2e7c889c9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92371613"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör aktiválása Privileged Identity Management
@@ -48,7 +48,7 @@ Ha egy egyéni Azure AD-szerepkört kell aktiválnia, az aktiválás kéréséhe
 
 1. Az **Azure ad Custom roles (előzetes verzió)** lapon keresse meg a szükséges hozzárendelést.
 1. Válassza a **szerepkör aktiválása** lehetőséget az **aktiválás** lap megnyitásához.
-1. Ha a szerepkör többtényezős hitelesítést igényel, akkor **a folytatás előtt válassza a személyazonosság ellenőrzése**lehetőséget. A hitelesítést csak egyszer kell elvégezni egy munkamenetben.
+1. Ha a szerepkör többtényezős hitelesítést igényel, akkor **a folytatás előtt válassza a személyazonosság ellenőrzése** lehetőséget. A hitelesítést csak egyszer kell elvégezni egy munkamenetben.
 1. Válassza a **személyazonosság ellenőrzése** lehetőséget, és kövesse az utasításokat a további biztonsági ellenőrzés megadásához.
 1. Egyéni alkalmazás hatókörének megadásához válassza a **hatókör** lehetőséget a szűrő ablaktábla megnyitásához. A szükséges minimális hatókörű szerepkörhöz hozzáférést kell kérnie. Ha a hozzárendelés alkalmazás-hatókörben van, csak az adott hatókörön lehet aktiválni.
 
@@ -56,7 +56,7 @@ Ha egy egyéni Azure AD-szerepkört kell aktiválnia, az aktiválás kéréséhe
 
 1. Ha szükséges, egy egyéni aktiválás kezdési idejét kell megadnia. Használat esetén a szerepkör tagja aktiválva lesz a megadott időpontban.
 1. Az **OK** mezőben adja meg az aktiválási kérelem okát. Ezeket kötelezővé teheti, vagy nem a szerepkör-beállításban.
-1. Válassza az **aktiválás**lehetőséget.
+1. Válassza az **aktiválás** lehetőséget.
 
 Ha a szerepkörhöz nem szükséges jóváhagyás, a beállításoknak megfelelően aktiválódik, és a rendszer hozzáadja az aktív szerepkörök listájához. Ha az aktivált szerepkört szeretné használni, kezdje a következő témakörben ismertetett lépésekkel: az [Azure ad egyéni szerepkörének társítása a Privileged Identity Management](azure-ad-custom-roles-assign.md).
 

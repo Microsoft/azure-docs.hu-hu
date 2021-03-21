@@ -7,10 +7,10 @@ ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9e3144738bd259ab9be75059af00f125581bb37c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102050120"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
@@ -57,7 +57,7 @@ Ha létre szeretne hozni egy <abbr title="Egy vagy több, együtt telepíthető 
 
 A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a következőképpen jön létre: `Function1` . Mivel az eszközök nem teszik lehetővé, hogy a projekt létrehozásakor felülbírálja az alapértelmezett függvény nevét, szánjon egy percet a Function osztály, a fájl és a metaadatok jobb nevének létrehozásához.
 
-1. A **fájlkezelőben** kattintson a jobb gombbal a Function1.cs fájlra, és nevezze át a *HttpExample.cs*.
+1. A **fájlkezelőben** kattintson a jobb gombbal a Function1. cs fájlra, és nevezze át a *HttpExample. cs* névre.
 
 1. A kódban nevezze át a Function1 osztályt a következőre: "HttpExample".
 

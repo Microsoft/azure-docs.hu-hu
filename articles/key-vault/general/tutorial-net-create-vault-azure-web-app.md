@@ -11,10 +11,10 @@ ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788737"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET-ben
@@ -277,7 +277,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 #### <a name="update-the-code"></a>A kód frissítése
 
-Keresse meg és nyissa meg a Startup.cs fájlt a akvwebapp-projektben. 
+Keresse meg és nyissa meg a Startup. cs fájlt a akvwebapp-projektben. 
 
 Adja hozzá a következő sorokat a fejléchez:
 
@@ -333,7 +333,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 A "Hello World!" előtt ekkor megjelenik a titkos kulcs értéke.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault használata a .NET-alapú virtuális gépekre telepített alkalmazásokkal](./tutorial-net-virtual-machine.md)
 - További információ az [Azure-erőforrások felügyelt identitásáról](../../active-directory/managed-identities-azure-resources/overview.md)

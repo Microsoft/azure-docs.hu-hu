@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
 ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94555583"
 ---
 # <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
@@ -71,13 +71,13 @@ A Képkönyvtár-modulba **való átalakítás** kimenete **Képkönyvtár** for
 
 ###  <a name="expected-inputs"></a>Várt bemenetek  
 
-| Név          | Típus                  | Leírás   |
+| Név          | Típus                  | Description   |
 | ------------- | --------------------- | ------------- |
 | Bemeneti adatkészlet | AnyDirectory, ZipFile | Bemeneti adatkészlet |
 
 ###  <a name="output"></a>Kimenet  
 
-| Név                   | Típus           | Leírás            |
+| Név                   | Típus           | Description            |
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 

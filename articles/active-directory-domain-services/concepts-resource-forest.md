@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 79cf408bcb9060c247b97e6a81204c5a5517d384
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620001"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Az erőforrás-erdőhöz kapcsolódó fogalmak és szolgáltatások Azure Active Directory Domain Services
@@ -27,7 +27,7 @@ Ezen igények és korlátozások kezelése érdekében létrehozhat egy erőforr
 
 ## <a name="what-are-forests"></a>Mik azok az erdők?
 
-Az *erdők* Active Directory tartományi szolgáltatások (AD DS) által használt logikai szerkezetek egy vagy több *tartomány* csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
+Az *erdők* Active Directory Domain Services (AD DS) által használt logikai szerkezetek egy vagy több *tartomány* csoportosításához. A tartományok ezután objektumokat tárolnak a felhasználók vagy csoportok számára, és biztosítják a hitelesítési szolgáltatásokat.
 
 Az Azure AD DS felügyelt tartományokban az erdő csak egy tartományt tartalmaz. A helyszíni AD DS erdők gyakran sok tartományt tartalmaznak. A nagyméretű szervezeteknél – különösen az összevonások és a beszerzések után – előfordulhat, hogy több helyszíni erdővel is rendelkezik, amelyek mindegyike több tartományt tartalmaz.
 
@@ -109,7 +109,7 @@ Ha a megbízható tartomány ellenőrzi egy megbízható tartomány hitelesíté
 
 A megbízhatósági kapcsolatok biztosítják ezt a mechanizmust a megbízó tartománynak átadott hitelesítési kérelmek érvényesítéséhez. Az erőforrás-számítógép hozzáférés-vezérlési mechanizmusai határozzák meg a megbízható tartományban a kérelmezőnek biztosított hozzáférés végső szintjét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a megbízhatóságokról: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 

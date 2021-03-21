@@ -1,5 +1,5 @@
 ---
-title: A tárolási díj optimalizálása Azure Cosmos DB
+title: A tárterület költségeinek optimalizálása az Azure Cosmos DB-ben
 description: Ez a cikk azt ismerteti, hogyan kezelhető a Azure Cosmos DB tárolt adattárolási költségei.
 author: markjbrown
 ms.author: mjbrown
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 92bd3ff925080def4b2f074d07e662dfdbdbee01
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080850"
 ---
-# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárolási díj optimalizálása Azure Cosmos DB
+# <a name="optimize-storage-cost-in-azure-cosmos-db"></a>A tárterület költségeinek optimalizálása az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB korlátlan tárterületet és átviteli sebességet biztosít. Az átviteli sebességtől eltérően, amelyet az Azure Cosmos-tárolókban vagy-adatbázisokban kell kiépíteni/konfigurálni, a tárterületet fogyasztási alapon számítjuk fel. Csak az Ön által felhasznált logikai tárterületért kell fizetnie, és nem kell előzetesen lefoglalnia a tárterületet. A tárterület automatikusan fel-és leskálázásra kerül az Azure Cosmos-tárolóba felvett vagy eltávolított adathalmazok alapján.

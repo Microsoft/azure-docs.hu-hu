@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: mbullwin
 ms.openlocfilehash: c175a52259e9cfe5b4d03ce0279bbe24d16a48ae
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94363714"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektor-tárolók konfigurálása
@@ -27,14 +27,14 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
-|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
-|Igen|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
-|Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
-|Nem|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
-|Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
-|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
-|Nem|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
+|Yes|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követésére szolgál.|
+|No|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
+|Yes|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
+|Yes|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
+|No|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
+|No|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
+|No|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|No|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
 > A [`ApiKey`](#apikey-configuration-setting) , a [`Billing`](#billing-configuration-setting) és a [`Eula`](#eula-setting) beállítások együtt használhatók, és mindhárom esetben érvényes értékeket kell megadnia, máskülönben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](anomaly-detector-container-howto.md#billing).
@@ -59,7 +59,7 @@ Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **anomália-detektor** áttekintése, címkézve `Endpoint`
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](anomaly-detector-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -88,7 +88,7 @@ Az anomáliák Kiderítő tárolói nem használnak bemeneti vagy kimeneti csatl
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](anomaly-detector-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Választható| Név | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Az anomália detektor tárolói nem használják ezt.|
 |Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -97,8 +97,8 @@ A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs ren
 
 Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Vonal-folytatási karakter** : a következő szakaszban lévő Docker-parancsok a hátsó perjelet használják `\` , mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^` . Cserélje le a vissza perjelet a kalapra. 
-* **Argumentumok sorrendje** : ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
+* **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a hátsó perjelet használják `\` , mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^` . Cserélje le a vissza perjelet a kalapra. 
+* **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
 Cserélje le a zárójelben lévő értéket a `{}` saját értékeire:
 
@@ -137,7 +137,7 @@ A következő Docker-példák az anomália detektor tárolóhoz tartoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendellenesség-Kiderítő tároló üzembe helyezése Azure Container Instances](how-to/deploy-anomaly-detection-on-container-instances.md)
 * [További információ az anomália-érzékelő API szolgáltatásáról](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)

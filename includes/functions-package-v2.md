@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: functions
 author: craigshoemaker
 manager: gwallace
@@ -10,10 +10,10 @@ ms.date: 01/28/2020
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: bcc55156ca1d03614a4ff9767d6cf3f2603c06ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96027382"
 ---
 A következő módszerekkel adhat hozzá támogatást az előnyben részesített fejlesztési környezetben.

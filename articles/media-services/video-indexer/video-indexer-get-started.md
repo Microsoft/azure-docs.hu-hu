@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 01/25/2021
 ms.author: juliako
 ms.openlocfilehash: 5b38c731db141052e6700472020cd60b6a4d13a5
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797804"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Gyors útmutató: regisztráció és az első videó feltöltése
@@ -70,7 +70,7 @@ A videók feltöltése és indexelése után megkezdheti [video Indexer webhely]
 
 [Az API-k használatának megkezdése](video-indexer-use-apis.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A részletes bevezetést a [bevezető laborban](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)tekintheti meg. 
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Pri
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 996779e103dae2d2d950f447d2ac72667fc9e754
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427751"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Azure Event Hubs-névterek hozzáférésének engedélyezése privát végpontokon keresztül 
@@ -205,7 +205,7 @@ Négy kiépítési állapot létezik:
 1. Jelentkezzen be az Azure Portalra.
 2. A keresősáv mezőbe írja be az **Event hubok** kifejezést.
 3. Válassza ki a kezelni kívánt **névteret** .
-4. Válassza a **hálózatkezelés** lapot.
+4. Válassza a **Hálózatkezelés** lapot.
 5. Nyissa meg az alábbi megfelelő szakaszt a kívánt művelet alapján: jóváhagyás, elutasítás vagy eltávolítás.
 
 ### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása
@@ -261,11 +261,11 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 
-**Díjszabás** : díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
+**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások** : Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
+**Korlátozások**: Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
 
-**Privát végpontok maximális száma Event Hubs névtérben** : 120.
+**Privát végpontok maximális száma Event Hubs névtérben**: 120.
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 

@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93146926"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub Identity Registry ismertetése
@@ -96,7 +96,7 @@ Az *eszköz kiépítés* során a rendszer a kezdeti eszköz adatait hozzáadja 
 
 A IoT Hub Identity Registry tartalmaz egy **connectionState** nevű mezőt. A fejlesztés és a hibakeresés során csak a **connectionState** mezőt használja. A IoT-megoldásoknak futási időben nem kell lekérdezni a mezőt. Ne kérdezje le például, hogy az eszköz csatlakoztatva van-e, mielőtt egy felhőből eszközre irányuló üzenetet vagy SMS-t küld a **connectionState** . Azt javasoljuk, hogy a riasztások lekérése és az eszköz kapcsolati állapotának figyelése érdekében a [ **leválasztott eszközre**](iot-hub-event-grid.md#event-types) való feliratkozást Event Grid. Ebből az [oktatóanyagból](iot-hub-how-to-order-connection-state-events.md) megtudhatja, hogyan integrálhatja a csatlakoztatott eszközök és az eszközök kapcsolatait a IoT-megoldás IoT hub.
 
-Ha a IoT-megoldásnak tudnia kell, hogy az eszköz csatlakoztatva van-e, megadhatja a *szívverési mintát* .
+Ha a IoT-megoldásnak tudnia kell, hogy az eszköz csatlakoztatva van-e, megadhatja a *szívverési mintát*.
 A szívverési mintában az eszköz legalább egyszer elküldi az eszközről a felhőbe irányuló üzeneteket (például legalább óránként egyszer). Ezért még akkor is, ha az eszközön nincs olyan adat, amelyet el szeretne küldeni, továbbra is egy üres, az eszközről a felhőbe irányuló üzenetet küld (általában egy olyan tulajdonsággal, amely szívverésként azonosítja azt). A szolgáltatás oldalán a megoldás egy térképet tart fenn az egyes eszközökön fogadott utolsó szívveréssel. Ha a megoldás nem kap szívverési üzenetet az eszköztől várt időn belül, feltételezi, hogy probléma merült fel az eszközön.
 
 Az összetettebb implementációk magukban foglalhatják a [Azure monitor](../azure-monitor/index.yml) és a [Azure Resource Health](../service-health/resource-health-overview.md) adatait, hogy azonosítsák a csatlakozni próbáló vagy a sikertelenül kommunikáló eszközöket. További információért lásd: [IoT hub figyelése](monitor-iot-hub.md) és a [IoT hub erőforrás állapotának ellenőrzéséhez](iot-hub-azure-service-health-integration.md#check-health-of-an-iot-hub-with-azure-resource-health). A szívverési minta megvalósításakor ellenőrizze, hogy [IoT hub kvóták és szabályozások](iot-hub-devguide-quotas-throttling.md)szerepelnek-e.
@@ -124,7 +124,7 @@ Tulajdonságok: az üzenetrendszer tulajdonságai előtaggal vannak ellátva a `
 |operationTimestamp | A művelet ISO8601 időbélyege |
 |iothub – üzenet – séma | deviceLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott eszköz-identitás ikerét jelöli. Példa:
 
 ```json
 {
@@ -160,7 +160,7 @@ moduleId | A modul azonosítója |
 operationTimestamp | A művelet ISO8601 időbélyege |
 iothub – üzenet – séma | moduleLifecycleNotification |
 
-Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Például:
+Törzs: Ez a szakasz JSON formátumú, és a létrehozott modul-identitás ikerét jelöli. Példa:
 
 ```json
 {
@@ -191,14 +191,14 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 | Tulajdonság | Beállítások | Description |
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
-| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId** -vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
+| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
 | ETAG |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
 | Auth. symkey |választható |Base64 formátumban tárolt elsődleges és másodlagos kulcsot tartalmazó összetett objektum. |
-| status |kötelező |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható** . Ha **engedélyezve** van, az eszköz csatlakozhat. Ha **le van tiltva** , az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
+| status |kötelező |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható**. Ha **engedélyezve** van, az eszköz csatlakozhat. Ha **le van tiltva**, az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
 | statusReason |választható |Egy 128 karakter hosszú karakterlánc, amely az eszköz identitási állapotának okát tárolja. Minden UTF-8 karakter engedélyezett. |
 | statusUpdateTime |csak olvasható |Egy időbeli jelző, amely a legutóbbi állapot frissítésének dátumát és időpontját mutatja. |
-| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva** . Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos** : Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
+| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva**. Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
 | connectionStateUpdatedTime |csak olvasható |Egy időbeli jelző, amely a dátumot és a kapcsolatok állapotának legutóbbi frissítését mutatja. |
 | lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. Ez a tulajdonság végül konzisztens, de akár 5 – 10 percet is késleltethető. Ezért nem használható éles környezetben. |
 
@@ -206,7 +206,7 @@ Az eszközök identitásai JSON-dokumentumokként jelennek meg a következő tul
 > A kapcsolási állapot csak a kapcsolatok állapotának IoT Hub nézetét jelenítheti meg. Az állapot frissítései a hálózati feltételektől és konfigurációktól függően késleltetve lehetnek.
 
 > [!NOTE]
-> Az eszköz-SDK-k jelenleg nem támogatják a `+` és a `#` karaktereket a **deviceId** -ben.
+> Az eszköz-SDK-k jelenleg nem támogatják a `+` és a `#` karaktereket a **deviceId**-ben.
 
 ## <a name="module-identity-properties"></a>Modul identitásának tulajdonságai
 
@@ -216,14 +216,14 @@ A modul identitásai JSON-dokumentumokként jelennek meg a következő tulajdons
 | --- | --- | --- |
 | deviceId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | moduleId |kötelező, csak olvasható a frissítésekben |Kis-és nagybetűket megkülönböztető karakterlánc (legfeljebb 128 karakter) ASCII 7 bites alfanumerikus karakterekből és bizonyos speciális karakterekből: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
-| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId** -vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
+| generationId |kötelező, csak olvasható |Egy IoT hub által generált, kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszú lehet. Ez az érték az azonos **deviceId**-vel rendelkező eszközök megkülönböztetésére szolgál, ha azokat törölték és újra létrehozták. |
 | ETAG |kötelező, csak olvasható |Egy olyan karakterlánc, amely az eszköz identitásának gyenge ETag jelöli, mint [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | Auth |választható |A hitelesítési adatokat és biztonsági anyagokat tartalmazó összetett objektum. |
 | Auth. symkey |választható |Base64 formátumban tárolt elsődleges és másodlagos kulcsot tartalmazó összetett objektum. |
-| status |kötelező |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható** . Ha **engedélyezve** van, az eszköz csatlakozhat. Ha **le van tiltva** , az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
+| status |kötelező |Egy hozzáférési mutató. **Engedélyezhető** vagy **letiltható**. Ha **engedélyezve** van, az eszköz csatlakozhat. Ha **le van tiltva**, az eszköz nem fér hozzá az eszközre irányuló végpontokhoz. |
 | statusReason |választható |Egy 128 karakter hosszú karakterlánc, amely az eszköz identitási állapotának okát tárolja. Minden UTF-8 karakter engedélyezett. |
 | statusUpdateTime |csak olvasható |Egy időbeli jelző, amely a legutóbbi állapot frissítésének dátumát és időpontját mutatja. |
-| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva** . Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos** : Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
+| connectionState |csak olvasható |A kapcsolat állapotát jelző mező: **csatlakoztatva** vagy **leválasztva**. Ez a mező az eszköz-kapcsolatok állapotának IoT Hub nézetét jelöli. **Fontos**: Ez a mező csak fejlesztési/hibakeresési célokra használható. A MQTT vagy AMQP használó eszközök esetén a rendszer csak a kapcsolatok állapotát frissíti. Emellett a protokoll szintű pingeléseken (MQTT pingelések vagy AMQP pingek) alapul, és legfeljebb 5 percet vehet igénybe. Ezen okok miatt hamis pozitívak lehetnek, például a csatlakoztatottként jelentett, de leválasztott eszközök. |
 | connectionStateUpdatedTime |csak olvasható |Egy időbeli jelző, amely a dátumot és a kapcsolatok állapotának legutóbbi frissítését mutatja. |
 | lastActivityTime |csak olvasható |Egy időbeli jelző, amely azt mutatja, hogy az eszköz Mikor kapcsolódott, illetve mikor érkezett, illetve mikor küldött üzenetet. |
 

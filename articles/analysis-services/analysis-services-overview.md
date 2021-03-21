@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 9f8de6ed4f0312a342526fb2ba5d100dfd9ec91f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100582620"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
@@ -214,7 +214,7 @@ Modellek fejlesztése és üzembe helyezése a Visual Studióval Analysis Servic
 
 A Microsoft Analysis Services projektek ingyenes telepíthető VSIX-csomagként érhetők el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). A bővítmény a Visual Studio 2017-es és újabb verzióival működik együtt, beleértve az ingyenes közösségi kiadást is.
 
-### <a name="sql-server-management-studio"></a>Az SQL Server Management Studio
+### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
 Felügyelheti kiszolgálóit és modelladatbázisait az [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) segítségével. Kapcsolódhat a felhőalapú kiszolgálóihoz. Közvetlenül az XMLA lekérdezési ablakból futtathat TMSL-szkripteket. A feladatokat e szkriptekkel és a PowerShell használatával automatizálhatja. Gyakran jelennek meg új szolgáltatások és funkciók – az SSMS havonta frissül.
 

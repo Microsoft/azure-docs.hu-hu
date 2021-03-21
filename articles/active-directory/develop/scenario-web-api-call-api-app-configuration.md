@@ -13,10 +13,10 @@ ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5072ae58d3a9412237e70a9bc98970296ce1e1fa
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686580"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webes API: kód konfigurálása
@@ -88,7 +88,7 @@ A Microsoft. Identity. Web számos módszert kínál a tanúsítványok leírás
 
 ## <a name="startupcs"></a>Startup.cs
 
-A webes API-nak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` szolgáltatást, amelyet a vezérlő/lapok műveleteihez használhat. Azonban ahogy a következő két felsorolásjelen is látható, még egyszerűbben is megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
+A webes API-nak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` szolgáltatást, amelyet a vezérlő/lapok műveleteihez használhat. Azonban ahogy a következő két felsorolásjelen is látható, még egyszerűbben is megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` az *indításkor. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -116,7 +116,7 @@ Ha nem szeretné magát a tokent beszerezni, a *Microsoft. Identity. Web* két m
 Ha meg szeretné hívni Microsoft Graph, a Microsoft. Identity. Web lehetővé teszi, hogy közvetlenül használja a `GraphServiceClient` (az Microsoft Graph SDK által közzétett) API-műveleteket. Microsoft Graph közzététele:
 
 1. Adja hozzá a [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet-csomagot a projekthez.
-1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup.cs* -fájlhoz. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
+1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup. cs* fájlban. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -164,7 +164,7 @@ public class Startup
 
 Akárcsak a Web Apps esetében, különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: a [Microsoft Identity web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
 
-Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup.cs* fájlra gyakorolt hatásuk:
+Az alábbi ábrán a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup. cs* fájlra gyakorolt hatásuk:
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="A webes API-k meghívásához és a jogkivonat-gyorsítótár implementációjának megadásához szükséges, a szolgáltatás konfigurációs beállításait bemutató diagram letiltása":::
 

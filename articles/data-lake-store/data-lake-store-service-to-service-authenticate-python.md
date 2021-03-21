@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: twooley
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: fe987070438c689e899dee18edaf4f708555ab11
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92106756"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 a Python használatával
@@ -19,7 +19,7 @@ ms.locfileid: "92106756"
 > * [A Java használata](data-lake-store-service-to-service-authenticate-java.md)
 > * [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
-> * [REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
+> * [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
 >
 >
 
@@ -127,7 +127,7 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 a Python használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használható a Python a Data Lake Storage Gen1 való együttműködéshez.
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)

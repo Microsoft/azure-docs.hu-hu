@@ -8,13 +8,13 @@ author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
 ms.openlocfilehash: c906d37a01f0fca2d4114e8ba07078fc46eec88b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131173"
 ---
-# <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
+# <a name="cloud-solution-provider-program"></a>Felhőszolgáltató program
 
 Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatoknak a [kereskedelmi piactér online áruházakon](overview.md#commercial-marketplace-online-stores)keresztüli közzétételén kívül a CSP programon keresztül is elérhetővé teheti, hogy a program által kiszolgált, több millió minősített Microsoft-ügyfelet is elérhet.
 
@@ -50,7 +50,7 @@ Három lehetőség közül választhat:
 
 #### <a name="option-1-any-partner-in-the-csp-program"></a>1. lehetőség: bármely partner a CSP programban
 
-![Bármely partner a CSP programban](media/marketplace-publishers-guide/csp-reseller-option-one.png)
+![A Felhőszolgáltató programban részt vevő bármely partner](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
  Ha ezt a lehetőséget választja, a CSP program összes partnere jogosult az ajánlatának viszonteladására az ügyfelek számára.
 
@@ -64,7 +64,7 @@ Ha engedélyezni szeretné a partnereket, válassza a **CSP-partnerek kiválaszt
 
 ![CSP menü kiválasztása](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-Keresési szűrőket alkalmazhat, például **országokat** , **kompetenciákat** vagy **képességeket** .
+Keresési szűrőket alkalmazhat, például **országokat**, **kompetenciákat** vagy **képességeket**.
 
 ![Partneri keresés országa/régiója, kompetenciája és képzettségi szűrői](media/marketplace-publishers-guide/csp-add-resellers.png)
 
@@ -89,7 +89,7 @@ Ha van olyan ajánlata, amely már rendelkezik a jogosult partnerek listájával
 
 #### <a name="option-3-no-partners-in-the-csp-program"></a>3. lehetőség: nincsenek partnerek a CSP programban
 
-![Nincsenek partnerek a CSP programban](media/marketplace-publishers-guide/csp-reseller-option-three.png)
+![Egyetlen partner sem a Felhőszolgáltató programban](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
 Ha ezt a lehetőséget választja, az ajánlatát a CSP programból választhatja ki. Ezt a lehetőséget bármikor módosíthatja.
 
@@ -105,8 +105,8 @@ Ha a CSP program egyik partnere nem adta meg a terméket az ügyfeleknek, és az
    > Ne módosítsa a legördülő menü előre megadott beállításait.
 
 2. **A termék verziójának kiválasztásához válassza az** **élő ajánlat kezelése** lehetőséget.
-3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát** , és válassza ki az ajánlatra hivatkozó kategóriát.
-4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát** , válassza a **meglévő ajánlat frissítése** lehetőséget.
+3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát**, és válassza ki az ajánlatra hivatkozó kategóriát.
+4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát**, válassza a **meglévő ajánlat frissítése** lehetőséget.
 5. Kattintson a **tovább** gombra a **probléma részletei lapra** való átirányításhoz, és adja meg a probléma további részleteit.
 6. A probléma címéhez használja a **kriptográfiai szolgáltatót** , és adja meg a többi szükséges szakaszt.
 
@@ -124,8 +124,8 @@ Ha az ajánlat jelenleg **1. lehetőség: bármely partner a CSP programban** , 
    > Ne módosítsa a legördülő menü előre megadott beállításait.
 
 2. **A termék verziójának kiválasztásához válassza az** **élő ajánlat kezelése** lehetőséget.
-3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát** , és válassza ki az ajánlatra hivatkozó kategóriát.
-4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát** , válassza a **meglévő ajánlat frissítése** lehetőséget.
+3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát**, és válassza ki az ajánlatra hivatkozó kategóriát.
+4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát**, válassza a **meglévő ajánlat frissítése** lehetőséget.
 5. Kattintson a **tovább** gombra a **probléma részletei lapra** való átirányításhoz, és adja meg a probléma további részleteit.
 6. A probléma címéhez használja a **kriptográfiai szolgáltatót** , és adja meg a többi szükséges szakaszt.
 
@@ -134,7 +134,7 @@ Ha az ajánlat jelenleg **1. lehetőség: bármely partner a CSP programban** , 
 
 ### <a name="navigate-from-option-two-specific-partners-in-the-csp-program-i-select"></a>Navigáljon a második lehetőség közül: válassza ki az adott partnereket a CSP programban.
 
-Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és az egyiket szeretné megkeresni **: bármely partner a CSP programban** , az alábbi utasításokat követve hozzon létre egy kérést:
+Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és az egyiket szeretné megkeresni **: bármely partner a CSP programban**, az alábbi utasításokat követve hozzon létre egy kérést:
 
 1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
@@ -142,12 +142,12 @@ Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partner
    > Ne módosítsa a legördülő menü előre megadott beállításait.
 
 2. **A termék verziójának kiválasztásához válassza az** **élő ajánlat kezelése** lehetőséget.
-3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát** , és válassza ki az ajánlatra hivatkozó kategóriát.
-4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát** , válassza a **meglévő ajánlat frissítése** lehetőséget.
+3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát**, és válassza ki az ajánlatra hivatkozó kategóriát.
+4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát**, válassza a **meglévő ajánlat frissítése** lehetőséget.
 5. Kattintson a **tovább** gombra a **probléma részletei lapra** való átirányításhoz, és adja meg a probléma további részleteit.
 6. A probléma címéhez használja a **kriptográfiai szolgáltatót** , és adja meg a többi szükséges szakaszt.
 
- Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és a **3. lehetőségre szeretne navigálni: nem található partner a CSP programban** , csak akkor fog tudni erre a lehetőségre navigálni, ha a CSP-program korábban már engedélyezte a partnereket, hogy a végfelhasználóknak ne eladják az ajánlatot. Kérelem létrehozásához kövesse az alábbi utasításokat:
+ Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partnerek közül választhatok** , és a **3. lehetőségre szeretne navigálni: nem található partner a CSP programban**, csak akkor fog tudni erre a lehetőségre navigálni, ha a CSP-program korábban már engedélyezte a partnereket, hogy a végfelhasználóknak ne eladják az ajánlatot. Kérelem létrehozásához kövesse az alábbi utasításokat:
 
 1. Lépjen a [support Request lapra](https://aka.ms/marketplacepublishersupport). Az első néhány legördülő menüt automatikusan kitölti a rendszer.
 
@@ -155,14 +155,14 @@ Ha az ajánlat jelenleg **2. lehetőség: a CSP programban kiválasztott partner
    > Ne módosítsa a legördülő menü előre megadott beállításait.
 
 2. **A termék verziójának kiválasztásához válassza az** **élő ajánlat kezelése** lehetőséget.
-3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát** , és válassza ki az ajánlatra hivatkozó kategóriát.
-4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát** , válassza a **meglévő ajánlat frissítése** lehetőséget.
+3. Válassza ki azt a kategóriát, **amely a legjobban leírja a problémát**, és válassza ki az ajánlatra hivatkozó kategóriát.
+4. Ha **olyan problémát választ ki, amely a legjobban leírja a problémát**, válassza a **meglévő ajánlat frissítése** lehetőséget.
 5. Kattintson a **tovább** gombra a **probléma részletei lapra** való átirányításhoz, és adja meg a probléma további részleteit.
 6. A probléma címéhez használja a **kriptográfiai szolgáltatót** , és adja meg a többi szükséges szakaszt.
 
 ### <a name="navigate-from-option-3-no-partners-in-the-csp-program"></a>Navigáljon a 3. lehetőséghez: nincs partner a CSP programban
 
-Ha az ajánlat jelenleg **3. lehetőség: nincs partner a CSP programban** , bármikor megnyithatja a másik két lehetőség valamelyikét.
+Ha az ajánlat jelenleg **3. lehetőség: nincs partner a CSP programban**, bármikor megnyithatja a másik két lehetőség valamelyikét.
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Értékesítési és támogatási anyagok megosztása partnerekkel a CSP programban
 

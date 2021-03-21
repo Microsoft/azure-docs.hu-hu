@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 66498fabadc0784a4a4ab1c3762daaaa9a5738c4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102503215"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>A dev Tools Pack telepítő áttekintése
@@ -99,13 +99,13 @@ A dev Tools Pack telepítője egy egyablakos megoldás, amely az intelligens per
         
     1. Mac rendszer esetén:
     
-        1. A letöltés után helyezze át a Dev-Tools-Pack-Installer. app fájlt az alkalmazások mappába.
+        1. A letöltés után helyezze át a Dev-Tools-Pack-Installer.app fájlt az alkalmazások mappába.
         
-        1. A telepítővarázsló megnyitásához kattintson a **dev-Tools-Pack-Installer. app** elemre.
+        1. A telepítővarázsló megnyitásához kattintson a **dev-Tools-Pack-Installer.app** elemre.
         
         1. Ha "azonosítatlan fejlesztő" biztonsági párbeszédpanelt kap:
         
-            1. Lépjen a rendszerbeállítások – > biztonsági & adatvédelem – > általános elemre, majd kattintson az "Dev-Tools-Pack-Installer. app" melletti "Megnyitás amúgy" gombra.
+            1. Lépjen a rendszerbeállítások – > biztonsági & adatvédelem – > általános elemre, és kattintson a "Dev-Tools-Pack-Installer.app" melletti "Megnyitás amúgy" gombra.
         
             1. Kattintson ismét az elektron ikonra a Dockon
         

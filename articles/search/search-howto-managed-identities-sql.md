@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: b940da2cf754e7e1cac91df6b517ecebe55e8c40
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358422"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity"></a>Indexelő-kapcsolatok beállítása Azure SQL Database felügyelt identitás használatával
@@ -103,7 +103,7 @@ Amikor a [REST API](/rest/api/searchservice/create-data-source)használatával h
 * **hitelesítő adatok**
     * Ha felügyelt identitást használ a hitelesítéshez, a **hitelesítő adatok** formátuma különbözik, mint ha nem használ egy összekeveredéses identitást. Itt meg kell adnia egy kezdeti katalógus vagy adatbázis nevét, valamint egy olyan ResourceId, amely nem rendelkezik fiók-kulccsal vagy jelszóval. A ResourceId tartalmaznia kell a Azure SQL Database előfizetés-AZONOSÍTÓját, SQL Database erőforrás-csoportját és az SQL-adatbázis nevét. 
     * Felügyelt identitás-kapcsolatok karakterláncának formátuma:
-        * *Kezdeti katalógus | Adatbázis = **adatbázis neve** ; ResourceId =/Subscriptions/ **az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a **SQL Server neve** /; Kapcsolat időtúllépése = a **kapcsolat időtúllépési hossza** ;*
+        * *Kezdeti katalógus | Adatbázis =**adatbázis neve**; ResourceId =/Subscriptions/**az előfizetés-azonosítóját****az/resourceGroups//Providers/Microsoft.SQL/Servers/** a **SQL Server neve**/; Kapcsolat időtúllépése = a **kapcsolat időtúllépési hossza**;*
 * a **Container (tároló** ) megadja az indexelni kívánt tábla vagy nézet nevét.
 
 Példa Azure SQL adatforrás-objektum létrehozására a [REST API](/rest/api/searchservice/create-data-source)használatával:

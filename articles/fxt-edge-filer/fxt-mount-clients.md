@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: fa1f9da2c60aaf4c552916d16c266e984bf08892
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92340512"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
@@ -60,7 +60,7 @@ A csatlakoztatási parancsnak három eleme van:
 
 ### <a name="create-the-cluster-path"></a>A fürt elérési útjának létrehozása
 
-A fürt elérési útja a VServer *IP-cím* és a *névtér-elágazás*elérési útjának kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amelyet [a tárolási rendszer hozzáadásakor](fxt-add-storage.md#create-a-junction)adott meg.
+A fürt elérési útja a VServer *IP-cím* és a *névtér-elágazás* elérési útjának kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amelyet [a tárolási rendszer hozzáadásakor](fxt-add-storage.md#create-a-junction)adott meg.
 
 Ha például ``/fxt/files`` a névtér elérési útjaként használta, az ügyfelek csatlakoztatni *IP_address*:/FXT/Files a helyi csatlakoztatási ponthoz.
 

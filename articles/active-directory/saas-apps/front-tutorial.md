@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 3edd1e9bf3b42b3d4ad0c7c533dedb23ea05e5ec
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92450815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Azure Active Directory integráció elölről
@@ -67,7 +67,7 @@ Az Azure AD-ba való előzetes integráció konfigurálásához fel kell vennie 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon**nevű teszt felhasználó alapján konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon** nevű teszt felhasználó alapján konfigurálja és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolat létrehozása szükséges.
 
 Az Azure AD egyszeri bejelentkezés előzetes konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **az alkalmazás-** integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
 1. Jelentkezzen be rendszergazdaként az első bérlőbe.
 
-2. Lépjen a **beállítások (fogaskerék ikon a bal oldalsáv alján) > beállítások**elemre.
+2. Lépjen a **beállítások (fogaskerék ikon a bal oldalsáv alján) > beállítások** elemre.
    
     ![A "beállítások" elem kiválasztásával megjelenített "Settings (fogaskerék ikon)" képernyő.](./media/front-tutorial/tutorial_front_000.png)
 
@@ -134,7 +134,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
    
     ![A "vállalati beállítások" szakaszt megjelenítő képernyőkép, amely az "egyszeri bejelentkezés" hivatkozásra van kiválasztva.](./media/front-tutorial/tutorial_front_001.png)
 
-4. Az **egyszeri bejelentkezés**legördülő listájában válassza az **SAML** lehetőséget.
+4. Az **egyszeri bejelentkezés** legördülő listájában válassza az **SAML** lehetőséget.
    
     ![Képernyőkép, amely az "egyszeri bejelentkezés" legördülő listát jeleníti meg "S A M L" jelöléssel.](./media/front-tutorial/tutorial_front_002.png)
 
@@ -160,7 +160,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -185,15 +185,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatának engedélyezésével engedélyezi a Britta Simon számára az előzetes hozzáférést.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd kattintson az **első**elemre.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd kattintson az **első** elemre.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **első**lehetőséget.
+2. Az alkalmazások listában válassza az **első** lehetőséget.
 
     ![Az alkalmazások listájának elülső hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/03/2020
 ms.openlocfilehash: c4c303a7640454ba0cb6622b21fd161354266068
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375927"
 ---
 # <a name="two-class-decision-forest-module"></a>Two-Class döntési erdő modulja
@@ -51,23 +51,23 @@ További információ: [döntési erdők](https://go.microsoft.com/fwlink/?LinkI
   
 1.  Adja hozzá a **kétosztályos döntési erdő** modult a folyamathoz Azure Machine learning, majd nyissa meg a modul **Tulajdonságok** paneljét. 
 
-    A modul a **Machine learning** alatt található. Bontsa ki az **inicializálás** , majd a **besorolás** elemet.  
+    A modul a **Machine learning** alatt található. Bontsa ki az **inicializálás**, majd a **besorolás** elemet.  
   
 2.  Az **újramintavételezési módszernél** válassza ki az egyes fák létrehozásához használt módszert.  A **csomagok** és a **replikálás** lehetőség közül választhat.  
   
-    -   **Poggyász** : a poggyászt rendszerindítási *összesítésnek* is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel.  
+    -   **Poggyász**: a poggyászt rendszerindítási *összesítésnek* is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel.  
   
          A modellek kimeneteit a rendszer *szavazással* kombinálja, amely az Összesítés formáját képezi. A besorolási döntési erdőben lévő összes fa a címkék nem normalizált gyakorisági hisztogramját adja vissza. Az összesítés az, hogy összesítse ezeket a hisztogramokat, és normalizálja a "valószínűségek" kifejezést az egyes címkéknél. Ily módon a nagy előrejelzési megbízhatósággal rendelkező fák nagyobb súlyt kapnak az Ensemble végső döntésében.  
   
          További információ: a rendszerindítási összesítések Wikipedia-bejegyzése.  
   
-    -   **Replikálás** : a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.   
+    -   **Replikálás**: a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.   
   
 3.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
+    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
 
-    -   **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
+    -   **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
 4.  A **döntési fák száma** mezőben adja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával jobb lefedettséget érhet el, de a képzési idő növekszik.  
   
