@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
 ms.openlocfilehash: d2973d95cf797123e02fd48dc2dfab1b172e05f5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102499466"
 ---
 # <a name="monitoring-azure-table-storage"></a>Az Azure Table Storage figyelése
@@ -73,7 +73,7 @@ Diagnosztikai beállításokat a Azure Portal, a PowerShell, az Azure CLI vagy e
 
 ### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Nyissa meg a tárfiókot.
 

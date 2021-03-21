@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: a03f71adc99063fee4374b1436b08adf5bab783d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102510827"
 ---
 A dokumentumban szereplő bejegyzések a `inferenceconfig.json` [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) osztály paramétereinek felelnek meg. A következő táblázat ismerteti a JSON-dokumentum entitásai közötti leképezést, valamint a metódus paramétereit:
 
-| JSON-entitás | Metódus paramétere | Leírás |
+| JSON-entitás | Metódus paramétere | Description |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | A rendszerképhez futtatandó kódot tartalmazó helyi fájl elérési útja. |
 | `sourceDirectory` | `source_directory` | Választható. Az összes fájlt tartalmazó mappák elérési útja a rendszerkép létrehozásához, amely megkönnyíti a mappában vagy almappában található fájlok elérését. A webszolgáltatások függőségeiként feltölthet egy teljes mappát a helyi gépről. Megjegyzés: a entry_script, a conda_file és a extra_docker_file_steps útvonalak relatív elérési utak az source_directory elérési úthoz. |

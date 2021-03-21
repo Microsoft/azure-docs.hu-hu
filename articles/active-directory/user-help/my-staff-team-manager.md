@@ -1,5 +1,5 @@
 ---
-title: Jelszavak és telefonszámok kezelése a saját munkatársakkal (előzetes verzió) – Azure AD | Microsoft Docs
+title: Jelszavak és telefonszámok kezelése a saját munkatársakkal – Azure AD | Microsoft Docs
 description: A felhasználók jelszavainak és telefonszámának kezelése a munkatársakkal
 services: active-directory
 documentationcenter: ''
@@ -9,18 +9,18 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537090"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583598"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>Felhasználói felügyelet delegálása munkatársaival (előzetes verzió)
+# <a name="delegate-user-management-with-my-staff"></a>A felhasználók felügyeletének delegálása a saját munkatársakkal
 
 A szervezet a **saját munkatársaival** delegálhatja a felhasználói felügyeleti feladatokat a hatóságok adataihoz, például egy áruház kezelőjéhez vagy a csoportvezető számára, hogy a személyzet tagjai hozzáférhessenek a szükséges alkalmazásokhoz. Ha a csapattag nem fér hozzá egy alkalmazáshoz, mert elfelejtik a jelszót, a termelékenység elvész. Ez a támogatási költségeket is felgyorsítja, és a felügyeleti folyamatokban szűk keresztmetszetet okoz.  A munkatársakkal egy csapattag, aki nem tud hozzáférni a fiókjához, mindössze néhány kattintással visszanyerheti a hozzáférést, és rendszergazdai segítségre sincs szükség.
 
@@ -50,7 +50,7 @@ Ha a szervezete engedélyt adott Önnek, alaphelyzetbe állíthatja a munkatárs
 
 1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
 1. Nyisson meg egy munkatárs profilját.
-1. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget.
+1. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 
     ![Felhasználói jelszó alaphelyzetbe állítása a munkatársakban](media/my-staff-team-manager/resetpassword1.png)
 
@@ -68,11 +68,11 @@ Ha a szervezete engedélyt adott Önnek, a munkatársainak telefonszámait is ke
 
 1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
 1. Nyisson meg egy munkatárs profilját.
-1. Válassza a **telefonszám hozzáadása**lehetőséget.
+1. Válassza a **telefonszám hozzáadása** lehetőséget.
 
     ![Felhasználói telefonszám hozzáadása a munkatársaim számára](media/my-staff-team-manager/addphone1.png)
 
-1. Adja meg a telefonszámot, majd válassza a **Mentés**lehetőséget.
+1. Adja meg a telefonszámot, majd válassza a **Mentés** lehetőséget.
 
     ![A felvett felhasználó telefonszámának mentése a saját munkatársaiban](media/my-staff-team-manager/addphone2.png)
 
@@ -84,11 +84,11 @@ Miután regisztrált egy felhasználó telefonszámát, használhatja azt az SMS
 
 1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
 1. Nyisson meg egy munkatárs profilját.
-1. Válassza a **telefonszám szerkesztése**lehetőséget.
+1. Válassza a **telefonszám szerkesztése** lehetőséget.
 
     ![A saját munkatársak felhasználói profiljában válassza a szerkesztés lehetőséget](media/my-staff-team-manager/editphone2.png)
 
-1. Adja meg az új telefonszámot, és kattintson a **Mentés**gombra.
+1. Adja meg az új telefonszámot, és kattintson a **Mentés** gombra.
 
     ![Munkatárs telefonszámának szerkesztése a munkatársaim számára](media/my-staff-team-manager/editphone1.png)
 
@@ -110,7 +110,7 @@ Ha a bejelentkezéskor a felhasználónévvel (SMS-alapú bejelentkezéssel) ren
 
 1. [Nyissa meg a saját munkatársakat](https://aka.ms/mystaff).
 1. Nyisson meg egy munkatárs profilját.
-1. Válassza a **telefonszám eltávolítása**lehetőséget.
+1. Válassza a **telefonszám eltávolítása** lehetőséget.
 1. Ha elkészült, válassza a **Törlés** lehetőséget.
 
     ![Munkatárs telefonszámának eltávolítása a munkatársaim számára](media/my-staff-team-manager/deletephone1.png)

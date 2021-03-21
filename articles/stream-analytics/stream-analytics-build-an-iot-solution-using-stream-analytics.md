@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98016150"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
@@ -42,7 +42,7 @@ Ez a megoldás két adatfolyammal működik. A díjköteles állomások belépte
 ### <a name="entry-data-stream"></a>Bejegyzés adatfolyama
 A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amikor autópályadíj-állomásokat visznek be. A kilépési adatok eseményei a minta alkalmazásban található webalkalmazásból áramlanak egy Event hub-várólistába.
 
-| TollID | EntryTime | LicensePlate | Állam | Gyártó | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
+| TollID | EntryTime | LicensePlate | Állapot | Gyártó | Modellezés | VehicleType | VehicleWeight | Autópályadíj | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -58,9 +58,9 @@ Itt látható az oszlopok rövid leírása:
 | TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
 | EntryTime |A járműnek az autópályadíj-kezelőbe való belépésének dátuma és időpontja (UTC) |
 | LicensePlate |A jármű rendszámtábla-száma |
-| Állam |Egyesült Államok állapot |
+| Állapot |Egyesült Államok állapot |
 | Gyártó |A személygépkocsi gyártója |
-| Modell |Az autó modelljének száma |
+| Modellezés |Az autó modelljének száma |
 | VehicleType |1 a személyszállító járművek vagy a 2 kereskedelmi járművek számára |
 | WeightType |A jármű súlya tonnában kifejezve; 0 személyszállító járművek esetében |
 | Autópályadíj |Az autópályadíj értéke USD-ben |
@@ -302,7 +302,7 @@ A folyamatos átviteli feladatok vertikális felskálázása több folyamatos á
 
 3. A folyamatos átviteli feladatban a CONFIGURE (Konfigurálás) fejléc alatt válassza a **skála** lehetőséget.
 
-4. Csúsztassa a **folyamatos átviteli egységek** csúszkát 1-től 6-ra. A folyamatos átviteli egységek határozzák meg a feladatokhoz tartozó számítási teljesítmény mennyiségét. Válassza a **Mentés** lehetőséget.
+4. Csúsztassa a **folyamatos átviteli egységek** csúszkát 1-től 6-ra. A folyamatos átviteli egységek határozzák meg a feladatokhoz tartozó számítási teljesítmény mennyiségét. Kattintson a **Mentés** gombra.
 
 5. **Indítsa el** a folyamatos átviteli feladatot a további skála bemutatásához. A Azure Stream Analytics több számítási erőforráson keresztül osztja el a munkát, és jobb teljesítményt érhet el, és az erőforrások közötti munkát a PARTITION BY záradékban kijelölt oszlop használatával particionálja.
 

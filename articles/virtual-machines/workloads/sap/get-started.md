@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599884"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -82,7 +82,8 @@ Ebben a szakaszban olyan dokumentumokat talál, amelyek a Microsoft Power BI az 
 
 
 ## <a name="change-log"></a>Módosítási napló
-
+- 03/17/2021: a (z) [SAP HANA Azure-beli virtuális gépeken](./sap-hana-high-availability.md)való megváltozása a SLES-on, [Ha a SAP HANA Azure-beli virtuális gépeken](./sap-hana-high-availability-rhel.md) a [SAP HANA](./sap-hana-high-availability-netapp-files-red-hat.md) RHEL-on
+- 03/15/2021: változás az [SAP ASCS/SCS-példányban a WSFC és a fájlmegosztás](./sap-high-availability-guide-wsfc-file-share.md)használatával, az[SAP ASCS/SCS példány telepítése a WSFC és a fájlmegosztás](./sap-high-availability-installation-wsfc-file-share.md) , valamint az [SAP ASCS/SCS multi-SID WSFC és fájlmegosztás](./sap-ascs-ha-multi-sid-wsfc-file-share.md) segítségével annak tisztázására, hogy az SAP ASCS/SCS-példányok és a SOFS-megosztás külön fürtökben legyen telepítve
 - 03/03/2021: a [WSFC és a Azure NetApp Files (SMB) SAP ASCS/SCS-hez](./high-availability-guide-windows-netapp-files-smb.md) való megváltozása esetén az SAP rendszer telepítése során a SWPM-t futtató felhasználóhoz emelt szintű jogosultságok szükségesek.
 - 02/11/2021: az [IBM DB2 LUW magas rendelkezésre állásának változásai a Red Hat Enterprise Linux-kiszolgálón lévő Azure-beli virtuális gépeken](./high-availability-guide-rhel-ibm-db2-luw.md) a pacemaker-fürt parancsainak a 8. x RHEL való módosításához
 - 02/03/2021: változás a [pacemaker beállítása a RHEL az Azure](./high-availability-guide-rhel-pacemaker.md) -ban a stonith-létrehozási parancsban található pcmk_host_map frissítéséhez

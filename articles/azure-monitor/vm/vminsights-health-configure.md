@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/14/2020
-ms.openlocfilehash: 0f6599bb9f379cf471dafbb83a7deefbb05c0dbe
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6bda6c9e5f6e23e9e15c12fd507645fc72159302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102052211"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583445"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-preview"></a>A figyelés konfigurálása a VM-beli betekintő Guest Health szolgáltatásban (előzetes verzió)
 A virtuális gép elemzése lehetővé teszi a virtuális gépek állapotának megtekintését olyan teljesítmény-mérési készlet alapján, amely rendszeres időközönként mintavételt végez. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést a Azure Portal használatával. Emellett ismerteti a [figyelőknek az adatgyűjtési szabály használatával történő konfigurálásához](vminsights-health-configure-dcr.md)szükséges alapvető fogalmakat is.
 
 ## <a name="open-monitor-configuration"></a>Figyelő konfigurációjának megnyitása
-Nyissa meg a figyelő konfigurációs tárolóját a Azure Portal válassza ki a figyelőt, majd a **konfiguráció** lapot.
+Nyissa meg a figyelő konfigurációját a Azure Portal válassza ki a figyelőt, majd a **konfiguráció** lapot.
 
 [![A részleteket figyelő konfiguráció figyelése](media/vminsights-health-overview/monitor-details-configuration.png)](media/vminsights-health-overview/monitor-details-configuration.png#lightbox)
 

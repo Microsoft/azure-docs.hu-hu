@@ -7,10 +7,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
 ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98629793"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>Helyszíni gépek replikálása privát végpontok használatával
@@ -191,7 +191,7 @@ Hozzon létre egy privát DNS-zónát, amely engedélyezi a Site Recovery szolg�
 
    Most létre kell hoznia a megkerülő módon létrehozott magánhálózati DNS-zónát.
 
-   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** elemet.
+   1. Nyissa meg az előző lépésben létrehozott privát DNS-zónát, majd a bal oldali ablaktáblán lépjen a **virtuális hálózati kapcsolatok** elemre. Válassza a **Hozzáadás** lehetőséget.
 
    1. Adja meg a szükséges adatokat. Az **előfizetés** és a **virtuális hálózat** listában válassza a Mellőzés hálózatnak megfelelő részleteket. A többi mezőben hagyja meg az alapértelmezett értékeket.
 

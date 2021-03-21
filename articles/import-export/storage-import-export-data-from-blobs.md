@@ -10,10 +10,10 @@ ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
 ms.openlocfilehash: e878be5351362923e163c0a6f617b96ab72a36d8
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177553"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Az Azure Import/Export szolgáltatás használata adatok Azure Blob-tárolóból való exportálására
@@ -399,7 +399,7 @@ Ez a *választható* lépés segít meghatározni az exportálási feladatokhoz 
 
     A paramétereket a következő táblázat ismerteti:
 
-    |Parancssori paraméter|Leírás|
+    |Parancssori paraméter|Description|
     |--------------------------|-----------------|
     |**/logdir:**|Választható. A naplózási könyvtár. A részletes naplófájlokat a rendszer erre a könyvtárba írja. Ha nincs megadva, a rendszer az aktuális könyvtárat használja a napló könyvtáraként.|
     |**SN**|Kötelező. Az exportálási feladatokhoz tartozó Storage-fiók neve.|
@@ -453,7 +453,7 @@ Number of drives needed:        3
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Leírás |
+   | Szelektor | BLOB elérési útja | Description |
    | --- | --- | --- |
    | Kezdete |/ |A Storage-fiókban lévő összes blob exportálása |
    | Kezdete |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

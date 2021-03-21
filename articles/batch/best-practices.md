@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1040762c171af486c7f5d66daca44ec65602aff
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 697ac5d213bbe2e52134cad519f69c233f1cd593
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561838"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583275"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -23,35 +23,29 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 
 ### <a name="pool-configuration-and-naming"></a>Készlet konfigurációja és elnevezése
 
-- **Készlet lefoglalási módja** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Készlet lefoglalási módja:** Batch-fiók létrehozásakor választhat két készlet kiosztási módja közül: **Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett batch szolgáltatás módot kell használnia, amelyben a készletek a Batch által felügyelt előfizetésekben a színfalak mögött vannak lefoglalva. A szintén választható „Felhasználói előfizetés” mód esetében a Batch virtuális gépei és egyéb erőforrásai közvetlenül az előfizetésben jönnek létre egy készlet létrehozásakor. A felhasználói előfizetési fiókok elsődlegesen a fontos, de a forgatókönyvek kis részhalmazának engedélyezésére használatosak. A felhasználói előfizetési móddal kapcsolatos további információkért tekintse meg a [felhasználói előfizetés üzemmódjának további konfigurációját](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
-- **"virtualMachineConfiguration" vagy "cloudServiceConfiguration".**
-    Habár a készleteket jelenleg a konfigurációval is létrehozhatja, az új készleteket a "virtualMachineConfiguration" és a "cloudServiceConfiguration" beállítással kell konfigurálni. A virtuálisgép-konfigurációs készletek minden aktuális és új batch-funkciót támogatni fognak. Cloud Services konfigurációs készletek nem támogatják az összes funkciót, és nem terveznek új képességeket. Az új "cloudServiceConfiguration" készleteket nem lehet létrehozni, vagy új csomópontokat hozzáadni a meglévő készletekhez a [2024. február 29. után](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). További információ: batch- [készlet konfigurációjának Áttelepítése Cloud Servicesról virtuális gépre](batch-pool-cloud-service-to-virtual-machine-configuration.md).
+- **"virtualMachineConfiguration" vagy "cloudServiceConfiguration":** Habár a készleteket jelenleg a konfigurációval is létrehozhatja, az új készleteket a "virtualMachineConfiguration" és a "cloudServiceConfiguration" beállítással kell konfigurálni. A virtuálisgép-konfigurációs készletek minden aktuális és új batch-funkciót támogatni fognak. Cloud Services konfigurációs készletek nem támogatják az összes funkciót, és nem terveznek új képességeket. Az új "cloudServiceConfiguration" készleteket nem lehet létrehozni, vagy új csomópontokat hozzáadni a meglévő készletekhez a [2024. február 29. után](https://azure.microsoft.com/updates/azure-batch-cloudserviceconfiguration-pools-will-be-retired-on-29-february-2024/). További információ: batch- [készlet konfigurációjának Áttelepítése Cloud Servicesról virtuális gépre](batch-pool-cloud-service-to-virtual-machine-configuration.md).
 
-- **Vegye figyelembe a feladat és a feladat futási idejét a készlet hozzárendelésének meghatározásakor.**
-    Ha a feladatok elsősorban rövid ideig futó tevékenységekből állnak, és a tevékenységek várható összesített száma kicsi, így a feladat teljes várható futási ideje nem hosszú, ne foglaljon le új készletet az egyes feladatokhoz. A csomópontok lefoglalási ideje csökkenti a feladatok futási idejét.
+- **Vegye figyelembe a feladat és a feladat futási idejét a feladat készlet-hozzárendelésének meghatározásakor:** Ha a feladatok elsősorban rövid ideig futó tevékenységekből állnak, és a tevékenységek várható összesített száma kicsi, így a feladat teljes várható futási ideje nem hosszú, ne foglaljon le új készletet az egyes feladatokhoz. A csomópontok lefoglalási ideje csökkenti a feladatok futási idejét.
 
-- **A készleteknek több számítási csomóponttal kell rendelkezniük.**
-    Az egyes csomópontok nem garantáltak, hogy mindig elérhetők legyenek. Habár a nem gyakori, a hardverhiba, az operációsrendszer-frissítések és más problémák egy állomása az egyes csomópontok offline állapotba helyezését eredményezheti. Ha a Batch-munkafolyamathoz determinisztikus szükséges, a garantált előrehaladást kell biztosítania, több csomóponttal rendelkező készleteket kell kiosztania.
+- **A készleteknek több számítási csomóponttal kell rendelkezniük:** Az egyes csomópontok nem garantáltak, hogy mindig elérhetők legyenek. Habár a nem gyakori, a hardverhiba, az operációsrendszer-frissítések és más problémák egy állomása az egyes csomópontok offline állapotba helyezését eredményezheti. Ha a Batch-munkafolyamathoz determinisztikus szükséges, a garantált előrehaladást kell biztosítania, több csomóponttal rendelkező készleteket kell kiosztania.
 
-- **Ne használja újra az erőforrásnevek nevét.**
-    A Batch-erőforrások (feladatok, készletek stb.) gyakran jönnek, és idővel eltérhetnek. Például hétfőn is létrehozhat egy készletet, törölheti azt keddre, majd csütörtökön létrehoz egy másik készletet. Minden létrehozott új erőforráshoz egyedi nevet kell adni, amelyet korábban még nem használt. Ezt egy GUID használatával végezheti el (akár a teljes erőforrás neve, akár a részeként), vagy beágyazhatja az erőforrásnak az erőforrás nevében történő létrehozását. A Batch támogatja a [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)paramétert, amely egy adott erőforrás számára elérhetővé teheti az erőforrásokat, még akkor is, ha a tényleges erőforrás-azonosító olyan dolog, amely nem az emberi barát. Az egyedi nevek használata megkönnyíti az Ön számára, hogy megkülönböztesse az adott erőforrást a naplókban és a mérőszámokban. Emellett a kétértelműség is törlődik, ha az erőforráshoz nem kell támogatási esetet benyújtani.
+- **Erőforrás-nevek újrafelhasználásának** mellőzése: A Batch-erőforrások (feladatok, készletek stb.) gyakran jönnek, és idővel eltérhetnek. Például hétfőn is létrehozhat egy készletet, törölheti azt keddre, majd csütörtökön létrehoz egy másik készletet. Minden létrehozott új erőforráshoz egyedi nevet kell adni, amelyet korábban még nem használt. Ezt egy GUID használatával végezheti el (akár a teljes erőforrás neve, akár a részeként), vagy beágyazhatja az erőforrásnak az erőforrás nevében történő létrehozását. A Batch támogatja a [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname)paramétert, amely egy adott erőforrás számára elérhetővé teheti az erőforrásokat, még akkor is, ha a tényleges erőforrás-azonosító olyan dolog, amely nem az emberi barát. Az egyedi nevek használata megkönnyíti az Ön számára, hogy megkülönböztesse az adott erőforrást a naplókban és a mérőszámokban. Emellett a kétértelműség is törlődik, ha az erőforráshoz nem kell támogatási esetet benyújtani.
 
-- **Folytonosság a készlet karbantartása és meghibásodása közben.**
-    A legjobb megoldás, ha a feladatok dinamikusan használják a készleteket. Ha a feladatok minden esetben ugyanazt a készletet használják, akkor a feladatok nem fognak futni, ha valami nem stimmel a készlettel. Ez különösen fontos az időérzékeny számítási feladatokhoz. Ennek kijavításához válasszon ki vagy hozzon létre egy készletet dinamikusan, amikor az egyes feladatokat ütemezi, vagy ha úgy szeretné felülbírálni a készlet nevét, hogy el tudja kerülni a nem megfelelő állapotú készletet.
+- **Folytonosság a készlet karbantartása és a sikertelenség során:** A legjobb megoldás, ha a feladatok dinamikusan használják a készleteket. Ha a feladatok minden esetben ugyanazt a készletet használják, akkor a feladatok nem fognak futni, ha valami nem stimmel a készlettel. Ez különösen fontos az időérzékeny számítási feladatokhoz. Ennek kijavításához válasszon ki vagy hozzon létre egy készletet dinamikusan, amikor az egyes feladatokat ütemezi, vagy ha úgy szeretné felülbírálni a készlet nevét, hogy el tudja kerülni a nem megfelelő állapotú készletet.
 
-- **Üzletmenet-folytonosság a készlet karbantartása és meghibásodása során** Számos lehetséges ok miatt előfordulhat, hogy a készlet nem növekszik a kívánt méretre, például a belső hibákra, a kapacitás korlátozására stb. Emiatt készen kell állnia arra, hogy a feladatokat egy másik készletben (lehetőleg egy másik virtuálisgép-mérettel) lehessen átcélozni, ha szükséges, a Batch ezt a [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)-on keresztül támogatja. Kerülje a statikus készlet AZONOSÍTÓjának használatát azzal a várakozással, hogy soha nem lesz törölve, és soha nem változik.
+- **Üzletmenet-folytonosság a készlet karbantartása és a sikertelenség során:** Számos oka lehet annak, hogy a készlet miért nem nő a kívánt mérettel, például belső hibákkal, a kapacitás korlátozásával stb. Emiatt készen kell állnia arra, hogy a feladatokat egy másik készletben (lehetőleg egy másik virtuálisgép-mérettel) lehessen átcélozni, ha szükséges, a Batch ezt a [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)-on keresztül támogatja. Kerülje a statikus készlet AZONOSÍTÓjának használatát azzal a várakozással, hogy soha nem lesz törölve, és soha nem változik.
 
 ### <a name="pool-lifetime-and-billing"></a>Készlet élettartama és számlázása
 
 A készlet élettartama eltérő lehet a készlet-konfigurációra alkalmazott foglalási és beállítási módtól függően. A készletek tetszőleges időtartammal rendelkezhetnek, és a készletben lévő számítási csomópontok száma bármikor megadható. Az Ön felelőssége, hogy a készletben lévő számítási csomópontokat explicit módon, vagy a szolgáltatás által biztosított szolgáltatások (az[autoscale](nodes-and-pools.md#automatic-scaling-policy) vagy az [autopool](nodes-and-pools.md#autopools)) segítségével kezelje.
 
-- **A készletek frissen tartása.**
-    Méretezze át a készleteket néhány havonta nulla értékre, hogy meggyőződjön arról, hogy a [csomópont-ügynök legújabb frissítései és](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)hibajavításai megtalálhatók. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
+- **Készletek frissen tartása:** Méretezze át a készleteket néhány havonta nulla értékre, hogy meggyőződjön arról, hogy a [csomópont-ügynök legújabb frissítései és](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)hibajavításai megtalálhatók. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
 
-- **Készlet ismételt létrehozása** Hasonló megjegyzés esetén nem ajánlott napi rendszerességgel törölni és újból létrehozni a készleteket. Ehelyett hozzon létre egy új készletet, és frissítse a meglévő feladatokat, hogy az új készletre mutasson. Miután az összes feladatot áthelyezte az új készletbe, törölje a régi készletet.
+- **Készlet ismételt létrehozása:** Hasonló megjegyzés esetén nem ajánlott napi rendszerességgel törölni és újból létrehozni a készleteket. Ehelyett hozzon létre egy új készletet, és frissítse a meglévő feladatokat, hogy az új készletre mutasson. Miután az összes feladatot áthelyezte az új készletbe, törölje a régi készletet.
 
-- **Készlet hatékonysága és számlázása** A Batch saját maga nem számít fel külön díjat, de a felhasznált számítási erőforrásokért díjat számítunk fel. A készletben lévő összes számítási csomópont után számítunk fel díjat, függetlenül attól, hogy milyen állapotban vannak. Ez magában foglalja a csomópont futtatásához szükséges díjakat, például a tárolási és hálózati költségeket. Az ajánlott eljárások megismeréséhez tekintse meg [Azure Batch a Cost Analysis és a költségkeretet](budget.md).
+- **Készlet hatékonysága és számlázása:** A Batch saját maga nem számít fel külön díjat, de a felhasznált számítási erőforrásokért díjat számítunk fel. A készletben lévő összes számítási csomópont után számítunk fel díjat, függetlenül attól, hogy milyen állapotban vannak. Ez magában foglalja a csomópont futtatásához szükséges díjakat, például a tárolási és hálózati költségeket. Az ajánlott eljárások megismeréséhez tekintse meg [Azure Batch a Cost Analysis és a költségkeretet](budget.md).
 
 ### <a name="pool-allocation-failures"></a>A készlet lefoglalási hibái
 
@@ -73,7 +67,7 @@ A készleteket az Azure Marketplace-en közzétett harmadik féltől származó 
 
 ### <a name="azure-region-dependency"></a>Azure region-függőség
 
-Azt javasoljuk, hogy ne függjön egyetlen Azure-régiótól, ha időérzékeny vagy éles számítási feladattal rendelkezik. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
+Ha időérzékeny vagy éles számítási feladatra van szüksége, ne használja egyetlen Azure-régiót sem. Ritkán előfordul, hogy olyan problémák merülnek fel, amelyek befolyásolhatják a teljes régiót. Ha például a feldolgozásnak egy adott időpontban kell kezdődnie, érdemes lehet a készletet az elsődleges régióban is felmérni a *kezdési időpont előtt*. Ha a készlet skálázása meghiúsul, visszatérhet egy készlet egy biztonsági mentési régióban (vagy régiókban) való méretezésére. A különböző régiókban lévő több fiókból álló készletek egy kész, könnyen hozzáférhető biztonsági mentést biztosítanak, ha egy másik készlettel valamilyen hiba történik. További információ: [az alkalmazás megtervezése a magas rendelkezésre állás érdekében](high-availability-disaster-recovery.md).
 
 ## <a name="jobs"></a>Feladatok
 
@@ -133,7 +127,7 @@ Gyakori példa a fájlok számítási csomópontba másolására szolgáló fela
 
 ### <a name="avoid-short-execution-time"></a>A rövid végrehajtási idő elkerülése
 
-Azok a feladatok, amelyek csak egy-két másodpercre futnak, nem ideálisak. Érdemes nagy mennyiségű munkát végrehajtani egy adott feladatban (10 másodperc minimum, akár óra vagy nap is). Ha az egyes feladatok egy percen (vagy több) vannak végrehajtva, akkor az ütemezési terhelés a teljes számítási idő töredékének kis hányada.
+Azok a feladatok, amelyek csak egy-két másodpercre futnak, nem ideálisak. Próbáljon meg jelentős mennyiségű munkát végezni egy adott feladatban (10 másodperc minimum, akár óra vagy nap). Ha az egyes feladatok egy percen (vagy több) vannak végrehajtva, akkor az ütemezési terhelés a teljes számítási idő töredékének kis hányada.
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Készlet hatókörének használata a Windows-csomópontok rövid feladataihoz
 
@@ -185,7 +179,7 @@ Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tan
 
 A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Tekintse át a Batch-megoldások kapcsolódásával kapcsolatos alábbi útmutatást.
 

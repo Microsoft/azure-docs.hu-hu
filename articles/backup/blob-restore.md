@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthatja vissza az Azure-blobokat (előzete
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.openlocfilehash: 4cbd47ea654115f00095e30f7d5114aec0f2c85a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101745520"
 ---
 # <a name="restore-azure-blobs-in-preview"></a>Azure-Blobok visszaállítása (előzetes verzió)

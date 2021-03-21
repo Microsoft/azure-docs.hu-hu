@@ -8,10 +8,10 @@ ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
 ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761452"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
@@ -215,7 +215,7 @@ jobs:
 
 Ha a Kubernetes-fürt, a tároló-beállításjegyzék és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók az Azure Kubernetes szolgáltatásról](/azure/architecture/reference-architectures/containers/aks-start-here)

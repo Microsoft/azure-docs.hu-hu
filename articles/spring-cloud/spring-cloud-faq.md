@@ -9,17 +9,17 @@ ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: 50c8a36b943abb24f2c31bfc2bc33e646a74524a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596626"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 

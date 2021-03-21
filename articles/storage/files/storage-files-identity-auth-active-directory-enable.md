@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: rogarana
 ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472141"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Áttekintés – helyszíni Active Directory Domain Services hitelesítés SMB-en keresztül az Azure-fájlmegosztás esetében
@@ -64,7 +64,7 @@ Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése előtt győző
 
 - Az Azure-fájlmegosztás AD DS hitelesítésének engedélyezése és konfigurálása előtt végezze el a megfelelő hálózati konfigurációt. További információért tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md) .
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 Az AD DS-hitelesítés Azure Files az [összes Azure-beli nyilvános, kínai és gov régióban](https://azure.microsoft.com/global-infrastructure/locations/)elérhető.
 

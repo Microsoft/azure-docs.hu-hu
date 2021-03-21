@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
 ms.openlocfilehash: 4c04dd5a2b41b3db54b20c9e514767453951cc35
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103565043"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>Studio (klasszikus) adatkészlet migrálása Azure Machine Learningre
@@ -101,7 +101,7 @@ Az adatfájl letöltése után regisztrálhatja az adatkészletet a Azure Machin
 
 Ha az adatai már Felhőbeli tárolási szolgáltatásban vannak, és az adataikat a natív helyükön szeretné megőrizni. A következő lehetőségek egyikét használhatja:
 
-|Betöltési módszer|Leírás|
+|Betöltési módszer|Description|
 |---| --- |
 |Azure Machine Learning adatkészlet regisztrálása|Helyi és online adatforrásokból (blob, ADLS Gen1, ADLS Gen2, fájlmegosztás, SQL DB) származó adatok beolvasása. <br><br>Az adatforrásra mutató hivatkozást hoz létre, amelyet a rendszer a futás közben kiértékel. Akkor használja ezt a beállítást, ha ismételten hozzáfér ehhez az adatkészlethez, és szeretné engedélyezni a speciális adatszolgáltatásokat, például az adatverziószámozást és a figyelést.
 |Adatmodul importálása|Online adatforrásokból (blob, ADLS Gen1, ADLS Gen2, fájlmegosztás, SQL DB) származó adatok beolvasása. <br><br> Az adatkészlet csak az aktuális tervezői folyamat futtatására lett importálva.

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: 174ec8c42ea17ccae04769d7c0baaa91b8e7025b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517871"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Felhőalapú szinkronizálás – hibaelhárítás
@@ -43,7 +43,7 @@ Ezek az elemek ellenőrizhetők a Azure Portal és az ügynököt futtató helyi
 
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban és kifogástalan állapotban van-e.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. A bal oldalon válassza a **Azure Active Directory**  >  **Azure ad Connect** lehetőséget. A központban válassza a **szinkronizálás kezelése** lehetőséget.
 1. A **Azure ad Connect Cloud Sync** képernyőn válassza az **összes ügynök áttekintése** lehetőséget.
 

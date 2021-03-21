@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97509920"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>A dúsítások formázása és exportálása
@@ -29,9 +29,9 @@ Az ebben a cikkben bemutatott példák ebben a [REST API mintában](https://gith
 
 Háromféle [kivetítési](knowledge-store-projection-overview.md)típus létezik:
 
-+ Táblák
++ Táblázatok
 + Objektumokat
-+ Files
++ Fájlok
 
 A táblázatos előrejelzések tárolása az Azure Table Storage szolgáltatásban történik. Az objektumok és a fájlok kivetítése blob Storage-ba történik, ahol az objektum-kivetítések JSON-fájlként lesznek mentve, és tartalmazhatnak tartalmakat a forrás dokumentumból, valamint bármilyen képességbeli kimenetet vagy dúsítást is. A dúsítási folyamat olyan bináris fájlokat is képes kinyerni, mint például a képek, ezek a bináris fájlok fájl-kivetítésként vannak kiválasztva. Ha egy bináris objektum kivetítése objektumként történik, csak a hozzá társított metaadatokat JSON-blobként menti a program. 
 
@@ -663,7 +663,7 @@ A kivetítés meghatározásakor van néhány gyakori probléma, amely nem várt
 
 + Elérésiút-szintaktikai hibák. Az elérésiút-választók megkülönböztetik a kis-és nagybetűket, és hiányzó bemeneti figyelmeztetéseket okozhatnak, ha nem a pontos esetet használja a választóhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelen cikkben szereplő példák a kivetítések létrehozásának általános mintáit mutatják be. Most, hogy már jól ismeri a fogalmakat, jobban fel van szerelve, hogy kivetítéseket építsen ki az adott forgatókönyvhöz.
 

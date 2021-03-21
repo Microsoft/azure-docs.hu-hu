@@ -9,16 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7b71fc2f3afb67d766bfe267888674b55af6a3a5
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 62035b2fe6c3db71e392a05946ea3f230dfa030e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503913"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604626"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Key Vault naplózás engedélyezése
 
 Egy vagy több kulcstartó létrehozása után valószínűleg figyelnie kell a kulcstartók elérésének módját és időpontját. A szolgáltatással kapcsolatos részletes információkért lásd: [Key Vault naplózása](logging.md).
+
+A naplózott elemek:
+
+* Az összes hitelesített REST API kérelem, beleértve a sikertelen kérelmeket a hozzáférési engedélyek, a rendszerhibák vagy a hibás kérelmek eredményeképpen.
+* Maga a kulcstartó műveletei, beleértve a létrehozást, a törlést, a kulcstartó-hozzáférési szabályzatok beállítását és a Key Vault-attribútumok, például címkék frissítését.
+* A Key vaultban lévő kulcsokkal és titkos kulcsokkal kapcsolatos műveletek, beleértve a következőket:
+  * A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
+  * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
+* A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.  
+* Event Grid a közeljövőben lejáró értesítési események, a lejárt és a tár hozzáférési szabályzata megváltozott (az új verzió esemény nincs naplózva). Az események naplózása attól függetlenül történik, hogy van-e esemény-előfizetés létrehozva a Key vaultban. További információ: Event Grid- [esemény sémája Key Vault](../../event-grid/event-schema-key-vault.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -58,7 +68,7 @@ A könnyebb kezelhetőség érdekében ugyanazt az erőforráscsoportot fogjuk h
 
 A Storage-fiók nevét is meg kell adnia. A Storage-fiókok nevének egyedinek kell lennie 3 és 24 karakter között, és csak számokból és kisbetűkből állhat.  Végül a "Standard_LRS" SKU Storage-fiókját fogjuk létrehozni.
 
-Az Azure CLI-vel használja az az [Storage Account Create](/cli/azure/storage/account#az_storage_account_create) parancsot.
+Az Azure CLI-vel használja az az [Storage Account Create](/cli/azure/storage/account#az_storage_account_create) parancsot. 
 
 ```azurecli-interactive
 az storage account create --name "<your-unique-storage-account-name>" -g "myResourceGroup" --sku "Standard_LRS"
@@ -100,44 +110,67 @@ Get-AzKeyVault -VaultName "<your-unique-keyvault-name>"
 
 A Key Vault erőforrás-azonosítója a "/Subscriptions/<saját előfizetés-azonosító>/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/<a-Unique-kulcstartó-Name>" formátumban jelenik meg. Jegyezze fel a következő lépéshez.
 
-## <a name="enable-logging-using-azure-powershell"></a>Naplózás engedélyezése Azure PowerShell használatával
+## <a name="enable-logging"></a>Naplózás engedélyezése
 
-A Key Vault naplózásának engedélyezéséhez az Azure CLI az monitor Diagnostics [-Settings Create](/cli/azure/monitor/diagnostic-settings) parancsot vagy a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot használjuk a Storage-fiók azonosítójával és a Key Vault erőforrás-azonosítóval együtt.
+A Key Vault naplózását az Azure CLI, Azure PowerShell vagy a Azure Portal használatával engedélyezheti.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="azure-cli"></a>Azure CLI
+
+Használja az Azure CLI az [monitor Diagnostics-Settings Create](/cli/azure/monitor/diagnostic-settings) paranccsal együtt a Storage-fiók azonosítóját és a Key Vault erőforrás-azonosítóját.
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-A Azure PowerShell használatával a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot használjuk, és az **-enabled** jelzőt beállítottuk, hogy a **$true** és a kategória beállítása `AuditEvent` (az egyetlen kategória a Key Vault naplózáshoz):
+Igény szerint megadhat egy adatmegőrzési szabályt a naplókhoz, így a régebbi naplók automatikusan törlődnek a megadott idő elteltével. Beállíthat például egy adatmegőrzési szabályzatot, amely automatikusan törli a 90 napnál régebbi naplókat.
+
+Az Azure CLI használatával használja az az [monitor diagnosztikai-Settings Update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) parancsot. 
+
+```azurecli-interactive
+az monitor diagnostic-settings update --name "Key vault retention policy" --resource "<key-vault-resource-id>" --set retentionPolicy.days=90
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Használja a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot, és az **-enabled** jelzőt állítsa **$true** értékre, és a kategóriát `AuditEvent` (a Key Vault naplózás egyetlen kategóriáját):
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
 ```
 
-Igény szerint megadhat egy adatmegőrzési szabályt a naplókhoz, így a régebbi naplók automatikusan törlődnek a megadott idő elteltével. Beállíthatja például a set adatmegőrzési szabályzatot, amely a 90 napnál régebbi naplókat automatikusan törli.
+Igény szerint megadhat egy adatmegőrzési szabályt a naplókhoz, így a régebbi naplók automatikusan törlődnek a megadott idő elteltével. Beállíthat például egy adatmegőrzési szabályzatot, amely automatikusan törli a 90 napnál régebbi naplókat.
 
-<!-- With the Azure CLI, use the [az monitor diagnostic-settings update](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_update) command. 
-
-```azurecli-interactive
-az monitor diagnostic-settings update 
-```
--->
-
-A Azure PowerShell használatával használja a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot. 
+A Azure PowerShell használatával használja a [set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) parancsmagot.
 
 ```powershell-interactive
 Set-AzDiagnosticSetting "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
-A naplózott elemek:
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
-* Az összes hitelesített REST API kérelem, beleértve a sikertelen kérelmeket a hozzáférési engedélyek, a rendszerhibák vagy a hibás kérelmek eredményeképpen.
-* Maga a kulcstartó műveletei, beleértve a létrehozást, a törlést, a kulcstartó-hozzáférési szabályzatok beállítását és a Key Vault-attribútumok, például címkék frissítését.
-* A Key vaultban lévő kulcsokkal és titkos kulcsokkal kapcsolatos műveletek, beleértve a következőket:
-  * A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
-  * A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
-* A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.  
-* Event Grid a közeljövőben lejáró értesítési események, a lejárt és a tár hozzáférési szabályzata megváltozott (az új verzió esemény nincs naplózva). Az események naplózása attól függetlenül történik, hogy van-e esemény-előfizetés létrehozva a Key vaultban. További információ: Event Grid- [esemény sémája Key Vault](../../event-grid/event-schema-key-vault.md)
+A diagnosztikai beállítások a portálon történő konfigurálásához kövesse az alábbi lépéseket.
+
+1. Válassza ki a diagnosztikai beállításokat az erőforrás panel menüjében.
+
+    :::image type="content" source="../media/diagnostics-portal-1.png" alt-text="Diagnosztikai portál 1":::
+
+1. Kattintson a "+ diagnosztikai beállítás hozzáadása" elemre.
+
+    :::image type="content" source="../media/diagnostics-portal-2.png" alt-text="Diagnosztikai portál 2":::
+ 
+1. Válasszon ki egy nevet a diagnosztikai beállítás meghívásához. Key Vault Azure Monitor naplózásának konfigurálásához válassza a "AuditEvent" és a "Küldés Log Analytics munkaterületre" lehetőséget. Ezután válassza ki azt az előfizetést és Log Analytics munkaterületet, amelyhez el szeretné küldeni a naplókat.
+
+    :::image type="content" source="../media/diagnostics-portal-3.png" alt-text="Diagnosztikai portál 3":::
+
+    Ellenkező esetben válassza ki a kiválasztani kívánt naplókhoz tartozó beállításokat
+
+1. Miután kiválasztotta a kívánt beállításokat, válassza a mentés lehetőséget.
+
+    :::image type="content" source="../media/diagnostics-portal-4.png" alt-text="Diagnosztikai portál 4":::
+
+---
 
 ## <a name="access-your-logs"></a>A naplók elérése
 

@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 0cccf45037320b476b1a44cafa8074bacadacbc8
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103600949"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
@@ -128,7 +128,7 @@ A jogcímek átalakításához a következő függvények használhatók.
 | **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. A NameID-jogcím átalakításához az illesztés egy ellenőrzött tartományra korlátozódik. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |
 | **ToLowercase()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUppercase()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
-| **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a (z @contoso.com ) "" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. e-mail<br/>*Érték*: " @contoso.com "<br/>2. paraméter (kimenet): user. e-mail<br/>3. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
+| **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a (z @contoso.com ) "" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user.email<br/>*Érték*: " @contoso.com "<br/>2. paraméter (kimenet): user.email<br/>3. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
 | **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az alkalmazott azonosítója "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: user. Alkalmazottkód<br/>*Érték*: "000"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó alkalmazotti azonosítója, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)*: felhasználó. ország<br/>*Érték*: "US"<br/>2. paraméter (kimenet): user. Alkalmazottkód<br/>3. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **Kinyerés () – a megfeleltetés után** | Azt az alsztringet adja vissza, amely a megadott értéknek felel meg.<br/>Ha például a bemeneti érték "Finance_BSimon", a megfelelő érték "Finance_", akkor a jogcím kimenete "BSimon". |
@@ -155,7 +155,7 @@ A felhasználó típusa a következő lehet:
 - **Külső vendégek**: a vendég felhasználó olyan külső szervezethez tartozik, amely nem rendelkezik Azure ad-vel.
 
 
-Az egyik forgatókönyv, ahol ez hasznos lehet, ha a jogcím forrása eltér a vendég számára, és az alkalmazáshoz hozzáférő alkalmazott. Érdemes lehet megadnia, hogy ha a felhasználó egy alkalmazott, a NameID a User. e-mail címről származik, de ha a felhasználó vendég, akkor a NameID a User. extensionAttribute1 forrásból származik.
+Az egyik forgatókönyv, ahol ez hasznos lehet, ha a jogcím forrása eltér a vendég számára, és az alkalmazáshoz hozzáférő alkalmazott. Érdemes lehet megadnia, hogy ha a felhasználó egy alkalmazott, a NameID forrása a user.email, de ha a felhasználó vendég, akkor a NameID a User. extensionAttribute1 forrásból származik.
 
 Jogcím feltételének hozzáadása:
 

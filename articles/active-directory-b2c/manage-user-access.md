@@ -11,10 +11,10 @@ ms.date: 03/09/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 0ee26e7fe74d87f7b20f9a28b049b8043b376273
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518056"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
@@ -89,19 +89,19 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 
 | Ország/régió | Ország/régió neve | Kisebb beleegyező életkor | Kisebb kor |
 | -------------- | ------------------- | ----------------- | --------- |
-| Alapértelmezett | Nincs | Nincs | 18 |
-| AE | Egyesült Arab Emírségek | Nincs | 21 |
+| Alapértelmezett | Nincsenek | Nincsenek | 18 |
+| AE | Egyesült Arab Emírségek | Nincsenek | 21 |
 | AT | Ausztria | 14 | 18 |
 | BE | Belgium | 14 | 18 |
 | BG | Bulgária | 16 | 18 |
-| BH | Bahrein | Nincs | 21 |
-| CM | Kamerun | Nincs | 21 |
+| BH | Bahrein | Nincsenek | 21 |
+| CM | Kamerun | Nincsenek | 21 |
 | CY | Ciprus | 16 | 18 |
 | CZ | Cseh Köztársaság | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |
-| EG | Egyiptom | Nincs | 21 |
+| EG | Egyiptom | Nincsenek | 21 |
 | ES | Spanyolország | 13 | 18 |
 | JK | Franciaország | 16 | 18 |
 | GB | Egyesült Királyság | 13 | 18 |
@@ -115,18 +115,18 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 | LU | Luxemburg | 16 | 18 |
 | LV | Lettország | 16 | 18 |
 | MT | Málta | 16 | 18 |
-| NA | Namíbia | Nincs | 21 |
+| NA | Namíbia | Nincsenek | 21 |
 | NL | Hollandia | 16 | 18 |
 | PL | Lengyelország | 13 | 18 |
 | PT | Portugália | 16 | 18 |
 | RO | Románia | 16 | 18 |
 | SE | Svédország | 13 | 18 |
-| SG | Szingapúr | Nincs | 21 |
+| SG | Szingapúr | Nincsenek | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| TD | Csád | Nincs | 21 |
-| TH | Thaiföld | Nincs | 20 |
-| TW | Tajvan | Nincs | 20 |
+| TD | Csád | Nincsenek | 21 |
+| TH | Thaiföld | Nincsenek | 20 |
+| TW | Tajvan | Nincsenek | 20 |
 | USA | Egyesült Államok | 13 | 18 |
 
 

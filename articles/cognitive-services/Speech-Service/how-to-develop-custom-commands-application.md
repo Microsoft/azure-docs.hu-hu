@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
 ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935818"
 ---
 # <a name="develop-custom-commands-applications"></a>Egyéni parancsok alkalmazásának fejlesztése
@@ -52,7 +52,7 @@ A létrehozott üres Smart-Room-Lite egyéni parancsok alkalmazásban adjon hozz
 
 1. Hozzon létre egy új parancsot a bal oldali ablaktábla tetején található **új parancs** kiválasztásával. Megnyílik az **új parancssori** ablak.
 1. A **Name (név** ) mezőben adja meg az értéket `TurnOn` .
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 A középső ablaktábla a parancs tulajdonságait listázza. 
 
@@ -96,7 +96,7 @@ További információ a szabályokról és a befejezési szabályokról: [egyén
     | Beállítás    | Ajánlott érték                          | Leírás                                        |
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Név**       | `ConfirmationResponse`                  | A szabály célját leíró név          |
-    | **Feltételek** | Nincs                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
+    | **Feltételek** | Nincsenek                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
     | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
 
    > [!div class="mx-imgBorder"]
@@ -119,7 +119,7 @@ Ezután szerkessze a **meglévő befejezett** befejezési szabályokat a követk
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | **Név**  | `ConfirmationResponse`                  |
-| **Feltételek** | Nincs                                     |
+| **Feltételek** | Nincsenek                                     |
 | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, setting temperature to 40 degrees` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -131,7 +131,7 @@ Hozzon létre egy új `SetAlarm` parancsot. Használja a példa mondatot `Set an
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
 | **Név**  | `ConfirmationResponse`                  |
-| **Feltételek** | Nincs                                     |
+| **Feltételek** | Nincsenek                                     |
 | **Műveletek**    | **Beszédfelismerési válasz küldése**  >  **Egyszerű szerkesztő**  >  **Első változat** > `Ok, setting an alarm for 9 am tomorrow` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
@@ -217,7 +217,7 @@ Először szerkessze a meglévő `TurnOn` parancsot a több eszköz bekapcsolás
     | **Előre megadott bemeneti értékek** | `tv`, `fan`               |
     | **Aliasok** ( `tv` )      | `television`, `telly`     |
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 #### <a name="modify-example-sentences"></a>Példa mondatok módosítása
 
@@ -239,7 +239,7 @@ turn something {OnOff}
 turn something
 ```
 
-Válassza a **Mentés** lehetőséget.
+Kattintson a **Mentés** gombra.
 
 > [!TIP]
 > A példa – mondatok szerkesztőben kapcsos zárójelek használatával hivatkozhat a paraméterekre. Például: `turn {OnOff} the {SubjectDevice}`.
@@ -252,13 +252,13 @@ Módosítsa a meglévő befejezési szabályt `ConfirmationResponse` .
 1. A **feltételek** szakaszban válassza a **feltétel hozzáadása** lehetőséget.
 1. Az **új feltétel** ablak **típus** listájában válassza a **kötelező paraméterek** elemet. Az alábbi listában válassza a **javítás OnOff** és a **SubjectDevice** lehetőséget.
 1. Hagyja kiválasztva a **IsGlobal** .
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A **műveletek** szakaszban szerkessze a **beszédfelismerési válasz küldése** műveletet úgy, hogy fölé viszi, majd kiválasztja a Szerkesztés gombot. Ezúttal használja az újonnan létrehozott `OnOff` és `SubjectDevice` paramétereket:
 
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Próbálja ki a módosításokat úgy, hogy kiválasztja a jobb oldali ablaktábla tetején található **vonat** ikont. 
 
@@ -422,7 +422,7 @@ A parancs használatával kipróbálhatja az érvényességeket `SetTemperature`
 1. A bal oldali ablaktáblán válassza a **SetTemperature** parancsot.
 1. A középső ablaktáblán válassza a **hőmérséklet** elemet.
 1. A jobb oldali ablaktáblán válassza az **Érvényesítés hozzáadása** elemet.
-1. Az **új érvényesítési** ablakban konfigurálja az érvényesítést az alábbi táblázatban látható módon. Ezután válassza a **Létrehozás** elemet.
+1. Az **új érvényesítési** ablakban konfigurálja az érvényesítést az alábbi táblázatban látható módon. Ezután kattintson a **Létrehozás** elemre.
 
 
     | Paraméter konfigurálása | Ajánlott érték | Leírás |
@@ -627,7 +627,7 @@ Az egyéni parancsok válaszának egy másik módja a kimeneti hang kiválasztá
 1. Az egyéni parancsok alkalmazás bal oldali paneljén válassza a **Beállítások** lehetőséget.
 1. A középső ablaktáblán válassza az **egyéni hang** lehetőséget.
 1. A táblázatban válasszon ki egy egyéni hangot vagy egy nyilvános hangot.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > [!div class="mx-imgBorder"]
 > ![A minta mondatokat és paramétereket bemutató képernyőkép.](media/custom-commands/select-custom-voice.png)
@@ -639,7 +639,7 @@ Az egyéni parancsok válaszának egy másik módja a kimeneti hang kiválasztá
 
 Mostantól az alkalmazás az alapértelmezett hang helyett a kiválasztott hangon fog válaszolni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [integrálható az egyéni parancsok alkalmazása](how-to-custom-commands-setup-speech-sdk.md) egy ügyfélalkalmazás segítségével a Speech SDK használatával.
 * [Állítsa be a folyamatos üzembe helyezést](how-to-custom-commands-deploy-cicd.md) az egyéni parancsok alkalmazáshoz az Azure DevOps használatával. 

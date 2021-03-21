@@ -12,10 +12,10 @@ ms.date: 02/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 62bae22b6a4bb06b1e97c18e52ad614fd2439902
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489321"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -63,11 +63,11 @@ A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
+| Id | Yes | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
 A **ContentDefinition** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Tartalomdefinícióban | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom definíciójának HTML5-oldalának URL-címét. |
 | RecoveryUri | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom-definícióval kapcsolatos hibát megjelenítő HTML-oldal URL-címét. Jelenleg nincs használatban, az értéknek kell lennie `~/common/default_page_error.html` . |
@@ -79,7 +79,7 @@ A **ContentDefinition** elem a következő elemeket tartalmazza:
 
 A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma: `urn:com:microsoft:aad:b2c:elements:page-name:version` . A következő táblázat felsorolja a használható oldal-azonosítókat.
 
-| Oldal azonosítója | Leírás |
+| Oldal azonosítója | Description |
 | ----- | ----------- |
 | `globalexception` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | `providerselection`, `idpselection` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak.  |
@@ -168,7 +168,7 @@ A következő példa a Content definition-azonosítókat és a hozzá tartozó *
 
 A **metaadat** -elemek a következő elemeket tartalmazzák:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Elem | 0: n | A tartalom-definícióhoz kapcsolódó metaadatok |
 
@@ -176,7 +176,7 @@ A **metaadatok** elem **elem eleme a** következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Kulcs | Igen | A metaadat-kulcs.  |
+| Kulcs | Yes | A metaadat-kulcs.  |
 
 #### <a name="metadata-keys"></a>Metaadat-kulcsok
 
@@ -184,13 +184,13 @@ A Content Definition a következő metaadat-elemeket támogatja:
 
 | Kulcs | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayName | Nem | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
+| DisplayName | No | Egy karakterlánc, amely tartalmazza a tartalom definíciójának nevét. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | A tartalom definíciójának honosított erőforrás-hivatkozásainak listája. |
 
@@ -198,8 +198,8 @@ A **LocalizedResourcesReference** elem a következő attribútumokat tartalmazza
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
-| LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
+| Nyelv | Yes | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
+| LocalizedResourcesReferenceId | Yes | A **LocalizedResources** elem azonosítója. |
 
 Az alábbi példa egy regisztrációs vagy bejelentkezési tartalom definícióját mutatja be az angol, francia és spanyol nyelv honosítására való hivatkozással:
 
@@ -225,7 +225,7 @@ Ha szeretné megtudni, hogyan adhat honosított támogatást a tartalmi definíc
 
 A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Az elem határozza meg azt a környezetet, amelyet az egyéni HTML5/CSS-sablon alkalmazni fog. A következő táblázat ismerteti az identitási élmény keretrendszere által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat. Saját tartalmi definíciókat tetszőleges AZONOSÍTÓval hozhat létre.
 
-| ID (Azonosító) | Alapértelmezett sablon | Leírás |
+| ID (Azonosító) | Alapértelmezett sablon | Description |
 | -- | ---------------- | ----------- |
 | **API. error** | [kivétel. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |

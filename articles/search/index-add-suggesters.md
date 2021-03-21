@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 748ad9fdab781ba03135f026ab846099fe50c51f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030781"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604406"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
@@ -66,7 +66,7 @@ Az analizátor választása határozza meg, hogy a mezők hogyan legyenek jogkiv
 
 Az elemzők kiértékelése során érdemes lehet a [szöveg elemzése API](/rest/api/searchservice/test-analyzer) -t használni a feltételek feldolgozásának a betekintéshez. Miután létrehozta az indexet, különböző elemzőket próbálhat ki egy sztringen a jogkivonat kimenetének megtekintéséhez.
 
-Az [Egyéni elemzőket](index-add-custom-analyzers.md) vagy [előre definiált elemzőket](index-add-custom-analyzers.md#predefined-analyzers-reference) használó mezők (a standard Lucene kivételével) kifejezetten nem teszik lehetővé a gyenge eredmények elkerülését.
+Az [Egyéni elemzőket](index-add-custom-analyzers.md) vagy [beépített elemzőket](index-add-custom-analyzers.md#built-in-analyzers) használó mezők (a standard Lucene kivételével) kifejezetten nem teszik lehetővé a gyenge eredmények elkerülését.
 
 > [!NOTE]
 > Ha az analizátor korlátozását kell meghoznia, például ha egy kulcsszóra vagy ngram-elemzőre van szüksége bizonyos lekérdezési forgatókönyvekhez, két külön mezőt kell használnia ugyanahhoz a tartalomhoz. Ez lehetővé teszi, hogy az egyik mező legyen egy javaslat, míg a másik egyéni Analyzer-konfigurációval is beállítható.
@@ -173,7 +173,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 
 + [Hozza létre első alkalmazását C# nyelven (3. lecke – keresési típus hozzáadása)](tutorial-csharp-type-ahead-and-suggestions.md) minta bemutatja a javasolt lekérdezéseket, az automatikus kiegészítést és a sokoldalú navigációt. Ez a mintakód egy sandbox Azure Cognitive Search Service-ben fut, és egy előre betöltött Hotel-indexet használ egy már létrehozott javaslattal, így mindössze annyit kell tennie, hogy az alkalmazás futtatásához nyomja le az F5 billentyűt. Nincs szükség előfizetésre vagy bejelentkezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kérelmek létrehozásával kapcsolatban a következő cikkből tájékozódhat.
 

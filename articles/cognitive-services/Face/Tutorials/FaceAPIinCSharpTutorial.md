@@ -12,10 +12,10 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7a9caf1c1785055cbc81ef56958fe8ce2aca229c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102428303"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
@@ -68,7 +68,7 @@ Nyissa meg a *MainWindow. XAML* mappát, és cserélje le a tartalmát a követk
 
 ### <a name="create-the-main-class"></a>A Main osztály létrehozása
 
-Nyissa meg a *MainWindow.XAML.cs* , és adja hozzá az ügyféloldali kódtár névtereit, valamint az egyéb szükséges névtereket. 
+Nyissa meg a *MainWindow. XAML. cs* -t, és adja hozzá az ügyféloldali kódtár névtereit, valamint az egyéb szükséges névtereket. 
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 

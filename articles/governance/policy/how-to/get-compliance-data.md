@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
-ms.date: 10/05/2020
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 3c1c128b414444c6004f32f3f3173548f81a82e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577119"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598541"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -26,7 +26,7 @@ Mielőtt megvizsgáljuk a megfelelőségi jelentés módszereit, nézzük meg, h
 
 ## <a name="evaluation-triggers"></a>Próbaverziós eseményindítók
 
-A befejezett kiértékelési ciklusok eredményei az erőforrás- `Microsoft.PolicyInsights` szolgáltatón keresztül `PolicyStates` és a `PolicyEvents` műveletekben érhetők el. Az Azure Policy-információk REST API működésével kapcsolatos további információkért tekintse meg az [Azure Policy](/rest/api/policy-insights/)elemzése című témakört.
+A befejezett kiértékelési ciklusok eredményei az erőforrás- `Microsoft.PolicyInsights` szolgáltatón keresztül `PolicyStates` és a `PolicyEvents` műveletekben érhetők el. Az Azure Policy-információk REST API működésével kapcsolatos további információkért tekintse meg az [Azure Policy](/rest/api/policy/)elemzése című témakört.
 
 A hozzárendelt szabályzatok és kezdeményezések értékelése a különböző események eredményeképpen történik:
 
@@ -237,13 +237,13 @@ Ha egy erőforrás úgy van meghatározva, hogy **nem megfelelőnek** minősül,
 
 ## <a name="command-line"></a>Parancssor
 
-A portálon megjelenő információk a REST API (beleértve a [ARMClient](https://github.com/projectkudu/ARMClient)-t), az Azure PowerShell és az Azure CLI-vel is kérhetők le. A REST API részletes ismertetését lásd: [Azure Policy](/rest/api/policy-insights/) -információk áttekintése. Az REST API-hivatkozási lapokon minden művelethez zöld "kipróbálás" gomb tartozik, amely lehetővé teszi, hogy közvetlenül a böngészőben próbálja ki.
+A portálon megjelenő információk a REST API (beleértve a [ARMClient](https://github.com/projectkudu/ARMClient)-t), az Azure PowerShell és az Azure CLI-vel is kérhetők le. A REST API részletes ismertetését lásd: [Azure Policy](/rest/api/policy/) -hivatkozás. Az REST API-hivatkozási lapokon minden művelethez zöld "kipróbálás" gomb tartozik, amely lehetővé teszi, hogy közvetlenül a böngészőben próbálja ki.
 
 Használjon ARMClient vagy hasonló eszközt az Azure-ba való hitelesítés kezeléséhez az REST API példákkal.
 
 ### <a name="summarize-results"></a>Eredmények összegzése
 
-A REST API az összegzést tároló, definíció vagy hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén az Azure Policy Insight összefoglalása az [előfizetéshez](/rest/api/policy-insights/policystates/summarizeforsubscription):
+A REST API az összegzést tároló, definíció vagy hozzárendelés alapján végezheti el. Íme egy példa az előfizetés szintjén az Azure Policy Insight összefoglalása az [előfizetéshez](/rest/api/policy/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2019-10-01
@@ -353,7 +353,7 @@ Az eredmények a következő példához hasonlók:
 }
 ```
 
-A házirend-események lekérdezésével kapcsolatos további információkért tekintse meg a [Azure Policy Events](/rest/api/policy-insights/policyevents) Reference című cikket.
+A házirend-események lekérdezésével kapcsolatos további információkért tekintse meg a [Azure Policy Events](/rest/api/policy/policyevents) Reference című cikket.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -648,7 +648,7 @@ $policyEvents = Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/v
 $policyEvents | ConvertTo-Csv | Out-File 'C:\temp\policyEvents.csv'
 ```
 
-Az objektum kimenete a `$policyEvents` következőhöz hasonlóan néz ki:
+Az objektum kimenete a `$policyEvents` következő kimenethez hasonlít:
 
 ```output
 Timestamp                  : 9/19/2020 5:18:53 AM

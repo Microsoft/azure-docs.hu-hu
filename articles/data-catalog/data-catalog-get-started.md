@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a7d575b92bff69c13ded70187005ce1db018ea4c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a56e5a4cae7c5a8e931b074f08a7152e53a8eb31
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152003"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674733"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Gyors útmutató: Azure Data Catalog létrehozása
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](overview.md) című cikket.
 
@@ -37,17 +39,17 @@ Data Catalog beállításához az Azure-előfizetés tulajdonosának vagy tulajd
 
 Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatkatalógust hozhat létre. Ezért ha a Azure Active Directory tartományhoz tartozó Azure-előfizetés tulajdonosa vagy társtulajdonosa már létrehozott egy katalógust, akkor nem hozhat létre katalógust, még akkor sem, ha több Azure-előfizetéssel rendelkezik. Ha szeretné megnézni, hogy az Ön Azure Active Directory-tartományában hozott-e már létre adatkatalógust valamelyik felhasználó, lépjen az [Azure Data Catalog honlapjára](http://azuredatacatalog.com), és ellenőrizze, hogy lát-e katalógust. Ha valaki már létrehozta a katalógust, ugorja át az itt látható eljárást, és folytassa a következő résszel.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com)  >  **erőforrás létrehozása** elemre, és válassza a **Data Catalog**lehetőséget.
+1. Lépjen a [Azure Portal](https://portal.azure.com)  >  **erőforrás létrehozása** elemre, és válassza a **Data Catalog** lehetőséget.
 
     ![Azure Data Catalog létrehozás gomb](media/data-catalog-get-started/data-catalog-create.png)
 
-2. Adja meg a adatkatalógus **nevét** , a használni kívánt **előfizetést** , a katalógus **helyét** és az **árképzési szintet**. Ezután válassza a **Létrehozás** elemet.
+2. Adja meg a adatkatalógus **nevét** , a használni kívánt **előfizetést** , a katalógus **helyét** és az **árképzési szintet**. Ezután kattintson a **Létrehozás** elemre.
 
 3. Nyissa meg az [Azure Data Catalog kezdőlapját](http://azuredatacatalog.com), és kattintson az **Adatok közzététele** elemre.
 
    ![Azure Data Catalog – Adatok közzététele gomb](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-   Az első **lépések**lehetőség kiválasztásával a [Data Catalog szolgáltatás oldaláról](https://azure.microsoft.com/services/data-catalog) is elérheti Data Catalog kezdőlapját.
+   Az első **lépések** lehetőség kiválasztásával a [Data Catalog szolgáltatás oldaláról](https://azure.microsoft.com/services/data-catalog) is elérheti Data Catalog kezdőlapját.
 
    ![Azure Data Catalog – marketinges kezdőlap](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
 
@@ -87,7 +89,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
 
 1. A böngésző egy másik lapján, illetve egy másik böngésző ablakában nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be ugyanazzal a fiókkal, amelyet az előző lépésnél az adatkatalógus létrehozásához használt.
 
-2. Válassza **a minden szolgáltatás** lehetőséget, majd kattintson a **Data Catalog**elemre.
+2. Válassza **a minden szolgáltatás** lehetőséget, majd kattintson a **Data Catalog** elemre.
 
     ![Azure Data Catalog – Tallózás az Azure-ban](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)
 

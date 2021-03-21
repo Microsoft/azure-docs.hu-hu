@@ -14,10 +14,10 @@ ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101726427"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Oktatóanyag: funkció-jelzők használata egy ASP.NET Core alkalmazásban
@@ -99,7 +99,7 @@ A szolgáltatás jelölőit az alkalmazásba nem rögzített kódolás helyett a
 
 A ASP.NET Core alkalmazás konfigurálásának legegyszerűbb módja az NuGet csomagban található konfigurációs szolgáltatón keresztül `Microsoft.Azure.AppConfiguration.AspNetCore` . Ha a csomagra mutató hivatkozást is tartalmaz, kövesse az alábbi lépéseket a NuGet-csomag használatához.
 
-1. Nyissa meg a *program.cs* fájlt, és adja hozzá a következő kódot.
+1. Nyissa meg a *program. cs* fájlt, és adja hozzá a következő kódot.
     > [!IMPORTANT]
     > `CreateHostBuilder``CreateWebHostBuilder`a .net Core 3. x helyére kerül. Válassza ki a megfelelő szintaxist a környezet alapján.
 
@@ -151,7 +151,7 @@ A ASP.NET Core alkalmazás konfigurálásának legegyszerűbb módja az NuGet cs
     ```
     ---
 
-2. Nyissa meg a *Startup.cs* , és frissítse a `Configure` és a `ConfigureServices` metódust, és vegye fel a nevű beépített middleware-t `UseAzureAppConfiguration` . Ez a middleware lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kéréseket.
+2. Nyissa meg a *Startup. cs* programot, és frissítse a `Configure` és a `ConfigureServices` metódust, és vegye fel a nevű beépített middleware-t `UseAzureAppConfiguration` . Ez a middleware lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kéréseket.
 
 
 

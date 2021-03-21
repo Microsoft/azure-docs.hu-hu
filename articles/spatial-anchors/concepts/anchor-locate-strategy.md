@@ -9,10 +9,10 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 43273ccd7c882bbac6cbc68d359db4ecb100800e
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102617403"
 ---
 # <a name="understanding-the-anchorlocatecriteria-class"></a>A AnchorLocateCriteria osztály ismertetése
@@ -53,7 +53,7 @@ Ezzel a tulajdonsággal határozható meg, hogy milyen adatok legyenek visszaadv
 
 AnchorDataCategory enumerálási értéke | Visszaadott adatok
 -----|------------
-Nincs | Nincs visszaadott érték
+Nincsenek | Nincs visszaadott érték
 Tulajdonságok| A horgony tulajdonságai, beleértve a AppProperties is, visszaadva.
 Térbeli| A rendszer a horgonyra vonatkozó térbeli adatokat adja vissza.
 
@@ -62,7 +62,7 @@ Térbeli| A rendszer a horgonyra vonatkozó térbeli adatokat adja vissza.
 
 A stratégia részletesebben határozza meg a horgonyok elhelyezkedését. A stratégia tulajdonságot LocateStrategy Enum használatával lehet megadni.
 
-LocateStrategy enumerálási értéke | Leírás
+LocateStrategy enumerálási értéke | Description
 ---------------|------------
 AnyStrategy | Ez a stratégia lehetővé teszi, hogy a rendszerek a VisualInformation és a kapcsolati stratégiák kombinációit használják a horgonyok kereséséhez. 
 VisualInformation|Ez a stratégia megkísérli megtalálni a horgonyokat az aktuális környezetből származó vizualizációs információk alapján a horgony vizualizációs lábnyomának megfelelő értékekkel. A horgony vizualizációs lábnyoma a horgonyhoz jelenleg kapcsolódó vizualizációs információkra utal. Ez a vizualizációs információ általában azonban nem gyűjti össze kizárólag a horgony létrehozásakor. Ez a stratégia jelenleg csak a NearDevice vagy az azonosítók tulajdonságaival együtt engedélyezett.

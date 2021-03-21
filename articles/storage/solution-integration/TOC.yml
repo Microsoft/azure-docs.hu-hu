@@ -1,5 +1,5 @@
 - name: Az Azure Storage által ellenőrzött partneri megoldások
-  href: /azure/storage/solution-integration
+  href: ./index.yml
 - name: Elemzési és big data partnerek
   items:
     - name: Az ellenőrzött partnerek áttekintése

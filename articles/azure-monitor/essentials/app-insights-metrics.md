@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
-ms.openlocfilehash: bd28fa9f20775be659de6cef99f9ceda29fe52cc
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae7980137c1da5e1755450863af4f9029d6ed62
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049134"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583462"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -95,9 +95,11 @@ A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós 
 
 ### <a name="browser-page-load-time-browsertimingstotalduration"></a>Böngésző oldalának betöltési ideje (browserTimings/totalDuration)
 
+A felhasználói kérések ideje, amíg a DOM, a stíluslapok, a parancsfájlok és a lemezképek be nem töltődik.
+
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -111,9 +113,11 @@ browserTimings
 
 ### <a name="client-processing-time-browsertimingprocessingduration"></a>Ügyfél feldolgozási ideje (browserTiming/processingDuration)
 
+A dokumentum utolsó bájtjának betöltése közötti idő, amíg a DOM be nem töltődik. Lehetséges, hogy az aszinkron kérelmek feldolgozása még folyamatban van.
+
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -127,9 +131,11 @@ browserTimings
 
 ### <a name="page-load-network-connect-time-browsertimingsnetworkduration"></a>Oldal betöltési hálózati kapcsolati ideje (browserTimings/networkDuration)
 
+A felhasználói kérés és a hálózati kapcsolat közötti idő. Magában foglalja a DNS-keresési és szállítási kapcsolatokat.
+
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -143,9 +149,11 @@ browserTimings
 
 ### <a name="receiving-response-time-browsertimingsreceiveduration"></a>Válasz fogadása (browserTimings/receiveDuration)
 
+Az első és az utolsó bájt közötti idő, vagy a kapcsolat megszakadása.
+
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -159,9 +167,11 @@ browserTimings
 
 ### <a name="send-request-time-browsertimingssendduration"></a>Kérelem küldésének ideje (browserTimings/sendDuration)
 
+A hálózati kapcsolat és az első bájt fogadása közötti idő.
+
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|Nincs|
+|Ezredmásodpercben|Átlag, min, Max|Nincsenek|
 
 ```Kusto
 browserTimings
@@ -183,7 +193,7 @@ Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivétele
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
-|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincsenek|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -198,7 +208,7 @@ A sikertelen függőségi hívások száma.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
-|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincsenek|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 dependencies

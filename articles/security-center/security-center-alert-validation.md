@@ -1,24 +1,18 @@
 ---
 title: Riasztások érvényesítése a Azure Security Centerban | Microsoft Docs
 description: Megtudhatja, hogyan ellenőrizheti, hogy a biztonsági riasztások megfelelően vannak-e konfigurálva Azure Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/17/2021
+ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: 74323c63ab8985dee2391a546d82258dcb8d0114
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b90ca39d7bf01b84400464240bb581a5e7bc922a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099522"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602383"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Riasztások érvényesítése Azure Security Center
 A dokumentum ismerteti, hogyan ellenőrizheti, hogy a rendszere megfelelően konfigurálva van-e az Azure Security Center riasztásaihoz.
@@ -39,7 +33,7 @@ Használjon példákat a következőhöz:
 
 Példa riasztások létrehozásához:
 
-1. A riasztások lap eszköztárán válassza a **minta riasztások létrehozása** lehetőséget. 
+1. A szerepkör- **biztonsági rendszergazdai** vagy **előfizetési közreműködő** felhasználóként a riasztások lapjának eszköztárán válassza a **minta riasztások létrehozása** lehetőséget.
 1. Válassza ki az előfizetést.
 1. Válassza ki a megfelelő Azure Defender-csomagot/-t, amelynek riasztásait meg szeretné jeleníteni. 
 1. Válassza a **minta riasztások létrehozása** lehetőséget.

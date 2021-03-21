@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics-fürt létrehozása – rövid útmutató
 description: Megtudhatja, hogyan hozhat létre Azure Stream Analytics-fürtöt.
+ms.service: stream-analytics
 author: sidramadoss
 ms.author: sidram
-ms.service: stream-analytics
-ms.topic: overview
+ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6b7a7c5feb6165f5b2c7c0ea052318a255e8025c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016558"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600224"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>Rövid útmutató: dedikált Azure Stream Analytics-fürt létrehozása Azure Portal használatával
 
@@ -45,7 +45,7 @@ Ebben a szakaszban létre fog hozni egy Stream Analytics fürterőforrás-erőfo
 
    ![Fürt létrehozása](./media/create-cluster/create-cluster.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **címkék** szakaszt kihagyhatja.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **címkék** szakaszt kihagyhatja.
 
 1. Tekintse át a fürt beállításait, majd válassza a **Létrehozás** lehetőséget. A fürt létrehozása hosszú ideig futó művelet, amely körülbelül 60 percet is igénybe vehet. Várjon, amíg befejeződik a portál oldalának megjelenítése a **központi telepítés befejezéséhez**. Addig is létrehozhat és fejleszthet [stream Analytics feladatokat](stream-analytics-quick-create-portal.md#create-a-stream-analytics-job) , amelyeket ezen a fürtön futtatni szeretne, ha még nem tette meg.
 
@@ -59,7 +59,7 @@ Ha nem tervezi Stream Analytics feladatok futtatását, törölheti a Stream Ana
 
 1. Nyissa meg a fürt **áttekintését** . Válassza a **Törlés** lehetőséget, majd kövesse az utasításokat a fürt törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure Stream Analytics-fürtöt. A következő cikkből megtudhatja, hogyan futtathat egy Stream Analytics feladatot a fürtön:
 
