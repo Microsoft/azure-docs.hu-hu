@@ -4,10 +4,10 @@ description: A különböző erőforrásokhoz való közvetlen telemetria fejles
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424665"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
@@ -46,7 +46,7 @@ Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a 
 
 Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot, mert a kód az éles fázisok között mozog, a kulcsot hardcoded/statikus érték helyett dinamikusan a kódban kell megadni.
 
-Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
+Állítsa be a kulcsot egy inicializálási metódusban, például a Global. aspx. cs egy ASP.NET-szolgáltatásban:
 
 ```csharp
 protected void Application_Start()
@@ -123,7 +123,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
 
     A Build címke helyőrzőt (AutoGen_...) tartalmaz a Visual Studióval való kiépítés során. Az MSBuild-sel azonban a megfelelő verziószámmal vannak feltöltve.
 
-    Ha engedélyezni szeretné, hogy az MSBuild verziószámokat hozzon létre, állítsa be a verziót a `1.0.*` AssemblyReference.cs-ben
+    Ha engedélyezni szeretné, hogy az MSBuild verziószámokat hozzon létre, állítsa a AssemblyReference. cs formátumhoz hasonló verziót `1.0.*` .
 
 ## <a name="version-and-release-tracking"></a>Verzió- és kiadáskövetés
 Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Microsoft Build Engine folyamat létrehozza a `buildinfo.config` fájlt. A `.csproj` fájlban adja hozzá a következőket:  

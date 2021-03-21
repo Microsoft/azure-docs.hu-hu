@@ -8,10 +8,10 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: bd3ba88650161bd11a24697b4ff8575d307120e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424461"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
@@ -53,7 +53,7 @@ Egyszer a projekt könyvtárában **hozzon létre egy üres .net-konzol alkalmaz
 dotnet new console
 ```
 
-Ez több fájlt hoz létre a címtárban, például egy *program.cs* , ahol a kód nagy részét fogja írni.
+Ez több fájlt hoz létre a címtárban, például egy *program. cs nevű programot* , ahol a kód nagy részét fogja írni.
 
 Tartsa megnyitva a parancssorablakot, ahogy az oktatóanyag során is használni fogja.
 
@@ -76,7 +76,7 @@ Ebben a szakaszban megkezdi a kód megírását az új alkalmazás-projekthez az
 
 Létezik egy szakasz is, amely az oktatóanyag végén található teljes kódot mutatja. Ez a hivatkozásként használható a program elindításához.
 
-A kezdéshez nyissa meg a *program.cs* fájlt bármilyen szerkesztőprogramban. Ehhez a következőhöz hasonló kódot kell megnéznie:
+A kezdéshez nyissa meg a *program. cs* fájlt bármilyen szerkesztőprogramban. Ehhez a következőhöz hasonló kódot kell megnéznie:
 
 :::row:::
     :::column:::
@@ -98,7 +98,7 @@ Az alkalmazás első lépéseként hitelesítenie kell magát az Azure Digital T
 
 A hitelesítéshez szüksége lesz az Azure Digital Twins-példány *állomásneve* .
 
-A *program.cs* illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értékét az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve* értékre.
+A *program. cs programban* illessze be a következő kódot a "Hello, World!" alá. a metódus nyomtatási sora `Main` . Állítsa be az értékét az `adtInstanceUrl` Azure Digital Twins-példány *állomásneve* értékre.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs" id="Authentication_code":::
 
@@ -130,7 +130,7 @@ Hozzon létre egy *SampleModel.js* nevű új *. JSON* fájlt a címtárban, ahol
 > [!TIP] 
 > A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-parse-models.md)című témakörben olvashat.
 
-Ezután adjon hozzá még egy kódot a *program.cs* az imént létrehozott modell feltöltéséhez az Azure Digital Twins-példányba.
+Ezután adjon hozzá még egy kódot a *programhoz. cs* , és töltse fel az imént létrehozott modellt az Azure Digital Twins-példányba.
 
 Először adjon hozzá néhány `using` utasítást a fájl elejéhez:
 
@@ -248,7 +248,7 @@ A parancsablakban futtassa a programot a paranccsal `dotnet run` . Ebben a péld
 
 ## <a name="complete-code-example"></a>Példa teljes kódra
 
-Az oktatóanyag ezen pontján egy teljes ügyfélalkalmazás van, amely képes az Azure digitális Twins alapszintű műveleteinek elvégzésére. Az alábbi listában a *program.cs* program teljes kódja látható:
+Az oktatóanyag ezen pontján egy teljes ügyfélalkalmazás van, amely képes az Azure digitális Twins alapszintű műveleteinek elvégzésére. A program *. cs* programban a program teljes kódját az alábbi lista tartalmazza:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/fullClientApp.cs":::
 

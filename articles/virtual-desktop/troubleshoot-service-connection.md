@@ -7,10 +7,10 @@ ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539069"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
@@ -48,12 +48,12 @@ Ennek megoldásához mindössze annyit kell tennie, hogy újra hozzárendeli a f
 
 Ez akkor is előfordulhat, ha egy CSP-szolgáltató létrehozta az előfizetést, majd átviszi az ügyfelet. Az erőforrás-szolgáltató újbóli regisztrálásának feloldásához.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Nyissa meg az **előfizetést**, majd válassza ki az előfizetését.
 3. Az oldal bal oldalán található menüben válassza az **erőforrás-szolgáltató** elemet.
 4. Keresse meg és válassza ki a **Microsoft. DesktopVirtualization** elemet, majd válassza az **ismételt regisztrálás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört

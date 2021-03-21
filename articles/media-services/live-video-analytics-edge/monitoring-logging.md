@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a IoT Edge élő videó-elemzések m
 ms.topic: reference
 ms.date: 04/27/2020
 ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730242"
 ---
 # <a name="monitoring-and-logging"></a>Monitorozás és naplózás
@@ -208,7 +208,7 @@ Az események típusai a következő séma alapján vannak hozzárendelve a név
 
 #### <a name="event-classes"></a>Eseményosztályok
 
-|Osztály neve|Leírás|
+|Osztály neve|Description|
 |---|---|
 |Elemzés  |A tartalom elemzése részeként generált események.|
 |Diagnosztika    |Események, amelyek segítenek a problémák és a teljesítmény diagnosztizálásában.|
@@ -230,7 +230,7 @@ Az esemény időpontja ISO 8601 karakterláncban van formázva. Ez az esemény i
 
 Ezek a metrikák a IoT Edge modul Live Video Analytics szolgáltatásában lesznek jelezve:  
 
-|Metrika neve|Típus|Címke|Leírás|
+|Metrika neve|Típus|Címke|Description|
 |-----------|----|-----|-----------|
 |lva_active_graph_instances|Kijelző|iothub, edge_device, module_name, graph_topology|Az aktív gráfok teljes száma topológia szerint.|
 |lva_received_bytes_total|Számláló|iothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Egy csomópont által fogadott bájtok teljes száma. Csak az RTSP-források esetében támogatott.|

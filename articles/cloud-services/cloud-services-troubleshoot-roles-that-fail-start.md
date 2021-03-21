@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743219"
 ---
 # <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>A nem indítható Azure Cloud Service (klasszikus) szerepkörök hibáinak megoldása
@@ -119,7 +119,7 @@ A DLL-fájl hiányzó és szerelvény-hibáinak elhárításához kövesse az al
 
 Miután meggyőződött róla, hogy az összes hibát kijavította, a szolgáltatás központi telepítését a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzet bejelölése nélkül végezheti el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További [hibaelhárítási cikkek](../index.yml?product=cloud-services&tag=top-support-issue) a Cloud Services szolgáltatáshoz.
 
 Ha szeretné megtudni, hogyan lehet elhárítani a Cloud Service szerepkörrel kapcsolatos problémákat az Azure Pásti számítógép-diagnosztikai adataival, tekintse [meg a Kevin Williamson blog-sorozatot](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data).

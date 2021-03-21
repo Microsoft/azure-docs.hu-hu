@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743321"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Node.js csevegési alkalmazás létrehozása az Azure Cloud Service Socket.IO (klasszikus)
@@ -167,7 +167,7 @@ Az alkalmazás mostantól fut az Azure-ban, és a csevegési üzeneteket tovább
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure Cloud Service-ben üzemeltetett alapszintű csevegési alkalmazást. Az alkalmazás Azure-webhelyen való üzemeltetésével kapcsolatos további információkért lásd: [Node.js csevegési alkalmazás létrehozása az socket.IO-mel egy Azure][chatwebsite]-webhelyen.
 
 További információ: a [Node.js fejlesztői központ](/azure/developer/javascript/)is.

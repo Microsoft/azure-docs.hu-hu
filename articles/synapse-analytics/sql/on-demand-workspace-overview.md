@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: e1a0f4f22411e506cab3b54e955a4cdc16986fe2
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101667503"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Kiszolgáló nélküli SQL-készlet az Azure szinapszis Analyticsben 
@@ -63,7 +63,7 @@ A kiszolgáló nélküli SQL-készlet olyan T-SQL-lekérdezési felületet kín�
 - A számítási feladatok jól ismert fogalmakkal rendezhetők:
 - Adatbázisok – a kiszolgáló nélküli SQL-készlet végpontja több adatbázissal is rendelkezhet.
 - Sémák – egy adatbázison belül egy vagy több, sémák nevű objektum tulajdonosi csoport is lehet.
-- Nézetek
+- Megjelenítések
 - Külső erőforrások – adatforrások, fájlformátumok és táblák
 
 A biztonság a használatával kényszeríthető:
@@ -81,7 +81,7 @@ Támogatott T-SQL:
 
 A kiszolgáló nélküli SQL-készletnek nincs helyi tárterülete, csak a metaadat-objektumokat tárolja az adatbázisokban. Ezért a következő fogalmakhoz kapcsolódó T-SQL nem támogatott:
 
-- Táblák
+- Táblázatok
 - Triggerek
 - Tényleges táblán alapuló nézetek
 - A nézetekhez és a biztonsághoz kapcsolódó DDL-utasítások

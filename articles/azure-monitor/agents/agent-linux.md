@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
 ms.openlocfilehash: dae9ab56ca1349d288aee02f7e2dfa4eccf1508c
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199166"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Log Analytics-ügynök telepítése Linux rendszerű számítógépeken
@@ -86,7 +86,7 @@ Más korlátozási és testreszabási módszerek nem támogatottak és nem terve
 
 A következő táblázat a [támogatott Linux-disztribúciók](#supported-operating-systems) számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Leírás |Minimális verzió |
+|Szükséges csomag |Description |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |

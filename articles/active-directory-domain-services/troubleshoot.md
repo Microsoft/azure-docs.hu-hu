@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618450"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Gyakori hibák és hibaelhárítási lépések a Azure Active Directory Domain Services
@@ -167,7 +167,7 @@ A felhasználói fiók a felügyelt tartomány letiltott állapotában marad, m�
 
 Ha egy felügyelt tartományból teljesen el szeretné távolítani a felhasználói fiókokat, törölje a felhasználót véglegesen az Azure AD-bérlőből a [Remove-MsolUser PowerShell-][Remove-MsolUser] parancsmaggal a (z `-RemoveFromRecycleBin` ) paraméterrel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

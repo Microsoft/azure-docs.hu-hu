@@ -12,10 +12,10 @@ ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539766"
 ---
 # <a name="what-is-the-speech-cli"></a>Mi az a Speech parancssori felület?
@@ -46,7 +46,7 @@ A Speech SDK használata:
 
 A beszédfelismerési parancssori felület használatának megkezdéséhez tekintse meg a rövid [útmutatót.](spx-basics.md) Ebből a cikkből megtudhatja, hogyan futtathat néhány alapszintű parancsot, és hogyan jelenítheti meg valamivel több speciális parancsot a Batch-műveletek futtatásához a beszédfelismerés és a szöveg közötti kommunikációhoz. Az alapismeretek című cikk elolvasása után meg kell ismernie a szintaxist, hogy megismerje az egyéni parancsok írását, vagy automatizálja az egyszerű beszédfelismerési szolgáltatás műveleteit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés a [SPEECH CLI](spx-basics.md) gyors üzembe helyezésével
 - [Az adattár konfigurálása](./spx-data-store-configuration.md)

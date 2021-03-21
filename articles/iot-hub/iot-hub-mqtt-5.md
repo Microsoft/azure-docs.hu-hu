@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: jlian
 ms.openlocfilehash: fb2cc0b81083936a67bcd465e0408b9f4b53996b
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96603328"
 ---
 # <a name="iot-hub-mqtt-5-support-overview-preview"></a>IoT Hub MQTT 5 – támogatás áttekintése (előzetes verzió)
@@ -172,7 +172,7 @@ A kiszolgáló leválaszthatja a MQTT 5,0 specifikációban definiált bármilye
 - `159` (Túllépte a kapcsolatok sebességét), ha a IoT hub kapcsolódási sebessége meghaladja a  
 - `131` (Implementáció-specifikus hiba) az API-ban definiált bármely egyéni hiba esetén használatos. `status` és `reason` a tulajdonságok a leválasztási ok további részleteinek közlésére lesznek felhasználva (lásd a [Válasz](#response) részleteit).
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 Az API összes funkciója műveletként van megadva. Az alábbi példa a telemetria művelet küldését szemlélteti:
 
@@ -325,7 +325,7 @@ Minden interakció alapértelmezett (vagy sikeres). A (z) és a (z `Reason Code`
 - A ReqRep-interakciók esetében a `PUBLISH` Válasz `status` tulajdonságot kap.
 - Mivel nem lehet közvetlenül reagálni a MessageAck interakcióra `QoS: 0` , a `DISCONNECT` csomagokat a rendszer a válasz adataival együtt, majd a kapcsolat bontása után is elküldi.
 
-Példák:
+Angol nyelvű Példák:
 
 Hibás kérelem (MessageAck):
 
@@ -410,7 +410,7 @@ Az üzenetek kötegét nem lehet külön formátumban elküldeni. A TLS-és hál
 - A `PUBLISH` kapcsolat első csomagjában adja meg a témakör teljes nevét, és társítsa a témakör aliasát,
 - Helyezze a következő csomagokat ugyanahhoz a témakörhöz, és adjon meg egy üres témakört, valamint a témakör alias tulajdonságát.
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 Ez a szakasz az API változásait sorolja fel a [korábbi MQTT API](iot-hub-mqtt-support.md)-hoz képest.
 
@@ -581,7 +581,7 @@ Válasz:
     status: 0100
     reason: "`Correlation Data` property is missing"
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A MQTT 5 előzetes verzió API-referenciájának áttekintéséhez tekintse meg a [IoT hub adatsík MQTT 5 API-referenciát](iot-hub-mqtt-5-reference.md).
 - A C# minta követéséhez lásd: [GitHub-minta tárház](https://github.com/Azure-Samples/iot-hub-mqtt-5-preview-samples-csharp).

@@ -6,10 +6,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/10/2019
 ms.openlocfilehash: 914acfab3935bc81e7d8382163ca9283c7f71a53
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98934037"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Enterprise Security Package-fürtök létrehozása és konfigurálása az Azure HDInsight
@@ -115,7 +115,7 @@ A felhasználók szinkronizálása az Azure AD-vel történik.
 
 ### <a name="create-an-azure-ad-directory"></a>Azure AD-címtár létrehozása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Válassza **az erőforrás létrehozása és a** típus lehetőséget `directory` . Válassza a **Azure Active Directory**  >  **Létrehozás** elemet.
 1. A **szervezet neve** mezőben adja meg a értéket `HDIFabrikam` .
 1. A **kezdeti tartománynév** mezőben adja meg a nevet `HDIFabrikamoutlook` .
@@ -205,14 +205,14 @@ Hozzon létre egy Active Directory bérlői rendszergazdát.
    ![A "konfigurálás befejeződött" lap](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. A szinkronizálás befejeződése után ellenőrizze, hogy a IaaS könyvtárban létrehozott felhasználók szinkronizálva vannak-e az Azure AD-vel.
-   1. Jelentkezzen be az Azure portálra.
+   1. Jelentkezzen be az Azure Portalra.
    1. Válassza **Azure Active Directory**  >  **HDIFabrikam**-  >  **felhasználók** lehetőséget.
 
 ### <a name="create-a-user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása
 
 Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást, amely a Azure AD Domain Services (Azure AD DS) konfigurálására használható. További információ: [Létrehozás, Listázás, törlés vagy a szerepkör hozzárendelése egy felhasználó által hozzárendelt felügyelt identitáshoz a Azure Portal használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Válassza **az erőforrás létrehozása és a** típus lehetőséget `managed identity` . Válassza a **felhasználóhoz rendelt felügyelt identitás**  >  **létrehozása** elemet.
 1. Az **Erőforrás neve** mezőbe írja be a következőt: `HDIFabrikamManagedIdentity` .
 1. Válassza ki előfizetését.
@@ -244,7 +244,7 @@ Az Azure AD DS engedélyezéséhez kövesse az alábbi lépéseket. További inf
     $virtualNetwork | Set-AzVirtualNetwork
     ```
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Válassza az **erőforrás létrehozása**, `Domain services` majd a **Azure ad Domain Services** a  >  **Létrehozás** lehetőséget.
 1. Az **alapok** oldalon:
     1. A **címtár neve** területen válassza ki a létrehozott Azure ad-könyvtárat: **HDIFabrikam**.

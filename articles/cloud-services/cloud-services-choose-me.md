@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98742811"
 ---
 # <a name="overview-of-azure-cloud-services-classic"></a>Az Azure Cloud Services (klasszikus) áttekintése
@@ -48,7 +48,7 @@ Az Azure Cloud Services monitorozást is biztosít. A Virtual Machineshoz hasonl
 
 Az Azure Cloud Services Pásti természete más következményekkel is jár. Az egyik legfontosabb az, hogy az erre a technológiára épülő alkalmazások megfelelően fussanak, ha a webes vagy feldolgozói szerepkör-példány meghibásodik. Ennek eléréséhez az Azure Cloud Services-alkalmazásoknak nem kell megtartaniuk a saját virtuális gépei fájlrendszerében lévő állapotot. A Virtual Machines-vel létrehozott virtuális gépekkel ellentétben az Azure Cloud Services virtuális gépekre tett írások nem állandóak. Nincs semmi, mint egy Virtual Machines adatlemez. Ehelyett egy Azure Cloud Services alkalmazásnak explicit módon írnia kell az összes állapotot Azure SQL Database, blobok, táblák vagy más külső tárolóba. Az alkalmazások ily módon történő kiépítése megkönnyíti a meghibásodások méretezését és nagyobb ellenálló képességét, amely az Azure Cloud Services fontos célja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Cloud Service-alkalmazás létrehozása a .NET-ben](cloud-services-dotnet-get-started.md) 
 * [Cloud Service-alkalmazás létrehozása Node.js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Cloud Service-alkalmazás létrehozása PHP-ben](../cloud-services-php-create-web-role.md) 

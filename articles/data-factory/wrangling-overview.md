@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: f922e7a2755a6e26a0d9f93f2668753e2f4dad5a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98738169"
 ---
 # <a name="what-is-data-wrangling"></a>Mi az az adathuzavona?
@@ -64,6 +64,6 @@ Jelenleg nem minden Power Query M függvény támogatott az adatok huzavona, ann
 
 A támogatott átalakításokkal kapcsolatos további információkért lásd: [az adathuzavona függvények](wrangling-functions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [hozhat létre adathuzavona Power Query mash-up](wrangling-tutorial.md)használatával.

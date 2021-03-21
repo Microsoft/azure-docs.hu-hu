@@ -10,10 +10,10 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: d8db9257ad6eed98b39cd2c9a52351f013453365
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98935225"
 ---
 # <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Oktatóanyag: gépi tanulási modell pontozása varázsló (előzetes verzió) dedikált SQL-készletekhez
@@ -151,4 +151,4 @@ A jegyzetfüzet összes cellájának futtatása előtt győződjön meg arról, 
 ## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: új Azure Machine Learning társított szolgáltatás létrehozása az Azure Szinapszisban](quickstart-integrate-azure-machine-learning.md)
-- [Az Azure szinapszis Analytics Machine Learning képességei](what-is-machine-learning.md)
+- [Az Azure Synapse Analytics gépi tanulási képességei](what-is-machine-learning.md)

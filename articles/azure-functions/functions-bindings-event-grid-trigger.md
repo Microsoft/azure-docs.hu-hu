@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250128"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions Azure Event Grid trigger
@@ -336,7 +336,7 @@ A Python nem támogatja az attribútumokat.
 
 Az alábbi táblázat a *function.js* fájlon beállított kötési konfigurációs tulajdonságait ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok az `EventGridTrigger` attribútumban.
 
-|function.jsa tulajdonságon |Leírás|
+|function.jsa tulajdonságon |Description|
 |---------|---------|
 | **típusa** | Kötelező – a következőre kell beállítani: `eventGridTrigger` . |
 | **irányba** | Kötelező – a következőre kell beállítani: `in` . |
@@ -635,6 +635,6 @@ A Event Grid trigger függvény végrehajtja és megjeleníti a következő pél
 
 ![Minta Event Grid trigger-függvények naplói](media/functions-bindings-event-grid/eg-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Event Grid esemény elküldése](./functions-bindings-event-grid-output.md)

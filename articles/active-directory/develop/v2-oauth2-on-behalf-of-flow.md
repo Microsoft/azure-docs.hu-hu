@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98756085"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
@@ -219,7 +219,7 @@ Bizonyos helyzetekben csak a középső rétegbeli és az előtér-ügyfél egye
 
 Ha az ügyfél az implicit folyamattal id_token kap, és az ügyfél a válasz URL-címében helyettesítő karaktereket is tartalmaz, akkor a id_token nem használható OBO-folyamathoz.  Az implicit engedélyezési folyamaton keresztül beszerzett hozzáférési tokenek azonban továbbra is beválthatók egy bizalmas ügyfél számára, még akkor is, ha a kezdeményező ügyfélhez a helyettesítő karakteres válasz URL-címe van regisztrálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a OAuth 2,0 protokollról, valamint a szolgáltatás és a szolgáltatás hitelesítésének másik módja ügyfél-hitelesítő adatok használatával.
 

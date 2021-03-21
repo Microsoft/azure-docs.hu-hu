@@ -12,18 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2020
+ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: b40bbd6c470302b78b78744307805021a3649376
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571035"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590908"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
 Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
+
+## <a name="march-2021"></a>Március 2021 
+
+* [Régiók közötti replikálási cél kötetének automatikus átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+
+    Régiók közötti replikációs kapcsolatban a rendszer automatikusan átméretezi a célként megadott kötetet a forrás kötet mérete alapján. Így nem kell külön átméreteznie a cél kötetét. Ez az automatikus átméretezési viselkedés akkor alkalmazható, ha a kötetek aktív replikációs kapcsolatban vannak, vagy amikor a replikálási társítás megszakadt az újraszinkronizálási művelettel. Ahhoz, hogy ez a funkció működjön, a forrás-és a cél kötetek esetében biztosítania kell a megfelelő belmagasságot a kapacitási készletekben.
 
 ## <a name="december-2020"></a>2020. december
 

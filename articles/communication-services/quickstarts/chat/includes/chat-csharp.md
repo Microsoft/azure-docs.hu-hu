@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: mikben
 ms.openlocfilehash: 80d6c4d3f0b2eef5bc6012f2aab3fcbeab0e31b8
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495411"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -28,7 +28,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `ChatQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `ChatQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: **program. cs**.
 
 ```console
 dotnet new console -o ChatQuickstart
@@ -66,7 +66,7 @@ További információ a [felhasználói hozzáférési tokenekről](../../access
 
 Ez a rövid útmutató nem fedi le a csevegési alkalmazás jogkivonatait kezelő szolgáltatási szintet, de ajánlott. További információ a [csevegési architektúráról](../../../concepts/chat/concepts.md)
 
-Másolja a következő kódrészleteket, és illessze be a forrásfájlban: **program.cs**
+Másolja a következő kódrészleteket, és illessze be a forrásfájl: **program. cs** fájlba
 ```csharp
 using Azure;
 using Azure.Communication;

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234154"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
@@ -167,6 +167,6 @@ Ha az Újrapróbálkozás értéke 1, a TTL értéke pedig 10 másodperc, akkor 
 
 Vészhelyzet esetén az elsődleges végpont próbára kerül, és az állapot **romlik** , és a vész-helyreállítási hely **online állapotban** marad. A Traffic Manager alapértelmezés szerint minden forgalmat az elsődleges (legmagasabb prioritású) végpontra irányít. Ha az elsődleges végpont teljesítményének romlása látható, Traffic Manager átirányítja a forgalmat a második végpontra mindaddig, amíg kifogástalan marad. Az egyik lehetőség a Traffic Manageron belüli további végpontok konfigurálására, amelyek további feladatátvételi végpontként szolgálnak, vagy a végpontok közötti terhelést megosztó terheléselosztó.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Traffic Managerról](../traffic-manager/traffic-manager-overview.md).
 - További információ a [Azure DNSról](../dns/dns-overview.md).

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247352"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat szinkronizálásának hibaelhárítása Azure AD Connect-szinkronizálással
@@ -90,7 +90,7 @@ A hibaelhárítási feladat a következő ellenőrzéseket hajtja végre:
 
       * Ellenőrzi, hogy a tartomány elérhető-e a Azure AD Connect-kiszolgálóról.
 
-      * Ellenőrzi, hogy a helyszíni Active Directory-összekötő által használt Active Directory tartományi szolgáltatások (AD DS) fiókok helyes felhasználónevet, jelszót és engedélyeket igényelnek-e a jelszó kivonatának szinkronizálásához.
+      * Ellenőrzi, hogy a helyszíni Active Directory-összekötő által használt Active Directory Domain Services (AD DS) fiókok helyes felhasználónevet, jelszót és engedélyeket igényelnek-e a jelszó kivonatának szinkronizálásához.
 
 Az alábbi ábrán egy egytartományos, helyszíni Active Directory topológia parancsmagjának eredményei láthatók:
 
@@ -445,7 +445,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $aadConnector -Enable $true
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Jelszó-kivonatolási szinkronizálás megvalósítása Azure AD Connect szinkronizálással](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect Sync: szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)

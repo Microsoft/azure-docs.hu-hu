@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 9029b945eabd05b34306393b513e26ee9c1563f2
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541571"
 ---
 # <a name="connect-your-wirex-network-forensics-platform-nfp-appliance-to-azure-sentinel"></a>A WireX Network kriminalisztikai platform (NFP) berendezésének összekötése az Azure Sentinel használatával
@@ -73,7 +73,7 @@ CommonSecurityLog
 
 További lekérdezési mintákért tekintse meg az összekötő oldal **következő lépések** lapját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a WireX Systems NFP az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

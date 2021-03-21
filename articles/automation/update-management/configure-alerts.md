@@ -3,14 +3,14 @@ title: Riasztások létrehozása Azure Automation Update Management
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az Azure-riasztásokat, hogy tájékoztassanak a frissítési felmérések vagy üzembe helyezések állapotáról.
 services: automation
 ms.subservice: update-management
-ms.date: 10/19/2020
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 74207fe088034ff8d102fb2254d8ab78a6d57671
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 224a7b5457a099fd763ac657349fc5497824ab76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601416"
 ---
 # <a name="how-to-create-alerts-for-update-management"></a>Riasztások létrehozása Update Managementhoz
 
@@ -38,51 +38,37 @@ Kövesse az alábbi lépéseket a riasztások beállításához, hogy megismerje
 
 1. Az Automation-fiókban válassza a **figyelés** területen a **riasztások** elemet, majd válassza az **új riasztási szabály** lehetőséget.
 
-2. A **riasztási szabály létrehozása** lapon az Automation-fiók már ki van választva erőforrásként. Ha módosítani szeretné, válassza az **erőforrás szerkesztése** lehetőséget.
+1. A **riasztási szabály létrehozása** lapon az Automation-fiók már ki van választva erőforrásként. Ha módosítani szeretné, válassza az **erőforrás szerkesztése** lehetőséget.
 
-3. Az erőforrás kiválasztása lapon válassza az Automation- **fiókok** lehetőséget a **szűrés erőforrás típusa** legördülő listából.
+1. Az erőforrás kiválasztása lapon válassza az Automation- **fiókok** lehetőséget a **szűrés erőforrás típusa** legördülő listából.
 
-4. Válassza ki a használni kívánt Automation-fiókot, majd kattintson a **kész** gombra.
+1. Válassza ki a használni kívánt Automation-fiókot, majd kattintson a **kész** gombra.
 
-5. Válassza a **feltétel hozzáadása** lehetőséget a követelménynek megfelelő jel kiválasztásához.
+1. Válassza a **feltétel hozzáadása** lehetőséget a követelménynek megfelelő jel kiválasztásához.
 
-6. Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, válassza a **\+** dimenzió melletti elemet, és írja be az egyéni nevet. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \*** gombra. Ha nem választja ki a dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
+1. Egy dimenzió esetében válasszon ki egy érvényes értéket a listából. Ha a kívánt érték nem szerepel a listában, válassza a **\+** dimenzió melletti elemet, és írja be az egyéni nevet. Ezután válassza ki a keresni kívánt értéket. Ha egy dimenzió összes értékét ki szeretné választani, kattintson a **kiválasztás \*** gombra. Ha nem választja ki a dimenzió értékét, Update Management figyelmen kívül hagyja ezt a dimenziót.
 
     ![Jellogika konfigurálása](./media/manage-updates-for-vm/signal-logic.png)
 
-7. A **riasztási logika** szakaszban adja meg az értékeket az **idő összesítése** és a **küszöbérték** mezőkben, majd válassza a **kész** lehetőséget.
+1. A **riasztási logika** szakaszban adja meg az értékeket az **idő összesítése** és a **küszöbérték** mezőkben, majd válassza a **kész** lehetőséget.
 
-8. A következő lapon adja meg a riasztás nevét és leírását.
+1. A következő lapon adja meg a riasztás nevét és leírását.
 
-9. Állítsa be a **Súlyosság** mezőt a **tájékoztatási (2** . szint) értékre a sikeres futtatáshoz vagy **tájékoztatáshoz (az 1.** szinthez) a sikertelen futtatáshoz.
+1. Állítsa be a **Súlyosság** mezőt a **tájékoztatási (2** . szint) értékre a sikeres futtatáshoz vagy **tájékoztatáshoz (az 1.** szinthez) a sikertelen futtatáshoz.
 
     ![Képernyőfelvétel: a riasztás részleteinek meghatározása szakasz a riasztási szabály nevének, leírásának és súlyossági mezőinek kiemelésével.](./media/manage-updates-for-vm/define-alert-details.png)
 
-10. A riasztási szabály engedélyezéséhez válassza az **Igen** lehetőséget.
+1. A riasztási szabály engedélyezéséhez válassza az **Igen** lehetőséget.
 
 ## <a name="configure-action-groups-for-your-alerts"></a>Műveleti csoportok konfigurálása a riasztásokhoz
 
 Miután beállította a riasztásokat, beállíthat egy műveleti csoportot, amely a több riasztáson keresztül használható műveletek csoportja. A műveletek tartalmazhatnak e-mailes értesítéseket, runbookok, webhookokat és még sok mást. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../../azure-monitor/alerts/action-groups.md) szóló cikkben talál.
 
-1. Válasszon ki egy riasztást, majd válassza az **új létrehozása** a **műveleti csoportok** alatt lehetőséget.
+1. Válasszon ki egy riasztást, majd válassza a **műveletek** területen a **műveleti csoportok hozzáadása** lehetőséget. Ekkor megjelenik a **riasztási szabály panelhez csatolni kívánt műveleti csoport kiválasztása** .
 
-2. Adjon meg egy teljes nevet és egy rövid nevet a műveleti csoportnak. A Update Management a rövid nevet használja az értesítések megadott csoport használatával történő küldésekor.
+   :::image type="content" source="./media/manage-updates-for-vm/select-an-action-group.png" alt-text="Használat és becsült költségek.":::
 
-3. A **műveletek** területen adjon meg egy nevet, amely megadja a műveletet, például az **e-mail értesítéseket**.
-
-4. A **Művelettípus** mezőben válassza ki a megfelelő típust, például **e-mail/SMS/leküldéses/hang**.
-
-5. Válassza a **Részletek szerkesztése** lehetőséget.
-
-6. Adja meg a művelet típusát a ablaktáblán. Ha például az **e-mailek/SMS/leküldés/hang** lehetőséget használja, adja meg a művelet nevét, jelölje be az **e-mail** jelölőnégyzetet, adjon meg egy érvényes e-mail-címet, majd kattintson **az OK gombra**.
-
-    ![E-mail műveletcsoport konfigurálása](./media/manage-updates-for-vm/configure-email-action-group.png)
-
-7. A Műveletcsoport hozzáadása ablaktáblán kattintson az **OK** gombra.
-
-8. Riasztási e-mail esetén testreszabhatja az e-mail tárgyát. Válassza a **műveletek testreszabása** a **szabály létrehozása** alatt lehetőséget, majd válassza az **e-mail tárgy** elemet.
-
-9. Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra.
+1. Jelölje be a kapcsolni kívánt műveleti csoport jelölőnégyzetét, majd kattintson a Kiválasztás gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

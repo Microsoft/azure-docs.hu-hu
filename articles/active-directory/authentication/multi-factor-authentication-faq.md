@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a58fbf874339bf287ce1af62e1edb39ec6227d99
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257102"
 ---
 # <a name="frequently-asked-questions-about-azure-ad-multi-factor-authentication"></a>Gyakran ismételt kérdések az Azure AD-vel kapcsolatban Multi-Factor Authentication
@@ -30,7 +30,7 @@ Ez a gyakori kérdések az Azure AD Multi-Factor Authentication és az Multi-Fac
 > A fogyasztáson alapuló licencelés az új ügyfelek számára már nem érhető el, 2018. szeptember 1-től érvényes.
 > Az új hitelesítési szolgáltatók már nem hozhatók létre. szeptember 1., 2018. A meglévő hitelesítési szolgáltatók továbbra is használhatók és frissíthetők. A többtényezős hitelesítés továbbra is elérhető lesz prémium szintű Azure AD licencekben.
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 * [Hogyan kezeli az Azure Multi-Factor Authentication-kiszolgáló a felhasználói adatkezelést?](#how-does-azure-multi-factor-authentication-server-handle-user-data)
 * [Milyen SMS rövid kódokat használ SMS-üzenetek küldésére a felhasználóknak?](#what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users)

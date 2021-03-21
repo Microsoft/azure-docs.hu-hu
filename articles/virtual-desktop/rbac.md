@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 52f0151fd4be7505cf7beea0eeb54f8e34404997
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1120db685c54ff062f03aca9002bf77af549bc26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577705"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582119"
 ---
 # <a name="built-in-roles-for-windows-virtual-desktop"></a>Beépített szerepkörök a Windows rendszerű virtuális asztalhoz
 
@@ -146,7 +146,7 @@ A következő lista ismerteti, hogy a szerepkör milyen engedélyeket tud elérn
 
 ## <a name="session-host-operator"></a>Munkamenet-gazda operátor
 
-A munkamenet-gazda közreműködői szerepkör lehetővé teszi a munkamenet-gazdagépek megtekintését és eltávolítását, valamint a kiürítési mód módosítását. A Azure Portal használatával nem adhatnak hozzá munkamenet-gazdagépeket, mert nem rendelkeznek írási engedéllyel a gazdagép-objektumokhoz. Ha a regisztrációs jogkivonat érvényes (létrehozva és nem lejárt), akkor ezt a szerepkört használhatja a Azure Portalon kívüli gazdagéphez való hozzáadásához, ha a rendszergazda a virtuális gép közreműködői szerepkörén keresztül kiszámítja az engedélyeket.
+A munkamenet-gazdagép operátori szerepkör lehetővé teszi a munkamenet-gazdagépek megtekintését és eltávolítását, valamint a kiürítési mód módosítását. A Azure Portal használatával nem adhatnak hozzá munkamenet-gazdagépeket, mert nem rendelkeznek írási engedéllyel a gazdagép-objektumokhoz. Ha a regisztrációs jogkivonat érvényes (létrehozva és nem lejárt), akkor ezt a szerepkört használhatja a Azure Portalon kívüli gazdagéphez való hozzáadásához, ha a rendszergazda a virtuális gép közreműködői szerepkörén keresztül kiszámítja az engedélyeket.
 
 A következő lista ismerteti, hogy a szerepkör milyen engedélyeket tud elérni:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 449eb1d65e0104e6c5c74a78901cf29c5aeb3e57
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 01c5d4aaa3896e05bc743be309df050471ece5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609090"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582051"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Megbízható indítás az Azure Virtual Machines szolgáltatásban (előzetes verzió)
 
@@ -73,7 +73,7 @@ Az Azure a [2. generációs](generation-2.md) virtuális gépek biztonságának 
 
 ## <a name="secure-boot"></a>Biztonságos rendszerindítás
 
-A megbízható indítás gyökerében a biztonságos rendszerindítás a virtuális gép számára. A platform belső vezérlőprogramja által megvalósított mód a kártevő-alapú rootkitek és rendszerindító csomagok telepítésével szembeni védelmet nyújt. A biztonságos rendszerindítással gondoskodhat arról, hogy csak az aláírt operációs rendszerek és illesztőprogramok induljon el. "Megbízhatósági kapcsolatot" hoz létre a virtuális gépen lévő szoftveres verem számára. A biztonságos rendszerindítás engedélyezésével minden operációs rendszer rendszerindítási összetevőjét (rendszerindítási betöltő, kernel, kernel-illesztőprogramok) megbízható közzétevőnek kell aláírnia. Mind a Windows, mind a Linux-disztribúciók támogatják a biztonságos rendszerindítást. Ha a biztonságos rendszerindítás nem tudja hitelesíteni, hogy a képet megbízható közzétevő írta alá, akkor a virtuális gép nem indítható el. További információ: [Biztonságos rendszerindítás](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot).
+A megbízható indítás gyökerében a biztonságos rendszerindítás a virtuális gép számára. A platform belső vezérlőprogramja által megvalósított mód a kártevő-alapú rootkitek és rendszerindító csomagok telepítésével szembeni védelmet nyújt. A biztonságos rendszerindítással gondoskodhat arról, hogy csak az aláírt operációs rendszerek és illesztőprogramok induljon el. "Megbízhatósági kapcsolatot" hoz létre a virtuális gépen lévő szoftveres verem számára. A biztonságos rendszerindítás engedélyezésével minden operációs rendszer rendszerindítási összetevőjét (rendszerindítási betöltő, kernel, kernel-illesztőprogramok) megbízható közzétevőnek kell aláírnia. Mind a Windows, mind a Linux-disztribúciók támogatják a biztonságos rendszerindítást. Ha a biztonságos rendszerindítás nem tudja hitelesíteni, hogy a képet megbízható közzétevő írta alá, akkor a virtuális gép nem indítható el. További információ: [Biztonságos rendszerindítás](/windows-hardware/design/device-experiences/oem-secure-boot).
 
 ## <a name="vtpm"></a>vTPM
 
@@ -87,7 +87,7 @@ A [virtualizálás-alapú biztonság](/windows-hardware/design/device-experience
 
 A HVCI egy hatékony rendszer-csökkentés, amely védelmet biztosít a Windows kernel módú folyamatoknak a kártékony vagy nem ellenőrzött kódok injektálásával és végrehajtásával szemben. A futtatása előtt ellenőrzi a kernel módú illesztőprogramokat és a bináris fájlokat, megakadályozva a nem aláírt fájlok memóriába való betöltését. Ez biztosítja, hogy az ilyen végrehajtható kód nem módosítható, ha a betöltése engedélyezett. További információ a VBS és a HVCI szolgáltatásról: [virtualizálás-alapú biztonság (vbs) és a hypervisor által kényszerített kód integritása (HVCI)](https://techcommunity.microsoft.com/t5/windows-insider-program/virtualization-based-security-vbs-and-hypervisor-enforced-code/m-p/240571).
 
-A megbízható indítás és a VBS használatával engedélyezheti a Windows Defender hitelesítőadat-őr szolgáltatását. Ez a szolgáltatás elkülöníti és védi a titkos kulcsokat, hogy csak a rendszerjogosultságú rendszerszoftverek férhessenek hozzájuk. Segít megakadályozni a titkos kulcsokhoz és a hitelesítő adatok ellopásához való illetéktelen hozzáférést, például pass-The-hash (PtH) támadásokat. További információ: hitelesítőadat- [őr](https://docs.microsoft.com/windows/security/identity-protection/credential-guard/credential-guard).
+A megbízható indítás és a VBS használatával engedélyezheti a Windows Defender hitelesítőadat-őr szolgáltatását. Ez a szolgáltatás elkülöníti és védi a titkos kulcsokat, hogy csak a rendszerjogosultságú rendszerszoftverek férhessenek hozzájuk. Segít megakadályozni a titkos kulcsokhoz és a hitelesítő adatok ellopásához való illetéktelen hozzáférést, például pass-The-hash (PtH) támadásokat. További információ: hitelesítőadat- [őr](/windows/security/identity-protection/credential-guard/credential-guard).
 
 
 ## <a name="security-center-integration"></a>Security Center integráció
@@ -134,7 +134,7 @@ A biztonságos rendszerindítási láncban a rendszerindítási folyamat minden 
 
 ### <a name="what-happens-when-an-integrity-fault-is-detected"></a>Mi történik az integritási hibák észlelésekor?
 
-Az Azure-beli virtuális gépek megbízható elindítása a speciális fenyegetések esetében figyelhető. Ha ilyen fenyegetések észlelhetők, a rendszer riasztást vált ki. A riasztások csak a [standard szintű](/azure/security-center/security-center-pricing) Azure Security Center érhetők el.
+Az Azure-beli virtuális gépek megbízható elindítása a speciális fenyegetések esetében figyelhető. Ha ilyen fenyegetések észlelhetők, a rendszer riasztást vált ki. A riasztások csak a [standard szintű](../security-center/security-center-pricing.md) Azure Security Center érhetők el.
 Azure Security Center rendszeresen végez igazolást. Ha az igazolás sikertelen, közepes súlyosságú riasztás lesz aktiválva. A megbízható indítási igazolás a következő okok miatt sikertelen lehet: 
 - A megbízható számítástechnikai bázis (TCB) naplóját tartalmazó igazolt információk a megbízható alaptervtől (például a biztonságos rendszerindítás engedélyezésével) térnek el. Ez azt jelezheti, hogy a nem megbízható modulok be lettek töltve, és az operációs rendszer biztonsága sérülhet.
 - Az igazolási idézőjelet nem lehetett ellenőrizni, hogy az igazolt virtuális gép vTPM származik. Ez azt jelezheti, hogy a kártevő szoftver megtalálható, és a TPM-re irányuló forgalom elfogására is képes. 

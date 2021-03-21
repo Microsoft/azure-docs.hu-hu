@@ -9,10 +9,10 @@ author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98743406"
 ---
 # <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Azure Cloud Service létrehozása és üzembe helyezése (klasszikus)
@@ -91,7 +91,7 @@ Ha a központi telepítési csomag [tanúsítvány használatára lett konfigur�
 
 [TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A felhőalapú szolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Konfigurálja az [Egyéni tartománynevet](cloud-services-custom-domain-name-portal.md).
 * [A felhőalapú szolgáltatás kezelése](cloud-services-how-to-manage-portal.md).

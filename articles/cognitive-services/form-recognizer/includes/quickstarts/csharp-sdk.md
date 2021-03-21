@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/19/2021
 ms.author: lajanuar
-ms.openlocfilehash: c3d81e0de1c20e77278cb718fdcbc21eb6df455d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 6407f6af4b142333d2a52f60eb0b05024e64d88e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445470"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104761166"
 ---
 <!-- markdownlint-disable MD024 -->
 > [!IMPORTANT]
@@ -33,7 +33,7 @@ ms.locfileid: "102445470"
 
 ## <a name="setting-up"></a>Beállítás
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `formrecognizer-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `formrecognizer-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -66,7 +66,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 
 > [!NOTE]
-> Az űrlap-felismerő 3.1.0 SDK az API 2,1-es verziójának előzetes verzióját tükrözi
+> Az űrlap-felismerő 3.1.0 SDK az _API 2,1-es verziójának előzetes verzióját_ tükrözi. 2. Használja az 2,1 [](../../quickstarts/client-library.md) -es _API-verzióhoz tartozó REST API előzetes verzióját. 3_.
 
 #### <a name="v20"></a>[2.0-s verzió](#tab/ga)
 
@@ -82,7 +82,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódját? Megtalálhatja a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md), amely a jelen rövid útmutatóban szereplő példákat tartalmazza.
 
-A projekt könyvtárában nyissa meg a *program.cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using` irányelveket:
+A projekt könyvtárában nyissa meg a *program. cs* fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Adja hozzá a következő `using` irányelveket:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_using)]
 

@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 01/14/2021
 ms.topic: how-to
 ms.openlocfilehash: 1cd07f9322837c03e15aaeabec993820deb3170a
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232114"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
@@ -59,7 +59,7 @@ Két fő lehetőség közül választhat:
 
 * Egy Azure Batch használó egyéni megoldás a számítási kapacitás lefoglalásához és kezeléséhez, valamint a feladatok ütemezésének a renderelési feladatok futtatásához való biztosításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Ismerje meg, hogyan [bővíthető az Azure-infrastruktúra és-szolgáltatások egy meglévő helyszíni Render Farm kibővítéséhez](https://azure.microsoft.com/solutions/high-performance-computing/rendering/).
 

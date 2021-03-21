@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 02/11/2021
-ms.openlocfilehash: 838a48aa11a1cb36c3a7d822ce88f58936aa976d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8319885de26bf79f5e402c4d06b29e9dd94894de
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101734621"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655851"
 ---
 # <a name="visualizations-for-application-change-analysis-preview"></a>Az Application Change Analysis (előzetes verzió) vizualizációi
 
@@ -22,11 +22,11 @@ A felhasználói élmény elindításához keresse meg a Change Analysis kifejez
 
 ![Képernyőkép a keresési változások elemzéséről Azure Portal](./media/change-analysis/search-change-analysis.png)
 
-A kiválasztott előfizetéshez tartozó összes erőforrás az elmúlt 24 órában történt változásokkal jelenik meg. Az oldal terhelési teljesítményének optimalizálása érdekében a szolgáltatás egyszerre 10 erőforrást jelenít meg. A további erőforrások megtekintéséhez válassza a következő lapot. Dolgozunk a korlátozás eltávolításán.
+A kiválasztott előfizetéshez tartozó összes erőforrás az elmúlt 24 órában történt változásokkal jelenik meg. Az összes módosítás a régi értékkel és új értékkel jelenik meg, hogy egyetlen pillantással szolgáltasson betekintést.
 
 ![Képernyőkép a Change Analysis panelről Azure Portal](./media/change-analysis/change-analysis-standalone-blade.png)
 
-Egy erőforrásra kattintva megtekintheti az összes módosítást. Ha szükséges, tekintse meg a JSON formátumú változás részleteit és az elemzéseket tartalmazó változást.
+Egy módosításra kattintva megtekintheti a teljes Resource Manager-kódrészletet és egyéb tulajdonságokat.
 
 ![Képernyőkép a változás részleteiről](./media/change-analysis/change-details.png)
 
@@ -40,11 +40,6 @@ A felhasználói felület támogatja több előfizetés kiválasztását az erő
 
 ![A több előfizetés kijelölését támogató előfizetés-szűrő képernyőképe](./media/change-analysis/multiple-subscriptions-support.png)
 
-### <a name="web-app-diagnose-and-solve-problems"></a>Webalkalmazás diagnosztizálása és megoldása
-
-Azure Monitor a Change Analysis az önkiszolgáló **diagnosztizálása és a problémák megoldása** terén is beépül. Ezt a felhasználói élményt a App Service alkalmazás **Áttekintés** lapjáról érheti el.
-
-![Az "áttekintés" gomb és a "problémák diagnosztizálása és megoldása" gomb képernyőképe](./media/change-analysis/change-analysis.png)
 
 ## <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Alkalmazás-változási elemzés a problémák diagnosztizálása és megoldása eszközben
 
@@ -69,6 +64,13 @@ Az Application Change Analysis egy önálló detektor a webalkalmazásban a prob
 5. Az adatváltozás a **webalkalmazás kiválasztása lefelé** és az **alkalmazás-összeomlási** érzékelők között is elérhető. Ekkor megjelenik egy gráf, amely összefoglalja a változások típusát a változások részleteivel együtt. Alapértelmezés szerint az elmúlt 24 órában történt változások segítenek az azonnali problémák megoldásában.
 
      ![Képernyőkép a Change diff nézetről](./media/change-analysis/change-view.png)
+
+## <a name="diagnose-and-solve-problems-tool"></a>Problémák diagnosztizálása és megoldása eszköz
+A Change Analysis betekintési kártyaként érhető el a probléma diagnosztizálása és megoldása eszközben. Ha egy erőforrás problémákba ütközik, és az elmúlt 72 órában észlelt változások történtek, az észlelési kártya megjeleníti a módosítások számát. A Change Details (változások megtekintése) hivatkozásra kattintva a szűrt nézet jelenik meg a Change Analysis önálló KEZELŐFELÜLETén.
+
+![Képernyőkép a változások észleléséről a problémák diagnosztizálására és megoldására szolgáló eszközben.](./media/change-analysis/change-insight-diagnose-and-solve.png)
+
+
 
 ## <a name="virtual-machine-diagnose-and-solve-problems"></a>Virtuális gépek diagnosztizálása és megoldása
 

@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98933111"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive az átjáró részletes ismertetése és ajánlott eljárásai
@@ -53,9 +53,9 @@ A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítm
 
 * Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, használja a konfigurációt `hive.limit.optimize.enable` . A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának** használatával.
 
-* Adja meg a fontos oszlopok nevét a **Select** lekérdezések futtatásakor a **Select \** _ használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
+* Adja meg az oszlopok érdeklődését a **Select lekérdezések** futtatásakor a **Select \*** parancs használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
 
-_ Futtassa az érdeklődési lekérdezést az Apache Beeline használatával. Ha az Apache Beeline használatával történő lekérés hosszabb időt vesz igénybe, a rendszer késlelteti az azonos eredmények külső eszközökön keresztüli lekérését.
+* Próbálja meg az Apache Beeline használatával futtatni az érdeklődési lekérdezést. Ha az Apache Beeline használatával történő lekérés hosszabb időt vesz igénybe, a rendszer késlelteti az azonos eredmények külső eszközökön keresztüli lekérését.
 
 * Egy alapszintű kaptár-lekérdezés tesztelésével biztosíthatja, hogy a HDInsight-átjáróval létesített kapcsolatok is meghozhatók. Futtasson egy alapszintű lekérdezést két vagy több külső eszközről, és győződjön meg arról, hogy egyetlen eszköz sem fut a problémák között.
 

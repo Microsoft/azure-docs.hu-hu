@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101698756"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
@@ -221,7 +221,7 @@ Az események megtekintéséhez kövesse az alábbi lépéseket:
      
 ## <a name="run-the-program"></a>A program futtatása
 
-Létezik egy program.cs, amely a közvetlen metódusokat hívja meg a src/Cloud-to-Device-Console-app/operations.json. Be kell állítania a operations.jst, és meg kell adnia egy topológiát a Media Graph használatához.  
+Létezik egy program. cs, amely a közvetlen metódusokat hívja meg a src/Cloud-to-Device-Console-app/operations.json. Be kell állítania a operations.jst, és meg kell adnia egy topológiát a Media Graph használatához.  
 
 operations.json:
 

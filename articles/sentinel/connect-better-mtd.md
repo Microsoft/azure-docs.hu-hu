@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 4828e31b9d15f101740c158ee62c90c95673c9a7
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541559"
 ---
 # <a name="connect-your-better-mobile-threat-defense-mtd-to-azure-sentinel"></a>A BETTER Mobile Threat Defense (MTD) és az Azure Sentinel összekötése
@@ -60,7 +60,7 @@ Az elemzési szabályokban, a vadászati lekérdezésekben vagy az Azure Sentine
 
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a BETTER Mobile Threat Defense (MTD) az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan [érheti el az adatait és a potenciális fenyegetéseket](quickstart-get-visibility.md).

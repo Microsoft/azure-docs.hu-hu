@@ -7,10 +7,10 @@ ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4d4bdc4fa15f634b36f12a650b70b9ffd89b40e0
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539104"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Hibaelhárítás – áttekintés, visszajelzés és a Windows rendszerű virtuális asztalok támogatása
@@ -49,7 +49,7 @@ A következő táblázat segítségével azonosíthatja és megoldhatja a körny
 | Problémák a Windows rendszerű virtuális asztali Log Analytics használatával | A diagnosztikai sémával kapcsolatos problémák esetén [Nyisson meg egy Azure-támogatási kérelmet](https://azure.microsoft.com/support/create-ticket/).<br><br>A Log Analytics lekérdezések, vizualizációk vagy egyéb problémák esetén válassza ki a megfelelő problémát a Log Analytics alatt. |
 | M365-alkalmazásokat használó problémák | Forduljon a M365 felügyeleti központhoz a [M365 felügyeleti központ súgójának](/microsoft-365/admin/contact-support-for-business-products/)egyikével. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg az [alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).

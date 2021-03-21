@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 641ed73f507d35d7af548d0164ef8e80979be217
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530476"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
@@ -128,7 +128,7 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a virtuális központban**: ha a Azure Portalben már meglévő útvonalak vannak az Útválasztás szakaszban, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard Virtual WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md). Javasoljuk, hogy a DELETE lépést a virtuális WAN összes hubok esetében végezze el.
 
-## <a name="faq"></a><a name="faq"></a>– GYAKORI kérdések
+## <a name="faq"></a><a name="faq"></a>GYIK
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
@@ -136,6 +136,6 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a virtuális WAN legújabb funkcióinak frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

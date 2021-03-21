@@ -27,11 +27,11 @@
           href: security-overview.md
 - name: Útmutatók
   items:
-    - name: Csatlakozás az Azure Archoz
+    - name: Üzembe helyezés
       items:
         - name: A csatlakoztatott gépi ügynök áttekintése
           href: agent-overview.md
-        - name: A helyszíni üzembe helyezés tervezése
+        - name: Az üzembe helyezés megtervezése
           href: plan-at-scale-deployment.md
         - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
           href: onboard-portal.md

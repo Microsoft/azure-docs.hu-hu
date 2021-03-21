@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
 ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247335"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>Az adatok összekötése a Defendertől az Azure Sentinel IoT 
@@ -61,7 +61,7 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 Az **előfizetés** csatlakoztatása után körülbelül 15 perccel később elérhetővé válik a hub-adatbázis az Azure sentinelben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtanulta, hogyan csatlakoztatható a Defender a IoT az Azure Sentinelhez. A veszélyforrások észlelésével és a biztonsági adathozzáféréssel kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

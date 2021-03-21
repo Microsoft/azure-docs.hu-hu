@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 01/11/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 565d5203f057aab74cce30729b3e14494b1edf4d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 3a7c93bb0e0dcc51e35bc27fa0799d8410e66df6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127005"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581881"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Erőforrás-tulajdonosi jelszó hitelesítő adatainak beállítása Azure Active Directory B2C
 
@@ -48,7 +49,7 @@ A ROPC folyamat használatakor vegye figyelembe a következőket:
 - A [munkamenet-kezelés](session-behavior.md), beleértve a [bejelentkezett KMSI](session-behavior.md#enable-keep-me-signed-in-kmsi)is, nem alkalmazható.
 
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
