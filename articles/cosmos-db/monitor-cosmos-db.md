@@ -9,10 +9,10 @@ ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
 ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178728"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Az Azure Cosmos DB monitorozása
@@ -176,7 +176,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 Az alábbi táblázat például az erőforrásokra vonatkozó riasztási szabályokat sorolja fel. A riasztási szabályok részletes listáját a Azure Portalban találja. További információt a [riasztások konfigurálása](create-alerts.md) című cikkben talál.  
 
-| Riasztástípus | Feltétel | Leírás  |
+| Riasztástípus | Feltétel | Description  |
 |:---|:---|:---|
 |Kérelmek egységeinek korlátozása (metrikus riasztás) |Dimenzió neve: StatusCode, operátor: egyenlő, dimenzió értékei: 429  | Riasztás, ha a tároló vagy az adatbázis túllépte a kiosztott átviteli sebességet. |
 |A régió feladatátvétele megtörtént |Operátor: nagyobb, mint, összesítés típusa: darabszám, küszöbérték: 1 | Egyetlen régió feladatátvétele esetén. Ez a riasztás akkor hasznos, ha nem engedélyezte az automatikus feladatátvételt. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f5cebffeaba1ce198be347758004068e8c03133b
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499679"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670273"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -182,9 +182,9 @@ A kulturális kód által támogatott nyelvek:
 | pl-pl | Lengyel (Lengyelország) |
 | tr-tr | Török (Törökország) |
 | da-dk | Dán (Dánia) |
-| dn-gb | angol (Egyesült Királyság) |
+| en-GB | angol (Egyesült Királyság) |
 | hu-hu | Magyar (Magyarország) |
-| nb-bo | Norvég bokmal (Norvégia) |
+| nb-no | Norvég bokmal (Norvégia) |
 | nl-nl | Holland (Hollandia) |
 | pt-pt | Portugál (Portugália) |
 | sv-se | Svéd (Svédország) |

@@ -6,14 +6,15 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9b7a5d5ca6cbad897839c8e28c9e3efd1eeabaf0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e128e9f7515e572fc0be4b92ef03d8d98529ac66
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68736980"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674903"
 ---
 # <a name="what-is-azure-data-catalog"></a>Mi az az Azure Data Catalog?
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 A Azure Data Catalog egy teljes körűen felügyelt felhőalapú szolgáltatás. Lehetővé teszi a felhasználók számára a szükséges adatforrások felderítését és az általuk megtalált adatforrások megismerését. Eközben a Data Catalog a vállalatoknak is segít még több értéket kinyerni a meglévő befektetésekből.
 
@@ -68,7 +69,7 @@ A Data Catalog képességeinek bővebb megismeréséhez lásd a következő tém
 * [Az üzleti szószedet összeállítása](data-catalog-how-to-business-glossary.md)
 * [Gyakori kérdések](data-catalog-frequently-asked-questions.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Data Catalog megkezdéséhez:
 

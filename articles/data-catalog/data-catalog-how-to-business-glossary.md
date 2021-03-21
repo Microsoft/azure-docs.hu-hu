@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6137072b443d54dfc63c2be69e20228d428ad1b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021945"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674716"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Az üzleti Szószedet beállítása az irányított címkézéshez
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -80,6 +82,6 @@ A Szószedetbeli címkék és a felhasználói címkék egyaránt kereshetők, �
 
 A Azure Data Catalog üzleti szószedetének használatával és a szabályozott címkézéssel lehetővé teszi az adategységek egységes módon történő azonosítását, kezelését és felderítését. Az üzleti Szószedet a szervezet tagjai által az üzleti szókincs megismerésére is képes. A Szószedet Emellett támogatja az értelmes metaadatok rögzítését is, ami leegyszerűsíti az eszközök felderítését és megértését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [REST API dokumentáció vállalati Szószedet-műveletekhez](/rest/api/datacatalog/data-catalog-glossary)

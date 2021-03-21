@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: 2fc052d91bb879756d231cb94adc3ee2cdc814fb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102612813"
 ---
 # <a name="partner-spotlight"></a>Partner Spotlight
 
 Szakértői segítséget kaphat olyan Microsoft-partnereinktől, akik Azure Cognitive Search-t tartalmazó teljes körű megoldásokat építenek. A következő partnereink nagy tapasztalattal rendelkeznek a teljes szöveges keresés és az AI-bővítés számos üzleti és technikai forgatókönyvben való kihasználásával kapcsolatban.
 
-| Partner | Leírás | Termék hivatkozása |
+| Partner | Description | Termék hivatkozása |
 |---------|-------------|----------------------|
 | ![Agolo](media/resource-partners/agolo-logo.png "Agolo-cég emblémája") | A [**Agolo**](https://www.agolo.com) a vállalati használatra szolgáló vezető összefoglalási motor. A Agolo AI platform több százezer multimédia cikket, kutatási dokumentumot és tulajdonosi információt elemez, hogy minden ügyfélnek összefoglalja az adott területekre jellemző kulcsfontosságú pontokat. </br></br>A Microsoft együttműködése ötvözi a Agolo-összesítéssel integrált Azure Cognitive Search platform hatékonyságát és alkalmazkodóképességét. Az eredmények oldal a szokásos keresőmotor-kódrészletek helyett a kontextusban releváns Agolo összefoglalókat jeleníti meg, és azonnal lehetővé teszi a felhasználó számára, hogy meghatározza a dokumentum helytállóságát a konkrét igényeiknek megfelelően. Az összegzésen alapuló keresés hatással van arra, hogy a felhasználók gyorsabban megtalálják a releváns tartalmakat, ami lehetővé teszi számukra, hogy a munkájukat hatékonyabban használják, és versenyelőnyt szerezzenek. | [Termék lap](https://www.agolo.com/microsoft-azure-cognitive-search ) |
 | ![BlueGranite](media/resource-partners/blue-granite-full-color.png "Kék gránit cég emblémája") | A [**BlueGranite**](https://www.bluegranite.com/) 25 éves tapasztalattal rendelkezik a modern üzleti intelligencia, az adatplatformok és a különböző iparágakban található AI-megoldások terén. A tudásuk bányászati szolgáltatásai lehetővé teszik a szervezetek számára a strukturált és strukturálatlan adatforrásokból származó egyedi információk beszerzését. A moduláris AI-képességek számos fájltípuson végeznek keresést az adatok indexeléséhez és az adatok több hagyományos adatforráshoz való hozzárendeléséhez. Az elemzési eszközök mintákat és trendeket nyernek ki a dúsított adatokból, és minden szinten bemutatják az eredményeket a felhasználóknak. | [Termék lap](https://www.bluegranite.com/knowledge-mining) |

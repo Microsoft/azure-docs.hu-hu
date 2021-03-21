@@ -4,10 +4,10 @@ description: Egy Azure Resource Manager sablonban (ARM-sablonban) lévő másol�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 958deba6152ffa3bcb1d2d79cd026c0cb2eebcbe
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102521661"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
@@ -254,7 +254,7 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 
 Az alábbi példa egy olyan általános forgatókönyvet mutat be, amely egy tulajdonság egynél több értékét hozza létre.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[VM-telepítés változó számú adatlemezzel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Több adatlemez üzembe helyezése virtuális géppel. |
 

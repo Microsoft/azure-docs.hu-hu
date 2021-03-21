@@ -1,17 +1,17 @@
 ---
 title: Rövid útmutató – hívás hozzáadása iOS-alkalmazáshoz az Azure Communication Services használatával
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatásokat.
-author: matthewrobertson
-ms.author: marobert
-ms.date: 07/24/2020
+author: chpalm
+ms.author: mikben
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 36ec27f3a0e69126a91b52bed26dc645ec89e46e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6cdd38f1e849efc416d62f22bd85ed7efb2e6349
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656655"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719757"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
 
@@ -37,7 +37,8 @@ A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézet
 
 ### <a name="install-the-package-and-dependencies-with-cocoapods"></a>A csomag és a függőségek telepítése a CocoaPods
 
-1. Hozzon létre egy Cocoapods az alkalmazáshoz, például a következőhöz:
+1. Az alkalmazás Cocoapods létrehozásához nyissa meg a terminált, és navigáljon a projekt mappájához, és futtassa a parancsot. ```pod init```
+3. Adja hozzá a következő kódot a Cocoapods, és mentse:
 
    ```
    platform :ios, '13.0'
@@ -50,7 +51,7 @@ A Xcode-ben hozzon létre egy új iOS-projektet, és válassza ki az **Egynézet
    end
    ```
 
-2. Futtassa a `pod install` parancsot.
+3. Futtassa az `pod install` parancsot.
 3. Nyissa meg a `.xcworkspace` with Xcode.
 
 ### <a name="request-access-to-the-microphone"></a>Hozzáférés kérése a mikrofonhoz

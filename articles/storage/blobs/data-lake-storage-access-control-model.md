@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: normesta
 ms.openlocfilehash: 9fa7f586db5a32640c16db5802b56d6481e8889d
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439289"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
@@ -78,31 +78,31 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket é
 | Olvasási Data.txt            |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |  
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `R--`  |
+|                          |   Nincsenek                           | `--X`    | `--X`    | `--X`     | `R--`  |
 | Hozzáfűzés Data.txt       |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `--X`     | `-W-`  |
-|                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `RW-`  |
+|                          |   Nincsenek                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt törlése          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincsenek                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Data.txt létrehozása          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Nincsenek                           | `--X`    | `--X`    | `-WX`     | N/A    |
 | Listáját                   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `R-X`    | N.A.      | N.A.       | N.A.    |
+|                          |   Nincsenek                           | `R-X`    | N.A.      | N.A.       | N.A.    |
 | /Oregon/listázása            |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `--X`    | `R-X`    | N.A.       | N.A.    |
+|                          |   Nincsenek                           | `--X`    | `R-X`    | N.A.       | N.A.    |
 | /Oregon/Portland/listázása   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N/A    |
+|                          |   Nincsenek                           | `--X`    | `--X`    | `R-X`     | N/A    |
 
 
 > [!NOTE] 

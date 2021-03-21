@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 06/26/2020
 ms.openlocfilehash: 7757bd765bcb02782b6199f71c4a6e460b7b8143
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102559018"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
@@ -28,7 +28,7 @@ A támogatott Windows operációs rendszerekkel kapcsolatos részletekért tekin
 ### <a name="agent-and-vm-extension-version"></a>Ügynök és virtuálisgép-bővítmény verziója
 Az alábbi táblázat a Windows Log Analytics virtuálisgép-bővítmény verziójának és Log Analytics ügynök csomagjának leképezését tartalmazza minden egyes kiadáshoz. 
 
-| Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Release Notes (Kibocsátási megjegyzések) |
+| Log Analytics Windows-ügynök csomagjának verziója | Log Analytics Windowsos virtuálisgép-bővítmény verziója | Kiadás dátuma | Kibocsátási megjegyzések |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18053| 1.0.18053.0 | 2020. október   | <ul><li>Új ügynök-hibakereső</li><li>Frissítések arról, hogy az ügynök hogyan kezeli a tanúsítványok változásait az Azure-szolgáltatásokban</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020. augusztus   | <ul><li>Elhárít egy problémát az Azure arc-ban</li></ul> |

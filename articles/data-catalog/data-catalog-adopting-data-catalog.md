@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebfaa59f1800da084d611f6e050a59da63a7f195
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72801878"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674750"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Az Azure Data Catalog bevezetésének módszere és folyamata
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Ez a cikk segít bevezetni az **Azure Data Catalog** szolgáltatást a szervezetében. Az **Azure Data Catalog** sikeres bevezetéséhez három kulcsfontosságú dologra kell összpontosítani: a stratégiai célok kitűzésére, a fő üzleti alkalmazási esetek azonosítására és egy kísérleti projekt kiválasztására.
 
@@ -163,6 +165,6 @@ A kísérletben részt vevő kezdeti támogatók segítséget nyújthatnak a Dat
 
 Ez a cikk arról szólt, hogyan vezetheti be az **Azure Data Catalog** szolgáltatást a szervezeténél. Reméljük, sikerült elindítania egy Data Catalog-próbaprojektet, és elterjesztenie a szervezetnél a Data Catalog használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure Data Catalog létrehozása](data-catalog-get-started.md)

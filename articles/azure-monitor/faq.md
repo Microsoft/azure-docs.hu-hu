@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 5b9b0c6a0fe08ccff9da59539b926270cd0e1d44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032854"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606956"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -282,7 +282,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információk](app/monitor-performance-live-website-now.md#questions).
+[További információ](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -327,7 +327,7 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 * Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan lesznek begyűjtve Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információ](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -705,6 +705,10 @@ Alapértelmezés szerint le van tiltva a Kube-rendszernévtérben lévő tárol�
 
 Az ügynök frissítésének megismeréséhez tekintse meg az [ügynökök kezelése](containers/container-insights-manage-agent.md)című témakört.
 
+### <a name="why-are-log-lines-larger-than-16kb-split-into-multiple-records-in-log-analytics"></a>Miért nagyobbak a naplófájlok, mint a 16KB, több rekordra bontva Log Analytics?
+
+Az ügynök a [Docker JSON-fájl naplózási illesztőprogramját](https://docs.docker.com/config/containers/logging/json-file/) használja a tárolók stdout-és stderr rögzítéséhez. Ez a naplózási illesztőprogram az stdout-ból vagy a stderr-ből fájlba történő másoláskor több sorba osztja a [16KB nagyobb](https://github.com/moby/moby/pull/22982) sorokat.
+
 ### <a name="how-do-i-enable-multi-line-logging"></a>Hogyan a többsoros naplózás engedélyezése?
 
 A tárolók jelenleg nem támogatják a többsoros naplózást, de rendelkezésre állnak a megkerülő megoldások. Az összes szolgáltatást JSON formátumban is konfigurálhatja, majd a Docker/Moby egyetlen sorba írja azokat.
@@ -821,6 +825,29 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett bevezetve a virtuális gépekhez. 
 
+## <a name="sql-insights-preview"></a>SQL-áttekintések (előzetes verzió)
+
+### <a name="what-versions-of-sql-server-are-supported"></a>A SQL Server mely verziói támogatottak?
+Lásd: támogatott [verziók](insights/sql-insights-overview.md#supported-versions) az SQL támogatott verzióihoz.
+
+### <a name="what-sql-resource-types-are-supported"></a>Milyen SQL-erőforrástípusok támogatottak?
+
+- Azure SQL Database. Csak egyetlen adatbázis, nem adatbázisok egy rugalmas készletban.
+- Felügyelt Azure SQL-példány 
+- Olyan Azure SQL-alapú virtuális gépek ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms), [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) és Azure-beli virtuális gépek, amelyekre SQL Server telepítve van.
+
+### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>Milyen operációs rendszereket támogat a SQL Server rendszert futtató gép?
+Bármely operációs rendszer, amely támogatja az SQL támogatott verzióját.
+
+### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>A távoli figyelési kiszolgáló milyen operációs rendszert támogat?
+
+Az Ubuntu 18,04 jelenleg az egyetlen támogatott operációs rendszer.
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>Hol lesznek tárolva a figyelési adatgyűjtés Log Analytics 
+Az összes megfigyelési adatmennyiséget a **InsightsMetrics** táblában tárolja a rendszer. A **Origin** oszlop értéke *Solutions.AzM.MS/Telegraf/SqlInsights*. A **névtér** oszlopban szerepelnek a *sqlserver_* kezdetű értékek.
+
+### <a name="how-often-is-data-collected"></a>Milyen gyakran történik az adatgyűjtés? 
+Tekintse meg az SQL-elemzések [által gyűjtött adatokat](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights) a különböző adatgyűjtési gyakorisággal kapcsolatos részletekért.
 
 ## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.

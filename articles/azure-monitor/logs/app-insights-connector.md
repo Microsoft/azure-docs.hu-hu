@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c21ed461280dfa617c852fe6c18c30e5d697b704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031276"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
@@ -41,12 +41,12 @@ A megoldás használatakor a következőket teheti:
 
 A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjtenek adatokat az Application Insights Connector. A megoldás által használt összes adatok közvetlenül az Azure-ból származnak.
 
-| Összekapcsolt forrás | Támogatott | Leírás |
+| Összekapcsolt forrás | Támogatott | Description |
 | --- | --- | --- |
-| [Windows-ügynökök](./../agents/agent-windows.md) | Nem | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
-| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
-| [SCOM felügyeleti csoport](../agents/om-agents.md) | Nem | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
-| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
+| [Windows-ügynökök](./../agents/agent-windows.md) | No | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
+| [Linux-ügynökök](../vm/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
+| [SCOM felügyeleti csoport](../agents/om-agents.md) | No | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
+| [Azure Storage-fiók](../essentials/resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 

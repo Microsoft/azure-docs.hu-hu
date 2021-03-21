@@ -4,10 +4,10 @@ description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a tö
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177919"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
@@ -46,7 +46,7 @@ Olyan API-kat is biztosítunk, amelyek az Azure Lighthouse-feladatok végrehajt�
 
 ## <a name="enhanced-services-and-scenarios"></a>Továbbfejlesztett szolgáltatások és forgatókönyvek
 
-A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrásain végezhető el. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet különösen hatékony lehet.
+A legtöbb feladat és szolgáltatás elvégezhető a delegált erőforrásokon, különböző felügyelt bérlőkön. Az alábbiakban néhány olyan főbb forgatókönyvet talál, ahol a több-bérlős felügyelet különösen hatékony lehet.
 
 [Azure-ív](../../azure-arc/index.yml):
 

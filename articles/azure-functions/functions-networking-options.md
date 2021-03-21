@@ -5,12 +5,12 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 1/21/2021
 ms.author: cachai
-ms.openlocfilehash: 0267184a921c92c3dc092908a09467ef3a090175
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: c35780ae2c4741454685d7d9740a660e965df19e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103463034"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606990"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -81,34 +81,15 @@ A virtuális hálózati integráció beállításával kapcsolatos további info
 
 ## <a name="connect-to-service-endpoint-secured-resources"></a>Kapcsolódás a szolgáltatás végpontjának biztonságos erőforrásaihoz
 
-A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítségével számos Azure-szolgáltatást korlátozhat egy virtuális hálózatra. Ezután integrálnia kell a Function alkalmazást az adott virtuális hálózattal az erőforrás eléréséhez. Ezt a konfigurációt minden olyan csomag támogatja, amely támogatja a virtuális hálózatok integrálását.
+A magasabb szintű biztonság érdekében a szolgáltatás-végpontok segítségével számos Azure-szolgáltatást korlátozhat egy virtuális hálózatra. Ezután integrálnia kell a Function alkalmazást az adott virtuális hálózattal az erőforrás eléréséhez. Ezt a konfigurációt minden olyan [csomag](functions-scale.md#networking-features) támogatja, amely támogatja a virtuális hálózatok integrálását.
 
 További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása virtuális hálózatra 
 
-Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval. Ez a funkció jelenleg az összes olyan Windows Virtual Network támogatott SKU-t támogatja, amely tartalmazza a standard és a prémium szintet, kivéve a Flex-bélyegzőket, amelyekben a virtuális hálózatok csak prémium SKU-hoz érhetők el. Egy privát hálózatra korlátozódó Storage-fiókkal rendelkező függvény beállítása:
+Egy Function-alkalmazás létrehozásakor létre kell hoznia egy általános célú Azure Storage-fiókot, amely támogatja a blobot, a várólistát és a Table Storage-t. Ezt a Storage-fiókot lecserélheti egy, a szolgáltatási végpontokkal vagy privát végponttal védett tárolóval. 
 
-1. Hozzon létre egy olyan függvényt, amely nem rendelkezik engedélyezett szolgáltatási végpontokkal.
-1. Konfigurálja a függvényt a virtuális hálózathoz való kapcsolódáshoz.
-1. Hozzon létre vagy konfiguráljon egy másik Storage-fiókot.  Ez lesz az a Storage-fiók, amelyet a szolgáltatási végpontok biztosítanak, és összekapcsolhatjuk a funkciót.
-1. [Hozzon létre egy fájlmegosztást](../storage/files/storage-how-to-create-file-share.md#create-file-share) a biztonságos Storage-fiókban.
-1. Engedélyezze a szolgáltatási végpontokat vagy a magánhálózati végpontot a Storage-fiókhoz.  
-    * Privát végponti kapcsolatok használata esetén a Storage-fióknak szüksége lesz egy privát végpontra a `file` és az `blob` alerőforrásokhoz.  Ha bizonyos képességeket (például Durable Functions) használ, `queue` `table` egy privát végponti kapcsolaton keresztül is szüksége lesz rá, és elérhetővé válik.
-    * Ha szolgáltatási végpontokat használ, engedélyezze a Function apps számára dedikált alhálózatot a Storage-fiókokhoz.
-1. Másolja a fájl és a blob tartalmát a Function app Storage-fiókból a biztonságos Storage-fiókba és a fájlmegosztásba.
-1. Másolja ki a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
-1. Frissítse az **alkalmazás beállításait** a Function alkalmazás **konfigurációjában** a következőre:
-    - `AzureWebJobsStorage` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.
-    - `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a biztonságos Storage-fiókhoz tartozó kapcsolódási karakterláncra.
-    - `WEBSITE_CONTENTSHARE` a biztonságos Storage-fiókban létrehozott fájlmegosztás nevével.
-    - Hozzon létre egy új beállítást a név és a érték megadásával `WEBSITE_CONTENTOVERVNET` `1` .
-    - Ha a Storage-fiók magánhálózati végponti kapcsolatokat használ, ellenőrizze vagy adja hozzá a következő beállításokat
-        - `WEBSITE_VNET_ROUTE_ALL` értékkel `1` .
-        - `WEBSITE_DNS_SERVER` értéke `168.63.129.16` 
-1. Mentse az alkalmazás beállításait.  
-
-A Function alkalmazás újraindul, és mostantól egy biztonságos Storage-fiókhoz fog csatlakozni.
+Ez a funkció jelenleg az összes Windows Virtual Network által támogatott SKU-t támogatja a dedikált (App Service) tervben és a Prémium csomag esetében. A felhasználási terv nem támogatott. A következő témakörből megtudhatja, hogyan állíthat be egy privát hálózatra korlátozott Storage-fiókkal rendelkező függvényt: [a Storage-fiók korlátozása egy virtuális hálózatra](configure-networking-how-to.md#restrict-your-storage-account-to-a-virtual-network).
 
 ## <a name="use-key-vault-references"></a>Key Vault-referenciák használata
 
@@ -173,6 +154,8 @@ További információt a [Hibrid kapcsolatok app Service dokumentációjában](.
 A kimenő IP-korlátozások prémium csomagokban, App Service csomagban vagy App Service Environment érhetők el. Konfigurálhatja a kimenő korlátozásokat arra a virtuális hálózatra, amelyen a App Service Environment telepítve van.
 
 Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás alapértelmezés szerint továbbra is elvégezheti a kimenő hívásokat az internetre. Az Alkalmazásbeállítás hozzáadásával `WEBSITE_VNET_ROUTE_ALL=1` kényszeríti az összes kimenő forgalom küldését a virtuális hálózatba, ahol a hálózati biztonsági csoportra vonatkozó szabályok a forgalom korlátozására használhatók.
+
+Ha szeretné megtudni, hogyan vezérelheti a kimenő IP-címet virtuális hálózattal, tekintse meg az [oktatóanyag: Azure functions kimenő IP-cím szabályozása Azure Virtual Network NAT-átjáróval](functions-how-to-use-nat-gateway.md)című témakört. 
 
 ## <a name="automation"></a>Automation
 A következő API-k lehetővé teszik a regionális virtuális hálózati integrációk programozott kezelését:

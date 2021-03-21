@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 03/30/2018
 ms.openlocfilehash: b6a834ede381ee319d3ff7678f49febd11e34a5d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102559769"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
@@ -397,7 +397,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 ## <a name="common-vm-extension-reference"></a>Általános virtuálisgép-bővítmény leírása
 
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-kiterjesztés Linux rendszerhez |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-kiterjesztés Linux rendszerhez](custom-script-linux.md) |
 | Virtuálisgép-hozzáférési bővítmény |Azure-beli virtuális gép hozzáférésének visszanyerése |[Virtuálisgép-hozzáférési bővítmény](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

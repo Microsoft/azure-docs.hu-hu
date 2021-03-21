@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
 ms.openlocfilehash: 1753f2bb649e73d7a5fe6c1cc32361a418ea7f63
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102181805"
 ---
 # <a name="overview-of-azure-front-door-standardpremium-sku-preview"></a>Az Azure Door standard/Premium SKU áttekintése (előzetes verzió)
@@ -50,19 +50,19 @@ Az Azure bejárati ajtót 3 különböző SKU-ra, az [Azure bejárati ajtóra](.
 
 | Szolgáltatás |      Standard      |  Prémium |
 |----------|:-------------:|------:|
-| Egyéni tartományok | Igen | Igen |
-| SSL-kiszervezés | Igen | Igen |
-| Gyorsítótárazás |  Igen  | Igen |
-| Tömörítés | Igen | Igen   |
-| Globális terheléselosztás | Igen  | Igen |
-| 7. rétegbeli Útválasztás | Igen | Igen |
-| URL-átírás | Igen | Igen |
-| Szabálymotor | Igen | Igen |
+| Egyéni tartományok | Igen | Yes |
+| SSL-kiszervezés | Igen | Yes |
+| Gyorsítótárazás |  Igen  | Yes |
+| Tömörítés | Igen | Yes   |
+| Globális terheléselosztás | Igen  | Yes |
+| 7. rétegbeli Útválasztás | Igen | Yes |
+| URL-átírás | Igen | Yes |
+| Szabálymotor | Igen | Yes |
 | Privát forrás (privát hivatkozás) | Nem | Igen |
-| WAF | Csak egyéni szabályok | Igen |
+| WAF | Csak egyéni szabályok | Yes |
 | Bot-védelem | Nem | Igen |
-| Továbbfejlesztett mérőszámok és diagnosztika | Igen | Igen |
-| Forgalmi jelentés | Igen | Igen |
+| Továbbfejlesztett mérőszámok és diagnosztika | Igen | Yes |
+| Forgalmi jelentés | Igen | Yes |
 | Biztonsági jelentés | Nem | Igen | 
 
 ## <a name="next-steps"></a>Következő lépések

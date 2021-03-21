@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 80384662789e9dad979566715672c15a8648ea9a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7dd84b8f2f0834a03b41179531245ebdff35b7ff
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104611776"
+ms.locfileid: "104719787"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -255,9 +255,9 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
 
-A beszédfelismerés általában jó módszer az arc-kifejezések animálására.
-A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben (például az ajkak, az állkapocs és a nyelv pozíciójában) jelennek meg egy adott fonéma készítésekor.
-Az Viseme esemény a Speech SDK-ban előfizethet az arc-animálási adatgyűjtés létrehozásához. Ezt követően alkalmazhatja az ilyen jellegű adatbevitelt egy karakterre az arc-animáció kihasználása érdekében.
-Ismerje meg [, hogyan szerezhet be viseme-kimeneteket](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+A beszédfelismerés jó módszer lehet az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben jelentenek, például az ajkak, az állkapocs és a nyelv pozíciója egy adott fonéma készítésekor.
+Előfizethet a Speech SDK viseme eseményeire, és az arc-animálási adatként beolvashatja az adott karaktert az arc animálása során.
+Ismerje meg [, hogyan szerezhet be viseme-eseményeket](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

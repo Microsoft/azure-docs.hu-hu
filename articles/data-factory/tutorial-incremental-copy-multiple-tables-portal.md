@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: 3b97887e7bbd31fc1bb6ec0a074267aa081184c8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1fad6274b1dbbc4bf255caabd79352b3c836e352
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101724897"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606692"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Az adatok növekményes betöltése a SQL Server több táblájából egy Azure SQL Database-adatbázisba az Azure Portal
 
@@ -253,7 +253,7 @@ END
 8. Kattintson a **Létrehozás** lehetőségre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
-   ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="A Azure Data Factory kezdőlapja, a szerző & monitor csempével.":::
 10. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 
 ## <a name="create-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul létrehozása
@@ -291,7 +291,7 @@ Ebben a lépésben összekapcsolja SQL Server adatbázisát az adatelőállító
 
 1. A **Connections** (Kapcsolatok) ablakban váltson az **Integration Runtimes** (Integrációs modulok) lapról a **Linked Services** (Társított szolgáltatások) lapra, és kattintson a **+ New** (+ Új) elemre.
 
-   ![Új társított szolgáltatás](./media/doc-common-process/new-linked-service.png)
+    :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="Új társított szolgáltatás.":::
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra. 
 
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban végezze el az alábbi lépéseket:

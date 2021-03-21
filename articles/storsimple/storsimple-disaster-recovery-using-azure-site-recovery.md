@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6152d4b9ee28554efcb5b08b7a2d161a0723852
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301950"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670904"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatikus vész-helyreállítási megoldás a StorSimple-on üzemeltetett fájlmegosztás Azure Site Recovery használatával
 
@@ -44,7 +44,7 @@ A StorSimple-tárolón üzemeltetett fájlmegosztás Azure Site Recovery haszná
    - Helyszíni StorSimple az Azure StorSimple Managerrel regisztrálva
    - StorSimple Cloud Appliance létrehozva az Azure StorSimple Managerben. A készülék leállítási állapotban is tarthat.
    - A StorSimple tároló eszközön konfigurált köteteken tárolt fájlmegosztás
-   - Microsoft Azure-előfizetésben létrehozott [Azure site Recovery Services](/azure/site-recovery/hyper-v-vmm-azure-tutorial) -tároló
+   - Microsoft Azure-előfizetésben létrehozott [Azure site Recovery Services](../site-recovery/hyper-v-vmm-azure-tutorial.md) -tároló
 
 Továbbá, ha az Azure a helyreállítási hely, futtassa az [Azure Virtual Machine Readiness Assessment eszközt a virtuális](https://azure.microsoft.com/downloads/vm-readiness-assessment/) gépeken, és győződjön meg arról, hogy kompatibilisek az Azure-beli virtuális gépekkel és a Azure site Recovery szolgáltatásokkal.
 
@@ -112,7 +112,7 @@ Ehhez a lépéshez elő kell készítenie a helyszíni fájlkiszolgáló környe
    1. A fájl-és tárolási szolgáltatások szerepkör használatával fájlmegosztás hozható létre ezeken a köteteken.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery-tároló létrehozása és előkészítése
-A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg a [Azure site Recovery dokumentációját](/azure/site-recovery/) Azure site Recovery.
+A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg a [Azure site Recovery dokumentációját](../site-recovery/index.yml) Azure site Recovery.
 
 #### <a name="to-enable-protection"></a>A védelem engedélyezése
 1. Válassza le az iSCSI-tároló (ka) t a Azure Site Recovery segítségével védelemmel ellátni kívánt helyszíni virtuális gépekről:
@@ -124,7 +124,7 @@ A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg
    > [!NOTE]
    > Ez azt eredményezi, hogy a fájlmegosztás átmenetileg elérhetetlenné válik.
    
-1. [Engedélyezze a Fájlkiszolgálói virtuális gép virtuálisgép-védelmét](/azure/site-recovery/hyper-v-azure-tutorial) a Azure site Recovery portálról.
+1. [Engedélyezze a Fájlkiszolgálói virtuális gép virtuálisgép-védelmét](../site-recovery/hyper-v-azure-tutorial.md) a Azure site Recovery portálról.
 1. A kezdeti szinkronizálás megkezdésekor újra csatlakozhat a célhelyhez. Nyissa meg az iSCSI-kezdeményezőt, válassza ki a StorSimple eszközt, és kattintson a **Kapcsolódás** lehetőségre.
 1. Ha a szinkronizálás befejeződött, és a virtuális gép állapota **védett**, válassza ki a virtuális gépet, válassza a **configure (Konfigurálás** ) lapot, és ennek megfelelően frissítse a virtuális gép hálózatát (ez az a hálózat, amelyre a feladatátvételt végző virtuális gép (ek) a része lesz). Ha a hálózat nem jelenik meg, az azt jelenti, hogy a szinkronizálás továbbra is folyamatban van.
 
@@ -164,7 +164,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
    
       ![Tallózás a katalógusban](./media/storsimple-disaster-recovery-using-azure-site-recovery/image3.png)
    
-1. Tegye közzé az összes parancsfájlt úgy, hogy kiválasztja a runbook az Automation-fiókban, és kattintson a közzététel **szerkesztése** lehetőségre, &gt; **Publish** majd az **Igen** gombra az ellenőrző üzenethez. A lépés után a **runbookok** lap a következőképpen fog megjelenni:
+1. Tegye közzé az összes parancsfájlt úgy, hogy kiválasztja a runbook az Automation-fiókban, és kattintson a közzététel **szerkesztése** lehetőségre, &gt;  majd az **Igen** gombra az ellenőrző üzenethez. A lépés után a **runbookok** lap a következőképpen fog megjelenni:
    
    ![Runbookok](./media/storsimple-disaster-recovery-using-azure-site-recovery/image4.png)
    
@@ -174,7 +174,7 @@ Helyreállítási tervet is létrehozhat az ASR-ben a fájlmegosztás feladatát
    - _RecoveryPlanName_**-ResourceGroupName**: a StorSimple erőforrással rendelkező Resource Manager-csoport.
    - _RecoveryPlanName_**-ManagerName**: a StorSimple-eszközt tartalmazó StorSimple-erőforrás.
    - _RecoveryPlanName_**-DeviceName**: a feladatátvételt igénylő StorSimple-eszköz.
-   - _RecoveryPlanName_**-DeviceIpAddress**: az eszköz IP-címe (ez a StorSimple Eszközkezelő szakasz **Devices** &gt; **Beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoportjának eszközök lapján található).
+   - _RecoveryPlanName_**-DeviceIpAddress**: az eszköz IP-címe (ez a StorSimple Eszközkezelő szakasz  &gt; **Beállítások** &gt; **hálózati** &gt; **DNS-beállítások** csoportjának eszközök lapján található).
    - _RecoveryPlanName_**-VolumeContainers**: az eszközön található, vesszővel tagolt mennyiségi tárolók, amelyeknek feladatátvételre van szükségük; például: volcon1, volcon2, volcon3.
    - _RecoveryPlanName_**-TargetDeviceName**: az a StorSimple Cloud Appliance, amelyen a tárolók feladatátvétele történik.
    - _RecoveryPlanName_**-TargetDeviceIpAddress**: a cél eszköz IP-címe (ez a **virtuális gép** szakasz &gt; **Beállítások** csoport &gt; **hálózatkezelés** lapján található).

@@ -15,12 +15,12 @@ ms.date: 02/12/2021
 ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a21b6f5e7d2976bda0efd37577b7cca90469aea
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ed101282a69120162d6e3b526693c0a83df45b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101686444"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607109"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
 
@@ -91,7 +91,7 @@ Egyes alkalmazások nem biztosítják az általuk kibocsátott hitelesítési k�
 
 ### <a name="home-realm-discovery-policy-to-prevent-auto-acceleration"></a>A Kezdőlap tartományának felderítési házirendje az automatikus gyorsítás elkerüléséhez
 
-Bizonyos Microsoft-és SaaS-alkalmazások automatikusan tartalmazzák a domain_hints (például egy beérkező `https://outlook.com/contoso.com` bejelentkezési kérést, `&domain_hint=contoso.com` amely hozzáfűzést tartalmaz), ami megzavarhatja a felügyelt hitelesítő adatok, például a rendszerbe való bevezetését.  A Kezdőlap tartomány- [felderítési házirend](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy) használatával figyelmen kívül hagyhatja bizonyos alkalmazások vagy bizonyos tartományok tartományi emlékeztetőit a felügyelt hitelesítő adatok bevezetésének során.  
+Bizonyos Microsoft-és SaaS-alkalmazások automatikusan tartalmazzák a domain_hints (például egy beérkező `https://outlook.com/contoso.com` bejelentkezési kérést, `&domain_hint=contoso.com` amely hozzáfűzést tartalmaz), ami megzavarhatja a felügyelt hitelesítő adatok, például a rendszerbe való bevezetését.  A Kezdőlap tartomány- [felderítési házirend](/graph/api/resources/homeRealmDiscoveryPolicy) használatával figyelmen kívül hagyhatja bizonyos alkalmazások vagy bizonyos tartományok tartományi emlékeztetőit a felügyelt hitelesítő adatok bevezetésének során.  
 
 ## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Az összevont felhasználók közvetlen ROPC-hitelesítésének engedélyezése örökölt alkalmazásokhoz
 
@@ -129,7 +129,7 @@ A következő példa egy HRD házirend-definíciót mutat be:
    }
 ```
 
-A házirend típusa "[HomeRealmDiscoveryPolicy](https://docs.microsoft.com/graph/api/resources/homeRealmDiscoveryPolicy)".
+A házirend típusa "[HomeRealmDiscoveryPolicy](/graph/api/resources/homeRealmDiscoveryPolicy)".
 
 A **AccelerateToFederatedDomain** nem kötelező. Ha a **AccelerateToFederatedDomain** hamis, a házirend nem befolyásolja az automatikus gyorsítást. Ha a **AccelerateToFederatedDomain** értéke igaz, és a bérlőn csak egy ellenőrzött és összevont tartomány található, akkor a felhasználók egyenesen az összevont identitásszolgáltató lesznek elküldve a bejelentkezéshez. Ha az értéke igaz, és több ellenőrzött tartomány van a bérlőben, meg kell adni a **PreferredDomain** .
 

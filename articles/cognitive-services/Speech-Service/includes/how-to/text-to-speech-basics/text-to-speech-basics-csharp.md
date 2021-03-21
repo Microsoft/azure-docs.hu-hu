@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 278bb106789452d14001da5bd0bab6570d114666
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: b1161fdcbed7933c7a8dd0dccadd2e896966b728
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428215"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719629"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -67,14 +67,14 @@ Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](/dotnet/a
 Ebben a példában egy [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) előfizetési kulcsot és egy régiót hoz létre. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../../../overview.md#try-the-speech-service-for-free)szükséges lépések követésével. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 ```csharp
-public class Program 
+public class Program
 {
     static async Task Main()
     {
         await SynthesizeAudioAsync();
     }
 
-    static async Task SynthesizeAudioAsync() 
+    static async Task SynthesizeAudioAsync()
     {
         var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     }
@@ -88,7 +88,7 @@ Ezután létrehoz egy [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservi
 Az indításhoz hozzon létre egy `AudioConfig` fájlt, és a függvény használatával automatikusan írja be a kimenetet egy `.wav` fájlba, majd készítsen egy `FromWavFileOutput()` `using` utasítást egy utasítással. Az `using` ebben a kontextusban található utasítás automatikusan elveti a nem felügyelt erőforrásokat, és az objektum kivezetését követően kikerül a hatókörből.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -98,7 +98,7 @@ static async Task SynthesizeAudioAsync()
 Ezután hozza létre a példányt egy `SpeechSynthesizer` másik `using` utasítással. Adja át az `config` objektumot és az `audioConfig` objektumot paraméterként. Ezután a beszédfelismerés végrehajtása és a fájlba való írás olyan egyszerű, mintha `SpeakTextAsync()` egy szöveges karakterláncot futtasson.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -111,10 +111,10 @@ Futtassa a programot, és a rendszer a `.wav` megadott helyre írja a szintetiz�
 
 ## <a name="synthesize-to-speaker-output"></a>Szintetizálás a hangszórók kimenetére
 
-Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez egyszerűen hagyja `AudioConfig` ki a paramétert a `SpeechSynthesizer` fenti példában szereplő példa létrehozásakor. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
+Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez hagyja ki a `AudioConfig` paramétert a fenti példában szereplő érték létrehozásakor `SpeechSynthesizer` . Ez a kimenet a jelenlegi aktív kimeneti eszközre mutat.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config);
@@ -130,7 +130,7 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `null` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `null` `AudioConfig` `SpeechSynthesizer` konstruktorban.
 
 > [!NOTE]
 > `null`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
@@ -138,11 +138,11 @@ Ezt a változást egyszerűen elvégezheti az előző példából. Először tá
 Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult) . A `AudioData` tulajdonság tartalmazza a `byte []` kimeneti adatokat. Ezt manuálisan is elvégezheti `byte []` , vagy a [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.FromResult()` statikus függvény használatával kap egy streamet az eredményből.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var result = await synthesizer.SpeakTextAsync("Getting the response as an in-memory stream.");
     using var stream = AudioDataStream.FromResult(result);
 }
@@ -168,7 +168,7 @@ A követelményektől függően különböző fájltípusok választhatók. Vegy
 Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
@@ -204,11 +204,11 @@ Ezután módosítania kell a beszédfelismerési kérést az XML-fájlra való h
 > Ha a Visual studiót használja, a Build-konfiguráció valószínűleg nem fogja megkeresni az XML-fájlt alapértelmezetten. A probléma megoldásához kattintson a jobb gombbal az XML-fájlra, és válassza a **Tulajdonságok** lehetőséget. Változtassa meg a **Build műveletet** a *tartalomra*, és a másolás **a kimeneti könyvtárba** a *mindig* elemre.
 
 ```csharp
-public static async Task SynthesizeAudioAsync() 
+public static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var ssml = File.ReadAllText("./ssml.xml");
     var result = await synthesizer.SpeakSsmlAsync(ssml);
 
@@ -247,3 +247,10 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
   </voice>
 </speak>
 ```
+## <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
+
+A beszédfelismerés jó módszer lehet az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben jelentenek, például az ajkak, az állkapocs és a nyelv pozíciója egy adott fonéma készítésekor.
+Feliratkozhat a viseme eseményre a Speech SDK-ban.
+Ezt követően alkalmazhatja a viseme eseményeket, így animálhatja a karakterek színeit beszéd hanglejátszásként.
+Ismerje meg [, hogyan szerezhet be viseme-eseményeket](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).
