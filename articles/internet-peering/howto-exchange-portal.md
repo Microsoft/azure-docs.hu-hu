@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/2/2020
 ms.author: derekol
 ms.openlocfilehash: 69201c97882846fb929b3b6f9a90be6647603bcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84700480"
 ---
 # <a name="create-or-modify-an-exchange-peering-by-using-the-azure-portal"></a>Exchange-társ létrehozása vagy módosítása a Azure Portal használatával
@@ -70,7 +70,7 @@ Internetes Exchange-szolgáltatóként létrehozhat egy Exchange-partneri kéré
 ## <a name="deprovision-an-exchange-peering"></a><a name="delete"></a>Exchange-társ kiépítése
 [!INCLUDE [peering-exchange-delete-portal](./includes/delete.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közvetlen társ létrehozása vagy módosítása a portál használatával](howto-direct-portal.md)
 * [Örökölt közvetlen társak konvertálása Azure-erőforrásra a portál használatával](howto-legacy-direct-portal.md)

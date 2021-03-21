@@ -12,10 +12,10 @@ ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
 ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101705398"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Terminológia és entitások változása Media Services v2 és v3 között
@@ -56,10 +56,10 @@ Tekintse át Media Services v3 erőforrásokra alkalmazott elnevezési konvenci�
 | `Job`<!-- row --> | `Job` | Hozzon létre egy t a `Transform` létrehozása előtt `Job` . | Nem | Nem |
 | `JobTemplate`<!-- row --> | `Transform` | Használjon `Transform` helyette. Az átalakítás egy adott feladatokból származó különálló entitás, amely újra felhasználható. | Nem | Nem |
 | `Locator`<!-- row --> | `StreamingLocator` | <!--empty --> | Igen | Nem |
-| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | Nem | NA (ReadOnly a v2-ben) |
+| `MediaProcessor`<!-- row --> | <!-- empty --> | Ahelyett, hogy megkeresi a `MediaProcessor` nevet, használja a kívánt beállításkészletet az átalakítás definiálásához. A használt beállításkészlet határozza meg a rendszer által használt adathordozó-processzort. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). <!--Probably needs a link to its own article so customers know Indexerv1 maps to AudioAnalyzerPreset in basic mode, etc.--> | No | NA (ReadOnly a v2-ben) |
 | `NotificationEndPoint`<!-- row --> | <!--empty --> | A v3-as értesítések Azure Event Grid használatával kezelhetők. A `NotificationEndpoint` Event Grid előfizetés-regisztráció váltja fel, amely a kapott értesítések típusának konfigurációját is magában foglalja (a v2-ben a feladat `JobNotificationSubscription` , a `TaskNotificationSubscription` feladat és a telemetria kezelése `ComponentMonitoringSetting` ). A v2 telemetria Azure Event Grid és Azure Monitor között osztották fel, hogy illeszkedjenek a nagyobb Azure-ökoszisztémák fejlesztéséhez. | Nem | Nem |
 | `Program`<!-- row --> | `LiveOutput` | Az élő kimenetek mostantól a V3 API-ban lévő programokat cserélik le.  | Nem | Nem |
-| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Igen |
+| `StreamingEndpoint`<!-- row --> | `StreamingEndpoint` | A folyamatos átviteli végpontok elsődlegesek maradnak. Ezek a dinamikus csomagolás, a titkosítás és a HLS és a DASH tartalom továbbítására szolgálnak mind az élő, mind az igény szerinti folyamatos átvitelhez, vagy közvetlenül a forrástól, vagy a CDN-n keresztül. Az új funkciók közé tartozik a jobb Azure Monitor integráció és a diagramok támogatása. |  Igen | Yes |
 | `Task`<!-- row --> | `JobOutput` | Lecserélte `JobOutput` (amely már nem különálló entitás az API-ban).  Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `TaskTemplate`<!-- row --> | `TransformOutput` | Lecserélte `TransformOutput` (amely már nem különálló entitás az API-ban). Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md). | Nem | Nem |
 | `Inputs`<!-- row --> | `Inputs` | A bemenetek és kimenetek jelenleg a feladatok szintjén vannak. Lásd: kódolási témakörök a [forgatókönyv-alapú kódolásban](migrate-v-2-v-3-migration-scenario-based-encoding.md) | Nem | Nem |

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 32e8ad5028920cefd717cdaa5429786c83367f6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 615998de45c4a9993899065a4aef7a15332a59c8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671270"
+ms.locfileid: "104720406"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure Cosmos DB használata az Azure szinapszis-kapcsolaton keresztüli Apache Spark használatával
 
@@ -28,6 +28,10 @@ A következő képességek támogatottak a Azure Cosmos DB való interakció kö
 * A szinapszis Apache Spark a Spark strukturált streamet is támogatja Azure Cosmos DB forrásként és fogadóként is. 
 
 A következő szakasz végigvezeti a fenti képességek szintaxisán. Az Azure szinapszis Analytics-munkaterületen található kézmozdulatok úgy lettek kialakítva, hogy könnyen használható felhasználói élményt nyújtsanak az első lépésekhez. A kézmozdulatok akkor láthatók, ha a jobb gombbal rákattint egy Azure Cosmos DB tárolóra a szinapszis munkaterület **adatlapján.** A kézmozdulatokkal gyorsan hozhat létre kódot, és testre szabhatja azt az igényei szerint. A kézmozdulatok az adatok egy kattintással való felderítéséhez is ideálisan használhatók.
+
+> [!IMPORTANT]
+> Vegye figyelembe az analitikai séma bizonyos korlátozásait, ami az betöltési műveletek váratlan viselkedését eredményezheti.
+> Például csak a tranzakciós séma első 1000 tulajdonsága érhető el az analitikai sémában, a szóközökkel rendelkező tulajdonságok nem érhetők el stb. Ha nem várt eredményeket tapasztal, további részletekért tekintse meg az [analitikai tároló sémájának korlátozásait](../../cosmos-db/analytical-store-introduction.md#schema-constraints) .
 
 ## <a name="query-azure-cosmos-db-analytical-store"></a>Lekérdezés Azure Cosmos DB analitikus tárolóban
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d33634c08b85ad633fdad3f709b2b2182571d7de
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034761"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590534"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Az Azure Digital Twinsbeli ikermodellek ismertetése
 
@@ -24,9 +24,13 @@ Az Azure digitális ikrek modelljei a JSON-LD-alapú **Digital Twin Definition L
 
 ## <a name="digital-twin-definition-language-dtdl-for-models"></a>Digital Twin Definition Language (DTDL) modellekhez
 
-Az Azure Digital Twins-modellek a Digital Twins Definition Language (DTDL) segítségével vannak definiálva. A DTDL a JSON-LD nyelven alapul, és programnyelvtől független. A DTDL nem kizárólagos az Azure Digital Twins-ban, de más IoT-szolgáltatásokban, például a [IoT Plug and Playban](../iot-pnp/overview-iot-plug-and-play.md)is használhatók. 
+Az Azure Digital Twins modelljei a digitális Twins Definition Language (DTDL) használatával definiálhatók. 
 
-Az Azure Digital Twins a **DTDL _2-es verzióját_** használja. A DTDL ezen verziójával kapcsolatos további információkért tekintse meg a specifikációs dokumentációt a GitHubon: [*Digital Twins Definition Language (DTDL) – 2. verzió*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Az DTDL _1-es verziójának_ használata az Azure Digital Twins használatával már elavult.
+Megtekintheti a GitHubon a DTDL teljes nyelvi specifikációit: [**Digital Twins Definition Language (DTDL) – 2-es verzió**](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+
+A DTDL a JSON-LD nyelven alapul, és programnyelvtől független. A DTDL nem kizárólagos az Azure Digital Twins-ban, de más IoT-szolgáltatásokban, például a [IoT Plug and Playban](../iot-pnp/overview-iot-plug-and-play.md)is használhatók. Az Azure Digital Twins a DTDL **2. verzióját** használja (az Azure Digital Twins-val már elavult a DTDL 1. verziójának használata). 
+
+A cikk további része összefoglalja, hogyan használják a nyelvet az Azure Digital Twinsban.
 
 > [!NOTE] 
 > Nem minden olyan szolgáltatás, amely a DTDL-t használja, pontosan ugyanazokat a funkciókat implementálja, mint a DTDL. Például a IoT Plug and Play nem használja a graphs szolgáltatáshoz használt DTDL-funkciókat, míg az Azure digitális Twins jelenleg nem implementál DTDL-parancsokat.

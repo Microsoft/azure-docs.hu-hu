@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 235efc550fd47d4244a5bf081c75d5e824a8e4b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793432"
 ---
 # <a name="split-merge-security-configuration"></a>Felosztás – biztonsági konfiguráció egyesítése
@@ -452,14 +452,14 @@ Kövesse az alábbi lépéseket:
 11. Válasszon ki egy tanúsítványt a listában.
 
 ## <a name="export-certificate"></a>Tanúsítvány exportálása
-A **Tanúsítvány exportálása varázslóban** :
+A **Tanúsítvány exportálása varázslóban**:
 
 1. Kattintson a **Tovább** gombra.
-2. Válassza az **Igen** lehetőséget, majd **exportálja a titkos kulcsot** .
+2. Válassza az **Igen** lehetőséget, majd **exportálja a titkos kulcsot**.
 3. Kattintson a **Tovább** gombra.
 4. Válassza ki a kívánt kimeneti fájlformátumot.
 5. Keresse meg a kívánt beállításokat.
-6. Győződjön meg róla, hogy a **jelszó** .
+6. Győződjön meg róla, hogy a **jelszó**.
 7. Adjon meg egy erős jelszót, és erősítse meg.
 8. Kattintson a **Tovább** gombra.
 9. Írja be vagy tallózással keresse meg azt a fájlnevet, amelyben tárolni kívánja a tanúsítványt (a-t használja. PFX-bővítmény).

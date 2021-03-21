@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/16/2021
 ms.author: shhazam
 ms.openlocfilehash: 9e4a65e67200a682313dae8e326128edce3367d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495759"
 ---
 # <a name="defender-for-iot-devices-security-alerts"></a>Defender IoT-eszközökhöz – biztonsági riasztások
@@ -33,7 +33,7 @@ További információ: [testreszabható riasztások](concept-customizable-securi
 
 ## <a name="agent-based-security-alerts"></a>Ügynök-alapú biztonsági riasztások
 
-| Name | Súlyosság | Adatforrás | Leírás | Javasolt szervizelési lépések |
+| Name | Súlyosság | Adatforrás | Description | Javasolt szervizelési lépések |
 |--|--|--|--|--|
 | **Magas** súlyosság |  |  |  |
 | Bináris parancssor | Magas | Klasszikus Defender – IoT-Micro-Agent | A rendszer a parancssorból meghívott vagy kifuttatott Linux bináris fájlt észlelt. Ez a folyamat lehet legitim tevékenység, vagy jelzi, hogy az eszköz biztonsága sérült. | Tekintse át a parancsot a futtatott felhasználóval, és ellenőrizze, hogy az eszközön van-e a várt Futtatás. Ha ez nem történik meg, a riasztást a tájékoztatási biztonsági csapatnak is megteheti. |

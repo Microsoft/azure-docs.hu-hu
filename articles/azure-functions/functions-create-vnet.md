@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható eg
 ms.topic: article
 ms.date: 2/22/2021
 ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102630469"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Oktatóanyag: Azure Functions integrálása Azure-beli virtuális hálózattal privát végpontok használatával

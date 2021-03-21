@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 1a99fbd3d3163808a364e8b26e770563a901dc18
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371328"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>A Azure Data Factory adatáthelyezésének biztonsági szempontjai
@@ -169,7 +169,7 @@ Az alábbi képek a saját üzemeltetésű integrációs modul használatát mut
 > [!NOTE]
 > Az Azure Data Factoryon keresztüli adatelérési stratégiákkal kapcsolatos részletekért tekintse meg [ezt a cikket](./data-access-strategies.md#data-access-strategies-through-azure-data-factory).
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>A tűzfalra vonatkozó követelmények helyszíni/magánhálózati hálózatokhoz
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Helyszíni/privát hálózatok tűzfalkövetelményei
 
 A vállalatokban a vállalati tűzfal a szervezet központi útválasztóján fut. A Windows tűzfal démonként fut azon a helyi gépen, amelyben a saját üzemeltetésű integrációs modul telepítve van. 
 

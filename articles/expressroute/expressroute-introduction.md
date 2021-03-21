@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 10/05/2020
 ms.author: duau
 ms.openlocfilehash: 82562eae748753cd785851c5d91f5f152b4c9960
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92206951"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
-A ExpressRoute lehetővé teszi a helyszíni hálózatok kibővítését a Microsoft-felhőbe egy magánhálózati kapcsolaton keresztül egy kapcsolati szolgáltató segítségével. A ExpressRoute használatával kapcsolatokat létesíthet a Microsoft Cloud Services szolgáltatással, például a Microsoft Azure és a Microsoft 365sal.
+Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, egy kapcsolatszolgáltató segítségével. Az ExpressRoute-tal kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral és a Microsoft 365-tel.
 
-A kapcsolat lehet egy bármely-a-bármelyik (IP VPN) hálózatból, egy pont-pont típusú Ethernet hálózatból vagy egy közös elhelyezési létesítményben lévő kapcsolati szolgáltatón keresztüli virtuális kapcsolat. A ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Ez lehetővé teszi a ExpressRoute-kapcsolatok számára, hogy megbízhatóbb, gyorsabb sebességet, konzisztens késést és nagyobb biztonságot nyújtsanak, mint az interneten keresztüli szokásos kapcsolatok. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
+Ezek lehetnek hálózatközi (IP VPN), pontok közötti Ethernet-hálózati, vagy kapcsolatszolgáltatón keresztüli virtuális keresztkapcsolatok egy közös elhelyezési létesítményen belül. Az ExpressRoute-kapcsolatok nem haladnak át a nyilvános interneten. Az ExpressRoute-kapcsolatok ezáltal megbízhatóbbak, gyorsabbak, egyenletesebb késésűek és biztonságosabbak a tipikus, interneten keresztüli kapcsolatoknál. További információ a hálózatnak a Microsofthoz való csatlakoztatásáról a ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
 
 ![ExpressRoute-kapcsolatok áttekintése](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -28,12 +28,12 @@ A kapcsolat lehet egy bármely-a-bármelyik (IP VPN) hálózatból, egy pont-pon
 * Globális kapcsolódás a Microsoft-szolgáltatásokhoz az összes régióban az ExpressRoute prémium bővítmény használatával.
 * Dinamikus útválasztás a hálózata és a Microsoft között BGP-protokollon keresztül.
 * Beépített redundancia minden társviszony-létesítési helyszínen a nagyobb megbízhatóság érdekében.
-* Kapcsolat-üzemidőre vonatkozó [SLA](https://azure.microsoft.com/support/legal/sla/).
+* A kapcsolatok üzemidő [SLA](https://azure.microsoft.com/support/legal/sla/)-ja.
 * QoS-támogatás a Skype Vállalati verziójához.
 
 További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="layer-3-connectivity"></a>3. rétegbeli kapcsolatok
 A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
@@ -91,7 +91,7 @@ A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolat
 * 100 Mbit/s
 * 200 Mbit/s
 * 500 Mbit/s
-* 1 Gbit/s
+* 1 Gbps
 * 2 Gbps
 * 5 Gbps
 * 10 Gbps
@@ -112,7 +112,7 @@ Kiválaszthatja az Ön számára optimális számlázási modellt. Válassza ki 
 ## <a name="faq"></a>GYIK
 Az ExpressRoute-ra vonatkozó gyakori kérdésekért lásd az [ExpressRoute gyakori kérdéseit](expressroute-faqs.md).
 
-## <a name="whats-new"></a><a name="new"></a>Újdonságok
+## <a name="whats-new"></a><a name="new"></a>Mi újság?
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a legújabb ExpressRoute-frissítéseket az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=ExpressRoute) oldalon.
 

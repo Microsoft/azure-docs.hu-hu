@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8eade7596e36389b1e345dc6f0aab1029dc100e0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201654"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589165"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -19,14 +19,14 @@ Ez az útmutató hasznos hibaelhárítási útmutatót nyújt az ügyfelek álta
 
 ## <a name="access-token-too-long"></a>A hozzáférési token túl hosszú
 
-### <a name="possible-errors"></a>Lehetséges hibák:
+### <a name="possible-errors"></a>Lehetséges hibák
 
 * Ügyféloldali `ERR_CONNECTION_`
 * 414 URI túl hosszú
 * 413 túl nagy a hasznos adat
 * A hozzáférési jogkivonat nem lehet hosszabb, mint 4K. 413 kérelem entitása túl nagy
 
-### <a name="root-cause"></a>Alapvető ok:
+### <a name="root-cause"></a>Gyökérok
 
 A HTTP/2 esetében az egyetlen fejléc maximális hossza **4 K**, így ha a böngészővel fér hozzá az Azure-szolgáltatáshoz, a korlátozás hibaüzenetet kap `ERR_CONNECTION_` .
 
@@ -34,18 +34,19 @@ A HTTP/1.1 vagy C# ügyfelek esetében a maximális URI-érték **12 k**, a fejl
 
 Az SDK **1.0.6** vagy újabb verziója `/negotiate` akkor fog kiindulni, `413 Payload Too Large` Ha a generált hozzáférési jogkivonat nagyobb, mint **4 K**.
 
-### <a name="solution"></a>Megoldás:
+### <a name="solution"></a>Megoldás
 
 Alapértelmezés szerint a rendszer a jogcímeket a `context.User.Claims` JWT hozzáférési token **ASRS**(Zure **S** ignal **R** zésének) való létrehozásakor tartalmazza, így a jogcímek megmaradnak, és a **ASRS** -ből továbbítható, `Hub` Ha az ügyfél csatlakozik a szolgáltatáshoz `Hub` .
 
-Bizonyos esetekben a `context.User.Claims` rendszer kihasználja az App Server számos információjának tárolására, amelyek többségét nem használja az s, `Hub` hanem más összetevők.
+Bizonyos esetekben az `context.User.Claims` app Server számos információjának tárolására szolgál, amelyek többségét nem használja az `Hub` s, hanem más összetevők.
 
 A generált hozzáférési jogkivonat átadása a hálózaton keresztül történik, a WebSocket/SSE kapcsolatok esetében pedig a hozzáférési tokeneket a lekérdezési karakterláncok továbbítják. Az ajánlott eljárás az, hogy csak a **szükséges** jogcímeket kell átadnia az ügyféltől a **ASRS** keresztül az alkalmazáskiszolgáló számára, amikor a hub-nak szüksége van rá.
 
 A `ClaimsProvider` hozzáférési jogkivonatban a **ASRS** áthaladó jogcímeket testreszabhatja.
 
 ASP.NET Core esetén:
-```cs
+
+```csharp
 services.AddSignalR()
         .AddAzureSignalR(options =>
             {
@@ -55,7 +56,8 @@ services.AddSignalR()
 ```
 
 ASP.NET esetén:
-```cs
+
+```csharp
 services.MapAzureSignalR(GetType().FullName, options =>
             {
                 // pick up necessary claims
@@ -67,13 +69,13 @@ services.MapAzureSignalR(GetType().FullName, options =>
 
 ## <a name="tls-12-required"></a>TLS 1,2 szükséges
 
-### <a name="possible-errors"></a>Lehetséges hibák:
+### <a name="possible-errors"></a>Lehetséges hibák
 
 * ASP.NET "nincs elérhető kiszolgáló" hiba [#279](https://github.com/Azure/azure-signalr/issues/279)
 * ASP.NET "a kapcsolódás nem aktív, az adatszolgáltatás nem küldhető el." hiba [#324](https://github.com/Azure/azure-signalr/issues/324)
 * "Hiba történt a HTTP-kérelem https://való végrehajtása közben <API endpoint> . Ennek a hibának az lehet az oka, hogy a kiszolgálói tanúsítvány nincs megfelelően konfigurálva a HTTPS-eset HTTP.SYS. Ezt a hibát az ügyfél és a kiszolgáló közötti biztonsági kötés eltérése is okozhatja. "
 
-### <a name="root-cause"></a>Alapvető ok:
+### <a name="root-cause"></a>Gyökérok
 
 Az Azure-szolgáltatás csak a TLS 1.2-es verzióját támogatja biztonsági okokból. A .NET-keretrendszerrel lehetséges, hogy a TLS 1.2 nem az alapértelmezett protokoll. Ennek eredményeképpen a ASRS-kiszolgáló kapcsolatainak létrehozása nem sikerült.
 
@@ -93,16 +95,18 @@ Az Azure-szolgáltatás csak a TLS 1.2-es verzióját támogatja biztonsági oko
         :::image type="content" source="./media/signalr-howto-troubleshoot-guide/tls-throws.png" alt-text="Kivételek":::
 
 2. A ASP.NET a következő kódot is hozzáadhatja a `Startup.cs` -hoz a részletes nyomkövetés engedélyezéséhez és a naplóban található hibák megtekintéséhez.
-```cs
-app.MapAzureSignalR(this.GetType().FullName);
-// Make sure this switch is called after MapAzureSignalR
-GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
-```
 
-### <a name="solution"></a>Megoldás:
+    ```cs
+    app.MapAzureSignalR(this.GetType().FullName);
+    // Make sure this switch is called after MapAzureSignalR
+    GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
+    ```
+
+### <a name="solution"></a>Megoldás
 
 Adja hozzá a következő kódot az indításhoz:
-```cs
+
+```csharp
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
@@ -158,19 +162,19 @@ A ASP.NET-jelző esetében, amikor az [ügyfél kapcsolata csökken](#client_con
 
 Két eset létezik.
 
-### <a name="concurrent-connection-count-exceeds-limit"></a>Az **egyidejű** kapcsolatok száma meghaladja a korlátot.
+### <a name="concurrent-connection-count-exceeds-limit"></a>Az **egyidejű** kapcsolatok száma meghaladja a korlátot
 
 Az **ingyenes** példányok esetében az **egyidejű** kapcsolatok száma legfeljebb 20 a **standard** példányok esetében, az **egységenkénti** **kapcsolati** korlát egységenként 1 K, ami azt jelenti, hogy a Unit100 engedélyezi a 100-K egyidejű kapcsolatait.
 
 A kapcsolatok az ügyfél és a kiszolgáló kapcsolatait is tartalmazzák. [itt](./signalr-concept-messages-and-connections.md#how-connections-are-counted) tekintheti meg a kapcsolatok számításának módját.
 
-### <a name="too-many-negotiate-requests-at-the-same-time"></a>Túl sok egyeztetési kérelem van egy időben.
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>Túl sok egyeztetési kérelem van egyidejűleg
 
-Javasoljuk, hogy az újrakapcsolódás előtt véletlenszerű késleltetést [adjon meg,](#restart_connection) és próbálkozzon újra a mintákkal.
+Javasoljuk, hogy az újrakapcsolódás előtt véletlenszerű késleltetést kapjon, [és próbálkozzon](#restart_connection) újra a mintákkal.
 
 [Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 hiba az egyeztetés során: az Azure Signaler szolgáltatás még nincs csatlakoztatva, próbálkozzon újra később.
+## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 hiba az egyeztetés során: az Azure Signaler szolgáltatás még nincs csatlakoztatva, próbálkozzon újra később
 
 ### <a name="root-cause"></a>Gyökérok
 
@@ -180,18 +184,21 @@ Ez a hiba akkor jelenik meg, ha az Azure Signaler szolgáltatáshoz nem kapcsol�
 
 Engedélyezze a kiszolgálóoldali nyomkövetést, hogy megtudja a hiba részleteit, amikor a kiszolgáló megpróbál csatlakozni az Azure Signaler szolgáltatáshoz.
 
-#### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Kiszolgálóoldali naplózás engedélyezése ASP.NET Core jelzőhöz
+### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Kiszolgálóoldali naplózás engedélyezése ASP.NET Core jelzőhöz
 
-A ASP.NET Core-jelző kiszolgálóoldali naplózása integrálható a `ILogger` ASP.net Core-keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
-```cs
+A ASP.NET Core-jelző kiszolgálóoldali naplózása integrálható a `ILogger` ASP.net Core-keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1&preserve-view=true) . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
+
+```csharp
 .ConfigureLogging((hostingContext, logging) =>
         {
             logging.AddConsole();
             logging.AddDebug();
         })
 ```
+
 Az Azure szignáló naplózó kategóriái mindig a következővel kezdődnek: `Microsoft.Azure.SignalR` . Az Azure-jelző részletes naplófájljainak engedélyezéséhez konfigurálja az előző előtagokat a `Debug` **appsettings.js** az alábbihoz hasonló fájlban:
-```JSON
+
+```json
 {
     "Logging": {
         "LogLevel": {
@@ -206,6 +213,7 @@ Az Azure szignáló naplózó kategóriái mindig a következővel kezdődnek: `
 #### <a name="enable-server-side-traces-for-aspnet-signalr"></a>Kiszolgálóoldali nyomkövetés engedélyezése a ASP.NET-jelzőhöz
 
 A (z) >= SDK-verzió használatakor `1.0.0` a következők hozzáadásával engedélyezheti a nyomkövetést `web.config` : ([részletek](https://github.com/Azure/azure-signalr/issues/452#issuecomment-478858102))
+
 ```xml
 <system.diagnostics>
     <sources>
@@ -235,14 +243,14 @@ A (z) >= SDK-verzió használatakor `1.0.0` a következők hozzáadásával enge
 
 Ha az ügyfél az Azure-jelzőhöz csatlakozik, az ügyfél és az Azure-jelző közötti állandó kapcsolat esetenként különböző okok miatt csökkenhet. Ez a szakasz számos olyan lehetőséget ismertet, amely az ilyen jellegű kapcsolatok eldobását okozza, és útmutatást nyújt a kiváltó ok azonosításához.
 
-### <a name="possible-errors-seen-from-the-client-side"></a>Az ügyféloldali lehetséges hibák
+### <a name="possible-errors-seen-from-the-client-side"></a>Az ügyfél oldalán észlelt lehetséges hibák
 
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>Alapvető ok:
+### <a name="root-cause"></a>Gyökérok
 
 Az ügyfélkapcsolatok különféle körülmények között csökkenhetnek:
 * Ha `Hub` kivételeket jelez a bejövő kérelemmel kapcsolatban.
@@ -268,21 +276,21 @@ Az ügyfélkapcsolatok hosszú ideje folyamatosan növekednek az Azure-jelző Me
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="Az Ügyfélkapcsolat folyamatosan növekszik":::
 
-### <a name="root-cause"></a>Alapvető ok:
+### <a name="root-cause"></a>Gyökérok
 
 `DisposeAsync`A jelző-ügyfélkapcsolat soha nem hívható, a kapcsolatok nyitva maradnak.
 
 ### <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
-1. Ellenőrizze, hogy a jelző ügyfele **soha nem** zárul-e le.
+Ellenőrizze, hogy a jelző ügyfele **soha nem** zárul-e le.
 
 ### <a name="solution"></a>Megoldás
 
 Ellenőrizze, hogy be van-e zárva a kapcsolatok. Manuálisan hívja `HubConnection.DisposeAsync()` meg a kapcsolatok leállítását a használat után.
 
-Példa:
+Például:
 
-```C#
+```csharp
 var connection = new HubConnectionBuilder()
     .WithUrl(...)
     .Build();
@@ -324,21 +332,95 @@ Az Azure Signaler szolgáltatás új verziókkal rendelkezik, és esetenként az
 
 Ez a szakasz számos olyan lehetőséget ismertet, amely a kiszolgáló kapcsolatainak csökkenését eredményezi, és útmutatást nyújt a kiváltó ok azonosításához.
 
-### <a name="possible-errors-seen-from-server-side"></a>A kiszolgáló oldaláról származó lehetséges hibák:
+### <a name="possible-errors-seen-from-the-server-side"></a>A kiszolgáló oldaláról származó lehetséges hibák
 
 * `[Error]Connection "..." to the service was dropped`
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>Alapvető ok:
+### <a name="root-cause"></a>Gyökérok
 
 A kiszolgáló-szolgáltatással létesített kapcsolatokat a **ASRS**(A zure **S** ignal **R** **S** zésének) zárja **be**.
 
+A pingelés időtúllépése miatt előfordulhat, hogy a kiszolgáló oldalán a CPU-használat vagy a szál-készlet éhezése okozta.
+
+A ASP.NET-jelző esetében az SDK-1.6.0 rögzített egy ismert probléma. Frissítse az SDK-t a legújabb verzióra.
+
+## <a name="thread-pool-starvation"></a>Szál készletének éhezése
+
+Ha a kiszolgáló éhezik, ez azt jelenti, hogy egyetlen szál sem működik az üzenetek feldolgozásakor. Az összes szál egy bizonyos módon van felakasztva.
+
+Ezt a forgatókönyvet általában a szinkronizálás vagy `Task.Result` / `Task.Wait()` aszinkron metódusok okozzák.
+
+Lásd: [ASP.net Core teljesítményre vonatkozó ajánlott eljárások](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls).
+
+További információ a [Thread Pool éhezésről](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall).
+
+### <a name="how-to-detect-thread-pool-starvation"></a>A szál-készlet éhezésének észlelése
+
+Keresse meg a szálak darabszámát. Ha ebben az időszakban nincsenek tüskék, hajtsa végre a következő lépéseket:
+* Ha Azure App Service használ, ellenőrizze a szálak darabszámát a mérőszámokban. Keresse meg az `Max` összesítést:
+    
+  :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Képernyőfelvétel a szálak maximális száma ablaktábláról Azure App Service.":::
+
+* Ha a .NET-keretrendszert használja, a Teljesítményfigyelőben megtalálhatja a kiszolgáló virtuális gépe [mérőszámait](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters) .
+* Ha a .NET Core-t használja egy tárolóban, olvassa el a [diagnosztika gyűjtése a tárolókban](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers)című témakört.
+
+Emellett kódot is használhat a szál-készlet éhezésének észleléséhez:
+
+```csharp
+public class ThreadPoolStarvationDetector : EventListener
+{
+    private const int EventIdForThreadPoolWorkerThreadAdjustmentAdjustment = 55;
+    private const uint ReasonForStarvation = 6;
+
+    private readonly ILogger<ThreadPoolStarvationDetector> _logger;
+
+    public ThreadPoolStarvationDetector(ILogger<ThreadPoolStarvationDetector> logger)
+    {
+        _logger = logger;
+    }
+
+    protected override void OnEventSourceCreated(EventSource eventSource)
+    {
+        if (eventSource.Name == "Microsoft-Windows-DotNETRuntime")
+        {
+            EnableEvents(eventSource, EventLevel.Informational, EventKeywords.All);
+        }
+    }
+
+    protected override void OnEventWritten(EventWrittenEventArgs eventData)
+    {
+        // See: https://docs.microsoft.com/en-us/dotnet/framework/performance/thread-pool-etw-events#threadpoolworkerthreadadjustmentadjustment
+        if (eventData.EventId == EventIdForThreadPoolWorkerThreadAdjustmentAdjustment &&
+            eventData.Payload[3] as uint? == ReasonForStarvation)
+        {
+            _logger.LogWarning("Thread pool starvation detected!");
+        }
+    }
+}
+```
+    
+Adja hozzá a szolgáltatáshoz:
+    
+```csharp
+service.AddSingleton<ThreadPoolStarvationDetector>();
+```
+
+Ezután ellenőrizze a naplót, ha a kiszolgáló kapcsolata le van választva a ping időtúllépéssel.
+
+### <a name="how-to-find-the-root-cause-of-thread-pool-starvation"></a>A szál-készlet éhezésének kiváltó okainak megkeresése
+
+A szál-készlet éhezésének kiváltó okainak megkeresése:
+
+* A memória kiírása, majd a hívási verem elemzése. További információ: [memóriaképek gyűjtése és elemzése](https://devblogs.microsoft.com/dotnet/collecting-and-analyzing-memory-dumps/).
+* A [clrmd](https://github.com/microsoft/clrmd) használata a memória kiírásához, ha a szál-készlet éhezés észlelhető. Ezután jelentkezzen be a hívási verembe.
+
 ### <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
-1. Nyissa meg az alkalmazás-kiszolgálóoldali naplót, és ellenőrizze, hogy van-e rendellenes
-2. Tekintse meg az App kiszolgálóoldali eseménynaplóját, és ellenőrizze, hogy az alkalmazáskiszolgáló újraindult-e
-3. Hozzon létre egy problémát, amely megadja az időkeretet, és küldje el nekünk az erőforrás nevét
+1. Nyissa meg az App kiszolgálóoldali naplót, és ellenőrizze, hogy nem történt-e rendellenesen.
+2. Ellenőrizze az alkalmazás kiszolgálóoldali eseménynaplójában, hogy az alkalmazáskiszolgáló újraindult-e.
+3. Hozzon létre egy problémát. Adja meg az időkeretet, és küldje el nekünk az erőforrás nevét.
 
 [Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 

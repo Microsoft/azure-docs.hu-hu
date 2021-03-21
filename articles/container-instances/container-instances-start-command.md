@@ -4,10 +4,10 @@ description: Parancssor beállítása a BelépésiPont felülbírálására egy 
 ms.topic: article
 ms.date: 04/15/2019
 ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169629"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>A parancssor beállítása tároló-példányban az alapértelmezett parancssori művelet felülbírálásához
@@ -20,7 +20,7 @@ Például a [környezeti változók](container-instances-environment-variables.m
 
 * Alapértelmezés szerint a parancssor egyetlen folyamatot határoz meg, amely a tárolóban lévő *rendszerhéj nélkül indul* el. Előfordulhat például, hogy a parancssor egy Python-parancsfájlt vagy egy végrehajtható fájlt futtat. A folyamat további paramétereket vagy argumentumokat adhat meg.
 
-* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Példák:
+* Több parancs végrehajtásához indítsa el a parancssort a tároló operációs rendszer által támogatott rendszerhéj-környezet beállításával. Angol nyelvű Példák:
 
   |Operációs rendszer  |Alapértelmezett rendszerhéj  |
   |---------|---------|
@@ -59,7 +59,7 @@ A parancssori szintaxis a példányok létrehozásához használt Azure API vagy
 
 ## <a name="azure-cli-example"></a>Azure CLI-példa
 
-Tegyük fel például, hogy módosítja a [Microsoft/ACI-WordCount][aci-wordcount] tároló rendszerképének viselkedését, amely elemzi a szöveget a Shakespeare *Hamletben* , hogy megtalálja a leggyakrabban előforduló szavakat. A *Hamlet*elemzése helyett olyan parancssort állíthat be, amely egy másik szöveges forrásra mutat.
+Tegyük fel például, hogy módosítja a [Microsoft/ACI-WordCount][aci-wordcount] tároló rendszerképének viselkedését, amely elemzi a szöveget a Shakespeare *Hamletben* , hogy megtalálja a leggyakrabban előforduló szavakat. A *Hamlet* elemzése helyett olyan parancssort állíthat be, amely egy másik szöveges forrásra mutat.
 
 Ha meg szeretné tekinteni a [Microsoft/ACI-WordCount][aci-wordcount] tároló kimenetét, amikor elemzi az alapértelmezett szöveget, futtassa azt a következő az [Container Create][az-container-create] paranccsal. Nincs megadva indítási parancssor, ezért az alapértelmezett tároló parancs fut. Illusztrációs célokra ez a példa [környezeti változókat](container-instances-environment-variables.md) állít be a legalább öt betűből álló első három szó megkereséséhez:
 
@@ -86,7 +86,7 @@ Kimenet:
 
 Most állítson be egy második példát tárolót egy másik parancssor megadásával a különböző szövegek elemzéséhez. A tároló által végrehajtott Python-szkript, a *WordCount.py*, elfogad egy URL-címet argumentumként, és a lap tartalmát dolgozza fel az alapértelmezett érték helyett.
 
-Például a *Rómeó és Júlia*közül legalább öt betűből álló első három szó meghatározásához:
+Például a *Rómeó és Júlia* közül legalább öt betűből álló első három szó meghatározásához:
 
 ```azurecli-interactive
 az container create \
@@ -110,7 +110,7 @@ Kimenet:
 [('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladat-alapú forgatókönyvek, például a Batch több tárolóval rendelkező nagyméretű adathalmazok feldolgozására alkalmasak, a futtatáskor az egyéni parancssorok is hasznosak lehetnek. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [a tárolózott feladatok futtatása újraindítási szabályzatokkal](container-instances-restart-policy.md).
 

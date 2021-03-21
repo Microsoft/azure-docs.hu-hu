@@ -10,10 +10,10 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: mqtt
 ms.openlocfilehash: 673a76417739fa59a91979cca7c6807a584868f0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92538255"
 ---
 # <a name="404104-deviceconnectionclosedremotely"></a>404104 DeviceConnectionClosedRemotely
@@ -72,6 +72,6 @@ Lásd: [401003 IoTHubUnauthorized-megoldás 1](iot-hub-troubleshoot-error-401003
 
 Tekintse [meg IoT hub belső kiszolgálói hibák megoldásait](iot-hub-troubleshoot-error-500xxx-internal-errors.md#solution).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azt javasoljuk, hogy az Azure IoT-eszközök SDK-k használatával megbízhatóan kezelje a kapcsolatokat. További információ: [kapcsolat kezelése és megbízható üzenetkezelés az Azure IoT hub Device SDK](iot-hub-reliability-features-in-sdks.md) -k használatával

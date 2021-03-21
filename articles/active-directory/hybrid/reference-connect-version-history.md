@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/07/2020
+ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706f759243fd9edbd5f47633cb2638d6b06beec1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a19babffa63667b0d2deb954d432421a2b7868b8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100376360"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722140"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -56,6 +56,86 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
 >[Ebben a cikkben](./how-to-upgrade-previous-version.md) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
 >
 >A kivont verziókkal kapcsolatos korábbi verziókról lásd: [Azure ad Connect verziójának kiadási előzményei archívuma](reference-connect-version-history-archive.md)
+
+
+## <a name="1623"></a>1.6.2.3
+
+>[!NOTE]
+> - Ez a kiadás csak letöltésre lesz elérhető.
+> - Az erre a kiadásra való frissítéshez a szinkronizálási szabály módosításai miatt teljes szinkronizálásra lesz szükség.
+> - Ez a kiadás alapértelmezés szerint a AADConnect-kiszolgálót az új v2 végpontra irányítja. Vegye figyelembe, hogy ez a végpont nem támogatott a német nemzeti felhőben, a kínai nemzeti felhőben és az Egyesült Államok kormányzati felhőben, és ha ezen a felhőben kell telepítenie ezt a verziót, a v1 végpontra való váltáshoz [ezeket az utasításokat](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) kell követnie. Ha ezt nem teszi meg, a szinkronizálás hibákat eredményez.
+
+### <a name="release-status"></a>Kiadás állapota
+3/17/2021: kiadva a letöltéshez
+
+### <a name="functional-changes"></a>Funkcionális változások
+
+ - Az alapértelmezett szinkronizálási szabályok frissültek, hogy korlátozzák a visszaadott csoportok tagságát az 50 000 tag számára.
+   - Új alapértelmezett szinkronizálási szabályok lettek hozzáadva a tagságok számának korlátozásához a Group visszaírási (az AD-Group visszaírási-tag korlátja) és a csoport szinkronizálása Azure Active Directory (a HRE csoport writeup-tagsági korlátja) csoportjaihoz.
+   - A tag attribútum hozzáadva az "out to AD-Group SOAInAAD-Exchange" szabályhoz, hogy az írásos csoportokba tartozó tagokat 50 000-re korlátozza
+ - Frissített szinkronizálási szabályok a Group visszaírási v2 támogatásához – ha a "from HRE-Group SOAInAAD" szabály a klónozott, és a AADConnect frissül.
+     – A frissített szabály alapértelmezés szerint le lesz tiltva, így a targetWritebackType null értékű lesz.
+     - A AADConnect terjesztési csoportként minden visszaírási (beleértve a visszaírási számára engedélyezett biztonsági csoportokat Azure Active Directory is).
+   – Ha az "out to AD-Group SOAInAAD" szabály a klónozott, és a AADConnect frissül.
+     - A frissített szabály alapértelmezés szerint le lesz tiltva. A hozzáadott új szinkronizálási szabály azonban engedélyezve lesz az AD-Group SOAInAAD – Exchange-hez.
+     - A klónozott egyéni szinkronizálási szabály sorrendjétől függően a AADConnect a levelezés és az Exchange attribútumait is elvégezheti.
+     - Ha a klónozott egyéni szinkronizálási szabály nem hajt végre valamilyen levelezést és Exchange-attribútumot, akkor az új Exchange Sync-szabály hozzáadja ezeket az attribútumokat.
+ - További támogatás a [szelektív jelszó-kivonatok szinkronizálásához](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-selective-password-hash-synchronization)
+ - Az új [Egyobjektumú szinkronizálási parancsmag](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-single-object-sync)hozzáadva. Ezzel a parancsmaggal elháríthatja az Azure AD Connect szinkronizálási konfigurációját. 
+ - Frissített AADConnectHealth-ügynök 3.1.83.0
+ - A [ADSyncTools PowerShell-modul](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adsynctools)új verziója, amely számos új vagy továbbfejlesztett parancsmaggal rendelkezik. 
+ 
+   - Clear-ADSyncToolsMsDsConsistencyGuid
+   - ConvertFrom-ADSyncToolsAadDistinguishedName
+   - ConvertFrom-ADSyncToolsImmutableID
+   - ConvertTo-ADSyncToolsAadDistinguishedName
+   - ConvertTo-ADSyncToolsCloudAnchor
+   - ConvertTo-ADSyncToolsImmutableID
+   - Export-ADSyncToolsAadDisconnectors
+   - Export-ADSyncToolsObjects
+   - Export-ADSyncToolsRunHistory
+   - Get-ADSyncToolsAadObject
+   - Get-ADSyncToolsMsDsConsistencyGuid
+   - Import-ADSyncToolsObjects
+   - Import-ADSyncToolsRunHistory
+   - Remove-ADSyncToolsAadObject
+   - Search-ADSyncToolsADobject
+   - Set-ADSyncToolsMsDsConsistencyGuid
+   - Trace-ADSyncToolsADImport
+   - Trace-ADSyncToolsLdapQuery
+
+ - Frissített hiba történt a jogkivonat-beszerzési hibák naplózásakor.
+ - A konfigurációs oldalon található "További információk" hivatkozásra kattintva további részleteket tudhat meg a kapcsolódó adatokról.
+ - A régi szinkronizálási KEZELŐFELÜLETen a CS keresési oldalról eltávolított explicit oszlop
+ - További felhasználói felület lett hozzáadva a visszaírási-folyamathoz, amely kéri a felhasználót, hogy hitelesítő adatokat kérjen, vagy saját engedélyeiket konfigurálja a ADSyncConfig modul használatával, ha a hitelesítő adatok még nem lettek megadva egy korábbi lépésben.
+ - A ADSync-szolgáltatásfiók MSA automatikus létrehozása a TARTOMÁNYVEZÉRLŐn. 
+ -  A meglévő parancsmagokban beállíthatja és beolvashatja Azure Active Directory a következő parancsmagok visszaírási v2:
+    - Set-ADSyncAADCompanyFeature
+    - Get-ADSyncAADCompanyFeature
+ - 2 parancsmag hozzáadva az AWS API-verzió olvasásához
+    - Get-ADSyncAADConnectorImportApiVersion – az AWS API-verzió importálásának beolvasása
+    - Get-ADSyncAADConnectorExportApiVersion – az AWS API-verzió exportálásának beolvasása
+
+ - A szinkronizálási szabályok módosításait mostantól nyomon követheti a szolgáltatás változásainak támogatásához. A "Get-ADSyncRuleAudit" parancsmag lekéri a nyomon követett módosításokat.
+ - Frissítette a Add-ADSyncADDSConnectorAccount parancsmagot a [ADSyncConfig PowerShell-modulban](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account#using-the-adsyncconfig-powershell-module) , hogy a ADSyncAdmin csoport felhasználója megváltoztassa az AD DS-összekötő fiókját. 
+
+### <a name="bug-fixes"></a>Hibajavítások
+ - Frissített letiltott előtér-szín, amely fehér háttérbeli fényerő-követelmények kielégítésére szolgál. További feltételek a navigációs fában az előtér szövegének fehérre állítása, ha egy letiltott lap van kiválasztva a fényességi követelmények kielégítéséhez.
+ - A Set-ADSyncPasswordHashSyncPermissions parancsmag részletességének növeléséhez – frissített PHS engedélyek parancsfájl (set-ADSyncPasswordHashSyncPermissions), amely tartalmazza a választható "ADobjectDN" paramétert. 
+ - Kisegítő megoldás hibajavítása. A képernyőolvasó mostantól leírja, hogy a "**Forest****List" (** erdő listázása) helyett az erdők listáját tartalmazó UX elem szerepel-e
+ - A Azure AD Connect varázsló egyes elemeihez tartozó képernyőolvasó-kimenet frissítve. A kontrasztra vonatkozó követelmények teljesítéséhez a frissített gomb hover színe. A kontrasztra vonatkozó követelmények kielégítéséhez frissült Synchronization Service Manager cím színe.
+ - Kijavítva egy probléma, amellyel a AADConnect az exportált konfigurációból egyéni bővítmény-attribútumokkal lett telepítve – hozzáadtak egy feltételt, amely kihagyja a bővítmény attribútumainak ellenőrzését a cél sémában a szinkronizálási szabály alkalmazása során.
+ - Ha a csoport visszaírási szolgáltatás engedélyezve van, a telepítéshez megfelelő engedélyek kerülnek hozzáadásra.
+ - Ismétlődő alapértelmezett szinkronizálási szabályok javítása az importáláskor
+ - Kijavított egy problémát, amely átmeneti hibát okozott a v2 API-különbözeti importálás során egy olyan ütköző objektum esetében, amely az állapotfigyelő portálon keresztül lett kijavíthatva.
+ - Kijavított egy problémát a Szinkronizáló motorban, amely a CS-objektumokat inkonzisztens kapcsolati állapotba állította
+ - Az importálási számlálók Get-ADSyncConnectorStatistics kimenetre lettek hozzáadva.
+ - A nem elérhető tartomány kiválasztása (korábban kiválasztva) a pass2 varázsló egyes sarki eseteiben nem érhető el.
+ - A módosított szabályzat importálása és exportálása sikertelen, ha az egyéni szabály ismétlődő prioritást tartalmaz 
+ - Kijavított egy hibát a tartomány kiválasztási logikájában.
+ - Kijavít egy problémát a build 1.5.18.0, ha mS-DS-ConsistencyGuid használ forrásként szolgáló horgonyként, és a klónozását az AD-Group JOIN szabályból.
+ - A friss AADConnect telepítése a felhőben tárolt törlési küszöbértéket fogja használni, ha van ilyen, és nincs más átadott.
+ - Kijavítottuk a problémát, ha a AADConnect nem olvassa be a hibrid csatlakozású eszközök AD displayName módosításait
 
 ## <a name="15450"></a>1.5.45.0
 

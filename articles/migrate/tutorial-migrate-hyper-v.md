@@ -5,16 +5,16 @@ author: bsiva
 ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 06/08/2020
+ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 9d0fa516fefefe4c3d8e67c3e6d592ec4274943c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 0072ce81fc619c39770eba52e24dc5a0c57280a6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878172"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604576"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -135,12 +135,7 @@ A felderítés befejeződése után megkezdheti a Hyper-V virtuális gépek repl
 ## <a name="provision-for-the-first-time"></a>Kiépítés első alkalommal
 
 Ha ez az első virtuális gép, amelyet a Azure Migrate projektben replikál, Azure Migrate: a kiszolgáló áttelepítése automatikusan kiosztja ezeket az erőforrásokat a projekttel azonos erőforráscsoporthoz.
-
-- **Service Bus**: Azure Migrate: a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikálási előkészítési üzeneteket a berendezésnek.
-- **Átjáró Storage-fiókja**: Azure Migrate: a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
-- **Log Storage-fiók**: a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
-- **Key Vault**: a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait. Be kell állítania azokat az engedélyeket, amelyeket a Key vaultnak el kell érnie a Storage-fiókhoz, amikor [előkészítette az Azure](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) -t a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez. 
-
+- **Cache Storage-fiók**: a Hyper-V-gazdagépekre telepített Azure site Recovery szolgáltatói szoftver feltölti a replikáláshoz konfigurált virtuális gépek replikációs adatait a Storage-fiókba (más néven a gyorsítótár-fiókba vagy a log Storage-fiókba) az előfizetésében. A Azure Migrate szolgáltatás ezután átmásolja a feltöltött replikációs adatait a Storage-fiókból a virtuális géphez tartozó replika által felügyelt lemezekre. A gyorsítótár Storage-fiókját meg kell adni a virtuális gép replikálásának konfigurálásakor, és a Azure Migrate-portál automatikusan létrehoz egyet a Azure Migrate projekthez, amikor a projekt első alkalommal konfigurálja a replikálást.
 
 ## <a name="track-and-monitor"></a>Nyomon követés és figyelés
 
@@ -227,6 +222,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 -  Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91843447"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
@@ -34,7 +34,7 @@ Ismernie kell a tárolók fogalmait, valamint a Batch-készlet és-feladatok lé
 
 - **Fiókok**: az Azure-előfizetésében létre kell hoznia egy batch-fiókot és opcionálisan egy Azure Storage-fiókot.
 
-- **Egy támogatott**virtuálisgép-rendszerkép: a tárolók csak a virtuálisgép-konfigurációval létrehozott készletek esetében támogatottak, a következő, "támogatott virtuális gépek lemezképei" című részben leírtak szerint. Ha egyéni lemezképet ad meg, tekintse meg a következő szakaszban található szempontokat, valamint a [felügyelt egyéni lemezkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör követelményeit.
+- **Egy támogatott** virtuálisgép-rendszerkép: a tárolók csak a virtuálisgép-konfigurációval létrehozott készletek esetében támogatottak, a következő, "támogatott virtuális gépek lemezképei" című részben leírtak szerint. Ha egyéni lemezképet ad meg, tekintse meg a következő szakaszban található szempontokat, valamint a [felügyelt egyéni lemezkép használata a virtuális gépek készletének létrehozásához](batch-custom-images.md)című témakör követelményeit.
 
 Tartsa szem előtt a következő korlátozásokat:
 

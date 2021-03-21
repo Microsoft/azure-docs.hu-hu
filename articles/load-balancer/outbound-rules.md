@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033153"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590211"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Kimenő szabályok Azure Load Balancer
 
@@ -36,11 +36,11 @@ A kimenő szabályok használatával explicit módon definiálhatja a kimenő **
 A kimenő szabályok segítségével a következőket vezérelheti:
 
 * **Mely virtuális gépek fordíthatók le a nyilvános IP-címekre.**
-     * Két szabály volt a háttér-készlet, amely az A és B IP-címet használja, a B háttér-készlet pedig a C és A D IP-címet használja.
+     * Két szabály volt a háttér-készlet 1. a kék IP-címet 1. és 2. a háttér-készlet 2 a sárga IP-előtagot használja.
 * **A kimenő SNAT portok kiosztása.**
-     * A "B" háttér-készlet az egyetlen olyan készlet, amely kimenő kapcsolatokat biztosít, és az összes SNAT-portot a "B" háttér-készletbe, a "A" háttérbeli
+     * Ha a 2. háttér-készlet az egyetlen, kimenő kapcsolatokat eredményező készlet, az összes SNAT-port a 2. háttér-készletbe, a háttér-készletbe pedig az 1.
 * **A kimenő fordítását biztosító protokollok.**
-     * A B háttér-készletnek a kimenő UDP-portokra van szüksége. A háttérbeli készlethez TCP szükséges. TCP-portokat adjon a és az UDP-portoknak a B értékre.
+     * Ha a 2. háttérrendszer-készletnek UDP-portokra van szüksége a kimenő és a háttér-készlet 1 számára, a TCP-portoknak 1 és UDP portoknak kell lenniük 2-ra.
 * **A kimenő kapcsolat üresjárati időkorlátja (4-120 perc) milyen időtartamra van használatban.**
      * Ha hosszú ideig futó kapcsolatok vannak a Keepalives-mel, a hosszú ideig futó kapcsolatok esetében foglaljon le üresjárati portokat akár 120 percre. Az elavult kapcsolatok elhagyása és a portok 4 percen belüli felszabadítása friss kapcsolatok esetén 
 * **Azt jelzi, hogy a TCP alaphelyzetbe állítása üresjárati időkorláton történjen.**

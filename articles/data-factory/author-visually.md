@@ -7,17 +7,17 @@ author: dcstwh
 ms.author: weetok
 ms.date: 09/08/2020
 ms.openlocfilehash: 704360ac37e016de9efe2248181f7db358f5a7cf
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100371481"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Azure Data Factory felhasználói felületi élmény (UX) segítségével vizuálisan hozhat létre és helyezhet üzembe erőforrásokat az adatai-előállító számára anélkül, hogy kódot kellene írnia. A tevékenységeket áthúzhatja egy csővezeték-vászonra, tesztelheti a iteratív, hibakeresést végezhet, valamint telepítheti és figyelheti a folyamat futtatását.
+A Azure Data Factory felhasználói felületi élmény (UX) segítségével vizuálisan hozhat létre és helyezhet üzembe erőforrásokat az adatai-előállító számára anélkül, hogy kódot kellene írnia. A tevékenységeket áthúzhatja egy folyamatvászonra, teszteket futtathat, iteratív hibakeresést végezhet, valamint telepítheti a folyamatokat és figyelheti a futásukat.
 
 Jelenleg a Azure Data Factory UX csak a Microsoft Edge és a Google Chrome esetében támogatott.
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: a02bd5519b776a063646c11be2a34366fe429f99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89392391"
 ---
-# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak reklámozása a P2S VPN-ügyfelek számára
+# <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Egyéni útvonalak hirdetése P2S VPN-ügyfelek számára
 
 Érdemes lehet egyéni útvonalakat reklámozni az összes pont – hely VPN-ügyfélre. Ha például engedélyezte a tárolási végpontokat a VNet, és azt szeretné, hogy a távoli felhasználók hozzáférhessenek ezekhez a Storage-fiókokhoz a VPN-kapcsolaton keresztül. Meghirdetheti a tároló végpontjának IP-címét az összes távoli felhasználó számára, hogy a Storage-fiók felé irányuló forgalom a VPN-alagúton, ne pedig a nyilvános interneten legyen.
 
@@ -24,7 +24,7 @@ ms.locfileid: "89392391"
 
 Egyéni útvonalak meghirdetéséhez használja a következőt: `Set-AzVirtualNetworkGateway cmdlet` . Az alábbi példa bemutatja, hogyan hirdetheti meg az IP-címet a [contoso Storage-fiókok tábláiban](https://contoso.table.core.windows.net).
 
-1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Példa:
+1. Pingelje a *contoso.table.Core.Windows.net* , és jegyezze fel az IP-címet. Például:
 
     ```cmd
     C:\>ping contoso.table.core.windows.net
@@ -38,7 +38,7 @@ Egyéni útvonalak meghirdetéséhez használja a következőt: `Set-AzVirtualNe
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute 13.88.144.250/32
     ```
 
-3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elválasztásához. Példa:
+3. Több egyéni útvonal hozzáadásához használjon vesszőt és szóközöket a címek elválasztásához. Például:
 
     ```azurepowershell-interactive
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute x.x.x.x/xx , y.y.y.y/yy

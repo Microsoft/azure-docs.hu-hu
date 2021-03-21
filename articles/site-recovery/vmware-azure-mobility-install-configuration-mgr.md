@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: 2159ab8c2639f0f87fd53e8559dad518a3daa663
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92544817"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
@@ -18,9 +18,9 @@ Ez a cikk azt ismerteti, hogyan lehet automatizálni a mobilitási szolgáltatá
 
 Ha a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő helyreállításához Site Recovery helyez üzembe, a mobilitási szolgáltatás ügynökét minden replikálni kívánt gépre telepítenie kell. A mobilitási szolgáltatás rögzíti az adatírásokat a gépen, és továbbítja azokat a Site Recovery folyamat-kiszolgálónak a replikáláshoz. A mobilitási szolgáltatást többféleképpen is üzembe helyezheti:
 
-- **Leküldéses telepítés** : site Recovery telepítse a mobilitási szolgáltatás ügynököt, amikor engedélyezi a replikációt a Azure Portal lévő gépeken.
-- **Manuális telepítés** : telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
-- **Automatikus telepítés** : a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager vagy más eszközök, például a JetPatch.
+- **Leküldéses telepítés**: site Recovery telepítse a mobilitási szolgáltatás ügynököt, amikor engedélyezi a replikációt a Azure Portal lévő gépeken.
+- **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
+- **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager vagy más eszközök, például a JetPatch.
 
 Az automatikus telepítés és a frissítés megoldást nyújt, ha:
 
@@ -77,8 +77,8 @@ A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe hel
 
 1. Másolja a telepítési fájlokat a hálózati megosztásba:
 
-   - Windows esetén másolja _Microsoft-ASR_UA_version_Windows_GA_date_Release.exet_ a _MobSvcWindows_ .
-   - Linux esetén másolja a következő fájlokat a _MobSvcLinux_ :
+   - Windows esetén másolja _Microsoft-ASR_UA_version_Windows_GA_date_Release.exet_ a _MobSvcWindows_.
+   - Linux esetén másolja a következő fájlokat a _MobSvcLinux_:
      - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
      - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
      - _Microsoft-ASR_UASLES11-SP3-64release. tar. gz_
@@ -95,7 +95,7 @@ A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe hel
 
 Másolja a következő kódot:
 
-- Mentse a kódot a _MobSvcWindows_ mappába _install.batként_ .
+- Mentse a kódot a _MobSvcWindows_ mappába _install.batként_.
 - Cserélje le a `[CSIP]` parancsfájlban található helyőrzőket a konfigurációs kiszolgáló IP-címének tényleges értékeire.
 - A parancsfájl támogatja a mobilitási szolgáltatás ügynökének új telepítéseit, valamint a már telepített ügynökök frissítéseit.
 
@@ -338,11 +338,11 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Csomag létrehozása
 
-1. Jelentkezzen be a Configuration Manager-konzolra, és nyissa meg a **szoftverfrissítési**  >  **alkalmazások felügyeleti**  >  **csomagjait** .
+1. Jelentkezzen be a Configuration Manager-konzolra, és nyissa meg a **szoftverfrissítési**  >  **alkalmazások felügyeleti**  >  **csomagjait**.
 1. Kattintson a jobb gombbal a **csomagok**  >  **Létrehozás csomag** elemre.
 1. Adja meg a csomag részleteit, beleértve a nevet, a leírást, a gyártót, a nyelvet és a verziót.
-1. Válassza ki **ezt a csomagot tartalmazó forrásfájlokat** .
-1. Kattintson a **Tallózás** gombra, és válassza ki a hálózati megosztást és mappát, amely tartalmazza a megfelelő telepítőt ( _MobSvcWindows_ vagy _MobSvcLinux_ ). Ezután válassza a **tovább** lehetőséget.
+1. Válassza ki **ezt a csomagot tartalmazó forrásfájlokat**.
+1. Kattintson a **Tallózás** gombra, és válassza ki a hálózati megosztást és mappát, amely tartalmazza a megfelelő telepítőt (_MobSvcWindows_ vagy _MobSvcLinux_). Ezután válassza a **tovább** lehetőséget.
 
    ![A csomag és program létrehozása varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
@@ -363,7 +363,7 @@ cd /tmp
 
 1. A **standard program követelményeinek megadása** területen hajtsa végre a következő feladatokat:
 
-   - Windows rendszerű gépek esetén válassza **ezt a programot csak a megadott platformokon lehet futtatni** . Ezután válassza ki a [támogatott Windows operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines) , és kattintson a **Tovább gombra** .
+   - Windows rendszerű gépek esetén válassza **ezt a programot csak a megadott platformokon lehet futtatni**. Ezután válassza ki a [támogatott Windows operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines) , és kattintson a **Tovább gombra**.
    - Linux rendszerű gépek esetén válassza **a program bármely platformon futtatható** lehetőséget. Ezután kattintson a **Tovább** gombra.
 
 1. Fejezze be a varázsló futtatását.

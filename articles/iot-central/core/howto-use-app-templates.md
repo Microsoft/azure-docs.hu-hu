@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91651836"
 ---
 # <a name="export-your-application"></a>Az alkalmazás exportálása
@@ -66,7 +66,7 @@ Ezeket az elemeket manuálisan adja hozzá az alkalmazás sablonból létrehozot
 Alkalmazás sablonjának létrehozása meglévő IoT Central alkalmazásból:
 
 1. Nyissa meg az alkalmazás **Adminisztráció** szakaszát.
-1. Válassza az **alkalmazás sablon exportálás**lehetőséget.
+1. Válassza az **alkalmazás sablon exportálás** lehetőséget.
 1. Az **alkalmazás sablonjának exportálása** lapon adja meg a sablon nevét és leírását.
 1. Válassza az **Exportálás** gombot az alkalmazás sablonjának létrehozásához. Most már másolhatja a **megosztható hivatkozást** , amely lehetővé teszi, hogy valaki új alkalmazást hozzon létre a sablonból:
 
@@ -74,7 +74,7 @@ Alkalmazás sablonjának létrehozása meglévő IoT Central alkalmazásból:
 
 ### <a name="use-an-application-template"></a>Alkalmazás sablonjának használata
 
-Ha új IoT Central alkalmazást szeretne létrehozni egy alkalmazás-sablonnal, egy korábban létrehozott **megosztható hivatkozásra**van szüksége. Illessze be a **megosztható hivatkozást** a böngésző címsorába. Megjelenik az **alkalmazás létrehozása** lap a kiválasztott egyéni alkalmazás sablonnal:
+Ha új IoT Central alkalmazást szeretne létrehozni egy alkalmazás-sablonnal, egy korábban létrehozott **megosztható hivatkozásra** van szüksége. Illessze be a **megosztható hivatkozást** a böngésző címsorába. Megjelenik az **alkalmazás létrehozása** lap a kiválasztott egyéni alkalmazás sablonnal:
 
 ![Alkalmazás létrehozása sablonból](media/howto-use-app-templates/create-app.png)
 

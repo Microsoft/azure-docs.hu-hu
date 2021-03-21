@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 443d6349aab68fd05edfe4c4007fd043c932f4f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604270"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720491"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
@@ -50,7 +50,9 @@ A szemantikai keresés összetevői mindkét irányban kiterjesztik a meglévő 
 
 A lekérdezés végrehajtása a szokásos módon történik, és a kifejezés elemzése, elemzése és vizsgálata a fordított indexeken keresztül történik. A motor a token egyeztetésével kérdezi le a dokumentumokat, és az eredményeket az [alapértelmezett hasonlósági pontozási algoritmus](index-similarity-and-scoring.md#similarity-ranking-algorithms)használatával szerzi be. A pontszámok kiszámítása a lekérdezési kifejezések és az indexhez tartozó feltételek nyelvi hasonlóságának mértéke alapján történik. Ha meghatározta őket, a pontozási profilok is ebben a fázisban lesznek alkalmazva. Ezután a rendszer átadja az eredményeket a szemantikai keresési alrendszernek.
 
-Az előkészítési lépésben a kezdeti eredményhalmaz által visszaadott dokumentumot a rendszer a mondat és a bekezdés szintjén elemzi, hogy megkeresse az egyes dokumentumokat összefoglaló szakaszokat. A kulcsszavas kereséssel ellentétben ez a lépés a gép olvasását és megértését használja a tartalom kiértékeléséhez. Az eredmény-összeállítás részeként a szemantikai lekérdezés feliratokat és válaszokat ad vissza. A szemantikai keresés a nyelvi ábrázolás használatával kinyeri és kiemeli azokat a kulcsfontosságú részeket, amelyek a legjobban összefoglalják az eredményeket. Ha a keresési lekérdezés egy kérdés-és választ kér – a válasz egy olyan szöveges szövegrészt is tartalmaz, amely a legjobb választ a kérdésre, ahogyan azt a keresési lekérdezés is megadja. Mindkét felirat és válasz esetében a rendszer a meglévő szöveget használja az összeállításban. A szemantikai modellek nem állítanak össze új mondatokat vagy kifejezéseket a rendelkezésre álló tartalomból, és nem alkalmaznak logikát új következtetések megérkezésére. Röviden, a rendszer soha nem ad vissza tartalmat, amely még nem létezik.
+Az előkészítési lépésben a kezdeti eredményhalmaz által visszaadott dokumentumot a rendszer a mondat és a bekezdés szintjén elemzi, hogy megkeresse az egyes dokumentumokat összefoglaló szakaszokat. A kulcsszavas kereséssel ellentétben ez a lépés a gép olvasását és megértését használja a tartalom kiértékeléséhez. A Content Processing ezen szakaszában a szemantikai lekérdezés a [feliratokat](semantic-how-to-query-request.md) és a [válaszokat](semantic-answers.md)adja vissza. A szemantikai keresés a nyelvi ábrázolás használatával kinyeri és kiemeli azokat a kulcsfontosságú részeket, amelyek a legjobban összefoglalják az eredményeket. Ha a keresési lekérdezés egy kérdés-és választ kér – a válasz egy olyan szöveges szövegrészt is tartalmaz, amely a legjobb választ a kérdésre, ahogyan azt a keresési lekérdezés is megadja. 
+
+Mindkét felirat és válasz esetében a rendszer a meglévő szöveget használja az összeállításban. A szemantikai modellek nem állítanak össze új mondatokat vagy kifejezéseket a rendelkezésre álló tartalomból, és nem alkalmaznak logikát új következtetések megérkezésére. Röviden, a rendszer soha nem ad vissza tartalmat, amely még nem létezik.
 
 Az eredményeket a rendszer a lekérdezési feltételek [fogalmi hasonlósága](semantic-ranking.md) alapján újra kiértékeli.
 

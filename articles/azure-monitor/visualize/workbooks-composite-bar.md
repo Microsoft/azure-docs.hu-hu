@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
 ms.openlocfilehash: 9a02299853174192c6963cbb382ceb1aa06ac088
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101728603"
 ---
 # <a name="composite-bar-renderer"></a>Összetett sáv megjelenítő
@@ -91,7 +91,7 @@ Csoportosítási beállítások hozzáadása:
 
 ![Képernyőfelvétel a csoportosítási beállításokról.](./media/workbooks-composite-bar/group-by-settings.png)
 
-#### <a name="none"></a>Nincs
+#### <a name="none"></a>Nincsenek
 
 A none összesítés azt jelenti, hogy a csoportosítási sorok nem jelenítik meg az adott oszlopra vonatkozó eredményeket.
 

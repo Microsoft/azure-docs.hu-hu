@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 64f05e18ff757d9f086cf06d74109bf64e32a05c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795693"
 ---
-# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>A vadászati és a livestream-lekérdezések kezelése az Azure Sentinelben REST API használatával
+# <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>A veszélyforrás-keresés és az élő stream lekérdezéseinek kezelése az Azure Sentinelben a REST API használatával
 
 Az Azure Sentinel a Azure Monitor Log Analytics részeként készült, lehetővé teszi Log Analytics "REST API használatát a vadászati és a livestream-lekérdezések kezeléséhez. Ebből a dokumentumból megtudhatja, hogyan hozhat létre és kezelhet vadászati lekérdezéseket a REST API használatával.  Az ily módon létrehozott lekérdezések az Azure Sentinel felhasználói felületén fognak megjelenni.
 
@@ -101,7 +101,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId} _
     /savedSearches/{savedSearchId}?api-version=2020-03-01-preview
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan kezelheti a vadászati és a livestream-lekérdezéseket az Azure Sentinelben a Log Analytics API használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 

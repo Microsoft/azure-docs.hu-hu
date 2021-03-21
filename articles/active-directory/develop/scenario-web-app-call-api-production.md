@@ -12,20 +12,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6252e33631fb07a61ed3c1ac2be65762b290600b
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: cf32274a49cb1b790e9d872efe36f2e1cb188d1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675940"
 ---
 # <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó webalkalmazás: áthelyezés éles környezetbe
 
-Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k hívásához, Ismerje meg, hogyan helyezheti át az éles környezetbe.
+Most, hogy már tudja, hogyan szerezzen be tokent a webes API-k meghívásához, itt néhány megfontolandó szempontot figyelembe kell venni, amikor az alkalmazást éles környezetbe helyezi.
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt a ASP.NET Core Web Apps teljes körű, progresszív oktatóanyagának kipróbálásával foglalkozó témakörben talál. Az oktatóanyag:
 

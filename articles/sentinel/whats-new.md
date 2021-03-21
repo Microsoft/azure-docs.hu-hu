@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 88ac8bb1bc804604b96d5c90025b8325a6ce4962
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.date: 03/11/2021
+ms.openlocfilehash: 31ba96e0f8772877d7b4881c6bab0561cbe7956e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503120"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604253"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Az Azure Sentinel újdonságai
 
@@ -32,10 +32,54 @@ A feljegyzett funkciók jelenleg előzetes verzióban érhetők el. Az [Azure el
 
 ## <a name="march-2021"></a>Március 2021
 
-- [Microsoft 365 Defender-incidensek integrációja](#microsoft-365-defender-incident-integration) (nyilvános előzetes verzió)
+- [Automatizálási szabályok és incidensek által aktivált](#automation-rules-and-incident-triggered-playbooks) forgatókönyvek (beleértve az összes új forgatókönyv-dokumentációt)
+- [Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek](#new-alert-enrichments-enhanced-entity-mapping-and-custom-details)
+- [Azure Sentinel-munkafüzetek nyomtatása vagy Mentés PDF formátumban](#print-your-azure-sentinel-workbooks-or-save-as-pdf)
+- [Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)](#incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview)
+- [Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)](#microsoft-365-defender-incident-integration-public-preview)
 - [Új Microsoft szolgáltatás-összekötők a Azure Policy használatával](#new-microsoft-service-connectors-using-azure-policy)
+ 
+### <a name="automation-rules-and-incident-triggered-playbooks"></a>Automatizálási szabályok és incidensek által aktivált forgatókönyvek
 
-### <a name="microsoft-365-defender-incident-integration"></a>Microsoft 365 Defender-incidensek integrációja
+Az Automation-szabályok az Azure Sentinel új koncepciója, amellyel központilag kezelhető az incidensek kezelésének automatizálása. Amellett, hogy az incidensekhez (nem csak az előtte lévő riasztásokhoz) rendel hozzá forgatókönyveket, az Automation-szabályok lehetővé teszik a több elemzési szabályra adott válaszok automatizálását, automatikus címkézését, hozzárendelését vagy bezárását, és a végrehajtott műveletek sorrendjét. Az automatizálási szabályok egyszerűsítik az automatizálási használatot az Azure Sentinelben, és lehetővé teszik az incidensek összehangolása folyamataihoz tartozó összetett munkafolyamatok egyszerűsítését.
+
+További információ az [automatizálási szabályok részletes ismertetéséről](automate-incident-handling-with-automation-rules.md).
+
+A fentiekben leírtak szerint az forgatókönyvek mostantól a riasztási trigger mellett is aktiválhatók az incidens-triggerrel. Az incidensek triggere nagyobb mennyiségű bemenetet biztosít a használathoz (mivel az incidens magában foglalja az összes riasztást és az entitás adatait is), így még nagyobb teljesítményt és rugalmasságot biztosít a válasz munkafolyamataiban. Az incidensek által aktivált forgatókönyvek aktiválása az Automation-szabályoknak való meghívásával történik.
+
+További információ a forgatókönyvek [bővített képességeihez](automate-responses-with-playbooks.md), valamint az automatizálási szabályokkal és az Automation-szabályokkal együtt a [válaszadási munkafolyamat](tutorial-respond-threats-playbook.md) kiépítéséről.
+
+### <a name="new-alert-enrichments-enhanced-entity-mapping-and-custom-details"></a>Új riasztások gazdagítása: bővített entitások leképezése és egyéni részletek
+
+A riasztásokat két új módon gazdagíthatja, így könnyebben használhatóvá teheti őket.
+
+Kezdje azzal, hogy az entitást a következő szintre rendeli. Mostantól csaknem 20 típusú entitást, felhasználókat, gazdagépeket és IP-címeket, fájlokat és folyamatokat, postaládákat, Azure-erőforrásokat és IoT-eszközöket is leképezheti. Az egyes entitásokhoz több azonosító is használható az egyedi azonosítás megerősítése érdekében. Ez sokkal gazdagabb adathalmazt biztosít az incidensekben, így szélesebb körű korrelációt és nagyobb teljesítményű vizsgálatot biztosít. [Ismerje meg, hogyan képezhetők le az entitások](map-data-fields-to-entities.md) a riasztásokban.
+
+[További információ az entitásokról](entities-in-azure-sentinel.md) , valamint az [elérhető entitások és azonosítóik teljes listájának](entities-reference.md)megtekintése.
+
+A kivizsgálható és a reagálási képességek még nagyobb lendületet adhatnak a riasztások a nyers eseményekből való testreszabásával. Az események tartalmának láthatósága az incidensekben, így egyre nagyobb hatékonyságot és rugalmasságot biztosít a biztonsági fenyegetések megválaszolásában és kivizsgálásában. [Ismerje meg, hogyan kezelheti az egyéni adatokat](surface-custom-details-in-alerts.md) a riasztásokban.
+
+
+
+### <a name="print-your-azure-sentinel-workbooks-or-save-as-pdf"></a>Azure Sentinel-munkafüzetek nyomtatása vagy Mentés PDF formátumban
+
+Most már nyomtathat Azure Sentinel-munkafüzeteket, amelyek lehetővé teszik a PDF-fájlok exportálását és helyi vagy megosztási mentését is.
+
+A munkafüzetben válassza a Beállítások menüt, > a :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Tartalom nyomtatása** lehetőséget. Ezután válassza ki a nyomtatót, vagy válassza a **Mentés PDF** -ként igény szerint lehetőséget.
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Nyomtassa ki a munkafüzetet, vagy mentse PDF-ként.":::
+
+További információ: [oktatóanyag: adatok megjelenítése és figyelése](tutorial-monitor-your-data.md).
+
+### <a name="incident-filters-and-sort-preferences-now-saved-in-your-session-public-preview"></a>Az incidens-szűrők és a rendezési beállítások mostantól a munkamenetben mentve (nyilvános előzetes verzió)
+
+Az incidensek szűrése és rendezése mostantól az Azure Sentinel-munkamenetben történik, még a termék más területein való navigálás során is.
+Ha továbbra is ugyanabban a munkamenetben van, az Azure Sentinel [incidensek](tutorial-investigate-cases.md) területén a szűrők és a rendezés ugyanúgy jelenik meg, ahogy elhagyta.
+
+> [!NOTE]
+> Az incidensek szűrését és rendezését az Azure Sentinel vagy a böngésző frissítése után nem menti a rendszer.
+
+### <a name="microsoft-365-defender-incident-integration-public-preview"></a>Microsoft 365 Defender-incidensek integrációja (nyilvános előzetes verzió)
 
 Az Azure Sentinel [Microsoft 365 Defender-(M365D-)](/microsoft-365/security/mtp/microsoft-threat-protection) incidens-integrációja lehetővé teszi, hogy az összes M365D-incidenst az Azure sentinelbe továbbítsa, és mindkét portál között szinkronizálja őket. A M365D-ből (korábbi nevén Microsoft Threat Protection vagy MTP) származó incidensek tartalmazzák az összes kapcsolódó riasztást, entitást és releváns információt, így elegendő kontextust biztosítanak az osztályozás és az előzetes vizsgálat végrehajtásához az Azure Sentinelben. A Sentinelben az incidensek kétirányúan szinkronizálva maradnak a M365D, így kihasználhatja az incidensek vizsgálatának mindkét portáljának előnyeit.
 
@@ -60,8 +104,8 @@ Az ügyfelek továbbra is képesek lesznek manuálisan elküldeni a naplókat bi
 
 - [Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet](#cybersecurity-maturity-model-certification-cmmc-workbook)
 - [Harmadik féltől származó adatösszekötők](#third-party-data-connectors)
-- [UEBA az entitások oldalán](#ueba-insights-in-the-entity-page)
-- [Javított incidensek keresése](#improved-incident-search)
+- [UEBA az entitások oldalán (nyilvános előzetes verzió)](#ueba-insights-in-the-entity-page-public-preview)
+- [Továbbfejlesztett incidensek keresése (nyilvános előzetes verzió)](#improved-incident-search-public-preview)
 
 ### <a name="cybersecurity-maturity-model-certification-cmmc-workbook"></a>Kiberbiztonsági érettségi modell minősítési (CMMC) munkafüzet
 
@@ -117,13 +161,13 @@ A harmadik féltől származó integrációs gyűjtemények folyamatosan növeke
 - [Trend Micro XDR](connect-data-sources.md)
 - [VMware ESXi](connect-vmware-esxi.md)
 
-### <a name="ueba-insights-in-the-entity-page"></a>UEBA az entitások oldalán
+### <a name="ueba-insights-in-the-entity-page-public-preview"></a>UEBA az entitások oldalán (nyilvános előzetes verzió)
 
 Az Azure Sentinel-entitások részletes oldalain [betekintési panel](identify-threats-with-entity-behavior-analytics.md#entity-insights)jelenik meg, amely az entitás viselkedési információit jeleníti meg, és segít a rendellenességek és a biztonsági fenyegetések gyors azonosításában.
 
 Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos időkeretet választott ki, akkor ez a betekintő ablaktábla a következő új szakaszt is tartalmazza a UEBA-eredményekhez:
 
-|Section  |Leírás  |
+|Section  |Description  |
 |---------|---------|
 |**UEBA-ismeretek**     | A rendellenes felhasználói tevékenységek összegzése: <br>-Földrajzi helyeken, eszközökön és környezeteken keresztül<br>– A felhasználók saját előzményeihez képest időbeli és gyakorisági horizonton keresztül <br>– A társak viselkedéséhez képest <br>-A szervezet viselkedéséhez képest     |
 |**Felhasználói partnerek biztonsági csoporttagság alapján**     |   Felsorolja az Azure AD biztonsági csoportok tagságán alapuló felhasználói partnereket, így biztosítva a biztonsági műveleti csapatok számára a hasonló engedélyekkel rendelkező más felhasználók listáját.  |
@@ -131,7 +175,7 @@ Ha engedélyezve van a [UEBA](ueba-enrichments.md), és legalább négy napos id
 |**A felhasználóval kapcsolatos veszélyforrás-mutatók**     |  A felhasználó tevékenységeiben szereplő IP-címekkel kapcsolatos ismert fenyegetések gyűjteményét listázza. A fenyegetéseket a fenyegetés típusa és családja sorolja fel, és a Microsoft fenyegetési intelligencia szolgáltatása gazdagítja őket.       |
 |     |         |
 
-### <a name="improved-incident-search"></a>Javított incidensek keresése
+### <a name="improved-incident-search-public-preview"></a>Továbbfejlesztett incidensek keresése (nyilvános előzetes verzió)
 
 Javítottuk az Azure Sentinel incidensek keresésének élményét, ami lehetővé teszi, hogy gyorsabban navigáljon az incidenseken keresztül, amikor egy adott fenyegetést vizsgál meg.
 
@@ -148,7 +192,7 @@ Ha az Azure Sentinelben incidenseket keres, mostantól a következő incidensek 
 - [Elemzési szabály varázsló: továbbfejlesztett lekérdezés-szerkesztési élmény (nyilvános előzetes verzió)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [Az az. SecurityInsights PowerShell-modul (nyilvános előzetes verzió)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL Database-összekötő](#sql-database-connector)
-- [Dynamics 365-összekötő](#dynamics-365-connector)
+- [Dynamics 365-összekötő (nyilvános előzetes verzió)](#dynamics-365-connector-public-preview)
 - [Javított incidensek megjegyzései](#improved-incident-comments)
 - [Dedikált Log Analytics-fürtök](#dedicated-log-analytics-clusters)
 - [Logic apps – felügyelt identitások](#logic-apps-managed-identities)
@@ -183,7 +227,7 @@ Az Azure SQL egy teljes körűen felügyelt, szolgáltatásként szolgáló plat
 
 További információkért lásd: az [Azure SQL Database diagnosztika és a naplózási naplók összekötése](connect-azure-sql-logs.md).
 
-### <a name="dynamics-365-connector"></a>Dynamics 365-összekötő
+### <a name="dynamics-365-connector-public-preview"></a>Dynamics 365-összekötő (nyilvános előzetes verzió)
 
 Az Azure Sentinel mostantól egy összekötőt biztosít a Microsoft Dynamics 365-hez, amely lehetővé teszi a Dynamics 365-alkalmazások felhasználói, felügyeleti és támogatási tevékenységének naplóinak begyűjtését az Azure Sentinelbe. Ezekkel az értékekkel a lehetséges biztonsági rések teljes adatfeldolgozási műveleteinek naplózását és elemzését végezheti el.
 

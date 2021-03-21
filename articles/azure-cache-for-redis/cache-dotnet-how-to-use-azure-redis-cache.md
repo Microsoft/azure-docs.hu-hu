@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: ffc5c8ea647d4cadd2d151eb880c794ac5f4ebd4
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 1834f21a3e25308f6be86eba2961cc983b14a5db
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121439"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721545"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Gyors útmutató: az Azure cache használata a Redis a .NET-keretrendszerben
 
@@ -53,7 +53,7 @@ Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulc
 
 A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt** elemre.
 
-Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét** , majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
+Válassza a **konzolos alkalmazás (.NET-keretrendszer)** lehetőséget, és az alkalmazás konfigurálásához kattintson a **következő** elemre. Adja meg a **projekt nevét**, ellenőrizze, hogy a **.NET-keretrendszer 4.6.1** -es vagy újabb verziója van-e kiválasztva, majd kattintson a **Létrehozás** gombra egy új konzol alkalmazás létrehozásához.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -78,7 +78,7 @@ Nyissa meg az *App.config* fájlt a Visual Studióban, és frissítse azt az `ap
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
     <startup> 
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
     </startup>
 
     <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>
@@ -101,11 +101,7 @@ Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hog
 A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `Program` osztályához:
 
 ```csharp
-private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-{
-    string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
-    return ConnectionMultiplexer.Connect(cacheConnection);
-});
+private static Lazy<ConnectionMultiplexer> lazyConnection = CreateConnection();
 
 public static ConnectionMultiplexer Connection
 {
@@ -114,12 +110,172 @@ public static ConnectionMultiplexer Connection
         return lazyConnection.Value;
     }
 }
+
+private static Lazy<ConnectionMultiplexer> CreateConnection()
+{
+    return new Lazy<ConnectionMultiplexer>(() =>
+    {
+        string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+        return ConnectionMultiplexer.Connect(cacheConnection);
+    });
+}
 ```
 
 
 A `ConnectionMultiplexer` példány alkalmazásban való megosztásának ez a módszere egy statikus tulajdonságot használ, amely egy csatlakoztatott példányt ad vissza. A kód egy szálbiztos módszert biztosít egyetlen csatlakoztatott `ConnectionMultiplexer`-példány inicializálásához. `abortConnect` hamis értékre van állítva, ami azt jelenti, hogy a hívás akkor is sikeres, ha nem jön létre a Redis-hez készült Azure cache-hez való kapcsolódás. A `ConnectionMultiplexer` egyik fontos szolgáltatása, hogy automatikusan visszaállítja a kapcsolatot a gyorsítótárral, amint a hálózati problémák vagy egyéb hibák elhárulnak.
 
 A rendszer a *CacheConnection* alkalmazásbeállítás értékét használja ahhoz, hogy jelszóparaméterként hivatkozzon a gyorsítótár Azure Portalon található kapcsolati sztringjére.
+
+## <a name="handle-redisconnectionexception-and-socketexception-by-reconnecting"></a>RedisConnectionException és SocketException kezelése újrakapcsolattal
+
+Ajánlott eljárás a metódusok meghívásakor, `ConnectionMultiplexer` hogy a rendszer a `RedisConnectionException` `SocketException` kapcsolat bezárásával és visszaállításával automatikusan megpróbálja feloldani a kivételeket és a kivételeket.
+
+Adja hozzá a következő `using` utasításokat a *Program.cs* fájlhoz:
+
+```csharp
+using System.Net.Sockets;
+using System.Threading;
+```
+
+A *program. cs programban* adja hozzá a következő tagokat a `Program` osztályhoz:
+
+```csharp
+private static long lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
+private static DateTimeOffset firstErrorTime = DateTimeOffset.MinValue;
+private static DateTimeOffset previousErrorTime = DateTimeOffset.MinValue;
+
+private static readonly object reconnectLock = new object();
+
+// In general, let StackExchange.Redis handle most reconnects,
+// so limit the frequency of how often ForceReconnect() will
+// actually reconnect.
+public static TimeSpan ReconnectMinFrequency => TimeSpan.FromSeconds(60);
+
+// If errors continue for longer than the below threshold, then the
+// multiplexer seems to not be reconnecting, so ForceReconnect() will
+// re-create the multiplexer.
+public static TimeSpan ReconnectErrorThreshold => TimeSpan.FromSeconds(30);
+
+public static int RetryMaxAttempts => 5;
+
+private static void CloseConnection(Lazy<ConnectionMultiplexer> oldConnection)
+{
+    if (oldConnection == null)
+        return;
+
+    try
+    {
+        oldConnection.Value.Close();
+    }
+    catch (Exception)
+    {
+        // Example error condition: if accessing oldConnection.Value causes a connection attempt and that fails.
+    }
+}
+
+/// <summary>
+/// Force a new ConnectionMultiplexer to be created.
+/// NOTES:
+///     1. Users of the ConnectionMultiplexer MUST handle ObjectDisposedExceptions, which can now happen as a result of calling ForceReconnect().
+///     2. Don't call ForceReconnect for Timeouts, just for RedisConnectionExceptions or SocketExceptions.
+///     3. Call this method every time you see a connection exception. The code will:
+///         a. wait to reconnect for at least the "ReconnectErrorThreshold" time of repeated errors before actually reconnecting
+///         b. not reconnect more frequently than configured in "ReconnectMinFrequency"
+/// </summary>
+public static void ForceReconnect()
+{
+    var utcNow = DateTimeOffset.UtcNow;
+    long previousTicks = Interlocked.Read(ref lastReconnectTicks);
+    var previousReconnectTime = new DateTimeOffset(previousTicks, TimeSpan.Zero);
+    TimeSpan elapsedSinceLastReconnect = utcNow - previousReconnectTime;
+
+    // If multiple threads call ForceReconnect at the same time, we only want to honor one of them.
+    if (elapsedSinceLastReconnect < ReconnectMinFrequency)
+        return;
+
+    lock (reconnectLock)
+    {
+        utcNow = DateTimeOffset.UtcNow;
+        elapsedSinceLastReconnect = utcNow - previousReconnectTime;
+
+        if (firstErrorTime == DateTimeOffset.MinValue)
+        {
+            // We haven't seen an error since last reconnect, so set initial values.
+            firstErrorTime = utcNow;
+            previousErrorTime = utcNow;
+            return;
+        }
+
+        if (elapsedSinceLastReconnect < ReconnectMinFrequency)
+            return; // Some other thread made it through the check and the lock, so nothing to do.
+
+        TimeSpan elapsedSinceFirstError = utcNow - firstErrorTime;
+        TimeSpan elapsedSinceMostRecentError = utcNow - previousErrorTime;
+
+        bool shouldReconnect =
+            elapsedSinceFirstError >= ReconnectErrorThreshold // Make sure we gave the multiplexer enough time to reconnect on its own if it could.
+            && elapsedSinceMostRecentError <= ReconnectErrorThreshold; // Make sure we aren't working on stale data (e.g. if there was a gap in errors, don't reconnect yet).
+
+        // Update the previousErrorTime timestamp to be now (e.g. this reconnect request).
+        previousErrorTime = utcNow;
+
+        if (!shouldReconnect)
+            return;
+
+        firstErrorTime = DateTimeOffset.MinValue;
+        previousErrorTime = DateTimeOffset.MinValue;
+
+        Lazy<ConnectionMultiplexer> oldConnection = lazyConnection;
+        CloseConnection(oldConnection);
+        lazyConnection = CreateConnection();
+        Interlocked.Exchange(ref lastReconnectTicks, utcNow.UtcTicks);
+    }
+}
+
+// In real applications, consider using a framework such as
+// Polly to make it easier to customize the retry approach.
+private static T BasicRetry<T>(Func<T> func)
+{
+    int reconnectRetry = 0;
+    int disposedRetry = 0;
+
+    while (true)
+    {
+        try
+        {
+            return func();
+        }
+        catch (Exception ex) when (ex is RedisConnectionException || ex is SocketException)
+        {
+            reconnectRetry++;
+            if (reconnectRetry > RetryMaxAttempts)
+                throw;
+            ForceReconnect();
+        }
+        catch (ObjectDisposedException)
+        {
+            disposedRetry++;
+            if (disposedRetry > RetryMaxAttempts)
+                throw;
+        }
+    }
+}
+
+public static IDatabase GetDatabase()
+{
+    return BasicRetry(() => Connection.GetDatabase());
+}
+
+public static System.Net.EndPoint[] GetEndPoints()
+{
+    return BasicRetry(() => Connection.GetEndPoints());
+}
+
+public static IServer GetServer(string host, int port)
+{
+    return BasicRetry(() => Connection.GetServer(host, port));
+}
+```
 
 ## <a name="executing-cache-commands"></a>Gyorsítótárparancsok végrehajtása
 
@@ -128,9 +284,7 @@ Adja hozzá a következő kódot a konzolalkalmazás `Program` osztályának `Ma
 ```csharp
 static void Main(string[] args)
 {
-    // Connection refers to a property that returns a ConnectionMultiplexer
-    // as shown in the previous example.
-    IDatabase cache = Connection.GetDatabase();
+    IDatabase cache = GetDatabase();
 
     // Perform cache operations using the cache object...
 
@@ -154,20 +308,20 @@ static void Main(string[] args)
     Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
     // Get the client list, useful to see if connection list is growing...
-    // Note that this requires the allowAdmin=true
+    // Note that this requires allowAdmin=true in the connection string
     cacheCommand = "CLIENT LIST";
     Console.WriteLine("\nCache command  : " + cacheCommand);
-    var endpoint = (System.Net.DnsEndPoint) Connection.GetEndPoints()[0];
-    var server = Connection.GetServer(endpoint.Host, endpoint.Port);
+    var endpoint = (System.Net.DnsEndPoint)GetEndPoints()[0];
+    IServer server = GetServer(endpoint.Host, endpoint.Port);
+    ClientInfo[] clients = server.ClientList();
 
-    var clients = server.ClientList(); 
     Console.WriteLine("Cache response :");
-    foreach (var client in clients)
+    foreach (ClientInfo client in clients)
     {
         Console.WriteLine(client.Raw);
     }
 
-    lazyConnection.Value.Dispose();
+    CloseConnection(lazyConnection);
 }
 ```
 
@@ -211,16 +365,16 @@ class Employee
     public string Name { get; set; }
     public int Age { get; set; }
 
-    public Employee(string EmployeeId, string Name, int Age)
+    public Employee(string employeeId, string name, int age)
     {
-        this.Id = EmployeeId;
-        this.Name = Name;
-        this.Age = Age;
+        Id = employeeId;
+        Name = name;
+        Age = age;
     }
 }
 ```
 
-Másolja és illessze be a következő kódsorokat a *Program.cs* fájl `Main()` eljárásának végére, a `Dispose()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
+Másolja és illessze be a következő kódsorokat a *Program.cs* fájl `Main()` eljárásának végére, a `CloseConnection()` hívása elé, egy szerializált .NET-objektum gyorsítótárazásához és lekéréséhez:
 
 ```csharp
     // Store .NET object to cache

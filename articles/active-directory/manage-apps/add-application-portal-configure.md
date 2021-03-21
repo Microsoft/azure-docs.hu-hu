@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.openlocfilehash: e83caba2d2a5435c5cdac02c6f63094dc079c43c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258608"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben
@@ -53,11 +53,11 @@ Az alkalmazás tulajdonságainak szerkesztése:
     
     | Engedélyezve van a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Az alkalmazáshoz rendelt vagy nem használt felhasználók viselkedése. |
     |---|---|---|---|
-    | Igen | Igen | Igen | A hozzárendelt felhasználók láthatják az alkalmazást, és bejelentkezhetnek.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Igen | Igen | Yes | A hozzárendelt felhasználók láthatják az alkalmazást, és bejelentkezhetnek.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Igen | Igen | Nem  | A hozzárendelt felhasználások nem látják az alkalmazást, de be tudnak jelentkezni.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Igen | Nem  | Igen | A hozzárendelt felhasználók láthatják az alkalmazást, és bejelentkezhetnek.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, de jelentkezhetnek be. |
     | Igen | Nem  | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, de be tudnak jelentkezni.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, de jelentkezhetnek be. |
-    | Nem  | Igen | Igen | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
+    | Nem  | Igen | Yes | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Nem  | Igen | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Nem  | Nem  | Igen | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |
     | Nem  | Nem  | Nem  | A hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be.<br>A nem hozzárendelt felhasználók nem látják az alkalmazást, és nem jelentkezhetnek be. |

@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
 ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784812"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Streaming Customer bepillantást tartalmazó irányítópult létrehozása Azure Logic Apps és Azure Functions
@@ -108,7 +108,7 @@ A Logic app-megoldás létrehozása után [Azure Resource Manager sablonként](.
 
 Egy Azure-függvényt tartalmazó központi telepítési sablonhoz az [Azure Gyorsindítás sablon adattárában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További példák és forgatókönyvek a Azure Logic Apps](logic-apps-examples-and-scenarios.md)
 

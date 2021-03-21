@@ -3,12 +3,12 @@ title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98220745"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721613"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -448,7 +448,8 @@ Az a tény, hogy a `where` kifejezés a **teljes** kérelem tartalmára van kié
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +458,60 @@ Az a tény, hogy a `where` kifejezés a **teljes** kérelem tartalmára van kié
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-A beágyazott Count kifejezések is engedélyezettek:
+A beágyazott számlálási kifejezések használatával feltételeket alkalmazhat a beágyazott tömb mezőire. A következő feltétel például ellenőrzi, hogy a `objectArray[*]` tömb pontosan 2 taggal rendelkezik `nestedArray[*]` -e, amely legalább 1 tagot tartalmaz:
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| Külső hurok iterációja | Kijelölt értékek | Belső hurok iterációja | Kijelölt értékek |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| Iteráció | Kijelölt értékek | Beágyazott darabszám kiértékelésének eredménye |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` 2 taggal rendelkezik => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` 2 taggal rendelkezik => `true` |
+
+Mivel mindkét tagnak `objectArray[*]` van egy `nestedArray[*]` 2 taggal rendelkező gyermek tömbje, a külső Count kifejezés visszaadja `2` .
+
+Összetettebb példa: Győződjön meg arról, hogy a `objectArray[*]` tömb pontosan 2 taggal rendelkezik, vagy a következővel `nestedArray[*]` egyenlő `2` `3` :
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| Iteráció | Kijelölt értékek | Beágyazott darabszám kiértékelésének eredménye
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` tartalmaz `2` => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` tartalmaz `3` => `true` |
+
+Mivel mindkét tagjának `objectArray[*]` van egy gyermek tömbje, `nestedArray[*]` amely vagy `2` vagy `3` , a külső Count kifejezés visszaadja `2` .
+
+> [!NOTE]
+> A beágyazott mezők számának kifejezése csak beágyazott tömbökre hivatkozhat. Például a megjelenő Count kifejezésnek a `Microsoft.Test/resourceType/objectArray[*]` beágyazott tömböt célzó beágyazott darabszáma lehet `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` , de nem rendelkezhet beágyazott Count kifejezéssel `Microsoft.Test/resourceType/stringArray[*]` .
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>A jelenlegi tömb tag elérése a Template functions szolgáltatással
 
