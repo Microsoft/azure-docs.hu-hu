@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 6bf0e8b90ca50a90f84c18981ab6accae8477b46
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b2f91f0036a86151588c8c138dac5421ad54e18e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034310"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586420"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>A Azure Monitor-ügynök telepítése (előzetes verzió)
 Ez a cikk a [Azure monitor ügynöknek](azure-monitor-agent-overview.md) az Azure-beli virtuális gépeken és az Azure arc-kompatibilis kiszolgálókon való telepítésének különböző lehetőségeit ismerteti, valamint az [adatgyűjtési szabályokkal rendelkező társítások](data-collection-rule-azure-monitor-agent.md) létrehozási lehetőségeit, amelyek meghatározzák, hogy az ügynöknek milyen adatokat kell gyűjtenie.
@@ -62,11 +62,11 @@ A virtuálisgép-bővítmény hozzáadásához a PowerShell-paranccsal telepíth
 Az alábbi PowerShell-parancsokkal telepítheti az Azure Monitor-ügynököt az Azure Virtual Machines szolgáltatásban.
 # <a name="windows"></a>[Windows](#tab/PowerShellWindows)
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinux)
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location> -TypeHandlerVersion 1.0
 ```
 ---
 

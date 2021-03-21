@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/17/2021
+ms.openlocfilehash: ac11b7bc7e53c214f872d400565d50009479afcb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604423"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Nyelvi elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -46,91 +46,114 @@ A Microsoft-elemzők indexelése a nyelvtől függően a Lucene egyenértékűk�
 
 ### <a name="english-analyzers"></a>Angol analizátorok
 
-Az alapértelmezett elemző a standard Lucene, amely az angol nyelvhez jól működik, de talán nem, valamint a Lucene angol analizátor vagy a Microsoft angol analizátora. 
- 
+Az alapértelmezett elemző a standard Lucene, amely az angol nyelvhez jól működik, de talán nem, valamint a Lucene angol analizátor vagy a Microsoft angol analizátora.
+
 + A Lucene angol analizátora kiterjeszti a standard Analyzert. Eltávolítja a birtokosok (záró) szavakat a szavakból, és a porton kívüli algoritmust alkalmazza, és eltávolítja az angol leállítási szavakat.  
 
 + A Microsoft angol Analyzer morfológiai elemzéshez hajt végre a művelet helyett. Ez azt jelenti, hogy az ragozott és a szabálytalan Word-űrlapokat sokkal jobban kezelheti, ami több releváns keresési eredményt eredményez 
 
-## <a name="configuring-analyzers"></a>Elemzők konfigurálása
+## <a name="how-to-specify-a-language-analyzer"></a>Nyelvi elemző megadásának módja
 
-A nyelvi elemzők a következőképpen használhatók:. Az index definíciójának minden mezőjénél megadhatja az **analizátor** tulajdonságot egy Analyzer-névre, amely megadja a nyelv és a nyelvi készlet (Microsoft vagy Lucene) értékét. Ugyanez az analizátor lesz alkalmazva a mező indexeléséhez és kereséséhez. Megadhatja például, hogy az angol, a francia és a spanyol nyelvű szállodai leírások külön mezői legyenek, amelyek ugyanabban az indexben vannak egymás mellett.
+A EDM. String típusú "kereshető" mezőkben állítsa be a Language Analyzer kifejezést a mező meghatározása során.
 
-> [!NOTE]
-> Egy adott mezőnél nem lehet más nyelvi elemzőt használni, mint a lekérdezés időpontjában. Ez a képesség [Egyéni elemzők](index-add-custom-analyzers.md)számára van fenntartva. Ezért ha a **searchAnalyzer** vagy a **indexAnalyzer** tulajdonságot a Language Analyzer nevére próbálja beállítani, a REST API hibaüzenetet ad vissza. Ehelyett a **Analyzer** tulajdonságot kell használnia.
+Bár a mező-definíciók több elemzőhöz kapcsolódó tulajdonsággal rendelkeznek, csak az "Analyzer" tulajdonság használható nyelvi elemzők számára. A "Analyzer" értékének az egyik nyelvi elemzőnek kell lennie a támogatási elemzők listából.
 
-A **searchFields** lekérdezési paraméterrel megadásával meghatározhatja, hogy melyik nyelvspecifikus mezőt szeretné keresni a lekérdezésekben. Áttekintheti azokat a lekérdezési példákat is, amelyek tartalmazzák a Analyzer tulajdonságot a [keresési dokumentumokban](/rest/api/searchservice/search-documents). 
+```json
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+```
 
-További információ az index tulajdonságairól: [index létrehozása &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index). Az Azure Cognitive Search elemzésével kapcsolatos további információkért lásd: [elemzők az Azure-ban Cognitive Search](./search-analyzers.md).
+Az index létrehozásával és a mezők tulajdonságainak beállításával kapcsolatos további információkért lásd: [index létrehozása (REST)](/rest/api/searchservice/create-index). A szöveges elemzéssel kapcsolatos további információkért lásd: [elemzők az Azure Cognitive Searchban](search-analyzers.md).
 
 <a name="language-analyzer-list"></a>
 
-## <a name="language-analyzer-list"></a>Nyelvi analizátorok listája 
- Alább látható a támogatott nyelvek listája, valamint a Lucene és a Microsoft Analyzer neve.  
+## <a name="supported-language-analyzers"></a>Támogatott nyelvi elemzők
+
+ Alább láthatók a támogatott nyelvek listája, a Lucene és a Microsoft Analyzer-nevekkel együtt.  
 
 | Nyelv | Microsoft Analyzer neve | Lucene Analyzer neve |
-|--|--|--|
-| Arab | ar. Microsoft | ar. Lucene |
-| örmény |  | Lucene |  |
-| Bangla | bn. Microsoft |  |  |
-| Baszk |  | EU. Lucene |  |
-| Bolgár | BG. Microsoft | BG. Lucene |  |
-| Katalán | CA. Microsoft | CA. Lucene |  |
-| kínai (egyszerűsített) | zh-Hans. Microsoft | zh-Hans. Lucene |  |
-| kínai (hagyományos) | zh-Hant. Microsoft | zh-Hant. Lucene |  |
-| Horvát | HR. Microsoft |  |  |
-| cseh | cs. Microsoft | cs. Lucene |  |
-| dán | da. Microsoft | da. Lucene |  |
-| Holland | nl. Microsoft | nl. Lucene |  |
-| Angol | en. Microsoft | en. Lucene |  |
-| Észt | et. Microsoft |  |  |
-| finn | Fi. Microsoft | Fi. Lucene |  |
-| Francia | fr. Microsoft | fr. Lucene |  |
-| Gallego |  | Gl. Lucene |  |
-| Német | de. Microsoft | de. Lucene |  |
-| Görög | el. Microsoft | el. Lucene |  |
-| gudzsaráti | Gu. Microsoft |  |  |
-| héber | ő. Microsoft |  |  |
-| Hindi | Hi. Microsoft | Hi. Lucene |  |
-| Magyar | hu. Microsoft | hu. Lucene |  |
-| Izlandi | a. Microsoft |  |  |
-| Indonéz (Bahasa) | azonosító. Microsoft | ID. Lucene |  |
-| Ír |  | ga. Lucene |  |
-| Olasz | it. Microsoft | it. Lucene |  |
-| Japán | ja. Microsoft | ja. Lucene |  |
-| kannada | KN. Microsoft |  |  |
-| Koreai | ko. Microsoft | ko. Lucene |  |
-| Lett | lv. Microsoft | lv. Lucene |  |
-| Litván | lt. Microsoft |  |  |
-| malajálam | ml. Microsoft |  |  |
-| Maláj (latin betűs) | MS. Microsoft |  |  |
-| marathi | Mr. Microsoft |  |  |
-| Norvég | NB. Microsoft | nem. Lucene |  |
-| perzsa |  | fa. Lucene |  |
-| Lengyel | pl. Microsoft | pl. Lucene |  |
-| Portugál (Brazília) | pt-br. Microsoft | pt-br. Lucene |  |
-| Portugál (Portugália) | PT-pt. Microsoft | PT-pt. Lucene |  |
-| pandzsábi | PA. Microsoft |  |  |
-| Román | ro. Microsoft | ro. Lucene |  |
-| Orosz | ru. Microsoft | ru. Lucene |  |
-| Szerb (cirill betűs) | SR-cirill betűs. Microsoft |  |  |
-| Szerb (latin betűs) | SR-latin. Microsoft |  |  |
-| Szlovák | sk. Microsoft |  |  |
-| Szlovén | SL. Microsoft |  |  |
-| Spanyol | es. Microsoft | es. Lucene |  |
-| svéd | Sv. Microsoft | Sv. Lucene |  |
-| tamil | ta. Microsoft |  |  |
-| telugu | te. Microsoft |  |  |
-| Thai | th. Microsoft | th. Lucene |  |
-| Török | TR. Microsoft | TR. Lucene |  |
-| Ukrán | Egyesült Királyság. Microsoft |  |  |
-| urdu | a. Microsoft |  |  |
-| Vietnámi | VI. Microsoft |  |  |
+|----------|-------------------------|----------------------|
+| Arab   | ar. Microsoft | ar. Lucene |
+| örmény |           | Lucene |
+| Bangla   | bn. Microsoft |  |
+| Baszk   |  | EU. Lucene |
+| Bolgár | BG. Microsoft | BG. Lucene |
+| Katalán  | CA. Microsoft | CA. Lucene |
+| kínai (egyszerűsített) | zh-Hans. Microsoft | zh-Hans. Lucene |
+| kínai (hagyományos) | zh-Hant. Microsoft | zh-Hant. Lucene |
+| Horvát | HR. Microsoft |  |
+| cseh | cs. Microsoft | cs. Lucene |
+| dán | da. Microsoft | da. Lucene |
+| Holland | nl. Microsoft | nl. Lucene |
+| Angol | en. Microsoft | en. Lucene |
+| Észt | et. Microsoft |  |
+| finn | Fi. Microsoft | Fi. Lucene |
+| Francia | fr. Microsoft | fr. Lucene |
+| Gallego |  | Gl. Lucene |
+| Német | de. Microsoft | de. Lucene |
+| Görög | el. Microsoft | el. Lucene |
+| gudzsaráti | Gu. Microsoft |  |
+| héber | ő. Microsoft |  |
+| Hindi | Hi. Microsoft | Hi. Lucene |
+| Magyar | hu. Microsoft | hu. Lucene |
+| Izlandi | a. Microsoft |  |
+| Indonéz (Bahasa) | azonosító. Microsoft | ID. Lucene |
+| Ír |  | ga. Lucene |
+| Olasz | it. Microsoft | it. Lucene |
+| Japán | ja. Microsoft | ja. Lucene |
+| kannada | KN. Microsoft |  |
+| Koreai | ko. Microsoft | ko. Lucene |
+| Lett | lv. Microsoft | lv. Lucene |
+| Litván | lt. Microsoft |  |
+| malajálam | ml. Microsoft |  |
+| Maláj (latin betűs) | MS. Microsoft |  |
+| marathi | Mr. Microsoft |  |
+| Norvég | NB. Microsoft | nem. Lucene |
+| perzsa |  | fa. Lucene |
+| Lengyel | pl. Microsoft | pl. Lucene |
+| Portugál (Brazília) | pt-br. Microsoft | pt-br. Lucene |
+| Portugál (Portugália) | PT-pt. Microsoft | PT-pt. Lucene |
+| pandzsábi | PA. Microsoft |  |
+| Román | ro. Microsoft | ro. Lucene |
+| Orosz | ru. Microsoft | ru. Lucene |
+| Szerb (cirill betűs) | SR-cirill betűs. Microsoft |  |
+| Szerb (latin betűs) | SR-latin. Microsoft |  |
+| Szlovák | sk. Microsoft |  |
+| Szlovén | SL. Microsoft |  |
+| Spanyol | es. Microsoft | es. Lucene |
+| svéd | Sv. Microsoft | Sv. Lucene |
+| tamil | ta. Microsoft |  |
+| telugu | te. Microsoft |  |
+| Thai | th. Microsoft | th. Lucene |
+| Török | TR. Microsoft | TR. Lucene |
+| Ukrán | Egyesült Királyság. Microsoft |  |
+| urdu | a. Microsoft |  |
+| Vietnámi | VI. Microsoft |  |
 
  Az [Apache Lucene nyelvi elemzői](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )a **Lucene** -mel ellátott nevekkel rendelkező elemzőket használják.
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
-
-+ [LexicalAnalyzerName osztály](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)
++ [Index létrehozása](search-what-is-an-index.md)
++ [Többnyelvű index létrehozása](search-language-support.md)
++ [Index létrehozása (REST API)](/rest/api/searchservice/create-index)  
++ [LexicalAnalyzerName osztály (.NET-hez készült Azure SDK)](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

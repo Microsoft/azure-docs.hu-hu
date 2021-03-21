@@ -8,10 +8,10 @@ ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
 ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149298"
 ---
 # <a name="identify-required-appliances"></a>A szükséges berendezések azonosítása
@@ -109,7 +109,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Leírás | Mennyiség |
+| PN | Description | Mennyiség |
 |--|--|--|
 | P19766 – B21 | HPE DL360 Gen10 8SFF NC műszaki kiszolgáló | 1 |
 | P19766 – B21 | Európa – többnyelvű honosítás | 1 |
@@ -180,7 +180,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Leírás | Mennyiség |
+| PN | Description | Mennyiség |
 |--|--|--|
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
@@ -216,7 +216,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | Sokk | 10G 10ms, félórás, három az egyes tengelyekhez. (Pozitív & negatív impulzus) – DIN sín |
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
-| Termék | Leírás |
+| Termék | Description |
 |--|--|
 | P25828 – B21 | HPE Edgeline EL300 v2 konvergált Edge System |
 | P25828 – B21 B19 | HPE EL300 v2 konvergált Edge System |
@@ -248,7 +248,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 | Típus | Enterprise |
 |--|--|
-| Leírás | Virtuális berendezés vállalati telepítési típusokhoz |
+| Description | Virtuális berendezés vállalati telepítési típusokhoz |
 | vCPU | 8 |
 | Memória | 32 GB |
 | Tárolás | 1,8 TB |

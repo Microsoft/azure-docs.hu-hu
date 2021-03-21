@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f1b122cb005f47e9816db3b403a35f4f502248
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 36455b3f6395216bd1ed26c8bd193f0e3ca10b5b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426824"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594597"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Felhasználók hozzáadása vagy törlése Azure Active Directory használatával
 
@@ -75,7 +75,7 @@ Ha Azure Active Directory (felhő) és a Windows Server Active Directory (helysz
 Meglévő felhasználót a Azure Active Directory portál használatával törölhet.
 
 >[!Note]
->A szervezeten belüli felhasználók törléséhez globális rendszergazdai vagy felhasználói rendszergazdai szerepkör-hozzárendelés szükséges. A globális rendszergazdák bármilyen felhasználót törölhetnek, beleértve a többi rendszergazdát is. A felhasználói rendszergazdák törölhetik a nem rendszergazda felhasználókat, az ügyfélszolgálati rendszergazdákat és más felhasználói rendszergazdákat. További információ: [rendszergazdai szerepkör engedélyei az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference).
+>A szervezeten belüli felhasználók törléséhez globális rendszergazdai vagy felhasználói rendszergazdai szerepkör-hozzárendelés szükséges. A globális rendszergazdák bármilyen felhasználót törölhetnek, beleértve a többi rendszergazdát is. A felhasználói rendszergazdák törölhetik a nem rendszergazda felhasználókat, az ügyfélszolgálati rendszergazdákat és más felhasználói rendszergazdákat. További információ: [rendszergazdai szerepkör engedélyei az Azure ad-ben](../roles/permissions-reference.md).
 
 A felhasználók törléséhez kövesse az alábbi lépéseket:
 

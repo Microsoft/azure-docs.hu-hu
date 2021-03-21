@@ -7,10 +7,10 @@ ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: 7b39242a7d7208b33a070e86088b25e9414ead04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101714629"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Az Azure Kubernetes Service (ak) Node-készletek csomópont-konfigurációjának testreszabása (előzetes verzió)
@@ -59,7 +59,7 @@ az extension update --name aks-preview
 
 Az alábbi listában a támogatott Kubelet paraméterek és elfogadott értékek szerepelnek.
 
-| Paraméter | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Paraméter | Megengedett értékek/időköz | Alapértelmezett | Description |
 | --------- | ----------------------- | ------- | ----------- |
 | `cpuManagerPolicy` | nincs, statikus | Nincs | A statikus házirend lehetővé teszi, hogy a tárolók az egész PROCESSZORral rendelkező [garantált hüvelyekben](https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/) a csomóponton lévő kizárólagos CPU-kérelmekhez hozzáférjenek. |
 | `cpuCfsQuota` | igaz, hamis | true |  Engedélyezi/letiltja a CPU CFS-kvóta kikényszerítését a CPU-korlátokat megadó tárolók esetében. | 
@@ -67,7 +67,7 @@ Az alábbi listában a támogatott Kubelet paraméterek és elfogadott értékek
 | `imageGcHighThreshold` | 0-100 | 85 | A lemez használatának százalékos aránya, amely után a rendszer mindig futtatja a képszemetet tartalmazó gyűjteményt. **A szemét** -gyűjtést kiváltó minimális lemezhasználat. A képszemetet-gyűjtemény letiltásához állítsa a 100 értékre. | 
 | `imageGcLowThreshold` | 0-100, nem nagyobb, mint `imageGcHighThreshold` | 80 | A lemez használatának százalékos aránya, amely előtt a rendszer soha nem futtatja a Rendszerképbeli adatgyűjtési gyűjteményt. **A minimális** lemezhasználat, amely kiválthatja a Garbage gyűjteményt. |
 | `topologyManagerPolicy` | nincs, legjobb erőfeszítés, korlátozott, egyetlen NUMA-csomópont | Nincs | A NUMA-csomópontok igazításának optimalizálása: további [információ.](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/) Csak kubernetes v 1.18 +. |
-| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Nincs | Nem biztonságos sysctls vagy nem biztonságos sysctl-minták engedélyezési listája. | 
+| `allowedUnsafeSysctls` | `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, `net.*` | Nincsenek | Nem biztonságos sysctls vagy nem biztonságos sysctl-minták engedélyezési listája. | 
 
 ### <a name="linux-os-custom-configuration"></a>A Linux operációs rendszer egyéni konfigurációja
 
@@ -77,7 +77,7 @@ A támogatott operációsrendszer-beállítások és elfogadott értékek az al�
 
 Nagy mennyiségű forgalom kiszolgálásakor gyakori, hogy a kiszolgált forgalom nagyszámú helyi fájlból származik. Az alábbi kernel-beállításokat és a beépített korlátokat úgy is megszabhatja, hogy több, a rendszermemória költségeit is kezelni tudja.
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `fs.file-max` | 8192 – 12000500 | 709620 | A Linux-kernel által lefoglalható fájlok maximális száma – ennek az értéknek a növelésével növelhető az engedélyezett nyitott fájlok maximális száma. |
 | `fs.inotify.max_user_watches` | 781250 – 2097152 | 1048576 | A rendszeren engedélyezett fájlok maximális száma. Mindegyik *óra* körülbelül 90 bájt egy 32 bites kernelen, és nagyjából 160 bájt egy 64 bites kernelen. | 
@@ -89,7 +89,7 @@ Nagy mennyiségű forgalom kiszolgálásakor gyakori, hogy a kiszolgált forgalo
 
 Az olyan ügynök-csomópontok esetében, amelyek nagy számú egyidejű munkamenet kezelésére várnak, használhatja az alábbi TCP-és hálózati beállítások részhalmazát, hogy a rendszer beállíthatja a csomópontok készletét. 
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `net.core.somaxconn` | 4096 – 3240000 | 16384 | Az adott figyelő szoftvercsatornához várólistára helyezhető kapcsolatkérelmek maximális száma. A [Listen (2)](http://man7.org/linux/man-pages/man2/listen.2.html) függvénynek átadott várakozó paraméter értékének felső korlátja. Ha a várakozó fájlok argumentuma nagyobb, mint a, a rendszer `somaxconn` ezt a korlátot csendesen csonkolja.
 | `net.core.netdev_max_backlog` | 1000 – 3240000 | 1000 | A bemeneti oldalon várólistára helyezett csomagok maximális száma, amikor a csatoló gyorsabban fogad csomagokat, mint a kernel képes feldolgozni. |
@@ -114,7 +114,7 @@ Az olyan ügynök-csomópontok esetében, amelyek nagy számú egyidejű munkame
 
 A fájlok leíró korlátaihoz hasonlóan a folyamat által létrehozható munkavégzők vagy szálak száma is korlátozott a kernel-beállítás és a felhasználói korlátok esetében. Az AK-ra vonatkozó felhasználói korlát korlátlan. 
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `kernel.threads-max` | 20 - 513785 | 55601 | A folyamatok felhasználhatják a munkavégző szálakat. Az összes létrehozható szál maximális száma a rendszermag beállításával állítható be `kernel.threads-max` . | 
 
@@ -122,12 +122,12 @@ A fájlok leíró korlátaihoz hasonlóan a folyamat által létrehozható munka
 
 Az alábbi beállításokkal beállíthatja a Linux-kernel virtuális memória (VM) alrendszerének működését, valamint az `writeout` inkonzisztens adatlemezeket.
 
-| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Leírás |
+| Beállítás | Megengedett értékek/időköz | Alapértelmezett | Description |
 | ------- | ----------------------- | ------- | ----------- |
 | `vm.max_map_count` |  65530 – 262144 | 65530 | Ez a fájl tartalmazza a folyamat által esetlegesen feldolgozható memória-leképező területek maximális számát. A memória-hozzárendelési területek a hívás, a, a, a, a és a, valamint a `malloc` `mmap` `mprotect` `madvise` megosztott könyvtárak betöltésének mellékhatásai. | 
 | `vm.vfs_cache_pressure` | 1 - 500 | 100 | Ez a százalékérték azt szabályozza, hogy a rendszermag milyen tendenciát követel meg a memória visszaigényléséhez, amely a címtár-és inode objektumok gyorsítótárazására szolgál. |
 | `vm.swappiness` | 0 - 100 | 60 | Ezzel a vezérlővel határozható meg, hogy a kernel milyen agresszíven fogja felcserélni a memória lapjait. A magasabb értékek növelik az agresszivitást, az alacsonyabb értékek csökkentik a swap mennyiségét. A 0 érték arra utasítja a rendszermagot, hogy ne indítson el swap-értéket, amíg a szabad és a fájl nélküli lapok mennyisége kevesebb, mint a zóna magas vízjele. | 
-| `swapFileSizeMB` | 1 MB – az [ideiglenes lemez](../virtual-machines/managed-disks-overview.md#temporary-disk) mérete (/dev/sdb) | Nincs | A SwapFileSizeMB megadható, hogy egy lapozófájl mérete MB-ban legyen létrehozva a csomópont ügynök-csomópontjain. | 
+| `swapFileSizeMB` | 1 MB – az [ideiglenes lemez](../virtual-machines/managed-disks-overview.md#temporary-disk) mérete (/dev/sdb) | Nincsenek | A SwapFileSizeMB megadható, hogy egy lapozófájl mérete MB-ban legyen létrehozva a csomópont ügynök-csomópontjain. | 
 | `transparentHugePageEnabled` | `always`, `madvise`, `never` | `always` | Az [átlátszó Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge) egy Linux kernel-szolgáltatás, amelynek célja a teljesítmény javítása azáltal, hogy hatékonyabban használják fel a processzor memória-leképezési hardverét. Ha engedélyezve van a rendszermag, amikor csak `hugepages` lehetséges, a Linux-folyamat 2 MB-nyi oldalt fog kapni, ha a `mmap` régió 2 MB-ban természetesen össze van igazítva. Bizonyos esetekben, amikor `hugepages` engedélyezve vannak a rendszerszintű alkalmazások, a további memória-erőforrások lefoglalása is előfordulhat. Előfordulhat `mmap` , hogy egy alkalmazás nagyméretű régiót tartalmaz, de csak 1 bájtot érint, ebben az esetben a 2 MB-nyi oldalt a 4k-oldal helyett nem jó ok miatt lehet kiosztani. Ez a forgatókönyv ezért lehetséges a rendszerszintű, `hugepages` vagy csak a régiókban lévők letiltására `MADV_HUGEPAGE madvise` . | 
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | Ez az érték azt határozza meg, hogy a rendszermagnak agresszívan kell-e használnia a memória tömörítését, hogy `hugepages` elérhető legyen. | 
 

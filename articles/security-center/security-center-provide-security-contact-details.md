@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 02/09/2021
 ms.author: memildin
 ms.openlocfilehash: 342904a3ae996fe8c2eeddf2edfbc4283a3d03eb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102439442"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>E-mail-értesítések konfigurálása biztonsági riasztásokhoz 
@@ -50,7 +50,7 @@ E-mailes értesítéseket küldhet magánszemélyeknek vagy az adott Azure-szere
 1. Adja meg az értesítések címzettjeit az alábbi lehetőségek egyikével vagy mindkettővel:
 
     - A legördülő listából válassza ki az elérhető szerepkörök közül.
-    - Adja meg a megadott e-mail-címeket vesszővel elválasztva. A megadható e-mail-címek száma nincs korlátozva.
+    - Adjon meg konkrét e-mail-címeket vesszővel elválasztva. A megadható e-mail-címek száma nincs korlátozva.
 
 1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés** lehetőséget.
 

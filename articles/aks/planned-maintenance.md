@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 03/03/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 307183292b60a6556df69a4e5541cbfb5e13098f
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 8526d7c1c436074fbf6f838caf232e1abee06339
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103201565"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670375"
 ---
 # <a name="use-planned-maintenance-to-schedule-maintenance-windows-for-your-azure-kubernetes-service-aks-cluster-preview"></a>Tervezett karbantartás használata az Azure Kubernetes Service (ak) fürt karbantartási időszakának megtervezéséhez (előzetes verzió)
 
-Az AK-fürtön a rendszeres karbantartás automatikusan történik. Alapértelmezés szerint ez a munka bármikor megtörténhet. A tervezett karbantartás lehetővé teszi a heti karbantartási időszakok bevezetését, amelyekkel frissítheti a vezérlési síkot, és csökkentheti a számítási feladatok hatását. Az ütemezést követően az összes karbantartás a kiválasztott ablakon fog történni. Egy vagy több heti Windows-t ütemezhet a fürtön egy nap-vagy időtartomány egy adott napon történő megadásával. A karbantartási időszakok az Azure CLI használatával konfigurálhatók.
+Az AK-fürtön a rendszeres karbantartás automatikusan történik. Alapértelmezés szerint ez a munka bármikor megtörténhet. A tervezett karbantartás lehetővé teszi a heti karbantartási időszakok bevezetését, amelyekkel frissítheti a vezérlési síkot, valamint a Kube-rendszer Hüvelyeit egy VMSS-példányon, és csökkentheti a számítási feladatok hatását. Az ütemezést követően az összes karbantartás a kiválasztott ablakon fog történni. Egy vagy több heti Windows-t ütemezhet a fürtön egy nap-vagy időtartomány egy adott napon történő megadásával. A karbantartási időszakok az Azure CLI használatával konfigurálhatók.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -107,7 +107,7 @@ A paraméterek használata helyett használhat egy JSON-fájlt is a karbantartá
         "notAllowedTime": [
           {
             "start": "2021-05-26T03:00:00Z",
-            "end": "2021-05-30T012:00:00Z"
+            "end": "2021-05-30T12:00:00Z"
           }
         ]
 }

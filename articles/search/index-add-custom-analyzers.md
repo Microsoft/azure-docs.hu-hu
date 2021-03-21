@@ -1,35 +1,29 @@
 ---
 title: Egyéni elemzők hozzáadása karakterlánc-mezőkhöz
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search teljes szöveges keresési lekérdezésekben használt szöveges tokenizers és karakterkészletek konfigurálása.
+description: A szöveges tokenizers és a karakteres szűrők konfigurálásával szöveges elemzéseket végezhet a karakterláncokon az indexelés és a lekérdezések során.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: fef73a9b98fef40aaceeacca43836d4b2f3c5de0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.date: 03/17/2021
+ms.openlocfilehash: 831e57a68c79c245b96baec0fc3d062c4c9112c5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630207"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604440"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Egyéni elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
-Az *Egyéni elemző* egy adott típusú [szöveges elemző](search-analyzers.md) , amely a meglévő tokenizer és opcionális szűrők felhasználó által definiált kombinációját tartalmazza. A tokenizers és a szűrők új módokon történő kombinálásával a keresőmotorban testreszabhatók a speciális eredmények. Létrehozhat például egy *char szűrővel* rendelkező egyéni elemzőt a HTML-kód eltávolításához, mielőtt a szöveges bemenetek jogkivonat-e.
+Az *Egyéni elemző* a tokenizer, egy vagy több jogkivonat-szűrő, valamint egy vagy több, a keresési indexben definiált karakteres szűrő, majd az egyéni elemzést igénylő mező-definíciók hivatkozása. A tokenizer feladata a szövegek jogkivonatokban való tördelése, valamint a tokenizer által kibocsátott jogkivonatok módosítására szolgáló jogkivonat-szűrők használata. A tokenizer feldolgozása előtt a karakteres szűrők előkészítik a bemeneti szöveget. 
 
- Több egyéni elemzőt is meghatározhat a szűrők kombinációjával, de az egyes mezők csak egy elemzőt használhatnak az indexelési elemzéshez és egy a keresési elemzéshez. Az ügyfél-elemző megjelenését bemutató ábrán lásd: [Egyéni elemző példa](search-analyzers.md#Custom-analyzer-example).
+Az egyéni elemző lehetővé teszi a szövegek indexelhető és kereshető jogkivonatokra való konvertálásának folyamatát, mivel lehetővé teszi, hogy kiválassza a meghívni kívánt elemzési vagy szűrési típusokat, valamint azt, hogy a sorrend milyen sorrendben történjen. Ha egyéni beállításokkal rendelkező beépített elemzőt szeretne használni, például a standard szintű maxTokenLength módosítását, akkor a beállítások megadásához hozzon létre egy egyéni elemzőt a felhasználó által definiált névvel.
 
-## <a name="overview"></a>Áttekintés
+Olyan helyzetekben, ahol az egyéni elemzők hasznosak lehetnek:
 
- A [teljes szöveges keresőmotor](search-lucene-query-architecture.md)szerepe egyszerű értelemben a dokumentumok feldolgozását és tárolását teszi lehetővé a hatékony lekérdezési és lekérési lehetőségekkel. Magas szinten az egész a dokumentumokból származó fontos szavak kibontásával, az indexbe való helyezéssel, majd az index használatával megkeresi azokat a dokumentumokat, amelyek megfelelnek egy adott lekérdezés szavainak. A dokumentumok és keresési lekérdezésekből származó szavak kinyerésének folyamatát *lexikális analízisnek* nevezzük. A lexikális elemzést végző összetevőket *elemzőknek* nevezzük.
-
- Az Azure Cognitive Search- [ban az](#AnalyzerTable) [azure Cognitive Search Service REST API&#41;nyelvi &#40;elemzők ](index-add-language-analyzers.md)listájában megjelenő, előre meghatározott nyelvtől független elemzők közül választhat. Lehetősége van saját egyéni elemzők definiálására is.  
-
- Az egyéni elemző lehetővé teszi a szövegek indexelhető és kereshető jogkivonatokra való konvertálási folyamatának szabályozását. A felhasználó által definiált konfiguráció egyetlen előre definiált tokenizer, egy vagy több jogkivonat-szűrőből, valamint egy vagy több char-szűrőből áll. A tokenizer feladata a szövegek jogkivonatokban való tördelése, valamint a tokenizer által kibocsátott jogkivonatok módosítására szolgáló jogkivonat-szűrők használata. A karakteres szűrők a bemeneti szöveg előkészítéséhez lesznek alkalmazva, mielőtt a tokenizer feldolgozza azt. A char Filter például lecserélheti bizonyos karaktereket vagy szimbólumokat.
-
- Az egyéni elemzők által engedélyezett népszerű forgatókönyvek a következők:  
+- A karakterkészletek használatával a HTML-jelöléseket a szöveges bemenetek tokenbe helyezése előtt, vagy bizonyos karakterek vagy szimbólumok cseréjével távolíthatja el.
 
 - Fonetikus keresés. Egy fonetikus szűrő hozzáadásával engedélyezheti a keresést, hogy a szavak hogyan szólalnak meg, és nem a helyesírást.  
 
@@ -41,21 +35,28 @@ Az *Egyéni elemző* egy adott típusú [szöveges elemző](search-analyzers.md)
 
 - ASCII-összecsukható. Adja hozzá a standard ASCII összecsukható szűrőt a Mellékjelek, például ö vagy ê kifejezésekhez való normalizálása érdekében.  
 
-  Ezen az oldalon a támogatott elemzők, a tokenizers, a jogkivonat-szűrők és a karakteres szűrők listája látható. Az index definíciójának változásairól a használati példával is megtalálhatja a leírást. Az Azure Cognitive Search megvalósításában rejlő technológiával kapcsolatos további háttérért lásd: [Analysis Package Summary (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html). Az analizátor-konfigurációkra vonatkozó Példákért lásd: [elemzők hozzáadása az Azure Cognitive Searchban](search-analyzers.md#examples).
+Egyéni elemző létrehozásához adja meg a tervezéskor egy index "elemzők" szakaszában, majd hivatkozzon rá a kereshető, EDM. String mezőkre az "Analyzer" tulajdonság vagy a "indexAnalyzer" és a "searchAnalyzer" párok használatával.
 
-## <a name="validation-rules"></a>Érvényesítési szabályok  
- Az elemzők, a tokenizers, a jogkivonat-szűrők és a karakteres szűrők neveinek egyedinek kell lenniük, és nem egyezhet meg az előre definiált elemzők, a tokenizers, a jogkivonat-szűrők vagy a char-szűrők nevével. A már használatban lévő neveknél tekintse meg a [tulajdonság-referenciát](#PropertyReference) .
+> [!NOTE]  
+> A létrehozott egyéni elemzők nincsenek kitéve a Azure Portal. Egyéni elemző hozzáadásának egyetlen módja a kód, amely meghatározza az indexet. 
 
-## <a name="create-custom-analyzers"></a>Egyéni elemzők létrehozása
- Az index létrehozási idején egyéni elemzőket is meghatározhat. Az egyéni elemző megadásának szintaxisát ebben a szakaszban találja. A szintaxis megismeréséhez tekintse meg az [Azure Cognitive Search-elemzők hozzáadása az analizátorokban](search-analyzers.md#examples)című részében ismertetett példákat.  
+## <a name="create-a-custom-analyzer"></a>Egyéni elemző létrehozása
 
- Az analizátorok definíciója tartalmaz egy nevet, egy típust, egy vagy több char szűrőt, legfeljebb egy tokenizer, valamint egy vagy több jogkivonat-szűrőt a jogkivonatok létrehozása utáni feldolgozáshoz. A char filers alkalmazása a jogkivonatok létrehozása előtt történik. A jogkivonat-szűrők és a char-szűrők balról jobbra vannak alkalmazva.
+Az analizátor definíciója tartalmaz egy nevet, egy típust, egy vagy több karaktert, legfeljebb egy tokenizer, valamint egy vagy több jogkivonat-szűrőt a jogkivonatok létrehozása utáni feldolgozáshoz. A jogkivonatok létrehozása előtt a rendszer alkalmazza a karakteres szűrőket. A jogkivonat-szűrők és a karakterstílus-szűrők balról jobbra vannak alkalmazva.
 
- A a `tokenizer_name` tokenizer neve, a jogkivonat- `token_filter_name_1` `token_filter_name_2` szűrők nevei, és `char_filter_name_1` `char_filter_name_2` a karakteres szűrők nevei (lásd a [Tokenizers](#Tokenizers), a [jogkivonat-szűrők](#TokenFilters) és a char Filters táblákat az érvényes értékekhez).
+- Az egyéni analizátorokban lévő névnek egyedinek kell lennie, és nem egyezhet meg a beépített elemzők, a tokenizers, a jogkivonat-szűrők és a karakterek szűrőinek egyikével sem. Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet. 
 
-Az analizátor definíciója a nagyobb index részét képezi. Az index további részével kapcsolatos információkért lásd: [create index API](/rest/api/searchservice/create-index) .
+- A típusnak #Microsoft. Azure. Search. CustomAnalyzer kell lennie.
 
-```
+- a "charFilters" lehet egy vagy több [szűrő a jogkivonatok létrehozása](#CharFilter)előtt feldolgozott szűrőkből a megadott sorrendben. Néhány karakteres szűrő rendelkezik beállításokkal, amelyek a "charFilter" szakaszban állíthatók be. A karakteres szűrők megadása nem kötelező.
+
+- a "tokenizer" pontosan egy [tokenizer](#tokenizers). Meg kell adni egy értéket. Ha egynél több tokenizer van szüksége, több egyéni elemzőt is létrehozhat, és kioszthatja őket egy mező – mező alapján az index sémában.
+
+- a "tokenFilters" lehet egy vagy több, a jogkivonatok létrehozása után feldolgozott [jogkivonat-szűrőből](#TokenFilters)származó szűrő a megadott sorrendben. A beállításokkal rendelkező jogkivonat-szűrők esetében adjon hozzá egy "tokenFilter" szakaszt a konfiguráció megadásához. A jogkivonat-szűrők megadása nem kötelező.
+
+Az elemzők nem hozhatnak létre 300 karakternél hosszabb tokeneket, vagy az indexelés sikertelen lesz. A hosszú tokenek kivágásához vagy a kizáráshoz használja a **TruncateTokenFilter** és a **LengthTokenFilter** . Lásd: [**jogkivonat-szűrők**](#TokenFilters) .
+
+```json
 "analyzers":(optional)[
    {
       "name":"name of analyzer",
@@ -107,12 +108,9 @@ Az analizátor definíciója a nagyobb index részét képezi. Az index további
 ]
 ```
 
-> [!NOTE]  
->  A létrehozott egyéni elemzők nincsenek kitéve a Azure Portal. Egyéni elemző hozzáadásának egyetlen módja a kód, amely az API meghívását teszi lehetővé az index definiálásakor.  
+Az index definíciójában ezt a szakaszt bárhol elhelyezheti egy Create index-kérelem törzsében, de általában a végére kerül:  
 
- Az index definíciójában ezt a szakaszt bárhol elhelyezheti egy Create index-kérelem törzsében, de általában a végére kerül:  
-
-```
+```json
 {
   "name": "name_of_index",
   "fields": [ ],
@@ -127,18 +125,17 @@ Az analizátor definíciója a nagyobb index részét képezi. Az index további
 }
 ```
 
-A char szűrők, a tokenizers és a jogkivonat-szűrők definíciói csak akkor lesznek hozzáadva az indexhez, ha egyéni beállításokat állít be. Ha meglévő szűrőt vagy tokenizer szeretne használni, adja meg azt név szerint az elemző definíciójában.
-
-<a name="Testing custom analyzers"></a>
+Az analizátor definíciója a nagyobb index részét képezi. A char szűrők, a tokenizers és a jogkivonat-szűrők definíciói csak akkor lesznek hozzáadva az indexhez, ha egyéni beállításokat állít be. Ha meglévő szűrőt vagy tokenizer szeretne használni, adja meg azt név szerint az elemző definíciójában. További információ: [create index (REST)](/rest/api/searchservice/create-index). További Példákért lásd: [elemzők hozzáadása az Azure Cognitive Searchban](search-analyzers.md#examples).
 
 ## <a name="test-custom-analyzers"></a>Egyéni elemzők tesztelése
 
-Az [REST API](/rest/api/searchservice/test-analyzer) **tesztelési elemző műveletével** megtekintheti, hogy az elemző hogyan szakítja meg az adott szöveget a jogkivonatokban.
+A [test Analyzer (REST)](/rest/api/searchservice/test-analyzer) használatával megtekintheti, hogy az elemző hogyan szakítja meg az adott szöveget a jogkivonatokban.
 
 **Kérés**
-```
+
+```http
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
-  Content-Type: application/json
+    Content-Type: application/json
     api-key: [admin key]
 
   {
@@ -146,8 +143,10 @@ Az [REST API](/rest/api/searchservice/test-analyzer) **tesztelési elemző műve
      "text": "Vis-à-vis means Opposite"
   }
 ```
+
 **Válasz**
-```
+
+```http
   {
     "tokens": [
       {
@@ -180,147 +179,77 @@ Az [REST API](/rest/api/searchservice/test-analyzer) **tesztelési elemző műve
 
 ## <a name="update-custom-analyzers"></a>Egyéni elemzők frissítése
 
-Az analizátor, a tokenizer, a jogkivonat-szűrő vagy a char Filter meghatározása után nem módosítható. Az új eszközök csak akkor adhatók hozzá meglévő indexekhez, ha a `allowIndexDowntime` jelző értéke TRUE (igaz) az index frissítési kérelmében:
+Az analizátor, a tokenizer, a jogkivonat-szűrő vagy a karakteres szűrő meghatározása után nem módosítható. Az új eszközök csak akkor adhatók hozzá meglévő indexekhez, ha a `allowIndexDowntime` jelző értéke TRUE (igaz) az index frissítési kérelmében:
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
 A művelet legalább néhány másodpercen belül offline állapotba helyezi az indexet, így az indexelés és a lekérdezési kérelmek sikertelenek lesznek. Az index teljesítményének és írásának rendelkezésre állása több percig is csökkenthető az index frissítése után, vagy hosszabb a nagyon nagy indexek esetében, de ezek a hatások ideiglenesek, és végül a saját maguk is megoldhatók.
 
- <a name="ReferenceIndexAttributes"></a>
+<a name="built-in-analyzers"></a>
 
-## <a name="analyzer-reference"></a>Elemzői segédlet
+## <a name="built-in-analyzers"></a>Beépített elemzők
 
-Az alábbi táblázatok felsorolják az index definíciójának elemzők, tokenizers, jogkivonat-szűrők és char Filter szakaszának konfigurációs tulajdonságait. Az indexben lévő analizátorok, tokenizer vagy szűrők szerkezete ezekből az attribútumokból áll. Az érték-hozzárendelési információkkal kapcsolatban lásd a [Tulajdonságok referenciáját](#PropertyReference).
-
-### <a name="analyzers"></a>Elemzők
-
-Az elemzők esetében az index attribútumai eltérőek lehetnek, attól függően, hogy előre definiált vagy egyéni elemzőket használ-e.
-
-#### <a name="predefined-analyzers"></a>Előre definiált elemzők
-
-| Típus | Leírás |
-| ---- | ----------- |  
-|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
-|Típus|Elemző típusa a támogatott elemzők listájából. Tekintse meg az alábbi **analyzer_type** oszlopot az [elemzők](#AnalyzerTable) táblázatban.|  
-|Beállítások|Az alábbi, az [elemzők](#AnalyzerTable) táblázatban szereplő, előre definiált analizátorok érvényes beállításainak kell lenniük.|  
-
-#### <a name="custom-analyzers"></a>Egyéni elemzők
-
-| Típus | Leírás |
-| ---- | ----------- |  
-|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
-|Típus|A következőnek kell lennie: "#Microsoft. Azure. Search. CustomAnalyzer".|  
-|CharFilters|Az index definíciójában megadott char Filters [táblában vagy](#char-filters-reference) egy egyéni char szűrőben felsorolt előre definiált karakteres szűrők egyikére kell beállítani.|  
-|Tokenizer|Kötelező. Az alábbi [tokenizers](#Tokenizers) táblázatban felsorolt előre definiált tokenizers egyikére vagy az index definíciójában megadott egyéni tokenizer értékre kell állítani.|  
-|TokenFilters|Állítsa a [jogkivonat-szűrők](#TokenFilters) táblában felsorolt előre definiált jogkivonat-szűrők valamelyikére, vagy az index definíciójában megadott egyéni jogkivonat-szűrőre.|  
-
-> [!NOTE]
-> Szükség van arra, hogy az egyéni elemzőt úgy konfigurálja, hogy ne hozzon létre 300 karakternél hosszabb tokeneket. Ilyen jogkivonatokkal rendelkező dokumentumok indexelése sikertelen. Ha el szeretné metszeni vagy figyelmen kívül hagyja őket, használja a **TruncateTokenFilter** és a **LengthTokenFilter** .  Keresse meg a [**jogkivonat-szűrőket**](#TokenFilters) a hivatkozáshoz.
-
-<a name="CharFilter"></a>
-
-### <a name="char-filters"></a>Char-szűrők
-
- Egy char-szűrő segítségével előkészítheti a bemeneti szöveget, mielőtt a tokenizer feldolgozza azt. Például lecserélhetik bizonyos karaktereket vagy szimbólumokat. Egy egyéni elemzőben több char-szűrő is megadható. A char-szűrők a felsorolt sorrendben futnak.  
-
-| Típus | Leírás |
-| ---- | ----------- | 
-|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
-|Típus|Char Filter típus a támogatott char-szűrők listájából. Lásd az alábbi [karakteres szűrők](#char-filters-reference) táblázat **char_filter_type** oszlopát.|  
-|Beállítások|Egy adott [char-szűrő](#char-filters-reference) típus érvényes beállításainak kell lennie.|  
-
-### <a name="tokenizers"></a>Tokenizers
-
- A tokenizer a folytonos szöveget a tokenek sorrendjébe osztja, például egy mondat szövegbe való tördelését.  
-
- Egyéni analizátorok esetében pontosan egy tokenizer adhat meg. Ha egynél több tokenizer van szüksége, több egyéni elemzőt is létrehozhat, és kioszthatja őket egy mező – mező alapján az index sémában.  
-Az egyéni elemzők az alapértelmezett vagy a testreszabott beállításokkal előre definiált tokenizer is használhatnak.  
-
-| Típus | Leírás |
-| ---- | ----------- | 
-|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
-|Típus|A Tokenizer neve a támogatott tokenizers listájáról. Tekintse meg **tokenizer_type** oszlopot az alábbi [Tokenizers](#Tokenizers) táblázatban.|  
-|Beállítások|A megadott tokenizer-típus érvényes beállításainak kell lennie, amely az alábbi [Tokenizers](#Tokenizers) táblázatban látható.|  
-
-### <a name="token-filters"></a>Jogkivonat-szűrők
-
- A jogkivonat-szűrő a tokenizer által generált jogkivonatok kiszűrésére és módosítására szolgál. Megadhat például egy kisbetűs szűrőt, amely az összes karaktert kisbetűsre alakítja.   
-Egy egyéni elemzőben több jogkivonat-szűrő is megadható. A jogkivonat-szűrők a felsorolt sorrendben futnak.  
-
-| Típus | Leírás |
-| ---- | ----------- |  
-|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
-|Típus|A jogkivonat-szűrő neve a támogatott jogkivonat-szűrők listájából. Tekintse meg az alábbi [jogkivonat-szűrők](#TokenFilters) táblázat **token_filter_type** oszlopát.|  
-|Beállítások|Egy adott jogkivonat-szűrőtípus [jogkivonat-szűrőinek](#TokenFilters) kell lennie.|  
-
-<a name="PropertyReference"></a>  
-
-## <a name="property-reference"></a>Tulajdonság leírása
-
-Ez a szakasz az indexben található egyéni elemző, tokenizer, char vagy token szűrő definíciójában megadott attribútumok érvényes értékeit tartalmazza. Az Apache Lucene használatával megvalósított elemzők, tokenizers és szűrők a Lucene API dokumentációra mutató hivatkozásokat tartalmaznak.
-
-<a name="AnalyzerTable"></a>
-
-###  <a name="predefined-analyzers-reference"></a>Előre definiált elemzők referenciája
+Ha egyéni beállításokkal rendelkező beépített elemzőt szeretne használni, hozzon létre egy egyéni elemzőt az a mechanizmus, amellyel ezeket a beállításokat megadja. Ezzel szemben, ha beépített elemzőt használ, a mező definíciójában egyszerűen [hivatkoznia kell rá](search-analyzers.md#how-to-specify-analyzers) .
 
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**Leírás és beállítások**|  
-|-|-|-|  
+|-----------------|-------------------------------|---------------------------|  
 |[kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (a típus csak akkor érvényes, ha elérhetők a lehetőségek.) |Egy mező teljes tartalmát egyetlen tokenként kezeli. Ez hasznos lehet például a zip-kódok, az azonosítók és a termékek neveihez.|  
-|[minta](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|A rugalmasan elkülöníti a szöveget egy reguláris kifejezési minta használatával.<br /><br /> **Beállítások**<br /><br /> kisbetűs (típus: bool) – meghatározza, hogy a feltételek kisbetűsek-e. Az alapértelmezett érték a True (igaz).<br /><br /> [minta](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (típus: karakterlánc) – a jogkivonat-elválasztókkal egyeztetendő reguláris kifejezési minta. Az alapértelmezett érték a `\W+` , amely a nem a Word karaktereknek felel meg.<br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: string) – reguláris kifejezés jelzői. Az alapértelmezett érték egy üres karakterlánc. Megengedett értékek: CANON_EQ, CASE_INSENSITIVE, Megjegyzés, DOTALL, LITERÁL, többsoros, UNICODE_CASE, UNIX_LINES<br /><br /> indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték egy üres lista.|  
+|[minta](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|A rugalmasan elkülöníti a szöveget egy reguláris kifejezési minta használatával. </br></br>**Beállítások** </br></br>kisbetűs (típus: bool) – meghatározza, hogy a feltételek kisbetűsek-e. Az alapértelmezett érték a True (igaz). </br></br>[minta](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (típus: karakterlánc) – a jogkivonat-elválasztókkal egyeztetendő reguláris kifejezési minta. Az alapértelmezett érték a `\W+` , amely a nem a Word karaktereknek felel meg. </br></br>[Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: string) – reguláris kifejezés jelzői. Az alapértelmezett érték egy üres karakterlánc. Megengedett értékek: CANON_EQ, CASE_INSENSITIVE, Megjegyzés, DOTALL, LITERÁL, többsoros, UNICODE_CASE, UNIX_LINES </br></br>indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték egy üres lista.|  
 |[egyszerű](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.) |A szöveget nem betűkre osztja, és a szövegeket kisbetűvé alakítja. |  
-|[Standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(Más néven standard. Lucene)|StandardAnalyzer|Standard Lucene Analyzer, amely a szabványos tokenizer, a kisbetűk és a leállítási szűrőből áll.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Az alapértelmezett érték a 255. A maximális hossznál hosszabb tokenek vannak felosztva. A token maximális hossza 300 karakter lehet.<br /><br /> indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték egy üres lista.|  
+|[Standard](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) </br>(Más néven standard. Lucene)|StandardAnalyzer|Standard Lucene Analyzer, amely a szabványos tokenizer, a kisbetűk és a leállítási szűrőből áll. </br></br>**Beállítások** </br></br>maxTokenLength (típus: int) – a jogkivonat maximális hossza. Az alapértelmezett érték a 255. A maximális hossznál hosszabb tokenek vannak felosztva. A token maximális hossza 300 karakter lehet. </br></br>indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték egy üres lista.|  
 |standardasciifolding. Lucene|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.) |Standard analizátor ASCII-összecsukható szűrővel. |  
-|[állj](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|A szöveget nem betűkre osztja, a kisbetűs és a nem indexelendő szót jogkivonat-szűrőket alkalmazza.<br /><br /> **Beállítások**<br /><br /> indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték az angol nyelv előre definiált listája. |  
+|[állj](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|A szöveget nem betűkre osztja, a kisbetűs és a nem indexelendő szót jogkivonat-szűrőket alkalmazza. </br></br>**Beállítások** </br></br>indexelendő (típus: String Array) – A indexelendő listája. Az alapértelmezett érték az angol nyelv előre definiált listája. |  
 |[szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.) |A szóköz tokenizer használó elemző. A 255 karakternél hosszabb tokenek szét vannak osztva.|  
 
- <sup>1</sup> az analizátor típusa mindig előtaggal van ellátva a "#Microsoft. Azure. Search" kóddal, így a "PatternAnalyzer" kifejezés valójában "#Microsoft. Azure. Search. PatternAnalyzer" néven adható meg. Az előtagot eltávolítottuk a rövidség kedvéért, de az előtagot kötelező megadni a kódban. 
- 
-A analyzer_type csak a testreszabható elemzők számára érhető el. Ha nincsenek lehetőségek, például a Kulcsszóválasztó Analyzer esetében, nincs társítva #Microsoft. Azure. Search típus.
+ <sup>1</sup> az analizátor típusa mindig előtaggal van ellátva a "#Microsoft. Azure. Search" kóddal, így a "PatternAnalyzer" kifejezés valójában "#Microsoft. Azure. Search. PatternAnalyzer" néven adható meg. Az előtagot eltávolítottuk a rövidség kedvéért, de az előtagot kötelező megadni a kódban.
 
+A analyzer_type csak a testreszabható elemzők számára érhető el. Ha nincsenek lehetőségek, például a Kulcsszóválasztó Analyzer esetében, nincs társítva #Microsoft. Azure. Search típus.
 
 <a name="CharFilter"></a>
 
-###  <a name="char-filters-reference"></a>Char Filters-hivatkozás
+## <a name="character-filters"></a>Karakterek szűrése
 
 Az alábbi táblázatban az Apache Lucene használatával megvalósított karakterkészletek a Lucene API dokumentációhoz kapcsolódnak.
 
 |**char_filter_name**|**char_filter_type** <sup>1</sup>|**Leírás és beállítások**|  
-|-|-|-|
+|--------------------|---------------------------------|---------------------------|
 |[html_strip](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/HTMLStripCharFilter.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |Egy char-szűrő, amely megkísérli kiszűrni a HTML-szerkezeteket.|  
-|[leképezés](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Egy char-szűrő, amely a leképezések beállítással definiált leképezéseket alkalmazza. A megfeleltetés a kapzsi (a leghosszabb minta egyeztetése egy adott pont WINS esetében). A csere értéke lehet üres karakterlánc.<br /><br /> **Beállítások**<br /><br /> leképezések (típus: karakterlánc tömb) – a következő formátumú leképezések listája: "a =>b" (az "a" karakter összes előfordulását a "b" karakter váltja fel). Kötelező.|  
-|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Egy char-szűrő, amely a bemeneti karakterláncban szereplő karaktereket váltja fel. Reguláris kifejezéssel azonosítja a megőrizni kívánt karakterkészleteket, valamint egy helyettesítő mintát a cserélni kívánt karakterek azonosítására. Például a következő bemeneti szöveg = "AA bb AA bb", Pattern = "(AA) \\ \s + (bb)" Replacement = "$ 1 # $2", result = "AA # bb AA # bb".<br /><br /> **Beállítások**<br /><br /> minta (típus: karakterlánc) – kötelező.<br /><br /> csere (típus: karakterlánc) – kötelező.|  
+|[leképezés](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Egy char-szűrő, amely a leképezések beállítással definiált leképezéseket alkalmazza. A megfeleltetés a kapzsi (a leghosszabb minta egyeztetése egy adott pont WINS esetében). A csere értéke lehet üres karakterlánc.  </br></br>**Beállítások**  </br></br> leképezések (típus: karakterlánc tömb) – a következő formátumú leképezések listája: "a =>b" (az "a" karakter összes előfordulását a "b" karakter váltja fel). Kötelező.|  
+|[pattern_replace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Egy char-szűrő, amely a bemeneti karakterláncban szereplő karaktereket váltja fel. Reguláris kifejezéssel azonosítja a megőrizni kívánt karakterkészleteket, valamint egy helyettesítő mintát a cserélni kívánt karakterek azonosítására. Például a következő bemeneti szöveg = "AA bb AA bb", Pattern = "(AA) \\ \s + (bb)" Replacement = "$ 1 # $2", result = "AA # bb AA # bb".  </br></br>**Beállítások**  </br></br>minta (típus: karakterlánc) – kötelező.  </br></br>csere (típus: karakterlánc) – kötelező.|  
 
  <sup>1</sup> a karakteres szűrőtípus mindig előtaggal van ellátva a "#Microsoft. Azure. Search" kóddal, így a "MappingCharFilter" kifejezés valójában "#Microsoft. Azure. Search. MappingCharFilter. Eltávolította az előtagot a táblázat szélességének csökkentése érdekében, de ne feledje, hogy belefoglalja a kódot. Figyelje meg, hogy char_filter_type csak a testreszabható szűrőkhöz adható meg. Ha nincsenek beállítások, mint a html_strip esetében, nincs társított #Microsoft. Azure. Search típus.
 
-<a name="Tokenizers"></a>
+<a name="tokenizers"></a>
 
-###  <a name="tokenizers-reference"></a>Tokenizers-hivatkozás
+## <a name="tokenizers"></a>Tokenizers
 
-Az alábbi táblázatban az Apache Lucene használatával megvalósított tokenizers az Lucene API dokumentációhoz kapcsolódnak.
+A tokenizer a folytonos szöveget a tokenek sorrendjébe osztja, például egy mondat szövegbe való tördelését. Az alábbi táblázatban az Apache Lucene használatával megvalósított tokenizers az Lucene API dokumentációhoz kapcsolódnak.
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**Leírás és beállítások**|  
-|-|-|-|  
-|[klasszikus](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Nyelvtanon alapuló tokenizer, amely a legtöbb európai nyelvi dokumentum feldolgozására alkalmas.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
-|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|A Tokenizes egy szélétől az adott méret (ek) n-grammba való bevitelét adja meg.<br /><br /> **Beállítások**<br /><br /> minGram (típus: int) – alapértelmezett: 1, maximum: 300.<br /><br /> maxGram (típus: int) – alapértelmezett: 2, maximum: 300. Nagyobbnak kell lennie, mint minGram.<br /><br /> tokenChars (típus: String Array) – a tokenekben megőrizni kívánt karakteres osztályok. Megengedett értékek: <br />"Letter", "Digit", "szóköz", "központozás", "szimbólum". Az alapértelmezett érték egy üres tömb – megtartja az összes karaktert. |  
-|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|A teljes bemenet egyetlen tokenként való kibocsátása.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 256, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
+|------------------|-------------------------------|---------------------------|  
+|[klasszikus](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|Nyelvtanon alapuló tokenizer, amely a legtöbb európai nyelvi dokumentum feldolgozására alkalmas.  </br></br>**Beállítások**  </br></br>maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
+|[edgeNGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|A Tokenizes egy szélétől az adott méret (ek) n-grammba való bevitelét adja meg.  </br></br> **Beállítások**  </br></br>minGram (típus: int) – alapértelmezett: 1, maximum: 300.  </br></br>maxGram (típus: int) – alapértelmezett: 2, maximum: 300. Nagyobbnak kell lennie, mint minGram.  </br></br>tokenChars (típus: String Array) – a tokenekben megőrizni kívánt karakteres osztályok. Megengedett értékek: </br>"Letter", "Digit", "szóköz", "központozás", "szimbólum". Az alapértelmezett érték egy üres tömb – megtartja az összes karaktert. |  
+|[keyword_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|A teljes bemenet egyetlen tokenként való kibocsátása.  </br></br>**Beállítások**  </br></br>maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 256, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
 |[levél](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |Nem betűkre osztja a szöveget. A 255 karakternél hosszabb tokenek szét vannak osztva.|  
 |[kisbetűket](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseTokenizer.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |A szöveget nem betűkre osztja, és a szövegeket kisbetűvé alakítja. A 255 karakternél hosszabb tokenek szét vannak osztva.|  
-| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Szöveg felosztása nyelvspecifikus szabályok használatával.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a token maximális hossza, alapértelmezett értéke: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva. A 300 karakternél hosszabb tokenek először a 300 hosszúságú jogkivonatokra vannak bontva, majd ezek a tokenek a maxTokenLength-készlet alapján vannak felosztva.<br /><br />isSearchTokenizer (típus: bool) – az értéke TRUE (igaz), ha a keresési tokenizer használja, akkor FALSE (hamis) értékűre van állítva, ha indexelési tokenizer használják. <br /><br /> nyelv (típus: karakterlánc) – használandó nyelv, alapértelmezett érték: "English". Az engedélyezett értékek a következők:<br />"Bangla", "bolgár", "katalán", "chineseSimplified", "chineseTraditional", "horvát", "Cseh", "dán", "holland", "English", "francia", "német", "görög", "ógörög", "hindi", "Izlandi", "indonéz", "olasz", "Japán", "kannada", "koreai", "maláj", "Malayalam", "marathi", "norwegianBokmaal", "lengyel", "portugál", "portugueseBrazilian", "punjabi", "román", "orosz", "serbianCyrillic", "serbianLatin", "szlovén", "spanyol", "svéd", "tamil", "telugu", "Thai", "ukrán", "urdu", "vietnami" |
-| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| A szöveget nyelvspecifikus szabályokkal osztja el, és csökkenti a szavakat az alapűrlapokra.<br /><br /> **Beállítások**<br /><br />maxTokenLength (típus: int) – a token maximális hossza, alapértelmezett értéke: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva. A 300 karakternél hosszabb tokenek először a 300 hosszúságú jogkivonatokra vannak bontva, majd ezek a tokenek a maxTokenLength-készlet alapján vannak felosztva.<br /><br /> isSearchTokenizer (típus: bool) – az értéke TRUE (igaz), ha a keresési tokenizer használja, akkor FALSE (hamis) értékűre van állítva, ha indexelési tokenizer használják.<br /><br /> nyelv (típus: karakterlánc) – használandó nyelv, alapértelmezett érték: "English". Az engedélyezett értékek a következők:<br />"Arab", "Bangla", "bolgár", "katalán", "horvát", "Cseh", "dán", "holland", "English", "észt", "finn", "francia", "német", "görög", "spanyol", "héber", "hindi", "magyar", "Izlandi", "indonéz", "olasz", "kannada", "lett", "litván", "maláj", "Malayalam", "marathi", "norwegianBokmaal", "lengyel", "portugál", "portugueseBrazilian", "punjabi", "román", "orosz", "serbianCyrillic", "serbianLatin", "szlovák", "szlovén", "spanyol", "svéd", "tamil", "telugu", "török", "ukrán", "urdu" |
-|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|A megadott méret (ek) n-grammba Tokenizes a bemenetet.<br /><br /> **Beállítások**<br /><br /> minGram (típus: int) – alapértelmezett: 1, maximum: 300.<br /><br /> maxGram (típus: int) – alapértelmezett: 2, maximum: 300. Nagyobbnak kell lennie, mint minGram. <br /><br /> tokenChars (típus: String Array) – a tokenekben megőrizni kívánt karakteres osztályok. Megengedett értékek: "Letter", "Digit", "szóköz", "központozás", "szimbólum". Az alapértelmezett érték egy üres tömb – megtartja az összes karaktert. |  
-|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Tokenizer a Path-hez hasonló hierarchiák esetében.<br /><br /> **Beállítások**<br /><br /> határolójel (típus: karakterlánc) – alapértelmezett: "/.<br /><br /> csere (típus: karakterlánc) – Ha be van állítva, a leválasztó karaktert váltja fel. Az alapértelmezett érték ugyanaz, mint a határolójel értéke.<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 300, maximum: 300. A maxTokenLength-nél hosszabb elérési utak figyelmen kívül lesznek hagyva.<br /><br /> fordított (típus: bool) – igaz értéke esetén a tokent fordított sorrendben hozza létre. Alapértelmezett érték: false (hamis).<br /><br /> kihagyás (típus: bool) – a kihagyni kívánt kezdeti tokenek. Az alapértelmezett érték a 0.|  
-|[minta](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Ez a tokenizer regex-mintázatot használ a különböző tokenek összeállításához.<br /><br /> **Beállítások**<br /><br /> [minta](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (típus: karakterlánc) – reguláris kifejezési minta a jogkivonat-elválasztók egyeztetéséhez. Az alapértelmezett érték a `\W+` , amely a nem a Word karaktereknek felel meg. <br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: string) – reguláris kifejezés jelzői. Az alapértelmezett érték egy üres karakterlánc. Megengedett értékek: CANON_EQ, CASE_INSENSITIVE, Megjegyzés, DOTALL, LITERÁL, többsoros, UNICODE_CASE, UNIX_LINES<br /><br /> Csoport (típus: int) – a tokenekre kinyerni kívánt csoport. Az alapértelmezett érték:-1 (felosztás).|
-|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Megszakítja a szöveget a [Unicode-szöveg szegmentálási szabályai](https://unicode.org/reports/tr29/)után.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
-|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes URL-címeket és e-maileket egyetlen tokenként.<br /><br /> **Beállítások**<br /><br /> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
+| microsoft_language_tokenizer| MicrosoftLanguageTokenizer| Szöveg felosztása nyelvspecifikus szabályok használatával.  </br></br>**Beállítások**  </br></br>maxTokenLength (típus: int) – a token maximális hossza, alapértelmezett értéke: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva. A 300 karakternél hosszabb tokenek először a 300 hosszúságú jogkivonatokra vannak bontva, majd ezek a tokenek a maxTokenLength-készlet alapján vannak felosztva.  </br></br>isSearchTokenizer (típus: bool) – az értéke TRUE (igaz), ha a keresési tokenizer használja, akkor FALSE (hamis) értékűre van állítva, ha indexelési tokenizer használják. </br></br>nyelv (típus: karakterlánc) – használandó nyelv, alapértelmezett érték: "English". Az engedélyezett értékek a következők: </br>"Bangla", "bolgár", "katalán", "chineseSimplified", "chineseTraditional", "horvát", "Cseh", "dán", "holland", "English", "francia", "német", "görög", "ógörög", "hindi", "Izlandi", "indonéz", "olasz", "Japán", "kannada", "koreai", "maláj", "Malayalam", "marathi", "norwegianBokmaal", "lengyel", "portugál", "portugueseBrazilian", "punjabi", "román", "orosz", "serbianCyrillic", "serbianLatin", "szlovén", "spanyol", "svéd", "tamil", "telugu", "Thai", "ukrán", "urdu", "vietnami" |
+| microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| A szöveget nyelvspecifikus szabályokkal osztja el, és csökkenti a szavakat az alapűrlapokra. </br></br>**Beállítások** </br></br>maxTokenLength (típus: int) – a token maximális hossza, alapértelmezett értéke: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva. A 300 karakternél hosszabb tokenek először a 300 hosszúságú jogkivonatokra vannak bontva, majd ezek a tokenek a maxTokenLength-készlet alapján vannak felosztva. </br></br> isSearchTokenizer (típus: bool) – az értéke TRUE (igaz), ha a keresési tokenizer használja, akkor FALSE (hamis) értékűre van állítva, ha indexelési tokenizer használják. </br></br>nyelv (típus: karakterlánc) – használandó nyelv, alapértelmezett érték: "English". Az engedélyezett értékek a következők: </br>"Arab", "Bangla", "bolgár", "katalán", "horvát", "Cseh", "dán", "holland", "English", "észt", "finn", "francia", "német", "görög", "spanyol", "héber", "hindi", "magyar", "Izlandi", "indonéz", "olasz", "kannada", "lett", "litván", "maláj", "Malayalam", "marathi", "norwegianBokmaal", "lengyel", "portugál", "portugueseBrazilian", "punjabi", "román", "orosz", "serbianCyrillic", "serbianLatin", "szlovák", "szlovén", "spanyol", "svéd", "tamil", "telugu", "török", "ukrán", "urdu" |
+|[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|A megadott méret (ek) n-grammba Tokenizes a bemenetet. </br></br>**Beállítások** </br></br>minGram (típus: int) – alapértelmezett: 1, maximum: 300. </br></br>maxGram (típus: int) – alapértelmezett: 2, maximum: 300. Nagyobbnak kell lennie, mint minGram. </br></br>tokenChars (típus: String Array) – a tokenekben megőrizni kívánt karakteres osztályok. Megengedett értékek: "Letter", "Digit", "szóköz", "központozás", "szimbólum". Az alapértelmezett érték egy üres tömb – megtartja az összes karaktert. |  
+|[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Tokenizer a Path-hez hasonló hierarchiák esetében. **Beállítások** </br></br>határolójel (típus: karakterlánc) – alapértelmezett: "/. </br></br>csere (típus: karakterlánc) – Ha be van állítva, a leválasztó karaktert váltja fel. Az alapértelmezett érték ugyanaz, mint a határolójel értéke. </br></br>maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 300, maximum: 300. A maxTokenLength-nél hosszabb elérési utak figyelmen kívül lesznek hagyva. </br></br>fordított (típus: bool) – igaz értéke esetén a tokent fordított sorrendben hozza létre. Alapértelmezett érték: false (hamis). </br></br>kihagyás (típus: bool) – a kihagyni kívánt kezdeti tokenek. Az alapértelmezett érték a 0.|  
+|[minta](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Ez a tokenizer regex-mintázatot használ a különböző tokenek összeállításához. </br></br>**Beállítások** </br></br> [minta](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (típus: karakterlánc) – reguláris kifejezési minta a jogkivonat-elválasztók egyeztetéséhez. Az alapértelmezett érték a `\W+` , amely a nem a Word karaktereknek felel meg. </br></br>[Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: string) – reguláris kifejezés jelzői. Az alapértelmezett érték egy üres karakterlánc. Megengedett értékek: CANON_EQ, CASE_INSENSITIVE, Megjegyzés, DOTALL, LITERÁL, többsoros, UNICODE_CASE, UNIX_LINES </br></br>Csoport (típus: int) – a tokenekre kinyerni kívánt csoport. Az alapértelmezett érték:-1 (felosztás).|
+|[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Megszakítja a szöveget a [Unicode-szöveg szegmentálási szabályai](https://unicode.org/reports/tr29/)után. </br></br>**Beállítások** </br></br>maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
+|[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes URL-címeket és e-maileket egyetlen tokenként. </br></br>**Beállítások** </br></br> maxTokenLength (típus: int) – a jogkivonat maximális hossza. Alapértelmezett: 255, maximum: 300. A maximális hossznál hosszabb tokenek vannak felosztva.|  
 |[szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.) |Szóközre osztja a szöveget. A 255 karakternél hosszabb tokenek szét vannak osztva.|  
 
  <sup>1</sup> a Tokenizer-típusok mindig előtaggal vannak ellátva a "#Microsoft. Azure. Search" kóddal, így a "ClassicTokenizer" kifejezés valójában "#Microsoft. Azure. Search. ClassicTokenizer" lehet. Eltávolította az előtagot a táblázat szélességének csökkentése érdekében, de ne feledje, hogy belefoglalja a kódot. Figyelje meg, hogy tokenizer_type csak a testre szabható tokenizers esetében adható meg. Ha nincsenek beállítások, mint például a tokenizer betűjele, nincs társított #Microsoft. Azure. Search típus.
 
 <a name="TokenFilters"></a>
 
-###  <a name="token-filters-reference"></a>Jogkivonat-szűrők leírása
+## <a name="token-filters"></a>Jogkivonat-szűrők
+
+A jogkivonat-szűrő a tokenizer által generált jogkivonatok kiszűrésére és módosítására szolgál. Megadhat például egy kisbetűs szűrőt, amely az összes karaktert kisbetűsre alakítja. Egy egyéni elemzőben több jogkivonat-szűrő is megadható. A jogkivonat-szűrők a felsorolt sorrendben futnak. 
 
 Az alábbi táblázatban az Apache Lucene használatával megvalósított jogkivonat-szűrők a Lucene API dokumentációjában vannak társítva.
 
@@ -344,7 +273,7 @@ Az alábbi táblázatban az Apache Lucene használatával megvalósított jogkiv
 |[keyword_repeat](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/KeywordRepeatFilter.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |Minden bejövő tokent kétszer, egy kulcsszóként és egyszer, nem pedig kulcsszóként bocsát ki. |  
 |[kstem](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/en/KStemFilter.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |Nagy teljesítményű kstem-szűrő angol nyelven. |  
 |[length](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LengthFilter.html) (hossz)|LengthTokenFilter|Eltávolítja a túl hosszú vagy túl rövid szavakat.<br /><br /> **Beállítások**<br /><br /> min (típus: int) – a minimális szám. Alapértelmezett: 0, maximum: 300.<br /><br /> Max (típus: int) – a maximális szám. Alapértelmezett: 300, maximum: 300.|  
-|[korlátot](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LimitTokenCountFilter.html)|Microsoft. Azure. Search. LimitTokenFilter|Az indexelés során korlátozza a tokenek számát.<br /><br /> **Beállítások**<br /><br /> maxTokenCount (típus: int) – a létrehozni kívánt tokenek maximális száma. Az alapértelmezett érték 1.<br /><br /> consumeAllTokens (típus: bool) – azt határozza meg, hogy a bemenetből származó összes tokent akkor is fel kell-e használni, ha a maxTokenCount elérésekor. Az alapértelmezett érték a false.|  
+|[korlát](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/miscellaneous/LimitTokenCountFilter.html)|Microsoft. Azure. Search. LimitTokenFilter|Az indexelés során korlátozza a tokenek számát.<br /><br /> **Beállítások**<br /><br /> maxTokenCount (típus: int) – a létrehozni kívánt tokenek maximális száma. Az alapértelmezett érték 1.<br /><br /> consumeAllTokens (típus: bool) – azt határozza meg, hogy a bemenetből származó összes tokent akkor is fel kell-e használni, ha a maxTokenCount elérésekor. Az alapértelmezett érték a false.|  
 |[kisbetűket](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)|(a típus csak akkor érvényes, ha elérhetők a lehetőségek.)  |Normalizálja a jogkivonat szövegét az kisbetű értékre. |  
 |[nGram_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html)|NGramTokenFilterV2|Az adott méret (ek) n-grammját hozza létre.<br /><br /> **Beállítások**<br /><br /> minGram (típus: int) – alapértelmezett: 1, maximum: 300.<br /><br /> maxGram (típus: int) – alapértelmezett: 2, maximális 300. Nagyobbnak kell lennie, mint minGram.|  
 |[pattern_capture](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternCaptureGroupTokenFilter.html)|PatternCaptureTokenFilter|A Java regexek használatával több tokent bocsát ki, egyet az egyes rögzítési csoportokhoz egy vagy több mintában.<br /><br /> **Beállítások**<br /><br /> minták (típus: String Array) – az egyes jogkivonatokkal egyeztetendő minták listája. Kötelező.<br /><br /> preserveOriginal (típus: bool) – igaz értékre állítva az eredeti token visszaadásához, akkor is, ha az egyik minta megegyezik, alapértelmezés: true |  
@@ -370,8 +299,8 @@ Az alábbi táblázatban az Apache Lucene használatával megvalósított jogkiv
 
  <sup>1</sup> a jogkivonat-szűrési típusok mindig előtaggal vannak ellátva a "#Microsoft. Azure. Search" kóddal, így a "ArabicNormalizationTokenFilter" kifejezés valójában "#Microsoft. Azure. Search. ArabicNormalizationTokenFilter" néven adható meg.  Eltávolította az előtagot a táblázat szélességének csökkentése érdekében, de ne feledje, hogy belefoglalja a kódot.  
 
+## <a name="see-also"></a>Lásd még
 
-## <a name="see-also"></a>Lásd még  
- [Azure Cognitive Search REST API-k](/rest/api/searchservice/)   
- [Elemzők az Azure-ban Cognitive Search > példák](search-analyzers.md#examples)    
- [Index létrehozása &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)
+- [Azure Cognitive Search REST API-k](/rest/api/searchservice/)
+- [Elemzők az Azure Cognitive Searchban (példák)](search-analyzers.md#examples)
+- [Index létrehozása (REST)](/rest/api/searchservice/create-index)

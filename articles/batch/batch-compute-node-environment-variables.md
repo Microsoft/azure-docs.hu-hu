@@ -3,12 +3,12 @@ title: Feladat-futtatókörnyezet környezeti változói
 description: A feladat futásidejű környezeti változóinak útmutatója és referenciája Azure Batch elemzésekhez.
 ms.topic: conceptual
 ms.date: 12/30/2020
-ms.openlocfilehash: c1d9ffb3fe6775b061863656adcb7f45f8840997
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830887"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669984"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
 
@@ -36,7 +36,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-| Változó neve                     | Leírás                                                              | Rendelkezésre állás | Példa |
+| Változó neve                     | Description                                                              | Rendelkezésre állás | Példa |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Annak a Batch-fióknak a neve, amelyhez a feladat tartozik.                  | Minden feladat.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | A Batch-fiók URL-címe. | Minden feladat. | `https://myaccount.westus.batch.azure.com` |
@@ -61,9 +61,11 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 | AZ_BATCH_TASK_ID                | Az aktuális tevékenység azonosítója. | Minden feladat, kivéve a kezdési feladatot. | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | Egy [többpéldányos feladat](batch-mpi.md)elsődleges feladatához és minden feladatához azonos könyvtár elérési útja. Az elérési út minden olyan csomóponton megtalálható, amelyen a többpéldányos feladat fut, és az olvasási/írási hozzáférés az adott csomóponton futó feladatok parancsai számára (a [koordinációs parancs](batch-mpi.md#coordination-command) és az [alkalmazási parancs](batch-mpi.md#application-command)egyaránt elérhető). Az alfeladatok vagy a más csomópontokon végrehajtandó elsődleges feladatok nem rendelkeznek távoli hozzáféréssel ehhez a címtárhoz (nem "megosztott" hálózati könyvtár). | Több példányos elsődleges és alfeladatok. | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | A csomóponton a [feladat munkakönyvtárának](files-and-directories.md) teljes elérési útja. A jelenleg futó feladat írási/olvasási hozzáféréssel rendelkezik ehhez a címtárhoz. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_WORKING_DIR       | A csomóponton a [feladat munkakönyvtárának](files-and-directories.md) teljes elérési útja. A jelenleg futó feladat írási/olvasási hozzáféréssel rendelkezik ehhez a címtárhoz. | Minden feladat. | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_RESERVED_EPHEMERAL_DISK_SPACE_BYTES | A lemezterület aktuális küszöbértéke, amelyre a virtuális gép megjelölve lesz `DiskFull` . | Minden feladat. | 1000000 |
 | CCP_NODES                       | A [többpéldányos feladathoz](batch-mpi.md)lefoglalt csomópontok és magok száma. A csomópontok és a magok formátuma az alábbiak szerint jelenik meg: `numNodes<space>node1IP<space>node1Cores<space>`<br/>`node2IP<space>node2Cores<space> ...`, ahol a csomópontok számát egy vagy több csomópont IP-címe, valamint a magok száma követi. |  Több példányos elsődleges és alfeladatok. |`2 10.0.0.4 1 10.0.0.5 1` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [használhat környezeti változókat a Batch](jobs-and-tasks.md#environment-settings-for-tasks)szolgáltatással.
 - További információ a [Batch-fájlokról és-címtárakról](files-and-directories.md)

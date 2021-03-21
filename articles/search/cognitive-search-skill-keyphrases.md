@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8aafb08ff0ccc9391071f796450e69f87de279ba
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102547832"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Kulcsszókeresés kognitív képesség
@@ -37,7 +37,7 @@ A rekordok maximális méretének 50 000 karakternek kell lennie, a következők
 
 A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
-| Bevitelek | Leírás |
+| Bevitelek | Description |
 |---------------------|-------------|
 | `defaultLanguageCode` | Választható A nyelvet explicit módon nem megadó dokumentumokra alkalmazandó nyelvi kód.  Ha nincs megadva az alapértelmezett nyelvkód, a rendszer az angol (en) nyelvet használja alapértelmezett nyelvi kódnak. <br/> [A támogatott nyelvek teljes listáját](../cognitive-services/text-analytics/language-support.md)itt tekintheti meg. |
 | `maxKeyPhraseCount`   | Választható A létrehozni kívánt legfontosabb kifejezések maximális száma. |
@@ -45,14 +45,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bevitel  | Leírás |
+| Bevitel  | Description |
 |--------------------|-------------|
 | `text` | Az elemezni kívánt szöveg.|
 | `languageCode`    |  A rekordok nyelvét jelző sztring. Ha ez a paraméter nincs megadva, a rendszer az alapértelmezett nyelvkódot fogja használni a rekordok elemzéséhez. <br/>[A támogatott nyelvek teljes listája](../cognitive-services/text-analytics/language-support.md)|
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet     | Leírás |
+| Kimenet     | Description |
 |--------------------|-------------|
 | `keyPhrases` | A bemeneti szövegből kinyert fő kifejezések listája. A legfontosabb kifejezések fontossági sorrendben lesznek visszaadva. |
 

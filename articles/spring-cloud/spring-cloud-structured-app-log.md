@@ -8,10 +8,10 @@ ms.date: 02/05/2021
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 844530c6d1650b5fddd27b10c775c4364a3f5147
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102124465"
 ---
 # <a name="structured-application-log-for-azure-spring-cloud"></a>Az Azure Spring Cloud strukturált alkalmazási naplója
@@ -23,16 +23,16 @@ A naplózási lekérdezési élmény javítása érdekében JSON formátumban ke
 
 **JSON-séma követelményei:**
 
-| JSON-kulcs      | JSON-érték típusa|  Kötelező | Oszlop Log Analytics| Leírás |
+| JSON-kulcs      | JSON-érték típusa|  Kötelező | Oszlop Log Analytics| Description |
 | --------------| ------------|-----------|-----------------|--------------------------|
-| időbélyeg     | sztring      |     Igen   | AppTimestamp    | időbélyeg UTC formátumban  |
+| időbélyeg     | sztring      |     Yes   | AppTimestamp    | időbélyeg UTC formátumban  |
 | Tuskózó        | sztring      |     No    | Tuskózó          | Tuskózó                   |
 | szint         | sztring      |     No    | CustomLevel     | naplózási szint                |
 | szál        | sztring      |     No    | Szál          | szál                   |
 | message       | sztring      |     No    | Üzenet         | napló üzenete              |
 | stackTrace    | sztring      |     No    | StackTrace      | kivételek veremének nyomkövetése    |
 | exceptionClass| sztring      |     No    | ExceptionClass  | kivételi osztály neve     |
-| MDC           | beágyazott JSON |     Nem    |                 | leképezett diagnosztikai környezet|
+| MDC           | beágyazott JSON |     No    |                 | leképezett diagnosztikai környezet|
 | MDC. traceId   | sztring      |     No    | TraceId         |az elosztott nyomkövetés nyomkövetési azonosítója|
 | MDC. spanId    | sztring      |     No    | SpanId          |elosztott nyomkövetés tartományának azonosítója |
 |               |             |           |                 |                          |

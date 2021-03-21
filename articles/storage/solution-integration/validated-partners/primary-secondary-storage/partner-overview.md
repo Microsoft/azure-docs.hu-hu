@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 5fa17083be01a702ebac888eecc17a4969b754ef
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103561595"
 ---
 # <a name="azure-storage-partners-for-primary-and-secondary-storage"></a>Azure Storage-partnerek elsődleges és másodlagos tároláshoz
@@ -21,7 +21,7 @@ Ez a cikk azokat a Microsoft partneri vállalatokat mutatja be, amelyek hálóza
 
 ## <a name="verified-partners"></a>Ellenőrzött partnerek
 
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Nasuni](./media/nasuni-logo.png) |**Nasuni**<br>A Nasuni egy olyan file Storage platform, amely a vállalati NAS és fájlkiszolgálók helyébe lép, beleértve a BCDR és a lemezes rétegek kapcsolódó infrastruktúráját. A virtuális peremhálózati berendezések gyorsan elérhetővé és szinkronizálják a fájlokat a felhővel. A felügyeleti konzol lehetővé teszi több tárolóhely felügyeletét az egyik helyről, beleértve a fájl-infrastruktúra kiépítésének, figyelésének, szabályozásának és jelentésének lehetőségét. A felhő folyamatos verziószámozása a fájlok visszaállításának időpontját percek alatt megközelíti.<br><br>Az Azure-ra épülő Nasuni Cloud file Storage szolgáltatás a hagyományos NAS-és fájlkiszolgálók tetszőleges számú helyen történő megadásával kiküszöböli a Felhőbeli megoldást. A Nasuni Cloud file Storage végtelen tárterületet, biztonsági mentést, vész-helyreállítást és többhelyes fájlmegosztást biztosít. A Nasuni az adatközpontok közötti kezdeményezésekhez, a többhelyes fájlok szinkronizálásához, a megosztáshoz és az együttműködéshez, valamint a VDI-környezetek felhőalapú tárolási társaként használt szoftver-szolgáltatás.|[Partner oldal](https://www.nasuni.com/partner/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/nasunicorporation.nasuni)|
 | ![Panzura](./media/panzura-logo.png) |**Panzura**<br>A Panzura a háló, amely átalakítja az Azure Cloud Storage-t egy nagy teljesítményű globális fájlrendszerbe. Azáltal, hogy egyetlen mérvadó adatforrást biztosít az összes felhasználó számára, a Panzura lehetővé teszi a vállalatok számára, hogy globálisan elérhető adatközpontként használják az Azure-t, az egyhelyes NAS összes funkcióját és sebességét, beleértve az automatikus fájl-zárolást, az azonnali globális adatkonzisztenciaet és a helyi fájl műveleti teljesítményét. |[Partner oldal](https://panzura.com/partners/microsoft-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/panzura-file-system.panzura-freedom-filer)|

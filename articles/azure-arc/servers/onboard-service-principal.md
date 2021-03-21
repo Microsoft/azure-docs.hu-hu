@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan csatlakoztathatók a gépek a
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102175940"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Hibrid gépek összekötése az Azure-on nagy méretekben

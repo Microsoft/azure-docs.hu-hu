@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93e9d9a552ab1bff16ca15d6bb11faeb5d47a503
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c27916afb0d199bcb32db9d43202e552a4a04f53
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204366"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593135"
 ---
 # <a name="monitor-cloud-tiering"></a>Felhőbeli rétegek figyelése
 A felhő-előállítók házirendjét kétféleképpen figyelheti: a kiszolgálói végpont tulajdonságai panel és a Azure Monitor.
@@ -55,7 +55,7 @@ Ahhoz, hogy pontosabb legyen a gráfok megjelenítésére vonatkozó informáci�
  
 A Azure File Sync metrikáinak különböző típusaival és azok használatának módjával kapcsolatos részletekért lásd: [Azure file Sync figyelése](storage-sync-files-monitoring.md).
 
-A metrikák használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)foglalkozó témakörben talál.
+A metrikák használatáról további információt az [Azure Metrikaböngésző használatának első lépéseivel](../../azure-monitor/essentials/metrics-getting-started.md)foglalkozó témakörben talál.
 
 Ha módosítani szeretné a Felhőbeli adatkezelési szabályzatot, tekintse meg a [felhőalapú rétegek kiválasztására](storage-sync-choose-cloud-tiering-policies.md)vonatkozó házirendeket.
 

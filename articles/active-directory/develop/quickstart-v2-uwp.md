@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 1552dfedc4510ba22e58d166d12a356ba546c092
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 88fd6260df0039e960ac87b4b83d43ea497a58b0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103464"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658509"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
@@ -78,6 +78,8 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > [!div class="sxs-lookup" renderon="portal" id="autoupdate" class="nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
 > A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra.
@@ -91,7 +93,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >
 > 1. Bontsa ki a. zip-archívumot egy helyi mappába a meghajtó gyökeréhez. Például a **C:\Azure-Samples**.
 > 1. Nyissa meg a projektet a Visual Studióban. Ha a rendszer kéri, telepítse a **univerzális Windows-platform-fejlesztési** számítási feladatot és az egyes SDK-összetevőket.
-> 1. A *MainPage.XAML.cs* módosítsa a változó értékét a `ClientId` korábban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítójára** .
+> 1. A *Főoldal. XAML. cs* fájlban módosítsa a változó értékét a `ClientId` korábban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítójára** .
 >
 >    ```csharp
 >    private const string ClientId = "Enter_the_Application_Id_here";

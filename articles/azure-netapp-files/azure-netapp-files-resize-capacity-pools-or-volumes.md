@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 869f46207b940521ee0b66b5afa9c6e2718ab04f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012476"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594478"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>A kapacitáskészlet vagy kötet átméretezése
 Szükség szerint módosíthatja a kapacitási készlet vagy a kötet méretét. 
@@ -40,7 +40,22 @@ Szükség szerint módosíthatja a kötetek méretét. A kötet kapacitásfogyas
 2. Kattintson a jobb gombbal az átméretezni kívánt kötet nevére, vagy kattintson a "..." elemre. ikon a kötet sor végén a helyi menü megjelenítéséhez.
 3. A kötet átméretezéséhez vagy törléséhez használja a helyi menü beállításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="resize-a-cross-region-replication-destination-volume"></a>Régiók közötti replikálási cél kötetének átméretezése 
+
+[Régiók közötti replikációs](cross-region-replication-introduction.md) kapcsolatban a rendszer automatikusan átméretezi a célként megadott kötetet a forrás kötet mérete alapján. Így nem kell külön átméreteznie a cél kötetét. Ez az automatikus átméretezési viselkedés akkor alkalmazható, ha a kötetek aktív replikációs kapcsolatban vannak, vagy amikor a replikálási társítás megszakadt az [újraszinkronizálási művelettel](cross-region-replication-manage-disaster-recovery.md#resync-replication). 
+
+A következő táblázat a cél kötet átméretezési viselkedését írja le a [tükrözési állapot](cross-region-replication-display-health-status.md)alapján:
+
+|  Tükrözés állapota  | Cél kötet átméretezési viselkedése |
+|-|-|
+| *Tükrözött* | Ha a célként megadott kötet inicializálása megtörtént, és készen áll a tükrözési frissítések fogadására, a kötet átméretezése automatikusan átméretezi a célhely köteteit. |
+| *Törött* | Ha átméretezi a forrás kötetet, és a tükrözött állapot *megszakad*, a rendszer automatikusan átméretezi a célként megadott kötetet az [újraszinkronizálási művelettel](cross-region-replication-manage-disaster-recovery.md#resync-replication).  |
+| *Nincs inicializálva* | Ha átméretezi a forrás kötetet, és a tükrözés állapota még nincs *inicializálva*, a célként megadott kötet átméretezését manuálisan kell elvégezni. Ezért javasoljuk, hogy várjon, amíg az inicializálás befejeződik (azaz amikor a tükrözött állapot *tükrözött* lesz) a forrás kötet átméretezéséhez. | 
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy a kapacitás-készletek elegendő belmagassággal rendelkeznek a régiók közötti replikálás forrásához és a célként megadott kötetekhez is. Ha átméretezi a forrás kötetet, a rendszer automatikusan átméretezi a célként megadott kötetet. Ha azonban a célként megadott kötetet üzemeltető kapacitás-készlet nem rendelkezik elegendő belmagassággal, a forrás és a cél kötetek átméretezése sikertelen lesz.
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 - [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)
