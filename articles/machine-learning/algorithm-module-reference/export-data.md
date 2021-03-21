@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421311"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656906"
 ---
 # <a name="export-data-module"></a>Adatmodul exportálása
 
@@ -51,13 +51,16 @@ Az adatexportálás előtt először regisztrálnia kell egy adattárt a Azure M
 
     Ha be van jelölve, a rendszer ismét végrehajtja a modult a kimenet újralétrehozásához.
 
-1. Adja meg az elérési utat abban az adattárban, ahol az adattároló található. Az elérési út relatív elérési út. Az üres elérési utak vagy URL-elérési utak nem engedélyezettek.
+1. Adja meg az elérési utat abban az adattárban, ahol az adattároló található. Az elérési út relatív elérési út. Tegyük fel `data/testoutput` például, hogy az **exportálási adatok** bemeneti adatok a `data/testoutput` modul **kimeneti beállításaiban** beállított adattárba lesznek exportálva.
+
+    > [!NOTE]
+    > Az üres elérési utak vagy **URL-elérési utak** nem engedélyezettek.
 
 
 1. **Fájlformátum** esetén válassza ki azt a formátumot, amelyben tárolni szeretné az adattárolást.
  
 1. A folyamat elküldése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

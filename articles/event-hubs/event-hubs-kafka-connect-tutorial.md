@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használható a Kafka az Azure Even
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935155"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>Az Apache Kafka Connect-támogatás és az Azure Event Hubs integrálása
@@ -163,7 +163,7 @@ Ez a szakasz végigvezeti a FileStreamSource és a FileStreamSink összekötő e
 ### <a name="cleanup"></a>Felesleges tartalmak törlése
 A Kafka Connect olyan eseményközpont-témaköröket hoz létre a konfigurációk, eltolások és állapotok tárolására, amelyek a Connect-fürt leállítása után is megmaradnak. Ha nem kívánja megőrizni ezeket, javasoljuk, hogy törölje a témaköröket. A bemutató során létrehozott `connect-quickstart` eseményközpontot is érdemes törölni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Kafka-Event Hubsről, tekintse meg a következő cikkeket:  
 

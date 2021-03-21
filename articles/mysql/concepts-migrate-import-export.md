@@ -7,20 +7,19 @@ ms.service: mysql
 ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 391a38cd3d1e2ffb790587b6c60ed54992d14d2d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 721939ee55976f9eb0c4dff24067036a9d0f4164
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103561991"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591860"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>A MySQL-adatbázis migrálása Importálás és exportálás használatával
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 Ez a cikk két gyakori megközelítést ismertet az adatAzure Database for MySQL-kiszolgálóra való importálásához és exportálásához a MySQL Workbench használatával.
 
-Részletes és átfogó áttelepítési útmutató: a [MySQL és az Azure Database áttelepítési útmutatója](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide). 
+Részletes és átfogó áttelepítési útmutatást az [áttelepítési útmutató erőforrásai](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)című témakörben talál. Más áttelepítési forgatókönyvek esetén tekintse meg az [adatbázis-áttelepítési útmutatót](https://datamigration.microsoft.com/). 
 
-Az [adatbázis-áttelepítési útmutatóban](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide) részletes információkat találhat az adatbázisok Azure Database for MySQLba való áttelepítésével kapcsolatos információkról és használatáról. Ez az útmutató útmutatást nyújt az Azure-ba való MySQL-áttelepítés sikeres megtervezéséhez és végrehajtásához.
 
 ## <a name="before-you-begin"></a>Előkészületek
 A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:

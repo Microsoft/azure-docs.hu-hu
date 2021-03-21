@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozá
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199951"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
@@ -28,21 +28,21 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
  
 ## <a name="event-subscription-properties"></a>Esemény-előfizetés tulajdonságai
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | destination | object | A végpontot meghatározó objektum. |
 | filter (szűrő) | object | Egy választható mező az események típusának szűréséhez. |
 
 ### <a name="destination-object"></a>célobjektum
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | endpointType | sztring | Az előfizetés végpontjának típusa (webhook/HTTP, Event hub vagy üzenetsor). | 
 | endpointUrl | sztring | Az esemény-előfizetésben szereplő események céljának URL-címe. | 
 
 ### <a name="filter-object"></a>objektum szűrése
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
 | subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 

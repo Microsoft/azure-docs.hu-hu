@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan engedélyezheti és konfigurálhatja a 
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101708356"
 ---
 # <a name="enable-container-insights"></a>Tároló-felismerés engedélyezése
@@ -86,7 +86,7 @@ A következő táblázat felsorolja azokat a proxy-és tűzfal-konfigurációs a
 
 A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.cn` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.cn` | 443 | OMS bevezetése |
@@ -94,7 +94,7 @@ A következő táblázat az Azure China 21Vianet proxy-és tűzfal-konfiguráci�
 
 Az alábbi táblázat az Azure US government proxy-és tűzfal-konfigurációs információit sorolja fel:
 
-|Ügynök erőforrása|Port |Leírás | 
+|Ügynök erőforrása|Port |Description | 
 |--------------|------|-------------|
 | `*.ods.opinsights.azure.us` | 443 | Adatfeldolgozás |
 | `*.oms.opinsights.azure.us` | 443 | OMS bevezetése |

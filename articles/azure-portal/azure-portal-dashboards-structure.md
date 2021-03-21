@@ -4,10 +4,10 @@ description: Végigvezeti egy Azure-irányítópult JSON-struktúráján egy pé
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.openlocfilehash: d37e2fd9c9f6ef6e7ddea6dea002f26f20cd66a7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745961"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Az Azure-irányítópultok struktúrája

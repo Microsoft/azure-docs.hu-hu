@@ -2,7 +2,7 @@
 title: Biztonsági mentés és visszaállítás – Pillanatképek, Geo-redundáns
 description: Ismerje meg, hogyan működik a Backup és a Restore funkció az Azure szinapszis Analytics dedikált SQL-készletében. A biztonsági másolatok használatával visszaállíthatja az adattárházat az elsődleges régióban található visszaállítási pontra. A Geo-redundáns biztonsági mentések használatával egy másik földrajzi régióba állíthatja vissza a visszaállítást.
 services: synapse-analytics
-author: kevinvngo
+author: joannapea
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 866fe01e11ee53188cea6ea490304462acc1f6a2
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 0fa6777dc5b587150f630ed8ccc110d16448cc21
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103420000"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602247"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis dedikált SQL-készletében
 

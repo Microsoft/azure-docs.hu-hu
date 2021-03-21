@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 01/06/2021
 ms.topic: conceptual
 ms.openlocfilehash: ef6afff30da48b79b42e5fb4b3c72c3500f22dd1
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102172303"
 ---
 # <a name="how-to-create-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók létrehozása
@@ -47,7 +47,7 @@ A következő lista a futtató fióknak a PowerShellben egy megadott parancsfáj
 
 A következő lépések végrehajtásával kérheti le a, a és a értékeit a `AutomationAccountName` `SubscriptionId` PowerShell- `ResourceGroupName` parancsfájlhoz szükséges paraméterekkel.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 1. Keresse meg és válassza ki az **Automation-fiókokat**.
 

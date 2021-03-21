@@ -1,18 +1,18 @@
 ---
 title: A helyszíni felügyeleti konzol aktiválása és beállítása
-description: A felügyeleti konzol aktiválása és beállítása biztosítja, hogy az érzékelők regisztrálva legyenek az Azure-ban, és adatokat küldjenek a helyszíni felügyeleti konzolra, valamint hogy a helyszíni felügyeleti konzol felügyeleti feladatokat hajtson végre a csatlakoztatott érzékelőkön.
+description: A felügyeleti konzol aktiválása biztosítja, hogy az érzékelők regisztrálva legyenek az Azure-ban, és információt küldjenek a helyszíni felügyeleti konzolra, valamint arról, hogy a helyszíni felügyeleti konzol felügyeleti feladatokat hajt végre a csatlakoztatott érzékelőkön.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/12/2021
+ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.service: defender-for-iot
+ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522580"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602756"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -30,24 +30,32 @@ A helyszíni felügyeleti konzol aktiválása és beállítása biztosítja a k�
 
 Bejelentkezés a felügyeleti konzolra:
 
-- Nyisson meg egy webböngészőt, és adja meg a rendszer telepítése során a helyszíni felügyeleti konzolhoz kapott IP-címet és jelszót. Ha elfelejtette a jelszavát, válassza a **jelszó helyreállítása** lehetőséget, és tekintse meg a [jelszó-helyreállítást](how-to-manage-the-on-premises-management-console.md#password-recovery).
+1. A rendszer telepítése során navigáljon a helyszíni felügyeleti konzolhoz kapott IP-címre.
+ 
+1. A rendszer telepítése során adja meg a helyszíni felügyeleti konzolhoz kapott felhasználónevet és jelszót. 
 
-## <a name="upload-an-activation-file"></a>Aktiválási fájl feltöltése
 
-Az első bejelentkezés után aktiválja a helyszíni felügyeleti konzolt az Azure Defender IoT-portál **díjszabási** lapjáról letöltött aktiválási fájl letöltésével. Ez a fájl tartalmazza a bevezetési folyamat során meghatározott összesített véglegesített eszközöket. A **véglegesített eszközök** azt jelzik, hogy az IoT Defender által előfizetett eszközök hányat fognak figyelni.
+Ha elfelejtette a jelszavát, válassza a **jelszó helyreállítása**  lehetőséget, és tekintse meg a jelszó- [helyreállítás](how-to-manage-the-on-premises-management-console.md#password-recovery) című témakört, amely útmutatást nyújt a jelszó helyreállításához.
 
-Aktiválási fájl feltöltése:
+## <a name="get-and-upload-an-activation-file"></a>Aktiválási fájl beszerzése és feltöltése
 
-1. Lépjen a Defender for IoT **díjszabási** oldalára.
+Az első bejelentkezés után aktiválni kell a helyszíni felügyeleti konzolt az aktiválási fájl beszerzésével és feltöltésével. 
+
+Aktiválási fájl beszerzése:
+
+1. Navigáljon az Azure Defender IoT-portál **díjszabási** lapjára. 
+1. Válassza ki azt az előfizetést, amelyhez a helyszíni felügyeleti konzolt hozzá kívánja rendelni.
 1. Válassza az **aktiválási fájl letöltése a felügyeleti konzolhoz** lapot. Az aktiválási fájl letöltése megtörténik.
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="Töltse le az aktiválási fájlt.":::
 
-1. Válassza ki a **Rendszerbeállítások** elemet a felügyeleti konzolon.
-1. Válassza az **aktiválás** lehetőséget.
-1. Válassza a **fájl kiválasztása** elemet, és válassza ki a mentett fájlt.
+Aktiválási fájl feltöltése:
 
-A kezdeti aktiválás után a figyelt eszközök száma túllépheti a bevezetéskor definiált véglegesített eszközök számát. Ez például akkor fordulhat elő, ha további érzékelőkkel csatlakozik a felügyeleti konzolhoz. Ha a figyelt eszközök száma és a véglegesített eszközök száma között eltérés tapasztalható, a felügyeleti konzolon megjelenik egy figyelmeztetés. Ha ez történik, fel kell töltenie egy új aktiválási fájlt.
+1. Navigáljon a **Rendszerbeállítások** lapra a helyszíni felügyeleti konzolon.
+1. Válassza az **aktiválás** ikont :::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false"::: .
+1. Válassza a **fájl kiválasztása** lehetőséget, majd válassza ki a letöltött fájlt.
+
+A kezdeti aktiválás után a figyelt eszközök száma túllépheti a bevezetéskor definiált véglegesített eszközök számát. Ez akkor fordul elő, ha további érzékelőkkel csatlakozik a felügyeleti konzolhoz. Ha a figyelt eszközök száma és a véglegesített eszközök száma között eltérés tapasztalható, egy figyelmeztetés jelenik meg a felügyeleti konzolon. Ha ez történik, töltsön fel egy új aktiválási fájlt.
 
 ## <a name="set-up-a-certificate"></a>Tanúsítvány beállítása
 
@@ -73,7 +81,7 @@ Tanúsítvány feltöltése:
 
 1. Ha a rendszer a bejelentkezés után kéri, adja meg a tanúsítvány nevét.
 1. Töltse fel a CRT és a kulcs fájljait.
-1. Adja meg a hozzáférési kódot, és töltse fel a PEM-fájlt, ha szükséges.
+1. Szükség esetén adjon meg egy hozzáférési kódot, és töltsön fel egy PEM-fájlt.
 
 Előfordulhat, hogy a HITELESÍTÉSSZOLGÁLTATÓ által aláírt tanúsítvány feltöltése után frissítenie kell a képernyőt.
 
@@ -228,7 +236,7 @@ A következő táblázat a **hely kezelése** ablakban található paramétereke
 | Név | Az érzékelő neve. Ezt a nevet csak az érzékelőből lehet módosítani. További információ: Defender for IoT felhasználói útmutató. |
 | IP | Az érzékelő IP-címe. |
 | Verzió | Az érzékelő verziója. |
-| Kapcsolatok | Az érzékelő kapcsolati állapota. Az állapot lehet **csatlakoztatni** vagy **leválasztani**. |
+| Kapcsolat | Az érzékelő kapcsolati állapota. Az állapot lehet **csatlakoztatni** vagy **leválasztani**. |
 | Legutóbbi frissítés | Az utolsó frissítés dátuma. |
 | Frissítési folyamat | A folyamatjelző sáv a frissítési folyamat állapotát mutatja a következőképpen:<br />– Csomag feltöltése<br />– Felkészülés a telepítésre<br />– Folyamatok leállítása<br />– Az adatbiztonsági mentés<br />-Pillanatkép készítése<br />– Konfiguráció frissítése<br />-Függőségek frissítése<br />-Kódtárak frissítése<br />– Adatbázisok javítása<br />-Folyamatok indítása<br />-A rendszerjózanság ellenőrzése<br />– Az érvényesítés sikerült<br />– Sikeres<br />– Hiba<br />– A frissítés elindult<br />-Telepítés indításaogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >A frissítéssel kapcsolatos részletekért tekintse meg a [Microsoft ügyfélszolgálata](https://support.microsoft.com/) segítséget. |
 | Eszközök | Az érzékelő által figyelt eszközök száma. |
@@ -316,6 +324,6 @@ Minden zónához hozzá kell rendelnie a helyi forgalom elemzését és a riaszt
 
 3. Ha törölni szeretné a nem hozzárendelt érzékelőt a helyről, válassza ki az érzékelőt a hozzá nem rendelt érzékelők listájából, és válassza a lehetőséget :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Az érzékelő és a helyszíni felügyeleti konzol hibaelhárítása](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200801"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Cisco WebEx
 
@@ -38,7 +38,7 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A Cisco WebEx támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
-* A Cisco WebEx támogatja a [**felhasználók automatikus üzembe**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)helyezését.
+* A Cisco WebEx támogatja a [**felhasználók automatikus üzembe**](./cisco-webex-provisioning-tutorial.md)helyezését.
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco-WebEx hozzáadása a katalógusból
 
@@ -159,7 +159,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="create-cisco-webex-test-user"></a>Cisco WebEx-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Cisco WebEx. Ez az alkalmazás támogatja a felhasználók automatikus kiépítését, ami lehetővé teszi az üzleti szabályok alapján történő automatikus üzembe helyezést és megszüntetést.  A Microsoft ha lehetséges, az automatikus kiépítés használatát javasolja. Lásd: az automatikus kiépítés engedélyezése a [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
+Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a Cisco WebEx. Ez az alkalmazás támogatja a felhasználók automatikus kiépítését, ami lehetővé teszi az üzleti szabályok alapján történő automatikus üzembe helyezést és megszüntetést.  A Microsoft ha lehetséges, az automatikus kiépítés használatát javasolja. Lásd: az automatikus kiépítés engedélyezése a [Cisco WebEx](./cisco-webex-provisioning-tutorial.md).
 
 Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő lépéseket:
 
@@ -195,7 +195,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül a Cisco WebEx bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Cisco WebEx csempére kattint, a rendszer átirányítja a Cisco WebEx bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Cisco WebEx csempére kattint, a rendszer átirányítja a Cisco WebEx bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>Következő lépések

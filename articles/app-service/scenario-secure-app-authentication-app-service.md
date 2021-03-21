@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96905570"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Oktatóanyag: hitelesítés hozzáadása a Azure App Service-on futó webalkalmazáshoz
@@ -57,7 +57,7 @@ Az alkalmazás bal oldali menüjében válassza a **hitelesítés/engedélyezés
 
 Az **Elvégzendő művelet, ha a kérés nincs hitelesítve** területen válassza a **Bejelentkezés az Azure Active Directoryval** lehetőséget.
 
-A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget. Válassza az **expressz** lehetőséget, majd fogadja el az alapértelmezett beállításokat új Active Directory alkalmazás létrehozásához. Kattintson az **OK** gombra.
+A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget. Válassza az **expressz** lehetőséget, majd fogadja el az alapértelmezett beállításokat új Active Directory alkalmazás létrehozásához. Válassza az **OK** lehetőséget.
 
 :::image type="content" alt-text="Az expressz hitelesítést bemutató képernyőkép." source="./media/scenario-secure-app-authentication-app-service/configure-authentication.png":::
 

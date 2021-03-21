@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 9/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102041311"
 ---
 # <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Oktatóanyag: VMware-környezetben futó kiszolgálók felderítése Azure Migrateekkel: kiszolgáló értékelése
@@ -47,7 +47,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 **Kiszolgálók** | A konfiguráció és a teljesítmény metaadatainak felderítése érdekében a Windows és a Linux operációs rendszer összes verziója támogatott. <br/><br/> Az alkalmazások felderítéséhez a kiszolgálókon a Windows és a Linux operációs rendszer összes verziója támogatott. [Tekintse meg az ügynök](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) nélküli függőségek elemzéséhez támogatott operációsrendszer-verziókat.<br/><br/> A telepített alkalmazások és az ügynök nélküli függőségek elemzésének elvégzéséhez telepíteni és futtatni kell a VMware-eszközöket (a 10.2.0 később), és futnia kell a kiszolgálókon. A Windows-kiszolgálóknak telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.<br/><br/> SQL Server példányok és adatbázisok felderítéséhez [tekintse meg a támogatott](migrate-support-matrix-vmware.md#requirements-for-discovery-of-sql-server-instances-and-databases) SQL Server-verziók és-kiadások, a támogatott Windows operációsrendszer-verziók és-hitelesítési mechanizmusok című szöveget.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
@@ -79,7 +79,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     :::image type="content" source="./media/tutorial-discover-vmware/register-apps.png" alt-text="A felhasználók által Active Directory alkalmazások regisztrálásához használt felhasználói beállítások ellenőrzése":::
 
-9. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+9. Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy fiókhoz, hogy engedélyezze a HRE-alkalmazás regisztrálását. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="prepare-vmware"></a>A VMware előkészítése
 
@@ -274,7 +274,7 @@ A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek lelt
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="3. panel a készülék Configuration Manager kiszolgáló adataihoz":::
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja a kiszolgálói hitelesítő adatokat. A készülék megkísérli automatikusan leképezni a hitelesítő adatokat a kiszolgálók számára a felderítési funkciók végrehajtásához.
 

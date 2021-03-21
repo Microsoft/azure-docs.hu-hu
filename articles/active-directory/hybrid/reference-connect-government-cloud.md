@@ -11,11 +11,11 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504355"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
@@ -24,9 +24,6 @@ Ez a cikk a hibrid környezetek Microsoft Azure Government felhővel való integ
 
 > [!NOTE]
 > Ahhoz, hogy integrálni lehessen a Microsoft Active Directory környezetét (akár helyszíni, akár egy olyan IaaS, amely ugyanabban a felhőalapú példányban található Azure Government), frissítenie kell a [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594)legújabb kiadására.
-
-> [!NOTE]
-> Ez a cikk az *engedélyezési* feltételekre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
 
 Egyesült Államok kormányzati védelmi végpontok teljes listáját a [dokumentációban](/office365/enterprise/office-365-u-s-government-dod-endpoints)találja.
 
@@ -41,7 +38,7 @@ Az átmenő hitelesítési ügynök üzembe helyezése előtt ellenőrizze, hogy
 > [!NOTE]
 > Az alábbi útmutató az [Azure ad Application proxy-összekötő](../manage-apps/what-is-application-proxy.md) Azure Government környezetekben történő telepítésére is vonatkozik.
 
-|URL-cím |Használatuk módja|
+|URL-cím |Használat célja|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Az ügynök ezeket az URL-címeket használja az Azure AD Cloud Service-vel való kommunikációhoz. |
 |`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| Az ügynök ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez.|

@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azu
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492789"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Oktatóanyag: több napos felvétel lejátszása  
@@ -95,7 +95,7 @@ Az AMS-eszköz felhasználója megkéri, hogy adja meg egy Media Service-eszköz
 
 Az eszköz nevének beírása és a Küldés elküldése után a lejátszó kódja betölti a folyamatos átviteli URL-címet. További információkért lásd: útmutató [a felvételek lejátszásához](playback-recordings-how-to.md). Ha a javasolt módon továbbra is rögzíti az adategységet, a lejátszó észlelni fogja, és megkísérli a lejátszást a rögzített videó legfrissebb részébe. A Player bal felső sarkában látható a timestamp (UTC). Az alábbi képernyőképen vegye figyelembe, hogy az "élő" gomb van kiválasztva.
 
-![Adatfolyam](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
+![Stream](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  
 A lejátszó jobb oldalán láthatja a vezérlőket az Archívum tallózásához. A vezérlőben szereplő évek, hónapok és dátumok a availableMedia API használatával vannak feltöltve a útmutatóban ismertetett [módon: a felvételek lejátszása](playback-recordings-how-to.md).
 Ha a nap kibontásakor a CVR-oktatóanyagot több órán keresztül futtatja, a következőhöz hasonló eredményt fog látni:

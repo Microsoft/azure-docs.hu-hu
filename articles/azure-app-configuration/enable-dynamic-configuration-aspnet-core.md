@@ -15,10 +15,10 @@ ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: 083bd56b2b211d11206a277bf31eea797b37cdb9
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979929"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
@@ -66,7 +66,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust a metódus hozzáadásához `config.AddAzureAppConfiguration()` .
+1. Nyissa meg a *program. cs programot*, és frissítse a `CreateWebHostBuilder` metódust a metódus hozzáadásához `config.AddAzureAppConfiguration()` .
 
    #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -142,7 +142,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
     A frissítési művelet tényleges kiváltásához konfigurálnia kell egy, az alkalmazásra vonatkozó frissítést, amely a konfigurációs adatai frissítését eredményezi. Ezt egy későbbi lépésben láthatja.
 
-2. Adjon hozzá egy *Settings.cs* -fájlt a vezérlők könyvtárban, amely új osztályt határoz meg és valósít meg `Settings` . Cserélje le a névteret a projekt nevére. 
+2. Vegyen fel egy *Settings. cs* fájlt a vezérlők könyvtárba, amely új osztályt határoz meg és valósít meg `Settings` . Cserélje le a névteret a projekt nevére. 
 
     ```csharp
     namespace TestAppConfig
@@ -157,7 +157,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
     }
     ```
 
-3. Nyissa meg a *Startup.cs*, és használja `IServiceCollection.Configure<T>` a `ConfigureServices` metódust a konfigurációs `Settings` adatosztályhoz való kötéshez.
+3. Nyissa meg a *Startup. cs*, és használja `IServiceCollection.Configure<T>` a `ConfigureServices` metódust a konfigurációs `Settings` adatosztályhoz való kötéshez.
 
     #### <a name="net-5x"></a>[.NET 5. x](#tab/core5x)
 
@@ -291,7 +291,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
 ## <a name="use-the-latest-configuration-data"></a>A legújabb konfigurációs adatértékek használata
 
-1. Nyissa meg a *HomeController.cs* a vezérlők könyvtárban, és adjon hozzá egy hivatkozást a `Microsoft.Extensions.Options` csomaghoz.
+1. Nyissa meg a *HomeController. cs* -t a vezérlők könyvtárban, és adjon hozzá egy hivatkozást a `Microsoft.Extensions.Options` csomaghoz.
 
     ```csharp
     using Microsoft.Extensions.Options;

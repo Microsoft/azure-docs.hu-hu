@@ -8,12 +8,12 @@ ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.collection: linux
-ms.openlocfilehash: a6ef2cd62fc14958e8505a03e69e4b20cf6ce49f
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0fe584ea8559c285ee7e25caca958ff56aa9454d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556825"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601830"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával 
 Ez a cikk bemutatja, hogyan csatolhat új és meglévő lemezeket egy linuxos virtuális géphez a Azure Portal keresztül. [Adatlemezt a Azure Portal egy Windows rendszerű virtuális géphez is csatolhat](../windows/attach-managed-disk-portal.md). 
@@ -81,7 +81,7 @@ Ebben a példában a hozzáadott lemez a következő: `sdc` . Ez egy 0. logikai 
 
 Összetettebb példaként itt látható, hogy milyen több adatlemez jelenik meg a portálon:
 
-:::image type="content" source="./media/attach-disk-portal/create-new-md.png" alt-text="Ellenőrizze a lemez beállításait.":::
+:::image type="content" source="./media/attach-disk-portal/find-disk.png" alt-text="Képernyőkép a portálon megjelenő több lemezről.":::
 
 A képen láthatja, hogy 3 adatlemez található: 4 GB a LUN 0, 16GB a LUN 1 és 32G a 2. LUN-on.
 
@@ -227,6 +227,6 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információért és a lemezekkel kapcsolatos hibák elhárításához tekintse meg a [linuxos virtuális gép eszköz nevének módosításainak hibaelhárítása](../troubleshooting/troubleshoot-device-names-problems.md)című témakört.
+További információért és a lemezekkel kapcsolatos hibák elhárításához tekintse meg a [linuxos virtuális gép eszköz nevének módosításainak hibaelhárítása](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)című témakört.
 
 [Adatlemezt](add-disk.md) az Azure CLI használatával is csatolhat.
