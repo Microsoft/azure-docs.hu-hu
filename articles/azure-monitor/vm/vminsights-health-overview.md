@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/27/2020
 ms.openlocfilehash: 2922ca4068531c45e6acad0ce54aa96624c6238e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052126"
 ---
 # <a name="vm-insights-guest-health-preview"></a>A VM bepillantást a vendég állapotára (előzetes verzió)
@@ -34,7 +34,7 @@ Kattintson a virtuális gép állapotára az egyes figyelők részletes állapot
 
 A következő táblázat felsorolja az egyes virtuális gépekhez jelenleg elérhető aggregált és egység figyelőket. 
 
-| Monitor | Típus | Leírás |
+| Monitor | Típus | Description |
 |:---|:---|:---|
 | Processzorhasználat | Unit (Egység) | A processzor kihasználtsága százalékban kifejezve. |
 | Fájlrendszerek | Összesítés | A Linux rendszerű virtuális gépen lévő összes fájlrendszer állapotának összesítése. |
@@ -52,20 +52,20 @@ Minden figyelő rendelkezik egy lookback-ablaktal, és elemzi az adott időn bel
 
 A figyelők mindegyike rendelkezik a lehetséges állapottal az alábbi táblázatban, és egy adott időpontban csak egy és csak egy lesz. Egy figyelő inicializálásakor a rendszer Kifogástalan állapotba kezd.
 
-| Állapot | Leírás |
+| Állapot | Description |
 |:---|:---|
 | Kifogástalan  | A figyelő jelenleg nem lépi túl a figyelmeztetési vagy a kritikus küszöbértéket. |
 | Figyelmeztetés  | A figyelő túllépte a figyelmeztetési küszöbértéket (ha meg van adva). |
 | Kritikus | A figyelő túllépte a kritikus küszöbértéket (ha meg van adva). |
 | Ismeretlen  | Nincs elegendő adatgyűjtési állapot az állapot megállapításához. |
 | Disabled (Letiltva) | A figyelő jelenleg le van tiltva. |
-| Nincs     | A figyelő éppen elindult, és még nincs kiértékelve, vagy a figyelt objektum már nem létezik. |
+| Nincsenek     | A figyelő éppen elindult, és még nincs kiértékelve, vagy a figyelt objektum már nem létezik. |
 
 
 
 Az alábbi táblázatban két típusú figyelő látható:
 
-| Monitor | Leírás |
+| Monitor | Description |
 |:---|:---|
 | Egységmonitor | Egy erőforrás vagy alkalmazás valamilyen jellemzőjét méri. Ez lehet egy teljesítményszámláló ellenőrzése az erőforrás teljesítményének vagy rendelkezésre állásának meghatározása céljából. |
 | Összesített monitor | Több monitort csoportosít egyetlen összesített állapot biztosításához. Egy összesített monitor egy vagy több egységmonitort és más összesített monitorokat tartalmazhat. |

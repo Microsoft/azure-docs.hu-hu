@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2d7171c9ec1e60447fb3342caa72098fb2eb9337
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019907"
 ---
 # <a name="troubleshoot-input-connections"></a>Bemeneti kapcsolatok hibaelhárítása
@@ -44,7 +44,7 @@ Az erőforrás-naplók engedélyezésével megtekintheti a hiba részleteit és 
 
 ![Bemeneti adatok figyelmeztetési értesítése](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
-Abban az esetben, ha az üzenet tartalma meghaladja a 32 KB-ot, vagy bináris formátumú, futtassa a [GitHub-minták tárházában](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)elérhető CheckMalformedEvents.cs-kódot. Ez a kód beolvassa a partíció AZONOSÍTÓját, eltolását, és kinyomtatja az adott eltolásban található adatokat. 
+Abban az esetben, ha az üzenet tartalma meghaladja a 32 KB-ot, vagy bináris formátumú, futtassa a [GitHub-minták tárházában](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/CheckMalformedEventsEH)elérhető CheckMalformedEvents. cs kódot. Ez a kód beolvassa a partíció AZONOSÍTÓját, eltolását, és kinyomtatja az adott eltolásban található adatokat. 
 
 ## <a name="job-exceeds-maximum-event-hub-receivers"></a>A feladatoknál nagyobb az Event hub-vevőkészülékek maximális száma
 
@@ -70,7 +70,7 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 Ha új fogyasztói csoportot szeretne hozzáadni a Event Hubs-példányban, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg az Event hub-t.
 
@@ -168,7 +168,7 @@ Stream Analytics feladatok a IoT Hub beépített [Event hub-kompatibilis végpon
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

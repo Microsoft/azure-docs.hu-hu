@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
 ms.openlocfilehash: 8e860bf47420f2b58c44df695da7761bcc2aa0ce
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100521781"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS – gyors reagálás
@@ -31,8 +31,8 @@ Aktív hozzáférés esetén Azure DDoS Protection a standard szintű ügyfelek 
 A DRR csak akkor folytassa, ha: 
 
 - A DDoS-támadások során, ha úgy látja, hogy a védett erőforrás teljesítménye súlyosan csökken, vagy az erőforrás nem érhető el. 
-- Úgy gondolja, hogy az erőforrás DDoS-támadás alá esik, de DDoS Protection szolgáltatás nem csökkenti a támadás hatékonyságát.
-- Olyan vírusos eseményt tervez, amely jelentősen növeli a hálózati forgalmat.
+- Úgy gondolja, hogy az erőforrást DDoS-támadás érte, de DDoS Protection szolgáltatás nem hárítja el megfelelően a támadást.
+- Olyan népszerű eseményt tervez, amely jelentősen növelni fogja a hálózati forgalmat.
 - Kritikus üzleti hatású támadások esetén.
 
 ## <a name="engage-drr-during-an-active-attack"></a>DRR bevonása aktív támadás során

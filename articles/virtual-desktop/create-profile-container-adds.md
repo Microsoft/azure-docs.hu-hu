@@ -1,5 +1,5 @@
 ---
-title: FSLogix-profil tárolójának létrehozása Azure Files Active Directory tartományi szolgáltatások – Azure
+title: FSLogix-profil tárolójának létrehozása Azure Files Active Directory Domain Services – Azure
 description: Ez a cikk azt ismerteti, hogyan hozható létre FSLogix-profil tároló Azure Files és Azure Active Directory Domain Services használatával.
 author: Heidilohr
 ms.topic: how-to
@@ -7,10 +7,10 @@ ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96302465"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
@@ -71,7 +71,7 @@ Felhasználói hozzáférési engedélyek kiosztása:
 
 6. Válassza ki a cél Azure Active Directory identitás nevét vagy e-mail-címét.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="get-the-storage-account-access-key"></a>A Storage-fiók elérési kulcsának beolvasása
 
@@ -142,11 +142,11 @@ FSLogix-profil tárolójának konfigurálása:
 
 1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Bontsa ki a letöltött FSLogix-ügynök fájlját **x64**  >  , és nyissa meg az x64-es **kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
+2. Bontsa ki a letöltött FSLogix-ügynök fájlját   >  , és nyissa meg az x64-es **kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
-4. Válassza a **Telepítés** lehetőséget.
+4. Válassza a **Telepítés** gombot.
 
 5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files**  >  **FSLogix**  >  **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 
@@ -240,7 +240,7 @@ A profil ellenőrzése:
 
     Ha minden megfelelően van beállítva, a következőhöz hasonló nevű **könyvtárat** kell megjelennie: `<user SID>-<username>` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha alternatív módszereket keres a FSLogix-profilok létrehozásához, tekintse meg a következő cikkeket:
 

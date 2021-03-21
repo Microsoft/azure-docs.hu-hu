@@ -7,10 +7,10 @@ ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
 ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349282"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Nyilvános tartalmak felhasználása és karbantartása Azure Container Registry feladatokkal
@@ -741,7 +741,7 @@ az group delete -n $AKV_RG --no-wait -y
 az group delete -n $ACI_RG --no-wait -y
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben. az ACR-feladatok használatával automatizált kapuzás-munkafolyamatot hozott létre, amely frissített alaplemezképeket vezet be a környezetbe. Tekintse meg a kapcsolódó információkat a rendszerképek Azure Container Registryban való kezeléséhez.
 

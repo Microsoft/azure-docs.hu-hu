@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 8850c848615dd1cdf59e17bfae83245602f93575
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350415"
 ---
 # <a name="throttling-requests-to-the-bing-web-search-api"></a>Kérelmek szabályozása a Bing Web Search API számára
@@ -27,6 +27,6 @@ ms.locfileid: "96350415"
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bing Web Search API referenciája](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

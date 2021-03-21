@@ -9,10 +9,10 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
 ms.openlocfilehash: d1dc108ecec93dddeb768eb61af425ba67f23002
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100393139"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-preview-feature-in-azure-cosmos-db"></a>Folyamatos biztonsági mentés az időponthoz tartozó visszaállítás (előzetes verzió) szolgáltatással Azure Cosmos DB
@@ -37,21 +37,21 @@ A visszaállításhoz rendelkezésre álló időablak (más néven megőrzési i
 
 A nyilvános előzetes verzióban visszaállíthatja a Azure Cosmos DB fiókot az SQL API-hoz, vagy MongoDB a tartalom időpontját egy másik fiókhoz a [Azure Portal](continuous-backup-restore-portal.md), az [Azure parancssori felület](continuous-backup-restore-command-line.md) (a CLI), a [Azure PowerShell](continuous-backup-restore-powershell.md)vagy a [Azure Resource Manager](continuous-backup-restore-template.md)használatával.
 
-## <a name="what-is-restored"></a>Mi a visszaállítva?
+## <a name="what-is-restored"></a>Mi lesz visszaállítva?
 
 Állandó állapot esetén a forrásoldali fiókon végrehajtott összes mutáció (beleértve az adatbázisokat, tárolókat és elemeket is) a rendszer aszinkron módon készít biztonsági mentést 100 másodpercen belül. Ha a biztonsági mentési adathordozó (azaz az Azure Storage) nem érhető el vagy nem érhető el, a mutációk helyileg megmaradnak, amíg az adathordozó vissza nem áll, és a rendszer kiüríti azokat, hogy megakadályozza a visszaállítható műveletek megbízhatóságának elvesztését.
 
-Dönthet úgy, hogy visszaállítja a kiosztott átviteli sebességű tárolók, a megosztott átviteli sebességű adatbázisok vagy a teljes fiók kombinációját. A visszaállítási művelet visszaállítja az összes és az index tulajdonságait egy új fiókba. A visszaállítási folyamat biztosítja, hogy egy fiókban, adatbázisban vagy tárolóban visszaállított összes érték konzisztens legyen a megadott visszaállítási időpontig. A visszaállítás időtartama a visszaállítani kívánt adatok mennyiségétől függ.
+A kiosztott átviteli tárolókat, a megosztott átviteli adatbázist és a teljes fiókot bármilyen kombinációban visszaállíthatja. A visszaállítási művelet visszaállítja az összes adatot és az indextulajdonságokat egy új fiókba. A visszaállítási folyamat biztosítja, hogy egy fiókban, adatbázisban vagy tárolóban visszaállított összes adat konzisztens legyen a megadott visszaállítási időpontig. A visszaállítás időtartama a visszaállítandó adatok mennyiségétől függ.
 
 > [!NOTE]
 > A folyamatos biztonsági mentési móddal a biztonsági mentések minden olyan régióban megtalálhatók, ahol a Azure Cosmos DB-fiók elérhető. Az egyes régiókban tárolt biztonsági mentések alapértelmezés szerint helyileg redundánsak, és a zóna redundáns, ha a fiókjában engedélyezve van a [rendelkezésre állási zóna](high-availability.md#availability-zone-support) funkció az adott régióban. A visszaállítási művelet mindig új fiókba állítja vissza az adattárolást.
 
-## <a name="what-is-not-restored"></a>Mi nem állítható vissza?
+## <a name="what-is-not-restored"></a>Mit nem érint a visszaállítás?
 
 A következő konfigurációk nem állíthatók vissza az időponthoz tartozó helyreállítás után:
 
 * Tűzfal, VNET, magánhálózati végpont beállításai.
-* Konzisztencia-beállítások. Alapértelmezés szerint a rendszer visszaállítja a fiókot a munkamenet konzisztenciájával.  
+* Konzisztenciabeállítások. Alapértelmezés szerint a fiók visszaállítása munkamenet-konzisztenciával történik.  
 * Régiók.
 * Tárolt eljárások, eseményindítók, UDF.
 
@@ -104,7 +104,7 @@ Ha például 1 TB-nyi adat van két régióban, akkor:
 
 Az időponthoz tartozó visszaállítási funkció jelenleg nyilvános előzetes verzióban érhető el, és a következő korlátozásokkal rendelkezik:
 
-* Csak az SQL és a MongoDB Azure Cosmos DB API-k támogatottak a folyamatos biztonsági mentéshez. A Cassandra, Table és Gremlin API-k még nem támogatottak.
+* A folyamatos biztonsági mentés esetében kizárólag az SQL-hez és a MongoDB-hez készült Azure Cosmos DB API-k támogatottak. A Cassandra, Table és Gremlin API-k még nem támogatottak.
 
 * Az alapértelmezett időszakos biztonsági mentési házirenddel rendelkező meglévő fiók nem alakítható át folyamatos biztonsági mentési mód használatára.
 
@@ -116,23 +116,23 @@ Az időponthoz tartozó visszaállítási funkció jelenleg nyilvános előzetes
 
 * A szinapszis-hivatkozással rendelkező fiókok használata nem támogatott.
 
-* A visszaállított fiók ugyanabban a régióban jön létre, ahol a forrásoldali fiók létezik. A fiók nem állítható vissza olyan régióba, ahol a forrásoldali fiók nem létezik.
+* A visszaállított fiók ugyanabban a régióban jön létre, ahol a forrásfiók található. A fiók nem állítható vissza olyan régióba, ahol a forrásfiók nem létezett.
 
 * A visszaállítási ablak csak 30 nap, és nem módosítható.
 
-* A biztonsági mentések nem lesznek automatikusan leképezve. Explicit módon hozzá kell adnia egy másik régiót, hogy rugalmasságot biztosítson a fiókhoz és a biztonsági mentéshez.
+* A biztonsági mentések nem védettek automatikusan a katasztrófákkal szemben. Explicit módon fel kell vennie egy másik régiót, hogy rugalmassá tegye a fiókot és a biztonsági mentést.
 
 * A visszaállítás folyamatban van, ne módosítsa vagy törölje azokat az identitás-és hozzáférés-kezelési (IAM) szabályzatokat, amelyek engedélyeket biztosítanak a fiók engedélyeinek, vagy megváltoztathatják a VNET, a tűzfal konfigurációját.
 
-* Az olyan SQL-vagy MongoDB-fiókok Azure Cosmos DB API-k, amelyek egyedi indexet hoznak létre a tároló létrehozása után, nem támogatják a folyamatos biztonsági mentést. Csak olyan tárolók támogatottak, amelyek egyedi indexet hoznak létre a kezdeti tároló létrehozása során. MongoDB-fiókok esetében egyedi indexet hoz létre a [bővítmény-parancsok](mongodb-custom-commands.md)használatával.
+* Azok az SQL-hez vagy MongoDB-hez készült Azure Cosmos DB API-fiókok, amelyek a tároló létrehozása után egyedi indexet hoznak létre, nem támogatottak a folyamatos biztonsági mentés esetében. Csak olyan tárolók támogatottak, amelyek a tároló kezdeti létrehozásának részeként hoznak létre egyedi indexet. MongoDB-fiókok esetében egyedi indexet hoz létre a [bővítmény-parancsok](mongodb-custom-commands.md)használatával.
 
-* Az időponthoz tartozó visszaállítási funkció mindig új Azure Cosmos-fiókba áll vissza. Egy meglévő fiók visszaállítása jelenleg nem támogatott. Ha szeretné, hogy visszajelzést kapjon a helyi visszaállításról, forduljon a Azure Cosmos DB csapatához a fiók képviselőjétől vagy a [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db)keresztül.
+* Az időponthoz kötött visszaállítási funkció esetében a visszaállítás mindig új Azure Cosmos-fiókba történik. A már meglévő fiókba történő visszaállítás jelenleg nem támogatott. Ha szeretné, hogy visszajelzést kapjon a helyi visszaállításról, forduljon a Azure Cosmos DB csapatához a fiók képviselőjétől vagy a [UserVoice](https://feedback.azure.com/forums/263030-azure-cosmos-db)keresztül.
 
 * A, a, a, a, a, a `RestorableDatabaseAccount` és a ( `RestorableSqlDatabases` `RestorableSqlContainer` `RestorableMongodbDatabase` `RestorableMongodbCollection`
 
 * A visszaállítást követően előfordulhat, hogy bizonyos gyűjtemények esetében az konzisztens index újraépíthető. Az újraépítési művelet állapotát a [IndexTransformationProgress](how-to-manage-indexing-policy.md) tulajdonság segítségével tekintheti meg.
 
-* A visszaállítási folyamat visszaállítja egy tároló összes tulajdonságát, beleértve annak TTL-konfigurációját. Ennek eredményeképpen előfordulhat, hogy a rendszer azonnal törli a visszaállított adatkészletet, ha ezt a módszert konfigurálja. Ezen helyzet elkerülése érdekében a visszaállítási időbélyegnek az élettartam-tulajdonságok tárolóba való felvétele előtt kell lennie.
+* Az újjáépítési művelet visszaállítja a tároló összes tulajdonságát, beleértve az élettartam (TTL) konfigurációját is. Ennek következtében előfordulhat, hogy a visszaállított adatok azonnal törlődnek, ha Ön úgy konfigurálta. Ennek elkerülése érdekében a visszaállítási időbélyegnek korábbinak kell lennie a TTL-tulajdonságok tárolóba való felvételének időpontjánál.
 
 ## <a name="next-steps"></a>Következő lépések
 

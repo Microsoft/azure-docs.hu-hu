@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 01/22/2021
 ms.openlocfilehash: 619f4deee81c97f2d7a0b4359e2b999c476b1ae2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737557"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
@@ -46,7 +46,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|1|2|3|4|5|6|
 |Memória (GB)|7|14|21|28|35|42|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|
 |Napló maximális mérete|154|227|461|461|461|614|
@@ -78,7 +78,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|2048|2048|2048|2048|3584|4096|
 |Napló maximális mérete (GB)|614|614|614|614|1075|1229|
@@ -112,7 +112,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|2|4|6|8|10|12|14|
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|2048|
 |Napló maximális mérete (GB)|154|227|461|461|461|614|614|
@@ -144,7 +144,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|16|18|20|24|32|40|80|
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|2048|3072|3072|3072|4096|4096|4096|
 |Napló maximális mérete (GB)|614|922|922|922|1229|1229|1229|
@@ -178,7 +178,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|8|10|12|14|16|
 |Memória (GB)|15,1|18,9|22,7|26,5|30,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1536|
 |Napló maximális mérete (GB)|336|336|336|336|512|
@@ -211,7 +211,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|18|20|24|32|36|72|
 |Memória (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|1536|1536|1536|3072|3072|4096|
 |Napló maximális mérete (GB)|512|512|512|1024|1024|1024|
@@ -244,7 +244,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|2|4|6|8|
 |Memória (GB)|9|18|27|36|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|400|400|400|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|
 |Maximális adatméret (GB)|756|1536|2048|2048|
 |Napló maximális mérete (GB)|227|461|614|614|
@@ -281,7 +281,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|2|3|4|5|6|
 |Memória (GB)|14|21|28|35|42|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|50|100|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|2|3|4|5|6|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|
@@ -295,8 +295,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|4|4|4|4|4|
-|Több – AZ|Igen|Igen|Igen|Igen|Igen|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|
+|Több – AZ|Igen|Igen|Igen|Igen|Yes|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -327,8 +327,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Replikák száma|4|4|4|4|4|4|
-|Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Több – AZ|Igen|Igen|Igen|Igen|Igen|Yes|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -347,7 +347,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|4|6|8|10|12|14|
 |Memória (GB)|20,8|31,1|41,5|51,9|62,3|72,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|50|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|3,14|4,71|6,28|8,65|11,02|13,39|
 |Maximális adatméret (GB)|1024|1536|1536|1536|3072|3072|
 |Napló maximális mérete (GB)|307|307|461|461|922|922|
@@ -361,8 +361,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|4|4|4|4|4|4|
-|Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Több – AZ|Igen|Igen|Igen|Igen|Igen|Yes|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -379,7 +379,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|16|18|20|24|32|40|80|
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|15.77|18,14|20,51|25,25|37,94|52,23|131,68|
 |Maximális adatméret (GB)|3072|3072|3072|4096|4096|4096|4096|
 |Napló maximális mérete (GB)|922|922|922|1229|1229|1229|1229|
@@ -393,8 +393,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
 |Replikák száma|4|4|4|4|4|4|4|
-|Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Több – AZ|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -413,7 +413,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|8|10|12|14|16|18|
 |Memória (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|64|80|96|112|128|150|
 |Maximális adatméret (GB)|512|640|768|896|1024|1152|
 |Napló maximális mérete (GB)|171|213|256|299|341|384|
@@ -428,7 +428,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-8|0-10|0-12|0-14|0-16|0-18|
 |Replikák száma|4|4|4|4|4|4|
 |Több – AZ|Nem|Nem|Nem|Nem|Nem|Nem|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -447,7 +447,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Virtuális mag|20|24|32|64|128|
 |Memória (GB)|588,6|706,3|941,8|1883,5|3767,0|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|172|216|304|704|1768|
 |Maximális adatméret (GB)|1280|1536|2048|4096|4096|
 |Napló maximális mérete (GB)|427|512|683|1024|1024|
@@ -461,7 +461,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|
 |Több – AZ|Nem|Nem|Nem|Nem|Nem|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -480,7 +480,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Virtuális mag|2|4|6|8|
 |Memória (GB)|9|18|27|36|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|50|100|100|100|
-|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Yes|
 |Memóriában tárolt OLTP-tároló (GB)|1.7|3.7|5.9|8.2|
 |Maximális adatméret (GB)|768|768|768|768|
 |Napló maximális mérete (GB)|230|230|230|230|
@@ -495,7 +495,7 @@ Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lév�
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|2|2... 4|2... 6|2... 8|
 |Replikák száma|4|4|4|4|
 |Több – AZ|Nem|Nem|Nem|Nem|
-|Olvasási felskálázás|Igen|Igen|Igen|Igen|
+|Olvasási felskálázás|Igen|Igen|Igen|Yes|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -518,7 +518,7 @@ A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 | Tárterület maximális száma adatbázison |A felhasználó által a készletben lévő adatbázis számára beállított maximális adatbázis-méret. A készletezett adatbázisok megosztják a lefoglalt készlet tárterületét, így az adatbázis mérete elérheti a fennmaradó készlet tárterületét és az adatbázis méretét. Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 - Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)

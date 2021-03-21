@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
 ms.openlocfilehash: 7661066bc2666070c8b3ed9263b1223c09d6c720
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101734723"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
@@ -61,11 +61,11 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
         
 | Adatok | ASP.NET alapszintű gyűjtemény | ASP.NET ajánlott gyűjtemény |
 | --- | --- | --- |
-| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
-| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
-| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
-| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
+| Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Yes |
+| Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Yes |
+| A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Yes |
+| Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Yes |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -395,7 +395,7 @@ Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az érté
 |Probléma értéke|Magyarázat|Javítás
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet a következőre való hivatkozás `System.Diagnostics.DiagnosticSource` ,  `Microsoft.AspNet.TelemetryCorrelation` vagy `Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, és a Visual Studio régebbi verziói is hozzáadhatnak hivatkozásokat a alkalmazáshoz `Microsoft.ApplicationInsights` .
-|`AppAlreadyInstrumented:true` | Ha az alkalmazás a 2,1-es vagy a 2,2-es ASP.NET Core célozza meg, ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata. Emellett kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget a portálon (lásd a fenti utasításokat).|
+|`AppAlreadyInstrumented:true` | Ha az alkalmazás a 2,1-es vagy a 2,2-es ASP.NET Core célozza meg, ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni | A .NET Core 2.1-es és 2.2-es ügyfelek a Microsoft.AspNetCore.App meta-Package használatát [ajánljuk](https://github.com/aspnet/Announcements/issues/287) . Emellett kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget a portálon (lásd a fenti utasításokat).|
 |`AppAlreadyInstrumented:true` | Ezt az értéket is okozhatja, ha a fenti DLL-eket egy korábbi telepítésből az alkalmazás mappájába helyezi. | Törölje az alkalmazás mappáját, és győződjön meg arról, hogy a DLL-fájlok el lesznek távolítva. Győződjön meg arról, hogy a helyi alkalmazás bin-könyvtára és a App Service wwwroot könyvtára is található. (A App Service webalkalmazás wwwroot könyvtárának megkereséséhez: speciális eszközök (kudu) > hibakeresési konzol > CMD > home\site\wwwroot).
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | Ez az érték azt jelzi, hogy `Microsoft.AspNet.TelemetryCorrelation` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni. | Távolítsa el a hivatkozást.
 |`AppContainsDiagnosticSourceAssembly**:true`|Ez az érték azt jelzi, hogy `System.Diagnostics.DiagnosticSource` a bővítmény az alkalmazásra hivatkozik, és vissza fog térni.| A ASP.NET távolítsa el a hivatkozást. 

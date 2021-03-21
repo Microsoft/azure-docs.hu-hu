@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
 ms.openlocfilehash: c9ef72241ac62efd8555de59bb52949321364035
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96325179"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>RDP protokoll (RDP) sávszélességre vonatkozó követelmények
@@ -73,7 +73,7 @@ Ne feledje, hogy a hálózatra helyezett terhelés az alkalmazás számítási f
 
 Az alábbi táblázat a különböző grafikai forgatókönyvekben használt adatok becslését ismerteti. Ezek a számok egyetlen figyelő konfigurációra vonatkoznak, amely 1920 × 1080-feloldással, valamint alapértelmezett grafikus móddal és H. 264/AVC 444 grafikus móddal is rendelkezik.
 
-| Használati példa | Alapértelmezett mód | H. 264/AVC 444 üzemmód | Miniatűr | A forgatókönyv leírása |
+| Eset | Alapértelmezett mód | H. 264/AVC 444 üzemmód | Miniatűr | A forgatókönyv leírása |
 |:---|---:|---:|---|---|
 | Tétlen | 0,3 kbps | 0,3 kbps |:::image type="content" source="media/idle.png" alt-text="Képernyőkép az üresjárati kapcsolatban":::| A felhasználó szünetelteti a munkáját, és nincs aktív képernyős frissítés |
 | Microsoft Word | 100-150 kbps | 200-300 Kbps |:::image type="content" source="media/word.gif" alt-text="A Microsoft Word animációja":::| A felhasználó aktívan dolgozik a Microsoft Wordben, begépeli, beilleszti a grafikát és váltani a dokumentumok között |
@@ -144,7 +144,7 @@ Az RDP-Shortpath vonatkozó szabályozási sebességet az alábbi PowerShell-par
 New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390 -DSCPAction 46 -NetworkProfile All
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Windows rendszerű virtuális asztali sávszélességre vonatkozó követelmények megismeréséhez tekintse meg [a Windows rendszerű virtuális asztalok RDP protokoll (RDP) sávszélesség-követelményeit](rdp-bandwidth.md)ismertető témakört.
 * A Windows rendszerű virtuális asztali hálózati kapcsolat megismeréséhez tekintse meg a [Windows rendszerű virtuális asztali hálózati kapcsolat ismertetése](network-connectivity.md)című témakört.

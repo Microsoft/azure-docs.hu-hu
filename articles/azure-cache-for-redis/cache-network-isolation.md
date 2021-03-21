@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
 ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621518"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure cache a Redis hálózati elkülönítési lehetőségeihez 
@@ -60,7 +60,7 @@ A [Azure Firewall](../firewall/overview.md) felügyelt, felhőalapú hálózati 
 * A tűzfalszabályok VNet Beinjektált gyorsítótárral együtt használhatók, de jelenleg nem találhatók privát végpontok. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan konfigurálhat [VNet befecskendezett gyorsítótárat a prémium szintű Azure cache](cache-how-to-premium-vnet.md)-hez a Redis-példányhoz.  
 * Megtudhatja, hogyan konfigurálhat [tűzfalszabályokat az összes Azure cache-hez a Redis szintjein](cache-configure.md#firewall). 
 * Megtudhatja, hogyan [konfigurálhat privát végpontokat az összes Azure cache-hez a Redis szintjein](cache-private-link.md).

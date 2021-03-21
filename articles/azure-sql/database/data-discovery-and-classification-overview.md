@@ -14,16 +14,16 @@ ms.reviewer: vanto
 ms.date: 02/17/2021
 tags: azure-synapse
 ms.openlocfilehash: f47303a953dbb06b4c9efdfbbae41715cad81d2a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690804"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Az adatfelderítési & besorolása Azure SQL Databaseba, az Azure SQL felügyelt példányaiba és az Azure szinapszis Analyticsbe van építve. Alapszintű képességeket biztosít az adatbázisaiban található bizalmas adatok felfedéséhez, besorolásához, címkézéséhez és jelentéséhez.
+Az adatfelderítés és -besorolás az Azure SQL Database, a felügyelt Azure SQL-példány és az Azure Synapse Analytics részét képezi. Alapvető képességeket biztosít az adatbázisokban található bizalmas adatok felderítésére, besorolására, címkézésére és jelentésére.
 
 A legérzékenyebb adatok lehetnek például az üzleti, pénzügyi, egészségügyi vagy személyes adatok. Az adatok felfedezése és besorolása kulcsfontosságú szerepet játszik a szervezet Information Protection-megközelítésében. Infrastruktúraként alkalmas lehet az alábbiakra:
 
@@ -188,7 +188,7 @@ A REST API használatával programozott módon kezelheti a besorolásokat és a 
 ## <a name="faq---advanced-classification-capabilities"></a>Gyakori kérdések – speciális besorolási képességek
 
 **Kérdés**: az [Azure hatáskörébe](../../purview/overview.md) kerül az sql-adatfelderítés & besorolása, vagy az sql-adatfelderítés & a besorolás hamarosan megszűnik?
-**Válasz**: továbbra is támogatja az SQL-adatfelderítési & besorolását, és azt javasoljuk, hogy fogadja el az [Azure](../../purview/overview.md) -t, amely gazdagabb képességekkel rendelkezik a fejlett besorolási funkciók és az adatkezelés terén. Ha úgy döntünk, hogy bármely szolgáltatást, funkciót, API-t vagy SKU-t kivonják, értesítést fog kapni, beleértve az áttelepítési vagy áttérési útvonalat is. További információ a Microsoft életciklus-szabályzatokról itt található.
+**Válasz**: továbbra is támogatja az SQL-adatfelderítési & besorolását, és azt javasoljuk, hogy fogadja el az [Azure](../../purview/overview.md) -t, amely gazdagabb képességekkel rendelkezik a fejlett besorolási funkciók és az adatkezelés terén. Ha valamilyen szolgáltatás, funkció, API vagy termékváltozat kivezetése mellett döntünk, arról előzetes értesítést kap a migrálási vagy áttérési tervvel együtt. A Microsoft életciklus-szabályzatairól itt tájékozódhat bővebben.
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>Következő lépések

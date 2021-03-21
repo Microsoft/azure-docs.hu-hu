@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
 ms.openlocfilehash: d83cc4045f09ed0f704a0d61c6b303406835eb44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052296"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>A Azure Monitor Log Analytics áttekintése
@@ -54,9 +54,9 @@ A lekérdezésnek a lekérdezési ablakban való használatának szabályozása.
 ### <a name="2-sidebar"></a>2. Sidebar
 A munkaterületen található táblák listája, a lekérdezési lekérdezések és a szűrési beállítások az aktuális lekérdezéshez.
 
-| Tab | Leírás |
+| Tab | Description |
 |:---|:---|
-| Táblák | Felsorolja a kiválasztott hatókör részét képező táblákat. Válassza a **Csoportosítás** a következővel lehetőséget a táblák csoportosításának módosításához. Vigye a kurzort a táblázat neve fölé, és jelenítse meg a táblázat leírását, valamint a dokumentáció megtekintését és az adatmegjelenítést tartalmazó párbeszédpanelt. A táblázat kibontásával megtekintheti az oszlopait. Kattintson duplán egy táblázatra vagy oszlop nevére a lekérdezéshez való hozzáadásához. |
+| Táblázatok | Felsorolja a kiválasztott hatókör részét képező táblákat. Válassza a **Csoportosítás** a következővel lehetőséget a táblák csoportosításának módosításához. Vigye a kurzort a táblázat neve fölé, és jelenítse meg a táblázat leírását, valamint a dokumentáció megtekintését és az adatmegjelenítést tartalmazó párbeszédpanelt. A táblázat kibontásával megtekintheti az oszlopait. Kattintson duplán egy táblázatra vagy oszlop nevére a lekérdezéshez való hozzáadásához. |
 | Lekérdezések | A lekérdezési ablakban megnyitható lekérdezési példák listája. Ez az Log Analytics megnyitásakor megjelenő lista. Válassza a **Csoportosítás** lehetőséget a lekérdezések csoportosításának módosításához. Kattintson duplán egy lekérdezésre a lekérdezési ablakba való felvételéhez, vagy vigye a kurzort a többi beállításhoz. |
 | Szűrő | A lekérdezés eredményei alapján hozza létre a szűrő beállításait. A lekérdezés futtatása után az oszlopok különböző értékekkel jelennek meg az eredményekből. Jelöljön ki egy vagy több értéket, majd kattintson az **alkalmazás & Futtatás** elemre, és adjon hozzá egy **Where** parancsot a lekérdezéshez, majd futtassa újra. |
 

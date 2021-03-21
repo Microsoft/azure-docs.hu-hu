@@ -6,10 +6,10 @@ ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
 ms.openlocfilehash: d1ea328575cf07a22ce39549c34d5cd21e916427
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054766"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Értékelés áttekintése (Migrálás az Azure SQL-be)
@@ -17,7 +17,7 @@ ms.locfileid: "102054766"
 Ez a cikk áttekintést nyújt a helyszíni SQL Server-példányok VMware-környezetből Azure SQL Database-be vagy felügyelt példányokra való áttelepítésének értékeléséről a [Azure Migrate: Discovery and Assessment Tool](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool)használatával.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 ## <a name="whats-an-assessment"></a>Mi az értékelés?
 A felderítési és értékelési eszközzel végzett értékelés az adatok időbeli pillanatfelvétele, amely a felkészültséget méri, és a helyszíni kiszolgálók Azure-ba történő áttelepítésének hatását becsüli.
@@ -93,7 +93,7 @@ Itt látható az Azure SQL Assessment tulajdonságai:
 ## <a name="calculate-readiness"></a>Készültség kiszámítása
 
 > [!NOTE]
-> Az értékelés csak online állapotú adatbázisokat tartalmaz. Ha az adatbázis bármilyen más állapotban van, az értékelés figyelmen kívül hagyja az ilyen adatbázisok készültségét, méretezését és költségszámítását. Ha szeretné kiértékelni az ilyen adatbázisokat, módosítsa az adatbázis állapotát, és számítsa ki újra az értékelést.
+> Az értékelés csak online állapotú adatbázisokat tartalmaz. Ha az adatbázisok bármilyen más állapotban vannak, az értékelés figyelmen kívül hagyja a kompatibilitás-, méretezési és költségszámítását az ilyen adatbázisokra vonatkozóan. Ha szeretné értékelni ezeket az adatbázisokat, módosítsa az adatbázis állapotát, és számítsa újra az értékelést kis idő elteltével.
 
 ### <a name="azure-sql-readiness"></a>Azure SQL-felkészültség
 
@@ -113,11 +113,11 @@ Ha a cél központi telepítési típust az Azure SQL Assessment tulajdonságaib
 
  **Azure SQL DB-készültség** | **Azure SQL MI készültség** | **Ajánlott központi telepítési típus** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
  --- | --- | --- | --- |
- Kész | Kész | Azure SQL DB vagy Azure SQL MI | Igen
- Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Igen
- Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Igen
- Nem áll készen | Nem áll készen | Potenciálisan készen áll az Azure-beli virtuális gépekre | Nem
- Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | Nem
+ Kész | Kész | Azure SQL DB vagy Azure SQL MI | Yes
+ Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Yes
+ Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Yes
+ Nem áll készen | Nem áll készen | Potenciálisan készen áll az Azure-beli virtuális gépekre | No
+ Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | No
 
 > [!NOTE]
 > Ha az ajánlott központi telepítési típus az értékelés tulajdonságainál **javasolt** , és ha a forrás SQL Server jól illeszkedik az Azure SQL db önálló adatbázisához és az Azure SQL felügyelt példányaihoz, az értékelés egy adott lehetőséget javasol, amely optimalizálja a költségeket, és a méret és a teljesítmény határain belül elfér.
@@ -127,7 +127,7 @@ Ha a cél központi telepítési típust az Azure SQL Assessment tulajdonságaib
 Ha az SQL-példány nem áll készen a Azure SQL Database és az Azure SQL felügyelt példányára, az ajánlott központi telepítési típus az Azure-beli *virtuális gép számára potenciálisan készként* van megjelölve.
 - A felhasználónak javasoljuk, hogy hozzon létre egy értékelést Azure Migrate az "Azure VM" kifejezéssel, amely meghatározza, hogy a példányt futtató kiszolgáló készen áll-e az Azure-beli virtuális gépekre való áttelepítésre. Vegye figyelembe:
     - Az Azure-beli virtuális gépek felmérései a Azure Migrate jelenleg nem összpontosítanak, és nem fogják figyelembe venni az SQL-példányok és-adatbázisok Azure-beli virtuális gépen való futtatásának adott teljesítmény-mérőszámait. 
-    - Amikor egy kiszolgálón futtat egy Azure-beli virtuális gép értékelését, az ajánlott méret és költségbecslés a kiszolgálón futó összes példányra vonatkozik, és a kiszolgáló áttelepítési eszköze segítségével áttelepíthetők az Azure-beli virtuális gépekre. A Migrálás előtt [tekintse át az Azure Virtual machines SQL Server teljesítményére vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) .
+    - Amikor egy Azure-beli virtuális gépre irányuló értékelését egy kiszolgálón futtat, az ajánlott méret és a költségbecslések a kiszolgálón futó összes példányra vonatkoznak, és a példányok a Kiszolgáló migrálása eszközzel migrálhatók Azure-beli virtuális gépre. A migrálás előtt [tekintse át a teljesítményre vonatkozó irányelveket](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices) az Azure-beli virtuális gépeken futó SQL Serverhez kapcsolódóan.
 
 
 ## <a name="calculate-sizing"></a>Méretezés kiszámítása
@@ -172,11 +172,11 @@ Ez a táblázat a kiértékelési megbízhatósági minősítéseket mutatja be,
 #### <a name="low-confidence-ratings"></a>Alacsony megbízhatósági minősítések
 Íme néhány ok, amiért egy értékelés alacsony megbízhatósági minősítést kaphat:
 - Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy napot várnia kell a begyűjtéshez.
-- Az értékelés nem tudja összegyűjteni az értékelési időszak egyes vagy összes kiszolgálójának teljesítményadatait. Magas megbízhatósági minősítés esetén ügyeljen a következőre:
+- Az értékelés nem tud teljesítményadatokat gyűjteni az értékelési időszakban néhány kiszolgálóról vagy egyik kiszolgálóról sem. Magas megbízhatósági minősítés esetén ügyeljen a következőre:
     - A kiszolgálók az értékelés időtartamára vannak bekapcsolva
     - A 443-es portokon engedélyezett kimenő kapcsolatok engedélyezettek
     - Ha Azure Migrate a Azure Migrate SQL-ügynökének kapcsolati állapota "Connected", és ellenőrizze az utolsó szívverést 
-    - Ha Azure Migrate az összes SQL-példány kapcsolati állapota "Connected" az észlelt SQL-példány panelen
+    - Az Azure Migrate kapcsolati állapota mindegyik SQL-példány esetén „Csatlakozva” a felderített SQL-példány panelén
 
     Számítsa újra az értékelést, hogy tükrözze a megbízhatósági minősítés legújabb módosításait.
 - Bizonyos adatbázisok vagy példányok az értékelés kiszámításának ideje alatt lettek létrehozva. Tegyük fel például, hogy létrehozta az előző hónap teljesítmény-előzményeinek értékelését, de néhány adatbázis vagy példány csak egy hetet hozott létre. Ebben az esetben az új kiszolgálókhoz tartozó teljesítményadatok nem lesznek elérhetők a teljes időtartamra, és a megbízhatósági minősítés alacsony lenne.

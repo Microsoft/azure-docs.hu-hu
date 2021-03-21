@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96746148"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>Az SaaS-ajánlat részleteinek konfigurálása
@@ -102,7 +102,7 @@ Az ajánlatot bemutató YouTube-vagy Vimeo-videókra mutató hivatkozásokat is 
 
 A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: megtekintheti a célközönséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a Microsofton keresztül értékesíti az ajánlatot, [tekintse meg az előzetes verziójú célközönség hozzáadása az SaaS-ajánlathoz című témakört](create-new-saas-offer-preview.md). 
 - Ellenkező esetben lépjen az [SaaS-ajánlat értékesítésének módjára](create-new-saas-offer-marketing.md).

@@ -5,10 +5,10 @@ keywords: Kedvencek, portál
 ms.date: 12/20/2019
 ms.topic: how-to
 ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745791"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Kedvencek hozzáadása, eltávolítása és átrendezése
@@ -57,7 +57,7 @@ Módosíthatja a kedvenc szolgáltatásainak sorrendjét. Egyszerűen húzza át
 
 1. Miközben továbbra is tart, húzza az elemet a **Kedvencek** tetejére, majd engedje el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Project-alapú munkaterület létrehozásával kapcsolatban lásd: [irányítópultok létrehozása és megosztása a Azure Portalban](../azure-portal/azure-portal-dashboards.md)
 * További tudnivalók a [Azure Portal útmutató videós sorozatáról](https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR)

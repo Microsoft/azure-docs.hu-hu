@@ -8,10 +8,10 @@ author: palanis-MSFT
 ms.author: palanis
 ms.date: 08/27/2019
 ms.openlocfilehash: af110a66bc7ef5737f3d2d97a85ca07525b1d9e7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744703"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Együttes értékesítés ország- és régiókódjai
@@ -231,7 +231,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Salamon-szigetek                     | SB        |
 | Szomália                             | SO        |
 | Dél-afrikai Köztársaság                        | ZA        |
-| Déli-Georgia és Déli-Sandwich-szigetek | GS    |
+| Dél-Georgia és Déli-Sandwich-szigetek | GS    |
 | Dél-Szudán                         | SS        |
 | Spanyolország                               | ES        |
 | Srí Lanka                           | LK        |
@@ -249,7 +249,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Timor-Leste                         | TL        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
-| Tonga                               | HOGY        |
+| Tonga                               | TO        |
 | Trinidad és Tobago                 | TT        |
 | Tunézia                             | TN        |
 | Törökország                              | TR        |
@@ -262,7 +262,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Egyesült Királyság                      | GB        |
 | Egyesült Államok                       | USA        |
 | Uruguay                             | UY        |
-| Az Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
+| Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
 | Amerikai Virgin-szigetek                 | VI        |
 | Üzbegisztán                          | UZ        |
 | Vanuatu                             | JE        |
@@ -275,6 +275,6 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [kereskedelmi piactéren a közös értékesítés lehetőségét](./commercial-marketplace-co-sell.md).

@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: 60d7d4888c17ffe46340aa85b8d2a1cc4fa7ed34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792432"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581830"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory átmenő hitelesítés: gyors útmutató
 
@@ -65,14 +65,15 @@ Győződjön meg arról, hogy a következő előfeltételek vannak érvényben.
 4. Ha tűzfal található a kiszolgálók és az Azure AD között, konfigurálja a következő elemeket:
    - Győződjön meg arról, hogy a hitelesítési ügynökök a következő portokon tehetik meg a *kimenő* kérelmeket az Azure ad-nek:
 
-     | Portszám | Használatuk módja |
+     | Portszám | Használat célja |
      | --- | --- |
      | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben. |
-     | **443** | Kezeli az összes kimenő kommunikációt a szolgáltatással. |
-     | **8080** (nem kötelező) | A hitelesítési ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
+     | **443** | Kezeli a szolgáltatással folytatott összes kimenő kommunikációt |
+     | **8080** (nem kötelező) | A hitelesítési ügynökök tíz percenként jelentést készítenek az állapotukról az 8080-as porton keresztül, ha a 443-es port nem érhető el. Az állapot az Azure AD portálon látható. A 8080-es port _nem_ használatos a felhasználói bejelentkezésekhez. |
      
-     Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
+     Ha a tűzfal a felhasználók helye szerint érvényesíti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futó Windows-szolgáltatások adatforgalma számára.
    - Ha a tűzfal vagy a proxy lehetővé teszi, hogy DNS-bejegyzéseket adjon hozzá egy engedélyezési, vegyen fel kapcsolatokat a **\* . msappproxy.net** és a **\* . servicebus.Windows.net**. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
+   - Ha kimenő HTTP-proxyval rendelkezik, győződjön meg róla, hogy ez az URL-cím (autologon.microsoftazuread-sso.com) engedélyezve van az engedélyezési listán. Explicit módon meg kell adnia ezt az URL-címet, mert a helyettesítő karakterek nem fogadhatók el. 
    - A hitelesítési ügynököknek hozzá kell férniük a **login.Windows.net** és a **login.microsoftonline.com** a kezdeti regisztrációhoz. Nyissa meg a tűzfalat az URL-címekhez is.
     - A tanúsítvány érvényesítéséhez oldja fel a következő URL-címeket: **crl3.Digicert.com:80**, **crl4.Digicert.com:80**, **ocsp.digicert.com:80**, **www \. d-trust.net:80**, **root-C3-Ca2-2009.OCSP.d-Trust.net:80**, **CRL.microsoft.com:80**, **oneocsp.microsoft.com:80** és **OCSP.msocsp.com:80**. Mivel ezek az URL-címek más Microsoft-termékekkel való tanúsítvány-érvényesítéshez használatosak, előfordulhat, hogy az URL-címeket feloldják.
 
@@ -172,7 +173,7 @@ Másodszor, létrehozhat és futtathat felügyelet nélküli telepítési paranc
 
 Az intelligens zárolás segítséget nyújt a felhasználók jelszavának kitalálása, illetve a találgatásos kényszerített módszerek használatával történő beolvasásához. Az intelligens zárolási beállítások Azure AD-ben való konfigurálásával és/vagy a helyszíni Active Directory a megfelelő zárolási beállításokkal a támadások kiszűrhetők a Active Directory elérése előtt. [Ebből a cikkből](../authentication/howto-password-smart-lockout.md) megtudhatja, hogyan konfigurálhatja az intelligens zárolási beállításokat a bérlőn a felhasználói fiókok védetté tételéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoptadp) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
 - [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): megtudhatja, hogyan konfigurálhatja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak az átmenő hitelesítéssel, és melyek nem.

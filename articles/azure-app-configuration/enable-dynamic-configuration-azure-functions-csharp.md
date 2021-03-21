@@ -16,10 +16,10 @@ ms.author: zhenlwa
 ms.custom: devx-track-csharp, azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: add4b54adb02db09536f4e56a7f039c46245c182
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963560"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy Azure Functions alkalmazásban
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-1. Nyissa meg a *Startup.cs*, és frissítse a `ConfigureAppConfiguration` metódust. 
+1. Nyissa meg a *Startup. cs* programot, és frissítse a `ConfigureAppConfiguration` metódust. 
 
    A `ConfigureRefresh` metódus regisztrálja azokat a beállításokat, amelyeket a rendszer az alkalmazáson belüli frissítés indításakor végez, amelyet a későbbi lépésben fog elvégezni a hozzáadáskor `_configurationRefresher.TryRefreshAsync()` . A `refreshAll` paraméter arra utasítja az alkalmazás-konfigurációs szolgáltatót, hogy töltse be a teljes konfigurációt, amikor a rendszer változást észlel a regisztrált beállításban.
 
@@ -74,7 +74,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     }
     ```
 
-3. Nyissa meg a *Function1.cs*, és adja hozzá a következő névtereket.
+3. Nyissa meg a *Function1. cs*-t, és adja hozzá a következő névtereket.
 
     ```csharp
     using System.Linq;
@@ -169,7 +169,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban engedélyezte a Azure Functions alkalmazást, hogy dinamikusan frissítse a konfigurációs beállításokat az alkalmazás konfigurációjában. Ha meg szeretné tudni, hogyan használható az Azure felügyelt identitása az alkalmazás-konfigurációhoz való hozzáférés egyszerűsítéséhez, folytassa a következő oktatóanyaggal.
 
