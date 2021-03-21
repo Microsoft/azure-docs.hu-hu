@@ -14,10 +14,10 @@ ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724441"
 ---
 # <a name="resilient-end-user-experience"></a>Rugalmas végfelhasználói élmény
@@ -95,7 +95,7 @@ A Content Delivery Networks (CDNs) jobb teljesítményű és olcsóbb, mint a bl
 
 Rendszeresen tesztelje a CDN rendelkezésre állását és a tartalom terjesztésének teljesítményét a végpontok közötti forgatókönyv és a terheléses tesztelés segítségével. Ha az előléptetés vagy az üdülési forgalom miatt várhatóan nagy lendületet szeretne, módosítsa a becsléseket a terheléses teszteléshez.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmassági erőforrások Azure AD B2C-fejlesztőknek](resilience-b2c.md)
   

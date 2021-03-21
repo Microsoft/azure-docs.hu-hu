@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 418f0797343a64728c4e48084b09bd0e426cec62
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686410"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Nyelvi Testreszabás a Azure Active Directory B2Cban
@@ -477,8 +477,8 @@ A Azure AD B2C a következő nyelvek támogatását tartalmazza. A felhasználó
 | Bolgár             | BG            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Bangla                | Mrd USD            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) |
 | Katalán               | CA            | ![X, jelezve: nem.](./media/user-flow-language-customization/no.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| cseh                 | CS            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
-| dán                | da            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| Cseh                 | CS            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
+| Dán                | da            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Német                | de            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Görög                 | el            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |
 | Angolul               | hu            | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) | ![Zöld pipa.](./media/user-flow-language-customization/yes.png) |

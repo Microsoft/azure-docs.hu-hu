@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -9,10 +9,10 @@ ms.date: 10/15/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d12df7197945a514ed8d3d0dca77271fb4bd0903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96509537"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,7 +31,7 @@ Ebben a lépésben egy mintául szolgáló alkalmazás használatával küld üz
 
 1. A [GitHub Azure-Service-Bus adattár](https://github.com/Azure/azure-service-bus/)klónozása.
 2. A Visual Studióban lépjen a *\samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegration* mappába, majd nyissa meg a *SBEventGridIntegration. SLN* fájlt.
-3. A Megoldáskezelő ablakban bontsa ki a **MessageSender** projektet, és válassza a **program.cs** lehetőséget.
+3. A Megoldáskezelő ablakban bontsa ki a **MessageSender** projektet, és válassza a **program. cs** lehetőséget.
 4. Cserélje le a `<SERVICE BUS NAMESPACE - CONNECTION STRING>` karakterláncot a Service Bus névterére és a `<TOPIC NAME>` témakör nevére. 
 
     ```csharp

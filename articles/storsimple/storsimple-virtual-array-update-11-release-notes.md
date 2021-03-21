@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/22/2018
 ms.author: alkohli
 ms.openlocfilehash: df4722a4232686b0d981c190bdc154f0d1bec62e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94960204"
 ---
 # <a name="storsimple-virtual-array-update-11-release-notes"></a>StorSimple Virtual Array Update 1,1 kibocsátási megjegyzések
@@ -48,7 +48,7 @@ Ez a frissítés a következő javításokat és hibajavításokat tartalmazza:
 
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Funkció | Probléma |
+| Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági másolatok| Ez a kiadás a Felhőbeli hibák és a magas CPU-használat rugalmasságának növelésével javítja a biztonsági mentési hibákat.|
 | 2 |Naplózás| Ez a kiadás a naplózási módosításokat tartalmazza, miközben az eszköz támogatja a-munkamenetet a részletes módban.|
@@ -58,7 +58,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat.
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális tömbök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális tömböket az általános rendelkezésre állási kiadáshoz a vész-helyreállítási (DR) munkafolyamat használatával kell végrehajtani. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy megadott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális tömböt, nem szabad kibontania vagy csökkentenie az adatlemezt. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |
@@ -83,7 +83,7 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 ## <a name="next-steps"></a>Következő lépések
 [Telepítse a 1,1](storsimple-virtual-array-install-update-11.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 Régebbi kiadási megjegyzést keres? Ugrás:
 * [StorSimple Virtual Array Update 1,0 kibocsátási megjegyzések](storsimple-virtual-array-update-1-release-notes.md)
 * [StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések](storsimple-virtual-array-update-06-release-notes.md)

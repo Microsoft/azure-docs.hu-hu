@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: roygara
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a662598efdca05769c7da9fbeecdf692dccdacb5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96026355"
 ---
 ## <a name="overview"></a>Áttekintés
@@ -74,7 +74,7 @@ A növekményes Pillanatképek másolását a következő módon hajthatja végr
 
 A következő szakaszban részletesen ismertetjük, hogyan kezelheti a lemezek biztonsági mentését növekményes Pillanatképek másolásával
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 Ebben a szakaszban egy olyan forgatókönyvet ismertetünk, amely egy egyéni biztonsági mentési stratégiát tartalmaz a virtuális gépek lemezei számára a pillanatképek használatával.
 
 Vegyünk egy olyan DS-sorozatú Azure-beli virtuális gépet, amelyhez prémium szintű Storage P30-lemez van csatolva. A *mypremiumdisk* nevű P30-lemezt egy *mypremiumaccount* nevű Premium Storage-fiók tárolja. A *mypremiumdisk* biztonsági mentésének tárolására a *mybackupstdaccount* nevű standard Storage-fiók használható. 12 óránként szeretnénk megőrizni a *mypremiumdisk* pillanatképét.

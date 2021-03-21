@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 859a4f199e65dd0c3aee9424029f6060683d5fbd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836087"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect: kiadási előzmények archiválása
@@ -362,7 +362,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Név                          | Access               | Érvényesség
+Típus     | Name                          | Access               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |
@@ -1050,7 +1050,7 @@ Kiadás dátuma: 2015. december
 
 **Kijavított problémák:**
 
-* Előfordulhat, hogy a jelszó-szinkronizálás nem működik Active Directory tartományi szolgáltatások (AD DS) jelszavainak módosításakor, de a jelszó beállításakor is működik.
+* Előfordulhat, hogy a jelszó-szinkronizálás nem működik Active Directory Domain Services (AD DS) jelszavainak módosításakor, de a jelszó beállításakor is működik.
 * Ha proxykiszolgáló van, előfordulhat, hogy az Azure AD-hitelesítés sikertelen a telepítés során, vagy ha a konfiguráció lapon megszakítják a frissítést.
 * Ha nem SQL Server rendszergazda (SA), a Azure AD Connect korábbi, teljes SQL Server példánnyal rendelkező verziójáról való frissítés meghiúsul.
 * A Azure AD Connect korábbi kiadásáról egy távoli SQL Server a "nem sikerült hozzáférni a ADSync SQL Database-hez" hibaüzenet jelenik meg.

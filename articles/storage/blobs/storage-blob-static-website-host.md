@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 36cdaa813e0eccb23563301052aee268ab61533a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94888504"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Statikus webhely üzemeltetésének konfigurálása
-> * „Helló világ!” alkalmazás webhely üzembe helyezése
+> * Hello World webhely üzembe helyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,9 +61,9 @@ Első lépésként konfigurálja a Storage-fiókot egy statikus webhely üzemelt
 
     ![Statikus webhely üzemeltetésének engedélyezése Storage-fiókhoz](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-## <a name="deploy-a-hello-world-website"></a>„Helló világ!” alkalmazás webhely üzembe helyezése
+## <a name="deploy-a-hello-world-website"></a>Hello World webhely üzembe helyezése
 
-Ezután hozzon létre egy „Helló világ!” alkalmazás weblapot a Visual Studio Code-ban, és telepítse azt az Azure Storage-fiókjában üzemeltetett statikus webhelyre.
+Ezután hozzon létre egy Hello World weblapot a Visual Studio Code-ban, és telepítse azt az Azure Storage-fiókjában üzemeltetett statikus webhelyre.
 
 1. Hozzon létre egy *mywebsite* nevű üres mappát a helyi fájlrendszerben. 
 1. Indítsa el a Visual Studio Code-ot, és nyissa meg az imént létrehozott mappát az **Explorer** paneljén.

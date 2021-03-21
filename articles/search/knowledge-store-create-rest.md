@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/18/2020
 ms.openlocfilehash: 6af9b8f97d622ae10cfdbcaa8ca50abb42ec7332
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94889054"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>Knowledge Store létrehozása REST és Poster használatával
@@ -61,7 +61,7 @@ A Poster telepítése és beállítása.
 ### <a name="download-and-install-postman"></a>Poster letöltése és telepítése
 
 1. Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json).
-1. A **fájl** importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
+1. A **fájl** importálása lehetőség kiválasztásával  >   importálhatja a forráskódot Poster-ba.
 1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
@@ -107,7 +107,7 @@ A [forráskód](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 
 ## <a name="create-an-azure-cognitive-search-index"></a>Egy Azure Cognitive Search-index létrehozása
 
-Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelemnek a következőre való kiállításával `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` . A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}` , `{{index-name}}` , és `{{api-version}}` ). [Configure Postman](#configure-postman) Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
+Hozzon létre egy Azure Cognitive Search indexet, amely azokat az adattípusokat jelöli, amelyeknek érdeklik a keresés, a szűrés és a fejlesztések alkalmazása. Hozza létre az indexet egy PUT-kérelemnek a következőre való kiállításával `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` . A Poster lecseréli a kapcsos zárójelek közé foglalt szimbólumokat (például `{{search-service-name}}` , `{{index-name}}` , és `{{api-version}}` ). [](#configure-postman) Ha más eszközt használ a REST-parancsok kiadásához, ezeket a változókat saját kezűleg kell helyettesítenie.
 
 Állítsa be az Azure Cognitive Search index struktúráját a kérelem törzsében. A Poster-ben a és a `api-key` `Content-type` fejlécek beállítása után lépjen a kérelem **törzs** ablaktáblájába. A következő JSON-t kell látnia. Ha nem, válassza a **nyers**  >  **JSON (alkalmazás/JSON)** lehetőséget, majd illessze be a következő kódot törzsként:
 

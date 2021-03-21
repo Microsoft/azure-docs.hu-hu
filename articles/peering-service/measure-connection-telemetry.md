@@ -9,10 +9,10 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022496"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok telemetria mérése
@@ -47,16 +47,16 @@ Ha egy adott társ-szolgáltatási kapcsolatok késési jelentését szeretné m
 
 | **Előtag-események** | **Esemény típusa**|**Indoklása**|
 |-----------|---------|---------|
-| PrefixAnnouncementEvent |Információ|Előtag-hirdetmény érkezett|
+| PrefixAnnouncementEvent |Tájékoztatás|Előtag-hirdetmény érkezett|
 | PrefixWithdrawalEvent|Figyelmeztetés| Az előtag visszavonása megérkezett |
-| PrefixBackupRouteAnnouncementEvent |Információ|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
+| PrefixBackupRouteAnnouncementEvent |Tájékoztatás|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
 | PrefixBackupRouteWithdrawalEvent|Figyelmeztetés|Az előtag biztonsági mentési útvonalának visszavonása megérkezett |
-| PrefixActivePath |Információ| Aktuális előtag aktív útvonala   |
-| PrefixBackupPath | Információ|Aktuális előtag biztonsági mentési útvonala   |
+| PrefixActivePath |Tájékoztatás| Aktuális előtag aktív útvonala   |
+| PrefixBackupPath | Tájékoztatás|Aktuális előtag biztonsági mentési útvonala   |
 | PrefixOriginAsChangeEvent|Kritikus| Pontos előtag érkezett a különböző forrás autonóm rendszer számával (aktív útvonalhoz)| 
 | PrefixBackupRouteOriginAsChangeEvent  | Hiba|A különböző forrásként kapott előtag (biztonsági mentési útvonal)  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-szolgáltatási kapcsolatok megismeréséhez tekintse meg a társítási [szolgáltatás kapcsolódása](connection.md)című témakört.
 - A társ-szolgáltatási kapcsolatok telemetria kapcsolatos további tudnivalókért lásd: társítási [szolgáltatás kapcsolódási telemetria](connection-telemetry.md).

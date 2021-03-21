@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101687566"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>HotPatching melletti telepítéséről az új virtuális gépekhez (előzetes verzió)
@@ -34,7 +34,7 @@ Kétféle alapkonfiguráció létezik: **tervezett** alapkonfigurációk és nem
 * A nem **tervezett alaptervek** akkor jelennek meg, ha egy fontos frissítés (például egy nulla napos javítás) megjelent, és az adott frissítés nem szabadítható fel HotPatching melletti telepítéséről.  A nem tervezett alapkonfigurációk felszabadításakor a rendszer az adott hónapban egy nem tervezett alapkonfigurációval helyettesíti a HotPatching melletti telepítéséről.  A nem tervezett alapkonfigurációk tartalmazzák az adott hónap hasonló, _legújabb összesített frissítésében_ található összes frissítést is, és újraindítást igényelnek.
     * A fenti minta ütemezés két nem tervezett alapkonfigurációt mutat be, amelyek lecserélik az adott hónap HotPatching melletti telepítéséről kiadásait (az év nem tervezett alapkonfigurációinak tényleges száma nem ismert előre).
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 A HotPatching melletti telepítéséről az összes globális Azure-régióban elérhető előzetes verzióban. Az előzetes verzióban a Azure Government régiók nem támogatottak.
 
 ## <a name="how-to-get-started"></a>Első lépések

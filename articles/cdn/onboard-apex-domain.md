@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
 ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370356"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>Gyökér-vagy APEX-tartomány beléptetése meglévő Azure CDN-végpontba
@@ -90,6 +90,6 @@ Miután regisztrálta az egyéni tartományát, hozzáadhatja azt a CDN-végpont
 
 További információ a HTTPS engedélyezéséről az egyéni tartományon a Azure CDN számára: [oktatóanyag: https konfigurálása Azure CDN egyéni tartományon](cdn-custom-ssl.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre CDN-végpontot](cdn-create-new-endpoint.md).

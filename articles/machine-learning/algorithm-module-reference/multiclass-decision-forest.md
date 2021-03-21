@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1be66bdd8a1cf25a32ad3102d770078c904c4b6c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94376825"
 ---
 # <a name="multiclass-decision-forest-module"></a>Többosztályos döntési erdő modul
@@ -39,33 +39,33 @@ Azure Machine Learning a döntési erdő besorolása a döntési fák együttes�
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Többosztályos döntési erdő konfigurálása
 
-1. Adja hozzá a **többosztályos döntési erdő** modult a folyamathoz a tervezőben. Ez a modul a **Machine learning** , a **modell inicializálása** és a **besorolás** területen található.
+1. Adja hozzá a **többosztályos döntési erdő** modult a folyamathoz a tervezőben. Ez a modul a **Machine learning**, a **modell inicializálása** és a **besorolás** területen található.
 
 2. A **Tulajdonságok** ablaktábla megnyitásához kattintson duplán a modulra.
 
 3. Az **újramintavételezési módszernél** válassza ki az egyes fák létrehozásához használt módszert.  A csomagok és a replikálás közül választhat.
 
-    + **Poggyász** : a poggyászt rendszerindítási *összesítésnek* is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel. A modellek kimeneteit a rendszer *szavazással* kombinálja, amely az Összesítés formáját képezi. További információ: a rendszerindítási összesítések Wikipedia-bejegyzése.
+    + **Poggyász**: a poggyászt rendszerindítási *összesítésnek* is nevezik. Ebben a módszerben minden fát egy új mintán termesztenek, és az eredeti adatkészlet véletlenszerűen történő mintavételezésével jön létre, és csak akkor történik meg, ha nem rendelkezik az eredeti méretű adatkészlettel. A modellek kimeneteit a rendszer *szavazással* kombinálja, amely az Összesítés formáját képezi. További információ: a rendszerindítási összesítések Wikipedia-bejegyzése.
 
-    + **Replikálás** : a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Annak meghatározása, hogy az egyes facsomópontok melyik felosztó predikátumot használják, a különböző fák létrehozásakor is véletlenszerűek maradnak.
+    + **Replikálás**: a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Annak meghatározása, hogy az egyes facsomópontok melyik felosztó predikátumot használják, a különböző fák létrehozásakor is véletlenszerűek maradnak.
 
    
 
 4. Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
 
-    + **Egyetlen paraméter** : válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg argumentumként egy értéket.
+    + **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg argumentumként egy értéket.
 
-    + **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.   
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.   
 
-5. **Döntési fák száma** : Itt adhatja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzés hosszabb ideig is növelheti.
+5. **Döntési fák száma**: Itt adhatja meg az Ensemble-ban létrehozható döntési fák maximális számát. További döntési fák létrehozásával lehetőség van jobb lefedettségre, de a képzés hosszabb ideig is növelheti.
 
     Ha az értéket 1-re állítja, azonban ez azt jelenti, hogy csak egy fát lehet előállítani (a kezdeti paraméterekkel rendelkező fát), és a rendszer nem végez további iterációkat.
 
-6. **A döntési fák maximális mélysége** : írjon be egy számot a döntési fa maximális mélységének korlátozására. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
+6. **A döntési fák maximális mélysége**: írjon be egy számot a döntési fa maximális mélységének korlátozására. A fa mélységének növelésével növelheti a pontosságot, és megnövelheti a beilleszkedő és a megnövekedett betanítási időt is.
 
-7. **Véletlenszerű felosztások száma egy csomóponton** : írja be a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
+7. **Véletlenszerű felosztások száma egy csomóponton**: írja be a fa egyes csomópontjainak kiépítésekor használandó felosztások számát. A *felosztás* azt jelenti, hogy a fa (csomópont) egyes szintjeinek funkciói véletlenszerűen vannak osztva.
 
-8. **Minták minimális száma a levél csomópontjain** : adja meg, hogy legalább hány esetben szükséges a terminál csomópont (levél) létrehozása a fában. Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét.
+8. **Minták minimális száma a levél csomópontjain**: adja meg, hogy legalább hány esetben szükséges a terminál csomópont (levél) létrehozása a fában. Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét.
 
     Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább öt olyan esetet kellene tartalmaznia, amelyek megfelelnek ugyanazoknak a feltételeknek.
 

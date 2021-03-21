@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28a9080ce878e262573adf0b3c79394079c09ca2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835968"
 ---
 # <a name="identity-protection-policies"></a>Identity Protection-szabályzatok
@@ -58,7 +58,7 @@ Ha a rendszer veszélyezteti a kockázatot, a felhasználók önkiszolgáló jel
 
 - [Az Azure AD önkiszolgáló jelszó-visszaállítás engedélyezése](../authentication/howto-sspr-deployment.md)
 
-- [Azure AD-Multi-Factor Authentication engedélyezése](../authentication/howto-mfa-getstarted.md)
+- [Az Azure AD többtényezős hitelesítés engedélyezése](../authentication/howto-mfa-getstarted.md)
 
 - [Az Azure AD Multi-Factor Authentication regisztrációs szabályzatának engedélyezése](howto-identity-protection-configure-mfa-policy.md)
 

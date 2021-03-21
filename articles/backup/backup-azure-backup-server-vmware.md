@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002953"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
@@ -213,7 +213,7 @@ A következő táblázat rögzíti azokat a jogosultságokat, amelyeket a létre
 | Globális. egyéni attribútumok kezelése | Adattár. AllocateSpace |
 | Globális. egyéni attribútum beállítása | VirtualMachine.Config. Változáskövetési |
 | Gazdagép. local művelet. Virtuális gép létrehozása | VirtualMachine. State. RemoveSnapshot |
-| Hálózati. Hálózat kiosztása | VirtualMachine. State. CreateSnapshot |
+| Hálózat. Hálózat kiosztása | VirtualMachine. State. CreateSnapshot |
 | Erőforrás. Virtuális gép erőforrás-készlethez rendelése | VirtualMachine. kiépítés. DiskRandomRead |
 | Virtuális machine.Configszülő. Új lemez hozzáadása | VirtualMachine. Interact. erő |
 | Virtuális machine.Configszülő. Speciális | VirtualMachine. Inventory. Create |
@@ -564,6 +564,6 @@ A lemez kizárásból való eltávolításához futtassa a következő parancsot
 C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

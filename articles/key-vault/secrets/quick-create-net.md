@@ -9,10 +9,10 @@ ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a82c2cdf7084b31eb6ba861e48ecffb81e6d1363
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102453699"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Rövid útmutató: Azure Key Vault a .NET-hez készült titkos ügyféloldali kódtár (SDK v4)
@@ -36,7 +36,7 @@ A Key Vault és a titkokkal kapcsolatos további információkért lásd:
 
 Ez a rövid útmutató az `dotnet` Azure CLI-t használja
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez. További információ: [az ügyfél hitelesítése az Azure Identity Client Library](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true)használatával.
 
@@ -123,7 +123,7 @@ A .NET-hez készült Azure Key Vault Secret ügyféloldali kódtára lehetővé 
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 
-Adja hozzá a következő irányelveket a *program.cs* tetejéhez:
+Adja hozzá a következő irányelveket a program elejéhez *. cs*:
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
@@ -173,7 +173,7 @@ await client.PurgeDeletedKeyAsync("mySecret");
 
 Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépések végrehajtásával működjön együtt a Key Vault:
 
-1. Cserélje le a *program.cs* található kódot a következő kódra:
+1. Cserélje a *program. cs* kódot a következő kódra:
 
     ```csharp
     using System;

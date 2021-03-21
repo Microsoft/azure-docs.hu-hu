@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan frissítheti a meglévő virtuális gépek bizt
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98728578"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>A meglévő virtuális gép biztonsági mentési szabályzatának frissítése a parancssori felület használatával
@@ -110,6 +110,6 @@ Meglévő virtuális gép biztonsági mentési szabályzatának módosításáho
 >[!NOTE]
 >A JSON-szabályzatot a [Get-default-for-VM](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) parancs végrehajtásával is lekérheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli virtuális gépek biztonsági másolatainak kezelése a Azure Backup szolgáltatással](backup-azure-manage-vms.md)

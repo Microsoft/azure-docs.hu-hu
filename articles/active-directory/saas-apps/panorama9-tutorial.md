@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: e79d8584a7c760fa0a50a614390370ee7ff8ae15
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92512480"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Oktatóanyag: Azure Active Directory integráció a Panorama9
@@ -61,13 +61,13 @@ A Panorama9 Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Panorama9**kifejezést, válassza a **Panorama9** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Panorama9** kifejezést, válassza a **Panorama9** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Panorama9 az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Panorama9-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Panorama9-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Panorama9 kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés Panorama9 való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Panorama9 való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Panorama9** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Panorama9** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,11 +130,11 @@ Az Azure AD egyszeri bejelentkezés Panorama9 való konfigurálásához hajtsa v
 
 1. Egy másik böngészőablakban jelentkezzen be a Panorama9 vállalati webhelyre rendszergazdaként.
 
-2. A felső eszköztáron kattintson a **kezelés**, majd a **bővítmények**elemre.
+2. A felső eszköztáron kattintson a **kezelés**, majd a **bővítmények** elemre.
    
     ![Bővítmények](./media/panorama9-tutorial/ic790023.png "Bővítmények")
 
-3. A **bővítmények** párbeszédpanelen kattintson az **egyszeri bejelentkezés**elemre.
+3. A **bővítmények** párbeszédpanelen kattintson az **egyszeri bejelentkezés** elemre.
    
     ![Egyszeri bejelentkezés](./media/panorama9-tutorial/ic790024.png "Egyszeri bejelentkezés")
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Panorama9 való konfigurálásához hajtsa v
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -176,15 +176,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Panorama9 hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Panorama9**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Panorama9** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Panorama9**lehetőséget.
+2. Az alkalmazások listában válassza a **Panorama9** lehetőséget.
 
     ![Az Panorama9 hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -208,7 +208,7 @@ Panorama9 esetén a kiépítés manuális feladat.
 
 1. Jelentkezzen be a **Panorama9** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **kezelés**, majd a **felhasználók**elemre.
+2. A felső menüben kattintson a **kezelés**, majd a **felhasználók** elemre.
    
     ![Képernyőfelvétel: a "felügyelet" és a "felhasználók" lap van kijelölve.](./media/panorama9-tutorial/ic790027.png "Felhasználók")
 
@@ -218,7 +218,7 @@ Panorama9 esetén a kiépítés manuális feladat.
 
 4. Nyissa meg a felhasználói adatterületet, írja be egy érvényes Azure Active Directory-felhasználó e-mail-címét, amelyet szeretne felvenni az **e-mail** szövegmezőbe.
 
-5. A felhasználók szakaszban kattintson a **Mentés**gombra.
+5. A felhasználók szakaszban kattintson a **Mentés** gombra.
    
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve megerősíti a fiókját, mielőtt az aktívvá válna.

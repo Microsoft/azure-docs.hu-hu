@@ -8,15 +8,15 @@ ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: f038392f03b94aa2c2450531c9da4a11d9900295
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93043161"
 ---
 Ebben a szakaszban a Azure File Sync-ügynököt telepíti a Windows Server-példányra.
 
-Az [üzembe helyezési útmutató](../articles/storage/files/storage-sync-files-deployment-guide.md) azt szemlélteti, hogy ki kell kapcsolnia az **Internet Explorer fokozott biztonsági beállításait** . Ez a biztonsági mérték nem alkalmazható a Azure File Sync. A kikapcsolás lehetővé teszi, hogy problémák nélkül hitelesítse magát az Azure-ban.
+Az [üzembe helyezési útmutató](../articles/storage/files/storage-sync-files-deployment-guide.md) azt szemlélteti, hogy ki kell kapcsolnia az **Internet Explorer fokozott biztonsági beállításait**. Ez a biztonsági mérték nem alkalmazható a Azure File Sync. A kikapcsolás lehetővé teszi, hogy problémák nélkül hitelesítse magát az Azure-ban.
 
 Nyissa meg a PowerShellt, és telepítse a szükséges PowerShell-modulokat az alábbi parancsokkal. Ha a rendszer kéri, telepítse a teljes modult és a NuGet-szolgáltatót.
 

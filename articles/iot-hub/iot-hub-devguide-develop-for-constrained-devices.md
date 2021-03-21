@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500002"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Korlátozott eszközök fejlesztése az Azure IoT C SDK használatával
@@ -85,7 +85,7 @@ A C SDK két programozási modellt támogat. Az egyik készlethez tartozik egy _
 
 Az " _ll_ " index nélküli másik API-készletet a kényelmi rétegnek nevezzük, ahol a munkavégző szál automatikusan megpördült. Az eszköz ügyfelének kényelmi rétegének API-jai például a [IoT-ügyfél fejlécének fájljában](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h)találhatók. Olyan korlátozott eszközök esetében, amelyeknél az egyes extra szálak a rendszererőforrások jelentős hányadát vehetik igénybe, érdemes lehet az _ll_ API-kat használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure IoT C SDK-architektúráról:
 -    [Azure IoT C SDK-forráskód](https://github.com/Azure/azure-iot-sdk-c/)

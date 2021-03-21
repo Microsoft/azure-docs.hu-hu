@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 8a39c2b06ca8a0f852891acb60ba199fc2c6db5c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024129"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Ajánlott eljárások az eszközök konfigurálásához egy IoT-megoldáson belül
@@ -84,7 +84,7 @@ Az alábbi ajánlott eljárások az Azure-ra épülő IoT-megoldást használó 
 
 * **Visszaállítások végrehajtása hibák vagy helytelen konfiguráció esetén:**  A hibákat vagy helytelen konfigurációkat okozó automatikus eszköz-konfiguráció visszaállítható úgy, hogy megváltoztatja a **célzási feltételt** , így az eszközök már nem felelnek meg a célcsoport-kezelési feltételnek. Győződjön meg arról, hogy az alacsonyabb prioritású eszközök egy másik automatikus konfigurációja továbbra is megcélozza ezeket az eszközöket. Ellenőrizze, hogy a visszaállítás sikeres volt-e a metrikák megtekintésével: a visszaállított konfigurációnak többé nem kell megjelenítenie a nem megcélzott eszközök állapotát, és a második konfiguráció metrikáinak tartalmazniuk kell a továbbra is megcélzott eszközök számát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan implementálhatja az eszközök ikreket, [és hogyan használhatja a IoT hub eszközeit](iot-hub-devguide-device-twins.md).
 

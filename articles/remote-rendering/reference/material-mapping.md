@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024044"
 ---
 # <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
@@ -101,7 +101,7 @@ A fenti leképezés az anyag-átalakítás legbonyolultabb része, mivel számos
 Néhány alább használt definíció:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 +  `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
+* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 +  `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
 * `DiffuseBrightness` = 0,299 * `Diffuse` . Piros<sup>2</sup> + 0,587 * `Diffuse` . Zöld<sup>2</sup> + 0,114 * `Diffuse` . Kék<sup>2</sup>
 * `SpecularBrightness` = 0,299 * `Specular` . Piros<sup>2</sup> + 0,587 * `Specular` . Zöld<sup>2</sup> + 0,114 * `Specular` . Kék<sup>2</sup>
 * `SpecularStrength` = Max ( `Specular` . Piros, `Specular` . Zöld, `Specular` . Kék
@@ -173,7 +173,7 @@ Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Dif
 * Az aktuális képlet nem működik jól az egyszerű, színes geometria esetében. Ha `Specular` elég fényes, akkor az összes geometriában fényvisszaverő fémes felületek válnak szín nélkül. A megkerülő megoldás az `Specular` eredetitől 30%-ra, a konverziós beállítások [fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)pedig használható.
 * A PBR-anyagok a közelmúltban lettek hozzáadva a `Maya` és a `3DS Max` tartalom-létrehozási eszközökhöz. Egyéni, felhasználó által definiált fekete dobozos tulajdonságokat használnak a FBX való továbbításhoz. Az Azure távoli renderelés nem olvassa el ezeket a további tulajdonságokat, mert nincsenek dokumentálva, és a formátum lezárt – forrás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell átalakítása](../how-tos/conversion/model-conversion.md)
 * [Anyagok felülbírálása a modell átalakítása során](../how-tos/conversion/override-materials.md)

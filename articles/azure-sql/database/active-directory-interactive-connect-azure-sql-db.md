@@ -12,10 +12,10 @@ ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
 ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841648"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Kapcsolódás Azure SQL Database az Azure AD-vel Multi-Factor Authentication
@@ -84,7 +84,7 @@ Az alkalmazáshoz szükséges engedélyek regisztrálása és beállítása:
 
 A C#-program futtatásához a [logikai SQL Server](logical-servers.md) -rendszergazdának hozzá kell rendelnie egy Azure ad-rendszergazdát a kiszolgálóhoz.
 
-Az **SQL Server** lapon válassza a rendszergazda **Active Directory admin**  >  **készlet rendszergazdája** Active Directory.
+Az **SQL Server** lapon válassza a rendszergazda   >  **készlet rendszergazdája** Active Directory.
 
 Az Azure AD-rendszergazdákkal és a Azure SQL Database-felhasználókkal kapcsolatos további információkért tekintse meg a [Azure Active Directory hitelesítés konfigurálása és kezelése a SQL Database](authentication-aad-configure.md#provision-azure-ad-admin-sql-database)segítségével című témakör képernyőképeit.
 
@@ -143,7 +143,7 @@ Futtassa újra a SSMS, ezúttal a **hitelesítés** **Azure Active Directory-Uni
 További információ: [multi-Factor Authentication konfigurálása a SSMS és az Azure ad-hez](authentication-mfa-ssms-configure.md).
 
 > [!NOTE]
-> Ha Ön vendég felhasználó az adatbázisban, meg kell adnia az adatbázishoz tartozó Azure ad-tartománynevet is: válassza az **Options**  >  **ad-tartománynév vagy a bérlői azonosító** lehetőséget. Ha meg szeretné keresni a tartománynevet a Azure Portalban, válassza a **Azure Active Directory**  >  **Egyéni tartománynevek** lehetőséget. A C# példa programban nem szükséges tartománynevet biztosítani.
+> Ha Ön vendég felhasználó az adatbázisban, meg kell adnia az adatbázishoz tartozó Azure ad-tartománynevet is: válassza az   >  **ad-tartománynév vagy a bérlői azonosító** lehetőséget. Ha meg szeretné keresni a tartománynevet a Azure Portalban, válassza a **Azure Active Directory**  >  **Egyéni tartománynevek** lehetőséget. A C# példa programban nem szükséges tartománynevet biztosítani.
 
 ## <a name="c-code-example"></a>C#-kód – példa
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
 ms.openlocfilehash: 2c93471436030f9260f4fa0d95d656c27d382346
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102047043"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
@@ -147,7 +147,7 @@ A metrikák a virtuális gép menüjéből **való megnyitásával** elemezheti 
 
 A virtuális gépek három névteret használnak a metrikák számára:
 
-| Névtér | Leírás | Követelmény |
+| Névtér | Description | Követelmény |
 |:---|:---|:---|
 | Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../essentials/metrics-supported.md#microsoftcomputevirtualmachines). | Automatikusan összegyűjtött konfiguráció nélkül. |
 | Vendég (klasszikus) | A vendég operációs rendszerek és az alkalmazások teljesítményének korlátozott készlete. Elérhető a metrikák Explorerben, de nem más Azure Monitor-funkciók, például a metrikus riasztások.  | A [diagnosztikai bővítmény](../agents/diagnostics-extension-overview.md) telepítve van. Az adatok beolvasása az Azure Storage-ból történik.  |
@@ -160,7 +160,7 @@ Az Azure Virtual Machines a következő adatokat gyűjti össze a naplók Azure 
 
 A VM-megállapítások lehetővé teszik a *InsightsMetrics* táblába írt teljesítményszámlálók előre meghatározott készletének gyűjtését. Ez ugyanaz a tábla, amelyet a [Container bepillantást](../containers/container-insights-overview.md)használ. 
 
-| Adatforrás | Követelmények | Táblák |
+| Adatforrás | Követelmények | Táblázatok |
 |:---|:---|:---|
 | VM-ismeretek | Engedélyezés az egyes virtuális gépeken. | InsightsMetrics<br>VMBoundPort<br>VMComputer<br>VMConnection<br>VMProcess<br>A részletekért lásd: [naplók lekérdezése a virtuális](../vm/vminsights-log-search.md) gépekről. |
 | Tevékenységnapló | Az előfizetés diagnosztikai beállítása. | AzureActivity |

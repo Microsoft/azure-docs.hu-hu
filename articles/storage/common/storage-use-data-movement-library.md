@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023414"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Adatok átvitele az adatátviteli kódtárral
@@ -38,7 +38,7 @@ Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és mac
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure Storage-fiók](storage-account-create.md)
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 1. A .net Core telepítéséhez látogasson el a [.net Core telepítési útmutatóba](https://www.microsoft.com/net/core) . A környezet kiválasztásakor válassza a parancssori kapcsolót.
 2. A parancssorból hozzon létre egy könyvtárat a projekthez. Navigáljon a címtárba, majd írja be a következőt: `dotnet new console -o <sample-project-name>` C# Console-projekt létrehozása.
@@ -46,7 +46,7 @@ Ebből a dokumentumból megtudhatja, hogyan hozhat létre Windows, Linux és mac
 4. Telepítse a [C#-bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) a Visual Studio Code Piactérről. Indítsa újra a Visual Studio Code-ot.
 5. Ekkor két kérdést kell látnia. Az egyik a "szükséges eszközök létrehozása és hibakeresése". Kattintson az Igen gombra. Egy másik kérdés a feloldatlan függőségek visszaállítása. Kattintson a visszaállítás gombra.
 6. A `launch.json` alatt módosítsa `.vscode` a külső terminál használata konzolként lehetőséget. Ennek a beállításnak a következőképpen kell beolvasnia `"console": "externalTerminal"`
-7. A Visual Studio Code lehetővé teszi a .NET Core-alkalmazások hibakeresését. `F5`Futtassa az alkalmazást, és ellenőrizze, hogy a telepítés működik-e. A "„Helló világ!” alkalmazás!" kifejezésnek kell megjelennie kinyomtatva a konzolra.
+7. A Visual Studio Code lehetővé teszi a .NET Core-alkalmazások hibakeresését. `F5`Futtassa az alkalmazást, és ellenőrizze, hogy a telepítés működik-e. A "Hello World!" kifejezésnek kell megjelennie kinyomtatva a konzolra.
 
 ## <a name="add-the-data-movement-library-to-your-project"></a>Adatátviteli függvénytár hozzáadása a projekthez
 
@@ -565,7 +565,7 @@ Ebben a példában a értékben a logikai paramétert használjuk, hogy `Transfe
 
 Az adatáthelyezési alkalmazás már befejeződött. [A teljes kód minta elérhető a githubon](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Storage adatáthelyezési függvénytárának dokumentációja](https://azure.github.io/azure-storage-net-data-movement).
 
