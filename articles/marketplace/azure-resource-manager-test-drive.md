@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
 ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101730371"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
@@ -73,7 +73,7 @@ A paraméterekhez bármilyen érvényes nevet használhat; a test Drive felismer
 
 ### <a name="accepted-parameter-metadata-types"></a>Elfogadott paraméterek metaadatainak típusai
 
-| Metaadat típusa   | Paraméter típusa  | Leírás     | Minta értéke    |
+| Metaadat típusa   | Paraméter típusa  | Description     | Minta értéke    |
 |---|---|---|---|
 | **BaseUri**     | sztring          | A központi telepítési csomag alap URI-ja| `https://<..>.blob.core.windows.net/<..>` |
 | **username**    | sztring          | Új véletlenszerű Felhasználónév.| admin68876      |

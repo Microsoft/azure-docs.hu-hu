@@ -7,10 +7,10 @@ ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
 ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102486658"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
@@ -91,8 +91,8 @@ A `sourceUrl` , `targetUrl` , és opcionálisan `glossaryUrl`  tartalmaznia kell
 ### <a name="c"></a>[C#](#tab/csharp)
 
 * Új projekt létrehozása.
-* Cserélje le az Program.cs-t az alább látható C#-kódra.
-* Állítsa be a végpontot. az előfizetési kulcs és a tároló URL-értékei a Program.cs-ben.
+* Cserélje le a program. cs programot az alább látható C#-kódra.
+* Állítsa be a végpontot. az előfizetési kulcs és a tároló URL-értékei a program. cs-ban.
 * A JSON-adatfeldolgozáshoz vegyen fel [Newtonsoft.Jsa csomagba a .net CLI használatával](https://www.nuget.org/packages/Newtonsoft.Json/).
 * Futtassa a programot a projekt könyvtárából.
 
@@ -186,7 +186,7 @@ A Batch-dokumentumok fordítására vonatkozó kérelmet POST kérelem útján k
 
 A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekben:
 
-|HTTP-fejléc|Leírás|
+|HTTP-fejléc|Description|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Kötelező**: az érték a fordítóhoz vagy Cognitive Services erőforráshoz tartozó Azure-előfizetési kulcs.|
 |Content-Type|**Kötelező**: az adattartalom tartalomtípusát adja meg. Az elfogadott értékek az Application/JSON vagy a charset = UTF-8.|

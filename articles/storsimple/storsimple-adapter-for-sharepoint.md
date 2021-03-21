@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
 ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966292"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése és konfigurálása
@@ -92,7 +92,7 @@ Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, konfigurál
 ## <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, győződjön meg arról, hogy a StorSimple-eszköz, a SharePoint-kiszolgálófarm és a SQL Server példánya megfelel a következő előfeltételeknek.
 
-### <a name="system-requirements"></a>Rendszerkövetelmények
+### <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
 A SharePointhoz készült StorSimple-adapter a következő hardverekkel és szoftverekkel működik:
 
 * Támogatott operációs rendszer – Windows Server 2008 R2 SP1, Windows Server 2012 vagy Windows Server 2012 R2

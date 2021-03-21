@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
 ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498285"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Oktatóanyag: ügyfél által felügyelt kulcsok vagy BYOK használata Media Services REST API
@@ -133,7 +133,7 @@ Media Services automatikusan észleli a kulcs módosításakor. A folyamat teszt
 
 Ha nem folytatja a létrehozott erőforrások használatát, és *nem kívánja tovább használni a számlázást*, törölje őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan teheti meg a következőket:
 > [!div class="nextstepaction"]

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: eff9103f476e6074ab46198ff8cc78588675569f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020043"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
@@ -22,7 +22,7 @@ A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is
 
 Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetekről. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg és válassza ki a meglévő Stream Analytics feladatot.
 
@@ -70,7 +70,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 Az élő adatok helyett helyi fájlokból származó mintaadatok használatával tesztelheti a Azure Stream Analytics lekérdezést.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
    
 2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
@@ -125,7 +125,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
   * A lekérdezés méretének csökkentése – a lekérdezés kijelölésének teszteléséhez válassza ki a lekérdezés egy részét, majd kattintson a **kijelölt lekérdezés tesztelése** elemre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [IoT-megoldás létrehozása stream Analytics használatával](./stream-analytics-build-an-iot-solution-using-stream-analytics.md): ez az oktatóanyag bemutatja, hogyan hozhat létre egy teljes körű megoldást egy olyan adatgenerátorral, amely egy autópályadíj-kezelőn keresztül szimulálja a forgalmat.
 
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)

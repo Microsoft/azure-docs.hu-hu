@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.openlocfilehash: 9eebc77c5b3d9402c766320fddfdaf05d50b574f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102485401"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-40-server-version-supported-features-and-syntax"></a>Azure Cosmos DB API a MongoDB-hez (4,0 Server Version): támogatott funkciók és szintaxis
@@ -564,7 +564,7 @@ globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
 
 Azure Cosmos DB támogatja a GridFS bármely GridFS-kompatibilis Mongo-illesztőprogramon keresztül.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 Az Azure Cosmos DB támogatja az automatikus natív replikációt a legalsó rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A Cosmos DB nem támogatja a manuális replikálási parancsokat.
 

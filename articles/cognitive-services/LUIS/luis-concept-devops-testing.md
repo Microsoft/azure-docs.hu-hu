@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
 ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788451"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
@@ -133,7 +133,7 @@ Ennek a nem determinisztikus-képzésnek az eredménye az, hogy a [különböző
 
 Ha szeretné letiltani a nem determinisztikus betanítást azon LUIS-alkalmazások esetében, amelyek tesztelés céljából készülnek, használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t a `UseAllTrainingData` beállítás értékeként `true` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [CI/CD-munkafolyamatok megvalósításáról](luis-concept-devops-automation.md)
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával

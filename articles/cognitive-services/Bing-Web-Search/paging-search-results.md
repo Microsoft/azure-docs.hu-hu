@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
 ms.openlocfilehash: 670460759a9495de735da35ae9f3d8388e59e0e5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350619"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Az Bing Search API-k eredményeinek megjelenítése
@@ -77,7 +77,7 @@ A Bing-rendszerkép és a videó API-k használatakor az `nextOffset` érték ha
 >
 > Ha a `responseFilter` lekérdezési paramétert a szűrési értékek megadása nélkül használja, ne használja a `count` és a `offset` paramétert. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mik a Bing Web Search API-k?](bing-api-comparison.md)
 * [Bing Web Search API 7-es verzió – referencia](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

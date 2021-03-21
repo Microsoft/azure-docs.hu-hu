@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009500"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions futtatása webjobsként
@@ -27,7 +27,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a webjobs SDK, a C# Azure Functions
 
 * [Ismerkedés a webjobs SDK-val](../../app-service/webjobs-sdk-get-started.md)
 * [Az első függvény létrehozása a Visual Studio használatával](../functions-create-your-first-function-visual-studio.md)
-* [Tartós függvények](durable-functions-sequence.md)
+* [Durable Functions](durable-functions-sequence.md)
 
 A cikkben szereplő lépések végrehajtásához:
 
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 A webjobs-feladatok kontextusában a Durable Functions a Azure Functions kontextusában különbözik a Durable Functionstől. Fontos, hogy tisztában legyenek a kódok írásához szükséges különbségekkel.
 
@@ -269,6 +269,6 @@ A legfontosabb változás a .net Core használata a .NET-keretrendszer helyett. 
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A webjobs SDK-val kapcsolatos további tudnivalókért tekintse meg a [Webjobs SDK használatát](../../app-service/webjobs-sdk-how-to.md)ismertető témakört.

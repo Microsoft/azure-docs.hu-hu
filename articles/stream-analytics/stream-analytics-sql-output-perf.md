@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020230"
 ---
 # <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Az adatátviteli teljesítmény növelése a Azure SQL Database Azure Stream Analytics
@@ -51,6 +51,6 @@ Ha a bejövő események aránya alacsony, könnyedén létrehozhat 100-nál kis
 
 Egy másik ilyen forgatókönyv akkor fordul elő, ha nem fürtözött oszlopcentrikus indexbe (NCCI) ír, ahol a kisebb tömeges beszúrások túl sok szegmenst hozhatnak létre, ami összeomlhat az indexben. Ebben az esetben az ajánlott, hogy fürtözött Oszlopcentrikus indexet használjon.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Összefoglalva, az SQL-kimenethez Azure Stream Analytics particionált kimeneti funkciójával, a feladatoknak a SQL Azure particionált táblájával való igazításával jelentős teljesítménybeli párhuzamos kell biztosítania. A In-Memory táblából lemezes táblákba való adatáthelyezési Azure Data Factoryának kihasználása lehetővé teheti, hogy az adatátviteli teljesítmény megtörténjen. Ha lehetséges, az üzenetek sűrűségének javítása is jelentős tényező lehet a teljes átviteli sebesség javításában.

@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 10/26/2020
 ms.openlocfilehash: 39119f62fa938f5f4f6529539d4ca9a84bdf8fd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94989190"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
@@ -134,7 +134,7 @@ A dinamikus adatmaszkolás csökkenti a bizalmas adatok kitettségét azzal, hog
 
 ## <a name="security-management"></a>Biztonsági felügyelet
 
-### <a name="vulnerability-assessment"></a>Biztonsági rések felmérése
+### <a name="vulnerability-assessment"></a>Sebezhetőségi felmérés
 
 A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely felderítheti, nyomon követheti és javíthatja a lehetséges adatbázis-réseket azzal a céllal, hogy proaktív módon javítsa a teljes adatbázis-biztonságot. A biztonsági rések felmérése (VA) az Azure Defender for SQL-ajánlat része, amely a fejlett SQL biztonsági funkciók egységes csomagja. A sebezhetőségi felmérés a központi Azure Defender for SQL Portalon érhető el és kezelhető.
 

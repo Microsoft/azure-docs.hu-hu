@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 09/15/2016
 ms.author: alkohli
 ms.openlocfilehash: 8301b45fe778bd3df7fc665db2662ba81d3e644f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94966105"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>StorSimple Virtual Array Update 0,3 kibocsátási megjegyzések
@@ -40,7 +40,7 @@ Az 0,3-es frissítés elsősorban hibajavítási Build. Ebben a verzióban szám
 ## <a name="issues-fixed-in-the-update-03"></a>Az 0,3-es frissítésben rögzített problémák
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Funkció | Probléma |
+| Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági másolatok |Probléma merült fel a korábbi kiadásban, ahol a biztonsági mentések sikertelenek lesznek a fájlmegosztás esetében. Ha ez a probléma merült fel, a biztonsági mentési feladat meghiúsul, és kritikus riasztás történt a StorSimple Manager szolgáltatásban, hogy értesítse a felhasználót. Ez a probléma nem befolyásolta a megosztásokon vagy az adathozzáférésen alapuló adatvédelmet. A probléma okát azonosította és rögzítették ebben a kiadásban. <br></br> A javítás nem vonatkozik visszamenőlegesen azokra a megosztásokra, amelyek már látják ezt a problémát. A problémát tapasztaló ügyfeleknek először a 0,3-es frissítést kell alkalmazniuk, majd a probléma megoldásához a teljes rendszer biztonsági mentéséhez a Microsoft ügyfélszolgálatat kell felvennie. A Microsoft ügyfélszolgálata való kapcsolatfelvétel helyett az ügyfelek az érintett megosztások kifogástalan biztonsági mentésével is visszaállíthatják az új megosztást. |
 | 2 |iSCSI |Hiba történt a korábbi kiadásban, ahol a kötetek eltűnnek az adatoknak a StorSimple virtuális tömbben lévő kötetre másolásakor. Ez a probléma ebben a kiadásban lett kijavítva. <br></br> A javítások csak az újonnan létrehozott köteteken lépnek életbe. A javítások nem vonatkoznak visszamenőlegesen a problémát már megtekintő kötetekre. Javasoljuk, hogy az érintett köteteket online állapotba hozza a klasszikus Azure portálon keresztül, végezze el a kötetek biztonsági mentését, majd állítsa vissza ezeket a köteteket az új kötetekre. |
@@ -48,7 +48,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 ## <a name="known-issues-in-the-update-03"></a>Az 0,3-es frissítés ismert problémái
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat. 
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális eszközök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális eszközöket egy vész-helyreállítási (DR) munkafolyamat használatával kell átadni az általános elérhetőségi kiadáshoz. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy adott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális eszközt, az adatlemezt nem szabad kibontani vagy csökkentenie. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |
@@ -68,7 +68,7 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 ## <a name="next-step"></a>Következő lépés
 [Telepítse a 0,3](./storsimple-virtual-array-install-update-06.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 Régebbi kiadási megjegyzést keres? Ugrás: 
 
 * [StorSimple Virtual Array Update 0,1 és 0,2 kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)

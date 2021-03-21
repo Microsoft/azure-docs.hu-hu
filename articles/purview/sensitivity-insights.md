@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 01/17/2021
 ms.openlocfilehash: bb8ac82b2e59ec86db89c7eba0ce607fcfc0ac2d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101676561"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Az Azure hatáskörébe tartozó adataival kapcsolatos adatelemzések
@@ -78,7 +78,7 @@ A hatáskörébe ugyanazokat a besorolásokat (más néven [bizalmas adattípuso
 
    A fő **érzékenység címkézése** lap a következő területeket jeleníti meg:
 
-   |Terület  |Leírás  |
+   |Terület  |Description  |
    |---------|---------|
    |**Az érzékenységi címkékkel rendelkező források áttekintése**     |A következőket biztosító csempéket jeleníti meg: <br>– Az adataiban található előfizetések száma. <br>– Az adatain alkalmazott egyedi érzékenységi címkék száma <br>– Az érzékenységi címkékkel rendelkező források száma <br>– Az érzékenységi címkékkel megtalált fájlok és táblák száma|
    |**Legfelső szintű források címkézett adattal (utolsó 30 nap)**     | Megjeleníti az elmúlt 30 napban fellépő trendeket, amelyek az érzékenységi címkékkel rendelkező források számát mutatják.       |

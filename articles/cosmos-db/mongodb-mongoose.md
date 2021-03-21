@@ -10,10 +10,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18, devx-track-js
 ms.openlocfilehash: 8958699ae279d2613f8dbadca802ee2137407e75
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94442396"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
@@ -39,11 +39,11 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása 
 Ebben az alkalmazásban két módszert fogunk létrehozni a Azure Cosmos DB gyűjtemények létrehozásához: 
-- **Az egyes objektummodell tárolása különálló gyűjteményben** : javasoljuk, hogy [hozzon létre egy adatbázist dedikált átviteli](set-throughput.md#set-throughput-on-a-database)sebességgel. A kapacitás modell használata jobb költséghatékonyságot nyújt.
+- **Az egyes objektummodell tárolása különálló gyűjteményben**: javasoljuk, hogy [hozzon létre egy adatbázist dedikált átviteli](set-throughput.md#set-throughput-on-a-database)sebességgel. A kapacitás modell használata jobb költséghatékonyságot nyújt.
 
     :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js oktatóanyag – a Azure Portal képernyőképe, amely bemutatja, hogyan hozhat létre egy adatbázist a Adatkezelő egy Azure Cosmos DB-fiókhoz, a mongúz csomópont-modullal való használathoz":::
 
-- Az **összes objektummodell tárolása egyetlen Cosmos db gyűjteményben** : Ha az összes modellt egyetlen gyűjteményben szeretné tárolni, egyszerűen létrehozhat egy új adatbázist anélkül, hogy kijelöli az átviteli sebesség lehetőséget. Ha ezt a kapacitási modellt használja, minden egyes gyűjtemény saját átviteli kapacitással fog létrejönni minden objektummodell esetében.
+- Az **összes objektummodell tárolása egyetlen Cosmos db gyűjteményben**: Ha az összes modellt egyetlen gyűjteményben szeretné tárolni, egyszerűen létrehozhat egy új adatbázist anélkül, hogy kijelöli az átviteli sebesség lehetőséget. Ha ezt a kapacitási modellt használja, minden egyes gyűjtemény saját átviteli kapacitással fog létrejönni minden objektummodell esetében.
 
 Az adatbázis létrehozása után a nevet az `COSMOSDB_DBNAME` alábbi környezeti változóban fogja használni.
 
@@ -317,11 +317,11 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
 
 Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha olyan alkalmazással rendelkezik, amely a mongúz keretrendszert használja, ez az oktatóanyag lehetővé teszi, hogy az Azure Cosmos API-ját MongoDB, anélkül, hogy túl sok módosításra lenne szükség.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

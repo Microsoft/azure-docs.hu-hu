@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94964983"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
@@ -112,7 +112,7 @@ a teljes lemez 15%-a a pillanatképek tárolására szolgál, így csak 0,85 ér
 A váratlan növekedéssel a 1,25-1,5 TB-os helyi lemez kiépítését is kiépítheti.
 
 ### <a name="group-policy"></a>Csoportházirend
-Csoportházirend egy olyan infrastruktúra, amely lehetővé teszi adott konfigurációk megvalósítását a felhasználók és számítógépek számára. Csoportházirend beállításokat Csoportházirend objektumok (GPO-k) tartalmazzák, amelyek a következő Active Directory tartományi szolgáltatások (AD DS) tárolókkal vannak összekapcsolva: helyek, tartományok vagy szervezeti egységek (OU-k). 
+Csoportházirend egy olyan infrastruktúra, amely lehetővé teszi adott konfigurációk megvalósítását a felhasználók és számítógépek számára. Csoportházirend beállításokat Csoportházirend objektumok (GPO-k) tartalmazzák, amelyek a következő Active Directory Domain Services (AD DS) tárolókkal vannak összekapcsolva: helyek, tartományok vagy szervezeti egységek (OU-k). 
 
 Ha a virtuális tömb tartományhoz van csatlakoztatva, akkor a csoportházirend-objektumok alkalmazhatók rá. Ezek a csoportházirend-objektumok olyan alkalmazásokat telepíthetnek, mint például egy víruskereső szoftver, amely negatív hatással lehet a StorSimple virtuális tömb működésére.
 
@@ -121,7 +121,7 @@ Ezért javasoljuk, hogy:
 * Győződjön meg arról, hogy a virtuális tömb a Active Directory saját szervezeti egységében (OU) van.
 * Győződjön meg arról, hogy a virtuális tömbhöz nincsenek alkalmazva csoportházirend-objektumok (GPO-k). Az öröklés letiltásával biztosíthatja, hogy a virtuális tömb (gyermek csomópont) ne örökölje automatikusan a szülő csoportházirend-objektumait. További információkért keresse fel az [öröklés tiltása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11))lehetőséget.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 A virtuális tömb hálózati konfigurációja a helyi webes felületen keresztül történik. A virtuális hálózati adapter azon a hypervisoron keresztül engedélyezhető, amelyben a virtuális tömb ki van építve. A [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati adapter IP-címét, alhálózatát és átjáróját.  Az eszköz elsődleges és másodlagos DNS-kiszolgálóját, időbeállításait és opcionális proxybeállításait is megadhatja. A hálózati konfiguráció többsége egyszeri beállítás. A virtuális tömb üzembe helyezése előtt tekintse át a [StorSimple hálózati követelményeit](storsimple-ova-system-requirements.md#networking-requirements) .
 
 A virtuális tömb üzembe helyezésekor javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat:
@@ -287,5 +287,5 @@ Előfordulhat, hogy több virtuális tömböt kell központilag telepíteni ahho
 * Több virtuális tömb üzembe helyezése esetén javasolt a terheléselosztási perspektívából a tömböt a különböző hypervisor-gazdagépekre terjeszteni.
 * Több virtuális tömb (ha fájlkiszolgáló vagy iSCSI-kiszolgálóként van konfigurálva) elosztott fájlrendszer névtérben is üzembe helyezhető. A részletes lépésekért látogasson el a [hibrid felhőalapú tárolás telepítési útmutatóját a elosztott fájlrendszer névtér megoldásához](https://www.microsoft.com/download/details.aspx?id=45507). Elosztott fájlrendszer replikáció használata jelenleg nem ajánlott a virtuális tömbben való használathoz. 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 Ismerje meg, hogyan [felügyelheti a StorSimple virtuális tömböt](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatáson keresztül.

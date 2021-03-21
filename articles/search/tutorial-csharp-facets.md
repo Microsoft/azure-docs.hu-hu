@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 44a05ed5b4386f2787a1c84dfeb61a5d539c7cb5
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789803"
 ---
 # <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
@@ -87,7 +87,7 @@ Ahhoz, hogy egy Model tulajdonságot a faced keresési szolgáltatásban lehesse
     }
     ```
 
-1. Az oktatóanyag részeként nem módosítunk címkéket, ezért a hotel.cs fájl változatlan marad.
+1. Az oktatóanyag részeként nem módosítunk címkéket, ezért a rendszer nem módosítja a (z). cs fájlt.
 
     > [!Note]
     > A dimenziós keresés hibát jelez, ha a keresésben kért mező nincs megfelelően címkézve.
@@ -102,7 +102,7 @@ A vezérlő feladata, hogy átadja az aspektusok listáját a nézetnek. Ha a ke
 
 ### <a name="add-filter-strings-to-the-searchdata-model"></a>Szűrő sztringek hozzáadása a SearchData-modellhez
 
-1. Nyissa meg a SearchData.cs fájlt, és adja hozzá a karakterlánc-tulajdonságokat a **SearchData** osztályhoz, hogy a Dimenzióérték-szűrő sztringek tárolásához.
+1. Nyissa meg a SearchData. cs fájlt, és adja hozzá a **SearchData** osztályhoz a karakterlánc-tulajdonságokat, hogy az a Dimenzióérték-szűrő sztringeket tartsa.
 
     ```cs
     public string categoryFilter { get; set; }
@@ -563,7 +563,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aspektusokat szűrőkkel kombinálva csökkentheti az eredményeket.
 * A dimenziók összegző jellegűek, és az előzőekhez tartozó egyes kiválasztások tovább szűkítik az eredményeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő oktatóanyagban megtekintjük az eredmények sorrendjét. Ezen a ponton az eredmények egyszerűen sorrendbe rendezhetők az adatbázisban található sorrendben.
 

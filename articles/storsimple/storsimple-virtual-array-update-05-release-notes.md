@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f70cf96baed274eaf260832bd83ab0e2c91f3683
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94967040"
 ---
 # <a name="storsimple-virtual-array-update-05-release-notes"></a>StorSimple Virtual Array Update 0,5 kibocsátási megjegyzések
@@ -47,7 +47,7 @@ Az 0,5-es frissítés elsősorban hibajavítási Build. A legfontosabb fejleszt�
 
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Funkció | Probléma |
+| Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
 | 1 |Biztonsági mentés rugalmassága| A korábbi kiadásokban a biztonsági mentések csak bizonyos kivételek esetén lettek újrapróbálkozva. Ez a kiadás egy javítást tartalmaz, amellyel a biztonsági mentések rugalmasabbak, ha újrapróbálkozik az összes biztonsági mentési kivétellel.|
 | 2 |Figyelés| A StorSimple virtuális eszköz adatsorozatának tárterület-használati figyelése 2017. június 30-ig lesz elavult. Ez a művelet hatással van a figyelési diagramokra a StorSimple Eszközkezelő StorSimple virtuális tömbökön futó szolgáltatásán (1200 modell). Ez a kiadás olyan frissítéseket tartalmaz, amelyek lehetővé teszik a felhasználó számára, hogy továbbra is használhassa a tárterület-használat figyelését a virtuális tömbökön a 2017. június 30. után.|
@@ -58,7 +58,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat.
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális eszközök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális eszközöket egy vész-helyreállítási (DR) munkafolyamat használatával kell átadni az általános elérhetőségi kiadáshoz. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy adott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális eszközt, az adatlemezt nem szabad kibontani vagy csökkentenie. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |
@@ -80,7 +80,7 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 ## <a name="next-step"></a>Következő lépés
 [Telepítse a 0,5](storsimple-virtual-array-install-update-05.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 Régebbi kiadási megjegyzést keres? Ugrás:
 
 * [StorSimple Virtual Array Update 0,4 kibocsátási megjegyzések](storsimple-virtual-array-update-04-release-notes.md)

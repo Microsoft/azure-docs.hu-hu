@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95016751"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Az idősor-azonosító kiválasztásának ajánlott eljárásai
@@ -32,11 +32,11 @@ A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azo
 > * Nem *módosítható tulajdonság:* a létrehozás után nem módosítható.
 
 > [!TIP]
-> Ha az eseményforrás egy IoT hub, az idősorozat-azonosító valószínűleg ***iothub-kapcsolat-Device-ID** _ lesz.
+> Ha az eseményforrás egy IoT hub, az idősorozat-azonosító valószínűleg ***iothub-kapcsolat-eszköz-azonosító*** lesz.
 
 Az alábbi legfontosabb ajánlott eljárások a következők:
 
-_ Válasszon egy olyan partíciót, amely sok különböző értékkel rendelkezik (például több száz vagy ezer). Sok esetben ez lehet az eszköz azonosítója, az érzékelő azonosítója vagy a címke azonosítója a JSON-ban.
+* Válasszon egy olyan partíciót, amely sok különböző értékkel rendelkezik (például több száz vagy ezer). Sok esetben ez lehet az eszköz azonosítója, az érzékelő azonosítója vagy a címke azonosítója a JSON-ban.
 * Az idősorozat-AZONOSÍTÓnak egyedinek kell lennie az [Idősorozat-modell](./concepts-model-overview.md)levél csomópontjának szintjén.
 * Az idősorozat-azonosító tulajdonságának Name karakterláncának karakteres korlátja 128. Az idősorozat-azonosító tulajdonságának értékeként a karakteres korlát 1 024.
 * Ha hiányzik az idősorozat-azonosító egyedi tulajdonságának értéke, akkor a rendszer null értékként kezeli, és az egyediségi megkötésre vonatkozó szabályt követi.
@@ -82,7 +82,7 @@ A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
   > A Azure Portalban ne adja meg a tulajdonságok vesszővel tagolt nevét egy texbox, ellenkező esetben a rendszer egyetlen, vesszőt tartalmazó tulajdonságnévként kezeli azt.
   > Adja meg a tulajdonságok nevét a saját texbox.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

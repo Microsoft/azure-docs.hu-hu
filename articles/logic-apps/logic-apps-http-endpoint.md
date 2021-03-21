@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 11/19/2020
 ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94981204"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
@@ -353,7 +353,7 @@ A válasz törzsében több fejlécet és bármilyen típusú tartalmat is megad
 
 A válaszok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Leírás |
+| Tulajdonság (megjelenítés) | Tulajdonság (JSON) | Description |
 |--------------------|-----------------|-------------|
 | **Állapotkód** | `statusCode` | A bejövő kérelemre adott válaszban használandó HTTPS-állapotkód. Ez a kód bármely érvényes állapotkód lehet, amely 2xx, 4xx vagy 5xx kezdődik. A 3xx-állapotkódok azonban nem engedélyezettek. |
 | **Fejlécek** | `headers` | Egy vagy több, a válaszban szerepeltetni kívánt fejléc |

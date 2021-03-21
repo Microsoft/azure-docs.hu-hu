@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96493661"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>A PostgreSQL-adatbázis frissítése a dump és a Restore használatával
@@ -161,7 +161,7 @@ Ezt a metódust akkor érdemes figyelembe venni, ha az adatbázis néhány nagyo
 > [!TIP]
 > Az ebben a dokumentumban említett folyamat az előzetes verzióban elérhető Azure Database for PostgreSQL rugalmas kiszolgáló frissítésére is használható. A fő különbség a rugalmas kiszolgáló céljának a () nélküli kapcsolatok karakterlánca `@dbName` .  Ha például a Felhasználónév `pg` , akkor az egyetlen kiszolgáló felhasználónevét a kapcsolódási karakterláncban `pg@pg-95` , míg a rugalmas kiszolgálóval, egyszerűen használhatja `pg` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Miután elégedett a céladatbázis-függvénnyel, elhúzhatja a régi adatbázis-kiszolgálót. 
 - Ha ugyanazt az adatbázis-végpontot szeretné használni, mint a forráskiszolgáló, akkor a régi forrás-adatbázis-kiszolgáló törlése után létrehozhat egy olvasási replikát a régi adatbázis-kiszolgáló nevével. Ha az állandó állapot létrejött, leállíthatja a replikát, amely a replika-kiszolgálót egy független kiszolgálónak fogja előléptetni. További részletekért lásd: [replikáció](./concepts-read-replicas.md) .

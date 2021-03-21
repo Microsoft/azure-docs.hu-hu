@@ -10,10 +10,10 @@ ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 8d95897e0c2d58b2a3955918be945800eed9ba56
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466573"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-pools"></a>A szinapszis Studio használata a Apache Spark-készletek figyeléséhez
@@ -50,7 +50,7 @@ Ha szeretné megtekinteni az egyik Spark-készlet adatait, válassza ki a Spark-
 
 ![Apache Spark készlet részletei](./media/how-to-monitor-spark-pools/spark-pool-details.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studióban](how-to-monitor-pipeline-runs.md) című cikket. 
 

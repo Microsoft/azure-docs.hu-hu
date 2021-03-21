@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-js
 ms.date: 12/15/2020
 ms.openlocfilehash: 70015ef24039694789ce96a6c4853221fe2377c3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020383"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
@@ -95,7 +95,7 @@ A JavaScriptről a Stream Analyticsre történő átalakítások:
 JavaScript | Stream Analytics
 --- | ---
 Szám | Bigint (ha a szám kerek és a long.MinValue és a long.MaxValue közé esik, máskülönben double)
-Dátum | DateTime
+Date | DateTime
 Sztring | nvarchar(MAX)
 Objektum | Rekord
 Tömb | Tömb
@@ -222,7 +222,7 @@ console.log('my error message');
 ```
 
 A naplózási üzeneteket a [diagnosztikai naplókon](data-errors.md)keresztül érheti el.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [UDF Machine Learning](./machine-learning-udf.md)
 * [C# UDF](./stream-analytics-edge-csharp-udf-methods.md)

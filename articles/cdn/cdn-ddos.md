@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351690"
 ---
 # <a name="azure-cdn-ddos-protection"></a>Azure CDN DDoS Protection
@@ -37,6 +37,6 @@ A Verizon Azure CDN a Verzion védett DDoS-elhárítási platformja védi. Alap�
 
 A Akamai-ből származó Azure CDN a Akamai saját DDoS-kibocsátáscsökkentési platformja védi. Alapértelmezés szerint a Akamai-be integrált Azure CDNba, és díjmentesen, felár nélkül. Alapszintű védelmet biztosít a leggyakoribb, leggyakrabban előforduló, 7. rétegbeli DNS-lekérdezési árvizek, valamint a 3. és 4. rétegbeli támadások ellen, amelyek a CDN-végpontokat célozzák meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure DDoS](../ddos-protection/ddos-protection-overview.md)-ről.

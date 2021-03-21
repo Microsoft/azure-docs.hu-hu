@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: ee8174114f1b892210e8ee9173ce0eb1d09c7e31
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619300"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-active-directory-domain-services-managed-domains"></a>A meglévő Azure Active Directory Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
@@ -64,6 +64,6 @@ A következő két lehetőség a nem egyező könyvtárat oldja fel:
 * Először [törölje a felügyelt tartományt](delete-aadds.md) a meglévő Azure ad-címtárból. Ezután [hozzon létre egy helyettesítő felügyelt tartományt](tutorial-create-instance.md) a használni kívánt virtuális hálózattal azonos Azure ad-címtárban. Ha elkészült, csatlakoztassa a korábban a törölt tartományhoz csatlakozó összes gépet az újból létrehozott felügyelt tartományhoz.
 * Helyezze át a virtuális hálózatot tartalmazó [Azure-előfizetést](../cost-management-billing/manage/billing-subscription-transfer.md) ugyanahhoz az Azure ad-címtárhoz, amely a felügyelt tartomány.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure AD DS hibaelhárításával kapcsolatos további információkért tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).

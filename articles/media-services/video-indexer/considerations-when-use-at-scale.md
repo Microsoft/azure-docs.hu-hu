@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
 ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96483610"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>Megfontolandó szempontok Video Indexer méretezéskor
@@ -102,6 +102,6 @@ Például a Arcfelismerés funkció esetében a magasabb felbontás segíthet a 
 
 Ezért javasoljuk, hogy ellenőrizze, hogy a használati esethez megfelelő eredményeket kap-e, és hogy először tesztelje azt helyileg. Töltse fel ugyanazt a videót a 720P-ban és a 4K-ban, és hasonlítsa össze az észlelt eredményeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)
