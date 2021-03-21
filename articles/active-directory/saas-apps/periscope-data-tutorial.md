@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: deac4dcde51049d744706b7479f5b5f3bbb4d9c0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Azure Active Directory integráció a periszkóp-szolgáltatásokkal
@@ -137,7 +137,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     f. Keresse meg az XML-fájl első címkéjét, másolja ki a **entityID** értékét, és illessze be a **kiállító** szövegmezőbe.
 
-    : Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással** . másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
+    : Keresse meg az SAML protokollt használó **IDPSSODescriptor** címkét. A szakaszon belül keresse meg a címke- **leírót** a **use = aláírással**. másolja a **x509** értékét, és illessze be a **tanúsítvány** szövegmezőbe.
 
     h. A több szóközzel rendelkező helyek kiválaszthatják az alapértelmezett helyet az **alapértelmezett szóköz** legördülő listából. Ez lesz az a hely, amelyet új felhasználók adnak hozzá, amikor első alkalommal jelentkeznek be a periszkóp-ba, és a Active Directory egyszeri bejelentkezéssel vannak kiépítve.
 
@@ -149,7 +149,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -168,17 +168,17 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a periszkóp-adathoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **periszkóp** -adatelemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **periszkóp**-adatelemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza ki a **periszkóp** -adatelemet.
+2. Az alkalmazások listában válassza ki a **periszkóp**-adatelemet.
 
     ![A periszkóp-adatkapcsolat az alkalmazások listájában](common/all-applications.png)
 
@@ -216,7 +216,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a pe
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com** -e-mail-címét.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználó, például a **brittasimon \@ contoso.com**-e-mail-címét.
 
     d. Kattintson a **Hozzáadás** gombra.
 

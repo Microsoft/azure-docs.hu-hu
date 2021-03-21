@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6085ba5091b2b9973354280175aeb01f93ad7e28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521169"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Oktatóanyag: Azure Active Directory integráció a TeamSeer
@@ -61,13 +61,13 @@ A TeamSeer Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **TeamSeer**kifejezést, válassza a **TeamSeer** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **TeamSeer** kifejezést, válassza a **TeamSeer** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![TeamSeer az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TeamSeer-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az TeamSeer-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TeamSeer kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **TeamSeer** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **TeamSeer** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -128,11 +128,11 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
     ![A képernyőképen a TeamSeer ablakban kiválasztott H R rendszergazda látható.](./media/teamseer-tutorial/ic789634.png "HR-rendszergazda")
 
-1. Kattintson a **telepítés**elemre.
+1. Kattintson a **telepítés** elemre.
 
-    ![Beállítás](./media/teamseer-tutorial/ic789635.png "Telepítés")
+    ![Beállítás](./media/teamseer-tutorial/ic789635.png "Beállítás")
 
-1. Kattintson az **SAML-szolgáltató adatainak beállítása**elemre.
+1. Kattintson az **SAML-szolgáltató adatainak beállítása** elemre.
 
     ![A képernyőfelvételen az SAML-szolgáltató beállításának beállítása látható.](./media/teamseer-tutorial/ic789636.png "SAML-beállítások")
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés TeamSeer való konfigurálásához hajtsa v�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -183,15 +183,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a TeamSeer hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **TeamSeer**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **TeamSeer** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **TeamSeer**lehetőséget.
+2. Az alkalmazások listában válassza a **TeamSeer** lehetőséget.
 
     ![Az TeamSeer hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -213,7 +213,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Te
 
 1. Jelentkezzen be a **TeamSeer** vállalati webhelyre rendszergazdaként.
 
-1. Lépjen a **HR rendszergazda \> felhasználók** elemre, majd kattintson **az új felhasználó varázsló futtatása**lehetőségre.
+1. Lépjen a **HR rendszergazda \> felhasználók** elemre, majd kattintson **az új felhasználó varázsló futtatása** lehetőségre.
 
     ![Képernyőfelvétel: a H R admin lap, amelyen kiválaszthatja a futtatni kívánt varázslót.](./media/teamseer-tutorial/ic789640.png "HR-rendszergazda")
 
@@ -221,11 +221,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Te
 
     ![Felhasználó adatai](./media/teamseer-tutorial/ic789641.png "Felhasználó adatai")
 
-    a. Adja meg egy érvényes Azure AD-fiók **utónevét**, **vezetéknevét**és **felhasználónevét (e-mail-címét)** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
+    a. Adja meg egy érvényes Azure AD-fiók **utónevét**, **vezetéknevét** és **felhasználónevét (e-mail-címét)** , amelyet szeretne a kapcsolódó szövegmezőbe beépíteni.
   
     b. Kattintson a **Tovább** gombra.
 
-1. Kövesse a képernyőn megjelenő utasításokat új felhasználó hozzáadásához, majd kattintson a **Befejezés**gombra.
+1. Kövesse a képernyőn megjelenő utasításokat új felhasználó hozzáadásához, majd kattintson a **Befejezés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a TeamSeer által biztosított TeamSeer felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

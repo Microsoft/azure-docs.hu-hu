@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 395d5f0697138155b0bb0c629461aada9e9c18c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98739115"
 ---
 # <a name="disable-geo-backups-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Geo-biztonsági mentések letiltása egy dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben
@@ -44,7 +44,7 @@ A következő lépések végrehajtásával letilthatja a földrajzi biztonsági 
 
    ![Geo-biztonsági mentési beállítások mentése](./media/sql-data-warehouse-restore-from-geo-backup/disable-geo-backup-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő dedikált SQL-készlet visszaállítása (korábban SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
 - [Törölt dedikált SQL-készlet visszaállítása (korábban SQL DW)](sql-data-warehouse-restore-deleted-dw.md)

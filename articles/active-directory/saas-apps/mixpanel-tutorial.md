@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.openlocfilehash: dfd262c1dc7aa2e6cfa6ae8835210086dd45e4f6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Oktatóanyag: Azure Active Directory integráció a mixpanel
@@ -61,13 +61,13 @@ A mixpanel Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **mixpanel**kifejezést, válassza a **mixpanel** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **mixpanel** kifejezést, válassza a **mixpanel** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Mixpanel az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az mixpanel-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az mixpanel-mel konfigurálja és teszteli a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a mixpanel kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **mixpanel** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **mixpanel** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -128,15 +128,15 @@ Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa v�
    
     ![Mixpanel egyetlen Sign-On](./media/mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
-3. Kattintson a **hozzáférési biztonság** fülre, majd a **beállítások módosítása**elemre.
+3. Kattintson a **hozzáférési biztonság** fülre, majd a **beállítások módosítása** elemre.
    
     ![Képernyőfelvétel: a hozzáférési Biztonság lap, ahol módosíthatja a beállításokat.](./media/mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
-4. A **tanúsítvány módosítása** párbeszédpanelen kattintson a **fájl kiválasztása** lehetőségre a letöltött tanúsítvány feltöltéséhez, majd kattintson a **tovább**gombra.
+4. A **tanúsítvány módosítása** párbeszédpanelen kattintson a **fájl kiválasztása** lehetőségre a letöltött tanúsítvány feltöltéséhez, majd kattintson a **tovább** gombra.
    
     ![Képernyőfelvétel: a tanúsítvány módosítása párbeszédpanel, ahol kiválaszthat egy tanúsítványfájl.](./media/mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
-5.  A hitelesítési URL **-cím módosítása** párbeszédpanel hitelesítés URL-címe szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét, majd kattintson a **tovább**gombra.
+5.  A hitelesítési URL **-cím módosítása** párbeszédpanel hitelesítés URL-címe szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét, majd kattintson a **tovább** gombra.
    
     ![A képernyőképen a hitelesítés U R L panel módosítása látható, ahol átmásolhatja a login U R L-t.](./media/mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés mixpanel való konfigurálásához hajtsa v�
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,15 +171,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a mixpanel hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **mixpanel**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **mixpanel** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **mixpanel**lehetőséget.
+2. Az alkalmazások listában válassza a **mixpanel** lehetőséget.
 
     ![Az mixpanel hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -207,7 +207,7 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a
    
     ![Képernyőfelvétel: a csapat lap, amelyben a meghívott címeket adja meg.](./media/mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
-5. Kattintson a **meghívás**gombra. 
+5. Kattintson a **meghívás** gombra. 
 
 > [!Note]
 > A felhasználó egy e-mailt fog kapni a profil beállításához.

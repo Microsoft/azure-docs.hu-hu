@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541342"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Oktatóanyag: fizikai kiszolgálók felderítése kiszolgáló-értékeléssel
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felderítheti a kiszolgálókat az ért
 
 Ez az oktatóanyag bemutatja, hogyan derítheti fel a helyszíni fizikai kiszolgálókat a Azure Migrate: Server Assessment Tool eszközzel, egy egyszerű Azure Migrate berendezés használatával. A készüléket fizikai kiszolgálóként kell üzembe helyezni a gépek és a teljesítmény metaadatainak folyamatos felderítése érdekében.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.
@@ -264,7 +264,7 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-assess-physical.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ba7d6d8deb2034f8b2a853cf74635687561c41ea
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: cdb22805e2e68893d3883272b66c2cfac13c807e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99573602"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721868"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Az Azure Portal használatával engedélyezheti a végpontok közötti titkosítást a gazdagépen lévő titkosítás használatával
 
@@ -27,9 +27,6 @@ Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen 
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
 
-### <a name="supported-regions"></a>Támogatott régiók
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 ### <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
 
@@ -37,7 +34,24 @@ Amikor engedélyezi a titkosítást a gazdagépen, a virtuálisgép-gazdagépen 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz titkosítást lehessen használni a gazdagépen, be kell szereznie a funkciót az előfizetésében. Küldjön egy e-mailt az encryptionAtHost@microsoft.com előfizetési azonosítókkal, hogy a szolgáltatás engedélyezve legyen az előfizetésekhez.
+A virtuális gép/VMSS EncryptionAtHost tulajdonságának használata előtt engedélyeznie kell az előfizetés szolgáltatását. Az előfizetés funkciójának engedélyezéséhez kövesse az alábbi lépéseket:
+
+1. **Azure Portal**: válassza a Cloud Shell ikont a [Azure Portal](https://portal.azure.com):
+
+    ![Ikon a Cloud Shell elindításához a Azure Portal](../Cloud-Shell/media/overview/portal-launch-icon.png)
+    
+2.  Futtassa a következő parancsot az előfizetés funkciójának regisztrálásához
+
+    ```powershell
+     Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute" 
+    ```
+
+3.  Győződjön meg arról, hogy a regisztrációs állapot regisztrálva van (néhány percet vesz igénybe) az alábbi parancs használatával, mielőtt kipróbálja a funkciót.
+
+    ```powershell
+     Get-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace "Microsoft.Compute"  
+    ```
+
 
 Jelentkezzen be a Azure Portalba a [megadott hivatkozás](https://aka.ms/diskencryptionupdates)használatával.
 
