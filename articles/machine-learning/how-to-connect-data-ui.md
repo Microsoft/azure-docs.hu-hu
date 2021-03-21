@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
 ms.openlocfilehash: 0e2230bdcf2b2f4358db4a0d600506b711f39c45
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508231"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Kapcsolódás adatkapcsolathoz a Azure Machine Learning Studióval
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan férhet hozzá az adataihoz a [Azure Machi
 
 Az alábbi táblázat az adattárolók és adatkészletek előnyeit határozza meg és összegzi. 
 
-|Objektum|Leírás| Előnyök|   
+|Objektum|Description| Előnyök|   
 |---|---|---|
 |Adattárak| Biztonságos kapcsolódás a Storage szolgáltatáshoz az Azure-ban a kapcsolati adatok tárolásával, például az előfizetés-AZONOSÍTÓval és a jogkivonat-hitelesítéssel a munkaterülethez társított [Key Vaultban](https://azure.microsoft.com/services/key-vault/) | Mivel az adatok tárolása biztonságos, <br><br> <li> Ne &nbsp; helyezzen el a hitelesítő &nbsp; &nbsp; adatokat &nbsp; vagy &nbsp; &nbsp; az eredeti adatforrásokat veszélyben. <li> Már nem kell a parancsfájlokba felvennie a kódot.
 |Adathalmazok| Az adathalmazok létrehozásával az adatforrások helyére mutató hivatkozásokat és a metaadatok másolatait is létrehozza. Az adatkészletek segítségével <br><br><li> Az adathozzáférés a modell betanítása során.<li> Az adatmegosztás és együttműködés más felhasználókkal.<li> Kihasználhatja a nyílt forráskódú kódtárakat, például a pandat az adatfeltáráshoz. | Mivel az adathalmazok kiértékelése a lustán történik, és az adatokat a meglévő helyükön maradják, <br><br><li>Tároljon egyetlen másolatot az adattárolóban.<li> További tárolási költségek nem merülnek fel <li> Ne kockáztatja véletlenül az eredeti adatforrások módosítását.<li>Javítsa a ML-munkafolyamatok teljesítményének sebességét. 
@@ -111,7 +111,7 @@ Azure Machine Learning adatkészlet adatprofilja az alábbiakat tartalmazza:
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-|Statisztikai adatok|Leírás
+|Statisztikai adatok|Description
 |------|------
 |Szolgáltatás| Az összesíteni kívánt oszlop neve.
 |Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.

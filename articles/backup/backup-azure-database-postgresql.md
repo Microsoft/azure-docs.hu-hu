@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
 ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737572"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL biztonsági mentés hosszú távú adatmegőrzéssel (előzetes verzió)
@@ -323,6 +323,6 @@ Hozzon létre hálózati vonalat, ha engedélyezi az **Azure-szolgáltatások ho
 
         ![Tár nevének keresése](./media/backup-azure-database-postgresql/search-for-vault-name.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Backup-tárolók áttekintése](backup-vault-overview.md)

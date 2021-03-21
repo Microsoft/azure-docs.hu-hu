@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/25/2020
 ms.author: jeedes
 ms.openlocfilehash: 34365a8bd7a15f502aa89a966adb14807e802cc4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736999"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
@@ -255,6 +255,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Ha a My apps szolgáltatásban a Microsoft csempén található összefolyásánál SAML egyszeri bejelentkezésre kattint, a rendszer átirányítja a Microsoft bejelentkezési URL-címén keresztül, hogy átirányítsa a köztes SAML SSO A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta a összefolyásánál SAML egyszeri bejelentkezést a Microsofttal, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

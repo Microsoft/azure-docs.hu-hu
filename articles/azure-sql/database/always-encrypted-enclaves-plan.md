@@ -12,10 +12,10 @@ ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
 ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98732744"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>Az Intel SGX ENKLÁVÉHOZ enklávék és igazolások megtervezése Azure SQL Database
@@ -57,7 +57,7 @@ Ha úgy konfigurálja a környezetet, hogy támogassa az Intel SGX ENKLÁVÉHOZ 
 
 Éles környezetekben (valós bizalmas adatok kezelése) fontos, hogy a szervezet betartsa a szerepkör elkülönítését az igazolás konfigurálásakor, ahol a különböző szerepköröket más személyek feltételezik. Különösen, ha a szervezeten belüli Always Encrypted üzembe helyezésének célja a támadási felület csökkentése azáltal, hogy Azure SQL Database rendszergazdák nem férhetnek hozzá a bizalmas adatokhoz, Azure SQL Database a rendszergazdáknak nem szabad ellenőrizniük az igazolási házirendeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Intel SGX ENKLÁVÉHOZ engedélyezése az Azure SQL Database-adatbázishoz](always-encrypted-enclaves-enable-sgx.md)
 

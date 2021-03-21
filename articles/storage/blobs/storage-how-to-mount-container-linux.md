@@ -9,10 +9,10 @@ ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
 ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737540"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
@@ -141,7 +141,7 @@ mkdir test
 echo "hello world" > test/blob.txt
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Blobfuse kezdőlapja](https://github.com/Azure/azure-storage-fuse#blobfuse)
 * [Blobfuse-problémák jelentése](https://github.com/Azure/azure-storage-fuse/issues)

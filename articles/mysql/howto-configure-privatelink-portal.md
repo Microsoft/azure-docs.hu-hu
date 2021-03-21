@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99221026"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
@@ -60,7 +60,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
-    | Régió | Válassza a **Nyugat-Európa** régiót. |
+    | Region | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
@@ -145,7 +145,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Példány részletei** |  |
     | Name | Adja meg a *myPrivateEndpoint* nevet. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |Régió|Válassza a **Nyugat-Európa** régiót.|
+    |Region|Válassza a **Nyugat-Európa** régiót.|
     |||
 
 5. Válassza a **Tovább: erőforrás** elemet.

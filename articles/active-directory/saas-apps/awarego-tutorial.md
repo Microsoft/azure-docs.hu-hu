@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
 ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735337"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a AwareGo
@@ -142,6 +142,6 @@ Ebben a szakaszban az alábbi módokon tesztelheti az Azure AD egyszeri bejelent
 * Nyissa meg a Microsoft My Apps szolgáltatást. Amikor kiválasztja a **AwareGo** csempét az alkalmazásokban, a rendszer átirányítja a AwareGo bejelentkezési oldalára. További információ: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A AwareGo konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő kiterjeszthető feltételes hozzáférést biztosító alkalmazás-vezérlőról. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

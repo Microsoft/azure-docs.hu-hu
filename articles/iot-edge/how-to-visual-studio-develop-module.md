@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 6e5b5c021eb6a83de9ecfb31757855065b70c290
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103196931"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
@@ -114,7 +114,7 @@ A **IotEdgeModule1** -projekt egy .net Core 2,1 Console-alkalmazás, ha C#-modul
 
 ## <a name="develop-your-module"></a>A modul fejlesztése
 
-A megoldás alapértelmezett moduljának kódja a következő helyen található: **IotEdgeModule1**  >  **program.cs** (C#) vagy **Main. c** (c). A rendszer úgy állítja be a modult és a `deployment.template.json` fájlt, hogy felépítse a megoldást, leküldi a tároló-beállításjegyzékbe, és üzembe helyezi azt egy eszközön, hogy bármilyen kód megérintése nélkül el tudja indítani a tesztelést. A modul úgy lett felépítve, hogy bejegyezze a forrás (ebben az esetben az adatokat szimuláló **SimulatedTemperatureSensor** modul) adatait, és átadja az Azure IoT hubnak.
+A megoldás alapértelmezett moduljának kódja a **IotEdgeModule1**  >  **program. cs** (C#) vagy a **Main. c** (c) esetében található. A rendszer úgy állítja be a modult és a `deployment.template.json` fájlt, hogy felépítse a megoldást, leküldi a tároló-beállításjegyzékbe, és üzembe helyezi azt egy eszközön, hogy bármilyen kód megérintése nélkül el tudja indítani a tesztelést. A modul úgy lett felépítve, hogy bejegyezze a forrás (ebben az esetben az adatokat szimuláló **SimulatedTemperatureSensor** modul) adatait, és átadja az Azure IoT hubnak.
 
 Ha készen áll a modul sablonjának testre szabására a saját kódjával, az [Azure IoT hub SDK](../iot-hub/iot-hub-devguide-sdks.md) -k segítségével olyan modulokat építhet ki, amelyek a IoT-megoldások, például a biztonság, az eszközkezelés és a megbízhatóság terén szükségesek.
 
@@ -149,7 +149,7 @@ Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt eg
 
    ![Modul fut](./media/how-to-visual-studio-develop-csharp-module/single-module-run.png)
 
-1. Ha C# nyelven fejleszt, állítson be egy töréspontot a `PipeMessage()` függvényben a **program.cs**; ha a C-t használja, állítson be egy töréspontot a `InputQueue1Callback()` függvényben a **Main. C**-ben. Ezt követően a következő parancs futtatásával tesztelheti azt egy **git bash** -vagy **WSL bash** -rendszerhéjban. (A parancsot nem futtathatja `curl` powershellből vagy parancssorból.)
+1. Ha C# nyelven fejleszt, állítson be egy töréspontot a `PipeMessage()` **program. cs**; függvényben, ha C-t használ, állítson be egy töréspontot a `InputQueue1Callback()` **Main. C**-ben lévő függvényben. Ezt követően a következő parancs futtatásával tesztelheti azt egy **git bash** -vagy **WSL bash** -rendszerhéjban. (A parancsot nem futtathatja `curl` powershellből vagy parancssorból.)
 
     ```bash
     curl --header "Content-Type: application/json" --request POST --data '{"inputName": "input1","data":"hello world"}' http://localhost:53000/api/v1/messages

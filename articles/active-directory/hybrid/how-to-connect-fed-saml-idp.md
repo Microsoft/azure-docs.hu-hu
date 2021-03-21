@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b26c24149d422021dcb86f75c915ade89cbccdec
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589875"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
@@ -327,7 +327,7 @@ Annak ellenőrzéséhez, hogy az egyszeri bejelentkezés helyesen van-e beállí
 2. Kattintson a jelszó mezőbe. Ha az egyszeri bejelentkezés be van állítva, a jelszó mező árnyékolva lesz, és a következő üzenet jelenik meg: "mostantól a vállalatnál be kell jelentkeznie &lt; &gt; ."
 3. Kattintson a bejelentkezés a &lt; céges &gt; hivatkozásra. Ha be tud jelentkezni, az egyszeri bejelentkezés beállítása megtörtént.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Active Directory összevonási szolgáltatások (AD FS) felügyelet és testreszabás Azure AD Connect](how-to-connect-fed-management.md)
 - [Az Azure AD összevonás kompatibilitási listája](how-to-connect-fed-compatibility.md)

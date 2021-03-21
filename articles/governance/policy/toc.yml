@@ -265,22 +265,8 @@
           href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
-        - name: Események
-          href: /rest/api/policy-insights/policyevents
-        - name: Állapotok
-          href: /rest/api/policy-insights/policystates
-        - name: Hozzárendelések
-          href: /rest/api/resources/policyassignments
-        - name: Szabályzatdefiníciók
-          href: /rest/api/resources/policydefinitions
-        - name: Szabályzatkivételek
-          href: /rest/api/resources/policyexemptions
-        - name: Kezdeményezésdefiníciók
-          href: /rest/api/resources/policysetdefinitions
-        - name: Szabályzattal nyomon követett erőforrások
-          href: /rest/api/policy-insights/policytrackedresources
-        - name: Javítások
-          href: /rest/api/policy-insights/remediations
+        - name: Szabályzat
+          href: /rest/api/policy/
         - name: Vendégkonfiguráció
           href: /rest/api/guestconfiguration/
     - name: Resource Manager-sablonok

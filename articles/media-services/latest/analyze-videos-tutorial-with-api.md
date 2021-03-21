@@ -2,31 +2,24 @@
 title: Videók elemzése a Media Services v3
 description: Ismerje meg, hogyan elemezheti a videókat Azure Media Services használatával.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: ''
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 4a050d838bae9b394f5f292698781a9a824af0bf
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: a083fbbf54d6f03316a2e647d47e76cdb5db7c2c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454124"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581234"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-> [!NOTE]
-> Bár ez az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) -példákat használja, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
-
-Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezután betekintést nyerhetnek a vállalatba. Ezek az információk tartalmazzák a gyakori panaszok listáját, az ilyen panaszok forrásait és egyéb hasznos információkat.
+Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -41,7 +34,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 ## <a name="compliance-privacy-and-security"></a>Megfelelőség, adatvédelem és biztonság
  
-Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának összes vonatkozó törvényének, és előfordulhat, hogy nem használja Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely sérti mások jogait, vagy más személyeknek is ártalmas lehet. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban szereplő személy (ek) hoz. A megfelelőségről, az adatvédelemről és a biztonságról Video Indexer a Microsoft [Cognitive Services feltételeiben](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)olvashat. A Microsoft adatvédelmi kötelezettségei és az adatok kezelése érdekében tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products) ("Ost") és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti magát.
+Fontos megjegyezni, hogy be kell tartania a Video Indexer használatának összes vonatkozó törvényét. Nem használhat Video Indexer vagy bármely más Azure-szolgáltatást olyan módon, amely megsért mások jogait. Mielőtt bármilyen videót feltölt, beleértve a biometrikus adatokat is a Video Indexer szolgáltatásba feldolgozásra és tárolásra, az összes megfelelő jogosultsággal kell rendelkeznie, beleértve a megfelelő hozzájárulásokat is a videóban található személyektől. A megfelelőség, az adatvédelem és a biztonság Video Indexer az Azure [Cognitive Services feltételeinek](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)megismerése. A Microsoft adatvédelmi kötelezettségeivel és az adatok kezelésével kapcsolatban tekintse át a Microsoft [adatvédelmi nyilatkozatát](https://privacy.microsoft.com/PrivacyStatement), az [online szolgáltatások használati feltételeit](https://www.microsoft.com/licensing/product-licensing/products) (OST) és az [adatfeldolgozási kiegészítést](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA"). Az adatmegőrzéssel, törléssel és megsemmisítéssel kapcsolatos további adatvédelmi információk az OST-ben és [itt](../video-indexer/faq.md)érhetők el. Video Indexer használatával Ön vállalja, hogy az Cognitive Services feltételek, az OST, a DPA és az adatvédelmi nyilatkozat köti.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -131,7 +124,7 @@ A feladatok elvégzése hosszabb időt vesz igénybe. Ha igen, értesítést sze
 
 A lekérdezés nem ajánlott eljárás az üzemi alkalmazások számára a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt.
 
-Az Event Grid egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén. További információ: [események átirányítása egyéni webes végpontra](job-state-events-cli-how-to.md).
+Az Event Grid egy magas rendelkezésre állású, egyenletes teljesítményű, dinamikusan skálázható szolgáltatás. Az Event Grid segítségével az alkalmazások figyelhetik gyakorlatilag az összes Azure-szolgáltatásból és az egyéni forrásokból származó eseményeket, és reagálhatnak azokra. Az egyszerű, HTTP-alapú reaktív eseménykezelés segít hatékony megoldásokat kialakítani az események intelligens szűrése és átirányítása révén. További információ: [események átirányítása egyéni webes végpontra](monitoring/job-state-events-cli-how-to.md).
 
 A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladattípus hibát észlelt, a **hiba** állapota jelenik meg. Ha a feladat megszakítása folyamatban van, a rendszer **megszakítja** a műveletet, majd **megszakítja** az elkészült állapotot.
 
@@ -147,11 +140,19 @@ A következő függvény letölti a kimeneti [eszköz](/rest/api/media/assets) e
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
-### <a name="clean-up-resource-in-your-media-services-account"></a>Erőforrások eltávolítása a Media Services-fiókban
+### <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
+
+[!INCLUDE [clean-up-warning](includes/clean-up-warning.md)]
 
 Általában érdemes megtisztítani mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra fogja használni az átalakításokat és megőrzi a StreamingLocators). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatot és a kimeneti eszközt:
 
+### <a name="delete-resources-with-code"></a>Erőforrások törlése kóddal
+
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
+
+Használhatja a CLI-t is.
+
+[!INCLUDE [clean-up-resources-cli](includes/clean-up-resources-cli.md)]
 
 ## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
@@ -163,23 +164,10 @@ A program futtatásakor a feladat külön miniatűrt hoz létre a videóban tal�
 
 A videók elemzésekor keletkező kimeneti fájl neve insights.json. Ez a fájl tartalmazza a videó elemzésének eredményeit. A [médiaintelligenciával](./analyzing-video-audio-files-concept.md) kapcsolatos cikk részletesen leírja a json-fájl elemeit.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
-
-Hajtsa végre a következő CLI-parancsot:
-
-```azurecli
-az group delete --name amsResourceGroup
-```
-
 ## <a name="multithreading"></a>Több szál használata
 
-A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkalmazás használata esetén a szálon új AzureMediaServicesClient objektumot kell kiállítani.
-
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
-
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+> [!WARNING]
+> A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkalmazás használata esetén a szálon új AzureMediaServicesClient objektumot kell kiállítani.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -30,6 +30,8 @@
       href: data-flow-create.md
 - name: Oktatóanyagok
   items:
+    - name: Oktatóanyagok listája
+      href: data-factory-tutorials.md
     - name: Adatok másolása és betöltése
       items:
         - name: Az Azure Blob Storage-ból az Azure SQL Database-be
@@ -694,14 +696,16 @@
           href: azure-ssis-integration-runtime-package-store.md
     - name: Eseményindítók létrehozása
       items:
-        - name: Tárolási esemény eseményindítójának létrehozása
-          href: how-to-create-event-trigger.md
         - name: Ütemezési eseményindító létrehozása
           href: how-to-create-schedule-trigger.md
         - name: Átfedésmentes ablak eseményindítójának létrehozása
           href: how-to-create-tumbling-window-trigger.md
         - name: Függőség létrehozása átfedésmentes ablak eseményindítójához
           href: tumbling-window-trigger-dependency.md
+        - name: Tárolási esemény eseményindítójának létrehozása
+          href: how-to-create-event-trigger.md
+        - name: Egyéni eseményindító létrehozása
+          href: how-to-create-custom-event-trigger.md
         - name: Hivatkozás trigger metaadatainak a folyamatban
           href: how-to-use-trigger-parameterization.md
     - name: Adatkatalógus és adatgazdálkodás

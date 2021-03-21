@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: c04b1bbd62e156aeb8d3a0ebb244cfbc753dec52
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020823"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Felhasználó hozzáadása az Azure Portalon
@@ -47,7 +47,7 @@ Az a minta parancs, amellyel felhasználói hozzáférést biztosíthat a felada
 `Add-AdlaJobUser.ps1 -Account myadlsaccount -EntityToAdd 546e153e-0ecf-417b-ab7f-aa01ce4a7bff -EntityType User -FullReplication`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)

@@ -4,10 +4,10 @@ description: Ismerje meg, hogy miként lehet elhárítani a biztonsági mentési
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737727"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Biztonsági mentési hibák elhárítása az Azure Disk Backup szolgáltatásban (előzetes verzió)
@@ -177,6 +177,6 @@ Hibaüzenet: nem indítható el a művelet, mert elérte az egyidejű biztonság
 
 Javasolt művelet: Várjon, amíg az előző futó biztonsági mentés be nem fejeződik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)

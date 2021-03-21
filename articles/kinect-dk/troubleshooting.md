@@ -1,18 +1,18 @@
 ---
 title: Azure-beli Kinect ismert problémák és hibaelhárítás
 description: Ismerkedjen meg az ismert problémákkal és a hibaelhárítási tippekkel, amikor az Azure Kinect DK-mel használja az Sensor SDK-t.
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: hibaelhárítás, frissítés, hiba, Kinect, visszajelzés, helyreállítás, naplózás, tippek
-ms.openlocfilehash: 5f13815b8f8b26f6a08da28181a4a6164b7b89a3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 32a86deb0b6ab70e42ae3d659504256baae76202
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038820"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104654764"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure-beli Kinect ismert problémák és hibaelhárítás
 
@@ -172,18 +172,54 @@ A Linuxon futó Azure Kinect mélységmérő-motor az OpenGL-t használja. Az Op
 
 1. Engedélyezze az automatikus bejelentkezést a használni kívánt felhasználói fiókhoz. Az automatikus bejelentkezés engedélyezésével kapcsolatos utasításokért tekintse meg [ezt](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) a cikket.
 2. Kapcsolja le a rendszerállapotot, válassza le a figyelőt, és kapcsolja be a rendszerállapotot. Az automatikus bejelentkezés kényszeríti az x kiszolgáló munkamenetének létrehozását.
-2. Csatlakozzon SSH-n keresztül, és állítsa be a DISPLAY env változót `export DISPLAY=:0`
-3. Indítsa el az Azure Kinect-alkalmazást.
+3. Csatlakozzon SSH-n keresztül, és állítsa be a DISPLAY env változót `export DISPLAY=:0`
+4. Indítsa el az Azure Kinect-alkalmazást.
 
 A [xtrlock](http://manpages.ubuntu.com/manpages/xenial/man1/xtrlock.1x.html) segédprogrammal azonnal zárolhatja a képernyőt az automatikus bejelentkezés után. Adja hozzá a következő parancsot az indítási alkalmazáshoz vagy a rendszerszintű szolgáltatáshoz:
 
-`bash -c “xtrlock -b”` 
+`bash -c “xtrlock -b”`
 
 ## <a name="missing-c-documentation"></a>Hiányzó C#-dokumentáció
 
 Az Sensor SDK C# dokumentációja [itt](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)található.
 
 A Body Tracking SDK C# dokumentációja [itt](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)található.
+
+## <a name="specifying-onnx-runtime-execution-environment"></a>A ONNX futásidejű végrehajtási környezetének meghatározása
+
+A Body Tracking SDK támogatja a CPU-t, a CUDA-t, a DirectML-t (csak Windows) és a TensorRT végrehajtási környezeteket, hogy következtetni lehessen a pózolás becslésére Az `K4ABT_TRACKER_PROCESSING_MODE_GPU` alapértelmezett érték a CUDA-végrehajtás a Linuxon és a DirectML a Windowson. Három további mód lett hozzáadva az adott végrehajtási környezetek kiválasztásához: `K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA` , `K4ABT_TRACKER_PROCESSING_MODE_GPU_DIRECTML` és `K4ABT_TRACKER_PROCESSING_MODE_GPU_TENSORRT` .
+
+Az ONNX Runtime környezeti változókat tartalmaz a TensorRT-modell gyorsítótárazásának szabályozásához. Az ajánlott értékek a következők:
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE = 1 
+- ORT_TENSORRT_ENGINE_CACHE_PATH = "elérési_út"
+
+A törzs követésének megkezdése előtt létre kell hozni a mappát.
+
+A TensorRT végrehajtási környezet a FP32 (alapértelmezett) és a FP16 egyaránt támogatja. A FP16 mesterségek ~ 2x teljesítménybeli növekedés a minimális pontosság csökkentése érdekében. FP16 megadásához:
+- ORT_TENSORRT_FP16_ENABLE = 1
+
+## <a name="required-dlls-for-onnx-runtime-execution-environments"></a>Szükséges DLL-ek a ONNX futásidejű végrehajtási környezetekhez
+
+|Mód      | CUDA 11,1            | CUDNN 8.0.5          | TensorRT 7.2.1       |
+|----------|----------------------|----------------------|----------------------|
+| CPU      | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| CUDA     | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           | cudnn_ops_infer64_8  |                      |
+|          | cublas64_11          | cudnn_cnn_infer64_8  |                      |
+|          | cublasLt64_11        |                      |                      |
+| DirectML | cudart64_110         | cudnn64_8            | -                    |
+|          | cufft64_10           |                      |                      |
+|          | cublas64_11          |                      |                      |
+|          | cublasLt64_11        |                      |                      |
+| TensorRT | cudart64_110         | cudnn64_8            | nvinfer              |
+|          | cufft64_10           | cudnn_ops_infer64_8  | nvinfer_plugin       |
+|          | cublas64_11          | cudnn_cnn_infer64_8  | myelin64_1           |
+|          | cublasLt64_11        |                      |                      |
+|          | nvrtc64_111_0        |                      |                      |
+|          | nvrtc – builtins64_111 |                      |                      |
 
 ## <a name="next-steps"></a>Következő lépések
 

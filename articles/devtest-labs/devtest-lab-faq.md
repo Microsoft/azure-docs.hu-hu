@@ -4,10 +4,10 @@ description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97590273"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
@@ -337,7 +337,7 @@ A következő blogbejegyzések útmutatást és információkat nyújtanak az Az
 
 Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/templates/deploy-powershell.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
 Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet a virtuális hálózatok/alhálózatok számának minimalizálására, hogy az előfizetésekben használt IP-címtartomány ne legyen kiosztva.

@@ -12,10 +12,10 @@ ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2ce552a13592c9d26ef70575f98b0b76ecc454ff
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97591990"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>Meglévő dedikált SQL-készlet visszaállítása (korábban SQL DW)
@@ -101,7 +101,7 @@ $RestoredDatabase.status
 
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Törölt dedikált SQL-készlet visszaállítása (korábban SQL DW)](sql-data-warehouse-restore-deleted-dw.md)
 - [Visszaállítás egy földrajzi biztonsági másolattal rendelkező dedikált SQL-készletből (korábban SQL DW)](sql-data-warehouse-restore-from-geo-backup.md)

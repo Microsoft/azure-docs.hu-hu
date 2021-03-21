@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 9cab0597aeb3bc28f391de558240e5d894f5a49c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735231"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-header-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix ADC-vel (fejléc-alapú hitelesítés)
@@ -183,7 +183,7 @@ Virtuális kiszolgáló létrehozása:
 
 1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások** lehetőséget.
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![Citrix ADC-konfiguráció – szolgáltatások ablaktábla](./media/header-citrix-netscaler-tutorial/web01.png)
 
@@ -202,7 +202,7 @@ A terheléselosztó konfigurálása:
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be az alábbi értékeket a következő képernyőképen leírtak szerint:
 
@@ -249,7 +249,7 @@ Hitelesítési házirend létrehozása:
 
 1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok** lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. A **hitelesítési házirend létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
@@ -434,6 +434,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Citrix ADC-csempére kattint, a rendszer átirányítja a Citrix ADC bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Citrix ADC konfigurálását követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
