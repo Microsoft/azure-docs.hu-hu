@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bcff1ffd574db910c3206d82e4da0e9428db788f
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102631795"
 ---
 # <a name="technical-profiles"></a>Technikai profilok
@@ -90,11 +90,11 @@ A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
 A **kivonatjogcím** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Tartomány | 0:1 | A technikai profil tartományneve. Ha például a technikai profil megadja a Facebook-identitás szolgáltatóját, a tartománynév Facebook.com. |
 | DisplayName | 1:1 | A technikai profil megjelenítendő neve. |
-| Leírás | 0:1 | A technikai profil leírása. |
+| Description | 0:1 | A technikai profil leírása. |
 | Protokoll | 1:1 | A másik féllel folytatott kommunikációhoz használt protokoll. |
 | Metaadatok | 0:1 | Kulcsok és értékek halmaza, amelyek a technikai profil viselkedését vezérlik. |
 | InputTokenFormat | 0:1 | A bemeneti jogkivonat formátuma. A lehetséges értékek:,, `JSON` `JWT` `SAML11` vagy `SAML2` . Az `JWT` érték az IETF-specifikációnak megfelelő JSON web tokent jelöl. Az `SAML11` érték egy SAML 1,1 biztonsági jogkivonatot képvisel az Oasis-specifikáció alapján. Az `SAML2` érték egy SAML 2,0 biztonsági jogkivonatot képvisel az Oasis-specifikáció alapján. |
@@ -127,7 +127,7 @@ A **protokoll** elem meghatározza a másik féllel folytatott kommunikációhoz
 
 A **metaadat** elem egy adott protokollhoz tartozó konfigurációs beállításokat tartalmazza. A támogatott metaadatok listáját a [technikai profil](#types-of-technical-profiles) megfelelő specifikációja tartalmazza. A **metaadat** -elemek a következő elemet tartalmazzák:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Elem | 0: n | A technikai profilhoz kapcsolódó metaadatok. Az egyes technikai profilok különböző metaadat-elemekből állnak. További információ: technikai profilok típusai szakasz. |
 
@@ -181,7 +181,7 @@ Ha megbízhatósági kapcsolatot szeretne létesíteni a szolgáltatással együ
 
 A **CryptographicKeys** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | Kulcs | 1: n | A technikai profilban használt titkosítási kulcs. |
 
@@ -202,7 +202,7 @@ A jogcím-átalakítási gyűjtemény korábbi jogcím-átalakításának kimene
 
 A **InputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Egy jogcím-átalakítás azonosítója, amelyet el kell végezni, mielőtt a rendszer a jogcímeket elküldi a jogcím-szolgáltatónak vagy a függő entitásnak. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -241,7 +241,7 @@ A **szabályzattípushoz** elem felveszi a jogcímeket a technikai profilhoz has
 
 A **szabályzattípushoz** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -269,7 +269,7 @@ A **DisplayClaims** elemeinek sorrendje határozza meg, hogy a Azure ad B2C mily
 
 A **DisplayClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Egy várt bemeneti jogcím típusa. |
 
@@ -315,7 +315,7 @@ A jogcím neve az [Azure ad attribútum](user-profile-attributes.md) neve, kivé
 
 A **PersistedClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | A megmaradó jogcím típusa. |
 
@@ -346,7 +346,7 @@ A következő példában a **HRE-UserWriteUsingLogonEmail** technikai profil vag
 
 A **OutputClaims** elem a technikai profil befejezése után visszaadott jogcímek gyűjteménye. Ezeket a jogcímeket használhatja a következő előkészítési lépésekben vagy a kimeneti jogcímek átalakításában. A **OutputClaims** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1: n | A várt kimeneti jogcím típusa. |
 
@@ -369,7 +369,7 @@ A jogcím-átalakítási gyűjtemény korábbi jogcím-átalakításának kimene
 
 A **OutputClaimsTransformations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | A jogcímek átalakításának a jogcím-szolgáltatóba vagy a függő entitásba való elküldése előtt végrehajtandó azonosítók. A jogcímek átalakításával módosíthatók a meglévő ClaimsSchema-jogcímek, vagy újak is létrehozhatók. |
 
@@ -412,7 +412,7 @@ Az alábbi ábra azt szemlélteti, hogyan használja a Azure AD B2C egy érvény
 
 A **ValidationTechnicalProfiles** elem a következő elemet tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | A felhasználható műszaki profilok azonosítói a hivatkozó technikai profil kimeneti jogcímeinek némelyikét vagy mindegyikét ellenőrzik. A hivatkozott technikai profil összes bemeneti jogcímének szerepelnie kell a hivatkozó technikai profil kimeneti jogcímeiben. |
 

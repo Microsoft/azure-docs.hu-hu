@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c4301a61a79ab2351c18af0c76cccc3d07dd202
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94836682"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Az Azure AD-vel gyorsan reagálhat a biztonságos identitásokra
@@ -38,7 +38,7 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 
 Ez az útmutató azt feltételezi, hogy a felhőben csak a hibrid identitások lettek létrehozva az Azure AD-ben. Az azonosító típus kiválasztásával kapcsolatos segítségért tekintse meg a [megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz](../hybrid/choose-ad-authn.md) . 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez a ellenőrzőlista egy biztonságos és biztonságos identitás-infrastruktúrára koncentrál, amely lehetővé teszi a felhasználók számára a távoli munkát. Az identitás védelme csak a biztonsági történet részét képezi, az adatok, az alkalmazások és az eszközök védelmét is figyelembe kell venni.
 

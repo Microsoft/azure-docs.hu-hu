@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resour
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: a8608e4733960d7f5ba7e5f548c47f16a2b244bb
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102123394"
 ---
 # <a name="parameters-in-arm-templates"></a>Paraméterek az ARM-sablonokban
@@ -281,7 +281,7 @@ param month int
 
 ---
 
-## <a name="description"></a>Leírás
+## <a name="description"></a>Description
 
 Leírást adhat hozzá egy paraméterhez, amely segítséget nyújt a sablon felhasználói számára, hogy megértse a megadható értéket. A sablonnak a portálon keresztüli üzembe helyezése során a leírásban megadott szöveget a rendszer automatikusan tippként használja a paraméterhez. Csak akkor vegyen fel leírást, ha a szöveg több információt tartalmaz, mint amennyit a paraméter nevéből lehet következtetni.
 
@@ -473,7 +473,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
 
 Az alábbi példák a paraméterek használatának forgatókönyveit mutatják be.
 
-|Sablon  |Leírás  |
+|Sablon  |Description  |
 |---------|---------|
 |[az alapértelmezett értékek függvényeit tartalmazó paraméterek](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Bemutatja, hogyan használható a Template functions a paraméterek alapértelmezett értékeinek definiálásához. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |
 |[paraméter objektum](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Egy paraméter objektumának használatát mutatja be. A sablon nem telepít semmilyen erőforrást. Paraméterek értékeit állítja össze, és visszaadja ezeket az értékeket. |

@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797247"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Modell-és tanulási beállítások kezelése
@@ -53,6 +53,6 @@ A képzési [szabályzat](concept-active-learning.md#understand-learning-policy-
 1. Válassza ki a **modell-és tanulási beállításokat** az **Erőforrás-kezelés** szakaszban.
 1. A **tanulási beállítások importálása** gombra kattintva válassza a **tanulási Beállítások exportálása** gombot. Ezzel menti a `json` fájlt a helyi számítógépre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A tanulási hurok elemzése offline kiértékeléssel](how-to-offline-evaluation.md)

@@ -5,10 +5,10 @@ ms.service: expressroute
 ms.topic: include
 ms.author: cherylmc
 ms.openlocfilehash: 7aee201b0419b65c7ea8ddcb6f2d42ffaff4711e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101749986"
 ---
 |  | **Magánhálózati társviszony-létesítés** | **Microsoft-társviszony-létesítés** |  **Nyilvános peering** (új áramköröknél elavult) |
@@ -18,4 +18,4 @@ ms.locfileid: "101749986"
 | **Számokra vonatkozó követelmények** |Magán-és nyilvános számként. Ha az egyiket választja, a nyilvános értéket kell használnia. |Magán-és nyilvános számként. A nyilvános IP-címek tulajdonjogát azonban bizonyítania kell. |Magán-és nyilvános számként. A nyilvános IP-címek tulajdonjogát azonban bizonyítania kell. |
 | **Támogatott IP-protokollok**| IPv4, IPv6 (előzetes verzió) |  IPv4, IPv6 | IPv4 |
 | **Útválasztási csatoló IP-címei** |RFC1918 és nyilvános IP-címek |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |Az útválasztási nyilvántartásokban regisztrált nyilvános IP-címek. |
-| **MD5-kivonatok támogatása** |Igen |Igen |Igen |
+| **MD5-kivonatok támogatása** |Igen |Igen |Yes |

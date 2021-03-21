@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873267"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
@@ -29,7 +29,7 @@ ms.locfileid: "94873267"
 
 Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com/fwlink/?LinkId=615771) tölthető le.
 
-| Megoldás | Használati eset |
+| Megoldás | Eset |
 | --- | --- |
 | Előkészületek – [Hardverkövetelmények és előfeltételek](how-to-connect-install-prerequisites.md) |<li>Az Azure AD Connect telepítése előtt végrehajtandó lépések.</li> |
 | [Gyorsbeállítások](how-to-connect-install-express.md) |<li>Ennek a lehetőségnek a használata akkor ajánlott, ha egyerdős AD-vel rendelkezik.</li> <li>Felhasználói bejelentkezés egyetlen jelszóval, jelszó-szinkronizálás segítségével.</li> |
@@ -78,7 +78,7 @@ Az [automatikus frissítés](how-to-connect-install-automatic-upgrade.md) szolg�
 |Témakör |Hivatkozás|  
 | --- | --- |
 |A szűrés konfigurálása | [Az Azure AD Connect szinkronizálása: a szűrés konfigurálása](how-to-connect-sync-configure-filtering.md)|
-|Jelszókivonat szinkronizálása | [Jelszókivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
+|Jelszókivonat szinkronizálása | [Jelszó-kivonat szinkronizálása](how-to-connect-password-hash-synchronization.md)|
 |Átmenő hitelesítés | [Átmenő hitelesítés](how-to-connect-pta.md)
 |Jelszóvisszaíró | [A jelszavak kezelésének első lépései](../authentication/tutorial-enable-sspr.md)|
 |Eszközvisszaíró | [Eszközvisszaírás engedélyezése az Azure AD Connectben](how-to-connect-device-writeback.md)|

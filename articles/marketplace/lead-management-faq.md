@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 10/01/2020
 ms.openlocfilehash: 681498073a5f111e3babd50443623589ffeec02f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330920"
 ---
 # <a name="common-questions-and-troubleshooting-for-lead-configuration"></a>Az érdeklődők konfigurálásával kapcsolatos gyakori kérdések és hibaelhárítás
@@ -22,7 +22,7 @@ Ez a cikk néhány gyakori kérdést választ a kereskedelmi Marketplace-ajánla
 
 #### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődői cél beállításakor?
 
-Tekintse [meg a kereskedelmi piactéren elérhető vásárlói érdeklődőket](partner-center-portal/commercial-marketplace-get-customer-leads.md) , és tekintse át, hogyan CSATLAKOZTATHATÓ a CRM-rendszer a kereskedelmi Piactéri ajánlatokhoz. Ha hibát észlel, tekintse át az alábbi hibaelhárítási útmutatót. További támogatásért küldje el a támogatási jegyet a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása**lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
+Tekintse [meg a kereskedelmi piactéren elérhető vásárlói érdeklődőket](partner-center-portal/commercial-marketplace-get-customer-leads.md) , és tekintse át, hogyan CSATLAKOZTATHATÓ a CRM-rendszer a kereskedelmi Piactéri ajánlatokhoz. Ha hibát észlel, tekintse át az alábbi hibaelhárítási útmutatót. További támogatásért küldje el a támogatási jegyet a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
 
 #### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-in-the-commercial-marketplace"></a>Meg kell-e adni egy vezető célhelyet, hogy közzé lehessen tenni egy ajánlatot a kereskedelmi piactéren?
 
@@ -52,7 +52,7 @@ Keresse meg a kifejezést az `"MSFT_TEST"` érdeklődő célhelyén. Az alábbia
 
 #### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Élő ajánlatom van, de miért nem látok semmilyen érdeklődőt?
 
-Győződjön meg arról, hogy a vezető célhoz való kapcsolódás érvényes. A partner Centerben a **Közzététel** lehetőségre kattintva elküldünk egy tesztelési érdeklődőt. Ha a tesztelési érdeklődőt látja, a rendszer érvényes lesz a kapcsolatban. Azt is tesztelheti az érdeklődői kapcsolatokat, hogy az előzetes verzióban próbálja megkeresni az ajánlat előzetes verzióját. Válassza a **Letöltés most**, **Kapcsolatfelvétel**vagy **ingyenes próbaverzió** lehetőséget a kereskedelmi piactéren.
+Győződjön meg arról, hogy a vezető célhoz való kapcsolódás érvényes. A partner Centerben a **Közzététel** lehetőségre kattintva elküldünk egy tesztelési érdeklődőt. Ha a tesztelési érdeklődőt látja, a rendszer érvényes lesz a kapcsolatban. Azt is tesztelheti az érdeklődői kapcsolatokat, hogy az előzetes verzióban próbálja megkeresni az ajánlat előzetes verzióját. Válassza a **Letöltés most**, **Kapcsolatfelvétel** vagy **ingyenes próbaverzió** lehetőséget a kereskedelmi piactéren.
 
 Győződjön meg arról is, hogy a megfelelő adathalmazokat keresi. Az érdeklődői célhelyre küldött érdeklődői információk megismeréséhez tekintse meg az [érdeklődői információk](partner-center-portal/commercial-marketplace-get-customer-leads.md) ismertetése című témakört.
 
@@ -84,11 +84,11 @@ Személyes információs szabályzatok miatt a nem biztonságos e-mailen kereszt
 
 Az ólom létrehozási adatkészlete alacsony. Majdnem minden közzétevőnél kevesebb, mint 1 GB. A díj a kapott érdeklődők számától függ. Ha például az 1 000-es érdeklődők egy hónapban érkeznek, a díjak körülbelül 50 centet kapnak. További információ a Storage díjszabásáról: az [Azure Storage áttekintésének díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása**lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
+Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a [partner Center Súgó és támogatás](https://aka.ms/marketplacepublishersupport)szolgáltatásán keresztül. Ezután válassza az **ajánlat létrehozása** lehetőséget  >  **az ajánlati**  >  **érdeklődők felügyeletének beállításához**.
 
 #### <a name="im-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-someone-else-to-receive-these-emails"></a>Értesítő e-mailt kapok az új ügyfelek fogadásakor. Hogyan állíthatom be valaki másnak az e-mailek fogadását?
 
-Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet**  >  **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
+Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet**  >  **szerkesztése** lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
 
 ## <a name="troubleshooting-lead-configuration-errors"></a><a id="publishing-config-errors"></a> Az érdeklődők konfigurálásával kapcsolatos hibák elhárítása
 

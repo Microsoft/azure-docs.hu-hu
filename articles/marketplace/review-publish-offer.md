@@ -9,10 +9,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
 ms.openlocfilehash: f8ddcbef6d2ce4a9cba625374db9908335954424
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102630894"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ajánlat áttekintése és közzététele a kereskedelmi piactéren
@@ -205,7 +205,7 @@ Az ajánlat előzményeinek megtekintése:
 3.    Válassza ki az ajánlatot.
 4.    Kattintson a bal oldali navigációs menü **Előzmények** fülére. Az oldal a következő eseményekre vonatkozó adatokat tartalmazza, az ajánlatának megfelelően:
 
-|Esemény    |Leírás    |
+|Esemény    |Description    |
 |---------|---------------|
 |Ajánlat létrehozva    |Az ajánlat a partner Centerben lett létrehozva. A felhasználó az ajánlat típusát, az ajánlat azonosítóját és az ajánlati aliast választotta a **kereskedelmi piactér**  >  **áttekintésében**.    |
 |Terv létrehozva: *terv neve*    |A felhasználó létrehozta az új csomagot a csomag **áttekintése** lapon a terv azonosítója és a terv nevének megadásával.</br>*Ez az esemény csak a csomagokat támogató csomagokra vonatkozik*.    |

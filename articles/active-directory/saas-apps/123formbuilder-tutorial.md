@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: jeedes
 ms.openlocfilehash: aa4bab2f7ecb90c61e22de46b01a5ed81342a408
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92319179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-123formbuilder-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 123FormBuilder SSO-val
@@ -49,14 +49,14 @@ A 123FormBuilder SSO Azure AD-be való integrálásának konfigurálásához hoz
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **123FormBuilder SSO** kifejezést a keresőmezőbe.
 1. Válassza ki a **123FORMBUILDER SSO** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-123formbuilder-sso"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a 123FormBuilder SSO-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a 123FormBuilder SSO használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a 123FormBuilder SSO-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a 123FormBuilder SSO használatával egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a 123FormBuilder SSO-ban.
 
 Az Azure AD SSO 123FormBuilder SSO-vel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -71,8 +71,8 @@ Az Azure AD SSO 123FormBuilder SSO-vel való konfigurálásához és tesztelés�
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **123FormBuilder SSO** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **123FormBuilder SSO** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -115,13 +115,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a 123FormBuilder SSO-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **123FormBuilder egyszeri bejelentkezés**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **123FormBuilder egyszeri bejelentkezés** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -139,17 +139,17 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Kattintson a **feltöltés** elemre, és keresse meg a letöltött metaadatok XML-fájlját, amelyet a Azure Portal letöltött.
 
-    c. Kattintson az **űrlap elküldése**elemre.
+    c. Kattintson az **űrlap elküldése** elemre.
 
 2. Az **Microsoft Azure ad – egyszeri bejelentkezés – az Alkalmazásbeállítások konfigurálása** a következő lépéseket hajtja végre:
 
     ![Egyetlen Sign-On konfigurálása](./media/123formbuilder-tutorial/url3.png)
 
-    a. Ha az alkalmazást **identitásszolgáltató kezdeményezett módban**szeretné konfigurálni, másolja ki a példány **azonosító** értékét, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
+    a. Ha az alkalmazást **identitásszolgáltató kezdeményezett módban** szeretné konfigurálni, másolja ki a példány **azonosító** értékét, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 
-    b. Ha az alkalmazást **identitásszolgáltató kezdeményezett módban**szeretné konfigurálni, másolja ki a példány **Válasz URL-címét** , és illessze be a **Válasz URL-címe** SZÖVEGMEZŐbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
+    b. Ha az alkalmazást **identitásszolgáltató kezdeményezett módban** szeretné konfigurálni, másolja ki a példány **Válasz URL-címét** , és illessze be a **Válasz URL-címe** SZÖVEGMEZŐbe az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 
-    c. Ha az alkalmazást SP-ben **kezdeményezett módban**szeretné konfigurálni, másolja a **bejelentkezési URL-címet** a példányhoz, és illessze be a **bejelentkezési URL-cím** SZÖVEGMEZŐbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal.
+    c. Ha az alkalmazást SP-ben **kezdeményezett módban** szeretné konfigurálni, másolja a **bejelentkezési URL-címet** a példányhoz, és illessze be a **bejelentkezési URL-cím** SZÖVEGMEZŐbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal.
 
 ### <a name="create-123formbuilder-sso-test-user"></a>123FormBuilder SSO-teszt felhasználó létrehozása
 

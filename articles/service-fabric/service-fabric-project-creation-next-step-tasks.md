@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97760435"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Az Service Fabric alkalmazás és a következő lépések
@@ -78,7 +78,7 @@ A [hibaelhárítási útmutatók](https://github.com/Azure/Service-Fabric-Troubl
 A [támogatási lehetőségek](service-fabric-support.md) felsorolják a StackOverflow és az MSDN fórumait a kérdések feltevésére, valamint a problémák jelentésére, a támogatás beszerzésére és a termékkel kapcsolatos visszajelzések elküldésére vonatkozó lehetőségeket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy Windows-fürtöt az Azure-ban](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Jelenítse meg a fürtöt, beleértve az üzembe helyezett alkalmazásokat és a fizikai elrendezést [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)segítségével.
 - [A szolgáltatások verziója és frissítése](service-fabric-application-upgrade-tutorial.md)

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 1958e818f014b7419a1a33e9453fbad460dfc159
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330614"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>A Azure DevTest Labs megvalósításának összehangolása
@@ -29,7 +29,7 @@ Azure DevTest Labs megoldás telepítésekor a fókusz első területe a virtuá
 1. Adja meg az Azure-beli DevTest Labs-előfizetéshez hozzárendelt **kezdeti IP-címtartományt** . Ehhez a lépéshez a virtuális gépek várható kihasználtságának előrejelzését kell megadnia, így nagy mennyiségű blokkot biztosíthat a jövőbeli bővítéshez.
 2. Azonosítsa a DevTest Labs **kívánt hozzáférésének módszereit** (például külső/belső hozzáférés). Ennek a lépésnek a lényege annak megállapítása, hogy a virtuális gépek rendelkeznek-e nyilvános IP-címmel (azaz közvetlenül az internetről elérhető).
 3. Azonosítsa és hozza létre a **kapcsolatot** a többi Azure-beli felhőalapú környezettel és a helyszínen. Ha a kényszerített útválasztás engedélyezve van az expressz útvonalon, akkor valószínű, hogy a virtuális gépeknek megfelelő proxybeállítások szükségesek a vállalati tűzfal bejárásához.
-4. Ha a virtuális gépeknek **tartományhoz**kell csatlakozniuk, állapítsa meg, hogy csatlakoznak-e felhőalapú tartományhoz (például HRE) vagy egy helyszíni tartományhoz. A helyszíni környezetben határozza meg, hogy a virtuális gépek milyen szervezeti egységben (OU-n) vannak összekapcsolva az Active Directoryban. Továbbá győződjön meg arról, hogy a felhasználók hozzáférhetnek a csatlakozáshoz (vagy hozzon létre egy szolgáltatásfiókot, amely képes a számítógép-rekordok létrehozására a tartományban)
+4. Ha a virtuális gépeknek **tartományhoz** kell csatlakozniuk, állapítsa meg, hogy csatlakoznak-e felhőalapú tartományhoz (például HRE) vagy egy helyszíni tartományhoz. A helyszíni környezetben határozza meg, hogy a virtuális gépek milyen szervezeti egységben (OU-n) vannak összekapcsolva az Active Directoryban. Továbbá győződjön meg arról, hogy a felhasználók hozzáférhetnek a csatlakozáshoz (vagy hozzon létre egy szolgáltatásfiókot, amely képes a számítógép-rekordok létrehozására a tartományban)
 
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>2. mérföldkő: a kísérleti labor üzembe helyezése
 A hálózati topológia bevezetését követően az első/kísérleti labor a következő lépésekkel hozható létre:
@@ -51,5 +51,5 @@ A kezdeti kísérleti csapatok részletesebb támogatást igényelhetnek az els�
 4. A kezdeti felvétel alapján ellenőrizze, hogy az IP-címtartomány eredeti előrejelzése továbbra is ésszerű és pontos
 5. Győződjön meg arról, hogy a megfelelő megfelelőségi és biztonsági felülvizsgálatok befejeződtek
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a sorozat következő cikkét: [Azure DevTest Labs infrastruktúra irányítása](devtest-lab-guidance-governance-resources.md)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: 78639386c9d836055d80566f4b84565c2c3b8e80
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 41cf1646d75080bc5b5996504ce8711edfae89fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104611859"
+ms.locfileid: "104719855"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -115,7 +115,7 @@ Futtassa a programot, és a rendszer a `.wav` megadott helyre írja a szintetiz�
 
 ## <a name="synthesize-to-speaker-output"></a>Szintetizálás a hangszórók kimenetére
 
-Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez egyszerűen hagyja `AudioConfig` ki a paramétert a `SpeechSynthesizer` fenti példában szereplő példa létrehozásakor. Ez a kimenet az aktuális aktív kimeneti eszközre mutat.
+Bizonyos esetekben érdemes közvetlenül a szintetizált beszédet közvetlenül a beszélőhöz adni. Ehhez hagyja ki a `AudioConfig` paramétert a fenti példában szereplő érték létrehozásakor `SpeechSynthesizer` . Ez a kimenet a jelenlegi aktív kimeneti eszközre mutat.
 
 ```cpp
 void synthesizeSpeech()
@@ -255,10 +255,10 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
 </speak>
 ```
 
-## <a name="visemes"></a>Visemes
+## <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
 
-A beszédfelismerés általában jó módszer az arc-kifejezések animálására.
-A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben (például az ajkak, az állkapocs és a nyelv pozíciójában) jelennek meg egy adott fonéma készítésekor.
-Az Viseme esemény a Speech SDK-ban előfizethet az arc-animálási adatgyűjtés létrehozásához.
-Ezt követően alkalmazhatja az ilyen jellegű adatbevitelt egy karakterre az arc-animáció kihasználása érdekében.
-Ismerje meg [, hogyan szerezhet be viseme-kimeneteket](../../../how-to-speech-synthesis-viseme.md#get-viseme-outputs-with-the-speech-sdk).
+A beszédfelismerés jó módszer lehet az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben jelentenek, például az ajkak, az állkapocs és a nyelv pozíciója egy adott fonéma készítésekor.
+Feliratkozhat a viseme eseményre a Speech SDK-ban.
+Ezt követően alkalmazhatja a viseme eseményeket, így animálhatja a karakterek színeit beszéd hanglejátszásként.
+Ismerje meg [, hogyan szerezhet be viseme-eseményeket](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

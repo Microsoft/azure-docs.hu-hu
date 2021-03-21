@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021860"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
@@ -101,7 +101,7 @@ Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá ke
 
     ![StorSimple-Eszközkezelő szolgáltatás létrehozása](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha további kérdései vannak a CSP-StorSimple kapcsolatban, lépjen a [StorSimple a CSP-ben: gyakori kérdések](storsimple-partner-csp-faq.md).
 - Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-ben](storsimple-partner-csp-deploy.md)című lépésre.

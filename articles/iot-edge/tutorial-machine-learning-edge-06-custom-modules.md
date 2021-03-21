@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5c096b26f31bdf92bb5ab91c8dad7876f228ff14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103462796"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
@@ -183,7 +183,7 @@ Az útválasztó modul a megoldás fontos részét képezi, amely biztosítja, h
     copy c:\source\IoTEdgeAndMlSample\EdgeModules\modules\turbofanRouter\*.cs c:\source\IoTEdgeAndMlSample\EdgeSolution\modules\turbofanRouter\
     ```
 
-1. Fogadja el a program.cs fájl felülírására vonatkozó kérést.
+1. Fogadja el a program. cs fájljának felülírására vonatkozó kérést.
 
 ### <a name="build-router-module"></a>Útválasztó modul létrehozása
 
@@ -230,7 +230,7 @@ A fentiekben leírtaknak megfelelően a IoT Edge Runtime a fájl *deployment.tem
 
 #### <a name="inputs"></a>Bevitelek
 
-1. A Program.cs init () metódusában két visszahívást regisztrálunk a modulhoz:
+1. A program. cs init () metódusában két visszahívást regisztrálunk a modulhoz:
 
    ```csharp
    await ioTHubModuleClient.SetInputMessageHandlerAsync(EndpointNames.FromLeafDevice, LeafDeviceInputMessageHandler, ioTHubModuleClient);
@@ -253,7 +253,7 @@ A fentiekben leírtaknak megfelelően a IoT Edge Runtime a fájl *deployment.tem
 
 Adjon hozzá négy további útvonalat a $edgeHub Route paraméterhez az útválasztó modul kimenetének kezeléséhez.
 
-1. A Program.cs definiálja a SendMessageToClassifier () metódust, amely a modul ügyfelével üzenetet küld a RUL osztályozó számára az útvonal használatával:
+1. A program. cs definiálja a SendMessageToClassifier () metódust, amely a modul ügyfelét használja a RUL osztályozó üzenet küldéséhez az útvonal használatával:
 
    ```json
    "routerToClassifier": "FROM /messages/modules/turbofanRouter/outputs/classOutput INTO BrokeredEndpoint(\"/modules/turbofanRulClassifier/inputs/amlInput\")"

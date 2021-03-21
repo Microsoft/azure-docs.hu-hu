@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5c8e21f2ce3f6907547bf1b2fe4681eb937864b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102119875"
 ---
 # <a name="json-claims-transformations"></a>JSON-jogcímek átalakítása
@@ -58,11 +58,11 @@ Az alábbi példa egy JSON-karakterláncot hoz létre az "e-mail" és az "OTP" j
 A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a SendGrid (egy külső gyártótól származó e-mail-szolgáltató) számára küldött kérelem törzse lesz. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. A pont jelölésében szereplő számok tömböket jelentenek. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
 
 - Bemeneti jogcímek:
-  - **e-mail**, átalakítási jogcím típusának  **személyre szabása. 0. to. 0. e-mail**: " someone@example.com "
+  - **e-mail**, átalakítási jogcím típusa  **personalizations.0.to.0.email**: " someone@example.com "
   - **OTP**, átalakítási jogcím típusa **personalizations.0.dynamic_template_data. OTP** "346349"
 - Bemeneti paraméter:
   - **template_id**: "d-4c56ffb40fa648b1aa6822283df94f60"
-  - **Feladó. e-mail**: " service@contoso.com "
+  - **from.email**: " service@contoso.com "
   - **személyre szabás. 0. tárgy** : "contoso-fiók e-mail-ellenőrző kódja"
 - Kimeneti jogcím:
   - **requestBody**: JSON-érték
@@ -115,7 +115,7 @@ Az alábbi példa egy JSON-karakterláncot hoz létre a jogcím értékei és a 
 A következő jogcím-átalakítás egy JSON-karakterlánc-jogcímet eredményez, amely a kérés törzse lesz, amelyet egy REST API küld. A JSON-objektum struktúráját az azonosítók a InputParameters és a Szabályzattípushoz TransformationClaimTypes határozza meg. Az értékek a Szabályzattípushoz "Values" és a InputParameters "" érték "tulajdonságaiból származnak.
 
 - Bemeneti jogcímek:
-  - **e-mail**, átalakítási jogcím típusa  **customerEntity. email**: " john.s@contoso.com "
+  - **e-mail**, átalakítási jogcím típusa  **customerEntity.email**: " john.s@contoso.com "
   - **objectId**, átalakítási jogcím típusa **customerEntity. userObjectId** "01234567-89ab-cdef-0123-456789abcdef"
   - **givenName**, átalakítási jogcím típusa **customerEntity. firstName** "John"
   - **vezetéknév**, átalakítási jogcím típusa **customerEntity. lastName** "Smith"

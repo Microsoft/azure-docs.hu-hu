@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: 3cfcf57f455a5c3b17b794acf2ded66ed2285eff
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94873505"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Rövid útmutató: csevegési hely létrehozása a Signaler szolgáltatás használatával
@@ -107,7 +107,7 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
     Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](/dotnet/core/extensions/configuration-providers#environment-variable-configuration-provider).
 
 
-4. Nyissa meg a *Startup.cs* , és frissítse a `ConfigureServices` metódust az Azure signaler szolgáltatás használatára a `AddSignalR()` és metódusok meghívásával `AddAzureSignalR()` :
+4. Nyissa meg a *Startup. cs* programot, és frissítse a `ConfigureServices` metódust az Azure signaler szolgáltatás használatára a `AddSignalR()` és metódusok meghívásával `AddAzureSignalR()` :
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -119,7 +119,7 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
 
     Ha nem küldi el a paramétert a rendszernek `AddAzureSignalR()` , ez a kód a jelző szolgáltatás erőforrás-kapcsolódási karakterláncának alapértelmezett konfigurációs kulcsát használja. Az alapértelmezett konfigurációs kulcs az *Azure: signaler: ConnectionString*.
 
-5. A *Startup.cs* frissítse a `Configure` metódust úgy, hogy a következő kóddal helyettesíti.
+5. A *Startup. cs*-ban frissítse a `Configure` metódust a következő kóddal való lecserélésével.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -142,9 +142,9 @@ A jelzőben a hub egy olyan alapvető összetevő, amely az ügyféltől hívhat
 
 Mindkét módszer a `Clients` ASP.net Core a signaler SDK által biztosított felületet használja. Ez az interfész hozzáférést biztosít az összes csatlakoztatott ügyfélhez, így tartalmat küldhet az ügyfeleknek.
 
-1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Vegyen fel egy új, *ChatHub.cs* nevű hub-kódrészletet az új mappába.
+1. A projektkönyvtárban adjon hozzá egy új, *Hub* nevű mappát. Vegyen fel egy új, *ChatHub. cs* nevű hub-kódrészletet az új mappába.
 
-2. Adja hozzá a következő kódot a *ChatHub.cs* a hub osztály definiálásához és a fájl mentéséhez.
+2. Adja hozzá a következő kódot a *ChatHub. cs* fájlhoz, hogy meghatározza a hub osztályt, és mentse a fájlt.
 
     Frissítse az osztály névterét, ha olyan projekt nevét használta, amely eltér a *signaler. MVC*-től.
 

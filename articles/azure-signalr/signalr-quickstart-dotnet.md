@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: zhshang
 ms.openlocfilehash: c39ef505b0cea0ad0c03b81683db8441077cd0d2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94874542"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>Rövid útmutató: csevegési helyiség létrehozása a ASP.NET és a Signaler szolgáltatással
@@ -83,7 +83,7 @@ Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr
     </configuration>
     ```
 
-1. A *Startup.cs* hívása helyett a `MapSignalR()` `MapAzureSignalR({YourApplicationName})` kapcsolati karakterláncot kell meghívnia és továbbítania, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje le `{YourApplicationName}` az alkalmazást az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. Ezt használhatja `this.GetType().FullName` értékként.
+1. A *Startup. cs*, hívása helyett `MapSignalR()` meg kell hívnia `MapAzureSignalR({YourApplicationName})` és továbbítania kell a kapcsolati karakterláncot, hogy az alkalmazás kapcsolódjon a szolgáltatáshoz ahelyett, hogy saját maga is felhasználja a jelet. Cserélje le `{YourApplicationName}` az alkalmazást az alkalmazás nevére. Ez a név egy egyedi név, amely megkülönbözteti ezt az alkalmazást a többi alkalmazástól. Ezt használhatja `this.GetType().FullName` értékként.
 
     ```cs
     public void Configuration(IAppBuilder app)

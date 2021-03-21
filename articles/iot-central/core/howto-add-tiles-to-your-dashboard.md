@@ -7,10 +7,10 @@ ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797009"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
@@ -53,7 +53,7 @@ A csempék szerkesztéséhez szerkesztési módban kell lennie.  Az elérhető t
 
 A következő táblázat ismerteti az irányítópulthoz felvehető különböző típusú csempéket:
 
-| Csempe             | Leírás |
+| Csempe             | Description |
 | ---------------- | ----------- |
 | Markdown         | A Markdown csempéi olyan csempék, amelyek fejléceket és leírásokat jelenítenek meg a Markdown használatával formázott szövegekben. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
 | Kép            | A képcsempék egy egyéni rendszerképet jelenítenek meg, és megadhatók. Az URL-cím lehet relatív hivatkozás az alkalmazás egy másik oldalára, vagy egy külső helyre mutató abszolút hivatkozás.|
@@ -104,6 +104,6 @@ Ez a szolgáltatás KPI-, LKV-és tulajdonságlapokon érhető el, lehetővé te
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/tile-format.png" alt-text="Csempe formátuma":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan konfigurálhatja az Azure IoT Central alapértelmezett alkalmazás-irányítópultját, [megtudhatja, hogyan hozhat létre személyes irányítópultot](howto-create-personal-dashboards.md).

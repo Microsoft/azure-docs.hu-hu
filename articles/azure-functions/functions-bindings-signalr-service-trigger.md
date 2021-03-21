@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
 ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97763513"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>A signaler szolgáltatás triggerének kötése Azure Functions
@@ -171,11 +171,11 @@ def main(invocation) -> None:
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
-|**típusa**| n/a | Értékre kell állítani `SignalRTrigger` .|
-|**irányba**| n/a | Értékre kell állítani `in` .|
-|**név**| n/a | A függvény kódjában használt változó neve a trigger meghívása környezeti objektumhoz. |
+|**típusa**| n.a. | Értékre kell állítani `SignalRTrigger` .|
+|**irányba**| n.a. | Értékre kell állítani `in` .|
+|**név**| n.a. | A függvény kódjában használt változó neve a trigger meghívása környezeti objektumhoz. |
 |**hubName**|**HubName**| Ezt az értéket az aktiválni kívánt függvény jelző központjajának nevére kell beállítani.|
 |**Kategória**|**Kategória**| Ezt az értéket úgy kell beállítani, hogy az üzenetek kategóriája legyen az elindítható függvény számára. A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: a *csatlakoztatott* és a *leválasztott* eseményeket is beleértve</li><li>**üzenetek**: beleértve az összes többi eseményt, kivéve a *kapcsolatok* kategóriájában lévőket</li></ul> |
 |**esemény**|**Esemény**| Ezt az értéket úgy kell beállítani, hogy a függvény elindítsa az üzenetek eseményét. Az *üzenetek* kategória esetében az esemény az a *cél* , amely az ügyfelek által küldött [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) szerepel. A *kapcsolatok* kategória esetében csak a *csatlakoztatott* és a *leválasztott* kapcsolat van használatban. |
@@ -190,7 +190,7 @@ Az trigger típusú bemeneti típust `InvocationContext` vagy egyéni típuskén
 
 A InvocationContext tartalmazza az üzenetben a Signaler szolgáltatásból küldött összes tartalmat.
 
-|Tulajdonság a InvocationContext | Leírás|
+|Tulajdonság a InvocationContext | Description|
 |------------------------------|------------|
 |Argumentumok| Az *üzenetek* kategóriához érhető el. *Argumentumokat* tartalmaz a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)|
 |Hiba| *Leválasztott* eseményhez elérhető. Ez akkor lehet üres, ha a kapcsolatok hiba nélkül lezárult, vagy a hibaüzeneteket tartalmazza.|
@@ -249,7 +249,7 @@ Ha egynél több függvényalkalmazást szeretne használni egy Signaler-szolgá
 
 A GitHubon található minta követheti a csevegési helyiség üzembe helyezését függvényalkalmazás a Signal Service trigger kötésével és a felsőbb rétegbeli szolgáltatással: [kétirányú csevegési szoba minta](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)
 * [A signaler szolgáltatás Triggerének kötési mintája](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

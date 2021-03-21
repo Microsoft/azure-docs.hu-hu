@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: be202a6016842ee82b3230c2841d416d3b53ea15
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505579"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
@@ -133,7 +133,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a Perfview eszköz használatával
 
-#### <a name="setup"></a>Telepítés
+#### <a name="setup"></a>Beállítás
 
 1. Töltse le PerfView.exe és PerfView64.exe a [githubról](https://github.com/Microsoft/perfview/releases).
 2. PerfView64.exe elindítása.

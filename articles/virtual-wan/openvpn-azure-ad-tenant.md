@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
 ms.openlocfilehash: a54397fe7cfecef6813105645b7f2b218894875e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91367852"
 ---
 # <a name="prepare-azure-active-directory-tenant-for-user-vpn-openvpn-protocol-connections"></a>Azure Active Directory bérlő előkészítése a felhasználói VPN OpenVPN protokoll kapcsolataihoz
@@ -38,7 +38,7 @@ Példa:
 
 Ezután hozzon létre két felhasználói fiókot az újonnan létrehozott Azure AD-bérlőben, egy globális rendszergazdai fiókban és egy felhasználói fiókban. A felhasználói fiók használható az OpenVPN-hitelesítés tesztelésére, és a globális rendszergazdai fiók az Azure VPN-alkalmazás regisztrálásához való jóváhagyást fog használni. Miután létrehozott egy Azure AD-felhasználói fiókot, hozzárendelhet egy **címtárbeli szerepkört** a felhasználóhoz a rendszergazdai engedélyek delegálásához.
 
-Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-directory.md) ismertetett lépések segítségével hozza létre az Azure ad-bérlőhöz tartozó két felhasználót. Ügyeljen arra, hogy a **címtárbeli szerepkört** a **globális rendszergazda**számára a létrehozott fiókok egyikén változtassa meg.
+Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-directory.md) ismertetett lépések segítségével hozza létre az Azure ad-bérlőhöz tartozó két felhasználót. Ügyeljen arra, hogy a **címtárbeli szerepkört** a **globális rendszergazda** számára a létrehozott fiókok egyikén változtassa meg.
 
 ## <a name="3-grant-consent-to-the-azure-vpn-app-registration"></a><a name="enable-authentication"></a>3. adja meg az Azure VPN-alkalmazás regisztrálásának jóváhagyását
 
@@ -78,7 +78,7 @@ Az [ebben a cikkben](../active-directory/fundamentals/add-users-azure-active-dir
 
     ![Képernyőfelvétel: a szervezete és további információi elfogadását kérő párbeszédpanel.](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
-5. Az Azure AD-ben a **vállalati alkalmazásokban**most látnia kell az **Azure VPN** listáját.
+5. Az Azure AD-ben a **vállalati alkalmazásokban** most látnia kell az **Azure VPN** listáját.
 
     ![Azure VPN](./media/openvpn-create-azure-ad-tenant/azurevpn.png)
 

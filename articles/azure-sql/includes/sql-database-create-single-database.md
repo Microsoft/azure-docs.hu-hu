@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
 ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102178072"
 ---
 Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.

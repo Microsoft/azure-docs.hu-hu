@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a7aaed519f8f97a9be77a263568aeed5257c16d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "76710332"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának üzleti megértési szakasza
@@ -44,7 +44,7 @@ Ebben a szakaszban két fő feladat foglalkozik:
    * **Adatforrások azonosítása**: keresse meg a releváns adatokat, amelyek segítségével választ kaphat a projekt céljait meghatározó kérdésekre.
 
 ### <a name="define-objectives"></a>Célkitűzések meghatározása
-1. Ennek a lépésnek a központi célja, hogy azonosítsa azokat a kulcsfontosságú üzleti változókat, amelyeknek meg kell jósolnia az elemzést. Ezeket a változókat a *modell céljaként*tekintjük át, és a hozzájuk társított metrikákat használjuk a projekt sikerességének meghatározásához. Az ilyen célok két példája az értékesítési előrejelzések vagy a megrendelés csalárd valószínűsége.
+1. Ennek a lépésnek a központi célja, hogy azonosítsa azokat a kulcsfontosságú üzleti változókat, amelyeknek meg kell jósolnia az elemzést. Ezeket a változókat a *modell céljaként* tekintjük át, és a hozzájuk társított metrikákat használjuk a projekt sikerességének meghatározásához. Az ilyen célok két példája az értékesítési előrejelzések vagy a megrendelés csalárd valószínűsége.
 
 2. A projekt céljainak meghatározása: az "éles" kérdésekkel kapcsolatos, konkrét és kétértelmű kérdések megkérdezése és finomítása. Az adatelemzés olyan folyamat, amely neveket és számokat használ az ilyen kérdések megválaszolásához. Az adatelemzés és a gépi tanulás jellemzően öt típusú kérdés megválaszolására használható:
  
@@ -58,13 +58,13 @@ Ebben a szakaszban két fő feladat foglalkozik:
 
 3. Adja meg a projekt csapatát a tagjai szerepköreinek és feladatainak megadásával. Dolgozzon ki egy magas szintű mérföldkő-tervet, amelyről részletesebben is tájékozódhat. 
 
-4. Adja meg a sikerességi metrikákat. Előfordulhat például, hogy az ügyfél-adatforgalom előrejelzését szeretné elérni. A három hónapos projekt végén a "x" százalék pontossága szükséges. Ezekkel az adatforgalommal csökkentheti az ügyfelek akcióit. A metrikáknak **intelligensnek**kell lenniük: 
+4. Adja meg a sikerességi metrikákat. Előfordulhat például, hogy az ügyfél-adatforgalom előrejelzését szeretné elérni. A három hónapos projekt végén a "x" százalék pontossága szükséges. Ezekkel az adatforgalommal csökkentheti az ügyfelek akcióit. A metrikáknak **intelligensnek** kell lenniük: 
 
-   * **S**pecific 
-   * **M**easurable
-   * **Egy**chievable 
+   * **S** pecific 
+   * **M** easurable
+   * **Egy** chievable 
    * **R**-elevant 
-   * **T**IME – kötve 
+   * **T** IME – kötve 
 
 ### <a name="identify-data-sources"></a>Adatforrások azonosítása
 Azonosítsa azokat az adatforrásokat, amelyek ismert példákat tartalmaznak az éles kérdések megválaszolására. Keresse meg a következő adatértékeket:
@@ -81,7 +81,7 @@ Ebben a szakaszban a következő termékek szerepelnek:
    * [Adatforrások](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): a TDSP Project **ADATJELENTÉSI** mappájában található **adatdefiníciós** jelentés **nyers adatforrások** szakasza tartalmazza az adatforrásokat. Ez a szakasz a nyers adatként használt eredeti és célhelyeket határozza meg. A későbbi fázisokban további részleteket adhat meg, például a szkripteket, amelyek az adatokat az analitikus környezetbe helyezik át.  
    * [Adatszótárak](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ez a dokumentum az ügyfél által biztosított adatmennyiség leírását tartalmazza. Ezek a leírások tartalmazzák a sémával kapcsolatos információkat (az adattípusokat és az érvényesítési szabályokra vonatkozó adatokat, ha vannak ilyenek) és az entitás-relációs diagramokat, ha vannak ilyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 

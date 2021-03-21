@@ -15,10 +15,10 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24b7845ec66a85e6ced4f1df9caec409a94016bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88782600"
 ---
 # <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Egyéni Azure-szerepkörök használata Privileged Identity Management
@@ -48,7 +48,7 @@ Miután létrehozta a szerepkört az Azure AD-szervezetben, lépjen a Azure Port
 
 Végezetül [rendeljen hozzá szerepköröket](pim-resource-roles-assign-roles.md) azon tagok különálló csoportjához, amelyeket meg szeretne célozni ezekkel a beállításokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure erőforrás-szerepkör beállításainak konfigurálása Privileged Identity Management](pim-resource-roles-configure-role-settings.md)
 - [Egyéni szerepkörök az Azure-ban](../../role-based-access-control/custom-roles.md)

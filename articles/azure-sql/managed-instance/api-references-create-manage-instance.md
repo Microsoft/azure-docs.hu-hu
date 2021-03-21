@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792633"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Az Azure SQL Managed Instance felügyelt API-referenciája
@@ -85,8 +85,8 @@ A felügyelt példány létrehozása után hozzon létre és konfiguráljon pél
 
 | Parancs | Leírás |
 | --- | --- |
-|[ADATBÁZIS LÉTREHOZÁSA](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
-| [ADATBÁZIS MÓDOSÍTÁSA](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
+|[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Létrehoz egy új példány-adatbázist a felügyelt SQL-példányban. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Módosítja egy példány-adatbázist az SQL felügyelt példányában.|
 
 ## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: felügyelt példányok létrehozása és konfigurálása
 

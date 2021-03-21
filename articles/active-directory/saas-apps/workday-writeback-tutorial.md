@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954004"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>Oktatóanyag: az visszaírási attribútum konfigurálása az Azure AD-ből munkanapokra

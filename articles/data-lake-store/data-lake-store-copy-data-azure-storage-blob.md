@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 84ee65b05af4393f49696875bda41df39e283d5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85980089"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-Blobokból a Azure Data Lake Storage Gen1ba
@@ -212,7 +212,7 @@ A AdlCopy több ezer fájlt és mappát tartalmazó adatok másolását támogat
 
 * 1.0.13 – Ha ugyanarra a Azure Data Lake Storage Gen1 fiókba másol adatokat több adlcopy-parancs között, akkor nem kell újra megadnia a hitelesítő adatait az egyes futtatásokhoz. A Adlcopy mostantól több futtatás során gyorsítótárazza ezeket az információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 * [Azure Data Lake Analytics használata a Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
