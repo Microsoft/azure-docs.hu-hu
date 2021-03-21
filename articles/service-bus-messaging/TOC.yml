@@ -154,14 +154,10 @@
           href: service-bus-to-event-grid-integration-concept.md
 - name: Útmutatók
   items:
-    - name: Áthelyezés régiók között
-      href: move-across-regions.md
-    - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
-      href: deprecate-service-bus-management.md
-    - name: Névtér létrehozása
-      href: service-bus-create-namespace-portal.md
     - name: Fejlesztés
       items:
+        - name: Névtér létrehozása
+          href: service-bus-create-namespace-portal.md
         - name: Előfizetési szűrők és műveletek beállítása
           href: service-bus-filter-examples.md
         - name: Üzenetkezelés
@@ -224,6 +220,8 @@
       items:
         - name: Migrálás az ActiveMQ-ból az Azure Service Busba
           href: migrate-jms-activemq-to-servicebus.md
+        - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
+          href: deprecate-service-bus-management.md
     - name: Monitor
       items:
         - name: Átfogó nyomkövetés és diagnosztika
@@ -238,6 +236,8 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Kezelés
       items:
+        - name: Áthelyezés régiók között
+          href: move-across-regions.md
         - name: Az üzenetkezelési egységek automatikus frissítése
           href: automate-update-messaging-units.md
         - name: Entitások üzembe helyezése az Azure PowerShell használatával

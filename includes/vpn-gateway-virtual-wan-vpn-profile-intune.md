@@ -9,10 +9,10 @@ ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f64bb0dd0841e89d05a4399db4373a9eaaec48a2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101749987"
 ---
 A profilokat üzembe helyezheti az Azure VPN-ügyfelekhez (Windows 10) Microsoft Intune használatával. Ez a cikk segítséget nyújt az Intune-profilok egyéni beállításokkal történő létrehozásában.

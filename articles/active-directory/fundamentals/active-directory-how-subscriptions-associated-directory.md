@@ -1,6 +1,6 @@
 ---
 title: Meglévő Azure-előfizetés hozzáadása a bérlőhöz – Azure AD
-description: Útmutató meglévő Azure-előfizetés Azure Active Directory bérlőhöz való hozzáadásához.
+description: Útmutató meglévő Azure-előfizetés Azure Active Directory (Azure AD) bérlőhöz való hozzáadásához.
 services: active-directory
 author: ajburnle
 manager: daveba
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 03/05/2021
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86395a91c1b2cbba6a93c7b1b7cad487129fff0a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b7ac9553660aace8242c81b41fa2cc9171d28219
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094282"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594631"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz
 
@@ -43,11 +43,11 @@ Az előfizetés hozzárendelése vagy hozzáadása előtt végezze el a követke
 
 - Tekintse át az alábbi módosításokat, amelyek az előfizetés hozzárendelése vagy hozzáadása után következnek be, és hogy milyen hatással lehet a következőkre:
 
-  - Azok a felhasználók, akik az Azure RBAC-ben szerepköröket rendeltek hozzá, elvesztik a hozzáférést
-  - A szolgáltatás-rendszergazda és a Co-Administrators elvesztik a hozzáférést
+  - Azok a felhasználók, akik az Azure RBAC-vel rendeltek szerepköröket, elvesztik a hozzáférést.
+  - A szolgáltatás-rendszergazda és a Co-Administrators elvesztik a hozzáférést.
   - Ha rendelkezik kulcstartókkal, nem lesznek elérhetők, és a társítás után ki kell javítani őket.
-  - Ha bármilyen felügyelt identitással rendelkezik olyan erőforrásokhoz, mint például a Virtual Machines vagy a Logic Apps, a társítás után újra engedélyeznie kell vagy újra létre kell hoznia azokat.
-  - Ha regisztrált Azure Stack van, akkor újra regisztrálnia kell a társítás után
+  - Ha bármilyen felügyelt identitással rendelkezik olyan erőforrásokhoz, mint a Virtual Machines vagy a Logic Apps, a társítás után újra engedélyeznie kell vagy újra létre kell hoznia azokat.
+  - Ha regisztrálva van Azure Stack, a társítás után újra regisztrálnia kell.
   - További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba](../../role-based-access-control/transfer-subscription.md).
 
 - Jelentkezzen be egy olyan fiókkal, amely a következőket használja:
@@ -55,7 +55,7 @@ Az előfizetés hozzárendelése vagy hozzáadása előtt végezze el a követke
   - [Tulajdonosi](../../role-based-access-control/built-in-roles.md#owner) szerepkör-hozzárendelést tartalmaz az előfizetéshez. További információ a tulajdonosi szerepkör hozzárendeléséről: Azure- [szerepkörök kiosztása a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
   - Az aktuális könyvtárban és az új könyvtárban is megtalálható. Az aktuális könyvtár társítva van az előfizetéshez. Az új könyvtárat az előfizetéshez társítja. További információ egy másik címtár elérésének beszerzéséről: [Azure Active Directory B2B együttműködési felhasználók hozzáadása a Azure Portal](../external-identities/add-users-administrator.md).
 
-- Győződjön meg arról, hogy nem használ Azure Cloud Service Providers (CSP) előfizetést (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), a Microsoft belső előfizetését (MS-AZR-0015P) vagy egy Microsoft Imagine-előfizetést (MS-AZR-0144P).
+- Győződjön meg arról, hogy nem használ Azure Cloud Service Providers (CSP) előfizetést (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P), a Microsoft belső előfizetését (MS-AZR-0015P) vagy egy Microsoft Azure for Students Starter-előfizetést (MS-AZR-0144P).
 
 ## <a name="associate-a-subscription-to-a-directory"></a>Előfizetés hozzárendelése egy címtárhoz<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
@@ -65,17 +65,17 @@ A meglévő előfizetés Azure AD-címtárhoz való hozzárendeléséhez kövess
 
 1. Válassza a **címtár módosítása** lehetőséget.
 
-   ![Előfizetések lap, a módosítási könyvtár lehetőség kiemelve](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png" alt-text="Képernyőkép, amely megjeleníti az előfizetések lapját, és kiemelte a módosítási könyvtár lehetőséget.":::
 
 1. Tekintse át a megjelenő figyelmeztetéseket, majd kattintson a **módosítás** gombra.
 
-   ![Módosítsa a könyvtár lapot, és jelenítse meg a módosítani kívánt könyvtárat](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png" alt-text="Képernyőkép: a könyvtár módosítása egy minta könyvtárral és a módosítás gomb kiemelve.":::
 
    Miután megtörtént az előfizetés címtárának módosítása, megjelenik egy sikeres üzenet.
 
 1. Az előfizetés lapon válassza a **könyvtárak váltása** lehetőséget, hogy megnyissa az új könyvtárat.
 
-   ![Címtár-kapcsoló oldal, a minta adataival](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+   :::image type="content" source="media/active-directory-how-subscriptions-associated-directory/directory-switcher.png" alt-text="Képernyőkép, amely a címtár-kapcsoló oldalát jeleníti meg a mintaadatok használatával.":::
 
    Több órát is igénybe vehet, hogy minden megfelelően megjelenjen. Ha úgy tűnik, hogy túl sokáig tart, ellenőrizze a **globális előfizetés szűrőjét**. Győződjön meg arról, hogy az áthelyezett előfizetés nem rejtett. Előfordulhat, hogy ki kell jelentkeznie a Azure Portal, majd újra be kell jelentkeznie az új könyvtár megtekintéséhez.
 
@@ -87,9 +87,9 @@ Miután hozzárendelt egy előfizetést egy másik címtárhoz, előfordulhat, h
 
 - Ha rendelkezik kulcstartóval, módosítania kell a Key Vault bérlői AZONOSÍTÓját. További információ: [Key Vault-bérlő azonosítójának módosítása az előfizetés áthelyezése után](../../key-vault/general/move-subscription.md).
 
-- Ha a rendszer által hozzárendelt felügyelt identitásokat használta az erőforrásokhoz, újra engedélyeznie kell ezeket az identitásokat. Ha felhasználó által hozzárendelt felügyelt identitásokat használt, ezeket az identitásokat újra létre kell hoznia. A felügyelt identitások ismételt engedélyezése vagy újbóli létrehozása után újra létre kell hoznia az identitásokhoz rendelt engedélyeket. További információ: [Mi az az Azure-erőforrások felügyelt identitása?](../managed-identities-azure-resources/overview.md).
+- Ha a rendszer által hozzárendelt felügyelt identitásokat használta az erőforrásokhoz, újra engedélyeznie kell ezeket az identitásokat. Ha felhasználó által hozzárendelt felügyelt identitásokat használt, ezeket az identitásokat újra létre kell hoznia. A felügyelt identitások ismételt engedélyezése vagy újbóli létrehozása után újra létre kell hoznia az identitásokhoz rendelt engedélyeket. További információ: [Mik az Azure-erőforrások felügyelt identitásai?](../managed-identities-azure-resources/overview.md).
 
-- Ha az előfizetést használó Azure Stack regisztrált, újra kell regisztrálnia. További információ: [Azure stack regisztrálása az Azure](/azure-stack/operator/azure-stack-registration)-ban.
+- Ha az előfizetést használó Azure Stack regisztrált, újra kell regisztrálnia. További információ: [Azure stack hub regisztrálása az Azure](/azure-stack/operator/azure-stack-registration)-ban.
 
 - További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba](../../role-based-access-control/transfer-subscription.md).
 

@@ -4,10 +4,10 @@ description: Az Azure Service Fabric-alkalmazások olyan fürtökön is futtatha
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.openlocfilehash: c907540c03788ab5f4087a96e301f18ab7ced4ca
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787977"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Alkalmazások kezelése több környezethez
@@ -42,7 +42,7 @@ Elnevezett alkalmazás-példányok Service Fabricban való létrehozásakor lehe
   - A sfctl használatakor a [`sfctl application create`](./service-fabric-sfctl-application.md#sfctl-application-create) parancs JSON-karakterláncként fogadja a paramétereket. A install.sh parancsfájl a sfctl-t használja.
   - A Visual Studio az alkalmazás projekt parameters (paraméterek) mappájában található paramétereket tartalmazó fájlok készletét biztosítja. Ezeket a paramétereket a Visual studióból való közzétételkor, az Azure DevOps Services vagy a Azure DevOps Server használatával lehet használni. A Visual Studióban a paramétereket a rendszer a Deploy-FabricApplication.ps1 parancsfájlba továbbítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkek bemutatják, hogyan használhatja az itt ismertetett fogalmakat:
 
 - [Környezeti változók megadása a Service Fabric szolgáltatásaihoz](service-fabric-how-to-specify-environment-variables.md)

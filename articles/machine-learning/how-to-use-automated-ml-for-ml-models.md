@@ -12,10 +12,10 @@ ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
 ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103562722"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
@@ -132,7 +132,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
-    További konfigurációk|Leírás
+    További konfigurációk|Description
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#primary-metric).
     A legjobb modell ismertetése | Az engedélyezés vagy a Letiltás lehetőség kiválasztásával megjelenítheti a javasolt legjobb modell magyarázatait. <br> Ez a funkció jelenleg nem érhető el [bizonyos előrejelzési algoritmusokhoz](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model). 
@@ -222,7 +222,7 @@ Az automatizált ML segít programozás nélkül üzembe helyezni a modellt:
     Mező| Érték
     ----|----
     Név| Adja meg a központi telepítés egyedi nevét.
-    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Description| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
     Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.

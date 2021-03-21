@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
 ms.openlocfilehash: 145db7693db126d4e114e8c8a885ea7fd7809e69
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102608910"
 ---
 Az Event hub Event streambe küldött eseményre való reagáláshoz használja a függvény eseményindítóját. Az eseményindító beállításához olvasási hozzáféréssel kell rendelkeznie a mögöttes Event hub-hoz. A függvény elindításakor a függvénynek átadott üzenet karakterláncként van beírva.
@@ -351,7 +351,7 @@ A Java [functions futtatókörnyezet könyvtárában](/java/api/overview/azure/f
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `EventHubTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
 |---------|---------|----------------------|
 |**típusa** | n.a. | Értékre kell állítani `eventHubTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba** | n.a. | Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -418,7 +418,7 @@ A részletekért tekintse meg a Python [trigger példáját](#example) .
 
 A Event Hubs trigger számos [metaadat-tulajdonságot](../articles/azure-functions/./functions-bindings-expressions-patterns.md)biztosít. A metaadatok tulajdonságai más kötésekben vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) osztályból származnak.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Típus|Description|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|A `PartitionContext` példány.|
 |`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
 ms.openlocfilehash: 6c0ea6664c7f86a2672cb22091970ef727969dc2
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103562518"
 ---
 # <a name="azure-storage-analytics-and-big-data-partners"></a>Azure Storage-elemzési és big data-partnerek
@@ -21,7 +21,7 @@ Ez a cikk a Azure Data Lake Storage integrált Microsoft-partneri vállalatait m
 
 ## <a name="verified-partners"></a>Ellenőrzött partnerek
 
-| Partner | Leírás | Webhely/termék hivatkozása |
+| Partner | Description | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 |![Dremio-cég emblémája](./media/dremio-logo.png) |**Dremio**<br>Az elemzők és az adatszakértők megkereshetik, felfedezhetik és kihasználhatják az adatokat, míg az informatikai részleg irányítja a szabályozást és a biztonságot. A Dremio megkönnyíti a Data Lake Storage Blob Storage, Azure SQL Database, az Azure szinapszis SQL, a HDInsight és más szolgáltatásokkal való csatlakoztatását. A Dremio Power BI elemzők kereshetnek a Data Lake Storage tárolt új adatkészletekre, azonnal hozzáférhetnek a Power BIhoz, vizualizációkat hozhatnak létre, és valós időben iteratív a jelentések pontosítását. Az elemzők olyan új jelentéseket is létrehozhatnak, amelyek az Data Lake Storage és más adatbázisok közötti adategyesítést is magukban foglalhatnak.|[Partner oldal](https://www.dremio.com/azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dremiocorporation.dremio_ce)<br>|
 ![Informatica-cég emblémája](./media/informatica-logo.png) |**Informatica**<br>A Informatica nagyvállalati szintű, Felhőbeli natív adatkezelési platformja automatizálja és felgyorsítja az Azure-beli vállalati adatainak felderítését, kézbesítését, minőségét és irányítását. A mesterséges intelligenciával, a metaadatok vezérelt adatintegrációval, valamint az adatminőséggel és irányítási képességekkel modernizálhatja az elemzéseket, és felgyorsíthatja az adattárházba vagy az Azure-beli adatközpontba való áttérést.|[Partner oldal](https://www.informatica.com/azure)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.annualiics?tab=Overview)|

@@ -7,10 +7,10 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: tamram
 ms.openlocfilehash: 483f5853c321eee4ac6d10543f0e360a0a5e54b9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100373750"
 ---
 Mielőtt Azure-RBAC szerepkört rendel egy rendszerbiztonsági tag számára, határozza meg a rendszerbiztonsági tag hozzáférési hatókörét. Az ajánlott eljárások azt diktálják, hogy mindig csak a lehető legszűkebb hatókört adja meg. A tágabb hatókörben definiált Azure RBAC-szerepköröket az alatta lévő erőforrások öröklik.

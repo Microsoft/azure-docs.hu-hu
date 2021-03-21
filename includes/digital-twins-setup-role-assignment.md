@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
 ms.openlocfilehash: a905bb3b4effb0381facfbfaa37c8ea412b81287
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100551801"
 ---
 Az Azure Digital Twins [Azure Active Directory (Azure ad)](../articles/active-directory/fundamentals/active-directory-whatis.md) használatával szerepköralapú hozzáférés-vezérlést (RBAC) használ. Ez azt jelenti, hogy ahhoz, hogy egy felhasználó adatsíkon hívásokat hajtson végre az Azure-beli digitális Twins-példányon, a felhasználónak hozzá kell rendelnie egy, a megfelelő engedélyekkel rendelkező szerepkört.

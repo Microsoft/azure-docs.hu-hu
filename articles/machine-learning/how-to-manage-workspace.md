@@ -11,10 +11,10 @@ ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
 ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518925"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
@@ -159,7 +159,7 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
 
 
 
-### <a name="networking"></a>Hálózat  
+### <a name="networking"></a>Hálózatkezelés  
 
 > [!IMPORTANT]  
 > További információ a saját munkaterülettel rendelkező privát végpontok és virtuális hálózatok használatáról: [hálózati elkülönítés és adatvédelem](how-to-network-security-overview.md).

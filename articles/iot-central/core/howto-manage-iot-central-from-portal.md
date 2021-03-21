@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2af97206db00d683ab409710bc71a3b5048bf6ae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674446"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658465"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT Central kezelése a Azure Portal
 
@@ -22,6 +22,9 @@ ms.locfileid: "97674446"
 IoT Central alkalmazások az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén való létrehozása és kezelése helyett a [Azure Portal](https://portal.azure.com) használatával kezelheti az alkalmazásokat.
 
 ## <a name="create-iot-central-applications"></a>IoT Central-alkalmazások létrehozása
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
+
 
 Alkalmazás létrehozásához navigáljon a [Azure Portal](https://ms.portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget.
 

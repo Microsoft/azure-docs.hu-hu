@@ -3,12 +3,12 @@ title: ISO 27001-es bevezetési/SQL munkaterhelés-tervezeti minta üzembe helye
 description: Az ISO 27001 App Service Environment/SQL Database munkaterhelés-tervezet lépéseinek üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 60867c117c9f1fda6f8ba33333c19a7bd764d219
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 5c329a9d7175772e80ea6d9d8da3baf85ce0d170
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627483"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669644"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervrajzi minta üzembe helyezése
 
@@ -133,7 +133,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Azure SQL Database erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-azsql-rg` hogy az erőforráscsoport egyedi legyen.|
 |Azure SQL Database erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server-rendszergazdai Felhasználónév|Az Azure-SQL Server felhasználóneve. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték az _SQL-Admin-User_.|
-|Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" kifejezést, és cserélje le az `{subscriptionId}` előfizetés-azonosítóra és `{orgName}` a **szervezet neve** Blueprint paraméterre.|
+|Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-workload-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" kifejezést, és cserélje le az `{subscriptionId}` előfizetés-azonosítóra és `{orgName}` a **szervezet neve** Blueprint paraméterre.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault titkos kulcs neve)|A SQL Server-rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonság **Azure SQL Server rendszergazdai Felhasználónév**.|
 |Azure SQL Database sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Azure SQL Database sablon|Resource Manager-sablon|HRE rendszergazdai objektum azonosítója|Azon felhasználó HRE-azonosítója, amely Active Directory-rendszergazdaként lesz hozzárendelve. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_ területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_ melletti "kattintson ide a másoláshoz" ikont.|

@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml, contperf-fy21q2
 ms.openlocfilehash: 5a3d16445c5a4276f07f4ed502b9830a10c4ff72
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518908"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
@@ -85,7 +85,7 @@ Elemzés végrehajtása a múltbeli adatokon. | Ez a forgatókönyv felhasználh
 
 Az adatkészlet-figyelők a következő Azure-szolgáltatásoktól függenek.
 
-|Azure-szolgáltatás  |Leírás  |
+|Azure-szolgáltatás  |Description  |
 |---------|---------|
 | *Adathalmaz* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
 | *Azureml-folyamat és-számítás* | A drift számítási feladatot a azureml-folyamat tárolja.  A feladatot igény szerint, vagy ütemezés szerint kell elindítani a drift monitor létrehozási idején konfigurált számítási feladatok futtatásához.

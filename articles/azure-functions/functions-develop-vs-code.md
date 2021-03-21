@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99493946"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
@@ -138,7 +138,7 @@ A nyelvtől függően ezek a többi fájl is létrejön:
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
-* A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
+* A függvényt megvalósító [HttpExample. cs osztály függvénytár-fájlja](functions-dotnet-class-library.md#functions-class-library-project) .
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -496,7 +496,7 @@ A fenti lépések elvégzése után a mögöttes alapeszközökre irányuló hí
 
 A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azure-beli Function apps-alkalmazásokkal való interakcióhoz. Ugyanez a funkció a Command paletta (F1) parancsként is elérhető. Ezek a Azure Functions parancsok elérhetők:
 
-|Azure Functions parancs  | Leírás  |
+|Azure Functions parancs  | Description  |
 |---------|---------|
 |**Új beállítások hozzáadása**  |  Létrehoz egy új Alkalmazásbeállítás-beállítást az Azure-ban. További információ: [Alkalmazásbeállítások közzététele](#publish-application-settings). Előfordulhat, hogy a [beállítást a helyi beállításokra is le kell töltenie](#download-settings-from-azure). |
 | **Központi telepítési forrás konfigurálása** | A Function alkalmazást az Azure-ban csatlakoztatja egy helyi git-tárházhoz. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md). |

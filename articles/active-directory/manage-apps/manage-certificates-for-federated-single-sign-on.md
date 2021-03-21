@@ -15,12 +15,12 @@ ms.date: 04/04/2019
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b6e81fd090a625ec7ac86963cc9d5e66f5010e
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 63054b18589cdcc2d950d70452b4f982c324a6c3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259219"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104603998"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory
 
@@ -89,6 +89,8 @@ Az Azure AD e-mailben értesítést küld a 60, 30 és 7 nappal az SAML-tanúsí
 1. Ismételje meg az előző lépést minden hozzáadni kívánt e-mail-cím esetében.
 1. Minden törölni kívánt e-mail-cím esetében válassza a **Törlés** ikont (a szemetet is) az e-mail-cím mellett.
 1. Kattintson a **Mentés** gombra.
+
+Akár 5 e-mail-címet is hozzáadhat az értesítési listához (beleértve az alkalmazást hozzáadó rendszergazda e-mail-címét). Ha több személyt kell értesítenie, használja a terjesztési lista e-mailjeit.
 
 Az értesítő e-mailt a következő címről küldi: aadnotification@microsoft.com . Ha el szeretné kerülni, hogy az e-mail a levélszemét helyére kerüljön, vegye fel ezt az e-mailt a névjegyalbumba.
 

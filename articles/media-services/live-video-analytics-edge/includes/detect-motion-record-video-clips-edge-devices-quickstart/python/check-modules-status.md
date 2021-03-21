@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 3f92bae608284c8b619be34a0e08f15e831bf88e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101750545"
 ---
 A [IoT Edge üzembe helyezési jegyzékfájljának előállítása és telepítése](../../../detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest) lépésben, a Visual Studio Code-ban bontsa ki a **LVA-Sample-Device** CSOMÓPONTOT az **Azure IoT hub** alatt (a bal alsó szakaszban). A következő modulokat kell látnia:

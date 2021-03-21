@@ -5,14 +5,14 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/19/2020
+ms.date: 12/23/2020
 ms.topic: how-to
-ms.openlocfilehash: 773793c7681890098fea1a37cc5b9912c0ecb75c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 2feb4d85e7be4076eef8b2796d15b622f6b17c3a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122994"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104658301"
 ---
 # <a name="manage-iot-central-programmatically"></a>IoT Central programozott kezelése
 
@@ -36,6 +36,8 @@ A következő táblázat felsorolja az SDK-Tárházak és a csomag telepítési 
 ## <a name="samples"></a>Példák
 
 Az [azure IOT Central ARM SDK Samples](/samples/azure-samples/azure-iot-central-arm-sdk-samples/azure-iot-central-arm-sdk-samples/) adattárában több programozási nyelv is szerepel, amelyek bemutatják az Azure IoT Central-alkalmazások létrehozását, frissítését, listázását és törlését.
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
