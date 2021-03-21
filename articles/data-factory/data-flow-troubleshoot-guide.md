@@ -6,13 +6,13 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/15/2021
-ms.openlocfilehash: fe65a9528e35416d537f3aecd3a44f8b4e568afe
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.date: 03/18/2021
+ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467731"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593850"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory adatforgalmának hibáinak megoldása
 
@@ -26,12 +26,6 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **Üzenet**: az adatelőnézet, a hibakeresés és a folyamat adatforgalmának végrehajtása nem sikerült, mert a tároló nem létezik
 - **OK**: az adatkészlet olyan tárolót tartalmaz, amely nem létezik a tárolóban.
 - **Javaslat**: Ellenőrizze, hogy az adatkészletben hivatkozott tároló létezik-e, és hogy elérhető-e.
-
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>Hibakód: DF-végrehajtó-SystemImplicitCartesian
-
-- **Üzenet**: az implicit Descartes-termék belső illesztéshez nem támogatott, használja a Cross JOIN parancsot. Az illesztésben használt oszlopoknak egyedi kulcsot kell létrehozniuk a sorokhoz.
-- **OK**: a logikai csomagok közötti belső illesztések implicit Descartes-as termékei nem támogatottak. Ha az illesztésben oszlopokat használ, hozzon létre egy egyedi kulcsot legalább egy oszloppal a kapcsolat mindkét oldaláról.
-- **Javaslat**: a nem egyenlőségen alapuló illesztésekhez használjon egyéni kereszt-illesztést.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Hibakód: DF-végrehajtó-SystemInvalidJson
 
@@ -82,11 +76,6 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **OK**: a deklarált típus adattípusa nem kompatibilis a tényleges paraméter értékével.
 - **Javaslat**: Győződjön meg arról, hogy az adatfolyamnak átadott paraméterérték megfelel a deklarált típusnak.
 
-### <a name="error-code-df-executor-columnunavailable"></a>Hibakód: DF-végrehajtó-ColumnUnavailable
-- **Üzenet**: a kifejezésben használt oszlopnév nem érhető el vagy érvénytelen
-- **OK**: érvénytelen vagy nem elérhető oszlopnév a kifejezésben.
-- **Javaslat**: oszlopnevek keresése a kifejezésekben.
-
 ### <a name="error-code-df-executor-parseerror"></a>Hibakód: DF-végrehajtó-értelmezési hiba
 - **Üzenet**: a kifejezés nem elemezhető
 - **OK**: a rendszer helytelen formázás miatt generált egy kifejezést a hibák elemzéséhez.
@@ -96,29 +85,6 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **Üzenet**: az implicit Descartes-termék belső illesztéshez nem támogatott, használja a Cross JOIN parancsot. Az illesztésben használt oszlopoknak egyedi kulcsot kell létrehozniuk a sorokhoz.
 - **OK**: a logikai csomagok közötti belső illesztések implicit Descartes-as termékei nem támogatottak. Ha az illesztésben oszlopok vannak használatban, hozzon létre egy egyedi kulcsot.
 - **Javaslat**: a nem egyenlőségen alapuló illesztésekhez használjon kereszt-összekapcsolást.
-
-### <a name="error-code-df-executor-systeminvalidjson"></a>Hibakód: DF-végrehajtó-SystemInvalidJson
-- **Üzenet**: JSON-elemzési hiba, nem támogatott kódolás vagy többsoros
-- **OK**: a JSON-fájllal kapcsolatos lehetséges problémák: a nem támogatott kódolás, a sérült bájtok vagy a JSON-forrás egyetlen dokumentumként való használata sok beágyazott sorban.
-- **Javaslat**: Ellenőrizze, hogy a JSON-fájl kódolása támogatott-e. A JSON-adatkészletet használó forrás-átalakításnál bontsa ki a **JSON-beállítások** elemet, és kapcsolja be az **egy dokumentumot**.
-
-
-
-### <a name="error-code-df-executor-conversion"></a>Hibakód: DF-végrehajtó – konverzió
-- **Üzenet**: egy érvénytelen karakter miatt nem sikerült a dátumra vagy időpontra konvertálása.
-- **OK**: az adatértékek nem a várt formátumban vannak.
-- **Javaslat**: használja a megfelelő adattípust.
-
-
-### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>Hibakód: DF-végrehajtó-BlockCountExceedsLimitError
-- **Üzenet**: a nem véglegesített blokkok száma nem haladhatja meg a 100 000 blokk maximális korlátját. Keresse meg a blob konfigurációját.
-- **OK**: a blobban a nem véglegesített blokkok maximális száma 100 000.
-- **Javaslat**: a problémával kapcsolatos további információkért forduljon a Microsoft termék csapatához.
-
-### <a name="error-code-df-executor-partitiondirectoryerror"></a>Hibakód: DF-végrehajtó-PartitionDirectoryError
-- **Üzenet**: a megadott forrás elérési út több particionált címtárral rendelkezik (például *<Source Path> /<partíció gyökérkönyvtára 1>/a = 10/b = 20, <Source Path> /<partíció gyökérkönyvtára 2>/c = 10/d = 30*) vagy particionált könyvtár más fájlokkal vagy nem particionált címtárral (pl. *<Source Path> /<Partition gyökérkönyvtár 1>/A = 10/b = 20, <Source Path> /mappa 2/file1*), távolítsa el a partíció gyökérkönyvtárát a forrás elérési útról, és olvassa el külön forrás-átalakítással.
-- **OK**: a forrás elérési útjának több particionált könyvtára vagy egy másik fájlt vagy nem particionált könyvtárat tartalmazó particionált könyvtár is van. 
-- **Javaslat**: távolítsa el a particionált gyökérkönyvtárat a forrás elérési útról, és olvassa el külön forrás-átalakítással.
 
 ### <a name="error-code-getcommand-outputasync-failed"></a>Hibakód: a GetCommand OutputAsync sikertelen
 - **Üzenet**: az adatfolyam hibakeresése és az adatelőnézet: a GetCommand OutputAsync sikertelen volt...
@@ -137,22 +103,10 @@ Ez a cikk az adatfolyamatok Azure Data Factoryban történő leképezésének gy
 - **OK**: a fiók neve vagy a hozzáférési kulcs helytelen.
 - **Javaslat**: Ellenőrizze, hogy helyes-e a társított szolgáltatásban megadott fiók neve vagy elérési kulcsa. 
 
-### <a name="error-code-df-executor-invalidtype"></a>Hibakód: DF-végrehajtó-InvalidType
-- **Üzenet**: Ellenőrizze, hogy a paraméter típusa egyezik-e az átadott érték típusával. Az úszó paraméterek átadása a folyamatokból jelenleg nem támogatott.
-- **OK**: a deklarált típus adattípusa nem kompatibilis a tényleges paraméter értékével. 
-- **Javaslat**: adja meg a megfelelő adattípusokat.
-
 ### <a name="error-code-df-executor-columnunavailable"></a>Hibakód: DF-végrehajtó-ColumnUnavailable
 - **Üzenet**: a kifejezésben használt oszlopnév nem érhető el vagy érvénytelen.
 - **OK**: érvénytelen vagy nem elérhető oszlopnév van használatban egy kifejezésben.
 - **Javaslat**: vizsgálja meg a kifejezésekben használt oszlopnevek nevét.
-
-
-### <a name="error-code-df-executor-parseerror"></a>Hibakód: DF-végrehajtó-értelmezési hiba
-- **Üzenet**: a kifejezés nem elemezhető.
-- **OK**: a rendszer helytelen formázás miatt generált egy kifejezést a hibák elemzéséhez. 
-- **Javaslat**: vizsgálja meg a kifejezés formázását.
-
 
  ### <a name="error-code-df-executor-outofdiskspaceerror"></a>Hibakód: DF-végrehajtó-OutOfDiskSpaceError
 - **Üzenet**: belső kiszolgálóhiba

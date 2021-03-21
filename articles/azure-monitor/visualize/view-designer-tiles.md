@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: d1d0da70dc1e47d0a1ddb90abbed2eaea83919cd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040175"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Útmutató a tervezői csempék Azure Monitor való megtekintéséhez
@@ -23,7 +23,7 @@ További információ a tervező nézetéről:
 
 A következő táblázat ismerteti az elérhető tervezői csempéket:  
 
-| Csempe | Leírás |
+| Csempe | Description |
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés rekordjainak száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezésből származó rekordok száma. |
@@ -45,7 +45,7 @@ A **szám** csempe a rekordok számát jeleníti meg egy napló lekérdezésből
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | **Csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -63,7 +63,7 @@ Ez a csempe a rekordok számát jeleníti meg két különböző naplózási lek
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | **Első csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
@@ -84,7 +84,7 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | **Gyűrű** | |
 | Lekérdezés |A fánkhoz futtatott lekérdezés. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. |
 | **Gyűrű** |**> központ** |
@@ -108,7 +108,7 @@ Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelen
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
 | **Vonalas diagram** |**> Y tengely** |
@@ -129,7 +129,7 @@ Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több a
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | **Vonalas diagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
 | **Vonalas diagram** |**> ábrafelirat** |
@@ -154,7 +154,7 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 | Beállítás | Leírás |
 |:--- |:--- |
 | Név |A csempe tetején megjelenő szöveg |
-| Leírás |A csempe neve alatt megjelenő szöveg |
+| Description |A csempe neve alatt megjelenő szöveg |
 | Első diagram | |
 | Jelmagyarázat |Az első adatsorozat ábrafelirata alatt megjelenő szöveg |
 | Szín |Az első adatsorozat oszlopaihoz használt szín |

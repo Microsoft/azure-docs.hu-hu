@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.custom: devx-track-dotnet
 ms.date: 06/23/2020
 ms.openlocfilehash: 7669bc07ad91933cd31bd2ccd10eaf830d98de7c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101710787"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
@@ -66,7 +66,7 @@ A szolgáltatási szerződés meghatározza a szolgáltatás által támogatott 
 
    Ez a csomag automatikusan hozzáadja a Service Bus-könyvtárakra és a WCF-re mutató hivatkozásokat `System.ServiceModel` . A [System.ServiceModel](/dotnet/api/system.servicemodel) az a névtér, amely lehetővé teszi a programozott hozzáférést a WCF alapszintű szolgáltatásaihoz. A Service Bus számos WCF-objektumot és -attribútumot használ a szolgáltatási szerződések meghatározására.
 
-1. Adja hozzá a következő `using` utasításokat a *program.cs* tetején:
+1. Adja hozzá a következő `using` utasításokat a program elején *. cs*:
 
     ```csharp
     using System.ServiceModel;
@@ -304,7 +304,7 @@ Az oktatóanyaghoz az URI `sb://putServiceNamespaceHere.windows.net/EchoService`
 
     A szolgáltatásgazda a WCF-objektum, amely a szolgáltatást példányosítja. Itt adhatja meg a létrehozni kívánt szolgáltatás típusát, `EchoService` típusát, valamint azt a internetcímet is, amelyen ki szeretné tenni a szolgáltatást.
 
-1. A *program.cs* fájl elején adja meg a következő hivatkozásokat a [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) és a [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description)elemre.
+1. A *program. cs* fájl elején adja hozzá a hivatkozásokat a [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) és a [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description)elemhez.
 
     ```csharp
     using System.ServiceModel.Description;
@@ -443,7 +443,7 @@ A következő feladat egy ügyfélalkalmazás létrehozása és a később megva
    1. Az **Add a New Project (új projekt hozzáadása**) lapon válassza ki a **(.NET-keretrendszer)** lehetőséget a C# számára, majd kattintson a **Tovább gombra**.
    1. Nevezze el a Project *EchoClient* , és válassza a **Létrehozás** lehetőséget.
 
-1. **Megoldáskezelő** a **EchoClient** projektben kattintson duplán a **program.cs** elemre, hogy megnyissa a fájlt a szerkesztőben, ha még nincs megnyitva.
+1. **Megoldáskezelő** a **EchoClient** projektben kattintson duplán a **program. cs** fájlra, és nyissa meg a fájlt a szerkesztőben, ha még nincs megnyitva.
 1. Módosítsa a névtér alapértelmezett `EchoClient` nevét a következőre: `Microsoft.ServiceBus.Samples`.
 1. Telepítse a [Service Bus NuGet csomagot](https://www.nuget.org/packages/WindowsAzure.ServiceBus):
 
@@ -452,7 +452,7 @@ A következő feladat egy ügyfélalkalmazás létrehozása és a később megva
 
       ![A Service Bus-csomag telepítése][4]
 
-1. Adjon hozzá egy `using` utasítást a [System. ServiceModel](/dotnet/api/system.servicemodel) névtérhez a *program.cs* fájlban.
+1. Adjon hozzá egy `using` utasítást a [System. ServiceModel](/dotnet/api/system.servicemodel) névtérhez a *program. cs* fájlban.
 
     ```csharp
     using System.ServiceModel;
@@ -475,7 +475,7 @@ A következő feladat egy ügyfélalkalmazás létrehozása és a később megva
 
 ### <a name="example-of-the-echoclient-project"></a>Példa a EchoClient projektre
 
-A következő kód a *program.cs* fájl aktuális állapotát jeleníti meg a **EchoClient** projektben.
+A következő kód a *program. cs* fájl aktuális állapotát jeleníti meg a **EchoClient** projektben.
 
 ```csharp
 using System;

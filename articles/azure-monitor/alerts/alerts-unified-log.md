@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 786e9b472d1f900e94e5d0cfa6a00e0f85547704
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037693"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
@@ -82,7 +82,7 @@ Munkaterületek és Application Insights esetén a rendszer a kiválasztott **sz
 
 Tudni szeretné, hogy az alkalmazás az 500-es hibakód miatt (belső kiszolgálóhiba) válaszol-e. Hozzon létre egy riasztási szabályt a következő részletekkel:
 
-- **Lekérdezés** 
+- **Lekérdezés:** 
 
 ```Kusto
 requests
@@ -128,7 +128,7 @@ A munkaterületek és a Application Insights esetében ez csak **metrikus méré
 
 Például a webhelyet vagy alkalmazást futtató több virtuális gép hibáit szeretné figyelni egy adott erőforráscsoport esetében. A naplózási riasztási szabályt a következőképpen teheti meg:
 
-- **Lekérdezés** 
+- **Lekérdezés:** 
 
     ```Kusto
     // Reported errors

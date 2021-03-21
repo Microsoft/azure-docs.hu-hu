@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 3107610215d5b37c43124ce4129b2eb5437e3b62
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97516854"
 ---
 # <a name="apache-cassandra-and-azure-cosmos-db-cassandra-api-consistency-levels"></a>Az Apache Cassandra és a Azure Cosmos DB Cassandra API a konzisztencia szintje
@@ -47,7 +47,7 @@ Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva,
 
 A valószínűséggel határos elavulás azt mutatja, hogy a végleges konzisztencia milyen módon lehetséges. Ez a mérőszám betekintést nyújt abba, hogy milyen gyakran lehet erősebb konzisztencia, mint az Azure Cosmos-fiókjában jelenleg konfigurált konzisztencia-szint. Más szóval az írási és olvasási régiók kombinációjának nagy mértékben konzisztens olvasásának valószínűsége (ezredmásodpercben mérve) látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Cosmos DB globális eloszlásáról és konzisztenciáji szintjeiről:
 

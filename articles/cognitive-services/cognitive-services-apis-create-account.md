@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 69c83e9172a8369b7ff31116ee4db74fc33d86bb
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 115457180efab719b406c4e1e021234fa99736ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472126"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670507"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Gyors útmutató: Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -39,12 +39,10 @@ A Multi-Service erőforrás neve **Cognitive Services** a portálon. [Cognitive 
 
 A több szolgáltatásból álló erőforrás jelenleg a következő Cognitive Serviceshoz biztosít hozzáférést:
 
-* Computer Vision
-* Content Moderator
-* Face
-* Language Understanding (LUIS)
-* Szövegelemzés
-* Fordító
+* **Vízió** – Computer Vision, Custom Vision, űrlap-felismerő, Face
+* **Beszéd** – beszéd
+* **Language** -Language UNDERSTANDING (Luis), Text Analytics, Translator
+* **Döntés** – személyre szabás, Content moderator
 
 ### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
@@ -53,9 +51,10 @@ Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cog
 | Látás                      | Beszéd                  | Nyelv                          | Döntés             |
 |-----------------------------|-------------------------|-----------------------------------|----------------------|
 | [Számítógép jövőképe](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)         | [Beszédfelismerési szolgáltatások](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)     | [Magával ragadó olvasó](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesImmersiveReader)              | [Anomáliadetektor](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) | 
-| [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) | [Speaker Recognition](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeakerRecognition) | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
+| [Egyéni jövőkép szolgáltatás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesCustomVision) |  | [Language Understanding (LUIS)](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) | [Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) | 
 | [Face](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace)                    |                         | [QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)                     | [Personalizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)     |
-| [Ink Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesInkRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| [Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)        |                         | [Text Analytics](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics)                |  [Metrics Advisor](https://go.microsoft.com/fwlink/?linkid=2142156)                    |
+| | | [Translator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) | |
 
 ---
 
@@ -72,9 +71,10 @@ Az alábbi hivatkozásokat követve hozhat létre erőforrást az elérhető Cog
 | **Név** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *MyCognitiveServicesResource*. |
 | **Tarifacsomag** | A Cognitive Services fiókjának díja a választott beállításoktól és a használattól függ. További információt az API [díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/)ismertető témakörben talál.
 
-![Több szolgáltatás erőforrás-erőforrás-létrehozási képernyője](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+<!--![Multi-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen-multi.png" alt-text="Több szolgáltatás erőforrás-létrehozási képernyője":::
 
-Válassza a **Létrehozás** lehetőséget.
+Olvassa el és fogadja el a feltételeket (ha alkalmazható), majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
 ### <a name="single-service-resource"></a>[Egy szolgáltatásból származó erőforrás](#tab/singleservice)
 
@@ -86,9 +86,10 @@ Válassza a **Létrehozás** lehetőséget.
 | **Név** | A kognitív szolgáltatások erőforrásának leíró neve. Például: *MyCognitiveServicesResource*. |
 | **Tarifacsomag** | A Cognitive Services fiókjának díja a választott beállításoktól és a használattól függ. További információt az API [díjszabását](https://azure.microsoft.com/pricing/details/cognitive-services/)ismertető témakörben talál.
 
-![Egy szolgáltatásbeli erőforrás-létrehozási képernyő](media/cognitive-services-apis-create-account/resource_create_screen.png)
+<!--![Single-service resource creation screen](media/cognitive-services-apis-create-account/resource_create_screen.png)-->
+:::image type="content" source="media/cognitive-services-apis-create-account/resource_create_screen.png" alt-text="Egy szolgáltatásbeli erőforrás-létrehozási képernyő":::
 
-Válassza a **Létrehozás** lehetőséget.
+Válassza a Next (tovább) lehetőséget **: Virtual Network** , és válassza ki az erőforráshoz engedélyezni kívánt hálózati hozzáférés típusát, majd kattintson a **felülvizsgálat + létrehozás** gombra.
 
 ---
 

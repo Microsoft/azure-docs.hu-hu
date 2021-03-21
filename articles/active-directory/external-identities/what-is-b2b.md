@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bee6a007004253106703ae2c19b940bf3de5d44
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 231d3ab81c2376aa8a2a4bf182e1b5e9799e51d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649291"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669780"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -80,7 +80,7 @@ A szervezet igényei szerint testre szabott módon hozhatja ki a külső partner
 
 ## <a name="integrate-with-identity-providers"></a>Integráció az identitás-szolgáltatókkal
 
-Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a Facebook, a Microsoft-fiókok, a Google vagy a vállalati identitás-szolgáltatók. Beállíthatja az összevonási szolgáltatást az identitás-szolgáltatókkal, így a külső felhasználók bejelentkezhetnek meglévő közösségi vagy vállalati fiókjaikkal ahelyett, hogy új fiókot hozna létre az alkalmazáshoz. További információ a külső identitások identitás-szolgáltatókkal kapcsolatban.
+Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a Facebook, a Microsoft-fiókok, a Google vagy a vállalati identitás-szolgáltatók. Beállíthatja az összevonási szolgáltatást az identitás-szolgáltatókkal, így a külső felhasználók bejelentkezhetnek meglévő közösségi vagy vállalati fiókjaikkal ahelyett, hogy új fiókot hozna létre az alkalmazáshoz. További információ a [külső identitások identitás-szolgáltatókkal](identity-providers.md)kapcsolatban.
 
 ![Az Identity Providers oldalt ábrázoló képernyőfelvétel](media/what-is-b2b/identity-providers.png)
 

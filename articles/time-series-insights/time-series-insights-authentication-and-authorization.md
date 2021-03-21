@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103009266"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
@@ -148,7 +148,7 @@ Ez a szakasz a gyakori HTTP-kérelmek fejléceit és a Azure Time Series Insight
 
 Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
-| Kötelező kérelem fejléce | Leírás |
+| Kötelező kérelem fejléce | Description |
 | --- | --- |
 | Engedélyezés | Azure Time Series Insights használatával történő hitelesítéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate). |
 
@@ -157,7 +157,7 @@ Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
 Az opcionális kérések fejlécei alább olvashatók.
 
-| Választható kérelemfejléc | Leírás |
+| Választható kérelemfejléc | Description |
 | --- | --- |
 | Content-Type | csak `application/json` a támogatott. |
 | x-MS-Client-Request-ID | Egy ügyfél-kérelem azonosítója. A szolgáltatás rögzíti ezt az értéket. Lehetővé teszi, hogy a szolgáltatás nyomkövetési műveletet végez a szolgáltatások között. |
@@ -166,7 +166,7 @@ Az opcionális kérések fejlécei alább olvashatók.
 
 Nem kötelező, de az ajánlott válasz fejlécek az alábbiakban olvashatók.
 
-| Válasz fejléce | Leírás |
+| Válasz fejléce | Description |
 | --- | --- |
 | Content-Type | Csak `application/json` a támogatott. |
 | x-MS-Request-ID | Kiszolgáló által generált kérelem azonosítója. Felhasználható arra, hogy felvegye a kapcsolatot a Microsofttal egy kérelem kivizsgálására. |

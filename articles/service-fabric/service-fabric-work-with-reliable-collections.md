@@ -4,10 +4,10 @@ description: Ismerje meg a megbízható gyűjtemények Azure Service Fabric alka
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 908f24cc22c969a34a513ff3fd3ceaa788420620
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787875"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
@@ -219,7 +219,7 @@ Emellett a szolgáltatási kód egyszerre egy frissítési tartományt frissít.
 
 Azt is megteheti, hogy a szokásos módon két frissítést hajt végre. A kétfázisú frissítéssel a Service-t a v1-ről v2-re, a v2-re pedig az új séma módosításával, de ez a kód nem hajtható végre. Ha a v2 kód beolvassa a v1-es adatokat, akkor az működik rajta, és v1-adatokat ír. Ezt követően a frissítés befejezését követően az összes frissítési tartományon megadhatja a frissítés befejezését jelző futó v2-példányokat. (Az egyik lehetőség, hogy ezt a konfigurációt egy konfigurációs frissítés kiépítésére állítja be. Ez a kétfázisú frissítés.) A v2-példányok a v1-es adatelemzést, a v2-re való átalakítást, a működést, valamint a v2-adatként való kiírását teszik elérhetővé. Ha más példányok is beolvassák a v2-et, akkor nem kell azokat konvertálniuk, csak azokon működnek, és ki kell írni a v2-es adattípust.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A továbbítással kompatibilis adategyezmények létrehozásával kapcsolatos további információkért lásd: [továbbítással kompatibilis adategyezmények](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)
 
 Az adategyezmények verziószámozásával kapcsolatos ajánlott eljárásokért tekintse meg az [adategyezmény verziószámozása](/dotnet/framework/wcf/feature-details/data-contract-versioning) című témakört.

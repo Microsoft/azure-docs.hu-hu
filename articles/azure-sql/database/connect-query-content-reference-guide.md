@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a9f9e03227bfb75d94ed79cdf858278e2efe4f31
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440394"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594172"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>A Azure SQL Database és az Azure SQL felügyelt példányának csatlakozási és lekérdezési cikkei
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -118,6 +118,7 @@ Az alábbi táblázat felsorolja azokat az objektum-összehasonlító leképezé
   - [Kapcsolat és lekérdezés a Java használatával](connect-query-java.md)
   - [Kapcsolat és lekérdezés a Python használatával](connect-query-python.md)
   - [Csatlakozási és lekérdezés a Ruby használatával](connect-query-ruby.md)
+  - [Telepítse a Sqlcmd-t és a BCP-t a SQL Server parancssori eszközöket](/sql/linux/sql-server-linux-setup-tools) Linux rendszerű felhasználók számára, próbáljon meg csatlakozni Azure SQL Database vagy az Azure SQL felügyelt példányához a [Sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility)használatával.
 - Próbálja újra a logikai kódok példáit:
   - [Rugalmas csatlakozás a ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [Rugalmas csatlakozás a PHP-vel][step-4-connect-resiliently-to-sql-with-php-p42h]

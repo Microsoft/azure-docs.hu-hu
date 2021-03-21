@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: f4d65c97bfccd223453583b25ee0586c5bc0b1ec
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101091458"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
@@ -54,7 +54,7 @@ Azure Migrate segíti a helyszíni virtuális gépek Azure IaaS való áttelepí
 **Q. A Database Migration Service tárolja az ügyféladatokat?**
 Nem. Database Migration Service nem tárolja az ügyféladatokat.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 **Q. Mik a Azure Database Migration Service használatának előfeltételei?**
 Több előfeltétel szükséges annak biztosításához, hogy Azure Database Migration Service zökkenőmentesen fusson az adatbázis-áttelepítés végrehajtásakor. Néhány előfeltétel a szolgáltatás által támogatott összes forgatókönyv (forrás-cél párok) esetében érvényes, míg más előfeltételek egyediek egy adott forgatókönyv esetében.
