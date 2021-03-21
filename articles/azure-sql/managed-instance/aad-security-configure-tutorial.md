@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788621"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
@@ -120,7 +120,7 @@ Más Azure AD-kiszolgálói rendszerbiztonsági tag (login) létrehozásához SQ
 
 - Ha engedélyezni szeretné az újonnan létrehozott Azure AD-kiszolgáló rendszerbiztonsági tag (login) számára más bejelentkezési adatok létrehozását más Azure AD-felhasználók,-csoportok vagy-alkalmazások számára, adja meg a bejelentkezési `sysadmin` vagy `securityadmin` kiszolgálói szerepkört.
 - Az Azure AD-kiszolgáló rendszerbiztonsági tagjának (bejelentkezési azonosítójának) minden más Azure AD-kiszolgáló-rendszerbiztonsági tag (login) létrehozásához meg kell adni legalább a **bejelentkezési** engedélyeket.
-- Alapértelmezés szerint az újonnan létrehozott Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) számára biztosított szabványos engedély a következő: **SQL-kapcsolat** és **bármely adatbázis megtekintése** .
+- Alapértelmezés szerint az újonnan létrehozott Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) számára biztosított szabványos engedély a következő: **SQL-kapcsolat** és **bármely adatbázis megtekintése**.
 - A `sysadmin` kiszolgálói szerepkör a felügyelt példányokon belül számos Azure ad-kiszolgálói rendszerbiztonsági tag (bejelentkezés) számára biztosítható.
 
 A bejelentkezés hozzáadása a `sysadmin` kiszolgálói szerepkörhöz:
@@ -157,7 +157,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
 
      További információ: [univerzális hitelesítés (SSMS-támogatás multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
-1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással** . Ez egy Multi-Factor Authentication bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
+1. Válassza **a Active Directory-Universal lehetőséget MFA-támogatással**. Ez egy Multi-Factor Authentication bejelentkezési ablakot hoz létre. Jelentkezzen be az Azure AD-jelszavával.
 
     ![A Multi-Factor Authentication bejelentkezési ablak képernyőképe a jelszó megadása mezőben lévő kurzorral.](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
@@ -195,7 +195,7 @@ Ha az Azure AD-kiszolgáló rendszerbiztonsági tag (login) létrejött, és `sy
 
 1. Nyisson meg egy új lekérdezési ablakot a SQL Server Management Studioban.
 
-    Ez a példa feltételezi, hogy létezik egy _mygroup_ nevű csoport az Azure ad-ben. Hajtsa végre a következő parancsot:
+    Ez a példa feltételezi, hogy létezik egy _mygroup_ nevű csoport az Azure ad-ben. Futtassa a következő parancsot:
 
     ```sql
     USE master
@@ -361,7 +361,7 @@ Az SQL felügyelt példánya támogatja az Azure AD-kiszolgáló szintű rendsze
     GO
     ```
 
-1. A következő parancs használatával láthatja, hogy a tárolt eljárás végrehajtásakor megszemélyesített felhasználó **bob \@ aadsqlmi.net** .
+1. A következő parancs használatával láthatja, hogy a tárolt eljárás végrehajtásakor megszemélyesített felhasználó **bob \@ aadsqlmi.net**.
 
     ```sql
     Exec dbo.usp_Demo
@@ -405,7 +405,7 @@ Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések)
     );
     ```
 
-1. Az új lekérdezési ablakban hajtsa végre a következő parancsot a felhasználói _mygroup_ létrehozásához az új adatbázis- **MyMITestDB2** , és adja meg az adott adatbázishoz tartozó Select engedélyeket a _mygroup_ :
+1. Az új lekérdezési ablakban hajtsa végre a következő parancsot a felhasználói _mygroup_ létrehozásához az új adatbázis- **MyMITestDB2**, és adja meg az adott adatbázishoz tartozó Select engedélyeket a _mygroup_:
 
     ```sql
     USE MyMITestDB2
@@ -424,7 +424,7 @@ Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések)
     GO
     ```
 
-    Ekkor meg kell jelennie a tábla eredményeinek a **TestTable2** .
+    Ekkor meg kell jelennie a tábla eredményeinek a **TestTable2**.
 
 ## <a name="additional-supported-scenarios"></a>További támogatott forgatókönyvek
 

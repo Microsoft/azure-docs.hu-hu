@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
 ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463112"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB-hez készült Azure Synapse Link: Közel valós idejű elemzési használati esetek
@@ -129,11 +129,11 @@ Tegyük fel például, hogy egy e-kereskedelmi cég CompanyXYZ a 20 ország/rég
 
   * A [Azure Cosmos db Analytical Store](analytical-store-introduction.md)egy teljesen elszigetelt oszlopdiagram használatával a szinapszis-hivatkozás nem teszi lehetővé, hogy az [Azure szinapszis Analytics](../synapse-analytics/overview-what-is.md) szolgáltatásban ne legyenek kinyerhető átalakítási-betöltési (etl) elemzések a globálisan elosztott operatív adatokon.  Az üzleti elemzők, adatmérnökök és adatszakértők mostantól a szinapszis Spark vagy a szinapszis SQL használatát interoperábilis módon futtathatják a közel valós idejű üzleti intelligenciát, elemzést és gépi tanulási folyamatokat anélkül, hogy ez hatással lenne a tranzakciós munkaterhelések teljesítményére a Azure Cosmos DB. További részletekért tekintse meg a [szinapszis-hivatkozás előnyeit Azure Cosmos DBban](synapse-link.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 
-* [Az Azure szinapszis hivatkozása Azure Cosmos DB](synapse-link.md) 
+* [Azure Cosmos DB-hez készült Azure Synapse Link](synapse-link.md) 
 
 * [Azure Cosmos DB elemzési tár](analytical-store-introduction.md)
 
@@ -141,6 +141,6 @@ További információért lásd a következő dokumentumokat:
 
 * [Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban](synapse-link-frequently-asked-questions.md)
 
-* [Apache Spark az Azure szinapszis Analyticsben](../synapse-analytics/spark/apache-spark-concepts.md)
+* [Apache Spark az Azure Synapse Analyticsben](../synapse-analytics/spark/apache-spark-concepts.md)
 
 * [Kiszolgáló nélküli SQL Pool Runtime-támogatás az Azure szinapszis Analyticsben](../synapse-analytics/sql/on-demand-workspace-overview.md)

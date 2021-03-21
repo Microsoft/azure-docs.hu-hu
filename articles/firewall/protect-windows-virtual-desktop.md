@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ad4f42d0e33f6d70c75abfcd1daab4f5aa9a515f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94654983"
 ---
-# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata a Windows Virtual Desktop üzemelő példányainak védelméhez
+# <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata üzemelő Windows Virtual Desktop-példányok védelmére
 
 A Windows Virtual Desktop egy Azure-on futó asztali és app Virtualization szolgáltatás. Amikor a végfelhasználó egy Windows rendszerű virtuális asztali környezethez csatlakozik, a munkamenetet egy gazdagép futtatja. A címkészlet olyan Azure-beli virtuális gépek gyűjteménye, amelyek munkamenet-gazdagépként regisztrálják a Windows rendszerű virtuális asztalt. Ezek a virtuális gépek a virtuális hálózaton futnak, és a virtuális hálózat biztonsági ellenőrzése alá esnek. A Windows Virtual Desktop szolgáltatás megfelelő működéséhez kimenő internet-hozzáférésre van szükségük, és a végfelhasználók számára is szükség lehet a kimenő internet-hozzáférésre. Azure Firewall segíthet a környezet zárolásában és a kimenő forgalom szűrésében.
 

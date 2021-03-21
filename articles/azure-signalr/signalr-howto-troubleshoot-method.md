@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
 ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97707656"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>A kapcsolat és az üzenetek kézbesítésével kapcsolatos problémák elhárítása
@@ -207,7 +207,7 @@ További információ a vész- [helyreállítási](./signalr-concept-disaster-re
 
 [Problémákba ütközik vagy visszajelzést szeretne küldeni a hibaelhárításról? Tudassa velünk.](https://aka.ms/asrs/survey/troubleshooting)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan lehet elhárítani a kapcsolódási és üzenetek kézbesítési problémáit. Azt is megtudhatja, hogyan kezelheti a gyakori problémákat. 
 

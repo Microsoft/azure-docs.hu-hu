@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 02/04/2021
 ms.author: rishjai
 ms.openlocfilehash: efd5c1ab3e23348373be76c79d1b9689bc5f4941
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101720528"
 ---
 # <a name="azure-resource-manager-templates-for-azure-site-recovery"></a>Azure Site Recovery Azure Resource Manager sablonjai
 
 Az alábbi táblázat a Azure Site Recovery szolgáltatások használatához Azure Resource Manager sablonokra mutató hivatkozásokat tartalmaz.
 
-| Sablon | Leírás |
+| Sablon | Description |
 |---|---|
 |**Azure – Azure** | |
 | [Recovery Services-tároló létrehozása](./quickstart-create-vault-template.md)| Recovery Services-tároló létrehozása. A tár használható az Azure Backup és az Azure Site Recovery szolgáltatásokkal. |

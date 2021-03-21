@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 168e6d6dc7ab5bfeccc4e1dabc7bd50efcbe8f34
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789702"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
@@ -225,7 +225,7 @@ A csomag kiépítéséhez használja a külső kiépítés elemet, amelyhez a le
 >[!NOTE]
 > A rendszerkép-tároló relatív elérési útja alapján történő kiépítés jelenleg nem támogatja a `sfpkg` fájlokat. Ezért a `sfpkg` nem másolható a rendszerkép-tárolóba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [alkalmazások telepítése és eltávolítása című][10] témakör ismerteti, hogyan kezelheti az alkalmazás példányait a PowerShell használatával
 

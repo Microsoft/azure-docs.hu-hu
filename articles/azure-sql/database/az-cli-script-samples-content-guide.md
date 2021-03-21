@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
 ms.openlocfilehash: 439167f29bb53d4a6e90b95826faa56e3c3170da
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94563358"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Azure CLI-minták Azure SQL Database és SQL felügyelt példányhoz 
@@ -35,7 +35,7 @@ Az <a href="/cli/azure">Azure CLI</a>használatával konfigurálhatja a Azure SQ
 
 Az alábbi táblázat az Azure CLI parancsfájlokra mutató hivatkozásokat tartalmaz, amelyek a Azure SQL Database egyetlen és készletezett adatbázisait kezelik. 
 
-|Terület|Leírás|
+|Terület|Description|
 |---|---|
 |**Adatbázisok létrehozása a Azure SQL Databaseban**||
 | [Önálló adatbázis létrehozása és egy tűzfalszabály konfigurálása](scripts/create-and-configure-database-cli.md) | Létrehoz egy SQL Database, és konfigurál egy kiszolgálói szintű tűzfalszabály-szabályt. |
@@ -63,7 +63,7 @@ További információ az [Egyadatbázisos Azure CLI API-](single-database-manage
 
 Az alábbi táblázat a felügyelt Azure SQL-példányokra mutató hivatkozásokat tartalmaz az Azure CLI parancsfájlokra.
 
-|Terület|Leírás|
+|Terület|Description|
 |---|---|
 | **SQL felügyelt példány létrehozása**||
 | [SQL felügyelt példány létrehozása](../../sql-database/scripts/sql-database-create-configure-managed-instance-cli.md)| Létrehoz egy SQL felügyelt példányt. |

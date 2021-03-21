@@ -4,10 +4,10 @@ description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Servic
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462466"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
@@ -116,7 +116,7 @@ A megosztott rendszerképek logikai csoportosításához a következők egyikét
 
 A Azure Lab Services első lépéseiben azt javasoljuk, hogy hozzon létre elnevezési konvenciókat az erőforráscsoportok, a labor-fiókok, a Labs és a megosztott képgyűjtemény számára. Bár a létrehozott elnevezési konvenciók egyediek lesznek a szervezet igényeinek megfelelően, a következő táblázat általános irányelveket tartalmaz:
 
-| Erőforrás típusa | Role | Javasolt minta | Példák |
+| Erőforrás típusa | Szerepkör | Javasolt minta | Példák |
 | ------------- | ---- | ----------------- | -------- | 
 | Erőforráscsoport | Egy vagy több Lab-fiókot, valamint egy vagy több megosztott képgyűjteményt tartalmaz | \<organization short name\>-\<environment\>– RG<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat.</li><li>A **környezet** azonosítja az erőforrás környezetét, például a *kísérleti* vagy a *üzemi* környezetet.</li><li>A **RG** az erőforrástípus *erőforráscsoport*.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-Pilot-RG<br/>contosouniversitylabs – Prod-RG |
 | Labor-fiók | Egy vagy több labort tartalmaz | \<organization short name\>-\<environment\>– La<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat.</li><li>A **környezet** azonosítja az erőforrás környezetét, például a *kísérleti* vagy a *üzemi* környezetet.</li><li>A **La** az erőforrástípus Lab- *fiókja*.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs – pilóta – La<br/>sciencedeptlabs-Prod-La |
@@ -271,7 +271,7 @@ A labor-fiókok rendszergazdái számára fontos, hogy a katalógusból rendszer
 
 Ne törölje a replikálást meghatározott régiókba úgy, hogy csökkentse a költségeket, bár ez a lehetőség a megosztott rendszerkép-katalógusban található. Előfordulhat, hogy a replikációs módosítások kedvezőtlen hatással vannak a Azure Lab Services a megosztott képtárban mentett rendszerképekből származó virtuális gépek közzétételére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A laborok beállításával és kezelésével kapcsolatos további információkért lásd:
 

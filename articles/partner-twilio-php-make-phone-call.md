@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: ef0642b26898249d78f5103e8a8f80198887bed9
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95542524"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával az Azure-ban PHP-alkalmazásokban
@@ -104,7 +104,7 @@ A hívás elvégzése mellett a **MakeCall. php** a hívási metaadatokat is meg
 
 ![Azure-hívási válasz a Twilio és a PHP használatával][twilio_php_response]
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 A következő lépés az [alkalmazás üzembe helyezése az Azure Web Apps](app-service/quickstart-php.md) -ben a git használatával (bár nem minden fontos információ). 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca1ee8418bc08d70a031d81a15dc1b4ace2f1a3a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92461821"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>Forgatókönyv: a virtuális hálózatok egyéni elkülönítése
@@ -55,7 +55,7 @@ További információ a virtuális központ útválasztásáról: [Tudnivalók a
 
 ## <a name="workflow"></a><a name="architecture"></a>Munkafolyamat
 
-Az **1. ábrán**kék és piros VNet kapcsolatok találhatók.
+Az **1. ábrán** kék és piros VNet kapcsolatok találhatók.
 
 * A kék kapcsolatban álló virtuális hálózatok elérheti egymással, valamint elérheti az összes ág (VPN/ER/P2S) kapcsolatait.
 * A piros virtuális hálózatok elérheti egymást, valamint elérheti az összes ág (VPN/ER/P2S) kapcsolatait.
@@ -63,7 +63,7 @@ Az **1. ábrán**kék és piros VNet kapcsolatok találhatók.
 Az Útválasztás beállításakor vegye figyelembe a következő lépéseket.
 
 1. Hozzon létre két egyéni útválasztási táblázatot a Azure Portalban, **RT_BLUE** és **RT_RED**.
-2. Az útválasztási táblázat **RT_BLUE**a következő beállításokhoz:
+2. Az útválasztási táblázat **RT_BLUE** a következő beállításokhoz:
    * **Társítás**: válassza az összes kék virtuális hálózatok elemet.
    * **Propagálás**: ágak esetében válassza a fiókok, a hozzá tartozó ág (VPN/er/P2S) kapcsolatok lehetőséget, majd propagálja az útvonalakat ebbe az útválasztási táblába.
 3. Ismételje meg ugyanezeket a lépéseket a vörös virtuális hálózatok és ágakhoz **RT_RED** útválasztási táblázathoz (VPN/er/P2S).
@@ -74,7 +74,7 @@ Ez azt eredményezi, hogy az útválasztási konfiguráció megváltozik az alá
 
 :::image type="content" source="./media/routing-scenarios/custom-isolation/custom.png" alt-text="1. ábra":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [Gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 * További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).

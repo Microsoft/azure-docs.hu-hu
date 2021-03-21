@@ -9,10 +9,10 @@ ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
 ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059721"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
@@ -27,7 +27,7 @@ Az új v2 SKU a következő fejlesztéseket tartalmazza:
   A zóna redundancia csak akkor érhető el, ha az Azure-zónák elérhetők. Más régiókban a többi funkció is támogatott. További információ: [régiók és Availability Zones az Azure-ban](../availability-zones/az-overview.md)
 - **Statikus VIP**: a Application Gateway v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím ne változzon az üzemelő példány életciklusa alatt, még újraindítás után is.  Nem létezik statikus virtuális IP-cím a v1-ben, ezért az Application Gateway URL-címe helyett a tartománynév-útválasztáshoz használt IP-címet kell használnia az Application Gateway használatával App Services.
 - **Fejléc újraírása**: a Application Gateway lehetővé teszi a HTTP-kérések és a válasz-fejlécek hozzáadását, eltávolítását vagy frissítését v2 SKU-val. További információt a HTTP- [fejlécek újraírása a Application Gatewaysal](rewrite-http-headers.md) című témakörben talál.
-- **Key Vault integráció**: a Application Gateway v2 támogatja az Key Vault-integrációt a https-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz. További információ: TLS- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+- **Key Vault integráció**: a Application Gateway v2 támogatja az Key Vault-integrációt a https-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványokhoz. További információért lásd [a Key Vault tanúsítványokkal való TLS-megszakításról szóló részt](key-vault-certs.md).
 - **Azure Kubernetes-szolgáltatás bejövő adatkezelője**: a Application Gateway v2 beáramló vezérlő lehetővé teszi, hogy az azure-Application Gateway használható legyen a bejövő forgalomként egy Azure Kubernetes szolgáltatás (ak) számára, az úgynevezett AK-fürt. További információ: [Mi az a Application Gateway beáramló vezérlő?](ingress-controller-overview.md).
 - **Teljesítménybeli fejlesztések**: a v2 SKU a standard/WAF SKU-hoz képest akár 5x-ös nagyobb TLS-kiszervezési teljesítményt nyújt.
 - **Gyorsabb üzembe helyezés és frissítés ideje** A v2 SKU gyorsabb üzembe helyezést és frissítési időt biztosít a standard/WAF SKU-hoz képest. Ez magában foglalja a WAF konfigurációs változásait is.
@@ -68,7 +68,7 @@ Egy új példány létrehozása azonban hosszabb időt is igénybe vehet (körü
 
 A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgáltatásokat.
 
-| Funkció                                           | v1 SKU   | v2 SKU   |
+| Szolgáltatás                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatikus skálázás                                       |          | &#x2713; |
 | Zónaredundancia                                   |          | &#x2713; |
@@ -113,7 +113,7 @@ Ez a szakasz a v1 SKU-ból eltérő v2 SKU szolgáltatásait és korlátozásait
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: Webes forgalom irányítása az Azure Application Gatewayjel – Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)

@@ -8,10 +8,10 @@ ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96455447"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>A partner Center beküldési API-ját az Azure Apps szolgáltatásba a partner Centerben
@@ -63,7 +63,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-A *tenant_id* `POST URI` és a *client_id* és a *client_secret* paraméterek tenant_id értékének megadásához adja meg a bérlői azonosítót, az ügyfél-azonosítót és az alkalmazás azon kulcsát, amelyet a partner Centerből az előző szakaszban beolvasott. Az *erőforrás* -paraméterhez meg kell adnia a következőt: `https://api.partner.microsoft.com` .
+A  `POST URI` és a *client_id* és a *client_secret* paraméterek tenant_id értékének megadásához adja meg a bérlői azonosítót, az ügyfél-azonosítót és az alkalmazás azon kulcsát, amelyet a partner Centerből az előző szakaszban beolvasott. Az *erőforrás* -paraméterhez meg kell adnia a következőt: `https://api.partner.microsoft.com` .
 
 ### <a name="step-3-use-the-microsoft-store-submission-api"></a>3. lépés: a Microsoft Store beküldési API használata
 
@@ -71,7 +71,7 @@ Az Azure AD hozzáférési jogkivonattal metódusokat hívhat a partner Center b
 
 https://apidocs.microsoft.com/services/partneringestion/
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan hozhat létre egy Azure-beli [virtuális gép technikai eszközét](../create-azure-container-technical-assets.md)
 * Ismerje meg, hogyan hozhat létre [Azure Container-ajánlatot](../create-azure-container-offer.md)

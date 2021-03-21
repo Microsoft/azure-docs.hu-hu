@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: 68bb846ebb0199691161bc501441df908eb8ad87
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101643609"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
@@ -81,7 +81,7 @@ Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy
 
 A helyére írja be az `{consent-policy-id}` alkalmazni kívánt szabályzat azonosítóját. Kiválaszthat egy létrehozott [egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , vagy a következő beépített szabályzatok közül választhat:
 
-| ID (Azonosító) | Leírás |
+| ID (Azonosító) | Description |
 |:---|:------------|
 | Microsoft-User-default – alacsony | **A felhasználók jóváhagyásának engedélyezése az ellenőrzött közzétevők alkalmazásai számára a kiválasztott engedélyekhez**<br /> Korlátozott felhasználói jóváhagyás engedélyezése csak az ellenőrzött közzétevők és a bérlőben regisztrált alkalmazások alkalmazásai számára, és csak az "alacsony hatás" besorolású engedélyek esetében. (Ne felejtse el [besorolni az engedélyeket](configure-permission-classifications.md) annak kiválasztásához, hogy a felhasználók milyen engedélyeket adhatnak meg.) |
 | Microsoft-User-default-Legacy | **Felhasználói beleegyezett alkalmazások engedélyezése**<br /> Ez a beállítás lehetővé teszi, hogy minden felhasználó beleegyezést kérjen minden olyan engedélyhez, amely nem igényel rendszergazdai hozzájárulást bármely alkalmazáshoz |
@@ -145,7 +145,7 @@ A [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps
 
 1. A beállítások értékének megismerése:
 
-    | Beállítás       | Típus         | Leírás  |
+    | Beállítás       | Típus         | Description  |
     | ------------- | ------------ | ------------ |
     | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely azt jelzi, hogy a felhasználó beleegyezik-e a kockázatos kérelem észlelésekor. |
 

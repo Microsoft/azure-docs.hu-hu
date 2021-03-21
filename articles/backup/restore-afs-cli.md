@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthatja vissza az Azure-fájlmegosztás bi
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.openlocfilehash: a025de7bfb9db037b2008d69be7782feabb482f3
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94562321"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure-fájlmegosztás visszaállítása az Azure CLI-vel
@@ -27,7 +27,7 @@ A cikk végén megtudhatja, hogyan hajthatja végre a következő műveleteket a
 
 Ez a cikk azt feltételezi, hogy már rendelkezik egy Azure-fájlmegosztás Azure Backup által készített biztonsági mentéssel. Ha még nem rendelkezik ilyennel, tekintse meg [Az Azure-fájlmegosztás biztonsági mentése a parancssori](backup-afs-cli.md) felülettel című témakört a fájlmegosztás biztonsági mentésének konfigurálásához. Ebben a cikkben a következő erőforrásokat használja:
 
-| Fájlmegosztás | Tárfiók | Régió | Részletek |
+| Fájlmegosztás | A(z) | Region | Részletek |
 |---|---|---|---|
 | *azurefiles* | *afsaccount* | EastUS | Az eredeti forrás biztonsági másolata Azure Backup használatával |
 | *azurefiles1* | *afaccount1* | EastUS | Másodlagos hely helyreállításához használt cél forrás |
@@ -50,8 +50,8 @@ az backup recoverypoint list --vault-name azurefilesvault --resource-group azure
 
 Az előző parancsmagot az alábbi két további paraméter megadásával is futtathatja a tároló és az elemek rövid nevével:
 
-* **--Backup-Management-Type** : *azurestorage*
-* **--munkaterhelés-Type** : *azurefileshare*
+* **--Backup-Management-Type**: *azurestorage*
+* **--munkaterhelés-Type**: *azurefileshare*
 
 ```azurecli-interactive
 az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name afsaccount --backup-management-type azurestorage --item-name azurefiles --workload-type azurefileshare --out table
@@ -75,8 +75,8 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosz
 
 Adja meg a következő paramétereket a visszaállítási műveletek elvégzéséhez:
 
-* **--Container-Name** : annak a Storage-fióknak a neve, amely az eredeti fájlmegosztás biztonsági másolatát tárolja. A tároló nevének vagy rövid nevének lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
-* **--Item-Name** : a visszaállítási művelethez használni kívánt biztonsági másolatban szereplő eredeti fájlmegosztás neve. A biztonsági másolatban szereplő elem nevének vagy rövid nevének lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
+* **--Container-Name**: annak a Storage-fióknak a neve, amely az eredeti fájlmegosztás biztonsági másolatát tárolja. A tároló nevének vagy rövid nevének lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
+* **--Item-Name**: a visszaállítási művelethez használni kívánt biztonsági másolatban szereplő eredeti fájlmegosztás neve. A biztonsági másolatban szereplő elem nevének vagy rövid nevének lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Teljes megosztás visszaállítása az eredeti helyre
 
@@ -100,10 +100,10 @@ A kimenetben szereplő **Name** attribútum a visszaállítási művelethez a Ba
 
 Ezzel a lehetőséggel visszaállíthat egy fájlmegosztást egy másik helyre, és megtarthatja az eredeti fájlmegosztást. A másodlagos hely helyreállításához a következő paramétereket kell megadni:
 
-* **--Target-Storage-Account** : az a Storage-fiók, amelyhez a biztonsági másolat tartalma visszaállítható. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **--Target-file-share** : a célként megadott Storage-fiókon belüli fájlmegosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **--Target-Folder** : az a fájlmegosztás alatt lévő mappa, amelybe az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
-* **--hárítsa-Conflict** : utasítás, ha ütközik a visszaállított adattal. A **felülírás** vagy **kihagyás** elfogadása.
+* **--Target-Storage-Account**: az a Storage-fiók, amelyhez a biztonsági másolat tartalma visszaállítható. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
+* **--Target-file-share**: a célként megadott Storage-fiókon belüli fájlmegosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
+* **--Target-Folder**: az a fájlmegosztás alatt lévő mappa, amelybe az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
+* **--hárítsa-Conflict**: utasítás, ha ütközik a visszaállított adattal. A **felülírás** vagy **kihagyás** elfogadása.
 
 Az alábbi példa az [az Backup Restore Restore-azurefileshare](/cli/azure/backup/restore#az-backup-restore-restore-azurefileshare) és a Restore Mode *alternatelocation* használatával állítja vissza a *azurefiles* fájlmegosztást a *afsaccount* Storage-fiókban a azurefiles1 *"* fájlmegosztás a *afaccount1* Storage-fiókban.
 
@@ -125,14 +125,14 @@ Ezzel a visszaállítási lehetőséggel visszaállíthatja az egyes fájlokat v
 
 Adja meg a következő paramétereket a visszaállítási műveletek elvégzéséhez:
 
-* **--Container-Name** : annak a Storage-fióknak a neve, amely az eredeti fájlmegosztás biztonsági másolatát tárolja. A tároló nevének vagy rövid nevének lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
-* **--Item-Name** : a visszaállítási művelethez használni kívánt biztonsági másolatban szereplő eredeti fájlmegosztás neve. A biztonsági másolatban szereplő elem nevének vagy rövid nevének lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
+* **--Container-Name**: annak a Storage-fióknak a neve, amely az eredeti fájlmegosztás biztonsági másolatát tárolja. A tároló nevének vagy rövid nevének lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container#az-backup-container-list) parancsot.
+* **--Item-Name**: a visszaállítási művelethez használni kívánt biztonsági másolatban szereplő eredeti fájlmegosztás neve. A biztonsági másolatban szereplő elem nevének vagy rövid nevének lekéréséhez használja az az [Backup Item List](/cli/azure/backup/item#az-backup-item-list) parancsot.
 
 A helyreállítani kívánt elemekhez a következő paramétereket kell megadni:
 
-* **SourceFilePath** : a fájl abszolút elérési útja, amelyet a fájlmegosztás keretén belül helyre kell állítani karakterláncként. Ez az elérési út az az [Storage File Download](/cli/azure/storage/file#az-storage-file-download) vagy az [Storage file](/cli/azure/storage/file#az-storage-file-show) CLI parancsokban használt elérési út.
-* **SourceFileType** : válassza ki, hogy ki van-e választva egy könyvtár vagy fájl. **Címtár** vagy **fájl** elfogadása.
-* **ResolveConflict** : utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás** elfogadása.
+* **SourceFilePath**: a fájl abszolút elérési útja, amelyet a fájlmegosztás keretén belül helyre kell állítani karakterláncként. Ez az elérési út az az [Storage File Download](/cli/azure/storage/file#az-storage-file-download) vagy az [Storage file](/cli/azure/storage/file#az-storage-file-show) CLI parancsokban használt elérési út.
+* **SourceFileType**: válassza ki, hogy ki van-e választva egy könyvtár vagy fájl. **Címtár** vagy **fájl** elfogadása.
+* **ResolveConflict**: utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás** elfogadása.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Egyéni fájlok vagy mappák visszaállítása az eredeti helyre
 
@@ -156,9 +156,9 @@ A kimenetben szereplő **Name** attribútum a visszaállítási művelethez a Ba
 
 Ha meghatározott fájlokat vagy mappákat kíván visszaállítani egy másik helyre, használja az az Backup Restore [Restore-azurefiles](/cli/azure/backup/restore#az-backup-restore-restore-azurefiles) parancsmagot a Restore Mode (visszaállítási mód) beállítással a *alternatelocation* értékre, és adja meg a következő célként kapcsolódó paramétereket:
 
-* **--Target-Storage-Account** : az a Storage-fiók, amelyhez a biztonsági másolat tartalma visszaállítható. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **--Target-file-share** : a célként megadott Storage-fiókon belüli fájlmegosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **--Target-Folder** : az a fájlmegosztás alatt lévő mappa, amelybe az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékét üres karakterláncként.
+* **--Target-Storage-Account**: az a Storage-fiók, amelyhez a biztonsági másolat tartalma visszaállítható. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
+* **--Target-file-share**: a célként megadott Storage-fiókon belüli fájlmegosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
+* **--Target-Folder**: az a fájlmegosztás alatt lévő mappa, amelybe az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékét üres karakterláncként.
 
 A következő példa visszaállítja a *azurefiles* -fájlmegosztás eredetileg létező *RestoreTest.txt* fájlját egy másik helyre: a *azurefiles1* -fájlmegosztás *restoredata* mappáját, amely a *afaccount1* Storage-fiókban található.
 

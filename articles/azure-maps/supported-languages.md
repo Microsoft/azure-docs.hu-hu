@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96904516"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
@@ -25,7 +25,7 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID (Azonosító)         | Név                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID (Azonosító)         | Name                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -39,8 +39,8 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | zh-HanT    | Kínai (Hongkong KKT)  |  |   |    |    ZH-HK   |                   |           |
 | zh-HanT    | Kínai (Tajvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Horvát               |       |    ✓   |         |    ✓      |                   |                |
-| cs-CZ      | cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
-| da-DK      | dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| cs-CZ      | Cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| da-DK      | Dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | nl-BE      | Holland (Belgium)        |       |    ✓   |         |      ✓    |                   |                |
 | nl-NL      | Holland (Hollandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | EN-AU      | Angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
@@ -147,7 +147,7 @@ Alapértelmezés szerint a View paraméter **egyesített** értékre van állít
 
 A következő táblázat a támogatott nézeteket tartalmazza.
 
-| Nézet         | Leírás                            |  Maps | Keresés | JS térképkezelés |
+| Nézet         | Description                            |  Maps | Keresés | JS térképkezelés |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
 | AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |

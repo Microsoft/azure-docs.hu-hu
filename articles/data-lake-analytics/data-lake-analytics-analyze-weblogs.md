@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015298"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
@@ -178,7 +178,7 @@ Hozzáadhat további felhasználó által definiált operátorokat is az alkalma
 3. Kattintson duplán a **UnsuccessfulResponses. log naplófájlra**.
 4. Azt is megteheti, hogy duplán kattint a kimeneti fájlra a feladatok gráf nézetében, hogy közvetlenül a kimenetre navigáljon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
 
 * [Ismerkedés a Data Lake Analytics az Azure Portal használatával](data-lake-analytics-get-started-portal.md)

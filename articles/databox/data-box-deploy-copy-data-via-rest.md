@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
 ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94337593"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Oktatóanyag: REST API-k használata adatok másolásához Azure Data Box blob Storage-ba  
 
-Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https* -kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
+Ez az oktatóanyag a REST API-kon keresztül *http* -vagy *https*-kapcsolaton keresztüli Azure Data Box blob Storage-hoz való kapcsolódás eljárásait ismerteti. A csatlakozás után az Data Box blob Storage-ba való másolásához szükséges lépések, valamint a Data Box a szállításra való előkészítésének lépései is le vannak írva.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -42,12 +42,12 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="connect-via-http-or-https"></a>Kapcsolat http-n vagy HTTPS-en keresztül
 
-Data Box blob Storage-hoz *http* -vagy *https* -kapcsolaton keresztül is csatlakozhat.
+Data Box blob Storage-hoz *http* -vagy *https*-kapcsolaton keresztül is csatlakozhat.
 
 * A *https* a Data Box blob Storage-hoz való kapcsolódás biztonságos és ajánlott módja.
 * A *http* -t megbízható hálózatokhoz való csatlakozáskor használja a rendszer.
 
-A csatlakozás lépései eltérőek, amikor *http* -vagy *https* -kapcsolaton keresztül csatlakozik Data Box blob Storage-hoz.
+A csatlakozás lépései eltérőek, amikor *http* -vagy *https*-kapcsolaton keresztül csatlakozik Data Box blob Storage-hoz.
 
 ## <a name="connect-via-http"></a>Kapcsolat http-n keresztül
 
@@ -133,17 +133,17 @@ Több, például Ubuntu és Debian is használja az `update-ca-certificates` par
 A RHEL, Fedora és CentOS legújabb verziói a parancsot használják `update-ca-trust` .
 
 * Másolja a tanúsítványfájl-fájlt a `/etc/pki/ca-trust/source/anchors` könyvtárba.
-* A `update-ca-trust` parancs futtatása.
+* Futtassa az `update-ca-trust` parancsot.
 
 A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Eszköz IP-címének és blob szolgáltatásbeli végpontjának hozzáadása 
 
-[Ha *http* -kapcsolaton keresztül csatlakozik, kövesse ugyanezen lépéseket az eszköz IP-címének és a blob-szolgáltatás végpontjának hozzáadásához](#add-device-ip-address-and-blob-service-endpoint).
+[Ha *http*-kapcsolaton keresztül csatlakozik, kövesse ugyanezen lépéseket az eszköz IP-címének és a blob-szolgáltatás végpontjának hozzáadásához](#add-device-ip-address-and-blob-service-endpoint).
 
 ### <a name="configure-partner-software-and-verify-connection"></a>A partner szoftver konfigurálása és a kapcsolat ellenőrzése
 
-Kövesse a lépéseket a [ *http* -kapcsolaton keresztül használt partneri szoftverek konfigurálásához](#verify-connection-and-configure-partner-software). Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
+Kövesse a lépéseket a [ *http*-kapcsolaton keresztül használt partneri szoftverek konfigurálásához](#verify-connection-and-configure-partner-software). Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
 ## <a name="copy-data-to-data-box"></a>Adatok másolása a Data Boxra
 
@@ -233,7 +233,7 @@ Ha a csatlakozás vagy a másolás művelet során hibák léptek fel, tekintse 
 
 A következő lépés az eszköz szállításra való előkészítése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 

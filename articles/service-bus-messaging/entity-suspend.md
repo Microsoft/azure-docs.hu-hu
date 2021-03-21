@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet ideiglenesen felfüggeszteni 
 ms.topic: article
 ms.date: 09/29/2020
 ms.openlocfilehash: ea1acab3d0a86b0064f8b3eef7bfd1496bd17041
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94543051"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Üzenetkezelési entitások felfüggesztése és újraaktiválása (Letiltás)
@@ -21,10 +21,10 @@ A felfüggesztés vagy az újraaktiválás a felhasználó vagy a rendszer álta
 ## <a name="queue-status"></a>Várólista állapota 
 A **várólistára** beállítható állapotok a következők:
 
--   **Aktív** : a várólista aktív. Üzeneteket küldhet és fogadhat üzeneteket a várólistából. 
--   **Letiltva** : a várólista fel van függesztve. Ez egyenértékű a **SendDisabled** és a **ReceiveDisabled** beállításával. 
--   **SendDisabled** : nem küldhet üzeneteket a várólistába, de üzeneteket is fogadhat. Kivételt fog kapni, ha üzeneteket próbál küldeni a várólistára. 
--   **ReceiveDisabled** : küldhet üzeneteket a várólistába, de nem fogadhat üzeneteket. Kivételt fog kapni, ha üzeneteket próbál fogadni a várólistára.
+-   **Aktív**: a várólista aktív. Üzeneteket küldhet és fogadhat üzeneteket a várólistából. 
+-   **Letiltva**: a várólista fel van függesztve. Ez egyenértékű a **SendDisabled** és a **ReceiveDisabled** beállításával. 
+-   **SendDisabled**: nem küldhet üzeneteket a várólistába, de üzeneteket is fogadhat. Kivételt fog kapni, ha üzeneteket próbál küldeni a várólistára. 
+-   **ReceiveDisabled**: küldhet üzeneteket a várólistába, de nem fogadhat üzeneteket. Kivételt fog kapni, ha üzeneteket próbál fogadni a várólistára.
 
 
 ### <a name="change-the-queue-status-in-the-azure-portal"></a>Módosítsa a várólista állapotát a Azure Portalban: 
@@ -41,7 +41,7 @@ A **várólistára** beállítható állapotok a következők:
 Letilthatja a küldési és fogadási műveleteket a .NET SDK Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API-jai segítségével, illetve az Azure CLI vagy a Azure PowerShell használatával Azure Resource Manager sablonnal is.
 
 ### <a name="change-the-queue-status-using-azure-powershell"></a>A várólista állapotának módosítása a Azure PowerShell használatával
-A várólista letiltására szolgáló PowerShell-parancs az alábbi példában látható. Az újraaktiválási parancs egyenértékű, aktív értékre van állítva `Status` . **Active**
+A várólista letiltására szolgáló PowerShell-parancs az alábbi példában látható. Az újraaktiválási parancs egyenértékű, aktív értékre van állítva `Status` . 
 
 ```powershell
 $q = Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue
@@ -57,9 +57,9 @@ A témakör állapota módosítható a Azure Portalban. Válassza ki a témakör
 :::image type="content" source="./media/entity-suspend/topic-state-change.png" alt-text="Témakör állapotának módosítása":::
 
 A **témakörben** beállítható állapotok a következők:
-- **Aktív** : a témakör aktív. Üzeneteket küldhet a témakörbe. 
-- **Letiltva** : a témakör fel van függesztve. Nem lehet üzeneteket küldeni a témakörbe. 
-- **SendDisabled** : ugyanaz a hatás, mint a **Letiltva**. Nem lehet üzeneteket küldeni a témakörbe. Kivételt fog kapni, ha üzenetet próbál küldeni a témakörnek. 
+- **Aktív**: a témakör aktív. Üzeneteket küldhet a témakörbe. 
+- **Letiltva**: a témakör fel van függesztve. Nem lehet üzeneteket küldeni a témakörbe. 
+- **SendDisabled**: ugyanaz a hatás, mint a **Letiltva**. Nem lehet üzeneteket küldeni a témakörbe. Kivételt fog kapni, ha üzenetet próbál küldeni a témakörnek. 
 
 ## <a name="subscription-status"></a>Előfizetés állapota
 Az előfizetések állapotát a Azure Portal módosíthatja. Válassza ki az előfizetés aktuális állapotát a következő oldal megjelenítéséhez, amely lehetővé teszi az állapot módosítását. 
@@ -67,11 +67,11 @@ Az előfizetések állapotát a Azure Portal módosíthatja. Válassza ki az el�
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Előfizetés állapotának módosítása":::
 
 Az **előfizetéshez** megadható állapotok a következők:
-- **Aktív** : az előfizetés aktív. Az előfizetéshez tartozó üzenetet fogadhat.
-- **Letiltva** : az előfizetés fel van függesztve. Nem fogadhat üzeneteket az előfizetésből. 
-- **ReceiveDisabled** : ugyanaz a hatás, mint a **Letiltva**. Nem fogadhat üzeneteket az előfizetésből. Kivételt fog kapni, ha üzeneteket próbál fogadni az előfizetésbe.
+- **Aktív**: az előfizetés aktív. Az előfizetéshez tartozó üzenetet fogadhat.
+- **Letiltva**: az előfizetés fel van függesztve. Nem fogadhat üzeneteket az előfizetésből. 
+- **ReceiveDisabled**: ugyanaz a hatás, mint a **Letiltva**. Nem fogadhat üzeneteket az előfizetésből. Kivételt fog kapni, ha üzeneteket próbál fogadni az előfizetésbe.
 
-| Témakör állapota | Előfizetés állapota | Viselkedés | 
+| Témakör állapota | Előfizetés állapota | Működés | 
 | ------------ | ------------------- | -------- | 
 | Aktív | Aktív | Üzeneteket küldhet a témakörnek, és üzeneteket fogadhat az előfizetésből. | 
 | Aktív | Letiltva vagy fogadás letiltva | Üzeneteket küldhet a témakörbe, de nem fogadhat üzeneteket az előfizetésből | 

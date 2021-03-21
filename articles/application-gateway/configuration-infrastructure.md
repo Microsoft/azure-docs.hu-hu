@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.openlocfilehash: f214b0b0751f44ea1357f569fd814a7621af61ab
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397620"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Infrastruktúra-konfiguráció Application Gateway
@@ -56,7 +56,7 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
 
 1. Engedélyezi a bejövő forgalmat egy forrás IP-címről vagy IP-tartományból a célhelyként a teljes Application Gateway alhálózati címtartomány és célportként a bejövő hozzáférési portként, például a HTTP-hozzáférés 80-es portját.
 2. A forrástól érkező, a **GatewayManager** szolgáltatásként használt és a célként megadott 65503-65534 portokként való bejövő kérések engedélyezése a Application Gateway v1 SKU esetében, valamint a **65200-65535-es** port a v2 SKU-hoz a [háttér állapotának kommunikációja](./application-gateway-diagnostics.md)érdekében. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A megfelelő tanúsítványok nélkül a külső entitások nem indíthatnak módosításokat ezeken a végpontokon.
-3. A bejövő Azure Load Balancer mintavételek ( *AzureLoadBalancer* -címkék) és a bejövő virtuális hálózati forgalom ( *VirtualNetwork* címke) engedélyezése a [hálózati biztonsági csoporton](../virtual-network/network-security-groups-overview.md).
+3. A bejövő Azure Load Balancer mintavételek (*AzureLoadBalancer* -címkék) és a bejövő virtuális hálózati forgalom (*VirtualNetwork* címke) engedélyezése a [hálózati biztonsági csoporton](../virtual-network/network-security-groups-overview.md).
 4. Az összes többi bejövő forgalom blokkolása megtagadás – minden szabály használatával.
 5. Az internetre irányuló kimenő adatforgalom engedélyezése az összes célhelyre.
 
@@ -78,7 +78,7 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
    > Az útválasztási táblázat nem megfelelő konfigurációja aszimmetrikus útválasztást eredményezhet Application Gateway v2-ben. Győződjön meg arról, hogy az összes felügyeleti/vezérlési sík forgalmát közvetlenül az internethez küldik, és nem a virtuális berendezésen keresztül. A naplózást és a metrikákat is érintheti.
 
 
-  **1. forgatókönyv** : a BORDER Gateway Protocol (BGP) útvonal-propagálás letiltása az Application Gateway alhálózaton UDR
+  **1. forgatókönyv**: a BORDER Gateway Protocol (BGP) útvonal-propagálás letiltása az Application Gateway alhálózaton UDR
 
    Előfordul, hogy az alapértelmezett átjáró útvonala (0.0.0.0/0) a Application Gateway virtuális hálózathoz társított ExpressRoute vagy VPN-átjárón keresztül kerül meghirdetésre. Ez megszakítja a felügyeleti sík forgalmát, ami közvetlen elérési utat igényel az internethez. Ilyen esetekben a BGP-útvonalak propagálásának letiltására UDR használható. 
 
@@ -90,11 +90,11 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
 
    Ennek a forgatókönyvnek a UDR engedélyezésével nem kell megszüntetnie a meglévő beállításokat.
 
-  **2. forgatókönyv** : UDR a 0.0.0.0/0 és az internet között
+  **2. forgatókönyv**: UDR a 0.0.0.0/0 és az internet között
 
    Létrehozhat egy UDR, amely a 0.0.0.0/0 forgalmat közvetlenül az internetre küldi. 
 
-  **3. forgatókönyv** : az Azure Kubernetes szolgáltatás UDR az kubenet-mel
+  **3. forgatókönyv**: az Azure Kubernetes szolgáltatás UDR az kubenet-mel
 
   Ha a kubenet-t az Azure Kubernetes szolgáltatással (ak) és a Application Gateway beáramló vezérlővel (AGIC) használja, szüksége lesz egy útválasztási táblázatra, amely lehetővé teszi, hogy a Application Gateway hüvelyek számára továbbított forgalom a megfelelő csomópontra legyen irányítva. Ez az Azure CNI használata esetén nem szükséges. 
 
@@ -109,10 +109,10 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
     
   **v2 nem támogatott forgatókönyvek**
 
-  **1. forgatókönyv** : virtuális berendezések UDR
+  **1. forgatókönyv**: virtuális berendezések UDR
 
   Minden olyan szituációban, ahol a 0.0.0.0/0 át kell irányítani a virtuális berendezéseken keresztül, a hub/küllős virtuális hálózat vagy a helyszíni (kényszerített bújtatás) nem támogatott a v2-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az előtér-IP-cím konfigurációjának megismerése](configuration-front-end-ip.md).

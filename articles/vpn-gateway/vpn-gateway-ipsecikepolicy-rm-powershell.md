@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 96931d2dd94a8a31021ebe62caaefc54f643b007
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94649262"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-szabályzat S2S VPN- vagy VNet–VNet-kapcsolatokhoz történő konfigurálása
@@ -34,8 +34,9 @@ Ez a cikk útmutatást nyújt az IPsec/IKE-szabályzatok létrehozásához és k
 
 > [!IMPORTANT]
 > 1. Vegye figyelembe, hogy az IPsec/IKE-szabályzat csak a következő átjárók esetében működik:
->    * ***VpnGw1, VpnGw2, VpnGw3** _ (Route-based) _ ***standard** _ és _*_HighPerformance_*_ (Route-based)
-> 2. Egy adott kapcsolatok esetében csak _*_egy_*_ házirend-kombinációt adhat meg.
+>    * ***VpnGw1, VpnGw2, VpnGw3*** (Route-based)
+>    * ***Standard** _ és _ *_HighPerformance_** (Route-based)
+> 2. Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
 > 3. Meg kell adnia az összes algoritmust és paramétert mind az IKE (Main Mode), mind az IPsec (gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
 > 4. A VPN-eszközök gyártójának specifikációit megkeresve ellenőrizze, hogy a helyi VPN-eszközökön támogatott-e a házirend. A S2S-vagy VNet-VNet kapcsolatok nem tudják létrehozni, ha a házirendek nem kompatibilisek.
 
@@ -55,7 +56,7 @@ Az ebben a cikkben szereplő utasítások segítséget nyújt az IPsec/IKE-szab�
 
 A következő táblázat felsorolja az ügyfelek által konfigurálható támogatott titkosítási algoritmusokat és főbb erősségeket:
 
-| _ *IPSec/IKEv2**  | **Beállítások**    |
+| **IPsec/IKEv2**  | **Beállítások**    |
 | ---  | --- 
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES  
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
@@ -114,7 +115,7 @@ Ez a szakasz végigvezeti a S2S VPN-kapcsolat IPsec/IKE-házirenddel való létr
 
 A S2S VPN-kapcsolat létrehozásával kapcsolatos részletes útmutatásért tekintse meg [a S2S VPN-kapcsolat létrehozása](vpn-gateway-create-site-to-site-rm-powershell.md) című témakört.
 
-### <a name="before-you-begin"></a><a name="before"></a>Előkészületek
+### <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
 
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Telepítse a Azure Resource Manager PowerShell-parancsmagokat. A PowerShell-parancsmagok telepítésével kapcsolatos további információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/) című témakört.

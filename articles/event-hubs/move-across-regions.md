@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs-név
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: b177c3916919e3d97325f9d8c6b6027c00cb476f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019922"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs-névtér áthelyezése másik régióba
@@ -80,7 +80,7 @@ Event Hubs névtér (forrás vagy cél) törlése a Azure Portal használatával
     ![Névtér törlése – gomb](./media/move-across-regions/delete-namespace-button.png)
 3. A **névtér törlése** lapon erősítse meg a törlést a **névtér nevének** beírásával, majd válassza a **Törlés** lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Event Hubs névteret helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 

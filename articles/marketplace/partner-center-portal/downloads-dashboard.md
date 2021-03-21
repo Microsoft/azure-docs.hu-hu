@@ -8,10 +8,10 @@ ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: d36043d74da1aa75b32867d4efeebc9729f4a119
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96457759"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Irányítópultok letöltése a kereskedelmi piactér elemzésében
@@ -51,7 +51,7 @@ A felhasználók a jelentések aszinkron letöltését ütemezhetik a letöltés
 
 [![jelentések aszinkron letöltésének ütemezése a letöltések szakaszban](media/download-reports.png)](media/download-reports.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](../summary-dashboard.md).

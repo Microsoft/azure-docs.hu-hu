@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016828"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
@@ -160,13 +160,13 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 2. Bontsa ki a letöltött fájlt.
 
-3. A fájlban lépjen az x64- **x64**  >  **kiadások** és a **FSLogixAppsSetup.exe** futtatása elemre. Ekkor megnyílik a telepítési menü.
+3. A fájlban lépjen az x64-   >  **kiadások** és a **FSLogixAppsSetup.exe** futtatása elemre. Ekkor megnyílik a telepítési menü.
 
 4.  Ha van termékkulcs, írja be a termékkulcsot szövegmezőbe.
 
 5. Jelölje be az Elfogadom **a licencfeltételeket lehetőség** melletti jelölőnégyzetet.
 
-6. Válassza a **Telepítés** lehetőséget.
+6. Válassza a **Telepítés** gombot.
 
 7. Navigáljon a **C: \\ Program Files \\ FSLogix \\ apps** elemre, és erősítse meg az ügynök telepítését.
 
@@ -232,7 +232,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).
 

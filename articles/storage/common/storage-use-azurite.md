@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b5051a5e29f9e34c43963a9a264ee47e2ad7b04a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490781"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
@@ -136,7 +136,7 @@ A Azurite telepítése és létrehozása után tekintse meg [a Azurite futtatás
 > [!NOTE]
 > A Azurite nem futtatható a parancssorból, ha csak a Visual Studio Code bővítményt telepítette. Ehelyett használja a Visual Studio Code parancs-palettát. További információkért lásd: [a Azurite Visual Studio Code bővítmény telepítése és futtatása](#install-and-run-the-azurite-visual-studio-code-extension).
 
-A parancssorból történő azonnali kezdéshez hozzon létre egy *c:\azurite*nevű könyvtárat, majd indítsa el a Azurite a következő parancs kiadásával:
+A parancssorból történő azonnali kezdéshez hozzon létre egy *c:\azurite* nevű könyvtárat, majd indítsa el a Azurite a következő parancs kiadásával:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
@@ -148,7 +148,7 @@ Ez a parancs arra utasítja a Azurite, hogy egy adott címtárban ( *c:\azurite*
 
 Ez a szakasz részletesen ismerteti a Azurite indításakor elérhető parancssori kapcsolókat.
 
-### <a name="help"></a>Súgó
+### <a name="help"></a>Help
 
 **Opcionális** – parancssori Segítség kérése a `-h` vagy `--help` kapcsoló használatával.
 
@@ -364,7 +364,7 @@ A Azurite alapértelmezés szerint percenként frissíti az egyéni fiókok nev�
 
 ### <a name="connection-strings"></a>Kapcsolati sztringek
 
-Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True*billentyűparancsra hivatkozik. Íme egy példa a *app.config* fájlban található kapcsolatok karakterláncra:
+Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True* billentyűparancsra hivatkozik. Íme egy példa a *app.config* fájlban található kapcsolatok karakterláncra:
 
 ```xml
 <appSettings>
@@ -418,7 +418,7 @@ Ha az [Azure SDK](https://aka.ms/azsdk)-k használatával szeretné használni a
 azurite --oauth basic --cert certname.pem --key certname-key.pem
 ```
 
-#### <a name="azure-blob-storage"></a>Azure Blob-tároló
+#### <a name="azure-blob-storage"></a>Azure Blob Storage
 
 Ezután BlobContainerClient, BlobServiceClient vagy BlobClient hozhat létre.
 
@@ -497,7 +497,7 @@ A következő lépésekkel adhat hozzá HTTPS-Azurite a Storage Explorerhoz:
 
 1. A **váltógomb** kiválasztása
 1. **Helyi & csatolásának** kiválasztása
-1. Kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz**lehetőséget.
+1. Kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz** lehetőséget.
 1. Válassza **a kapcsolatok sztring használata** lehetőséget
 1. Kattintson a **Tovább** gombra.
 1. Adjon meg egy értéket a **megjelenítendő név** mezőben.
