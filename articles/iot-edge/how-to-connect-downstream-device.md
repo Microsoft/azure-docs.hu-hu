@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199633"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
@@ -171,7 +171,7 @@ Ez a szakasz egy Azure IoT .NET-eszköz ügyfelének egy IoT Edge átjáróhoz v
 3. A fájl **Tulajdonságok/launchSettings.js** területén frissítse a **DEVICE_CONNECTION_STRING** és **CA_CERTIFICATE_PATH** változókat. Ha a megbízható tanúsítványtárolóban telepített tanúsítványt szeretné használni a gazda rendszeren, hagyja üresen ezt a változót.
 4. A minta eszközön való futtatásával kapcsolatos útmutatásért tekintse meg az SDK dokumentációját.
 
-Ha egy .NET-alkalmazás használatával szeretne programozott módon telepíteni egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program.cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
+Ahhoz, hogy egy .NET-alkalmazás használatával programozott módon telepítsen egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program. cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
 
 ### <a name="c"></a>C
 

@@ -13,10 +13,10 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 226e94510709b37a7e6b1aae90a7e0ec5b4222b9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103199578"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
@@ -65,7 +65,7 @@ További információ: a [kulcstartók hozzáférésének engedélyezése](msal-
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3. lépés: a visszahívás kezeléséhez a AppDelegate frissítése
 
-Amikor a MSAL.NET meghívja a közvetítőt, a közvetítő az osztály metódusával visszahívja az alkalmazást `OpenUrl` `AppDelegate` . Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Az együttműködés engedélyezéséhez frissítse a *AppDelegate.cs* fájlt a következő módszer felülbírálásához.
+Amikor a MSAL.NET meghívja a közvetítőt, a közvetítő az osztály metódusával visszahívja az alkalmazást `OpenUrl` `AppDelegate` . Mivel a MSAL megvárja a közvetítő válaszát, az alkalmazásnak együtt kell működnie a MSAL.NET visszahívásához. Az együttműködés engedélyezéséhez frissítse a *AppDelegate. cs* fájlt a következő módszer felülbírálásához.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -91,23 +91,23 @@ Ezt a metódust az alkalmazás minden indításakor meghívja a rendszer. Lehet�
 
 ### <a name="step-4-set-uiviewcontroller"></a>4. lépés: a UIViewController beállítása ()
 
-Továbbra is a *AppDelegate.cs* fájlban adja meg az objektum ablakát. Általában nem kell beállítania az Xamarin iOS-hez készült Object (objektum) ablakot, de szüksége van egy objektumra a brókertől érkező válaszok küldéséhez és fogadásához.
+Továbbra is az *AppDelegate. cs* fájlban adja meg az objektum ablakát. Általában nem kell beállítania az Xamarin iOS-hez készült Object (objektum) ablakot, de szüksége van egy objektumra a brókertől érkező válaszok küldéséhez és fogadásához.
 
 Az objektum ablakának beállítása:
 
-1. A *AppDelegate.cs* fájlban állítsa `App.RootViewController` egy új értékre `UIViewController()` . Ez a hozzárendelés biztosítja, hogy a közvetítő hívása tartalmazza a-t `UIViewController` . Ha a beállítás helytelenül van hozzárendelve, a következő hibaüzenet jelenhet meg:
+1. A *AppDelegate. cs* fájlban állítsa `App.RootViewController` egy új értékre `UIViewController()` . Ez a hozzárendelés biztosítja, hogy a közvetítő hívása tartalmazza a-t `UIViewController` . Ha a beállítás helytelenül van hozzárendelve, a következő hibaüzenet jelenhet meg:
 
       `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
 1. A `AcquireTokenInteractive` hívásnál használja a (z `.WithParentActivityOrWindow(App.RootViewController)` ), majd adja át a hivatkozást a használni kívánt objektum-ablakra.
 
-    A *app.cs*-ben:
+    Az *app. cs*:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    A *AppDelegate.cs*-ben:
+    A *AppDelegate. cs*:
 
     ```csharp
        LoadApplication(new App());

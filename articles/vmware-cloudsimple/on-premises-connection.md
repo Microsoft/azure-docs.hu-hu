@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899235"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Kapcsolódás a helyszínről a CloudSimple a ExpressRoute használatával
@@ -47,7 +47,7 @@ A ExpressRoute-kapcsolat létrehozásához létre kell hoznia egy engedélyt a E
 
 ### <a name="create-expressroute-authorization"></a>ExpressRoute-hitelesítés létrehozása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. A felső keresési sávban keresse meg a **ExpressRoute áramkört** , és kattintson a **szolgáltatások** területen található **ExpressRoute-áramkörök** elemre.
     [![ExpressRoute-áramkörök](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
