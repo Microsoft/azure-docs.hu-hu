@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: 3300d68c6356cb7cdd56a9ad79eb0ac011942eb2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102547900"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Entitás-felismerés – kognitív képesség
@@ -45,7 +45,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
 | `languageCode`    | Választható. Az alapértelmezett szint a `"en"`.  |
 | `text`          | Az elemezni kívánt szöveg.          |
@@ -55,7 +55,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket, és mindegyik nem kö
 > [!NOTE]
 > Az entitások összes kategóriája nem támogatott az összes nyelv esetében. A `"Person"` , a `"Location"` és az `"Organization"` Entity kategóriájú típusok a fenti nyelvek teljes listáját támogatják. Csak a _de_, az _en_, az _es_, a _fr_ és a _zh-Hans_ támogatás támogatja a,, `"Quantity"` `"Datetime"` `"URL"` és `"Email"` típus kinyerését. További információ: [a Text Analytics API nyelv és régió támogatása](../cognitive-services/text-analytics/language-support.md).  
 
-| Kimenet neve      | Leírás                   |
+| Kimenet neve      | Description                   |
 |---------------|-------------------------------|
 | `persons`       | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | `locations`  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |

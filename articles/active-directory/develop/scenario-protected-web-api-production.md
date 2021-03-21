@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bf8eb144ab23d45e57ee8d52f06363ea37b600ec
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 98be47200c12ab3097f9416b5647abf6465a89e7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375278"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675974"
 ---
 # <a name="protected-web-api---move-to-production"></a>Védett webes API – áttérés éles környezetbe
 
-Most, hogy már tudja, hogyan védhető meg a webes API-k, a következőképpen helyezheti át az éles környezetbe.
+Most, hogy már tudja, hogyan védhető meg a webes API-k, a következő szempontokat érdemes figyelembe venni, amikor az alkalmazást éles környezetben helyezi át.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 

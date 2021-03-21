@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
 ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034047"
 ---
 # <a name="configure-azure-static-web-apps"></a>Az Azure statikus Web Apps konfigurálása
@@ -54,13 +54,13 @@ Minden szabály egy útvonal mintából áll, valamint egy vagy több választha
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>|
-| `rewrite`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>  |
-| `redirect`        | Nem       | n.a.          | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul> |
-| `allowedRoles` | Nem       | névtelen     | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `headers`<a id="route-headers"></a> | Nem | n.a. | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul> |
-| `statusCode`   | Nem       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
-| `methods` | Nem | Minden metódus | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` . |
+| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak.<ul><li>Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.</ul></ul>|
+| `rewrite`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat.<ul><li>Kölcsönösen kizárható egy `redirect` szabályhoz<li>Az Újraírási szabályok nem változtatják meg a böngésző helyét.<li>Az értékeknek az alkalmazás gyökeréhez viszonyítva kell lenniük</ul>  |
+| `redirect`        | No       | n.a.          | Meghatározza a kérelem fájl-vagy elérésiút-átirányítási célját.<ul><li>Kölcsönösen kizárható egy `rewrite` szabályhoz.<li>Az átirányítási szabályok megváltoztatják a böngésző helyét.<li>Az alapértelmezett válasz kódja a [`302`](https://developer.mozilla.org/docs/Web/HTTP/Status/302) (ideiglenes átirányítás), de felülbírálható egy [`301`](https://developer.mozilla.org/docs/Web/HTTP/Status/301) (állandó átirányítás).</ul> |
+| `allowedRoles` | No       | névtelen     | Az útvonal eléréséhez szükséges szerepkör-nevek listáját határozza meg. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör az összes nem [`anonymous`](./authentication-authorization.md) hitelesített felhasználóra vonatkozik<li>A beépített szerepkör [`authenticated`](./authentication-authorization.md) minden bejelentkezett felhasználóra vonatkozik.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni.<ul><li>Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.</ul><li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
+| `headers`<a id="route-headers"></a> | No | n.a. | A válaszhoz hozzáadott [HTTP-fejlécek](https://developer.mozilla.org/docs/Web/HTTP/Headers) készlete. <ul><li>Az útvonal-specifikus fejlécek felülbírálják, [`globalHeaders`](#global-headers) Ha az útválasztási fejléc ugyanaz, mint a globális fejléc a válaszban.<li>Egy fejléc eltávolításához állítsa az értéket egy üres sztringre.</ul> |
+| `statusCode`   | No       | `200`, `301` vagy `302` átirányításhoz | A válasz [http-állapotkódot](https://developer.mozilla.org/docs/Web/HTTP/Status) . |
+| `methods` | No | Minden metódus | Az útvonalnak megfelelő kérelem-metódusok listája. Az elérhető módszerek a következők:,,,,,,, `GET` `HEAD` `POST` `PUT` `DELETE` `CONNECT` `OPTIONS` `TRACE` és `PATCH` . |
 
 Minden tulajdonságnak konkrét célja van a kérelem/válasz folyamatban.
 

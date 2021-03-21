@@ -8,10 +8,10 @@ author: iqshahmicrosoft
 ms.author: krsh
 ms.date: 03/10/2021
 ms.openlocfilehash: 976d1dd4044649c9ef5307431c744ff3c2068bca
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103233565"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>SAS URI létrehozása virtuálisgép-rendszerképhez
@@ -35,7 +35,7 @@ A virtuális merevlemeznek a virtuális gépről való kinyeréséhez pillanatk�
 
 Kezdés: pillanatkép készítése a virtuálisgép-lemezről:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A bal felső sarokban válassza az erőforrás létrehozása elemet, majd keresse meg és válassza a pillanatkép lehetőséget.
 3. A pillanatkép panelen válassza a létrehozás lehetőséget.
 4. Adja meg a pillanatkép nevét.

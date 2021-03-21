@@ -1,18 +1,18 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 54ce9438f768e347e306432a1874ab1816a1ae95
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013724"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719962"
 ---
 [Durable functions](../articles/azure-functions/durable/durable-functions-overview.md)konfigurációs beállításai.
 
@@ -99,16 +99,16 @@ ms.locfileid: "96013724"
 
 A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a functions-alkalmazás alapértelmezett neve **DurableFunctionsHub**. További információ: [Task hubok](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------|
+|Tulajdonság  |Alapértelmezett | Description |
+|---------|---------|----------|
 |hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
 |controlQueueBatchSize|32|A vezérlési sorból egyszerre lekérdezett üzenetek száma.|
-|controlQueueBufferThreshold|256|A memóriában egyszerre pufferelt ellenőrzési üzenetsor-üzenetek száma, amelynél a kézbesítő a további üzenetek elszállítása előtt várakozik.|
+|controlQueueBufferThreshold| **Felhasználási terv**: 32 <br> **Dedikált/Prémium csomag**: 256 |A memóriában egyszerre pufferelt ellenőrzési üzenetsor-üzenetek száma, amelynél a kézbesítő a további üzenetek elszállítása előtt várakozik.|
 |partitionCount |4|A vezérlő várólistájának partícióinak száma. Egy 1 és 16 közötti pozitív egész szám lehet.|
 |controlQueueVisibilityTimeout |5 perc|A várólista-vezérlési üzenetsor üzeneteinek láthatósági időtúllépése.|
 |workItemQueueVisibilityTimeout |5 perc|A várólistán lévő munkaelem üzenetsor-üzeneteinek láthatósági időtúllépése.|
-|maxConcurrentActivityFunctions |a processzorok száma az aktuális gépen (10X)|Az egyazon gazdagép-példányon egyidejűleg feldolgozható tevékenység-függvények maximális száma.|
-|maxConcurrentOrchestratorFunctions |a processzorok száma az aktuális gépen (10X)|Azon Orchestrator-függvények maximális száma, amelyek egyszerre dolgozhatók fel egyetlen gazdagép-példányon.|
+|maxConcurrentActivityFunctions | **Felhasználási terv**: 10 <br> **Dedikált/Prémium csomag**: 10x a processzorok száma az aktuális gépen|Az egyazon gazdagép-példányon egyidejűleg feldolgozható tevékenység-függvények maximális száma.|
+|maxConcurrentOrchestratorFunctions | **Felhasználási terv**: 5 <br> **Dedikált/Prémium csomag**: 10x a processzorok száma az aktuális gépen |Azon Orchestrator-függvények maximális száma, amelyek egyszerre dolgozhatók fel egyetlen gazdagép-példányon.|
 |maxQueuePollingInterval|30 másodperc|A maximális vezérlési és a munkaelem-várólista lekérdezési időköze a *hh: PP: mm* formátumban. A magasabb értékek az üzenetek feldolgozási késleltetését eredményezik. Az alacsonyabb értékek nagyobb tárolási költségekhez vezethetnek a megnövekedett tárolási tranzakciók miatt.|
 |azureStorageConnectionStringName |AzureWebJobsStorage|Annak az alkalmazás-beállításnak a neve, amely a mögöttes Azure Storage-erőforrások kezeléséhez használt Azure Storage-beli kapcsolódási karakterláncot tartalmaz.|
 |trackingStoreConnectionStringName||Az előzmények és a példányok tábláihoz használandó kapcsolódási karakterlánc neve. Ha nincs megadva, a `connectionStringName` rendszer a (tartós 2. x) vagy a `azureStorageConnectionStringName` (tartós 1. x) kapcsolatokat használja.|

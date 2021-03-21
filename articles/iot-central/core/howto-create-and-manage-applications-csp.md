@@ -5,19 +5,21 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 43c201150ab0b2d5d350aa228a4ade5e2faf3461
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f3293ada549351cc7273847cde48c0531f06f028
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123113"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675807"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central-alkalmazás létrehozása és kezelése a CSP-portálról
 
 A Microsoft Cloud Solution Provider (CSP) program egy Microsoft viszonteladói program. Célja, hogy a Microsoft kereskedelmi online szolgáltatásainak viszonteladása érdekében egy egyablakos program keretében biztosítjuk a Channel partnereit. További információ a [Cloud Solution Provider programról](https://partner.microsoft.com/cloud-solution-provider).
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 CSP-ként létrehozhat és kezelhet Microsoft Azure IoT Central-alkalmazásokat az ügyfelek nevében a [Microsoft partner Center](https://partnercenter.microsoft.com/partner/home)használatával. Ha az Azure IoT Central-alkalmazásokat a kriptográfiai szolgáltatók nevében hozza létre, ugyanúgy, mint más, a CSP által felügyelt Azure-szolgáltatásokhoz, a kriptográfiai szolgáltató kezeli az ügyfelek számlázását. Az Azure IoT Central díját a Microsoft partner Center teljes számláján fogja megjelenni.
 
@@ -33,7 +35,7 @@ Az Azure IoT Central Application Manager oldalán landol. Az Azure IoT Central a
 
 ![Kezelő létrehozása a CSP-hez](media/howto-create-and-manage-applications-csp/image3.png)
 
-Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **Egyéni** alkalmazás lehetőséget, hogy teljesen új alkalmazást hozzon létre. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás**lehetőséget kell választania. További információkat az alábbi mezőkben talál.
+Azure IoT Central-alkalmazás létrehozásához kattintson a bal oldali menüben a **Létrehozás** elemre. Válasszon az egyik iparági sablon közül, vagy válassza az **Egyéni** alkalmazás lehetőséget, hogy teljesen új alkalmazást hozzon létre. Ekkor betöltődik az alkalmazás-létrehozási oldal. Az összes mezőt el kell végeznie ezen a lapon, majd a **Létrehozás** lehetőséget kell választania. További információkat az alábbi mezőkben talál.
 
 ![Képernyőkép, amely a "Build Your IoT Application" (felépítés) gombot mutatja a kiválasztva.](media/howto-create-and-manage-applications-csp/image4.png)
 
@@ -75,7 +77,7 @@ További információt az Azure- [előfizetések](../../guides/developer/azure-d
 
 ## <a name="location"></a>Hely
 
-A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) **hely** , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Jelenleg IoT Central alkalmazást hozhat létre **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**, **Európában**, **Egyesült Államokban**, az **Egyesült Királyságban**és a **japán** földrajzi területeken. Ha kiválasztott egy helyet, később nem helyezheti át az alkalmazást egy másik helyre.
+A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) **hely** , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Jelenleg IoT Central alkalmazást hozhat létre **Ausztráliában**, **Ázsia és a csendes-óceáni térségban**, **Európában**, **Egyesült Államokban**, az **Egyesült Királyságban** és a **japán** földrajzi területeken. Ha kiválasztott egy helyet, később nem helyezheti át az alkalmazást egy másik helyre.
 
 ## <a name="application-template"></a>Alkalmazássablon
 
