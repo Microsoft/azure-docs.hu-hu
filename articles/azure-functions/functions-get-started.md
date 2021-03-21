@@ -7,10 +7,10 @@ ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
 ms.openlocfilehash: 77d370b895c777278d3136c7d2c511e7f9e23b36
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179255"
 ---
 # <a name="getting-started-with-azure-functions"></a>Bevezetés az Azure Functions használatába
@@ -23,7 +23,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 
 ::: zone pivot="programming-language-csharp"
 
-| Művelet | Források |
+| Művelet | Erőforrások |
 | --- | --- |
 | **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio Code](./create-first-function-vs-code-csharp.md)<li>[Parancssor](./create-first-function-cli-csharp.md) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=csharp&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=C%23) |
@@ -34,7 +34,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-| Művelet | Források |
+| Művelet | Erőforrások |
 | --- | --- |
 | **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-java.md)<li>[Java/Maven függvény a Terminal/parancssor használatával](./create-first-function-cli-java.md)<li>[Gradle](./functions-create-first-java-gradle.md)<li>[Eclipse](./functions-create-maven-eclipse.md)<li>[IntelliJ IDEA](./functions-create-maven-intellij.md) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=java&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Java) |
@@ -44,7 +44,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
-| Művelet | Források |
+| Művelet | Erőforrások |
 | --- | --- |
 | **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-node.md)<li>[Node.js terminál/parancssor](./create-first-function-cli-node.md) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=javascript%2ctypescript&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=JavaScript%2CTypeScript) |
@@ -54,7 +54,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 ::: zone-end
 
 ::: zone pivot="programming-language-powershell"
-| Művelet | Források |
+| Művelet | Erőforrások |
 | --- | --- |
 | **Az első függvény létrehozása** | <li>A [Visual Studio Code](./create-first-function-vs-code-powershell.md) használata |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=powershell&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=PowerShell) |
@@ -64,7 +64,7 @@ Az első lépésekhez használja az alábbi forrásokat.
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
-| Művelet | Források |
+| Művelet | Erőforrások |
 | --- | --- |
 | **Az első függvény létrehozása** | A következő eszközök egyikének használata:<br><br><li>[Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)<li>[Terminál/parancssor](./create-first-function-cli-csharp.md?pivots=programming-language-python) |
 | **Futó függvény megjelenítése** | <li>[Azure-minták böngésző](/samples/browse/?expanded=azure&languages=python&products=azure-functions)<li>[Azure közösségi könyvtár](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=Python) |

@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.reviewer: willzhan
 ms.openlocfilehash: 576ac636f166e2daebbb9919d6666fea913a17be
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103017052"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>A castLabs használata a Widevine-licencek közvetítéséhez az Azure Media Servicesbe
@@ -89,10 +89,10 @@ A konzol alkalmazás használata:
 
 1. Módosítsa a app.config az AMS hitelesítő adatainak beállításához, a hitelesítő adatok castLabs, az STS-konfigurációhoz és a megosztott kulcshoz.
 2. Eszköz feltöltése AMS-be.
-3. Kérje le az UUID-t a feltöltött objektumból, és változtassa meg a 32-as sort a Program.cs fájlban:
+3. Kérje le az UUID-t a feltöltött objektumból, és változtassa meg a 32. sort a program. cs fájljában:
    
       var objIAsset = _context. Eszközök. where (x => x.Id = = "NB: CID: UUID: dac53a5d-1500-80bd-b864-f1e4b62594cf"). FirstOrDefault ();
-4. Használjon egy AssetId az eszköz castLabs rendszerbeli elnevezéséhez (a Program.cs-fájlban található 44. sor).
+4. Használjon egy AssetId az eszköz castLabs rendszerbeli elnevezéséhez (a program. cs fájljának 44. sora).
    
    Be kell állítania a **CastLabs** AssetID. egyedi alfanumerikus karakterláncnak kell lennie.
 5. Futtassa a programot.

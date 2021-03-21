@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1afd5a0e24e144169280e683321b5843e9766136
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103601372"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
@@ -311,7 +311,7 @@ További információ: [Alter Database](/sql/t-sql/statements/alter-database-tra
 
 További információ a SQL Server Agentről: [SQL Server Agent](/sql/ssms/agent/sql-server-agent).
 
-### <a name="tables"></a>Táblák
+### <a name="tables"></a>Táblázatok
 
 A következő táblázat típusok nem támogatottak:
 
@@ -411,7 +411,7 @@ Műveletek:
 Az egyetlen elérhető külső forrás a RDBMS (nyilvános előzetes verzió) az Azure SQL Database-be, az Azure SQL felügyelt példányára és az Azure szinapszis-készletre. Olyan [külső táblát is használhat, amely a szinapszis Analytics kiszolgáló nélküli SQL-készletére hivatkozik](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) , és megkerülő megoldásként használja az Azure Storage-ból közvetlenül beolvasott albase külső táblákat. Az Azure SQL felügyelt példányában a kapcsolódó kiszolgálókat a [szinapszis Analytics szolgáltatásban található kiszolgáló nélküli SQL-készletbe](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) , illetve az Azure Storage-beli adatSQL serverk olvasásához használhatja.
 További információ [a következőről: Base](/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Replikáció
+### <a name="replication"></a>Replikálás
 
 - A pillanatképek és a kétirányú replikációs típusok támogatottak. Az egyesítéses replikáció, a társ-társ replikáció és a frissíthető előfizetések nem támogatottak.
 - A [tranzakciós replikáció](replication-transactional-overview.md) a FELÜGYELt SQL-példány nyilvános előzetes verziójához érhető el, néhány korlátozással:

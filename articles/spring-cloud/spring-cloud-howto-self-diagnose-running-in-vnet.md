@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/25/2021
 ms.custom: devx-track-java
 ms.openlocfilehash: 5407213b62902326d53b73e42ee3af1ba9b11524
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102125063"
 ---
 # <a name="self-diagnose-running-azure-spring-cloud-in-vnet"></a>Az Azure Spring Cloud futtatásának önálló diagnosztizálása a VNET-ben
@@ -19,7 +19,7 @@ Az Azure Spring Cloud Diagnostics a konfiguráció nélkül támogatja a virtuá
 
 ## <a name="navigate-to-the-diagnostics-page"></a>Navigáljon a diagnosztika lapra
 A következő eljárás elindítja a hálózati alkalmazások diagnosztizálását.
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg az Azure Spring Cloud áttekintés oldalát.
 1. A bal oldali navigációs ablaktábla menüjében válassza a **diagnosztizálás és megoldás problémák** elemet.
 1. Válassza ki a harmadik kategóriát, majd a **hálózatkezelés** lehetőséget.

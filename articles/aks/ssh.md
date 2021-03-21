@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre SSH-kapcsolatokat az Azure Kubern
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 7455b98348f2b8c40f2ffc125abe1297af88fbd8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4c068dc1521d19793d42b6788d0439dd11499a91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034455"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605902"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>SSH-n keresztüli csatlakozás az Azure Kubernetes Service- (AKS-) fürtcsomópontokhoz karbantartás és hibaelhárítás céljából
 
@@ -141,14 +141,14 @@ Egy AK-csomóponthoz való SSH-kapcsolatok létrehozásához egy segítő Pod-t 
 1. Futtasson egy `debian` tároló-rendszerképet, és csatolja hozzá a terminál-munkamenetet. Ezzel a tárolóval létrehozhat egy SSH-munkamenetet az AK-fürt bármely csomópontjának használatával:
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11
     ```
 
     > [!TIP]
     > Ha Windows Server-csomópontokat használ, adjon hozzá egy csomópont-választót a parancshoz, hogy egy Linux-csomóponton ütemezze a Debian-tárolót:
     >
     > ```console
-    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > kubectl run -it --rm aks-ssh --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
     > ```
 
 1. Ha a terminál-munkamenet csatlakozik a tárolóhoz, telepítsen egy SSH-ügyfelet a következő használatával `apt-get` :

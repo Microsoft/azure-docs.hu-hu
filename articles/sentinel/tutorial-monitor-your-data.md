@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586734"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600526"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: Az adatok megjelenítése és figyelése
 
@@ -76,6 +76,17 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 
    ![Munkafüzetek váltása](./media/tutorial-monitor-data/switch-workbooks.png)
 
+
+## <a name="print-a-workbook-or-save-as-pdf"></a>Munkafüzet nyomtatása vagy Mentés PDF formátumban
+
+Egy munkafüzet nyomtatásához vagy PDF-fájlként való mentéséhez használja a munkafüzet címének jobb oldalán lévő beállítások menüt.
+
+1. Válassza a beállítások > a :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **Tartalom nyomtatása** lehetőséget. 
+2. A Print (nyomtatás) képernyőn szükség szerint módosítsa a nyomtatási beállításokat, vagy válassza a **Mentés PDF-ként** lehetőséget a helyi mentéshez.
+
+Például:
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="Nyomtassa ki a munkafüzetet, vagy mentse PDF-ként.":::
 
 ## <a name="how-to-delete-workbooks"></a>Munkafüzetek törlése
 

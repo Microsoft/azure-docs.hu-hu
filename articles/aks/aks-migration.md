@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e0c3e331dba08fc95f471e3ad40dfcbb10cc2f0c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609107"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670630"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -18,6 +18,7 @@ Ez a cikk segítséget nyújt az Azure Kubernetes szolgáltatásba (ak) való si
 
 Ez a dokumentum a következő forgatókönyvek támogatásához használható:
 
+* Containerizing bizonyos alkalmazásokat, és a [Azure Migrate](../migrate/migrate-services-overview.md)
 * [Rendelkezésre állási készletek](../virtual-machines/windows/tutorial-availability-sets.md) által támogatott AK-fürt áttelepítése [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md)
 * AK-fürt áttelepítése [szabványos SKU Load Balancer](./load-balancer-standard.md) használatára
 * Migrálás [Azure Container Serviceról (ACS) – 2020 és AK között, január 31-ig](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)
@@ -38,6 +39,7 @@ Számos nyílt forráskódú eszköz segíthet az áttelepítés során a forgat
 Ebben a cikkben a következő áttelepítési adatokat összegzi:
 
 > [!div class="checklist"]
+> * Containerizing alkalmazások Azure Migrate 
 > * AK standard Load Balancer és Virtual Machine Scale Sets
 > * Meglévő csatolt Azure-szolgáltatások
 > * Érvényes kvóták biztosítása
@@ -45,6 +47,13 @@ Ebben a cikkben a következő áttelepítési adatokat összegzi:
 > * Állapot nélküli alkalmazások szempontjai
 > * Az állapot-nyilvántartó alkalmazások szempontjai
 > * A fürt konfigurációjának üzembe helyezése
+
+## <a name="use-azure-migrate-to-migrate-your-applications-to-aks"></a>Alkalmazások migrálása a Azure Migrate használatával az AK-ra
+
+A Azure Migrate egységes platformot biztosít az Azure helyszíni kiszolgálókra, infrastruktúrára, alkalmazásokra és adatszolgáltatásokra való felértékeléséhez és átköltöztetéséhez. Az AK esetében a Azure Migrate a következőkre használható:
+
+* [Tárolóba helyezése ASP.NET alkalmazások és Migrálás AK-ra](../migrate/tutorial-containerize-aspnet-kubernetes.md)
+* [Java-webalkalmazások tárolóba helyezése és migrálása AK-ra](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AK standard Load Balancer és Virtual Machine Scale Sets
 

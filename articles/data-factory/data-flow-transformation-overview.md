@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f595766d49d6c00c313990717d8fd241ddfc8f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367911"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593864"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Az adatfolyam-átalakítás megfeleltetésének áttekintése
 
@@ -31,6 +31,7 @@ Alább látható a leképezési folyamat által jelenleg támogatott átalakít�
 | [Csatlakozás](data-flow-join.md) | Több bemenet/kimenet |  Két forrásból vagy streamből származó adatok egyesítése. |
 | [Keresés](data-flow-lookup.md) | Több bemenet/kimenet | Egy másik forrásból származó adatokra mutató hivatkozás. |
 | [Új ág](data-flow-new-branch.md) | Több bemenet/kimenet | Több művelet és átalakítás alkalmazása ugyanazon az adatfolyamon. |
+| [Elemzés](data-flow-new-branch.md) | Formázó | Az adatfolyamban található szöveges oszlopok értelmezése JSON-, tagolt szöveg-vagy XML-formázott szövegből álló karakterláncok. |
 | [Kimutatás](data-flow-pivot.md) | Séma-módosító | Összesítés, amelyben egy vagy több csoportosítási oszlop különálló oszlopokra alakítja át a különböző sorok értékeit. |
 | [Sorszám](data-flow-rank.md) | Séma-módosító | Rendezett rangsor létrehozása rendezési feltételek alapján |
 | [Kiválasztás](data-flow-select.md) | Séma-módosító | Alias oszlopok és adatfolyam-nevek, valamint oszlopok eldobása vagy átrendezése |

@@ -3,13 +3,13 @@ title: Azure Portal irányítópult létrehozása Azure Resource Manager sablon 
 description: Megtudhatja, hogyan hozhat létre Azure Portal irányítópultot egy Azure Resource Manager sablon használatával.
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 06/15/2020
-ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 03/15/2021
+ms.openlocfilehash: a3ab8767e09256ed8235dbd980ea3336a6f0fb1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745723"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104658325"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Rövid útmutató: irányítópult létrehozása a Azure Portal ARM-sablon használatával
 
@@ -30,9 +30,13 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 A rövid útmutató következő részében létrehozott irányítópultnak egy meglévő virtuális gépet kell megadnia. Hozzon létre egy virtuális gépet a következő lépésekkel.
 
-1. A Azure Portal válassza a Cloud Shell lehetőséget.
+1. A Azure Portal válassza a **Cloud Shell** lehetőséget.
 
     ![Válassza ki a Cloud Shell elemet a Azure Portal menüszalagon](media/quick-create-template/cloud-shell.png)
+
+1. A **Cloud Shell** ablakban válassza a **PowerShell** elemet.
+
+    ![Válassza ki a PowerShellt a terminál ablakban](media/quick-create-template/powershell.png)
 
 1. Másolja az alábbi parancsot, és írja be a parancssorba egy erőforráscsoport létrehozásához.
 
@@ -85,19 +89,7 @@ A Azure Portal a sablon üzembe helyezéséhez volt használva. Az Azure Portalo
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-Ellenőrizze, hogy az irányítópult létrehozása sikeres volt-e, és hogy látható-e az adatok a virtuális gépről.
-
-1. Az Azure Portalon válassza az **Irányítópult** lehetőséget.
-
-    ![Navigálás az irányítópulton Azure Portal](media/quick-create-template/navigate-to-dashboards.png)
-
-1. Az irányítópult lapon válassza az **egyszerű VM-irányítópult** lehetőséget.
-
-    ![Navigáljon az egyszerű VM-irányítópultra](media/quick-create-template/select-simple-vm-dashboard.png)
-
-1. Tekintse át az ARM-sablon által létrehozott irányítópultot. Láthatja, hogy a tartalom némelyike statikus, de vannak olyan diagramok is, amelyek az elején létrehozott virtuális gép teljesítményét mutatják.
-
-    ![Egyszerű VM-irányítópult áttekintése](media/quick-create-template/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -109,7 +101,7 @@ Ha el szeretné távolítani a virtuális gépet és a hozzá tartozó irányít
 
     ![Erőforráscsoport törlése](media/quick-create-template/delete-resource-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Portal irányítópultokkal kapcsolatos további információkért lásd:
 

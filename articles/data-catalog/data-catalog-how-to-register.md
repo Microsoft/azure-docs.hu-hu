@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe132c5f80e138ef47db758ad42c04b8e854ca00
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523434"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674801"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Adatforrások regisztrálása a Azure Data Catalogban
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Bevezetés
 A Azure Data Catalog egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Más szóval a Data Catalog segít az embereknek felderíteni, értelmezni és használni az adatforrásokat, és segít a szervezeteknek a meglévő adatokból származó további értékek megszerzésében. Az adatforrások Data Catalogon keresztüli felderíthetővé tételének első lépése az adatforrás regisztrálása.
 
@@ -77,5 +80,5 @@ Egy már regisztrált adatforrás újbóli regisztrálása "upsert" műveletet h
 ## <a name="summary"></a>Összefoglalás
 Mivel az adatforrásból származó strukturális és leíró metaadatokat másolja a Catalog szolgáltatásba, az adatforrást a Data Catalogban regisztrálva az adatok könnyebben felderíthető és megérthetővé válik. Miután regisztrálta az adatforrást, a Data Catalog-portálon láthatja, felügyelheti és derítheti fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adatforrások regisztrálásával kapcsolatos további információkért tekintse meg az [első lépések Azure Data Catalog](data-catalog-get-started.md) oktatóanyagot.

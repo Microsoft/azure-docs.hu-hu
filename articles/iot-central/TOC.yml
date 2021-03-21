@@ -131,10 +131,10 @@
       href: core/concepts-architecture.md
     - name: Útmutató eszközfejlesztők számára
       href: core/overview-iot-central-developer.md
-    - name: Kezelői útmutató
-      href: core/overview-iot-central-operator.md
     - name: Megoldás-előkészítő útmutató
       href: core/overview-iot-central-solution-builder.md
+    - name: Kezelői útmutató
+      href: core/overview-iot-central-operator.md
     - name: Mik azok az alkalmazássablonok?
       href: core/concepts-app-templates.md
     - name: Iparági specifikus alkalmazások sablonjai

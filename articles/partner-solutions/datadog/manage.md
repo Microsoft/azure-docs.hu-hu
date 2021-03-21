@@ -7,10 +7,10 @@ ms.date: 02/19/2021
 author: tfitzmac
 ms.author: tomfitz
 ms.openlocfilehash: 1a76f79f31d1f4518c069afb7fccbad5bd22d4e2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101745293"
 ---
 # <a name="manage-the-datadog-resource"></a>A Datadoggal-erőforrás kezelése
@@ -77,7 +77,7 @@ A Azure Portal az API-kulcsok csak olvasható nézetét jeleníti meg. A kulcsok
 
 Az Azure Datadoggal integrációja lehetővé teszi, hogy a Datadoggal-ügynököt virtuális gépre vagy app Service-re telepítse. Ha nincs kiválasztva alapértelmezett kulcs, a Datadoggal-ügynök telepítése sikertelen lesz.
 
-## <a name="monitor-virtual-machines-using-the-datadog-agent"></a>Virtuális gépek figyelése a Datadoggal-ügynök használatával
+## <a name="monitor-virtual-machines-using-the-datadog-agent"></a>Virtuális gépek monitorozása a Datadog-ügynök használatával
 
 A Datadoggal-ügynököket bővítményként is telepítheti a virtuális gépekre. A bal oldali ablaktábla Datadoggal szervezeti beállításai területén nyissa meg a **virtuálisgép-ügynököt** . Ez a képernyő az előfizetésben lévő összes virtuális gép listáját jeleníti meg.
 

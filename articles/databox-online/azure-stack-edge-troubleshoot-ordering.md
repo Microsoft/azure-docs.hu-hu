@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
 ms.openlocfilehash: e074043cb685f60027d3c09ae7ad8dc17dded0df
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102443403"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>A Azure Stack Edge Pro-rendezéssel kapcsolatos problémák elhárítása
