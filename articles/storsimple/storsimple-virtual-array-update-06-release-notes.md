@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
 ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000912"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések
@@ -52,7 +52,7 @@ Az 0,6-es frissítés kritikus fontosságú frissítés, és azonnal üzembe kel
 
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Funkció | Probléma |
+| Nem. | Szolgáltatás | Probléma |
 | --- | --- | --- |
 | 1 |Biztonság| Ez a kiadás kritikus Windowsos biztonsági frissítéseket tartalmaz. Javasoljuk, hogy azonnal telepítse ezt a frissítést.|
 | 2 |Visszaállítás| A visszaállítás során egy olyan versenyhelyzet fordult elő, amely megakadályozza a visszaállítási feladatok befejezését. A hibajavítás megjavítja ezt a versenyhelyzet-feltételt.|
@@ -62,7 +62,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat.
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális eszközök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális eszközöket egy vész-helyreállítási (DR) munkafolyamat használatával kell átadni az általános elérhetőségi kiadáshoz. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy adott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális eszközt, az adatlemezt nem szabad kibontani vagy csökkentenie. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98929161"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>C#-topológiák fejlesztése a Apache Stormhez a Data Lake Tools for Visual Studio használatával
@@ -132,11 +132,11 @@ C#-topológiai projekt létrehozása a Visual Studióban:
 
 A projekt létrehozása után a következő fájlokkal kell rendelkeznie:
 
-* *Program.cs*: a projekt topológia-definíciója. Alapértelmezés szerint létrejön egy kiöntő és egy boltból álló alapértelmezett topológia.
+* *Program. cs*: a projekt topológiai definíciója. Alapértelmezés szerint létrejön egy kiöntő és egy boltból álló alapértelmezett topológia.
 
-* *Spout.cs*: kiöntő, amely véletlenszerű számokat bocsát ki.
+* *Kiöntő. cs*: egy példa kiöntő, amely véletlenszerű számokat bocsát ki.
 
-* *Bolt.cs*: egy példa, amely a kiöntő által kibocsátott számok számát tárolja.
+* *Bolt. cs*: olyan bolt, amely a kiöntő által kibocsátott számok számát tárolja.
 
 A projekt létrehozásakor a NuGet letölti a legújabb [SCP.NET-csomagot](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/).
 
@@ -144,7 +144,7 @@ A projekt létrehozásakor a NuGet letölti a legújabb [SCP.NET-csomagot](https
 
 Ezután adja hozzá a kiöntő kódját, amely egy külső forrásból származó adatok beolvasására szolgál. Ez a kiöntő véletlenszerűen mondatot bocsát ki a topológiába.
 
-1. Nyissa meg a *Spout.cs*. A kiöntő fő összetevői a következők:
+1. Nyissa meg a *kiöntő. cs*. A kiöntő fő összetevői a következők:
 
    * `NextTuple`: Az ún. Storm, amikor a kiöntő jogosult új rekordok kibocsátására.
 
@@ -216,18 +216,18 @@ Ezután adja hozzá a kiöntő kódját, amely egy külső forrásból származ�
 
 Most hozzon létre két Storm-csavart a következő példában:
 
-1. Törölje a meglévő *bolt.cs* -fájlt a projektből.
+1. Törölje a meglévő *bolt. cs* fájlt a projektből.
 
-2. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza az  >  **új elem** hozzáadása lehetőséget. A listából válassza a **Storm bolt** lehetőséget, majd adja meg a *Splitter.cs* nevet. Az új fájl kódjában módosítsa a névtér nevét a következőre: `WordCount` . Ezután ismételje meg a folyamatot egy *Counter.cs* nevű második bolt létrehozásához.
+2. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza az  >  **új elem** hozzáadása lehetőséget. A listából válassza a **Storm bolt** lehetőséget, majd adja meg a *Splitter. cs* nevet a név mezőben. Az új fájl kódjában módosítsa a névtér nevét a következőre: `WordCount` . Ezután ismételje meg ezt a folyamatot egy *Counter. cs* nevű második bolt létrehozásához.
 
-   * *Splitter.cs*: olyan boltot valósít meg, amely a mondatokat egyedi szavakkal osztja szét, és új szavakat bocsát ki.
+   * *Splitter. cs*: olyan boltot valósít meg, amely a mondatokat egyedi szavakkal osztja szét, és új szavakat bocsát ki.
 
-   * *Counter.cs*: egy olyan boltot valósít meg, amely minden szót megszámol, és egy új szót és az egyes szavak darabszámát bocsátja ki.
+   * *Counter. cs*: egy olyan boltot valósít meg, amely minden szót megszámol, és egy új szót és az egyes szavak darabszámát bocsátja ki.
 
      > [!NOTE]  
      > Ezek a csavarok a streamek olvasására és írására szolgálnak, de egy olyan adatforrást is használhat, amely egy adatbázissal vagy szolgáltatással kommunikál.
 
-3. Nyissa meg a *Splitter.cs*. Alapértelmezés szerint csak egy metódussal rendelkezik: `Execute` . A `Execute` metódus akkor lesz meghívva, amikor a bolt egy rekordot kap a feldolgozáshoz. Itt elolvashatja és feldolgozhatja a bejövő rekordok, és kibocsáthatja a kimenő rekordok.
+3. Nyissa meg a *Splitter. cs*. Alapértelmezés szerint csak egy metódussal rendelkezik: `Execute` . A `Execute` metódus akkor lesz meghívva, amikor a bolt egy rekordot kap a feldolgozáshoz. Itt elolvashatja és feldolgozhatja a bejövő rekordok, és kibocsáthatja a kimenő rekordok.
 
 4. Cserélje le a osztály tartalmát a `Splitter` következő kódra:
 
@@ -275,7 +275,7 @@ Most hozzon létre két Storm-csavart a következő példában:
     }
     ```
 
-5. Nyissa meg a *Counter.cs*, és cserélje le az osztály tartalmát a következő kódra:
+5. Nyissa meg a *Counter. cs*-t, és cserélje le az osztály tartalmát a következő kódra:
 
     ```csharp
     private Context ctx;
@@ -572,9 +572,9 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
    > [!NOTE]
    > Ne felejtse el módosítani a **kimeneti típust** az **osztály-tárba** , mielőtt telepítené a topológiát a fürtön.
 
-1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza az   >  **új elem hozzáadása elemet**. Válassza az **osztály** lehetőséget, majd adja meg az *LocalTest.cs* nevet. Végül válassza a **Hozzáadás** lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza az   >  **új elem hozzáadása elemet**. Válassza az **osztály** lehetőséget, majd írja be az *LocalTest. cs* nevet az osztálynévként. Végül válassza a **Hozzáadás** lehetőséget.
 
-1. Nyissa meg a *LocalTest.cs*, és adja hozzá a következő `using` utasítást a felső részen:
+1. Nyissa meg a *LocalTest. cs* parancsot, és adja hozzá a következő `using` utasítást a felső részen:
 
     ```csharp
     using Microsoft.SCP;
@@ -661,7 +661,7 @@ Bár a topológiát egyszerűen üzembe helyezheti egy fürtben, bizonyos esetek
 
     Szánjon egy kis időt a kód megjegyzésének beolvasására. Ez a kód a `LocalContext` fejlesztői környezetben lévő összetevők futtatására használja. A szolgáltatás az összetevők közötti adatfolyamot a helyi meghajtón lévő szövegfájlokra is megőrzi.
 
-1. Nyissa meg a *program.cs*, és adja hozzá a következő kódot a `Main` metódushoz:
+1. Nyissa meg a *program. cs programot*, és adja hozzá a következő kódot a `Main` metódushoz:
 
     ```csharp
     Console.WriteLine("Starting tests");

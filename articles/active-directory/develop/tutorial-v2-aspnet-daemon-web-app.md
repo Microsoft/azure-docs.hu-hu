@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653762"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
@@ -178,15 +178,15 @@ A példához tartozó kód a következő fájlokban található:
    - Microsoft.Owin.Security.OpenIdConnect
    - Microsoft. Identity. Client
 1. A **App_Start** mappában:
-   1. Hozzon létre egy **Startup.auth.cs** nevű osztályt.
+   1. Hozzon létre egy **Startup. auth. cs** nevű osztályt.
    1. Eltávolítás **. App_Start** a névtér nevéből.
    1. Cserélje le az **indítási** osztály kódját a minta alkalmazás ugyanazon fájljából származó kódra.
    Ügyeljen arra, hogy a teljes osztály definícióját használja. A definíció a **nyilvános osztályból** indul a **nyilvános részleges osztály indításakor.**
-1. A **Startup.auth.cs**-ben a Visual Studio IntelliSense által javasolt utasítások **használatával** hárítsa el a hiányzó hivatkozásokat.
+1. A **Startup. auth. cs**-ben a Visual Studio IntelliSense által javasolt utasítások **használatával** oldja fel a hiányzó hivatkozásokat.
 1. Kattintson a jobb gombbal a projektre, válassza a **Hozzáadás**, majd az **osztály** elemet.
-1. A keresőmezőbe írja be a **OWIN** kifejezést. A **OWIN indítási osztálya** kijelölésként jelenik meg. Jelölje ki, és nevezze el a **Startup.cs** osztályt.
-1. A **Startup.cs**-ben cserélje le az **indítási** osztály kódját a minta alkalmazás ugyanazon fájljából származó kódra. Azt is vegye figyelembe, hogy a definíció a **nyilvános osztályból indításról** **nyilvános, részleges indításra** vált.
-1. A **modellek** mappában adjon hozzá egy új, **MsGraphUser.cs** nevű osztályt. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
+1. A keresőmezőbe írja be a **OWIN** kifejezést. A **OWIN indítási osztálya** kijelölésként jelenik meg. Jelölje ki, és nevezze el az osztály **Startup. cs** nevet.
+1. A **Startup. cs** fájlban cserélje le az **indítási** osztály kódját a minta alkalmazás ugyanazon fájljából származó kódra. Azt is vegye figyelembe, hogy a definíció a **nyilvános osztályból indításról** **nyilvános, részleges indításra** vált.
+1. A **modellek** mappában adjon hozzá egy új, **MsGraphUser. cs** nevű osztályt. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
 1. Adjon hozzá egy új **MVC 5 vezérlőt –** a **AccountController** nevű üres példányt. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
 1. Adjon hozzá egy új **MVC 5 vezérlőt –** a **UserController** nevű üres példányt. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.
 1. Új **webes API 2 vezérlő hozzáadása – üres** példány, **SyncController** néven. Cserélje le a megvalósítást a mintából származó azonos nevű fájl tartalmára.

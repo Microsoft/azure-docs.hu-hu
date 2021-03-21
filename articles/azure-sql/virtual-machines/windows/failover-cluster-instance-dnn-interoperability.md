@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97358214"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>A szolgáltatás együttműködése SQL Server a & DNN
@@ -68,7 +68,7 @@ READ_ONLY_ROUTING_URL = 'TCP://dnnlsnr:1444'
 
 Ha az alapértelmezett 1433-as port, akkor kihagyhatja a portot az URL-címben. Megnevezett példány esetében állítson be egy statikus portot a megnevezett példányhoz, és adja meg azt a csak olvasható útválasztási URL-címben.  
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 A replikáció három összetevőből áll: közzétevő, terjesztő, előfizető. Ezen összetevők bármelyike lehet feladatátvevő fürt példánya. Mivel a VNN-t a replikálási konfigurációban nagy mértékben használják, explicit módon és implicit módon, a replikálás működéséhez szükség lehet egy olyan hálózati aliasra, amely leképezi a VNN a DNN. 
 
@@ -106,7 +106,7 @@ Az ügyfél-hozzáférés esetében a **feladatátvételi partner** tulajdonság
 
 ## <a name="msdtc"></a>MSDTC
 
-A (verzió) a Microsoft Elosztott tranzakciók koordinátora (MSDTC) által koordinált elosztott tranzakciókban is részt vehet. Bár a fürtözött MSDTC és a helyi MSDTC is támogatott az Azure-beli DNN-mel, a fürtözött MSDTC esetében továbbra is a terheléselosztó szükséges. A DNN definiált, nem helyettesíti az Azure-beli fürtözött MSDTC Azure Load Balancer követelményét. 
+A (verzió) a Microsoft Distributed Transaction Coordinator (MSDTC) által koordinált elosztott tranzakciókban is részt vehet. Bár a fürtözött MSDTC és a helyi MSDTC is támogatott az Azure-beli DNN-mel, a fürtözött MSDTC esetében továbbra is a terheléselosztó szükséges. A DNN definiált, nem helyettesíti az Azure-beli fürtözött MSDTC Azure Load Balancer követelményét. 
 
 ## <a name="filestream"></a>FileStream
 
@@ -175,7 +175,7 @@ Ezután hozzon létre egy hálózati aliast a leképezéshez `vnnname\insta1` `d
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: 
+További információkért lásd: 
 
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

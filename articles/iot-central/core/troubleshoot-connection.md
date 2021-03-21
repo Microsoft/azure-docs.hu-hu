@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
 ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98673234"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
@@ -130,7 +130,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Description | Lehetséges enyhítés |
 | - | - | - |
 | Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
@@ -150,7 +150,7 @@ Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehet
 
 Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 
-| Hibakód | Leírás | Lehetséges enyhítés |
+| Hibakód | Description | Lehetséges enyhítés |
 | - | - | - |
 | 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |

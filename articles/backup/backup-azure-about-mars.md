@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági menté
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87562599"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
@@ -20,15 +20,15 @@ A MARS-ügynök a következő biztonsági mentési forgatókönyveket támogatja
 
 ![MARS biztonsági mentési forgatókönyvek](./media/backup-try-azure-backup-in-10-mins/backup-scenarios.png)
 
-- **Fájlok és mappák: a**Windows-fájlok és-mappák szelektív védelemmel való ellátása.
+- **Fájlok és mappák: a** Windows-fájlok és-mappák szelektív védelemmel való ellátása.
 - **Kötet szintje**: a számítógép teljes Windows-kötetének a megóvása.
 - **Rendszerszintű**: a teljes Windows rendszerállapotának biztosítása.
 
 ### <a name="additional-scenarios"></a>További helyzetek
 
-- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines** szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
-- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
+- **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés* folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
 
 ## <a name="restore-scenarios"></a>Visszaállítási forgatókönyvek
 
@@ -48,7 +48,7 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 ## <a name="backup-process"></a>A biztonsági mentés folyamata
 
-1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a **biztonsági mentési célokból**válassza a fájlok, mappák és a rendszerállapot lehetőséget.
+1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a **biztonsági mentési célokból** válassza a fájlok, mappák és a rendszerállapot lehetőséget.
 2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](./install-mars-agent.md#download-the-mars-agent) egy helyszíni gépre.
 
 3. [Telepítse az ügynököt](./install-mars-agent.md#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.

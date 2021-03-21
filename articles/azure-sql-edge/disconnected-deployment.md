@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93392078"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Az Azure SQL Edge üzembe helyezése a Docker-vel
@@ -114,7 +114,7 @@ Az **sa** -fiók egy rendszergazda az Azure SQL Edge-példányon, amelyet a rend
 
 ## <a name="connect-to-azure-sql-edge"></a>Kapcsolódás az Azure SQL Edge-hez
 
-A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd** -t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
+A következő lépések az Azure SQL Edge parancssori eszközt, az **Sqlcmd**-t használják a tárolón belül az Azure SQL Edge-hez való kapcsolódáshoz.
 
 > [!NOTE]
 > a Sqlcmd eszköz nem érhető el az SQL Edge-tárolók ARM64-verzióján belül.

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
 ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96184484"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
@@ -56,13 +56,13 @@ A következő táblázat a Azure NetApp Files által támogatott hálózati topo
 
 |    Topológiák    |    Támogatott    |     Áthidaló megoldás    |
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
-|    Kapcsolat a kötettel a helyi VNet    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    Nincs    |
-|    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Igen    |         |
-|    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Igen    |        |
-|    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Igen    |         |
-|    Helyszíni kapcsolat a VPN-átjárón keresztüli küllős VNet, illetve a VNet és az átjárók közötti adatforgalom    |    Igen    |         |
+|    Kapcsolat a kötettel a helyi VNet    |    Yes    |         |
+|    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Yes    |         |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    No    |    Nincsenek    |
+|    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Yes    |         |
+|    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Yes    |        |
+|    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Yes    |         |
+|    Helyszíni kapcsolat a VPN-átjárón keresztüli küllős VNet, illetve a VNet és az átjárók közötti adatforgalom    |    Yes    |         |
 
 
 ## <a name="virtual-network-for-azure-netapp-files-volumes"></a>Azure NetApp Files kötetek virtuális hálózata

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452379"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
@@ -112,9 +112,9 @@ Ez a szakasz azt ismerteti, hogyan ellenőrizhető, hogy a GPU-illesztőprogramo
 #### <a name="linux-images"></a>Linux-rendszerképek
 Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Linux rendszerű N sorozatú virtuális gépekre](../virtual-machines/linux/n-series-driver-setup.md#verify-driver-installation)című témakör "az illesztőprogramok telepítésének ellenőrzése" című szakaszának utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Laborok létrehozása és kezelése](how-to-manage-classroom-labs.md)
+- [Tesztkörnyezetek létrehozása és kezelése](how-to-manage-classroom-labs.md)
 - [SOLIDWORKS – számítógéppel segített tervezési (CAD) osztály típusa](class-type-solidworks.md)
 - [MATLAB (mátrix laboratórium) osztály típusa](class-type-matlab.md)

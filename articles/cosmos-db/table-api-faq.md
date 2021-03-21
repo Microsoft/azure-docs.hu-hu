@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: sngun
 ms.openlocfilehash: c5404c026385f9ebf06c4f0289a4db0bf944d172
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341235"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Table APIról Azure Cosmos DB
@@ -197,7 +197,7 @@ Igen, Azure Cosmos DB Table API az összes attribútum automatikus indexelését
 
 Igen, az indexelési házirendet megadhatja az index definíciójának megadásával. A beállításokat megfelelően kell kódolni és elmenekülnie.
 
-A non-.NET SDK-k esetében az indexelési házirend csak a portálon állítható be **Adatkezelőon** , navigáljon a módosítani kívánt táblához, majd nyissa meg a **méretezési & beállításait** – >indexelési házirend, végezze el a kívánt módosításokat, majd **mentse**.
+A non-.NET SDK-k esetében az indexelési házirend csak a portálon állítható be **Adatkezelőon**, navigáljon a módosítani kívánt táblához, majd nyissa meg a **méretezési & beállításait**– >indexelési házirend, végezze el a kívánt módosításokat, majd **mentse**.
 
 A .NET SDK-ból a app.config fájlban is elküldhető:
 
@@ -298,7 +298,7 @@ A következő módokon megoszthatja a visszajelzéseit:
 * [Microsoft Q&egy kérdés oldal](/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Table API-alkalmazás létrehozása .NET SDK-val és Azure Cosmos DB](create-table-dotnet.md)
 * [Java-alkalmazás létrehozása Azure Cosmos DB Table API-alapú adatkezeléshez](create-table-java.md)

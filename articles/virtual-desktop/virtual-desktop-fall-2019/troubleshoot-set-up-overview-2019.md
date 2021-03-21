@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88005431"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Windows rendszerű virtuális asztali (klasszikus) hibaelhárítás – áttekintés, visszajelzés és támogatás
@@ -31,7 +31,7 @@ A következő táblázat segítségével azonosíthatja és megoldhatja a bérl�
 >[!NOTE]
 > Van egy technikai közösségi fórum, amelyről megtudhatja, hogy milyen problémák léptek fel a termék csapatával és az aktív közösség tagjaival kapcsolatban. A vitafórum elindításához látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) .
 
-| **Probléma**                                                            | **Javasolt megoldás**  |
+| **Kérdés**                                                            | **Javasolt megoldás**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
 | Windows rendszerű virtuális asztali bérlő létrehozása                                                    | Ha van Azure-leállás, [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/); egyéb esetben [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), válassza a szolgáltatáshoz tartozó **Windows virtuális asztal** lehetőséget, válassza a probléma típusának **központi telepítése** lehetőséget, majd válassza ki a problémát altípushoz tartozó **Windowsos virtuális asztali bérlő létrehozásakor felmerülő problémákat** .|
 | A Marketplace-sablonok elérése Azure Portal       | Ha van Azure-leállás, [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/). <br> <br> Az Azure piactéren elérhető Windows rendszerű virtuális asztali sablonok szabadon hozzáférhetők.|

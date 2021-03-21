@@ -15,10 +15,10 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87485643"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Egyéni szerepkörök frissítése
 > * Egyéni szerepkörök törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,7 +52,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
 
 1. Tekintse át a [Microsoft.Support erőforrás-szolgáltató](resource-provider-operations.md#microsoftsupport) műveleteinek listáját. Érdemes megismerkedni az engedélyek létrehozására szolgáló műveletekkel.
 
-    | Művelet | Leírás |
+    | Művelet | Description |
     | --- | --- |
     | Microsoft.Support/register/action | Regisztrálás a támogatási erőforrás-szolgáltatóra. |
     | Microsoft.Support/supportTickets/read | Támogatási jegy részleteinek lekérése (beleértve az állapotot, súlyosságot, kapcsolattartási adatokat és kommunikációkat) vagy az összes előfizetés támogatási jegyeinek lekérése. |
@@ -267,7 +267,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
     az role definition delete --name "Reader Support Tickets"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel](custom-roles-cli.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000249"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Gyorsított hálózatkezelés az Azure-beli virtuális gépek vész-helyreállításával
@@ -33,7 +33,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy érti:
 
 ## <a name="accelerated-networking-with-windows-vms"></a>Gyorsított hálózatkezelés Windows rendszerű virtuális gépekkel
 
-Azure Site Recovery támogatja a gyorsabb hálózatkezelést a replikált virtuális gépek számára, csak akkor, ha a forrás virtuális gép gyorsított hálózatkezelést engedélyez. Ha a forrás virtuális gépen nincs engedélyezve a gyorsított hálózat, megtudhatja, hogyan engedélyezheti a gyorsított hálózatkezelést a Windows [here](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)rendszerű virtuális gépekhez.
+Azure Site Recovery támogatja a gyorsabb hálózatkezelést a replikált virtuális gépek számára, csak akkor, ha a forrás virtuális gép gyorsított hálózatkezelést engedélyez. Ha a forrás virtuális gépen nincs engedélyezve a gyorsított hálózat, megtudhatja, hogyan engedélyezheti a gyorsított hálózatkezelést a Windows [](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms)rendszerű virtuális gépekhez.
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 Az Azure-katalógusból az alábbi disztribúciók támogatottak:
@@ -85,7 +85,7 @@ Ha a replikáció engedélyezése után engedélyezte a gyorsított hálózatkez
 
 A fenti folyamatot a meglévő replikált virtuális gépek esetében is követni kell, amelyek korábban nem lettek automatikusan engedélyezve a gyorsított hálózatkezelés Site Recovery.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a gyorsított hálózatkezelés előnyeiről](../virtual-network/create-vm-accelerated-networking-powershell.md#benefits).
 - További információ a [Windows rendszerű virtuális gépek](../virtual-network/create-vm-accelerated-networking-powershell.md#limitations-and-constraints) és a [linuxos virtuális gépek](../virtual-network/create-vm-accelerated-networking-cli.md#limitations-and-constraints)gyorsított hálózatkezelésével kapcsolatos korlátozásokról és korlátozásokról.
 - További információ az alkalmazások feladatátvételének automatizálására szolgáló [helyreállítási tervekről](site-recovery-create-recovery-plans.md) .

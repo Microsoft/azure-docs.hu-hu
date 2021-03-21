@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421090"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: Node.js webes API-hoz való hozzáférés biztosítása egy egyoldalas alkalmazásból Azure AD B2C
@@ -56,7 +56,7 @@ Az egyoldalas alkalmazás konfigurálásakor a hatókör **hatókörében** lév
 
 Ha egy védett webes API-t szeretne meghívni egy másik alkalmazásból, meg kell adnia a webes API-nak az alkalmazáshoz szükséges engedélyeket.
 
-Az előfeltételként szolgáló oktatóanyagban létrehozott egy *spaapp1* nevű egyoldalas alkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *spaapp1* ).
+Az előfeltételként szolgáló oktatóanyagban létrehozott egy *spaapp1* nevű egyoldalas alkalmazást. Ebben az oktatóanyagban úgy konfigurálja az alkalmazást, hogy hívja meg az előző szakaszban létrehozott webes API-t ( *spaapp1*).
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
@@ -137,7 +137,7 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-nodejs-web-api"></a>A Node.js webes API futtatása
 
-1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Ilyenek többek között:
+1. Nyisson meg egy konzolablak ablakot, és váltson át a Node.js webes API-mintát tartalmazó könyvtárra. Például:
 
     ```console
     cd active-directory-b2c-javascript-nodejs-webapi
@@ -158,7 +158,7 @@ Bár mindkét alkalmazás helyileg fut, amikor ezt az oktatóanyagot követi, ú
 
 ### <a name="run-the-single-page-app"></a>Egy egyoldalas alkalmazás futtatása
 
-1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Ilyenek többek között:
+1. Nyisson meg egy másik konzolablak ablakát, és váltson át a JavaScript SPA-mintát tartalmazó könyvtárba. Például:
 
     ```console
     cd ms-identity-b2c-javascript-spa

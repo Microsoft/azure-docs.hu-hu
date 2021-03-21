@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
 ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596282"
 ---
 # <a name="azure-security-center-data-security"></a>Adatbiztonság Azure Security Center
@@ -80,7 +80,7 @@ Megadhatja azt a munkaterületet és régiót, ahol a gépekről gyűjtött adat
 Az ügyfelek a következő adatfolyamokból érhetik el Security Center kapcsolódó adatait:
 
 
-| Adatfolyam                                                                                | Adattípusok                                                                                                                                                                                                          |
+| Stream                                                                                | Adattípusok                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Azure-tevékenység naplója](../azure-monitor/essentials/activity-log.md)                       | Minden biztonsági riasztás, [jóváhagyott Security Center igény](security-center-just-in-time.md) szerinti hozzáférési kérés, valamint az [adaptív alkalmazások](security-center-adaptive-application.md)által létrehozott összes riasztás.|
 | [Azure Monitor-naplók](../azure-monitor/data-platform.md)                      | Minden biztonsági riasztás.                                                                                                                                                                                                |

@@ -9,10 +9,10 @@ ms.date: 09/17/2019
 ms.author: maquaran
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93341263"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrálás a Change feed Processor Library-ről a Azure Cosmos DB .NET v3 SDK-ra
@@ -50,13 +50,13 @@ Az SDK v3 változási hírcsatorna-feldolgozó processzora észlelni fogja a ré
 
 A régi kóddal biztonságosan leállíthatja az alkalmazást, áttelepítheti a kódot az új verzióra, elindíthatja az áttelepített alkalmazást, és az alkalmazás leállításakor bekövetkezett változásokat az új verzió fogja felvenni és feldolgozni.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [További minták a GitHubon](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 

@@ -4,10 +4,10 @@ description: Ismerteti, hogyan használhatók Service Bus várólisták és tém
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.openlocfilehash: 12b72420e3475b46a4cd61ce5032b478af740dde
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97399859"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
@@ -58,7 +58,7 @@ Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése f
 
 ## <a name="rest-examples-for-put"></a>REST-példák (PUT)
 
-### <a name="service-bus-queue"></a>Service Bus-üzenetsor
+### <a name="service-bus-queue"></a>Service Bus üzenetsor
 
 ```json
 {
@@ -102,7 +102,7 @@ Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése f
 }
 ```
 
-### <a name="service-bus-topic"></a>Service Bus-témakör
+### <a name="service-bus-topic"></a>Service Bus témakör
 
 ```json
 {

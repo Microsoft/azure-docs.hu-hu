@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: a85c5b2333418367742678a529b69c95164eda53
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350483"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Miniatűr képek átméretezése és körülvágása
@@ -129,7 +129,7 @@ Az alábbi ábrán látható, hogy a 100x200 a vak arányok levágásával csök
   
 ![A napraforgó-kép bevágása a 100x200](./media/resize-crop/bing-resize-crop-sunflower100x200c4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Bing Search API-k?](bing-api-comparison.md)
 * [Bing Search API – követelmények használata és megjelenítése](use-display-requirements.md)

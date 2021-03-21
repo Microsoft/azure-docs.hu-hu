@@ -14,10 +14,10 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996712"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi a Azure Active Directory architektúra?
@@ -121,6 +121,6 @@ Ha bármely Azure AD-szolgáltatás nem a várt módon működik, a lehető legg
 
 Az operatív vezérlők, például a többtényezős hitelesítés (MFA) használata bármely művelethez, valamint az összes művelet naplózása. Emellett egy igény szerinti jogosultságszint-emelési rendszer használatával biztosíthatja a szükséges ideiglenes hozzáférést bármely operatív feladathoz, folyamatosan. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/support/trust-center).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Active Directory fejlesztői útmutatója](../develop/index.yml)

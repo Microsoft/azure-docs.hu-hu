@@ -7,10 +7,10 @@ ms.author: cauribeg
 ms.topic: quickstart
 ms.service: cache
 ms.openlocfilehash: 6c3b433a8e433f39b723a7155bb6de116857efca
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102508163"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-powershell"></a>Gyors útmutató: az Azure cache átirányítása a Redis-események webes végponthoz a PowerShell használatával
@@ -19,7 +19,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a r
 
 Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A rövid útmutató egyszerűsítése érdekében azonban olyan webalkalmazásnak küldheti az eseményeket, amely összegyűjti és megjeleníti az üzeneteket. Az ebben a rövid útmutatóban ismertetett lépések elvégzése után láthatja, hogy a rendszer elküldte az eseményre vonatkozó információt a webalkalmazásnak.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 Ehhez a rövid útmutatóhoz a Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne, olvassa el a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps)című témakört.
 

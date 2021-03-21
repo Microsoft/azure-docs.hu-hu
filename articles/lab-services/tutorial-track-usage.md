@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy tesztkörnyezet létrehozójaként/tul
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a3ca9e011eb89b3db8b202bab11d14f10d74e7e
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434617"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Oktatóanyag: Tesztkörnyezet használatának nyomon követése az Azure Lab Services szolgáltatásban
@@ -49,5 +49,5 @@ A virtuálisgép-készlet tesztkörnyezetben való kezelésével kapcsolatos tov
 > [!NOTE]
 > Ha egy oktató bekapcsol egy tanulói virtuális gépet, az nem érinti a tanulóra vonatkozó kvótát. A felhasználóhoz tartozó kvóta meghatározza, hogy a felhasználó számára hány labor óra legyen elérhető az ütemezett osztály időpontján kívül. A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md?#set-quotas-for-users)számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A laborokkal kapcsolatos további tudnivalókért tekintse meg a [cikkek útmutatói című cikket.](how-to-manage-lab-accounts.md)

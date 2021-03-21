@@ -10,13 +10,13 @@ ms.author: tisande
 ms.reviewer: sngun
 ms.custom: devx-track-js
 ms.openlocfilehash: b2563a9af0e0ca6943059698e29d139143780d93
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93340974"
 ---
-# <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
+# <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 A Azure Cosmos DBban található SQL API-val végzett lekérdezések mellett a [Cosmos db KISZOLGÁLÓOLDALI SDK JavaScript-](https://github.com/Azure/azure-cosmosdb-js-server/) felületet biztosít az optimalizált lekérdezések végrehajtásához Cosmos db tárolt eljárások és eseményindítók esetében. Ennek a JavaScript-felületnek a használatához nem kell tisztában lennie az SQL-nyelvvel. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket úgy, hogy a predikátum függvényeit átadja a függvények sorrendjének, és egy olyan szintaxist, amely ismerős a ECMAScript5's Array beépített és népszerű JavaScript-kódtárak, például a Lodash használatával. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DB indexek használatával hatékonyan hajtja végre.
@@ -63,7 +63,7 @@ Az alábbi táblázat különböző SQL-lekérdezéseket és a kapcsolódó Java
 |SELECT<br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs. Message AS msg<br>A docs-ból<br>WHERE<br>&nbsp;&nbsp;&nbsp;docs. id = "X998_Y998"|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési doc.id = = = "X998_Y998";<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. map (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visszatérési<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;azonosító: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc. Message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>. Value ();|A dokumentumok lekérdezése predikátummal, azonosító = "X998_Y998", majd a projekt az azonosító és az üzenet (msg-ben alias).|
 |ÉRTÉK címke kiválasztása<br>A docs-ból<br>JOIN tag a docs-ban. Címkék<br>ORDER BY docs._ts|__. Chain ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Filter (függvény (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bizonylat visszaküldése Címkék && Array. isArray (doc). Címkék);<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. sortBy (Function (doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doc._ts visszaadása;<br>&nbsp;&nbsp;&nbsp;&nbsp;})<br>&nbsp;&nbsp;&nbsp;&nbsp;. összeszed ("címkék")<br>&nbsp;&nbsp;&nbsp;&nbsp;. simítsa ()<br>&nbsp;&nbsp;&nbsp;&nbsp;. Value ()|A Array tulajdonsággal rendelkező dokumentumok szűrői, a címkék és az eredményül kapott dokumentumok rendezése a _ts timestamp System tulajdonsággal, majd a projects + lelapul a címkék tömbjét.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fogalmak és útmutató: tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása és használata Azure Cosmos DBban:
 

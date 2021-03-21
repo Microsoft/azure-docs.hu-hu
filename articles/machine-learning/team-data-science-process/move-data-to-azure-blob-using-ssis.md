@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9572d612e7ee8e2fd72850ba14447e8449f0f371
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93322008"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése az Azure Blob Storageba vagy az SSIS-összekötők használatával
@@ -42,8 +42,8 @@ A cikkben ismertetett feladatok végrehajtásához rendelkeznie kell egy Azure-e
 
 Az SSIS- **Összekötők** használatához le kell töltenie a következőket:
 
-* **SQL Server 2014 vagy 2016 standard (vagy újabb)** : a telepítés magában foglalja a SQL Server Integration Services.
-* **Microsoft SQL Server 2014 vagy 2016 Integration Services szolgáltatáscsomag az Azure** -hoz: ezek az összekötők a [SQL Server 2014 Integration services](https://www.microsoft.com/download/details.aspx?id=47366) és az [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) oldalain tölthetők le.
+* **SQL Server 2014 vagy 2016 standard (vagy újabb)**: a telepítés magában foglalja a SQL Server Integration Services.
+* **Microsoft SQL Server 2014 vagy 2016 Integration Services szolgáltatáscsomag az Azure**-hoz: ezek az összekötők a [SQL Server 2014 Integration services](https://www.microsoft.com/download/details.aspx?id=47366) és az [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) oldalain tölthetők le.
 
 > [!NOTE]
 > A SSIS telepítve van SQL Server, de az expressz verzióban nem szerepel. További információ a SQL Server különböző kiadásaiban található alkalmazásokról: [SQL Server Editions](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/)

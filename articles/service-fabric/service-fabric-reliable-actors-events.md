@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 591e3539715ba0873e44f56a93d05df6552bb1ef
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96571368"
 ---
 # <a name="actor-events"></a>Színészi események
@@ -98,7 +98,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
 * [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
 * [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))

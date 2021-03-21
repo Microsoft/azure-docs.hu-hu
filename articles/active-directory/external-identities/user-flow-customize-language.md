@@ -12,10 +12,10 @@ ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a199c207e8ea35f1471df9bfd0c4134551b9995f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653490"
 ---
 # <a name="language-customization-in-azure-active-directory"></a>Nyelvi Testreszabás a Azure Active Directoryban
@@ -151,8 +151,8 @@ Az Azure AD az alábbi nyelvek támogatását tartalmazza. A felhasználói foly
 | Bolgár             | BG            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Bangla                | Mrd USD            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) |
 | Katalán               | CA            | ![X, jelezve: nem.](./media/user-flow-customize-language/no.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| cseh                 | CS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
-| dán                | da            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Cseh                 | CS            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
+| Dán                | da            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Német                | de            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Görög                 | el            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |
 | Angolul               | hu            | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) | ![Zöld pipa.](./media/user-flow-customize-language/yes.png) |

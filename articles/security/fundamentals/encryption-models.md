@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102051378"
 ---
 # <a name="data-encryption-models"></a>Adattitkosítási modellek
@@ -146,97 +146,97 @@ Az egyes titkosítási modelleket támogató Azure-szolgáltatások:
 | Termék, szolgáltatás vagy szolgáltatás | Server-Side Service-Managed kulcs használatával   | Server-Side Customer-Managed kulcs használatával | Client-Side Client-Managed kulcs használatával  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 | **Mesterséges intelligencia és gépi tanulás**      |                    |                    |                    |
-| Azure Cognitive Search           | Igen                | Igen                | -                  |
-| Azure Cognitive Services         | Igen                | Igen                | -                  |
-| Azure Machine Learning           | Igen                | Igen                | -                  |
-| Azure Machine Learning Studio (klasszikus) | Igen         | Előzetes verzió, RSA 2048 bites | -               |
-| Content Moderator                | Igen                | Igen                | -                  |
-| Face                             | Igen                | Igen                | -                  |
-| Language Understanding           | Igen                | Igen                | -                  |
-| Personalizer                     | Igen                | Igen                | -                  |
-| QnA Maker                        | Igen                | Igen                | -                  |
-| Beszédszolgáltatások                  | Igen                | Igen                | -                  |
-| Translator Text                  | Igen                | Igen                | -                  |
-| Power BI                         | Igen                | Igen, RSA 4096-bit  | -                  |
+| Azure Cognitive Search           | Igen                | Yes                | -                  |
+| Azure Cognitive Services         | Igen                | Yes                | -                  |
+| Azure Machine Learning           | Igen                | Yes                | -                  |
+| Azure Machine Learning Studio (klasszikus) | Yes         | Előzetes verzió, RSA 2048 bites | -               |
+| Content Moderator                | Igen                | Yes                | -                  |
+| Face                             | Igen                | Yes                | -                  |
+| Language Understanding           | Igen                | Yes                | -                  |
+| Personalizer                     | Igen                | Yes                | -                  |
+| QnA Maker                        | Igen                | Yes                | -                  |
+| Beszédfelismerési szolgáltatások                  | Igen                | Yes                | -                  |
+| Translator Text                  | Igen                | Yes                | -                  |
+| Power BI                         | Yes                | Igen, RSA 4096-bit  | -                  |
 | **Elemzés**                    |                    |                    |                    |
-| Azure Stream Analytics           | Igen                | igen\*\*            | -                  |
-| Event Hubs                       | Igen                | Igen                | -                  |
-| Functions                        | Igen                | Igen                | -                  |
+| Azure Stream Analytics           | Yes                | igen\*\*            | -                  |
+| Event Hubs                       | Igen                | Yes                | -                  |
+| Functions                        | Igen                | Yes                | -                  |
 | Azure Analysis Services          | Igen                | -                  | -                  |
-| Azure Data Catalog               | Igen                | -                  | -                  |
-| Azure HDInsight                  | Igen                | Mind                | -                  |
-| Azure Monitor Application Insights | Igen                | Igen                | -                  |
-| Azure Monitor Log Analytics      | Igen                | Igen                | -                  |
-| Azure Data Explorer              | Igen                | Igen                | -                  |
-| Azure Data Factory               | Igen                | Igen                | -                  |
+| Azure Data Catalog               | Yes                | -                  | -                  |
+| Azure HDInsight                  | Yes                | Mind                | -                  |
+| Azure Monitor Application Insights | Igen                | Yes                | -                  |
+| Azure Monitor Log Analytics      | Igen                | Yes                | -                  |
+| Azure Adatkezelő              | Igen                | Yes                | -                  |
+| Azure Data Factory               | Igen                | Yes                | -                  |
 | Azure Data Lake Store            | Igen                | Igen, RSA 2048-bit  | -                  |
 | **Containers**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Igen                | Igen                | -                  |
-| Container Instances              | Igen                | Igen                | -                  |
-| Container Registry               | Igen                | Igen                | -                  |
+| Azure Kubernetes Service         | Igen                | Yes                | -                  |
+| Container Instances              | Igen                | Yes                | -                  |
+| Container Registry               | Igen                | Yes                | -                  |
 | **Számítás**                      |                    |                    |                    |
-| Virtual Machines                 | Igen                | Igen                | -                  |
+| Virtual Machines                 | Igen                | Yes                | -                  |
 | Virtuálisgép-méretezési csoport        | Igen                | Igen                | -                  |
-| SAP HANA                         | Igen                | Igen                | -                  |
-| App Service                      | Igen                | igen\*\*            | -                  |
-| Automation                       | Igen                | igen\*\*            | -                  |
-| Azure Functions                  | Igen                | igen\*\*            | -                  |
-| Azure Portal                     | Igen                | igen\*\*            | -                  |
-| Logic Apps                       | Igen                | Igen                | -                  |
-| Azure által felügyelt alkalmazások       | Igen                | igen\*\*            | -                  |
-| Service Bus                      | Igen                | Igen                | -                  |
-| Site Recovery                    | Igen                | Igen                | -                  |
+| SAP HANA                         | Igen                | Yes                | -                  |
+| App Service                      | Yes                | igen\*\*            | -                  |
+| Automation                       | Yes                | igen\*\*            | -                  |
+| Azure Functions                  | Yes                | igen\*\*            | -                  |
+| Azure Portal                     | Yes                | igen\*\*            | -                  |
+| Logic Apps                       | Igen                | Yes                | -                  |
+| Azure által felügyelt alkalmazások       | Yes                | igen\*\*            | -                  |
+| Service Bus                      | Igen                | Yes                | -                  |
+| Site Recovery                    | Igen                | Yes                | -                  |
 | **Adatbázisok**                    |                    |                    |                    |
 | SQL Server on Virtual Machines   | Igen                | Igen                | Igen                |
-| Azure SQL Database               | Igen                | Igen, RSA 3072-bit  | Igen                |
-| MariaDB Azure SQL Database   | Igen                | -                  | -                  |
-| MySQL-Azure SQL Database     | Igen                | Igen                | -                  |
-| Azure SQL Database PostgreSQL-hez | Igen               | Igen                | -                  |
-| Azure Synapse Analytics          | Igen                | Igen, RSA 3072-bit  | -                  |
-| SQL Server Stretch Database      | Igen                | Igen, RSA 3072-bit  | Igen                |
+| Azure SQL Database               | Igen                | Igen, RSA 3072-bit  | Yes                |
+| MariaDB Azure SQL Database   | Yes                | -                  | -                  |
+| MySQL-Azure SQL Database     | Igen                | Yes                | -                  |
+| Azure SQL Database PostgreSQL-hez | Igen               | Yes                | -                  |
+| Azure Synapse Analytics          | Yes                | Igen, RSA 3072-bit  | -                  |
+| SQL Server Stretch Database      | Yes                | Igen, RSA 3072-bit  | Yes                |
 | Table Storage                    | Igen                | Igen                | Igen                |
-| Azure Cosmos DB                  | Igen                | Igen                | -                  |
-| Azure Databricks                 | Igen                | Igen                | -                  |
-| Azure Database Migration Service | Igen                | N/A\*              | -                  |
+| Azure Cosmos DB                  | Igen                | Yes                | -                  |
+| Azure Databricks                 | Igen                | Yes                | -                  |
+| Azure Database Migration Service | Yes                | N/A\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | Igen                | -                  | -                  |
-| Azure Repos                      | Igen                | -                  | -                  |
+| Azure DevOps Services            | Yes                | -                  | -                  |
+| Azure Repos                      | Yes                | -                  | -                  |
 | **Identitás**                     |                    |                    |                    |
-| Azure Active Directory           | Igen                | -                  | -                  |
-| Azure Active Directory tartományi szolgáltatások | Igen          | Igen                | -                  |
+| Azure Active Directory           | Yes                | -                  | -                  |
+| Azure Active Directory tartományi szolgáltatások | Igen          | Yes                | -                  |
 | **Integráció**                  |                    |                    |                    |
-| Service Bus                      | Igen                | Igen                | Igen                |
-| Event Grid                       | Igen                | -                  | -                  |
-| API Management                   | Igen                | -                  | -                  |
+| Service Bus                      | Igen                | Igen                | Yes                |
+| Event Grid                       | Yes                | -                  | -                  |
+| API Management                   | Yes                | -                  | -                  |
 | **IoT szolgáltatások**                 |                    |                    |                    |
-| IoT Hub                          | Igen                | Igen                | Igen                |
-| IoT Hub Device Provisioning      | Igen                | Igen                | -                  |
+| IoT Hub                          | Igen                | Igen                | Yes                |
+| IoT Hub Device Provisioning      | Igen                | Yes                | -                  |
 | **Felügyelet és cégirányítás**    |                    |                    |                    |
-| Azure Site Recovery              | Igen                | -                  | -                  |
-| Azure Migrate                    | Igen                | Igen                | -                  |
+| Azure Site Recovery              | Yes                | -                  | -                  |
+| Azure Migrate                    | Igen                | Yes                | -                  |
 | **Média**                        |                    |                    |                    |
-| Media Services                   | Igen                | Igen                | Igen                |
+| Media Services                   | Igen                | Igen                | Yes                |
 | **Biztonság**                     |                    |                    |                    |
-| Azure Security Center for IoT    | Igen                | Igen                | -                  |
-| Azure Sentinel                   | Igen                | Igen                | -                  |
+| Azure Security Center for IoT    | Igen                | Yes                | -                  |
+| Azure Sentinel                   | Igen                | Yes                | -                  |
 | **Storage**                      |                    |                    |                    |
-| Blob Storage                     | Igen                | Igen                | Igen                |
-| Prémium Blob Storage             | Igen                | Igen                | Igen                |
-| Disk Storage                     | Igen                | Igen                | -                  |
-| Ultra Disk Storage               | Igen                | Igen                | -                  |
-| Felügyelt Disk Storage             | Igen                | Igen                | -                  |
-| File Storage                     | Igen                | Igen                | -                  |
-| Fájl Premium Storage             | Igen                | Igen                | -                  |
-| File Sync                         | Igen                | Igen                | -                  |
-| Queue Storage                    | Igen                | Igen                | Igen                |
-| Avere vFXT                       | Igen                | -                  | -                  |
-| Azure Cache for Redis            | Igen                | N/A\*              | -                  |
-| Azure NetApp Files               | Igen                | Igen                | -                  |
-| Archive Storage                  | Igen                | Igen                | -                  |
-| StorSimple                       | Igen                | Igen                | Igen                |
-| Azure Backup                     | Igen                | Igen                | Igen                |
-| Data Box                         | Igen                | -                  | Igen                |
-| Data Box Edge                    | Igen                | Igen                | -                  |
+| Blob Storage                     | Igen                | Igen                | Yes                |
+| Prémium Blob Storage             | Igen                | Igen                | Yes                |
+| Disk Storage                     | Igen                | Yes                | -                  |
+| Ultra Disk Storage               | Igen                | Yes                | -                  |
+| Felügyelt Disk Storage             | Igen                | Yes                | -                  |
+| File Storage                     | Igen                | Yes                | -                  |
+| Fájl Premium Storage             | Igen                | Yes                | -                  |
+| File Sync                         | Igen                | Yes                | -                  |
+| Queue Storage                    | Igen                | Igen                | Yes                |
+| Avere vFXT                       | Yes                | -                  | -                  |
+| Azure Cache for Redis            | Yes                | N/A\*              | -                  |
+| Azure NetApp Files               | Igen                | Yes                | -                  |
+| Archive Storage                  | Igen                | Yes                | -                  |
+| StorSimple                       | Igen                | Igen                | Yes                |
+| Azure Backup                     | Igen                | Igen                | Yes                |
+| Data Box                         | Igen                | -                  | Yes                |
+| Data Box Edge                    | Igen                | Yes                | -                  |
 
 \* Ez a szolgáltatás nem tart fenn adatmegőrzést. Az átmeneti gyorsítótárak, ha vannak ilyenek, Microsoft-kulccsal vannak titkosítva.
 

@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996811"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
@@ -385,7 +385,7 @@ Az alábbi példa bemutatja, hogyan törölhet egy tárolót.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi hivatkozásokra kattintva további információkat tudhat meg az iOS-könyvtárról és a Storage szolgáltatásról.
 
