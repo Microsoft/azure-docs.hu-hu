@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: eamono
 ms.openlocfilehash: 5e01ffd8e17fda9113c7ec0fdb2c7f436b39c810
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936906"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hibrid környezetek kezelése a PowerShell-lel Azure Functions és App Service Hibrid kapcsolatok
@@ -157,7 +157,7 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
 
     :::image type="content" source="./media/functions-hybrid-powershell/select-configuration.png" alt-text="Adja meg a rendszergazdai fiók jelszavát." border="true":::
 
-1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Kattintson az **OK** gombra.
+1. Nevezze el a beállítás **ContosoUserPassword**, és adja meg a jelszót. Válassza az **OK** lehetőséget.
 1. Válassza a **Mentés** lehetőséget a jelszó tárolásához a Function alkalmazásban.
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-administrator-password.png" alt-text="Mentse a rendszergazdai fiók jelszavát." border="true":::
@@ -213,7 +213,7 @@ A hibrid kapcsolatok konfigurálása a Function alkalmazás hálózatkezelési s
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     :::image type="content" source="./media/functions-hybrid-powershell/save-http-function.png" alt-text="Módosítsa a PowerShell-kódot, és mentse a HTTP trigger függvényt." border="true":::
 
@@ -298,7 +298,7 @@ Az előző két forgatókönyvben a Azure Functions és Hibrid kapcsolatok Power
 
 Az Azure [Virtual Network](./functions-create-vnet.md) szolgáltatással a helyszíni környezethez is csatlakozhat Azure Functionson keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [További információ a PowerShell-függvények használatáról](functions-reference-powershell.md)

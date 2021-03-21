@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94837209"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
@@ -54,7 +54,7 @@ Ez a szakasz a Enterprise State Roaming kapcsolatos problémák elhárításáva
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>A szinkronizálás ellenőrzése és a "beállítások szinkronizálása" Beállítások lap 
 
-1. Miután csatlakoztatta a Windows 10 rendszerű SZÁMÍTÓGÉPét egy olyan tartományhoz, amely Enterprise State Roaming engedélyezésére van konfigurálva, jelentkezzen be a munkahelyi fiókjával. Lépjen a **Beállítások**  >  **fiókok**  >  **szinkronizálja a beállításokat** , és erősítse meg, hogy a szinkronizálás és az egyes beállítások be vannak kapcsolva, és a beállítások lap felső részén látható, hogy szinkronizálja a munkahelyi fiókjával. Győződjön meg arról, hogy ugyanaz a fiók is használatban van bejelentkezési fiókja a **Beállítások**  >  **fiókjaiban**  >  **Your Info**. 
+1. Miután csatlakoztatta a Windows 10 rendszerű SZÁMÍTÓGÉPét egy olyan tartományhoz, amely Enterprise State Roaming engedélyezésére van konfigurálva, jelentkezzen be a munkahelyi fiókjával. Lépjen a **Beállítások**  >  **fiókok**  >  **szinkronizálja a beállításokat** , és erősítse meg, hogy a szinkronizálás és az egyes beállítások be vannak kapcsolva, és a beállítások lap felső részén látható, hogy szinkronizálja a munkahelyi fiókjával. Győződjön meg arról, hogy ugyanaz a fiók is használatban van bejelentkezési fiókja a **Beállítások**  >  **fiókjaiban**  >  . 
 1. Ellenőrizze, hogy a szinkronizálás több gépen is működik-e az eredeti gépen végrehajtott módosítások végrehajtásával, például a tálca jobbra vagy a képernyő felső részén való áthelyezésével. Tekintse meg a változás propagálását a második gépre öt percen belül. 
 
    * A képernyő zárolása és feloldása (Win + L) segíthet a szinkronizálás elindításában.

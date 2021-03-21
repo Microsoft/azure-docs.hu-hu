@@ -7,10 +7,10 @@ ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: bafebcc54e4cbde87e8deb776eff227fc99035cc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98623855"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Oktatóanyag: ASP.NET Core és Azure SQL Database alkalmazás létrehozása Azure App Service
@@ -29,7 +29,7 @@ A [Azure app Service](overview.md) a Linux operációs rendszer használatával 
 
 ![App Service-ben futó alkalmazás](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * SQL Database-adatbázis létrehozása az Azure-ban
@@ -462,7 +462,7 @@ Amíg a ASP.NET Core alkalmazás a Azure App Service fut, a konzolon lévő napl
 A minta projekt már a következő útmutatást követi: [ASP.net Core naplózás az Azure-ban](/aspnet/core/fundamentals/logging#azure-app-service-provider) két konfigurációs módosítással:
 
 - Hivatkozást tartalmaz a `Microsoft.Extensions.Logging.AzureAppServices` *DotNetCoreSqlDb. csproj*-ben.
-- Hívások `loggerFactory.AddAzureWebAppDiagnostics()` a *program.cs*-ben.
+- `loggerFactory.AddAzureWebAppDiagnostics()`A *program. cs* által kezdeményezett hívások.
 
 A ASP.NET Core [naplózási szintjének](/aspnet/core/fundamentals/logging#log-level) app Service az `Information` alapértelmezett szintről történő beállításához használja a `Error` [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) Cloud shell parancsot.
 

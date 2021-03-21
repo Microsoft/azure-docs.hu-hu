@@ -16,10 +16,10 @@ ms.date: 02/05/2021
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
 ms.openlocfilehash: d931d3923ff49dde2bea234278c995e79670429f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627633"
 ---
 # <a name="azure-identity-management-security-overview"></a>Az Azure identitáskezelésének biztonsági áttekintése
@@ -39,7 +39,7 @@ A cikk a következő alapvető Azure Identity Management-képességekre összpon
 
 * Egyszeri bejelentkezés
 * Fordított proxy
-* Multi-Factor Authentication
+* Többtényezős hitelesítés
 * Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 * Biztonsági monitorozás, riasztások és gépi tanuláson alapuló jelentések
 * Felhasználói identitás és hozzáférés-kezelés
@@ -76,7 +76,7 @@ További információ:
 * [Egyszeri bejelentkezés alkalmazásproxyval](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Feltételes hozzáférés használata](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Többtényezős hitelesítés
 
 Az Azure AD Multi-Factor Authentication olyan hitelesítési módszer, amely több ellenőrzési módszer használatát igényli, és kritikus második biztonsági réteget ad hozzá a felhasználói bejelentkezésekhez és tranzakciókra. Multi-Factor Authentication segít megőrizni az adathozzáférést és az alkalmazásokhoz való hozzáférést, miközben a felhasználói igényeket egy egyszerű bejelentkezési folyamaton keresztül teljesíti. Erős hitelesítést biztosít számos ellenőrzési lehetőség használatával: telefonhívások, szöveges üzenetek vagy Mobile apps-értesítések, valamint ellenőrző kódok és külső OAuth-tokenek.
 

@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs üzenetkezelési kivételek és a jav
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100390895"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Üzenetkezelési kivételek Event Hubs – .NET (örökölt)

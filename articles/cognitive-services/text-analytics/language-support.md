@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
 ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101736610"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 nyelvi támogatás 
@@ -54,8 +54,8 @@ ms.locfileid: "101736610"
 | Arab                 |     `ar`      |      ✓*    |               2019-10-01        |                    |
 | Chinese-Simplified     |   `zh-hans`   |     ✓      |               2021-01-15        | `zh` szintén elfogadva |
 | Chinese-Traditional   |   `zh-hant`   |     ✓*      |               2019-10-01        |                    |
-| cseh                 |     `cs`      |     ✓*      |               2019-10-01        |                    |
-| dán                |     `da`      |     ✓*      |               2019-10-01        |                    |
+| Cseh                 |     `cs`      |     ✓*      |               2019-10-01        |                    |
+| Dán                |     `da`      |     ✓*      |               2019-10-01        |                    |
 | Holland                 |     `nl`      |     ✓*      |               2019-10-01        |                    |
 | Angol                |     `en`      |     ✓      |               2019-10-01        |                    |
 | finn               |     `fi`      |     ✓*      |               2019-10-01        |                    |
@@ -79,7 +79,7 @@ ms.locfileid: "101736610"
 
 | Nyelv              | Nyelvkód |  v3 támogatás | A v3 modell verziójától kezdődően érhető el: |       Jegyzetek        |
 |:----------------------|:-------------:|:----------:|:-----------------------------------------:|:------------------:|
-| dán                |     `da`      |     ✓     |                2019-10-01                 |                    |
+| Dán                |     `da`      |     ✓     |                2019-10-01                 |                    |
 | Holland                 |     `nl`      |     ✓      |                2019-10-01                 |                    |
 | Angol               |     `en`      |     ✓      |                2019-10-01                 |                    |
 | finn               |     `fi`      |     ✓      |                2019-10-01                 |                    |
@@ -146,8 +146,8 @@ Ha olyan tartalommal rendelkezik, amely ritkábban használt nyelven van kifejez
 |kínai (hagyományos)|`zh_cht`|✓|    |
 |Korzikai|`co`|✓|2021-01-05|
 |Horvát|`hr`|✓|    |
-|cseh|`cs`|✓|    |
-|dán|`da`|✓|    |
+|Cseh|`cs`|✓|    |
+|Dán|`da`|✓|    |
 |Dari|`prs`|✓|2020-09-01|
 |Divehi|`dv`|✓|    |
 |Holland|`nl`|✓|    |

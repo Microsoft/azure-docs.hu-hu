@@ -14,10 +14,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
 ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222564"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
@@ -71,7 +71,7 @@ Az [automatikus feladatátvételi csoportok](auto-failover-group-overview.md#ter
 | **Az SQL Managed Instance támogatása**                   |     Nem          |      Igen         |
 | **Ugyanabban a régióban lehet, mint az elsődleges**             |     Igen         |      Nem          |
 | **Több replika**                            |     Igen         |      Nem          |
-| **Támogatja az olvasásra optimalizálást**                          |     Igen         |      Igen         |
+| **Támogatja az olvasásra optimalizálást**                          |     Igen         |      Yes         |
 
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Adatbázis helyreállítása a meglévő kiszolgálóra

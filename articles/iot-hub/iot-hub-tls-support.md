@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: jlian
 ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234018"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS) támogatása IoT Hub
@@ -143,7 +143,7 @@ A nyilvános előzetes verzióhoz tartozó hivatalos SDK-támogatás még nem é
 1. Az OpenSSL használatakor hívja meg a [SSL_CTX_set_tlsext_max_fragment_lengtht](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) a töredék méretének megadásához.
 1. Kapcsolja össze az ügyfelet az előzetes verzió IoT Hubával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A IoT Hub biztonsági és hozzáférés-vezérléssel kapcsolatos további tudnivalókért tekintse meg a [IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md)című témakört.
 - További információ az X509-tanúsítvány használatáról az eszközök hitelesítéséhez: [eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](iot-hub-x509ca-overview.md)

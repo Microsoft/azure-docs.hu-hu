@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054060"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Oktatóanyag: ütemezett és ismétlődő automatizálási munkafolyamatok létrehozása Azure Logic Apps
@@ -151,7 +151,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
 1. A műveletben nyissa meg az **új paraméter hozzáadása listát**, és válassza ki ezeket a tulajdonságokat.
 
-   * **Optimalizálás**
+   * **Optimalizálása**
    * **Távolság mértékegysége**
    * **Közlekedési mód**
 
@@ -165,7 +165,7 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
    |----------|----------|-------|-------------|
    | **1. útvonalpont** | Yes | <*Start – hely*> | Az útvonal forrása. Ez a példa egy példa kezdő lakcímet határoz meg. |
    | **2. útvonalpont** | Yes | <*végső hely*> | Az útvonal célhelye. Ez a példa egy példa célként megadott címet határoz meg. |
-   | **Optimalizálás** | No | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a **timeWithTraffic** paraméter értékét. |
+   | **Optimalizálása** | No | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a **timeWithTraffic** paraméter értékét. |
    | **Távolság mértékegysége** | No | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa a **Milet** használja egységként. |
    | **Közlekedési mód** | No | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a **vezetési** mód lehetőséget. |
    |||||

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre go-funkciót Azure Functions egy�
 ms.topic: quickstart
 ms.date: 12/4/2020
 ms.openlocfilehash: 8b53031315cce3651a2de581d71da6ef6fe909c1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470370"
 ---
 # <a name="quickstart-create-a-go-or-rust-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: go-vagy Rust-függvény létrehozása az Azure-ban a Visual Studio Code használatával

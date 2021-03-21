@@ -12,10 +12,10 @@ ms.date: 01/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 4e933000c8e700d8bfd193b542e3855b2fca26f8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101689334"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint"></a>Oktatóanyag: minta SCIM-végpont fejlesztése
@@ -104,7 +104,7 @@ Az alapértelmezett jogkivonat-érvényesítési kód Azure AD-jogkivonat haszn�
 
 Az SCIM-végpont üzembe helyezése után ellenőrizheti, hogy az megfelel-e a SCIM RFC-nek. Ez a példa olyan teszteket biztosít a Poster-ban, amelyek ellenőrzik a szifilisz (létrehozás, olvasás, frissítés és törlés) műveleteit a felhasználók és csoportok számára, a szűrést, a csoporttagság frissítését és a felhasználók letiltását.
 
-A végpontok a `{host}/scim/` címtárban találhatók, és szabványos http-kérésekkel is használhatók a velük való kommunikációhoz. Az útvonal módosításához `/scim/` tekintse meg a *ControllerConstant.cs* a **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**-  >  **vezérlőkben** című témakört.
+A végpontok a `{host}/scim/` címtárban találhatók, és szabványos http-kérésekkel is használhatók a velük való kommunikációhoz. Az útvonal módosításához `/scim/` lásd: *ControllerConstant. cs* a **AzureADProvisioningSCIMreference**  >  **ScimReferenceApi**-  >  **vezérlőkben**.
 
 > [!NOTE]
 > A helyi tesztekhez csak HTTP-végpontokat használhat. Az Azure AD kiépítési szolgáltatásához a végpontnak támogatnia kell a HTTPS-t.

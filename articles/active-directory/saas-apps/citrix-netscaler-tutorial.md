@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 75d46edb332fb28132592e414e78bad64e75fef5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-kerberos-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix ADC-vel (Kerberos-alapú hitelesítés)
@@ -160,7 +160,7 @@ Virtuális kiszolgáló létrehozása:
 
 1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások** lehetőséget.
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![Citrix ADC-konfiguráció – szolgáltatások ablaktábla](./media/citrix-netscaler-tutorial/web01.png)
 
@@ -177,7 +177,7 @@ A terheléselosztó konfigurálása:
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be az alábbi értékeket a következő képernyőképen leírtak szerint:
 
@@ -224,7 +224,7 @@ Hitelesítési házirend létrehozása:
 
 1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok** lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. A **hitelesítési házirend létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
@@ -361,7 +361,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
 1.  Válassza a **forgalmi profilok** lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi profil konfigurálásához adja meg vagy válassza ki a következő értékeket.
 
@@ -377,7 +377,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
  
 1.  Válassza a **forgalmi szabályzat** lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi szabályzatok konfigurálásához adja meg vagy válassza ki a következő értékeket:
 
@@ -443,6 +443,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Citrix ADC-csempére kattint, a rendszer átirányítja a Citrix ADC bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Citrix ADC konfigurálását követően kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

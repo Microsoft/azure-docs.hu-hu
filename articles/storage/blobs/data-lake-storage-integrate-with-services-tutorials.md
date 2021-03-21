@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101735420"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Az Azure-szolgáltatásokat használó oktatóanyagok Azure Data Lake Storage Gen2
@@ -33,7 +33,7 @@ Ez a cikk olyan oktatóanyagokra mutató hivatkozásokat tartalmaz, amelyek bemu
 | HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
 | HDInsight | [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md) |
 | Power BI | [Data Lake Storage Gen2 adatai elemzése a Power BI használatával](/power-query/connectors/datalakestorage) |
-| Azure Data Explorer | [Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](/azure/data-explorer/data-lake-query-data) |
+| Azure Adatkezelő | [Azure Data Lake lekérdezése az Azure-Adatkezelő használatával](/azure/data-explorer/data-lake-query-data) |
 | Azure Cognitive Search | [Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]

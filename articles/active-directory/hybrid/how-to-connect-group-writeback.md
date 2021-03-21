@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c506c87ad5901754175f18e6b50bc6ed46a3c19
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98246910"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect csoport visszaírási
@@ -73,5 +73,5 @@ A csoport visszaírási letiltásához kövesse az alábbi lépéseket:
  >[!NOTE]
  > A csoport visszaírási letiltásával a teljes importálási és teljes szinkronizációs jelzőket "true" értékre állítja be az Azure Active Directory-összekötőn, így a szabály a következő szinkronizálási cikluson keresztül propagálja a szabályt, és törli azokat a csoportokat, amelyek korábban visszaírásra kerültek a Active Directory.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

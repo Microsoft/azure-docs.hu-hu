@@ -13,10 +13,10 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 11/02/2020
 ms.openlocfilehash: 257abf03994c7006b1c3789174f550515dcd309a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94841461"
 ---
 # <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted konfigurálása Azure Key Vault használatával 
@@ -179,7 +179,7 @@ Ez az oktatóanyag bemutatja, hogyan tárolhatók a kulcsok a Azure Key Vaultban
 
 Ezután titkosíthatja az oszlopokat, vagy mentheti a PowerShell-parancsfájlt, hogy később fusson. Ebben az oktatóanyagban válassza a **Folytatás a befejezéshez** lehetőséget, és kattintson a **tovább** gombra.
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Ellenőrizze, hogy a beállítások helyesek-e, majd kattintson a **Befejezés** gombra a Always encrypted telepítésének befejezéséhez.
 
@@ -266,7 +266,7 @@ Ez a példa a következőket mutatja be:
 - Illessze be az adatbevitelt a titkosított oszlopba.
 - Válasszon egy rekordot egy titkosított oszlop egy adott értékének szűrésével.
 
-Cserélje le a *program.cs* tartalmát a következő kódra. Cserélje le a globális connectionString változó kapcsolati karakterláncát a sorban, amely közvetlenül megelőzi a Main metódust a Azure Portal érvényes kapcsolati karakterlánccal. Ez az egyetlen módosítás, amelyet ehhez a kódnak kell elvégeznie.
+Cserélje le a *program. cs fájl* tartalmát a következő kódra. Cserélje le a globális connectionString változó kapcsolati karakterláncát a sorban, amely közvetlenül megelőzi a Main metódust a Azure Portal érvényes kapcsolati karakterlánccal. Ez az egyetlen módosítás, amelyet ehhez a kódnak kell elvégeznie.
 
 Futtassa az alkalmazást Always Encrypted működés közbeni megtekintéséhez.
 
@@ -581,7 +581,7 @@ Ahhoz, hogy a SSMS használatával hozzáférhessen az egyszerű szöveges infor
 Ezután adja hozzá az *oszlop titkosítási beállítás = engedélyezve* paramétert a csatlakozáskor.
 
 1. A SSMS kattintson a jobb gombbal a kiszolgálóra **Object Explorer** és válassza a **Leválasztás** lehetőséget.
-2. Kattintson az adatbázismotor **kapcsolódása** elemre  >  **Database Engine** a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások** elemre.
+2. Kattintson az adatbázismotor **kapcsolódása** elemre  >   a **Kapcsolódás a kiszolgálóhoz** ablak megnyitásához, majd kattintson a **Beállítások** elemre.
 3. Kattintson a **további kapcsolatok paramétereinek** és típus **oszlop titkosítási beállítás = engedélyezve** elemre.
 
     ![Képernyőkép, amely a további javítási paraméterek lapot mutatja.](./media/always-encrypted-azure-key-vault-configure/ssms-connection-parameter.png)

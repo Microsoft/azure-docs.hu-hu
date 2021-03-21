@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 1/26/2021
 ms.openlocfilehash: 83876f77e0d7ffc0ae20bc5a545c1f18f53f4a8f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98897985"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure Database for MySQL-kiszolgáló kezelése a Azure Portal használatával
@@ -90,7 +90,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
  
 
 > [!IMPORTANT]
-> A kiszolgáló rendszergazdai jelszavának alaphelyzetbe állítása automatikusan visszaállítja a kiszolgáló-rendszergazdai jogosultságokat az alapértelmezett értékre. Ha véletlenül visszavonta egy vagy több kiszolgáló-rendszergazdai jogosultságot, érdemes lehet alaphelyzetbe állítani a kiszolgáló-rendszergazdai jelszót.
+> Az új kiszolgáló-rendszergazdai jelszó beállítása automatikusan visszaállítja a kiszolgáló-rendszergazdai jogosultságokat az alapértelmezett értékekre. Ha véletlenül visszavonta egy vagy több kiszolgáló-rendszergazdai jogosultságot, érdemes lehet alaphelyzetbe állítani a kiszolgáló-rendszergazdai jelszót.
    
 > [!NOTE]
 > A kiszolgáló-rendszergazda felhasználó alapértelmezés szerint a következő jogosultságokkal rendelkezik: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCIÁk, INDEX, ALTER, adatbázisok megjelenítése, ideiglenes táblák létrehozása, táblák ZÁROLÁSa, végrehajtás, REPLIKÁLÁSi SLAVE, replikációs ügyfél, a nézet létrehozása, megjelenítés, létrehozás, RUTIN, ALTER RUTIN, felhasználó létrehozása, esemény, ESEMÉNYINDÍTÓ
