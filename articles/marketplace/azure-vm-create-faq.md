@@ -4,15 +4,15 @@ description: A virtuális gépek az Azure Marketplace-en való létrehozásakor 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-author: iqshahmicrosoft
-ms.author: iqshah
+author: kriti-ms
+ms.author: krsh
 ms.date: 03/10/2021
-ms.openlocfilehash: a74170af61c05d07a189b5ceb61dc0c9b7e14298
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 2975d1f1558bc7f9e4a12c18882e43a163b97982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200423"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593424"
 ---
 # <a name="common-questions-about-vm-in-azure-marketplace"></a>Gyakori kérdések az Azure Marketplace-en futó virtuális gépekről
 
@@ -56,7 +56,7 @@ Ez a probléma általában akkor jelenik meg, ha olyan virtuális merevlemezről
 
 Ez a szakasz azt ismerteti, hogyan hozhat létre és helyezhet üzembe egy felhasználó által megadott virtuálisgép-lemezképet. Ezt úgy teheti meg, hogy az operációs rendszer és az adatlemez VHD-lemezképeit egy Azure-beli üzembe helyezett virtuális merevlemezről biztosítja. Ezek a lépések általánosított VHD használatával helyezik üzembe a virtuális gépet.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Töltse fel az általánosított operációs rendszer VHD-jét és az adatlemez virtuális merevlemezeit az Azure Storage-fiókjába.
 3. A kezdőlapon válassza az erőforrás létrehozása lehetőséget, keressen rá a "sablon központi telepítése" kifejezésre, és válassza a létrehozás lehetőséget.
 4. Válassza a saját sablon létrehozása lehetőséget a szerkesztőben.
@@ -470,6 +470,17 @@ $objAzureKeyVaultSecret.Id -vhdUrl "$vhdUrl" -vmSize "Standard\_A2" -publicIPAdd
 # deploying VM with existing VHD
 New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName"
 ```
+
+## <a name="how-do-i-test-a-hidden-preview-image"></a>Hogyan tesztelni egy rejtett előnézeti képet?
+
+A Gyorsindítás sablonok használatával a rejtett előnézeti képeket is üzembe helyezheti.
+Az előnézeti lemezkép üzembe helyezéséhez 
+1. A [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux) vagy a [Windows rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)készült megfelelő gyors üzembe helyezési sablon ugrásához válassza az "üzembe helyezés az Azure-ban" lehetőséget. Ennek elvégzéséhez Azure Portal.
+2. A Azure Portal területen válassza a "sablon szerkesztése" lehetőséget.
+3. A JSON-sablonban keressen rá a imageReference kifejezésre, és frissítse a publisherid, a OfferID, a SkuID és a rendszerkép verzióját. Az előzetes rendszerkép teszteléséhez fűzze a "-PREVIEW" hozzáfűzést a OfferID.
+ ![kép](https://user-images.githubusercontent.com/79274470/110191995-71c7d500-7de0-11eb-9f3c-6a42f55d8f03.png)
+4. Kattintson a Save (Mentés) gombra.
+5. Töltse ki a további részleteket. Áttekintés és létrehozás
 
 
 ## <a name="next-steps"></a>Következő lépések

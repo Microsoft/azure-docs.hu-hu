@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 79ff404192de481965f3971f00328c49a591dd41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467629"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583377"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -72,6 +72,13 @@ Igen. Ha egy olyan előfizetést szeretne áthelyezni (amely tárolót tartalmaz
 
 >[!IMPORTANT]
 >Az előfizetés áthelyezése után győződjön meg arról, hogy a következő műveleteket hajtja végre:<ul><li>A szerepköralapú hozzáférés-vezérlési engedélyek és az egyéni szerepkörök nem ruházhatók át. Az új Azure AD-ben újra létre kell hoznia az engedélyeket és a szerepköröket.</li><li>Újból létre kell hoznia a tároló felügyelt identitását (MI) a letiltásával és engedélyezésével. Emellett ki kell értékelnie és újra létre kell hoznia a MI engedélyeit.</li><li>Ha a tároló olyan funkciókat használ, amelyek a MI, például a [privát végpontok](private-endpoints.md#before-you-start) és az [ügyfél által felügyelt kulcsok](encryption-at-rest-with-cmk.md#before-you-start)használatát használják, újra kell konfigurálnia a szolgáltatásokat.</li></ul>
+
+### <a name="can-i-move-a-subscription-that-contains-a-recovery-services-vault-to-a-different-tenant"></a>Áthelyezhetek egy Recovery Services tárolót tartalmazó előfizetést egy másik bérlőhöz?
+
+Igen. Győződjön meg a következőkről: 
+
+>[!IMPORTANT]
+>Az előfizetés áthelyezése után győződjön meg arról, hogy a következő műveleteket hajtja végre:<ul><li>Ha a tároló a CMK (ügyfél által felügyelt kulcsok) használja, frissítenie kell a tárolót. Ez lehetővé teszi, hogy a tároló újra létrehozza és újrakonfigurálja a tár felügyelt identitását és CMK (amely az új bérlőn található), ellenkező esetben a biztonsági mentések/visszaállítási művelet sikertelen lesz.</li><li>Újra kell konfigurálnia a RBAC-engedélyeket az előfizetésben, mivel a meglévő engedélyek nem helyezhetők át.</li></ul>
 
 ## <a name="azure-backup-agent"></a>Az Azure Backup ügynöke
 

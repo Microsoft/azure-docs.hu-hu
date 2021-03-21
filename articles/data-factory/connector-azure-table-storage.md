@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/20/2020
-ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 5674d656385d356f596f96cd7851d2cc05839761
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383772"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597403"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel
 
@@ -267,6 +267,7 @@ Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tev
 | azureTableInsertType |Az adatgyűjtés módja az Azure Table-be. Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Az engedélyezett értékek **egyesítése** (alapértelmezett) és **Csere**. <br/><br> Ez a beállítás a tábla szintjén nem szereplő sorra vonatkozik. Egyik lehetőség sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. Az egyesítési és a lecserélési beállítások működésének megismeréséhez lásd: [entitás beszúrása vagy egyesítése](/rest/api/storageservices/Insert-Or-Merge-Entity) és az [entitás beszúrása vagy cseréje](/rest/api/storageservices/Insert-Or-Replace-Entity). |No |
 | writeBatchSize |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
 | writeBatchTimeout |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek a TimeSpan. Ilyen például a "00:20:00" (20 perc). |Nem (az alapértelmezett érték 90 másodperc, a Storage-ügyfél alapértelmezett időtúllépése) |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 

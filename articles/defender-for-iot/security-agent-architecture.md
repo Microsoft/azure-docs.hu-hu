@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
 ms.openlocfilehash: de8c52372b2ef92dcf2abe357a40ef8947439a8a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103493961"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>Gyors útmutató: biztonsági ügynök hivatkozási architektúrája
@@ -43,7 +43,7 @@ A IoT biztonsági ügynökök védelmezője nyílt forráskódú projektként le
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs
+Nincsenek
 
 ## <a name="agent-supported-platforms"></a>Ügynök által támogatott platformok
 

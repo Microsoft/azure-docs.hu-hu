@@ -1,18 +1,18 @@
 ---
-title: Az Azure arc-kompatibilis kiszolgálók helyszíni üzembe helyezésének tervezése
+title: Azure arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
 description: Megtudhatja, hogyan engedélyezheti a nagy számú gépet az Azure arc használatára képes kiszolgálókon az Azure-ban az alapvető biztonsági, felügyeleti és monitorozási képességek konfigurálásának egyszerűbbé tételéhez.
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 63e224180cff8cab6e700bc72b8a5c39a7f26857
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103461300"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591180"
 ---
-# <a name="plan-and-deploy-arc-enabled-servers-at-scale"></a>Arc-kompatibilis kiszolgálók tervezése és üzembe helyezése méretezéssel
+# <a name="plan-and-deploy-arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
 
-Egy informatikai infrastruktúra-szolgáltatás vagy üzleti alkalmazás üzembe helyezése bármely vállalat számára kihívást jelenthet. Annak érdekében, hogy megfelelően fusson, és elkerülje az esetleges váratlan meglepetéseket és a nem tervezett költségeket, alaposan tervezze meg, hogy a lehető leghamarabb készen álljon. Az Azure arc-kompatibilis kiszolgálók méretezésének megtervezéséhez meg kell felelnie azokat a tervezési és telepítési feltételeket, amelyeket teljesíteni kell ahhoz, hogy sikeresen végre lehessen hajtani a feladatokat, hogy támogassa a nagy léptékű üzembe helyezést.
+Egy informatikai infrastruktúra-szolgáltatás vagy üzleti alkalmazás üzembe helyezése bármely vállalat számára kihívást jelenthet. Annak érdekében, hogy megfelelően fusson, és elkerülje az esetleges váratlan meglepetéseket és a nem tervezett költségeket, alaposan tervezze meg, hogy a lehető leghamarabb készen álljon. Az Azure arc-kompatibilis kiszolgálók bármilyen méretű üzembe helyezésének megtervezéséhez meg kell felelnie a feladatok sikeres elvégzéséhez szükséges tervezési és telepítési feltételeknek.
 
 Ahhoz, hogy az üzembe helyezés zökkenőmentesen járjon el, a tervnek világosan meg kell ismernie a következőket:
 
@@ -71,7 +71,7 @@ Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz az arc-kompat
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
-| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Példa a bevezetési erőforrások méretezésére:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere Windows Server rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[Nagyszabású bevezetési VMware vSphere Linux rendszerű virtuális gépek](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[Integrált AWS EC2-példányok méretezése a Ansible használatával](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[Központi telepítés a PowerShell távelérési szolgáltatásával](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
+| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Minta a Scale bevezetési erőforrásoknál:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[A Scale bevezetési VMware vSphere Windows Server-alapú virtuális gépeken](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[VMware vSphere Linux rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[A Scale bevezetési AWS EC2-példányok a Ansible használatával](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[A skálázás központi telepítése a PowerShell-távelérés használatával](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
 | [Egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Hozzon létre egy egyszerű szolgáltatást, amely nem interaktív módon, Azure PowerShell vagy a portálon keresztül csatlakozik a gépekhez.| Egy óra |
 | A csatlakoztatott számítógép ügynökének üzembe helyezése a célkiszolgálón és a gépeken |Az Automation eszközzel telepítse a parancsfájlokat a kiszolgálókra, és kapcsolódjon az Azure-hoz.| Egy vagy több nap a kiadási tervtől függően, és a szakaszos bevezetést követően. |
 

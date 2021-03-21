@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: 6474cb10cdb516bae0386b92e40ecd6f17250691
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225453"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593798"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Egy folyamatot futtató eseményindító létrehozása tárolási eseményre válaszként
 
@@ -49,7 +49,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-esem�
    > A tárolási esemény eseményindítója jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Egy Azure Event Grid korlátozás miatt Azure Data Factory csak legfeljebb 500 tárolási eseményt támogat a Storage-fiókokban.
 
    > [!NOTE]
-   > Új tárolási esemény eseményindítójának létrehozásához és módosításához a Data Factoryba való bejelentkezéshez használt Azure-fióknak és a tárolási esemény eseményindítójának közzétételéhez megfelelő szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedéllyel kell rendelkeznie a Storage-fiókhoz. Nincs szükség további engedélyre: a Azure Data Factory tartozó szolgáltatásnév _nem_ igényel külön engedélyt a Storage-fiókhoz vagy a Event Gridhoz. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](#role-based-access-control) szakasz.
+   > Új vagy meglévő tárolási esemény eseményindítójának létrehozásához vagy módosításához a Data Factoryba való bejelentkezéshez használt Azure-fióknak és a tárolási esemény eseményindítójának közzétételéhez megfelelő szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedéllyel kell rendelkeznie a Storage-fiókhoz. Nincs szükség további engedélyre: a Azure Data Factory tartozó szolgáltatásnév _nem_ igényel külön engedélyt a Storage-fiókhoz vagy a Event Gridhoz. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](#role-based-access-control) szakasz.
 
 1. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. A tárolási esemény eseményindítójának legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
 
@@ -67,12 +67,12 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-esem�
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image3.png" alt-text="Képernyőkép – a tárolási esemény eseményindítójának előzetes lapja.":::
 
-1. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **trigger hozzáadása** lehetőségre, és válassza az **új/szerkesztés** lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson a **Tovább gombra: az adatok előnézete** a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem **melletti** helyes értékre.
+1. Ha csatlakoztatni szeretne egy folyamatot ehhez az triggerhez, lépjen a folyamat vászonra, és kattintson az **aktiválás** elemre, és válassza az **új/szerkesztés** lehetőséget. Amikor megjelenik az oldalsó NAV, kattintson az **trigger kiválasztása...** legördülő listára, és válassza ki a létrehozott triggert. Kattintson a **Tovább gombra: az adatok előnézete** a konfiguráció megerősítéséhez, majd az adatelőnézet érvényesítése elem **melletti** helyes értékre.
 
 1. Ha a folyamat paraméterekkel rendelkezik, akkor megadhatja őket az trigger futtatási paraméterének navigációs oldalán. A tárolási esemény eseményindítója rögzíti a blob mappájának elérési útját és fájlnevét a tulajdonságok `@triggerBody().folderPath` és `@triggerBody().fileName` . Ezen tulajdonságok értékének egy folyamaton való használatához a tulajdonságokat a folyamat paramétereinek kell képeznie. Miután a tulajdonságokat hozzárendelte a paraméterekhez, az trigger által rögzített értékeket a `@pipeline().parameters.parameterName` folyamat során a kifejezésen keresztül érheti el. Részletes magyarázatért lásd: [a folyamatokban lévő trigger-metaadatok referenciája](how-to-use-trigger-parameterization.md)
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image4.png" alt-text="Képernyőfelvétel a tárolási események eseményindítójának leképezési tulajdonságairól a folyamat paramétereinek megjelenítéséhez.":::
-    
+
     Az előző példában az eseményindító úgy van beállítva, hogy a. csv fájlban végződő blob-elérési út a tárolóban, a Container _Sample---_ ban a mappa _esemény-tesztelés_ területén jön létre. A **folderPath** és a **filename** tulajdonság rögzíti az új blob helyét. Ha például a MoviesDB.csv bekerül az elérési út mintába – az adatelemzési/esemény-tesztelés, a `@triggerBody().folderPath` értéke `sample-data/event-testing` és a `@triggerBody().fileName` értéke `moviesDB.csv` . Ezek az értékek leképezve jelennek meg a példában a folyamat paramétereinek `sourceFolder` és `sourceFile` , amelyek az egész folyamat során használhatók `@pipeline().parameters.sourceFolder` `@pipeline().parameters.sourceFile` .
 
 1. Ha elkészült, kattintson a **Befejezés** gombra.

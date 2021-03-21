@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan másolhat adatok egy felhőből vagy helyszíni
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 45e71b636d43633d5b157db2815ddd19c31395b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369883"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608129"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontra a és a rendszerből a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,8 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
 | típus | A **Type** tulajdonságot **RestService** értékre kell beállítani. | Yes |
 | url | A REST-szolgáltatás alap URL-címe. | Yes |
 | enableServerCertificateValidation | Azt határozza meg, hogy a rendszer ellenőrizze-e a kiszolgálóoldali TLS/SSL-tanúsítványt a végponthoz való csatlakozáskor. | No<br /> (az alapértelmezett érték **igaz**) |
-| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt. | Yes |
+| authenticationType | A REST-szolgáltatáshoz való kapcsolódáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **alapszintű**, **AadServicePrincipal** és **ManagedServiceIdentity**. A felhasználó-alapú OAuth nem támogatott. Emellett a tulajdonságban konfigurálhatja a hitelesítési fejléceket is `authHeader` . Tekintse meg az alábbi, a további tulajdonságok és példák című szakaszt.| Yes |
+| authHeaders | További HTTP-kérelmek fejlécei a hitelesítéshez.<br/> Az API-kulcsos hitelesítés használatához például válassza a "névtelen" lehetőséget, és adja meg az API-kulcsot a fejlécben. | No |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure Integration Runtime használja. |No |
 
 ### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
@@ -150,6 +151,35 @@ A REST társított szolgáltatás a következő tulajdonságokat támogatja:
             "url": "<REST endpoint e.g. https://www.example.com/>",
             "authenticationType": "ManagedServiceIdentity",
             "aadResourceId": "<AAD resource URL e.g. https://management.core.windows.net>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-authentication-headers"></a>Hitelesítési fejlécek használata
+
+Emellett a kérések fejléceit a beépített hitelesítési típusokkal együtt is konfigurálhatja a hitelesítéshez.
+
+**Példa: API-kulcsos hitelesítés használata**
+
+```json
+{
+    "name": "RESTLinkedService",
+    "properties": {
+        "type": "RestService",
+        "typeProperties": {
+            "url": "<REST endpoint>",
+            "authenticationType": "Anonymous",
+            "authHeader": {
+                "x-api-key": {
+                    "type": "SecureString",
+                    "value": "<API key>"
+                }
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

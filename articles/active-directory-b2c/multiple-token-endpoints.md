@@ -12,10 +12,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491567"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWIN-alapú webes API migrálása b2clogin.com vagy egyéni tartományba
@@ -85,7 +85,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállítói végpontok is érvényesek-e.
 
 1. A **B2C-WebAPI-DotNet. SLN** megoldás megnyitása a Visual Studióban
-1. A **TaskService** projektben nyissa meg a *TaskService \\ App_Start * * \\ Startup.auth.cs** * fájlt a szerkesztőben
+1. A **TaskService** projektben nyissa meg *a \\ App_Start TaskService * * \\ Startup. auth. cs** * fájlt a szerkesztőben
 1. Adja hozzá a következő `using` direktívát a fájl elejéhez:
 
     `using System.Collections.Generic;`
@@ -105,7 +105,7 @@ Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállít
     };
     ```
 
-`TokenValidationParameters` a MSAL.NET által biztosított, és a OWIN middleware a *Startup.auth.cs*-ben a kód következő szakaszában használja fel. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
+`TokenValidationParameters` a MSAL.NET által biztosított, és a OWIN middleware a következő szakaszban, a *Startup. auth. cs* kódban használja. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions

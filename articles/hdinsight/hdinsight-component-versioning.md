@@ -7,10 +7,10 @@ author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
 ms.openlocfilehash: 53ca2ac73fdec9d3b39ffc04cbb24aca707a72eb
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490449"
 ---
 # <a name="azure-hdinsight-versions"></a>Azure HDInsight-verziók
@@ -23,8 +23,8 @@ Ez a táblázat a Azure Portal és más, például a PowerShell, a CLI és a .NE
 
 | HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |
 | --- | --- | --- | --- | --- | --- |
-| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |
-| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 30., 2021 |Június 30., 2021 |Igen |
+| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Yes |
+| [HDInsight 3,6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |2017. április 4.      | * Június 30., 2021 |Június 30., 2021 |Yes |
 
 * Kiterjesztjük bizonyos HDInsight 3,6-fürtök támogatási időkeretét. Lásd: [HDInsight 3,6 Component Versions](hdinsight-36-component-versioning.md).
 

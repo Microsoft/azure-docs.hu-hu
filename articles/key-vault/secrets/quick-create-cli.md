@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e84a9fe15f648311c22fb0f7e8f8374454f5668a
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 1443ab37beb28706227159c53d336384216d8387
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99989167"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582450"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure CLI használatával
 
@@ -39,7 +39,7 @@ Ebben a rövid útmutatóban egy kulcstartót hoz létre Azure Key Vault az Azur
 
 Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést kell végrehajtania. Ezt a jelszót egy alkalmazás használhatja. A jelszó neve **ExamplePassword** lesz, és a **hVFkk965BuUv** értékét fogja tárolni.
 
-Írja be az alábbi parancsokat egy titkos kód létrehozásához Key Vault nevű **ExamplePassword** , amely a **hVFkk965BuUv** értéket fogja tárolni:
+Az alábbi Azure CLI az Key [Vault Secret set](/cli/azure/keyvault/secret#az_keyvault_secret_set) paranccsal hozzon létre egy titkos kulcsot Key Vault nevű **ExamplePassword** , amely a **hVFkk965BuUv** értéket fogja tárolni:
 
 ```azurecli
 az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
@@ -64,5 +64,6 @@ Most létrehozott egy Key Vaultot, tárolt egy titkos kulcsot, és lekérte azt.
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
+- Megtudhatja, hogyan [tárolhat többsoros titkokat Key Vault](multiline-secrets.md)
 - Tekintse meg az Azure CLI-re vonatkozó hivatkozást az kulcstartó [parancsainál](/cli/azure/keyvault)
 - Tekintse át a [Key Vault biztonsági áttekintést](../general/security-overview.md)

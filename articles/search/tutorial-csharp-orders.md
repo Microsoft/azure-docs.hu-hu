@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786385"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
@@ -50,7 +50,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak 
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Adja hozzá a OrderBy tulajdonságot a keresési paraméterekhez
 
-1. A HomeController.cs-ben adja hozzá a **OrderBy** lehetőséget, és adja meg a minősítés tulajdonságot csökkenő rendezési sorrendben. Az **index (SearchData Model)** metódusban adja hozzá a következő sort a keresési paraméterekhez.
+1. A HomeController. cs-ban adja hozzá a **OrderBy** lehetőséget, és foglalja bele a minősítés tulajdonságot csökkenő rendezési sorrendtel. Az **index (SearchData Model)** metódusban adja hozzá a következő sort a keresési paraméterekhez.
 
     ```cs
     options.OrderBy.Add("Rating desc");
@@ -213,7 +213,7 @@ Nem szükséges módosítani a modelleket a rendezés engedélyezéséhez. Csak 
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Adja hozzá a szobaárak tartományát a nézethez
 
-1. Adja hozzá a legolcsóbb és legdrágább szobaárat tartalmazó tulajdonságokat a Hotel.cs-modellhez.
+1. Adja hozzá a legolcsóbb és legdrágább szobaárat tartalmazó tulajdonságokat a Hotel. cs modellhez.
 
     ```cs
     // Room rate range
@@ -631,7 +631,7 @@ A pontozási profilok a tervezési időszakban a keresési indexben vannak megha
     </body>
     ```
 
-1. Nyissa meg a SearchData.cs fájlt, és cserélje le a **SearchData** osztályt a következő kódra.
+1. Nyissa meg a SearchData. cs fájlt, és cserélje le a **SearchData** osztályt a következő kódra.
 
     ```cs
     public class SearchData
@@ -930,7 +930,7 @@ A pontozási profilok a tervezési időszakban a keresési indexben vannak megha
 
 1. Próbálja ki a "megújított dátum/minősítési profil" lehetőséget, hogy megtekintse, mire számíthat. Csak a közelmúltban felújított szállodáknak kell megszerezniük a _frissesség_ növelését.
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Erőforrások
 
 További információt az alábbi [pontozási profilok hozzáadása Azure Cognitive Search indexhez](./index-add-scoring-profiles.md)című témakörben talál.
 
@@ -944,7 +944,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Természetes, hogy egyes eredmények növekvő sorrendben legyenek rendezve (azaz távolság egy ponttól), és néhány csökkenő sorrendben (azaz a vendég minősítése).
 * A pontozási profilok meghatározhatók, ha a numerikus összehasonlítások nem érhetők el, vagy nem elég intelligensek egy adatkészlethez. Az egyes eredmények pontozásával intelligens módon rendezheti és jelenítheti meg az eredményeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Elvégezte ezt a C#-oktatóanyagokat – értékes ismereteket szerzett az Azure Cognitive Search API-król.
 

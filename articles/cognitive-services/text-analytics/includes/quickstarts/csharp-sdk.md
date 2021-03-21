@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/20/2021
+ms.date: 03/11/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 6fc7b347dfc12f1dd7758ccc2a2d1c58f11debad
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2a43042fb1caeee7c652d7c38111ccb2fa9bb359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102444848"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599051"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-a [v 3.1 dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+a [v 3.1 dokumentációja](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 függvénytár-forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 csomag (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5)  |  [v 3.1 minta](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
@@ -41,11 +41,11 @@ a [v3-referenciák dokumentációja](/dotnet/api/azure.ai.textanalytics)  |  [v3
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy "Hello World" projektet egyetlen C# forrásfájl használatával: *program.cs*.
+Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy "Hello World" projektet egyetlen C# forrásfájl: *program. cs*.
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Jelölje be a **prerelase belefoglalása** jelölőnégyzetet, majd válassza a verzió `5.1.0-beta.3` , majd a **telepítés** lehetőséget. Használhatja a [Package Manager konzolt](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
+Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldásra a **megoldáskezelő** , majd válassza a **NuGet-csomagok kezelése** lehetőséget. A megnyíló csomagkezelő területen válassza a **Tallózás** lehetőséget, és keresse meg a következőt: `Azure.AI.TextAnalytics` . Jelölje be a **prerelase belefoglalása** jelölőnégyzetet, majd válassza a verzió `5.1.0-beta.5` , majd a **telepítés** lehetőséget. Használhatja a [Package Manager konzolt](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is.
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
@@ -59,7 +59,7 @@ Az ügyféloldali kódtár telepítéséhez kattintson a jobb gombbal a megoldá
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
-Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
+Nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` irányelveket:
 
 ```csharp
 using Azure;
@@ -99,7 +99,7 @@ static void Main(string[] args)
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
-Nyissa meg a *program.cs* fájlt, és adja hozzá a következő `using` irányelveket:
+Nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` irányelveket:
 
 ```csharp
 using Azure;
@@ -216,7 +216,7 @@ Document sentiment: Positive
 
 ### <a name="opinion-mining"></a>Vélemény bányászata
 
-Hozzon létre egy nevű új függvényt `SentimentAnalysisWithOpinionMiningExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `AnalyzeSentimentBatch()` függvényt a `AdditionalSentimentAnalyses.OpinionMining` kapcsolóval. A visszaadott `AnalyzeSentimentResultCollection` objektum tartalmazza azt a gyűjteményt, `AnalyzeSentimentResult` amelyben a jelképezi `Response<DocumentSentiment>` . A és a közötti különbség, `SentimentAnalysis()` `SentimentAnalysisWithOpinionMiningExample()` hogy az utóbbi `MinedOpinion` minden mondatban tartalmazni fog, amely egy elemzett aspektust és a kapcsolódó vélemény (oka) t mutatja. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
+Hozzon létre egy nevű új függvényt `SentimentAnalysisWithOpinionMiningExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja `AnalyzeSentimentBatch()` meg a függvényt `IncludeOpinionMining` a táskában található kapcsolóval `AnalyzeSentimentOptions` . A visszaadott `AnalyzeSentimentResultCollection` objektum tartalmazza azt a gyűjteményt, `AnalyzeSentimentResult` amelyben a jelképezi `Response<DocumentSentiment>` . A és a közötti különbség, `SentimentAnalysis()` `SentimentAnalysisWithOpinionMiningExample()` hogy az utóbbi `SentenceOpinion` minden mondatban tartalmazni fog, amely egy elemzett célt és a kapcsolódó értékelés (oka) t mutatja. Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 
 ```csharp
 static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
@@ -245,16 +245,16 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
             Console.WriteLine($"\tSentence negative score: {sentence.ConfidenceScores.Negative:0.00}");
             Console.WriteLine($"\tSentence neutral score: {sentence.ConfidenceScores.Neutral:0.00}\n");
 
-            foreach (MinedOpinion minedOpinion in sentence.MinedOpinions)
+            foreach (SentenceOpinion sentenceOpinion in sentence.Opinions)
             {
-                Console.WriteLine($"\tAspect: {minedOpinion.Aspect.Text}, Value: {minedOpinion.Aspect.Sentiment}");
-                Console.WriteLine($"\tAspect positive score: {minedOpinion.Aspect.ConfidenceScores.Positive:0.00}");
-                Console.WriteLine($"\tAspect negative score: {minedOpinion.Aspect.ConfidenceScores.Negative:0.00}");
-                foreach (OpinionSentiment opinion in minedOpinion.Opinions)
+                Console.WriteLine($"\tTarget: {sentenceOpinion.Target.Text}, Value: {sentenceOpinion.Target.Sentiment}");
+                Console.WriteLine($"\tTarget positive score: {sentenceOpinion.Target.ConfidenceScores.Positive:0.00}");
+                Console.WriteLine($"\tTarget negative score: {sentenceOpinion.Target.ConfidenceScores.Negative:0.00}");
+                foreach (AssessmentSentiment assessment in sentenceOpinion.Assessments)
                 {
-                    Console.WriteLine($"\t\tRelated Opinion: {opinion.Text}, Value: {opinion.Sentiment}");
-                    Console.WriteLine($"\t\tRelated Opinion positive score: {opinion.ConfidenceScores.Positive:0.00}");
-                    Console.WriteLine($"\t\tRelated Opinion negative score: {opinion.ConfidenceScores.Negative:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment: {assessment.Text}, Value: {assessment.Sentiment}");
+                    Console.WriteLine($"\t\tRelated Assessment positive score: {assessment.ConfidenceScores.Positive:0.00}");
+                    Console.WriteLine($"\t\tRelated Assessment negative score: {assessment.ConfidenceScores.Negative:0.00}");
                 }
             }
         }
@@ -278,25 +278,24 @@ Document sentiment: Positive
         Sentence negative score: 0.16
         Sentence neutral score: 0.00
 
-        Aspect: food, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: service, Value: Negative
-        Aspect positive score: 0.01
-        Aspect negative score: 0.99
-                Related Opinion: unacceptable, Value: Negative
-                Related Opinion positive score: 0.01
-                Related Opinion negative score: 0.99
-        Aspect: concierge, Value: Positive
-        Aspect positive score: 1.00
-        Aspect negative score: 0.00
-                Related Opinion: nice, Value: Positive
-                Related Opinion positive score: 1.00
-                Related Opinion negative score: 0.00
-
+        Target: food, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: service, Value: Negative
+        Target positive score: 0.01
+        Target negative score: 0.99
+                Related Assessment: unacceptable, Value: Negative
+                Related Assessment positive score: 0.01
+                Related Assessment negative score: 0.99
+        Target: concierge, Value: Positive
+        Target positive score: 1.00
+        Target negative score: 0.00
+                Related Assessment: nice, Value: Positive
+                Related Assessment positive score: 1.00
+                Related Assessment negative score: 0.00
 
 Press any key to exit.
 ```
@@ -724,7 +723,7 @@ Key phrases:
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Hozzon létre egy nevű új függvényt `AnalyzeOperationExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `StartAnalyzeOperationBatch()` függvényt. A visszaadott `AnalyzeOperation` objektum tartalmazni fogja a `Operation` illesztőfelület-objektumát a következőhöz: `AnalyzeOperationResult` . Mivel ez egy hosszan futó művelet, a `await` (z `operation.WaitForCompletionAsync()` ) értékre a frissítéshez. A `WaitForCompletionAsync()` befejezését követően a gyűjteményt frissíteni kell a alkalmazásban `operation.Value` . Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
+Hozzon létre egy nevű új függvényt `AnalyzeOperationExample()` , amely a korábban létrehozott ügyfelet veszi át, és hívja meg a `StartAnalyzeBatchActionsAsync()` függvényt. A visszaadott `AnalyzeBatchActionsOperation` objektum tartalmazni fogja a `Operation` Interface objektumot. Mivel ez egy hosszan futó művelet, a `await` (z `operation.WaitForCompletionAsync()` ) értékre a frissítéshez. A `WaitForCompletionAsync()` befejezését követően a gyűjteményt frissíteni kell a alkalmazásban `operation.Value` . Ha hiba történt, a rendszer a következőt fogja eldobni: `RequestFailedException` .
 
 
 ```csharp
@@ -734,40 +733,49 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 
     var batchDocuments = new List<string> { inputText };
 
-    AnalyzeOperationOptions operationOptions = new AnalyzeOperationOptions()
+
+    TextAnalyticsActions actions = new TextAnalyticsActions()
     {
-        EntitiesTaskParameters = new EntitiesTaskParameters(),
+        RecognizeEntitiesOptions = new List<RecognizeEntitiesOptions>() { new RecognizeEntitiesOptions() },
         DisplayName = "Analyze Operation Quick Start Example"
     };
 
-    AnalyzeOperation operation = client.StartAnalyzeOperationBatch(batchDocuments, operationOptions, "en");
+    AnalyzeBatchActionsOperation operation = await client.StartAnalyzeBatchActionsAsync(batchDocuments, actions);
 
     await operation.WaitForCompletionAsync();
 
-    AnalyzeOperationResult resultCollection = operation.Value;
+    Console.WriteLine($"Status: {operation.Status}");
+    Console.WriteLine($"Created On: {operation.CreatedOn}");
+    Console.WriteLine($"Expires On: {operation.ExpiresOn}");
+    Console.WriteLine($"Last modified: {operation.LastModified}");
+    if (!string.IsNullOrEmpty(operation.DisplayName))
+        Console.WriteLine($"Display name: {operation.DisplayName}");
+    Console.WriteLine($"Total actions: {operation.TotalActions}");
+    Console.WriteLine($"  Succeeded actions: {operation.ActionsSucceeded}");
+    Console.WriteLine($"  Failed actions: {operation.ActionsFailed}");
+    Console.WriteLine($"  In progress actions: {operation.ActionsInProgress}");
 
-    RecognizeEntitiesResultCollection entitiesResult = resultCollection.Tasks.EntityRecognitionTasks[0].Results;
-
-    Console.WriteLine("Analyze Operation Request Details");
-    Console.WriteLine($"    Status: {resultCollection.Status}");
-    Console.WriteLine($"    DisplayName: {resultCollection.DisplayName}");
-    Console.WriteLine("");
-
-    Console.WriteLine("Recognized Entities");
-
-    foreach (RecognizeEntitiesResult result in entitiesResult)
+    await foreach (AnalyzeBatchActionsResult documentsInPage in operation.Value)
     {
-        Console.WriteLine($"    Recognized the following {result.Entities.Count} entities:");
+        RecognizeEntitiesResultCollection entitiesResult = documentsInPage.RecognizeEntitiesActionsResults.FirstOrDefault().Result;
 
-        foreach (CategorizedEntity entity in result.Entities)
+        Console.WriteLine("Recognized Entities");
+
+        foreach (RecognizeEntitiesResult result in entitiesResult)
         {
-            Console.WriteLine($"    Entity: {entity.Text}");
-            Console.WriteLine($"    Category: {entity.Category}");
-            Console.WriteLine($"    Offset: {entity.Offset}");
-            Console.WriteLine($"    ConfidenceScore: {entity.ConfidenceScore}");
-            Console.WriteLine($"    SubCategory: {entity.SubCategory}");
+            Console.WriteLine($"  Recognized the following {result.Entities.Count} entities:");
+
+            foreach (CategorizedEntity entity in result.Entities)
+            {
+                Console.WriteLine($"  Entity: {entity.Text}");
+                Console.WriteLine($"  Category: {entity.Category}");
+                Console.WriteLine($"  Offset: {entity.Offset}");
+                Console.WriteLine($"  Length: {entity.Length}");
+                Console.WriteLine($"  ConfidenceScore: {entity.ConfidenceScore}");
+                Console.WriteLine($"  SubCategory: {entity.SubCategory}");
+            }
+            Console.WriteLine("");
         }
-        Console.WriteLine("");
     }
 }
 ```
@@ -780,30 +788,38 @@ await AnalyzeOperationExample(client).ConfigureAwait(false);
 ### <a name="output"></a>Kimenet
 
 ```console
-Analyze Operation Request Details
-    Status: succeeded
-    DisplayName: Analyze Operation Quick Start Example
-
+Status: succeeded
+Created On: 3/10/2021 2:25:01 AM +00:00
+Expires On: 3/11/2021 2:25:01 AM +00:00
+Last modified: 3/10/2021 2:25:05 AM +00:00
+Display name: Analyze Operation Quick Start Example
+Total actions: 1
+  Succeeded actions: 1
+  Failed actions: 0
+  In progress actions: 0
 Recognized Entities
-    Recognized the following 3 entities:
-    Entity: Microsoft
-    Category: Organization
-    Offset: 0
-    ConfidenceScore: 0.83
-    SubCategory: 
-    Entity: Bill Gates
-    Category: Person
-    Offset: 25
-    ConfidenceScore: 0.85
-    SubCategory: 
-    Entity: Paul Allen
-    Category: Person
-    Offset: 40
-    ConfidenceScore: 0.9
-    SubCategory: 
+  Recognized the following 3 entities:
+  Entity: Microsoft
+  Category: Organization
+  Offset: 0
+  Length: 9
+  ConfidenceScore: 0.97
+  SubCategory:
+  Entity: Bill Gates
+  Category: Person
+  Offset: 25
+  Length: 10
+  ConfidenceScore: 1
+  SubCategory:
+  Entity: Paul Allen
+  Category: Person
+  Offset: 40
+  Length: 10
+  ConfidenceScore: 0.99
+  SubCategory:
 ```
 
-Az elemzési művelettel is felderítheti a személyes és a kulcsfontosságú kifejezések kinyerését. Tekintse meg a [minta elemzése](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) a githubon című témakört.
+Az elemzési művelettel a személyes adatok észlelése, a csatolt entitások felismerése és a kulcsfontosságú kifejezés kibontása is használható. Tekintse meg a [minta elemzése](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) a githubon című témakört.
 
 # <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 12/9/2020
 ms.openlocfilehash: 3ce4f673657561e196520466b569d0cf83d75a8a
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019346"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Kimenetek Azure Stream Analytics
@@ -24,17 +24,17 @@ Egyes kimeneti típusok támogatják a [particionálást](#partitioning), és a 
 
 | Kimenet típusa | Particionálás | Biztonság | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Igen|Azure Active Directory felhasználó </br> , Felügyelt identitás|
+|[Azure Data Lake Storage Gen 1](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory felhasználó </br> , Felügyelt identitás|
 |[Azure SQL Database](sql-database-output.md)|Igen, nem kötelező.|SQL-felhasználó hitelesítése, </br> Felügyelt identitás (előzetes verzió)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Igen|SQL-felhasználó hitelesítése, </br> Felügyelt identitás (előzetes verzió)|
-|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Igen|Hozzáférési kulcs, </br> Felügyelt identitás (előzetes verzió)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL-felhasználó hitelesítése, </br> Felügyelt identitás (előzetes verzió)|
+|[BLOB Storage és Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|Hozzáférési kulcs, </br> Felügyelt identitás (előzetes verzió)|
 |[Azure Event Hubs](event-hubs-output.md)|Igen, be kell állítania a partíciós kulcs oszlopot a kimeneti konfigurációban.|Hozzáférési kulcs, </br> Felügyelt identitás (előzetes verzió)|
-|[Power BI](power-bi-output.md)|Nem|Azure Active Directory felhasználó, </br> Felügyelt identitás|
-|[Azure Table storage](table-storage-output.md)|Igen|Fiókkulcs|
-|[Azure Service Bus-üzenetsorok](service-bus-queues-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Service Bus témakörök](service-bus-topics-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Igen|Hozzáférési kulcs|
-|[Azure Functions](azure-functions-output.md)|Igen|Hozzáférési kulcs|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory felhasználó, </br> Felügyelt identitás|
+|[Azure Table storage](table-storage-output.md)|Yes|Fiókkulcs|
+|[Azure Service Bus várólisták](service-bus-queues-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Service Bus témakörök](service-bus-topics-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Hozzáférési kulcs|
+|[Azure Functions](azure-functions-output.md)|Yes|Hozzáférési kulcs|
 
 ## <a name="partitioning"></a>Particionálás
 
@@ -79,7 +79,7 @@ Ezeket a Batch-ablak tulajdonságokat csak az API 2017-04-01-es verziója támog
           ],
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >

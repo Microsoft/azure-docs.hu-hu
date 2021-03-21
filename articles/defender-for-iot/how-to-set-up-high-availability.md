@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 8b647d5e97439db4805a7346a02db3f845dc9e37
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: eb5f2c6293042f44de5e3c061c6d379bee6e5b06
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523889"
 ---
 # <a name="about-high-availability"></a>A magas rendelkezésre állás ismertetése
@@ -149,6 +149,6 @@ A magas rendelkezésre állással történő frissítéshez:
 
 3. Frissítse az érzékelőket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [A helyszíni felügyeleti konzol aktiválása és beállítása](how-to-activate-and-set-up-your-on-premises-management-console.md)

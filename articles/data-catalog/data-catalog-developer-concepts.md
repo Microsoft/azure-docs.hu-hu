@@ -6,25 +6,28 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddeab4838feb07d1101993cab4ebc86581b4d8b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88799247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674699"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog fejlesztői fogalmak
-A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi az adatforrások felderítését és a közösségi-adatforrások metaadatait. A fejlesztők a REST API-kon keresztül használhatják a szolgáltatást. A szolgáltatásban megvalósított fogalmak megismerése fontos a fejlesztők számára a **Azure Data Catalog**való sikeres integráláshoz.
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
+A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely lehetővé teszi az adatforrások felderítését és a közösségi-adatforrások metaadatait. A fejlesztők a REST API-kon keresztül használhatják a szolgáltatást. A szolgáltatásban megvalósított fogalmak megismerése fontos a fejlesztők számára a **Azure Data Catalog** való sikeres integráláshoz.
 
 ## <a name="key-concepts"></a>Fő fogalmak 
-A **Azure Data Catalog** fogalmi modell a következő négy alapfogalmakon alapul: a **katalógus**, a **felhasználók**, az **eszközök**és a **jegyzetek**.
+A **Azure Data Catalog** fogalmi modell a következő négy alapfogalmakon alapul: a **katalógus**, a **felhasználók**, az **eszközök** és a **jegyzetek**.
 
 ![Azure Data Catalog fogalmi modell ábrája](./media/data-catalog-developer-concepts/concept2.png)
 
 ### <a name="catalog"></a>Katalógus
 A **katalógus** a szervezet által tárolt metaadatok legfelső szintű tárolója. Azure-fiókban egy **katalógus** engedélyezett. A katalógusok egy Azure-előfizetéshez vannak kötve, de egy adott Azure-fiókhoz csak egy **katalógus** hozható létre, annak ellenére, hogy egy fiók több előfizetéssel is rendelkezhet.
 
-A katalógus A **felhasználókat** és az **eszközöket**tartalmazza.
+A katalógus A **felhasználókat** és az **eszközöket** tartalmazza.
 
 ### <a name="users"></a>Felhasználók
 A felhasználók olyan rendszerbiztonsági tag, amelyek jogosultak műveletek végrehajtására (keresés a katalógusban, elemek hozzáadása, szerkesztése vagy eltávolítása stb.) a katalógusban.
@@ -40,7 +43,7 @@ A **katalógus** adategységeket tartalmaz. Az **eszközök** a katalógus álta
 
 Az eszközök részletessége az adatforrástól függ. SQL Server vagy Oracle Database esetén az eszköz lehet tábla vagy nézet. SQL Server Analysis Services esetén az eszköz lehet mérték, dimenzió vagy fő teljesítménymutató (KPI). SQL Server Reporting Services esetében az eszköz egy jelentés.
 
-Az **eszköz** a katalógusból hozzáadott vagy eltávolított dolog. Ez az az eredmény, amelyet a **keresésből**kap vissza.
+Az **eszköz** a katalógusból hozzáadott vagy eltávolított dolog. Ez az az eredmény, amelyet a **keresésből** kap vissza.
 
 A **rendszer a** nevét, helyét és típusát, valamint a hozzájuk tartozó jegyzeteket tartalmazza.
 
@@ -101,8 +104,8 @@ Ezek a tulajdonságok az összes nem egypéldányos jegyzet típusra vonatkoznak
 ### <a name="root-asset-types"></a>Legfelső szintű eszközök típusai
 A legfelső szintű eszközök típusai azok a típusok, amelyek a katalógusban regisztrálható adategységek különböző típusait jelölik. Minden gyökérszintű típushoz van egy nézet, amely a nézetben szereplő eszközöket és megjegyzéseket ismerteti. A nézet nevét a megfelelő {view_name} URL-szegmensben kell használni, amikor REST API használatával tesz közzé egy eszközt.
 
-<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>Tábla ("táblák")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előnézet<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>A táblázat a táblázatos adatokat ábrázolja.  Például: SQL-tábla, SQL-nézet, Analysis Services táblázatos táblázat, Analysis Services többdimenziós dimenzió, Oracle Table stb.   </td></tr><tr><td>Mérték ("mértékek")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus egy Analysis Services mértéket jelöl.</td></tr><tr><td></td><td>intézkedés</td><td>Oszlop</td><td></td><td>A mértéket leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai</td><td></td><td>Meghatározza, hogy a mérték kiszámítva vagy sem.</td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><td>KPI (KPI-k)</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><tr><td></td><td>goalExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés vagy számítás, amely visszaadja a KPI céljának értékét.</td></tr><tr><td></td><td>valueExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés, amely a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Sztring</td><td></td><td>Egy MDX-kifejezés, amely a KPI állapotát jelöli egy adott időpontban.</td></tr><tr><td></td><td>trendExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékét az idő múlásával. A trend bármilyen időalapú feltétel lehet, amely egy adott üzleti környezetben hasznos.</td>
-<tr><td>Jelentés ("jelentések")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus SQL Server Reporting Services jelentést jelöl </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td>Tároló ("tárolók")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus más eszközök tárolóját jelöli, például egy SQL-adatbázist, egy Azure BLOB-tárolót vagy egy Analysis Services modellt.</td></tr></table>
+<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>Tábla ("táblák")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előnézet<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>A táblázat a táblázatos adatokat ábrázolja.  Például: SQL-tábla, SQL-nézet, Analysis Services táblázatos táblázat, Analysis Services többdimenziós dimenzió, Oracle Table stb.   </td></tr><tr><td>Mérték ("mértékek")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus egy Analysis Services mértéket jelöl.</td></tr><tr><td></td><td>intézkedés</td><td>Oszlop</td><td></td><td>A mértéket leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai</td><td></td><td>Meghatározza, hogy a mérték kiszámítva vagy sem.</td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><td>KPI (KPI-k)</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><tr><td></td><td>goalExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés vagy számítás, amely visszaadja a KPI céljának értékét.</td></tr><tr><td></td><td>valueExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés, amely a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Sztring</td><td></td><td>Egy MDX-kifejezés, amely a KPI állapotát jelöli egy adott időpontban.</td></tr><tr><td></td><td>trendExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékét az idő múlásával. A trend bármilyen időalapú feltétel lehet, amely egy adott üzleti környezetben hasznos.</td>
+<tr><td>Jelentés ("jelentések")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus SQL Server Reporting Services jelentést jelöl </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td>Tároló ("tárolók")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus más eszközök tárolóját jelöli, például egy SQL-adatbázist, egy Azure BLOB-tárolót vagy egy Analysis Services modellt.</td></tr></table>
 
 ### <a name="annotation-types"></a>Jegyzetek típusai
 A jegyzetek típusai a metaadatok olyan típusait jelölik, amelyek a katalógusban más típusokhoz rendelhetők.
@@ -236,7 +239,7 @@ A Azure Data Catalog két engedélyezési mechanizmust használ:
 * Engedély alapú engedélyezés
 
 ### <a name="roles"></a>Szerepkörök
-Három szerepkör létezik: **rendszergazda**, **tulajdonos**és **közreműködő**.  Az egyes szerepkörök hatókörét és jogosultságait az alábbi táblázat foglalja össze.
+Három szerepkör létezik: **rendszergazda**, **tulajdonos** és **közreműködő**.  Az egyes szerepkörök hatókörét és jogosultságait az alábbi táblázat foglalja össze.
 
 <table><tr><td><b>Szerepkör</b></td><td><b>Hatókör</b></td><td><b>Jogok</b></td></tr><tr><td>Rendszergazda</td><td>Catalog (az összes eszköz/jegyzet a katalógusban)</td><td>Olvasási ViewRoles törlése
 
@@ -245,7 +248,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Tulajdonos</td
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>Közreműködő</td><td>Minden egyes eszköz és jegyzet</td><td>Olvasási ViewRoles frissítése Megjegyzés: a rendszer minden jogot visszavon, ha az elemre való olvasási jogosultságot visszavonják a Közreműködőtől</td></tr></table>
 
 > [!NOTE]
-> Az **olvasási**, **frissítési**, **törlési**és **ViewRoles** jogok bármely elemre (eszközre vagy jegyzetre) érvényesek, míg a **TakeOwnerShip**, a **ChangeOwnership**, a **ChangeVisibility**, a **ViewPermissions** csak a Főeszközre érvényes.
+> Az **olvasási**, **frissítési**, **törlési** és **ViewRoles** jogok bármely elemre (eszközre vagy jegyzetre) érvényesek, míg a **TakeOwnerShip**, a **ChangeOwnership**, a **ChangeVisibility**, a **ViewPermissions** csak a Főeszközre érvényes.
 > 
 > A **törlési** jogosultság egy elemre, illetve az alatta lévő alelemekre vagy egyetlen elemre vonatkozik. Egy eszköz törlése például törli az adott objektumhoz tartozó jegyzeteket is.
 > 
@@ -265,7 +268,7 @@ Szerepkörök és engedélyek vezérlésére szolgáló **put** és **post** né
 > 
 > A **tulajdonosi** szerepkör csak a legfelső szintű elemek esetében alkalmazható.
 > 
-> Alapértelmezés szerint amikor létrejön egy elemet a katalógusban, annak **közreműködői** beállítása a jelenleg hitelesített felhasználó. Ha az elemnek mindenki számára elérhetőnek kell lennie, a **közreműködőt** &lt; &gt; a **szerepkörök** tulajdonságban található mindenki speciális rendszerbiztonsági tag értékre kell állítani az elem közzétételekor. A **közreműködő** nem módosítható, és az elem élettartama alatt változatlan marad (még akkor is, ha a **rendszergazda** vagy a **tulajdonos** nem jogosult a **közreműködő**módosítására). Az egyetlen támogatott érték a **közreműködői** explicit beállítása esetén &lt; : a &gt; **közreműködő** csak olyan felhasználó lehet, aki létrehozta az elemeket vagy &lt; mindenkit &gt; .
+> Alapértelmezés szerint amikor létrejön egy elemet a katalógusban, annak **közreműködői** beállítása a jelenleg hitelesített felhasználó. Ha az elemnek mindenki számára elérhetőnek kell lennie, a **közreműködőt** &lt; &gt; a **szerepkörök** tulajdonságban található mindenki speciális rendszerbiztonsági tag értékre kell állítani az elem közzétételekor. A **közreműködő** nem módosítható, és az elem élettartama alatt változatlan marad (még akkor is, ha a **rendszergazda** vagy a **tulajdonos** nem jogosult a **közreműködő** módosítására). Az egyetlen támogatott érték a **közreműködői** explicit beállítása esetén &lt; : a &gt; **közreműködő** csak olyan felhasználó lehet, aki létrehozta az elemeket vagy &lt; mindenkit &gt; .
 > 
 
 ### <a name="examples"></a>Példák
@@ -343,5 +346,5 @@ A speciális rendszerbiztonsági tag &lt; mindenkinek &gt; van "00000000-0000-00
 > A PUT-ben nem szükséges egy elemek adattartalomának megadása a törzsben: PUT – csak szerepkörök és/vagy engedélyek frissítésére használható.
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure Data Catalog REST API-hivatkozás](/rest/api/datacatalog/)

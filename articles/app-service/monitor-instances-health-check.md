@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0e08d016ab85587d451ad2a1e296e7f494ba283e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714476"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596025"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>App Service példányok figyelése állapot-ellenőrzés használatával
 
@@ -48,7 +48,7 @@ Ez a cikk az App Service példányok figyelésére használja a Azure Portal ál
 
 Az állapot-ellenőrzési beállítások konfigurálása mellett a következő [Alkalmazásbeállítások](configure-common.md)is megadhatók:
 
-| Alkalmazás-beállítás neve | Megengedett értékek | Leírás |
+| Alkalmazás-beállítás neve | Megengedett értékek | Description |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 - 10 | A pingelési hibák maximális száma. Ha például a értékre van állítva `2` , a rendszer eltávolítja a példányokat a `2` sikertelen pingelések után. Emellett, ha a vertikális felskálázást végzi, App Service Pingeli az állapot-ellenőrzési útvonalat, hogy az új példányok készen álljanak. |
 |`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 - 100 | Ha el szeretné kerülni, hogy az egészséges példányok ne legyenek túlterhelve, a példányok több mint fele ki lesz zárva. Ha például egy App Service csomag négy példányra van méretezve, és a három nem kifogástalan állapotú, akkor a legtöbb kettő kizárja. A másik két példány (egy kifogástalan és egy sérült) továbbra is fogadja a kérelmeket. Abban a legrosszabb esetben, ha az összes példány állapota nem kifogástalan, a rendszer nem zárja ki az egyiket sem. A viselkedés felülbírálásához állítsa a és a közötti értéket `0` `100` . A magasabb érték azt jelenti, hogy A rendszer eltávolítja a nem megfelelő állapotú példányokat (az alapértelmezett érték 50). |
@@ -62,6 +62,10 @@ A nagyméretű nagyvállalati fejlesztési csapatoknak gyakran kell megfelelniü
 ## <a name="monitoring"></a>Figyelés
 
 Az alkalmazás állapot-ellenőrzési útvonalának megadása után Azure Monitor használatával figyelheti a webhely állapotát. A portál **állapot-ellenőrzési** paneljén kattintson a felső eszköztár **metrikái** elemére. Ekkor megnyílik egy új panel, amelyen megtekintheti a hely korábbi állapotának állapotát, és létrehozhat egy új riasztási szabályt. A helyek figyelésével kapcsolatos további információkért [tekintse meg a következő útmutatót: Azure monitor](web-sites-monitor.md).
+
+## <a name="limitations"></a>Korlátozások
+
+A prémium szintű függvények webhelyein nem engedélyezhető az állapot-ellenőrzési funkció. A prémium szintű függvények gyors skálázása miatt az állapot-ellenőrzési kérések szükségtelen ingadozásokat okozhatnak a HTTP-forgalomban. A prémium szintű függvények saját belső állapotú mintavételsel rendelkeznek, amelyekkel tájékoztatható a skálázási döntések.
 
 ## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
