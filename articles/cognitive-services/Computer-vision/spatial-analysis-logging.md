@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98186022"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722701"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -60,7 +60,7 @@ A Azure Monitor beállítása után létre kell hoznia a hitelesítő adatokat, 
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -105,16 +105,16 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 | Esemény neve | Description|
 |------|---------|
-|archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
-|archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
-|InputRate  |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
+|archon_exit     |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
+|archon_error     |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
+|InputRate     |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
 |OutputRate     |Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést. |
 |archon_allGraphsStarted | Elküldése, ha az összes gráf befejeződik. |
-|archon_configchange    | Egy gráf konfigurációjának módosításakor lett elküldve. |
+|archon_configchange     | Egy gráf konfigurációjának módosításakor lett elküldve. |
 |archon_graphCreationFailed     |A rendszer akkor továbbítja, ha a jelentett gráf `graphId` nem indul el. |
-|archon_graphCreationSuccess    |Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul. |
-|archon_graphCleanup    | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép. |
-|archon_graphHeartbeat  |A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében. |
+|archon_graphCreationSuccess     |Akkor lett elindítva, amikor a jelentett gráf `graphId` sikeresen elindul. |
+|archon_graphCleanup     | Akkor lett elküldve, amikor a jelentésben a jelentés `graphId` megtisztítása megtörtént, és kilép. |
+|archon_graphHeartbeat     |A szívverés minden percben elküldésre kerül a szaktudás minden gráfa esetében. |
 |archon_apiKeyAuthFail |Akkor küldi el a rendszer, ha a Computer Vision erőforrás-kulcs 24 óránál hosszabb ideig nem tudja hitelesíteni a tárolót, a következő okok miatt: nem kvóta, érvénytelen, offline. |
 |VideoIngesterHeartbeat     |Minden órában elküldjük, jelezve, hogy a videó stream a videó forrása, és az adott órában előforduló hibák száma. Minden gráf esetében jelenteni kell. |
 |VideoIngesterState | A jelentések *leálltak* vagy *megkezdődött* a video streaming szolgáltatásban. Minden gráf esetében jelenteni kell. |
@@ -363,7 +363,7 @@ A Kubernetes-fürt létrehozása után a `kubectl` parancssori eszköz használa
     New-HcsKubernetesUser -UserName
     ```
 
-3. Adja hozzá a *konfigurációs* fájlt a helyi számítógép felhasználói profiljának *. Kube* mappájához.   
+3. Adja hozzá a *konfigurációs* fájlt a helyi számítógép felhasználói profiljának *. Kube* mappájához.    
 
 4. Társítsa a névteret a létrehozott felhasználóval.
 
@@ -400,6 +400,34 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 |`Get-HcsKubernetesUserConfig -AseUser`     | Létrehoz egy Kubernetes-konfigurációs fájlt. A parancs használatakor másolja az adatokat egy *config* nevű fájlba. Ne mentse a fájlt kiterjesztéssel.        |
 | `Get-HcsApplianceInfo` | Az eszközre vonatkozó adatokat ad vissza. |
 | `Enable-HcsSupportAccess` | Hozzáférési hitelesítő adatokat hoz létre a támogatási munkamenet elindításához. |
+
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>Támogatási jegy benyújtása a térbeli elemzéshez 
+
+Ha további támogatásra van szüksége a térbeli elemzési tárolóval kapcsolatos problémák megoldásához, kövesse az alábbi lépéseket a támogatási jegy kitöltéséhez és elküldéséhez. A csapatunk további útmutatást nyújt Önnek. 
+
+### <a name="fill-out-the-basics"></a>Az alapok kitöltése 
+Hozzon létre egy új támogatási jegyet az [új támogatási kérelem](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) oldalon. A következő paraméterek kitöltéséhez kövesse az utasításokat:
+
+![Támogatás alapjai](./media/support-ticket-page-1-final.png)
+
+1. Állítsa be a **probléma típusát a következőre** : `Technical` .
+2. Válassza ki azt az előfizetést, amelyet a térbeli elemzési tároló üzembe helyezéséhez használ.
+3. Válassza ki `My services` és válassza ki a `Cognitive Services` szolgáltatást.
+4. Válassza ki azt az erőforrást, amelyet a térbeli elemzési tároló üzembe helyezéséhez használ.
+5. Írjon be egy rövid leírást, amely részletezi a problémával kapcsolatos problémát. 
+6. Válassza `Spatial Analysis` a probléma típusa lehetőséget.
+7. Válassza ki a megfelelő altípust a legördülő listából.
+8. Válassza a **Next (tovább** ) lehetőséget: a következő lapra való áttéréshez szükséges megoldások.
+
+### <a name="recommended-solutions"></a>Javasolt megoldások
+A következő szakasz a kiválasztott probléma típusának ajánlott megoldásait fogja ajánlani. Ezek a megoldások a leggyakoribb problémák megoldására szolgálnak, de ha nem hasznosak a megoldásához, kattintson a **Tovább gombra: részletek** a következő lépéshez való ugráshoz.
+
+### <a name="details"></a>Részletek
+Ezen az oldalon további részleteket is megtudhat a megjelenő problémáról. Ügyeljen arra, hogy a lehető legrészletesebben vegye fel a problémát, mivel ez segít a mérnököknek a probléma jobb szűkítéséhez. Adja meg az előnyben részesített kapcsolattartási módszert, valamint a probléma súlyosságát, hogy kapcsolatba lépjen Önnel, és válassza a Next (tovább) gombot **: felülvizsgálat + létrehozás** lehetőségre a következő lépéshez való áttéréshez. 
+
+### <a name="review-and-create"></a>Áttekintés és létrehozás 
+Tekintse át a támogatási kérelmének részleteit, és győződjön meg róla, hogy minden rendben van, és hogy a probléma hatékonyan jelent meg. Ha elkészült, válassza a **Létrehozás** lehetőséget, hogy elküldje a jegyet a csapatnak! A jegy kézhezvétele után e-mailben értesítést kap, és a csapatunk a lehető leghamarabb vissza fog térni Önnek. A jegy állapotát a Azure Portal tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

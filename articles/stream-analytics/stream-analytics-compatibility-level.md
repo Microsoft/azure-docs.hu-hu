@@ -5,29 +5,30 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 03/18/2021
+ms.openlocfilehash: a040aecbdee40832bd21256e26a140a986b65e39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094083"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606242"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics feladatok kompatibilitási szintje
 
-Ez a cikk a Azure Stream Analytics kompatibilitási szintjének beállítását ismerteti. A Stream Analytics felügyelt szolgáltatás, amely rendszeres frissítésekkel és teljesítménnyel kapcsolatos újdonságokkal rendelkezik. A szolgáltatás futtatókörnyezetének legtöbb frissítése automatikusan elérhetővé válik a végfelhasználók számára. 
+Ez a cikk a Azure Stream Analytics kompatibilitási szintjének beállítását ismerteti.
 
-A szolgáltatás egyes új funkciói azonban jelentős változást is bevezethetnek, például egy meglévő feladat viselkedésének változását, vagy az adatok futtatásának módját a futó feladatok során. A meglévő Stream Analytics feladatok jelentős változtatások nélkül is megtarthatók, ha elhagyja a kompatibilitási szint beállítását. Ha készen áll a legújabb futásidejű viselkedésekre, a kompatibilitási szint növelésével engedélyezheti a funkciót. 
+A Stream Analytics felügyelt szolgáltatás, amely [rendszeres és folyamatos teljesítménybeli frissítésekkel](https://azure.microsoft.com/updates/?product=stream-analytics)rendelkezik. A szolgáltatás futásidejű frissítéseinek többsége automatikusan elérhetővé válik a végfelhasználók számára a kompatibilitási szinttől függetlenül. Ha azonban egy új funkció bevezeti a meglévő feladatok viselkedését, vagy megváltoztatja az adatoknak a futó feladatok során való felhasználásának változását, ezt a változást egy új kompatibilitási szinten mutatjuk be. A meglévő Stream Analytics feladatok jelentős változtatások nélkül is megtarthatók, ha elhagyja a kompatibilitási szint beállítását. Ha készen áll a legújabb futásidejű viselkedésekre, a kompatibilitási szint növelésével engedélyezheti a funkciót.
+
 
 ## <a name="choose-a-compatibility-level"></a>Kompatibilitási szint kiválasztása
 
-A kompatibilitási szint vezérli a stream Analytics-feladatok futásidejű viselkedését. 
+A kompatibilitási szint vezérli a stream Analytics-feladatok futásidejű viselkedését.
 
 A Azure Stream Analytics jelenleg három kompatibilitási szintet támogat:
 
-* 1,0 – az eredeti kompatibilitási szint a Azure Stream Analytics néhány éve általánosan elérhetővé vált.
-* 1,1 – korábbi viselkedés
 * 1,2 – a legújabb fejlemények a legújabb megoldásokkal
+* 1,1 – korábbi viselkedés
+* 1,0 – az eredeti kompatibilitási szint a Azure Stream Analytics néhány éve általánosan elérhetővé vált. 
 
 Amikor új Stream Analytics feladatot hoz létre, ajánlott azt a legújabb kompatibilitási szinttel létrehozni. Indítsa el a feladat kialakítását a legújabb viselkedések alapján, hogy a későbbiekben ne kelljen a változásokhoz és a bonyolultsághoz adni.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 73f7ab83ea15d223b76b9f71fde2f8a6a37bdacf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2a91062a701ca1b07f47f381a04cdf06c57c5746
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586369"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721528"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Adatgyűjtés konfigurálása a Azure Monitor-ügynökhöz (előzetes verzió)
 
@@ -72,6 +72,8 @@ Kattintson az **adatforrás hozzáadása** lehetőségre, majd **tekintse át a 
 Mivel egy Log Analytics munkaterületen összegyűjtött adatokért kell fizetnie, csak a szükséges adatokat kell összegyűjtenie. Az alapszintű konfiguráció használata a Azure Portalban csak korlátozott számú eseményt tud gyűjteni. Az alkalmazások és a rendszernaplók esetében ez az összes olyan napló, amely egy adott súlyossággal rendelkezik. Biztonsági naplók esetén ez az összes naplózási művelet, vagy az összes naplózási hiba naplója.
 
 További szűrők megadásához egyéni konfigurációt kell használnia, és meg kell adnia egy XPath-t, amely kiszűri a nem használt eseményeket. Az XPath-bejegyzések az űrlapon íródnak `LogName!XPathQuery` . Előfordulhat például, hogy csak az alkalmazás eseménynaplójában lévő eseményeket szeretné visszaadni az 1035-es azonosítójú eseményhez. Az események XPathQuery `*[System[EventID=1035]]` . Mivel az alkalmazás eseménynaplójában szeretné lekérni az eseményeket, az XPath a következő lesz: `Application!*[System[EventID=1035]]`
+
+Tekintse meg az [xpath 1,0 korlátozásait](/windows/win32/wes/consuming-events#xpath-10-limitations) a Windows-Eseménynapló által támogatott XPath-korlátozások listájában.
 
 > [!TIP]
 > A `Get-WinEvent` `FilterXPath` XPathQuery érvényességének teszteléséhez használja a PowerShell-parancsmagot a paraméterrel. Az alábbi parancsfájl egy példát mutat be.

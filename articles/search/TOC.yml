@@ -44,6 +44,16 @@
       href: search-get-started-arm.md
 - name: Oktatóanyagok
   items:
+    - name: Keresés hozzáadása a webhelyhez
+      items:
+        - name: 1 – webhely áttekintése
+          href: tutorial-javascript-overview.md
+        - name: 2 – keresési index létrehozása
+          href: tutorial-javascript-create-load-index.md
+        - name: 3 – statikus webalkalmazás üzembe helyezése
+          href: tutorial-javascript-deploy-static-web-app.md
+        - name: 4 – a keresési integráció megismerése
+          href: tutorial-javascript-search-query-integration.md
     - name: C#-alkalmazás létrehozása
       items:
         - name: 1 – Alapszintű keresőoldal

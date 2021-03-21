@@ -8,10 +8,10 @@ ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 3223a1c8e20d8b0caced5d940132c32fa0aba97c
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103149087"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>IoT Hub telemetria betöltése az Azure digitális Twinsba
@@ -109,7 +109,7 @@ Adja hozzá a következő csomagokat a projekthez:
 * [Azure. Identity](https://www.nuget.org/packages/Azure.Identity/)
 * [Microsoft. Azure. webjobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid/)
 
-Nevezze át a *Function1.cs* minta függvényt, amelyet a Visual Studio generált az új projekttel a *IoTHubtoTwins.cs*. Cserélje le a fájlban található kódot a következő kódra:
+Nevezze át a *Function1. cs* minta függvényt, amelyet a Visual Studio generált az új projekttel a *IoTHubtoTwins. cs* használatával. Cserélje le a fájlban található kódot a következő kódra:
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 

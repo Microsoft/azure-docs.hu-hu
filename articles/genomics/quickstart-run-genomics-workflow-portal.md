@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 6daec7658c6db6c18bd198b9aff0b8993f27ac22
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177247"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rövid útmutató: Munkafolyamat futtatása a Microsoft Genomics szolgáltatással
@@ -100,7 +100,7 @@ Konfigurálja a Storage-fiókját az alábbi információkkal az előző képen 
  |Hely                  | USA 2. nyugati régiója                  | Használja ugyanazt a helyet, mint a genomikai fiók helye, a kimenő forgalom költségeinek csökkentése és a késés csökkentése érdekében.  | 
  |Teljesítmény                  | Standard                   | Az alapértelmezett beállítás a standard. A standard és a Premium Storage-fiókokkal kapcsolatos további részletekért lásd: [a Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)    |
  |Fiók altípusa       | BlobStorage       |  A le- és feltöltés a blobtárolók esetében 2–5-ször gyorsabb az általános célú fiókokhoz képest. |
- |Replikáció                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage-replikáció](../storage/common/storage-redundancy.md)    |
+ |Replikálás                  | Helyileg redundáns tárolás                  | A helyileg redundáns tárolással a rendszer abban a régióban lévő adatközpontba replikálja az adatokat, amelyben a tárfiókot létrehozták. További információ: [Azure Storage-replikáció](../storage/common/storage-redundancy.md)    |
  |Hozzáférési szint                  | Gyakori                   | A Gyakori hozzáférés a tárfiókban tárolt objektumok gyakoribb elérésére utal.    |
 
 Ezután válassza a **felülvizsgálat + létrehozás** lehetőséget a Storage-fiók létrehozásához. A genomikai fiók létrehozása során a felső menüsorban az **értesítések** lehetőségre kattintva figyelheti a telepítési folyamatot. 

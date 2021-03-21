@@ -2,7 +2,7 @@
 title: videó titkosítása AES-128 használatával: Azure Media Services Leírás: megtudhatja, hogyan titkosíthatja a videót AES 128 bites titkosítással, és hogyan használhatja a Key Delivery szolgáltatást a Azure Media Servicesban.
 szolgáltatások: Media-Services documentationcenter: ' ' Author: IngridAtMicrosoft Manager: femila Editor: ' '
 
-MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Date: 08/31/2020 MS. Author: inhenkel
+MS. Service: Media-Services MS. munkaterhelés: Media ms.tgt_pltfrm: na MS. devlang: na MS. topic: oktatóanyag MS. Date: 03/17/2021 MS. Author: inhenkel
 
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Oktatóanyag: videó titkosítása AES-128-mel és a Key Delivery Service használata
@@ -89,7 +89,7 @@ Ebben az oktatóanyagban létrehozjuk a feladatok bemenetét egy olyan fájl ala
 
 ## <a name="wait-for-the-job-to-complete"></a>Várakozás a feladat befejeződésére
 
-A feladatok elvégzése hosszabb időt vesz igénybe. Ha igen, értesítést szeretne kapni. Az alábbi kódminta bemutatja, hogyan kérdezheti le a [feladat](/rest/api/media/jobs) állapotát a szolgáltatásból. A lekérdezés nem ajánlott eljárás az üzemi alkalmazások számára a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt. További információ: [események átirányítása egyéni webes végpontra](job-state-events-cli-how-to.md).
+A feladatok elvégzése hosszabb időt vesz igénybe. Ha igen, értesítést szeretne kapni. Az alábbi kódminta bemutatja, hogyan kérdezheti le a [feladat](/rest/api/media/jobs) állapotát a szolgáltatásból. A lekérdezés nem ajánlott eljárás az üzemi alkalmazások számára a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt. További információ: [események átirányítása egyéni webes végpontra](monitoring/job-state-events-cli-how-to.md).
 
 A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Várólistán**, **Feldolgozás alatt**, **Befejeződött** (a végső állapot). Ha a feladattípus hibát észlelt, a **hiba** állapota jelenik meg. Ha a feladat megszakítása folyamatban van, akkor **megszakítja** és **megszakítja** a műveletet, ha elkészült.
 

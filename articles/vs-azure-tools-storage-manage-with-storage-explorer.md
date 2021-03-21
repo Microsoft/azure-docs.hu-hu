@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
 ms.openlocfilehash: 3a8fe3ded6608059cc6ad50901ffe6df5dcf1b08
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102441582"
 ---
 # <a name="get-started-with-storage-explorer"></a>A Storage Explorer használatának első lépései
@@ -123,7 +123,7 @@ Storage Explorer lehetővé teszi, hogy különböző hitelesítési módszerekk
 | Gen2-címtárak | Igen      | Nem                   | Igen (URL)                      | Yes                |
 | Fájlmegosztások      | Nem       | Nem                   | Igen (URL)                      | No                 |
 | Üzenetsorok           | Igen      | Nem                   | Igen (URL)                      | No                 |
-| Táblák           | Nem       | Nem                   | Igen (URL)                      | No                 |
+| Táblázatok           | Nem       | Nem                   | Igen (URL)                      | No                 |
  
 A Storage Explorer az emulátor konfigurált portjaival is csatlakozhat a [helyi tároló-emulátorhoz](#local-storage-emulator) .
 

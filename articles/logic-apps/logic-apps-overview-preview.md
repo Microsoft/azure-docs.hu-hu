@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/10/2021
 ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102636335"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Áttekintés: Azure Logic Apps előzetes verzió
@@ -69,7 +69,7 @@ Eközben a több-bérlős logikai alkalmazás típusát is létrehozhatja a Azur
 
 Az egybérlős logikai alkalmazás típusa esetén a következő munkafolyamat-típusok hozhatók létre ugyanazon logikai alkalmazáson belül:
 
-* *Állapotalapú*
+* *Nyilvántartó*
 
   Állapot-nyilvántartó munkafolyamatokat hozhat létre, ha az előző eseményekből származó adatok megtartására, felülvizsgálatára vagy hivatkozására van szüksége. Ezek a munkafolyamatok mentik az egyes műveletek bemeneteit és kimeneteit, valamint azok állapotát a külső tárolóban, ami az egyes futtatások befejezése után a Futtatás részleteinek és előzményeinek áttekintését teszi lehetővé. Az állapot-nyilvántartó munkafolyamatok nagy rugalmasságot biztosítanak, ha kimaradások történnek. A szolgáltatások és a rendszerek visszaállítása után megszakított futtatásokat állíthat össze a mentett állapotból, és újra futtathatja a munkafolyamatokat a befejezéshez. Az állapot-nyilvántartó munkafolyamatok akár egy évig is futhatnak.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: a5db1ac9c70429d4b6a0b690de1b29c3656b3cc8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 3b8b53446799eec3473d63c89672393a35f9787a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016711"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670955"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
@@ -29,16 +29,16 @@ Az Azure Network Watcher hibaelhárítási funkciója lehetővé teszi az átjá
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Eset
 
 Helyek közötti kapcsolatot szeretne konfigurálni az Azure és a helyszíni kapcsolat között a FortiGate használatával helyszíni VPN Gatewayként. A forgatókönyv megvalósításához a következő beállításokat kell megkövetelni:
 
 1. Virtual Network Gateway – az Azure-beli VPN Gateway
-1. Helyi hálózati átjáró – helyszíni [(FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway) ábrázolás az Azure-felhőben
-1. Helyek közötti kapcsolat (útvonalon alapuló) – [a VPN Gateway és a helyszíni útválasztó közötti kapcsolat](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection)
+1. Helyi hálózati átjáró – helyszíni [(FortiGate) VPN Gateway](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway) ábrázolás az Azure-felhőben
+1. Helyek közötti kapcsolat (útvonalon alapuló) – [a VPN Gateway és a helyszíni útválasztó közötti kapcsolat](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection)
 1. [FortiGate konfigurálása](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-A helyek közötti konfiguráció konfigurálásának részletes lépéseit ismertető útmutató a következő címen érhető el: [VNet létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+A helyek közötti konfiguráció konfigurálásának részletes lépéseit ismertető útmutató a következő címen érhető el: [VNet létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 A kritikus fontosságú konfigurációs lépések egyike az IPsec-kommunikációs paraméterek konfigurálása, ami bármilyen helytelen konfiguráció a helyszíni hálózat és az Azure közötti kapcsolat elvesztését eredményezi. Az Azure VPN-átjárók jelenleg úgy vannak konfigurálva, hogy támogassák az 1. fázishoz tartozó következő IPsec-paramétereket. Ahogy az alábbi táblázatban is látható, az Azure VPN Gateway által támogatott titkosítási algoritmusok a következők: AES256, AES128 és 3DES.
 
@@ -87,11 +87,11 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 | PlannedMaintenance |  Az átjárópéldány karbantartása van folyamatban.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | Nem |
 | VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | Nem |
-| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
-| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
-| NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| Nem|
-| ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Igen|
-| GatewayCPUUsageExceeded | Az átjáró jelenlegi használati CPU-használata > 95%. | Igen |
+| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | No|
+| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | No|
+| NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| No|
+| ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Yes|
+| GatewayCPUUsageExceeded | Az átjáró jelenlegi használati CPU-használata > 95%. | Yes |
 
 ### <a name="connection"></a>Kapcsolat
 
@@ -101,14 +101,14 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
 | PlannedMaintenance | Az átjárópéldány karbantartása van folyamatban.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | Nem |
-| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | Nem |
-| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | Nem |
-| ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |Nem|
-| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
-| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
-| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Igen|
-| PeerReachability | A társ-átjáró nem érhető el. | Igen|
-| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
+| VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | No |
+| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | No |
+| ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |No|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Yes |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Yes|
+| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Yes|
+| PeerReachability | A társ-átjáró nem érhető el. | Yes|
+| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Yes|
 | WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
 
 ## <a name="next-steps"></a>Következő lépések

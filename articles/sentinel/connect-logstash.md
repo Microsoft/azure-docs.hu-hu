@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
 ms.openlocfilehash: da7d540a4b7982c7f743a7ae968515485b45aa5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035427"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
@@ -65,7 +65,7 @@ Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjtemény
 
 Használja a konfigurációs [fájl Logstash struktúrájában](https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html) található információkat, és adja hozzá az Azure Sentinel kimeneti beépülő modult a konfigurációhoz a következő kulcsokkal és értékekkel. (A megfelelő konfigurációs fájl szintaxisa a tábla után jelenik meg.)
 
-| Mező neve | Adattípus | Leírás |
+| Mező neve | Adattípus | Description |
 |----------------|---------------|-----------------|
 | `workspace_id` | sztring | Adja meg a munkaterület AZONOSÍTÓjának GUID azonosítóját. * |
 | `workspace_key` | sztring | Adja meg a munkaterület elsődleges kulcsának GUID azonosítóját. * |

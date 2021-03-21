@@ -8,10 +8,10 @@ ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 5b1aab8b38614249d6b502044b5c4c8170f46b3c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492217"
 ---
 # <a name="ui-framework-capabilities"></a>Felhasználói felületi keretrendszer képességei
@@ -22,7 +22,7 @@ Az Azure kommunikációs szolgáltatások felhasználói felületének keretrend
 
 ## <a name="ui-framework-composite-components"></a>Felhasználói felületi keretrendszer – összetett összetevők
 
-| Kompozit               | Leírás                                               | Webes   | Android | iOS   |
+| Kompozit               | Description                                               | Webes   | Android | iOS   |
 |-------------------------|-----------------------------------------------------------|-------|---------|-------|
 | Csoportos hívás összetett | Az Azure kommunikációs szolgáltatások hangsúlyos hang-és videó-Meghívási élménye, amely a folyékony felhasználói felület kialakítási eszközeivel hívja fel a kapcsolatot. Támogatja a csoportos hívást az Azure kommunikációs szolgáltatások csoportjának azonosítójával. Az összetett funkció lehetővé teszi az egy-az-egyhez hívás használatát, ha az Azure kommunikációs szolgáltatások identitására vagy telefonszámára hivatkozik az Azure-ban beszerzett telefonszám használatával.                                    | React |  |  |
 | Csoportos csevegés – összetett    | Kis teljesítményű csevegési élmény az Azure kommunikációs szolgáltatásokhoz, folyékony felhasználói felületi tervezési eszközök használatával. Ez a tapasztalat egy olyan egyszerű csevegési ügyfél megvalósítására koncentrál, amely képes csatlakozni az Azure kommunikációs szolgáltatások szálához. Lehetővé teszi a felhasználók számára üzenetek küldését és a Beérkezett üzenetek megtekintését, valamint a beolvasási elismervények beírását. Az 1:1-tól kezdve a csevegési forgatókönyvekre is méretezhető. Egyetlen csevegési szál támogatása.                         | React |  |  |

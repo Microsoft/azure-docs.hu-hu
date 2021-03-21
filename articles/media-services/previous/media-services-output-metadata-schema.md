@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 519aa158d60eae97eb4c1b792bcecfc8a6c066e0
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008284"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
@@ -97,7 +97,7 @@ Egy adott videó nyomon követése a szülő AssetFile.
 Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | **ID**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. |
 | **FourCC**<br/><br/> Kötelező |**xs: karakterlánc** |Videós kodek FourCC kódja |
@@ -129,7 +129,7 @@ Egy adott hangsávot a szülő AssetFile.
 Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | **ID**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID. |
 | **Codec** |**xs: karakterlánc** |Hangsávok kodekének karakterlánca |
@@ -150,7 +150,7 @@ Hangerő-mérési eredmények paramétereinek megadása
 Megtalálhatja az XML-példa XML- [példáját](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs: karakterlánc** |A **Dolby** Professional hangmérési fejlesztési csomag verziószáma. |
 | **DialogNormalization**<br/><br/> minInclusive = "-31" maxInclusive = "-1"<br/><br/> Kötelező |**xs: int** |A DPLM-en keresztül generált DialogNormalization szükséges, ha a LoudnessMetering be van állítva |

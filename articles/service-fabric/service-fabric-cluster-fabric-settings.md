@@ -4,10 +4,10 @@ description: Ez a cikk a háló beállításait és a testre szabható háló-fr
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 78d83faea802862d3cd6d1b1a9cf9f1016245065
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103232052"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
@@ -593,7 +593,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |ServiceApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 perc |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceApiHealthDuration határozza meg, hogy mennyi ideig kell várni a Service API futtatására, mielőtt bejelentjük, hogy az állapota nem kifogástalan. |
 |ServiceReconfigurationApiHealthDuration | Az idő másodpercben, az alapértelmezett érték 30 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. A ServiceReconfigurationApiHealthDuration határozza meg, hogy mennyi ideig várjon a Service API futtatása a nem megfelelő állapot jelentése előtt. Ez a rendelkezésre állást befolyásoló API-hívásokra vonatkozik.|
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat**| **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|TimeSpan, az alapértelmezett érték gyakori:: TimeSpan:: FromMilliseconds (15)|Statikus|Másodpercek alatt meg kell adni a TimeSpan. Meghatározza azt az időtartamot, ameddig a replikátor a művelet fogadása után várakozik a visszaigazolás visszaküldése előtt. Az ebben az időszakban fogadott egyéb műveletekhez a rendszer visszaküldi a visszaigazolásokat egy üzenetben – > csökkenti a hálózati forgalmat, de potenciálisan csökkenti a replikátor átviteli sebességét.|
@@ -835,7 +835,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, alapértelmezés szerint nincs|Dinamikus|Ez a "Name" és a "value" pár listája. Az egyes "nevek" a X509-tanúsítványok tulajdonos köznapi neve vagy DnsName. Az adott "név" értéknél a "value" a kiállítói ujjlenyomatai megfelelnek tartozó tanúsítvány vesszővel elválasztott listája, ha nem üres, a kiszolgálói tanúsítványok közvetlen kiállítójának szerepelnie kell a listán.|
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 | **Paraméter** | **Megengedett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |

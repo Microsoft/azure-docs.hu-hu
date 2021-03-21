@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: 34c7df2b0e61536c0b5f0bc1e4a97d58d0d9c6a4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490508"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -39,13 +39,13 @@ A a `hmac-sha256-signature` következőkből áll:
 - Gazdagép
 - x-MS-Content-sha256
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 Az alábbi lépések azt ismertetik, hogyan kell létrehozni az engedélyezési fejlécet.
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-Egy konzolablak, például a cmd, a PowerShell vagy a bash használatával `dotnet new` hozzon létre egy új, a nevű Console-alkalmazást a paranccsal `SignHmacTutorial` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+Egy konzolablak, például a cmd, a PowerShell vagy a bash használatával `dotnet new` hozzon létre egy új, a nevű Console-alkalmazást a paranccsal `SignHmacTutorial` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: **program. cs**.
 
 ```console
 dotnet new console -o SignHmacTutorial

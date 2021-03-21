@@ -8,17 +8,17 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/12/2021
-ms.openlocfilehash: e467affd3ba1b839ce3323e3689d7f5134a0686f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9bb62544887e0bc0269b98cd98fbf97fc477352f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604304"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722429"
 ---
 # <a name="return-a-semantic-answer-in-azure-cognitive-search"></a>Szemantikai válasz visszaadása az Azure Cognitive Searchban
 
 > [!IMPORTANT]
-> A szemantikai keresési funkciók nyilvános előzetes verzióban érhetők el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A szemantikai keresés nyilvános előzetes verzióban érhető el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
 [Szemantikai lekérdezés](semantic-how-to-query-request.md)létrehozásakor lehetősége van kinyerni a tartalmat a legfelső egyezésű dokumentumokból, amelyek közvetlenül a lekérdezésre válaszolnak. Egy vagy több válasz is szerepelhet a válaszban, amelyet aztán egy keresési oldalon lehet megjeleníteni az alkalmazás felhasználói élményének javítása érdekében.
 
@@ -28,27 +28,27 @@ Ebből a cikkből megtudhatja, hogyan kérhet egy szemantikai választ, kicsomag
 
 A [szemantikai lekérdezésekre](semantic-how-to-query-request.md) vonatkozó összes előfeltétel a válaszokra is vonatkozik, beleértve a szolgáltatási szintet és a régiót is.
 
-+ A szemantikai lekérdezési paraméterekkel megfogalmazott lekérdezések, és tartalmazzák a "válaszok" paramétert. A szükséges paramétereket ebben a cikkben tárgyaljuk.
++ A lekérdezési logikának tartalmaznia kell a szemantikai lekérdezés paramétereit, valamint a "válaszok" paramétert. A szükséges paramétereket ebben a cikkben tárgyaljuk.
 
-+ A lekérdezési karakterláncokat olyan nyelven kell megfogalmazni, amely a kérdés jellemzőit mutatja (mit, hol, mikor, hogyan).
++ A felhasználó által megadott lekérdezési karakterláncokat olyan nyelven kell megfogalmazni, amely a kérdés jellemzőit mutatja (mi, hol, mikor, hogyan).
 
-+ A dokumentumok keresésének tartalmaznia kell egy válasz jellemzőit tartalmazó szöveget, és a szövegnek szerepelnie kell a "searchFields" elemben felsorolt mezők egyikében.
++ A dokumentumok keresésének tartalmaznia kell egy válasz jellemzőit tartalmazó szöveget, és a szövegnek szerepelnie kell a "searchFields" elemben felsorolt mezők egyikében. Például a "mi az a kivonatoló tábla" lekérdezés miatt, ha egyik searchFields sem tartalmaz "A kivonatoló táblát..." karaktert tartalmazó szakaszokat, akkor a válasz nem valószínű, hogy a rendszer visszaadja a választ.
 
 ## <a name="what-is-a-semantic-answer"></a>Mi az a szemantikai válasz?
 
-A szemantikai válasz egy [szemantikai lekérdezésből](semantic-how-to-query-request.md)álló összetevő. Egy vagy több, a keresési dokumentumból származó Verbatim-szakaszból áll, amely egy kérdésnek megfelelő lekérdezésre adott válaszként lett kialakítva. A visszaadott válaszhoz a kifejezéseknek vagy mondatoknak olyan keresési dokumentumban kell szerepelniük, amely a válasz nyelvi jellemzőit tartalmazza, és a lekérdezésnek kérdésként kell szerepelnie.
+A szemantikai válasz egy [szemantikai lekérdezési válasz](semantic-how-to-query-request.md)alstruktúrája. Egy vagy több, a keresési dokumentumból származó Verbatim-szakaszból áll, amely egy kérdésnek megfelelő lekérdezésre adott válaszként lett kialakítva. A visszaadott válaszhoz a kifejezéseknek vagy mondatoknak olyan keresési dokumentumban kell szerepelniük, amely a válasz nyelvi jellemzőit tartalmazza, és a lekérdezésnek kérdésként kell szerepelnie.
 
-A Cognitive Search egy gépi adatolvasási modellt használ a válaszok megfogalmazásához. A modell az elérhető dokumentumokból származó lehetséges válaszokat hozza létre, és ha elég magas szintű megbízhatósági szintet ér el, a megoldás javaslatot tesz.
+A Cognitive Search a legjobb válasz kiválasztásához egy gépi olvasási felolvasási modellt használ. A modell lehetséges válaszokat eredményez a rendelkezésre álló tartalomból, és ha az elég magas megbízhatósági szintet ér el, választ fog adni.
 
-A válaszok független, legfelső szintű objektumként lesznek visszaadva a lekérdezési válasz adattartalmában, amelyet a keresési lapokon, az oldalsó keresési eredmények mellett is választhat. Szerkezetileg a válasz tömb eleme, amely szöveget, egy dokumentum-kulcsot és egy megbízhatósági pontszámot tartalmaz.
+A válaszok független, legfelső szintű objektumként lesznek visszaadva a lekérdezési válasz adattartalmában, amelyet a keresési lapokon, az oldalsó keresési eredmények mellett is választhat. Szerkezetileg, ez egy tömb elem a válaszban, amely szövegből, dokumentum-kulcsból és megbízhatósági pontszámból áll.
 
 <a name="query-params"></a>
 
 ## <a name="how-to-request-semantic-answers-in-a-query"></a>Szemantikai válaszok kérése lekérdezésekben
 
-Szemantikai válasz visszaadásához a lekérdezésnek tartalmaznia kell a szemantikai lekérdezés típusát, a nyelvet, a keresési mezőket és a "válaszok" paramétert. A "válaszok" paraméter megadásával nem garantálható, hogy a rendszer választ kapjon, de a kérésnek tartalmaznia kell ezt a paramétert, ha a válasz feldolgozását egyáltalán meg kell hívni.
+Szemantikai válasz visszaadásához a lekérdezésnek tartalmaznia kell a szemantikai "queryType", a "queryLanguage", a "searchFields" és a "Answers" paramétert. A "válaszok" paraméter megadásával nem garantálható, hogy a rendszer választ kapjon, de a kérésnek tartalmaznia kell ezt a paramétert, ha a válasz feldolgozását egyáltalán meg kell hívni.
 
-A "searchFields" paraméter kritikus fontosságú a magas minőségi válaszok visszaadásához, mind a tartalom, mind a sorrend alapján. 
+A "searchFields" paraméter rendkívül fontos, hogy magas színvonalú választ adjon vissza mind a tartalom, mind a sorrend alapján (lásd alább). 
 
 ```json
 {
@@ -63,9 +63,9 @@ A "searchFields" paraméter kritikus fontosságú a magas minőségi válaszok v
 
 + A lekérdezési karakterlánc nem lehet null értékű, és kérdésként kell megfogalmazni. Ebben az előzetes verzióban a "queryType" és a "queryLanguage" beállításnak pontosan a példában látható módon kell megadnia.
 
-+ A "searchFields" paraméter határozza meg, hogy mely mezők biztosítanak jogkivonatot a kinyerési modellnek. Ügyeljen rá, hogy ezt a paramétert adja meg. Legalább egy sztring mezőnek szerepelnie kell, de tartalmaznia kell egy olyan karakterlánc-mezőt, amelyet úgy gondol, hogy a válasz megadásához hasznos. A searchFields összes mezőjébe együttesen csak körülbelül 8 000 token kerül át a modellbe. A mezőlista rövid mezőkkel indítható el, majd haladjon át a szöveggel formázott mezőkkel. A mező beállításával kapcsolatos pontos útmutatásért lásd: [SearchFields beállítása](semantic-how-to-query-request.md#searchfields).
++ A "searchFields" paraméter határozza meg, hogy mely karakterlánc-mezők biztosítanak jogkivonatokat a kinyerési modell számára. Ugyanazokat a mezőket hozza létre, amelyek feliratok is előállítanak válaszokat. Ha részletes útmutatást szeretne arról, hogyan állíthatja be ezt a mezőt úgy, hogy mind a feliratok, mind a válaszok esetében működjön, tekintse meg a [SearchFields beállítása](semantic-how-to-query-request.md#searchfields)című témakört. 
 
-+ A "válaszok" esetében az alapszintű paraméterek építése az `"answers": "extractive"` , ahol a visszaadott válaszok alapértelmezett száma egy. Megnövelheti a válaszok számát egy szám hozzáadásával, legfeljebb öt értékkel.  Akár egynél több válaszra van szüksége, az alkalmazás felhasználói élménytől függ, és hogyan szeretné megjeleníteni az eredményeket.
++ A "válaszok" esetében a paraméterek építése az `"answers": "extractive"` , ahol a visszaadott válaszok alapértelmezett száma egy. Megnövelheti a válaszok számát úgy, hogy hozzáad egy számot a fenti példában látható módon, legfeljebb öt.  Akár egynél több válaszra van szüksége, az alkalmazás felhasználói élménytől függ, és hogyan szeretné megjeleníteni az eredményeket.
 
 ## <a name="deconstruct-an-answer-from-the-response"></a>Válasz kiépítése a válaszból
 
@@ -115,7 +115,7 @@ A "How Do felhők Form" lekérdezés miatt a válasz a következő választ adja
 
 A legjobb eredmények érdekében az alábbi jellemzőkkel rendelkező dokumentumokra vonatkozó szemantikai válaszokat kell visszaadnia:
 
-+ a "searchFields" olyan mezőket kell biztosítania, amelyek elegendő szöveget biztosítanak, amelyben a válasz valószínűleg található. Csak a dokumentum Verbatim szövege lehet válaszként megjelenni.
++ a "searchFields" olyan mezőket kell biztosítania, amelyek elegendő szöveget biztosítanak, amelyben a válasz valószínűleg található. A dokumentumokban csak a Verbatim szöveg jelenhet meg válaszként.
 
 + a lekérdezési karakterláncok nem lehetnek null értékűek (Search = `*` ), és a sztringnek tartalmaznia kell egy kérdés jellemzőit, szemben a kulcsszavas kereséssel (az önkényes kifejezések vagy kifejezések szekvenciális listája). Ha a lekérdezési karakterlánc nem válaszol, a rendszer kihagyja a válasz feldolgozását, még akkor is, ha a kérelem lekérdezési paraméterként a "válaszok" kifejezést adja meg.
 

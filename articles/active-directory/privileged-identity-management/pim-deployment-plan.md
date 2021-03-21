@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b1d18982a4f2a9ee8ba585af56a5e9ded7c1c62
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036826"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) üzembe helyezése
@@ -233,16 +233,16 @@ A Privileged Identity Management-megoldás implementálása előtt érdemes a sz
 | Szerepkör | MFA megkövetelése | Értesítés | Incidens jegy | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Állandó rendszergazda |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globális rendszergazda | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Egyéb globális rendszergazdák | 1 óra | Vészhelyzeti hozzáférési fiókok |
-| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincs | 2 óra | Nincs |
-| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | Nincs | 8 óra | Nincs |
+| Exchange-rendszergazda | :heavy_check_mark: | :heavy_check_mark: | x | x | Nincsenek | 2 óra | Nincsenek |
+| Segélyszolgálat rendszergazdája | x | x | :heavy_check_mark: | x | Nincsenek | 8 óra | Nincsenek |
 
 #### <a name="privileged-identity-management-settings-for-azure-roles"></a>Azure-szerepkörök Privileged Identity Management beállításainak megadása
 
 | Szerepkör | MFA megkövetelése | Értesítés | Jóváhagyás megkövetelése | Jóváhagyó | Aktiválás időtartama | Aktív rendszergazda | Aktív lejárat | Jogosult lejárat |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincs | n.a. | 3 hónap |
-| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincs | 1 óra | Nincs | n.a. | 3 hónap |
-| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincs | 3 óra | Nincs | n.a. | 6 hónap |
+| Kritikus előfizetések tulajdonosa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Az előfizetés egyéb tulajdonosai | 1 óra | Nincsenek | n.a. | 3 hónap |
+| Kevésbé kritikus előfizetések felhasználói hozzáférésének rendszergazdája | :heavy_check_mark: | :heavy_check_mark: | x | Nincsenek | 1 óra | Nincsenek | n.a. | 3 hónap |
+| Virtuális gépek közreműködője | x | :heavy_check_mark: | x | Nincsenek | 3 óra | Nincsenek | n.a. | 6 hónap |
 
 Az alábbi táblázat az egyes beállításokat ismerteti.
 
