@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: f8135e11fb7b7ddb588ab3a8ed01227712072fd2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94647919"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services manuálisan
@@ -99,7 +99,7 @@ Most, hogy az összes szükséges szerepkör telepítve van, ideje létrehozni a
 
 1. Nyissa meg az **Útválasztás és távelérés** eszközt a Windows felügyeleti eszközökről.
 2. Válassza ki a helyi kiszolgálót a bal oldali navigációs oldalon.
-3. Válassza **Action**  ->  **a művelet konfigurálás és az Útválasztás és távelérés engedélyezése** lehetőséget.
+3. Válassza   ->  **a művelet konfigurálás és az Útválasztás és távelérés engedélyezése** lehetőséget.
 4. Amikor megjelenik az **Útválasztás és távelérési kiszolgáló telepítése varázsló** , kattintson a **tovább** gombra.
 5. A **konfiguráció** lapon válassza a **hálózati címfordítás (NAT)** konfigurációja lehetőséget.  Kattintson a **Tovább** gombra.
 

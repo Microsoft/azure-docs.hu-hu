@@ -12,10 +12,10 @@ author: Anurzeuii
 ms.date: 12/21/2020
 ms.custom: references_regions
 ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97725020"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning szuverén felhő paritása
@@ -150,77 +150,77 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 | Szolgáltatás                                       | Nyilvános felhő állapota | CH-Kelet – 2 | CH-Észak-3 |
 |----------------------------------------------------------------------------|:------------------:|:--------------------:|:-------------:|
 | **Automatizált gépi tanulás** |    | | |
-| Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE               | IGEN       | N.A.        |
-| Kísérletek létrehozása és futtatása a Studio webes felületén                        | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Piacvezető előrejelzési képességek                                  | FE               | IGEN       | N.A.        |
-| A Deep learning és az egyéb fejlett tanulók támogatása                      | FE               | IGEN       | N.A.        |
-| Nagy mennyiségű adat támogatása (legfeljebb 100 GB)                                          | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Azure Databricks integráció                                              | FE               | NO        | N.A.        |
-| SQL-, CosmosDB-és HDInsight-integrációk                                   | FE               | IGEN       | N.A.        |
+| Kísérletek létrehozása és futtatása jegyzetfüzetekben                                    | FE               | IGEN       | N/A        |
+| Kísérletek létrehozása és futtatása a Studio webes felületén                        | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Piacvezető előrejelzési képességek                                  | FE               | IGEN       | N/A        |
+| A Deep learning és az egyéb fejlett tanulók támogatása                      | FE               | IGEN       | N/A        |
+| Nagy mennyiségű adat támogatása (legfeljebb 100 GB)                                          | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Azure Databricks integráció                                              | FE               | NO        | N/A        |
+| SQL-, CosmosDB-és HDInsight-integrációk                                   | FE               | IGEN       | N/A        |
 | **Machine Learning folyamatok** |    | | |
-| Folyamatok létrehozása, futtatása és közzététele az Azure ML SDK használatával                   | FE               | IGEN       | N.A.        |
-| Folyamat-végpontok létrehozása az Azure ML SDK használatával                           | FE               | IGEN       | N.A.        |
-| Folyamatok ütemezett futtatásának létrehozása, szerkesztése és törlése az Azure ML SDK használatával | FE               | IGEN       | N.A.        |
-| A folyamat futtatási részleteinek megtekintése a Studióban                                        | FE               | IGEN       | N.A.        |
-| Folyamatok létrehozása, futtatása, megjelenítése és közzététele az Azure ML Designerben          | FE  | IGEN       | N.A.        |
-| Azure Databricks integráció az ML-folyamattal                             | FE               | NO        | N.A.        |
-| Folyamat-végpontok létrehozása az Azure ML Designerben                             | FE   | IGEN       | N.A.        |
+| Folyamatok létrehozása, futtatása és közzététele az Azure ML SDK használatával                   | FE               | IGEN       | N/A        |
+| Folyamat-végpontok létrehozása az Azure ML SDK használatával                           | FE               | IGEN       | N/A        |
+| Folyamatok ütemezett futtatásának létrehozása, szerkesztése és törlése az Azure ML SDK használatával | FE               | IGEN       | N/A        |
+| A folyamat futtatási részleteinek megtekintése a Studióban                                        | FE               | IGEN       | N/A        |
+| Folyamatok létrehozása, futtatása, megjelenítése és közzététele az Azure ML Designerben          | FE  | IGEN       | N/A        |
+| Azure Databricks integráció az ML-folyamattal                             | FE               | NO        | N/A        |
+| Folyamat-végpontok létrehozása az Azure ML Designerben                             | FE   | IGEN       | N/A        |
 | **Integrált jegyzetfüzetek** |   | | |
-| Munkaterület-jegyzetfüzet és fájlmegosztás                                        | FE               | IGEN       | N.A.        |
-| R-és Python-támogatás                                                       | FE               | IGEN       | N.A.        |
-| Virtuális hálózatok támogatása                                                    | Nyilvános előzetes verzió   | NO        | N.A.        |
+| Munkaterület-jegyzetfüzet és fájlmegosztás                                        | FE               | IGEN       | N/A        |
+| R-és Python-támogatás                                                       | FE               | IGEN       | N/A        |
+| Virtuális hálózatok támogatása                                                    | Nyilvános előzetes verzió   | NO        | N/A        |
 | **Számítási példány** |    | | |
-| Felügyelt számítási példányok integrált jegyzetfüzetekhez                         | FE               | NO        | N.A.        |
-| Jupyter, JupyterLab-integráció                                            | FE               | IGEN       | N.A.        |
-| Virtual Network (VNet) támogatása                                             | Nyilvános előzetes verzió   | IGEN       | N.A.        |
+| Felügyelt számítási példányok integrált jegyzetfüzetekhez                         | FE               | NO        | N/A        |
+| Jupyter, JupyterLab-integráció                                            | FE               | IGEN       | N/A        |
+| Virtual Network (VNet) támogatása                                             | Nyilvános előzetes verzió   | IGEN       | N/A        |
 | **SDK-támogatás** |    | | |
-| R SDK-támogatás                                                              | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Python SDK-támogatás                                                         | FE               | IGEN       | N.A.        |
+| R SDK-támogatás                                                              | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Python SDK-támogatás                                                         | FE               | IGEN       | N/A        |
 | **Biztonság** |   | | |
-| Virtual Network (VNet) képzés támogatása                                | FE               | IGEN       | N.A.        |
-| Virtual Network (VNet) a következtetések támogatása                               | FE               | IGEN       | N.A.        |
-| Pontozási végpont hitelesítése                                            | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Munkahelyi privát hivatkozás                                                     | Nyilvános előzetes verzió   | NO        | N.A.        |
-| ACI a VNet mögött                                                            | Nyilvános előzetes verzió   | NO        | N.A.        |
-| VNet mögötti ACR                                                            | Nyilvános előzetes verzió   | NO        | N.A.        |
-| Az AK-fürt magánhálózati IP-címe                                                  | Nyilvános előzetes verzió   | NO        | N.A.        |
+| Virtual Network (VNet) képzés támogatása                                | FE               | IGEN       | N/A        |
+| Virtual Network (VNet) a következtetések támogatása                               | FE               | IGEN       | N/A        |
+| Pontozási végpont hitelesítése                                            | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Munkahelyi privát hivatkozás                                                     | Nyilvános előzetes verzió   | NO        | N/A        |
+| ACI a VNet mögött                                                            | Nyilvános előzetes verzió   | NO        | N/A        |
+| VNet mögötti ACR                                                            | Nyilvános előzetes verzió   | NO        | N/A        |
+| Az AK-fürt magánhálózati IP-címe                                                  | Nyilvános előzetes verzió   | NO        | N/A        |
 | **Számítás** |   | | |
-| Kvótakezelés a munkaterületek között                                         | FE               | IGEN       | N.A.        |
+| Kvótakezelés a munkaterületek között                                         | FE               | IGEN       | N/A        |
 | **A gépi tanulásra vonatkozó tudnivalók** | | | |
-| Adatkészletek és adattárolók létrehozása, megtekintése és szerkesztése az SDK-ból                  | FE               | IGEN       | N.A.        |
-| Adatkészletek és adattárolók létrehozása, megtekintése és szerkesztése a felhasználói felületen                   | FE               | IGEN       | N.A.        |
-| Adatkészlet-drift figyelők megtekintése, szerkesztése vagy törlése az SDK-ból                   | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Adatkészlet-drift figyelők megtekintése, szerkesztése vagy törlése a felhasználói felületen                    | Nyilvános előzetes verzió   | IGEN       | N.A.        |
+| Adatkészletek és adattárolók létrehozása, megtekintése és szerkesztése az SDK-ból                  | FE               | IGEN       | N/A        |
+| Adatkészletek és adattárolók létrehozása, megtekintése és szerkesztése a felhasználói felületen                   | FE               | IGEN       | N/A        |
+| Adatkészlet-drift figyelők megtekintése, szerkesztése vagy törlése az SDK-ból                   | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Adatkészlet-drift figyelők megtekintése, szerkesztése vagy törlése a felhasználói felületen                    | Nyilvános előzetes verzió   | IGEN       | N/A        |
 | **Gépi tanulás életciklusa** |    | | |
-| Modell profilkészítése                                                            | FE               | RÉSZLEGES   | N.A.        |
-| Az Azure DevOps bővítmény a Machine Learning & a Azure ML CLI         | FE               | IGEN       | N.A.        |
-| FPGA-alapú Hardware Accelerated Models                                     | FE               | NO        | N.A.        |
-| Visual Studio Code-integráció                                             | Nyilvános előzetes verzió   | NO        | N.A.        |
-| Event Grid-integráció                                                     | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Azure Stream Analytics integrálása Azure Machine Learning               | Nyilvános előzetes verzió   | NO        | N.A.        |
+| Modell profilkészítése                                                            | FE               | RÉSZLEGES   | N/A        |
+| Az Azure DevOps bővítmény a Machine Learning & a Azure ML CLI         | FE               | IGEN       | N/A        |
+| FPGA-alapú Hardware Accelerated Models                                     | FE               | NO        | N/A        |
+| Visual Studio Code-integráció                                             | Nyilvános előzetes verzió   | NO        | N/A        |
+| Event Grid-integráció                                                     | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Azure Stream Analytics integrálása Azure Machine Learning               | Nyilvános előzetes verzió   | NO        | N/A        |
 | **Címkézés** |    | | |
-| Projekt címkézése felügyeleti portál                                        | FE               | IGEN       | N.A.        |
-| Labeler-portál                                                            | FE               | IGEN       | N.A.        |
-| Címkézés a privát munkaerő használatával                                          | FE               | IGEN       | N.A.        |
-| ML támogatott címkézés (képbesorolás és objektumok észlelése)           | Nyilvános előzetes verzió   | IGEN       | N.A.        |
+| Projekt címkézése felügyeleti portál                                        | FE               | IGEN       | N/A        |
+| Labeler-portál                                                            | FE               | IGEN       | N/A        |
+| Címkézés a privát munkaerő használatával                                          | FE               | IGEN       | N/A        |
+| ML támogatott címkézés (képbesorolás és objektumok észlelése)           | Nyilvános előzetes verzió   | IGEN       | N/A        |
 | **Felelősségteljes ML** |    | | |
-| A felhasználói felület ismertetése                                                       | Nyilvános előzetes verzió   | NO        | N.A.        |
-| Differenciált adatvédelmi SmartNoise eszközkészlet                                    | OSS              | NO        | N.A.        |
-| egyéni címkék a Azure Machine Learningban az adatlapok megvalósításához              | FE               | NO        | N.A.        |
-| Méltányos AzureML-integráció                                               | Nyilvános előzetes verzió   | NO        | N.A.        |
-| Értelmező SDK                                                      | FE               | IGEN       | N.A.        |
+| A felhasználói felület ismertetése                                                       | Nyilvános előzetes verzió   | NO        | N/A        |
+| Differenciált adatvédelmi SmartNoise eszközkészlet                                    | OSS              | NO        | N/A        |
+| egyéni címkék a Azure Machine Learningban az adatlapok megvalósításához              | FE               | NO        | N/A        |
+| Méltányos AzureML-integráció                                               | Nyilvános előzetes verzió   | NO        | N/A        |
+| Értelmező SDK                                                      | FE               | IGEN       | N/A        |
 | **Képzés** |    | | |
-| Kísérletezési naplók folyamatos átvitele                                              | FE               | IGEN       | N.A.        |
-| Megerősítő tanulás                                                     | Nyilvános előzetes verzió   | NO        | N.A.        |
-| Kísérletezés felhasználói felülete                                                         | FE               | IGEN       | N.A.        |
-| .NET-integráció ML.NET 1,0                                                | FE               | IGEN       | N.A.        |
+| Kísérletezési naplók folyamatos átvitele                                              | FE               | IGEN       | N/A        |
+| Megerősítő tanulás                                                     | Nyilvános előzetes verzió   | NO        | N/A        |
+| Kísérletezés felhasználói felülete                                                         | FE               | IGEN       | N/A        |
+| .NET-integráció ML.NET 1,0                                                | FE               | IGEN       | N/A        |
 | **Következtetésekhez** |   | | |
-| A Batch-következtetések                                                          | FE               | IGEN       | N.A.        |
-| Data Box Edge FPGA                                                    | Nyilvános előzetes verzió   | NO        | N.A.        |
+| A Batch-következtetések                                                          | FE               | IGEN       | N/A        |
+| Data Box Edge FPGA                                                    | Nyilvános előzetes verzió   | NO        | N/A        |
 | **Egyéb** |    | | |
-| Open Datasets                                                              | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Egyéni Cognitive Search                                                    | Nyilvános előzetes verzió   | IGEN       | N.A.        |
-| Számos modell                                                                | Nyilvános előzetes verzió   | NO        | N.A.        |
+| Open Datasets                                                              | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Egyéni Cognitive Search                                                    | Nyilvános előzetes verzió   | IGEN       | N/A        |
+| Számos modell                                                                | Nyilvános előzetes verzió   | NO        | N/A        |
 
 
 
@@ -239,6 +239,6 @@ Célunk, hogy a nyilvános felhő és a szuverén régiók között maximális p
 * IP-címtartományok: az [VNet kényszerített bújtatási](how-to-secure-training-vnet.md#forced-tunneling) utasításban használt CLI-parancs nem ad vissza IP-tartományokat. Ehelyett használja az [Azure IP-címtartományok és a szolgáltatás címkéit az Azure China-](https://www.microsoft.com//download/details.aspx?id=57062) hoz.
 * Azure Machine Learning a számítási példányok előzetes verziója nem támogatott olyan munkaterületen, amelyben a magánhálózati kapcsolat már engedélyezve van, de a CI a szolgáltatás bővítésének következő üzembe helyezése során is támogatott lesz az összes pénzmosás-régióra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni arról, hogy az Azure Machine learning mely régiókban érhető el, tekintse meg a [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/)című témakört.

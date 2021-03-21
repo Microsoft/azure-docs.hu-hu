@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc
 ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250179"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
@@ -114,7 +114,7 @@ Az alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngés
 
 Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet kihúzni, tekintse meg a [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással](cluster-container-registry-integration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure vote-alkalmazást telepítettünk egy AK-beli Kubernetes-fürtre. Megtanulta végrehajtani az alábbi műveleteket:
 

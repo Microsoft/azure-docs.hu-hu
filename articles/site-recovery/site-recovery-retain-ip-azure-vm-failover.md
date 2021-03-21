@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023550"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>IP-cím megőrzése a feladatátvétel során
@@ -161,6 +161,6 @@ A B vállalat nem tudja felvenni az elkülönített alkalmazásokat az alhálóz
  - Az alkalmazás rugalmassága érdekében a B vállalatnak minden alkalmazást saját dedikált Azure-VNet kell elhelyeznie.
  - Az egyes alkalmazások külön VNet a B vállalat feladatátvételt hajthat végre az elkülönített alkalmazásokban, és átirányíthatja a forrásoldali kapcsolatokat a célként megadott régióba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a [helyreállítási tervekről](site-recovery-create-recovery-plans.md).

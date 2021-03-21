@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
 ms.openlocfilehash: aa75d1d57f44bb1a4d6513823ac97ac9917b260f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934465"
 ---
-| Erőforrás |[Használatalapú csomag](../articles/azure-functions/consumption-plan.md)|[Prémium szintű csomag](../articles/azure-functions/functions-premium-plan.md)|[Dedikált csomag](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
+| Erőforrás |[Használatalapú csomag](../articles/azure-functions/consumption-plan.md)|[Prémium szintű csomag](../articles/azure-functions/functions-premium-plan.md)|[Dedikált terv](../articles/azure-functions/dedicated-plan.md)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
 |Alapértelmezett [időkorlát időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |5 | 30 |30<sup>1</sup> | 30 | 30 |
 |[Időtúllépés maximális időtartama](../articles/azure-functions/functions-scale.md#timeout) (perc) |10 | nem kötött<sup>7</sup> | nem kötött<sup>2</sup> | unbounded | unbounded |
@@ -23,9 +23,9 @@ ms.locfileid: "97934465"
 | Maximális memória (GB/példány) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Bármely csomópont támogatott |
 | Function Apps/csomag |100 |100 |nem kötött<sup>4</sup> | unbounded | unbounded |
 | [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 [régiónként](https://azure.microsoft.com/global-infrastructure/regions/) |100/erőforráscsoport |100/erőforráscsoport | - | - |
-| <sup>5</sup> . tárterület |5 TB |250 GB |50-1000 GB | 1 TB | n/a |
-| Egyéni tartományok/alkalmazás</a> |500<sup>6</sup> |500 |500 | 500 | n/a |
-| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-bindings.md) |nem kötött SNI SSL-kapcsolatok belefoglalva | nem kötött SNI SSL és 1 IP SSL kapcsolat is |nem kötött SNI SSL és 1 IP SSL kapcsolat is | nem kötött SNI SSL és 1 IP SSL kapcsolat is | n/a |
+| <sup>5</sup> . tárterület |5 TB |250 GB |50-1000 GB | 1 TB | n.a. |
+| Egyéni tartományok/alkalmazás</a> |500<sup>6</sup> |500 |500 | 500 | n.a. |
+| Egyéni tartomány [SSL-támogatása](../articles/app-service/configure-ssl-bindings.md) |nem kötött SNI SSL-kapcsolatok belefoglalva | nem kötött SNI SSL és 1 IP SSL kapcsolat is |nem kötött SNI SSL és 1 IP SSL kapcsolat is | nem kötött SNI SSL és 1 IP SSL kapcsolat is | n.a. |
 
 <sup>1</sup> alapértelmezés szerint a app Service csomag 1. x futtatókörnyezetének időtúllépése nem kötött.  
 <sup>2</sup> az App Service-csomagot [mindig](../articles/azure-functions/dedicated-plan.md#always-on)be kell állítani. A standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/)szerint kell fizetni.  

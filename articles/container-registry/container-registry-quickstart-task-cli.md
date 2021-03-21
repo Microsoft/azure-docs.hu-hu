@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.openlocfilehash: c6fe1fc246d112218b492072155175b2db99c8c9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032949"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Gyors útmutató: tároló-rendszerkép létrehozása és futtatása Azure Container Registry feladatokkal
@@ -23,7 +23,7 @@ Ebből a rövid [útmutatóból](container-registry-tutorial-quick-task.md)MEGIS
     
 - Ehhez a rövid útmutatóhoz az Azure CLI 2.0.58 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ha még nem rendelkezik tároló-beállításjegyzékkel, először hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -33,7 +33,7 @@ A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscso
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Container Registry létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Hozzon létre egy tároló-beállításjegyzéket az az [ACR Create][az-acr-create] paranccsal. A tárolóregisztrációs adatbázis nevének egyedinek kell lennie az Azure-ban, és 5–50 alfanumerikus karaktert kell tartalmaznia. A következő példában a rendszer a *myContainerRegistry008* használja. Ezt cserélje le egy egyedi értékre.
 

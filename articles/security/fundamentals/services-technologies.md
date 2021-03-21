@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 27443eb9c04c69567b3a1374f11e8b53837040f2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100585411"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
@@ -92,4 +92,4 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure-alkalmazásproxy](../../active-directory/manage-apps/application-proxy.md)| A helyszíni környezetben üzemeltetett webalkalmazások távoli elérésének biztonságossá tételéhez használt hitelesítő kezelőfelület. |
 |[Azure Firewall](../../firewall/overview.md)|Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely megvédi az Azure Virtual Network-erőforrásait.|
 |[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Az alkalmazások kialakításával kapcsolatos ajánlott eljárásokkal kombinálva védelmet nyújt a DDoS-támadásokkal szemben.|
-|[Virtual Network szolgáltatási végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)|Közvetlen kapcsolaton keresztül kiterjesztheti a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokra.|
+|[Virtuális hálózati szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)|Közvetlen kapcsolaton keresztül kiterjesztheti a virtuális hálózat privát címterület-területét és a VNet identitását az Azure-szolgáltatásokra.|

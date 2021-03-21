@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251624"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Az Azure Cognitive Search szinonimái
@@ -159,7 +159,7 @@ Ha egyetlen lekérdezést kell végrehajtania, amely szinonimákat, valamint hel
 
 Ha meglévő indexe van egy fejlesztési (nem éles) környezetben, kísérletezzen egy kisméretű szótárral, és nézze meg, hogy a szinonimák hozzáadása hogyan módosítja a keresési élményt, beleértve a pontozási profilok, a kiemelések és a javaslatok hatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Szinonima-Térkép létrehozása (REST API)](/rest/api/searchservice/create-synonym-map)

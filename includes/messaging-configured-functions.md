@@ -9,10 +9,10 @@ ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98900975"
 ---
 Azure Functions lehetővé teszi olyan konfigurációs replikációs feladatok létrehozását, amelyek egy előre elkészített belépési pontra támaszkodnak. A [Azure functions konfiguráció-alapú replikációs mintái](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) bemutatják, hogyan használhatja fel az [előre elkészített segítőket](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) a saját kódjában, vagy elkerülheti a kód teljes kezelését, és csak a konfigurációt használja.

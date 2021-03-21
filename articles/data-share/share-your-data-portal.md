@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96186456"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Gyors útmutató: adatmegosztás az Azure-adatmegosztás használatával a Azure Portal
@@ -48,7 +48,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
    | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
    | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
    | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-   | Name (Név) | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+   | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe.
 
@@ -62,7 +62,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza **az adatmegosztás megkezdése** lehetőséget.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 1. Adja meg a megosztás részleteit. Adja meg a nevet, a megosztás típusát, a megosztási tartalmak leírását és a használati feltételeket (opcionális). 
 
@@ -96,7 +96,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza a **Folytatás** lehetőséget.
 
-1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
+1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Válassza a **Létrehozás** lehetőséget.
 
 Az Azure-beli adatmegosztás már létrejött, és az adatmegosztás címzettje most már készen áll a meghívás elfogadására.
 

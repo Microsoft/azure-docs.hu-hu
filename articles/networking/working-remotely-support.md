@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98231842"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Távoli munka az Azure Networking Services használatával
@@ -76,7 +76,7 @@ Amikor egyre több ember online állapotba kerül, számos vállalati webhely n�
 
 Más nyilvános felhőkben üzemelő példányok esetén a Microsoft globális kapcsolatot tud biztosítani. Az Azure Virtual WAN, VPN vagy ExpressRoute segíthetnek ebben a tekintetben. Az Azure-ból a többi felhőhöz való kapcsolódás kiterjesztéséhez konfigurálhatja a S2S VPN-t a két felhő között. Az Azure-ból más nyilvános felhőkhez is létesíthet kapcsolatot az ExpressRoute használatával. Az Oracle Cloud a ExpressRoute partner ökoszisztémájának része. [Beállíthat egy közvetlen kapcsolatot az Azure és az Oracle felhőalapú infrastruktúra között][Az-OCI]. A ExpressRoute partner ökoszisztémájának részét képező szolgáltatók többsége privát kapcsolatot is biztosít más nyilvános Felhőkkel. Ezen szolgáltatók kihasználása révén privát kapcsolatot létesíthet az Azure-beli és más felhőkben üzemelő példányok között a ExpressRoute-on keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek azt ismertetik, hogyan használhatók a különböző Azure-hálózatkezelési funkciók a felhasználók távoli működésének méretezéséhez:
 

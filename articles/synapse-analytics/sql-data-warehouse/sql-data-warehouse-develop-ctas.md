@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
 ms.openlocfilehash: 68bab754142538fc6067cf2593ae6244a03a48d1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734814"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE A SELECT (CTAS)
@@ -381,6 +381,6 @@ Láthatja, hogy a típus konzisztenciája és a CTAS tulajdonság fenntartása e
 
 A CTAS a szinapszis SQL egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértette. Tekintse meg a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További fejlesztési tippekért tekintse meg a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md)című témakört.

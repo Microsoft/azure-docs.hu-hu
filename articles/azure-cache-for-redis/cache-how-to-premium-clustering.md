@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: f1e84c838d310721cba604274388ae2767eb1502
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389671"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Redis-fürtözés konfigurálása prémium szintű Azure cache-hez a Redis-példányhoz
@@ -82,7 +82,7 @@ Eltarthat egy ideig a gyorsítótár létrehozásához. Nyomon követheti a foly
 > 
 > 
 
-A StackExchange. Redis ügyféllel való fürtözéssel kapcsolatos mintakód a [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részében található.
+A StackExchange. Redis-ügyféllel való fürtözéshez használt mintakód a [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [fürtözés. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részében található.
 
 <a name="cluster-size"></a>
 
@@ -135,7 +135,7 @@ A legjobb teljesítmény és átviteli sebesség érdekében javasoljuk, hogy eg
 
 További információ: [Keys Distribution Model](https://redis.io/topics/cluster-spec#keys-distribution-model), [Redis-fürt adatainak](https://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)horizontális felskálázása és [kulcsok kivonatának címkéje](https://redis.io/topics/cluster-spec#keys-hash-tags).
 
-A fürtözés és a kulcsok megkeresése a StackExchange. Redis ügyféllel című szakaszban található mintakód a [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [Clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részét képezi.
+A fürtözés és a kulcsok megkeresése a StackExchange. Redis-ügyféllel című témakörben talál a fürtözést és a kulcsokat az [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) minta [fürtszolgáltatás. cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) részében.
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>Mi az a legnagyobb gyorsítótár-méret, amelyet Létrehozhatok?
 A prémium gyorsítótár legnagyobb mérete 120 GB. Akár 10 szegmenst is létrehozhat, amelyek maximális mérete 1,2 TB GB. Ha nagyobb méretre van szüksége, [további kérések](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)is megadhatók. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.

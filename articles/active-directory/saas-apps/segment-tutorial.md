@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021554"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a szegmenssel
@@ -110,7 +110,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

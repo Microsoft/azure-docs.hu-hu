@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98232522"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló (NPS) infrastruktúrájának integrálása az Azure AD-vel Multi-Factor Authentication
@@ -30,7 +30,7 @@ A hálózati házirend-kiszolgáló bővítmény adapterként működik a RADIUS
 Ha az Azure AD Multi-Factor Authentication hálózati házirend-kiszolgáló bővítményét használja, a hitelesítési folyamat a következő összetevőket tartalmazza:
 
 1. A **NAS/VPN-kiszolgáló** fogadja a VPN-ügyfelektől érkező kéréseket, és RADIUS-kérelmekre konvertálja azokat a hálózati házirend-kiszolgálók
-2. A **hálózati házirend-kiszolgáló** csatlakozik Active Directory tartományi szolgáltatásokhoz (AD DS) a RADIUS-kérelmek elsődleges hitelesítésének végrehajtásához, és a sikeres művelet után átadja a kérést a telepített bővítményeknek.  
+2. A **hálózati házirend-kiszolgáló** csatlakozik Active Directory Domain Serviceshoz (AD DS) a RADIUS-kérelmek elsődleges hitelesítésének végrehajtásához, és a sikeres művelet után átadja a kérést a telepített bővítményeknek.  
 3. A **hálózati házirend-kiszolgáló bővítmény** elindít egy kérést az Azure AD-multi-Factor Authentication a másodlagos hitelesítéshez. Ha a bővítmény megkapja a választ, és ha az MFA-kérdés sikeres, akkor a hitelesítési kérést úgy hajtja végre, hogy a hálózati házirend-kiszolgálót olyan biztonsági jogkivonatokkal biztosítja, amelyekben az Azure STS által kiadott MFA-jogcím szerepel.
 4. Az **Azure ad MFA** a Azure Active Directory (Azure ad) szolgáltatással kommunikál a felhasználó adatainak lekérése és a másodlagos hitelesítés végrehajtása a felhasználóhoz konfigurált ellenőrzési módszer használatával.
 
@@ -398,7 +398,7 @@ Javasoljuk, hogy a régebbi és gyengébb titkosítási csomagokat tiltsa le, va
 
 További hibaelhárítási útmutatást és lehetséges megoldásokat a cikkben talál, az [Azure AD multi-Factor Authentication hálózati házirend-kiszolgáló bővítményével kapcsolatos hibaüzenetek megoldásához](howto-mfa-nps-extension-errors.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hálózati házirend-kiszolgáló áttekintése és konfigurálása a Windows Server rendszerben](/windows-server/networking/technologies/nps/nps-top)
 

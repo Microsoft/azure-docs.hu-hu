@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737133"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tippek és trükkök az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) használatához
@@ -273,6 +273,6 @@ A tárolási kötetek pillanatképének főbb attribútumai:
 - **A pillanatkép mérete:** Az adatbázis szintjének méretétől/változásaitól függ.
 - **Naplófájl helye:** A parancsok által generált naplófájlok a JSON konfigurációs fájlban meghatározott mappákba kerülnek, ami alapértelmezés szerint egy almappa, amelyben a parancs fut (például: `./logs` ).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hibaelhárítás](azacsnap-troubleshoot.md)

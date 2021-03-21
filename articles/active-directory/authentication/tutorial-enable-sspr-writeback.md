@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory jelszó visszaírási engedélyezése
-description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti az Azure AD önkiszolgáló jelszó-visszaállítási visszaírási az Azure AD Connect használatával, hogy szinkronizálja a módosításokat a helyszíni Active Directory tartományi szolgáltatások környezetbe.
+description: Ebből az oktatóanyagból megtudhatja, hogyan engedélyezheti az Azure AD önkiszolgáló jelszó-visszaállítási visszaírási az Azure AD Connect használatával, hogy szinkronizálja a módosításokat a helyszíni Active Directory Domain Services környezetbe.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,15 +12,15 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
 ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97028053"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
-A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) használatával a felhasználók frissíthetik a jelszavukat, vagy feloldhatók a fiókjuk a böngészőben. A hibrid környezetekben, ahol az Azure AD egy helyszíni Active Directory tartományi szolgáltatások (AD DS) környezethez csatlakozik, ez a forgatókönyv azt eredményezheti, hogy a jelszavak eltérőek lehetnek a két könyvtár között.
+A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) használatával a felhasználók frissíthetik a jelszavukat, vagy feloldhatók a fiókjuk a böngészőben. A hibrid környezetekben, ahol az Azure AD egy helyszíni Active Directory Domain Services (AD DS) környezethez csatlakozik, ez a forgatókönyv azt eredményezheti, hogy a jelszavak eltérőek lehetnek a két könyvtár között.
 
 A jelszó-visszaírási az Azure AD-ben a helyi AD DS-környezetbe való visszatéréshez is szinkronizálhatja a jelszó módosításait. A Azure AD Connect biztonságos mechanizmust biztosít a jelszavak visszaküldéséhez egy meglévő helyszíni címtárba az Azure AD-ből.
 

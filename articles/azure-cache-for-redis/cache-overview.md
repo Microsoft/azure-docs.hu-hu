@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 02/08/2021
 ms.openlocfilehash: 5a0389b1074737728bd0ffa5d6db90d077a9f45f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101652169"
 ---
 # <a name="about-azure-cache-for-redis"></a>Az Azure Cache for Redis névjegye
@@ -23,7 +23,7 @@ A Redis készült Azure cache elosztott vagy tartalom-gyorsítótárként, egy m
 ## <a name="key-scenarios"></a>Főbb forgatókönyvek
 Az Azure cache for Redis az alkalmazások teljesítményének növelésével javítja az alkalmazás-architektúrák általános mintáit. A leggyakoribbak többek között a következők:
 
-| Mintázat      | Leírás                                        |
+| Mintázat      | Description                                        |
 | ------------ | -------------------------------------------------- |
 | [Adatgyorsítótár](cache-web-app-cache-aside-leaderboard.md) | Az adatbázisok gyakran túl nagyok a gyorsítótárba való közvetlen betöltéshez. Gyakori a [gyorsítótár-](/azure/architecture/patterns/cache-aside) feltöltési minta használata, hogy csak szükség esetén töltse be az adatgyorsítótárat a gyorsítótárba. Ha a rendszer módosítja az adatmódosítást, a rendszer frissíti a gyorsítótárat is, amelyet aztán más ügyfelek számára terjesztenek. Emellett a rendszer beállíthat egy lejárati időpontot, vagy egy kizárási házirend használatával aktiválhatja az adatfrissítéseket a gyorsítótárba.|
 | [Tartalom-gyorsítótár](cache-aspnet-output-cache-provider.md) | Számos weblap olyan sablonokból jön létre, amelyek statikus tartalmat, például fejléceket, lábléceket és szalagcímeket használnak. Ezek a statikus elemek gyakran nem változnak. A memórián belüli gyorsítótár használata gyors hozzáférést biztosít a háttérben lévő adattárolókkal összehasonlítva a statikus tartalmakhoz. Ez a minta csökkenti a feldolgozási időt és a kiszolgáló terhelését, így a webkiszolgálók rugalmasabbak lesznek. Lehetővé teszi a terhelések kezeléséhez szükséges kiszolgálók számának csökkentését. A Redis készült Azure cache biztosítja a Redis kimeneti gyorsítótár-szolgáltatóját, hogy támogassa ezt a mintát a ASP.NET.|
@@ -39,7 +39,7 @@ A Redis-hez készült Azure cache az OSS Redis 4. x-es verzióját és a 6,0-as 
 ## <a name="service-tiers"></a>Szolgáltatásszintek
 A Redis készült Azure cache a következő szinteknél érhető el:
 
-| Szint | Leírás |
+| Szint | Description |
 |---|---|
 | Alapszintű | Egyetlen virtuális gépen futó OSS Redis cache. Ez a szint nem rendelkezik szolgáltatói szerződéssel (SLA), és ideális fejlesztési, tesztelési és nem kritikus fontosságú számítási feladatokhoz. |
 | Standard | Egy, a replikált konfigurációban két virtuális gépen futó OSS Redis cache. |

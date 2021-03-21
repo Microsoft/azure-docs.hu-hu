@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251335"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
@@ -134,7 +134,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform felügyeli, és nincs szükség titkos kódok kiépítésére vagy elforgatására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban frissítettük a Kubernetest egy AKS-fürtben. Megtanulta végrehajtani az alábbi műveleteket:
 

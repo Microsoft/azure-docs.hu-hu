@@ -11,10 +11,10 @@ author: luisquintanilla
 ms.date: 01/26/2021
 ms.custom: responsible-ml
 ms.openlocfilehash: 276c91ad7fb5b09dbe18d989741f0f54b8b0eb09
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101659681"
 ---
 # <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>A gépi tanulási modellekben való méltánytalanság enyhítése (előzetes verzió)
@@ -100,7 +100,7 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 - Csökkentés: ezek az algoritmusok Standard fekete dobozos gépi tanulási kalkulátort (pl. LightGBM modellt) hoznak létre, és újraképzésen alapuló modelleket állítanak elő, amelyek újrasúlyozott betanítási adatkészletek sorozatával rendelkeznek. Előfordulhat például, hogy egy bizonyos nemhez tartozó pályázók súlyozása vagy csökkentése a modellek újratanítása és a különböző nemi csoportok közötti egyenlőtlenségek csökkentése érdekében. A felhasználók ezután olyan modellt választhatnak, amely a lehető legjobb kompromisszumot biztosítja a pontosság (vagy más teljesítmény mérőszáma) és a különbség között, ami általában üzleti szabályokon és költségszámításokon alapul.  
 - Utómunka: ezek az algoritmusok egy meglévő besorolást és az érzékeny funkciót is felhasználják bemenetként. Ezután származtatják az osztályozó előrejelzését, hogy kikényszerítsék a megadott méltányos korlátozásokat. A küszöbérték-optimalizálás legnagyobb előnye az egyszerűség és a rugalmasság, mivel nem kell átképeznie a modellt. 
 
-| Algoritmus | Leírás | Gépi tanulási feladat | Bizalmas funkciók | Támogatott paritásos megkötések | Algoritmus típusa |
+| Algoritmus | Description | Gépi tanulási feladat | Bizalmas funkciók | Támogatott paritásos megkötések | Algoritmus típusa |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | A Fair besorolásra vonatkozó, a [méltányos](https://arxiv.org/abs/1803.02453) besoroláshoz | Bináris besorolás | Kategorikus | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Csökkentése |
 | `GridSearch` | A [valós besorolás csökkentési megközelítésében](https://arxiv.org/abs/1803.02453) leírt fekete négyzetes megközelítés| Bináris besorolás | Bináris | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Csökkentése |

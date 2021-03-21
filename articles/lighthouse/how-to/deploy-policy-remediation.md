@@ -4,10 +4,10 @@ description: Az Azure Világítótoronyon keresztül szervizelési feladatot has
 ms.date: 01/14/2021
 ms.topic: how-to
 ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98233882"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>A delegált előfizetésen belüli szervizelésre alkalmas szabályzat telepítése
@@ -67,7 +67,7 @@ Az alábbi példa egy **delegatedManagedIdentityResourceId** rendelkező szerepk
 > [!TIP]
 > A rendszer egy [hasonló mintát](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) mutat be, amely bemutatja, hogyan helyezhet üzembe egy olyan szabályzatot, amely egy (a módosítás hatásával) címkét hozzáad vagy eltávolít egy delegált előfizetéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [Azure Policy](../../governance/policy/index.yml)megismerése.
 - Ismerje meg [Az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).

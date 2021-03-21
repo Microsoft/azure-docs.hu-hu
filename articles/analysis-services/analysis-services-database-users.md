@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99054093"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
@@ -141,7 +141,7 @@ A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha e
   
 |Tábla|DAX-kifejezés|  
 |-----------|--------------------|  
-|Régió|= Régió [ország] = "USA"|  
+|Region|= Régió [ország] = "USA"|  
 |ProductCategory|= ProductCategory [név] = "kerékpárok"|  
 |Tranzakciók|= Tranzakciók [év] = 2016|  
   

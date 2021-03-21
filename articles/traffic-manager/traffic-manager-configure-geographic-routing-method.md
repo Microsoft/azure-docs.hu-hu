@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/15/2020
 ms.author: duau
 ms.openlocfilehash: 29b3cdde328a994e5806df810db15b529a6da9af
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96188666"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Oktatóanyag: a földrajzi forgalom útválasztási módszerének konfigurálása Traffic Manager használatával
 
 A földrajzi forgalom útválasztási módszere lehetővé teszi, hogy az adott végpontokra irányítsa a forgalmat azon a földrajzi hely alapján, ahol a kérelmek származnak. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Traffic Manager profilt ezzel az útválasztási módszerrel, és hogyan konfigurálhatja a végpontokat az adott földrajzi helyekről érkező forgalom fogadására.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - Hozzon létre egy Traffic Manager-profilt földrajzi útválasztással.
 > - Beágyazott végpont konfigurálása.
@@ -45,7 +45,7 @@ Az oktatóanyag a következőket ismerteti:
 
     | Beállítás         | Érték                                              |
     | ---             | ---                                                |
-    | Name (Név)            | Adja meg a profil nevét. Ennek a névnek egyedinek kell lennie az trafficmanager.net zónán belül. A Traffic Manager-profil eléréséhez használja a DNS-nevet `<profilename>.trafficmanager.net` . |    
+    | Név            | Adja meg a profil nevét. Ennek a névnek egyedinek kell lennie az trafficmanager.net zónán belül. A Traffic Manager-profil eléréséhez használja a DNS-nevet `<profilename>.trafficmanager.net` . |    
     | Útválasztási metódus  | Válassza a **földrajzi** lehetőséget. |
     | Előfizetés    | Válassza ki előfizetését. |
     | Erőforráscsoport   | Használjon egy meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot, amelybe a profilt be kívánja helyezni. Ha úgy dönt, hogy létrehoz egy új erőforráscsoportot, az *erőforráscsoport helye* legördülő menüben adja meg az erőforráscsoport helyét. Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan telepített Traffic Manager-profilra. |
@@ -69,7 +69,7 @@ Az oktatóanyag a következőket ismerteti:
     | Beállítás                | Érték                                              |
     | ---                    | ---                                                |
     | Típus                   | Válassza ki a végpont típusát. Az éles környezetben használt földrajzi útválasztási profilok esetében javasoljuk, hogy használjon olyan beágyazott végpontokat, amelyek egynél több végponttal rendelkező alárendelt profilt tartalmaznak. További információ: [a földrajzi forgalom útválasztási módszereivel kapcsolatos gyakori kérdések](traffic-manager-FAQs.md). |    
-    | Name (Név)                   | Adjon meg egy nevet a végpont azonosításához. |
+    | Name                   | Adjon meg egy nevet a végpont azonosításához. |
     | Célerőforrás típusa   | Válassza ki a cél erőforrás-típusát. |
     | Célerőforrás        | Válassza ki az erőforrást a listából. |
 

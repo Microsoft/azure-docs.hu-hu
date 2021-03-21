@@ -4,10 +4,10 @@ description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, 
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247369"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
@@ -289,7 +289,7 @@ Az összes többi, a fenti készletben nem szereplő kód (200-204) hibáknak mi
 | Minden más | Újrapróbálkozás 10 másodperc vagy több után |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események kézbesítési állapotának megtekintéséhez lásd: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * Az esemény-kézbesítési beállítások testreszabásával kapcsolatban lásd: [kézbesítetlen levelek és újrapróbálkozási szabályzatok](manage-event-delivery.md).

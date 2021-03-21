@@ -7,10 +7,10 @@ author: lrtoyou1223
 ms.author: lle
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e61b6a0f17d2d21aaaebc5ff42b0221cf851a4b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389500"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
@@ -19,7 +19,7 @@ ms.locfileid: "100389500"
 
 Az Integration Runtime (IR) az a számítási infrastruktúra, amelyet a Azure Data Factory használ az adatintegrációs képességek biztosítására különböző hálózati környezetekben. Az IR-vel kapcsolatos részletekért lásd: [Integration Runtime – áttekintés](concepts-integration-runtime.md).
 
-A saját üzemeltetésű integrációs modul képes a másolási tevékenységek futtatására egy felhőalapú adattár és egy magánhálózat adattára között. A helyszíni hálózaton vagy egy Azure-beli virtuális hálózaton is elküldheti az átalakítási tevékenységeket a számítási erőforrásokkal szemben. A saját üzemeltetésű integrációs modul telepítésének helyszíni gépnek vagy virtuális gépnek kell lennie egy magánhálózat belsejében.  
+A helyi integrációs modul másolási tevékenységeket tud futtatni a felhőalapú adattárak és a magánhálózaton található adattárak között. Emellett átalakítási tevékenységeket tud küldeni helyszíni vagy Azure virtuális hálózaton lévő számítási erőforrásokra vonatkozóan. A helyi integrációs modult helyszíni gépre vagy magánhálózaton található virtuális gépre kell telepíteni.  
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy saját üzemeltetésű integrációs modult.
 

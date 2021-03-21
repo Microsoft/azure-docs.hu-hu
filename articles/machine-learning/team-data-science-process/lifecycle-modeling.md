@@ -12,10 +12,10 @@ ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94740181"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
@@ -59,7 +59,7 @@ A modell betanításának folyamata a következő lépéseket tartalmazza:
 
    * **A bemeneti adatok véletlenszerűen való felosztása** modellezési adatkészletbe és tesztelési adatkészletbe.
    * Hozza **létre a modelleket** a betanítási adatkészlet használatával.
-   * **Értékelje** ki a betanítást és a tesztelési adatkészletet. A különböző társított hangolási paraméterekkel, valamint az aktuális adatokkal kapcsolatos kérdések megválaszolásával megválaszolva *parameter sweep* a versengő gépi tanulási algoritmusok sorozatát is használhatja.
+   * **Értékelje** ki a betanítást és a tesztelési adatkészletet. A különböző társított hangolási paraméterekkel, valamint az aktuális adatokkal kapcsolatos kérdések megválaszolásával megválaszolva a versengő gépi tanulási algoritmusok sorozatát is használhatja.
    * **Határozza meg a "legjobb" megoldást** a kérdés megválaszolásához az alternatív módszerek közötti sikerességi mérőszámok összehasonlításával.
 
 > [!NOTE]

@@ -10,10 +10,10 @@ ms.date: 03/02/2021
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: cb2cadadacd914bfa5473b512255c1ab0f856150
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101666306"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link támogatott szolgáltatásai
@@ -44,7 +44,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Támogatott, kód által generált műveletek a Sparkhoz
 
-| Kézmozdulat              | Leírás |OLTP |HTAP  |
+| Kézmozdulat              | Description |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Betöltés a DataFrame** |Betöltés és beolvasás egy Spark-DataFrame |✓| ✓ |
 | **Spark-tábla létrehozása** |Azure Cosmos DB tárolóra mutató tábla létrehozása|✓| ✓ |
@@ -54,7 +54,7 @@ A szinapszis-hivatkozás engedélyezése nélkül csatlakozhat egy Azure Cosmos 
 
 ## <a name="supported-code-generated-actions-for-serverless-sql-pool"></a>Támogatott programkód által generált műveletek a kiszolgáló nélküli SQL-készlethez
 
-| Kézmozdulat              | Leírás |OLTP |HTAP |
+| Kézmozdulat              | Description |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
 | **Adatok feltárása** |Az ismerős T-SQL szintaxissal és az automatikus séma-következtetéssel megvizsgálhatja a tároló adatait|X| ✓ |
 | **Nézetek létrehozása és BI-jelentések készítése** |SQL-nézet létrehozása, amely közvetlen hozzáférést biztosít a BI-tárolóhoz a kiszolgáló nélküli SQL-készleten keresztül |X| ✓ |

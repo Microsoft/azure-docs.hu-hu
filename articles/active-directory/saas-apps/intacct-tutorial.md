@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
 ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98736958"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Oktatóanyag: a Sage Intacct integrálása Azure Active Directory
@@ -209,6 +209,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások Sage Intacct csempére kattint, automatikusan be kell jelentkeznie arra a Sage-Intacct, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Sage Intacct konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

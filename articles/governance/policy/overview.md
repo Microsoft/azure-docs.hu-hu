@@ -4,10 +4,10 @@ description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatá
 ms.date: 01/14/2021
 ms.topic: overview
 ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220728"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?

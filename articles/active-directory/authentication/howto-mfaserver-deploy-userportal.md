@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742459"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Felhasználói portál az Azure Multi-Factor Authentication-kiszolgálóhoz
@@ -134,7 +134,7 @@ Választható konfiguráció:
 
 Az Azure Multi-Factor Authentication-kiszolgáló több lehetőséget nyújt a felhasználói portálhoz. A következő táblázat tartalmazza ezen lehetőségek listáját és annak magyarázatát, hogy mire szolgálnak.
 
-| Felhasználói portál beállításai | Leírás |
+| Felhasználói portál beállításai | Description |
 |:--- |:--- |
 | Felhasználói portál URL-címe | Adja meg a portál üzemeltetési helyének URL-címét. |
 | Elsődleges hitelesítés | Adja meg a portálra való bejelentkezéskor használandó hitelesítési típust. Ez Windows-, Radius- vagy LDAP-hitelesítés lehet. |
@@ -187,6 +187,6 @@ Ha a rendszergazdák úgy konfigurálták az Azure Multi-Factor Authentication-k
 
 A felhasználó önregisztrációja ezzel befejeződött, és a felhasználó be van jelentkezve a felhasználói portálra. Ezután bármikor újra bejelentkezhet a felhasználói portálra a telefonszáma, PIN-kódja, hitelesítési módszere és biztonsági kérdései módosításához, ha ezt a rendszergazdáik engedélyezték.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Multi-Factor Authentication-kiszolgáló Mobile App Web Service szolgáltatásának telepítése](howto-mfaserver-deploy-mobileapp.md)

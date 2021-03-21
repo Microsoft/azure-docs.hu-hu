@@ -8,10 +8,10 @@ ms.date: 01/09/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: cd4e6a1b62d03dae705cb3b05e5b1433b3542cbe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98900960"
 ---
 A Azure Functions fejlesztőknek szóló referenciák. Ha még nem Azure Functions, kezdje a következő erőforrásokkal:

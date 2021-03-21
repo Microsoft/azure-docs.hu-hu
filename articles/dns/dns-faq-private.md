@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: rohink
 ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247386"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
@@ -93,6 +93,6 @@ Javasoljuk, hogy a lehető leghamarabb telepítse át az új erőforrás-modellr
 
 Nem, Azure DNS privát zónák nem tárolnak felhasználói tartalmakat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure saját DNS](private-dns-overview.md)

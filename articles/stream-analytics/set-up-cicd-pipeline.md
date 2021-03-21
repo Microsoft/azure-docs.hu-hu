@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466422"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Az Azure DevOps használata CI/CD-folyamat létrehozásához Stream Analytics feladatokhoz
@@ -188,7 +188,7 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |Sablon| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.jsbekapcsolva |
    |Sablon paraméterei|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.parameters.jsbekapcsolva |
    |Sablon paramétereinek felülbírálása|-<arm_template_parameter> "az érték". A paramétereket **változók** használatával is meghatározhatja.|
-   |Üzembe helyezési mód|Növekvő|
+   |Üzembehelyezési mód|Növekvő|
 
 3. A feladatok legördülő menüben válassza a **feladat üzembe helyezése éles környezetben** lehetőséget.
 
@@ -205,7 +205,7 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |Sablon| $ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.jsbekapcsolva |
    |Sablon paraméterei|$ (System. DefaultWorkingDirectory)/_azure-streamanalytics-vel-demo-CI-üzembe helyezés/eldobás/myASAProject.JobTemplate.parameters.jsbekapcsolva |
    |Sablon paramétereinek felülbírálása|-<arm_template_parameter> "az Ön értéke"|
-   |Üzembe helyezési mód|Növekvő|
+   |Üzembehelyezési mód|Növekvő|
 
 ### <a name="create-a-release"></a>Kiadás létrehozása
 

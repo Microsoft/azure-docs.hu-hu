@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 573fc4fac413ceed50246bc6fb8df1d9db021c94
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98247454"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben
@@ -51,7 +51,7 @@ Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pén
 
 A fenntartott kapacitás számlázási kedvezményt nyújt, és nincs hatással az Azure Cosmos DB-erőforrások futtatási állapotára. A fenntartott kapacitás minden API-hoz elérhető, amely magában foglalja az MongoDB, a Cassandra, az SQL, a Gremlin és az Azure-táblákat, valamint a világ minden régióját. A fenntartott kapacitást előre is megtudhatja, [ha Azure Cosmos db erőforrásokhoz fenntartott](cosmos-db-reserved-capacity.md) kapacitással rendelkezik, és fenntartott kapacitást vásárol a [Azure Portal](https://portal.azure.com/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Cosmos DB-erőforrások költségeinek optimalizálásáról a következő cikkekben tájékozódhat:
 
