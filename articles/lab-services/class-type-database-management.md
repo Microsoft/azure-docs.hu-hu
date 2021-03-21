@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 32079d6dc31cf3fcad66976737630472129b4271
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462420"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Tesztkörnyezet létrehozása a kapcsolódó adatbázisok adatbázis-kezelésének megtanításához
@@ -59,7 +59,7 @@ További részletek a díjszabásról: [Azure Lab Services díjszabása](https:/
 
 Ez a cikk végigvezeti a tesztkörnyezet létrehozásához szükséges lépéseken, valamint a MySQL-t és a SQL Servert egyaránt használó alapszintű adatbázis-kezelési fogalmakhoz. Hasonló beállításokat használhat más adatbázisok osztályaihoz is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

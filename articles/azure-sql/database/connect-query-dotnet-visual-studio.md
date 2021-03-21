@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
 ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97705201"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Rövid útmutató: a .NET és a C# használata a Visual Studióban egy adatbázishoz való kapcsolódáshoz és lekérdezéshez
@@ -52,7 +52,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
    
 1. A telepítés befejezésekor lezárhatja a **NuGet csomagkezelő eszközt**. 
    
-1. A Kódszerkesztő eszközben cserélje le a **program.cs** tartalmát a következő kódra. Cserélje le a, `<your_server>` , `<your_username>` `<your_password>` , és a értékeit `<your_database>` .
+1. A Kódszerkesztőben cserélje le a **program. cs** tartalmát a következő kódra. Cserélje le a, `<your_server>` , `<your_username>` `<your_password>` , és a értékeit `<your_database>` .
    
    ```csharp
    using System;
@@ -108,7 +108,7 @@ Ennek a rövid útmutatónak az elvégzéséhez a következőkre lesz szüksége
 1. Az alkalmazás futtatásához válassza a **hibakeresés**  >  **megkezdése** lehetőséget, vagy válassza az eszköztáron az **Indítás** lehetőséget, vagy nyomja le az **F5** billentyűt.
 1. Ellenőrizze, hogy a rendszer visszaadja-e az adatbázis nevét és rendezését, majd kattintson az alkalmazás ablakának bezárására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [csatlakozhat egy adatbázishoz a Azure SQL Database a .net Core használatával](connect-query-dotnet-core.md) a Windows/Linux/MacOS rendszeren.  
 - További információ [a .NET Core használatának első lépéseiről Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).

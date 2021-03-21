@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthatja be manuálisan a tárolók csoport
 ms.topic: article
 ms.date: 08/11/2020
 ms.openlocfilehash: 1801dad463d478c754e621dad0ae9406899ae7e3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102198115"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Tárolók manuális leállítása vagy indítása az Azure Container Instancesben

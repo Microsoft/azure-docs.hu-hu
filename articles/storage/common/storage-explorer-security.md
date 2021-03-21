@@ -8,10 +8,10 @@ ms.topic: best-practice
 ms.date: 07/30/2020
 ms.author: cralvord
 ms.openlocfilehash: 283ec9999f9b4362035b6770383984efb0879d49
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783759"
 ---
 # <a name="azure-storage-explorer-security-guide"></a>Azure Storage Explorer biztonsági útmutató
@@ -81,7 +81,7 @@ A Storage-fiókok kulcsai korlátlan hozzáférést biztosítanak a szolgáltat�
 
 Egyes Azure-szerepkörök engedélyt adnak a Storage-fiók kulcsainak lekérésére. Az ezekkel a szerepkörökkel rendelkező személyek hatékonyan kihasználhatják az Azure RBAC által biztosított vagy megtagadott engedélyeket. Javasoljuk, hogy csak akkor adja meg ezt az engedélyt, ha szükséges.
 
-A Storage Explorer a kérések hitelesítéséhez a Storage-fiókok kulcsait fogja használni, ha vannak ilyenek. Ezt a funkciót letilthatja a beállítások ( **szolgáltatások > Storage-fiókok > a kulcsok használatának letiltása** ). Egyes szolgáltatások nem támogatják az Azure RBAC, például a klasszikus Storage-fiókok használatát. Ezek a funkciók továbbra is kulcsokat igényelnek, és ezt a beállítást nem érinti.
+A Storage Explorer a kérések hitelesítéséhez a Storage-fiókok kulcsait fogja használni, ha vannak ilyenek. Ezt a funkciót letilthatja a beállítások (**szolgáltatások > Storage-fiókok > a kulcsok használatának letiltása**). Egyes szolgáltatások nem támogatják az Azure RBAC, például a klasszikus Storage-fiókok használatát. Ezek a funkciók továbbra is kulcsokat igényelnek, és ezt a beállítást nem érinti.
 
 Ha kulcsokat kell használnia a tárolási erőforrások eléréséhez, javasoljuk a következő irányelveket:
 

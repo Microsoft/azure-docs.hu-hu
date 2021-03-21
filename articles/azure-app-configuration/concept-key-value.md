@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930245"
 ---
 # <a name="keys-and-values"></a>Kulcsok és értékek
@@ -76,7 +76,7 @@ Minden kulcs-érték egyedileg azonosítható a kulcsa és a címkéje, amely le
 
 A következő címke mintákat is tartalmazhatja:
 
-| Címke | Leírás |
+| Címke | Description |
 |---|---|
 | `label` nincs megadva vagy `label=*` | Megfelel bármely címkének, amely tartalmazza a következőket `\0` |
 | `label=%00` | Egyezések `\0` címkéje |

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: d174e410aaef876dfe97af62750322641de95fd3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659454"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure CLI használatával
@@ -118,7 +118,7 @@ Az eredmény JSON formátumban van. Jegyezze fel a **administratorLogin** és a 
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Kapcsolódás a Azure Database for PostgreSQL kiszolgálóhoz a psql használatával
-A [psql](https://www.postgresql.org/docs/current/static/app-psql.html) -ügyfél népszerű választás a PostgreSQL-kiszolgálókhoz való csatlakozáshoz. A psql [Azure Cloud Shell](../cloud-shell/overview.md)használatával csatlakozhat a kiszolgálóhoz. Ha rendelkezésre áll, használhatja a helyi környezet psql is. Egy új PostgreSQL-kiszolgálóval automatikusan létrejön egy üres adatbázis, a **postgres**. Ezt az adatbázist használhatja a psql-hez való kapcsolódáshoz, ahogy az a következő kódban is látható. 
+A [psql](https://www.postgresql.org/docs/current/static/app-psql.html) -ügyfél népszerű választás a PostgreSQL-kiszolgálókhoz való csatlakozáshoz. A psql [Azure Cloud Shell](../cloud-shell/overview.md)használatával csatlakozhat a kiszolgálóhoz. A psql-t helyi környezetben is használhatja. Egy új PostgreSQL-kiszolgálóval automatikusan létrejön egy üres adatbázis, a **postgres**. Ezt az adatbázist használhatja a psql-hez való kapcsolódáshoz, ahogy az a következő kódban is látható. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres

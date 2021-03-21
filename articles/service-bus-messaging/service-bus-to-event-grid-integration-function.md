@@ -8,16 +8,16 @@ ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-csharp
 ms.openlocfilehash: afc0a5bf9b83363d1f4baab955b55148fe3a8498
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95819404"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>Oktatóanyag: válaszadás a Azure Event Grid által a Azure Functions használatával kapott Azure Service Bus eseményekre
 Ebből az oktatóanyagból megtudhatja, hogyan válaszolhat a Azure Event Grid használatával fogadott Azure Service Bus eseményekre Azure Functions és Azure Logic Apps használatával. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Service Bus-névtér létrehozása
 > * Minta alkalmazás előkészítése üzenetek küldéséhez
@@ -37,8 +37,8 @@ Telepítse a [Visual Studio 2019](https://www.visualstudio.com/vs) alkalmazást,
 >[!NOTE]
 > Ha többet szeretne megtudni egy Azure Functions alkalmazás létrehozásáról és üzembe helyezéséről, olvassa el a [Azure functions fejlesztése a Visual Studióval](../azure-functions/functions-develop-vs.md) című témakört.
 
-1. Nyissa meg a **ReceiveMessagesOnEvent.cs** fájlt a **SBEventGridIntegration. SLN** megoldás **FunctionApp1** projektből. 
-1. Cserélje le a `<SERCICE BUS NAMESPACE - CONNECTION STRING>` karakterláncot a Service Bus névtérhez tartozó kapcsolódási sztringre. Meg kell egyeznie azzal, amelyet a **MessageSender** projekt **program.cs** -fájljában használt ugyanazon a megoldáson belül. 
+1. Nyissa meg a **ReceiveMessagesOnEvent. cs** fájlt a **SBEventGridIntegration. SLN** megoldás **FunctionApp1** projektje alapján. 
+1. Cserélje le a `<SERCICE BUS NAMESPACE - CONNECTION STRING>` karakterláncot a Service Bus névtérhez tartozó kapcsolódási sztringre. Meg kell egyeznie azzal, amelyet a **MessageSender** projekt **program. cs** fájljában használt a megoldásban. 
 1. Kattintson a jobb gombbal a **FunctionApp1** elemre, majd válassza a **Közzététel** lehetőséget. 
 1. A **közzétételi** lapon válassza az **Indítás** lehetőséget. Ezek a lépések eltérhetnek a megjelenő, de a közzétételi folyamatnak hasonlónak kell lennie. 
 1. A **közzétételi** varázsló **cél** lapján válassza az **Azure** a **célként** lehetőséget. 
@@ -65,7 +65,7 @@ Telepítse a [Visual Studio 2019](https://www.visualstudio.com/vs) alkalmazást,
     > [!NOTE]
     > A a `EventGridTriggerFunction` [Event Grid triggert](../azure-functions/functions-bindings-event-grid-trigger.md) használ, a pedig `HTTPTriggerFunction` http- [triggert](../azure-functions/functions-bindings-http-webhook-trigger.md)használ.
 1. A listából válassza a **EventGridTriggerFunction** lehetőséget. Javasoljuk, hogy a Event Grid triggert a Azure Functions használatával használja, mivel a HTTP-trigger használatának néhány előnye van. Részletekért lásd: az [Azure Function eseménykezelő Event Grid eseményekhez](../event-grid/handler-functions.md).
-1. A EventGridTriggerFunction **függvény** lapján válassza a **EventGridTriggerFunction** bal oldali menü **monitor** elemét. 
+1. A EventGridTriggerFunction **függvény** lapján válassza a bal oldali menü **monitor** elemét. 
 1. Válassza a **Konfigurálás** lehetőséget a behívási napló rögzítéséhez Application Insights konfigurálásához. Ezen a lapon figyelhetők a függvények végrehajtása Service Bus események fogadásakor Event Gridról. 
 1. A **Application Insights** lapon adja meg az erőforrás nevét, válassza ki az erőforrás **helyét** , majd kattintson **az OK gombra**. 
 1. Válassza ki a felül található **EventGridTriggerFunction** (navigációs menü) a **függvény** lapra való visszatéréshez. 
@@ -136,7 +136,7 @@ Ha a várakozás után nem látja az összes függvényt, akkor kövesse az alá
     
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További tudnivalók az [Azure Event Grid](../event-grid/index.yml) szolgáltatásról.
 * További tudnivalók az [Azure Functions](../azure-functions/index.yml) szolgáltatásról.

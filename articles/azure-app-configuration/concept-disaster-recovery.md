@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930483"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
@@ -72,7 +72,7 @@ Az alkalmazás konfigurációja az **Exportálás** funkcióval az adatok az els
 
 A Azure Portal az alábbi lépéseket követve elküldheti egy másik konfigurációs tároló módosítását.
 
-1. Nyissa meg az **Importálás/exportálás** lapot, és válassza az **Export**  >  **alkalmazás konfigurációjának** exportálása  >  **cél**  >  **erőforrás kiválasztása** lehetőséget.
+1. Nyissa meg az **Importálás/exportálás** lapot, és válassza az   >  **alkalmazás konfigurációjának** exportálása  >  **cél**  >  **erőforrás kiválasztása** lehetőséget.
 
 1. A megnyíló új panelen adja meg a másodlagos tároló előfizetés, erőforráscsoport és erőforrás nevét, majd kattintson az **alkalmaz** gombra.
 

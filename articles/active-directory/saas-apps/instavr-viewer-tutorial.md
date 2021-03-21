@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: e60e8c73c9f1da617851cc67fb2dbab7171f1cb0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92460003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Azure Active Directory integráció a InstaVR Viewerrel
@@ -62,13 +62,13 @@ A InstaVR Viewer Azure AD-be való integrálásának konfigurálásához hozzá 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **InstaVR Viewer**kifejezést, válassza a **InstaVR Viewer** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **InstaVR Viewer** kifejezést, válassza a **InstaVR Viewer** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![InstaVR megjelenítője az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a InstaVR Viewerrel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a InstaVR Viewerrel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a InstaVR-megjelenítőben.
 
 Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **InstaVR-megjelenítő** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **InstaVR-megjelenítő** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
 1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a InstaVR-megjelenítő vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **felhasználó ikonra** , és válassza a **fiók**lehetőséget.
+2. Kattintson a **felhasználó ikonra** , és válassza a **fiók** lehetőséget.
 
     ![Képernyőfelvétel: a InstaVR megjelenítője a kiválasztott felhasználóval.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
@@ -144,9 +144,9 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
     c. Az **entitás-azonosító** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
-    d. A letöltött tanúsítványfájl feltöltéséhez kattintson a **frissítés**gombra.
+    d. A letöltött tanúsítványfájl feltöltéséhez kattintson a **frissítés** gombra.
 
-    e. A letöltött összevonási metaadat-fájl feltöltéséhez kattintson a **frissítés**gombra.
+    e. A letöltött összevonási metaadat-fájl feltöltéséhez kattintson a **frissítés** gombra.
 
     f. Másolja az **entitás-azonosító** értéket, és illessze be a Azure Portal **alapszintű SAML-konfiguráció** szakaszának **azonosító (entitás azonosítója)** szövegmezőbe.
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -179,15 +179,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a InstaVR-megjelenítőhöz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **InstaVR Viewer**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **InstaVR Viewer** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza a **InstaVR Viewer**elemet.
+2. Az alkalmazások listában írja be és válassza a **InstaVR Viewer** elemet.
 
     ![Az InstaVR-megjelenítő hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -209,7 +209,7 @@ Ebben a szakaszban a Britta Simon nevű felhasználó jön létre a InstaVR View
 
 1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a InstaVR-megjelenítő vállalati webhelyre rendszergazdaként.
 
-2. Válassza a **csomag** lehetőséget a bal oldali navigációs panelen, és válassza a **csomag készítése webre**lehetőséget.
+2. Válassza a **csomag** lehetőséget a bal oldali navigációs panelen, és válassza a **csomag készítése webre** lehetőséget.
 
     ![Képernyőfelvétel: a InstaVR megjelenítője céges webhelye a csomag kiválasztása és a csomag webes kiválasztásának tétele.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 

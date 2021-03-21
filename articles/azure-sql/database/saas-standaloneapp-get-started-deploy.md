@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
 ms.openlocfilehash: 896f4edb1e94c1eca06b046382727a5042375e3b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793279"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>A Azure SQL Databaset használó önálló egybérlős alkalmazás üzembe helyezése és megismerése
@@ -60,13 +60,13 @@ Telepítse az alkalmazást a három megadott bérlőhöz:
     > Bizonyos hitelesítési és kiszolgálói tűzfalak szándékosan nem biztonságosak a demonstrációs célokra. **Hozzon létre egy új erőforráscsoportot** az egyes alkalmazások telepítéséhez.  Ne használjon meglévő erőforráscsoportot. Ne használja az alkalmazást vagy az általa létrehozott erőforrásokat éles környezetben. Törölje az összes erőforráscsoportot, ha elkészült az alkalmazásokkal a kapcsolódó számlázás leállításához.
 
     A legjobb, ha csak kisbetűket, számokat és kötőjeleket használ az erőforrásnevek.
-    * Az **erőforráscsoport** területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. **Wingtip-SA- \<venueName\> - \<user\>** az ajánlott minta.  A (z) esetében \<venueName\> cserélje le a helyszín nevét szóköz nélkül. A esetében \<user\> cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1* , *Wingtip-SA-dogwooddojo-AF1* , *Wingtip-SA-fabrikamjazzclub-AF1* .
+    * Az **erőforráscsoport** területen válassza az új létrehozása lehetőséget, majd adja meg az erőforráscsoport kisbetűs nevét. **Wingtip-SA- \<venueName\> - \<user\>** az ajánlott minta.  A (z) esetében \<venueName\> cserélje le a helyszín nevét szóköz nélkül. A esetében \<user\> cserélje le a felhasználói értéket alulról.  Ezzel a mintával az erőforráscsoportok nevei lehetnek *Wingtip-SA-contosoconcerthall-AF1*, *Wingtip-SA-dogwooddojo-AF1*, *Wingtip-SA-fabrikamjazzclub-AF1*.
     * Válasszon ki egy **helyet** a legördülő listából.
 
-    * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1* .
+    * **Felhasználó** számára – egy rövid felhasználói értéket ajánlunk, például a monogramját és egy számjegyét: például *AF1*.
 
 
-3. **Telepítse az alkalmazást** .
+3. **Telepítse az alkalmazást**.
 
     * Kattintson ide a feltételek és kikötések elfogadásához.
     * Kattintson a **Purchase** (Vásárlás) gombra.

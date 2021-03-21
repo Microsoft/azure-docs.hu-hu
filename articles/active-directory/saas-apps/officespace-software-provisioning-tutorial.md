@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
 ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359923"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Oktatóanyag: OfficeSpace-szoftver konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
@@ -80,7 +80,7 @@ Mielőtt OfficeSpace szoftvert szeretne konfigurálni az Azure AD-vel való auto
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **OfficeSpace szoftvert** , válassza ki a **OfficeSpace szoftvert** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **OfficeSpace szoftvert**, válassza ki a **OfficeSpace szoftvert** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![OfficeSpace szoftver az eredmények listájában](common/search-new-app.png)
 
@@ -129,7 +129,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 11. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-12. Az Azure AD-kiépítési szolgáltatás OfficeSpace szoftverhez való engedélyezéséhez módosítsa a **kiépítési állapotot** a **On** **Beállítások** szakaszban.
+12. Az Azure AD-kiépítési szolgáltatás OfficeSpace szoftverhez való engedélyezéséhez módosítsa a **kiépítési állapotot** a  **Beállítások** szakaszban.
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
@@ -145,7 +145,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

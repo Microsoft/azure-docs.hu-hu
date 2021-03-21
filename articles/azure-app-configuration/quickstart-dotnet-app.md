@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
 ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932090"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
+7.   >    >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create **Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -80,7 +80,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
    Az alkalmazás konfigurációs tárolójának a környezeti változóból való beolvasása a kapcsolatok karakterlánca `ConnectionString` . Adja hozzá a `Environment` Configuration Builder `MyConfigStore` -t a `configBuilders` szakasz tulajdonságához `appSettings` .
 
-1. Nyissa meg a *program.cs*, és frissítse a `Main` metódust az alkalmazás konfigurációjának meghívásával való használatára `ConfigurationManager` .
+1. Nyissa meg a *program. cs programot*, és frissítse a `Main` metódust az alkalmazás konfigurációjának meghívásával való használatára `ConfigurationManager` .
 
     ```csharp
     static void Main(string[] args)

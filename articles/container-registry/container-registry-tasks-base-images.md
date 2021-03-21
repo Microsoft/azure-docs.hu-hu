@@ -4,10 +4,10 @@ description: Tudnivalók az alkalmazás-tárolók rendszerképeinek alapképeir�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97707486"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Az ACR-feladatok alaprendszerképének frissítései
@@ -66,7 +66,7 @@ Az alaprendszerkép frissítésének és a függő feladat indításának időpo
 
 * **Egyéb feladat-eseményindítók** – az alaprendszerkép frissítései által aktivált feladatok esetében engedélyezheti a [forráskód](container-registry-tutorial-build-task.md) -végrehajtás vagy [az ütemterv](container-registry-tasks-scheduled.md)alapján történő eseményindítókat is. Egy alapszintű rendszerkép frissítése [több lépésből álló feladatot](container-registry-tasks-multi-step.md)is indíthat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alaprendszerkép frissítése után az alkalmazás rendszerkép-buildek automatizálására szolgáló forgatókönyvek az alábbi oktatóanyagokat ismertetik:
 

@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 12/05/2016
 ms.openlocfilehash: ddcf41a333d261bd9c5f669fde724a25eeba670e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220278"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Feladatok monitorozása az Azure Data Lake Analyticsben az Azure Portallal
@@ -23,7 +23,7 @@ ms.locfileid: "92220278"
    ![Azure Data Lake Analytics feladatok kezelése](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
     A Feladatkezelő áttekintést nyújt a feladatok állapotáról. Figyelje meg, hogy egy sikertelen feladatot észlelt a rendszer.
-3. A feladatok megtekintéséhez kattintson a **feladat-kezelés** csempére. A feladatok a **Futtatás**, a **várólista**és a **Befejezés**szerint vannak kategorizálva. A sikertelen feladatot a **befejezett** szakaszban tekintheti meg. A listában elsőként kell megadnia. Ha sok feladattal rendelkezik, a **szűrő** lehetőségre kattintva megkeresheti a feladatokat.
+3. A feladatok megtekintéséhez kattintson a **feladat-kezelés** csempére. A feladatok a **Futtatás**, a **várólista** és a **Befejezés** szerint vannak kategorizálva. A sikertelen feladatot a **befejezett** szakaszban tekintheti meg. A listában elsőként kell megadnia. Ha sok feladattal rendelkezik, a **szűrő** lehetőségre kattintva megkeresheti a feladatokat.
 
    ![Azure Data Lake Analytics szűrési feladatok](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "92220278"
 
    Azt jelzi, hogy a forrás mappája nem található.
 
-6. Kattintson a **duplikált parancsfájl**elemre.
+6. Kattintson a **duplikált parancsfájl** elemre.
 
 7. Az elérési út frissítése a **következőre** : `/Samples/Data/SearchLog.tsv`
 

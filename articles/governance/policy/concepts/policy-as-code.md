@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-defi
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359680"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>Azure Policy tervezése kódmunkafolyamatokként
@@ -129,7 +129,7 @@ A frissített szabályzat kiértékelési eredményeinek és a környezetnek a t
 
 ### <a name="update-to-enforced-assignments"></a>A kényszerített hozzárendelések frissítése
 
-Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az engedélyezett **enforcementMode** használatára _enabled_. Azt javasoljuk, hogy a módosítást kezdetben ugyanabban a környezetben végezze el, mint a termeléstől. Miután a környezet a várt módon működik, a módosítást hatókörbe kell helyezni, hogy az a következő környezetbe kerüljön, és így tovább, amíg a házirend üzembe nem kerül a termelési erőforrásokra.
+Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az engedélyezett **enforcementMode** használatára . Azt javasoljuk, hogy a módosítást kezdetben ugyanabban a környezetben végezze el, mint a termeléstől. Miután a környezet a várt módon működik, a módosítást hatókörbe kell helyezni, hogy az a következő környezetbe kerüljön, és így tovább, amíg a házirend üzembe nem kerül a termelési erőforrásokra.
 
 ## <a name="process-integrated-evaluations"></a>Integrált értékelések feldolgozása
 
@@ -141,7 +141,7 @@ Ezekben az esetekben az alkalmazás vagy az infrastruktúra üzembe helyezését
 
 Ez a cikk a kód Azure Policy általános munkafolyamatát ismerteti, valamint azt is, hogy a szabályzatok kiértékelése más üzembe helyezési munkafolyamatok része legyen. Ezt a munkafolyamatot bármely olyan környezetben felhasználhatja, amely támogatja a parancsfájlokon alapuló lépéseket és az automatizálást az eseményindítók alapján. A jelen munkafolyamat GitHubon való használatáról szóló oktatóanyagért lásd [: oktatóanyag: Azure Policy implementálása kódként a GitHub](../tutorials/policy-as-code-github.md)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92282162"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
@@ -44,8 +44,8 @@ Ebben a példában a **contoso.net** fogja hivatkozni a szülőtartomány tartom
 
    ![DNS-zóna](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Válassza a **DNS-zóna létrehozása**lehetőséget.
-1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd válassza a **Létrehozás**lehetőséget: például **contoso.net**
+1. Válassza a **DNS-zóna létrehozása** lehetőséget.
+1. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd válassza a **Létrehozás** lehetőséget: például **contoso.net**
       > [!NOTE] 
       > Ha a létrehozandó új zóna egy alárendelt zóna (például: Parent Zone = contoso.net Child Zone = child.contoso.net), tekintse meg az [új gyermek DNS-zóna létrehozásával foglalkozó oktatóanyagot](./tutorial-public-dns-zones-child.md) .
 
@@ -65,7 +65,7 @@ Mielőtt DNS-zónáját az Azure DNS-be delegálhatná, meg kell tudnia a zóna 
 
 1. Ha létrehozta a DNS-zónát, az Azure Portal **Kedvencek** ablaktábláján válassza az **Összes erőforrás** lehetőséget. Az **Összes erőforrás** lapon válassza ki a saját DNS-zónáját. Ha a kiválasztott előfizetés már rendelkezik több erőforrással is, megadhatja a tartománynevet a **szűrés név alapján** mezőben az Application Gateway egyszerű eléréséhez. 
 
-1. Kérdezze le a névkiszolgálókat a DNS-zóna lapon. Ebben a példában a contoso.net a *ns1-01.Azure-DNS.com*, a *ns2-01.azure-dns.net*, a *ns3-01.Azure-DNS.org*és a *ns4-01.Azure-DNS.info*névvel rendelkező kiszolgálók vannak hozzárendelve:
+1. Kérdezze le a névkiszolgálókat a DNS-zóna lapon. Ebben a példában a contoso.net a *ns1-01.Azure-DNS.com*, a *ns2-01.azure-dns.net*, a *ns3-01.Azure-DNS.org* és a *ns4-01.Azure-DNS.info* névvel rendelkező kiszolgálók vannak hozzárendelve:
 
    ![Névkiszolgálók listája](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -82,7 +82,7 @@ Most, hogy létrehozta a DNS-zónát, és megvannak a névkiszolgálók is, fris
 > [!NOTE]
 > Amikor átmásolja a névkiszolgálók címeit, mindenképpen másolja át a cím végén szereplő pontot is. A záró karakterként szolgáló pont jelzi egy teljes tartománynév végét. Egyes regisztrátorok hozzáfűzik az időszakot, ha az NS neve nem a végén van. Ahhoz, hogy meg lehessen felelni a DNS RFC-nek, tartalmaznia kell a záró pontot.
 
-Azok a delegálások, amelyek a saját zónában lévő névkiszolgálók használatát használják, esetenként a *hiúság névkiszolgálók*néven is ismertek, a Azure DNS jelenleg nem támogatottak.
+Azok a delegálások, amelyek a saját zónában lévő névkiszolgálók használatát használják, esetenként a *hiúság névkiszolgálók* néven is ismertek, a Azure DNS jelenleg nem támogatottak.
 
 ## <a name="verify-the-delegation"></a>A delegálás ellenőrzése
 
@@ -116,7 +116,7 @@ Nem kell megadnia a Azure DNS névkiszolgálók nevét. Ha a delegálást helyes
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja a **contosoRG** erőforráscsoportot. Ellenkező esetben törölje a **contosoRG** erőforráscsoportot és az oktatóanyag során létrehozott erőforrásokat.
 
-- Válassza ki a **contosoRG** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget. 
+- Válassza ki a **contosoRG** erőforráscsoportot, majd válassza az **erőforráscsoport törlése** lehetőséget. 
 
 ## <a name="next-steps"></a>Következő lépések
 

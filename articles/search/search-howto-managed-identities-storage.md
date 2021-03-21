@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358371"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Azure Storage-tárfiókkal való kapcsolat beállítása felügyelt identitással
@@ -77,7 +77,7 @@ Egy Storage-fiókból való indexeléskor az adatforrásnak a következő szüks
 * **hitelesítő adatok**
     * Ha felügyelt identitást használ a hitelesítéshez, a **hitelesítő adatok** formátuma eltérő, mint ha nem használ felügyelt identitást. Itt meg kell adnia egy ResourceId, amely nem rendelkezik fiók kulcsával vagy jelszavával. A ResourceId tartalmaznia kell a Storage-fiók előfizetés-AZONOSÍTÓját, a Storage-fiók erőforráscsoporthoz, valamint a Storage-fiók nevét.
     * Felügyelt identitás formátuma: 
-        * *ResourceId =/Subscriptions/ **az előfizetés-azonosítóját****a/resourceGroups//Providers/Microsoft.Storage/storageAccounts/** a **Storage-fiók neve** /;*
+        * *ResourceId =/Subscriptions/**az előfizetés-azonosítóját****a/resourceGroups//Providers/Microsoft.Storage/storageAccounts/** a **Storage-fiók neve**/;*
 * a tároló a Storage-fiókban **Megadja a** tároló vagy a tábla nevét. Alapértelmezés szerint a tárolóban lévő összes blob beolvasható. Ha a blobokat csak egy adott virtuális könyvtárban szeretné indexelni, megadhatja a könyvtárat a választható **lekérdezési** paraméter használatával.
 
 Példa blob-adatforrás objektum létrehozására a [REST API](/rest/api/searchservice/create-data-source)használatával:

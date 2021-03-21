@@ -11,16 +11,16 @@ ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: 17d430946f3cba1aa4680d1eaf8979fa4338bc22
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788400"
 ---
-# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának minimális TLS-verziójának konfigurálása
+# <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Minimális TLS-verzió konfigurálása felügyelt Azure SQL-példányon
 A minimális [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) verzió beállítása lehetővé teszi, hogy az ügyfelek szabályozzák az Azure SQL felügyelt példányai által használt TLS-verziót.
 
-Jelenleg a TLS 1,0, 1,1 és 1,2 támogatottak. A TLS minimális verziójának beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például például a 1,1-nál nagyobb TLS-verzió választása. azt jelenti, hogy a rendszer csak a TLS 1,1-es és 1,2-as kapcsolatait fogadja el, és a TLS 1,0 Az alkalmazások támogatásának megerősítését követően javasoljuk, hogy a minimális TLS-verziót 1,2-re állítsa be, mivel az a korábbi verziókban talált biztonsági rések javításait tartalmazza, és az Azure SQL felügyelt példányában támogatott TLS legmagasabb verziója.
+Jelenleg a TLS 1.0-s, 1.1-es és 1.2-es verziója támogatott. Egy minimális TLS-verzió beállítása biztosítja, hogy a következő, újabb TLS-verziók támogatottak legyenek. Például például a 1,1-nál nagyobb TLS-verzió választása. azt jelenti, hogy a rendszer csak a TLS 1.1-es és 1.2-es verziójú kapcsolatokat fogadja el, a TLS 1.0-s verziójúakat elutasítja. Miután megerősítette, hogy az alkalmazások támogatják, ajánlott az 1.2-es minimális TLS-verziót beállítani, mert ez tartalmazza a korábbi verziókban található biztonsági rések javításait, és ez a felügyelt Azure SQL-példányban támogatott legmagasabb TLS-verzió.
 
 A TLS régebbi verzióit használó ügyfelek esetében javasoljuk, hogy az alkalmazások követelményeinek megfelelően állítsa be a TLS minimális verziószámát. Azon ügyfelek esetében, akik nem titkosított kapcsolaton keresztül kapcsolódnak az alkalmazásokhoz, javasoljuk, hogy ne állítson be minimális TLS-verziót. 
 

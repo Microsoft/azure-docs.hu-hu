@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792395"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazáshoz a Visual Studio csatlakoztatott szolgáltatásainak használatával
@@ -24,7 +24,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Egy Azure-előfizetés** . Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
+- **Egy Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztráljon egy [ingyenes fiókra](https://azure.microsoft.com/pricing/free-trial/).
 - A **Visual Studio 2019 16,3** -es vagy újabb verziója [már letölthető](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 
@@ -32,7 +32,7 @@ A csatlakoztatott szolgáltatások által a projektben a Key Vault engedélyezé
 
 Mielőtt elkezdené, győződjön meg róla, hogy be van jelentkezve a Visual studióba. Jelentkezzen be ugyanazzal a fiókkal, amelyet az Azure-előfizetéséhez használ. Ezután nyisson meg egy ASP.NET 4.7.1 vagy újabb verziót, vagy ASP.NET Core 2,0 webes projektet, és hajtsa végre a következő lépéseket:
 
-1. **Megoldáskezelőban** kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást **Add** , majd válassza a  >  **csatlakoztatott szolgáltatás** hozzáadása Hozzáadás lehetőséget  >  **Add** .
+1. **Megoldáskezelőban** kattintson a jobb gombbal arra a projektre, amelyhez hozzá kívánja adni a Key Vault-támogatást , majd válassza a  >  **csatlakoztatott szolgáltatás** hozzáadása Hozzáadás lehetőséget  >  .
    Megjelenik a Connected Service (Csatlakoztatott szolgáltatás) lap a projekthez adható szolgáltatásokkal.
 1. Az elérhető szolgáltatások menüben válassza a **Azure Key Vault** lehetőséget, majd kattintson a **tovább** gombra.
 
@@ -46,7 +46,7 @@ Most már létrejött a kapcsolat a Key Vaultval, és a Titkok a kódban is elé
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>A titkok elérése a kódban (ASP.NET Core)
 
-1. Nyisson meg egy lapozófájlt, például a *index.cshtml.cs* , és írja be a következő kódot:
+1. Nyisson meg egy lapozófájlt, például az *index. cshtml. cs* fájlt, és írja be a következő kódot:
    1. Adjon meg egy hivatkozást a `Microsoft.Extensions.Configuration` következő direktíva használatával:
 
        ```csharp
@@ -115,7 +115,7 @@ Beállíthatja a konfigurációt úgy, hogy az web.config-fájlnak a `appSetting
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. Szerkessze a `About` metódust a *HomeController.cs* -ben a megerősítés értékének megjelenítéséhez.
+1. Szerkessze a `About` metódust a *HomeController. cs*-ban, hogy megjelenjen az érték a megerősítéshez.
 
    ```csharp
    public ActionResult About()
@@ -127,16 +127,16 @@ Beállíthatja a konfigurációt úgy, hogy az web.config-fájlnak a `appSetting
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a Key Vault a Visual studióba bejelentkezett másik Microsoft-fiók fut (például a Key Vault fut a munkahelyi fiókján, de a Visual Studio használja a saját fiókját), akkor a Program.cs-fájlban hibaüzenetet kap, hogy a Visual Studio nem fér hozzá a Key Vaulthoz. A probléma megoldása:
+Ha a Key Vault egy másik Microsoft-fiók fut, mint a Visual studióba (például a Key Vault fut a munkahelyi fiókján, de a Visual Studio használja a saját fiókját), akkor hibaüzenet jelenik meg a program. cs fájljában, hogy a Visual Studio nem fér hozzá a Key Vaulthoz. A probléma megoldása:
 
 1. Lépjen a [Azure Portal](https://portal.azure.com) , és nyissa meg a Key Vault.
 
-1. Válassza a **hozzáférési szabályzatok** , majd a **hozzáférési házirend hozzáadása** lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
+1. Válassza a **hozzáférési szabályzatok**, majd a **hozzáférési házirend hozzáadása** lehetőséget, és válassza ki azt a fiókot, amelyet a rendszerbiztonsági tagként jelentkezett be.
 
 1. A Visual Studióban válassza **a**  >  **Fiókbeállítások** lehetőséget.
 Válassza a **fiók hozzáadása** lehetőséget a **minden fiók** szakaszban. Jelentkezzen be azzal a fiókkal, amelyet a hozzáférési szabályzatának elsődlegesen választott.
 
-1. Válassza az **eszközök**  >  **lehetőséget** , és keresse meg az **Azure-szolgáltatás hitelesítése** elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
+1. Válassza az **eszközök**  >  **lehetőséget**, és keresse meg az **Azure-szolgáltatás hitelesítése** elemet. Ezután válassza ki azt a fiókot, amelyet az imént hozzáadott a Visual studióhoz.
 
 Az alkalmazás hibakeresése után a Visual Studio csatlakozik ahhoz a fiókhoz, amelyen a Key Vault található.
 

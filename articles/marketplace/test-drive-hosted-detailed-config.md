@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
 ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462944"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Az üzemeltetett tesztelési meghajtók részletes konfigurációja
@@ -37,7 +37,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Dynamics 365-hez az ügyfelek
     - Egyidejű **tesztelési meghajtók maximális** száma – azon egyidejű felhasználók száma, akik egyszerre futnak aktív tesztelési meghajtóval. Minden felhasználó felhasznál egy Dynamics-licencet, amíg a tesztvezetés aktív, ezért győződjön meg arról, hogy legalább ennyi Dynamics-licenc áll rendelkezésre a tesztvezetés felhasználói számára. Ajánlott 3 – 5.
     - **Tesztvezetés időtartama** – az a szám, ameddig a felhasználó tesztelési meghajtója aktív lesz. Az idő lejárta után a felhasználó kikerül a bérlőtől. Az alkalmazás összetettsége alapján 2-24 óra ajánlott. A felhasználó mindig kérhet egy másik tesztvezetés, ha elfogynak az idő, és újra el szeretné érni a teszt meghajtót.
     - **Példány URL** -címe – azt az URL-címet, amelyet a rendszer a test Drive-felhasználó számára küld a tesztvezetés indításakor. Ez általában annak a Dynamics 365-példánynak az URL-címe, amelyen az alkalmazás és a mintaadatok telepítve vannak. Példa értéke: `https://testdrive.crm.dynamics.com` .
-    - **Példány webes API URL-címe** – a Dynamics 365-példány webes API URL-címe. Ha bejelentkezik a Microsoft Dynamics 365-példányba, jelentkezzen be, **Setting** és navigáljon a  >  **Testreszabás**  >  **fejlesztői erőforrások**  >  **példányának webes API** beállításához, és másolja a címet (URL). Példaérték: 
+    - **Példány webes API URL-címe** – a Dynamics 365-példány webes API URL-címe. Ha bejelentkezik a Microsoft Dynamics 365-példányba, jelentkezzen be, és navigáljon a  >  **Testreszabás**  >  **fejlesztői erőforrások**  >  **példányának webes API** beállításához, és másolja a címet (URL). Példaérték: 
 
         :::image type="content" source="./media/test-drive/sample-web-api-url.png" alt-text="Példa a példány webes API-ra.":::
 

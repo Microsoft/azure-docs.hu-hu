@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 02c79e8385c7a7e9d60a3dcbed603ca94cb1dc43
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Oktatóanyag: Azure Active Directory az origami integrációval
@@ -67,7 +67,7 @@ Az origami integrációjának konfigurálásához az Azure AD-ben fel kell venni
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést a **Britta Simon**nevű teszt felhasználója állítja be és teszteli az origamiban.
+Ebben a szakaszban az Azure AD-alapú egyszeri bejelentkezést a **Britta Simon** nevű teszt felhasználója állítja be és teszteli az origamiban.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az origami kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az origami használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD-alapú egyszeri bejelentkezés origami-vel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **origami** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **origami** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -124,7 +124,7 @@ Az Azure AD-alapú egyszeri bejelentkezés origami-vel való konfigurálásához
 
 1. Jelentkezzen be az origami-fiókba rendszergazdai jogosultságokkal.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
+2. A felső menüben kattintson a **rendszergazda** elemre.
    
     ![Képernyőkép, amely az origami kezdőlapot jeleníti meg a "rendszergazda" beállítással.](./media/origami-tutorial/tutorial_origami_51.png)
 
@@ -132,7 +132,7 @@ Az Azure AD-alapú egyszeri bejelentkezés origami-vel való konfigurálásához
    
     ![Képernyőkép: az "egyszeri bejelentkezés beállítása" lap "egyszeri bejelentkezés engedélyezése", és a Kiemelt szövegmezők.](./media/origami-tutorial/tutorial_origami_531.png)
 
-    a. Válassza **az egyszeri bejelentkezés engedélyezése**lehetőséget.
+    a. Válassza **az egyszeri bejelentkezés engedélyezése** lehetőséget.
 
     b. Az **Identity Provider bejelentkezési oldalának URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -146,7 +146,7 @@ Az Azure AD-alapú egyszeri bejelentkezés origami-vel való konfigurálásához
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,15 +171,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az Origamihoz való hozzáférés megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **origami**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **origami** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **origami**elemet.
+2. Az alkalmazások listában válassza az **origami** elemet.
 
     ![Az origami hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -199,15 +199,15 @@ Ebben a szakaszban egy Britta Simon in origami nevű felhasználót hoz létre.
 
 1. Jelentkezzen be az origami-fiókba rendszergazdai jogosultságokkal.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
+2. A felső menüben kattintson a **rendszergazda** elemre.
    
     ![Képernyőkép, amely az origami-Fiók kezdőlapját mutatja a "rendszergazda" beállítással.](./media/origami-tutorial/tutorial_origami_51.png)
 
-3. A **felhasználók és biztonság** párbeszédpanelen kattintson a **felhasználók**elemre.
+3. A **felhasználók és biztonság** párbeszédpanelen kattintson a **felhasználók** elemre.
    
     ![Képernyőkép, amely a "felhasználók" párbeszédpanelt jeleníti meg a "felhasználók" beállítással.](./media/origami-tutorial/tutorial_origami_54.png)
 
-4. Kattintson az **új felhasználó hozzáadása**lehetőségre.
+4. Kattintson az **új felhasználó hozzáadása** lehetőségre.
    
     ![Képernyőkép, amely megjeleníti az "új felhasználó hozzáadása" gombot.](./media/origami-tutorial/tutorial_origami_55.png)
 
@@ -221,9 +221,9 @@ Ebben a szakaszban egy Britta Simon in origami nevű felhasználót hoz létre.
 
     c. A **Jelszó megerősítése** szövegmezőbe írja be újra a jelszót.
 
-    d. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    d. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    e. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    e. A **vezetékneve** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
     f. Kattintson a **Mentés** gombra.
    

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
 ms.openlocfilehash: 25f83088bdc55dbafe7ccf0ff06b0c6595c9ea71
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101724353"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Erőforrások az Azure Sentinel egyéni összekötők létrehozásához
@@ -36,12 +36,12 @@ A következő táblázat összehasonlítja a jelen cikkben ismertetett egyéni �
 
 |Metódus leírása  |Képesség | Kiszolgáló nélküli    |Összetettség  |
 |---------|---------|---------|---------|
-|**[Log Analytics ügynök](#connect-with-the-log-analytics-agent)** <br>A legjobb megoldás a helyi és a IaaS-forrásokból származó fájlok gyűjtésére   | Csak a fájl gyűjtése  |   Nem      |Alacsony         |
+|**[Log Analytics ügynök](#connect-with-the-log-analytics-agent)** <br>A legjobb megoldás a helyi és a IaaS-forrásokból származó fájlok gyűjtésére   | Csak a fájl gyűjtése  |   No      |Alacsony         |
 |**[LogStash](#connect-with-logstash)** <br>A legjobb a helyszíni és a IaaS-forrásokhoz, az olyan forrásokhoz, amelyekhez elérhető egy beépülő modul, valamint a Logstash-t már ismerő szervezetek  | Az elérhető beépülő modulok és az egyéni bővítmények jelentős rugalmasságot biztosítanak.   |   Nem a virtuális gép vagy a virtuálisgép-fürt futtatására van szükség           |   Alacsony számos forgatókönyvet támogat a beépülő modulok esetében      |
-|**[Logic Apps](#connect-with-logic-apps)** <br>Magas költséghatékonyság; Kerülje a nagy mennyiségű adatforgalom elkerülését <br>A legjobb kis mennyiségű felhőalapú forrásokhoz  | A kód nélküli programozás lehetővé teszi a korlátozott rugalmasságot, és nem támogatja az algoritmusok megvalósítását.<br><br> Ha egy elérhető művelet már nem támogatja a követelményeit, az egyéni műveletek létrehozása bonyolultságot adhat.    |    Igen         |   Alacsony egyszerű, kódolású fejlesztés      |
-|**[PowerShell](#connect-with-powershell)** <br>A legjobb a prototípusokhoz és a rendszeres fájlfeltöltésekhez | A fájlok gyűjtésének közvetlen támogatása. <br><br>A PowerShell segítségével további források gyűjthetők össze, de a kódolást és a parancsfájlt szolgáltatásként kell konfigurálni.      |Nem               |  Alacsony       |
+|**[Logic Apps](#connect-with-logic-apps)** <br>Magas költséghatékonyság; Kerülje a nagy mennyiségű adatforgalom elkerülését <br>A legjobb kis mennyiségű felhőalapú forrásokhoz  | A kód nélküli programozás lehetővé teszi a korlátozott rugalmasságot, és nem támogatja az algoritmusok megvalósítását.<br><br> Ha egy elérhető művelet már nem támogatja a követelményeit, az egyéni műveletek létrehozása bonyolultságot adhat.    |    Yes         |   Alacsony egyszerű, kódolású fejlesztés      |
+|**[PowerShell](#connect-with-powershell)** <br>A legjobb a prototípusokhoz és a rendszeres fájlfeltöltésekhez | A fájlok gyűjtésének közvetlen támogatása. <br><br>A PowerShell segítségével további források gyűjthetők össze, de a kódolást és a parancsfájlt szolgáltatásként kell konfigurálni.      |No               |  Alacsony       |
 |**[Log Analytics API](#connect-with-the-log-analytics-api)** <br>A legjobb az integrációt megvalósító ISV-ket és az egyedi gyűjtési követelményekhez   | A kód összes funkcióját támogatja.  | A megvalósítástól függ           |     Magas    |
-|**[Azure functions](#connect-with-azure-functions)** A legjobb a nagy mennyiségű felhőalapú forrásokhoz és az egyedi gyűjtési követelményekhez  | A kód összes funkcióját támogatja.  |  Igen             |     Magas programozási ismeretek szükségesek    |
+|**[Azure functions](#connect-with-azure-functions)** A legjobb a nagy mennyiségű felhőalapú forrásokhoz és az egyedi gyűjtési követelményekhez  | A kód összes funkcióját támogatja.  |  Yes             |     Magas programozási ismeretek szükségesek    |
 |     |         |                |
 
 > [!TIP]
@@ -93,7 +93,7 @@ Hozzon létre egy [Azure Logic app](../logic-apps/index.yml) -kiszolgálót, ame
 
 1. A **Logic apps elindításához használja a következő eseményindítók egyikét**:
 
-    |Eseményindító  |Leírás  |
+    |Eseményindító  |Description  |
     |---------|---------|
     |**Ismétlődő feladat**     |   Például úgy ütemezze a logikai alkalmazást, hogy az adatok rendszeres lekérdezését meghatározott fájlokból, adatbázisokból vagy külső API-kból olvassa be. <br>További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása Azure Logic Appsban](../connectors/connectors-native-recurrence.md).      |
     |**Igény szerinti indítás**     | Igény szerint futtathatja a logikai alkalmazást manuális adatgyűjtés és tesztelés céljából. <br>További információkért lásd:  [logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával](../logic-apps/logic-apps-http-endpoint.md).        |

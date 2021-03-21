@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020415"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Azure CDN a Verizon Premium Rules Engine funkcióival
@@ -29,7 +29,7 @@ Az elérhető szolgáltatások típusai a következők:
 * [Megjegyzés](#comment)
 * [Fejlécek](#headers)
 * [Naplók](#logs)
-* [Optimalizálás](#optimize)
+* [Optimalizálása](#optimize)
 * [Származási](#origin)
 * [Speciális](#specialty)
 * [URL-cím](#url)
@@ -39,7 +39,7 @@ Az elérhető szolgáltatások típusai a következők:
 
 Ezek a funkciók a tartalmakhoz való hozzáférés szabályozására szolgálnak.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Hozzáférés megtagadása (403)](https://docs.vdms.com/cdn/Content/HRE/F/Deny-Access-403.htm) | Meghatározza, hogy az összes kérés visszautasítva van-e egy 403 Tiltott válasz esetén. |
 | [Jogkivonat-hitelesítés](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm) | Meghatározza, hogy a rendszer a Token-Based hitelesítést alkalmazza-e a kérelemre. |
@@ -53,7 +53,7 @@ Ezek a funkciók a tartalmakhoz való hozzáférés szabályozására szolgálna
 
 Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a tartalom gyorsítótárazásának idejét és módját.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Sávszélesség-paraméterek](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Parameters.htm) | Meghatározza, hogy a sávszélesség-szabályozási paraméterek (azaz ec_rate és ec_prebuf) aktívak-e. |
 | [Sávszélesség-szabályozás](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | A peremhálózati kiszolgálók által biztosított válasz sávszélességének szabályozása. |
@@ -92,7 +92,7 @@ A Megjegyzés funkció lehetővé teszi, hogy egy Megjegyzés egy szabályon bel
 
 Ezek a funkciók a kérelemből vagy válaszból származó fejlécek hozzáadására, módosítására és törlésére szolgálnak.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Életkor válaszának fejléce](https://docs.vdms.com/cdn/Content/HRE/F/Age-Response-Header.htm) | Meghatározza, hogy a rendszer a kérelmezőnek küldött válaszban tartalmazza-e az életkor válaszának fejlécét. |
 | [Hibakeresési gyorsítótár válaszának fejlécei](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) | Meghatározza, hogy a válasz tartalmazhatja-e az [X-EC-debug válasz fejlécét](https://docs.vdms.com/cdn/Content/Knowledge_Base/X_EC_Debug.htm) , amely információt nyújt a kért eszköz gyorsítótár-házirendjéről. |
@@ -106,18 +106,18 @@ Ezek a funkciók a kérelemből vagy válaszból származó fejlécek hozzáadá
 
 Ezek a funkciók úgy vannak kialakítva, hogy testre szabják a nyers naplófájlokban tárolt adatfájlokat.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Egyéni napló mezője 1](https://docs.vdms.com/cdn/Content/HRE/F/Custom-Log-Field-1.htm) | Meghatározza a nyers naplófájl egyéni napló mezőjéhez hozzárendelni kívánt formátumot és tartalmat. |
 | [Napló lekérdezési karakterlánca](https://docs.vdms.com/cdn/Content/HRE/F/Log-Query-String.htm) | Meghatározza, hogy a rendszer a lekérdezési karakterláncot a hozzáférési naplók URL-címével együtt tárolja-e. |
 
 **[Vissza a tetejére](#top)**
 
-### <a name="optimize"></a><a name="optimize"></a>Optimalizálás
+### <a name="optimize"></a><a name="optimize"></a>Optimalizálása
 
 Ezek a funkciók határozzák meg, hogy egy kérelem a Edge-optimalizáló által biztosított optimalizálásokra fog-e esni.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Edge-optimalizáló](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer.htm) | Meghatározza, hogy alkalmazható-e az Edge-optimalizáló egy kérelemre. |
 | [Edge-optimalizáló – konfiguráció példánya](https://docs.vdms.com/cdn/Content/HRE/F/Edge-Optimizer-Instantiate-Configuration.htm) | Egy helyhez társított Edge-optimalizáló konfigurációjának példánya vagy aktiválása. |
@@ -128,7 +128,7 @@ Ezek a funkciók határozzák meg, hogy egy kérelem a Edge-optimalizáló álta
 
 Ezek a funkciók úgy vannak kialakítva, hogy a CDN hogyan kommunikáljon a forrás-kiszolgálóval.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Keep-Alive kérelmek maximális száma](https://docs.vdms.com/cdn/Content/HRE/F/Maximum-Keep-Alive-Requests.htm) | A Keep-Alive-kapcsolatra vonatkozó kérelmek maximális számát határozza meg a lezárás előtt. |
 | [Proxy speciális fejlécei](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) | Meghatározza azon [CDN-specifikus kérelmek fejléceit](https://docs.vdms.com/cdn/Content/Knowledge_Base/Request-Format.htm#RequestHeaders) , amelyek egy peremhálózati kiszolgálóról a forrás-kiszolgálóra lesznek továbbítva. |
@@ -139,7 +139,7 @@ Ezek a funkciók úgy vannak kialakítva, hogy a CDN hogyan kommunikáljon a for
 
 Ezek a funkciók olyan speciális funkciókat biztosítanak, amelyeket csak a speciális felhasználók használhatnak.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Gyorsítótárazható HTTP-metódusok](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-HTTP-Methods.htm) | Meghatározza a hálózaton gyorsítótárazható további HTTP-metódusok készletét. |
 | [Gyorsítótárazható kérelem törzsének mérete](https://docs.vdms.com/cdn/Content/HRE/F/Cacheable-Request-Body-Size.htm) | Meghatározza azt a küszöbértéket, amely meghatározza, hogy a POST válasz gyorsítótárazható-e. |
@@ -153,7 +153,7 @@ Ezek a funkciók olyan speciális funkciókat biztosítanak, amelyeket csak a sp
 
 Ezek a funkciók lehetővé teszik a kérés átirányítását vagy átírását egy másik URL-címre.
 
-| Név       | Cél                                                           |
+| Name       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [Átirányítások követése](https://docs.vdms.com/cdn/Content/HRE/F/Follow-Redirects.htm) | Meghatározza, hogy a kérések átirányíthatók-e az ügyfél-kiszolgáló által visszaadott Location fejlécben megadott állomásnévre. |
 | [URL-átirányítás](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm) | Átirányítja a kéréseket a Location fejléc használatával. |
@@ -169,10 +169,10 @@ A [webalkalmazási tűzfal](https://docs.vdms.com/cdn/Content/HRE/F/Web_Applicat
 
 A legújabb funkciókért tekintse meg a [Verizon Rules Engine dokumentációját](https://docs.vdms.com/cdn/index.html#Quick_References/HRE_QR.htm#Actions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
-- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)
 - [Azure CDN áttekintése](cdn-overview.md)
