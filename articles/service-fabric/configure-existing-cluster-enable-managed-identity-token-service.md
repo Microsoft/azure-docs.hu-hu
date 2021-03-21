@@ -4,10 +4,10 @@ description: A következőképpen engedélyezheti a felügyelt identitások tám
 ms.topic: article
 ms.date: 03/11/2019
 ms.openlocfilehash: dc341688cae6d98f53be10351e4e4572a3539e4e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790039"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Felügyelt identitás támogatásának konfigurálása meglévő Service Fabric-fürtben
@@ -67,7 +67,7 @@ Ha az üzembe helyezés a következő üzenettel meghiúsul, az azt jelenti, hog
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Service Fabric alkalmazás felügyelt identitásának kihasználása a szolgáltatási kódból](./how-to-managed-identity-service-fabric-app-code.md)

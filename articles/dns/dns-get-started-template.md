@@ -10,10 +10,10 @@ ms.date: 09/8/2020
 ms.author: duau
 ms.custom: subject-armqs
 ms.openlocfilehash: 24460167e2279e7d3001d0bc16d050beb5b55289
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791001"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-an-arm-template"></a>Rövid útmutató: Azure DNS zóna és rekord létrehozása ARM-sablonnal
@@ -80,7 +80,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -88,11 +88,11 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 1. Az erőforráscsoport az alábbi, itt látható erőforrásokat tartalmazza:
 
-    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/dns-getstarted-template/resource-group-dns-zone.png" alt-text="DNS-zóna központi telepítési erőforráscsoport":::
 
 1. Válassza ki a DNS-zónát az utótaggal annak `azurequickstart.org` ellenőrzéséhez, hogy a zóna megfelelően lett-e létrehozva a `A` és a értékére hivatkozó rekorddal `1.2.3.4` `1.2.3.5` .
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-overview.png" alt-text="DNS-zónák üzembe helyezése":::
 
 1. Másolja az egyik névkiszolgálói nevet az előző lépésből.
 
@@ -110,11 +110,11 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
    A következő képernyőképhez hasonlóan kell megjelennie:
 
-    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="Azure DNS zóna Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/dns-getstarted-template/dns-zone-validation.png" alt-text="DNS-zóna nslookup":::
 
 A gazdagép neve a `www.2lwynbseszpam.azurequickstart.org` és a értékre van feloldva `1.2.3.4` `1.2.3.5` , ugyanúgy, ahogy konfigurálta. Ez az eredmény ellenőrzi, hogy a névfeloldás megfelelően működik-e.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a DNS-zónával létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a DNS-zónát és az összes kapcsolódó erőforrást.
 

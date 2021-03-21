@@ -13,10 +13,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96457605"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Biztonsági javaslatok az Azure eszközök internetes hálózata (IoT) üzembe helyezéséhez
@@ -51,7 +51,7 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 | Biztonságos eszközök kommunikációja | A IoT Hub a Transport Layer Security (TLS) szabvány, a 1,2-es és a 1,0-es verziókat támogató eszközök közötti kapcsolatokat biztosítja. A maximális biztonság érdekében a [TLS 1,2](https://tools.ietf.org/html/rfc5246) -et használja. | - |
 | Biztonságos szolgáltatás kommunikációja | A IoT Hub végpontokat biztosít a háttér-szolgáltatásokhoz, például az [Azure Storage](../storage/index.yml) -hoz vagy a [Event HUBS](../event-hubs/index.yml) csak a TLS protokollal való kapcsolódáshoz, és a végpontok nem titkosított csatornán vannak kitéve. Ha ezek az adatok elérik ezeket a háttér-szolgáltatásokat a tároláshoz vagy az elemzéshez, ügyeljen arra, hogy a szolgáltatáshoz megfelelő biztonsági és titkosítási módszereket alkalmazzon, és megvédje a háttérbeli bizalmas adatokat. | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Az ASC támogatja |
 |-|----|--|
@@ -66,6 +66,6 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
 | A IoT-megoldás figyelése a felhőből | A IoT Hub-megoldás általános állapotát a [Azure monitor metrikáinak](../iot-hub/monitor-iot-hub.md)használatával figyelheti. | - |
 | Diagnosztika beállítása | Részletesen tekintse meg a műveleteit a megoldásban lévő események naplózásával, majd küldje el a diagnosztikai naplókat a Azure Monitor a teljesítmény láthatóságának megismeréséhez. További információért olvassa el a [figyelés és a problémák diagnosztizálása az IoT hub-ban](../iot-hub/monitor-iot-hub.md) című témakört. | - |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure IoT-t érintő speciális forgatókönyvek esetében előfordulhat, hogy további biztonsági követelményeket kell figyelembe vennie. További útmutatásért lásd: [IoT biztonsági architektúra](iot-security-architecture.md) .

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
 ms.openlocfilehash: f12c823f609ac309d4b5ddbbaa7d5a076a7bb9ad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96447291"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős elemzés a kinyert adatszolgáltatások használatával – több-bérlős alkalmazás
@@ -64,7 +64,7 @@ Végül a Star-Schema táblákat kérdezi le. A lekérdezési eredmények vizuá
 
 Annak megértése, hogy az egyes bérlők milyen konzisztens módon használják a szolgáltatást, lehetővé teszi, hogy szolgáltatási terveket hozzon létre az igényeik kielégítésére. Ez az oktatóanyag a bérlői adatokból begyűjtött elemzések alapvető példáit mutatja be.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -91,7 +91,7 @@ A következő lépésekben telepíti a **tenantanalytics** nevű Analytics-táro
 1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
 2. Állítsa be az $DemoScenario változót a parancsfájlban, hogy az megfeleljen a választott elemzési tárolónak. A oszlopcentrikus nélküli adatbázis használata javasolt a tanulási célokra.
     - Ha oszlopcentrikus nélkül szeretné használni a SQL Databaset, állítsa be a **$DemoScenario**  =  **2**
-    - Ha SQL Databaset szeretne használni a oszlopcentrikus **$DemoScenario**, állítsa be a  =  **3** . $DemoScenario  
+    - Ha SQL Databaset szeretne használni a oszlopcentrikus , állítsa be a  =  **3** . $DemoScenario  
 3. Nyomja le az **F5** billentyűt a bemutató parancsfájl futtatásához (amely meghívja az *Deploy-TenantAnalytics \<XX> . ps1* parancsfájlt), amely létrehozza a bérlői elemzési tárolót. 
 
 Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) a **tenants1- \<User\> MT-** és a **Catalog \<User\> -MT-** kiszolgálók összekapcsolásához a login = *fejlesztői*, jelszó = *P \@ ssword1* használatával.
@@ -172,7 +172,7 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 1. Indítsa el Power BI Desktopot.
 2. A Kezdőlap menüszalagon válassza az **adatok lekérése** lehetőséget, és válassza a **továbbiak...** lehetőséget. a menüből.
 3. Az **adatlekérdezés** ablakban válassza a Azure SQL Database lehetőséget.
-4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-MT- \<User\> . database.Windows.net). Válassza **Import** az importálás **adatkapcsolati módra** lehetőséget, majd kattintson az OK gombra. 
+4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-MT- \<User\> . database.Windows.net). Válassza  az importálás **adatkapcsolati módra** lehetőséget, majd kattintson az OK gombra. 
 
     ![Képernyőfelvétel: SQL Server adatbázis párbeszédpanel, amelyen megadhatja a kiszolgálót és az adatbázist.](./media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 

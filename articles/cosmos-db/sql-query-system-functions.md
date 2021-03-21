@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 36ebe80671c77cc83ddba770e3259f6542472e58
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99526839"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Rendszerfunkciók (Azure Cosmos DB)
@@ -20,7 +20,7 @@ ms.locfileid: "99526839"
 
  A Cosmos DB számos beépített SQL-függvényt biztosít. A beépített függvények kategóriái alább láthatók.  
   
-|Function csoport|Leírás|Üzemeltetés|  
+|Function csoport|Description|Üzemeltetés|  
 |--------------|-----------------|-----------------| 
 |[Tömb függvények](sql-query-array-functions.md)|A tömb függvények a tömb bemeneti értékén hajtanak végre műveletet, és numerikus, logikai vagy tömb értéket adnak vissza. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Dátum és idő függvények](sql-query-date-time-functions.md)|A dátum-és időfüggvények lehetővé teszik az aktuális UTC dátum és idő megszerzését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md), [GetCurrentTicks](sql-query-getcurrentticks.md) |

@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 6ac4d0e0744bfc82a686671234e013b2dd717146
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927753"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Az Azure Key Vault integrálása az Azure Policyval
@@ -29,9 +29,9 @@ Példa használati forgatókönyvekre:
 
 ## <a name="types-of-policy-effects-and-guidance"></a>A házirend hatásának és útmutatásának típusai
 
-**Naplózás** : Ha egy házirend hatása naplózásra van beállítva, a házirend nem okoz változást a környezetében. Csak olyan összetevőkre figyelmeztet, amelyek nem felelnek meg a szabályzat-definícióknak egy adott hatókörön belül, ha ezeket az összetevőket nem megfelelőként jelöli meg a szabályzat megfelelőségi irányítópultján. A naplózás alapértelmezett, ha nincs kiválasztva házirend-effektus.
+**Naplózás**: Ha egy házirend hatása naplózásra van beállítva, a házirend nem okoz változást a környezetében. Csak olyan összetevőkre figyelmeztet, amelyek nem felelnek meg a szabályzat-definícióknak egy adott hatókörön belül, ha ezeket az összetevőket nem megfelelőként jelöli meg a szabályzat megfelelőségi irányítópultján. A naplózás alapértelmezett, ha nincs kiválasztva házirend-effektus.
 
-**Megtagadás** : Ha egy házirend hatására a Megtagadás érték van beállítva, a házirend letiltja az új összetevők, például a tanúsítványok létrehozását, valamint a meglévő összetevők olyan új verzióinak letiltását, amelyek nem felelnek meg a házirend-definíciónak. A kulcstartón belüli meglévő, nem megfelelő erőforrások nem érintettek. A "naplózás" funkció továbbra is működni fog.
+**Megtagadás**: Ha egy házirend hatására a Megtagadás érték van beállítva, a házirend letiltja az új összetevők, például a tanúsítványok létrehozását, valamint a meglévő összetevők olyan új verzióinak letiltását, amelyek nem felelnek meg a házirend-definíciónak. A kulcstartón belüli meglévő, nem megfelelő erőforrások nem érintettek. A "naplózás" funkció továbbra is működni fog.
 
 ## <a name="available-built-in-policy-definitions"></a>Elérhető "beépített" szabályzat-definíciók
 
@@ -91,9 +91,9 @@ A szolgáltatás leállást tapasztalhat, ha egy nem megfelelően figyelt tanús
 
 Ha azt szeretné, hogy a kulcsok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezzel a házirenddel naplózhatja, hogy a kulcs mennyi ideig aktív.
 
-**Ha a kulcs aktiválási dátummal van beállítva** , akkor ez a szabályzat a kulcs **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a kulcs **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
-**Ha a kulcs nem rendelkezik aktiválási dátummal beállítva** , akkor ez a szabályzat a kulcs **létrehozási dátumától** számított napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a kulcs nem rendelkezik aktiválási dátummal beállítva**, akkor ez a szabályzat a kulcs **létrehozási dátumától** számított napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
 ### <a name="keys-should-be-the-specified-cryptographic-type-rsa-or-ec-preview"></a>A kulcsnak a megadott RSA vagy EC titkosítási típusnak kell lennie (előzetes verzió)
 
@@ -139,9 +139,9 @@ A szervezeti megfelelőségi követelmények kezeléséhez adja meg azt a maxim�
 
 Ha azt szeretné, hogy a titkos kódok a megadott számú napnál hosszabb ideig ne legyenek aktívak, akkor ezt a házirendet követve naplózhatja, hogy mennyi ideig volt aktív a titka.
 
-**Ha a titkos kulcs aktiválási dátummal van beállítva** , akkor ez a szabályzat a titok **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titkos kulcs aktiválási dátummal van beállítva**, akkor ez a szabályzat a titok **aktiválási dátumával** eltelt napok számát számítja ki az aktuális dátumra. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
-**Ha a titka nem rendelkezik aktiválási dátummal** , akkor ez a szabályzat a titok **létrehozásának dátumától** számított napok számát számítja ki az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
+**Ha a titka nem rendelkezik aktiválási dátummal**, akkor ez a szabályzat a titok **létrehozásának dátumától** számított napok számát számítja ki az aktuális dátumig. Ha a napok száma meghaladja a beállított küszöbértéket, a titkos kulcs a szabályzatnak nem megfelelőként lesz megjelölve.
 
 ### <a name="secrets-should-have-content-type-set-preview"></a>A titkoknak rendelkezniük kell a tartalomtípus-készlettel (előzetes verzió)
 
@@ -226,7 +226,7 @@ Az 100-es tanúsítványokat tartalmazó több csapat által használt kulcstart
 
     ![A Azure Key Vault működésének áttekintése](../media/policy-img11.png)
 
-## <a name="feature-limitations"></a>Szolgáltatási korlátozások
+## <a name="feature-limitations"></a>A szolgáltatás korlátozásai
 
 A "megtagadás" hatású szabályzatok kiosztása akár 30 percig is eltarthat (átlagos eset) és 1 óra (legrosszabb esetben), hogy megtagadja a nem megfelelő erőforrások létrehozását. Egy tár meglévő összetevőinek kiértékelése akár 1 órát (átlagos esetet) és 2 órát (legrosszabb esetben) is igénybe vehet, mielőtt a portál felhasználói felületén megtekintsék a megfelelőségi eredményeket. Ha a megfelelőségi eredmények "nem elindítottként" jelennek meg, akkor az a következő okok miatt fordulhat elő:
 - A szabályzat-értékelés még nem fejeződött be. A kezdeti értékelési késés a legrosszabb esetben akár 2 órát is igénybe vehet. 

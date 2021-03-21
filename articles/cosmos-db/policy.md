@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 1390f5db6e0f0370788bef60d5a2cafee1e8a96d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93080651"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
@@ -40,7 +40,7 @@ A házirend-definíció kiválasztásához írja be a `Cosmos DB` kifejezést a 
 
 ## <a name="create-a-custom-policy-definition"></a>Egyéni szabályzatdefiníció létrehozása
 
-A beépített szabályzatok által nem tárgyalt konkrét forgatókönyvek esetén létrehozhat [egy egyéni szabályzat-definíciót](../governance/policy/tutorials/create-custom-policy-definition.md)is. Később létrehoz egy szabályzat- _hozzárendelést_ az egyéni szabályzat- _definícióból_ .
+A beépített szabályzatok által nem tárgyalt konkrét forgatókönyvek esetén létrehozhat [egy egyéni szabályzat-definíciót](../governance/policy/tutorials/create-custom-policy-definition.md)is. Később létrehoz egy szabályzat- _hozzárendelést_ az egyéni szabályzat- _definícióból_.
 
 ### <a name="property-types-and-property-aliases-in-policy-rules"></a>Tulajdonságok típusai és tulajdonság-aliasok a házirend-szabályokban
 
@@ -127,7 +127,7 @@ A képernyőképen a következő megfelelőségi kiértékelési eredmények lá
 - A két fiók közül nulla megfelel egy olyan házirendnek, amely megköveteli, hogy a fiók több írási helyhez legyen konfigurálva
 - A két fiók közül nulla megfelel egy olyan házirendnek, amelyet az erőforrások üzembe helyezése engedélyezett az Azure-régiók számára.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB beépített szabályzat-definíciók keresése":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Megfelelési eredmények a felsorolt Azure Policy-hozzárendelésekhez":::
 
 A nem megfelelő erőforrások javításához tekintse meg a következő témakört: [erőforrások szervizelése Azure Policysal](../governance/policy/how-to/remediate-resources.md).
 

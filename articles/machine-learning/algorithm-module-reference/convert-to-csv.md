@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
 ms.openlocfilehash: cc58689e30e9b03e490c0871f3decd50372371fa
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421923"
 ---
 # <a name="convert-to-csv-module"></a>Konvertálás CSV-modulba
@@ -26,7 +26,7 @@ Ezzel a modullal olyan CSV-formátumba alakíthatja át az adatkészletet, amely
 
 A CSV-formátum, amely a "vesszővel tagolt értékek", számos külső gépi tanulási eszköz által használt fájlformátum. A CSV gyakori formátum, ha olyan nyílt forráskódú nyelvekkel dolgozik, mint például az R vagy a Python.
 
-Még ha Azure Machine Learning is dolgozik a legtöbb munkában, időnként előfordulhat, hogy az adatkészlet CSV-re való konvertálása külső eszközökön is hasznos lehet. Ilyenek többek között:
+Még ha Azure Machine Learning is dolgozik a legtöbb munkában, időnként előfordulhat, hogy az adatkészlet CSV-re való konvertálása külső eszközökön is hasznos lehet. Például:
 
 + Töltse le a CSV-fájlt, és nyissa meg az Excelben, vagy importálja egy kapcsolódó adatbázisba.  
 + Mentse a CSV-fájlt a Felhőbeli tárhelyre, és kapcsolódjon hozzá Power BI a vizualizációk létrehozásához.  
@@ -46,12 +46,12 @@ Az adatkészlet CSV-re konvertálásakor a rendszer az Azure ML-munkaterületen 
 ### <a name="results"></a>Results (Eredmények)
   
 
-A jobb oldali panelen válassza a **kimenetek** fület a CSV-re való **konvertáláshoz** , és válassza ki az egyik ikont a **portok kimenete** alatt.  
+A jobb oldali panelen válassza a **kimenetek** fület a CSV-re való **konvertáláshoz**, és válassza ki az egyik ikont a **portok kimenete** alatt.  
 
-+ **Adatkészlet regisztrálása** : válassza ki az ikont, és mentse a CSV-fájlt az Azure ml-munkaterületre külön adatkészletként. Az adatkészletet modulként is megtalálhatja a modul fájában a **saját adatkészletek** szakaszban.
++ **Adatkészlet regisztrálása**: válassza ki az ikont, és mentse a CSV-fájlt az Azure ml-munkaterületre külön adatkészletként. Az adatkészletet modulként is megtalálhatja a modul fájában a **saját adatkészletek** szakaszban.
 
- + **Kimenet megtekintése** : válassza ki a szem ikont, és kövesse az utasításokat a **Results_dataset** mappa tallózásához, majd töltse le a data.csv fájlt.
+ + **Kimenet megtekintése**: válassza ki a szem ikont, és kövesse az utasításokat a **Results_dataset** mappa tallózásához, majd töltse le a data.csv fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan hozhat létre és konfigurálhat egy tantermi l
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.openlocfilehash: db7a2f58f99252a7e5076dd86c37b65bbe8ea37a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434209"
 ---
 # <a name="manage-labs-in-azure-lab-services"></a>Labs kezelése Azure Lab Services 
@@ -89,7 +89,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 
 ### <a name="vm-sizes"></a>A virtuális gépek mérete  
 
-| Méret | Cores | RAM | Leírás | 
+| Méret | Cores | RAM | Description | 
 | ---- | ----- | --- | ----------- | 
 | Kicsi | 2 | 3,5 GB | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | 4 | 7 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. | 
@@ -134,7 +134,7 @@ Ehhez a legördülő listából új labort is létrehozhat az **új Labor** hasz
 
 Ha másik labor-fiókra szeretne váltani, válassza a labor fiók melletti legördülő listát, és válassza ki a másik labor-fiókot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)

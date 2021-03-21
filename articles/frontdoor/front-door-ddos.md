@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
 ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350783"
 ---
 # <a name="ddos-protection-on-front-door"></a>DDoS-védelem a bejárati ajtón
@@ -52,7 +52,7 @@ A [bejárati ajtó webalkalmazási tűzfala (WAF)](../web-application-firewall/a
 
 Ha további védelemre van szüksége, engedélyezheti [Azure DDoS Protection standard](../security/fundamentals/ddos-best-practices.md#ddos-protection-standard) használatát azon a VNet, amelyen a háttér üzembe helyezése történik. DDoS Protection a standard szintű ügyfelek további előnyöket kapnak, például a költséghatékonyságot, az SLA-garanciát és a DDoS gyors válasz csapatának szakértőkhöz való hozzáférését a támadás során felmerülő azonnali segítség érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan konfigurálhat egy [WAF-profilt a bejárati ajtón](front-door-waf.md). 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

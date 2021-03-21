@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/14/2020
 ms.author: apimpm
 ms.openlocfilehash: fae4e349d46425c0c2b2b923d6a61e2e588708c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077251"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure API Management OAuth 2,0 használatával
@@ -47,21 +47,21 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
     > [!NOTE]
     > Ezek a mezők a OAuth 2,0 engedélyezési kiszolgáló azonosítására szolgálnak a jelenlegi API Management szolgáltatási példányon belül, és azok értékei nem a OAuth 2,0-kiszolgálóról származnak.
 
-3. Adja meg az **ügyfél-regisztrációs oldal URL-címét** . Ezen a lapon a felhasználók létrehozhatják és kezelhetik a fiókjaikat, és a OAuth 2,0-szolgáltatótól függően változhatnak. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amellyel a felhasználók létrehozhatják és konfigurálhatják a saját fiókjaikat a fiókok felhasználói felügyeletét támogató OAuth 2,0-szolgáltatók számára – például: `https://contoso.com/login` . Néhány szervezet nem konfigurálja és nem használja ezt a funkciót, még akkor sem, ha a OAuth 2,0-szolgáltató támogatja azt. Ha a OAuth 2,0-szolgáltató nem rendelkezik konfigurált fiókok felhasználói felügyeletével, adjon meg egy helyőrző URL-címet, például a vállalat URL-címét, vagy egy URL-címet, például: `https://placeholder.contoso.com` .
+3. Adja meg az **ügyfél-regisztrációs oldal URL-címét**. Ezen a lapon a felhasználók létrehozhatják és kezelhetik a fiókjaikat, és a OAuth 2,0-szolgáltatótól függően változhatnak. Az **ügyfél-regisztrációs oldal URL-címe** arra a lapra mutat, amellyel a felhasználók létrehozhatják és konfigurálhatják a saját fiókjaikat a fiókok felhasználói felügyeletét támogató OAuth 2,0-szolgáltatók számára – például: `https://contoso.com/login` . Néhány szervezet nem konfigurálja és nem használja ezt a funkciót, még akkor sem, ha a OAuth 2,0-szolgáltató támogatja azt. Ha a OAuth 2,0-szolgáltató nem rendelkezik konfigurált fiókok felhasználói felügyeletével, adjon meg egy helyőrző URL-címet, például a vállalat URL-címét, vagy egy URL-címet, például: `https://placeholder.contoso.com` .
 
     ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Az űrlap következő szakasza tartalmazza az **engedélyezési engedélyek típusát** , az **engedélyezési végpont URL-címét** és az **engedélyezési kérelem módszerének** beállításait.
+4. Az űrlap következő szakasza tartalmazza az **engedélyezési engedélyek típusát**, az **engedélyezési végpont URL-címét** és az **engedélyezési kérelem módszerének** beállításait.
 
     Adja meg az **engedélyezési típusokat** a kívánt típusok ellenőrzésével. Az **engedélyezési kód** alapértelmezés szerint meg van adva.
 
-    Adja meg az **engedélyezési végpont URL-címét** . Azure Active Directory esetében ez az URL-cím a következő URL-címhez hasonlóan fog megjelenni, ahol az `<tenant_id>` Az Azure ad-bérlő azonosítójának helyébe lép.
+    Adja meg az **engedélyezési végpont URL-címét**. Azure Active Directory esetében ez az URL-cím a következő URL-címhez hasonlóan fog megjelenni, ahol az `<tenant_id>` Az Azure ad-bérlő azonosítójának helyébe lép.
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
     Az **engedélyezési kérelem módszere** határozza meg, hogyan történik az engedélyezési kérelem küldése a OAuth 2,0-kiszolgálóra. Alapértelmezés szerint a **Get** beállítás van kiválasztva.
 
-5. Ezután meg kell adni a **jogkivonat-végpont URL-címét** , az **ügyfél-hitelesítési módszereket** , a **hozzáférési token küldési metódusát** és az **alapértelmezett hatókört** .
+5. Ezután meg kell adni a **jogkivonat-végpont URL-címét**, az **ügyfél-hitelesítési módszereket**, a **hozzáférési token küldési metódusát** és az **alapértelmezett hatókört** .
 
     ![A OAuth2 szolgáltatás hozzáadása képernyőt megjelenítő képernyőkép.](./media/api-management-howto-oauth2/oauth-03.png)
 
@@ -69,9 +69,9 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Az **ügyfél-hitelesítési módszerek** alapértelmezett beállítása az **alapszintű** , a  **hozzáférési jogkivonat-küldési módszer** pedig az **engedélyezési fejléc** . Ezek az értékek az űrlap ezen szakaszán, az **alapértelmezett hatókörrel** együtt konfigurálhatók.
+    Az **ügyfél-hitelesítési módszerek** alapértelmezett beállítása az **alapszintű**, a  **hozzáférési jogkivonat-küldési módszer** pedig az **engedélyezési fejléc**. Ezek az értékek az űrlap ezen szakaszán, az **alapértelmezett hatókörrel** együtt konfigurálhatók.
 
-6. Az **ügyfél hitelesítő adatai** szakasz tartalmazza az **ügyfél-azonosítót** és az **ügyfél titkát** , amelyet a rendszer a OAuth 2,0-kiszolgáló létrehozása és konfigurálása során kapott. Az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** megadása után létrejön az **engedélyezési kód** **redirect_uri** . Ez az URI a válasz URL-címének konfigurálására szolgál a OAuth 2,0-kiszolgáló konfigurációjában.
+6. Az **ügyfél hitelesítő adatai** szakasz tartalmazza az **ügyfél-azonosítót** és az **ügyfél titkát**, amelyet a rendszer a OAuth 2,0-kiszolgáló létrehozása és konfigurálása során kapott. Az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** megadása után létrejön az **engedélyezési kód** **redirect_uri** . Ez az URI a válasz URL-címének konfigurálására szolgál a OAuth 2,0-kiszolgáló konfigurációjában.
 
     Az új fejlesztői portálon az URI utótagja a következőket képezi:
 

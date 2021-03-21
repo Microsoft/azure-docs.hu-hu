@@ -1,5 +1,5 @@
 ---
-title: A szolgáltatás méretezésére és a rendelkezésre állásának biztosítására szolgáló állapot-próbák
+title: Állapot-mintavételek a szolgáltatás skálázásához és magas rendelkezésre állásának biztosításához
 titleSuffix: Azure Load Balancer
 description: Ebből a cikkből megtudhatja, hogyan használhatók az állapot-mintavételek a Azure Load Balancer mögötti példányok figyeléséhez
 services: load-balancer
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96780943"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
@@ -260,7 +260,7 @@ Az alapszintű nyilvános Load Balancer a háttér-készletek alapján összesí
 - A HTTPS-mintavételek nem támogatják az ügyféltanúsítvány-alapú kölcsönös hitelesítést.
 - Ha a TCP-időbélyegek engedélyezve vannak, az állapot-mintavételek sikertelenek lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További tudnivalók a [Standard Load Balancerről](./load-balancer-overview.md)
 - [Ismerkedés a nyilvános Load Balancer létrehozásával a Resource Managerben a PowerShell használatával](quickstart-load-balancer-standard-public-powershell.md)

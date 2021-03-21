@@ -10,17 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: d4099ecf6e6bcc6654391e54292878393fb22914
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93421345"
 ---
 # <a name="cross-validate-model"></a>Modell keresztellenőrzése
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben az Cross validate Model modul. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
 
-A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja ( *hajtogatás* ), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
+A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja (*hajtogatás*), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
 
 A Cross Validation Model az előre jelzett eredményeket és az adatkészlethez tartozó valószínűségeket is visszaadja, így az előrejelzések megbízhatóságát is kiértékelheti.  
 
@@ -86,7 +86,7 @@ A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, v
 
 Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése** elemet.
 
-| Új oszlop neve      | Leírás                              |
+| Új oszlop neve      | Description                              |
 | -------------------- | ---------------------------------------- |
 | Pontozott címkék        | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Az egyes sorok előre jelzett értékét tartalmazza. |
 | Pontozásos valószínűségek | Ezt az oszlopot az adatkészlet végén adja hozzá a rendszer. Azt jelzi, hogy az érték becsült valószínűsége a **pontozásos címkékben**. |
@@ -109,9 +109,9 @@ Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell
 
 A modul a következő metrikákat is tartalmazza a kiértékeléshez használt modell típusától függően: 
 
-+ **Besorolási modellek** : precizitás, visszahívás, F-pontszám, AUC, pontosság  
++ **Besorolási modellek**: precizitás, visszahívás, F-pontszám, AUC, pontosság  
 
-+ **Regressziós modellek** : abszolút hiba, legfelső szintű négyzetes hiba, relatív abszolút hiba, relatív négyzetes hiba és a meghatározási együttható
++ **Regressziós modellek**: abszolút hiba, legfelső szintű négyzetes hiba, relatív abszolút hiba, relatív négyzetes hiba és a meghatározási együttható
 
 
 ## <a name="technical-notes"></a>Technikai megjegyzések  
@@ -123,7 +123,7 @@ A modul a következő metrikákat is tartalmazza a kiértékeléshez használt m
 + Az adatkészletet nem kell kiosztani képzésre és tesztelési csoportokra, ha a modell pontosságának méréséhez kereszt-érvényesítést használ. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

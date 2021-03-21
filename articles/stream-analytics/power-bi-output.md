@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: a94389a075fd62d80345a21e32f1bc977dfdee87
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020060"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics Power BI kimenete
@@ -23,7 +23,7 @@ Stream Analytics Power BI kimenete jelenleg nem érhető el az Azure China 21Via
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait a Power BI kimenetének konfigurálásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Adjon meg egy rövid nevet, amelyet a lekérdezésekben használ a lekérdezés kimenetének a Power BI kimenetre való irányításához. |
 | Csoport munkaterülete |Ha az adatmegosztást más Power BI felhasználókkal szeretné engedélyezni, válassza ki a csoportokat a Power BI-fiókban, vagy válassza **a saját munkaterület** lehetőséget, ha nem szeretne írni egy csoportba. Egy meglévő csoport frissítéséhez a Power BI hitelesítés megújítása szükséges. |
@@ -77,7 +77,7 @@ Datetime | Sztring | Sztring |  Datetime | Sztring
 
 A kimeneti köteg mérete: [Power bi REST API-korlátok](/power-bi/developer/automation/api-rest-api-limitations).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felügyelt identitás használata a Azure Stream Analytics-feladatok hitelesítéséhez Power BI (előzetes verzió)](powerbi-output-managed-identity.md)
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)

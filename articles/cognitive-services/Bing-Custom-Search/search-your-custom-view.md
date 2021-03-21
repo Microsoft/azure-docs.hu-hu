@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: 07b0dd68e39f555171e5606b71cd1eec92a4035c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96353340"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search-példány meghívása a portálról
@@ -58,7 +58,7 @@ Miután megadta az összes szükséges beállítást, kattintson a **hívás** g
 
 A Bing Custom Search-példányhoz társított előfizetést új példány létrehozása nélkül módosíthatja. Ha az API-hívásokat egy új előfizetésre szeretné elküldeni és felszámolni, hozzon létre egy új Bing Custom Search-erőforrást a Azure Portal. Használja az új előfizetési kulcsot az API-kérelmekben, valamint a példány egyéni konfigurációs AZONOSÍTÓját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni nézet meghívása C-vel #](./call-endpoint-csharp.md)
 - [Egyéni nézet meghívása Javával](./call-endpoint-java.md)

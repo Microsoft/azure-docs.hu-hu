@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
 ms.openlocfilehash: d1931614356a313334d712713965346e843a403d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93425097"
 ---
 ## <a name="invoke-the-function-on-azure"></a>A függvény meghívása az Azure-ban
@@ -21,9 +21,9 @@ Másolja a publish (közzététel) parancs kimenetében megjelenő teljes **Megh
 
 ![A függvény kimenete az Azure-ban egy böngészőben fut](./media/functions-run-remote-azure-cli/function-test-cloud-browser.png)
 
-# <a name="curl"></a>[Curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
-Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel** , és illessze be a paramétert `&name=Functions` . A parancs kimenetének a "Hello functions" szövegnek kell lennie.
+Futtassa a parancsot [`curl`](https://curl.haxx.se/) a **Meghívási URL-címmel**, és illessze be a paramétert `&name=Functions` . A parancs kimenetének a "Hello functions" szövegnek kell lennie.
 
 ![A függvény kimenete az Azure-on a curl használatával fut](./media/functions-run-remote-azure-cli/function-test-cloud-curl.png)
 

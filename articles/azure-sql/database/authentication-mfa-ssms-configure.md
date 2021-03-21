@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
 ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96454389"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure AD-hez
@@ -76,7 +76,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a legújabb SSMS haszn�
 
 Az ellenőrzés befejezésekor a SSMS általában feltételezi az érvényes hitelesítő adatokat és a tűzfal elérését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A többtényezős hitelesítés áttekintését lásd: [univerzális hitelesítés SQL Database, SQL felügyelt példánnyal és Azure szinapszis (SSMS-támogatás az MFA-hoz)](../database/authentication-mfa-ssms-overview.md).  
 - Mások hozzáférésének biztosítása az adatbázishoz: [SQL Database hitelesítés és engedélyezés: hozzáférés biztosítása](logins-create-manage.md)  

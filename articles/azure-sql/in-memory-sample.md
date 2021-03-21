@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: b5a1035f8a213a6ce02dd3252ff7d3ddea46faf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92786581"
 ---
 # <a name="in-memory-sample"></a>In-Memory minta
@@ -74,7 +74,7 @@ A **0** eredmény azt jelenti, hogy a In-Memory nem támogatott, és **1** azt j
 
 ### <a name="about-the-created-memory-optimized-items"></a>A létrehozott memóriára optimalizált elemek ismertetése
 
-**Táblák** : a minta a következő memória-optimalizált táblákat tartalmazza:
+**Táblák**: a minta a következő memória-optimalizált táblákat tartalmazza:
 
 - SalesLT.Product_inmem
 - SalesLT.SalesOrderHeader_inmem
@@ -82,7 +82,7 @@ A **0** eredmény azt jelenti, hogy a In-Memory nem támogatott, és **1** azt j
 - Bemutató. DemoSalesOrderHeaderSeed
 - Bemutató. DemoSalesOrderDetailSeed
 
-A memóriára optimalizált táblákat a SSMS **Object Explorer** keresztül ellenőrizheti. Kattintson a jobb **Tables** gombbal a táblák  >  **szűrő**  >  **beállításainak**  >  **Is Memory Optimized** szűrése elemre. Az érték 1.
+A memóriára optimalizált táblákat a SSMS **Object Explorer** keresztül ellenőrizheti. Kattintson a jobb gombbal a táblák  >  **szűrő**  >  **beállításainak**  >  szűrése elemre. Az érték 1.
 
 Vagy lekérdezheti a katalógus nézeteit, például a következőket:
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Natív módon lefordított tárolt eljárás** : megvizsgálhatja SalesLT.usp_InsertSalesOrder_inmem a katalógus nézet lekérdezésével:
+**Natív módon lefordított tárolt eljárás**: megvizsgálhatja SalesLT.usp_InsertSalesOrder_inmem a katalógus nézet lekérdezésével:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -122,7 +122,7 @@ Azonban érdemes lehet sokkal kisebb értékekkel kezdeni, mint például a-N10 
 
 Ez a szakasz a ostress.exe parancssorba ágyazott T-SQL-parancsfájlt jeleníti meg. A parancsfájl a korábban telepített T-SQL-parancsfájl által létrehozott elemeket használja.
 
-A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriára optimalizált *táblákba* :
+A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriára optimalizált *táblákba*:
 
 - SalesLT.SalesOrderHeader_inmem
 - SalesLT.SalesOrderDetail_inmem
@@ -205,7 +205,7 @@ Ha `ostress.exe` befejeződik, a futtatási időtartamot a RML cmd ablakban a ki
 
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
-#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés *_ondisk* , majd újrafuttatás
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>Alaphelyzetbe állítás, szerkesztés *_ondisk*, majd újrafuttatás
 
 Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a következő lépéseket a *_ondisk* futtatásához:
 
@@ -215,7 +215,7 @@ Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a köve
    EXECUTE Demo.usp_DemoReset;
    ```
 
-2. Szerkessze az ostress.exe parancssort az összes *_inmem* lecserélése a *_ondiskre* .
+2. Szerkessze az ostress.exe parancssort az összes *_inmem* lecserélése a *_ondiskre*.
 
 3. Futtassa újra ostress.exe a második alkalommal, és rögzítse az időtartam eredményét.
 

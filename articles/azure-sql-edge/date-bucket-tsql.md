@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/03/2020
 ms.openlocfilehash: 9d81419721e94a2e181f094c0e0e64b1b23544a8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93073519"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
@@ -34,26 +34,26 @@ DATE_BUCKET (datePart, number, date, origin)
 
 *datePart*
 
-A "Number" paraméterrel használt *dátum* része. Például: Év, hónap, perc, másodperc stb.
+A "Number" paraméterrel használt *dátum* része. Pl. Év, hónap, perc, másodperc stb.
 
 > [!NOTE]
 > `DATE_BUCKET` a nem fogadja el a felhasználó által definiált változó megfelelőjét a *datepPart* argumentumokhoz.
   
 |*datePart*|Rövidítéseket|  
 |---|---|
-|**nap**|**dd** , **d**|  
-|**héten**|**hét** , **ww**| 
-|**hónap**|**mm** , **m**|
-|**negyedév**|**QQ** , **q**|  
-|**év**|**éé** , **éééé**|  
+|**nap**|**dd**, **d**|  
+|**héten**|**hét**, **ww**| 
+|**hónap**|**mm**, **m**|
+|**negyedév**|**QQ**, **q**|  
+|**év**|**éé**, **éééé**|  
 |**óra**|**óó**|  
-|**perc**|**mi** , **n**|  
-|**másodperc**|**SS** , **s**|  
+|**perc**|**mi**, **n**|  
+|**másodperc**|**SS**, **s**|  
 |**ezredmásodperces**|**MS**|  
 
-*szám*
+*száma*
 
-Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* argumentummal együtt. Ez a dataPart-gyűjtők szélességét jelöli a forrás időpontból. **`This argument cannot be a negative integer value`** . 
+Az egész szám, amely a gyűjtő szélességét határozza meg a *datePart* argumentummal együtt. Ez a dataPart-gyűjtők szélességét jelöli a forrás időpontból. **`This argument cannot be a negative integer value`**. 
 
 *dátum*
 
@@ -64,7 +64,7 @@ Egy kifejezés, amely a következő értékek egyikére képes feloldani:
 + **DateTimeOffset**
 + **datetime2**
 + **idő adattípusúra**
-+ **time**
++ **idő**
 
 A *Date (dátum* `DATE_BUCKET` ) oszlop kifejezéseket, kifejezéseket vagy felhasználó által definiált változókat fogad el, ha azok a fent említett adattípusok bármelyikére feloldhatók.
 
@@ -77,7 +77,7 @@ Egy opcionális kifejezés, amely a következő értékek egyikére oldható fel
 + **DateTimeOffset**
 + **datetime2**
 + **idő adattípusúra**
-+ **time**
++ **idő**
 
 A (z) adattípus adattípusának `Origin` meg kell egyeznie a paraméter adattípusával `Date` . 
 
@@ -125,7 +125,7 @@ Select DATE_BUCKET(wk, 5, @date, @origin)
 
 ## <a name="datepart-argument"></a>DatePart argumentum
 
-a **DAYOFYEAR** , a **nap** és a **hétköznap** ugyanazt az értéket adják vissza. Minden *DatePart* és a hozzá tartozó rövidítések ugyanazt az értéket adják vissza.
+a **DAYOFYEAR**, a **nap** és a **hétköznap** ugyanazt az értéket adják vissza. Minden *DatePart* és a hozzá tartozó rövidítések ugyanazt az értéket adják vissza.
   
 ## <a name="number-argument"></a>szám argumentum
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre labor-fiókot, megtekintheti az �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 65ff28401b73698e320735613b32c96bf3de58f2
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96434090"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Tesztkörnyezeti fiókok létrehozása és felügyelete
@@ -83,5 +83,5 @@ Kövesse az előző szakasz utasításait, amely a listában szereplő Lab-fiók
 > [!NOTE]
 > A Lab-fiókok kezeléséhez az az. LabServices PowerShell-modult (előzetes verzió) is használhatja. További információ: az az [. LabServices Kezdőlap a githubon](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikkeket **: útmutató a**(z) tartalomjegyzék  ->  (**Lab-fiók tulajdonosa) szakaszának létrehozásához és konfigurálásához** . 

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
 ms.openlocfilehash: aa9f38b2cefa60a0c3341c1317cf45fbcb735301
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485443"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Magas rendelkezésre állás Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -49,7 +49,7 @@ Néhány tervezett karbantartási forgatókönyv:
 A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, beleértve a mögöttes hardverhiba, a hálózati problémák és a szoftverek hibáit. Ha az adatbázis-kiszolgáló váratlanul leáll, a rendszer automatikusan kiépít egy új adatbázis-kiszolgálót másodpercek alatt. A távoli tárterület automatikusan csatolva lesz az új adatbázis-kiszolgálóhoz. A PostgreSQL motor a helyreállítási műveletet a WAL-és adatbázisfájlok használatával hajtja végre, és megnyitja az adatbázis-kiszolgálót, amely lehetővé teszi az ügyfelek kapcsolódását. A nem véglegesített tranzakciók elvesznek, és az alkalmazásnak újra kell próbálkoznia. A nem tervezett állásidőt nem lehet elkerülni, Azure Database for PostgreSQL csökkenti az állásidőt úgy, hogy az adatbázis-kiszolgálón és a tárolási rétegen is automatikusan végrehajtja a helyreállítási műveleteket anélkül, hogy emberi beavatkozásra lenne szükség. 
 
 
-:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Rugalmas skálázás megtekintése az Azure PostgreSQL-ben":::
+:::image type="content" source="./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png" alt-text="Magas rendelkezésre állás megtekintése az Azure PostgreSQL-ben":::
 
 1. Azure PostgreSQL-kiszolgálók gyors skálázási képességekkel.
 2. Átjáró, amely proxyként funkcionál az ügyfélkapcsolatok megfelelő adatbázis-kiszolgálóhoz való továbbításához

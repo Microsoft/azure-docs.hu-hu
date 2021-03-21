@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 02/26/2020
 ms.reviewer: jushiman
-ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 59720a3e89db29ba3eb0829084dd5252e27e9cc9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: avverma
+ms.openlocfilehash: 8c4944da8ffcaa75e6448483918a29809c32830b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746798"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Példányok védelme az Azure virtuálisgép-méretezési csoport példányai esetében
@@ -54,7 +54,7 @@ A méretezési csoporton belül a Azure Portalon keresztül is alkalmazhat mére
 1. Válassza ki a védelemmel ellátni kívánt példány nevét.
 1. Válassza a **védelmi szabályzat** fület.
 1. A **védelmi szabályzat** panelen válassza a **védelem méretezéssel** lehetőséget.
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 ### <a name="rest-api"></a>REST API
 
@@ -122,7 +122,7 @@ A méretezési csoport műveleteinek védelmét a Azure Portalon keresztül vég
 1. Válassza ki a védelemmel ellátni kívánt példány nevét.
 1. Válassza a **védelmi szabályzat** fület.
 1. A **védelmi szabályzat** panelen válassza a védelem a **méretezési csoportból művelet** lehetőséget.
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 ### <a name="rest-api"></a>REST API
 

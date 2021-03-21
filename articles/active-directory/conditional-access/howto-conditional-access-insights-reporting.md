@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae802038626a1fbf8d533800a0b8eb43c4565e8c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100574170"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
@@ -91,7 +91,7 @@ A paraméterek beállítása után a hatás összegzése betöltődik. Az össze
 
 Megtekintheti az egyes feltételekhez tartozó felhasználók vagy bejelentkezések részletezését. Egy adott eredmény (például sikeres vagy sikertelen) bejelentkezési adatainak szűréséhez válassza ki a munkafüzet tetején található összefoglaló csempéket. A bejelentkezések részletezését az egyes feltételes hozzáférési feltételeknél tekintheti meg: eszköz állapot, eszköz platform, ügyfélalkalmazás, hely, alkalmazás és bejelentkezési kockázat.  
 
-## <a name="sign-in-details"></a>Bejelentkezés részletei 
+## <a name="sign-in-details"></a>Bejelentkezési részletek 
 
 ![Munkafüzet-bejelentkezés részletei](./media/howto-conditional-access-insights-reporting/workbook-sign-in-details.png)
 

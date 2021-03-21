@@ -7,10 +7,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/05/2021
 ms.openlocfilehash: a1602f29a6d0066ec3c99e990532411621652c47
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788129"
 ---
 # <a name="updating-net-for-apache-spark-to-version-v10--in-hdinsight"></a>A .NET Apache Spark frissítése a 1.0-s verzióra a HDInsight-ben
@@ -56,6 +56,6 @@ A .NET for Apache Spark alkalmazást egy adott verzió használatára frissíthe
 
 A meglévő HDI-fürtök továbbra is ugyanazzal a korábbi verzióval rendelkeznek a .NET-hez Apache Spark és a meglévő alkalmazás (a Spark .NET korábbi verziója) nem lesz hatással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A .NET telepítése Apache Spark alkalmazáshoz a HDInsight-on](/dotnet/spark/tutorials/hdinsight-deployment)

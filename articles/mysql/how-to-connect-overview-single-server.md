@@ -8,10 +8,10 @@ author: mksuni
 ms.author: sumuth
 ms.date: 09/22/2020
 ms.openlocfilehash: 0414aaad5a1cf6edb9c2152eed70f8753946cca1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92546432"
 ---
 # <a name="connect-and-query-overview-for-azure-database-for-mysql--single-server"></a>A MySQL-hez készült Azure Database-hez készült kapcsolat és lekérdezés áttekintése – egyetlen kiszolgáló
@@ -20,7 +20,7 @@ Az alábbi dokumentum olyan példákra mutató hivatkozásokat tartalmaz, amelye
 
 ## <a name="quickstarts"></a>Rövid útmutatók
 
-| Első lépések | Leírás |
+| Gyorsútmutató | Description |
 |---|---|
 |[MySQL Workbench](connect-workbench.md)|Ez a rövid útmutató bemutatja, hogyan használható a MySQL Workbench-ügyfél egy adatbázishoz való kapcsolódáshoz. Ezután a MySQL-utasításokkal adatokat lehet lekérdezni, beszúrni, frissíteni és törölni az adatbázisban.|
 |[Azure Cloud Shell](./quickstart-create-mysql-server-database-using-azure-cli.md#connect-to-azure-database-for-mysql-server-using-mysql-command-line-client)|Ez a cikk bemutatja, hogyan futtathatja a **mysql.exe** a [Azure Cloud Shell](../cloud-shell/overview.md) a kiszolgálóhoz való kapcsolódáshoz, majd az utasítások futtatásához az adatbázisban lévő adatokat lekérdezni, beszúrni, frissíteni és törölni.|
@@ -44,7 +44,7 @@ Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi 
 
 Tekintse meg, hogy mely [illesztőprogramok](concepts-compatibility.md) kompatibilisek Azure Database for MySQL egyetlen kiszolgálóval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatáttelepítés a memóriakép és a visszaállítás használatával](concepts-migrate-dump-restore.md)
 - [Az adatáttelepítés importálással és exportálással](concepts-migrate-import-export.md)

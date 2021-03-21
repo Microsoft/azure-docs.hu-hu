@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
 ms.openlocfilehash: fc85eec008ef099d63d538e4871a1a84573f5a18
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790445"
 ---
 # <a name="what-is-a-voice-assistant"></a>Mi az a hangvezérelt asszisztens?
@@ -79,7 +79,7 @@ Az Azure Speech Services használatával létrehozott hangsegédek a testreszab�
 > [!NOTE]
 > A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](language-support.md)).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [További információ az egyéni parancsokról](custom-commands.md)

@@ -10,10 +10,10 @@ ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: dbd890117c78274392d5745e0563332371b404c5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96452583"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>A szinapszis Studio használata a munkaterület-feldolgozási folyamatok figyeléséhez
@@ -48,6 +48,6 @@ A nézetet szűrheti például úgy, hogy csak a "Holiday" nevű folyamathoz tar
 
 A folyamat futtatásával kapcsolatos részletek megtekintéséhez válassza ki a folyamat futtatását. Ezután tekintse meg a folyamat futtatásához társított tevékenységek futtatását. Ha a folyamat továbbra is fut, nyomon követheti a folyamatot. 
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások figyelésével kapcsolatos további tudnivalókért tekintse meg a [Apache Spark alkalmazások figyelése](how-to-monitor-spark-applications.md) című cikket. 

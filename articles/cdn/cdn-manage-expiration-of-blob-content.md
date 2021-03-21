@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: 206ff6f888229356743bebb816cf03e4f7a7504b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92778704"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Az Azure Blob Storage lejáratának kezelése Azure CDN
@@ -70,21 +70,21 @@ A blob fejlécének beállításához javasolt módszer a `Cache-Control` Azure 
 
    Ez a globális gyorsítótárazási szabály egy óra gyorsítótári időtartamát állítja be, és a végpontra irányuló összes kérést érinti. Felülbírálja `Cache-Control` `Expires` a végpont által megadott forráskiszolgáló által elküldett bármely vagy HTTP-fejlécet.   
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
  
 **BLOB-fájlok Cache-Control fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
 
 1. Az **Egyéni gyorsítótárazási szabályok** alatt hozzon létre két egyeztetési feltételt:
 
-     A. Az első egyeztetési feltétel beállításnál állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/blobcontainer1/*` az **egyezési értéket** . Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 4 értéket az **óra** mezőben.
+     A. Az első egyeztetési feltétel beállításnál állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/blobcontainer1/*` az **egyezési értéket**. Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 4 értéket az **óra** mezőben.
 
-    B. A második egyeztetési feltételnél állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/blobcontainer1/blob1.txt` az **egyezési értéket** . Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 2 értéket az **órák** mezőben.
+    B. A második egyeztetési feltételnél állítsa az **egyeztetés feltételt** az **elérési út** értékre, és adja meg `/blobcontainer1/blob1.txt` az **egyezési értéket**. Állítsa be a **gyorsítótárazási viselkedést** a **felülbíráláshoz** , és adja meg a 2 értéket az **órák** mezőben.
 
     ![CDN – egyéni gyorsítótárazási szabályok – példa](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
     Az első egyéni gyorsítótárazási szabály a `/blobcontainer1` végpont által megadott forráskiszolgáló mappájában lévő blob-fájlok esetében négy órányi gyorsítótári időtartamot állít be. A második szabály csak a blob első szabályát felülbírálja, `blob1.txt` és két órás gyorsítótári időtartamot állít be.
 
-2. Válassza a **Mentés** lehetőséget.
+2. Kattintson a **Mentés** gombra.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Cache-Control fejlécek beállítása Azure PowerShell használatával

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/25/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: ea1cc022cbea7dbf3d1fa12cb83cfe3084b28560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92788082"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: kereshető tartalom előállítása az Azure-blobokból a Python és a AI használatával
@@ -63,13 +63,13 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Az alapok lapon a következő elemek szükségesek. Minden más esetében fogadja el az alapértelmezett értékeket.
 
-   + **Erőforráscsoport** . Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
+   + **Erőforráscsoport**. Válasszon ki egy meglévőt, vagy hozzon létre egy újat, de ugyanazt a csoportot használja az összes szolgáltatáshoz, hogy együtt lehessen kezelni őket.
 
-   + **Tárfiók neve** . Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus* . 
+   + **Tárfiók neve**. Ha úgy gondolja, hogy több erőforrása is van ugyanazzal a típussal, használja a nevet típus és régió szerint egyértelműsítse, például *blobstoragewestus*. 
 
-   + **Hely** . Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
+   + **Hely**. Ha lehetséges, válassza ki ugyanazt a helyet, amelyet az Azure Cognitive Search és Cognitive Services használ. Egyetlen hely érvényteleníti A sávszélességgel kapcsolatos díjakat.
 
-   + **Fiók típusa** . Válassza ki az alapértelmezett *StorageV2 (általános célú v2)* .
+   + **Fiók típusa**. Válassza ki az alapértelmezett *StorageV2 (általános célú v2)*.
 
 1. A szolgáltatás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
 
@@ -77,11 +77,11 @@ Ha lehetséges, hozzon létre mindkettőt ugyanabban a régióban és erőforrá
 
 1. Kattintson a **Blobok** szolgáltatás elemre.
 
-1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést* .
+1. Kattintson a **+ tároló** elemre egy tároló létrehozásához, és nevezze el a *fogaskerék-Search-demo kifejezést*.
 
 1. Válassza a *fogaskerék-keresés-bemutató* lehetőséget, majd kattintson a **feltöltés** gombra, és nyissa meg azt a mappát, ahová a letöltött fájlokat mentette. Válassza ki az összes nem képfájlt. 7 fájlnak kell lennie. A feltöltéshez kattintson **az OK** gombra.
 
-   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/cognitive-search-tutorial-blob/sample-files.png" alt-text="Minta fájlok feltöltése" border="false":::
 
 1. Mielőtt elkezdené az Azure Storage-t, szerezzen be egy kapcsolatok karakterláncot, hogy az Azure Cognitive Searchban is létrehozhat egy kapcsolatokat. 
 
@@ -117,7 +117,7 @@ Ahogy az Azure Blob Storage-hoz, szánjon egy kis időt a hozzáférési kulcs g
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="Storage-fiók létrehozása" border="false":::
+   :::image type="content" source="media/search-get-started-javascript/service-name-and-keys.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
@@ -190,11 +190,11 @@ A kérelemnek 201-as állapotkódot kell visszaadnia.
 
 A Azure Portal keresési szolgáltatás irányítópultján ellenőrizze, hogy az **adatforrások** listában megjelenik-e az cogsrch-adatforrás. A lap frissítéséhez kattintson a **frissítés** gombra.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-data-source-tile.png" alt-text="Adatforrások csempéje a portálon" border="false":::
 
 ### <a name="step-2-create-a-skillset"></a>2. lépés: készségkészlet létrehozása
 
-Ebben a lépésben az adataira vonatkozó dúsítási lépések készletét fogja meghatározni. Minden bővítési lépés egy *képesség* , a bővítési lépések készlete pedig a *képességcsoport* . Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
+Ebben a lépésben az adataira vonatkozó dúsítási lépések készletét fogja meghatározni. Minden bővítési lépés egy *képesség*, a bővítési lépések készlete pedig a *képességcsoport*. Ez az oktatóanyag [beépített kognitív képességeket](cognitive-search-predefined-skills.md) használ a készségkészlet:
 
 + [Entitások felismerése](cognitive-search-skill-entity-recognition.md) a blob-tároló tartalmából származó szervezetek nevének kinyeréséhez.
 
@@ -303,7 +303,7 @@ Minden képesség a dokumentum tartalmán fut le. A feldolgozás során az Azure
 
 Alább a képességcsoport grafikai ábrázolása látható.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob/skillset.png" alt-text="Készségkészlet megismerése" border="false":::
 
 A kimenetek leképezhetők egy indexre, amely bemenetként használható egy alsóbb rétegbeli képességhez vagy mindkettőhöz, akárcsak a nyelvi kóddal. Az indexben a nyelvkód a szűréskor lehet hasznos. A nyelvkódot bemenetként a szövegelemzési képességek használják, a szótördeléssel kapcsolatos nyelvi szabályok megadásához.
 
@@ -472,11 +472,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 A válaszban figyelje a `"lastResult"` `"status"` `"endTime"` értékét és értékeit. Rendszeresen futtassa a parancsfájlt az állapot vizsgálatához. Az indexelő befejeződése után az állapot a "sikeres" értékre lesz állítva, a "Befejezés" értéket adja meg, és a válasz tartalmazni fog minden olyan hibát és figyelmeztetést, amely a dúsítás során történt.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png" alt-text="Az indexelő létrejött" border="false":::
 
 A figyelmeztetések bizonyos forrásfájl- és képességkombinációk esetében gyakoriak, és nem mindig utalnak hibára. Számos figyelmeztetés jóindulatú. Ha például olyan JPEG-fájlt indexel, amely nem rendelkezik szöveggel, akkor a figyelmeztetés megjelenik a képernyőképen.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png" alt-text="Példa indexelő figyelmeztetésre" border="false":::
 
 ## <a name="5---search"></a>5 – keresés
 
@@ -493,7 +493,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png" alt-text="Lekérdezési index az összes mezőhöz" border="false":::
 
 A kimenet az egyes mezők nevét, típusát és attribútumait tartalmazó indexséma.
 
@@ -508,7 +508,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Az eredményeknek az alábbi példához hasonlóan kell kinéznie. A képernyőkép csak a válasz egy részét jeleníti meg.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png" alt-text="A szervezetek tartalmának lekérdezési indexe" border="false":::
 
 Ismételje meg a további mezőket:,, `content` `languageCode` és ebben `keyPhrases` `organizations` a gyakorlatban. Egyszerre több mezőt is lekérhet a vesszővel elválasztott listát használó `$select` megadásával.
 
@@ -522,7 +522,7 @@ A fejlesztés korai kísérleti szakaszaiban a tervezési iteráció legalkalmas
 
 A portál használatával törölhet indexeket, indexelő fájlokat, adatforrásokat és szakértelmével. Az indexelő törlésekor lehetősége van arra is, hogy az indexet, az készségkészlet és az adatforrást szelektíven törölje egyszerre.
 
-:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Storage-fiók létrehozása" border="false":::
+:::image type="content" source="media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png" alt-text="Keresési objektumok törlése a portálon" border="false":::
 
 Parancsfájl használatával is törölheti őket. A következő szkript bemutatja, hogyan törölhet egy készségkészlet. 
 
@@ -543,7 +543,7 @@ A [beépített képességek](cognitive-search-predefined-skills.md) , valamint a
 
 Végezetül megtanulta, hogyan tesztelheti az eredményeket, és hogyan állíthatja alaphelyzetbe a rendszer további iterációkat. Megtanulta, hogy ha lekérdezéseket futtat az indexen, az a bővített indexelési folyamat által létrehozott kimenetet adja vissza. Ebben a kiadásban szerepel egy belső szerkezetek (a rendszer által létrehozott bővített dokumentumok) megjelenítésére szolgáló mechanizmus. Azt is megtanulta, hogyan ellenőrizhető az indexelő állapota, és milyen objektumokat kell törölni a folyamat újrafuttatása előtt.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 

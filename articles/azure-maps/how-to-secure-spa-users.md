@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: 60d8dc45fb26ea210b1827a6938716474faa0304
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895613"
 ---
 # <a name="secure-a-single-page-application-with-user-sign-in"></a>Egyoldalas alkalmazás biztonságossá tétele felhasználói bejelentkezéssel
@@ -32,9 +32,9 @@ Hozza létre a webalkalmazást az Azure AD-ben a felhasználók számára a beje
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Adjon meg egy **nevet** , válassza ki a **támogatási fiók típusát** , adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. Részletes minta: [Azure Maps Azure ad-minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Válassza a **Regisztráció** lehetőséget.  
+2. Adjon meg egy **nevet**, válassza ki a **támogatási fiók típusát**, adjon meg egy átirányítási URI-t, amely azt az URL-címet jelöli, amelyet az Azure ad kiállít a jogkivonat számára, és az URL-címet, ahol a Térkép vezérlőelem található. Részletes minta: [Azure Maps Azure ad-minták](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples/tree/master/src/ImplicitGrant). Válassza a **Regisztráció** lehetőséget.  
 
-3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt** . A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
+3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)

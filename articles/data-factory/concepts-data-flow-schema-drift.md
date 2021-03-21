@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
 ms.openlocfilehash: 11ddb2f40ee56b51c5ecbae11465093abb8e4feb
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027482"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Séma-eltolódás a leképezési adatfolyamban
@@ -43,7 +43,7 @@ A forrás-átalakításban a séma-eltolódás olyan oszlopok olvasására van m
 
 ![Séma-drift forrás](media/data-flow/schemadrift001.png "Séma-drift forrás")
 
-Ha engedélyezve van a séma-eltolódás, a rendszer az összes bejövő mezőt beolvassa a forrásból a végrehajtás során, és a teljes folyamatot átadja a fogadónak. Alapértelmezés szerint az összes újonnan észlelt oszlop (más néven *lebegő oszlop* ) sztring adattípusként érkezik. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetse az oszlopok adattípusait, ellenőrizze, hogy a **kikövetkeztetett oszlop típusa** szerepel-e a forrás beállításai között.
+Ha engedélyezve van a séma-eltolódás, a rendszer az összes bejövő mezőt beolvassa a forrásból a végrehajtás során, és a teljes folyamatot átadja a fogadónak. Alapértelmezés szerint az összes újonnan észlelt oszlop (más néven *lebegő oszlop*) sztring adattípusként érkezik. Ha azt szeretné, hogy az adatfolyam automatikusan kikövetkeztetse az oszlopok adattípusait, ellenőrizze, hogy a **kikövetkeztetett oszlop típusa** szerepel-e a forrás beállításai között.
 
 ## <a name="schema-drift-in-sink"></a>Séma-eltolódás a fogadóban
 
