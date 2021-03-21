@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
 ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489485"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>PowerShell-parancsfájlok IoT Edge Linux rendszerhez Windows rendszeren
@@ -48,10 +48,10 @@ Az **Deploy-eFlow** parancs a fő telepítési módszer. Az üzembe helyezési p
 | vmUser | Legfeljebb 30 karakter hosszú lehet | A virtuális gépre való bejelentkezéshez használt Felhasználónév. |
 | vnetType | **Transzparens** vagy **ICS** | A virtuális kapcsoló típusa. **Alapértelmezett érték**: transzparens. |
 | vnetName | Nem 64 karakternél hosszabb | A virtuális kapcsoló neve. **Alapértelmezett érték**: External. |
-| enableVtpm | Nincs | **Kapcsoló paraméter**. Hozza létre a virtuális gépet, amelyen engedélyezve van a TPM, vagy le van tiltva. |
+| enableVtpm | Nincsenek | **Kapcsoló paraméter**. Hozza létre a virtuális gépet, amelyen engedélyezve van a TPM, vagy le van tiltva. |
 | mobyPackageVersion | Legfeljebb 30 karakter hosszú lehet |  A virtuális gépen ellenőrizni vagy telepíteni kívánt Moby-csomag verziója.  **Alapértelmezett érték:** 19.03.11. |
 | iotedgePackageVersion | Legfeljebb 30 karakter hosszú lehet | A virtuális gépen ellenőrizni vagy telepíteni kívánt IoT Edge-csomag verziója. **Alapértelmezett érték:** 1.1.0. |
-| installPackages | Nincs | **Kapcsoló paraméter**. Ha be van jelölve, a parancsfájl megkísérli telepíteni a Moby és IoT Edge csomagokat ahelyett, hogy csak a csomagok ellenőrzése megtörtént. |
+| installPackages | Nincsenek | **Kapcsoló paraméter**. Ha be van jelölve, a parancsfájl megkísérli telepíteni a Moby és IoT Edge csomagokat ahelyett, hogy csak a csomagok ellenőrzése megtörtént. |
 
 ## <a name="verify-eflowvm"></a>Verify-EflowVm
 

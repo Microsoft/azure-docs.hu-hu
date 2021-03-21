@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: troubleshooting
 ms.date: 08/01/2019
-ms.openlocfilehash: 84bd14f8ae18527b4f6e9d8509a12555baec8771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 201a7d1fce00323ef3f8eec1bdd415c4064d49ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68879556"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674988"
 ---
 # <a name="troubleshooting-azure-data-catalog"></a>Az Azure Data Catalog hibaelhárítása
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 Ez a cikk a Azure Data Catalog erőforrásaival kapcsolatos gyakori hibaelhárítási problémákat ismerteti. 
 
@@ -39,6 +41,6 @@ Ahogy az az alábbi képen is látható, a globális hitelesítési szabályzat 
 
 További információkért lásd a [Hitelesítési házirendek konfigurálása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn486781(v=ws.11)) című cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Data Catalog létrehozása](data-catalog-get-started.md)

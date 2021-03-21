@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102122476"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>A Univerzális Windows-platform és a MSAL.NET használatának szempontjai
@@ -61,7 +61,7 @@ További információ: [web Authentication Broker-Hegedűs](/windows/uwp/securit
 ## <a name="next-steps"></a>Következő lépések
 A következő minták további információkat nyújtanak.
 
-Sample | Platform | Leírás 
+Sample | Platform | Description 
 |------ | -------- | -----------|
 |[Active-Directory-DotNet-Native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | A MSAL.NET-t használó UWP ügyfélalkalmazás. A Microsoft Graph egy Azure AD 2,0-végponttal hitelesítő felhasználóhoz fér hozzá. <br>![Topológia](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[Active-Directory-xamarin-Native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Xamarin űrlapos alkalmazás, amely bemutatja, hogyan hitelesítheti a Microsoft személyes fiókjait és az Azure AD-t a Microsoft Identity platformon keresztül a MSAL használatával. Azt is bemutatja, hogyan lehet elérni Microsoft Graph és megjeleníti az eredményül kapott jogkivonatot. <br>![Diagram, amely bemutatja, hogyan használható a MSAL a személyes Microsoft-fiókok és az Azure AD hitelesítésére a Microsoft Identity platformon keresztül.](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

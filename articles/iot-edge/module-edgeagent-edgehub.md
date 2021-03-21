@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489948"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai
@@ -35,33 +35,33 @@ A rendszer meghívja a IoT Edge ügynökhöz tartozó modult, `$edgeAgent` és �
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| sémaverzióval | Vagy "1,0" vagy "1,1". Az 1,1-es verzió a IoT Edge 1.0.10-verzióval lett bevezetve, és ajánlott. | Igen |
-| futtatókörnyezet. Type | A "Docker"-nek kell lennie | Igen |
-| Runtime. Settings. minDockerVersion | Állítsa be az üzembe helyezési jegyzékben szükséges minimális Docker-verziót | Igen |
-| Runtime. Settings. loggingOptions | Egy sztringesített JSON, amely a IoT Edge Agent tároló naplózási beállításait tartalmazza. [Docker naplózási beállításai](https://docs.docker.com/engine/admin/logging/overview/) | Nem |
-| Runtime. Settings. registryCredentials<br>. {registryId}. Felhasználónév | A tároló-beállításjegyzék felhasználóneve. Azure Container Registry esetén a Felhasználónév általában a beállításjegyzék neve.<br><br> A beállításjegyzékbeli hitelesítő adatok szükségesek a privát modulok képeihez. | Nem |
-| Runtime. Settings. registryCredentials<br>. {registryId}. jelszó | A tároló beállításjegyzékének jelszava. | Nem |
-| Runtime. Settings. registryCredentials<br>. {registryId}. címe | A tároló beállításjegyzékének címe. Azure Container Registry esetén a címnek általában *{Registry Name}. azurecr. IO nevűnek* kell lennie. | Nem |  
-| systemModules. edgeAgent. Type | A "Docker"-nek kell lennie | Igen |
-| systemModules. edgeAgent. Settings. rendszerkép | A IoT Edge ügynök rendszerképének URI-ja. Jelenleg a IoT Edge ügynök nem tudja frissíteni magát. | Igen |
-| systemModules. edgeAgent. Settings<br>.createOptions | Egy sztringesített JSON, amely a IoT Edge ügynök tárolójának létrehozására vonatkozó beállításokat tartalmazza. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
+| sémaverzióval | Vagy "1,0" vagy "1,1". Az 1,1-es verzió a IoT Edge 1.0.10-verzióval lett bevezetve, és ajánlott. | Yes |
+| futtatókörnyezet. Type | A "Docker"-nek kell lennie | Yes |
+| Runtime. Settings. minDockerVersion | Állítsa be az üzembe helyezési jegyzékben szükséges minimális Docker-verziót | Yes |
+| Runtime. Settings. loggingOptions | Egy sztringesített JSON, amely a IoT Edge Agent tároló naplózási beállításait tartalmazza. [Docker naplózási beállításai](https://docs.docker.com/engine/admin/logging/overview/) | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. Felhasználónév | A tároló-beállításjegyzék felhasználóneve. Azure Container Registry esetén a Felhasználónév általában a beállításjegyzék neve.<br><br> A beállításjegyzékbeli hitelesítő adatok szükségesek a privát modulok képeihez. | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. jelszó | A tároló beállításjegyzékének jelszava. | No |
+| Runtime. Settings. registryCredentials<br>. {registryId}. címe | A tároló beállításjegyzékének címe. Azure Container Registry esetén a címnek általában *{Registry Name}. azurecr. IO nevűnek* kell lennie. | No |  
+| systemModules. edgeAgent. Type | A "Docker"-nek kell lennie | Yes |
+| systemModules. edgeAgent. Settings. rendszerkép | A IoT Edge ügynök rendszerképének URI-ja. Jelenleg a IoT Edge ügynök nem tudja frissíteni magát. | Yes |
+| systemModules. edgeAgent. Settings<br>.createOptions | Egy sztringesített JSON, amely a IoT Edge ügynök tárolójának létrehozására vonatkozó beállításokat tartalmazza. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeAgent.configuration.id | A modult üzembe helyező központi telepítés azonosítója. | IoT Hub beállítja ezt a tulajdonságot, ha a jegyzékfájlt központi telepítés használatával alkalmazza a rendszer. Nem része az üzembe helyezési jegyzéknek. |
-| systemModules. edgeHub. Type | A "Docker"-nek kell lennie | Igen |
-| systemModules. edgeHub. status | "Fut"-nek kell lennie | Igen |
-| systemModules.edgeHub.restartPolicy | "Mindig" kell lennie | Igen |
-| systemModules.edgeHub.startupOrder | Egész érték, amely esetében az indítási sorrendbe kerülő modul helye. a 0 érték az első és a maximális egész szám (4294967295) utolsó. Ha nincs megadva érték, az alapértelmezett érték a maximális egész szám.  | Nem |
-| systemModules. edgeHub. Settings. rendszerkép | Az IoT Edge hub rendszerképének URI-ja. | Igen |
-| systemModules. edgeHub. Settings<br>.createOptions | Az IoT Edge hub-tároló létrehozására vonatkozó beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
+| systemModules. edgeHub. Type | A "Docker"-nek kell lennie | Yes |
+| systemModules. edgeHub. status | "Fut"-nek kell lennie | Yes |
+| systemModules.edgeHub.restartPolicy | "Mindig" kell lennie | Yes |
+| systemModules.edgeHub.startupOrder | Egész érték, amely esetében az indítási sorrendbe kerülő modul helye. a 0 érték az első és a maximális egész szám (4294967295) utolsó. Ha nincs megadva érték, az alapértelmezett érték a maximális egész szám.  | No |
+| systemModules. edgeHub. Settings. rendszerkép | Az IoT Edge hub rendszerképének URI-ja. | Yes |
+| systemModules. edgeHub. Settings<br>.createOptions | Az IoT Edge hub-tároló létrehozására vonatkozó beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | systemModules.edgeHub.configuration.id | A modult üzembe helyező központi telepítés azonosítója. | IoT Hub beállítja ezt a tulajdonságot, ha a jegyzékfájlt központi telepítés használatával alkalmazza a rendszer. Nem része az üzembe helyezési jegyzéknek. |
-| modulok. {moduleId}. verzió | A modul verzióját jelölő, felhasználó által definiált karakterlánc. | Igen |
-| modulok. {moduleId}. Type | A "Docker"-nek kell lennie | Igen |
-| modulok. {moduleId}. állapot | {"fut" \| "leállítva"} | Igen |
-| modulok. {moduleId}. restartPolicy | {"soha" \| "on-failure" " \| on-inhealth" " \| mindig"} | Igen |
-| modulok. {moduleId}. startupOrder | Egész érték, amely esetében az indítási sorrendbe kerülő modul helye. a 0 érték az első és a maximális egész szám (4294967295) utolsó. Ha nincs megadva érték, az alapértelmezett érték a maximális egész szám.  | Nem |
-| modulok. {moduleId}. imagePullPolicy | {"on-create" \| "soha"} | Nem |
-| modulok. {moduleId}. env | A modulnak átadandó környezeti változók listája. A formátum `"<name>": {"value": "<value>"}` | Nem |
-| modulok. {moduleId}. Settings. rendszerkép | A modul rendszerképének URI-ja. | Igen |
-| modulok. {moduleId}. Settings. createOptions | Egy sztringesített JSON, amely a modul-tároló létrehozásához szükséges beállításokat tartalmazza. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
+| modulok. {moduleId}. verzió | A modul verzióját jelölő, felhasználó által definiált karakterlánc. | Yes |
+| modulok. {moduleId}. Type | A "Docker"-nek kell lennie | Yes |
+| modulok. {moduleId}. állapot | {"fut" \| "leállítva"} | Yes |
+| modulok. {moduleId}. restartPolicy | {"soha" \| "on-failure" " \| on-inhealth" " \| mindig"} | Yes |
+| modulok. {moduleId}. startupOrder | Egész érték, amely esetében az indítási sorrendbe kerülő modul helye. a 0 érték az első és a maximális egész szám (4294967295) utolsó. Ha nincs megadva érték, az alapértelmezett érték a maximális egész szám.  | No |
+| modulok. {moduleId}. imagePullPolicy | {"on-create" \| "soha"} | No |
+| modulok. {moduleId}. env | A modulnak átadandó környezeti változók listája. A formátum `"<name>": {"value": "<value>"}` | No |
+| modulok. {moduleId}. Settings. rendszerkép | A modul rendszerképének URI-ja. | Yes |
+| modulok. {moduleId}. Settings. createOptions | Egy sztringesített JSON, amely a modul-tároló létrehozásához szükséges beállításokat tartalmazza. [Docker-létrehozási beállítások](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | No |
 | modulok. {moduleId}. Configuration. id | A modult üzembe helyező központi telepítés azonosítója. | IoT Hub beállítja ezt a tulajdonságot, ha a jegyzékfájlt központi telepítés használatával alkalmazza a rendszer. Nem része az üzembe helyezési jegyzéknek. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent jelentett tulajdonságai
@@ -111,9 +111,9 @@ Meghívja az IoT Edge hub-modult, `$edgeHub` és összehangolja az eszközön fu
 
 | Tulajdonság | Leírás | Szükséges az üzembe helyezési jegyzékben |
 | -------- | ----------- | -------- |
-| sémaverzióval | Vagy "1,0" vagy "1,1". Az 1,1-es verzió a IoT Edge 1.0.10-verzióval lett bevezetve, és ajánlott. | Igen |
+| sémaverzióval | Vagy "1,0" vagy "1,1". Az 1,1-es verzió a IoT Edge 1.0.10-verzióval lett bevezetve, és ajánlott. | Yes |
 | útvonalak. z | Egy IoT Edge hub-útvonalat jelölő sztring. További információ: [útvonalak deklarálása](module-composition.md#declare-routes). | Az `routes` elem lehet jelen, de üres. |
-| storeAndForwardConfiguration.timeToLiveSecs | Az az időtartam (másodpercben), ameddig IoT Edge hub megtartja az üzeneteket, ha leválasztják az útválasztási végpontokat, függetlenül attól, hogy IoT Hub vagy egy helyi modulról. Az érték bármilyen pozitív egész szám lehet. | Igen |
+| storeAndForwardConfiguration.timeToLiveSecs | Az az időtartam (másodpercben), ameddig IoT Edge hub megtartja az üzeneteket, ha leválasztják az útválasztási végpontokat, függetlenül attól, hogy IoT Hub vagy egy helyi modulról. Az érték bármilyen pozitív egész szám lehet. | Yes |
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub jelentett tulajdonságai
 

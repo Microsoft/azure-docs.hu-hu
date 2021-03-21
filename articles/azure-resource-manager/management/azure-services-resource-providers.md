@@ -2,17 +2,17 @@
 title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 65fa6a690f05a61e54bae2d22f4889c3193bcb1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/16/2021
+ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103008705"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592161"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
-Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névterek az Azure-szolgáltatásokhoz.
+Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névterek az Azure-szolgáltatásokhoz. Ha nem ismeri az erőforrás-szolgáltatót, tekintse [meg az erőforrás-szolgáltató keresése](#find-resource-provider)című témakört.
 
 ## <a name="match-resource-provider-to-service"></a>Erőforrás-szolgáltató egyeztetése a szolgáltatással
 
@@ -192,6 +192,42 @@ Az előfizetéséhez tartozó, **regisztráltként** megjelölt erőforrások sz
 
 > [!IMPORTANT]
 > Csak akkor regisztrálja az erőforrás-szolgáltatót, amikor készen áll a használatra. A regisztrációs lépés lehetővé teszi a legalacsonyabb jogosultságok fenntartását az előfizetésen belül. Egy rosszindulatú felhasználó nem használhat olyan erőforrás-szolgáltatót, amely nincs regisztrálva.
+
+## <a name="find-resource-provider"></a>Erőforrás-szolgáltató keresése
+
+Ha meglévő infrastruktúrája van az Azure-ban, de nem biztos benne, hogy melyik erőforrás-szolgáltatót használja, az Azure CLI vagy a PowerShell használatával megkeresheti az erőforrás-szolgáltatót. Adja meg a keresett erőforrásokat tartalmazó erőforráscsoport nevét.
+
+Az alábbi példa az Azure CLI-t használja:
+
+```azurecli-interactive
+az resource list -g examplegroup
+```
+
+Az eredmények közé tartozik az erőforrástípus. Az erőforrás-szolgáltató névtere az erőforrástípus első része. A következő példa a **Microsoft.** kulcstartó erőforrás-szolgáltatót mutatja be.
+
+```json
+[
+  {
+    ...
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]
+```
+
+A következő példa a PowerShellt használja:
+
+```azurepowershell-interactive
+Get-AzResource -ResourceGroupName examplegroup
+```
+
+Az eredmények közé tartozik az erőforrástípus. Az erőforrás-szolgáltató névtere az erőforrástípus első része. A következő példa a **Microsoft.** kulcstartó erőforrás-szolgáltatót mutatja be.
+
+```azurepowershell
+Name              : examplekey
+ResourceGroupName : examplegroup
+ResourceType      : Microsoft.KeyVault/vaults
+...
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

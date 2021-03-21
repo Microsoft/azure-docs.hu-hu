@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 03/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050543"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104675825"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása HTML-sablonokkal Azure Active Directory B2C
 
@@ -363,26 +363,31 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 A felhasználói felület testreszabásához itt talál példákat:
 
 ```bash
-git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
+git clone https://github.com/azure-ad-b2c/html-templates
 ```
 
 Ez a projekt a következő sablonokat tartalmazza:
-- [Ocean Blue](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/ocean_blue)
-- [Szürke pala](https://github.com/Azure-Samples/Azure-AD-B2C-page-templates/tree/master/slate_gray)
+- [Ocean Blue](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/AzureBlue)
+- [Szürke pala](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/MSA)
+- [Klasszikus](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/classic)
+- [Sablonerőforrások](https://github.com/azure-ad-b2c/html-templates/tree/main/templates/src)
 
 A minta használata:
 
-1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/ocean_blue` vagy `/slate_gray` .
-1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/assets` blob Storage-ba az előző szakaszokban leírtak szerint.
-1. Ezután nyissa meg a `\*.html` vagy a gyökérkönyvtárában található `/ocean_blue` `/slate_gray` összes fájlt, cserélje le a relatív URL-címek összes példányát a 2. lépésben feltöltött CSS-, kép-és betűkészlet-fájlok URL-címeire. Például:
+1. A tárház klónozása a helyi gépen. Válasszon egy sablon mappát `/AzureBlue` , `/MSA` vagy `/classic` .
+1. Töltse fel a sablon mappájában és a mappában található összes fájlt a `/src` blob Storage-ba az előző szakaszokban leírtak szerint.
+1. Ezután nyissa meg `\*.html` az egyes fájlokat a sablon mappájába. Ezután cserélje le az URL-címek összes példányát `https://login.microsoftonline.com` a 2. lépésben feltöltött URL-címre. Például:
+    
+    Forrás:
     ```html
-    <link href="./css/assets.css" rel="stylesheet" type="text/css" />
+    https://login.microsoftonline.com/templates/src/fonts/segoeui.WOFF
     ```
 
-    Művelet
+    Címzett:
     ```html
-    <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
+    https://your-storage-account.blob.core.windows.net/your-container/templates/src/fonts/segoeui.WOFF
     ```
+    
 1. Mentse a `\*.html` fájlokat, és töltse fel őket a blob Storage-ba.
 1. Most módosítsa a szabályzatot, amely a korábban említett HTML-fájlra mutat.
 1. Ha a hiányzó betűkészleteket, képeket vagy CSS-ket látja, tekintse át a hivatkozásokat a kiterjesztések és a \* . HTML fájlok között.

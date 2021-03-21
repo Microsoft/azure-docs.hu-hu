@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
 ms.openlocfilehash: 95c48bded224a40879328dba5861b3564f0ebcf8
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979861"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata .NET Core-alkalmazásokban
@@ -46,7 +46,7 @@ Az oktatóanyag elvégzéséhez telepítse a [.net Core SDK](https://dotnet.micr
 
 ## <a name="reload-data-from-app-configuration"></a>Adatok újratöltése az alkalmazás konfigurációjától
 
-Nyissa meg a *program.cs* , és frissítse a fájlt, és adjon hozzá egy hivatkozást a `System.Threading.Tasks` névtérhez, és adja meg a frissítési konfigurációt a `AddAzureAppConfiguration` metódusban, valamint a manuális frissítést a `TryRefreshAsync` metódus használatával.
+Nyissa meg a *program. cs* fájlt, és frissítse a fájlt a névtérre mutató hivatkozás hozzáadásához, a `System.Threading.Tasks` frissítési konfiguráció megadásához a `AddAzureAppConfiguration` metódusban, valamint a manuális frissítés a metódussal történő elindításához `TryRefreshAsync` .
 
 ```csharp
 using System;

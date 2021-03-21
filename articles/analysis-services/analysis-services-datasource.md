@@ -8,10 +8,10 @@ ms.date: 02/08/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 03f4d151fc948e4c060989a7d101ad91aecdecb6
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981493"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Támogatott adatforrások az Azure Analysis Servicesben
@@ -22,8 +22,8 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 
 |Adatforrás  |Memóriabeli  |DirectQuery  |Megjegyzések |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   Igen      |    Igen      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure Synapse Analytics (SQL DW)      |   Igen      |   Igen       |<sup>[2](#azprovider)</sup>|
+|Azure SQL Database      |   Igen      |    Yes      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure Synapse Analytics (SQL DW)      |   Igen      |   Yes       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Igen       |    Nem      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Igen        |  Nem        |<sup>[1](#tab1400a)</sup> |
@@ -61,17 +61,17 @@ Az adatforrások és az összekötők a Visual Studióban Analysis Services-proj
 |OData-adatcsatorna      |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |ODBC-lekérdezés     | Igen | Nem |  |
 |OLE DB     |   Igen | Nem |  |
-|Oracle  | Igen  |Igen  | <sup>[9](#oracle)</sup> |
+|Oracle  | Igen  |Yes  | <sup>[9](#oracle)</sup> |
 |PostgreSQL-adatbázis   | Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Salesforce-objektumok|  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |Salesforce-jelentések |Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Igen | Nem |  |
 |SAP Business Warehouse    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 |SharePoint-lista      |   Igen | Nem | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Adattárház SQL Server |Igen   | Igen  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|SQL Server |Igen   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
+|Adattárház SQL Server |Igen   | Yes  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Sybase-adatbázis     |  Igen | Nem |  |
-|Teradata | Igen  | Igen  | <sup>[10](#teradata)</sup> |
+|Teradata | Igen  | Yes  | <sup>[10](#teradata)</sup> |
 |TXT-fájl  |Igen | Nem |  |
 |XML-táblázat    |  Igen | Nem | <sup>[6](#tab1400b)</sup> |
 | | | |

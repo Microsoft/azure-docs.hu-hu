@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/29/2020
 ms.author: yegu
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 342125da35868b2b0f71609c4114cc561821eb1a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 88cfddb12de0949d56e4b8f9c3e363e4c8f75676
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121133"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657763"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Gyors útmutató: az Azure cache használata a Redis ASP.NET-webalkalmazással 
 
@@ -29,29 +29,29 @@ Ha közvetlenül a kódra szeretne ugrani, tekintse meg a [ASP.net](https://gith
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
 
-1. Nyissa meg a Visual studiót, majd válassza a **fájl**  > **új**  >  **projekt** lehetőséget.
+1. Nyissa meg a Visual studiót, majd válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-2. A **New Project** (Új projekt) párbeszédpanelen hajtsa végre az alábbi lépéseket:
+2. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Projekt létrehozása](./media/cache-web-app-howto/cache-create-project.png)
 
-    a. Bontsa ki a **Visual C#** csomópontot a **Templates** (Sablonok) listában.
+    a. A keresőmezőbe írja be a _következőt: C# ASP.net-webalkalmazás_.
 
-    b. Válassza a **felhő** lehetőséget.
+    b. Válassza a **ASP.net webalkalmazás (.NET-keretrendszer)** elemet.
 
-    c. Válassza az **ASP.NET Web Application** (ASP.NET-es webalkalmazás) lehetőséget.
+    c. Válassza a **Tovább** gombot.
 
-    d. Győződjön meg arról, hogy a **.NET Framework 4.5.2** (.NET-keretrendszer 4.5.2) vagy egy újabb verzió van kiválasztva.
+3. A **projekt neve** mezőben adja meg a projekt nevét. Ebben a példában a **ContosoTeamStats** nevet használtunk.
 
-    e. A **Name** (Név) mezőben nevezze el a projektet. Ebben a példában a **ContosoTeamStats** nevet használtunk.
+4. Ellenőrizze, hogy be van-e jelölve a **.NET-keretrendszer 4.6.1** vagy újabb verziója.
 
-    f. Válassza az **OK** lehetőséget.
+5. Válassza a **Létrehozás** lehetőséget.
    
-3. A projekt típusaként válassza az **MVC** lehetőséget.
+6. A projekt típusaként válassza az **MVC** lehetőséget.
 
-4. Ügyeljen arra, hogy az **Authentication** (Hitelesítés) beállításai között a **No Authentication** (Nincs hitelesítés) legyen megadva. A Visual Studio verziójától függően az **Authentication** (Hitelesítés) alapértelmezett beállítása lehet más. A beállítás módosításához kattintson a **Change Authentication** (Hitelesítés módosítása) gombra, és válassza a **No Authentication** (Nincs hitelesítés) lehetőséget.
+7. Ügyeljen arra, hogy az **Authentication** (Hitelesítés) beállításai között a **No Authentication** (Nincs hitelesítés) legyen megadva. A Visual Studio verziójától függően az **Authentication** (Hitelesítés) alapértelmezett beállítása lehet más. A beállítás módosításához kattintson a **Change Authentication** (Hitelesítés módosítása) gombra, és válassza a **No Authentication** (Nincs hitelesítés) lehetőséget.
 
-5. A projekt létrehozásához válassza az **OK** lehetőséget.
+8. A projekt létrehozásához válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 
@@ -125,10 +125,11 @@ Az ASP.NET futtatási környezet a külső fájl tartalmát egyesíti az `<appSe
 
 1. A **Megoldáskezelőben** bontsa ki a **Controllers** (Vezérlők) mappát, majd nyissa meg a *HomeController.cs* fájlt.
 
-2. Adja hozzá a következő két `using` utasítást a fájl elejéhez, hogy támogassa a gyorsítótárügyfelet és az alkalmazásbeállításokat.
+2. Adja hozzá a következő `using` utasításokat a fájl elejéhez a gyorsítótár-ügyfél, az alkalmazás beállításai és a karakterlánc-szerkesztő támogatásához.
 
     ```csharp
     using System.Configuration;
+    using System.Text;
     using StackExchange.Redis;
     ```
 

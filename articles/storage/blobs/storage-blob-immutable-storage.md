@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430938"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással
@@ -113,7 +113,7 @@ A következő táblázat a blob Storage-műveletek azon típusait mutatja be, am
 |--|--|--|--|
 | A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben | Nem módosítható: törlés- és írásvédett | Helyezze az 1<sup>. blobot, helyezze</sup><sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép blob, a növekményes másolási blob, a<sup>2</sup> . | A tároló törlése megtagadva; A Storage-fiók törlése megtagadva |
 | Lejárt a tényleges megőrzési időköz a blobon, és nincs beállítva jogi fenntartás | Csak írásvédett (a törlési műveletek engedélyezettek) | Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a<sup>2</sup> . Hozzáfűzés | A tároló törlése megtagadva, ha legalább 1 blob található a védett tárolóban; A Storage-fiók törlése csak a *zárolt* időalapú házirendek esetében megtagadva |
-| Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke) | Változtatható | Nincs | Nincs |
+| Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke) | Változtatható | Nincsenek | Nincsenek |
 
 <sup>1</sup> a blob szolgáltatás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
 

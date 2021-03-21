@@ -10,10 +10,10 @@ ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
 ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100546771"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Oktatóanyag: a hálózat konfigurálása Azure Stack Edge mini R-hez
@@ -182,7 +182,7 @@ Ez egy opcionális konfiguráció.
 
     1. A **webproxy URL-címe** mezőbe írja be az URL-címet a következő formátumban: `http://host-IP address or FQDN:Port number` . A HTTPS URL-címek nem támogatottak.
 
-    2. A **hitelesítés** területen válassza a **nincs** vagy az **NTLM** lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge mini R-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none** értékre. Az **NTLM** nem támogatott.
+    2. A **Hitelesítés** területen válassza a **Nincs** vagy az **NTLM** lehetőséget. Ha engedélyezi a számítást, és IoT Edge modult használ a Azure Stack Edge mini R-eszközön, javasoljuk, hogy a webproxy-hitelesítést ne állítsa be a **none** értékre. Az **NTLM** nem támogatott.
 
     3. Ha hitelesítést használ, adjon meg egy felhasználónevet és egy jelszót.
 

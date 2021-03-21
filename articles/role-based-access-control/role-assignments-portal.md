@@ -11,10 +11,10 @@ ms.date: 02/15/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal
 ms.openlocfilehash: e25bbe4e1a96e4efaaa13732aea571d26d4b006e
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100555285"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure-szerepkörök kiosztása a Azure Portal használatával
@@ -82,7 +82,7 @@ A **hozzáférés-vezérlés (iam)** az a lap, amelyet általában a szerepkör�
 
 1. A **hozzáférés kiosztása** listában válassza ki a rendszerbiztonsági tag típusát, amelyhez hozzáférést szeretne rendelni.
 
-    | Típus | Leírás |
+    | Típus | Description |
     | --- | --- |
     | **Felhasználó, csoport vagy egyszerű szolgáltatásnév** | Ha a szerepkört egy felhasználóhoz, csoporthoz vagy egyszerű szolgáltatásnév (alkalmazás) számára szeretné hozzárendelni, válassza ki ezt a típust. |
     | **Felhasználóhoz rendelt felügyelt identitás** | Ha a szerepkört [felhasználó által hozzárendelt felügyelt identitáshoz](../active-directory/managed-identities-azure-resources/overview.md)szeretné rendelni, válassza ki ezt a típust. |

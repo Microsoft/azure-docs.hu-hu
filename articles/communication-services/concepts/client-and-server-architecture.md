@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.openlocfilehash: 74a48b05e7e3b00d331da4fcf66092490ae70374
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490670"
 ---
 # <a name="client-and-server-architecture"></a>Ügyfél és kiszolgáló architektúrája
@@ -69,7 +69,7 @@ Az Azure kommunikációs szolgáltatások az Azure kommunikációs szolgáltatá
 
 :::image type="content" source="../media/scenarios/archdiagram-bot.png" alt-text="A kommunikációs szolgáltatások bot architektúráját bemutató ábra.":::
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Előfordulhat, hogy tetszőleges adatokat kell cserélnie a felhasználók között, például szinkronizálnia kell a közös, vegyes valóságot vagy játékélményt. A szöveg-, hang-és videó-kommunikációhoz használt valós idejű adatsíkok kétféleképpen érhetők el:
 
