@@ -7,10 +7,10 @@ ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
 ms.openlocfilehash: a668024db126c82f96756555aba513b77f7d7366
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93422960"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
@@ -111,7 +111,7 @@ A PowerShell Core a Windows PowerShell-lel párhuzamosan települ. Állítsa be 
 
 1. Válassza a **PowerShell: munkamenet menü megjelenítése** lehetőséget.
 
-1. Ha az **aktuális munkamenet** nem a **PowerShell Core 6** , válassza **a váltás a következőre: PowerShell Core 6**.
+1. Ha az **aktuális munkamenet** nem a **PowerShell Core 6**, válassza **a váltás a következőre: PowerShell Core 6**.
 
 Ha meg van nyitva egy PowerShell-fájl, az ablak jobb alsó sarkában látható zöld színnel jelenik meg. Ha ezt a szöveget választja, a munkamenet menüt is megjeleníti. További információ: a [PowerShell verziójának kiválasztása a bővítménnyel való használatra](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
@@ -256,6 +256,6 @@ Ha a hibakeresés során nehézségekbe ütközik, ellenőrizze a következőket
 | A Visual Studio Code-ban az alapértelmezett terminálnak hozzá kell férnie func.exehoz. Győződjön meg arról, hogy nem használ olyan alapértelmezett terminált, amely nem rendelkezik telepített alapeszközökkel, például a Linux Windows alrendszerét (WSL).  | Állítsa be az alapértelmezett rendszerhéjt a Visual Studio Code-ban a PowerShell 7 (ajánlott) vagy a Windows PowerShell 5,1-es verzióra.|
   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a függvények a PowerShell használatával történő fejlesztéséről: [Azure functions PowerShell fejlesztői útmutató](functions-reference-powershell.md).

@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/13/2016
 ms.openlocfilehash: 3fba7bdaa5db1d812fbcd479e5f1eab50c8d1032
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92215858"
 ---
 # <a name="use-the-vertex-execution-view-in-data-lake-tools-for-visual-studio"></a>A Visual studióhoz készült Data Lake-eszközök csúcspont-végrehajtási nézetének használata
@@ -25,11 +25,11 @@ A csúcspont-végrehajtás nézet három részből áll:
 
 ![Képernyőkép, amely a csúcspont-végrehajtási nézetet jeleníti meg a "Vertex választó" és a közép-felső és Közép-alsó ablaktáblák kiemelésével.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view.png)
 
-A bal oldali **csúcspont-választó** lehetővé teszi a csúcspontok kiválasztását a szolgáltatások (például az első 10 adatolvasás vagy a fázis szerinti választás) alapján. Az egyik leggyakrabban használt szűrő a **kritikus elérési úton található csúcspontokat**látja. A **kritikus elérési út** a U-SQL-feladatok csúcspontjának leghosszabb lánca. A kritikus elérési út megértése hasznos lehet a feladatok optimalizálásához, ha ellenőrzi, hogy a csúcspont a leghosszabb ideig tart-e.
+A bal oldali **csúcspont-választó** lehetővé teszi a csúcspontok kiválasztását a szolgáltatások (például az első 10 adatolvasás vagy a fázis szerinti választás) alapján. Az egyik leggyakrabban használt szűrő a **kritikus elérési úton található csúcspontokat** látja. A **kritikus elérési út** a U-SQL-feladatok csúcspontjának leghosszabb lánca. A kritikus elérési út megértése hasznos lehet a feladatok optimalizálásához, ha ellenőrzi, hogy a csúcspont a leghosszabb ideig tart-e.
   
 ![Képernyőfelvétel: a csúcspont-végrehajtási nézet felső középső ablaktáblája, amely megjeleníti az összes csúcspont futási állapotát.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane2.png)
 
-A felső középső ablaktáblán az **összes csúcspont futási állapota**látható.
+A felső középső ablaktáblán az **összes csúcspont futási állapota** látható.
   
 ![Képernyőkép, amely megjeleníti a csúcspont-végrehajtási nézet alsó-középső ablaktábláját, amely az egyes csúcspontokkal kapcsolatos információkat jeleníti meg.](./media/data-lake-analytics-data-lake-tools-use-vertex-execution-view/data-lake-tools-vertex-execution-view-pane3.png)
 

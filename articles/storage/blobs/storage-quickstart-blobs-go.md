@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95544649"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
@@ -149,9 +149,9 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezután feltöltheti a fájlt a megadott útvonalra a következő REST API-k egyikével: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az **_UploadFileToBlockBlob_* _ függvény például a StageBlock (PutBlock) műveleteket használja az adattömbökben lévő fájlok egyidejű feltöltéséhez az átviteli sebesség optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
+Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az ***UploadFileToBlockBlob*** függvény például StageBlock (PutBlock) műveletekkel több darabban, egyszerre tölt fel egy fájlt az adatátvitel optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
 
-A következő példa feltölti a fájlt a tárolóba, amelynek neve: _ * quickstartblobs-[randomstring] * *.
+A következő példa feltölti a fájlt a **quickstartblobs-[véletlen sztring]** nevű tárolóba.
 
 ```go
 // Create a file to test the upload and download.

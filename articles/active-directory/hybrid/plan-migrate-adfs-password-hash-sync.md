@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861816"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba Azure Active Directory
@@ -48,7 +48,7 @@ Azure AD Connect frissítéséhez hajtsa végre a [Azure ad Connect: frissítés
 
 Az expressz beállítások vagy egy egyéni telepítés használatával Azure AD Connect konfigurálhatja. Ha az egyéni telepítési lehetőséget használta, előfordulhat, hogy a jelszó-kivonat szinkronizálásához [szükséges engedélyek](./reference-connect-accounts-permissions.md) nem teljesülnek.
 
-A Azure AD Connect Active Directory tartományi szolgáltatások (AD DS) szolgáltatás fiókjának a következő engedélyekkel kell rendelkeznie a jelszó-kivonatok szinkronizálásához:
+A Azure AD Connect Active Directory Domain Services (AD DS) szolgáltatás fiókjának a következő engedélyekkel kell rendelkeznie a jelszó-kivonatok szinkronizálásához:
 
 * Címtárbeli módosítások replikálása
 * A címtár összes módosításának replikálása

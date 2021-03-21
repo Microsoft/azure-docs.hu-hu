@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.openlocfilehash: b4f54aff78526ba52e56ed9f4cf1feddf40fa69b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358392"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Nagyméretű adathalmazok indexelése az Azure-ban Cognitive Search
@@ -45,7 +45,7 @@ Ha elégedett a szintjével, a következő lépés lehet a partíciók számána
 
 ### <a name="review-index-schema"></a>Index-séma áttekintése
 
-Az index sémája fontos szerepet játszik az adatindexelésben. Minél több mező van, és a további megadott tulajdonságok (például *kereshető* , *sokrétű* vagy *szűrhető* ) mind hozzájárulnak az indexelési idő növeléséhez. Általánosságban elmondható, hogy csak olyan mezőket kell létrehoznia és megadnia, amelyekhez ténylegesen szüksége van a keresési indexben.
+Az index sémája fontos szerepet játszik az adatindexelésben. Minél több mező van, és a további megadott tulajdonságok (például *kereshető*, *sokrétű* vagy *szűrhető*) mind hozzájárulnak az indexelési idő növeléséhez. Általánosságban elmondható, hogy csak olyan mezőket kell létrehoznia és megadnia, amelyekhez ténylegesen szüksége van a keresési indexben.
 
 > [!NOTE]
 > A dokumentumok méretének megőrzéséhez ne adjon hozzá nem lekérdezhető adatmennyiséget egy indexhez. A képek és más bináris adatfájlok nem kereshetők közvetlenül, és nem tárolhatók az indexben. A nem lekérdezhető adatmennyiség keresési eredményekbe való integrálásához meg kell adnia egy nem kereshető mezőt, amely az erőforrás URL-hivatkozását tárolja.

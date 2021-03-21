@@ -13,10 +13,10 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686886"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
@@ -57,7 +57,7 @@ A MSAL kezeli a gyorsítótárazást és a hozzáférési jogkivonatok frissít�
 
 Ez az útmutató a következő NuGet-csomagokat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -115,7 +115,7 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
 1. Válassza a **mobil-és asztali alkalmazások** lehetőséget.
 1. Az **átirányítási URI** -k szakaszban válassza a elemet **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 1. Válassza a **Konfigurálás** lehetőséget.
-1. Nyissa meg a Visual studiót, nyissa meg a *app.XAML.cs* fájlt, majd cserélje le az `Enter_the_Application_Id_here` alábbi kódrészletet az imént regisztrált és másolt alkalmazás-azonosítóra.
+1. Nyissa meg a Visual studiót, nyissa meg az *app. XAML. cs* fájlt, majd cserélje le az `Enter_the_Application_Id_here` alábbi kódrészletre az imént regisztrált és másolt alkalmazás-azonosítóval.
 
     ```csharp
     private static string ClientId = "Enter_the_Application_Id_here";
@@ -125,7 +125,7 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
 
 Ebben a lépésben egy olyan osztályt hoz létre, amely kezeli a MSAL való interakciót, például a jogkivonatok kezelését.
 
-1. Nyissa meg a *app.XAML.cs* fájlt, majd adja hozzá a MSAL-referenciát a osztályhoz:
+1. Nyissa meg az *app. XAML. cs* fájlt, majd adja hozzá a MSAL-hivatkozást a osztályhoz:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -188,7 +188,7 @@ A *MainWindow. XAML* fájlt automatikusan létre kell hozni a projekt sablonján
 
 Ebben a szakaszban a MSAL használatával kap tokent a Microsoft Graph API-hoz.
 
-1. A *MainWindow.XAML.cs* fájlban adja hozzá a MSAL hivatkozást a osztályhoz:
+1. A *MainWindow. XAML. cs* fájlban adja hozzá a MSAL vonatkozó hivatkozást a osztályhoz:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -355,7 +355,7 @@ Bár az ebben a példában szereplő alkalmazás egyetlen felhasználót támoga
 
 ## <a name="display-basic-token-information"></a>Alapszintű jogkivonat adatainak megjelenítése
 
-A jogkivonattal kapcsolatos alapvető információk megjelenítéséhez adja hozzá a következő metódust a *MainWindow.XAML.cs* -fájlhoz:
+A jogkivonattal kapcsolatos alapvető információk megjelenítéséhez adja hozzá a következő metódust a *MainWindow. XAML. cs* fájlhoz:
 
 ```csharp
 /// <summary>

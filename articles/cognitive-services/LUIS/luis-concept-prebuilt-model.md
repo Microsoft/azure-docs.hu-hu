@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95019143"
 ---
 # <a name="prebuilt-models"></a>Előre összeállított modellek
@@ -59,6 +59,6 @@ Ha egy előre összeépített entitás szerepel az alkalmazásban, az előrejelz
 > [!NOTE]
 > a **beépített. datetime** elavult. A rendszer helyébe a [**beépített. datetimeV2**](luis-reference-prebuilt-datetimev2.md), amely a dátum-és időtartományok felismerését, valamint a kétértelmű dátumok és időpontok jobb felismerését is lehetővé teszi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](./howto-add-prebuilt-models.md) az alkalmazáshoz.

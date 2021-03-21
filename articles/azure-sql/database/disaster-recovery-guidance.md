@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/21/2019
 ms.openlocfilehash: 322ef3b8ca30396bd4772850ff651f7545a21257
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580747"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database vagy feladatátvétel visszaállítása másodlagosra
@@ -25,7 +25,7 @@ Azure SQL Database a következő képességeket biztosítja az áramszünetek he
 
 - [Aktív georeplikáció](active-geo-replication-overview.md)
 - [Automatikus feladatátvételi csoportok](auto-failover-group-overview.md)
-- [Georedundáns visszaállítás](recovery-using-backups.md#point-in-time-restore)
+- [Geo-visszaállítás](recovery-using-backups.md#point-in-time-restore)
 - [Zóna – redundáns adatbázisok](high-availability-sla.md)
 
 Az üzletmenet-folytonossági forgatókönyvek és az ilyen forgatókönyveket támogató funkciók megismeréséhez tekintse meg az [üzletmenet folytonosságát](business-continuity-high-availability-disaster-recover-hadr-overview.md)ismertető témakört.

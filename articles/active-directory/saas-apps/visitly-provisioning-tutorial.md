@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: ff3f3ab65df2d801b7c962de7cce645e9fc00b30
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358609"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználói üzembe helyezéshez való felkeresés konfigurálása
@@ -96,7 +96,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben való felkereséshez
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![Minden alkalmazás](common/enterprise-applications.png)
 
@@ -120,7 +120,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail](common/provisioning-notification-email.png)
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók látogatása** lehetőséget.
 
@@ -152,7 +152,7 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 A látogatás nem támogatja a merevlemezek törlését. Minden, ami csak a törlést törli.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696085"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Oktatóanyag: Szószedetbeli kifejezések létrehozása és importálása az Azure hatáskörébe (előzetes verzió)
@@ -23,7 +23,7 @@ A Szószedet egy fontos eszköz a katalógus karbantartásához és rendszerezé
 
 Ez az oktatóanyag *egy öt részből álló oktatóanyag-Sorozat 5. része* , amelyben megtudhatja, hogyan kezelheti az adatkezelési szabályozást az Azure hatáskörébe. Ez az oktatóanyag a 4. részben elvégzett munkára épül [: az Azure hatáskörébe (előzetes verzió) az erőforrás-készletek, a részletek, a sémák és a besorolások megismerése](tutorial-schemas-and-classifications.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -184,4 +184,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő cikkel, amely a különböző katalógus-információk megismerését ismerteti.
 
 > [!div class="nextstepaction"]
-> [Az Azure hatáskörébe tartozó bepillantások ismertetése](concept-insights.md)
+> [Elemzések értelmezése az Azure Purview-ban](concept-insights.md)

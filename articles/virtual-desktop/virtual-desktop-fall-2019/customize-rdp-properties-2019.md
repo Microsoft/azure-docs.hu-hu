@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 5110e97e52939ea2115bb839768cc7ab96802961
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020708"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>Windows rendszerű virtuális asztali (klasszikus) címkészlet RDP protokoll tulajdonságainak testreszabása
@@ -34,7 +34,7 @@ Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságoka
 
 |RDP-tulajdonságok | Asztali számítógépek | RemoteApp-alkalmazások |
 |---|---| --- |
-| Többszörös figyelési mód | Engedélyezve | N.A. |
+| Többszörös figyelési mód | Engedélyezve | N/A |
 | Meghajtó-átirányítások engedélyezve | Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák| Meghajtók, vágólap és nyomtatók |
 | Távoli hang mód | Helyi lejátszás | Helyi lejátszás |
 
@@ -74,7 +74,7 @@ Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty
 > [!div class="mx-imgBorder"]
 > ![A PowerShell-parancsmag képernyőképe Get-RDSRemoteApp a Name és a FriendlyName kiemelve.](../media/resetcustomrdpproperty.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

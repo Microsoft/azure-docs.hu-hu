@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 21c0a7a3fe6d5be9d99ea53dbfa74cf72e163272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780665"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>Azure SQL Database teljesítményének figyelése és kezelése több-bérlős SaaS-alkalmazásokban
@@ -50,10 +50,10 @@ A készleteket és a készletekben lévő adatbázisokat figyelni kell, hogy a t
 
 ### <a name="performance-management-strategies"></a>Teljesítménykezelési stratégiák
 
-* A teljesítmény manuális figyelése érdekében a leghatékonyabb olyan riasztások beállítása, amelyek akkor lépnek érvénybe, **amikor az adatbázisok vagy készletek elkóborolnak a normál tartományokból** .
-* A készlet összesített számítási méretének rövid távú ingadozására való reagáláshoz a **készlet eDTU szintje felfelé vagy lefelé is méretezhető** . Ha az ingadozás rendszeres vagy kiszámítható, akkor **a készlet beállítható úgy, hogy a skálázás automatikusan ütemezve legyen** . Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
-* A hosszabb távú ingadozásokra vagy az adatbázisok számának változására válaszul **az egyes adatbázisok áthelyezhetők másik készletekbe** .
-* Az *egyes* adatbázisok egyéni adatbázis-terhelésének rövid távú növekedésére való reagáláshoz **létrehozhat egy készletet, és hozzárendelheti az egyes számítási méreteket** . A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez előre ismert, az adatbázisok áthelyezhetők megelőző jelleggel, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a készlet más adatbázisainak hatását. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
+* A teljesítmény manuális figyelése érdekében a leghatékonyabb olyan riasztások beállítása, amelyek akkor lépnek érvénybe, **amikor az adatbázisok vagy készletek elkóborolnak a normál tartományokból**.
+* A készlet összesített számítási méretének rövid távú ingadozására való reagáláshoz a **készlet eDTU szintje felfelé vagy lefelé is méretezhető**. Ha az ingadozás rendszeres vagy kiszámítható, akkor **a készlet beállítható úgy, hogy a skálázás automatikusan ütemezve legyen**. Beállítható például a vertikális leskálázás, amikor előre láthatóan kevés lesz a számítási feladat, például éjjelente vagy a hétvégi napokon.
+* A hosszabb távú ingadozásokra vagy az adatbázisok számának változására válaszul **az egyes adatbázisok áthelyezhetők másik készletekbe**.
+* Az *egyes* adatbázisok egyéni adatbázis-terhelésének rövid távú növekedésére való reagáláshoz **létrehozhat egy készletet, és hozzárendelheti az egyes számítási méreteket**. A terhelés csökkenésével az adatbázis visszahelyezhető a készletbe. Ha ez előre ismert, az adatbázisok áthelyezhetők megelőző jelleggel, így biztosítva, hogy az adatbázis mindig rendelkezik a szükséges erőforrásokkal, és hogy elkerülje a készlet más adatbázisainak hatását. Ha ez a szükséglet előre kiszámítható, például ha egy helyszín nagy mennyiségű növekedésre számít a jegyeladásokban egy népszerű esemény miatt, akkor ez a kezelési viselkedés integrálható az alkalmazásba.
 
 Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. A figyelés és a riasztás az adatbázisokon és a készleteken érhető el. Ez a beépített figyelési és riasztási erőforrás-specifikus megoldás, ezért érdemes kis mennyiségű erőforrást használni, de nem nagyon kényelmes, ha sok erőforrással dolgozik.
 
@@ -69,7 +69,7 @@ Noha a készletek használata már két S3-adatbázis esetén is költséghaték
 
 Ha egy korábbi oktatóanyagban már kiépített bérlők kötegét, ugorjon a [használat szimulálása az összes bérlői adatbázison](#simulate-usage-on-all-tenant-databases) szakaszra.
 
-1. A **POWERSHELL ISE** -ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1* . Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
 1. **$DemoScenario**  =  **1** beállítása, **bérlők kötegének kiépítése**
 1. A szkript futtatásához nyomja le az **F5** billentyűt.
 
@@ -81,7 +81,7 @@ A *New-TenantBatch* parancsfájl a bérlők kötegét létrehozó [Resource Mana
 
 A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt, amely az összes bérlői adatbázison futó munkaterhelést szimulál. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
 
-| Bemutató | Használati eset |
+| Bemutató | Eset |
 |:--|:--|
 | 2 | Normál intenzitású terhelés előállítása (körülbelül 40 DTU) |
 | 3 | Terhelés létrehozása adatbázisonkénti hosszabb és gyakoribb adatlöketekkel|
@@ -91,8 +91,8 @@ A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt, amely az összes 
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (eDTU-ban mérve), időtartama és időköze minden adatbázis esetén más és más, ezzel szimulálva a kiszámíthatatlan bérlői aktivitást.
 
-1. A **POWERSHELL ISE** -ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1* . Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
-1. A **$DemoScenario**  =  **2** beállítása, a *normál intenzitású terhelés létrehozása* .
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ Tanulási modulok \\ teljesítményének figyelése és kezelése \\ *Demo-PerformanceMonitoringAndManagement.ps1*. Tartsa ezt a szkriptet nyitva, mivel az oktatóanyag során több különböző forgatókönyvet is futtatnia kell majd.
+1. A **$DemoScenario**  =  **2** beállítása, a *normál intenzitású terhelés létrehozása*.
 1. Nyomja le az **F5** billentyűt, hogy az összes bérlői adatbázist érje terhelés.
 
 A Wingtip jegyek SaaS-adatbázisa egy SaaS-alkalmazás, a SaaS-alkalmazások valós terhelése pedig általában szórványos és kiszámíthatatlan. Ennek szimulálására a terhelésgenerátor az összes bérlő között elosztott, véletlenszerű terhelést hoz létre. A terhelési minta megjelenése több percet is igénybe vehet, ezért futtassa a Load Generatort 3-5 percre, mielőtt megpróbálja figyelni a terhelést a következő fejezetekben.
@@ -127,7 +127,7 @@ Mivel a készletben további adatbázisok találhatók az első öt felett, a k�
 
    ![riasztás hozzáadása](./media/saas-dbpertenant-performance-monitoring/add-alert.png)
 
-1. Adjon meg egy nevet, például: **Magas DTU** .
+1. Adjon meg egy nevet, például: **Magas DTU**.
 1. Állítsa be a következő értékeket:
    * **Metrika = eDTU százalékos értéke**
    * **Feltétel = nagyobb, mint**
@@ -142,7 +142,7 @@ Mivel a készletben további adatbázisok találhatók az első öt felett, a k�
 
 Ha egy készlet összesített terhelési szintje addig növekszik, hogy teljesen lefoglalja a készletet és 100%-os eDTU-használatot ér el, az hatással van az adatbázisok egyéni teljesítményére, és lelassíthatja a lekérdezések válaszidejét a készletben található összes adatbázisban.
 
-**Rövid távú** , érdemes lehet a készletet a további erőforrások biztosítására, illetve az adatbázisok a készletből való eltávolítására (más készletekbe való áthelyezésre vagy a készletből egy önálló szolgáltatási rétegre).
+**Rövid távú**, érdemes lehet a készletet a további erőforrások biztosítására, illetve az adatbázisok a készletből való eltávolítására (más készletekbe való áthelyezésre vagy a készletből egy önálló szolgáltatási rétegre).
 
 Az adatbázis teljesítményének növelése érdekében érdemes **lehet a lekérdezések** optimalizálása vagy az indexelés használata. Az alkalmazás teljesítményingadozásokra való érzékenységétől függően az ajánlott eljárás a készlet vertikális felskálázása még a 100%-os eDTU-használat elérése előtt. Használjon olyan riasztást, amely előre figyelmezteti Önt.
 
@@ -156,7 +156,7 @@ Foglalt készletet a generátor által létrehozott terhelés növelésével szi
 Figyelje meg a készlet eDTU használatát a felső diagramon. Eltarthat néhány percig, amíg az új magasabb terhelés betöltődik, de a készletet gyorsan látnia kell a maximális kihasználtság eléréséhez, és mivel a terhelés az új mintának megfelelően növekszik, gyorsan túlterheli a készletet.
 
 1. A készlet vertikális felskálázásához kattintson a **Pool1** lap tetején található **készlet konfigurálása** elemre.
-1. Állítsa a **Pool eDTU** beállítást **100** -re. A készlet eDTU-értékének módosítása nem módosítja az adatbázisonkénti beállításokat (ami továbbra is adatbázisonként legfeljebb 50 eDTU). Az adatbázison belüli beállításokat a **készlet konfigurálása** lap jobb oldalán tekintheti meg.
+1. Állítsa a **Pool eDTU** beállítást **100**-re. A készlet eDTU-értékének módosítása nem módosítja az adatbázisonkénti beállításokat (ami továbbra is adatbázisonként legfeljebb 50 eDTU). Az adatbázison belüli beállításokat a **készlet konfigurálása** lap jobb oldalán tekintheti meg.
 1. Kattintson a **Save (Mentés** ) gombra a készlet skálázására irányuló kérelem elküldéséhez.
 
 Lépjen vissza a **Pool1**  >  **áttekintésre** a figyelési diagramok megtekintéséhez. Figyelje meg, hogy a készlet több erőforrással való ellátása milyen hatással van (bár kevés adatbázissal és véletlenszerű terheléssel, hogy a rendszer nem mindig könnyen látható, amíg egy ideig nem fut). A diagramok megtekintése közben vegye figyelembe, hogy a felső diagramon látható 100% most 100 eDTU-t jelent, míg az alsó diagramon látható 100% továbbra is 50 eDTU-t, mivel az adatbázisonkénti maximum változatlanul 50 eDTU.
@@ -174,8 +174,8 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
    1. Állítsa a **nevet** a *pool2 értéket* értékre.
    1. A tarifacsomagnál hagyja meg a **Standard készlet** beállítást.
    1. Kattintson a **Készlet beállítása** elemre,
-   1. Készlet **eDTU** beállítása *50 eDTU* .
-   1. Az **adatbázisok hozzáadása** lehetőségre kattintva megtekintheti a kiszolgálón található adatbázisok listáját, amelyeket hozzáadhat a *pool2 értéket* -hez.
+   1. Készlet **eDTU** beállítása *50 eDTU*.
+   1. Az **adatbázisok hozzáadása** lehetőségre kattintva megtekintheti a kiszolgálón található adatbázisok listáját, amelyeket hozzáadhat a *pool2 értéket*-hez.
    1. Válasszon ki 10 adatbázist az új készletbe való áthelyezéshez, majd kattintson a **kiválasztás** elemre. Ha már futtatta a Load Generatort, a szolgáltatás már tudja, hogy a teljesítményadatok nagyobb készletet igényelnek, mint az alapértelmezett 50 eDTU-méret, és azt ajánljuk, hogy a 100 eDTU beállítással kezdjen.
 
       ![ajánlás](./media/saas-dbpertenant-performance-monitoring/configure-pool.png)
@@ -195,7 +195,7 @@ Ha a készletben lévő egyes adatbázisok tartós magas terhelést tapasztalnak
 
 Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulálja, amikor megkezdődik a jegyek árusítása egy népszerű koncertre.
 
-1. A **POWERSHELL ISE** -ben nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* szkript.
+1. A **POWERSHELL ISE**-ben nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* szkript.
 1. Állítsa be **$DemoScenario = 5, normál terhelés létrehozása, valamint egy adott bérlő nagy terhelését (körülbelül 95 DTU).**
 1. Állítsa be a **$SingleTenantDatabaseName = contosoconcerthall** értéket.
 1. Futtassa a szkriptet az **F5** billentyűvel.

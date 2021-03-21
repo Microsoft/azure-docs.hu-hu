@@ -4,10 +4,10 @@ description: Ismerje meg a DevTest Labs alapfogalmait, és hogy miként könnyí
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: b184f835ee99d47ddb843e5b02136299c26bfcdc
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92327858"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
@@ -78,5 +78,5 @@ Az ebben a cikkben tárgyalt fogalmakat Azure Resource Manager sablonok használ
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Labor létrehozása a DevTest Labs szolgáltatásban](devtest-lab-create-lab.md)

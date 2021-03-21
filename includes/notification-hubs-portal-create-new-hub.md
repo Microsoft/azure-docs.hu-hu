@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: notification-hubs
 author: jwargo
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009107"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -35,7 +35,7 @@ ms.locfileid: "96009107"
 
     1. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoport nevét.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
         ![Azure Portal – értesítési központ tulajdonságainak megadása](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 

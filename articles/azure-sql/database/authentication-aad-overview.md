@@ -12,10 +12,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
 ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96454289"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory hitelesítés használata
@@ -49,7 +49,7 @@ Az Azure Active Directory-hitelesítéssel lehetővé teszi adatbázis-felhaszn�
 - Az Azure AD támogatja az SQL Server Data Toolsból (SSDT) érkező, az Active Directory interaktív hitelesítést használó hasonló kapcsolatokat. További információ: [Azure Active Directory támogatás a SQL Server Data Toolsban (SSDT)](/sql/ssdt/azure-active-directory)
 
 > [!NOTE]  
-> Egy Azure-beli virtuális gépen (VM) futó SQL Server-példányhoz való csatlakozás Azure Active Directory-fiók használata esetén nem támogatott. Helyette használjon egy tartományi Active Directory-fiókot.  
+> Az Azure-beli virtuális gépen futó SQL Server-példányhoz való csatlakozás nem támogatott Azure Active Directory-fiókkal. Helyette használjon egy tartományi Active Directory-fiókot.  
 
 A konfigurációs lépések a következő eljárásokat ismertetik Azure Active Directory hitelesítés konfigurálásához és használatához.
 
@@ -161,7 +161,7 @@ Az Azure AD Server-rendszerbiztonsági tag (Logins) esetében az alábbi hiteles
 - Az Azure AD-hitelesítés a Azure SQL Database és az Azure szinapszis számára is támogatott a Azure Portal **importálási adatbázis** és az **adatbázis exportálása** lapok használatával. Az Azure AD-hitelesítéssel történő Importálás és exportálás a PowerShell-parancsokból is támogatott.
 - Az Azure AD-hitelesítés támogatott a SQL Database, az SQL felügyelt példányok és az Azure szinapszis használatával a parancssori felülettel. További információ: [Azure ad-hitelesítés konfigurálása és kezelése SQL Database vagy Azure szinapszis](authentication-aad-configure.md) és [SQL Server – az SQL Server](/cli/azure/sql/server)segítségével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD-példányok létrehozásával és feltöltésével, valamint a Azure SQL Database, SQL felügyelt példánnyal vagy az Azure szinapszis szolgáltatással való konfigurálásával kapcsolatban tekintse meg a [Azure Active Directory hitelesítés konfigurálása és kezelése SQL Database, SQL felügyelt példány vagy Azure szinapszis](authentication-aad-configure.md)használatával című témakört.
 - Az Azure AD Server rendszerbiztonsági példányok (bejelentkezések) SQL felügyelt példánnyal való használatával kapcsolatos oktatóanyagért lásd: [Azure ad Server rendszerbiztonsági tag (bejelentkezések) az SQL felügyelt példányával](../managed-instance/aad-security-configure-tutorial.md)

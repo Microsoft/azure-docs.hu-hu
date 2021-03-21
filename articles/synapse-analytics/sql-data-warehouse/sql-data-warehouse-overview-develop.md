@@ -11,10 +11,10 @@ ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 6b34c70b453c26fe27a51e1aa802564864640cb9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96453683"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák egy dedikált SQL-készlethez (korábban SQL DW) az Azure szinapszis Analyticsben 
@@ -48,6 +48,6 @@ Az alábbi cikkekben speciális kódolási technikák, tippek és javaslatok sze
 * [csoportosítási beállítások](sql-data-warehouse-develop-group-by-options.md)
 * [változó-hozzárendelés](sql-data-warehouse-develop-variable-assignment.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [T-SQL-utasítások](sql-data-warehouse-reference-tsql-statements.md).

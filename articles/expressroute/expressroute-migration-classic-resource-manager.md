@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: duau
 ms.openlocfilehash: 57c439cf8ac52d93d231d6ff33f72a5a942dec6a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351605"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute-társított virtuális hálózatok migrálása a Klasszikusból a Resource Managerbe
@@ -81,7 +81,7 @@ Ez a szakasz a virtuális hálózatok, az átjárók és a társított központi
    Move-AzureVirtualNetwork -Abort $vnetName
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való, platform által támogatott migrálása](../virtual-machines/migration-classic-resource-manager-overview.md)
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 * [Gyakori kérdések: a platform által támogatott IaaS-erőforrások áttelepítése klasszikusról Azure Resource Managerra](../virtual-machines/migration-classic-resource-manager-faq.md)

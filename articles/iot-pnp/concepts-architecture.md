@@ -10,15 +10,15 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 2cccb1fdfe775250f80da6cc2ecdcc4ddaa3d88e
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95484083"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play-architektúra
 
-A IoT Plug and Play lehetővé teszi a megoldás-építők számára, hogy manuális konfiguráció nélkül integrálják az intelligens eszközöket a megoldásaikkal. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
+Az IoT Plug and Play használatával a megoldáskészítők manuális konfigurálás nélkül integrálhatnak intelligens eszközöket a megoldásaikba. A IoT Plug and Play egy olyan eszköz _modellje_ , amely leírja az eszköz képességeit egy IoT Plug and Play-kompatibilis alkalmazás számára. Ez a modell illesztőfelület-készletként van strukturálva, amely az alábbiakat határozza meg:
 
 - Egy eszköz vagy más entitás írásvédett vagy írható állapotát jelképező _Tulajdonságok_ . Előfordulhat például, hogy egy eszköz sorozatszáma csak olvasható tulajdonság, és a termosztát hőmérséklete írható tulajdonság lehet.
 - _Telemetria_ az eszköz által kibocsátott adatok, függetlenül attól, hogy az adatok az érzékelők normál streamje, egy alkalmi hiba vagy egy tájékoztató üzenet.

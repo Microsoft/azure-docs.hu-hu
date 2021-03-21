@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 6321b96cb3db570102f138dcfd949d9c32daedbc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100384469"
 ---
 # <a name="web-sdk-supported-browsers"></a>A webes SDK által támogatott böngészők
@@ -29,7 +29,7 @@ if (!atlas.isSupported()) {
 }
 ```
 
-## <a name="desktop"></a>Asztal
+## <a name="desktop"></a>Asztali
 
 A Azure Maps web SDK a következő asztali böngészőket támogatja:
 

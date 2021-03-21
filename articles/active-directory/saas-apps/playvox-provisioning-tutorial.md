@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3c7efca5e052c2d0680aa7ca3e1b6d27bfdd7d11
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96862479"
 ---
 # <a name="tutorial-configure-playvox-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Playvox konfigurálása

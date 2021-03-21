@@ -17,10 +17,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92313891"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Platformfüggetlen értesítések küldése az Azure Notification Hubs
@@ -41,7 +41,7 @@ Ez a szakasz a [küldési értesítések küldése adott felhasználóknak az Az
 
 Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatával, tegye a következőket:
 
-1. A Visual Studióban **megoldáskezelő**bontsa ki a **vezérlők** mappát, majd nyissa meg a *RegisterController.cs* fájlt.
+1. A Visual Studióban **megoldáskezelő** bontsa ki a **vezérlők** mappát, majd nyissa meg a *RegisterController. cs* fájlt.
 
 1. Keresse meg a kód blokkját a `Put` metódusban, amely új regisztrációt hoz létre, majd cserélje le a `switch` tartalmat a következő kódra:
 
@@ -76,7 +76,7 @@ Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatá
 
     Ez a kód meghívja a platform-specifikus metódust, hogy natív regisztráció helyett sablon-regisztrációt hozzon létre. Mivel a sablon regisztrációja natív regisztrációból származik, nem kell módosítania a meglévő regisztrációkat.
 
-1. A **megoldáskezelő**a **vezérlők** mappában nyissa meg a **NotificationsController.cs** fájlt. Cserélje le az `Post` metódust az alábbi kódra:
+1. A **megoldáskezelő** a **vezérlők** mappában Nyissa meg a **NotificationsController. cs** fájlt. Cserélje le az `Post` metódust az alábbi kódra:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()

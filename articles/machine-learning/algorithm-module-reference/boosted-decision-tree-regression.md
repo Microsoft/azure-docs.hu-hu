@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 664943fc5535883b3df77b2795383e5c0586a71c
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375329"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
@@ -52,30 +52,30 @@ A színátmenet-növelési módszer a besorolási problémákhoz is használhat�
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>A megnövelt döntési fa regressziójának konfigurálása
 
-1.  Adja hozzá a **megnövelt döntési fa** modult a folyamathoz. Ezt a modult **Machine learning** , **inicializálás** , a **regressziós** kategória alatt találja. 
+1.  Adja hozzá a **megnövelt döntési fa** modult a folyamathoz. Ezt a modult **Machine learning**, **inicializálás**, a **regressziós** kategória alatt találja. 
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter** : válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként. 
+    -   **Egyetlen paraméter**: válassza ezt a lehetőséget, ha tudja, hogyan szeretné konfigurálni a modellt, és adjon meg egy adott értékeket argumentumként. 
      
-    -   **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.    
+    -   **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.    
    
   
-3. A **kihagyható levelek maximális száma faszerkezetben** : a bármely fában létrehozható terminál-csomópontok (levelek) maximális számát jelzi.  
+3. A **kihagyható levelek maximális száma faszerkezetben**: a bármely fában létrehozható terminál-csomópontok (levelek) maximális számát jelzi.  
 
     Ennek az értéknek a növelésével lehetőség van a fa méretének növelésére és jobb pontosságra, ha a túlillesztés és a hosszú betanítási idő fennáll.  
 
-4. **Minták minimális száma a levél csomópontjain** : azt jelzi, hogy az esetek minimális száma szükséges ahhoz, hogy minden terminál-csomópont (levél) a fában legyen létrehozva.
+4. **Minták minimális száma a levél csomópontjain**: azt jelzi, hogy az esetek minimális száma szükséges ahhoz, hogy minden terminál-csomópont (levél) a fában legyen létrehozva.
 
     Az érték növelésével növelheti az új szabályok létrehozásának küszöbértékét. Ha például az alapértelmezett érték 1, akkor akár egyetlen esetben is létrehozhat egy új szabályt. Ha az értéket 5-re emeli, a betanítási adatmennyiségnek legalább 5 olyan esetet kell tartalmaznia, amely ugyanazokat a feltételeket teljesíti.
 
-5. **Tanulási arány** : adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során. A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
+5. **Tanulási arány**: adjon meg egy 0 és 1 közötti számot, amely meghatározza a lépés méretét a tanulás során. A tanulási arány határozza meg, hogy a tanuló milyen gyorsan vagy lassabban konvergál az optimális megoldáson. Ha a lépés mérete túl nagy, lehet, hogy az optimális megoldást is lelövi. Ha a lépés mérete túl kicsi, a képzés továbbra is a legjobb megoldáshoz közeledik.
 
-6. **Felépített fák száma** : az Ensemble-ben létrehozandó döntési fák teljes számát jelzi. További döntési fák létrehozásával jobb lefedettséget érhet el, de a képzési idő növekszik.
+6. **Felépített fák száma**: az Ensemble-ben létrehozandó döntési fák teljes számát jelzi. További döntési fák létrehozásával jobb lefedettséget érhet el, de a képzési idő növekszik.
 
     Ha az értéket 1-re állítja, a rendszer azonban csak egy fát állít elő (a kezdeti paraméterekkel rendelkező fát), és nem végez további iterációt.
 
-7. **Véletlenszerű számú mag** : adjon meg egy nem negatív, nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.
+7. **Véletlenszerű számú mag**: adjon meg egy nem negatív, nem negatív egész számot, amelyet véletlenszerű mag értékként kíván használni. A vetőmagok megadásával biztosítható az azonos adatokkal és paraméterekkel rendelkező futtatások közötti reprodukálhatóság.
 
     Alapértelmezés szerint a véletlenszerű mag értéke 0, ami azt jelenti, hogy a kezdeti mag értékét a rendszer órája szerzi be.
   

@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 1209c49cbd988a02b1e3503994fdbdac3f26216a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946133"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
@@ -298,13 +298,13 @@ Az eszköz a **Spark SQL** -lekérdezést is támogatja:
 
 4. [Kapcsolódjon](#connect-to-an-azure-account) az Azure-fiókjához, vagy kapcsolja össze a fürtöt, ha még nem tette meg.
 
-5. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark batch** vagy a **szinapszis: PySpark batch** _ elemet.
+5. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, majd válassza a **Spark: PySpark batch** vagy a * * szinapszis: PySpark batch * * * parancsot.
 
 6. Válasszon ki egy olyan fürtöt vagy Spark-készletet, amely a PySpark-feladatot a következőre küldi:
 
    ![A Python-feladatok eredményének kimenete](./media/hdinsight-for-vscode/submit-pythonjob-result.png)
 
-Miután elküldte a Python-feladatot, a küldési naplók megjelennek a Visual Studio Code-ban az _ *kimeneti** ablakban. A Spark felhasználói felület URL-címe és a fonal felhasználói felületének URL-címe is megjelenik. Ha Apache Spark készletbe küldi a Batch-feladatot, a Spark-előzmények felhasználói felületének URL-címe és a Spark-alkalmazás felhasználói felületének URL-címe is megjelenik. A feladatok állapotának nyomon követéséhez megnyithatja az URL-címet egy böngészőben.
+Miután elküldte a Python-feladatot, a küldési naplók a Visual Studio Code **kimenet** ablakában jelennek meg. A Spark felhasználói felület URL-címe és a fonal felhasználói felületének URL-címe is megjelenik. Ha Apache Spark készletbe küldi a Batch-feladatot, a Spark-előzmények felhasználói felületének URL-címe és a Spark-alkalmazás felhasználói felületének URL-címe is megjelenik. A feladatok állapotának nyomon követéséhez megnyithatja az URL-címet egy böngészőben.
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integráció a HDInsight Identity Broker (HIB) szolgáltatással
 

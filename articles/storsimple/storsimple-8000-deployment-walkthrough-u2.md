@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961056"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
@@ -34,7 +34,7 @@ A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogo
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 Ezen szükséges lépések végrehajtásával konfigurálhatja a StorSimple-eszközt és csatlakoztathatja a StorSimple-eszközkezelő szolgáltatáshoz. A szükséges lépéseken kívül opcionális lépések és eljárások végrehajtására is szükség lehet az üzembe helyezés során. A részletes üzembehelyezési utasítások jelzik, amikor ezeket az opcionális lépéseket végre kell hajtania.
 
-| Lépés | Leírás |
+| Lépés | Description |
 | --- | --- |
 | **Előfeltételek** |Ezeknek teljesülniük kell az üzembe helyezésre való felkészülés során. |
 | [Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist) |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |

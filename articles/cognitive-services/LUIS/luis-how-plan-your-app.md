@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
 ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95018956"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
@@ -59,7 +59,7 @@ Az **int-ENT-Ties** azt a koncepciót jelenti, hogy a műveletek (amelyek által
 
 Vegye figyelembe a következő két hosszúságú kimondott szöveg, amelyek nagyon közel vannak a Word Choice-hoz, de különböző eredményekkel rendelkeznek:
 
-|Kimondott szöveg|
+|Beszédelem|
 |--|
 |`Please schedule my flight from Cairo to Seattle`|
 |`Cancel my flight from Cairo to Seattle`|
@@ -75,7 +75,7 @@ Az `FlightAction` entitás a Machine learning-entitás és alentitások követke
 
 Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdekében. A funkciók a felhasználói hosszúságú kimondott szöveg és az előrejelzési válaszban visszaadott értékek alapján lesznek kiválasztva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)

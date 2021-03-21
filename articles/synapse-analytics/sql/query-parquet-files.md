@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694680"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>A Parquet-fájlok lekérdezése kiszolgáló nélküli SQL-készlettel az Azure szinapszis Analyticsben
@@ -168,6 +168,6 @@ ORDER BY
 
 A Parquet típusú SQL natív típushoz való leképezéshez a [Parquet típusú leképezéshez](develop-openrowset.md#type-mapping-for-parquet).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan lehet [lekérdezni a parketta beágyazott típusait](query-parquet-nested-types.md).

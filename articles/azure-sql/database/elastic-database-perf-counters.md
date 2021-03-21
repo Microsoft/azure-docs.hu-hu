@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: 3bfbf56b6e5f2be33b407945490531e6e2e8ac47
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92781260"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Teljesítményszámlálók létrehozása a szegmenses Térkép kezelőjé teljesítményének nyomon követéséhez
@@ -42,12 +42,12 @@ A számlálók létrehozásához hívja meg a [ShardMapManagementFactory osztál
 [Ezt](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) a PowerShell-szkriptet használhatja a metódus végrehajtásához is.
 A metódus a következő teljesítményszámlálókat hozza létre:  
 
-* **Gyorsítótárazott leképezések** : a szegmenses térképhez gyorsítótárazott leképezések száma.
-* **DDR-műveletek/mp** : az adatszegmensi térképhez kapcsolódó adattovábbítási műveletek aránya. Ez a számláló akkor frissül, ha a [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres csatlakozást eredményez a cél szegmenshez.
-* **Keresési gyorsítótár látogatottságának leképezése/mp** : a gyorsítótár keresési műveleteinek aránya a szegmenses leképezésben.
-* **Leképezési keresési gyorsítótár-kihagyás/mp** : a sikertelen gyorsítótár-keresési műveletek gyakorisága a szegmenses leképezésben való leképezésekhez.
-* A (z) **gyorsítótárban hozzáadott vagy frissített leképezések** : a szegmenshez tartozó Térkép gyorsítótárban való hozzáadásának vagy frissítésének gyakorisága.
-* **Hozzárendelések eltávolítva a gyorsítótárból/másodpercből** : a szegmensek közötti Térkép gyorsítótárában lévő leképezések eltávolításának gyakorisága.
+* **Gyorsítótárazott leképezések**: a szegmenses térképhez gyorsítótárazott leképezések száma.
+* **DDR-műveletek/mp**: az adatszegmensi térképhez kapcsolódó adattovábbítási műveletek aránya. Ez a számláló akkor frissül, ha a [OpenConnectionForKey ()](/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) hívása sikeres csatlakozást eredményez a cél szegmenshez.
+* **Keresési gyorsítótár látogatottságának leképezése/mp**: a gyorsítótár keresési műveleteinek aránya a szegmenses leképezésben.
+* **Leképezési keresési gyorsítótár-kihagyás/mp**: a sikertelen gyorsítótár-keresési műveletek gyakorisága a szegmenses leképezésben való leképezésekhez.
+* A (z) **gyorsítótárban hozzáadott vagy frissített leképezések**: a szegmenshez tartozó Térkép gyorsítótárban való hozzáadásának vagy frissítésének gyakorisága.
+* **Hozzárendelések eltávolítva a gyorsítótárból/másodpercből**: a szegmensek közötti Térkép gyorsítótárában lévő leképezések eltávolításának gyakorisága.
 
 A teljesítményszámlálók minden egyes gyorsítótárazott szegmens-leképezéshez jönnek létre.  
 

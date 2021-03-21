@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy t�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695682"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
@@ -157,5 +157,5 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
 
     Ha az átjárót és a labort is konfigurálta **, akkor a kapcsolódáskor** létrehozott kapcsolatfájl automatikusan tartalmazza a jogkivonat-hitelesítés használatával történő kapcsolódáshoz szükséges információkat.     
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Távoli asztali szolgáltatások: [Távoli asztali szolgáltatások dokumentációjának](/windows-server/remote/remote-desktop-services/Welcome-to-rds) megismeréséhez tekintse meg a következő cikket.

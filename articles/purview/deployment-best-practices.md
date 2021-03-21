@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695850"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Az Azure hatáskörébe telepítése – ajánlott eljárások
@@ -52,8 +52,8 @@ Az általános megközelítés az átfogó célkitűzések különböző kategó
 |Kategória|Cél|
 |---------|---------|
 |Felderítés|A rendszergazda felhasználóknak képesnek kell lenniük az Azure-beli és nem Azure-beli adatforrások (beleértve a helyszíni forrásokat is) vizsgálatára az adategységek automatikus adatainak gyűjtéséhez.|
-|Besorolás|A platformnak automatikusan kell osztályoznia az adatelemzést az adatmintavételezés alapján, és az egyéni besorolások használatával manuális felülbírálást is engedélyezhet.|
-|Felhasználás|Az üzleti felhasználóknak az üzleti és technikai metaadatokra vonatkozó információkat is meg kell tudniuk találni az egyes eszközökről.|
+|Osztályozás|A platformnak automatikusan kell osztályoznia az adatelemzést az adatmintavételezés alapján, és az egyéni besorolások használatával manuális felülbírálást is engedélyezhet.|
+|Használat|Az üzleti felhasználóknak az üzleti és technikai metaadatokra vonatkozó információkat is meg kell tudniuk találni az egyes eszközökről.|
 |Lineage|Minden objektumnak az alapul szolgáló adatkészletek grafikus nézetét kell megjelenítenie, hogy a felhasználók megértsék az eredeti forrásokat, és hogy milyen módosításokat hajtottak végre.|
 |Együttműködés|A platformnak lehetővé kell tennie a felhasználók számára, hogy további információkat biztosítson az egyes adategységekről.|
 |Jelentéskészítés|A felhasználóknak képesnek kell lenniük a jelentések megtekintésére az adatbirtokon, beleértve a bizalmas adatokat és az olyan adatokat, amelyek további dúsítást igényelnek.|
@@ -90,7 +90,7 @@ Néhány fontos érintett fél, akikkel a következőket teheti:
 |**Tartomány/vállalati tulajdonos**|Egy üzleti személy, aki befolyásolja az eszközök használatát, és rendelkezik költségvetés-vezérléssel|
 |**Adatelemző**|Képes az üzleti problémák keretbe való bevezetésére és az adatelemzésre, hogy a vezetők üzleti döntéseket hozhassanak|
 |**Adatfejlesztő**|Tervezze meg az üzleti szempontból kritikus fontosságú üzletági alkalmazások kialakítását és az adatbiztonság megtervezését és megvalósítását|
-|**Adatszakértő**|Az adatverem üzemeltetése és karbantartása, különböző forrásokból származó adatok lekérése, adatok integrálása és előkészítése, adatfolyamatok beállítása|
+|**Adatmérnök**|Az adatverem üzemeltetése és karbantartása, különböző forrásokból származó adatok lekérése, adatok integrálása és előkészítése, adatfolyamatok beállítása|
 |**Adatelemző**|Elemzési modellek létrehozása és az API-k által elérhetővé tett adattermékek beállítása|
 |**ADATBÁZIS-rendszergazda**|Az adatbázisokkal kapcsolatos incidensek és kérelmek saját, nyomon követése és feloldása a szolgáltatói szerződések (SLA) keretében; Az adatfolyamatokat is beállíthat|
 |**DevOps**|Üzletági alkalmazások fejlesztése és megvalósítása; tartalmazhat parancsfájlokat és hangszerelési képességeket|
@@ -265,7 +265,7 @@ További megerősítő lépések hajthatók végre:
 * A REST API-k használata a biztonsági mentéshez és helyreállításhoz szükséges kritikus metaadatok és tulajdonságok exportálásához
 * Az emberi hibák elkerülése érdekében a munkafolyamattal automatizálhatja a jegyeket és az eseményeket
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a Starter Kit futtatása és az adatvizsgálat](tutorial-scan-data.md)
 - [Oktatóanyag: navigáljon a kezdőlapon, és keressen rá egy eszközre](tutorial-asset-search.md)

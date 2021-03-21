@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
 ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95025874"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Egyéni parancsok alkalmazás exportálása távoli képességként
@@ -85,7 +85,7 @@ Szerzőként érdemes lehet megszabni, hogy a példák milyen **mondatokat** has
 > Ha az alkalmazás közzétételével kapcsolatos problémákba ütközik, és a hiba a hosszúságú kimondott szöveg-t kiváltó készségekre irányítja, ellenőrizze újra az **engedélyezett parancsok** konfigurációját. Az összes elérhető parancsnak rendelkeznie kell legalább egy érvényes kiváltó kiírással.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Parancs frissítése az ügyfélről](./how-to-custom-commands-update-command-from-client.md)

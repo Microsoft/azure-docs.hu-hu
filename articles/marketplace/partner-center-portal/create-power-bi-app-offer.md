@@ -8,10 +8,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693608"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI-alkalmazásajánlat létrehozása
@@ -140,11 +140,11 @@ Adja meg a piactér adatait (például az ajánlat nevét, leírását és lemez
 6. Használati feltételek
 7. Adatvédelmi irányelvek
 8. Ajánlat neve
-9. Összegzés
-10. Leírás
+9. Összefoglalás
+10. Description
 11. Képernyőképek/videók
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -158,7 +158,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

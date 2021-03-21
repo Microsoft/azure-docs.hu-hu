@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: dc47c996748b126841cbeff1ea3f6f18f423951f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96457647"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-azure-synapse-analytics-data-factory-and-power-bi"></a>Ismerje meg a SaaS Analytics szolgáltatást Azure SQL Database, az Azure szinapszis Analytics, a Data Factory és a Power BI használatával
@@ -64,7 +64,7 @@ Végül a Star-Schema táblákat kérdezi le. A lekérdezési eredmények vizuá
 
 Ez az oktatóanyag alapvető példákat tartalmaz a Wingtip jegyek adatainak begyűjtésére. Annak megértése, hogy az egyes helyszínek milyen módon használják a szolgáltatást, a Wingtip jegyek gyártója a több vagy kevesebb aktív helyszínre irányuló különböző szolgáltatási csomagokra gondolhat például.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -204,7 +204,7 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 1. Indítsa el Power BI Desktopot.
 2. A Kezdőlap menüszalagon válassza az **adatok lekérése** lehetőséget, és válassza a **továbbiak...** lehetőséget. a menüből.
 3. Az **adatlekérdezés** ablakban válassza a **Azure SQL Database** lehetőséget.
-4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (**Catalog-DPT- &lt; User &gt; . database.Windows.net**). Válassza **Import** az importálás **adatkapcsolati módra** lehetőséget, majd kattintson **az OK** gombra.
+4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (**Catalog-DPT- &lt; User &gt; . database.Windows.net**). Válassza  az importálás **adatkapcsolati módra** lehetőséget, majd kattintson **az OK** gombra.
 
     ![Bejelentkezés a Power bi-ba](./media/saas-tenancy-tenant-analytics-adf/powerBISignIn.PNG)
 

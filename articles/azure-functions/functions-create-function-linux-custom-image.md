@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
 ms.openlocfilehash: 1c7a9fd83131ea6282d2ef4860b744fa348153ed
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98070915"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
@@ -24,7 +24,7 @@ A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](./create-first-function-cli-csharp.md?pivots=programming-language-python)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
@@ -120,7 +120,7 @@ A `-DjavaVersion` paraméter közli a functions futtatókörnyezettel, hogy a Ja
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
 Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Kérdés | Érték | Leírás |
+| Adatkérés | Érték | Leírás |
 | ------ | ----- | ----------- |
 | **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
 | **artifactId** | `fabrikam-functions` | Egy érték, amely a jar neve, verziószám nélkül. |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: da6e1a8ba31f8f4991bde4803191598a015a68b3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358439"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle Fusion ERP konfigurálása a felhasználók automatikus kiépítési felállításához
@@ -124,7 +124,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az Oracle Fusion ERP** -be lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az Oracle Fusion ERP**-be lehetőséget.
 
     :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név területen szinkronizálja Azure Active Directory felhasználókat az Oracle Fusion E R P-vel." border="false":::
 
@@ -164,7 +164,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 * Az Oracle Fusion ERP nem támogatja a csoportok üzembe helyezését.
 * Az Oracle Fusion ERP szerepkörei az Azure AD-ben csoportokba vannak rendelve. Ahhoz, hogy szerepköröket rendeljen a felhasználókhoz az Azure AD-ből származó Oracle Fusion ERP-ben, hozzá kell rendelnie a felhasználókat az Oracle Fusion ERP szerepkörei után elnevezett kívánt Azure AD-csoportokhoz.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

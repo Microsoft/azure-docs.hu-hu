@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 02/20/2020
 ms.openlocfilehash: 328c29afee3752ecb11b83f22d67f20aa3a2c93e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94963011"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Mi az Azure Database Migration Service?
@@ -28,7 +28,7 @@ A Azure Database Migration Service a meglévő eszközök és szolgáltatások b
 > [!NOTE]
 > A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt.
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A Azure Database Migration Service regionális elérhetőségével kapcsolatos naprakész információk: [régiókban elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
 

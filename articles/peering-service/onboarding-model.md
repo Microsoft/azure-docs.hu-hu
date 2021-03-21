@@ -12,10 +12,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 7a257b4c2bea3bd3384a55c0a6b85d7fdd2ca583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84872077"
 ---
 # <a name="onboarding-peering-service-model"></a>Bevezetési szolgáltatási modell
@@ -51,7 +51,7 @@ A társ-szolgáltatási kapcsolatok telemetria bevezetéséhez az ügyfélnek re
 
 Ezt követően a telemetria mértékét a következő hivatkozással mérhetővé teheti [.](measure-connection-telemetry.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretne többet megtudni a peering Service-kapcsolatok regisztrálásának lépéseiről, tekintse meg a következő témakört: [peering Service-Azure Portal regisztrálása](azure-portal.md).
 

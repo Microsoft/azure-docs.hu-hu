@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 166e365a4ead8ad6d0f7e543c081161ebff5f027
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92330461"
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database eszközök szószedete
@@ -31,11 +31,11 @@ Ezek a kifejezések a szegmensek [Elastic Database eszközökkel való hozzáad�
 
 **Adatfüggő útválasztás**: az a funkció, amely lehetővé teszi, hogy egy alkalmazás egy adott szegmenshez kapcsolódjon. Tekintse meg [az Adatfüggő útválasztást](elastic-scale-data-dependent-routing.md). Összehasonlítás **[több szegmenses lekérdezéssel](elastic-scale-multishard-querying.md)**.
 
-**Globális**szegmenses Térkép: a horizontális Felskálázási kulcsok és a hozzájuk tartozó szilánkok közötti **Térkép.** A globális szegmenses térképet a rendszer a szegmens **map Managerben**tárolja. Összehasonlítás a **helyi szegmenses térképsel**.
+**Globális** szegmenses Térkép: a horizontális Felskálázási kulcsok és a hozzájuk tartozó szilánkok közötti **Térkép.** A globális szegmenses térképet a rendszer a szegmens **map Managerben** tárolja. Összehasonlítás a **helyi szegmenses térképsel**.
 
-Szegmenses **Térkép listázása**: egy szegmenses Térkép, amelyben a horizontális Felskálázási kulcsok külön vannak leképezve. Összehasonlítás a **tartományhoz**tartozó felosztási térképsel.   
+Szegmenses **Térkép listázása**: egy szegmenses Térkép, amelyben a horizontális Felskálázási kulcsok külön vannak leképezve. Összehasonlítás a **tartományhoz** tartozó felosztási térképsel.   
 
-**Helyi**szegmenses Térkép: egy szegmensen tárolva a helyi szegmens Térkép a szegmensen található shardletek leképezéseit tartalmazza.
+**Helyi** szegmenses Térkép: egy szegmensen tárolva a helyi szegmens Térkép a szegmensen található shardletek leképezéseit tartalmazza.
 
 **Több szegmenses lekérdezés**: a lekérdezések több szegmensre való kibocsátásának lehetősége; az eredmények készleteit a UNION összes szemantika (más néven "kipróbálható lekérdezés") használatával kapjuk vissza. Összehasonlítás az **Adatfüggő útválasztással**.
 
@@ -51,13 +51,13 @@ Itt láthatja **a több** -bérlős adatbázisok szétválasztását.
 
 **Hivatkozási táblázatok**: nem szétszórt, de a szegmensekben replikált táblák. A zip-kódok például egy hivatkozási táblában tárolhatók. 
 
-Szegmens **: a**Azure SQL Database egy adatbázisa, amely egy szilánkokra bontott adatkészletből tárolja az adatok adatait. 
+Szegmens **: a** Azure SQL Database egy adatbázisa, amely egy szilánkokra bontott adatkészletből tárolja az adatok adatait. 
 
-**Szilánk rugalmassága**: **horizontális skálázás** és **vertikális skálázás**is elvégezhető.
+**Szilánk rugalmassága**: **horizontális skálázás** és **vertikális skálázás** is elvégezhető.
 
 Többszintű **táblázatok**: horizontálisan tagolt táblázatok, azaz amelyek az adatok szétosztása a szegmensek között a horizontálisan használt értékek alapján történik. 
 
-Horizontális Felskálázási **kulcs**: egy oszlop értéke, amely meghatározza, hogy az adatszegmensek hogyan oszlanak el. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary**vagy **uniqueidentifier**. 
+Horizontális Felskálázási **kulcs**: egy oszlop értéke, amely meghatározza, hogy az adatszegmensek hogyan oszlanak el. Az érték típusa a következők egyike lehet: **int**, **bigint**, **varbinary** vagy **uniqueidentifier**. 
 
 Szegmens **készlet**: a szegmenses Térkép kezelőjében azonos szegmenses térképhez rendelt szegmensek gyűjteménye.  
 
@@ -78,7 +78,7 @@ Szegmenses **Térkép kezelője**: olyan felügyeleti objektum és adattár, ame
 
 **Shardletbe Move**: egyetlen shardletbe áthelyezése egy másik szegmensbe. 
 
-**Shard**Szegmens: horizontálisan particionálja az azonos módon strukturált adategységeket több adatbázis között egy vízszintű kulcs alapján.
+Szegmens: horizontálisan particionálja az azonos módon strukturált adategységeket több adatbázis között egy vízszintű kulcs alapján.
 
 **Felosztás**: több shardletek áthelyezése az egyik szegmensből egy másikba (jellemzően új) szegmensbe. A horizontális Felskálázási kulcsot a felhasználó a felosztott pontként kapja meg.
 

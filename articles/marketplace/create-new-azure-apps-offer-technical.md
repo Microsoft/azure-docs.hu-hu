@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: a8658242bca48ee490e7fd44582f46e7c9c78e5b
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370238"
 ---
 # <a name="how-to-add-technical-details-for-your-azure-application-offer"></a>Technikai részletek hozzáadása az Azure-alkalmazás ajánlatához
@@ -31,6 +31,6 @@ További információ ezekről a mezőkről: [Azure-alkalmazás ajánlatának me
 
 1. A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: terv áttekintése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csomagok létrehozása az Azure-alkalmazás ajánlatához](create-new-azure-apps-offer-plans.md)

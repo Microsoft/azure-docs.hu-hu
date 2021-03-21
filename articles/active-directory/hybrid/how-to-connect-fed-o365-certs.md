@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: effdd156858caf5717aac92433e8bc5f4f6147ad
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101686869"
 ---
 # <a name="renew-federation-certificates-for-microsoft-365-and-azure-active-directory"></a>Microsoft 365 és Azure Active Directory összevonási tanúsítványainak megújítása
@@ -106,9 +106,9 @@ A Get-MsolFederationProperty vagy a Get-AdfsCertificate kimenetében keresse meg
 
 | Autocertificaterollover beállítást | Az Azure AD-vel szinkronizált tanúsítványok | Az összevonási metaadatok nyilvánosan elérhetők | Érvényességi | Művelet |
 |:---:|:---:|:---:|:---:|:---:|
-| Igen |Igen |Igen |- |Nincs szükség művelet végrehajtására. Lásd: [jogkivonat-aláíró tanúsítvány automatikus megújítása](#autorenew). |
+| Igen |Igen |Yes |- |Nincs szükség művelet végrehajtására. Lásd: [jogkivonat-aláíró tanúsítvány automatikus megújítása](#autorenew). |
 | Igen |Nem |- |Kevesebb, mint 15 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
-| Nem |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
+| No |- |- |Kevesebb mint 30 nap |Azonnali megújítás. Lásd: [jogkivonat-aláíró tanúsítvány manuális megújítása](#manualrenew). |
 
 \[-] Nem számít
 

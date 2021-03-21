@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2dd04f404330a6c86e2df09da610e16ba9b721f3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895647"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
@@ -80,12 +80,12 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Ha már regisztrálta az alkalmazást, folytassa a következő lépéssel. Ha még nem regisztrálta az alkalmazást, adjon meg egy **nevet** , válassza ki a **támogatási fiók típusát** , majd válassza a **regisztráció** lehetőséget.  
+2. Ha már regisztrálta az alkalmazást, folytassa a következő lépéssel. Ha még nem regisztrálta az alkalmazást, adjon meg egy **nevet**, válassza ki a **támogatási fiók típusát**, majd válassza a **regisztráció** lehetőséget.  
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás regisztrációjának részletei](./media/how-to-manage-authentication/app-create.png)
 
-3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt** . A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
+3. Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután a **Alkalmazásregisztrációk** alatt válassza az **API-engedélyek**  >  **Hozzáadás engedélyt**. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)
@@ -114,7 +114,7 @@ Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozot
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Nyissa meg **Azure Maps-fiókját** . Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
+1. Nyissa meg **Azure Maps-fiókját**. Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -124,7 +124,7 @@ Az *Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)* a létrehozot
     > [!div class="mx-imgBorder"]
     > ![Képernyőfelvétel: a kiválasztott hozzáadással rendelkező roll-hozzárendelések megjelenítése.](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő** . A **hozzáférés hozzárendelése** területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával** . Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
+3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése** területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
 
     > [!div class="mx-imgBorder"]
     > ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

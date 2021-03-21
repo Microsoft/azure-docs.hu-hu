@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 9f53072b106bedb8e49ba7f3728f39137f848a58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Oktatóanyag: Azure Active Directory integráció a Workstars
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa v
 
     ![A képernyőfelvételen a beállítások gomb látható.](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-3. Lépjen **a bejelentkezési**  >  **Beállítások menüpontra** .
+3. Lépjen **a bejelentkezési**  >  **Beállítások menüpontra**.
 
     ![Workstars bejelentkezés](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa v
 
     c. Másolja a letöltött tanúsítványfájl tartalmát a Jegyzettömbben, majd illessze be a **x509-tanúsítvány** szövegmezőbe. 
 
-    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portalból másolt.
+    d. Az **SAML SSO URL** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portalból másolt.
     
     e. A **távoli kijelentkezési URL-cím** szövegmezőbe illessze be a **KIjelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt. 
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés Workstars való konfigurálásához hajtsa v
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -176,7 +176,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

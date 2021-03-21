@@ -4,10 +4,10 @@ description: Ez a cikk tájékoztatást nyújt az Azure Event Hubs-vel kapcsolat
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92329610"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Hitelesítési és engedélyezési problémák elhárítása – Azure Event Hubs
@@ -41,14 +41,14 @@ Ha [sas](authenticate-shared-access-signature.md)-t használ, kövesse az alább
 - Győződjön meg arról, hogy az Ön által használt SAS-kulcs helyes. Ha nem, használja a megfelelő SAS-kulcsot.
 - Győződjön meg arról, hogy a kulcs rendelkezik a megfelelő engedélyekkel (küldés, fogadás vagy kezelés). Ha nem, olyan kulcsot használjon, amely rendelkezik a szükséges engedélyekkel. 
 - Ellenőrizze, hogy a kulcs lejárt-e. Javasoljuk, hogy a lejárata előtt is újítsa meg a SAS-t. Ha az ügyfél és a Event Hubs szolgáltatási csomópontok között óra van elferdítve, előfordulhat, hogy a hitelesítési jogkivonat lejár, mielőtt az ügyfél felismeri. Az aktuális implementációs fiókok órája akár 5 percet is igénybe vehet, azaz a token 5 perccel a lejárata előtt megújítja az ügyfelet. Ezért ha az óra ferde értéke 5 percnél nagyobb, akkor az ügyfél megfigyelheti az időszakos hitelesítési hibákat.
-- Ha a **sas kezdési ideje** **most**értékre van állítva, akkor az első néhány perc időszakos meghibásodása miatt időnként eldöntheti, hogy az aktuális idő a különböző gépeken milyen eltéréseket mutat. Állítsa be a kezdési időpontot legalább 15 percre a múltban, vagy ne állítsa be egyáltalán. Ugyanez általában a lejárati időre is vonatkozik. 
+- Ha a **sas kezdési ideje** **most** értékre van állítva, akkor az első néhány perc időszakos meghibásodása miatt időnként eldöntheti, hogy az aktuális idő a különböző gépeken milyen eltéréseket mutat. Állítsa be a kezdési időpontot legalább 15 percre a múltban, vagy ne állítsa be egyáltalán. Ugyanez általában a lejárati időre is vonatkozik. 
 
 További információért tekintse át a következő cikkeket: 
 
 - [Hitelesítés közös hozzáférésű aláírások (SAS) használatával](authenticate-shared-access-signature.md). 
 - [A Event Hubs-erőforrásokhoz való hozzáférés engedélyezése közös hozzáférési aláírások használatával](authorize-access-shared-access-signature.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

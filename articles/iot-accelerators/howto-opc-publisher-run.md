@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92079003"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
@@ -375,7 +375,7 @@ Az OPC-közzétevő készen áll [Azure IoT Edge](../iot-edge/index.yml) modulk�
 Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helyezéséhez, lépjen a Azure Portal IoT Hub beállításaihoz, és végezze el a következő lépéseket:
 
 1. Nyissa meg **IoT Edge** és hozza létre vagy válassza ki IoT Edge eszközét.
-1. Válassza a **modulok beállítása**lehetőséget.
+1. Válassza a **modulok beállítása** lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget a **telepítési modulok** területen, majd **IoT Edge modult**.
 1. A **név** mezőbe írja be a **közzétevőt**.
 1. A **RENDSZERKÉP URI** mezőjébe írja be a `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
@@ -391,7 +391,7 @@ Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helye
     }
     ```
 
-    Ez a konfiguráció úgy konfigurálja a IoT Edget, hogy elindítson egy **Publisher** nevű tárolót az OPC közzétevő rendszerképének használatával. A tároló rendszerének állomásneve a **kiadó**értékre van állítva. Az OPC-közzétevőt a következő parancssori argumentummal kell meghívni: `--aa` . Ha ezt a lehetőséget választja, az OPC-közzétevő megbízik az OPC UA-kiszolgálók tanúsítványán, amelyhez csatlakozik. Bármely OPC-közzétevő parancssori kapcsolót használhat. Az egyetlen korlátozás az IoT Edge által támogatott **tároló-létrehozási beállítások** mérete.
+    Ez a konfiguráció úgy konfigurálja a IoT Edget, hogy elindítson egy **Publisher** nevű tárolót az OPC közzétevő rendszerképének használatával. A tároló rendszerének állomásneve a **kiadó** értékre van állítva. Az OPC-közzétevőt a következő parancssori argumentummal kell meghívni: `--aa` . Ha ezt a lehetőséget választja, az OPC-közzétevő megbízik az OPC UA-kiszolgálók tanúsítványán, amelyhez csatlakozik. Bármely OPC-közzétevő parancssori kapcsolót használhat. Az egyetlen korlátozás az IoT Edge által támogatott **tároló-létrehozási beállítások** mérete.
 
 1. Hagyja változatlanul a többi beállítást, és válassza a **Mentés** lehetőséget.
 1. Ha az OPC-közzétevő kimenetét helyileg szeretné feldolgozni egy másik IoT Edge modullal, térjen vissza a **modulok beállítása** lapra. Ezután nyissa **meg az útvonalak megadása** lapot, és adjon hozzá egy új útvonalat, amely a következő JSON-hoz hasonlít:
@@ -405,7 +405,7 @@ Ha az OPC-közzétevőt modulként szeretné hozzáadni a IoT Edge üzembe helye
     }
     ```
 
-1. A **modulok beállítása** lapon kattintson a **tovább**gombra, amíg el nem éri a konfiguráció utolsó lapját.
+1. A **modulok beállítása** lapon kattintson a **tovább** gombra, amíg el nem éri a konfiguráció utolsó lapját.
 1. Válassza a **Submit (Küldés** ) lehetőséget a konfiguráció IoT Edge való elküldéséhez.
 1. Amikor elindította IoT Edget a peremhálózati eszközén, és a Docker-tároló **közzétevője** fut, az OPC-közzétevő naplózási kimenetét az vagy a Logfile (naplófájl) használatával vagy a naplófájl ellenőrzésével tekintheti meg `docker logs -f publisher` . Az előző példában a naplófájl felül van `d:\iiotegde\publisher-publisher.log` . Használhatja a [IOT-Edge-OPC-Publisher-Diagnostics eszközt](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)is.
 

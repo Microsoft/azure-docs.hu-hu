@@ -8,10 +8,10 @@ ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
 ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96436385"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Az Azure-alkalmazások ajánlati felülvizsgálati visszajelzésének feldolgozása
@@ -55,6 +55,6 @@ A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált
 
    ![Első javítás és Megjegyzés válasza](./media/first-comment-reply.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](../create-new-azure-apps-offer.md).

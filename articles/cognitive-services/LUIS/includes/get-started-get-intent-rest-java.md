@@ -8,10 +8,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.openlocfilehash: 785d0afa666534c0b6dc0a8d93efbef4a6d1d9f5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95098335"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-predict-with-rest/Predict.java)
@@ -43,7 +43,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Cél|
+    |Tájékoztatás|Cél|
     |--|--|
     |`YOUR-APP-ID`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.
     |`YOUR-PREDICTION-KEY`|Az 32 karakteres előrejelzési kulcs. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.
@@ -227,7 +227,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
     }
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 

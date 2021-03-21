@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: duau
 ms.openlocfilehash: 1835377f4690097c8390957bf7d897242ba7aace
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92208056"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a prioritási forgalom útválasztási módszerének konfigurálása Traffic Manager
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure Traffic Manager használatával átirányítani a felhasználói forgalmat adott végpontokra a prioritásos útválasztási módszer használatával. Ebben az útválasztási módszerben meg kell határozni az egyes végpontok sorrendjét, amelyek bekerülnek Traffic Manager profil konfigurációba. A felhasználóktól érkező forgalom a listázott sorrendben lesz átirányítva a végpontra. Ez az útválasztási módszer akkor hasznos, ha a szolgáltatás feladatátvételét szeretné konfigurálni. Az elsődleges végpont a (z) "1" prioritási számot kapja, és minden bejövő kérelmet kiszolgál. Míg az alacsonyabb prioritású végpontok biztonsági mentéseket fognak működni.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > - Hozzon létre egy Traffic Manager-profilt prioritás-útválasztással.
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="to-configure-the-priority-traffic-routing-method"></a>A prioritási forgalom útválasztási módszerének konfigurálása
 1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza a **+ erőforrás létrehozása** lehetőséget a bal oldalon. Keressen rá **Traffic Manager profilra** , és válassza a **Létrehozás**lehetőséget.
+1. Válassza a **+ erőforrás létrehozása** lehetőséget a bal oldalon. Keressen rá **Traffic Manager profilra** , és válassza a **Létrehozás** lehetőséget.
 
     :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-priority-profile.png" alt-text="Traffic Manager prioritási profil létrehozása":::
 
@@ -53,17 +53,17 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Válassza a **Létrehozás** lehetőséget a Traffic Manager profil telepítéséhez.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/create-traffic-manager-profile-priority.png" alt-text="Traffic Manager profil prioritásának létrehozása":::
 
 ## <a name="add-endpoints"></a>Végpontok hozzáadása
 
 1. Válassza ki a Traffic Manager profilt a listából.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-list.png" alt-text="Traffic Manager profilok listája":::
 
 1. Válassza a **végpontok** lehetőséget a *Beállítások* területen, majd válassza a **+ Hozzáadás** lehetőséget új végpont hozzáadásához.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-add-endpoints.png" alt-text="Végpontok hozzáadása Traffic Manager":::
 
 1. Válassza ki vagy adja meg a következő beállításokat: 
 
@@ -78,11 +78,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. A végpont hozzáadásához válassza a **Hozzáadás** lehetőséget. További végpontok hozzáadásához ismételje meg a 2. és a 3. lépést. Ne felejtse el beállítani a megfelelő prioritási számot.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/add-endpoint.png" alt-text="1. prioritású végpont hozzáadása":::
 
 1. A **végpontok** lapon tekintse át a végpontok prioritási sorrendjét. Ha a **prioritási** forgalom útválasztási módszerét választja, a kiválasztott végpontok sorrendje számít. Ellenőrizze a végpontok prioritási sorrendjét.  Az elsődleges végpont felül van. Ellenőrizze a megjelenő sorrendet. Az összes kérelem át lesz irányítva az első végpontra, és ha Traffic Manager észleli, hogy sérült, akkor a forgalom automatikusan átadja a következő végpontot. 
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/endpoints-list.png" alt-text="Prioritási végpontok listája":::
 
 1. A végpont prioritási sorrendjének módosításához válassza ki a végpontot, módosítsa a prioritás értékét, majd válassza a **Mentés** lehetőséget a végpont beállításainak mentéséhez.
 
@@ -90,19 +90,19 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1.  A portálon keresse meg az előző szakaszban létrehozott **Traffic Manager profil** nevét, és válassza a Traffic Manager-profil lehetőséget a megjelenített eredmények között.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/search-traffic-manager-profile.png" alt-text="Keresés Traffic Manager profilban":::
 
 1.  Az **Traffic Manager profil** áttekintése lap az újonnan létrehozott Traffic Manager-profil DNS-nevét jeleníti meg. Ezt bármely ügyfél használhatja (például a böngésző használatával történő navigálással), hogy a jobb oldali végpontra irányítsa át az útválasztási típus alapján. Ebben az esetben a rendszer az első végponthoz irányítja át a kérelmeket, és ha Traffic Manager észleli, hogy sérült, a forgalom automatikusan átadja a következő végpontot.
 
-    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+    :::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-profile-dns-name.png" alt-text="Traffic Manager DNS-neve":::
 
 1. Ha a Traffic Manager-profilja működik, szerkessze a DNS-rekordot a mérvadó DNS-kiszolgálón, hogy a vállalat tartománynevét a Traffic Manager tartománynevére mutassa.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a Traffic Manager profilra, keresse meg a profilt, és válassza a **Profil törlése**lehetőséget.
+Ha már nincs szüksége a Traffic Manager profilra, keresse meg a profilt, és válassza a **Profil törlése** lehetőséget.
 
-:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Traffic Manager prioritási profil létrehozása":::
+:::image type="content" source="./media/traffic-manager-priority-routing-method/traffic-manager-delete-priority-profile.png" alt-text="Traffic Manager prioritási profil törlése":::
 
 ## <a name="next-steps"></a>Következő lépések
 

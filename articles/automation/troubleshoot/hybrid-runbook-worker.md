@@ -8,17 +8,17 @@ ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 15a18cbfc3a80bbfea0b92e5b616104dc0f593af
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100580995"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
 Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azure Automation fiókjával a feldolgozó regisztrálásához, a Runbook-feladatok fogadásához és a jelentés állapotához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke. Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.openlocfilehash: c5f536295bce07e70606f1ff286b08f8465d59f9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048947"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
@@ -270,7 +270,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
 
 ## <a name="chart-your-metrics"></a>A metrikák diagramja 
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 
 1. A bal oldali menüben válassza a **figyelő** elemet. 
 
