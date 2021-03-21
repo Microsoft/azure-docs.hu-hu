@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
 ms.openlocfilehash: 94034edfa1a5c6ffccd022b4cbf7bae42cc0bae3
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102212467"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés egy kulcstartóhoz
@@ -185,10 +185,10 @@ A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzá
 | Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei – tár-hozzáférési szabályzatok | Adatsík engedélyei – Azure RBAC  |
 | --- | --- | --- | --- |
 | Biztonsági csapat | [Key Vault közreműködő](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Tanúsítványok: minden művelet <br> Kulcsok: minden művelet <br> Titkok: minden művelet | [Key Vault rendszergazda](../../role-based-access-control/built-in-roles.md#key-vault-administrator) |
-| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincs | Nincs |
-| Ellenőrök | Nincs | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
-| Azure Storage-tárfiók neve | Nincs | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
-| Alkalmazás | Nincs | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó](../../role-based-access-control/built-in-roles.md#key-vault-reader), [Key Vault titkos felhasználó](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) |
+| Fejlesztők és &nbsp; operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek | Nincsenek |
+| Ellenőrök | Nincsenek | Tanúsítványok: lista <br> Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). | [Key Vault olvasó](../../role-based-access-control/built-in-roles.md#key-vault-reader) |
+| Azure Storage-tárfiók neve | Nincsenek | Kulcsok: beolvasás, Listázás, wrapKey, unwrapKey <br> | [Titkosítási szolgáltatás titkosítása Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user) |
+| Alkalmazás | Nincsenek | Titkok: lekérés, Listázás <br> Tanúsítványok: lekérés, Listázás | [Key Vault olvasó](../../role-based-access-control/built-in-roles.md#key-vault-reader), [Key Vault titkos felhasználó](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user) |
 
 A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek telepíteniük kell a hozzáférést. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
@@ -197,7 +197,7 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 > [!NOTE]
 > Ez a példa azt mutatja be, hogy a Key Vault hozzáférés hogyan legyen zárolva az éles környezetben. A fejlesztőknek saját előfizetéssel vagy erőforráscsoporthoz kell rendelkezniük, amely teljes körű engedélyekkel rendelkezik a tárolók, virtuális gépek és az alkalmazás fejlesztéséhez szükséges Storage-fiók kezeléséhez.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 - [Információk az Azure Key Vaultról](overview.md)
 - [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a7735de9763f3924cd6baae6af1258f6448c874e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690923"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
@@ -96,7 +96,7 @@ A [közvetlen tárolóhelyek](/windows-server/storage/storage-spaces/storage-spa
 - Támogatja az Azure Blob cache-t, így az olvasások helyileg is kiszolgálható a gyorsítótárból. (A frissítések egyszerre lesznek replikálva mindkét csomópontra.) 
 - Támogatja a FileStream. 
 
-**Korlátozások:**
+**Korlátozások**
 - Csak a Windows Server 2016-es és újabb verzióiban érhető el. 
 - A rendelkezésre állási zónák nem támogatottak.
 - Ugyanazt a lemezterületet igényli mindkét virtuális géphez csatlakoztatva. 
@@ -116,7 +116,7 @@ A [prémium szintű fájlmegosztás](../../../storage/files/storage-how-to-creat
 - Csak megosztott tárolási megoldás a virtuális gépekhez több rendelkezésre állási zónában elosztva. 
 - Teljes körűen felügyelt fájlrendszer egyetlen számjegyből álló késéssel és a betört I/O-teljesítménnyel. 
 
-**Korlátozások:**
+**Korlátozások**
 - Csak a Windows Server 2012-es és újabb verzióiban érhető el. 
 - A FileStream nem támogatott. 
 
@@ -143,7 +143,7 @@ Például a NetApp Private Storage (NPS) egy iSCSI-célt tesz elérhetővé az E
 
 A Microsoft-partnerek megosztott tárolási és adatreplikációs megoldásaiért forduljon a szállítóhoz a feladatátvételi adatokhoz való hozzáféréssel kapcsolatos esetleges problémákhoz.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Az Azure-SQL Serverokkal rendelkező feladatátvevő fürt példányai Virtual Machines egy [elosztott hálózati nevet (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md) vagy egy [virtuális hálózati nevet (VNN)](failover-cluster-instance-vnn-azure-load-balancer-configure.md) használ a Azure Load Balancer használatával, hogy a forgalmat az SQL Server példányra irányítsa, függetlenül attól, hogy melyik csomópont tulajdonosa a fürtözött erőforrás. Bizonyos szolgáltatások és a DNN SQL Server-vel való használata esetén további szempontokat is figyelembe kell venni. További információért lásd: [DNN együttműködés a SQL Server](failover-cluster-instance-dnn-interoperability.md) -os-vel. 
 

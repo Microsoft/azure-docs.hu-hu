@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c19f6f8c59ac38bf46999372497205e0c33ebac4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175107"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579739"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Munkamenet viselkedésének konfigurálása az Azure Active Directory B2C-ben
 
@@ -249,7 +249,7 @@ Kijelentkezési kérelem esetén Azure AD B2C:
 ::: zone-end
 ::: zone pivot="b2c-custom-policy"
 3. Kísérlet az összevont identitás-szolgáltatókból való kijelentkezésre:
-   - OpenId Connect – ha az identitás-szolgáltató jól ismert konfigurációs végpontja megad egy `end_session_endpoint` helyet.
+   - OpenId Connect – ha az identitás-szolgáltató jól ismert konfigurációs végpontja megad egy `end_session_endpoint` helyet. A kijelentkezési kérelem nem adja át a `id_token_hint` paramétert. Ha az összevont identitás szolgáltatója ehhez a paraméterhez szükséges, a kijelentkezési kérelem sikertelen lesz.
    - OAuth2 – ha az [Identity Provider metaadatai](oauth2-technical-profile.md#metadata) tartalmazzák a `end_session_endpoint` helyet.
    - SAML – ha az [Identity Provider metaadatai](identity-provider-generic-saml.md) tartalmazzák a `SingleLogoutService` helyet.
 4. Opcionálisan kijelentkezhet más alkalmazásokból is. További információ: az [egyszeri kijelentkezési](#single-sign-out) szakasz.

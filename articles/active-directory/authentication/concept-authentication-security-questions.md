@@ -11,10 +11,10 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7229dabd690e5932fbd297992e09782eda85a002
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744142"
 ---
 # <a name="authentication-methods-in-azure-active-directory---security-questions"></a>Hitelesítési módszerek a Azure Active Directory – biztonsági kérdések
@@ -87,7 +87,7 @@ Az alapértelmezett és az egyéni biztonsági kérdések esetében a következ�
 * Bármely karakterkészlet használható a kérdések és válaszok meghatározására, beleértve a Unicode karaktereket is.
 * A megadott kérdések számának nagyobbnak vagy egyenlőnek kell lennie a regisztráláshoz szükséges kérdések számával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR) című oktatóanyagot][tutorial-sspr].
 

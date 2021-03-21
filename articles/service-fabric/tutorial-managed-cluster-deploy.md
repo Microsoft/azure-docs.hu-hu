@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: fd54e6f8c5272c3a8fe0e0162ca2e57968b24642
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791711"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: Service Fabric felügyelt fürt üzembe helyezése (előzetes verzió)
@@ -110,7 +110,7 @@ A parancs végrehajtása több percet is igénybe vehet.
 
 Miután az üzembe helyezés befejeződött, keresse meg a Service Fabric Explorer értéket a portál Service Fabric felügyelt fürt erőforrásának áttekintés lapján. Ha a rendszer rákérdez a tanúsítványra, használja azt a tanúsítványt, amelyhez az ügyfél ujjlenyomatát adták a PowerShell-parancsban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a lépésben létrehozta és üzembe helyezte az első Service Fabric felügyelt fürtöt. A fürtök méretezésével kapcsolatos további tudnivalókért tekintse meg a következőt:
 

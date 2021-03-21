@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745077"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Egyéni tároló futtatása az Azure-ban
@@ -34,7 +34,7 @@ Az oktatóanyag elvégzéséhez:
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">A Docker átváltása Windows-tárolók futtatására</a>.
 - <a href="https://www.visualstudio.com/downloads/" target="_blank">Telepítse a Visual Studio 2019</a> -et a **ASP.net, valamint a webes fejlesztési** és az **Azure-fejlesztési** számítási feladatokkal. Ha már telepítette a Visual Studio 2019-et:
 
-    - A **Help**  >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+    - A   >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
     - Adja hozzá a számítási feladatokat a Visual Studióban **az eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése lehetőség** kiválasztásával.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-webapp létrehozása
@@ -51,7 +51,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Bármilyen ASP.NET-webappot üzembe helyezhet az Azure-ban. Ebben a rövid útmutatóban válassza az **MVC** sablont.
 
-1. Válassza a **Docker-támogatás** lehetőséget, és győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés**. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Docker-támogatás** lehetőséget, és győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés**. Válassza a **Létrehozás** lehetőséget.
 
    ![ASP.NET-Webalkalmazás létrehozása](./media/quickstart-custom-container/select-mvc-template-for-container.png)
 
@@ -169,7 +169,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ![Frissített webalkalmazás az Azure-ban](./media/quickstart-custom-container/azure-web-app-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Áttelepítés az Azure-ban található Windows-tárolókba](tutorial-custom-container.md)
@@ -186,7 +186,7 @@ A Linuxon futó App Service a Linuxon előre definiált alkalmazási kötegeket 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [Azure-fiók](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
+* [Azure-fiók](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-docker-extension&mktingSource=vscode-tutorial-docker-extension)
 * [Docker](https://www.docker.com/community-edition)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * A [vs Code Azure app Service kiterjesztése](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice). Ezzel a bővítménnyel linuxos Web Apps hozhat létre, kezelhet és telepíthet az Azure platform szolgáltatásként (Péter).
@@ -242,7 +242,7 @@ A rendszer az üzembe helyezés során megnyílik a **kimeneti** panel, hogy jel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=quickstart-docker&step=deploy-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
 

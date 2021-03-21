@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95998243"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
@@ -57,10 +57,10 @@ A következőknek kell telepítve lennie:
 A Visual Studióban Service Fabric Project-sablonok tartalmaznak mintakód-kódot. Az alábbi lépések bemutatják, hogyan jelentheti be a szolgáltatás kódjában az egyéni állapotadatok jelentéseit. Ezek a jelentések automatikusan megjelennek a szabványos eszközök az állapot-figyeléshez, amelyeket Service Fabric biztosít, például Service Fabric Explorer, Azure Portal Health View és PowerShell.
 
 1. Nyissa meg újra a korábban a Visual Studióban létrehozott alkalmazást, vagy hozzon létre egy új alkalmazást az **állapot-nyilvántartó szolgáltatás** Visual Studio-sablonjának használatával.
-1. Nyissa meg a Stateful1.cs fájlt, és keresse meg a `myDictionary.TryGetValueAsync` hívást a `RunAsync` metódusban. Láthatja, hogy ez a metódus egy olyan értéket ad vissza `result` , amely a számláló aktuális értékét tárolja, mert az alkalmazásban lévő kulcs logikája egy futó szám megtartása. Ha az alkalmazás valódi alkalmazás volt, és ha az eredmény hiánya hibát jelzett, akkor meg kell jelenítenie az eseményt.
+1. Nyissa meg a Stateful1. cs fájlt, és keresse meg a `myDictionary.TryGetValueAsync` hívást a `RunAsync` metódusban. Láthatja, hogy ez a metódus egy olyan értéket ad vissza `result` , amely a számláló aktuális értékét tárolja, mert az alkalmazásban lévő kulcs logikája egy futó szám megtartása. Ha az alkalmazás valódi alkalmazás volt, és ha az eredmény hiánya hibát jelzett, akkor meg kell jelenítenie az eseményt.
 1. Ha az eredmény hiánya hibát jelez, adja meg a következő lépéseket az állapot jelentéséhez.
    
-    a. Adja hozzá a `System.Fabric.Health` névteret a Stateful1.cs fájlhoz.
+    a. Adja hozzá a `System.Fabric.Health` névteret a Stateful1. cs fájlhoz.
    
     ```csharp
     using System.Fabric.Health;
@@ -140,7 +140,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric állapotának részletes bemutatása](service-fabric-health-introduction.md)
 * [REST API a jelentési szolgáltatás állapotához](/rest/api/servicefabric/report-the-health-of-a-service)
 * [REST API a jelentéskészítési alkalmazás állapota](/rest/api/servicefabric/report-the-health-of-an-application)

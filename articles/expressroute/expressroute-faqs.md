@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: duau
-ms.openlocfilehash: 417a6a55f0114ec35554e598b456f4fb67eb1c1b
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: da293f15ba070fc9a00ad37defd6a76175ded2f2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103574458"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587279"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -204,7 +204,7 @@ Ha a szolgáltató mindkét helyen ExpressRoute kínál, akkor használhatja a s
 
 Igen. Több ExpressRoute-áramkört is megadhat ugyanahhoz vagy más szolgáltatóhoz. Ha a metrón több ExpressRoute-társítási hely található, és az áramkör különböző helyen jön létre, akkor ugyanahhoz a virtuális hálózathoz kapcsolhatja őket. Ha az áramkör ugyanazon a helyen jön létre, akkor akár négy áramkört is csatolhat ugyanahhoz a virtuális hálózathoz.
 
-### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>A virtuális hálózatok összekapcsolása egy ExpressRoute-áramkörrel Hogyan
+### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hogyan a virtuális hálózatok összekapcsolása egy ExpressRoute-áramkörrel?
 
 Az alapszintű lépések a következők:
 
@@ -298,6 +298,15 @@ Emellett a kapcsolat szolgáltatójának kell követnie, hogy a sávszélesség-
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Hogyan módosítja egy ExpressRoute áramkör sávszélességét?
 
 A ExpressRoute áramkör sávszélességét az REST API vagy a PowerShell-parancsmag használatával frissítheti.
+
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>Értesítést kaptam a ExpressRoute áramkör karbantartásáról. Mi a karbantartás technikai hatása?
+
+Ha [aktív-aktív módban](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)működteti az áramkörét, a karbantartás során minimálisra kell gyakorolnia a működést. Az áramkör elsődleges és másodlagos kapcsolatain külön karbantartást végzünk. Az ütemezett karbantartás általában munkaidőn kívül történik a társítási hely időzónájában, és nem választhat karbantartási időt.
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Értesítést kaptam a ExpressRoute-átjárón található szoftverfrissítés vagy karbantartásról. Mi a karbantartás technikai hatása?
+
+Az átjárón való szoftverfrissítés vagy karbantartás során minimálisan befolyásolhatja a működést. A ExpressRoute átjáró több példányból áll, és a frissítések során a példányok egy időben kerülnek offline állapotba. Habár ez azt okozhatja, hogy az átjáró átmenetileg támogatja a virtuális hálózat alacsonyabb hálózati átviteli sebességét, maga az átjáró nem fog semmilyen állásidőt tapasztalni.
+
 
 ## <a name="expressroute-premium"></a>Prémium szintű ExpressRoute
 

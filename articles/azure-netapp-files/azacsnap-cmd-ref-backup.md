@@ -15,10 +15,10 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730938"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>Biztonsági mentés az Azure Application konzisztens Snapshot Tool eszközzel (előzetes verzió)
@@ -145,7 +145,7 @@ Ebben a példában a *naplófájl* neve `azacsnap-backup-bootVol.log` .
 - HANA nagyméretű példány típusa: két érvényes érték van a `TYPEI` `TYPEII` Hana nagyméretű példány-egységgel, vagy attól függ.
 - Tekintse meg az elérhető SKU-ket [a HANA nagy példányok](../virtual-machines/workloads/sap/hana-available-skus.md) számára az elérhető SKU-azonosítók ellenőrzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Pillanatkép részleteinek beolvasása](azacsnap-cmd-ref-details.md)
 - [Pillanatképek törlése](azacsnap-cmd-ref-delete.md)

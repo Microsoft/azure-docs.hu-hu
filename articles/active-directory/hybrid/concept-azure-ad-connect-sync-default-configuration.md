@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996627"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
@@ -148,7 +148,7 @@ Mivel ez a szabály egy beépített szabály, a szabály megnyitásakor figyelme
 
 A szinkronizálási szabály négy konfigurációs szakaszt tartalmaz: Leírás, hatókör-szűrő, csatlakozási szabályok és átalakítások.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 Az első szakasz olyan alapvető információkat tartalmaz, mint például a név és a leírás.
 
 ![Leírás lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -220,7 +220,7 @@ A szinkronizálási szabályok elsőbbségi sorrendjét a telepítővarázsló c
 ### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal, hogy a konfiguráció hogyan működik a különböző szinkronizálási szabályokkal. Ha megtekint egy felhasználót és a metaverse-hoz hozzájáruló attribútumokat, a szabályok a következő sorrendben lesznek alkalmazva:
 
-| Név | Megjegyzés |
+| Name | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
 | A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és Microsoft 365ba való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |
@@ -229,7 +229,7 @@ Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal,
 | A from AD – felhasználói Exchange |Csak akkor létezik, ha az Exchange észlelve lett. Az összes infrastruktúra-Exchange-attribútumot átfolyik. |
 | A from AD – felhasználó Lync |Csak akkor létezik, ha a Lync észlelve lett. Az összes infrastruktúra Lync-attribútumot átfolyik. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 * Továbbra is olvashatja, hogyan működik a beépített konfiguráció a [felhasználók és a névjegyek megismeréséhez](concept-azure-ad-connect-sync-user-and-contacts.md)

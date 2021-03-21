@@ -11,10 +11,10 @@ ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
 ms.openlocfilehash: 0eabb48aabcb50557b342385068807eb67a9b165
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98797849"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési Áttekintés: az Azure-beli virtuális gépeken SQL Server SQL Server
@@ -119,7 +119,7 @@ További szempontokat is figyelembe kell venni a SQL Server üzleti intelligenci
 
 Ilyen szolgáltatások többek között a következők:
 
-- [**Az SQL Server Integration Servicest (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
+- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
 - [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
 - [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
 
@@ -131,7 +131,7 @@ A SQL Server adatbázisok Azure-beli virtuális gépeken való SQL Serverre val�
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Leírás  |
+|Objektum  |Description  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[Perfmon-adatgyűjtés automatizálása a Logman használatával](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Egy olyan eszköz, amely összegyűjti az adatokat, hogy megismerje az áttelepítési cél javaslatában támogatott alapkonfigurációk teljesítményét. Ez az eszköz a logman.exe használatával hozza létre a távoli SQL Serveron beállított teljesítményszámlálók létrehozására, indítására, leállítására és törlésére szolgáló parancsot.|
@@ -142,7 +142,7 @@ További segítségért tekintse meg az alábbi, a valós migrációs projektekh
 
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Server-adatbázisok Azure-beli virtuális gépeken SQL Server való áttelepítésének megkezdéséhez tekintse meg az [egyes adatbázis-áttelepítési útmutatót](sql-server-to-sql-on-azure-vm-individual-databases-guide.md). 
 

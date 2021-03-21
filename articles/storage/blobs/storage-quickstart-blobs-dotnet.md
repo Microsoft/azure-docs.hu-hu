@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bb26a865ab8b8beba99fcba51e2d05e166b1e84b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102095357"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage Client Library V12 a .NET-hez
@@ -50,7 +50,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán az Azure Bl
 
 Hozzon létre egy *BlobQuickstartV12* nevű .net Core-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -80,7 +80,7 @@ dotnet add package Azure.Storage.Blobs
 
 A projekt könyvtárából:
 
-1. Nyissa meg a *program.cs* fájlt a szerkesztőben.
+1. Nyissa meg a *program. cs* fájlt a szerkesztőben.
 1. Távolítsa el az `Console.WriteLine("Hello World!");` utasítást.
 1. `using`Irányelvek hozzáadása.
 1. Frissítse a `Main` metódus deklarációját az aszinkron támogatásához.

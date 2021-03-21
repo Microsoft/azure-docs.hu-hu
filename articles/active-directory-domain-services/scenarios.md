@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: justinha
 ms.openlocfilehash: d33698ed2f9ac53aae3c836acd54f19a4b72ceef
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619028"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gyakori használati esetek és forgatókönyvek Azure Active Directory Domain Services
@@ -157,7 +157,7 @@ Beállíthat egy olyan Azure HDInsight-fürtöt, amely egy felügyelt tartomány
 
 További információ erről az üzembe helyezési forgatókönyvről: [tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása][hdinsight]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][tutorial-create-instance].
 

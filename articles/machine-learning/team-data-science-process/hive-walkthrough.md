@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96002221"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
@@ -117,23 +117,23 @@ Itt azt ismertetjük, hogyan lehet a AzCopy használatával átvinni az adatokb�
 
 A következő AzCopy-parancsokban cserélje le a következő paramétereket a Hadoop-fürt létrehozásakor megadott tényleges értékekre, és adja meg az adatfájlok kicsomagolását.
 
-* ***\<path_to_data_folder>** _ Az a könyvtár (az elérési úttal együtt) a számítógépen, amely a kibontott adatfájlokat tartalmazza.  
-_ * **\<storage account name of Hadoop cluster>** _ A HDInsight-fürthöz társított Storage-fiók.
-_ * **\<default container of Hadoop cluster>** _ A fürt által használt alapértelmezett tároló. Az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
-_ * **\<storage account key>** _ A fürt által használt Storage-fiók kulcsa.
+* ***\<path_to_data_folder>*** A kibontott adatfájlokat tartalmazó könyvtár (az elérési úttal együtt) a gépen.  
+* ***\<storage account name of Hadoop cluster>*** A HDInsight-fürthöz társított Storage-fiók.
+* ***\<default container of Hadoop cluster>*** A fürt által használt alapértelmezett tároló. Az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
+* ***\<storage account key>*** A fürt által használt Storage-fiók kulcsa.
 
 A parancssorból vagy egy Windows PowerShell-ablakból futtassa a következő két AzCopy parancsot.
 
-Ezzel a paranccsal feltöltheti az utazási adatok a _*_nyctaxitripraw_*_ könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
+Ezzel a paranccsal feltöltheti az utazási adatok a ***nyctaxitripraw*** könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
 ```
 
-Ezzel a paranccsal feltöltheti a díjszabási adatok a ***nyctaxifareraw** _ könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
+Ezzel a paranccsal feltöltheti a díjszabási adatok a ***nyctaxifareraw*** könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
 
 ```console
-"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
 ```
 
 Az adatmennyiségnek most a blob Storage-ban kell lennie, és készen kell állnia a HDInsight-fürtön belüli felhasználásra.
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-Ez a két parancs letölti az útmutatóban szükséges összes ". HQL" fájlt a helyi könyvtárba ***C:\temp&#92;** _ a fő csomópontban.
+Ez a két parancs letölti az ebben a bemutatóban szükséges összes ". HQL" fájlt a C:\Temp helyi könyvtárának ***&#92;*** .
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Struktúra-adatbázis és-táblázatok létrehozása hónap szerint particionálva
 > [!NOTE]
@@ -182,7 +182,7 @@ A kaptár-könyvtár parancssorában futtassa a következő parancsot a kaptár-
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-Itt látható a _ *C:\Temp\sample \_ struktúra \_ create \_ db \_ és \_ Tables. HQL** fájl tartalma, amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint a **táblákat és a** **viteldíjat**.
+Itt látható a **C:\Temp\sample \_ struktúra \_ létrehozása \_ db \_ és \_ Tables. HQL** fájl, amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint **a táblákat** és a **viteldíjat**.
 
 ```hiveql
 create database if not exists nyctaxidb;

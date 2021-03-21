@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 07d108306fdca9bfe8f793b61660550e43151d71
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017185"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>StorSimple-eszköz inaktiválása és törlése
@@ -116,7 +116,7 @@ Az Inaktiválás a következő műveleteket eredményezi:
 
 A felhőalapú berendezés inaktiválása után törölheti az eszközök listájából. Válassza ki a deaktivált eszközt, kattintson a jobb gombbal, majd kattintson a **Törlés** parancsra. A StorSimple értesítést küld az eszköz törléséről és az eszközök listájának frissítéséről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A deaktivált eszköz gyári beállításokra történő visszaállításához lépjen [az eszköz visszaállítása a gyári alapértelmezésekre](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)elemre.
 * Technikai segítségért [forduljon Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).

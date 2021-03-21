@@ -8,10 +8,10 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004194"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>A VMware virtuális gépek feladatátvétele a helyszíni helyre
@@ -60,7 +60,7 @@ A feladat-visszavétel véglegesítése után a rendszer törli az Azure-beli vi
 > [!NOTE]
 > A helyszíni virtuális gép elindítása után akár 15 percet is igénybe vehet, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót. Ebben az időszakban az ismételt védelem meghiúsul, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, és állítsa be újra a védelemmel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az újravédelemi feladatok befejeződése után a helyszíni virtuális gép replikálódik az Azure-ba. Igény szerint [egy másik feladatátvételt is futtathat](site-recovery-failover.md) az Azure-ban.
 

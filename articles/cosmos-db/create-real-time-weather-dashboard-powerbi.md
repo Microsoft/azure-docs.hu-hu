@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101657536"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Valós idejű irányítópult létrehozása Azure Cosmos DB és Power BI használatával
@@ -25,7 +25,7 @@ Ez a cikk a Power BI élő időjárási irányítópult létrehozásához szüks
 A jelentéskészítési irányítópultok több módon is beállíthatók a Azure Cosmos DBban tárolt adatszolgáltatásokhoz. Az elavult követelményektől és az adatmérettől függően a következő táblázat ismerteti az egyes forgatókönyvek jelentéskészítési beállításait:
 
 
-|Eset |Telepítés |
+|Eset |Beállítás |
 |---------|---------|
 |1. ad-hoc jelentések létrehozása (frissítés nélkül)    |  [Power BI Azure Cosmos DB-összekötő importálási móddal](powerbi-visualize.md)       |
 |2. ad hoc jelentések létrehozása rendszeres frissítéssel   |  [Power BI Azure Cosmos DB-összekötő importálási móddal (ütemezett rendszeres frissítés)](powerbi-visualize.md)       |

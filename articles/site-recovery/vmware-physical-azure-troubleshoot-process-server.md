@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95999186"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
@@ -51,7 +51,7 @@ A Process Server számos rendszerállapot-riasztást generál. Ezeket a riasztá
 
 **Riasztástípus** | **Hiba** | **Hibaelhárítás**
 --- | --- | --- 
-![Kifogástalan][green] | Nincs  | A Process Server csatlakoztatva van és kifogástalan állapotú.
+![Kifogástalan][green] | Nincsenek  | A Process Server csatlakoztatva van és kifogástalan állapotú.
 ![Figyelmeztetés][yellow] | A megadott szolgáltatások nem futnak. | 1. Győződjön meg arról, hogy a szolgáltatások futnak.<br/> 2. Ha a szolgáltatások a várt módon futnak, kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Figyelmeztetés][yellow]  | A CPU-kihasználtság > 80%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).
 ![Kritikus][red] |  A CPU-kihasználtság > 95%-ot az elmúlt 15 percben. | 1. ne adjon hozzá új gépeket.<br/>2. Győződjön meg arról, hogy a folyamat-kiszolgálót használó virtuális gépek száma a [meghatározott határértékekhez](site-recovery-plan-capacity-vmware.md#capacity-considerations)igazodik, és vegye fontolóra egy [további folyamat-kiszolgáló](vmware-azure-set-up-process-server-scale.md)beállítását.<br/>3. kövesse az alábbi utasításokat a [kapcsolódási és replikálási problémák elhárításához](#check-connectivity-and-replication).<br/> 4. Ha a probléma továbbra is fennáll, futtassa a [Deployment Planner](./site-recovery-deployment-planner.md) a VMware/fizikai kiszolgáló replikálásához.
@@ -71,7 +71,7 @@ A folyamat-kiszolgálón futó szolgáltatásokat a következő táblázat fogla
 
 A Microsoft Azure Recovery Services ügynök (obengine) kivételével az összes szolgáltatás esetében győződjön meg arról, hogy a StartType **automatikus** vagy **automatikus (Késleltetett indítás)** értékre van beállítva.
  
-**Környezet** | **Futó szolgáltatások**
+**Üzembe helyezés** | **Futó szolgáltatások**
 --- | ---
 **Kiszolgáló feldolgozása a konfigurációs kiszolgálón** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc World Wide Web közzétételi szolgáltatás (W3SVC); MySQL Microsoft Azure Site Recovery szolgáltatás (DRA)
 **Önálló kiszolgálóként futtató kiszolgáló feldolgozása** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc.
@@ -244,7 +244,7 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 

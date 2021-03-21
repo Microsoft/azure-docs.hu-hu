@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94835390"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>A Kiemelt jogosultságú hozzáférési csoport beállításainak konfigurálása (előzetes verzió) a Privileged Identity Management

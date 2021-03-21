@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/03/2021
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 12ce8beab082674cd7672713325d4b3f4322aeae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526585"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587304"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,19 +28,19 @@ GetCurrentDateTime ()
 
 ## <a name="return-types"></a>Visszatérési típusok
   
-  Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a formátumban, `YYYY-MM-DDThh:mm:ss.fffffffZ` ahol:
+Az aktuális UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a formátumban, `YYYY-MM-DDThh:mm:ss.fffffffZ` ahol:
   
-  |Formátum|Leírás|
-  |-|-|
-  |ÉÉÉÉ|négyjegyű év|
-  |MM|kétjegyű hónap (01 = Január stb.)|
-  |DD|hónap kétjegyű napja (01 – 31)|
-  |T|az időelemek kezdetének jelölője|
-  |óó|kétjegyű óra (00 – 23)|
-  |hh|kétjegyű perc (00 – 59)|
-  |mm|kétszámjegyű másodperc (00 – 59)|
-  |.fffffff|hét számjegyű tört másodperc|
-  |Z|UTC (egyezményes világidő) jelölő||
+|Formátum|Leírás|
+|-|-|
+|ÉÉÉÉ|négyjegyű év|
+|MM|kétjegyű hónap (01 = Január stb.)|
+|DD|hónap kétjegyű napja (01 – 31)|
+|T|az időelemek kezdetének jelölője|
+|óó|kétjegyű óra (00 – 23)|
+|hh|kétjegyű perc (00 – 59)|
+|mm|kétszámjegyű másodperc (00 – 59)|
+|.fffffff|hét számjegyű tört másodperc|
+|Z|UTC (egyezményes világidő) jelölő|
   
   Az ISO 8601 formátumával kapcsolatos további információkért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

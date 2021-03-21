@@ -4,10 +4,10 @@ description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98723812"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>A Batch biztonsági és megfelelőségi ajánlott eljárásai
@@ -162,7 +162,7 @@ A készlet lefoglalási módjától és a szabályzat hatálya alatt álló erő
 - Közvetlenül a Microsoft.BatCH/batchAccounts erőforrás használatával. A Batch-fiók tulajdonságainak egy részhalmazát használhatja. Például a házirend tartalmazhatja a Batch-fiókok érvényes régióit, az engedélyezett készlet-kiosztási módot, valamint azt, hogy engedélyezve van-e egy nyilvános hálózat a fiókok számára.
 - Közvetve a Microsoft. számítási/virtualMachineScaleSets erőforrás használatával. A felhasználói előfizetések készletének kiosztási móddal rendelkező batch-fiókjai rendelkezhetnek a Batch-fiók előfizetésében létrehozott virtuálisgép-méretezési csoport erőforrásain beállított házirenddel. Például engedélyezhető a virtuális gépek mérete, és bizonyos bővítmények futnak a készlet minden csomópontján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Batch Azure biztonsági alaptervét](security-baseline.md).
 - További [ajánlott eljárások a Azure batch](best-practices.md).

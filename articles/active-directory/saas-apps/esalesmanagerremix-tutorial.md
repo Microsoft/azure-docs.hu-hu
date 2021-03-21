@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995641"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
@@ -199,7 +199,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Válassza a **Létrehozás** lehetőséget.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix tesztelési felhasználó létrehozása
 

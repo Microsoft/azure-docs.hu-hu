@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724271"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Melyek a Azure Active Directory alapértelmezett felhasználói engedélyei?
@@ -140,7 +140,7 @@ A felhasználók a következő műveleteket hajthatják végre a tulajdonos csop
 | Microsoft. Directory/csoportok/visszaállítás | Csoportok visszaállítása a Azure Active Directoryban. |
 | Microsoft. Directory/csoportok/beállítások/frissítés | A groups. Settings tulajdonság frissítése Azure Active Directoryban. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a vendég felhasználói hozzáférési korlátozásokról, tekintse meg a következő témakört: a [vendég hozzáférési engedélyeinek korlátozása (előzetes verzió) Azure Active Directory](../enterprise-users/users-restrict-guest-permissions.md).
 * További információ az Azure AD-rendszergazdai szerepkörök hozzárendeléséről: [felhasználó társítása rendszergazdai szerepkörökhöz Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

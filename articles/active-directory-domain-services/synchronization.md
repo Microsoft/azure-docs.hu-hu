@@ -1,6 +1,6 @@
 ---
 title: A szinkronizálás működése a Azure AD Domain Servicesban | Microsoft Docs
-description: Ismerje meg, hogyan működik a szinkronizálási folyamat az Azure AD-bérlő vagy a helyszíni Active Directory tartományi szolgáltatások-környezet objektumainak és hitelesítő adatainak Azure Active Directory Domain Services felügyelt tartományba való bekapcsolásával.
+description: Ismerje meg, hogyan működik a szinkronizálási folyamat az Azure AD-bérlő vagy a helyszíni Active Directory Domain Services-környezet objektumainak és hitelesítő adatainak Azure Active Directory Domain Services felügyelt tartományba való bekapcsolásával.
 services: active-directory-ds
 author: justinha
 manager: daveba
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618807"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure Active Directory Domain Services felügyelt tartományban
@@ -146,7 +146,7 @@ Kizárólag felhőalapú Azure AD-környezetek esetén a [felhasználóknak alap
 
 A helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált hibrid felhasználói fiókok esetében [konfigurálnia kell Azure ad Connect a jelszó-kivonatok szinkronizálását az NTLM és a Kerberos-kompatibilis formátumokban](tutorial-configure-password-hash-sync.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelszó-szinkronizálási adatokkal kapcsolatos további információkért lásd: a [jelszó-kivonatolási szinkronizálás működése a Azure ad Connect](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context).
 
