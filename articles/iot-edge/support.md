@@ -8,12 +8,12 @@ ms.date: 02/11/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a3656d6dd81132a7fd10103fc0199d55d9288df3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f1a2b821c5fd127f8b7bcda7b3a219be34cb8abb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489611"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598524"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -136,7 +136,7 @@ IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszame
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
-<sup>1</sup> A IoT Edge 1,1 az első hosszú távú támogatási (LTS) kiadási csatorna. Ez a verzió nem tartalmaz új funkciókat, de hibajavításokat és biztonsági javításokat fog kapni. IoT Edge 1,1 LTS a .NET Core 3,1-et használja, és a 2022. december 3. előtt támogatott, hogy megfeleljen a [.net Core és a .net 5 kiadási életciklusának](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+<sup>1</sup> A IoT Edge 1,1 az első hosszú távú támogatási (LTS) kiadási csatorna. Ez a verzió nem tartalmaz új funkciókat, de biztonsági frissítéseket és javításokat fog kapni a regressziók számára. IoT Edge 1,1 LTS a .NET Core 3,1-et használja, és a 2022. december 3. előtt támogatott, hogy megfeleljen a [.net Core és a .net 5 kiadási életciklusának](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
 
 >[!IMPORTANT]
 >A hosszú távú támogatási csatorna megjelenése esetén azt javasoljuk, hogy az 1.0. x verziót futtató összes aktuális ügyfél frissítse eszközét 1.1. x verzióra, hogy a folyamatos támogatást kapjon.

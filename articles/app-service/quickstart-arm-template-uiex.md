@@ -10,10 +10,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179085"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>Rövid útmutató: App Service alkalmazás létrehozása ARM-sablon használatával
@@ -55,7 +55,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 A következő táblázat az alapértelmezett paramétereket és azok leírásait tartalmazza:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
+| Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
@@ -85,7 +85,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 A következő táblázat az alapértelmezett paramétereket és azok leírásait tartalmazza:
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
+| Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
 | webAppName | sztring  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | Alkalmazás neve |
 | location   | sztring  | "[[resourceGroup (). location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | Alkalmazás-régió |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>Hogyan egy másik nyelvi verem üzembe helyezését?</summary>
 Másik nyelvi verem üzembe helyezéséhez frissítsen <abbr title="Ez a sablon kompatibilis a .NET Core, a .NET Framework, a PHP, a Node.js és a statikus HTML-alkalmazásokkal. "> nyelvi paraméter</abbr> megfelelő értékekkel. A Java esetében lásd: <a href="/azure/app-service/quickstart-java-uiex">Java-alkalmazás létrehozása</a>.
 
-| Paraméterek | Típus    | Alapértelmezett érték                | Leírás |
+| Paraméterek | Típus    | Alapértelmezett érték                | Description |
 |------------|---------|------------------------------|-------------|
 | language   | sztring  | .net                       | Programozási nyelv stack (.net, php, node, HTML) |
 

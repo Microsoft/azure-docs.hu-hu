@@ -16,10 +16,10 @@ ms.date: 3/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 885390d9246937247107128114e9242aa5e2dc01
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103015471"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással
@@ -47,7 +47,7 @@ A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a
 
 ### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
 
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
 |[Inaktív adatok Storage Service Encryption](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
@@ -114,7 +114,7 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
 
     A tárolási titkosításhoz a következő tulajdonságokat kell tartalmaznia a kérés törzsében.
 
-    Kérelem törzsének tulajdonsága    | Leírás
+    Kérelem törzsének tulajdonsága    | Description
     ---|---
     Id | A ContentKey azonosítója a következő formátumban jön létre: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | A tartalmi kulcs típusa egy egész szám, amely meghatározza a kulcsot. A tárolási titkosítási formátum értéke 1.

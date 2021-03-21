@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 02/10/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 3fa47935721ccfccdfe18d60a66d5cc480582e7d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: bfaa9f649fd4d44e45b6d4a513e74e12e169c4f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428231"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719783"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -30,7 +30,7 @@ Ez a cikk azt feltételezi, hogy rendelkezik Azure-fiókkal és Speech Service-e
 ## <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
 Mielőtt bármit elvégezhet, telepítenie kell a <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">javascripthez készült SPEECH SDK </a>-t. A platformtól függően kövesse az alábbi utasításokat:
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span 
+- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
 class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Webböngésző </a>
 
@@ -162,14 +162,14 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `undefined` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` blokkot, mivel a kimeneti viselkedést ettől kezdve manuálisan fogja kezelni a jobb szabályozás érdekében. Ezután adja át a-t a `undefined` `AudioConfig` `SpeechSynthesizer` konstruktorban.
 
 > [!NOTE]
 > `undefined`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
 
-Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) . A `SpeechSynthesisResult.audioData` tulajdonság a `ArrayBuffer` kimeneti adatokat, a böngésző alapértelmezett adatfolyam-típusát adja vissza. A kiszolgáló és a kód esetében alakítsa át a arrayBuffer egy pufferbeli adatfolyamba. 
+Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) . A `SpeechSynthesisResult.audioData` tulajdonság a `ArrayBuffer` kimeneti adatokat, a böngésző alapértelmezett adatfolyam-típusát adja vissza. A kiszolgáló és a kód esetében alakítsa át a arrayBuffer egy pufferbeli adatfolyamba.
 
-Az alábbi kód ügyféloldali kóddal működik. 
+Az alábbi kód ügyféloldali kóddal működik.
 
 ```javascript
 function synthesizeSpeech() {
@@ -189,9 +189,9 @@ function synthesizeSpeech() {
 }
 ```
 
-Innen bármilyen egyéni viselkedést alkalmazhat az eredményül kapott `ArrayBuffer` objektum használatával. A ArrayBuffer egy gyakori típus, amely egy böngészőben fog megjelenni, és ebben a formátumban játssza le őket. 
+Innen bármilyen egyéni viselkedést alkalmazhat az eredményül kapott `ArrayBuffer` objektum használatával. A ArrayBuffer egy gyakori típus, amely egy böngészőben fog megjelenni, és ebben a formátumban játssza le őket.
 
-Bármely kiszolgáló alapú kód esetében, ha ArrayBuffer helyett adatfolyamként kell dolgoznia az adatfolyamot, az objektumot adatfolyamként kell konvertálnia. 
+Bármely kiszolgáló alapú kód esetében, ha ArrayBuffer helyett adatfolyamként kell dolgoznia az adatfolyamot, az objektumot adatfolyamként kell konvertálnia.
 
 ```javascript
 function synthesizeSpeech() {
@@ -342,3 +342,11 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
+
+A beszédfelismerés jó módszer lehet az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben jelentenek, például az ajkak, az állkapocs és a nyelv pozíciója egy adott fonéma készítésekor.
+Feliratkozhat a viseme eseményre a Speech SDK-ban.
+Ezt követően alkalmazhatja a viseme eseményeket, így animálhatja a karakterek színeit beszéd hanglejátszásként.
+Ismerje meg [, hogyan szerezhet be viseme-eseményeket](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

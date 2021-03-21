@@ -10,10 +10,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: fe1db967dac8a76119733f930e54a38160395932
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549838"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure-ban
@@ -107,7 +107,7 @@ Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legt�
 * [Lemez hozzáadása Linux rendszerű virtuális géphez az azure-cli használatával](add-disk.md)
 * [Adatlemez csatlakoztatása Linux rendszerű virtuális géphez az Azure Portalon](attach-disk-portal.md)
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 * [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [IP-címek az Azure-ban](../../virtual-network/public-ip-addresses.md)
 * [Portok nyitása egy Linux rendszerű virtuális géphez az Azure Portalon](nsg-quickstart.md)

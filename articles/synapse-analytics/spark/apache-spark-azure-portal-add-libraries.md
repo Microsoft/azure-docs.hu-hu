@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: c6d720c3feec29eb32b1cfa9c31ea45839c98ec7
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176416"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598014"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. 
@@ -60,10 +60,6 @@ Ha többet szeretne megtudni ezekről a képességekről, tekintse meg a [Python
 Az interaktív adatelemzés vagy a gépi tanulás során előfordulhat, hogy az újabb csomagokat szeretné kipróbálni, vagy előfordulhat, hogy olyan csomagokra van szüksége, amelyek még nem érhetők el a Apache Spark-készletben. A készlet konfigurációjának frissítése helyett a felhasználók mostantól munkamenet-hatókörű csomagokat is használhatnak a munkamenet-függőségek hozzáadásához, kezeléséhez és frissítéséhez.
 
 A munkamenet-hatókörrel rendelkező csomagok lehetővé teszik a felhasználók számára, hogy a munkamenetük kezdetén definiálják a csomagok függőségeit. Munkamenet-hatókörű csomag telepítésekor csak az aktuális munkamenet fér hozzá a megadott csomagokhoz. Ennek eredményeképpen ezek a munkamenet-hatókörű csomagok nem érintik a többi munkamenetet vagy feladatokat ugyanazzal a Apache Spark készlettel. Emellett ezek a kódtárak az alapszintű futtatókörnyezetre és a készlet szintű csomagokra is telepítve vannak. 
-
-Ezeket a csomagokat a rendszer automatikusan hozzáadja a Python-környezethez. A csomagokat nem szabad megemlíteni a *requirements.txt* fájlban.
-
-Vegye figyelembe, hogy ez a metódus jelenleg csak a `*.whl` fájlokra mutat. Ne adjon hozzá `*.tar.gz` fájlokat a tárolóhoz.
 
 A munkamenet-hatókörű csomagok kezelésével kapcsolatos további információkért tekintse meg a következő útmutatókat:
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717468"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605800"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor hálózatokhoz
 
@@ -71,7 +71,7 @@ A különböző szűrők segítségével a méretezést egy adott útvonalra és
 
 Válassza a **részletes mérőszámok megtekintése** lehetőséget egy előre konfigurált munkafüzet megnyitásához, amely részletes mérőszámokat tartalmaz az Application Gateway, az összes háttér-készlet erőforrásai és az előtér-IP-címek számára. 
 
-## <a name="connectivity"></a><a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a><a name="connectivity"></a>Kapcsolat
 
 A **kapcsolat lapon egyszerűen megjeleníthetők a** [kapcsolat figyelője](../../network-watcher/connection-monitor-overview.md) és a kapcsolat figyelője (klasszikus) használatával konfigurált tesztek a kiválasztott előfizetésekhez.
 
@@ -108,10 +108,12 @@ A diagnosztikai eszközkészlet hozzáférést biztosít a hálózat hibaelhár�
 
 ![A diagnosztikai eszközkészlet fület megjelenítő képernyőkép.](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>Beépített erőforrások 
+
+A beépített erőforrások beépített munkafüzetekkel és függőségi nézetekkel rendelkeznek. A jelenleg beépített erőforrások a következők: Virtual WAN, Application Gateway, Load Balancer és ExpressRoute.
+
 ## <a name="troubleshooting"></a>Hibaelhárítás 
-
 Általános hibaelhárítási útmutatót a dedikált munkafüzet-alapú információk [hibaelhárítási cikkében](troubleshoot-workbooks.md)talál.
-
 Ez a szakasz segít diagnosztizálni és elhárítani néhány olyan gyakori problémát, amely akkor fordulhat elő, ha Azure Monitort használ a hálózatokhoz. 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>Hogyan a teljesítménnyel kapcsolatos problémákat vagy hibákat?

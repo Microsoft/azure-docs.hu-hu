@@ -6,14 +6,17 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 52a8d8fcd0b9b9ee1ff918ead250c88b83f86cb7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523706"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674835"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Keresések mentése és adategységek rögzítése Azure Data Catalog
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
+
 ## <a name="introduction"></a>Bevezetés
 Azure Data Catalog az adatforrás-felderítés funkcióit biztosítja. Gyorsan kereshet és szűrheti a katalógust, hogy megkeresse az adatforrásokat, és megértse a kívánt célokat, így könnyebben megtalálhatja a feladathoz kapcsolódó megfelelő adatok körét.
 
@@ -24,11 +27,11 @@ A Data Catalogban mentett keresés újrafelhasználható, felhasználónkénti k
 
 ### <a name="create-a-saved-search"></a>Mentett keresés létrehozása
 Mentett keresés létrehozásához tegye a következőket:
-1. A Azure Data Catalog portál **aktuális keresési** ablakában kattintson a **Mentés**gombra. 
+1. A Azure Data Catalog portál **aktuális keresési** ablakában kattintson a **Mentés** gombra. 
 
     ![Aktuális keresési beállítások mentés hivatkozása](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. Adja meg az újra felhasználni kívánt keresési feltételeket, majd kattintson a **Mentés**gombra.
+2. Adja meg az újra felhasználni kívánt keresési feltételeket, majd kattintson a **Mentés** gombra.
 
     ![Aktuális keresési beállítások mentett keresési neve](./media/data-catalog-how-to-save-pin/02-name.png)
 
@@ -47,11 +50,11 @@ Végezze el az alábbi műveletek bármelyikét:
 
     ![A mentett keresések kezelésének lehetőségei](./media/data-catalog-how-to-save-pin/04-managing.png)
 
-* A mentett keresés új nevének megadásához válassza az **Átnevezés**lehetőséget. A keresési definíció nem módosul.
+* A mentett keresés új nevének megadásához válassza az **Átnevezés** lehetőséget. A keresési definíció nem módosul.
 
-* Ha el szeretné távolítani a mentett keresést a listából, válassza a **Törlés**lehetőséget, majd erősítse meg a törlést.
+* Ha el szeretné távolítani a mentett keresést a listából, válassza a **Törlés** lehetőséget, majd erősítse meg a törlést.
 
-* A mentett keresés alapértelmezett keresésként való megjelöléséhez válassza a **Mentés alapértelmezettként**lehetőséget. Ha "üres" keresést végez a Azure Data Catalog kezdőlapján, a rendszer az alapértelmezett keresést hajtja végre. Emellett az alapértelmezett keresésként megjelölt keresés a **mentett keresések** listájának tetején jelenik meg.
+* A mentett keresés alapértelmezett keresésként való megjelöléséhez válassza a **Mentés alapértelmezettként** lehetőséget. Ha "üres" keresést végez a Azure Data Catalog kezdőlapján, a rendszer az alapértelmezett keresést hajtja végre. Emellett az alapértelmezett keresésként megjelölt keresés a **mentett keresések** listájának tetején jelenik meg.
 
 ### <a name="organizational-saved-searches"></a>Szervezet által mentett keresések
 A szervezet minden felhasználója a saját használatra mentheti a kereséseket. Data Catalog rendszergazdák a szervezeten belüli összes felhasználó keresését is menthetik. Ha a rendszergazdák egy keresést mentenek, a **vállalaton belül egy megosztás jelenik meg** . A beállítás kiválasztásával megoszthatja a szervezet összes felhasználójának mentett keresését.

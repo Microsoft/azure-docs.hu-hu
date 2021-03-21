@@ -11,12 +11,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 327673d0765fa807f782494562c995278be4782f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6a2c6495ca3685aec1bc132ec7f8a88809ad2d87
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955292"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598286"
 ---
 # <a name="live-streaming-scenario-based-migration-guidance"></a>Élő közvetítés forgatókönyv-alapú áttelepítési útmutatója
 
@@ -42,7 +42,7 @@ Tesztelje az élő események Media Services való továbbításának új módj�
 - Ha az élő események gyors indítását igényli, Fedezze fel az új [készenléti üzemmód](live-events-outputs-concept.md#standby-mode) funkcióit.
 - Ha a folyamatban lévő élő eseményt szeretné átírni, Fedezze fel az új [élő átírási](live-transcription.md) funkciót.
 - Ha hosszabb folyamatos átviteli időtartamra van szüksége, hozzon létre nonstop élő eseményeket a v3-ben.
-- Az élő események figyeléséhez használja a [Event Grid](monitor-events-portal-how-to.md) .
+- Az élő események figyeléséhez használja a [Event Grid](monitoring/monitor-events-portal-how-to.md) .
 
 A konkrét lépésekhez tekintse meg az élő események fogalmait, az oktatóanyagokat és az alábbi útmutatókat.
 

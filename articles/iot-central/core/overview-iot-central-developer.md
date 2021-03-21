@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043099"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585859"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central eszköz fejlesztési útmutatója
 
@@ -105,7 +105,7 @@ A DTDL-modell lehet _nem összetevő_ vagy _többösszetevős_ modell:
 - Nem-összetevő modell: egy egyszerű modell nem használ beágyazott vagy lépcsőzetes összetevőket. Az összes telemetria, tulajdonság és parancs egyetlen _alapértelmezett összetevőt_ határoz meg. Példaként tekintse meg a [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) modelljét.
 - Több összetevőből álló modell. Összetettebb modell, amely két vagy több összetevőt tartalmaz. Ezek az összetevők egyetlen alapértelmezett összetevőt tartalmaznak, valamint egy vagy több további beágyazott összetevőt. Példaként tekintse meg a [hőmérséklet-vezérlő](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modelljét.
 
-További információ: [IoT Plug and Play Components in models](../../iot-pnp/concepts-components.md)
+További információ: [IoT Plug and Play modellezési útmutató](../../iot-pnp/concepts-modeling-guide.md)
 
 ### <a name="conventions"></a>Konvenciók
 

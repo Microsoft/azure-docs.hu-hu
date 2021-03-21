@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/17/2021
+ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 97167485dae155670f0eb83fc3ef9cb658952251
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101749898"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599324"
 ---
 > [!NOTE]
 > A védett állapottal kapcsolatos információk (PHI) észleléséhez használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
@@ -53,9 +53,18 @@ Ez a kategória a következő entitást tartalmazza:
     :::column span="2":::
         **Részletek**
 
-        Személyek nevei. Szintén visszaadott `domain=phi` .
+        Személyek nevei. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Person` a `pii-categories` paramétert a paraméterhez. `Person` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+    
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-persontype"></a>Kategória: PersonType
@@ -74,8 +83,17 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         Egy személy által birtokolt feladattípusok vagy szerepkörök.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `PersonType` a `pii-categories` paramétert a paraméterhez. `PersonType` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="category-phonenumber"></a>Kategória: telefonszám
@@ -93,8 +111,18 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         Telefonszámok (csak az USA-beli és az EU-telefonszámok). Szintén visszaadott `domain=phi` .
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `PhoneNumber` a `pii-categories` paramétert a paraméterhez. `PhoneNumber` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt` `pt-br`
+      
+   :::column-end:::
+
 :::row-end:::
 
 
@@ -113,8 +141,18 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         Vállalatok, politikai csoportok, zenei zenekarok, sport klubok, kormányzati szervek és nyilvános szervezetek. A nemzetiségek és a vallások nem szerepelnek ebben az entitás-típusban.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Organization` a `pii-categories` paramétert a paraméterhez. `Organization` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
+
 :::row-end:::
 
 #### <a name="subcategories"></a>Alkategóriák
@@ -125,15 +163,25 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
     :::column span="":::
         **Entitás alkategóriája**
 
-        Orvosi
+        Orvosi    
 
     :::column-end:::
     :::column span="2":::
         **Részletek**
 
         Orvosi vállalatok és csoportok.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `OrganizationMedical` a `pii-categories` paramétert a paraméterhez. `OrganizationMedical` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -144,8 +192,17 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
     :::column span="2":::
 
         Tőzsdei csoportok. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `OrganizationStockExchange` a `pii-categories` paramétert a paraméterhez. `OrganizationStockExchange` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
+
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -156,8 +213,16 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
     :::column span="2":::
 
         Sporttal kapcsolatos szervezetek.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `OrganizationSports` a `pii-categories` paramétert a paraméterhez. `OrganizationSports` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+
+      `en`   
+      
+   :::column-end:::
 
 :::row-end:::
 
@@ -177,8 +242,18 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         Teljes levelezési cím.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Address` a `pii-categories` paramétert a paraméterhez. `Address` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-email"></a>Kategória: E-mail
@@ -197,8 +272,17 @@ Ez a kategória a következő entitást tartalmazza:
 
         E-mail-címek.
       
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Email` a `pii-categories` paramétert a paraméterhez. `Email` az API-válaszban lesz visszaadva, ha a rendszer észleli.
+
+    :::column-end:::
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
     :::column-end:::
 :::row-end:::
+
 
 ### <a name="category-url"></a>Kategória: URL
 
@@ -215,8 +299,18 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         Webhelyek URL-címei. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `URL` a `pii-categories` paramétert a paraméterhez. `URL` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+    :::column-end:::
+
 :::row-end:::
 
 ### <a name="category-ip"></a>Kategória: IP
@@ -234,6 +328,15 @@ Ez a kategória a következő entitást tartalmazza:
         **Részletek**
 
         hálózati IP-címek. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `IP` a `pii-categories` paramétert a paraméterhez. `IP` az API-válaszban lesz visszaadva, ha a rendszer észleli.
+      
+    :::column-end:::
+
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -253,8 +356,16 @@ Ez a kategória a következő entitásokat tartalmazza:
         **Részletek**
 
         Dátum és napszakok. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `DateTime` a `pii-categories` paramétert a paraméterhez. `DateTime` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+:::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
+      
+   :::column-end:::
 :::row-end:::
 
 #### <a name="subcategories"></a>Alkategóriák
@@ -272,6 +383,14 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
         **Részletek**
 
         Naptári dátumok.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Date` a `pii-categories` paramétert a paraméterhez. `Date` az API-válaszban lesz visszaadva, ha a rendszer észleli.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Támogatott dokumentumok nyelvei**
+      
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
       
     :::column-end:::
 :::row-end:::
@@ -291,6 +410,14 @@ Ez a kategória a következő entitásokat tartalmazza:
         **Részletek**
 
         Számok és numerikus mennyiségek.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Quantity` a `pii-categories` paramétert a paraméterhez. `Quantity` az API-válaszban lesz visszaadva, ha a rendszer észleli.
+      
+    :::column-end:::
+    :::column span="2":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
     :::column-end:::
 :::row-end:::
@@ -310,8 +437,16 @@ Az ebben a kategóriában lévő entitás a következő alkategóriákkal rendel
         **Részletek**
 
         Alábbi korhatárt szabja.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `Age` a `pii-categories` paramétert a paraméterhez. `Age` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
+    :::column span="2":::
+        **Támogatott dokumentumok nyelvei**
+
+      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`  
+      
+   :::column-end:::
 :::row-end:::
 
 ### <a name="azure-information"></a>Azure-információk
@@ -329,33 +464,36 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
         **Részletek**
 
         Azure Cosmos DB-kiszolgáló engedélyezési kulcsa.   
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureDocumentDBAuthKey` a `pii-categories` paramétert a paraméterhez. `AzureDocumentDBAuthKey` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+      **Támogatott dokumentumok nyelvei**
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column span="":::
 
-        Azure IAAS adatbázis-kapcsolatok karakterlánca és Azure SQL-kapcsolatok karakterlánca
+        Az Azure IAAS adatbázis-kapcsolatainak karakterlánca és az Azure SQL-kapcsolatok karakterlánca.
+        
 
     :::column-end:::
     :::column span="2":::
 
         Az Azure infrastruktúra-szolgáltatás (IaaS) adatbázisának és az SQL-kapcsolatok karakterláncának a kapcsolatainak karakterlánca.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureIAASDatabaseConnectionAndSQLString` a `pii-categories` paramétert a paraméterhez. `AzureIAASDatabaseConnectionAndSQLString` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
     :::column-end:::
-:::row-end:::
-:::row:::
     :::column span="":::
 
-        Azure SQL-kapcsolatok karakterlánca
+      `en` 
 
     :::column-end:::
-    :::column span="2":::
-
-        Azure SQL Databaseban található adatbázishoz tartozó kapcsolatok karakterlánca.
-      
-    :::column-end:::
-
 :::row-end:::
 :::row:::
     :::column span="":::
@@ -367,6 +505,13 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
 
         Az Azure IoT tartozó kapcsolatok karakterlánca. 
       
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureIoTConnectionString` a `pii-categories` paramétert a paraméterhez. `AzureIoTConnectionString` az API-válaszban lesz visszaadva, ha a rendszer észleli.
+
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -378,7 +523,14 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column span="2":::
 
         Az Azure közzétételi beállításainak jelszava.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzurePublishSettingPassword` a `pii-categories` paramétert a paraméterhez. `AzurePublishSettingPassword` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -390,7 +542,14 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column span="2":::
 
         Redis-gyorsítótárhoz tartozó kapcsolatok karakterlánca.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureRedisCacheString` a `pii-categories` paramétert a paraméterhez. `AzureRedisCacheString` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -402,7 +561,14 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column span="2":::
 
         Az Azure-beli szolgáltatott szoftver (SaaS) közötti kapcsolatok karakterlánca.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureSAS` a `pii-categories` paramétert a paraméterhez. `AzureSAS` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -414,7 +580,14 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column span="2":::
 
         Az Azure Service Bus szolgáltatáshoz tartozó kapcsolatok karakterlánca.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureServiceBusString` a `pii-categories` paramétert a paraméterhez. `AzureServiceBusString` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -425,8 +598,15 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column-end:::
     :::column span="2":::
 
-       Egy Azure Storage-fiókhoz tartozó fiók kulcsa. 
+        Egy Azure Storage-fiókhoz tartozó fiók kulcsa. 
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureStorageAccountKey` a `pii-categories` paramétert a paraméterhez. `AzureStorageAccountKey` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -437,8 +617,15 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column-end:::
     :::column span="2":::
 
-       Általános fiók kulcsa egy Azure Storage-fiókhoz.
+        Általános fiók kulcsa egy Azure Storage-fiókhoz.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `AzureStorageAccountGeneric` a `pii-categories` paramétert a paraméterhez. `AzureStorageAccountGeneric` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 :::row:::
@@ -449,8 +636,15 @@ Az entitások kategóriái közé tartoznak az azonosítható Azure-információ
     :::column-end:::
     :::column span="2":::
 
-       SQL Server rendszert futtató számítógéphez tartozó kapcsolatok karakterlánca.
+        SQL Server rendszert futtató számítógéphez tartozó kapcsolatok karakterlánca.
+
+        Az entitás kategóriájának beszerzéséhez adja hozzá `SQLServerConnectionString` a `pii-categories` paramétert a paraméterhez. `SQLServerConnectionString` az API-válaszban lesz visszaadva, ha a rendszer észleli.
       
+    :::column-end:::
+    :::column span="":::
+
+      `en` 
+
     :::column-end:::
 :::row-end:::
 

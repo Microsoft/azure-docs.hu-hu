@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
 ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102613221"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
@@ -232,7 +232,7 @@ A StorSimple 8000 sorozatú eszközök nem támogatják a következő munkaterhe
 * Virtuális asztali infrastruktúra (VDI)
 * Oracle
 * SAP
-* Big Data
+* Big data
 * Tartalom terjesztése
 * Rendszerindítás SCSI-ről
 
@@ -261,7 +261,7 @@ A következő lista a StorSimple által a megoldások létrehozásához használ
 A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hogy tekintse át a következő feltételeket és definíciókat.
 
 ### <a name="key-terms-and-definitions"></a>A legfontosabb feltételek és definíciók
-| Kifejezés (betűszó vagy rövidítés) | Leírás |
+| Kifejezés (betűszó vagy rövidítés) | Description |
 | --- | --- |
 | hozzáférés-vezérlési rekord (ACR) |A Microsoft Azure StorSimple eszközön lévő kötethez társított rekord, amely meghatározza, hogy mely gazdagépek csatlakozhatnak hozzá. A meghatározás a StorSimple-eszközhöz csatlakozó gazdagépek (ACR-ben található) iSCSI minősített nevén (IQN) alapul. |
 | AES-256 |256 bites Advanced Encryption Standard (AES) algoritmus a felhőbe irányuló és onnan áthelyezett adatok titkosításához. |

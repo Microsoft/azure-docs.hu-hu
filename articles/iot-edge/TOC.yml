@@ -131,6 +131,8 @@
           href: how-to-update-iot-edge.md
         - name: Eszköztanúsítványok kezelése
           href: how-to-manage-device-certificates.md
+        - name: Beágyazott virtualizálás konfigurálása Windows rendszerű virtuális gépekhez
+          href: nested-virtualization.md
     - name: Alternatív eszközök forgatókönyvei
       items:
         - name: IoT Edge futtatása Windows-tárolókkal

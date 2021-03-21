@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ce7c97abfb879e9298edac5f38540bbc026274da
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387682"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584400"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>A másolási tevékenység teljesítményével kapcsolatos hibák
 
@@ -168,7 +168,7 @@ Ha a másolási teljesítmény nem felel meg az elvárásoknak, a Azure Integrat
   - Gondolja át, hogy fokozatosan hangolja a [párhuzamos másolatokat](copy-activity-performance-features.md), és ne feledje, hogy túl sok párhuzamos másolat is sérült a teljesítmény.
 
 
-## <a name="connector-and-ir-performance"></a>Összekötő és IR teljesítmény
+## <a name="connector-and-ir-performance"></a>Összekötő és IR teljesítmény 
 
 Ez a szakasz az adott összekötő-típushoz vagy az integrációs modulhoz tartozó teljesítmény-hibaelhárítási útmutatók megismerését ismerteti.
 
@@ -176,9 +176,11 @@ Ez a szakasz az adott összekötő-típushoz vagy az integrációs modulhoz tart
 
 A tevékenység végrehajtási ideje akkor változik, ha az adatkészlet különböző Integration Runtime alapul.
 
-- **Tünetek**: egyszerűen az adatkészlet társított szolgáltatásának legördülő menüjében ugyanazokat a folyamatokat hajtja végre, de a futási idő drasztikusan eltér. Ha az adatkészlet a felügyelt Virtual Network Integration Runtimeon alapul, az átlagosnál több mint 2 percet vesz igénybe, de az alapértelmezett Integration Runtime alapján körülbelül 20 másodpercig tart.
+- **Tünetek**: egyszerűen az adatkészlet társított szolgáltatásának legördülő menüjében ugyanazokat a folyamatokat hajtja végre, de a futási idő drasztikusan eltér. Ha az adatkészlet a felügyelt Virtual Network Integration Runtimeon alapul, az alapértelmezett Integration Runtime alapján az átlagosnál több időt vesz igénybe, mint a Futtatás.  
 
-- **OK**: a folyamat futtatási részleteinek ellenőrzésekor láthatja, hogy a lassú folyamat fut a felügyelt VNet (Virtual Network) IR-ben, miközben a normál Azure IR fut. A felügyelt VNet IR-t úgy tervezték, hogy a több időt vesz igénybe, mint a Azure IR, mivel nem áll rendelkezésre egy számítási csomópont egy adat-előállítóban, így az egyes másolási tevékenységek elindításához 2 percet is felhasználunk, és az elsődlegesen az VNet-kapcsolaton keresztül történik Azure IR helyett.
+- **OK**: a folyamat futtatási részleteinek ellenőrzésekor láthatja, hogy a lassú folyamat fut a felügyelt VNet (Virtual Network) IR-ben, miközben a normál Azure IR fut. A felügyelt VNet IR-t úgy tervezze meg, hogy a várakozási idő hosszabb ideig tart, mint a Azure IR, mivel nem áll rendelkezésre egy számítási csomópont egy adat-előállítóban, így az egyes másolási tevékenységek elAzure IR indulnak. 
+
+
 
     
 ### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Alacsony teljesítmény az adatAzure SQL Databaseba való betöltéskor

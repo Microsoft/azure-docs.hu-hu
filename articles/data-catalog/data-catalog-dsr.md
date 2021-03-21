@@ -6,14 +6,16 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: ead1a324d342f818551ac05ac385ba4fa5b8b877
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439084"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104674631"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog támogatott adatforrások
+
+[!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
 
 A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszköz használatával vagy közvetlenül az Azure Data Catalog webes portálra történő manuális bevitelsel teheti közzé. A következő táblázat összefoglalja a katalógus által jelenleg támogatott összes adatforrást, valamint a közzétételi képességeket. Ezen kívül szerepelnek azok a külső Adateszközök is, amelyeket az egyes adatforrások megnyithatnak a portál "nyitott" felületén. A második táblázat az egyes adatforrások közötti kapcsolatok tulajdonságainak technikai leírását tartalmazza.
 
@@ -87,7 +89,7 @@ A metaadatokat nyilvános API-k vagy egyszer használatos regisztrációs eszkö
       <td></td>
     </tr>
     <tr>
-      <td>Struktúra táblázata</td>
+      <td>Hive-tábla</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

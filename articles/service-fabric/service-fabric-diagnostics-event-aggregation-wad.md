@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: eaf40bafb68820b56fc9bf00dd4c11fbb337406f
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102613459"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
@@ -282,7 +282,7 @@ Ahhoz, hogy az **alapszintű operatív csatorna** a lehető legkevesebb zajjal r
 
 Ha frissíteni szeretné a diagnosztikát, hogy olyan új EventSource-csatornákból gyűjtse be a naplókat, amelyek új alkalmazást kívánnak telepíteni, hajtsa végre a meglévő fürthöz tartozó diagnosztika beállításához korábban ismertetett lépéseket.
 
-A `EtwEventSourceProviderConfiguration` konfigurációs frissítés a PowerShell-paranccsal való alkalmazása előtt frissítse a fájl template.jsjának szakaszát az új EventSource-csatornák bejegyzéseinek hozzáadásához `New-AzResourceGroupDeployment` . Az eseményforrás neve a kód részeként van definiálva a Visual Studio által generált ServiceEventSource.cs fájlban.
+A `EtwEventSourceProviderConfiguration` konfigurációs frissítés a PowerShell-paranccsal való alkalmazása előtt frissítse a fájl template.jsjának szakaszát az új EventSource-csatornák bejegyzéseinek hozzáadásához `New-AzResourceGroupDeployment` . Az eseményforrás neve a kód részeként van definiálva a Visual Studio által generált ServiceEventSource. cs fájlban.
 
 Ha például az eseményforrás neve My-EventSource, adja hozzá a következő kódot, hogy az eseményeket My-Eventsource egy MyDestinationTableName nevű táblába helyezze.
 

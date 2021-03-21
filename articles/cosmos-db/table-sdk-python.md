@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 92771bb22897b0568ae601813ca919a260a31d8d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: f9487ac1b5d550380d7cff6196d3f5b99e6b61d4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499390"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595566"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "102499390"
 > * [Python](table-sdk-python.md)
  
 
-|   |   |
+|   | Hivatkozások  |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
 |**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/overview/azure/cosmosdb)|

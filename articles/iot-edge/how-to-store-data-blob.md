@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 5954c3083afc73fb25c796086f8fb8809af03ec1
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200667"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Adatok tárolása a peremhálózaton az Azure Blob Storage az IoT Edge-ben segítségével
@@ -293,7 +293,7 @@ Támogatott
 
 Ez az Azure-Blob Storage IoT Edge modulban mostantól a IoT Edge Event Grid-integrációt is biztosít. Az integrációval kapcsolatos részletes információkért tekintse meg a [modulok üzembe helyezésére, az események közzétételére és az esemény kézbesítésének ellenőrzésére vonatkozó oktatóanyagot](../event-grid/edge/react-blob-storage-events-locally.md).
 
-## <a name="release-notes"></a>Release Notes (Kibocsátási megjegyzések)
+## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ebben a modulban a [Docker hub kibocsátási megjegyzései](https://hub.docker.com/_/microsoft-azure-blob-storage) találhatók. Előfordulhat, hogy további információkat talál a hibajavításokkal és szervizeléssel kapcsolatban egy adott verzió kibocsátási megjegyzései között.
 
