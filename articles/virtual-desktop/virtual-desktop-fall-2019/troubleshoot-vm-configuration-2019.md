@@ -7,10 +7,10 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008627"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazda virtuális gép konfigurációja
@@ -82,7 +82,7 @@ A virtuális gépek üzembe helyezésének ajánlott módja a **Windows rendszer
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
-1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
+1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások** elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
 2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\ScriptLog.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
 3. Ha a fájl **C:\Windows\Temp\ScriptLog.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
@@ -178,7 +178,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>A Windows rendszerű virtuális asztalok egymás melletti veremével kapcsolatos hibák elhárítása
 
-A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem **enablesxstackrs.ps1tel **van engedélyezve.
+A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ a Windows Server 2019-es verzióra. A Microsoft Installer (MSI) használatával telepítse a párhuzamos stacket a Microsoft Windows Server 2016 vagy a Windows Server 2012 R2 rendszerre. A Microsoft Windows 10 rendszerben a Windows rendszerű virtuális asztali párhuzamos verem **enablesxstackrs.ps1tel** van engedélyezve.
 
 A munkamenet-gazdagépen futó virtuális gépeken a következő három fő módszert kell telepíteni vagy engedélyezni:
 
@@ -316,7 +316,7 @@ Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek te
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 
-A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok**  >  **Windows-összetevőkhöz**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal a munkamenet-gazdagép**  >  **licencelése**  >  **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok**  >  **Windows-összetevőkhöz**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal a munkamenet-gazdagép**  >  **licencelése**  >  **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve** van, módosítsa a szolgáltatást **Letiltva** értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
 
 >[!NOTE]
 >Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
@@ -327,7 +327,7 @@ Ha szeretné megtekinteni, hogy a Windows 10 Enterprise több munkamenetének me
 
 1. Jelentkezzen be a rendszergazdai fiókjával.
 2. Adja meg a "Névjegy" kifejezést a Start menü melletti keresési sávon.
-3. Válassza **a számítógép névjegye**elemet.
+3. Válassza **a számítógép névjegye** elemet.
 4. A "version" felirat melletti szám bejelölése A számnak "1809" vagy "1903" értékűnek kell lennie, ahogy az alábbi képen is látható.
 
     > [!div class="mx-imgBorder"]

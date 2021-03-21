@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: a4f2b07edc6c290fa030621a4dc400ab50890bba
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001168"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
@@ -64,7 +64,7 @@ Ez a beállítás a következő helyeken érhető el:
 * Azure Portal: **Cognitive Services** áttekintés, címkézett `Endpoint`
 * LUIS Portal: **kulcsok és végponti beállítások** lap a végpont URI részeként.
 
-| Kötelező | Név | Adattípus | Leírás |
+| Kötelező | Name | Adattípus | Leírás |
 |----------|------|-----------|-------------|
 | Igen      | `Billing` | sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](luis-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -94,7 +94,7 @@ A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs ren
 
 A következő táblázat a támogatott beállításokat ismerteti.
 
-|Kötelező| Név | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Igen| `Input` | Sztring | A bemeneti csatlakoztatás célja. Az alapértelmezett érték `/input`. Ez a LUIS-csomag fájljainak helye. <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Nem| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ide tartozik a LUIS-lekérdezési naplók és a tároló-naplók. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -164,7 +164,7 @@ ApiKey={API_KEY} ^
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](luis-container-howto.md) áttekintése
 * A LUIS-funkciókkal kapcsolatos problémák megoldásához tekintse meg a [hibaelhárítást ismertető témakört](troubleshooting.md) .

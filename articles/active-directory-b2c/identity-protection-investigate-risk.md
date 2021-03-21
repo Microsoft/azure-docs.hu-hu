@@ -12,10 +12,10 @@ author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 8919285f31e04a51ce10afe3313b28cf86b64ee0
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102055704"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Kockázatelemzés a Azure AD B2C Identity Protection szolgáltatásával
@@ -38,7 +38,7 @@ Az Identity Protection használatakor vegye figyelembe a következőket:
 - A személyazonosság védelme a helyi és a közösségi identitások, például a Google vagy a Facebook esetében egyaránt elérhető. A közösségi identitások esetében aktiválni kell a feltételes hozzáférést. Az észlelés korlátozott, mert a közösségi fiók hitelesítő adatait a külső identitás szolgáltatója kezeli.
 - Azure AD B2C bérlők esetében csak a [Azure ad Identity Protection kockázati észlelések](../active-directory/identity-protection/overview-identity-protection.md) egy részhalmaza érhető el. Azure AD B2C a következő kockázati észleléseket támogatja:  
 
-|Kockázat észlelésének típusa  |Leírás  |
+|Kockázat észlelésének típusa  |Description  |
 |---------|---------|
 | Szokatlan utazás     | Bejelentkezés szokatlan helyről a felhasználó legutóbbi bejelentkezései alapján.        |
 |Névtelen IP-cím     | Bejelentkezés névtelen IP-címről (például: Tor-böngésző, névtelenség VPN-ek).        |

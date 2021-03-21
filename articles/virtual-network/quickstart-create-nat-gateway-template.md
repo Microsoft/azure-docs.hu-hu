@@ -17,10 +17,10 @@ ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
 ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97703789"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Rövid útmutató: NAT Gateway-ARM-sablon létrehozása
@@ -132,7 +132,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a NAT-átjárót és az összes kapcsolódó erőforrást. Válassza ki a NAT-átjárót tartalmazó erőforráscsoport- **myResourceGroupNAT** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 

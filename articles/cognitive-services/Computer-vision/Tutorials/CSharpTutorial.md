@@ -12,10 +12,10 @@ ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 0a1878268beb135151a23b87d03839f3a51f4a96
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102432587"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: képfeldolgozó alkalmazás feltárása C-vel #
@@ -124,13 +124,13 @@ A Computer Vision minta alkalmazáshoz készült Visual Studio-megoldás két pr
     A rendszerkép elemzése forgatókönyv forgatókönyv lapja.
   * DescribePage. XAML  
     A rendszerkép leírására szolgáló forgatókönyv lapja.
-  * ImageScenarioPage.cs  
+  * ImageScenarioPage. cs  
     A ImageScenarioPage osztály, amelyből a rendszer a minta alkalmazás összes forgatókönyv lapját származtatja. Ez az osztály kezeli a funkciókat, például a hitelesítő adatok megadását és a kimenet formázását, amelyet az összes forgatókönyv oldalai megosztanak.
   * MainWindow.xaml  
     A minta alkalmazás főablaka a SampleScenarios vezérlőelem használatával mutatja be a SubscriptionKeyPage és a forgatókönyvek lapjait.
   * OCRPage. XAML  
     A szövegfelismerés (OCR) forgatókönyvhöz tartozó forgatókönyv lapja.
-  * RecognizeLanguage.cs  
+  * RecognizeLanguage. cs  
     A RecognizeLanguage osztály, amely információt nyújt a minta alkalmazás különböző módszerei által támogatott nyelvekről.
   * TagsPage. XAML  
     A címkék előállítására szolgáló forgatókönyv lapja.

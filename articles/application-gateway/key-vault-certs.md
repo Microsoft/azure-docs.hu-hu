@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
 ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98185937"
 ---
-# <a name="tls-termination-with-key-vault-certificates"></a>TLS-lezárás Key Vault tanúsítványokkal
+# <a name="tls-termination-with-key-vault-certificates"></a>TLS-visszafejtés Key Vault-tanúsítványokkal
 
 A [Azure Key Vault](../key-vault/general/overview.md) egy platform által felügyelt titkos tároló, amely a titkok, a kulcsok és a TLS/SSL-tanúsítványok védelmére használható. Az Azure Application Gateway támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault-integrációját. Ez a támogatás a Application Gateway v2 SKU-ra korlátozódik.
 

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96011200"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Annak testreszabása, hogy a csatlakoztatott gyári megoldás hogyan jelenítse meg az OPC UA-kiszolgálók adatait
@@ -83,7 +83,7 @@ Az **Azure-IOT-Connected-Factory** adattár tartalmaz egy **build.ps1** PowerShe
 Az alábbi cikkekben további információt talál a csatlakoztatott gyári megoldási gyorssegédről:
 
 * [Engedélyek a azureiotsolutions.com webhelyen][lnk-permissions]
-* [Csatlakoztatott gyár – gyakori kérdések](iot-accelerators-faq-cf.md)
+* [Csatlakoztatott gyár – GYIK](iot-accelerators-faq-cf.md)
 * [Gyakori kérdések][lnk-faq]
 
 

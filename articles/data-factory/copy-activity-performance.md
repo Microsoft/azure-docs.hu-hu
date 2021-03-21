@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/15/2020
 ms.openlocfilehash: cba248d3f254c9bb97c66ff7a3d39275b4b912c4
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102616077"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Útmutató a másolási tevékenységek teljesítményéhez és skálázhatóságához
@@ -166,11 +166,11 @@ További információkért lásd:
 
 ### <a name="parallel-copy"></a>Párhuzamos másolás
 
-Megadhatja a `parallelCopies` tulajdonságot, hogy jelezze a másolási tevékenység által használni kívánt párhuzamosságot. Ezt a tulajdonságot úgy gondolja, mint a másolási tevékenységben lévő szálak maximális száma. A szálak párhuzamosan működnek. A szálak vagy a forrásból beolvasott adatok, vagy a fogadó adattárakba való írás. [További információk](copy-activity-performance-features.md#parallel-copy).
+Megadhatja a `parallelCopies` tulajdonságot, hogy jelezze a másolási tevékenység által használni kívánt párhuzamosságot. Ezt a tulajdonságot úgy gondolja, mint a másolási tevékenységben lévő szálak maximális száma. A szálak párhuzamosan működnek. A szálak vagy a forrásból beolvasott adatok, vagy a fogadó adattárakba való írás. [További információ](copy-activity-performance-features.md#parallel-copy).
 
 ### <a name="staged-copy"></a>Előkészített másolás
 
-Az adatmásolási művelet _közvetlenül_ a fogadó adattárba küldheti az adattárolási műveletet. Azt is megteheti, hogy a blob Storage-t _átmeneti átmeneti_ tárolóként használja. [További információk](copy-activity-performance-features.md#staged-copy).
+Az adatmásolási művelet _közvetlenül_ a fogadó adattárba küldheti az adattárolási műveletet. Azt is megteheti, hogy a blob Storage-t _átmeneti átmeneti_ tárolóként használja. [További információ](copy-activity-performance-features.md#staged-copy).
 
 ## <a name="next-steps"></a>Következő lépések
 

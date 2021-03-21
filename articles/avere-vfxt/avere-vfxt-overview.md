@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 5095f05b0c9ce9061781c3558ca6c7091ef37aa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270956"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT?
@@ -73,7 +73,7 @@ A avere vFXT for Azure a következő Azure-erőforrásokat használja:
 |Tárfiók (nem kötelező) |v2|
 |Adatháttér-tároló (nem kötelező) | Egy üres LRS-blobtároló |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikkből megtudhatja, hogyan tervezhet és hozhat létre saját avere-vFXT az Azure üzembe helyezéséhez.
 

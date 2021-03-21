@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
 ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251539"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapacitáskészletekkel kapcsolatos hibák elhárítása
@@ -41,7 +41,7 @@ Ez a cikk azokat a problémákat ismerteti, amelyekkel a kapacitási készletek 
 | A kapacitási készlet mérete túl kicsi a teljes kötet méretéhez. |  A hiba oka, hogy a célként megadott kapacitási készlet nem rendelkezik az áthelyezett kötet rendelkezésre álló kapacitásával.  <br> Növelje a cél készlet méretét, vagy válasszon egy nagyobb készletet.  Lásd: [Kapacitási készlet vagy kötet átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md).   |
 |  A készlet módosítása nem hajtható végre, mert egy nevű kötet `'{source pool name}'` már létezik a célként megadott készletben. `'{target pool name}'` | Ez a hiba azért fordul elő, mert már létezik ilyen nevű kötet a cél kapacitási készletben.  Válasszon egy másik olyan kapacitási készletet, amely nem rendelkezik azonos nevű kötettel.   | 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)

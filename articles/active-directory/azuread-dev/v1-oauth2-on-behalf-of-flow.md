@@ -15,10 +15,10 @@ ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88117736"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
@@ -53,13 +53,13 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, és a **címtár** listában válassza ki a Active Directory bérlőt az alkalmazáshoz.
-1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció** lehetőséget.
 1. Adjon egy rövid nevet az alkalmazásnak, és válassza ki az alkalmazás típusát.
-1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Állítsa be az átirányítási URI-t az alap URL-címre.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. A Azure Portal válassza ki az alkalmazást, és válassza a **tanúsítványok & titkok**lehetőséget.
+1. A Azure Portal válassza ki az alkalmazást, és válassza a **tanúsítványok & titkok** lehetőséget.
 1. Válassza az **új ügyfél titkot** , és adjon hozzá egy vagy két év időtartamú titkot.
 1. A lap mentésekor a Azure Portal megjeleníti a titkos értéket. Másolja és mentse a titkos értéket egy biztonságos helyen.
 1. Hozzon létre egy hatókört az alkalmazáshoz az alkalmazás **API** -oldalán, és kattintson a "hatókör hozzáadása" elemre.  Előfordulhat, hogy a portálon létre kell hoznia egy alkalmazás-azonosító URI-t is. 
@@ -71,13 +71,13 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A felső sávon válassza ki a fiókját, és a **címtár** listában válassza ki a Active Directory bérlőt az alkalmazáshoz.
-1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **További szolgáltatások** lehetőséget, és válassza a **Azure Active Directory** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** , majd az **új regisztráció** lehetőséget.
 1. Adjon egy rövid nevet az alkalmazásnak, és válassza ki az alkalmazás típusát.
-1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
+1. A **támogatott fiókok típusai** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
 1. Állítsa be az átirányítási URI-t az alap URL-címre.
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
-1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek**területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
+1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek** területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
 1. Írja be a középső rétegbeli szolgáltatás nevét a szövegmezőbe.
 1. Válassza az **engedélyek kiválasztása** lehetőséget, majd válassza ki a középső réteg regisztrálásának utolsó lépésében létrehozott hatókört.
 
@@ -89,7 +89,7 @@ Kövesse az alábbi lépéseket az ügyfélalkalmazás regisztrációjának expl
 
 1. Lépjen a középső rétegbeli szolgáltatás regisztrációja elemre, és válassza a **jegyzékfájl** elemet a jegyzékfájl-szerkesztő megnyitásához.
 1. Keresse meg a `knownClientApplications` Array tulajdonságot, és adja hozzá az ügyfélalkalmazás ügyfél-azonosítóját elemként.
-1. Mentse a jegyzékfájlt a **Mentés gombra**kattintva.
+1. Mentse a jegyzékfájlt a **Mentés gombra** kattintva.
 
 ## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat kérése
 
@@ -105,14 +105,14 @@ Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány véd
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
-| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory** lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
 | client_secret |kötelező | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
-| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak** kell lennie. |
 | scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
 
 #### <a name="example"></a>Példa
@@ -139,15 +139,15 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
-| grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
+| grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos** lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
-| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory** lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
 | client_assertion_type |kötelező |Az értéknek meg kell felelnie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |kötelező | Az Ön által létrehozott és az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező JSON Web Token. Tekintse meg a  [tanúsítvány hitelesítő adatait](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) , és Ismerje meg a tanúsítvány regisztrálásának módját.|
-| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak** kell lennie. |
 | scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
 
 Ezek a paraméterek majdnem ugyanazok, mint a közös titok kérelme, kivéve, hogy a `client_secret parameter` két paraméterrel van lecserélve: `client_assertion_type` és `client_assertion` .
@@ -249,14 +249,14 @@ Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgált
 
 Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 | --- | --- | --- |
-| grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
+| grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos** értékűnek kell lennie. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|
-| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory**lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
+| client_id |kötelező | Az Azure AD-vel való regisztráció során a hívó szolgáltatáshoz rendelt alkalmazás-azonosító. Ha meg szeretné keresni az alkalmazás AZONOSÍTÓját a Azure Portalban, válassza a **Active Directory** lehetőséget, válassza ki a könyvtárat, majd válassza ki az alkalmazás nevét. |
 | client_secret |kötelező | Az Azure AD-ben a hívó szolgáltatáshoz regisztrált kulcs. Ezt az értéket a regisztráció időpontjában fel kell jegyezni. |
-| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Ez az az erőforrás, amely az SAML-jogkivonat célközönsége lesz. Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget. |
-| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
+| erőforrás |kötelező | A fogadó szolgáltatás alkalmazás-AZONOSÍTÓjának URI azonosítója (biztonságos erőforrás). Ez az az erőforrás, amely az SAML-jogkivonat célközönsége lesz. Az alkalmazás AZONOSÍTÓjának URI azonosítójának megkereséséhez a Azure Portal válassza a **Active Directory** lehetőséget, majd válassza ki a könyvtárat. Válassza ki az alkalmazás nevét, válassza a **minden beállítás** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget. |
+| requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak** kell lennie. |
 | requested_token_type | kötelező | Megadja a kért jogkivonat típusát. Az érték a következő lehet: **urn: IETF: params: OAuth: token-Type: egy saml2** vagy **urn: IETF: param: OAuth: token-Type: saml1** a hozzáfért erőforrás követelményeitől függően. |
 
 A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.

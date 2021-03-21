@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs kapcsolódási problémáinak elhár�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012680"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Kapcsolódási problémák elhárítása – Azure Event Hubs
@@ -102,7 +102,7 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 
 Ha az alkalmazás kódja az SDK-t használja, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik. Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 * [Hitelesítési és engedélyezési hibák elhárítása](troubleshoot-authentication-authorization.md)

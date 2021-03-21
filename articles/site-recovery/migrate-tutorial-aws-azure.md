@@ -10,10 +10,10 @@ ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009058"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
@@ -37,7 +37,7 @@ Ha már használja a Azure Site Recoveryt, és szeretné tovább használni az A
 > [!NOTE]
 > Ha feladatátvételt futtat a vész-helyreállításhoz, a feladatátvétel utolsó lépéseként véglegesíti a tranzakciót. AWS-példányok áttelepítésekor a **véglegesítés** lehetőség nem érvényes. Ehelyett válassza a **teljes áttelepítési** lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tekintse át](../migrate/resources-faq.md) a Azure Migrateával kapcsolatos gyakori kérdéseket.

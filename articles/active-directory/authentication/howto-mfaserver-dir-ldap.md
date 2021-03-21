@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8961cccbd57294e477f0d33202fe91cd292b7814
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96742221"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-hitelesítés és Azure-Multi-Factor Authentication-kiszolgáló
@@ -55,7 +55,7 @@ További LDAP-ügyfelek hozzáadásához ismételje meg ezeket a lépéseket.
 Ha az Azure Multi-Factor Authentication LDAP-hitelesítések fogadására van konfigurálva, a hitelesítéseket az LDAP-címtárnak kell proxykapcsolaton keresztül átadnia. Ezért a Cél lapon csak egyetlen, szürkén megjelenő lehetőség látható LDAP-cél használatához.
 
 > [!NOTE]
-> A címtár-integráció nem garantált, hogy a Active Directory tartományi szolgáltatásokon kívüli címtárakkal is működjön.
+> A címtár-integráció nem garantált, hogy a Active Directory Domain Serviceson kívüli címtárakkal is működjön.
 
 1. Az LDAP-címtár-kapcsolatok konfigurálásához kattintson a **címtár-integráció** ikonra.
 2. A beállítások lapon jelölje be az **adott LDAP-konfiguráció használata** választógombot.

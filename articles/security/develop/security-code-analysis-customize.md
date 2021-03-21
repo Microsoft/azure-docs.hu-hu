@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008684"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
@@ -62,7 +62,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
     - Több megadott célpontot pontosvesszővel kell elválasztani (;).
     - A megadott elem lehet egyetlen fájl, vagy helyettesítő karakter is szerepelhet.
     - A könyvtár specifikációinak mindig a * értékkel kell végződnie \\ .
-    - Példák:
+    - Angol nyelvű Példák:
 
 ```binskim-targets
            *.dll;*.exe
@@ -195,7 +195,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [post Analysis YAML beállításait](yaml-configuration.md#post-analysis-task)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A YAML-alapú konfigurációval kapcsolatos információkért tekintse meg a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 

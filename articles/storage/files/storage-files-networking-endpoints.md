@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621331"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files hálózati végpontok konfigurálása
@@ -172,7 +172,7 @@ Ha a Storage-fiókot adott virtuális hálózatokra korlátozza, a megadott virt
 
 ---
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Azure Files hálózati megfontolások](storage-files-networking-overview.md)
 - [DNS-továbbítás konfigurálása az Azure Fileshoz](storage-files-networking-dns.md)

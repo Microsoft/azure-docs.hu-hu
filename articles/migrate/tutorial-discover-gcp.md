@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541427"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Oktatóanyag: Google Cloud Platform-(GCP-) példányok felderítése kiszolgáló-értékeléssel
@@ -20,7 +20,7 @@ Az Azure-ba való Migrálás részeként felderítheti a kiszolgálókat az ért
 
 Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel Google Cloud Platform (GCP) példányokat a Azure Migrate: Server Assessment Tool eszközzel, egy könnyű Azure Migrate berendezéssel. Üzembe helyezi a készüléket egy GCP virtuálisgép-példányon, hogy folyamatosan felderítse a gép és a teljesítmény metaadatait.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.
@@ -276,7 +276,7 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [GCP-kiszolgálók értékelése](tutorial-assess-gcp.md) Azure-beli virtuális gépekre való áttelepítéshez.
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

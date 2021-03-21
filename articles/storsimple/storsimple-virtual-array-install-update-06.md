@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
 ms.openlocfilehash: 4b379bb76eaf7587c53ec55972ccee3f54a55f22
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94534245"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Az 0,6-es frissítés telepítése a StorSimple virtuális tömbön
@@ -95,7 +95,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>A frissítés vagy a gyorsjavítás telepítése
 
-1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés** elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0** -et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
+1. A helyi webes kezelőfelületen lépjen a **karbantartási**  >  **szoftverfrissítés** elemre. Jegyezze fel a futtatott szoftver verzióját. Ha a **10.0.10290.0**-et futtatja, a 6. lépésben nem kell frissítenie az MDS-ügynököt.
    
     ![A képernyőfelvételen a karbantartási menüből kiválasztott szoftverfrissítés látható.](./media/storsimple-virtual-array-install-update-05/update1m.png)
 
@@ -118,7 +118,7 @@ Ezzel a módszerrel telepítheti a GA-t vagy a 0,1-es verziót futtató eszköz�
    
     ![Képernyőfelvétel: a szoftverfrissítés oldal a jelenlegi szoftververzió szerint.](./media/storsimple-virtual-array-install-update-06/update6m.png)
 
-6. Hagyja ki ezt a lépést, ha a StorSimple Virtual Array Update 0,5 ( **10.0.10290.0** ) alkalmazást futtatta a frissítés alkalmazása előtt. A frissítés megkezdése előtt az 1. lépésben megjegyezte a szoftver verzióját. Ha a 0,5-es frissítést futtatta, az MDS-ügynök már naprakész.
+6. Hagyja ki ezt a lépést, ha a StorSimple Virtual Array Update 0,5 (**10.0.10290.0**) alkalmazást futtatta a frissítés alkalmazása előtt. A frissítés megkezdése előtt az 1. lépésben megjegyezte a szoftver verzióját. Ha a 0,5-es frissítést futtatta, az MDS-ügynök már naprakész.
 
     Ha a 0,5-es frissítés előtt szoftveres verziót futtat, a következő lépés az MDS-ügynök frissítése. A **szoftverfrissítés** lapon lépjen a **fájl frissítése elérési útra** , és keresse meg a `GenevaMonitoringAgentPackageInstaller.msi` fájlt. Ismételje meg a 2-4. lépést. A virtuális tömb újraindítása után jelentkezzen be a helyi webes felhasználói felületre.
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tehet közzé egyéni hirdetményt egy meglév�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88270767"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Hirdetmény küldése a laborba Azure DevTest Labs
@@ -25,17 +25,17 @@ A bejelentési funkció ideiglenes értesítésekhez használható.  Ha már nin
 ## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>A hirdetmény egy meglévő laborban való közzétételének lépései
 
 1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Ha szükséges, válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. (Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás**alatt).
+1. Ha szükséges, válassza a **minden szolgáltatás** lehetőséget, majd válassza a **DevTest Labs** elemet a listából. (Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás** alatt).
 1. A Labs listából válassza ki azt a labort, amelyben közzé kívánja venni a bejelentést.
-1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok**lehetőséget.
+1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok** lehetőséget.
 
     ![Konfigurálás és házirendek gomb](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. A **Beállítások**területen kattintson a **labor bejelentése**lehetőségre.
+1. A **Beállítások** területen kattintson a **labor bejelentése** lehetőségre.
 
     ![Labor bejelentése gomb](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Ha a laborban lévő felhasználók számára szeretne üzenetet létrehozni, állítsa az **Igen**értékre **a beállítást.**
+1. Ha a laborban lévő felhasználók számára szeretne üzenetet létrehozni, állítsa az **Igen** értékre **a beállítást.**
 
 1. Megadhat egy **lejárati dátumot** , amely azt a dátumot és időpontot adja meg, amely után a bejelentés már nem jelenik meg a felhasználók számára. Ha nem ad meg lejárati dátumot, a bejelentés addig marad, amíg le nem tiltja.
 
@@ -55,7 +55,7 @@ A bejelentési funkció ideiglenes értesítésekhez használható.  Ha már nin
 
 1. Válassza a **Mentés** lehetőséget, ha a bejelentés készen áll a közzétételre.
 
-Ha már nem szeretné megjeleníteni ezt a hirdetményt a labor felhasználói számára, térjen vissza a **labor bejelentése** oldalra, és állítsa a **nem**értékre **a beállítást.** Ha lejárati dátumot adott meg, a hirdetmény automatikusan le lesz tiltva ezen a napon és időpontban.
+Ha már nem szeretné megjeleníteni ezt a hirdetményt a labor felhasználói számára, térjen vissza a **labor bejelentése** oldalra, és állítsa a **nem** értékre **a beállítást.** Ha lejárati dátumot adott meg, a hirdetmény automatikusan le lesz tiltva ezen a napon és időpontban.
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>A bejelentések megtekintésének lépései a felhasználók számára
 

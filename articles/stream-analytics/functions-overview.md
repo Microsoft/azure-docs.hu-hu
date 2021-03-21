@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.openlocfilehash: c671d3989fa46fa7546ba042b9132e19d80265a1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020502"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények Azure Stream Analytics
@@ -51,7 +51,7 @@ A futásidejű hibák végzetesnek minősülnek, és tevékenység-és erőforr�
 
 Az adatfeldolgozás során felmerülő kivétel a Azure Stream Analyticsban lévő adatfelhasználás során felmerülő katasztrofális hiba. A felhasználó által definiált függvények nagyobb valószínűséggel okozhatnak kivételeket, és a feldolgozás leállhat. A probléma elkerüléséhez használjon egy *try-catch* blokkot a JavaScriptben vagy a C#-ban a kivételek elvégzéséhez a kód végrehajtása során. A kifogott kivételek naplózása és kezelése rendszerhiba miatt sikertelen lehet. Javasoljuk, hogy mindig az egyéni kódot egy *try-catch* blokkba csomagolja, hogy elkerülje a váratlan kivételek ledobását a feldolgozó motorra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználó által definiált JavaScript-függvények Azure Stream Analytics](stream-analytics-javascript-user-defined-functions.md)
 * [JavaScript felhasználó által definiált összesítések Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)

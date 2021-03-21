@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618926"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Biztonságos távoli hozzáférés a Azure Active Directory Domain Services virtuális gépekhez
@@ -99,7 +99,7 @@ A felügyelt tartományhoz való integráláshoz a következő további konfigur
 
 A rendszer a bejelentkezéskor további hitelesítési tényezőt kér a felhasználóktól, például szöveges üzenetben vagy Rákérdezés a Microsoft Authenticator alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az üzembe helyezés rugalmasságának javításáról: [Távoli asztali szolgáltatások magas rendelkezésre állású][rds-high-availability].
 

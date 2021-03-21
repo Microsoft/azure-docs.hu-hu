@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: e83d8941d1be7fd36f53a881a21716252ad01954
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618348"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Oktatóanyag: a jelszó-szinkronizálás engedélyezése Azure Active Directory Domain Services hibrid környezetekben
 
-Hibrid környezetek esetén egy Azure Active Directory (Azure AD) bérlő konfigurálható úgy, hogy Azure AD Connect használatával szinkronizáljon a helyszíni Active Directory tartományi szolgáltatások (AD DS) környezettel. Alapértelmezés szerint a Azure AD Connect nem szinkronizálja az Azure Active Directory Domain Services (Azure AD DS) számára szükséges örökölt NT LAN Manager-(NTLM-) és Kerberos-jelszavak kivonatait.
+Hibrid környezetek esetén egy Azure Active Directory (Azure AD) bérlő konfigurálható úgy, hogy Azure AD Connect használatával szinkronizáljon a helyszíni Active Directory Domain Services (AD DS) környezettel. Alapértelmezés szerint a Azure AD Connect nem szinkronizálja az Azure Active Directory Domain Services (Azure AD DS) számára szükséges örökölt NT LAN Manager-(NTLM-) és Kerberos-jelszavak kivonatait.
 
 Ha az Azure AD DSt a helyszíni AD DS-környezetből szinkronizált fiókokkal szeretné használni, konfigurálnia kell Azure AD Connect az NTLM-és Kerberos-hitelesítéshez szükséges jelszavak kivonatok szinkronizálásához. Azure AD Connect konfigurálása után a helyszíni fiók létrehozása vagy a jelszó módosítása esemény is szinkronizálja az örökölt jelszó-kivonatokat az Azure AD-be.
 
@@ -62,7 +62,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
 1. A Azure AD Connect telepített számítógépen a Start menüben nyissa meg a **Azure AD Connect > szinkronizációs szolgáltatást**.
 1. Válassza az **Összekötők** fület. A helyszíni AD DS környezet és az Azure AD közötti szinkronizálás létrehozásához használt kapcsolati adatok listája.
 
-    A **típus** a helyszíni AD DS-összekötőhöz tartozó *Windows Azure Active Directory (Microsoft)* értéket jelöli az Azure ad-összekötőhöz vagy a *Active Directory tartományi szolgáltatásokhoz* . Jegyezze fel a PowerShell-parancsfájlban használandó összekötők nevét a következő lépésben.
+    A **típus** a helyszíni AD DS-összekötőhöz tartozó *Windows Azure Active Directory (Microsoft)* értéket jelöli az Azure ad-összekötőhöz vagy a *Active Directory Domain Serviceshoz* . Jegyezze fel a PowerShell-parancsfájlban használandó összekötők nevét a következő lépésben.
 
     ![Az összekötők neveinek listázása a Sync Service Managerban](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
@@ -99,7 +99,7 @@ A Azure AD Connect az Azure AD-vel való szinkronizálásra van telepítve és k
 
     A címtár méretétől függően a fiókok és csoportok száma alapján a régi jelszó-kivonatok Azure AD-ba való szinkronizálása hosszabb időt is igénybe vehet. A rendszer ezután szinkronizálja a jelszavakat a felügyelt tartományba az Azure AD-vel való szinkronizálás után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta a következőket:
 

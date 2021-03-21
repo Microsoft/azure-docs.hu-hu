@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005877"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple-Eszközkezelő eszköz összefoglalási paneljének használata
@@ -51,7 +51,7 @@ Az Essentials terület a fontos tulajdonságok némelyikét rögzíti, például
 
 * A **megosztások** vagy **kötetek** csempe az eszközön az állapot szerint csoportosított megosztások vagy kötetek számának összegzését tartalmazza. A csempére kattintva nyissa meg a **megosztások**  vagy **kötetek** listája panelt, majd kattintson egy egyéni megosztásra vagy kötetre a tulajdonságainak megtekintéséhez vagy módosításához. További információ: a [megosztások kezelése](storsimple-virtual-array-manage-shares.md) vagy a [kötetek kezelése](storsimple-virtual-array-manage-volumes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbiak végrehajtásának módját ismerheti meg:
 - [Megosztások kezelése StorSimple virtuális tömbben](storsimple-virtual-array-manage-shares.md)
     

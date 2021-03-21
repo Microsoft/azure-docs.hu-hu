@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005928"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
@@ -70,7 +70,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 6. Az **eszközbeállítások** lapon:
    
    1. Rendeljen egyedi **nevet** az eszközhöz. Ez a név 1-15 karakterből állhat, és tartalmazhat betűt, számot és kötőjelet.
-   2. Kattintson a **File server** :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: létrehozandó eszköz **típusának** fájlkiszolgáló ikonjára. A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
+   2. Kattintson a  :::image type="icon" source="./media/storsimple-virtual-array-deploy3-fs-setup/image6.png"::: létrehozandó eszköz **típusának** fájlkiszolgáló ikonjára. A fájlkiszolgálók lehetővé teszik a megosztott mappák létrehozását.
    3. Mivel az eszköz egy fájlkiszolgáló, csatlakoztatnia kell az eszközt egy tartományhoz. Adja meg a **tartománynevet**.
    4. Kattintson az **Alkalmaz** gombra.
 7. Ekkor megjelenik egy párbeszédpanel. Adja meg a tartománya hitelesítő adatait a megadott formátumban. Kattintson a pipa ikonra. A tartományi hitelesítő adatok ellenőrzése megtörtént. Hibaüzenet jelenik meg, ha a hitelesítő adatok helytelenek.
@@ -211,5 +211,5 @@ Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megos
    ![A fájlkezelő képernyőképe. Az újonnan létrehozott megosztásokat jelölő több mappa látható.](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. Mostantól hozzáadhat fájlokat a megosztásokhoz, és biztonsági mentést készíthet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a [StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).
