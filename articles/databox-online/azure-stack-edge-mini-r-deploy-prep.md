@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: b6745ed879f02a341027417b54eb459b5bfed705
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: ed11b0bb00a571fb4cefc51a708432baef88184d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762941"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104613073"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Oktatóanyag: Felkészülés a Azure Stack Edge mini R üzembe helyezésére
 
@@ -32,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Azure Stack Edge mini R üzembe helyezéséhez tekintse meg az alábbi oktatóanyagokat az előírt sorozatban.
 
-| Lépés | Leírás |
+| Lépés | Description |
 | --- | --- |
 | **Előkészítése** |Ezeket a lépéseket a közelgő üzembe helyezés előkészítésekor kell elvégezni. |
 | **[Üzembe helyezési konfigurációs ellenőrzőlista](#deployment-configuration-checklist)** |Ezzel az ellenőrzőlistával információkat gyűjthet és rögzíthet az üzembe helyezés előtt és közben. |
@@ -84,6 +84,8 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 Ha rendelkezik meglévő Azure Stack Edge-erőforrással a fizikai eszköz kezeléséhez, hagyja ki ezt a lépést, és lépjen [az aktiválási kulcs lekérése](#get-the-activation-key)elemre.
 
+### <a name="portal"></a>[Portál](#tab/azure-portal)
+
 Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a következő lépéseket a Azure Portal.
 
 1. A Microsoft Azure hitelesítő adataival jelentkezzen be a Azure Portalba ezen az URL-címen: [https://portal.azure.com](https://portal.azure.com) .
@@ -114,7 +116,7 @@ Azure Stack peremhálózati erőforrás létrehozásához hajtsa végre a követ
     |Beállítás  |Érték  |
     |---------|---------|
     |Név   | Az erőforrást azonosító valódi név.<br>A név 2 – 50 karakterből állhat, beleértve a betűket, számokat és kötőjeleket.<br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.        |
-    |Régió     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
+    |Region     |Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.<br> Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon.|
 
     ![4. erőforrás létrehozása](media/azure-stack-edge-mini-r-deploy-prep/create-resource-4.png)
 
@@ -152,6 +154,51 @@ A megrendelés elhelyezése után a Microsoft áttekinti a rendelést, és elkü
 
 Ha a rendelési folyamat során problémákba ütközik, tekintse meg a [rendelési problémák elhárítása](azure-stack-edge-troubleshoot-ordering.md)című témakört.
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Ha szükséges, készítse elő a környezetet az Azure CLI-hez.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Azure Stack Edge-erőforrás létrehozásához futtassa az alábbi parancsokat az Azure CLI-ben.
+
+1. Hozzon létre egy erőforráscsoportot az az [Group Create](/cli/azure/group#az_group_create) paranccsal, vagy használjon egy meglévő erőforráscsoportot:
+
+   ```azurecli
+   az group create --name myasepgpu1 --location eastus
+   ```
+
+1. Eszköz létrehozásához használja az az [databoxedge Device Create](/cli/azure/databoxedge/device#az_databoxedge_device_create) parancsot:
+
+   ```azurecli
+   az databoxedge device create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --location eastus --sku EdgeMR_Mini
+   ```
+
+   Az eszköz üzembe helyezésének földrajzi régiójához legközelebb eső helyet válasszon. A régió csak az eszközkezelés metaadatait tárolja. A tényleges adatok bármilyen Storage-fiókban tárolhatók.
+
+   Az Azure Stack Edge-erőforrást tartalmazó régiók listáját itt tekintheti meg: [régiónként elérhető Azure-termékek](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Azure Government használata esetén az összes kormányzati régió elérhető az [Azure-régiókban](https://azure.microsoft.com/global-infrastructure/regions/)látható módon.
+
+1. Rendelés létrehozásához futtassa az az [databoxedge Order Create](/cli/azure/databoxedge/order#az_databoxedge_order_create) parancsot:
+
+   ```azurecli
+   az databoxedge order create --resource-group myasepgpu1 \
+      --device-name myasegpu1 --company-name "Contoso" \
+      --address-line1 "1020 Enterprise Way" --city "Sunnyvale" \
+      --state "California" --country "United States" --postal-code 94089 \
+      --contact-person "Gus Poland" --email-list gus@contoso.com --phone 4085555555
+   ```
+
+Az erőforrás létrehozása néhány percet vesz igénybe. Futtassa az az [databoxedge Order show](/cli/azure/databoxedge/order#az_databoxedge_order_show) parancsot a sorrend megjelenítéséhez:
+
+```azurecli
+az databoxedge order show --resource-group myasepgpu1 --device-name myasegpu1 
+```
+
+A megrendelés elvégzése után a Microsoft áttekinti a rendelést, és e-mailben kapcsolatba lép Önnel a szállítási adatokkal.
+
+---
+
 ## <a name="get-the-activation-key"></a>Az aktiválási kulcs lekérése
 
 Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérnie az aktiválási kulcsot. Ezzel a kulccsal aktiválhatja és összekapcsolhatja Azure Stack Edge mini R-eszközét az erőforrással. Ezt a kulcsot lekérheti most, amíg az Azure Portalon van.
@@ -174,7 +221,7 @@ Az Azure Stack Edge-erőforrás működésének megkezdése után le kell kérni
 > - Az aktiválási kulcs három nappal a létrehozása után lejár.
 > - Ha a kulcs lejárt, állítson be egy új kulcsot. A régebbi kulcs nem lesz érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a Azure Stack Edge-témaköröket, például a következőket:
 

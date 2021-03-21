@@ -8,10 +8,10 @@ ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034693"
 ---
 # <a name="what-is-an-ontology"></a>Mi az az ontológia? 
@@ -40,7 +40,7 @@ Mivel az Azure Digital Twins modelljei a [digitális Twins Definition Language (
 
 Három lehetséges stratégia létezik az iparági szabványnak megfelelő ontológiákat és a DTDL integrálására. Kiválaszthatja az igényeinek leginkább megfelelőt:
 
-| Stratégia | Leírás | Források |
+| Stratégia | Description | Erőforrások |
 | --- | --- | --- |
 | **Bevezetés** | A megoldást egy olyan nyílt forráskódú DTDL ontológia használatával indíthatja el, amely széles körben elfogadott iparági szabványokra épül. Használhatja ezeket a modelleket is, vagy kiterjesztheti azokat a testreszabott megoldásokhoz tartozó saját kiegészítésekkel. | [*Fogalmak: az &nbsp; &nbsp; iparági &nbsp; szabványnak megfelelő ontológiákat bevezetése*](concepts-ontologies-adopt.md)<br><br>[*Fogalmak: a &nbsp; &nbsp; ontológiákat kiterjesztése*](concepts-ontologies-extend.md) |
 | **Átalakítása** | Ha már rendelkezik meglévő modellekkel más szabványos formátumban, a DTDL konvertálhatja őket az Azure digitális Twins használatával. | [*Fogalmak: &nbsp; az &nbsp; ontológiákat konvertálása*](concepts-ontologies-convert.md)<br><br>[*Fogalmak: a &nbsp; &nbsp; ontológiákat kiterjesztése*](concepts-ontologies-extend.md) |

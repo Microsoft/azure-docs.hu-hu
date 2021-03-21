@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a176a30a1e21ec03c2da329785ab895ec67a4faf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104596416"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722565"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>Azure spot Virtual Machines a virtuálisgép-méretezési csoportokhoz 
 
@@ -44,8 +44,8 @@ Az Azure helyszíni virtuális gépek bármely régióba üzembe helyezhetők, k
 Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
 
 -   Nagyvállalati Szerződés
--   Utólagos elszámolású ajánlat kódja 003P
--   Szponzorált
+-   Utólagos elszámolású ajánlat kódja (003P)
+-   Szponzorált (0036P és 0136P)
 - A felhőalapú szolgáltató (CSP) esetében tekintse meg a [partneri központot](/partner-center/azure-plan-get-started) , vagy forduljon közvetlenül a partneréhez.
 
 ## <a name="eviction-policy"></a>Kiürítési szabályzat
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok

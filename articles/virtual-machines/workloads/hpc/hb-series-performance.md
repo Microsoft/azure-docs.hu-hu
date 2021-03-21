@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/09/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f2d24279d3e74774da05eba42c0e916370d4f1c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f37f0bb14cf29551e85c0e592c327b86048f18e1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101672151"
+ms.locfileid: "104721262"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>HB sorozatú virtuális gépek méretei
 
@@ -59,5 +59,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Olvassa el a legújabb bejelentéseket és néhány nagy teljesítményű számítástechnikai (HPC) példát és eredményt az [Azure számítási technikai közösségének blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti nézetét lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

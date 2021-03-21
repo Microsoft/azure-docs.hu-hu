@@ -13,7 +13,7 @@
     - name: Profil és -végpont létrehozása
       href: cdn-create-new-endpoint.md
     - name: Profil és végpont létrehozása – ARM-sablon
-      displayName: Resource Manager
+      displayName: 'Resource Manager, az group, az deployment group, New-AzResourceGroup, New-AzResourceGroupDeployment, Remove-AzResourceGroup'
       href: create-profile-endpoint-template.md
 - name: Oktatóanyagok
   items:
@@ -31,6 +31,11 @@
   items:
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=cdn'
+    - name: Azure CLI
+      items:
+        - name: Profil és -végpont létrehozása
+          displayName: 'az cdn profile, az cdn endpoint, az cdn origin, az cdn custom-domain, cdn origin-group'
+          href: ./scripts/cli/cdn-azure-cli-create-endpoint.md
 - name: Alapelvek
   items:
     - name: Biztonság

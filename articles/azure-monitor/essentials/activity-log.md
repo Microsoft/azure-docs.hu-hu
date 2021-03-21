@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049185"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722854"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenységnapló
 A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító [platformnaplója](./platform-logs-overview.md). Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](../logs/data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
@@ -27,6 +27,11 @@ A Tevékenységnaplót az Azure Portal legtöbb menüjéből elérheti. A megnyi
 ![Műveletnapló megtekintése](./media/activity-log/view-activity-log.png)
 
 A műveletnapló-kategóriák leírását lásd: az [Azure Activity log esemény sémája](activity-log-schema.md#categories).
+
+## <a name="download-the-activity-log"></a>A műveletnapló letöltése
+Válassza a **Letöltés CSV-ként** lehetőséget az aktuális nézet eseményeinek letöltéséhez.
+
+![Tevékenység naplójának letöltése](media/activity-log/download-activity-log.png)
 
 ### <a name="view-change-history"></a>Változási előzmények megtekintése
 
@@ -201,12 +206,12 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
 
     | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | Név |Igen |A napló profiljának neve. |
-    | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
-    | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Név |Yes |A napló profiljának neve. |
+    | StorageAccountId |No |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
+    | serviceBusRuleId |No |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Hely |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
-    | RetentionInDays |Igen |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
-    | Kategória |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_ és _művelet_. |
+    | RetentionInDays |Yes |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
+    | Kategória |No |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_ és _művelet_. |
 
 ### <a name="example-script"></a>Példaszkript
 A következő példa egy PowerShell-szkriptet hoz létre egy olyan log-profil létrehozásához, amely a tevékenység naplóját a Storage-fiókra és az Event hub-ra írja.
@@ -244,12 +249,12 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
 
     | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | name |Igen |A napló profiljának neve. |
-    | Storage-Account-ID |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
-    | helyek |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti a használatával `az account list-locations --query [].name` . |
-    | nap |Igen |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
-    |engedélyezve | Igen |Igaz vagy hamis?  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
-    | kategóriák |Igen |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
+    | name |Yes |A napló profiljának neve. |
+    | Storage-Account-ID |Yes |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
+    | helyek |Yes |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti a használatával `az account list-locations --query [].name` . |
+    | nap |Yes |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
+    |engedélyezve | Yes |Igaz vagy hamis?  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
+    | kategóriák |Yes |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület

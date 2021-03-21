@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f7466931537745fb188a3bdb05646bff19912e8
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466252"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
@@ -175,7 +175,7 @@ Ha egyéni beállításokat használ, akkor a telepítés megkezdése előtt Ön
 ### <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 A szinkronizálási szolgáltatás más fiókokban is futhat. Egy **virtuális szolgáltatásfiók** (VSA), egy **csoportosan felügyelt szolgáltatásfiók** (gMSA/önállóan felügyelt szolgáltatásfiókot) vagy egy normál felhasználói fiók használatával futtatható. A támogatott beállítások a csatlakozás április 2017-os verziójával módosultak, amikor új telepítést végez. Ha Azure AD Connect korábbi kiadásáról frissít, ezek a további beállítások nem érhetők el.
 
-| Fiók típusa | Telepítési lehetőség | Leírás |
+| Fiók típusa | Telepítési lehetőség | Description |
 | --- | --- | --- |
 | [Virtual Service-fiók](#virtual-service-account) | Express és Custom, 2017 április és újabb | Ez a beállítás az összes expressz telepítéshez használatos, a tartományvezérlőn lévő telepítések kivételével. Egyéni esetén ez az alapértelmezett beállítás, kivéve, ha egy másik lehetőség van használatban. |
 | [Csoportosan felügyelt szolgáltatásfiók](#group-managed-service-account) | Custom, 2017 április és újabb | Ha távoli SQL Servert használ, javasoljuk, hogy egy csoportosan felügyelt szolgáltatásfiókot használjon. |

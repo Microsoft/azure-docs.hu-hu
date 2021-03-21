@@ -11,10 +11,10 @@ ms.date: 03/01/2021
 ms.author: tamram
 ms.custom: security-recommendations
 ms.openlocfilehash: 40067815ad582191606ad5a53cf06c9584d83350
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102618015"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
@@ -53,7 +53,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | Ha egy szolgáltatás SAS-je nem egy tárolt hozzáférési szabályzathoz van társítva, akkor a lejárati időt állítsa egy órára vagy kevesebbre. | Nem lehet visszavonni egy olyan szolgáltatáshoz tartozó SAS-t, amely nincs hozzárendelve egy tárolt hozzáférési szabályzathoz. Emiatt a lejárati időt úgy kell korlátozni, hogy az SAS egy órán vagy kevesebb ideig érvényes legyen. | - |
 | Névtelen nyilvános olvasási hozzáférés letiltása a tárolók és a Blobok számára | A névtelen nyilvános olvasási hozzáférés egy tárolóhoz és a Blobok csak olvasási hozzáférést biztosítanak ezekhez az erőforrásokhoz bármely ügyfél számára. Kerülje a nyilvános olvasási hozzáférés engedélyezését, ha a forgatókönyv megköveteli. Ha meg szeretné tudni, hogyan tilthatja le a névtelen nyilvános hozzáférést egy Storage-fiókhoz, olvassa el a [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára című témakört.  | - |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|

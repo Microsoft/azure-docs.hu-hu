@@ -2,14 +2,14 @@
 author: rothja
 ms.service: app-service
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 03/17/2020
 ms.author: msangapu
-ms.openlocfilehash: bcbbd133c71b2917b73c200c4453ea57385fcaf1
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 80d295d017b11d86df7a3fe4c14afc7a5665cd96
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102532744"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612986"
 ---
 | Erőforrás | Ingyenes | Megosztott | Alapszintű | Standard | Prémium (v1-v3) | Izolált </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,18 +45,28 @@ ms.locfileid: "102532744"
 | Kudu | X | X | X | X | X | X |
 | [Hitelesítés és engedélyezés](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
 | [App Service felügyelt tanúsítványok (nyilvános előzetes verzió)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
-| SLA | |  |99,95%|99,95%|99,95%|99,95%|  
+| SLA | |  |99,95%|99,95%|99,95%|99,95%|
 
-<sup>1</sup> Az alkalmazások és a tárolási kvóták App Service csomaggal rendelkeznek, hacsak másként nincs jelezve.  
-<sup>2</sup> Az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.  
-<sup>3</sup> A dedikált példányok különböző méretűek lehetnek. További információ: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).  
-<sup>4</sup> További kérések esetén engedélyezett.  
-<sup>5</sup> A tárolási korlát a teljes tartalom mérete az adott app Service-csomagban lévő összes alkalmazásban. Az egyetlen erőforráscsoport és régió összes app Service-csomagjában lévő alkalmazások teljes tartalmának mérete nem haladhatja meg az 500 GB-ot.  
-<sup>6</sup> Ezeket az erőforrásokat a dedikált példányokon található fizikai erőforrások korlátozzák (a példány mérete és a példányok száma).  
-<sup>7</sup> Ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a által meghatározottak szerint `maxConcurrentRequestsPerCpu` ) a következők: 7 500/kisméretű virtuális gép, 15 000/közepes méretű virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).  
-<sup>8</sup> A maximális IP-kapcsolatok a példányok száma, és a példány méretétől függ: 1 920/B1/S1/P1V3 példány, 3 968/B2/S2/P2V3-példány, 8 064/B3/S3/P3V3 példány.  
-<sup>9</sup> Az előfizetések App Service-tanúsítvány kvóta-korlátja egy támogatási kérelem alapján növelhető, amely legfeljebb 200 lehet.  
-<sup>10</sup> A izolált App Service SKU-k belsőleg terheléselosztást (ILB) is használhatnak a Azure Load Balancer, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen a ILB elkülönített App Service egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek a ILB hálózati végponthoz.  
-<sup>11</sup> Az egyéni végrehajtható fájlokat és/vagy parancsfájlokat igény szerint, ütemezés szerint, vagy a App Service-példányon belüli háttérbeli feladatként futtathatja. A folyamatos webjobs-végrehajtáshoz mindig be kell jelentkezni. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.
+<sup>1</sup> az alkalmazások és a tárolási kvóták app Service csomagra vonatkoznak, hacsak másként nincs jelezve.
 
-<sup>12</sup> A meztelen tartományok nem támogatottak. Csak a standard tanúsítványok kiállítása (helyettesítő tanúsítványok nem érhetők el). Csak egy ingyenes tanúsítványra korlátozódik egyéni tartományon.
+<sup>2</sup> az ezeken a gépeken üzemeltethető alkalmazások tényleges száma az alkalmazások tevékenységéből, a gépi példányok méretétől és a megfelelő erőforrás-felhasználástól függ.
+
+<sup>3</sup> a dedikált példányok különböző méretűek lehetnek. További információ: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+
+<sup>4</sup> további kérelem esetén engedélyezett.
+
+<sup>5</sup> a tárolási korlát a teljes tartalom mérete az adott app Service-csomagban lévő összes alkalmazásban. Az egyetlen erőforráscsoport és régió összes app Service-csomagjában lévő alkalmazások teljes tartalmának mérete nem haladhatja meg a 500 GB-ot. App Service üzemeltetett alkalmazások fájlrendszer-kvótáját az adott régióban és erőforráscsoporthoz létrehozott App Service csomagok összesítése határozza meg.
+
+<sup>6</sup> ezeket az erőforrásokat a dedikált példányokon található fizikai erőforrások korlátozzák (a példány mérete és a példányok száma).
+
+<sup>7</sup> ha az alkalmazást az alapszintű csomagból két példányra méretezi, akkor a két példány esetében 350 egyidejű kapcsolat. A standard szinthez és a fentiekhez nem tartoznak elméleti korlátok a webes szoftvercsatornák számára, más tényezők pedig korlátozhatják a webes szoftvercsatornák számát. Például a maximálisan megengedett kérelmek (a által meghatározottak szerint `maxConcurrentRequestsPerCpu` ) a következők: 7 500/kisméretű virtuális gép, 15 000/közepes méretű virtuális gép (7 500 x 2 mag) és 75 000/nagyméretű virtuális gép (18 750 x 4 mag).
+
+<sup>8</sup> a maximális IP-kapcsolat a példányok száma, és a példány méretétől függ: 1 920/B1/S1/P1V3 példány, 3 968/B2/S2/P2V3-példány, 8 064/B3/S3/P3V3 példány.
+
+<sup>9</sup> az előfizetések app Service-tanúsítvány kvóta-korlátja egy támogatási kérésen keresztül növelhető, legfeljebb 200.
+
+a <sup>10</sup> izolált app Service SKU-k belsőleg terheléselosztást (ILB) is használhatnak a Azure Load Balancer, így nincs nyilvános kapcsolat az internetről. Ennek eredményeképpen a ILB elkülönített App Service egyes funkcióit olyan gépekről kell használni, amelyek közvetlen hozzáféréssel rendelkeznek a ILB hálózati végponthoz.
+
+<sup>11</sup> egyéni végrehajtható fájl és/vagy parancsfájl igény szerint, ütemezés szerint, vagy a app Service-példányon belüli háttérbeli feladatként való folyamatos futtatása. A folyamatos webjobs-végrehajtáshoz mindig be kell jelentkezni. Nincs előre meghatározott korlát a App Service-példányban futtatható webjobs-feladatok számánál. Az alkalmazás kódjának működéséhez szükséges gyakorlati korlátozások is megváltoznak.
+
+<sup>12</sup> meztelen tartomány nem támogatott. Csak a szabványos tanúsítványok kiállítása (a helyettesítő tanúsítványok nem érhetők el). Csak egy ingyenes tanúsítványra korlátozódik egyéni tartományon.

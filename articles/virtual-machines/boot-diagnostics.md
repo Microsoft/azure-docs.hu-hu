@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 030f19d61e19349de7e2d3416a3aee1385fd03c8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738118"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607522"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure rendszerindítási diagnosztika
 
@@ -106,9 +106,9 @@ Minden, a 2020-06-01-es API-verzió támogatja a felügyelt rendszerindítási d
 - A felügyelt rendszerindítási diagnosztika nem támogatja a nem felügyelt operációsrendszer-lemezeket használó virtuális gépeket.
 - A rendszerindítási diagnosztika nem támogatja a Premium Storage-fiókokat, ha prémium szintű Storage-fiókot használ a rendszerindítási diagnosztikai felhasználóknak a `StorageAccountTypeNotSupported` virtuális gép indításakor hibaüzenet jelenik meg. 
 - A felügyelt Storage-fiókok a Resource Manager API "2020-06-01" és újabb verzióiban támogatottak.
-- Az Azure soros konzol jelenleg nem kompatibilis a rendszerindítási diagnosztika felügyelt tárolási fiókjával. További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md).
+- Az Azure soros konzol jelenleg nem kompatibilis a rendszerindítási diagnosztika felügyelt tárolási fiókjával. További információ az [Azure soros konzolról](/troubleshoot/azure/virtual-machines/serial-console-overview).
 - A portál csak az Egypéldányos virtuális gépekhez tartozó felügyelt Storage-fiókkal támogatja a rendszerindítási diagnosztika használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure soros konzolról](./troubleshooting/serial-console-overview.md) , valamint a [virtuális gépek Azure-ban való hibakeresésének](./troubleshooting/boot-diagnostics.md)rendszerindítási diagnosztika használatával történő használatáról.
+További információ az [Azure soros konzolról](/troubleshoot/azure/virtual-machines/serial-console-overview) , valamint a [virtuális gépek Azure-ban való hibakeresésének](/troubleshoot/azure/virtual-machines/boot-diagnostics)rendszerindítási diagnosztika használatával történő használatáról.

@@ -13,7 +13,7 @@
     - name: Hasznos tanácsok
       href: cheat-sheet.md
     - name: Ajánlott eljárások
-      href: sql-data-warehouse-best-practices.md
+      href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
     - name: Kapacitási korlátok
       href: sql-data-warehouse-service-capacity-limits.md
     - name: GYIK

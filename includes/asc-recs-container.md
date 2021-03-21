@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: 4a03a36f098035db1a91b4516dedb6a303aa41d2
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466165"
 ---
 Ebben a kategóriában **24** javaslat van.
 
-|Ajánlás |Leírás |Súlyosság |
+|Ajánlás |Description |Súlyosság |
 |---|---|---|
 |Engedélyezve kell lennie az Azure Defender for Container nyilvántartójának |Biztonságos, tárolón alapuló munkaterhelések létrehozásához győződjön meg arról, hogy a rájuk épülő lemezképek mentesek az ismert biztonsági rések.<br>Az Azure Defender for Container-beállításjegyzékek megkeresik a beállításjegyzékben a biztonsági réseket az egyes leküldett tárolók rendszerképein, és képeket tesznek elérhetővé.<br>A tárolók biztonsági helyzetének javítása és a támadások elleni védelem érdekében engedélyezze az Azure Defender számára a Container-nyilvántartásokat.<br><br>Fontos: a szervizelését ez a javaslat a tároló-beállításjegyzékek védelméhez nyújt díjat. Ha ebben az előfizetésben nem találhatók tároló-nyilvántartások, akkor nem számítunk fel díjat.<br>Ha a jövőben az előfizetéshez tartozó tároló-beállításjegyzékeket hoz létre, azok automatikusan védve lesznek, és a díjak az adott időpontban kezdődnek.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-container-registry-integration'>További információ az Azure Defender a Container-jegyzékekről.</a><br />(Kapcsolódó szabályzat: [Az Azure Defender for Container beállításjegyzékét engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)) |Magas |
 |Engedélyezni kell az Azure Defender for Kubernetes |A Kubernetes készült Azure Defender valós idejű veszélyforrások elleni védelmet biztosít a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez.<br>Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.<br><br>Fontos: a szervizelését ez a javaslat a Kubernetes-fürtök védelméhez nyújt díjat. Ha nem rendelkezik Kubernetes-fürtökkel ebben az előfizetésben, nem számítunk fel díjat.<br>Ha a későbbiekben bármilyen Kubernetes-fürtöt hoz létre ezen az előfizetésen, a rendszer automatikusan védelmet biztosít, és a díjak az adott időpontban kezdődnek.<br> <a href='https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration'>További információ az Azure Defender for Kubernetes szolgáltatásról.</a><br />(Kapcsolódó szabályzat: [Az Azure Defender for Kubernetes engedélyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)szükséges) |Magas |

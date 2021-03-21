@@ -308,6 +308,8 @@
           href: whatis-aadc-admin-agent.md
         - name: Mi az ADConnectivityTools PowerShell-modul?
           href: how-to-connect-adconnectivitytools.md
+        - name: Egyetlen objektum szinkronizálása Azure AD Connect
+          href: how-to-connect-single-object-sync.md
         - name: Kapcsolatok
           href: tshoot-connect-connectivity.md
         - name: Hibák a szinkronizálás során
@@ -336,6 +338,8 @@
           href: tshoot-connect-install-issues.md
         - name: UPN-módosítások
           href: howto-troubleshoot-upn-changes.md
+        - name: Objektumok és attribútumok végpontok közötti hibaelhárítása
+          href: 'https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes'
 - name: Referencia
   items:
     - name: Hibrid identitás – szükséges portok és protokollok

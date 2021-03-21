@@ -12,12 +12,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 02/01/2021
-ms.openlocfilehash: 6ba1ba9d8c809a805fe8691baf96350b70ec6a51
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3be01c304a40317e0d21baf6789ef1376cd89b80
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691892"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608073"
 ---
 # <a name="automate-management-tasks-using-sql-agent-jobs-in-azure-sql-managed-instance"></a>Felügyeleti feladatok automatizálása SQL Agent-feladatok használatával az Azure SQL felügyelt példányában
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -81,7 +81,7 @@ Az SQL Agent-feladatok lépései az SQL Agent által végrehajtandó műveletek 
 Az SQL-ügynök lehetővé teszi, hogy különböző típusú feladatokat hozzon létre, például a Transact-SQL-feladatok lépéseit, amelyek egyetlen Transact-SQL-köteget hajtanak végre az adatbázison, vagy az operációs rendszert [futtató, az](../../data-factory/how-to-invoke-ssis-package-managed-instance-agent.md) egyéni operációsrendszer-parancsfájlt végrehajtó operációsrendszer-parancsot, illetve PowerShell-lépéseket, amelyek lehetővé teszik az adatok SSIS-futtatókörnyezettel való betöltését [, illetve az](../managed-instance/replication-transactional-overview.md) adatbázisból
 
 > [!Note]
-> Az Azure SSIS Integration Runtime az Azure SQL felügyelt példány által üzemeltetett SSISDB való használatával kapcsolatos további információkért lásd: az [Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) segítségével Azure Data Factory](/../azure/data-factory/how-to-use-sql-managed-instance-with-ir.md).
+> Az Azure SSIS Integration Runtime az Azure SQL felügyelt példány által üzemeltetett SSISDB való használatával kapcsolatos további információkért lásd: az [Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) segítségével Azure Data Factory](../../data-factory/how-to-use-sql-managed-instance-with-ir.md).
 
 A [tranzakciós replikáció](../managed-instance/replication-transactional-overview.md) replikálhatja a táblák módosításait az Azure SQL felügyelt példányainak más adatbázisaiba, Azure SQL Database vagy SQL Server. További információ: [replikáció konfigurálása az Azure SQL felügyelt példányában](../../azure-sql/managed-instance/replication-between-two-instances-configure-tutorial.md). 
 

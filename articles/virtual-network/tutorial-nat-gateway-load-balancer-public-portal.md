@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 345ccb68ebb31460f4a75b31a7d3a946160da6e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8382dd10536a8c0475444d0cdff30340ad124e9c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657960"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722803"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Oktatóanyag: NAT-átjáró integrálása nyilvános terheléselosztó használatával a Azure Portal
 
@@ -48,14 +48,17 @@ Ebben a szakaszban egy standard Azure Load Balancer fog létrehozni.
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
+    | **Projekt részletei** |   |
     | Előfizetés               | Válassza ki előfizetését.    |    
-    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **TutorPubLBNAT-RG** karakterláncot a szövegmezőbe.|
+    | Erőforráscsoport         | Válassza az **új létrehozása** elemet, és írja be a **TutorPubLBNAT-RG** karakterláncot a szövegmezőbe. </br> Válassza az **OK** lehetőséget.|
+    | **Példány adatai** |   |
     | Name                   | **MyLoadBalancer** megadása                                   |
     | Region         | Válassza ki az USA **keleti** régióját.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
     | Termékváltozat           | Hagyja meg az alapértelmezett **standard** értéket. |
     | Szint          | Hagyja meg az alapértelmezett **területi** beállítást. |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata** lehetőséget. |
+    | **Nyilvános IP-cím** |   |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata** lehetőséget. |
     | Nyilvános IP-cím | Írja be a **myPublicIP-LB** karakterláncot a szövegmezőbe.|
     | A rendelkezésre állási zóna | Válassza ki a **felesleges zónát** a rugalmas Load Balancer létrehozásához. A Zona Load Balancer létrehozásához jelöljön ki egy 1, 2 vagy 3 típusú zónát |
     | A nyilvános IPv6-cím hozzáadása | Válassza a **Nem** lehetőséget. </br> További információ az IPv6-címekről és a Load balancerről: [Mi az az IPv6 for Azure Virtual Network?](../virtual-network/ipv6-overview.md)  |
@@ -135,7 +138,7 @@ Ebben a szakaszban egy terheléselosztó-szabályt fog létrehozni:
     | Háttérport | Adja meg a **80** értéket. |
     | A háttérkészlet | Válassza a **myBackendPool** lehetőséget.|
     | Állapotadat-mintavétel | Válassza a **myHealthProbe** lehetőséget. |
-    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15** percre. |
+    | Üresjárati időkorlát (perc) | Adja meg a **15** percet. |
     | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget. |
     | Kimenő forrás hálózati címfordítása (SNAT) | Válassza **a (javasolt) a kimenő szabályok használata lehetőséget, hogy a háttér-készlet tagjai hozzáférjenek az internethez.** |
 
@@ -237,7 +240,7 @@ Ezek a virtuális gépek hozzáadódnak a korábban létrehozott terheléseloszt
     | NIC hálózati biztonsági csoport | Válassza a **speciális** lehetőséget|
     | Hálózati biztonsági csoport konfigurálása | Válassza az **Új létrehozása** lehetőséget. </br> A **hálózati biztonsági csoport létrehozása** területen adja meg  a myNSG **nevet**. </br> A **Bejövő szabályok** területen válassza **a + Bejövő szabály hozzáadása** elemet. </br> A  **célport tartománya** területen adja meg a **80** értéket. </br> A **Priority (prioritás**) területen adja meg a **100** értéket. </br> A **név** mezőben adja meg a **: myhttprule** </br> Válassza a **Hozzáadás** lehetőséget </br> Válassza az **OK** gombot. |
     | **Terheléselosztás**  |
-    | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Válassza az **Igen** lehetőséget. |
+    | Elhelyezi ezt a virtuális gépet egy meglévő terheléselosztási megoldás mögött? | Jelölje be a jelölőnégyzetet.|
     | **Terheléselosztási beállítások** |
     | Terheléselosztási beállítások | **Azure Load Balancer** kiválasztása |
     | Terheléselosztó kiválasztása | **MyLoadBalancer** kiválasztása  |
@@ -302,7 +305,7 @@ Ebben a szakaszban teszteljük a NAT-átjárót. Először a NAT-átjáró nyilv
 
 2. Jegyezze fel a nyilvános IP-címet:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="A NAT-átjáró nyilvános IP-címének felderítése" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/find-public-ip.png" alt-text="Képernyőfelvétel: a NAT-átjáró nyilvános IP-címének felderítése." border="true":::
 
 3. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás** lehetőséget, majd az erőforrások listából válassza ki a **myVM1** , amely a **TutorPubLBNAT-RG** erőforráscsoporthoz található.
 
@@ -318,7 +321,7 @@ Ebben a szakaszban teszteljük a NAT-átjárót. Először a NAT-átjáró nyilv
 
 9. Ellenőrizze, hogy a megjelenő IP-cím megegyezik-e az előző lépésben feljegyzett NAT-átjáró címével:
 
-    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Külső kimenő IP-címet mutató Internet Explorer" border="true":::
+    :::image type="content" source="./media/tutorial-nat-gateway-load-balancer-public-portal/my-ip.png" alt-text="Az Internet Explorer külső kimenő IP-címet megjelenítő képernyőképe." border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

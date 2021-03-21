@@ -10,18 +10,26 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 75e187369eccefb255ae2bbd88de79afbc4fd4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a47982012dcaa2eabda93c93508b23f30525812d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669474"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720389"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Ajánlott eljárások kiszolgáló nélküli SQL-készlethez az Azure szinapszis Analyticsben
 
 Ebben a cikkben az ajánlott eljárások gyűjteményét találja a kiszolgáló nélküli SQL-készlet használatára. A kiszolgáló nélküli SQL-készlet az Azure szinapszis Analytics egyik erőforrása.
 
 A kiszolgáló nélküli SQL-készlet lehetővé teszi a fájlok lekérdezését az Azure Storage-fiókokban. Nem rendelkezik helyi tárolási vagy betöltési képességekkel. Tehát az összes olyan fájl, amelyet a lekérdezés a kiszolgáló nélküli SQL-készleten kívülre mutat. A fájlok tárterületről való olvasásával kapcsolatos minden művelet hatással lehet a lekérdezés teljesítményére.
+
+## <a name="client-applications-and-network-connections"></a>Ügyfélalkalmazások és hálózati kapcsolatok
+
+Győződjön meg arról, hogy az ügyfélalkalmazás csatlakozik a legközelebbi lehetséges szinapszis-munkaterülethez az optimális kapcsolattal.
+- Egy ügyfélalkalmazás közös elhelyezése a szinapszis munkaterületen. Ha olyan alkalmazásokat használ, mint például a Power BI vagy az Azure Analysis Service, ügyeljen arra, hogy azok ugyanabban a régióban legyenek, ahol elhelyezte a szinapszis-munkaterületet. Szükség esetén hozza létre azokat a különálló munkaterületeket, amelyek párosítva vannak az ügyfélalkalmazások számára. Az ügyfélalkalmazás és a szinapszis munkaterület különböző régiókban való elhelyezése nagyobb késést és lassabb adatfolyamot eredményezhet.
+- Ha a helyszíni alkalmazásból olvas be adatait, győződjön meg arról, hogy a szinapszis munkaterület abban a régióban található, amely közel van a helyhez.
+- Nagy mennyiségű adattal nem rendelkezik hálózati sávszélességgel kapcsolatos problémákkal.
+- Ne használja a szinapszis Studio-t nagy mennyiségű érték visszaküldéséhez. A szinapszis Studio olyan webes eszköz, amely HTTPS protokollt használ az adatok átviteléhez. Nagy mennyiségű adattal Azure Data Studio vagy SQL Server Management Studio használatával olvashatja el.
 
 ## <a name="storage-and-content-layout"></a>Tárolás és tartalom elrendezése
 
@@ -55,6 +63,10 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 - Próbálja megtartani a CSV-fájl méretét 100 MB és 10 GB között.
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
 - Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja. Lásd: [fájlnév és filepath függvények használata adott partíciók célzásához](#use-filename-and-filepath-functions-to-target-specific-partitions).
+
+### <a name="colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool"></a>A CosmosDB analitikai tároló és kiszolgáló nélküli SQL-készlet közös elhelyezése
+
+Győződjön meg arról, hogy a CosmosDB analitikai tárolója ugyanahhoz a régióhoz kerül, mint a szinapszis-munkaterület. A régiók közötti lekérdezések nagy késéseket okozhatnak.
 
 ## <a name="csv-optimizations"></a>CSV-optimalizálások
 

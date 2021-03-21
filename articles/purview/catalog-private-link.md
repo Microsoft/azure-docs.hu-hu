@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: d9088e5c6302c41c64f2a2e9034e7c3d659e37eb
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 09fa10e7f7751321601c5c4871b2cf36ccf6f01f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102615635"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720941"
 ---
 # <a name="use-private-endpoints-for-your-purview-account"></a>Privát végpontok használata a hatáskörébe tartozó fiókhoz
 
@@ -24,13 +24,16 @@ A hatáskörébe tartozó fiókokhoz privát végpontokat is használhat, amelye
 
 1. Töltse ki az alapvető információkat, és állítsa be a kapcsolati módszert a magánhálózati végponthoz a **hálózatkezelés** lapon. Állítsa be a betöltési magánhálózati végpontokat a privát végponttal párosítani kívánt **előfizetés, vnet és alhálózat** részleteit megadva.
 
+    > [!NOTE]
+    > Csak akkor hozzon létre egy betöltési privát végpontot, ha az Azure-beli és a helyszíni forrásokhoz egyaránt engedélyezni kívánja a teljes körű vizsgálati forgatókönyvek hálózati elkülönítését. Az AWS-forrásokkal együtt jelenleg nem támogatott a betöltési magánhálózati végpontok használata.
+
     :::image type="content" source="media/catalog-private-link/create-pe-azure-portal.png" alt-text="Hozzon létre egy privát végpontot a Azure Portal":::
 
 1. Dönthet úgy is, hogy beállít egy **saját DNS zónát** az egyes betöltési magánhálózati végpontokhoz.
 
 1. Kattintson a Hozzáadás gombra, és vegyen fel egy privát végpontot a hatáskörébe tartozó fiókjához.
 
-1. A privát végpont létrehozása lapon állítsa be a hatáskörébe tartozó alerőforrást a **fiókra**, válassza ki a virtuális hálózatot és az alhálózatot, és válassza ki azt a saját DNS zónát, ahol a DNS regisztrálva lesz (a megnyert DNS-kiszolgálókat is használhatja, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával).
+1. A privát végpont létrehozása lapon állítsa be a hatáskörébe tartozó alerőforrást a **fiókra**, válassza ki a virtuális hálózatot és az alhálózatot, és válassza ki azt a saját DNS zónát, ahol a DNS regisztrálva lesz (a saját DNS-kiszolgálókat is használhatja, vagy létrehozhat DNS-rekordokat a virtuális gépeken található gazdagép-fájlok használatával).
 
     :::image type="content" source="media/catalog-private-link/create-pe-account.png" alt-text="Privát végpontok létrehozási beállításai":::
 
@@ -89,6 +92,20 @@ Az alábbi utasítások az Azure-beli virtuális gépekről való biztonságos h
 6. Az új szabály létrehozása után térjen vissza a virtuális gépre, és próbálja meg újból a bejelentkezést a HRE hitelesítő adataival. Ha a bejelentkezés sikeres, a hatáskörébe-portál készen áll a használatra. Bizonyos esetekben azonban a HRE más tartományokra is átirányítja a bejelentkezést az ügyfél fióktípus alapján. Például egy live.com-fiók esetében a HRE átirányítja a live.com-be a bejelentkezéshez, és a rendszer újra letiltja ezeket a kéréseket. A Microsoft Employees-fiókok esetében a HRE a bejelentkezési adatokhoz msft.sts.microsoft.com fog hozzáférni. Ellenőrizze a hálózati kérelmeket a böngésző hálózatkezelés lapján, hogy megtekintse, mely tartományokra vonatkozó kérések le vannak tiltva, megismételve az előző lépést az IP-cím lekéréséhez és a kimenő portszabályok hozzáadásához a hálózati biztonsági csoportban az adott IP-címre vonatkozó kérelmek engedélyezéséhez (ha lehetséges, adja hozzá az URL-címet és az IP-címet a virtuális gép gazdagépének Ha ismeri a bejelentkezési tartomány pontos IP-tartományait, közvetlenül is hozzáadhat hálózati szabályokhoz.
 
 7. Most jelentkezzen be, hogy a HRE sikeres legyen. A hatáskörébe tartozó portál sikeresen betöltődik, de az összes hatáskörébe tartozó fiók nem fog működni, mert csak egy adott hatáskörébe tartozó fiókhoz férhet hozzá. Írja be a *web. hatáskörébe. Azure. com/Resource/{PurviewAccountName}* értéket, hogy közvetlenül keresse meg azt a hatáskörébe tartozó fiókot, amelyhez sikeresen beállította a saját végpontját.
+ 
+## <a name="ingestion-private-endpoints-and-scanning-sources-in-private-networks-vnets-and-behind-private-endpoints"></a>Privát végpontok betöltése és a privát hálózatok virtuális hálózatok és a privát végpontok mögötti keresési forrásai
+
+Ha biztosítani szeretné a hálózati elkülönítést a hatáskörébe DataMap beolvasott forrásból származó metaadatok számára, akkor az alábbi lépéseket kell követnie:
+1. A betöltés **privát végpontjának** engedélyezése [a szakasz](#creating-an-ingestion-private-endpoint) lépéseit követve
+1. Ellenőrizze a forrást egy **saját** üzemeltetésű IR használatával.
+ 
+    1. A helyszíni források (például az SQL Server, az Oracle, az SAP és egyebek) jelenleg csak saját üzemeltetésű, IR-alapú vizsgálatokon keresztül támogatottak. A saját üzemeltetésű IR-nek a magánhálózaton belül kell futnia, majd a vnet az Azure-ban kell megadnia. Az Azure-vnet ezután engedélyezni kell a betöltési magánhálózati végponton az alábbi [lépések](#creating-an-ingestion-private-endpoint) végrehajtásával 
+    1. Az Azure Blob Storage-hoz, Azure SQL Databasehoz és más típusú **Azure** -forrásokhoz explicit módon válassza a vizsgálat futtatása saját üzemeltetésű IR használatával lehetőséget a hálózat elkülönítésének biztosításához. A saját üzemeltetésű integrációs modul beállításához kövesse az [alábbi lépéseket.](manage-integration-runtimes.md) Ezután állítsa be a vizsgálatot az Azure-forrásra úgy, hogy a hálózat elkülönítése érdekében kiválasztja a saját üzemeltetésű IR-t a **Csatlakozás integrációs** modul legördülő menüjéből. 
+    
+    :::image type="content" source="media/catalog-private-link/shir-for-azure.png" alt-text="Az Azure Scan futtatása saját üzemeltetésű IR használatával":::
+
+> [!NOTE]
+> Jelenleg nem támogatott az MSI hitelesítőadat-módszer, ha saját üzemeltetésű integrációs modult használ az Azure-források vizsgálatához. Az Azure-forráshoz tartozó más támogatott hitelesítő adatok egyikét kell használnia.
 
 ## <a name="enable-private-endpoint-on-existing-purview-accounts"></a>Privát végpont engedélyezése meglévő hatáskörébe tartozó fiókokon
 
@@ -101,7 +118,7 @@ A hatáskörébe tartozó fiók létrehozása után két módon adhat hozzá a h
 
 1. Navigáljon a Azure Portal a hatáskörébe tartozó fiókra, válassza ki a privát végponti kapcsolatokat a **Beállítások** **hálózat** szakaszában.
 
-:::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Portál privát végpontjának létrehozása":::
+    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="Fiók magánhálózati végpontjának létrehozása":::
 
 1. Kattintson a + privát végpont lehetőségre egy új privát végpont létrehozásához.
 
@@ -115,6 +132,20 @@ A hatáskörébe tartozó fiók létrehozása után két módon adhat hozzá a h
 
 > [!NOTE]
 > Ugyanezen lépéseket kell követnie a **portálon** kiválasztott cél alerőforráshoz is.
+
+#### <a name="creating-an-ingestion-private-endpoint"></a>Betöltési magánhálózati végpont létrehozása
+
+1. Navigáljon a Azure Portal a hatáskörébe tartozó fiókra, válassza ki a privát végponti kapcsolatokat a **Beállítások** **hálózat** szakaszában.
+1. Navigáljon a betöltés **Private Endpoint Connections** lapra, és kattintson az **+ új** elemre új betöltési magánhálózati végpont létrehozásához.
+
+1. Adja meg az alapvető információkat és a vnet részleteit.
+ 
+    :::image type="content" source="media/catalog-private-link/ingestion-pe-fill-details.png" alt-text="Privát végpont részleteinek kitöltése":::
+
+1. A beállítás befejezéséhez kattintson a **Létrehozás** gombra.
+
+> [!NOTE]
+> A betöltési magánhálózati végpontok csak a fent ismertetett hatáskörébe Azure Portal felhasználói felületen hozhatók létre. Nem hozható létre a privát hivatkozás központjából.
 
 ### <a name="using-the-private-link-center"></a>A Private link Center használata
 
@@ -132,6 +163,15 @@ A hatáskörébe tartozó fiók létrehozása után két módon adhat hozzá a h
 
 > [!NOTE]
 > Ugyanezen lépéseket kell követnie a **portálon** kiválasztott cél alerőforráshoz is.
+
+## <a name="firewalls-to-restrict-public-access"></a>A nyilvános hozzáférés korlátozására szolgáló tűzfalak
+
+Kövesse az alábbi lépéseket a hatáskörébe tartozó fiók teljes hozzáférésének kivágásához a nyilvános internetről. Ez a beállítás a magánhálózati végpontra és a betöltési magánhálózati kapcsolatokra is vonatkozik.
+
+1. Navigáljon a Azure Portal a hatáskörébe tartozó fiókra, válassza ki a privát végponti kapcsolatokat a **Beállítások** **hálózat** szakaszában.
+1. Navigáljon a tűzfal lapra, és győződjön meg arról, hogy a váltógomb **megtagadásra** van beállítva.
+
+    :::image type="content" source="media/catalog-private-link/private-endpoint-firewall.png" alt-text="Magánhálózati végpont tűzfala – beállítások":::
 
 ## <a name="next-steps"></a>Következő lépések
 

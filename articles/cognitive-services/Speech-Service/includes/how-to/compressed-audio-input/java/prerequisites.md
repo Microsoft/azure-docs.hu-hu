@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: 6f7e74a4e3a0ad208ea832798748adf7a15dfc89
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103417724"
 ---
 A tömörített hang kezelésére a [GStreamer](https://gstreamer.freedesktop.org)használatával kerül sor. Licencelési okokból a GStreamer bináris fájlok nincsenek lefordítva és csatolva a Speech SDK-hoz. Ehelyett az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).

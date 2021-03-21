@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 9f62f262e1baa70982e667379a9bf4357197ecb4
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0805537fe0791a622eb1814cc233c04d914dbecd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495416"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612267"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -66,6 +66,27 @@ Ez a rövid útmutató a webpack használatával csomagolja ki az alkalmazási e
 npm install webpack webpack-cli webpack-dev-server --save-dev
 ```
 
+Hozzon létre egy `webpack.config.js` fájlt a gyökérkönyvtárban. Másolja a következő konfigurációt ebbe a fájlba:
+
+```
+module.exports = {
+  entry: "./client.js",
+  output: {
+    filename: "bundle.js"
+  },
+  devtool: "inline-source-map",
+  mode: "development"
+}
+```
+
+Adjon hozzá egy `start` szkriptet a `package.json` -hoz, ezt az alkalmazás futtatásához fogjuk használni. A `scripts` következő szakasza tartalmazza a `package.json` hozzáadását:
+
+```
+"scripts": {
+  "start": "webpack serve --config ./webpack.config.js"
+}
+```
+
 Hozzon létre egy **index.html** fájlt a projekt gyökérkönyvtárában. Ezt a fájlt sablonként használjuk a csevegési funkció hozzáadásához az Azure kommunikációs csevegési ügyféloldali kódtár használatával a JavaScripthez.
 
 ```html
@@ -111,9 +132,9 @@ console.log('Azure Communication Chat client created!');
 
 ### <a name="run-the-code"></a>A kód futtatása
 
-Használja az `webpack-dev-server` alkalmazást az alkalmazás létrehozásához és futtatásához. Futtassa a következő parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
+Futtassa a következő parancsot az alkalmazás gazdagépének a helyi webkiszolgálón való megadásához:
 ```console
-npx webpack-dev-server --entry ./client.js --output bundle.js --debug --devtool inline-source-map
+npm run start
 ```
 Nyissa meg a böngészőt, és navigáljon a gombra http://localhost:8080/ .
 A böngészőben a fejlesztői eszközök konzolján a következőket kell látnia:

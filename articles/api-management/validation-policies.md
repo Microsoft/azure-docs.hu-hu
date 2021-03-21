@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 03/12/2021
 ms.author: apimpm
-ms.openlocfilehash: e92d509cdbeba142ec1c740277b45aa3eb5fd21e
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 3f91ca21512b8cddcac7fe71fa3eec07e1a8745a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103565066"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720083"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>API Management házirendek a kérelmek és válaszok ellenőrzéséhez
 
@@ -87,20 +87,20 @@ A következő példában a kérelmekben és a válaszokban szereplő JSON-adatta
 
 | Név         | Leírás                                                                                                                                   | Kötelező |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| ellenőrzés – tartalom | Gyökérelem.                                                                                                                               | Igen      |
-| tartalom | Vegyen fel egy vagy több ilyen elemet a kérelemben vagy válaszban szereplő tartalomtípus érvényesítéséhez, és végezze el a megadott műveletet.  | Nem |
+| ellenőrzés – tartalom | Gyökérelem.                                                                                                                               | Yes      |
+| tartalom | Vegyen fel egy vagy több ilyen elemet a kérelemben vagy válaszban szereplő tartalomtípus érvényesítéséhez, és végezze el a megadott műveletet.  | No |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Név                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| meghatározatlan – Content-Type-Action | Az API-sémában nem megadott tartalomtípusú kérelmek vagy válaszok esetén végrehajtandó [művelet](#actions) . |  Igen     | N/A   |
-| maximális méret | A kérelem vagy válasz törzsének maximális hossza, amelyet a `Content-Length` fejlécben kell ellenőrizni. Ha a kérelem törzse vagy a válasz törzse tömörítve van, ez az érték a kibontott hossz. Maximálisan megengedett érték: 102 400 bájt (100 KB).  | Igen       | N/A   |
-| méret túllépése – művelet | Azon kérésekhez vagy válaszokhoz végrehajtandó [művelet](#actions) , amelynek törzse meghaladja a ben megadott méretet `max-size` . |  Igen     | N/A   |
-| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Igen    | N/A   |
-| típus | A törzs érvényesítésének végrehajtásához használt tartalomtípus a `Content-Type` fejlécben. Ez az érték megkülönbözteti a kis-és nagybetűket. Ha üres, akkor az az API-sémában megadott összes tartalomtípusra vonatkozik. |   Nem    |  N/A  |
-| érvényesítés – as | A kérelem vagy válasz törzsének a megfelelő tartalomtípussal való érvényesítéséhez használandó ellenőrző motor. Jelenleg az egyetlen támogatott érték a "JSON".   |  Igen     |  N/A  |
-| művelet | Olyan kérésekhez vagy válaszokhoz végrehajtandó [művelet](#actions) , amelynek a törzse nem felel meg a megadott tartalomtípusnak.  |  Igen      | N/A   |
+| meghatározatlan – Content-Type-Action | Az API-sémában nem megadott tartalomtípusú kérelmek vagy válaszok esetén végrehajtandó [művelet](#actions) . |  Yes     | N/A   |
+| maximális méret | A kérelem vagy válasz törzsének maximális hossza bájtban, a fejlécben bejelölve `Content-Length` . Ha a kérelem törzse vagy a válasz törzse tömörítve van, ez az érték a kibontott hossz. Maximálisan megengedett érték: 102 400 bájt (100 KB).  | Yes       | N/A   |
+| méret túllépése – művelet | Azon kérésekhez vagy válaszokhoz végrehajtandó [művelet](#actions) , amelynek törzse meghaladja a ben megadott méretet `max-size` . |  Yes     | N/A   |
+| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Yes    | N/A   |
+| típus | A törzs érvényesítésének végrehajtásához használt tartalomtípus a `Content-Type` fejlécben. Ez az érték megkülönbözteti a kis-és nagybetűket. Ha üres, akkor az az API-sémában megadott összes tartalomtípusra vonatkozik. |   No    |  N/A  |
+| érvényesítés – as | A kérelem vagy válasz törzsének a megfelelő tartalomtípussal való érvényesítéséhez használandó ellenőrző motor. Jelenleg az egyetlen támogatott érték a "JSON".   |  Yes     |  N/A  |
+| művelet | Olyan kérésekhez vagy válaszokhoz végrehajtandó [művelet](#actions) , amelynek a törzse nem felel meg a megadott tartalomtípusnak.  |  Yes      | N/A   |
 
 ### <a name="usage"></a>Használat
 
@@ -152,21 +152,21 @@ Ebben a példában a rendszer az összes lekérdezési és elérési utat ellen�
 
 | Név         | Leírás                                                                                                                                   | Kötelező |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| érvényesítés – paraméterek | Gyökérelem. Megadja a kérelmekben szereplő összes paraméter alapértelmezett érvényesítési műveleteit.                                                                                                                              | Igen      |
-| fejlécek | Adja hozzá ezt az elemet a kérelmekben szereplő fejléc-paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.   | Nem |
-| lekérdezés | Adja hozzá ezt az elemet a kérelmekben szereplő lekérdezési paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.  | Nem |
-| path | Adja hozzá ezt az elemet a kérelmekben szereplő URL-elérésiút-paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.  | Nem |
-| parameter | Az érvényesítési műveletek magasabb szintű konfigurációjának felülbírálásához vegyen fel egy vagy több megnevezett paramétert tartalmazó elemet. | Nem |
+| érvényesítés – paraméterek | Gyökérelem. Megadja a kérelmekben szereplő összes paraméter alapértelmezett érvényesítési műveleteit.                                                                                                                              | Yes      |
+| fejlécek | Adja hozzá ezt az elemet a kérelmekben szereplő fejléc-paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.   | No |
+| lekérdezés | Adja hozzá ezt az elemet a kérelmekben szereplő lekérdezési paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.  | No |
+| path | Adja hozzá ezt az elemet a kérelmekben szereplő URL-elérésiút-paraméterek alapértelmezett érvényesítési műveleteinek felülbírálásához.  | No |
+| parameter | Az érvényesítési műveletek magasabb szintű konfigurációjának felülbírálásához vegyen fel egy vagy több megnevezett paramétert tartalmazó elemet. | No |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Név                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| megadott paraméter – művelet | Az API-sémában megadott kérelmek paramétereinek végrehajtásához végrehajtandó [művelet](#actions) . <br/><br/> Ha egy `headers` , `query` vagy `path` elemben van megadva, az érték felülbírálja a `specified-parameter-action` elem értékét `validate-parameters` .  |  Igen     | N/A   |
-| meghatározatlan – paraméter – művelet | Az API-sémában nem megadott kérelmek paramétereinek végrehajtásához szükséges [művelet](#actions) . <br/><br/>Ha egy `headers` vagy `query` elemben van megadva, az érték felülbírálja a `unspecified-parameter-action` elemben lévő értéket `validate-parameters` . |  Igen     | N/A   |
-| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Igen    | N/A   |
-| name | Annak a paraméternek a neve, amely felülbírálja az érvényesítési műveletet. Ez az érték megkülönbözteti a kis-és nagybetűket.  | Igen | N/A |
-| művelet | Az egyező nevű paraméterhez végrehajtandó [művelet](#actions) . Ha a paraméter meg van adva az API-sémában, ez az érték felülbírálja a magasabb szintű `specified-parameter-action` konfigurációt. Ha a paraméter nincs megadva az API-sémában, ez az érték felülbírálja a magasabb szintű `unspecified-parameter-action` konfigurációt.| Igen | N/A | 
+| megadott paraméter – művelet | Az API-sémában megadott kérelmek paramétereinek végrehajtásához végrehajtandó [művelet](#actions) . <br/><br/> Ha egy `headers` , `query` vagy `path` elemben van megadva, az érték felülbírálja a `specified-parameter-action` elem értékét `validate-parameters` .  |  Yes     | N/A   |
+| meghatározatlan – paraméter – művelet | Az API-sémában nem megadott kérelmek paramétereinek végrehajtásához szükséges [művelet](#actions) . <br/><br/>Ha egy `headers` vagy `query` elemben van megadva, az érték felülbírálja a `unspecified-parameter-action` elemben lévő értéket `validate-parameters` . |  Yes     | N/A   |
+| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Yes    | N/A   |
+| name | Annak a paraméternek a neve, amely felülbírálja az érvényesítési műveletet. Ez az érték megkülönbözteti a kis-és nagybetűket.  | Yes | N/A |
+| művelet | Az egyező nevű paraméterhez végrehajtandó [művelet](#actions) . Ha a paraméter meg van adva az API-sémában, ez az érték felülbírálja a magasabb szintű `specified-parameter-action` konfigurációt. Ha a paraméter nincs megadva az API-sémában, ez az érték felülbírálja a magasabb szintű `unspecified-parameter-action` konfigurációt.| Yes | N/A | 
 
 ### <a name="usage"></a>Használat
 
@@ -200,18 +200,18 @@ A `validate-headers` szabályzat ellenőrzi a válasz fejléceit az API-sémán.
 
 | Név         | Leírás                                                                                                                                   | Kötelező |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| érvényesítés – fejlécek | Gyökérelem. Meghatározza a válaszokban szereplő összes fejléc alapértelmezett érvényesítési műveleteit.                                                                                                                              | Igen      |
-| fejléc | Adja hozzá a megnevezett fejlécek egy vagy több elemét a válaszokban lévő fejlécek alapértelmezett érvényesítési műveleteinek felülbírálásához. | Nem |
+| érvényesítés – fejlécek | Gyökérelem. Meghatározza a válaszokban szereplő összes fejléc alapértelmezett érvényesítési műveleteit.                                                                                                                              | Yes      |
+| fejléc | Adja hozzá a megnevezett fejlécek egy vagy több elemét a válaszokban lévő fejlécek alapértelmezett érvényesítési műveleteinek felülbírálásához. | No |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Név                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| megadott fejléc – művelet | Az API-sémában megadott válasz fejléceken végrehajtandó [művelet](#actions) .  |  Igen     | N/A   |
-| meghatározatlan – fejléc – művelet | Az API-sémában nem megadott válasz fejléceken végrehajtandó [művelet](#actions) .  |  Igen     | N/A   |
-| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Igen    | N/A   |
-| name | Azon fejléc neve, amely felülbírálja az érvényesítési műveletet. Ez az érték megkülönbözteti a kis-és nagybetűket. | Igen | N/A |
-| művelet | A megfelelő nevű fejléchez végrehajtandó [művelet](#actions) . Ha a fejléc meg van adva az API-sémában, ez az érték felülbírálja `specified-header-action` az `validate-headers` elem értékét. Ellenkező esetben a felülbírálja az `unspecified-header-action` érvényesítési fejlécek elem értékét. | Igen | N/A | 
+| megadott fejléc – művelet | Az API-sémában megadott válasz fejléceken végrehajtandó [művelet](#actions) .  |  Yes     | N/A   |
+| meghatározatlan – fejléc – művelet | Az API-sémában nem megadott válasz fejléceken végrehajtandó [művelet](#actions) .  |  Yes     | N/A   |
+| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Yes    | N/A   |
+| name | Azon fejléc neve, amely felülbírálja az érvényesítési műveletet. Ez az érték megkülönbözteti a kis-és nagybetűket. | Yes | N/A |
+| művelet | A megfelelő nevű fejléchez végrehajtandó [művelet](#actions) . Ha a fejléc meg van adva az API-sémában, ez az érték felülbírálja `specified-header-action` az `validate-headers` elem értékét. Ellenkező esetben a felülbírálja az `unspecified-header-action` érvényesítési fejlécek elem értékét. | Yes | N/A | 
 
 ### <a name="usage"></a>Használat
 
@@ -243,17 +243,17 @@ A `validate-status-code` házirend érvényesíti az API-sémára adott válaszo
 
 | Név         | Leírás                                                                                                                                   | Kötelező |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| érvényesítés-állapot-kód | Gyökérelem.                                                                                                | Igen      |
-| állapot kódja | Adja hozzá a HTTP-állapotkódok egy vagy több elemét, hogy felülírja a válaszokban szereplő állapotkódok alapértelmezett érvényesítési műveletét. | Nem |
+| érvényesítés-állapot-kód | Gyökérelem.                                                                                                | Yes      |
+| állapot kódja | Adja hozzá a HTTP-állapotkódok egy vagy több elemét, hogy felülírja a válaszokban szereplő állapotkódok alapértelmezett érvényesítési műveletét. | No |
 
 ### <a name="attributes"></a>Attribútumok
 
 | Név                       | Leírás                                                                                                                                                            | Kötelező | Alapértelmezett |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| meghatározatlan állapot-kód – művelet | Az API-sémában nem megadott válaszok HTTP-állapotkódok esetében végrehajtandó [művelet](#actions) .  |  Igen     | N/A   |
-| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Igen    | N/A   |
-| code | HTTP-állapotkód az érvényesítési művelet felülbírálásához. | Igen | N/A |
-| művelet | A megfelelő állapotkód számára végrehajtandó [művelet](#actions) , amely nincs megadva az API-sémában. Ha az állapotkód meg van adva az API-sémában, ez a felülbírálás nem lép érvénybe. | Igen | N/A | 
+| meghatározatlan állapot-kód – művelet | Az API-sémában nem megadott válaszok HTTP-állapotkódok esetében végrehajtandó [művelet](#actions) .  |  Yes     | N/A   |
+| hibák – változó – név | Annak a változónak a neve, amelybe `context.Variables` be szeretné jelentkezni az érvényesítési hibákat.  |   Yes    | N/A   |
+| code | HTTP-állapotkód az érvényesítési művelet felülbírálásához. | Yes | N/A |
+| művelet | A megfelelő állapotkód számára végrehajtandó [művelet](#actions) , amely nincs megadva az API-sémában. Ha az állapotkód meg van adva az API-sémában, ez a felülbírálás nem lép érvénybe. | Yes | N/A | 
 
 ### <a name="usage"></a>Használat
 

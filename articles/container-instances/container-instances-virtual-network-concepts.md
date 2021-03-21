@@ -3,18 +3,21 @@ title: Virtuális hálózat használatára vonatkozó forgatókönyvek
 description: Forgatókönyvek, erőforrások és korlátozások a tároló-csoportok Azure-beli virtuális hálózatra való üzembe helyezéséhez.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 20c2b4fe2f19402d6647f398a9696b7e16550d8e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033829"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606888"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
 Az [azure Virtual Network](../virtual-network/virtual-networks-overview.md) biztonságos, privát hálózatkezelést biztosít az Azure-hoz és a helyszíni erőforrásokhoz. Ha tároló-csoportokat telepít egy Azure-beli virtuális hálózatba, a tárolók biztonságosan kommunikálhatnak a virtuális hálózat többi erőforrásával. 
 
 Ez a cikk a virtuális hálózati forgatókönyvekről, korlátozásokról és erőforrásokról nyújt hátteret. Az Azure CLI használatával történő üzembe helyezési példákat lásd: [Container instances telepítése Azure-beli virtuális hálózatba](container-instances-vnet.md).
+
+> [!IMPORTANT]
+> A tároló csoportok üzembe helyezése virtuális hálózatra általánosan elérhető Linux-tárolók esetén, ahol a Azure Container Instances elérhető. Részletekért lásd: [régiók és erőforrás rendelkezésre állása](container-instances-region-availability.md). 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -46,12 +49,6 @@ Az Azure-beli virtuális hálózatba üzembe helyezett tároló-csoportok a köv
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
-## <a name="where-to-deploy"></a>Az üzembe helyezés helye
-
-A következő régiók és maximális erőforrások elérhetők a tárolók Azure-beli virtuális hálózatban való üzembe helyezéséhez.
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
-
 ## <a name="required-network-resources"></a>Szükséges hálózati erőforrások
 
 A tároló-csoportok virtuális hálózathoz való telepítéséhez három Azure Virtual Network erőforrás szükséges: maga a [virtuális hálózat](#virtual-network) , a virtuális hálózaton belüli [delegált alhálózat](#subnet-delegated) és egy [hálózati profil](#network-profile). 
@@ -76,7 +73,7 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 
 ![Virtuális hálózaton belüli tároló-csoportok][aci-vnet-01]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure CLI-vel történő üzembe helyezési példákat lásd: [Container instances telepítése Azure-beli virtuális hálózatba](container-instances-vnet.md).
 * Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet

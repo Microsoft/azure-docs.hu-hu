@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: aeecdcddaeba385c6dc0773356bcd0e36231e1e4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552779"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607466"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -97,4 +97,4 @@ Ha a virtuális gép az igény szerinti hozzáférési szabályzatot használja,
 
 - A PowerShellt Azure Cloud Shell is használhatja SSH-kulcsok létrehozásához és SSH-kapcsolatok létrehozásához Linux rendszerű virtuális gépekhez. Tekintse meg a [PowerShell](../../cloud-shell/quickstart-powershell.md#ssh)rövid útmutatóját.
 
-- Ha az SSH használatával nem tud csatlakozni a Linux rendszerű virtuális gépekhez, tekintse meg [az SSH-kapcsolatok Azure Linux rendszerű virtuális géphez](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)való kapcsolódásával kapcsolatos problémát.
+- Ha az SSH használatával nem tud csatlakozni a Linux rendszerű virtuális gépekhez, tekintse meg [az SSH-kapcsolatok Azure Linux rendszerű virtuális géphez](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)való kapcsolódásával kapcsolatos problémát.

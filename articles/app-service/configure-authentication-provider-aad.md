@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563336"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721562"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -97,8 +97,8 @@ Az alkalmazás regisztrálásához hajtsa végre a következő lépéseket:
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
     |Kiállító URL-címe| A `<authentication-endpoint>/<tenant-id>/v2.0` és a helyett használja a *\<authentication-endpoint>* felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontját](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) is, és cserélje le https://login.microsoftonline.com *\<tenant-id>* azt a **címtár-(bérlői) azonosítóra** , amelyben az alkalmazás regisztrálása létrejött. Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. Az Azure AD v1-t és Azure Functions alkalmazásokat használó alkalmazások esetében hagyja `/v2.0` ki az URL-címet.|
-    |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot.|
-    |Engedélyezett jogkivonat-célközönségek| Ha ez egy Felhőbeli vagy kiszolgálóalkalmazás-alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy webalkalmazásból, adja hozzá a webalkalmazás **alkalmazás-azonosító URI-ját** itt. A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek tekintendő. |
+    |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot. Az ügyfél titka, a hibrid folyamat használatos, a App Service pedig visszaküldi a hozzáférési és frissítési jogkivonatokat. Ha nincs beállítva az ügyfél titkos kulcsa, a rendszer implicit folyamatot használ, és csak egy azonosító jogkivonatot ad vissza. Ezeket a jogkivonatokat a szolgáltató küldte el, és az EasyAuth jogkivonat-tárolóban tárolja.|
+    |Engedélyezett jogkivonat-célközönségek| Ha ez egy Felhőbeli vagy kiszolgálóalkalmazás-alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy webalkalmazásból, adja hozzá a webalkalmazás **alkalmazás-azonosító URI-ját** itt. A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek tekintendő.|
 
 2. Válassza **az OK**, majd a **Mentés** lehetőséget.
 
@@ -159,7 +159,7 @@ A hitelesítés beállításához használt konfigurációtól függetlenül a k
 - Konfigurálja az egyes App Service alkalmazásait a saját regisztrálásával.
 - Kerülje a környezetek közötti engedélyek megosztását külön alkalmazás-regisztrációk használatával külön üzembe helyezési pontokhoz. Az új kód tesztelésekor ez a gyakorlat segít megakadályozni az éles alkalmazást érintő problémákat.
 
-## <a name="next-steps"></a><a name="related-content"> </a>További lépések
+## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 * [Oktatóanyag: felhasználók hitelesítése és engedélyezése egy olyan webalkalmazásban, amely hozzáfér az Azure Storage szolgáltatáshoz és Microsoft Graph](scenario-secure-app-authentication-app-service.md)

@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/29/2021
-ms.openlocfilehash: 2a084683d99117697657ba8900fcd6534b4a3e95
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: d42f30ebd72dca81255ddc02a9440db19979536d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379947"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608066"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Cosmos DB-ben (SQL API) az Azure Data Factory használatával
 
@@ -209,6 +209,8 @@ A másolási tevékenység fogadója szakasz a következő  tulajdonságokat tá
 | writeBehavior |Ismerteti, hogyan lehet az Azure Cosmos DBba írni az adatbevitelt. Megengedett értékek: **Insert** és **upsert**.<br/><br/>A **upsert** viselkedése a dokumentum cseréje, ha már létezik ilyen azonosítójú dokumentum. Ha nem, szúrja be a dokumentumot.<br /><br />**Megjegyzés**: Data Factory automatikusan létrehoz egy azonosítót egy dokumentumhoz, ha nincs megadva azonosító az eredeti dokumentumban vagy oszlop-hozzárendeléssel. Ez azt jelenti, hogy meg kell győződnie arról, hogy a **upsert** a várt módon működnek, a dokumentum azonosítója. |No<br />(az alapértelmezett érték a **Beszúrás**) |
 | writeBatchSize | Data Factory az [Azure Cosmos db tömeges végrehajtó függvénytárat](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) használja az adatAzure Cosmos DBba való íráshoz. A **writeBatchSize** tulajdonság az ADF által a könyvtár számára elérhető dokumentumok méretét határozza meg. A **writeBatchSize** értékének növelésével növelheti a teljesítményt, és csökkentheti az értéket, ha a dokumentum mérete nagyméretű – lásd alább látható tippeket. |No<br />(az alapértelmezett érték **10 000**) |
 | disableMetricsCollection | Data Factory olyan mérőszámokat gyűjt, mint például a Cosmos DB RUs a másolási teljesítmény optimalizálása és a javaslatok érdekében. Ha ezt a viselkedést érinti, a `true` kikapcsolásához válassza a következőt:. | Nem (alapértelmezett érték `false` ) |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
+
 
 >[!TIP]
 >Ha JSON-dokumentumokat szeretne importálni, tekintse meg a [JSON-dokumentumok importálása vagy exportálása](#import-and-export-json-documents) szakaszt; a táblázatos adatokból történő másoláshoz tekintse át az [áttelepítés a viszonyítási adatbázisból a Cosmos DBre](#migrate-from-relational-database-to-cosmos-db)című témakört.

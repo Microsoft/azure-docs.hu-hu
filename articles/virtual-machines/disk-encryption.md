@@ -2,26 +2,26 @@
 title: Az Azure Managed Disks kiszolgálóoldali titkosítása
 description: Az Azure Storage védi az adatait úgy, hogy titkosítja a nyugalmát, mielőtt megőrzi azt a Storage-fürtökön. Az ügyfél által felügyelt kulcsokkal kezelheti a titkosítást a saját kulcsaival, vagy a Microsoft által felügyelt kulcsokat a felügyelt lemezek titkosítására is használhatja.
 author: roygara
-ms.date: 03/02/2021
+ms.date: 03/11/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103014383"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721851"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
-A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az SSE alapértelmezés szerint automatikusan titkosítja az Azure Managed Disks (operációs rendszer és adatlemezek) tárolt adatait a felhőben való megőrzéskor. 
+Az Azure-beli felügyelt lemezek többsége az Azure Storage titkosításával van titkosítva, amely kiszolgálóoldali titkosítást (SSE) használ az adatai védelméhez, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Az Azure Storage encryption alapértelmezés szerint automatikusan titkosítja az Azure Managed Disks (operációs rendszer és adatlemezek) szolgáltatásban tárolt adatait, ha a felhőben tartja a szolgáltatást. A gazdagépen engedélyezve lévő titkosítással rendelkező lemezek azonban nem az Azure Storage-on keresztül vannak titkosítva. A gazdagépen engedélyezve lévő titkosítással rendelkező lemezek esetében a virtuális gépet üzemeltető kiszolgáló biztosítja az adattitkosítást, és a titkosított adatforgalmat az Azure Storage szolgáltatásba.
 
 Az Azure Managed Disks szolgáltatásban tárolt adatforgalom transzparens módon, 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), az egyik legerősebb blokk titkosítási algoritmussal, valamint az FIPS 140-2-kompatibilis. Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](/windows/desktop/seccng/cng-portal)
 
-A kiszolgálóoldali titkosítás nem befolyásolja a felügyelt lemezek teljesítményét, és nincs további díj. 
+Az Azure Storage-titkosítás nem befolyásolja a felügyelt lemezek teljesítményét, és nincs további díj. További információ az Azure Storage-titkosításról: [Azure Storage encryption](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > Az ideiglenes lemezek nem felügyelt lemezek, és nem az SSE titkosítással vannak titkosítva, hacsak nem engedélyezi a titkosítást a gazdagépen.

@@ -6,15 +6,15 @@ ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
 ms.openlocfilehash: fe1b9fc8754ae959abf088526b5d71e0e43c158e
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466184"
 ---
 Ebben a kategóriában **64** javaslat található.
 
-|Ajánlás |Leírás |Súlyosság |
+|Ajánlás |Description |Súlyosság |
 |---|---|---|
 |Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításainál |Javasoljuk, hogy az összes komplex veszélyforrások elleni védelmi típust engedélyezze az SQL felügyelt példányain. Az összes típus engedélyezése védelmet biztosít az SQL-injektálás, az adatbázis-sebezhetőség és minden más rendellenes tevékenység ellen.<br />(Nincs kapcsolódó házirend) |Közepes |
 |Az összetett veszélyforrások elleni védelem összes típusát engedélyezni kell az SQL Server speciális biztonsági beállításaiban |Javasoljuk, hogy engedélyezze az összes komplex veszélyforrások elleni védelmi típust az SQL-kiszolgálókon. Az összes típus engedélyezése védelmet biztosít az SQL-injektálás, az adatbázis-sebezhetőség és minden más rendellenes tevékenység ellen.<br />(Nincs kapcsolódó házirend) |Közepes |

@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461419"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Linux-tárolókkal
@@ -183,9 +183,9 @@ Minden modul több *bemeneti* és *kimeneti* várólistával is rendelkezhet a k
 
 A Project sablonhoz tartozó C#-kód a [ModuleClient osztályt](/dotnet/api/microsoft.azure.devices.client.moduleclient) használja a .net-hez készült IoT hub SDK-ból.
 
-1. Nyissa meg a **program.cs** fájlt, amely a **moduls/SampleModule/** mappában található.
+1. Nyissa meg a **program. cs** fájlt, amely a **modules/SampleModule/** mappában található.
 
-2. A program.cs-ben keresse meg a **SetInputMessageHandlerAsync** metódust.
+2. A program. cs programban keresse meg a **SetInputMessageHandlerAsync** metódust.
 
 3. A [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) metódus beállít egy bemeneti várólistát a bejövő üzenetek fogadásához. Tekintse át ezt a metódust, és nézze meg, hogyan inicializál egy **input1** nevű bemeneti várólistát.
 

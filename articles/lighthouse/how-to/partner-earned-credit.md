@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan rendelheti hozzá partner-AZONOSÍTÓját az Az
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.openlocfilehash: 4c18aae38570ab3fd84df7d45fb18e35404158be
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372093"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>A partner AZONOSÍTÓjának összekapcsolása a delegált erőforrásokra gyakorolt hatás nyomon követéséhez 
 
-Ha Ön a [Microsoft Partner Network](https://partner.microsoft.com/)tagja, összekapcsolhatja a Partner azonosítóját a delegált ügyfelek erőforrásainak kezeléséhez használt hitelesítő adatokkal, így a Microsoft azonosíthatja és felismerheti az Azure-ügyfelek sikerességét biztosító partnereket. Ez a hivatkozás azt is lehetővé teszi, hogy a [CSP (Cloud Solution Provider)](/partner-center/csp-overview) partnerei megkapják a [felügyelt szolgáltatásokra (PEC) vonatkozó partneri kreditet](/partner-center/partner-earned-credit) azon ügyfelek számára, akik [aláírták a Microsoft Customer szerződést (MCA)](/partner-center/confirm-customer-agreement) , és [Az Azure-csomag alá](/partner-center/azure-plan-get-started)tartoznak.
+Ha Ön a [Microsoft Partner Network](https://partner.microsoft.com/)tagja, összekapcsolhatja a Partner azonosítóját a delegált ügyfelek erőforrásainak kezeléséhez használt hitelesítő adatokkal, így a Microsoft azonosíthatja és felismerheti az Azure-ügyfelek sikerességét biztosító partnereket. Ezenkívül az összekapcsolás lehetővé teszi, hogy a [CSP (Felhőszolgáltató)](/partner-center/csp-overview) partnerek [a felügyelt szolgáltatásokhoz kapcsolódóan partneri krediteket (PEC)](/partner-center/partner-earned-credit) szerezzenek azon ügyfelek után, akik [aláírták a Microsoft Ügyfélszerződést (MCA)](/partner-center/confirm-customer-agreement) és az [Azure-csomag](/partner-center/azure-plan-get-started) felhasználói.
 
 Az Azure Lighthouse-tevékenységek elismerésének megszerzéséhez az MPN-azonosítót legalább egy felhasználói fiókkal kell [összekapcsolni](../../cost-management-billing/manage/link-partner-id.md) a felügyeleti bérlőben, és biztosítania kell, hogy a társított fiók hozzáférjen a beérkező előfizetésekhez.
 

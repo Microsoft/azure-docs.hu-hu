@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: ce4917f968ef1664a1d41f4eaff162df116bda4f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035084"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
@@ -68,7 +68,7 @@ Az Azure App Services hitelesítés/engedélyezés (EasyAuth) funkciója már re
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával
 Ha az alkalmazás a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware-t használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
 
-Az alkalmazás Startup.cs-vagy Startup.Auth.cs-fájljaiban az alábbi kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás használja-e ezeket.
+A következő kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás a Startup. cs vagy az Startup. auth. cs fájlokban az alábbi kódrészleteket használja-e.
 
 ```csharp
 app.UseOpenIdConnectAuthentication(
@@ -97,7 +97,7 @@ app.UseWindowsAzureActiveDirectoryBearerAuthentication(
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>Webalkalmazások/API-k az erőforrások védelme .NET Core OpenID Connect vagy JwtBearerAuthentication middleware használatával
 Ha az alkalmazás a .NET Core OWIN OpenID Connect vagy JwtBearerAuthentication middleware-t használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
 
-A következő kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás használja-e az alkalmazás Startup.cs vagy Startup.Auth.cs
+A következő kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás az indítási. cs vagy a Startup. auth. cs
 
 ```
 app.UseOpenIdConnectAuthentication(
@@ -248,12 +248,12 @@ Ha az alkalmazása a Visual Studio 2012-ben készült, valószínűleg az identi
 Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemutató-dokumentáció használatával hozta létre, akkor a projektben már szerepel a kulcs átváltási logikája. Megfigyelheti, hogy az alábbi kód már létezik a projektben. Ha az alkalmazás még nem rendelkezik ezzel a logikával, kövesse az alábbi lépéseket a hozzáadásához és annak ellenőrzéséhez, hogy megfelelően működik-e.
 
 1. A **Megoldáskezelőban** adjon hozzá egy hivatkozást a **System. IdentityModel** szerelvényhez a megfelelő projekthez.
-2. Nyissa meg a **Global.asax.cs** fájlt, és adja hozzá a következő utasításokat a használatával:
+2. Nyissa meg a **Global. asax. cs** fájlt, és adja hozzá a következő utasításokat a használatával:
    ```
    using System.Configuration;
    using System.IdentityModel.Tokens;
    ```
-3. Adja hozzá a következő metódust a **Global.asax.cs** -fájlhoz:
+3. Adja hozzá a következő metódust a **Global. asax. cs** fájlhoz:
    ```
    protected void RefreshValidationSettings()
    {
@@ -263,7 +263,7 @@ Ha az alkalmazást a Microsoft által biztosított bármely kód-minta vagy bemu
     ValidatingIssuerNameRegistry.WriteToConfig(metadataAddress, configPath);
    }
    ```
-4. Hívja meg a **RefreshValidationSettings ()** metódust a Global.asax.cs **()** metódusban Application_Start a  -ben az alábbiak szerint:
+4. Hívja meg a **RefreshValidationSettings ()** metódust a (z) **Application_Start ()** metódusban a **Global. asax. cs** néven a következő képen látható módon:
    ```
    protected void Application_Start()
    {
