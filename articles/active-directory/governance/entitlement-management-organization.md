@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98059381"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Csatlakoztatott szervezet hozzáadása az Azure AD-jogosultságok kezelésében
@@ -159,7 +159,7 @@ Csak a konfigurált csatlakoztatott szervezetek felhasználói igényelhetnek ho
 > [!NOTE]
 > Az új funkció bevezetésének részeként az 09/09/20 előtt létrehozott összes csatlakoztatott szervezet **konfigurálva** lett. Ha olyan hozzáférési csomaggal rendelkezett, amely bármely szervezet felhasználói számára engedélyezte a regisztrációt, tekintse át az ezen időpont előtt létrehozott csatlakoztatott szervezetek listáját, hogy a none **ne legyenek megfelelően** kategorizálva.  A rendszergazda szükség szerint frissítheti az **állapot** tulajdonságot. Útmutatásért lásd [a csatlakoztatott szervezet frissítése](#update-a-connected-organization)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Külső felhasználók hozzáférésének szabályozása](./entitlement-management-external-users.md)
 - [A címtárban nem szereplő felhasználók hozzáférésének szabályozása](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

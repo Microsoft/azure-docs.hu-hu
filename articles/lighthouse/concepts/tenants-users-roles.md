@@ -4,10 +4,10 @@ description: Megismerheti Azure Active Directory bérlők, a felhasználók és 
 ms.date: 01/14/2021
 ms.topic: conceptual
 ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98233916"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben
@@ -48,7 +48,7 @@ Az Azure Lighthouse jelenleg minden [beépített szerepkört](../../role-based-a
 > [!NOTE]
 > Miután hozzáadta az új megfelelő beépített szerepkört az Azure-hoz, hozzárendelheti az [ügyfelet Azure Resource Manager-sablonok használatával](../how-to/onboard-customer.md). A [felügyelt szolgáltatások ajánlatának közzétételekor](../how-to/publish-managed-services-offers.md)előfordulhat, hogy az újonnan hozzáadott szerepkör elérhetővé válik a partner Centerben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [Az Azure Lighthouse ajánlott biztonsági eljárásait](recommended-security-practices.md).
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.

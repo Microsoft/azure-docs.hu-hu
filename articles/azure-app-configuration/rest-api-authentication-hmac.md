@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: d5b5470b30848fd31be63f25c85c23f88cdaf0c6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101732224"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC-hitelesítés – REST API referenciája
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC – sha256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Argumentum | Leírás  |
+|  Argumentum | Description  |
 | ------ | ------ |
 | **HMAC – SHA256** | Engedélyezési séma. _szükséges_ |
 | **Hitelesítőadat** | Az aláírás kiszámításához használt hozzáférési kulcs azonosítója. _szükséges_ |
@@ -87,7 +87,7 @@ _Karakterlánc – aláírás =_
 
 **HTTP_METHOD** + "\n" + **path_and_query** + "\n" + **signed_headers_values**
 
-|  Argumentum | Leírás  |
+|  Argumentum | Description  |
 | ------ | ------ |
 | **HTTP_METHOD** | A kéréshez használt nagybetűs HTTP-metódus neve. További információ: 9. [szakasz](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | A kérelem abszolút URI elérési útjának és lekérdezési karakterláncának összefűzése. További információ: 3,3. [szakasz](https://tools.ietf.org/html/rfc3986#section-3.3).

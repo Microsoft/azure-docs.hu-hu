@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
 ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103472206"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
@@ -62,7 +62,7 @@ A RAM-specifikációk esetében tekintse meg a megfelelő virtuálisgép-adatsor
 
 Ha nem ad hozzá több RAM memóriát a géphez, a következő módszerekkel csökkentheti a processzor-munkaterheléseket, és optimalizálhatja a feldolgozási időt. Ezek az ajánlások az önálló és az elosztott rendszerekre egyaránt vonatkoznak.
 
-Módszer | Leírás
+Módszer | Description
 ----|----
 Tömörítés | Az adataihoz eltérő ábrázolást használhat, így kevesebb memóriát használ, és nem befolyásolja jelentősen a számítás eredményét.<br><br>*Példa:* Ahelyett, hogy a bejegyzéseket karakterláncként, körülbelül 10 bájt vagy több bejegyzést tartalmazó sztringként tárolja, tárolja őket logikai, igaz vagy hamis értékként, amelyet 1 bájtban tárolhat.
 Dobogás | Betöltheti a memóriába az adathalmazokat (darabokat), az adathalmazok feldolgozását, vagy párhuzamosan több részhalmazt is. Ez a módszer akkor működik a legjobban, ha fel kell dolgoznia az összes adatmennyiséget, de egyszerre nem kell betölteni az összes adatmennyiséget a memóriába. <br><br>*Példa:* A teljes éves adatmennyiséget egyszerre csak egy hónappal kell betölteni és feldolgozni.

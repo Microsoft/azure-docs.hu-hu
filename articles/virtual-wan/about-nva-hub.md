@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
 ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028080"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Tudnivalók a hálózati virtuális berendezésről egy Azure-beli virtuális WAN-központban (előzetes verzió)
@@ -115,6 +115,6 @@ Nem. A Barracuda CloudGen WAN csak a Barracuda CPE-eszközökkel kompatibilis. T
 
 A virtuális WAN által támogatott összes útválasztási forgatókönyv támogatott a hub NVA.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a virtuális WAN-ról, tekintse meg a [virtuális WAN áttekintését](virtual-wan-about.md) ismertető cikket.

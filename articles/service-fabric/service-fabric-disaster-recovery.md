@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791155"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
@@ -204,7 +204,7 @@ Az Azure-ban Service Fabric erőforrás-szolgáltató kezeli Service Fabric für
 
 Az önálló Service Fabric-fürtökben és az Azure-ban az elsődleges csomópont típusa a magok futtatásának egyike. Ha elsődleges csomópont-típust határoz meg, Service Fabric automatikusan kihasználja a csomópontok számát, amelyet akár kilenc vetőmag-csomópont létrehozásával, mind a rendszerszolgáltatások hét replikájának létrehozásával biztosít. Ha a véletlenszerű hibák egy halmaza egyidejűleg a replikák többségét kiveszi, a rendszerszolgáltatások kvórum elvesztését fogják megadni. Ha a vetőmag-csomópontok többsége elveszik, akkor a fürt hamarosan leáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan szimulálhatja a különböző hibákat a [tesztelési keretrendszer](service-fabric-testability-overview.md)használatával.
 - További katasztrófa-helyreállítási és magas rendelkezésre állású erőforrások olvasása. A Microsoft nagy mennyiségű útmutatót tett közzé ezekkel a témakörökkel kapcsolatban. Bár ezek az erőforrások bizonyos, más termékekben használt technikákra vonatkoznak, számos általános ajánlott eljárást tartalmaznak, amelyeket a Service Fabric kontextusban alkalmazhat:
   - [Rendelkezésre állási ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)

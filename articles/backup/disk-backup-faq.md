@@ -4,10 +4,10 @@ description: Válaszok az Azure Disk Backup szolgáltatással kapcsolatos gyakor
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98734562"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Az Azure Disk Backup szolgáltatással kapcsolatos gyakori kérdések (előzetes verzió)
@@ -79,7 +79,7 @@ Igen, visszaállíthatja a lemezt egy másik előfizetésre, mint a forrás ált
 
 Nem támogatottak a virtuális géphez csatlakoztatott több lemez időpontra vonatkozó pillanatképei. További információ: a [biztonsági mentés konfigurálása](backup-managed-disks.md#configure-backup) és a korlátozásokkal kapcsolatos további információkért tekintse meg a [támogatási mátrixot](disk-backup-support-matrix.md).
 
-### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Milyen lehetőségeim vannak a lemezek biztonsági mentésére több előfizetésen belül?
+### <a name="what-are-my-options-to-back-up-disks-across-multiple-subscriptions"></a>Milyen lehetőségeim vannak a több előfizetéshez tartozó lemezek biztonsági mentésére?
 
 Jelenleg a Azure Portal használatával konfigurálhatja a lemezek biztonsági mentését, de legfeljebb 20 lemezre van korlátozva ugyanabból az előfizetésből.
 
@@ -130,6 +130,6 @@ A következő műveleteket kell használni a **cél erőforráscsoporthoz** rend
 >[!NOTE]
 >A szerepkörök engedélyei a későbbiekben a Azure Backup szolgáltatás által hozzáadott szolgáltatások alapján változhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Disk Backup támogatási mátrixa](disk-backup-support-matrix.md)

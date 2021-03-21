@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: aldomel
 ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221014"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
@@ -106,7 +106,7 @@ A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az A
 |Virtuális hálózat                 |VNetLocal                                       |VNetLocal (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Internet                        |Internet                                        |Internet (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Virtuális berendezés               |VirtualAppliance                                |VirtualAppliance|
-|Nincs                            |Nincs                                            |Null (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
+|Nincsenek                            |Nincsenek                                            |Null (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Társviszony létesítése virtuális hálózatok között         |Virtuális hálózatok közötti társviszony                                    |Nem alkalmazható|
 |Virtuális hálózati szolgáltatásvégpont|VirtualNetworkServiceEndpoint                   |Nem alkalmazható|
 
@@ -207,15 +207,15 @@ A nyilak az adatforgalom irányát jelzik.
 
 A képen látható *Subnet1* alhálózat útvonaltáblája a következő útvonalakat tartalmazza:
 
-|ID (Azonosító)  |Forrás |Állam  |Címelőtagok    |A következő ugrás típusa          |A következő ugrás IP-címe|Felhasználó által megadott útvonal neve| 
+|ID (Azonosító)  |Forrás |Állapot  |Címelőtagok    |A következő ugrás típusa          |A következő ugrás IP-címe|Felhasználó által megadott útvonal neve| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Alapértelmezett|Érvénytelen|10.0.0.0/16         |Virtuális hálózat        |                   |              |
 |2   |User   |Aktív |10.0.0.0/16         |Virtuális berendezés      |10.0.100.4         |Ezen belül: VNet1  |
 |3   |User   |Aktív |10.0.0.0/24         |Virtuális hálózat        |                   |Ezen belül: Subnet1|
 |4   |Alapértelmezett|Érvénytelen|10.1.0.0/16         |Virtuális hálózatok közötti társviszony           |                   |              |
 |5   |Alapértelmezett|Érvénytelen|10.2.0.0/16         |Virtuális hálózatok közötti társviszony           |                   |              |
-|6   |User   |Aktív |10.1.0.0/16         |Nincs                   |                   |Ide: VNet2-1-Elejtés|
-|7   |User   |Aktív |10.2.0.0/16         |Nincs                   |                   |Ide: VNet2-2-Elejtés|
+|6   |User   |Aktív |10.1.0.0/16         |Nincsenek                   |                   |Ide: VNet2-1-Elejtés|
+|7   |User   |Aktív |10.2.0.0/16         |Nincsenek                   |                   |Ide: VNet2-2-Elejtés|
 |8   |Alapértelmezett|Érvénytelen|10.10.0.0/16        |Virtuális hálózati átjáró|[X.X.X.X]          |              |
 |9   |User   |Aktív |10.10.0.0/16        |Virtuális berendezés      |10.0.100.4         |A helyszínire    |
 |10  |Alapértelmezett|Aktív |[X.X.X.X]           |VirtualNetworkServiceEndpoint    |         |              |
@@ -241,7 +241,7 @@ Az egyes útvonal-azonosítók magyarázata:
 
 A *Subnet2* a képen látható útvonaltáblája a következő útvonalakat tartalmazza:
 
-|Forrás  |Állam  |Címelőtagok    |A következő ugrás típusa             |A következő ugrás IP-címe|
+|Forrás  |Állapot  |Címelőtagok    |A következő ugrás típusa             |A következő ugrás IP-címe|
 |------- |-------|------              |-------                   |--------           
 |Alapértelmezett |Aktív |10.0.0.0/16         |Virtuális hálózat           |                   |
 |Alapértelmezett |Aktív |10.1.0.0/16         |Virtuális hálózatok közötti társviszony              |                   |

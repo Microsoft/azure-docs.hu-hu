@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
 ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790986"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: incidensek vizsgálata az Azure Sentineltel
@@ -37,7 +37,7 @@ Ez a cikk a következőket ismerteti:
 Egy incidens több riasztást is tartalmazhat. Ez egy adott vizsgálatra vonatkozó összes releváns bizonyíték összesítése. A rendszer az **elemzés** lapon létrehozott elemzési szabályok alapján létrehoz egy incidenst. A riasztásokhoz kapcsolódó tulajdonságok, például a súlyosság és az állapot az incidens szintjén vannak megadva. Miután engedélyezte az Azure Sentinel számára, hogy megtudja, milyen veszélyforrásokat keres, és hogyan keresheti meg őket, figyelheti az észlelt fenyegetéseket az incidensek kivizsgálásával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidens entitásokat tartalmazzon.
+- Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
 
 - Ha van olyan vendég felhasználója, akinek incidenseket kell hozzárendelnie, a felhasználónak hozzá kell rendelnie az Azure AD-bérlő [címtár-olvasó](../active-directory/roles/permissions-reference.md#directory-readers) szerepkörét. A normál (nem vendég) felhasználók számára ez a szerepkör alapértelmezés szerint van hozzárendelve.
 
@@ -80,7 +80,7 @@ A vizsgálati gráf használata:
 1. Válasszon ki egy incidenst, majd kattintson a **vizsgálat** elemre. Ezzel elvégzi a vizsgálati gráfot. A gráf szemléltető térképet biztosít a riasztáshoz közvetlenül kapcsolódó entitásokhoz, és minden további kapcsolódó erőforrást.
 
    > [!IMPORTANT] 
-   > - Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidens entitásokat tartalmazzon.
+   > - Az incidens kivizsgálása csak akkor lehetséges, ha az entitás-hozzárendelési mezőket használta az elemzési szabály beállításakor. A vizsgálati gráf megköveteli, hogy az eredeti incidenst tartalmazzon entitásokat.
    >
    > - Az Azure Sentinel jelenleg **legfeljebb 30 napos incidensek** vizsgálatát támogatja.
 
@@ -124,7 +124,7 @@ A megfelelő besorolás kiválasztása után adjon hozzá egy leíró szöveget 
 
 :::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{alt-text}":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan kezdheti el az incidensek vizsgálatát az Azure Sentinel használatával. Folytassa az Oktatóanyaggal, hogy [miként reagálhat a fenyegetésekre automatizált forgatókönyvek használatával](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Válaszoljon a fenyegetésekre](tutorial-respond-threats-playbook.md) , hogy automatizálja a fenyegetésekre adott válaszokat.

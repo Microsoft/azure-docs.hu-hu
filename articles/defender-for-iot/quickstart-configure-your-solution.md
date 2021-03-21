@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
 ms.openlocfilehash: e6d83dafbe4b7f7013ab32039acaff7d8faa4a91
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103487751"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>Gyors útmutató: Azure Defender konfigurálása IoT-megoldáshoz
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan végezheti el a IoT biztonsági megoldás kezdet
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs
+Nincsenek
 
 ## <a name="what-is-defender-for-iot"></a>Mi a IoT Defender?
 

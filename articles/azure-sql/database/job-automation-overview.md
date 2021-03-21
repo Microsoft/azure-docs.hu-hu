@@ -14,10 +14,10 @@ ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
 ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101690430"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>Felügyeleti feladatok automatizálása rugalmas feladatokkal (előzetes verzió)
@@ -108,7 +108,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 |Szerepkörnév |'jobs' sémaengedélyek |'jobs_internal' sémaengedélyek |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Nincs |
+|**jobs_reader** | SELECT | Nincsenek |
 
 > [!IMPORTANT]
 > Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához vagy szerkesztéséhez engedéllyel rendelkező rosszindulatú felhasználók létrehozhatnak vagy szerkeszthetnek egy olyan feladatot, amely tárolt hitelesítő adatokat használ a rosszindulatú felhasználó vezérlője alá tartozó adatbázishoz való kapcsolódáshoz, ami lehetővé teheti a rosszindulatú felhasználó számára a hitelesítő adatok jelszavának meghatározását.

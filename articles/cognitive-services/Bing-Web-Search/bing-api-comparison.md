@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349537"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Mi a Bing Search API-k?
@@ -36,7 +36,7 @@ Vegye fontolóra a Bing Web Search API használatát olyan alkalmazásokban, ame
 
 A következő Bing Search API-k adott tartalmat adnak vissza a webről, például képekből, hírekből, helyi vállalkozásokból és videókból.
 
-| Bing API | Leírás |
+| Bing API | Description |
 | -- | -- |
 | [Entity Search](../Bing-Entities-Search/overview.md) | A Bing Entity Search API az entitásokat tartalmazó keresési eredményeket adja vissza, amelyek lehetnek személyek, helyek vagy dolgok. A lekérdezéstől függően az API egy vagy több olyan entitást ad vissza, amely megfelel a keresési lekérdezésnek. A keresési lekérdezés tartalmazhatja a figyelemreméltó személyeket, a helyi vállalkozásokat, a tereptárgyak, a célhelyeket és egyebeket is. |
 | [Image Search](../Bing-Image-Search/overview.md) | A Bing Image Search API segítségével megkeresheti és megkeresheti a [Bing.com/images](https://www.Bing.com/images)hasonló, magas színvonalú statikus és animált képeket. A keresések pontosításával belefoglalhatja vagy kizárhatja a képeket az attribútumok alapján, beleértve a méretet, a színt, a licencet és a frissességet is. Emellett megkeresheti a trendek képeit, képeket tölthet fel, és megtekintheti őket, és megjelenítheti a miniatűr előnézeteket. |
@@ -58,7 +58,7 @@ A következő Bing Search API-k segítségével javíthatja a keresési élmény
 | [Bing Autosuggest](../Bing-Autosuggest/get-suggested-search-terms.md) | A javasolt keresések valós idejű visszaadásával javíthatja az alkalmazás keresési élményét a Bing Autosuggest API.  |
 | [Bing-statisztika](bing-web-stats.md) | A Bing Statistics az alkalmazás által használt Bing Search API-k elemzését biztosítja. A rendelkezésre álló elemzések közé tartozik például a hívási kötet, a leggyakoribb lekérdezési karakterláncok és a földrajzi eloszlás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Bing Search API [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 * A [Bing használati és megjelenítési követelményei](./use-display-requirements.md) a Bing Search API-k használatával kapott tartalmak és információk elfogadható használatát határozzák meg.

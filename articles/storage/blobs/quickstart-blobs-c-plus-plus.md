@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 246d2677c784daee4cc6b083cff04b6993ab3818
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006489"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-c"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 a C++ nyelvhez
@@ -197,7 +197,7 @@ Deleting blob: blob.txt
 Deleting container: myblobcontainer
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a C++ használatával. Azt is megtanulta, hogyan hozhat létre és törölhet egy Azure Blob Storage-tárolót.
 

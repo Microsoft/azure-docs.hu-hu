@@ -7,10 +7,10 @@ ms.date: 10/31/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 9e3dc16481340c0266cd398d0970e2147648e17f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99625449"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
@@ -89,8 +89,8 @@ Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy ta
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
 Ha egy Service Fabric Mesh alkalmazást a Visual Studióban tesz elérhetővé, helyi Service Fabric fejlesztési fürtöt használ. Annak ellenőrzéséhez, hogy a rendszer miként olvassa be a teendőket a háttérszolgáltatásból, végezze el az OnGet() metódus hibakeresését.
-1. A **webfrontend** projektben nyissa meg a **Pages**  >  **index. cshtml**  >  **index.cshtml.cs** , és állítson be egy töréspontot a **OnGet** metódusban (17. sor).
-2. A **ToDoService** projektben nyissa meg a **TodoController.cs** , és állítson be egy töréspontot a **Get** metódusban (15. sor).
+1. A **webfrontend** projektben nyissa meg a **Pages**  >  **index. cshtml**  >  **index. cshtml. cs** lapot, és állítson be egy töréspontot a **OnGet** metódusban (17. sor).
+2. A **ToDoService** projektben nyissa meg a **TodoController. cs** , és állítson be egy töréspontot a **Get** metódusban (15. sor).
 3. Térjen vissza a böngészőbe, és frissítse az oldalt. Az első töréspont a webes kezelőfelület `OnGet()` metódusában jelentkezik. A `backendUrl` változó ellenőrzésével megvizsgálhatja, hogy a rendszer hogyan vonja össze a **service.yaml** fájlban megadott környezeti változókat a háttérszolgáltatással való kapcsolatfelvételhez használt URL-ben.
 4. Lépje át a `client.GetAsync(backendUrl).GetAwaiter().GetResult())` hívást (F10), és a következő töréspont a vezérlő `Get()`metódusában jelentkezik. Ezzel a módszerrel láthatja, hogy a rendszer hogyan olvassa be a teendők listáját a memóriabeli listából.
 5. Ha elkészült, a **SHIFT + F5** billentyűkombináció lenyomásával állítsa le a projekt hibakeresését a Visual Studióban.

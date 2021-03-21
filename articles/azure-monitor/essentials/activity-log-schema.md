@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
 ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102049168"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
@@ -140,7 +140,7 @@ Ez a kategória a Resource Manageren keresztül végrehajtott összes létrehoz�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | engedélyezés |Az esemény Azure RBAC-tulajdonságainak blobja. Általában a "művelet", a "szerepkör" és a "hatókör" tulajdonságokat tartalmazza. |
 | hívó |Annak a felhasználónak az e-mail-címe, aki a művelet, UPN-jogcím vagy SPN jogcím alapján végrehajtotta a rendelkezésre állást. |
@@ -287,7 +287,7 @@ Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapot
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | csatornák | Mindig a "rendszergazda, művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -380,7 +380,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/alertRules |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -406,7 +406,7 @@ Ez a kategória a klasszikus Azure-riasztások összes aktiválásának rekordj�
 A tulajdonságok mező a riasztási esemény forrásától függően eltérő értékeket fog tartalmazni. Két gyakori riasztási esemény szolgáltatója a tevékenységek naplójának riasztásai és a metrikák riasztásai.
 
 #### <a name="properties-for-activity-log-alerts"></a>A műveletnapló-riasztások tulajdonságai
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | Properties. subscriptionId | A tevékenység naplójának eseményéhez tartozó előfizetés-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
 | Properties. eventDataId | A tevékenység naplójának eseményéhez tartozó esemény-azonosító, amely miatt a tevékenység naplójának riasztási szabálya aktiválva lett. |
@@ -417,7 +417,7 @@ A tulajdonságok mező a riasztási esemény forrásától függően eltérő é
 | tulajdonságok. status | A tevékenység naplózási eseményének állapota, amely miatt a rendszer aktiválja a tevékenység naplójának riasztási szabályát.|
 
 #### <a name="properties-for-metric-alerts"></a>Metrikus riasztások tulajdonságai
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | Tulajdonságok. RuleUri | A metrika riasztási szabályának erőforrás-azonosítója. |
 | Tulajdonságok. RuleName | A metrika riasztási szabályának neve. |
@@ -490,7 +490,7 @@ Ez a kategória tartalmazza az adott előfizetésben definiált, az előfizetés
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | hívó | Mindig Microsoft. bepillantást/autoscaleSettings |
 | csatornák | Mindig a "rendszergazda, művelet" |
@@ -580,7 +580,7 @@ Ez a kategória tartalmazza a Azure Security Center által generált riasztások
 ```
 
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -661,7 +661,7 @@ Ez a kategória a szolgáltatásokhoz létrehozott új javaslatok rekordját tar
 
 ```
 ### <a name="property-descriptions"></a>Tulajdonságok leírása
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | csatornák | Mindig "művelet" |
 | correlationId | A karakterlánc formátumú GUID. |
@@ -771,7 +771,7 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 ### <a name="policy-event-property-descriptions"></a>Házirend-esemény tulajdonságainak leírása
 
-| Elem neve | Leírás |
+| Elem neve | Description |
 | --- | --- |
 | engedélyezés | Az esemény Azure RBAC-tulajdonságainak tömbje. Az új erőforrások esetében ez a művelet és a kiértékelést kiváltó kérelem hatóköre. A meglévő erőforrások esetében a művelet a következő: "Microsoft. Resources/checkPolicyCompliance/Read". |
 | hívó | Új erőforrások esetén a központi telepítést kezdeményező identitás. Meglévő erőforrások esetében a Microsoft Azure Policy bepillantást az RP GUID azonosító. |

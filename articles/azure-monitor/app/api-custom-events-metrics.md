@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: d658d7e64f720a3fb700d157cd5194ff50a48c33
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471634"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
@@ -1026,7 +1026,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 A fejlesztési, tesztelési és éles környezetek telemetria elkerülése érdekében [létrehozhat külön Application Insights erőforrásokat](./create-new-resource.md) , és módosíthatja a kulcsokat a környezettől függően.
 
-Ahelyett, hogy a rendszerállapot-kulcsot beolvassa a konfigurációs fájlból, beállíthatja azt a kódban. Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
+Ahelyett, hogy a rendszerállapot-kulcsot beolvassa a konfigurációs fájlból, beállíthatja azt a kódban. Állítsa be a kulcsot egy inicializálási metódusban, például a Global. aspx. cs egy ASP.NET-szolgáltatásban:
 
 *C#*
 
@@ -1126,7 +1126,7 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
     Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](./export-power-bi.md) és a [folyamatos exportálás](./export-telemetry.md).
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 * [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)

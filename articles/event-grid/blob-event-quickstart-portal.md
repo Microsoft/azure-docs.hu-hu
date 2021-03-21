@@ -4,10 +4,10 @@ description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatáva
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005690"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
@@ -56,7 +56,7 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
     2. A **hely neve** mezőben adja meg a webalkalmazás nevét.
     3. A **üzemeltetési terv neve** mezőben adja meg a webalkalmazás üzemeltetéséhez használni kívánt app Service-csomag nevét.
     4. Jelölje be az Elfogadom a **fenti feltételeket és kikötéseket** jelölőnégyzetet. 
-    5. Válassza a **Vásárlás** lehetőséget. 
+    5. Válassza a **Beszerzés** lehetőséget. 
 
        ![Központi telepítési paraméterek](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
 1. Az üzembe helyezés befejezése eltarthat néhány percig. Válassza a riasztások (harang ikon) lehetőséget a portálon, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget. 
@@ -137,7 +137,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005061"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
@@ -75,7 +75,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
         }
     ```    
 
- 1. Kattintson a **Mentés** gombra
+ 1. Kattintson a **Mentés** gombra.
  1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult
    * **Név**: előfizető
    * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Tároló-létrehozási beállítások**: nincs
-1. Kattintson a **Mentés** gombra
+1. Kattintson a **Mentés** gombra.
 1. Folytassa a következő szakasszal az Azure Blob Storage modul hozzáadásához
 
 ## <a name="deploy-azure-blob-storage-module"></a>Az Azure Blob Storage modul üzembe helyezése
@@ -146,7 +146,7 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storag
      - Linux-tárolók esetén **a saját kötet:/blobroot**
      - Windows-tárolók esetén **a saját kötet: C:/BlobRoot**
 
-5. Kattintson a **Mentés** gombra
+5. Kattintson a **Mentés** gombra.
 6. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
     > [!NOTE]
@@ -324,7 +324,7 @@ Gratulálunk! Elvégezte az oktatóanyagot. A következő szakaszokban részlete
 
 Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint azok típusait és leírásait. 
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
@@ -337,7 +337,7 @@ Az alábbi lista tartalmazza a támogatott események tulajdonságait, valamint 
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | api | sztring | Az eseményt kiváltó művelet. A következő értékek egyike lehet: <ul><li>BlobCreated – az engedélyezett értékek a következők: `PutBlob` és `PutBlockList`</li><li>BlobDeleted – engedélyezett értékek: `DeleteBlob` `DeleteAfterUpload` és `AutoDelete` . <p>Az `DeleteAfterUpload` esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterUpload kívánt tulajdonság értéke TRUE (igaz). </p><p>`AutoDelete` az esemény akkor jön létre, amikor a rendszer automatikusan törli a blobot, mert a deleteAfterMinutes kívánt tulajdonság értéke lejárt.</p></li></ul>|
 | ügyfélkérelem | sztring | ügyfél által megadott kérelem azonosítója a tárolási API-művelethez. Ez az azonosító használható az Azure Storage diagnosztikai naplóinak az "ügyfél-kérelem-azonosító" mezővel való összekapcsolására a naplókban, és az "x-MS-Client-Request-id" fejléc használatával megadható az ügyfelek kérései. Részletekért lásd: [naplózási formátum](/rest/api/storageservices/storage-analytics-log-format). |
@@ -349,7 +349,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: *\<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\>*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: *\<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\>*. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alábbi cikkeket a Blob Storage dokumentációjában:
 

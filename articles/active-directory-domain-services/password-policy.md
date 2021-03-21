@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619232"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Jelszó-és fiókzárolási házirendek Azure Active Directory Domain Services felügyelt tartományokban
@@ -127,7 +127,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 
 1. Ha a kiválasztott csoport neve **közvetlenül** a (z) szakaszban látható, kattintson az **OK** gombra az egyéni jelszóházirend mentéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A jelszóházirend és a Active Directory felügyeleti központ használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

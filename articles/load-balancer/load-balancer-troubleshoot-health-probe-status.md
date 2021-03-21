@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: allensu
 ms.openlocfilehash: 28823c997cd974d5061829df88680ed52075caa0
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98029209"
 ---
 # <a name="troubleshoot-azure-load-balancer-health-probe-status"></a>Azure Load Balancer állapot mintavételi állapotával kapcsolatban felmerülő hibák
@@ -75,6 +75,6 @@ Ha az összes korábbi ok úgy tűnik, hogy a rendszer megfelelően érvényesí
     - Ellenőrizze, hogy a mintavételi csomagok kényszerítve vannak-e egy másik célra (valószínűleg UDR-beállításokon keresztül) a terheléselosztó elérése előtt. Ez azt eredményezheti, hogy a forgalom soha nem éri el a háttérbeli virtuális gépet. 
 4. Módosítsa a mintavételi típust (például HTTP-ről TCP-re), és konfigurálja a megfelelő portot a hálózati biztonsági csoportok ACL-jei és a tűzfalon annak ellenőrzéséhez, hogy a probléma a mintavételi válasz konfigurációjának megfelelően van-e kiválasztva. További információ az állapot-mintavételezési konfigurációról: a végpont terheléselosztási [állapotának mintavételi beállítása](/archive/blogs/mast/endpoint-load-balancing-heath-probe-configuration-details).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

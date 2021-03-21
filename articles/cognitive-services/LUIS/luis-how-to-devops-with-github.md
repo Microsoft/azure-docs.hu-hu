@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/5/2020
 ms.author: anwigley
 ms.openlocfilehash: 448b3d93ed58e4cfc73da576f0c5871600400ac6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019839"
 ---
 # <a name="apply-devops-to-luis-app-development-using-github-actions"></a>A DevOps alkalmazása a LUIS-alkalmazások fejlesztésére GitHub-műveletek használatával
@@ -35,7 +35,7 @@ A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) t�
 * **A Luis-alkalmazás üzembe helyezése** – [folyamatos kézbesítési (CD) feladatok](luis-concept-devops-automation.md#continuous-delivery-cd) végrehajtása a Luis-alkalmazás közzétételéhez.
 * **A tárház használata saját projekttel** – elmagyarázza, hogyan használhatja a tárházat saját Luis-alkalmazásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) -tárház használatával DevOps alkalmazhat a saját projekttel.
 * [A LUIS verziókövetési és elágaztatási stratégiái](luis-concept-devops-sourcecontrol.md)

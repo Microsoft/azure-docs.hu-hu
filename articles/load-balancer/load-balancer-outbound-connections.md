@@ -9,10 +9,10 @@ ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
 ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99052822"
 ---
 # <a name="using-snat-for-outbound-connections"></a>SNAT használata a kimenő kapcsolatokhoz
@@ -108,7 +108,7 @@ Ha a lenti [2. forgatókönyv](#scenario2) be van állítva, az egyes backend-p�
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
- | Standard belső terheléselosztó | Nincs internetkapcsolat.| Nincs |
+ | Standard belső terheléselosztó | Nincs internetkapcsolat.| Nincsenek |
 
  #### <a name="description"></a>Description
  
@@ -119,7 +119,7 @@ Standard belső terheléselosztó használata esetén a SNAT nem használ ideigl
 
  | Szövetségek | Metódus | IP-protokollok |
  | ------------ | ------ | ------------ |
- |Nincs </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
+ |Nincsenek </br> Alapszintű Load Balancer | [SNAT](#snat) a példány-szintű dinamikus IP-címmel| TCP </br> UDP | 
 
  #### <a name="description"></a>Description
 

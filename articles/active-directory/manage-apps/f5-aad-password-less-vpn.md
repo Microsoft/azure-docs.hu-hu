@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730887"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>Oktatóanyag Azure Active Directory egyszeri bejelentkezéses integrációhoz az F5 BIG-IP jelszó nélküli VPN-hez
@@ -305,7 +305,7 @@ Az összes beállítással az APM mostantól megköveteli, hogy egy előtér-vir
 
 - [Öt lépés az Azure AD-vel való teljes alkalmazás-integrációhoz](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Nyisson meg egy böngészőt egy távoli Windows-ügyfélen, és keresse meg a **Big-IP VPN szolgáltatás** URL-címét. Az Azure AD-ben végzett hitelesítés után a BIG-IP WebTop portál és a VPN-indító jelenik meg.
 

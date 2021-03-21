@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
 ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621705"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>Az előnézeti mód bekapcsolása IoT Hub az új funkciók kiválasztásához
@@ -46,7 +46,7 @@ Ezek a szolgáltatások a IoT Hub protokoll és a hitelesítési rétegek fejles
 
 1. Az **alapvető beállítások** lapon végezze el a mezőket a [szokásos](iot-hub-create-through-portal.md) módon, a **régió** kivételével. Válasszon a következő régiók közül:
     
-    - USA középső régiója
+    - Az USA középső régiója
     - Nyugat-Európa
     - Délkelet-Ázsia
 
@@ -73,7 +73,7 @@ Az előnézeti módban *ne* használjon IoT hubot éles környezetben. Az előn�
 > [!TIP]
 > Az [eszköz-adatfolyamok](iot-hub-device-streams-overview.md) és az [elosztott nyomkövetés](iot-hub-distributed-tracing.md)esetében nem szükséges az előnézet mód használata. A régebbi előzetes verziójú funkciók használatához a szokásos módon végezze el a dokumentációt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A MQTT 5 támogatásának megtekintéséhez lásd: [IOT hub MQTT 5 támogatás áttekintése (előzetes verzió)](iot-hub-mqtt-5.md)
 - Az ECC-kiszolgáló tanúsítványának megtekintéséhez lásd: [elliptikus görbe titkosítási (ECC) kiszolgáló TLS-tanúsítványa (előzetes verzió)](iot-hub-tls-support.md#elliptic-curve-cryptography-ecc-server-tls-certificate-preview)

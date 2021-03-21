@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98539555"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás költségeinek becslése és kezelése
@@ -27,7 +27,7 @@ A keresési szolgáltatás által használt erőforrások mennyisége, a szolgá
 
 Számlázási célokra két egyszerű képletet kell figyelembe venni:
 
-| Képlet | Leírás |
+| Képlet | Description |
 |---------|-------------|
 | **R x P = SU** | A használt replikák száma, a felhasznált partíciók számával szorozva a szolgáltatás által használt *keresési egységek* (su) mennyiségével egyenlő. A SU erőforrás-egység, amely lehet partíció vagy replika is. |
 | **SU * számlázási arány = havi ráfordítás** | A teljes havi számla elsődleges tényezője, hogy az SUs száma megszorozza a szolgáltatás kiépített szintjének számlázási arányával. Bizonyos funkciók vagy munkaterhelések más Azure-szolgáltatások függőségeivel is rendelkeznek, ami növelheti a megoldás költségeit az előfizetés szintjén. Az alábbi számlázható események szakasz azokat a funkciókat azonosítja, amelyek hozzáadhatók a számlához. |
@@ -109,7 +109,7 @@ A keresési szolgáltatás ideiglenes leállítása nem lehetséges. A dedikált
 
 A szolgáltatás szempontjából a számla csökkentése egyetlen módja annak, hogy csökkentse a replikákat és a partíciókat olyan szintre, amely továbbra is elfogadható teljesítményt és [SLA-megfelelőséget](https://azure.microsoft.com/support/legal/sla/search/v1_0/)biztosít, vagy egy alacsonyabb szintű szolgáltatást hoz létre (az S1 óradíjak alacsonyabbak, mint az S2 vagy az S3). Feltételezve, hogy kiépíti a szolgáltatást a betöltési kivetítések alsó végére, ha kibővíti a szolgáltatást, létrehozhat egy második nagyobb rétegű szolgáltatást, újraépítheti az indexeket a második szolgáltatásban, majd törölheti az elsőt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan figyelheti és kezelheti az Azure-előfizetések költségeit.
 

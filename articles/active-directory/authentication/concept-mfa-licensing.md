@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743955"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Az Azure AD Multi-Factor Authentication szolgáltatásai és licencei
@@ -41,7 +41,7 @@ Az Azure AD-Multi-Factor Authentication a szervezet igényeitől függően néh�
 
 A következő táblázat felsorolja az Azure AD Multi-Factor Authentication különböző verzióiban elérhető funkciókat. Tervezze meg a felhasználói hitelesítés biztonságossá tételének szükségességét, majd határozza meg, hogy melyik megközelítés teljesíti ezeket a követelményeket. Például bár a ingyenes Azure AD biztosít az Azure AD Multi-Factor Authenticationt biztosító biztonsági alapértékeket, csak a mobil hitelesítő alkalmazás használható a hitelesítési kéréshez, nem pedig telefonhíváshoz vagy SMS-hez. Ez a megközelítés akkor lehet korlátozás, ha nem biztos benne, hogy a Mobile Authentication alkalmazás telepítve van a felhasználó személyes eszközén.
 
-| Jellemző | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Microsoft 365-alkalmazások | Prémium szintű Azure AD P1 vagy P2 |
+| Szolgáltatás | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Microsoft 365-alkalmazások | Prémium szintű Azure AD P1 vagy P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Azure AD-bérlői rendszergazdai fiókok biztosítása MFA-val | ● | ● (Csak *Azure ad globális rendszergazdai* fiókok) | ● | ● |
 | Mobile App második tényezőként | ● | ● | ● | ● |
@@ -78,7 +78,7 @@ Ha nem szeretné engedélyezni az Azure AD-Multi-Factor Authentication az össze
 * Ha Microsoft-fiókot használ, [regisztráljon a multi-Factor Authentication szolgáltatásra](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 * Ha nem Microsoft-fiókot használ, [kapcsolja be a többtényezős hitelesítést egy felhasználó vagy csoport számára az Azure ad-ben](howto-mfa-userstates.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A költségekkel kapcsolatos további információkért lásd: az [Azure AD multi-Factor Authentication díjszabása](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 * [Mi a feltételes hozzáférés?](../conditional-access/overview.md)

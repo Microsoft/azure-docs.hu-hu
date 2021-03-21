@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027646"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Fan-out/ventilátor – forgatókönyv Durable Functions – Felhőbeli biztonsági mentési példa
@@ -229,7 +229,7 @@ Content-Type: application/json; charset=utf-8
 
 Most láthatja, hogy a folyamat elkészült, és körülbelül mennyi időt vett igénybe. Megtekintheti a mező értékét is `output` , amely azt jelzi, hogy a rendszer körülbelül 450 kb-ot töltött fel a naplókban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa azt mutatja, hogyan lehet megvalósítani a ventilátor-out/Fan-in mintát. A következő minta bemutatja, hogyan valósítható meg a figyelő minta [tartós időzítők](durable-functions-timers.md)használatával.
 

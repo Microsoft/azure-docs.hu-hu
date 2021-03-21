@@ -4,17 +4,17 @@ description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe h
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028743"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
 Ez a cikk bemutatja, hogyan helyezhetők üzembe sablonok egy GitHub-tárházból a **telepítés az Azure** -ban gomb használatával. A gombot közvetlenül a GitHub-tárházban található _readme.MD_ -fájlhoz is hozzáadhatja. Azt is megteheti, hogy a gombot egy olyan weblapra adja, amely hivatkozik a tárházra.
 
-A központi telepítési hatókör meghatározása a sablon sémája alapján történik. További információ:
+A központi telepítési hatókör meghatározása a sablon sémája alapján történik. További információkért lásd:
 
 - [erőforráscsoportok](deploy-to-resource-group.md)
 - [előfizetések](deploy-to-subscription.md)
@@ -120,6 +120,6 @@ A portálon egy ablaktábla jelenik meg, amely lehetővé teszi a paraméterek �
 
 ![A portál használata az üzembe helyezéshez](./media/deploy-to-azure-button/portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A sablonokkal kapcsolatos további tudnivalókért tekintse meg [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.

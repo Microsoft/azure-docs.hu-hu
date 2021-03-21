@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348738"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
@@ -53,7 +53,7 @@ Ha a jelentéskészítési adathoz az API-n keresztül szeretne hozzáférni, a 
 A bérlőhöz tartozó bejelentkezési jelentések eléréséhez az Azure AD-bérlőnek hozzá kell rendelnie prémium szintű Azure AD-licencet. Prémium szintű Azure AD P1 (vagy újabb) licencre van szükség az Azure AD-bérlők bejelentkezési jelentéseinek eléréséhez. Ha a könyvtár típusa Azure AD B2C, a bejelentkezési jelentések az API-n keresztül érhetők el, további licencfeltételek nélkül. 
 
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 A regisztrációra akkor is szükség van, ha parancsfájl használatával éri el a jelentéskészítési API-t. A regisztráció egy alkalmazás- **azonosítót** ad meg, amely az engedélyezési hívásokhoz szükséges, és lehetővé teszi a kód számára a jogkivonatok fogadását.
 
@@ -221,7 +221,7 @@ A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
 * [Naplózási API-referenciák](/graph/api/resources/directoryaudit?view=graph-rest-beta) 

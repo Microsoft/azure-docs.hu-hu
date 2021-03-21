@@ -7,10 +7,10 @@ ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 13044b8f087b403f83516a32a490d2dee8db700f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102054783"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Frissítések importálása az eszköz frissítése IoT Hub-Schema és egyéb információk
@@ -18,7 +18,7 @@ Ha frissíteni szeretné a IoT Hub eszköz frissítését, először tekintse á
 
 ## <a name="import-manifest-schema"></a>Manifest-séma importálása
 
-| Név | Típus | Leírás | Korlátozások |
+| Név | Típus | Description | Korlátozások |
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId` objektum | Identitás frissítése. |
 | Frissítés típusa | sztring | Frissítés típusa: <br/><br/> * Itt adhatja meg, `microsoft/apt:1` Mikor hajtson végre egy Package-alapú frissítést a Reference Agent használatával.<br/> * Itt adhatja meg, `microsoft/swupdate:1` hogy mikor hajtson végre rendszerkép-alapú frissítést a Reference Agent használatával.<br/> * Itt adhatja meg `microsoft/simulator:1` a minta ügynök szimulátor használatát.<br/> * Egyéni típus megadásával egyéni ügynököt fejleszthet. | Formátum: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> Maximális 32 karakter összesen |
@@ -30,7 +30,7 @@ Ha frissíteni szeretné a IoT Hub eszköz frissítését, először tekintse á
 
 ## <a name="updateid-object"></a>UpdateId objektum
 
-| Név | Típus | Leírás | Korlátozások |
+| Név | Típus | Description | Korlátozások |
 | --------- | --------- | --------- | --------- |
 | Szolgáltató | sztring | A frissítés identitásának szolgáltatói része. | 1-64 karakter, alfanumerikus, pont és kötőjel. |
 | Name | sztring | A frissítés identitásának neve. | 1-64 karakter, alfanumerikus, pont és kötőjel. |
@@ -38,7 +38,7 @@ Ha frissíteni szeretné a IoT Hub eszköz frissítését, először tekintse á
 
 ## <a name="file-object"></a>Fájl objektum
 
-| Név | Típus | Leírás | Korlátozások |
+| Név | Típus | Description | Korlátozások |
 | --------- | --------- | --------- | --------- |
 | Filename | sztring | Fájl neve | Egyedinek kell lennie egy frissítésen belül |
 | SizeInBytes | Int64 | A fájl mérete bájtban. | Legfeljebb 800 MB/egyedi fájl, vagy 800 MB, együttesen frissítés |
@@ -46,14 +46,14 @@ Ha frissíteni szeretné a IoT Hub eszköz frissítését, először tekintse á
 
 ## <a name="compatibilityinfo-object"></a>CompatibilityInfo objektum
 
-| Név | Típus | Leírás | Korlátozások |
+| Név | Típus | Description | Korlátozások |
 | --- | --- | --- | --- |
 | DeviceManufacturer | sztring | A frissítéssel kompatibilis eszköz gyártója. | 1-64 karakter, alfanumerikus, pont és kötőjel. |
 | DeviceModel | sztring | Annak az eszköznek a modellje, amely kompatibilis a frissítéssel. | 1-64 karakter, alfanumerikus, pont és kötőjel. |
 
 ## <a name="hashes-object"></a>Kivonatok objektum
 
-| Name | Kötelező | Típus | Leírás |
+| Name | Kötelező | Típus | Description |
 | --------- | --------- | --------- | --------- |
 | Sha256 | True (Igaz) | sztring | A fájl Base64 kódolású kivonata az SHA-256 algoritmus használatával. |
 

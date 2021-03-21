@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
 ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97797275"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Erőforrások áthelyezése régiók között (erőforráscsoport)
@@ -267,7 +267,7 @@ A következőképpen törölheti:
     - A cache Storage-fiók neve ```resmovecache<guid>```
     - A tár neve: ```ResourceMove-<sourceregion>-<target-region>-GUID``` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [További](about-move-process.md) információ az áthelyezési folyamatról.
