@@ -4,10 +4,10 @@ description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítmé
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: b3f2ac343ef4a703f347ec8a57f242a636bb32d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88824015"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
@@ -47,7 +47,7 @@ A Windows a [teljesítmény figyelője](https://techcommunity.microsoft.com/t5/a
 
 Íme néhány teljesítményszámlálók és tartományok, amelyek hasznosak lehetnek a szűk keresztmetszetek optimális biztonsági mentéshez való diagnosztizálásában.
 
-| Számláló | status |
+| Számláló | Állapot |
 | --- | --- |
 | Logikai lemez (fizikai lemez) –% tétlen |<li> 100% tétlen – 50% tétlen = kifogástalan</br><li> 49% tétlen: 20% tétlen = figyelmeztetés vagy figyelő</br><li> 19% üresjáratban 0% tétlen = kritikus vagy a spec |
 | Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |<li> 0,001 MS – 0,015 MS = kifogástalan</br><li> 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br><li> 0,026 MS vagy több = kritikus vagy nem a spec |
@@ -97,6 +97,6 @@ A következő mutatók segítségével megismerheti a szűk keresztmetszeteket, 
 
 Ha nagyméretű lemezekről szeretne biztonsági mentést készíteni, ajánlott [Azure Data Box](./offline-backup-azure-data-box.md) használni az első biztonsági mentéshez (kezdeti replikáció).  Ha nem tudja használni a Data Boxt, akkor a környezetben előforduló, hosszú adatátvitelt okozó átmeneti hálózati problémák a biztonsági mentési hibákhoz vezethetnek.  Ezeknek a hibáknak a védelme érdekében hozzáadhat néhány mappát a kezdeti biztonsági mentéshez, és további mappák növekményes hozzáadásával megőrizheti az Azure-ba történő biztonsági mentést.  A további növekményes biztonsági mentések viszonylag gyorsabbak lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](backup-azure-file-folder-backup-faq.md)

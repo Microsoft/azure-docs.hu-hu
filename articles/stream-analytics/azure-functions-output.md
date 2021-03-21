@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
 ms.openlocfilehash: e5ea7a1abbbd6ab4be32955179227fbd539cf641
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019618"
 ---
 # <a name="azure-functions-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Functions kimenete
@@ -21,7 +21,7 @@ Stream Analytics Azure Functions kimenete nem érhető el az Azure China 21Viane
 
 A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure Functions. A Azure Functions kimeneti adapter a következő konfigurálható tulajdonságokkal érhető el:
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
 | Függvény |A függvény neve a Azure Functions alkalmazásban. |
@@ -46,7 +46,7 @@ A partíciós kulcs a lekérdezés PARTITION BY záradékán alapul. A kimeneti 
 
 Az alapértelmezett köteg mérete 262 144 bájt (256 KB). Az események alapértelmezett száma/batch értéke 100. A köteg mérete konfigurálható, és a Stream Analytics kimeneti beállításokban növelheti vagy csökkenthető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](stream-analytics-quick-create-portal.md)
 * [Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával](quick-create-azure-cli.md)

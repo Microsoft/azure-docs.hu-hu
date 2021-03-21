@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 09/12/2019
 ms.openlocfilehash: 2a23fc0b769727cab5a28d3d313a7791bcfa6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91617706"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>Virtuális hálózat létrehozása felügyelt Azure SQL-példányhoz
@@ -43,7 +43,7 @@ Az Azure SQL felügyelt példányát egy Azure-beli [virtuális hálózaton](../
 
 A virtuális hálózat létrehozásának és konfigurálásának legegyszerűbb módja egy Azure Resource Manager telepítési sablon használata.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Válassza az **üzembe helyezés az Azure-** ban gombot:
 
@@ -52,7 +52,7 @@ A virtuális hálózat létrehozásának és konfigurálásának legegyszerűbb 
    Ezzel a gombbal megnyithatja a hálózati környezet konfigurálásához használható űrlapot, amelyen telepítheti az SQL felügyelt példányát.
 
    > [!Note]
-   > Ez a Azure Resource Manager-sablon két alhálózattal rendelkező virtuális hálózatot fog telepíteni. Egy **ManagedInstances**nevű alhálózat a felügyelt SQL-példány számára van fenntartva, és előre konfigurált útválasztási táblázattal rendelkezik. A másik, **alapértelmezett**nevű alhálózat más erőforrásokhoz is használatos, amelyeknek hozzá kell férniük az SQL felügyelt példányához (például Azure Virtual machines).
+   > Ez a Azure Resource Manager-sablon két alhálózattal rendelkező virtuális hálózatot fog telepíteni. Egy **ManagedInstances** nevű alhálózat a felügyelt SQL-példány számára van fenntartva, és előre konfigurált útválasztási táblázattal rendelkezik. A másik, **alapértelmezett** nevű alhálózat más erőforrásokhoz is használatos, amelyeknek hozzá kell férniük az SQL felügyelt példányához (például Azure Virtual machines).
 
 3. Konfigurálja a hálózati környezetet. A következő űrlapon konfigurálhatja a hálózati környezet paramétereit:
 

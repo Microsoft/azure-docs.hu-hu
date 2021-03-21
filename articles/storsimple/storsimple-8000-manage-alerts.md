@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016845"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
@@ -89,7 +89,7 @@ Ha a listában egy riasztásra kattint, a riasztás további részleteket tartal
 
 ![Hardveres riasztás – példa](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
 
-Ha az adatokat Microsoft ügyfélszolgálata szeretné elküldeni, a riasztás részleteit szövegfájlba másolhatja. Miután végrehajtotta a javaslatot, és feloldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, és válassza ki **Alerts** a riasztást a riasztások panelen, és kattintson a **Törlés** gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **riasztási** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes riasztást, amelyeket törölni szeretne. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek a probléma megoldásakor, vagy ha a rendszer új információkkal frissíti a riasztást.
+Ha az adatokat Microsoft ügyfélszolgálata szeretné elküldeni, a riasztás részleteit szövegfájlba másolhatja. Miután végrehajtotta a javaslatot, és feloldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, és válassza ki  a riasztást a riasztások panelen, és kattintson a **Törlés** gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **riasztási** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes riasztást, amelyeket törölni szeretne. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek a probléma megoldásakor, vagy ha a rendszer új információkkal frissíti a riasztást.
 
 Ha a **Törlés** gombra kattint, lehetősége lesz a riasztással kapcsolatos megjegyzések és a probléma megoldásához szükséges lépések megadására. A rendszer néhány eseményt töröl, ha egy másik esemény új információval aktiválódik. Ebben az esetben a következő üzenet jelenik meg.
 
@@ -226,6 +226,6 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).

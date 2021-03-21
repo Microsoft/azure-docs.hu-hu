@@ -12,12 +12,12 @@ ms.date: 2/23/2021
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a884cbe9ad30ce298318d217aa9ed1947c8f21
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: fa025f7e21f76b4dde547ccabf675511e9156359
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123020"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104589327"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -197,13 +197,13 @@ További részletekért tekintse meg a proxykiszolgáló dokumentációját.
 
 ## <a name="blocking-consumer-applications-public-preview"></a>Fogyasztói alkalmazások blokkolása (nyilvános előzetes verzió)
 
-A Microsoft azon alkalmazásai, amelyek a felhasználói fiókokat és a szervezeti fiókokat, például a [OneDrive](https://onedrive.live.com/) vagy a [Microsoft Learn](https://docs.microsoft.com/learn/)is támogatják, esetenként ugyanazon az URL-címen futhatnak.  Ez azt jelenti, hogy azok a felhasználók, akiknek ehhez az URL-címhez hozzá kell férniük, személyes használatra is hozzá kell férniük, ami nem engedélyezett a működési irányelvekben.
+A Microsoft azon alkalmazásai, amelyek a felhasználói fiókokat és a szervezeti fiókokat, például a [OneDrive](https://onedrive.live.com/) vagy a [Microsoft Learn](/learn/)is támogatják, esetenként ugyanazon az URL-címen futhatnak.  Ez azt jelenti, hogy azok a felhasználók, akiknek ehhez az URL-címhez hozzá kell férniük, személyes használatra is hozzá kell férniük, ami nem engedélyezett a működési irányelvekben.
 
 Egyes szervezetek megpróbálják kijavítani ezt a blokkolással, `login.live.com` hogy letiltsák a személyes fiókok hitelesítését.  Ennek számos hátránya van:
 
 1. A blokkoló `login.live.com` blokkolja a személyes fiókok használatát a B2B vendég forgatókönyvekben, ami behatolhat a látogatókra és az együttműködésre.
-1. [Az Autopilot használatához `login.live.com` a](https://docs.microsoft.com/mem/autopilot/networking-requirements) a telepítéshez. Az Intune és az Autopilot forgatókönyvek sikertelenek lehetnek `login.live.com` , ha a blokkolva van.
-1. A login.live.com szolgáltatásban az telemetria támaszkodó szervezeti és Windows-frissítések nem [fognak működni](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
+1. [Az Autopilot használatához `login.live.com` a](/mem/autopilot/networking-requirements) a telepítéshez. Az Intune és az Autopilot forgatókönyvek sikertelenek lehetnek `login.live.com` , ha a blokkolva van.
+1. A login.live.com szolgáltatásban az telemetria támaszkodó szervezeti és Windows-frissítések nem [fognak működni](/windows/deployment/update/windows-update-troubleshooting#feature-updates-are-not-being-offered-while-other-updates-are).
 
 ### <a name="configuration-for-consumer-apps"></a>A fogyasztói alkalmazások konfigurációja
 
@@ -216,7 +216,7 @@ Ekkor a felhasználói alkalmazások hitelesítése nem jelenik meg a [felügyel
 A `restrict-msa` szabályzat tiltja a fogyasztói alkalmazások használatát, de több más típusú forgalom és hitelesítés révén is lehetővé teszi a következőket:
 
 1. Az eszközök felhasználó nélküli forgalma.  Ez magában foglalja az Autopilot, a Windows Update és a szervezeti telemetria adatforgalmát.
-1. A fogyasztói fiókok B2B-hitelesítése. Azok a Microsoft-fiókkal rendelkező felhasználók, akik a [Bérlővel való együttműködésre kérték](https://docs.microsoft.com/azure/active-directory/external-identities/redemption-experience#invitation-redemption-flow) a login.Live.com az erőforrás-bérlő eléréséhez.
+1. A fogyasztói fiókok B2B-hitelesítése. Azok a Microsoft-fiókkal rendelkező felhasználók, akik a [Bérlővel való együttműködésre kérték](../external-identities/redemption-experience.md#invitation-redemption-flow) a login.Live.com az erőforrás-bérlő eléréséhez.
     1. Ezt a hozzáférést a fejléc használatával lehet `Restrict-Access-To-Tenants` engedélyezni vagy megtagadni az adott erőforrás-bérlőhöz való hozzáférés engedélyezéséhez vagy megtagadásához.
 1. Az "áteresztő" hitelesítés, amelyet számos Azure-alkalmazás használ, valamint a Office.com, ahol az alkalmazások az Azure AD használatával jelentkeznek be a fogyasztói felhasználók felhasználói környezetben.
     1. Ezt a hozzáférést a fejléc használatával is szabályozhatja `Restrict-Access-To-Tenants` , hogy engedélyezze vagy megtagadja a hozzáférést a speciális "továbbító" bérlőhöz ( `f8cdef31-a31e-4b4a-93e4-5f571e91255a` ).  Ha ez a bérlő nem jelenik meg az `Restrict-Access-To-Tenants` engedélyezett tartományok listájában, az Azure ad letiltja a fogyasztói fiókokat az alkalmazásba való bejelentkezéskor.

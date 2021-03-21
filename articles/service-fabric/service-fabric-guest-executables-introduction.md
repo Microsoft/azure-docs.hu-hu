@@ -4,10 +4,10 @@ description: További információ a meglévő alkalmazások vendég végrehajth
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017746"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl üzembe helyezése Service Fabric
@@ -19,7 +19,7 @@ A vendég végrehajtható fájlokat a Service Fabric, például az állapot nél
 A Service Fabric-fürtben több előnye van a vendég végrehajtható fájl futtatására:
 
 * Magas rendelkezésre állás. A Service Fabricon futó alkalmazások nagyon elérhetővé válnak. Service Fabric biztosítja, hogy egy alkalmazás példányai futnak.
-* Állapot monitorozása. Service Fabric állapot-figyelés észleli, ha egy alkalmazás fut, és diagnosztikai adatokat biztosít, ha hiba történt.   
+* Állapotfigyelés. Service Fabric állapot-figyelés észleli, ha egy alkalmazás fut, és diagnosztikai adatokat biztosít, ha hiba történt.   
 * Az alkalmazások életciklusának kezelése. A leállás nélküli verziófrissítések mellett a Service Fabric automatikus visszaállítást biztosít az előző verzióra, ha a frissítés során helytelen állapotú esemény jelent meg.    
 * Sűrűségű. Több alkalmazást is futtathat egy fürtben, ami szükségtelenné teszi az egyes alkalmazások saját hardveren való futtatásának szükségességét.
 * Felderíthetőség: a REST használatával meghívhatja a Service Fabric Naming Service-t, hogy a fürt más szolgáltatásait is megkeresse. 
@@ -62,7 +62,7 @@ A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationMani
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 * [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
 * [Több futtatható vendégalkalmazás üzembe helyezése](./service-fabric-deploy-existing-app.md)

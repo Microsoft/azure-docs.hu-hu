@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: tomfitz
 ms.openlocfilehash: fa5e59b96aada06c2dd486094d9be6a52c79e43e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84261288"
 ---
 # <a name="use-existing-virtual-network-with-azure-managed-applications"></a>Meglévő virtuális hálózat használata Azure Managed Applications
@@ -53,10 +53,10 @@ Ez az elem lehetővé teszi, hogy a fogyasztó válasszon ki egy új vagy egy me
 A kimenetekben szerepel egy érték, amely jelzi, hogy a fogyasztó új vagy meglévő virtuális hálózatot jelölt ki. A felügyelt identitás értéke is van.
 
 > [!NOTE]
-> A felügyelt identitás kimeneti értékének **managedIdentity**kell lennie.
+> A felügyelt identitás kimeneti értékének **managedIdentity** kell lennie.
 
 :::code language="json" source="~/resourcemanager-templates/managed-app-existing-vnet/createUiDefinition.json" range="136-148" highlight="6,12":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a felhasználói felület definíciós fájljának létrehozásáról, tekintse meg az [ Azure felügyelt alkalmazás létrehozási felületénekCreateUiDefinition.jsát](create-uidefinition-overview.md)ismertető témakört.

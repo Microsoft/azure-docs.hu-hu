@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
 ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103490109"
 ---
 # <a name="introduction-to-azure-percept"></a>Az Azure Percept bemutatása
@@ -37,7 +37,7 @@ Az Azure Percept fő összetevői a következők:
     - Az eszköz-építők, a megoldás-építők és az ügyfelek számára a prototípus-forgatókönyvek széles választékát támogató fejlesztői csomag.
 
         > [!div class="nextstepaction"]
-        > [Vásárlás](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+        > [Vásárlás most](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 3. Szolgáltatások és munkafolyamatok az Edge AI-modell és a megoldás-fejlesztés felgyorsításához.
 

@@ -7,15 +7,15 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 0a36cb468ebcb77c0614bffd0afc392df3655c20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89658198"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
 
-Annak érdekében, hogy csökkentse a nem előre jelezhető események hatásait és hatásait a vállalatra és az ügyfelekre, győződjön meg arról, hogy van egy vész- [ *helyreállítási* (Dr)](https://en.wikipedia.org/wiki/Disaster_recovery) megoldás, amely lehetővé teszi az adatok védelméhez, a kritikus üzleti funkciókat támogató erőforrások gyors helyreállításához, valamint az [ *üzletmenet folytonosságának* ](https://en.wikipedia.org/wiki/Business_continuity_planning)fenntartásához szükséges műveletek megtartását. Például a fennakadások lehetnek kimaradások, az alapul szolgáló infrastruktúra vagy összetevők, például a tárterület, a hálózat vagy a számítási erőforrások, a helyreállítható alkalmazások meghibásodása vagy akár egy teljes adatközpont elvesztése miatti veszteségek. Ha egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) megoldás áll készen, a vállalata vagy szervezete gyorsabban reagálhat a megszakításokra, a tervezett és a nem tervezett állapotokra, és csökkentheti az ügyfelek leállását.
+Annak érdekében, hogy csökkentse a nem előre jelezhető események hatásait és hatásait a vállalatra és az ügyfelekre, győződjön meg arról, hogy van egy vész- [ *helyreállítási* (Dr)](https://en.wikipedia.org/wiki/Disaster_recovery) megoldás, amely lehetővé teszi az adatok védelméhez, a kritikus üzleti funkciókat támogató erőforrások gyors helyreállításához, valamint az [ *üzletmenet folytonosságának*](https://en.wikipedia.org/wiki/Business_continuity_planning)fenntartásához szükséges műveletek megtartását. Például a fennakadások lehetnek kimaradások, az alapul szolgáló infrastruktúra vagy összetevők, például a tárterület, a hálózat vagy a számítási erőforrások, a helyreállítható alkalmazások meghibásodása vagy akár egy teljes adatközpont elvesztése miatti veszteségek. Ha egy üzletmenet-folytonossági és vész-helyreállítási (BCDR) megoldás áll készen, a vállalata vagy szervezete gyorsabban reagálhat a megszakításokra, a tervezett és a nem tervezett állapotokra, és csökkentheti az ügyfelek leállását.
 
 Ez a cikk BCDR útmutatást és stratégiákat tartalmaz, amelyek akkor alkalmazhatók, ha [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával hoz létre automatizált munkafolyamatokat. A Logic app-munkafolyamatok segítségével könnyebben integrálhatja és koordinálhatja az alkalmazásokat, a Cloud Servicest és a helyszíni rendszereket az alkalmazások között, így csökkentve az írási kód mennyiségét. A BCDR tervezésekor ügyeljen arra, hogy ne csak a logikai alkalmazásait, hanem a logikai alkalmazásokkal használt Azure-erőforrásokat is vegye figyelembe:
 
@@ -100,10 +100,10 @@ Az adatátjáró-erőforrás egy helyhez vagy egy Azure-régióhoz van társítv
 
 Beállíthatja az elsődleges és a másodlagos helyet, hogy a logikai alkalmazás példányai ezekben a helyekben le tudják játszani ezeket a szerepköröket:
 
-| Elsődleges – másodlagos szerepkör | Leírás |
+| Elsődleges – másodlagos szerepkör | Description |
 |------------------------|-------------|
 | *Aktív – aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
-| *Aktív-passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
+| *Aktív – passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
 | Kombinációja | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepet játszanak. |
 |||
 
@@ -249,7 +249,7 @@ A vész-helyreállítási perspektívából a logikai alkalmazás elsődleges é
   Például egy üzenetsor beolvasása (például egy Azure Service Bus üzenetsor) kiszolgálóoldali állapotot használ, mivel a várólista-kezelő szolgáltatás zárolja az üzeneteket, így megakadályozva, hogy más ügyfelek is olvassák ugyanezeket az üzeneteket.
 
   > [!NOTE]
-  > Ha a logikai alkalmazásnak egy adott sorrendben kell elolvasnia az üzeneteket, például egy Service Bus sorból, használhatja a versengő fogyasztói mintát, de csak akkor, ha Service Bus-munkamenetekkel együtt, azaz [ *szekvenciális konvojként* ](/azure/architecture/patterns/sequential-convoy)is ismert. Ellenkező esetben be kell állítania a logikai alkalmazás példányait az aktív-passzív szerepkörökkel.
+  > Ha a logikai alkalmazásnak egy adott sorrendben kell elolvasnia az üzeneteket, például egy Service Bus sorból, használhatja a versengő fogyasztói mintát, de csak akkor, ha Service Bus-munkamenetekkel együtt, azaz [ *szekvenciális konvojként*](/azure/architecture/patterns/sequential-convoy)is ismert. Ellenkező esetben be kell állítania a logikai alkalmazás példányait az aktív-passzív szerepkörökkel.
 
 <a name="request-trigger"></a>
 
