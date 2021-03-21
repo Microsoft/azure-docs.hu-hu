@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8592b679fcfbb860962bf75b882dc1a0543412c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: ffea2d84f1a5149670976beef3b9af847ae31a35
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613969"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582136"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
 
@@ -110,7 +110,7 @@ Miután létrehozta a gazdagépet, a típusa nem módosítható. Áthelyezheti a
 
 A FSLogix korlátozásai vagy kvótái a felhasználói profil VHD (X) fájlok tárolására használt tárolási hálótól függenek.
 
-A következő táblázat példát mutat be arra, hogy a FSLogix-profiloknak milyen erőforrásokra van szükségük az egyes felhasználók támogatásához. A követelmények a felhasználótól, az alkalmazástól és az egyes profilokon végzett tevékenységtől függően eltérőek lehetnek.
+Az alábbi táblázat azt mutatja be, hogy egy FSLogix-profilnak hány IOPS kell támogatnia az egyes felhasználók támogatásához. A követelmények a felhasználótól, az alkalmazástól és az egyes profilokon végzett tevékenységtől függően eltérőek lehetnek.
 
 | Erőforrás | Követelmény |
 |---|---|
@@ -151,8 +151,8 @@ A virtuális gépekhez használni kívánt rendelkezésre állási beállítás 
 
 | Rendelkezésre állási beállítás | Rendszerkép helye | Felügyelt lemez lehetőség gombjának használata (választógomb) |
 |---|---|---|
-| Nincs | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
-| Nincs | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |
+| Nincsenek | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
+| Nincsenek | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |
 | A rendelkezésre állási zóna | Katalógus (blob Storage-beállítás letiltva) | Alapértelmezés szerint letiltva az "igen" értékkel |
 | Rendelkezésre állási csoport felügyelt SKU-val (felügyelt lemez) | Katalógus | Alapértelmezés szerint letiltva az "igen" értékkel |
 | Rendelkezésre állási csoport felügyelt SKU-val (felügyelt lemez) | Blob Storage | Engedélyezve a "nem" beállítással alapértelmezettként |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
 ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97631992"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch Processing Kit a Speech containers szolgáltatáshoz
@@ -25,7 +25,7 @@ A Batch Processing kit használatával kiegészítheti és bővítheti a számí
 
 A Batch Kit tároló ingyenesen elérhető a [githubon](https://github.com/microsoft/batch-processing-kit) és a   [Docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)-on. [Csak a](speech-container-howto.md#billing) használt beszédfelismerési tárolók kell fizetnie.
 
-| Funkció  | Leírás  |
+| Szolgáltatás  | Leírás  |
 |---------|---------|
 | Köteg hangfájljának eloszlása     | Nagy számú fájl automatikus küldése a helyszíni vagy a felhőalapú beszédfelismerési tároló végpontjai számára. A fájlok bármilyen POSIX-kompatibilis köteten lehetnek, beleértve a hálózati fájlrendszereket is.       |
 | A Speech SDK integrációja | A Speech SDK közös jelzőit továbbíthatja, többek között a következőt: n-Best hipotézisek, diarization, nyelv, káromkodás maszkolása.  |

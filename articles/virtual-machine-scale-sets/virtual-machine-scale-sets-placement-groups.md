@@ -10,14 +10,14 @@ ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747824"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Nagyméretű virtuálisgép-méretezési csoportok használata
-Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](./index.yml) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg ( _singlePlacementGroup=False_ ). 
+Mostantól akár 1000 virtuális gép kapacitású Azure [virtuálisgép-méretezési csoportokat](./index.yml) is létrehozhat. Ebben a dokumentumban a _nagyméretű virtuálisgép-méretezési csoport_ egy 100 virtuális gépnél nagyobb skálázásra képes méretezési csoportként van meghatározva. Ezt a képességet a méretezési csoport egyik tulajdonsága adja meg (_singlePlacementGroup=False_). 
 
 A nagyméretű méretezési csoportok bizonyos szempontból, például a terheléselosztást és tartalék tartományokat illetően eltérően viselkednek, mint a standard méretezési csoportok. Ez a dokumentum bemutatja a nagyméretű méretezési csoportok jellemzőit, és azt, hogy mit kell tudni az alkalmazásokban történő sikeres használatukhoz. 
 

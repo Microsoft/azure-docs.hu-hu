@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 01/20/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0738dc7f2b7012002fc6ddf5cc68dd0c8e42b04d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: edeb383317d4bdc0e7beef1f8390ddabd350f002
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100522479"
 ---
 # <a name="sensor-data-mining-queries"></a>Érzékelő adatbányászati lekérdezések
@@ -285,7 +285,3 @@ Jelentés létrehozása:
 3. A jobb oldali legördülő listából válassza ki a létrehozni kívánt jelentést.
 
 4. A jelentés eredményeinek PDF-fájl létrehozásához válassza a következőt: :::image type="icon" source="media/how-to-generate-reports/pdf-report-icon.png" border="false"::: .
-
-## <a name="next-steps"></a>Következő lépések
-
-[Érzékelő trendek és statisztikai jelentések](how-to-create-trends-and-statistics-reports.md).

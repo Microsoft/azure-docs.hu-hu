@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 25320fb8cde0cc5a38f1edf4019a2f0e07cefe14
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461096"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
@@ -51,7 +51,7 @@ Tekintse meg a kódot, és figyelje meg, hogy a két elem hogyan lett implement�
 
 1. A **fájl**  >  **megnyitása mappát...** nyissa meg a C: \\ Source \\ IoTEdgeAndMlSample \\ DeviceHarness.
 
-1. Tekintse meg a InstallCertificate () metódust a Program.cs-ben.
+1. Tekintse meg a program. cs InstallCertificate () metódusát.
 
 1. Vegye figyelembe, hogy ha a kód megkeresi a tanúsítvány elérési útját, meghívja a CertificateManager. InstallCACert metódust a tanúsítvány telepítéséhez a gépen.
 

@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 95655a4c92a1de9bb7a7faebcdaa83fb0fa75696
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99834000"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
@@ -33,8 +33,8 @@ A paraméterekből származó első nem null értéket adja vissza. Az üres kar
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
-| További argumentumok |Nem |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
+| arg1 |Yes |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
+| További argumentumok |No |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -135,8 +135,8 @@ Ellenőrzi, hogy két érték egyenlő-e egymással. A `equals` függvény nem t
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
-| arg2 |Igen |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
+| arg1 |Yes |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
+| arg2 |Yes |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -319,8 +319,8 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték. A `greater
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A nagyobb összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A nagyobb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -400,8 +400,8 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -481,8 +481,8 @@ Ellenőrzi, hogy az első érték kisebb-e a második értéknél. A `less` füg
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A kisebb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -562,8 +562,8 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 | Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 

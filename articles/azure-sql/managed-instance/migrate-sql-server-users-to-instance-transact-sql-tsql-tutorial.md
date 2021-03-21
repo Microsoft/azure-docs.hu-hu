@@ -11,17 +11,17 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
 ms.openlocfilehash: f2dd34ab7c6ee5be26836e4abb86960605ee44ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84708665"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Oktatóanyag: Windows-felhasználók és-csoportok áttelepíthetők egy SQL Server példányban az Azure SQL felügyelt példányára T-SQL DDL-szintaxis használatával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!NOTE]
-> A felhasználók és csoportok az SQL felügyelt példányra való átadásához használt szintaxis **nyilvános előzetes**verzióban érhető el.
+> A felhasználók és csoportok az SQL felügyelt példányra való átadásához használt szintaxis **nyilvános előzetes** verzióban érhető el.
 
 Ez a cikk végigvezeti a helyszíni Windows-felhasználók és-csoportok áttelepítésének folyamatán a SQL Server az Azure SQL felügyelt példányain a T-SQL szintaxis használatával.
 
@@ -84,7 +84,7 @@ Megadja az adatbázison belül azonosított csoport nevét.
 > Felhasználók: testUser1, testGroupUser </br>
 > Csoport: Migrálás – a testGroupUser az Active Directory-beli áttelepítési csoporthoz kell tartoznia
 
-Az alábbi példa létrehoz egy bejelentkezést SQL Server a _testUser1_ nevű fiókhoz a _aadsqlmi_tartomány alatt.
+Az alábbi példa létrehoz egy bejelentkezést SQL Server a _testUser1_ nevű fiókhoz a _aadsqlmi_ tartomány alatt.
 
 ```sql
 -- Sign into SQL Server as a sysadmin or a user that can create logins and databases
@@ -317,7 +317,7 @@ Tesztelje az SQL felügyelt példányának hitelesítését az ALTER USER szinta
 1. Jelentkezzen be az összevont virtuális gépre az Azure SQL felügyelt példány-előfizetésének használatával `aadsqlmi\testUser1`
 1. SQL Server Management Studio (SSMS) használatával jelentkezzen be az SQL felügyelt példányára **Active Directory integrált** hitelesítéssel, az adatbázishoz való csatlakozással `migration` .
     1. A testUser1@aadsqlmi.net hitelesítő adatokkal is bejelentkezhet a SSMS kapcsolóval **Active Directory – univerzális, MFA-támogatással**. Ebben az esetben azonban nem használhatja az egyszeri bejelentkezési mechanizmust, és jelszót kell beírnia. Nem kell összevont virtuális gépet használnia a felügyelt SQL-példányba való bejelentkezéshez.
-1. A szerepkör-tag **kiválasztása**után a `test` táblázatból választhat
+1. A szerepkör-tag **kiválasztása** után a `test` táblázatból választhat
 
     ```sql
     Select * from test  --  and see one row (1,10)
@@ -341,6 +341,6 @@ Tesztelje a hitelesítést egy SQL felügyelt példányon egy Windows-csoport ta
 The specified schema name "testGroupUser@aadsqlmi.net" either does not exist or you do not have permission to use it.` </br> </br>
 > Az aktuális megkerülő megoldás egy meglévő sémával rendelkező tábla létrehozása a fenti esetben <dbo. New>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: SQL Server migrálása a felügyelt Azure SQL-példányra a DMS használatával](../../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json)

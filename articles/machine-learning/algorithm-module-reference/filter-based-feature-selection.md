@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/10/2020
 ms.openlocfilehash: f4a7f5581703ae6932f3b40e62085fed76f5e6f2
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91945702"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
@@ -66,9 +66,9 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
     > Győződjön meg arról, hogy a bemenetként megadott oszlopok lehetséges funkciók. Egy olyan oszlop például, amely egyetlen értéket tartalmaz, nem rendelkezik információs értékkel.
     >
     > Ha tudja, hogy egyes oszlopok helytelen funkciókat végeznek, akkor eltávolíthatja őket az oszlop kiválasztásával. A [metaadatok szerkesztése](edit-metadata.md) modullal is megjelölheti azokat **kategorikusként**. 
-3.  A **szolgáltatás pontozási módszere**esetében válassza az alábbi, a pontszámok kiszámításakor használandó statisztikai módszerek egyikét.  
+3.  A **szolgáltatás pontozási módszere** esetében válassza az alábbi, a pontszámok kiszámításakor használandó statisztikai módszerek egyikét.  
 
-    | Módszer              | Követelmények                             |
+    | Metódus              | Követelmények                             |
     | ------------------- | ---------------------------------------- |
     | Pearson korreláció | A címke lehet szöveg vagy numerikus. A funkcióknak numerikusnak kell lenniük. |
     Chi négyzetes| A címkék és a szolgáltatások lehetnek szöveg vagy numerikus elemek. Használja ezt a módszert a számítási funkció fontosságához két kategorikus oszlop esetében.|
@@ -77,12 +77,12 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
     > Ha módosítja a kijelölt metrikát, az összes többi beállítás alaphelyzetbe áll. Ügyeljen arra, hogy először ezt a beállítást állítsa be.
 4.  Jelölje be a csak szolgáltatásként megjelölt oszlopok esetében a **csak a funkció bekapcsolása oszlopok** esetén lehetőséget. 
 
-    Ha törli ezt a beállítást, a modul egy pontszámot hoz létre minden olyan oszlophoz, amely egyébként megfelel a feltételeknek, akár a **kívánt funkciók számában**megadott oszlopok számával.  
+    Ha törli ezt a beállítást, a modul egy pontszámot hoz létre minden olyan oszlophoz, amely egyébként megfelel a feltételeknek, akár a **kívánt funkciók számában** megadott oszlopok számával.  
 
-5.  A **cél oszlopnál**válassza az **oszlop kiválasztásának elindítása** lehetőséget a címke oszlop kiválasztásához név vagy az index alapján. (Az indexek egy-alapúak.)  
+5.  A **cél oszlopnál** válassza az **oszlop kiválasztásának elindítása** lehetőséget a címke oszlop kiválasztásához név vagy az index alapján. (Az indexek egy-alapúak.)  
     A statisztikai korrelációt magában foglaló összes módszerhez címkével ellátott oszlop szükséges. A modul tervezési idejű hibát ad vissza, ha a nem címke vagy több címke oszlopot választja. 
 
-6.  A **kívánt funkciók számának**megadásához adja meg az eredményként visszaadott szolgáltatások oszlopainak számát:  
+6.  A **kívánt funkciók számának** megadásához adja meg az eredményként visszaadott szolgáltatások oszlopainak számát:  
 
     - A minimálisan megadható szolgáltatások közül csak egy, de azt javasoljuk, hogy növelje ezt az értéket.  
 
@@ -103,9 +103,9 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
 
 A feldolgozás befejezése után:
 
-+ Az elemzett funkciók oszlopainak és a hozzájuk tartozó pontszámok teljes listájának megtekintéséhez kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés**lehetőséget.  
++ Az elemzett funkciók oszlopainak és a hozzájuk tartozó pontszámok teljes listájának megtekintéséhez kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés** lehetőséget.  
 
-+ Ha a szolgáltatás kiválasztási feltételei alapján szeretné megtekinteni az adathalmazt, kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés**lehetőséget. 
++ Ha a szolgáltatás kiválasztási feltételei alapján szeretné megtekinteni az adathalmazt, kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés** lehetőséget. 
 
 Ha az adatkészlet kevesebb oszlopot tartalmaz, mint amennyit várt, ellenőrizze a modul beállításait. Tekintse meg a bemenetként megadott oszlopok adattípusait is. Ha például az 1 értékre állítja be a **kívánt funkciókat** , a kimeneti adatkészlet csak két oszlopot tartalmaz: a Label oszlopot és a legmagasan rangsorolt funkció oszlopot.
 
@@ -128,7 +128,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 
 -   Ha egy oszlop logikai (igaz/hamis) értékeket tartalmaz, azok a következő módon lesznek feldolgozva: `True = 1` és `False = 0` .  
 
--   Egy oszlop nem lehet olyan szolgáltatás, amely **címkeként** vagy **pontszámként**lett megjelölve.  
+-   Egy oszlop nem lehet olyan szolgáltatás, amely **címkeként** vagy **pontszámként** lett megjelölve.  
 
 ### <a name="how-missing-values-are-handled"></a>A hiányzó értékek kezelése  
 
@@ -139,7 +139,7 @@ Ha a Pearson korrelációt egy numerikus szolgáltatáson és egy kategorikus c�
 -   Ha egy szolgáltatásként kijelölt oszlop minden hiányzó értékkel rendelkezik, a modul nulla pontszámot rendel hozzá.   
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
 

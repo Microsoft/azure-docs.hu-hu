@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b0fadcc592f5dd52bf1b72dc9d5658866ffba7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88008474"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz (klasszikus) az Android-ügyféllel
@@ -32,13 +32,13 @@ Fizessen elő a rendszergazda által biztosított hírcsatornára, hogy lekérje
 
 Előfizetés a hírcsatornára:
 
-1. A csatlakoztatási központban koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
+1. A csatlakoztatási központban koppintson a **+** elemre, majd koppintson a **távoli erőforrás-hírcsatorna** lehetőségre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
    - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon adta meg <https://rdweb.wvd.microsoft.com> .
    - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
-3. Koppintson a **tovább**gombra.
+3. Koppintson a **tovább** gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
-   - A **Felhasználónév mezőben**adja meg a felhasználónevet, amely jogosult az erőforrások elérésére.
+   - A **Felhasználónév mezőben** adja meg a felhasználónevet, amely jogosult az erőforrások elérésére.
    - A **Password (jelszó**) mezőben adja meg a felhasználónévhez tartozó jelszót.
    - Az is előfordulhat, hogy további tényezőket kell megadnia, ha a rendszergazda úgy konfigurálta a hitelesítést.
 

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "77019553"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>Gyors útmutató – VMware virtuális gépek használata az Azure-ban
@@ -34,7 +34,7 @@ Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói 
 
     ![CloudSimple virtuális gép létrehozása](media/create-cloudsimple-virtual-machine.png)
 
-4. Adja meg az alapszintű adatokat, és kattintson a **Tovább: méret**elemre.
+4. Adja meg az alapszintű adatokat, és kattintson a **Tovább: méret** elemre.
 
     ![CloudSimple virtuális gép létrehozása – alapismeretek](media/create-cloudsimple-virtual-machine-basic-info.png)
 
@@ -42,7 +42,7 @@ Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói 
     | ------------ | ------------- |
     | Előfizetés | A saját felhőhöz társított Azure-előfizetés.  |
     | Erőforráscsoport | Az erőforráscsoport, amelyhez a virtuális gép hozzá lesz rendelve. Választhat egy meglévő csoportot, vagy létrehozhat egy újat. |
-    | Név | A virtuális gép azonosítására szolgáló név.  |
+    | Name | A virtuális gép azonosítására szolgáló név.  |
     | Hely | Az az Azure-régió, amelyben a virtuális gép üzemeltetve van.  |
     | Magánfelhő | CloudSimple, ahol létre szeretné hozni a virtuális gépet. |
     | Erőforráskészlet | A virtuális géphez hozzárendelt erőforráskészlet. Válasszon a rendelkezésre álló erőforráskészlet közül. |
@@ -55,13 +55,13 @@ Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói 
 
     ![CloudSimple virtuális gép létrehozása – méret](media/create-cloudsimple-virtual-machine-size.png)
 
-6. Konfigurálja a hálózati adaptereket és a lemezeket az alábbi táblázatokban leírtak szerint, és kattintson a **felülvizsgálat + létrehozás**gombra.
+6. Konfigurálja a hálózati adaptereket és a lemezeket az alábbi táblázatokban leírtak szerint, és kattintson a **felülvizsgálat + létrehozás** gombra.
 
     ![CloudSimple virtuális gép létrehozása – konfigurációk](media/create-cloudsimple-virtual-machine-configurations.png)
 
     Hálózati adapterek esetében kattintson a **hálózati adapter hozzáadása** lehetőségre, és konfigurálja a következő beállításokat.
 
-    | Vezérlés | Leírás |
+    | Szabályozás | Leírás |
     | ------------ | ------------- |
     | Név | Adja meg a felületet azonosító nevet.  |
     | Network (Hálózat) | Válassza ki a saját Felhőbeli vSphere a konfigurált elosztott portok listájából.  |
@@ -77,11 +77,11 @@ Hozzon létre egy virtuális gépet a saját felhőben a vCenter felhasználói 
     | SCSI-vezérlő | Válasszon ki egy SCSI-vezérlőt a lemezhez.  |
     | Mód | Meghatározza, hogy a lemez hogyan vegyen részt a pillanatképekben. Válasszon egyet a következő lehetőségek közül: <br> – Független állandó: a lemezre írt összes adattal véglegesen írásra kerül.<br> – Független nem állandó: a lemezre írt módosítások a virtuális gép kikapcsolásakor vagy alaphelyzetbe állításakor törlődnek.  A független, nem állandó mód lehetővé teszi, hogy a virtuális gépet mindig ugyanabban az állapotban indítsa újra. További információt a <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware dokumentációjában</a>talál.
 
-7. Az érvényesítés befejezésekor tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. A módosítások elvégzéséhez kattintson a felül található lapfülekre, vagy kattintson a gombra.
+7. Az érvényesítés befejezésekor tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra. A módosítások elvégzéséhez kattintson a felül található lapfülekre, vagy kattintson a gombra.
 
     ![CloudSimple virtuális gép létrehozása – áttekintés](media/create-cloudsimple-virtual-machine-review.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [CloudSimple virtuális gépek listájának megtekintése](azure-create-vm.md#view-list-of-cloudsimple-virtual-machines)
 * [CloudSimple virtuális gép kezelése az Azure-ból](azure-manage-vm.md)

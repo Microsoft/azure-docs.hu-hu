@@ -9,10 +9,10 @@ ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: ad9e6b99b396465c2cff95bd6ab340ef9d668085
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99575957"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
@@ -93,7 +93,7 @@ Az előtriggerekhez hasonlóan az eseményindítók is társítva vannak egy Azu
 > [!NOTE]
 > A regisztrált eseményindítók nem futnak automatikusan, ha a kapcsolódó műveletek (létrehozás/törlés/csere/frissítés) történnek. Explicit módon kell meghívni őket a műveletek végrehajtásakor. További információt az [Eseményindítók futtatása](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) című cikkben talál.
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>Felhasználó által meghatározott függvények
+## <a name="user-defined-functions"></a><a id="udfs"></a>Felhasználó által definiált függvények
 
 A [felhasználó által definiált függvények](sql-query-udfs.md) (UDF-k) az SQL API-lekérdezés nyelvi szintaxisának kibővítésére és az egyéni üzleti logika egyszerű megvalósítására szolgálnak. Csak lekérdezéseken belül hívhatók. A UDF nem rendelkezik hozzáféréssel a környezeti objektumhoz, és csak számítási JavaScriptként használhatók. Ezért a UDF a másodlagos replikán is futtatható. Példákat a [felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md#udfs) című cikkben talál.
 

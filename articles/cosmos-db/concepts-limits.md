@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
 ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98611032"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
@@ -62,15 +62,15 @@ Példa: tegyük fel, hogy rendelkezik egy 400 RU/s és 0 GB tárhelytel kiépít
 
 **Megjegyzés:** ha a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" programra](set-throughput.md#high-storage-low-throughput-program), a minimális átviteli sebesség (GB/s) is csökkenthető.
 
-#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimális átviteli sebesség a megosztott átviteli sebességű adatbázison 
-A megosztott átviteli sebességű adatbázis manuális átviteli sebességgel szükséges minimális átviteli sebességének becsléséhez keresse meg a maximális értéket:
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Minimális átviteli sebesség megosztott átviteli sebességgel rendelkező adatbázis esetén 
+A megosztott átviteli sebességgel rendelkező adatbázishoz szükséges minimális átviteli sebesség manuális átviteli sebességgel való megbecsléséhez keresse meg a következő maximális értékét:
 
 * 400 RU/s 
 * Aktuális tárterület (GB * 10 RU/s)
 * Az adatbázison/100-ben kiépített legmagasabb RU/s
 * 400 + MAX (tárolók száma-25, 0) * 100 RU/s
 
-Példa: tegyük fel, hogy rendelkezik egy, a 400 RU/s, 15 GB tárterülettel és 10 tárolóval kiépített adatbázissal. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
+Példa: Tegyük fel, hogy egy 400 RU/s sebességgel, 15 GB tárhellyel és 10 tárolóval kiépített adatbázisa van. A minimális RU/s érték `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/s. Ha az adatbázisban 30 tároló található, a minimális RU/s érték `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Megjegyzés:** ha a fiókja jogosult a ["nagy tárterület/alacsony átviteli sebesség" programra](set-throughput.md#high-storage-low-throughput-program), a minimális átviteli sebesség (GB/s) is csökkenthető.
 
