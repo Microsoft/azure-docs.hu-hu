@@ -17,10 +17,10 @@ ms.custom:
 - devx-track-js
 - devx-track-csharp
 ms.openlocfilehash: 3ddc8c78bac47ed85266037341328585e3c7cb1c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97825119"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
@@ -495,7 +495,7 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 
 * [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/) további információkat nyújt a TLS-hitelesítésről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a hozzáférési IoT Hub vezérlését, az alábbi IoT Hub fejlesztői útmutató témaköreiben találhat további információt:
 

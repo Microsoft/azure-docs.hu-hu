@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 4beba141fec7a819df52e4c3a669312a4ad76998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91449299"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door"></a>Háttérrendszer és háttérbeli készletek az Azure-ban – bejárati ajtó
@@ -26,7 +26,7 @@ A háttérrendszer egy adott régióban található webalkalmazás-telepítésre
 
 Az előtérben futó háttérrendszer az alkalmazás állomásneve vagy nyilvános IP-címére hivatkozik, amely az ügyfelek kérelmeit szolgálja ki. A háttérrendszer nem tévesztendő össze az adatbázis szintjével, a tárolási szintjével és így tovább. A háttereket az alkalmazás-háttér nyilvános végpontjának kell tekinteni. Amikor felvesz egy háttérrendszer-háttérrendszer-készletet, a következőket is hozzá kell adnia:
 
-- **Háttérbeli gazdagép típusa** A hozzáadni kívánt erőforrás típusa. A bejárati ajtó támogatja az App Service, a Cloud Service vagy a Storage szolgáltatásból származó alkalmazás-hátterek automatikus észlelését. Ha egy másik erőforrást szeretne használni az Azure-ban, vagy akár egy nem Azure-beli hátteret is, válassza az **Egyéni gazdagép**lehetőséget.
+- **Háttérbeli gazdagép típusa** A hozzáadni kívánt erőforrás típusa. A bejárati ajtó támogatja az App Service, a Cloud Service vagy a Storage szolgáltatásból származó alkalmazás-hátterek automatikus észlelését. Ha egy másik erőforrást szeretne használni az Azure-ban, vagy akár egy nem Azure-beli hátteret is, válassza az **Egyéni gazdagép** lehetőséget.
 
     >[!IMPORTANT]
     >A konfiguráció során az API-k nem ellenőrzik, hogy a háttérrendszer nem érhető-e el az ajtós környezetekben. Győződjön meg arról, hogy a bejárati ajtó elérheti a hátteret.

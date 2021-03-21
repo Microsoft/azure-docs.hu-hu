@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
 ms.openlocfilehash: cd0d4928d5cd0eb15f4f1372a0a3417fc85d13bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91328775"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
@@ -69,13 +69,13 @@ Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet 
 
 1. Válassza ki a virtuális gép **Biztonsági mentés** beállítását.
 
-2. Válassza a **biztonsági mentés leállítása**lehetőséget.
+2. Válassza a **biztonsági mentés leállítása** lehetőséget.
 
     ![Virtuális gép biztonsági mentésének leállítása az Azure Portalon](./media/quick-backup-vm-portal/stop-backup.png)
 
 3. Válassza az **Biztonsági másolat adatainak törlése** lehetőséget a legördülő menüből.
 
-4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **biztonsági mentés leállítása**lehetőséget.
+4. A **Biztonságimásolat-elem nevének megadása** párbeszédpanelen adja meg a virtuális gép nevét – például *myVM*. Válassza a **biztonsági mentés leállítása** lehetőséget.
 
     Miután a virtuális gép biztonsági mentése leállt, és a helyreállítási pontok is ellettek távolítva, törölheti az erőforráscsoportot. Ha egy meglévő virtuális gépet használt, megtarthatja az erőforráscsoportot és a virtuális gépet.
 
@@ -85,7 +85,7 @@ Ha folytatja a biztonsági mentési oktatóanyagot, amely leírja, hogyan lehet 
 
     ![Az erőforráscsoport törlése az Azure Portal használatával](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 

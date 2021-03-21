@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 049025a5d871f1dd26e5dab498756aa44d2ebfe2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 27353e6086085aadae622e007a38f97e15cbcb7f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693169"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587865"
 ---
 # <a name="introduction-to-securing-azure-service-accounts"></a>Bevezetés az Azure-szolgáltatásfiókok biztonságossá tételéhez
 
@@ -38,13 +38,13 @@ Az Azure-ban üzemeltetett szolgáltatások esetében ajánlott felügyelt ident
 
 ## <a name="managed-identities"></a>Felügyelt identitások
 
-A felügyelt identitások biztonságos Azure Active Directory (Azure AD) identitások, amelyek az Azure-erőforrások identitásának biztosításához lettek létrehozva. A [felügyelt identitásoknak két típusa](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#managed-identity-types)van: 
+A felügyelt identitások biztonságos Azure Active Directory (Azure AD) identitások, amelyek az Azure-erőforrások identitásának biztosításához lettek létrehozva. A [felügyelt identitásoknak két típusa](../managed-identities-azure-resources/overview.md#managed-identity-types)van: 
  
 * A rendszer által hozzárendelt felügyelt identitások közvetlenül a szolgáltatás egy példányához rendelhetők hozzá. 
 
 * A felhasználó által hozzárendelt felügyelt identitások önálló erőforrásként hozhatók létre. 
 
-További információ: a [felügyelt identitások biztonságossá tétele](service-accounts-managed-identities.md). A felügyelt identitásokkal kapcsolatos általános információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+További információ: a [felügyelt identitások biztonságossá tétele](service-accounts-managed-identities.md). A felügyelt identitásokkal kapcsolatos általános információkért lásd: [Mi az Azure-erőforrások felügyelt identitása?](../managed-identities-azure-resources/overview.md)
 
 ## <a name="service-principals"></a>Szolgáltatásnevek
 
@@ -67,6 +67,3 @@ Az Azure-szolgáltatásfiókok biztonságossá tételével kapcsolatos további 
 [Az egyszerű szolgáltatások biztonságossá tétele](service-accounts-principal.md)
 
 [Az Azure-szolgáltatásfiókok szabályozása](service-accounts-governing-azure.md)
-
-
-

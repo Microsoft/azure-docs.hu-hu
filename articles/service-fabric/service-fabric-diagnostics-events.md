@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "75451731"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-események 
@@ -39,6 +39,6 @@ A Service Fabric-események elérésének számos különböző módja van:
 * Az események naplózása szabványos csatornákon keresztül történik (például ETW/Windows-eseménynaplók), és bármely olyan figyelési eszközzel megjeleníthető, amely támogatja ezeket, például a Azure Monitor naplókat. Alapértelmezés szerint a portálon létrehozott fürtökön be van kapcsolva a diagnosztika, és a Windows Azure Diagnostics ügynöke elküldi az eseményeket az Azure Table Storage szolgáltatásnak, de továbbra is integrálnia kell ezt a log Analytics-erőforrással. További információ a Azure Diagnostics- [ügynök](service-fabric-diagnostics-event-aggregation-wad.md) konfigurálásáról a fürt diagnosztikai konfigurációjának módosításához további naplók vagy teljesítményszámlálók és a [Azure monitor naplók integrációjának](service-fabric-diagnostics-event-analysis-oms.md) kiválasztásához
 * A EventStore szolgáltatás REST API-jai, amelyek lehetővé teszik a fürt közvetlen lekérdezését vagy a Service Fabric ügyféloldali függvénytáron keresztül. Lásd: [EventStore API-k lekérdezése a fürt eseményeihez](service-fabric-diagnostics-eventstore-query.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a fürt figyeléséről – [a fürt és a platform figyelése](service-fabric-diagnostics-event-generation-infra.md).
 * További információ a EventStore Service- [EventStore szolgáltatásról – áttekintés](service-fabric-diagnostics-eventstore.md)

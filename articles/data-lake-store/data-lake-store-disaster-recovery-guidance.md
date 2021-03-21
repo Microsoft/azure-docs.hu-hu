@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
 ms.openlocfilehash: 48136f8d9172c3674e849e24efca4ae5070f83ab
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109119"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Magas rendelkezésre állású és vész-helyreállítási útmutatás a Data Lake Storage Gen1
@@ -38,7 +38,7 @@ A véletlen törlés megelőzése érdekében javasoljuk, hogy először állít
 
 A [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) is engedélyezheti egy Data Lake Storage Gen1-fiókhoz az adathozzáférés naplózási nyomvonalának gyűjtéséhez. A naplózási információk arról tájékoztatnak, hogy ki vagy módosított egy fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés a Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

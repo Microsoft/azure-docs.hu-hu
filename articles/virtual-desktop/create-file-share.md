@@ -7,17 +7,17 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8f8086aced26fc46fb1430df074082e8c3365baa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92746817"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Profil tároló létrehozása Azure Files és AD DS
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy tartományvezérlő által hitelesített Azure-fájlmegosztást egy meglévő Windows rendszerű virtuális asztali készleten. Ezt a fájlmegosztást a tárolási profilok tárolására használhatja.
 
-Ez a folyamat Active Directory tartományi szolgáltatások (AD DS) szolgáltatást használ, amely egy helyszíni címtárszolgáltatás. Ha további információt szeretne arról, hogyan hozhat létre egy FSLogix-profil tárolót az Azure AD DS használatával, tekintse meg a [FSLogix-profil tárolójának létrehozása a Azure Files](create-profile-container-adds.md)használatával című témakört.
+Ez a folyamat Active Directory Domain Services (AD DS) szolgáltatást használ, amely egy helyszíni címtárszolgáltatás. Ha további információt szeretne arról, hogyan hozhat létre egy FSLogix-profil tárolót az Azure AD DS használatával, tekintse meg a [FSLogix-profil tárolójának létrehozása a Azure Files](create-profile-container-adds.md)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ Storage-fiók beállítása:
     - A **fióktípus** területen válassza a **StorageV2** vagy a **FileStorage** lehetőséget (csak akkor érhető el, ha a teljesítményszint prémium szintű).
     - A **replikáláshoz** válassza a **helyileg REDUNDÁNS tárolás (LRS)** lehetőséget.
 
-5. Ha elkészült, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget.
+5. Ha elkészült, válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 Ha részletesebb konfigurációs útmutatásra van szüksége, tekintse meg a [regionális elérhetőséget](../storage/files/storage-files-identity-auth-active-directory-enable.md#regional-availability)ismertető témakört.
 
@@ -58,9 +58,9 @@ Fájlmegosztás létrehozása:
 
 2. Az Áttekintés lapon válassza a **Fájlmegosztások** lehetőséget.
 
-3. Válassza a **+ fájlmegosztás** lehetőséget, hozzon létre egy új fájlmegosztási **profilt** , majd adjon meg egy megfelelő kvótát, vagy hagyja üresen a mezőt a kvóta nélkül.
+3. Válassza a **+ fájlmegosztás** lehetőséget, hozzon létre egy új fájlmegosztási **profilt**, majd adjon meg egy megfelelő kvótát, vagy hagyja üresen a mezőt a kvóta nélkül.
 
-4. Kattintson a **Létrehozás** gombra.
+4. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="enable-active-directory-authentication"></a>Active Directory hitelesítés engedélyezése
 
@@ -70,7 +70,7 @@ Ezután engedélyeznie kell Active Directory (AD-) hitelesítést. Ennek a szab�
 
 2. Az AzFilesHybrid modul telepítéséhez és a hitelesítés engedélyezéséhez kövesse az [AD DS hitelesítés engedélyezése az Azure-fájlmegosztás](../storage/files/storage-files-identity-ad-ds-enable.md) számára című témakör utasításait.
 
-3.  Nyissa meg a Azure Portal, nyissa meg a Storage-fiókját, válassza a **Konfigurálás** lehetőséget, majd erősítse meg, **Active Directory (ad)** beállítást **engedélyezze** .
+3.  Nyissa meg a Azure Portal, nyissa meg a Storage-fiókját, válassza a **Konfigurálás** lehetőséget, majd erősítse meg, **Active Directory (ad)** beállítást **engedélyezze**.
 
      > [!div class="mx-imgBorder"]
      > ![A konfiguráció oldalának képernyőképe Azure Active Directory (AD) engedélyezve.](media/active-directory-enabled.png)
@@ -102,7 +102,7 @@ Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC-) engedélyek kiosz
 
      Ha engedélyeket szeretne a felhasználókhoz rendelni az FSLogix-profiljukhoz kapcsolódóan, kövesse ugyanezeket a lépéseket. Ha azonban az 5. lépésre lép, válassza ki a **Storage file-adatsmb-megosztás közreműködője** helyet.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Felhasználói engedélyek kiosztása az Azure-fájlmegosztás számára
 
@@ -121,7 +121,7 @@ A következőképpen kérheti le az UNC elérési utat:
 
 2. Nyissa meg a [Storage-fiók beállítása](#set-up-a-storage-account)című ben létrehozott Storage-fiókot.
 
-3. Válassza a **Beállítások** , majd a **Tulajdonságok** elemet.
+3. Válassza a **Beállítások**, majd a **Tulajdonságok** elemet.
 
 4. Másolja az **elsődleges Fájlszolgáltatások végpontjának** URI-ját a kívánt szövegszerkesztőbe.
 
@@ -200,13 +200,13 @@ FSLogix konfigurálása a munkamenetgazda virtuális gépén:
 
 5. Kövesse a [profiltároló beállításjegyzék-beállításainak konfigurálását](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings) ismertető cikk útmutatását:
 
-    - Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix** .
+    - Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**.
 
     - Hozzon létre egy **Profiles** kulcsot.
 
     - Hozzon létre egy 1 értékkel rendelkező **DWORD azonosítót** .
 
-    - Hozzon létre **VHDLocations, MULTI_SZ** .
+    - Hozzon létre **VHDLocations, MULTI_SZ**.
 
     - Állítsa be a **VHDLocations** értékét az [UNC elérési út lekérése](#get-the-unc-path)során létrehozott UNC elérési útra.
 

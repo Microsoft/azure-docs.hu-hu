@@ -4,10 +4,10 @@ description: Bemutatja, hogyan használhatók paraméterek egy alkalmazás portj
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: ba2fb459dc9c981ad168aca4d0edf969650ccf48
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576706"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Szolgáltatás portszámának megadása a Service Fabric paramétereinek használatával
@@ -79,7 +79,7 @@ Ebben a példában a asp.net Core webes API portszámát paraméterrel állítha
 
 Ha az alkalmazást a Visual studióból a Cloud.xml publish profil használatával teszi közzé, a szolgáltatás a 80-es port használatára van konfigurálva. Ha az alkalmazást a MyWebAPI_PortNumber paraméter meghatározása nélkül helyezi üzembe, a szolgáltatás a 8080-es portot használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az ebben a cikkben tárgyalt alapfogalmakról, tekintse meg az [Alkalmazások kezelése több környezethez című cikket](service-fabric-manage-multiple-environment-app-configuration.md).
 
 További információ a Visual Studióban elérhető egyéb alkalmazás-felügyeleti lehetőségekről: [Service Fabric alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

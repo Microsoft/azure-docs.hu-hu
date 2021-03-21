@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 0c55f15d12ddc51573f59f56c742a8cac525af0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "83744439"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Biztonsági kérdések beállítása ellenőrzési módszerként
@@ -63,11 +63,11 @@ Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel eg
 
     ![Biztonsági adatok lap Kiemelt hozzáadási módszer lehetőséggel](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. A **metódus hozzáadása** lapon válassza a **biztonsági kérdések** elemet a legördülő listából, majd válassza a **Hozzáadás**lehetőséget.
+3. A **metódus hozzáadása** lapon válassza a **biztonsági kérdések** elemet a legördülő listából, majd válassza a **Hozzáadás** lehetőséget.
 
     ![Hozzáadás a Method Box-hoz, biztonsági kérdésekkel kiválasztva](media/security-info/securityinfo-myprofile-addquestions.png)
 
-4. A **biztonsági kérdések** lapon válassza ki és válaszolja meg a biztonsági kérdéseit, majd válassza a **Mentés**lehetőséget.
+4. A **biztonsági kérdések** lapon válassza ki és válaszolja meg a biztonsági kérdéseit, majd válassza a **Mentés** lehetőséget.
 
     ![Telefonszám hozzáadása és telefonhívások kiválasztása](media/security-info/securityinfo-myprofile-securityquestions.png)
 
@@ -86,7 +86,7 @@ Ha a biztonsági kérdéseket már nem szeretné biztonsági információs móds
 
     ![Hivatkozás a telefonos módszer törlésére a biztonsági adatokból](media/security-info/securityinfo-myprofile-questionsdelete.png)
 
-2. A **biztonsági kérdések**törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A biztonsági kérdések törlése után a rendszer eltávolítja a metódust a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
+2. A **biztonsági kérdések** törléséhez válassza az **Igen** lehetőséget a megerősítő mezőben. A biztonsági kérdések törlése után a rendszer eltávolítja a metódust a biztonsági adatokból, és eltűnik a **biztonsági adatok** lapról.
 
 ## <a name="additional-security-info-methods"></a>További biztonsági információs módszerek
 
@@ -105,7 +105,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/26/2020
 ms.openlocfilehash: 2b825b4d4485f401199556b6faaef0017f583cc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91461189"
 ---
 # <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Gyors útmutató: tesztkörnyezet beállítása Azure DevTest Labs ARM-sablon használatával
@@ -58,23 +58,23 @@ Az üzembe helyezés automatikus futtatásához kattintson a következő gombra.
 1. Adja meg a virtuális gépet elérő **felhasználónevet** . 
 1. Adja meg a felhasználóhoz tartozó **jelszót**. 
 1. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**. 
-1. Ezután válassza a **vásárlás**lehetőséget.
+1. Ezután válassza a **vásárlás** lehetőséget.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="Sablon üzembe helyezése lap":::
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 1. Válassza a felül található **értesítések** elemet a központi telepítés állapotának megtekintéséhez, majd kattintson a **telepítés folyamatban van** hivatkozásra.
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Sablon üzembe helyezése lap":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Üzembe helyezési értesítés":::
 2. A **központi telepítés – áttekintés** oldalon várjon, amíg a telepítés befejeződik. Ez a művelet (különösen a virtuális gép létrehozása) elvégzése hosszabb időt vesz igénybe. Ezután válassza ki az **Erőforrás-csoport** vagy az **erőforráscsoport nevét** az alábbi képen látható módon: 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Sablon üzembe helyezése lap":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/navigate-resource-group.png" alt-text="Erőforrás-csoport megkeresése":::
 3. Az **erőforráscsoport** lapon megtekintheti az erőforráscsoport erőforrásainak listáját. Győződjön meg arról, hogy a következő típusú labor látható: az `DevTest Lab` erőforrásokban. A függő erőforrásokat, például a virtuális hálózatot és a virtuális gépet az erőforráscsoporthoz is megtekintheti. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Sablon üzembe helyezése lap":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/resource-group-home-page.png" alt-text="Erőforráscsoport kezdőlapja":::
 4. Válassza ki a labort az erőforrások listájából, és tekintse meg a labor kezdőlapját. Győződjön meg arról, hogy a **virtuális gépek** listájában a Windows Server 2019 Datacenter virtuális gép jelenik meg. Az alábbi ábrán az **Essentials (alapvető** erőforrások) szakasz a lehető legkisebbre van kialakítva. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="Sablon üzembe helyezése lap":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/lab-home-page.png" alt-text="A labor kezdőlapja":::
 
     > [!IMPORTANT] 
     > Tartsa megnyitva ezt a lapot, és kövesse a következő szakaszban található utasításokat az erőforrások törléséhez, hogy elkerülje a tesztkörnyezet és a virtuális gép Azure-beli futtatásának költségeit. Ha a következő oktatóanyag segítségével szeretné tesztelni a virtuális gépet a laborban, törölje az erőforrásokat az oktatóanyag átlépése után. 
@@ -83,16 +83,16 @@ Az üzembe helyezés automatikus futtatásához kattintson a következő gombra.
 
 1. Először törölje a labort, hogy törölhető legyen az erőforráscsoport. Nem fogja tudni törölni az erőforráscsoportot egy laborban. A labor törléséhez válassza a **Törlés** lehetőséget az eszköztáron. 
 
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Sablon üzembe helyezése lap":::
- 2. A jóváhagyás lapon írja be a **labor nevét**, majd válassza a **Törlés**lehetőséget. 
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-lab-button.png" alt-text="Tesztkörnyezet törlése gomb":::
+ 2. A jóváhagyás lapon írja be a **labor nevét**, majd válassza a **Törlés** lehetőséget. 
  3. Várjon, amíg a tesztkörnyezet törölve lesz. Válassza a **harang** ikont a törlési művelet értesítésének megtekintéséhez. Ez a folyamat hosszabb időt vesz igénybe. Erősítse meg a labor törlését, majd válassza ki az **erőforráscsoportot** a navigációs menüben. 
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="Sablon üzembe helyezése lap":::
- 1. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése** elemet az eszköztárból. A jóváhagyás lapon írja be az **erőforráscsoport nevét**, majd válassza a **Törlés**lehetőséget. Ellenőrizze az értesítéseket, és győződjön meg arról, hogy az erőforráscsoport törölve lett.
+    :::image type="content" source="./media/create-lab-windows-vm-template/confirm-lab-deletion.png" alt-text="A virtuális gép törlésének megerősítése az értesítésekben":::
+ 1. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése** elemet az eszköztárból. A jóváhagyás lapon írja be az **erőforráscsoport nevét**, majd válassza a **Törlés** lehetőséget. Ellenőrizze az értesítéseket, és győződjön meg arról, hogy az erőforráscsoport törölve lett.
  
-    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Sablon üzembe helyezése lap":::
+    :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Erőforráscsoport gomb törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban létrehozott egy labort egy virtuális géppel. A labor elérésének megismeréséhez folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

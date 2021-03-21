@@ -15,10 +15,10 @@ ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6e53a6a4875b3dde55d1822daa342d6cde536d1c
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100096429"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
@@ -258,7 +258,7 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
     |**Háttérport** |Használja ugyanazt az értéket, mint a **port**.
     |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
     |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenet-állandóság** |Nincs
+    |**Munkamenet-állandóság** |Nincsenek
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -307,7 +307,7 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
    |**Háttérport** | 5022 – ugyanazt az értéket használja, mint a **port**.
    |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
    |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet-állandóság** |Nincs
+   |**Munkamenet-állandóság** |Nincsenek
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575601"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
@@ -115,7 +115,7 @@ Egyértelmű szabályzattal kell rendelkeznie az állapot méretének kezelésé
  
 Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémákat tapasztal, [egy támogatási jegyet kell megnyitnia](service-fabric-support.md) a termék csapatával, hogy segítséget kapjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 

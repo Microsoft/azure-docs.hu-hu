@@ -9,10 +9,10 @@ ms.date: 01/19/2021
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 555529b52d586078ba7e1832373ec126ba545c11
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98706430"
 ---
 # <a name="troubleshoot-issues-in-azure-importexport"></a>Az Azure import/export szolgáltatással kapcsolatos problémák elhárítása
@@ -36,7 +36,7 @@ Ha egy meghajtón nem az első egy másolási munkamenet, akkor a munkamenet min
 
 A meghajtóhoz tartozó naplófájl teljes munkamenet-információt tartalmaz az adatok másolásáról. Amikor fájlokat ad hozzá a meghajtóhoz, a rendszer az importálási feladatok létrehozásához használja a naplófájlt. Ha elveszíti a naplófájlt, a meghajtó összes másolási munkamenetét újra meg kell ismételni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure import/export eszköz beállítása](storage-import-export-tool-setup-v1.md)
 * [Merevlemezek előkészítése importálási feladatokhoz](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)

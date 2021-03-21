@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aec60218774f3f8e293a5e5ab8c03707d117c2a0
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102634974"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577254"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Oktatóanyag: végpontok közötti megoldás kiépítése
 
@@ -48,7 +48,7 @@ A forgatókönyvben való működéshez a korábban letöltött, előre megírt 
 
 Az alábbi, az építési forgatókönyv *AdtSampleApp* minta alkalmazás által megvalósított összetevők:
 * Eszköz hitelesítése 
-* A [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) használati példái (a *CommandLoop.cs*-ben találhatók)
+* [.Net (C#) SDK-](/dotnet/api/overview/azure/digitaltwins/client) használati példák (a *CommandLoop. cs* csomagban található)
 * Konzol kezelőfelülete az Azure Digital Twins API meghívásához
 * *SampleClientApp* – egy minta Azure digitális Twins-megoldás
 * *SampleFunctionsApp* – egy Azure functions alkalmazás, amely a IoT hub és az Azure digitális Twins eseményeiből származó telemetria eredményeképpen frissíti az Azure digitális Twins-diagramot
@@ -121,35 +121,51 @@ Vissza a Visual Studio-ablakba, ahol a _**AdtE2ESample**_ -projekt meg van nyitv
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure digitális Twins-hoz, rendelkeznie kell egy, a rendszer által felügyelt identitással, amely jogosult az Azure Digital Twins-példány elérésére. Ezt követően állítsa be a következőt.
+Ahhoz, hogy a Function alkalmazás hozzáférhessen az Azure Digital Twins-hoz, rendelkeznie kell az Azure Digital Twins-példány és a példány állomásneve eléréséhez szükséges engedélyekkel. Ezeket a következőt kell konfigurálnia.
 
-### <a name="assign-permissions-to-the-function-app"></a>Engedélyek kiosztása a Function alkalmazáshoz
+### <a name="configure-permissions-for-the-function-app"></a>A Function alkalmazás engedélyeinek konfigurálása
 
-Ha engedélyezni szeretné a Function app számára az Azure Digital Twins elérését, a következő lépés az alkalmazás beállításainak konfigurálása, a rendszer által felügyelt Azure AD-identitás kiosztása, és az Azure digitális Twins- *adattulajdonosi* szerepkör megadása az Azure Digital Twins-példányban. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md).
+Két beállítást kell beállítani a Function alkalmazás számára az Azure Digital Twins-példányhoz való hozzáféréshez. Ezeket a [Azure Cloud Shell](https://shell.azure.com)parancsain keresztül is elvégezheti. 
 
-Azure Cloud Shell a következő parancs használatával állítson be egy olyan alkalmazás-beállítást, amelyet a Function alkalmazás az Azure Digital Twins-példányra való hivatkozáshoz fog használni. Töltse ki a helyőrzőket az erőforrásainak részleteivel (ne feledje, hogy az Azure digitális Twins-példányának URL-címe a *https://* előtt megjelenő állomásnév).
+#### <a name="assign-access-role"></a>Hozzáférési szerepkör kiosztása
+
+Az első beállítás azt adja meg, hogy az Azure Digital Twins-beli **adattulajdonosi** szerepkör az Azure Digital Twins-példányban hogyan használható. Ez a szerepkör minden olyan felhasználóhoz vagy függvényhez szükséges, amely sok adatsík-tevékenységet szeretne végrehajtani a példányon. A biztonsággal és a szerepkör-hozzárendelésekkel kapcsolatos további információkért tekintse meg a [*következő fogalmakat: az Azure Digital Twins-megoldások biztonsága*](concepts-security.md). 
+
+1. A következő parancs használatával megtekintheti a függvény rendszer által felügyelt identitásának részleteit. Jegyezze fel a kimenet **principalId** mezőjét.
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > Ha az eredmény üres az identitás részleteinek megjelenítése helyett, hozzon létre egy új, rendszer által felügyelt identitást a függvényhez a következő parancs használatával:
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > A kimenet ezután megjeleníti az identitás részleteit, beleértve a következő lépéshez szükséges **principalId** értéket. 
+
+1. Az alábbi parancsban a **principalId** érték használatával rendelje hozzá a függvényalkalmazás identitását az Azure Digital Twins-példány **Azure Digital Twins-adattulajdonosi** szerepköréhez.
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ. A Function app mostantól rendelkezik az Azure Digital Twins-példányban tárolt adathozzáféréshez szükséges engedélyekkel.
+
+#### <a name="configure-application-settings"></a>Alkalmazásbeállítások konfigurálása
+
+A második beállítás egy **környezeti változót** hoz létre a függvényhez az Azure Digital Twins-példány URL-címével. A függvény kódja ezt fogja használni a példányra való hivatkozáshoz. A környezeti változókról további információt a [*Function app kezelése*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)című témakörben talál. 
+
+Futtassa az alábbi parancsot, és töltse ki a helyőrzőket az erőforrások részleteivel.
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
 A kimenet az Azure-függvény beállításainak listája, amely most már tartalmaz egy **ADT_SERVICE_URL** nevű bejegyzést.
 
-A rendszerfelügyelt identitás létrehozásához használja a következő parancsot. Keresse meg a **principalId** mezőt a kimenetben.
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-Használja a **principalId** értéket az alábbi parancs kimenetében, hogy hozzárendelje a Function alkalmazás identitását az Azure Digital *Twins-beli adattulajdonosi* szerepkörhöz az Azure Digital Twins-példányhoz.
-
-[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel kapcsolatos információ. A Function app mostantól rendelkezik az Azure Digital Twins-példány eléréséhez szükséges engedélyekkel.
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>Szimulált telemetria feldolgozása IoT Hub eszközről
 
@@ -242,7 +258,7 @@ Az új Visual Studio-ablakban nyissa meg a (a letöltött megoldás mappából) 
 >[!NOTE]
 > Ekkor két Visual Studio-Windowsnak kell lennie, egyet a _**DeviceSimulator. SLN**_ és egy korábbi verziójával a _**AdtE2ESample. SLN**_.
 
-Az új Visual Studio ablak *megoldáskezelő* paneljén válassza ki a _DeviceSimulator/**AzureIoTHub.cs**_ elemet a szerkesztési ablakban való megnyitásához. Módosítsa a következő kapcsolódási karakterlánc-értékeket a fent összegyűjtött értékekre:
+Az új Visual Studio ablak *megoldáskezelő* paneljén válassza a _DeviceSimulator/**AzureIoTHub. cs**_ elemet a szerkesztési ablakban való megnyitásához. Módosítsa a következő kapcsolódási karakterlánc-értékeket a fent összegyűjtött értékekre:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>

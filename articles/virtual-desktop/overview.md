@@ -7,10 +7,10 @@ ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730785"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
@@ -136,13 +136,13 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 Enterprise (több munkamenet), 2004-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise (több munkamenet), 1909-es verzió|Igen|Igen|Igen|Igen|
+|Windows 10 Enterprise (több munkamenet), 2004-es verzió|Igen|Igen|Igen|Yes|
+|Windows 10 Enterprise (több munkamenet), 1909-es verzió|Igen|Igen|Igen|Yes|
 |Windows 10 Enterprise (több munkamenet), 1903-es verzió|Igen|Igen|Nem|Nem|
 |Windows 10 Enterprise (több munkamenet), 1809-es verzió|Igen|Igen|Nem|Nem|
 |Windows 7 Enterprise|Igen|Igen|Nem|Nem|
 |Windows Server 2019|Igen|Igen|Nem|Nem|
-|Windows Server 2016|Igen|Igen|Igen|Igen|
+|Windows Server 2016|Igen|Igen|Igen|Yes|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>Következő lépések

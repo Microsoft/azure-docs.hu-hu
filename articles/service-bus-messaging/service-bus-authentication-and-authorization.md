@@ -4,10 +4,10 @@ description: Az alkalmazások hitelesítése megosztott hozzáférés-aláírás
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98060214"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-hitelesítés és -engedélyezés
@@ -48,7 +48,7 @@ A Service Bus SAS-hitelesítésének támogatása az Azure .NET SDK 2,0-as és �
 > [!IMPORTANT]
 > Ha Azure Active Directory Access Controlt (más néven Access Control Service vagy ACS) használ a Service Bushoz, vegye figyelembe, hogy a metódus támogatása már korlátozott, és az alkalmazást az [sas használatára kell telepítenie](service-bus-migrate-acs-sas.md) , vagy a OAuth 2,0 hitelesítést kell használnia az Azure ad-vel (ajánlott). További információ az ACS elavult használatáról: [ebben a blogbejegyzésben](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure AD-vel történő hitelesítéssel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)

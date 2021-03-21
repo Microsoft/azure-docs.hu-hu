@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91270049"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Oktatóanyag: biztonsági fejlécek hozzáadása a Rules Engine szolgáltatással
@@ -36,11 +36,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Tartalom-biztonsági házirend fejlécének hozzáadása a Azure Portal
 
-1. Adjon meg új szabályt a **Hozzáadás** lehetőséggel. Adja meg a szabály nevét, majd kattintson a **műveleti**  >  **Válasz fejlécének**hozzáadása lehetőségre.
+1. Adjon meg új szabályt a **Hozzáadás** lehetőséggel. Adja meg a szabály nevét, majd kattintson a **műveleti**  >  **Válasz fejlécének** hozzáadása lehetőségre.
 
 1. Állítsa be úgy a kezelőt **, hogy ezt** a fejlécet adja hozzá az útvonal összes bejövő kérelmének válaszként.
 
-1. Adja hozzá a fejléc neve: **Content-Security-Policy** , és határozza meg, hogy a fejlécnek milyen értékeket kell elfogadnia. Ebben a forgatókönyvben a *"script-src" saját https://apiphany.portal.azure-api.net * lehetőséget választjuk.
+1. Adja hozzá a fejléc neve: **Content-Security-Policy** , és határozza meg, hogy a fejlécnek milyen értékeket kell elfogadnia. Ebben a forgatókönyvben a *"script-src" saját https://apiphany.portal.azure-api.net* lehetőséget választjuk.
 
 1. Ha hozzáadta az összes szabályt, amelyet szeretne konfigurálni, ne felejtse el, hogy a kívánt útvonalra lépjen, és a szabályok motorjának beállításait az útválasztási szabályhoz rendeli. Ez a lépés a szabály működésének engedélyezéséhez szükséges. 
 
@@ -55,7 +55,7 @@ Az előző lépésekben a biztonsági fejléceket a szabályok motorral konfigur
 
 :::image type="content" source="./media/front-door-rules-engine/rules-engine-delete-rule.png" alt-text="Szabály törlése":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné tudni, hogyan konfigurálhat egy webalkalmazási tűzfalat az előtérben, folytassa a következő oktatóanyaggal.
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/27/2017
 ms.author: twooley
 ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723806"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Azure Data Lake Storage Gen1 migrálása régiók között
@@ -50,5 +50,5 @@ A Migrálás megtervezése során megfontolandó további fontos információk:
 
 * **A analitikai szolgáltatások helye**. A legjobb teljesítmény érdekében az elemzési szolgáltatások, például az Azure Data Lake Analytics vagy az Azure-HDInsight ugyanabban a régióban kell lenniük, mint az adatai.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Azure Data Lake Storage Gen1 áttekintése](data-lake-store-overview.md)

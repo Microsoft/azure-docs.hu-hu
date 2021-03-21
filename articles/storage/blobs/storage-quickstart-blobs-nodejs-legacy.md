@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
 ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98599449"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js
@@ -407,7 +407,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 A kódminta végén a tárfiókba írt összes adat automatikusan törölve lesz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a rövid útmutató azt mutatja be, hogyan kezelhetők a blobok és tárolók az Azure Blob Storage-tárfiókokban a Node.js használatával. Az SDK használatával kapcsolatos bővebb információkért lásd a GitHub-adattárat.
 

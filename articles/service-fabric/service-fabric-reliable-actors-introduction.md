@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576383"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors bemutatása
@@ -133,7 +133,7 @@ A Actors futtatókörnyezet alapértelmezés szerint engedélyezi a újbóli bel
 ### <a name="scope-of-concurrency-guarantees"></a>Egyidejűségi garanciák hatóköre
 A szereplők futtatókörnyezete biztosítja ezeket a párhuzamossági garanciákat olyan helyzetekben, amikor a módszerek meghívását vezérli. Ezek a garanciák például az ügyfélre vonatkozó kérelemre adott válaszként, valamint az időzítő és az emlékeztető visszahívásai esetén is. Ha azonban a színészi kód közvetlenül az Actors Runtime által biztosított mechanizmusokon kívül hívja meg ezeket a metódusokat, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha például a metódust egy olyan feladat kontextusában hívja meg, amely nincs társítva a Actor metódusok által visszaadott feladathoz, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha a metódust olyan szálon hívja meg, amelyet a színész saját maga hoz létre, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ezért a háttérbeli műveletek végrehajtásához a szereplőknek olyan [színészi időzítőket és színészi emlékeztetőket](service-fabric-reliable-actors-timers-reminders.md) kell használniuk, amelyek figyelembe veszik a párhuzamos párhuzamosságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerkedjen meg az első Reliable Actors szolgáltatás létrehozásával:
    * [Első lépések a Reliable Actors a .NET-keretrendszerben](service-fabric-reliable-actors-get-started.md)
    * [Első lépések a Reliable Actors Javával](./service-fabric-create-your-first-linux-application-with-java.md)

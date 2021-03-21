@@ -105,7 +105,8 @@
     - name: Adatok és műveletek
       items:
         - name: Szolgáltatási események (EventGrid)
-          href: concepts/event-handling.md
+          href: ../event-grid/event-schema-communication-services.md
+          maintainContext: true
         - name: Naplózás és diagnosztika
           href: concepts/logging-and-diagnostics.md
         - name: Mérőszámok

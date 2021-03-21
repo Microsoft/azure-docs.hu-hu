@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: sudbalas
 ms.openlocfilehash: b96f2ca4f925846bd252e5cfd35088d832f5c216
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98572867"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
@@ -64,7 +64,7 @@ Ha a szervezete jogi megfelelőségi követelmények hatálya alá tartozik, és
 
 ### <a name="audit-your-key-vaults-to-check-if-soft-delete-is-enabled"></a>A kulcstárolók naplózásával ellenőrizze, hogy engedélyezve van-e a Soft delete
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. **Azure Policy** keresése.
 1. Válassza a **definíciók** lehetőséget.
 1. A **Kategória** területen válassza a **Key Vault** elemet a szűrőben.
@@ -80,16 +80,16 @@ Mostantól szűrheti és megtekintheti, hogy mely kulcstartók rendelkeznek a he
 
 ### <a name="turn-on-soft-delete-for-an-existing-key-vault"></a>Helyreállítható törlés bekapcsolása meglévő kulcstartóhoz
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Keresse meg a Key vaultot.
 1. A **Beállítások** területen válassza a **Tulajdonságok** lehetőséget.
 1. A helyreállítható **Törlés** területen jelölje be a tár **helyreállításának engedélyezése** jelölőnégyzetet.
 1. Állítsa be a megőrzési időszakot a Soft delete értékre.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="grant-purge-access-policy-permissions-to-a-security-principal"></a>Engedélyek kiürítésének engedélyezése a rendszerbiztonsági tag számára
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Keresse meg a Key vaultot.
 1. A **Beállítások** területen válassza a **hozzáférési szabályzatok** lehetőséget.
 1. Válassza ki azt a szolgáltatásnevet, amelyhez hozzáférést szeretne biztosítani.
@@ -121,7 +121,7 @@ Miután meggyőződött róla, hogy nem kell módosítania az alkalmazás logik�
 
 Annak érdekében, hogy az alkalmazások ne legyenek hatással, kapcsolja be a helyreállítható törlést a kulcstartón a lehető leghamarabb.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha kérdése van, lépjen kapcsolatba velünk a változással kapcsolatban [akvsoftdelete@microsoft.com](mailto:akvsoftdelete@microsoft.com) .
 - Olvassa el a [Soft-delete áttekintést](soft-delete-overview.md).

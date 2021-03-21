@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 077af1e8add63aac9f3d866c5d665ad4a47b133f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92520047"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Workteam
@@ -47,14 +47,14 @@ A Workteam Azure AD-be való integrálásának konfigurálásához hozzá kell a
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Workteam** kifejezést a keresőmezőbe.
 1. Válassza ki a **Workteam** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-workteam"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Workteam
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Workteam a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Workteam-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Workteam a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Workteam-ben.
 
 Az Azure AD SSO és a Workteam konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -69,8 +69,8 @@ Az Azure AD SSO és a Workteam konfigurálásához és teszteléséhez hajtsa v�
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Workteam** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Workteam** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -105,13 +105,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Workteam.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Workteam**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Workteam** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -121,7 +121,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ### <a name="configure-workteam-sso"></a>Workteam SSO konfigurálása
 
-1. A Workteam belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A Workteam belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -131,7 +131,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani a Workteam, nyisson meg egy új böngészőablakot, és jelentkezzen be a Workteam vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A jobb felső sarokban kattintson a **profil emblémára** , majd a **szervezeti beállítások**elemre. 
+4. A jobb felső sarokban kattintson a **profil emblémára** , majd a **szervezeti beállítások** elemre. 
 
     ![Workteam-beállítások](./media/workteam-tutorial/tutorial_workteam_settings.png)
 
@@ -145,9 +145,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. Válassza ki az **SAML-identitásszolgáltató** az **ad Azure**-ban.
 
-    b. Az **SAML-Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    b. Az **SAML-Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
-    c. Az **SAML-entitás azonosítója** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
+    c. Az **SAML-entitás azonosítója** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
     d. Nyissa meg a Jegyzettömbben a Azure Portal letöltött **Base-64 kódolású tanúsítványt** , másolja a tartalmát, majd illessze be az **SAML aláíró tanúsítvány (Base64)** mezőbe.
 
@@ -161,7 +161,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wo
 
 1. Jelentkezzen be a Workteam biztonsági rendszergazdaként.
 
-2. A **szervezeti beállítások** lap felső középső részén kattintson a **felhasználók** elemre, majd az **új felhasználó**lehetőségre.
+2. A **szervezeti beállítások** lap felső középső részén kattintson a **felhasználók** elemre, majd az **új felhasználó** lehetőségre.
 
     ![Workteam-felhasználó](./media/workteam-tutorial/tutorial_workteam_user.png)
 
@@ -169,7 +169,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Wo
 
     ![Új felhasználó Workteam](./media/workteam-tutorial/tutorial_workteam_newuser.png)
 
-    a. A **név** szövegmezőbe írja be a (z **) B. Simon**nevű felhasználó utónevét.
+    a. A **név** szövegmezőbe írja be a (z **) B. Simon** nevű felhasználó utónevét.
 
     b. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B.Simon\@contoso.com` .
 

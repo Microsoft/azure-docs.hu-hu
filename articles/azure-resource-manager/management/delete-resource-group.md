@@ -2,14 +2,14 @@
 title: Erőforráscsoport és erőforrások törlése
 description: Az erőforráscsoportok és erőforrások törlését ismerteti. Leírja, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését az erőforráscsoport törlésekor. Leírja a hibakódokat és azt, hogy a Resource Manager hogyan kezeli őket annak megállapításához, hogy a törlés sikeres volt-e.
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: d6c38169916cc6c47d6f05c88645fa435bbdb146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 244d59ffc096b5e219e27fd376b07baecde3670e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614410"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587661"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Erőforrás-csoport és erőforrás-törlés Azure Resource Manager
 
@@ -119,6 +119,13 @@ az resource delete \
 
 ---
 
+## <a name="required-access"></a>Szükséges hozzáférés
+
+Egy erőforráscsoport törléséhez hozzáférésre van szüksége a **Microsoft. Resources/Subscriptions/resourceGroups** erőforrás törlési műveletéhez. Az erőforráscsoport összes erőforrásának törlésére is szükség van.
+
+A műveletek listáját az [Azure erőforrás-szolgáltatói műveletek](../../role-based-access-control/resource-provider-operations.md)című témakörben tekintheti meg. A beépített szerepkörök listáját az [Azure beépített szerepköreivel](../../role-based-access-control/built-in-roles.md)foglalkozó témakörben tekintheti meg.
+
+Ha rendelkezik a szükséges hozzáféréssel, de a törlési kérelem meghiúsul, előfordulhat, hogy az erőforráscsoport [zárolva](lock-resources.md) van.
 
 ## <a name="next-steps"></a>Következő lépések
 

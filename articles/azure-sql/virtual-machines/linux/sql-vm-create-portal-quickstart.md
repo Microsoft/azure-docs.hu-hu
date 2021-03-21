@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: fd5c289f2b441b5862d863d9a390a1cd054acbfa
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790151"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>SQL Server-t futtató linuxos virtuális gép kiépítése a Azure Portal
@@ -54,39 +54,39 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![SQL Server 2019 virtuálisgép-lemezképek keresési szűrője](./media/sql-vm-create-portal-quickstart/searchfilter.png)
 
-1. Válasszon ki egy SQL Server 2019 Linux-rendszerképet a keresési eredmények közül. Ez az oktatóanyag **SQL Server 2019** -et használ a RHEL74-on.
+1. Válasszon ki egy SQL Server 2019 Linux-rendszerképet a keresési eredmények közül. Ez az oktatóanyag **SQL Server 2019**-et használ a RHEL74-on.
 
    > [!TIP]
    > A fejlesztői kiadással tesztelheti vagy fejlesztheti a vállalati kiadás szolgáltatásait, de nem SQL Server licencelési költségeket. Csak a Linux rendszerű virtuális gép futtatásával járó költségeket kell kifizetnie.
 
-1. Kattintson a **Létrehozás** gombra. 
+1. Válassza a **Létrehozás** lehetőséget. 
 
 
 ### <a name="set-up-your-linux-vm"></a>Linux rendszerű virtuális gép beállítása
 
-1. Az **alapvető beállítások** lapon válassza ki az **előfizetést** és az **erőforráscsoportot** . 
+1. Az **alapvető beállítások** lapon válassza ki az **előfizetést** és az **erőforráscsoportot**. 
 
     ![Alapvető beállítások ablak](./media/sql-vm-create-portal-quickstart/basics.png)
 
 1. A **virtuális gép neve** mezőbe írja be az új linuxos virtuális gép nevét.
 1. Ezután írja be vagy válassza ki a következő értékeket:
-   * **Régió** : válassza ki az Ön számára legmegfelelőbb Azure-régiót.
-   * **Rendelkezésre állási lehetőségek** : válassza ki az alkalmazásaihoz és adataihoz leginkább megfelelő rendelkezésre állási és redundancia-beállítást.
-   * **Méret módosítása** : válassza ezt a lehetőséget a gép méretének kiválasztásához, és ha elkészült, válassza a **kiválasztás** elemet. További információ a virtuális gépek méretéről: virtuálisgép- [méretek](../../../virtual-machines/sizes.md).
+   * **Régió**: válassza ki az Ön számára legmegfelelőbb Azure-régiót.
+   * **Rendelkezésre állási lehetőségek**: válassza ki az alkalmazásaihoz és adataihoz leginkább megfelelő rendelkezésre állási és redundancia-beállítást.
+   * **Méret módosítása**: válassza ezt a lehetőséget a gép méretének kiválasztásához, és ha elkészült, válassza a **kiválasztás** elemet. További információ a virtuális gépek méretéről: virtuálisgép- [méretek](../../../virtual-machines/sizes.md).
 
      ![Virtuális gép méretének kiválasztása](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
    > [!TIP]
    > A fejlesztéshez és a működéshez való teszteléshez használjon **DS2** vagy magasabb virtuálisgép-méretet. A teljesítményteszteléshez használjon **DS13** vagy nagyobb méretet.
 
-   * **Hitelesítés típusa** : válassza az **SSH nyilvános kulcs** lehetőséget.
+   * **Hitelesítés típusa**: válassza az **SSH nyilvános kulcs** lehetőséget.
 
      > [!Note]
      > Választhat, hogy a hitelesítéshez egy SSH-s nyilvános kulcsot vagy egy jelszót használ. Az SSH használata biztonságosabb. Az SSH-kulcs létrehozásával kapcsolatban lásd az [SSH-kulcsok az Azure-ban történő létrehozásának lépéseit Linux és Mac rendszeren Linux rendszerű virtuális gépek számára](../../../virtual-machines/linux/mac-create-ssh-keys.md).
 
-   * **Username (Felhasználónév** ): adja meg a virtuális gép rendszergazdájának nevét.
-   * **Nyilvános SSH-kulcs** : adja meg az RSA nyilvános kulcsát.
-   * **Nyilvános bejövő portok** : válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza ki az **SSH (22)** portot a **nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés szükséges a SQL Server konfigurációjának összekapcsolásához és befejezéséhez. Ha távolról szeretne csatlakozni a SQL Serverhoz, akkor a virtuális gép létrehozása után manuálisan engedélyeznie kell a forgalmat a Microsoft SQL Server által használt alapértelmezett portra (1433).
+   * **Username (Felhasználónév**): adja meg a virtuális gép rendszergazdájának nevét.
+   * **Nyilvános SSH-kulcs**: adja meg az RSA nyilvános kulcsát.
+   * **Nyilvános bejövő portok**: válassza a **kiválasztott portok engedélyezése** lehetőséget, és válassza ki az **SSH (22)** portot a **nyilvános bejövő portok kiválasztása** listában. Ebben a rövid útmutatóban ez a lépés szükséges a SQL Server konfigurációjának összekapcsolásához és befejezéséhez. Ha távolról szeretne csatlakozni a SQL Serverhoz, akkor a virtuális gép létrehozása után manuálisan engedélyeznie kell a forgalmat a Microsoft SQL Server által használt alapértelmezett portra (1433).
 
      ![Bejövő portok](./media/sql-vm-create-portal-quickstart/port-settings.png)
 
@@ -94,8 +94,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     * **Lemezek**
     * **Hálózat**
     * **Felügyelet**
-    * **Vendég konfigurációja**
-    * **Címkéket**
+    * **Vendégkonfiguráció**
+    * **Címkék**
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. A **felülvizsgálat + létrehozás** ablaktáblán válassza a **Létrehozás** lehetőséget.

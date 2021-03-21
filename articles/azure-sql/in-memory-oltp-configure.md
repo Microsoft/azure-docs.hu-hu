@@ -11,10 +11,10 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: e17e98e784b7453c87814c5cce5c03568f66b1cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91619746"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP használatával javíthatja az alkalmazás teljesítményét a Azure SQL Database és az Azure SQL felügyelt példányain
@@ -43,8 +43,8 @@ A SSMS tartalmaz egy **tranzakciós teljesítmény-elemzési áttekintő** jelen
 
 A SSMS-ben a jelentés létrehozásához:
 
-* A **Object Explorer**kattintson a jobb gombbal az adatbázis-csomópontra.
-* Kattintson a **jelentések**  >  **szabványos jelentések**  >  **tranzakciók teljesítményének elemzése áttekintés**elemre.
+* A **Object Explorer** kattintson a jobb gombbal az adatbázis-csomópontra.
+* Kattintson a **jelentések**  >  **szabványos jelentések**  >  **tranzakciók teljesítményének elemzése áttekintés** elemre.
 
 További információ: [annak meghatározása, hogy egy tábla vagy tárolt eljárás In-Memory OLTP legyen-e portolva](/sql/relational-databases/in-memory-oltp/determining-if-a-table-or-stored-procedure-should-be-ported-to-in-memory-oltp).
 
@@ -77,7 +77,7 @@ Létre kell hoznia és fel kell töltenie a tesztelni kívánt tábla memóriár
 Az áttelepítési lehetőség használata:
 
 1. Kapcsolódjon a test adatbázishoz a SSMS használatával.
-2. A **Object Explorer**kattintson a jobb gombbal a táblára, majd kattintson a **memória-optimalizálási tanácsadó**elemre.
+2. A **Object Explorer** kattintson a jobb gombbal a táblára, majd kattintson a **memória-optimalizálási tanácsadó** elemre.
 
    Megjelenik a **tábla memória-optimalizáló tanácsadó** varázslója.
 3. A varázslóban kattintson az áttelepítés ellenőrzése elemre (vagy a **tovább** gombra) annak **ellenőrzéséhez** , hogy a tábla rendelkezik-e olyan nem támogatott funkciókkal, amelyek nem támogatottak a memóriára optimalizált táblákban. További információkért lásd:
@@ -95,7 +95,7 @@ Az áttelepítési lehetőség használata:
 2. Szerezze be a teljes T-SQL-szkriptet a táblához és az indexekhez.
 
    * A SSMS kattintson a jobb gombbal a tábla csomópontjára.
-   * Kattintson a **parancsfájl**  >  **-táblázat létrehozása**  >  **új lekérdezési ablakként**lehetőségre.
+   * Kattintson a **parancsfájl**  >  **-táblázat létrehozása**  >  **új lekérdezési ablakként** lehetőségre.
 3. A parancsfájl ablakban adja hozzá a (MEMORY_OPTIMIZED = ON) parancsot a CREATE TABLE utasításhoz.
 4. FÜRTÖZÖTT index esetén módosítsa azt nem FÜRTÖZÖTT értékre.
 5. Nevezze át a meglévő táblát SP_RENAME használatával.

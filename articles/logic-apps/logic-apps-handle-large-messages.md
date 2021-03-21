@@ -6,10 +6,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 12/18/2020
 ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695877"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
@@ -160,7 +160,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
 1. A logikai alkalmazás egy kezdeti HTTP POST-vagy PUT-kérést küld egy üres üzenet törzsének. A kérelem fejléce tartalmazza ezt az információt arról a tartalomról, amelyet a logikai alkalmazás fel szeretne tölteni a darabokban:
 
-   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
+   | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS – átvitel üzemmód** | darabolásos | Sztring | Azt jelzi, hogy a tartalom fel van töltve a darabokban |
    | **x-MS-Content-Length** | <*Content-Length*> | Egész szám | A teljes tartalom mérete bájtban a darabolás előtt |
@@ -170,8 +170,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
-   | **Hely** | Sztring | Igen | A HTTP-javítási üzenetek küldésének helye |
+   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
+   | **Hely** | Sztring | Yes | A HTTP-javítási üzenetek küldésének helye |
    ||||
 
 3. A logikai alkalmazás a következő adatokat tartalmazó HTTP-javítási üzeneteket hozza létre és küldi el:
@@ -180,7 +180,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    * Ezek a fejlécek az egyes javítási üzenetekben küldött tartalmi adattömbökkel kapcsolatos adatokat tartalmazzák:
 
-     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Leírás |
+     | Logic Apps kérelem fejlécének mezője | Érték | Típus | Description |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*tartomány*> | Sztring | Az aktuális tartalom adatrészletének bájtjai, beleértve a kezdő értéket, a záró értéket és a tartalom teljes méretét, például: "Bytes = 0-1023/10100" |
      | **Content-Type** | <*Content-Type*> | Sztring | A darabolásos tartalom típusa |
@@ -191,8 +191,8 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
 
    | Végpont válaszának fejléce mező | Típus | Kötelező | Leírás |
    |--------------------------------|------|----------|-------------|
-   | **Tartomány** | Sztring | Igen | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
-   | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
+   | **Tartomány** | Sztring | Yes | A végpont által fogadott tartalomhoz tartozó bájtok köre, például: "Bytes = 0-1023" |   
+   | **x-MS-darab-méret** | Egész szám | No | A javasolt adathalmaz mérete bájtban |
    ||||
 
 Ez a műveleti definíció például egy HTTP POST-kérést mutat be a darabolásos tartalom egy végpontra való feltöltéséhez. A művelet `runTimeConfiguration` tulajdonságában a tulajdonság a következőre van `contentTransfer` kijelölve `transferMode` `chunked` :

@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: tchladek
 ms.openlocfilehash: a0f8744061853e8bd81d3435c1f007e96a7d5783
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103495311"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -27,7 +27,7 @@ ms.locfileid: "103495311"
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `AccessTokensQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `AccessTokensQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: **program. cs**.
 
 ```console
 dotnet new console -o AccessTokensQuickstart
@@ -52,7 +52,7 @@ dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
 
 A projekt könyvtárából:
 
-1. **Program.cs** -fájl megnyitása egy szövegszerkesztőben
+1. **Program. cs** fájl megnyitása egy szövegszerkesztőben
 1. `using`A névteret tartalmazó direktíva `Azure.Communication.Identity` hozzáadása
 1. A `Main` metódus deklarációjának frissítése az aszinkron kód támogatásához
 

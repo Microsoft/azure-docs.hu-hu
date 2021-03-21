@@ -11,18 +11,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2020
+ms.date: 03/16/2021
 ms.author: kumud
-ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f8090ea9c0d307d1bd290c4cf4dac9bfaabf7c4b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221918"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576321"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom útválasztási táblázattal való irányítása az Azure Portalon
 
-Az Azure alapértelmezés szerint átirányítja a forgalmat a virtuális hálózaton belüli összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak hasznosak lehetnek, ha például az alhálózatok közötti adatforgalmat egy hálózati virtuális berendezésen (NVA) keresztül szeretné irányítani. Az oktatóanyag a következőket ismerteti:
+Az Azure alapértelmezés szerint átirányítja a forgalmat a virtuális hálózaton belüli összes alhálózat között. Az Azure alapértelmezett útválasztását felülírhatja saját maga által létrehozott útvonalakkal. Az egyéni útvonalak hasznosak lehetnek, ha például az alhálózatok közötti adatforgalmat egy hálózati virtuális berendezésen (NVA) keresztül szeretné irányítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Forgalmat irányító hálózati virtuális berendezés létrehozása
@@ -36,222 +36,301 @@ Ez az oktatóanyag a [Azure Portal](https://portal.azure.com)használja. Haszná
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+## <a name="prerequisites"></a>Előfeltételek
+
+- Azure-előfizetés.
+
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+
+## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+
+1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Az Azure Marketplace-en válassza a **hálózatkezelés**  >  **virtuális hálózat** lehetőséget, vagy keressen rá **Virtual Network** a keresőmezőbe.
+
+2. Válassza a **Létrehozás** lehetőséget.
+
+2. A **virtuális hálózat létrehozása** lapon adja meg vagy válassza ki az alábbi adatokat:
+
+    | Beállítás | Érték |
+    | ------- | ----- |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza az **új létrehozása** lehetőséget, és adja meg a **myResourceGroup**. </br> Válassza az **OK** lehetőséget. |
+    | Name | Adja meg a **myVirtualNetwork**. |
+    | Hely | Válassza ki az USA **keleti** régióját.|
+
+3. Válassza az **IP-címek** fület, vagy válassza a **következő: IP-címek** gombot az oldal alján.
+
+4. Az **IPv4-címtartomány** területen válassza ki a meglévő címtartományt, és módosítsa a **10.0.0.0/16** értékre.
+
+4. Válassza az **+ alhálózat hozzáadása** lehetőséget, majd adja meg a **nyilvános** értéket az alhálózat **neve** és a **10.0.0.0/24** **alhálózati címtartomány** mezőben.
+
+5. Válassza a **Hozzáadás** lehetőséget.
+
+6. Válassza az **+ alhálózat hozzáadása** lehetőséget, majd adja meg a **saját** alhálózat **neve** és a **10.0.1.0/24** alhálózatot az **alhálózati címtartomány** mezőben.
+
+7. Válassza a **Hozzáadás** lehetőséget.
+
+8. Válassza az **+ alhálózat hozzáadása** lehetőséget, majd írja be a **DMZ** alhálózatot az alhálózat **neveként** és a **10.0.2.0/24** **alhálózathoz**.
+
+9. Válassza a **Hozzáadás** lehetőséget.
+
+10. Kattintson a **Biztonság** fülre, vagy válassza a **következő: biztonság** gombot az oldal alján.
+
+11. A **BastionHost** területen válassza az **Engedélyezés** lehetőséget. Adja meg a következő adatokat:
+
+    | Beállítás            | Érték                      |
+    |--------------------|----------------------------|
+    | Bástya neve | **MyBastionHost** megadása |
+    | AzureBastionSubnet címterület | Adja meg a **10.0.3.0/24** értéket |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
+
+12. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
+
+13. Válassza a **Létrehozás** lehetőséget.
+
 ## <a name="create-an-nva"></a>NVA létrehozása
 
-A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek segítik a hálózati funkciókat, például az útválasztást és a tűzfal optimalizálását. Ez az oktatóanyag feltételezi, hogy a **Windows Server 2016 Datacenter** rendszert használja. Ha kívánja, választhat másik operációs rendszert is.
+A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek segítik a hálózati funkciókat, például az útválasztást és a tűzfal optimalizálását. Ez az oktatóanyag feltételezi, hogy a **Windows Server 2019 Datacenter** rendszert használja. Ha kívánja, választhat másik operációs rendszert is.
 
-1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget. 
+   
+2. A **virtuális gép létrehozása** területen írja be vagy válassza ki az értékeket az **alapok** lapon:
 
-1. Válassza a **Biztonság**  >  **Windows Server 2016 Datacenter** lehetőséget.
+    | Beállítás | Érték                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt részletei** |  |
+    | Előfizetés | Válassza ki az Azure-előfizetését |
+    | Erőforráscsoport | **MyResourceGroup** kiválasztása |
+    | **Példány adatai** |  |
+    | Virtuális gép neve | **MyVMNVA** megadása |
+    | Region | Válassza ki az USA **keleti** régióját |
+    | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
+    | Kép | **Windows Server 2019 Datacenter** kiválasztása |
+    | Azure Spot-példány | Válassza a **nem** lehetőséget |
+    | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
+    | **Rendszergazdai fiók** |  |
+    | Felhasználónév | Adjon meg egy felhasználónevet |
+    | Jelszó | Adja meg a jelszót |
+    | Jelszó megerősítése | Jelszó újbóli megadása |
+    | **Bejövő portok szabályai** |    |
+    | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
+    |
 
-    ![Windows Server 2016 Datacenter, hozzon létre egy virtuális gépet, Azure Portal](./media/tutorial-create-route-table-portal/vm-ws2016-datacenter.png)
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
+  
+4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
-1. A **virtuális gép létrehozása** lap **alapismeretek** területén adja meg vagy válassza ki az alábbi adatokat:
-
-    | Section | Beállítás | Művelet |
-    | ------- | ------- | ----- |
-    | **Projekt részletei** | Előfizetés | Válassza ki az előfizetését. |
-    | | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | **Példány adatai** | Virtuális gép neve | Adja meg a *myVmNva*. |
-    | | Region | Válassza az USA **keleti** régióját. |
-    | | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget. |
-    | | Kép | Válassza a **Windows Server 2016 Datacenter** lehetőséget. |
-    | | Méret | Tartsa meg az alapértelmezett, **standard DS1 v2** értéket. |
-    | **Rendszergazdai fiók** | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
-    | | Jelszó | Adja meg a választott jelszót, amelynek legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). |
-    | | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **Bejövő portok szabályai** | Nyilvános bejövő portok | Válassza a **nincs lehetőséget**. |
-    | **Pénz megtakarítása** | Már van Windows Server-licence? | Válassza a **nem**. |
-
-    ![Alapismeretek, virtuális gép létrehozása, Azure Portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
-
-    Ezután válassza a **Tovább: lemezek >** elemet.
-
-1. A **lemezek** területen válassza ki az igényeinek megfelelő beállításokat, majd kattintson a **Tovább gombra: hálózatkezelés >**.
-
-1. **Hálózat** alatt:
-
-    1. A **Virtual Network (virtuális hálózat**) területen válassza az **új létrehozása** lehetőséget.
-    
-    1. A **virtuális hálózat létrehozása** párbeszédpanel Név mezőjébe írja be a *myVirtualNetwork* **nevet**.
-
-    1. A **címterület mezőben** cserélje le a meglévő címtartományt a *10.0.0.0/16* kifejezésre.
-
-    1. Az **alhálózatok** területen válassza a **Törlés** ikont a meglévő alhálózat törléséhez, majd adja meg az **alhálózat neve** és a **címtartomány következő kombinációit.** Az érvényes név és tartomány megadása után egy új üres sor jelenik meg.
-
-        | Alhálózat neve | Címtartomány |
-        | ----------- | ------------- |
-        | *Nyilvános* | *10.0.0.0/24* |
-        | *Személyes* | *10.0.1.0/24* |
-        | *DMZ* | *10.0.2.0/24* |
-
-    1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
-
-    1. Az **alhálózat** területen válassza a **DMZ (10.0.2.0/24)** lehetőséget.
-
-    1. A **nyilvános IP-cím** területen válassza a **nincs** lehetőséget, mivel ez a virtuális gép nem kapcsolódik az internethez.
-
-    1. Válassza a Next (tovább) lehetőséget **: felügyeleti >**.
-
-1. **Felügyelet** alatt:
-
-    1. A **diagnosztika Storage-fiók** területen válassza az **új létrehozása** lehetőséget.
-    
-    1. A **Storage-fiók létrehozása** párbeszédpanelen adja meg vagy válassza ki az alábbi adatokat:
-
-        | Beállítás | Érték |
-        | ------- | ----- |
-        | Név | *mynvastorageaccount* |
-        | Fiók altípusa | **Storage (általános célú v1)** |
-        | Teljesítmény | **Standard** |
-        | Replikáció | **Helyileg redundáns tárolás (LRS)** |
-    
-    1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
-
-    1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
-
-1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
-
-    A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg az Azure befejezi a virtuális gép létrehozását. A telepítés **folyamatban van** oldalon látható az üzembe helyezés részletei.
-
-1. Ha a virtuális gép elkészült, válassza **az Ugrás az erőforráshoz** lehetőséget.
+    | Beállítás | Érték |
+    |-|-|
+    | **Hálózati adapter** |  |
+    | Virtuális hálózat | Válassza a **myVirtualNetwork** lehetőséget. |
+    | Alhálózat | **DMZ** kiválasztása |
+    | Nyilvános IP-cím | Válassza a **nincs** lehetőséget |
+    | NIC hálózati biztonsági csoport | **Alapszintű** kiválasztása|
+    | Nyilvános bejövő portok hálózata | Válassza a **Nincs** lehetőséget. |
+   
+5. Válassza a **felülvizsgálat + létrehozás** fület, vagy kattintson a lap alján található kék **Áttekintés + létrehozás** gombra.
+  
+6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
 1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 
-2. A keresőmezőbe írja be az *útválasztási táblázat* kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
+2. A keresőmezőbe írja be az **útválasztási táblázat** kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
 
 3. Az **útválasztási táblázat** lapon válassza a **Létrehozás** lehetőséget.
 
-4. Az **útvonal létrehozása táblában** adja meg vagy válassza ki az alábbi adatokat:
+4. Az **alapbeállítások** lapon az **útvonal létrehozása táblában** adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Név | *myRouteTablePublic* |
-    | Előfizetés | Az Ön előfizetése |
-    | Erőforráscsoport | **myResourceGroup** |
-    | Hely | **(US) USA keleti régiója** |
-    | Virtuális hálózati átjáró útvonalának propagálása | **Engedélyezve** |
+    | **Projekt részletei** |   |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. |
+    | **Példány adatai** |    |
+    | Region | Válassza az **USA keleti régiója** lehetőséget. |
+    | Name | Adja meg a **myroutetablepublic elemet**. |
+    | Átjáró-útvonalak propagálása | Válassza az **Igen** lehetőséget. |
 
-    ![Útválasztási táblázat létrehozása, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/create-route-table.png" alt-text="Hozzon létre egy útválasztási táblázatot, Azure Portal." border="true":::
 
-5. Válassza a **Létrehozás** lehetőséget.
+5. Válassza a **felülvizsgálat + létrehozás** fület, vagy kattintson a lap alján található kék **Áttekintés + létrehozás** gombra.
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
 1. Az útválasztási táblázat kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **útválasztási táblákat**.
 
-1. Válassza ki az útválasztási táblázat nevét (**myroutetablepublic elemet**).
+2. Válassza ki az útválasztási tábla **myroutetablepublic elemet** nevét.
 
-1. Válassza az **útvonalak**  >  **Hozzáadás** lehetőséget.
+3. A **myroutetablepublic elemet** lap **Beállítások** szakaszában válassza az **útvonalak** elemet.
 
-    ![Útvonal, útválasztási táblázat, Azure Portal hozzáadása](./media/tutorial-create-route-table-portal/add-route.png)
+4. Az útvonalak lapon kattintson a **+ Hozzáadás** gombra.
 
-1. Az **útvonal hozzáadása** mezőben adja meg vagy válassza ki az alábbi adatokat:
+5. Az **útvonal hozzáadása** mezőben adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Útvonal neve | *ToPrivateSubnet* |
-    | Címelőtag | *10.0.1.0/24* (a korábban létrehozott *privát* alhálózat címtartomány) |
-    | A következő ugrás típusa | **Virtuális berendezés** |
-    | A következő ugrás címe | *10.0.2.4* (a *DMZ* -alhálózat címtartomány tartományán belüli címe) |
+    | Útvonal neve | **ToPrivateSubnet** megadása |
+    | Címelőtag | Adja meg a **10.0.1.0/24** (a korábban létrehozott **privát** alhálózat címtartomány) |
+    | A következő ugrás típusa | Válassza a **Virtuális berendezés** lehetőséget. |
+    | A következő ugrás címe | Adja meg a **10.0.2.4** (a **DMZ** -alhálózat címtartomány tartományán belüli címeket) |
 
-1. Válassza az **OK** lehetőséget.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
 1. A virtuális hálózat kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális hálózatokat**.
 
-1. Válassza ki a virtuális hálózat (**myVirtualNetwork**) nevét.
+2. Válassza ki a virtuális hálózati **myVirtualNetwork** nevét.
 
-1. A virtuális hálózat menüsávján válassza az **alhálózatok** lehetőséget.
+3. A **myVirtualNetwork** lap **Beállítások** szakaszában válassza az **alhálózatok** elemet.
 
-1. A virtuális hálózat alhálózati listájában válassza a **nyilvános** lehetőséget.
+4. A virtuális hálózat alhálózatának listájában válassza a **nyilvános** lehetőséget.
 
-1. Az **útválasztási** táblázatban válassza ki a létrehozott útválasztási táblázatot (**myroutetablepublic elemet**), majd válassza a **Mentés** lehetőséget, hogy az útválasztási táblázatot a *nyilvános* alhálózathoz rendelje.
+5. Az **útválasztási táblázatban** válassza ki a **myroutetablepublic elemet** létrehozott útválasztási táblázatot. 
 
-    ![Útválasztási táblázat, alhálózati lista, virtuális hálózat, Azure Portal hozzárendelése](./media/tutorial-create-route-table-portal/associate-route-table.png)
+6. Válassza a **Mentés** lehetőséget az útválasztási táblázat **nyilvános** alhálózathoz való hozzárendeléséhez.
+
+    :::image type="content" source="./media/tutorial-create-route-table-portal/associate-route-table.png" alt-text="Rendeljen útválasztási táblázatot, alhálózati listát, virtuális hálózatot Azure Portal." border="true":::
 
 ## <a name="turn-on-ip-forwarding"></a>Az IP-továbbítás bekapcsolása
 
-Ezután kapcsolja be az IP-továbbítást az új NVA virtuális géphez ( *myVmNva*). Ha az Azure hálózati forgalmat küld a *myVmNva*, ha a forgalmat egy másik IP-címhez szánják, akkor az IP-továbbítás a megfelelő helyre küldi a forgalmat.
+Ezután kapcsolja be az IP-továbbítást az új NVA virtuális géphez ( **myVMNVA**). Ha az Azure hálózati forgalmat küld a **myVMNVA**, ha a forgalmat egy másik IP-címhez szánják, akkor az IP-továbbítás a megfelelő helyre küldi a forgalmat.
 
 1. A virtuális gép kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
 
-1. Válassza ki a virtuális gép nevét (**myVmNva**).
+2. Válassza ki a virtuális gép **myVMNVA** nevét.
 
-1. A NVA virtuális gép menüsorában válassza a **hálózatkezelés** lehetőséget.
+3. A **myVMNVA** – Áttekintés lap **Beállítások** területén válassza a **hálózatkezelés** lehetőséget.
 
-1. Válassza a **myvmnva123** lehetőséget. Ez az Azure-hoz létrehozott hálózati adapter a virtuális géphez. Az Azure számok hozzáadásával biztosítja az egyedi nevet.
+4. A MyVMNVA **hálózatkezelés** lapján válassza a hálózati adapter melletti hálózati adaptert **.**  A csatoló neve a **myvmnva**-vel kezdődik.
 
-    ![Hálózatkezelés, hálózati virtuális berendezés (NVA) virtuális gép (VM), Azure Portal](./media/tutorial-create-route-table-portal/virtual-machine-networking.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/virtual-machine-networking.png" alt-text="Hálózatkezelés, hálózati virtuális berendezés (NVA) virtuális gép (VM), Azure Portal" border="true":::
 
-1. A hálózati adapter menüsávján válassza az **IP-konfigurációk** elemet.
+5. A hálózati adapter áttekintése lapon, a **Beállítások** területen válassza az **IP-konfigurációk** elemet.
 
-1. Az **IP-konfigurációk** lapon állítsa be **az IP-továbbítás** **engedélyezésre** beállítást, majd kattintson a **Mentés** gombra.
+6. Az **IP-konfigurációk** lapon állítsa be **az IP-továbbítás** **engedélyezve** beállítást, majd kattintson a **Mentés** gombra.
 
-    ![Engedélyezze az IP-továbbítást, az IP-konfigurációkat, a hálózati adaptert, a hálózati virtuális berendezést (NVA) virtuális gépet (VM), Azure Portal](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
+    :::image type="content" source="./media/tutorial-create-route-table-portal/enable-ip-forwarding.png" alt-text="IP-továbbítás engedélyezése" border="true":::
 
 ## <a name="create-public-and-private-virtual-machines"></a>Nyilvános és privát virtuális gépek létrehozása
 
-Hozzon létre egy nyilvános virtuális gépet és egy privát virtuális GÉPET a virtuális hálózaton. Később azt fogja látni, hogy az Azure a NVA keresztül átirányítja a *nyilvános* alhálózat forgalmát a *privát* alhálózatra.
+Hozzon létre egy nyilvános virtuális gépet és egy privát virtuális GÉPET a virtuális hálózaton. Később azt fogja látni, hogy az Azure a NVA keresztül átirányítja a **nyilvános** alhálózat forgalmát a **privát** alhálózatra.
 
-A nyilvános virtuális gép és a privát virtuális gép létrehozásához kövesse a [NVA korábbi létrehozása](#create-an-nva) című témakör lépéseit. Nem kell megvárnia, amíg a telepítés befejeződik, vagy nyissa meg a virtuális gép erőforrását. Ugyanazokat a beállításokat fogja használni, kivéve az alább leírtakat.
-
-Mielőtt a **Létrehozás** gombra kattint a nyilvános vagy a virtuális gép létrehozásához, lépjen a következő két alszakaszra ([nyilvános virtuális](#public-vm) gép és [privát virtuális](#private-vm)gép), amely a különböző értékeket jeleníti meg. Ha az Azure befejezte a virtuális gépek üzembe helyezését, folytathatja a következő szakaszt (a[forgalom átirányítása egy NVA](#route-traffic-through-an-nva)).
 
 ### <a name="public-vm"></a>Nyilvános virtuális gép
 
-| Tab | Beállítás | Érték |
-| --- | ------- | ----- |
-| Alapbeállítások | Erőforráscsoport | **myResourceGroup** |
-| | Virtuális gép neve | *myVmPublic* |
-| | Nyilvános bejövő portok | **Kijelölt portok engedélyezése** |
-| | Válassza ki a bejövő portokat | **RDP** |
-| Hálózatkezelés | Virtuális hálózat | **myVirtualNetwork** |
-| | Alhálózat | **Nyilvános (10.0.0.0/24)** |
-| | Nyilvános IP-cím | Az alapértelmezett érték |
-| Kezelés | Diagnosztikai Storage-fiók | **mynvastorageaccount** |
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget. 
+   
+2. A **virtuális gép létrehozása** területen írja be vagy válassza ki az értékeket az **alapok** lapon:
+
+    | Beállítás | Érték                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt részletei** |  |
+    | Előfizetés | Válassza ki az Azure-előfizetését |
+    | Erőforráscsoport | **MyResourceGroup** kiválasztása |
+    | **Példány adatai** |  |
+    | Virtuális gép neve | **MyVMPublic** megadása |
+    | Region | Válassza ki az USA **keleti** régióját |
+    | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
+    | Kép | **Windows Server 2019 Datacenter** kiválasztása |
+    | Azure Spot-példány | Válassza a **nem** lehetőséget |
+    | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
+    | **Rendszergazdai fiók** |  |
+    | Felhasználónév | Adjon meg egy felhasználónevet |
+    | Jelszó | Adja meg a jelszót |
+    | Jelszó megerősítése | Jelszó újbóli megadása |
+    | **Bejövő portok szabályai** |    |
+    | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
+    |
+
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
+  
+4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
+
+    | Beállítás | Érték |
+    |-|-|
+    | **Hálózati adapter** |  |
+    | Virtuális hálózat | Válassza a **myVirtualNetwork** lehetőséget. |
+    | Alhálózat | **Nyilvános** kiválasztása |
+    | Nyilvános IP-cím | Válassza a **nincs** lehetőséget |
+    | NIC hálózati biztonsági csoport | **Alapszintű** kiválasztása|
+    | Nyilvános bejövő portok hálózata | Válassza a **Nincs** lehetőséget. |
+   
+5. Válassza a **felülvizsgálat + létrehozás** fület, vagy kattintson a lap alján található kék **Áttekintés + létrehozás** gombra.
+  
+6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
 ### <a name="private-vm"></a>Privát virtuális gép
 
-| Tab | Beállítás | Érték |
-| --- | ------- | ----- |
-| Alapbeállítások | Erőforráscsoport | **myResourceGroup** |
-| | Virtuális gép neve | *myVmPrivate* |
-| | Nyilvános bejövő portok | **Kijelölt portok engedélyezése** |
-| | Válassza ki a bejövő portokat | **RDP** |
-| Hálózatkezelés | Virtuális hálózat | **myVirtualNetwork** |
-| | Alhálózat | **Privát (10.0.1.0/24)** |
-| | Nyilvános IP-cím | Az alapértelmezett érték |
-| Kezelés | Diagnosztikai Storage-fiók | **mynvastorageaccount** |
+1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget. 
+   
+2. A **virtuális gép létrehozása** területen írja be vagy válassza ki az értékeket az **alapok** lapon:
+
+    | Beállítás | Érték                                          |
+    |-----------------------|----------------------------------|
+    | **Projekt részletei** |  |
+    | Előfizetés | Válassza ki az Azure-előfizetését |
+    | Erőforráscsoport | **MyResourceGroup** kiválasztása |
+    | **Példány adatai** |  |
+    | Virtuális gép neve | **MyVMPrivate** megadása |
+    | Region | Válassza ki az USA **keleti** régióját |
+    | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
+    | Kép | **Windows Server 2019 Datacenter** kiválasztása |
+    | Azure Spot-példány | Válassza a **nem** lehetőséget |
+    | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
+    | **Rendszergazdai fiók** |  |
+    | Felhasználónév | Adjon meg egy felhasználónevet |
+    | Jelszó | Adja meg a jelszót |
+    | Jelszó megerősítése | Jelszó újbóli megadása |
+    | **Bejövő portok szabályai** |    |
+    | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
+    |
+
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
+  
+4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
+
+    | Beállítás | Érték |
+    |-|-|
+    | **Hálózati adapter** |  |
+    | Virtuális hálózat | Válassza a **myVirtualNetwork** lehetőséget. |
+    | Alhálózat | **Magánjellegű** kijelölése |
+    | Nyilvános IP-cím | Válassza a **nincs** lehetőséget |
+    | NIC hálózati biztonsági csoport | **Alapszintű** kiválasztása|
+    | Nyilvános bejövő portok hálózata | Válassza a **Nincs** lehetőséget. |
+   
+5. Válassza a **felülvizsgálat + létrehozás** fület, vagy kattintson a lap alján található kék **Áttekintés + létrehozás** gombra.
+  
+6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="route-traffic-through-an-nva"></a>Forgalom irányítása NVA-n keresztül
 
-### <a name="sign-in-to-myvmprivate-over-remote-desktop"></a>Jelentkezzen be a myVmPrivate távoli asztalon keresztül
+### <a name="sign-in-to-private-vm"></a>Bejelentkezés a privát virtuális gépre
 
 1. A saját virtuális gép kezeléséhez lépjen a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki a **virtuális gépeket**.
 
-1. Válassza ki a saját virtuális gépe (**myVmPrivate**) nevét.
+2. Válassza ki a saját virtuális gép **myVmPrivate** nevét.
 
-1. A virtuális gép menüsorában válassza a **Kapcsolódás** lehetőséget a távoli asztali kapcsolat létrehozásához a privát virtuális géphez.
+3. A virtuális gép menüsorában válassza a **kapcsolat**, majd a **Bastion** lehetőséget.
 
-1. Az **RDP-kapcsolat** lapon válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+4. A **kapcsolat** lapon válassza a kék **használat Bastion** gombot.
 
-1. Nyissa meg a letöltött *. rdp* fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Válassza a **további lehetőségek** lehetőséget  >  **egy másik fiók használata** lehetőségnél, majd adja meg a magánhálózati virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
+5. A **megerősített** lapon adja meg a virtuális géphez korábban létrehozott felhasználónevet és jelszót.
 
-1. Válassza az **OK** lehetőséget.
+6. Válassza a **Kapcsolódás** lehetőséget.
 
-1. Ha a bejelentkezési folyamat során figyelmeztetést kap a tanúsítványról, válassza az **Igen** lehetőséget a virtuális géphez való csatlakozáshoz.
+### <a name="configure-firewall"></a>Tűzfal konfigurálása
 
-### <a name="enable-icmp-through-the-windows-firewall"></a>Az ICMP engedélyezése a Windows tűzfalon keresztül
+Egy későbbi lépésben a nyomkövetési útvonal eszköz használatával tesztelheti az útválasztást. A nyomkövetési útvonal a Internet Control Message Protocolt (ICMP) használja, amelyet a Windows tűzfal alapértelmezés szerint megtagad. 
 
-Egy későbbi lépésben a nyomkövetési útvonal eszköz használatával tesztelheti az útválasztást. A nyomkövetési útvonal a Internet Control Message Protocolt (ICMP) használja, amelyet a Windows tűzfal alapértelmezés szerint megtagad. Engedélyezze az ICMP-t a Windows tűzfalon keresztül.
+Engedélyezze az ICMP-t a Windows tűzfalon keresztül.
 
-1. A *myVmPrivate* távoli asztal nyissa meg a PowerShellt.
+1. A **myVMPrivate** megerősített kapcsolataiban nyissa meg a PowerShellt rendszergazdai jogosultságokkal.
 
-1. Adja meg a következő parancsot:
+2. Adja meg a következő parancsot:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -259,34 +338,40 @@ Egy későbbi lépésben a nyomkövetési útvonal eszköz használatával teszt
 
     Ebben az oktatóanyagban nyomkövetési útvonalat használ az Útválasztás teszteléséhez. Éles környezetekben nem ajánlott az ICMP engedélyezése a Windows tűzfalon keresztül.
 
-### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Az IP-továbbítás bekapcsolása a myVmNva belül
+### <a name="turn-on-ip-forwarding-within-myvmnva"></a>Az IP-továbbítás bekapcsolása a myVMNVA belül
 
-[Bekapcsolta az IP-továbbítást](#turn-on-ip-forwarding) a virtuális gép hálózati adapteréhez az Azure használatával. A virtuális gép operációs rendszerének a hálózati forgalmat is továbbítania kell. Kapcsolja be az IP-továbbítást a *myVmNva* virtuális gép operációs rendszere számára ezekkel a parancsokkal.
+[Bekapcsolta az IP-továbbítást](#turn-on-ip-forwarding) a virtuális gép hálózati adapteréhez az Azure használatával. A virtuális gép operációs rendszerének a hálózati forgalmat is továbbítania kell. 
 
-1. Nyisson meg egy távoli asztalt a *myVmPrivate* virtuális gépen egy parancssorból a *myVmNva* virtuális gépre:
+Kapcsolja be az IP-továbbítást a **myVMNVA** ezekkel a parancsokkal.
 
-    ```cmd
+1. Nyisson meg egy távoli asztalt a **myVMPrivate** virtuális gépen a powershellből a **myVMNVA** virtuális gépre:
+
+    ```powershell
     mstsc /v:myvmnva
     ```
 
-1. A *myVmNva* virtuális gépen a powershellből írja be ezt a parancsot az IP-továbbítás bekapcsolásához:
+2. A **myVMNVA** virtuális gépen a powershellből írja be ezt a parancsot az IP-továbbítás bekapcsolásához:
 
     ```powershell
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. Indítsa újra a *myVmNva* virtuális gépet: a tálcán válassza a **Start**  >  **Power** **(tervezett)**  >  **Folytatás** lehetőséget.
+3. Indítsa újra a **myVMNVA**.
 
-    Ezzel leválasztja a távoli asztali munkamenetet is.
-
-1. A *myVmNva* virtuális gép újraindítása után hozzon létre egy távoli asztali munkamenetet a *myVmPublic* virtuális gépre. Miközben továbbra is csatlakozik a *myVmPrivate* virtuális géphez, nyisson meg egy parancssort, és futtassa a következő parancsot:
-
-    ```cmd
-    mstsc /v:myVmPublic
+    ```powershell
+    Restart-Computer
     ```
-1. A *myVmPublic* távoli asztalán nyissa meg a PowerShellt.
 
-1. Engedélyezze az ICMP-t a Windows tűzfalon a következő parancs beírásával:
+4. A **myVMNVA** újraindítása után hozzon létre egy távoli asztali munkamenetet a **myVMPublic**. 
+    
+    Miközben továbbra is csatlakozik a **myVMPrivate**-hez, nyissa meg a PowerShellt, és futtassa a következő parancsot:
+
+    ```powershell
+    mstsc /v:myvmpublic
+    ```
+5. A **myVMPublic** távoli asztalán nyissa meg a PowerShellt.
+
+6. Engedélyezze az ICMP-t a Windows tűzfalon a következő parancs beírásával:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -294,71 +379,79 @@ Egy későbbi lépésben a nyomkövetési útvonal eszköz használatával teszt
 
 ## <a name="test-the-routing-of-network-traffic"></a>A hálózati forgalom útválasztásának tesztelése
 
-Először is tesztelje a *myVmPublic* virtuális gépről a *myVmPrivate* virtuális gépre irányuló hálózati forgalom útválasztását.
+Először is tesztelje a **myVMPublic** és **myVMPrivate** közötti hálózati forgalom útválasztását.
 
-1. A *myVmPublic* virtuális gépen a powershellből írja be a következő parancsot:
+1. A **MyVMPublic** PowerShell-ből írja be a következő parancsot:
 
     ```powershell
-    tracert myVmPrivate
+    tracert myvmprivate
     ```
 
     A válasz az alábbi példához hasonló:
 
     ```powershell
-    Tracing route to myVmPrivate.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.1.4]
+    Tracing route to myvmprivate.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.1.4]
     over a maximum of 30 hops:
 
-    1    <1 ms     *        1 ms  10.0.2.4
-    2     1 ms     1 ms     1 ms  10.0.1.4
+      1     1 ms     *        2 ms  myvmnva.internal.cloudapp.net [10.0.2.4]
+      2     2 ms     1 ms     1 ms  myvmprivate.internal.cloudapp.net [10.0.1.4]
 
     Trace complete.
     ```
 
-    Láthatja, hogy az első Ugrás a 10.0.2.4, amely NVA magánhálózati IP-címe. A második Ugrás a *myVmPrivate* virtuális gép magánhálózati IP-címére mutat: 10.0.1.4. Korábban felvette az útvonalat a *myroutetablepublic elemet* útválasztási táblázatba, és hozzárendelte a *nyilvános* alhálózathoz. Ennek eredményeképpen az Azure eljuttatta a forgalmat a NVA keresztül, és nem közvetlenül a *privát* alhálózatra.
+    * Láthatja, hogy az első Ugrás a 10.0.2.4, amely **myVMNVA** magánhálózati IP-címe. 
 
-1. Zárja be a *myVmPublic* virtuális gépre irányuló távoli asztali munkamenetet. Ez nem bontja a *myVmPrivate* virtuális géppel való kapcsolatot.
+    * A második Ugrás a **myVMPrivate**: 10.0.1.4 magánhálózati IP-címére mutat. 
 
-1. A *myVmPrivate* virtuális gépen a parancssorba írja be a következő parancsot:
+    Korábban felvette az útvonalat a **myroutetablepublic elemet** útválasztási táblázatba, és hozzárendelte a *nyilvános* alhálózathoz. Az Azure eljuttatta a forgalmat a NVA keresztül, és nem közvetlenül a *privát* alhálózatra.
 
-    ```cmd
-    tracert myVmPublic
+2. Zárjuk be a távoli asztali munkamenetet a **myVMPublic**-be, amely továbbra is csatlakozik a **myVMPrivate**.
+
+3. Nyissa meg a PowerShellt a **myVMPrivate**, írja be a következő parancsot:
+
+    ```powershell
+    tracert myvmpublic
     ```
 
     Ez a parancs a *myVmPrivate* virtuális gépről a *myVmPublic* virtuális gépre irányuló hálózati forgalom útválasztását teszteli. A válasz az alábbi példához hasonló:
 
     ```cmd
-    Tracing route to myVmPublic.vpgub4nqnocezhjgurw44dnxrc.bx.internal.cloudapp.net [10.0.0.4]
+    Tracing route to myvmpublic.q04q2hv50taerlrtdyjz5nza1f.bx.internal.cloudapp.net [10.0.0.4]
     over a maximum of 30 hops:
 
-    1     1 ms     1 ms     1 ms  10.0.0.4
+      1     1 ms     1 ms     1 ms  myvmpublic.internal.cloudapp.net [10.0.0.4]
 
     Trace complete.
     ```
 
-    Láthatja, hogy az Azure közvetlenül a *myVmPrivate* virtuális gépről irányítja át a forgalmat a *myVmPublic* virtuális gépre. Alapértelmezés szerint az Azure közvetlenül irányítja a forgalmat az alhálózatok között.
+    Láthatja, hogy az Azure közvetlenül a *myVMPrivate* -ből a *myVMPublic*-be irányítja a forgalmat. Alapértelmezés szerint az Azure közvetlenül irányítja a forgalmat az alhálózatok között.
 
-1. Zárja be a *myVmPrivate* virtuális gépre irányuló távoli asztali munkamenetet.
+4. A megerősített munkamenet lezárása a **myVMPrivate**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha az erőforráscsoport már nem szükséges, törölje a *myResourceGroup* és az összes erőforrást:
+Ha az erőforráscsoport már nem szükséges, törölje a **myResourceGroup** és a benne lévő összes erőforrást:
 
 1. Az erőforráscsoport kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **erőforráscsoportok** elemet.
 
-1. Válassza ki az erőforráscsoport nevét (**myResourceGroup**).
+2. Válassza ki az erőforráscsoport **myResourceGroup** nevét.
 
-1. Válassza az **Erőforráscsoport törlése** elemet.
+3. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. A megerősítő párbeszédpanelen írja be  a myResourceGroup **nevet az erőforráscsoport neve** mezőbe, majd válassza a **Törlés** lehetőséget. Az Azure törli a *myResourceGroup* és az ehhez az erőforráscsoporthoz kötött összes erőforrást, beleértve az útválasztási táblákat, a Storage-fiókokat, a virtuális hálózatokat, a virtuális gépeket, a hálózati adaptereket és a nyilvános IP-címeket.
+4. A megerősítő párbeszédpanelen írja be  a myResourceGroup **nevet az erőforráscsoport neve** mezőbe, majd válassza a **Törlés** lehetőséget. 
 
-## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy útválasztási táblázatot, és hozzárendelte egy alhálózathoz. Létrehozott egy egyszerű NVA-t, amely átirányította a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. Mostantól különböző előre konfigurált NVA telepíthet az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)-ről, amely számos hasznos hálózati funkciót biztosít. További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
+## <a name="next-steps"></a>További lépések
 
-Habár számos Azure-erőforrást telepíthet egy virtuális hálózaton belül, az Azure nem tud erőforrásokat telepíteni bizonyos Péter-szolgáltatásokhoz egy virtuális hálózatban. Bizonyos Azure Pásti-szolgáltatások erőforrásaira korlátozható a hozzáférés, bár a korlátozásnak csak egy virtuális hálózati alhálózatról kell forgalmat használnia. Ha szeretné megtudni, hogyan korlátozhatja a hálózati hozzáférést az Azure Pásti-erőforrásokhoz, tekintse meg a következő oktatóanyagot.
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
+* Létrehozott egy útválasztási táblázatot, és hozzárendelte egy alhálózathoz.
+* Létrehozott egy egyszerű NVA, amely átirányítja a forgalmat egy nyilvános alhálózatról egy privát alhálózatra. 
+
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking)-ről különböző előre konfigurált NVA telepíthet, amelyek számos hasznos hálózati funkciót biztosítanak. 
+
+További információ az útválasztásról: [Az útválasztás áttekintése](virtual-networks-udr-overview.md); [Útválasztási táblázat kezelése](manage-route-table.md).
+
+Egy virtuális hálózat hálózati forgalmának szűréséhez tekintse meg a következőt:
 > [!div class="nextstepaction"]
-> [PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása](tutorial-restrict-network-access-to-resources.md)
-
-> [!NOTE] 
-> Az Azure-szolgáltatások pénzbe kerülnek. A Azure Cost Management segítségével megadhatja a költségvetéseket, és konfigurálhatja a riasztásokat, hogy megőrizze a költségek szabályozását. Cost Managementával elemezheti, kezelheti és optimalizálhatja Azure-költségeit. További információkért tekintse meg a [költségek elemzését](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)ismertető rövid útmutatót.
+> [Oktatóanyag: hálózati forgalom szűrése hálózati biztonsági csoporttal a Azure Portal használatával](tutorial-filter-network-traffic.md)

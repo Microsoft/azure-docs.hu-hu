@@ -11,10 +11,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
 ms.openlocfilehash: 08b1f2b112542a4b4772744d122ce1260b0edffd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101704769"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban a parancssorból
@@ -93,15 +93,15 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ``` 
 
-    `func new` létrehoz egy HttpExample.cs.
+    `func new` létrehoz egy HttpExample. cs fájlt.
 
 ### <a name="optional-examine-the-file-contents"></a>Választható A fájl tartalmának vizsgálata
 
 Ha szeretné, kihagyhatja [a függvény helyi futtatását](#run-the-function-locally) , és később is megvizsgálhatja a fájl tartalmát.
 
-#### <a name="httpexamplecs"></a>HttpExample.cs
+#### <a name="httpexamplecs"></a>HttpExample. cs
 
-A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a `req` [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely a **HttpTriggerAttribute** díszített, amely meghatározza az trigger viselkedését.
+A *HttpExample. cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a kérelmeket, és a `req` **HttpTriggerAttribute** díszített [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely meghatározza az trigger viselkedését.
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 

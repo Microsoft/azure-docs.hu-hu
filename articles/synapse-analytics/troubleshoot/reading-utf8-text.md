@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.date: 12/03/2020
 ms.openlocfilehash: 70ce3c82790db0296d5359b5db2e6a323306c309
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576417"
 ---
 # <a name="troubleshoot-reading-utf-8-text-from-csv-or-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Az UTF-8 szövegnek az Azure szinapszis Analyticsben kiszolgáló nélküli SQL-készlettel való olvasásával kapcsolatban felmerülő hibák
@@ -45,7 +45,7 @@ A probléma megoldása az, hogy mindig UTF-8 rendezést használjon az UTF-8 sz�
 - Ha az UTF8-adatokat olvasó külső táblákon nem adta meg az UTF8-rendezést, akkor újra létre kell hoznia az érintett külső táblákat, és az UTF8-oszlopokon (metaadat-művelet) kell beállítania az UTF8-rendezést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Parketta-fájlok lekérdezése a szinapszis SQL-sel](../sql/query-parquet-files.md)
 * [CSV-fájlok lekérdezése a szinapszis SQL-sel](../sql/query-single-csv-file.md)

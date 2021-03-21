@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: d68ec580f25bfd5f9c1a994efc15abd8835ac8a5
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: daf6d90ae6b5d95c54e0e83eff4c2d606e7054fe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093500"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585757"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Rövid útmutató: Azure Key Vault és kulcs létrehozása ARM-sablonnal (előzetes verzió)
 
@@ -163,6 +163,9 @@ Két erőforrás van definiálva a sablonban:
 - Microsoft. kulcstartó/tárolók/kulcsok
 
 További Azure Key Vault-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
+Használhatja [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal), Azure PowerShell, Azure CLI vagy REST API. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell).
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 

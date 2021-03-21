@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86135680"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után 
@@ -46,7 +46,7 @@ Ha a 9.7.0.0-nál korábbi Site Recovery mobilitási szolgáltatás verzióját 
 Az ügynök telepítésének ellenőrzését:
 
 1. Az Azure-beli virtuális gépen, a C:\WindowsAzure\Packages mappában megjelenik a WaAppAgent.exe fájl.
-2. Kattintson a jobb gombbal a fájlra, majd a **Tulajdonságok**területen válassza a **részletek** lapot.
+2. Kattintson a jobb gombbal a fájlra, majd a **Tulajdonságok** területen válassza a **részletek** lapot.
 3. Ellenőrizze, hogy a **termék verziója** mezőben a 2.6.1198.718 vagy a magasabb érték látható-e.
 
 [További](../virtual-machines/extensions/agent-windows.md) információ a Windows rendszerhez készült ügynök telepítéséről.
@@ -72,7 +72,7 @@ Telepítse manuálisan az [Azure Linux VM](../virtual-machines/extensions/agent-
 ## <a name="uninstall-the-mobility-service"></a>A mobilitási szolgáltatás eltávolítása
 
 1. Manuálisan távolítsa el a mobilitási szolgáltatást az Azure-beli virtuális gépről az alábbi módszerek egyikének használatával. 
-    - Windows esetén a Vezérlőpulton > programok telepítése **/törlése**, **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló**eltávolítása. Futtassa a következő parancsot egy rendszergazda jogú parancssorban:
+    - Windows esetén a Vezérlőpulton > programok telepítése **/törlése**, **Microsoft Azure site Recovery mobilitási szolgáltatás/fő célkiszolgáló** eltávolítása. Futtassa a következő parancsot egy rendszergazda jogú parancssorban:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
@@ -82,7 +82,7 @@ Telepítse manuálisan az [Azure Linux VM](../virtual-machines/extensions/agent-
         ```
 2. A replikáció konfigurálása előtt indítsa újra a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tekintse át](site-recovery-extension-troubleshoot.md) az Azure virtuálisgép-ügynök site Recovery bővítményének hibaelhárítását.
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

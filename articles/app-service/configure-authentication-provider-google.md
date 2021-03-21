@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80519950"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Google bejelentkezés használatára
@@ -35,8 +35,8 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 ## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Google-információk hozzáadása az alkalmazáshoz
 
 1. A [Azure Portal]nyissa meg a app Service alkalmazást.
-1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
-1. Válassza a **Google**lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
+1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés** lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. Válassza a **Google** lehetőséget, majd illessze be a korábban beszerzett alkalmazás-azonosító és alkalmazás titkos értékeit. Engedélyezze az alkalmazás által igényelt hatóköröket.
 1. Válassza az **OK** lehetőséget.
 
    A App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. További információ: [felhasználók engedélyezése vagy megtagadása](app-service-authentication-how-to.md#authorize-or-deny-users).
@@ -50,7 +50,7 @@ A témakörben ismertetett eljárás végrehajtásához rendelkeznie kell egy el
 
 Most már készen áll a Google használatára a hitelesítéshez az alkalmazásban.
 
-## <a name="next-steps"></a><a name="related-content"> </a>További lépések
+## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
