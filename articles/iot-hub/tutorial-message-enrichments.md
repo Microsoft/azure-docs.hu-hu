@@ -9,10 +9,10 @@ ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199781"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Oktatóanyag: az Azure IoT Hub üzenet-gazdagítás használata
@@ -279,7 +279,7 @@ Ezen a ponton az erőforrások mindegyike be van állítva, az üzenet-útválas
 ## <a name="create-and-configure-by-using-a-resource-manager-template"></a>Létrehozás és konfigurálás Resource Manager-sablon használatával
 A Resource Manager-sablonok segítségével létrehozhatja és konfigurálhatja az erőforrásokat, az üzenetek útválasztását és az üzenetek dúsítását.
 
-1. Jelentkezzen be az Azure portálra. Válassza az **+ erőforrás létrehozása** lehetőséget a keresőmező létrehozásához. Adja meg a *sablon központi telepítését*, és keresse meg. Az eredmények ablaktábláján válassza a **template Deployment (üzembe helyezés egyéni sablon használatával)** lehetőséget.
+1. Jelentkezzen be az Azure Portalra. Válassza az **+ erőforrás létrehozása** lehetőséget a keresőmező létrehozásához. Adja meg a *sablon központi telepítését*, és keresse meg. Az eredmények ablaktábláján válassza a **template Deployment (üzembe helyezés egyéni sablon használatával)** lehetőséget.
 
    ![Template deployment a Azure Portal](./media/tutorial-message-enrichments/template-select-deployment.png)
 
@@ -336,7 +336,7 @@ Most, hogy az üzenet gazdagítása konfigurálva van a végponthoz, futtassa a 
 
 A szimulált eszköz alkalmazás a kibontott letöltésben szereplő egyik alkalmazás. Az alkalmazás üzeneteket küld az [útválasztási oktatóanyag](tutorial-routing.md)egyes különböző üzenet-útválasztási módszereihez, beleértve az Azure Storage-t is.
 
-Kattintson duplán a megoldás fájlra **IoT_SimulatedDevice. SLN** a kód megnyitásához a Visual Studióban, majd nyissa meg a **program.cs**. Helyettesítse be a jelölőhöz tartozó IoT hub nevét `{your hub name}` . Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve ContosoTestHubMsgEn.azure-devices.net. Ezután cserélje le a korábban mentett eszköz kulcsát, amikor futtatta a szkriptet a jelölőhöz tartozó erőforrások létrehozásához `{your device key}` .
+Kattintson duplán a megoldás fájlra **IoT_SimulatedDevice. SLN** a kód megnyitásához a Visual Studióban, majd nyissa meg a **program. cs** fájlt. Helyettesítse be a jelölőhöz tartozó IoT hub nevét `{your hub name}` . Az IoT hub-állomásnév formátuma **{a hub neve}. Azure-Devices.net**. Ebben az oktatóanyagban a hub-gazdagép neve ContosoTestHubMsgEn.azure-devices.net. Ezután cserélje le a korábban mentett eszköz kulcsát, amikor futtatta a szkriptet a jelölőhöz tartozó erőforrások létrehozásához `{your device key}` .
 
 Ha nem rendelkezik az eszköz kulcsával, lekérheti azt a portálról. A bejelentkezés után lépjen az **erőforráscsoportok** elemre, válassza ki az erőforráscsoportot, majd válassza ki az IoT hubot. Keresse meg a **IoT eszközeit** , és válassza ki az eszközt. A vágólapra másoláshoz kattintson az **elsődleges kulcs** melletti másolás ikonra.
 

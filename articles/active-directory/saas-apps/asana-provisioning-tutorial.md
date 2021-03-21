@@ -12,10 +12,10 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: celested
 ms.openlocfilehash: 4abc117ae0e983cf684f0e70a363758f9be196aa
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359426"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
@@ -74,13 +74,13 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
     d. Válassza a **szolgáltatásfiók hozzáadása** lehetőséget.
 
-    e. Szükség szerint frissítse a **nevet** és a **névjegyet** és a profil fényképét. Másolja a tokent a **tokenbe** , és válassza ki a **módosítások mentése** gombra.
+    e. Szükség szerint frissítse a **nevet** és a **névjegyet** és a profil fényképét. Másolja a tokent a **tokenbe**, és válassza ki a **módosítások mentése** gombra.
 
 1. A Azure Portal válassza a **kapcsolat tesztelése** lehetőséget annak biztosításához, hogy az Azure ad képes legyen csatlakozni a-hoz. Ha a kapcsolat nem sikerül, győződjön meg arról, hogy az, hogy az, hogy a-fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra a **kapcsolat tesztelése** lépéssel
 
 1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek az  **értesítési e-mailben** szeretne kiépítési hibaüzeneteket kapni. Jelölje be a jelölőnégyzetet az alatt.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a** következőre lehetőséget.
 
@@ -88,13 +88,13 @@ Ez a szakasz végigvezeti az Azure AD-nek a felhasználói fiókok kiépítési 
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a, a **Beállítások** szakaszban, módosítsa a **kiépítési állapotot** **a** következőre:.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A kezdeti szinkronizálás mostantól elindul a **felhasználók** szakaszban a facsoporthoz rendelt összes felhasználónál. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat. A naplók a kiépítési szolgáltatás által végrehajtott összes műveletet ismertetik a a (z)-ben.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

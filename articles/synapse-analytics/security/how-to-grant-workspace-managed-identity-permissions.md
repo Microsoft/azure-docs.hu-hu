@@ -9,10 +9,10 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 46fe27205a2c30d6cb2319bf620c6fe1ee34c31e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459013"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity"></a>Engedélyek megadása munkaterület által felügyelt identitásnak
@@ -117,6 +117,6 @@ Válassza a **Access Control (iam)** lehetőséget, majd válassza a **szerepkö
 A felügyelt identitást a **Storage blob adatközreműködői** című szakaszban találja a *Storage blob-adatközreműködői* szerepkörhöz hozzárendelve. 
 ![ADLS Gen2 Storage-fiók tárolójának kiválasztása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [munkaterület által felügyelt identitásról](./synapse-workspace-managed-identity.md)

@@ -8,15 +8,15 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 9656e6ab608665e325ac5f772e06df9ac296c521
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92485375"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
-Azure Database for PostgreSQL – a nagy kapacitású (Citus) automatikusan létrehozza az egyes csomópontok biztonsági másolatait, és helyileg redundáns tárolóban tárolja őket. A biztonsági mentések segítségével visszaállíthatja a nagy kapacitású-(Citus-) fürtöt egy adott időpontra. A biztonsági mentés és a visszaállítás fontos részét képezi az üzletmenet folytonossági stratégiájának, mivel ezek az adatok a véletlen sérüléstől vagy törléstől védve vannak.
+Azure Database for PostgreSQL – a nagy kapacitású (Citus) automatikusan létrehozza az egyes csomópontok biztonsági másolatait, és helyileg redundáns tárolóban tárolja őket. A biztonsági mentések segítségével visszaállíthatja a nagy kapacitású-(Citus-) fürtöt egy adott időpontra. A biztonsági mentés és helyreállítás minden üzletmenet-folytonossági stratégia elengedhetetlen része, hiszen ez védi meg az adatokat a véletlen sérülésektől és törléstől.
 
 ## <a name="backups"></a>Biztonsági másolatok
 
@@ -44,7 +44,7 @@ Azure Database for PostgreSQL egy nagy kapacitású-(Citus-) fürt visszaállít
 ### <a name="point-in-time-restore-pitr"></a>Időponthoz tartozó visszaállítás (PITR)
 
 Az elmúlt 35 napon belül bármikor visszaállíthat egy fürtöt bármely időpontra.
-Az időponthoz való visszaállítás több esetben is hasznos lehet. Ha például egy felhasználó véletlenül törli az adatvesztést, elveszít egy fontos táblát vagy adatbázist, vagy ha egy alkalmazás véletlenül felülírja a megfelelő adatvesztést.
+Az időponthoz való visszaállítás több esetben is hasznos lehet. Ez történik például ha egy felhasználó véletlenül adatokat töröl, eltávolít egy fontos táblát vagy adatbázist, vagy egy alkalmazás véletlenül rossz adatokkal írja felül a jó adatokat.
 
 A visszaállítási folyamat egy új fürtöt hoz létre ugyanabban az Azure-régióban, előfizetésben és erőforráscsoporthoz, mint az eredeti. A fürt rendelkezik az eredeti konfigurációval: a csomópontok száma, a virtuális mag száma, a tárterület mérete, a felhasználói szerepkörök, a PostgreSQL-verzió és a Citus-bővítmény verziója.
 

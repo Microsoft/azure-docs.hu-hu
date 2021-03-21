@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: victorh
 ms.openlocfilehash: 3b8fbc47b46f8be6e4ad7636a1d7552445501f0f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94653164"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Az Azure Firewall integrálása az Azure Standard Load Balancerrel
@@ -75,7 +75,7 @@ Az elosztott terhelésű forgatókönyvek biztonságának növelése érdekében
 
 Létrehozhat például egy NSG a háttérbeli alhálózaton, ahol a terheléselosztásos virtuális gépek találhatók. A tűzfal IP-címéről/portjáról származó bejövő forgalom engedélyezése.
 
-![Hálózati biztonsági csoport](media/integrate-lb/nsg-01.png)
+![Hálózati biztonsági csoporttal](media/integrate-lb/nsg-01.png)
 
 További információ a NSG: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 

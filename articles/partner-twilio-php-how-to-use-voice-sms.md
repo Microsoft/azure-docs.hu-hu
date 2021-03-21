@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: bf1ab01b39d594002bc5e677ffe6c3049fbb91ce
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95521019"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>A Twilio használata a hang-és SMS-funkciókhoz a PHP-ben
@@ -56,7 +56,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a t
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **Hello World** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -186,7 +186,7 @@ Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy o
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját helyet, amely visszaadja a HTTP-válaszokat. A helyet bármilyen nyelven létrehozhatja, amely az XML-válaszokat adja vissza; Ez a témakör feltételezi, hogy a PHP-t fogja használni a TwiML létrehozásához.
 
-A következő PHP-oldal egy TwiML választ eredményez, amely a hívás **„Helló világ!” alkalmazásét** mondja.
+A következő PHP-oldal egy TwiML választ eredményez, amely a hívás **Hello Worldét** mondja.
 
 ```xml
 <?php    

@@ -2,13 +2,13 @@
 title: Rövid útmutató Azure Recovery Services-tároló létrehozásához egy Azure Resource Manager sablon használatával.
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Recovery Services-tárolót egy Azure Resource Manager sablon (ARM-sablon) használatával.
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.date: 04/29/2020
-ms.openlocfilehash: c1c6d625c67130a4e3608cee6134b8c81404c01b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 62bfe71c397367282c696eecdf55ab9c900c69a1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92745875"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rövid útmutató: Recovery Services-tároló létrehozása ARM-sablonnal
@@ -42,7 +42,7 @@ Az Azure Recovery Services-sablonokkal kapcsolatos további információkért l�
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A sablon üzembe helyezéséhez az **előfizetés** , az **erőforráscsoport** és a tár **neve** szükséges.
+A sablon üzembe helyezéséhez az **előfizetés**, az **erőforráscsoport** és a tár **neve** szükséges.
 
 1. Az Azure-ba való bejelentkezéshez és a sablon megnyitásához válassza ki az **üzembe helyezés az Azure** -ban lemezképet.
 
@@ -52,18 +52,18 @@ A sablon üzembe helyezéséhez az **előfizetés** , az **erőforráscsoport** 
 
    :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Recovery Services-tároló létrehozására szolgáló sablon.":::
 
-   - **Előfizetés** : válassza ki az Azure-előfizetését.
-   - **Erőforráscsoport** : válasszon ki egy meglévő csoportot, vagy válassza az **új létrehozása** lehetőséget egy csoport hozzáadásához.
-   - **Hely** : alapértelmezés szerint az erőforráscsoport helye, és az erőforráscsoport kijelölése után elérhetetlenné válik.
-   - Tár **neve** : adjon nevet a tárolónak.
-   - **Tárolási típus módosítása** : az alapértelmezett érték a **false** . Csak akkor válassza az **igaz** értéket, ha módosítania kell a tár tárolási típusát.
-   - **Tár tárolási típusa** : az alapértelmezett érték a **GloballyRedundant** . Ha a tárolási típus értéke TRUE ( **igaz** ), válassza a **LocallyRedundant** lehetőséget.
-   - **Hely** : a függvény `[resourceGroup().location]` alapértelmezett értéke az erőforráscsoport helye. A hely módosításához adjon meg egy értéket, például **westus** .
+   - **Előfizetés**: válassza ki az Azure-előfizetését.
+   - **Erőforráscsoport**: válasszon ki egy meglévő csoportot, vagy válassza az **új létrehozása** lehetőséget egy csoport hozzáadásához.
+   - **Hely**: alapértelmezés szerint az erőforráscsoport helye, és az erőforráscsoport kijelölése után elérhetetlenné válik.
+   - Tár **neve**: adjon nevet a tárolónak.
+   - **Tárolási típus módosítása**: az alapértelmezett érték a **false**. Csak akkor válassza az **igaz** értéket, ha módosítania kell a tár tárolási típusát.
+   - **Tár tárolási típusa**: az alapértelmezett érték a **GloballyRedundant**. Ha a tárolási típus értéke TRUE ( **igaz**), válassza a **LocallyRedundant** lehetőséget.
+   - **Hely**: a függvény `[resourceGroup().location]` alapértelmezett értéke az erőforráscsoport helye. A hely módosításához adjon meg egy értéket, például **westus**.
    - Jelölje be az **Elfogadom a fenti feltételeket és kikötéseket** jelölőnégyzetet.
 
 1. A tár üzembe helyezésének megkezdéséhez kattintson a **vásárlás** gombra. Sikeres üzembe helyezés után megjelenik egy értesítés.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="Recovery Services-tároló létrehozására szolgáló sablon.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="A tár üzembe helyezése sikeres volt.":::
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 

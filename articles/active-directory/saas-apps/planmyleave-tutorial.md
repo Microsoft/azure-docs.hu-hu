@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: c143a5af40097039c70c58adba4cb21f687d3fa6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>Oktatóanyag: Azure Active Directory integráció a PlanMyLeave
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés PlanMyLeave való konfigurálásához hajtsa
 
 1. Egy másik böngészőablakban jelentkezzen be a PlanMyLeave-bérlőbe rendszergazdaként.
 
-2. Nyissa meg a **rendszerbeállítást** . Ezután a **biztonság kezelése** szakaszban kattintson a **vállalati SAML-beállítások** elemre.
+2. Nyissa meg a **rendszerbeállítást**. Ezután a **biztonság kezelése** szakaszban kattintson a **vállalati SAML-beállítások** elemre.
 
     ![Képernyőkép, amely a "Rendszerbeállítás" lapot jeleníti meg a "biztonság kezelése" szakaszra, és a "vállalati S L beállítások" művelet be van jelölve.](./media/planmyleave-tutorial/tutorial_planmyleave_002.png) 
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés PlanMyLeave való konfigurálásához hajtsa
 
     b.  Nyissa meg a letöltött metaadatokat, másolja a  **x509** értéket, majd illessze be a **tanúsítvány** szövegmezőbe.
 
-    c. Állítsa **az "engedélyezve** " értéket az " **Igen** " értékre.
+    c. Állítsa **az "engedélyezve**" értéket az "**Igen**" értékre.
 
     d. Kattintson a **Mentés** gombra. 
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés PlanMyLeave való konfigurálásához hajtsa
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,7 +171,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

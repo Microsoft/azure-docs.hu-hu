@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 538a650c6063422f89c8ed3d1753981a293693b7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94338086"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>A Data Box Disk felügyelete az Azure Portal használatával
@@ -51,7 +51,7 @@ A rendelések klónozásához kövesse az alábbi lépéseket.
 
     ![Klónozási parancs egy rendelés áttekintés lapján](media/data-box-portal-ui-admin/portal-ui-admin-clone-command.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** gombra.    
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.    
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -119,7 +119,7 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 ## <a name="view-order-status"></a>Rendelés állapotának megtekintése
 
-|Rendelés állapota |Leírás |
+|Rendelés állapota |Description |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br> Ha a lemezek nem érhetők el, értesítést kap. <br>Ha vannak elérhető meghajtók, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a meghajtócsomagot.        |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. <br> A rendelése feldolgozása során a következő műveletek történnek meg:<li>A lemezek titkosítása a AES-128 BitLocker használatával. </li> <li>A Data Box Disk-meghajtók zárolása az illetéktelen hozzáférés megakadályozására.</li><li>A folyamat során létrejön a lemezek zárolását feloldó hozzáférési kulcs.</li>        |
@@ -134,6 +134,6 @@ Az értesítési adatok szerkesztéséhez kövesse az alábbi lépéseket.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [a Data Box Disk-hibák elhárításának](data-box-disk-troubleshoot.md) módját.

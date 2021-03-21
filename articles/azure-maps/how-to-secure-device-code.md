@@ -10,10 +10,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 3833cbfd0802f334e482203d269984eb0e299797
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895630"
 ---
 # <a name="secure-an-input-constrained-device-with-azure-ad-and-azure-maps-rest-apis"></a>Egy bemeneti korlátozott eszköz biztonságossá tétele az Azure AD-vel és a Azure Maps REST API-kkal
@@ -35,17 +35,17 @@ Hozza létre az eszközön alapuló alkalmazást az Azure AD-ben az Azure AD-bej
     > [!div class="mx-imgBorder"]
     > ![Alkalmazásregisztráció](./media/how-to-manage-authentication/app-registration.png)
 
-2. Adjon meg egy **nevet** , a **szervezeti könyvtárban** válassza a fiókok lehetőséget, csak a **támogatott fióktípus** . Az **átirányítási URI** -k területen adja meg a **nyilvános ügyfél/natív (Mobile & Desktop)** értéket, majd adja hozzá `https://login.microsoftonline.com/common/oauth2/nativeclient` az értéket. További részletekért tekintse meg az Azure AD [Desktop alkalmazást, amely meghívja a webes API-kat: alkalmazás-regisztráció](../active-directory/develop/scenario-desktop-app-registration.md). Ezután **regisztrálja** az alkalmazást.
+2. Adjon meg egy **nevet**, a **szervezeti könyvtárban** válassza a fiókok lehetőséget, csak a **támogatott fióktípus**. Az **átirányítási URI**-k területen adja meg a **nyilvános ügyfél/natív (Mobile & Desktop)** értéket, majd adja hozzá `https://login.microsoftonline.com/common/oauth2/nativeclient` az értéket. További részletekért tekintse meg az Azure AD [Desktop alkalmazást, amely meghívja a webes API-kat: alkalmazás-regisztráció](../active-directory/develop/scenario-desktop-app-registration.md). Ezután **regisztrálja** az alkalmazást.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás regisztrációs adatainak hozzáadása a név és az átirányítási URI számára](./media/azure-maps-authentication/devicecode-app-registration.png)
 
-3. Navigáljon a **hitelesítéshez** , és engedélyezze **nyilvános ügyfélként az alkalmazás kezelését** . Ez lehetővé teszi az Azure AD-ban az eszköz kódjának hitelesítését.
+3. Navigáljon a **hitelesítéshez** , és engedélyezze **nyilvános ügyfélként az alkalmazás kezelését**. Ez lehetővé teszi az Azure AD-ban az eszköz kódjának hitelesítését.
     
     > [!div class="mx-imgBorder"]
     > ![Alkalmazások regisztrálásának engedélyezése nyilvános ügyfélként](./media/azure-maps-authentication/devicecode-public-client.png)
 
-4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek** engedély  >  **hozzáadása** lehetőséget. A **szervezetem által használt API** -k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
+4.  Ha delegált API-engedélyeket szeretne hozzárendelni Azure Mapshoz, nyissa meg az alkalmazást. Ezután válassza az **API-engedélyek** engedély  >  **hozzáadása** lehetőséget. A **szervezetem által használt API**-k alatt keresse meg és válassza a **Azure Maps** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Alkalmazás API-engedélyeinek hozzáadása](./media/how-to-manage-authentication/app-permissions.png)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: erhopf
 ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97032966"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
@@ -68,13 +68,13 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 > [!NOTE]
 > A Translator Service és a Bing Search API-k globális végpontokat használnak.
 
-| Végpont típusa | Régió | Végpont |
+| Végpont típusa | Region | Végpont |
 |---------------|--------|----------|
 | Nyilvános | Globális (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Kelet-Ausztrália | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Dél-Brazília | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Közép-Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | USA középső régiója | `https://centralus.api.cognitive.microsoft.com` |
+| | Az USA középső régiója | `https://centralus.api.cognitive.microsoft.com` |
 | | Kelet-Ázsia | `https://eastasia.api.cognitive.microsoft.com` |
 | | USA keleti régiója | `https://eastus.api.cognitive.microsoft.com` |
 | | USA 2. keleti régiója | `https://eastus2.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](./what-are-cognitive-services.md)
 * [Hitelesítés](authentication.md)

@@ -9,10 +9,10 @@ ms.date: 04/17/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: e5cfc9beb5473917a76f822862ce3d61675d6493
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93406702"
 ---
 1. Az Azure Signaler szolgáltatás erőforrásának létrehozásához először jelentkezzen be a [Azure Portalba](https://portal.azure.com). Az oldal bal felső részén válassza az **+ erőforrás létrehozása** lehetőséget. A **Keresés a piactéren** szövegmezőbe írja be a **signaler szolgáltatást**.
@@ -21,7 +21,7 @@ ms.locfileid: "93406702"
 
 3. Az új **jelző** beállításai lapon adja hozzá a következő beállításokat az új jelző erőforráshoz:
 
-    | Name | Javasolt érték | Leírás |
+    | Name | Javasolt érték | Description |
     | ---- | ----------------- | ----------- |
     | Erőforrás neve | *testsignalr* | Írja be a SignalR-erőforráshoz használandó egyedi erőforrásnevet. A névnek 1 és 63 karakter közötti sztringnek kell lennie, és csak számokat, betűket és kötőjel ( `-` ) karaktert tartalmazhat. A név nem kezdődhet és nem végződhet a kötőjel karakterrel, és az egymást követő kötőjelek nem érvényesek.|
     | Előfizetés | Válassza ki az előfizetését |  Válassza ki a SignalR teszteléséhez használni kívánt Azure-előfizetést. Ha a fiókja csak egyetlen előfizetéssel rendelkezik, akkor automatikusan ki van választva, és az **előfizetés** legördülő lista nem jelenik meg.|
@@ -30,7 +30,7 @@ ms.locfileid: "93406702"
     | Tarifacsomag | *Ingyenes* | Jelenleg az **ingyenes** és a **standard** lehetőségek állnak rendelkezésre. |
     | Rögzítés az irányítópulton | ✔ | Jelölje be ezt a jelölőnégyzetet, ha szeretné, hogy az erőforrás rögzítve legyen az irányítópulton, így könnyebben megtalálhatja. |
 
-4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Várjon, amíg az érvényesítés befejeződik. 
+4. Válassza az **Áttekintés + létrehozás** lehetőséget. Várjon, amíg az érvényesítés befejeződik. 
 
 5. Válassza a **Létrehozás** lehetőséget. Az üzembe helyezés eltarthat néhány percig.
 

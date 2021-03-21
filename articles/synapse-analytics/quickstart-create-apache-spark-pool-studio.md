@@ -10,10 +10,10 @@ ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
 ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462036"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Gyors útmutató: kiszolgáló nélküli Apache Spark-készlet létrehozása a szinapszis Studio használatával
@@ -108,7 +108,7 @@ Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
 1. Erősítse meg a törlést, majd nyomja le a **delete (Törlés** ) gombot.
 1. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

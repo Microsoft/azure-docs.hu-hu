@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95562020"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
@@ -20,12 +20,12 @@ ms.locfileid: "95562020"
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:

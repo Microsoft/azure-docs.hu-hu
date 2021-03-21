@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 181d58baf128c4848a538e776aea0e43213994dc
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io DataOps-portálon
@@ -50,10 +50,10 @@ A Lenses.io Azure AD-be való integrálásának konfigurálásához adja hozzá 
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Válassza az **Új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Lenses.IO** kifejezést a keresőmezőbe.
-1. Az eredmények panelen válassza a **Lenses.IO**lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Az eredmények panelen válassza a **Lenses.IO** lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Azure AD SSO konfigurálása és tesztelése a Lenses.io-hez
 
@@ -72,8 +72,8 @@ Végezze el a következő lépéseket:
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/) **Lenses.IO** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, majd válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Lenses.IO** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, majd válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon válassza a Szerkesztés/toll ikont az **ALAPszintű SAML-konfigurációhoz** a beállítások szerkesztéséhez.
 
    ![Képernyőfelvétel: az alapszintű SAML-konfiguráció szerkesztésének ikonja.](common/edit-urls.png)
@@ -103,40 +103,40 @@ Azt is megtudhatja, hogyan használja a lencsék csoporttagság-leképezést a [
 
 **A teszt felhasználó létrehozása:**
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
+1. A képernyő felső részén válassza az **új felhasználó** lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a (z username@companydomain.extension ) nevet. Például: B.Simon@contoso.com.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a jelszót, amely a **jelszó** mezőben jelenik meg.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 **A csoport létrehozása:**
 
-1. Lépjen **Azure Active Directory**, majd válassza a **csoportok**lehetőséget.
-1. A képernyő felső részén válassza az **új csoport**lehetőséget.
-1. A **csoport tulajdonságainál**kövesse az alábbi lépéseket:
-   1. A **csoport típusa** mezőben válassza a **Biztonság**elemet.
+1. Lépjen **Azure Active Directory**, majd válassza a **csoportok** lehetőséget.
+1. A képernyő felső részén válassza az **új csoport** lehetőséget.
+1. A **csoport tulajdonságainál** kövesse az alábbi lépéseket:
+   1. A **csoport típusa** mezőben válassza a **Biztonság** elemet.
    1. A csoportnév mezőbe írja be a **LensesUsers** **nevet** .
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 1. Válassza ki a **LensesUsers** csoportot, és másolja az **objektumazonosítót** (például f8b5c1ec-45de-4abd-af5c-e874091fb5f7). Ezt az azonosítót lencsékben fogja használni a csoport felhasználóinak a [megfelelő engedélyekkel](https://docs.lenses.io/install_setup/configuration/security.html#id3)való leképezéséhez.  
 
 **A csoport társítása a teszt felhasználóhoz:**
 
-1. Lépjen **Azure Active Directory**, majd válassza a **felhasználók**lehetőséget.
+1. Lépjen **Azure Active Directory**, majd válassza a **felhasználók** lehetőséget.
 1. Válassza ki a teszt felhasználót: **B. Simon**.
-1. Válassza a **csoportok**lehetőséget.
-1. A képernyő felső részén válassza a **tagság hozzáadása**elemet.
+1. Válassza a **csoportok** lehetőséget.
+1. A képernyő felső részén válassza a **tagság hozzáadása** elemet.
 1. Keresse meg és válassza ki a **LensesUsers**.
-1. Válassza a **Kiválasztás** lehetőséget.
+1. Kattintson a **Kiválasztás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Lenses.io.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Lenses.IO**lehetőséget.
-1. Az alkalmazás – Áttekintés lap **kezelés** területén válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Lenses.IO** lehetőséget.
+1. Az alkalmazás – Áttekintés lap **kezelés** területén válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozást megjelenítő képernyőkép.](common/users-groups-blade.png)
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
    ![A felhasználó hozzáadása hivatkozást megjelenítő képernyőkép.](common/add-assign-user.png)
 
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.

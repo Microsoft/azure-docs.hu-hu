@@ -12,10 +12,10 @@ ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a3c2812a4ecfa1a80539804122042bc2dc2f3a2
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199186"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
@@ -321,7 +321,7 @@ public class AccountContractSlim
 
 A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 
-|Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
+|Állapotkód|Hibatípus (a válasz törzsében)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|

@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.openlocfilehash: ea153b1927a337be29c2eb69e2417cc250abf5e8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94366051"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Szabályozási problémák kezelése (429 – "túl sok kérés" hiba) a Azure Logic Apps
@@ -55,7 +55,7 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
 * Tiltsa le a tömb leválasztását ("felosztás bekapcsolva") az eseményindítók viselkedését.
 
-  Ha egy trigger egy tömböt ad vissza a feldolgozni kívánt hátralévő munkafolyamat-műveletekhez, a rendszer a tömb elemeinek [ **Split On** felosztását](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) és az egyes tömbökhöz tartozó munkafolyamat-példányok elindítását eredményezi, ami gyakorlatilag egyszerre több párhuzamos futtatást indít el a [ **Split On** korláton](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). A szabályozás szabályozása érdekében kapcsolja ki a **felosztott** viselkedést, és a logikai alkalmazás a teljes tömböt egyetlen hívással dolgozza fel, és ne csak egyetlen elem legyen kezelve.
+  Ha egy trigger egy tömböt ad vissza a feldolgozni kívánt hátralévő munkafolyamat-műveletekhez, a rendszer a tömb elemeinek [  felosztását](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) és az egyes tömbökhöz tartozó munkafolyamat-példányok elindítását eredményezi, ami gyakorlatilag egyszerre több párhuzamos futtatást indít el a [  korláton](../logic-apps/logic-apps-limits-and-config.md#concurrency-looping-and-debatching-limits). A szabályozás szabályozása érdekében kapcsolja ki a **felosztott** viselkedést, és a logikai alkalmazás a teljes tömböt egyetlen hívással dolgozza fel, és ne csak egyetlen elem legyen kezelve.
 
 * Újrabontási műveletek kisebb logikai alkalmazásokba.
 
@@ -168,6 +168,6 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
   
   Így ha a cél szolgáltatás vagy a rendszer támogatja a webhookokat, vagy egy olyan összekötőt biztosít, amely webhook-verziót tartalmaz, akkor ez a lehetőség jobb, mint a lekérdezési verzió használata. A webhook-eseményindítók és-műveletek azonosításához ellenőrizze, hogy rendelkeznek-e a `ApiConnectionWebhook` típussal, vagy hogy nem igénylik az ismétlődés megadását. További információ: [APIConnectionWebhook trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) és [APIConnectionWebhook művelet](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-action).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Logic apps korlátairól és konfigurációjáról](../logic-apps/logic-apps-limits-and-config.md)

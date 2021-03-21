@@ -8,13 +8,13 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/19/2020
 ms.openlocfilehash: 502c48a92f5b41c4434d03139335a0ce05fa451f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896973"
 ---
-# <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás egy webalkalmazáshoz egy Azure Private-végpont használatával
+# <a name="tutorial-connect-to-a-web-app-using-an-azure-private-endpoint"></a>Oktatóanyag: Csatlakozás webalkalmazáshoz egy Azure-beli privát végpont segítségével
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
@@ -57,7 +57,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | **Nyugat-Európa** kiválasztása |
+    | Region           | **Nyugat-Európa** kiválasztása |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -76,7 +76,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -86,12 +86,12 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP** . </br> Kattintson az **OK** gombra. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -109,7 +109,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -119,7 +119,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Jelszó | Adja meg a jelszót |
     | Jelszó megerősítése | Jelszó újbóli megadása |
 
-3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek** , majd a **Tovább: hálózatkezelés** lehetőséget.
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
   
 4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
@@ -150,13 +150,13 @@ Ebben a szakaszban egy webalkalmazást fog létrehozni.
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |  |
-    | Name | Adja meg a **mywebapp** . Ha a név nem érhető el, adjon meg egy egyedi nevet. |
+    | Name | Adja meg a **mywebapp**. Ha a név nem érhető el, adjon meg egy egyedi nevet. |
     | Közzététel | Válassza a **Kód** lehetőséget. |
     | Futtatókörnyezet verme | Válassza a **.net Core 3,1 (LTS)** elemet. |
     | Operációs rendszer | Válassza a **Windows** lehetőséget. |
-    | Régió | **Nyugat-Európa** kiválasztása |
+    | Region | **Nyugat-Európa** kiválasztása |
     | **App Service-csomag** |  |
-    | Windows-csomag (Nyugat-Európa) | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyServicePlan** **nevet** . |
+    | Windows-csomag (Nyugat-Európa) | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **MyServicePlan** **nevet**. |
     | Termékváltozat és méret | Válassza a **Méret módosítása** lehetőséget. </br> Válassza a **P2V2** lehetőséget a **spec Picker** képernyőn. </br> Kattintson az **Alkalmaz** gombra. |
    
 3. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
@@ -179,13 +179,13 @@ Ebben a szakaszban egy webalkalmazást fog létrehozni.
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **mywebappendpoint** . |
+    | Név | Adja meg a **mywebappendpoint**. |
     | Előfizetés | Válassza ki előfizetését. |
     | Virtuális hálózat | Válassza a **myVNet** lehetőséget. |
     | Alhálózat | Válassza a **mySubnet** lehetőséget. |
     | Integrálás saját DNS-zónával | Válassza az **Igen** lehetőséget. |
 
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
     
 
 ## <a name="test-connectivity-to-private-endpoint"></a>A magánhálózati végponthoz való kapcsolódás tesztelése
@@ -220,23 +220,23 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
     A rendszer a webalkalmazás neveként a **10.1.0.5** magánhálózati IP-címét adja vissza.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
-9. Nyisson meg egy webböngészőt a helyi számítógépen, és adja meg a webalkalmazás külső URL-címét, a **https:// \<webapp-name> . azurewebsites.net** .
+9. Nyisson meg egy webböngészőt a helyi számítógépen, és adja meg a webalkalmazás külső URL-címét, a **https:// \<webapp-name> . azurewebsites.net**.
 
 10. Győződjön meg arról, hogy a rendszer **403** lapot kap. Ez az oldal azt jelzi, hogy a webalkalmazás kívülről nem érhető el.
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="A webalkalmazás létrehozása Azure Portalban – alapismeretek lap." border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-ext-403.png" alt-text="403 oldal a külső webalkalmazások címeihez." border="true":::
 
-11. Nyissa meg az Internet Explorert a **myVM** -ben lévő megerősített kapcsolódásban.
+11. Nyissa meg az Internet Explorert a **myVM**-ben lévő megerősített kapcsolódásban.
 
-12. Adja meg a webalkalmazás ( **https:// \<webapp-name> . azurewebsites.net** ) URL-címét.
+12. Adja meg a webalkalmazás ( **https:// \<webapp-name> . azurewebsites.net**) URL-címét.
 
 13. Ellenőrizze, hogy a webalkalmazás alapértelmezett lapja jelenik-e meg.
 
-    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="A webalkalmazás létrehozása Azure Portalban – alapismeretek lap." border="true":::
+    :::image type="content" source="./media/tutorial-private-endpoint-webapp-portal/web-app-default-page.png" alt-text="Alapértelmezett webalkalmazás lap." border="true":::
 
 18. A **myVM** létesített kapcsolatok lezárása.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a virtuális hálózatot, a virtuális gépet és a webalkalmazást a következő lépésekkel:
 
@@ -246,7 +246,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a virtuális hálózato
 
 3. Válassza az **Erőforráscsoport törlése** elemet.
 
-4. Írja be a **myResourceGroup** **nevet az erőforráscsoport neve mezőbe** .
+4. Írja be a **myResourceGroup** **nevet az erőforráscsoport neve mezőbe**.
 
 5. Válassza a **Törlés** elemet.
 

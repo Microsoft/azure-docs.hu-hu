@@ -11,10 +11,10 @@ ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: 9ca6310705d54d563aae746ab2dbfe6cb412e6a9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92747793"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
@@ -57,7 +57,7 @@ A következő módokon lehet definiálni egy méretezési szabályzatot a virtu�
  
 Az alábbi lépések a méretezési szabályzatot határozzák meg új méretezési csoport létrehozásakor. 
  
-1. Nyissa meg a **virtuálisgép-méretezési csoportokat** .
+1. Nyissa meg a **virtuálisgép-méretezési csoportokat**.
 1. Válassza a **+ Hozzáadás** lehetőséget egy új méretezési csoport létrehozásához.
 1. Nyissa meg a **skálázás** lapot. 
 1. Keresse meg a **skálázási szabályzat** szakaszt.
@@ -96,7 +96,7 @@ New-AzVmss `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Az alábbi példa egy méretezési szabályzatot hoz létre egy új méretezési csoport létrehozásakor. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot *OldestVM* -ként. 
+Az alábbi példa egy méretezési szabályzatot hoz létre egy új méretezési csoport létrehozásakor. Először hozzon létre egy erőforráscsoportot, majd hozzon létre egy új méretezési csoportot *OldestVM*-ként. 
 
 ```azurecli-interactive
 az group create --name <myResourceGroup> --location <VMSSLocation>
@@ -211,12 +211,12 @@ Az alábbi példák azt mutatják be, hogy egy virtuálisgép-méretezési csopo
 | Esemény                 | Példány-azonosítók a (1-ben  | Példány-azonosítók a Zone2-ben  | Példány-azonosítók a Zone3-ben  | Méretezés – kijelölés                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Kezdeti               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Skálázás              | 3, 4, 5, 10            | **_2_* _, 6, 9, 11      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között, még akkor is, ha 3. zóna a legrégebbi virtuális géppel rendelkezik. Törölje a 2. zóna VM2, mert ez az adott zónában a legrégebbi virtuális gép.   |
-| Skálázás              | _*_3_*_ , 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Válassza 1. zóna még akkor is, ha 3. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a 1. zóna VM3, mert ez az adott zónában a legrégebbi virtuális gép.                  |
-| Skálázás              | 4, 5, 10               | 6, 9, 11               | _*_1_*_ , 7, 8          | A zónák egyensúlyban vannak. Törölje a VM1 3. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                               |
-| Skálázás              | _*_4_*_ , 5, 10         | 6, 9, 11               | 7, 8                   | 1. zóna és 2. zóna közül választhat. Törölje a VM4 1. zóna, mivel ez a legrégebbi virtuális gép a két zónában.                              |
-| Skálázás              | 5, 10                  | _*_6_*_ , 9, 11         | 7, 8                   | Válassza 2. zóna még akkor is, ha 1. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a VM6 1. zóna, mert ez a zóna legrégebbi virtuális gépe.                    |
-| Skálázás              | _*_5_*_ , 10            | 9, 11                  | 7, 8                   | A zónák egyensúlyban vannak. Törölje a VM5 1. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                                |
+| Skálázás              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között, még akkor is, ha 3. zóna a legrégebbi virtuális géppel rendelkezik. Törölje a 2. zóna VM2, mert ez az adott zónában a legrégebbi virtuális gép.   |
+| Skálázás              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Válassza 1. zóna még akkor is, ha 3. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a 1. zóna VM3, mert ez az adott zónában a legrégebbi virtuális gép.                  |
+| Skálázás              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | A zónák egyensúlyban vannak. Törölje a VM1 3. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                               |
+| Skálázás              | ***4***, 5, 10         | 6, 9, 11               | 7, 8                   | 1. zóna és 2. zóna közül választhat. Törölje a VM4 1. zóna, mivel ez a legrégebbi virtuális gép a két zónában.                              |
+| Skálázás              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | Válassza 2. zóna még akkor is, ha 1. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a VM6 1. zóna, mert ez a zóna legrégebbi virtuális gépe.                    |
+| Skálázás              | ***5***, 10            | 9, 11                  | 7, 8                   | A zónák egyensúlyban vannak. Törölje a VM5 1. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                                |
 
 A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a szabályzat a legrégebben használt virtuális gépet választja a törléshez. A rendszer kihagyja a "védett" virtuális gépet törlésre.
 
@@ -225,12 +225,12 @@ A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a sza
 | Esemény                 | Példány-azonosítók a (1-ben  | Példány-azonosítók a Zone2-ben  | Példány-azonosítók a Zone3-ben  | Méretezés – kijelölés                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
 | Kezdeti               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
-| Skálázás              | 3, 4, 5, 10            | 2, 6, 9, _*_11_*_      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között. Törölje a VM11 2. zóna, mert ez a legújabb virtuális gép a két zónán belül.                                |
-| Skálázás              | 3, 4, 5, _*_10_*_      | 2, 6, 9                | 1, 7, 8                | Válassza a 1. zóna lehetőséget, mert több virtuális gépet tartalmaz, mint a többi két zónában. Törölje a VM10 a 1. zónaről, mert az adott zónában a legújabb virtuális gép.          |
-| Skálázás              | 3, 4, 5                | 2, 6, _*_9_*_          | 1, 7, 8                | A zónák egyensúlyban vannak. 2. zóna VM9 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
-| Skálázás              | 3, 4, 5                | 2, 6                   | 1, 7, _*_8_*_          | 1. zóna és 3. zóna közül választhat. Törölje a VM8 3. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                                      |
-| Skálázás              | 3, 4, _*_5_*_          | 2, 6                   | 1, 7                   | Válassza 1. zóna annak ellenére, hogy 3. zóna rendelkezik a legújabb virtuális géppel. Törölje a VM5 1. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                    |
-| Skálázás              | 3, 4                   | 2, 6                   | 1, _ *_7_**             | A zónák egyensúlyban vannak. 3. zóna VM7 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
+| Skálázás              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között. Törölje a VM11 2. zóna, mert ez a legújabb virtuális gép a két zónán belül.                                |
+| Skálázás              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Válassza a 1. zóna lehetőséget, mert több virtuális gépet tartalmaz, mint a többi két zónában. Törölje a VM10 a 1. zónaről, mert az adott zónában a legújabb virtuális gép.          |
+| Skálázás              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | A zónák egyensúlyban vannak. 2. zóna VM9 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
+| Skálázás              | 3, 4, 5                | 2, 6                   | 1, 7, ***8***          | 1. zóna és 3. zóna közül választhat. Törölje a VM8 3. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                                      |
+| Skálázás              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Válassza 1. zóna annak ellenére, hogy 3. zóna rendelkezik a legújabb virtuális géppel. Törölje a VM5 1. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                    |
+| Skálázás              | 3, 4                   | 2, 6                   | 1, ***7***             | A zónák egyensúlyban vannak. 3. zóna VM7 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
 
 A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a szabályzat a legújabb virtuális gépet választja a törléshez a méretezési csoporton belül. A rendszer kihagyja a "védett" virtuális gépet törlésre. 
 

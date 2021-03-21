@@ -7,10 +7,10 @@ ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001864"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric állapotjelentés hozzáadása
@@ -293,7 +293,7 @@ HealthEvents          :
 ### <a name="rest"></a>REST
 Állapotjelentés küldése a REST használatával a kívánt entitáshoz tartozó POST-kérésekkel, és az állapotjelentés leírását a törzsben kell megtenni. Tekintse meg például a REST- [fürt állapotáról szóló jelentések](/rest/api/servicefabric/report-the-health-of-a-cluster) vagy a [szolgáltatás állapotáról](/rest/api/servicefabric/report-the-health-of-a-service)szóló jelentések küldését ismertető témakört. Minden entitás támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az állapotadatok alapján a Service Writers és a cluster/Application Administrators az információk felhasználásának módját is meggondolhatja. Például riasztásokat állíthatnak be az állapot alapján, hogy súlyos problémákba tudják fogni az kimaradások kiesése előtt. A rendszergazdák a javítási rendszerek beállításával automatikusan is kijavíthatják a problémákat.
 
 [Az Service Fabric Health monitoring bemutatása](service-fabric-health-introduction.md)

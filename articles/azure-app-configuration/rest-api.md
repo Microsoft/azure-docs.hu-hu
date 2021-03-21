@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 27befc2417444c62493548acbcdacd9f7db28a65
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96931996"
 ---
 # <a name="azure-app-configuration-rest-api"></a>Azure-alkalmazás konfigurációs REST API
@@ -19,7 +19,7 @@ Az Azure-alkalmazások konfigurációjának REST API magas szintű dokumentáci�
 
 Az Azure app Configuration API felületének részletes leírását az alábbi lapokon tekintheti meg.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Erőforrások
 
 - [Kulcsok](./rest-api-keys.md)
 - [Kulcs-értékek](./rest-api-key-value.md)

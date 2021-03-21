@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92893420"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>Metrikai tanácsadó Szószedet a gyakori szószedetekről és fogalmakról
@@ -31,7 +31,7 @@ Az adatcsatorna az a mérőszám, amely az adatforrásból (például Cosmos DB 
 * nulla vagy több dimenzió
 * egy vagy több mértéket. 
 
-## <a name="metric"></a>Metrika
+## <a name="metric"></a>Metric
 
 A metrika egy számszerűsíthető mérték, amely egy adott üzleti folyamat állapotának figyelésére és értékelésére szolgál. Több idősorozat-érték kombinációját is kioszthatja dimenzióra. A *webes állapot* mérőszáma például a *felhasználók számának* és az *en-us piacnak* a dimenzióit is tartalmazhatja.
 
@@ -47,7 +47,7 @@ Mi az a többdimenziós metrika? Két példát használhat.
 
 Tegyük fel, hogy rendelkezik a vállalata bevételeinek adataival. Az idősorozat-adatai a következőhöz hasonló módon jelenhetnek meg:
 
-| Timestamp | Kategória | Piaci | Bevétel |
+| Időbélyeg | Kategória | Piaci | Bevétel |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Élelmiszer | USA | 1000 |
 | 2020-6-1 | Ruházat | USA | 2000 |
@@ -60,7 +60,7 @@ Ebben a példában a *Kategória* és a *piac* dimenzió. A *bevétel* a fő TEL
 
 Tegyük fel, hogy rendelkezik az alkalmazásban naplózott hibák számával. Az idősorozat-adatai a következőhöz hasonló módon jelenhetnek meg:
 
-| Timestamp | Alkalmazás-összetevő | Régió | Hibák száma |
+| Időbélyeg | Alkalmazás-összetevő | Region | Hibák száma |
 | ----------|----------|--------|----- |
 | 2020-6-1 | Alkalmazotti adatbázis | NYUGAT-EU | 9000 |
 | 2020-6-1 | Üzenetsor | USA KELETI RÉGIÓJA | 1000 |
@@ -139,29 +139,29 @@ A metrikai tanácsadó több [észlelési módszert](how-tos/configure-metrics.m
 
 Rendellenességek észlelése több gépi tanulási algoritmus használatával.
 
-**Érzékenység** : numerikus érték, amely az anomália észlelésének tűréshatárát módosítja. Vizuálisan, minél nagyobb az érték, annál keskenyebb az idősorozatok körüli alsó és felső határ.
+**Érzékenység**: numerikus érték, amely az anomália észlelésének tűréshatárát módosítja. Vizuálisan, minél nagyobb az érték, annál keskenyebb az idősorozatok körüli alsó és felső határ.
 
 ### <a name="hard-threshold"></a>Rögzített küszöbérték
 
 Az alsó és felső határértékeken kívüli értékek anomáliák.
 
-**Min** : az alsó határ
+**Min**: az alsó határ
 
-**Max** : a felső határ
+**Max**: a felső határ
 
 ### <a name="change-threshold"></a>Küszöbérték módosítása
 
 Az előző pont értékének használatával állapítsa meg, hogy ez a pont anomáli-e.
 
-**Változási arány** : az előző ponthoz képest az aktuális pont egy anomália, ha a változás százalékaránya meghaladja ezt a paramétert.
+**Változási arány**: az előző ponthoz képest az aktuális pont egy anomália, ha a változás százalékaránya meghaladja ezt a paramétert.
 
 **Váltás a pontok** között: hány pontot kell visszakeresni.
 
 ### <a name="common-parameters"></a>Gyakori paraméterek
 
-**Irány** : a pont csak akkor anomália, ha az eltérés a *felfelé* , *lefelé* vagy *mindkettő* irányban történik.
+**Irány**: a pont csak akkor anomália, ha az eltérés a *felfelé*, *lefelé* vagy *mindkettő* irányban történik.
 
-**Nem érvényes anomália, amíg** : egy adatpont csak anomália, ha az előző pontok megadott százaléka is anomália.
+**Nem érvényes anomália, amíg**: egy adatpont csak anomália, ha az előző pontok megadott százaléka is anomália.
 
 ## <a name="alert-settings"></a>Riasztási beállítások
 
@@ -173,17 +173,17 @@ Riasztást is létrehozhat a metrikák között. Például egy riasztás, amely 
 
 A riasztás hatóköre arra a hatókörre vonatkozik, amelyre a riasztás vonatkozik. Négy lehetőség áll rendelkezésre:
 
-Az **összes sorozat rendellenességei** : a rendszer a metrikán belüli összes sorozatban rendellenességeket indít el.
+Az **összes sorozat rendellenességei**: a rendszer a metrikán belüli összes sorozatban rendellenességeket indít el.
 
-**Adatsorozat-csoportba tartozó rendellenességek** : a riasztások csak az adatsorozat-csoport adott méreteiben észlelt rendellenességek esetén lesznek aktiválva. A megadott méretek számának kisebbnek kell lennie az összesített szám dimenziónál.
+**Adatsorozat-csoportba tartozó rendellenességek**: a riasztások csak az adatsorozat-csoport adott méreteiben észlelt rendellenességek esetén lesznek aktiválva. A megadott méretek számának kisebbnek kell lennie az összesített szám dimenziónál.
 
-**Rendellenességek a kedvenc sorozatban** : a riasztások csak a kedvencekként hozzáadott rendellenességek esetén lesznek aktiválva. Az egyes észlelési konfigurációkhoz kedvencként is kiválaszthatja az adatsorozatok egy csoportját.
+**Rendellenességek a kedvenc sorozatban**: a riasztások csak a kedvencekként hozzáadott rendellenességek esetén lesznek aktiválva. Az egyes észlelési konfigurációkhoz kedvencként is kiválaszthatja az adatsorozatok egy csoportját.
 
-Az **összes sorozat legfontosabb n-ban észlelt rendellenességek** : a riasztások csak a legfontosabb n sorozatbeli rendellenességek esetén aktiválódnak. A paraméterek beállításával megadhatja, hogy hány időbélyeget szeretne figyelembe venni, és hogy hány rendellenességnek kell szerepelnie a riasztás elküldéséhez.
+Az **összes sorozat legfontosabb n-ban észlelt rendellenességek**: a riasztások csak a legfontosabb n sorozatbeli rendellenességek esetén aktiválódnak. A paraméterek beállításával megadhatja, hogy hány időbélyeget szeretne figyelembe venni, és hogy hány rendellenességnek kell szerepelnie a riasztás elküldéséhez.
 
 ### <a name="severity"></a>Súlyosság
 
-A súlyossági szint szerint a metrikák tanácsadója az incidens súlyosságának leírására használja, beleértve a *magas* , *közepes* és *alacsony* értéket.
+A súlyossági szint szerint a metrikák tanácsadója az incidens súlyosságának leírására használja, beleértve a *magas*, *közepes* és *alacsony* értéket.
 
 A metrikai tanácsadó jelenleg a következő tényezőket használja a riasztás súlyosságának méréséhez:
 1. A mérőszámban található anomáliák értékének és mennyiségének aránya.
@@ -200,7 +200,7 @@ A késleltetési mód a metrika szintjén vagy a sorozat szintjén állítható 
 
 ### <a name="ingestion-time-offset"></a>Betöltési idő eltolása
 
-Alapértelmezés szerint az adatokat a részletesség (például *naponta* ) alapján tölti be a rendszer. Pozitív egész szám használatával késleltetheti az adatbevitelt a megadott értékkel. Negatív szám használatával előre elvégezheti a betöltést a megadott értékkel.
+Alapértelmezés szerint az adatokat a részletesség (például *naponta*) alapján tölti be a rendszer. Pozitív egész szám használatával késleltetheti az adatbevitelt a megadott értékkel. Negatív szám használatával előre elvégezheti a betöltést a megadott értékkel.
 
 ### <a name="max-ingestion-per-minute"></a>Maximális betöltés percenként
 
@@ -223,7 +223,7 @@ Megadhatja azt a minimális időtartamot, amikor az adatok a forrásból való l
 | :------------ | :--------------- |
 | Napi, egyéni (>= 1 nap), hetente, havonta     | 30 perc          |
 | Óránként, egyéni (< 1 nap)      | 10 perc |
-| Évi | 1 nap          |
+| Éves | 1 nap          |
 
 ### <a name="grace-period"></a>Türelmi időszak
 
@@ -238,7 +238,7 @@ Ha ez a beállítás nulla értékűre van állítva, akkor a *nem elérhető* i
 
 ## <a name="data-feed-permissions"></a>Adatcsatorna engedélyei
 
-Az adatcsatorna-engedélyek kezelésének két szerepköre van: a *rendszergazda* és a *megjelenítő* . 
+Az adatcsatorna-engedélyek kezelésének két szerepköre van: a *rendszergazda* és a *megjelenítő*. 
 
 * A *rendszergazda* teljes mértékben felügyeli az adatcsatornákat és a metrikákat. Aktiválhatja, szüneteltetheti, törölheti az adatcsatornát, és frissítéseket készíthet a hírcsatornák és konfigurációk számára. A *rendszergazdák* általában a metrikák tulajdonosai.
 

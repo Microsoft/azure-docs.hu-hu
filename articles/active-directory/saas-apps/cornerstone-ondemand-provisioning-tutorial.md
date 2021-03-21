@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 59c599167089d222324ed880c18e68d763f5e468
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358456"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés sarokköve OnDemand konfigurálása
@@ -76,7 +76,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az automatikus felhasználói üzembe helyezést a sarokkövei OnDemand.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **sarokköve OnDemand** elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **sarokköve OnDemand** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -108,7 +108,7 @@ Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az auto
 
     ![A sarokköve OnDemand értesítő e-mail-címe](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a sarokköve OnDemand** lehetőséget.
 
@@ -148,7 +148,7 @@ A sarokköve OnDemand **position** attribútum olyan értéket vár, amely megfe
 
 ![A OnDemand-létesítési pozíciók sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
