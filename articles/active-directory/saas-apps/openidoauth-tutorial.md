@@ -13,10 +13,10 @@ ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
 ms.openlocfilehash: 32f79f24df6fe705146b39750c710450ef8f1f7b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735937"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
@@ -158,6 +158,6 @@ A *prompt = admin_consent* paramétert olyan alkalmazások is felhasználhatják
 
 Képzelje el, hogy egy alkalmazásnak rendszergazdai jóváhagyásra van szüksége, és egy rendszergazda bejelentkezik a *prompt = admin_consent* paraméter küldése nélkül. Ha a rendszergazda sikeresen beleegyezett az alkalmazásba, csak a felhasználói fiókjára vonatkozik. A normál felhasználók továbbra sem tudnak bejelentkezni vagy beleegyezni az alkalmazásba. Ez a funkció akkor hasznos, ha azt szeretné, hogy a bérlői rendszergazda meg tudja vizsgálni az alkalmazást, mielőtt engedélyezné más felhasználók hozzáférését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](../manage-apps/add-application-portal-setup-oidc-sso.md)

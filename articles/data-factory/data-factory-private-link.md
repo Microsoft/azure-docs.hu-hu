@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
 ms.openlocfilehash: 9e4d686f582a202dbc543620c7bf73dc4e7adb22
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389178"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Private Link az Azure Data Factoryhez
@@ -21,15 +21,15 @@ ms.locfileid: "100389178"
 Az Azure Private link használatával az Azure-ban egy privát végponton keresztül kapcsolódhat különböző platformokhoz (az Azure-ban) üzemelő példányokhoz. A privát végpont egy magánhálózati IP-cím egy adott virtuális hálózaton és alhálózaton belül. A privát kapcsolati funkciót támogató, a következő helyen található, a Private link [dokumentációját](../private-link/index.yml)tartalmazó, 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Biztonságos kommunikáció az ügyfél-hálózatok és a Azure Data Factory között 
-Beállíthat egy Azure-beli virtuális hálózatot a hálózat logikai ábrázolásához a felhőben. Ez a következő előnyöket nyújtja:
-* Segít az Azure-erőforrások védelmében a nyilvános hálózatokban lévő támadások elleni védelemben.
-* Hagyja, hogy a hálózatok és Data Factory biztonságosan kommunikáljanak egymással. 
+Beállíthat egy Azure-beli virtuális hálózatot hálózatának felhőbeli logikai megfelelőjeként. Ez a következő előnyökkel jár:
+* Azure-erőforrásai védettek lehetnek a nyilvános hálózatokon elkövetett támadásokkal szemben.
+* A hálózatok biztonságosan kommunikálhatnak a Data Factoryvel. 
 
-Helyszíni hálózatot is csatlakoztathat a virtuális hálózathoz egy Internet Protocol biztonsági (IPsec) VPN (helyek közötti) kapcsolat vagy egy Azure ExpressRoute (privát társ) kapcsolat beállításával. 
+Emellett helyszíni hálózatot csatlakoztathat a virtuális hálózathoz egy IPsec-védelemmel ellátott VPN-kapcsolat (helyek közötti kapcsolat) vagy egy Azure ExpressRoute-kapcsolat (privát társhálózat létesítése) beállításával. 
 
-Telepítheti a saját üzemeltetésű integrációs modult egy helyszíni gépre vagy a virtuális hálózatban lévő virtuális gépre is. Ezzel a következőket teheti:
-* Futtasson másolási tevékenységeket egy felhőalapú adattár és egy magánhálózaton lévő adattár között.
-* Egy helyszíni hálózaton vagy egy Azure-beli virtuális hálózaton végezheti el a tevékenységek átformálását a számítási erőforrásokkal szemben. 
+Telepítheti a saját üzemeltetésű integrációs modult egy helyszíni gépre vagy a virtuális hálózatban lévő virtuális gépre is. Ez az alábbiakat teszi lehetővé:
+* Másolási tevékenységeket végezhet a felhőalapú adattárak és a magánhálózaton található adattárak között.
+* Átalakítási tevékenységeket küldhet a helyszíni vagy Azure-beli virtuális hálózaton lévő számítási erőforrásokra vonatkozóan. 
 
 A Azure Data Factory és az ügyfél virtuális hálózata között számos kommunikációs csatorna szükséges, ahogy az a következő táblázatban látható:
 

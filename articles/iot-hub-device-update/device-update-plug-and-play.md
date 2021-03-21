@@ -7,10 +7,10 @@ ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101663401"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub-és IoT tartozó eszköz frissítése Plug and Play
@@ -35,7 +35,7 @@ Az ügynök metaadatai olyan mezőket tartalmaznak, amelyekkel az eszköz vagy a
 |installedUpdateId|sztring|eszközről a felhőbe|A jelenleg telepített frissítés azonosítója (az eszköz frissítése révén). Ez az érték null értékű lesz egy olyan eszköz esetében, amely még nem készített frissítést az eszköz frissítésén keresztül.|Null|
 |`deviceProperties`|Térkép|eszközről a felhőbe|A gyártót és a modellt tartalmazó tulajdonságok halmaza.|Részletekért lásd alább
 
-#### <a name="state"></a>Állam
+#### <a name="state"></a>Állapot
 
 Ez az eszköz frissítési ügynöke által jelentett állapot, miután az eszköz frissítési szolgáltatásában műveletet kapott. `State` az az eszköz frissítési `Action` ügynökének küldött, a következőre adott válaszként (lásd `Actions` alább). Tekintse meg az eszköz frissítési szolgáltatása és az eszköz frissítési ügynöke között zajló kérelmek [áttekintő munkafolyamatát](understand-device-update.md#device-update-agent) .
 
@@ -50,7 +50,7 @@ Ez az eszköz frissítési ügynöke által jelentett állapot, miután az eszk�
 
 Ez a gyártót és a modellt tartalmazó tulajdonságok halmaza.
 
-|Name|Séma|Irány|Leírás|
+|Name|Séma|Irány|Description|
 |----|------|---------|-----------|
 |gyártó|sztring|eszközről a felhőbe|A által jelentett eszköz gyártója `deviceProperties` . Ezt a tulajdonságot két hely közül kell olvasni – a "AzureDeviceUpdateCore" felület először megpróbálja beolvasni a "aduc_manufacturer" értéket a [konfigurációs fájlból](device-update-configuration-file.md) .  Ha az érték nincs kitöltve a konfigurációs fájlban, akkor alapértelmezés szerint a ADUC_DEVICEPROPERTIES_MANUFACTURER fordítási idejű definícióját fogja jelenteni. Ezt a tulajdonságot a rendszer csak a rendszerindítás során fogja jelenteni.|
 |modell|sztring|eszközről a felhőbe|Az eszközön a által jelentett eszköz modellje `deviceProperties` . Ezt a tulajdonságot két hely közül kell olvasni – a AzureDeviceUpdateCore felület először megpróbálja beolvasni a "aduc_model" értéket a [konfigurációs fájlból](device-update-configuration-file.md) .  Ha az érték nincs kitöltve a konfigurációs fájlban, akkor alapértelmezés szerint a ADUC_DEVICEPROPERTIES_MODEL fordítási idejű definícióját fogja jelenteni. Ezt a tulajdonságot a rendszer csak a rendszerindítás során fogja jelenteni.|
@@ -61,7 +61,7 @@ Ez a gyártót és a modellt tartalmazó tulajdonságok halmaza.
 
 A szolgáltatás metaadatai olyan mezőket tartalmaznak, amelyeket az eszköz frissítési szolgáltatásai a műveletek és az adatok az eszköz frissítési ügynökével való kommunikációra használnak.
 
-|Name|Séma|Irány|Leírás|
+|Name|Séma|Irány|Description|
 |----|------|---------|-----------|
 |művelet|egész szám|felhőből eszközre|Ez egy egész szám, amely megfelel egy olyan műveletnek, amelyet az ügynöknek végre kell hajtania. Alább felsorolt értékek.|
 |updateManifest|sztring|felhőből eszközre|Egy frissítés tartalmának leírására szolgál. Az [importálási jegyzékből](import-update.md#create-device-update-import-manifest) létrehozva|

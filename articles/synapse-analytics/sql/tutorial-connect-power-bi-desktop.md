@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8dd3edd25d21bfcd0fde1bc8b5f103877d968c8a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98119985"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: kiszolgáló nélküli SQL-készlet használata a Power BI Desktop & jelentés létrehozása
@@ -100,7 +100,7 @@ A bemutatóban szereplő adat a következő adatkészleteket tartalmazza:
 
 Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es Decennial-népszámlálás a parketta formátumában.
 
-| Mappa elérési útja                                                  | Leírás                                                  |
+| Mappa elérési útja                                                  | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release parancsot                                                    | A demo Storage-fiókban lévő adatszülő mappa               |
 | /Release/us_population_county/                               | Az USA-beli populációs adatfájlok parkettás formátumban, évről évre particionálva a kaptár/Hadoop particionálási sémával. |

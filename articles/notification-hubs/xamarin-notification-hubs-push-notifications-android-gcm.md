@@ -18,10 +18,10 @@ ms.author: matthewp
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
 ms.openlocfilehash: e7d4206de1e097c30e9f5e96bbd935e94892ce0e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98221034"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése a Xamarin. Android-alkalmazásoknak Notification Hubs használatával
@@ -91,7 +91,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     1. Válassza az **Igen** lehetőséget az üzenetablakban a cél keretrendszer módosításának folytatásához.
 1. Adja hozzá a szükséges NuGet-csomagokat a projekthez a következő lépések végrehajtásával:
     1. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget.
-    1. Váltson a **telepített** lapra, válassza a **Xamarin. Android. support. design** lehetőséget, majd a jobb oldali ablaktáblán kattintson a **frissítés** elemre a csomag legújabb verzióra való frissítéséhez.
+    1. Váltson a **telepített** lapra, válassza a **Xamarin.Android.support.design** lehetőséget, majd a jobb oldali ablaktáblán kattintson a **frissítés** elemre a csomag legújabb verzióra való frissítéséhez.
     1. Váltson a **Tallózás** lapra. Keresse meg a **Xamarin. GooglePlayServices. Base** kifejezést. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
 
         ![Google Play-szolgáltatások NuGet-csomagjai](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)

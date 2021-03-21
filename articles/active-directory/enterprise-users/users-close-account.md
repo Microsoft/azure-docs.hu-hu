@@ -14,10 +14,10 @@ ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 252c993f5679d80cda97a6fade08f5f92489840d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96575584"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szervezetben
@@ -53,7 +53,7 @@ Nem felügyelt munkahelyi vagy iskolai fiók bezárásához kövesse az alábbi 
 
     ![Adatkérések – Bezárás megerősítése](./media/users-close-account/confirm-close.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 - [A felhasználó törlése nem felügyelt bérlőből](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)

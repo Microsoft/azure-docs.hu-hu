@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 12/11/2020
 ms.author: kumud
 ms.openlocfilehash: cb3a4b6a726ee9163582b15586c65fc750712c63
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97368293"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Oktatóanyag: PaaS-erőforrásokhoz való hálózati hozzáférés korlátozása virtuális hálózati szolgáltatásvégpontokkal az Azure Portal használatával
@@ -37,7 +37,7 @@ Virtuális hálózati szolgáltatásvégpontokkal egy adott virtuális hálózat
 
 Igény szerint az oktatóanyagot az [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) vagy az [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md) használatával is elvégezheti.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -54,7 +54,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
    |Előfizetés| Az előfizetés kiválasztása|
    |Erőforráscsoport | Válassza az **Új létrehozása** elemet, és adja meg a *myResourceGroup* nevet.|
    |Name| *MyVirtualNetwork* megadása |
-   |Régió| Válassza ki az USA **keleti** régióját |
+   |Region| Válassza ki az USA **keleti** régióját |
 
    ![Írja be a virtuális hálózat alapvető adatait](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
@@ -210,9 +210,9 @@ Az Azure-szolgáltatásokon keresztül létrehozott erőforrásokhoz való hál�
     |Név| saját fájl – megosztás|
     |Kvóta| "Maximális érték" |
 
-   ![Tárfiók](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+   ![A(z)](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
 
-3. Kattintson a **Létrehozás** gombra.
+3. Kattintson a **Létrehozás** lehetőségre.
 4. A fájlmegosztást az Azure-ablakban kell megjeleníteni, ha nem kattint a **frissítés** gombra.
 
 ### <a name="restrict-network-access-to-a-subnet"></a>Alhálózathoz való hálózati hozzáférés korlátozása
@@ -254,10 +254,10 @@ Tárfiókhoz való hálózati hozzáférés teszteléséhez helyezzen üzembe eg
    |Előfizetés| Az előfizetés kiválasztása|
    |Erőforráscsoport| Válassza a * * myResourceGroup, amely korábban lett létrehozva.|
    |Virtuális gép neve| *MyVmPublic* megadása|
-   |Régió | (US) Az USA keleti régiója
+   |Region | (US) Az USA keleti régiója
    |Rendelkezésre állási beállítások| A rendelkezésre állási zóna|
    |A rendelkezésre állási zóna | 1 |
-   |Rendszerkép | Windows Server 2019 Datacenter – Gen1 |
+   |Kép | Windows Server 2019 Datacenter – Gen1 |
    |Méret | Válassza ki a használni kívánt virtuálisgép-példány méretét |
    |Felhasználónév|Adjon meg egy tetszőleges felhasználónevet.|
    |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|

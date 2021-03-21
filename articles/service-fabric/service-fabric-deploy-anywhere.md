@@ -4,10 +4,10 @@ description: Service Fabric-fürtöket a Windows Servert vagy Linuxot futtató v
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576128"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Az Azure és az önálló Service Fabric-fürtök összehasonlítása Windows Serveren és Linuxon
@@ -36,7 +36,7 @@ Az Azure-ban integrációt biztosítunk más Azure-funkciókkal és-szolgáltat�
 * A széles körű ügyfél-elérhetőséget az üzemeltetési környezet megkötései kötik.
 * Egy további megbízhatósági réteg és a széleskörű leállások elleni védelem is létezik, mivel a szolgáltatásokat áthelyezheti egy másik központi telepítési környezetbe, ha egy adatközpont vagy egy felhőalapú szolgáltató áramszünet miatt megtalálhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [Azure](service-fabric-azure-clusters-overview.md) -beli Service Fabric-fürtök áttekintését
 * Tekintse át [Service Fabric önálló fürtök](service-fabric-standalone-clusters-overview.md) áttekintését

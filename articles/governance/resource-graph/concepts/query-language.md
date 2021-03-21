@@ -4,10 +4,10 @@ description: Az Azure Resource Graph-ban használható Resource Graph-táblákat
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: f6cb13814fe725ff0253a0a5bf0098f0080fa407
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102633801"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
@@ -26,9 +26,9 @@ Ez a cikk az erőforrás-gráf által támogatott nyelvi összetevőket ismertet
 
 Az erőforrás-diagram több táblázatot is biztosít a Azure Resource Manager erőforrástípusok és tulajdonságaik által tárolt adattároláshoz. Egyes táblák a (z) és a (z `join` `union` ) operátorral használhatók a kapcsolódó erőforrástípusok tulajdonságainak lekéréséhez. Itt látható az erőforrás-gráfban elérhető táblák listája:
 
-|Resource Graph-táblázat |`join`Más táblák is lehetnek? |Leírás |
+|Resource Graph-táblázat |`join`Más táblák is lehetnek? |Description |
 |---|---|---|
-|További források |Yes |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
+|Erőforrások |Yes |Az alapértelmezett tábla, ha nincs megadva a lekérdezésben. A legtöbb Resource Manager-erőforrás típusa és tulajdonsága itt található. |
 |ResourceContainers |Yes |A tartalmazza az előfizetést (előzetes verzióban `Microsoft.Resources/subscriptions` ) és az erőforráscsoport ( `Microsoft.Resources/subscriptions/resourcegroups` ) típusú erőforrásokat és az adattípusokat. |
 |AdvisorResources |Igen (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.Advisor` . |
 |AlertsManagementResources |Igen (előzetes verzió) |A következőhöz _kapcsolódó_ erőforrásokat tartalmazza: `Microsoft.AlertsManagement` . |

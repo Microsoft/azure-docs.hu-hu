@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96519042"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
@@ -51,12 +51,12 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
     ```
 
-* A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
+* A kulcsnak az alábbi attribútumokkal kell rendelkeznie felhasználó által felügyelt kulcsként:
   * Nincs lejárati dátum
   * Nincs letiltva
   * **Get**, **wrap**, **dewrap** műveletek végrehajtása
   * a recoverylevel attribútum **helyreállítható** értékre van állítva (ehhez a 90 napig beállított megőrzési időtartammal rendelkező Soft delete engedélyezése szükséges)
-  * Védelem kiürítése engedélyezve
+  * Végleges törlés elleni védelem engedélyezése
 
 A következő parancs használatával ellenőrizheti a kulcs fenti attribútumait:
 
@@ -278,6 +278,6 @@ Emellett Azure Resource Manager-sablonokkal is engedélyezheti az adattitkosít�
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Az adattitkosítással kapcsolatos további tudnivalókért tekintse meg az [adattitkosítás Azure Database for MySQL az ügyfél által felügyelt kulccsal](concepts-data-encryption-mysql.md)című témakört.

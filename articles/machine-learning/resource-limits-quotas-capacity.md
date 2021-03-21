@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
 ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97930803"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Szolgáltatási korlátozások a Azure Machine Learning
@@ -33,7 +33,7 @@ Ez a szakasz az alapszintű kvótákat és a szabályozás küszöbértékeit so
 | RunId/ParentRunId | 256 karakter |
 | DataContainerId | 261 karakter |
 | DisplayName |256 karakter|
-| Leírás |5 000 karakter|
+| Description |5 000 karakter|
 | Tulajdonságok száma |50 |
 | Tulajdonság-kulcs hossza |100 karakter |
 | Tulajdonság értékének hossza |1 000 karakter |
@@ -70,7 +70,7 @@ Ez a szakasz az alapszintű kvótákat és a szabályozás küszöbértékeit so
 ## <a name="limit-increases"></a>Korlátok számának növelése
 Bizonyos korlátok megnövelhető az egyes munkaterületek esetében, ha [kapcsolatba lép a támogatási szolgálattal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Machine Learning környezet konfigurálása](how-to-configure-environment.md)
 - Ismerje meg, hogyan növelheti az erőforrás-kvótákat a ["erőforrások kvótáinak kezelése és növelése" című](how-to-manage-quotas.md)témakörben.

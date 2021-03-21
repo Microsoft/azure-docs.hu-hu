@@ -11,17 +11,17 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: duau
 ms.openlocfilehash: bac1df020bf2a683fc04a4d05ae73311e149f70c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511773"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Azure Resource Managerbeli üzembe helyezési modellek sablonjai a Front Doorhoz
 
 Az alábbi táblázat az Azure-beli előtérben elérhető üzembe helyezési modellre mutató hivatkozásokat tartalmaz Azure Resource Manager. 
 
-| Sablon | Leírás |
+| Sablon | Description |
 | ---| ---|
 | [Alapszintű Frontdoor létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| Egy alapszintű, egyetlen háttéralkalmazással rendelkező Frontdoor-konfigurációt hoz létre. |
 | [Több háttéralkalmazással és háttérkészlettel, valamint URL-alapú útválasztással rendelkező Frontdoor létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| Egy több háttéralkalmazással és URL-útvonal alapú háttérkészletekkel rendelkező terheléselosztót tartalmazó Frontdoort hoz létre. |
@@ -36,7 +36,7 @@ Az alábbi táblázat az Azure-beli előtérben elérhető üzembe helyezési mo
 | [A bejárati ajtó sebességének korlátozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-rate-limiting)| Úgy konfigurál egy Frontdoort, hogy az korlátozza egy adott előtérbeli gazdagép bejövő forgalmának sebességét. |
 | | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

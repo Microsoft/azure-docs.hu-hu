@@ -12,16 +12,16 @@ ms.author: moslake
 ms.reviewer: sstein
 ms.date: 2/22/2021
 ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101658588"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-A kiszolgáló nélküli a Azure SQL Database önálló adatbázisaihoz tartozó számítási szint, amely automatikusan méretezi a számítási feladatok igényét és számláit a másodpercenként felhasznált számítási mennyiség alapján. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+A kiszolgáló nélküli szint az Azure SQL Database-ben az önálló adatbázisok számítási szintje, amely automatikusan skálázza a számításokat a számítási feladatok igényei alapján, és a másodpercenként felhasznált számítási mennyiségek szerint számláz. A kiszolgáló nélküli számítási szint emellett automatikusan szünetelteti az adatbázisokat az inaktív időszakok során, amikor csak a tárterület használati díját számlázzuk ki, és automatikusan folytatja az adatbázisok működését, amikor ismét előfordulnak tevékenységek.
 
 ## <a name="serverless-compute-tier"></a>Kiszolgáló nélküli számítási szint
 
@@ -149,7 +149,7 @@ A fent felsorolt műveletek bármelyikét végző figyelési, felügyeleti és e
 
 A rendszer az automatikus folytatást is elindítja néhány olyan szolgáltatás telepítése során, amelyeknek az adatbázis online állapotba kell esnie.
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 

@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004704"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
@@ -31,9 +31,9 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 | &nbsp; |Méretezhetőségi célok |[Megtervezheti, hogy az alkalmazás ne legyen több, mint a Storage-fiókok maximális száma?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Méretezhetőségi célok |[Elkerüli a kapacitást és a tranzakciós korlátokat?](#capacity-and-transaction-targets) |
 | &nbsp; |Méretezhetőségi célok |[Közeledik az entitások skálázhatósági céljaihoz másodpercenként?](#targets-for-data-operations) |
-| &nbsp; |Hálózat |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
-| &nbsp; |Hálózat |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
-| &nbsp; |Hálózat |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
+| &nbsp; |Hálózatkezelés |[A szükséges teljesítmény elérése érdekében az ügyféloldali eszközök megfelelően nagy sávszélességgel és kis késéssel rendelkeznek?](#throughput) |
+| &nbsp; |Hálózatkezelés |[Az ügyféloldali eszközök magas színvonalú hálózati kapcsolattal rendelkeznek?](#link-quality) |
+| &nbsp; |Hálózatkezelés |[Az ügyfélalkalmazás ugyanabban a régióban található, mint a Storage-fiók?](#location) |
 | &nbsp; |Közvetlen ügyfél-hozzáférés |[Közös hozzáférésű aláírásokat (SAS) és több eredetű erőforrás-megosztást (CORS) használ az Azure Storage-hoz való közvetlen hozzáférés engedélyezéséhez?](#sas-and-cors) |
 | &nbsp; |Kötegelés |[Az alkalmazás batch-tranzakciói az Entity Group Transactions használatával frissülnek?](#batch-transactions) |
 | &nbsp; |.NET-konfiguráció |[A .NET Core 2,1-as vagy újabb verzióját használja az optimális teljesítmény érdekében?](#use-net-core) |
@@ -90,7 +90,7 @@ A táblák elérésének skálázhatósági korlátja legfeljebb 20 000 entitás
 
 Egyetlen partíción belül a táblák elérésének méretezhetőségi célja 2 000 entitás (1 KB másodpercenként), az előző szakaszban leírtak szerint.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a teljesítményre. A következő szakaszok ismertetik néhány korlátozást a felhasználók számára.  
 
@@ -288,7 +288,7 @@ Azt is megteheti, hogy az alkalmazás minden órában a CPU-használatot külön
 
 Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvassa, érdemes a táblázatok helyett blobokat használni. Jó példa egy naplófájl. Több percből is készíthet naplókat, és beillesztheti őket, majd egyszerre több perces naplót is beolvashat. Ebben az esetben a teljesítmény jobb, ha táblázatok helyett blobokat használ, mivel jelentősen csökkentheti a beolvasott vagy olvasott objektumok számát, valamint az esetlegesen igényelt kérelmek számát is.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Table Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

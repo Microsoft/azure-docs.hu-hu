@@ -4,10 +4,10 @@ description: Az Azure Service Fabric-alkalmazások és-szolgáltatások létreho
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.openlocfilehash: 1fd9295a0dead180767febcc5339ef0a25cb1e48
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96574547"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>A Visual Studio használata a Service Fabric-alkalmazások írásának és kezelésének egyszerűbbé tételéhez
@@ -69,7 +69,7 @@ A Cloud Explorer használatával elvégezheti az alapszintű fürtszolgáltatás
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric alkalmazás modellje](service-fabric-application-model.md)
 * [Service Fabric alkalmazás központi telepítése](service-fabric-deploy-remove-applications.md)
 * [Alkalmazások paramétereinek kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md)

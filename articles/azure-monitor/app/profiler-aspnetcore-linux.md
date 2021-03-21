@@ -8,10 +8,10 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 6ef52e946edb5db8074a9b4e3ce5e4a81ae0bde5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561052"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
@@ -48,7 +48,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
    ```
 
-1. Application Insights engedélyezése a Program.cs-ben:
+1. Application Insights engedélyezése a program. cs:
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -57,7 +57,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
             .UseStartup<Startup>();
     ```
 
-1. A Profiler engedélyezése a Startup.cs-ben:
+1. A Profiler engedélyezése a Startup. cs:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -67,7 +67,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
     }
     ```
 
-1. Adja hozzá a **HomeController.cs** szakaszban található kód sorát, hogy véletlenszerűen késleltess néhány másodpercet:
+1. Adjon hozzá egy sort a **HomeController. cs** szakaszban, hogy véletlenszerűen késleltess néhány másodpercet:
 
     ```csharp
     using System.Threading;
@@ -168,7 +168,7 @@ További üzembe helyezési lehetőségek: [app Service dokumentáció](../../ap
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha Azure App Service által üzemeltetett egyéni tárolókat használ, a Application Insights Profiler engedélyezéséhez kövesse az [ Service Profiler engedélyezése a tároló ASP.net Core alkalmazás számára](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) című témakör utasításait.
 
 Jelentse be a Application Insights GitHub-adattárral kapcsolatos problémákat vagy javaslatokat: [ApplicationInsights-Profiler-AspNetCore: Issues](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

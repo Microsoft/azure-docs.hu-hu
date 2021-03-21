@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619776"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
-Az alkalmazások futtatása során szükség lehet arra, hogy az alkalmazások egy másik felhasználó kontextusában férhessenek hozzá az erőforrásokhoz. A Active Directory tartományi szolgáltatások (AD DS) támogatja a *Kerberos-delegálás* nevű mechanizmust, amely engedélyezi ezt a használati esetet. A Kerberos által *korlátozott* DELEGÁLÁS (KCD) ezt a mechanizmust építi ki a felhasználó környezetében elérhető konkrét erőforrások definiálásához.
+Az alkalmazások futtatása során szükség lehet arra, hogy az alkalmazások egy másik felhasználó kontextusában férhessenek hozzá az erőforrásokhoz. A Active Directory Domain Services (AD DS) támogatja a *Kerberos-delegálás* nevű mechanizmust, amely engedélyezi ezt a használati esetet. A Kerberos által *korlátozott* DELEGÁLÁS (KCD) ezt a mechanizmust építi ki a felhasználó környezetében elérhető konkrét erőforrások definiálásához.
 
 A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományok biztonságosabban zárhatók le, mint a hagyományos helyi AD DS környezetek, ezért használjon biztonságosabb *erőforrás-alapú* KCD.
 
@@ -99,9 +99,9 @@ Ebben az esetben tegyük fel, hogy van egy webalkalmazása, amely egy *appsvc* n
     Set-ADUser backendsvc -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha többet szeretne megtudni arról, hogyan működik a delegálás a Active Directory tartományi szolgáltatásokban, tekintse meg a [Kerberos által korlátozott delegálás – áttekintés][kcd-technet]című témakört.
+Ha többet szeretne megtudni arról, hogyan működik a delegálás a Active Directory Domain Servicesban, tekintse meg a [Kerberos által korlátozott delegálás – áttekintés][kcd-technet]című témakört.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101662276"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Azure szerepköralapú hozzáférés-vezérlés (RBAC) és eszköz frissítése
@@ -21,7 +21,7 @@ Az eszköz frissítése az Azure RBAC-t használja a felhasználók és a szolg�
 
 Ahhoz, hogy más felhasználók és alkalmazások hozzáférhessenek az eszköz frissítéséhez, a felhasználóknak vagy alkalmazásoknak hozzáférést kell adni ehhez az erőforráshoz. Az eszköz frissítése által támogatott szerepkörök
 
-|   Szerepkör neve   | Leírás  |
+|   Szerepkör neve   | Description  |
 | :--------- | :---- |
 |  Eszköz frissítésének rendszergazdája | Hozzáfér az összes eszköz frissítési erőforrásához  |
 |  Eszköz frissítési olvasója| Megtekintheti az összes frissítést és központi telepítést |

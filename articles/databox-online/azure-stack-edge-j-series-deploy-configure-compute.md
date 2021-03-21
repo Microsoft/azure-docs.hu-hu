@@ -10,10 +10,10 @@ ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 28b5c107fb35c7bda9b1680050b92004436b98ff
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97935462"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Oktatóanyag: az adatátalakítás Azure Stack Edge Pro-val
@@ -58,7 +58,7 @@ A Azure Stack Edge Pro-ban való számítás konfigurálásához létre kell hoz
    |--------|---------|
    |Előfizetés      | Az Azure Stack Edge-erőforrás által használt előfizetés. |
    |Erőforráscsoport    | Az Azure Stack peremhálózati erőforrás által használt erőforráscsoport. |
-   |IoT Hub           | Válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
+   |IoT Hub           | Válassza az **új létrehozása** lehetőséget, vagy **használja a meglévőt**. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> Az IoT Hub-erőforrás mindig ugyanazt az előfizetést és erőforráscsoportot használja, mint az Azure Stack Edge-erőforrás.     |
    |Name              | Ha nem szeretné használni az új IoT Hub erőforráshoz megadott alapértelmezett nevet, adjon meg egy másik nevet. |
 
     ![Ismerkedés a 2. számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)

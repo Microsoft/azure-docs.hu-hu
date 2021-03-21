@@ -4,10 +4,10 @@ description: Azure Files-megosztás csatlakoztatása a számítási csomópontok
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735494"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Azure-fájlmegosztás használata batch-készlettel
@@ -33,7 +33,7 @@ A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen 
 
 Tekintse meg a [virtuális fájlrendszer batch-készleten való csatlakoztatásának](virtual-file-mount.md)dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch-adatok olvasására és írására vonatkozó egyéb beállításokért lásd: a [feladat és a feladat kimenetének](batch-task-output.md)megőrzése.
 * Lásd még a [Batch-hajógyár](https://github.com/Azure/batch-shipyard) eszközkészletét, amely tartalmazza a [hajógyári recepteket](https://github.com/Azure/batch-shipyard/tree/master/recipes) a Batch-tároló munkaterhelések fájlrendszerének üzembe helyezéséhez.

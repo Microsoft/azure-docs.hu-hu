@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001524"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
@@ -49,7 +49,7 @@ A következő lépésekkel adhat hozzá egy NAS Core Filer-t:
 
 1. Kattintson az **alapszintű Filer**  >  **Manage Core filers** elemre a bal oldalon.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
    ![Képernyőkép az új alapszintű Filer hozzáadása oldalról, amely kurzort mutat a létrehozás gombon](media/avere-vfxt-add-core-filer-start.png)
 
@@ -172,7 +172,7 @@ A csatlakozási pontokról további információt a [avere-fürt konfigurációs
 
 Kövesse az alábbi lépéseket a avere Vezérlőpult felületén:
 
-* Kattintson **VServer**  >  a bal felső sarokban található VServer **névtér** elemre.
+* Kattintson   >  a bal felső sarokban található VServer **névtér** elemre.
 * Adja meg a névtér elérési útját a (z)/(továbbítás perjel) kezdettel, például: ``/vfxt/data`` .
 * Válassza ki az alapvető Filer-t.
 * Válassza ki az alapszintű Filer-exportálást.
@@ -184,7 +184,7 @@ Az összekapcsolás néhány másodperc múlva megjelenik. Szükség szerint hoz
 
 Az elágazás létrehozása után az ügyfelek a névtér elérési útját használják a fájloknak a tárolási rendszerből való eléréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Avere vFXT-fürt csatlakoztatása](avere-vfxt-mount-clients.md)
 * Az adatáthelyezés hatékony módjai az [új blob-tárolóba](avere-vfxt-data-ingest.md)

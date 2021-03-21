@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
 ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102638236"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>C# IoT Edge-modul fejlesztése a fájlok Azure Stack Edge Pro-ban való áthelyezéséhez
@@ -125,7 +125,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A VS Code Explorerben nyissa meg a **modules > FileCopyModule > program.cs**.
+1. A VS Code Explorerben nyissa meg a **modules > FileCopyModule > program. cs**.
 2. A **FileCopyModule névtér** tetején adja hozzá a következő using utasításokat a később használt típusokhoz. A **Microsoft. Azure. Devices. Client. Transport. Mqtt** egy protokoll, amely üzeneteket küld IoT Edge hubhoz.
 
     ```
@@ -240,7 +240,7 @@ Létrehozhat egy C#-megoldást, amelyet a saját kódjával testreszabhat.
     ```
 
 7. Mentse el ezt a fájlt.
-8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a minta **program.cs** fájljában mentett fájlt.
+8. A projekthez [egy meglévő mintakód is letölthető](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) . Ezután érvényesítheti a mintában a **program. cs** fájljában mentett fájlt.
 
 ## <a name="build-your-iot-edge-solution"></a>Az IoT Edge-megoldás összeállítása
 

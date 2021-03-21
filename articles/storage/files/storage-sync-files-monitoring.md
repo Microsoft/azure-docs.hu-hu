@@ -8,10 +8,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 272a642f70849b85be00d2507109eb97935c0dde
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202501"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
@@ -42,7 +42,7 @@ A Azure File Sync metrikái alapértelmezés szerint engedélyezve vannak, és 1
 
 Az Azure File Sync következő mérőszámai érhetők el Azure Monitorban:
 
-| Metrika neve | Leírás |
+| Metrika neve | Description |
 |-|-|
 | Szinkronizált bájtok száma | Az átvitt adatok mérete (feltöltés és letöltés).<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható méretek: kiszolgálói végpont neve, szinkronizálás iránya, szinkronizálási csoport neve |
 | Felhőbeli rétegek felidézése | A visszahívott adatmennyiség.<br><br>**Megjegyzés**: Ez a mérőszám a jövőben el lesz távolítva. A Felhőbeli rétegű visszahívás méretének mérőszámával figyelheti a meghívott adatok méretét.<br><br>Egység: bájtok<br>Összesítés típusa: Sum<br>Alkalmazható dimenzió: kiszolgálónév |
@@ -118,7 +118,7 @@ Egy **kiszolgálói végpont** állapotának megtekintéséhez a portálon navig
 
 - A következő metrikai diagramok láthatók a Storage Sync szolgáltatás portálon:
 
-  | Metrika neve | Leírás | Lap neve |
+  | Metrika neve | Description | Lap neve |
   |-|-|-|
   | Szinkronizált bájtok száma | Átvitt adatok mérete (feltöltés és letöltés) | Szinkronizálási csoport, kiszolgálói végpont |
   | Felhőbeli rétegek felidézése | Visszahívott adatmennyiség | Regisztrált kiszolgálók |
@@ -178,7 +178,7 @@ A kiszolgáló Azure File Sync teljesítményszámlálók megtekintéséhez nyis
 
 A következő teljesítményszámlálók érhetők el Azure File Sync a Teljesítményfigyelőben:
 
-| Teljesítmény Object\Counter neve | Leírás |
+| Teljesítmény Object\Counter neve | Description |
 |-|-|
 | AFS bájtok Transferred\Downloaded sebessége (bájt/s) | A másodpercenként letöltött bájtok száma. |
 | AFS bájtok Transferred\Uploaded sebessége (bájt/s) | A másodpercenként feltöltött bájtok száma. |

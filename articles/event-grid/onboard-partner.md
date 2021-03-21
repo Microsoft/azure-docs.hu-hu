@@ -4,10 +4,10 @@ description: Azure Event Grid-partner bevezetéséhez használja a Azure Portal.
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98050952"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Bevezetést Azure Event Grid partnerként a Azure Portal használatával
@@ -133,7 +133,7 @@ A további lépések végrehajtásához ellenőrizze, hogy rendelkezik-e a köve
         :::image type="content" source="./media/onboard-partner/create-event-channel-additional-features-page.png" alt-text="Event Channel – további funkciók lap létrehozása":::
 1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd kattintson a **Létrehozás** elemre az esemény-csatorna létrehozásához. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A partneri témakörök áttekintése](./partner-events-overview.md)
 - [Partneri témakörök bevezetésének űrlapja](https://aka.ms/gridpartnerform)
 - [Auth0-partneri témakör](auth0-overview.md)
