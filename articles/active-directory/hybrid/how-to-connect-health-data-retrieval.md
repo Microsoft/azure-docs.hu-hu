@@ -15,10 +15,10 @@ ms.date: 09/02/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8d147d2c094923e971e52e1dbfe3f7a19776d38c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89463521"
 ---
 # <a name="azure-ad-connect-health-instructions-for-data-retrieval"></a>Az adatok lekérésére vonatkozó utasítások Azure AD Connect Health
@@ -37,7 +37,7 @@ Ha a riasztások fogadásához Azure AD Connect Health konfigurált összes felh
 2.  Kattintson a **riasztások** csempére.</br>
  ![Riasztás](./media/how-to-connect-health-data-retrieval/retrieve3.png)
 
-3.  Kattintson az **értesítési beállítások**elemre.
+3.  Kattintson az **értesítési beállítások** elemre.
  ![Értesítés](./media/how-to-connect-health-data-retrieval/retrieve4.png)
 
 4.  Az **értesítési beállítások** panelen megtalálhatja azokat az e-mail-címeket, amelyek címzettjeiként engedélyezve vannak az állapot riasztási értesítéseiben.
@@ -47,10 +47,10 @@ Ha a riasztások fogadásához Azure AD Connect Health konfigurált összes felh
 
 A következő lépésekkel kérhet le olyan fiókokat, amelyek AD FS hibás jelszó-kísérlettel lettek megjelölve.
 
-1.  A Azure Active Directory Health (állapot) paneltől kezdve válassza a **szinkronizálási hibák**elemet.
+1.  A Azure Active Directory Health (állapot) paneltől kezdve válassza a **szinkronizálási hibák** elemet.
  ![Szinkronizálási hibák](./media/how-to-connect-health-data-retrieval/retrieve6.png)
 
-2.  A **szinkronizálási hibák** panelen kattintson az **Exportálás**elemre. Ekkor a rendszer exportálja a rögzített szinkronizálási hibák listáját.
+2.  A **szinkronizálási hibák** panelen kattintson az **Exportálás** elemre. Ekkor a rendszer exportálja a rögzített szinkronizálási hibák listáját.
  ![Exportálásálás](./media/how-to-connect-health-data-retrieval/retrieve7.png)
 
 ## <a name="next-steps"></a>Következő lépések

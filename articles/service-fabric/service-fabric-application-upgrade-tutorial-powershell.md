@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 8/5/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4b038f4a41ee02960a02c4445b65eb2360a75761
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98792031"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric alkalmazás frissítése a PowerShell használatával
@@ -56,7 +56,7 @@ Most [a Service Fabric Explorer használatával megtekintheti a fürtöt és az 
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: a vizuális objektumok mintájának frissítése
 Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a StatefulVisualObjectActor.cs fájlt. A fájlon belül navigáljon a metódushoz `MoveObject` , a megjegyzésekhez `this.State.Move()` és a megjegyzésekhez `this.State.Move(true)` . Ez a módosítás a szolgáltatás frissítése után elforgatja az objektumokat.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, majd nyissa meg a StatefulVisualObjectActor. cs fájlt. A fájlon belül navigáljon a metódushoz `MoveObject` , a megjegyzésekhez `this.State.Move()` és a megjegyzésekhez `this.State.Move(true)` . Ez a módosítás a szolgáltatás frissítése után elforgatja az objektumokat.
 
 Emellett frissítenie kell a **VisualObjects. ActorService** projekthez tartozó *ServiceManifest.xml* fájlt (a PackageRoot alatt). Frissítse a *CodePackage* és a szolgáltatás verzióját 2,0-re, valamint a *ServiceManifest.xml* fájl megfelelő soraira.
 A jegyzékfájl szerkesztése lehetőségre kattintva használhatja a Visual Studio- *fájlok* módosítása lehetőséget, miután a jobb gombbal a megoldásra kattint, hogy megváltoztassa a jegyzékfájlt.
@@ -139,7 +139,7 @@ Néhány percen belül az előző PowerShell-paranccsal kapott állapotnak meg k
 
 A 2. verzióról a 3-as verzióra vagy a 2. verzióra való frissítést gyakorlatként is kipróbálhatja. A 2. verzióról az 1-es verzióra való áttérés is frissítésnek tekintendő. Az időkorláttal és az állapottal foglalkozó szabályzatokkal megismerheti őket. Az Azure-fürtön történő üzembe helyezéskor a paramétereket megfelelően be kell állítani. A konzervatív időkorlátot érdemes beállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.

@@ -11,10 +11,10 @@ ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
 ms.openlocfilehash: ac2b535b2e6b7a6b4169d08dd1768d69e685a216
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102562010"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
@@ -228,7 +228,7 @@ Egyes szolgáltatások csak akkor érhetők el, ha az [adatbázis kompatibilitá
 
 További segítségért tekintse meg az alábbi, a valós migrációs projektekhez fejlesztett forrásokat.
 
-|Objektum  |Leírás  |
+|Objektum  |Description  |
 |---------|---------|
 |[Adatmunkaterhelés-felmérési modell és eszköz](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Ez az eszköz a javasolt "legmegfelelőbb" cél platformot, a felhő készültségét, valamint az alkalmazások/adatbázisok szervizelési szintjét biztosítja egy adott munkaterhelés esetében. Egyszerű, egykattintásos számítási és jelentéskészítési lehetőséget kínál, amely segít felgyorsítani a nagyméretű ingatlanok értékelését azáltal, hogy lehetővé teszi a és automatizált és egységes célként megadott platform döntési folyamatát.|
 |[DBLoader segédprogram](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|A DBLoader felhasználható a tagolt szövegfájlokból származó adatok SQL Serverba való betöltésére. Ez a Windows-konzol segédprogram a SQL Server natív ügyféloldali bulkload felületet használja, amely a SQL Server összes verzióján működik, beleértve az Azure SQL MI-t is.|

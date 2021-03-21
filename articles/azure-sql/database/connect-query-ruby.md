@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
 ms.openlocfilehash: 0434a99d28b4f71594e0ca9ce312087dee5b0ee2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92672541"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Ruby használatával
@@ -46,17 +46,17 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
   
 - A Ruby és az operációs rendszerhez kapcsolódó szoftverek:
   
-  - **MacOS** : a Homebrew, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítése. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)című témakörben.
+  - **MacOS**: a Homebrew, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítése. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/)című témakörben.
   
-  - **Ubuntu** : a Ruby, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítésének előfeltételei. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
+  - **Ubuntu**: a Ruby, a rbenv és a Ruby-Build, a Ruby, a FreeTDS és a TinyTDS telepítésének előfeltételei. Tekintse meg a 1,2, 1,3, 1,4, 1,5 és 2,1 lépéseket a [Ruby-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu/).
   
-  - **Windows** : telepítse a Ruby, a Ruby fejlesztői készlet és a TinyTDS. Lásd: [fejlesztői környezet konfigurálása Ruby-fejlesztéshez](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
+  - **Windows**: telepítse a Ruby, a Ruby fejlesztői készlet és a TinyTDS. Lásd: [fejlesztői környezet konfigurálása Ruby-fejlesztéshez](/sql/connect/ruby/step-1-configure-development-environment-for-ruby-development).
 
 ## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
 
 A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Navigáljon az **SQL-adatbázisok**  vagy az **SQL-felügyelt példányok** lapra.
 

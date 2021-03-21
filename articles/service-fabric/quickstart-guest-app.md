@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013598"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
@@ -126,7 +126,7 @@ Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
 
 Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98703852"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adatvédelmi stratégia definiálása a hibrid személyazonossági megoldáshoz
@@ -168,7 +168,7 @@ A prémium szintű Azure AD alapvető jelentési képességein kívül az incide
 
 Mivel az incidensek válasza többrétegű megközelítést használ, a beállítások összehasonlítása nem alkalmazható erre a feladatra. Győződjön meg arról, hogy az egyes forgatókönyvekhez rendelkezésre álló összes lehetőséget kihasználva az Azure AD jelentéskészítési funkciójának használatát igényli a vállalat incidens-válaszának részeként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Hibrid Identitáskezelés kezelési feladatainak meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
 
 ## <a name="see-also"></a>Lásd még:

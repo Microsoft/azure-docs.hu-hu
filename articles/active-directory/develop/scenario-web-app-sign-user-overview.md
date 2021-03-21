@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: dbd4923dd2843ab2c043da69f1b72efd8e1eb701
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0bbc799f946d318c305a96d9cb8c6831d9242ff6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573047"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578294"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
 
@@ -43,6 +43,12 @@ Ha Ön Java-fejlesztő, próbálja ki a következő rövid útmutatót:
 
 [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Ha Ön Node.js fejlesztő, próbálja ki a következő rövid útmutatót:
+
+[Gyors útmutató: bejelentkezés felvétele a Microsofttal Node.js webalkalmazásba](quickstart-v2-nodejs-webapp-msal.md)
+
 # <a name="python"></a>[Python](#tab/python)
 
 Ha Python-fejlesztést végez, próbálja ki a következő rövid útmutatót:
@@ -62,7 +68,7 @@ A webalkalmazások a felhasználókat egy böngészőben hitelesítik. Ebben az 
 Második fázisként engedélyezheti, hogy az alkalmazás a bejelentkezett felhasználó nevében hívja meg a webes API-kat. Ez a következő fázis egy másik forgatókönyv, amelyet a [webes API-kat meghívó webalkalmazásban](scenario-web-app-call-api-overview.md)talál.
 
 > [!NOTE]
-> Ha bejelentkezik a webalkalmazásba, a webalkalmazás védelme és a felhasználói jogkivonat érvényesítése is megtörténik.  .NET esetén ehhez a forgatókönyvhöz még nincs szükség a Microsoft Authentication Library (MSAL) szolgáltatásra, amely a védett API-k meghívására szolgáló jogkivonat beszerzésére vonatkozik. A hitelesítési kódtárak a követési forgatókönyvben lesznek bevezetve, amikor a webalkalmazásnak webes API-kat kell meghívnia.
+> Ha bejelentkezik a webalkalmazásba, a webalkalmazás védelme és a felhasználói jogkivonat érvényesítése is megtörténik.  .NET esetén ehhez a forgatókönyvhöz még nincs szükség a Microsoft Authentication Library (MSAL) szolgáltatásra, amely a védett API-k meghívására szolgáló jogkivonat beszerzésére vonatkozik. A .NET-hez készült hitelesítési kódtárak a követési forgatókönyvben lesznek bevezetve, amikor a webalkalmazásnak webes API-kat kell meghívnia.
 
 ## <a name="specifics"></a>Sajátosságai
 
@@ -87,6 +93,10 @@ Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás reg
 # <a name="java"></a>[Java](#tab/java)
 
 Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás regisztrálását](./scenario-web-app-sign-user-app-registration.md?tabs=java)ismerteti.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Lépjen tovább a forgatókönyv következő cikkére, amely az [alkalmazás regisztrálását](./scenario-web-app-sign-user-app-registration.md?tabs=nodejs)ismerteti.
 
 # <a name="python"></a>[Python](#tab/python)
 

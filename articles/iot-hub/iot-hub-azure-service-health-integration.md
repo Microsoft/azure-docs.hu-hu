@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 27fca7b76ab148fc355eb7d52ee0cbcbd3540458
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92548517"
 ---
 # <a name="check-iot-hub-service-and-resource-health"></a>IoT Hub szolgáltatás és erőforrás állapotának keresése
@@ -49,7 +49,7 @@ Az IoT-hubok állapotának vizsgálatához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Navigáljon **Service Health**  >  **erőforrás-állapothoz** .
+2. Navigáljon **Service Health**  >  **erőforrás-állapothoz**.
 
 3. A legördülő listából válassza ki az előfizetést, majd válassza az **IoT hub** lehetőséget az erőforrástípus mezőben.
 

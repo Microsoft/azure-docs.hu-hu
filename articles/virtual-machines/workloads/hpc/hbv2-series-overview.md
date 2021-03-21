@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6648f77c5eacf40f848bc9b24aa6e257d8adf626
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 59dd953b2116bc1ec7bd0a581cc181df64fbf49e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101674648"
+ms.locfileid: "104721160"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 sorozatú virtuális gépek – áttekintés 
 
@@ -53,14 +53,16 @@ A folyamat rögzítése a HBv2 sorozatú virtuális gépeken fog működni, mive
 |-----------------------------|-----------------------------------------------------------|
 | MPI-feladatok maximális mérete            | 36000 mag (300 virtuális gép egyetlen virtuálisgép-méretezési készletben, singlePlacementGroup = true) |
 | MPI-támogatás                 | HPC-X, Intel MPI, OpenMPI, MVAPICH2, MPICH, platform MPI  |
-| További keretrendszerek       | Egyesített kommunikáció X, libfabric, PGAS                  |
-| Azure Storage-támogatás       | Standard és prémium szintű lemezek (legfeljebb 8 lemez)              |
-| Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +           |
-| Orchestrator-támogatás        | CycleCloud, köteg                                         | 
+| További keretrendszerek       | UCX, libfabric, PGAS |
+| Azure Storage-támogatás       | Standard és prémium szintű lemezek (legfeljebb 8 lemez) |
+| Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, Ubuntu 16.04 +, SLES 12 SP4 +, WinServer 2016 +  |
+| Orchestrator-támogatás        | CycleCloud, batch, AK; [fürt konfigurációs beállításai](../../sizes-hpc.md#cluster-configuration-options)  |
 
+> [!NOTE] 
+> A Windows Server 2012 R2 nem támogatott a HBv2 és más, több mint 64 (virtuális vagy fizikai) magokkal rendelkező virtuális gépeken. További információt [itt](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) talál.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az [AMD EPYC architektúráról](https://bit.ly/2Epv3kC) és a [többplatformos architektúráról](https://bit.ly/2GpQIMb). További részletekért tekintse meg a [HPC hangolási útmutató az AMD EPYC processzorokhoz](https://bit.ly/2T3AWZ9)című témakört.
-- Olvassa el a legújabb bejelentéseket és néhány HPC-példát az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

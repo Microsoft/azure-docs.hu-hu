@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7bb9b6d4a6ca006952d709244e6526345d44431e
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102630266"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590619"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>Function Apps-alkalmazások összekapcsolhatók az Azure-ban az adatfeldolgozáshoz
 
@@ -48,7 +48,7 @@ Válassza ki az *Event Grid trigger* függvény alkalmazási típusát, és vál
 
 :::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="A Visual Studio képernyőképe, amely az új Azure Functions alkalmazás létrehozásához szükséges párbeszédpanelt jeleníti meg. A Event Grid trigger beállítás ki van emelve.":::
 
-A Function app létrehozása után a Visual Studio egy **Function1.cs** -fájlban hozza létre a projekt mappájában található kódot. Ez a rövid függvény az események naplózására szolgál.
+A Function app létrehozása után a Visual Studio létrehoz egy kódot a **Function1. cs** fájlban a Project mappában. Ez a rövid függvény az események naplózására szolgál.
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Képernyőfelvétel a Visual studióról a létrehozott új projekt projekt ablakában. A Function1 nevű minta függvényhez kód található." lightbox="media/how-to-create-azure-function/visual-studio-sample-code.png":::
 
@@ -63,13 +63,13 @@ Az SDK használatához a következő csomagokat kell felvennie a projektbe. A cs
 * [System .net. http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure. Core](https://www.nuget.org/packages/Azure.Core/)
 
-Ezután a Visual Studio Megoldáskezelőban nyissa meg azt a _Function1.cs_ -fájlt, amelyben a mintakód szerepel, és adja hozzá a következő `using` utasításokat ezekhez a csomagokhoz a függvényhez.
+Ezután a Visual Studio Megoldáskezelő nyissa meg a _Function1. cs_ fájlt, ahol a mintakód szerepel, és adja hozzá a következő `using` utasításokat a csomagokhoz a függvényhez.
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>Hitelesítési kód hozzáadása a függvényhez
 
-Ekkor deklarálja az osztály szintjének változóit, és adja hozzá a hitelesítési kódot, amely lehetővé teszi, hogy a függvény hozzáférhessen az Azure digitális Twins szolgáltatáshoz. A következőt fogja hozzáadni a függvényhez a _Function1.cs_ fájlban:.
+Ekkor deklarálja az osztály szintjének változóit, és adja hozzá a hitelesítési kódot, amely lehetővé teszi, hogy a függvény hozzáférhessen az Azure digitális Twins szolgáltatáshoz. A következőt fogja hozzáadni a függvényhez a _Function1. cs_ fájlban.
 
 * Kód az Azure Digital Twins szolgáltatás URL-címének beolvasásához **környezeti változóként**. Érdemes beolvasni a szolgáltatás URL-címét egy környezeti változóból, nem pedig a függvényben rögzített kódolással. A környezeti változó értékét a [cikk későbbi részében](#set-up-security-access-for-the-function-app)állíthatja be. A környezeti változókról további információt a [*Function app kezelése*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)című témakörben talál.
 
@@ -118,12 +118,14 @@ Az Azure CLI vagy a Azure Portal használatával biztonsági hozzáférést áll
 # <a name="cli"></a>[Parancssori felület](#tab/cli)
 
 Ezeket a parancsokat [Azure Cloud Shell](https://shell.azure.com) vagy egy [helyi Azure CLI-telepítésben](/cli/azure/install-azure-cli)is futtathatja.
+A Function alkalmazás rendszer által felügyelt identitásával biztosíthatja, hogy az Azure Digital Twins-beli _**adattulajdonosi**_ szerepkört adja meg az Azure digitális Twins-példányához. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia. Ezután az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával.
 
 ### <a name="assign-access-role"></a>Hozzáférési szerepkör kiosztása
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 A korábbi példák függvényének csontváza megköveteli, hogy egy tulajdonosi jogkivonatot továbbítson a rendszernek, hogy az Azure Digital Twins szolgáltatással tudjon hitelesíteni. Annak ellenőrzéséhez, hogy a tulajdonosi jogkivonat átadása megtörtént-e, be kell állítania [Managed Service Identity (MSI)](../active-directory/managed-identities-azure-resources/overview.md) engedélyeket a Function alkalmazás számára az Azure Digital Twins eléréséhez. Ezt csak egyszer kell elvégezni az egyes functions-alkalmazásokhoz.
 
-A Function alkalmazás rendszer által felügyelt identitásával biztosíthatja, hogy az Azure Digital Twins-beli _**adattulajdonosi**_ szerepkört adja meg az Azure digitális Twins-példányához. Ezzel a művelettel a példányban az adatsík-tevékenységek elvégzéséhez a függvény alkalmazás engedélyének kell megadnia. Ezután az Azure Digital Twins-példány URL-címét elérhetővé teheti a függvény számára egy környezeti változó beállításával.
 
 1. A következő parancs használatával megtekintheti a függvény rendszer által felügyelt identitásának részleteit. Jegyezze fel a kimenet _principalId_ mezőjét.
 
@@ -162,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 Hajtsa végre a következő lépéseket a [Azure Portalban](https://portal.azure.com/).
 
 ### <a name="assign-access-role"></a>Hozzáférési szerepkör kiosztása
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 A rendszerhez rendelt felügyelt identitás lehetővé teszi, hogy az Azure-erőforrások hitelesítsék magukat a Cloud Servicesben (például Azure Key Vault) a hitelesítő adatok kódban való tárolása nélkül. Ha engedélyezve van, az összes szükséges engedély az Azure szerepköralapú hozzáférés-vezérlés használatával adható meg. Az ilyen típusú felügyelt identitás életciklusa az erőforrás életciklusához van kötve. Emellett minden erőforráshoz csak egy rendszerhez rendelt felügyelt identitás tartozhat.
 

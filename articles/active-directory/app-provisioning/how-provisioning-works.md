@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 048adee21d5c2e49ef02f518002a1dc6025c1ecd
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 19ec3ec95fbbccbaa5c646c8de16999b86349626
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988980"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579450"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -138,7 +138,7 @@ A kezdeti ciklus után az összes többi ciklus a következő lesz:
 A kiépítési szolgáltatás továbbra is határozatlan időre futtatja az [egyes alkalmazásokra vonatkozó oktatóanyagban](../saas-apps/tutorial-list.md)meghatározott időközöket. A növekményes ciklusok addig folytatódnak, amíg az alábbi események egyike nem következik be:
 
 - A szolgáltatás kézi leállítása a Azure Portal használatával vagy a megfelelő Microsoft Graph API-parancs használatával történik.
-- A rendszer az új kezdeti ciklust a Azure Portal **törlési állapot és újraindítás** lehetőségével, vagy a megfelelő Microsoft Graph API-parancs használatával indítja el. Ez a művelet törli a tárolt vízjeleket, és az összes forrásobjektum kiértékelését okozza.
+- A rendszer elindítja az új kezdeti ciklust a Azure Portal **Újraindítási kiépítési** lehetőségével, vagy a megfelelő Microsoft Graph API-parancs használatával. Ez a művelet törli a tárolt vízjeleket, és az összes forrásobjektum kiértékelését okozza.
 - Az attribútum-hozzárendelések és a hatóköri szűrők változása miatt új kezdeti ciklust indít a rendszer. Ezzel a művelettel az összes tárolt vízjel törlődik, és az összes forrásoldali objektum újbóli kiértékelését okozza.
 - A kiépítési folyamat Karanténba kerül (lásd alább), magas hiba miatt, és több mint négy hétig karanténba marad. Ebben az esetben a szolgáltatás automatikusan le lesz tiltva.
 

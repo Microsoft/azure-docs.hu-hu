@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
 ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509367"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
@@ -107,8 +107,8 @@ Az indexelő más Azure-erőforrásokhoz is hozzáférhetnek a [megosztott priv�
 
 | Erőforrás | Ingyenes | Alapszintű | S1 | S2 | S3 | S3 HD | L1 | L2
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Privát végpont-indexelő támogatása | Nem | Igen | Igen | Igen | Igen | Nem | Igen | Igen |
-| Privát végpontok támogatása az indexek számára a készségkészlet<sup>1</sup> | Nem | Nem | Nem | Igen | Igen | Nem | Igen | Igen |
+| Privát végpont-indexelő támogatása | Nem | Igen | Igen | Igen | Igen | Nem | Igen | Yes |
+| Privát végpontok támogatása az indexek számára a készségkészlet<sup>1</sup> | Nem | Nem | Nem | Igen | Igen | Nem | Igen | Yes |
 | Privát végpontok maximális száma | N/A | 10 vagy 30 | 100 | 400 | 400 | N/A | 20 | 20 |
 | Maximális eltérő erőforrástípusok<sup>2</sup> | N.A. | 4 | 7 | 15 | 15 | N.A. | 4 | 4 |
 

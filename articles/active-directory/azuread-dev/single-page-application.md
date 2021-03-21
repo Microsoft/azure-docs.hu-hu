@@ -14,10 +14,10 @@ ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: adf3c5b5cd40a9ea3f07ba9c92cfc4544ca60f1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "80154746"
 ---
 # <a name="single-page-applications"></a>Egyoldalas alkalmazások
@@ -63,7 +63,7 @@ A ADAL.js használata a következőkkel segít:
 
 A sikeres hitelesítés után az Azure AD egy cookie-t ír a felhasználó böngészőjében egy munkamenet létrehozásához. Figyelje meg, hogy a munkamenet létezik a felhasználó és az Azure AD között (nem a felhasználó és a webalkalmazás között). Ha egy jogkivonat lejár, ADAL.js ezt a munkamenetet használja egy másik jogkivonat csendes beszerzéséhez. A ADAL.js rejtett iFrame használatával küldi el és fogadja el a kérelmet a OAuth implicit engedélyezési protokollal. A ADAL.js ugyanezt a mechanizmust is használhatja a más webes API-erőforrások elérési jogkivonatának csendes beszerzéséhez, feltéve, hogy ezek az erőforrások támogatják az eltérő eredetű erőforrás-megosztást (CORS), regisztrálva vannak a felhasználói címtárban, és a felhasználó a bejelentkezés során megadta a szükséges beleegyezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
 * Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

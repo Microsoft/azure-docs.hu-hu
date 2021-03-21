@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepítheti és konfigurálhatja az NGINX beáramlási vezérlőt egy belső, magánhálózat Azure Kubernetes Service-(ak-) fürtben.
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 976c5581ad217064da37b0b092d2d634d30cb7e5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: 3201f510db9970b7db548ee6a3348fa68d278248
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729161"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601465"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Bejövő vezérlő létrehozása belső virtuális hálózathoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -232,7 +232,7 @@ ingress.extensions/hello-world-ingress created
 A beáramló vezérlő útvonalának teszteléséhez keresse meg a két alkalmazást webes ügyféllel. Ha szükséges, gyorsan tesztelheti ezt a csak belső funkciókat az AK-fürtön található Pod-ból. Hozzon létre egy teszt Pod-t, és csatoljon hozzá egy terminál-munkamenetet:
 
 ```console
-kubectl run -it --rm aks-ingress-test --image=debian --namespace ingress-basic
+kubectl run -it --rm aks-ingress-test --image=mcr.microsoft.com/aks/fundamental/base-ubuntu:v0.0.11 --namespace ingress-basic
 ```
 
 Telepítés `curl` a pod használatával `apt-get` :
@@ -335,7 +335,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 

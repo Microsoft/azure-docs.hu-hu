@@ -5,59 +5,102 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 7f5e5e4da9fea671fc85a55fc8cc191fa14b720f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 12f6acda632b9c0fbee2db570df5293c1daf32ea
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101662377"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720814"
 ---
 # <a name="how-to-update-azure-percept-dk-over-a-usb-connection"></a>Az Azure Percept DK frissítése USB-kapcsolaton keresztül
 
-Ebből az útmutatóból megtudhatja, hogyan hajthat végre USB-frissítést az Azure Percept DK Carrier táblájában.
+Bár a over-the-Air (OTA) frissítések használata a legjobb módszer a fejlesztői csomag operációs rendszerének és a belső vezérlőprogram naprakészen tartására, vannak olyan forgatókönyvek, ahol a fejlesztői csomag USB-kapcsolaton keresztül történő frissítése (vagy "villogás") szükséges:
+
+- A kapcsolódási vagy egyéb technikai problémák miatt az OTA-frissítés nem lehetséges
+- Az eszközt vissza kell állítani a gyári állapotra.
+
+Ez az útmutató bemutatja, hogyan frissítheti a fejlesztői csomag operációs rendszerét és belső vezérlőprogramja USB-kapcsolaton keresztül.
+
+> [!WARNING]
+> A fejlesztői csomag USB-kapcsolaton keresztüli frissítése törli az eszközön lévő összes meglévő adatát, beleértve az AI-modelleket és a tárolókat is.
+>
+> Kövesse az összes utasítást a sorrendben. A lépések kihagyása használhatatlan állapotba helyezheti a fejlesztői készletet.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Számítógép egy elérhető USB-C vagy USB-porttal.
-- Az Azure Percept DK (dev Kit) Carrier Board és az USB-c kábel USB-c kábellel való ellátása. Ha a gazdaszámítógép USB-porttal rendelkezik, de nem USB-C portot használ, USB-C-t is használhat USB-kábelként (külön megvásárolható).
-- Telepítse a [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) -t (rendszergazdai hozzáférés szükséges).
-- Telepítse a NXP UUU eszközt. [Töltse le a legújabb kiadási](https://github.com/NXPmicro/mfgtools/releases) uuu.exe fájlt (Windows rendszeren) vagy a UUU-fájlt (Linux rendszeren) az eszközök lapon.
-- [Telepítse a 7 – zip fájlt](https://www.7-zip.org/). Ezt a szoftvert a rendszer a nyers képfájl XZ tömörített fájlból való kinyerésére fogja használni. Töltse le és telepítse a megfelelő. exe fájlt.
 
-## <a name="steps"></a>Lépések
-1.  Töltse le a következő [három USB-frissítési fájlt](https://go.microsoft.com/fwlink/?linkid=2155734):
-    - pe101-UEFI-***&lt; Version Number &gt;***. Raw. XZ
-    - emmc_full.txt
+- Egy Azure Percept DK
+- Egy Windows, Linux vagy OS X rendszerű gazdagép, amely Wi-Fi képességgel és elérhető USB-C vagy USB-porttal rendelkezik
+- USB-C – USB-kábel (opcionális, külön megvásárolható)
+- Az [Azure PERCEPT DK telepítési felületén](./quickstart-percept-dk-set-up.md) létrehozott ssh-bejelentkezés
+
+## <a name="download-software-tools-and-update-files"></a>Szoftvereszközök letöltése és fájlok frissítése
+
+1. [NXP UUU eszköz](https://github.com/NXPmicro/mfgtools/releases). Töltse le a **legújabb kiadási** uuu.exe fájlt (Windows rendszeren) vagy a UUU-fájlt (Linux rendszeren) az **eszközök** lapon.
+
+1. [7 – zip](https://www.7-zip.org/). Ezt a szoftvert a rendszer a nyers képfájl XZ tömörített fájlból való kinyerésére fogja használni. Töltse le és telepítse a megfelelő. exe fájlt.
+
+1. [Töltse le a frissítési fájlokat](https://go.microsoft.com/fwlink/?linkid=2155734).
+
+1. Győződjön meg arról, hogy mindhárom Build-összetevő megtalálható:
+    - Azure-Percept-DK-*&lt; Version Number &gt;*. Raw. XZ
     - Fast-hab-fw. Raw
- 
-1. Bontsa ki a pe101-UEFI-***&lt; Version &gt; Number**_. Raw fájlt a tömörített pe101_ * _&lt; &gt;_-UEFI verziószám * *. Raw. XZ fájlból. Nem tudja, hogyan kell kinyerni? Töltse le és telepítse a 7 – zip fájlt, majd kattintson a jobb gombbal a **. XZ** lemezképfájlra, és válassza ki a 7 – zip &gt; kibontást itt.
+    - emmc_full.txt
 
-1. Másolja a következő három fájlt a UUU eszközt tartalmazó mappába:
-    - Kibontott pe101-UEFI-***&lt; Version Number &gt;***. RAW fájl (a 2. lépésből).
-    - emmc_full.txt (az 1. lépésből).
-    - Fast-hab-fw. Raw (az 1. lépésből).
- 
-1. Kapcsolja be a fejlesztői készletet.
-1. [Kapcsolódás a fejlesztői csomaghoz SSH-kapcsolaton keresztül](./how-to-ssh-into-percept-dk.md)
-1. Nyisson meg egy Windows-parancssort (indítsa el a &gt; cmd parancsot) vagy egy Linux-terminált, és navigáljon arra a mappára, ahol a frissítési fájlok vannak tárolva. A frissítés elindításához futtassa a következő parancsot:
-    - Windows: ```uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    - Linux: ```sudo ./uuu -b emmc_full.txt fast-hab-fw.raw pe101-uefi-<version number>.raw```
-    
-A parancsok futtatása után egy üzenet jelenik meg, amely "Várakozás az eszközre..." a parancssorban. Ez várható, és folytassa a következő lépéssel.
-    
-1. Csatlakoztassa a dev Kit Carrier táblát a gazdagéphez USB-kábellel. Mindig csatlakoztassa a szállítói USB-C portot a gazdagép USB-C vagy USB-portjának portjához (USB-C-ről USB-re – A kábel külön megvásárolható), attól függően, hogy mely portok érhetők el. 
- 
-1. Az SSH/Putty terminálon írja be a következő parancsokat a dev Kit USB-módba állításához, majd indítsa újra a fejlesztői készletet.
-    - ```flagutil    -wBfRequestUsbFlash    -v1```
-    - ```reboot -f```
- 
-1. Előfordulhat, hogy a gazdaszámítógép felismeri az eszközt, a frissítési folyamat pedig automatikusan elindul. Az állapot megtekintéséhez váltson vissza a parancssorba. A folyamat akár tíz percet is igénybe vehet, és a sikeres frissítés után megjelenik egy üzenet, amely a "sikeres 1 hiba 0" hibát jelzi.
- 
-1. Miután a frissítés befejeződött, kapcsolja ki a Szállítmányozói táblát. Húzza ki az USB-kábelt a SZÁMÍTÓGÉPRŐL.  Csatlakoztassa az Azure Percept-jövőkép modult a Carrier táblához az USB-kábel használatával.
+## <a name="set-up-your-environment"></a>A környezet kialakítása
 
-1. Kapcsolja vissza a szolgáltatót.
+1. Hozzon létre egy mappát vagy könyvtárat a gazdaszámítógépen olyan helyen, amely könnyen elérhető a parancssorból.
+
+1. Másolja a UUU eszközt (**uuu.exe** vagy **UUU**) az új mappába.
+
+1. Bontsa ki az **Azure-Percept-DK-*&lt; Version Number &gt;*. Raw** fájlt a tömörített fájlból. ehhez kattintson a jobb gombbal az **Azure-Percept-DK-*&lt; Version Number &gt;*. Raw. XZ** elemre, és válassza ki a **7 – zip** - &gt; **kivonatot itt**.
+
+1. Helyezze át a kinyert **Azure-Percept-DK-*&lt; Version Number &gt;*. Raw** fájlt, a **Fast-hab-fw. Raw** fájlt, és **emmc_full.txt** a UUU eszközt tartalmazó mappába.
+
+## <a name="update-your-device"></a>Az eszköz frissítése
+
+1. [SSH-t a fejlesztői csomagba](./how-to-ssh-into-percept-dk.md).
+
+1. Ezután nyisson meg egy Windows-parancssort (**indítsa el** a  >  **cmd** eszközt) vagy egy Linux-terminált, és navigáljon arra a mappára, ahol a frissítési fájlokat és a UUU eszközt tárolja. Adja meg a következő parancsot a parancssorban vagy a terminálban, hogy felkészítse a számítógépet a Flash eszköz fogadására:
+
+    - Windows:
+
+        ```bash
+        uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw 
+        ```
+
+    - Linux:
+
+        ```bash
+        sudo ./uuu -b emmc_full.txt fast-hab-fw.raw Azure-Percept-DK-<version number>.raw
+        ```
+
+1. Válassza le az Azure Percept-jövőkép eszközt a szállítói tábla USB-C portjáról.
+
+1. Csatlakoztassa a mellékelt USB-C kábelt a szállítói kártya USB-C portjához és a gazdagép USB-C portjához. Ha a számítógép csak USB-porttal rendelkezik, csatlakoztassa az USB-C-t USB-kábelhez (külön megvásárolható) a Szállítmányozói táblához és a gazdagéphez.
+
+1. Az SSH-ügyfél parancssorába írja be a következő parancsokat:
+
+    1. Az eszköz beállítása USB-frissítési módra:
+
+        ```bash
+        sudo flagutil    -wBfRequestUsbFlash    -v1
+        ```
+
+    1. Indítsa újra az eszközt. Ekkor megkezdődik a frissítés telepítése.
+
+        ```bash
+        sudo reboot -f
+        ```
+
+1. Váltson vissza a másik parancssorba vagy terminálra. A frissítés befejezésekor a következő üzenet jelenik meg ```Success 1    Failure 0``` :
+
+    > [!NOTE]
+    > A frissítés után a rendszer visszaállítja az eszközt a gyári beállításokra, és elveszti a Wi-Fi kapcsolatát és az SSH-bejelentkezést.
+
+1. Miután a frissítés befejeződött, kapcsolja ki a Szállítmányozói táblát. Húzza ki az USB-kábelt a SZÁMÍTÓGÉPRŐL.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-A fejlesztői csomag frissítése sikeresen megtörtént. Továbbra is folytathatja a fejlesztést és a műveletet a fejlesztői készlet.
+Az eszköz újrakonfigurálásához az [Azure PERCEPT DK telepítési felületén](./quickstart-percept-dk-set-up.md) keresztül dolgozhat.

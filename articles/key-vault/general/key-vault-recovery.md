@@ -9,10 +9,10 @@ author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
 ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790384"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault helyreállítási felügyelet a Soft delete és a Purge Protection szolgáltatással
@@ -31,7 +31,7 @@ További információ a Key Vaultról:
 * A Key Vault létrehozhat egyet [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)használatával, vagy [Azure PowerShell](../general/quick-create-powershell.md)
 * A felhasználónak a következő engedélyekre van szüksége (előfizetési szinten), hogy végrehajtsa a műveleteket a Soft Deleted-tárolók esetén:
 
-  | Engedély | Leírás |
+  | Engedély | Description |
   |---|---|
   |Microsoft. Key Vault/Locations/deletedVaults/READ|A törölt kulcstartó tulajdonságainak megtekintése|
   |Microsoft. kulcstartó/Locations/deletedVaults/Purge/művelet|Helyreállítható törölhető kulcstartó törlése|
@@ -393,7 +393,7 @@ A helyreállítható törléssel kapcsolatos további információkért lásd: [
   ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [PowerShell-parancsmagok Azure Key Vault](/powershell/module/az.keyvault)
 - [Azure CLI-parancsok Key Vault](/cli/azure/keyvault)

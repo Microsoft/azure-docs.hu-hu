@@ -73,7 +73,7 @@
     - name: Tárolóba helyezése
       items:
         - name: Tárolóba helyezése ASP.NET alkalmazások és Migrálás AK-ra
-          href: tutorial-containerize-aspnet-kubernetes.md
+          href: tutorial-app-containerization-aspnet-kubernetes.md
         - name: Java-webalkalmazások tárolóba helyezése és migrálása AK-ra
           href: tutorial-containerize-java-kubernetes.md
 - name: Alapelvek

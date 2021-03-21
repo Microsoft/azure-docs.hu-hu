@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/28/2020
-ms.openlocfilehash: 9b8402e5ae4d0358d17342d30ddf36f5e1228f65
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 19b32bed15a4d292a7427d8401e777c7761e45a3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393462"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592030"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Adatok másolása a és az SFTP-kiszolgálóra Azure Data Factory használatával
 
@@ -34,7 +34,7 @@ Az SFTP-összekötő a következő tevékenységeknél támogatott:
 
 Az SFTP-összekötő a következőket támogatja:
 
-- Fájlok másolása az SFTP-kiszolgálóról az *alapszintű* vagy a *SshPublicKey* hitelesítés használatával.
+- Fájlok másolása az SFTP-kiszolgálóra az **alapszintű**, az **SSH nyilvános kulcs** vagy a **többtényezős** hitelesítés használatával.
 - A fájlok másolása, illetve a [támogatott fájlformátumokat és tömörítési kodekeket](supported-file-formats-and-compression-codecs.md)tartalmazó fájlok elemzése vagy létrehozása.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,7 +58,7 @@ Az SFTP társított szolgáltatás a következő tulajdonságokat támogatja:
 | port | Az a port, amelyen az SFTP-kiszolgáló figyel.<br/>Az engedélyezett érték egész szám, az alapértelmezett érték pedig *22*. |No |
 | skipHostKeyValidation | Megadhatja, hogy kihagyja-e a gazdagép kulcsának érvényesítését<br/>Az engedélyezett értékek: *true* és *false* (alapértelmezett).  | No |
 | hostKeyFingerprint | A gazda kulcs ujjlenyomatának meghatározása. | Igen, ha a "skipHostKeyValidation" értéke false (hamis).  |
-| authenticationType | Adja meg a hitelesítési típust.<br/>Az engedélyezett értékek az *alapszintű* és a *SshPublicKey*. További tulajdonságok: az [Egyszerű hitelesítés használata](#use-basic-authentication) szakasz. JSON-példákat az [SSH nyilvános kulcsú hitelesítés használata](#use-ssh-public-key-authentication) című szakaszban talál. |Yes |
+| authenticationType | Adja meg a hitelesítési típust.<br/>Az engedélyezett értékek az *alapszintű*, a *SshPublicKey* és a *többtényezős*. További tulajdonságok: az [Egyszerű hitelesítés használata](#use-basic-authentication) szakasz. JSON-példákat az [SSH nyilvános kulcsú hitelesítés használata](#use-ssh-public-key-authentication) című szakaszban talál. |Yes |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. További információt az [Előfeltételek](#prerequisites) című szakaszban talál. Ha nincs megadva az Integration Runtime, a szolgáltatás az alapértelmezett Azure Integration Runtime használja. |No |
 
 ### <a name="use-basic-authentication"></a>Egyszerű hitelesítés használata
@@ -75,7 +75,6 @@ Az alapszintű hitelesítés használatához állítsa a *authenticationType* tu
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -117,7 +116,6 @@ Az SSH nyilvános kulcsú hitelesítés használatához állítsa a "authenticat
 ```json
 {
     "name": "SftpLinkedService",
-    "type": "Linkedservices",
     "properties": {
         "type": "Sftp",
         "typeProperties": {
@@ -161,6 +159,43 @@ Az SSH nyilvános kulcsú hitelesítés használatához állítsa a "authenticat
             "passPhrase": {
                 "type": "SecureString",
                 "value": "<pass phrase>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of integration runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="use-multi-factor-authentication"></a>Multi-Factor Authentication használata
+
+Ha a többtényezős hitelesítést szeretné használni, amely az alapszintű és az SSH nyilvános kulcsú hitelesítés kombinációja, adja meg a fenti szakaszokban leírt felhasználónevet, jelszót és a titkos kulcshoz tartozó adatokat.
+
+**Példa: Multi-Factor Authentication**
+
+```json
+{
+    "name": "SftpLinkedService",
+    "properties": {
+        "type": "Sftp",
+        "typeProperties": {
+            "host": "<host>",
+            "port": 22,
+            "authenticationType": "MultiFactor",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            },
+            "privateKeyContent": {
+                "type": "SecureString",
+                "value": "<base64 encoded private key content>"
+            },
+            "passPhrase": {
+                "type": "SecureString",
+                "value": "<passphrase for private key>"
             }
         },
         "connectVia": {
@@ -236,7 +271,7 @@ Az SFTP `storeSettings` Formátum-alapú másolási forrás beállításai alatt
 | modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                            |
 | enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
 | partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No                                            |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No                                            |
 
 **Példa**
 
@@ -289,7 +324,7 @@ A következő tulajdonságok támogatottak az SFTP `storeSettings` Formátum ala
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | típus                     | A *Type* tulajdonságot a `storeSettings` *SftpWriteSettings* értékre kell állítani. | Yes      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
-| maxConcurrentConnections | A tárolóhoz egyidejűleg csatlakozni képes kapcsolatok száma. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolódást az adattárhoz. | No       |
+| maxConcurrentConnections | A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat. | No       |
 | useTempFileRename | Jelezze, hogy az ideiglenes fájlokra kíván-e feltölteni, majd átnevezni, vagy közvetlenül a célmappába vagy a fájl helyére írja. Alapértelmezés szerint a Azure Data Factory először az ideiglenes fájlokba ír, majd átnevezi őket a feltöltés befejezésekor. Ez a szakasz segít (1) elkerülni az olyan ütközéseket, amelyek sérült fájlokat okozhatnak, ha más folyamatokat ír ugyanarra a fájlra, és (2) győződjön meg arról, hogy a fájl eredeti verziója létezik az átvitel során. Ha az SFTP-kiszolgáló nem támogatja az átnevezési műveletet, tiltsa le ezt a beállítást, és győződjön meg arról, hogy nem rendelkezik párhuzamos írási fájllal a célfájl számára. További információkért tekintse meg a tábla végén található hibaelhárítási tippet. | Nem. Az alapértelmezett érték *true (igaz*). |
 | operationTimeout | Az a várakozási idő, ameddig az SFTP-kiszolgálóra való írási kérelem időtúllépése megtörténjen. Az alapértelmezett érték 60 perc (01:00:00).|No |
 
@@ -422,7 +457,7 @@ A törlési tevékenység tulajdonságaival kapcsolatos információkért lásd:
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának *Type* tulajdonságát *FileSystemSource* értékre kell állítani. |Yes |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Ha a rekurzív értéke TRUE ( *igaz* ), a fogadó pedig egy fájl alapú tároló, az üres mappákat és almappákat a rendszer nem másolja vagy hozza létre a fogadón.<br/>Az engedélyezett értékek értéke *true* (alapértelmezett) és *false (hamis* ) | No |
-| maxConcurrentConnections | A tárolási tárolóhoz egyidejűleg csatlakozható kapcsolatok száma. Csak akkor válasszon számot, ha szeretné korlátozni az egyidejű kapcsolatokat az adattárral. | No |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 
