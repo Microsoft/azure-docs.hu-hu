@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.openlocfilehash: edc773ec2db078b6c50b55c81ad6570758a3f5f7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100389246"
 ---
 # <a name="data-access-strategies"></a>Adathozzáférési stratégiák
@@ -48,7 +48,7 @@ A Azure Integration Runtime és a saját üzemeltetésű Integration Runtime ada
     | Adattárak                  | Az adattárakban támogatott hálózati biztonsági mechanizmus | Private Link     | Megbízható szolgáltatás     | Statikus IP-címtartomány | Szolgáltatáscímkék | Azure-szolgáltatások engedélyezése |
     |------------------------------|-------------------------------------------------------------|---------------------|-----------------|--------------|----------------------|-----------------|
     | Azure Pásti-adattárak       | Azure Cosmos DB                                     | Igen              | -                   | Igen             | -            | Yes                  |
-    |                              | Azure Data Explorer                                 | -                | -                   | Igen*            | Igen*         | -                    |
+    |                              | Azure Adatkezelő                                 | -                | -                   | Igen*            | Igen*         | -                    |
     |                              | Azure Data Lake Gen1                                | -                | -                   | Igen             | -            | Yes                  |
     |                              | Azure Database for MariaDB, MySQL, PostgreSQL       | -                | -                   | Igen             | -            | Yes                  |
     |                              | Azure File Storage                                  | Igen              | -                   | Yes             | -            | .                    |
@@ -66,7 +66,7 @@ A Azure Integration Runtime és a saját üzemeltetésű Integration Runtime ada
     | Adattárak                  | Az adattárakban támogatott hálózati biztonsági mechanizmus         | Statikus IP-cím | Megbízható szolgáltatások  |
     |--------------------------------|---------------------------------------------------------------|-----------|---------------------|
     | Azure Pásti-adattárak       | Azure Cosmos DB                                               | Igen       | -                   |
-    |                                | Azure Data Explorer                                           | -         | -                   |
+    |                                | Azure Adatkezelő                                           | -         | -                   |
     |                                | Azure Data Lake Gen1                                          | Yes       | -                   |
     |                                | Azure Database for MariaDB, MySQL, PostgreSQL               | Yes       | -                   |
     |                                | Azure File Storage                                            | Yes       | -                   |

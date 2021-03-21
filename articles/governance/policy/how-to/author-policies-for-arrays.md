@@ -4,10 +4,10 @@ description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezése
 ms.date: 10/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98220745"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
@@ -629,7 +629,7 @@ Az alábbi példában szereplő összes feltételnél cserélje le a következő
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
-|Feltétel |Eredmény | Használati eset |Magyarázat |
+|Feltétel |Eredmény | Eset |Magyarázat |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |Semmit |Nincs egyezés |Az egyik tömb elem hamis (127.0.0.1! = 127.0.0.1) és egy True (127.0.0.1! = 192.168.1.1) értéket ad vissza, így a **notEquals** feltétel _hamis_ , és a hatás nincs aktiválva. |
 |`{<field>,"notEquals":"10.0.4.1"}` |Házirend hatása |Nincs egyezés |Mindkét tömb elem igaz értéket (10.0.4.1! = 127.0.0.1 és 10.0.4.1! = 192.168.1.1) is kiértékel, így a **notEquals** feltétel _igaz_ , és a hatás aktiválódik. |

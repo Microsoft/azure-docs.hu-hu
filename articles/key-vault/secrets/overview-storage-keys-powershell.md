@@ -10,10 +10,10 @@ manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023108"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
@@ -34,7 +34,7 @@ A felügyelt Storage-fiók kulcsa funkció használata esetén vegye figyelembe 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="service-principal-application-id"></a>Egyszerű szolgáltatásnév alkalmazásának azonosítója
+## <a name="service-principal-application-id"></a>Alkalmazáspéldány – Alkalmazásazonosító
 
 Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű szolgáltatással](../../active-directory/develop/developer-glossary.md#service-principal-object). Az egyszerű szolgáltatás az alkalmazás-AZONOSÍTÓként szolgál, amelyet az engedélyezési beállítások az Azure RBAC-n keresztül való hozzáféréshez használhatnak más Azure-erőforrásokhoz.
 
@@ -44,7 +44,7 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Bármely | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -268,7 +268,7 @@ Write-Output $secretValueText
 
 A parancs kimenete az SAS-definíciós karakterláncot jeleníti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felügyelt Storage-fiók kulcsainak mintái](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [PowerShell-útmutató Key Vault](/powershell/module/az.keyvault/#key_vault)

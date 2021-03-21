@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 76fd09b5e2c2540cbc1608558800e7897a6cf839
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375363"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
@@ -42,15 +42,15 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modelljének konfigurálása
 
-1. Adja hozzá a **döntési erdő regressziós** modulját a folyamathoz. A modult a tervezőben a **Machine learning** , a **modell inicializálása** és a **regresszió** lehetőség alatt találja.
+1. Adja hozzá a **döntési erdő regressziós** modulját a folyamathoz. A modult a tervezőben a **Machine learning**, a **modell inicializálása** és a **regresszió** lehetőség alatt találja.
 
 2. Nyissa meg a modul tulajdonságait, és az **újramintavételezési módszernél** válassza ki az egyes fák létrehozásához használt módszert.  A **csomagok** és a **replikálás** lehetőség közül választhat.
 
-    - **Poggyász** : a poggyászt rendszerindítási *összesítésnek* is nevezik. A regressziós döntési erdőben található fák mindegyike egy Gauss-eloszlást ad vissza előrejelzés útján. Az Összesítés egy olyan Gauss megkeresése, amelynek első két pillanata megegyezik az egyes fák által visszaadott összes eloszlás kombinálásával a Gauss-eloszlások keverékének pillanataival.
+    - **Poggyász**: a poggyászt rendszerindítási *összesítésnek* is nevezik. A regressziós döntési erdőben található fák mindegyike egy Gauss-eloszlást ad vissza előrejelzés útján. Az Összesítés egy olyan Gauss megkeresése, amelynek első két pillanata megegyezik az egyes fák által visszaadott összes eloszlás kombinálásával a Gauss-eloszlások keverékének pillanataival.
 
          További információ: a rendszerindítási [összesítések](https://wikipedia.org/wiki/Bootstrap_aggregating)Wikipedia-bejegyzése.
 
-    - **Replikálás** : a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.
+    - **Replikálás**: a replikáció során minden fát pontosan ugyanazok a bemeneti adatok képeznek. Az egyes facsomópontok esetében a kiosztott predikátumok véletlenszerűek maradnak, és a fák sokrétűek lesznek.
 
          További információ a betanítási folyamatról a **replikálási** lehetőséggel kapcsolatban: [Computer Vision és az orvosi képek elemzését szolgáló döntési erdők. Criminisi és J. Shotton. Springer 2013.](https://research.microsoft.com/projects/decisionforests/).
 
@@ -60,7 +60,7 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
       Ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek egy adott halmazát argumentumként. Lehetséges, hogy kísérletezéssel megismerte ezeket az értékeket, vagy útmutatásként kapta őket.
 
-    - **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján. 
+    - **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján. 
 
 
 

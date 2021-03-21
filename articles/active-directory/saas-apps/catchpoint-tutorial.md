@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
 ms.openlocfilehash: a8515920985c569df74b1e328d6bfe1c4ec97195
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98735314"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Catchpoint
@@ -68,7 +68,7 @@ Végezze el a következő szakaszt:
 
 Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. A **Catchpoint** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a ceruza ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
@@ -184,6 +184,6 @@ A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazá
 > 
 > ![Catchpoint-konfiguráció](./media/catchpoint-tutorial/loginimage.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Catchpoint konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a figyelmeztetés védelmet nyújt a szervezete bizalmas adatainak valós idejű kiszűrése és beszivárgása ellen. A munkamenet-vezérlő a feltételes hozzáférés kiterjesztése. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

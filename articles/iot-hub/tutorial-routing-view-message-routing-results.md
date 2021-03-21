@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: f441a1cf97c069c4755b436bbb8cb9268b469eb3
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102199747"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Oktatóanyag: 2. rész – az átirányított üzenetek megtekintése
@@ -190,7 +190,7 @@ Ez az alkalmazás üzeneteket küld a különböző üzenet-útválasztási mód
 
 Ha nem tölti le a fájlokat az adattárból az oktatóanyag 1. részében, folytassa a [IoT-eszköz szimulációjának](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)letöltésével. A hivatkozás kiválasztásával letölt egy tárházat több alkalmazással; a keresett megoldás a következő: IOT-hub/oktatóanyagok/Routing/IoT_SimulatedDevice. SLN. 
 
-Kattintson duplán a megoldás fájlra (IoT_SimulatedDevice. SLN) a kód megnyitásához a Visual Studióban, majd nyissa meg a Program.cs. Az `{your hub name}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{your device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
+Kattintson duplán a megoldás fájlra (IoT_SimulatedDevice. SLN) a kód megnyitásához a Visual Studióban, majd nyissa meg a program. cs fájlt. Az `{your hub name}` értéket cserélje le az IoT Hub gazdagépnevére. Az IoT Hub gazdagépnevének formátuma: **{iot-hub-name}.azure-devices.net**. Ebben az oktatóanyagban a központ gazdagépneve: **ContosoTestHub.azure-devices.net**. Ezután a `{your device key}` értéket cserélje le az eszközkulcsra, amelyet korábban, a szimulált eszköz beállítása során mentett. 
 
    ```csharp
         static string s_myDeviceId = "Contoso-Test-Device";

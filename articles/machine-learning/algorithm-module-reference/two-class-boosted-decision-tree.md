@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 810878956a89b6e7400be99692cf43925d1cd134
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94375912"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Two-Class megnövelt döntési fa modul
@@ -38,9 +38,9 @@ Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használa
   
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.
   
-    + **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
+    + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, megadhatja az értékek adott készletét argumentumként.
   
-    + **Paraméter tartománya** : Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
+    + **Paraméter tartománya**: Ha nem biztos benne, hogy a legjobb paramétereket használja, megkeresheti az optimális paramétereket az [Tune Model hiperparaméterek beállítása](tune-model-hyperparameters.md) modullal. Bizonyos értékeket adhat meg, és az oktató a beállítások több kombinációján keresztül megismétli a legjobb eredményt eredményező értékek kombinációját.
   
 3.  A **falevelek maximális számának** megadásához adja meg a fában létrehozható terminál-csomópontok (levelek) maximális számát.
   

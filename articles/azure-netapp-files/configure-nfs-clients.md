@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
 ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94409569"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>NFS-ügyfél konfigurálása az Azure NetApp Fileshoz
@@ -237,7 +237,7 @@ Az alábbi példa az AD LDAP-kiszolgálót az Ubuntu LDAP-ügyfélről kérdezi 
 `hari1:*:1237:1237:hari1:/home/hari1:/bin/bash`   
 
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)
 * [Kettős protokollú kötet létrehozása a Azure NetApp Fileshoz](create-volumes-dual-protocol.md)

@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
 ms.openlocfilehash: cd3e997bf2fda5f586fdb1ee4dcedff1adbf41f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946597"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Azure Portal használatával
@@ -42,7 +42,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport     | A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
+    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
     |Fürt típusa| Válassza a **fürt típusának kiválasztása** lehetőséget. Ezután válassza a **Hadoop** lehetőséget.|
     |Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót.|
     |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|

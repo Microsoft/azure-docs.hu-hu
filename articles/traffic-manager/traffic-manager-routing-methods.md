@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2021
 ms.author: duau
 ms.openlocfilehash: eeebded128f636ecba2e4e0dab1bc2f0632aaa6a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730972"
 ---
 # <a name="traffic-manager-routing-methods"></a>A Traffic Manager útválasztási módszerei
@@ -177,6 +177,6 @@ Az alhálózati útválasztással különböző felhasználói élményt biztos�
 * [Mi történik, ha egy végpont le van tiltva egy alhálózat útválasztási típusának profiljában?](./traffic-manager-faqs.md#what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan fejleszthet magas rendelkezésre állású alkalmazásokat [Traffic Manager Endpoint monitoring](traffic-manager-monitoring.md) használatával

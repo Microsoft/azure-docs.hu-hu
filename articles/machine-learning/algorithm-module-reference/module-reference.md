@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/09/2020
 ms.openlocfilehash: 89ad9aae7c0d01971bbcfc7e392cb9d455ef85cd
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94376842"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algoritmus & Azure Machine Learning Designer modul-hivatkozása
@@ -34,7 +34,7 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 
 | Funkció | Description | Modul |
 | --- |--- | --- |
-| Adatok bevitele és kimenete | A Felhőbeli forrásokból származó adatok áthelyezése a folyamatba. Megírhatja az eredményeket vagy köztes adatait az Azure Storage-ba, a SQL Databaseba vagy a kaptárba, egy folyamat futtatása közben, vagy a Felhőbeli tároló használatával átválthatja az adatátviteli folyamatokat.  | [Manuális adatbevitel](enter-data-manually.md) <br/> [Adatexportálás](export-data.md) <br/> [Adatimportálás](import-data.md) |
+| Adatok bevitele és kimenete | A Felhőbeli forrásokból származó adatok áthelyezése a folyamatba. Megírhatja az eredményeket vagy köztes adatait az Azure Storage-ba, a SQL Databaseba vagy a kaptárba, egy folyamat futtatása közben, vagy a Felhőbeli tároló használatával átválthatja az adatátviteli folyamatokat.  | [Manuális adatbevitel](enter-data-manually.md) <br/> [Adatexportálás](export-data.md) <br/> [Adatok importálása](import-data.md) |
 | Adatátalakítás | A gépi tanuláshoz egyedi adatokon alapuló műveletek, például a normalizálás vagy a dobozolási, a dimenzióját csökkentése és az adatok konvertálása különböző fájlformátumok között.| [Oszlopok hozzáadása](add-columns.md) <br/> [Sorok hozzáadása](add-rows.md) <br/> [Matematikai művelet alkalmazása](apply-math-operation.md) <br/> [SQL-átalakítás alkalmazása](apply-sql-transformation.md) <br/> [Hiányzó adatok törlése](clean-missing-data.md) <br/> [Értékek levágása](clip-values.md) <br/> [Konvertálás CSV formátumba](convert-to-csv.md) <br/> [Átalakítás adathalmazzá](convert-to-dataset.md) <br/> [Átalakítás mutatóértékekké](convert-to-indicator-values.md) <br/> [Metaadatok szerkesztése](edit-metadata.md) <br/> [Adatok csoportosítása intervallumokba](group-data-into-bins.md) <br/> [Csatlakozás adatokhoz](join-data.md) <br/> [Adatok normalizálása](normalize-data.md) <br/> [Partíció és minta](partition-and-sample.md)  <br/> [Ismétlődő sorok eltávolítása](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Oszlopok kiválasztása átalakításhoz](select-columns-transform.md) <br/> [Adathalmaz oszlopainak kiválasztása](select-columns-in-dataset.md) <br/> [Adatok felosztása](split-data.md) |
 | Szolgáltatás kiválasztása | Válassza ki a megfelelő, hasznos funkciók egy részhalmazát, amelyet az analitikai modell létrehozásához kíván használni. | [Szűrőalapú szolgáltatásválasztás](filter-based-feature-selection.md) <br/> [A permutáció funkció fontossága](permutation-feature-importance.md) |
 | Statisztikai függvények | Az adatelemzéshez kapcsolódó statisztikai módszerek széles skáláját adja meg. | [Adatok összegzése](summarize-data.md)|
@@ -45,7 +45,7 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 | --- |--- | --- |
 | Regresszió | Egy érték előrejelzése. | [Súlyozott döntési fa típusú regresszió](boosted-decision-tree-regression.md) <br/> [Döntési erdő típusú regresszió](decision-forest-regression.md) <br/> [Gyors erdő típusú kvantilis regresszió](fast-forest-quantile-regression.md)  <br/> [Lineáris regresszió](linear-regression.md)  <br/> [Neurális hálózat típusú regresszió](neural-network-regression.md)  <br/> [Poisson-regresszió](poisson-regression.md)  <br/>|
 | Fürtözés | Csoportosítsa az adathalmazokat.| [K-közép csoportosítás](k-means-clustering.md)
-| Osztályozás | Egy osztály előrejelzése.  Válasszon a bináris (kétosztályos) vagy a többosztályos algoritmusok közül.| [Többosztályos súlyozott döntési fa](multiclass-boosted-decision-tree.md) <br/> [Többosztályos döntési erdő](multiclass-decision-forest.md) <br/> [Többosztályos logisztikai regresszió](multiclass-logistic-regression.md)  <br/> [Többosztályos neurális hálózat](multiclass-neural-network.md) <br/> [One vs. All Multiclass](one-vs-all-multiclass.md) <br/> [Egy vagy egy többosztályos](one-vs-one-multiclass.md) <br/>[Kétosztályos átlagolt perceptron](two-class-averaged-perceptron.md) <br/>  [Kétosztályos súlyozott döntési fa](two-class-boosted-decision-tree.md)  <br/> [Kétosztályos döntési erdő](two-class-decision-forest.md) <br/>  [Kétosztályos logisztikai regresszió](two-class-logistic-regression.md) <br/> [Kétosztályos neurális hálózat](two-class-neural-network.md) <br/> [Kétosztályos támogató vektorgép](two-class-support-vector-machine.md) | 
+| Osztályozás | Egy osztály előrejelzése.  Válasszon a bináris (kétosztályos) vagy a többosztályos algoritmusok közül.| [Többosztályos súlyozott döntési fa](multiclass-boosted-decision-tree.md) <br/> [Többosztályos döntési erdő](multiclass-decision-forest.md) <br/> [Többosztályos logisztikai regresszió](multiclass-logistic-regression.md)  <br/> [Többosztályos neurális hálózat](multiclass-neural-network.md) <br/> [One vs. All Multiclass](one-vs-all-multiclass.md) <br/> [One vs. One Multiclass](one-vs-one-multiclass.md) <br/>[Kétosztályos átlagolt perceptron](two-class-averaged-perceptron.md) <br/>  [Kétosztályos súlyozott döntési fa](two-class-boosted-decision-tree.md)  <br/> [Kétosztályos döntési erdő](two-class-decision-forest.md) <br/>  [Kétosztályos logisztikai regresszió](two-class-logistic-regression.md) <br/> [Kétosztályos neurális hálózat](two-class-neural-network.md) <br/> [Kétosztályos támogató vektorgép](two-class-support-vector-machine.md) | 
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Modellek létrehozásához és kiértékeléséhez használható modulok
 

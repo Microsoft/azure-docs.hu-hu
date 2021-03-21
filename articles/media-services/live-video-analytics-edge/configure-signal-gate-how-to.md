@@ -4,10 +4,10 @@ description: Ez a cikk útmutatást nyújt ahhoz, hogyan konfigurálható a Sign
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.openlocfilehash: afcec7c03f1353f08b58311278f5a533e0c911bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94410793"
 ---
 # <a name="configure-a-signal-gate-for-event-based-video-recording"></a>Signal Gate beállítása eseményvezérelt videofelvételhez
@@ -58,35 +58,35 @@ A korrelációs azonosítók minden eseményhez be vannak állítva. Ezek az azo
 
 ### <a name="parameters-based-on-the-physical-time-that-events-arrive-at-the-signal-gate"></a>Paraméterek azon fizikai idő alapján, amelyet az események a Signal kapun érkeznek
 
-* **minimumActivationTime (a lehető legrövidebb időtartamú rögzítés)** : a Signal Gate-feldolgozó által az új események fogadását követően nyitva lévő másodpercek száma, ha a maximumActivationTime nem szakítja meg.
-* **maximumActivationTime (egy felvétel leghosszabb lehetséges időtartama)** : a kezdeti eseményből érkező másodpercek maximális száma, amely után a Signal Gate-processzor nyitva marad, miután új események fogadását kezdeményezték, függetlenül attól, hogy milyen események érkeznek.
-* **activationSignalOffset** : a Signal Gate-feldolgozó aktiválása és a videó rögzítésének kezdete közötti másodpercek száma. Ez az érték általában negatív, mert elindítja a rögzítést az eseményindító esemény előtt.
-* **activationEvaluationWindow** : a kezdeti kiváltó eseménytől kezdődően azon másodpercek száma, amelyekben a kezdeti esemény előtt bekövetkezett esemény, a médiában pedig a Signal Gate-feldolgozónak kell érkeznie, mielőtt figyelmen kívül lenne hagyva.
+* **minimumActivationTime (a lehető legrövidebb időtartamú rögzítés)**: a Signal Gate-feldolgozó által az új események fogadását követően nyitva lévő másodpercek száma, ha a maximumActivationTime nem szakítja meg.
+* **maximumActivationTime (egy felvétel leghosszabb lehetséges időtartama)**: a kezdeti eseményből érkező másodpercek maximális száma, amely után a Signal Gate-processzor nyitva marad, miután új események fogadását kezdeményezték, függetlenül attól, hogy milyen események érkeznek.
+* **activationSignalOffset**: a Signal Gate-feldolgozó aktiválása és a videó rögzítésének kezdete közötti másodpercek száma. Ez az érték általában negatív, mert elindítja a rögzítést az eseményindító esemény előtt.
+* **activationEvaluationWindow**: a kezdeti kiváltó eseménytől kezdődően azon másodpercek száma, amelyekben a kezdeti esemény előtt bekövetkezett esemény, a médiában pedig a Signal Gate-feldolgozónak kell érkeznie, mielőtt figyelmen kívül lenne hagyva.
 
 > [!NOTE]
 > A *késői beérkezés* minden olyan esemény, amely az aktiválási értékelési időszak után érkezik, de a kezdeti esemény előtt érkezik a médiában.
 
 ### <a name="limits-of-parameters"></a>Paraméterek korlátai
 
-* **activationEvaluationWindow** : 0 másodperc – 10 másodperc
-* **activationSignalOffset** : – 1 perc – 1 perc
-* **minimumActivationTime** : 1 másodperc – 1 óra
-* **maximumActivationTime** : 1 másodperc – 1 óra
+* **activationEvaluationWindow**: 0 másodperc – 10 másodperc
+* **activationSignalOffset**: – 1 perc – 1 perc
+* **minimumActivationTime**: 1 másodperc – 1 óra
+* **maximumActivationTime**: 1 másodperc – 1 óra
 
 
 A használati esetben a paramétereket a következőképpen állíthatja be:
 
-* **activationEvaluationWindow** : *K* másodperc
-* **activationSignalOffset** : *-X* másodperc
-* **minimumActivationWindow** : *Y* másodperc
-* **maximumActivationWindow** : *Z* másodperc
+* **activationEvaluationWindow**: *K* másodperc
+* **activationSignalOffset**: *-X* másodperc
+* **minimumActivationWindow**: *Y* másodperc
+* **maximumActivationWindow**: *Z* másodperc
 
 
 Íme egy példa arra, hogyan fog megjelenni a **Signal Gate processzor** -csomópont szakasz a következő paraméterek értékeihez:
-* **activationEvaluationWindow** : 1 másodperc
-* **activationSignalOffset** :-5 másodperc
-* **minimumActivationTime** : 20 másodperc
-* **maximumActivationTime** : 40 másodperc
+* **activationEvaluationWindow**: 1 másodperc
+* **activationSignalOffset**:-5 másodperc
+* **minimumActivationTime**: 20 másodperc
+* **maximumActivationTime**: 40 másodperc
 
 > [!IMPORTANT]
 > Az egyes paraméterek értékének az [ISO 8601 időtartam formátumát](https://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -120,7 +120,7 @@ Most gondolja át, hogyan fog működni a Signal Gate-processzor konfigurációj
 
 ### <a name="recording-scenarios"></a>Forgatókönyvek rögzítése
 
-**Egy esemény egy forrásból ( *normál aktiválás* )**
+**Egy esemény egy forrásból (*normál aktiválás*)**
 
 A Signal Gate-processzor, amely egy eseményt kap, egy olyan rögzítést eredményez, amely 5 másodpercet (aktiválási jel = 5 másodperc) indít el, mielőtt az esemény beérkezik a kapuba. A rögzítés többi része 20 másodperc (minimális aktiválási idő = 20 másodperc), mert más események nem érkeznek meg a kapu újraindításához szükséges minimális aktiválási idő végéig.
 
@@ -131,7 +131,7 @@ Példa diagramra:
 * Rögzítés időtartama =-eltolás + minimumActivationTime = [E1 + eltolás, E1 + minimumActivationTime]
 
 
-**Két esemény az egyik forrásból ( *újraindított aktiválás* )**
+**Két esemény az egyik forrásból (*újraindított aktiválás*)**
 
 A két eseményt fogadó Signal Gate-processzorok egy 5 másodpercet megkezdő rögzítést eredményeznek (az aktiválási jel eltolása = 5 másodperc), mielőtt az esemény beérkezik a kapuba. A 2. esemény az 1. esemény után 5 másodpercig is megérkezik. Mivel a 2. esemény az 1. esemény minimális aktiválási idejének (20 másodperc) vége előtt érkezik, a rendszer újraaktiválja a kaput. A rögzítés többi része 20 másodperc (a minimális aktiválási idő = 20 másodperc), mert más események nem érkeznek meg a 2. esemény minimális aktiválási ideje végéig a kapu újraindításához.
 
@@ -142,7 +142,7 @@ Példa diagramra:
 * Rögzítés időtartama =-eltolás + (2. esemény érkezése – 1. esemény érkezése) + minimumActivationTime
 
 
-***N* esemény az egyik forrásból ( *maximális aktiválás* )**
+***N* esemény az egyik forrásból (*maximális aktiválás*)**
 
 Az *N* eseményt fogadó Signal Gate-processzorok egy olyan rögzítést eredményeznek, amely 5 másodpercet indít el (az aktiválási jel eltolása = 5 másodperc), mielőtt az első esemény beérkezik a kapuba. Mivel minden esemény az előző eseménytől számított 20 másodperces idő lejárta előtt érkezik, a kaput folyamatosan újra kell indítani. Nyitva marad, amíg a maximális aktiválási idő 40 másodperc az első esemény után. Ezután a kapu bezárul, és már nem fogad új eseményeket.
 
@@ -155,7 +155,7 @@ Példa diagramra:
 > [!IMPORTANT]
 > Az előző ábrák azt feltételezik, hogy minden esemény a fizikai idő és a média időpontjában azonos pillanatban érkezik. Ez azt feltételezi, hogy nincsenek késői beérkezések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki az [Event-based video Recording oktatóanyagot](event-based-video-recording-tutorial.md). Kezdje a [topology.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)szerkesztésével. Módosítsa a signalgateProcessor csomópont paramétereit, majd kövesse az oktatóanyag további részeit. Tekintse át a videofelvételeket a paraméterek hatásának elemzéséhez.
 

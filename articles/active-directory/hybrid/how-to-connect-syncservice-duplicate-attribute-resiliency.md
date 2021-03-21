@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e09dd6a127bd04ae698cb6cad2ffd7f35e3b51c3
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413428"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 A duplikált attribútum-rugalmasság a Azure Active Directory egyik funkciója, amely megszünteti a **userPrincipalName** és az SMTP- **ProxyAddress** ütközések okozta súrlódást a Microsoft szinkronizálási eszközeinek valamelyikének futtatásakor.
 
-A két attribútumnak általában egyedinek kell lennie az adott Azure Active Directory bérlő összes **felhasználó** -, **csoport** -vagy **kapcsolattartó** -objektumában.
+A két attribútumnak általában egyedinek kell lennie az adott Azure Active Directory bérlő összes **felhasználó**-, **csoport**-vagy **kapcsolattartó** -objektumában.
 
 > [!NOTE]
 > Csak a felhasználók rendelkezhetnek UPN-vel.
@@ -44,7 +44,7 @@ _**\<OriginalPrefix> + \<4DigitNumber> \@ \<InitialTenantDomain> . onmicrosoft.c
 
 Az attribútum rugalmassági folyamata csak UPN-és SMTP- **ProxyAddress** -értékeket kezel.
 
-Ha az attribútum nem szükséges, például egy  **ProxyAddress** , Azure Active Directory egyszerűen karanténba helyezi az ütközési attribútumot, és folytatja az objektum létrehozását vagy frissítését.
+Ha az attribútum nem szükséges, például egy  **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezi az ütközési attribútumot, és folytatja az objektum létrehozását vagy frissítését.
 
 Az attribútum karanténba helyezése után a rendszer a régi viselkedésben használt, a hibajelentésben szereplő e-mail-címre küldi el az ütközésre vonatkozó információkat. Ez az információ azonban csak egyszer jelenik meg a hibajelentésben, amikor a Karanténba kerül, nem folytatja a jövőbeli e-mailek beléptetését. Továbbá, mivel az objektum exportálása sikeres volt, a szinkronizálási ügyfél nem naplóz egy hibát, és nem próbálja meg újból végrehajtani a létrehozás/frissítés műveletet a következő szinkronizálási ciklusok után.
 
@@ -75,7 +75,7 @@ A rendszer jelenleg két módszerrel azonosítja azokat az objektumokat, amelyek
 Ebben a témakörben a PowerShell-parancsmagok esetében a következők teljesülnek:
 
 * A következő parancsmagok mindegyike megkülönbözteti a kis-és nagybetűket.
-* A **– ErrorCategory PropertyConflict** mindig szerepelnie kell. Jelenleg nincsenek más típusú **ErrorCategory** , de ez a későbbiekben bővíthető.
+* A **– ErrorCategory PropertyConflict** mindig szerepelnie kell. Jelenleg nincsenek más típusú **ErrorCategory**, de ez a későbbiekben bővíthető.
 
 Első lépésként futtassa a **MsolService** , és adja meg a bérlői rendszergazda hitelesítő adatait.
 
@@ -106,7 +106,7 @@ Vagy
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyName ProxyAddresses`
 
 #### <a name="by-conflicting-value"></a>Ütköző értékkel
-Egy adott tulajdonsággal kapcsolatos hibák megtekintéséhez adja hozzá a **-tulajdonságérték** jelzőt ( **-PropertyName** kell használni a jelző hozzáadásakor is):
+Egy adott tulajdonsággal kapcsolatos hibák megtekintéséhez adja hozzá a **-tulajdonságérték** jelzőt (**-PropertyName** kell használni a jelző hozzáadásakor is):
 
 `Get-MsolDirSyncProvisioningError -ErrorCategory PropertyConflict -PropertyValue User@domain.com -PropertyName UserPrincipalName`
 
@@ -140,7 +140,7 @@ A hibákkal kapcsolatos hibaelhárítási stratégiák és a megoldási taktiká
 A következő cikk a különböző hibaelhárítási és megoldási stratégiákat ismerteti: [ismétlődő vagy érvénytelen attribútumok megakadályozzák a címtár-szinkronizálást az Office 365-ben](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Ismert problémák
-Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatások romlását. Ezek közül több esztétikai, mások pedig a standard " *Pre-rugalmasság* " ismétlődő attribútum hibáit okozzák az ütközési attribútum karanténba helyezése helyett, és egy másik, bizonyos hibák miatt további manuális javítást igényelnek.
+Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatások romlását. Ezek közül több esztétikai, mások pedig a standard "*Pre-rugalmasság*" ismétlődő attribútum hibáit okozzák az ütközési attribútum karanténba helyezése helyett, és egy másik, bizonyos hibák miatt további manuális javítást igényelnek.
 
 **Alapvető viselkedés:**
 
@@ -154,7 +154,7 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
     c. Exportáláskor a rendszer **ProxyAddress ütközési hibát okoz** a karanténba helyezett ütközési attribútumok helyett. A rendszer újrapróbálkozik a művelettel minden további szinkronizálási cikluson, mivel a rugalmassági funkció engedélyezése előtt lenne.
 2. Ha két csoport jön létre a helyszínen ugyanazzal az SMTP-címekkel, az egyik nem tudja kiépíteni az első kísérletet a standard ismétlődő **ProxyAddress** hibával. Az ismétlődő érték azonban megfelelően Karanténba kerül a következő szinkronizálási ciklusra.
 
-**Office portál jelentés** :
+**Office portál jelentés**:
 
 1. Az UPN-ütközőben lévő két objektum részletes hibaüzenete ugyanaz. Ez azt jelzi, hogy mindkét esetben az UPN-t módosították/karanténba helyezte, ha valójában csak az egyikük módosította az adatmennyiséget.
 2. Az egyszerű felhasználónévi ütközés részletes hibaüzenete egy olyan felhasználó helytelen displayName-üzenetét jeleníti meg, aki az UPN-t módosította/karanténba helyezte. Például:
@@ -167,7 +167,7 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
    
     d. A "B" **felhasználó** hibaüzenete azt jelzi **, hogy a felhasználó már** rendelkezik UPN-ként a **felhasználó \@ contoso.com** , de a **b felhasználó** saját DisplayName.
 
-**Identitásszinkronizálás hibajelentés** :
+**Identitásszinkronizálás hibajelentés**:
 
 A *probléma megoldásához szükséges lépések* hivatkozása helytelen:  
     ![Aktív felhasználók](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/6.png "Aktív felhasználók")  

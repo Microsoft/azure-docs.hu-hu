@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 2d046f5f039555e58d9ce4c028e750ce083fd5f4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733689"
 ---
 # <a name="tutorial-integrate-qlik-sense-enterprise-with-azure-active-directory"></a>Oktatóanyag: a Qlik Sense Enterprise integrálása a Azure Active Directory
@@ -254,7 +254,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 * Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Qlik Sense Enterprise csempére kattint, a rendszer átirányítja a Qlik Sense Enterprise bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután konfigurálta a Qlik Sense Enterprise-t, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 

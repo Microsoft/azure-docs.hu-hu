@@ -9,10 +9,10 @@ ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500767"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetőek el az Azure-ban?
@@ -23,7 +23,7 @@ Az Azure Managed Disks jelenleg négy lemez típust kínál, amelyek mindegyike 
 
 Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a standard SSD és a standard merevlemez-meghajtók (HDD) összehasonlítását ismerteti a felügyelt lemezekhez, amelyek segítségével eldöntheti, hogy mi a használat.
 
-| Részlet | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
+| Részletek | Ultralemez | Prémium SSD | Standard SSD | Standard HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |Lemeztípus   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatok, mint például a [SAP HANA](workloads/sap/hana-vm-operations-storage.md), a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, kisebb terhelésű vállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
@@ -149,6 +149,6 @@ Az ultra Disk díjszabásáról az [Azure Disks díjszabását ismertető oldalo
 
 A lemezes foglalás az a lehetőség, hogy a lemezes tárterületet egy évig előre, kedvezményes áron vásárolja meg, ami csökkenti a teljes költségeket. A lemezes foglalások megvásárlásakor kiválaszthat egy adott lemezes SKU-t egy adott régióban, például a 10 P30 (1TiB) prémium SSD-ket az USA 2. keleti régiójában egy éves időszakra. A foglalási élmény a fenntartott virtuális gépek (VM) példányaihoz hasonló. A megtakarítások maximalizálása érdekében a virtuális gépek és a lemezek foglalása is megtehető. Az Azure-lemezek foglalása egyéves kötelezettségvállalási tervet biztosít a P30 (1TiB) prémium SSD-SKU-k számára a P80 (32 TiB) és az összes éles régióban. A fenntartott lemezek díjszabásával kapcsolatos további információkért lásd az [Azure Disks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/managed-disks/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kezdéshez tekintse meg [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/) .

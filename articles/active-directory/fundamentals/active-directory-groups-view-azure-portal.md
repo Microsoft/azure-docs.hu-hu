@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996728"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -50,7 +50,7 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
     
     - **Tagság típusa:** válassza a **Hozzárendelt** lehetőséget.
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-new-user"></a>Új felhasználó létrehozása
 Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Az "egyéni tartománynevek" lapon először tekintse meg a hitelesített tartománynevet, amelyben a felhasználókat létre szeretné hozni. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
@@ -127,7 +127,7 @@ Ezt a csoportot több útmutatóban is használjuk, amelyek a dokumentáció **�
     >[!Important]
     >Ez nem törli Alain Charon felhasználót, csak a tagságát a törölt csoportban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikk azt ismerteti, hogyan társíthat egy előfizetést az Azure AD-címtárhoz.
 
 > [!div class="nextstepaction"]

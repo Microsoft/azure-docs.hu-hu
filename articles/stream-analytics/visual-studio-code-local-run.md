@@ -7,10 +7,10 @@ ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
 ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708449"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>A Visual Studio Code segítségével helyileg tesztelheti Stream Analytics lekérdezéseket a mintaadatok használatával
@@ -79,7 +79,7 @@ Az eredmény a jobb oldali ablakban jelenik meg. Kattintson a **Futtatás** gomb
 
 ![Helyi Futtatás eredményének megtekintése](./media/vscode-local-run/run-locally-result.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok helyi tesztelése élő bevitelsel a Visual Studio Code használatával](visual-studio-code-local-run-live-input.md)
 

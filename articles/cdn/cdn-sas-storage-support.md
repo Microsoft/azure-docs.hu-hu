@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: ccf55e0e3986de8afe23cb646d4df743b576900c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725322"
 ---
 # <a name="using-azure-cdn-with-sas"></a>A Azure CDN használata SAS használatával
@@ -134,7 +134,7 @@ Azure CDN biztonsági jogkivonat-hitelesítés használatához a Verizon-profiln
 
 Mivel a SAS-paraméterek nem láthatók a Azure CDN számára, Azure CDN a rájuk vonatkozó kézbesítési viselkedését nem tudja módosítani. A definiált paraméterek korlátozásai csak azokra a kérelmekre érvényesek, amelyeket a Azure CDN a forráskiszolgálón, nem az ügyféltől érkező kérések Azure CDN. Ezt a különbséget fontos figyelembe venni az SAS-paraméterek beállításakor. Ha ezek a speciális funkciók szükségesek, és a [3. lehetőséget](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)használja, állítsa be a megfelelő korlátozásokat a Azure CDN biztonsági jogkivonatra.
 
-| SAS-paraméter neve | Leírás |
+| SAS-paraméter neve | Description |
 | --- | --- |
 | Indítás | Az az idő, ameddig Azure CDN megkezdődhet a blob-fájl elérésének ideje. Az óra torzítása miatt (ha egy órajel-jel különböző időpontokban érkezik a különböző összetevőknél), akkor a 15 perccel korábbi időpontot válassza, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
 | Befejezés | Az az idő, amely után a Azure CDN már nem fér hozzá a blob-fájlhoz. A korábban gyorsítótárazott fájlok Azure CDN továbbra is elérhetők. A fájl lejárati idejének szabályozásához állítsa be a megfelelő lejárati időt a Azure CDN biztonsági jogkivonatban, vagy Ürítse ki az eszközt. |

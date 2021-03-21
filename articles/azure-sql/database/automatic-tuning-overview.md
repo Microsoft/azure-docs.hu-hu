@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
 ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500869"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatikus hangolás a Azure SQL Database és az Azure SQL felügyelt példányában
@@ -65,7 +65,7 @@ A Azure SQL Database és az Azure SQL felügyelt példányaiban elérhető Autom
 | :----------------------------- | ----- | ----- |
 | **Index létrehozása** – azonosítja azokat az indexeket, amelyek javíthatják a munkaterhelés teljesítményét, indexeket hoz létre, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult-e. | Igen | Nem |
 | **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket hosszú ideje nem használtak (>90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
-| **Utolsó jó csomag kényszerítése** (automatikus terv javítása) – az Azure SQL-lekérdezéseket egy olyan végrehajtási terv használatával azonosítja, amely lassabb, mint az előző helyes csomag, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
+| **Utolsó jó csomag kényszerítése** (automatikus terv javítása) – az Azure SQL-lekérdezéseket egy olyan végrehajtási terv használatával azonosítja, amely lassabb, mint az előző helyes csomag, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Yes |
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL Database automatikus finomhangolása
 
@@ -92,7 +92,7 @@ Az Automatikus hangolási javaslatokra vonatkozó e-mail-értesítések létreho
 
 Az SQL felügyelt példányának automatikus finomhangolása csak az **utolsó jó csomag kényszerítését** támogatja. Az Automatikus hangolási beállítások T-SQL-en keresztüli konfigurálásával kapcsolatos további információkért lásd: az automatikus [hangolás bevezeti az automatikus terv javítását](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és az [automatikus terv javítását](/sql/relational-databases/automatic-tuning/automatic-tuning?view=sql-server-ver15#automatic-plan-correction).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az automatikus hangolásban használt beépített intelligenciával kapcsolatos információkért lásd: [mesterséges intelligencia-dallamok Azure SQL Database](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
 - Annak megismeréséhez, hogy az automatikus hangolás hogyan működik a motorháztető alatt, tekintse meg a [több millió adatbázis automatikus indexelése Microsoft Azure SQL Databaseban](https://www.microsoft.com/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)című témakört.

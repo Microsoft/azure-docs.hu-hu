@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
 ms.openlocfilehash: dc8db3f1eccce2bb85f03d51fcfd1c4113823d49
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222666"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Virtuális hálózati társak létrehozása, módosítása vagy törlése
@@ -88,7 +88,7 @@ A társítás módosítása előtt Ismerkedjen meg a követelményekkel és a me
 3. A **Beállítások** **területen válassza a** társítások lehetőséget.
 4. Válassza ki a megtekinteni kívánt társítást, vagy módosítsa a beállításait.
 5. Módosítsa a megfelelő beállítást. Olvassa el a társítás létrehozása című [cikk 5. lépésében](#add-peering) található egyes beállítások lehetőségeit.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 **Parancsok**
 

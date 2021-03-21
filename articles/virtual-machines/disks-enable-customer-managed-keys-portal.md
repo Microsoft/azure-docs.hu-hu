@@ -8,10 +8,10 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96499390"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>A Azure Portal használatával engedélyezheti a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokkal a felügyelt lemezeken
@@ -72,7 +72,7 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
     ![Képernyőkép a példaként szolgáló virtuális gépről a lemezek panel megnyitásával. Az operációsrendszer-lemez ki van emelve, mint például a kiválasztható lemez.](media/virtual-machines-disk-encryption-portal/server-side-encryption-existing-disk-select.png)
 
 1. Válassza a **titkosítás** lehetőséget, majd válassza a titkosítás lehetőséget az **ügyfél által felügyelt kulccsal** , majd válassza ki a lemez titkosítási készletét a legördülő listából.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Képernyőkép a példa operációsrendszer-lemezéről. A titkosítás panel meg van nyitva, és az ügyfél által felügyelt kulccsal történő titkosítás van kiválasztva, valamint a példa Azure Key Vault. A beállítások megadása után a Mentés gomb van kiválasztva.](media/virtual-machines-disk-encryption-portal/server-side-encryption-encrypt-existing-disk-customer-managed-key.png)
 
@@ -82,7 +82,7 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az ügyfél által felügyelt kulcsokkal rendelkező titkosított lemezek létrehozásához Azure Resource Manager-sablonok megismerése](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Mi az Azure Key Vault?](../key-vault/general/overview.md)

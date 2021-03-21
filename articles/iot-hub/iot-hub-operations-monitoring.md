@@ -10,10 +10,10 @@ ms.date: 03/11/2019
 ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
 ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94408124"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub Operations monitoring (elavult)
@@ -201,7 +201,7 @@ A figyelési végponthoz való kapcsolódáshoz szükség van egy kapcsolati szt
 
     ![Az Event hub-kompatibilis végpont értékei](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Válassza a **megosztott hozzáférési házirendek** , majd a **szolgáltatás** elemet. Jegyezze fel az **elsődleges kulcs** értékét:
+3. Válassza a **megosztott hozzáférési házirendek**, majd a **szolgáltatás** elemet. Jegyezze fel az **elsődleges kulcs** értékét:
 
     ![Szolgáltatás megosztott hozzáférési házirendjének elsődleges kulcsa](./media/iot-hub-operations-monitoring/service-key.png)
 
@@ -265,7 +265,7 @@ class Program
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IoT Hub figyelésének Azure Monitor való további megismeréséhez lásd:
 

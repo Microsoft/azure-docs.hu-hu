@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: references_regions
 ms.openlocfilehash: 3b19fab33d0c8f53025605fd14fe65f08e660392
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101677923"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Támogatott adatforrások és fájltípusok az Azure hatáskörébe
@@ -30,7 +30,7 @@ Az Azure-beli hatáskörébe a következő források támogatottak:
 | Azure SQL Database (DB)                  | SQL-hitelesítés, egyszerű szolgáltatásnév, MSI               | UX |
 | Felügyelt Azure SQL Database-példány      | SQL-hitelesítés, egyszerű szolgáltatásnév, MSI               | UX    |
 | Azure Blob Storage                       | Fiók kulcsa, szolgáltatásnév, MSI | UX            |
-| Azure Data Explorer                      | Szolgáltatásnév                              | UX            |
+| Azure Adatkezelő                      | Szolgáltatásnév                              | UX            |
 | Azure Data Lake Storage Gen1 (ADLS Gen1) | Szolgáltatásnév, MSI                              | UX            |
 | Azure Data Lake Storage Gen2 (ADLS Gen2) | Fiók kulcsa, szolgáltatásnév, MSI            | UX            |
 | Azure Cosmos DB                          | Fiók kulcsa                                    | UX            |
@@ -97,7 +97,7 @@ Az alábbi lista felsorolja az összes olyan Azure-adatforrást (adatközpont-) 
 - SouthAfricaNorth
 - FranceCentral
 
-## <a name="classification"></a>Besorolás
+## <a name="classification"></a>Osztályozás
 
 Az összes 105 rendszerbesorolási szabály a strukturált fájlformátumokra vonatkozik. Csak az MCE besorolási szabályok érvényesek a dokumentumok fájltípusára (nem az adatvizsgálati natív regex-mintákra, a Bloom Filter-alapú észlelésre). A támogatott besorolásokkal kapcsolatos további információkért lásd: [támogatott besorolások az Azure hatáskörébe](supported-classifications.md).
 

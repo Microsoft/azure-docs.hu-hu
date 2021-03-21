@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
 ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97106580"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rövid útmutató: batch-fiók létrehozása ARM-sablon használatával
@@ -56,7 +56,7 @@ Két Azure-erőforrás van definiálva a sablonban:
    - **Hely**: hagyja meg az alapértelmezett értéket, hogy az erőforrások ugyanabban a helyen legyenek, mint az erőforráscsoport.
    - Elfogadom a fenti feltételeket és kikötéseket: **Select**.
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 Néhány perc elteltével megjelenik egy értesítés arról, hogy a Batch-fiók létrehozása sikeresen megtörtént.
 

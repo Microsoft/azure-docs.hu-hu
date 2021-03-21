@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
 ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96499135"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba
@@ -37,7 +37,7 @@ A [SPEECH SDK](speech-sdk.md) a Bing Speech ügyféloldali kódtárak funkcioná
 
 A beszédfelismerési szolgáltatás nagymértékben hasonló a Bing Speechhoz, a következő eltérésekkel.
 
-| Jellemző | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
+| Szolgáltatás | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | A Speech Service támogatja a Windows 10, a Univerzális Windows-platform (UWP) és a .NET Standard 2,0. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | A Speech Service támogatja a Windowst és a Linuxot. |
@@ -81,7 +81,7 @@ Bing Speech ügyfeleknek [támogatási jegy](https://ms.portal.azure.com/#blade/
 
 A Speech Service, az SDK és az API támogatásához látogasson el a Speech Service [támogatási oldalára](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free)
 * [A diktálás használatának első lépései](get-started-speech-to-text.md)

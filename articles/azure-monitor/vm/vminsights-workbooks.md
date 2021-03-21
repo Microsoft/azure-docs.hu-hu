@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046516"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Interaktív jelentések készítése a virtuális gépekről a munkafüzetekből
@@ -25,7 +25,7 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 
 A következő táblázat összefoglalja azokat a munkafüzeteket, amelyekkel a virtuális gépek bepillantást nyerhet a kezdéshez.
 
-| Munkafüzet | Leírás | Hatókör |
+| Munkafüzet | Description | Hatókör |
 |----------|-------------|-------|
 | Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
 | Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |

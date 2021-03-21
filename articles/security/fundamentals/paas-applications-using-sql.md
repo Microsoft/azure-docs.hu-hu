@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 278812754c636d434bf579c0408832f1e99d3445
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94408073"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Ajánlott eljárások a Pásti-adatbázisok biztonságossá tételéhez az Azure-ban
@@ -30,7 +30,7 @@ A Azure SQL Database és az Azure szinapszis Analytics egy, az internetalapú al
 
 - Azure Active Directory hitelesítés (SQL Server hitelesítés helyett)
 - Azure SQL tűzfal
-- Transzparens adattitkosítás (TDE)
+- Transparent Data Encryption (TDE)
 
 ## <a name="use-a-centralized-identity-repository"></a>Központosított Identity repository használata
 
@@ -84,7 +84,7 @@ Szelektív adathoz is használható az alkalmazás szintjének titkosítása. Az
 
 Az adatbázis biztonságossá tételéhez további óvintézkedéseket is használhat, például a biztonságos rendszer megtervezését, a bizalmas eszközök titkosítását és a tűzfal létrehozását az adatbázis-kiszolgálók köré.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a SQL Database és az Azure szinapszis Analytics biztonsági eljárásainak egy gyűjteményét mutatta be, amelyekkel biztosíthatja a Pásti web-és Mobile-alkalmazások védelmét. További információ a Pásti-telepítések biztonságossá tételéről:
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 70b6231829173059ffee675105bacbe1bd1532f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023891"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple-Eszközkezelő használata a StorSimple virtuális tömbhöz tartozó Storage-fiók hitelesítő adatainak kezeléséhez
@@ -150,5 +150,5 @@ Ahhoz, hogy tájékoztassa a StorSimple Eszközkezelő szolgáltatását a vált
    
     ![Hozzáférési kulcs szinkronizálása](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple virtuális tömböt](storsimple-ova-web-ui-admin.md).

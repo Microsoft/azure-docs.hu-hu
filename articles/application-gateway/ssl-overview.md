@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: victorh
 ms.openlocfilehash: c39401289ffc6f27c292168adaa15c5163a3967b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96001286"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
@@ -124,7 +124,7 @@ Az alábbi táblázatok a v1 és v2 SKU közötti különbségeket ismertetik a 
 ### <a name="frontend-tls-connection-client-to-application-gateway"></a>Előtér-TLS-kapcsolatok (ügyfél – Application Gateway)
 
 ---
-Használati eset | v1 | v2 |
+Eset | v1 | v2 |
 | --- | --- | --- |
 | Ha az ügyfél megadja a SNI fejlécét, és az összes többhelyes figyelő engedélyezve van a "SNI megkövetelése" jelzővel | Adja vissza a megfelelő tanúsítványt, és ha a hely nem létezik (a server_name alapján), a kapcsolat alaphelyzetbe áll. | Ha elérhető, a megfelelő tanúsítványt adja vissza, ha van, akkor a visszaadja az első konfigurált HTTPS-figyelő tanúsítványát (a sorrendben).|
 | Ha az ügyfél nem ad meg SNI-fejlécet, és ha az összes többhelyes fejléc engedélyezve van a "SNI megkövetelése" értékkel | A kapcsolatok alaphelyzetbe állítása | Az első konfigurált HTTPS-figyelő tanúsítványát adja vissza (a sorrendben).
@@ -135,7 +135,7 @@ Használati eset | v1 | v2 |
 #### <a name="for-probe-traffic"></a>Mintavételi forgalom esetén
 
 ---
-Használati eset | v1 | v2 |
+Eset | v1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) fejléc a TLS-kézfogás során FQDN-ként | Állítsa be FQDN-ként a háttér-készletből. Az [RFC 6066](https://tools.ietf.org/html/rfc6066)-es verzióban a SNI állomásnév nem engedélyezi a literális IPv4-és IPv6-címeket. <br> **Megjegyzés:** A háttér-készlet teljes tartománynevének a DNS-t kell feloldania a háttér-kiszolgáló IP-címére (nyilvános vagy privát) | A SNI fejléce (server_name) a HTTP-beállításokhoz csatolt egyéni mintavétel állomásneve (ha be van állítva), más néven a HTTP-beállításokban említett állomásnév, ellenkező esetben a háttér-készletben említett teljes tartománynév. A sorrend sorrendje egyéni mintavételi > HTTP-beállítások > háttér-készlet. <br> **Megjegyzés:** Ha a HTTP-beállításokban és az egyéni mintavételben konfigurált állomásnevek eltérnek, akkor a prioritás szerint a SNI az egyéni mintavétel állomásneveként lesz beállítva.
 | Ha a háttér-készlet címe IP-cím (v1), vagy ha az egyéni mintavételi állomásnév IP-címként van konfigurálva (v2) | A SNI (server_name) nem állítható be. <br> **Megjegyzés:** Ebben az esetben a háttér-kiszolgálónak képesnek kell lennie egy alapértelmezett/tartalék tanúsítvány visszaadására, és ezt engedélyezni kell a hitelesítési tanúsítvány alatt a HTTP-beállítások között. Ha nincs beállítva alapértelmezett/tartalék tanúsítvány a háttér-kiszolgálón, és a SNI várható, a kiszolgáló alaphelyzetbe állíthatja a kapcsolódást, és mintavételi hibákhoz vezethet. | A korábban említett elsőbbségi sorrendben, ha az IP-címe állomásnév, akkor a SNI nem lesz beállítva [RFC 6066](https://tools.ietf.org/html/rfc6066)-ként. <br> **Megjegyzés:** A SNI szintén nem állítható be v2-mintavétel esetén, ha nincs beállítva egyéni mintavétel, és nincs beállítva állomásnév a HTTP-beállítások vagy a háttér-készlet számára. |
@@ -146,12 +146,12 @@ Használati eset | v1 | v2 |
 #### <a name="for-live-traffic"></a>Élő forgalom esetén
 
 ---
-Használati eset | v1 | v2 |
+Eset | v1 | v2 |
 | --- | --- | --- |
 | SNI (server_name) fejléc a TLS-kézfogás során FQDN-ként | Állítsa be FQDN-ként a háttér-készletből. Az [RFC 6066](https://tools.ietf.org/html/rfc6066)-es verzióban a SNI állomásnév nem engedélyezi a literális IPv4-és IPv6-címeket. <br> **Megjegyzés:** A háttér-készlet teljes tartománynevének a DNS-t kell feloldania a háttér-kiszolgáló IP-címére (nyilvános vagy privát) | A SNI fejléce (server_name) a HTTP-beállítások állomásnévként van beállítva, ellenkező esetben, ha a *PickHostnameFromBackendAddress* beállítás van kiválasztva, vagy ha nincs megadva állomásnév, akkor a rendszer a háttérrendszer-készlet KONFIGURÁCIÓJÁNAK teljes tartománynevét adja meg.
 | Ha a háttérbeli készlet címe IP-cím vagy állomásnév nincs beállítva a HTTP-beállításokban | A SNI nem állítható be [RFC 6066](https://tools.ietf.org/html/rfc6066) -ként, ha a háttérbeli készlet bejegyzése nem teljes tartománynév | A SNI az ügyféltől származó bemeneti FQDN állomásnévként lesz beállítva, és a háttér-tanúsítvány CN-nek egyeznie kell ezzel az állomásnévvel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A végpontok közötti TLS-vel kapcsolatos ismeretek megismerése után nyissa meg a végpontok közötti TLS-t a [Application Gateway és a PowerShell használatával](application-gateway-end-to-end-ssl-powershell.md) , és hozzon létre egy Application Gatewayt a végpontok közötti TLS használatával.
 
