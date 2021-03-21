@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 907f95bb150e0e5127c129595739a15ea712771b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216496"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604712"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Oktatóanyag: az Azure Key Vault-szolgáltató konfigurálása és futtatása a Secrets Store CSI-illesztőprogramhoz a Kubernetes-ben
 
 > [!IMPORTANT]
 > A Secrets Store CSI-illesztőprogram egy nyílt forráskódú projekt, amelyet az Azure technikai támogatása nem támogat. Az oldal alján található GitHub-hivatkozásra kattintva jelentse be a CSI-illesztőprogram Key Vault integrálásával kapcsolatos összes visszajelzést és problémát. Ez az eszköz arra szolgál, hogy a felhasználók önállóan telepítsék a fürtöket, és visszajelzést gyűjtsenek a Közösségtől.
 
-Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával a titkokat a Kubernetes hüvelybe csatlakoztatni.
+Ebben az oktatóanyagban a titkokat az Azure Key vaultban érheti el és kéri le, a Secrets Store Container Storage Interface (CSI) illesztőprogram használatával, hogy kötetként csatlakoztassa a titkokat a Kubernetes hüvelybe.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

@@ -8,10 +8,10 @@ ms.date: 02/02/2021
 ms.topic: how-to
 ms.service: azure
 ms.openlocfilehash: c8bb44d323574f6815aa570b271ed4c0df1fc6be
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100526918"
 ---
 # <a name="manage-individual-sensors"></a>Különálló érzékelők kezelése
@@ -282,7 +282,7 @@ A CLI-parancs használatakor:
 
 A tanúsítványokat a következő parancsokkal kezelheti:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Új titkos kulcs és tanúsítvány-aláírási kérelem létrehozása | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
 | Önaláírt tanúsítvány létrehozása | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
@@ -292,7 +292,7 @@ A tanúsítványokat a következő parancsokkal kezelheti:
 
 Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli adatokat, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | Tanúsítvány-aláírási kérelem (CSR) keresése | `openssl req -text -noout -verify -in CSR.csr` |
 | Titkos kulcs keresése | `openssl rsa -in privateKey.key -check` |
@@ -300,13 +300,13 @@ Ha ellenőriznie kell a tanúsítványon, a CSR-en vagy a titkos kulcson belüli
 
 Ha hibaüzenet jelenik meg arról, hogy a titkos kulcs nem egyezik a tanúsítvánnyal, vagy ha egy helyre telepített tanúsítvány nem megbízható, a következő parancsokkal javítsa ki a hibát;
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | A nyilvános kulcs MD5-kivonatának ellenőrzése annak biztosításához, hogy az megfelel-e a CSR vagy a titkos kulcsnak | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
 
 Ha a tanúsítványokat és a kulcsokat különböző formátumokra szeretné átalakítani, hogy azok kompatibilisek legyenek a kiszolgálók vagy szoftverek bizonyos típusaival, használja a következő parancsokat:
 
-| Leírás | CLI-parancs |
+| Description | CLI-parancs |
 |--|--|
 | DER-fájl konvertálása (. CRT. cer. der) a PEM-ba  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
 | PEM-fájl átalakítása DER-re | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |

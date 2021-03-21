@@ -78,7 +78,7 @@ A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a fela
 * [Fiók létrehozása – parancssori felület](./create-account-howto.md)
 * [Adatelérési API-k – parancssori felület](./access-api-howto.md)
 * [Kódolás HTTPS-sel, a feladathoz megadott bemenetként – .NET](job-input-from-http-how-to.md)  
-* [Események monitorozása – Portál](monitor-events-portal-how-to.md)
+* [Események monitorozása – Portál](monitoring/monitor-events-portal-how-to.md)
 * [Dinamikus titkosítás a multi-DRM-.NET használatával](protect-with-drm.md) 
 * [Kódolás egyéni átalakítással – parancssori felület](custom-preset-cli-howto.md)
 

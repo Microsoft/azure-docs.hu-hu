@@ -4,10 +4,10 @@ description: Ismerteti, hogyan tölthetők fel egyéni rendszerképek a megoszto
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787163"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Egyéni rendszerkép feltöltése a Shared Image Gallerybe
@@ -64,7 +64,7 @@ Számos lehetőség létezik a virtuális merevlemez fizikai tesztkörnyezet kö
 
     Ha az operációs rendszer telepítése után kibontotta a lemezt az eredeti Hyper-V virtuális gépen, akkor a Windows C meghajtóját is ki kell terjeszteni a nem lefoglalt lemezterület használatára. Ehhez jelentkezzen be a sablon virtuális gépre a labor létrehozása után, majd kövesse az [alapszintű Kötet kiterjesztése](/windows-server/storage/disk-management/extend-a-basic-volume)című részhez hasonló lépéseket. Ezt a felhasználói felületen és a PowerShell használatával is elvégezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megosztott képgyűjtemény – áttekintés](../virtual-machines/shared-image-galleries.md)
 * [A megosztott képgyűjtemény használata](how-to-use-shared-image-gallery.md)

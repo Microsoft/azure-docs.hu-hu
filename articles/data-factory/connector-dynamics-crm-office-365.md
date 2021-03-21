@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 03/08/2021
-ms.openlocfilehash: b1e7511f7666455592b6d5f463a316c3354ec76b
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/17/2021
+ms.openlocfilehash: ec24fa1bde21c70aa95fc33c92048aebc9f6659c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447435"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597385"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365-be (Common Data Service/Microsoft Dataverse) vagy a Dynamics CRM-be a Azure Data Factory használatával
 
@@ -323,6 +323,7 @@ Az adatmásoláshoz a másolási **tevékenység** elfogadója szakasz a követk
 | alternateKeyName | Az entitáson definiált másodlagos kulcs neve upsert. | Nem. |
 | writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem. Az alapértelmezett érték 10. |
 | ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak**:<ul><li>**True (igaz**): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis**). |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 >[!NOTE]
 >A fogadó **writeBatchSize** és a **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** másolási tevékenységének alapértelmezett értéke 10. Ezért a 100-es rekordokat a rendszer alapértelmezés szerint egyszerre küldi el a Dynamics számára.

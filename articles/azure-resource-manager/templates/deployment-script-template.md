@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 03/18/2021
 ms.author: jgao
-ms.openlocfilehash: 9d045fb75838ac016f3e9b04cd2519d8a8530a4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175651"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594242"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban
 
@@ -162,11 +162,11 @@ Tulajdonság értékének részletei:
   > [!NOTE]
   > A Azure Portal nem tudja elemezni az üzembe helyezési parancsfájlt több sorral. Ha a Azure Portal segítségével szeretne üzembe helyezni egy sablont a telepítési parancsfájllal, a PowerShell-parancsokat pontosvesszővel kell elosztani egy sorba, vagy a `primaryScriptUri` tulajdonságot külső parancsfájllal is használhatja.
 
-- `primaryScriptUri`: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával.
-- `supportingScriptUris`: Adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a vagy a által meghívott fájlokat `scriptContent` `primaryScriptUri` .
+- `primaryScriptUri`: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával. További információ: [külső parancsfájlok használata](#use-external-scripts).
+- `supportingScriptUris`: Adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a vagy a által meghívott fájlokat `scriptContent` `primaryScriptUri` . További információ: [külső parancsfájlok használata](#use-external-scripts).
 - `timeout`: Adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
 - `cleanupPreference`. Adja meg a telepítési erőforrások törlésének előnyét, ha a parancsfájl végrehajtása terminál állapotba kerül. Az alapértelmezett beállítás **mindig**, ami azt jelenti, hogy a rendszer a terminál állapota (sikeres, sikertelen, megszakított) ellenére törli az erőforrásokat. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
-- `retentionInterval`: Adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az adatmegőrzési időköz 1 és 26 óra közötti (PT26H). Ezt a tulajdonságot akkor használja a rendszer, ha a `cleanupPreference` értéke **OnExpiration**. A **OnExpiration** tulajdonság jelenleg nincs engedélyezve. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
+- `retentionInterval`: Adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az adatmegőrzési időköz 1 és 26 óra közötti (PT26H). Ezt a tulajdonságot akkor használja a rendszer, ha a `cleanupPreference` értéke **OnExpiration**. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>További minták
 
@@ -212,7 +212,7 @@ A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Cs
 
 További információ: [példa a sablonra](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-A külső parancsfájloknak elérhetőnek kell lenniük. Az Azure Storage-fiókokban tárolt parancsfájlok biztonságossá tételéhez lásd: [Private ARM-sablon üzembe helyezése sas-token](./secure-template-with-sas-token.md)használatával.
+A külső parancsfájloknak elérhetőnek kell lenniük. Az Azure Storage-fiókokban tárolt parancsfájlok biztonságossá tételéhez állítson be egy SAS-tokent, és vegye fel azt a sablon URI-kódjába. Állítsa be a lejárati időt, hogy elegendő idő legyen a telepítés befejezésére. További információ: [Private ARM-sablon üzembe helyezése sas-tokenrel](./secure-template-with-sas-token.md).
 
 Ön felelős az üzembe helyezési parancsfájl által hivatkozott parancsfájlok integritásának biztosításáért, `primaryScriptUri` vagy `supportingScriptUris` . Csak a megbízható parancsfájlokra hivatkozzon.
 
@@ -313,7 +313,7 @@ A parancsfájl-szolgáltatás az erőforrás-kiépítési állapotot úgy állí
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok továbbítása a telepítési parancsfájlba
 
-A környezeti változók (EnvironmentVariable) beállítása a Container instances szolgáltatásban lehetővé teszi a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját. Az üzembe helyezési parancsfájl ugyanúgy kezeli a nem védett és a biztonságos környezeti változókat, mint az Azure Container instance. További információ: [környezeti változók beállítása a Container instances](../../container-instances/container-instances-environment-variables.md#secure-values)szolgáltatásban.
+A környezeti változók (EnvironmentVariable) beállítása a Container instances szolgáltatásban lehetővé teszi a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját. Az üzembe helyezési parancsfájl ugyanúgy kezeli a nem védett és a biztonságos környezeti változókat, mint az Azure Container instance. További információ: [környezeti változók beállítása a Container instances](../../container-instances/container-instances-environment-variables.md#secure-values)szolgáltatásban. Példaként lásd: [példák a sablonokra](#sample-templates).
 
 A környezeti változók maximálisan megengedett mérete 64 KB.
 
@@ -566,7 +566,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Leírás |
+| Hibakód | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem lehet törölni a nem terminál állapotú központi telepítési parancsfájl erőforrását, és a végrehajtás nem haladja meg az 1 órát. Vagy nem lehet újból futtatni ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl szövegtörzse is egy időben. |

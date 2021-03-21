@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: ba960465ab0ca8d5124d5882e3578e61fee2cf14
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 74e7d1a54b1d760979dbf9833e85ec728b4e5e3a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490143"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595889"
 ---
 # <a name="azure-percept-dk-overview"></a>Az Azure Percept DK áttekintése
 
@@ -21,7 +21,12 @@ Az Azure Percept DK egy élvonalbeli AI-és IoT-fejlesztési csomag, amely a fog
 > [!div class="nextstepaction"]
 > [Vásárlás](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK-eszköz.":::
+<!---
+:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK device.":::
+--->
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 

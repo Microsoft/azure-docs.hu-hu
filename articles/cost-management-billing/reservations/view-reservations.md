@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 02/24/2021
+ms.date: 03/17/2021
 ms.author: banders
-ms.openlocfilehash: 477dff9db28672f8231710af34786ac387f43b71
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c666602f764e8274cb2a30df204e97479c85ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050341"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104583054"
 ---
 # <a name="view-azure-reservations"></a>Azure-foglalások megtekintése
 
@@ -39,7 +39,7 @@ Két lehetősége van, ha más személyeknek is engedélyezni szeretné a foglal
     1. Válassza ki a felhasználót, majd válassza a **Mentés** lehetőséget.
 
 - Adjon hozzá egy felhasználót számlázási rendszergazdaként egy Nagyvállalati Szerződéshez vagy egy Microsoft Ügyfélszerződéshez:
-    - Nagyvállalati Szerződés esetén vegye fel a felhasználókat _vállalati rendszergazda_ szerepkörbe az összes foglalási rendelés megtekintéséhez és kezeléséhez, amelyekre a Nagyvállalati Szerződés vonatkozik. A _Vállalati rendszergazda (csak olvasási)_ szerepkörrel rendelkező felhasználók csak megtekinthetik a foglalásokat. A részleg rendszergazdái és a fióktulajdonosai nem tekinthetik meg a foglalásokat _kivéve_, ha kifejezetten a hozzáférés-vezérlés (IAM) használatával lettek hozzáadva. További információért lásd: [Az Azure Enterprise szerepköreinek kezelése](../manage/understand-ea-roles.md).
+    - Nagyvállalati Szerződés esetén vegye fel a felhasználókat _vállalati rendszergazda_ szerepkörbe az összes foglalási rendelés megtekintéséhez és kezeléséhez, amelyekre a Nagyvállalati Szerződés vonatkozik. A vállalati rendszergazdák megtekinthetik és kezelhetik **Cost Management + számlázással** kapcsolatos foglalásokat, és nem **foglalásokat**. A _Vállalati rendszergazda (csak olvasási)_ szerepkörrel rendelkező felhasználók csak megtekinthetik a foglalásokat. A részleg rendszergazdái és a fióktulajdonosai nem tekinthetik meg a foglalásokat _kivéve_, ha kifejezetten a hozzáférés-vezérlés (IAM) használatával lettek hozzáadva. További információért lásd: [Az Azure Enterprise szerepköreinek kezelése](../manage/understand-ea-roles.md).
 
         _A vállalati rendszergazdák tulajdonukba vehetik a foglalási rendeléseket, és a hozzáférés-vezérlés (IAM) használatával más felhasználókat is hozzáadhatnak a foglalásokhoz._
     - Microsoft Ügyfélszerződés esetén a számlázási profil tulajdonosi szerepkörével vagy a számlázási profil közreműködői szerepkörrel rendelkező felhasználók a számlázási profillal végzett összes foglalásvásárlást kezelhetik. A számlázási profil olvasói és a számlakezelők a számlázási profillal kifizetett összes foglalást megtekinthetik. A foglalásokat azonban nem módosíthatják.

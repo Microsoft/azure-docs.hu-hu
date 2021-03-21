@@ -6,12 +6,12 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 9fb6e94062639d32707f52f66e0b99531884a636
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 120bec65c92e2a13022682265b83bfe0f69d8ed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692266"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592082"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB-hez készült Azure Synapse Linkkel kapcsolatban
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +33,10 @@ Ha többrégiós Azure Cosmos DB-fiók az analitikai tár támogatásával való
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Engedélyezhető az Azure szinapszis-hivatkozás engedélyezése csak bizonyos régiókban, és nem minden régióban a többrégiós fiók beállítása?
 
 Ha az Azure szinapszis-kapcsolat engedélyezve van egy többrégiós fiók esetében, az analitikai tároló minden régióban létrejön. Az alapul szolgáló adatok a tranzakciós tárolóban a teljesítményre és a tranzakciós konzisztenciare vannak optimalizálva.
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>Támogatott-e az analitikai tároló az összes Azure Cosmos DB régióban?
+
+Igen.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Támogatott-e a biztonsági mentés és a visszaállítás az Azure szinapszis-kapcsolattal rendelkező fiókok esetében?
 
@@ -165,6 +169,10 @@ Ez a funkció jelenleg nem érhető el.
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>Használhatom a Spark strukturált streamet az analitikus áruházból?
 
 Az Azure Cosmos DB jelenleg Spark strukturált adatfolyam-támogatást nyújt a tranzakciós tároló változási funkciójának módosításával, és ez a módszer még nem támogatott az analitikai tárolóban.
+
+### <a name="is-streaming-supported"></a>Támogatott a streaming?
+
+Nem támogatjuk az adatok streamjét az analitikus tárolóból.
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

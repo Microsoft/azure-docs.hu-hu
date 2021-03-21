@@ -10,10 +10,10 @@ ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103555790"
 ---
 # <a name="samples"></a>Példák
@@ -22,7 +22,7 @@ Az Azure kommunikációs szolgáltatás számos elérhető mintát tartalmaz, am
 
 ## <a name="application-samples"></a>Alkalmazások mintái
 
-| Minta neve                                                                                          | Leírás                                                         | Elérhető nyelvek/platformok      |
+| Minta neve                                                                                          | Description                                                         | Elérhető nyelvek/platformok      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
 | [Csoport hívása – hős minta](./calling-hero-sample.md)                                                | A csoportos hívási alkalmazás létrehozására szolgáló mintát nyújt.          | Web, iOS                           |
 | [Webes hívás mintája](./web-calling-sample.md)                                                        | Lépésről lépésre haladó végigvezeti a webes ACS-hívási funkciókon. | Webes                                |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
 ms.openlocfilehash: 541448f08e4ce9961d34063dcc225bf89d969a73
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101703371"
 ---
 # <a name="create-a-custom-voice"></a>Egyéni hang létrehozása
@@ -44,7 +44,7 @@ Az adatkészletek automatikusan érvényesítve lesznek a feltöltés gomb megny
 
 Az alábbi táblázat az importált adatkészletek feldolgozási állapotait mutatja be:
 
-| Állam | Értelmezés |
+| Állapot | Értelmezés |
 | ----- | ------- |
 | Feldolgozás | Az adatkészlet beérkezett, és feldolgozás alatt áll. |
 | Sikeres | Az adatkészlet érvényesítve lett, és most már használható hangmodell létrehozásához. |
@@ -97,7 +97,7 @@ A betanítási táblázat egy új bejegyzést jelenít meg, amely megfelel az ú
 
 A megjelenített állapot az adatkészlet hangmodellre alakításának folyamatát tükrözi, ahogy az itt látható.
 
-| Állam | Értelmezés |
+| Állapot | Értelmezés |
 | ----- | ------- |
 | Feldolgozás | A hangmodell létrehozása folyamatban van. |
 | Sikeres | A hangmodell létrehozása megtörtént, és üzembe helyezhető. |

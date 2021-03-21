@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/16/2021
 ms.author: shhazam
 ms.openlocfilehash: e746f37fdf3b67467c1844ebea9191679d52d6d1
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103491265"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>Biztonsági javaslatok a IoT-eszközökhöz
@@ -32,7 +32,7 @@ Ebben a cikkben megtalálja a javaslatok listáját, amelyek a IoT-eszközökön
 
 Az eszközökre vonatkozó javaslatok betekintést és javaslatokat nyújtanak az eszközök biztonsági helyzetének javítására.
 
-| Súlyosság | Name | Adatforrás | Leírás |
+| Súlyosság | Name | Adatforrás | Description |
 |--|--|--|--|
 | Közepes | Portok megnyitása az eszközön | Klasszikus Defender – IoT-Micro-Agent| Figyelő végpont található az eszközön. |
 | Közepes | Az egyik láncban megtalálhatók a megengedhető tűzfal-szabályzatok. | Klasszikus Defender – IoT-Micro-Agent| Engedélyezett tűzfal-házirend található (bemenet/kimenet). A tűzfal házirendjének alapértelmezés szerint el kell utasítania az összes forgalmat, és meg kell határoznia azokat a szabályokat, amelyek lehetővé teszik a szükséges kommunikációt az eszközön |
@@ -44,7 +44,7 @@ Az eszközökre vonatkozó javaslatok betekintést és javaslatokat nyújtanak a
 
 A működési javaslatok betekintést és javaslatokat nyújtanak a biztonsági ügynökök konfigurációjának javítására.
 
-| Súlyosság | Name | Adatforrás | Leírás |
+| Súlyosság | Name | Adatforrás | Description |
 |--|--|--|--|
 | Alacsony | Az ügynök nem használt üzeneteket küld | Klasszikus Defender – IoT-Micro-Agent| az elmúlt 24 órában 10% vagy több biztonsági üzenet kisebb volt, mint 4 KB. |
 | Alacsony | A biztonsági Twin konfiguráció nem optimális | Klasszikus Defender – IoT-Micro-Agent| A biztonsági Twin konfiguráció nem optimális. |

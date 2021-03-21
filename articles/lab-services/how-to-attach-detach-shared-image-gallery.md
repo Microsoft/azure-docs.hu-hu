@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan csatolhat egy megosztott képtárat
 ms.topic: article
 ms.date: 09/11/2020
 ms.openlocfilehash: 99b944ad85e311cd66b0a1cec4e585de37f83500
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786401"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
@@ -86,7 +86,7 @@ Csak egy megosztott képtárat lehet csatlakoztatni egy laborhoz. Ha egy másik 
 
 ![A megosztott képgyűjtemény leválasztása a labor-fiókból](./media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha szeretne többet megtudni arról, hogyan mentheti a tesztkörnyezet rendszerképét a megosztott képkatalógusba, vagy hogyan hozhat létre virtuális gépet a megosztott rendszerkép-katalógusban, olvassa el a következő témakört: [a megosztott képgyűjtemény használata](how-to-use-shared-image-gallery.md).
 
 A megosztott képtárakkal kapcsolatos további információkért lásd: [megosztott rendszerkép](../virtual-machines/shared-image-galleries.md)-katalógus.

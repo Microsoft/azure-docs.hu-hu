@@ -6,16 +6,21 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 02/11/2021
-ms.openlocfilehash: fc75bfc3b79cd6aed51a44fc47787532a9d61e8b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 692033e323880db1699d7265a991775d41b05f7f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101713014"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656005"
 ---
 # <a name="what-is-document-translation-preview"></a>Mi a dokumentum fordítása (előzetes verzió)?
 
 A dokumentum fordítása az [Azure Translator](../translator-info-overview.md) Service felhőalapú funkciója, amely a REST API-k Azure kognitív szolgáltatás családjának részét képezi. A dokumentum-fordítási API a dokumentumokat 90 nyelvekre és dialektusokra fordítja le, miközben megőrzi a dokumentumok szerkezetét és az adatformátumot.
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+
+* [**A gyors**](get-started-with-document-translation.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.
+* A [**útmutatók**](create-sas-tokens.md) útmutatásai a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
 
 ## <a name="document-translation-key-features"></a>Dokumentumok fordítási kulcsának funkciói
 
@@ -38,7 +43,7 @@ A útmutatóban megtudhatja, hogyan kezdheti el gyorsan a dokumentum-fordító h
 
 A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Leírás|
+| Fájl típusa| Fájlkiterjesztés|Description|
 |---|---|--|
 |Adobe PDF|.pdf|Adobe Acrobat – hordozható dokumentum formátuma|
 |HTML|.html|Hyper-szöveg korrektúrájának nyelve|
@@ -55,7 +60,7 @@ A dokumentumok fordítása a következő dokumentum-fájltípusokat támogatja:
 
 A dokumentumok fordítása a következő Szószedet-fájltípusokat támogatja:
 
-| Fájl típusa| Fájlkiterjesztés|Leírás|
+| Fájl típusa| Fájlkiterjesztés|Description|
 |---|---|--|
 |Honosítási adatcsere fájlformátuma|XLF. , xliff| Párhuzamos dokumentum formátuma, fordítási memória-rendszerek exportálása. A használt nyelvek definiálva vannak a fájlon belül.|
 |Tabulátorral tagolt értékek/TAB|. TSV/. TAB| tabulátorral tagolt nyers adatfájl, amelyet táblázatkezelő programok használnak.|
@@ -64,5 +69,3 @@ A dokumentumok fordítása a következő Szószedet-fájltípusokat támogatja:
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a dokumentumok fordításával](get-started-with-document-translation.md)
->
->

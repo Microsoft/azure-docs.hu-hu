@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: 0961b52ebc7271fabf4cc05ed99eea23d911a2d4
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103009092"
 ---
 # <a name="streaming-endpoints-overview"></a>Folyamatos átviteli végpontok áttekintése  
@@ -52,7 +52,7 @@ További végpontok esetén: `{EndpointName}-{AccountName}.streaming.mediaservic
 Media Services január 2017-os kiadásával kezdődően két folyamatos átviteli típus érhető el: **standard** (előzetes verzió) és **prémium**. Ezek a típusok az "2,0" streaming Endpoint verzió részét képezik.
 
 
-|Típus|Leírás|
+|Típus|Description|
 |--------|--------|  
 |**Standard**|Az alapértelmezett folyamatos átviteli végpont egy **szabványos** típus, amely a folyamatos átviteli egységek beállításával módosítható a prémium típusra.|
 |**Prémium** |Ez a lehetőség olyan professzionális forgatókönyvekhez alkalmas, amelyek nagyobb méretezést vagy irányítást igényelnek. A **prémium** típusra váltson a folyamatos átviteli egységek beállításával.<br/>A dedikált streaming-végpontok elszigetelt környezetben laknak, és nem versenyeznek az erőforrásokkal.|
@@ -77,7 +77,7 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 
 ### <a name="versions"></a>Verziók
 
-|Típus|StreamingEndpointVersion|ScaleUnits|Tartalomkézbesítési hálózat (CDN)|Számlázás|
+|Típus|StreamingEndpointVersion|ScaleUnits|CDN|Számlázás|
 |--------------|----------|-----------------|-----------------|-----------------|
 |Klasszikus|1.0|0|NA|Ingyenes|
 |Standard streaming Endpoint (előzetes verzió)|2.0|0|Yes|Fizetős|
@@ -89,7 +89,7 @@ Ha a **"1,0"** adatfolyam-végpont >= 1 Premium streaming Units (su), akkor a pr
 Szolgáltatás|Standard|Prémium
 ---|---|---
 Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
-Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
+CDN|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
 A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Yes
 Dinamikus csomagolás|Igen|Yes

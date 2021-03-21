@@ -12,10 +12,10 @@ ms.date: 02/22/2021
 ms.author: nitinme
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c8d3c5b10c670e7aa4f1fd00f47ef47e772416cc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101706860"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az Arcfelismerés átmigrálása egy másik Face-előfizetésbe
@@ -42,7 +42,7 @@ Ez az útmutató egy egyszerű konzolos alkalmazást használ a Face-adatáttele
 
 ## <a name="create-face-clients"></a>Arc-ügyfelek létrehozása
 
-A Program.cs **fő** metódusában hozzon létre két [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) -példányt a forrás és a cél előfizetések számára. Ez a példa egy arc-előfizetést használ a Kelet-Ázsia régióban, mint a forrásként és az USA nyugati régiójának előfizetését célként. Ez a példa azt szemlélteti, hogyan lehet áttelepíteni egy Azure-régióból egy másikba az adatok áttelepítését. 
+A *program. cs* **fő** metódusában hozzon létre két [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) -példányt a forrás és a cél előfizetésekhez. Ez a példa egy arc-előfizetést használ a Kelet-Ázsia régióban, mint a forrásként és az USA nyugati régiójának előfizetését célként. Ez a példa azt szemlélteti, hogyan lehet áttelepíteni egy Azure-régióból egy másikba az adatok áttelepítését. 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96746437"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>Csomagok létrehozása SaaS-ajánlathoz
@@ -30,7 +30,7 @@ A Microsoft kereskedelmi Piactéren keresztül eladott ajánlatoknak legalább e
 
 1. A **terv neve** mezőbe írjon be egy egyedi nevet ehhez a csomaghoz. Legfeljebb 50 karaktert használhat.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="define-the-plan-listing"></a>A csomag listájának megadása
 
@@ -150,7 +150,7 @@ A **terv áttekintés** lapjának **művelet** oszlopában elérhető műveletek
 - Ha a terv állapota **Piszkozat**, a **művelet** oszlopban szereplő hivatkozás a **delete piszkozatot** fogja mondani.
 - Ha a terv állapota **élő**, a **művelet** oszlopban található hivatkozás **vagy a** **saját célközönség szinkronizálása vagy a privát közönség szinkronizálása** nem történik meg. A **privát célközönség szinkronizálása** hivatkozás csak a privát célközönségek módosításait teszi közzé anélkül, hogy közzé kellene tenni az ajánlatban esetlegesen végrehajtott egyéb frissítéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan értékesítheti SaaS-ajánlatát](create-new-saas-offer-marketing.md) a **Microsofttal való közös értékesítéssel** és a **CSP** -programokkal való viszonteladással.
 - [SaaS-ajánlat tesztelése és közzététele a kereskedelmi piactéren](test-publish-saas-offer.md).

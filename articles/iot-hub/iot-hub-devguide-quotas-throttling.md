@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 3de9eccd001e421ef3255f83630716df12b7a2ee
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595260"
+ms.locfileid: "104656991"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -87,7 +87,7 @@ Például egy szimulált eszköz használatával 200 eszközről a felhőbe irá
 
 Az eszköz-identitás beállításjegyzékbeli műveletei az eszközkezelés és a kiépítési forgatókönyvek futtatására szolgálnak. A nagy számú eszköz identitásának olvasása vagy frissítése az [importálási és exportálási feladatok](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)használatával támogatott.
 
-Ha [tömeges eszköz-műveletekkel](iot-hub-bulk-identity-mgmt.md)kezdeményezi az identitást, ugyanezek a szabályozási korlátozások érvényesek. Ha például az 50-es eszközök létrehozásához tömeges műveletet szeretne küldeni, és 1 egységgel rendelkező S1-IoT Hub rendelkezik, akkor percenként csak kettőt fogad el. Ez azért történt, mert egy S1-es IoT Hubhoz tartozó Identity Operation szabályozása 1 egységgel 100/perc/egység. Ebben az esetben a rendszer visszautasítja a harmadik kérelmet (és azon kívül is), hogy a korlát már el lett utasítva. 
+Ha a [tömeges beállításjegyzék-frissítési műveleteken](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry) (*nem* tömeges importálási és exportálási feladatok) keresztül indítja el az identitási műveleteket, ugyanazok a szabályozási korlátozások érvényesek. Ha például az 50-es eszközök létrehozásához tömeges műveletet szeretne küldeni, és 1 egységgel rendelkező S1-IoT Hub rendelkezik, akkor percenként csak kettőt fogad el. Ez azért történt, mert egy S1-es IoT Hubhoz tartozó Identity Operation szabályozása 1 egységgel 100/perc/egység. Ebben az esetben a rendszer visszautasítja a harmadik kérelmet (és azon kívül is), hogy a korlát már el lett utasítva. 
 
 ### <a name="device-connections-throttle"></a>Eszközök kapcsolatainak szabályozása
 

@@ -6,10 +6,10 @@ ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98631640"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (.NET)
@@ -38,7 +38,7 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
 
 ### <a name="add-code-to-send-messages-to-the-queue"></a>Kód hozzáadása az üzenetek várólistába küldéséhez
 
-1. A *program.cs*-ben adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez az osztály deklarációja előtt:
+1. A *program. cs programban* adja hozzá a következő `using` utasításokat a névtér definíciójának elejéhez, az osztály deklarációja előtt:
 
     ```csharp
     using System;
@@ -271,5 +271,5 @@ Próbálkozzon újra a portálon.
 Tekintse meg a következő dokumentációt és mintákat:
 
 - [A .NET-hez készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
-- [Példák a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
+- [Minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
 - [.NET API-referencia](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

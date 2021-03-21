@@ -6,17 +6,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 3/12/2021
-ms.openlocfilehash: fa8f2b5e952ddd188f99d130c2154d4602191c2b
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.reviewer: stmummer
+ms.date: 3/17/2021
+ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225064"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593390"
 ---
 # <a name="co-sell-requirements"></a>Közös értékesítésre vonatkozó követelmények
 
-Ez a cikk a közös értékesítési állapot különböző szintjeinek követelményeit ismerteti. A közös értékesítést támogató ajánlati típusok legújabb listáját lásd: a  [közös értékesítés beállítása kereskedelmi Piactéri ajánlathoz](commercial-marketplace-co-sell.md). A közös értékesítés áttekintését lásd: [közös értékesítés a Microsoft értékesítési csapatokkal és partnereinkkel – áttekintés](marketplace-co-sell.md).
+Ez a cikk a közös értékesítési állapot különböző szintjeinek követelményeit ismerteti. A közös értékesítést támogató ajánlati típusok legújabb listáját lásd: a  [közös értékesítés beállítása kereskedelmi Piactéri ajánlathoz](co-sell-configure.md). A közös értékesítés áttekintését lásd: [közös értékesítés a Microsoft értékesítési csapatokkal és partnereinkkel – áttekintés](co-sell-overview.md).
 
 Ez a táblázat az összes lehetséges közös értékesítés állapotát mutatja:
 
@@ -25,7 +26,7 @@ Ez a táblázat az összes lehetséges közös értékesítés állapotát mutat
 | Nem közös értékesítésre kész | A [közös értékesítésre kész állapotra](#requirements-for-co-sell-ready-status) vonatkozó minimális követelmények nem teljesültek. |
 | Közös értékesítés kész | [A közös értékesítésre kész állapotra vonatkozó összes követelmény](#requirements-for-co-sell-ready-status) teljesült. |
 | Azure IP közös értékesítésű incentivized | [Ezen további követelmények](#requirements-for-azure-ip-co-sell-incentivized-status)mellett a közös értékesítésre kész követelmények is teljesülnek. |
-| Biz apps ISV – prémium ösztönző  | Ez az állapot a Dynamics 365-es és a Power apps-ajánlatokra vonatkozik, és azt jelzi, hogy az [adott állapotra vonatkozó összes követelmény](#requirements-for-biz-apps-isv-connect-premium-incentive-status) teljesült. |
+| Business Applications közös értékesítésű incentivized | Ez az állapot a Dynamics 365-es és a Power apps-ajánlatokra vonatkozik a [Microsoft Business Applications ISV-csatlakozási programban](business-applications-isv-program.md) , és azt jelzi, hogy az [adott állapotra vonatkozó összes követelmény](#requirements-for-business-applications-co-sell-incentivized-status) teljesült. |
 |||
 
 ## <a name="requirements-for-co-sell-ready-status"></a>A közös értékesítésre kész állapotra vonatkozó követelmények
@@ -42,10 +43,10 @@ A közös értékesítésre kész állapot elérésére vonatkozó ajánlathoz a
 **Szolgáltatások partnerei**:
 
 - A _szolgáltatási megoldás_ típusának ajánlatai esetében minden kompetencia területen aktív arany kompetenciával kell rendelkeznie.
- 
+
 **Business Applications ISV**-ket:
 
-- A Dynamics 365 Customer engagement & PowerApps és a Dynamics 365 Finance & Ops (kivéve a Dynamics 365 Business Central) és a PowerApps-megoldások ISV-csatlakozást igényelnek.
+- A Dynamics 365 & PowerApps (kivéve a Dynamics 365 Business Central) megoldásokat az ISV-csatlakozás igényléséhez szükséges.
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>A közös értékesítés befejezése a Microsoft lapon
 
@@ -82,13 +83,9 @@ A közös értékesítésre kész állapot elérése után három további köve
 3. követelmény – a hivatkozási architektúra diagramjának megadása:
 - Töltsön fel egy hivatkozási architektúra diagramot a partner Centerben való közös értékesítéssel foglalkozó dokumentumaiba véleményezésre. A diagram létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatkozási architektúra diagramot](reference-architecture-diagram.md). A diagram feltöltésével kapcsolatos információkért lásd: a [közös értékesítés beállítása kereskedelmi Piactéri ajánlathoz](commercial-marketplace-co-sell.md).
 
-## <a name="requirements-for-biz-apps-isv-connect-premium-incentive-status"></a>A biz apps ISV-hez készült prémium szintű ösztönző állapothoz kapcsolódó követelmények
+## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>A Business Applications közös értékesítésű incentivized állapotára vonatkozó követelmények
 
-Ez az állapot a Dynamics 365-es vagy Power apps-re épülő IP-alapú megoldásokra, alkalmazásokra és szolgáltatásokra vonatkozik.
-
-Nem kell a közös értékesítésre kész állapotot (a fent felsoroltak szerint) elérnie a biz apps ISV-csatlakozási standard ösztönző eléréséhez. Ha azonban egy alkalmazás megkezdi a közös értékesítésre kész állapotot, akkor az az elmúlt 12 hónap bevételi hányada és a közös értékesítés eredményei/küszöbértékei alapján érdemes lehet figyelembe venni a prémium ösztönző állapotot.
-
-Követelmény – aktív regisztráció szükséges az [ISV-kapcsolat](business-applications-isv-program.md) prémium szintjén.
+Ez az állapot a Dynamics 365-es vagy Power apps-re épülő IP-alapú megoldásokra vonatkozik (kivéve a Dynamics 365 Business Central-t), amelyek regisztrálva vannak az ISV kapcsolódási programban. Az ajánlatoknak azonban teljesíteniük kell a közös értékesítésre kész állapotra vonatkozó követelményeket is (lásd fent) ahhoz, hogy a Microsoft-értékesítők közösen értékesítsenek az ajánlatot.
 
 ## <a name="next-steps"></a>Következő lépések
 
