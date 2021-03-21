@@ -11,10 +11,10 @@ ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 02/08/2021
 ms.openlocfilehash: 7d5f40be895aea26a234d9ae622aa5bf22528231
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99981442"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Nyilvános végpont konfigurálása az Azure SQL felügyelt példányában
@@ -98,7 +98,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |---------|---------|---------|
     |**Forrás**     |Bármely IP-cím vagy szolgáltatás címkéje         |<ul><li>Az Azure-szolgáltatások, például a Power BI esetében válassza az Azure Cloud Service címkét</li> <li>A számítógép vagy az Azure-beli virtuális gép esetében használja a NAT IP-címet</li></ul> |
     |**Forrásporttartományok**     |* |Hagyja ezt a lehetőséget * (bármely), mivel a forrás portjai általában dinamikusan vannak lefoglalva, és mint ilyen, kiszámíthatatlan |
-    |**Cél**     |Bármely         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
+    |**Cél**     |Bármelyik         |A célhely kihagyása a felügyelt példány alhálózatára való adatforgalom engedélyezéséhez |
     |**Célporttartományok**     |3342         |Hatóköri célport a 3342-re, amely a felügyelt példány nyilvános TDS-végpontja |
     |**Protokoll**     |TCP         |Az SQL felügyelt példánya a TDS protokollhoz TCP protokollt használ. |
     |**Művelet**     |Engedélyezés         |Felügyelt példány bejövő forgalmának engedélyezése a nyilvános végponton keresztül |

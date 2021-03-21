@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2083da329c41afbe95ff570194a1c3ad5c2661be
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: cac8d609272be1d9f34b7e0d6404e0a0ea524df7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523566"
 ---
 # <a name="work-with-device-notifications"></a>Az eszközértesítések kezelése
@@ -98,6 +98,6 @@ Vizsgálja meg a javaslatokat az operációs rendszer besorolásának gazdagít�
 
 Ha elfogadja a javaslatot, az operációs rendszer típusának adatai frissülnek az érzékelőben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Riasztások megtekintése](how-to-view-alerts.md)

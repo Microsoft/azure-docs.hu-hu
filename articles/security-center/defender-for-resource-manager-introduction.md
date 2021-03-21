@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 903853f9f37921a68c918d09a94087548b5c562c
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100661"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>A Resource Managerhez készült Azure Defender bemutatása
@@ -28,7 +28,7 @@ Az Azure Defender for Resource Manager automatikusan figyeli a szervezet erőfor
 |----|:----|
 |Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|A **Resource Managerhez készült Azure Defender** számlázása a [Security Center díjszabásában](https://azure.microsoft.com/pricing/details/security-center/) látható módon történik|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Milyen előnyökkel jár az Azure Defender for Resource Manager?

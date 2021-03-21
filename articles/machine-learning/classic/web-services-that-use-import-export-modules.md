@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/28/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4824b7a4233bc65d521e1c6ded7d1ea276b2a929
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100520561"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Az adatimportálást és az adatexportálási modulokat használó Azure Machine Learning Studio (klasszikus) webszolgáltatások üzembe helyezése
@@ -104,7 +104,7 @@ A klasszikus webszolgáltatásként való üzembe helyezéshez és a használatb
 4. Az **alapértelmezett végpont** táblában kattintson a Batch- **végrehajtás** hivatkozásra az API-Súgó oldal megnyitásához.
 5. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új**  >  **Project**  >  **Visual C#**  >  **Windows klasszikus asztali**  >  **konzol alkalmazás (.NET-keretrendszer)**.
 6. Az API-Súgó lapon keresse meg a kódlap alján található **mintakód** szakaszt.
-7. Másolja és illessze be a C#-mintakód a Program.cs-fájlba, és távolítsa el az összes hivatkozást a blob Storage-ba.
+7. Másolja és illessze be a C#-mintakód programot a program. cs fájlba, és távolítsa el az összes hivatkozást a blob Storage-ba.
 8. Frissítse a *apiKey* változó értékét a korábban mentett API-kulccsal.
 9. Keresse meg a kérelem deklarációját, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 
@@ -134,7 +134,7 @@ A Futtatás befejezésekor új tábla kerül a pontozási eredményeket tartalma
 4. A rövid **útmutató lapon kattintson a felhasználás** elemre **.**
 5. A **mintakód** szakaszban kattintson a **Batch** elemre.
 6. A Visual Studióban hozzon létre egy C# konzolos alkalmazást: **új**  >  **Project**  >  **Visual C#**  >  **Windows klasszikus asztali**  >  **konzol alkalmazás (.NET-keretrendszer)**.
-7. Másolja ki és illessze be a C#-mintakód a Program.cs fájlba.
+7. Másolja és illessze be a C#-mintakód a program. cs fájlba.
 8. Frissítse a *apiKey* változó értékét az **alapszintű felhasználás adatai** szakaszban található **elsődleges kulccsal** .
 9. Keresse meg a *scoreRequest* -deklarációt, és frissítse az adatok *importálása* és *exportálása* modulba átadott webszolgáltatás-paraméterek értékeit. Ebben az esetben az eredeti lekérdezést kell használnia, de meg kell adnia egy új táblanév nevet.
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2021
 ms.author: Zhchia
-ms.openlocfilehash: 6a2a3cd2886050a7d1a97e206800d392c4af649d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 25a2a370e4a88348c2acac931e5f3e1a6f247d1d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101662222"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599680"
 ---
 # <a name="tutorial-configure-aws-single-sign-on-for-automatic-user-provisioning"></a>Oktatóanyag: az AWS egyszeri Sign-On konfigurálása automatikus felhasználó-kiépítés esetén
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket az AWS Single Sign-On és az Azure Active Directory (Azure AD) szolgáltatásban kell elvégezni az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az [AWS egyszeri bejelentkezéshez](https://console.aws.amazon.com/singlesignon) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md). 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket az AWS Single Sign-On és az Azure Active Directory (Azure AD) szolgáltatásban kell elvégezni az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az [AWS egyszeri bejelentkezéshez](https://console.aws.amazon.com/singlesignon) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
@@ -33,20 +33,20 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket az AWS Single Sign-
 > * Felhasználók eltávolítása az AWS egyetlen Sign-On, ha már nincs szükségük hozzáférésre
 > * A felhasználói attribútumok szinkronizálása az Azure AD és az AWS egyetlen Sign-On között
 > * Csoportok és csoporttagságok kiépítése az AWS Single Sign-Onban
-> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-provisioning-tutorial) egyetlen Sign-On AWS-re
+> * [Egyszeri bejelentkezés]() egyetlen Sign-On AWS-re
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * SAML-kapcsolatok az Azure AD-fiókból az AWS SSO-ra, az oktatóanyagban leírtak szerint
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
-1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és az AWS egyszeri bejelentkezés milyen adatleképezést](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)szeretne. 
+1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Határozza meg, hogy az [Azure ad és az AWS egyszeri bejelentkezés milyen adatleképezést](../app-provisioning/customize-application-attributes.md)szeretne. 
 
 ## <a name="step-2-configure-aws-single-sign-on-to-support-provisioning-with-azure-ad"></a>2. lépés Az AWS egyetlen Sign-On konfigurálása az Azure AD-vel való kiépítés támogatására
 
@@ -61,15 +61,15 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-3-add-aws-single-sign-on-from-the-azure-ad-application-gallery"></a>3. lépés AWS-Sign-On hozzáadása az Azure AD Application Galleryből
 
-Vegyen fel AWS egyetlen Sign-On az Azure AD-alkalmazás-katalógusból az AWS egyszeri bejelentkezéshez való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította az AWS egyszeri Sign-On az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet. 
+Vegyen fel AWS egyetlen Sign-On az Azure AD-alkalmazás-katalógusból az AWS egyszeri bejelentkezéshez való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította az AWS egyszeri Sign-On az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása 
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja. 
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja. 
 
-* Amikor felhasználókat és csoportokat rendel az AWS egyszeri bejelentkezéshez, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps). 
+* Amikor felhasználókat és csoportokat rendel az AWS egyszeri bejelentkezéshez, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md). 
 
-* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-aws-single-sign-on"></a>5. lépés Automatikus felhasználó-kiépítés beállítása AWS egyetlen Sign-On 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 8. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók AWS egyszeri bejelentkezés** lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az AWS egyetlen Sign-On az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az AWS egyetlen Sign-On a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy az AWS Single Sign-On API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az AWS egyetlen Sign-On az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az AWS egyetlen Sign-On a frissítési műveletekhez használt felhasználói fiókokkal egyeznek meg. Ha úgy dönt, hogy megváltoztatja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy az AWS Single Sign-On API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    |Attribútum|Típus|Szűréshez támogatott|
    |---|---|---|
@@ -146,7 +146,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |externalId|Sztring|
       |tagok|Referencia|
 
-12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 13. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást az AWS egyszeri bejelentkezéshez, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
@@ -165,18 +165,18 @@ Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatároz
 ## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
 Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
-1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.
+1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 Tekintse meg az AWS SSO [hibaelhárítási tippeket.](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html#azure-ad-troubleshooting)
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyetlen Sign-On Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

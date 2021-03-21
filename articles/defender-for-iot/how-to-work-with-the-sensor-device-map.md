@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5b7059129c45149c64bc7fc145c68d9e09a7c046
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523838"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Az érzékelő észlelésének vizsgálata az eszköz térképén
@@ -327,7 +327,7 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 | Attribútumok | Az eszközön a tanulási időszakban felderített további információk, amelyek nem tartoznak más kategóriákhoz, az attribútumok szakaszban jelennek meg. <br /> Az információ a RO. |
 | Beállítások | Az eszközbeállítások manuális módosításával megakadályozhatja a hamis pozitív értéket: <br /> - **Jogosult eszköz**: a tanulási időszak alatt a hálózatban felderített összes eszköz meghatalmazott eszközként van azonosítva. Ha az eszközt a tanulási időszak után észlelik, a rendszer alapértelmezés szerint jogosulatlan eszközként jelenik meg. Ezt a definíciót manuálisan is módosíthatja. <br /> - **Más néven képolvasó**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz képolvasóként ismert, és nincs szükség riasztásra. <br /> - **Programozási eszköz**: engedélyezze ezt a beállítást, ha tudja, hogy ez az eszköz programozási eszközként ismert, és a programozási módosítások végrehajtásához használatos. A programozási eszközként való azonosítás megakadályozza az adategységből származó programozási változások riasztásait. |
 | Egyéni csoportok | Az eszköz azon egyéni csoportjai, amelyekben ez az eszköz részt vesz. |
-| Állam | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
+| Állapot | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
 
 
 | Network (Hálózat) | Description |
@@ -709,6 +709,6 @@ Exportálás:
 
 1. Válassza ki az exportálási lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
 [Érzékelő észlelésének vizsgálata egy eszköz leltározásakor](how-to-investigate-sensor-detections-in-a-device-inventory.md)

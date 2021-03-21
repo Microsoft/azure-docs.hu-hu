@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 1bd9f7408baf40791c31626ea9e87a73c65b999c
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963997"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
@@ -254,7 +254,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Válassza ki az erőforráscsoport nevét. Az erőforráscsoport összesen hat erőforrást fog látni.
 1. Válassza az **erőforráscsoport törlése** lehetőséget a felső menüben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy kiszolgálót és egy adatbázist, és importált egy BACPAC-fájlt. A sablonok telepítésével kapcsolatos hibák megismeréséhez lásd:
 

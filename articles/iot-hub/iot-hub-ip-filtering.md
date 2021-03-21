@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: jlian
-ms.openlocfilehash: 62292a2ee51f8e1838e9cf3376367a02964cad47
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 2a76cede4bc72da9f30564f98ab9bb84028680f7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418742"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581490"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -85,10 +85,6 @@ A explicit módon nem engedélyezett IP-címről érkező kapcsolódási kísér
 Az IP-szűrési szabályok *engedélyezik* a szabályokat, és a rendelés nélkül is alkalmazhatók. Csak az Ön által hozzáadott IP-címek csatlakozhatnak IoT Hubhoz. 
 
 Ha például el szeretné fogadni a címeket a tartományban, és el `192.168.100.0/22` kell utasítania minden mást, akkor csak egy szabályt kell hozzáadnia a rácshoz címtartomány használatával `192.168.100.0/22` .
-
-### <a name="azure-portal"></a>Azure Portal 
-
-Az IP-szűrési szabályok akkor is érvényesek, ha a IoT Hubt Azure Portalon keresztül használja. Ennek az az oka, hogy az IoT Hub szolgáltatáshoz való API-hívások közvetlenül a böngészőjében, a hitelesítő adataival vannak ellátva, amelyek konzisztensek a többi Azure-szolgáltatással. Ha az IP-szűrő engedélyezve van a Azure Portal használatával való IoT Hub eléréséhez, adja hozzá a számítógép IP-címét az engedélyezési listához. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 

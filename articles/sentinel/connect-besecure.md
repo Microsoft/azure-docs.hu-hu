@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
 ms.openlocfilehash: 313f201aeabd470850b27d979dc5253f80e82a55
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98541162"
 ---
 # <a name="connect-your-beyond-security-besecure-to-azure-sentinel"></a>A biztonság védelme az Azure Sentinel szolgáltatással
@@ -69,7 +69,7 @@ Az elemzési szabályokban, a vadászati lekérdezésekben, a vizsgálatokban va
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
 Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakozhat az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan [érheti el az adatait és a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

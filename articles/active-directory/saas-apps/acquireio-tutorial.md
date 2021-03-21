@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fe070bc1abe0592b3082c597c1812781335448a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97673185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AcquireIO
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

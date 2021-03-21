@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 33eaa1ea928cc0650c91948c70d46daf499f3b4b
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99831204"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
@@ -114,18 +114,18 @@ A minta projekt megnyitása és előkészítése:
 
 A kód módosítása eszköz helyett modulként való működésre:
 
-1. A Visual Studióban nyissa meg a *parameter.cs* , és módosítsa a **PrimaryConnectionString** változót az alábbiak szerint beállító sort:
+1. A Visual Studióban nyissa meg a *paraméter. cs* fájlját, és módosítsa a **PrimaryConnectionString** változót az alábbiak szerint megadó sort:
 
     ```csharp
     public string PrimaryConnectionString { get; set; } = Environment.GetEnvironmentVariable("IOTHUB_MODULE_CONNECTION_STRING");
     ```
 
-1. A Visual Studióban nyissa meg a *program.cs* , és cserélje le az osztály hét példányát `DeviceClient` az `ModuleClient` osztályra.
+1. A Visual Studióban nyissa meg a *program. cs programot* , és cserélje le az osztály hét példányát `DeviceClient` az `ModuleClient` osztályra.
 
     > [!TIP]
     > Használja a Visual Studio Search és a Replace funkciót az **egyeztetési esettel** , és a kifejezésre való lecseréléshez engedélyezze a **teljes szót** `DeviceClient` `ModuleClient` .
 
-1. A Visual Studióban nyissa meg a *thermostat.cs* , és cserélje le a osztály mindkét példányát az `DeviceClient` `ModuleClient` osztályra az alábbiak szerint.
+1. A Visual Studióban nyissa meg a *termosztát. cs* karakterláncot, és cserélje le a osztály mindkét példányát a `DeviceClient` `ModuleClient` következőre:
 
 1. Mentse a módosításokat a módosított fájlokba.
 
@@ -186,13 +186,13 @@ A szolgáltatás SDK-k lehetővé teszik a csatlakoztatott IoT Plug and Play esz
     > [!TIP]
     > Az IoT hub-beli kapcsolatok sztringjét az Azure IoT Explorer eszközében is megtalálhatja.
 
-1. Nyissa meg a *program.cs* fájlt, és módosítsa azt a sort, amely a következőképpen hívja meg a parancsot:
+1. Nyissa meg a *program. cs* fájlt, és módosítsa azt a sort, amely a következőképpen hívja meg a parancsot:
 
     ```csharp
     CloudToDeviceMethodResult result = await s_serviceClient.InvokeDeviceMethodAsync(s_deviceId, "my-module", commandInvocation);
     ```
 
-1. A *program.cs* fájlban módosítsa azt a sort, amely az eszközt a következőképpen kéri le:
+1. A *program. cs* fájlban módosítsa azt a sort, amely az eszközt a következőképpen kéri le:
 
     ```csharp
     Twin twin = await s_registryManager.GetTwinAsync(s_deviceId, "my-module");

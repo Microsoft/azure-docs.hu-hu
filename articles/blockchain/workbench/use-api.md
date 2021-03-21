@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004840"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Az Azure Blockchain Workbench előzetes verziójának használata REST API
@@ -475,6 +475,6 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Blockchain Workbench API-kkal kapcsolatos tudnivalókat az [Azure Blockchain Workbench REST API dokumentációjában](/rest/api/azure-blockchain-workbench)talál.

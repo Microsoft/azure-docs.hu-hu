@@ -4,10 +4,10 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Az
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101742041"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rövid útmutató: Eseményközpont létrehozása az Azure Portallal

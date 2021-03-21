@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97589831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Oktatóanyag: Azure Active Directory integráció a SpringCM
@@ -164,7 +164,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

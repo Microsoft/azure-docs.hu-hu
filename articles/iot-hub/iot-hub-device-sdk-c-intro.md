@@ -14,10 +14,10 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97588828"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
@@ -582,7 +582,7 @@ serializer_deinit();
 
 Mindhárom függvény a korábban leírt három inicializálási függvényhez igazodik. Az API-k meghívásával biztosíthatja, hogy a korábban lefoglalt erőforrások ingyenesek legyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a **C-hez készült Azure IoT Device SDK** kódtárainak használatának alapjait tárgyalja. Ez elegendő információt biztosít ahhoz, hogy megértsük az SDK-t, az architektúráját és a Windows-minták használatának megkezdését. A következő cikk a [iothubclientről könyvtárával kapcsolatos további tudnivalókkal](iot-hub-device-sdk-c-iothubclient.md)folytatja az SDK leírását.
 

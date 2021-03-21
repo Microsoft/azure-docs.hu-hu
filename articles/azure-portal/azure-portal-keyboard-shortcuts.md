@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: accessibility
 ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745910"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Billentyűparancsok az Azure Portalon
@@ -47,7 +47,7 @@ Ez a cikk a Azure Portalban mindenhol működő billentyűparancsokat sorolja fe
 
 - [Azure Resource Graph Explorer](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kontrasztos megjelenítés bekapcsolása és téma módosítása](set-preferences.md#choose-a-theme-or-enable-high-contrast)
 - [Támogatott böngészők és eszközök](azure-portal-supported-browsers-devices.md)

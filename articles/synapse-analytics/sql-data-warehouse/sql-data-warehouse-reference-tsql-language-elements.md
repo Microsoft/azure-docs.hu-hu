@@ -12,10 +12,10 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 3793da7fc9bbb0f8253f60d2324b48917f1aece1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737506"
 ---
 # <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>A T-SQL nyelvi elemei a dedikált SQL-készlethez az Azure szinapszis Analyticsben 
@@ -293,6 +293,6 @@ A dedikált SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjának
 * [TRANZAKCIÓ ELKÜLÖNÍTÉSI SZINTJÉNEK BEÁLLÍTÁSA](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 * [XACT_ABORT BEÁLLÍTÁSA](/sql/t-sql/statements/set-xact-abort-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [T-SQL-utasítások a DEDIKÁLT SQL-készletben](sql-data-warehouse-reference-tsql-statements.md)és a [rendszernézetek a dedikált SQL-készletben](../sql/reference-tsql-system-views.md).

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
 ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97962805"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP NetWeaver-vel
@@ -195,7 +195,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
     1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a **Létrehozás** gombra.
+    1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

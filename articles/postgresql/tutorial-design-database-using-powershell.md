@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc, devx-track-azurepowershell
 ms.openlocfilehash: cf84a8abcc0f1c890a51bf07056ac31d37107e53
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96749113"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-powershell"></a>Oktatóanyag: Azure Database for PostgreSQL – egyetlen kiszolgáló tervezése a PowerShell használatával
@@ -52,7 +52,7 @@ Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizet�
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -221,7 +221,7 @@ A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az erede
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával](howto-restore-server-powershell.md)

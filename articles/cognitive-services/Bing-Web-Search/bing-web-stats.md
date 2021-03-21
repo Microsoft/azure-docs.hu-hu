@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 02fea02cca5950ef8467377a866e9a765af9e2e1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349554"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Search API-khoz
@@ -105,7 +105,7 @@ A következő lehetséges mérőszámok és végponti korlátozások.
 
 - **Válasz-kiszolgáló eloszlása**: az API-kérelmeket kézbesítő alkalmazáskiszolgáló. A lehetséges értékek a Bing.com (az asztali és hordozható eszközökről kiszolgált forgalom) és a Bing.com (a mobileszközök által kiszolgált forgalom esetében). A kiszolgáló a kérelem User-Agent fejlécének értéke alapján van meghatározva. Ha a kérelem nem tartalmazza a User-Agent fejlécet, a Bing megpróbálja származtatni a kiszolgálót más jelekből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Bing Search API-k?](bing-api-comparison.md)
 * [Bing Search API – követelmények használata és megjelenítése](use-display-requirements.md)

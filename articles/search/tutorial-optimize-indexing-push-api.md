@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 1/29/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f97a99bf2d055805ee665ab51aff8cff12dc5a69
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99094192"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
@@ -104,10 +104,10 @@ Ez az egyszerű C# kódon-konzol alkalmazás a következő feladatokat hajtja v�
 
  A program futtatása előtt szánjon egy percet a minta kódjának és index-definícióinak tanulmányozására. A megfelelő kód több fájlban található:
 
-  + A **Hotel.cs** és a **Address.cs** az indexet meghatározó sémát tartalmazza.
-  + A **DataGenerator.cs** egy egyszerű osztályt tartalmaz, amely megkönnyíti a nagy mennyiségű szállodai érték létrehozását
-  + A **ExponentialBackoff.cs** kódot tartalmaz az indexelési folyamat optimalizálásához az alább leírtak szerint.
-  + A **program.cs** olyan függvényeket tartalmaz, amelyek az Azure Cognitive Search indexet hozzanak létre és törlik, indexelik az adatok kötegeit, és tesztelik a különböző batch-méreteket
+  + A **Hotel. cs** és a **. cs** tartalmazza az indexet meghatározó sémát.
+  + A **DataGenerator. cs** egy egyszerű osztályt tartalmaz, amely megkönnyíti a nagy mennyiségű szállodai érték létrehozását
+  + A **ExponentialBackoff. cs** kódot tartalmaz az indexelési folyamat optimalizálásához az alább leírtak szerint
+  + A **program. cs** olyan függvényeket tartalmaz, amelyek létrehozzák és törölik az Azure Cognitive Search indexet, indexelik az adatok kötegeit, és a különböző batch-méreteket tesztelik.
 
 ### <a name="creating-the-index"></a>Az index létrehozása
 
@@ -115,7 +115,7 @@ Ez a mintakód a .NET SDK használatával határozza meg és hozza létre az Azu
 
 Az adatmodellt a Hotel osztály határozza meg, amely a címe osztályra mutató hivatkozásokat is tartalmaz. A FieldBuilder részletesen részletezi az indexek összetett adatstruktúrájának létrehozásához. A metaadatok címkéi az egyes mezők attribútumainak meghatározására szolgálnak, például hogy kereshetők vagy rendezve legyenek.
 
-A **Hotel.cs** fájl következő kódrészletei azt mutatják be, hogyan adható meg egyetlen mező, és hogyan lehet megadni egy másik adatmodell-osztályra mutató hivatkozást.
+A ( **z). cs** fájl következő kódrészletei azt mutatják be, hogy egy adott mező és egy másik adatmodell-osztályra mutató hivatkozás is megadható.
 
 ```csharp
 . . .
@@ -126,7 +126,7 @@ public Address Address { get; set; }
 . . .
 ```
 
-Az **program.cs** -fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.Build(typeof(Hotel))` majd a következőképpen jön létre:
+A **program. cs** fájlban az index egy névvel és egy, a metódus által generált mező-gyűjteménysel van definiálva, `FieldBuilder.Build(typeof(Hotel))` majd a következőképpen jön létre:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)
@@ -143,7 +143,7 @@ private static async Task CreateIndexAsync(string indexName, SearchIndexClient i
 
 ### <a name="generating-data"></a>Adatgenerálás
 
-A **DataGenerator.cs** fájlban egy egyszerű osztályt kell megvalósítani, amely a teszteléshez hoz létre adatkészletet. Ennek az osztálynak egyetlen célja, hogy megkönnyítse a nagy számú, egyedi AZONOSÍTÓval rendelkező dokumentum létrehozását az indexeléshez.
+A **DataGenerator. cs** fájl egy egyszerű osztályt hoz létre a teszteléshez szükséges adatlétrehozáshoz. Ennek az osztálynak egyetlen célja, hogy megkönnyítse a nagy számú, egyedi AZONOSÍTÓval rendelkező dokumentum létrehozását az indexeléshez.
 
 Az egyedi azonosítókkal rendelkező 100 000-Szállodák listájának lekéréséhez futtassa a következő kódrészleteket:
 
@@ -345,7 +345,7 @@ do
 
 Innen Becsomagoljuk az exponenciális leállítási kódot egy függvénybe, hogy könnyen meghívható legyen.
 
-Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény nem szerepel itt, de a [ExponentialBackoff.cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal `hotels` , ahol a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
+Ekkor létrejön egy másik függvény az aktív szálak kezeléséhez. Az egyszerűség kedvéért ez a függvény itt nem szerepel, de a [ExponentialBackoff. cs](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/optimize-data-indexing/v11/OptimizeDataIndexing/ExponentialBackoff.cs)-ben is megtalálható. A függvény hívható a következő paranccsal `hotels` , ahol a feltölteni kívánt adatok, `1000` a köteg mérete, és `8` az egyidejű szálak száma:
 
 ```csharp
 await ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8);

@@ -12,10 +12,10 @@ ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: f6422c3f751a7aaa430b93ee68ca1a3520ac915f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257692"
 ---
 # <a name="understand-saml-based-single-sign-on"></a>SAML-alapú egyszeri bejelentkezés ismertetése
@@ -44,7 +44,7 @@ Az alkalmazás gyártójától kell beolvasnia az értékeket. Manuálisan is me
 > [!TIP]
 > Számos alkalmazás már előre konfigurálva van az Azure AD-vel való együttműködésre. Ezek az alkalmazások az alkalmazások katalógusában jelennek meg, amelyekkel megkereshet egy alkalmazást az Azure AD-bérlőhöz való hozzáadásakor. A gyors üzembe helyezési [sorozat](add-application-portal-setup-sso.md) végigvezeti a folyamaton. A katalógusban található alkalmazásokhoz részletes, lépésenkénti útmutatót talál. A lépések eléréséhez kattintson az alkalmazás SAML-konfiguráció lapján található hivatkozásra, amelyet a rövid útmutatóban leírtak szerint, vagy a [SaaS app Configuration oktatóanyagokban](../saas-apps/tutorial-list.md)böngészhet az összes alkalmazás-konfigurációs oktatóanyag listájában.
 
-| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Leírás |
+| Alapszintű SAML konfigurációs beállítás | SP által kezdeményezve | Identitásszolgáltató által kezdeményezve | Description |
 |:--|:--|:--|:--|
 | **Azonosító (entitásazonosító)** | Néhány alkalmazáshoz szükséges | Néhány alkalmazáshoz szükséges | Egyedileg azonosítja az alkalmazást. Az Azure AD elküldi az azonosítót az alkalmazásnak az SAML-jogkivonat célközönségi paramétereként. Az alkalmazásnak el kell érvényesíteni. Ez az érték az alkalmazás által megadott SAML-metaadatok entitásazonosítójaként is megjelenik. Adjon meg egy URL-címet, amely a következő mintát használja: "https:// <subdomain> . contoso.com". *Ez az érték az alkalmazás által elküldhető **AuthnRequest** (SAML-kérelem) **kiállító** elemeként is megkereshető* . |
 | **Válasz URL-címe** | Kötelező | Kötelező | Megadja, hogy az alkalmazás hová várja az SAML-jogkivonatot. A válasz URL-címet más néven a tényfeldolgozó szolgáltatás (Assertion Consumer Service, ACS) URL-címének hívják. A további válasz URL-címek mezővel több válasz URL-címet is megadhat. Előfordulhat például, hogy több altartományhoz is szüksége van további válasz URL-címekre. Vagy tesztelési célból egyszerre több válasz URL-címet (helyi gazdagépet és nyilvános URL-címeket) is megadhat. |

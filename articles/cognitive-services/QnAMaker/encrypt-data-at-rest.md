@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
 ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100524461"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker inaktív adatok titkosítása
@@ -76,7 +76,7 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
 
 ---
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 Az ügyfél által felügyelt kulcsok minden Azure Search régióban elérhetők.
 
