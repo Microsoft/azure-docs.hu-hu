@@ -7,10 +7,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 870c812a68f765f987cfd3d1b953e0afeb3e9055
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364511"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Az Azure Data Factory folyamatai és tevékenységei
@@ -58,8 +58,8 @@ Adatátalakítási tevékenység | Számítási környezet
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [Egyéni tevékenység](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks-jegyzetfüzet](transform-data-databricks-notebook.md) | Azure Databricks
-[Databricks Jar-tevékenysége](transform-data-databricks-jar.md) | Azure Databricks
-[Databricks Python-tevékenységei](transform-data-databricks-python.md) | Azure Databricks
+[Databricks jar-tevékenység](transform-data-databricks-jar.md) | Azure Databricks
+[Databricks Python-tevékenység](transform-data-databricks-python.md) | Azure Databricks
 
 További információkért tekintse meg az [adatátalakítási tevékenységekről](transform-data.md) szóló cikket.
 

@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 22a1a4b99717df32a40ea69ebb65a3a8e14ee2b4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102510893"
 ---
 A megosztott lemezek engedélyezése csak a lemezek egy részhalmaza számára lehetséges. Jelenleg csak az ultra-lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemez, amelyen engedélyezve vannak a megosztott lemezek, a következő korlátozások vonatkoznak a lemez típusa szerint rendezve:
@@ -40,6 +40,6 @@ A megosztott Ultra-lemezek az összes olyan régióban elérhetők, amelyek alap
 - Azure Site Recovery támogatás még nem érhető el.
 - Azure Backup az [Azure Disk Backup (előzetes verzió)](../articles/backup/disk-backup-overview.md)szolgáltatásban érhető el.
 
-#### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+#### <a name="regional-availability"></a>Regionális elérhetőség
 
 A megosztott prémium SSD-k minden olyan régióban elérhetők, ahol elérhetők a felügyelt lemezek.

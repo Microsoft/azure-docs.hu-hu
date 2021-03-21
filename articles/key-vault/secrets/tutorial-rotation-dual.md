@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786005"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>A titkos kulcs elforgatásának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
@@ -232,7 +232,7 @@ A rotációs függvények sablon két hitelesítő adathoz és több használatr
 > [!NOTE]
 > A fenti rotációs funkciókat a Közösség egy tagja hozza létre, és nem a Microsoft. A közösségi Azure Functions semmilyen Microsoft támogatási program vagy szolgáltatás esetében nem támogatottak, és a rendelkezésére álló feltételek semmilyen garanciát nem JELENTenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Oktatóanyag: [a titkok rotációja a hitelesítő adatok egy készlete esetében](./tutorial-rotation.md)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)

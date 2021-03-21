@@ -7,18 +7,21 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 435cad4d1ef002261b194431dbdb787e072808f5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100361485"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591996"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végrehajtását. A webhook tevékenységgel az ügyfelek kódja hívhat meg egy végpontot, és átadhatja a visszahívási URL-címet. A folyamat futása megvárja a visszahívás meghívását, mielőtt továbblép a következő tevékenységre.
+
+> [!IMPORTANT]
+> A webhook tevékenység mostantól lehetővé teszi, hogy a hibák állapotát és az egyéni üzeneteket visszalépjen a tevékenységbe és a folyamatba. Állítsa a _reportStatusOnCallBack_ igaz értékre, és adja meg a _statuscode_ és a _hiba_ értéket a visszahívási adattartalomban. További információ: [további megjegyzések](#additional-notes) szakasz.
 
 ## <a name="syntax"></a>Syntax
 
@@ -37,6 +40,7 @@ A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végreha
             "key": "value"
         },
         "timeout": "00:03:00",
+        "reportStatusOnCallBack": false,
         "authentication": {
             "type": "ClientCertificate",
             "pfx": "****",
@@ -65,7 +69,7 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 
 A webhook-tevékenység a következő hitelesítési típusokat támogatja.
 
-### <a name="none"></a>Nincs
+### <a name="none"></a>Nincsenek
 
 Ha nincs szükség hitelesítésre, ne adja meg a **hitelesítési** tulajdonságot.
 

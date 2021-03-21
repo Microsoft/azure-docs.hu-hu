@@ -13,10 +13,10 @@ ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 5206c2295ee7c01b4a2908e59da1cfdd8782bccd
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102517718"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
@@ -123,7 +123,7 @@ A Microsoft. Identity. Web Project sablonok használatával létrehozhat egy tel
 
 #### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Egy meglévő ASP.NET Core 3,1-alkalmazástól kezdve
 
-Ma ASP.NET Core 3,1 a Microsoft. AspNetCore. AzureAD. UI könyvtárat használja. A middleware inicializálása a Startup.cs fájlban történik.
+Ma ASP.NET Core 3,1 a Microsoft. AspNetCore. AzureAD. UI könyvtárat használja. A middleware inicializálása a Startup. cs fájlban történik.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. Azonban a Microsoft [. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) használatával módosíthatja a sablonokat a Microsoft Identity platform használatára a *Startup.cs*:
+ A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. Azonban a Microsoft [. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) használatával módosíthatja a sablonokat a Microsoft Identity platform használatára, a kódot pedig a *Startup. cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -195,7 +195,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Leírás |
+| Validator | Description |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |
@@ -210,7 +210,7 @@ A validatorok a **TokenValidationParameters** osztály tulajdonságaival vannak 
 
 A legtöbb esetben nem kell módosítania a paramétereket. Azok az alkalmazások, amelyek nem önálló bérlők, kivételek. Ezek a webalkalmazások elfogadják a felhasználókat bármely szervezettől vagy személyes Microsoft-fiókból. Ebben az esetben a kiállítókat érvényesíteni kell. A Microsoft. Identity. web is gondoskodik a kibocsátó érvényesítéséről. Részletekért lásd: Microsoft. Identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-Ha a jogkivonat-ellenőrzési paramétereket testre szeretné szabni a ASP.NET Coreban, használja a következő kódrészletet a *Startup.cs*:
+Ha a jogkivonat-ellenőrzési paramétereket testre szeretné szabni a ASP.NET Coreban, használja az alábbi kódrészletet az *indításakor. cs*:
 
 ```c#
 services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

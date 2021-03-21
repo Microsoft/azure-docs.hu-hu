@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda, oldalton
 ms.custom: aaddev
 ms.openlocfilehash: f7f2abadb7586e1b19168eb46a54bad53caa05cc
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98761100"
 ---
 # <a name="handle-errors-and-exceptions-in-msal-for-iosmacos"></a>Hibák és kivételek kezelése az iOS-hez/macOS-hez készült MSAL-ben
@@ -240,6 +240,6 @@ További információért tekintse meg az [egyéni jogcímek kérése az MSAL ha
 
 [!INCLUDE [Active directory error handling retries](../../../includes/active-directory-develop-error-handling-retries.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hibák diagnosztizálásához és hibakereséséhez érdemes lehet engedélyezni a [MSAL for iOS/MacOS naplózását](msal-logging-ios.md) .

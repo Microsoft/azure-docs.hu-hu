@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 70d0fc456b3697e3c74a5ec45cc936a02b77e591
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210205"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657654"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Vowpal Wabbit modell betanítása
 Ez a cikk azt ismerteti, hogyan használható a **Vowpal Wabbit Model** modul a Azure Machine learning Designerben, és hogyan hozható létre gépi tanulási modell a Vowpal Wabbit használatával.  
@@ -91,6 +91,13 @@ A Vowpal Wabbit támogatja a növekményes képzést azáltal, hogy új adattíp
 
 6. A folyamat elküldése.  
 7. Válassza ki a modult, és válassza az **adatkészlet regisztrálása** a jobb oldali ablaktábla **kimenetek + naplók** lapján, hogy megőrizze a frissített modellt a Azure Machine learning munkaterületen.  Ha nem ad meg új nevet, a frissített modell felülírja a meglévő mentett modellt.
+
+## <a name="results"></a>Results (Eredmények)
+
++ A modellből származó pontszámok létrehozásához használja a [score Vowpal Wabbit modellt](score-vowpal-wabbit-model.md).
+
+> [!NOTE]
+> Ha telepítenie kell a betanított modellt a tervezőben, győződjön meg arról, hogy a pontszám **modell** helyett a [score Vowpal Wabbit modellje](score-vowpal-wabbit-model.md) csatlakozik a [webszolgáltatás kimeneti moduljának](web-service-input-output.md) bemenetéhez a következtetési folyamatban.
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 

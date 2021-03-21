@@ -6,14 +6,14 @@ ms.author: sumuth
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ab606e357bd911f4d7f266977bd14871f92744a0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff9af90ca0b6b80ffece5ccd7d919c1d93e210c4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546568"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657586"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Oktatóanyag: Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása a App Services webalkalmazással a Virtual Network szolgáltatásban
 
@@ -22,9 +22,10 @@ ms.locfileid: "92546568"
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Azure App Service webalkalmazást Azure Database for PostgreSQL-rugalmas kiszolgálóval (előzetes verzió) egy [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md)belül.
 
-Ebben az oktatóanyagban a következő lesz:
+Ezen oktatóanyag segítségével megtanulhatja a következőket:
 >[!div class="checklist"]
 > * PostgreSQL rugalmas kiszolgáló létrehozása virtuális hálózaton
+> * Alhálózat létrehozása App Service delegálásához
 > * Webalkalmazás létrehozása
 > * A webalkalmazás hozzáadása a virtuális hálózathoz
 > * Kapcsolódás a postgres a webalkalmazásból 
@@ -44,7 +45,7 @@ az login
 Ha több előfizetéssel rendelkezik válassza ki a megfelelő előfizetést, amelyre az erőforrást terhelni szeretné. Válassza ki a megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account) paranccsal. **Az előfizetés-azonosító tulajdonságot** az előfizetés-azonosító helyőrzőbe írja be az előfizetéshez tartozó **bejelentkezési** kimenetből.
 
 ```azurecli
-az account set --subscription <subscription id>
+az account set --subscription <subscription ID>
 ```
 
 ## <a name="create-a-postgresql-flexible-server-in-a-new-virtual-network"></a>PostgreSQL rugalmas kiszolgáló létrehozása új virtuális hálózaton
@@ -68,14 +69,21 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 >  az postgres flexible-server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 >  ```
 
+## <a name="create-subnet-for-app-service-endpoint"></a>Alhálózat létrehozása App Service végponthoz
+Most szükség van olyan alhálózatra, amely App Service webalkalmazás-végpontra van delegálva. A következő parancs futtatásával hozzon létre egy új alhálózatot ugyanabban a virtuális hálózatban, amelyben az adatbázis-kiszolgáló létrejött. 
+
+```azurecli
+az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
+```
+Jegyezze fel a virtuális hálózat nevét és az alhálózat nevét a parancs után, ahogy azt a létrehozás után VNET-integrációs szabály hozzáadására lenne szükség a webalkalmazáshoz. 
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-Ebben a szakaszban az App Host alkalmazást App Service alkalmazásban hozza létre, kapcsolja össze az alkalmazást a postgres-adatbázissal, majd telepítse a kódot a gazdagépre. Győződjön meg arról, hogy az alkalmazás kódjának tárház gyökerében van a terminálban.
+Ebben a szakaszban az App Host alkalmazást App Service alkalmazásban hozza létre, kapcsolja össze az alkalmazást a postgres-adatbázissal, majd telepítse a kódot a gazdagépre. Győződjön meg arról, hogy az alkalmazás kódjának tárház gyökerében van a terminálban. Megjegyzés: az alapszintű csomag nem támogatja a VNET-integrációt. Használja a standard vagy a prémium szintűt. 
 
 Hozzon létre egy App Service alkalmazást (a gazdagép folyamatát) az az WebApp up paranccsal
 
 ```azurecli
-az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku B1 --name mywebapp
+az webapp up --resource-group myresourcegroup --location westus2 --plan testappserviceplan --sku P2V2 --name mywebapp
 ```
 
 > [!NOTE]
@@ -85,7 +93,6 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
 - Ha még nem létezik, hozza létre az erőforráscsoportot. (Ebben a parancsban ugyanazt az erőforráscsoportot használja, amelyben korábban létrehozta az adatbázist.)
-- Ha nem létezik, hozza létre a App Service tervet az ```testappserviceplan``` alapszintű díjszabásban (B1). a--Plan és a--SKU megadása nem kötelező.
 - Ha nem létezik, hozza létre a App Service alkalmazást.
 - Az alkalmazás alapértelmezett naplózásának engedélyezése, ha még nincs engedélyezve.
 - Töltse fel az adattárat a ZIP-telepítéssel a Build Automation használatával.
@@ -94,7 +101,7 @@ Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány pe
 Az **az WebApp vnet-Integration** paranccsal adhat hozzá regionális virtuális hálózati integrációt egy webapphoz. Cserélje le <vnet> és <alhálózat neve> a virtuális hálózatra és az alhálózat nevére, amelyet a rugalmas kiszolgáló használ.
 
 ```azurecli
-az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet <vnet-name> --subnet <subnet-name>
+az webapp vnet-integration add -g myresourcegroup -n  mywebapp --vnet VNETName --subnet webappsubnetName
 ```
 
 ## <a name="configure-environment-variables-to-connect-the-database"></a>Környezeti változók konfigurálása az adatbázishoz való kapcsolódáshoz
@@ -110,7 +117,7 @@ az webapp config appsettings set --settings DBHOST="<postgres-server-name>.postg
 - Az erőforráscsoport és az alkalmazás neve a. Azure/config fájl gyorsítótárazott értékeiből származik.
 - A parancs a (z ```DBHOST``` ),, ```DBNAME``` ```DBUSER``` és ```DBPASS``` . nevű beállításokat hozza létre. Ha az alkalmazás kódja más nevet használ az adatbázis-adatokhoz, akkor ezeket a neveket használja a kódban említett beállítások alapján.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje az oktatóanyagban létrehozott összes erőforrást az alábbi parancs használatával. Ez a parancs törli az erőforráscsoport összes erőforrását.
 
@@ -119,6 +126,6 @@ az group delete -n myresourcegroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Meglévő egyéni DNS-név leképezése Azure App Service](../../app-service/app-service-web-tutorial-custom-domain.md)

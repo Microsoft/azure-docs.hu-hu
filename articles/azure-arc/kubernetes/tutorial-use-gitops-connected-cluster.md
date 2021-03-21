@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 64299bd05e82cf6f5452cde3f3da5622eff25e56
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121473"
 ---
 # <a name="tutorial-deploy-configurations-using-gitops-on-an-azure-arc-enabled-kubernetes-cluster"></a>Oktatóanyag: konfigurációk üzembe helyezése a GitOps használatával egy Azure arc-kompatibilis Kubernetes-fürtön 
@@ -235,7 +235,7 @@ Egy konfiguráció létrehozásakor vagy frissítésekor néhány dolog történ
 
 A kiépítési folyamat során a konfigurációs erőforrás átkerül néhány állapotba. A folyamat figyelése a `az k8s-configuration show ...` fenti paranccsal:
 
-| Szakasz módosítása | Leírás |
+| Szakasz módosítása | Description |
 | ------------- | ------------- |
 | `complianceStatus`-> `Pending` | A kezdeti és a folyamatban lévő állapotot jelöli. |
 | `complianceStatus` -> `Installed`  | `config-agent` sikeresen konfigurálta a fürtöt, és `flux` hiba nélkül telepítette. |

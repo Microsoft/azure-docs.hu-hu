@@ -1,5 +1,5 @@
 ---
-title: Önálló Micro Agent – áttekintés
+title: Önálló Micro Agent – áttekintés (előzetes verzió)
 titleSuffix: Azure Defender for IoT
 description: A IoT biztonsági ügynökökhöz készült Azure Defender lehetővé teszi, hogy közvetlenül az új IoT-eszközökbe és az Azure IoT-projektjeibe hozza létre a biztonságot.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120079"
 ---
-# <a name="standalone-micro-agent-overview"></a>Önálló Micro Agent – áttekintés 
+# <a name="standalone-micro-agent-overview-preview"></a>Önálló Micro Agent – áttekintés (előzetes verzió)
 
 A biztonság a IoT-végrehajtók számára közel univerzális probléma. A IoT-eszközök egyedi igényeket támasztanak a végpontok monitorozásához, a biztonsági helyzetek felügyeletéhez és a fenyegetések észleléséhez – mindezt a Kiemelt teljesítményre vonatkozó követelményekkel. 
 
@@ -47,4 +47,4 @@ Az Azure Defender for IoT Micro Agent egyszerűen üzembe helyezhető, és minim
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [Micro Agent hitelesítési módszereinek ](concept-security-agent-authentication.md)megkeresése.
+Tekintse meg a [Micro Agent hitelesítési módszereit (előzetes verzió)](concept-security-agent-authentication.md).

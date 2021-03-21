@@ -4,10 +4,10 @@ description: A Azure Resource Manager sablonok (ARM-sablonok) létrehozásához 
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257997"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
@@ -176,7 +176,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 

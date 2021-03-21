@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella-nal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Cisco Umbrella között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella admin SSO-val | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a Cisco Umbrella admin SSO között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 03/16/2021
 ms.author: jeedes
-ms.openlocfilehash: cfb8ee9972d19ce07e2d681533d30c4794ddca28
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 6073142b21a28f1242e0e6ec65ee2945a354b60b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101649068"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592506"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella-nal
+# <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella-admin-sso"></a>Oktatóanyag: Azure Active Directory integráció a Cisco Umbrella rendszergazdai SSO-val
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cisco esernyőt Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a Cisco Umbrella-t, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cisco Umbrella admin SSO-t Azure Active Directory (Azure AD-val). Ha a Cisco Umbrella admin SSO-t az Azure AD-vel integrálja, a következőket teheti:
 
-* A Cisco Umbrella elérését biztosító Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Cisco Umbrella-ba az Azure AD-fiókjával.
+* Vezérlés az Azure AD-ben, aki hozzáfér a Cisco Umbrella admin SSO-hoz.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Cisco Umbrella admin SSO-ba az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -31,43 +31,43 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Cisco esernyőt 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Cisco Umbrella egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Cisco Umbrella rendszergazdai egyszeri bejelentkezéses egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Cisco Umbrella támogatja **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
+* A Cisco Umbrella admin SSO támogatja **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="add-cisco-umbrella-from-the-gallery"></a>Cisco Umbrella hozzáadása a katalógusból
+## <a name="add-cisco-umbrella-admin-sso-from-the-gallery"></a>Cisco Umbrella admin SSO hozzáadása a katalógusból
 
-A Cisco Umbrella Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Cisco esernyőt a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Cisco Umbrella admin SSO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Cisco Umbrella admin SSO-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Cisco Umbrella** kifejezést a keresőmezőbe.
-1. Válassza a **Cisco Umbrella** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Cisco Umbrella admin SSO** kifejezést a keresőmezőbe.
+1. Válassza a **Cisco Umbrella admin SSO** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-sso-for-cisco-umbrella"></a>Azure AD SSO konfigurálása és tesztelése a Cisco Umbrella-hoz
+## <a name="configure-and-test-azure-ad-sso-for-cisco-umbrella-admin-sso"></a>Azure AD SSO konfigurálása és tesztelése a Cisco Umbrella admin SSO-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Cisco Umbrella segítségével egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Cisco Umbrella-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Cisco Umbrella admin SSO-val egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Cisco Umbrella admin SSO-ban.
 
-Az Azure AD SSO és a Cisco Umbrella konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
+Az Azure AD SSO konfigurálásához és teszteléséhez a Cisco Umbrella admin SSO használatával hajtsa végre a következő lépéseket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[Cisco UMBRELLA SSO konfigurálása](#configure-cisco-umbrella-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre Cisco Umbrella-teszt felhasználót](#create-cisco-umbrella-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-partnerként a Cisco Umbrella-ban.
+1. **[Állítsa be a Cisco Umbrella admin SSO SSO](#configure-cisco-umbrella-admin-sso-sso)** -t – az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. **[Cisco Umbrella-rendszergazdai SSO-teszt felhasználó létrehozása](#create-cisco-umbrella-admin-sso-test-user)** – a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-partneri kapcsolathoz a Cisco Umbrella rendszergazdai egyszeri bejelentkezéssel.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Cisco Umbrella** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **Cisco Umbrella admin SSO** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Cisco Umbrella beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Cisco Umbrella admin SSO beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -103,19 +103,19 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a Cisco Umbrella elérésének biztosításával.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Cisco Umbrella admin SSO-hoz.
 
 1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
-1. Az alkalmazások listában válassza a **Cisco Umbrella** elemet.
+1. Az alkalmazások listában válassza a **Cisco Umbrella admin egyszeri bejelentkezés** lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-cisco-umbrella-sso"></a>Cisco Umbrella SSO konfigurálása
+## <a name="configure-cisco-umbrella-admin-sso-sso"></a>Cisco Umbrella admin SSO SSO konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella admin SSO céges webhelyre rendszergazdaként.
 
 2. A menü bal oldalán kattintson a **rendszergazda** elemre, és keresse meg a **hitelesítést** , majd kattintson az **SAML** elemre.
 
@@ -125,7 +125,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![A másik](./media/cisco-umbrella-tutorial/other.png)
 
-4. A **Cisco Umbrella-metaadatok** lapon kattintson a **tovább** gombra.
+4. A **Cisco Umbrella admin SSO metaadatok** lapon kattintson a **tovább** gombra.
 
     ![A metaadatok](./media/cisco-umbrella-tutorial/metadata.png)
 
@@ -143,14 +143,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 8. Kattintson a **Mentés** gombra.
 
-### <a name="create-cisco-umbrella-test-user"></a>Cisco Umbrella-teszt felhasználó létrehozása
+### <a name="create-cisco-umbrella-admin-sso-test-user"></a>Cisco Umbrella-rendszergazda SSO-teszt felhasználó létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Cisco Umbrella-ba, ki kell építeni a Cisco Umbrella-ba.  
-A Cisco Umbrella esetében a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Cisco Umbrella admin SSO-ba, a Cisco Umbrella admin SSO-ba kell kiépíteni őket.  
+A Cisco Umbrella rendszergazdai egyszeri bejelentkezés esetén a kiépítés manuális feladat.
 
 **Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Cisco Umbrella admin SSO céges webhelyre rendszergazdaként.
 
 2. A menü bal oldalán kattintson a **rendszergazda** lehetőségre, és navigáljon a **fiókok** elemre.
 
@@ -180,16 +180,16 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a szolgáltatás átirányítja a Cisco Umbrella bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez a szolgáltatás átirányítja a Cisco esernyő rendszergazdai SSO bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
 
-* Lépjen közvetlenül a Cisco Umbrella bejelentkezési URL-címére, és indítsa el innen a bejelentkezési folyamatot.
+* Lépjen a Cisco Umbrella admin SSO bejelentkezési URL-címére közvetlenül, és indítsa el onnan a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Cisco Umbrella-be, amelyhez be kell állítania az egyszeri bejelentkezést. 
+* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Cisco UMBRELLA admin SSO-ba, amelyhez be kell állítania az egyszeri bejelentkezést. 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások Cisco Umbrella csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a Cisco Umbrella-ba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások területén a Cisco Umbrella admin egyszeri bejelentkezés csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie a Cisco Umbrella admin SSO-ba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A Cisco Umbrella konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).
+A Cisco Umbrella admin SSO konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

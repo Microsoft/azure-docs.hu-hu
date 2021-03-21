@@ -8,12 +8,12 @@ author: amjads1
 ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
-ms.openlocfilehash: eb1b05afbaa57fb86033c568142da32443adc1f9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b9b10e2ed58a41cee99e7e6ef1c3994035460407
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559782"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601860"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -120,7 +120,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-A következő példában a virtuálisgép-hozzáférési bővítmény egy Windows rendszerű virtuális gép rendszergazdai jelszavának alaphelyzetbe állítására szolgál ideiglenes jelszóként. További információ a virtuális gépek hozzáférési bővítménnyel kapcsolatban: [Távoli asztal szolgáltatás alaphelyzetbe állítása Windows rendszerű virtuális gépen](../troubleshooting/reset-rdp.md). Ha már futtatta a parancsot, állítsa alaphelyzetbe a jelszót az első bejelentkezéskor:
+A következő példában a virtuálisgép-hozzáférési bővítmény egy Windows rendszerű virtuális gép rendszergazdai jelszavának alaphelyzetbe állítására szolgál ideiglenes jelszóként. További információ a virtuális gépek hozzáférési bővítménnyel kapcsolatban: [Távoli asztal szolgáltatás alaphelyzetbe állítása Windows rendszerű virtuális gépen](/troubleshoot/azure/virtual-machines/reset-rdp). Ha már futtatta a parancsot, állítsa alaphelyzetbe a jelszót az első bejelentkezéskor:
 
 ```powershell
 $cred=Get-Credential
@@ -414,7 +414,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Leírás | További információ |
+| Kiterjesztés neve | Description | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

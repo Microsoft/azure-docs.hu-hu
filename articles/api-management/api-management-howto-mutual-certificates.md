@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
 ms.openlocfilehash: 2e4a398ab71878134887fb8fba025cd8aa6122ad
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492834"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>A háttérbeli szolgáltatások biztonságossá tétele az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management
@@ -76,7 +76,7 @@ Key Vault-tanúsítvány hozzáadása a API Managementhoz:
 1. Az **ügyfél identitása** területen válasszon ki egy rendszer által hozzárendelt vagy egy meglévő felhasználó által hozzárendelt felügyelt identitást. Ismerje meg, hogyan [adhat hozzá vagy módosíthat felügyelt identitásokat a API Management szolgáltatásban](api-management-howto-use-managed-service-identity.md).
     > [!NOTE]
     > Az identitásnak engedélyre van szüksége a tanúsítvány lekéréséhez és listázásához a kulcstartóból. Ha még nem konfigurálta a Key vaulthoz való hozzáférést, API Management felszólítja, hogy automatikusan konfigurálja az identitást a szükséges engedélyekkel.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-kv.png" alt-text="Key Vault-tanúsítvány hozzáadása":::
 
@@ -90,7 +90,7 @@ Key Vault-tanúsítvány hozzáadása a API Managementhoz:
 1. Az **azonosító** mezőben adja meg az Ön által választott nevet.
 1. A **tanúsítvány** területen válassza az **Egyéni** lehetőséget.
 1. Tallózással válassza ki a Certificate. pfx fájlt, és adja meg a jelszavát.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-add.png" alt-text="Ügyféltanúsítvány feltöltése":::
 

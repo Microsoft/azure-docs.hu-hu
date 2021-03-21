@@ -10,10 +10,10 @@ adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts
 adobe-target-experience: Experience B
 adobe-target-content: ./functions-create-your-first-function-visual-studio-uiex
 ms.openlocfilehash: d691ee60f624f75c89e44e905e5343bf9c71fd4d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101701415"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
@@ -40,7 +40,7 @@ A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a H
 
 A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a következőképpen jön létre: `Function1` . Mivel az eszközök nem teszik lehetővé, hogy a projekt létrehozásakor felülbírálja az alapértelmezett függvény nevét, szánjon egy percet a Function osztály, a fájl és a metaadatok jobb nevének létrehozásához.
 
-1. A **fájlkezelőben** kattintson a jobb gombbal a Function1.cs fájlra, és nevezze át a következőre: `HttpExample.cs` .
+1. A **fájlkezelőben** kattintson a jobb gombbal a Function1. cs fájlra, és nevezze át a következőre: `HttpExample.cs` .
 
 1. A kódban nevezze át a Function1 osztályt a következőre: "HttpExample".
 

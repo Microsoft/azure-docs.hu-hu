@@ -17,10 +17,10 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 783de636d4520f48f624f3380f811f1f18366330
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99259236"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Vállalati alkalmazásokhoz tartozó felhasználói bejelentkezések letiltása Azure Active Directory
@@ -33,8 +33,8 @@ A vállalati alkalmazások egyszerűen letilthatók, így egyetlen felhasználó
 1. Válassza a **minden szolgáltatás** lehetőséget, írja be **Azure Active Directory** a szövegmezőbe, majd válassza az **ENTER billentyűt**.
 1. Az **Azure Active Directory**  -   **_könyvtárnév_*_ ablaktáblán (azaz a felügyelt címtárhoz tartozó Azure ad-ablaktáblán) válassza az _ Enterprise-alkalmazások elemet***.
 1. A **vállalati alkalmazások – minden alkalmazás** panelen láthatja a felügyelhető alkalmazások listáját. Jelöljön ki egy alkalmazást.
-1. Az **_AppName_*_ ablaktáblán (azaz a cím alatt a kiválasztott alkalmazás nevét tartalmazó ablaktáblán) válassza a _ tulajdonságok elemet***.
-1. A **_AppName_*_-_* tulajdonságok** paneljén válassza a **nem** lehetőséget a **felhasználók bejelentkezéshez való engedélyezéséhez?**.
+1. Az ***AppName** _ panelen (azaz a cím alatt a kiválasztott alkalmazás nevét tartalmazó ablaktáblán) válassza a _ * tulajdonságok * * elemet.
+1. A ***AppName** _-_ *Tulajdonságok** ablaktáblán válassza a **nem** lehetőséget a **felhasználók bejelentkezéshez való engedélyezéséhez?**.
 1. Kattintson a **Save (Mentés** ) parancsra.
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Lista nélküli alkalmazás letiltása az Azure AD PowerShell használatával

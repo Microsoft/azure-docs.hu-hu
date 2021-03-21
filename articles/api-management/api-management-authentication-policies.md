@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/27/2021
 ms.author: apimpm
 ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99492603"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-hitelesítési szabályzatok
@@ -50,14 +50,14 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
-|hitelesítés – alapszintű|Gyökérelem.|Igen|
+|hitelesítés – alapszintű|Gyökérelem.|Yes|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|username|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|N/A|
-|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|N/A|
+|username|Megadja az alapszintű hitelesítő adat felhasználónevét.|Yes|N/A|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Yes|N/A|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -101,7 +101,7 @@ Ebben a példában az ügyféltanúsítvány a szabályzatban van beállítva, �
   
 |Név|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítés – tanúsítvány|Gyökérelem.|Igen|  
+|hitelesítés – tanúsítvány|Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
@@ -109,7 +109,7 @@ Ebben a példában az ügyféltanúsítvány a szabályzatban van beállítva, �
 |----------|-----------------|--------------|-------------|  
 |ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|
 |tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint`Vagy `certificate-id` kell lennie.|N/A|
-|body (Törzs)|Ügyfél-tanúsítvány bájt tömbként.|Nem|N/A|
+|body (Törzs)|Ügyfél-tanúsítvány bájt tömbként.|No|N/A|
 |jelszó|Az ügyféltanúsítvány jelszava.|Akkor használatos, ha a ben megadott tanúsítvány `body` jelszavas védelemmel van ellátva.|N/A|
   
 ### <a name="usage"></a>Használat  
@@ -178,16 +178,16 @@ A rendszer által hozzárendelt identitás és a több felhasználó által hozz
   
 |Név|Leírás|Kötelező|  
 |----------|-----------------|--------------|  
-|hitelesítés – felügyelt – identitás |Gyökérelem.|Igen|  
+|hitelesítés – felügyelt – identitás |Gyökérelem.|Yes|  
   
 ### <a name="attributes"></a>Attribútumok  
   
 |Név|Leírás|Kötelező|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Igen|N/A|
-|ügyfél-azonosító|Sztring. A felhasználó által hozzárendelt identitás alkalmazás-azonosítója Azure Active Directoryban.|Nem|rendszer által hozzárendelt identitás|
-|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |Nem|N/A|  
-|Mellőzés – hiba|Logikai. Ha a értékre `true` van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|hamis|  
+|erőforrás|Sztring. A célként megadott webes API (biztonságos erőforrás) alkalmazás-azonosítója Azure Active Directoryban.|Yes|N/A|
+|ügyfél-azonosító|Sztring. A felhasználó által hozzárendelt identitás alkalmazás-azonosítója Azure Active Directoryban.|No|rendszer által hozzárendelt identitás|
+|output-token-változó-neve|Sztring. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként fogja fogadni `string` . |No|N/A|  
+|Mellőzés – hiba|Logikai. Ha a értékre `true` van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|No|hamis|  
   
 ### <a name="usage"></a>Használat  
  Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.  
