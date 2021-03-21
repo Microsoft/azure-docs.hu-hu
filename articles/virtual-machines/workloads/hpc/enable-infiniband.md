@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 11/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cd4d928217ceba80fa5ea0252a6ed20803a812d3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 089976f2009e006f53dd2a77f09f57d5090429b7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101666949"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721242"
 ---
 # <a name="enable-infiniband"></a>Infiniband engedélyezése
 
@@ -22,9 +22,9 @@ A [RDMA képes](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../s
 A InfiniBand a képes virtuálisgép-méretekhez többféleképpen is engedélyezhető.
 
 ## <a name="vm-images-with-infiniband-drivers"></a>VM-rendszerképek InfiniBand-illesztőprogramokkal
-Tekintse meg a virtuálisgép- [rendszerképeket](configure.md#vm-images) a piactéren támogatott virtuálisgép-rendszerképek listájáért, amely a InfiniBand-illesztőprogramokkal (SR-IOV vagy nem SR-IOV virtuális gépekhez) előre betöltve, vagy a megfelelő illesztőprogramok használatával konfigurálható.
-Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances)esetében a [CentOS-HPC 7,6-es vagy újabb](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verziójú virtuálisgép-lemezképek a legkönnyebben megkezdhetik a piactéren.
-Az Ubuntu VM-lemezképek a megfelelő illesztőprogramokkal konfigurálhatók az SR-IOV és a nem SR-IOV engedélyezve lévő virtuális gépekhez az [itt leírt utasítások](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)alapján.
+Tekintse meg a virtuálisgép- [rendszerképeket](configure.md#vm-images) a piactéren támogatott virtuálisgép-rendszerképek listájáért, amelyek előre be vannak töltve a InfiniBand-illesztőprogramokkal (SR-IOV vagy nem SR-IOV virtuális gépek esetén), vagy a megfelelő illesztőprogramok használatával konfigurálhatók a [RDMA-kompatibilis virtuális gépekhez](../../sizes-hpc.md#rdma-capable-instances).
+- A piactéren elérhető [CentOS-HPC virtuálisgép-](configure.md#centos-hpc-vm-images) rendszerképek a legegyszerűbben az első lépésekhez szükségesek.
+- Az [Ubuntu](configure.md#ubuntu-vm-images) VM-lemezképek a megfelelő IB-illesztőprogramokkal konfigurálhatók.
 
 ## <a name="infiniband-driver-vm-extensions"></a>InfiniBand-illesztőprogram virtuálisgép-bővítményei
 Linux rendszeren a InfiniBandDriverLinux virtuálisgép- [bővítmény](../../extensions/hpc-compute-infiniband-linux.md) használható a Mellanox OFED-illesztőprogramok telepítésére és a InfiniBand engedélyezésére az SR-IOV enabled H-és N-sorozatú virtuális gépeken.
@@ -68,6 +68,6 @@ sudo systemctl restart waagent
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ a különböző [támogatott MPI-könyvtárak](setup-mpi.md) telepítéséről és az optimális konfigurációról a virtuális gépeken.
-- Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
-- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Tekintse át a [HBv3-sorozat áttekintését](hbv3-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

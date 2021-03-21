@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: b5ff515f5a6d25285009f6579570aa3afa5a711f
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103463357"
 ---
 # <a name="tutorial-develop-iot-edge-modules-using-windows-containers"></a>Oktatóanyag: IoT Edge-modulok fejlesztése Windows-tárolók használatával
@@ -153,7 +153,7 @@ Ha az új projekt betöltődik a Visual Studio ablakába, szánjon egy kis időt
     > [!TIP]
     > A beállításjegyzékbeli hitelesítő adatok szakaszban a rendszer a megoldás létrehozásakor megadott információk alapján tölti ki a címeket. A Felhasználónév és a jelszó hivatkozási változói azonban a. env fájlban tárolódnak. Ez a biztonság érdekében, mivel az. env fájlt a git figyelmen kívül hagyja, de a telepítési sablon nem.
 * Egy IoT Edge **IotEdgeModule1** nevű modul-projekt.
-  * A **program.cs** fájl tartalmazza a Project sablonhoz tartozó alapértelmezett C# modul kódját. Az alapértelmezett modul beírja a forrásból a bemenetet, és átadja a IoT Hubnak.
+  * A **program. cs** fájl tartalmazza a Project sablonhoz tartozó alapértelmezett C# modul kódját. Az alapértelmezett modul beírja a forrásból a bemenetet, és átadja a IoT Hubnak.
   * A fájlban lévő **module.js** a modul részletes adatait tartalmazza, beleértve a teljes rendszerkép tárházát, a képváltozatot, valamint azt, hogy melyik Docker kell használni az egyes támogatott platformokhoz.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Adja meg a beállításjegyzékbeli hitelesítő adatait a IoT Edge-ügynöknek
@@ -188,7 +188,7 @@ Minden modul több *bemeneti* és *kimeneti* várólistával is rendelkezhet a k
 
 A Project sablonhoz tartozó C#-kód a [ModuleClient osztályt](/dotnet/api/microsoft.azure.devices.client.moduleclient) használja a .net-hez készült IoT hub SDK-ból.
 
-1. A **program.cs** fájlban keresse meg a **SetInputMessageHandlerAsync** metódust.
+1. A **program. cs** fájlban keresse meg a **SetInputMessageHandlerAsync** metódust.
 
 2. A [SetInputMessageHandlerAsync](/dotnet/api/microsoft.azure.devices.client.moduleclient.setinputmessagehandlerasync) metódus beállít egy bemeneti várólistát a bejövő üzenetek fogadásához. Tekintse át ezt a metódust, és nézze meg, hogyan inicializál egy **input1** nevű bemeneti várólistát.
 

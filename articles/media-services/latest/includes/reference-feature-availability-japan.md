@@ -4,19 +4,19 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c6ce5d2afb3390cb4777938c2888908350453e3e
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: abbe5298c4acdee0607c1ba1c2ffad491f471e68
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242648"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612594"
 ---
 <!--Feature availability in region-->
 ## <a name="japan"></a>Japán
 
-| Funkció | Kelet-Japán | Nyugat-Japán |
+| Szolgáltatás | Kelet-Japán | Nyugat-Japán |
 | --- | :---: | :---: |
-| [Azure-EventGrid](../reacting-to-media-services-events.md) |![Az Azure EventGrid japán keleti általános elérhetősége](../media/azure-clouds-regions/ga.svg)  |![Az Azure EventGrid japán nyugati régiójának általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |![Az Azure EventGrid japán keleti általános elérhetősége](../media/azure-clouds-regions/ga.svg)  |![Az Azure EventGrid japán nyugati régiójának általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![VideoAnalyzerPreset japán Kelet – általánosan elérhető](../media/azure-clouds-regions/ga.svg)  | ![VideoAnalyzerPreset japán nyugati általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |![AudioAnalyzerPreset japán Kelet – általánosan elérhető](../media/azure-clouds-regions/ga.svg)  | ![AudioAnalyzerPreset japán nyugati általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) |![StandardEncoderPreset japán Kelet – általánosan elérhető](../media/azure-clouds-regions/ga.svg)  | ![StandardEncoderPreset japán nyugati általános elérhetősége](../media/azure-clouds-regions/ga.svg) |

@@ -9,10 +9,10 @@ ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
 ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433675"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
@@ -64,7 +64,7 @@ Ha magas átviteli sebességet használ, vagy a másodpercenként 50 000-nál na
 > [!NOTE] 
 > A magas CPU-használat nagyobb késést és kérelem időtúllépési kivételt okozhat.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
@@ -202,7 +202,7 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 További információ: [Azure Cosmos db indexelési házirendek](index-policy.md).
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
 **Az alacsonyabb RU/s használatának mérése és finomhangolása**

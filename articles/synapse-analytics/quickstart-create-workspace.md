@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f2ed99af288b72a4c53f07d3cd7ba8b46974c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101693628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600156"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -35,7 +35,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 
 > [!NOTE]
 > Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések migrálása vagy más műveletek útján mégis megkísérli, elveszítheti a hozzáférést a munkaterületen belüli összetevőkhöz.
-> Emellett jelenleg nem hozhat létre a szinapszis Analytics-munkaterületet egy [felhőalapú megoldás-szolgáltatói (CSP)](https://docs.microsoft.com/partner-center/csp-overview) előfizetésben.
+> Emellett jelenleg nem hozhat létre a szinapszis Analytics-munkaterületet egy [felhőalapú megoldás-szolgáltatói (CSP)](/partner-center/csp-overview) előfizetésben.
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 

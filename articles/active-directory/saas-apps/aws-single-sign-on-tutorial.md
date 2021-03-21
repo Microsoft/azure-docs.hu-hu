@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2021
+ms.date: 03/12/2021
 ms.author: jeedes
-ms.openlocfilehash: e890ff1cb64961c7747b8865b68504ff0a266a3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d0b9e45dc5de0cd4550cf4b9f944fd33ebd7e7e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599695"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az AWS egyszeri bejelentkezéssel
 
@@ -37,7 +37,7 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az AWS egyszeri bejelentkezés támogatja az **SP** -t és a identitásszolgáltató kezdeményezett SSO-t
+* Az AWS egyszeri bejelentkezés az **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést is támogatja.
 
 * Az AWS egyszeri bejelentkezés támogatja a [**felhasználók automatikus üzembe**](./aws-single-sign-on-provisioning-tutorial.md)helyezését.
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az Azure Portal az **AWS egyszeri bejelentkezési** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -80,9 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Kattintson a **metaadat-fájl feltöltése** elemre.
 
-    ![image1](common/upload-metadata.png)
-
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés** elemre.
+    b. A **mappa emblémájának** kiválasztásához válassza ki az **AWS egyszeri bejelentkezéses egyszeri bejelentkezéses SSO konfigurálása** szakaszban letöltött metaadat-fájlt (8. pont), majd kattintson a **Hozzáadás** gombra.
 
     ![image2](common/browse-upload-metadata.png)
 
@@ -148,15 +146,45 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-aws-single-sign-on-sso"></a>AWS egyszeri bejelentkezéses SSO konfigurálása
 
-1. Nyissa meg az **AWS SSO-konzolt** . 
+1. Az AWS egyszeri bejelentkezésen belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson az **AWS egyszeri bejelentkezés beállítása** lehetőségre az AWS egyszeri bejelentkezés alkalmazásban. Itt adja meg a rendszergazdai hitelesítő adatokat az AWS egyszeri bejelentkezésre való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-10-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+3. Ha az AWS egyszeri bejelentkezést manuálisan szeretné beállítani, egy másik böngészőablakban jelentkezzen be az AWS egyszeri bejelentkezési céges webhelyre rendszergazdaként.
+
+1. Lépjen a **szolgáltatások – > biztonság, identitás, & megfelelőség – > AWS egyszeri bejelentkezés elemre**.
 2. A bal oldali navigációs panelen válassza a **Beállítások** lehetőséget.
-3. A **Beállítások** lapon keresse meg a **személyazonosság forrása** elemet, majd kattintson a **módosítás** elemre.
-4. A címtár módosítása lapon válassza a **külső identitás-szolgáltató** elemet.
-5. A **szolgáltatói metaadatok** szakaszban keresse meg az **AWS SSO SAML-metaadatokat** , és válassza a **metaadatok letöltése** lehetőséget a metaadat-fájl letöltéséhez és a számítógépre mentéséhez.
-6. Az **Identity Provider metaadatai** szakaszban válassza a **tallózás** lehetőséget a Azure Portal letöltött metaadat-fájl feltöltéséhez.
-7. Válassza a **Next (tovább): felülvizsgálat** lehetőséget.
-8. A szövegmezőbe írja be a **Confirm (megerősítés** ) lehetőséget a könyvtár módosításának megerősítéséhez.
-9. Válassza a **Befejezés** lehetőséget.
+3. A **Beállítások** lapon keresse meg a **személyazonosság forrását** , és kattintson a **módosítás** lehetőségre.
+
+    ![Képernyőfelvétel a személyazonossági forrás változási szolgáltatásáról](./media/aws-single-sign-on-tutorial/settings.png)
+
+4. Az identitás módosítása forrásnál válassza a **külső identitás-szolgáltató** elemet.
+
+    
+    ![Képernyőkép a külső identitás-szolgáltató kiválasztásáról](./media/aws-single-sign-on-tutorial/external-identity-provider.png)
+
+
+1. Hajtsa végre az alábbi lépéseket a **külső identitás-szolgáltató konfigurálása** szakaszban:
+
+    ![Képernyőfelvétel a metaadatok letöltéséről és feltöltéséről szakasz](./media/aws-single-sign-on-tutorial/upload-metadata.png)
+
+    a. A **szolgáltatói metaadatok** szakaszban keresse meg az **AWS SSO SAML-metaadatokat** , és válassza a **metaadatok letöltése** lehetőséget a metaadat-fájl letöltéséhez, és mentse a fájlt a számítógépre, és használja ezt a metaadat-fájlt a Azure Portal feltöltéséhez.
+
+    b. Másolja az **AWS SSO bejelentkezési URL-címe** értéket, illessze be ezt az értéket a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció szakaszában** .
+
+    c. Az **Identity Provider metaadatai** szakaszban válassza a **tallózás** lehetőséget a Azure Portal letöltött metaadat-fájl feltöltéséhez.
+
+    d. Válassza a **Next (tovább): felülvizsgálat** lehetőséget.
+
+8. A szövegmezőbe írja be az **Accept (elfogadás** ) értéket a személyazonossági forrás módosításához.
+
+    ![Képernyőfelvétel a konfiguráció megerősítéséről](./media/aws-single-sign-on-tutorial/accept.png)
+
+9. Kattintson az **Identity forrás módosítása** elemre.
 
 ### <a name="create-aws-single-sign-on-test-user"></a>AWS egyszeri bejelentkezési teszt felhasználó létrehozása
 

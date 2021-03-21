@@ -16,10 +16,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2d942099d0abbdfc4ddfa0276184500166250728
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103014959"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések beszúrása az ügyféloldali oldalon
@@ -475,7 +475,7 @@ Ez a minta programozott módon kommunikál a Media Player. A ProgrammaticAdPage.
     <mmppf:MediaPlayer x:Name="player" Source="http://smf.blob.core.windows.net/samples/videos/bigbuck.mp4"/>
 ```
 
-A ProgrammaticAdPage.xaml.cs-fájl létrehoz egy AdHandlerPlugin, hozzáadja a TimelineMarker, amely meghatározza, hogy mikor jelenjen meg egy ad, majd hozzáadja a kezelőt a MarkerReached eseményhez, amely betölti a RemoteAdSource egy URI-t egy hatalmas fájlba, majd lejátssza az ad-t.
+A ProgrammaticAdPage. XAML. cs fájl létrehoz egy AdHandlerPlugin, egy TimelineMarker ad meg, amely megadja, hogy mikor jelenjen meg egy hirdetés, majd felvesz egy kezelőt a MarkerReached-eseményhez, amely egy URI-t betölt egy hatalmas fájlhoz, majd lejátssza az ad-t.
 
 ```csharp
     public sealed partial class ProgrammaticAdPage : Microsoft.PlayerFramework.Samples.Common.LayoutAwarePage

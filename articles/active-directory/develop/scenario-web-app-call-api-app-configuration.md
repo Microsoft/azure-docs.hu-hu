@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: aa377547f7f4961e199ec8d62bf0f1435296f983
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582317"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104669304"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -28,15 +28,11 @@ Ahogy [azt a webalkalmazásban](scenario-web-app-sign-user-overview.md) is láth
 
 A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web-app-sign-user-overview.md) csak az első lépést tárgyalja. Itt megtudhatja, hogyan módosíthatja a webalkalmazást úgy, hogy ne csak a felhasználókat írja alá, hanem a webes API-kat is meghívja.
 
-## <a name="libraries-that-support-web-app-scenarios"></a>Webalkalmazás-forgatókönyveket támogató kódtárak
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web Apps-t támogató Microsoft-kódtárak
 
-A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
+A következő Microsoft-kódtárak támogatják a Web Apps szolgáltatást:
 
-| MSAL-könyvtár | Description |
-|--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. <br/><br/>ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web)nevű magasabb szintű könyvtárban van beágyazva. |
-| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
-| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> Javához készült MSAL | Java-webalkalmazások támogatása. |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Válassza ki az Önt érdeklő platform lapját:
 
@@ -99,7 +95,7 @@ A *Microsoft. Identity. Web* számos módszert kínál a tanúsítványok leír�
 
 ## <a name="startupcs"></a>Startup.cs
 
-A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` a *Startup.cs*-ben:
+A webalkalmazásnak meg kell adnia egy jogkivonatot az alsóbb rétegbeli API-hoz. Ezt úgy adhatja meg, hogy a sort a következő után adja hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` `.AddMicrosoftIdentityWebApi(Configuration)` . Ez a sor teszi elérhetővé a `ITokenAcquisition` vezérlő és az oldal műveleteiben használható szolgáltatást. A következő két lehetőség esetében azonban egyszerűen megteheti. Ki kell választania egy jogkivonat-gyorsítótár implementációját is, például `.AddInMemoryTokenCaches()` az *indításkor. cs*:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -129,7 +125,7 @@ Ha nem szeretné saját magának megkapni a jogkivonatot, a *Microsoft. Identity
 Ha meg szeretné hívni Microsoft Graph, a *Microsoft. Identity. Web* lehetővé teszi, hogy közvetlenül használja a `GraphServiceClient` (az Microsoft Graph SDK által közzétett) API-műveleteket. Microsoft Graph közzététele:
 
 1. Adja hozzá a [Microsoft. Identity. Web. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet-csomagot a projekthez.
-1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup.cs* -fájlhoz. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
+1. Adja `.AddMicrosoftGraph()` hozzá `.EnableTokenAcquisitionToCallDownstreamApi()` a következőt a *Startup. cs* fájlban. `.AddMicrosoftGraph()` több felülbírálással rendelkezik. A konfigurációs szakaszt paraméterként tartalmazó felülbírálás használatával a kód a következőképpen fog megjelenni:
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -179,7 +175,7 @@ Ha a Microsoft Graphtól eltérő webes API-t szeretne meghívni, a *Microsoft. 
 
 A webes API-khoz hasonlóan különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: [Microsoft. Identity. Web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
 
-Az alábbi képen a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup.cs* fájlra gyakorolt hatásuk:
+Az alábbi ábrán a *Microsoft. Identity. Web* különböző lehetőségei láthatók, valamint a *Startup. cs* fájlra gyakorolt hatásuk:
 
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="A webes API-k meghívásához és a jogkivonat-gyorsítótár implementációjának megadásához szükséges, a szolgáltatás konfigurációs beállításait bemutató diagram letiltása":::
 
@@ -218,9 +214,9 @@ A Microsoft. Identity. Web leegyszerűsíti a kódot úgy, hogy beállítja a me
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET a ASP.NET Core hasonlóan kezeli a dolgokat, azzal a különbséggel, hogy az OpenID Connect konfigurációja és az eseményre való előfizetés az `OnAuthorizationCodeReceived` [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban történik. A fogalmak a ASP.NET Corehoz hasonlóan is hasonlóak, de a ASP.NET-ben meg kell adnia `RedirectUri` a [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint ASP.NET Core, mert az alkalmazás telepítésekor módosítania kell azt.
+A ASP.NET a ASP.NET Core hasonlóan kezeli a dolgokat, azzal a különbséggel, hogy az OpenID Connect konfigurációja és az eseményre való előfizetés az `OnAuthorizationCodeReceived` [App_Start \startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) -fájlban történik. A fogalmak a ASP.NET Corehoz hasonlóan is hasonlóak, de a ASP.NET-ben meg kell adnia `RedirectUri` a [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Ez a konfiguráció egy kicsit kevésbé robusztus, mint ASP.NET Core, mert az alkalmazás telepítésekor módosítania kell azt.
 
-A Startup.Auth.cs kódja:
+Itt látható az indítási. auth. CS kód:
 
 ```csharp
 public partial class Startup
@@ -391,7 +387,7 @@ Az ügyfél-kijelentések használata egy speciális forgatókönyv, amely rész
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldöntse a jogkivonat-gyorsítótár megvalósítását az alkalmazás Startup.cs-fájljában. A Microsoft. Identity. Web előre elkészített jogkivonat-gyorsítótárazási szerializálók szerepelnek a [jogkivonat-gyorsítótár szerializálása](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)című témakörben. Érdekes lehetőség a ASP.NET Core [elosztott memória-gyorsítótárak](/aspnet/core/performance/caching/distributed#distributed-memory-cache)kiválasztása:
+A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldöntse a jogkivonat-gyorsítótár megvalósítását az alkalmazás Startup. cs fájljában. A Microsoft. Identity. Web előre elkészített jogkivonat-gyorsítótárazási szerializálók szerepelnek a [jogkivonat-gyorsítótár szerializálása](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)című témakörben. Érdekes lehetőség a ASP.NET Core [elosztott memória-gyorsítótárak](/aspnet/core/performance/caching/distributed#distributed-memory-cache)kiválasztása:
 
 ```csharp
 // Use a distributed token cache by adding:

@@ -12,10 +12,10 @@ ms.date: 02/12/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 9341646f32f6a2e05397b072d3f63186964fbd88
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99258982"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Biztonságos hozzáférés a helyszíni API-khoz az Azure AD Application Proxy
@@ -136,7 +136,7 @@ Most regisztrálta a AppProxyNativeAppSample alkalmazást a Azure Active Directo
 
 ## <a name="configure-the-native-app-code"></a>A natív alkalmazás kódjának konfigurálása
 
-Az utolsó lépés a natív alkalmazás konfigurálása. A NativeClient-minta alkalmazás *Form1.cs* fájljának következő kódrészlete azt eredményezi, hogy a MSAL-függvénytár szerzi be a tokent az API-hívás igényléséhez, és csatolja a tulajdonosként az alkalmazás fejlécébe.
+Az utolsó lépés a natív alkalmazás konfigurálása. A NativeClient-minta alkalmazás *Form1. cs* fájljának következő kódrészlete azt eredményezi, hogy a MSAL-függvénytár beszerzi a tokent az API-hívás igényléséhez, és csatolja a tulajdonosként az alkalmazás fejlécéhez.
 
    ```
    // Acquire Access Token from AAD for Proxy Application

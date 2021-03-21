@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 063924dccb7d7b95b962b24ecc1af1870a855194
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102617131"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
@@ -146,7 +146,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Eseményindítók
+## <a name="triggers"></a>Triggerek
 
 A függvényeknek nyilvános metódusoknak kell lenniük, és rendelkezniük kell egy trigger attribútummal vagy az [`NoAutomaticTrigger`](#manual-triggers) attribútummal.
 
@@ -834,7 +834,7 @@ A példányok által létrehozott összes naplóhoz `ILogger` társítva `Catego
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincs        | 6 |
+|Nincsenek        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de `Error` minden más esetében csak a magasabbra.
 

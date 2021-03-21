@@ -4,20 +4,20 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: 738c573196629242a8bee183e89b3e0f1adf393a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e37ea5362598d2e399014e50096a9178b5bff7a5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331048"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612967"
 ---
 <!--Feature availability in region-->
 
 ## <a name="us-government-cloud"></a>Egyesült államokbeli kormányzati felhő
 
-| Funkció |  US DoD – Középső régió | US DoD – Kelet | USA-beli államigazgatás – Arizona | USA-beli államigazgatás – Texas | USA-beli államigazgatás – Virginia | <!-- USNat --> | <!-- USSec--> |
+| Szolgáltatás |  US DoD – Középső régió | US DoD – Kelet | USA-beli államigazgatás – Arizona | USA-beli államigazgatás – Texas | USA-beli államigazgatás – Virginia | <!-- USNat --> | <!-- USSec--> |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [Azure-EventGrid](../reacting-to-media-services-events.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) |<!-- US DoD Central -->  | <!-- US DoD East -->  |<!-- US Gov Arizona-->  |<!--US Gov Texas--> |<!-- US Gov Virginia--> |<!--USNat--> |<!--USSec--> |
 | [StandardEncoderPreset](../encoding-concept.md) | ![StandardEncoderPreset US DoD – középső régió általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset US DoD – keleti régió általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset US Gov Arizona általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset US Gov Texas általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![StandardEncoderPreset US Gov Virginia általánosan elérhető](../media/azure-clouds-regions/ga.svg) |<!-- ![StandardEncoderPreset USNat general availability](../media/azure-clouds-regions/ga.svg)--> |<!-- ![StandardEncoderPreset USSec general availability](../media/azure-clouds-regions/ga.svg)--> |

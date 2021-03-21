@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre irányítópultot a Azure Portal 
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 07/24/2020
-ms.openlocfilehash: 02e243a7296555d73427f8e31c4abdf9c3e56735
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1b001c8f1ab73d23441697c93202cf1f6ea65687
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745740"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613324"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-powershell"></a>Rövid útmutató: Azure Portal irányítópult létrehozása a PowerShell-lel
 
@@ -63,7 +63,7 @@ $subscriptionID = (Get-AzContext).Subscription.Id
 $vmName = 'SimpleWinVM'
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
@@ -146,19 +146,7 @@ Győződjön meg arról, hogy az irányítópult sikeresen létrejött.
 Get-AzPortalDashboard -Name $dashboardName -ResourceGroupName $resourceGroupName
 ```
 
-Ellenőrizze, hogy látható-e a virtuális gép adatait a Azure Portal belül.
-
-1. Az Azure Portalon válassza az **Irányítópult** lehetőséget.
-
-   ![Navigálás az irányítópulton Azure Portal](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Az irányítópult lapon válassza az **egyszerű VM-irányítópult** lehetőséget.
-
-   ![Navigáljon az egyszerű VM-irányítópultra](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Tekintse át az irányítópultot. Láthatja, hogy a tartalom néhány statikus, de vannak olyan diagramok is, amelyek a virtuális gép teljesítményét mutatják.
-
-   ![Egyszerű VM-irányítópult áttekintése](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -172,7 +160,7 @@ A virtuális gép és a hozzá tartozó irányítópult eltávolításához tör
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az az. Portal PowerShell-modulban található parancsmagokkal kapcsolatos további információkért lásd:
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/21/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: d7cfb4cf9b6b061f5fb53667e968cb0403f22bfc
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 9e5a6737d2e37392efd305910ff5370adc84940f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562569"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596739"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -84,7 +84,7 @@ A 3. verzió a következőket biztosítja:
  
 - nonstop élő esemény támogatása
 - ARM REST API-k, a .NET Core, a Node.js, a Python, a Java, a Go és a Ruby ügyféloldali SDK-jai.
-- Ügyfél által felügyelt kulcsok, megbízható tárolók integrációja, privát hivatkozások támogatása és [egyebek](https://review.docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- Ügyfél által felügyelt kulcsok, megbízható tárolók integrációja, privát hivatkozások támogatása és [egyebek](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
 
 #### <a name="action-required"></a>Beavatkozás szükséges
 
@@ -123,7 +123,6 @@ A csomagkezelő használatával frissítsen a kódban szereplő legújabb ügyf�
 - **[Megbízható tárterület](concept-trusted-storage.md)**: Media Services konfigurálható úgy, hogy az Media Services fiókhoz társított felügyelt identitás használatával hozzáférhessen az Azure Storage-hoz. Ha a Storage-fiókok felügyelt identitással érhetők el, az ügyfelek a Media Services forgatókönyvek blokkolása nélkül konfigurálhatják a Storage-fiók szigorúbb hálózati hozzáférés-vezérlési listáját.
 
 - **[Felügyelt identitások](concept-managed-identities.md)**: az ügyfelek engedélyezhetik a rendszerhez rendelt felügyelt identitást egy Media Services fiók számára, hogy hozzáférést biztosítson a kulcstartóhoz (az ügyfelek által felügyelt kulcsokhoz) és a Storage-fiókokhoz (a megbízható tároláshoz).
-
 
 ### <a name="updated-typescript-nodejs-samples-using-isomorphic-sdk-for-javascript"></a>Frissített írógéppel Node.js mintákat a JavaScripthez készült isomorphic SDK használatával
 
@@ -373,7 +372,7 @@ Mostantól megadhatja az eszköz vagy a fiók szűrőinek listáját, amely a fo
 
 A Media Services v3 mostantól támogatott az Azure National felhőkben. Az összes funkció még nem érhető el az összes felhőben. Részletekért lásd: [felhők és régiók, amelyekben Azure Media Services v3 létezik](azure-clouds-regions.md).
 
-A [Microsoft. Media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) esemény hozzá lett adva a Media Services Azure Event Grid sémához.
+A [Microsoft. Media. JobOutputProgress](monitoring/media-services-event-schemas.md#monitoring-job-output-progress) esemény hozzá lett adva a Media Services Azure Event Grid sémához.
 
 ## <a name="january-2019"></a>2019. január
 

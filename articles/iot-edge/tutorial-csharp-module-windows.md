@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
 ms.openlocfilehash: 4e01b1ca9a3858ff31ad9b5da1d1159209c44330
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464061"
 ---
 # <a name="tutorial-develop-c-iot-edge-modules-using-windows-containers"></a>Oktatóanyag: C# IoT Edge-modulok fejlesztése Windows-tárolók használatával
@@ -129,7 +129,7 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
 
 Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistában, és egy kimeneti várólistán keresztül továbbítja azokat. Vegyünk fel néhány további kódot, hogy a modul az IoT hub-ba való továbbítás előtt dolgozza fel az üzeneteket. Frissítse a modult úgy, hogy az minden üzenetben elemezze a hőmérsékleti adatokat, és csak akkor küldje el az üzenetet az IoT hub számára, ha a hőmérséklet meghaladja az adott küszöbértéket.
 
-1. A Visual Studióban válassza a **CSharpModule**  >  **program.cs** elemet.
+1. A Visual Studióban válassza a **CSharpModule**  >  **program. cs** elemet.
 
 1. A **CSharpModule** névtér tetején adjon hozzá három **using** utasítást a későbbiekben használt típusokhoz:
 

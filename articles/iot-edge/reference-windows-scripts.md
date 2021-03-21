@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
 ms.openlocfilehash: a919238e4a62ae8954e101cb21a2fd4943191f6a
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103489524"
 ---
 # <a name="powershell-scripts-for-iot-edge-with-windows-containers"></a>PowerShell-parancsfájlok IoT Edge Windows-tárolókkal
@@ -64,11 +64,11 @@ A Initialize-IoTEdge parancs a IoT Edge az eszköz kapcsolati sztringjét és m�
 
 | Paraméter | Elfogadott értékek | Megjegyzések |
 | --------- | --------------- | -------- |
-| **ManualConnectionString** | Nincs | **Kapcsoló paraméter**. **Alapértelmezett érték**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy eszköz-kapcsolódási karakterláncot. |
-| **ManualX509** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy identitás-tanúsítványt és egy titkos kulcsot.
-| **DpsTpm** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez.  |
-| **DpsSymmetricKey** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez, valamint egy szimmetrikus kulcsot az igazoláshoz. |
-| **DpsX509** | Nincs | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez, valamint egy X. 509 azonosító tanúsítványát és egy titkos kulcsot az igazoláshoz.  |
+| **ManualConnectionString** | Nincsenek | **Kapcsoló paraméter**. **Alapértelmezett érték**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy eszköz-kapcsolódási karakterláncot. |
+| **ManualX509** | Nincsenek | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy az eszköz manuális kiépítéséhez meg kell adnia egy identitás-tanúsítványt és egy titkos kulcsot.
+| **DpsTpm** | Nincsenek | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez.  |
+| **DpsSymmetricKey** | Nincsenek | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez, valamint egy szimmetrikus kulcsot az igazoláshoz. |
+| **DpsX509** | Nincsenek | **Kapcsoló paraméter**. Ha nincs megadva a létesítési típus, a manuális kiépítés a kapcsolatok karakterlánca az alapértelmezett érték.<br><br>Kijelenti, hogy megadja az eszközök kiépítési szolgáltatásának (DPS) hatókör-AZONOSÍTÓját és az eszköz regisztrációs AZONOSÍTÓját a DPS-n keresztül történő üzembe helyezéshez, valamint egy X. 509 azonosító tanúsítványát és egy titkos kulcsot az igazoláshoz.  |
 | **DeviceConnectionString** | Egy IoT Hubban, egyetlen idézőjelben regisztrált IoT Edge eszközhöz tartozó kapcsolatok karakterlánca | **A manuális** kiépítés a kapcsolatok karakterláncával. Ha nem ad meg egy kapcsolatok karakterláncot a parancsfájl paraméterei között, a rendszer kérni fogja az egyet. |
 | **IotHubHostName** | Azon IoT hub állomásneve, amelyhez az eszköz csatlakozik. | X. 509 tanúsítvánnyal történő manuális kiépítés **szükséges** . A (z) *{hub Name}. Azure-Devices.net* formátumban fog megjelenni. |
 | **DeviceId** | Az eszköz azonosítója a IoT Hub regisztrált eszköz-identitásával. | X. 509 tanúsítvánnyal történő manuális kiépítés **szükséges** . |

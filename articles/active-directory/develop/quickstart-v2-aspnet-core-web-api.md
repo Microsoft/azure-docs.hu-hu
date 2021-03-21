@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: da53d6bad790e6b204fa2a2b045e7bfdd83e0cc9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 30593c51f17b99989409ddd22c9c1caa28468039
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100102529"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720831"
 ---
-# <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k védetté helyezése a Microsoft Identity platformmal
+# <a name="quickstart-protect-an-aspnet-core-web-api-with-the-microsoft-identity-platform"></a>Gyors útmutató: ASP.NET Core webes API-k biztosítása a Microsoft Identity platformmal
 
-Ebben a rövid útmutatóban letölt egy ASP.NET Core webes API-kód mintát, és áttekinti a kódját, amely korlátozza az erőforrásokhoz való hozzáférést csak a jogosult fiókok számára. A minta támogatja a személyes Microsoft-fiókok és-fiókok engedélyezését bármely Azure Active Directory (Azure AD) szervezeten belül.
+Ebben a rövid útmutatóban egy ASP.NET Core webes API-kód mintát tölt le, és áttekinti, hogy csak a jogosult fiókokra korlátozza az erőforrás-hozzáférést. A minta támogatja a személyes Microsoft-fiókok és-fiókok engedélyezését bármely Azure Active Directory (Azure AD) szervezeten belül.
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Előfeltételek
@@ -39,9 +39,9 @@ Ebben a rövid útmutatóban letölt egy ASP.NET Core webes API-kód mintát, é
 > 1. Ha több bérlőhöz fér hozzá, a felső menüben a **könyvtár + előfizetés** szűrő használatával :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: válassza ki azt a bérlőt, amelyben regisztrálni kíván egy alkalmazást.
 > 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 > 1. A **kezelés** területen válassza a **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
-> 1. Adja meg az alkalmazás **nevét** , például: `AspNetCoreWebApi-Quickstart` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
+> 1. A **név** mezőben adja meg az alkalmazás nevét. Adja meg például a **AspNetCoreWebApi-Gyorsindítás** értéket. Az alkalmazás felhasználói ezt a nevet fogják látni, és később is megváltoztathatók.
 > 1. Válassza a **Regisztráció** lehetőséget.
-> 1. A **kezelés** területen válassza **az API**  >  **hozzáadása hatókör** lehetőséget. Fogadja el az alapértelmezett **alkalmazás-azonosító URI** -t a **Mentés és folytatás** lehetőség kiválasztásával, és adja meg a következő adatokat:
+> 1. A **kezelés** területen válassza **az API**  >  **hozzáadása hatókör** lehetőséget. Az **alkalmazás-azonosító URI-ja** esetében fogadja el az alapértelmezett értéket a **Mentés és folytatás** lehetőség kiválasztásával, majd adja meg a következő adatokat:
 >    - **Hatókör neve**: `access_as_user`
 >    - **Kik tudnak beleegyezni?**: **rendszergazdák és felhasználók**
 >    - **Rendszergazdai engedély megjelenítendő neve**: `Access AspNetCoreWebApi-Quickstart`
@@ -56,25 +56,30 @@ Ebben a rövid útmutatóban letölt egy ASP.NET Core webes API-kód mintát, é
 > [!div renderon="docs"]
 > [Töltse le a ASP.net Core megoldást](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/archive/aspnetcore3-1.zip) a githubról.
 
+[!INCLUDE [active-directory-develop-path-length-tip](../../../includes/active-directory-develop-path-length-tip.md)]
+
 > [!div renderon="docs"]
 > ## <a name="step-3-configure-the-aspnet-core-project"></a>3. lépés: a ASP.NET Core projekt konfigurálása
 >
 > Ebben a lépésben úgy konfigurálja a mintakód-t, hogy működjön a korábban létrehozott alkalmazás-regisztrációval.
 >
-> 1. Bontsa ki a. zip archívumot a meghajtó gyökeréhez közeli mappába. Például a *C:\Azure-Samples*.
+> 1. Bontsa ki a. zip archívumot a meghajtó gyökeréhez közeli mappába. Bontsa ki például a következőt: *C:\Azure-Samples*.
+>
+>    Azt javasoljuk, hogy az archívumot a meghajtó gyökerének közelében egy könyvtárba csomagolja, hogy elkerülje a Windowson a Path Length korlátozásai által okozott hibákat.
+>
 > 1. Nyissa meg a megoldást a Kódszerkesztő *webapi* mappájában.
-> 1. Nyissa meg a *appsettings.js* fájlt, és módosítsa a következőket:
+> 1. Nyissa meg a *appsettings.js* fájlt, és módosítsa a következő kódot:
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here",
 >    "TenantId": "Enter_the_Tenant_Info_Here"
 >    ```
 >
->    - A helyére írja `Enter_the_Application_Id_here` be a Azure Portalban regisztrált alkalmazás **alkalmazás (ügyfél) azonosítóját** . Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
+>    - A helyére írja `Enter_the_Application_Id_here` be a Azure Portalban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítóját. Az alkalmazás (ügyfél) AZONOSÍTÓját az alkalmazás **Áttekintés** oldalán találja.
 >    - Cserélje le az értékét `Enter_the_Tenant_Info_Here` a következők egyikére:
->       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **könyvtár (bérlő) azonosítójával** (GUID) vagy a **bérlő nevével** (például `contoso.onmicrosoft.com` ). A **címtár (bérlő) azonosítója** az alkalmazás **Áttekintés** lapján található.
->       - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot** támogat, ezt az értéket az `organizations` értékre cserélje le
->       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, hagyja ezt az értéket `common`
+>       - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a könyvtár (bérlő) azonosítójával (GUID) vagy a bérlő nevével (például `contoso.onmicrosoft.com` ). A címtár (bérlő) azonosítója az alkalmazás **Áttekintés** lapján található.
+>       - Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket a következőre: `organizations` .
+>       - Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, hagyja meg ezt az értéket `common` .
 >
 > Ebben a rövid útmutatóban ne módosítsa a fájl *appsettings.js* egyéb értékeit.
 
@@ -84,7 +89,7 @@ A webes API egy ügyfélalkalmazás tokenjét fogadja, és a webes API kódja é
 
 ### <a name="startup-class"></a>Indítási osztály
 
-A *Microsoft. AspNetCore. Authentication* middleware olyan `Startup` osztályt használ, amely a üzemeltetési folyamat inicializálásakor fut. A `ConfigureServices` metódusában a `AddMicrosoftIdentityWebApi` *Microsoft. Identity. Web* által biztosított bővítményi módszert nevezik.
+A *Microsoft. AspNetCore. Authentication* middleware a `Startup` üzemeltetési folyamat indításakor futtatott osztályt használ. A `ConfigureServices` metódusában a `AddMicrosoftIdentityWebApi` *Microsoft. Identity. Web* által biztosított bővítményi módszert nevezik.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -96,18 +101,18 @@ A *Microsoft. AspNetCore. Authentication* middleware olyan `Startup` osztályt h
 
 A `AddAuthentication()` metódus konfigurálja a szolgáltatást JwtBearer-alapú hitelesítés hozzáadására.
 
-A sort tartalmazó vonal `.AddMicrosoftIdentityWebApi` hozzáadja a Microsoft Identity platform engedélyezését a webes API-hoz. Ezután úgy van konfigurálva, hogy érvényesítse a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
+A tartalmazó sor `.AddMicrosoftIdentityWebApi` hozzáadja a Microsoft Identity platform engedélyezését a webes API-hoz. Ezután úgy van konfigurálva, hogy érvényesítse a Microsoft Identity platform által kiadott hozzáférési jogkivonatokat a `AzureAD` konfigurációs fájl *appsettings.js* szakaszában található információk alapján:
 
 | *appsettings.jsa* kulcson | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `ClientId`             | A Azure Portalban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** .                                                                                       |
+| `ClientId`             | A Azure Portalban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója.                                                                                       |
 | `Instance`             | A hitelesítéshez használt biztonságijogkivonat-szolgáltatás (STS) végpontja. Ez az érték általában `https://login.microsoftonline.com/` Az Azure nyilvános felhőre utal. |
-| `TenantId`             | A bérlő vagy a bérlői azonosító (GUID) neve, *vagy a felhasználók* munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal való bejelentkezéséhez.                             |
+| `TenantId`             | A bérlő vagy a bérlői azonosító (GUID) neve, vagy `common` munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal rendelkező felhasználók bejelentkezni.                             |
 
 A `Configure()` metódus két fontos módszert tartalmaz, `app.UseAuthentication()` `app.UseAuthorization()` amelyek lehetővé teszik a megnevezett funkcióik használatát:
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+// The runtime calls this method. Use this method to configure the HTTP request pipeline.
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     // more code
@@ -117,9 +122,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-### <a name="protect-a-controller-a-controllers-method-or-a-razor-page"></a>Vezérlő, vezérlő metódusa vagy borotva oldalának védetté
+### <a name="protecting-a-controller-a-controllers-method-or-a-razor-page"></a>Vezérlő, vezérlő metódusa vagy borotva lap védelme
 
-A vezérlő vagy vezérlő metódusait az attribútum használatával lehet védelemmel ellátni `[Authorize]` . Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a vezérlőhöz vagy a metódusokhoz való hozzáférést, ami azt jelenti, hogy a hitelesítési kérdés elindítható a vezérlőhöz, ha a felhasználó nem hitelesítve van.
+A vezérlőt vagy a vezérlő metódusait az attribútum használatával lehet védelemmel ellátni `[Authorize]` . Ez az attribútum csak a hitelesített felhasználók engedélyezésével korlátozza a vezérlőhöz vagy a metódusokhoz való hozzáférést. A hitelesítési kihívás elindítható a vezérlő eléréséhez, ha a felhasználó nem hitelesítve van.
 
 ```csharp
 namespace webapi.Controllers
@@ -130,9 +135,9 @@ namespace webapi.Controllers
     public class WeatherForecastController : ControllerBase
 ```
 
-### <a name="validate-the-scope-in-the-controller"></a>A hatókör ellenőrzése a vezérlőben
+### <a name="validation-of-scope-in-the-controller"></a>A hatókör ellenőrzése a vezérlőben
 
-A kód az API-ban azt ellenőrzi, hogy a szükséges hatókörök szerepelnek-e a jogkivonatban a használatával `HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);`
+A kód az API-ban ellenőrzi, hogy a szükséges hatókörök szerepelnek-e a jogkivonatban a használatával `HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);` :
 
 ```csharp
 namespace webapi.Controllers
@@ -142,7 +147,7 @@ namespace webapi.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        // The Web API will only accept tokens 1) for users, and 2) having the "access_as_user" scope for this API
+        // The web API will only accept tokens 1) for users, and 2) having the "access_as_user" scope for this API
         static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
 
         [HttpGet]
@@ -162,9 +167,9 @@ namespace webapi.Controllers
 
 A ASP.NET Core web API code minta részét képező GitHub-tárház útmutatást és további kódrészleteket tartalmaz, amelyek bemutatják a következőket:
 
-- Hitelesítés hozzáadása új ASP.NET Core webes API-hoz
-- A webes API meghívása asztali alkalmazásból
-- Alsóbb rétegbeli API-k (például Microsoft Graph és más Microsoft API-k)
+- Hitelesítés hozzáadása új ASP.NET Core webes API-hoz.
+- Hívja meg a webes API-t egy asztali alkalmazásból.
+- Az alsóbb rétegbeli API-k, például a Microsoft Graph és más Microsoft API-k
 
 > [!div class="nextstepaction"]
 > [Webes API-oktatóanyagok ASP.NET Core a GitHubon](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
