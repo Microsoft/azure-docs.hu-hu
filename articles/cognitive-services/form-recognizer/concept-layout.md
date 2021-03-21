@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 73bef21f430bde1c6c2c95d7c3f685cccbbd9179
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467017"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
@@ -95,7 +95,7 @@ A JSON-kimenet két részből áll:
 
 Az elrendezési API Kinyeri a szöveget a dokumentumokból (PDF, TIFF) és képekből (JPG, PNG, BMP) több szöveges szöggel és színnel. A dokumentumok, faxok, nyomtatott és/vagy kézzel írott (csak angol nyelvű) és vegyes üzemmódok képeit fogadja el. A szöveg kinyerve a sorokra, szavakra, határoló mezőkre, megbízhatósági pontszámokra és stílusra (kézírásos vagy egyéb) vonatkozó információkkal. Az összes szöveges információt a `readResults` JSON-kimenet szakasza tartalmazza. 
 
-### <a name="tables"></a>Táblák
+### <a name="tables"></a>Táblázatok
 
 A layout API kibontja a táblákat a dokumentumokból (PDF, TIFF) és képekből (JPG, PNG, BMP). A dokumentumok beolvasható, lefényképezhető vagy digitalizált dokumentumokat is használhatnak. A táblázatok összetett cellákkal vagy oszlopokkal, szegélyekkel vagy anélkül is összetettek, és páratlan szögek. A kinyert tábla adatai tartalmazzák az oszlopok és a sorok, a sorok és az oszlopok tartományának mennyiségét. Az egyes cellákat a rendszer kinyeri a határoló mezővel, és a szakaszban kinyert szövegre hivatkozik `readResults` . A tábla adatai a JSON- `pageResults` kimenet szakaszában találhatók. 
 

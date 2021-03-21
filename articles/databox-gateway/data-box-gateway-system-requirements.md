@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739211"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
@@ -29,7 +29,7 @@ A Data Box Gateway virtuális eszköz rendszerkövetelményei a következők:
 
 A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrások kiosztására a virtuális eszköz kiépítése érdekében:
 
-| Specifikációk                                          | Leírás              |
+| Specifikációk                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
 | Memória  | Legalább 8 GB. Legalább 16 GB-ot javasoljuk. |

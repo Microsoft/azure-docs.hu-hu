@@ -3,12 +3,12 @@ title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft
 description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 ms.topic: article
 ms.date: 02/10/2021
-ms.openlocfilehash: eb6ef1a7536b819d1bc973740a0da6fdf3d756d5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f3b74b89f47582fbb3f1640f315f413ab86b26b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042368"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602638"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
 
@@ -52,10 +52,10 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 
 | Elsődleges névtér | Másodlagos névtér | Támogatott | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Igen | 
-| Standard | Dedikált | Igen | 
-| Dedikált | Dedikált | Igen | 
-| Dedikált | Standard | Nem | 
+| Standard | Standard | Yes | 
+| Standard | Dedikált | Yes | 
+| Dedikált | Dedikált | Yes | 
+| Dedikált | Standard | No | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
@@ -204,7 +204,7 @@ Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi 
     - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 * [Az Event Hubsot használó mintaalkalmazások](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

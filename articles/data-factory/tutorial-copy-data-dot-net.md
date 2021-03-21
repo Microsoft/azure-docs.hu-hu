@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 02/18/2021
 ms.author: jingwang
 ms.openlocfilehash: 2a9e19f24c4889a194c85e33317860db1d3a68d2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101736559"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
@@ -112,7 +112,7 @@ Ezután telepítse a szükséges függvénytár-csomagokat a NuGet csomagkezelő
 
 Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
 
-1. Nyissa meg a *program.cs*, majd írja felül a meglévő `using` utasításokat a következő kóddal, hogy hozzáadja a névterekre mutató hivatkozásokat.
+1. Nyissa meg a *program. cs programot*, majd írja felül a meglévő `using` utasításokat a következő kóddal a névtérre mutató hivatkozások hozzáadásához.
 
     ```csharp
     using System;

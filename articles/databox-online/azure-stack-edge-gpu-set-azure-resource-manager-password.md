@@ -8,29 +8,27 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 62417b575e142d044e599249a529328a41c9b8d7
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: a2167d573871481c99b755fc713e18543d74c5bf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102638636"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602679"
 ---
 # <a name="set-azure-resource-manager-password-on-azure-stack-edge-pro-gpu-device"></a>Azure Resource Manager jelszavának beállítása Azure Stack Edge Pro GPU-eszközön
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Ez a cikk a Azure Resource Manager jelszavának beállítását ismerteti. Ezt a jelszót kell megadnia, amikor a Azure Resource Manager használatával csatlakozik az eszköz helyi API-khoz.
+Ez a cikk a Azure Resource Manager jelszavának beállítását ismerteti. Ezt a jelszót kell megadnia, amikor [a Azure Resource Manager használatával csatlakozik az eszköz helyi API-](azure-stack-edge-gpu-connect-resource-manager.md)khoz. 
 
 <!--The procedure to set the password can be different depending upon whether you use the Azure portal or the PowerShell cmdlets. Each of these procedures is described in the following sections.-->
 
 
 ## <a name="reset-password-via-the-azure-portal"></a>Jelszó alaphelyzetbe állítása a Azure Portal használatával
 
-1. A Azure Portal lépjen az eszköz kezeléséhez létrehozott Azure Stack Edge-erőforráshoz. Ugrás az **Edge services > Cloud Storage-átjáróra**.
+1. A Azure Portal lépjen az eszköz kezeléséhez létrehozott Azure Stack Edge-erőforráshoz. 
 
-    ![A EdgeARM felhasználói jelszavának visszaállítása 1](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-1.png)
-
-2. A jobb oldali panelen, a parancssávon válassza ki az **Edge ARM-jelszó alaphelyzetbe állítása** elemet. 
+2. Válassza a **Tulajdonságok** lehetőséget. A jobb oldali panelen, a parancssávon válassza ki az **Edge ARM-jelszó alaphelyzetbe állítása** elemet. 
 
     ![A EdgeARM felhasználói jelszavának visszaállítása 2](media/azure-stack-edge-gpu-set-azure-resource-manager-password/set-edgearm-password-2.png)
 

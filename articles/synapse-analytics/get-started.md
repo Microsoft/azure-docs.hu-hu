@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 03/18/2021
+ms.openlocfilehash: 0153797445e2a3f55baa53e49c06ee5c82e3bebe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445058"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606225"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Ismerkedés az Azure szinapszis Analytics szolgáltatással
 
@@ -24,11 +24,11 @@ Ez az oktatóanyag egy lépésenkénti útmutató, amely az Azure szinapszis Ana
 Kövesse az alább *látható lépéseket,* és ismerkedjen meg a számos lehetőséggel, és Ismerje meg, hogyan gyakorolhatják alapvető funkcióit.
 
 * [1. lépés – a szinapszis-munkaterület létrehozása és beállítása](get-started-create-workspace.md)
-* [2. lépés – elemzés dedikált SQL-készlet használatával](get-started-analyze-sql-pool.md)
-* [3. lépés – elemzés a Apache Spark használatával](get-started-analyze-spark.md)
-* [4. lépés – kiszolgáló nélküli SQL-készlet elemzése](get-started-analyze-sql-on-demand.md)
-* [5. lépés – a Storage-fiókban tárolt adatelemzés](get-started-analyze-storage.md)
-* [6. lépés – a folyamatok összehangolása](get-started-pipelines.md)
-* [7. lépés – az adatmegjelenítés Power BI](get-started-visualize-power-bi.md)
-* [8. lépés – tevékenységek figyelése](get-started-monitor.md)
-* [9. lépés – a Knowledge Center megismerése](get-started-knowledge-center.md)
+* [2. lépés – elemzés kiszolgáló nélküli SQL-készlet használatával](get-started-analyze-sql-on-demand.md)
+* [3. LÉPÉS: Elemzés az Apache Spark használatával](get-started-analyze-spark.md)
+* [4. lépés – elemzés dedikált SQL-készlet használatával](get-started-analyze-sql-pool.md)
+* [5. LÉPÉS: Tárfiók adatainak elemzése](get-started-analyze-storage.md)
+* [6. LÉPÉS: Vezénylés folyamatokkal](get-started-pipelines.md)
+* [7. LÉPÉS: Adatok megjelenítése a Power BI használatával](get-started-visualize-power-bi.md)
+* [8. LÉPÉS: Tevékenységek monitorozása](get-started-monitor.md)
+* [9. LÉPÉS: Az Információs központ felfedezése](get-started-knowledge-center.md)

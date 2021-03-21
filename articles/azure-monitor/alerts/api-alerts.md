@@ -4,10 +4,10 @@ description: A Log Analytics riasztási REST API lehetővé teszi a riasztások 
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 33f5ce86a21a9aad110db162849ff3e3c7bbb2b4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102037489"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
@@ -135,7 +135,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Riasztási műveletek
 Az ütemtervnek egy és csak egy riasztási művelettel kell rendelkeznie.  A riasztási műveletekhez a következő táblázat egy vagy több szakaszában található.  Az alábbiakban részletesebben is olvashat.
 
-| Section | Leírás | Használat |
+| Section | Description | Használat |
 |:--- |:--- |:--- |
 | Küszöbérték |A művelet futtatásának feltételei.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |
 | Súlyosság |Az aktiváláskor a riasztás osztályozásához használt címke.| Minden riasztáshoz szükséges, az Azure-ra való kiterjesztés előtt vagy után. |

@@ -10,10 +10,10 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
 ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103471745"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
@@ -1052,7 +1052,7 @@ Mostantól közvetlenül a Azure Machine Learning Studio webes felületén belü
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
     
-| Webalapú eszköz  |     Leírás  |
+| Webalapú eszköz  |     Description  |
 |---|---|
 | Azure ML Studio notebookok   |     A notebook-fájlok első, osztályon belüli létrehozása és az Azure ML Python SDK-ban elérhető összes művelet támogatása. | 
 
@@ -1564,7 +1564,7 @@ A studióból betaníthatja, tesztelheti, üzembe helyezheti és kezelheti Azure
 
 A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el:
 
-| Webalapú eszköz | Leírás | 
+| Webalapú eszköz | Description | 
 |-|-|-|
 | Notebook VM (előzetes verzió) | Teljes körűen felügyelt felhőalapú munkaállomás | 
 | [Automatikus gépi tanulás](tutorial-first-experiment-automated-ml.md) (előzetes verzió) | Nincs programkód a gépi tanulási modellek fejlesztésének automatizálásához | 

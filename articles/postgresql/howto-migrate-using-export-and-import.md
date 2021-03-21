@@ -6,15 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 080f444d50dcdf17be15d940002b745624b2f6a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0f1824a1e4754dddea26484c836df79e95246d5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708526"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580980"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>A PostgreSQL-adatbázis migrálása exportálással és importálással
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
+
 A [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) használatával kinyerheti a PostgreSQL-adatbázist egy parancsfájlba, és [psql](https://www.postgresql.org/docs/current/static/app-psql.html) importálhatja azokat a fájlból a céladatbázisbe.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -42,14 +43,14 @@ A psql parancssor és a--dbname paraméter (-d) használatával importálja az a
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user> --dbname=<target database name>
 ```
-Ez a példa a psql segédprogramot és egy **testdb. SQL** nevű parancsfájlt használ az előző lépésben az adatok importálásához a célkiszolgáló **mydemoserver.postgres.database.Azure.com**adatbázis- **mypgsqldb** .
+Ez a példa a psql segédprogramot és egy **testdb. SQL** nevű parancsfájlt használ az előző lépésben az adatok importálásához a célkiszolgáló **mydemoserver.postgres.database.Azure.com** adatbázis- **mypgsqldb** .
 
-**Egyetlen kiszolgáló**esetén használja ezt a parancsot. 
+**Egyetlen kiszolgáló** esetén használja ezt a parancsot. 
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb
 ```
 
-**Rugalmas kiszolgáló**esetén használja ezt a parancsot.  
+**Rugalmas kiszolgáló** esetén használja ezt a parancsot.  
 ```bash
 psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --username=mylogin --dbname=mypgsqldb
 ```

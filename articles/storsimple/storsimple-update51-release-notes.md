@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/18/2021
 ms.author: alkohli
-ms.openlocfilehash: a6a359888e782751892f2a034a8d92a014fd3a81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055843"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657569"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 sorozat Update 5,1 kibocsátási megjegyzések
 
@@ -34,7 +34,11 @@ Mielőtt telepítené a frissítést a StorSimple-megoldásban, tekintse át a k
 
 Az 5,1-es frissítés a következő kulcsfontosságú javításokat és hibajavításokat tartalmazza:
 
-* **Tls 1,2** – ez a StorSimple-frissítés minden ügyfélen kikényszeríti a TLS 1,2-t. Ez egy kötelező frissítés az összes StorSimple 8000 Series-eszközhöz.
+* **Tls 1,2** – ez a StorSimple-frissítés minden ügyfélen kikényszeríti a TLS 1,2-t. Ez egy kötelező frissítés a StorSimple 8000 sorozat valamennyi eszközén.
+
+   Ha a következő figyelmeztetés jelenik meg, a továbblépés előtt frissítenie kell az eszközön lévő szoftvereket:
+
+   Egy vagy több StorSimple-eszköz régebbi verziójú szoftvert futtat. A TLS 1,2 legújabb elérhető frissítése kötelező frissítés, amelyet azonnal telepíteni kell ezeken az eszközökön. A TLS 1,2 minden Azure Portal kommunikációhoz használatos, és a frissítés nélkül az eszköz nem fog tudni kommunikálni az StorSimple szolgáltatással.
 
 ## <a name="known-issues-in-update-51-from-previous-releases"></a>Az előző verziók 5,1-es frissítésének ismert problémái
 

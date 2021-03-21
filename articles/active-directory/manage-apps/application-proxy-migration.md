@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7d089d8f57bf8ef1278d262129cc8ddfc81d581
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99257743"
 ---
 # <a name="compare-remote-access-solutions"></a>Távelérési megoldások összehasonlítása
@@ -34,21 +34,21 @@ Ebből a táblázatból megtudhatja, hogyan hasonlíthatja össze a veszélyforr
 
 | Szolgáltatás | TMG | UAG | WAP | AP |
 | ------- | --- | --- | --- | --- |
-| Tanúsítványhitelesítés | Igen | Igen | - | - |
-| Böngészőalapú alkalmazások szelektív közzététele | Igen | Igen | Igen | Igen |
-| Előhitelesítés és egyszeri bejelentkezés | Igen | Igen | Igen | Igen | 
-| Réteg 2/3 tűzfal | Igen | Igen | - | - |
-| Proxy-képességek továbbítása | Igen | - | - | - |
-| VPN-képességek | Igen | Igen | - | - |
-| Sokoldalú protokollok támogatása | - | Igen | Igen, ha HTTP-n keresztül fut | Igen, ha HTTP-n vagy Távoli asztali átjáróon keresztül fut |
-| ADFS-proxy kiszolgálóként szolgál | - | Igen | Igen | - |
-| Egy portál alkalmazás-hozzáféréshez | - | Igen | - | Igen |
-| Válasz törzséhez tartozó hivatkozás fordítása | Igen | Igen | - | Igen | 
-| Hitelesítés fejlécekkel | - | Igen | - | Igen, a PingAccess | 
-| Felhőbeli biztonság | - | - | - | Igen | 
-| Feltételes hozzáférés | - | Igen | - | Igen |
-| Nincsenek összetevők a vagy demilitarizált zónában (DMZ) | - | - | - | Igen |
-| Nincsenek bejövő kapcsolatok | - | - | - | Igen |
+| Tanúsítványhitelesítés | Igen | Yes | - | - |
+| Böngészőalapú alkalmazások szelektív közzététele | Igen | Igen | Igen | Yes |
+| Előhitelesítés és egyszeri bejelentkezés | Igen | Igen | Igen | Yes | 
+| Réteg 2/3 tűzfal | Igen | Yes | - | - |
+| Proxy-képességek továbbítása | Yes | - | - | - |
+| VPN-képességek | Igen | Yes | - | - |
+| Sokoldalú protokollok támogatása | - | Yes | Igen, ha HTTP-n keresztül fut | Igen, ha HTTP-n vagy Távoli asztali átjáróon keresztül fut |
+| ADFS-proxy kiszolgálóként szolgál | - | Igen | Yes | - |
+| Egy portál alkalmazás-hozzáféréshez | - | Igen | - | Yes |
+| Válasz törzséhez tartozó hivatkozás fordítása | Igen | Igen | - | Yes | 
+| Hitelesítés fejlécekkel | - | Yes | - | Igen, a PingAccess | 
+| Felhőbeli biztonság | - | - | - | Yes | 
+| Feltételes hozzáférés | - | Igen | - | Yes |
+| Nincsenek összetevők a vagy demilitarizált zónában (DMZ) | - | - | - | Yes |
+| Nincsenek bejövő kapcsolatok | - | - | - | Yes |
 
 A legtöbb esetben ajánlott az Azure AD Application Proxyt a modern megoldásként ajánlani. A webalkalmazás-proxyt csak olyan helyzetekben érdemes használni, amelyekhez proxykiszolgáló szükséges a AD FShoz, és nem használhat egyéni tartományokat a Azure Active Directoryban. 
 

@@ -10,13 +10,13 @@ ms.topic: overview
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, vanto
-ms.date: 08/14/2020
-ms.openlocfilehash: 81d4527817d637e7b764cc83160153d974ced5c0
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.date: 01/14/2021
+ms.openlocfilehash: dca4d699ac1253753c82949cb480d95a1dde26e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600961"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594104"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,7 +36,7 @@ Az alábbi ábra az SQL felügyelt példányának főbb funkcióit vázolja fel:
 Az Azure SQL felügyelt példánya olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást kívánnak áttelepíteni egy helyszíni vagy IaaS, önálló vagy független szoftvergyártó által biztosított környezetből egy teljes körűen felügyelt, kihelyezett Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. A teljes mértékben automatizált [Azure-adatáttelepítési szolgáltatással](../../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance)az ügyfelek megemelik és áthelyezhetik meglévő SQL Server-példányát az SQL felügyelt példányára, amely a SQL Serverekkel való kompatibilitást és a natív VNet-támogatással rendelkező vásárlói példányok elkülönítését biztosítja Az áttelepítési lehetőségekkel és eszközökkel kapcsolatos további információkért lásd [: áttelepítési Áttekintés: SQL Server az Azure SQL felügyelt példányára](../migration-guides/managed-instance/sql-server-to-managed-instance-overview.md).</br> A frissítési garanciával lehetősége van arra, hogy az SQL felügyelt példányain a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával, kedvezményes díjszabással cserélje le. A felügyelt SQL-példány a legjobb áttelepítési cél a felhőben olyan SQL Server-példányok esetén, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
 
 > [!TIP]
-> Hogyan lehet jobbá tenni az Azure SQL-t? [Vegye fel a kérdőívet](https://aka.ms/AzureSQLSurvey).
+> Hogyan lehet jobbá tenni az Azure SQL-t? [Vegye fel a kérdőívet](https://microsoft.qualtrics.com/jfe/form/SV_ePOznHhP4gDKfGu?channel=456).
 
 ## <a name="key-features-and-capabilities"></a>Főbb funkciók és képességek
 
@@ -79,8 +79,8 @@ Az SQL felügyelt példány [virtuális mag-alapú vásárlási modellje](../dat
 
 A virtuális mag modellben a hardver generációi közül választhat.
 
-- A **Gen4** logikai CPU-k Intel® E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD-k, fizikai magok, 7 GB RAM/mag, valamint 8 és 24 virtuális mag közötti számítási méreteken alapulnak.
-- A **Gen5** logikai CPU-k Intel® E5-2673 v4 (Broadwell) 2,3 GHz-es, Intel® SP-8160 (Skylake) és Intel® 8272CL (Cascade-tó) 2,5 GHz-es processzorokkal, gyors NVMe SSD-vel, többszálú logikai mag és 4 és 80 mag közötti számítási méretekkel rendelkeznek.
+- A **Gen4** logikai CPU-k Intel &reg; E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD-k, fizikai MAGOK, 7 GB RAM/mag, valamint 8 és 24 virtuális mag közötti számítási méreteken alapulnak.
+- A **Gen5** logikai CPU-k Intel &reg; E5-2673 v4 (Broadwell) 2,3 GHz, intel &reg; SP-8160 (Skylake) és Intel &reg; 8272CL (Cascade Lake) 2,5 GHz-es processzorok, gyors NVMe SSD, Hyper-threaded logikai mag, valamint 4 és 80 mag közötti számítási méretek alapján működnek.
 
 További információk a hardveres generációk közötti különbségről az [SQL felügyelt példányának erőforrás-korlátaiban](resource-limits.md#hardware-generation-characteristics).
 

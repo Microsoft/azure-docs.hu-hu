@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96015128"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670096"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -34,7 +34,7 @@ A következőket fogja megtanulni:
 
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-- Egy olyan Windows vagy macOS rendszerű gép, amely az <a href="https://unity3d.com/get-unity/download" target="_blank">2019,4 (LTS) egységgel</a>rendelkezik, **beleértve az Android** SDK-val **& NDK-eszközökkel** és **OpenJDK** -modulokkal.
+- Egy <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a>Windows vagy MacOS rendszerű gép, beleértve az Android SDK-val **& NDK-eszközökkel** és **OpenJDK** -modulokkal rendelkező **Android Build-támogatást** . Használja az **2020 LTS** -et az asa SDK 2,9-es vagy újabb verziójával (amely a [Unity XR beépülő modul keretrendszert](https://docs.unity3d.com/Manual/XRPluginArchitecture.html)használja) vagy az **Unity 2019 LTS** -et az ASA SDK 2,8-es vagy korábbi verziójával.
   - Ha Windows rendszeren fut, <a href="https://git-scm.com/download/win" target="_blank">a git for Windows</a> és a <a href="https://git-lfs.github.com/">git LFS</a>is szüksége lesz.
   - Ha macOS rendszeren fut, a git a HomeBrew használatával telepíthető. Írja be a következő parancsot a terminál egyetlen sorába: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . Ezután futtassa `brew install git` a és a parancsot `brew install git-lfs` .
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.

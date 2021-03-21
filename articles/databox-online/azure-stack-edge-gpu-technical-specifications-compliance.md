@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: 937f0d1feb0c45c1c158b5e88daf268aeb383509
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102034744"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro műszaki specifikációi és megfelelőségi követelményei 
@@ -47,14 +47,14 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Maximális kimeneti teljesítmény    | 750 W                     |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
-| Gyors csatlakoztatás           | Igen                        |
+| Gyors csatlakoztatás           | Yes                        |
 
 
 ## <a name="network-interface-specifications"></a>Hálózati adapterek specifikációi
 
 Az Azure Stack Edge Pro-eszköz hat hálózati adapterrel rendelkezik, a PORT1-PORT6.
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | **2 X 1 GbE-illesztő** – 1 felügyeleti felület az 1. port a kezdeti beállításhoz van használatban, és alapértelmezés szerint statikus. A kezdeti beállítás befejeződése után bármely IP-címmel rendelkező adatkapcsolatot használhat. Alaphelyzetbe állításkor azonban a felület visszaáll a statikus IP-címekre. <br>A másik 2. port a felhasználó által konfigurálható, adatátvitelre is használható, és alapértelmezés szerint a DHCP. <br>**4 X 25 GbE interfész** – ezeket az adatillesztőket, a 3-as portot a 6-os porton keresztül, a felhasználó DHCP-ként (alapértelmezett) vagy statikusként is konfigurálhatja. Akár 10 GbE interfészként is működhetnek.  | 
 

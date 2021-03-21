@@ -789,7 +789,9 @@
         - name: Folyamattriggerek
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Adatfolyamok
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: Adatfolyamatok áttekintése
+              href: data-flow-troubleshoot-guide.md
         - name: Folyamatos integráció és üzembe helyezés
           href: ci-cd-github-troubleshoot-guide.md
         - name: Biztonság és hozzáférés-vezérlés

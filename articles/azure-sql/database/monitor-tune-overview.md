@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 09/30/2020
-ms.openlocfilehash: 6b56da68b10bc40304097fbe9eeaf200d422b663
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/17/2021
+ms.openlocfilehash: 4c9edaea75215bc4b471cd2e0ac50c4e69546bb0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592698"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592132"
 ---
 # <a name="monitoring-and-performance-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Monitorozás és a teljesítmény finomhangolása az Azure SQL Database-ben és a felügyelt Azure SQL-példányban
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,6 +35,10 @@ A Azure Portal Azure SQL Database és az Azure SQL felügyelt példánya biztos�
 
 > [!NOTE]
 > A rendkívül alacsony használatú adatbázisok a portálon kevesebb, mint tényleges használattal rendelkezhetnek. A telemetria kiváltásának módja, ha egy dupla értéket a legközelebbi egész számra konvertál, a 0,5-nál kisebb használati összegek pedig 0-ra lesznek kerekítve, ami a kibocsátott telemetria részletességének csökkenését eredményezi. Részletekért lásd: [az alacsony adatbázis és a rugalmas készlet mérőszámai nullára kerekítve](#low-database-and-elastic-pool-metrics-rounding-to-zero).
+
+### <a name="monitor-with-sql-insights"></a>Figyelés SQL-alapú adatáttekintéssel
+
+[Azure monitor SQL](../../azure-monitor/insights/sql-insights-overview.md) -adatvizsgálatok eszköz az Azure SQL felügyelt példányainak, az Azure SQL-adatbázisok és a SQL Server példányoknak az Azure SQL virtuális gépeken való figyelésére. A szolgáltatás egy távoli ügynököt használ a dinamikus felügyeleti nézetek (DMV) adatainak rögzítésére és az adatok Azure-Log Analyticsba való átadására, ahol nyomon követhető és elemezhető. Ezeket az adatok megtekinthetők [Azure monitor](../../azure-monitor/overview.md) a megadott nézetekben, vagy közvetlenül a napló adatait is elérheti a lekérdezések futtatásához és a trendek elemzéséhez. Azure Monitor SQL-információk használatának megkezdéséhez tekintse meg az [SQL-adatfelismerések engedélyezése](../../azure-monitor/insights/sql-insights-enable.md)című témakört.
 
 ### <a name="azure-sql-database-and-azure-sql-managed-instance-resource-monitoring"></a>Azure SQL Database és az Azure SQL felügyelt példányának erőforrás-figyelése
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: c89427f83600d3b8091d5293b1757fa6f1a15ef1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102202484"
 ---
 # <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>A IoT Plug and Play-híd létrehozása és üzembe helyezése
@@ -81,8 +81,8 @@ Ha a híd IoT Edge modulként fut egy IoT Edge futtatókörnyezetben, a konfigur
 
 | Platform | Támogatott |
 | :-----------: | :-----------: |
-| Windows |  Igen |
-| Linux | Igen |
+| Windows |  Yes |
+| Linux | Yes |
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -203,8 +203,8 @@ Debug\pnpbridge_bin.exe
 
 | Platform | Támogatott |
 | :-----------: | :-----------: |
-| Windows |  Nem |
-| Linux | Igen |
+| Windows |  No |
+| Linux | Yes |
 
 ### <a name="prerequisites"></a>Előfeltételek
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083216"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578021"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása
 
@@ -27,7 +27,7 @@ Más Windows-ügyfelek esetén tekintse meg a következő cikket: a [hibrid Azur
 
 Ez a cikk azt feltételezi, hogy a [hibrid Azure Active Directory csatlakoztatott eszközöket úgy konfigurálta](hybrid-azuread-join-plan.md) , hogy támogassa a következő forgatókönyveket:
 
-- Eszköz alapú feltételes hozzáférés
+- Eszközalapú feltételes hozzáférés
 - [A beállítások vállalati barangolása](./enterprise-state-roaming-overview.md)
 - [Vállalati Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
@@ -95,16 +95,16 @@ Tekintse át a következő mezőket, és ellenőrizze, hogy a várt értékek sz
 
 #### <a name="domainjoined--yes"></a>DomainJoined: igen
 
-Ez a mező jelzi, hogy az eszköz egy helyszíni Active Directoryhoz csatlakozik-e, vagy sem. Ha az érték **nem** , az eszköz nem tud hibrid Azure ad-csatlakozást végezni.
+Ez a mező jelzi, hogy az eszköz egy helyszíni Active Directoryhoz csatlakozik-e, vagy sem. Ha az érték **nem**, az eszköz nem tud hibrid Azure ad-csatlakozást végezni.
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined: nem
 
-Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-ben személyes eszközként ( *munkahelyhez csatlakoztatottként* megjelölve). Ez az érték **nem** lehet olyan tartományhoz csatlakoztatott számítógép esetében, amely szintén hibrid Azure ad-hez csatlakozik. Ha az érték **Igen** , a hibrid Azure ad-csatlakozás befejezése előtt munkahelyi vagy iskolai fiók lett hozzáadva. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot, ha a Windows 10 1607-es vagy újabb verzióját használja.
+Ez a mező azt jelzi, hogy az eszköz regisztrálva van-e az Azure AD-ben személyes eszközként ( *munkahelyhez csatlakoztatottként* megjelölve). Ez az érték **nem** lehet olyan tartományhoz csatlakoztatott számítógép esetében, amely szintén hibrid Azure ad-hez csatlakozik. Ha az érték **Igen**, a hibrid Azure ad-csatlakozás befejezése előtt munkahelyi vagy iskolai fiók lett hozzáadva. Ebben az esetben a rendszer figyelmen kívül hagyja a fiókot, ha a Windows 10 1607-es vagy újabb verzióját használja.
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined: igen
 
 Ez a mező jelzi, hogy az eszköz csatlakoztatva van-e. Az érték **Igen** , ha az eszköz vagy egy Azure ad-hez csatlakoztatott eszköz vagy egy hibrid Azure ad-hez csatlakoztatott eszköz.
-Ha az érték **nem** , az Azure ad-hez való csatlakozás még nem fejeződött be.
+Ha az érték **nem**, az Azure ad-hez való csatlakozás még nem fejeződött be.
 
 További hibaelhárításhoz folytassa a következő lépésekkel.
 
@@ -137,7 +137,7 @@ A csatlakozási hibák fázisának és hibakódjának megkereséséhez használj
 
 :::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/1.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 304-es esemény van kiválasztva, és az adatai megjelennek, és a rendszer kiemelte a hibakódot és a fázist." border="false":::
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 304-es esemény van kiválasztva, és az adatai megjelennek, és a rendszer kiemelte a hibakódot és a fázist." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/2.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 305-es esemény látható, és az adatai megjelennek, és a hibakód ki van emelve." border="false":::
 
 ### <a name="step-4-check-for-possible-causes-and-resolutions-from-the-lists-below"></a>4. lépés: az alábbi listáról származó lehetséges okok és megoldások keresése
 
@@ -210,7 +210,7 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő eventIDs 201
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 304-es esemény van kiválasztva, és az adatai megjelennek, és a rendszer kiemelte a hibakódot és a fázist." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/5.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 201-es esemény van kiválasztva, és az adatai megjelennek, és a hibakód ki van jelölve." border="false":::
 
 ###### <a name="network-errors"></a>Hálózati hibák
 
@@ -255,7 +255,7 @@ Eseménynapló naplók használatával keresse meg a hibakódot, az alhibakódot
 1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő Napszállta 305
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 304-es esemény van kiválasztva, és az adatai megjelennek, és a rendszer kiemelte a hibakódot és a fázist." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/3.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 305-es esemény látható. A rendszer megjeleníti az információit, és kiemelte a D A L hibakódokat és az állapotot." border="false":::
 
 ##### <a name="configuration-errors"></a>Konfigurálási hibák
 
@@ -330,7 +330,7 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 1. Nyissa meg a **felhasználó-eszköz regisztrációjának** eseménynaplóit az eseménynaplóban. Az **alkalmazások és szolgáltatások naplóban** található  >  **Microsoft**  >  **Windows**  >  **felhasználói eszköz regisztrálása**
 2. Keressen eseményeket a következő eventIDs 204
 
-:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 304-es esemény van kiválasztva, és az adatai megjelennek, és a rendszer kiemelte a hibakódot és a fázist." border="false":::
+:::image type="content" source="./media/troubleshoot-hybrid-join-windows-current/4.png" alt-text="Képernyőkép az Eseménynaplóról. Az I D 204-vel rendelkező eseményekkel kapcsolatos információk jelennek meg, a hibakód, a H T T P-állapot és a Kiemelt üzenet alapján." border="false":::
 
 ##### <a name="http-errors-returned-from-drs-server"></a>A DRS-kiszolgáló által visszaadott HTTP-hibák
 
@@ -387,7 +387,7 @@ A csatlakozási hibák fázisának és ErrorCode megkereséséhez használja Ese
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>5. lépés: naplók összegyűjtése és kapcsolatfelvétel Microsoft ügyfélszolgálata
 
-Töltse le a Auth.zip fájlt a következőből: [https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
+Töltse le a Auth.zip fájlt a következőből: [https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth)
 
 1. Bontsa ki a fájlokat, és nevezze át a tartalmazott fájlokat **start-auth.txt** és **stop-auth.txt** a **Start-auth. cmd** és a **stop-auth. cmd** fájlba.
 1. Rendszergazda jogú parancssorból futtassa a **Start-auth. cmd** fájlt.
@@ -404,7 +404,7 @@ Töltse le a Auth.zip fájlt a következőből: [https://github.com/CSS-Windows/
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: igen és AzureADPrt: igen
 
 Ezek a mezők jelzik, hogy a felhasználó sikeresen hitelesített-e az Azure AD-be az eszközre való bejelentkezéskor.
-Ha az értékek **nem** , akkor a következők miatt lehet:
+Ha az értékek **nem**, akkor a következők miatt lehet:
 
 - A regisztráció során az eszközhöz társított TPM rossz tárolási kulcsa (a KeySignTest-t a emelt szintű futtatás közben kell ellenőriznie).
 - Másodlagos bejelentkezési azonosító

@@ -3,13 +3,13 @@ title: Bejövő/kimenő IP-címek
 description: Megtudhatja, hogyan használja a rendszer a bejövő és kimenő IP-címeket Azure App Serviceban, Mikor változnak, és hogyan keresheti meg az alkalmazás címét.
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e5b271cc5cd8cb52267b6ee44bc3965d0e4b0aab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: seodec18
+ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746145"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591367"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Bejövő és kimenő IP-címek Azure App Service
 
@@ -19,7 +19,7 @@ ms.locfileid: "92746145"
 
 ## <a name="how-ip-addresses-work-in-app-service"></a>Az IP-címek működése App Service
 
-Egy App Service alkalmazás egy App Service-csomagban fut, és a App Service csomagok üzembe helyezése az Azure-infrastruktúra egyik üzembe helyezési egységében történik (belsőleg a webtárhelyet nevezik). Mindegyik üzembe helyezési egységhez legfeljebb öt virtuális IP-cím van hozzárendelve, amely egy nyilvános bejövő IP-címet és négy kimenő IP-címet tartalmaz. Az azonos üzembe helyezési egységben és a bennük futó alkalmazások példányain lévő összes App Service-csomag ugyanazokat a virtuális IP-címeket használja. Egy App Service Environment (az [elszigetelt](https://azure.microsoft.com/pricing/details/app-service/)szinten lévő app Service-csomag) esetében a app Service terv maga a telepítési egység, így a virtuális IP-címek ennek eredményeképpen vannak kijelölve.
+Egy App Service alkalmazás egy App Service-csomagban fut, és a App Service csomagok üzembe helyezése az Azure-infrastruktúra egyik üzembe helyezési egységében történik (belsőleg a webtárhelyet nevezik). Minden központi telepítési egységhez hozzá van rendelve egy virtuális IP-cím, amely egy nyilvános bejövő IP-címet és egy [kimenő IP-címet](#find-outbound-ips)tartalmaz. Az azonos üzembe helyezési egységben és a bennük futó alkalmazások példányain lévő összes App Service-csomag ugyanazokat a virtuális IP-címeket használja. Egy App Service Environment (az [elszigetelt](https://azure.microsoft.com/pricing/details/app-service/)szinten lévő app Service-csomag) esetében a app Service terv maga a telepítési egység, így a virtuális IP-címek ennek eredményeképpen vannak kijelölve.
 
 Mivel nem lehet áthelyezni egy App Service tervet a telepítési egységek között, az alkalmazáshoz hozzárendelt virtuális IP-címek általában változatlanok maradnak, de kivételek vannak.
 
@@ -51,7 +51,7 @@ Az alkalmazás kimenő IP-címeinek készlete a következő műveletek valamelyi
 
 - Töröljön egy alkalmazást, és hozza létre újra egy másik erőforráscsoporthoz (a telepítési egység változhat).
 - Törölje az erőforráscsoport _és_ a régió kombinációjában az utolsó alkalmazást, és hozza létre újból (a központi telepítési egység változhat).
-- Az alkalmazás méretezése az alsó szint ( **Alapszintű** , **standard** és **prémium** ) és a **prémium v2** -szint között (az IP-címek a készletből adhatók hozzá vagy vonhatók ki).
+- Az alkalmazás méretezése az alsó szint (**Alapszintű**, **standard** és **prémium**) és a **prémium v2** -szint között (az IP-címek a készletből adhatók hozzá vagy vonhatók ki).
 
 Az alkalmazás által használható kimenő IP-címek készletét az árképzési szintektől függetlenül, a `possibleOutboundIpAddresses` tulajdonság vagy a Azure Portal **Tulajdonságok** paneljének **további kimenő IP-címek** mezőjében találja. Lásd: [kimenő IP](#find-outbound-ips)-címek keresése.
 

@@ -4,12 +4,12 @@ description: Minták az Azure Application Insights ILogger Provider ASP.NET Core
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 987d5b78c5fe680f43ff6a001e7a31a8ae9f6124
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e7d0bd6f7d93eac944e0d53a8e898463bf9887f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931461"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592268"
 ---
 # <a name="applicationinsightsloggerprovider-for-microsoftextensionlogging"></a>ApplicationInsightsLoggerProvider a Microsoft. Extension. naplózáshoz
 
@@ -20,7 +20,7 @@ További információ a naplózásról: [ASP.net Core naplózása](/aspnet/core/
 
 `ApplicationInsightsLoggerProvider` Alapértelmezés szerint engedélyezve van ASP.NET Core alkalmazásokhoz, ha a ApplicationInsights [kód](./asp-net-core.md) vagy [kód nélküli](./azure-web-apps.md?tabs=netcore#enable-agent-based-monitoring) megközelítéssel van konfigurálva.
 
-Alapértelmezés szerint csak a *Figyelmeztetési* és a fenti `ILogger` naplók (az összes [kategóriából](/aspnet/core/fundamentals/logging/#log-category)) lesznek elküldve a Application Insightsra. [Ezt a viselkedést azonban testre is szabhatja](./asp-net-core.md#how-do-i-customize-ilogger-logs-collection). A ILogger-naplók **program.cs** vagy **Startup.cs**való rögzítéséhez további lépések szükségesek. (Lásd: [ILogger-naplók rögzítése ASP.net Core alkalmazásokban a Startup.cs és a program.cs](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Alapértelmezés szerint csak a *Figyelmeztetési* és a fenti `ILogger` naplók (az összes [kategóriából](/aspnet/core/fundamentals/logging/#log-category)) lesznek elküldve a Application Insightsra. [Ezt a viselkedést azonban testre is szabhatja](./asp-net-core.md#how-do-i-customize-ilogger-logs-collection). További lépések szükségesek a ILogger-naplók programból való rögzítéséhez **. cs** vagy **Startup. cs**. (Lásd: [ILogger-naplók rögzítése a Startup. cs és a program. cs ASP.net Core alkalmazásokban](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Ha `ApplicationInsightsLoggerProvider` más Application Insights figyelés nélkül szeretné használni, kövesse az alábbi lépéseket.
 
@@ -91,16 +91,16 @@ public class ValuesController : ControllerBase
 }
 ```
 
-### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ILogger-naplók rögzítése a Startup.cs és a Program.cs alkalmazásban ASP.NET Core alkalmazásokban
+### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ILogger-naplók rögzítése a Startup. cs és a program. cs alkalmazásban ASP.NET Core alkalmazásokban
 
 > [!NOTE]
-> A ASP.NET Core 3,0-es és újabb verzióiban már nem lehet beszúrni `ILogger` a Startup.cs és a program.cs. https://github.com/aspnet/Announcements/issues/353További részletekért tekintse meg a következőt:.
+> A ASP.NET Core 3,0-es és újabb verzióiban már nem lehet beszúrni `ILogger` a Startup. cs és a program. cs. https://github.com/aspnet/Announcements/issues/353További részletekért tekintse meg a következőt:.
 
-`ApplicationInsightsLoggerProvider` a naplókat az alkalmazás indításának korai szakaszában rögzítheti. Bár a ApplicationInsightsLoggerProvider automatikusan engedélyezve van Application Insights (a 2.7.1-es verziótól kezdődően), nem rendelkezik a kialakítási kulccsal, amely a folyamat későbbi részében nem szerepel. Így csak a **vezérlő**/other osztályaiból származó naplók lesznek rögzítve. Ha a **program.cs** és a **Startup.cs** -től kezdődően minden naplót rögzíteni szeretne, explicit módon engedélyeznie kell a ApplicationInsightsLoggerProvider rendszerállapot-kulcsát. Emellett a *TelemetryConfiguration* nincs teljesen beállítva, ha a **Program.cs** vagy a **Startup.cs** -ből jelentkezik be. Így ezek a naplók a [InMemoryChannel](./telemetry-channels.md)-t használó minimális konfigurációval rendelkeznek, nem [mintavételezéssel](./sampling.md), és nem rendelkeznek szabványos [telemetria-inicializálással vagy processzorokkal](./api-filtering-sampling.md).
+`ApplicationInsightsLoggerProvider` a naplókat az alkalmazás indításának korai szakaszában rögzítheti. Bár a ApplicationInsightsLoggerProvider automatikusan engedélyezve van Application Insights (a 2.7.1-es verziótól kezdődően), nem rendelkezik a kialakítási kulccsal, amely a folyamat későbbi részében nem szerepel. Így csak a **vezérlő**/other osztályaiból származó naplók lesznek rögzítve. A **program. cs** és a **Startup. cs** -től kezdődő összes napló rögzítéséhez explicit módon engedélyeznie kell a ApplicationInsightsLoggerProvider a Instrumentation-kulcsot. Emellett a *TelemetryConfiguration* nincs teljesen beállítva a **program. cs** vagy a **Startup. cs** -ból való bejelentkezéskor. Így ezek a naplók a [InMemoryChannel](./telemetry-channels.md)-t használó minimális konfigurációval rendelkeznek, nem [mintavételezéssel](./sampling.md), és nem rendelkeznek szabványos [telemetria-inicializálással vagy processzorokkal](./api-filtering-sampling.md).
 
-Az alábbi példák bemutatják ezt a képességet a **program.cs** és a **Startup.cs**.
+Az alábbi példák bemutatják ezt a képességet a **program. cs** és a **Startup. cs**-ban.
 
-#### <a name="example-programcs"></a>Példa Program.cs
+#### <a name="example-programcs"></a>Példa program. cs
 
 ```csharp
 using Microsoft.AspNetCore;
@@ -143,7 +143,7 @@ public class Program
 }
 ```
 
-#### <a name="example-startupcs"></a>Példa Startup.cs
+#### <a name="example-startupcs"></a>Példa: Startup. cs
 
 ```csharp
 public class Startup
@@ -188,14 +188,14 @@ public class Startup
 A Microsoft. ApplicationInsights. AspNet SDK-verziók a 2.7.1-es verzióban már elavult naplózási szolgáltatót támogattak. Ezt a szolgáltatót engedélyezte a ILoggerFactory **AddApplicationInsights ()** bővítményi metódusa. Javasoljuk, hogy telepítse át az új szolgáltatóra, amely két lépést is magában foglal:
 
 1. A kettős naplózás elkerüléséhez távolítsa el a *ILoggerFactory. AddApplicationInsights ()* metódust az **Startup.Configure ()** metódusból.
-2. Alkalmazza újra a kód szűrési szabályait, mivel azokat az új szolgáltató nem veszi figyelembe. A *ILoggerFactory. AddApplicationInsights ()* túlterhelései minimális naplózási szint vagy szűrési funkciókat vettek igénybe. Az új szolgáltatónál a szűrés a naplózási keretrendszer részét képezi. Ezt a Application Insights szolgáltató nem végzi el. Így a *ILoggerFactory. AddApplicationInsights ()-* n keresztül biztosított szűrőket el kell távolítani. És a szűrési szabályokat a [vezérlés naplózási szintjének](#control-logging-level) útmutatása szerint kell megadni. Haappsettings.jshasználatával szűri * a* naplózást, az továbbra is együttműködik az új szolgáltatóval, mert mindkettő ugyanazt a szolgáltatói aliast használja, *ApplicationInsights*.
+2. Alkalmazza újra a kód szűrési szabályait, mivel azokat az új szolgáltató nem veszi figyelembe. A *ILoggerFactory. AddApplicationInsights ()* túlterhelései minimális naplózási szint vagy szűrési funkciókat vettek igénybe. Az új szolgáltatónál a szűrés a naplózási keretrendszer részét képezi. Ezt a Application Insights szolgáltató nem végzi el. Így a *ILoggerFactory. AddApplicationInsights ()-* n keresztül biztosított szűrőket el kell távolítani. És a szűrési szabályokat a [vezérlés naplózási szintjének](#control-logging-level) útmutatása szerint kell megadni. Haappsettings.jshasználatával szűri *a* naplózást, az továbbra is együttműködik az új szolgáltatóval, mert mindkettő ugyanazt a szolgáltatói aliast használja, *ApplicationInsights*.
 
 Továbbra is használhatja a régi szolgáltatót. (A rendszer csak a főverzió változását veszi át 3 értékre. *XX*.) de azt javasoljuk, hogy a következő okokból telepítse át az új szolgáltatóra:
 
 - Az előző szolgáltató nem támogatja a [naplózási hatóköröket](/aspnet/core/fundamentals/logging#log-scopes). Az új szolgáltatóban a hatókör tulajdonságai automatikusan egyéni tulajdonságokként lesznek hozzáadva az összegyűjtött telemetria.
 - A naplók mostantól jóval korábban is rögzíthetők az alkalmazás indítási folyamatában. A **programból** származó naplók és az **indítási** osztályok mostantól rögzíthetők.
 - Az új szolgáltató esetében a szűrés a keretrendszer szintjén történik. A naplókat a Application Insights szolgáltatóhoz ugyanúgy szűrheti, mint a többi szolgáltatónál, például a beépített szolgáltatók, például a konzol, a hibakeresés és így tovább. Ugyanezeket a szűrőket is alkalmazhatja több szolgáltatóra is.
-- A ASP.NET Core (2,0-es és újabb verziók) esetében a  [naplózási szolgáltatók engedélyezésének](https://github.com/aspnet/Announcements/issues/255) ajánlott módja a ILoggingBuilder a **program.cs** -ben való használatának javasolt módszere.
+- ASP.NET Core (2,0-es és újabb verziók) esetében a  [naplózási szolgáltatók engedélyezésének](https://github.com/aspnet/Announcements/issues/255) ajánlott módja a **program. cs** ILoggingBuilder lévő bővítmény-metódusok használata.
 
 > [!Note]
 > Az új szolgáltató a NETSTANDARD 2.0-s vagy újabb verzióját használó alkalmazásokhoz érhető el. A [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verziójának 2.14.0 kezdve új szolgáltató is elérhető a .NET-keretrendszer NET461 vagy újabb verzióját használó alkalmazásokhoz. Ha az alkalmazás a régebbi .NET Core-verziókat (például a .NET Core 1,1-as verziót) célozza meg, vagy ha a .NET-keretrendszert NET46-nál kisebbre célozza, folytassa a régi szolgáltató használatával.
@@ -323,7 +323,7 @@ A ApplicationInsightsLoggerProvider esetében a szolgáltató aliasa a következ
 
 ### <a name="create-filter-rules-in-code"></a>Szűrési szabályok létrehozása a kódban
 
-A következő kódrészlet az összes kategóriából származó *Figyelmeztetési* és ennél magasabb szintű naplókat *konfigurálja, valamint* a "Microsoft" kifejezéssel kezdődően a (z `ApplicationInsightsLoggerProvider` ) " Ez a konfiguráció ugyanaz, mint a *appsettings.json*előző szakaszában.
+A következő kódrészlet az összes kategóriából származó *Figyelmeztetési* és ennél magasabb szintű naplókat *konfigurálja, valamint* a "Microsoft" kifejezéssel kezdődően a (z `ApplicationInsightsLoggerProvider` ) " Ez a konfiguráció ugyanaz, mint a *appsettings.json* előző szakaszában.
 
 ```csharp
     WebHost.CreateDefaultBuilder(args)
@@ -416,7 +416,7 @@ Tekintse meg a [vezérlők naplózási szintjének](#control-logging-level) cím
 
 ### <a name="why-do-some-ilogger-logs-not-have-the-same-properties-as-others"></a>Miért nem ugyanazokkal a tulajdonságokkal rendelkeznek a ILogger-naplók, mint mások?
 
-Application Insights rögzíti és elküldi a ILogger-naplókat ugyanazzal a TelemetryConfiguration, amelyet minden más telemetria használ. Kivétel történt. Alapértelmezés szerint a TelemetryConfiguration nincs teljesen beállítva a **program.cs** vagy a **Startup.cs**szolgáltatásba való bejelentkezéskor. Ezen helyekről származó naplók nem rendelkeznek az alapértelmezett konfigurációval, így nem fognak futni az összes TelemetryInitializers és TelemetryProcessors.
+Application Insights rögzíti és elküldi a ILogger-naplókat ugyanazzal a TelemetryConfiguration, amelyet minden más telemetria használ. Kivétel történt. Alapértelmezés szerint a TelemetryConfiguration nincs teljesen beállítva a **program. cs** vagy a **Startup. cs** naplófájlból való bejelentkezéskor. Ezen helyekről származó naplók nem rendelkeznek az alapértelmezett konfigurációval, így nem fognak futni az összes TelemetryInitializers és TelemetryProcessors.
 
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-i-want-to-log-some-additional-custom-telemetry-manually-how-should-i-do-that"></a>A Microsoft. Extensions. Logging. ApplicationInsights önálló csomagot használom, és manuálisan szeretnék bejelentkezni néhány további egyéni telemetria. Hogyan tehetem ezt meg?
 
@@ -454,7 +454,7 @@ Az Azure Web Apps Application Insights bővítménye az új szolgáltatót haszn
 ### <a name="im-using-the-standalone-package-microsoftextensionsloggingapplicationinsights-and-enabling-application-insights-provider-by-calling-builderaddapplicationinsightsikey-is-there-an-option-to-get-an-instrumentation-key-from-configuration"></a>A Microsoft. Extensions. Logging. ApplicationInsights önálló csomagja és a Application Insights Provider engedélyezése a **Builder hívásával. AddApplicationInsights ("rendszerállapotkulcsot")**. Van lehetőség rendszerállapot-kulcs beszerzésére a konfigurációból?
 
 
-Módosítsa a Program.cs és a appsettings.jst a következő módon:
+Módosítsa a program. cs és a appsettings.jsalkalmazást a következő módon:
 
    ```csharp
    public class Program
@@ -484,13 +484,13 @@ Módosítsa a Program.cs és a appsettings.jst a következő módon:
    }
    ```
 
-Ez a kód csak önálló naplózási szolgáltató használata esetén szükséges. A rendszeres Application Insights figyeléséhez a rendszer automatikusan betölti a kialakítási kulcsot a *ApplicationInsights: Instrumentationkey*konfigurációs elérési útról. A Appsettings.jsa következőhöz hasonlóan kell kinéznie:
+Ez a kód csak önálló naplózási szolgáltató használata esetén szükséges. A rendszeres Application Insights figyeléséhez a rendszer automatikusan betölti a kialakítási kulcsot a *ApplicationInsights: InstrumentationKey* konfigurációs elérési útról. A Appsettings.jsa következőhöz hasonlóan kell kinéznie:
 
    ```json
    {
      "ApplicationInsights":
        {
-           "Instrumentationkey":"putrealikeyhere"
+           "InstrumentationKey":"putrealikeyhere"
        }
    }
    ```

@@ -2,7 +2,7 @@
 title: 'Rövid útmutató: dedikált SQL-készlet létrehozása és lekérdezése (korábbi nevén SQL DW) (Azure Portal)'
 description: Dedikált SQL-készlet (korábban SQL DW) létrehozása és lekérdezése a Azure Portal használatával
 services: synapse-analytics
-author: kevinvngo
+author: pimorano
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7a14aa2d73e35008675819c07fa96f34b088f26a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: dd9d66683d5f2349807915651c50bf9eedd285c1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672827"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602230"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet (korábban SQL DW) létrehozása és lekérdezése az Azure szinapszis Analyticsben az Azure Portal használatával
 
@@ -29,7 +29,7 @@ A Azure Portal használatával gyorsan létrehozhat és lekérdezheti a dedikál
    > [!NOTE]
    > Egy dedikált SQL-készlet (korábban SQL DW) létrehozása az Azure Szinapszisban egy új számlázható szolgáltatás lehet. További információ: az [Azure szinapszis Analytics díjszabása](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-2. Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját. Megjegyzés: a SSMS csak Windows-alapú platformokon érhető el, lásd a [támogatott platformok teljes listáját](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15#supported-operating-systems-ssms-185).
+2. Töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) legújabb verzióját. Megjegyzés: a SSMS csak Windows-alapú platformokon érhető el, lásd a [támogatott platformok teljes listáját](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15&preserve-view=true#supported-operating-systems-ssms-185t).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

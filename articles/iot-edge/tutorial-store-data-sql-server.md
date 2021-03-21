@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: e5aeda35ed4110807f17c11e93b31d0b3998846e
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103461113"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
@@ -107,7 +107,7 @@ Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldá
 
 3. Mentse a **sqlFunction. csproj** fájlt.
 
-4. Nyissa meg a **sqlFunction.cs** fájlt.
+4. Nyissa meg a **sqlFunction. cs** fájlt.
 
 5. Cserélje le a fájl teljes tartalmát a következő kódra:
 
@@ -204,7 +204,7 @@ Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldá
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
    ```
 
-7. Mentse a **sqlFunction.cs** fájlt.
+7. Mentse a **sqlFunction. cs** fájlt.
 
 ## <a name="add-the-sql-server-container"></a>Az SQL Server tároló hozzáadása
 
@@ -221,7 +221,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 3. A Azure IoT Edge modul Marketplace-en keresse meg és válassza ki **SQL Server modult**.
 
-4. Módosítsa a modul nevét **SQL**-re, az összes kisbetűs értékre. Ez a név megegyezik a sqlFunction.cs fájlban a kapcsolatok karakterláncában deklarált tároló nevével.
+4. Módosítsa a modul nevét **SQL**-re, az összes kisbetűs értékre. Ez a név megegyezik a sqlFunction. cs fájlban a kapcsolatok karakterláncában deklarált tároló nevével.
 
 5. Válassza az **Importálás** lehetőséget a modul megoldáshoz való hozzáadásához.
 

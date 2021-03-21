@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456309"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel-entitások típusai – dokumentáció
@@ -294,7 +294,7 @@ Beállításkulcs-entitás erős azonosítói:
 | Kulcs | Entitás (RegistryKey) | A beállításkulcs entitása. |
 | Name | Sztring | A beállításazonosító neve. |
 | Érték | Sztring | Az érték karakterlánc formátumú ábrázolása. |
-| ÉrtékTípusa | Enum? | A következő értékek egyike:<li>Sztring<li>Bináris<li>DWord<li>Qword<li>Többkarakterláncos<li>ExpandString<li>Nincs<li>Ismeretlen<br>Az értékeknek meg kell felelniük a Microsoft. Win32. RegistryValueKind enumerálásnak. |
+| ÉrtékTípusa | Enum? | A következő értékek egyike:<li>Sztring<li>Bináris<li>DWord<li>Qword<li>Többkarakterláncos<li>ExpandString<li>Nincsenek<li>Ismeretlen<br>Az értékeknek meg kell felelniük a Microsoft. Win32. RegistryValueKind enumerálásnak. |
 |
 
 Egy beállításazonosító típusú entitás erős azonosítója:
@@ -371,7 +371,7 @@ Egy IoT-eszköz entitásának gyenge azonosítói:
 | MailboxPrimaryAddress | Sztring | A postaláda elsődleges címe. |
 | DisplayName | Sztring | A postaláda megjelenítendő neve. |
 | UPN | Sztring | A postaláda UPN-je. |
-| RiskLevel | Enum? | A postaláda kockázati szintje. Lehetséges értékek:<li>Nincs<li>Alacsony<li>Közepes<li>Magas |
+| RiskLevel | Enum? | A postaláda kockázati szintje. Lehetséges értékek:<li>Nincsenek<li>Alacsony<li>Közepes<li>Magas |
 | ExternalDirectoryObjectId | GUID? | A postaláda AzureAD azonosítója. Hasonló a AadUserId, de ez a tulajdonság az Office-oldalon lévő postaláda-objektumra vonatkozik. |
 |
 

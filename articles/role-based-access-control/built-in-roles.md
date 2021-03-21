@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 02/25/2021
+ms.date: 03/15/2021
 ms.custom: generated
-ms.openlocfilehash: baa783d0dfb54e0e606e3f6c6d5397941ae7b7bc
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: ba5340fdc12bf3141c5e3f24b6b9d178a5db600d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011629"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602519"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -140,6 +140,13 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Cognitive Services QnA Maker szerkesztő](#cognitive-services-qna-maker-editor) | Egy KB-os létrehozásához, szerkesztéséhez, importálásához és exportálásához. KB-ot nem lehet közzétenni vagy törölni. | f4cc2bf9-21be-47a1-bdf1-5c5804381025 |
 > | [Cognitive Services QnA Maker olvasó](#cognitive-services-qna-maker-reader) | Elolvashatja és tesztelheti a KB-ot. | 466ccd10-b268-4a11-b098-b4849f024126 |
 > | [Cognitive Services felhasználó](#cognitive-services-user) | Lehetővé teszi Cognitive Services kulcsainak olvasását és listázását. | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **Eszközök internetes hálózata** |  |  |
+> | [Eszköz frissítésének rendszergazdája](#device-update-administrator) | Teljes hozzáférést biztosít a felügyeleti és a tartalmi műveletekhez | 02ca0879-e8e4-47a5-a61e-5c618b76e64a |
+> | [Eszköz frissítése – tartalom rendszergazdája](#device-update-content-administrator) | Teljes hozzáférést biztosít a tartalmi műveletekhez | 0378884a-3af5-44ab-8323-f5b22f9f3c98 |
+> | [Eszköz frissítési tartalom olvasója](#device-update-content-reader) | Olvasási hozzáférést biztosít a tartalmi műveletekhez, de nem teszi lehetővé a módosítások végrehajtását | d1ee9a80-8b14-47f0-bdc2-f4a351625a7b |
+> | [Eszköz frissítése központi telepítések rendszergazdája](#device-update-deployments-administrator) | Teljes hozzáférést biztosít a felügyeleti műveletekhez | e4237640-0e3d-4a46-8fda-70bc94856432 |
+> | [Eszköz frissítése központi telepítések olvasója](#device-update-deployments-reader) | Olvasási hozzáférést biztosít a felügyeleti műveletekhez, de nem teszi lehetővé a módosításokat | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
+> | [Eszköz frissítési olvasója](#device-update-reader) | Olvasási hozzáférést biztosít a felügyeleti és a tartalmi műveletekhez, de nem teszi lehetővé a módosítások végrehajtását | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
 > | **Vegyes valóság** |  |  |
 > | [Távoli renderelési rendszergazda](#remote-rendering-administrator) | Lehetővé teszi a felhasználó számára az átalakítást, a munkamenetek kezelését, a renderelést és a diagnosztikai képességeket az Azure távoli renderelés | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Távoli renderelési ügyfél](#remote-rendering-client) | A lehetővé teszi, hogy a felhasználó kezelje a munkamenetet, a renderelési és diagnosztikai funkciókat az Azure távoli rendereléshez. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
@@ -156,6 +163,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Adatfogadó Azure Service Bus](#azure-service-bus-data-receiver) | Engedélyezi a hozzáférést Azure Service Bus erőforrásokhoz. | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
 > | [Adatfeladó Azure Service Bus](#azure-service-bus-data-sender) | Lehetővé teszi a Azure Service Bus erőforrásokhoz való hozzáférés küldését. | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
 > | [Azure Stack regisztrációs tulajdonos](#azure-stack-registration-owner) | Lehetővé teszi Azure Stack regisztrációk kezelését. | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | [EventGrid közreműködője](#eventgrid-contributor) | Lehetővé teszi a EventGrid-műveletek kezelését. | 1e241071-0855-49ea-94dc-649edcd759de |
 > | [EventGrid EventSubscription közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi a EventGrid esemény-előfizetési műveletek kezelését. | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription-olvasó](#eventgrid-eventsubscription-reader) | Lehetővé teszi a EventGrid esemény-előfizetések olvasását. | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [FHIR-adatközreműködő](#fhir-data-contributor) | A szerepkör lehetővé teszi, hogy a felhasználó vagy a fő teljes hozzáférés FHIR-adathoz | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
@@ -222,6 +230,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Felügyeleti csoport olvasója](#management-group-reader) | Felügyeleti csoport olvasójának szerepköre | ac63b705-f282-497d-ac71-919bf39d939d |
 > | [Új ereklye APM-fiók közreműködői](#new-relic-apm-account-contributor) | Lehetővé teszi New Relic Application Performance Management-fiókok és-alkalmazások kezelését, az azokhoz való hozzáférés nélkül. | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [Házirend-elemzések adatírója (előzetes verzió)](#policy-insights-data-writer-preview) | Olvasási hozzáférést biztosít az erőforrás-házirendekhez, és írási hozzáférést biztosít az erőforrás-összetevőkre vonatkozó házirend eseményeihez. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
+> | [Kvóta-kérelem operátori szerepköre](#quota-request-operator-role) | Megtekintheti és létrehozhatja a kvótákat, lekérheti a kvóta-kérelmek állapotát, és létrehozhat támogatási jegyeket. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
 > | [Foglalási vásárló](#reservation-purchaser) | Lehetővé teszi a foglalások megvásárlását | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [Erőforrás-szabályzat közreműködője](#resource-policy-contributor) | Az erőforrás-házirend létrehozásához/módosításához, támogatási jegy létrehozásához és az erőforrások/hierarchia olvasásához jogosultsággal rendelkező felhasználók. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Site Recovery-közreműködő](#site-recovery-contributor) | Lehetővé teszi Site Recovery szolgáltatás felügyeletét, kivéve a tár létrehozását és a szerepkör-hozzárendelést | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
@@ -719,7 +728,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -4400,6 +4409,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/devOpsAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/firewallRules/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/READ | A kiszolgálók listájának visszaadása vagy a megadott kiszolgáló tulajdonságainak beolvasása. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | SQL Server biztonsági riasztási szabályzatok létrehozása és kezelése |
@@ -4465,6 +4475,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok biztonsággal kapcsolatos
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/firewallRules/*",
         "Microsoft.Sql/servers/read",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
@@ -4528,6 +4539,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok kezelését, de azokhoz v
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessments/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentScans/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/devOpsAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedAuditingSettings/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | SQL Server biztonsági riasztási szabályzatok szerkesztése |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
@@ -4583,6 +4595,7 @@ Lehetővé teszi az SQL-kiszolgálók és-adatbázisok kezelését, de azokhoz v
         "Microsoft.Sql/servers/databases/vulnerabilityAssessments/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/*",
         "Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/*",
+        "Microsoft.Sql/servers/devOpsAuditingSettings/*",
         "Microsoft.Sql/servers/extendedAuditingSettings/*",
         "Microsoft.Sql/servers/securityAlertPolicies/*",
         "Microsoft.Sql/servers/vulnerabilityAssessments/*",
@@ -5724,6 +5737,19 @@ Egy KB-os létrehozásához, szerkesztéséhez, importálásához és exportál�
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/READ | Végponti beállítások beolvasása egy végponthoz |
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/Write | Végpont seettings frissítése. |
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/Operations/READ | Lekéri egy adott hosszan futó művelet részleteit. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/READ | Beolvassa a tudásbázisok listáját vagy egy adott Tudásbázis részleteit. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/Download/READ | Töltse le a tudásbázist. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/Create/Write | Aszinkron művelet egy új Tudásbázis létrehozásához. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/Write | Aszinkron művelet a Tudásbázis módosításához vagy a Tudásbázis tartalmának cseréjéhez. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/Action | GenerateAnswer hívása a Tudásbázis lekérdezéséhez. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/Train/Action | Vegyen fel javaslatokat a tudásbázisba. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/READ | A változtatások letöltése futtatókörnyezetből. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/Write | Az Alters-adatértékek cseréje. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/READ | Végponti kulcsok beolvasása egy végponthoz |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/Action | Hozza létre újra a végponti kulcsot. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/READ | Végponti beállítások beolvasása egy végponthoz |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/Write | Végpont seettings frissítése. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/Operations/READ | Lekéri egy adott hosszan futó művelet részleteit. |
 > | **NotDataActions** |  |
 > | *nincs* |  |
 
@@ -5769,7 +5795,20 @@ Egy KB-os létrehozásához, szerkesztéséhez, importálásához és exportál�
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/write",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/operations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/create/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/train/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/write",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/operations/read"
       ],
       "notDataActions": []
     }
@@ -5805,6 +5844,12 @@ Elolvashatja és tesztelheti a KB-ot. [További információ](../cognitive-servi
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/READ | A változtatások letöltése futtatókörnyezetből. |
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/READ | Végponti kulcsok beolvasása egy végponthoz |
 > | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/READ | Végponti beállítások beolvasása egy végponthoz |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/READ | Beolvassa a tudásbázisok listáját vagy egy adott Tudásbázis részleteit. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/Download/READ | Töltse le a tudásbázist. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/Action | GenerateAnswer hívása a Tudásbázis lekérdezéséhez. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/READ | A változtatások letöltése futtatókörnyezetből. |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/READ | Végponti kulcsok beolvasása egy végponthoz |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/READ | Végponti beállítások beolvasása egy végponthoz |
 > | **NotDataActions** |  |
 > | *nincs* |  |
 
@@ -5836,7 +5881,13 @@ Elolvashatja és tesztelheti a KB-ot. [További információ](../cognitive-servi
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/knowledgebases/generateanswer/action",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/alterations/read",
         "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointkeys/read",
-        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read"
+        "Microsoft.CognitiveServices/accounts/QnAMaker.v2/endpointsettings/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/alterations/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointkeys/read",
+        "Microsoft.CognitiveServices/accounts/TextAnalytics/QnAMaker/endpointsettings/read"
       ],
       "notDataActions": []
     }
@@ -5907,6 +5958,323 @@ Lehetővé teszi Cognitive Services kulcsainak olvasását és listázását. [T
     }
   ],
   "roleName": "Cognitive Services User",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+## <a name="internet-of-things"></a>Eszközök internetes hálózata
+
+
+### <a name="device-update-administrator"></a>Eszköz frissítésének rendszergazdája
+
+Teljes hozzáférést biztosít a felügyeleti és tartalmi műveletekhez. [További információ](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/READ | A frissítésekkel kapcsolatos olvasási műveletet hajt végre |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/Write | A frissítésekkel kapcsolatos írási műveletet hajt végre |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/delete | A frissítésekkel kapcsolatos törlési műveletet hajt végre. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/READ | A felügyelettel kapcsolatos olvasási műveletet hajt végre. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/Write | A felügyelettel kapcsolatos írási műveletet hajt végre. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/delete | A felügyelettel kapcsolatos törlési műveletet hajt végre. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management and content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "name": "02ca0879-e8e4-47a5-a61e-5c618b76e64a",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-administrator"></a>Eszköz frissítése – tartalom rendszergazdája
+
+Teljes hozzáférést biztosít a tartalmi műveletekhez. [További információ](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/READ | A frissítésekkel kapcsolatos olvasási műveletet hajt végre |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/Write | A frissítésekkel kapcsolatos írási műveletet hajt végre |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/delete | A frissítésekkel kapcsolatos törlési műveletet hajt végre. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to content operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "name": "0378884a-3af5-44ab-8323-f5b22f9f3c98",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/write",
+        "Microsoft.DeviceUpdate/accounts/instances/updates/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-content-reader"></a>Eszköz frissítési tartalom olvasója
+
+Olvasási hozzáférést biztosít a tartalmi műveletekhez, de nem teszi lehetővé a módosítások [további megismerését](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/READ | A frissítésekkel kapcsolatos olvasási műveletet hajt végre |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "name": "d1ee9a80-8b14-47f0-bdc2-f4a351625a7b",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Content Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-administrator"></a>Eszköz frissítése központi telepítések rendszergazdája
+
+Teljes hozzáférést biztosít a felügyeleti műveletekhez. [További információ](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/READ | A felügyelettel kapcsolatos olvasási műveletet hajt végre. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/Write | A felügyelettel kapcsolatos írási műveletet hajt végre. |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/delete | A felügyelettel kapcsolatos törlési műveletet hajt végre. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you full access to management operations",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e4237640-0e3d-4a46-8fda-70bc94856432",
+  "name": "e4237640-0e3d-4a46-8fda-70bc94856432",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/write",
+        "Microsoft.DeviceUpdate/accounts/instances/management/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-deployments-reader"></a>Eszköz frissítése központi telepítések olvasója
+
+Olvasási hozzáférést biztosít a felügyeleti műveletekhez, de nem teszi lehetővé a módosítások [további megismerését](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/READ | A felügyelettel kapcsolatos olvasási műveletet hajt végre. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "name": "49e2f5d2-7741-4835-8efa-19e1fe35e47f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Deployments Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="device-update-reader"></a>Eszköz frissítési olvasója
+
+Olvasási hozzáférést biztosít a felügyeleti és a tartalmi műveletekhez, de nem teszi lehetővé a módosítások [további megismerését](../iot-hub-device-update/device-update-control-access.md)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Updates/READ | A frissítésekkel kapcsolatos olvasási műveletet hajt végre |
+> | [Microsoft. DeviceUpdate](resource-provider-operations.md#microsoftdeviceupdate)/accounts/instances/Management/READ | A felügyelettel kapcsolatos olvasási műveletet hajt végre. |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Gives you read access to management and content operations, but does not allow making changes",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "name": "e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/alertRules/*"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DeviceUpdate/accounts/instances/updates/read",
+        "Microsoft.DeviceUpdate/accounts/instances/management/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Device Update Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -6596,6 +6964,55 @@ Lehetővé teszi Azure Stack regisztrációk kezelését.
 }
 ```
 
+### <a name="eventgrid-contributor"></a>EventGrid közreműködője
+
+Lehetővé teszi a EventGrid-műveletek kezelését.
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/* | Event Grid erőforrások létrehozása és kezelése |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage EventGrid operations.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1e241071-0855-49ea-94dc-649edcd759de",
+  "name": "1e241071-0855-49ea-94dc-649edcd759de",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.EventGrid/*",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "EventGrid Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription közreműködője
 
 Lehetővé teszi a EventGrid esemény-előfizetési műveletek kezelését. [További információ](../event-grid/security-authorization.md)
@@ -6604,7 +7021,7 @@ Lehetővé teszi a EventGrid esemény-előfizetési műveletek kezelését. [Tov
 > | Műveletek | Leírás |
 > | --- | --- |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
-> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* | Regionális esemény-előfizetések létrehozása és kezelése |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/READ | Globális esemény-előfizetések listázása a témakör típusa szerint |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/eventSubscriptions/READ | Regionális esemény-előfizetések listázása |
 > | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topicTypes/eventSubscriptions/READ | Regionális esemény-előfizetések listázása topictype szerint |
@@ -8618,7 +9035,7 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/Components/* | Az adatáttekintési összetevők létrehozása és kezelése |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
-> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Létrehozza, frissíti vagy beolvassa a Analysis Server diagnosztikai beállításait. |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Létrehozza, frissíti vagy beolvassa a Analysis Server diagnosztikai beállításait. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/eventtypes/* | Az előfizetésben szereplő tevékenység-naplózási események (kezelési események) listázása. Ez az engedély mind a programozási, mind a portálhoz való hozzáférésre alkalmazható a tevékenység naplójában. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Ez az engedély olyan felhasználók számára szükséges, akiknek a portálon keresztül kell hozzáférnie a tevékenység naplóihoz. A műveletnapló kategóriáinak listázása a tevékenység naplójában. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/metricalerts/* |  |
@@ -9875,6 +10292,61 @@ Olvasási hozzáférést biztosít az erőforrás-házirendekhez, és írási ho
     }
   ],
   "roleName": "Policy Insights Data Writer (Preview)",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="quota-request-operator-role"></a>Kvóta-kérelem operátori szerepköre
+
+Megtekintheti és létrehozhatja a kvótákat, lekérheti a kvóta-kérelmek állapotát, és létrehozhat támogatási jegyeket. [További információ](/rest/api/reserved-vm-instances/quotaapi)
+
+> [!div class="mx-tableFixed"]
+> | Műveletek | Leírás |
+> | --- | --- |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimits/READ | A megadott erőforrás és hely aktuális szolgáltatási korlátjának vagy kvótájának beolvasása |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimits/Write | Szolgáltatási korlát vagy kvóta létrehozása a megadott erőforráshoz és helyhez |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/resourceProviders/Locations/serviceLimitsRequests/READ | A megadott erőforrásra és helyre vonatkozó szolgáltatási korlátra vonatkozó kérelmek beszerzése |
+> | [Microsoft. Capacity](resource-provider-operations.md#microsoftcapacity)/Register/Action | Regisztrálja a kapacitás erőforrás-szolgáltatót, és lehetővé teszi a kapacitás-erőforrások létrehozását. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role to read and create Quota Requests and get Quota Request Status.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "name": "0e5f05e5-9ab9-446b-b98d-1e2157c94125",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/read",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimits/write",
+        "Microsoft.Capacity/resourceProviders/locations/serviceLimitsRequests/read",
+        "Microsoft.Capacity/register/action",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Quota Request Operator Role",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: 4ab4e40e1dd4bbaf9ae73ab545285f5ae6261e27
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201770"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürtkonfiguráció ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
@@ -83,7 +83,7 @@ Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](
 
 **Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 A hagyományos helyszíni hálózati környezetekben a SQL Server feladatátvevő fürt példánya egyetlen számítógépen futó SQL Server egyetlen példánya lehet. Mivel a feladatátvevő fürt példánya feladatátvételt hajt végre a csomópontról a csomópontra, a példány virtuális hálózatának neve (VNN) egységes csatlakozási pontot biztosít, és lehetővé teszi, hogy az alkalmazások a SQL Server-példányhoz kapcsolódjanak anélkül, hogy a csomópont éppen aktív. Feladatátvétel esetén a virtuális hálózat neve az új aktív csomópontra van regisztrálva az indítás után. Ez a folyamat átlátható a SQL Serverhoz csatlakozó ügyfél vagy alkalmazás számára, és ez lekicsinyíti az állásidőt, amely miatt az ügyfél vagy az alkalmazás hibát tapasztal. Hasonlóképpen, a rendelkezésre állási csoport figyelője egy VNN használatával irányítja át a forgalmat a megfelelő replikára. 
 
