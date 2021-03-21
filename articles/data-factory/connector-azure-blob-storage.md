@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 279d432dbc5770cc89486c517b8fcbe6392b03d1
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.date: 03/17/2021
+ms.openlocfilehash: c1e0dffafafa76e90ec57ce1a00fb8e155ff4edf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103012190"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608095"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Az Azure Blob Storage-ban lévő Adatmásolás és-átalakítás Azure Data Factory használatával
 
@@ -389,7 +389,7 @@ A következő tulajdonságok támogatottak az Azure Blob Storage `storeSettings`
 | modifiedDatetimeEnd      | Lásd fentebb.                                               | No                                            |
 | enablePartitionDiscovery | A particionált fájlok esetében adja meg, hogy szeretné-e elemezni a partíciókat a fájl elérési útján, majd adja hozzá őket további forrásként szolgáló oszlopként.<br/>Az engedélyezett értékek: **false** (alapértelmezett) és **true (igaz**). | No                                            |
 | partitionRootPath | Ha engedélyezve van a partíciók felderítése, akkor a particionált mappák adatoszlopként való olvasásához a gyökér elérési útját kell megadni.<br/><br/>Ha nincs megadva, a rendszer alapértelmezés szerint<br/>– Ha a fájl elérési útját használja az adatkészletben vagy a forrásban található fájlok listáján, a partíció gyökerének elérési útja az adatkészletben konfigurált útvonal.<br/>– Ha helyettesítő mappa szűrőt használ, a partíció gyökerének elérési útja az első helyettesítő karakter előtti Alútvonal.<br/>– Ha előtagot használ, a partíció gyökerének elérési útja az utolsó "/" előtti Alútvonal. <br/><br/>Tegyük fel például, hogy az adatkészletben az elérési utat "root/Folder/Year = 2020/hónap = 08/Day = 27" értékre konfigurálja:<br/>– Ha a partíció gyökerének elérési útját "gyökér/mappa/év = 2020" értékre állítja, a másolási tevékenység két további oszlopot fog előállítani, `month` és a `day` "08" és "27" értéket is kijelöli a fájlokban lévő oszlopokon kívül.<br/>– Ha nincs megadva a partíció gyökerének elérési útja, nem jön létre további oszlop. | No                                            |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No                                            |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No                                            |
 
 > [!NOTE]
 > A Parquet/tagolt szöveges formátum esetében a következő szakaszban említett másolási tevékenység forrásának **BlobSource** -típusa továbbra is támogatott a visszamenőleges kompatibilitás érdekében. Javasoljuk, hogy az új modellt addig használja, amíg a Data Factory authoring felhasználói felülete be nem vált az új típusok létrehozásához.
@@ -449,7 +449,7 @@ Az Azure Blob Storage-ban a következő tulajdonságok támogatottak a `storeSet
 | típus                     | A tulajdonságot a következőre kell `type` `storeSettings` beállítani: `AzureBlobStorageWriteSettings` . | Yes      |
 | copyBehavior             | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl relatív elérési útja a forrás mappájához azonos a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No       |
 | blockSizeInMB | Határozza meg a blokk méretét (megabájtban), amely a Blobok adatírására szolgál. További [információ a blokkos blobokról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs). <br/>Az engedélyezett érték *4 MB és 100 MB között* van. <br/>Alapértelmezés szerint a Data Factory automatikusan meghatározza a blokk méretét a forrás-áruház típusa és adatai alapján. A blob Storage-ba való nem bináris másolás esetén az alapértelmezett blokkolási méret 100 MB, így a mérete (legfeljebb) 4,95 TB adat lehet. Nem lehet optimális, ha az adatai nem nagyméretűak, különösen akkor, ha a saját üzemeltetésű integrációs modult olyan gyenge hálózati kapcsolatokkal használja, amelyek működési időtúllépést vagy teljesítménnyel kapcsolatos problémákat okoznak. Explicit módon megadhatja a blokk méretét, miközben biztosítja, hogy `blockSizeInMB*50000` az adattároláshoz elég nagy legyen. Ellenkező esetben a másolási tevékenység futtatása sikertelen lesz. | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No       |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No       |
 
 **Példa**
 
@@ -681,7 +681,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 |:--- |:--- |:--- |
 | típus | A `type` másolási tevékenység forrásának tulajdonságát a következőre kell állítani: `BlobSource` . | Yes |
 | rekurzív | Azt jelzi, hogy az adatok rekurzív módon olvashatók-e az almappákból, vagy csak a megadott mappából. Vegye figyelembe, hogy ha a (z) értékre `recursive` van állítva `true` , a fogadó egy fájl alapú tároló, akkor a fogadó nem másol vagy hoz létre üres mappát vagy almappát.<br/>Az engedélyezett értékek: `true` (alapértelmezett) és `false` . | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 
@@ -721,7 +721,7 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [törlési tevék
 |:--- |:--- |:--- |
 | típus | A `type` másolási tevékenység fogadójának tulajdonságát be kell állítani `BlobSink` . | Yes |
 | copyBehavior | Meghatározza a másolási viselkedést, ha a forrás fájl-alapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>-PreserveHierarchy (alapértelmezett)</b>: megőrzi a fájl-hierarchiát a célmappában. A forrásfájl a forrás mappájához relatív elérési útja megegyezik a célfájl relatív elérési útjával.<br/><b>-FlattenHierarchy</b>: a forrás mappából származó összes fájl a célmappa első szintjén van. A célként megadott fájlok automatikusan generált névvel rendelkeznek. <br/><b>-MergeFiles</b>: az összes fájlt egyesíti a forrás mappájából egy fájlba. Ha meg van adva a fájl vagy a blob neve, az egyesített fájl neve a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájl neve. | No |
-| maxConcurrentConnections | A tárterület egyidejű kapcsolatainak száma. Csak akkor kell megadni, ha az adattárban való egyidejű kapcsolatokat szeretné korlátozni. | No |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 **Példa**
 

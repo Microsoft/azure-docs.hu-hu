@@ -5,39 +5,45 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0a0eaa18f5b120fcc9cbf0e4da470ee46772c925
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470404"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721206"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 
-Ez a cikk a [H-sorozat](../../sizes-hpc.md) és az [N-sorozat](../../sizes-gpu.md) HPC-és GPU-alapú virtuális gépek használatának leggyakoribb problémáit és megoldásait ismerteti.
+Ez a cikk a [H-sorozat](../../sizes-hpc.md) és az [N-sorozat](../../sizes-gpu.md) HPC-és GPU-alapú virtuális gépek használatakor a legutóbbi gyakori problémákat és azok megoldásait próbálja meglistázni.
+
+## <a name="mofed-installation-on-ubuntu"></a>MOFED-telepítés Ubuntu rendszeren
+Az Ubuntu-18,04-es verzióban a 5.4.0-1041-Azure kernel verziója nem kompatibilis a MOFED 5.2-2 és 5.2-1.0.4.0 verziójával. Javasoljuk, hogy visszagörgetje a kernel 5.4.0-1040-Azure-ra vagy egy régebbi kernelt használó piactér-rendszerképet, és ne frissítse a kernelt. Ezt a problémát várhatóan egy újabb MOFED kell feloldani.
 
 ## <a name="known-issues-on-hbv3"></a>A HBv3 ismert problémái
-- A InfiniBand jelenleg csak az 120-Core virtuális gépen (Standard_HB120rs_v3) támogatott. A többi virtuális gép méretének támogatása hamarosan engedélyezve lesz.
-- Az Azure gyorsított hálózatkezelés nem támogatott minden régióban a HBv3-sorozatban. Ez a funkció hamarosan elérhető lesz.
+- A InfiniBand jelenleg csak az 120-Core virtuális gépen (Standard_HB120rs_v3) támogatott.
+- Az Azure gyorsított hálózatkezelés jelenleg minden régióban nem támogatott a HBv3 sorozatokban.
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>Gyorsított hálózatkezelés a HB, a HC, a HBv2 és a NDv2
 
-Az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) mostantól elérhető a RDMA és InfiniBand-kompatibilis, valamint az SR-IOV-kompatibilis VM-méretek [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)és [NDv2](../../ndv2-series.md). Ez a funkció mostantól lehetővé teszi az Azure Ethernet-hálózaton keresztüli (akár 30 GB/s) és késleltetési szintű bővítést. Bár ez elkülönül a RDMA képességeitől a InfiniBand-hálózaton keresztül, bizonyos platform-változások hatással lehetnek bizonyos MPI-implementációk viselkedésére, amikor a feladatok a InfiniBand-en keresztül futnak. Az egyes virtuális gépek InfiniBand felülete némileg eltérő névvel rendelkezhet (mlx5_1 a korábbi mlx5_0hoz képest), és ez szükségessé teheti az MPI-parancssorok csípését, különösen a UCX felület (általában OpenMPI és HPC-X) használata esetén.
-Erről a [blogbejegyzésről](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) további részleteket a megfigyelt problémák megoldását ismertető cikkben talál.
+Az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) mostantól elérhető a RDMA és InfiniBand-kompatibilis, valamint az SR-IOV-kompatibilis VM-méretek [HB](../../hb-series.md), [HC](../../hc-series.md), [HBv2](../../hbv2-series.md)és [NDv2](../../ndv2-series.md). Ez a funkció mostantól lehetővé teszi az Azure Ethernet-hálózaton keresztüli (akár 30 GB/s) és késleltetési szintű bővítést. Bár ez elkülönül a RDMA képességeitől a InfiniBand-hálózaton keresztül, bizonyos platform-változások hatással lehetnek bizonyos MPI-implementációk viselkedésére, amikor a feladatok a InfiniBand-en keresztül futnak. Az egyes virtuális gépek InfiniBand felülete némileg eltérő névvel rendelkezhet (mlx5_1 a korábbi mlx5_0hoz képest), és ez szükségessé teheti az MPI-parancssorok csípését, különösen a UCX felület (általában OpenMPI és HPC-X) használata esetén. A legegyszerűbb megoldás jelenleg a legújabb HPC-X használata a CentOS-HPC virtuálisgép-rendszerképeken, vagy ha nem szükséges, tiltsa le a gyorsított hálózatkezelést.
+Erről a TechCommunity a jelen cikk további, a megfigyelt problémák megoldására vonatkozó utasításokat ismertető [cikkben](https://techcommunity.microsoft.com/t5/azure-compute/accelerated-networking-on-hb-hc-and-hbv2/ba-p/2067965) talál további információt.
 
-## <a name="infiniband-driver-installation-on-n-series-vms"></a>InfiniBand-illesztőprogram telepítése N sorozatú virtuális gépeken
+## <a name="infiniband-driver-installation-on-non-sr-iov-vms"></a>InfiniBand-illesztőprogram telepítése nem SR-IOV virtuális gépeken
 
-NC24r_v3 és ND40r_v2 az SR-IOV engedélyezve van, miközben a NC24r és a NC24r_v2 nem engedélyezett az SR-IOV. Néhány részlet a bifurkációs [itt](../../sizes-hpc.md#rdma-capable-instances).
-A InfiniBand (IB) konfigurálható az SR-IOV-kompatibilis virtuálisgép-méretekben a OFED-illesztőprogramokkal, míg a nem SR-IOV virtuálisgép-méretekhez ND-illesztőprogramok szükségesek. Ez az IB-támogatás megfelelően elérhető a [CentOS-HPC-VMIs](configure.md). Az Ubuntu esetében tekintse meg a OFED és az ND-illesztőprogramok telepítésének [utasításait](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) a [docs](enable-infiniband.md#vm-images-with-infiniband-drivers)részben leírtak szerint.
+Jelenleg a H16r, a H16mr és a NC24r nem engedélyezett az SR-IOV. A InfiniBand stack bifurkációs néhány részlete [itt](../../sizes-hpc.md#rdma-capable-instances)található.
+A InfiniBand konfigurálható az SR-IOV-kompatibilis virtuálisgép-méretekben a OFED-illesztőprogramokkal, míg a nem SR-IOV virtuálisgép-méretekhez ND-illesztőprogramok szükségesek. Ez az IB-támogatás megfelelő a [CentOS, a RHEL és az Ubuntu](configure.md)számára.
 
 ## <a name="duplicate-mac-with-cloud-init-with-ubuntu-on-h-series-and-n-series-vms"></a>Duplikált MAC a Cloud-init Ubuntu használatával H-sorozatú és N sorozatú virtuális gépeken
 
-Az Ubuntu VM-rendszerképeken a Cloud-init ismert hibája az IB-interfész üzembe helyezése. Ez a virtuális gép újraindításakor vagy az általánosítás utáni virtuálisgép-rendszerkép létrehozásakor fordulhat elő. A virtuális gép rendszerindítási naplói a következőhöz hasonló hibát jeleznek: "hálózati szolgáltatás indítása... RuntimeError: duplikált Mac rendszer található! a "eth1" és a "ib0" is Mac ".
+Az Ubuntu VM-rendszerképeken a Cloud-init ismert hibája az IB-interfész üzembe helyezése. Ez a virtuális gép újraindításakor vagy az általánosítás utáni virtuálisgép-rendszerkép létrehozásakor fordulhat elő. A virtuális gép rendszerindítási naplói a következőhöz hasonló hibát jeleznek:
+```console
+“Starting Network Service...RuntimeError: duplicate mac found! both 'eth1' and 'ib0' have mac”.
+```
 
-Ez egy ismert probléma a "duplikált MAC with Cloud-init on Ubuntu" néven. A megkerülő megoldás:
+Ez egy ismert probléma a "duplikált MAC with Cloud-init on Ubuntu" néven. Ez újabb kernelekben lesz feloldva. Ha a probléma előfordul, a megoldás a következő:
 1) Az (Ubuntu 18,04) Piactéri virtuálisgép-rendszerkép üzembe helyezése
 2) Telepítse a szükséges csomagokat az IB engedélyezéséhez ([itt az utasítás](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351))
 3) Módosítsa az waagent. conf fájlt a EnableRDMA = y módosításához
@@ -56,13 +62,13 @@ Ez egy ismert probléma a "duplikált MAC with Cloud-init on Ubuntu" néven. A m
     EOF
     ```
 
-## <a name="dram-on-hb-series"></a>DRAM on HB sorozat
-
-A HB sorozatú virtuális gépek jelenleg csak 228 GB RAM-ot tudnak kiszolgálni a vendég virtuális gépeknek. Hasonlóképpen, 458 GB HBv2 és 448 GB HBv3 virtuális gépeken. Ennek az az oka, hogy az Azure hypervisor ismert korlátozása miatt a lapok nem rendelhetők hozzá a vendég virtuális géphez fenntartott AMD CCX (NUMA-tartományok) helyi DRAM-hoz.
-
 ## <a name="qp0-access-restriction"></a>qp0 hozzáférési korlátozás
 
 Ha meg szeretné akadályozni, hogy az alacsony szintű hardveres hozzáférés biztonsági réseket eredményezhet, a várólista-párok 0 nem érhetőek el a vendég virtuális gépek számára. Ez csak a ConnectX-5 NIC felügyeletéhez kapcsolódó műveleteket befolyásolja, és bizonyos InfiniBand-diagnosztika, például a ibdiagnet, de nem végfelhasználói alkalmazások futtatására is hatással van.
+
+## <a name="dram-on-hb-series-vms"></a>DRAM a HB sorozatú virtuális gépeken
+
+A HB sorozatú virtuális gépek jelenleg csak 228 GB RAM-ot tudnak kiszolgálni a vendég virtuális gépeknek. Hasonlóképpen, 458 GB HBv2 és 448 GB HBv3 virtuális gépeken. Ennek az az oka, hogy az Azure hypervisor ismert korlátozása miatt a lapok nem rendelhetők hozzá a vendég virtuális géphez fenntartott AMD CCX (NUMA-tartományok) helyi DRAM-hoz.
 
 ## <a name="gss-proxy"></a>GSS proxy
 

@@ -9,10 +9,10 @@ ms.custom: devx-track-csharp
 ms.date: 04/19/2020
 ms.author: alkemper
 ms.openlocfilehash: 3a4d171f0e3225db195c5c2b71ca99a3386e3a36
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99979844"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integráció CI-/CD-folyamattal
@@ -49,7 +49,7 @@ A felhőalapú buildek létrehozásához az Azure DevOps például ellenőrizze,
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-1. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust az exportált JSON-fájl használatára a metódus meghívásával `config.AddJsonFile()` .  Adja hozzá a `System.Reflection` névteret is.
+1. Nyissa meg a *program. cs* fájlt, és frissítse a `CreateWebHostBuilder` metódust az exportált JSON-fájl használatára a metódus meghívásával `config.AddJsonFile()` .  Adja hozzá a `System.Reflection` névteret is.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

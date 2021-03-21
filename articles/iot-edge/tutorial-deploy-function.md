@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464105"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Azure Functions üzembe helyezése IoT Edge modulként
@@ -99,9 +99,9 @@ A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközö
 
 Vegyünk fel néhány további kódot, hogy a modul feldolgozza az üzeneteket a peremen, mielőtt továbbítaná őket a IoT Hubba.
 
-1. A Visual Studio Code-ban nyissa meg a **modulok**  >  **CSharpFunction**  >  **CSharpFunction.cs**.
+1. A Visual Studio Code-ban nyissa meg a **modules**  >  **CSharpFunction**  >  **CSharpFunction. cs**.
 
-1. Cserélje le a **CSharpFunction.cs** fájl tartalmát a következő kódra. Ez a kód telemetria kap a környezeti és a gépi hőmérsékletről, és csak akkor továbbítja az üzenetet IoT Hub, ha a gép hőmérséklete meghatározott küszöbérték felett van.
+1. Cserélje le a **CSharpFunction. cs** fájl tartalmát a következő kódra. Ez a kód telemetria kap a környezeti és a gépi hőmérsékletről, és csak akkor továbbítja az üzenetet IoT Hub, ha a gép hőmérséklete meghatározott küszöbérték felett van.
 
    ```csharp
    using System;

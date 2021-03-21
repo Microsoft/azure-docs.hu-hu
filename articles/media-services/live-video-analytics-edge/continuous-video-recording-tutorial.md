@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azu
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702419"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: folyamatos videofelvétel a felhőbe és a felhőből való lejátszás
@@ -126,7 +126,7 @@ Ezután keresse meg a src/Cloud-to-Device-Console-app mappát. Itt láthatja a a
 
 * **C2D-Console-app. csproj**: a Project fájl a Visual Studio Code-hoz.
 * **operations.jsbekapcsolva**: Ez a fájl felsorolja a futtatott különböző műveleteket.
-* **Program.cs**: a minta program kódja, amely:
+* **Program. cs**: a minta program kódja, amely:
     * Betölti az alkalmazás beállításait.
     * Az élő videó Analytics IoT Edge modulban elérhető közvetlen metódusokat hívja meg. A modul segítségével elemezheti az élő videó streameket a [közvetlen metódusok](direct-methods.md)meghívásával.
     * Szünetelteti, hogy megvizsgálja a program kimenetét a **terminál** ablakban, valamint a **kimenet** ablakban a modul által generált eseményeket.

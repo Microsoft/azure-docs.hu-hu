@@ -4,10 +4,10 @@ description: Földrajzi régiók használata a feladatátvételhez és a vész-h
 ms.topic: article
 ms.date: 02/10/2021
 ms.openlocfilehash: 3e8050cdaaae7e16a0f5125292df4b89b3690ed3
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102035394"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
@@ -50,7 +50,7 @@ A cikk a következő kifejezéseket használja:
 -  *Metaadatok*: olyan entitások, mint a várólisták, témakörök és előfizetések; a névtérhez társított szolgáltatás tulajdonságai. A rendszer csak az entitásokat és azok beállításait replikálja automatikusan. Az üzenetek nem replikálódnak.
 -  *Feladatátvétel*: a másodlagos névtér aktiválása folyamatban van.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 A következő szakasz áttekintést nyújt a névterek közötti párosítás beállításáról.
 

@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 020bd064628554703bb375c06c72e68d4536a2a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97934441"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Függvényalkalmazás létrehozása egy App Service-csomagban
@@ -41,7 +41,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 | [az functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Létrehoz egy prémium csomagot. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást az App Service-csomagban. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

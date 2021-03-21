@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 36551a52bc095a37aa5176ab945dd5d27c640954
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504610"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET-ről (Azure. Messaging. EventHubs) 
@@ -58,7 +58,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Kód írása az üzenetek eseményközpontba való küldésére
 
-1. Adja hozzá a következő `using` utasításokat a **program.cs** fájl elejéhez:
+1. Adja hozzá a következő `using` utasításokat a **program. cs** fájl elejéhez:
 
     ```csharp
     using System;
@@ -148,7 +148,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
 
 ### <a name="update-the-main-method"></a>A Main metódus frissítése 
 
-1. Adja hozzá a következő `using` utasításokat a **program.cs** fájl elejéhez.
+1. Adja hozzá a következő `using` utasításokat a **program. cs** fájl elejéhez.
 
     ```csharp
     using System;

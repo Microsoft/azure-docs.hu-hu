@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589662"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
@@ -31,7 +31,7 @@ Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy
 1. Amikor megtekinti a Profiler-nyomkövetéseket vagy a pillanatkép-hibakereső elemzését, a szolgáltatás beolvassa az elemzési eredményeket a blob Storage-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Győződjön meg arról, hogy a Storage-fiókját a Application Insights erőforrással megegyező helyen hozza létre. Például: Ha a Application Insights-erőforrás az USA 2. nyugati régiójában található, a Storage-fióknak az USA 2. nyugati régiójában is szerepelnie kell. 
+* Győződjön meg arról, hogy a Storage-fiókját a Application Insights erőforrással megegyező helyen hozza létre. Pl. Ha a Application Insights-erőforrás az USA 2. nyugati régiójában található, a Storage-fióknak az USA 2. nyugati régiójában is szerepelnie kell. 
 * Adja meg a "Storage blob-adatközreműködői" szerepkört a HRE alkalmazás "diagnosztikai szolgáltatások megbízható tároló-hozzáférése" számára a Storage-fiókban a Access Control (IAM) felhasználói felületén keresztül.
 * Ha engedélyezve van a privát hivatkozás, konfigurálja a további beállítást, hogy engedélyezze a kapcsolatot a megbízható Microsoft-szolgáltatással a Virtual Network. 
 

@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 858f006de7425a9fa8bea25e356a148b877aa30d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102040600"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
@@ -37,11 +37,11 @@ Az Azure Migrate hub az alábbi eszközöket tartalmazza:
 --- | --- | ---
 **Azure Migrate: kiszolgáló értékelése** | Kiszolgálók értékelése. | A helyszíni VMware virtuális gépek, Hyper-V virtuális gépek és fizikai kiszolgálók felderítése és kiértékelése az Azure-ba való Migrálás előkészítése során.
 **Azure Migrate: kiszolgáló áttelepítése** | Kiszolgálók migrálása. | Telepítse át a VMware virtuális gépeket, a Hyper-V virtuális gépeket, a fizikai kiszolgálókat, a többi virtualizált gépet és az Azure-ba irányuló nyilvános Felhőbeli
-**Data Migration Assistant** | Mérje fel SQL Server adatbázisait Azure SQL Databaseba, Azure SQL felügyelt példányba vagy SQL Server-t futtató Azure-beli virtuális gépekre való áttelepítésre. | A Data Migration Assistant segít az áttelepítést blokkoló lehetséges problémák azonosításában. Azonosítja a nem támogatott funkciókat, új szolgáltatásokat, amelyek hasznosak lehetnek az áttelepítés után, valamint az adatbázis-áttelepítés helyes elérési útját. [További információk](/sql/dma/dma-overview).
+**Data Migration Assistant** | Mérje fel SQL Server adatbázisait Azure SQL Databaseba, Azure SQL felügyelt példányba vagy SQL Server-t futtató Azure-beli virtuális gépekre való áttelepítésre. | A Data Migration Assistant segít az áttelepítést blokkoló lehetséges problémák azonosításában. Azonosítja a nem támogatott funkciókat, új szolgáltatásokat, amelyek hasznosak lehetnek az áttelepítés után, valamint az adatbázis-áttelepítés helyes elérési útját. [További információ](/sql/dma/dma-overview).
 **Azure Database Migration Service** | Helyszíni adatbázisok migrálása SQL Server, Azure SQL Database vagy SQL felügyelt példányokat futtató Azure-beli virtuális gépekre. | [További](../dms/dms-overview.md) információ a Database Migration Serviceról.
 **Movere** | Kiszolgálók értékelése. | [További](#movere) információ a mozgató szolgáltatásról.
 **Webalkalmazás-áttelepítési segéd** | Mérje fel a helyszíni webalkalmazásokat, és telepítse át őket az Azure-ba. |  A Azure App Service Migration Assistant segítségével kihasználhatja a helyszíni webhelyeket Azure App Servicere való áttelepítéshez.<br/><br/> A .NET-és PHP-alapú webalkalmazásokat az Azure-ba áttelepítheti a Migration Assistant használatával. [További](https://appmigration.microsoft.com/) információ a Azure app Service Migration Assistantról.
-**Azure Data Box** | Offline adatáttelepítés. | Azure Data Box termékek használatával nagy mennyiségű offline állapotú adatátvitelt helyezhet át az Azure-ba. [További információk](../databox/index.yml).
+**Azure Data Box** | Offline adatáttelepítés. | Azure Data Box termékek használatával nagy mennyiségű offline állapotú adatátvitelt helyezhet át az Azure-ba. [További információ](../databox/index.yml).
 
 > [!NOTE]
 > Ha Azure Government, a külső integrált eszközök és az ISV-ajánlatok nem tudnak adatküldeni Azure Migrate projekteknek. Az eszközöket egymástól függetlenül is használhatja.
@@ -80,13 +80,13 @@ A kiszolgáló értékelése a helyszínen üzembe helyezett, könnyű [Azure Mi
 - A készülék felderítése után a felderített gépeket csoportokba gyűjtheti, és az egyes csoportok értékeléseit is futtathatja.
 
 > [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://go.microsoft.com/fwlink/?linkid=2155668) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://go.microsoft.com/fwlink/?linkid=2155668). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 ## <a name="azure-migrate-server-migration-tool"></a>Azure Migrate: kiszolgáló áttelepítési eszköze
 
 A Azure Migrate: a kiszolgáló áttelepítési eszköze segíti az Azure-ba való áttelepítést:
 
-**Áttelepítése** | **Részletek**
+**Migrate** | **Részletek**
 --- | ---
 Helyszíni VMware virtuális gépek | Virtuális gépek migrálása az Azure-ba ügynök nélküli vagy ügynök-alapú áttelepítés használatával.<br/><br/> Az ügynök nélküli áttelepítés esetében a kiszolgáló áttelepítése ugyanazt a Azure Migrate készüléket használja, amelyet a kiszolgáló értékelésével is használhat a VMware virtuális gépek felderítéséhez és értékeléséhez.<br/><br/> Az ügynök-alapú áttelepítés esetében a kiszolgáló áttelepítése replikációs berendezést használ.
 Helyszíni Hyper-V rendszerű virtuális gépek | Virtuális gépek migrálása az Azure-ba.<br/><br/> A kiszolgáló áttelepítése a Hyper-V gazdagépre telepített szolgáltatói ügynököket használja az áttelepítéshez.

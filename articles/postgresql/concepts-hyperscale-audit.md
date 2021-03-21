@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: 8a36062a2d29bcec10279d73211526a0dcba619e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101702113"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Naplózás naplózása Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -42,7 +42,7 @@ A naplózás megkezdéséhez konfigurálnia kell a pgAudit paramétereket. Az [p
 
 > [!NOTE]
 > Ha a be értékre állítja, a `pgaudit.log_client` rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való írás helyett. Ezt a beállítást általában javasolt letiltva hagyni. <br> <br>
-> `pgaudit.log_level` csak akkor engedélyezett, ha `pgaudit.log_client` be van kapcsolva.
+> A `pgaudit.log_level` csak akkor engedélyezett, ha a `pgaudit.log_client` be van kapcsolva.
 
 > [!NOTE]
 > A Azure Database for PostgreSQL-nagy kapacitású (Citus) `pgaudit.log` nem állítható be `-` (mínusz) a pgAudit dokumentációjában leírtak szerint. Az összes kötelező utasítási osztályt (olvasás, írás stb.) egyedileg meg kell adni.

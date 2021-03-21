@@ -9,10 +9,10 @@ ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
 ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103464966"
 ---
 Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról. Használhatja a virtuális gépek felügyeletére és konfigurálására.
@@ -86,7 +86,7 @@ A IMDS **nem** használható proxy mögött, ezért nem támogatott. A legtöbb 
 
 Jelenleg a következő HTTP-műveletek támogatottak:
 
-| Művelet | Leírás |
+| Művelet | Description |
 |------|-------------|
 | `GET` | A kért erőforrás beolvasása
 
@@ -252,7 +252,7 @@ Ha nem ad meg verziót, a rendszer hibaüzenetet kap a legújabb támogatott ver
 
 A IMDS teljes hencegő definíciója a következő címen érhető el: https://github.com/Azure/azure-rest-api-specs/blob/master/specification/imds/data-plane/readme.md
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A szolgáltatás **általánosan elérhető** az összes Azure-felhőben.
 
@@ -264,7 +264,7 @@ A gyökérszintű végpont `http://169.254.169.254/metadata` .
 
 A IMDS API több végponti kategóriát is tartalmaz, amelyek különböző adatforrásokat tartalmaznak, amelyek mindegyike egy vagy több végpontot tartalmaz. A részletekért tekintse meg az egyes kategóriák részleteit.
 
-| Kategória gyökere | Leírás | Verzió bevezetése |
+| Kategória gyökere | Description | Verzió bevezetése |
 |---------------|-------------|--------------------|
 | `/metadata/attested` | [Igazolt](#attested-data) információ | 2018-10-01
 | `/metadata/identity` | [Felügyelt identitás megjelenítése a IMDS használatával](#managed-identity) | 2018-02-01
@@ -329,7 +329,7 @@ Séma részletezése:
 
 **Számítás**
 
-| Adatok | Leírás | Verzió bevezetése |
+| Adatok | Description | Verzió bevezetése |
 |------|-------------|--------------------|
 | `azEnvironment` | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 | `customData` | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
@@ -372,7 +372,7 @@ A virtuális gépek tárolási profilja három kategóriára oszlik: képhivatko
 
 A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
 
-| Adatok | Leírás |
+| Adatok | Description |
 |------|-------------|
 | `id` | Erőforrás-azonosító
 | `offer` | A platform vagy a piactér rendszerképének ajánlata
@@ -382,7 +382,7 @@ A képhivatkozási objektum a következő információkat tartalmazza az operác
 
 Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-| Adatok | Leírás |
+| Adatok | Description |
 |------|-------------|
 | `caching` | Gyorsítótárazási követelmények
 | `createOption` | Információk a virtuális gép létrehozásáról
@@ -397,7 +397,7 @@ Az operációsrendszer-lemez objektum a következő információkat tartalmazza 
 
 Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
 
-Adatok | Leírás |
+Adatok | Description |
 -----|-------------|
 | `caching` | Gyorsítótárazási követelmények
 | `createOption` | Információk a virtuális gép létrehozásáról
@@ -413,7 +413,7 @@ Adatok | Leírás |
 
 **Hálózat**
 
-| Adatok | Leírás | Verzió bevezetése |
+| Adatok | Description | Verzió bevezetése |
 |------|-------------|--------------------|
 | `ipv4.privateIpAddress` | A virtuális gép helyi IPv4-címe | 2017-04-02
 | `ipv4.publicIpAddress` | A virtuális gép nyilvános IPv4-címe | 2017-04-02
@@ -933,7 +933,7 @@ A klasszikus üzemi modellel létrehozott virtuális gépek esetében csak a `vm
 
 A dekódolású dokumentum a következő mezőket tartalmazza:
 
-| Adatok | Leírás | Verzió bevezetése |
+| Adatok | Description | Verzió bevezetése |
 |------|-------------|--------------------|
 | `licenseType` | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit)licencének típusa. Ez csak a AHB-kompatibilis virtuális gépek esetében jelent meg. | 2020-09-01
 | `nonce` | Egy karakterlánc, amely opcionálisan megadható a kérelemben. Ha nem `nonce` lett megadva, a rendszer az aktuálisan koordinált világidő-időbélyeget használja. | 2018-10-01

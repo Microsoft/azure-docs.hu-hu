@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e598f16c6b441cf986c7ac82d67c037f75be8982
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102547441"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Elnevezett entitások felismerése – kognitív képesség
@@ -46,14 +46,14 @@ A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-| Bemeneti név      | Leírás                   |
+| Bemeneti név      | Description                   |
 |---------------|-------------------------------|
 | languageCode  | Választható. Az alapértelmezett szint a `"en"`.  |
 | szöveg          | Az elemezni kívánt szöveg.          |
 
 ## <a name="skill-outputs"></a>Szaktudás kimenetei
 
-| Kimenet neve     | Leírás                   |
+| Kimenet neve     | Description                   |
 |---------------|-------------------------------|
 | személyek      | Karakterláncok tömbje, amelyben minden sztring egy személy nevét jelöli. |
 | helyek  | Karakterláncok tömbje, amelyben minden sztring egy helyet jelöl. |

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47a8f1edb4afed41587eac3d539b5ad7cb8180f
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 6db817999b415ebe2c4bb7cb4216ed1e9ad9c325
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488465"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655988"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
@@ -27,7 +27,7 @@ Az Azure kommunikációs szolgáltatások használatának első lépései a komm
 
 ## <a name="about-azure-event-grid"></a>Tudnivalók Azure Event Grid
 
-A [Azure Event Grid](../../../event-grid/overview.md) egy felhőalapú esemény-szolgáltatás. Ebből a cikkből megtudhatja, hogyan fizethet elő a [kommunikációs szolgáltatás eseményeire](../../concepts/event-handling.md)vonatkozó eseményekre, és hogyan válthat ki egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. Ebben a cikkben elküldjük az eseményeket egy olyan webalkalmazásnak, amely összegyűjti és megjeleníti az üzeneteket.
+A [Azure Event Grid](../../../event-grid/overview.md) egy felhőalapú esemény-szolgáltatás. Ebből a cikkből megtudhatja, hogyan fizethet elő a [kommunikációs szolgáltatás eseményeire](../../../event-grid/event-schema-communication-services.md)vonatkozó eseményekre, és hogyan válthat ki egy eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. Ebben a cikkben elküldjük az eseményeket egy olyan webalkalmazásnak, amely összegyűjti és megjeleníti az üzeneteket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -68,7 +68,7 @@ Előfizethet bizonyos eseményekre, hogy elmondja Event Grid a nyomon követni k
 
 Ha a rendszer megkéri, hogy adjon meg egy **rendszertéma-nevet**, adjon meg egy egyedi karakterláncot. Ez a mező nincs hatással a felhasználói élményre, és belső telemetria célokra használatos.
 
-Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](../../concepts/event-handling.md)teljes listáját.
+Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)teljes listáját.
 
 :::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Képernyőfelvétel: az SMS-ben fogadott és SMS-kézbesítési jelentés bejelölt esemény-típusai.":::
 
@@ -93,7 +93,7 @@ Az esemény-eseményindítók megtekintéséhez először elő kell állítani a
 - `SMS Received` az események akkor jönnek létre, amikor a kommunikációs szolgáltatások telefonszáma szöveges üzenetet kap. Egy esemény elindításához csak küldjön egy üzenetet a telefonról a kommunikációs szolgáltatások erőforrásához csatolt telefonszámra.
 - `SMS Delivery Report Received` az események akkor jönnek létre, amikor SMS-t küld egy felhasználónak a kommunikációs szolgáltatások telefonszáma segítségével. Egy esemény elindításához engedélyeznie kell az `Delivery Report` SMS-ben a [küldést](../telephony-sms/send.md). Próbáljon meg üzenetet küldeni a telefonjára a következővel: `Delivery Report` . Ennek a műveletnek a végrehajtásával az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
-Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](../../concepts/event-handling.md)teljes listáját.
+Tekintse meg az [Azure kommunikációs szolgáltatások által támogatott események](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)teljes listáját.
 
 ### <a name="receiving-sms-events"></a>SMS-események fogadása
 
@@ -103,7 +103,7 @@ A fenti műveletek elvégzése után láthatja, hogy a rendszer `SMS Received` `
 
 :::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Képernyőfelvétel: a Event Grid sémája egy SMS kézbesítési jelentés eseményéhez.":::
 
-További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md)kapcsolatban.
+További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)kapcsolatban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -118,5 +118,5 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhat SMS-eseményeket. SM
 
 A következőket is érdemes elvégezheti:
 
- - [További tudnivalók az események kezelésére vonatkozó fogalmakról](../../concepts/event-handling.md)
+ - [További tudnivalók az események kezelésére vonatkozó fogalmakról](../../../event-grid/event-schema-communication-services.md)
  - [Tudnivalók a Event Grid](../../../event-grid/overview.md)

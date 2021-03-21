@@ -3,14 +3,14 @@ title: Ütemtervek kezelése Azure Automation
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és dolgozhat ütemtervet Azure Automation.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: f40e3d555d6e1472b9d2368a114ee27d588f6383
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149477"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669559"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
 
@@ -26,7 +26,7 @@ Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy 
 
 Az alábbi táblázatban található parancsmagok automatizálási ütemterveket hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik.
 
-| Parancsmagok | Leírás |
+| Parancsmagok | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule) |Lekéri az ütemtervet. |
 | [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook) |Ütemezett runbookok beolvasása. |
@@ -38,7 +38,7 @@ Az alábbi táblázatban található parancsmagok automatizálási ütemterveket
 
 ## <a name="create-a-schedule"></a>Ütemterv létrehozása
 
-A runbookok új ütemtervet hozhat létre a Azure Portal vagy a PowerShell használatával. Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatokat, először tesztelje azokat a runbookok, amelyeken a társított ütemtervek egy tesztelésre kijelölt Automation-fiókkal rendelkeznek. Egy teszt ellenőrzi, hogy az ütemezett runbookok továbbra is megfelelően működik-e. Ha problémát tapasztal, a frissített runbook-verzió éles környezetbe történő áttelepítése előtt hárítsa el és alkalmazza a szükséges módosításokat.
+A runbookok új ütemtervet hozhat létre a Azure Portal, a PowerShell használatával vagy egy Azure Resource Manager (ARM) sablonnal. Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatokat, először tesztelje azokat a runbookok, amelyeken a társított ütemtervek egy tesztelésre kijelölt Automation-fiókkal rendelkeznek. Egy teszt ellenőrzi, hogy az ütemezett runbookok továbbra is megfelelően működik-e. Ha problémát tapasztal, a frissített runbook-verzió éles környezetbe történő áttelepítése előtt hárítsa el és alkalmazza a szükséges módosításokat.
 
 > [!NOTE]
 > Az Automation-fiókja nem kapja meg automatikusan a modulok új verzióit, hacsak nem frissíti őket manuálisan az [Azure-modulok frissítése](../automation-update-azure-modules.md) lehetőség kiválasztásával a **modulokból**. A Azure Automation az Automation-fiók legújabb moduljait használja új ütemezett feladatok futtatásakor. 

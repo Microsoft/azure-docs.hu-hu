@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.topic: how-to
-ms.openlocfilehash: 3693c30a34601512770f5d9071f5d786410fb00e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: cb53aba300b933c78d9ac2f5fc5cf8054f3413e3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92360377"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670001"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Naplók és metrikák megtekintése a Kibana és a Grafana használatával
 
@@ -22,43 +22,51 @@ A Kibana és a Grafana webes irányítópultok megállapításokat és átlátha
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="retrieve-the-ip-address-of-your-cluster"></a>A fürt IP-címének beolvasása
 
-Az irányítópultok eléréséhez le kell kérnie a fürt IP-címét. A helyes IP-cím beolvasásának módszere attól függően változik, hogy hogyan választotta a Kubernetes telepítését. A lenti beállításokkal megkeresheti a megfelelőt.
+## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Az Azure SQL felügyelt példányainak figyelése az Azure arc szolgáltatásban
 
-### <a name="azure-virtual-machine"></a>Azure virtuális gép
+A következő CLI-parancs futtatásával érheti el a naplókat és a figyelési irányítópultokat az ív használatára képes SQL felügyelt példányhoz. `azdata`
 
-A nyilvános IP-címet a következő paranccsal kérheti le:
+```bash
 
-```azurecli
-az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
+azdata arc sql endpoint list -n <name of SQL instance>
+
+```
+A megfelelő Grafana-irányítópultok a következők:
+
+* "Az Azure SQL felügyelt példány Metrikái"
+* "Gazdagép-csomópont Metrikái"
+* "Gazda hüvely mérőszámai"
+
+
+> [!NOTE]
+>  Amikor a rendszer a Felhasználónév és a jelszó megadását kéri, adja meg az Azure arc-adatkezelő létrehozásakor megadott felhasználónevet és jelszót.
+
+> [!NOTE]
+>  A rendszer figyelmeztetést küld a tanúsítványra, mert az előzetes verzióban használt tanúsítványok önaláírt tanúsítványok.
+
+
+## <a name="monitor-azure-database-for-postgresql-hyperscale-on-azure-arc"></a>Az Azure arc Azure Database for PostgreSQL nagy kapacitású figyelése
+
+A PostgreSQL nagy kapacitású tartozó naplók és monitorozási irányítópultok eléréséhez futtassa az alábbi `azdata` CLI-parancsot
+
+```bash
+
+azdata arc postgres endpoint list -n <name of postgreSQL instance>
+
 ```
 
-### <a name="kubeadm-cluster"></a>Kubeadm-fürt
+A kapcsolódó postgreSQL-irányítópultok a következők:
 
-A fürt IP-címének lekéréséhez használja a következő parancsot:
+* "Postgres mérőszámok"
+* "Postgres táblázat Metrikái"
+* "Gazdagép-csomópont Metrikái"
+* "Gazda hüvely mérőszámai"
 
-```console
-kubectl cluster-info
-```
-
-
-### <a name="aks-or-other-load-balanced-cluster"></a>AK vagy más elosztott terhelésű fürt
-
-A környezet AK-ban vagy más elosztott terhelésű fürtben való figyeléséhez le kell kérnie a felügyeleti proxy szolgáltatás IP-címét. Ezzel a paranccsal kérheti le a **külső IP-** címet:
-
-```console
-kubectl get svc mgmtproxy-svc-external -n <namespace>
-
-#Example:
-#kubectl get svc mgmtproxy-svc-external -n arc
-NAME                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)           AGE
-mgmtproxy-svc-external   LoadBalancer   10.0.186.28   52.152.148.25   30777:30849/TCP   19h
-```
 
 ## <a name="additional-firewall-configuration"></a>További tűzfal-konfiguráció
 
-Előfordulhat, hogy meg kell nyitnia a portokat a tűzfalon a Kibana-és Grafana-végpontok eléréséhez.
+Attól függően, hogy hol telepítette az adatvezérlőt, előfordulhat, hogy meg kell nyitnia a portokat a tűzfalon a Kibana és Grafana végpontok eléréséhez.
 
 Az alábbi példa bemutatja, hogyan teheti ezt meg egy Azure-beli virtuális gépen. Ezt akkor kell megtennie, ha a szkript használatával telepítette a Kubernetes.
 
@@ -78,44 +86,6 @@ Ha megvan a NSG neve, hozzáadhat egy szabályt a következő parancs használat
 az network nsg rule create -n ports_30777 --nsg-name azurearcvmNSG --priority 600 -g azurearcvm-rg --access Allow --description 'Allow Kibana and Grafana ports' --destination-address-prefixes '*' --destination-port-ranges 30777 --direction Inbound --protocol Tcp --source-address-prefixes '*' --source-port-ranges '*'
 ```
 
-## <a name="monitor-azure-sql-managed-instances-on-azure-arc"></a>Az Azure SQL felügyelt példányainak figyelése az Azure arc szolgáltatásban
-
-Most, hogy már rendelkezik az IP-címmel, és elérhetővé tette a portokat, el kell tudnia érni a Grafana és a Kibana.
-
-> [!NOTE]
->  Amikor a rendszer a Felhasználónév és a jelszó megadását kéri, adja meg az Azure arc-adatkezelő létrehozásakor megadott felhasználónevet és jelszót.
-
-> [!NOTE]
->  A rendszer figyelmeztetést küld a tanúsítványra, mert az előzetes verzióban használt tanúsítványok önaláírt tanúsítványok.
-
-Az alábbi URL-minta használatával érheti el az Azure SQL felügyelt példányának naplózási és figyelési irányítópultját:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-A kapcsolódó irányítópultok a következők:
-
-* "Az Azure SQL felügyelt példány Metrikái"
-* "Gazdagép-csomópont Metrikái"
-* "Gazda hüvely mérőszámai"
-
-## <a name="monitor-azure-database-for-postgresql-hyperscale---azure-arc"></a>Figyelő Azure Database for PostgreSQL nagy kapacitású – Azure arc
-
-A következő URL-minta használatával férhet hozzá a PostgreSQL nagy kapacitású naplózási és figyelési irányítópultokhoz:
-
-```html
-https://<external-ip-from-above>:30777/grafana
-https://<external-ip-from-above>:30777/kibana
-```
-
-A kapcsolódó irányítópultok a következők:
-
-* "Postgres mérőszámok"
-* "Postgres táblázat Metrikái"
-* "Gazdagép-csomópont Metrikái"
-* "Gazda hüvely mérőszámai"
 
 ## <a name="next-steps"></a>Következő lépések
 - [A metrikák és naplók feltöltésének](upload-metrics-and-logs-to-azure-monitor.md) kipróbálása Azure monitor

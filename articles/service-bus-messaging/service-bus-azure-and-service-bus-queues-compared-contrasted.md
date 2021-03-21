@@ -4,10 +4,10 @@ description: Elemzi az Azure által kínált két típusú várólista közötti
 ms.topic: article
 ms.date: 11/04/2020
 ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96928307"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos

@@ -5,28 +5,31 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 08/06/2020
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9804ed23da4cb9ccbb7515cec03fcc9b4147f749
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f071dfe817d15b745575fbfb70ff662a643db70
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673266"
+ms.locfileid: "104721364"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>Üzenet küldési felületének beállítása HPC-hez
 
 A [Message Passing Interface (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface) egy nyílt könyvtár és egy de facto standard az elosztott memória párhuzamos. Általában számos HPC-munkaterheléshez használják. A HPC-munkaterhelések a RDMA-t [támogató](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépeken az MPI használatával kommunikálhatnak az alacsony késésű és a nagy sávszélességű InfiniBand hálózaton.
+- Az SR-IOV-kompatibilis virtuálisgép-méretek az Azure-ban szinte bármely, az MPI-hez tartozó Mellanox-OFED használható.
+- A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
 
-Az SR-IOV engedélyezett virtuálisgép-méretek az Azure-ban (HBv2, HB, HC, NCv3, NDv2) lehetővé teszik szinte bármely MPI-íz használatát a Mellanox OFED-mel. A nem SR-IOV-kompatibilis virtuális gépeken támogatott MPI-implementációk a Microsoft Network Direct (ND) felületet használják a virtuális gépek közötti kommunikációhoz. Ezért csak a Microsoft MPI (MS-MPI) 2012 R2 vagy újabb, illetve az Intel MPI 5. x verziói támogatottak. Az Intel MPI runtime library újabb verziói (2017, 2018) vagy esetleg nem kompatibilisek az Azure RDMA-illesztőprogramokkal.
-
-Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances)esetében a [CentOS-HPC 7,6-es vagy újabb](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) verziójú virtuálisgép-lemezképek optimalizáltak és előre betöltve vannak a RDMA és a különböző gyakran használt MPI-kódtárak és tudományos számítástechnikai csomagok OFED-illesztőprogramjaival, és a lehető legegyszerűbbek a kezdéshez.
+Az SR-IOV-kompatibilis RDMA-kompatibilis [virtuális gépek](../../sizes-hpc.md#rdma-capable-instances)esetében a [CentOS-HPC virtuálisgép-lemezképek](configure.md#centos-hpc-vm-images) 7,6-es és újabb verziói alkalmasak. Ezek a virtuálisgép-rendszerképek optimalizáltak és előre betöltve vannak a OFED-illesztőprogramokkal a RDMA és a különböző gyakran használt MPI-kódtárak és tudományos számítástechnikai csomagok számára, és a legegyszerűbb módszer a kezdéshez.
 
 Bár a példák a RHEL/CentOS-re vonatkoznak, de a lépések általánosak, és bármilyen kompatibilis linuxos operációs rendszerhez használhatók, mint például az Ubuntu (16,04, 18,04 19,04, 20,04) és a SLES (12 SP4 és 15). További példák a más MPI-implementációk más disztribúciókban való beállítására a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)tárházában.
 
 > [!NOTE]
-> Az IOV-kompatibilis virtuális gépeken futó MPI-feladatok futtatásához a partíciós kulcsokat (p-Keys) kell beállítani a bérlőn az elkülönítés és a biztonság érdekében. A p-Key értékek meghatározásához és az MPI-feladatok helyes beállításához kövesse a [partíciós kulcsok felderítése](#discover-partition-keys) című szakasz lépéseit.
+> Az MPI-feladatok az SR-IOV-t használó, bizonyos MPI-könyvtárakkal rendelkező virtuális gépeken (például az MPI-platformon) való futtatása szükségessé teheti a partíciós kulcsok (p-kulcsok) egy bérlőn belüli elkülönítését és biztonságát. Kövesse a [partíciós kulcsok felderítése](#discover-partition-keys) című szakaszt a p-Key értékek meghatározásáról, valamint az adott MPI-könyvtárhoz tartozó MPI-feladatok helyes beállításáról.
+
+> [!NOTE]
+> Az alábbi kódrészletek példákat tartalmaznak. Javasoljuk, hogy használja a csomagok legújabb stabil verzióit, vagy utaljon a [azhpc-lemezképek](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)tárházára.
 
 ## <a name="ucx"></a>UCX
 
@@ -40,9 +43,12 @@ cd ucx-1.4.0
 make -j 8 && make install
 ```
 
+> [!NOTE]
+> A UCX legújabb buildei olyan [problémát](https://github.com/openucx/ucx/pull/5965) állapítottak meg, amellyel a megfelelő InfiniBand felület több NIC-csatoló jelenlétében van kiválasztva. További részletek [itt](hb-hc-known-issues.md#accelerated-networking-on-hb-hc-hbv2-and-ndv2) : MPI futtatása InfiniBand keresztül, ha a gyorsított hálózatkezelés engedélyezve van a virtuális gépen.
+
 ## <a name="hpc-x"></a>HPC-X
 
-A [HPC-X szoftver eszközkészlete](https://www.mellanox.com/products/hpc-x-toolkit) UCX és HCOLL tartalmaz.
+A [HPC-X szoftveres ESZKÖZKÉSZLET](https://www.mellanox.com/products/hpc-x-toolkit) UCX és HCOLL tartalmaz, és a UCX szolgáltatással építhető.
 
 ```bash
 HPCX_VERSION="v2.6.0"
@@ -58,18 +64,20 @@ HPC-X futtatása
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
+> [!NOTE] 
+> A HPC-X 2.7.4 + esetében szükség lehet a LD_LIBRARY_PATH explicit átadására, ha a MOFED vagy a HPC-X-ben a UCX verziója eltér.
 
 ## <a name="openmpi"></a>OpenMPI
 
 Telepítse a UCX a fent leírtak szerint. A HCOLL a [HPC-X szoftver eszközkészletének](https://www.mellanox.com/products/hpc-x-toolkit) része, és nem igényel speciális telepítést.
 
-Telepítse a OpenMPI a tárházban elérhető csomagokból.
+A OpenMPI telepíthetők a tárházban elérhető csomagokból.
 
 ```bash
 sudo yum install –y openmpi
 ```
 
-OpenMPI létrehozása.
+Javasoljuk, hogy a OpenMPI legújabb, stabil kiadását a UCX-mel építse ki.
 
 ```bash
 OMPI_VERSION="4.0.3"
@@ -80,7 +88,7 @@ cd openmpi-${OMPI_VERSION}
 ./configure --prefix=${INSTALL_PREFIX}/openmpi-${OMPI_VERSION} --with-ucx=${UCX_PATH} --with-hcoll=${HCOLL_PATH} --enable-mpirun-prefix-by-default --with-platform=contrib/platform/mellanox/optimized && make -j$(nproc) && make install
 ```
 
-Futtassa a OpenMPI.
+Az optimális teljesítmény érdekében futtassa a OpenMPI-t a és a szolgáltatással `ucx` `hcoll` .
 
 ```bash
 ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
@@ -90,7 +98,10 @@ Tekintse meg a fentiekben említett partíciós kulcsot.
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-Töltse le az [Intel MPI](https://software.intel.com/mpi-library/choose-download)választható verzióját. Módosítsa a I_MPI_FABRICS környezeti változót a verziótól függően. Az Intel MPI 2018 esetében használja a `I_MPI_FABRICS=shm:ofa` és a for 2019 használatát `I_MPI_FABRICS=shm:ofi` .
+Töltse le az [Intel MPI](https://software.intel.com/mpi-library/choose-download)választható verzióját. Módosítsa a I_MPI_FABRICS környezeti változót a verziótól függően.
+- Intel MPI 2019 és 2021: use `I_MPI_FABRICS=shm:ofi` , `I_MPI_OFI_PROVIDER=mlx` . A `mlx` szolgáltató a UCX-t használja. A műveletek használata instabilnak és kevésbé nagy teljesítménynek bizonyult. További részletekért tekintse meg a [TechCommunity című cikket](https://techcommunity.microsoft.com/t5/azure-compute/intelmpi-2019-on-azure-hpc-clusters/ba-p/1403149) .
+- Intel MPI 2018: használat `I_MPI_FABRICS=shm:ofa`
+- Intel MPI 2016: használat `I_MPI_DAPL_PROVIDER=ofa-v2-ib0`
 
 ### <a name="non-sr-iov-vms"></a>Nem SR-IOV virtuális gépek
 A nem SR-IOV virtuális gépek esetében az 5. x futtatókörnyezet [ingyenes próbaverziójának](https://registrationcenter.intel.com/en/forms/?productid=1740) letöltésére példa a következő:
@@ -108,6 +119,45 @@ SUSE Linux Enterprise Server VM-lemezképfájlok esetében – SLES 12 SP3 a HPC
 ```bash
 sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
 ```
+
+## <a name="mvapich2"></a>MVAPICH2
+
+MVAPICH2 létrehozása.
+
+```bash
+wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
+tar -xv mvapich2-2.3.tar.gz
+cd mvapich2-2.3
+./configure --prefix=${INSTALL_PREFIX}
+make -j 8 && make install
+```
+
+MVAPICH2 futtatása.
+
+```bash
+${INSTALL_PREFIX}/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
+```
+
+## <a name="platform-mpi"></a>MPI-platform
+
+Telepítse a szükséges csomagokat a platform MPI Community Edition kiadáshoz.
+
+```bash
+sudo yum install libstdc++.i686
+sudo yum install glibc.i686
+Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/index.html 
+sudo ./platform_mpi-09.01.04.03r-ce.bin
+```
+
+Kövesse a telepítési folyamatot.
+
+Az alábbi parancsok az MPI-pingpong és-allreduce futtatására mutatnak példákat a HBv3-alapú virtuális gépeken a CentOS-HPC 7,6, 7,8 és 8,1 virtuálisgép-rendszerképek használatával.
+
+```bash
+/opt/ibm/platform_mpi/bin/mpirun -hostlist 10.0.0.8:1,10.0.0.9:1 -np 2 -e MPI_IB_PKEY=0x800a  -ibv  /home/jijos/mpi-benchmarks/IMB-MPI1 pingpong
+/opt/ibm/platform_mpi/bin/mpirun -hostlist 10.0.0.8:120,10.0.0.9:120 -np 240 -e MPI_IB_PKEY=0x800a  -ibv  /home/jijos/mpi-benchmarks/IMB-MPI1 allreduce -npmin 240
+```
+
 
 ## <a name="mpich"></a>MPICH
 
@@ -128,37 +178,6 @@ ${INSTALL_PREFIX}/bin/mpiexec -n 2 -hostfile ~/hostfile -env UCX_IB_PKEY=0x0003 
 ```
 
 Tekintse meg a fentiekben említett partíciós kulcsot.
-
-## <a name="mvapich2"></a>MVAPICH2
-
-MVAPICH2 létrehozása.
-
-```bash
-wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
-tar -xv mvapich2-2.3.tar.gz
-cd mvapich2-2.3
-./configure --prefix=${INSTALL_PREFIX}
-make -j 8 && make install
-```
-
-MVAPICH2 futtatása.
-
-```bash
-${INSTALL_PREFIX}/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
-```
-
-## <a name="platform-mpi-community-edition"></a>Platform MPI Community Edition
-
-Telepítse a szükséges csomagokat a platform MPI-hez.
-
-```bash
-sudo yum install libstdc++.i686
-sudo yum install glibc.i686
-Download platform MPI at https://www.ibm.com/developerworks/downloads/im/mpi/index.html 
-sudo ./platform_mpi-09.01.04.03r-ce.bin
-```
-
-Kövesse a telepítési folyamatot.
 
 ## <a name="osu-mpi-benchmarks"></a>OSU MPI-referenciaértékek
 
@@ -236,6 +255,6 @@ A fenti szintaxis azt feltételezi, hogy egy megosztott kezdőkönyvtár, más. 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információ az [InfiniBand-t támogató](../../sizes-hpc.md#rdma-capable-instances) [H-sorozatú](../../sizes-hpc.md) és [N sorozatú](../../sizes-gpu.md) virtuális gépekről
-- Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.
-- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Tekintse át a [HBv3-sorozat áttekintését](hbv3-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

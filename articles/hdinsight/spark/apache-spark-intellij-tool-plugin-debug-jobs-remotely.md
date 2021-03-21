@@ -6,10 +6,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
 ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98940354"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
@@ -56,11 +56,11 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     ![Gazdagépek kiválasztása az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. Ekkor megjelenik a fő csomópontok, a feldolgozó csomópontok és a Zookeeper-csomópontok listája. A fő csomópontok **HN** _ előtaggal rendelkeznek. Válassza ki az első fő csomópontot.
+1. Ekkor megjelenik a fő csomópontok, a feldolgozó csomópontok és a Zookeeper-csomópontok listája. A fő csomópontok **HN*** előtaggal rendelkeznek. Válassza ki az első fő csomópontot.
 
     ![A fő csomópont megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. A megnyíló oldal alján található _ *Summary** ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
+1. A megnyíló lap alján található **Összefoglalás** ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
 
     ![Az IP-cím megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
