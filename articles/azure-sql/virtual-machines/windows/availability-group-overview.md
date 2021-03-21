@@ -16,10 +16,10 @@ ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8bbd56499c9b62248662fc5e8df0d5b3e1b672d4
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102504167"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On rendelkezésre állási csoport SQL Server Azure-beli virtuális gépeken
@@ -45,7 +45,7 @@ Ha a virtuális gépek egy készletét ugyanabban a rendelkezésre állási csop
 Az Azure-beli virtuális gépek létrehozásakor választania kell a rendelkezésre állási készletek és a Availability Zones konfigurálása között.  Az Azure-beli virtuális gépek nem vehetnek részt mindkettőben.
 
 
-## <a name="connectivity"></a>Kapcsolatok 
+## <a name="connectivity"></a>Kapcsolat 
 
 A hagyományos helyszíni telepítés során az ügyfelek a virtuális hálózat neve (VNN) használatával csatlakoznak a rendelkezésre állási csoport figyelője számára, és a figyelő a rendelkezésre állási csoportban lévő megfelelő SQL Server replikához irányítja a forgalmat. Azonban további követelmény, hogy az Azure-hálózaton keresztül irányítsa a forgalmat. 
 

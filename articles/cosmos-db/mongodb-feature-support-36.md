@@ -8,10 +8,10 @@ ms.date: 03/02/2021
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 0b6f85a675dc98928309870ea177629203db39e7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557335"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
@@ -546,7 +546,7 @@ globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
 
 Azure Cosmos DB támogatja a GridFS bármely GridFS-kompatibilis MongoDB-illesztőprogramon keresztül.
 
-## <a name="replication"></a>Replikáció
+## <a name="replication"></a>Replikálás
 
 Cosmos DB támogatja az automatikus és a natív replikálást a legalacsonyabb rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A Cosmos DB nem támogatja a manuális replikálási parancsokat.
 
@@ -580,7 +580,7 @@ Egyes alkalmazások [írási aggodalomra](https://docs.mongodb.com/manual/refere
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ: [Mongo 3,6 version features](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
+- További információkért tekintse meg [a Mongo 3.6-os verziójának funkcióit](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
 - Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.

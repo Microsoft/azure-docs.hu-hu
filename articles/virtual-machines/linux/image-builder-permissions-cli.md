@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201481"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607534"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurálása az Azure CLI használatával
 
@@ -239,7 +239,7 @@ Cserélje le a következő helyőrző beállításokat:
 | \<Storage account container\> | Tárfiók tárolójának neve |
 | \<Subscription ID\> | Azure-előfizetés |
 
-A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse meg az [Egyéni rendszerkép létrehozása, amely azure User-Assigned felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
+A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse meg az [Egyéni rendszerkép létrehozása, amely azure User-Assigned felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](./image-builder-user-assigned-identity.md). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

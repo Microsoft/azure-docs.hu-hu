@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 0531305364b3e6f914a6de00614a3f9af4be3531
-ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
+ms.openlocfilehash: 058873df989c444ebe06fc20a2f8a40fd2d3c594
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2021
-ms.locfileid: "103418776"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594546"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -73,7 +73,7 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 | Rendszer által hozzárendelt | Előnézet | Nem érhető el | Nem érhető el | Nem érhető el |
 | Felhasználó által hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
 
-Az Azure arc-kompatibilis Kubernetes jelenleg [támogatja a rendszerhez rendelt identitást](../../azure-arc/kubernetes/connect-cluster.md#azure-arc-agents-for-kubernetes). A felügyelt szolgáltatás identitásának tanúsítványát minden Azure arc-kompatibilis Kubernetes-ügynök használja az Azure-nal való kommunikációhoz.
+Az Azure arc-kompatibilis Kubernetes jelenleg [támogatja a rendszerhez rendelt identitást](../../azure-arc/kubernetes/quickstart-connect-cluster.md). A felügyelt szolgáltatás identitásának tanúsítványát minden Azure arc-kompatibilis Kubernetes-ügynök használja az Azure-nal való kommunikációhoz.
 
 ### <a name="azure-arc-enabled-servers"></a>Azure Arc-kompatibilis kiszolgálók
 

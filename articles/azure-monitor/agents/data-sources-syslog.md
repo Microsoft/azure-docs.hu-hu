@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
 ms.openlocfilehash: e82e74f4cd325444221bbd2e1c060b7cd2f5c6c7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102036731"
 ---
 # <a name="collect-syslog-data-sources-with-log-analytics-agent"></a>Syslog-adatforrások gyűjtése Log Analytics ügynökkel
@@ -221,7 +221,7 @@ A syslog-rekordok rendelkeznek **syslog** típussal, és rendelkeznek a követke
 ## <a name="log-queries-with-syslog-records"></a>Lekérdezések naplózása syslog-rekordokkal
 Az alábbi táblázat a syslog-rekordokat lekérő lekérdezések különböző példáit mutatja be.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:--- |:--- |
 | Rendszernapló |Minden syslog. |
 | Syslog &#124;, ahol a SeverityLevel = = "hiba" |Minden syslog-rekord, amelynek súlyossága a hiba. |

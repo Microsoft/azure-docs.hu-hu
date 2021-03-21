@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 02/02/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: af48e1f415e0ca0b1027d277f70c3f0f1a11e687
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 6d7d8c37d0e7ffacb3221a4f30a96ef6cccda819
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526765"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104674444"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
 
@@ -73,8 +73,8 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 |Eset     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
-|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
+|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Yes      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
+|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Yes      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
 
 A StorSimple Virtual Array a ritkán használt adatokhoz ajánlott. Míg a virtuális tömb helyi gyorsítótárral rendelkezik a teljesítmény növelése érdekében, a felhasználóknak feltételezni kell, hogy az eszköz-szolgáltatások fájljai a legalacsonyabb tárolási szinten (a felhőben) találhatók. Minden egyes virtuális tömb körülbelül 100 Mbps sebességgel tud írni és olvasni az Azure Storage-ba. Ez a hivatkozás az eszközre érkező összes kérelem között megoszlik, és az alábbi ábrán látható módon szűk keresztmetszetet jelenthet.
 

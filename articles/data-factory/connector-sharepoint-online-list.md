@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f8074b69b97a6ef96837e73a1082d2deb67084d9
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102177861"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Adatok másolása a SharePoint Online-listáról Azure Data Factory használatával
@@ -76,12 +76,12 @@ A SharePoint Online-listák társított szolgáltatásai a következő tulajdons
 
 | **Tulajdonság**        | **Leírás**                                              | **Kötelező** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Igen          |
-| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Igen          |
-| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Igen          |
-| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen          |
-| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Igen          |
-| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | Nem           |
+| típus                | A Type tulajdonságot a következőre kell beállítani: **SharePointOnlineList**.  | Yes          |
+| siteUrl             | A SharePoint Online-webhely URL-címe, például: `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
+| servicePrincipalId  | A Azure Active Directoryban regisztrált alkalmazás alkalmazás-(ügyfél-) azonosítója. | Yes          |
+| servicePrincipalKey | Az alkalmazás kulcsa. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes          |
+| tenantId            | A bérlő azonosítója, amely alatt az alkalmazás található.          | Yes          |
+| Connectvia tulajdonsággal          | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További információ az [Előfeltételek](#prerequisites)közül, a cikk korábbi részében. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. | No           |
 
 **Példa**
 
@@ -109,8 +109,8 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Igen |
-| listName | A SharePoint Online-lista neve. | Igen |
+| típus | Az adatkészlet **Type** tulajdonságát **SharePointOnlineLResource** értékre kell állítani. | Yes |
+| listName | A SharePoint Online-lista neve. | Yes |
 
 **Példa**
 
@@ -142,9 +142,9 @@ Az adatok SharePoint Online-listáról történő másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Igen |
-| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | Nem |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | Nem |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SharePointOnlineListSource** értékre kell állítani. | Yes |
+| lekérdezés | Egyéni OData-lekérdezési beállítások az adatszűréshez. Példa: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időtúllépése (másodpercben). Az alapértelmezett érték 300 (5 perc). | No |
 
 **Példa**
 

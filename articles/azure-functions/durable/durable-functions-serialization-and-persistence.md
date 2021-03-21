@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: azfuncdf
 ms.openlocfilehash: ea4aaa1cdbe10e2db9cf619452558d104a2293ab
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449373"
 ---
 # <a name="data-persistence-and-serialization-in-durable-functions-azure-functions"></a>Az adatmegőrzés és a szerializálás Durable Functions (Azure Functions)
@@ -26,7 +26,7 @@ A Durable Functions az Azure Storage-várólisták használatával megbízhatóa
 
 Egy adott [feladatsoron](durable-functions-task-hubs.md)belül a Durable functions üzeneteket hoz létre és helyez hozzá az ütemezési tevékenység funkcióival nevű *munkaelem-* várólistához, `<taskhub>-workitem` valamint egy vagy több, a Orchestrator és az Entity függvények ütemezésére vagy folytatására szolgáló *vezérlési várólistát* `<taskhub>-control-##` . A vezérlési várólisták száma megegyezik az alkalmazáshoz konfigurált partíciók számával. A várólistákkal és a partíciókkal kapcsolatos további információkért tekintse meg a [teljesítmény-és méretezhetőségi dokumentációt](durable-functions-perf-and-scale.md).
 
-### <a name="tables"></a>Táblák
+### <a name="tables"></a>Táblázatok
 
 Miután az előkészítési folyamat sikeresen elvégezte az üzenetek feldolgozását, az eredményül kapott műveletekről szóló feljegyzések megmaradnak a nevű *History* táblában `<taskhub>History` . A rendszer megőrzi a megnevezett *példányok* tábla előkészítési bemeneteit, kimeneteit és egyéni állapotinformációkat is `<taskhub>Instances` .
 

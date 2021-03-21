@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: peiliu
 ms.openlocfilehash: 96cdeb7c35cd1ccd503f7ce01e1098a6b83884c3
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103622108"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások C# SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
@@ -41,7 +41,7 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `SmsQuickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: **program. cs**.
 
 ```console
 dotnet new console -o SmsQuickstart
@@ -62,7 +62,7 @@ Miközben az alkalmazás könyvtára továbbra is elérhető, telepítse az Azur
 dotnet add package Azure.Communication.Sms --version 1.0.0-beta.4
 ```
 
-Adjon hozzá egy `using` direktívát a **program.cs** tetejéhez, hogy tartalmazza a `Azure.Communication` névteret.
+Adjon hozzá egy `using` direktívát a **program. cs** felső részéhez, hogy tartalmazza a `Azure.Communication` névteret.
 
 ```csharp
 
@@ -87,7 +87,7 @@ A következő osztályok és felületek a C#-hoz készült Azure kommunikációs
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
- Nyissa meg a **program.cs** egy szövegszerkesztőben, és cserélje le a metódus törzsét `Main` kóddal, hogy inicializáljon egy- `SmsClient` t a kapcsolódási karakterlánccal. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
+ Nyissa meg a **program. cs programot** egy szövegszerkesztőben, és cserélje le a metódus törzsét `Main` kóddal, hogy inicializáljon egy- `SmsClient` t a kapcsolódási karakterlánccal. Az alábbi kód egy nevű környezeti változóból kérdezi le az erőforráshoz tartozó kapcsolatok karakterláncát `COMMUNICATION_SERVICES_CONNECTION_STRING` . Ismerje meg, hogyan [kezelheti az erőforrás kapcsolódási karakterláncát](../../create-communication-resource.md#store-your-connection-string).
 
 
 ```csharp
@@ -100,7 +100,7 @@ SmsClient smsClient = new SmsClient(connectionString);
 
 ## <a name="send-a-11-sms-message"></a>1:1 SMS-üzenet küldése
 
-Ha SMS-üzenetet szeretne küldeni egyetlen címzettnek, hívja meg a `Send` vagy a `SendAsync` függvényt a SmsClient. Adja hozzá ezt a kódot a metódus végéhez a `Main` **program.cs**-ben:
+Ha SMS-üzenetet szeretne küldeni egyetlen címzettnek, hívja meg a `Send` vagy a `SendAsync` függvényt a SmsClient. Adja hozzá ezt a kódot a `Main` **program. cs** metódusának végéhez:
 
 ```csharp
 SmsSendResult sendResult = smsClient.Send(

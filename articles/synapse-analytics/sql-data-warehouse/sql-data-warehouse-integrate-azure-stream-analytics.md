@@ -2,21 +2,21 @@
 title: Azure Stream Analytics használata dedikált SQL-készletben
 description: Tippek a Azure Stream Analytics és az Azure szinapszis dedikált SQL-készletével való használatához a valós idejű megoldások fejlesztéséhez.
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 9/25/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 023cf55a01f34277dd5c5707d0d123f54c1674df
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "96458228"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600088"
 ---
 # <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>A Azure Stream Analytics használata dedikált SQL-készlettel az Azure szinapszis Analyticsben
 
@@ -52,8 +52,8 @@ Kattintson a **Hozzáadás** gombra, és válassza az **Azure szinapszis Analyti
 
 * *Kimeneti alias*: adjon meg egy rövid nevet a feladatok kimenetének.
 * *Előfizetés*:
-  * Ha a dedikált SQL-készlet ugyanahhoz az előfizetéshez tartozik, mint a Stream Analytics-feladattal, kattintson az ***Azure szinapszis Analytics kiválasztása az előfizetések** _ lehetőségre.
-  _ Ha a dedikált SQL-készlet egy másik előfizetésben található, kattintson az Azure szinapszis Analytics beállításainak manuális megadása lehetőségre.
+  * Ha a dedikált SQL-készlet ugyanahhoz az előfizetéshez tartozik, mint a Stream Analytics feladattal, kattintson az ***Azure szinapszis Analytics kiválasztása az előfizetések közül***.
+  * Ha a dedikált SQL-készlet egy másik előfizetésben található, kattintson az Azure szinapszis Analytics beállításainak manuális megadása lehetőségre.
 * *Adatbázis*: válassza ki a célként szolgáló adatbázist a legördülő listából.
 * *Felhasználónév*: adja meg egy olyan fiók felhasználónevét, amely rendelkezik írási engedéllyel az adatbázishoz.
 * *Password (jelszó*): adja meg a megadott felhasználói fiók jelszavát.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>5. lépés
 
-A Azure Portal Stream Analytics feladatokhoz kattintson a feladatokra.  Kattintson a **_test_* _ gombra a _*_kimenet részletei_*_ ablaktáblán.
+A Azure Portal Stream Analytics feladatokhoz kattintson a feladatokra.  Kattintson a ***test** _ gombra a _ *_output részletek_** panelen.
 
 ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Ha az adatbázishoz való csatlakozás sikeres volt, megjelenik egy értesítés a portálon.
 
 ### <a name="step-6"></a>6. lépés
 
-Kattintson a _*_lekérdezés_*_ menü _*_feladatok topológiája_*_ elemére, és módosítsa a lekérdezést, hogy adatokat helyezzen be a létrehozott stream-kimenetbe.  A lekérdezés teszteléséhez kattintson a _*_kiválasztott lekérdezés tesztelése_*_ gombra.  Ha a lekérdezési teszt sikeres, kattintson a _*_lekérdezés mentése_*_ gombra.
+Kattintson a ***lekérdezés** _ menüpontra a _*_feladatok topológiája_*_ alatt, és módosítsa a lekérdezést, hogy adatokat szúrjon be a létrehozott stream-kimenetbe.  A lekérdezés teszteléséhez kattintson a _*_kiválasztott lekérdezés tesztelése_*_ gombra.  Ha a lekérdezési teszt sikeres, kattintson a *_lekérdezés mentése_* gombra.
 
 ![Lekérdezés mentése](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>7. lépés
 
-Indítsa el a Azure Stream Analytics feladatot.  Kattintson a _*_Start_*_ gombra az _*_Áttekintés_*_ menüben.
+Indítsa el a Azure Stream Analytics feladatot.  Kattintson a ***Start** _ gombra az _ *_Overview_** menüben.
 
 ![Stream Analytics-feladat indítása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Kattintson az _ *_Start_** gombra a kezdési feladatok ablaktáblán.
+Kattintson a ***Start gombra a kezdési*** feladatok ablaktáblán.
 
 ![Kattintson a Start gombra](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

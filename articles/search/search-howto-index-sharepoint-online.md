@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.openlocfilehash: 5a44c40838b7f7fa9ca499ade49317ff9ce828fe
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102498897"
 ---
 # <a name="how-to-configure-sharepoint-online-indexing-in-cognitive-search-preview"></a>A SharePoint Online indexelés konfigurálása a Cognitive Searchban (előzetes verzió)
@@ -263,7 +263,7 @@ Ha úgy állította be az indexelő, hogy indexelje a dokumentum metaadatait, a 
 > [!NOTE]
 > Az előzetes verzió aktuális verziója nem tartalmazza az egyéni metaadatokat.
 
-| Azonosító | Típus | Leírás | 
+| Azonosító | Típus | Description | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | A hely AZONOSÍTÓjának, a kódtár AZONOSÍTÓjának és az elem AZONOSÍTÓjának kombinációs kulcsa, amely egyedileg azonosít egy adott helyet a dokumentumtárban egy adott helyhez. |
 | metadata_spo_site_id | Edm.String | A SharePoint Online-webhely azonosítója. |

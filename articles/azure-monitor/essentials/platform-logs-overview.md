@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.openlocfilehash: 3300b0587cbb6c2193b56c9152af0cb11ea51936
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033299"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Az Azure-platform naplóinak áttekintése
@@ -43,7 +43,7 @@ A különböző Azure platform-naplók megtekintésére és elemzésére külön
 ## <a name="destinations"></a>Célhelyek
 A figyelési követelményektől függően a következő táblázatban szereplő célok közül egy vagy több célhelyre is küldhet platform-naplókat. [Diagnosztikai beállítások létrehozásával](../essentials/diagnostic-settings.md)konfigurálja a platform-naplók célhelyeit.
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | Log Analytics-munkaterület | Elemezze az összes Azure-erőforrás naplóit, és használja ki az összes elérhető funkciót [Azure monitor naplókhoz](../logs/data-platform-logs.md) , beleértve a [naplózási lekérdezéseket](../logs/log-query-overview.md) és a [naplózási riasztásokat](../alerts/alerts-log.md). Egy interaktív jelentés részeként rögzítheti egy naplóbeli lekérdezés eredményeit egy Azure-irányítópulton, vagy belefoglalhatja azt egy munkafüzetbe. |  |
 | Eseményközpont | Platform-naplóbejegyzések küldése az Azure-on kívül, például egy harmadik féltől származó SIEM vagy egyéni telemetria platformra.

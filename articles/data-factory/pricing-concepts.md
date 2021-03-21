@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
 ms.openlocfilehash: b9f163a7632ca59d4f97aef21d8d62157610ba73
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100372807"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákon keresztül
@@ -202,7 +202,7 @@ Ebben az esetben törölni kívánja az eredeti fájlokat az Azure Blob Storageo
 > [!NOTE]
 > Ezek az árak csak példaként szolgálnak.
 
-**Gyakori kérdések**
+**GYIK**
 
 K: Ha több mint 50 folyamatot kívánok futtatni, akkor ezeket a tevékenységeket egyszerre hajthatja végre?
 

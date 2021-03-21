@@ -3,17 +3,17 @@ title: Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű �
 description: Az Azure Blob Storage gyakori, ritka elérésű és archív hozzáférési szintjeiről olvashat. Tekintse át a rétegek használatát támogató Storage-fiókokat.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/11/2021
+ms.date: 03/18/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 67534e70904c70f7bf9dda44502e723916bdce93
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1a1cb8e1676405cbfbb3f4f61c86d8136b688b88
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928799"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656838"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Hozzáférési szintek Azure Blob Storage – gyakori, ritka elérésű és archív
 
@@ -100,7 +100,9 @@ Csak a gyakori és ritka elérésű hozzáférési szintek állíthatók be alap
 
 A blob szintű rétegek lehetővé teszik az adatok feltöltését az Ön által választott hozzáférési szintre a Blobok [elhelyezése](/rest/api/storageservices/put-blob) vagy a [letiltási lista](/rest/api/storageservices/put-block-list) műveleteivel, és az adatok rétegét az objektum szintjén módosíthatja a [blob szint beállítása](/rest/api/storageservices/set-blob-tier) művelet vagy az [életciklus-kezelési](#blob-lifecycle-management) funkció használatával. A szükséges hozzáférési szinthez feltöltheti az adatokat, majd a használati minták változása révén egyszerűen módosíthatja a blob-hozzáférési szintet a gyakori, ritka vagy archív rétegek között, anélkül, hogy az adatokat át kellene helyeznie a fiókok között. Az összes rétegbeli módosítási kérelem azonnal megtörténik, és a gyors és a lassú elérési szint közötti változások azonnaliek. A Blobok archiválási szintről való rehidratálása több órát is igénybe vehet.
 
-Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. Amikor egy blobot felülír a gyakori vagy a ritka elérésű rétegben, az újonnan létrehozott blob örökli a blob azon rétegét, amelyet a rendszer felülírt, kivéve, ha az új blob-hozzáférési szintet explicit módon beállította a létrehozáshoz. Ha egy blob az archiválási szinten van, akkor nem lehet felülírni, ezért a blob feltöltése nem engedélyezett ebben a forgatókönyvben.
+Az utolsó blobszint-módosítás időpontja a **Hozzáférési szint utolsó módosítása** blobtulajdonságon keresztül érhető el. A **hozzáférési szint változási ideje** egy blob szintű tulajdonság, amely nem frissül, ha módosul az alapértelmezett fiók szintje. A fiók tulajdonságai és a blob tulajdonságai külön vannak elkülönítve. Ha a fiók alapértelmezett hozzáférési szintje megváltozik, a rendszer nem fogja tudni frissíteni a **hozzáférési szintet** a Storage-fiók minden blobján.
+
+Amikor egy blobot felülír a gyakori vagy a ritka elérésű rétegben, az újonnan létrehozott blob örökli a blob azon rétegét, amelyet a rendszer felülírt, kivéve, ha az új blob-hozzáférési szintet explicit módon beállította a létrehozáshoz. Ha egy blob az archiválási szinten van, akkor nem lehet felülírni, ezért a blob feltöltése nem engedélyezett ebben a forgatókönyvben.
 
 > [!NOTE]
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja.

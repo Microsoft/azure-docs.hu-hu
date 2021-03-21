@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/01/2021
+ms.date: 03/17/2021
 ms.author: radeltch
-ms.openlocfilehash: 2939e00d704f5c2799a1f16822cccdcc963fb73e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c5f94329920f8c850c0a47dd607ade8e83658b29
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671569"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599918"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -599,6 +599,15 @@ Ebben a példában mindegyik fürtcsomópont saját HANA NFS-fájlrendszerrel re
     nc_HN1_03  (ocf::heartbeat:azure-lb):  Started hanadb1
     vip_HN1_03 (ocf::heartbeat:IPaddr2):   Started hanadb1
     ```
+
+## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>A HANA aktív/olvasási engedélyezett rendszerreplikációjának konfigurálása a pacemaker-fürtben
+
+A SAP HANA 2,0 SPS 01 SAP lehetővé teszi az aktív/olvasható beállítások használatát SAP HANA rendszer-replikáláshoz, ahol az SAP HANA rendszer-replikálás másodlagos rendszerei aktívan használhatók az olvasási és intenzív munkaterhelésekhez. Ha egy fürtön szeretné támogatni a telepítést, egy második virtuális IP-cím szükséges, amely lehetővé teszi, hogy az ügyfelek hozzáférhessenek a másodlagos, írásvédett SAP HANA adatbázishoz. Annak biztosítása érdekében, hogy a másodlagos replikálási hely továbbra is elérhető legyen egy átvétel után, a fürtnek át kell helyeznie a virtuális IP-címet a SAPHana-erőforrás másodlagos helyére.
+
+A második virtuális IP-címmel rendelkező Red hat magas rendelkezésre állású fürtben a Hana Active/Read enabled rendszer replikálásának kezeléséhez szükséges további konfigurációt lásd: [Hana Active/Read enabled rendszer-replikálás beállítása a pacemaker-fürtben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster).  
+
+A folytatás előtt győződjön meg arról, hogy teljes mértékben konfigurálta a Red hat magas rendelkezésre állású fürtöt, amely a dokumentáció fenti szakaszaiban ismertetett módon felügyeli SAP HANA adatbázisát.    
+
 
 ## <a name="test-the-cluster-setup"></a>A fürt beállításának tesztelése
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88924520"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>A kapcsolódó SQL-adattípusok modellezése importáláshoz és indexeléshez az Azure-ban Cognitive Search
@@ -113,7 +113,7 @@ Ez a sorhalmaz most már készen áll az Azure Cognitive Searchba való importá
 
 Az Azure Cognitive Search oldalon hozzon létre egy index sémát, amely az egy-a-többhöz kapcsolatot modellezi a beágyazott JSON használatával. Az előző szakaszban létrehozott eredményhalmaz általában az alább megadott index-sémának felel meg (a kis-és nagyméretű mezőket kivágták).
 
-A következő példa hasonló az [összetett adattípusok modellezésének](search-howto-complex-data-types.md#creating-complex-fields)példához. A *termek* struktúrája, amely a cikk középpontjában szerepel, a *Hotels*nevű index mezőinek gyűjteménye. Ebben a példában egy összetett típust is mutatunk a *címekhez*, amely eltér a *szobák* rögzített készletének, a gyűjteményben engedélyezett többszörös, tetszőleges számú elemtől.
+A következő példa hasonló az [összetett adattípusok modellezésének](search-howto-complex-data-types.md#creating-complex-fields)példához. A *termek* struktúrája, amely a cikk középpontjában szerepel, a *Hotels* nevű index mezőinek gyűjteménye. Ebben a példában egy összetett típust is mutatunk a *címekhez*, amely eltér a *szobák* rögzített készletének, a gyűjteményben engedélyezett többszörös, tetszőleges számú elemtől.
 
 ```json
 {
@@ -152,7 +152,7 @@ Az előző eredményhalmaz és a fenti index séma miatt a sikeres indexelési m
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az index létrehozásához és betöltéséhez használja az [adatimportálás varázsló](search-import-data-portal.md) segítségével a saját adatkészletét. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *szobákban*találhatót, és egy összetett típusú gyűjteményt tartalmazó index sémát következtet ki. 
+Az index létrehozásához és betöltéséhez használja az [adatimportálás varázsló](search-import-data-portal.md) segítségével a saját adatkészletét. A varázsló észleli a beágyazott JSON-gyűjteményt, például a *szobákban* találhatót, és egy összetett típusú gyűjteményt tartalmazó index sémát következtet ki. 
 
   ![Index következtetni az adatimportálás varázsló segítségével](media/index-sql-relational-data/search-index-rooms-complex-collection.png "Index következtetni az adatimportálás varázsló segítségével")
 

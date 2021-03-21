@@ -3,12 +3,12 @@ title: 'Hibakeresési hiba: Azure Functions-futtatókörnyezet nem érhető el'
 description: Ismerje meg, hogyan lehet elhárítani egy érvénytelen Storage-fiókot.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606973"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Hibakeresési hiba: "a Azure Functions-futtatókörnyezet nem érhető el"
 
@@ -59,6 +59,7 @@ A Function alkalmazásnak képesnek kell lennie hozzáférni a Storage-fiókhoz.
 * A Function alkalmazást a rendszer a megfelelő hálózati szabályok nélkül helyezi üzembe a App Service Environment (bevezetésre) a Storage-fiókba irányuló és onnan érkező forgalom engedélyezéséhez.
 
 * A Storage-fiók tűzfala engedélyezve van, és nincs konfigurálva a függvények felé irányuló és onnan érkező forgalom engedélyezéséhez. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+* Ellenőrizze, hogy a `allowSharedKeyAccess` beállítás értéke, `true` amely az alapértelmezett érték. További információ: az [Azure Storage-fiók megosztott kulcsokra vonatkozó engedélyezésének tiltása](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed). 
 
 ## <a name="daily-execution-quota-is-full"></a>A napi végrehajtási kvóta megtelt
 

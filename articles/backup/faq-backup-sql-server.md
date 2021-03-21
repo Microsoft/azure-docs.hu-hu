@@ -5,10 +5,10 @@ ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98787620"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Gyakori kérdések az Azure-beli virtuális gépek biztonsági mentését futtató SQL Server-adatbázisokról
@@ -39,7 +39,7 @@ Alapértelmezés szerint minden felhasználó számára engedélyezve van az aut
 
 ## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Szabályozhatom, hogy hány biztonsági mentés futhat egyidejűleg az SQL-kiszolgálón?
 
-Igen. A biztonsági mentési házirend futási arányának szabályozásával csökkentheti a SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
+Igen. Szabályozhatja a biztonsági mentési szabályzat futásának sebességét, hogy minimalizálja az SQL Server-példányra gyakorolt hatást. A beállítás módosítása:
 
 1. A SQL Server-példányon, a *C:\Program Files\Azure munkaterhelés Backup\bin* mappában hozza létre a *ExtensionSettingsOverrides.js* fájlt.
 2. A *ExtensionSettingsOverrides.js* fájlban módosítsa a **DefaultBackupTasksThreshold** beállítást alacsonyabb értékre (például 5). <br>
@@ -114,6 +114,6 @@ Igen, Azure Backup támogatja SQL Server adatbázisok vagy kiszolgálók biztons
 Az adatfolyamon ellenőrzőösszeg-műveletet végzünk. Ez azonban nem tévesztendő össze az [SQL ellenőrzőösszeggel](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 Az Azure munkaterhelés biztonsági mentése kiszámítja az adatstream ellenőrzőösszegét, és a biztonsági mentési művelet során explicit módon tárolja azokat. Ezt követően az ellenőrzőösszeg-adatfolyamot a rendszer referenciának tekinti, és az adatfolyam ellenőrzőösszegével együtt ellenőrzi a visszaállítási művelet során, hogy megbizonyosodjon róla, hogy az adatmennyiség konzisztens.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

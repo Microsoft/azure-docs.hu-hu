@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
 ms.reviewer: cynthn
-ms.openlocfilehash: a3138da0ecbcabaeb7ef910975afc3b7005e5b50
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: aaaabe758b036335062907c8e5549ae876c63997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519707"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594733"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -249,7 +249,7 @@ A használatakor `customize` :
 - Ha egy testreszabó nem sikerül, a teljes testreszabási összetevő sikertelen lesz, és hibát jelez.
 - Nyomatékosan javasoljuk, hogy alaposan tesztelje a parancsfájlt, mielőtt használni lehetne a sablonban. A parancsfájl hibakeresése a saját virtuális gépen egyszerűbb lesz.
 - Ne helyezzen bizalmas adatokat a parancsfájlokba. 
-- A parancsfájl helyeinek nyilvánosan elérhetőnek kell lenniük, hacsak nem használ [MSI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)-t.
+- A parancsfájl helyeinek nyilvánosan elérhetőnek kell lenniük, hacsak nem használ [MSI](./image-builder-user-assigned-identity.md)-t.
 
 ```json
         "customize": [
@@ -417,7 +417,7 @@ Fájl-testreszabó tulajdonságai:
 - **sourceUri** – elérhető tárolási végpont, ez lehet GitHub vagy Azure Storage. Csak egy fájlt tölthet le, nem egy teljes könyvtárat. Ha le kell töltenie egy könyvtárat, használjon tömörített fájlt, majd bontsa ki a tömörítést a rendszerhéj vagy a PowerShell-testreszabók használatával. 
 
 > [!NOTE]
-> Ha a sourceUri egy Azure Storage-fiók, függetlenül attól, hogy a blob nyilvánosan megjelölve van-e, meg kell adnia a felügyelt felhasználó identitásának engedélyeit a blobhoz való hozzáféréshez. A tárolási engedélyek megadásához tekintse meg ezt a [példát](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity#create-a-resource-group) .
+> Ha a sourceUri egy Azure Storage-fiók, függetlenül attól, hogy a blob nyilvánosan megjelölve van-e, meg kell adnia a felügyelt felhasználó identitásának engedélyeit a blobhoz való hozzáféréshez. A tárolási engedélyek megadásához tekintse meg ezt a [példát](./image-builder-user-assigned-identity.md#create-a-resource-group) .
 
 - **cél** – ez a célhely teljes elérési útja és fájlneve. Minden hivatkozott útvonalnak és alkönyvtárnak léteznie kell, a rendszerhéj vagy a PowerShell-testreszabók használatával előre beállíthatja ezeket. Az elérési út létrehozásához használhatja a parancsfájl-testreszabók lehetőséget. 
 
@@ -456,7 +456,7 @@ Tulajdonságok testreszabása:
 - **updateLimit** – nem kötelező, meghatározza, hogy hány frissítést lehet telepíteni, alapértelmezett érték: 1000.
  
 > [!NOTE]
-> A Windows Update-testreszabó sikertelen lehet, ha fennáll a Windows újraindítása, vagy az alkalmazás telepítése még fut, ez a hiba általában a Testreszabás. naplóban jelenhet meg `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Határozottan javasoljuk, hogy vegye fel a Windows újraindítását, és/vagy engedélyezze az alkalmazások számára, hogy az [alvó](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) vagy várakozási parancsokkal a beágyazott parancsokban vagy parancsfájlokban a Windows Update futtatása előtt elvégezze a telepítést.
+> A Windows Update-testreszabó sikertelen lehet, ha fennáll a Windows újraindítása, vagy az alkalmazás telepítése még fut, ez a hiba általában a Testreszabás. naplóban jelenhet meg `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` . Határozottan javasoljuk, hogy vegye fel a Windows újraindítását, és/vagy engedélyezze az alkalmazások számára, hogy az [alvó](/powershell/module/microsoft.powershell.utility/start-sleep) vagy várakozási parancsokkal a beágyazott parancsokban vagy parancsfájlokban a Windows Update futtatása előtt elvégezze a telepítést.
 
 ### <a name="generalize"></a>Általánossá tétel 
 Alapértelmezés szerint az Azure-rendszerkép-készítő a rendszerkép testreszabási fázisának végén a "megszüntetés" kódot is futtatja, hogy "általánosítsa" a képet. Az általánosítás egy olyan folyamat, amelyben a rendszerkép be van állítva, így több virtuális gép létrehozására is felhasználható. Windows rendszerű virtuális gépek esetén az Azure rendszerkép-készítő a Sysprept használja. Linux rendszeren az Azure rendszerkép-szerkesztő "waagent"-megszüntetést futtat. 

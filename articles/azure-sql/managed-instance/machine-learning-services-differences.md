@@ -1,5 +1,5 @@
 ---
-title: Machine Learning Services főbb eltérései (előzetes verzió)
+title: Machine Learning Services főbb különbségek
 description: Ez a cikk az Azure SQL felügyelt példányain és a Machine Learning Services SQL Server Machine Learning Services közötti fő különbségeket ismerteti.
 services: sql-database
 ms.service: sql-managed-instance
@@ -11,74 +11,79 @@ author: garyericson
 ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
-ms.date: 10/26/2020
-ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 03/17/2021
+ms.openlocfilehash: b5ad439a8e10fa9aa44e477ca35f45d65ae40803
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324533"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104599544"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>A felügyelt Azure SQL-példányon és az SQL Serveren elérhető Machine Learning Services közötti fő eltérések
 
-Az [Azure SQL felügyelt példányának (előzetes verzió) Machine learning Services](machine-learning-services-overview.md) funkciója közel azonos a [SQL Server Machine learning Services](/sql/advanced-analytics/what-is-sql-server-machine-learning). A következőkben néhány kulcsfontosságú különbség van.
-
-> [!IMPORTANT]
-> Az Azure SQL felügyelt példányának Machine Learning Services jelenleg nyilvános előzetes verzióban érhető el. A regisztrációhoz lásd: [regisztráció az előzetes](machine-learning-services-overview.md#signup)verzióra.
-
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
-
-Az előzetes verziójú szolgáltatásra az alábbi korlátozások vonatkoznak:
-
-- A visszacsatolási kapcsolatok nem működnek (lásd: a [SQL Server egy Python-vagy R-parancsfájlból történő visszacsatolási kapcsolata](/sql/machine-learning/connect/loopback-connection)).
-- A külső erőforráskészletek nem támogatottak.
-- Csak a Python és az R nyelv támogatott. Külső nyelvek (például Java) nem adhatók hozzá.
-- A [Message Passing Interface](/message-passing-interface/microsoft-mpi) (MPI) felületet használó forgatókönyvek nem támogatottak.
-
-A szolgáltatási szint célkitűzés (SLO) frissítése esetén frissítse az SLO-t, és egy támogatási jegyet, hogy engedélyezze újra az R/Python dedikált erőforrás-korlátait.
+Ez a cikk a [felügyelt Azure SQL-példányok és a](machine-learning-services-overview.md) [SQL Server-Machine learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)Machine learning Services közötti főbb különbségeket ismerteti.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatja a Python és az R [bővíthetőségi keretrendszert](/sql/advanced-analytics/concepts/extensibility-framework)is. A legfontosabb különbségek a következők:
+Machine Learning Services a felügyelt SQL-példányon, és SQL Server támogatja a Python és az R [bővíthetőségi keretrendszert](/sql/machine-learning/concepts/extensibility-framework). Az SQL felügyelt példányain a legfontosabb különbségek a következők:
 
-- A Python és az R kezdeti verziói különböznek a felügyelt SQL-példányok Machine Learning Services és SQL Server:
+- Csak a Python és az R nyelv támogatott. Külső nyelvek (például Java) nem adhatók hozzá.
 
-  | Rendszer               | Python | R     |
-  |----------------------|--------|-------|
-  | SQL Managed Instance | 3.7.1  | 3.5.2 |
-  | SQL Server           | 3.5.2  | 3.3.3 |
+- A Python és az R kezdeti verziói eltérőek:
 
-- Nincs szükség a-on keresztül történő konfigurálásra `external scripts enabled` `sp_configure` . Miután [regisztrált](machine-learning-services-overview.md#signup) az előzetes verzióra, a Machine learning engedélyezve van az Azure SQL felügyelt példányain.
+  | Platform                   | Python futtatókörnyezet verziója           | R Runtime-verziók                   |
+  |----------------------------|----------------------------------|--------------------------------------|
+  | Felügyelt Azure SQL-példány | 3.7.2                            | 3.5.2                                |
+  | SQL Server 2019            | 3.7.1                            | 3.5.2                                |
+  | SQL Server 2017            | 3.5.2 és 3.7.2 (CU22 és újabb verziók) | 3.3.3 és 3.5.2 (CU22 és újabb verziók)     |
+  | SQL Server 2016            | Nem elérhető                    | 3.2.2 és 3.5.2 (SP2 CU14 és újabb verziók) |
 
-## <a name="packages"></a>Csomagok
+## <a name="python-and-r-packages"></a>Python-és R-csomagok
 
-A Python és az R csomagkezelő a felügyelt SQL-példány és a SQL Server között eltérően működik. Ezek a különbségek a következők:
-
-- A külső futtatókörnyezettől (például Java) függő csomagok nem támogatottak, vagy az operációs rendszer API-jait kell telepíteni a telepítéshez vagy a használathoz.
-- A csomagok elvégezhetik a kimenő hálózati hívásokat (az előzetes verzióról korábban is változhatnak). A kimenő hálózati hívások engedélyezéséhez beállíthatja a megfelelő kimenő biztonsági szabályokat a [hálózati biztonsági csoport](../../virtual-network/network-security-groups-overview.md) szintjén.
+Nem támogatott az SQL felügyelt példánya olyan csomagok esetében, amelyek külső futtatókörnyezettől (például Java) függenek, vagy a telepítéshez vagy használathoz szükségesek az operációs rendszer API-jai.
 
 A Python és az R csomagok kezelésével kapcsolatos további információkért lásd:
 
-- [Python-csomagadatok lekérése](/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
-- [R-csomagadatok lekérése](/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [Python-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
+- [R-csomagadatok lekérése](https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 
-Nem lehetséges az R-erőforrások korlátozása [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) és külső erőforráskészlet használatával.
+A felügyelt SQL-példányok esetében nem lehetséges az R-erőforrások korlátozása [Resource Governoron](/sql/relational-databases/resource-governor/resource-governor?view=azuresqldb-mi-current&preserve-view=true)keresztül, és a külső erőforrások készletei nem támogatottak.
 
-A nyilvános előzetes verzióban az R-erőforrások a felügyelt SQL-példányok erőforrásainak legfeljebb 20%-át adják, és a választott szolgáltatásszinttől függenek. További információ: [Azure SQL Database vásárlási modellek](../database/purchasing-models.md).
+Alapértelmezés szerint az R-erőforrások az elérhető SQL felügyelt példány-erőforrások legfeljebb 20%-ában vannak beállítva, ha a bővíthetőség engedélyezve van. Az alapértelmezett százalék módosításához hozzon létre egy Azure-támogatási jegyet a következő címen: [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) .
+
+A bővíthetőség engedélyezve van a következő SQL-parancsokkal (az SQL felügyelt példánya újraindul, és néhány másodpercig elérhetetlenné válik):
+
+```sql
+sp_configure 'external scripts enabled', 1;
+RECONFIGURE WITH OVERRIDE;
+```
+
+Ha le szeretné tiltani a memória-és CPU-erőforrások kibővítését és 100%-át a SQL Serverre, használja a következő parancsokat:
+
+```sql
+sp_configure 'external scripts enabled', 0;
+RECONFIGURE WITH OVERRIDE;
+```
+
+Az SQL felügyelt példányai számára elérhető összes erőforrás attól függ, hogy melyik szolgáltatási szintet választja ki. További információ: [Azure SQL Database vásárlási modellek](/azure/sql-database/sql-database-service-tiers).
 
 ### <a name="insufficient-memory-error"></a>Nincs elég memória-hiba
 
-Ha nincs elegendő memória az R számára, hibaüzenet jelenik meg. Gyakori hibaüzenetek:
+A memóriahasználat az R-szkriptekben használt memória mennyiségétől és a párhuzamosan végrehajtott lekérdezések számától függ. Ha nincs elegendő szabad memória az R-hez, hibaüzenet jelenik meg. Gyakori hibaüzenetek:
 
 - `Unable to communicate with the runtime for 'R' script for request id: *******. Please check the requirements of 'R' runtime`
 - `'R' script error occurred during execution of 'sp_execute_external_script' with HRESULT 0x80004004. ...an external script error occurred: "..could not allocate memory (0 Mb) in C function 'R_AllocStringBuffer'"`
 - `An external script error occurred: Error: cannot allocate vector of size.`
 
-A memóriahasználat az R-szkriptekben használt memória mennyiségétől és a párhuzamosan végrehajtott lekérdezések számától függ. Ha a fenti hibaüzeneteket kapja, skálázza az adatbázist magasabb szolgáltatási szintre a probléma elhárításához.
+Ha ezen hibák valamelyike megjelenik, akkor azt megoldhatja, ha az adatbázist magasabb szolgáltatási rétegre szeretné méretezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="sql-managed-instance-pools"></a>SQL felügyelt példányok készletei
+
+A Machine Learning Services jelenleg nem támogatott az [Azure SQL felügyelt példány-készleteken (előzetes verzió)](instance-pools-overview.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [Azure SQL felügyelt példányának](machine-learning-services-overview.md)áttekintését Machine learning Services.
 - Ha szeretné megtudni, hogyan használható a Python a Machine Learning Servicesban, tekintse meg a [Python-parancsfájlok futtatása](/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current&preserve-view=true)című témakört.

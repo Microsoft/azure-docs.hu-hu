@@ -29,6 +29,8 @@
       href: tutorial-create-nat-gateway-portal.md
     - name: NAT-átjáró nyilvános Load Balancer integrálása
       href: tutorial-nat-gateway-load-balancer-public-portal.md
+    - name: NAT-átjáró belső terheléselosztó integrálása
+      href: tutorial-nat-gateway-load-balancer-internal-portal.md
 - name: Példák
   items:
     - name: Azure CLI

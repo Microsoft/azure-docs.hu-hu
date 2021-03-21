@@ -4,20 +4,20 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c80a17b1e458793fe8f18ad5c4438884e007d666
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 11bee8a36bcf6f5cbf0d16b27c6cff38414d4647
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242600"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612780"
 ---
 <!--Feature availability in region-->
 
 ## <a name="africa"></a>Afrika
 
-| Funkció| Dél-Afrika északi régiója | Dél-Afrika nyugati régiója |
+| Szolgáltatás| Dél-Afrika északi régiója | Dél-Afrika nyugati régiója |
 | --- | --- | --- |
-| [Azure-EventGrid](../reacting-to-media-services-events.md) | ![Észak-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) | ![Dél-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
+| [Azure EventGrid](../monitoring/reacting-to-media-services-events.md) | ![Észak-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) | ![Dél-afrikai Event Grid – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
 | [VideoAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Afrika video Analyzer Észak-általánosan elérhető](../media/azure-clouds-regions/ga.svg) | ![Afrika déli videó-elemzője – általános elérhetőség](../media/azure-clouds-regions/ga.svg) |
 | [AudioAnalyzerPreset](../analyzing-video-audio-files-concept.md) | ![Észak-Afrika AudioAnalyzerPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika AudioAnalyzerPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) |
 | [StandardEncoderPreset](../encoding-concept.md) | ![Észak-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) | ![Dél-Afrika StandardEncoderPreset általános elérhetősége](../media/azure-clouds-regions/ga.svg) |

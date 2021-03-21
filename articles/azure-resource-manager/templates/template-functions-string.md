@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731119"
 ---
 # <a name="string-functions-for-arm-templates"></a>Karakterlánc-függvények ARM-sablonokhoz
@@ -58,9 +58,9 @@ A bemeneti karakterlánc Base64-ábrázolását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |sztring |Az az érték, amelyet Base64-ábrázolásként kell visszaadni. |
+| inputString |Yes |sztring |Az az érték, amelyet Base64-ábrázolásként kell visszaadni. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -141,9 +141,9 @@ Base64-leképezést alakít át egy JSON-objektumra.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| Base64value tulajdonsága |Igen |sztring |A JSON-objektumra konvertálandó Base64-ábrázolás. |
+| Base64value tulajdonsága |Yes |sztring |A JSON-objektumra konvertálandó Base64-ábrázolás. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -225,9 +225,9 @@ Base64-ábrázolást konvertál karakterlánccá.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| Base64value tulajdonsága |Igen |sztring |A Base64-ábrázolás, amelyet karakterlánccá kell alakítani. |
+| Base64value tulajdonsága |Yes |sztring |A Base64-ábrázolás, amelyet karakterlánccá kell alakítani. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -310,10 +310,10 @@ A karakterlánc-Összefűzés egyszerűsítése érdekében a bicep támogatja a
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy tömb |Az Összefűzés első karakterlánca vagy tömbje. |
-| További argumentumok |Nem |karakterlánc vagy tömb |További karakterláncok vagy tömbök egymást követő sorrendben az összefűzéshez. |
+| arg1 |Yes |karakterlánc vagy tömb |Az Összefűzés első karakterlánca vagy tömbje. |
+| További argumentumok |No |karakterlánc vagy tömb |További karakterláncok vagy tömbök egymást követő sorrendben az összefűzéshez. |
 
 Ez a függvény tetszőleges számú argumentumot igénybe vehet, és a paraméterekhez karakterláncokat vagy tömböket is elfogadhat. A paraméterekhez azonban nem lehet tömböt és karakterláncot megadni. A karakterláncok csak más karakterláncokkal vannak összefűzve.
 
@@ -441,10 +441,10 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
+| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -553,9 +553,9 @@ Egy értéket konvertál egy adaturi-ra.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Igen |sztring |Az adaturi-ra konvertálandó érték. |
+| stringToConvert |Yes |sztring |Az adaturi-ra konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -622,9 +622,9 @@ Az adaturi-formázott értéket karakterlánccá alakítja át.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Igen |sztring |Az átalakítandó adaturi-érték. |
+| dataUriToConvert |Yes |sztring |Az átalakítandó adaturi-érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -691,9 +691,9 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -772,10 +772,10 @@ Meghatározza, hogy egy karakterlánc egy értékkel végződik-e. Az összehaso
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
-| stringToFind |Igen |sztring |A keresendő érték. |
+| stringToSearch |Yes |sztring |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Yes |sztring |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -853,9 +853,9 @@ A karakterlánc első karakterét vagy a tömb első elemét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Yes |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -922,11 +922,11 @@ Létrehoz egy formázott karakterláncot a bemeneti értékek közül.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| formatString | Igen | sztring | Az összetett formátum karakterlánca |
-| arg1 | Igen | string, integer vagy boolean | A formázott sztringbe felvenni kívánt érték. |
-| További argumentumok | Nem | string, integer vagy boolean | A formázott sztringbe foglalandó további értékek. |
+| formatString | Yes | sztring | Az összetett formátum karakterlánca |
+| arg1 | Yes | string, integer vagy boolean | A formázott sztringbe felvenni kívánt érték. |
+| További argumentumok | No | string, integer vagy boolean | A formázott sztringbe foglalandó további értékek. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -993,10 +993,10 @@ Egy globálisan egyedi azonosító formájában létrehoz egy értéket a param�
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |sztring |A kivonatoló függvényben a GUID létrehozásához használt érték. |
-| további paraméterek igény szerint |Nem |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
+| baseString |Yes |sztring |A kivonatoló függvényben a GUID létrehozásához használt érték. |
+| további paraméterek igény szerint |No |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -1106,10 +1106,10 @@ Egy érték első pozícióját adja vissza egy karakterláncon belül. Az össz
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
-| stringToFind |Igen |sztring |A keresendő érték. |
+| stringToSearch |Yes |sztring |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Yes |sztring |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1189,9 +1189,9 @@ A sztring utolsó karakterét vagy a tömb utolsó elemét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
+| arg1 |Yes |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1258,10 +1258,10 @@ Egy érték utolsó pozícióját adja vissza egy karakterláncon belül. Az ös
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
-| stringToFind |Igen |sztring |A keresendő érték. |
+| stringToSearch |Yes |sztring |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Yes |sztring |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1333,9 +1333,9 @@ Egy sztringben szereplő karakterek számát, egy tömb elemeinek vagy egy objek
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1571,11 +1571,11 @@ Egy jobbra igazított karakterláncot ad vissza, amely a megadott teljes hossz e
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Igen |karakterlánc vagy int |Az érték jobbra igazítása. |
-| totalLength |Igen |int |A visszaadott karakterláncban szereplő karakterek teljes száma. |
-| paddingCharacter |Nem |egyetlen karakter |A bal oldali margóhoz használandó karakter, amíg el nem éri a teljes hosszt. Az alapértelmezett érték egy szóköz. |
+| valueToPad |Yes |karakterlánc vagy int |Az érték jobbra igazítása. |
+| totalLength |Yes |int |A visszaadott karakterláncban szereplő karakterek teljes száma. |
+| paddingCharacter |No |egyetlen karakter |A bal oldali margóhoz használandó karakter, amíg el nem éri a teljes hosszt. Az alapértelmezett érték egy szóköz. |
 
 Ha az eredeti sztring hosszabb, mint a pad karaktereinek száma, a rendszer nem adja hozzá a karaktereket.
 
@@ -1633,11 +1633,11 @@ Egy új karakterláncot ad vissza, amely egy sztring összes példányát egy m�
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| originalString |Igen |sztring |Egy sztring összes példányát egy másik sztring váltja fel. |
-| Régikarakterlánc |Igen |sztring |Az eredeti sztringből eltávolítandó karakterlánc. |
-| Újkarakterlánc |Igen |sztring |Az eltávolított karakterlánc helyére felvenni kívánt karakterlánc. |
+| originalString |Yes |sztring |Egy sztring összes példányát egy másik sztring váltja fel. |
+| Régikarakterlánc |Yes |sztring |Az eredeti sztringből eltávolítandó karakterlánc. |
+| Újkarakterlánc |Yes |sztring |Az eltávolított karakterlánc helyére felvenni kívánt karakterlánc. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1699,10 +1699,10 @@ Egy olyan sztringet ad vissza, amely a megadott számú karakter után az össze
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
-| numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
+| originalValue |Yes |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
+| numberToSkip |Yes |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1787,10 +1787,10 @@ Karakterláncok tömbjét adja vissza, amely a megadott elválasztó karakterrel
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |sztring |A felosztani kívánt karakterlánc. |
-| elválasztókarakter |Igen |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
+| inputString |Yes |sztring |A felosztani kívánt karakterlánc. |
+| elválasztókarakter |Yes |karakterlánc vagy karakterláncok tömbje |A karakterlánc felosztásához használandó elválasztó karakter. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1865,10 +1865,10 @@ Meghatározza, hogy egy karakterlánc egy értékkel kezdődik-e. Az összehason
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |sztring |A keresendő elemeket tartalmazó érték. |
-| stringToFind |Igen |sztring |A keresendő érték. |
+| stringToSearch |Yes |sztring |A keresendő elemeket tartalmazó érték. |
+| stringToFind |Yes |sztring |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -1946,9 +1946,9 @@ A megadott értéket karakterlánccá alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen | Bármelyik |A sztringre konvertálandó érték. Bármilyen típusú érték konvertálható, beleértve az objektumokat és a tömböket is. |
+| valueToConvert |Yes | Bármelyik |A sztringre konvertálandó érték. Bármilyen típusú érték konvertálható, beleértve az objektumokat és a tömböket is. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2040,11 +2040,11 @@ Egy olyan alsztringet ad vissza, amely a megadott karakteres pozíciónál kezd�
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Igen |sztring |Az az eredeti karakterlánc, amelyből a rendszer kinyeri az alkarakterláncot. |
-| startIndex |Nem |int |Az alsztring nulla alapú kiindulási karakterének pozíciója. |
-| hossz |Nem |int |Az alkarakterlánc karaktereinek száma. A karakterláncon belüli helyre kell hivatkoznia. Nulla vagy nagyobb értéknek kell lennie. |
+| stringToParse |Yes |sztring |Az az eredeti karakterlánc, amelyből a rendszer kinyeri az alkarakterláncot. |
+| startIndex |No |int |Az alsztring nulla alapú kiindulási karakterének pozíciója. |
+| hossz |No |int |Az alkarakterlánc karaktereinek száma. A karakterláncon belüli helyre kell hivatkoznia. Nulla vagy nagyobb értéknek kell lennie. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2126,10 +2126,10 @@ Egy olyan karakterláncot ad vissza, amely a megadott számú karaktert tartalma
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
-| numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét visszaadja. |
+| originalValue |Yes |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
+| numberToTake |Yes |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét visszaadja. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2214,9 +2214,9 @@ A megadott sztringet kisbetűvé alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |sztring |Az kisbetűsre konvertálandó érték. |
+| stringToChange |Yes |sztring |Az kisbetűsre konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2278,9 +2278,9 @@ A megadott sztringet nagybetűvé alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |sztring |A nagybetűre konvertálandó érték. |
+| stringToChange |Yes |sztring |A nagybetűre konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2342,9 +2342,9 @@ Eltávolítja az összes kezdő és záró szóközöket a megadott karakterlán
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Igen |sztring |A vágási érték. |
+| stringToTrim |Yes |sztring |A vágási érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2400,10 +2400,10 @@ Létrehoz egy determinisztikus-kivonat karakterláncot a paraméterként megadot
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |sztring |Egy egyedi karakterlánc létrehozásához a kivonatoló függvényben használt érték. |
-| további paraméterek igény szerint |Nem |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
+| baseString |Yes |sztring |Egy egyedi karakterlánc létrehozásához a kivonatoló függvényben használt érték. |
+| további paraméterek igény szerint |No |sztring |Az egyediség szintjét meghatározó érték létrehozásához tetszőleges számú karakterláncot adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -2532,10 +2532,10 @@ Abszolút URI-t hoz létre a baseUri és a relativeUri karakterlánc kombinálá
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| baseUri |Igen |sztring |Az alap URI-karakterlánc. Ügyeljen arra, hogy figyelje a záró perjel ("/") kezelésével kapcsolatos viselkedést a táblázatban látható módon.  |
-| relativeUri |Igen |sztring |Az alap URI-karakterlánchoz hozzáadandó relatív URI-karakterlánc. |
+| baseUri |Yes |sztring |Az alap URI-karakterlánc. Ügyeljen arra, hogy figyelje a záró perjel ("/") kezelésével kapcsolatos viselkedést a táblázatban látható módon.  |
+| relativeUri |Yes |sztring |Az alap URI-karakterlánchoz hozzáadandó relatív URI-karakterlánc. |
 
 * Ha a **baseUri** egy záró perjelet ér véget, az eredmény egyszerűen **baseUri** , amelyet a **relativeUri** követ.
 
@@ -2637,9 +2637,9 @@ URI kódolása.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Igen |sztring |A kódolni kívánt érték. |
+| stringToEncode |Yes |sztring |A kódolni kívánt érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -2707,9 +2707,9 @@ Egy URI-kódolású érték sztringjét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Igen |sztring |A karakterláncra konvertálandó URI-kódolású érték. |
+| uriEncodedString |Yes |sztring |A karakterláncra konvertálandó URI-kódolású érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 

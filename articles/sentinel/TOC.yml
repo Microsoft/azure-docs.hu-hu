@@ -21,7 +21,7 @@
       href: tutorial-monitor-your-data.md
     - name: Incidensek vizsgálata
       href: tutorial-investigate-cases.md
-    - name: Reagálás a fenyegetésekre
+    - name: Az Automation használata a fenyegetések megválaszolására
       href: tutorial-respond-threats-playbook.md
     - name: KQL-lekérdezések létrehozása (Learn modul)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
@@ -37,6 +37,14 @@
           href: resource-context-rbac.md
     - name: Fejlett többfázisú támadásészlelés
       href: fusion.md
+    - name: Automatizálás (SZÁRNYALás)
+      items:
+        - name: SZÁRNYALás az Azure Sentinelben
+          href: automation-in-azure-sentinel.md
+        - name: Az incidensek kezelésének automatizálási szabályai
+          href: automate-incident-handling-with-automation-rules.md
+        - name: Speciális automatizálás forgatókönyvekkel
+          href: automate-responses-with-playbooks.md
     - name: Fejlett fenyegetések észlelése az UEBA használatával
       href: identify-threats-with-entity-behavior-analytics.md
     - name: Fenyegetésfelderítési adatok importálása az Azure Sentinelbe

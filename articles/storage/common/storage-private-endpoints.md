@@ -6,16 +6,16 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 13e274a0d43ba4399e039d1280aa5ada3c94afe5
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 3fcc58f626622bcc728265e782906226859e1bf9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601474"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600462"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
 
@@ -53,6 +53,16 @@ A Storage-fiók úgy is biztosítható, hogy csak a VNet érkező kapcsolatokat 
 
 ## <a name="creating-a-private-endpoint"></a>Privát végpont létrehozása
 
+Ha privát végpontot szeretne létrehozni az Azure Portal használatával, tekintse meg a következő témakört: [magánhálózati kapcsolat létrehozása Storage-fiókhoz a Azure Portal](../../private-link/tutorial-private-endpoint-storage-portal.md).
+
+Ha privát végpontot szeretne létrehozni a PowerShell vagy az Azure CLI használatával, tekintse meg a fenti cikkek egyikét. Mindkettő egy Azure-webalkalmazást céloz meg célként, de a privát kapcsolatok létrehozásának lépései megegyeznek egy Azure Storage-fiókkal.
+
+- [Privát végpont létrehozása az Azure CLI-vel](../../private-link/create-private-endpoint-cli.md)
+
+- [Privát végpont létrehozása Azure PowerShell használatával](../../private-link/create-private-endpoint-powershell.md)
+
+
+
 Privát végpont létrehozásakor meg kell adnia a Storage-fiókot és a tárolási szolgáltatást, amelyhez csatlakozik. 
 
 Külön privát végpontra van szükség minden olyan tárolási erőforráshoz, amelyhez hozzáférésre van szüksége, azaz [blobokat](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2okat](../blobs/data-lake-storage-introduction.md), [fájlokat](../files/storage-files-introduction.md), [várólistákat](../queues/storage-queues-introduction.md), [táblákat](../tables/table-storage-overview.md)vagy [statikus webhelyeket](../blobs/storage-blob-static-website.md). A privát végponton ezek a tárolási szolgáltatások a társított Storage **-fiók célként megadott alerőforrásként** vannak meghatározva. 
@@ -64,13 +74,6 @@ Ha létrehoz egy magánhálózati végpontot a Data Lake Storage Gen2 Storage-er
 > Mindenképpen hozzon létre egy általános célú v2 (standard vagy prémium szintű) Storage-fiókot.
 
 Ha olvasási hozzáférést szeretne a másodlagos régióhoz a földrajzi redundáns tároláshoz konfigurált Storage-fiókkal, akkor a szolgáltatás elsődleges és másodlagos példányaihoz külön magánhálózati végpontokra van szükség. A **feladatátvételhez** nem kell létrehoznia privát végpontot a másodlagos példányhoz. A magánhálózati végpont automatikusan csatlakozni fog az új elsődleges példányhoz a feladatátvétel után. További információ a tárterület-redundancia lehetőségeiről: [Azure Storage redundancia](storage-redundancy.md).
-
-A privát végpontok Storage-fiókhoz való létrehozásával kapcsolatos részletes információkért tekintse meg a következő cikkeket:
-
-- [Magánhálózati kapcsolat létrehozása a Azure Portal Storage-fiókjának felhasználói felületén](../../private-link/tutorial-private-endpoint-storage-portal.md)
-- [Privát végpont létrehozása a Azure Portal privát kapcsolati központjának használatával](../../private-link/create-private-endpoint-portal.md)
-- [Privát végpont létrehozása az Azure CLI-vel](../../private-link/create-private-endpoint-cli.md)
-- [Privát végpont létrehozása Azure PowerShell használatával](../../private-link/create-private-endpoint-powershell.md)
 
 <a id="connecting-to-private-endpoints"></a>
 

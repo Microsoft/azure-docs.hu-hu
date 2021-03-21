@@ -4,14 +4,14 @@ description: Ismerteti a 1,3-es frissítést futtató Azure StorSimple virtuáli
 ms.service: storsimple
 author: v-dalc
 ms.topic: article
-ms.date: 01/22/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e50f866c0bd44ca54c2f4df78b9507aa7077169
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: b2c2af4267140370c2aa9421a67cb3a6f413165f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452560"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657552"
 ---
 # <a name="storsimple-virtual-array-update-13-release-notes"></a>StorSimple Virtual Array Update 1,3 kibocsátási megjegyzések
 
@@ -31,6 +31,11 @@ Az 1,3-es frissítés megfelel a szoftververzió 10.0.10319.0.
 Ez a frissítés a következő fejlesztési funkciókat tartalmazza: KB4540725
 
 - A Transport Layer Security (TLS) 1,2 egy kötelező frissítés, és telepíteni kell. Ettől a kiadástól kezdve a TLS 1,2 a szabványos protokoll lesz az összes Azure Portal kommunikációhoz.
+  
+   Ha a következő figyelmeztetés jelenik meg, a továbblépés előtt frissítenie kell az eszközön lévő szoftvereket:
+
+   Egy vagy több StorSimple-eszköz régebbi verziójú szoftvert futtat. A TLS 1,2 legújabb elérhető frissítése kötelező frissítés, amelyet azonnal telepíteni kell ezeken az eszközökön. A TLS 1,2 minden Azure Portal kommunikációhoz használatos, és a frissítés nélkül az eszköz nem fog tudni kommunikálni az StorSimple szolgáltatással.
+
 - A szemetet gyűjtő hibajavítások javítják a begyűjtési ciklus teljesítményét, ha az eszköz-és a Storage-fiók két távoli régióban található.
 - A blob időtúllépései miatti biztonsági mentési hibák elhárítása.
 - Frissített operációs rendszer/. NET-keretrendszer biztonsági javítások:
@@ -65,4 +70,4 @@ Régebbi kiadási megjegyzést keres? Ugrás:
 - [StorSimple Virtual Array Update 0,4 kibocsátási megjegyzések](./storsimple-virtual-array-update-04-release-notes.md)
 - [StorSimple Virtual Array Update 0,3 kibocsátási megjegyzések](./storsimple-ova-update-03-release-notes.md)
 - [StorSimple Virtual Array Update 0,1 és 0,2 kibocsátási megjegyzések](./storsimple-ova-update-01-release-notes.md)
-- [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](/azure/storsimple/storsimple-ova-pp-release-notes)
+- [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](./storsimple-virtual-array-update-06-release-notes.md)

@@ -4,16 +4,18 @@ description: 'Gyors útmutató: útmutató az irányítópultok létrehozásáho
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745655"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613211"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Rövid útmutató: Azure Portal irányítópult létrehozása az Azure CLI-vel
 
-A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és rendezett nézete.
+A Azure Portal egyik irányítópultja a Felhőbeli erőforrások célzott és rendezett nézete. Ebből a cikkből megtudhatja, hogyan hozhat létre irányítópultot az Azure CLI használatával.
+Az irányítópulton egy virtuális gép (VM) teljesítménye, valamint néhány statikus információ és hivatkozás látható.
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-Ellenőrizze, hogy látható-e a virtuális gép adatait a Azure Portal belül.
-
-1. Az Azure Portalon válassza az **Irányítópult** lehetőséget.
-
-   ![Navigálás az irányítópulton Azure Portal](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. Az irányítópult lapon válassza az **egyszerű VM-irányítópult** lehetőséget.
-
-   ![Navigáljon az egyszerű VM-irányítópultra](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. Tekintse át az irányítópultot. Láthatja, hogy a tartalom néhány statikus, de vannak olyan diagramok is, amelyek a virtuális gép teljesítményét mutatják.
-
-   ![Egyszerű VM-irányítópult áttekintése](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -135,6 +125,6 @@ Csak az irányítópult eltávolításához használja az az [Portal irányító
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az irányítópultok Azure CLI-támogatásáról: [az portál irányítópultja](/cli/azure/ext/portal/portal/dashboard).
