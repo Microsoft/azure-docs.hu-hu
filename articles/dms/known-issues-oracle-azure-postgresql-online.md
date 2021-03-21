@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.openlocfilehash: 1b331f8e0af452937028c63fba123cb92f57a6b0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94962416"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-oracle-to-azure-db-for-postgresql-single-server"></a>Ismert problémák/migrációs korlátozások az Oracle-ből az Azure-ba való online áttelepítéssel PostgreSQL-Single Serverre
@@ -48,7 +48,7 @@ A következő adattípusok **nem** lesznek áttelepítve:
 - SDO_GEOMETRY
 - Beágyazott táblák
 - Felhasználó által definiált adattípusok
-- Megjegyzések
+- Jegyzetek
 - Virtuális oszlopok
 - ROWID oszlopon alapuló, lényeges nézetek
 

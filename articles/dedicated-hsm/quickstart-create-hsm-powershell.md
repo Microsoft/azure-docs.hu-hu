@@ -1,6 +1,6 @@
 ---
 title: 'Rövid útmutató: Azure dedikált HSM létrehozása Azure PowerShell'
-description: Azure dedikált HSM létrehozása Azure PowerShell
+description: Azure Dedicated HSM létrehozása az Azure PowerShell használatával
 services: dedicated-hsm
 author: msmbaldwin
 ms.author: mbaldwin
@@ -10,10 +10,10 @@ ms.devlang: azurepowershell
 ms.date: 11/13/2020
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: eebfb257d0324cf2771bd3af979ddbebb8429fb7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94905621"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-with-azure-powershell"></a>Rövid útmutató: Azure dedikált HSM létrehozása Azure PowerShell
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure dedikált HSM-t az az [. dediká
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../includes/azure-powershell-requirements-no-header.md)]
 
   > [!IMPORTANT]
-  > Míg az az **. dedikált HSM** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután a PowerShell-modul általánosan elérhetővé válik, az a PowerShell-modul kiadásainak része lesz, és alapértelmezés szerint elérhető a Azure Cloud Shellon belülről.
+  > Míg az az **. dedikált HSM** PowerShell-modul előzetes verzióban érhető el, a parancsmaggal külön kell telepítenie `Install-Module` . Miután ez a PowerShell-modul általánosan elérhetővé válik, a jövőbeli Az PowerShell modulkiadások részévé válik, és natívan elérhető lesz az Azure Cloud Shellből.
 
   ```azurepowershell-interactive
   Install-Module -Name Az.DedicatedHsm
@@ -39,7 +39,7 @@ Ez a cikk bemutatja, hogyan hozhat létre Azure dedikált HSM-t az az [. dediká
   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
   ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy [Azure-erőforráscsoportot](../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 

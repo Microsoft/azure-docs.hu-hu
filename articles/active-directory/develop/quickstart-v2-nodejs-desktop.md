@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/17/2021
 ms.author: v-doeris
 ms.openlocfilehash: beef869b891fe6e3f0ea2f667763cb310008b2fc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653269"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Gyors útmutató: hozzáférési jogkivonat beszerzése és a Microsoft Graph API meghívása egy Electron asztali alkalmazásból
@@ -140,7 +140,7 @@ const MSAL_CONFIG = {
 const pca = new PublicClientApplication(MSAL_CONFIG);
 ```
 
-> | Ahol: |Leírás |
+> | Ahol: |Description |
 > |---------|---------|
 > | `clientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 > | `authority`    | A felhasználó által hitelesítendő STS-végpont. A nyilvános felhő esetében általában a (z) `https://login.microsoftonline.com/{tenant}` {bérlő} a bérlő vagy a bérlői azonosító neve.|
@@ -231,7 +231,7 @@ async function listenForAuthCode(navigateUrl, authWindow) {
 }
 ```
 
-> |Ahol:| Leírás |
+> |Ahol:| Description |
 > |---------|---------|
 > | `authWindow` | Az aktuális elektron-ablak folyamatban. |
 > | `tokenRequest` | A kért hatóköröket tartalmazza, például `"User.Read"` Microsoft Graph vagy `"api://<Application ID>/access_as_user"` egyéni webes API-k esetén. |

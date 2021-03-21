@@ -10,17 +10,17 @@ ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 11/17/2020
 ms.openlocfilehash: e8c16f02cf6b77fa54d2a19abac48e9914aa99bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96008565"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Oktatóanyag: Cognitive Search index lekérdezése a Power Appsből
 
 Kihasználhatja a Power apps gyors alkalmazás-fejlesztési környezetét, hogy egyéni alkalmazást hozzon létre az Azure Cognitive Search kereshető tartalmához.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Kapcsolódás az Azure Cognitive Searchhoz
@@ -90,11 +90,11 @@ A Power apps-összekötők egy adatforrás-kapcsolatok. Ebben a lépésben létr
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-1-parameter-metadata-search.png" alt-text="Keresési paraméter metaadatai" border="true":::
 
-1. A *Select (kiválasztás*) beállításnál állítsa be `HotelName,Description,Address/City` az **required** alapértelmezett értéket, állítsa a False **visibility** ( *hamis*) **értékre**, és állítsa a *nincs* értékre.  
+1. A *Select (kiválasztás*) beállításnál állítsa be `HotelName,Description,Address/City` az  alapértelmezett értéket, állítsa a False  ( *hamis*) **értékre**, és állítsa a *nincs* értékre.  
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Paraméter metaadatainak kiválasztása" border="true":::
 
-1. Az *API-Version*: beállítás értékeként állítsa be `2020-06-30` az **alapértelmezett értéket**, állítsa *igaz* értékre, és *belsőként* állítsa be a **láthatóságot** . **required**  
+1. Az *API-Version*: beállítás értékeként állítsa be `2020-06-30` az **alapértelmezett értéket**, állítsa *igaz* értékre, és *belsőként* állítsa be a **láthatóságot** .   
 
     :::image type="content" source="./media/search-howto-powerapps/1-10-2-parameter-metadata-version.png" alt-text="Version paraméter metaadatai" border="true":::
 
@@ -260,7 +260,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Power apps lehetővé teszi az egyéni alkalmazások gyors alkalmazásának fejlesztését. Most, hogy már tudja, hogyan csatlakozhat egy keresési indexhez, többet tudhat meg arról, hogyan hozhat létre Rich vizualizációs élményt egy egyéni Power App-alkalmazásban.
 

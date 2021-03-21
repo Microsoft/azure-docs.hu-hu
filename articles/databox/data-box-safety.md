@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: f4a0739eb1ab14155a98b17e2427c5b08c9db788
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020670"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>A Azure Data Box biztonságos telepítése és működtetése
@@ -24,11 +24,11 @@ A Azure Data Box használata előtt olvassa el az ebben a cikkben található ö
 ## <a name="safety-icon-conventions"></a>Biztonsági ikon konvenciói
 Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállításakor és futtatásakor betartandó biztonsági óvintézkedéseket.
 
-| Ikon | Leírás |
+| Ikon | Description |
 |:--- |:--- |
 | ![Veszélyforrás ikon ](./media/data-box-safety/warning_icon.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
 | ![Figyelmeztetés ikon ](./media/data-box-safety/warning_icon.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
-| ![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) **CAUTION!** figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
+| ![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png)  figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
 | ![Értesítés ikonjának ](./media/data-box-safety/notice_icon.png) **megjegyzése:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
 | ![Elektromos áramütés ikon áramütési ](./media/data-box-safety/electrical_shock_hazard_icon.png) **kockázat** |Magas feszültségű. |
 | ![Nagy súly ikon ](./media/data-box-safety/heavy_weight_hazard_icon.png) **nagy súlya** | |
@@ -38,7 +38,7 @@ Itt láthatja azokat az ikonokat, amelyekkel megtekintheti a Data Box beállít�
 
 ## <a name="handling-precautions"></a>Óvintézkedések feldolgozása
 
-![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) ![ áramütés ikonja ](./media/data-box-safety/electrical_shock_hazard_icon.png)![ nem rendelkezik a felhasználó által szervizelhető részek ikonjának ](./media/data-box-safety/no_user_serviceable_parts_icon.png) **CAUTION** figyelmeztetésével 
+![Figyelmeztető ikon ](./media/data-box-safety/warning_icon.png) ![ áramütés ikonja ](./media/data-box-safety/electrical_shock_hazard_icon.png)![ nem rendelkezik a felhasználó által szervizelhető részek ikonjának ](./media/data-box-safety/no_user_serviceable_parts_icon.png)  figyelmeztetésével 
 
 * A *kapott* eszköz bevizsgálása károkért. Ha az eszköz bekerítése sérült, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md) , és szerezzen be egy cserét. Ne kísérelje meg az eszköz üzemeltetését. 
 * Az eszköz illetéktelen hozzáférést biztosító csavarokkal van ellátva. Ha azt gyanítja, hogy az eszköz meghibásodik, [forduljon a Microsoft ügyfélszolgálatahoz](data-box-disk-contact-microsoft-support.md) , és szerezzen be egy cserét. Ne kísérelje meg az eszköz kiszolgálását. 
@@ -170,7 +170,7 @@ Faxszám: + 353 1 706 4110
 
 Miután áttekintette ezeket a biztonsági értesítéseket, beállíthatja és elvégezheti az eszköz csatlakoztatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kábel és csatlakoztassa a Data Box](data-box-deploy-set-up.md)
 

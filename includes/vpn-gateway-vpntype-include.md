@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010823"
 ---
 * **Házirendalapú:** A házirendalapú VPN-eket korábban statikus útválasztási átjáróknak nevezték a klasszikus üzemi modellben. A házirend-alapú VPN-ek az IPsec-alagutakon keresztül titkosítják és irányítják a csomagokat a helyszíni hálózat és az Azure VNet közötti címtartomány-kombinációkkal konfigurált IPsec-házirendek alapján. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-eszköz konfigurációjában. A házirendalapú VPN-típus értéke *házirendalapú*. Házirendalapú VPN használata esetén vegye figyelembe a következő korlátozásokat:

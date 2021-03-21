@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.openlocfilehash: 04e4801c26b0ac8ef91af0b028d9dc2bb9a3cd1c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358626"
 ---
 # <a name="connect-to-and-index-azure-sql-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL-tartalomhoz való kapcsolódás és indexelés Azure Cognitive Search indexelő használatával
@@ -333,7 +333,7 @@ A **softDeleteMarkerValue** karakterláncnak kell lennie – a tényleges érté
 ## <a name="configuration-settings"></a>Konfigurációs beállítások
 Az SQL indexelő számos konfigurációs beállítást tesz elérhetővé:
 
-| Beállítás | Adattípus | Rendeltetés | Alapértelmezett érték |
+| Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Az SQL-lekérdezés végrehajtásának időtúllépését állítja be |5 perc ("00:05:00") |
 | disableOrderByHighWaterMarkColumn |logikai |Azt eredményezi, hogy a magas vízjelzési házirend által használt SQL-lekérdezés kihagyja a ORDER BY záradékot. Lásd: [magas vízjelek szabályzata](#HighWaterMarkPolicy) |hamis |

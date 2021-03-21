@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: aa9215fa001fb117000eb6a68867ddd46fac9b92
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780325"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Általános útmutató a Wingtip jegyek használatához – példa SaaS-alkalmazásokra
@@ -25,7 +25,7 @@ Ez a cikk általános útmutatást tartalmaz a Wingtip tickets Azure SQL Databas
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>A Wingtip tickets SaaS-parancsfájlok letöltése és feloldása
 
-A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), ha a ZIP-fájlokat külső forrásból tölti le, és kinyeri. A parancsfájlok zip-fájlból való kibontásakor **kövesse az alábbi lépéseket a. zip fájl zárolásának feloldásához a kicsomagolás előtt** . Ez biztosítja, hogy a parancsfájlok futtatása engedélyezett legyen.
+A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), ha a ZIP-fájlokat külső forrásból tölti le, és kinyeri. A parancsfájlok zip-fájlból való kibontásakor **kövesse az alábbi lépéseket a. zip fájl zárolásának feloldásához a kicsomagolás előtt**. Ez biztosítja, hogy a parancsfájlok futtatása engedélyezett legyen.
 
 1. Keresse meg a Wingtip tickets SaaS GitHub-tárházat a vizsgálni kívánt adatbázis-bérleti minta alapján:
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
@@ -33,7 +33,7 @@ A Windows letilthatja a végrehajtható tartalmat (parancsfájlokat, DLL-eket), 
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Kattintson a **klónozás vagy a letöltés** elemre.
 3. Kattintson a **zip letöltése** elemre, és mentse a fájlt.
-4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok** lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-master.zip_ )
+4. Kattintson a jobb gombbal a zip-fájlra, és válassza a **Tulajdonságok** lehetőséget. A zip-fájl neve meg fog egyezni a tárház nevével. például. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Az **általános** lapon válassza a **Tiltás feloldása** lehetőséget.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
@@ -57,7 +57,7 @@ Ezeknek az értékeknek a beállításával egyszerűen megtekintheti, hogy az a
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>Futtassa a szkripteket az F5 billentyű lenyomásával
 
-Több parancsfájl *$PSScriptRoott* használ a mappák eléréséhez, és az *$PSScriptRoot* csak akkor lesz kiértékelve, ha az **F5** billentyű lenyomásával végzi a parancsfájlok végrehajtását.  Ha kijelöli és futtatja a kijelölést ( **F8** ), hibákat eredményezhet, ezért a parancsfájlok futtatásakor nyomja le az **F5** billentyűt.
+Több parancsfájl *$PSScriptRoott* használ a mappák eléréséhez, és az *$PSScriptRoot* csak akkor lesz kiértékelve, ha az **F5** billentyű lenyomásával végzi a parancsfájlok végrehajtását.  Ha kijelöli és futtatja a kijelölést (**F8**), hibákat eredményezhet, ezért a parancsfájlok futtatásakor nyomja le az **F5** billentyűt.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>A megvalósítás vizsgálatához lépjen végig a szkripteken
 
@@ -87,14 +87,14 @@ A sikeres bemutató-kapcsolatok biztosítása érdekében minden kiszolgálónak
 
 
 1. Nyissa meg a *SSMS* , és kapcsolódjon a bérlőhöz. A kiszolgáló neve a kiválasztott adatbázis-bérlettől függ (lásd alább az egyes sajátosságokat):
-    - **Önálló alkalmazás:** az egyes bérlők kiszolgálói (pl. *contosoconcerthall – &lt; User &gt; . database.Windows.net* )
+    - **Önálló alkalmazás:** az egyes bérlők kiszolgálói (pl. *contosoconcerthall – &lt; User &gt; . database.Windows.net*)
     - **Adatbázis/bérlő:** *tenants1-DPT- &lt; User &gt; . database.Windows.net*
     - **Több-bérlős adatbázis:** *tenants1-MT- &lt; User &gt; . database.Windows.net*
-2. Kattintson az adatbázismotor **összekötése**  >  **...** :
+2. Kattintson az adatbázismotor **összekötése**  >  **...**:
 
    ![katalóguskiszolgáló elemre](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. A bemutató hitelesítő adatai a következők: login = *fejlesztői* , Password = *P \@ ssword1*
+3. A bemutató hitelesítő adatai a következők: login = *fejlesztői*, Password = *P \@ ssword1*
 
     Az alábbi képen látható, hogy az *adatbázisnak a bérlői* minta alapján kell bejelentkeznie.
     ![kapcsolat](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

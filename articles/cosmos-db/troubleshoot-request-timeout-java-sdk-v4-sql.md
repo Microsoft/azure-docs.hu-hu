@@ -9,10 +9,10 @@ ms.author: kuthapar
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: a805300ac62d0627c9b06188c9764a6887947afe
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94411286"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-java-v4-sdk-request-timeout-exceptions"></a>Az Azure Cosmos DB Java v4 SDK-kérelmek időtúllépési kivételeinek diagnosztizálása és megoldása
@@ -26,7 +26,7 @@ Az alábbi lista a kérelmek időtúllépési kivételeinek ismert okait és meg
 ### <a name="existing-issues"></a>Meglévő problémák
 Ha úgy látja, hogy a kérések hosszabb ideig tartanak, vagy gyakrabban jelentkeznek az időzítéssel, frissítse a Java v4 SDK-t a legújabb verzióra. Megjegyzés: javasoljuk, hogy a 4.7.0 és újabb verziót használja. További részletekért tekintse meg a [Java v4 SDK kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md) .
 
-### <a name="high-cpu-utilization"></a>Magas CPU-kihasználtság
+### <a name="high-cpu-utilization"></a>Magas processzorkihasználtság
 A leggyakoribb eset a processzor magas kihasználtsága. Az optimális késés érdekében a CPU-használatnak nagyjából 40%-nak kell lennie. A maximális (nem átlagos) CPU-kihasználtság figyeléséhez használja a 10 másodperces értéket. A CPU-tüskék gyakoribbak a több partíciós lekérdezések esetében, ahol több kapcsolat is lehetséges egyetlen lekérdezéshez.
 
 #### <a name="solution"></a>Megoldás:
@@ -93,6 +93,6 @@ Az alkalmazásnak képesnek kell lennie az átmeneti hibák kezelésére, és sz
 ### <a name="failure-rate-violates-the-azure-cosmos-db-sla"></a>A meghibásodási arány sérti a Azure Cosmos DB SLA-t
 Forduljon az [Azure ügyfélszolgálatához](https://aka.ms/azure-support).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Azure Cosmos DB Java v4 SDK használatakor felmerülő problémák [diagnosztizálása és hibaelhárítása](troubleshoot-java-sdk-v4-sql.md) .
 * A [Java v4](performance-tips-java-sdk-v4-sql.md)teljesítményére vonatkozó irányelvek ismertetése.

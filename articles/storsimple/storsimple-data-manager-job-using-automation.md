@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94961209"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automation használata feladat indításához
@@ -50,7 +50,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet**.
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton** lehetőséget. Kattintson a **Létrehozás** gombra.
+   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton** lehetőséget. Kattintson a **Létrehozás** lehetőségre.
 
       ![3. futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -86,7 +86,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
 2. A **Runbook hozzáadása** területen kattintson a **meglévő runbook importálása** elemre.
 
-3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl** Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** gombra.
+3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl** Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
 
     ![2. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

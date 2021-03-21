@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010418"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>A folytonos adatokhoz tartozó feladatok ütemezett és futtatásához használja a csúszó ablakos triggert Azure Logic Apps
@@ -48,7 +48,7 @@ Az eseményindító és az ismétlődési eseményindító közötti különbsé
 
    ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Description |
    |----------|----------|-----------|------|-------------|
    | **Intervallum** | `interval` | Yes | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap <br>Hét: 1-71 hét <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
    | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét** vagy **hónap** |
@@ -58,7 +58,7 @@ Az eseményindító és az ismétlődési eseményindító közötti különbsé
 
    További ismétlődési lehetőségekért nyissa meg az **új paraméterek hozzáadása** listát. A kiválasztott lehetőségek megjelennek az triggeren a kijelölés után.
 
-   | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
+   | Tulajdonság | Kötelező | JSON-név | Típus | Description |
    |----------|----------|-----------|------|-------------|
    | **Késés** | No | késedelem | Sztring | Az egyes ismétlődések késleltetésének időtartama az [ISO 8601 dátum-idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Durations) használatával |
    | **Időzóna** | No | timeZone | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
@@ -92,7 +92,7 @@ Ebből a példából megtudhatja, hogyan jelenhet meg a csúszó ablak eseményi
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A következő művelet késleltetése a munkafolyamatokban](../connectors/connectors-native-delay.md)
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

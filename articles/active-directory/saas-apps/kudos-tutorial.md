@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 656c7467507c105f492f266f06c05a9f41e8f76a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Oktatóanyag: Azure Active Directory-integráció a dicsőséggel
@@ -61,13 +61,13 @@ A dicsőség az Azure AD-be való integrálásának konfigurálásához hozzá k
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Kudos**kifejezést, válassza a **dicsőség** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Kudos** kifejezést, válassza a **dicsőség** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![A dicsőség az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést és a Kudost a **Britta Simon**nevű tesztelési felhasználó alapján konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést és a Kudost a **Britta Simon** nevű tesztelési felhasználó alapján konfigurálja és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Kudos-beli kapcsolódó felhasználó közötti kapcsolati kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a Kudos használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés Kudos használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Kudos** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Kudos** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés Kudos használatával történő konfigurál
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,15 +171,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a dicsőséghez való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **dicsőség**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **dicsőség** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **dicsőség**elemet.
+2. Az alkalmazások listában válassza a **dicsőség** elemet.
 
     ![A dicsőség hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -205,9 +205,9 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a dicsőségbe, a dicső
 
    ![Beállítások](./media/kudos-tutorial/ic787806.png "Beállítások")
 
-1. Kattintson a **felhasználói rendszergazda**elemre.
+1. Kattintson a **felhasználói rendszergazda** elemre.
 
-1. Kattintson a **felhasználók** lapra, majd a **felhasználó hozzáadása**elemre.
+1. Kattintson a **felhasználók** lapra, majd a **felhasználó hozzáadása** elemre.
 
    ![Felhasználói rendszergazda](./media/kudos-tutorial/ic787809.png "Felhasználói rendszergazda")
 
@@ -217,7 +217,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a dicsőségbe, a dicső
 
     a. Adja meg egy érvényes Azure Active Directory- **fiók vezetéknevét,** **vezetéknevét**, **e-mail-címét** és egyéb részleteit a kapcsolódó szövegmezőbe.
 
-    b. Kattintson a **felhasználó létrehozása**gombra.
+    b. Kattintson a **felhasználó létrehozása** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez a Kudos által biztosított bármely más Kudos felhasználói fiók létrehozása eszközt vagy API-t használhatja.

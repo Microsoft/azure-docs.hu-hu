@@ -16,10 +16,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 98e587103e63cd5cc26eab5b00864d00e0b9007f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96019420"
 ---
 # <a name="send-secure-push-notifications-from-azure-notification-hubs"></a>Biztonságos leküldéses értesítések küldése az Azure Notification Hubs
@@ -56,13 +56,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan küldhet biztonságos leküldése
 
 ## <a name="modify-the-windows-phone-project"></a>A Windows Phone-telefon projekt módosítása
 
-1. A **NotifyUserWindowsPhone** projektben adja hozzá a következő kódot a app.XAML.cs a leküldéses háttérbeli feladat regisztrálásához. Szúrja be az alábbi kódsort az `OnLaunched()` metódus végén:
+1. A **NotifyUserWindowsPhone** projektben adja hozzá a következő kódot az app. XAML. cs számára a leküldéses háttér-feladat regisztrálásához. Szúrja be az alábbi kódsort az `OnLaunched()` metódus végén:
 
     ```csharp
     RegisterBackgroundTask();
     ```
 
-2. Továbbra is a App.xaml.cs-ben adja hozzá a következő kódot közvetlenül a `OnLaunched()` metódus után:
+2. Még mindig az app. XAML. cs-ban adja hozzá a következő kódot közvetlenül a `OnLaunched()` metódus után:
 
     ```csharp
     private async void RegisterBackgroundTask()
@@ -80,7 +80,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan küldhet biztonságos leküldése
     }
     ```
 
-3. Adja hozzá a következő `using` utasításokat a app.XAML.cs fájl elejéhez:
+3. Adja hozzá a következő `using` utasításokat az app. XAML. cs fájl elejéhez:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -174,7 +174,7 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
     ![A csomagra összpontosító Megoldáskezelő ablak képernyőképe. a appxmanifest a rendelkezésre álló deklarációkkal, a támogatott deklarációkkal, a leküldéses értesítésekkel és a beléptetési pontokkal kapcsolatos, piros színnel megadott beállításokkal.][13]
 16. Kattintson a **File** (Fájl) menü **Save All** (Összes mentése) elemére.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához tegye a következőket:
 

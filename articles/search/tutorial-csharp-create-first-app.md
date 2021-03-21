@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 02/26/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0a57e45b264badffd0305eb6ac5b3c8f7c42adf3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695124"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
@@ -130,7 +130,7 @@ A **Hotel**, a **címe** és a **szoba** osztályok készlete [*összetett típu
 
 1. A Megoldáskezelőban kattintson a jobb gombbal a **modellek**  >    >  **új elem** hozzáadása lehetőségre.
 
-1. Válassza ki az **osztályt** , és nevezze el az elem Hotel.cs. Cserélje le a Hotel.cs összes tartalmát a következő kódra. Figyelje meg, hogy az osztály **címe** és a **helyiség** tagja, ezek a mezők maguk az osztályok, ezért a modellekhez is szüksége lesz.
+1. Válassza ki az **osztályt** , és nevezze el a (z) Hotel. cs elemet. Cserélje le a Hotel. cs összes tartalmát a következő kódra. Figyelje meg, hogy az osztály **címe** és a **helyiség** tagja, ezek a mezők maguk az osztályok, ezért a modellekhez is szüksége lesz.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -181,7 +181,7 @@ A **Hotel**, a **címe** és a **szoba** osztályok készlete [*összetett típu
     }
     ```
 
-1. Ugyanezt a folyamatot kell megismételni **a Address.cs** elnevezésű modell létrehozásához. Cserélje le a tartalmát az alábbira.
+1. Ismételje meg ugyanezt a modellt a következő **címen** , és nevezze el a fájl címe. cs. Cserélje le a tartalmát az alábbira.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -208,7 +208,7 @@ A **Hotel**, a **címe** és a **szoba** osztályok készlete [*összetett típu
     }
     ```
 
-1. És újra, kövesse ugyanezt a folyamatot a **Room** osztály létrehozásához, nevezze el a fájlt Room.cs.
+1. És újra, kövesse ugyanezt a folyamatot a **Room** osztály létrehozásához, a file Room. cs nevet.
 
     ```csharp
     using Azure.Search.Documents.Indexes;
@@ -418,7 +418,7 @@ Ezzel befejezte a nézetet. Ezen a ponton a modellek és a nézetek is befejező
 
 Ebben a lépésben módosítsa a **Kezdőlap vezérlő** tartalmát.
 
-1. Nyissa meg a HomeController.cs fájlt, és cserélje le a **using** utasításokat a következőre.
+1. Nyissa meg a HomeController. cs fájlt, és cserélje le a **using** utasításokat a következőre.
 
     ```csharp
     using Azure;

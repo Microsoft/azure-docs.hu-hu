@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b939f10d2c3bcf3aeba7422809a1038b2a75f123
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92511069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Oktatóanyag: a Azure Active Directory integrációja a rally szoftverrel
@@ -67,7 +67,7 @@ A rally szoftver Azure AD-integrációjának konfigurálásához hozzá kell adn
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a rally szoftverrel egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a rally szoftverrel egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a szoftverhez kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a rally szoftverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a rally szoftverrel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **rally Software** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **rally Software** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -126,27 +126,27 @@ Az Azure AD egyszeri bejelentkezés a rally szoftverrel való konfigurálásáho
 
 1. Jelentkezzen be a **rally Software** -bérlőbe.
 
-2. A felső eszköztáron kattintson a **telepítés**elemre, majd válassza az **előfizetés**lehetőséget.
+2. A felső eszköztáron kattintson a **telepítés** elemre, majd válassza az **előfizetés** lehetőséget.
    
     ![Előfizetés](./media/rally-software-tutorial/ic769531.png "Előfizetés")
 
 3. Kattintson a **művelet** gombra. Válassza az **előfizetés szerkesztése** lehetőséget az eszköztár jobb felső sarkában.
 
-4. Az **előfizetés** párbeszédpanelen hajtsa végre a következő lépéseket, majd kattintson a **Mentés & Bezárás**gombra:
+4. Az **előfizetés** párbeszédpanelen hajtsa végre a következő lépéseket, majd kattintson a **Mentés & Bezárás** gombra:
    
     ![Hitelesítés](./media/rally-software-tutorial/ic769542.png "Hitelesítés")
    
     a. Válassza a **rally vagy egyszeri bejelentkezéses hitelesítés** lehetőséget a hitelesítés legördülő listából.
 
-    b. Az **identitás-szolgáltató URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt. 
+    b. Az **identitás-szolgáltató URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt. 
 
-    c. Az **SSO-kijelentkezés** szövegmezőbe illessze be a **kijelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    c. Az **SSO-kijelentkezés** szövegmezőbe illessze be a **kijelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -170,15 +170,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a rally szoftverhez való hozzáférés megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **rally szoftver**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **rally szoftver** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **rally szoftver**lehetőséget.
+2. Az alkalmazások listában válassza a **rally szoftver** lehetőséget.
 
     ![A rally szoftver hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -200,11 +200,11 @@ Ahhoz, hogy az Azure AD-felhasználók be tudjanak jelentkezni, a Azure Active D
 
 1. Jelentkezzen be a rally Software-bérlőbe.
 
-2. Lépjen a **telepítő \> felhasználók**elemre, majd kattintson az **+ új hozzáadása**lehetőségre.
+2. Lépjen a **telepítő \> felhasználók** elemre, majd kattintson az **+ új hozzáadása** lehetőségre.
    
     ![Felhasználók](./media/rally-software-tutorial/ic781039.png "Felhasználók")
 
-3. Írja be a nevet az új felhasználó szövegmezőbe, majd kattintson a **Hozzáadás a részletekkel**lehetőségre.
+3. Írja be a nevet az új felhasználó szövegmezőbe, majd kattintson a **Hozzáadás a részletekkel** lehetőségre.
 
 4. A **felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
    
@@ -214,9 +214,9 @@ Ahhoz, hogy az Azure AD-felhasználók be tudjanak jelentkezni, a Azure Active D
    
     b. Az **E-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet brittasimon@contoso.com .
 
-    c. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
+    c. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta** nevet.
 
-    d. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
+    d. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 
     e. Kattintson a **Mentés és bezárás** lehetőségre.
 

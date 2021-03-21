@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 91b6d432042aa37a1b929f61e9742f814fb9dc40
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370326"
 ---
 # <a name="how-to-configure-your-azure-application-offer-listing-details"></a>Az Azure-alkalmazások ajánlati listájának konfigurálása – részletek
@@ -94,6 +94,6 @@ Az ajánlatot bemutató YouTube-vagy Vimeo-videókra mutató hivatkozásokat is 
 
 A következő lapra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: megtekintheti a célközönséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Előzetes verzió célközönségének hozzáadása az Azure-alkalmazás ajánlatához](create-new-azure-apps-offer-preview.md)

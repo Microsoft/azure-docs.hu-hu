@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 92cc6157c590d3e05b4002e0f071c08e4ec23a16
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620324"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartomány állapotának ellenőrzését
@@ -80,7 +80,7 @@ Az állapot riasztásai a következő súlyossági szintekre vannak kategorizál
  * A **figyelmeztető riasztások** értesítik a felügyelt tartományi műveletekkel kapcsolatos problémákról, ha a probléma továbbra is fennáll. Ezek a riasztások a felügyelt tartomány biztonságossá tételére vonatkozó javaslatokat is kínálnak.
  * Az **tájékoztató riasztások** olyan értesítések, amelyek negatív hatással vannak a felügyelt tartományra. Az tájékoztató riasztások betekintést nyújtanak a felügyelt tartományba tartozó adatokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az állapot lapon megjelenő riasztásokkal kapcsolatos további információkért lásd: [riasztások feloldása a felügyelt tartományon][troubleshoot-alerts]
 

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfb38f9fcdba6898b690d0af68b715fea07e80bb
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743105"
 ---
-# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Az Azure AD Multi-Factor Authentication engedélyezése és használata az alkalmazás jelszavait használó örökölt alkalmazásokkal
+# <a name="enable-and-use-azure-ad-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Azure AD többtényezős hitelesítésének engedélyezése és használata alkalmazásjelszavakat használó régi alkalmazásokkal
 
 Néhány régebbi, nem böngészőbeli alkalmazás, például az Office 2010 vagy a korábbi és az Apple Mail az iOS 11 előtt nem érti a hitelesítési folyamat szüneteltetését vagy megszakítását. Ha egy felhasználó engedélyezve van az Azure AD Multi-Factor Authentication, és megkísérli használni a régebbi, nem böngészőbeli alkalmazások egyikét, nem tudnak sikeresen hitelesíteni. Ha ezeket az alkalmazásokat biztonságos módon szeretné használni az Azure AD Multi-Factor Authentication a felhasználói fiókokhoz, az alkalmazás jelszavait is használhatja. Ezek az alkalmazások jelszavai lecserélték a hagyományos jelszót, hogy az alkalmazások megkerüljék a többtényezős hitelesítést, és megfelelően működjenek.
 
@@ -55,7 +55,7 @@ Azt javasoljuk, hogy eszközönként hozzon létre egy alkalmazási jelszót, é
 
 ## <a name="federated-or-single-sign-on-app-passwords"></a>Összevont vagy egyszeri bejelentkezési alkalmazás jelszavai
 
-Az Azure AD támogatja az összevonást vagy az egyszeri bejelentkezést (SSO) helyszíni Active Directory tartományi szolgáltatások (AD DS). Ha a szervezete az Azure AD-vel összevont és Azure AD-Multi-Factor Authentication használ, a következő alkalmazás-jelszóra vonatkozó szempontokat kell figyelembe venni:
+Az Azure AD támogatja az összevonást vagy az egyszeri bejelentkezést (SSO) helyszíni Active Directory Domain Services (AD DS). Ha a szervezete az Azure AD-vel összevont és Azure AD-Multi-Factor Authentication használ, a következő alkalmazás-jelszóra vonatkozó szempontokat kell figyelembe venni:
 
 >[!NOTE]
 > A következő pontok csak az összevont (SSO) ügyfelekre érvényesek.
@@ -103,6 +103,6 @@ Amikor a felhasználók befejezik az Azure AD-Multi-Factor Authentication kezdet
 
 A felhasználók a regisztráció után is létrehozhatnak alkalmazás-jelszavakat. További információk és részletes lépések a felhasználók számára: Mik az [alkalmazások jelszavai az Azure ad-ben multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-app-passwords.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan engedélyezhető a felhasználók számára az Azure AD-Multi-Factor Authentication gyors regisztrálása: a [kombinált biztonsági információk regisztrációjának áttekintése](concept-registration-mfa-sspr-combined.md).

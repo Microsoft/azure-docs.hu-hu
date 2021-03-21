@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
 ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96327508"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
@@ -73,7 +73,7 @@ Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a 
    > Az Exportálás az oldal Blobokkal működik, amelyeket a klasszikus és a Resource Manager-beli Storage-fiókok is támogatnak, de jelenleg nem támogatottak a blob Storage-fiókok. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
    >
 
-    ![Tárfiók](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
+    ![A(z)](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. Válassza ki a kívánt BLOB-tárolót, és kattintson a **kiválasztás** gombra. Ha új tárolót szeretne használni, kattintson a **tároló hozzáadása** lehetőségre az első hozzáadásához, majd válassza ki a listából.
 
     ![A contoso55 tárolóban a + Container beállítás ki van emelve. Egy tároló szerepel a listán, a cachesaves, és ki van választva és ki van emelve. A kiválasztási lehetőség ki van választva és ki van emelve.](./media/cache-how-to-import-export-data/cache-export-data-container.png)
@@ -151,7 +151,7 @@ Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Hibaüzenetet kaptam az adataim Azure Blob Storageba való exportálásakor. Mi történt?
 Az Exportálás csak a RDB tárolt fájlok esetében működik. Más blob-típusok jelenleg nem támogatottak, beleértve a gyors és a lassú elérésű csomagokat tartalmazó blob Storage-fiókokat is. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)

@@ -1,6 +1,6 @@
 ---
 title: Azure AD jelszavas védelem – Azure Active Directory
-description: Gyenge jelszavak betiltása a helyszíni Active Directory tartományi szolgáltatások környezetekben az Azure AD jelszavas védelme használatával
+description: Gyenge jelszavak betiltása a helyszíni Active Directory Domain Services környezetekben az Azure AD jelszavas védelme használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96743921"
 ---
-# <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>A helyszíni Azure AD-beli jelszavas védelem betartatása Active Directory tartományi szolgáltatások
+# <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>A helyszíni Azure AD-beli jelszavas védelem betartatása Active Directory Domain Services
 
-Az Azure AD jelszavas védelme észleli és blokkolja az ismert gyenge jelszavakat és azok változatait, valamint blokkolhatja a szervezete számára jellemző további gyenge kifejezéseket is. Az Azure AD jelszavas védelem helyszíni üzembe helyezése ugyanazokat a globális és egyéni tiltott jelszavakat használja, amelyek az Azure AD-ben vannak tárolva, és ugyanazokat a helyszíni jelszavakat ellenőrzi, mint az Azure AD a felhőalapú módosításokhoz. Ezeket az ellenőrzéseket a rendszer a jelszó módosításakor és a jelszó-visszaállítási események során hajtja végre a helyszíni Active Directory tartományi szolgáltatások (AD DS) tartományvezérlőkön.
+Az Azure AD jelszavas védelme észleli és blokkolja az ismert gyenge jelszavakat és azok változatait, valamint blokkolhatja a szervezete számára jellemző további gyenge kifejezéseket is. Az Azure AD jelszavas védelem helyszíni üzembe helyezése ugyanazokat a globális és egyéni tiltott jelszavakat használja, amelyek az Azure AD-ben vannak tárolva, és ugyanazokat a helyszíni jelszavakat ellenőrzi, mint az Azure AD a felhőalapú módosításokhoz. Ezeket az ellenőrzéseket a rendszer a jelszó módosításakor és a jelszó-visszaállítási események során hajtja végre a helyszíni Active Directory Domain Services (AD DS) tartományvezérlőkön.
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 
@@ -95,7 +95,7 @@ Az erdőben lévő AD DS erdőt és az összes telepített proxy szolgáltatást
 
 Az Azure AD jelszavas védelem két szükséges ügynök-telepítője a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A helyszíni Azure AD jelszavas védelem használatának megkezdéséhez kövesse az alábbi útmutatókat:
 

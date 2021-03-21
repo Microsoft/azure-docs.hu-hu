@@ -7,11 +7,11 @@ ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 00207ffb8480ae99c2f1aad74183fca9ea45ee17
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523549"
 ---
 # <a name="work-with-alerts-on-your-sensor"></a>Riasztások használata az érzékelőn
@@ -68,9 +68,9 @@ Például:
 
   - A hálózati eszközökön észlelt kártevő-eseményeket a kockázatértékelési jelentések jelentik. Ha a kártevő-eseményekre vonatkozó riasztások el vannak *némítva*, az érintett eszközök nem lesznek kiszámítva a kockázatértékelési jelentésben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
-[Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes) 
- [A riasztásokban](how-to-view-information-provided-in-alerts.md) 
- megadott információk megtekintése [A riasztási esemény kezelése](how-to-manage-the-alert-event.md) 
- [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)
+- [Tanulási és intelligens informatikai képzési módok](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+- [A riasztások által biztosított információk megtekintése](how-to-view-information-provided-in-alerts.md)
+- [A riasztási esemény kezelése](how-to-manage-the-alert-event.md)
+- [Riasztási munkafolyamatok felgyorsítása](how-to-accelerate-alert-incident-response.md)

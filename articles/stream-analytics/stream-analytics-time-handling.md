@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019941"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>A Azure Stream Analytics időközbeni kezelési értelmezése
@@ -129,7 +129,7 @@ Stream Analytics feladatok több **rendezési** lehetőséggel rendelkeznek. A k
 
 A [stream Analytics feladatok mérőszámai](stream-analytics-monitoring.md)segítségével megfigyelheti az események rendezésének időbeli tűréshatárait. A következő metrikák szükségesek:
 
-|Metrika  | Leírás  |
+|Metric  | Leírás  |
 |---------|---------|
 | **Megrendelésen kívüli események** | Azt jelzi, hogy hány esemény érkezett el a megadott sorrendben, és amelyek el lettek dobva, vagy egy beállított időbélyeg lett megadva. Ezt a metrikát közvetlenül érinti a Azure Portalban lévő feladathoz tartozó **esemény** - **megrendelési események** beállításának beállítása. |
 | **Késői bemeneti események** | Azt jelzi, hogy hány esemény érkezik a forrástól. Ez a metrika olyan eseményeket tartalmaz, amelyek el lettek dobva, vagy az időbélyege módosult. Ezt a metrikát közvetlenül érinti a Azure Portalban a feladathoz tartozó **esemény rendezési** lapján a **késői beállításban megjelenő események** konfigurációja. |
@@ -219,7 +219,7 @@ Ebben az ábrán a következő tűréshatárok használatosak:
 
    ![Azure Stream Analytics alstreamek vízjelének illusztrációja](media/stream-analytics-time-handling/watermark-graph-3.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Stream Analytics az események sorrendjét érintő megfontolások]()
 - [Stream Analytics feladatok metrikái](stream-analytics-monitoring.md)

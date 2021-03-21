@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 1ae9e39f5a23725b17451d7144c8304194d2a1d0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92514367"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-user-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Netskope felhasználói hitelesítéssel
@@ -47,15 +47,15 @@ A Netskope felhasználói hitelesítés Azure AD-be való integrálásának konf
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Netskope felhasználói hitelesítés** kifejezést a keresőmezőbe.
 1. Válassza az **Netskope felhasználói hitelesítés** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netskope-user-authentication"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Netskope felhasználói hitelesítéshez
 
-Konfigurálja és tesztelje az Azure AD SSO-t Netskope felhasználói hitelesítéssel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Netskope felhasználói hitelesítése során.
+Konfigurálja és tesztelje az Azure AD SSO-t Netskope felhasználói hitelesítéssel egy **B. Simon** nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Netskope felhasználói hitelesítése során.
 
 Az Azure AD SSO Netskope felhasználói hitelesítéssel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -70,8 +70,8 @@ Az Azure AD SSO Netskope felhasználói hitelesítéssel való konfigurálásáh
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **Netskope felhasználói hitelesítés** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Netskope felhasználói hitelesítés** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -104,7 +104,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -116,13 +116,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Netskope felhasználói hitelesítéshez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Netskope felhasználói hitelesítés**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Netskope felhasználói hitelesítés** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -138,7 +138,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A képernyőképen a beállítások közül kiválasztott aktív platform látható.](./media/netskope-user-authentication-tutorial/user1.png)
 
-1. Görgessen le a **proxy továbbításához** , és válassza az **SAML**lehetőséget.
+1. Görgessen le a **proxy továbbításához** , és válassza az **SAML** lehetőséget.
 
     ![A képernyőfelvételen az aktív platformról kiválasztott SAML látható.](./media/netskope-user-authentication-tutorial/config-saml.png)
 
@@ -150,7 +150,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     b. Másolja az **SAML ACS URL-címet** , és illessze be a **Válasz URL-** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-1. Kattintson a **fiók hozzáadása**lehetőségre.
+1. Kattintson a **fiók hozzáadása** lehetőségre.
 
     ![Képernyőfelvétel: a SAML ablaktáblán kiválasztott fiók hozzáadása.](./media/netskope-user-authentication-tutorial/config-addaccount.png)
 
@@ -166,7 +166,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     d. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be a **identitásszolgáltató-tanúsítvány** szövegmezőbe.
 
-    e. Kattintson a **Mentés**gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-netskope-user-authentication-test-user"></a>Netskope felhasználói hitelesítési teszt felhasználó létrehozása
 
@@ -184,11 +184,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A képernyőképen az aktív platformról kiválasztott felhasználók láthatók.](./media/netskope-user-authentication-tutorial/add-user.png)
 
-1. Kattintson a **felhasználók hozzáadása**elemre.
+1. Kattintson a **felhasználók hozzáadása** elemre.
 
     ![Képernyőfelvétel: a felhasználók párbeszédpanel, amelyen a felhasználók hozzáadása lehetőséget választhatja.](./media/netskope-user-authentication-tutorial/user-add.png)
 
-1. Adja meg a hozzáadni kívánt felhasználó e-mail-címét, majd kattintson a **Hozzáadás**gombra.
+1. Adja meg a hozzáadni kívánt felhasználó e-mail-címét, majd kattintson a **Hozzáadás** gombra.
 
     ![Képernyőfelvétel: felhasználók hozzáadása, ahol megadhatja a felhasználók listáját.](./media/netskope-user-authentication-tutorial/add-user-popup.png)
 

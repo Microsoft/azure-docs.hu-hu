@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
 ms.openlocfilehash: 9c3908c81e7d89efe3da90f9707023cb7c184795
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94365007"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>Külső & közösségi tartalom a Text Analytics kognitív szolgáltatáshoz
@@ -47,7 +47,7 @@ ms.locfileid: "94365007"
 
 + [A Text Analytics Kinyeri a főbb kifejezéseket a Power BI és a Microsoft Cognitive Services használatával](https://www.youtube.com/watch?v=R_-1TB2BF14)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Információra van szüksége a szolgáltatásról vagy a használati esetről, amelyet nem takarunk el? Érdemes lehet a [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics)-on megkeresni vagy szavazni. 
 

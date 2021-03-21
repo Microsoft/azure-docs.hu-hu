@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021520"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
@@ -58,17 +58,17 @@ Egy ILB-bekészítés létrehozása nem sokban különbözik a hagyományos köz
 
 A Virtual Network ablaktáblán található egy VNet konfigurációs beállítás, amely lehetővé teszi a külső VIP-vagy belső VIP-címek közötti választást. Az alapértelmezett érték a Külső. Ha a külső értékre van állítva, a beadási szolgáltatás egy internetről elérhető VIP-t használ. Ha a Belső lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva. 
 
-A belső lehetőség kiválasztása után a rendszer eltávolítja a kiegészítő IP-címeket, és ehelyett a beadási altartományt kell megadnia. Külső virtuális IP-cím használatával a benyújtó által létrehozott alkalmazások altartományában a kiegészítő csomag neve szerepel. Ha a központjának neve **_contosotest_* _, és az alkalmazás ebben a kiegészítőben a _*_mytest_*_ neve, az altartomány formátuma _*_contosotest.p.azurewebsites.net_*_ , az alkalmazás URL-címe pedig _*_mytest.contosotest.p.azurewebsites.net_*_. Ha a VIP-típust belső értékre állítja, a beadási név nem szerepel a központhoz tartozó altartományban. Explicit módon megadja az altartományt. Ha az altartomány _*_contoso.Corp.net_*_ , és a _*_timereporting_*_ nevű szakterületen hozta létre az alkalmazást, akkor az alkalmazás URL-címe _*_timereporting.contoso.Corp.net_*_.
+A belső lehetőség kiválasztása után a rendszer eltávolítja a kiegészítő IP-címeket, és ehelyett a beadási altartományt kell megadnia. Külső virtuális IP-cím használatával a benyújtó által létrehozott alkalmazások altartományában a kiegészítő csomag neve szerepel. Ha a központot a (z) ***contosotest** _ névvel ellátott, és a kiegészítőben lévő alkalmazás neve _*_mytest_*_, az altartomány formátuma _*_contosotest.p.azurewebsites.net_*_ , az alkalmazás URL-címe pedig _* _mytest.contosotest.p.azurewebsites.net_* *. Ha a VIP-típust belső értékre állítja, a beadási név nem szerepel a központhoz tartozó altartományban. Explicit módon megadja az altartományt. Ha az altartomány ***contoso.Corp.net**_ , és a _*_timereporting_*_ nevű szakterületen hozta létre az alkalmazást, akkor az alkalmazás URL-címe a következő: _ *_timereporting.contoso.Corp.net_* *.
 
 ## <a name="apps-in-an-ilb-ase"></a>Alkalmazások egy ILB-ben
 Az alkalmazások ILB-ben történő létrehozása megegyeznek az alkalmazások szokásos módon történő létrehozásával. 
 
-1. A Azure Portal válassza a _ *erőforrás létrehozása-> web és mobil – > webes** vagy **mobil** -vagy **API-alkalmazás** lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil-> webes** vagy **mobil** vagy API- **alkalmazás** elemet.
 2. Adja meg az alkalmazás nevét.
 3. Válassza ki előfizetését.
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 5. Válasszon ki vagy hozzon létre egy App Service tervet (ASP). Ha új ASP hoz létre, válassza ki a beadási helyet, és válassza ki azt a munkavégző készletet, amelyben létre szeretné hozni az ASP-t. Az ASP létrehozásakor kiválaszthatja a beadási helyet és a munkavégző készletet. Az alkalmazás nevének megadásakor látni fogja, hogy az alkalmazás neve alá tartozó altartomány helyébe a szolgáltató altartománya kerül. 
-6. Kattintson a **Létrehozás** gombra. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
+6. Válassza a **Létrehozás** lehetőséget. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
 
 ![Bemutatja, hogyan hozhat létre alkalmazást egy ILB-előAzure Portalban.][2]
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 67153fa750fee765dcaa1072eec87a2f6169b918
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93397280"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
@@ -26,7 +26,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Figyelő és átirányítási szabály hozzáadása
 * Virtuálisgép-méretezési csoport létrehozása az alapértelmezett háttérkészlettel
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ A létrehozott erőforrások közötti kommunikációhoz virtuális hálózatra 
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portal bal felső sarkában kattintson az **Erőforrás létrehozása** gombra.
-3. Válassza a **Hálózatkezelés** , majd az **Application Gateway** elemet a Kiemeltek listából.
+3. Válassza a **Hálózatkezelés**, majd az **Application Gateway** elemet a Kiemeltek listából.
 4. Adja meg a következő értékeket az alkalmazásátjáróhoz:
 
    - Az alkalmazásátjáró neve *myAppGateway*.
@@ -87,7 +87,7 @@ A létrehozott erőforrások közötti kommunikációhoz virtuális hálózatra 
      ![Virtuális hálózat létrehozása](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. A virtuális hálózat és az alhálózat létrehozásához kattintson az **OK** gombra.
-8. Az előtérbeli **IP-konfiguráció** területen győződjön meg arról, hogy az **IP-cím típusa** **nyilvános** , és az **új létrehozása** elem ki van választva. Adja meg a *myAGPublicIPAddress* nevet. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+8. Az előtérbeli **IP-konfiguráció** területen győződjön meg arról, hogy az **IP-cím típusa** **nyilvános**, és az **új létrehozása** elem ki van választva. Adja meg a *myAGPublicIPAddress* nevet. Fogadja el az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
 9. A **figyelő konfigurációja** területen válassza a **https** lehetőséget, majd válassza ki **a kívánt fájlt** , és keresse meg a *c:\appgwcert.pfx* fájlt, és válassza a **Megnyitás** lehetőséget.
 10. Írja be a *appgwcert* nevet a tanúsítvány neveként és a *Azure123456!* jelszót.
 11. Hagyja letiltani a webalkalmazási tűzfalat, majd kattintson **az OK gombra**.
@@ -140,7 +140,7 @@ Ebben a példában egy olyan virtuálisgép-méretezési csoportot hoz létre, a
 7. Az **erőforráscsoport** területen válassza a **myResourceGroupAG** lehetőséget.
 8. A **Felhasználónév** mezőbe írja be a következőt: *azureuser*.
 9. A **jelszó** mezőbe írja be a következőt: *Azure123456!* és erősítse meg a jelszót.
-10. A **Példányszám** mezőben ellenőrizze, hogy az érték **2** -e.
+10. A **Példányszám** mezőben ellenőrizze, hogy az érték **2**-e.
 11. A **példány mérete** beállításnál válassza a **D2s_v3** lehetőséget.
 12. A **hálózatkezelés** területen győződjön meg arról, hogy a terheléselosztási **beállítások** beállítás értéke **Application Gateway**.
 13. Győződjön meg arról, hogy az **Application Gateway** **myAppGateway** van beállítva.
@@ -156,13 +156,13 @@ A virtuálisgép-méretezési csoport portál felhasználói felülete létrehoz
 3. Válassza ki a **háttérbeli készletek** elemet.
 4. Válassza a **myAppGatewaymyvmss** lehetőséget.
 5. Válassza **a minden cél eltávolítása a háttér-készletből** lehetőséget.
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 7. A folyamat befejezése után válassza ki a **myAppGatewaymyvmss** háttér-készletet, válassza a **Törlés** lehetőséget, majd kattintson az **OK gombra** a megerősítéshez.
 8. Válassza a **appGatewayBackendPool** lehetőséget.
 9. A **célok** területen válassza a **VMSS** lehetőséget.
 10. A **VMSS** területen válassza a **myvmss** elemet.
 11. A **hálózati adapter konfigurációja** területen válassza a **myvmssNic** lehetőséget.
-12. Válassza a **Mentés** lehetőséget.
+12. Kattintson a **Mentés** gombra.
 
 ### <a name="upgrade-the-scale-set"></a>A méretezési csoport frissítése
 
@@ -222,6 +222,6 @@ Az alkalmazás nyilvános IP-címét az Application Gateway – áttekintés old
 
    ![Az alap URL-cím tesztelése az alkalmazásátjáróban](./media/redirect-http-to-https-powershell/application-gateway-iistest.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [hozhat létre egy belső átirányítással rendelkező Application Gateway-átjárót](redirect-internal-site-powershell.md).

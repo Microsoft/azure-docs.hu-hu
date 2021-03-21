@@ -7,10 +7,10 @@ ms.service: azure-percept
 ms.topic: reference
 ms.date: 02/16/2021
 ms.openlocfilehash: 5b8a84b77fbde41748a2d9ef99a92cb6af1bbea6
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102097584"
 ---
 # <a name="azure-percept-dk-datasheet"></a>Azure Percept DK Adatlap
@@ -29,7 +29,7 @@ ms.locfileid: "102097584"
 |AI-gyorsítás                 |1x Intel Movidius, számtalan X integrált ISP (Azure Percept-jövőkép) |
 |Érzékelők és vizuális mutatók   |Sony IMX219 kamera-érzékelő 6P-lencsével<br>Megoldás: 8MP on 30FPS, Distance: 50cm-Infinity<br>FoV: 120 fokos átló, szín: széles dinamikus tartomány, rögzített fókuszú redőny|
 |Biztonság                        |TPM 2,0 Nuvoton NCPT750 |
-|Kapcsolatok                    |Wi-Fi és Bluetooth a Realtek RTL882CE Single-chip Controller használatával     |
+|Kapcsolat                    |Wi-Fi és Bluetooth a Realtek RTL882CE Single-chip Controller használatával     |
 |Tárolás                         |16GB     |
 |Memória                          |4 GB     |
 |Portok                           |1x Ethernet <br> 2x USB – A 3,0 <br> 1x USB-C     |

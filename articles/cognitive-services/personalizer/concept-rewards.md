@@ -6,10 +6,10 @@ ms.subservice: personalizer
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: f3249ba2089c3d9650aa46f665353ad392d0e773
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94365567"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>A jutalom pontszámai a személyre szabás sikerességét jelzik
@@ -72,8 +72,8 @@ A jutalmazási API-t ugyanazzal az AZONOSÍTÓJÚ eseménnyel is meghívhatja, k
 
 Összesítési értékek:
 
-*  **Először is** : fogadja el az esemény első jutalmazási pontszámát, és elveti a többiet.
-* **Sum** : a Napszállta összegyűjtött összes jutalmat begyűjti, és együtt adja hozzá őket.
+*  **Először is**: fogadja el az esemény első jutalmazási pontszámát, és elveti a többiet.
+* **Sum**: a Napszállta összegyűjtött összes jutalmat begyűjti, és együtt adja hozzá őket.
 
 A **jutalmazási várakozási idő** után kapott összes nyereményt elvetettük, és nincs hatással a modellek betanítására.
 
@@ -81,15 +81,15 @@ A jutalmazási pontszámok hozzáadásával a végső jutalom a várt pontszám-
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Ajánlott eljárások a jutalmazási pontszám kiszámításához
 
-* **Tekintse át a sikeres személyre szabáshoz szükséges valós mutatókat** : a kattintások szempontjából könnyen átgondolható, de a jó jutalom az, hogy mit szeretne elérni a felhasználók számára, ahelyett, *hogy el* szeretné *érni* a felhasználókat.  Előfordulhat például, hogy a kattintásokra való jutalom a clickbait-tartalom kiválasztásához vezethet.
+* **Tekintse át a sikeres személyre szabáshoz szükséges valós mutatókat**: a kattintások szempontjából könnyen átgondolható, de a jó jutalom az, hogy mit szeretne elérni a felhasználók számára, ahelyett, *hogy el* szeretné *érni* a felhasználókat.  Előfordulhat például, hogy a kattintásokra való jutalom a clickbait-tartalom kiválasztásához vezethet.
 
-* **Jutalom pontszáma a személyre szabás kihasználása érdekében** : egy film javaslatának személyre szabása remélhetőleg azt eredményezi, hogy a felhasználó megnézi a filmet, és magas minősítést ad neki. Mivel a film minősítése valószínűleg sok dologtól függ (az eljáró minőségtől, a felhasználó hangulatának minőségétől), ez nem jó jutalom a *személyre szabáshoz* . A film első néhány percét megtekintő felhasználó a személyre szabás hatékonyságának jobb jele lehet, ha pedig az 5 perc után 1 jutalmat küld, a jobb jel lesz.
+* **Jutalom pontszáma a személyre szabás kihasználása érdekében**: egy film javaslatának személyre szabása remélhetőleg azt eredményezi, hogy a felhasználó megnézi a filmet, és magas minősítést ad neki. Mivel a film minősítése valószínűleg sok dologtól függ (az eljáró minőségtől, a felhasználó hangulatának minőségétől), ez nem jó jutalom a *személyre szabáshoz* . A film első néhány percét megtekintő felhasználó a személyre szabás hatékonyságának jobb jele lehet, ha pedig az 5 perc után 1 jutalmat küld, a jobb jel lesz.
 
-* A **jutalmak csak a RewardActionID vonatkoznak** : a személyre szabott jutalom a RewardActionID-ben megadott művelet hatékonyságát értelmezi. Ha úgy dönt, hogy más műveleteket is megjelenít, és a felhasználó rákattint rájuk, a jutalomnak nulla értékűnek kell lennie.
+* A **jutalmak csak a RewardActionID vonatkoznak**: a személyre szabott jutalom a RewardActionID-ben megadott művelet hatékonyságát értelmezi. Ha úgy dönt, hogy más műveleteket is megjelenít, és a felhasználó rákattint rájuk, a jutalomnak nulla értékűnek kell lennie.
 
-* A nem **szándékolt következmények megfontolása** : hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)érdekében vezetnek a felelős eredményekhez.
+* A nem **szándékolt következmények megfontolása**: hozzon létre jutalmazási funkciókat, amelyek az [etikai és a felelősségteljes használat](ethics-responsible-use.md)érdekében vezetnek a felelős eredményekhez.
 
-* **Növekményes jutalmak használata** : a kisebb felhasználói viselkedésmódokkal kapcsolatos részleges jutalmak hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
+* **Növekményes jutalmak használata**: a kisebb felhasználói viselkedésmódokkal kapcsolatos részleges jutalmak hozzáadásával a személyre szabott előnyökkel lehet elérni a jobb jutalmakat. Ez a növekményes jutalom lehetővé teszi az algoritmus számára, hogy megismerje, hogy minél közelebb kerüljön a felhasználóhoz a végső kívánt viselkedésben.
     * Ha a filmek listáját jeleníti meg, ha a felhasználó az elsőre mutat a további információk megtekintéséhez, akkor megtudhatja, hogy az egyes felhasználók bevonása történt. A viselkedés a 0,1 értékű jutalmazási pontszámmal számítható fel.
     * Ha a felhasználó megnyitotta a lapot, és kilépett, a jutalom pontszáma 0,2 lehet.
 
@@ -107,7 +107,7 @@ A jobb eredmények érdekében kövesse ezeket az ajánlásokat.
 
 * Ne válasszon olyan időtartamot, amely rövidebb, mint a visszajelzés kéréséhez szükséges idő. Ha például egy adott jutalom egy felhasználónál 1 perces videó megtekintése után következik be, a kísérlet hosszának legalább kétszeresnak kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megerősítő tanulás](concepts-reinforcement-learning.md)
 * [A Rank API kipróbálása](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)

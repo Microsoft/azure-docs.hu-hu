@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: 9c095a46b3a0526b23645c9cbb5e99eb8eda9067
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94366400"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing News Search API végpontok
@@ -54,7 +54,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 
 A közösségi hálózatokra jelenleg kapcsolódó híreket adja vissza. A beállítás megadása esetén a `/trendingtopics` Bing Search figyelmen kívül hagyja a többi paramétert, például a és a elemet `freshness` `?q=""` . A rendelkezésre állást lásd: [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-trending-endpoint).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fejlécekkel, paraméterekkel, piaci kódokkal, válasz-objektumokkal, hibákkal és egyéb adatokkal kapcsolatos részletekért tekintse meg a [Bing News Search API v7](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference) dokumentációját.
 
