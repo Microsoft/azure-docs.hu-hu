@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020536"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics szolgáltatások összehasonlítása
@@ -23,37 +23,37 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 ## <a name="cloud-job-features"></a>Cloud Job-funkciók
 
 
-|Funkció  |Portál  |Visual Studio  |Visual Studio Code  |
+|Szolgáltatás  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Platformfüggetlen     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
-|Parancsfájlok készítése     |Igen         |Igen         |Igen         |
+|Parancsfájlok készítése     |Igen         |Igen         |Yes         |
 |Parancsfájl IntelliSense     |Szintaxis kiemelése         |Szintaxis kiemelése</br>Kód befejezése</br>Hiba jelölője         |Szintaxis kiemelése</br>Kód befejezése</br>Hiba jelölője         |
-|A bemenetek, a kimenetek és a feladatok összes típusának meghatározása     |Igen         |Igen         |Igen         |
-|Verziókövetés     |Nem         |Igen         |Igen         |
-|CI/CD-támogatás     |Részleges         |Igen         |Igen         |
-|Bemenetek és kimenetek megosztása több lekérdezés között     |Nem         |Igen         |Igen         |
-|Tesztelés lekérdezése egy minta fájllal     |Igen         |Igen        |Igen         |
-|Élő adathelyi tesztelés     |Nem         |Igen       |Igen      |
-|Feladatok listázása és feladat-entitások megtekintése     |Igen         |Igen        |Igen         |
-|Feladatok exportálása helyi projektbe     |Nem         |Igen         |Igen         |
-|Feladatok elküldése, elindítása és leállítása     |Igen         |Igen         |Igen         |
-|Feladatok metrikáinak és diagramjának megtekintése     |Igen         |Igen         |Megnyitás a portálon         |
+|A bemenetek, a kimenetek és a feladatok összes típusának meghatározása     |Igen         |Igen         |Yes         |
+|Verziókövetés     |Nem         |Igen         |Yes         |
+|CI/CD-támogatás     |Részleges         |Igen         |Yes         |
+|Bemenetek és kimenetek megosztása több lekérdezés között     |Nem         |Igen         |Yes         |
+|Tesztelés lekérdezése egy minta fájllal     |Igen         |Igen        |Yes         |
+|Élő adathelyi tesztelés     |Nem         |Igen       |Yes      |
+|Feladatok listázása és feladat-entitások megtekintése     |Igen         |Igen        |Yes         |
+|Feladatok exportálása helyi projektbe     |Nem         |Igen         |Yes         |
+|Feladatok elküldése, elindítása és leállítása     |Igen         |Igen         |Yes         |
+|Feladatok metrikáinak és diagramjának megtekintése     |Igen         |Yes         |Megnyitás a portálon         |
 |Feladatok futásidejű hibáinak megtekintése     |Igen         |Igen         |Nem         |
 |Erőforrásnaplók     |Igen         |Nem         |Nem         |
 |Egyéni üzenet tulajdonságai     |Igen         |Igen         |Nem       |
 |C# egyéni kód függvény és deszerializáló|Írásvédett mód|Igen|Nem|
-|JavaScript UDF és UDA     |Igen         |Igen         |Csak Windowson         |
+|JavaScript UDF és UDA     |Igen         |Yes         |Csak Windowson         |
 |Machine Learning szolgáltatás     |Igen        |Igen         |Nem         |
 |Azure Machine Learning Studio (klasszikus)|Igen, de a lekérdezés nem tesztelhető        |Igen |Nem         |
-|Kompatibilitási szint     |1,0</br>1,1</br>1,2 (alapértelmezett)         |1,0</br>1,1</br>1,2 (alapértelmezett)           |1,0</br>1,1</br>1,2 (alapértelmezett)           |
-|Beépített ML-alapú anomáliák észlelési funkciói     |Igen         |Igen         |Igen         |
-|Beépített térinformatikai függvények     |Igen         |Igen         |Igen         |
+|Kompatibilitási szint     |1.0</br>1.1</br>1,2 (alapértelmezett)         |1.0</br>1.1</br>1,2 (alapértelmezett)           |1.0</br>1.1</br>1,2 (alapértelmezett)           |
+|Beépített ML-alapú anomáliák észlelési funkciói     |Igen         |Igen         |Yes         |
+|Beépített térinformatikai függvények     |Igen         |Igen         |Yes         |
 
 
 
 ## <a name="iot-edge-job-features"></a>IoT Edge feladatok funkciói
 
-|Funkció  |Portál  |Visual Studio  |Visual Studio Code  |
+|Szolgáltatás  |Portál  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
 |Feladatok készítése     |Igen         |Igen         |Nem         |
 |Verziókövetés     |Nem         |Igen         |Nem         |
@@ -63,8 +63,8 @@ A Azure Stream Analytics segítségével a felhőben és a IoT Edge a [Azure Por
 |C# UDF     |Nem         |Igen         |Nem         |
 |Feladatok elküldése     |Igen         |Igen         |Nem         |
 |Feladatok listázása és feladat-entitások megtekintése     |Igen         |Igen         |Nem         |
-|Feladatok metrikáinak és diagramjának megtekintése     |Igen         |Részleges         |Nem         |
-|Feladatok futásidejű hibáinak megtekintése     |Igen         |Részleges         |Nem         |
+|Feladatok metrikáinak és diagramjának megtekintése     |Yes         |Részleges         |No         |
+|Feladatok futásidejű hibáinak megtekintése     |Yes         |Részleges         |No         |
 |CI/CD-támogatás     |Nem         |Nem         |Nem         |
 
 

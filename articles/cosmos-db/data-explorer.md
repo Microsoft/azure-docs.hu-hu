@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348602"
 ---
 # <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Adatkezelés az Azure Cosmos DB Explorer használatával 
@@ -52,7 +52,7 @@ Az UUID-t tartalmazó dokumentumok jelenleg nem támogatottak Adatkezelőban. Ez
 
 Előfordulhat, hogy a HTTP-401 hibákat fogadó ügyfelek nem rendelkeznek elegendő Azure RBAC engedélyekkel az ügyfél Azure-fiókjához, különösen akkor, ha a fiók egyéni szerepkörrel rendelkezik. Minden egyéni szerepkörnek rendelkeznie kell a `Microsoft.DocumentDB/databaseAccounts/listKeys/*` adatkezelő használatára, ha Azure Active Directory hitelesítő adataival jelentkezik be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan használhatja a Azure Cosmos DB Explorer alkalmazást az adatai kezeléséhez, a következő lépésként:
 

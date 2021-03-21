@@ -9,10 +9,10 @@ ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6ccd3178f1126ce8fe8f10b126dc6eadaf72bf53
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004415"
 ---
 # <a name="st_isvaliddetailed-azure-cosmos-db"></a>ST_ISVALIDDETAILED (Azure Cosmos DB)
@@ -57,7 +57,7 @@ SELECT ST_ISVALIDDETAILED({
 }]  
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Térbeli függvények Azure Cosmos DB](sql-query-spatial-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

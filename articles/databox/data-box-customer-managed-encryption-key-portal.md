@@ -9,10 +9,10 @@ ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: e6b588ddea5bf4b4c92e89d9cebb37b09b9a86af
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791544"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
@@ -199,7 +199,7 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | SsemUserErrorKeyVaultBadRequestException | Egy ügyfél által felügyelt kulcs alkalmazva, de a kulcshoz való hozzáférés nem lett megadva vagy vissza lett vonva, vagy nem fér hozzá a Key vaulthoz, mert a tűzfal engedélyezve van. | Adja hozzá a Key vaulthoz kiválasztott identitást, hogy engedélyezze a hozzáférést az ügyfél által felügyelt kulcshoz. Ha a Key vaultban engedélyezve van a tűzfal, váltson át egy rendszerhez rendelt identitásra, majd vegyen fel egy ügyfél által felügyelt kulcsot. További információ: [a kulcs engedélyezése](#enable-key). |
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 - [Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával](../key-vault/secrets/quick-create-portal.md)

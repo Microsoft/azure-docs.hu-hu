@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003871"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>A StorSimple Snapshot Manager MMC beépülő modul üzembe helyezése
@@ -211,7 +211,7 @@ A StorSimple Snapshot Manager újratelepítéséhez kövesse az [új StorSimple 
    2. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás** elemet.
    3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása** területén kattintson **a szolgáltatás újraindítása** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ha többet szeretne megtudni a StorSimple Snapshot Managerról, olvassa el a [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)című témakört.
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager felhasználói felületéről, nyissa meg a [StorSimple Snapshot Manager felhasználói felületét](storsimple-use-snapshot-manager.md).
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager használatáról, látogasson el a [StorSimple Snapshot Manager használatára a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).

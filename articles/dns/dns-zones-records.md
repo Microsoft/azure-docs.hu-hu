@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
 ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968196"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és -rekordok áttekintése
@@ -127,9 +127,9 @@ Alapértelmezés szerint Azure DNS PowerShell a Etagek használatával blokkolja
 
 A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak megadva.  Viselkedésük a következő táblázatban szerepel:
 
-| Fejléc | Viselkedés |
+| Fejléc | Működés |
 | --- | --- |
-| Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
+| Nincsenek |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<etag> |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
 | If-Match * |A PUT csak akkor sikeres, ha az erőforrás létezik |
 | If-None-Match * |A csak akkor sikeres, ha az erőforrás nem létezik |

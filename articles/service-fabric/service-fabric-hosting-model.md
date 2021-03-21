@@ -7,10 +7,10 @@ ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791645"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
@@ -174,7 +174,7 @@ Az előző példában úgy tűnhet, hogy ha a "MyCodePackageA" regisztrálja a "
 
 A Service Fabric nem támogatja a megbízható szolgáltatásokat és a későbbiekben megbízható Actors elágazási alfolyamatokat. A nem támogatott alfolyamatok nem regisztrálhatók, és a visszavonási jogkivonatok csak a regisztrált folyamatoknak [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) , ezért nem használhatók. az olyan problémák, mint például a frissítési hibák, ha az alfolyamatok nem zárulnak le, miután a fölérendelt folyamat megkapta a lemondási tokent.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Alkalmazás becsomagolása][a4] és üzembe helyezése készen áll a telepítésre.
 
 [Alkalmazások telepítése és eltávolítása][a5]. Ez a cikk azt ismerteti, hogyan használható a PowerShell az alkalmazások példányainak kezeléséhez.

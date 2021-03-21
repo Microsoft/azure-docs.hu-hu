@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
 ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020112"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
@@ -111,7 +111,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 1. A **hő** segítségével gyorsan kipróbálhatja az egyedi vagy rendellenes adatsorozatokat egy adott lekérdezésben. Hő csak egy keresési kifejezés látható.
 
-    [Time Series Insights Explorer hő-diagramok](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (média/idő-sorozat – betekintés – Explorer/tsi-ga-example-heatmap-charting.png # Lightbox)
+    [Time Series Insights Explorer hő-diagramok](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)] (média/idő – sorozat – áttekintés – Explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. Ha az eseményeket a jobb gombbal kattintva tárja fel, az **események** panel elérhetővé válik. Itt áttekintheti az összes nyers eseményt, és az eseményeket JSON-vagy CSV-fájlként is exportálhatja. Azure Time Series Insights az összes nyers adathalmazt tárolja.
 
@@ -126,7 +126,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 Most, hogy megismerte az Azure Time Series Insights Explorer webalkalmazásban elérhető főbb funkciókat, konfigurációs beállításokat és megjelenítési beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a Azure Time Series Insights-környezetben felmerülő problémákat](time-series-insights-diagnose-and-solve-problems.md) .
 

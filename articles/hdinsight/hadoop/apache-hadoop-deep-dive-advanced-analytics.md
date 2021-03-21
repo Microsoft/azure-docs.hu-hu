@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
 ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946663"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
@@ -41,7 +41,7 @@ A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfonto
 
 | Algoritmus kategóriája| Használat | Tanulás típusa | Algoritmusok |
 | --- | --- | --- | -- |
-| Besorolás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
+| Osztályozás | Személyek vagy dolgok csoportokba való besorolása | Felügyelt | Döntési fák, logisztikai regresszió, neurális hálózatok |
 | Fürtözés | Példák halmazának elosztása homogén csoportokba | Unsupervised | K – fürtözés |
 | Mintázat észlelése | Az adatkezelés gyakori hozzárendeléseinek azonosítása | Unsupervised | Társítási szabályok |
 | Regresszió | Numerikus eredmények előrejelzése | Felügyelt | Lineáris regresszió, neurális hálózatok |

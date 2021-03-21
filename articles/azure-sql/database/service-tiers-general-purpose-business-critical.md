@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
 ms.openlocfilehash: 95e11e98be8a58611a435de533ffcc16ec5ce357
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048556"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database és az Azure SQL felügyelt példányok szolgáltatási szintjei
@@ -55,7 +55,7 @@ A következő táblázat ismerteti a legújabb generációs szolgáltatási szin
 | | SQL Managed Instance | [3 MB/s/s virtuális mag (max. 22 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | [4 MB/s/s virtuális mag (max. 48 MB/s)](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**Rendelkezésre állás**|Mind| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Biztonsági másolatok**|Mind|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap). Az alapszintű csomag maximális megőrzése 7 nap. | RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
-|**Memóriabeli OLTP** | | N.A. | N.A. | Elérhető |
+|**Memóriában tárolt OLTP** | | N.A. | N.A. | Elérhető |
 |**Írásvédett replikák**| | 0 beépített <br> 0-4 [geo-replikáció](active-geo-replication-overview.md) használatával | 0-4 beépített | 1 beépített, árba belefoglalva <br> 0-4 [geo-replikáció](active-geo-replication-overview.md) használatával |
 |**Díjszabás/számlázás** | SQL Database | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. | [az egyes replikák és a felhasznált tárolók virtuális mag](https://azure.microsoft.com/pricing/details/sql-database/single/) számítunk fel díjat. <br/>A IOPS még nincs felszámítva. | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. |
 || SQL Managed Instance | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat| N/A | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.| 

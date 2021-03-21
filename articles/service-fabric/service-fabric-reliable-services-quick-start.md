@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
 ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791527"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
@@ -47,7 +47,7 @@ A megoldás mostantól két projektet tartalmaz:
 
 ## <a name="implement-the-service"></a>A szolgáltatás implementálása
 
-Nyissa meg a **HelloWorldStateless.cs** fájlt a szolgáltatási projektben. Service Fabric a szolgáltatás bármilyen üzleti logikát futtathat. A Service API két belépési pontot biztosít a kódhoz:
+Nyissa meg a **HelloWorldStateless. cs** fájlt a szolgáltatási projektben. Service Fabric a szolgáltatás bármilyen üzleti logikát futtathat. A Service API két belépési pontot biztosít a kódhoz:
 
 * Egy *RunAsync* nevű, nyílt végű belépési pont metódus, amelyben megkezdheti a munkaterhelések végrehajtását, beleértve a hosszú ideig futó számítási feladatokat is.
 
@@ -127,7 +127,7 @@ Az alkalmazásnak most két szolgáltatással kell rendelkeznie: az állapot né
 
 Az állapot-nyilvántartó szolgáltatás ugyanolyan belépési pontokkal rendelkezik, mint az állapot nélküli szolgáltatás. A fő különbség egy olyan *szolgáltató* elérhetősége, amely megbízhatóan képes tárolni az állapotot. Service Fabric tartalmaz egy [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)nevű állami szolgáltatói implementációt, amely lehetővé teszi a replikált adatstruktúrák létrehozását a megbízható állami kezelőn keresztül. Az állapot-nyilvántartó megbízható szolgáltatás alapértelmezés szerint ezt az állapotot használja.
 
-Nyissa meg a **HelloWorldStateful.cs** a *HelloWorldStateful*-ben, amely a következő RunAsync módszert tartalmazza:
+Nyissa meg a **HelloWorldStateful. cs** a *HelloWorldStateful*, amely a következő RunAsync módszert tartalmazza:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -209,7 +209,7 @@ A szolgáltatások elindítása után megtekintheti a generált Windows esemény
 
 ![Diagnosztikai események megtekintése a Visual Studióban](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Service Fabric-alkalmazás hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)
 
 [Első lépések: Service Fabric webes API-szolgáltatások OWIN-alapú önkiszolgáló használatával](./service-fabric-reliable-services-communication-aspnetcore.md)

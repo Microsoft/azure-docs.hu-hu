@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
 ms.openlocfilehash: 9c3132985866a4c245984ef632107c05ca1b3350
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348382"
 ---
 # <a name="saml-token-claims-reference"></a>SAML-token jogcímek referenciája
@@ -27,7 +27,7 @@ A Microsoft Identity platform számos különböző típusú biztonsági jogkivo
 ## <a name="claims-in-saml-tokens"></a>SAML-jogkivonatokban lévő jogcímek
 
 > [!div class="mx-codeBreakAll"]
-> | Név | Egyenértékű JWT jogcím | Leírás | Példa |
+> | Name | Egyenértékű JWT jogcím | Leírás | Példa |
 > | --- | --- | --- | ------------|
 > |Célközönség | `aud` |A jogkivonat címzettjei. A jogkivonatot fogadó alkalmazásnak meg kell győződnie arról, hogy a célközönség értéke helyes, és elutasítja a különböző célközönségnek szánt jogkivonatokat. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Hitelesítési időpont | |A hitelesítés dátumát és időpontját rögzíti. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` |
@@ -39,7 +39,7 @@ A Microsoft Identity platform számos különböző típusú biztonsági jogkivo
 > |IssuedAt | `iat` |A jogkivonat kiállításának időpontját tárolja. Gyakran használják a jogkivonat frissességének mérésére. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Kiállító | `iss` |Azonosítja a tokent létrehozó és visszaküldő biztonságijogkivonat-szolgáltatást (STS). Az Azure AD által visszaadott jogkivonatokban a kiállító sts.windows.net. A kiállítói jogcím értékében szereplő GUID az Azure AD-címtár bérlői azonosítója. A bérlő azonosítója a címtár megváltoztathatatlan és megbízható azonosítója. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Vezetéknév | `family_name` |Az Azure AD felhasználói objektumában megadott felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Név | `unique_name` |A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy a bérlőn belül egyediek legyenek, és kizárólag megjelenítési célra való használatra készültek. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték nem garantált, hogy a bérlőn belül egyediek legyenek, és kizárólag megjelenítési célra való használatra készültek. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |Objektumazonosító | `oid` |Egy objektum egyedi azonosítóját tartalmazza az Azure AD-ben. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az objektumazonosító használatával azonosíthatja az Azure AD-lekérdezésekben található objektumokat. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |Szerepkörök | `roles` |Az összes olyan alkalmazási szerepkört jelöli, amelyet a tulajdonos közvetlenül és közvetve a csoporttagság keretében kapott, és használható a szerepköralapú hozzáférés-vezérlés kikényszeríthető. Az alkalmazás szerepköreinek meghatározása az alkalmazás `appRoles` jegyzékfájljának tulajdonságán keresztül történik. Az `value` egyes alkalmazási szerepkörök tulajdonsága a szerepkör-jogcímben megjelenő érték. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Tárgy | `sub` |Azonosítja azt a rendszerbiztonsági azonosítót, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható fel újra, így biztonságosan végezhető el az engedélyezési ellenőrzés. Mivel a tulajdonos mindig szerepel a jogkivonatokban az Azure AD-ban, javasoljuk, hogy használja ezt az értéket egy általános célú engedélyezési rendszeren. <br> `SubjectConfirmation` nem jogcím. Ismerteti a jogkivonat tulajdonosának ellenőrzését. `Bearer` azt jelzi, hogy a tárgyat a jogkivonat birtokosa igazolja. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
@@ -152,7 +152,7 @@ Ez egy tipikus SAML-token mintája.
 </t:RequestSecurityTokenResponse>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a jogkivonat-élettartam szabályzatának Microsoft Graph API-val történő kezeléséről, tekintse meg az [Azure ad-házirend erőforrásának áttekintését](/graph/api/resources/policy).
 * [Egyéni és választható jogcímeket](active-directory-optional-claims.md) adhat hozzá az alkalmazás jogkivonatához.

@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/25/2021
 ms.author: alkohli
 ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98796056"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob Storage-hoz kapcsolódó problémák elhárítása
@@ -67,6 +67,6 @@ Ezek a hibák nem kifejezetten egyetlen alkalmazásra vonatkoznak.
 |A kapcsolatok időtúllépést mutatnak. |Jelentkezzen be a Data Box eszközre, és győződjön meg arról, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
 |A REST API hitelesítés sikertelen a következő hibával: a kiszolgáló nem tudta hitelesíteni a kérelmet. Győződjön meg arról, hogy az engedélyezési fejléc értéke helyesen van kialakítva, beleértve az aláírást. ErrorCode: AuthenticationFailed. |Ennek az az oka, hogy ez akkor fordulhat elő, ha az eszköz ideje nincs szinkronizálva az Azure-val. Ha nagy idő van elferdítve, akkor a REST API hitelesítés megszakad, amikor az REST APIon keresztül próbál másolni egy Data Box. Ebben az esetben megnyithatja a kimenő UDP 123 portot, amely lehetővé teszi a hozzáférését `time.windows.com` . Ha az eszköz ideje szinkronizálva lett az Azure-ban, a hitelesítésnek sikeresnek kell lennie. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [blob Storage rendszerkövetelményeinek Data Box](data-box-system-requirements-rest.md)megismerése.

@@ -15,10 +15,10 @@ ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 686afa791df88382e3e5e1b2d233317c36bf1dd6
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791306"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>Alkalmazás eltávolítása Service Fabric-fürtről a PowerShell használatával
@@ -40,7 +40,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Remove-ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication) | Egy futó Service Fabric alkalmazás példányának eltávolítása a fürtből.  |
 | [Regisztráció törlése – ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype) | Egy Service Fabric alkalmazás típusának és verziójának a fürtből való regisztrációjának törlése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Service Fabric PowerShell-modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/service-fabric/overview).
 

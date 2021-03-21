@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020078"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Azure Time Series Insights 1. generációs környezethez tartozó referenciák kezelése C Sharp használatával
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/A
 > [!TIP]
 > A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
@@ -61,10 +61,10 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 
-Javasoljuk, hogy a Visual Studio és a **NETCore. app** legújabb verzióját használja:
+Javasoljuk, hogy a Visual Studio és a **NETCore.app** legújabb verzióját használja:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – 16.4.2 + verzió
-* [NETCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -Version 2.2.8
+* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) – 2.2.8 verziója
 
 A mintakód két kötelező függőséggel rendelkezik:
 

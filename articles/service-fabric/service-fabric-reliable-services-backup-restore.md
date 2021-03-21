@@ -7,10 +7,10 @@ ms.date: 10/29/2018
 ms.author: mcoskun
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2674d1285544e4bc9b6fcb3d0b2e6f4b607786a2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791611"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services és Reliable Actors biztonsági mentése és visszaállítása
@@ -254,7 +254,7 @@ Amíg egy szolgáltatás sikeresen befejezi ezt az API-t (igaz vagy hamis érté
 
 `RestoreAsync` először a meghívott elsődleges replika összes meglévő állapotát eldobja. Ezután a megbízható állapot-kezelő létrehozza a biztonsági mentési mappában található összes megbízható objektumot. Ezután a megbízható objektumokat a rendszer arra utasítja, hogy a biztonsági mentési mappában lévő ellenőrzőpontok alapján állítsa vissza. Végül a megbízható állapot-kezelő a biztonsági mentési mappában található naplókból helyreállítja a saját állapotát, és végrehajtja a helyreállítást. A helyreállítási folyamat részeként a rendszer a biztonsági mentési mappában lévő véglegesített naplókat tartalmazó "kezdőpont" kezdetű műveleteket a megbízható objektumokra játssza újra. Ez a lépés biztosítja, hogy a helyreállított állapot konzisztens legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
   - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
   - [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
   - [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)

@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795645"
 ---
 # <a name="security-tokens"></a>Biztonsági jogkivonatok
@@ -84,7 +84,7 @@ Az ügyfél felépítésének módjától függően a Microsoft Identity platfor
 
 Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-címen keresztül adják vissza a böngészőnek, ahol a `response_mode` a `query` vagy a `fragment` . Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú. Ennek eredményeképpen ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity platform hitelesítésével és engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 

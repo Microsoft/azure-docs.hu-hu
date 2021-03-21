@@ -14,17 +14,17 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 86543b961698e736b2211553b0dca367b28158ef
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98795656"
 ---
 # <a name="application-model"></a>Alkalmazásmodell
 
 Az alkalmazások maguk is bejelentkezhetnek a felhasználókba, vagy delegálhatja a bejelentkezést egy identitás-szolgáltatóhoz. Ez a cikk az alkalmazások Microsoft Identity platformmal való regisztrálásához szükséges lépéseket ismerteti.
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Ahhoz, hogy egy identitás-szolgáltató tudja, hogy egy felhasználó hozzáfér egy adott alkalmazáshoz, a felhasználónak és az alkalmazásnak is regisztrálva kell lennie az identitás-szolgáltatónál. Ha az alkalmazást Azure Active Directory (Azure AD) regisztrálja, az alkalmazáshoz olyan identitás-konfigurációt biztosít, amely lehetővé teszi, hogy integrálható legyen a Microsoft Identity platformmal. Az alkalmazás regisztrálása a következőket is lehetővé teszi:
 
@@ -74,7 +74,7 @@ A kiépítési folyamat:
 
 Ezt a folyamatot több bérlő esetében is megismételheti. Az A bérlő megőrzi az alkalmazás tervét (Application Object). Az összes többi bérlő felhasználói és rendszergazdái, akikkel az alkalmazás beleegyezik, folyamatosan szabályozhatja, hogy az alkalmazás milyen műveleteket végezhet el az egyes bérlők megfelelő egyszerű szolgáltatásán keresztül. További információ: [alkalmazás-és szolgáltatásnév-objektumok a Microsoft Identity platformon](app-objects-and-service-principals.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity platform hitelesítésével és engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 

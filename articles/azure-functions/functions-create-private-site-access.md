@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937042"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
@@ -91,7 +91,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
 1. A _hálózatkezelés_ lapon ellenőrizze, hogy **nincs** -e kiválasztva a _nyilvános IP-cím_ beállítás.
 1. Válassza a _felügyelet_ fület, majd a _diagnosztikai Storage-fiók_ területen válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához.
 1. Hagyja meg az _identitás_, az _automatikus leállítás_ és a _biztonsági mentési_ csoportok alapértelmezett értékeit.
-1. Válassza a _Felülvizsgálat + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
+1. Válassza az _Áttekintés + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
 
 ## <a name="configure-azure-bastion"></a>Az Azure Bastion konfigurálása
 
@@ -151,7 +151,7 @@ A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [fel
     | ------------ | ---------------- | ---------------- |
     | _Storage-fiók_ | Globálisan egyedi név | Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](storage-considerations.md#storage-account-requirements). |
     | _Operációs rendszer_ | Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
-    | _Terv_ | Felhasználás | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
+    | _Terv_ | Használat | A [üzemeltetési terv](./functions-scale.md) azt diktálja, hogy a függvény alkalmazás hogyan méretezhető, és az erőforrások elérhetők legyenek az egyes példányok számára. |
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
 1. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 
@@ -223,7 +223,7 @@ A függvény elérése egy webböngészőn keresztül (az Azure Bastion szolgál
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 > [!div class="nextstepaction"]

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürt
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 2958b000ac0dabcd7fddf75a58f553b705a95e9a
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101731867"
 ---
 # <a name="configure-gpu-monitoring-with-container-insights"></a>A GPU-figyelés konfigurálása a Container bepillantást
@@ -27,7 +27,7 @@ A tároló-felismerések automatikusan elindítja a GPU-használat figyelését 
 >[!NOTE]
 >A fürt GPU-csomópontokkal való üzembe helyezését követően győződjön meg arról, hogy a GPU- [illesztő](../../aks/gpu-cluster.md) a GPU-munkaterhelések futtatásához szükséges az AK-ban. A tároló-információk GPU-metrikákat gyűjtenek a csomóponton futó GPU-illesztőn keresztül. 
 
-|Metrika neve |Metrikus dimenzió (címkék) |Leírás |
+|Metrika neve |Metrikus dimenzió (címkék) |Description |
 |------------|------------------------|------------|
 |containerGpuDutyCycle |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName, gpuId, gpuModel, gpuVendor|Az elmúlt mintavételi időszakban (60 másodpercben) az idő százalékos aránya, amely alatt a GPU foglalt/aktívan feldolgozás alatt áll a tárolóban. A Duty ciklus 1 és 100 közötti szám. |
 |containerGpuLimits |container.azm.ms/clusterId, container.azm.ms/clusterName, containerName |Minden tároló megadhatja a határértékeket egy vagy több GPU-ként. A GPU töredékét nem lehet lekérni vagy korlátozni. |

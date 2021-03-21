@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/10/2020
 ms.openlocfilehash: 8266b585881546b37bbb21b82780ab26d85dada7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102048080"
 ---
 # <a name="discover-installed-applications-roles-and-features-software-inventory-and-sql-server-instances-and-databases"></a>Telepített alkalmazások, szerepkörök és szolgáltatások (szoftverek leltározása), valamint SQL Server példányok és adatbázisok felderítése
@@ -20,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan lehet felderíteni a telepített alkalmazásokat
 A szoftver leltározása segít azonosítani és testre szabni az Azure-ba történő áttelepítési útvonalat a számítási feladatokhoz. A szoftveres leltár a Azure Migrate berendezés használatával hajtja végre a felderítést a kiszolgálói hitelesítő adatokkal. Teljesen ügynök nélküli – nincsenek ügynökök telepítve a kiszolgálókra az adatok összegyűjtéséhez.
 
 > [!NOTE]
-> A szoftveres leltár jelenleg előzetes verzióban érhető el a VMware-környezetben futó kiszolgálók esetében, és csak a felderítésre korlátozódik. Jelenleg nem biztosítunk alkalmazás-alapú értékelést.<br/> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A szolgáltatás kipróbálásához használja ezt a [**hivatkozást**](https://aka.ms/AzureMigrate/SQL) **Kelet-Ausztrália** régióban található projekt létrehozásához. Ha már rendelkezik egy projekttel Kelet-Ausztráliaban, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy végrehajtotta-e az [**előfeltételeket**](how-to-discover-sql-existing-project.md) a portálon.
+> A szoftveres leltár jelenleg előzetes verzióban érhető el a VMware-környezetben futó kiszolgálók esetében, és csak a felderítésre korlátozódik. Jelenleg nem biztosítunk alkalmazás-alapú értékelést.<br/> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 ## <a name="before-you-start"></a>Előkészületek
 

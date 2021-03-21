@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 01/07/2021
 ms.subservice: tables
 ms.openlocfilehash: 292104651c6bb9b63e9d8cbe26fea2bf8c6acbf1
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027740"
 ---
 # <a name="what-is-azure-table-storage-"></a>Mi az Azure Table Storage? 
@@ -26,7 +26,7 @@ A Table Storage segítségével olyan rugalmas adatkészleteket tárolhat, mint 
 
 [!INCLUDE [storage-table-concepts-include](../../../includes/storage-table-concepts-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 

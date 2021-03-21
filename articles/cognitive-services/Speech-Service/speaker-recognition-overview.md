@@ -13,10 +13,10 @@ ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: hangszórók felismerése, hangvezérelt biometry
 ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95015324"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Mi az Speaker Recognition (előzetes verzió)?
@@ -56,7 +56,7 @@ A hangszórók beléptetési adatai biztonságos rendszeren tárolódnak, beleé
 
 Szabályozhatja, hogy mennyi ideig kell megőrizni az adatmegőrzési időtartamot. Az API-hívásokkal létrehozhat, frissíthet és törölhet beléptetési adatkészleteket az egyes hangszórókhoz. Az előfizetés törlésekor a rendszer az előfizetéshez társított összes hangszóró-regisztrációs adatmennyiséget is törli. 
 
-Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recognition szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. Győződjön meg arról, hogy megkapta a megfelelő engedélyeket a felhasználóktól Speaker Recognition számára. További információkért tekintse meg a [Cognitive Services page](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   Microsoft adatvédelmi központjának Cognitive Services lapját. 
+Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recognition szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. Győződjön meg arról, hogy megkapta a megfelelő engedélyeket a felhasználóktól Speaker Recognition számára. További információkért tekintse meg a [](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   Microsoft adatvédelmi központjának Cognitive Services lapját. 
 
 ## <a name="common-questions-and-solutions"></a>Gyakori kérdések és megoldások
 
@@ -72,7 +72,7 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recogni
 | Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
 | Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](./get-started-speaker-recognition.md) foglalkozó cikket.

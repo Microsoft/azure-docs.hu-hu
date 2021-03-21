@@ -14,10 +14,10 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96003759"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>A Twilio használata a hang-és SMS-funkciókhoz az Azure-ban
@@ -57,7 +57,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza.  Ismerje meg a 
 ### <a name="twiml"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **Hello World** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -84,7 +84,7 @@ A Twilio olyan .NET segéd-kódtárakat biztosít, amelyek a Twilio különböz�
 
 A Twilio öt kódtárat biztosít a .NET-fejlesztőknek:
 
-| Kódtár | Leírás |
+| Kódtár | Description |
 | --- | --- |
 | Twilio. API | A Twilio REST API egy felhasználóbarát .NET-könyvtárban lévő központi Twilio könyvtár. Ez a könyvtár a .NET, a Silverlight és a Windows Phone-telefon 7 rendszerhez érhető el. |
 | Twilio. TwiML | .NET-barát módszert biztosít a TwiML-jelölések létrehozásához. |
@@ -180,7 +180,7 @@ Amikor az alkalmazás kezdeményezi a Twilio API-t, például a **CallResource. 
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza. Ez a témakör feltételezi, hogy az URL-címet egy ASP.NET általános kezelője fogja üzemeltetni.
 
-A következő ASP.NET-kezelő olyan TwiML választ, amely a híváson **„Helló világ!” alkalmazás** .
+A következő ASP.NET-kezelő olyan TwiML választ, amely a híváson **Hello World** .
 
 ```csharp
 using System.Text;

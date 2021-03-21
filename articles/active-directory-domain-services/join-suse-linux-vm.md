@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.author: justinha
 ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619606"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -141,7 +141,7 @@ Miután a virtuális gépet regisztrálta a felügyelt tartományba, konfigurál
 
 1. A kezdőkönyvtár helyének értékét kell megadnia. Ha szeretné, hogy a kezdőkönyvtár */home/user_name*, használja a */Home/%u*. További információ a lehetséges változókról: sssd. conf Man Page ( `man 5 sssd.conf` ), szakasz *override_homedir*.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. A módosítások mentéséhez válassza az **OK** gombot. Ezután győződjön meg arról, hogy a megjelenített értékek helyesek. A párbeszédpanel elhagyásához válassza a **Mégse** lehetőséget.
 
@@ -371,7 +371,7 @@ Annak ellenőrzéséhez, hogy a virtuális gép sikeresen csatlakozott-e a felü
     sudo zypper update
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha problémába ütközik a virtuális gép a felügyelt tartományhoz való csatlakoztatásával vagy egy tartományi fiókkal való bejelentkezéssel, tekintse meg a [tartományhoz való csatlakozással kapcsolatos problémák elhárítása](join-windows-vm.md#troubleshoot-domain-join-issues)
 

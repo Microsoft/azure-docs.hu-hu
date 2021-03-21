@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/06/2021
 ms.custom: seo-nov-2020
 ms.openlocfilehash: 6bdb167990afeb5c1b6c68185f24a8f930287bed
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102487899"
 ---
 # <a name="distribute-your-data-globally-with-azure-cosmos-db"></a>Globális adatterjesztés az Azure Cosmos DB-vel
@@ -47,7 +47,7 @@ Az Azure Cosmos-fiókjához tartozó régiók hozzáadásakor és eltávolítás
 
 **Számos jól meghatározott konzisztencia-modell közül választhat.** A Azure Cosmos DB replikációs protokoll öt jól definiált, gyakorlatias és intuitív konzisztencia-modellt kínál. Mindegyik modell kompromisszumot biztosít a konzisztencia és a teljesítmény között. Ezekkel a konzisztencia-modellekkel globálisan elosztott alkalmazásokat hozhat létre könnyedén.
 
-## <a name="next-steps"></a><a id="Next Steps"></a>További lépések
+## <a name="next-steps"></a><a id="Next Steps"></a>Következő lépések
 
 A globális terjesztésről a következő cikkekben olvashat bővebben:
 

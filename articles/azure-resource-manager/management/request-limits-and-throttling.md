@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97563126"
 ---
 # <a name="throttling-resource-manager-requests"></a>Erőforrás-kezelő kéréseinek szabályozása
@@ -87,7 +87,7 @@ Egyes erőforrás-szolgáltatók a 429-et egy ideiglenes probléma jelentésére
 
 A hátralévő kérések számát a válasz fejlécek vizsgálatával határozhatja meg. Az olvasási kérelmek egy értéket adnak vissza a fejlécben a hátralévő olvasási kérelmek számának megfelelően. Az írási kérelmek tartalmazzák a fennmaradó írási kérések számát. A következő táblázat ismerteti azokat a válasz-fejléceket, amelyeket megvizsgálhat az értékekhez:
 
-| Válasz fejléce | Leírás |
+| Válasz fejléce | Description |
 | --- | --- |
 | x-MS-ratelimit – hátralévő előfizetés – olvasás |Az előfizetés hatókörön belüli olvasása megmaradt. A rendszer ezt az értéket adja vissza olvasási műveletekben. |
 | x-MS-ratelimit – hátralévő előfizetés – írások |Az előfizetés hatókörön belüli írása megmaradt. A rendszer ezt az értéket adja vissza az írási műveletekhez. |
@@ -196,7 +196,7 @@ msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Teljes PowerShell-példaként tekintse [meg az előfizetés Resource Manager-korlátainak ellenőrzését](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)ismertető témakört.
 * További információ a korlátozásokról és a kvótáról: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).

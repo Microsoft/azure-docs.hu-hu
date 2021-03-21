@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Oktatóanyag: Azure Active Directory integráció a Signagelive
@@ -147,7 +147,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: iot-fundamentals
 author: robinsh
 ms.service: iot-fundamentals
@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010698"
 ---
 Ez a cikk az Azure IoT-alapú eszközök internetes hálózata (IoT) infrastruktúra biztonságossá tételének következő részletességi szintjét ismerteti. Az egyes összetevők konfigurálásának és telepítésének megvalósítási szintjére mutató hivatkozásokat tartalmaz. Emellett összehasonlításokat és választási lehetőségeket is biztosít a különböző versengő módszerek között.
@@ -53,7 +53,7 @@ Minden IoT Hub rendelkezik egy [azonosító-beállításjegyzékkel](../articles
 
 * AMQP: SASL PLAIN és AMQP ( `{policyName}@sas.root.{iothubName}` IoT hub-szintű jogkivonatokkal rendelkező) jogcímek alapú biztonság `{deviceId}` .
 
-* MQTT: a csomag a `{deviceId}` `{ClientId}` Jelszó mezőben lévő, a `{IoThubhostname}/{deviceId}` **Felhasználónév** és a sas-token **Password** használatával kapcsolja össze a csomagot.
+* MQTT: a csomag a `{deviceId}` `{ClientId}` Jelszó mezőben lévő, a `{IoThubhostname}/{deviceId}` **Felhasználónév** és a sas-token  használatával kapcsolja össze a csomagot.
 
 * HTTP: az érvényes jogkivonat az engedélyezési kérelem fejlécében található.
 

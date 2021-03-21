@@ -8,10 +8,10 @@ ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 89bd77c30ec52a72087598b86f22e85659fa1b0e
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102203895"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Az Azure Digital Twins integrálása az Azure Signaler szolgáltatással
@@ -65,7 +65,7 @@ Ebben a szakaszban két Azure-függvényt fog beállítani:
 
 Indítsa el a Visual studiót (vagy egy másik szerkesztőprogramot), és nyissa meg a kód megoldást a *Digital-Twins-Samples-master > ADTSampleApp* mappában. Ezután végezze el a következő lépéseket a függvények létrehozásához:
 
-1. A *SampleFunctionsApp* projektben hozzon létre egy új, **SignalRFunctions.cs** nevű C#-osztályt.
+1. A *SampleFunctionsApp* projektben hozzon létre egy új, **SignalRFunctions. cs** nevű C#-osztályt.
 
 1. Cserélje le a Class (osztály) fájl tartalmát a következő kódra:
     
