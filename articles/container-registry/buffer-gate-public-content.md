@@ -6,10 +6,10 @@ ms.topic: article
 ms.author: danlep
 ms.date: 11/20/2020
 ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95024738"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Nyilvános tartalom kezelése Azure Container Registry
@@ -44,7 +44,7 @@ Ha jogkivonat használatával szeretne hitelesítést végezni `docker login` , 
 
 ### <a name="authenticate-from-azure-services"></a>Hitelesítés az Azure-szolgáltatásokból
 
-Számos Azure-szolgáltatás, többek között a App Service és a Azure Container Instances támogatja a nyilvános beállításjegyzékből, például a Docker hub-ból a tárolók üzembe helyezéséhez szükséges képeket. Ha lemezképet kell központilag telepíteni a Docker hub-ból, javasoljuk, hogy konfigurálja a beállításokat a Docker hub-fiók használatával történő hitelesítéshez. Példák:
+Számos Azure-szolgáltatás, többek között a App Service és a Azure Container Instances támogatja a nyilvános beállításjegyzékből, például a Docker hub-ból a tárolók üzembe helyezéséhez szükséges képeket. Ha lemezképet kell központilag telepíteni a Docker hub-ból, javasoljuk, hogy konfigurálja a beállításokat a Docker hub-fiók használatával történő hitelesítéshez. Angol nyelvű Példák:
 
 **APP SERVICE**
 
@@ -96,7 +96,7 @@ Részletes példaként tekintse meg a [nyilvános tartalmak felhasználása és 
 > [!NOTE]
 > Egyetlen előre konfigurált feladat automatikusan újraépítheti az összes olyan alkalmazás-rendszerképet, amely egy függő alaprendszerképre hivatkozik. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 * További információ az [ACR-feladatokról](container-registry-tasks-overview.md) az Azure-beli tároló-lemezképek létrehozásához, futtatásához, leküldéséhez és javításához.
 * Tekintse meg a [nyilvános tartalmak felhasználását és karbantartását Azure Container Registry feladatokkal](tasks-consume-public-content.md) egy automatizált kapuzás-munkafolyamathoz az alaplemezképek környezetbe való frissítéséhez. 

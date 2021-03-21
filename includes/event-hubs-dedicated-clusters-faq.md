@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -9,10 +9,10 @@ ms.date: 10/23/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516994"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>Mit lehet elérni egy fürttel?
@@ -35,7 +35,7 @@ A tesztelés során a rendszer a következő feltételeket használta:
 
 ### <a name="can-i-scale-updown-my-cluster"></a>Felskálázás a fürtön?
 
-A létrehozást követően a fürtök számlázása legalább 4 órányi használat után történik. Az önkiszolgáló élmény előzetes kiadásában egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support) küldhet a Event Hubs csapatnak a **technikai**  >  **kvóta**kérése alatt, hogy a fürt fel-vagy leskálázásával bővítse  >  **vagy kicsinyítse a dedikált fürtöt** . Akár 7 napig is eltarthat a fürt skálázására irányuló kérelem teljesítése. 
+A létrehozást követően a fürtök számlázása legalább 4 órányi használat után történik. Az önkiszolgáló élmény előzetes kiadásában egy [támogatási kérést](https://ms.portal.azure.com/#create/Microsoft.Support) küldhet a Event Hubs csapatnak a **technikai**  >  **kvóta** kérése alatt, hogy a fürt fel-vagy leskálázásával bővítse  >  **vagy kicsinyítse a dedikált fürtöt** . Akár 7 napig is eltarthat a fürt skálázására irányuló kérelem teljesítése. 
 
 ### <a name="how-does-geo-dr-work-with-my-cluster"></a>Hogyan működik a Geo-DR a fürttel?
 

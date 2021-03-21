@@ -4,10 +4,10 @@ description: További információ a kapacitási korlátokról (a virtuális gé
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.openlocfilehash: 9866628cd11ec8df67e6fe16ae8806f0f30ae9a1
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491018"
 ---
 # <a name="capacity-limits-in-azure-lab-services"></a>A Azure Lab Services kapacitásának korlátai
@@ -48,7 +48,7 @@ Ezt követően a rendszer kérni fogja, hogy adjon meg további információkat 
 
 A támogatási kérelem elküldése után a rendszer áttekinti a kérelmet. Ha szükséges, felvesszük Önnel a kapcsolatot, hogy további részleteket kapjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket:
 - [Rendszergazdai útmutató – virtuális gép méretezése](administrator-guide.md#vm-sizing).
 - [Gyakran ismételt kérdések](classroom-labs-faq.md).

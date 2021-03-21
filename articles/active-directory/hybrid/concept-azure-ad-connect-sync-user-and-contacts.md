@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e015f7937db6788aa4473a8a04434121299901e9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861782"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect szinkronizálás: a felhasználók, csoportok és névjegyek ismertetése
@@ -47,7 +47,7 @@ Fontos tudnivalók a csoportok Active Directoryról Azure AD-re történő szink
 
     * Ha a csoport *proxyAddress* attribútuma üres, a *mail* -attribútumnak értékkel kell rendelkeznie
 
-    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Néhány példa:
+    * Ha a csoport *proxyAddress* attribútuma nem üres, tartalmaznia kell legalább egy SMTP-proxy címe értéket. Íme néhány példa:
     
       * Egy Active Directory csoport, amelynek proxyAddress attribútumának értéke *{"X500:/0 = contoso. com/ou = Users/CN = testgroup"}* , nem lesz engedélyezve a levelezés az Azure ad-ben. Nincs SMTP-címe.
       

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 809b1be4f9f12e1963ff5caeaacd109c84db154f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323659"
 ---
 # <a name="linear-regression-module"></a>Lineáris regressziós modul
@@ -41,7 +41,7 @@ A Azure Machine Learning a lineáris regresszió mellett számos regressziós mo
 
 Az évek statisztikusai egyre fejlettebb módszereket fejlesztenek a regresszióhoz. Ez még a lineáris regresszió esetén is igaz. Ez a modul két módszert támogat a hibák mérésére és a regressziós vonal igazítására: a legkisebb négyzetes metódust és a színátmenetes leereszkedést.
 
-- A **színátmenet-leereszkedés** olyan metódus, amely a modell betanítási folyamatának egyes lépéseiben minimálisra csökkentheti a hibák mennyiségét. Széles körben vizsgálták a színátmenetek és a különböző tanulási problémák optimalizálásának számos változatát. Ha ezt a lehetőséget választja a **megoldási módszerhez** , számos paramétert állíthat be a lépés méretének, a tanulási aránynak és így tovább. Ez a beállítás támogatja az integrált paraméteres sweep használatát is.
+- A **színátmenet-leereszkedés** olyan metódus, amely a modell betanítási folyamatának egyes lépéseiben minimálisra csökkentheti a hibák mennyiségét. Széles körben vizsgálták a színátmenetek és a különböző tanulási problémák optimalizálásának számos változatát. Ha ezt a lehetőséget választja a **megoldási módszerhez**, számos paramétert állíthat be a lépés méretének, a tanulási aránynak és így tovább. Ez a beállítás támogatja az integrált paraméteres sweep használatát is.
 
 - A **szokásos legkisebb négyzet** a lineáris regresszió egyik leggyakrabban használt módszere. Például a legalacsonyabb négyzet az a módszer, amelyet a Microsoft Excel Analysis ToolPak használ.
 
@@ -63,7 +63,7 @@ Ez a modul két módszert támogat a regressziós modellek beépítéséhez, kü
 
 1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
-    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása** , majd a **regresszió** csomópontot, majd húzza a **lineáris regressziós modell** modult a folyamatba.
+    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió** csomópontot, majd húzza a **lineáris regressziós modell** modult a folyamatba.
 
 2. A **Tulajdonságok** ablaktábla **megoldási módszer** legördülő listájában válassza a **szokásos legalacsonyabb négyzeteket**. Ez a beállítás határozza meg a regressziós vonal megkereséséhez használt számítási módszert.
 
@@ -96,22 +96,22 @@ A betanítás befejezése után:
 
 1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz a tervezőben.
 
-    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása** , majd a **regresszió** csomópontot, és húzza a **lineáris regressziós modell** modult a folyamatba.
+    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió** csomópontot, és húzza a **lineáris regressziós modell** modult a folyamatba.
 
 2. A **Tulajdonságok** ablaktábla **megoldási módszer** legördülő listájában válassza ki az **online átmenetes ereszkedést** a regressziós vonal megtalálásához használt számítási módszerként.
 
 3. Az **oktatói mód létrehozásához** jelezze, hogy a modellt előre definiált paraméterekkel kívánja-e betanítani, vagy ha a modellt a sweep paraméter használatával szeretné optimalizálni.
 
-    + **Egyetlen paraméter** : ha tudja, hogyan szeretné konfigurálni a lineáris regressziós hálózatot, megadhatja az értékek adott készletét argumentumként.
+    + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a lineáris regressziós hálózatot, megadhatja az értékek adott készletét argumentumként.
     
-    + **Paraméter tartománya** : akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
+    + **Paraméter tartománya**: akkor válassza ezt a lehetőséget, ha nem biztos benne, hogy a legjobb paramétereket szeretné használni, és szeretne futtatni egy paramétert. Válassza ki a megismételni kívánt értékek tartományát, és a [finomhangolási modell hiperparaméterek beállítása](tune-model-hyperparameters.md) az optimális eredményeket eredményező hiperparaméterek beállítása meghatározásához megadott beállítások összes lehetséges kombinációján.  
 
    
 4. A **tanulási arány** beállításnál határozza meg a sztochasztikus színátmenet-optimalizáló kezdeti tanulási arányát.
 
 5. A **képzési korszakok száma** mezőben adja meg azt az értéket, amely azt jelzi, hogy az algoritmusnak hányszor kell megismételni a példákat. A kis mennyiségű példát tartalmazó adatkészletek esetében ennek a számnak nagynak kell lennie a konvergencia eléréséhez.
 
-6. **Funkciók normalizálása** : Ha már normalizálta a modell betanításához használt numerikus adattípust, akkor törölje ezt a beállítást. Alapértelmezés szerint a modul az összes numerikus bemenetet 0 és 1 közötti tartományba normalizálja.
+6. **Funkciók normalizálása**: Ha már normalizálta a modell betanításához használt numerikus adattípust, akkor törölje ezt a beállítást. Alapértelmezés szerint a modul az összes numerikus bemenetet 0 és 1 közötti tartományba normalizálja.
 
     > [!NOTE]
     > 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8ab484e8caaffaf57f19f1fcd1e65f4b8e723f86
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077897"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt
@@ -49,12 +49,12 @@ Ennek a lépésnek a célja, hogy betekintse a bejelentkezési élményt feltét
 
 ## <a name="create-your-terms-of-use"></a>Használati feltételek létrehozása
 
-Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit ismerteti. A használati feltételek létrehozásakor ki kell választania egy értéket a **kényszerített hozzáférési házirend-sablonokkal** . Ha az **Egyéni házirendet** választja, megnyílik a párbeszédpanel, amely azonnal létrehoz egy új feltételes hozzáférési szabályzatot, amint a rendszer létrehozta a felhasználási feltételeket.
+Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit ismerteti. A használati feltételek létrehozásakor ki kell választania egy értéket a **kényszerített hozzáférési házirend-sablonokkal**. Ha az **Egyéni házirendet** választja, megnyílik a párbeszédpanel, amely azonnal létrehoz egy új feltételes hozzáférési szabályzatot, amint a rendszer létrehozta a felhasználási feltételeket.
 
 **A használati feltételek létrehozása:**
 
 1. A Microsoft Wordben hozzon létre egy új dokumentumot.
-1. Írja be a **saját használati feltételeket** , majd mentse a dokumentumot a számítógépen **mytou.pdf** .
+1. Írja be a **saját használati feltételeket**, majd mentse a dokumentumot a számítógépen **mytou.pdf**.
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdaként, biztonsági rendszergazdaként vagy feltételes hozzáférési rendszergazdaként.
 1. A Azure Portal a bal oldali navigációs sávon kattintson az **Azure Active Directory** elemre.
 
@@ -66,23 +66,23 @@ Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit is
 
 1. A **kezelés** szakaszban kattintson a **használati feltételek** elemre.
 
-   :::image type="content" source="./media/require-tou/04.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/04.png" alt-text="Képernyőkép a Azure Active Directory lap kezelés szakaszáról. A Használati feltételek eleme ki van emelve." border="false":::
 
 1. A felső menüben kattintson az **új feltételek** elemre.
 
-   :::image type="content" source="./media/require-tou/05.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/05.png" alt-text="Képernyőkép a Azure Active Directory oldalon található menüről. Az új kifejezések eleme ki van emelve." border="false":::
 
 1. Az **új használati feltételek** lapon:
 
-   :::image type="content" source="./media/require-tou/112.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/112.png" alt-text="Képernyőkép: az új használati feltételek lap, a név, a megjelenítendő név, a dokumentum, a nyelv, a feltételes hozzáférés és a kibővített kifejezések kiemelése." border="false":::
 
    1. A **név** szövegmezőbe írja be a **saját felhasználási** feltételeket.
    1. A **megjelenítendő név** szövegmezőbe írja be a **saját felhasználási** feltételeket.
    1. Töltse fel a PDF-fájl használati feltételeit.
    1. **Nyelvként** válassza az **angol** nyelvet.
-   1. Ahogy a felhasználók a használati **feltételek kibontását kérik** , válassza **a be** lehetőséget.
+   1. Ahogy a felhasználók a használati **feltételek kibontását kérik**, válassza **a be** lehetőséget.
    1. A **feltételes hozzáférési házirend-sablonokkal való betartatáshoz** válassza az **egyéni házirend** elemet.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -99,7 +99,7 @@ A házirendben állítsa be a következőket:
 | Felhőalkalmazások | Microsoft Azure-kezelés |
 | Hozzáférés biztosítása | Saját felhasználási feltételek |
 
-:::image type="content" source="./media/require-tou/1234.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+:::image type="content" source="./media/require-tou/1234.png" alt-text="A szabályzatot meghatározó Azure Portal panel képernyőképe. A nyilak azt jelzik, hogy a szabályzat hozzáférést biztosít a saját T-hez, és egy felhasználót és egy alkalmazást tartalmaz." border="false":::
 
 **A feltételes hozzáférési szabályzat konfigurálása:**
 
@@ -109,11 +109,11 @@ A házirendben állítsa be a következőket:
 
 1. A **hozzárendelés** szakaszban kattintson a **felhasználók és csoportok** elemre.
 
-   :::image type="content" source="./media/require-tou/06.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/06.png" alt-text="A házirendet meghatározó Azure Portal ablaktábla hozzárendelések szakaszának képernyőképe. A felhasználók és csoportok elem látható, és nincs kiválasztva." border="false":::
 
 1. A **felhasználók és csoportok** lapon:
 
-   :::image type="content" source="./media/require-tou/24.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/24.png" alt-text="Képernyőkép a felhasználók és csoportok lap include (beágyazás) lapjáról. Válassza ki a felhasználók és csoportok lehetőséget a felhasználók és csoportok lehetőség kiválasztásával. Válassza ki a kijelölt elemet." border="false":::
 
    1. Kattintson a **felhasználók és csoportok kiválasztása** elemre, majd válassza a **felhasználók és csoportok** lehetőséget.
    1. Kattintson a **Kiválasztás** elemre.
@@ -121,7 +121,7 @@ A házirendben állítsa be a következőket:
    1. A **felhasználók és csoportok** lapon kattintson a **kész** gombra.
 1. Kattintson a **Cloud apps** lehetőségre.
 
-   :::image type="content" source="./media/require-tou/08.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/08.png" alt-text="A házirendet meghatározó Azure Portal ablaktábla hozzárendelések szakaszának képernyőképe. A Cloud apps elem látható, nincs kiválasztva." border="false":::
 
 1. A **Cloud apps** oldalon:
 
@@ -131,7 +131,7 @@ A házirendben állítsa be a következőket:
    1. Kattintson a **Kiválasztás** elemre.
    1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet** lehetőséget, majd kattintson a **kiválasztás** gombra.
    1. A **Cloud apps** lapon kattintson a **kész** gombra.
-1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés** ) elemre.
+1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
 
    ![Hozzáférés-vezérlés](./media/require-tou/10.png)
 
@@ -146,7 +146,7 @@ A házirendben állítsa be a következőket:
 
    ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
@@ -160,7 +160,7 @@ A **What if** Policy értékelési eszköz inicializálásához állítsa be a k
 A **What if** elemre kattintva létrehoz egy szimulációs jelentést, amely a következőket jeleníti meg:
 
 - **Felhasználási feltételek megkövetelése az Isabella számára** az **alkalmazandó szabályzatok** alatt
-- **A saját felhasználási** feltételek az **engedélyezési vezérlők** .
+- **A saját felhasználási** feltételek az **engedélyezési vezérlők**.
 
 ![Mi a teendő, ha a házirend eszköz](./media/require-tou/79.png)
 
@@ -170,20 +170,20 @@ A **What if** elemre kattintva létrehoz egy szimulációs jelentést, amely a k
 
    ![What If](./media/require-tou/14.png)
 
-1. Kattintson a **felhasználók** elemre, jelölje ki az **Isabella Simonsen** , majd kattintson a **kiválasztás** elemre.
+1. Kattintson a **felhasználók** elemre, jelölje ki az **Isabella Simonsen**, majd kattintson a **kiválasztás** elemre.
 
-   ![Felhasználó](./media/require-tou/15.png)
+   ![User](./media/require-tou/15.png)
 
 1. Felhőalapú alkalmazás kiválasztása:
 
-   :::image type="content" source="./media/require-tou/16.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+   :::image type="content" source="./media/require-tou/16.png" alt-text="Képernyőkép a Cloud apps szakaszról. A szöveg azt jelzi, hogy egy alkalmazás van kiválasztva." border="false":::
 
    1. Kattintson a **Cloud apps** lehetőségre.
    1. A **Cloud apps lapon** kattintson az **alkalmazások kiválasztása** elemre.
    1. Kattintson a **Kiválasztás** elemre.
    1. A **kiválasztás** lapon válassza a **Microsoft Azure felügyelet** lehetőséget, majd kattintson a **kiválasztás** gombra.
    1. A Cloud apps lapon kattintson a **kész** gombra.
-1. Kattintson **What if** .
+1. Kattintson **What if**.
 
 ## <a name="test-your-conditional-access-policy"></a>A feltételes hozzáférési szabályzat tesztelése
 
@@ -191,20 +191,20 @@ Az előző szakaszban megtanulta, hogyan értékelheti ki a szimulált bejelentk
 
 A szabályzat teszteléséhez próbáljon meg bejelentkezni a [Azure Portalba](https://portal.azure.com) az **Isabella Simonsen** -teszt fiók használatával. Meg kell jelennie egy párbeszédpanelnek, amely megköveteli a használati feltételek elfogadását.
 
-:::image type="content" source="./media/require-tou/57.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+:::image type="content" source="./media/require-tou/57.png" alt-text="Képernyőkép az Identity Security Protection használati feltételeit tartalmazó párbeszédpanelről, az elutasítás és az elfogadás gombokkal, valamint a T O U-vel jelölt gombokkal." border="false":::
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes hozzáférési szabályzatot:
 
 - Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
 - A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
 
-    :::image type="content" source="./media/require-tou/33.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+    :::image type="content" source="./media/require-tou/33.png" alt-text="Képernyőfelvétel: az M F A megkövetelése Azure Portal felhasználók számára. A helyi menü látható, a törlés kijelölve." border="false":::
 
 - A használati feltételek törléséhez jelölje ki azt, majd kattintson a **feltételek törlése** elemre a felül található eszköztárban.
 
-    :::image type="content" source="./media/require-tou/29.png" alt-text="Képernyőkép a Azure Portalról. Megjelenik egy olyan ablaktábla, amely egy szükséges T O U-re vonatkozó szabályzatot definiál" border="false":::
+    :::image type="content" source="./media/require-tou/29.png" alt-text="Képernyőfelvétel: a táblázat egy részét jeleníti meg a használati feltételek dokumentációjában. A saját T O-dokumentum látható. A menüben a feltételek törlése kiemelve." border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

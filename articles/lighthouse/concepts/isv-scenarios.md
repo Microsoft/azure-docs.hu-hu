@@ -4,10 +4,10 @@ description: Az Azure Lighthouse képességei az ISV-kal nagyobb rugalmasságot 
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: d6a12a51d360ad236563b871dbd94cc442ade434
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97696354"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>Azure Lighthouse ISV-forgatókönyvekben
@@ -34,7 +34,7 @@ Ebben az esetben az ügyfél bérlője számára alapvetően a "bérlők kezelé
 
 Ennek az architektúrának az engedélyezéséhez az ISV-nek be kell szereznie az ügyfél Azure AD-bérlőben található felhasználói csoportjának objektumazonosító-AZONOSÍTÓját, valamint a bérlői AZONOSÍTÓját. Az ISV Ezután létrehoz egy ARM-sablont, amely megadja ezt a felhasználói csoportot a megfelelő engedélyekkel, és [telepíti azt az ISV előfizetésében](../how-to/onboard-customer.md) , amely tartalmazza az ügyfél által elérni kívánt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](cross-tenant-management-experience.md).
 - Megismerheti az [Azure által delegált erőforrás-kezelés](azure-delegated-resource-management.md) részleteit.

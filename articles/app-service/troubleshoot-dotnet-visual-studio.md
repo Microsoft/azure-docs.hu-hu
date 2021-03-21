@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101095721"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
@@ -174,7 +174,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
 1. Nyissa meg az [Azure WEBJOBS SDK-val való ismerkedéskor][GetStartedWJ]létrehozott webes projektet.
 
-2. A ContosoAdsWebJob projektben nyissa meg a *functions.cs*.
+2. A ContosoAdsWebJob projektben nyissa meg a *functions. cs*.
 
 3. [Állítsa be a töréspontot](/visualstudio/debugger/) a metódus első utasítására `GnerateThumbnail` .
 

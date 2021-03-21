@@ -6,17 +6,17 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: db1d57e3904087bc5cb3711b23cfe6bcf18c3455
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92218017"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
 Az U-SQL bővíthető modellt biztosít a C# használatával. A U-SQL-szkriptekben könnyen hívhat C#-függvényeket, és olyan analitikai funkciókat hajthat végre, amelyek az SQL-hez hasonló deklaratív nyelv nem támogatott. Ha többet szeretne megtudni az U-SQL bővíthetőségéről, tekintse meg a [u-SQL programozható útmutatóját](./data-lake-analytics-u-sql-programmability-guide.md#use-user-defined-functions-udf). 
 
-A gyakorlatban előfordulhat, hogy bármely kód hibakeresést igényel, de a felhőben lévő, korlátozott naplófájlokkal rendelkező elosztott feladatok nem végezhetők el egyéni kóddal. A [Visual studióhoz készült Azure Data Lake Tools](https://aka.ms/adltoolsvs) egy **sikertelen csúcspont-hibakereső**nevű szolgáltatást biztosít, amely megkönnyíti az Egyéni kódban előforduló hibák hibakeresését. Ha a U-SQL-feladatok sikertelenek, a szolgáltatás megtartja a meghibásodási állapotot, és az eszköz segítségével letöltheti a Felhőbeli meghibásodási környezetet a helyi gépre a hibakereséshez. A helyi Letöltés rögzíti a teljes felhőalapú környezetet, beleértve a bemeneti adatokat és a felhasználói kódokat is.
+A gyakorlatban előfordulhat, hogy bármely kód hibakeresést igényel, de a felhőben lévő, korlátozott naplófájlokkal rendelkező elosztott feladatok nem végezhetők el egyéni kóddal. A [Visual studióhoz készült Azure Data Lake Tools](https://aka.ms/adltoolsvs) egy **sikertelen csúcspont-hibakereső** nevű szolgáltatást biztosít, amely megkönnyíti az Egyéni kódban előforduló hibák hibakeresését. Ha a U-SQL-feladatok sikertelenek, a szolgáltatás megtartja a meghibásodási állapotot, és az eszköz segítségével letöltheti a Felhőbeli meghibásodási környezetet a helyi gépre a hibakereséshez. A helyi Letöltés rögzíti a teljes felhőalapú környezetet, beleértve a bemeneti adatokat és a felhasználói kódokat is.
 
 Az alábbi videó azt mutatja be, hogy a Visual studióhoz készült Azure Data Lake-eszközök nem felelnek meg a vertex hibakeresésének.
 
@@ -31,7 +31,7 @@ Az alábbi videó azt mutatja be, hogy a Visual studióhoz készült Azure Data 
 
 Ha egy sikertelen feladatot nyit meg Azure Data Lake Tools for Visual Studio alkalmazásban, a hiba lapon egy sárga riasztási sáv jelenik meg, amely részletes hibaüzeneteket jelenít meg.
 
-1. Kattintson a **Letöltés** gombra az összes szükséges erőforrás és bemeneti adatfolyam letöltéséhez. Ha a letöltés nem fejeződött be, kattintson az **újra**gombra.
+1. Kattintson a **Letöltés** gombra az összes szükséges erőforrás és bemeneti adatfolyam letöltéséhez. Ha a letöltés nem fejeződött be, kattintson az **újra** gombra.
 
 2. A letöltés befejezése után kattintson az **Open (Megnyitás** ) gombra a helyi hibakeresési környezet létrehozásához. Új hibakeresési megoldás lesz megnyitva, és ha meglévő megoldás van megnyitva a Visual Studióban, győződjön meg róla, hogy a hibakeresés előtt menti és zárja be azt.
 
@@ -56,7 +56,7 @@ A C# forráskód két esetben van rögzítve:
 
 1. A felhasználói kód a kód mögötti fájlban van definiálva (általában `Script.usql.cs` U-SQL-projektben szerepel).
 
-2. A felhasználói kód az U-SQL-alkalmazáshoz tartozó C# Class Library-projektben van definiálva, és **hibakeresési információkkal**együtt regisztrálva van.
+2. A felhasználói kód az U-SQL-alkalmazáshoz tartozó C# Class Library-projektben van definiálva, és **hibakeresési információkkal** együtt regisztrálva van.
 
 Ha a forráskódot importálja a megoldásba, a probléma elhárításához használhatja a Visual Studio hibakereső eszközeit (megtekintés, változók stb.):
 
@@ -76,7 +76,7 @@ Ha a felhasználói kód nem szerepel a kód mögötti fájlban, vagy nem regisz
 
 2. A **FailedVertexDebugHost** projekthez tartozó Project mappa elérési útjának beolvasása. 
 
-3. Right-Click **a hozzáadott Assembly forráskód-projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
+3. Right-Click **a hozzáadott Assembly forráskód-projekt > tulajdonságai** elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Az U-SQL hibakeresési készletének Azure Data Lake Analytics az PDB elérési útja](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
@@ -103,7 +103,7 @@ A sikertelen feladatok újraküldése:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
+- [Az U-SQL programozhatósági útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
 - [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 - [U-SQL feladatok tesztelése és hibakeresése helyi futtatással és az Azure Data Lake U-SQL SDK használatával](data-lake-analytics-data-lake-tools-local-run.md)
 - [Rendellenes ismétlődő feladatok hibáinak megoldása](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

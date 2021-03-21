@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a3ac799203cade3a907acbe28dee3a8023891db2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93077642"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Hibaelhárítás a feltételes hozzáférés Lehetőségelemzési eszközével
 
-A [feltételes hozzáférés](./overview.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt** .
+A [feltételes hozzáférés](./overview.md) Azure Active Directory (Azure ad) egyik funkciója, amely lehetővé teszi, hogy a jogosult felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz. Honnan tudhatja, mire számíthat a környezet feltételes hozzáférési házirendjeiből? A kérdés megválaszolásához használhatja a **feltételes hozzáférési What if eszközt**.
 
 Ez a cikk bemutatja, hogyan használható az eszköz a feltételes hozzáférési szabályzatok teszteléséhez.
 
@@ -30,7 +30,7 @@ A **feltételes hozzáférés What if házirend eszköz** lehetővé teszi a fel
 
 Az **What if** eszköz segítségével gyorsan meghatározhatja az adott felhasználóra vonatkozó házirendeket. Az információkat például akkor használhatja, ha problémát kell elhárítani.    
 
-## <a name="how-it-works"></a>A működési elv
+## <a name="how-it-works"></a>Működés
 
 A **feltételes hozzáférés What if eszközben** először konfigurálnia kell a szimulálni kívánt bejelentkezési forgatókönyv beállításait. Ezek a beállítások többek között:
 
@@ -56,15 +56,15 @@ A próbaverzió futtatása előtt konfigurálnia kell a beállításokat.
 
 Ez a szakasz a szimulációs futtatási beállításokkal kapcsolatos információkat tartalmaz.
 
-:::image type="content" source="./media/what-if-tool/02.png" alt-text="Képernyőkép a Azure Portal feltételes hozzáférési szabályzatok oldaláról. Az eszköztáron a mi történik, ha az elem ki van emelve." border="false":::
+:::image type="content" source="./media/what-if-tool/02.png" alt-text="Képernyőfelvétel a Azure Portal What If oldalról, amelynek mezői a felhasználók, a Cloud apps, az I P-címek, az eszközök platformja, az ügyfélalkalmazás és a bejelentkezési kockázat." border="false":::
 
-### <a name="user"></a>Felhasználó
+### <a name="user"></a>User
 
 Csak egy felhasználót választhat ki. Ez az egyetlen kötelező mező.
 
 ### <a name="cloud-apps"></a>Felhőalkalmazások
 
-A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás** . Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
+A beállítás alapértelmezett értéke **minden felhőalapú alkalmazás**. Az alapértelmezett beállítás az összes elérhető házirend kiértékelését végzi a környezetben. A hatókört leszűkítheti bizonyos felhőalapú alkalmazásokat érintő szabályzatokra.
 
 ### <a name="ip-address"></a>IP-cím
 
@@ -90,7 +90,7 @@ Ez a beállítás a [bejelentkezési kockázat feltételét](concept-conditional
 
 A kiértékelés elindításához kattintson a **What if** gombra. A kiértékelés eredménye a következőkből álló jelentést tartalmazza: 
 
-:::image type="content" source="./media/what-if-tool/03.png" alt-text="Képernyőkép a Azure Portal feltételes hozzáférési szabályzatok oldaláról. Az eszköztáron a mi történik, ha az elem ki van emelve." border="false":::
+:::image type="content" source="./media/what-if-tool/03.png" alt-text="Képernyőkép egy értékelési jelentésről. A szöveg azt jelzi, hogy legalább egy klasszikus házirend konfigurálva van. A szabályzatok megtekintéséhez lapok érhetők el." border="false":::
 
 - Annak jelzése, hogy a klasszikus szabályzatok léteznek-e a környezetben
 - A felhasználóra érvényes házirendek

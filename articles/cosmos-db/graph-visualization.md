@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 07/02/2019
 ms.openlocfilehash: 569c87a7753fdb0d7b880d6856d7819ff8000ccb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93129609"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Az adatvizualizációs megoldásokkal Azure Cosmos DB Gremlin API-ban tárolt gráf-adathalmazok megjelenítése
@@ -27,11 +27,11 @@ A [Linkurious Enterprise](https://linkurio.us/product/) gráf-technológiát és
 
 A Linkurious Enterprise interaktív felülete egyszerű módszert kínál az összetett adatmennyiség kivizsgálására. Megkeresheti az egyes entitásokat, kibonthatja a kapcsolatokat a rejtett kapcsolatok felfedéséhez, és tetszőleges elrendezést alkalmazhat az összetett hálózatokra. A Linkurious Enterprise mostantól kompatibilis a Azure Cosmos DB Gremlin API-val. Ez alkalmas a végpontok közötti gráf-vizualizációs forgatókönyvekhez, és támogatja a felhasználói felületről származó olvasási és írási képességeket. A [Linkurious bemutatóját a Azure Cosmos db](https://linkurio.us/contact/) használatával kérheti le
 
-:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious embléma" border="false":::
+:::image type="content" source="./media/graph-visualization/linkurious-demo.gif" alt-text="Linkurious bemutató" border="false":::
 
 ## <a name="cambridge-intelligence"></a>Cambridge-i intelligencia
 
-:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Linkurious embléma" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-logo.png" alt-text="Cambridge Intelligence embléma" border="false":::
 
 [A Cambridge intelligencia](https://cambridge-intelligence.com/products/) Graph vizualizációs eszközkészletei mostantól támogatják a Azure Cosmos db. A Azure Cosmos DB a következő két vizualizációs eszközkészletet támogatja:
 
@@ -39,11 +39,11 @@ A Linkurious Enterprise interaktív felülete egyszerű módszert kínál az ös
 
 - [Újragráf a fejlesztők Reagálásához](https://cambridge-intelligence.com/regraph/)
 
-:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Linkurious embléma" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-2.gif" alt-text="Az animáció egy, a különböző részletességi szintű vizualizációs példát mutat be." border="false":::
 
 Ezek az eszközkészletek lehetővé teszik a nagy teljesítményű Graph vizualizációs és elemzési alkalmazások kialakítását a használati esetekhez. Nagy teljesítményű web Graphics Library-(WebGL-) renderelést és gondosan elkészített kódokat biztosítanak a felhasználók számára a gyors és éleslátó vizualizációs élmény érdekében. Ezek az eszközök kompatibilisek a böngészővel, az eszközzel, a kiszolgálóval vagy az adatbázissal, és részletes oktatóanyagokkal, teljes körű dokumentált API-kkal és interaktív bemutatókkal rendelkeznek.
 
-:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Linkurious embléma" border="false":::
+:::image type="content" source="./media/graph-visualization/ci-demo-1.gif" alt-text="Az animáció egy Re-Graph vizualizációs példát mutat be különböző részletességi szinteken." border="false":::
 
 
 ## <a name="next-steps"></a>Következő lépések

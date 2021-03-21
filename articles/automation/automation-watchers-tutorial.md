@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.openlocfilehash: ca4c4013e0044811a5bac8786996761b8a5c45f1
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97682746"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Frissített fájlok követése figyelő feladattal
@@ -153,6 +153,6 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a saját runbook létrehozásáról, tekintse meg [a PowerShell-Runbook létrehozását](learn/automation-tutorial-runbook-textual-powershell.md)ismertető témakört.

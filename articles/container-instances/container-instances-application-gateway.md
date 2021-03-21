@@ -4,10 +4,10 @@ description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, �
 ms.topic: article
 ms.date: 03/16/2020
 ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035053"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
@@ -29,7 +29,7 @@ Mindaddig, amíg az Application Gateway fut, és a tároló csoport egy stabil m
 
 Egy tipikus esetben előfordulhat, hogy már rendelkezik Azure-beli virtuális hálózattal. Ha még nem rendelkezik ilyennel, hozzon létre egyet a következő példában látható parancsokkal. A virtuális hálózatnak külön alhálózatokra van szüksége az Application Gateway és a Container csoport számára.
 
-Ha szüksége van erre, hozzon létre egy Azure-erőforráscsoportot. Példa:
+Ha szüksége van erre, hozzon létre egy Azure-erőforráscsoportot. Például:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -145,7 +145,7 @@ Ha a sikeres konfigurálás után szeretné megtekinteni a futó webalkalmazást
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtekintheti a gyors üzembe helyezési [sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , amely egy, a WordPress Container-példánnyal rendelkező tároló csoportot hoz létre egy Application Gateway mögötti háttér-kiszolgálóként.
 * Az alkalmazás-átjárót a tanúsítvány használatával is konfigurálhatja az SSL-lezáráshoz. Tekintse meg az [áttekintést](../application-gateway/ssl-overview.md) és az [oktatóanyagot](../application-gateway/create-ssl-portal.md).

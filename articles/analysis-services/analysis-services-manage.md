@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 91ffcac98b2b919a8fc131d235e699aad4fa215d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93078900"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
@@ -42,7 +42,7 @@ Győződjön meg arról, hogy a legújabb funkciókat és a legsimább felhaszn�
 2. Az SSMS > **Object Explorerben** kattintson a **Csatlakozás** > **Analysis Services** lehetőségre.
 3. A **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen illessze be a kiszolgáló nevét, majd a **hitelesítés** területen válasszon a következő hitelesítési típusok közül:   
     > [!NOTE]
-    > A hitelesítés típusa, **Active Directory az MFA-támogatással rendelkező univerzális** , ajánlott.
+    > A hitelesítés típusa, **Active Directory az MFA-támogatással rendelkező univerzális**, ajánlott.
 
     > [!NOTE]
     > Ha Microsoft-fiókkal, élő AZONOSÍTÓval, a Yahoo-val, a Gmailben vagy a bejelentkezéssel jelentkezik be, hagyja üresen a jelszó mezőt. A Csatlakozás gombra kattintás után a rendszer jelszót kér.

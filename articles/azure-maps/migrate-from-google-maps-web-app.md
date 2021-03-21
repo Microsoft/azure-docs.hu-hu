@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: fcb8090427530271600a6699fafa5c488c426784
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97680880"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Oktatóanyag: webalkalmazás migrálása a Google Maps szolgáltatásból
@@ -75,7 +75,7 @@ A táblázat a Google Maps v3 JavaScript SDK legfontosabb API-funkcióit és a A
 | Geocoder szolgáltatás        | ✓                          |
 | Directions szolgáltatás      | ✓                          |
 | Távolsági mátrix szolgáltatás | ✓                          |
-| Jogosultságszint-emelési szolgáltatás       | ✓                          |
+| Elevation szolgáltatás       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Jelentős különbségek a webes SDK-k között
 
@@ -1030,7 +1030,7 @@ Adatforrásban lévő adatforrások hozzáadása és kezelése. Az adatforrások
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve             | Típus    | Description (Leírás)   |
+| Tulajdonság neve             | Típus    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |
@@ -1039,7 +1039,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Módszer | Visszatérési típus | Description (Leírás) |
+| Metódus | Visszatérési típus | Description |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)` | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -1718,7 +1718,7 @@ A tárak további funkciókat is hozzáadhatnak a térképhez. Ezen könyvtárak
 | Geometriai könyvtár      | [Atlas. Math](/javascript/api/azure-maps-control/atlas.math)   |
 | Vizualizációs könyvtár | [Heat Térkép réteg](map-add-heat-map-layer.md) |
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Nincs kitakarítható erőforrás.
 

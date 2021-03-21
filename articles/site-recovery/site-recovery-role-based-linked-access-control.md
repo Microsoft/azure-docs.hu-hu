@@ -7,10 +7,10 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: d3e1334f513e8ac587d639758d83ce080c5b4ab9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92516902"
 ---
 # <a name="manage-site-recovery-access-with-azure-role-based-access-control-azure-rbac"></a>Site Recovery hozzáférés kezelése az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)
@@ -53,7 +53,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft. ClassicCompute/virtualMachines/READ |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Write |
 |  |  | Microsoft. ClassicCompute/virtualMachines/delete |
-| Hálózat | Resource Manager | Microsoft. Network/networkInterfaces/READ |
+| Network (Hálózat) | Resource Manager | Microsoft. Network/networkInterfaces/READ |
 |  |  | Microsoft. Network/networkInterfaces/Write |
 |  |  | Microsoft. Network/networkInterfaces/delete |
 |  |  | Microsoft. Network/networkInterfaces/csatlakozás/művelet |
@@ -62,7 +62,7 @@ Egy új virtuális gép replikálásának befejezéséhez a felhasználónak a k
 |  |  | Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet |
 |  | Klasszikus | Microsoft. ClassicNetwork/virtualNetworks/READ |
 |  |  | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action |
-| Storage | Resource Manager | Microsoft. Storage/storageAccounts/olvasás |
+| Tárolás | Resource Manager | Microsoft. Storage/storageAccounts/olvasás |
 |  |  | Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/művelet |
 |  | Klasszikus | Microsoft. ClassicStorage/storageAccounts/READ |
 |  |  | Microsoft. ClassicStorage/storageAccounts/Listkeys műveletének beolvasása/művelet |

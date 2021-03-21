@@ -12,10 +12,10 @@ ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
 ms.openlocfilehash: 27b18fdc2dda40f8361483e6ecce28d0ccbd0310
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93308236"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning algoritmusok kiválasztása
@@ -30,7 +30,7 @@ Gyakori kérdés, hogy milyen gépi tanulási algoritmust használok? A kiválas
 
 ## <a name="business-scenarios-and-the-machine-learning-algorithm-cheat-sheet"></a>Üzleti forgatókönyvek és a Machine Learning algoritmus – Cheat Sheet
 
-Az [Azure Machine learning algoritmust tartalmazó Cheat Sheet](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) segít az első megfontolásban: **mit szeretne tenni az adatokkal** ? A Machine Learning algoritmust tartalmazó Cheat lapon keresse meg a végrehajtani kívánt feladatot, majd keresse meg a prediktív elemzési megoldás [Azure Machine learning Designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) algoritmusát. 
+Az [Azure Machine learning algoritmust tartalmazó Cheat Sheet](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri) segít az első megfontolásban: **mit szeretne tenni az adatokkal**? A Machine Learning algoritmust tartalmazó Cheat lapon keresse meg a végrehajtani kívánt feladatot, majd keresse meg a prediktív elemzési megoldás [Azure Machine learning Designer](./concept-designer.md?WT.mc_id=docs-article-lazzeri) algoritmusát. 
 
 A Machine Learning Designer olyan algoritmusok átfogó portfólióját kínálja, mint a [többosztályos döntési erdő](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri), a javasolt [rendszerek](./algorithm-module-reference/evaluate-recommender.md?WT.mc_id=docs-article-lazzeri), a [neurális hálózat regressziója](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri), a [többosztályos neurális hálózat](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri)és a [K – fürtözés](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri). Minden algoritmus úgy lett kialakítva, hogy más típusú gépi tanulási problémát lehessen kezelni. Tekintse meg a [Machine learning Designer algoritmust és a modul-referenciát](./algorithm-module-reference/module-reference.md?WT.mc_id=docs-article-lazzeri) a teljes listához, valamint a dokumentációt arról, hogy az egyes algoritmusok hogyan működnek és hogyan hangolják össze a paramétereket az algoritmus optimalizálásához
 
@@ -50,24 +50,24 @@ Az alábbi táblázat a besorolási, a regressziós és a fürtözési családok
 | **Algoritmus** | **Pontosságát** | **Betanítási idő** | **Linearitás** | **Paraméterek** | **Megjegyzések** |
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Besorolási család** | | | | | |
-| [Kétosztályos logisztikai regresszió](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Jó  |Gyors |Igen |4 | |
-| [Kétosztályos döntési erdő](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Nem |5 |A lassabb pontozási időket jeleníti meg. Javasoljuk, hogy ne működjön együtt One-vs-All Multiclassval, mert a faszerkezetes előrejelzések felhalmozódása során a futófelület zárolása által okozott lassabb pontozási idő |
-| [Kétosztályos, megnövelt döntési fa](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Nem |6 |Nagy memória-lábnyom |
-| [Kétosztályos neurális hálózat](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |Nem |8 | |
-| [Kétosztályos átlagú perceptron](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |Igen |4 | |
-| [Kétosztályos támogatású vektoros gép](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Igen |5 |Kiválóan alkalmas a nagyméretű szolgáltatások számára |
-| [Többosztályos logisztikai regresszió](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Igen |4 | |
-| [Többosztályos döntési erdő](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Nem |5 |Lassabb pontozási idő megjelenítése |
-| [Többosztályos növelt döntési fa](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Nem |6 | Egyre nagyobb pontosságot biztosít a kisebb lefedettséggel járó kis kockázat miatt |
-| [Többosztályos neurális hálózat](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |Nem |8 | |
+| [Kétosztályos logisztikai regresszió](./algorithm-module-reference/two-class-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Jó  |Gyors |Yes |4 | |
+| [Kétosztályos döntési erdő](./algorithm-module-reference/two-class-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |No |5 |A lassabb pontozási időket jeleníti meg. Javasoljuk, hogy ne működjön együtt One-vs-All Multiclassval, mert a faszerkezetes előrejelzések felhalmozódása során a futófelület zárolása által okozott lassabb pontozási idő |
+| [Kétosztályos, megnövelt döntési fa](./algorithm-module-reference/two-class-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |No |6 |Nagy memória-lábnyom |
+| [Kétosztályos neurális hálózat](./algorithm-module-reference/two-class-neural-network.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |No |8 | |
+| [Kétosztályos átlagú perceptron](./algorithm-module-reference/two-class-averaged-perceptron.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |Yes |4 | |
+| [Kétosztályos támogatású vektoros gép](./algorithm-module-reference/two-class-support-vector-machine.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Yes |5 |Kiválóan alkalmas a nagyméretű szolgáltatások számára |
+| [Többosztályos logisztikai regresszió](./algorithm-module-reference/multiclass-logistic-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Yes |4 | |
+| [Többosztályos döntési erdő](./algorithm-module-reference/multiclass-decision-forest.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |No |5 |Lassabb pontozási idő megjelenítése |
+| [Többosztályos növelt döntési fa](./algorithm-module-reference/multiclass-boosted-decision-tree.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |No |6 | Egyre nagyobb pontosságot biztosít a kisebb lefedettséggel járó kis kockázat miatt |
+| [Többosztályos neurális hálózat](./algorithm-module-reference/multiclass-neural-network.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |No |8 | |
 | [Egy-és többosztályos](./algorithm-module-reference/one-vs-all-multiclass.md?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Tekintse meg a kiválasztott kétosztályos módszer tulajdonságait. |
 | **Regressziós család** | | | | | |
-| [Lineáris regresszió](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Igen |4 | |
-| [Döntési erdő regressziója](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Kiváló |Mérsékelt |Nem |5 | |
-| [A döntési fa regressziójának fokozása](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Nem |6 |Nagy memória-lábnyom |
-| [Neurális hálózat regressziója](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |Nem |8 | |
+| [Lineáris regresszió](./algorithm-module-reference/linear-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Gyors |Yes |4 | |
+| [Döntési erdő regressziója](./algorithm-module-reference/decision-forest-regression.md?WT.mc_id=docs-article-lazzeri)|Kiváló |Mérsékelt |No |5 | |
+| [A döntési fa regressziójának fokozása](./algorithm-module-reference/boosted-decision-tree-regression.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |No |6 |Nagy memória-lábnyom |
+| [Neurális hálózat regressziója](./algorithm-module-reference/neural-network-regression.md?WT.mc_id=docs-article-lazzeri) |Jó |Mérsékelt |No |8 | |
 | **Fürtözési család** | | | | | |
-| [K – fürtözés](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Igen |8 |Egy fürtözési algoritmus |
+| [K – fürtözés](./algorithm-module-reference/k-means-clustering.md?WT.mc_id=docs-article-lazzeri) |Kiváló |Mérsékelt |Yes |8 |Egy fürtözési algoritmus |
 
 ## <a name="requirements-for-a-data-science-scenario"></a>Az adatelemzési forgatókönyvre vonatkozó követelmények
 
@@ -123,7 +123,7 @@ A lineáris regressziós algoritmusok azt feltételezik, hogy az adattrendek egy
 
 ![Nem lineáris osztály határa](./media/how-to-select-algorithms/nonlinear-class-boundary.png)
 
-**_Nemlineáris osztály határa_* _: a lineáris osztályozási algoritmus _Relyinga kis pontosságot eredményezne. *
+***Nemlineáris osztály határa** _: a lineáris osztályozási algoritmus _Relyinga kis pontosságot eredményezne. *
 
 ![Nem lineáris trendtel rendelkező adatokat](./media/how-to-select-algorithms/nonlinear-trend.png)
 

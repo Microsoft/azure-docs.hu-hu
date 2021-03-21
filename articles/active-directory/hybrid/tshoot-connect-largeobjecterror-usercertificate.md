@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861748"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: a userCertificate attribútum által okozott LargeObject hibák kezelésére
@@ -107,7 +107,7 @@ Egy meglévő szinkronizálási szabálynak kell lennie, amely engedélyezve van
 
     | Attribútum | Operátor | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EGYENLŐ | Felhasználó |
+    | sourceObjectType | EGYENLŐ | User |
     | cloudMastered | NOTEQUAL | Igaz |
 
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. lépés A szükséges kimenő szinkronizálási szabály létrehozása
@@ -117,8 +117,8 @@ Az új szinkronizálási szabálynak ugyanazzal a **hatókör-szűrővel** és *
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Név | *Adjon meg egy nevet* | Például *: "out to HRE – egyéni felülbírálás a userCertificate"* |
-    | Leírás | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
+    | Name | *Adjon meg egy nevet* | Például *: "out to HRE – egyéni felülbírálás a userCertificate"* |
+    | Description | *Adja meg a leírást* | Például: *"Ha a userCertificate attribútum több mint 15 értékkel rendelkezik, akkor a null értéket exportálja."* |
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* |
     | Csatlakoztatott rendszerobjektum típusa | **felhasználói** | |
     | Metaverse objektum típusa | **személy** | |

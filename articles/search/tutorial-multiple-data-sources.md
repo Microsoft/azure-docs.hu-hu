@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/23/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: df7dcf9859b6942662ae447af836f59985e2d11a
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99509503"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
@@ -174,8 +174,8 @@ Ez az egyszerű C# kódon-konzol alkalmazás a következő feladatokat hajtja v�
 
  A program futtatása előtt szánjon egy percet a minta kódjának és indexének és indexelő definícióinak tanulmányozására. A megfelelő kód a következő két fájlban található meg:
 
-  + A **Hotel.cs** tartalmazza az indexet meghatározó sémát.
-  + A **program.cs** olyan függvényeket tartalmaz, amelyek létrehozzák az Azure Cognitive Search indexet, az adatforrásokat és az indexelő, és betöltik az összesített eredményeket az indexbe.
+  + A **Hotel. cs** tartalmazza az indexet meghatározó sémát.
+  + A **program. cs** olyan függvényeket tartalmaz, amelyek létrehozzák az Azure Cognitive Search indexet, az adatforrásokat és az indexelő, és betöltik az összesített eredményeket az indexbe.
 
 ### <a name="create-an-index"></a>Index létrehozása
 
@@ -185,7 +185,7 @@ Az adatmodellt a Hotel osztály határozza meg, amely a címekre és a helyiség
 
 A program az új létrehozása előtt törli az azonos nevű meglévő indexet, abban az esetben, ha egynél többször szeretné futtatni ezt a példát.
 
-A **Hotel.cs** fájl következő kódrészletei egyetlen mezőt jelenítenek meg, majd egy másik adatmodell-osztályra mutató hivatkozást, a Room [] elemet, amely viszont a **Room.cs** fájlban van definiálva (nem látható).
+A ( **z). cs** fájl következő kódrészletei egyetlen mezőt jelenítenek meg, majd egy másik adatmodell-osztályra mutató hivatkozást, a Room [] elemet, amely viszont a **Room. cs** fájlban van definiálva (nem látható).
 
 ```csharp
 . . .
@@ -199,7 +199,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-A **program.cs** fájlban a [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) egy névvel és egy, a metódus által generált mező-gyűjteményrel van definiálva, `FieldBuilder.Build` majd a következőképpen jön létre:
+A **program. cs** fájlban a [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) egy névvel és egy, a metódus által generált Field gyűjteményrel van definiálva, `FieldBuilder.Build` majd a következőképpen jön létre:
 
 ```csharp
 private static async Task CreateIndexAsync(string indexName, SearchIndexClient indexClient)

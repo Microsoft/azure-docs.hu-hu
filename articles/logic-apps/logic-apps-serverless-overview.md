@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 470857883144f4bf8c21a1921afacb7ba3f5ca00
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98788095"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure kiszolgáló nélküli: Áttekintés felhőalapú alkalmazások és megoldások létrehozásához Azure Logic Apps és Azure Functions
@@ -41,7 +41,7 @@ A Azure Functions első lépéseinek megkezdéséhez [először hozzon létre eg
 
 Az Azure sokoldalú eszközöket biztosít a kiszolgáló nélküli alkalmazások fejlesztéséhez, üzembe helyezéséhez és kezeléséhez. Az alkalmazásokat közvetlenül a Azure Portal, a [Visual Studióban](logic-apps-serverless-get-started-vs.md)vagy a [Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md)-ban található eszközökkel hozhatja létre. Az alkalmazás létrehozása után az [alkalmazást gyorsan üzembe helyezheti Azure Resource Manager-sablonokkal](logic-apps-deploy-azure-resource-manager-templates.md). Az Azure emellett figyelést is biztosít, amely a Azure Portalon, az API-n vagy SDK-n keresztül, vagy a Azure Monitor naplók és Application Insights integrált eszközeivel érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban](logic-apps-serverless-get-started-vs.md)
 * [Ügyfél-áttekintési irányítópult létrehozása kiszolgáló nélküli](logic-apps-scenario-social-serverless.md)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1811d5b9ae4d3e34b48e1cdc156438f2bad98d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90601654"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>A feltételes hozzáférés klasszikus szabályzatának áttelepítése
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogy mit kell tudnia a meglévő feltételes hozzáfér
 
 ## <a name="classic-policies"></a>Klasszikus szabályzatok
 
-A [Azure Portal](https://portal.azure.com)a feltételes hozzáférési szabályzatok a **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**területen találhatók. Előfordulhat, hogy a szervezet régebbi feltételes hozzáférési szabályzatokat nem hozott létre ezen a lapon. Ezeket a szabályzatokat *klasszikus szabályzatoknak*nevezzük. A klasszikus szabályzatok feltételes hozzáférési szabályzatok, amelyeket a ben hozott létre:
+A [Azure Portal](https://portal.azure.com)a feltételes hozzáférési szabályzatok a **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés** területen találhatók. Előfordulhat, hogy a szervezet régebbi feltételes hozzáférési szabályzatokat nem hozott létre ezen a lapon. Ezeket a szabályzatokat *klasszikus szabályzatoknak* nevezzük. A klasszikus szabályzatok feltételes hozzáférési szabályzatok, amelyeket a ben hozott létre:
 
 - A klasszikus Azure portál
 - A klasszikus Intune-portál
@@ -62,7 +62,7 @@ A kiválasztott csoportok módosításával vagy adott csoportok kizárásával 
  
 ## <a name="migration-considerations"></a>A migrálás szempontjai
 
-Ebben a cikkben az Azure AD feltételes hozzáférési szabályzatait *új szabályzatoknak*is nevezzük.
+Ebben a cikkben az Azure AD feltételes hozzáférési szabályzatait *új szabályzatoknak* is nevezzük.
 A klasszikus szabályzatok továbbra is az új szabályzatokkal együtt működnek, amíg le nem tiltja vagy nem törli őket. 
 
 A házirend-Összevonás kontextusában a következő szempontok fontosak:

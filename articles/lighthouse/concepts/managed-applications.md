@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók együtt az Azure Lighthouse és 
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693972"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
@@ -25,7 +25,7 @@ Ez a táblázat olyan magas szintű különbségeket mutat be, amelyek hatással
 |---------|---------|---------|
 |Tipikus felhasználó     |Több bérlőt kezelő szolgáltatók vagy vállalatok         |Független szoftvergyártók (ISV-ket)         |
 |A bérlők közötti hozzáférés hatóköre     |Előfizetés (ok) vagy erőforráscsoport (ok)         |Erőforráscsoport (egyetlen alkalmazás hatóköre)         |
-|Megvásárolható az Azure Marketplace-en     |Nem (az ajánlatokat közzéteheti az Azure Marketplace-en, de az ügyfeleket külön számlázzák)        |Igen         |
+|Megvásárolható az Azure Marketplace-en     |Nem (az ajánlatokat közzéteheti az Azure Marketplace-en, de az ügyfeleket külön számlázzák)        |Yes         |
 |IP-védelem     |Igen (az IP maradhat a szolgáltató bérlője)        |Igen (a tervezés szerint az erőforráscsoport zárolva van az ügyfelek számára)         |
 |Megtagadás-hozzárendelések     |Nem         |Igen        |
 
@@ -57,7 +57,7 @@ Előfordulhat például, hogy egy ügyfél a szolgáltató által az Azure Vilá
 
 Előfordulhat, hogy az ügyfelek több szolgáltató által felügyelt alkalmazások is érdeklik, függetlenül attól, hogy a felügyelt szolgáltatásokat is használják-e az Azure Lighthouse-n keresztül ezen szolgáltatók bármelyikén. Emellett a Cloud Solution Provider (CSP) program partnerei olyan felügyelt alkalmazásokat is megadhatnak, amelyeket az Azure Lighthouse-n keresztül támogatnak más ISV-ket. Számos lehetőség közül a szolgáltatók kiválaszthatják a megfelelő egyensúlyt az ügyfelek igényeinek kielégítéséhez, miközben szükség esetén korlátozzák az erőforrásokhoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure által felügyelt alkalmazásokról](../../azure-resource-manager/managed-applications/overview.md).
 - Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.

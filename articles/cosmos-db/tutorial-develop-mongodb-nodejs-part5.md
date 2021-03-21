@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: a3097fa539f460ef5e8ffe73598fa5d55516717e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93097804"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
@@ -200,7 +200,7 @@ A Hero modell létrehozása után meg kell határoznia egy szolgáltatást az ad
 
 ## <a name="configure-routes"></a>Útvonalak konfigurálása
 
-Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a DELETE kérelmek URL-címeinek kezeléséhez. Az útválasztási módszerek a visszahívási függvényeket (más néven _kezelő függvények_ ) adják meg. Ezeket a függvényeket akkor hívja meg a rendszer, amikor az alkalmazás egy kérést kap a megadott végpont és HTTP-metódus számára. A következő lépésekkel adhatja hozzá a Hero szolgáltatást, és meghatározhatja az útvonalakat:
+Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a DELETE kérelmek URL-címeinek kezeléséhez. Az útválasztási módszerek a visszahívási függvényeket (más néven _kezelő függvények_) adják meg. Ezeket a függvényeket akkor hívja meg a rendszer, amikor az alkalmazás egy kérést kap a megadott végpont és HTTP-metódus számára. A következő lépésekkel adhatja hozzá a Hero szolgáltatást, és meghatározhatja az útvonalakat:
 
 1. A Visual Studio Code-ban a **routes.js** fájlban tegye megjegyzésbe a `res.send` minta Hero-adatokat küldő függvényt. Ehelyett adjon hozzá egy sort a függvény meghívásához `heroService.getHeroes` .
 
@@ -225,7 +225,7 @@ Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a D
     function getHeroes(req, res) {
     ```
 
-Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást. Először is bemutatjuk a index.js fájlt, amely beállítja a csomópont-kiszolgálót. Figyelje meg, hogy beállítja és meghatározza az útvonalakat. Ezután a routes.js-fájl a Hero szolgáltatással beszélget, és azt jelzi, hogy a függvényeket, például a **getHeroes** , és továbbítja a kérést és a választ. A hero.service.js fájl megkapja a modellt, és csatlakozik a Mongo. Ezt követően végrehajtja a **getHeroes** , amikor meghívjuk, és visszaadja a 200-es választ. 
+Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást. Először is bemutatjuk a index.js fájlt, amely beállítja a csomópont-kiszolgálót. Figyelje meg, hogy beállítja és meghatározza az útvonalakat. Ezután a routes.js-fájl a Hero szolgáltatással beszélget, és azt jelzi, hogy a függvényeket, például a **getHeroes**, és továbbítja a kérést és a választ. A hero.service.js fájl megkapja a modellt, és csatlakozik a Mongo. Ezt követően végrehajtja a **getHeroes** , amikor meghívjuk, és visszaadja a 200-es választ. 
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -233,13 +233,13 @@ Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
 1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a **hibakeresés** gombot :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png"::: , majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: .
 
-1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot** . Itt `http://localhost:3000` láthatja az alkalmazást.
+1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. Itt `http://localhost:3000` láthatja az alkalmazást.
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png" alt-text="Új Azure Cosmos DB-fiók az Azure Portalon":::
 
 Az alkalmazásban még nincsenek hősök tárolva. Az oktatóanyag következő részében a Put, a push és a DELETE funkciókat vesszük fel. Ezt követően hozzáadhat, frissíthet és törölhet hősöket a felhasználói felületen az Azure Cosmos-adatbázishoz tartozó mongúz-kapcsolatok használatával. 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot, Azure Cosmos DB fiókot és az összes kapcsolódó erőforrást. Az erőforráscsoport törléséhez kövesse az alábbi lépéseket:
 

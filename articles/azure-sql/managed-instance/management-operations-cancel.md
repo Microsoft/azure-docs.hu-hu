@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861544"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek megszakítása
@@ -38,14 +38,14 @@ A következő táblázat összefoglalja a felügyeleti műveleteket, független�
 
 Kategória  |Művelet  |Kampány  |Becsült megszakítási időtartam  |
 |---------|---------|---------|---------|
-|Üzembe helyezés |Példány létrehozása |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |Nem |  |
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Igen |a műveletek 90%-a 5 percen belül befejeződik. |
-|Törlés |Példány törlése |Nem |  |
-|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |Nem |  |
+|Üzembe helyezés |Példány létrehozása |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |No |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Yes |a műveletek 90%-a 5 percen belül befejeződik. |
+|Törlés |Példány törlése |No |  |
+|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |No |  |
 
 ## <a name="cancel-management-operation"></a>Felügyeleti művelet megszakítása
 

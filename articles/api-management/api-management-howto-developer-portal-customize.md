@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
 ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96012977"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>Oktatóanyag: a fejlesztői portál elérése és testreszabása
 
 A *fejlesztői portál* egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, és hogyan kérhetnek hozzáférést.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A fejlesztői portál felügyelt verziójának elérése
@@ -140,7 +140,7 @@ A portál közzététele után a felügyeleti panellel megegyező URL-címen fé
 
 Annak érdekében, hogy a portál látogatói a beépített interaktív konzolon tesztelik az API-kat, engedélyezze a CORS (több eredetű erőforrás-megosztás) az API-kon. Részletekért tekintse meg az [Azure API Management fejlesztői portál áttekintését](api-management-howto-developer-portal.md#cors).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a fejlesztői portálról:
 
