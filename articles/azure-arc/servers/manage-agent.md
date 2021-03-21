@@ -4,10 +4,10 @@ description: Ez a cikk azokat a különböző felügyeleti feladatokat ismerteti
 ms.date: 02/10/2021
 ms.topic: conceptual
 ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100587621"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
@@ -193,7 +193,7 @@ A **kapcsolódást** és a **leválasztást** manuálisan is elvégezheti, ha in
 >[!NOTE]
 >A **azcmagent** futtatásához *rendszergazdai* jogosultságokkal kell rendelkeznie a Linux rendszerű gépeken.
 
-### <a name="connect"></a>Kapcsolódás
+### <a name="connect"></a>Csatlakozás
 
 Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet az Azure-ban hozza létre. Az erőforrás a megadott előfizetésben és erőforráscsoporthoz van megadva, és a gép adatait a beállítás által megadott Azure-régióban tárolja a rendszer `--location` . Ha nincs megadva, az alapértelmezett erőforrás neve a gép állomásneve.
 

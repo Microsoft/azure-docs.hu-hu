@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 64d40de50f21811a56318971de1836abc8fbf8c9
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93027261"
 ---
 # <a name="http-features"></a>HTTP-funkciók
@@ -57,7 +57,7 @@ A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-cl
 
 # <a name="python"></a>[Python](#tab/python)
 
-**__init__ . a**
+**__init__. a**
 
 ```python
 import logging

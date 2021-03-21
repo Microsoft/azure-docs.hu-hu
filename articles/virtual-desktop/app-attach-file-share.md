@@ -7,10 +7,10 @@ ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97930786"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Fájlmegosztás beállítása a MSIX-alkalmazás csatolásához (előzetes verzió)
@@ -73,7 +73,7 @@ Ha a MSIX-alkalmazásait Azure Filesban tárolja, akkor a munkamenet-gazdagépek
 
 A munkamenet-gazda virtuális gépek engedélyeinek a Storage-fiókhoz és a fájlmegosztáshoz való hozzárendeléséhez:
 
-1. Hozzon létre egy Active Directory tartományi szolgáltatások (AD DS) biztonsági csoportot.
+1. Hozzon létre egy Active Directory Domain Services (AD DS) biztonsági csoportot.
 
 2. Adja hozzá a számítógép-fiókokat az összes munkamenet-gazda virtuális géphez a csoport tagjaiként.
 
@@ -95,9 +95,9 @@ A munkamenet-gazda virtuális gépek engedélyeinek a Storage-fiókhoz és a fá
 
 Miután hozzárendelte az identitást a tárhelyhez, kövesse a [következő lépésekben](#next-steps) szereplő cikkek utasításait, hogy más szükséges engedélyeket adjon meg a virtuális gépekhez hozzárendelt identitáshoz.
 
-Arról is gondoskodnia kell, hogy a munkamenet-gazda virtuális gépei új technológiai fájlrendszerbeli (NTFS) engedélyekkel rendelkezzenek. Az engedélyek használatához rendelkeznie kell egy olyan operatív egység-tárolóval, amely Active Directory tartományi szolgáltatásokból (AD DS) származik, és a felhasználóknak az adott operatív egység tagjainak kell lenniük.
+Arról is gondoskodnia kell, hogy a munkamenet-gazda virtuális gépei új technológiai fájlrendszerbeli (NTFS) engedélyekkel rendelkezzenek. Az engedélyek használatához rendelkeznie kell egy olyan operatív egység-tárolóval, amely Active Directory Domain Servicesból (AD DS) származik, és a felhasználóknak az adott operatív egység tagjainak kell lenniük.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fájlmegosztás beállítása után a következő műveleteket kell végrehajtania:
 

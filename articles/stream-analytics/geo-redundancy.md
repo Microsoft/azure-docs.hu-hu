@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.openlocfilehash: 86a90cbcbb3381e853dcea766364642a89dafd7b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015521"
 ---
 # <a name="achieve-geo-redundancy-for-azure-stream-analytics-jobs"></a>Geo-redundancia elérése Azure Stream Analytics feladatokhoz
@@ -27,7 +27,7 @@ Az alkalmazásnak kezelnie kell a régió kimeneti adatbázisát, amely az első
 
 Bár a különböző bemeneti és kimeneti típusok különböző földrajzi replikálási lehetőségeket tesznek lehetővé, javasoljuk, hogy az ebben a cikkben ismertetett mintát használva a Geo-redundancia eléréséhez, mivel rugalmasságot és irányítást biztosít a két esemény gyártója és az esemény felhasználói számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Stream Analytics feladatok figyelése és kezelése a PowerShell-lel](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 * [Adatvezérelt hibakeresés a Azure Stream Analyticsban](stream-analytics-job-diagram-with-metrics.md)

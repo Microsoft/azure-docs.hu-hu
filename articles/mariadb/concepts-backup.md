@@ -3,14 +3,14 @@ title: Biztonsági mentés és visszaállítás – Azure Database for MariaDB
 description: Ismerje meg a Azure Database for MariaDB-kiszolgáló automatikus biztonsági mentését és visszaállítását.
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98659937"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Biztonsági mentés és visszaállítás Azure Database for MariaDB
@@ -21,7 +21,7 @@ Azure Database for MariaDB automatikusan létrehozza a kiszolgáló biztonsági 
 
 A Azure Database for MariaDB teljes, differenciális és tranzakciós naplóbeli biztonsági másolatokat készít. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Opcionálisan akár 35 napig is beállíthatja. Minden biztonsági mentés AES 256 bites titkosítással van titkosítva.
 
-Ezek a biztonságimásolat-fájlok nem felhasználók számára lettek kitéve, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MariaDB-beli visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
+Ezek a biztonságimentés-fájlok nem láthatók a felhasználók számára, és nem exportálhatók. Ezek a biztonsági másolatok csak Azure Database for MariaDB-beli visszaállítási műveletekhez használhatók. A [mysqldump](howto-migrate-dump-restore.md) használatával másolhat egy adatbázist.
 
 ### <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 

@@ -7,10 +7,10 @@ ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86169971"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure-beli alkalmazás visszaállítása pillanatképből
@@ -48,7 +48,7 @@ A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű 
     ![A visszaállítás célhelyének megadását bemutató képernyőkép.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > Ha a **felülírás**lehetőséget választja, a rendszer az alkalmazás aktuális fájlrendszerében lévő összes meglévő adat törlődik és felülíródik. Mielőtt rákattintott az **OK**gombra, győződjön meg arról, hogy az, amit kíván tenni.
+   > Ha a **felülírás** lehetőséget választja, a rendszer az alkalmazás aktuális fájlrendszerében lévő összes meglévő adat törlődik és felülíródik. Mielőtt rákattintott az **OK** gombra, győződjön meg arról, hogy az, amit kíván tenni.
    > 
    > 
       

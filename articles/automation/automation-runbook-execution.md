@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: ca28d5829689dca46bbf3a94ce7c1591c20cf7b0
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100586039"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
@@ -65,7 +65,7 @@ Ha ideiglenes fájlokat kell létrehoznia a runbook logikájának részeként, a
 
 A hibrid homokozóval a `C:\temp` hibrid Runbook-feldolgozók tárterületének rendelkezésre állása alapján lehet használni. Az Azure-beli virtuális gépekre vonatkozó javaslatok azonban nem használhatják az [ideiglenes lemezt](../virtual-machines/managed-disks-overview.md#temporary-disk) Windows vagy Linux rendszeren a megőrizni kívánt adatmennyiséghez.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 A runbookok tartalmaznia kell a logikai [erőforrásokat](/rest/api/resources/resources), például a virtuális gépeket, a hálózatot és az erőforrásokat a hálózaton. Az erőforrások egy Azure-előfizetéshez vannak kötve, és a megfelelő hitelesítő adatok megkövetelése az erőforrásokhoz való runbookok. A runbook erőforrásainak kezelésével kapcsolatos példát az [erőforrások kezelése](manage-runbooks.md#handle-resources)című témakörben talál.
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
 ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96178041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Oktatóanyag: Azure Active Directory integráció a Keeper Password Managerrel & Digital Vaulttal
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Emellett a Keeper Password Manager & Digital Vault alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az alábbi táblázatban láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
 
-    | Name (Név) | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------| --------- |
     | Első | User. givenName |
     | Utolsó | felhasználó. vezetéknév |
@@ -126,7 +126,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal név
    1. A **név** mezőbe írja be a következőt: `B.Simon` .  
    1. A **Felhasználónév** mezőbe írja be a következőt: `username@companydomain.extension` . Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -135,7 +135,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **Keeper Password Manager & Digital Vault** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** területen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. A **Hozzárendelés felvétele** területen válassza a **Felhasználók és csoportok** elemet.
 1. A **felhasználók és csoportok** területen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, akkor az **alapértelmezett hozzáférési** szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** lapon válassza a **hozzárendelés** lehetőséget.

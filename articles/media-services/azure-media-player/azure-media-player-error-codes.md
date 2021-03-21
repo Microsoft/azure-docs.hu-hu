@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: error-reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 89f063ab50cfd880552e80a77ba798e4d06de5b3
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101709580"
 ---
 # <a name="error-codes"></a>Hibakódok #
@@ -44,7 +44,7 @@ Ha a lejátszás nem indítható el vagy leáll, a rendszer elindít egy hibaüz
 Írja le a hiba részleteit, a BITS 27-20 magas szintű, a BITS 19-0 további részleteket biztosít, ha elérhető.
 
 
-| amp. errorCode. neve | Kódok, BITS [27-0] (28 bit) | Leírás |
+| amp. errorCode. neve | Kódok, BITS [27-0] (28 bit) | Description |
 |---|---:|---|
 | **MEDIA_ERR_ABORTED hibák tartománya (0x0100000-0x01FFFFF)** | | |
 | abortedErrUnknown | 0x0100000 | Általános megszakítási hiba |

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98015555"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content"></a>Többnyelvű tartalom automatikus azonosítása és átírása
@@ -89,6 +89,6 @@ Emellett az átírási szakasz minden példánya tartalmazza azt a nyelvet, amel
 * A lezárt képaláírás-fájlok exportálásakor a nyelvi jelzés nem fog megjelenni.
 * A frissítési átirat API nem támogatja több nyelvi fájl használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

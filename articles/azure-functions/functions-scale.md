@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 490fa46deabc822e416705fe9bf9c5cdb58f8cd6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97936761"
 ---
 # <a name="azure-functions-hosting-options"></a>Üzemeltetési lehetőségek Azure Functions
@@ -32,7 +32,7 @@ A következő összefoglalás a függvények három fő üzemeltetési csomagjá
 | --- | --- |  
 |**[Használatalapú csomag](consumption-plan.md)**| Automatikusan méretezhető, és csak a számítási erőforrásokért kell fizetnie, ha a függvények futnak.<br/><br/>A használati terv a függvények gazdagépének példányait dinamikusan hozzáadja és eltávolítja a bejövő események száma alapján.<br/><br/> ✔ Alapértelmezett üzemeltetési csomag.<br/>A ✔ csak akkor kell fizetnie, ha a függvények futnak.<br/>✔ A skálázást automatikusan, akár nagy terhelésű időszakok esetén is.|  
 |**[Prémium szintű csomag](functions-premium-plan.md)**|Az előre betöltött feldolgozók által igénybe vehető, az üresjárat utáni késleltetést nem igénylő alkalmazásokat használó, automatikusan méretezhető, a virtuális hálózatokhoz való csatlakozást követően a rendszer az igények alapján automatikusan méretezi a méretezést. <br/><br/>Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben: <br/><br/>✔ A Function apps folyamatosan, vagy majdnem folyamatosan fut.<br/>✔ Nagy mennyiségű kisméretű végrehajtás és egy magas végrehajtási számla van, de a használati terv alacsony GB-nál is kevesebb időt vesz igénybe.<br/>✔ Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.<br/>✔ A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben engedélyezett maximális végrehajtási idő.<br/>✔ Olyan funkciókat kell megkövetelni, amelyek nem érhetők el a használati tervben, például virtuális hálózati kapcsolaton keresztül.|  
-|**[Dedikált csomag](dedicated-plan.md)** |A függvényeket egy App Service csomagon belül futtathatja normál [app Service csomag díjszabásával](https://azure.microsoft.com/pricing/details/app-service/windows/).<br/><br/>A legjobb olyan hosszan futó helyzetekben, ahol a [Durable functions](durable/durable-functions-overview.md) nem használható. A következő helyzetekben vegye fontolóra App Service tervet:<br/><br/>✔ Rendelkezik olyan meglévő, nem használt virtuális gépekkel, amelyek már futtatnak más App Service példányokat.<br/>✔ Szeretné megadni a függvények futtatására szolgáló egyéni rendszerképet. <br/>✔ Prediktív skálázás és költségek szükségesek.|  
+|**[Dedikált terv](dedicated-plan.md)** |A függvényeket egy App Service csomagon belül futtathatja normál [app Service csomag díjszabásával](https://azure.microsoft.com/pricing/details/app-service/windows/).<br/><br/>A legjobb olyan hosszan futó helyzetekben, ahol a [Durable functions](durable/durable-functions-overview.md) nem használható. A következő helyzetekben vegye fontolóra App Service tervet:<br/><br/>✔ Rendelkezik olyan meglévő, nem használt virtuális gépekkel, amelyek már futtatnak más App Service példányokat.<br/>✔ Szeretné megadni a függvények futtatására szolgáló egyéni rendszerképet. <br/>✔ Prediktív skálázás és költségek szükségesek.|  
 
 A cikkben szereplő összehasonlító táblázatok a következő üzemeltetési lehetőségeket is tartalmazzák, amelyek a legnagyobb mennyiségű vezérlést és elkülönítést biztosítják a Function Apps-alkalmazások futtatásához.  
 
@@ -51,9 +51,9 @@ Az alábbi táblázat a üzemeltetési csomagok támogatott operációs rendszer
 | --- | --- | --- | --- |
 | **[Használatalapú csomag](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Nincs támogatás  |
 | **[Prémium szintű csomag](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[Dedikált csomag](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Dedikált terv](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 | **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes](functions-kubernetes-keda.md)** | n/a | n/a |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Kubernetes](functions-kubernetes-keda.md)** | n.a. | n.a. |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
 
 a Python Runtime stack egyetlen támogatott operációs rendszer <sup>a Linux rendszerben</sup> . <br/>
 <sup>2</sup> a Windows az egyetlen támogatott operációs rendszer a PowerShell futásidejű verem számára.<br/>
@@ -81,7 +81,7 @@ A következő táblázat összehasonlítja a különböző üzemeltetési csomag
 | -- | -- |
 | **[Felhasználási &nbsp; terv](consumption-plan.md)** | Az alkalmazások üresjárat esetén nullára méretezhetők, ami azt jelenti, hogy egyes kérések további késéssel is rendelkezhetnek indításkor.  A használati tervnek van néhány optimalizációja, amelyekkel csökkenthető a hideg kezdési idő, beleértve az olyan előre bemelegítő függvényekből való húzást is, amelyek már rendelkeznek a Function Host és a nyelvi folyamatok futtatásával. |
 | **[Prémium szintű csomag](functions-premium-plan.md)** | Állandóan meleg példányok, hogy elkerülje a hideg indítást. |
-| **[Dedikált csomag](dedicated-plan.md)** | Ha dedikált csomagban fut, a functions-gazdagép folyamatosan futhat, ami azt jelenti, hogy a hideg indítás nem igazán jelent problémát. |
+| **[Dedikált terv](dedicated-plan.md)** | Ha dedikált csomagban fut, a functions-gazdagép folyamatosan futhat, ami azt jelenti, hogy a hideg indítás nem igazán jelent problémát. |
 | **[ASE](dedicated-plan.md)** | Ha dedikált csomagban fut, a functions-gazdagép folyamatosan futhat, ami azt jelenti, hogy a hideg indítás nem igazán jelent problémát. |
 | **[Kubernetes](functions-kubernetes-keda.md)**  | A KEDA konfigurációjától függően az alkalmazások konfigurálható a hideg indítás elkerüléséhez. Ha úgy van konfigurálva, hogy nulla értékűre legyen állítva, akkor a rendszer az új események esetében egy hideg kezdést tapasztal. 
 
@@ -103,7 +103,7 @@ A következő táblázat összehasonlítja a különböző üzemeltetési csomag
 | **[App Service Environment (bemutató)](dedicated-plan.md)** | Az infrastruktúráért fizetett és a közszolgáltatási infrastruktúra méretével nem módosítható a havi díj. App Service díjcsomag vCPU is. Egy ASE környezeten belül az összes üzemeltetett alkalmazás az elkülönített díjszabású termékváltozatba tartozik. |
 | **[Kubernetes](functions-kubernetes-keda.md)**| Csak a Kubernetes-fürt költségeit kell fizetnie; a függvények további számlázása nem történik meg. A Function alkalmazás alkalmazás-számítási feladatként fut a fürt tetején, ugyanúgy, mint egy normál alkalmazás. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 + [Üzembe helyezési technológiák Azure Functions](functions-deployment-technologies.md) 
 + [Azure Functions – fejlesztői útmutató](functions-reference.md)

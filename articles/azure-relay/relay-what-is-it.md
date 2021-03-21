@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Relay szolgáltatásról nyújt áttekintést, a
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955382"
 ---
 # <a name="what-is-azure-relay"></a>Mi az Azure Relay?
@@ -75,7 +75,7 @@ Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a b
 8. Az átjáró minden üzenetet továbbít a figyelő ügyféltől a küldő ügyfélnek. 
 9. Az átjáró továbbítja az üzeneteket a küldő ügyféltől a figyelő ügyfél felé.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Ismerkedés a .NET WebSockets használatával](relay-hybrid-connections-dotnet-get-started.md)
 * [Ismerkedés a .NET-HTTP-kérésekkel](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 * [Ismerkedés a Node WebSockets-szel](relay-hybrid-connections-node-get-started.md)

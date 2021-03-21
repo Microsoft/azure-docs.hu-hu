@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
 ms.openlocfilehash: 7884f8baa24180fcb94f77a45c3457ba62d3f351
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98018139"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Riasztások beállítása Azure Stream Analytics feladatokhoz
@@ -57,14 +57,14 @@ Az alábbi példa bemutatja, hogyan állíthatja be a riasztásokat, amikor a fe
 
 A következő riasztások ajánlottak a Stream Analyticsi feladatok teljesítményének figyeléséhez. Ezeket a metrikákat percenként kell kiértékelni az elmúlt 5 perces időszakban.
 
-|Metrika|Feltétel|Idő összesítése|Küszöbérték|Javítási műveletek|
+|Metric|Feltétel|Idő összesítése|Küszöbérték|Javítási műveletek|
 |-|-|-|-|-|
 |SU% kihasználtsága|Nagyobb, mint|Maximum|80|Több tényező is megnövelheti a SU%-os kihasználtságot. A lekérdezési párhuzamos méretezéssel vagy a folyamatos átviteli egységek számának növelésével bővíthető. További információért lásd [az Azure Stream Analytics-lekérdezések párhozamosításának előnyeit ismertető](stream-analytics-parallelization.md) cikket.|
 |Futásidejű hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység-vagy erőforrás-naplókat, és végezze el a megfelelő módosításokat a bemeneteken, lekérdezéseken vagy kimeneteken.|
 |Vízjel késleltetése|Nagyobb, mint|Maximum|Ha a metrika átlagos értéke az elmúlt 15 percben meghaladja a késői érkezési toleranciát (másodpercben). Ha nem módosította a késői érkezési toleranciát, az alapértelmezett érték 5 másodperc.|Próbálja meg növelni a lekérdezés SUs-vagy tetszés számát. További információ az SUs szolgáltatásról: a [folyamatos átviteli egységek ismertetése és módosítása](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). A lekérdezés tetszés kapcsolatos további információkért lásd: [a lekérdezési párhuzamos kihasználása a Azure stream Analyticsban](stream-analytics-parallelization.md).|
 |Bemeneti deszerializálási hibák|Nagyobb, mint|Összesen|0|Vizsgálja meg a tevékenység vagy az erőforrás naplóit, és végezze el a megfelelő módosításokat a bemeneten. Az erőforrás-naplókkal kapcsolatos további információkért lásd: [Azure stream Analytics erőforrás-naplók használatával kapcsolatos hibák megoldása](stream-analytics-job-diagnostic-logs.md)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)

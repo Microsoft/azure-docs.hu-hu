@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86245721"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh szolgáltatásreplika
@@ -29,14 +29,14 @@ Lekéri egy szolgáltatás összes replikájának adatait. Az információk köz
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | – szolgáltatásnév [kötelező] | A szolgáltatás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -51,7 +51,7 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | --Name-n [kötelező] | A szolgáltatás replikájának neve. |
@@ -59,7 +59,7 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Leírás|
+|Argumentum|Description|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -68,6 +68,6 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

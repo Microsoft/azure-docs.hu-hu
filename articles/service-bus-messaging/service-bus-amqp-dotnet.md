@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Service Bus e
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 20800363327aefda073cd484dc737b28e60466a7
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98632850"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Service Bus használata a .NET-ről a AMQP 1,0 használatával
@@ -74,7 +74,7 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 | hosszú |hosszú |AMQP érték |
 | float |float |AMQP érték |
 | double |double |AMQP érték |
-| decimal |decimal128 |AMQP érték |
+| tizedes tört |decimal128 |AMQP érték |
 | char |char |AMQP érték |
 | DateTime |időbélyeg |AMQP érték |
 | Guid |uuid |AMQP érték |
@@ -86,7 +86,7 @@ A non-.NET-ügyfelekkel való együttműködés megkönnyítése érdekében csa
 | URI |Leírt karakterlánc (lásd az alábbi táblázatot) |AMQP érték |
 | DateTimeOffset |Leírt hosszú (lásd a következő táblázatot) |AMQP érték |
 | időtartam |Leírt hosszú (lásd a következőt) |AMQP érték |
-| Adatfolyam |binary |AMQP-adatértékek (lehet, hogy több). Az adatterületek tartalmazzák a stream objektumból beolvasott nyers bájtokat. |
+| Stream |binary |AMQP-adatértékek (lehet, hogy több). Az adatterületek tartalmazzák a stream objektumból beolvasott nyers bájtokat. |
 | Egyéb objektum |binary |AMQP-adatértékek (lehet, hogy több). Az alkalmazás által biztosított DataContractSerializer vagy szerializáló objektumot használó objektum szerializált bináris fájlját tartalmazza. |
 
 | .NET-típus | Leképezett AMQP leírt típusa | Jegyzetek |

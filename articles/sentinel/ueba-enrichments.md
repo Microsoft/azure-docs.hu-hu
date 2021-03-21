@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 01/04/2021
 ms.author: yelevin
 ms.openlocfilehash: daba8fc1f645b51dc8668c806be63744b6ae0842
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97901726"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Az Azure Sentinel UEBA gazdagítása – dokumentáció
@@ -35,7 +35,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 ## <a name="user-insights-table"></a>Felhasználói adatáttekintési táblázat
 
-| Dúsítás neve | Leírás | Mintaérték |
+| Dúsítás neve | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Fiók megjelenített neve**<br>*(AccountDisplayName)* | A felhasználó fiókjának megjelenített neve. | Admin, Hayden Cook |
 | **Fiók tartománya**<br>*(AccountDomain)* | A felhasználó fiókjának tartományneve. |  |
@@ -49,11 +49,11 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 ## <a name="device-insights-table"></a>Eszköz-áttekintési táblázat
 
-| Dúsítás neve | Leírás | Mintaérték |
+| Dúsítás neve | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Böngésző**<br>*Böngésző* | A műveletben használt böngésző. | Edge, Chrome |
 | **Eszközcsalád**<br>*(DeviceFamily)* | A műveletben használt eszköz családja. | Windows |
-| **Eszköz típusa**<br>*DeviceType* | A műveletben használt ügyfél-eszköz típusa | Asztal |
+| **Eszköz típusa**<br>*DeviceType* | A műveletben használt ügyfél-eszköz típusa | Asztali |
 | **ISP**<br>*ISP* | A műveletben használt internetszolgáltató. |  |
 | **Operációs rendszer**<br>*OperatingSystem* | A műveletben használt operációs rendszer. | Windows 10 |
 | **Veszélyforrás Intel-kijelző leírása**<br>*(ThreatIntelIndicatorDescription)* | A megfigyelt fenyegetés mutatójának leírása, amely a műveletben használt IP-címről lett feloldva. | A gazdagép a botnet tagja: azorult |
@@ -66,7 +66,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="action-performed"></a>Művelet elvégezve
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **A felhasználó első alkalommal végrehajtott művelete**<br>*(FirstTimeUserPerformedAction)* | 180 | A műveletet a felhasználó első alkalommal hajtotta végre. | Igaz, hamis |
 | **A felhasználó által nem közösen végrehajtott művelet**<br>*(ActionUncommonlyPerformedByUser)* | 10 | A műveletet a felhasználó általában nem végzi el. | Igaz, hamis |
@@ -77,7 +77,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="app-used"></a>Alkalmazás használatban
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **A felhasználó első alkalommal használt alkalmazás**<br>*(FirstTimeUserUsedApp)* | 180 | Az alkalmazást a felhasználó első alkalommal használta. | Igaz, hamis |
 | **Az alkalmazást a felhasználó ritkán használja**<br>*(AppUncommonlyUsedByUser)* | 10 | A felhasználó általában nem használja az alkalmazást. | Igaz, hamis |
@@ -88,7 +88,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="browser-used"></a>Használt böngésző
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Első alkalommal, amikor a felhasználó csatlakozik a böngészőn keresztül**<br>*(FirstTimeUserConnectedViaBrowser)* | 30 | A felhasználó első alkalommal észlelte a böngészőt. | Igaz, hamis |
 | **A böngészőt nem gyakran használják a felhasználó**<br>*(BrowserUncommonlyUsedByUser)* | 10 | A felhasználó nem használja gyakran a böngészőt. | Igaz, hamis |
@@ -99,7 +99,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="country-connected-from"></a>A következő helyről csatlakozó ország:
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Első alkalommal, amikor a felhasználó kapcsolódott az országból**<br>*(FirstTimeUserConnectedFromCountry)* | 90 | Az IP-címről feloldott földrajzi hely a felhasználó általi első alkalommal kapcsolódott. | Igaz, hamis |
 | **Az ország nem közösen csatlakozik a felhasználótól**<br>*(CountryUncommonlyConnectedFromByUser)* | 10 | A földrajzi helyet, az IP-címről feloldott módon, nem a felhasználótól gyakran csatlakoztatja. | Igaz, hamis |
@@ -110,7 +110,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="device-used-to-connect"></a>A kapcsolódáshoz használt eszköz
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Első alkalommal, amikor a felhasználó csatlakozik az eszközről**<br>*(FirstTimeUserConnectedFromDevice)* | 30 | A felhasználó először csatlakoztatta a forrás eszközt a szolgáltatáshoz. | Igaz, hamis |
 | **Az eszközt nem gyakran használják a felhasználó**<br>*(DeviceUncommonlyUsedByUser)* | 10 | A felhasználó nem használja általában az eszközt. | Igaz, hamis |
@@ -121,7 +121,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="other-device-related"></a>Az eszközhöz kapcsolódó egyéb
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **A felhasználó első bejelentkezése az eszközre**<br>*(FirstTimeUserLoggedOnToDevice)* | 180 | A célként megadott eszköz először kapcsolódott a felhasználóhoz. | Igaz, hamis |
 | **Az eszköz családja szokatlanul használatban van a bérlőben**<br>*(DeviceFamilyUncommonlyUsedInTenant)* | 30 | Az eszköz családja általában nem használatos a szervezetben. | Igaz, hamis |
@@ -129,7 +129,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="internet-service-provider-used-to-connect"></a>A kapcsolódáshoz használt internetszolgáltató
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Első alkalommal, amikor a felhasználó az INTERNETSZOLGÁLTATÓn keresztül csatlakozik**<br>*(FirstTimeUserConnectedViaISP)* | 30 | A felhasználó első alkalommal észlelte az INTERNETSZOLGÁLTATÓt. | Igaz, hamis |
 | **Az INTERNETSZOLGÁLTATÓt ritkán használják a felhasználó**<br>*(ISPUncommonlyUsedByUser)* | 10 | A felhasználó nem használja általában az INTERNETSZOLGÁLTATÓt. | Igaz, hamis |
@@ -140,7 +140,7 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="resource-accessed"></a>Elért erőforrás
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **Első alkalommal, amikor a felhasználó hozzáfért az erőforráshoz**<br>*(FirstTimeUserAccessedResource)* | 180 | A felhasználó első alkalommal használta az erőforrást. | Igaz, hamis |
 | **A felhasználó nem általánosan hozzáfért az erőforráshoz**<br>*(ResourceUncommonlyAccessedByUser)* | 10 | A felhasználó általában nem fér hozzá az erőforráshoz. | Igaz, hamis |
@@ -151,11 +151,11 @@ Az első két táblázat, a **felhasználói** elemzések és az **eszközök be
 
 #### <a name="miscellaneous"></a>Különböző veszélyes anyagok és tárgyak
 
-| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Leírás | Mintaérték |
+| Dúsítás neve | [Alapterv](#baseline-explained) (nap) | Description | Mintaérték |
 | --- | --- | --- | --- |
 | **A felhasználó legutóbb végrehajtott művelete**<br>*(LastTimeUserPerformedAction)* | 180 | A felhasználó legutóbbi végrehajtásakor ugyanezt a műveletet hajtotta végre. | <Timestamp> |
 | **Korábban nem hajtottak végre hasonló műveletet**<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | A felhasználó nem hajtott végre műveletet ugyanabban az erőforrás-szolgáltatóban. | Igaz, hamis |
-| **Forrás IP-címe**<br>*(SourceIPLocation)* | *N.A.* | Az ország a művelet forrás IP-címétől lett feloldva. | [Surrey, Anglia] |
+| **Forrás IP-címe**<br>*(SourceIPLocation)* | *N/A* | Az ország a művelet forrás IP-címétől lett feloldva. | [Surrey, Anglia] |
 | **Nem gyakori nagy mennyiségű művelet**<br>*(UncommonHighVolumeOfOperations)* | 7 | Egy felhasználó hasonló műveleteket hajtott végre ugyanazon a szolgáltatón belül | Igaz, hamis |
 | **Szokatlan számú Azure AD feltételes hozzáférési hiba**<br>*(UnusualNumberOfAADConditionalAccessFailures)* | 5 | A feltételes hozzáférés miatt szokatlan számú felhasználó nem tudott hitelesíteni | Igaz, hamis |
 | **Szokatlan számú eszköz lett hozzáadva**<br>*(UnusualNumberOfDevicesAdded)* | 5 | Egy felhasználó szokatlan számú eszközt adott hozzá. | Igaz, hamis |

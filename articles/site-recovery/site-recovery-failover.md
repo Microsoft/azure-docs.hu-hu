@@ -5,10 +5,10 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 6737f64773f91ede1631d42cd7f28c7d961c0454
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92368621"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Feladatátvétel futtatása a helyszíni rendszerről az Azure-ba
@@ -32,7 +32,7 @@ Ha az Azure-beli virtuális gépeket a feladatátvételt követően RDP/SSH hasz
 
 **Feladatátvétel után** | **Hely** | **Műveletek**
 --- | --- | ---
-**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban**található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban**engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll**értékre van állítva. [További információk](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
+**Windows rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Ha az Azure-beli virtuális gépet az interneten keresztül szeretné elérni, engedélyezze az RDP-t, és győződjön meg arról, hogy a TCP-és UDP-szabályok **nyilvánosak**, és az RDP engedélyezve van a **Windows tűzfal**  >  **engedélyezett alkalmazásaiban** található összes profilhoz.<br/><br/> Ha az Azure-beli virtuális gépet helyek közötti kapcsolaton keresztül szeretné elérni, engedélyezze az RDP-t a gépen, és győződjön meg arról, hogy a **Windows tűzfal**  ->  **engedélyezett alkalmazásaiban és szolgáltatásaiban** engedélyezve van-e az RDP a **tartomány-és magánhálózati** hálózatokhoz.<br/><br/> <br/><br/> Távolítsa el a statikus állandó útvonalakat és a WinHTTP proxyt. Győződjön meg arról, hogy az operációs rendszer SAN-szabályzata **OnlineAll** értékre van állítva. [További információ](https://support.microsoft.com/kb/3031135).<br/><br/> Győződjön meg arról, hogy a virtuális gépen nincsenek függőben lévő Windows-frissítések a feladatátvétel elindításakor. Előfordulhat, hogy a Windows Update akkor indul el, ha átadja a feladatátvételt, és a frissítés befejezéséig nem tud majd bejelentkezni a virtuális gépre.
 **Linux rendszerű Azure-beli virtuális gép** | Helyszíni gép feladatátvétel előtt | Győződjön meg arról, hogy a virtuális gépen a Secure Shell szolgáltatás automatikusan elindul a rendszerindításkor.<br/><br/> Ellenőrizze, hogy a tűzfalszabályok engedélyezik-e az SSH-kapcsolatot.
 
 
@@ -43,17 +43,17 @@ Ez az eljárás azt ismerteti, hogyan futtatható feladatátvétel egy [helyreá
 
 Futtassa a helyreállítási terv feladatátvételét a következőképpen:
 
-1. A site Recovery-tárolóban válassza a **helyreállítási tervek**  >  *recoveryplan_name*lehetőséget.
-2. Kattintson a **feladatátvétel**elemre.
+1. A site Recovery-tárolóban válassza a **helyreállítási tervek**  >  *recoveryplan_name* lehetőséget.
+2. Kattintson a **feladatátvétel** elemre.
 
     ![Képernyőkép a Azure Site Recoveryről, amely a ADRP panelt jeleníti meg a további menüből kiválasztott Feladatátvételsel.](./media/site-recovery-failover/Failover.png)
 
-3. A **feladatátvétel**  >  **feladatátvételi irányában**hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
-4. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyre a **feladatátvételt**végre szeretné adni.
+3. A **feladatátvétel**  >  **feladatátvételi irányában** hagyja meg az alapértelmezett értéket, ha az Azure-ba végzi a replikálást.
+4. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyre a **feladatátvételt** végre szeretné adni.
 
     - **Legújabb**: használja a legújabb pontot. Ez feldolgozza a Site Recovery szolgáltatásnak elküldett összes olyan adatfeldolgozást, amely minden egyes géphez létrehoz egy helyreállítási pontot. Ez a beállítás biztosítja a legalacsonyabb RPO (helyreállítási pont célkitűzés), mert a feladatátvételt követően létrehozott virtuális gép minden olyan adattal rendelkezik, amelyet a rendszer replikált Site Recovery a feladatátvétel elindítása után.
     Vegye figyelembe, hogy ha a forrás-régió leáll, nem lehet több naplózási feldolgozás. Ezért a feladatátvételt a legújabb feldolgozott helyreállítási pontra kell átadnia. További tudnivalókat a következő pontban talál.
-   - **Legutóbb feldolgozott**: Ha ezt a beállítást választja, a virtuális gépeket a site Recovery által már feldolgozott legújabb helyreállítási pontra hajthatja végre. A legújabb feldolgozott helyreállítási pontot a virtuális gép **legújabb helyreállítási pontjaiban**tekintheti meg. Ez a beállítás alacsony RTO biztosít, mivel a feldolgozatlan adatmennyiség feldolgozásához nem kell időt fordítani
+   - **Legutóbb feldolgozott**: Ha ezt a beállítást választja, a virtuális gépeket a site Recovery által már feldolgozott legújabb helyreállítási pontra hajthatja végre. A legújabb feldolgozott helyreállítási pontot a virtuális gép **legújabb helyreállítási pontjaiban** tekintheti meg. Ez a beállítás alacsony RTO biztosít, mivel a feldolgozatlan adatmennyiség feldolgozásához nem kell időt fordítani
    - **Legújabb alkalmazás-konzisztens**: ezzel a beállítással feladatátvételt hajthat végre a virtuális gépeken a site Recovery által feldolgozott legújabb alkalmazás-konzisztens helyreállítási pontra.
    - **Legújabb több virtuális gépre feldolgozva**: ezzel a beállítással a replikálási csoport részét képező virtuális gépek a legújabb közös, több virtuális gépre kiterjedő konzisztens helyreállítási pontra kerülnek. Más virtuális gépek feladatátvétele a legújabb feldolgozott helyreállítási pontra történik. Ez a beállítás csak olyan helyreállítási tervekhez használható, amelyek legalább egy virtuális géppel rendelkeznek, és engedélyezve van a több virtuális gépre kiterjedő konzisztencia.
    - A **legújabb, több virtuális gépre kiterjedő alkalmazás – konzisztens**: ezzel a beállítással a replikálási csoport részét képező virtuális gépek feladatátvételt hajtanak végre a legutóbb használt, több virtuális gépre kiterjedő, alkalmazás-konzisztens helyreállítási ponttal. Más virtuális gépek feladatátvétele a legújabb alkalmazás-konzisztens helyreállítási pontra. Csak olyan helyreállítási tervekhez, amelyeknél engedélyezve van a több virtuális gépre kiterjedő konzisztencia, legalább egy virtuális géppel.
@@ -66,7 +66,7 @@ Futtassa a helyreállítási terv feladatátvételét a következőképpen:
 
 6. Kövesse a **feladatok** lapon a feladatátvétel folyamatát. Ha hiba történik, a helyreállítási terv addig fut, amíg be nem fejeződik.
 7. A feladatátvételt követően jelentkezzen be a virtuális gépre a hitelesítéshez. 
-8. Ha másik helyreállítási pontra szeretne váltani a feladatátvételhez, használja a **helyreállítási pont módosítása**lehetőséget.
+8. Ha másik helyreállítási pontra szeretne váltani a feladatátvételhez, használja a **helyreállítási pont módosítása** lehetőséget.
 9. Ha elkészült, véglegesítheti a feladatátvételt. A **commit** művelet törli a szolgáltatásban elérhető összes helyreállítási pontot. A **helyreállítási pont módosítása** lehetőség többé nem lesz elérhető.
 
 ## <a name="run-a-planned-failover-hyper-v"></a>Tervezett feladatátvétel futtatása (Hyper-V)
@@ -138,7 +138,7 @@ Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépé
     - Azonos IP-cím megőrzése: az Azure-beli virtuális gépen ugyanazt az IP-címet használhatja, mint a helyszíni gép számára.
     - Eltérő IP-cím használata: használhat másik IP-címet az Azure-beli virtuális géphez.
     - [További](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) információ a belső IP-címek beállításáról.
-- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információk](concepts-public-ip-address-with-site-recovery.md).
+- **Külső IP-címek**: a feladatátvételhez nyilvános IP-címeket is megtarthat. A feladatátvételi folyamat részeként létrehozott Azure-beli virtuális gépekhez az Azure-régióban elérhető Azure nyilvános IP-címet kell rendelni. A nyilvános IP-címeket manuálisan is hozzárendelheti, vagy automatizálhatja a folyamatot egy helyreállítási terv használatával. [További információ](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -4,10 +4,10 @@ description: Útmutatást nyújt a folyamatos figyelés beállításához Applic
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: fd7cd6a107ed45adb60167a57661b60be5dc8212
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86517127"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés hozzáadása a kiadási folyamathoz
@@ -20,11 +20,11 @@ A folyamatos figyeléssel a kiadási folyamatok Application Insights és más Az
 
 1. Az [Azure DevOps](https://dev.azure.com)válassza ki a szervezet és a projekt elemet.
    
-1. A projekt lap bal oldali menüjében válassza a **folyamatok**  >  **kiadások**elemet. 
+1. A projekt lap bal oldali menüjében válassza a **folyamatok**  >  **kiadások** elemet. 
    
-1. Húzza le a nyilat az **új** elem melletti nyílra, és válassza az **új kiadási folyamat**lehetőséget. Ha még nem rendelkezik folyamattal, a megjelenő oldalon válassza az **új folyamat** elemet.
+1. Húzza le a nyilat az **új** elem melletti nyílra, és válassza az **új kiadási folyamat** lehetőséget. Ha még nem rendelkezik folyamattal, a megjelenő oldalon válassza az **új folyamat** elemet.
    
-1. A **sablon kiválasztása** ablaktáblán keresse meg és válassza ki **Azure app Service központi telepítést folyamatos figyeléssel**, majd válassza az **alkalmaz**lehetőséget. 
+1. A **sablon kiválasztása** ablaktáblán keresse meg és válassza ki **Azure app Service központi telepítést folyamatos figyeléssel**, majd válassza az **alkalmaz** lehetőséget. 
 
    ![Új Azure-folyamatok kiadási folyamata](media/continuous-monitoring/001.png)
 
@@ -47,11 +47,11 @@ A folyamatos figyeléssel a kiadási folyamatok Application Insights és más Az
 
 ## <a name="modify-alert-rules"></a>Riasztási szabályok módosítása
 
-A **folyamatos figyelési sablonnal rendelkező Azure app Service üzemelő példánynak** négy riasztási szabálya van: **rendelkezésre állás**, **Sikertelen kérelmek**, **kiszolgáló válaszideje**és **kiszolgálói kivételek**. További szabályokat adhat hozzá, vagy módosíthatja a szabályok beállításait, hogy azok megfeleljenek a szolgáltatási szint igényeinek. 
+A **folyamatos figyelési sablonnal rendelkező Azure app Service üzemelő példánynak** négy riasztási szabálya van: **rendelkezésre állás**, **Sikertelen kérelmek**, **kiszolgáló válaszideje** és **kiszolgálói kivételek**. További szabályokat adhat hozzá, vagy módosíthatja a szabályok beállításait, hogy azok megfeleljenek a szolgáltatási szint igényeinek. 
 
 A riasztási szabály beállításainak módosítása:
 
-A kiadási folyamat lap bal oldali ablaktábláján válassza a **Application Insights riasztások konfigurálása**lehetőséget.
+A kiadási folyamat lap bal oldali ablaktábláján válassza a **Application Insights riasztások konfigurálása** lehetőséget.
 
 A négy alapértelmezett riasztási szabály egy beágyazott parancsfájl használatával jön létre:
 
@@ -71,19 +71,19 @@ Amikor üzembe helyezési kapukat ad hozzá a kiadási folyamathoz, a beállíto
 
 Üzembe helyezési kapuk hozzáadása:
 
-1. A fő folyamat lap **szakaszok**területén válassza ki az **üzembe helyezés előtti feltételeket** vagy a **Telepítés utáni feltételek** szimbólumot attól függően, hogy melyik szakasznak szüksége van egy folyamatos figyelési kapura.
+1. A fő folyamat lap **szakaszok** területén válassza ki az **üzembe helyezés előtti feltételeket** vagy a **Telepítés utáni feltételek** szimbólumot attól függően, hogy melyik szakasznak szüksége van egy folyamatos figyelési kapura.
    
    ![Üzembe helyezés előtti feltételek](media/continuous-monitoring/004.png)
    
-1. A **központi telepítés előtti feltételek** konfigurációs ablaktáblán állítsa be a **kapuk** beállítást **engedélyezve**értékűre.
+1. A **központi telepítés előtti feltételek** konfigurációs ablaktáblán állítsa be a **kapuk** beállítást **engedélyezve** értékűre.
    
-1. Az **üzembe helyezési kapuk**mellett válassza a **Hozzáadás**lehetőséget.
+1. Az **üzembe helyezési kapuk** mellett válassza a **Hozzáadás** lehetőséget.
    
 1. Válassza ki a **lekérdezés Azure monitor riasztások** lehetőséget a legördülő menüből. Ez a beállítás lehetővé teszi a Azure Monitor és Application Insights riasztások elérését.
    
    ![Azure Monitor riasztások lekérdezése](media/continuous-monitoring/005.png)
    
-1. A **kiértékelési beállítások**szakaszban adja meg azokat az értékeket, amelyeket meg szeretne adni a **Gates újraértékelése** és **a Gates meghibásodása utáni időtúllépési**idő között. 
+1. A **kiértékelési beállítások** szakaszban adja meg azokat az értékeket, amelyeket meg szeretne adni a **Gates újraértékelése** és **a Gates meghibásodása utáni időtúllépési** idő között. 
 
 ## <a name="view-release-logs"></a>Kiadási naplók megtekintése
 
@@ -93,12 +93,12 @@ Megtekintheti a telepítési kapu viselkedését és a kiadási naplók egyéb k
    
 1. Válasszon ki egy kiadást. 
    
-1. A **szakaszok**szakaszban válassza a bármely fázis lehetőséget a kiadás összegzésének megtekintéséhez. 
+1. A **szakaszok** szakaszban válassza a bármely fázis lehetőséget a kiadás összegzésének megtekintéséhez. 
    
-1. A naplók megtekintéséhez válassza a **naplók megtekintése** lehetőséget a kiadás összefoglalójában, válassza a **sikeres** vagy **sikertelen** hiperhivatkozást bármely szakaszban, vagy vigye a kurzort bármely szakaszra, és válassza a **naplók**lehetőséget. 
+1. A naplók megtekintéséhez válassza a **naplók megtekintése** lehetőséget a kiadás összefoglalójában, válassza a **sikeres** vagy **sikertelen** hiperhivatkozást bármely szakaszban, vagy vigye a kurzort bármely szakaszra, és válassza a **naplók** lehetőséget. 
    
    ![Kiadási naplók megtekintése](media/continuous-monitoring/006.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-folyamatokkal kapcsolatos további információkért tekintse meg az [Azure-folyamatok dokumentációját](/azure/devops/pipelines).

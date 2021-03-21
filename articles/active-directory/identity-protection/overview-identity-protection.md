@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955399"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
@@ -47,7 +47,7 @@ Az 2018 Alex Weinert [októberi blogbejegyzést](https://techcommunity.microsoft
 
 Az Identity Protection a következő besorolások kockázatait azonosítja:
 
-| Kockázat észlelésének típusa | Leírás |
+| Kockázat észlelésének típusa | Description |
 | --- | --- |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
 | Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
@@ -112,14 +112,14 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
 | Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ. Csak közepes és magas kockázatú felhasználók jelennek meg. Nincsenek részletek vagy kockázati előzmények. | Korlátozott információ. Csak közepes és magas kockázatú felhasználók jelennek meg. Nincsenek részletek vagy kockázati előzmények. | Teljes hozzáférés|
 | Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ. A rendszer nem jelenít meg kockázati adatokat vagy kockázati szintet. | Korlátozott információ. A rendszer nem jelenít meg kockázati adatokat vagy kockázati szintet. | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ. Nem találhatók részletek a fiókban.| Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | No | Korlátozott információ. Nem találhatók részletek a fiókban.| Teljes hozzáférés|
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
 | Értesítések | Heti kivonat| Nem | Nem | Igen | 
 | | MFA-regisztrációs szabályzat | Nem | Nem | Igen |
 
 A részletes jelentésekkel kapcsolatos további információkért tekintse meg a következő témakört [: a kockázatkezelés kivizsgálása](howto-identity-protection-investigate-risk.md#navigating-the-reports).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)
 

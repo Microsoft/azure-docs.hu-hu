@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/5/2021
 ms.openlocfilehash: 6ebdbe250862ccd462259900ba56d007f002a52f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937611"
 ---
 # <a name="determine-table-and-relation-size"></a>Tábla és a kapcsolatok méretének meghatározása
@@ -87,7 +87,7 @@ Kimenet:
 └───────────────┴───────┘
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [kiszolgálócsoport méretezéséről](howto-hyperscale-scale-grow.md) .
 * Megkülönböztetni [a](concepts-hyperscale-nodes.md) nagy kapacitású (Citus).

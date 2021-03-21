@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan telepítheti át az ügyfeleket Apa
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: d9f3775a85df5a881c2c38566628e4e1d4d8c40e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90061444"
 ---
 # <a name="migrate-to-azure-event-hubs-for-apache-kafka-ecosystems"></a>Migrálás az Apache Kafka-ökoszisztémákhoz készült Azure Event Hubsba
@@ -16,7 +16,7 @@ Az Azure Event Hubs egy Apache Kafka-végpontot tesz elérhetővé, amely lehet�
 ## <a name="pre-migration"></a>A migrálás előtt 
 
 ### <a name="create-an-azure-account"></a>Azure-fiók létrehozása
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ### <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 Az Event Hubs névtér és az Event hub létrehozásához kövesse az [Event hub létrehozása](event-hubs-create.md) című cikkben ismertetett részletes útmutatót. 
@@ -31,7 +31,7 @@ Szükség lehet a teljes tartománynevet is, amely az Event hub-névtérre mutat
 
 Ha a Event Hubs névtér nem nyilvános felhőre van telepítve, a tartománynév eltérhet (például \* . servicebus.chinacloudapi.cn, \* . servicebus.usgovcloudapi.net vagy \* . servicebus.cloudapi.de).
 
-## <a name="migration"></a>Migrálás 
+## <a name="migration"></a>Áttelepítés 
 
 ### <a name="update-your-kafka-client-configuration"></a>A Kafka-ügyfél konfigurációjának frissítése
 

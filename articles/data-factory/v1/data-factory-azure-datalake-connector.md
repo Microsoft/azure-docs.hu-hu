@@ -9,10 +9,10 @@ ms.author: jingwang
 ms.custom: devx-track-csharp
 robots: noindex
 ms.openlocfilehash: 8bdfceff562ae2501a9d95774f7134669e929b7e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100379403"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása Data Lake Storage Gen1ba és onnan a Data Factory használatával
@@ -197,7 +197,7 @@ A kódban használt Data Factory osztályok részleteiért tekintse meg a [Azure
 1. A `resourceGroupName` `subscriptionId` Azure Data Lake Store társított szolgáltatásban szereplő és/vagy megadott érték helytelen;
 2. A felhasználó vagy az egyszerű szolgáltatásnév nem rendelkezik a szükséges engedélyekkel.
 
-**Felbontás**
+**Megoldás:**
 
 1. Győződjön meg arról, hogy a `subscriptionId` és a `resourceGroupName` társított szolgáltatásban megadott érték `typeProperties` valóban az, hogy a saját adatközpont-fiókja tartozik hozzá.
 

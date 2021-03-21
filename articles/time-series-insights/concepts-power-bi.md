@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95020878"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>A 2. generációs Azure Time Series Insights összekötése Power BI  
@@ -27,7 +27,7 @@ A Azure Time Series Insights mostantól zökkenőmentesen integrálható a [Powe
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
    [![Exportálási beállítás a Azure Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
