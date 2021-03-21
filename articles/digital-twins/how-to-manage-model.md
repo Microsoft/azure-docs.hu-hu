@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102433250"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
@@ -142,7 +142,7 @@ A modell leszerelési állapota a `ModelData` modell lekérési API-k által vis
 
 A példány összes modelljét egyszerre is törölheti, vagy megteheti azt egyéni alapon.
 
-Az összes modell törlésére példaként töltse le az oktatóanyagban használt minta alkalmazást [*: Fedezze fel az alapokat egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. A *CommandLoop.cs* fájl ezt egy `CommandDeleteAllModels` függvényben végzi el.
+Az összes modell törlésére példaként töltse le az oktatóanyagban használt minta alkalmazást [*: Fedezze fel az alapokat egy minta ügyfélalkalmazás*](tutorial-command-line-app.md)használatával. A *CommandLoop. cs* fájl ezt egy `CommandDeleteAllModels` függvényben végzi el.
 
 A szakasz további részében lebonthatja a modell törlésének részleteit, és bemutatja, hogyan végezheti el azt egy adott modell esetében.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: trbye
-ms.openlocfilehash: df7c24fefcc6cda8f02a6575dea911e48d200a90
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: cb2aac1b068c92752a7924ada7b0a2eadbc91eef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552842"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612361"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t. Ha csak azt szeretné, hogy a csomag neve a saját számára legyen megkezdve, futtassa a parancsot `pip install azure-cognitiveservices-speech` .
 
@@ -49,7 +49,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a Pythonhoz készült [SPEECH SD
 > - A RHEL/CentOS 8 rendszeren kövesse az [OpenSSL Linux rendszerhez való konfigurálásának](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)utasításait.
 
 - Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Vegye figyelembe, hogy az első telepítéskor szükség lehet a Windows újraindítására az útmutató folytatása előtt.
-- Végül pedig [a Python 3,5 és a 3,8](https://www.python.org/downloads/)között kell lennie. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a parancsot, `python --version` és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a "Python 3.5.1" vagy hasonló választ kap.
+- Végül pedig [a Python 3,6 és a 3,9](https://www.python.org/downloads/)között kell lennie. A telepítés ellenőrzéséhez nyisson meg egy parancssort, és írja be a parancsot, `python --version` és vizsgálja meg az eredményt. Ha megfelelően van telepítve, a "Python 3.6.1" vagy hasonló választ kaphat.
 
 ## <a name="install-the-speech-sdk-from-pypi"></a>A Speech SDK telepítése a PyPI-ből
 
@@ -73,7 +73,7 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="install-the-speech-sdk-using-visual-studio-code"></a>A Speech SDK telepítése a Visual Studio Code használatával
 
-1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,5 – 3,8.
+1. Töltse le és telepítse a [Python](https://www.python.org/downloads/) legújabb támogatott verzióját a platformhoz, 3,6 – 3,9.
    - A Windows-felhasználók a telepítési folyamat során a "Python hozzáadása az elérési úthoz" lehetőséget kell választani.
 1. Töltse le és telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/Download).
 1. Nyissa meg a Visual Studio Code-ot, és telepítse a Python-bővítményt. Válassza   >    >  a menüből a file Preferences **bővítmények** lehetőséget. Keressen rá a **Python** kifejezésre, majd kattintson a **telepítés** gombra.

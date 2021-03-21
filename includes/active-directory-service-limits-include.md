@@ -1,27 +1,27 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 9be85a7da67fa659e29d802d1f77fa09008f4428
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1102bcc18165d3bc705755f1bbb6faecddec4e91
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371312"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612339"
 ---
 Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati és egyéb szolgáltatási korlátai olvashatóak.
 
 | Kategória | Korlát |
 | --- | --- |
 | Bérlők | Egyetlen felhasználó legfeljebb 500 Azure AD-bérlőhöz tartozhat tagként vagy vendégként.<br/>Egyetlen felhasználó legfeljebb 200 könyvtárat tud létrehozni. |
-| Tartományok | Legfeljebb 900 felügyelt tartománynév felvételére van lehetőség. Ha úgy állítja be az összes tartományt, hogy az összevonáshoz helyszíni Active Directory biztosítson, az egyes bérlők legfeljebb 450 tartománynevet adhatnak hozzá. |
-|További források |<ul><li>Alapértelmezés szerint legfeljebb 50 000 Azure AD-erőforrás hozható létre egyetlen bérlőn a Azure Active Directory ingyenes kiadásának felhasználói számára. Ha legalább egy ellenőrzött tartománya van, a szervezet alapértelmezett Azure AD-szolgáltatási kvótája 300 000 Azure AD-erőforrásokra van kiterjesztve. Az önkiszolgáló regisztrációval létrehozott szervezetek Azure AD szolgáltatási kvótája 50 000 Azure AD-erőforrást, még a belső rendszergazda átvételének elvégzése után is, a szervezetet pedig egy felügyelt bérlőre konvertálja legalább egy ellenőrzött tartománnyal. Ez a szolgáltatási korlát nem kapcsolódik az Azure AD díjszabási oldalán a 500 000-es erőforrások díjszabási szintjéhez. Az alapértelmezett kvóta túllépéséhez kapcsolatba kell lépnie Microsoft ügyfélszolgálataval.</li><li>A nem rendszergazda felhasználók legfeljebb 250 Azure AD-erőforrást hozhatnak létre. Az aktív erőforrások és a törölt erőforrások is visszaállíthatók a kvóta felé. Csak a 30 napnál rövidebb idő alatt törölt Azure AD-erőforrások állnak rendelkezésre a visszaállításhoz. Törölte azokat az Azure AD-erőforrásokat, amelyek már nem állnak rendelkezésre a kvótához a kvóta felé a 30 napos értéknél. Ha olyan fejlesztőket használ, akik valószínűleg többször is túllépik ezt a kvótát a szokásos feladataik során, létrehozhat [és hozzárendelhet egy egyéni szerepkört](../articles/active-directory/roles/quickstart-app-registration-limits.md) , amely korlátlan számú alkalmazás regisztrációját hozza létre.</li></ul> |
+| Tartományok | Legfeljebb 5000 felügyelt tartománynevet adhat hozzá. Ha úgy állítja be az összes tartományt, hogy az összevonáshoz helyszíni Active Directory biztosítson, az egyes bérlők legfeljebb 2500 tartománynevet adhatnak hozzá. |
+|Erőforrások |<ul><li>Alapértelmezés szerint legfeljebb 50 000 Azure AD-erőforrás hozható létre egyetlen bérlőn a Azure Active Directory ingyenes kiadásának felhasználói számára. Ha legalább egy ellenőrzött tartománya van, a szervezet alapértelmezett Azure AD-szolgáltatási kvótája 300 000 Azure AD-erőforrásokra van kiterjesztve. Az önkiszolgáló regisztrációval létrehozott szervezetek Azure AD szolgáltatási kvótája 50 000 Azure AD-erőforrást, még a belső rendszergazda átvételének elvégzése után is, a szervezetet pedig egy felügyelt bérlőre konvertálja legalább egy ellenőrzött tartománnyal. Ez a szolgáltatási korlát nem kapcsolódik az Azure AD díjszabási oldalán a 500 000-es erőforrások díjszabási szintjéhez. Az alapértelmezett kvóta túllépéséhez kapcsolatba kell lépnie Microsoft ügyfélszolgálataval.</li><li>A nem rendszergazda felhasználók legfeljebb 250 Azure AD-erőforrást hozhatnak létre. Az aktív erőforrások és a törölt erőforrások is visszaállíthatók a kvóta felé. Csak a 30 napnál rövidebb idő alatt törölt Azure AD-erőforrások állnak rendelkezésre a visszaállításhoz. Törölte azokat az Azure AD-erőforrásokat, amelyek már nem állnak rendelkezésre a kvótához a kvóta felé a 30 napos értéknél. Ha olyan fejlesztőket használ, akik valószínűleg többször is túllépik ezt a kvótát a szokásos feladataik során, létrehozhat [és hozzárendelhet egy egyéni szerepkört](../articles/active-directory/roles/quickstart-app-registration-limits.md) , amely korlátlan számú alkalmazás regisztrációját hozza létre.</li></ul> |
 | Sémakiterjesztések |<ul><li>A sztring típusú bővítmények legfeljebb 256 karakterből állhatnak. </li><li>A bináris típusú bővítmények legfeljebb 256 bájtosak lehetnek.</li><li>Egyetlen Azure AD-erőforráshoz csak a 100-es kiterjesztési értékek írhatók, *minden* típus és *minden* alkalmazás esetében.</li><li>Csak a User, Group, TenantDetail, Device, Application és ServicePrincipal entitások bővíthetők String típusú vagy Binary típusú egyértékű attribútumokkal.</li><li>A sémabővítmények csak a Graph API 1.21-es előzetes verziójában érhetők el. Az alkalmazás számára írási hozzáférést kell biztosítani a bővítmények regisztrálásához.</li></ul> |
 | Alkalmazások | <ul><li>Egyetlen alkalmazásnak legfeljebb 100 felhasználó lehet a tulajdonosa.</li><li>A jelszó-alapú SSO-alkalmazás legfeljebb 48 felhasználóval rendelkezik, ami azt jelenti, hogy az egyes alkalmazásokban a Felhasználónév/jelszó pároknak legfeljebb 48 kulcsa van. Ha további felhasználókat szeretne felvenni, tekintse meg a [jelszó-alapú egyszeri bejelentkezés](../articles/active-directory/manage-apps/troubleshoot-password-based-sso.md#i-cant-add-another-user-to-my-password-based-sso-app)hibaelhárítása Az Azure ad-ben című témakör hibaelhárítási utasításait.</li></ul> |
 |Alkalmazás jegyzékfájlja |Az alkalmazás jegyzékfájljában legfeljebb 1200 bejegyzést lehet hozzáadni. |

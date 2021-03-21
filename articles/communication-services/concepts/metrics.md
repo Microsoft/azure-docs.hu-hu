@@ -10,10 +10,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 129a718175fdda80d4d6852e3d3b4cea609da64d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492412"
 ---
 # <a name="metrics-overview"></a>A metrikák áttekintése
@@ -41,7 +41,7 @@ További információ a támogatott összesítési típusokról és az idősoroz
 
 A következő műveletek érhetők el a csevegési API-kérelmek metrikáján:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | GetChatMessage       | Üzenet beolvasása üzenet azonosítója alapján. |
 | ListChatMessages     | Lekérdezi a csevegési üzenetek listáját egy adott szálból. |
@@ -68,7 +68,7 @@ Ha egy olyan műveletre vonatkozó kérés érkezik, amely nem ismerhető fel, "
 
 Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | SMSMessageSent       | SMS-üzenet küldése. |
 | SMSDeliveryReportsReceived     | SMS-Kézbesítési jelentések beolvasása |
@@ -81,7 +81,7 @@ Az SMS API-kérelmek metrikái a következő műveletek érhetők el:
 
 A következő műveletek érhetők el a hitelesítési API-kérelmek metrikáján:
 
-| Művelet/útvonal    | Leírás                                                                                    |
+| Művelet/útvonal    | Description                                                                                    |
 | -------------------- | ---------------------------------------------------------------------------------------------- |
 | CreateIdentity       | Egy egyedi felhasználót jelképező identitást hoz létre. |
 | DeleteIdentity       | Identitás törlése. |

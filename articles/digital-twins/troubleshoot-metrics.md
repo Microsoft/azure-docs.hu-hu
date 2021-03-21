@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102434066"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
@@ -57,8 +57,8 @@ Ennek beállításához használja a Azure Monitor [riasztások](troubleshoot-al
 
 | Metric | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa| Description | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
-| TwinCount | Twin count (előzetes verzió) | Darabszám | Összesen | Az ikrek teljes száma az Azure Digital Twins-példányban. Ezzel a metrikával meghatározhatja, hogy a [szolgáltatás](reference-service-limits.md#functional-limits) legfeljebb hány ikrek számára engedélyezett. |  Nincs |
-| ModelCount | Modellek száma (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins-példány modelljeinek száma összesen. Ezzel a metrikával meghatározhatja, hogy az adott példányon engedélyezett modellek maximális száma eléri-e a [szolgáltatási korlátot](reference-service-limits.md#functional-limits) . | Nincs |
+| TwinCount | Twin count (előzetes verzió) | Darabszám | Összesen | Az ikrek teljes száma az Azure Digital Twins-példányban. Ezzel a metrikával meghatározhatja, hogy a [szolgáltatás](reference-service-limits.md#functional-limits) legfeljebb hány ikrek számára engedélyezett. |  Nincsenek |
+| ModelCount | Modellek száma (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins-példány modelljeinek száma összesen. Ezzel a metrikával meghatározhatja, hogy az adott példányon engedélyezett modellek maximális száma eléri-e a [szolgáltatási korlátot](reference-service-limits.md#functional-limits) . | Nincsenek |
 
 #### <a name="api-request-metrics"></a>API-kérelmek metrikái
 

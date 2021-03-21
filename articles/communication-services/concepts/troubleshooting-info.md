@@ -9,10 +9,10 @@ ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: daa89380894a57e58191edd95303a2160846da04
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103492693"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Hibaelhárítás az Azure kommunikációs szolgáltatásokban
@@ -161,7 +161,7 @@ Android Studioon navigáljon az eszköz Fájlkezelőhöz úgy, hogy kijelöli a 
 
 Az ügyféloldali függvénytárat hívó Azure kommunikációs szolgáltatások a következő hibakódokat használják a hívási problémák elhárításához. Ezek a hibakódok a tulajdonságon keresztül jelennek meg a `call.callEndReason` hívás befejeződése után.
 
-| Hibakód | Leírás | Elvégzendő művelet |
+| Hibakód | Description | Elvégzendő művelet |
 | -------- | ---------------| ---------------|
 | 403 | Tiltott/hitelesítési hiba. | Győződjön meg arról, hogy a kommunikációs szolgáltatások jogkivonata érvényes, és nem járt le. |
 | 404 | A hívás nem található. | Ellenőrizze, hogy létezik-e a hívott szám (vagy hívja meg az összekötőt). |

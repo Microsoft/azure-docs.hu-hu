@@ -4,13 +4,14 @@ description: A Azure Monitor ügynök (AMA) áttekintése, amely a virtuális g�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: 0487e5bd8109c02605e785e74d45589dd5fde5b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/16/2021
+ms.custom: references_regions
+ms.openlocfilehash: f1f1ea787406d900c8035c0462ef903b848d7e81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039597"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104608214"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -60,6 +61,35 @@ A Azure Monitor ügynök nyilvános előzetes verziója a következő korlátoz�
   - *. control.monitor.azure.com
 
 
+## <a name="supported-regions"></a>Támogatott régiók
+Azure Monitor ügynök jelenleg a következő régiókban támogatja az erőforrásokat:
+
+- Kelet-Ázsia
+- Délkelet-Ázsia
+- Ausztrália középső régiója
+- Kelet-Ausztrália
+- Délkelet-Ausztrália
+- Közép-Kanada
+- Észak-Európa
+- West Europe
+- Közép-Franciaország
+- Középnyugat-Németország
+- Közép-India
+- Kelet-Japán
+- Dél-Korea középső régiója
+- Dél-Afrika északi régiója
+- Észak-Svájc
+- Az Egyesült Királyság déli régiója
+- Az Egyesült Királyság nyugati régiója
+- USA középső régiója
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA északi középső régiója
+- USA déli középső régiója
+- USA nyugati régiója
+- USA 2. nyugati régiója
+- USA nyugati középső régiója
+
 ## <a name="coexistence-with-other-agents"></a>Együttélés más ügynökökkel
 A Azure Monitor ügynök együtt létezhet a meglévő ügynökökkel, így az értékelés vagy az áttelepítés során továbbra is használhatja meglévő funkcióit. Ez különösen fontos a meglévő megoldások támogatásának nyilvános előzetes verziójában. Ügyeljen arra, hogy a duplikált adatok összegyűjtése óta ez a lekérdezési eredmények eldöntése, valamint az adatfeldolgozás és-megőrzés további díját eredményezheti.
 
@@ -75,7 +105,7 @@ A következő táblázat felsorolja, hogy milyen típusú adatok gyűjthetők ö
 
 A Azure Monitor ügynök adatokat küld Azure Monitor metrikák vagy egy Log Analytics munkaterületre, amely támogatja Azure Monitor naplókat.
 
-| Adatforrás | Célhelyek | Leírás |
+| Adatforrás | Célhelyek | Description |
 |:---|:---|:---|
 | Teljesítmény        | Azure Monitor-metrikák<br>Log Analytics-munkaterület | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
 | Windows-eseménynaplók | Log Analytics-munkaterület | A Windows eseménynaplózási rendszernek eljuttatott információk. |

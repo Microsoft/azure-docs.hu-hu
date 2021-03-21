@@ -13,19 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/02/2019
+ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e8778e50dcb881647696c6e901bf1058b9d6ac43
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95996559"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720338"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>A ADSync-szolgáltatásfiók jelszavának módosítása
 Ha módosítja a ADSync-szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog megfelelően elindulni, amíg el nem hagyta a titkosítási kulcsot, és újra nem inicializálta a ADSync-szolgáltatásfiók jelszavát. 
+
+>[!IMPORTANT]
+> Ha a (z) 2017 március vagy korábbi verzióról származó buildet használ, ne állítsa alaphelyzetbe a szolgáltatásfiók jelszavát, mivel a Windows biztonsági okokból elpusztítja a titkosítási kulcsokat. A fiók nem módosítható más fiókra Azure AD Connect újratelepítése nélkül. Ha az 2017 április vagy újabb verzióra frissít egy buildre, akkor a szolgáltatás fiókjának jelszava módosítható, de a használt fiók nem módosítható. 
 
 Azure AD Connect a szinkronizálási szolgáltatások részeként egy titkosítási kulcsot használ a AD DS Connector-fiók és a ADSync-szolgáltatásfiók jelszavának tárolására.  Ezek a fiókok titkosítva vannak, mielőtt azokat a rendszer az adatbázisban tárolja. 
 

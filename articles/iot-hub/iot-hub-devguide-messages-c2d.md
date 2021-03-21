@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199492"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607891"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Felhőből az eszközre irányuló üzenetek küldése IoT-hubhoz
 
@@ -91,6 +91,8 @@ Ahogy azt a [végpontok](iot-hub-devguide-endpoints.md)ismertetik, a IoT hub vis
 | UserId (Felhasználóazonosító)       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
+A rendszer akkor küldi el a visszajelzést, ha a köteg eléri a 64 üzenetet, vagy az utolsó elküldötttől számított 15 másodpercben, attól függően, hogy melyik következik be először. 
+
 A törzs a rekordok JSON-szerializált tömbje, amelyek mindegyike a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság           | Leírás |
@@ -98,7 +100,7 @@ A törzs a rekordok JSON-szerializált tömbje, amelyek mindegyike a következő
 | EnqueuedTimeUtc    | Egy időbélyeg, amely azt jelzi, hogy mikor történt az üzenet eredménye (például a hub megkapta a visszajelzési üzenetet, vagy lejárt az eredeti üzenet) |
 | OriginalMessageId  | A *MessageID* üzenet, amelyre ez a visszajelzési információ vonatkozik |
 | StatusCode         | Egy kötelező karakterlánc, amelyet az IoT hub által generált visszajelzési üzenetekben használ: <br/> *Siker* <br/> *Lejárt* <br/> *DeliveryCountExceeded* <br/> *Elutasítva* <br/> *Törlődnek* |
-| Leírás        | *Statuscode* karakterlánc-értékei |
+| Description        | *Statuscode* karakterlánc-értékei |
 | DeviceId           | A felhőből az eszközre irányuló üzenet megcélzott eszközének *DeviceID* eleme, amelyre ez a visszajelzés vonatkozik |
 | DeviceGenerationId | A felhőből az eszközre irányuló üzenet *DeviceGenerationId* , amelyre ez a visszajelzés vonatkozik |
 

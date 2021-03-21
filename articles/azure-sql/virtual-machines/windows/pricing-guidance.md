@@ -17,10 +17,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: d980b92bc4effc58ef84ef6ec70c3908f575e484
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102615601"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server díjszabási útmutatója
@@ -110,7 +110,7 @@ A saját SQL Server licencelésének engedélyezése licenchordozhatóság haszn
 
 Ahhoz, hogy a BYOL-t a SQL Server VM használatával használhassa, rendelkeznie kell egy, a mennyiségi licencelési programok keretében szükséges licenccel, valamint a többi szolgáltatással való opcionális vásárlással SQL Server Standard-vagy nagyvállalati és [frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1). A mennyiségi licencelési programok által biztosított díjszabás a szerződés típusától és a SQL Serverre vonatkozó mennyiségi és elkötelezettségi szinttől függően változhat. A folyamatos üzemi munkaterhelések esetében azonban a saját licence a következő előnyökkel jár:
 
-| BYOL juttatás | Leírás |
+| BYOL juttatás | Description |
 |-----|-----|
 | **Költségmegtakarítás** | A [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) akár 55%-os megtakarítást is biztosít. További információ: [switch licencelési modell](licensing-model-azure-hybrid-benefit-ahb-change.md) |
 | **Szabad passzív másodlagos replika** | A saját licencének egy másik előnye, hogy a magas rendelkezésre állás érdekében SQL Server [egy passzív másodlagos replika ingyenes licencelését](https://azure.microsoft.com/pricing/licensing-faq/) . Ez feldarabolja a nagyszámú SQL Server üzemelő példány licencelési költségeit (például az Always On rendelkezésre állási csoportok használata esetén). A passzív másodlagos futtatásához szükséges jogosultságokat a Fail-Over-kiszolgálók frissítési garanciája biztosítja. |

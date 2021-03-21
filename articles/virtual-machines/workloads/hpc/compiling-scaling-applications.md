@@ -5,19 +5,25 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/12/2021
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9185f502a7d9dd7ab00a149fb2f3365372b350cc
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103470742"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721296"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 
 Az Azure-beli HPC-alkalmazások optimális, vertikális Felskálázási teljesítménye az adott számítási feladathoz szükséges teljesítmény-hangolási és optimalizálási kísérleteket igényli. Ez a szakasz és a virtuálisgép-sorozat-specifikus lapok általános útmutatást nyújtanak az alkalmazások skálázásához.
+
+## <a name="application-setup"></a>Alkalmazásbeállítás
+A [azurehpc](https://github.com/Azure/azurehpc) -tárház számos példát tartalmaz:
+- [Alkalmazások](https://github.com/Azure/azurehpc/tree/master/apps) optimális beállítása és futtatása.
+- [Fájlrendszerek és fürtök](https://github.com/Azure/azurehpc/tree/master/examples)konfigurálása.
+- [Oktatóanyagok](https://github.com/Azure/azurehpc/tree/master/tutorials) a gyakori alkalmazás-munkafolyamatok használatáról.
 
 ## <a name="optimally-scaling-mpi"></a>Az MPI optimális méretezése 
 
@@ -48,6 +54,9 @@ A következő javaslatok alkalmazhatók az alkalmazások optimális méretezés�
 - A nagyobb méretű méretezési futtatásokhoz javasolt az UD vagy a Hybrid RC + UD átvitel használata. Számos MPI-függvénytár/futásidejű kódtár végzi ezt belsőleg (például UCX vagy MVAPICH2). Ellenőrizze a nagy léptékű futtatások átviteli konfigurációit.
 
 ## <a name="compiling-applications"></a>Alkalmazások fordítása
+<br>
+<details>
+<summary>Kattintson ide a kibontáshoz</summary>
 
 Bár nem szükséges, az alkalmazások megfelelő optimalizálási jelzővel való fordítása biztosítja a legjobb méretezési teljesítményt a HB és a HC sorozatú virtuális gépeken.
 
@@ -96,6 +105,7 @@ A HPC esetében az AMD a GCC Compiler 7,3-es vagy újabb verzióját javasolja. 
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
+</details>
 
 ## <a name="next-steps"></a>Következő lépések
 

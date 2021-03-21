@@ -4,10 +4,10 @@ description: Ismerje meg az Azure-erőforrás-naplók támogatott szolgáltatás
 ms.topic: reference
 ms.date: 09/01/2020
 ms.openlocfilehash: 661cba2d78dbb176bb04e6831cf8e045a285535e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033095"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Az Azure-erőforrás naplóihoz tartozó általános és szolgáltatás-specifikus séma
@@ -22,7 +22,7 @@ Az erőforrástípus (a `resourceId` tulajdonságban elérhető) és a `category
 
 ## <a name="top-level-common-schema"></a>Legfelső szintű közös séma
 
-| Name | Kötelező vagy nem kötelező | Leírás |
+| Name | Kötelező vagy nem kötelező | Description |
 |---|---|---|
 | time | Kötelező | Az esemény időbélyegzője (UTC). |
 | resourceId | Kötelező | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
@@ -61,7 +61,7 @@ Az erőforrás-naplók sémája az erőforrás és a napló kategóriától füg
 | Data Factory | [Az adatüzemek figyelése Azure Monitor használatával](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Naplók elérése Azure Data Lake Analyticshoz](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Storage |[Naplók elérése Azure Data Lake Storehoz](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| Azure Data Explorer | [Azure Adatkezelő-naplók](/azure/data-explorer/using-diagnostic-logs) |
+| Azure Adatkezelő | [Azure Adatkezelő-naplók](/azure/data-explorer/using-diagnostic-logs) |
 | Azure Database for MySQL | [Diagnosztikai naplók Azure Database for MySQL](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Naplók Azure Database for PostgreSQL](../../postgresql/concepts-server-logs.md#resource-logs) |
 | Azure Databricks | [Diagnosztikai naplózás az Azure Databricksben](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) |

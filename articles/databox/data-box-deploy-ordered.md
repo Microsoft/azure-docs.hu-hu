@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.openlocfilehash: 281b22db692087f2876b4011563fee8c56bd476e
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102522393"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
@@ -425,7 +425,7 @@ Az alábbi lépéseket követve rendeljen egy eszközt az Azure CLI használatá
 
 1. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor a CLI-parancs futtatásával hozza létre a Data Box sorrendet. A következő táblázat a paraméterek beállításait tartalmazza `az databox job create` :
 
-   | Beállítás (paraméter) | Leírás |  Mintaérték |
+   | Beállítás (paraméter) | Description |  Mintaérték |
    |---|---|---|
    |resource-group| Használjon egy már létezőt, vagy hozzon létre újat. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
    |name| A létrehozandó rendelés neve. | "mydataboxorder"|
@@ -544,7 +544,7 @@ Az eszköz megrendeléséhez hajtsa végre az alábbi lépéseket Azure PowerShe
 
 2. Írja le a Data Box sorrendjének beállításait. A beállítások közé tartozik a személyes/üzleti adatok, az előfizetés neve, az eszköz adatai és a szállítási információk. Ezeket a beállításokat paraméterekként kell használni, amikor futtatja a PowerShell-parancsot a Data Box sorrend létrehozásához. A következő táblázat a [New-AzDataBoxJob](/powershell/module/az.databox/New-AzDataBoxJob)használt paraméterek beállításait mutatja be.
 
-    | Beállítás (paraméter) | Leírás |  Mintaérték |
+    | Beállítás (paraméter) | Description |  Mintaérték |
     |---|---|---|
     |ResourceGroupName [kötelező]| Meglévő erőforráscsoport használata. Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. | myresourcegroup|
     |Név [kötelező]| A létrehozandó rendelés neve. | "mydataboxorder"|

@@ -57,7 +57,7 @@ A. gitignore fájl már konfigurálva van a fájl tartalmának az elágazó adat
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Az élő streamelést végrehajtó kód vizsgálata
 
-Ez a szakasz a *LiveEventWithDVR* projekt [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) fájljában definiált függvényeket vizsgálja.
+Ez a szakasz a *LiveEventWithDVR* projekt [program. cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) fájljában definiált függvényeket vizsgálja.
 
 A minta egyedi utótagot hoz létre minden erőforráshoz, hogy ne legyenek a nevek ütközései, ha a mintát többször is futtatja a tisztítás nélkül.
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/11/2020
 ms.author: erhopf
-ms.openlocfilehash: dbfe4a44f359f8db59ae80e04aae57164d0ccaf7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd0ceb00b80a045d60de562fbf9ac01b91e41e68
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736848"
+ms.locfileid: "104720185"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services támogatás és Súgó lehetőségek
 
@@ -29,6 +29,7 @@ Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](ht
 
 * [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
+
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Kérdés közzététele a Microsoft Q&A
 

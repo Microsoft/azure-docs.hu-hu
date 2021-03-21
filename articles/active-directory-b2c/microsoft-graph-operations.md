@@ -13,10 +13,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a8ff94acbd9ffd491bf628ae61ee87634a9c6dd6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102033622"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
@@ -181,7 +181,7 @@ A mintakód a [Microsoft Graph SDK](/graph/sdks/sdks-overview)-t használja, ame
 
 A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. A megoldás a [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomag használatát teszi lehetővé, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja a Microsoft Graph SDK-val való használatra.
 
-A `RunAsync` metódus a _program.cs_ fájlban:
+A `RunAsync` _program. cs_ fájljának metódusa:
 
 1. Az Alkalmazásbeállítások beolvasása a _appsettings.js_ fájlból
 1. A [OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) folyamatát használva inicializálja a hitelesítési szolgáltatót. Az ügyfél hitelesítő adatainak megadása esetén az alkalmazás hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához.
@@ -203,7 +203,7 @@ A `RunAsync` metódus a _program.cs_ fájlban:
     GraphServiceClient graphClient = new GraphServiceClient(authProvider);
     ```
 
-A rendszer ezt követően a inicializált *GraphServiceClient* használja a _UserService.cs_ a felhasználói felügyeleti műveletek végrehajtásához. Például a bérlőben lévő felhasználói fiókok listájának beolvasása:
+A rendszer ezt követően a inicializált *GraphServiceClient* használja a _UserService. cs_ -ben a felhasználói felügyeleti műveletek végrehajtásához. Például a bérlőben lévő felhasználói fiókok listájának beolvasása:
 
 ```csharp
 public static async Task ListUsers(GraphServiceClient graphClient)

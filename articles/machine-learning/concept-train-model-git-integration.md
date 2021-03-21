@@ -10,10 +10,10 @@ ms.author: jordane
 author: jpe316
 ms.date: 11/16/2020
 ms.openlocfilehash: cc844cbd2518bb131f6902d1da3e7653951224b5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102547849"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
@@ -123,7 +123,7 @@ Az SSH ezt az ujjlenyomatot jeleníti meg, amikor egy ismeretlen gazdagéphez cs
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat azt a segítségével ellenőrizze, hogy a fájlok egy git-tárházban tárolódnak-e. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
-| Tulajdonság | Az érték beolvasásához használt git-parancs | Leírás |
+| Tulajdonság | Az érték beolvasásához használt git-parancs | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |

@@ -3,17 +3,17 @@ title: Azure-költségek kezelése automatizálással
 description: Ez a cikk az Azure-költségek automatizálással való kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: a54b8243b5a680168b2e5806dd58c0fa4109728f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2a39f77e3e7409d23ab7506b525f65e01082e99e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670273"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720117"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -47,7 +47,7 @@ Akkor érdemes megfontolni a [Usage Details API](/rest/api/consumption/usageDeta
 
 A [Usage Details API](/rest/api/consumption/usageDetails) egyszerű módot kínál az Azure-számlájának megfelelő, nyers, nem összesített költségadatok lekérésére. Az API akkor hasznos, ha a szervezetnek programozott adatlekérési megoldásra van szüksége. Akkor érdemes megfontolni az API használatát, ha kisebb költségadathalmazokat szeretne elemezni. Ha nagyobb adathalmazokkal rendelkezik, használja a korábban említett megoldások egyikét. A Usage Details mérőeszközök alapján adja meg az adatokat, napi bontásban. A havi számla kiszámításához használják. Az API-k általánosan elérhető (GA) verziója a `2019-10-01`. Az API-kkal végzett foglalások és Azure Marketplace-vásárlások előzetes verziójának eléréséhez használja a `2019-04-01-preview` verziót.
 
-Ha rendszeresen nagy mennyiségű exportált adatra van szüksége, tekintse meg a [nagy kapacitású adatkészletek ismétlődő beolvasása az exports szolgáltatással](ingest-azure-usage-at-scale.md)című témakört.
+Ha rendszeresen nagy mennyiségű exportált adatra van szüksége, tekintse meg [a nagy kapacitású adatkészletek ismétlődő beolvasása az exports szolgáltatással](ingest-azure-usage-at-scale.md)című témakört.
 
 ### <a name="usage-details-api-suggestions"></a>Usage Details API-ra vonatkozó javaslatok
 
@@ -74,6 +74,10 @@ Használati adatok árának viselkedése – A használati adatokat tartalmazó 
   - Szolgáltatási keret – Például: Az első 100 egység ingyenes, utána minden egység 10 dollár.
   - Lefoglalások
   - A számítás során alkalmazott kerekítés – A kerekítés a felhasznált mennyiséget, a szintezett díjszabást/a szolgáltatási keret díjszabását és a skálázott egységárat veszi figyelembe.
+
+### <a name="a-single-resource-might-have-multiple-records-for-a-single-day"></a>Egyetlen erőforráshoz több rekord is tartozhat egyetlen nap alatt.
+
+Az Azure-erőforrás-szolgáltatók használati és díjszabási díjat bocsátanak ki a számlázási rendszeren, és feltöltik a `Additional Info` használati rekordok mezőjét. Esetenként előfordulhat, hogy az erőforrás-szolgáltatók egy adott napra kibocsátják a használatot, és a `Additional Info` használati rekordok mezőjében különböző adatközpontokkal pecsételik a rekordokat. Több rekordot is okozhat, ha egy fogyasztásmérő/erőforrás a használati fájlban egyetlen napig jelen van. Ebben az esetben nem kell túlfizetni. A több rekord az adott napon az erőforráshoz tartozó mérőszám teljes árát jelöli.
 
 ## <a name="example-usage-details-api-requests"></a>Példák a Usage Details API kéréseire
 

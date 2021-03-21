@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c92c30da2b8e78715df46341dc4bc502ed5e34ce
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 87c3e4e9b509589624a228ea2e1f4b68e86e3fa8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472847"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721133"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 sorozatú virtuális gépek teljesítménye
 
@@ -51,5 +51,5 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 ## <a name="next-steps"></a>Következő lépések
 - További információ az [MPI-alkalmazások méretezéséről](compiling-scaling-applications.md).
-- Olvassa el a legújabb bejelentéseket és néhány nagy teljesítményű számítástechnikai (HPC) példát és eredményt az [Azure számítási technikai közösségének blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti nézetét lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

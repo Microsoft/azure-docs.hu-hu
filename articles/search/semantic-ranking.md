@@ -1,48 +1,61 @@
 ---
 title: Szemantikai rangsorolás
 titleSuffix: Azure Cognitive Search
-description: A Cognitive Search szemantikai rangsorolási algoritmusát ismerteti.
+description: Megtudhatja, hogyan működik a szemantikai rangsorolási algoritmus az Azure Cognitive Searchban.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/12/2021
-ms.openlocfilehash: 01c4d6475ec23b8a55d91e18f49cab27760aa907
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/18/2021
+ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604287"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720508"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Szemantikai rangsorolás az Azure Cognitive Search
 
 > [!IMPORTANT]
-> A szemantikai keresési funkciók nyilvános előzetes verzióban érhetők el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A szemantikai keresési funkciók nyilvános előzetes verzióban érhetők el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
-A szemantikai rangsor a lekérdezés végrehajtási folyamatának kiterjesztése, amely javítja a pontosságot, és visszahívja azt a kezdeti eredményhalmaz felső egyezésének átállításával. A szemantikai rangsorolást a legkorszerűbb mély gépi olvasási felolvasási modellek jelentik, amelyek természetes nyelven kifejezett lekérdezésekre vannak kialakítva, ellentétben a kulcsszavak nyelvi megfeleltetésével. Az [alapértelmezett hasonlósági rangsorolási algoritmussal](index-ranking-similarity.md)ellentétben a szemantikai rangsor a szavak kontextusát és jelentését használja a relevancia megállapításához.
+A szemantikai rangsor a lekérdezés végrehajtási folyamatának kiterjesztése, amely javítja a pontosságot, és visszahívja azt a kezdeti eredményhalmaz felső egyezésének átállításával. A szemantikai rangsorolást a legkorszerűbb gépi olvasási felolvasási modellek jelentik, amelyek természetes nyelven kifejezett lekérdezésekre vannak kialakítva, a kulcsszavak nyelvi megfeleltetése helyett. Az [alapértelmezett hasonlósági rangsorolási algoritmussal](index-ranking-similarity.md)ellentétben a szemantikai rangsor a szavak kontextusát és jelentését használja a relevancia megállapításához.
 
-## <a name="how-semantic-ranking-works"></a>A szemantikai rangsorolás működése
+A szemantikai rangsorolás erőforrás-és időigényes. A lekérdezési művelet várható késésén belüli feldolgozás befejezéséhez a rendszer konszolidálja és egyszerűsíti a bemeneti adatokat, hogy az Összegzés és az elemzés a lehető leggyorsabban befejeződjön.
 
-A szemantikai rangsorolás erőforrás-és időigényes is. A lekérdezési művelet várható késésén belüli feldolgozás befejezéséhez a modell csak az alapértelmezett [hasonlósági rangsorolási algoritmus](index-ranking-similarity.md)által visszaadott első 50-dokumentumot veszi át. A kezdeti rangsor eredményei több mint 50 egyezést tartalmazhatnak, de csak az első 50 lesz a szemantikai sorrendben. 
+## <a name="preparation-for-semantic-ranking"></a>Szemantikai rangsorolás előkészítése
 
-A szemantikai rangsoroláshoz a modell a gépi olvasást és a tanulást is használja a dokumentumok újbóli kiértékeléséhez, attól függően, hogy milyen jól illeszkedik a lekérdezés szándéka.
+A relevancia megállapítása előtt a tartalmat olyan mennyiségű paraméterre kell csökkenteni, amelyet a szemantikai rangsor hatékonyan tud kezelni. A tartalom csökkentése a következő lépések sorát tartalmazza.
 
-### <a name="preparation-passage-extraction-phase"></a>Előkészítési (átjáró-kinyerési) fázis
+1. A tartalom csökkentése a kulcsszavas kereséshez használt alapértelmezett [hasonlósági rangsorolási algoritmus](index-ranking-similarity.md) által visszaadott kezdeti eredmények használatával kezdődik. A keresési eredmények akár 1 000 egyezést is tartalmazhatnak, de a szemantikai rangsorolás csak az első 50 feldolgozza. 
 
-A kezdeti eredményekben található minden dokumentumhoz van egy, a fő részek azonosítására szolgáló kibontási gyakorlat. Ez egy leépítési gyakorlat, amely csökkenti a tartalmat egy gyorsan feldolgozható mennyiségre.
+   A lekérdezés miatt a kezdeti eredmények sokkal kevesebbek, mint 50, attól függően, hogy hány egyezés található. A dokumentumok száma nélkül a kezdeti eredményhalmaz a dokumentum-Corpus a szemantikai rangsoroláshoz.
 
-1. Minden 50-dokumentum esetében a searchFields paraméter minden mezője egymást követő sorrendben lesz kiértékelve. Az egyes mezők tartalma egyetlen hosszú sztringbe van összevonva. 
+1. A Document corpusban a "searchFields" egyes mezőinek tartalma kinyerve, és egy hosszú karakterláncba van összevonva.
 
-1. A hosszú karakterláncot ezután a rendszer kivágja, hogy a teljes hossz ne legyen több, mint 8 000 token. Ezért javasoljuk, hogy először a tömör mezőket helyezze el, hogy azok szerepeljenek a karakterláncban. Ha nagyon nagy méretű, szöveggel ellátott mezőket tartalmazó dokumentumokkal rendelkezik, a rendszer figyelmen kívül hagyja a jogkivonat-korlátot.
+1. A túlságosan hosszú karakterláncok úgy vannak kimetszve, hogy a teljes hossz megfeleljen az összefoglaló modell bemeneti követelményeinek. Ennek a kivágási gyakorlatnak az az oka, hogy fontos a tömör mezők elhelyezése a "searchFields" elemben, hogy a karakterlánc szerepeljen bennük. Ha nagyon nagy méretű, szöveggel ellátott mezőket tartalmazó dokumentumokkal rendelkezik, a rendszer figyelmen kívül hagyja a maximális korlátot.
 
-1. Minden dokumentumot egy olyan hosszú karakterlánc képvisel, amely legfeljebb 8 000 tokenből áll. Ezeket a karakterláncokat az összefoglaló modellbe küldi a rendszer, amely tovább csökkenti a karakterláncot. Az összefoglaló modell kiértékeli a hosszú karakterláncot a dokumentum legjobban összefoglaló mondatok vagy szövegrészek esetében, vagy válaszol a kérdésre.
+Minden dokumentumot egyetlen hosszú sztring képvisel.
 
-1. A fázis kimenete egy felirat (és opcionálisan egy válasz). A felirat legfeljebb 128 tokent tartalmazó dokumentum, és a dokumentum legalkalmasabbnak számít.
+> [!NOTE]
+> A modellbe való bemenetek a tokenek nem karaktereket vagy szavakat tartalmazhatnak. A jogkivonatok létrehozása a kereshető mezőkön az analizátor-hozzárendelés részben határozható meg. A sztringek jogkivonatának vizsgálatához tekintse át az analizátor jogkivonat-kimenetét a [test analyzer REST API](/rest/api/searchservice/test-analyzer)használatával.
+>
+> Jelenleg ebben az előzetes verzióban a hosszú karakterláncok maximális száma 8 000 token lehet. Ha a keresés nem tud kiadni egy várt választ a dokumentum mélyén belül, a tartalom kivágásának ismerete segít megérteni, hogy miért. 
 
-### <a name="scoring-and-ranking-phases"></a>Pontozási és rangsorolási fázisok
+## <a name="summarization"></a>Összegzés
 
-Ebben a fázisban a rendszer az összes 50 feliratot kiértékeli a relevancia értékeléséhez.
+A karakterláncok csökkentése után már lehetséges a paraméterek átadása a gépi olvasással és a nyelvi ábrázolással annak meghatározására, hogy mely mondatok és kifejezések a legjobban összefoglalják a modellt, a lekérdezéshez képest.
+
+Az összegzésbe való bemenetek az előkészítési fázisból származó hosszú karakterláncok. Ebből a bemenetből az összefoglaló modell kiértékeli a tartalmat, hogy megtalálja a leginkább reprezentatív szakaszokat.
+
+A kimenet egy [szemantikai felirat](semantic-how-to-query-request.md), egyszerű szövegben és kiemeli. A felirat kisebb, mint a hosszú karakterlánc, amely általában kevesebb mint 200 szót tartalmaz a dokumentumban, és a dokumentum leginkább reprezentálja. 
+
+A "válaszok" paraméter megadásakor a rendszer a [szemantikai választ](semantic-answers.md) is visszaadja, ha a lekérdezést feltették a kérdéses lekérdezésre, és ha a hosszú karakterláncban egy olyan szakasz található, amely kézenfekvő választ ad a kérdésre.
+
+## <a name="scoring-and-ranking"></a>Pontozás és rangsorolás
+
+Ezen a ponton már minden dokumentumhoz feliratok tartoznak. A rendszer kiértékeli a feliratokat a lekérdezés szempontjából.
 
 1. A pontozás meghatározása az egyes feliratok elméleti és szemantikai relevanciára való kiértékelésével történik, a megadott lekérdezéshez képest.
 
@@ -50,13 +63,14 @@ Ebben a fázisban a rendszer az összes 50 feliratot kiértékeli a relevancia �
 
    :::image type="content" source="media/semantic-search-overview/semantic-vector-representation.png" alt-text="A környezet vektoros ábrázolása" border="true":::
 
-1. A fázis kimenete az @search.rerankerScore egyes dokumentumokhoz van rendelve. Az összes dokumentum kiértékelése után a rendszer csökkenő sorrendben sorolja fel őket, és tartalmazza a lekérdezési válasz hasznos adatait.
+1. A fázis kimenete az @search.rerankerScore egyes dokumentumokhoz van rendelve. Az összes dokumentum kiértékelése után a rendszer csökkenő sorrendben sorolja fel őket, és tartalmazza a lekérdezési válasz hasznos adatait. A hasznos adatok között szerepelnek a válaszok, az egyszerű szöveg és a Kiemelt feliratok, valamint a beolvasható vagy a Select záradékban megadott mezők.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A szemantikai rangsorolást a standard szinteken, adott régiókban kínáljuk. További információért és a regisztrációhoz tekintse meg a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing). Az új lekérdezési típus lehetővé teszi a szemantikai keresés fontossági sorrendjét és reagálási struktúráját. Első lépésként [hozzon létre egy szemantikai lekérdezést](semantic-how-to-query-request.md).
+A szemantikai rangsorolást a standard szinteken, adott régiókban kínáljuk. Az elérhető és a regisztrációval kapcsolatos további információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing). Az új lekérdezési típus lehetővé teszi a szemantikai keresés fontossági sorrendjét és reagálási struktúráját. Első lépésként [hozzon létre egy szemantikai lekérdezést](semantic-how-to-query-request.md).
 
-Másik megoldásként tekintse át a következő cikkek valamelyikét a kapcsolódó információkhoz.
+Másik megoldásként tekintse át az alapértelmezett rangsorolással kapcsolatos alábbi cikkeket. A szemantikai rangsorolás a hasonlósági sorrendtől függ a kezdeti eredmények visszaküldéséhez. A lekérdezés-végrehajtás és a rangsorolás megismerése a teljes folyamat működésének széles körű megismerését teszi lehetővé.
 
-+ [Szemantikai keresés – áttekintés](semantic-search-overview.md)
-+ [Szemantikai válasz visszaadása](semantic-answers.md)
++ [Teljes szöveges keresés az Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Hasonlóság és pontozás az Azure Cognitive Search](index-similarity-and-scoring.md)
++ [Az Azure Cognitive Searchban való szövegszerkesztés elemzői](search-analyzers.md)

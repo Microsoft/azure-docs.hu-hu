@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 02b47d7797eaebf6049099729ea51554a61a765e
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4a281e547691b7dee2f1a6d3e57b1c0030dbbd57
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495412"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612357"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 Az első lépések előtt ügyeljen a következőre:
@@ -39,8 +39,8 @@ Az első lépések előtt ügyeljen a következőre:
 A Gradle segítségével telepítjük a szükséges kommunikációs szolgáltatások függőségeit. A parancssorban navigáljon a projekt gyökérkönyvtárában `ChatQuickstart` . Nyissa meg az alkalmazás Build. gradle fájlját, és adja hozzá a következő függőségeket a `ChatQuickstart` célhoz:
 
 ```
-implementation 'com.azure.android:azure-communication-common:1.0.0-beta.7'
-implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.7'
+implementation 'com.azure.android:azure-communication-common:1.0.0-beta.8'
+implementation 'com.azure.android:azure-communication-chat:1.0.0-beta.8'
 ```
 
 #### <a name="exclude-meta-files-in-packaging-options-in-root-buildgradle"></a>Metaadatok kizárása a kiépítés csomagolási beállításaiban a root Build. gradle

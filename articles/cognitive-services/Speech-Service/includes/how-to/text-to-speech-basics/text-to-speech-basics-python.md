@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: d990deca3f435f0b1e3fbdd3388371a11813662a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98f13df2c4da993147ba3ef4157340910fcbc5d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948149"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719897"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -102,7 +102,7 @@ A beszédfelismerés számos forgatókönyve esetében valószínű, hogy az ere
 * Az eredmény integrálása más API-k vagy szolgáltatások használatával.
 * A hangadatok módosítása, egyéni `.wav` fejlécek írása stb.
 
-Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` -t, mert ezzel a lépéssel manuálisan fogja kezelni a kimeneti viselkedést a jobb szabályozás érdekében. Ezután adja át a-t a `None` `AudioConfig` `SpeechSynthesizer` konstruktorban. 
+Ezt a változást egyszerűen elvégezheti az előző példából. Először távolítsa el a `AudioConfig` -t, mert ezzel a lépéssel manuálisan fogja kezelni a kimeneti viselkedést a jobb szabályozás érdekében. Ezután adja át a-t a `None` `AudioConfig` `SpeechSynthesizer` konstruktorban.
 
 > [!NOTE]
 > `None`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
@@ -206,3 +206,11 @@ Ha egy neurális hangra szeretne váltani, módosítsa a `name` beállítást az
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
+
+A beszédfelismerés jó módszer lehet az arc-kifejezések animálására.
+A [visemes](../../../how-to-speech-synthesis-viseme.md) gyakran a megfigyelt beszédben jelentenek, például az ajkak, az állkapocs és a nyelv pozíciója egy adott fonéma készítésekor.
+Feliratkozhat a viseme eseményre a Speech SDK-ban.
+Ezt követően alkalmazhatja a viseme eseményeket, így animálhatja a karakterek színeit beszéd hanglejátszásként.
+Ismerje meg [, hogyan szerezhet be viseme-eseményeket](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk).

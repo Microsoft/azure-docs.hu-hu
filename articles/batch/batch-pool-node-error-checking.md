@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 4a0d3e017f36f580024b77fbd23145d7447f336d
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564405"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104720151"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
 
@@ -136,14 +136,16 @@ A fájlok némelyike csak egyszer írható elő, amikor a készlet csomópontjai
 
 A rendszer minden olyan feladatra kiírja a többi fájlt, amely egy csomóponton fut, például az stdout és a stderr. Ha nagy számú tevékenység fut ugyanazon a csomóponton, és/vagy a feladatok fájljai túl nagyok, akkor kitölthetik az ideiglenes meghajtót.
 
-Az ideiglenes meghajtó mérete a virtuális gép méretétől függ. A virtuális gép méretének kiválasztásakor az egyik szempont, hogy az ideiglenes meghajtó elegendő lemezterülettel rendelkezzen.
+Emellett a csomópont elindulása után kevés lemezterületre van szükség az operációs rendszer lemezén a felhasználók létrehozásához.
+
+Az ideiglenes meghajtó mérete a virtuális gép méretétől függ. A virtuális gép méretének kiválasztásakor figyelembe kell venni, hogy az ideiglenes meghajtó elegendő lemezterülettel rendelkezik a tervezett munkaterheléshez.
 
 - A készlet hozzáadásakor a Azure Portal a virtuálisgép-méretek teljes listáját jelenítheti meg, és az erőforrás lemez mérete oszlop is megjelenik.
 - Az összes virtuálisgép-méretet ismertető cikk a "Temp Storage" oszlopot tartalmazó táblázatokat tartalmaz. például a [számítási optimalizált VM-méretek](../virtual-machines/sizes-compute.md)
 
 Az egyes feladatok által írt fájlok esetében megadható az egyes feladatokhoz tartozó megőrzési idő, amely meghatározza, hogy a rendszer mennyi ideig tárolja a feladatokat, mielőtt automatikusan kitakarítja a fájlokat. A megőrzési idő csökkentheti a tárolási követelmények csökkentését.
 
-Ha az ideiglenes lemez kifogy (vagy nagyon közel van a helyhez), a csomópont [használhatatlan](/rest/api/batchservice/computenode/get#computenodestate) állapotba kerül, és a rendszer azt jelzi, hogy a lemez megtelt.
+Ha az ideiglenes vagy az operációsrendszer-lemez elfogyott a szabad területtel (vagy nagyon közel van a helyhez), a csomópont [használhatatlan](/rest/api/batchservice/computenode/get#computenodestate) állapotba kerül, és a rendszer azt jelzi, hogy a lemez megtelt.
 
 Ha nem biztos abban, hogy mi a terület a csomóponton, próbálja meg a távelérést a csomóponton, és vizsgálja meg, hogy hol történt a terület. A [Batch Files API](/rest/api/batchservice/file/listfromcomputenode) -t is használhatja a Batch által felügyelt mappákban található fájlok vizsgálatához (például feladat kimenetei). Vegye figyelembe, hogy ez az API csak a Batch által felügyelt címtárakban található fájlokat sorolja fel. Ha a feladatait máshol hozta létre, azok nem jelennek meg.
 

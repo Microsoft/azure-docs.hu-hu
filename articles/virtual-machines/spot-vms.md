@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fb53fc37227e040ed7bd7fc8e47de9aed538bc2e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/20/2021
-ms.locfileid: "101673942"
+ms.locfileid: "104721392"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Az Azure spot Virtual Machines használata 
 
@@ -58,9 +58,9 @@ Az Azure spot Virtual Machines bármely régióba üzembe helyezhető, kivéve a
 
 Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support/legal/offer-details/) támogatottak:
 
--   Nagyvállalati Szerződés
--   Utólagos elszámolású ajánlat kódja 003P
--   Szponzorált
+-   Nagyvállalati Szerződés 
+-   Utólagos elszámolású ajánlat kódja (003P)
+-   Szponzorált (0036P és 0136P)
 - A felhőalapú szolgáltató (CSP) esetében forduljon a partnerhez
 
 

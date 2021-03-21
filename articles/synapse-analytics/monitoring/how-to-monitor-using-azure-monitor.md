@@ -10,10 +10,10 @@ ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: ac5b1df5ff246623b73dbc41d18216396e6ed7ef
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102549855"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Monitor használata az Azure szinapszis Analytics-munkaterülettel
@@ -103,7 +103,7 @@ Jelentkezzen be a Azure Portalba, és válassza a riasztások **figyelése** leh
 
 Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve | Naplózási kategória neve                 | Leírás |
+| Log Analytics tábla neve | Naplózási kategória neve                 | Description |
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure szinapszis Gateway API-kérelmek. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure szinapszis szerepköralapú hozzáférés-vezérlési (SRBAC) műveletek. |
@@ -112,7 +112,7 @@ Az Azure szinapszis Analytics-munkaterületek által kibocsátott naplók a köv
 
 A dedikált SQL-készletek által kibocsátott naplók a következők:
 
-| Log Analytics tábla neve        | Naplózási kategória neve             | Leírás |
+| Log Analytics tábla neve        | Naplózási kategória neve             | Description |
 |----------------------|--------------------------------------|-------------|
 | SynapseSqlPoolExecRequests  | ExecRequests | Információk az Azure szinapszis dedikált SQL-készletében található SQL-kérelmekről/lekérdezésekről.
 | SynapseSqlPoolDmsWorkers    | DmsWorkers   | Információ arról, hogy a feldolgozók hogyan fejezik be a DMS lépéseit az Azure szinapszis dedikált SQL-készletéből.
@@ -131,7 +131,7 @@ A naplókról további információt a következő információkban talál:
 
 Apache Spark készletek által kibocsátott napló:
 
-| Log Analytics tábla neve               | Naplózási kategória neve              | Leírás                 |
+| Log Analytics tábla neve               | Naplózási kategória neve              | Description                 |
 |-----------------------------|---------------------------------------|-----------------------------|
 | SynapseBigDataPoolApplicationsEnded | BigDataPoolAppsEnded | A befejezett Apache Spark alkalmazásokkal kapcsolatos információk |
 

@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 8487743efd4f18806ae03ed7529927736314988b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505069"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595686"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API-hoz készült Azure Cosmos DB Python SDK: Kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505069"
 > * [Tömeges végrehajtó – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Tömeges végrehajtó – Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| Oldal| Hivatkozás |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/azure-cosmos/)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**Első lépések**|[Ismerkedés a Python SDK-val](create-sql-api-python.md)|
 |**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) és [Python 3.5.3 +](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Kiadási előzmények
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**Hibajavítások**
+- Kijavítva a hiba, ha a folytatási tokent nem tiszteli a rendszer, ha query_iterable az eredmények oldal alapján történő beolvasására szolgál.
+- Kijavítva a hiba, ahol az erőforrás-jogkivonatok nem állnak tiszteletben a dokumentumok olvasására és törlésére. 
+
+**Új funkciók**
+- További támogatás a `partitionKey` change-feed lekérdezése során végzett továbbításhoz.
+
+## <a name="410"></a>4.1.0
 
 - Elavult figyelmeztetés lett hozzáadva a "lusta" indexelési módhoz. A háttérrendszer már nem teszi lehetővé, hogy a tárolókat ezzel a móddal hozza létre, és a rendszer konzisztensen állítsa be őket.
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505069"
 - Új tároló létrehozásakor hozzá lett adva az analitikai tároló ÉLETTARTAMának beállítása.
 
 **Hibajavítások**
-- Rögzített támogatás a dicts get_client API-k bemenetei számára.
+- Rögzített támogatás a `dicts` Get_client API-khoz bemenetként.
 - Javított Python 2/3-kompatibilitás a lekérdezési iterációkban.
-- Rögzített típusú hint-hiba (probléma #12570).
-- Kijavítva a hiba, ahol a beállítások fejlécei nem lettek hozzáadva a upsert_item függvényhez. Probléma #11791 – Köszönjük @aalapatirvbd .
-- Rögzített hiba, ha nem karakterlánc-azonosítót használ egy adott elemmel. A AttributeError helyett a TypeError-t (Issue #11793).
+- Rögzített típusú hint-hiba.
+- Kijavítva a hiba, ahol a beállítások fejlécei nem lettek hozzáadva a upsert_item függvényhez. 
+- Rögzített hiba, ha nem sztring típusú azonosítót használ egy adott elemmel. Ezzel a AttributeError helyett a TypeError-t is felveti.
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * Stabil kiadás.
 * A HttpLoggingPolicy hozzáadása a folyamathoz, amely lehetővé teszi az átadást egy egyéni naplózó számára a kérelem és válasz fejlécek esetében.
@@ -80,8 +90,8 @@ ms.locfileid: "102505069"
 * A lekérdezés különböző, eltolási és korlát-támogatással bővült.
 * Az alapértelmezett dokumentum-lekérdezés végrehajtási környezete már használatban van
 
-  * ChangeFeed lekérdezések
-  * egyetlen partíciós lekérdezés (partitionkey, partitionKeyRangeId)
+  * Hírcsatorna-lekérdezések módosítása
+  * az egypartíciós lekérdezések (a `partitionkey` `partitionKeyRangeId` lehetőségek között szerepelnek)
   * Nem dokumentált lekérdezések
 
 * Hibák a több partíción lévő összesítések esetében, a több partíciós lekérdezés engedélyezése igaz értékre van állítva, de nincs "érték" kulcsszó.
@@ -324,6 +334,8 @@ A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivo
 
 | Verzió | Kiadás dátuma | Kivonás dátuma |
 | --- | --- | --- |
+| [4.2.0](#420) |Október 9., 2020 |--- |
+| [4.1.0](#410) |Augusztus 10, 2020 |--- |
 | [4.0.0](#400) |2020. május 20. |--- |
 | [3.0.2](#302) |November 15., 2018 |--- |
 | [3.0.1](#301) |Oct 04, 2018 |--- |

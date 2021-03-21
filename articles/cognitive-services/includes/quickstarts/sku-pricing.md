@@ -7,55 +7,53 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cc4bc6907f83ce062fed82dde17815fc4debd67
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321618"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719955"
 ---
 Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat. 
 
 #### <a name="multi-service"></a>Több szolgáltatás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
 | Több szolgáltatás. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Erőforrás                      |
+| Szolgáltatás                    | Altípus                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
 | Arcfelismerés                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
-| Ink Recognizer             | `InkRecognizer`           |
 
 #### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Erőforrás                  |
+| Szolgáltatás            | Altípus                  |
 |--------------------|-----------------------|
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
 | Bing – Entitáskeresés | `Bing.EntitySearch`   |
-| Bing kereső        | `Bing.Search.v7`      |
+| Bing Search        | `Bing.Search.v7`      |
 | Bing – Helyesírás-ellenőrzés   | `Bing.SpellCheck.v7`  |
 
 #### <a name="speech"></a>Speech
 
-| Szolgáltatás            | Erőforrás                 |
+| Szolgáltatás            | Altípus                 |
 |--------------------|----------------------|
-| Beszédszolgáltatások    | `SpeechServices`     |
+| Beszédfelismerési szolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 #### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Erőforrás                |
+| Szolgáltatás            | Altípus                |
 |--------------------|---------------------|
-| Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
 | QnA Maker          | `QnAMaker`          |
 | Szövegelemzés     | `TextAnalytics`     |
@@ -63,7 +61,7 @@ Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat.
 
 #### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Erőforrás               |
+| Szolgáltatás           | Altípus               |
 |-------------------|--------------------|
 | Anomáliadetektor  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |
