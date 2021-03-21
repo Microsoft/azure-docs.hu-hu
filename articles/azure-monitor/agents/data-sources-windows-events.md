@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: a3baa83e2ae306f1e43aee52e29a151bad6f85d9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 0eaa73fa7e0a9896a875af7e3a3aab22db2a37d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036595"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657059"
 ---
 # <a name="collect-windows-event-log-data-sources-with-log-analytics-agent"></a>Windows-Eseménynapló adatforrásainak összegyűjtése Log Analytics ügynökkel
 A Windows-eseménynaplók az egyik leggyakoribb [adatforrások](../agents/agent-data-sources.md) a Windows rendszerű virtuális gépeken található log Analytics ügynökök számára, mivel számos alkalmazás a Windows-eseménynaplóba ír.  Az eseményeket összegyűjtheti a szabványos naplókból, például a rendszerből és az alkalmazásból is, és megadhatja a figyelni kívánt alkalmazások által létrehozott egyéni naplókat.
@@ -28,6 +28,10 @@ Azure Monitor csak a beállításokban megadott Windows-eseménynaplókban lév�
 Amikor beírja az Eseménynapló nevét, Azure Monitor a gyakori Eseménynapló-nevekre vonatkozó javaslatokat is tartalmaz. Ha a hozzáadni kívánt napló nem jelenik meg a listában, akkor a napló teljes nevének beírásával továbbra is hozzáadhatja azt. A napló teljes nevét az Eseménynapló használatával találja. Az eseménynaplóban nyissa meg a napló *Tulajdonságok* lapját, és másolja a karakterláncot a *teljes név* mezőből.
 
 [![Windows-események konfigurálása](media/data-sources-windows-events/configure.png)](media/data-sources-windows-events/configure.png#lightbox)
+
+> [!IMPORTANT]
+> A munkaterületről nem konfigurálhatja a biztonsági események gyűjteményét. A biztonsági események összegyűjtéséhez [Azure Security Center](../../security-center/security-center-enable-data-collection.md) vagy [Azure sentinelt](../../sentinel/connect-windows-security-events.md) kell használnia.
+
 
 > [!NOTE]
 > A Windows-Eseménynapló kritikus eseményeinek súlyossága "Error" lesz a Azure Monitor naplókban.
@@ -62,7 +66,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.
 
-| Lekérdezés | Leírás |
+| Lekérdezés | Description |
 |:---|:---|
 | Esemény |Minden Windows-esemény. |
 | Az Event &#124;, ahol a EventLevelName = = "Error" |Minden Windows-esemény, amelynek súlyossága a hiba. |

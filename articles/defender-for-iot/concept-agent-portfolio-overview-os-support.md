@@ -1,5 +1,5 @@
 ---
-title: Az ügynök portfoliójának áttekintése és operációs rendszer támogatása
+title: Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
 description: A IoT készült Azure Defender az eszközök típusától függően az ügynökök nagy portfólióját biztosítja.
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120147"
 ---
-# <a name="agent-portfolio-overview-and-os-support"></a>Az ügynök portfoliójának áttekintése és operációs rendszer támogatása 
+# <a name="agent-portfolio-overview-and-os-support-preview"></a>Az ügynök portfoliójának áttekintése és az operációs rendszer támogatása (előzetes verzió)
 
 A IoT készült Azure Defender az eszközök típusától függően az ügynökök nagy portfólióját biztosítja. 
 
@@ -38,4 +38,4 @@ Az Azure Defender for IoT Micro Agent az Azure RTOS NetX Duo összetevő részek
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az [önálló Micro Agent áttekintése ](concept-standalone-micro-agent-overview.md).
+További információ az [önálló Micro Agent áttekintése (előzetes verzió)](concept-standalone-micro-agent-overview.md).

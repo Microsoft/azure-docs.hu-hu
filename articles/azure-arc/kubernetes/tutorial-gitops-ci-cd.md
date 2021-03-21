@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 72caca47cde960eb7298ec2cf0c6994755cb3159
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121609"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Oktatóanyag: CI/CD implementálása az Azure arc-kompatibilis Kubernetes-fürtöket használó GitOps
@@ -119,7 +119,7 @@ Most, hogy szinkronizálta a GitOps-kapcsolatokat, importálnia kell a jegyzéke
 
 Az alkalmazás-tárház tartalmaz egy `.pipeline` mappát, amely a PRs, CI és CD-hez használni kívánt folyamatokat tartalmazza. A példában szereplő három folyamat importálása és átnevezése:
 
-| Folyamat fájljának neve | Leírás |
+| Folyamat fájljának neve | Description |
 | ------------- | ------------- |
 | [`.pipelines/az-vote-pr-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-pr-pipeline.yaml)  | Az alkalmazás PR-folyamata, named **arc-vel-demo-src PR** |
 | [`.pipelines/az-vote-ci-pipeline.yaml`](https://github.com/Azure/arc-cicd-demo-src/blob/master/.pipelines/az-vote-ci-pipeline.yaml) | Az Application CI-folyamat, named **arc-vel-demo-src CI** |

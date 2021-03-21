@@ -216,8 +216,6 @@
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
             - name: MPA-előfizetések programozott létrehozása
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: Előfizetések létrehozása – ARM-sablon
-              href: manage/create-subscription-template.md
             - name: Előfizetések programozott létrehozása – előzetes verziójú API-k
               href: manage/programmatically-create-subscription-preview.md
         - name: Nagyvállalati szerződéses előfizetések kezelése

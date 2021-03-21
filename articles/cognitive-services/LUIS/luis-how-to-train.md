@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98762717"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>A LUIS-alkalmazás aktív verziójának betanítása
@@ -62,7 +62,7 @@ A LUIS-portálon betanítás egyetlen lépés a **vonat** gomb megnyomására. A
 
 Ha tudni szeretné, hogy a betanítás sikeres-e, le kell kérdezni az állapotot, amíg az összes modellt nem sikerült betanítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Interaktív tesztelés](luis-interactive-test.md)
 * [Kötegelt tesztelés](luis-how-to-batch-test.md)
