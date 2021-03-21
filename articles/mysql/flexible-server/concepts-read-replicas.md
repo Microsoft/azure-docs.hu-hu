@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251301"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Replikák olvasása Azure Database for MySQL – rugalmas kiszolgáló
@@ -112,7 +112,7 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 
 ## <a name="considerations-and-limitations"></a>Megfontolandó szempontok és korlátozások
 
-| Használati eset | Korlátozás/megfontolás |
+| Eset | Korlátozás/megfontolás |
 |:-|:-|
 | Replika a kiszolgálón a következő zónával: redundáns HA engedélyezve | Nem támogatott |
 | Régiók közötti olvasási replikáció | Nem támogatott |
@@ -126,7 +126,7 @@ Miután az alkalmazás sikeresen feldolgozta az olvasásokat és az írásokat, 
 | Kiszolgálóparaméterek | Az adatszinkronizálás biztosítása és az esetleges adatvesztés vagy -sérülés elkerülése érdekében bizonyos kiszolgálóparaméterek zárolva vannak, hogy ne lehessen őket módosítani olvasási replikák használata során. <br> A következő kiszolgálói paraméterek a forrás-és a replika-kiszolgálókon is zárolva vannak:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> A [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) paraméter zárolva van a replika-kiszolgálókon. <br> Ha frissíteni szeretné a fenti paraméterek egyikét a forráskiszolgálón, törölje a replika-kiszolgálókat, frissítse a paraméter értékét a forráson, majd hozza létre újra a replikákat. |
 | Egyéb | – Replika replikájának létrehozása nem támogatott. <br> A memóriában tárolt táblák miatt előfordulhat, hogy a replikák nem lesznek szinkronban. Ez a MySQL-replikációs technológia korlátozása. További információt a [MySQL dokumentációjában talál](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) . <br>– Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.<br>– A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) megtekintheti a MySQL-replikációra vonatkozó korlátozások teljes listáját |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](how-to-read-replicas-portal.md)
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI használatával](how-to-read-replicas-cli.md)

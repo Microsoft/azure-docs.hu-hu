@@ -11,10 +11,10 @@ ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
 ms.openlocfilehash: e7038a4e06a96ac2df1a7f0918877db9c97cb71d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102502535"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
@@ -33,7 +33,7 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 + Az adatelemzési ajánlott eljárások kihasználása
 + Gyors problémamegoldás
 
-### <a name="classification"></a>Besorolás
+### <a name="classification"></a>Osztályozás
 
 A besorolás egy gyakori gépi tanulási feladat. A besorolás olyan felügyelt tanulás típusa, amelyben a modellek bemutatják a betanítási információkat, és ezeket a tanulmányokat az új adatra alkalmazzák. Azure Machine Learning a featurizations kifejezetten ezekhez a feladatokhoz, például a Deep neurális hálózati szöveg featurizers a besoroláshoz. További információ a [featurization beállításairól](how-to-configure-auto-features.md#featurization). 
 
@@ -116,7 +116,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; feldolgozása| Leírás |
+|Méretezés &nbsp; & &nbsp; feldolgozása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |

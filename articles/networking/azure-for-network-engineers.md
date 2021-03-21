@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
 ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234205"
 ---
 # <a name="azure-for-network-engineers"></a>Azure hálózattervezőknek
@@ -79,7 +79,7 @@ A létrehozott útvonalak, az Azure alapértelmezett útvonalak és a helyszíni
 ### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
 A hálózati adapterre alkalmazott érvényes biztonsági szabályok a hálózati adapterhez társított NSG található szabályok összesítései, valamint a hálózati adaptert tartalmazó alhálózat. A virtuális gép hálózati adapterén alkalmazott NSG érvényes biztonsági szabályokat a portálon, a PowerShellen vagy a CLI-n keresztül navigálva tekintheti meg a hálózati ADAPTERen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók a [Virtual networkről][VNet].
 

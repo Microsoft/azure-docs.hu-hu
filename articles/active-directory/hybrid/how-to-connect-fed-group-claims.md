@@ -13,10 +13,10 @@ ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
 ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96349350"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Jogcímek konfigurálása az alkalmazásokhoz Azure Active Directory
@@ -64,7 +64,7 @@ Ha azonban egy meglévő alkalmazás jogcímek alapján kívánja felhasználni 
 
 ## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>A Active Directoryről szinkronizált csoportok attribútumainak használatának előfeltételei
 
-Ha a ObjectId formátumot használja, a csoporttagság-jogcímek bármely csoporthoz jogkivonatokban is kiállíthatók. Ha a csoport ObjectId eltérő formátumban szeretné használni a jogcímeket, a csoportokat szinkronizálni kell Active Directory a Azure AD Connect használatával.
+Ha az ObjectId formátumot használja, akkor a csoporttagság-jogcímek jogkivonatokban is kiadhatók bármely csoport esetében. Ha a csoport ObjectId eltérő formátumban szeretné használni a jogcímeket, a csoportokat szinkronizálni kell Active Directory a Azure AD Connect használatával.
 
 A Azure Active Directory konfigurálásának két lépése van Active Directory csoportoknak.
 
@@ -221,7 +221,7 @@ Az SAML-és OIDC-azonosító jogkivonatokban a netbiosDomain\samAccountName form
  }
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Engedélyezés hozzáadása csoportok & csoportok jogcímek használata ASP.NET Core webalkalmazáshoz (kód minta)](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/5-WebApp-AuthZ/5-2-Groups/README.md)
 - [Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)

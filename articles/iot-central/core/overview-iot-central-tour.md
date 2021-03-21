@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: corywink
 ms.openlocfilehash: 569a1365e73acbc2fdaf351f2e2cff21181241e1
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523468"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
@@ -158,7 +158,7 @@ Az eszközök sablonjai oldalon a Builder hozza létre és kezeli az alkalmazás
 * Telemetria, állapot és események mérése
 * Tulajdonságok
 * Parancsok
-* Nézetek
+* Megjelenítések
 
 A *megoldás-szerkesztő* létrehozhat űrlapokat és irányítópultokat is az eszközök kezelésére szolgáló operátorok számára.
 

@@ -8,10 +8,10 @@ ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
 ms.openlocfilehash: 92513a8c24b5106e3a59c8cfa4d743e900b957bf
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249771"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>A replikáció késésének elhárítása az Azure Database for MySQL-ben
@@ -95,7 +95,7 @@ A következő egy tipikus kimenet:
 
 A kimenet számos információt tartalmaz. Általában csak az alábbi táblázatban leírt sorokra kell összpontosítania.
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |---|---|
 |Slave_IO_State| Az i/o-szál aktuális állapotát jelöli. Az állapot általában "Várakozás a főkiszolgáló számára esemény küldésére", ha a forrás (főkiszolgáló) kiszolgáló szinkronizálást végez. Egy olyan állapot, mint a "Csatlakozás a főkiszolgálóhoz" érték azt jelzi, hogy a replika elvesztette a kapcsolatot a forráskiszolgálóról. Győződjön meg arról, hogy a forráskiszolgáló fut, vagy ellenőrizze, hogy a tűzfal blokkolja-e a kapcsolódást.|
 |Master_Log_File| Azt a bináris naplófájlt jelöli, amelyre a forráskiszolgáló írása történik.|
@@ -244,6 +244,6 @@ Hasznos lehet a binlog_group_commit_sync_delay paraméter beállítása 1000-re 
 
 A sok önálló tranzakciót tartalmazó, alacsony párhuzamosságú számítási feladatokhoz a binlog_group_commit_sync_delay-beállítás növelheti a késést. A késés megnövelhető, mert az IO-szál a tömeges bináris naplók frissítésére vár, még akkor is, ha csak néhány tranzakció véglegesítve van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a [MySQL BinLog-replikáció áttekintését](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).

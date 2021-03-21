@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: 33fa6420f52cae9c869cc75a04ea82de0ec48262
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100596294"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
@@ -66,7 +66,7 @@ A [pgAudit telepítése](#installing-pgaudit)után a paramétereket a naplózás
 
 > [!NOTE]
 > Ha a be értékre állítja, a `pgaudit.log_client` rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való írás helyett. Ezt a beállítást általában javasolt letiltva hagyni. <br> <br>
-> `pgaudit.log_level` csak akkor engedélyezett, ha `pgaudit.log_client` be van kapcsolva.
+> A `pgaudit.log_level` csak akkor engedélyezett, ha a `pgaudit.log_client` be van kapcsolva.
 
 > [!NOTE]
 > A Azure Database for PostgreSQLban `pgaudit.log` nem állítható be `-` (mínusz) az pgAudit dokumentációjában leírtak szerint. Az összes kötelező utasítási osztályt (olvasás, írás stb.) külön-külön kell megadni.

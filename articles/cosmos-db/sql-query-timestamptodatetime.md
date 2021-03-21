@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: af5e0eeb808835fd4f36a0eda79618f831248ad9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9a77ab0ac32d627d59e2cb0fa4a680f174a6833
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340770"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587236"
 ---
 # <a name="timestamptodatetime-azure-cosmos-db"></a>TimestampToDateTime (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ TimestampToDateTime (<Timestamp>)
 
 ## <a name="arguments"></a>Argumentumok
 
-*Timestamp*  
+*Időbélyeg*  
 
 Egy aláírt numerikus érték, a UNIX-kor óta eltelt ezredmásodpercek aktuális száma. Más szóval a 00:00:00 csütörtök, 1970. január 1. között eltelt ezredmásodpercek száma.
 
@@ -36,17 +36,17 @@ Egy aláírt numerikus érték, a UNIX-kor óta eltelt ezredmásodpercek aktuál
 
 Az UTC dátum és idő ISO 8601 sztring értékét adja vissza abban a formátumban, `YYYY-MM-DDThh:mm:ss.fffffffZ` ahol:
   
-  |Formátum|Description|
-  |-|-|
-  |ÉÉÉÉ|négyjegyű év|
-  |MM|kétjegyű hónap (01 = Január stb.)|
-  |DD|hónap kétjegyű napja (01 – 31)|
-  |T|az időelemek kezdetének jelölője|
-  |óó|kétjegyű óra (00 – 23)|
-  |hh|kétjegyű perc (00 – 59)|
-  |mm|kétszámjegyű másodperc (00 – 59)|
-  |.fffffff|hét számjegyű tört másodperc|
-  |Z|UTC (egyezményes világidő) jelölő||
+|Formátum|Leírás|
+|-|-|
+|ÉÉÉÉ|négyjegyű év|
+|MM|kétjegyű hónap (01 = Január stb.)|
+|DD|hónap kétjegyű napja (01 – 31)|
+|T|az időelemek kezdetének jelölője|
+|óó|kétjegyű óra (00 – 23)|
+|hh|kétjegyű perc (00 – 59)|
+|mm|kétszámjegyű másodperc (00 – 59)|
+|.fffffff|hét számjegyű tört másodperc|
+|Z|UTC (egyezményes világidő) jelölő|
   
   Az ISO 8601 formátumával kapcsolatos további információkért lásd: [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
@@ -70,7 +70,7 @@ SELECT TimestampToDateTime(1594227912345) AS DateTime
 ]
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)

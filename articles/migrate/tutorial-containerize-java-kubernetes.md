@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
 ms.openlocfilehash: ecc31019ccedc21683eed1a3186cec91d4c5c567
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103466592"
 ---
 # <a name="containerize-java-web-applications-and-migrate-to-azure-kubernetes-service"></a>Java-webalkalmazások tárolóba helyezése és migrálása az Azure Kubernetes Service-be
@@ -95,7 +95,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
       ![A felhasználói beállításokban ellenőrizze, hogy a felhasználók regisztrálhatnak-e Active Directory alkalmazásokat.](./media/tutorial-discover-vmware/register-apps.png)
 
-10.  Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy olyan fiókhoz, amely lehetővé teszi Azure Active Directory alkalmazás regisztrálását. [További információk](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
+10.  Ha a "Alkalmazásregisztrációk" beállítások "nem" értékre van állítva, kérje meg a bérlőt/globális rendszergazdát, hogy rendelje hozzá a szükséges engedélyeket. Másik lehetőségként a bérlő/globális rendszergazda hozzárendelheti az **alkalmazás fejlesztői** szerepkörét egy olyan fiókhoz, amely lehetővé teszi Azure Active Directory alkalmazás regisztrálását. [További információ](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="download-and-install-azure-migrate-app-containerization-tool"></a>Azure Migrate letöltése és telepítése: app tárolókra bontás Tool
 

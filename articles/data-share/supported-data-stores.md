@@ -7,10 +7,10 @@ ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
 ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97963679"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
@@ -31,7 +31,7 @@ Az alábbi táblázat azokat az adattárakat ismerteti, amelyeket az Azure-beli 
 | Azure SQL Database |✓ | | |
 | Azure Synapse Analytics (korábban Azure SQL Data Warehouse) |✓ | | |
 | Azure szinapszis Analytics (munkaterület) dedikált SQL-készlet |✓ | | |
-| Azure Data Explorer | | |✓ |
+| Azure Adatkezelő | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Adattár támogatási mátrixa
 
@@ -78,6 +78,6 @@ Megosztási kapcsolat létrehozásakor az Azure-beli adatmegosztás szimbolikus 
 
 További információ: [adatok megosztása és fogadása az Azure Adatkezelőból](/azure/data-explorer/data-share). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

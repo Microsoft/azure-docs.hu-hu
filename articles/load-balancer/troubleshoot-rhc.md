@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
 ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97955620"
 ---
 # <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Erőforrás-állapot és a bejövő rendelkezésre állással kapcsolatos problémák elhárítása 
@@ -26,7 +26,7 @@ A terheléselosztó állapotának meghatározásához a Load Balancer Resource H
 
 Az alábbi táblázat ismerteti a terheléselosztó állapotának megállapításához használt RHC logikát.
 
-| Erőforrás állapotának állapota | Leírás |
+| Erőforrás állapotának állapota | Description |
 | --- | --- |
 | Elérhető | A standard Load Balancer erőforrása kifogástalan és elérhető. |
 | Csökkentett teljesítményű | A standard Load Balancer platform vagy felhasználó által kezdeményezett események hatással vannak a teljesítményre. Az adatelérési út rendelkezésre állására vonatkozó metrika 90%-osnál rosszabb, de 25%-osnál jobb állapotot jelentett legalább két percig. A teljesítmény mérsékelten befolyásolhatja a teljesítményt. 
@@ -69,7 +69,7 @@ Tegyük fel, hogy ellenőrizzük az állapot mintavételi állapotát, és megtu
 
 Ha már elvégezte ezt az ellenőrzőlistát, és még mindig észlelte az állapot-mintavételi hibákat, előfordulhat, hogy ritka platform-problémák léptek fel a mintavételi szolgáltatásban a példányok esetében. Ebben az esetben az Azure visszatért, és automatikusan riasztást küld a csapatnak, hogy gyorsan megoldja az összes platformmal kapcsolatos problémát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Azure Load Balancer Health mintavételről](load-balancer-custom-probe-overview.md)
 * [További információ a Azure Load Balancer mérőszámokról](load-balancer-standard-diagnostics.md)

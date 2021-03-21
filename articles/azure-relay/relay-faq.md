@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Relay szolgáltatással kapcsolatos gyakori kérd
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250051"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
@@ -121,7 +121,7 @@ A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon
 ### <a name="is-it-possible-to-allow-only-some-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezése?
 Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy olyan bejegyzést a `*.servicebus.windows.net` tűzfalakhoz, amely támogatja a DNS-jóváhagyások listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

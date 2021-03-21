@@ -15,10 +15,10 @@ ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7d416810f6a39fb36bfa3c5225301fe87fdd128c
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103013465"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Arcok kivonása a Azure Media Analytics
@@ -46,7 +46,7 @@ Ez automatikusan létrehoz egy kivont MP4-t manuális bevitel nélkül.
 
 | Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
-| Bemeneti eszköz |foo. bar |Videó WMV, MOV vagy MP4 formátumban |
+| Bemeneti eszköz |foo.bar |Videó WMV, MOV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "combined"}} |
 | Kimeneti eszköz |foo_redacted.mp4 |Videó az elmosódás alkalmazásával |
 
@@ -56,7 +56,7 @@ A kétlépéses munkafolyamat **elemzése** átveszi a videó bemenetét, és az
 
 | Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
-| Bemeneti eszköz |foo. bar |Videó WMV, MPV vagy MP4 formátumban |
+| Bemeneti eszköz |foo.bar |Videó WMV, MPV vagy MP4 formátumban |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "elemzés"}} |
 | Kimeneti eszköz |foo_annotations.jsbekapcsolva |Az arc helyeinek megjegyzései JSON formátumban. Ezt a felhasználó módosíthatja az elmosódást határoló mezők módosításához. Lásd az alábbi mintát. |
 | Kimeneti eszköz |foo_thumb% 06d.jpg [foo_thumb000001.jpg, foo_thumb000002.jpg] |Az egyes észlelt arcoknál az összes megjelenített jpg, ahol a szám az arc labelId jelöli. |
@@ -122,7 +122,7 @@ Az elemzés menetének kimenete nem tartalmazza az eredeti videót. A videót fe
 
 | Fázis | Fájlnév | Jegyzetek |
 | --- | --- | --- |
-| Bemeneti eszköz |foo. bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
+| Bemeneti eszköz |foo.bar |Videó WMV-, MPV-vagy MP4-formátumban. Ugyanaz a videó, mint az 1. lépésben. |
 | Bemeneti eszköz |foo_annotations.jsbekapcsolva |Megjegyzések metaadatainak fájlja az első fázisból, választható módosításokkal. |
 | Bemeneti eszköz |foo_IDList.txt (nem kötelező) |A kibontani kívánt arc-azonosítók új, sorba tagolt listája. Ha üresen hagyja, az elmossa az összes arcot. |
 | Bemeneti konfiguráció |Feladatokhoz beállított konfiguráció |{"version": "1.0", "Options": {"Mode": "kivonás"}} |
