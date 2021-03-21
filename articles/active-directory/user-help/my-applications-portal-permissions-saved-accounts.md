@@ -13,10 +13,10 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: cb162231c8cf2bf733c992de0c4aa56bf1fd1be2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92791086"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások portálján

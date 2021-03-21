@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
 ms.openlocfilehash: 9c3fa0d8ac4540495e8580fd208507a2c1aaa7ce
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102180687"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Databasera a DMS használatával
@@ -146,7 +146,7 @@ A **Adventureworks2016** -séma egyetlen adatbázisba vagy készletezett adatbá
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
-1. Jelentkezzen be az Azure portálra. Keresse meg és válassza ki az **előfizetéseket**.
+1. Jelentkezzen be az Azure Portalra. Keresse meg és válassza ki az **előfizetéseket**.
 
    ![Portál-előfizetések megtekintése](media/tutorial-sql-server-to-azure-sql/portal-select-subscription-1.png)
 

@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
 ms.openlocfilehash: 800592b7a8b263fea2883fdd3e030f78f72647dd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459919"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Alkalmi elemzési lekérdezések futtatása több adatbázison keresztül (Azure SQL Database)
@@ -142,7 +142,7 @@ A végrehajtási terv vizsgálatakor vigye a kurzort a terv ikonjaira a részlet
    ![lekérdezés](./media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

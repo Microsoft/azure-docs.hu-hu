@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017440"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
@@ -78,7 +78,7 @@ A konfigurációs kiszolgáló telepítési fájljának legújabb verziója a Si
 8. A **Környezet részletei** területen válassza ki, hogy kívánja-e replikálni a VMware virtuális gépeket. Ha Ön, a telepítő ellenőrzi, hogy a PowerCLI 6,0 telepítve van-e.
 9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
 
-    ![Telepítés helye](./media/physical-manage-configuration-server/combined-wiz8.png)
+    ![Telepítési hely](./media/physical-manage-configuration-server/combined-wiz8.png)
 10. A **hálózat kiválasztása** területen válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken, majd válassza ki azt a hálózati adaptert, amelyet az Azure-hoz való kapcsolódáshoz használ a konfigurációs kiszolgáló. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. Ne használja a 443-es portot a replikációs forgalom küldésére és fogadására.
 
     ![Hálózat kiválasztása](./media/physical-manage-configuration-server/combined-wiz9.png)
@@ -108,7 +108,7 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Leírás| Értékek|
+|Paraméter neve| Típus | Description| Értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
@@ -313,6 +313,6 @@ A konfigurációs kiszolgálóknak a 2016. május előtt történő központi te
 ## <a name="common-issues"></a>Gyakori problémák
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át az oktatóanyagokat a [fizikai kiszolgálók](./physical-azure-disaster-recovery.md) Azure-ba való vész-helyreállításának beállításához.

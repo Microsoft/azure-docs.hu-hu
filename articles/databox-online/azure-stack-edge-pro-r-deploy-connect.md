@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro R so I can use it to transfer data to Azure.
 ms.openlocfilehash: ce97c22cf4bfbe5cca01183574597706a8c239e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468288"
 ---
 # <a name="tutorial-connect-to-azure-stack-edge-pro-r"></a>Oktatóanyag: Kapcsolódás Azure Stack Edge Pro R-hez
 
 Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a Azure Stack Edge Pro R-eszközhöz a helyi webes KEZELŐFELÜLET használatával.
 
-A kapcsolódási folyamat körülbelül 5 percet vesz igénybe.
+A csatlakozási folyamat körülbelül 5 percig tart.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -39,9 +39,9 @@ Az Azure Stack Edge Pro R-eszköz konfigurálása és beállítása előtt győz
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Kapcsolódás a helyi webes felhasználói felület telepítéséhez
 
-1. Konfigurálja az Ethernet-adaptert a számítógépén az Azure Stack Edge Pro R-eszközhöz való csatlakozáshoz a 192.168.100.5 és az alhálózat 255.255.255.0 statikus IP-címével.
+1. Állítsa be a számítógépén az Ethernet-adaptert az Azure Stack Edge Pro R-eszközhöz való csatlakozásra a 192.168.100.5 statikus IP-címmel és a 255.255.255.0 alhálózattal.
 
-2. A számítógép csatlakoztatása az 1. PORThoz az eszközön. Ha a számítógépet közvetlenül csatlakoztatja az eszközhöz (kapcsoló nélkül), használjon egy fordított kábelt vagy egy USB Ethernet-adaptert. Az alábbi ábra segítségével azonosíthatja az eszközön az 1. PORTOT.
+2. Csatlakoztassa a számítógépet az eszközön a PORT 1-hez. Ha a számítógépet közvetlenül (kapcsoló nélkül) csatlakoztatja az eszközhöz, használjon fordított bekötésű kábelt vagy USB Ethernet-adaptert. A következő ábra alapján azonosíthatja eszközén a PORT 1-et.
 
     ![Egy bekábelezett eszköz hátlapja](./media/azure-stack-edge-pro-r-deploy-install/backplane-cabled.png)
 
@@ -62,12 +62,12 @@ Az Azure Stack Edge Pro R-eszköz konfigurálása és beállítása előtt győz
     ![Azure Stack Edge-eszköz bejelentkezési lapja](media/azure-stack-edge-pro-r-deploy-connect/connect-web-ui-3.png)
 
 6. A parancssorban módosítsa az eszköz rendszergazdai jelszavát.  
-    Az új jelszónak 8 és 16 karakter közöttinek kell lennie. A következő karakterek közül hármat tartalmaznia kell: nagybetűk, kisbetűk, számok és speciális karakterek.
+    Az új jelszó 8–16 karakterből állhat. A következő karakterek közül háromfélét tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek.
 
 Most már **megtekintheti** az eszköz áttekintés lapját. A következő lépés az eszköz hálózati beállításainak konfigurálása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

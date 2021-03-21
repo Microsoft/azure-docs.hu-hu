@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
 ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459672"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>A közös biztonsági követelmények kezelése a Azure SQL Database és az Azure SQL felügyelt példányával
@@ -283,7 +283,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 **Megvalósítás**:
 
-- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Példák:
+- Azonosítsa a feladatok elkülönítésének szükséges szintjét. Angol nyelvű Példák:
   - Fejlesztési, tesztelési és éles környezetek között
   - Biztonság – a bizalmas feladatok és az adatbázis-adminisztrátor (DBA) felügyeleti szintű feladatai és fejlesztői feladatok.
     - Példák: auditor, biztonsági szabályzat létrehozása szerepköralapú biztonsághoz (RLS), SQL Database objektumok implementálása DDL-engedélyekkel.
@@ -800,6 +800,6 @@ A legtöbb biztonsági szabvány a működés folytonossága szempontjából az 
     - [Magas rendelkezésre állás – zóna redundáns konfigurációja általános célú szolgáltatási réteghez](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
     - [Az üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [a Azure SQL Database biztonsági funkcióinak áttekintését](security-overview.md)

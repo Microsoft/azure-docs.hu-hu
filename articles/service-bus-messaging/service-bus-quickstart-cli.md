@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 14892b114f3bb8a0bb6c07f7cdd01a174b931cf9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95810626"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Service Bus névtér és üzenetsor létrehozása az Azure CLI használatával
@@ -23,7 +23,7 @@ Ha nem rendelkezik Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat eg
 Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a Azure Portalba való bejelentkezés után indíthat el. A Azure Cloud Shellről további részleteket a [Azure Cloud Shell áttekintése](../cloud-shell/overview.md)című témakörben talál. A Azure PowerShell a gépen is [telepítheti](/cli/azure/install-azure-cli) és használhatja. 
 
 ## <a name="provision-resources"></a>Erőforrások kiosztása
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Indítsa el Azure Cloud Shell az alábbi képen látható ikon kiválasztásával. Váltson **bash** módra, ha a Cloud Shell **PowerShell** módban van. 
 
     :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell elindítása":::
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban Azure Cloud Shelleket fog használni, amelyeket a A
     Jegyezze fel a kapcsolatok sztringjét és a várólista nevét. Ezek az üzenetek küldésére és fogadására használhatók. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy Service Bus névteret és egy várólistát hozott létre a névtérben. Ha meg szeretné tudni, hogyan küldhet/fogadhat üzeneteket a várólistára, tekintse meg az alábbi rövid útmutatók egyikét a **küldési és fogadási üzenetek** szakaszban. 
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)

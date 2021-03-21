@@ -7,10 +7,10 @@ ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 077ebdb4dd33249923064a4f5ed20c5641a82e26
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695898"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-erőforrások kezelése az Azure CLI használatával
@@ -139,7 +139,7 @@ A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot 
 
 Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével kezelheti az Azure-beli erőforrásokhoz való hozzáférést. További információ: [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../templates/template-syntax.md)című témakört.

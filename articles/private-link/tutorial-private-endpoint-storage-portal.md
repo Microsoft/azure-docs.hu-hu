@@ -8,10 +8,10 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
 ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96484821"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Oktatóanyag: Kapcsolódás egy Storage-fiókhoz egy Azure Private-végpont használatával
@@ -53,7 +53,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | Válassza ki az **USA keleti** régióját |
+    | Region           | Válassza ki az **USA keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -72,7 +72,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -87,7 +87,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -105,9 +105,9 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | Válassza ki az **USA keleti** régióját |
+    | Region | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
-    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
+    | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
     | Méret | A virtuális gép méretének kiválasztása vagy az alapértelmezett beállítás megadása |
     | **Rendszergazdai fiók** |  |
@@ -150,7 +150,7 @@ Ebben a szakaszban létrehoz egy Storage-fiókot, és konfigurálja a magánhál
     | Hely | Válassza ki az **USA keleti** régióját |
     | Teljesítmény | Hagyja meg az alapértelmezett **standardot** |
     | Fiók altípusa | Hagyja meg az alapértelmezett **tárolót (általános célú v2)** |
-    | Replikáció| Hagyja meg az alapértelmezett **olvasási hozzáférésű geo-redundáns tárterületet (ra-GRS)** |
+    | Replikálás| Hagyja meg az alapértelmezett **olvasási hozzáférésű geo-redundáns tárterületet (ra-GRS)** |
    
 3. Válassza a **hálózatkezelés** fület, vagy kattintson a **Tovább: hálózatkezelés** gombra.
 
@@ -165,7 +165,7 @@ Ebben a szakaszban létrehoz egy Storage-fiókot, és konfigurálja a magánhál
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **MyResourceGroup** kiválasztása |
     | Hely | Válassza ki az **USA keleti** régióját |
-    | Név | **MyPrivateEndpoint** megadása |
+    | Name | **MyPrivateEndpoint** megadása |
     | Tárolási alerőforrás | Hagyja meg az alapértelmezett **blobot** |
     | **Hálózat** |  |
     | Virtuális hálózat | **MyVNet** kiválasztása |

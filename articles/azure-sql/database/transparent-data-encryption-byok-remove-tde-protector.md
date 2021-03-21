@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
 ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96461867"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Transzparens adattitkosítás (TDE)-védő eltávolítása a PowerShell használatával
@@ -189,7 +189,7 @@ A parancsokra vonatkozó hivatkozásokat az [Azure CLI](/cli/azure/keyvault/key)
 
 [!INCLUDE [sql-database-akv-permission-delay](../includes/sql-database-akv-permission-delay.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelmények teljesítése érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md)
 - Ismerkedés a Bring Your Own Key támogatásával a TDE-hez: a [TDE bekapcsolása a saját kulcsával Key Vault a PowerShell használatával](transparent-data-encryption-byok-configure.md)

@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462519"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Gyakori hibakódok a Azure Key Vault
@@ -34,7 +34,7 @@ Az alábbi táblázatban felsorolt hibakódokat egy Azure Key Vault-művelet is 
 | CertificateExpired |  A tanúsítvány lejárati dátumának és érvényességi idejének megadásához. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd: [Azure Key Vault fejlesztői útmutató](developers-guide.md)
 - További információ a [Key Vault hitelesítéséről](authentication.md)

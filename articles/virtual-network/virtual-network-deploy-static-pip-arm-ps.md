@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
 ms.openlocfilehash: 047a6db82e65c97deba5270d181f72315a67e82c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791256"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
@@ -74,7 +74,7 @@ Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.re
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure [-beli nyilvános IP-címekről](./public-ip-addresses.md#public-ip-addresses)
 - További információ az összes [nyilvános IP-cím beállításairól](virtual-network-public-ip-address.md#create-a-public-ip-address)

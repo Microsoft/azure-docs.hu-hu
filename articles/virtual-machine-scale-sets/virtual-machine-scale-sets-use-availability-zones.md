@@ -10,10 +10,10 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016658"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
@@ -52,7 +52,7 @@ Lehetséges, hogy a méretezési csoportba tartozó virtuális gépek létrehoz�
 
 A méretezési csoport a legjobb megoldás, ha az egyensúly fenntartása mellett megkísérli a skálázást és a méretezést. Ha azonban valamilyen okból ez nem lehetséges (például ha az egyik zóna leáll, a méretezési csoport nem tud új virtuális gépet létrehozni az adott zónában), a méretezési csoport lehetővé teszi, hogy az ideiglenes egyensúlyhiány sikeresen be-vagy kiskálázásra kerüljön. A további kibővített kísérletek esetén a méretezési csoport olyan virtuális gépeket hoz létre a zónákhoz, amelyeknek több virtuális gépre van szükségük a méretezési csoport kiegyensúlyozásához. Hasonlóképpen, a próbálkozások későbbi skálázásakor a méretezési csoport eltávolítja a virtuális gépeket olyan zónákból, amelyeknek kevesebb virtuális gépre van szükségük a méretezési csoport kiegyensúlyozásához. A "szigorú zónák egyenlege" esetén a méretezési csoport nem tesz elérhetővé vagy kicsinyíti a méretezési kísérleteket, ha ezzel kiegyensúlyozatlanságot okozna.
 
-A legjobb erőfeszítést használó zónák egyenlegének használatához állítsa *zoneBalance* a zoneBalance *hamis* értékre. Ez a beállítás az API *2017-12-01*-es verziójának alapértelmezett értéke. A zónák szigorú elosztásához állítsa a *zoneBalance* *igaz* értékre.
+A legjobb erőfeszítést használó zónák egyenlegének használatához állítsa  a zoneBalance *hamis* értékre. Ez a beállítás az API *2017-12-01*-es verziójának alapértelmezett értéke. A zónák szigorú elosztásához állítsa a *zoneBalance* *igaz* értékre.
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Egyetlen zónából és zónából – redundáns méretezési csoportok
 
@@ -217,6 +217,6 @@ Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *
 
 A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példája: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozta a méretezési csoportot egy rendelkezésre állási zónában, megtudhatja, hogyan [telepíthet alkalmazásokat virtuálisgép-méretezési](tutorial-install-apps-cli.md) csoportokon, illetve hogyan [használhatja az autoscalet a virtuálisgép-méretezési csoportokkal](tutorial-autoscale-cli.md).

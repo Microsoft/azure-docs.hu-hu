@@ -12,10 +12,10 @@ ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 3204c77dd076d9aac6eb5a60b489280caefcbf4b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460458"
 ---
 # <a name="user-defined-schemas-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Felhasználó által definiált sémák dedikált SQL-készletekhez az Azure szinapszis Analyticsben
@@ -54,7 +54,7 @@ Ha a sémák már használatban vannak, akkor néhány lehetőség közül vála
 > 
 > 
 
-### <a name="examples"></a>Példák:
+### <a name="examples"></a>Angol nyelvű Példák:
 Felhasználó által definiált sémák implementálása az adatbázis neve alapján:
 
 ```sql
@@ -123,6 +123,6 @@ FROM    [edw].customer
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További fejlesztési tippek: a [fejlesztés áttekintése](sql-data-warehouse-overview-develop.md).
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017134"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Feladatátvétel egy StorSimple 8000 sorozatú fizikai eszközre
@@ -82,7 +82,7 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
        ![Cél mennyiségi tárolók megtekintése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A feladatátvétel elvégzése után szükség lehet [a StorSimple-eszköz inaktiválására vagy törlésére](storsimple-8000-deactivate-and-delete-device.md).
 * További információ a StorSimple Eszközkezelő szolgáltatás használatáról: [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96485360"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése a különálló Service Fabric-fürtön
@@ -56,7 +56,7 @@ Az alkalmazás letöltése után telepítheti azt a fürtön, közvetlenül a Vi
 
     ![A fürttől érkező API-válasz](./media/service-fabric-tutorial-standalone-cluster/deployed-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan helyezhet üzembe egy alkalmazást a fürtön:
 

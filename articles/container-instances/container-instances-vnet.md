@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028879"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tárolópéldányok üzembe helyezése egy Azure virtuális hálózaton
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Példa:
+A kimenet a saját alhálózat tároló csoportjának IP-címét jeleníti meg. Például:
 
 ```console
 10.0.0.4
@@ -222,7 +222,7 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 )használatával című témakört.

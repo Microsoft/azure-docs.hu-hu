@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3a669f7400eb2daf2d71f6caed41560020699c58
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98791121"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
@@ -379,7 +379,7 @@ Legalább két tanúsítványt kell használni a fürt biztonságossá tételéh
 
 * Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)

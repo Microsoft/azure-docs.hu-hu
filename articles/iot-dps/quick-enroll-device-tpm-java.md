@@ -10,10 +10,10 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 0a1f4ed46ab9e467a19cfa722a2d345284fdc94a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96463049"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása IoT Hub Device Provisioning Service a Java Service SDK-val
@@ -152,7 +152,7 @@ Ha azt tervezi, hogy feltárja a Java-szolgáltatás mintáját, ne törölje az
 1. Zárja be a TPM-szimulátor ablakát, amely a TPM-eszköz szimulálásához jött létre.
 1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése** lehetőséget, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy szimulált TPM-eszközt regisztrált az eszköz kiépítési szolgáltatásához. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával. 
 
 > [!div class="nextstepaction"]

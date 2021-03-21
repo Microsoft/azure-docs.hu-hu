@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: alkohli
 ms.openlocfilehash: 6f01d62d1d11f5ff90661482ffd2db112657eee5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466878"
 ---
 # <a name="azure-stack-edge-mini-r-limits"></a>Azure Stack Edge mini R-korlátok
@@ -53,6 +53,6 @@ Az alábbi táblázat az Azure Stack Edge mini R-eszköz korlátozásait ismerte
 
 [!INCLUDE [azure-stack-edge-gateway-storage-object-limits](../../includes/azure-stack-edge-gateway-storage-object-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés az Azure Stack Edge üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)

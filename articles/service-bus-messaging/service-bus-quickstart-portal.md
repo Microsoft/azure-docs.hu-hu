@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 08/12/2020
 ms.author: spelluru
 ms.openlocfilehash: 79dd751c43443790aafc494d89ad45e3b6705a64
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95799230"
 ---
 # <a name="use-azure-portal-to-create-a-service-bus-namespace-and-a-queue"></a>Service Bus névtér és üzenetsor létrehozása Azure Portal használatával
@@ -25,7 +25,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik Az
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben egy Service Bus névteret és egy várólistát hozott létre a névtérben. Ha meg szeretné tudni, hogyan küldhet/fogadhat üzeneteket a várólistára, tekintse meg az alábbi rövid útmutatók egyikét a **küldési és fogadási üzenetek** szakaszban. 
 
 - [.NET](service-bus-dotnet-get-started-with-queues.md)

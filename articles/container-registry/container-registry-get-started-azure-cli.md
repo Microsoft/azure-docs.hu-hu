@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
 ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96020075"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Rövid útmutató: saját tároló-beállításjegyzék létrehozása az Azure CLI használatával
@@ -21,7 +21,7 @@ A Dockert is telepítenie kell helyileg. A Docker csomagokat biztosít, amelyekk
 
 Mivel az Azure Cloud Shell nem tartalmazza az összes szükséges Docker-összetevőt (a `dockerd`-démont), ehhez a rövid útmutatóhoz nem használható a Cloud Shell.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -125,7 +125,7 @@ Ha már nincs rá szükség, az az [Group delete][az-group-delete] paranccsal el
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registry az Azure CLI-vel, leküldte egy tároló rendszerképét a beállításjegyzékbe, és lehúzta és futtatta a rendszerképet a beállításjegyzékből. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

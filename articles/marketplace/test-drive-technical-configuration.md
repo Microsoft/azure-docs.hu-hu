@@ -8,10 +8,10 @@ ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
 ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462897"
 ---
 # <a name="test-drive-technical-configuration"></a>Tesztverzió műszaki konfigurálása
@@ -99,7 +99,7 @@ Az üzemeltetett tesztelési meghajtó listázásával és konfigurálásával k
 
 ## <a name="additional-resources"></a>További források
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tesztelési meghajtó – ajánlott eljárások](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Áttekintés](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása)

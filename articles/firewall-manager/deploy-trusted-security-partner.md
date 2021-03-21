@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: victorh
 ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96485722"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Biztonságipartner-szolgáltató üzembe helyezése
@@ -113,6 +113,6 @@ Ezt követően ellenőrizheti, hogy a VNet virtuális gépek vagy a fiókirodák
 
 Az útvonal-beállítás lépéseinek befejezése után a VNet virtuális gépek és a fiókirodák a 0/0-as vagy harmadik féltől származó szolgáltatási útvonalra kerülnek. Ezeket a virtuális gépeket nem lehet RDP-vagy SSH-kapcsolat. A bejelentkezéshez az [Azure Bastion](../bastion/bastion-overview.md) szolgáltatást egy társ VNet helyezheti üzembe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)

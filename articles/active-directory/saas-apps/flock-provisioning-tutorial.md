@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 01c3f6429d2a5c8443ac128d763033dc8c53cbc7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359408"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Oktatóanyag: Flock konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
@@ -150,7 +150,7 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 
 
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

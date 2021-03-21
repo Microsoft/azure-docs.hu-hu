@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: 950744e0b8b2f722d801c911d6fd2c9112f035ec
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Oktatóanyag: Azure Active Directory a Cloud felügyeleti portál integrációja Microsoft Azure
@@ -67,7 +67,7 @@ Ahhoz, hogy az Azure AD-ben Microsoft Azure a Cloud felügyeleti portál integr�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Cloud felügyeleti portál for Microsoft Azure a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a Cloud felügyeleti portál for Microsoft Azure a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Felhőbeli felügyeleti portál kapcsolódó felhasználó közötti kapcsolatra van szükség a Microsoft Azure létrehozásához.
 
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Cloud felügyeleti portál for Microsoft Azure esetében a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezést a felhőalapú felügyeleti portál a Microsoft Azure használatára szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **felhőalapú felügyeleti portál Microsoft Azure** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **felhőalapú felügyeleti portál Microsoft Azure** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -148,7 +148,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **felhőbeli felügyele
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatát engedélyező Britta, ha Microsoft Azurehoz hozzáférést biztosít a Cloud felügyeleti portálhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza **a Felhőbeli felügyeleti portál a Microsoft Azure**.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza **a Felhőbeli felügyeleti portál a Microsoft Azure**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -181,7 +181,7 @@ Ebben a szakaszban az Azure egyszeri bejelentkezés használatát engedélyező 
 
     ![Az alkalmazások listájában Microsoft Azure hivatkozáshoz tartozó Felhőbeli felügyeleti portál](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

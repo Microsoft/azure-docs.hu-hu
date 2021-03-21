@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017202"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
@@ -57,7 +57,7 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
 
    1. A **kapcsolattartási beállítások** területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
-   3. Kattintson a **Létrehozás** gombra.
+   3. Kattintson a **Létrehozás** lehetőségre.
    
        ![Forduljon az MS ügyfélszolgálatához az új portálon keresztül 4](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -106,6 +106,6 @@ A támogatási munkamenet elindításához hajtsa végre a következő lépések
 > A támogatás hozzáférését letilthatja a futtatásával `Disable-HcsSupportAccess` . A StorSimple-eszköz a munkamenet elindítása után 8 órával is megkísérli letiltani a támogatás elérését. Az ajánlott eljárás a StorSimple-eszköz hitelesítő adatainak módosítása a támogatási munkamenet elindítása után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a StorSimple 8000 Series eszközével kapcsolatos problémákat](storsimple-8000-troubleshoot-deployment.md)

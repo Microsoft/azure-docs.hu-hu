@@ -8,10 +8,10 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96017627"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
@@ -96,6 +96,6 @@ Ha egy Azure-fájlmegosztás más módon, például a DataBox-n keresztül, a Az
 > [!WARNING]
 > **Kövesse a fájlok előkészítésének folyamatát egy átmeneti megosztásban, nem pedig a végső**, Azure file Sync csatlakoztatott megosztást. Ha nem, a fájlok ütközései megjelenhetnek (a fájlok is tárolódnak), valamint az élő kiszolgálón törölt fájlok is visszatérhetnek, ha még léteznek a régebbi, kihelyezett fájlok készletében. Emellett a mappák módosításai egyesítve lesznek egymással, így a hiba miatt nagyon nehéz elkülöníteni a névteret.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

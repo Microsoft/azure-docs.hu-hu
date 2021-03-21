@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 11/05/2020
 ms.openlocfilehash: 4f243ca5be0878cde3b28f5b7a7c3eea0cf9b8d0
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94631567"
 ---
 # <a name="how-to-resell-your-offer-through-csp"></a>Az ajánlat viszonteladása a CSP-n keresztül
@@ -22,13 +22,13 @@ Az **viszonteladás a CSP** -n oldalon (válassza ki a partner Center bal oldali
 
 Válassza ki, hogy mely partnereknek kell tudni eladni az ajánlatot:
 
-- Bármely partner a CSP programban
+- A Felhőszolgáltató programban részt vevő bármely partner
 - A CSP programban kiválasztott partnerek
-- Nincsenek partnerek a CSP programban
+- Egyetlen partner sem a Felhőszolgáltató programban
 
-A bal oldali navigációs menü következő lapjának folytatásához válassza a **Piszkozat mentése** lehetőséget, majd a **Test Drive (tesztelés** ) parancsot.
+A bal oldali navigációs menü következő lapjának folytatásához válassza a **Piszkozat mentése** lehetőséget, majd a **Test Drive (tesztelés**) parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tesztelési meghajtó konfigurálása](azure-resource-manager-test-drive.md)
 - A tesztelési meghajtó beállítása után (nem kötelező) [tekintse át és tegye közzé ajánlatát](review-publish-offer.md)

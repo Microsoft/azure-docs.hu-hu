@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
 ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324227"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Prémium szintű Azure Data Lake Storage
@@ -71,15 +71,15 @@ A következő képen a **Storage-fiók létrehozása** lapon látható ez a beá
 > [!div class="mx-imgBorder"]
 > ![Hierarchikus névtér beállítása](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A Azure Data Lake Storage prémium szintje a következő régiókban érhető el.
 
-|Régió|Redundancia|
+|Region|Redundancia|
 |--|--|
 |USA keleti régiója|LRS, ZRS|
 |USA 2. keleti régiója|LRS, ZRS|
-|USA középső régiója|LRS|
+|Az USA középső régiója|LRS|
 |USA nyugati régiója|LRS|
 |USA 2. nyugati régiója|LRS, ZRS|
 |USA nyugati középső régiója|LRS|

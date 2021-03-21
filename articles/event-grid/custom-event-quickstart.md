@@ -5,10 +5,10 @@ ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0a3d8f5a1614704cea4242ce64ecc6c4504da754
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97702021"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz az Azure CLI-vel és a Event Grid
@@ -27,7 +27,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 - Ehhez a cikkhez az Azure CLI 2.0.70 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -139,7 +139,7 @@ Ha tovább kívánja használni az eseményt vagy az eseménynapló alkalmazást
 az group delete --name gridResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett vele, hogyan hozhat létre témaköröket és eseményfeliratkozásokat, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

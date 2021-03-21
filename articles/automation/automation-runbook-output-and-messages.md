@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93324420"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Runbook-kimenet és üzenet-adatfolyamok konfigurálása
@@ -18,7 +18,7 @@ A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik
 
 Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](./manage-runbooks.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál.
 
-| Adatfolyam | Leírás | Közzétett | Tesztelés |
+| Stream | Description | Közzétett | Tesztelés |
 |:--- |:--- |:--- |:--- |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételtől eltérően a runbook alapértelmezés szerint egy hibaüzenet után is folytatódik. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
@@ -119,7 +119,7 @@ Habár ez a runbook egyszerű, itt egy konfigurációs elem is meghívja Önt. A
 
 A példában a **test-ChildOutputType** nevű második runbook egyszerűen két tevékenységet határoz meg.<br> ![Példa gyermek kimeneti típus Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-Az első tevékenység meghívja a **AuthenticateTo-Azure-** runbook. A második tevékenység a `Write-Verbose` parancsmagot a **tevékenység kimenete** értékre beállított **adatforrással** futtatja. Emellett a **mező elérési útja** a **Context. Subscription. SubscriptionName** , a **AuthenticateTo-Azure** runbook környezeti kimenete.<br> ![Write-verbose parancsmag paraméterének adatforrása](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+Az első tevékenység meghívja a **AuthenticateTo-Azure-** runbook. A második tevékenység a `Write-Verbose` parancsmagot a **tevékenység kimenete** értékre beállított **adatforrással** futtatja. Emellett a **mező elérési útja** a **Context. Subscription. SubscriptionName**, a **AuthenticateTo-Azure** runbook környezeti kimenete.<br> ![Write-verbose parancsmag paraméterének adatforrása](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 Az eredményül kapott kimenet az előfizetés neve.<br> ![Test-ChildOutputType Runbook eredményei](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 

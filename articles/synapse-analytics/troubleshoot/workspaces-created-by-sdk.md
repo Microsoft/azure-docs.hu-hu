@@ -8,10 +8,10 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.date: 11/24/2020
 ms.openlocfilehash: f5d0aae975d476da47510a1f2fd164cbc5f32945
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466430"
 ---
 # <a name="troubleshoot-azure-synapse-analytics-workspaces-created-using-sdk"></a>Az SDK használatával létrehozott Azure szinapszis Analytics-munkaterületek – problémamegoldás
@@ -31,7 +31,7 @@ Ha a szinapszis Studio alkalmazást az SDK által létrehozott munkaterületről
   3.    A Storage blob adatközreműködői szerepkörének megadása a felügyelt Identity Storage-fiókhoz a futtatásával ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}.`
   4.    Tűzfalszabály hozzáadása a futtatásával ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 ` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az az Azure szinapszis?](../overview-what-is.md)
 * [Első lépések](../get-started.md)

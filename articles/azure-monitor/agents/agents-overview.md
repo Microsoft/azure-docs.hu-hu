@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
 ms.openlocfilehash: a2f6023b86b96266be8e625fd5b0d6625500e3fc
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102551470"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
@@ -34,7 +34,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>kiterjesztés (WAD) | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure<br>Egyéb felhő (Azure arc)<br>Helyszíni (Azure arc)  | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni | 
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Eseménynaplók<br>Teljesítmény | Eseménynaplók<br>ETW események<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>.NET-alkalmazás naplói<br>Összeomlási memóriaképek<br>Ügynök diagnosztikai naplói | Eseménynaplók<br>Teljesítmény<br>Fájl alapú naplók<br>IIS-naplók<br>Bepillantást és megoldásokat<br>Egyéb szolgáltatások | Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor-metrikák | Azure Storage<br>Azure Monitor-metrikák<br>Eseményközpont | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | Metrikaböngésző | VM-ismeretek<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM-ismeretek<br>Szolgáltatástérkép |
@@ -44,7 +44,7 @@ Az alábbi táblázatok a Windows és a Linux rendszerhez készült Azure Monito
 | | Azure Monitor-ügynök (előzetes verzió) | Diagnosztika<br>bővítmény (LAD) | Telegraf<br>ügynök | Log Analytics<br>ügynök | Függőség<br>ügynök |
 |:---|:---|:---|:---|:---|:---|
 | **Támogatott környezetek** | Azure<br>Egyéb felhő (Azure arc)<br>Helyszíni (Azure arc) | Azure | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni követelmények | Azure<br>Egyéb felhő<br>Helyszíni |
-| **Ügynökre vonatkozó követelmények**  | Nincs | Nincs | Nincs | Nincs | Log Analytics-ügynököt igényel |
+| **Ügynökre vonatkozó követelmények**  | Nincsenek | Nincsenek | Nincsenek | Nincsenek | Log Analytics-ügynököt igényel |
 | **Összegyűjtött adatok** | Rendszernapló<br>Teljesítmény | Rendszernapló<br>Teljesítmény | Teljesítmény | Rendszernapló<br>Teljesítmény| Folyamatok függőségei<br>Hálózati kapcsolatok metrikái |
 | **Adatküldés** | Azure Monitor-naplók<br>Azure Monitor-metrikák | Azure Storage<br>Eseményközpont | Azure Monitor-metrikák | Azure Monitor-naplók | Azure Monitor-naplók<br>(Log Analytics ügynökön keresztül) |
 | **Szolgáltatások és**<br>**szolgáltatások**<br>**támogatott** | Log Analytics<br>Metrikaböngésző | | Metrikaböngésző | VM-ismeretek<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM-ismeretek<br>Szolgáltatástérkép |
