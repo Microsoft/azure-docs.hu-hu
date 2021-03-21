@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
 ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95249893"
 ---
-# <a name="delete-volume-replications-or-volumes"></a>Kötetek replikálásának vagy köteteinek törlése
+# <a name="delete-volume-replications-or-volumes"></a>Kötetreplikációk vagy kötetek törlése
 
 Ez a cikk a kötetek replikálásának törlését ismerteti. Emellett leírja a forrás vagy a cél kötetének törlését is.
 
@@ -34,10 +34,10 @@ A replikálási kapcsolatot a forrás és a cél kötetek között a kötetek re
     1. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
 
     2.  A folytatás előtt keresse meg a következő mezőket:  
-        * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
-            Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _Uninitialized *.
-        * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
-            Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _Transferring *.   
+        * Győződjön meg arról, hogy a tükrözési állapot ***tükrözöttként*** jelenik meg.   
+            Ne kísérelje meg a replikálási társítások megszakítását, ha a tükrözés állapota nem *inicializált*.
+        * Győződjön meg arról, hogy a kapcsolat állapota ***inaktív***.   
+            Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota *átadást* mutat.   
 
         Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
 

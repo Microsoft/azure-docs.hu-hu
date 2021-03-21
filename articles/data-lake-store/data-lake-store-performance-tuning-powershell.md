@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: twooley
 ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97723796"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a PowerShell és a Azure Data Lake Storage Gen1 használatával
@@ -21,7 +21,7 @@ Ez a cikk azokat a tulajdonságokat ismerteti, amelyekkel jobb teljesítményt �
 
 ## <a name="performance-related-properties"></a>Teljesítménnyel kapcsolatos tulajdonságok
 
-| Tulajdonság            | Alapértelmezett | Leírás |
+| Tulajdonság            | Alapértelmezett | Description |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Ez a paraméter lehetővé teszi a párhuzamos szálak számának megadását az egyes fájlok fel- vagy letöltéséhez. Ez a szám a fájlok számára lefoglalható maximális szálakat jelöli, de előfordulhat, hogy a forgatókönyvtől függően kevesebb szálat kap (például ha egy 1 KB-os fájlt tölt fel, akkor is egy szálat kap, ha 20 szálat kér).  |
 | ConcurrentFileCount | 10      | Ez a paraméter kifejezetten a mappák fel- és letöltéséhez kapcsolódik. Ez a paraméter határozza meg az egyidejűleg fel- vagy letölthető fájlok számát. Ez a szám azt jelenti, hogy legfeljebb hány egyidejű fájl tölthető fel vagy tölthető le egyszerre, de előfordulhat, hogy a forgatókönyvtől függően kisebb a párhuzamosság (például ha két fájlt tölt fel, akkor is két egyidejű fájlt tölt fel, akkor is, ha 15-et kér). |
@@ -96,7 +96,7 @@ A beállítások hangolását a **PerFileThreadCount** értékének növelésév
 
 * **Szabályozási hibák**: Elképzelhető, hogy szabályozási hibákat tapasztal, ha az egyidejűség túl magas. Ha szabályozás hibák merülnek fel, csökkentse az egyidejűséget vagy lépjen kapcsolatba velünk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Data Lake Storage Gen1 használata big data követelményekhez](data-lake-store-data-scenarios.md) 
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)

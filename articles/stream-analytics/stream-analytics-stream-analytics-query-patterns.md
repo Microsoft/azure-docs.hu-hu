@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 8fcda77858b3feb78a04971a7ad1f20c0ea51fa1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98019992"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Gyakori lekérdezési minták a Azure Stream Analytics
@@ -414,14 +414,14 @@ Az események időtartamát úgy számíthatja ki, hogy megtekinti az utolsó in
 
 **Bemenet**:  
 
-| Felhasználó | Funkció | Esemény | Idő |
+| User | Szolgáltatás | Esemény | Idő |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Indítás |2015-01-01T00:00:01.0000000 Z |
 | user@location.com |RightMenu |Befejezés |2015-01-01T00:00:08.0000000 Z |
 
 **Kimenet**:  
 
-| Felhasználó | Funkció | Időtartam |
+| User | Szolgáltatás | Időtartam |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -463,7 +463,7 @@ A **darabszám** és a **DISTINCT** érték az adatfolyamban megjelenő egyedi m
 | 2 |2015-01-01T00:00:02.000 Z |
 | 1 |2015-01-01T00:00:04.000 Z |
 
-**Lekérdezés**
+**Lekérdezés:**
 
 ```SQL
 SELECT
@@ -933,7 +933,7 @@ További információkért tekintse meg a [geokerítések és térinformatikai �
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

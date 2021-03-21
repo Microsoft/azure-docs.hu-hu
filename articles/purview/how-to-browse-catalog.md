@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97695054"
 ---
 # <a name="browse-the-azure-purview-data-catalog"></a>Az Azure-beli hatáskörébe tartozó adatkatalógus tallózása
@@ -64,7 +64,7 @@ Az eszköz részletei lapon megtekintheti az egyéb kapcsolódó adategységeket
 
     :::image type="content" source="media/how-to-browse-catalog/select-different-hierarchy.jpg" alt-text="Válasszon másik hierarchiát" border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Szószedet használati feltételeinek létrehozása, importálása és exportálása](how-to-create-import-export-glossary.md)
 - [Az üzleti kifejezések sablonjának kezelése Szószedet](how-to-manage-term-templates.md)

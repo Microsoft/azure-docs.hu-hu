@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 12/10/2020
 ms.author: wolfma
 ms.openlocfilehash: 329241c2660ff7828f57fb21daeb6de20caedc43
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504457"
 ---
-| Földrajzi hely | Régió | Régió azonosítója |
+| Földrajzi hely | Region | Régió azonosítója |
 | ----- | ----- | ----- |
-| Észak-, Dél- és Közép-Amerika | USA középső régiója | `centralus` |
+| Észak-, Dél- és Közép-Amerika | Az USA középső régiója | `centralus` |
 | Észak-, Dél- és Közép-Amerika | USA keleti régiója | `eastus` |
 | Észak-, Dél- és Közép-Amerika | USA 2. keleti régiója | `eastus2` |
 | Észak-, Dél- és Közép-Amerika | USA északi középső régiója | `northcentralus` |

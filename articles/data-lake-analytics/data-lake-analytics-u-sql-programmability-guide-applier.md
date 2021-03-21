@@ -6,13 +6,13 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 0842a2cfa021ef8ea45c19ec885c7dec371730de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96512571"
 ---
-# <a name="use-user-defined-applier"></a>Felhasználó által definiált szolgáltató használata 
+# <a name="use-user-defined-applier"></a>Felhasználó által definiált alkalmazó használata 
 
 ## <a name="u-sql-udo-user-defined-applier"></a>U-SQL UDO: felhasználó által megadott gyártó
 Egy U-SQL felhasználó által definiált szolgáltató lehetővé teszi egy egyéni C#-függvény meghívását minden olyan sorhoz, amelyet a lekérdezés külső tábla kifejezése adott vissza. A rendszer kiértékeli a megfelelő bemenetet a bal oldali bemenet minden egyes sorára, és a létrehozott sorok a végső kimenethez kombinálhatók. Az APPLY operátor által létrehozott oszlopok listája a bal oldali és a jobb oldali bemenet oszlopainak kombinációja.

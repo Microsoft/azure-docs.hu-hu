@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: celested
 ROBOTS: NOINDEX
 ms.openlocfilehash: a4bb9151e9d4b76507b0c7f8ab5aaa7f5f1820b8
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96608197"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory fejlesztői platform – videók
@@ -71,6 +71,6 @@ Ismerje meg az új Microsoft Identity platformot, és hogyan telepítheti át az
     :::column-end:::
 :::row-end:::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az új [Microsoft Identity platformról](../develop/index.yml)

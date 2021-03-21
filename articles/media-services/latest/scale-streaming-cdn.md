@@ -80,9 +80,9 @@ A `Origin-Assist CDN-Prefetch` Akamai CDN-vel közvetlen szerződéssel rendelke
 
 |HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e.|
-|`CDN-Origin-Assist-Prefetch-Path`| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|Megadhatja a CDN elérési útját.|
-|`CDN-Origin-Assist-Prefetch-Request`|1 (kirendelési kérelem) vagy 0 (normál kérelem)|Tartalomkézbesítési hálózat (CDN)|Forrás|A CDN-ről érkező kérések jelzése.|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1 (alapértelmezett) vagy 0 |CDN|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e.|
+|`CDN-Origin-Assist-Prefetch-Path`| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|CDN|Megadhatja a CDN elérési útját.|
+|`CDN-Origin-Assist-Prefetch-Request`|1 (kirendelési kérelem) vagy 0 (normál kérelem)|CDN|Forrás|A CDN-ről érkező kérések jelzése.|
 
 A következő lépésekkel tekintheti meg a fejléc-Exchange működés közbeni részét:
 

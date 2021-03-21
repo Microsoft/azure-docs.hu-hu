@@ -4,10 +4,10 @@ description: A Media Blueprint-minták leképezésének vezérlése. Minden vez�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98035036"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>A Media Blueprint minta vezérlőelem-hozzárendelésének vezérlése
@@ -231,7 +231,7 @@ A következő leképezések az **adathordozó** -vezérlőkre vonatkoznak. A job
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Áttekintette a Media Blueprint-minta vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan kezeli a Azure Backup szolgáltatás a virtuál
 ms.topic: conceptual
 ms.date: 11/08/2020
 ms.openlocfilehash: 256df693aba0f799c24bcba6defe846e5c37ccaa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94428630"
 ---
 # <a name="manage-recovery-points"></a>Helyreállítási pontok kezelése
@@ -82,7 +82,7 @@ Amikor a kezdeti helyreállítási pont lejár, a következő növekményes hely
 
 ### <a name="case-3-on-demand-recovery-point-expires"></a>3. eset: az igény szerinti helyreállítási pont lejár
 
-Ebben a példában egy ütemezett (napi biztonsági mentés) házirendet ütemeztek a rendszer *n* napos megőrzési időtartammal való futtatásra.  Ha egy igény szerinti biztonsági mentést a következő ütemezett biztonsági mentést megelőző negyedik napon, a megőrzési időtartam pedig 10 nap múlva aktiválják, akkor továbbra is növekményes biztonsági mentés lesz. A helyreállítási pontot ( *igény szerinti rp1* ) a *3* . helyreállítási pont és a *4. helyreállítási* pont előtt hozza létre a rendszer.  A 14. nap végén az igény szerinti helyreállítási pont ( *igény szerinti rp1* ) lejár, és a következő elérhető helyreállítási ponttal lesz egyesítve. A kiszolgálón továbbra is az adatblokkok egyesülnek, míg a módosult (felülírt vagy törölt) adatblokkok törlődnek a lejárt helyreállítási pontból.
+Ebben a példában egy ütemezett (napi biztonsági mentés) házirendet ütemeztek a rendszer *n* napos megőrzési időtartammal való futtatásra.  Ha egy igény szerinti biztonsági mentést a következő ütemezett biztonsági mentést megelőző negyedik napon, a megőrzési időtartam pedig 10 nap múlva aktiválják, akkor továbbra is növekményes biztonsági mentés lesz. A helyreállítási pontot (*igény szerinti rp1*) a *3* . helyreállítási pont és a *4. helyreállítási* pont előtt hozza létre a rendszer.  A 14. nap végén az igény szerinti helyreállítási pont (*igény szerinti rp1*) lejár, és a következő elérhető helyreállítási ponttal lesz egyesítve. A kiszolgálón továbbra is az adatblokkok egyesülnek, míg a módosult (felülírt vagy törölt) adatblokkok törlődnek a lejárt helyreállítási pontból.
 
 ![Harmadik eset](./media/manage-recovery-points/third-case.png)
 
@@ -114,7 +114,7 @@ Tegyük fel, hogy egy virtuális gép teljes tárterülete 8 TB, a forgalom pedi
 
 Ha szeretné megtudni, hogy a forgalom milyen hatással van a biztonsági mentési teljesítményre, tekintse meg ezt a forgatókönyvet:
 
-|Virtuális gépek  |VM1  |VM2  |VM3  |
+|Virtual machines (Virtuális gépek)  |VM1  |VM2  |VM3  |
 |---------|---------|---------|---------|
 |Adatlemezek száma    | 4 (A1, A2, A3, A4)        | 4 (B1, B2, B3, B4)        |  4 (C1, C2, C3, C4)       |
 |Az egyes lemezek mérete   |      4 TB   | 4 TB        |  4 TB       |

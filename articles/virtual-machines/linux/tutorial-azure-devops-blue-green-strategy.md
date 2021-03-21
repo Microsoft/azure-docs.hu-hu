@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: 4545891cce926f049673cd2c2380a8309f2e71a1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552587"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépekhez készült Blue-Green üzembe helyezési stratégia konfigurálása
@@ -84,7 +84,7 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
 - Egy futtatókörnyezet
 - Azure-szolgáltatás
 
-[További információk](https://azure.microsoft.com/features/devops-projects/).
+[További információ](https://azure.microsoft.com/features/devops-projects/).
 
 ## <a name="additional-resources"></a>További források
 

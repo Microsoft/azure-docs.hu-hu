@@ -10,10 +10,10 @@ ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789726"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Gyors útmutató: ExpressRoute-áramkör létrehozása egy ARM-sablon használatával
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-expressroute-private-peering-vnet) közül származik.
 
-Ebben a rövid útmutatóban egy ExpressRoute-áramkört fog létrehozni a *Equinix* -ben a szolgáltatóként. Az áramkör *prémium SKU* -t, *50 Mbps* sávszélességet és a *Washington DC* egyenrangú helyét fogja használni. A privát társítás a *192.168.10.16/30* és a *192.168.10.20/30* elsődleges és másodlagos alhálózattal lesz engedélyezve. A virtuális hálózatok a *HighPerformance ExpressRoute-átjáróval* együtt is létrejönnek.
+Ebben a rövid útmutatóban egy ExpressRoute-áramkört fog létrehozni a *Equinix* -ben a szolgáltatóként. Az áramkör *prémium SKU*-t, *50 Mbps* sávszélességet és a *Washington DC* egyenrangú helyét fogja használni. A privát társítás a *192.168.10.16/30* és a *192.168.10.20/30* elsődleges és másodlagos alhálózattal lesz engedélyezve. A virtuális hálózatok a *HighPerformance ExpressRoute-átjáróval* együtt is létrejönnek.
 
 :::code language="json" source="~/quickstart-templates/101-expressroute-private-peering-vnet/azuredeploy.json":::
 
@@ -84,7 +84,7 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza ki az **erőforráscsoportok** elemet a bal oldali ablaktáblán.
 
@@ -92,16 +92,16 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 1. Az erőforráscsoport az alábbi, itt látható erőforrásokat tartalmazza:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute üzembe helyezési erőforráscsoport":::
 
-1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve** van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve** .
+1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve** van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve**.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute üzembe helyezési áramkör":::
 
 > [!NOTE]
 > A virtuális hálózat áramkörhöz való összekapcsolásához meg kell hívnia a szolgáltatót a létesítési folyamat befejezéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a ExpressRoute áramkörrel létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a ExpressRoute áramkört és az összes kapcsolódó erőforrást.
 

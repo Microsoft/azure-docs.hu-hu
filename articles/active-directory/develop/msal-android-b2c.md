@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101688875"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
@@ -88,7 +88,7 @@ PublicClientApplication.createMultipleAccountPublicClientApplication(
 );
 ```
 
-## <a name="interactively-acquire-a-token"></a>Token interaktív beszerzése
+## <a name="interactively-acquire-a-token"></a>Jogkivonat interaktív beszerzése
 
 Ha a tokent interaktív módon szeretné beszerezni a MSAL, hozzon létre egy `AcquireTokenParameters` példányt, és adja meg a `acquireToken` metódusnak. Az alábbi jogkivonat-kérelem a `default` szolgáltatót használja.
 
@@ -119,7 +119,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 pca.acquireToken(parameters);
 ```
 
-## <a name="silently-renew-a-token"></a>Token csendes megújítása
+## <a name="silently-renew-a-token"></a>Jogkivonat megújítása csendes módban
 
 Ha a tokent a MSAL-mel csendben szeretné beszerezni, hozzon létre egy `AcquireTokenSilentParameters` példányt, és adja meg a `acquireTokenSilentAsync` metódusnak. A `acquireToken` metódussal ellentétben a `authority` rendszernek meg kell adni a token csendes beszerzését.
 
@@ -196,7 +196,7 @@ new AuthenticationCallback() {
 
 A jogkivonat sikeres beszerzése egy `IAuthenticationResult` objektumot eredményez. A hozzáférési jogkivonatot, a felhasználói jogcímeket és a metaadatokat tartalmazza.
 
-### <a name="get-the-access-token-and-related-properties"></a>Hozzáférési jogkivonat és kapcsolódó tulajdonságok beolvasása
+### <a name="get-the-access-token-and-related-properties"></a>Hozzáférési jogkivonat és a kapcsolódó tulajdonságok beszerzése
 
 ```java
 // Get the raw bearer token

@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96930517"
 ---
 # <a name="azure-active-directory-authentication"></a>Hitelesítés Azure Active Directory-fiókkal
@@ -54,7 +54,7 @@ Az Azure AD-szolgáltató az Azure AD-token beszerzéséhez használt végpont. 
 
 ### <a name="authentication-libraries"></a>Hitelesítési tárak
 
-Az Azure olyan kódtárakat biztosít, amelyek Azure Active Directory hitelesítési könyvtárakkal rendelkeznek, így leegyszerűsíthető egy Azure AD-jogkivonat beszerzésének folyamata. Az Azure több nyelvhez is létrehozza ezeket a kódtárakat. További információkért tekintse meg a [dokumentációt](../active-directory/azuread-dev/active-directory-authentication-libraries.md).
+Az Azure olyan kódtárakat biztosít, amelyek Azure Active Directory hitelesítési könyvtárakkal rendelkeznek, így leegyszerűsíthető egy Azure AD-jogkivonat beszerzésének folyamata. Az Azure több nyelvhez is létrehozza ezeket a kódtárakat. További információért lásd a [dokumentációt](../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ## <a name="errors"></a>Hibák
 

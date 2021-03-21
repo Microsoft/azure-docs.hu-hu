@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el csomópontoka
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.openlocfilehash: 26945b4785a0591d997139f2427b0ae6b59fa742
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790596"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Csomópontok hozzáadása vagy eltávolítása a Windows Serveren futó önálló Service Fabric-fürt esetében
@@ -140,7 +140,7 @@ A csomópont típusának eltávolítása előtt ellenőrizze, hogy vannak-e olya
 Az elsődleges csomópontok cseréjét egy másik csomópont után kell végrehajtani, a kötegek eltávolítása és hozzáadása helyett.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
 * [Önálló fürt biztonságossá tétele a Windowsban X509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
 * [Önálló Service Fabric-fürt létrehozása Windows rendszerű Azure-beli virtuális gépekkel](./service-fabric-cluster-creation-via-arm.md)

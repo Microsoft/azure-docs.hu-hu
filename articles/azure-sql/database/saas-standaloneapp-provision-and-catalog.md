@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
 ms.openlocfilehash: 2343800f8801105ca75f285972b441ecb027d1a0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92793245"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Új bérlők kiépítése és katalogizálása az alkalmazással a bérlői SaaS-minták alapján
@@ -82,8 +82,8 @@ Ebben a feladatban megtudhatja, hogyan építheti ki az összes bérlői adatbá
 * **A katalógus-adatbázis kiépítése** Azure Resource Management-sablonnal. Az adatbázis inicializálása bacpac-fájl importálásával történik.
 * **Regisztrálja a korábban telepített minta bérlői alkalmazásokat** .  Minden bérlő egy, a bérlő nevének kivonata alapján létrehozott kulccsal van regisztrálva.  A bérlő nevét a katalógus egy kiterjesztési táblájában is tárolja.
 
-1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\UserConfig.PSM* , és frissítse az **\<user\>** értéket a három minta alkalmazás telepítésekor használt értékre.  **Mentse a fájlt** .
-1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 1** . Telepítse a bérlői katalógust, és regisztrálja az előre meghatározott bérlőket.
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\UserConfig.PSM* , és frissítse az **\<user\>** értéket a három minta alkalmazás telepítésekor használt értékre.  **Mentse a fájlt**.
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 1**. Telepítse a bérlői katalógust, és regisztrálja az előre meghatározott bérlőket.
 
 1. Adjon hozzá egy töréspontot úgy, hogy a kurzort bárhová helyezi a sorba, `& $PSScriptRoot\New-Catalog.ps1` majd nyomja le az **F9** billentyűt.
 
@@ -99,7 +99,7 @@ Ha a parancsfájl befejeződik, a katalógus már létezik, és a rendszer az ö
 Most tekintse meg a létrehozott erőforrásokat.
 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com/) , és tallózással keresse meg az erőforráscsoportot.  Nyissa meg a **Wingtip-SA- \<user\> Catalog-** Resource csoportot, és jegyezze fel a katalógus-kiszolgálót és az adatbázist.
-1. Nyissa meg az adatbázist a portálon, és válassza az *adatkezelő* lehetőséget a bal oldali menüben.  Kattintson a login parancsra, majd adja meg a jelszót = **P \@ ssword1** .
+1. Nyissa meg az adatbázist a portálon, és válassza az *adatkezelő* lehetőséget a bal oldali menüben.  Kattintson a login parancsra, majd adja meg a jelszót = **P \@ ssword1**.
 
 
 1. Fedezze fel a *tenantcatalog* -adatbázis sémáját.
@@ -120,12 +120,12 @@ Ebben a feladatban megtudhatja, hogyan építhet ki egyetlen bérlős alkalmazá
 
 * **Hozzon létre egy új erőforráscsoportot** a bérlőhöz.
 * **Az alkalmazás és az adatbázis kiépítése** az új erőforráscsoporthoz egy Azure Resource Management-sablonnal.  Ez a művelet magában foglalja az adatbázis általános sémával és hivatkozási adattal való inicializálását egy bacpac-fájl importálásával.
-* **Inicializálja az adatbázist alapszintű bérlői információkkal** . Ez a művelet magában foglalja a helyszín típusának megadását, amely meghatározza a háttérként használt fényképet az események webhelyén.
-* **Regisztrálja az adatbázist a katalógus-adatbázisban** .
+* **Inicializálja az adatbázist alapszintű bérlői információkkal**. Ez a művelet magában foglalja a helyszín típusának megadását, amely meghatározza a háttérként használt fényképet az események webhelyén.
+* **Regisztrálja az adatbázist a katalógus-adatbázisban**.
 
-1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 2** . A bérlői katalógus üzembe helyezése és az előre definiált bérlők regisztrálása
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* , és állítsa be a **$Scenario = 2**. A bérlői katalógus üzembe helyezése és az előre definiált bérlők regisztrálása
 
-1. Vegyen fel egy töréspontot a szkriptbe úgy, hogy a kurzort az 49-es sorban helyezi el, amely a következőt adja meg: `& $PSScriptRoot\New-TenantApp.ps1` **F9**
+1. Vegyen fel egy töréspontot a szkriptbe úgy, hogy a kurzort az 49-es sorban helyezi el, amely a következőt adja meg: `& $PSScriptRoot\New-TenantApp.ps1` 
 1. Futtassa a szkriptet az **F5** billentyű lenyomásával.
 1.  Miután a szkript végrehajtása leáll a törésponton, nyomja le az **F11** billentyűt a New-Catalog.ps1 parancsfájlba lépéshez.
 1.  A szkript végrehajtásának nyomon követéséhez használja a Debug menüpontot, az F10 és az F11 billentyűt a függvények meghívásához.

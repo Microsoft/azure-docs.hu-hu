@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb84eae2db01180865db54250598f45c7b2ddca0
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97746235"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Kérelmek feldolgozása és e-mail-értesítések az Azure AD-jogosultságok kezelésében
@@ -152,7 +152,7 @@ Itt látható egy példa e-mail-értesítésre, amelyet a kérelmező a hozzáf�
 
 ![Kérelmező lejárt hozzáférési kérelem e-mail címe](./media/entitlement-management-process/requestor-email-request-expired.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési csomaghoz való hozzáférés kérése](entitlement-management-request-access.md)
 - [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)

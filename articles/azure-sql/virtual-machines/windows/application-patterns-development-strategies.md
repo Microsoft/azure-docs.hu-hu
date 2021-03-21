@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
 ms.openlocfilehash: e877f775c6a7bc83ce6c4a559c9f74b606c952fc
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359489"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Alkalmazási minták és fejlesztési stratégiák az Azure-beli SQL Serverhoz Virtual Machines
@@ -42,7 +42,7 @@ Számos különböző típusú n szintű alkalmazást fejleszthet, ha elválaszt
 
 Egy tipikus *n* szintű alkalmazás tartalmazza a megjelenítési szintet, az üzleti szintet és az adatréteget:
 
-| Szint | Leírás |
+| Szint | Description |
 | --- | --- |
 | **Megjelenítés** |A *megjelenítési szint* (webes réteg, előtér-réteg) az a réteg, amelyben a felhasználók egy alkalmazással kommunikálnak. |
 | **Üzleti** |Az *üzleti szint* (középső réteg) az a réteg, amelyet a megjelenítési réteg és az adatréteg használ egymással való kommunikációhoz, és a rendszer alapvető funkcióit tartalmazza. |
@@ -230,7 +230,7 @@ A hibrid alkalmazás mintája a következő esetekben hasznos:
 * Rövid ideig szeretné gyorsan kiépíteni a fejlesztési és tesztelési környezeteket.
 * Költséghatékony megoldást szeretne készíteni a vállalati adatbázis-alkalmazások biztonsági mentéséhez.
 
-Az alábbi ábra egy n szintű hibrid alkalmazási mintát mutat be, amely a helyszíni és az Azure-ra is kiterjed. Ahogy az ábrán is látható, a helyszíni infrastruktúra [Active Directory tartományi szolgáltatások](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831484(v=ws.11)) tartományvezérlővel támogatja a felhasználók hitelesítését és engedélyezését. Vegye figyelembe, hogy a diagram egy olyan forgatókönyvet mutat be, amelyben az adatréteg egyes részei egy helyszíni adatközpontban élnek, míg az adatréteg egyes részei az Azure-ban is elérhetők. Az alkalmazás igényeitől függően számos más hibrid forgatókönyv is megvalósítható. Például megtarthatja a megjelenítési szintet és az üzleti szintet egy helyszíni környezetben, de az Azure-ban lévő adatrétegben is.
+Az alábbi ábra egy n szintű hibrid alkalmazási mintát mutat be, amely a helyszíni és az Azure-ra is kiterjed. Ahogy az ábrán is látható, a helyszíni infrastruktúra [Active Directory Domain Services](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831484(v=ws.11)) tartományvezérlővel támogatja a felhasználók hitelesítését és engedélyezését. Vegye figyelembe, hogy a diagram egy olyan forgatókönyvet mutat be, amelyben az adatréteg egyes részei egy helyszíni adatközpontban élnek, míg az adatréteg egyes részei az Azure-ban is elérhetők. Az alkalmazás igényeitől függően számos más hibrid forgatókönyv is megvalósítható. Például megtarthatja a megjelenítési szintet és az üzleti szintet egy helyszíni környezetben, de az Azure-ban lévő adatrétegben is.
 
 ![N szintű alkalmazás mintája](./media/application-patterns-development-strategies/IC728016.png)
 

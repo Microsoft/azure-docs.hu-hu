@@ -4,10 +4,10 @@ description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Back
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95400207"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
@@ -139,7 +139,7 @@ A RPO (helyreállítási pont-célkitűzés) azt jelzi, hogy mekkora adatveszté
 
 RTO (helyreállítási idő – célkitűzés) – azt jelzi, hogy az adatvesztési forgatókönyv után milyen gyorsan kell visszaállítani az adott időpontot az utolsó elérhető időpontra. Ez a HANA által alkalmazott helyreállítási stratégiától függ, amely általában attól függ, hogy hány fájl szükséges a visszaállításhoz. Ez a költségeket is érinti, és az alábbi táblázat segítséget nyújt az összes forgatókönyv és azok következményeinek megismeréséhez.
 
-|Biztonsági mentési szabályzat  |RTO  |Költség  |
+|Biztonsági mentési szabályzat  |RTO  |Költségek  |
 |---------|---------|---------|
 |Napi teljes + naplók     |   Leggyorsabb, mivel csak egy teljes másolási és szükséges naplókra van szükség az időponthoz tartozó visszaállításhoz      |    Costliest beállítás, mivel a teljes másolás naponta történik, így egyre több és több adat gyűlik össze a háttérben, amíg meg nem történik a megőrzési idő   |
 |Hetente teljes + napi különbözet + napló     |   A fentinél lassabb, de a következő beállításnál gyorsabb, mivel egy teljes másolási + egy különbözeti másolat + napló szükséges az időponthoz való visszaállításhoz      |    Kevésbé költséges lehetőség, mivel a napi különbözet általában kisebb, mint a teljes, és a teljes másolat csak hetente egyszer kerül beszámításra      |

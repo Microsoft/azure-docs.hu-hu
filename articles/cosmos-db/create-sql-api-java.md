@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: anfeldma
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 4b62b591c408f663fd28d5077af924f785ee66c8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93090409"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB SQL API-beli adatkezeléshez
@@ -47,11 +47,11 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
 
 :::image type="content" source="./media/account-databases-containers-items/cosmos-entities.png" alt-text="Azure Cosmos-fiókok entitásai" border="false":::
 
-Az adatbázisokról, a tárolók és az elemek [itt](account-databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs* . 
+Az adatbázisokról, a tárolók és az elemek [itt](account-databases-containers-items.md) találhat további információt. Néhány fontos tulajdonság a tároló szintjén van meghatározva, köztük a *kiosztott átviteli sebesség* és a *partíciós kulcs*. 
 
-A kiépített átviteli sebességet a kérések egységei ( *RUs* ) mérik, amelyek monetáris díjszabással rendelkeznek, és a fiók működési költsége jelentősen meghatározó tényező. A kiépített átviteli sebesség a tároló részletessége vagy az adatbázis-részletesség alapján választható ki, azonban a tároló szintű átviteli specifikáció általában előnyben részesített. Az átviteli sebességről itt olvashat bővebben [.](set-throughput.md)
+A kiépített átviteli sebességet a kérések egységei (*RUs*) mérik, amelyek monetáris díjszabással rendelkeznek, és a fiók működési költsége jelentősen meghatározó tényező. A kiépített átviteli sebesség a tároló részletessége vagy az adatbázis-részletesség alapján választható ki, azonban a tároló szintű átviteli specifikáció általában előnyben részesített. Az átviteli sebességről itt olvashat bővebben [.](set-throughput.md)
 
-Ahogy az elemek bekerülnek egy Cosmos DB tárolóba, az adatbázis horizontálisan nő, ha további tárterületet és számítási műveleteket ad hozzá a kérelmek kezeléséhez. A tárolási és a számítási kapacitás a *partícióknak* nevezett különálló egységekben lett felvéve, és a dokumentumokban egy mezőt kell kiválasztania, amely az egyes dokumentumokat egy partícióra képező partíciós kulcs. A partíciók kezelése az, hogy az egyes partíciók nagyjából egyenlő szeletet kapnak a partíciós kulcsok értékeinek tartományába. Ezért javasoljuk, hogy olyan partíciós kulcsot válasszon, amely viszonylag véletlenszerű vagy egyenletes eloszlású. Ellenkező esetben előfordulhat, hogy egyes partíciók lényegesen több kérést ( *gyors partíciót* ) látnak, míg más partíciók lényegesen kevesebb kérést látnak ( *hideg partíció* ), és ezt el kell kerülni. További információ a particionálásról [itt](partitioning-overview.md).
+Ahogy az elemek bekerülnek egy Cosmos DB tárolóba, az adatbázis horizontálisan nő, ha további tárterületet és számítási műveleteket ad hozzá a kérelmek kezeléséhez. A tárolási és a számítási kapacitás a *partícióknak* nevezett különálló egységekben lett felvéve, és a dokumentumokban egy mezőt kell kiválasztania, amely az egyes dokumentumokat egy partícióra képező partíciós kulcs. A partíciók kezelése az, hogy az egyes partíciók nagyjából egyenlő szeletet kapnak a partíciós kulcsok értékeinek tartományába. Ezért javasoljuk, hogy olyan partíciós kulcsot válasszon, amely viszonylag véletlenszerű vagy egyenletes eloszlású. Ellenkező esetben előfordulhat, hogy egyes partíciók lényegesen több kérést (*gyors partíciót*) látnak, míg más partíciók lényegesen kevesebb kérést látnak (*hideg partíció*), és ezt el kell kerülni. További információ a particionálásról [itt](partitioning-overview.md).
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
 
@@ -183,7 +183,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd indítsa 
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
