@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.topic: sample
 ms.date: 01/23/2017
 ms.openlocfilehash: 553850173f463a05b13768eb3b9e17703bfa2886
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88212293"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis-minták
@@ -58,7 +58,7 @@ A [Redis Azure cache kezelése az Azure Management librarys használatával](htt
 A [Redis-figyelési adatmintahoz való hozzáférés az Azure cache](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) -ben azt mutatja be, hogy hogyan férhet hozzá az Azure-gyorsítótárban az Azure-portálon kívüli Redis tartozó figyelési adataihoz.
 
 ## <a name="a-twitter-style-clone-written-using-php-and-redis"></a>A PHP és a Redis használatával írt Twitter-klón
-A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis „Helló világ!” alkalmazás. Ez egy minimális Twitter-stílusú közösségi hálózati klón, amelyet a Redis és a PHP használatával írt a [Predis](https://github.com/nrk/predis) -ügyfél használatával. A forráskód úgy lett kialakítva, hogy nagyon egyszerű és egyszerre jelenjen meg különböző Redis-adatstruktúrák.
+A [Retwis](https://github.com/SyntaxC4-MSFT/retwis) minta a Redis Hello World. Ez egy minimális Twitter-stílusú közösségi hálózati klón, amelyet a Redis és a PHP használatával írt a [Predis](https://github.com/nrk/predis) -ügyfél használatával. A forráskód úgy lett kialakítva, hogy nagyon egyszerű és egyszerre jelenjen meg különböző Redis-adatstruktúrák.
 
 ## <a name="bandwidth-monitor"></a>Sávszélesség-figyelő
 A [sávszélesség-figyelő](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor) minta lehetővé teszi az ügyfélen használt sávszélesség figyelését. A sávszélesség méréséhez futtassa a mintát a gyorsítótár-ügyfélszámítógépen, hajtson végre hívásokat a gyorsítótárba, és figyelje meg a sávszélesség-figyelő minta által jelentett sávszélességet.

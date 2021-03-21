@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 88496a39b0186cefb7c64e227530b5d73e693094
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92780478"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Egyetlen bérlő visszaállítása adatbázis-bérlői SaaS-alkalmazással
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban két adathelyreállítási mintát tanul:
 > * Adatbázis visszaállítása párhuzamos adatbázisba (egymás mellett).
 > * Állítsa vissza az adatbázist helyben, a meglévő adatbázist lecserélve.
 
-| Mintázat | Leírás |
+| Mintázat | Description |
 |:--|:--|
 | Visszaállítás egy párhuzamos adatbázisba | Ez a minta olyan feladatokhoz használható, mint például a felülvizsgálat, a naplózás és a megfelelőség, hogy a bérlő egy korábbi pontról vizsgálja meg az adataikat. A bérlő aktuális adatbázisa online állapotú és változatlan marad. |
 | Visszaállítás helyben | Ez a minta jellemzően egy bérlő korábbi pontra történő helyreállítására szolgál, miután egy bérlő véletlenül törli vagy megsérült az adatokat. Az eredeti adatbázis ki van kapcsolva a sorban, és a visszaállított adatbázisra vált. |
@@ -44,9 +44,9 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 Két egyszerű minta van az egyes bérlői adathalmazok visszaállítására. Mivel a bérlői adatbázisok el vannak különítve egymástól, az egyik bérlő visszaállítása nem befolyásolja a többi bérlő adatait. A Azure SQL Database időponthoz tartozó visszaállítási (PITR) funkció mindkét mintában használatos. A PITR mindig létrehoz egy új adatbázist.
 
-* **Visszaállítás párhuzamosan** : az első mintában egy új párhuzamos adatbázis jön létre a bérlő aktuális adatbázisa mellett. A bérlő ezután csak olvasási hozzáférést kap a visszaállított adatbázishoz. A visszaállított adatok áttekinthetők és felhasználhatók a jelenlegi adatértékek felülírására. Az alkalmazás tervezője határozza meg, hogy a bérlő hogyan fér hozzá a visszaállított adatbázishoz, és milyen beállításokat biztosít a helyreállításhoz. Egyszerűen lehetővé teheti, hogy a bérlő egy korábbi pontban tekintse át az adataikat, ami bizonyos helyzetekben szükséges.
+* **Visszaállítás párhuzamosan**: az első mintában egy új párhuzamos adatbázis jön létre a bérlő aktuális adatbázisa mellett. A bérlő ezután csak olvasási hozzáférést kap a visszaállított adatbázishoz. A visszaállított adatok áttekinthetők és felhasználhatók a jelenlegi adatértékek felülírására. Az alkalmazás tervezője határozza meg, hogy a bérlő hogyan fér hozzá a visszaállított adatbázishoz, és milyen beállításokat biztosít a helyreállításhoz. Egyszerűen lehetővé teheti, hogy a bérlő egy korábbi pontban tekintse át az adataikat, ami bizonyos helyzetekben szükséges.
 
-* **Visszaállítás helyben** : a második minta akkor hasznos, ha az adatvesztés vagy sérült, és a bérlő egy korábbi pontra kíván visszaállítani. A bérlő kikapcsolt állapotban van, miközben az adatbázis helyreáll. Az eredeti adatbázis törölve lett, és a visszaállított adatbázis át lett nevezve. A törlés után az eredeti adatbázis biztonsági mentési lánca továbbra is elérhető marad, így szükség esetén visszaállíthatja az adatbázist egy korábbi időpontra.
+* **Visszaállítás helyben**: a második minta akkor hasznos, ha az adatvesztés vagy sérült, és a bérlő egy korábbi pontra kíván visszaállítani. A bérlő kikapcsolt állapotban van, miközben az adatbázis helyreáll. Az eredeti adatbázis törölve lett, és a visszaállított adatbázis át lett nevezve. A törlés után az eredeti adatbázis biztonsági mentési lánca továbbra is elérhető marad, így szükség esetén visszaállíthatja az adatbázist egy korábbi időpontra.
 
 Ha az adatbázis [aktív földrajzi replikálást](active-geo-replication-overview.md) használ, és párhuzamosan állítja vissza a visszaállítást, javasoljuk, hogy a visszaállított másolatból másolja ki a szükséges összes adatforrást az eredeti adatbázisba. Ha lecseréli az eredeti adatbázist a visszaállított adatbázisra, újra kell konfigurálnia és szinkronizálnia kell a Geo-replikációt.
 
@@ -74,9 +74,9 @@ A helyreállítási forgatókönyvek bemutatásához először "véletlenül" t�
 
 ### <a name="accidentally-delete-the-last-event"></a>"Véletlenül" törli a legutóbbi eseményt
 
-1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ *Demo-RestoreTenant.ps1* , és állítsa be a következő értéket:
+1. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ *Demo-RestoreTenant.ps1*, és állítsa be a következő értéket:
 
-   * **$DemoScenario**  =  **1** . *törölje az utolsó eseményt (Ticket Sales nélkül)* .
+   * **$DemoScenario**  =  **1**. *törölje az utolsó eseményt (Ticket Sales nélkül)*.
 2. Nyomja le az F5 billentyűt a szkript futtatásához és az utolsó esemény törléséhez. A következő megerősítő üzenet jelenik meg:
 
    ```Console
@@ -94,8 +94,8 @@ Ez a gyakorlat visszaállítja a contoso Concert Hall-adatbázist az esemény t�
  A *Restore-TenantInParallel.ps1* szkript létrehoz egy *ContosoConcertHall \_ Old* nevű párhuzamos bérlői adatbázist egy párhuzamos katalógus-bejegyzéssel. Ez a visszaállítási minta a kisebb adatvesztéssel való helyreállításhoz ideális megoldás. Akkor is használhatja ezt a mintát, ha megfelelőségi vagy naplózási célból át kell tekintenie az adatelemzési célokat. Az [aktív földrajzi replikálás](active-geo-replication-overview.md)használata ajánlott módszer.
 
 1. Fejezze be a [bérlő szimulálása véletlen adattörlési](#simulate-a-tenant-accidentally-deleting-data) szakaszt.
-2. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_ .
-3. **$DemoScenario**  =  **2** beállítása, *a bérlő visszaállítása párhuzamosan* .
+2. A PowerShell ISE-ben nyissa meg a... \\ Tanulási modulok \\ üzletmenet-folytonossági és vész-helyreállítási \\ RestoreTenant \\ _Demo-RestoreTenant.ps1_.
+3. **$DemoScenario**  =  **2** beállítása, *a bérlő visszaállítása párhuzamosan*.
 4. A szkript futtatásához nyomja le az F5 billentyűt.
 
 A parancsfájl visszaállítja a bérlői adatbázist egy adott időpontra, mielőtt törölné az eseményt. A rendszer visszaállítja az adatbázist egy _ContosoConcertHall \_ régi_ nevű új adatbázisba. A rendszer törli a visszaállított adatbázisban található katalógus-metaadatokat, majd a *ContosoConcertHall \_ régi* neve alapján létrehozott kulccsal felveszi az adatbázist a katalógusba.
@@ -106,7 +106,7 @@ A böngészőben megjelenő események görgetésével ellenőrizze, hogy az el�
 
 A visszaállított bérlő további bérlőként való kimutatása, a saját események alkalmazásával azonban nem valószínű, hogy hogyan biztosítanak bérlői hozzáférést a visszaállított adatokhoz. A visszaállítási minta szemléltetésére szolgál. Általában csak olvasási hozzáférést adhat a régi adathoz, és megtarthatja a visszaállított adatbázist egy meghatározott időtartamra. A mintában törölheti a visszaállított bérlői bejegyzést, miután végzett a _visszaállított bérlő eltávolítása_ forgatókönyv futtatásával.
 
-1. Állítsa be **$DemoScenario**  =  **4** , a *visszaállított bérlő eltávolítása* .
+1. Állítsa be **$DemoScenario**  =  **4**, a *visszaállított bérlő eltávolítása*.
 2. A szkript futtatásához nyomja le az F5 billentyűt.
 3. A *ContosoConcertHall \_ régi* bejegyzése már törölve lett a katalógusból. A böngészőben nyissa meg a bérlő eseményeinek oldalát.
 
@@ -115,7 +115,7 @@ A visszaállított bérlő további bérlőként való kimutatása, a saját ese
 Ez a gyakorlat visszaállítja a contoso Concert Hall bérlőjét az esemény törlését megelőző pontra. A *Restore-TenantInPlace* parancsfájl visszaállítja a bérlői adatbázist egy új adatbázisba, és törli az eredetit. Ez a visszaállítási minta leginkább a súlyos adatsérülések helyreállítására alkalmas, és előfordulhat, hogy a bérlőnek jelentős adatvesztéssel kell rendelkeznie.
 
 1. A PowerShell ISE-ben nyissa meg a **Demo-RestoreTenant.ps1** fájlt.
-2. Állítsa be **$DemoScenario**  =  **5** , *a bérlő visszaállítása a helyén* .
+2. Állítsa be **$DemoScenario**  =  **5**, *a bérlő visszaállítása a helyén*.
 3. A szkript futtatásához nyomja le az F5 billentyűt.
 
 A parancsfájl visszaállítja a bérlői adatbázist az esemény törlése előtti pontra. Első lépésként a contoso Concert Hall bérlője kikapcsolja a sort a további frissítések megelőzése érdekében. Ezt követően a rendszer a visszaállítási pontról állítja vissza a párhuzamos adatbázist. A visszaállított adatbázis neve egy időbélyegző, amely biztosítja, hogy az adatbázisnév ne legyen ütközik a bérlői adatbázis meglévő nevével. Ezután a régi bérlői adatbázist törli a rendszer, és a visszaállított adatbázist átnevezi az eredeti adatbázis nevére. Végül a contoso Concert Hall online állapotba kerül, és lehetővé teszi az alkalmazás számára a visszaállított adatbázis elérését.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
 ms.openlocfilehash: eab1304408f896f5c9d736488997c1246ae167f2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92458982"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Oktatóanyag: az ismeretek integrálása bárhová az LMS Azure Active Directory
@@ -45,14 +45,14 @@ Ahhoz, hogy az Azure AD-ben az ismereteket bárhová integrálni tudja, a katal�
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Knowledge Anywhere LMS** kifejezést a keresőmezőbe.
 1. Válassza az **ismeretek bárhol az LMS** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Knowledge bárhol, az LMS használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Tudásbázisban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Knowledge bárhol, az LMS használatával egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Tudásbázisban.
 
 Ha az Azure AD SSO-t a Knowledge Anywhere-sel szeretné konfigurálni és tesztelni, végezze el a következő építőelemeket:
 
@@ -67,8 +67,8 @@ Ha az Azure AD SSO-t a Knowledge Anywhere-sel szeretné konfigurálni és teszte
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/), a **Knowledge Anywhere** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/), a **Knowledge Anywhere** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -99,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-knowledge-anywhere-lms"></a>Az ismeretek konfigurálása bárhol az LMS-ben
 
-1. Ha szeretné automatizálni a konfigurációt a Tudásbázisban, a **bővítmény telepítése**lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
+1. Ha szeretné automatizálni a konfigurációt a Tudásbázisban, a **bővítmény telepítése** lehetőségre kattintva telepítenie kell **az alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -117,7 +117,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A képernyőfelvételen a kiválasztott SAML-beállításokkal rendelkező oldalak láthatók.](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
-6. Kattintson az **új hozzáadása**gombra.
+6. Kattintson az **új hozzáadása** gombra.
 
     ![Képernyőfelvétel: az új hozzáadása gomb a szolgáltató beállításaiban.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
@@ -135,7 +135,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     e. A **kijelentkezési URL** szövegmezőben illessze be a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
-    f. Válassza ki a **fő helyet** a **tartomány**legördülő menüjéből.
+    f. Válassza ki a **fő helyet** a **tartomány** legördülő menüjéből.
 
     : Másolja az **SP-entitás azonosítójának** értékét, és illessze be **azonosító** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
@@ -147,7 +147,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
@@ -159,13 +159,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentkezést használja azáltal, hogy hozzáférést biztosít a tudáshoz bárhol az LMS-ben.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **ismeretek bárhová az LMS**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **ismeretek bárhová az LMS** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 

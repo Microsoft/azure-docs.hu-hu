@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.openlocfilehash: fae276049ec3ff6c4bf96be38ff0d2a952731a15
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92636782"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Watch by Colors használatával
@@ -54,7 +54,7 @@ Ha a Watch by Colors az Azure AD-be való integrálását szeretné beállítani
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-watch-by-colors"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Watch by Colors használatával
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Watch by Colors használatával, a " **B. Simon** " nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Watch by Colors használatával.
+Konfigurálja és tesztelje az Azure AD SSO-t a Watch by Colors használatával, a " **B. Simon**" nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Watch by Colors használatával.
 
 Ha az Azure AD SSO-t a Watch by Colors használatával szeretné konfigurálni és tesztelni, hajtsa végre a következő építőelemeket:
 
@@ -89,13 +89,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -135,9 +135,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Képernyőfelvétel: az SAML beállítása lap, amelyen engedélyezheti az SAML-t.](./media/watch-by-colors-tutorial/config02.png)
 
-    a. Az **SAML engedélyezése** bekapcsolva **értékre** .
+    a. Az **SAML engedélyezése** bekapcsolva **értékre**.
 
-    b. Az **URL-cím** szövegmezőbe illessze be az **összevonási metaadatok URL-címét** , amelyet a Azure Portalból másolt.
+    b. Az **URL-cím** szövegmezőbe illessze be az **összevonási metaadatok URL-címét**, amelyet a Azure Portalból másolt.
 
     c. Kattintson az **Importálás** elemre, majd az alábbi mezők automatikusan kitöltik a lapon lévő automatikus kitöltést.
 
@@ -159,7 +159,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a sz
 
     ![A képernyőképen a felhasználói adatok láthatók, ahol megadhatja a leírt értékeket.](./media/watch-by-colors-tutorial/config04.png)
 
-    a. Az **Utónév** szövegmezőbe írja be a (z) " **B** " felhasználó utónevét.
+    a. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon** nevet.
 

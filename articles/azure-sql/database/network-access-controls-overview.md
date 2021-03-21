@@ -13,10 +13,10 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460007"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
@@ -142,7 +142,7 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 
 A privát hivatkozás lehetővé teszi, hogy egy **privát végponton** keresztül kapcsolódjon egy kiszolgálóhoz. A privát végpont egy magánhálózati IP-cím egy adott [virtuális hálózaton](../../virtual-network/virtual-networks-overview.md) és alhálózaton belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálói szintű IP-tűzfalszabály létrehozásával kapcsolatos rövid útmutató: [adatbázis létrehozása SQL Databaseban](single-database-create-quickstart.md).
 

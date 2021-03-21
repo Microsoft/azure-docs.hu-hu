@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/04/2020
 ms.openlocfilehash: 7e0b61c1ca6ae30044e4c9d4705bdce01eac1942
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93323685"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
@@ -58,7 +58,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
 2.  A modell képzésének megadásához válassza az **oktatói mód létrehozása** lehetőséget.  
   
-    -   **Egyetlen paraméter** : Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
+    -   **Egyetlen paraméter**: Ha ismeri a fürtözési modellben használni kívánt pontos paramétereket, megadhatja az értékek egy adott halmazát argumentumként.  
   
 3.  A **Centroids száma** mezőben adja meg, hogy hány fürtből kell kezdeni az algoritmust.  
   
@@ -66,15 +66,15 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
 4.  A tulajdonságok **inicializálásával** adhatja meg a fürt kezdeti konfigurációjának definiálásához használt algoritmust.  
   
-    -   **Első N** : egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
+    -   **Első N**: egyes adatpontok kezdeti száma az adatkészletből van kiválasztva, és a kezdeti módon használatos. 
     
          Ezt a metódust *hamis metódusnak* is nevezzük.  
   
-    -   **Véletlenszerű** : az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
+    -   **Véletlenszerű**: az algoritmus véletlenszerűen elhelyez egy adatpontot a fürtben, majd kiszámítja a kezdeti középértéket, hogy a fürt véletlenszerűen hozzárendelt pontjainak középpontját legyen. 
 
          Ezt a metódust *véletlenszerű partíciós* metódusnak is nevezzük.  
   
-    -   **K-azt jelenti + +** : ez az alapértelmezett módszer a fürtök inicializálásához.  
+    -   **K-azt jelenti + +**: ez az alapértelmezett módszer a fürtök inicializálásához.  
   
          A **k-= + +** algoritmust a 2007-as, David Arthur és Szergej Vassilvitskii javasolta, hogy elkerülje a standard k-means algoritmus általi gyenge fürtözést. A **k-azt jelenti** , hogy a + + és a standard szintű k-t is javítja, ha más módszert használ a kezdeti fürtcsomópontok kiválasztásához.  
   
@@ -83,7 +83,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
 6.  A **metrika** mezőben válassza ki a fürt vektorai közötti távolság, illetve az új adatpontok és a véletlenszerűen kiválasztott középpontját közötti távolság méréséhez használni kívánt függvényt. Azure Machine Learning a következő szektorcsoport-távolsági metrikákat támogatja:  
   
-    -   **Euklideszi** : a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
+    -   **Euklideszi**: a euklideszi távolságot általában a fürtök szórásának mértékéhez használják, amely a fürtözést jelenti. Ez a mérőszám előnyben részesített, mert a lekicsinyíti a pontok és a centroids közötti átlagos távolságot.
   
 7.  Az **Ismétlések** mezőben adja meg, hogy az algoritmus hány alkalommal ismételje meg a betanítási adatmennyiséget, mielőtt véglegesíti a centroids kiválasztását.  
   
@@ -93,11 +93,11 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
      Mivel a K-azt jelenti, hogy a fürtözés nem felügyelt gépi tanulási módszer, a címkék megadása nem kötelező. Ha azonban az adatkészlet már rendelkezik címke oszloppal, ezeket az értékeket használhatja a fürtök kijelölésének irányításához, vagy megadhatja, hogy a rendszer figyelmen kívül hagyja-e az értékeket.  
   
-    -   **Címke oszlopának mellőzése** : a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
+    -   **Címke oszlopának mellőzése**: a címke oszlopban szereplő értékek figyelmen kívül lesznek hagyva, és nem használatosak a modell felépítésekor.
   
-    -   **Hiányzó értékek kitöltése** : a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
+    -   **Hiányzó értékek kitöltése**: a címke oszlop értékei a fürtök létrehozásához használható funkciókként használatosak. Ha bármelyik sorban hiányzik egy címke, az érték más funkciók használatával lesz beszámítva.  
   
-    -   **Felülírás a legközelebb a középponthoz** : a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
+    -   **Felülírás a legközelebb a középponthoz**: a felirat oszlopainak értékei az aktuális középpontját legközelebb eső pont címkéjével lesznek lecserélve.  
 
 8.  Válassza a **funkciók normalizálása** lehetőséget, ha a betanítás előtt szeretné normalizálni a szolgáltatásokat.
   

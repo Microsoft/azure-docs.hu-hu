@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460341"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure szinapszis Analytics megosztott metaadatok
@@ -52,7 +52,7 @@ További információ: az [Azure szinapszis Analytics megosztott adatbázisa](da
 
 Ha egy metaadat-objektumot törölnek vagy módosítanak a Sparktal, a módosítások bekerülnek a kiszolgáló nélküli SQL-készletbe, és propagálva lesznek. A szinkronizálás aszinkron módon történik, és a módosítások rövid késleltetés után az SQL-motorban is megjelennek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisairól](database.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

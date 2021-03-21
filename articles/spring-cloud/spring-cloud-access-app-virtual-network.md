@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99576531"
 ---
 # <a name="access-your-application-in-a-private-network"></a>Hozzáférés az alkalmazáshoz egy magánhálózati hálózaton
@@ -44,7 +44,7 @@ Ha a magánhálózati DNS-zónát a virtuális hálózathoz szeretné kapcsolni,
 
 2. A bal oldali ablaktáblán válassza a **virtuális hálózati kapcsolatok** elemet.
 
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 
 4. Adja meg az **Azure-Spring-Cloud-DNS-link** **nevet a hivatkozás nevéhez**.
 

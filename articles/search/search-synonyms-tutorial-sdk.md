@@ -1,5 +1,5 @@
 ---
-title: Szinonimák C# – példa
+title: Szinonimák – C#-példa
 titleSuffix: Azure Cognitive Search
 description: Ebből a C#-példaból megtudhatja, hogyan adhatja hozzá a szinonima funkciót az Azure Cognitive Search egy indexéhez. A szinonimák leképezése az egyenértékű kifejezések listája. A szinonimákat támogató mezők kibontják a lekérdezéseket, hogy tartalmazzák a felhasználó által megadott kifejezést és az összes kapcsolódó szinonimát.
 manager: nitinme
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 50d5d73e71b8129f061ec49b363a0ebb13d22bdf
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97704656"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Példa: az Azure Cognitive Search szinonimáinak hozzáadása a C-ben #
@@ -170,7 +170,7 @@ A szinonimák hozzáadásával teljesen megváltozik a keresési élmény. Ebben
 
 Egy példa után a leggyorsabb megoldás az Azure Cognitive Search szolgáltatást tartalmazó erőforráscsoport törlése. Most törölheti az erőforráscsoportot, amivel véglegesen eltávolíthatja a teljes tartalmát. A portálon az erőforráscsoport neve az Azure Cognitive Search szolgáltatás áttekintés lapján található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a példa a C#-kódban szereplő szinonimák funkciót mutatta be a leképezési szabályok létrehozásához és közzétételéhez, majd a szinonimák leképezésének meghívásához a lekérdezésen. További információt a [.NET SDK](/dotnet/api/overview/azure/search.documents-readme) és a [REST API](/rest/api/searchservice/) referencia-dokumentációjában találhat.
 

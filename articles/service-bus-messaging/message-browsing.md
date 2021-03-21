@@ -4,10 +4,10 @@ description: Service Bus üzenetek tallózása és betekintés funkció lehetőv
 ms.topic: article
 ms.date: 11/11/2020
 ms.openlocfilehash: c52c9c967d4eada1a931e188ed4d25f7691cfb91
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553641"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
@@ -22,7 +22,7 @@ A betekintés a zárolt és jelenleg más fogadók által feldolgozott üzenetek
 
 ## <a name="peek-apis"></a>Betekintési API-k
 
-A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódusok léteznek a .net-és Java-ügyféloldali kódtárakban és a fogadó objektumokon: **MessageReceiver** , **MessageSession**. A betekintés a várólistákon, előfizetéseken és a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
+A [betekintési/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) és [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metódusok léteznek a .net-és Java-ügyféloldali kódtárakban és a fogadó objektumokon: **MessageReceiver**, **MessageSession**. A betekintés a várólistákon, előfizetéseken és a hozzájuk tartozó kézbesítetlen levelek várólistáján működik.
 
 Ha többször hívja meg a hívást, a **betekintés** a várólista összes üzenetét vagy az előfizetési naplóban lévő összes üzenetet a legalacsonyabb rendelkezésre álló sorozatszámból a legmagasabb értékre sorolja fel. Ez az a sorrend, amelyben az üzenetek várólistán lévő voltak, nem pedig az, hogy az üzenetek végül milyen sorrendben lesznek lekérdezve.
 

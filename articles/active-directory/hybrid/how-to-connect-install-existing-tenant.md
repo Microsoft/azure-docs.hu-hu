@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93420529"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect: Ha meglévő Bérlővel rendelkezik
@@ -34,7 +34,7 @@ A helyszínen és a felhőben is kezelheti a felhasználókat. Ennek a konfigur�
 Ha olyan Azure AD-felhasználók felügyeletét kezdte meg, amelyek a helyszíni AD-ben is szerepelnek, és később a kapcsolódást szeretnék használni, akkor további szempontokat is figyelembe kell vennie.
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Szinkronizálás meglévő felhasználókkal az Azure AD-ben
-A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName** , **ProxyAddresses** és **sourceAnchor** / **immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek** nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
+A Azure AD Connect telepítésekor és a szinkronizálás megkezdése után az Azure AD Sync Service (az Azure AD-ben) minden új objektumon bekerül, és megpróbál megkeresni egy meglévő objektumot. Ehhez a folyamathoz három attribútumot kell használni: **userPrincipalName**, **ProxyAddresses** és **sourceAnchor** / **immutableID**. A **userPrincipalName** és a **ProxyAddresses** egyezését a rendszer **puha egyezésnek** nevezzük. A **sourceAnchor** való egyezés a **rögzített egyezés**. A **ProxyAddresses** attribútum csak az **SMTP:** értékkel rendelkező értéket használja, amely az elsődleges e-mail-cím, amelyet a rendszer a kiértékeléshez használ.
 
 A egyezés csak a kapcsolatból érkező új objektumok esetében lesz kiértékelve. Ha módosít egy meglévő objektumot, hogy az a fenti attribútumok bármelyikének megfelelő legyen, akkor egy hibaüzenet jelenik meg.
 
@@ -74,5 +74,5 @@ Néhány ügyfél csak felhőalapú megoldást indít az Azure AD-vel, és nem r
 
 Ha az egyetlen ok, amiért a helyszíni AD hozzáadását tervezi a LOBs (üzletági alkalmazások) támogatásához, érdemes lehet inkább az [Azure ad tartományi szolgáltatásokat](../../active-directory-domain-services/index.yml) használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -5,10 +5,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221009"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
@@ -23,11 +23,11 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Nyissa meg Data Lake Analytics-fiókját, és válassza a **diagnosztikai naplók** lehetőséget a __figyelő__ szakaszban. Ezután válassza __a diagnosztika bekapcsolása__elemet.
+2. Nyissa meg Data Lake Analytics-fiókját, és válassza a **diagnosztikai naplók** lehetőséget a __figyelő__ szakaszban. Ezután válassza __a diagnosztika bekapcsolása__ elemet.
 
     ![Képernyőfelvétel: a "diagnosztikai naplók" művelet be van jelölve, és "a diagnosztika bekapcsolása a következő naplók összegyűjtéséhez" kiemelve.](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. A __diagnosztikai beállítások__területen adja meg a naplózási konfiguráció __nevét__ , majd válassza a naplózási beállítások lehetőséget.
+3. A __diagnosztikai beállítások__ területen adja meg a naplózási konfiguráció __nevét__ , majd válassza a naplózási beállítások lehetőséget.
 
     ![Diagnosztika bekapcsolása a naplózási és a kérési naplók összegyűjtéséhez](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Diagnosztikai naplók engedélyezése")
 
@@ -40,7 +40,7 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
      * Kattintson a __küldés log Analytics__ gombra az adatAzure monitor szolgáltatásba való küldéséhez. Akkor használja ezt a beállítást, ha Azure Monitor naplókat kíván használni a naplók összegyűjtéséhez és elemzéséhez.
    * Itt adhatja meg, hogy szeretné-e naplózni a naplókat vagy a kérelmeket, vagy mindkettőt.  A kérelmek naplója minden API-kérést rögzít. A napló az adott API-kérelem által aktivált összes műveletet rögzíti.
 
-   * A __Storage-fiókba való archiváláshoz__határozza meg, hogy hány nap elteltével szeretné megőrizni az adatok mennyiségét.
+   * A __Storage-fiókba való archiváláshoz__ határozza meg, hogy hány nap elteltével szeretné megőrizni az adatok mennyiségét.
 
    * Kattintson a __Mentés__ gombra.
 
@@ -49,7 +49,7 @@ A diagnosztikai naplózás lehetővé teszi az adathozzáférés-naplózási nyo
 
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>A naplózási adatkészletet tartalmazó Azure Storage-fiók használata
 
-1. A naplózási adattárolást tartalmazó blob-tárolók megjelenítéséhez nyissa meg a naplózáshoz Data Lake Analytics használt Azure Storage-fiókot, majd kattintson a __Blobok__elemre.
+1. A naplózási adattárolást tartalmazó blob-tárolók megjelenítéséhez nyissa meg a naplózáshoz Data Lake Analytics használt Azure Storage-fiókot, majd kattintson a __Blobok__ elemre.
 
    * A Container- **elemzések – naplók – naplózás** tartalmazza a naplókat.
    * A Container-elemzések **– naplók – a kérelmek** a kérelmek naplóit tartalmazzák.
@@ -125,7 +125,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -139,7 +139,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
 | Elérési út |Sztring |A művelet végrehajtásának elérési útja |
@@ -175,7 +175,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -187,13 +187,13 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 | properties |JSON |A részletekért tekintse meg a következő szakaszt (naplózási napló tulajdonságai sémája). |
 
 > [!NOTE]
-> a **resultType** és a **resultSignature** adatokat biztosítanak egy művelet eredményéről, és csak akkor tartalmaznak értéket, ha egy művelet befejeződött. Például csak akkor tartalmaznak értéket, ha a **OperationName** **JobStarted** vagy **JobEnded**értéket tartalmaz.
+> a **resultType** és a **resultSignature** adatokat biztosítanak egy művelet eredményéről, és csak akkor tartalmaznak értéket, ha egy művelet befejeződött. Például csak akkor tartalmaznak értéket, ha a **OperationName** **JobStarted** vagy **JobEnded** értéket tartalmaz.
 >
 >
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
 | JobName |Sztring |A feladatokhoz megadott név |
@@ -204,7 +204,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 | Párhuzamosság |Sztring |A feladatokhoz a küldés során kért Data Lake Analytics egységek száma |
 
 > [!NOTE]
-> A **SubmitTime**, a **kezdő időpont**, a **Befejezés**és a **párhuzamosság** a művelettel kapcsolatos információkat biztosít. Ezek a bejegyzések csak akkor tartalmaznak értéket, ha a művelet elindult vagy befejeződött. Például a **SubmitTime** csak akkor tartalmaz értéket, ha a **operationName** értéke **JobSubmitted**.
+> A **SubmitTime**, a **kezdő időpont**, a **Befejezés** és a **párhuzamosság** a művelettel kapcsolatos információkat biztosít. Ezek a bejegyzések csak akkor tartalmaznak értéket, ha a művelet elindult vagy befejeződött. Például a **SubmitTime** csak akkor tartalmaz értéket, ha a **operationName** értéke **JobSubmitted**.
 
 ## <a name="process-the-log-data"></a>A napló adatfeldolgozása
 

@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: b7f2f060f32cf3bf92660a2e8b75a45b7ec76b82
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92779764"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Az Azure SQL felügyelt példányának tartalmi referenciája
@@ -79,9 +79,9 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 
 - [Riasztások létrehozása a felügyelt példányhoz](alerts-create.md)
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
-- [Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon](user-initiated-failover.md)
+- [Felhasználó által, felügyelt SQL-példányon kezdeményezett manuális feladatátvétel](user-initiated-failover.md)
 
 ## <a name="develop-applications"></a>Alkalmazások fejlesztése
 

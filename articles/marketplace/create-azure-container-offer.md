@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
 ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459568"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure-tárolóra vonatkozó ajánlat létrehozása az Azure Marketplace-en
@@ -91,7 +91,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához használt kategóriákat, valamint az ajánlatot támogató jogi szerződéseket.
 
-#### <a name="category"></a>Category
+#### <a name="category"></a>Kategória
 
 Válassza ki a kategóriákat és alkategóriákat, hogy az ajánlatot a piactér megfelelő keresési területein helyezze el. Ügyeljen arra, hogy az ajánlata milyen módon támogassa ezeket a kategóriákat az ajánlat leírásában. A következők szerint válasszon:
 
@@ -133,7 +133,7 @@ Ezen a lapon megadhatja a kereskedelmi piactéren megjelenő ajánlat részletei
 > [!NOTE]
 > Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 

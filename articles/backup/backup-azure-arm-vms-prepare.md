@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: f6fe2f629742e15e62dfc13106e92623a4b45add
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92172747"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
@@ -52,8 +52,8 @@ Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../stor
 Módosítsa a tárolási replikálás típusát a következőképpen:
 
 1. Az új tárolóban válassza a **Tulajdonságok** lehetőséget a **Beállítások** szakaszban.
-2. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen válassza a **frissítés**lehetőséget.
-3. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
+2. A **Tulajdonságok** alatt a **biztonsági mentés konfigurálása** területen válassza a **frissítés** lehetőséget.
+3. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés** gombra.
 
       ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
@@ -68,22 +68,22 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 
    ![Biztonsági mentés gomb](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-1. A **biztonsági mentés célja**, hogy  >  **hol fut a munkaterhelés?** válassza az **Azure**lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép**  >   **OK**elemet. Ezzel regisztrálja a virtuálisgép-bővítményt a tárolóban.
+1. A **biztonsági mentés célja**, hogy  >  **hol fut a munkaterhelés?** válassza az **Azure** lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép**  >   **OK** elemet. Ezzel regisztrálja a virtuálisgép-bővítményt a tárolóban.
 
    ![Biztonsági mentési és biztonsági mentési célok ablaktáblái](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-1. A **biztonsági mentési házirendben**válassza ki a tárolóhoz társítandó szabályzatot.
+1. A **biztonsági mentési házirendben** válassza ki a tárolóhoz társítandó szabályzatot.
     * Az alapértelmezett házirend naponta egyszer biztonsági másolatot készít a virtuális gépről. A napi biztonsági mentések 30 napig őrződnek meg. Az azonnali helyreállítási pillanatképeket két napig őrzi meg a rendszer.
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-    * Ha nem szeretné használni az alapértelmezett házirendet, válassza az **új létrehozása**lehetőséget, és hozzon létre egy egyéni szabályzatot a következő eljárásban leírtak szerint.
+    * Ha nem szeretné használni az alapértelmezett házirendet, válassza az **új létrehozása** lehetőséget, és hozzon létre egy egyéni szabályzatot a következő eljárásban leírtak szerint.
 
-1. A **Virtual Machines**területen válassza a **Hozzáadás**lehetőséget.
+1. A **Virtual Machines** területen válassza a **Hozzáadás** lehetőséget.
 
       ![Virtuális gépek hozzáadása](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. Ekkor megnyílik a **virtuális gépek kiválasztása** panel. Válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezután válassza az **OK** gombot.
+1. Ekkor megnyílik a **virtuális gépek kiválasztása** panel. Válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ez után válassza az **OK** gombot.
 
    * A kiválasztott virtuális gépek ellenőrzése megtörtént.
    * Csak a tárolóval megegyező régióban lévő virtuális gépeket lehet kiválasztani.
@@ -94,7 +94,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
     >[!NOTE]
     > Az ugyanabban a régióban és előfizetésben lévő összes virtuális gép elérhető a biztonsági mentés konfigurálásához. A biztonsági mentés konfigurálásakor megkeresheti a virtuális gép nevét és az erőforráscsoportot, még akkor is, ha nem rendelkezik a szükséges engedélyekkel ezekhez a virtuális gépekhez. Ha a virtuális gép lágyan törölt állapotban van, akkor ez a lista nem jelenik meg. Ha újra kell védetté tenni a virtuális gépet, meg kell várnia, amíg a helyreállított törlési időszak lejár, vagy visszavonja a virtuális gép törlését a nem kötelezően törölt listából. További információkért lásd [a virtuális gépek Soft delete szolgáltatását ismertető cikket](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
-1. A **biztonsági mentés**területen válassza a **biztonsági mentés engedélyezése**lehetőséget. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
+1. A **biztonsági mentés** területen válassza a **biztonsági mentés engedélyezése** lehetőséget. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
 
 A biztonsági mentés engedélyezése után:
 
@@ -109,13 +109,13 @@ A biztonsági mentés engedélyezése után:
 
 Ha új biztonsági mentési szabályzatot jelölt ki, töltse ki a házirend-beállításokat.
 
-1. A **Házirend neve**mezőben adjon meg egy értelmes nevet.
-2. A **biztonsági mentés ütemezése**területen határozza meg, hogy a biztonsági mentés mikor történjen. Az Azure-beli virtuális gépek napi vagy heti biztonsági mentését is elvégezheti.
-3. Az **azonnali visszaállítás**mezőben adja meg, hogy az azonnali visszaállításhoz milyen hosszan szeretné megőrizni a pillanatképeket helyileg.
+1. A **Házirend neve** mezőben adjon meg egy értelmes nevet.
+2. A **biztonsági mentés ütemezése** területen határozza meg, hogy a biztonsági mentés mikor történjen. Az Azure-beli virtuális gépek napi vagy heti biztonsági mentését is elvégezheti.
+3. Az **azonnali visszaállítás** mezőben adja meg, hogy az azonnali visszaállításhoz milyen hosszan szeretné megőrizni a pillanatképeket helyileg.
     * A visszaállításkor a rendszer átmásolja a virtuális gép lemezeit a tárterületről a hálózatról a helyreállítási tároló helyére. Az azonnali visszaállítással a biztonsági mentési feladatok során készített helyileg tárolt pillanatképeket is kihasználhatja, anélkül, hogy a biztonsági mentési adatok átvitelére kellene várnia a tárolóba.
     * Az azonnali visszaállításhoz a pillanatképeket egy-öt nap alatt megtarthatja. Két nap az alapértelmezett beállítás.
-4. A **megőrzési tartomány**mezőben adja meg, hogy mennyi ideig szeretné megőrizni a napi vagy heti biztonsági mentési pontokat.
-5. A **havi biztonsági mentési pontok megőrzése** és **az éves biztonsági mentési pontok megőrzése**érdekében adja meg, hogy a napi vagy heti biztonsági mentések havi vagy éves biztonsági mentését kívánja-e megőrizni.
+4. A **megőrzési tartomány** mezőben adja meg, hogy mennyi ideig szeretné megőrizni a napi vagy heti biztonsági mentési pontokat.
+5. A **havi biztonsági mentési pontok megőrzése** és **az éves biztonsági mentési pontok megőrzése** érdekében adja meg, hogy a napi vagy heti biztonsági mentések havi vagy éves biztonsági mentését kívánja-e megőrizni.
 6. A szabályzat mentéséhez kattintson **az OK gombra** .
 
     ![Új biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/new-policy.png)
@@ -128,11 +128,11 @@ Ha új biztonsági mentési szabályzatot jelölt ki, töltse ki a házirend-be�
 A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak szerint azonnal futtatható:
 
 1. A tároló menüben válassza a **biztonsági másolati elemek elemet**.
-2. A **biztonsági másolati elemek**területen válassza az Azure-beli **virtuális gép**lehetőséget.
+2. A **biztonsági másolati elemek** területen válassza az Azure-beli **virtuális gép** lehetőséget.
 3. A **biztonsági mentési elemek** listában válassza a három pontot (...).
-4. Válassza a **biztonsági mentés**lehetőséget.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután válassza az **OK** gombot.
-6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+4. Válassza a **biztonsági mentés** lehetőséget.
+5. A **biztonsági mentés most** a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ez után válassza az **OK** gombot.
+6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban** vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése
 
@@ -168,7 +168,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 
 **VM** | **Részletek**
 --- | ---
-**Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal **WaAppAgent.exe**  >  **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal **WaAppAgent.exe**  >  **Tulajdonságok** elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](../virtual-machines/linux/endorsed-distros.md) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
 
 ## <a name="next-steps"></a>Következő lépések

@@ -11,10 +11,10 @@ ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a19d1f26616697e15ae4c39a63c44bdaf83f78f9
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101675766"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása Azure PowerShell
@@ -53,7 +53,7 @@ Install-Module -Name Az.Synapse
 
 1. Adja meg a szükséges környezeti változókat az Azure szinapszis-munkaterület erőforrásainak létrehozásához.
 
-   |        Változó neve        |                                                 Leírás                                                 |
+   |        Változó neve        |                                                 Description                                                 |
    | --------------------------- | ----------------------------------------------------------------------------------------------------------- |
    | StorageAccountName          | A meglévő ADLS Gen2 Storage-fiók neve.                                                           |
    | StorageAccountResourceGroup | A meglévő ADLS Gen2 Storage-fiók erőforráscsoport neve.                                             |

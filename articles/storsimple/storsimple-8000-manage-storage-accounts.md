@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 0df0c12d5942179e2492bfdc932fa25d126a2426
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96016870"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple Eszközkezelő szolgáltatás használata a Storage-fiók hitelesítő adatainak kezeléséhez
@@ -176,6 +176,6 @@ A kulcs sikeres szinkronizálása után értesítést kap.
    2. Frissítenie kell a Storage hozzáférési kulcsát a StorSimple Eszközkezelő szolgáltatásban. Ebben az esetben a Storage hozzáférési kulcsát láthatja. Adja meg az új kulcsot a **Storage-fiók elérési kulcsa** mezőben. 
    3. Mentse a módosításokat. Most frissíteni kell a Storage-fiók hozzáférési kulcsát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple biztonságáról](storsimple-8000-security.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).

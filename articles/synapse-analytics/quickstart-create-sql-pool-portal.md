@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96462012"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a Azure Portal használatával
@@ -65,7 +65,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 ![dedikált SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget.
-6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Kattintson a **Létrehozás** gombra.
+6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Válassza a **Létrehozás** lehetőséget.
 ![dedikált SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Ekkor elindul az erőforrás-kiépítési folyamat.
@@ -91,7 +91,7 @@ Ha törölni szeretné a dedikált SQL-készletet, hajtsa végre a következő l
 1. Erősítse meg a törlést, **majd nyomja le a Delete (** törlés ![ ) gombra dedikált SQL-készlet – áttekintés – a törlés megerősítésének kijelölését.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Ha a folyamat sikeresen befejeződik, a dedikált SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd [: gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: gyors útmutató: kiszolgáló nélküli Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

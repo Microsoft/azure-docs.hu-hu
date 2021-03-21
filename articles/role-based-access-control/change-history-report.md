@@ -11,10 +11,10 @@ ms.date: 03/01/2021
 ms.author: rolyon
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
 ms.openlocfilehash: d9b39bc9a2f00fe83cae0ff78c6346042967e8bf
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102042127"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Az Azure RBAC változásaival kapcsolatos tevékenységek naplóinak megtekintése
@@ -55,7 +55,7 @@ További információ a tevékenységi naplókról: [tevékenység-naplók megte
 A JSON lapon, Azure PowerShell vagy az Azure CLI-ből származó napló kimenete számos információt tartalmazhat. Íme néhány olyan fő tulajdonság, amely a naplóbejegyzések értelmezésére tett kísérlet során keres. A naplók kimenetének Azure PowerShell vagy az Azure CLI használatával történő szűréséhez tekintse meg a következő részeket.
 
 > [!div class="mx-tableFixed"]
-> | Tulajdonság | Példaértékek | Leírás |
+> | Tulajdonság | Példaértékek | Description |
 > | --- | --- | --- |
 > | engedélyezés: művelet | Microsoft.Authorization/roleAssignments/write | Szerepkör-hozzárendelés létrehozása |
 > |  | Microsoft. Authorization/roleAssignments/delete | Szerepkör-hozzárendelés törlése |

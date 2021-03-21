@@ -11,10 +11,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 07/29/2019
 ms.openlocfilehash: 4b3235f457f1c6475c18045886c49d3dd2ca2242
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92671181"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Oktatóanyag: a Azure SQL Database C&#x23; és a ADO.NET-ben található, viszonyítási adatbázis tervezése
@@ -91,7 +91,7 @@ A SQL Database egy IP-tűzfalat hoz létre a kiszolgáló szintjén. Ez a tűzfa
 > [!IMPORTANT]
 > Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni a szolgáltatáshoz, előfordulhat, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ha igen, nem tud csatlakozni az adatbázishoz, ha a rendszergazda megnyitja a 1433-es portot.
 
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a *yourDatabase* elemre az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes **kiszolgálónevet** (például *YourServer.database.Windows.net* ), és további konfigurálási lehetőségeket biztosít.
+1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a *yourDatabase* elemre az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő lapja, amely megjeleníti a teljes **kiszolgálónevet** (például *YourServer.database.Windows.net*), és további konfigurálási lehetőségeket biztosít.
 
 2. Másolja ezt a teljes kiszolgálónevet, hogy a kiszolgálóhoz és az adatbázisokhoz való kapcsolódáshoz SQL Server Management Studio.
 

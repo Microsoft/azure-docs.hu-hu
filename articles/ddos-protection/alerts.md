@@ -12,31 +12,31 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575294"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS Protection-riasztások megtekintése és konfigurálása
 
-Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A riasztás konfigurálható a DDoS Protection által elérhetővé tett Azure Monitor metrikák bármelyikéhez. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
+Azure DDoS Protection a standard részletes támadási elemzéseket és vizualizációkat biztosít a DDoS Attack Analytics használatával. A DDoS-támadásokkal szemben a virtuális hálózatokat védő ügyfelek részletesen megtekinthetik a támadási forgalmat, valamint a támadás enyhítésére tett lépéseket a támadásokkal kapcsolatos kockázatcsökkentő jelentésekben & a kockázatcsökkentő folyamat naplófájljait. A gazdag telemetria Azure Monitoron keresztül érhető el, beleértve a DDoS-támadások időtartama alatt részletes mérőszámokat is. A DDoS Protection által közzétett Azure Monitor-metrikákhoz konfigurálhatók riasztások. A naplózás az [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), a splunk (Azure Event Hubs), a OMS log Analytics és az Azure Storage szolgáltatással is integrálható a Azure monitor diagnosztikai felületen keresztül haladó elemzésekhez.
 
 Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
-> * Riasztások konfigurálása Azure Monitor
-> * Riasztások konfigurálása a portálon keresztül
-> * Riasztások megtekintése Azure Security Center
+> * Riasztások konfigurálása az Azure Monitoron
+> * Riasztások konfigurálása az Azure Portalon
+> * Riasztások megtekintése az Azure Security Centerben
 > * A riasztások ellenőrzése és tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 - Az oktatóanyag lépéseinek elvégzése előtt először létre kell hoznia egy [Azure DDoS standard Protection-csomagot](manage-ddos-protection.md) , és a DDoS Protection szabványnak engedélyezve kell lennie egy virtuális hálózaton.
-- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nem rendelkezik nyilvános IP-címmel rendelkező erőforrásokkal a virtuális hálózaton, először létre kell hoznia egy nyilvános IP-címmel rendelkező erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.     
+- A DDoS figyeli a virtuális hálózaton belüli erőforrásokhoz rendelt nyilvános IP-címeket. Ha nincsenek nyilvános IP-címmel rendelkező erőforrások a virtuális hálózatban, először létre kell hoznia egy nyilvános IP-című erőforrást. Az [Azure-szolgáltatások virtuális hálózata](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) (beleértve az Azure Load balancert, ahol a háttérbeli virtuális gépek a virtuális hálózaton vannak), a Resource Managerrel telepített összes erőforrás nyilvános IP-címét nyomon követheti, kivéve Azure app Service környezetekben. Az oktatóanyag folytatásához gyorsan létrehozhat egy Windows vagy [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) [rendszerű](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépet.     
 
-## <a name="configure-alerts-through-azure-monitor"></a>Riasztások konfigurálása Azure Monitor
+## <a name="configure-alerts-through-azure-monitor"></a>Riasztások konfigurálása az Azure Monitoron
 
 Ezekkel a sablonokkal olyan nyilvános IP-címekre vonatkozó riasztásokat konfigurálhat, amelyeken engedélyezve van a diagnosztikai bejelentkezés. Ezért ahhoz, hogy használni lehessen ezeket a riasztási sablonokat, először egy Log Analytics munkaterületre lesz szüksége, amelyen engedélyezve van a diagnosztikai beállítások. Lásd: [DDoS diagnosztikai naplózás megtekintése és konfigurálása](diagnostic-logging.md).
 
@@ -52,7 +52,7 @@ Ez a [sablon](https://aka.ms/ddosalert) egy dúsított DDoS-elhárítási riaszt
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FDDoS%2520Mitigation%2520Alert%2520Enrichment%2FEnrich-DDoSAlert.json)
 
-## <a name="configure-alerts-through-portal"></a>Riasztások konfigurálása a portálon keresztül
+## <a name="configure-alerts-through-portal"></a>Riasztások konfigurálása az Azure Portalon
 
 A rendelkezésre álló DDoS-védelmi mérőszámok bármelyikét kiválaszthatja, ha riasztást szeretne kapni, ha a támadás során aktív megoldás van a Azure Monitor riasztás konfigurációjának használatával. 
 
@@ -74,7 +74,7 @@ A támadások észlelése néhány percen belül egy e-mailt kap Azure Monitor m
 
 További információ: [webhookok](../azure-monitor/alerts/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [logikai alkalmazások](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) konfigurálása riasztások létrehozásához.
 
-## <a name="view-alerts-in-azure-security-center"></a>Riasztások megtekintése Azure Security Center
+## <a name="view-alerts-in-azure-security-center"></a>Riasztások megtekintése az Azure Security Centerben
 
 Azure Security Center a [biztonsági riasztások](../security-center/security-center-managing-and-responding-alerts.md)listáját tartalmazza, és információt nyújt a problémák kivizsgálásához és javításához. Ezzel a funkcióval egységes nézetet kap a riasztásokról, többek között a DDoS-támadásokkal kapcsolatos riasztásokról, valamint a támadásoknak a közeljövőben történő enyhítésére tett műveletekről.
 A DDoS-támadások észlelésének és enyhítésének két konkrét riasztása jelenik meg:
@@ -95,9 +95,9 @@ A DDOS-támadások szimulálása a riasztások ellenőrzéséhez lásd: a [DDoS-
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-- Riasztások konfigurálása Azure Monitor
-- Riasztások konfigurálása a portálon keresztül
-- Riasztások megtekintése Azure Security Center
+- Riasztások konfigurálása az Azure Monitoron
+- Riasztások konfigurálása az Azure Portalon
+- Riasztások megtekintése az Azure Security Centerben
 - A riasztások ellenőrzése és tesztelése
 
 A DDoS-támadások teszteléséről és szimulálásáról a szimulációs tesztelési útmutatóban talál további információt:

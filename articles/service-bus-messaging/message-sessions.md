@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a munkamenetek a kap
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98680753"
 ---
 # <a name="message-sessions"></a>Üzenet-munkamenetek
@@ -34,9 +34,9 @@ A portálon állítsa be a jelzőt a következő jelölőnégyzet bejelölésév
 ![A várólista létrehozása párbeszédpanel képernyőképe, amelyen a munkamenetek engedélyezése beállítás be van jelölve, és piros színnel van ellátva.][2]
 
 > [!NOTE]
-> Ha a munkamenetek engedélyezve vannak egy várólistán vagy egy előfizetésen, az ügyfélalkalmazások * többé **nem** küldhetnek és fogadhatnak rendszeres üzeneteket. Az összes üzenetet el kell juttatni egy munkamenet részeként (a munkamenet-azonosító beállításával), és fogadni kell a munkamenetet.
+> Ha a munkamenetek engedélyezve vannak egy várólistán vagy előfizetésen, az ügyfélalkalmazások ***többé nem*** küldhetnek és fogadhatnak rendszeres üzeneteket. Az összes üzenetet el kell juttatni egy munkamenet részeként (a munkamenet-azonosító beállításával), és fogadni kell a munkamenetet.
 
-A munkamenetek API-jai léteznek a várólista-és előfizetési ügyfeleken. Van egy kötelező modell, amely a munkamenetek és üzenetek fogadását vezérli, valamint egy kezelő-alapú modellt, amely hasonló a _OnMessage *-hoz, amely elrejti a fogadási hurok kezelésének összetettségét.
+A munkamenetek API-jai léteznek a várólista-és előfizetési ügyfeleken. Van egy kötelező modell, amely meghatározza a munkamenetek és üzenetek fogadását, valamint a *OnMessage* hasonló, a fogadási hurok kezelésének összetettségét.
 
 ### <a name="session-features"></a>Munkamenet-funkciók
 
@@ -78,8 +78,8 @@ Az üzenetek kézbesítési számának a munkamenetek kontextusában való megha
 
 | Eset | Az üzenet kézbesítési száma nő |
 |----------|---------------------------------------------|
-| A munkamenet el van fogadva, de a munkamenet zárolása lejár (időtúllépés miatt) | Igen |
-| A munkamenet elfogadása megtörtént, a munkamenetben lévő üzenetek nem lesznek végrehajtva (még akkor is, ha zárolva vannak), és a munkamenet be van zárva. | Nem |
+| A munkamenet el van fogadva, de a munkamenet zárolása lejár (időtúllépés miatt) | Yes |
+| A munkamenet elfogadása megtörtént, a munkamenetben lévő üzenetek nem lesznek végrehajtva (még akkor is, ha zárolva vannak), és a munkamenet be van zárva. | No |
 | A munkamenet elfogadva, az üzenetek befejeződtek, majd a munkamenet explicit módon be van zárva | N/A (ez a standard folyamat. Itt az üzenetek el lesznek távolítva a munkamenetből) |
 
 ## <a name="request-response-pattern"></a>Kérelem – válasz minta

@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 020e8249f57ccb1a14da798a717a00dcc3962389
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88227152"
 ---
 # <a name="double-encryption"></a>Dupla titkosítás
-A kettős titkosítás olyankor van, ahol két vagy több független titkosítási réteg van engedélyezve, hogy az egyik titkosítási réteg sérülése elleni védelmet nyújtson. Két titkosítási réteg használata csökkenti az adattitkosítással kapcsolatos fenyegetéseket. Példa:
+A kettős titkosítás olyankor van, ahol két vagy több független titkosítási réteg van engedélyezve, hogy az egyik titkosítási réteg sérülése elleni védelmet nyújtson. Két titkosítási réteg használata csökkenti az adattitkosítással kapcsolatos fenyegetéseket. Például:
 
 - Konfigurációs hibák az adattitkosításban
 - Megvalósítási hibák a titkosítási algoritmusban

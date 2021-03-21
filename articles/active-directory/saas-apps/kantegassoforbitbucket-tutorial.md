@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 52879eb7cb7a9d90113971aa66c590b99b2d5e88
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92459286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Oktatóanyag: Azure Active Directory integráció a Kantega SSO-val a bitbucket-hez
@@ -67,7 +67,7 @@ Ahhoz, hogy a bitbucket-hez készült Kantega SSO-t az Azure AD-be konfigurálja
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a bitbucket Kantega SSO-hoz a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a bitbucket Kantega SSO-hoz a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolati kapcsolat szükséges a bitbucket Kantega SSO-hoz.
 
 Az Azure AD egyszeri bejelentkezés és a bitbucket Kantega SSO használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Ha az Azure AD egyszeri bejelentkezést a bitbucket Kantega SSO-val szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/) **Kantega SSO for bitbucket** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/) **Kantega SSO for bitbucket** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Ha az Azure AD egyszeri bejelentkezést a bitbucket Kantega SSO-val szeretné ko
 
 1. Egy másik böngészőablakban jelentkezzen be a bitbucket felügyeleti portálra rendszergazdaként.
 
-1. Kattintson a fogaskerék elemre, majd az **új bővítmények keresése**elemre.
+1. Kattintson a fogaskerék elemre, majd az **új bővítmények keresése** elemre.
 
     ![A képernyőképen a BitBucket-felügyelet a kiválasztott új bővítményekkel lehetőség látható.](./media/kantegassoforbitbucket-tutorial/addon1.png)
 
@@ -160,7 +160,7 @@ Ha az Azure AD egyszeri bejelentkezést a bitbucket Kantega SSO-val szeretné ko
 
     ![Képernyőfelvétel: az Kantega egyetlen Sign-On az Azure A D-vel kiválasztva az identitás-szolgáltatóként.](./media/kantegassoforbitbucket-tutorial/addon4.png)
 
-1. Válassza az előfizetési szint **alapszintű**lehetőséget.
+1. Válassza az előfizetési szint **alapszintű** lehetőséget.
 
     ![A képernyőképen az Azure A D előkészítése alapszintű beállítás látható.](./media/kantegassoforbitbucket-tutorial/addon5.png)
 
@@ -188,7 +188,7 @@ Ha az Azure AD egyszeri bejelentkezést a bitbucket Kantega SSO-val szeretné ko
 
     b. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**gombra.
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább** gombra.
 
     ![A képernyőképen az aláírás-ellenőrzés látható.](./media/kantegassoforbitbucket-tutorial/addon9.png)
 
@@ -218,7 +218,7 @@ Ha az Azure AD egyszeri bejelentkezést a bitbucket Kantega SSO-val szeretné ko
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -243,15 +243,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a bitbucket Kantega SSO-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Kantega egyszeri bejelentkezés bitbucket**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Kantega egyszeri bejelentkezés bitbucket** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Kantega egyszeri bejelentkezés bitbucket**lehetőséget.
+2. Az alkalmazások listában válassza a **Kantega egyszeri bejelentkezés bitbucket** lehetőséget.
 
     ![Az Kantega SSO a bitbucket hivatkozása az alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -277,11 +277,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a bi
 
     ![Képernyőfelvétel a beállítások ikont jeleníti meg.](./media/kantegassoforbitbucket-tutorial/user1.png) 
 
-1. Az **Adminisztráció** lap szakaszban kattintson a **felhasználók**elemre.
+1. Az **Adminisztráció** lap szakaszban kattintson a **felhasználók** elemre.
 
     ![Képernyőfelvétel: a BitBucket felügyelete a kiválasztott felhasználókkal. ](./media/kantegassoforbitbucket-tutorial/user2.png)
 
-1. Kattintson a **felhasználó létrehozása**gombra.
+1. Kattintson a **felhasználó létrehozása** gombra.
 
     ![Képernyőfelvétel: a BitBucket felügyelete a kiválasztott felhasználó létrehozása beállítással.](./media/kantegassoforbitbucket-tutorial/user3.png)   
 
@@ -299,7 +299,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a bi
 
     e. A **Jelszó megerősítése** szövegmezőbe írja be újra a felhasználó jelszavát.
 
-    f. Kattintson a **felhasználó létrehozása**gombra.
+    f. Kattintson a **felhasználó létrehozása** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

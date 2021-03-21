@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 15cd0979fdc2468ab50451042cd99a8442470139
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148169"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>BeAzure Resource Manageri sablon létrehozása
@@ -62,12 +62,12 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 Egy órát vesz igénybe a bevezetés létrehozásakor. Ezután a bevezető megjelenik a portálon a ASE az üzembe helyezést kiváltó előfizetéshez tartozó listájában.
 
 ## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>Az "alapértelmezett" TLS/SSL-tanúsítvány feltöltése és konfigurálása
-TLS/SSL-tanúsítványt kell társítani a kiegészítő csomaghoz, amely az alkalmazások TLS-kapcsolatainak létrehozásához használt alapértelmezett TLS/SSL-tanúsítvány. Ha a *Internal-contoso.com*alapértelmezett DNS-utótagja a, a kapcsolathoz a `https://some-random-app.internal-contoso.com` **. internal-contoso.com*érvényes TLS/SSL-tanúsítványra van szükség. 
+TLS/SSL-tanúsítványt kell társítani a kiegészítő csomaghoz, amely az alkalmazások TLS-kapcsolatainak létrehozásához használt alapértelmezett TLS/SSL-tanúsítvány. Ha a *Internal-contoso.com* alapértelmezett DNS-utótagja a, a kapcsolathoz a `https://some-random-app.internal-contoso.com` **. internal-contoso.com* érvényes TLS/SSL-tanúsítványra van szükség. 
 
 Szerezzen be egy érvényes TLS/SSL-tanúsítványt belső hitelesítésszolgáltatók használatával, tanúsítvány vásárlása külső kiállítótól vagy önaláírt tanúsítvány használatával. A TLS/SSL-tanúsítvány forrástól függetlenül a következő tanúsítvány-attribútumokat megfelelően kell konfigurálni:
 
-* **Subject**: ezt az attribútumot a **. your-root-domain-here.com*értékre kell állítani.
-* **Tulajdonos alternatív neve**: ebben az attribútumban a **. your-root-domain-here.com* és a **. SCM.your-root-domain-here.com*is szerepelnie kell. Az egyes alkalmazásokhoz társított SCM/kudu-helyhez tartozó TLS-kapcsolatok az űrlap *Your-app-Name.SCM.your-root-domain-here.com*-címeit használják.
+* **Subject**: ezt az attribútumot a **. your-root-domain-here.com* értékre kell állítani.
+* **Tulajdonos alternatív neve**: ebben az attribútumban a **. your-root-domain-here.com* és a **. SCM.your-root-domain-here.com* is szerepelnie kell. Az egyes alkalmazásokhoz társított SCM/kudu-helyhez tartozó TLS-kapcsolatok az űrlap *Your-app-Name.SCM.your-root-domain-here.com*-címeit használják.
 
 Ha egy érvényes TLS/SSL-tanúsítvánnyal rendelkezik, két további előkészítési lépésre van szükség. A TLS/SSL-tanúsítvány konvertálása/mentése. pfx-fájlként. Ne feledje, hogy a. pfx-fájlnak tartalmaznia kell az összes köztes és főtanúsítványt. Jelszóval gondoskodjon a védelméről.
 
@@ -104,7 +104,7 @@ A *azuredeploy.parameters.js* fájljának paramétereit itt találja:
 * *existingAseLocation*: az a szöveges karakterlánc, amely azt az Azure-régiót tartalmazza, ahol a ILB-központot telepítették.  Például: "az USA déli középső régiója".
 * *pfxBlobString*: a. pfx fájl bementi-kódolású karakterláncának ábrázolása. Használja a korábban bemutatott kódrészletet, és másolja a "exportedcert. pfx. b64" fájlban található karakterláncot. Illessze be a értéket a *pfxBlobString* attribútum értékeként.
 * *Password (jelszó*): a. pfx fájl védelméhez használt jelszó.
-* *certificateThumbprint*: a Tanúsítvány ujjlenyomata. Ha ezt az értéket a PowerShellből kéri le (például *$Certificate. * A korábbi kódrészletből származó ujjlenyomatot), az értéket használhatja. Ha az értéket a Windows-tanúsítvány párbeszédpanelen másolja, ne felejtse el kihúzni a felesleges szóközöket. A *certificateThumbprint* hasonlóan kell kinéznie, mint a AF3143EB61D43F6727842115BB7F17BBCECAECAE.
+* *certificateThumbprint*: a Tanúsítvány ujjlenyomata. Ha ezt az értéket a PowerShellből kéri le (például *$Certificate.* A korábbi kódrészletből származó ujjlenyomatot), az értéket használhatja. Ha az értéket a Windows-tanúsítvány párbeszédpanelen másolja, ne felejtse el kihúzni a felesleges szóközöket. A *certificateThumbprint* hasonlóan kell kinéznie, mint a AF3143EB61D43F6727842115BB7F17BBCECAECAE.
 * *certificateName*: a tanúsítvány azonosítására szolgáló, saját maga által választott, felhasználóbarát karakterlánc-azonosító. A nevet a rendszer a TLS/SSL-tanúsítványt képviselő *Microsoft. Web/Certificates* entitás egyedi Resource Manager-azonosítójának részeként használja. A névnek a következő utótaggal *kell* végződnie: \_ yourASENameHere_InternalLoadBalancingASE. Az Azure Portal ezt az utótagot használja jelzőként, hogy a tanúsítvány egy ILB-kompatibilis bemutatók biztonságossá tételére szolgál.
 
 Itt látható egy rövidített példa *azuredeploy.parameters.json* :
@@ -147,7 +147,7 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 A módosítás alkalmazása körülbelül 40 percet vesz igénybe. Ha például egy alapértelmezett méretű, két előtéri végpontot használó, a sablon körülbelül egy óra, és 20 percet vesz igénybe. Amíg a sablon fut, a kiszolgáló nem méretezhető.  
 
-A sablon befejeződése után a ILB-beadási csomag alkalmazásai HTTPS-kapcsolaton keresztül érhetők el. A kapcsolatok az alapértelmezett TLS/SSL-tanúsítvány használatával biztonságosak. Az alapértelmezett TLS/SSL-tanúsítvány akkor használatos, ha az ILB-szolgáltatón lévő alkalmazások az alkalmazás neve és az alapértelmezett állomásnév együttes használatával vannak kezelve. Például `https://mycustomapp.internal-contoso.com` a **. internal-contoso.com*alapértelmezett TLS/SSL-tanúsítványát használja.
+A sablon befejeződése után a ILB-beadási csomag alkalmazásai HTTPS-kapcsolaton keresztül érhetők el. A kapcsolatok az alapértelmezett TLS/SSL-tanúsítvány használatával biztonságosak. Az alapértelmezett TLS/SSL-tanúsítvány akkor használatos, ha az ILB-szolgáltatón lévő alkalmazások az alkalmazás neve és az alapértelmezett állomásnév együttes használatával vannak kezelve. Például `https://mycustomapp.internal-contoso.com` a **. internal-contoso.com* alapértelmezett TLS/SSL-tanúsítványát használja.
 
 Akárcsak a nyilvános több-bérlős szolgáltatáson futó alkalmazások esetében, a fejlesztők egyéni állomásnévket állíthatnak be az egyes alkalmazásokhoz. Emellett egyedi SNI TLS/SSL-tanúsítvány-kötéseket is beállíthat az egyes alkalmazásokhoz.
 

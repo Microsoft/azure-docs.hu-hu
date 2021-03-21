@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: e3649ac786c07459695a1e6ca6ad52620e23d59f
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92148808"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Ajtó figyelője – a Azure Functions és a SendGrid használatával e-mail küldése az ajtó megnyitásakor           
@@ -81,11 +81,11 @@ Miután az üzembe helyezés befejeződött, kattintson rá, majd kattintson a *
 
 ![SendGrid kezelése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-A SendGrid lapon kattintson a **Beállítások**  >  **API-kulcsok**  >  **create API-kulcs**elemre.
+A SendGrid lapon kattintson a **Beállítások**  >  **API-kulcsok**  >  **create API-kulcs** elemre.
 
 ![SendGrid első API létrehozása](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
-Az **API-kulcs létrehozása** lapon adja meg az **API-kulcs nevét** , majd kattintson a **Létrehozás & nézet**elemre.
+Az **API-kulcs létrehozása** lapon adja meg az **API-kulcs nevét** , majd kattintson a **Létrehozás & nézet** elemre.
 
 ![SendGrid API létrehozása második](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-second.png)
 
@@ -130,11 +130,11 @@ Ezután töltse be a kódot a VS Code-ban, és a szükséges Azure-szolgáltatá
 
 ### <a name="open-arduino-examples-folder"></a>Az Arduino-példák mappájának megnyitása
 
-Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **DoorMonitor**lehetőséget. Ez a művelet egy új VS Code-ablakot nyit meg egy projekt mappájával.
+Bontsa ki a bal oldali **ARDUINO-példák** szakaszt, és keresse meg a **PÉLDÁKAT a MXCHIP AZ3166 > AzureIoT**, és válassza a **DoorMonitor** lehetőséget. Ez a művelet egy új VS Code-ablakot nyit meg egy projekt mappájával.
 
 ![mini-Solution – példák](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-A példában szereplő alkalmazást a parancssorból is megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino**parancsot, majd keresse meg és válassza ki az **Arduino: példák**elemet.
+A példában szereplő alkalmazást a parancssorból is megnyithatja. `Ctrl+Shift+P`A (MacOS: `Cmd+Shift+P` ) paranccsal nyissa meg a parancssort, írja be az **Arduino** parancsot, majd keresse meg és válassza ki az **Arduino: példák** elemet.
 
 ### <a name="provision-azure-services"></a>Azure-szolgáltatások kiépítése
 

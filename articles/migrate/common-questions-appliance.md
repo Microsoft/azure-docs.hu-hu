@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102043065"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
@@ -160,7 +160,7 @@ Megadhat tartomány/Windows (nem tartományi)/Linux (nem tartományi)/SQL Server
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Milyen típusú SQL Server-kapcsolatok tulajdonságait támogatja az SQL-felderítési Azure Migrate?
 A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
-Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [További információk](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [További információ](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 
 ## <a name="next-steps"></a>Következő lépések

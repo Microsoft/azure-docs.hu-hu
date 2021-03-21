@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 10feccb53b28181d260e7738ab99bdc2e3c9340c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94553110"
 ---
 Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a kapcsolat ellenőrzéséhez.
@@ -17,7 +17,7 @@ Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a 
 
     ![Képernyőfelvétel: a Kapcsolódás az Azure Storage-hoz párbeszédpanel, amelyen a Storage-fiók neve és kulcsa van kiválasztva.](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. Illessze be a **fiók nevét** és a **fiók kulcsát** (1. kulcs értékét a helyi webes felhasználói felületen a **kapcsolat és a másolás** lapról). Válassza ki a tárolási végpontok tartományt **(adja meg az alábbit)** , majd adja meg a blob Service-végpontot az alábbi ábrán látható módon. Ellenőrizze, hogy csak *a HTTP protokollon keresztüli* átvitelt kell-e **használni** . Ha a *HTTPS protokollt* használja, hagyja meg a jelölőnégyzet jelölését. Válassza a **Tovább** gombot.
+2. Illessze be a **fiók nevét** és a **fiók kulcsát** (1. kulcs értékét a helyi webes felhasználói felületen a **kapcsolat és a másolás** lapról). Válassza ki a tárolási végpontok tartományt **(adja meg az alábbit)** , majd adja meg a blob Service-végpontot az alábbi ábrán látható módon. Ellenőrizze, hogy csak *a HTTP protokollon keresztüli* átvitelt kell-e **használni** . Ha a *HTTPS protokollt* használja, hagyja meg a jelölőnégyzet jelölését. Kattintson a **Tovább** gombra.
 
     ![Képernyőfelvétel: a kapcsolat neve és kulcsa párbeszédpanel, ahol a beírt értékek szerepelnek.](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 

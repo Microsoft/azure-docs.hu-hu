@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a015da77cb7c0ba54be1dd5e729a9ee8a848c9d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93321880"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Adatmintavétel az Azure HDInsight Hive-táblákban
@@ -54,7 +54,7 @@ where samplekey<='${hiveconf:sampleRate}'
 Itt `<sample rate, 0-1>` adhatja meg a rekordok azon hányadát, amelyet a felhasználók szeretne felvenni.
 
 ## <a name="random-sampling-by-groups"></a><a name="group"></a> Véletlenszerű mintavételezés csoportok szerint
-A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy " *State* " kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
+A kategorikus azonosítók mintavétele során érdemes lehet bevenni vagy kizárni az összes példányt a kategorikus változó egyes értékeinél. Ezt a fajta mintavételezést "mintavételezés csoportonként" nevezzük. Ha például egy "*State*" kategorikus változóval rendelkezik, amely olyan értékeket tartalmaz, mint például a NY, a ma, a CA, a NJ és a PA, akkor az egyes állapotokból származó rekordokat össze kell állítani, függetlenül attól, hogy mintát vesznek-e.
 
 Íme egy példa a Group:
 

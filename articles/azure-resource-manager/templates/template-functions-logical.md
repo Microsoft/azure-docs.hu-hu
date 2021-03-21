@@ -4,10 +4,10 @@ description: Leírja a logikai értékek meghatározásához Azure Resource Mana
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920470"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
@@ -32,13 +32,13 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e. A `and` függvény nem t
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az összes érték igaz; Ellenkező esetben **hamis**.
 
@@ -96,11 +96,11 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
+| arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az átalakított érték logikai értéke.
 
@@ -169,7 +169,7 @@ Hamis értéket ad vissza. A `false` függvény nem érhető el a bicep-ben.  Ha
 
 A False függvény nem fogad el paramétereket.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy mindig hamis logikai érték.
 
@@ -215,13 +215,13 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis. A `
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
-| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
-| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
+| feltétel |Yes |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező esetben a harmadik paramétert adja vissza.
 
@@ -341,11 +341,11 @@ Logikai érték konvertálása az ellenkező értékre. A `not` függvény nem t
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az átalakítandó érték. |
+| arg1 |Yes |boolean |Az átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad eredményül, ha a paraméter **hamis**. **Hamis** értéket ad vissza, ha a paraméter **igaz**.
 
@@ -436,13 +436,13 @@ Ellenőrzi, hogy a paraméter értéke igaz-e. A `or` függvény nem támogatott
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha bármelyik érték igaz; Ellenkező esetben **hamis**.
 
@@ -502,7 +502,7 @@ Igaz értéket ad vissza. A `true` függvény nem érhető el a bicep-ben.  Hasz
 
 Az igaz függvény nem fogad el paramétereket. A `true` függvény nem érhető el a bicep-ben.  Használja `true` helyette a kulcsszót.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy mindig igaz logikai érték.
 

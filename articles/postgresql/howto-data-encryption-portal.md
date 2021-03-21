@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 98c413f85fe556f5fb413716037163931753e1d7
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93240732"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Adattitkosítás Azure Database for PostgreSQL önálló kiszolgáló számára a Azure Portal használatával
@@ -35,7 +35,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és kezelheti a Azure
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
+* A kulcsnak az alábbi attribútumokkal kell rendelkeznie felhasználó által felügyelt kulcsként:
   * Nincs lejárati dátum
   * Nincs letiltva
   * Képes a Get, a wrap Key és a dewrap Key művelet végrehajtására
@@ -46,23 +46,23 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és kezelheti a Azure
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
 
-2. Válassza a **kulcs engedélyei** lehetőséget, majd válassza a **beolvasás** , **becsomagolás** , **kicsomagolás** és a **rendszerbiztonsági tag** lehetőséget, amely a PostgreSQL-kiszolgáló neve. Ha a kiszolgáló rendszerbiztonsági tagja nem található a meglévő rendszerbiztonsági tag listájában, regisztrálnia kell. A rendszer arra kéri, hogy regisztrálja a kiszolgálói rendszerbiztonsági tag-t, amikor első alkalommal kísérli meg az adattitkosítás beállítását, és sikertelen lesz.  
+2. Válassza a **kulcs engedélyei** lehetőséget, majd válassza a **beolvasás**, **becsomagolás**, **kicsomagolás** és a **rendszerbiztonsági tag** lehetőséget, amely a PostgreSQL-kiszolgáló neve. Ha a kiszolgáló rendszerbiztonsági tagja nem található a meglévő rendszerbiztonsági tag listájában, regisztrálnia kell. A rendszer arra kéri, hogy regisztrálja a kiszolgálói rendszerbiztonsági tag-t, amikor első alkalommal kísérli meg az adattitkosítás beállítását, és sikertelen lesz.  
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Hozzáférési szabályzat – áttekintés":::
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>Adattitkosítás beállítása Azure Database for PostgreSQL önálló kiszolgálóhoz
 
 1. Az ügyfél által felügyelt kulcs beállításához Azure Database for PostgreSQL válassza az **adattitkosítás** lehetőséget.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png" alt-text="Képernyőkép a Azure Database for PostgreSQLről, az adattitkosítás kiemelésével":::
 
 2. Kijelölhet egy kulcstartót és egy kulcspárt, vagy megadhatja a kulcs azonosítóját is.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Képernyőkép a Azure Database for PostgreSQLről, az adattitkosítási lehetőségek kiemelésével":::
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 4. Annak biztosítása érdekében, hogy az összes fájl (beleértve az ideiglenes fájlokat is) teljes mértékben titkosítva legyen, indítsa újra a kiszolgálót.
 
@@ -72,28 +72,28 @@ Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügy
 
 1. A kiszolgálón válassza az **Áttekintés**  >  **visszaállítás** lehetőséget.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="Képernyőkép a Azure Database for PostgreSQLről, áttekintés és visszaállítás kiemelve":::
 
    Vagy replikálásra alkalmas kiszolgáló esetén a **Beállítások** fejléc alatt válassza a **replikálás** lehetőséget.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/postgresql-replica.png" alt-text="Képernyőkép a Azure Database for PostgreSQLról, a replikálás kiemelve":::
 
 2. A visszaállítási művelet befejezése után a létrehozott új kiszolgáló az elsődleges kiszolgáló kulcsával lesz titkosítva. A kiszolgáló szolgáltatásai és beállításai azonban le vannak tiltva, és a kiszolgáló nem érhető el. Ez megakadályozza az adatkezelést, mert az új kiszolgáló identitása még nem kapott engedélyt a kulcstartó elérésére.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png" alt-text="Képernyőkép a Azure Database for PostgreSQLről, a nem elérhető állapot kiemelésével":::
 
-3. A kiszolgáló elérhetővé tételéhez érvényesítse újra a kulcsot a visszaállított kiszolgálón. Válassza **az adattitkosítás**  >  **újraellenőrzése kulcsot** .
+3. A kiszolgáló elérhetővé tételéhez érvényesítse újra a kulcsot a visszaállított kiszolgálón. Válassza **az adattitkosítás**  >  **újraellenőrzése kulcsot**.
 
    > [!NOTE]
    > Az első újraellenőrzési kísérlet sikertelen lesz, mert az új kiszolgáló egyszerű szolgáltatásának hozzáférést kell adni a kulcstartóhoz. Az egyszerű szolgáltatásnév létrehozásához válassza a **kulcs újraérvényesítése** lehetőséget, amely hibaüzenetet jelenít meg, de létrehozza az egyszerű szolgáltatásnevet. Ezt követően tekintse meg a jelen cikk korábbi részében [ismertetett lépéseket](#set-the-right-permissions-for-key-operations) .
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Képernyőkép a Azure Database for PostgreSQLról, az újraérvényesítési lépés kiemelve":::
 
    A Key vaultnak hozzáférést kell adnia az új kiszolgálóhoz.
 
 4. Az egyszerű szolgáltatás regisztrálását követően ismét ellenőrizze újra a kulcsot, és a kiszolgáló folytatja a normál működést.
 
-   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Képernyőkép a Key Vaultről, hozzáférési házirendekkel, és Kiemelt hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="media/concepts-data-access-and-security-data-encryption/restore-successful.png" alt-text="Képernyőkép a Azure Database for PostgreSQLről, amely a visszaállított funkciókat mutatja":::
 
 ## <a name="next-steps"></a>Következő lépések
 
