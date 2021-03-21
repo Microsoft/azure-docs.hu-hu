@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004959"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Szolgáltatás-végponti házirend létrehozása, módosítása vagy törlése a Azure Portal használatával
 
 A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését bizonyos Azure-erőforrásokra, a szolgáltatási végpontokon keresztül. Ha még nem ismeri a szolgáltatás-végponti házirendeket, tekintse meg a [szolgáltatás-végponti házirendek áttekintését](virtual-network-service-endpoint-policies-overview.md) .
 
- Az oktatóanyag a következőket ismerteti:
+ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Szolgáltatás-végponti szabályzat létrehozása
@@ -71,7 +71,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
    - Kulcs: válassza ki a Szabályzathoz tartozó kulcsot. Pl.: Dept     
    - Érték: adja meg a kulcshoz tartozó érték párokat. Pl.: pénzügy
 
-6. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Ellenőrizze az adatokat, majd kattintson a **Létrehozás** gombra. További szerkesztéshez kattintson az **előző** gombra. 
+6. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Ellenőrizze az adatokat, majd kattintson a **Létrehozás** gombra. További szerkesztéshez kattintson az **előző** gombra. 
 
    ![Szolgáltatás-végponti szabályzat végleges érvényesítésének létrehozása](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
@@ -112,5 +112,5 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 >[!WARNING] 
 >Az Azure Storage-erőforrásokhoz való hozzáférés minden régióban az alhálózatból származó szolgáltatási végponti szabályzatként lesz korlátozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy szolgáltatási végponti házirendet, és hozzárendelte egy alhálózathoz. A szolgáltatás-végponti házirendekkel kapcsolatos további tudnivalókért lásd: [szolgáltatás-végponti házirendek áttekintése.](virtual-network-service-endpoint-policies-overview.md)

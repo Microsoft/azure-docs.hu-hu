@@ -10,10 +10,10 @@ ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
 ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606334"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
@@ -154,7 +154,7 @@ Amikor új dokumentumot hoznak létre, vagy egy aktuális dokumentumot módosít
 
 3. Navigáljon **local.settings.jsa** Visual Studióban. Ezután használja a korábban feljegyzett értékeket az üres értékek kitöltéséhez.  
 
-4. Navigáljon a **ChangeFeedProcessor.cs**. A **Run** függvény paraméterei a következő műveleteket hajtják végre:  
+4. Navigáljon a **ChangeFeedProcessor. cs**. A **Run** függvény paraméterei a következő műveleteket hajtják végre:  
 
    * Cserélje le a **gyűjtemény neve** szöveget a gyűjtemény nevével. Ha követte a korábbi utasításokat, a gyűjtemény neve changefeedlabcollection.  
    * Cserélje le a **bérletek gyűjteménye nevét** a bérletek gyűjteményének nevére. Ha követte a korábbi utasításokat, a bérletek gyűjteményének neve **bérletek**.  
@@ -395,6 +395,6 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 A laborban létrehozott erőforrások törléséhez keresse meg [Azure Portal](https://portal.azure.com/)az erőforráscsoportot, majd válassza az **erőforráscsoport törlése** elemet az oldal tetején található menüből, és kövesse a megadott utasításokat.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
   
 * Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a [Azure Cosmos db](change-feed.md)

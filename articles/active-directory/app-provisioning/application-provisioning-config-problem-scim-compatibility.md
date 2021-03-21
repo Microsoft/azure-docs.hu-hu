@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99256898"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
@@ -39,11 +39,11 @@ Az alábbi táblázatban a rögzítettként megjelölt elemek a SCIM feladatokba
 
 | **SCIM 2,0 megfelelőségi probléma** |  **Rögzített?** | **Javítás dátuma**  |  **Visszamenőleges kompatibilitás** |
 |---|---|---|
-| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Igen  |  December 18., 2018 | Visszalépés a customappSSO |
-| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Igen  | December 18., 2018  | Visszalépés a customappSSO |
-| A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Igen  |  December 18., 2018  | Visszalépés a customappSSO |
-| A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Igen  |  December 18., 2018  |  Visszalépés a customappSSO |
-| A javítási viselkedés frissítése a megfelelőség biztosítása érdekében (például a logikai és a megfelelő csoporttagság-eltávolítások esetén) | Nem | TBD| előnézet jelző használata |
+| Az Azure AD-nek a "/scim" értéknek kell lennie az alkalmazás SCIM végpont URL-címének gyökerében.  | Yes  |  December 18., 2018 | Visszalépés a customappSSO |
+| A bővítmény attribútumai a "." jelölést használják az attribútumok neve előtt a kettőspont ":" jelölése helyett |  Yes  | December 18., 2018  | Visszalépés a customappSSO |
+| A többértékű attribútumok javítására vonatkozó kérelmek érvénytelen elérésiút-szűrési szintaxist tartalmaznak. | Yes  |  December 18., 2018  | Visszalépés a customappSSO |
+| A csoportos létrehozási kérelmek érvénytelen séma-URI-t tartalmaznak | Yes  |  December 18., 2018  |  Visszalépés a customappSSO |
+| A javítási viselkedés frissítése a megfelelőség biztosítása érdekében (például a logikai és a megfelelő csoporttagság-eltávolítások esetén) | No | TBD| előnézet jelző használata |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>A SCIM viselkedését megváltoztató jelzők
 Az alapértelmezett SCIM-ügyfél működésének módosításához használja az alábbi jelzőket az alkalmazás bérlői URL-címében.

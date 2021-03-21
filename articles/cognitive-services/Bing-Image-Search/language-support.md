@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 14dacc4351af444c75517df4d4e02ecca3bbf40a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350075"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvi és területi támogatása
@@ -39,7 +39,7 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Kód|
+|Ország/régió|Code|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|
@@ -92,7 +92,7 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Kanada|Angol|en-CA|
 |Kanada|Francia|fr – CA|
 |Chile|Spanyol|es – CL|
-|Dánia|dán|da-DK|
+|Dánia|Dán|da-DK|
 |Finnország|finn|fi-FI|
 |Franciaország|Francia|fr-FR|
 |Németország|Német|de-DE|
@@ -123,5 +123,5 @@ Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/ré
 |Egyesült Államok|Angol|en-US|
 |Egyesült Államok|Spanyol|es – USA|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Bing News Search-végpontokról: [hírek Image Search API v7-dokumentáció](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

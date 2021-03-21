@@ -8,10 +8,10 @@ ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ed0f3d379ca961c610958c073c27c6fc9583252b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500920"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
@@ -25,7 +25,7 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
   
 ## <a name="connect-in-power-bi-desktop"></a>Csatlakozás a Power BI Desktopban
 
-1. Power bi Desktop kattintson az **Get Data**  >  **Azure**-  >  **Azure Analysis Services adatbázis** beolvasása elemre.
+1. Power bi Desktop kattintson az   >  **Azure**-  >  **Azure Analysis Services adatbázis** beolvasása elemre.
 
 2. A **kiszolgáló** mezőben adja meg a kiszolgáló nevét. Ügyeljen arra, hogy a teljes URL-címet tartalmazza; például: asazure://westcentralus.asazure.windows.net/advworks.
 
@@ -47,7 +47,7 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 ## <a name="connect-in-power-bi-service"></a>Kapcsolódjon Power BI (szolgáltatás)
 
 1. Hozzon létre egy Power BI Desktop fájlt, amely élő kapcsolatban áll a modellel a-kiszolgálón.
-2. [Power bi](https://powerbi.microsoft.com)kattintson az adatfájlok **lekérése** elemre  >  **Files**, majd keresse meg és válassza ki a. pbix fájlt.
+2. [Power bi](https://powerbi.microsoft.com)kattintson az adatfájlok **lekérése** elemre  >  , majd keresse meg és válassza ki a. pbix fájlt.
 
 ## <a name="see-also"></a>Lásd még
 [Kapcsolódás Azure Analysis Serviceshoz](analysis-services-connect.md)   

@@ -11,13 +11,13 @@ ms.topic: overview
 ms.date: 12/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: ae5887657e7657e60348217c21aa0ed17f9f4b07
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606300"
 ---
-# <a name="what-is-azure-time-series-insights-gen2"></a>Mi az Azure Time Series Insights Gen2
+# <a name="what-is-azure-time-series-insights-gen2"></a>Az Azure Time Series Insights Gen2 bemutatása
 
 Azure Time Series Insights Gen2 egy nyílt és skálázható, teljes körű IoT elemzési szolgáltatás, amely a legjobb felhasználói élményt és gazdag API-kat kínálja a hatékony képességeinek a meglévő munkafolyamatba vagy alkalmazásba való integrálásához.
 
@@ -87,7 +87,7 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Azure 
 | Bővíthetőség és integráció | Az Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a más bi Analytics szolgáltatással pedig az idősorozat-diagramokat is megtekinthetik. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. |
 | Az Azure Time Series Insights Gen2 platformra épülő egyéni alkalmazások | Azure Time Series Insights Gen2 támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Azure Time Series Insights Gen2, hogy megfeleljen az üzleti igényeinek. A Azure Time Series Insights Gen2- [lekérdezési API-kat](./concepts-query-overview.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba való adattovábbításhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a Azure Time Series Insights Gen2:
 

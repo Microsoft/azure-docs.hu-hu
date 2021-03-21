@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97605224"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
@@ -73,7 +73,7 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 
 A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
 
-| Hibakód| Leírás                       | Ajánlott műveletek               |
+| Hibakód| Description                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
 | `None` | Az adatellenőrzés sikeresen megtörtént. | Semmit nem kell tenni. |
 | `InvalidXmlCharsInPath` |Nem sikerült létrehozni a jegyzékfájlt, mert a fájl elérési útja érvénytelen karaktereket tartalmaz. | A folytatáshoz távolítsa el ezeket a karaktereket.  |
@@ -94,6 +94,6 @@ A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfele
 | `NonVhdFileNotSupportedForManagedDisk` | Nem VHD-fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem VHD-fájlokat a `ManagedDisk` mappából, mivel ezek nem támogatottak, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappába. Próbálja megismételni az ellenőrzést. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása.

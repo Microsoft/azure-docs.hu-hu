@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
 ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498931"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – rugalmas megoldások tervezése
@@ -97,7 +97,7 @@ DDoS Protection a standard szintű telemetria a DDoS-támadás idejére [Azure M
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-mérséklési szabályzatok
 
-A Azure Portal válassza a **Monitor**  >  **metrikák** figyelése elemet. A **metrikák** ablaktáblán válassza ki az erőforráscsoportot, válasszon ki egy **nyilvános IP-cím** típusú erőforrás-típust, és válassza ki az Azure nyilvános IP-címét. A DDoS-metrikák az **elérhető metrikák** ablaktáblán láthatók.
+A Azure Portal válassza a   >  **metrikák** figyelése elemet. A **metrikák** ablaktáblán válassza ki az erőforráscsoportot, válasszon ki egy **nyilvános IP-cím** típusú erőforrás-típust, és válassza ki az Azure nyilvános IP-címét. A DDoS-metrikák az **elérhető metrikák** ablaktáblán láthatók.
 
 DDoS Protection a standard három, a védett erőforrás minden nyilvános IP-címéhez (TCP SYN, TCP és UDP) tartozó, a DDoS-t engedélyező virtuális hálózatban található, három alapszintű kockázatcsökkentő szabályzatot alkalmaz. A szabályzat küszöbértékeit úgy tekintheti meg, ha kiválasztja a metrika **bejövő csomagjait a DDoS-mérséklés elindításához**.
 
@@ -135,13 +135,13 @@ Az alkalmazások egymástól függetlenül figyelhetők. Egy alkalmazás normál
 
 A [BreakingPoint-felhővel](https://www.ixiacom.com/products/breakingpoint-cloud) együttműködve olyan felületet hoztunk létre, amelyben az Azure-ügyfelek a szimulációk DDoS Protection használatára képes nyilvános végpontokon keresztül hozhatnak létre forgalmat. A [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) szimulációs eszközzel a következőket végezheti el:
 
-- Annak ellenőrzése, hogy a Azure DDoS Protection Hogyan védi az Azure-erőforrásokat a DDoS-támadásokkal szemben.
+- Megtapasztalhatja, hogy az Azure DDoS Protection hogyan segít az Azure-erőforrások DDoS-támadások elleni védelmében.
 
-- Optimalizálja az incidensek megválaszolásának folyamatát a DDoS-támadás alatt.
+- Optimalizálhatja az incidensekre való válaszadást DDoS-támadás közben.
 
-- A DDoS-megfelelőség dokumentálása.
+- Dokumentálhatja a DDoS-megfelelőséget.
 
-- A hálózati biztonsági csapatok betanítása.
+- Betaníthatja a hálózati biztonsági csapatokat.
 
 A kiberbiztonsági folyamatos innovációt igényel a védelemben. Az Azure DDoS standard Protection egy olyan legkorszerűbb megoldás, amely hatékony megoldást kínál az egyre összetettebb DDoS-támadások enyhítésére.
 
@@ -189,7 +189,7 @@ Azure DDoS Protection standard azonosítja és csökkenti a DDoS-támadásokat f
 
   A DDoS Protection szolgáltatás csak akkor indul el, ha a **DDoS-csökkentést kiváltó metrikai házirend (TCP/TCP SYN/UDP)** kisebb, mint a védett nyilvános IP-erőforráson fogadott forgalom.
 
-- Olyan vírusos eseményt tervez, amely jelentősen növeli a hálózati forgalmat.
+- Olyan népszerű eseményt tervez, amely jelentősen növelni fogja a hálózati forgalmat.
 
 - Egy színész azzal fenyegetőzött, hogy a DDoS-támadást indította el az erőforrásaival szemben.
 
@@ -266,7 +266,7 @@ További információ erről a hivatkozási architektúráról: az [Azure-HDInsi
 > [!NOTE]
 > A nyilvános IP-címmel rendelkező virtuális hálózatok PowerApps-vagy API-kezelésének Azure App Service Environmenti nem natív módon támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megosztott feladatkörök a felhőben](shared-responsibility.md)
 * [Azure DDoS Protection termék lapja](https://azure.microsoft.com/services/ddos-protection/)

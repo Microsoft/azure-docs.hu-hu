@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: thvankra
 ms.openlocfilehash: 10f037dddcce43a1e023982af816660bd325d57f
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97605093"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
@@ -142,6 +142,6 @@ A következő hibakódok és üzenetek támogatottak a Cassandra API változási
 
 * **Http-hibakód 429** – ha a módosítási csatornára korlátozott a ráta, üres lapot ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával](./templates-samples-cassandra.md)

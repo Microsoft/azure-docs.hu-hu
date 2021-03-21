@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: alkohli
 ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466597"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R műszaki specifikációk
@@ -48,7 +48,7 @@ Az Azure Stack Edge Pro R-eszköz két 100-240 V-os tápegységgel (PSUs) rendel
 | Hő elszóródása (maximum)                   | 2891 BTU/HR                |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 115-230 V AC |
-| Gyors csatlakoztatás           | Igen                        |
+| Gyors csatlakoztatás           | Yes                        |
 
 ## <a name="network-specifications"></a>Hálózati specifikációk
 
@@ -172,6 +172,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 
 **Minden hivatkozás a MIL-STD-810G változásra 1 (2014)*
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Stack Edge üzembe helyezése](azure-stack-edge-placeholder.md)

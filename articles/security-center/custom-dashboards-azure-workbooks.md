@@ -8,10 +8,10 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.openlocfilehash: 198702f619e490e8000e4430aab23a7f6bfb6d85
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102107709"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>Security Center-adatmennyiségek gazdag, interaktív jelentéseinek létrehozása
@@ -31,7 +31,7 @@ A Azure Security Centeron belül a beépített jelentések segítségével nyomo
 | Kiadás állapota:                  | Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                       |
 | Árképzési                        | Ingyenes                                                                                                                                         |
 | Szükséges szerepkörök és engedélyek: | A munkafüzetek mentéséhez legalább munkafüzet közreműködői engedélyekkel kell rendelkeznie a cél erőforráscsoporthoz                                      |
-| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Igen](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov) |
+| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Yes](./media/icons/yes-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov) |
 |                                 |                                                                                                                                              |
 
 ## <a name="workbooks-gallery-in-azure-security-center"></a>Munkafüzetek gyűjteménye Azure Security Center

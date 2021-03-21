@@ -3,12 +3,12 @@ title: Azure Functions futtatása csomagból
 description: A Azure Functions futtatókörnyezettel futtassa a függvényeket a Function app-projektfájlok fájljait tartalmazó központi telepítési csomagfájl csatlakoztatásával.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: b2d90cf78263b30b4315199cf1c543186a435f17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aad6991d0ddd5c439d03e41adec63837a21db87b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581592"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions futtatása csomagfájl
 
@@ -63,11 +63,12 @@ A [zip-telepítés][Zip deployment for Azure Functions] a Azure app Service szol
 
 - A Futtatás a csomagból `wwwroot` csak olvasható, így hibaüzenetet kap, amikor fájlokat ír a könyvtárba.
 - A tar és a gzip formátum nem támogatott.
+- A ZIP-fájl legfeljebb 1 GB-nyi lehet.
 - Ez a funkció nem a helyi gyorsítótárral együtt működik.
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 - A Futtatás a csomagból nem kompatibilis a telepítés testreszabási beállításával ( `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ), a rendszer figyelmen kívül hagyja a Build lépést az üzembe helyezés során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)

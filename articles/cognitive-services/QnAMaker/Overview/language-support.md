@@ -9,10 +9,10 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
 ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97605059"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker erőforrások és tudásbázisok nyelvi támogatása
@@ -147,7 +147,7 @@ Habár az Azure Cognitive Search képességei támogatott nyelveken is elérhet�
 |Nyelvek további rangsorsal|
 |--|
 |Kínai|
-|cseh|
+|Cseh|
 |Holland|
 |Angol|
 |Francia|
@@ -163,7 +163,7 @@ Habár az Azure Cognitive Search képességei támogatott nyelveken is elérhet�
 
 Ez a további rangsorolás a QnA Maker rangsorának belső működése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Nyelv kiválasztása](../index.yml)

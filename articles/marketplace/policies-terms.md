@@ -8,10 +8,10 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 09/09/2020
 ms.openlocfilehash: 698e65c4b982c5d639ffc666b394765fd04bd202
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222462"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>A kereskedelmi piactér szabályzatai és feltételei
@@ -26,7 +26,7 @@ A kereskedelmi piactéren elérhető ajánlatoknak meg kell felelniük a szabál
 ## <a name="policies-and-terms"></a>Szabályzatok és feltételek
 
 - [Kereskedelmi piactér tanúsítási szabályzatai](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)
-- [A Microsoft AppSource és az Azure Marketplace felülvizsgálati házirendjei](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
+- [A Microsoft AppSource és az Azure Marketplace véleményekre vonatkozó szabályzatai](/legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context)
 - [Az Azure Marketplace használati feltételei](/legal/marketplace/terms?context=/azure/marketplace/context/context)
 
 ## <a name="next-steps"></a>Következő lépések

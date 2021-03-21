@@ -10,10 +10,10 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96024163"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>IoT fejlesztői készlet-AZ3166 használata Azure Functions és Cognitive Services a nyelvi fordítók elvégzéséhez
@@ -31,7 +31,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először hajtsa végre a következ
 ## <a name="create-azure-cognitive-service"></a>Az Azure kognitív szolgáltatás létrehozása
 
 1. A Azure Portal kattintson az **erőforrás létrehozása** és a **beszéd** keresése elemre. Töltse ki az űrlapot a Speech Service-szolgáltatás létrehozásához.
-  ![Speech szolgáltatás](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
+  ![Beszédfelismerési szolgáltatás](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Nyissa meg az imént létrehozott beszédfelismerési szolgáltatást, kattintson a **kulcsok** szakaszra a másoláshoz, és jegyezze fel a **Key1** a fejlesztői készlet eléréséhez.
   ![Kulcsok másolása](media/iot-hub-arduino-iot-devkit-az3166-translator/copy-keys.png)
@@ -139,7 +139,7 @@ Ha problémákba ütközik, tekintse meg a [IoT fejlesztői készlet GYIK](https
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtanulta, hogyan használhatja a IoT-fejlesztői készlet fordítóként Azure Functions és Cognitive Services használatával. Ebben a útmutatóban megtanulta, hogyan teheti meg a következőket:
 

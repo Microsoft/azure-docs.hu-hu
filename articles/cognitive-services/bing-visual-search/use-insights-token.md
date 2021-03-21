@@ -12,10 +12,10 @@ ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: 161266a69308175637f5967b2ded48621d4d9c53
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102424070"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Elemzések lekérése a rendszerképekről
@@ -95,7 +95,7 @@ Az adatellenőrzési tokent használó Példákért lásd:
 Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 
 1. Hozzon létre egy konzolos megoldást a Visual Studióban.
-2. Cserélje le a Program.cs tartalmát az ebben a rövid útmutatóban látható kóddal.
+2. Cserélje le a program. cs fájl tartalmát az ebben a rövid útmutatóban látható kóddal.
 3. Cserélje le az `accessKey` értéket saját előfizetői azonosítójára.
 4. Cserélje le az `insightsToken` értéket egy/images/Search-válaszból származó, bepillantást kapott jogkivonatra.
 5. Futtassa a programot.

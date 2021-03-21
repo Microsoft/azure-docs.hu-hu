@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96509350"
 ---
 **Utolsó dokumentum frissítése**: 12 November 2019 10:00 am PST.
@@ -111,7 +111,7 @@ Ha a kimenet látható `MDS mitigation is enabled: False` , [forduljon az Azure 
 **4. lépés**: [beágyazott virtualizációt](../articles/virtual-machines/windows/nested-virtualization.md) használó központi telepítések esetén (csak D3 és E3 esetén): ezek az utasítások a Hyper-V-gazdagépként használt virtuális gépen belül érvényesek.
 
 1.  Kövesse a [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) utasításait a védelem engedélyezéséhez a `MinVmVersionForCpuBasedMitigations` beállításkulcsok használatával.
-2.  Adja meg a hypervisor Scheduler típusát a `Core` következő útmutatás szerint [here](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types):.
+2.  Adja meg a hypervisor Scheduler típusát a `Core` következő útmutatás szerint [](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types):.
 
 
 ### <a name="linux"></a>Linux

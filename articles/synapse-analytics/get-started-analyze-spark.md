@@ -10,26 +10,36 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: 6b3c1ac2ea3625a768e16a3465230a5386c98ddc
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102423713"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655342"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
 Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését az Azure szinapszis Apache Sparkával.
 
+## <a name="create-a-serverless-apache-spark-pool"></a>Kiszolgáló nélküli Apache Spark készlet létrehozása
+
+1. A szinapszis Studióban a bal oldali ablaktáblán válassza a   >  **Apache Spark készletek** kezelése lehetőséget.
+1. **Új** kiválasztása 
+1. **Apache Spark a készlet neve** mezőbe írja be a következőt: **Spark1**.
+1. A **csomópont mérete** mezőben adja meg a **kis** értéket.
+1. Ha a **csomópontok száma** a minimum 3 és a maximum 3 értéket állítja be
+1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A Apache Spark-készlet néhány másodpercen belül elkészül.
+
+## <a name="understanding-serverless-apache-spark-pools"></a>A kiszolgáló nélküli Apache Spark készletek ismertetése
+
+A kiszolgáló nélküli Spark-készletek segítségével azt jelezheti, hogy egy felhasználó hogyan kíván dolgozni a Spark használatával. Ha egy készletet kezd használni, a rendszer létrehozza a Spark-munkamenetet, ha szükséges. A készlet azt szabályozza, hogy a munkamenet hány Spark-erőforrást fog használni, és hogy mennyi ideig tart a munkamenet. Az adott munkamenet során használt Spark-erőforrásokért kell fizetnie, nem maga a készlet. Ily módon a Spark-készletek lehetővé teszik a Spark használatával végzett munkát anélkül, hogy aggódnia kellene a fürtök kezelésében. Ez hasonló a kiszolgáló nélküli SQL-készlet működéséhez.
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-spark"></a>NYC-taxi-adatelemzés a blob Storage-ban a Spark használatával
 
-1. Az adatközpontban kattintson a  **+** gombra **egy új erőforrás hozzáadásához**, majd kattintson >> **tallózási** katalógus lehetőségre. 
-1. Keresse meg a **New York-i taxi & limuzin Commission – Yellow taxi Trip Records** , és kattintson rá. 
-1. A lap alján nyomja meg a **Continue (folytatás**) gombot, majd **adja hozzá az adatkészletet**. 
-1. Egy pillanat elteltével az adatközpontban **kattintson a jobb** gombbal az **Azure Blob Storage >> minta adatkészletek >> nyc_tlc_yellow** elemre **, és** válassza az **új jegyzetfüzet** elemet, majd **töltse be az adatkeretbe**.
-1. Ekkor létrejön egy új jegyzetfüzet a következő kóddal:
+1. A szinapszis Studióban nyissa meg a **fejlesztés** hubot
+2. Hozzon létre egy newnNotebook az alapértelmezett Language **PySpark (Python)** értékre állítva.
+3. Hozzon létre egy új kódlapot, és illessze be a következő kódot a cellába.
     ```
-
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -38,40 +48,26 @@ Ebből az oktatóanyagból megismerheti az adatok betöltését és elemzését 
     display(df.limit(10))
     ```
 1. A jegyzetfüzetben a **csatolás** menüben válassza ki a korábban létrehozott **Spark1** kiszolgáló nélküli Spark-készletet.
-1. Válassza a **Futtatás** lehetőséget a cellában. A szinapszis egy új Spark-munkamenetet indít el, hogy szükség esetén futtassa ezt a cellát. Ha új Spark-munkamenetre van szükség, intially, hogy a rendszer két másodpercet fog létrehozni. 
+1. Válassza a **Futtatás** lehetőséget a cellában. A szinapszis egy új Spark-munkamenetet indít el, hogy szükség esetén futtassa ezt a cellát. Ha új Spark-munkamenetre van szükség, a rendszer először a létrehozás előtt két másodpercet vesz igénybe. 
 1. Ha csak a dataframe sémáját szeretné megtekinteni, futtasson egy cellát a következő kóddal:
-    ```
 
+    ```py
     df.printSchema()
     ```
 
 ## <a name="load-the-nyc-taxi-data-into-the-spark-nyctaxi-database"></a>A New York-i taxi-szolgáltatás betöltése a Spark nyctaxi-adatbázisba
 
-Az adattábla a **SQLPOOL1** egyik táblájában érhető el. Töltse be egy **nyctaxi** nevű Spark-adatbázisba.
+Az dataframe az elnevezett **adathalmazon** keresztül érhető el. Töltse be egy **nyctaxi** nevű Spark-adatbázisba.
 
-1. A szinapszis Studióban nyissa meg a **fejlesztés** központot.
-1. Válassza a **+**  >  **Jegyzetfüzet** lehetőséget.
-1. A jegyzetfüzet tetején állítsa a **csatolás** értéket **Spark1** értékre.
-1. Az új jegyzetfüzet első kódjának cellájában, majd írja be a következő kódot:
+1. Vegyen fel egy újat a jegyzetfüzetbe, majd írja be a következő kódot:
 
-
-    ```scala
-    %%spark
-    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
-    val df = spark.read.sqlanalytics("SQLPOOL1.dbo.Trip") 
+    ```py
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
-
-
-1. Futtassa a szkriptet. Ez 2-3 percet is igénybe vehet.
-1. Az adatközpont **munkaterület** lapján **kattintson a jobb** gombbal az **adatbázisok** elemre, majd válassza a **frissítés** lehetőséget. Ekkor látnia kell az adatbázis **nyctaxi (Spark)** a listában.
-
-
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>A New York-i taxi-adat elemzése a Spark és a notebook használatával
 
 1. Térjen vissza a jegyzetfüzetbe.
 1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. 
-
 
    ```py
    %%pyspark
@@ -81,7 +77,6 @@ Az adattábla a **SQLPOOL1** egyik táblájában érhető el. Töltse be egy **n
 
 1. Futtassa a cellát, hogy megjelenjenek a **nyctaxi** Spark-adatbázisba betöltött NYC-taxik adatai.
 1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. Ezután futtassa a cellát ugyanazzal az elemzéssel, amelyet korábban a dedikált SQL Pool- **SQLPOOL1** adott meg. Ez a kód menti és megjeleníti az elemzés eredményeit egy **nyctaxi. passengercountstats** nevű táblába.
-
 
    ```py
    %%pyspark
@@ -100,19 +95,8 @@ Az adattábla a **SQLPOOL1** egyik táblájában érhető el. Töltse be egy **n
 
 1. A cella eredményei között válassza a **diagram** lehetőséget az információk vizualizációjának megtekintéséhez.
 
-## <a name="load-data-from-a-spark-table-into-a-dedicated-sql-pool-table"></a>Adatok betöltése a Spark-táblából egy dedikált SQL Pool-táblába
-
-Korábban a dedikált SQL Pool-táblázat **SQLPOOL1. dbo. Trip** fájlját másolta a Spark Table **nyctaxi. Trip**-ba. Ezután összesíti az adatokat a Spark Table **nyctaxi. passengercountstats**. Most másolja az **nyctaxi. passengercountstats** adatait egy dedikált SQL Pool-táblába, amelynek neve **SQLPOOL1. dbo. passengercountstats**.
-
-1. Hozzon létre egy új kódlapot, és adja meg a következő kódot. Futtassa a cellát a jegyzetfüzetben. Az összesített Spark-táblázatot visszamásolja a dedikált SQL Pool-táblába.
-
-```scala
-%%spark
-val df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
-df.write.sqlanalytics("SQLPOOL1.dbo.PassengerCountStats", Constants.INTERNAL )
-```
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Az adatelemzés kiszolgáló nélküli SQL-készlettel](get-started-analyze-sql-on-demand.md)
+> [Az adatelemzés dedikált SQL-készlettel](get-started-analyze-sql-pool.md)

@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96518668"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX-alkalmazás szószedetének csatolása
@@ -108,11 +108,11 @@ A leválasztás értesíti az operációs rendszert arról, hogy egy jelenleg ne
 
 ## <a name="cim"></a>CIM
 
-A. CIM egy új fájlkiterjesztés, amely a kompozit képfájlok rendszeréhez (CimFS) van társítva. A CIM-fájlok csatlakoztatása és leválasztása gyorsabb a VHD-fájlokban. A CIM a VHD-nél kevesebb PROCESSZORt és memóriát is felhasznál.
+. A CIM a kompozit képfájlok rendszeréhez (CimFS) társított új fájlkiterjesztés. A CIM-fájlok csatlakoztatása és leválasztása gyorsabb a VHD-fájlokban. A CIM a VHD-nél kevesebb PROCESSZORt és memóriát is felhasznál.
 
 A CIM-fájl egy fájl. CIM-bővítmény, amely metaadatokat és legalább hat további, tényleges adatokat tartalmazó fájlt tartalmaz. A CIM-fájlban található fájlok nem rendelkeznek bővítményekkel. A következő táblázat felsorolja a CIM-ban található példákat:
 
-| Fájlnév | Kiterjesztés | Méret |
+| Fájlnév | Mellék | Méret |
 |-----------|-----------|------|
 | VSC | CIM | 1 KB |
 | objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | NA | 27 KB |
@@ -131,6 +131,6 @@ A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehaso
 | Memóriahasználat | 6% (8 GB)                      | 2% (8 GB)       |
 | PROCESSZOR (szám-tüske)          | Többszöri maxed | Nincs hatás |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MSIX alkalmazáshoz, tekintse át az [áttekintést](what-is-app-attach.md) és a [gyakori kérdéseket](app-attach-faq.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.

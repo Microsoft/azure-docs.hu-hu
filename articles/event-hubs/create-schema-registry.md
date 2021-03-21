@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.custom: references_regions
 ms.openlocfilehash: 45791cd69772be97ca6768184ed17179e04ad9dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576808"
 ---
 # <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs séma-beállításjegyzék létrehozása (előzetes verzió)
@@ -65,7 +65,7 @@ Ebben a szakaszban egy sémát ad hozzá a séma csoportjához a Azure Portal ha
             ]
         }
         ```
-    1. Kattintson a **Létrehozás** gombra. 
+    1. Válassza a **Létrehozás** lehetőséget. 
 1. Válassza ki a **sémát** a sémák listájából. 
 
     :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Séma kiválasztása":::
@@ -91,6 +91,6 @@ Ebben a szakaszban egy sémát ad hozzá a séma csoportjához a Azure Portal ha
     :::image type="content" source="./media/create-schema-registry/select-version.png" alt-text="Verzió kiválasztása":::    
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A séma beállításjegyzékével kapcsolatos további információkért lásd: [Azure Schema Registry in Event Hubs](schema-registry-overview.md).
 

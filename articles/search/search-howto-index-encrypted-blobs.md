@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.openlocfilehash: 4bab8def514df21d948d67f3cfba846c43917be2
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96530935"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Titkosított Blobok indexelése blob-indexelő és szakértelmével használatával az Azure-ban Cognitive Search
@@ -115,7 +115,7 @@ A Poster telepítése és beállítása.
 ### <a name="download-and-install-postman"></a>Poster letöltése és telepítése
 
 1. Töltse le a [Poster-gyűjtemény forráskódját](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/index-encrypted-blobs/Index%20encrypted%20Blob%20files.postman_collection.json).
-1. A **fájl** importálása lehetőség kiválasztásával  >  **Import** importálhatja a forráskódot Poster-ba.
+1. A **fájl** importálása lehetőség kiválasztásával  >   importálhatja a forráskódot Poster-ba.
 1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
@@ -163,7 +163,7 @@ Ha az ingyenes szintet használja, a következő üzenet várható: `"Could not 
 
 Az indexelő végrehajtásának befejeződése után néhány lekérdezés futtatásával ellenőrizheti, hogy az adatgyűjtés sikeresen visszafejtve és indexelve lett-e. Navigáljon az Azure Cognitive Search szolgáltatásra a portálon, és a [keresési ablak](search-explorer.md) használatával futtasson lekérdezéseket az indexelt adaton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen indexelte a titkosított fájlokat, [megismételheti ezt a folyamatot további kognitív képességek hozzáadásával](cognitive-search-defining-skillset.md). Ez lehetővé teszi, hogy bővítse az adatait, és további elemzéseket nyerjen.
 

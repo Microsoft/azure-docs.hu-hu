@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
 ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96005282"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>A költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával
@@ -53,7 +53,7 @@ A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerk
 A szabályzatok teljes mértékben olvashatók vagy írhatók. A részleges frissítések nem támogatottak. 
 
 > [!NOTE]
-> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. Ezeket a kéréseket feloldja a megbízható Microsoft-szolgáltatások kivételének biztosításával. További információt a [tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md#exceptions)című témakör kivételek című szakaszában talál.
+> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. A kérések blokkolását úgy oldhatja fel, ha kivételeket ad meg a megbízható Microsoft-szolgáltatásokra vonatkozóan. További információt a [tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md#exceptions)című témakör kivételek című szakaszában talál.
 
 Ez a cikk bemutatja, hogyan kezelheti a szabályzatokat a portál és a PowerShell-metódusok használatával.
 
@@ -239,13 +239,13 @@ Az életciklus-kezelési szabályzat egy JSON-dokumentum szabályainak gyűjtem�
 
 A szabályzatok a szabályok gyűjteményei:
 
-| Paraméter neve | Paraméter típusa | Jegyzetek |
+| Paraméter neve | Paramétertípus | Jegyzetek |
 |----------------|----------------|-------|
 | `rules`        | Szabály objektumainak tömbje | Egy házirendben legalább egy szabályra van szükség. Egy házirendben legfeljebb 100 szabályt adhat meg.|
 
 A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 
-| Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
+| Paraméter neve | Paramétertípus | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket. Egy szabályzaton belül egyedinek kell lennie. | Igaz |
 | `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
@@ -342,7 +342,7 @@ Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás időpontját használják, a blob-verziók a verzió létrehozási idejét használják, a blob-Pillanatképek pedig a létrehozási időt használják a kor nyomon követéséhez.
 
-| Művelet futtatási feltétele               | Feltétel értéke                          | Leírás                                                                      |
+| Művelet futtatási feltétele               | Feltétel értéke                          | Description                                                                      |
 |------------------------------------|------------------------------------------|----------------------------------------------------------------------------------|
 | daysAfterModificationGreaterThan   | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele                                              |
 | daysAfterCreationGreaterThan       | Egész számú érték, amely a kora napokat jelzi | A blob-verzió és a blob-pillanatkép műveleteinek feltétele                         |
@@ -588,7 +588,7 @@ A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvény
 
 Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó módosítás időpontja nem változik. Ha az archivált blobokat manuálisan rehidratálja a gyors szintre, az életciklus-kezelő motor vissza fogja helyezni az archiválási szintre. Tiltsa le az ezt a blobot érintő szabályt ideiglenesen annak megakadályozása érdekében, hogy az archiválható legyen. Engedélyezze újra a szabályt, ha a blob biztonságosan visszahelyezhető az archiválási szintre. Azt is megteheti, hogy a blobot egy másik helyre másolja, ha a gyors vagy lassú elérésű szinten kell maradni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 
@@ -596,4 +596,4 @@ Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 
 Ismerje meg, hogyan kezelheti és keresheti meg az adatblob-indexet:
 
-- [Az Azure Blob Storageban tárolt adatkezelés és-keresés blob-indexszel](storage-manage-find-blobs.md)
+- [Adatok keresése és kezelése az Azure Blob Storage-ban blobindex használatával](storage-manage-find-blobs.md)

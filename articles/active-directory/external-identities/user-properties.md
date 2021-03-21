@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 02/12/2021
+ms.date: 03/18/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9189b6608b74be6a72dbdfe66276c5050f042f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 08ed02c65db201e18ce710633b421edb5ecb2db0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365463"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104655699"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Egy Azure Active Directory B2B csoportmunka-felhasználó tulajdonságai
 
@@ -106,7 +106,7 @@ Kikapcsolhatja az alapértelmezett korlátozásokat annak érdekében, hogy a v�
 ![A felhasználói beállításokban a külső felhasználók lehetőséget ábrázoló képernyőkép](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Elérhetővé tehetem vendég felhasználókat az Exchange globális címlistában?
-Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet globális címeinek listájában, de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Részletekért lásd: a vendég **objektumok megjelenítése a globális címlistában?** a [vendég hozzáférés kezelése Microsoft 365 csoportokban](/office365/admin/create-groups/manage-guest-access-in-groups).
+Igen. Alapértelmezés szerint a vendég objektumok nem láthatók a szervezet globális címeinek listájában, de a Azure Active Directory PowerShell használatával láthatóvá teheti őket. Részletekért tekintse meg a "vendégek hozzáadása a globális címek listájához" című részt a [Microsoft 365 Group Guest Access cikkben](/microsoft-365/solutions/per-group-guest-access).
 
 ## <a name="can-i-update-a-guest-users-email-address"></a>Frissíthetem a vendég felhasználó e-mail-címét?
 

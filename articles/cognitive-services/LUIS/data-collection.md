@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: c901d4024292ad03a9195ad0cbd226f473917ee4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98738084"
 ---
 # <a name="data-collection-for-your-app"></a>Adatgyűjtés az alkalmazáshoz
@@ -77,7 +77,7 @@ Ne használja újra a hosszúságú kimondott szöveg a betanítási készletbő
 
 Miután közzétette az alkalmazás első verzióját, frissítenie kell a hosszúságú kimondott szöveg a valós forgalomból, hogy a tesztelési készlet tükrözze az éles eloszlást, és az idő múlásával nyomon követhető a reális teljesítmény.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan változtatja meg a LUIS az adatait az előrejelzés előtt](luis-concept-data-alteration.md)

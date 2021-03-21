@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 890b19cd8d6f4bc836f6f541a830c1a5feb8458f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96025443"
 ---
 Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](../articles/active-directory-b2c/app-registrations-training-guide.md).
@@ -42,4 +42,4 @@ Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit 
 1. Adjon nevet az alkalmazásnak. Például: *testapp1*.
 1. A **Web App/web API** esetében válassza az **Igen** lehetőséget.
 1. A **Válasz URL-cím** mezőbe írja be a következőt: `https://jwt.ms`
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97606963"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 használati esetei
@@ -98,7 +98,7 @@ Azure Time Series Insights Gen2 két egyszerű és költséghatékony módszert 
 
 * Másodszor, a gépi tanulási és előrejelzési modellek kimenete Azure Time Series Insights Gen2 az eredmények megjelenítéséhez és tárolásához. Ez az eljárás segít a szervezeteknek a modelljeik optimalizálásában és finomhangolásában. Azure Time Series Insights Gen2 megkönnyíti a folyamatos átviteli telemetria-adatokat a betanított modell kimenetével megegyező síkban. Így segít az adatelemzési csapatoknak észrevenni a rendellenességeket és azonosítani a mintákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./concepts-ux-panels.md).
 * A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 ajánlott eljárásokat](./how-to-plan-your-environment.md) .

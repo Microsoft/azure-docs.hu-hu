@@ -10,13 +10,13 @@ ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
 ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98222139"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics Machine Learning képességei
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Az Azure Synapse Analytics gépi tanulási képességei
 
 Az Azure szinapszis Analytics különböző gépi tanulási funkciókat kínál. Ez a cikk áttekintést nyújt arról, hogyan alkalmazhat Machine Learning az Azure szinapszis környezetében.
 

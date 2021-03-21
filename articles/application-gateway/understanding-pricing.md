@@ -9,10 +9,10 @@ ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
 ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96601611"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Az Azure Application Gateway és a webalkalmazási tűzfal díjszabásának ismertetése
@@ -387,7 +387,7 @@ További mérőszámok, például az átviteli sebesség, a jelenlegi kapcsolato
 
 Megfigyelt kapacitási egységek a mérőszámokban = 49,23
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekből megtudhatja, hogyan működik a díjszabás az Azure Application Gatewayban:
 

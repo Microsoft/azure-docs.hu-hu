@@ -10,10 +10,10 @@ ms.date: 11/05/2019
 ms.author: kirankk
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2ece9ed5cb6eb6ea706db1ed615a64d001f2b17c
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102423952"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Oktatóanyag: .NET-konzolos alkalmazás létrehozása Azure Cosmos DB SQL API-fiókban tárolt adatkezeléshez
@@ -79,7 +79,7 @@ Nagyszerű! Most, hogy befejeztük a beállítást, lássunk neki a kód megír�
 
 ## <a name="step-3-connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>3. lépés: Csatlakozás egy Azure Cosmos DB-fiókhoz
 
-1. Cserélje le a C#-alkalmazás elején található hivatkozásokat a *program.cs* fájlban a következő hivatkozásokkal:
+1. Cserélje le a C#-alkalmazás elején található hivatkozásokat a *program. cs* fájlban a következő hivatkozásokkal:
 
    ```csharp
    using System;
@@ -124,7 +124,7 @@ Nagyszerű! Most, hogy befejeztük a beállítást, lássunk neki a kód megír�
 
    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-portal-keys.png" alt-text="Azure Cosmos DB kulcsok beolvasása Azure Portal":::
 
-1. A *program.cs*-ben cserélje le az `<your endpoint URL>` értéket az **URI** értékre. Cserélje le az `<your primary key>` értéket az **elsődleges kulcs** értékére.
+1. A *program. cs* esetében cserélje le `<your endpoint URL>` az **URI** értékét. Cserélje le az `<your primary key>` értéket az **elsődleges kulcs** értékére.
 
 1. A **Main** metódus alatt adjon hozzá egy új, **GetStartedDemoAsync** nevű aszinkron feladatot, amely új példányt hoz létre `CosmosClient` .
 
@@ -179,7 +179,7 @@ Az adatbázis a tárolók között particionált elemek logikai tárolója. A `C
     }
     ```
 
-    A *program.cs* így kell kinéznie, a végpont és az elsődleges kulcs kitöltésével.
+    A *program. cs* most így kell kinéznie, a végpont és az elsődleges kulcs kitöltésével.
 
     ```csharp
     using System;
@@ -311,14 +311,14 @@ Először hozzon létre egy `Family` osztályt, amely a minta Azure Cosmos db be
 
 1. Válassza a CTRL + SHIFT + A billentyűkombinációt az **új elem hozzáadása** lehetőség megnyitásához. Adjon hozzá egy új osztályt `Family.cs` a projekthez.
 
-    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Képernyőkép új Family.cs osztály projekthez való hozzáadásáról":::
+    :::image type="content" source="./media/sql-api-get-started/cosmos-getting-started-add-family-class-2019.png" alt-text="Képernyőfelvétel új Family. cs osztály hozzáadásáról a projekthez":::
 
 1. Másolja és illessze be a,,, `Family` `Parent` `Child` `Pet` és `Address` osztályt a alkalmazásba `Family.cs` .
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
 
 
-1. A *program.cs* a metódus után adja hozzá a `AddItemsToContainerAsync` metódust `CreateContainerAsync` .
+1. A *program. cs* visszalépéséhez adja hozzá a `AddItemsToContainerAsync` metódust a `CreateContainerAsync` metódus után.
 
     [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
 

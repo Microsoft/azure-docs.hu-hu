@@ -12,10 +12,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ea0bed0884a3a03e2cd15b274b2afb0f054b0cbd
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96523517"
 ---
 # <a name="managing-concurrency-in-blob-storage"></a>Egyidejűség kezelése a blob Storage-ban
@@ -179,7 +179,7 @@ public void DemonstratePessimisticConcurrencyBlob(string containerName, string b
 
 A tárolókban lévő bérletek lehetővé teszik a Blobok által támogatott szinkronizálási stratégiákat, beleértve az exkluzív írási/közös olvasási, kizárólagos írási/kizárólagos olvasási és közös írási/kizárólagos olvasást. A tárolók esetében azonban az exkluzív zárolás csak törlési műveletekre van kényszerítve. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló művelet a bérelt tárolón a bérlet azonosítója nélkül fog sikerülni.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Feltételes fejlécek megadása Blob service műveletekhez](/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations)
 * [Bérlet tárolója](/rest/api/storageservices/lease-container)
