@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790406"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Az SQLite-adatbázis migrálása Azure SQL Database kiszolgáló nélkülire
@@ -21,7 +21,7 @@ ms.locfileid: "92790406"
 
 Az SQLite sok ember számára teszi lehetővé az adatbázisok és az SQL programozás első élményét. Számos operációs rendszerbe és népszerű alkalmazásba való felvételsel a világ egyik legszélesebb körben üzembe helyezett és használt adatbázis-motorja is elérhetővé válik. Mivel valószínűleg az első adatbázismotor sok ember használja, gyakran a projektek vagy alkalmazások központi része lehet. Ezekben az esetekben, amikor a projekt vagy alkalmazás a kezdeti SQLite-implementációt fejleszti, előfordulhat, hogy a fejlesztőknek át kell telepíteniük az adataikat egy megbízható, központosított adattárba.
 
-Azure SQL Database kiszolgáló nélküli az önálló adatbázisok számítási szintje, amely a számítási feladatok igény szerint automatikusan méretezi a számítást, és a másodpercenként felhasznált számítások mennyiségére vonatkozó számlákat. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
+Azure SQL Database kiszolgáló nélküli az önálló adatbázisok számítási szintje, amely a számítási feladatok igény szerint automatikusan méretezi a számítást, és a másodpercenként felhasznált számítások mennyiségére vonatkozó számlákat. A kiszolgáló nélküli számítási szint emellett automatikusan szünetelteti az adatbázisokat az inaktív időszakok során, amikor csak a tárterület használati díját számlázzuk ki, és automatikusan folytatja az adatbázisok működését, amikor ismét előfordulnak tevékenységek.
 
 Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgálóra lesz áttelepítve, így az adatbázis elérhetővé válik a felhőben lévő más felhasználók vagy alkalmazások számára, és csak a ténylegesen használt funkciókért kell fizetnie, az alkalmazás kódjának minimális változásával.
 
@@ -53,7 +53,7 @@ Ha követte az alábbi lépéseket, az adatbázis Azure SQL Database kiszolgál�
     - Az ADF elindítása (szerző és figyelő a szolgáltatásból a Azure Portal)
     - Kattintson a "Szerző" fülre (kék ceruza) a bal oldalon
     - Kattintson a kapcsolatok (bal alsó), majd az integrációs modulok elemre.
-    - Vegyen fel új Self-Hosted Integration Runtime, adjon meg egy nevet, válassza a *2. lehetőséget* .
+    - Vegyen fel új Self-Hosted Integration Runtime, adjon meg egy nevet, válassza a *2. lehetőséget*.
 
 5. Hozzon létre egy új társított szolgáltatást a forrás SQLite-adatbázishoz a Data Factory.
 

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/16/2020
 ms.openlocfilehash: 366b30df677a5b74bc7d70e1aea60e05b4df0152
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659283"
 ---
 # <a name="preprocess-text"></a>Szöveg előfeldolgozása
@@ -93,8 +93,8 @@ Az alábbiakban néhány példát láthat:
 
 | Konfiguráció | Kimenet eredménye |
 | --- | --- |
-|Minden kiválasztott lehetőséggel </br> Magyarázat </br> A "3test", például a "WC-3 3test 4test" esetében a tervező eltávolítja a teljes "3test" szót, mivel ebben a kontextusban a "3test" a tokent adja meg számként, és a rész-a beszédnek megfelelően eltávolítja a modult.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Minden kiválasztott lehetőséggel" border="True"::: |
-|Csak a `Removing number` kijelölt </br> Magyarázat </br> Az olyan esetekben, mint a "3test", a "4-EC", a Designer tokenizer dózisa nem osztja szét ezeket az eseteket, és a teljes tokenként kezeli őket. Így nem távolítja el ezeket a szavakat.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Csak &quot;eltávolítási szám&quot; van kiválasztva" border="True"::: |
+|Minden kiválasztott lehetőséggel </br> Magyarázat: </br> A "3test", például a "WC-3 3test 4test" esetében a tervező eltávolítja a teljes "3test" szót, mivel ebben a kontextusban a "3test" a tokent adja meg számként, és a rész-a beszédnek megfelelően eltávolítja a modult.| :::image type="content" source="./media/module/preprocess-text-all-options-selected.png" alt-text="Minden kiválasztott lehetőséggel" border="True"::: |
+|Csak a `Removing number` kijelölt </br> Magyarázat: </br> Az olyan esetekben, mint a "3test", a "4-EC", a Designer tokenizer dózisa nem osztja szét ezeket az eseteket, és a teljes tokenként kezeli őket. Így nem távolítja el ezeket a szavakat.| :::image type="content" source="./media/module/preprocess-text-removing-numbers-selected.png" alt-text="Csak &quot;eltávolítási szám&quot; van kiválasztva" border="True"::: |
 
 A reguláris kifejezés használatával a testreszabott eredmények is kiadhatók:
 

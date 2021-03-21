@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724710"
 ---
 # <a name="build-resilience-with-credential-management"></a>Rugalmasság létrehozása a hitelesítőadat-kezeléssel
@@ -65,7 +65,7 @@ A fent ismertetett egyéni felhasználói rugalmasság mellett a vállalatoknak 
 
 * [Rugalmas hozzáférés-vezérlési stratégia implementálása](../authentication/concept-resilient-controls.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Rugalmassági erőforrások rendszergazdák és építészek számára
  
 * [Rugalmasság kiépítése az eszközök állapotával](resilience-with-device-states.md)

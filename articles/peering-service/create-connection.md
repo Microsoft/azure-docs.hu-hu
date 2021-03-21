@@ -9,10 +9,10 @@ ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
 ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021095"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok létrehozása
@@ -69,7 +69,7 @@ Válassza a felsorolt előtag melletti három pontot (...), majd kattintson a **
 ### <a name="delete-a-peering-service-connection"></a>Társ-szolgáltatási kapcsolatok törlése
 
 A **minden erőforrás** lapon jelölje be a társítási szolgáltatás jelölőnégyzetét, és válassza a **Törlés** lehetőséget az oldal tetején.
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-szolgáltatási kapcsolatok megismeréséhez tekintse meg a társítási [szolgáltatás kapcsolódása](connection.md)című témakört.
 - A társ-szolgáltatási kapcsolatok telemetria kapcsolatos további tudnivalókért lásd: társítási [szolgáltatás kapcsolódási telemetria](connection-telemetry.md).

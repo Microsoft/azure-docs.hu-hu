@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97722963"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
@@ -110,7 +110,7 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
    3.    Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
    1.    [Válasszon egy szerepkört](#azure-role-based-access-control).
    2.    A **kiválasztás** mezőbe írja be azoknak a felhasználóknak, csoportoknak és/vagy alkalmazásoknak a nevét, amelyekhez hozzáférést szeretne rendelni.
-   3.    Válassza a **Mentés** lehetőséget.
+   3.    Kattintson a **Mentés** gombra.
 
 **A kódban**
 1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját és átirányítási URI azonosítóját használja az **ügyfél-azonosító** és az **RedirectUri** paraméterekhez a MSAL-ben.
@@ -176,7 +176,7 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
 1.    Az alkalmazás regisztrálása az Azure AD-ben:
         1.    A Azure Portal válassza a **Azure Active Directory** lehetőséget, majd válassza a **Alkalmazásregisztrációk** lehetőséget.
         2.    Válassza az **új regisztráció** lehetőséget.
-        3.    Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Kattintson a **Létrehozás** gombra.
+        3.    Adja meg az alkalmazás nevét, válassza a **webalkalmazás/API** lehetőséget az alkalmazás típusaként, és adja meg a szolgáltatáshoz tartozó hitelesítési URL-címet. Válassza a **Létrehozás** lehetőséget.
 2.    Az alkalmazásban válassza a **Beállítások** lehetőséget, majd válassza a **tanúsítványok és titkok** lapot. Hozzon létre egy új ügyfél titkot, válasszon ki egy időtartamot, majd kattintson a **Hozzáadás** gombra. Ügyeljen arra, hogy a titkos értéket mentse. A webszolgáltatás kódjában szerepelnie kell a szolgáltatásnak.
 3.    Adja meg az alkalmazás és/vagy a felhasználók hozzáférését az erőforráshoz:
         1.    Lépjen a térbeli horgonyok erőforrásra a Azure Portal.
@@ -188,7 +188,7 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
               > [!NOTE]
               > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése**, válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
 
-        6.    Válassza a **Mentés** lehetőséget.
+        6.    Kattintson a **Mentés** gombra.
 
 **A kódban**
 
@@ -270,7 +270,7 @@ A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhaszn
 - **Térbeli horgonyok fiók közreműködője**. A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
 - **Térbeli horgonyok fiókjának olvasója**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozza létre első alkalmazását az Azure térbeli Horgonyokkal:
 

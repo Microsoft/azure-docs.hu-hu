@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96023567"
 ---
 # <a name="monitor-site-recovery"></a>A Site Recovery monitorozása
@@ -46,7 +46,7 @@ Mielőtt elkezdené, érdemes áttekinteni a [gyakori figyelési kérdéseket](m
 
 A **replikált elemekben** figyelje a tárolóban lévő összes olyan gép állapotát, amelyen engedélyezve van a replikáció.
 
-**Állam** | **Részletek**
+**Állapot** | **Részletek**
 --- | ---
 Kifogástalan | A replikáció általában folyamatban van. A rendszer nem észlel hibát vagy figyelmeztetési tüneteket.
 Figyelmeztetés | A rendszer egy vagy több olyan figyelmeztetési tünetet észlel, amely hatással lehet a replikációra.
@@ -60,7 +60,7 @@ A **feladatátvételi teszt sikeressége** során figyelje a tárolóban lévő 
 - Javasoljuk, hogy hat havonta legalább egyszer futtasson feladatátvételi tesztet a replikált gépeken. Ez a módszer azt vizsgálja, hogy a feladatátvétel a várt módon működik-e, az éles környezet megszakítása nélkül. 
 - A feladatátvételi teszt csak akkor tekinthető sikeresnek, ha a feladatátvétel és feladatátvétel utáni karbantartás sikeresen befejeződött.
 
-**Állam** | **Részletek**
+**Állapot** | **Részletek**
 --- | ---
 Tesztelés javasolt | Azok a gépek, amelyeknek nincs feladatátvételi tesztje, mivel a védelem engedélyezve volt.
 Sikeresen elvégezve | Gépek sikeres feladatátvételi teszttel.
@@ -73,7 +73,7 @@ Nem alkalmazható | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvé
 - A konfigurációs problémákat (kivéve a szoftverfrissítés rendelkezésre állását) egy periodikus érvényesítő művelet észleli, amely alapértelmezés szerint 12 óránként fut. Az érvényesítési művelet azonnal futtatható, ha a frissítés ikonra kattint a **konfigurációs problémák** szakasz fejléce mellett.
 - A hivatkozásokra kattintva további részleteket tudhat meg. Az egyes gépeket érintő problémák esetén kattintson a **szükséges figyelmet** a **cél konfigurációk** oszlopban. A részletek közé tartoznak a szervizeléssel kapcsolatos javaslatok.
 
-**Állam** | **Részletek**
+**Állapot** | **Részletek**
 --- | ---
 Hiányzó konfigurációk | Hiányzik egy szükséges beállítás, például egy helyreállítási hálózat vagy egy erőforráscsoport.
 Hiányzó erőforrások | Egy megadott erőforrás nem található, vagy nem érhető el az előfizetésben. Az erőforrás például törölve lett vagy át lett telepítve. A figyelt erőforrások közé tartozik a célként megadott erőforráscsoport, a cél VNet/alhálózat, a napló/cél Storage-fiók, a cél rendelkezésre állási csoport, a célként megadott IP-cím.
@@ -107,7 +107,7 @@ Az **infrastruktúra nézetben** figyelje a replikációban részt vevő infrast
 - Az infrastruktúra nézet összes funkciójának használatához az ezen összetevőkhöz tartozó [22-es kumulatív frissítést](https://support.microsoft.com/help/4072852) kell futtatnia.
 - Az infrastruktúra nézet használatához válassza ki a megfelelő replikációs forgatókönyvet a környezetében. További részletekért tekintse meg a nézet részletezését. A következő táblázat bemutatja, hogy mely forgatókönyvek jelennek meg.
 
-    **Forgatókönyv** | **Állam**  | **Elérhető a nézet?**
+    **Forgatókönyv** | **Állapot**  | **Elérhető a nézet?**
     --- |--- | ---
     **Replikáció a helyszíni helyek között** | Minden állam | No 
     **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Yes
@@ -179,6 +179,6 @@ A tár > **figyelés** szakaszban kattintson az **site Recovery események** ele
 
     ![E-mail-értesítések](./media/site-recovery-monitor-and-troubleshoot/email.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerkedjen meg](monitor-log-analytics.md) a Azure monitor site Recovery monitorozásával.

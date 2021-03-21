@@ -7,10 +7,10 @@ ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 37990cc4322717f090c7a35c62512ba0e1a04293
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100576145"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
@@ -29,7 +29,7 @@ A Windows rendszerű virtuális asztali szolgáltatások számos más Azure-szol
     - Amikor a felhasználók kezdeményezik és befejezik a kapcsolatot a szolgáltatással.
 - Gazdagép regisztrálása:
     - Sikerült regisztrálni a munkamenet-állomást a szolgáltatásban a csatlakozáskor?
-- Hibák
+- Hibák:
     - A felhasználók az adott tevékenységekkel kapcsolatos problémákat tapasztalnak? Ez a funkció létrehozhat egy táblázatot, amely nyomon követi a tevékenység adatait mindaddig, amíg az információ csatlakoztatva van a tevékenységekhez.
 - Ellenőrzőpontok
     - Egy elért tevékenység élettartamának meghatározott lépései. Egy munkamenet során például egy felhasználó terheléselosztásra került egy adott gazdagépre, majd a felhasználó egy kapcsolat során jelentkezett be, és így tovább.
@@ -91,7 +91,7 @@ Log Analytics munkaterületeket a Azure Portal vagy a Azure Monitorban érheti e
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics elérése Log Analytics munkaterületen
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. **Log Analytics munkaterület** keresése.
 

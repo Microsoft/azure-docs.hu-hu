@@ -12,10 +12,10 @@ ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio, designer
 ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97722623"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>A Studio használata a Designerben betanított modellek üzembe helyezéséhez
@@ -297,7 +297,7 @@ score_params = dict(
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell betanítása a tervezőben](tutorial-designer-automobile-price-train-score.md)
 * [Modellek üzembe helyezése Azure Machine Learning SDK-val](how-to-deploy-and-where.md)

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
 ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724251"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Azure Functions-alkalmazáshoz
@@ -53,7 +53,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
    - [Microsoft. FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) 2.2.0 vagy újabb verzió
    - [Microsoft. Azure. functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) vagy újabb verzió 
 
-2. Adjon hozzá egy új fájlt, a *Startup.cs* a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
+2. Adjon hozzá egy új fájlt a *Startup. cs* fájlhoz a következő kóddal. Definiál egy nevű osztályt `Startup` , amely megvalósítja az `FunctionsStartup` absztrakt osztályt. A Azure Functions indításakor használt típus nevének megadásához egy szerelvény-attribútumot kell használni.
 
     ```csharp
     using System;
@@ -107,7 +107,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
     }
     ```
 
-5. Nyissa meg a *Function1.cs*, és adja hozzá a következő névtereket.
+5. Nyissa meg a *Function1. cs*-t, és adja hozzá a következő névtereket.
 
     ```csharp
     using System.Linq;
@@ -195,7 +195,7 @@ Ez a projekt a [függőségi befecskendezést fogja használni a .net Azure Func
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét, és egy Azure Functions alkalmazással használta a [Microsoft. FeatureManagement](/dotnet/api/microsoft.featuremanagement) könyvtáron keresztül.
 

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 11/30/2020
 ms.author: allensu
 ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96483988"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Az Azure CDN használati mintáinak elemzése
@@ -55,7 +55,7 @@ A **Verizon Azure CDN Premium** csomaggal a következő jelentések is elérhet�
    * [Valós idejű statisztikák](cdn-real-time-stats.md)
    * [Azure CDN Edge-csomópont teljesítménye](cdn-edge-performance.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan használhatók a Azure CDN elemzési jelentéseinek különböző lehetőségei.
 
 A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról további információt a következő témakörben talál:

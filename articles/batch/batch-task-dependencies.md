@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 12/28/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: ef05a98fffc3c0684ad0fa29f2f9f039b388f5ad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97803935"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tevékenységek függőségeinek létrehozása a más feladatoktól függő feladatok futtatásához
@@ -203,7 +203,7 @@ A GitHubon a [TaskDependencies](https://github.com/Azure/azure-batch-samples/tre
 - Más feladatoktól függő feladatok létrehozása.
 - A feladatok végrehajtása számítási csomópontok készletén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásával, amely egyszerű módszert biztosít a tevékenységek által a számítási csomópontokon futtatott alkalmazások üzembe helyezésére és verziójának telepítésére.
 - A [feladatok és a feladatok hibakeresésének](batch-job-task-error-checking.md)ismertetése.

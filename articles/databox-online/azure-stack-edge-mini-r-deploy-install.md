@@ -10,10 +10,10 @@ ms.date: 10/20/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Mini R device in datacenter so I can use it to transfer data to Azure.
 ms.openlocfilehash: 4f7656337b12cf477c5c71d861d031919e0d55d6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96468520"
 ---
 # <a name="tutorial-install-azure-stack-edge-mini-r"></a>Oktatóanyag: Azure Stack Edge mini R telepítése
@@ -151,7 +151,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
         - A PORT 2 csatlakoztatása esetén használja az RJ-45 hálózati kábelt.
         - A 10 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte az Azure Stack Edge-témaköröket, például a következőket:
 

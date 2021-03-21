@@ -5,10 +5,10 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
 ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97033852"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -21,11 +21,11 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A korábban letöltött C#-tárház Microsoft Azure IoT-mintáinak másolatában nyissa meg a *Azure-IOT-Samples-csharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* projektfájlt a Visual Studióban. A **termosztát** projektben nyissa meg a *Program.cs* és a *ThermostatSample.cs* fájlokat a minta kódjának megtekintéséhez.
+A korábban letöltött C#-tárház Microsoft Azure IoT-mintáinak másolatában nyissa meg a *Azure-IOT-Samples-csharp-master\iot-hub\Samples\device\PnpDeviceSamples\Thermostat\Thermostat.csproj* projektfájlt a Visual Studióban. A **termosztát** projektben nyissa meg a *program. cs* és a *ThermostatSample. cs* fájlt a minta kódjának megtekintéséhez.
 
 Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiépítési szolgáltatását (DPS) használja az eszköz regisztrálásához és egy kapcsolati karakterlánc létrehozásához. A minta lekérdezi a DPS által az adott környezet által igényelt kapcsolatok információit.
 
-A *program.cs* a metódus a következőt `main` hívja `SetupDeviceClientAsync` meg:
+A *program. cs programban* a metódus a következőt `main` hívja `SetupDeviceClientAsync` :
 
 * Akkor használja a modell AZONOSÍTÓját `dtmi:com:example:Thermostat;1` , ha a DPS-vel kiépíti az eszközt. IoT Central a modell AZONOSÍTÓját használja az eszközhöz tartozó sablon azonosításához vagy létrehozásához. További információ: [eszköz hozzárendelése egy eszköz sablonnal](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Hozzon létre egy **DeviceClient** -példányt a IoT Centralhoz való kapcsolódáshoz.
@@ -57,7 +57,7 @@ private static async Task<DeviceClient> SetupDeviceClientAsync(Parameters parame
 
 A Main metódus Ezután létrehoz egy **ThermostatSample** -példányt, és meghívja a `PerformOperationsAsync` metódust, hogy az interakciókat a IoT Central segítségével kezelje.
 
-A *ThermostatSample.cs*-ben a `PerformOperationsAsync` metódus:
+A *ThermostatSample. cs* `PerformOperationsAsync` metódusban a metódus:
 
 * Beállítja a kezelőt a célként megadott hőmérséklet kívánt tulajdonságainak fogadására.
 * A **getMaxMinReport** parancs kezelőjét állítja be.
@@ -202,7 +202,7 @@ A minta alkalmazás futtatása:
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

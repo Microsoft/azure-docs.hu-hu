@@ -11,10 +11,10 @@ ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708466"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Modellek újratanítása a tervezőben a folyamat paramétereinek használatával
@@ -70,7 +70,7 @@ Ebben a példában egy rögzített értékről egy paraméterre módosítja a be
 
    ![Képernyőkép, amely bemutatja, hogyan lehet létrehozni egy folyamat paramétert](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
    > Leválaszthatja a modul paraméterét a modul részletes ablaktábláján található folyamat paraméterből is, hasonlóan a folyamat paramétereinek hozzáadásához.
@@ -115,7 +115,7 @@ Az Áttekintés panelen megtalálhatja a közzétett folyamat REST-végpontját.
 
 A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonosi típusú hitelesítési fejlécre. További információ a munkaterület hitelesítésének beállításáról és a paraméteres REST-hívás létrehozásáról: [Azure Machine learning folyamat létrehozása a Batch pontozáshoz](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy paraméteres betanítási folyamat végpontját a tervező használatával.
 

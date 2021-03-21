@@ -10,10 +10,10 @@ ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: afedbe739e955499f94d00a8ced940e7a4e9c27c
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97898669"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>Oktatóanyag: adatok átvitele Azure Stack Edge Pro-val
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá és csatlakozhat a Azure S
 
 A folyamat elvégzése körülbelül 10 percet vesz igénybe.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Megosztás hozzáadása

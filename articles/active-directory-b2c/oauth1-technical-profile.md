@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96936658"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -70,13 +70,13 @@ A technikai profil az Identitáskezelő által nem visszaadott jogcímeket is vi
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_id | Igen | Az identitás-szolgáltató alkalmazás-azonosítója. |
-| ProviderName | Nem | Az identitás-szolgáltató neve. |
-| request_token_endpoint | Igen | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
-| authorization_endpoint | Igen | Az engedélyezési végpont URL-címe RFC 5849-ként. |
-| access_token_endpoint | Igen | A jogkivonat-végpont URL-címe RFC 5849-ként. |
-| ClaimsEndpoint | Nem | A felhasználói információs végpont URL-címe |
-| ClaimsResponseFormat | Nem | A jogcímek válaszának formátuma.|
+| client_id | Yes | Az identitás-szolgáltató alkalmazás-azonosítója. |
+| ProviderName | No | Az identitás-szolgáltató neve. |
+| request_token_endpoint | Yes | A kérelem jogkivonat-végpontjának URL-címe RFC 5849-ként. |
+| authorization_endpoint | Yes | Az engedélyezési végpont URL-címe RFC 5849-ként. |
+| access_token_endpoint | Yes | A jogkivonat-végpont URL-címe RFC 5849-ként. |
+| ClaimsEndpoint | No | A felhasználói információs végpont URL-címe |
+| ClaimsResponseFormat | No | A jogcímek válaszának formátuma.|
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -84,12 +84,12 @@ A **CryptographicKeys** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Igen | Az Identity Provider alkalmazás ügyfél-titka.   |
+| client_secret | Yes | Az Identity Provider alkalmazás ügyfél-titka.   |
 
 ## <a name="redirect-uri"></a>Átirányítási URI
 
 Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be a (z `https://{tenant-name}.b2clogin.com/{tenant-name}.onmicrosoft.com/{policy-id}/oauth1/authresp` ) értéket. Ne felejtse el lecserélni a `{tenant-name}` bérlő nevét (például contosob2c) és a `{policy-id}` szabályzat azonosítóját (például b2c_1a_policy). Az átirányítási URI-nak minden kisbetűsnek kell lennie. Adjon hozzá egy átirányítási URL-címet az összes olyan házirendhez, amely az identitás-szolgáltatói bejelentkezést használja.
 
-Példák:
+Angol nyelvű Példák:
 
 - [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-twitter.md)

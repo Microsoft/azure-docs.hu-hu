@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7275d115210100bdd4a3a2eb683c867a6a4a4f4a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95996610"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Az Azure AD Connect telepítési típusának kiválasztása
@@ -74,5 +74,5 @@ Ha jelenleg Azure AD-szinkronizáló használ, akkor [ugyanazokat a lépéseket]
 ## <a name="migrate-from-fim2010-or-mim2016"></a>Áttelepítés FIM2010 vagy MIM2016
 Ha jelenleg a Forefront Identity Manager 2010-es vagy Microsoft Identity Manager 2016-es verzióját használja az Azure AD-összekötővel, az egyetlen lehetőség az áttelepítés. Kövesse a [swing-Migration](how-to-upgrade-previous-version.md#swing-migration)című témakörben leírt lépéseket. A lépéseket követve cserélje le a Azure AD-szinkronizálót a FIM2010/MIM2016.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Attól függően, hogy melyik beállítást választotta, a bal oldali tartalomjegyzék használatával megtalálhatja a részletes lépéseket tartalmazó cikket.

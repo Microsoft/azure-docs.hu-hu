@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alzam
 ms.openlocfilehash: 9cc68eb60096c4431acfc988c87ca9bf99f1f045
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93043403"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Azure Active Directory hitelesítés konfigurálása a felhasználói VPN-hez
@@ -156,7 +156,7 @@ Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 
     ![A képernyőképen az imént létrehozott kapcsolathoz tartozó csatlakoztatás gomb látható.](./media/virtual-wan-point-to-site-azure-ad/import/import4.jpg)
 
-5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást** .
+5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
 
     ![A képernyőfelvételen a kapcsolat bontása lehetőséggel összekapcsolt állapotban látható.](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
@@ -194,7 +194,7 @@ Ezzel a [hivatkozással](https://www.microsoft.com/p/azure-vpn-client-preview/9n
 2. Az Áttekintés lapon a térképen látható pontok mindegyike egy elosztót jelöl.
 3. Az elosztók és kapcsolatok szakaszában láthatja az elosztók állapotát, helyét, régióját, VPN-kapcsolati állapotát, valamint a bájtban kifejezett be- és kimenő forgalmát.
 
-## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 

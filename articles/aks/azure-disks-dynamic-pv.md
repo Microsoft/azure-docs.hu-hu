@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021639"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
@@ -17,7 +17,7 @@ ms.locfileid: "96021639"
 Az állandó kötet a Kubernetes hüvelyekkel való használatra kiépített tárterületet jelöli. Egy állandó kötetet egy vagy több hüvely is használhat, és dinamikusan vagy statikusan kiépíthető. Ebből a cikkből megtudhatja, hogyan hozhat létre dinamikusan állandó köteteket az Azure-lemezekkel az Azure Kubernetes Service-(ak-) fürtben található egyetlen Pod használatával.
 
 > [!NOTE]
-> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet *ReadWriteOnce* csatlakoztatni, ami elérhetővé teszi az AK-ban lévő egyik csomópont számára. Ha egy állandó kötetet több csomóponton kell megosztania, használja a [Azure Files][azure-files-pvc].
+> Az Azure-lemezeket csak a ReadWriteOnce *hozzáférési móddal* lehet csatlakoztatni, ami elérhetővé teszi az AK-ban lévő egyik csomópont számára. Ha egy állandó kötetet több csomóponton kell megosztania, használja a [Azure Files][azure-files-pvc].
 
 A Kubernetes-kötetekkel kapcsolatos további információkért lásd: az [AK-beli alkalmazások tárolási beállításai][concepts-storage].
 
@@ -256,7 +256,7 @@ Volumes:
 [...]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 

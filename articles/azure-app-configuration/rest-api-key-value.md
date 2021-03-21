@@ -7,10 +7,10 @@ ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
 ms.openlocfilehash: 95081d6f8c2770d01f7836e08b6851860bf47ba8
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96932557"
 ---
 # <a name="key-values"></a>Kulcs-értékek
@@ -19,7 +19,7 @@ A kulcs-érték a egyedi kombinációjával azonosított erőforrás `key`  +  `
 
 Ez a cikk a 1,0-es API-verzióra vonatkozik.
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 - Lekérés
 - Több lista
@@ -178,13 +178,13 @@ GET /kv?key={key}&label={label}&api-version={api-version}
 |`label=prod*`|A **Prod** kifejezéssel kezdődő címkékre illeszkedik|
 |`label=prod,test`|A következő **címkékkel** egyezik **meg (legfeljebb** 5 CSV)|
 
-**_Fenntartott karakterek_* _
+***Fenntartott karakterek***
 
-`_`, `\`, `,`
+`*`, `\`, `,`
 
 Ha egy foglalt karakter az érték része, akkor azt a használatával kell megmenekülnie `\{Reserved Character}` . A nem fenntartott karaktereket is el lehet menekülni.
 
-***Szűrő érvényesítése** _
+***Szűrés ellenőrzése***
 
 Szűrő-ellenőrzési hiba esetén a válasz HTTP- `400` hiba részletei:
 
@@ -203,7 +203,7 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-_ *Példák**
+**Példák**
 
 - Mind
 

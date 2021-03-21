@@ -9,15 +9,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: fd5ee9085cf716128c5b3ae073f963c76d2bd17a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94370263"
 ---
 # <a name="how-to-create-plans-for-your-azure-application-offer"></a>Csomagok létrehozása az Azure-alkalmazás ajánlatához
 
-A Microsoft kereskedelmi Piactéren keresztül eladott ajánlatoknak legalább egy csomaggal kell rendelkezniük az ajánlat kereskedelmi piactéren való listázásához. Több különböző csomagot is létrehozhat ugyanazon az ajánlaton belül. A csomagok (más néven SKU-ként) a csomag típusa ( _megoldás sablonja_ vagy _felügyelt alkalmazás_ ), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek. A csomagokkal kapcsolatos általános útmutatásért lásd: a [kereskedelmi piactéren elérhető csomagok és díjszabások](plans-pricing.md).
+A Microsoft kereskedelmi Piactéren keresztül eladott ajánlatoknak legalább egy csomaggal kell rendelkezniük az ajánlat kereskedelmi piactéren való listázásához. Több különböző csomagot is létrehozhat ugyanazon az ajánlaton belül. A csomagok (más néven SKU-ként) a csomag típusa (_megoldás sablonja_ vagy _felügyelt alkalmazás_), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek. A csomagokkal kapcsolatos általános útmutatásért lásd: a [kereskedelmi piactéren elérhető csomagok és díjszabások](plans-pricing.md).
 
 ## <a name="create-a-plan"></a>Csomag létrehozása
 
@@ -82,7 +82,7 @@ A **csomag listázása** lapon konfigurálhatja a csomag részleteit. Ezen a lap
 1. A **terv leírása** mezőben magyarázza el, hogy mi teszi ezt a szoftvercsomagot egyedivé, és hogy az ajánlaton belül más csomagoktól milyen különbségek vannak. Ne írja le az ajánlatot, csak a csomagot. Ez a Leírás legfeljebb 2 000 karaktert tartalmazhat.
 1. A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tegye a következők egyikét:
 

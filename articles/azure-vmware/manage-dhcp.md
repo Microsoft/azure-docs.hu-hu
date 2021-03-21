@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
 ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97708551"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>DHCP kezelése Azure VMware-megoldáshoz
@@ -136,6 +136,6 @@ Ha az Azure VMware Megoldásbeli virtuális gépekről DHCP-kéréseket szeretne
 
    :::image type="content" source="media/manage-dhcp/edit-segment-security.png" alt-text="A szegmens biztonsága mező képernyőképe" lightbox="media/manage-dhcp/edit-segment-security.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [gazdagép-karbantartásról és az életciklus-kezelésről](concepts-private-clouds-clusters.md#host-maintenance-and-lifecycle-management).

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: service-bus-messaging, event-hubs
 author: clemensv
 ms.service: service-bus-messaging, event-hubs
@@ -9,10 +9,10 @@ ms.date: 11/24/2020
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: ef9b8bd80d581d6598362f56af24c3ac62824250
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96022173"
 ---
 | Nyelv | Kódtár |
@@ -22,6 +22,6 @@ ms.locfileid: "96022173"
 | Python |[Azure uAMQP for Python](https://github.com/azure/azure-uamqp-python/), [Apache csontos proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
 | PHP | [A PHP-hez készült Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
 | Ruby | [Apache csontos proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Indítás | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache csontos proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
+| Go | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache csontos proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
 | C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache AMQP](https://github.com/apache/activemq-nms-amqp)|
 | JavaScript/Node | [Rhea](https://github.com/grs/rhea) |

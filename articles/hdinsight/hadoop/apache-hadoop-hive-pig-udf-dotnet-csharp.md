@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/06/2019
 ms.openlocfilehash: 97b23a2b9e3b95a5ea0efcd27d0ec185b1c456f1
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98946543"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>Felhasználó által definiált C#-függvények használata Apache Hive és Apache Pig használatával a HDInsight-on Apache Hadoop
@@ -57,7 +57,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
 
 4. Az **új projekt konfigurálása** ablakban adja meg az *HiveCSharp* **projekt nevét** , és navigáljon az új projekt mentéséhez, vagy hozzon létre egy **helyet** . Ezután kattintson a **Létrehozás** elemre.
 
-5. A Visual Studio IDE-ben cserélje le a *program.cs* tartalmát a következő kódra:
+5. A Visual Studio IDE cserélje le a *program. cs fájl* tartalmát a következő kódra:
 
     ```csharp
     using System;
@@ -124,7 +124,7 @@ C#-projekt létrehozása egy Apache Hive UDF-hez:
 
 4. Az **új projekt konfigurálása** ablakban adja meg a *PigUDF* **projekt nevét** , és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután kattintson a **Létrehozás** elemre.
 
-5. A Visual Studio IDE-ben cserélje le a *program.cs* tartalmát a következő kódra:
+5. A Visual Studio IDE cserélje le a *program. cs fájl* tartalmát a következő kódra:
 
     ```csharp
     using System;

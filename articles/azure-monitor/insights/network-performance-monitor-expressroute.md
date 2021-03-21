@@ -6,10 +6,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b005e46e9f9a740fee153e063bebf108c22b303
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101725696"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
@@ -111,7 +111,7 @@ Network Performance Monitor segítséget nyújt több áramköri kapcsolati prob
 
 Az értesítési kódokat láthatja, és riasztásokat állíthat be rajtuk a **LogAnalytics**-on keresztül. A **NPM diagnosztika** lapon az összes aktivált diagnosztikai üzenet leírását láthatja.
 
-| Értesítési kód (naplók) | Leírás |
+| Értesítési kód (naplók) | Description |
 | --- | --- |
 | 5501 | A ExpressRoute áramkör másodlagos kapcsolata nem haladhat át |
 | 5502 | A ExpressRoute áramkör elsődleges kapcsolata nem haladhat át |

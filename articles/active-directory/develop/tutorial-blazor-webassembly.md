@@ -9,10 +9,10 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
 ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102552116"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
@@ -102,7 +102,7 @@ Ezután adja hozzá a következőt a projekt *. csproj* fájljához a Netstandar
 
 Ezután módosítsa a kódot a következő néhány lépésben megadott módon. Ezek a módosítások [hozzáférési jogkivonatokat](access-tokens.md) fognak hozzáadni a Microsoft Graph API-nak küldött kimenő kérelmekhez. Ezt a mintát részletesebben a [ASP.net Core Blazer webszerelvény további biztonsági forgatókönyvei](/aspnet/core/blazor/security/webassembly/additional-scenarios)tárgyalják.
 
-Először hozzon létre egy *GraphAPIAuthorizationMessageHandler.cs* nevű új fájlt a következő kóddal. Ez a kezelő a felhasználó számára hozzáférési tokent ad hozzá a `User.Read` és `Mail.Read` hatókörökhöz a Microsoft Graph API felé irányuló kimenő kérésekhez.
+Először hozzon létre egy *GraphAPIAuthorizationMessageHandler. cs* nevű új fájlt a következő kóddal. Ez a kezelő a felhasználó számára hozzáférési tokent ad hozzá a `User.Read` és `Mail.Read` hatókörökhöz a Microsoft Graph API felé irányuló kimenő kérésekhez.
 
 ```csharp
 using Microsoft.AspNetCore.Components;
@@ -121,7 +121,7 @@ public class GraphAPIAuthorizationMessageHandler : AuthorizationMessageHandler
 }
 ```
 
-Ezután cserélje le a metódus tartalmát a `Main` *program.cs* -ben a következő kódra. Ez a kód az új és az `GraphAPIAuthorizationMessageHandler` `User.Read` `Mail.Read` alapértelmezett hatóköröket használja, amelyeket az alkalmazás akkor kér, amikor a felhasználó először bejelentkezik.
+Ezután cserélje le a metódus tartalmát a `Main` *program. cs fájl* tartalmára a következő kóddal. Ez a kód az új és az `GraphAPIAuthorizationMessageHandler` `User.Read` `Mail.Read` alapértelmezett hatóköröket használja, amelyeket az alkalmazás akkor kér, amikor a felhasználó először bejelentkezik.
 
 ```csharp
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
