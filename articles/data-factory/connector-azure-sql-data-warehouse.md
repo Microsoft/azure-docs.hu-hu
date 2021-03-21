@@ -5,13 +5,13 @@ ms.author: jingwang
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: 38306b2fb3c0a51aeedbf1ebd9079dd787783093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: 9c843ededd1fa863cc5eb4dc0db3a6da3478466d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364290"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597521"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analytics szolgáltatásban tárolt Adatmásolás és-átalakítás Azure Data Factory használatával
 
@@ -390,6 +390,7 @@ Az Azure szinapszis Analytics szolgáltatásba történő adatmásoláshoz áll�
 | preCopyScript     | Adja meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az összes futtatáskor beírja az Azure szinapszis Analyticsbe. Ezzel a tulajdonsággal törölheti az előre feltöltött adatkészleteket. | No                                            |
 | tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |No |
 | disableMetricsCollection | A Data Factory olyan mérőszámokat gyűjt, mint az Azure szinapszis Analytics DWU a másolási teljesítmény optimalizálása érdekében, valamint a további fő adatbázis-hozzáférés bevezetésére vonatkozó ajánlásokat. Ha ezt a viselkedést érinti, a `true` kikapcsolásához válassza a következőt:. | Nem (alapértelmezett érték `false` ) |
+| maxConcurrentConnections |A tevékenység futtatása során az adattárhoz létesített egyidejű kapcsolatok felső határa. Csak akkor adhat meg értéket, ha korlátozni szeretné az egyidejű kapcsolatokat.| No |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure szinapszis Analytics-fogadó példa
 
@@ -520,7 +521,7 @@ Ha a követelmények nem teljesülnek, Azure Data Factory ellenőrzi a beállít
    4. `nullValue` Alapértelmezés szerint marad, vagy **üres karakterláncra** ("") van állítva, és `treatEmptyAsNull` az alapértelmezett érték, vagy igaz értékre van állítva.
    5. `encodingName` Alapértelmezés szerint marad, vagy az **UTF-8** értékre van állítva.
    6. `quoteChar`, `escapeChar` és `skipLineCount` nincs megadva. A albase-támogatás kihagyása a fejlécsorból, amely `firstRowAsHeader` Az ADF-ben konfigurálható.
-   7. `compression` nem lehet **tömörítés**, **gzip** vagy **deflate**.
+   7. `compression` nem lehet **tömörítés**, **``GZip``** vagy **deflate**.
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységben igaz értékre kell állítani.
 
@@ -615,7 +616,7 @@ A szolgáltatás használatához hozzon létre egy [azure blob Storage társíto
 
 ### <a name="best-practices-for-using-polybase"></a>Ajánlott eljárások a Base használatához
 
-A következő szakaszokban az [Azure szinapszis Analytics ajánlott](../synapse-analytics/sql/best-practices-sql-pool.md)eljárásain kívül az ajánlott eljárások is elérhetők.
+A következő szakaszokban az [Azure szinapszis Analytics ajánlott](../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)eljárásain kívül az ajánlott eljárások is elérhetők.
 
 #### <a name="required-database-permission"></a>Szükséges adatbázis-engedély
 
@@ -709,7 +710,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
 
 2. A formátum beállításai a következők:
 
-   1. A **parketta** esetében: `compression` **nem lehet tömörítés**, **Snappy** vagy **gzip**.
+   1. A **parketta** esetében: `compression` **nem lehet tömörítés**, **Snappy** vagy **``GZip``** .
    2. Az **ork** esetében: `compression` **nem lehet tömörítés**, **```zlib```** vagy **Snappy**.
    3. **Tagolt szöveg** esetén:
       1. `rowDelimiter` explicit módon van beállítva **egyetlen karakterként** vagy "**\r\n**", az alapértelmezett érték nem támogatott.
@@ -717,7 +718,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
       3. `encodingName` Alapértelmezés szerint balra van állítva, vagy UTF **-8 vagy UTF-16** értékre van beállítva.
       4. `escapeChar` azonosnak kell lennie `quoteChar` , és nem üres.
       5. `skipLineCount` alapértelmezett vagy 0 értékre van állítva.
-      6. `compression` nem lehet **tömörítés** vagy **gzip**.
+      6. `compression` nem lehet **tömörítés** vagy **``GZip``** .
 
 3. Ha a forrás mappa, `recursive` a másolási tevékenységnek igaz értékűnek kell lennie, és a következőnek kell `wildcardFilename` lennie: `*` . 
 
@@ -821,7 +822,7 @@ Az Azure szinapszis Analytics szolgáltatáshoz tartozó beállítások a fogad�
 - Újból létrehozva: a tábla eldobása és újbóli létrehozása megtörténik. Új tábla dinamikus létrehozásakor szükséges.
 - Csonkítás: a céltábla összes sora el lesz távolítva.
 
-**Előkészítés engedélyezése:** Meghatározza, hogy az Azure szinapszis Analytics szolgáltatásba való íráskor kell-e használni a [bázisterület](/sql/relational-databases/polybase/polybase-guide) használatát. Az előkészítési tároló az adatfolyam- [művelet végrehajtása tevékenységben](control-flow-execute-data-flow-activity.md)van konfigurálva. 
+**Előkészítés engedélyezése:** Ez lehetővé teszi az Azure szinapszis Analytics SQL-készletekbe való betöltést a másolási parancs használatával, és a legtöbb Synpase-mosogató esetében ajánlott. Az előkészítési tároló az adatfolyam- [művelet végrehajtása tevékenységben](control-flow-execute-data-flow-activity.md)van konfigurálva. 
 
 - Ha felügyelt identitás-hitelesítést használ a Storage-beli társított szolgáltatáshoz, olvassa el az [Azure blobhoz](connector-azure-blob-storage.md#managed-identity) szükséges konfigurációkat, illetve a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) .
 - Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)-ban való használatának következményei.

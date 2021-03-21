@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249438"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Az adatforgalom biztonságos átalakítása a leképezési adatfolyam használatával
@@ -126,7 +126,7 @@ Ebben a lépésben a Data Lake Storage Gen2t állítja be forrásként.
 
     ![Az interaktív szerzői műveleteket bemutató képernyőkép.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. Válassza a **kapcsolatok tesztelése** lehetőséget. A művelet végrehajtása sikertelen, mert a Storage-fiók privát végpont létrehozása és jóváhagyása nélkül nem teszi lehetővé a hozzáférést. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és az [ebben a szakaszban](#create-a-managed-private-endpoint) szereplő utasításokat követve felügyelt privát végpontot hoz létre.
+1. Válassza a **Kapcsolat tesztelése** elemet. A művelet végrehajtása sikertelen, mert a Storage-fiók privát végpont létrehozása és jóváhagyása nélkül nem teszi lehetővé a hozzáférést. A hibaüzenetben egy olyan hivatkozást kell látnia, amely létrehoz egy privát végpontot, amelyet követve felügyelt privát végpontokat hozhat létre. Egy másik lehetőség, hogy közvetlenül a **kezelés** lapra lép, és az [ebben a szakaszban](#create-a-managed-private-endpoint) szereplő utasításokat követve felügyelt privát végpontot hoz létre.
 
 1. Tartsa nyitva a párbeszédpanelt, és nyissa meg a Storage-fiókját.
 

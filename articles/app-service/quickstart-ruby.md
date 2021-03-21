@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 45c87f690c24e989a797cbd82147b9125e447e79
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97561783"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service"></a>Ruby on Rails-alkalmazás létrehozása App Service
@@ -121,7 +121,7 @@ http://<app-name>.azurewebsites.net
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Ruby on Rails és postgres](tutorial-ruby-postgres-app.md)

@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97899303"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése CloudSimple-tevékenység alapján
@@ -54,7 +54,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Leírás | A riasztást kiváltó esemény leírása. |
+| Description | A riasztást kiváltó esemény leírása. |
 | Nyugtázva | Annak jelzése, hogy a riasztás igazolva van-e. |
 
 ## <a name="events"></a>Események
@@ -70,7 +70,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Súlyosság | Esemény súlyossága.|
 | Erőforrás neve | Az erőforráshoz hozzárendelt név, például a saját felhő neve. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
-| Leírás | A riasztást kiváltó esemény leírása. |
+| Description | A riasztást kiváltó esemény leírása. |
 
 ## <a name="tasks"></a>Feladatok
 
@@ -82,7 +82,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 ------------ | ------------- |
 | Feladat azonosítója | A feladat egyedi azonosítója. |
 | Művelet | A feladat által végrehajtott művelet. |
-| Felhasználó | A feladat végrehajtásához hozzárendelt felhasználó. |
+| User | A feladat végrehajtásához hozzárendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
@@ -90,7 +90,7 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 | Befejezés | A feladat befejezési időpontja. |
 | Állapot | Aktuális feladat állapota. |
 | Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
-| Leírás | Feladat leírása. |
+| Description | Feladat leírása. |
 
 ## <a name="audit"></a>Naplózás
 
@@ -102,13 +102,13 @@ A riasztásokhoz a következő oszlopokban találhatók információk. Kattintso
 ------------ | ------------- |
 | Idő | A naplóbejegyzés időpontja. |
 | Művelet | A feladat által végrehajtott művelet. |
-| Felhasználó | A feladathoz hozzárendelt felhasználó. |
+| User | A feladathoz hozzárendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
 | Erőforrás típusa | Erőforrás kategóriája: Private Cloud, Cloud rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
 | Eredmény | A tevékenység eredménye, például **sikeres**. |
 | Igénybe vett idő | A feladat elvégzéséhez szükséges idő. |
-| Leírás | A művelet leírása. |
+| Description | A művelet leírása. |
 
 ## <a name="next-steps"></a>Következő lépések
 

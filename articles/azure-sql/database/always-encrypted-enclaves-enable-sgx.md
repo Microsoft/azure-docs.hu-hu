@@ -12,10 +12,10 @@ ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
 ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733756"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>Az Intel SGX ENKLÁVÉHOZ engedélyezése a Azure SQL Database számára 
@@ -37,7 +37,7 @@ A DC sorozatú hardverek létrehozásának beállítása az Intel SGX ENKLÁVÉH
 
 Ha részletes útmutatást szeretne arról, hogyan konfigurálhat új vagy meglévő adatbázist egy adott hardveres generáció használatára, tekintse meg [a hardveres generáció kiválasztása](service-tiers-vcore.md#selecting-a-hardware-generation)című témakört.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-tanúsítvány konfigurálása az Azure SQL Database-kiszolgálóhoz](always-encrypted-enclaves-configure-attestation.md)
 

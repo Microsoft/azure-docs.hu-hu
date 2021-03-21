@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98784663"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
@@ -270,7 +270,7 @@ Alapértelmezés szerint Service Fabric az alkalmazások hozzáférést kapnak a
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozzon létre egy fürtöt a virtuális gépeken vagy a Windows Servert futtató számítógépeken: [Service Fabric a fürt létrehozását a Windows Server](service-fabric-cluster-creation-for-windows-server.md)rendszerhez.
 * Hozzon létre egy fürtöt a virtuális gépeken vagy számítógépeken Linux rendszeren: [hozzon létre egy Linux-fürtöt](service-fabric-cluster-creation-via-portal.md).

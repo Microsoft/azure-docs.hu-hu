@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 398f11c6e55cb62e0b29c148494cf3d590200b9d
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 5a8d270ffdef1f9ae68814fa023284c68216d3ff
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834177"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104612110"
 ---
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre IoT Plug and Play-eszköz-alkalmazást összetevőkkel, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti a központnak küldött adatokat. A minta alkalmazás C nyelven íródott, amely a C Azure IoT Device SDK-ban szerepel. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
@@ -160,7 +160,7 @@ Az ügyfél mintájának elindítása után az Azure IoT Explorer eszköz haszn�
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a példa egy IoT Plug and Play hőmérséklet-vezérlő eszközt valósít meg. Ez a példa [több összetevővel](../articles/iot-pnp/concepts-components.md)rendelkező modellt valósít meg. A [hőmérséklet-eszköz digitális Twins Definition Language (DTDL) modellje](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozza meg.
+Ez a példa egy IoT Plug and Play hőmérséklet-vezérlő eszközt valósít meg. Ez a példa [több összetevővel](../articles/iot-pnp/concepts-modeling-guide.md)rendelkező modellt valósít meg. A [hőmérséklet-eszköz digitális Twins Definition Language (DTDL) modellje](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozza meg.
 
 ### <a name="iot-plug-and-play-helper-functions"></a>IoT Plug and Play segítő függvények
 

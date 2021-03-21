@@ -17,10 +17,10 @@ ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 6ba30436b363353ad183396e07111b33ca912dbf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737438"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Teljesítményre vonatkozó irányelvek az Azure Virtual Machines szolgáltatásban futó SQL Serverhez
@@ -409,7 +409,7 @@ A következő PerfMon-számlálók segíthetnek ellenőrizni egy SQL Server virt
 > [!NOTE] 
 > Ideális esetben próbálja meg a számítási kapacitás 80%-át használni, a 90% feletti csúcsok mellett, de nem éri el a 100%-ot bármilyen tartós időszakra. Alapvetően csak szeretné kiépíteni az alkalmazás által igényelt számítási feltételt, majd az üzleti igényeknek megfelelően meg kell terveznie a méretezést. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ajánlott biztonsági eljárásokért tekintse [meg az Azure Virtual Machines SQL Server biztonsági szempontjait](security-considerations-best-practices.md).
 

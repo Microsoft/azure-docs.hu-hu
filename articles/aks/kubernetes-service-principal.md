@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: b4b5b3eedb2e63686e1bb26580ea653e3a50a910
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102507823"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
@@ -98,7 +98,7 @@ A következő részek részletesen ismertetik a közös delegálásokat, amelyek
 
 Ha Azure Container Registry (ACR) tároló lemezkép-tárolót használ, engedélyeket kell adnia az AK-fürthöz tartozó egyszerű szolgáltatásnév számára a képek olvasásához és lekéréséhez. Jelenleg az ajánlott konfiguráció az az [AK Create][az-aks-create] vagy [az Kaba Update][az-aks-update] parancs használata a beállításjegyzékbe való integráláshoz és az egyszerű szolgáltatásnév megfelelő szerepkörének hozzárendeléséhez. A részletes lépésekért lásd: [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással][aks-to-acr].
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Használhat olyan speciális hálózatkezelést, ahol a virtuális hálózat és az alhálózat vagy a nyilvános IP-címek egy másik erőforráscsoporthoz tartoznak. Rendelje hozzá a [hálózati közreműködő][rbac-network-contributor] beépített szerepkört a virtuális hálózaton belüli alhálózathoz. Azt is megteheti, hogy létrehozhat egy [Egyéni szerepkört][rbac-custom-role] , amely jogosult az adott erőforráscsoport hálózati erőforrásainak elérésére. További részletekért lásd: [AK szolgáltatás engedélyei][aks-permissions] .
 

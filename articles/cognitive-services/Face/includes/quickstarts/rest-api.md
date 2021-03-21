@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 12/06/2020
 ms.author: pafarley
 ms.openlocfilehash: 5523d89548ba08dfc5a43f5c21b5a12a5e5955c3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102510662"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face REST API használatával. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.

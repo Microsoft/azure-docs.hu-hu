@@ -7,10 +7,10 @@ ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/08/2021
 ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563952"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Állapot-nyilvántartó és állapot nélküli munkafolyamatok létrehozása a Azure Portalban Azure Logic Apps előzetes verzióban
@@ -330,7 +330,7 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
    > [!TIP]
    > Ha a legutóbbi futtatási állapot nem jelenik meg, a **figyelő** ablaktábla eszköztárán válassza a **frissítés** lehetőséget. A rendszer nem teljesíti az olyan triggereket, amelyek nem teljesülő feltételek miatt kimaradnak, vagy nem találnak semmilyen adatsort.
 
-   | Futtatás állapota | Leírás |
+   | Futtatás állapota | Description |
    |------------|-------------|
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de megszakítási kérelem érkezett. |
@@ -349,7 +349,7 @@ Ebben a példában a munkafolyamat akkor fut le, amikor a kérelem-trigger bejö
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
-   | Művelet állapota | Ikon | Leírás |
+   | Művelet állapota | Ikon | Description |
    |---------------|------|-------------|
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][aborted-icon] | A művelet a külső problémák miatt leállt vagy nem zárult, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | ![A "megszakított" művelet állapotának ikonja][cancelled-icon] | A művelet futott, de a rendszer visszavonási kérelmet kapott. |

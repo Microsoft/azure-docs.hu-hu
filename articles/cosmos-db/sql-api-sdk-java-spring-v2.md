@@ -10,10 +10,10 @@ ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
 ms.openlocfilehash: 1f78d7185415b66445c78f3b4cdb54ed0d63cb0a
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102216615"
 ---
 # <a name="spring-data-azure-cosmos-db-v2-for-core-sql-api-release-notes-and-resources"></a>Spring-adatAzure Cosmos DB v2 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
@@ -62,7 +62,7 @@ Az [Azure Spring Cloud](https://azure.microsoft.com/services/spring-cloud/) -alk
 > A Spring [inicializáló](https://start.spring.io/)használatával gyorsan üzembe helyezheti a Spring boot Starter-alkalmazásokat.
 >
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>Erőforrások
 
 | Erőforrás | Hivatkozás |
 |---|---|

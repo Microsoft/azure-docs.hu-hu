@@ -5,10 +5,10 @@ ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97937195"
 ---
 # <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Gyors útmutató: az Azure-ban hozzon létre egy írógéppel-függvényt a parancssorból
@@ -209,7 +209,7 @@ Mielőtt a Core Tools használatával üzembe helyezi a projektet az Azure-ban, 
 
 [!INCLUDE [functions-cleanup-resources-cli](../../includes/functions-cleanup-resources-cli.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-typescript)

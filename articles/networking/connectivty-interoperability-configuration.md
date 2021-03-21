@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 50fd5641c61d08939eca1f2cbafb1d077254e37d
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98233270"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: konfiguráció részleteinek tesztelése
@@ -194,7 +194,7 @@ Előfordulhat, hogy a fiókirodák virtuális hálózatok, amelyek különböző
 
 További információ: [Mi a VPN Gateway?][VPN] és [telepítsen egy magasan elérhető NVA][Deploy-NVA].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a [vezérlési sík elemzését][Control-Analysis] a tesztelési beállításról, valamint a topológia különböző virtuális hálózatok vagy VLAN-ok nézeteiről.
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786106"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>A Python-alkalmazások átviteli teljesítményének növelése Azure Functions
@@ -171,7 +171,7 @@ async def main(req: func.HttpRequest) -> func.HttpResponse:
 #### <a name="vertical-scaling"></a>Vertikális skálázás
 Ha több feldolgozási egységre van szüksége, különösen a CPU-kötésű műveletekben, akkor lehetséges, hogy a prémium csomagra való frissítéssel magasabb specifikációkat kell megszereznie. A magasabb feldolgozási egységek esetében a munkavégző folyamatok számának beállítása a rendelkezésre álló magok számának és a magasabb fokú párhuzamosságnak megfelelően állítható be. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Functions Python-fejlesztéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

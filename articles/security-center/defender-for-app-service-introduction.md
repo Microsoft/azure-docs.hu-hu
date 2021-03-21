@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: ec4ac5d355266a46b33d89fd25c2665493773f5d
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100814"
 ---
 # <a name="protect-your-web-apps-and-apis"></a>A webalkalmazások és API-k elleni védelem
@@ -36,7 +36,7 @@ Ahhoz, hogy a Azure App Service-csomagot a App Service Azure Defender szolgálta
 | Kiadás állapota:               | Általánosan elérhető (GA)                                                                                                                                                                      |
 | Árképzési                     | Az [Azure Defender for app Service](azure-defender.md) számlázása [Security Center díjszabás](https://azure.microsoft.com/pricing/details/security-center/) szerint történik<br>A számlázás az összes csomag összes számítási példánya szerint történik       |
 | Támogatott App Service csomagok: | Az [összes app Service-csomag](https://azure.microsoft.com/pricing/details/app-service/plans/) támogatott, kivéve [a használati terv Azure Functionsét](../azure-functions/functions-scale.md). |
-| Felhők                      | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                     |
+| Felhők                      | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)                                                     |
 |                              |                                                                                                                                                                                                |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-app-service"></a>Milyen előnyökkel jár az Azure Defender a App Service?

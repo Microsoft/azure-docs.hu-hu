@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 13d0bdf82052ff2c61c5b2c6010956c8fb27574d
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 30ea75a2df63fa935314fc103fe1e7e092f655b2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122465"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104611901"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti az általa küldött telemetria. A minta alkalmazás C# nyelven íródott, és a C#-hoz készült Azure IoT-minták tartalmazzák. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
@@ -40,7 +40,7 @@ Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módba
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name (Név) | Érték |
+    | Name | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -52,7 +52,7 @@ Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módba
 
 ## <a name="run-the-device-sample"></a>Az eszköz mintájának futtatása
 
-A Visual Studióban a Windowson a kód végrehajtásának nyomon követéséhez adjon hozzá egy töréspontot a `main` függvényhez a program.cs fájlban.
+A Visual Studióban a Windowson futó kód végrehajtásának nyomon követéséhez adjon hozzá egy töréspontot a `main` program. cs fájljában található függvényhez.
 
 Az eszköz most már készen áll a parancsok és a tulajdonságok frissítéseinek fogadására, és megkezdte a telemetria adatok küldését a központba. A következő lépések elvégzése közben tartsa a mintát.
 
@@ -64,7 +64,7 @@ Az ügyfél mintájának elindítása után az Azure IoT Explorer eszköz haszn�
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a példa egy egyszerű IoT Plug and Play termosztátos eszközt implementál. A minta által megvalósított modell nem használ IoT Plug and Play [összetevőket](../articles/iot-pnp/concepts-components.md). A [termosztátos eszközhöz tartozó digitális Twins Definition Language (DTDL) modell](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozza meg.
+Ez a példa egy egyszerű IoT Plug and Play termosztátos eszközt implementál. A minta által megvalósított modell nem használ IoT Plug and Play [összetevőket](../articles/iot-pnp/concepts-modeling-guide.md). A [termosztátos eszközhöz tartozó digitális Twins Definition Language (DTDL) modell](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) az eszköz által megvalósított telemetria, tulajdonságokat és parancsokat határozza meg.
 
 Az eszköz kódja a standard metódus használatával csatlakozik az IoT hubhoz `CreateFromConnectionString` . Az eszköz elküldi a DTDL modell AZONOSÍTÓját a kapcsolatkérelem számára. Egy IoT Plug and Play eszköz a modell AZONOSÍTÓját küldő eszköz:
 

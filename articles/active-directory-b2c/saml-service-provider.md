@@ -14,10 +14,10 @@ ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
 ms.openlocfilehash: 1035f43642f3884e7cc0f6ab47e9c9afd1f29170
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102107513"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
@@ -71,14 +71,14 @@ Az alkalmazás és a Azure AD B2C közötti megbízhatósági kapcsolat létreho
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-kérelem aláírása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
-| SAML-állítás titkosítása  | Nem | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
+| SAML-kérelem aláírása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány, amelyet az alkalmazás használ a Azure AD B2Cba küldött SAML-kérelmek aláírására. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. Azure AD B2C érvényesíti az SAML-kérelem aláírását a nyilvános kulccsal az alkalmazás metaadatainak használatával.|
+| SAML-állítás titkosítása  | No | A webalkalmazásban tárolt titkos kulccsal rendelkező tanúsítvány. A webalkalmazásnak fel kell tüntetnie a nyilvános kulcsot az SAML metaadat-végpontján keresztül. A Azure AD B2C a nyilvános kulcs használatával titkosíthatja az alkalmazásra vonatkozó állításokat. Az alkalmazás a titkos kulcsot használja az állítás visszafejtéséhez.|
 
 **Tanúsítványok Azure AD B2C**
 
 | Használat | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| SAML-válaszok aláírása | Igen | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
+| SAML-válaszok aláírása | Yes | Azure AD B2Cban tárolt titkos kulccsal rendelkező tanúsítvány. Ezt a tanúsítványt a Azure AD B2C használja az alkalmazásnak küldött SAML-válasz aláírásához. Az alkalmazás beolvassa a Azure AD B2C metaadatok nyilvános kulcsát az SAML-válasz aláírásának ellenőrzéséhez. |
 
 Éles környezetben javasoljuk, hogy használjon egy nyilvános hitelesítésszolgáltató által kiadott tanúsítványokat. Ezt az eljárást azonban önaláírt tanúsítványokkal is elvégezheti.
 

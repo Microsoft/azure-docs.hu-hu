@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223261"
 ---
 # <a name="private-ip-addresses"></a>Privát IP-címek
@@ -97,9 +97,9 @@ A lehetséges használható kiosztási módszerek is megjelennek:
 
 | Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati adapter |Igen |Igen |
-| Terheléselosztóval |Előtér-konfiguráció |Igen |Igen |
-| Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
+| Virtuális gép |Hálózati adapter |Igen |Yes |
+| Terheléselosztóval |Előtér-konfiguráció |Igen |Yes |
+| Alkalmazásátjáró |Előtér-konfiguráció |Igen |Yes |
 
 ## <a name="limits"></a>Korlátok
 Az IP-címzés korlátai az Azure-ban a [hálózatkezelés korlátainak](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) teljes készletében találhatók. A korlátok régiónként és előfizetésenként értendőek. [Vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , és növelje az alapértelmezett korlátokat az üzleti igényeknek megfelelő maximális korlátig.

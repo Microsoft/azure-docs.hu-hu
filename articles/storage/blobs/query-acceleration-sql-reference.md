@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95908778"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>A lekérdezés gyorsításának SQL nyelvi referenciája
@@ -60,7 +60,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |INT      |64 bites előjeles egész szám.                     |
 |FLOAT    |64 bites ("dupla pontosságú") lebegőpontos pont.|
 |KARAKTERLÁNC   |Változó hosszúságú Unicode-karakterlánc.            |
-|IDŐBÉLYEG|Egy adott időpontban.                           |
+|IDŐBÉLYEGZŐ|Egy adott időpontban.                           |
 |LOGIKAI  |Igaz vagy hamis.                             |
 
 A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
@@ -122,8 +122,8 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |[UPPER](/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
 |[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
 |[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
-|VEZETŐ    |Leírás|
-|ZÁRÓ    |Leírás|
+|VEZETŐ    |Description|
+|ZÁRÓ    |Description|
 
 Íme néhány példa:
 
@@ -148,7 +148,7 @@ Jelenleg a [szabványos IS08601 összes dátumformátum-formátumát](https://ww
 
 A lekérdezés gyorsításának SQL nyelve az év, hónap, nap, óra, perc, másodperc a függvényhez való használatát támogatja ``DATE_ADD`` .
 
-Példák:
+Angol nyelvű Példák:
 
 "" SQL DATE_ADD (DatePart, mennyiség, időbélyeg) DATE_ADD ("minute", 1, CAST ("2017-01-02T03:04:05.006 Z", TIMESTAMP)
 ```
@@ -166,7 +166,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 A függvény által támogatott, a Date résztől eltérő Kibontás esetén ``DATE_ADD`` a lekérdezési gyorsítás SQL nyelve a timezone_hour és az timezone_minutet is támogatja.
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 EXTRACT(datepart FROM timestampstring)
@@ -175,7 +175,7 @@ EXTRACT(YEAR FROM '2010-01-01T')
 
 #### <a name="to_string-function"></a>TO_STRING függvény
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 TO_STRING(TimeStamp , format)
@@ -200,7 +200,7 @@ Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kim
 |óó               |Nulla párnázott óra od nap (01-12)     |
 |H                |Nap órája (0-23)                   |
 |HH               |Nulla párnázott óra (00-23)      |
-|f                |Perc/óra (0-59)                |
+|m                |Perc/óra (0-59)                |
 |hh               |Nulla párnázott perc (00-59)           |
 |s                |Percek másodpercben (0-59)             |
 |mm               |Nulla párnázott másodperc (00-59)          |
@@ -218,7 +218,7 @@ Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kim
 
 Csak IS08601-formátumok támogatottak.
 
-Példák:
+Angol nyelvű Példák:
 
 ```sql
 TO_TIMESTAMP(string)

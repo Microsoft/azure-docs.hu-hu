@@ -14,10 +14,10 @@ ms.date: 05/16/2017
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fab50f991a15a38d18dead53d268abca79c811
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98231884"
 ---
 # <a name="peer-two-virtual-networks"></a>Társviszony létesítése két virtuális hálózat között
@@ -53,7 +53,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | Társviszonyt létesít két virtuális hálózat között.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 

@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785185"
 ---
 # <a name="accidental-delete-prevention"></a>Véletlen törlés megakadályozása
@@ -84,7 +84,7 @@ Ha nem szeretné engedélyezni a törlést, a következőket kell tennie:
 - javítsa ki a problémát (például a szervezeti egység kikerült a hatókörből véletlenül, és ismét felvette a hatókörbe)
 - Az **Újraindítási szinkronizálás** futtatása az ügynök konfigurációjával
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Azure AD Connect a Cloud Sync hibaelhárítását?](how-to-troubleshoot.md)
 - [Azure AD Connect Cloud Sync hibakódok](reference-error-codes.md)

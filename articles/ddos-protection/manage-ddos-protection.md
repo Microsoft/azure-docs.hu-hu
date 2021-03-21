@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
 ms.openlocfilehash: 336eeee7d522647d11f55a65dc9dc4e65e8b7d47
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100535236"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Rövid útmutató: Azure DDoS Protection standard létrehozása és konfigurálása
@@ -83,7 +83,7 @@ Ez a [házirend](https://aka.ms/ddosvnetpolicy) egy meghatározott hatókörben 
 
 Először olvassa el a DDoS Protection-terv részleteit:
 
-1. A portál bal oldalán válassza a **minden szolgáltatás** lehetőséget.
+1. Válassza a **Minden szolgáltatás** lehetőséget a portál bal felső részén.
 2. A **szűrő** mezőbe írja be a *DDoS* értéket. Ha a **DDoS Protection-csomagok** megjelennek az eredmények között, válassza ki.
 3. Válassza ki a DDoS Protection-tervet a listából.
 

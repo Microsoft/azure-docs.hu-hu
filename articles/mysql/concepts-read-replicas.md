@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
 ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98250264"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvasási replikák az Azure Database for MySQL-ben
@@ -216,7 +216,7 @@ Ha a GTID engedélyezve van a forráskiszolgálón, az újonnan létrehozott rep
 * Győződjön meg arról, hogy a forráskiszolgáló táblái rendelkeznek elsődleges kulccsal. Az elsődleges kulcsok hiánya replikációs késést eredményezhet a forrás-és a replikák között.
 * A MySQL- [dokumentációban](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) található MySQL-replikálási korlátozások teljes listájának áttekintése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat a Azure Portal használatával](howto-read-replicas-portal.md)
 * Ismerje meg, hogyan [hozhat létre és kezelhet olvasási replikákat az Azure CLI és a REST API használatával](howto-read-replicas-cli.md)

@@ -5,10 +5,10 @@ ms.date: 12/11/2020
 ms.author: pepogors
 ms.topic: how-to
 ms.openlocfilehash: 325ece761481077171a670c52e9d98071237601a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98251179"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
@@ -574,7 +574,7 @@ Miután az üzembe helyezés befejeződött, ellenőrizze Azure Portal, hogy a S
 
 Ezzel a beállítással vertikálisan méretezhető a fürt elsődleges csomópontjának típusa!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.

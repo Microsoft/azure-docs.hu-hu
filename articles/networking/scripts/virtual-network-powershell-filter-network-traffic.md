@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 269a0683ff2b8decfab8ab816c388e16633776ca
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98231883"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Virtuális gép kimenő és bejövő hálózati forgalmának szűrése
@@ -59,7 +59,7 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépet hoz létre. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 

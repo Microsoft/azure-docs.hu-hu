@@ -12,10 +12,10 @@ ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
 ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98786791"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
@@ -50,7 +50,7 @@ Ha egy egyéni modellt szeretne hangadatokkal betanítani, a gyorsabb képzés �
 
 Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szándék-felismeréshez** a következők:
 
-| Globális régió | Régió           | Régió azonosítója |
+| Globális régió | Region           | Régió azonosítója |
 | ------------- | ---------------- | -------------------- |
 | Ázsia          | Kelet-Ázsia        | `eastasia`           |
 | Ázsia          | Délkelet-Ázsia   | `southeastasia`      |
@@ -71,7 +71,7 @@ Ez a [Language Understanding szolgáltatás (Luis)](../luis/luis-reference-regio
 
 A [SPEECH SDK](speech-sdk.md) a **hangsegéd** képességeit a következő régiókban lévő [közvetlen beszédfelismeréssel](./direct-line-speech.md) támogatja:
 
-| Globális régió | Régió           | Régió azonosítója    |
+| Globális régió | Region           | Régió azonosítója    |
 | ------------- | ---------------- | -------------------- |
 | Észak-Amerika | USA nyugati régiója          | `westus`             |
 | Észak-Amerika | USA 2. nyugati régiója        | `westus2`            |

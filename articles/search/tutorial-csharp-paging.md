@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: bad4bc4d0016b2898b315bfb9799dc8972be7b12
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98785870"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Oktatóanyag: lapozás hozzáadása a keresési eredményekhez a .NET SDK használatával
@@ -55,7 +55,7 @@ A rendszer a bal szélső és a jobb oldalon lévő oldalszám gombokat speciál
 
 Nyissa meg az alapszintű keresési oldal megoldást.
 
-1. Nyissa meg a SearchData.cs-modell fájlt.
+1. Nyissa meg a SearchData. cs Model fájlt.
 
 1. Adja hozzá a globális változókat a tördelés támogatásához. Az MVC-ben a globális változók a saját statikus osztályában vannak deklarálva. A **ResultsPerPage** az eredmények számát állítja be oldalanként. A **MaxPageRange** meghatározza a nézeten látható oldalszámok számát. A **PageRangeDelta** határozza meg, hogy a bal vagy a jobb oldalon hány oldalt kell átirányítani balra vagy jobbra. Ez utóbbi szám általában a **MaxPageRange** körülbelül fele. Adja hozzá a következő kódot a névtérhez.
 
@@ -223,7 +223,7 @@ Nyissa meg az alapszintű keresési oldal megoldást.
 
 ### <a name="add-a-page-action-to-the-controller"></a>Oldal művelet hozzáadása a vezérlőhöz
 
-1. Nyissa meg a HomeController.cs fájlt, és adja hozzá a **PageAsync** műveletet. Ez a művelet a kiválasztott oldal bármelyik beállítására válaszol.
+1. Nyissa meg a HomeController. cs fájlt, és adja hozzá a **PageAsync** műveletet. Ez a művelet a kiválasztott oldal bármelyik beállítására válaszol.
 
     ```csharp
     public async Task<ActionResult> PageAsync(SearchData model)
@@ -413,7 +413,7 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
 
 ### <a name="add-paging-fields-to-the-model"></a>Lapozási mezők hozzáadása a modellhez
 
-1. Először adjon hozzá egy **lapozási** tulajdonságot a **SearchData** osztályhoz (a SearchData.cs-modell fájljában).
+1. Először adjon hozzá egy **lapozási** tulajdonságot a **SearchData** osztályhoz (a SearchData. cs Model fájlban).
 
     ```csharp
     // Record if the next page is requested.
@@ -614,7 +614,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * A végtelen görgetés egyik kulcsfontosságú funkciója, hogy az eredmények egy meglévő lapra kerülnek, nem helyettesíti ezt az oldalt, amely hatékony.
 * Az ideiglenes tároló csak egy hívást tart fenn, és vissza kell állítania a további hívások túléléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lapozás alapvető fontosságú a keresési élményhez. A lapozással jól érintett, a következő lépés a felhasználói élmény további javítása a Type-Ahead típusú keresések hozzáadásával.
 

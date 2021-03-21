@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234188"
 ---
 # <a name="azure-networking-services-overview"></a>Az Azure hálózati szolgáltatásai – áttekintés
@@ -53,7 +53,7 @@ A következő ábra több helyek közötti VPN-kapcsolatot mutat be ugyanahhoz a
 
 További információ a VPN-kapcsolat különböző típusairól: [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtuális WAN
 Az Azure Virtual WAN egy hálózati szolgáltatás, amely optimalizált és automatizált ág-kapcsolatot biztosít az Azure-hoz és a-n keresztül. Az Azure-régiók olyan hubok, amelyekhez az ágakat összekapcsolhatjuk. Az Azure-gerinc kihasználható az ágak összekapcsolásához és a VNet közötti kapcsolathoz is. Az Azure Virtual WAN számos Azure Cloud connectivity-szolgáltatást kínál, többek között a helyek közötti VPN-t, a ExpressRoute, a pont – hely típusú felhasználói VPN-t egyetlen operatív felületre. Az Azure virtuális hálózatok-hez való kapcsolódás virtuális hálózati kapcsolatok használatával történik. További információ: [Mi az az Azure Virtual WAN?](../virtual-wan/virtual-wan-about.md).
 
 :::image type="content" source="./media/networking-overview/virtualwan1.png" alt-text="Virtuális WAN ábrája":::
@@ -93,7 +93,7 @@ A [Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) a legkif
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
-### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private Link
+### <a name="azure-private-link"></a><a name="privatelink"></a>Azure Private-hivatkozás
 Az [Azure Private link](../private-link/private-link-overview.md) lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
 A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinc hálózatán halad át. A szolgáltatás nyilvános internetre való kimutatása már nem szükséges. Létrehozhatja saját privát kapcsolati szolgáltatását a virtuális hálózatban, és továbbíthatja az ügyfeleknek.
 
@@ -116,7 +116,7 @@ Az ügyfelek dönthetnek úgy, hogy üzembe helyezik az [Azure WAF-t Application
 ### <a name="network-security-groups"></a><a name="nsg"></a>Hálózati biztonsági csoportok
 Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. További információ: [hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md).
 
-### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatási végpontok
+### <a name="service-endpoints"></a><a name="serviceendpoints"></a>Szolgáltatásvégpontok
 A virtuális hálózatok (VNet) szolgáltatásvégpontjai egy közvetlen kapcsolaton keresztül kiterjesztik a virtuális hálózat magáncímterét és a VNet identitását az Azure-szolgáltatásokra. A végpontok segítségével biztosíthatja, hogy kritikus fontosságú Azure-szolgáltatási erőforrásai csak a virtuális hálózatain legyenek elérhetőek. A VNet felől az Azure-szolgáltatás felé irányuló forgalom mindig a Microsoft Azure gerinchálózatán halad át. További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 :::image type="content" source="./media/networking-overview/vnet-service-endpoints-overview.png" alt-text="Virtuális hálózati szolgáltatásvégpontok":::
@@ -181,7 +181,7 @@ Az alábbi képen látható, hogyan működik a virtuális hálózat:
 
 További információ: [Mi az Virtual Network koppint](../virtual-network/virtual-network-tap-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre az első virtuális hálózatot, és kapcsolódjon hozzá néhány virtuális géphez. ehhez végezze el az [első virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) című cikk lépéseit.
 - A számítógép csatlakoztatása egy virtuális hálózathoz a [pont – hely kapcsolat konfigurálása című cikkben](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)ismertetett lépések végrehajtásával.
