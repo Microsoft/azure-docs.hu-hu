@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620205"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hogyan működik a megbízhatósági kapcsolatok a Azure Active Directory Domain Services erőforrás-erdőkön
 
-A Active Directory tartományi szolgáltatások (AD DS) a tartományi és erdőszintű megbízhatósági kapcsolatokon keresztül több tartományra vagy erdőre kiterjedő biztonságot nyújt. A megbízhatósági kapcsolaton keresztüli hitelesítés előtt a Windowsnak először ellenőriznie kell, hogy a felhasználó, számítógép vagy szolgáltatás által kért tartomány megbízhatósági kapcsolatban áll-e a kérelmező fiók tartományával.
+A Active Directory Domain Services (AD DS) a tartományi és erdőszintű megbízhatósági kapcsolatokon keresztül több tartományra vagy erdőre kiterjedő biztonságot nyújt. A megbízhatósági kapcsolaton keresztüli hitelesítés előtt a Windowsnak először ellenőriznie kell, hogy a felhasználó, számítógép vagy szolgáltatás által kért tartomány megbízhatósági kapcsolatban áll-e a kérelmező fiók tartományával.
 
 A megbízhatósági kapcsolat kereséséhez a Windows biztonsági rendszer a kérelmet fogadó kiszolgáló tartományvezérlője és a kérést kérő fiók tartományában lévő tartományvezérlő közötti megbízhatósági útvonalat számítja ki.
 
@@ -239,7 +239,7 @@ A megbízhatósági kapcsolatok jelszavas frissítéseinek 30 napon belül repli
 Mivel a megbízhatósági kapcsolatokat a különböző hálózati határokon belül kell telepíteni, előfordulhat, hogy egy vagy több tűzfalat kell kiterjedniük. Ebben az esetben vagy a tűzfalon keresztüli megbízhatósági kapcsolat, vagy a tűzfal adott portjainak megnyitása lehetővé teszi a forgalom továbbítását.
 
 > [!IMPORTANT]
-> A Active Directory tartományi szolgáltatások nem támogatja az RPC-forgalom adott portokra való korlátozását Active Directory.
+> A Active Directory Domain Services nem támogatja az RPC-forgalom adott portokra való korlátozását Active Directory.
 
 Olvassa el a Microsoft ügyfélszolgálata cikk **Windows Server 2008-es és újabb verziói** című szakaszát, amely [bemutatja, hogyan konfigurálhat tűzfalat Active Directory tartományokhoz és megbízhatósági kapcsolatokhoz](https://support.microsoft.com/help/179442/how-to-configure-a-firewall-for-domains-and-trusts) , hogy megismerje az erdőszintű megbízhatósághoz szükséges portokat.
 
@@ -276,7 +276,7 @@ A rendszergazdák *Active Directory tartományokat és megbízhatóságokat*, *N
 * *Active Directory tartományok és megbízhatósági kapcsolatok* a Microsoft Management Console (MMC), amely a tartományi Megbízhatóságok, a tartomány és az erdő működési szintjeinek, valamint az egyszerű felhasználónevek utótagjának felügyeletére szolgál.
 * A *Netdom* és a *nltest* parancssori eszközöket a megbízhatósági kapcsolatok kereséséhez, megjelenítéséhez, létrehozásához és kezeléséhez használhatja. Ezek az eszközök közvetlenül kommunikálnak az LSA-szolgáltatóval egy tartományvezérlőn.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az erőforrás-erdőkről: [hogyan működnek az erdőszintű megbízhatósági kapcsolatok az Azure ad DSban?][concepts-trust]
 

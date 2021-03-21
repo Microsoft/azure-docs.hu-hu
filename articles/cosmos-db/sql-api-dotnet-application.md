@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010357"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
@@ -80,7 +80,7 @@ A következő szakaszban új ASP.NET Core MVC-alkalmazást hoz létre.
 
    A Visual Studio egy üres MVC-alkalmazást hoz létre.
 
-1. **Debug**  >  A ASP.NET-alkalmazás helyi futtatásához válassza a hibakeresés **indítása** vagy az F5 billentyűt.
+1.   >  A ASP.NET-alkalmazás helyi futtatásához válassza a hibakeresés **indítása** vagy az F5 billentyűt.
 
 ## <a name="step-3-add-azure-cosmos-db-nuget-package-to-the-project"></a><a name="add-nuget-packages"></a>3. lépés: Azure Cosmos DB NuGet-csomag hozzáadása a projekthez
 
@@ -88,7 +88,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET Core MVC Framework-k
 
 1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. A **NuGet csomagkezelő eszközben** keresse meg és válassza ki a **Microsoft. Azure. Cosmos** elemet. Válassza a **Telepítés** lehetőséget.
+1. A **NuGet csomagkezelő eszközben** keresse meg és válassza ki a **Microsoft. Azure. Cosmos** elemet. Válassza a **Telepítés** gombot.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet-csomag telepítése":::
 
@@ -106,11 +106,11 @@ Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC-alk
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> Modell hozzáadása
 
-1. A **megoldáskezelő** kattintson a jobb gombbal a **modellek** mappára, majd **Add** válassza az  >  **osztály** hozzáadása elemet.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **modellek** mappára, majd válassza az  >  **osztály** hozzáadása elemet.
 
-1. Az **új elem hozzáadása** lapon nevezze el az új osztály *Item.cs* , és válassza a **Hozzáadás** lehetőséget.
+1. Az **új elem hozzáadása** lapon nevezze el az új Class *. cs nevű elemet* , majd válassza a **Hozzáadás** lehetőséget.
 
-1. Cserélje le a *Item.cs* osztály tartalmát a következő kódra:
+1. Cserélje le a *Item. cs* osztály tartalmát a következő kódra:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
@@ -128,9 +128,9 @@ Ezután adja hozzá a következő nézeteket.
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Elemek nézet létrehozása
 
-1. A **megoldáskezelő** kattintson a jobb gombbal a **nézetek** mappára, és **Add** válassza az  >  **új mappa** hozzáadása lehetőséget. Adja meg a mappa *tétel* nevét.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **nézetek** mappára, és válassza az  >  **új mappa** hozzáadása lehetőséget. Adja meg a mappa *tétel* nevét.
 
-1. Kattintson a jobb gombbal az üres elem mappára, majd válassza a nézet **hozzáadása** **elemet**  >  **View**.
+1. Kattintson a jobb gombbal az üres elem mappára, majd válassza a nézet **hozzáadása** **elemet**  >  .
 
 1. Az **MVC-nézet hozzáadása** párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -138,7 +138,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon** lapon válassza a **Létrehozás** lehetőséget.
    * A **modell osztályban** válassza az **elem (teendők) elemet. Modellek)**.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml* értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép":::
 
@@ -148,7 +148,7 @@ Ezután adja hozzá a következő nézeteket.
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Elemek nézetének törlése
 
-1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add** válassza a  >  **nézet** hozzáadása elemet.
+1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a  >  **nézet** hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása** párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -156,7 +156,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon** mezőben válassza a **Törlés** lehetőséget.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml* értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -164,7 +164,7 @@ Ezután adja hozzá a következő nézeteket.
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Nézet hozzáadása egy elem részleteinek beszerzéséhez
 
-1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a **Add**  >  **nézet** hozzáadása elemet.
+1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a   >  **nézet** hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása** párbeszédpanelen adja meg a következő értékeket:
 
@@ -179,7 +179,7 @@ Ezután adja hozzá a következő nézeteket.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Elem szerkesztési nézetének hozzáadása
 
-1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add** válassza a  >  **nézet** hozzáadása elemet.
+1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a  >  **nézet** hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása** párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -187,7 +187,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **Template** (Sablon) mezőben válassza az **Edit** (Szerkesztés) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml* értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -197,7 +197,7 @@ Ezután adja hozzá a következő nézeteket.
 
 Végül pedig vegyen fel egy nézetet az összes elem beolvasásához a következő lépésekkel:
 
-1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd **Add** válassza a  >  **nézet** hozzáadása elemet.
+1. A **megoldáskezelő** kattintson ismét a jobb gombbal az **elem** mappájára, majd válassza a  >  **nézet** hozzáadása elemet.
 
 1. Az **MVC-nézet hozzáadása** párbeszédpanelen hajtsa végre a következő módosításokat:
 
@@ -205,7 +205,7 @@ Végül pedig vegyen fel egy nézetet az összes elem beolvasásához a követke
    * A **Template** (Sablon) mezőben válassza a **List** (Lista) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml* értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -217,21 +217,21 @@ A lépések elvégzése után zárjunk be minden *cshtml* -dokumentumot a Visual
 
 Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos DBhoz való kapcsolódáshoz és használatához szükséges logikát. Ebben az oktatóanyagban ezt a logikát egy nevű osztályba `CosmosDbService` és egy nevű illesztőfelületbe ágyazjuk be `ICosmosDbService` . Ez a szolgáltatás a szifilisz műveleteit végzi. Emellett olyan olvasási hírcsatorna-műveleteket is végez, mint például a hiányos elemek listázása, az elemek létrehozása, szerkesztése és törlése.
 
-1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és **Add** válassza az  >  **új mappa** hozzáadása lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza az  >  **új mappa** hozzáadása lehetőséget. Nevezze el a mappa- *szolgáltatásokat*.
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add** válassza az  >  **osztály** hozzáadása elemet. Nevezze el az új osztály *CosmosDbService* , és válassza a **Hozzáadás** lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza az  >  **osztály** hozzáadása elemet. Nevezze el az új osztály *CosmosDbService* , és válassza a **Hozzáadás** lehetőséget.
 
-1. Cserélje le a *CosmosDbService.cs* tartalmát a következő kódra:
+1. Cserélje le a *CosmosDbService. cs* fájl tartalmát a következő kódra:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Kattintson a jobb gombbal a **szolgáltatások** mappára, **Add** válassza az  >  **osztály** hozzáadása elemet. Nevezze el az új osztály *ICosmosDbService* , és válassza a **Hozzáadás** lehetőséget.
+1. Kattintson a jobb gombbal a **szolgáltatások** mappára, válassza az  >  **osztály** hozzáadása elemet. Nevezze el az új osztály *ICosmosDbService* , és válassza a **Hozzáadás** lehetőséget.
 
 1. Adja hozzá a következő kódot a *ICosmosDbService* osztályhoz:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Nyissa meg a *Startup.cs* fájlt a megoldásban, és adja hozzá a következő metódus **InitializeCosmosClientInstanceAsync**, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
+1. Nyissa meg az *indítási. cs* fájlt a megoldásban, és adja hozzá a következő metódus **InitializeCosmosClientInstanceAsync**, amely beolvassa a konfigurációt, és inicializálja az ügyfelet.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -259,7 +259,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Vezérlő hozzáadása
 
-1. **Megoldáskezelő** kattintson a jobb gombbal a **vezérlők** mappára, majd válassza **Add** a  >  **vezérlő** hozzáadása elemet.
+1. **Megoldáskezelő** kattintson a jobb gombbal a **vezérlők** mappára, majd válassza a  >  **vezérlő** hozzáadása elemet.
 
 1. Az **állvány hozzáadása** területen válassza az **MVC vezérlő – üres** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
@@ -267,7 +267,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 1. Nevezze el az új vezérlő *ItemController*.
 
-1. Cserélje le a *ItemController.cs* tartalmát a következő kódra:
+1. Cserélje le a *ItemController. cs* fájl tartalmát a következő kódra:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs":::
 
@@ -287,7 +287,7 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Válassza az **új létrehozása** hivatkozást, és adja hozzá az értékeket a **név** és a **Leírás** mezőkhöz. Hagyja üresen a **Befejezve** jelölőnégyzet jelölését. Ha kijelöli, az alkalmazás kiegészített állapotban adja hozzá az új elemet. Az elem már nem jelenik meg a kezdeti listán.
 
-1. Kattintson a **Létrehozás** gombra. Az alkalmazás visszaküldi az **index** nézetet, és az elem megjelenik a listában. Több elemet is hozzáadhat a **Tennivalók** listájához.
+1. Válassza a **Létrehozás** lehetőséget. Az alkalmazás visszaküldi az **index** nézetet, és az elem megjelenik a listában. Több elemet is hozzáadhat a **Tennivalók** listájához.
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Képernyőfelvétel az index nézetről":::
   
@@ -329,7 +329,7 @@ Egy másik lehetőség egy új profil létrehozása:
 
 Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és elindít egy böngészőt, amelyen megtekintheti az Azure-ban futó projektet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy ASP.NET Core MVC-webalkalmazást. Az alkalmazás elérheti Azure Cosmos DB tárolt adatait. Most már folytathatja ezeket az erőforrásokat:
 

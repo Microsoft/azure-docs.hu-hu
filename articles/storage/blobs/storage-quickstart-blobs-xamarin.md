@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98802354"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage Client Library V12 és Xamarin
@@ -114,7 +114,7 @@ Az alábbi kód több Class szintű változót deklarál. Szükségük volt az A
 
 Ezek a tárolási fiók a [Storage-kapcsolódási karakterlánc konfigurálása](#configure-your-storage-connection-string) szakaszban beállított kapcsolódási karakterláncán kívül vannak.
 
-Adja hozzá ezt a kódot az *MainPage.XAML.cs* fájlban található osztály szintű változókhoz:
+Adja hozzá ezt a kódot osztály szintű változókként a *Főoldal. XAML. cs* fájlban:
 
 ```csharp
 string storageConnectionString = "{set in the Configure your storage connection string section}";
@@ -134,7 +134,7 @@ Döntse el az új tároló nevét. Az alábbi kód egy GUID értéket fűz hozz�
 
 Hozza létre a [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) osztály egy példányát. Ezután hívja meg a [CreateBlobContainerAsync](/dotnet/api/azure.storage.blobs.blobserviceclient.createblobcontainerasync) metódust a tároló létrehozásához a Storage-fiókban.
 
-Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
+Adja hozzá ezt a kódot a *Főoldal. XAML. cs* fájlhoz:
 
 ```csharp
 protected async override void OnAppearing()
@@ -159,7 +159,7 @@ A következő kódrészlet:
 1. Létrehoz egy `MemoryStream` szöveget.
 1. Feltölti a szöveget egy Blobba a [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) osztály [UploadAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.uploadblobasync#Azure_Storage_Blobs_BlobContainerClient_UploadBlobAsync_System_String_System_IO_Stream_System_Threading_CancellationToken_) függvényének meghívásával, amely a fájlnévben és a szövegben is áthalad `MemoryStream` . Ez a metódus létrehozza a blobot, ha az még nem létezett, vagy felülírja, ha már igen.
 
-Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
+Adja hozzá ezt a kódot a *Főoldal. XAML. cs* fájlhoz:
 
 ```csharp
 async void Upload_Clicked(object sender, EventArgs e)
@@ -179,7 +179,7 @@ async void Upload_Clicked(object sender, EventArgs e)
 
 A tárolóban lévő Blobok listázása a [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
-Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
+Adja hozzá ezt a kódot a *Főoldal. XAML. cs* fájlhoz:
 
 ```csharp
 async void List_Clicked(object sender, EventArgs e)
@@ -198,7 +198,7 @@ async void List_Clicked(object sender, EventArgs e)
 
 Töltse le a korábban létrehozott blobot a [DownloadAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadasync) metódus meghívásával. A példában szereplő kód először a blobot másolja át a `Stream` `MemoryStream` -ba, majd a `StreamReader` szöveg megjelenítéséhez.
 
-Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
+Adja hozzá ezt a kódot a *Főoldal. XAML. cs* fájlhoz:
 
 ```csharp
 async void Download_Clicked(object sender, EventArgs e)
@@ -227,7 +227,7 @@ A következő kód megtisztítja az alkalmazás által létrehozott erőforráso
 
 Az alkalmazás először kéri a megerősítést, mielőtt törli a blobot és a tárolót. Ez jó eséllyel ellenőrizhető, hogy az erőforrások megfelelően lettek-e létrehozva, mielőtt törölné őket.
 
-Adja hozzá ezt a kódot a *MainPage.XAML.cs* -fájlhoz:
+Adja hozzá ezt a kódot a *Főoldal. XAML. cs* fájlhoz:
 
 ```csharp
 async void Delete_Clicked(object sender, EventArgs e)
@@ -267,7 +267,7 @@ A tisztítási folyamat megkezdése előtt ellenőrizze, hogy a blob tartalmána
 
 Miután ellenőrizte az értékeket, erősítse meg a tároló törlésére és a bemutató befejezésére vonatkozó kérést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat az Azure Blob Storage Client Library V12 és a Xamarin használatával.
 

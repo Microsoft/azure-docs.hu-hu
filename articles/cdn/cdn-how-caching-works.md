@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: a226682c2580a871e1b2fc4db71f369f3bcc3abb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010163"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
@@ -127,13 +127,13 @@ Az alábbi táblázat a Azure CDN termékek alapértelmezett gyorsítótárazás
 |    | Microsoft: általános webes kézbesítés | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagyméretű fájl letöltése | Akamai: általános vagy VOD média streaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
 | **A becsület forrása**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Yes    |
-| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincs | 7 nap | Nincs | 1 nap | 1 év |
+| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincsenek | 7 nap | Nincsenek | 1 nap | 1 év |
 
 **Becsület forrása**: Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
 
 **CDN-gyorsítótár időtartama**: azt határozza meg, hogy mennyi ideig legyen gyorsítótárazva az erőforrás a Azure CDN. Ha azonban a **becsület forrása** igen, és a forráskiszolgáló http-válasza tartalmazza a gyorsítótár-direktíva fejlécét `Expires` , vagy a `Cache-Control: max-age` Azure CDN a fejlécben megadott időtartam értéket használja. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretné megtudni, hogyan szabhatja testre és felülbírálhatja a CDN alapértelmezett gyorsítótárazási viselkedését a gyorsítótárazási szabályokon keresztül, tekintse meg a következő témakört: a gyorsítótárazási [szabályok kezelése Azure CDN](cdn-caching-rules.md) 
 - Ha meg szeretné tudni, hogyan használhatja a lekérdezési karakterláncokat a gyorsítótárazási viselkedés vezérlésére, tekintse meg a [vezérlési karakterláncokkal Azure CDN gyorsítótárazási viselkedés szabályozása](cdn-query-string.md)

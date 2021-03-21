@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
 ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018069"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Rövid útmutató: privát végpont létrehozása a Azure Portal használatával
@@ -84,7 +84,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Kattintson a **Létrehozás** gombra.
+9. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -134,7 +134,7 @@ Ebben a szakaszban létre fog hozni egy privát végpontot az előfeltételek sz
 
 1. A portálon a képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **privát hivatkozás** lehetőséget, vagy a keresőmezőbe írja be a **privát hivatkozás** kifejezést.
 
-2. Kattintson a **Létrehozás** gombra.
+2. Válassza a **Létrehozás** lehetőséget.
 
 3. A **privát kapcsolat központban** válassza a bal oldali menüben a **privát végpontok** lehetőséget.
 

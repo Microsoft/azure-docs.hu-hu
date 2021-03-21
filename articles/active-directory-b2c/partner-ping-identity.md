@@ -12,10 +12,10 @@ ms.date: 01/20/2021
 ms.author: gasinh
 ms.subservice: B2C
 ms.openlocfilehash: 94e7ae93d05ae8ee35028882e14d8da74814d833
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101650226"
 ---
 # <a name="tutorial-configure-ping-identity-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Oktatóanyag: a ping-identitás konfigurálása Azure Active Directory B2C a biztonságos hibrid hozzáféréshez
@@ -84,7 +84,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Docker-tárolókban vagy közvetlenül Azure-beli virtuális gépeken üzembe helyezett PingAccess és PingFederate.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Győződjön meg arról, hogy a következő csatlakozik.
 

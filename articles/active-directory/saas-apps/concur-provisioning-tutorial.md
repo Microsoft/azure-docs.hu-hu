@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: edb21287b30f8ba77d6312ec6b456e20aa260598
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94358211"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
@@ -58,11 +58,11 @@ Ahhoz, hogy az alkalmazások engedélyezve legyenek a költségfelosztási szolg
 
 Az egyetértő tanácsadók vagy az ügyfél rendszergazdájának létre kell hoznia egy külön webszolgáltatás-rendszergazdai profilt, és az ügyfél rendszergazdájának ezt a profilt kell használnia a webszolgáltatások rendszergazdai funkcióihoz (például az alkalmazások engedélyezéséhez). Ezeket a profilokat el kell különíteni az ügyfél-rendszergazda napi T&E rendszergazdai profiljától (a T&E rendszergazdai profilnak nincs hozzárendelve a WSAdmin szerepköre).
 
-Amikor létrehozza az alkalmazás engedélyezéséhez használandó profilt, adja meg az ügyfél-rendszergazda nevét a felhasználói profil mezőiben. Ez tulajdonosi jogosultságot rendel a profilhoz. Egy vagy több profil létrehozása után az ügyfélnek be kell jelentkeznie ezzel a profillal, ha rákattint az " *Engedélyezés* " gombra a webszolgáltatások menüjében lévő partneri alkalmazáshoz.
+Amikor létrehozza az alkalmazás engedélyezéséhez használandó profilt, adja meg az ügyfél-rendszergazda nevét a felhasználói profil mezőiben. Ez tulajdonosi jogosultságot rendel a profilhoz. Egy vagy több profil létrehozása után az ügyfélnek be kell jelentkeznie ezzel a profillal, ha rákattint az "*Engedélyezés*" gombra a webszolgáltatások menüjében lévő partneri alkalmazáshoz.
 
 A következő okok miatt ez a művelet nem hajtható végre a normál T&E felügyelethez használt profillal.
 
-* Az ügyfélnek olyannak kell lennie, amely az alkalmazás engedélyezése után megjelenő párbeszéd ablak " *Igen* " gombjára kattint. Ezzel a beállítással visszaigazolhatja, hogy az ügyfél hajlandó-e hozzáférni az adateléréshez, így Ön vagy a partner nem kattinthat erre az Igen gombra.
+* Az ügyfélnek olyannak kell lennie, amely az alkalmazás engedélyezése után megjelenő párbeszéd ablak "*Igen*" gombjára kattint. Ezzel a beállítással visszaigazolhatja, hogy az ügyfél hajlandó-e hozzáférni az adateléréshez, így Ön vagy a partner nem kattinthat erre az Igen gombra.
 
 * Ha a T&E rendszergazdai profillal rendelkező alkalmazást engedélyező ügyfél-rendszergazda elhagyja a vállalatot (ami a profil inaktiválását eredményezi), az adott profil használatával engedélyezett alkalmazások mindaddig nem működnek, amíg az alkalmazás nem engedélyezett egy másik aktív WS felügyeleti profillal. Ezért érdemes különálló WS rendszergazdai profilokat létrehozni.
 
@@ -116,7 +116,7 @@ A következő okok miatt ez a művelet nem hajtható végre a normál T&E felüg
 
 Most már létrehozhat egy teszt fiókot is. Várjon akár 20 percet, és ellenőrizze, hogy a fiók szinkronizálása megtörtént-e.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

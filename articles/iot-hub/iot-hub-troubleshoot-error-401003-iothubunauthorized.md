@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357249"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
@@ -26,7 +26,7 @@ Ez a cikk a **401003 IoTHubUnauthorized** -hibák okait és megoldásait ismerte
 
 ### <a name="symptom-1"></a>1. tünet
 
-A naplókban megtekintheti az **401003 IoTHubUnauthorized** -vel leválasztott eszközök mintáját, majd a **404104 DeviceConnectionClosedRemotely** , majd a röviddel később történő csatlakozást.
+A naplókban megtekintheti az **401003 IoTHubUnauthorized**-vel leválasztott eszközök mintáját, majd a **404104 DeviceConnectionClosedRemotely**, majd a röviddel később történő csatlakozást.
 
 ### <a name="symptom-2"></a>2. tünet
 
@@ -74,7 +74,7 @@ Ha az eszközök fejlesztői számára a hibák mennyisége aggodalomra ad okot,
 - Az engedélyezési hitelesítő adat jól formázott a használt protokollhoz. További információ: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).
 - A használt engedélyezési szabály jogosult a kért műveletre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ahhoz, hogy könnyebben IoT Hub a hitelesítés, javasoljuk, hogy az [Azure IoT SDK](iot-hub-devguide-sdks.md)-kat használja.
 - A IoT Hub használatával történő hitelesítés részletes ismertetését lásd: [a IoT hub hozzáférésének szabályozása](iot-hub-devguide-security.md).

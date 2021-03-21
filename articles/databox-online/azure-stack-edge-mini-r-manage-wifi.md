@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: alkohli
 ms.openlocfilehash: f00be43d023d912d4b0b6e825dfe9d3e0ca2d250
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466861"
 ---
 # <a name="use-the-local-web-ui-to-manage-wireless-connectivity-on-your-azure-stack-edge-mini-r"></a>A helyi webes felhasználói felület használata a vezeték nélküli kapcsolat kezeléséhez az Azure Stack Edge mini R-vel
@@ -143,6 +143,6 @@ További információ: [csoportos küldéssel kapcsolatos VLAN-információk a c
 
 Ha az IP-címek kiosztásával kapcsolatos problémákat tapasztal Azure Stack Edge mini R-eszközön futó virtuális gépeken, a hálózati környezet fenti konfigurációs beállításait érvényesíteni kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [helyezheti üzembe Azure stack Edge mini R-eszközét](azure-stack-edge-mini-r-deploy-prep.md).

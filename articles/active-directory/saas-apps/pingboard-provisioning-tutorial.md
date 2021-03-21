@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: ac36f5d6d1f57fd8453c54bcc8cf19dd964f47f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94357895"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Pingboard konfigurálása
@@ -73,13 +73,13 @@ Ez a szakasz végigvezeti az Azure AD az Pingboard felhasználói fiók létesí
 
     d. Lépjen a **configure (Konfigurálás** ) lapra, és válassza a felhasználó üzembe helyezésének **engedélyezése az Azure-ból** lehetőséget.
 
-    e. Másolja a tokent a **OAuth tulajdonosi jogkivonatba** , és adja meg a **titkos jogkivonatban**.
+    e. Másolja a tokent a **OAuth tulajdonosi jogkivonatba**, és adja meg a **titkos jogkivonatban**.
 
 1. A Azure Portal válassza a **kapcsolat tesztelése** lehetőséget az Azure ad-hez való kapcsolódáshoz a Pingboard-alkalmazáshoz. Ha a kapcsolat meghiúsul, ellenőrizze, hogy a Pingboard-fiókja rendelkezik-e rendszergazdai jogosultságokkal, majd próbálja megismételni a **kapcsolat tesztelése** lépést.
 
 1. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek az **értesítési e-mailben** szeretne kiépítési hibaüzeneteket kapni. Jelölje be a jelölőnégyzetet az alatt.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Pingboard** lehetőséget.
 
@@ -93,7 +93,7 @@ A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a következő szin
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentés a felhasználói fiókok automatikus üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséről.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

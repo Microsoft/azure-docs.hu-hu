@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92783572"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárolók kezelése az Azure független felhőkben a PowerShell használatával
@@ -51,7 +51,7 @@ Jelentkezzen be a fiókjába, amely hozzáfér a felhőhöz, amelyhez csatlakozn
 Connect-AzAccount –Environment AzureUSGovernment
 ```
 
-A kínai felhőhöz való hozzáféréshez használja a környezeti **AzureChinaCloud** . A német felhőhöz való hozzáféréshez használja a **AzureGermanCloud** .
+A kínai felhőhöz való hozzáféréshez használja a környezeti **AzureChinaCloud**. A német felhőhöz való hozzáféréshez használja a **AzureGermanCloud**.
 
 Ezen a ponton, ha szüksége van egy Storage-fiók vagy más erőforrás létrehozásához szükséges helyekre, a [Get-AzLocation](/powershell/module/az.resources/get-azlocation)használatával lekérdezheti a kiválasztott felhőhöz elérhető helyeit.
 
@@ -69,7 +69,7 @@ A következő táblázat a német felhőhöz visszaadott helyszíneket mutatja b
 
 ## <a name="endpoint-suffix"></a>Végpont utótagja
 
-Az egyes környezetek végpont-utótagja eltér az Azure nyilvános végponttól. Például az Azure nyilvános blob-végpont utótagja a **blob.Core.Windows.net** . A kormányzati felhő esetében a blob Endpoint utótagja **blob.Core.usgovcloudapi.net** .
+Az egyes környezetek végpont-utótagja eltér az Azure nyilvános végponttól. Például az Azure nyilvános blob-végpont utótagja a **blob.Core.Windows.net**. A kormányzati felhő esetében a blob Endpoint utótagja **blob.Core.usgovcloudapi.net**.
 
 ### <a name="get-endpoint-using-get-azenvironment"></a>Végpont beolvasása Get-AzEnvironment használatával
 
@@ -85,7 +85,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs a következő eredményeket adja vissza.
 
-| Name (Név)| StorageEndpointSuffix|
+| Name| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -102,7 +102,7 @@ Az eredmények a következő értékekhez hasonlóak:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Name (Név) | `AzureGermanCloud` |
+| Név | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
 | GalleryURL | `https://gallery.cloudapi.de/` |
@@ -156,7 +156,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 Mostantól a PowerShell használatával kezelheti a Storage-fiókjait, és elérheti a blob, a várólista, a fájl és a tábla adatait. További információ: [az. Storage](/powershell/module/az.storage).
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha létrehozott egy új erőforráscsoportot és egy Storage-fiókot ehhez a gyakorlathoz, akkor az erőforráscsoport törlésével eltávolíthatja mindkét eszközét. Az erőforráscsoport törlésével a csoportban található összes erőforrás törlődik.
 

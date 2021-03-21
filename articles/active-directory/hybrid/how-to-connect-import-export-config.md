@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98681955"
 ---
 # <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect konfigurációs beállításainak importálása és exportálása 
@@ -77,10 +77,10 @@ A beállítások áttelepíthetők:
 
    ![Azure AD Connect-címtárakat bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-** _ mappát át kell másolnia az új kiszolgálóra.
+1. Futtassa a parancsfájlt az itt látható módon, és mentse a teljes alsó szintű kiszolgáló konfigurációs könyvtárat. Másolja ezt a könyvtárat az új átmeneti kiszolgálóra. A teljes **exportált-ServerConfiguration-*** mappát át kell másolnia az új kiszolgálóra.
 
    ![Képernyőkép, amely a Windows PowerShellben lévő parancsfájlt jeleníti meg. ](media/how-to-connect-import-export-config/migrate2.png)
-    ![ Az exportált-ServerConfiguration-_ mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate3.png)
+    ![ Az exportált-ServerConfiguration-* mappa másolását bemutató képernyőkép.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. **Azure ad Connect** indításához kattintson duplán a ikonra az asztalon. Fogadja el a Microsoft szoftverlicenc-szerződését, és a következő lapon válassza a **Testreszabás** lehetőséget.
 1. Jelölje be a **szinkronizálási beállítások importálása** jelölőnégyzetet. Válassza a **Tallózás** lehetőséget a másolt exportált ServerConfiguration-* mappa tallózásához. Az áttelepített beállítások importálásához válassza ki a MigratedPolicy.js.

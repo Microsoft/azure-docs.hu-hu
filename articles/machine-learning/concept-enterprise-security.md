@@ -11,10 +11,10 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/20/2020
 ms.openlocfilehash: a079504872eaf3840416a99e784c4d33a6828b0c
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94992029"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
@@ -44,7 +44,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt [felügyel
 | Erőforrás | Engedélyek |
 | ----- | ----- |
 | Munkaterület | Közreműködő |
-| Tárfiók | Storage-blobadatok közreműködője |
+| A(z) | Storage-blobadatok közreműködője |
 | Key Vault | Hozzáférés az összes kulcshoz, titokhoz, tanúsítványhoz |
 | Azure Container Registry | Közreműködő |
 | A munkaterületet tartalmazó erőforráscsoport | Közreműködő |
@@ -97,7 +97,7 @@ A modellek webszolgáltatásként való üzembe helyezésekor engedélyezheti a 
 
 ## <a name="vulnerability-scanning"></a>Biztonsági rések vizsgálata
 
-[Azure Security Center](../security-center/security-center-introduction.md) egységes biztonsági felügyeletet és komplex veszélyforrások elleni védelmet biztosít a hibrid Felhőbeli munkaterhelések között. Az Azure Machine learning esetében engedélyeznie kell a [Azure Container Registry](../container-registry/container-registry-intro.md) erőforrás és az Azure Kubernetes szolgáltatás-erőforrások vizsgálatát. További információ: [Azure Container Registry rendszerképek vizsgálata Security Center](../security-center/defender-for-container-registries-introduction.md) és az [Azure Kubernetes Services integrációja Security Center](../security-center/defender-for-kubernetes-introduction.md)használatával.
+Az [Azure Security Center](../security-center/security-center-introduction.md) egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Az Azure Machine learning esetében engedélyeznie kell a [Azure Container Registry](../container-registry/container-registry-intro.md) erőforrás és az Azure Kubernetes szolgáltatás-erőforrások vizsgálatát. További információ: [Azure Container Registry rendszerképek vizsgálata Security Center](../security-center/defender-for-container-registries-introduction.md) és az [Azure Kubernetes Services integrációja Security Center](../security-center/defender-for-kubernetes-introduction.md)használatával.
 
 ## <a name="audit-and-manage-compliance"></a>Naplózás és megfelelőség kezelése
 

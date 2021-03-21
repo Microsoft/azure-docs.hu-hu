@@ -11,15 +11,15 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99592840"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Egyéni szabályzatok Azure AD B2C áttekintése
 
-Az egyéni házirendek olyan konfigurációs fájlok, amelyek meghatározzák a Azure Active Directory B2C (Azure AD B2C) bérlő viselkedését. Habár a [felhasználói folyamatok](user-flow-overview.md) előre vannak meghatározva a Azure ad B2C-portálon a leggyakoribb identitási feladatok elvégzéséhez, az egyéni szabályzatok teljes mértékben szerkeszthetők egy identitás-fejlesztővel, és számos különböző feladatot végezhetnek el.
+Az egyéni szabályzatok olyan konfigurációs fájlok, amelyekkel meghatározható az Azure Active Directory B2C- (Azure AD B2C-) bérlő viselkedése. Habár a [felhasználói folyamatok](user-flow-overview.md) előre vannak meghatározva a Azure ad B2C-portálon a leggyakoribb identitási feladatok elvégzéséhez, az egyéni szabályzatok teljes mértékben szerkeszthetők egy identitás-fejlesztővel, és számos különböző feladatot végezhetnek el.
 
 Az egyéni szabályzatok teljes mértékben konfigurálhatók és házirend-vezéreltek. Az egyéni szabályzatok az entitások közötti megbízhatóságot a szabványos protokoll-formátumokban, például az OpenID Connect, a OAuth, az SAML és néhány nem standard formában, például REST API-alapú rendszer-rendszerbeli jogcímek cseréjére hangolják. A keretrendszer felhasználóbarát, fehér címkével ellátott tapasztalatokat hoz létre.
 

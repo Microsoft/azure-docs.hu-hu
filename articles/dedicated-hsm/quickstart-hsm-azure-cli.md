@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.date: 01/06/2021
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e07bc758b1ef86b3d8c605cbce72f6db564a355f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020961"
 ---
 # <a name="quickstart-create-an-azure-dedicated-hsm-by-using-the-azure-cli"></a>Rövid útmutató: Azure dedikált HSM létrehozása az Azure CLI használatával
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és kezelhet egy Azure dedikált H
 - A dedikált HSM esetében minden követelmény teljesült, beleértve a regisztrációt, a jóváhagyást, valamint a kiépítés során használandó virtuális hálózatot és virtuális gépet. A dedikált HSM-követelményekkel és előfeltételekkel kapcsolatos további információkért lásd [: oktatóanyag: a HSM telepítése meglévő virtuális hálózatra az Azure CLI használatával](tutorial-deploy-hsm-cli.md).
   
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) egy logikai tároló az Azure-erőforrások csoportként történő üzembe helyezéséhez és kezeléséhez. Ha még nem rendelkezik erőforráscsoporthoz a dedikált HSM-hez, hozzon létre egyet az az [Group Create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy nevű erőforráscsoportot `myRG` az `westus` Azure-régióban:
 
@@ -101,6 +101,6 @@ Ha már nincs szüksége a dedikált HSM-hez létrehozott erőforráscsoporthoz,
 az group delete --name myRG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure dedikált HSM-ről: [Azure DEDIKÁLT HSM](overview.md).

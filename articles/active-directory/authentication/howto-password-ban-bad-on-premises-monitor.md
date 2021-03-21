@@ -1,6 +1,6 @@
 ---
 title: Helyszíni Azure AD jelszavas védelem figyelése
-description: Ismerje meg, hogyan figyelheti és tekintheti át az Azure AD jelszavas védelem naplóit egy helyszíni Active Directory tartományi szolgáltatások-környezetben
+description: Ismerje meg, hogyan figyelheti és tekintheti át az Azure AD jelszavas védelem naplóit egy helyszíni Active Directory Domain Services-környezetben
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -13,10 +13,10 @@ ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: edc246a414401c4c1c0248787eda0381fcd63037
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96741762"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>A helyszíni Azure AD-beli jelszavas védelmi környezetek naplófájljainak figyelése és áttekintése
@@ -240,7 +240,7 @@ A szöveges naplózás alapértelmezés szerint le van tiltva. Az érték érvé
 
 A DC Agent szolgáltatás szoftvere egy **Azure ad jelszavas védelem** nevű teljesítményszámláló objektumot telepít. Jelenleg a következő teljesítményszámláló-számlálók érhetők el:
 
-|Teljesítményszámláló neve | Leírás|
+|Teljesítményszámláló neve | Description|
 | --- | --- |
 |Feldolgozott jelszavak |Ez a számláló a legutóbbi újraindítás óta feldolgozott (elfogadott vagy visszautasított) jelszavak teljes számát jeleníti meg.|
 |Elfogadott jelszavak |Ez a számláló a legutóbbi újraindítás óta elfogadott jelszavak teljes számát jeleníti meg.|
@@ -387,7 +387,7 @@ A fenti esemény nem határozza meg az újabb szoftver verzióját. Az adott inf
 
 Ezt az eseményt akkor is kibocsátja a rendszer, ha a proxykiszolgáló engedélyezve van az automatikus frissítés beállítással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hibaelhárítás az Azure AD jelszavas védelméhez](howto-password-ban-bad-on-premises-troubleshoot.md)
 

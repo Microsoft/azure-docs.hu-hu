@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: e61d85b5f02cb73d078888badc2fa24c4506fe64
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620884"
 ---
 # <a name="how-to-sell-your-saas-offer"></a>Az SaaS-ajánlat értékesítése
@@ -29,7 +29,7 @@ A **közös értékesítés a Microsoft** lapon való konfigurálásával kapcso
 
 Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a Cloud Solution Provider (CSP) programban, a kriptográfiai szolgáltatás a terméket egy csomagban lévő megoldás részeként értékesítheti ügyfelei számára. További információ az ajánlatnak a CSP programon keresztüli viszonteladásáról, valamint az **viszonteladás a CSP** -n keresztül történő konfigurálásának lépésenkénti lépéseiről: [Cloud Solution Provider program](cloud-solution-providers.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [SaaS-ajánlat tesztelése és közzététele](test-publish-saas-offer.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

@@ -12,10 +12,10 @@ ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
 ms.openlocfilehash: d2995f39bc61ae5bb87abafd674f411271e57ca2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94366281"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>Recept: prediktív karbantartás a nagy adatmennyiséggel rendelkező Cognitive Services
@@ -33,7 +33,7 @@ Az adatokat véletlenszerű gyakorisággal lehet kiugróan értelmezni. Ezekben 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Kiszolgáló nélküli Apache Spark készlettel](../../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) konfigurált [Azure szinapszis-munkaterület](../../../synapse-analytics/quickstart-create-workspace.md)
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 ### <a name="create-an-anomaly-detector-resource"></a>Anomália-detektor erőforrásának létrehozása
 
@@ -98,7 +98,7 @@ df_anomaly.select("timestamp","value","deviceId","anomalies.isAnomaly").show(3)
 
 Ennek a cellának a következőhöz hasonló eredményt kell eredményeznie:
 
-| időbélyeg           |   value | deviceId   | isAnomaly   |
+| időbélyeg           |   érték | deviceId   | isAnomaly   |
 |:--------------------|--------:|:-----------|:------------|
 | 2020-05-01 18:33:51 |    3174 | dev-7      | Hamis       |
 | 2020-05-01 18:33:52 |    2976 | dev-7      | Hamis       |
@@ -149,6 +149,6 @@ Ha a művelet sikeres, a kimenet a következőképpen fog kinézni:
 
 ![Anomália-detektor ábrázolása](../media/anomaly-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan végezheti el a prediktív karbantartást az Azure Cognitive Services, az Azure szinapszis Analytics és az Azure CosmosDB használatával. További információ: teljes minta a [githubon](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples).

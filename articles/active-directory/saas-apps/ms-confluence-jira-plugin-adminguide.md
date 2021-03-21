@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94359157"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian-JIRA és-összefolyásánál felügyeleti útmutató a Azure Active Directory
@@ -107,59 +107,59 @@ Az alábbi képen a JIRA és a torkolatánál található konfigurációs képer
 
 ![Beépülő modul konfigurációs képernyője](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-* **Metaadatok URL-címe** : az összevonási metaadatok Azure ad-ből való lekérésére szolgáló URL-cím.
+* **Metaadatok URL-címe**: az összevonási metaadatok Azure ad-ből való lekérésére szolgáló URL-cím.
 
-* **Azonosítók** : az az URL-cím, amelyet az Azure ad a kérelem forrásának ellenőrzésére használ. Az Azure AD **azonosító** eleméhez rendeli hozzá. A beépülő modul automatikusan az https:///-ként származtatja ezt az URL-címet *\<domain:port>* .
+* **Azonosítók**: az az URL-cím, amelyet az Azure ad a kérelem forrásának ellenőrzésére használ. Az Azure AD **azonosító** eleméhez rendeli hozzá. A beépülő modul automatikusan az https:///-ként származtatja ezt az URL-címet *\<domain:port>* .
 
-* **Válasz URL-címe** : a válasz URL-címe a identitásszolgáltató, amely kezdeményezi az SAML-bejelentkezést. Leképezi az Azure AD **Válasz URL-** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<domain:port>* /plugins/servlet/SAML/auth.
+* **Válasz URL-címe**: a válasz URL-címe a identitásszolgáltató, amely kezdeményezi az SAML-bejelentkezést. Leképezi az Azure AD **Válasz URL-** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
-* **Bejelentkezési URL-cím** : a identitásszolgáltató bejelentkezési URL-címe, amely az SAML-bejelentkezést kezdeményezi. Leképezi az Azure AD **bejelentkezési** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<domain:port>* /plugins/servlet/SAML/auth.
+* **Bejelentkezési URL-cím**: a identitásszolgáltató bejelentkezési URL-címe, amely az SAML-bejelentkezést kezdeményezi. Leképezi az Azure AD **bejelentkezési** elemét. A beépülő modul automatikusan származtatja ezt az URL-címet https:// *\<domain:port>* /plugins/servlet/SAML/auth.
 
-* **Identitásszolgáltató-entitás azonosítója** : a identitásszolgáltató által használt entitás azonosítója. Ez a mező a metaadatok URL-címének feloldásakor töltődik fel.
+* **Identitásszolgáltató-entitás azonosítója**: a identitásszolgáltató által használt entitás azonosítója. Ez a mező a metaadatok URL-címének feloldásakor töltődik fel.
 
-* **Bejelentkezési URL-cím** : a bejelentkezési URL-cím a identitásszolgáltató. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
+* **Bejelentkezési URL-cím**: a bejelentkezési URL-cím a identitásszolgáltató. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **Kijelentkezési URL-cím** : a identitásszolgáltató kijelentkezési URL-címe. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
+* **Kijelentkezési URL-cím**: a identitásszolgáltató kijelentkezési URL-címe. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **X. 509 tanúsítvány** : a identitásszolgáltató X. 509 tanúsítványa. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
+* **X. 509 tanúsítvány**: a identitásszolgáltató X. 509 tanúsítványa. Ez a mező az Azure AD-ből van feltöltve a metaadatok URL-címének feloldásakor.
 
-* **Bejelentkezési gomb neve** : annak a bejelentkezési gombnak a neve, amelyet a szervezet a felhasználók számára látni szeretne a bejelentkezési oldalon.
+* **Bejelentkezési gomb neve**: annak a bejelentkezési gombnak a neve, amelyet a szervezet a felhasználók számára látni szeretne a bejelentkezési oldalon.
 
 * **SAML felhasználói azonosító** helye: az SAML-válaszban a JIRA vagy az összefolyásánál felhasználói azonosító helyét kell megvárni. Ez lehet a **NameID** vagy egy egyéni attribútum neve.
 
-* **Attribútum neve** : annak az attribútumnak a neve, amelybe a rendszer a felhasználói azonosítót várta.
+* **Attribútum neve**: annak az attribútumnak a neve, amelybe a rendszer a felhasználói azonosítót várta.
 
-* A **Kezdőlap tartomány felderítésének engedélyezése** : a kijelölés, hogy a vállalat Active Directory összevonási szolgáltatások (AD FS) (AD FS) alapú bejelentkezést használjon.
+* A **Kezdőlap tartomány felderítésének engedélyezése**: a kijelölés, hogy a vállalat Active Directory összevonási szolgáltatások (AD FS) (AD FS) alapú bejelentkezést használjon.
 
-* **Tartománynév** : a tartomány neve, ha a bejelentkezés AD FS alapul.
+* **Tartománynév**: a tartomány neve, ha a bejelentkezés AD FS alapul.
 
-* **Egyszeri kijelentkezés engedélyezése** : ezt a lehetőséget kell választania, ha ki szeretne jelentkezni az Azure ad-ből, amikor egy felhasználó kijelentkezik a JIRA vagy a torkolatánál.
+* **Egyszeri kijelentkezés engedélyezése**: ezt a lehetőséget kell választania, ha ki szeretne jelentkezni az Azure ad-ből, amikor egy felhasználó kijelentkezik a JIRA vagy a torkolatánál.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* **Több tanúsítvány-hibaüzenetet kap** : Jelentkezzen be az Azure ad-be, és távolítsa el az alkalmazáson keresztül elérhető több tanúsítványt. Győződjön meg arról, hogy csak egy tanúsítvány van jelen.
+* **Több tanúsítvány-hibaüzenetet kap**: Jelentkezzen be az Azure ad-be, és távolítsa el az alkalmazáson keresztül elérhető több tanúsítványt. Győződjön meg arról, hogy csak egy tanúsítvány van jelen.
 
-* **A tanúsítvány hamarosan lejár az Azure ad-ben** : a bővítmények gondoskodnak a tanúsítvány automatikus átváltásáról. Ha egy tanúsítvány hamarosan lejár, egy új tanúsítványt kell megjelölni, és törölni kell a használaton kívüli tanúsítványokat. Ha a felhasználó ebben az esetben megpróbál bejelentkezni a JIRA, a beépülő modul lekéri és menti az új tanúsítványt.
+* **A tanúsítvány hamarosan lejár az Azure ad-ben**: a bővítmények gondoskodnak a tanúsítvány automatikus átváltásáról. Ha egy tanúsítvány hamarosan lejár, egy új tanúsítványt kell megjelölni, és törölni kell a használaton kívüli tanúsítványokat. Ha a felhasználó ebben az esetben megpróbál bejelentkezni a JIRA, a beépülő modul lekéri és menti az új tanúsítványt.
 
-* **Szeretné letiltani a websudo-t (a biztonságos rendszergazdai munkamenet letiltása)** :
+* **Szeretné letiltani a websudo-t (a biztonságos rendszergazdai munkamenet letiltása)**:
 
   * A JIRA esetében a biztonságos rendszergazdai munkamenetek (azaz jelszó-megerősítés a felügyeleti funkciók elérése előtt) alapértelmezés szerint engedélyezve vannak. Ha el szeretné távolítani ezt a képességet a JIRA-példányban, adja meg a következő sort a JIRA-config. properties fájlban: `jira.websudo.is.disabled = true`
 
   * A torkolatánál való összefolyásánál kövesse az [összefolyásánál támogatási webhelyének](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)lépéseit.
 
-* **A metaadatok URL-címével kitöltendő mezők nem lesznek feltöltve** :
+* **A metaadatok URL-címével kitöltendő mezők nem lesznek feltöltve**:
 
   * Ellenőrizze, hogy helyes-e az URL-cím. Ellenőrizze, hogy a megfelelő bérlő és alkalmazás-azonosító van-e leképezve.
 
   * Adja meg az URL-címet egy böngészőben, és ellenőrizze, hogy az összevonási metaadatok XML-fájlja megjelenik-e.
 
-* **Belső kiszolgálóhiba történt** : Ellenőrizze a naplókat a telepítés naplózási könyvtárában. Ha olyan hibaüzenetet kap, amikor a felhasználó az Azure AD SSO használatával próbál bejelentkezni, megoszthatja a naplókat a támogatási csapattal.
+* **Belső kiszolgálóhiba történt**: Ellenőrizze a naplókat a telepítés naplózási könyvtárában. Ha olyan hibaüzenetet kap, amikor a felhasználó az Azure AD SSO használatával próbál bejelentkezni, megoszthatja a naplókat a támogatási csapattal.
 
-* **"Felhasználói azonosító nem található" hibaüzenet jelenik meg, amikor a felhasználó megpróbál bejelentkezni** : hozza létre a felhasználói azonosítót a JIRA vagy a torkolatánál.
+* **"Felhasználói azonosító nem található" hibaüzenet jelenik meg, amikor a felhasználó megpróbál bejelentkezni**: hozza létre a felhasználói azonosítót a JIRA vagy a torkolatánál.
 
-* **"Az alkalmazás nem található" hibaüzenet jelenik meg az Azure ad-ben** : Ellenőrizze, hogy a megfelelő URL-cím van-e leképezve az alkalmazáshoz az Azure ad-ben.
+* **"Az alkalmazás nem található" hibaüzenet jelenik meg az Azure ad-ben**: Ellenőrizze, hogy a megfelelő URL-cím van-e leképezve az alkalmazáshoz az Azure ad-ben.
 
-* **Támogatásra van szüksége** : az [Azure ad SSO integrációs csapatának](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)elérhetősége. A csapat 24-48 munkaidőben válaszol.
+* **Támogatásra van szüksége**: az [Azure ad SSO integrációs csapatának](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)elérhetősége. A csapat 24-48 munkaidőben válaszol.
 
   A Microsoft támogatási jegyét a Azure Portal csatornán keresztül is megteheti.
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010809"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. A Azure Availability Zones virtuális hálózati átjárói SKU-ban tekintse meg a [Azure Availability Zones Gateway SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)-ket.
@@ -31,7 +31,7 @@ Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni 
 
 Az új VPN Gateway SKU-ra egyszerűsíti az átjárók által kínált szolgáltatáskészlet-készleteket:
 
-| **Termékváltozat**| **Szolgáltatások**|
+| **Termékváltozat**| **Funkciók**|
 | ---    | ---         |
 |**Alapszintű** (* *)   | **Útvonal-alapú VPN**: 10 alagút a S2S/kapcsolatok számára; a P2S nem rendelkezik RADIUS-hitelesítéssel; nincs IKEv2 a P2S<br>**Házirend alapú VPN**: (IKEv1): 1 S2S/kapcsolati alagút; nincs P2S|
 | **Az összes Generation1 és Generation2 SKU, kivéve az alapszintű** | **Route-alapú VPN**: legfeljebb 30 alagút (*), P2S, BGP, aktív-aktív, egyéni IPSec/IKE-házirend, EXPRESSROUTE/VPN együttes létezése |

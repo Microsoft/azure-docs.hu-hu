@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
 ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96500886"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Teljesítményre vonatkozó javaslatok keresése és alkalmazása
@@ -132,7 +132,7 @@ Előfordulhat, hogy egy javaslat alkalmazása nem történik meg azonnal. A port
 | Függőben |A javaslat alkalmazása parancs beérkezett, és végrehajtásra van ütemezve. |
 | Végrehajtása |A javaslat alkalmazása folyamatban van. |
 | Érvényesítése |Az ajánlás alkalmazása sikeresen megtörtént, és a szolgáltatás az előnyöket méri. |
-| Success |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
+| Siker |Az ajánlás alkalmazása sikeresen megtörtént, és a rendszer kiértékelte az előnyöket. |
 | Hiba |Hiba történt a javaslat alkalmazásának folyamata során. Ez lehet átmeneti probléma, vagy lehetséges, hogy a séma módosul a táblán, és a parancsfájl már nem érvényes. |
 | Visszatérés |A javaslat alkalmazása megtörtént, de nem megfelelőnek minősül, és a rendszer automatikusan visszaállította. |
 | Visszatért |Az ajánlás visszavonásra került. |
@@ -160,7 +160,7 @@ A javaslatok sikeres implementálása után (jelenleg csak az indexelési művel
 
 Azure SQL Database az adatbázis teljesítményének javítására vonatkozó ajánlásokat tartalmaz. A T-SQL-parancsfájlok nyújtásával segítséget nyújt az adatbázis optimalizálásában, és végül a lekérdezési teljesítmény javításában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Figyelje a javaslatokat, és alkalmazza őket a teljesítmény pontosítására. Az adatbázis-számítási feladatok dinamikusak, és folyamatosan változnak. Azure SQL Database folytatja az adatbázis teljesítményének növelésére szolgáló javaslatok figyelését és megadását.
 

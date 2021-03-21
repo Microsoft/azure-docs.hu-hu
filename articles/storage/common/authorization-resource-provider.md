@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: fcf3e9228c8e651efb8f97067f7ba9eead5959db
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789675"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
@@ -44,7 +44,7 @@ Az Azure olyan beépített szerepköröket biztosít, amelyek engedélyeket bizt
 
 A tárolási felügyeleti műveletek meghívására engedélyt biztosító beépített szerepkörök közé tartoznak a következő táblázatban ismertetett szerepkörök:
 
-|    Azure-szerepkör    |    Leírás    |    A fiók kulcsaihoz való hozzáférést is tartalmaz?    |
+|    Azure-szerepkör    |    Description    |    A fiók kulcsaihoz való hozzáférést is tartalmaz?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Tulajdonos** | Képes kezelni az összes tárolási erőforrást és az erőforrásokhoz való hozzáférést.  | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |
 | **Közreműködő**  | Kezelheti az összes tárolási erőforrást, de nem kezelheti az erőforrásokhoz való hozzáférést. | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |
@@ -53,7 +53,7 @@ A tárolási felügyeleti műveletek meghívására engedélyt biztosító beép
 | **Felhasználói hozzáférés adminisztrátora** | Kezelheti a Storage-fiókhoz való hozzáférést.   | Igen, lehetővé teszi a rendszerbiztonsági tag számára, hogy engedélyeket rendeljenek magukhoz és másokhoz. |
 | **Virtuális gépek közreműködője** | Felügyelheti a virtuális gépeket, de nem azt a Storage-fiókot, amelyhez csatlakoznak.   | Igen, a Storage-fiók kulcsainak megtekintésére és újralétrehozására vonatkozó engedélyeket biztosít. |
 
-A tábla harmadik oszlopa azt jelzi, hogy a beépített szerepkör támogatja-e a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet** . Ez a művelet engedélyt ad a Storage-fiók kulcsainak olvasására és újbóli előállítására. Az Azure Storage felügyeleti erőforrásainak eléréséhez szükséges engedélyek nem tartalmazzák az adathozzáférésre vonatkozó engedélyeket is. Ha azonban egy felhasználó hozzáfér a fiók kulcsaihoz, akkor a fiókok kulcsaival érheti el az Azure Storage-adatvédelmet a megosztott kulcsos hitelesítésen keresztül.
+A tábla harmadik oszlopa azt jelzi, hogy a beépített szerepkör támogatja-e a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**. Ez a művelet engedélyt ad a Storage-fiók kulcsainak olvasására és újbóli előállítására. Az Azure Storage felügyeleti erőforrásainak eléréséhez szükséges engedélyek nem tartalmazzák az adathozzáférésre vonatkozó engedélyeket is. Ha azonban egy felhasználó hozzáfér a fiók kulcsaihoz, akkor a fiókok kulcsaival érheti el az Azure Storage-adatvédelmet a megosztott kulcsos hitelesítésen keresztül.
 
 ### <a name="custom-roles-for-management-operations"></a>Egyéni szerepkörök felügyeleti műveletekhez
 

@@ -7,10 +7,10 @@ author: kanshiG
 ms.author: govindk
 ms.date: 01/07/2021
 ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027780"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>A normalizált RU/s figyelése Azure Cosmos-tárolóhoz vagy-fiókhoz
@@ -22,7 +22,7 @@ A **normalizált ru** -használati metrika azt mutatja, hogy mennyire telített 
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Mire számíthat, és ha a normalizált RU/s magasabb
 
-Ha a normalizált RU/s-használat eléri a 100%-ot a megadott partíciós kulcs tartománya számára, és ha egy ügyfél továbbra is a kérelmeket az adott időintervallumban, az adott partíciós kulcs tartományára is elküldi, akkor a rendszer korlátozott mértékű hibát kap Az ügyfélnek tiszteletben kell tartania a javasolt várakozási időt, és újra kell próbálkoznia a kéréssel. Az SDK-val könnyedén kezelheti ezt a helyzetet azáltal, hogy a megfelelő várakozással újrapróbálkozik az előre konfigurált időpontokkal.  Nem szükséges, hogy az RU-ráta korlátozási hibát észlelt, mert a normalizált RU elérte a 100%-ot. Ennek az az oka, hogy a normalizált RU egyetlen érték, amely a maximális kihasználtságot jelöli az összes partíciós kulcs tartományán, az egyik partíciós kulcs foglalható, de a többi partíciós kulcs tartománya probléma nélkül kiszolgálhatja a kéréseket. Például egyetlen művelet, például egy tárolt eljárás, amely a partíciós kulcsok tartományában lévő összes RU/s-t felhasználja, a normalizált RU/s-fogyasztás rövid csúcsát fogja eredményezni. Ilyen esetekben a rendszer nem korlátozza az azonnali díjszabást, ha a kérések aránya alacsony, vagy a különböző partíciós kulcs-tartományokban lévő többi partícióra vonatkozó kérések történnek. 
+Ha a normalizált RU/s-használat eléri a 100%-ot a megadott partíciós kulcs tartománya számára, és ha egy ügyfél továbbra is a kérelmeket az adott időintervallumban, az adott partíciós kulcs tartományára is elküldi, akkor a rendszer korlátozott mértékű hibát kap Az ügyfélnek tiszteletben kell tartania a javasolt várakozási időt, és újra kell próbálkoznia a kéréssel. Az SDK-val könnyedén kezelheti ezt a helyzetet azáltal, hogy a megfelelő várakozással újrapróbálkozik az előre konfigurált időpontokkal.  Nem szükséges, hogy az RU-ráta korlátozási hibát észlelt, mert a normalizált RU elérte a 100%-ot. Ennek az az oka, hogy a normalizált RU egyetlen érték, amely a maximális kihasználtságot jelöli az összes partíciós kulcs tartományán, az egyik partíciós kulcs foglalható, de a többi partíciós kulcs tartománya probléma nélkül kiszolgálhatja a kéréseket. Például egyetlen művelet, például egy tárolt eljárás, amely a partíciós kulcsok tartományában lévő összes RU/s-t felhasználja, a normalizált RU/s-fogyasztás rövid csúcsát fogja eredményezni. Ilyen esetekben a rendszer nem jelez sebességkorlátozással kapcsolatos hibát, ha a kérések száma alacsony, vagy ha különböző partíciókulcs-tartományokban lévő más partíciókra vonatkozó kérések történnek. 
 
 A Azure Monitor metrikák segítségével megkeresheti az SQL API-hoz tartozó műveleti kódokat az **összes kérelem** metrikájának használatával. Később a 429 állapotkód alapján szűrheti ezeket a kéréseket, és a **művelet típusa** alapján feloszthatja őket.  
 
@@ -60,7 +60,7 @@ Az egyes tárolók normalizált kérések egységenkénti mérőszáma az alább
 
 :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Szűrők alkalmazása a normalizált kérelmek egységének felhasználási metrikája":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban [diagnosztikai beállításokkal](cosmosdb-monitor-resource-logs.md) figyelheti Azure Cosmos db az adataikat.
 * [Azure Cosmos DB vezérlési sík műveleteinek naplózása](audit-control-plane-logs.md)

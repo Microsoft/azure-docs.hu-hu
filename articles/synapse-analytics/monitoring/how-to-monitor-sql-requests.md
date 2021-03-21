@@ -10,10 +10,10 @@ ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 7296fec91decaf1bd80829f9f3a743a518fbb7a7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96466651"
 ---
 # <a name="use-synapse-studio-to-monitor-your-sql-requests"></a>Az SQL-kérelmek figyelése a szinapszis Studio használatával
@@ -54,7 +54,7 @@ A nézetet szűrheti például úgy, hogy csak a által küldött SQL-kérelmeke
 
 Az egyik SQL-kérelem részleteinek megtekintéséhez nyissa meg az SQL-kérést, és navigáljon a részletek nézethez. A dedikált SQL-készleteken futó összetett kérelmek esetében nyomon követheti a folyamat előrehaladását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A folyamatok figyelésével kapcsolatos további információkért tekintse meg a [folyamatok figyelése a szinapszis Studióban](how-to-monitor-pipeline-runs.md) című cikket. 
 

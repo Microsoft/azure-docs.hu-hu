@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogy az Azure Backup szolgáltatás 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98733570"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Az Azure virtuális gépek biztonsági mentésének áttekintése
@@ -121,7 +121,7 @@ Ha virtuális gépek biztonsági mentését konfigurálja, javasoljuk, hogy köv
 - Ha egyetlen tárolóból állítja vissza a virtuális gépeket, javasoljuk, hogy használjon különböző [általános célú v2 Storage-fiókokat](../storage/common/storage-account-upgrade.md) annak biztosítására, hogy a cél Storage-fiók ne kapjon szabályozást. Az egyes virtuális gépeknek például eltérő Storage-fiókkal kell rendelkezniük. Ha például 10 virtuális gép van visszaállítva, használjon 10 különböző Storage-fiókot.
 - A Premium Storage szolgáltatást azonnali visszaállítást használó virtuális gépek biztonsági mentéséhez javasolt a teljes lefoglalt tárterület *50%-os* szabad területének kiosztása, amely **csak** az első biztonsági mentéshez szükséges. Az első biztonsági mentés befejezése után az 50%-os szabad terület nem követelmény a biztonsági mentéshez.
 - A tárfiókonkénti lemezszám korlátozása attól függ, hogy milyen gyakorisággal használják a lemezeket az IaaS virtuális gépen futó alkalmazások. Általános gyakorlatként, ha 5–10 vagy több lemez található egyetlen tárfiókon, akkor a terhelést úgy egyenlítheti ki, hogy egyes lemezeket külön tárfiókokra helyez át.
-- A felügyelt lemezekkel rendelkező virtuális gépek PowerShell használatával történő visszaállításához adja meg a **_TargetResourceGroupName_* _ további paramétert annak az erőforráscsoportnek a megadásához, amelyhez a felügyelt lemezek vissza lesznek állítva. további [információ itt](./backup-azure-vms-automation.md#restore-managed-disks)található.
+- Ha felügyelt lemezekkel rendelkező virtuális gépeket szeretne visszaállítani a PowerShell használatával, [adja meg a](./backup-azure-vms-automation.md#restore-managed-disks)további ***TargetResourceGroupName*** paramétert annak az erőforrásnak a megadásához, amelybe a felügyelt lemezek vissza lesznek állítva
 
 ## <a name="backup-costs"></a>Biztonsági mentési költségek
 
@@ -131,7 +131,7 @@ A számlázás nem indul el, amíg az első sikeres biztonsági mentés be nem f
 
 Egy adott virtuális gép számlázása csak akkor leáll, ha a védelem le van állítva, és az összes biztonsági mentési érték törlődik. Ha a védelem leáll, és nincsenek aktív biztonsági mentési feladatok, a legutóbbi sikeres virtuális gép biztonsági mentésének mérete a havi számlán használt védett példány mérete lesz.
 
-A védett példányok méretének kiszámítása a virtuális gép _actual * méretétől függ. A virtuális gép mérete a virtuális gép összes adatmennyiségének összege, kivéve az ideiglenes tárolót. A díjszabás az adatlemezeken tárolt tényleges adatokon alapul, nem a virtuális géphez csatlakoztatott adatlemezek maximális támogatott méretével.
+A védett példány méretének kiszámítása a virtuális gép *tényleges* méretétől függ. A virtuális gép mérete a virtuális gép összes adatmennyiségének összege, kivéve az ideiglenes tárolót. A díjszabás az adatlemezeken tárolt tényleges adatokon alapul, nem a virtuális géphez csatlakoztatott adatlemezek maximális támogatott méretével.
 
 Hasonlóképpen, a biztonsági mentési tár a Azure Backup tárolt adatok mennyisége alapján történik, amely az egyes helyreállítási pontokban lévő tényleges adatok összege.
 
@@ -146,6 +146,6 @@ Helyi/ideiglenes lemez | 135 GB | 5 GB (nem tartalmazza a biztonsági mentést)
 
 Ebben az esetben a virtuális gép tényleges mérete 17 GB + 30 GB + 0 GB = 47 GB. Ez a védett példány mérete (47 GB) lesz a havi számla alapja. Ahogy a virtuális gépen lévő adatmennyiség növekszik, a számlázáshoz használt védett példány mérete megegyezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés az Azure-beli virtuális gépek biztonsági mentéséhez](backup-azure-arm-vms-prepare.md).

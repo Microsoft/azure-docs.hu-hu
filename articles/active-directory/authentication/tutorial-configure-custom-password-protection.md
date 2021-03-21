@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837889"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "96741184"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -72,7 +72,7 @@ Ha engedélyezni szeretné az egyéni tiltott jelszavak listáját, és hozzá s
 
     * Az egyéni tiltott jelszavak listája akár 1000 kifejezést is tartalmazhat.
     * Az egyéni tiltott jelszavak listája kis-és nagybetűk megkülönböztetése.
-    * Az egyéni tiltott jelszavak listája közös karakteres helyettesítést (például "o" és "0", "a" és "@") tekint.
+    * Az egyéni tiltott jelszavak listája közös karakteres helyettesítést (például "o" és "0", "a" és "" \@ ) tekint.
     * A karakterlánc minimális hossza négy karakter, a maximális érték pedig 16 karakter.
 
     Adja meg saját egyéni jelszavait a tiltáshoz, ahogy az a következő példában látható
@@ -124,4 +124,4 @@ Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas v�
 > * Jelszó-módosítások tesztelése tiltott jelszóval
 
 > [!div class="nextstepaction"]
-> [Kockázatalapú Azure AD-Multi-Factor Authentication engedélyezése](./tutorial-enable-azure-mfa.md)
+> [A kockázatalapú Azure AD többtényezős hitelesítés engedélyezése](./tutorial-enable-azure-mfa.md)
