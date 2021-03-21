@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 70cac6ef566ef52409cd9667708c2fc297e046f7
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656614"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Riasztások beállítása az erőforrás-naplózási eseményekről VPN Gateway
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat az Azure V
 
 A következő erőforrás-naplók érhetők el az Azure-ban:
 
-|***Név** _ | _*_Description_*_ |
+|***Név** _ | _ *_Leírás_** |
 |--- | --- |
 |GatewayDiagnosticLog | Erőforrás-naplókat tartalmaz az átjáró konfigurációs eseményeihez, az elsődleges módosításokhoz és a karbantartási eseményekhez. |
 |TunnelDiagnosticLog | Bújtatási állapot változási eseményeit tartalmazza. Az alagút kapcsolódási/leválasztási eseményeinek összefoglaló oka van az állapot változásához, ha van ilyen. |
@@ -33,7 +33,7 @@ A következő erőforrás-naplók érhetők el az Azure-ban:
 A következő példa egy riasztást hoz létre egy olyan leválasztási eseményhez, amely helyek közötti VPN-alagutat foglal magában:
 
 
-1. A Azure Portal keresse meg a _ *log Analytics** elemet az **összes szolgáltatás** területen, és válassza a **log Analytics munkaterületek** lehetőséget.
+1. A Azure Portal a **minden szolgáltatás** területen keresse meg a **log Analytics** , és válassza a **log Analytics munkaterületek** lehetőséget.
 
    ![Log Analytics munkaterületek kijelölésének kiválasztása](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Létrehozás")
 

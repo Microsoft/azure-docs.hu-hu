@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94532494"
 ---
 # <a name="verification-display-control"></a>Ellenőrzés megjelenítésének vezérlője
@@ -47,7 +47,7 @@ A **VerificationControl** tartalmaznia kell a következő elemeket:
   - **SendCode** – kódot küld a felhasználónak. Ez a művelet általában két ellenőrzési technikai profilt tartalmaz, egy kód létrehozásához és az elküldéséhez.
   - **VerifyCode** – ellenőrzi a kódot. Ez a művelet általában egyetlen ellenőrzési technikai profilt tartalmaz.
 
-Az alábbi példában egy **e-mail-** szövegmező jelenik meg az oldalon. Ha a felhasználó megadja az e-mail-címét, és kiválasztja a **SendCode** -t, a **SendCode** műveletet a rendszer Azure ad B2C a háttérben indítja el.
+Az alábbi példában egy **e-mail-** szövegmező jelenik meg az oldalon. Ha a felhasználó megadja az e-mail-címét, és kiválasztja a **SendCode**-t, a **SendCode** műveletet a rendszer Azure ad B2C a háttérben indítja el.
 
 Ezután a felhasználó beírja a **verificationCode** , és kiválasztja a **VerifyCode** lehetőséget, hogy aktiválja a **VerifyCode** műveletet a háttérben. Ha az összes érvényesítés sikeres, a **VerificationControl** teljesnek minősül, és a felhasználó továbbra is folytathatja a következő lépéssel.
 

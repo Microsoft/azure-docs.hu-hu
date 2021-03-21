@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96903581"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>A Azure Maps rajzolási hiba megjelenítése a Creator használatával (előzetes verzió)
@@ -59,7 +59,7 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 4. Töltse le a rajzolási csomag hibájának láthatóvá tételét `HTTP-GET` az URL-címre vonatkozó kérelem elküldésével `diagnosticPackageLocation` .
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 A hivatkozáson belül a letöltött tömörített csomagban `diagnosticPackageLocation` két fájl található.
 

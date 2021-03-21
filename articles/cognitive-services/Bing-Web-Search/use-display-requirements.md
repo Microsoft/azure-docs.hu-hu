@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351844"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
@@ -43,7 +43,7 @@ Ezek a használati és megjelenítési követelmények érvényesek a tartalom �
 |---------|---------|
 |Válasz     | A válaszban visszaadott eredmények kategóriája. A Bing Web Search API válasza például tartalmazhat válaszokat a weblapok eredményei, a képek, a videók, a vizualizáció és a hírek kategóriába. |
 |Reagálás     | Minden, a keresési API-ra irányuló hívásra válaszként kapott válasz és kapcsolódó érték. |
-|Result    | Egy adott válaszban található információ. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye. |
+|Eredmény    | Egy adott válaszban található információ. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye. |
 |Keresési API-k    | együttesen a Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search, helyi üzleti keresés és Web Search API-k. |
 
 ## <a name="bing-spell-check-and-bing-autosuggest-api-restrictions"></a>Bing Spell Check és Bing Autosuggest API korlátozások

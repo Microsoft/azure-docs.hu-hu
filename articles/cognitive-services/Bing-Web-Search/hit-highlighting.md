@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: 32c3279cacddf10e77e8d245ba525ab766efd6fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96351878"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
@@ -56,7 +56,7 @@ Ha a kérelem nem adott meg kitüntetéseket, a `expression` mező a következő
 
 Ha `textDecorations` a a `true` , a Bing az alábbi jelölőket is tartalmazhatja a válaszok megjelenítési karakterláncában. Ha nincs megfelelő HTML-címke, a táblázatcella üres.
 
-|Unicode|HTML|Leírás
+|Unicode|HTML|Description
 |-|-|-
 |U + E000|\<b>|A lekérdezési időszak elejét jelöli (találatok kiemelése)
 |U + E001|\</b>|A lekérdezési kifejezés végét jelöli
@@ -81,7 +81,7 @@ Ha `textDecorations` a a `true` , a Bing az alábbi jelölőket is tartalmazhatj
 |U + E018|\<sup>|A felső indexű tartalom elejét jelöli
 |U + E019|\</sup>|A felső szintű tartalom végét jelöli
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Bing Web Search API?](overview.md) 
 * [Miniatűrök átméretezése és körülvágása](resize-and-crop-thumbnails.md)

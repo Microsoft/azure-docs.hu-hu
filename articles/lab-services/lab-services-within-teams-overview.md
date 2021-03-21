@@ -4,10 +4,10 @@ description: Áttekintést nyújt Azure Lab Services használatáról a Microsof
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433926"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Azure Lab Services a Microsoft Teams szolgáltatáson belül
@@ -30,7 +30,7 @@ Azure Lab Services a Microsoft Teams integrációja segít a pedagógusok szám�
 * A csapat és a labor tulajdonosai csak a csapattal és diákokkal kapcsolatos laborokat fogják megtekinteni, és csak azokat a virtuális gépeket tekintik meg, amelyek az adott csapat számára lettek kiépítve. 
 * A rendszer automatikusan regisztrálja a felhasználókat a laborban, és a rendszer automatikusan hozzárendeli a virtuális gépeket az első bejelentkezéshez a tesztkörnyezet közzétételekor. Az oktatóknak nem kell elküldeniük a meghívókat és a tanulókat nem kell külön regisztrálni a laborba.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd az alábbi cikkeket:
 

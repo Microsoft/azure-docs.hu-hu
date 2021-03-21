@@ -4,10 +4,10 @@ description: A Container-elemzések mérőszámokat és naplózási adatokat gy�
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.openlocfilehash: c2b7331255e1109f27f89a84d66e25eb07a20569
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102201379"
 ---
 # <a name="how-to-query-logs-from-container-insights"></a>Naplók lekérdezése a Container-elemzésből

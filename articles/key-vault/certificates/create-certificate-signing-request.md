@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
 ms.openlocfilehash: aa631f4c505200c2c8abc67d4e22ffbab23e015c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98789027"
 ---
 # <a name="create-and-merge-a-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
@@ -104,7 +104,7 @@ A tanúsítványkérelem sikeresen egyesítve lett.
 ## <a name="add-more-information-to-the-csr"></a>További információk hozzáadása a CSR-hez
 
 Ha további információt szeretne hozzáadni a CSR létrehozásához, adja meg azt a **SubjectName**-ben. Előfordulhat, hogy például a következő adatokat szeretné felvenni:
-- Country
+- Ország
 - Város/helység
 - Állam/megye
 - Szervezet
@@ -143,7 +143,7 @@ Példa
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítés, kérések és válaszok](../general/authentication-requests-and-responses.md)
 - [Key Vault fejlesztői útmutató](../general/developers-guide.md)

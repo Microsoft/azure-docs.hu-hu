@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7d94a681fa987a4b23dbcda744c2f8516da4437a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92891665"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térkép réteg hozzáadása a Nyílt térinformatikai konzorciumból (OGC)
@@ -28,7 +28,7 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 - A GetFeatureInfo használatához a szolgáltatásnak támogatnia `EPSG:4326` vagy kezelnie kell a kivetítéseket. 
 - Támogatott műveletek:
 
-    | Művelet | Leírás |
+    | Művelet | Description |
     | :-- | :-- |
     | GetCapabilities | A szolgáltatás metaadatainak beolvasása a támogatott funkciókkal |
     | GetMap | Egy adott régióhoz tartozó térképi rendszerkép lekérése |
@@ -42,7 +42,7 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 - A TileMatrix azonosítójának olyan egész számnak kell lennie, amely megfelel a Térkép nagyítási szintjének. Az Azure-térképen a nagyítási szint a és a közötti `"0"` érték `"22"` . Tehát `"0"` támogatott, de `"00"` nem támogatott.
 - Támogatott műveletek:
 
-    | Művelet | Leírás |
+    | Művelet | Description |
     | :-- | :-- |
     | GetCapabilities | A támogatott műveletek és funkciók beolvasása |
     | GetTile | Képek lekérése egy adott csempéhez |

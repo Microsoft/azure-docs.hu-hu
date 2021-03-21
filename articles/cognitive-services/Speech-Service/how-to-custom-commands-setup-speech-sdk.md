@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95026027"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integráció egy ügyfélalkalmazás használatával a Speech SDK-val
@@ -408,7 +408,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
 
-1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés **indítása hibakeresést** (vagy nyomja le az **F5** billentyűt). Megjelenik a **HelloWorld** ablak.
+1.   >  Az alkalmazás indításához válassza a hibakeresés **indítása hibakeresést** (vagy nyomja le az **F5** billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP virtuális asszisztensi alkalmazás C#-ban – gyors útmutató](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
@@ -418,7 +418,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Válassza a **Talk** lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: tevékenység küldése ügyfélalkalmazás számára (előzetes verzió)](./how-to-custom-commands-send-activity-to-client.md)

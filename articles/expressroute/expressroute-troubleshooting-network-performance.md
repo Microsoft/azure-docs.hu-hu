@@ -9,10 +9,10 @@ ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 35e080e0fe45c18ad6a6d5392e0c78b116853c3e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98027468"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
@@ -162,7 +162,7 @@ Teszt beállítása:
  - A 10Gbps prémium szintű ExpressRoute áramkör a privát társak beállításával azonosított helyen.
  - Egy Azure-VNet egy UltraPerformance-átjáróval a megadott régióban.
  - Egy Windows Server 2016 rendszert futtató DS5v2 virtuális gép a VNet. A virtuális gép nem csatlakozik a tartományhoz, és az alapértelmezett Azure-rendszerképből (optimalizálás vagy testreszabás nélkül) készült, és a AzureCT telepítve van.
- - Minden teszt a AzureCT Get-LinkPerformance parancsot használja 5 percenkénti terhelési teszttel a hat teszt futtatásához. Példa:
+ - Minden teszt a AzureCT Get-LinkPerformance parancsot használja 5 percenkénti terhelési teszttel a hat teszt futtatásához. Például:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -179,11 +179,11 @@ Teszt beállítása:
 >
 >
 
-| ExpressRoute<br/>Hely|Azure<br/>Régió | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
+| ExpressRoute<br/>Hely|Azure<br/>Region | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | USA 2. nyugati régiója        |    191 km |   5 MS | 262,0 MB/s |  3,74 Gbits/s |
 | Seattle | USA nyugati régiója          |  1 094 km |  18 MS |  82,3 MB/s |  3,70 Gbits/s |
-| Seattle | USA középső régiója       |  2 357 km |  40 MS |  38,8 MB/s |  2,55 Gbits/s |
+| Seattle | Az USA középső régiója       |  2 357 km |  40 MS |  38,8 MB/s |  2,55 Gbits/s |
 | Seattle | USA déli középső régiója |  2 877 km |  51 MS |  30,6 MB/s |  2,49 Gbits/s |
 | Seattle | USA északi középső régiója |  2 792 km |  55 MS |  27,7 MB/s |  2,19 Gbits/s |
 | Seattle | USA 2. keleti régiója        |  3 769 km |  73 MS |  21,3 MB/s |  1,79 Gbits/s |
@@ -198,7 +198,7 @@ Teszt beállítása:
 
 \* A Brazília-re vonatkozó késés jó példa arra, hogy az egyenes vonal távolsága jelentősen eltér a szál futási helyétől. A várt késés a 160 MS környékén lenne, de valójában 189 MS. A késés különbsége úgy tűnik, hogy valahol hálózati problémát jelez. A valóság azonban az, hogy a szál nem a Brazíliában egyenes vonalban jelenik meg. Ezért további 1 000 km-t kell várnia, hogy a Seattle-ből Brazíliába utazzon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 1. Töltse le az Azure-kapcsolati eszközkészletet a GitHubról [https://aka.ms/AzCT][ACT]
 2. Kövesse a [kapcsolati teljesítmény tesztelésének][Performance Doc] utasításait
 

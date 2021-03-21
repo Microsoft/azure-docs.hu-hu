@@ -6,10 +6,10 @@ ms.author: spelluru
 ms.date: 10/07/2020
 ms.topic: article
 ms.openlocfilehash: 66de9a4ff65c73264257cb6f7f215fc15820c95f
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94427147"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Azure Service Bus névtér elérésének engedélyezése privát végpontokon keresztül
@@ -101,7 +101,7 @@ Ha már rendelkezik egy meglévő névtérrel, a következő lépések végrehaj
 11. A **felülvizsgálat + létrehozás** lapon tekintse át az összes beállítást, majd kattintson a **Létrehozás** elemre a privát végpont létrehozásához.
     
     ![Privát végpont létrehozása – oldal áttekintése és létrehozása](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Győződjön meg arról, hogy a magánhálózati végpont létrejött. Ha Ön az erőforrás tulajdonosa, és kiválasztotta a Kapcsolódás az **Azure-erőforráshoz a saját címtárban** lehetőséget a **kapcsolati módszerhez** , a végponti kapcsolatot **automatikusan jóvá** kell hagyni. Ha **függő** állapotban van, tekintse meg a [privát végpontok kezelése Azure Portal szakasz használatával](#manage-private-endpoints-using-azure-portal) című részt.
+12. Győződjön meg arról, hogy a magánhálózati végpont létrejött. Ha Ön az erőforrás tulajdonosa, és kiválasztotta a Kapcsolódás az **Azure-erőforráshoz a saját címtárban** lehetőséget a **kapcsolati módszerhez**, a végponti kapcsolatot **automatikusan jóvá** kell hagyni. Ha **függő** állapotban van, tekintse meg a [privát végpontok kezelése Azure Portal szakasz használatával](#manage-private-endpoints-using-azure-portal) című részt.
 
     ![Saját végpont létrehozva](./media/private-link-service/private-endpoint-created.png)
 
@@ -187,7 +187,7 @@ Négy kiépítési állapot létezik:
 1. Jelentkezzen be az Azure Portalra.
 1. A keresősáv mezőbe írja be a következőt: **Service Bus**.
 1. Válassza ki a kezelni kívánt **névteret** .
-1. Válassza a **hálózatkezelés** lapot.
+1. Válassza a **Hálózatkezelés** lapot.
 5. Nyissa meg az alábbi megfelelő szakaszt a kívánt művelet alapján: jóváhagyás, elutasítás vagy eltávolítás. 
 
 ### <a name="approve-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása
@@ -197,7 +197,7 @@ Négy kiépítési állapot létezik:
 3. Kattintson a **jóváhagyás** gombra.
 
     ![Privát végpont jóváhagyása](./media/private-link-service/private-endpoint-approve.png)
-4. A **kapcsolatok jóváhagyása** lapon adjon meg egy nem kötelező **megjegyzést** , és válassza az **Igen** lehetőséget. Ha a **nem** lehetőséget választja, semmi nem történik. 
+4. A **kapcsolatok jóváhagyása** lapon adjon meg egy nem kötelező **megjegyzést**, és válassza az **Igen** lehetőséget. Ha a **nem** lehetőséget választja, semmi nem történik. 
 
     ![Kapcsolatok jóváhagyása lap](./media/private-link-service/approve-connection-page.png)
 5. A listában a kapcsolatok állapota **Jóváhagyottra** módosult. 
@@ -257,11 +257,11 @@ Aliases:  <service-bus-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Korlátozások és kialakítási szempontok
 
-**Díjszabás** : díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
+**Díjszabás**: díjszabási információkért tekintse meg az [Azure Private link díjszabását](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Korlátozások** : Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
+**Korlátozások**: Ez a funkció az összes Azure-beli nyilvános régióban elérhető.
 
-**Privát végpontok maximális száma Service Bus névtérben** : 120.
+**Privát végpontok maximális száma Service Bus névtérben**: 120.
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 

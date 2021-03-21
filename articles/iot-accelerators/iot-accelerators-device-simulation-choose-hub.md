@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009364"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Meglévő IoT Hub használata az Eszközszimulációs megoldásgyorsítóval
@@ -37,6 +37,6 @@ Használja a szimuláció konfigurálásakor másolt kapcsolódási karakterlán
 
 ![Szimuláció konfigurálása](./media/iot-accelerators-device-simulation-choose-hub/configuresimulation.png)
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Ebben a útmutatóban megtanulta, hogyan használhat egy meglévő IoT hubot egy szimulációban. Ezt követően érdemes megismerni, hogyan [hozhat létre egy speciális eszköz-modellt](iot-accelerators-device-simulation-advanced-device.md) a szimulációhoz.

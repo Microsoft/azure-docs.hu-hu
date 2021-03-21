@@ -7,10 +7,10 @@ ms.date: 08/18/2017
 ms.author: masnider
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 263e45928642aa74d682fc490e424a24deeb8076
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790681"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>A Service Fabric-szolgáltatások elhelyezési házirendjei
@@ -161,7 +161,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 > Ha nagy értékű [MinInstanceCount](/dotnet/api/system.fabric.description.statelessservicedescription.mininstancecount) használ ezzel az elhelyezési házirenddel, akkor az alkalmazások frissítései megakadnak. Ha például öt csomópontos fürttel rendelkezik, és a InstanceCount = 10 érték van beállítva, akkor minden csomóponton két példány fog szerepelni. Ha a MinInstanceCount = 9-et állítja be, a megkísérelt alkalmazások frissítése megakad; a MinInstanceCount = 8 használatával elkerülhető.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A szolgáltatások konfigurálásával kapcsolatos további információkért [tekintse meg a szolgáltatások konfigurálását](service-fabric-cluster-resource-manager-configure-services.md) ismertető témakört.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png

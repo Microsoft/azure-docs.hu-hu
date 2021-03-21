@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: how-to
 ms.reviewer: mmercuri
 ms.openlocfilehash: 4dd941abdded6a93510f4a71119769cd73855bcc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000164"
 ---
 # <a name="view-azure-blockchain-workbench-data-with-microsoft-excel"></a>Azure Blockchain Workbench-adatok megtekintése a Microsoft Excelben
@@ -27,7 +27,7 @@ A Blockchain Workbench adatbázisához való csatlakozáshoz:
 2. Válassza az **Adatok** lapon az **Adatok lekérése** gombot.
 3. Válassza az **Azure-ból**, majd az **Azure SQL Database-ből** lehetőséget.
 
-   ![Csatlakozás az Azure SQL Database-hez](./media/data-excel/connect-sql-db.png)
+   ![Kapcsolódás az Azure SQL Database-hez](./media/data-excel/connect-sql-db.png)
 
 4. Az **SQL Server-adatbázis** párbeszédpanelen:
 
@@ -60,7 +60,7 @@ A következő példa bemutatja, hogy hogyan tölthet be adatokat egy nézetből 
 
 Most, hogy betöltötte az adatokat, az Excel funkcióival létrehozhatja a kívánt jelentéseket az Azure Blockchain Workbench-adatbázis metaadatainak és tranzakciós adatainak felhasználásával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)

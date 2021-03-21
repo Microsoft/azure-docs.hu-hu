@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 99e9ce85bb1e59b5016e836ff16d03cb3326ec8c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020366"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)
@@ -22,7 +22,7 @@ A Azure Stream Analytics Tools for Visual Studio lehetővé teszi, hogy az Azure
 
 A következő helyi tesztelési lehetőségek támogatottak:
 
-|**Input (Bemenet)**  |**Kimenet**  |**Feladattípus**  |
+|**Bevitel**  |**Kimenet**  |**Feladattípus**  |
 |---------|---------|---------|
 |Helyi statikus adattartalom   |  Helyi statikus adattartalom   |   Felhő/Edge |
 |Élő bemeneti adatok   |  Helyi statikus adattartalom   |   Felhőbeli |
@@ -60,7 +60,7 @@ A következő helyi tesztelési lehetőségek támogatottak:
 
 * Csak a Felhőbeli beviteli lehetőségek támogatják az [időszabályzatokat](./stream-analytics-time-handling.md) , míg a helyi beviteli beállítások nem.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics-feladatok létrehozása a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)

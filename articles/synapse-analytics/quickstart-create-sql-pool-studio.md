@@ -10,10 +10,10 @@ ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541844"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Rövid útmutató: dedikált SQL-készlet létrehozása a szinapszis Studio használatával
@@ -103,7 +103,7 @@ Az alábbi lépések végrehajtásával törölje a dedikált SQL-készletet a m
 Ha törölni szeretné a dedikált SQL-készletet, tegye a következőket:
 
 1. Navigáljon az SQL-készletekhez a szinapszis Studióban, a felügyeleti központban.
-1. Válassza ki a törölni kívánt dedikált SQL-készlet három pontját (ebben az esetben **contosoedw** ) a dedikált SQL-készlet parancsainak megjelenítéséhez:
+1. Válassza ki a törölni kívánt dedikált SQL-készlet három pontját (ebben az esetben **contosoedw**) a dedikált SQL-készlet parancsainak megjelenítéséhez:
 
     ![Az SQL-készletek listázása a közelmúltban létrehozott készlettel.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Nyomja le a **delete** billentyűt.

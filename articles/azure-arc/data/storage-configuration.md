@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97107260"
 ---
 # <a name="storage-configuration"></a>Tárolási konfiguráció
@@ -175,14 +175,14 @@ Ha a vagy a használatával hoz létre egy példányt `azdata arc sql mi create`
 
 Az alábbi táblázat felsorolja az Azure SQL felügyelt példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Leírás|
+|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Az MSSQL-telepítéshez és más rendszerfolyamatokhoz tartozó címtárakat tartalmaz. Az MSSQL-címtár alapértelmezett (beleértve a tranzakciós naplókat is), a hibanapló & a biztonsági mentési könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|
 
 Az alábbi táblázat felsorolja a PostgreSQL-példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Leírás|
+|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Description|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|A postgres-telepítéshez szükséges adatés naplózási könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|
@@ -210,7 +210,7 @@ Az állapot-nyilvántartó adatmennyiséget tartalmazó összes hüvely két ál
 |Erőforrás típusa|Állapot-nyilvántartó hüvelyek száma|Állandó kötetek kötelező száma|
 |---|---|---|
 |Adatkezelő|4 ( `control` ,,, `controldb` `logsdb` `metricsdb` )|4 * 2 = 8|
-|Azure SQL felügyelt példány|1|2|
+|Felügyelt Azure SQL-példány|1|2|
 |Azure Database for PostgreSQL-példány|1| 2|
 |Azure PostgreSQL nagy kapacitású|1 + w (W = feldolgozók száma)|2 * (1 + W)|
 
@@ -219,10 +219,10 @@ Az alábbi táblázat a minta telepítéséhez szükséges állandó kötetek te
 |Erőforrás típusa|Példányok száma|Állandó kötetek kötelező száma|
 |---|---|---|
 |Adatkezelő|1|4 * 2 = 8|
-|Azure SQL felügyelt példány|5|5 * 2 = 10|
+|Felügyelt Azure SQL-példány|5|5 * 2 = 10|
 |Azure Database for PostgreSQL-példány|5| 5 * 2 = 10|
 |Azure PostgreSQL nagy kapacitású|2 (feldolgozók száma = 4/példány)|2 * 2 * (1 + 4) = 20|
-|***Állandó kötetek teljes száma** _||8 + 10 + 10 + 20 = 48|
+|***Állandó kötetek teljes száma***||8 + 10 + 10 + 20 = 48|
 
 Ez a számítás felhasználható a Kubernetes-fürt tárterületének megtervezésére a Storage-létesítés vagy-környezet alapján. Ha például a helyi tárolót egy öt (5) csomóponttal rendelkező Kubernetes-fürthöz használja, akkor az összes csomópontnál a minta telepítéséhez legalább 10 állandó kötetre van szükség. Hasonlóképpen, amikor egy öt (5) csomóponttal rendelkező Azure Kubernetes-szolgáltatási (ak-) fürt kiosztása egy megfelelő virtuálisgép-méretet választ ki a csomópont-készlet számára, így a 10 adatlemez csatlakoztatható kritikus fontosságú. [Itt](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)talál további információt arról, hogyan méretezhetők a csomópontok az AK-csomópontok tárolási igényeihez.
 
@@ -238,6 +238,6 @@ A nyilvános felhőalapú, felügyelt Kubernetes-szolgáltatásokhoz a következ
 
 |Nyilvános felhőalapú szolgáltatás|Ajánlás|
 |---|---|
-|_ *Azure Kubernetes szolgáltatás (ak)**|Az Azure Kubernetes Service (ak) két típusú Storage-Azure Files és Azure Managed Disks rendelkezik. Az egyes tárolási típusok két díjszabási/teljesítményi szinttel rendelkeznek – standard (HDD) és prémium (SSD). Így az AK-ban megadott négy tárolási osztály `azurefile` (Azure Files standard szint), `azurefile-premium` (Azure Files prémium szint), `default` (az Azure Disks standard szintű csomag) és az `managed-premium` (Azure Disks prémium szintű). Az alapértelmezett tárolási osztály `default` (Azure Disks standard szint). Jelentős **[díjszabási különbségek](https://azure.microsoft.com/en-us/pricing/details/storage/)** vannak a különböző típusok és rétegek között, amelyeket figyelembe kell venni a döntésében. A nagy teljesítményű követelményekkel rendelkező éles számítási feladatokhoz az `managed-premium` összes tárolási osztály használatát javasoljuk. A fejlesztési és tesztelési feladatokhoz, a koncepció igazolásához stb., ahol a költségeket figyelembe kell venni, akkor `azurefile` a legdrágább megoldás. Mind a négy lehetőség használható olyan helyzetekben, amelyek távoli, megosztott tárterületet igényelnek, mivel az összes hálózatra csatlakoztatott tárolóeszköz az Azure-ban. További információ az [AK Storage](../../aks/concepts-storage.md)-ról.|
+|**Azure Kubernetes Service (AKS)**|Az Azure Kubernetes Service (ak) két típusú Storage-Azure Files és Azure Managed Disks rendelkezik. Az egyes tárolási típusok két díjszabási/teljesítményi szinttel rendelkeznek – standard (HDD) és prémium (SSD). Így az AK-ban megadott négy tárolási osztály `azurefile` (Azure Files standard szint), `azurefile-premium` (Azure Files prémium szint), `default` (az Azure Disks standard szintű csomag) és az `managed-premium` (Azure Disks prémium szintű). Az alapértelmezett tárolási osztály `default` (Azure Disks standard szint). Jelentős **[díjszabási különbségek](https://azure.microsoft.com/en-us/pricing/details/storage/)** vannak a különböző típusok és rétegek között, amelyeket figyelembe kell venni a döntésében. A nagy teljesítményű követelményekkel rendelkező éles számítási feladatokhoz az `managed-premium` összes tárolási osztály használatát javasoljuk. A fejlesztési és tesztelési feladatokhoz, a koncepció igazolásához stb., ahol a költségeket figyelembe kell venni, akkor `azurefile` a legdrágább megoldás. Mind a négy lehetőség használható olyan helyzetekben, amelyek távoli, megosztott tárterületet igényelnek, mivel az összes hálózatra csatlakoztatott tárolóeszköz az Azure-ban. További információ az [AK Storage](../../aks/concepts-storage.md)-ról.|
 |**AWS Elastic Kubernetes Service (EKS)**| Az Amazon rugalmas Kubernetes szolgáltatásának egyetlen elsődleges tárolási osztálya van, amely az [EBS CSI Storage-illesztőprogramon](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)alapul. Ez éles számítási feladatokhoz ajánlott. Egy új Storage-illesztőprogram – [EFS CSI Storage-illesztőprogram](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) –, amely hozzáadható egy EKS-fürthöz, de jelenleg egy bétaverziós szakaszban van, és változhat. Bár az AWS azt mondja, hogy ez a tároló-illesztőprogram éles környezetben támogatott, ezért nem ajánlott használni, mert továbbra is bétaverzióban van, és változhat. Az EBS tárolási osztálya az alapértelmezett, és a neve `gp2` . További információ a [EKS Storage](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)-ról.|
 |**Google Kubernetes Engine (GKE)**|A Google Kubernetes Engine (GKE) csak egy nevű tárolási osztállyal rendelkezik `standard` , amely a [GCE állandó lemezek](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)esetében használatos. Az egyetlen, az alapértelmezett érték is. Bár van egy [helyi, statikus kötet-kiépítő](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) a GKE, amelyet közvetlenül csatlakoztatott SSD-k használatával használhat, nem ajánlott azt használni, mert a Google nem tartja karban és nem támogatja. További információ a [GKE Storage](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)-ról.

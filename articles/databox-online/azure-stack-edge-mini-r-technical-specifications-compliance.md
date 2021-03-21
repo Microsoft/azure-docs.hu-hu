@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
 ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101727481"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>A Azure Stack Edge mini R műszaki specifikációi
@@ -118,7 +118,7 @@ A következő táblázat felsorolja az eszköz súlyát, beleértve az akkumulá
 Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációkat, például a hőmérsékletet, a páratartalmat és a magasságot.
 
 
-|     Specifikációk             |     Leírás                                                          |
+|     Specifikációk             |     Description                                                          |
 |--------------------------------|--------------------------------------------------------------------------|
 |     Hőmérséklet-tartomány          |     0 – 43 ° C (működési)                                              |
 |     Rezgés                  |     MIL-STD-810 metódus 514,7 *<br> Eljárás I CAT 4, 20                  |

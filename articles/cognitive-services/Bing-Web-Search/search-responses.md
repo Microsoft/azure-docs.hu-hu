@@ -12,10 +12,10 @@ ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 3dda95312a0b9191ddc11de62959f308ee19fff4
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94380980"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
@@ -43,7 +43,7 @@ Amikor keresési kérelmet küld Bing Web Search, a [`SearchResponse`](/rest/api
 }, ...
 ```
 
-A Bing Web Search általában a válaszok egy részhalmazát adja vissza. Ha például a lekérdezési kifejezés a *vitorlázás mentőcsónakokra* , a válasz a, a és a is lehet `webPages` `images` `rankingResponse` . Hacsak nem használta a [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) a weblapok kiszűrésére, a válasz mindig tartalmazza a `webpages` és a `rankingResponse` válaszokat.
+A Bing Web Search általában a válaszok egy részhalmazát adja vissza. Ha például a lekérdezési kifejezés a *vitorlázás mentőcsónakokra*, a válasz a, a és a is lehet `webPages` `images` `rankingResponse` . Hacsak nem használta a [responseFilter](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) a weblapok kiszűrésére, a válasz mindig tartalmazza a `webpages` és a `rankingResponse` válaszokat.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -309,7 +309,7 @@ A matematikai kifejezések a következő szimbólumokat tartalmazhatják:
 
 A matematikai kifejezések a következő állandókat tartalmazhatják:
 
-|Szimbólum|Leírás|
+|Szimbólum|Description|
 |------------|-----------------|
 |Pi|3,14159...|
 |Fokú|Fokú|
@@ -319,7 +319,7 @@ A matematikai kifejezések a következő állandókat tartalmazhatják:
 
 A matematikai kifejezések a következő függvényeket tartalmazhatják:
 
-|Szimbólum|Leírás|
+|Szimbólum|Description|
 |------------|-----------------|
 |Rendezés|Szögletes gyökér|
 |Sin [x], cos [x], Tan [x]<br />CSC [x], MP [x], gyermekágy [x]|Trigonometriai függvények (radiánban megadott argumentumokkal)|
@@ -333,7 +333,7 @@ A változókat tartalmazó matematikai kifejezések (például 4x + 6 = 18, ahol
 
 ## <a name="timezone-answer"></a>Időzóna-válasz
 
-Ha a felhasználó időpontra vagy dátumra vonatkozó lekérdezést ad meg, a válasz [időzóna](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) -választ is tartalmazhat. Ez a válasz implicit vagy explicit lekérdezéseket támogat. Egy implicit lekérdezés, például *mennyi idő van?* , a felhasználó tartózkodási helye alapján adja vissza a helyi időt. Egy explicit lekérdezés, például hogy *milyen idő van Seattle-ben?* , a helyi időt adja vissza Seattle, WA esetében.
+Ha a felhasználó időpontra vagy dátumra vonatkozó lekérdezést ad meg, a válasz [időzóna](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#timezone) -választ is tartalmazhat. Ez a válasz implicit vagy explicit lekérdezéseket támogat. Egy implicit lekérdezés, például *mennyi idő van?*, a felhasználó tartózkodási helye alapján adja vissza a helyi időt. Egy explicit lekérdezés, például hogy *milyen idő van Seattle-ben?*, a helyi időt adja vissza Seattle, WA esetében.
 
 A `timeZone` Válasz megadja a hely nevét, a jelenlegi UTC dátumot és időt a megadott helyen, valamint az UTC eltolását. Ha a hely határa több időzónán belül van, a válasz a határon belüli összes időzóna aktuális UTC-dátumát és időpontját tartalmazza. Például, mivel a floridai állam két időzónán belül esik, a válasz a helyi dátumot és időpontot tartalmazza mindkét időzónában.  
 
@@ -424,7 +424,7 @@ Query: What time is it in the U.S.
 
 ## <a name="spellsuggestion-answer"></a>SpellSuggestion válasz
 
-Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a válasz tartalmaz egy [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) objektumot. Ha például a felhasználó *Carlos-tollat* keres, a Bing azt is meghatározhatja, hogy a felhasználó valószínűleg a Carlos Pena keresését tervezi (a korábbi, *Carlos Pen* -beli keresések alapján). A következő példa egy helyesírási választ mutat be.
+Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a válasz tartalmaz egy [SpellSuggestions](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#spellsuggestions) objektumot. Ha például a felhasználó *Carlos-tollat* keres, a Bing azt is meghatározhatja, hogy a felhasználó valószínűleg a Carlos Pena keresését tervezi (a korábbi, *Carlos Pen*-beli keresések alapján). A következő példa egy helyesírási választ mutat be.
 
 ```json
 "spellSuggestions": {
@@ -440,7 +440,7 @@ Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a v�
 
 A Bing Web Search API által küldött válaszok a következő fejléceket tartalmazhatják:
 
-| Fejléc | Leírás |
+| Fejléc | Description |
 |-|-|
 |`X-MSEdge-ClientID`|A Bing által a felhasználóhoz hozzárendelt egyedi azonosító|
 |`BingAPIs-Market`|A kérelem teljesítéséhez használt piac|

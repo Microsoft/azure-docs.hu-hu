@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9536cf41add73f494bfff451c201d36e951864e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95997664"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
@@ -68,7 +68,7 @@ A globális rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvas�
 
 Rendszergazdaként a heti kivonatoló e-mailek küldését vagy kikapcsolását is elvégezheti, és kiválaszthatja az e-mailek fogadásához hozzárendelt felhasználókat.
 
-Konfigurálja a heti kivonatoló e-mailt **Azure portal** a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **Identity Protection**  >  **heti kivonatoló** területen.
+Konfigurálja a heti kivonatoló e-mailt  a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **Identity Protection**  >  **heti kivonatoló** területen.
 
 ## <a name="see-also"></a>Lásd még
 

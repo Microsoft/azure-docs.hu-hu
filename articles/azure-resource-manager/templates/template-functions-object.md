@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: 5e13177db1a7cf2f19a822363cb3884474566add
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96920466"
 ---
 # <a name="object-functions-for-arm-templates"></a>ARM-sablonok Object functions
@@ -20,12 +20,12 @@ A Resource Manager számos funkciót biztosít az objektumok Azure Resource Mana
 * [kereszteződés](#intersection)
 * [JSON](#json)
 * [length](#length) (hossz)
-* [NULL](#null)
+* [null](#null)
 * [Union](#union)
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
-## <a name="contains"></a>tartalmazza
+## <a name="contains"></a>contains
 
 `contains(container, itemToFind)`
 
@@ -33,12 +33,12 @@ Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcs
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
-| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
+| tároló |Yes |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Yes |karakterlánc vagy int |A keresendő érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** , ha az adott tétel megtalálható; Ellenkező esetben **hamis**.
 
@@ -145,16 +145,16 @@ Létrehoz egy objektumot a kulcsok és értékek alapján. A `createObject` bice
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| key1 |Nem |sztring |A kulcs neve. |
-| érték1 |Nem |int, Boolean, string, Object vagy Array |A kulcs értéke. |
-| További kulcsok |Nem |sztring |A kulcsok további nevei. |
-| További értékek |Nem |int, Boolean, string, Object vagy Array |A kulcsok további értékei. |
+| key1 |No |sztring |A kulcs neve. |
+| érték1 |No |int, Boolean, string, Object vagy Array |A kulcs értéke. |
+| További kulcsok |No |sztring |A kulcsok további nevei. |
+| További értékek |No |int, Boolean, string, Object vagy Array |A kulcsok további értékei. |
 
 A függvény csak páros számú paramétert fogad el. Minden kulcsnak egyező értékkel kell rendelkeznie.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy olyan objektum, amely minden egyes kulcs-érték párral rendelkezik.
 
@@ -219,11 +219,11 @@ Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
+| itemToTest |Yes |tömb, objektum vagy karakterlánc |Az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 **Igaz** értéket ad vissza, ha az érték üres. Ellenkező esetben **hamis**.
 
@@ -300,13 +300,13 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemei
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
-| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Yes |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy tömb vagy objektum a közös elemekkel.
 
@@ -407,11 +407,11 @@ Egy érvényes JSON-karakterláncot alakít át JSON-adattípusra.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
+| arg1 |Yes |sztring |A JSON-ra konvertálandó érték. A karakterláncnak megfelelően formázott JSON-karakterláncnak kell lennie. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A megadott karakterlánc JSON-adattípusa, vagy **Null** értékű üres érték van megadva.
 
@@ -538,11 +538,11 @@ Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
+| arg1 |Yes |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy int.
 
@@ -644,7 +644,7 @@ Null értéket ad vissza. A `null` függvény nem érhető el a bicep-ben. Haszn
 
 A null függvény nem fogad el paramétereket.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Olyan érték, amely mindig null értékű.
 
@@ -690,13 +690,13 @@ Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemé
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
-| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
-| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
+| arg1 |Yes |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Yes |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |No |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Tömb vagy objektum.
 

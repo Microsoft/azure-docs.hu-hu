@@ -8,10 +8,10 @@ ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
 ms.openlocfilehash: 9f72d54fda8f66c2fce35f0520b51406aa276bb0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92892753"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Díjköteles számlázás az SaaS-hez a kereskedelmi Piactéri mérési szolgáltatás használatával
@@ -37,7 +37,7 @@ Az ajánlati hierarchia megismerése fontos, amikor az ajánlatot az árképzés
 
 - Minden SaaS-ajánlat úgy van konfigurálva, hogy a Microsofton keresztül értékesítsen vagy sem.  Az ajánlat közzétételekor ez a lehetőség nem módosítható.
 - A Microsofton keresztüli értékesítésre konfigurált SaaS-ajánlatok egy vagy több csomaggal rendelkezhetnek.  A felhasználók a SaaS-ajánlatra fizetnek, de a Microsoft a csomag keretében vásárolható meg.
-- Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagy **felhasználónként** . Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Nem lehet például olyan ajánlat, amely egy átalánydíjas díjszabási modellre vonatkozó tervekkel rendelkezik, és egy másik a felhasználónkénti díjszabási modell.
+- Minden csomaghoz hozzá van rendelve egy díjszabási modell: **átalánydíjas** vagy **felhasználónként**. Az ajánlat minden csomagját ugyanahhoz az árképzési modellhez kell társítani. Nem lehet például olyan ajánlat, amely egy átalánydíjas díjszabási modellre vonatkozó tervekkel rendelkezik, és egy másik a felhasználónkénti díjszabási modell.
 - Az átalánydíjas számlázási modellhez konfigurált minden egyes csomagon belül legalább egy ismétlődő díj szerepel (amely $0):
     - Ismétlődő **havi** díj: a csomag megvásárlásakor a rendszer havi ismétlődéssel előre fizetett átalányösszegű havi díjat számít fel.
     - Ismétlődő **éves** díj: a csomag megvásárlásakor a felhasználó éves ismétlődéssel előre fizetett átalányösszegű éves díj.
@@ -73,11 +73,11 @@ A kiválasztott csomag alapján egy Azure Customer-beli ügyfél-vásárlási el
 
 Mindegyik számlázási dimenzió egy egyéni egységet határoz meg, amely alapján az ISV használati eseményeket bocsáthat ki.  A számlázási dimenziókat arra is felhasználjuk, hogy az ügyfélnek a szoftver használatáért való számlázása során is kommunikáljanak.  Ezek az alábbiak szerint vannak meghatározva:
 
-- **Azonosító** : a használati események kibocsátásakor a nem módosítható dimenzió-azonosító.
-- **Megjelenítendő név** : a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
-- **Mértékegység** : a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
-- **Egységenkénti díj USD-ben** : a dimenzió egy egységének ára.  Ez lehet 0. 
-- **Havi mennyiség az alapban** : az ismétlődő havi díjat fizető ügyfelek számára havi dimenzió mennyisége, egész számnak kell lennie. Ez lehet 0 vagy korlátlan.
+- **Azonosító**: a használati események kibocsátásakor a nem módosítható dimenzió-azonosító.
+- **Megjelenítendő név**: a dimenzióhoz társított megjelenítendő név, például "szöveges üzenetek elküldve".
+- **Mértékegység**: a számlázási egység leírása, például "szöveges üzenet" vagy "/100 e-mailek".
+- **Egységenkénti díj USD-ben**: a dimenzió egy egységének ára.  Ez lehet 0. 
+- **Havi mennyiség az alapban**: az ismétlődő havi díjat fizető ügyfelek számára havi dimenzió mennyisége, egész számnak kell lennie. Ez lehet 0 vagy korlátlan.
 - Az **alapszintű mennyiség** a következőben: az éves díj összegét kifizető ügyfelek számára minden évben felszámított dimenzió mennyisége egész számnak kell lennie. 0 vagy korlátlan lehet.
 
 A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva.  Egyes attribútumok a dimenzióra vonatkoznak az összes csomagra, és más attribútumok is megtervezve.

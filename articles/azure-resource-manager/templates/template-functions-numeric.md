@@ -4,17 +4,17 @@ description: A Azure Resource Manager-sablonban (ARM-sablonban) használandó f�
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97359710"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM-sablonok numerikus függvények
 
 A Resource Manager a következő függvényeket biztosítja a Azure Resource Manager sablonban (ARM-sablon) található egész számok használatához:
 
-* [hozzáadása](#add)
+* [add](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
@@ -35,12 +35,12 @@ A két megadott egész szám összegét adja vissza. A `add` függvény nem tám
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 |operand1 |Yes |int |A hozzáadandó első szám. |
 |operand2 |Yes |int |A hozzáadandó második szám. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely a paraméterek összegét tartalmazza.
 
@@ -106,7 +106,7 @@ Egy iterációs hurok indexét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | loopName | No | sztring | Az iteráció megszerzéséhez használt hurok neve. |
 | offset |No |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
@@ -168,7 +168,7 @@ A következő példa egy másolási ciklust és a névben szereplő index érté
 
 ---
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely az iteráció aktuális indexét jelöli.
 
@@ -180,12 +180,12 @@ A két megadott egész szám egészének osztását adja vissza. A `div` függv�
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |A felosztott szám. |
 | operand2 |Yes |int |A felosztáshoz használt szám. Nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A osztást jelképező egész szám.
 
@@ -251,11 +251,11 @@ Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akko
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy lebegőpontos szám.
 
@@ -294,11 +294,11 @@ Egy egész számra konvertálja a megadott értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Yes |karakterlánc vagy int |Az egész számra konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az átalakított érték egész szám.
 
@@ -353,11 +353,11 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely a gyűjteményből származó maximális értéket jelöli.
 
@@ -423,11 +423,11 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Egy egész szám, amely a gyűjtemény minimális értékét jelöli.
 
@@ -493,12 +493,12 @@ Az egész szám többit adja vissza a két megadott egész szám használatával
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |A felosztott szám. |
 | operand2 |Yes |int |A felosztáshoz használt szám nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A maradékot jelölő egész szám.
 
@@ -564,12 +564,12 @@ A két megadott egész szám szorzását adja vissza. A `mul` függvény nem tá
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |A szorzáshoz használandó első szám. |
 | operand2 |Yes |int |A szorzáshoz használt második szám. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A szorzást jelölő egész szám.
 
@@ -635,12 +635,12 @@ A két megadott egész szám kivonását adja vissza. A `sub` függvény nem tá
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Leírás |
+| Paraméter | Kötelező | Típus | Description |
 |:--- |:--- |:--- |:--- |
 | operand1 |Yes |int |A következőből kivont szám. |
 | operand2 |Yes |int |A kivonni kívánt szám. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A kivonást jelképező egész szám.
 

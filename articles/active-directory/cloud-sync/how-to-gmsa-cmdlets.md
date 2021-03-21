@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 411a8e46151a762bcd270fb676f78a91f760ac4f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101653796"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-gmsa-powershell-cmdlets"></a>Azure AD Connect Cloud kiépítési ügynök gMSA PowerShell-parancsmagjai
@@ -61,7 +61,7 @@ Ezeknek a parancsmagoknak a használatához a következő előfeltételek szüks
 ## <a name="using-set-aadcloudsyncpermissions"></a>Set-AADCloudSyncPermissions használata 
 `Set-AADCloudSyncPermissions` a a következő engedélyezési típusokat támogatja, amelyek azonosak a Azure AD Connect által használt engedélyekkel. A következő engedélyezési típusok támogatottak: 
 
-|Engedély típusa|Leírás|
+|Engedély típusa|Description|
 |-----|-----|
 |BasicRead| Lásd: Azure AD Connect [BasicRead](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#configure-basic-read-only-permissions) engedélyei|
 |PasswordHashSync|Lásd: Azure AD Connect [PasswordHashSync](../../active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account.md#permissions-for-password-hash-synchronization) engedélyei|

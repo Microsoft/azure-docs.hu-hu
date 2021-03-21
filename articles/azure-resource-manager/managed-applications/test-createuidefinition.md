@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
 ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96435000"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>A portál felületének tesztelése Azure Managed Applications
@@ -102,6 +102,6 @@ Ha a portál az összefoglalás képernyőn leáll, lehet, hogy hiba van a kimen
 
 Most, hogy ellenőrizte, hogy a portál felülete a várt módon működik-e, ideje ellenőrizni, hogy a createUiDefinition-fájl megfelelően van-e integrálva a mainTemplate.jsfájlon. Az érvényesítési parancsfájl tesztelésével tesztelheti a megoldás fájljainak tartalmát, beleértve a createUiDefinition fájlt is. A parancsfájl érvényesíti a JSON-szintaxist, ellenőrzi a regex kifejezéseket a szövegmezőben, és gondoskodik arról, hogy a portál felületének kimeneti értékei megegyezzenek a sablon paramétereivel. A parancsfájl futtatásával kapcsolatos további információkért lásd: [statikus ellenőrzési ellenőrzések futtatása sablonokhoz](https://github.com/Azure/azure-quickstart-templates/tree/master/test).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A portál felületének ellenőrzése után megismerheti, hogy az [Azure által felügyelt alkalmazás elérhető legyen a piactéren](../../marketplace/create-new-azure-apps-offer.md).

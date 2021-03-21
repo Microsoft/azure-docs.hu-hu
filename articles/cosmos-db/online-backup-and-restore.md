@@ -8,16 +8,16 @@ ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 2629e9c6e048620d9490a1e091a16c138fd1e615
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99525432"
 ---
-# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentési és igény szerinti adatvisszaállítás Azure Cosmos DB
+# <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Online biztonsági mentés és igény szerinti adat-visszaállítás az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-A Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot készít az adatairól. Az automatikus biztonsági mentések az adatbázis-műveletek teljesítményének vagy rendelkezésre állásának befolyásolása nélkül hozhatók. Az összes biztonsági mentés külön tárolódik a Storage szolgáltatásban. Az automatikus biztonsági mentések olyan helyzetekben hasznosak, amikor véletlenül törli vagy frissíti az Azure Cosmos-fiókot,-adatbázist vagy-tárolót, és később szükség van az adatok helyreállítására. Két biztonsági mentési mód létezik:
+Az Azure Cosmos DB rendszeres időközönként automatikusan biztonsági másolatot készít az adatokról. Az automatikus biztonsági mentések az adatbázis-műveletek teljesítményét vagy rendelkezésre állását nem befolyásolják. Az összes biztonsági mentés tárolása külön történik egy tárolószolgáltatásban. Az automatikus biztonsági mentések hasznosak lehetnek az olyan helyzetekben, amikor véletlenül törli vagy frissíti az Azure Cosmos-fiókot, -adatbázist vagy -tárolót, és később szükség van az adatok helyreállítására. Két biztonsági mentési mód létezik:
 
 * **Rendszeres biztonsági mentési mód** – ez a mód az alapértelmezett biztonsági mentési mód az összes meglévő fiókhoz. Ebben a módban a biztonsági mentés rendszeres időközönként történik, és a rendszer visszaállítja az adatgyűjtést a támogatási csapattal való kérelem létrehozásával. Ebben a módban a biztonsági mentési időközt és a fiók megőrzését konfigurálja. A maximális megőrzési idő egy hónapra terjed ki. A minimális biztonsági mentési időköz egy óra lehet.  További tudnivalókat az [Időszakos biztonsági mentési mód](configure-periodic-backup-restore.md) című cikkben talál.
 
