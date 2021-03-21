@@ -10,12 +10,12 @@ ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 51e73222233602491b0c8ed3835d032610c68e0d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802507"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722786"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -182,6 +182,9 @@ A közös hozzáférési aláírások használatára vonatkozó alábbi javaslat
 
 - **Az alkalmazás figyeléséhez használja a Azure Monitor és az Azure Storage-naplókat.** Az engedélyezési hibák az SAS-szolgáltató szolgáltatásbeli leállás miatt léphetnek fel. A tárolt hozzáférési szabályzatok véletlen eltávolításával is előfordulhatnak. A Azure Monitor és a Storage Analytics naplózási szolgáltatásával figyelheti az ilyen típusú engedélyezési hibákhoz tartozó szegeket. További információ: [Azure Storage-metrikák Azure monitor](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) és [Azure Storage Analytics naplózás](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
+> [!NOTE]
+> A Storage nem tudja nyomon követni a Storage-fiókhoz generált megosztott hozzáférési aláírások számát, és az API-k nem biztosíthatják ezt a részleteket. Ha tudnia kell a Storage-fiókhoz generált megosztott hozzáférési aláírások számát, manuálisan kell nyomon követnie a számot.
+
 ## <a name="get-started-with-sas"></a>Az SAS első lépései
 
 A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS-típusok következő cikkeit.
@@ -200,7 +203,7 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 - [Fiók SAS létrehozása a .NET-tel](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés delegálása közös hozzáférési aláírással (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

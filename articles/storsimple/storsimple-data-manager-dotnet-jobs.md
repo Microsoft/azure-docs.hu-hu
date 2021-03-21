@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015536"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>A .NET SDK használata adatátalakítás kezdeményezéséhez
@@ -66,7 +66,7 @@ Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási fel
 
         ![1. projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
     2. Válassza a **telepített > sablonok > Visual C# > Console Application** elemet.
-    3. Adja **DataTransformationApp** meg a DataTransformationApp **nevet**.
+    3. Adja  meg a DataTransformationApp **nevet**.
     4. A **helyhez** válassza a **C:\DataTransformation** lehetőséget.
     6. A projekt létrehozásához kattintson az **OK** gombra.
 
@@ -192,6 +192,6 @@ Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási fel
 
     ![Teljes kódrészlet a .NET-feladatok elindításához](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az adatátalakításhoz használja StorSimple Data Manager felhasználói felületét](storsimple-data-manager-ui.md).

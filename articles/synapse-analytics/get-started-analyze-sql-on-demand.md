@@ -10,24 +10,32 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 5f0a7477df2e281748c053ea8c7e7d3e79626296
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209406"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588018"
 ---
-# <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Az Azure szinapszis Analytics szolgáltatásban kiszolgáló nélküli SQL-készlettel elemezheti az adatelemzést
+# <a name="analyze-data-with-a-serverless-sql-pool"></a>Az adatelemzés kiszolgáló nélküli SQL-készlettel
 
 Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a kiszolgáló nélküli SQL-készlettel a Spark-adatbázisokban található adatforrások használatával. 
 
+## <a name="the-built-in-serverless-sql-pool"></a>A beépített kiszolgáló nélküli SQL-készlet
+
+A kiszolgáló nélküli SQL-készletek lehetővé teszik az SQL használatát anélkül, hogy kapacitást kellene fenntartania. A kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához feldolgozott adatmennyiségen alapul, nem a lekérdezés futtatásához használt csomópontok számától függ.
+
+Minden munkaterülethez tartozik egy **beépített,** előre konfigurált kiszolgáló nélküli SQL-készlet. 
+
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>NYC-alapú taxi-adatelemzés a blob Storage-ban kiszolgáló nélküli SQL-készlettel
 
-1. Az **adatközpontban** kattintson a jobb gombbal az **Azure Blob Storage > minta adatkészletek > NYC_TLC_YELLOW**, **új SQL-parancsfájl** elemre **, és** válassza a **legfelső 100-sorok kiválasztása** lehetőséget.
-1. Ekkor létrejön egy új SQL-parancsfájl a következő kóddal:
+Ebben a szakaszban egy kiszolgáló nélküli SQL-készletet fog használni a New York-i taxi-szolgáltatás Azure Blob Storage-fiókban való elemzéséhez.
+
+1. A szinapszis Studióban nyissa meg a **fejlesztés** hubot
+1. Hozzon létre egy új SQL-szkriptet.
+1. Illessze be a következő kódot a szkriptbe.
 
     ```
-    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -38,25 +46,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan elemezheti az információkat a k
     ```
 1. Kattintson a **Futtatás** gombra.
 
-## <a name="analyze-nyc-taxi-data-in-spark-databases-using-serverless-sql-pool"></a>New York-i taxi-adatelemzés a Spark-adatbázisokban kiszolgáló nélküli SQL-készlettel
-
-A Spark-adatbázisok táblái automatikusan láthatók, és a kiszolgáló nélküli SQL-készlet által is lekérdezhető.
-
-1. A szinapszis Studióban nyissa meg a **fejlesztés** csomópontot, és hozzon létre egy új SQL-szkriptet.
-1. A **Kapcsolódás** a beépített kiszolgáló **nélküli SQL-** készlethez beállítás megadása.
-1. Illessze be a következő szöveget a parancsfájlba, és futtassa a parancsfájlt.
-
-    ```sql
-    SELECT *
-    FROM nyctaxi.dbo.passengercountstats
-    ```
-
-    > [!NOTE]
-    > Amikor a kiszolgáló nélküli SQL-készletet használó lekérdezést először futtatja, a kiszolgáló nélküli SQL-készlet körülbelül 10 másodpercig tart, hogy összegyűjtse a lekérdezések futtatásához szükséges SQL-erőforrásokat. A további lekérdezések sokkal gyorsabban fognak megjelenni.
-  
-
-
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Adatelemzés a Storage szolgáltatásban](get-started-analyze-storage.md)
+> [Az adatelemzés kiszolgáló nélküli Spark-készlettel](get-started-analyze-spark.md)

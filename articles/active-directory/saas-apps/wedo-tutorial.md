@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2020
 ms.author: jeedes
 ms.openlocfilehash: 529c4e6433d16f9d70530ba516b5ec1426806984
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92519231"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a WEDO
@@ -49,15 +49,15 @@ A WEDO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **WeDo** kifejezést a keresőmezőbe.
 1. Válassza ki a **WeDo** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-wedo"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a WEDO
 
-Konfigurálja és tesztelje az Azure AD SSO-t a WEDO a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a WEDO-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a WEDO a **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a WEDO-ben.
 
 Az Azure AD SSO és a WEDO konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -72,8 +72,8 @@ Az Azure AD SSO és a WEDO konfigurálásához és teszteléséhez hajtsa végre
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/) **WeDo** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **WeDo** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     | Name | Forrás attribútum|
     | ------------ | --------- |
-    | e-mail | User. e-mail |
+    | e-mail | user.email |
     | firstName | felhasználó. firstName |
     | lastName | User. lasttName |
     | userName (Felhasználónév) | User. userName |
@@ -112,7 +112,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -124,13 +124,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a WEDO.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **WeDo**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **WeDo** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -142,13 +142,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a WEDO-ben.
 
-1. Jelentkezzen be a [WeDo](https://login.wedo.swiss/). **Rendszergazdai szerepkörrel**kell rendelkeznie.
-1. A profil beállításai területen válassza a **hálózati beállítások**szakaszban a menü **hitelesítés** lehetőséget.
+1. Jelentkezzen be a [WeDo](https://login.wedo.swiss/). **Rendszergazdai szerepkörrel** kell rendelkeznie.
+1. A profil beállításai területen válassza a **hálózati beállítások** szakaszban a menü **hitelesítés** lehetőséget.
 1. Az **SAML hitelesítés** lapon hajtsa végre a következő lépéseket:
 
    ![SAML-hitelesítés hivatkozása](media/wedo-tutorial/network-security-authentification.png)
 
-   a. **SAML-hitelesítés**engedélyezése.
+   a. **SAML-hitelesítés** engedélyezése.
 
    b. Válassza az **Identity Provider Metadata (XML)** fület.
 
@@ -160,8 +160,8 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a WEDO-ben.
 
 Ebben a szakaszban egy WEDO nevű teszt felhasználót hoz létre a következő néven: Bob Simon. Az információknak meg kell egyezniük az *Azure ad-tesztkörnyezet létrehozásával*.
 
-1. A WEDO-beli profil beállítása területen válassza **Users** a felhasználók *hálózati beállításokból* lehetőséget.
-1. Kattintson a **felhasználó hozzáadása**elemre.
+1. A WEDO-beli profil beállítása területen válassza  a felhasználók *hálózati beállításokból* lehetőséget.
+1. Kattintson a **felhasználó hozzáadása** elemre.
 1. A felhasználó hozzáadása felugró ablakban töltse ki a felhasználó adatait
 
     a. Keresztnév `B` .
@@ -172,11 +172,11 @@ Ebben a szakaszban egy WEDO nevű teszt felhasználót hoz létre a következő 
 
     d. Felhasználó típusa `User`
 
-    e. Kattintson a **felhasználó létrehozása**gombra.
+    e. Kattintson a **felhasználó létrehozása** gombra.
 
-    f. A *csoportok kiválasztása* lapon kattintson a **Mentés**gombra.
+    f. A *csoportok kiválasztása* lapon kattintson a **Mentés** gombra.
 
-    :  A *felhasználó meghívása* lapon kattintson az **Igen**gombra.
+    :  A *felhasználó meghívása* lapon kattintson az **Igen** gombra.
 
 1. A felhasználó ellenőrzése e-mailben kapott hivatkozás használatával
 

@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015230"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>A Azure Data Lake Analytics kód tesztelése
@@ -52,7 +52,7 @@ Az `Run()` illesztőfelület a feladatok végrehajtási eredményét adja vissza
 
 ### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-A U-SQL-szkriptek tesztelésére szolgáló projekt egy C# egység tesztelési keretrendszerre épül. A projekt összeállítása után válassza a **Test**  >  **Windows**  >  **test Explorer** tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása** lehetőséget.
+A U-SQL-szkriptek tesztelésére szolgáló projekt egy C# egység tesztelési keretrendszerre épül. A projekt összeállítása után válassza a   >  **Windows**  >  **test Explorer** tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása** lehetőséget.
 
 ## <a name="test-c-udos"></a>C# Udo tesztelése
 
@@ -105,7 +105,7 @@ A UDO függvények meghívása után a séma és a sorhalmaz értékének ellen�
 
 ### <a name="run-test-cases-in-visual-studio"></a>Tesztelési esetek futtatása a Visual Studióban
 
-A projekt összeállítása után válassza a **Test**  >  **Windows**  >  **test Explorer** tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása** lehetőséget.
+A projekt összeállítása után válassza a   >  **Windows**  >  **test Explorer** tesztelése elemet. Tesztelési eseteket futtathat a **test Explorerben**. Másik lehetőségként kattintson a jobb gombbal a. cs fájlra az egység tesztben, és válassza a **tesztek futtatása** lehetőséget.
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Tesztelési esetek futtatása az Azure-folyamatokban<a name="run-test-cases-in-azure-devops"></a>
 
@@ -145,7 +145,7 @@ C# UDO-teszt esetén ügyeljen arra, hogy a következő szerelvényekre hivatkoz
 
 Ha [a Microsoft. Azure. DataLake. USQL. interfaces Nuget-csomagon](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)keresztül hivatkozik rájuk, ügyeljen arra, hogy a létrehozási folyamat során vegyen fel egy Nuget-visszaállítási feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [U-SQL-szkript futtatása a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md)

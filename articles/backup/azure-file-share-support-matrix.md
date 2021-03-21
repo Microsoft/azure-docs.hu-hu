@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
 ms.openlocfilehash: 38c066c20399b39d676fb0c25aa158993258b979
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100370988"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
@@ -30,7 +30,7 @@ Az Azure-fájlmegosztás biztonsági mentése minden régióban elérhető, **ki
 | ------------------------ | ------------------------------------------------------------ |
 | Fiók típusa            | A Azure Backup támogatja az általános célú v1, általános célú v2 és file Storage típusú Storage-fiókokban lévő Azure-fájlmegosztás használatát |
 | Teljesítmény              | A Azure Backup a standard és a Premium Storage fiókban egyaránt támogatja a fájlmegosztást |
-| Replikáció              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure-fájlmegosztás támogatott |
+| Replikálás              | A Storage-fiókokban bármely replikációs típussal rendelkező Azure-fájlmegosztás támogatott |
 | Tűzfal engedélyezve         | Az Azure-fájlmegosztás olyan tűzfalszabályok esetében támogatott, amelyek lehetővé teszik Microsoft Azure szolgáltatások elérését a Storage-fiókhoz.|
 
 ## <a name="supported-file-shares"></a>Támogatott fájlmegosztás

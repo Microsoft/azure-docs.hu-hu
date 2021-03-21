@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96746420"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>Előzetes verzió célközönségének hozzáadása SaaS-ajánlathoz
@@ -49,6 +49,6 @@ Az **előzetes verzió célközönsége** lapon meghatározhatja, hogy egy korl�
 1. Válassza a elemet. CSV-fájl, majd válassza a **Megnyitás** lehetőséget.
 1. A következő lapra történő továbblépés előtt válassza a **Piszkozat mentése** lehetőséget: **technikai konfiguráció**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Technikai részletek hozzáadása SaaS-ajánlathoz](create-new-saas-offer-technical.md)

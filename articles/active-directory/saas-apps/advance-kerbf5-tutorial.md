@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.openlocfilehash: db8977e484e8d1f2cf4b30427d47ba45969f2147
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101654459"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory (AD) egyszeri bejelentkezéses (SSO) integráció az F5-mel
@@ -204,7 +204,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
  
     * Session. Logon. Last. usernameUPN kifejezés {[mcget {Session. SAML. Last. Identity}]}
 
-    * Session. ad. lastactualdomain TEXT-bemutató. élő
+    * Session. ad. lastactualdomain szöveg superdemo.live
 
     ![Az AD-lekérdezés tulajdonságait megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure17.png)
 
@@ -262,7 +262,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 * **3. lépés: SPN-delegálás (a App Service fiókhoz)**
 
     * Állítsa be a megfelelő delegálást az F5 delegálási fiókhoz.
-    * Az alábbi példában az APM delegálási fiók konfigurálva van a FRP-App1. redemo. Live alkalmazás KCD.
+    * Az alábbi példában az APM delegálási fiók konfigurálva van a FRP-App1.superdemo.live alkalmazás KCD.
 
         ![Képernyőfelvétel: az APM Delegatio-fiók tulajdonságai > Delegálás lap.](./media/advance-kerbf5-tutorial/configure25.png)
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97587196"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Oktatóanyag: vízfogyasztást figyelő alkalmazás létrehozása az Azure IoT Central
@@ -148,7 +148,7 @@ Az eszköz sablonjának testreszabása:
     Az Azure IoT Centralban hozzáadhat egy, az eszközhöz kapcsolódó tulajdonságot is. A Felhőbeli tulajdonság például a telepítési területre, az eszközre és egyéb karbantartási információkra vonatkozó riasztási küszöbérték lehet.
 1. A módosítások mentéséhez kattintson a **Mentés** gombra.
 
-### <a name="views"></a>Nézetek
+### <a name="views"></a>Megjelenítések
 
 A víz-felhasználási figyelő eszköz sablonja előre meghatározott nézetekkel rendelkezik. Ismerkedjen meg a nézetekkel, és frissítheti a frissítéseket. A nézetek határozzák meg, hogy az operátorok hogyan látják az eszköz adatokat, hanem a felhő tulajdonságait is.
 

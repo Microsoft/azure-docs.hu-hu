@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
 ms.openlocfilehash: 6ba49ebc593e67e1168f6427ade38b7d80bf7edf
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96621433"
 ---
 # <a name="how-to-sell-your-azure-application-offer"></a>Az Azure-alkalmazás ajánlatának értékesítése
@@ -29,7 +29,7 @@ A **közös értékesítés a Microsoft** lapon való konfigurálásával kapcso
 
 Ha úgy dönt, hogy elérhetővé teszi az ajánlatot a Cloud Solution Provider (CSP) programban, a kriptográfiai szolgáltatás a terméket egy csomagban lévő megoldás részeként értékesítheti ügyfelei számára. További információ az ajánlatnak a CSP programon keresztüli viszonteladásáról, valamint az **viszonteladás a CSP** -n keresztül történő konfigurálásának lépésenkénti lépéseiről: [Cloud Solution Provider program](cloud-solution-providers.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-alkalmazások ajánlatának tesztelése és közzététele](create-new-azure-apps-offer-test-publish.md)
 - [Aktív Piactéri előnyök](partner-center-portal/marketplace-rewards.md)

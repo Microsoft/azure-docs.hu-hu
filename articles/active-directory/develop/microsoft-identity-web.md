@@ -14,10 +14,10 @@ ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102546"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
@@ -82,11 +82,11 @@ A Microsoft Identity web számos olyan szolgáltatást tartalmaz, amelyeket nem 
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Felhasználói bejelentkezés](scenario-web-app-sign-user-app-configuration.md) a Web Apps szolgáltatásban             | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
 | [Webes API-k elleni védelem](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
-| Kiállítói ellenőrzés a több-bérlős alkalmazásokban                                                   | Nem                                                                   | Igen, [minden felhők](authentication-national-cloud.md) és [Azure ad B2C](../../active-directory-b2c/index.yml) esetén |
+| Kiállítói ellenőrzés a több-bérlős alkalmazásokban                                                   | No                                                                   | Igen, [minden felhők](authentication-national-cloud.md) és [Azure ad B2C](../../active-directory-b2c/index.yml) esetén |
 | Webalkalmazás/API [a Microsoft Graph meghívása] [forgatókönyv-API-Call-Graph]                             | Nem                                                                   | Igen                                                                                                     |
 | Webalkalmazás/API [meghívja a webes API-t] [forgatókönyv-API-Call-API]                                       | Nem                                                                   | Igen                                                                                                     |
-| A tanúsítvány hitelesítő adatainak támogatása                                                         | Nem                                                                   | Igen, beleértve a Azure Key Vault                                                                          |
-| Növekményes beleegyezett és feltételes hozzáférés támogatása a web Appsben                           | Nem                                                                   | Igen, MVC, Razor Pages és Blazer                                                                    |
+| A tanúsítvány hitelesítő adatainak támogatása                                                         | No                                                                   | Igen, beleértve a Azure Key Vault                                                                          |
+| Növekményes beleegyezett és feltételes hozzáférés támogatása a web Appsben                           | No                                                                   | Igen, MVC, Razor Pages és Blazer                                                                    |
 | Jogkivonat-titkosítási tanúsítványok a webes API-kon                                                | Nem                                                                   | Igen                                                                                                     |
 | [Hatókörök/alkalmazás-szerepkör ellenőrzése] [forgatókönyv-API-Validation] a webes API-kon                        | Nem                                                                   | Igen                                                                                                     |
 | `WWW-Authenticate` fejléc létrehozása webes API-khoz                                         | Nem                                                                   | Igen                                                                                                     |

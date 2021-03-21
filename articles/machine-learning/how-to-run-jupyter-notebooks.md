@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
 ms.openlocfilehash: 5748bf3d428102e296067dc5d1927ba487d575bc
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102518721"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
@@ -195,7 +195,7 @@ A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella par
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Jegyzetfüzet-cella parancs módban ":::
 
-| Helyi                      | Leírás                          |
+| Helyi                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | A szerkesztési mód megnyitása             |        
 | Shift + Enter                 | Cella futtatása, válassza az alábbi lehetőséget         |     
@@ -239,7 +239,7 @@ A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat Azure Machine Learning jegyzetfüzetekben lévő kódokat szerkesztési módban.
 
-| Helyi                      | Leírás|                                     
+| Helyi                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | Escape                        | Adja meg a parancs módját|  
 | Vezérlő/parancs + szóköz       | IntelliSense aktiválása |

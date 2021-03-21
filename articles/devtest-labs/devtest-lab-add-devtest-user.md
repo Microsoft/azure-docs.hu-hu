@@ -4,10 +4,10 @@ description: Azure DevTest Labs tulajdonosainak és felhasználóinak hozzáadá
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97511977"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Tulajdonosok és felhasználók hozzáadása a Azure DevTest Labs
@@ -30,19 +30,19 @@ Az alábbi táblázat azokat a műveleteket mutatja be, amelyeket a felhasznál�
 | --- | --- | --- | --- |
 | **Laboratóriumi feladatok** | | | |
 | Felhasználók hozzáadása laborhoz |Nem |Igen |Nem |
-| A költségadatok frissítése |Nem |Igen |Igen |
+| A költségadatok frissítése |Nem |Igen |Yes |
 | **VM-alapfeladatok** | | | |
-| Egyéni lemezképek hozzáadása és eltávolítása |Nem |Igen |Igen |
-| Képletek hozzáadása, frissítése és törlése |Igen |Igen |Igen |
-| Marketplace-lemezképek engedélyezése |Nem |Igen |Igen |
+| Egyéni lemezképek hozzáadása és eltávolítása |Nem |Igen |Yes |
+| Képletek hozzáadása, frissítése és törlése |Igen |Igen |Yes |
+| Marketplace-lemezképek engedélyezése |Nem |Igen |Yes |
 | **VIRTUÁLIS gépekkel kapcsolatos feladatok** | | | |
-| Virtuális gépek létrehozása |Igen |Igen |Igen |
-| Virtuális gépek elindítása, leállítása és törlése |Csak a felhasználó által létrehozott virtuális gépek |Igen |Igen |
-| Virtuálisgép-házirendek frissítése |Nem |Igen |Igen |
-| Adatlemezek hozzáadása vagy eltávolítása a virtuális gépekhez |Csak a felhasználó által létrehozott virtuális gépek |Igen |Igen |
+| Virtuális gépek létrehozása |Igen |Igen |Yes |
+| Virtuális gépek elindítása, leállítása és törlése |Csak a felhasználó által létrehozott virtuális gépek |Igen |Yes |
+| Virtuálisgép-házirendek frissítése |Nem |Igen |Yes |
+| Adatlemezek hozzáadása vagy eltávolítása a virtuális gépekhez |Csak a felhasználó által létrehozott virtuális gépek |Igen |Yes |
 | **Összetevő-feladatok** | | | |
-| Összetevő-Tárházak hozzáadása és eltávolítása |Nem |Igen |Igen |
-| Összetevők alkalmazása |Igen |Igen |Igen |
+| Összetevő-Tárházak hozzáadása és eltávolítása |Nem |Igen |Yes |
+| Összetevők alkalmazása |Igen |Igen |Yes |
 
 > [!NOTE]
 > Amikor egy felhasználó létrehoz egy virtuális gépet, a rendszer automatikusan hozzárendeli a felhasználót a létrehozott virtuális gép **tulajdonosi** szerepköréhez.
@@ -62,7 +62,7 @@ A következő lépések végigvezetik egy tulajdonos vagy felhasználó egy labo
 1. Az **engedélyek hozzáadása** ablakban végezze el a következő műveleteket: 
     1. Válasszon egy szerepkört (például: DevTest Labs user). Az [egyes szerepkörökben elvégezhető műveletek](#actions-that-can-be-performed-in-each-role) a tulajdonos, a DevTest-felhasználó és a közreműködői szerepkörök felhasználói által végrehajtható különféle műveleteket sorolja fel.
     2. Válassza ki a szerepkörbe felvenni kívánt felhasználót. 
-    3. Válassza a **Mentés** lehetőséget. 
+    3. Kattintson a **Mentés** gombra. 
 11. Amikor visszatér a **felhasználók** panelre, a felhasználó hozzá lett adva.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Külső felhasználó hozzáadása laborhoz a PowerShell használatával

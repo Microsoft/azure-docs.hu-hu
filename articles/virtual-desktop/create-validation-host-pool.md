@@ -7,10 +7,10 @@ ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97563245"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
@@ -87,7 +87,7 @@ A szolgáltatás frissítései havonta történnek. Jelentős problémák eseté
 
 Ha vannak szolgáltatási frissítések, győződjön meg arról, hogy legalább egy kis csoporttal rendelkezik, amely minden nap bejelentkezik a környezet ellenőrzéséhez. Javasoljuk, hogy rendszeresen látogasson el a [TechCommunity-webhelyre](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true) , és kövesse az WVDUPdate-mel kapcsolatos bejegyzéseket, hogy értesüljön a szolgáltatás frissítéseiről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére.
 
