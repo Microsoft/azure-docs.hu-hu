@@ -2,13 +2,13 @@
 title: Fogalmak – a privát felhő frissítései és frissítései
 description: Ismerje meg az Azure VMware-megoldás legfontosabb frissítési folyamatait és funkcióit.
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.date: 03/17/2021
+ms.openlocfilehash: 9810de40944f70a4efb7ec81d17868ffdf256c7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634992"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586148"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware-megoldás saját Felhőbeli frissítései és frissítései
 
@@ -53,7 +53,9 @@ Az Azure VMware megoldás a következő VMware-összetevők konfigurációs bizt
 
 Meghibásodás esetén az Azure VMware megoldás képes visszaállítani ezeket az összetevőket a konfiguráció biztonsági másolatából. 
 
-A VMware-szoftverekkel kapcsolatos további információkért lásd a [privát felhők és fürtök fogalmát ismertető cikket](concepts-private-clouds-clusters.md) és a [gyakori kérdéseket](faq.yml).
+## <a name="vmware-software-versions"></a>VMware-szoftverek verziói
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 ## <a name="next-steps"></a>Következő lépések
 

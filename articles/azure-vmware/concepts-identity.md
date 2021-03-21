@@ -2,23 +2,23 @@
 title: Fogalmak – identitás és hozzáférés
 description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési fogalmait
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 68f4ce9136cca1cf9bf0824395e31704d8ed1a17
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/18/2021
+ms.openlocfilehash: 07a7ac8093524ef4240b8f7607d649520b9439e1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364885"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586250"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
 
-Az Azure VMware-megoldás privát felhők a vCenter-kiszolgálóval és a NSX-T kezelővel vannak kiépítve. A vCenter használatával kezelheti a virtuális gépek (VM) munkaterheléseit. A NSX-T kezelőjével kiterjesztheti a privát felhőt.
+Az Azure VMware-megoldás privát felhők a vCenter-kiszolgálóval és a NSX-T kezelővel vannak kiépítve. A vCenter használatával kezelheti a virtuális gépek (VM) munkaterheléseit. A NSX-T kezelőjével kezelheti és bővítheti a saját felhőalapú hálózatot.
 
-A hozzáférés és az Identitáskezelés a CloudAdmin csoport jogosultságait használja a vCenter és a korlátozott rendszergazdai jogokkal a NSX-T Manager számára. Gondoskodik arról, hogy a saját felhőalapú platformja automatikusan, a legújabb funkciókkal és javításokkal legyen frissítve.  További információ: [Private Cloud upgrade Concepts cikk][concepts-upgrades].
+A vCenter-hozzáférés és az Identitáskezelés a buildin CloudAdmin csoport jogosultságait használja. A NSX-T kezelője korlátozott rendszergazdai engedélyeket használ. Ez a felügyelt szolgáltatás természete, és gondoskodik arról, hogy a saját felhőalapú platformja a várt legújabb funkciókkal és javításokkal legyen frissítve.  További információ: [Private Cloud upgrade Concepts cikk][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter-hozzáférés és-identitás
 
-A CloudAdmin csoport a vCenter-ben biztosítja a jogosultságokat. A csoportot helyileg kezelheti a vCenter-ben. Egy másik lehetőség a vCenter LDAP-alapú egyszeri bejelentkezés és a Azure Active Directory integrációja. A privát felhő üzembe helyezése után engedélyezheti az integrációt. 
+A vCenter CloudAdmin csoport meghatározza és megadja a jogosultságokat a vCenter-ben. Egy másik lehetőség, hogy hozzáférést és identitást biztosít a vCenter LDAP egyszeri bejelentkezés Azure Active Directory használatával történő integrálásával. A privát felhő üzembe helyezése után engedélyezheti az integrációt. 
 
 A táblázat a **CloudAdmin** és a **CloudGlobalAdmin** jogosultságokat jeleníti meg.
 
@@ -49,7 +49,7 @@ A táblázat a **CloudAdmin** és a **CloudGlobalAdmin** jogosultságokat jelen�
 
 ## <a name="nsx-t-manager-access-and-identity"></a>NSX – T Manager-hozzáférés és-identitás
 
-Az NSX-T kezelőjének eléréséhez használja a *rendszergazdai* fiókot. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi az 1. szintű (T1) átjárók, szegmensek (logikai kapcsolók) és minden szolgáltatás létrehozását és felügyeletét. A jogosultságok hozzáférést biztosítanak az NSX-T réteg-0 (T0) átjáróhoz. A t0-átjáró módosítása a hálózati teljesítmény romlása vagy a saját Felhőbeli hozzáférés nélkül is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portal az NSX-T T0-átjáró módosításainak igényléséhez.
+Az NSX-T kezelőjének eléréséhez használja a *rendszergazdai* fiókot. Teljes körű jogosultságokkal rendelkezik, és lehetővé teszi az 1. szintű (T1) átjárók, szegmensek (logikai kapcsolók) és minden szolgáltatás létrehozását és felügyeletét. Ez a fiók a NSX-T réteg-0 (T0) átjáróhoz is hozzáférést biztosít. Legyen szem előtt tartva, hogy ezek a változások megtörténjenek, mivel ez a hálózati teljesítmény romlása vagy a Felhőbeli hozzáférés hiányában is csökkenhet. Nyisson meg egy támogatási kérést a Azure Portal az NSX-T T0-átjáró módosításainak igényléséhez.
   
 ## <a name="next-steps"></a>Következő lépések
 

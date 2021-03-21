@@ -5,13 +5,13 @@ author: lfittl-msft
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: d223d2c6a83b1389cd70344efdb48c357dda4ac4
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/17/2021
+ms.openlocfilehash: 998154376895d8bcfc7cf36665a6a36f5c43e3b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102454586"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594988"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – rugalmas kiszolgáló
 
@@ -128,7 +128,7 @@ A következő bővítmények érhetők el Azure Database for PostgreSQL rugalmas
 
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
-a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A küldő kiszolgálónak engedélyeznie kell a kimenő kapcsolatokat a fogadó kiszolgálóval. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálótól.
+a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A rugalmas kiszolgáló a bejövő és a kimenő kapcsolatokat is támogatja bármely PostgreSQL-kiszolgálóhoz. A küldő kiszolgálónak engedélyeznie kell a kimenő kapcsolatokat a fogadó kiszolgálóval. Hasonlóképpen, a fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálótól. 
 
 Javasoljuk, hogy a kiszolgálókat a [VNet-integrációval](concepts-networking.md) telepítse, ha azt tervezi, hogy ezt a két bővítményt használja. Alapértelmezés szerint a VNet-integráció lehetővé teszi a VNET-kiszolgálók közötti kapcsolatokat. Azt is megteheti, hogy a [VNet hálózati biztonsági csoportok](../../virtual-network/manage-network-security-group.md) használatával testreszabja a hozzáférést.
 

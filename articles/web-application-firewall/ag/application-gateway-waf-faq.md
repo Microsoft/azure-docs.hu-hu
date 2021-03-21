@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 1fbe930780ff026be748bc42104f821ee9e5c443
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 890688dba70a7fa654e97652b3e474b919f9a077
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785102"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585383"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban Application Gateway
 
@@ -53,6 +53,20 @@ A WAF jelenleg a CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 * Az alkalmazások gyakori konfigurációs beállításainak észlelése (azaz Apache, IIS stb.)
 
 További információ: [OWASP Top-10 biztonsági rések](https://owasp.org/www-project-top-ten/).
+
+## <a name="what-content-types-does-waf-support"></a>Milyen tartalomtípusokat támogat a WAF?
+
+Application Gateway WAF a következő tartalomtípusokat támogatja a felügyelt szabályokhoz:
+
+* application/json
+* alkalmazás/XML
+* Application/x-www-Form-urlencoded
+* multipart/űrlap – adattípusok
+
+És egyéni szabályok esetén:
+
+* Application/x-www-Form-urlencoded
+* multipart/űrlap – adattípusok
 
 ## <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
 

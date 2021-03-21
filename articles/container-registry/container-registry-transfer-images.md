@@ -4,12 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 30e6c0fa7a33c7a83543fee297c582b15bce4c8b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935353"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606769"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -426,7 +426,8 @@ az resource delete \
   * Nem minden összetevő, vagy nincs, át van adva. Győződjön meg róla, hogy az exportálási folyamatban lévő összetevők helyesírása és a blob neve az exportálási és importálási futtatásokban. Erősítse meg, hogy legfeljebb 50 összetevőt helyez át.
   * Lehet, hogy a folyamat futása nem fejeződött be. Az exportálási vagy importálási Futtatás hosszabb időt is igénybe vehet. 
   * Az egyéb folyamatokkal kapcsolatos problémák esetén adja meg az Exportálás futtatásának vagy importálásának a Azure Container Registry csapatnak való futtatásához szükséges telepítési [korrelációs azonosítót](../azure-resource-manager/templates/deployment-history.md) .
-
+* **Problémák a rendszerkép egy fizikailag elszigetelt környezetben való kihúzásakor**
+  * Ha a külső rétegekkel kapcsolatos hibákat látja, vagy megkísérli feloldani a mcr.microsoft.com, amikor a rendszerképet fizikailag elkülönített környezetben kísérli meg lekérni, a rendszerkép jegyzékfájlja valószínűleg nem terjeszthető réteggel rendelkezik. A fizikailag elszigetelt környezet jellegéből adódóan ezek a lemezképek gyakran nem fognak lekérni. A külső beállításjegyzékre mutató hivatkozásokat a rendszerkép jegyzékfájljának ellenőrzésével ellenőrizheti. Ebben az esetben a nem terjeszthető rétegeket a nyilvános felhőben lévő ACR-be kell küldenie az adott lemezképhez tartozó exportálási folyamat telepítése előtt. Ennek módjáról a nem [terjeszthető rétegek leküldése hogyan a beállításjegyzékbe](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry) című témakörben talál útmutatást.
 
 ## <a name="next-steps"></a>Következő lépések
 

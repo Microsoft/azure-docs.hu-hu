@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: reference
 ms.date: 02/05/2021
 ms.openlocfilehash: 60aede65f8217d46844398d0199ff7edca7f36a9
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200802"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Támogatott besorolások az Azure hatáskörébe
@@ -407,7 +407,7 @@ tfn
 
 11 számjegy és elválasztó karakter:
 
-- hat számjegy és két opcionális időszak az éé formátumban. Születési dátum MM.DD
+- hat számjegy és két opcionális időszak az éé formátumban. HH. DD a születési dátumhoz
 - A ponttól, kötőjeltől, szóköztől választható elválasztó karakter
 - három egymás utáni számjegy (nem igaz a hímek számára, még a nőstények esetében is)
 - A ponttól, kötőjeltől, szóköztől választható elválasztó karakter
@@ -1995,7 +1995,7 @@ Ezek azok az entitások, amelyek az EU-illesztőprogram licencelési számának 
 - Bulgária
 - Horvátország
 - Ciprus
-- cseh
+- Cseh
 - Dánia
 - Észtország
 - Finnország
@@ -2028,7 +2028,7 @@ Ezek az EU-beli nemzeti azonosítók számának bizalmas információ típusú e
 - Bulgária
 - Horvátország
 - Ciprus
-- cseh
+- Cseh
 - Dánia
 - Észtország
 - Finnország
@@ -2060,7 +2060,7 @@ Ezek az EU-beli Passport-szám bizalmas információit typeThese az EU Passport 
 - Bulgária
 - Horvátország
 - Ciprus
-- cseh
+- Cseh
 - Dánia
 - Észtország
 - Finnország
@@ -2091,7 +2091,7 @@ Ezek azok az entitások, amelyek az EU társadalombiztosítási számában vagy 
 - Ausztria
 - Belgium
 - Horvátország
-- cseh
+- Cseh
 - Dánia
 - Finnország
 - Franciaország
@@ -2111,7 +2111,7 @@ Ezek az entitások az EU-beli adóazonosító szám bizalmas adattípusa szerint
 - Bulgária
 - Horvátország
 - Ciprus
-- cseh
+- Cseh
 - Dánia
 - Észtország
 - Finnország
@@ -2972,7 +2972,7 @@ ad, ae, al, at, az, ba, be, bg, bh, ch, cr, cy, cz, de, dk, do, ee, es, fi, fo, 
 
 ### <a name="keywords"></a>Kulcsszavak
 
-Nincs
+Nincsenek
 
 ## <a name="ireland-personal-public-service-pps-number"></a>Írországi személyes nyilvános szolgáltatás (PPS) száma
 
@@ -3961,7 +3961,7 @@ Ezt a bizalmas adattípus-entitást az EU társadalombiztosítási száma vagy a
 
 ### <a name="keywords"></a>Kulcsszavak
 
-Nincs
+Nincsenek
 
 ## <a name="sweden-national-id"></a>Svéd nemzeti azonosító
 

@@ -9,10 +9,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602286"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Funkciós szűrők használata a feltételes funkciók jelzőjének engedélyezéséhez
@@ -87,7 +87,7 @@ A szolgáltatás jelző hatásainak megtekintéséhez indítsa el az alkalmazás
 > [!div class="mx-imgBorder"]
 > ![TargetingFilter működés közben](./media/feature-flags-percentagefilter.gif)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A funkciók lépcsőzetes bevezetésének engedélyezése a megcélzott célközönségek számára](./howto-targetingfilter-aspnet-core.md)

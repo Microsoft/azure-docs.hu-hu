@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 02/09/2021
 ms.author: chmutali
 ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100104331"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>A Azure Active Directory kiépítés munkanapokkal való integrálása
@@ -356,52 +356,52 @@ Az alábbi táblázat útmutatást nyújt az adott adathalmaz lekéréséhez has
 
 | \# | Munkanap entitás                       | Alapértelmezés szerint tartalmazza | A nem alapértelmezett entitások beolvasásához a leképezésben megadni kívánt XPATH-minta             |
 |----|--------------------------------------|---------------------|-------------------------------------------------------------------------------|
-| 1  | Személyes adattárolás                        | Igen                 | WD: Worker \_ -adatfeldolgozó/WD: személyes \_                                             |
-| 2  | Foglalkoztatási adatszolgáltatások                      | Igen                 | WD: Worker \_ -adatfeldolgozási/WD: foglalkoztatási \_ adatszolgáltatások                                           |
-| 3  | További feladatok adatai                  | Igen                 | WD: Worker \_ -adatok/WD: \_ Working-adatok/WD: Worker \_ Job \_ adatfeldolgozási feladatok \[ @wd:Primary \_ = 0\]|
-| 4  | Szervezeti adatszolgáltatások                    | Igen                 | WD: Worker \_ -adattárolás/WD: szervezeti \_ adatszolgáltatások                                         |
-| 5  | Felügyeleti lánc adatvédelme                | Igen                 | WD: Worker \_ -adatkezelési/WD: felügyeleti \_ lánc \_ adatvédelme                                    |
-| 6  | Felügyeleti szervezet             | Igen                 | FELÜGYELETI                                                                 |
-| 7  | Vállalat                              | Igen                 | VÁLLALATI                                                                     |
-| 8  | Business Unit (Vállalati egység)                        | Nem                  | "üzleti \_ egység"                                                              |
-| 9  | Üzleti egység hierarchiája              | Nem                  | "üzleti \_ egység \_ hierarchiája"                                                   |
-| 10 | Vállalati hierarchia                    | Nem                  | "vállalati \_ hierarchia"                                                          |
+| 1  | Személyes adattárolás                        | Yes                 | WD: Worker \_ -adatfeldolgozó/WD: személyes \_                                             |
+| 2  | Foglalkoztatási adatszolgáltatások                      | Yes                 | WD: Worker \_ -adatfeldolgozási/WD: foglalkoztatási \_ adatszolgáltatások                                           |
+| 3  | További feladatok adatai                  | Yes                 | WD: Worker \_ -adatok/WD: \_ Working-adatok/WD: Worker \_ Job \_ adatfeldolgozási feladatok \[ @wd:Primary \_ = 0\]|
+| 4  | Szervezeti adatszolgáltatások                    | Yes                 | WD: Worker \_ -adattárolás/WD: szervezeti \_ adatszolgáltatások                                         |
+| 5  | Felügyeleti lánc adatvédelme                | Yes                 | WD: Worker \_ -adatkezelési/WD: felügyeleti \_ lánc \_ adatvédelme                                    |
+| 6  | Felügyeleti szervezet             | Yes                 | FELÜGYELETI                                                                 |
+| 7  | Vállalat                              | Yes                 | VÁLLALATI                                                                     |
+| 8  | Business Unit (Vállalati egység)                        | No                  | "üzleti \_ egység"                                                              |
+| 9  | Üzleti egység hierarchiája              | No                  | "üzleti \_ egység \_ hierarchiája"                                                   |
+| 10 | Vállalati hierarchia                    | No                  | "vállalati \_ hierarchia"                                                          |
 | 11 | Cost Center                          | Nem                  | "COST \_ Center"                                                                |
-| 12 | Cost Center-hierarchia                | Nem                  | "COST \_ Center- \_ hierarchia"                                                     |
-| 13 | Alaptőke                                 | Nem                  | ALAPTŐKE                                                                        |
-| 14 | Alap-hierarchia                       | Nem                  | "alap- \_ hierarchia"                                                             |
-| 15 | Ajándékozási                                 | Nem                  | AJÁNDÉKOZÁSI                                                                        |
-| 16 | Gift-hierarchia                       | Nem                  | "GIFT \_ hierarchia"                                                             |
-| 17 | Engedély                                | Nem                  | Grant                                                                       |
-| 18 | Hierarchia megadása                      | Nem                  | " \_ hierarchia megadása"                                                            |
-| 19 | Üzleti hely hierarchiája              | Nem                  | "üzleti \_ telephelyi \_ hierarchia"                                                   |
-| 20 | Mátrix-szervezet                  | Nem                  | MÁTRIX                                                                      |
-| 21 | Fizetési csoport                            | Nem                  | "fizetési \_ csoport"                                                                  |
-| 22 | Programok                             | Nem                  | PROGRAMOK                                                                    |
-| 23 | Program-hierarchia                    | Nem                  | "PROGRAM- \_ hierarchia"                                                          |
-| 24 | Region                               | Nem                  | "régió- \_ hierarchia"                                                           |
-| 25 | Hely hierarchiája                   | Nem                  | "LOCATION \_ hierarchia"                                                         |
-| 26 | Fiók létesítési adatkészlete            | Nem                  | WD: Worker \_ -adattárolás/WD: fiók \_ kiépítési \_ adatvédelme                                |
-| 27 | Háttér-ellenőrzési érték                | Nem                  | WD: Worker \_ -adattárolás/WD: háttér- \_ ellenőrzési \_ adatgyűjtés                                    |
-| 28 | Juttatási jogosultsági adatszolgáltatások             | Nem                  | WD: Worker-adatkezelési \_ /WD: juttatási \_ jogosultságok \_                                 |
-| 29 | Beléptetési adatbevitel              | Nem                  | WD: Worker \_ -adattárolás/WD: juttatás \_ beléptetési \_ adatkészlete                                  |
-| 30 | Pályaválasztási adatfeldolgozás                          | Nem                  | WD: Worker \_ -adattárolás/WD: karrier- \_ adatfeldolgozás                                               |
-| 31 | Kompenzációs adatszolgáltatások                    | Nem                  | WD: Worker \_ -adatfeldolgozó/WD: kompenzációs \_ adatszolgáltatások                                         |
-| 32 | Függőben lévő feldolgozó adóhatóságának adatvédelme | Nem                  | WD: Worker \_ -adatfeldolgozó/WD: feltételes \_ \_ \_ \_ feldolgozó adóhatóság űrlapjának \_ típusa \_       |
-| 33 | Fejlesztési adatelem                | Nem                  | WD: Worker-adatkezelés \_ /WD: fejlesztési \_ adatelem \_                                    |
-| 34 | Alkalmazotti szerződések adatkészlete              | Nem                  | WD: Worker \_ -vagy WD- \_ \_ adatfeldolgozási szerződések – adatkezelés                                  |
-| 35 | Alkalmazottak felülvizsgálati adatai                 | Nem                  | WD: Worker \_ adatai/WD: Employee \_ felülvizsgálati \_ adatai                                     |
-| 36 | Visszajelzés érkezett               | Nem                  | WD: Worker \_ -adatfeldolgozási/WD: visszajelzés \_ fogadva \_                                   |
-| 37 | Worker Goal-adat                     | Nem                  | WD: Worker \_ -adat/WD: Worker \_ Goal- \_ adat                                         |
-| 38 | Fényképek                           | Nem                  | WD: Worker \_ -adatfeldolgozási/WD: fényképek \_                                                |
-| 39 | Minősítési adatkészletek                   | Nem                  | WD: Worker \_ -vagy WD: minősítési \_ adategység                                        |
-| 40 | Kapcsolódó személyek adatainak                 | Nem                  | WD: Worker \_ -adat/WD: kapcsolódó \_ személyek \_ adatainak                                     |
-| 41 | Szerepkör-adat                            | Nem                  | WD: Worker \_ -adat/WD: szerepkör- \_ adat                                                 |
-| 42 | Szaktudás                           | Nem                  | WD: Worker \_ -adattárolás/WD: skill- \_ adatkezelés                                                |
-| 43 | Öröklési profilok              | Nem                  | WD: Worker \_ -adattárolás/WD: öröklési \_ profilok \_                                  |
-| 44 | Tehetség-értékelési adatszolgáltatások               | Nem                  | WD: Worker-adatkezelési \_ /WD: Talent \_ Assessment- \_ adatszolgáltatások                                   |
-| 45 | Felhasználói fiókadatok                    | Nem                  | WD: Worker-adatkezelési \_ /WD: felhasználói \_ fiókadatok \_                                        |
-| 46 | Munkavégző dokumentumra vonatkozó adatfeldolgozás                 | Nem                  | WD: Worker-adatfeldolgozói \_ /WD: Worker \_ Document- \_ adatként                                     |
+| 12 | Cost Center-hierarchia                | No                  | "COST \_ Center- \_ hierarchia"                                                     |
+| 13 | Alaptőke                                 | No                  | ALAPTŐKE                                                                        |
+| 14 | Alap-hierarchia                       | No                  | "alap- \_ hierarchia"                                                             |
+| 15 | Ajándékozási                                 | No                  | AJÁNDÉKOZÁSI                                                                        |
+| 16 | Gift-hierarchia                       | No                  | "GIFT \_ hierarchia"                                                             |
+| 17 | Engedély                                | No                  | Grant                                                                       |
+| 18 | Hierarchia megadása                      | No                  | " \_ hierarchia megadása"                                                            |
+| 19 | Üzleti hely hierarchiája              | No                  | "üzleti \_ telephelyi \_ hierarchia"                                                   |
+| 20 | Mátrix-szervezet                  | No                  | MÁTRIX                                                                      |
+| 21 | Fizetési csoport                            | No                  | "fizetési \_ csoport"                                                                  |
+| 22 | Programok                             | No                  | PROGRAMOK                                                                    |
+| 23 | Program-hierarchia                    | No                  | "PROGRAM- \_ hierarchia"                                                          |
+| 24 | Region                               | No                  | "régió- \_ hierarchia"                                                           |
+| 25 | Hely hierarchiája                   | No                  | "LOCATION \_ hierarchia"                                                         |
+| 26 | Fiók létesítési adatkészlete            | No                  | WD: Worker \_ -adattárolás/WD: fiók \_ kiépítési \_ adatvédelme                                |
+| 27 | Háttér-ellenőrzési érték                | No                  | WD: Worker \_ -adattárolás/WD: háttér- \_ ellenőrzési \_ adatgyűjtés                                    |
+| 28 | Juttatási jogosultsági adatszolgáltatások             | No                  | WD: Worker-adatkezelési \_ /WD: juttatási \_ jogosultságok \_                                 |
+| 29 | Beléptetési adatbevitel              | No                  | WD: Worker \_ -adattárolás/WD: juttatás \_ beléptetési \_ adatkészlete                                  |
+| 30 | Pályaválasztási adatfeldolgozás                          | No                  | WD: Worker \_ -adattárolás/WD: karrier- \_ adatfeldolgozás                                               |
+| 31 | Kompenzációs adatszolgáltatások                    | No                  | WD: Worker \_ -adatfeldolgozó/WD: kompenzációs \_ adatszolgáltatások                                         |
+| 32 | Függőben lévő feldolgozó adóhatóságának adatvédelme | No                  | WD: Worker \_ -adatfeldolgozó/WD: feltételes \_ \_ \_ \_ feldolgozó adóhatóság űrlapjának \_ típusa \_       |
+| 33 | Fejlesztési adatelem                | No                  | WD: Worker-adatkezelés \_ /WD: fejlesztési \_ adatelem \_                                    |
+| 34 | Alkalmazotti szerződések adatkészlete              | No                  | WD: Worker \_ -vagy WD- \_ \_ adatfeldolgozási szerződések – adatkezelés                                  |
+| 35 | Alkalmazottak felülvizsgálati adatai                 | No                  | WD: Worker \_ adatai/WD: Employee \_ felülvizsgálati \_ adatai                                     |
+| 36 | Visszajelzés érkezett               | No                  | WD: Worker \_ -adatfeldolgozási/WD: visszajelzés \_ fogadva \_                                   |
+| 37 | Worker Goal-adat                     | No                  | WD: Worker \_ -adat/WD: Worker \_ Goal- \_ adat                                         |
+| 38 | Fényképek                           | No                  | WD: Worker \_ -adatfeldolgozási/WD: fényképek \_                                                |
+| 39 | Minősítési adatkészletek                   | No                  | WD: Worker \_ -vagy WD: minősítési \_ adategység                                        |
+| 40 | Kapcsolódó személyek adatainak                 | No                  | WD: Worker \_ -adat/WD: kapcsolódó \_ személyek \_ adatainak                                     |
+| 41 | Szerepkör-adat                            | No                  | WD: Worker \_ -adat/WD: szerepkör- \_ adat                                                 |
+| 42 | Szaktudás                           | No                  | WD: Worker \_ -adattárolás/WD: skill- \_ adatkezelés                                                |
+| 43 | Öröklési profilok              | No                  | WD: Worker \_ -adattárolás/WD: öröklési \_ profilok \_                                  |
+| 44 | Tehetség-értékelési adatszolgáltatások               | No                  | WD: Worker-adatkezelési \_ /WD: Talent \_ Assessment- \_ adatszolgáltatások                                   |
+| 45 | Felhasználói fiókadatok                    | No                  | WD: Worker-adatkezelési \_ /WD: felhasználói \_ fiókadatok \_                                        |
+| 46 | Munkavégző dokumentumra vonatkozó adatfeldolgozás                 | No                  | WD: Worker-adatfeldolgozói \_ /WD: Worker \_ Document- \_ adatként                                     |
 
 >[!NOTE]
 >A táblázatban felsorolt minden egyes munkanapokat egy **tartományi biztonsági házirend** védi a munkanapokon. Ha nem tudja lekérni az entitáshoz társított összes attribútumot a jobb oldali XPATH beállítása után, egyeztessen a munkanap rendszergazdájával, és győződjön meg arról, hogy a megfelelő tartományi biztonsági házirend konfigurálva van a kiépítési alkalmazáshoz társított integrációs rendszer felhasználója számára. Például a *szaktudás* *beolvasásához a hozzáférésre* van szükség a munkanapokon, a munkahelyen, a *szaktudásban és a tapasztalatokban*. 

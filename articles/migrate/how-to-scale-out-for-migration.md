@@ -6,25 +6,25 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 1c93002a6dd97aadbf407713ab25091436bd85e0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612065"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607653"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>A VMware virtuális gépek ügynök nélküli áttelepítésének méretezése az Azure-ba
 
-Ebből a cikkből megtudhatja, hogyan használható egy kibővíthető készülék nagy számú VMware virtuális gép (VM) áttelepítésére az Azure-ba az Azure Migrate Server áttelepítési eszköz ügynök nélküli áttelepítési képességével. 
+Ebből a cikkből megtudhatja, hogyan használható egy kibővíthető készülék nagy számú VMware virtuális gép (VM) áttelepítésére az Azure-ba az Azure Migrate Server áttelepítési eszköz ügynök nélküli módszerével a VMware virtuális gépek áttelepítéséhez.
 
-A VMware virtuális gépeknek a kiszolgáló áttelepítési eszköze által felügyelt ügynök nélküli áttelepítésével a következőket teheti:
+A VMware virtuális gépek ügynök nélküli áttelepítési módszerének használatával a következőket teheti:
 
 - Akár 300 virtuális gépet replikálhat egyetlen vCenter-kiszolgálóról egy Azure Migrate berendezés egyidejű használatával.
 - Egyszerre legfeljebb 500 virtuális gépet replikálhat egyetlen vCenter-kiszolgálóról egy második kibővíthető berendezés áttelepítésre történő üzembe helyezésével.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
-- Kibővíthető készülék üzembe helyezése VMware-áttelepítéshez
+- Kibővíthető készülék hozzáadása a VMware virtuális gépek ügynök nélküli áttelepítéséhez
 - Egyszerre legfeljebb 500 virtuális gépet telepíthet át a kibővíthető készülék használatával.
 
 ##  <a name="prerequisites"></a>Előfeltételek
@@ -37,8 +37,9 @@ A Kezdés előtt a következő lépéseket kell elvégeznie:
 > [!IMPORTANT]
 > A kibővített berendezés áttelepítéshez való hozzáadása előtt legalább egy replikáló virtuális gépnek kell lennie a projektben.
 
-## <a name="deploy-a-scale-out-appliance"></a>Kibővíthető berendezés üzembe helyezése
+A fenti műveletek elvégzéséhez tekintse át a [VMWare virtuális gépek Azure-ba történő áttelepítésével foglalkozó oktatóanyagot az ügynök nélküli áttelepítési módszerrel](./tutorial-migrate-vmware.md).
 
+## <a name="deploy-a-scale-out-appliance"></a>Kibővíthető berendezés üzembe helyezése
 
 A kibővíthető berendezések hozzáadásához kövesse az alábbi lépéseket:
 
@@ -75,7 +76,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Az átjáró-ügynök és a készülék Configuration Manager telepítése több egyidejű kiszolgáló-replikáció végrehajtásához.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config

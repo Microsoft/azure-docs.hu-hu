@@ -6,10 +6,10 @@ ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
 ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98937348"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
@@ -61,7 +61,7 @@ A [ApplicationInsights.config](configuration-with-applicationinsights-config.md)
 
 ### <a name="configuration-in-code-for-aspnet-applications"></a>Konfiguráció a kódban a ASP.NET-alkalmazásokhoz
 
-A következő kód egy "ServerTelemetryChannel" példányt állít be, amely `StorageFolder` Egyéni helyre van beállítva. Adja hozzá ezt a kódot az alkalmazás elején, jellemzően a `Application_Start()` Global.aspx.cs metódusában.
+A következő kód egy "ServerTelemetryChannel" példányt állít be, amely `StorageFolder` Egyéni helyre van beállítva. Adja hozzá ezt a kódot az alkalmazás elején, jellemzően a `Application_Start()` Global. aspx. cs metódusban.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;

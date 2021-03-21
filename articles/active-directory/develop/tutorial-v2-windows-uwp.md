@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 6383f63d2118d8618f07bf3cb6cd08a0b16140f3
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100102648"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
@@ -105,9 +105,9 @@ A Visual Studio a projekt sablonjának részeként létrehozza a *Főoldal. XAML
 
 ### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Az Microsoft Graph API-hoz tartozó jogkivonat beszerzése a Microsoft hitelesítési kódtár használatával
 
-Ez a szakasz bemutatja, hogyan kérhető le jogkivonat a Microsoft Graph API-hoz a Microsoft hitelesítési kódtár használatával. Módosítsa a *MainPage.XAML.cs* -fájlt.
+Ez a szakasz bemutatja, hogyan kérhető le jogkivonat a Microsoft Graph API-hoz a Microsoft hitelesítési kódtár használatával. Módosítsa a *Főoldal. XAML. cs* fájlt.
 
-1. A *MainPage.XAML.cs*-ben adja hozzá az alábbi hivatkozásokat:
+1. A *Főoldal. XAML. cs*-ban adja hozzá az alábbi hivatkozásokat:
 
     ```csharp
     using Microsoft.Identity.Client;
@@ -239,7 +239,7 @@ A metódus végül `AcquireTokenSilent` sikertelen lesz. A hiba okai közé tart
 
 ### <a name="instantiate-the-microsoft-graph-service-client-by-obtaining-the-token-from-the-signinuserandgettokenusingmsal-method"></a>A Microsoft Graph szolgáltatás ügyfelének példánya a token SignInUserAndGetTokenUsingMSAL metódussal való beszerzésével
 
-Adja hozzá a következő új metódust a *MainPage.XAML.cs*:
+Adja hozzá a következő új metódust a *Főoldal. XAML. cs*:
 
 ```csharp
       /// <summary>
@@ -264,7 +264,7 @@ Ebben a példában a `GetGraphServiceClient` metódus `GraphServiceClient` egy h
 
 ### <a name="add-a-method-to-sign-out-the-user"></a>Metódus hozzáadása a felhasználó kijelentkezéséhez
 
-A felhasználó kijelentkezéséhez adja hozzá a következő metódust a *MainPage.XAML.cs*:
+A felhasználó kijelentkezéséhez adja hozzá a következő metódust a *Főoldal. XAML. cs*:
 
 ```csharp
 /// <summary>
@@ -302,7 +302,7 @@ Az ebben a példában szereplő alkalmazás egyetlen felhasználót támogat. A 
 
 ### <a name="display-basic-token-information"></a>Alapszintű jogkivonat adatainak megjelenítése
 
-Adja hozzá a következő metódust a *MainPage.XAML.cs* a jogkivonat alapvető adatainak megjelenítéséhez:
+Adja hozzá a következő metódust a *Főoldal. XAML. cs* számára a jogkivonat alapvető adatainak megjelenítéséhez:
 
 ```csharp
 /// <summary>
@@ -325,7 +325,7 @@ Az **OpenID Connect** használatával beszerzett azonosító tokenek a felhaszn�
 
 ### <a name="display-message"></a>Üzenet megjelenítése
 
-Adja hozzá a következő új metódust a *MainPage.XAML.cs*:
+Adja hozzá a következő új metódust a *Főoldal. XAML. cs*:
 
 ```csharp
 /// <summary>
@@ -352,7 +352,7 @@ Most regisztrálja az alkalmazást:
 1. Adja meg az alkalmazás **nevét** , például: `UWP-App-calling-MSGraph` . Előfordulhat, hogy az alkalmazás felhasználói láthatják ezt a nevet, és később is megváltoztathatók.
 1. A **támogatott fióktípus** területen válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár-több-bérlős) és a személyes Microsoft-fiókokat (például Skype, Xbox)**. 
 1. Válassza a **Regisztráció** lehetőséget.
-1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *MainPage.XAML.cs*, és cserélje le az értéket ezzel az `ClientId` értékkel.
+1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *Főoldal. XAML. cs* programot, és cserélje le az értéket ezzel az `ClientId` értékkel.
 
 Az alkalmazás hitelesítésének konfigurálása:
 
@@ -385,7 +385,7 @@ Az integrált Windows-hitelesítés engedélyezéséhez összevont Azure AD-tart
 
 Az aktuális példában a `WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")` metódust használjuk. A használatához `WithDefaultRedirectURI()` hajtsa végre a következő lépéseket:
 
-1. A *MainPage.XAML.cs*-ben cserélje le a (z) `WithRedirectUri` `WithDefaultRedirectUri` :
+1. A *Főoldal. XAML. cs*, a `WithRedirectUri` helyére `WithDefaultRedirectUri` :
 
    **Jelenlegi kód**
 
@@ -418,7 +418,7 @@ Az aktuális példában a `WithRedirectUri("https://login.microsoftonline.com/co
        .Build();
    ```
 
-2.  Keresse meg az alkalmazás visszahívási URI-JÁT úgy, hogy hozzáadja a `redirectURI` mezőt a *MainPage.XAML.cs* -ben, és beállítja a töréspontot:
+2.  Keresse meg az alkalmazás visszahívási URI-JÁT úgy, hogy hozzáadja a `redirectURI` mezőt a *Főoldal. XAML. cs* -ben, és beállítja a töréspontot a következőre:
 
     ```csharp
 

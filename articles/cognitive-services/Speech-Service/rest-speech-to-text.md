@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90a4ad068f332b198696d96bddbb794c820f42f5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 76b4a749bff94cbf218d3cd3c7d132eef119b7ef
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103564388"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606905"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -51,7 +51,8 @@ Tekintse meg a teljes beszéd – szöveg REST API v [3.0 referenciát](https://
 
 ## <a name="speech-to-text-rest-api-for-short-audio"></a>Beszéd – szöveg REST API rövid hanghoz
 
-A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé. Minden elérhető végpont egy régióhoz van társítva. Az alkalmazáshoz szükség van egy előfizetési kulcsra a használni kívánt végponthoz. A rövid hang REST API nagyon korlátozott, és csak abban az esetben használható, ha a [SPEECH SDK](speech-sdk.md) nem.
+A Speech [SDK](speech-sdk.md)alternatívájaként a beszédfelismerési szolgáltatás lehetővé teszi, hogy REST API használatával alakítsa át a beszédfelismerést a szöveggé.
+A rövid hang REST API nagyon korlátozott, és csak abban az esetben használható, ha a [SPEECH SDK](speech-sdk.md) nem.
 
 Mielőtt a rövid hanghoz tartozó beszéd-szöveg REST API használja, vegye figyelembe a következőket:
 
@@ -95,7 +96,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 
 Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-|Fejléc| Leírás | Kötelező/nem kötelező |
+|Fejléc| Description | Kötelező/nem kötelező |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
@@ -341,3 +342,4 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 - [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)
 - [Nyelvi modellek testreszabása](./how-to-custom-speech-train-model.md)
 - [Ismerkedjen meg a Batch-átírással](batch-transcription.md)
+

@@ -6,10 +6,10 @@ ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
 ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100007108"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
@@ -128,7 +128,7 @@ ApplicationInsights.config:
     </ApplicationInsights>
 ```
 
-A webalkalmazások ASP.NET alternatív módszere az inicializáló létrehozása kódban, például a Global.aspx.cs-ben:
+A webalkalmazások ASP.NET egy alternatív módszer, amely az inicializálást a kódban hozza létre, például a Global. aspx. cs fájlban:
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -272,7 +272,7 @@ További információ arról, hogyan bírálható felül a Felhőbeli szerepkör
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 1. Győződjön meg róla, hogy hivatalosan támogatott SDK-t használ. Előfordulhat, hogy a nem támogatott/közösségi SDK-k nem támogatják a korrelációt.
 

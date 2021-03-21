@@ -262,6 +262,8 @@
     - name: Hibaelhárítás
       href: vpn-gateway-troubleshoot.md
       items:
+        - name: Az Azure VPN Gateway hibáinak megoldása diagnosztikai naplók használatával
+          href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: Közösség által javasolt VPN- vagy tűzfaleszköz-beállítások
           href: vpn-gateway-third-party-settings.md
         - name: VNet- vagy VPN-kapcsolatok konfigurálása és ellenőrzése

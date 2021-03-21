@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 1450f03ae72e79daca5a5ae2c04506e6bee5180b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672286"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607415"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Költségek megtakarítása az Azure dedikált gazdagép foglalásával
 
@@ -29,7 +29,7 @@ A virtuális gép sorozatának azonosításához a [Windows rendszerű virtuáli
 
 Ezt követően győződjön meg arról, hogy az Azure dedikált gazdagépeken támogatott. Az [Azure dedikált gazdagépek díjszabási](https://aka.ms/ADHPricing) oldalán megtalálhatók a dedikált gazdagépek, a CPU-adatok és a különböző díjszabási lehetőségek (beleértve a fenntartott példányokat is) teljes listáját.
 
-Számos olyan SKU-t találhat, amely támogatja a VM-sorozatokat (különböző típusokkal). A gazdagép kapacitásának összehasonlításával azonosítsa a legjobb SKU-t (vCPU száma). Vegye figyelembe, hogy a foglalást több dedikált gazdagépre is alkalmazhatja, amelyek ugyanazt a virtuálisgép-sorozatot támogatják (például DSv3_Type1 és DSv3_Type2), de nem a különböző virtuálisgép-sorozatokban (például DSv3 és ESv3).
+Előfordulhat, hogy több SKU is támogatja a kiválasztott VM-sorozatot (különböző típusokkal). A gazdagép kapacitásának összehasonlításával azonosítsa a legjobb SKU-t (vCPU száma). Vegye figyelembe, hogy a foglalást több dedikált gazdagépre is alkalmazhatja, amelyek ugyanazt a virtuálisgép-sorozatot támogatják (például DSv3_Type1 és DSv3_Type2), de nem a különböző virtuálisgép-sorozatokon (például a DSv3 és a ESv3).
 
 
 

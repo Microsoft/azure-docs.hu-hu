@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 64b9b6690eafe8f28fdf9711cd0534f4d7d96908
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222615"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584584"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link konfigurálása és használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,6 +23,7 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 * [Szinapszis-hivatkozás engedélyezése a Azure Cosmos DB-fiókokhoz](#enable-synapse-link)
 * [Analitikai tár engedélyezett Azure Cosmos DB tárolójának létrehozása](#create-analytical-ttl)
+* [Opcionális – a Azure Cosmos DB tárolóhoz tartozó analitikai tár élettartamának frissítése](#update-analytical-ttl)
 * [Azure Cosmos DB-adatbázis összekötése egy szinapszis-munkaterülettel](#connect-to-cosmos-database)
 * [Az analitikai tároló lekérdezése a szinapszis Spark használatával](#query-analytical-store-spark)
 * [Az analitikai tároló lekérdezése kiszolgáló nélküli SQL-készlettel](#query-analytical-store-sql-on-demand)
@@ -32,7 +33,7 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő Azure Cosmos db fiókot.
 
@@ -50,6 +51,21 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 > [!NOTE]
 > A szinapszis-hivatkozás bekapcsolása nem kapcsolja be automatikusan az analitikai tárolót. Miután engedélyezte a szinapszis hivatkozását a Cosmos DB fiókon, engedélyezze az analitikai tárolót a tárolókban a létrehozásuk során, hogy elindítsa a művelet adatait az analitikai tárolóba. 
+
+### <a name="azure-cli"></a>Azure CLI
+
+Az alábbi hivatkozások azt mutatják be, hogyan engedélyezhető a szinapszis-hivatkozás az Azure CLI használatával:
+
+* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create-optional-parameters&preserve-view=true)
+* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](https://docs.microsoft.com/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_update-optional-parameters&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+* [Új Azure Cosmos DB-fiók létrehozása a szinapszis-hivatkozással](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount?view=azps-5.5.0#description&preserve-view=true)
+* [Meglévő Azure Cosmos DB fiók frissítése a szinapszis-hivatkozás engedélyezéséhez](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbaccount?view=azps-5.5.0&preserve-view=true)
+
+
+A következő hivatkozások azt mutatják be, hogyan engedélyezhető a szinapszis-hivatkozás a PowerShell használatával:
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> Azure Cosmos-tároló létrehozása analitikai tárolóval
 
@@ -159,11 +175,27 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Az analitikai tár élettartamának frissítése
+### <a name="azure-cli"></a>Azure CLI
 
-Ha az elemzési tárat egy adott élettartamértékkel engedélyezte, később módosíthatja azt egy másik érvényes értékre. Az értéket az Azure Portalon vagy SDK-k használatával módosíthatja. További információ a különböző analitikai TTL-konfigurációs beállításokról: az [analitikai élettartam támogatott értékei](analytical-store-introduction.md#analytical-ttl) című cikk.
+Az alábbi hivatkozások bemutatják, hogyan hozhat létre egy analitikus tárolót használó tárolót az Azure CLI használatával:
 
-#### <a name="azure-portal"></a>Azure Portal
+* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_create-examples&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+Az alábbi hivatkozások bemutatják, hogyan hozhat létre egy analitikus tárolót engedélyező tárolókat a PowerShell használatával:
+
+* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection?view=azps-5.5.0#description&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_create&preserve-view=true)
+
+
+## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> Nem kötelező – az analitikai tár élettartamának frissítése
+
+Ha az analitikai tárolót egy adott TTL-értékkel engedélyezte, érdemes később frissíteni azt egy másik érvényes értékre. Az értéket az Azure Portal, az Azure CLI, a PowerShell vagy a Cosmos DB SDK-k segítségével frissítheti. További információ a különböző analitikai TTL-konfigurációs beállításokról: az [analitikai élettartam támogatott értékei](analytical-store-introduction.md#analytical-ttl) című cikk.
+
+
+### <a name="azure-portal"></a>Azure Portal
 
 Ha a Azure Portalon keresztül létrehozott egy analitikai tárolót engedélyező tárolót, az a-1 alapértelmezett analitikai ÉLETTARTAMot tartalmazza. A következő lépésekkel frissítheti ezt az értéket:
 
@@ -178,7 +210,7 @@ Ha a Azure Portalon keresztül létrehozott egy analitikai tárolót engedélyez
   * Válassza **a be (nincs alapértelmezett)** lehetőséget, vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket
   * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-#### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.NET SDK
 
 A következő kód bemutatja, hogyan frissíthető az élettartam az analitikai tárolóhoz a .NET SDK használatával:
 
@@ -190,7 +222,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Java v4 SDK
+### <a name="java-v4-sdk"></a>Java v4 SDK
 
 A következő kód bemutatja, hogyan frissíthető az élettartam az analitikus tárolóhoz a Java v4 SDK használatával:
 
@@ -203,6 +235,26 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 // Update container settings
 container.replace(containerProperties).block();
 ```
+
+### <a name="python-v4-sdk"></a>Python v4 SDK
+
+Ez jelenleg nem támogatott.
+
+
+### <a name="azure-cli"></a>Azure CLI
+
+A következő hivatkozások bemutatják, hogyan frissítheti a tárolók analitikai ÉLETTARTAMát az Azure CLI használatával:
+
+* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/cli/azure/cosmosdb/mongodb/collection?view=azure-cli-latest#az_cosmosdb_mongodb_collection_update&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/cli/azure/cosmosdb/sql/container?view=azure-cli-latest#az_cosmosdb_sql_container_update&preserve-view=true)
+
+### <a name="powershell"></a>PowerShell
+
+A következő hivatkozások bemutatják, hogyan frissítheti a tárolók analitikai ÉLETTARTAMát a PowerShell használatával:
+
+* [Azure Cosmos DB API a Mongo DB-hez](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection?view=azps-5.5.0&preserve-view=true)
+* [Azure Cosmos DB SQL API](https://docs.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer?view=azps-5.5.0&preserve-view=true)
+
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Kapcsolódás egy szinapszis-munkaterülethez
 
@@ -234,7 +286,7 @@ További információért lásd a következő dokumentumokat:
 
 * [Az Azure szinapszis hivatkozása Azure Cosmos DB.](synapse-link.md)
 
-* [Azure Cosmos DB analitikus áruház áttekintése.](analytical-store-introduction.md)
+* [Az Azure Cosmos DB elemzési tár áttekintése.](analytical-store-introduction.md)
 
 * [Gyakran ismételt kérdések a Azure Cosmos DB-ra vonatkozó szinapszis-hivatkozásról.](synapse-link-frequently-asked-questions.md)
 

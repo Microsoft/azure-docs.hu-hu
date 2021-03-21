@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: 07600b1fe0cb7420989fbbfbe55c2f1a4197d2fc
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100548250"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
@@ -48,7 +48,7 @@ A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ü
 
 A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés** és **felügyelet**.
 
-| Jogcím   | Leírás                                          | Engedélyezett műveletek |
+| Jogcím   | Description                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Figyelés  | Egyszeri regisztrációk létrehozása/frissítése, olvasása és törlése | Regisztráció létrehozása/frissítése<br><br>Regisztráció beolvasása<br><br>Egy leíró összes regisztrációjának olvasása<br><br>Regisztráció törlése |
 | Küldés    | Üzenetek küldése az értesítési központnak                | Üzenet küldése |
@@ -64,7 +64,7 @@ Névtér szintű műveletekhez használja a névtér szintű hozzáférési ház
 
 Új biztonsági jogcím létrehozásához vagy a meglévő SAS-kulcsok megtekintéséhez tegye a következőket:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. Válassza a **Minden erőforrás** elemet.
 3. Válassza ki az értesítési központ nevét, amelyhez létre kívánja hozni a jogcímet, vagy tekintse meg az SAS-kulcsot.
 4. A bal oldali menüben válassza a **hozzáférési szabályzatok** lehetőséget.

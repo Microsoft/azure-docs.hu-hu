@@ -2,14 +2,14 @@
 title: Függvények letiltása a Azure Functionsban
 description: Megtudhatja, hogyan tilthatja le és engedélyezheti a függvényeket a Azure Functionsban.
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/15/2021
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: cbb84308507ea15f1c44c00122a9a59472f12a88
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1ad484804f66a2e2d4d0f1da4a37cf0d6c485f38
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551043"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104584737"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Függvények letiltása a Azure Functionsban
 
@@ -20,13 +20,26 @@ A függvények letiltásának ajánlott módja a következő formátumban beáll
 > [!NOTE]  
 > Ha letilt egy HTTP által aktivált függvényt a jelen cikkben ismertetett módszerekkel, a végpont továbbra is elérhető, ha a helyi számítógépen fut.  
 
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="disable-a-function"></a>Függvény letiltása
 
-Az Azure CLI-ben a [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal hozhatja létre és módosíthatja az alkalmazás beállításait. A következő parancs letiltja a nevű függvényt, `QueueTrigger` Ha létrehoz egy nevű alkalmazást a beállításhoz `AzureWebJobs.QueueTrigger.Disabled` `true` . 
+# <a name="portal"></a>[Portál](#tab/portal)
+
+Használja az **Engedélyezés** és **Letiltás** gombokat a függvény **Áttekintés** lapján. Ezek a gombok az Alkalmazásbeállítások értékének módosításával működnek `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Ez a függvény-specifikus beállítás az első letiltásakor jön létre. 
+
+![Függvény állapotának kapcsolója](media/disable-function/function-state-switch.png)
+
+Még ha egy helyi projektből is közzéteszi a Function alkalmazást, továbbra is használhatja a portált a függvények letiltásához a Function alkalmazásban. 
+
+> [!NOTE]  
+> A portálon integrált tesztelési funkció figyelmen kívül hagyja a `Disabled` beállítást. Ez azt jelenti, hogy egy letiltott függvény továbbra is fut, amikor a portálon a **teszt** ablakból indult el. 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+Az Azure CLI-ben a [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal hozhatja létre és módosíthatja az alkalmazás beállításait. A következő parancs letiltja a nevű függvényt egy `QueueTrigger` nevű Alkalmazásbeállítás létrehozásával `AzureWebJobs.QueueTrigger.Disabled` `true` . 
 
 ```azurecli-interactive
-az functionapp config appsettings set --name <myFunctionApp> \
---resource-group <myResourceGroup> \
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
 --settings AzureWebJobs.QueueTrigger.Disabled=true
 ```
 
@@ -38,16 +51,55 @@ az functionapp config appsettings set --name <myFunctionApp> \
 --settings AzureWebJobs.QueueTrigger.Disabled=false
 ```
 
-## <a name="use-the-portal"></a>A portál használata
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
-Használhatja a funkció **Áttekintés** lapján található **Engedélyezés** és **Letiltás** gombokat is. Ezek a gombok az Alkalmazásbeállítások értékének módosításával működnek `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Ez a függvény-specifikus beállítás az első letiltásakor jön létre. 
+A [`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) parancs egy Alkalmazásbeállítás hozzáadására vagy frissítésére szolgál. A következő parancs letiltja a nevű függvényt egy `QueueTrigger` nevű Alkalmazásbeállítás létrehozásával `AzureWebJobs.QueueTrigger.Disabled` `true` . 
 
-![Függvény állapotának kapcsolója](media/disable-function/function-state-switch.png)
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "true"}
+```
 
-Még ha egy helyi projektből is közzéteszi a Function alkalmazást, továbbra is használhatja a portált a függvények letiltásához a Function alkalmazásban. 
+A függvény újbóli engedélyezéséhez futtassa újra a parancsot egy értékkel `false` .
 
-> [!NOTE]  
-> A portálon integrált tesztelési funkció figyelmen kívül hagyja a `Disabled` beállítást. Ez azt jelenti, hogy egy letiltott függvény továbbra is fut, amikor a portálon a **teszt** ablakból indult el. 
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"AzureWebJobs.QueueTrigger.Disabled" = "false"}
+```
+---
+
+## <a name="functions-in-a-slot"></a>Egy tárolóhelyen lévő függvények
+
+Alapértelmezés szerint az Alkalmazásbeállítások az üzembe helyezési tárolóhelyeken futó alkalmazásokra is érvényesek. A tárolóhely által használt alkalmazás-beállításokat azonban felülbírálhatja, ha beállítja a tárolóhely-specifikus alkalmazás beállítását. Előfordulhat például, hogy egy függvényt éles környezetben kell aktív, de nem az üzembe helyezési teszt során, például egy időzítő által aktivált függvényt. 
+
+Függvény letiltása csak az átmeneti tárolóhelyen:
+
+# <a name="portal"></a>[Portál](#tab/portal)
+
+Navigáljon a Function app slot-példányára úgy, hogy kijelöli **az üzembe helyezési pontok lehetőséget az** **üzembe helyezés** területen, kiválasztja a tárolóhelyet, és kiválasztja a **függvények** elemet a tárolóhely-példányban  Válassza ki a függvényt, majd használja a funkció **Áttekintés** lapjának **Engedélyezés** és **Letiltás** gombját. Ezek a gombok az Alkalmazásbeállítások értékének módosításával működnek `AzureWebJobs.<FUNCTION_NAME>.Disabled` . Ez a függvény-specifikus beállítás az első letiltásakor jön létre. 
+
+Közvetlenül is hozzáadhatja a nevű alkalmazás-beállítást a `AzureWebJobs.<FUNCTION_NAME>.Disabled` (z) értékkel a `true` tárolóhely-példány **konfigurációjában** . Ha egy adott tárolóhelyre vonatkozó alkalmazást ad hozzá, ügyeljen rá, hogy ellenőrizze az **üzembe helyezési pont beállítása** mezőt. Ez fenntartja a beállítási értéket a tárolóhelyre a swapok során.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=true
+```
+A függvény újbóli engedélyezéséhez futtassa újra a parancsot egy értékkel `false` .
+
+```azurecli-interactive
+az functionapp config appsettings set --name <myFunctionApp> \
+--resource-group <myResourceGroup> --slot <SLOT_NAME> \
+--slot-settings AzureWebJobs.QueueTrigger.Disabled=false
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+A Azure PowerShell jelenleg nem támogatja ezt a funkciót.
+
+---
+
+További információ: [Azure functions üzembe helyezési](functions-deployment-slots.md)pontok.
 
 ## <a name="localsettingsjson"></a>local.settings.json
 

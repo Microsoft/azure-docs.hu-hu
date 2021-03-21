@@ -41,6 +41,12 @@
           href: tutorial-cross-region-powershell.md
         - name: Régiók közötti Load Balancer létrehozása – Azure CLI
           href: tutorial-cross-region-cli.md
+    - name: NAT-átjáró
+      items:
+        - name: NAT-átjáró nyilvános Load Balancer integrálása
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
+        - name: NAT-átjáró belső terheléselosztó integrálása
+          href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
 - name: Példák
   items:
     - name: Azure CLI
@@ -49,6 +55,8 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Portálbeállítások
+      href: manage.md
     - name: Régiók közötti terheléselosztó
       href: cross-region-overview.md
     - name: Újdonságok
@@ -99,8 +107,6 @@
       href: instance-metadata-service-load-balancer.md
 - name: Használati útmutató
   items:
-    - name: Portálbeállítások
-      href: manage.md
     - name: Virtuálisgép-méretezési csoportok
       items:
         - name: 'Virtuálisgép-méretezési csoport által használt, meglévő Azure Load Balancer frissítése vagy törlése'
