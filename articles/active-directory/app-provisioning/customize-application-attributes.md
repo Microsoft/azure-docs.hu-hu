@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/08/2021
+ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 100f66d6217533ff6eba7881f938e877b98c735e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091108"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579467"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -113,13 +113,13 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - ServiceNow
 - Munkanapokat Active Directory/munkanapokat Azure Active Directory
 - SuccessFactors Active Directory/SuccessFactors-re Azure Active Directory
-- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
+- Azure Active Directory (az[Azure ad-Graph API az alapértelmezett attribútumok](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak). További információ a [bővítmények](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user) és az [ismert korlátozások](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)létrehozásáról. 
 - A [SCIM 2,0](https://tools.ietf.org/html/rfc7643) -et támogató alkalmazások
 - Ha Azure Active Directory visszaírási a munkanap vagy a SuccessFactors számára, a rendszer támogatja a támogatott attribútumok (XPATH és JSONPath) releváns metaadatainak frissítését, de nem támogatott az alapértelmezett sémán kívüli új munkanapokat vagy SuccessFactors-attribútumokat hozzáadni.
 
 
 > [!NOTE]
-> A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és rendszereit, és az egyéni attribútumok definiálásának első kézből való ismerete. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli. A támogatott attribútumok listájának szerkesztésének lehetősége alapértelmezés szerint le van tiltva, de az ügyfelek a következő URL-címhez való navigálással engedélyezhetik a képességet: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Ezután navigáljon az alkalmazáshoz, és tekintse meg az attribútumok listáját a [fent](#editing-the-list-of-supported-attributes)leírtak szerint. 
+> A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és a rendszerüket, és hogy az egyéni attribútumok hogyan lettek definiálva, vagy ha a forrás attribútum nem jelenik meg automatikusan az Azure Portal felhasználói felületén. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli. A támogatott attribútumok listájának szerkesztésének lehetősége alapértelmezés szerint le van tiltva, de az ügyfelek a következő URL-címhez való navigálással engedélyezhetik a képességet: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true . Ezután navigáljon az alkalmazáshoz, és tekintse meg az attribútumok listáját a [fent](#editing-the-list-of-supported-attributes)leírtak szerint. 
 
 A támogatott attribútumok listájának szerkesztésekor a következő tulajdonságokat kell megadnia:
 

@@ -12,10 +12,10 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98730657"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Oktatóanyag az F5 BIG-IP Virtual Edition virtuális gép üzembe helyezéséhez az Azure IaaS a biztonságos hibrid hozzáférés érdekében
@@ -83,7 +83,7 @@ A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplac
  |Erőforráscsoport | Meglévő Azure-erőforráscsoport a BIG-IP virtuális gép üzembe helyezése vagy létrehozása. A tartományvezérlő és az IIS-alapú virtuális gépek azonos erőforráscsoporthoz kell lennie|
  | **Példány adatai**|  |
  |Virtuális gép neve| Példa BIG-IP-VM |
- |Régió | Cél Azure geo a BIG-IP-VM számára |
+ |Region | Cél Azure geo a BIG-IP-VM számára |
  |Rendelkezésre állási beállítások| Csak a virtuális gép éles környezetben való használatának engedélyezése|
  |Kép| F5 BIG-IP VE-ALL (BYOL, 2 rendszerindítási helyszín)|
  |Azure Spot-példány| Nem, de szükség esetén szabadon engedélyezheti |
@@ -107,7 +107,7 @@ A BIG-IP VE [Azure piactéren](https://azuremarketplace.microsoft.com/marketplac
  |NIC hálózati biztonsági csoport| Válassza a nincs lehetőséget, ha az előző lépésekben kiválasztott Azure-alhálózat már társítva van egy hálózati biztonsági csoporttal (NSG). egyéb esetben válassza az alapszintű lehetőséget|
  |Hálózati gyorsítás| Ki |
  |**Terheléselosztás**|     |
- |Virtuális gép terheléselosztása| Nem|
+ |Virtuális gép terheléselosztása| No|
 
 10. Válassza a **Tovább: kezelés** lehetőséget, majd fejezze be ezeket a beállításokat.
 
@@ -482,6 +482,6 @@ Get-AzVmSnapshot -ResourceGroupName '<E.g.contoso-RG>' -VmName '<E.g.BIG-IP-VM>'
 
 -   [Microsoft Azure: Waagent](https://clouddocs.f5.com/cloud/public/v1/azure/Azure_waagent.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Válasszon egy [üzembe helyezési forgatókönyvet](f5-aad-integration.md) , és indítsa el a megvalósítást.

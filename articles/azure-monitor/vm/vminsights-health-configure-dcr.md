@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
 ms.openlocfilehash: 0db6ed7566c53429f8b9798ac8cdafe76ca7bd5a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102052143"
 ---
 # <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>Az adatgyűjtési szabályok (előzetes verzió) használatával konfigurálhatja a virtuális gépek elemzését a vendég állapotában
@@ -19,7 +19,7 @@ A [virtuális gép elemzése lehetővé teszi](vminsights-health-overview.md) a 
 ## <a name="monitors"></a>Monitorozások
 A virtuális gép állapotát az egyes figyelők [állapotának összesítése](vminsights-health-overview.md#health-rollup-policy) határozza meg. A virtuális gépeken a következő táblázatban látható módon két típusú figyelőt láthat:
 
-| Monitor | Leírás |
+| Monitor | Description |
 |:---|:---|
 | Egységmonitor | Egy erőforrás vagy alkalmazás valamilyen jellemzőjét méri. Ez lehet egy teljesítményszámláló ellenőrzése az erőforrás teljesítményének vagy rendelkezésre állásának meghatározása céljából. |
 | Összesített monitor | Több monitort csoportosít egyetlen összesített állapot biztosításához. Egy összesített monitor egy vagy több egységmonitort és más összesített monitorokat tartalmazhat. |
@@ -29,7 +29,7 @@ A virtuálisgép-bepillantások vendég állapota által használt figyelők ké
 ## <a name="monitor-properties"></a>Figyelő tulajdonságai
 Az alábbi táblázat az egyes figyelőket konfiguráló tulajdonságokat ismerteti.
 
-| Tulajdonság | Monitorozások | Leírás |
+| Tulajdonság | Monitorozások | Description |
 |:---|:---|:---|
 | Engedélyezve | Összesítés<br>Unit (Egység) | Ha az értéke igaz, a rendszer kiszámítja az állapot figyelőt, és a virtuális gép állapotát is hozzájárul. Riasztási riasztást aktiválhat. |
 | Riasztások kezelése | Összesítés<br>Unit (Egység) | Ha az értéke TRUE (igaz), a figyelő riasztást küld, ha nem Kifogástalan állapotra vált. Ha hamis, a figyelő állapota továbbra is hozzájárul a virtuális gép állapotához, amely riasztást vált ki. |
@@ -48,9 +48,9 @@ A következő táblázat felsorolja az egyes figyelők alapértelmezett konfigur
 
 | Monitor | Engedélyezve | Riasztások kezelése | Figyelmeztetés | Kritikus | Kiértékelés gyakorisága | Lookback | Kiértékelés típusa | Minimális minta | Minták maximális száma |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
-| Processzorhasználat  | Igaz | Hamis | Nincs | \> 90%    | 60 másodperc | 240 mp | Min | 2 | 3 |
-| Igénybe vehető memória | Igaz | Hamis | Nincs | \< 100 MB | 60 másodperc | 240 mp | Max | 2 | 3 |
-| Fájlrendszer      | Igaz | Hamis | Nincs | \< 100 MB | 60 másodperc | 120 mp | Max | 1 | 1 |
+| Processzorhasználat  | Igaz | Hamis | Nincsenek | \> 90%    | 60 másodperc | 240 mp | Min | 2 | 3 |
+| Igénybe vehető memória | Igaz | Hamis | Nincsenek | \< 100 MB | 60 másodperc | 240 mp | Max | 2 | 3 |
+| Fájlrendszer      | Igaz | Hamis | Nincsenek | \< 100 MB | 60 másodperc | 120 mp | Max | 1 | 1 |
 
 
 ## <a name="overrides"></a>Felülbírálások
@@ -102,9 +102,9 @@ A vendég állapota bővítményként van implementálva a Azure Monitor ügynö
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `name` | Igen | A bővítmény felhasználó által definiált karakterlánca. |
-| `streams` | Igen | Azon adatfolyamok listája, amelyekhez vendég állapotú adatmennyiséget küld a rendszer. Ennek tartalmaznia kell a **Microsoft-HealthStateChange**.  |
-| `extensionName` | Igen | A bővítmény neve. Ennek **HealthExtension** kell lennie. |
-| `extensionSettings` | Igen | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
+| `streams` | Yes | Azon adatfolyamok listája, amelyekhez vendég állapotú adatmennyiséget küld a rendszer. Ennek tartalmaznia kell a **Microsoft-HealthStateChange**.  |
+| `extensionName` | Yes | A bővítmény neve. Ennek **HealthExtension** kell lennie. |
+| `extensionSettings` | Yes | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings elem
@@ -121,8 +121,8 @@ A bővítmény beállításait tartalmazza.
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `schemaVersion` | Igen | A Microsoft által meghatározott karakterlánc, amely az elem várt sémáját jelöli. Jelenleg 1,0-re kell állítani |
-| `contentVersion` | Nem | A felhasználó által az állapot-konfiguráció különböző verzióinak nyomon követésére megadott karakterlánc, ha szükséges. |
-| `healthRuleOverrides` | Igen | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
+| `contentVersion` | No | A felhasználó által az állapot-konfiguráció különböző verzióinak nyomon követésére megadott karakterlánc, ha szükséges. |
+| `healthRuleOverrides` | Yes | Az `healthRuleOverride` alapértelmezett konfigurációra alkalmazandó elemek tömbje. |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides elem
 Egy vagy több olyan `healthRuleOverride` elemet tartalmaz, amelyek mindegyike felülbírálást határoz meg.
@@ -142,10 +142,10 @@ Egy vagy több olyan `healthRuleOverride` elemet tartalmaz, amelyek mindegyike f
 | Elem | Kötelező | Leírás |
 |:---|:---|:---|
 | `scopes` | Igen | Egy vagy több hatókör listája, amelyek meghatározzák azokat a virtuális gépeket, amelyekre ez a felülbírálás vonatkozik. Annak ellenére, hogy a DCR egy virtuális géphez van társítva, a virtuális gépnek az alkalmazandó felülbírálás hatókörén belül kell lennie. |
-| `monitors` | Igen | Egy vagy több olyan karakterlánc listája, amely meghatározza, hogy mely figyelők kapják meg ezt a felülbírálást.  |
-| `monitorConfiguration` | Nem | A figyelő konfigurációja, beleértve az állapotokat és azok kiszámításának módját. |
-| `alertConfiguration` | Nem | Riasztás konfigurálása a figyelőhöz. |
-| `isEnabled` | Nem | Meghatározza, hogy a figyelő engedélyezve van-e vagy sem. A figyelő letiltotta a speciális *letiltott* állapotra és állapotokra való váltást, kivéve, ha az újból engedélyezve van. Ha nincs megadva, a figyelő örökli az állapotát a hierarchiában lévő szülő figyelőtől. |
+| `monitors` | Yes | Egy vagy több olyan karakterlánc listája, amely meghatározza, hogy mely figyelők kapják meg ezt a felülbírálást.  |
+| `monitorConfiguration` | No | A figyelő konfigurációja, beleértve az állapotokat és azok kiszámításának módját. |
+| `alertConfiguration` | No | Riasztás konfigurálása a figyelőhöz. |
+| `isEnabled` | No | Meghatározza, hogy a figyelő engedélyezve van-e vagy sem. A figyelő letiltotta a speciális *letiltott* állapotra és állapotokra való váltást, kivéve, ha az újból engedélyezve van. Ha nincs megadva, a figyelő örökli az állapotát a hierarchiában lévő szülő figyelőtől. |
 
 
 ## <a name="scopes-element"></a>hatókörök elem
@@ -226,12 +226,12 @@ Ha kevesebb minta van a lookback időszakban, mint a `minSamples` , a figyelő a
 | Elem | Kötelező | Leírás | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | Nem | Meghatározza az állapot értékelésének gyakoriságát. A rendszer minden figyelőt kiértékel az ügynök indításakor és a paraméter által később meghatározott rendszeres időközönként. |
-| `lookbackSecs`   | Nem | A lookback ablak mérete másodpercben. |
-| `evaluationType` | Nem | `min` – minimális értéket kell kiállítani a teljes mintából<br>`max` – a teljes mintából maximális értéket kell megadni<br>`avg` – a minták értékének átlagát adja meg<br>`all` – Hasonlítsa össze a készlet minden egyes értékét a küszöbértékek értékével. A figyelő kapcsolók állapota csak akkor, ha a készletben szereplő összes minta megfelel a küszöbértéknek. |
-| `minSamples`     | Nem | Az érték kiszámításához használandó értékek minimális száma. |
-| `maxSamples`     | Nem | Az érték kiszámításához használandó értékek maximális száma. |
-| `warningCondition`  | Nem | A figyelmeztetési feltétel küszöbértéke és összehasonlító logikája. |
-| `criticalCondition` | Nem | A kritikus feltétel küszöbértéke és összehasonlító logikája. |
+| `lookbackSecs`   | No | A lookback ablak mérete másodpercben. |
+| `evaluationType` | No | `min` – minimális értéket kell kiállítani a teljes mintából<br>`max` – a teljes mintából maximális értéket kell megadni<br>`avg` – a minták értékének átlagát adja meg<br>`all` – Hasonlítsa össze a készlet minden egyes értékét a küszöbértékek értékével. A figyelő kapcsolók állapota csak akkor, ha a készletben szereplő összes minta megfelel a küszöbértéknek. |
+| `minSamples`     | No | Az érték kiszámításához használandó értékek minimális száma. |
+| `maxSamples`     | No | Az érték kiszámításához használandó értékek maximális száma. |
+| `warningCondition`  | No | A figyelmeztetési feltétel küszöbértéke és összehasonlító logikája. |
+| `criticalCondition` | No | A kritikus feltétel küszöbértéke és összehasonlító logikája. |
 
 
 ## <a name="warningcondition-element"></a>warningCondition elem
@@ -248,8 +248,8 @@ Meghatározza a figyelmeztetési feltétel küszöbértékét és összehasonlí
 | Tulajdonság | Kötelező | Leírás | 
 |:---|:---|:---|
 | `isEnabled` | Nem | Megadja, hogy engedélyezve van-e a feltétel. Ha **hamis** értékre van állítva, akkor a feltétel le van tiltva, bár a küszöbérték és az operátor tulajdonságai is megadhatók. |
-| `threshold` | Nem | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
-| `operator`  | Nem | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
+| `threshold` | No | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
+| `operator`  | No | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>criticalCondition elem
@@ -266,8 +266,8 @@ Meghatározza a kritikus feltétel küszöbértékét és összehasonlító logi
 | Tulajdonság | Kötelező | Leírás | 
 |:---|:---|:---|
 | `isEnabled` | Nem | Megadja, hogy engedélyezve van-e a feltétel. Ha **hamis** értékre van állítva, akkor a feltétel le van tiltva, bár a küszöbérték és az operátor tulajdonságai is megadhatók. |
-| `threshold` | Nem | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
-| `operator`  | Nem | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
+| `threshold` | No | A kiértékelt érték összehasonlítására szolgáló küszöbérték meghatározása. |
+| `operator`  | No | Meghatározza az összehasonlító operátort a küszöbérték kifejezésben való használathoz. Lehetséges értékek: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Minta adatgyűjtési szabály
 A vendég figyelését lehetővé tevő minta adatgyűjtési szabály: [virtuális gép engedélyezése Resource Manager-sablon használatával](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).

@@ -86,7 +86,7 @@
           href: stream-files-nodejs-quickstart.md
     - name: Python
       items:
-        - name: Python alapszintű kódolási útmutató
+        - name: Python alapszintű kódolás
           href: quickstart-basic-encoding-python.md
     - name: Azure Portal
       items:
@@ -223,9 +223,9 @@
         - name: Figyelés Event Grid
           items:
             - name: Események az Event Griddel
-              href: reacting-to-media-services-events.md
+              href: monitoring/reacting-to-media-services-events.md
             - name: Event Grid-sémák
-              href: media-services-event-schemas.md
+              href: monitoring/media-services-event-schemas.md
     - name: Kompatibilis játékosok
       items:
         - name: Media Services médialejátszók
@@ -394,15 +394,15 @@
     - name: Az Event Grid használata
       items:
         - name: Események monitorozása – Portál
-          href: monitor-events-portal-how-to.md
+          href: monitoring/monitor-events-portal-how-to.md
         - name: Események monitorozása – Parancssori felület
-          href: job-state-events-cli-how-to.md
+          href: monitoring/job-state-events-cli-how-to.md
     - name: Az Azure Monitor használata
       items:
         - name: Megfigyelési mérőszámok
-          href: media-services-metrics-howto.md
+          href: monitoring/media-services-metrics-howto.md
         - name: Diagnosztikai naplók monitorozása
-          href: media-services-diagnostic-logs-howto.md
+          href: monitoring/media-services-diagnostic-logs-howto.md
     - name: Tartalom védelme
       items:
         - name: Tartalomkulcs-szabályzat lekérése

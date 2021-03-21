@@ -7,10 +7,10 @@ ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
 ms.openlocfilehash: ba43889b885252f68bb3b4b158b5626411aac3d5
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101663641"
 ---
 # <a name="device-update-resources"></a>Eszköz frissítési erőforrásai
@@ -33,7 +33,7 @@ Ahhoz, hogy az eszköz frissítse IoT Hub változási értesítéseit, az eszkö
 
 A következő üzenet-útvonalak vannak konfigurálva az eszköz frissítéséhez:
 
-|   Útvonal neve    | Útválasztási lekérdezés  | Leírás  |
+|   Útvonal neve    | Útválasztási lekérdezés  | Description  |
 | :--------- | :---- |:---- |
 |  DeviceUpdate.DigitalTwinChanges | true |A digitális kettős változások eseményeinek figyelése  |
 |  DeviceUpdate.DeviceLifeCycle | opType = ' deleteDeviceIdentity '  | A törölt eszközök figyelése |

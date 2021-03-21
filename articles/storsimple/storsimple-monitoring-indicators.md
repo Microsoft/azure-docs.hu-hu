@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015400"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>StorSimple-figyelési mutatók használata az eszköz kezeléséhez
@@ -55,13 +55,13 @@ Az alábbi táblázat segítségével azonosíthatja a LED-ek által jelzett ál
 
 | Rendszerteljesítmény | Modul hibája | Logikai hiba | Riasztások | Állapot |
 | --- | --- | --- | --- | --- |
-| Vörös – sárga |KI |KI |N.A. |Az AC-áramkimaradás, a biztonsági mentési teljesítmény vagy az AC-bekapcsolás, valamint a vezérlő modulok eltávolítása megtörtént. |
-| Zöld |ON |ON |N.A. |Ops-panel bekapcsolása (5 mp) – tesztelési állapot |
-| Zöld |KI |KI |N.A. |Bekapcsolás, minden funkció jó |
-| Zöld |ON |N.A. |PCM-hibák, ventilátorok meghibásodási LED-EK |Bármilyen PCM-hiba, ventilátor meghibásodása, hőmérséklet felett vagy alatt |
-| Zöld |ON |N.A. |I/O-modul LED-EK |Bármely vezérlő modul hibája |
+| Vörös – sárga |KI |KI |N/A |Az AC-áramkimaradás, a biztonsági mentési teljesítmény vagy az AC-bekapcsolás, valamint a vezérlő modulok eltávolítása megtörtént. |
+| Zöld |ON |ON |N/A |Ops-panel bekapcsolása (5 mp) – tesztelési állapot |
+| Zöld |KI |KI |N/A |Bekapcsolás, minden funkció jó |
+| Zöld |ON |N/A |PCM-hibák, ventilátorok meghibásodási LED-EK |Bármilyen PCM-hiba, ventilátor meghibásodása, hőmérséklet felett vagy alatt |
+| Zöld |ON |N/A |I/O-modul LED-EK |Bármely vezérlő modul hibája |
 | Zöld |ON |N.A. |N.A. |Bekerítés logikai hibája |
-| Zöld |Flash |N.A. |A modul állapota a vezérlő modulon vezetett. PCM-hibák, ventilátorok meghibásodási LED-EK |Ismeretlen a vezérlő modul típusa telepítve, az I2C Bus meghibásodása, a vezérlő modul létfontosságú termék-(VPD-) konfigurációs hibája |
+| Zöld |Flash |N/A |A modul állapota a vezérlő modulon vezetett. PCM-hibák, ventilátorok meghibásodási LED-EK |Ismeretlen a vezérlő modul típusa telepítve, az I2C Bus meghibásodása, a vezérlő modul létfontosságú termék-(VPD-) konfigurációs hibája |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Power hűtési modul (PCM) kijelző LED-EK
 Az energiagazdálkodási modul (PCM) kijelző LED-ek az elsődleges bekerítés vagy a EBOD hátoldalán találhatók minden PCM-modulon. Ez a témakör azt ismerteti, hogyan használható a következő LED-ek a StorSimple-eszköz állapotának figyelésére.  
@@ -91,7 +91,7 @@ A PCM állapota a LED panelen van megjelölve. Az eszköz PCM LED-paneljének ha
 | Nincs AC Power (bekerítés) |KI |KI |KI |KI |
 | Nincs AC-teljesítmény (csak ez a PCM) |KI |ON |KI |ON |
 | AC jelen PCM ON-OK |ON |KI |KI |KI |
-| PCM-hiba (ventilátor sikertelen) |KI |KI |ON |N.A. |
+| PCM-hiba (ventilátor sikertelen) |KI |KI |ON |N/A |
 | PCM-hiba (több mint amp, over feszültség, aktuális) |KI |ON |ON |ON |
 | PCM (ventilátor a tűréshatáron kívül) |ON |KI |KI |ON |
 | Készenléti mód |Villogó |KI |KI |KI |
@@ -136,7 +136,7 @@ Az alábbi ábrán az elsődleges vezérlőn lévő LED-ek azonosíthatók. (Az 
 A következő táblázat segítségével meghatározhatja, hogy a vezérlő modul megfelelően működik-e.  
 
 ### <a name="controller-indicator-leds"></a>Vezérlő kijelző LED-EK
-| VEZETETT | Leírás |
+| VEZETETT | Description |
 | --- | --- |
 | AZONOSÍTÓ LED (kék) |Azt jelzi, hogy a modul azonosítva van. Ha a kék LED egy futó vezérlőn villog, akkor a vezérlő az aktív vezérlő, a másik pedig a készenléti vezérlő. További információ: [az aktív vezérlő azonosítása az eszközön](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Hiba LED (Amber) |A vezérlő hibáját jelzi. |
@@ -179,9 +179,9 @@ Az alábbi táblázat segítségével meghatározhatja az egyes lemezmeghajtók 
 ### <a name="disk-drive-indicator-leds-for-the-ebod-enclosure"></a>Lemezmeghajtó-kijelző LED-ek a EBOD-ház számára
 | Állapot | Tevékenység rendben LED (zöld) | Hiba LED (Red-Amber) | Társított Ops panel LED |
 | --- | --- | --- | --- |
-| Nincs meghajtó telepítve |KI |KI |Nincs |
-| A meghajtó telepítve és működőképes |Villogás be/ki a tevékenységgel |X |Nincs |
-| SCSI ház-szolgáltatás (SES) eszköz-identitás beállítása |ON |Villogó 1 másodperc on/1 másodperc |Nincs |
+| Nincs meghajtó telepítve |KI |KI |Nincsenek |
+| A meghajtó telepítve és működőképes |Villogás be/ki a tevékenységgel |X |Nincsenek |
+| SCSI ház-szolgáltatás (SES) eszköz-identitás beállítása |ON |Villogó 1 másodperc on/1 másodperc |Nincsenek |
 | SES eszköz-hibatűrő bit-készlet |ON |ON |Logikai hiba (piros) |
 | Energiagazdálkodási áramkör meghibásodása |KI |ON |Modul hibája (piros) |
 
@@ -204,8 +204,8 @@ Az alábbi táblázat a riasztási állapotok különböző állapotát ismertet
 | --- | --- | --- |
 | S0 |Normál mód: csendes |Dupla sípszó |
 | S1 |Hiba mód: 1 másodperc be/1 másodpercenként |Áttérés S2-re vagy S3-ra (lásd a megjegyzéseket) |
-| S2 |Emlékeztető mód: szaggatott sípszó |Nincs |
-| S3 |Elnémult mód: csendes |Nincs |
+| S2 |Emlékeztető mód: szaggatott sípszó |Nincsenek |
+| S3 |Elnémult mód: csendes |Nincsenek |
 | S4 |Kritikus hiba mód: folyamatos riasztás |Nem érhető el: az Elnémítás nem aktív |
 
 > [!NOTE]
@@ -225,7 +225,7 @@ A következő táblázat ismerteti a különböző riasztási feltételeket.
 | PCM-riasztás – az egyenáramú teljesítmény elvesztése egyetlen PCM-ből |Hiba – a redundancia elvesztése |S1 |Modul hibája |
 | Nem sikerült a PCM ventilátor |Hiba – a redundancia elvesztése |S1 |Modul hibája |
 | Az SBB-modul a PCM-hibát észlelte |Hiba |S1 |Modul hibája |
-| PCM eltávolítva |Konfigurációs hiba |Nincs |Modul hibája |
+| PCM eltávolítva |Konfigurációs hiba |Nincsenek |Modul hibája |
 | Bekerítés konfigurációs hibája |Hiba – kritikus |S1 |Modul hibája |
 | Alacsony figyelmeztetési hőmérséklet riasztása |Figyelmeztetés |S1 |Modul hibája |
 | Magas figyelmeztetési hőmérséklet riasztása |Figyelmeztetés |S1 |Modul hibája |
@@ -235,13 +235,13 @@ A következő táblázat ismerteti a különböző riasztási feltételeket.
 | Vezérlő hibája |Hiba – kritikus |S1 |Modul hibája |
 | Az SBB illesztőfelületi moduljának hibája |Hiba – kritikus |S1 |Modul hibája |
 | SBB illesztőfelület-modul hibája – nem maradt működő modul |Hiba – kritikus |S4 |Modul hibája |
-| Az SBB Interface modul eltávolítva |Figyelmeztetés |Nincs |Modul hibája |
+| Az SBB Interface modul eltávolítva |Figyelmeztetés |Nincsenek |Modul hibája |
 | Energiaellátás-vezérlési hiba |Figyelmeztetés – a meghajtó tápellátásának elvesztése nélkül |S1 |Modul hibája |
 | Energiaellátás-vezérlési hiba |Hiba – kritikus; a meghajtó tápellátásának elvesztése |S1 |Modul hibája |
-| Meghajtó eltávolítva |Figyelmeztetés |Nincs |Modul hibája |
+| Meghajtó eltávolítva |Figyelmeztetés |Nincsenek |Modul hibája |
 | Nem áll rendelkezésre elegendő energiaellátás |Figyelmeztetés |Nincs |Modul hibája |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a [StorSimple hardveres összetevőiről és állapotáról](storsimple-8000-monitor-hardware-status.md).
 
 [1]: ./media/storsimple-monitoring-indicators/storsimple-monitoring-indicators-IMAGE01.png

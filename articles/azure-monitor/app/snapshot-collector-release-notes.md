@@ -6,10 +6,10 @@ author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
 ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97093260"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>A Microsoft. ApplicationInsights. Snapshotcollector nugetcsomag kibocsátási megjegyzései
@@ -67,10 +67,10 @@ Egy pont kiadása, amely néhány nagy hatású problémát érint.
 
 ## <a name="135"></a>[1.3.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.5)
 - A szuverén felhők támogatásának hozzáadása (a régebbi verziók nem működnek a szuverén felhőkben)
-- A AddSnapshotCollector () használatával megkönnyíti a pillanatkép-gyűjtő hozzáadását. További információt [itt](./snapshot-debugger-appservice.md)találhat.
+- A AddSnapshotCollector () használatával megkönnyíti a pillanatkép-gyűjtő hozzáadását. További információt [itt](./snapshot-debugger-appservice.md) találhat.
 - A FISMA MD5-beállítás használatával ellenőrizheti a blob-blokkokat. Ezzel elkerülhető az alapértelmezett .NET MD5 titkosítási algoritmus, amely nem érhető el, ha az operációs rendszer FIPS-kompatibilis módra van beállítva.
 - A .NET-keretrendszerbeli keretek figyelmen kívül hagyása a függvények meghívásakor. Ezt a viselkedést a DeoptimizeIgnoredModules konfigurációs beállítása szabályozhatja.
-- Adjon hozzá `DeoptimizeMethodCount` olyan konfigurációs beállítást, amely több függvényhívás deoptimalizálását teszi lehetővé. További információt itt talál.
+- Adjon hozzá `DeoptimizeMethodCount` olyan konfigurációs beállítást, amely több függvényhívás deoptimalizálását teszi lehetővé. További információ itt
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Strukturált rendszerállapot-kulcsok engedélyezése.

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: justinha
 ms.openlocfilehash: 8cc5f5ebf389d35df02474d0561dc7827cde4d0b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620086"
 ---
 # <a name="benefits-of-migration-from-the-classic-to-resource-manager-deployment-model-in-azure-active-directory-domain-services"></a>A Klasszikusról Resource Manager-alapú üzemi modellre való Migrálás előnyei Azure Active Directory Domain Services
@@ -48,7 +48,7 @@ Az áttelepítés után az Azure AD DS számos olyan funkciót biztosít, amelye
 
 A Resource Manager-alapú üzemi modellt használó felügyelt tartományok a legújabb új funkciókkal naprakészek maradnak. A klasszikus üzemi modellt használó felügyelt tartományok esetében nem érhetők el új funkciók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként tekintse [meg a Azure ad Domain Services áttelepítését a klasszikus virtuális hálózati modellből a Resource Managerbe][howto-migrate]című témakört.
 

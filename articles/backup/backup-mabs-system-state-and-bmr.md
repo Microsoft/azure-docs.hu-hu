@@ -4,10 +4,10 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96021622"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Rendszerállapot biztonsági mentése és visszaállítása operációs rendszer nélküli számítógépre Azure Backup Server
@@ -203,7 +203,7 @@ A System visszaállítása:
 
 1. A **rendszer-helyreállítási beállítások** lapon válassza a **számítógép visszaállítása a korábban létrehozott rendszerkép használatával** lehetőséget.
 
-1. A rendszerkép **biztonsági mentésének kiválasztása** lapon válassza a rendszerkép **Select a system image**  >  **speciális**  >  **keresése a hálózaton rendszerképekhez** lehetőséget. Ha megjelenik egy figyelmeztetés, válassza az **Igen** lehetőséget. Lépjen a megosztás elérési útjára, adja meg a hitelesítő adatokat, majd válassza ki a helyreállítási pontot. A rendszer megkeresi az adott helyreállítási pontban elérhető biztonsági másolatokat. Válassza ki a használni kívánt helyreállítási pontot.
+1. A rendszerkép **biztonsági mentésének kiválasztása** lapon válassza a rendszerkép   >  **speciális**  >  **keresése a hálózaton rendszerképekhez** lehetőséget. Ha megjelenik egy figyelmeztetés, válassza az **Igen** lehetőséget. Lépjen a megosztás elérési útjára, adja meg a hitelesítő adatokat, majd válassza ki a helyreállítási pontot. A rendszer megkeresi az adott helyreállítási pontban elérhető biztonsági másolatokat. Válassza ki a használni kívánt helyreállítási pontot.
 
 1. A **biztonsági másolat visszaállítási módjának kiválasztása** lapon válassza a **lemezek formázása és újraparticionálása** elemet. A következő lapon ellenőrizze a beállításokat.
 
@@ -233,7 +233,7 @@ A helyreállítás futtatása a biztonsági mentési kiszolgálón:
 
 Windows Server biztonsági másolat futtatása:
 
-1. Válassza **Actions** ki  >  **Recover**  >  **a**  >  **következőt** a kiszolgáló helyreállítása műveletekkel.
+1. Válassza ki  >    >  **a**  >  **következőt** a kiszolgáló helyreállítása műveletekkel.
 
 1. Válasszon **másik kiszolgálót**, válassza a **hely típusának megadása** lapot, majd kattintson a **távoli megosztott mappa** lehetőségre. Adja meg a helyreállítási pontot tartalmazó mappa elérési útját.
 

@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96498863"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Mért rendszerindítás és gazdagép-igazolás
@@ -51,7 +51,7 @@ A debuggerek hatékony eszközöket biztosítanak a fejlesztők számára. A mem
 ### <a name="code-integrity"></a>Kód integritása
 A UEFI [biztonságos rendszerindítás](secure-boot.md) biztosítja, hogy csak megbízható, alacsony szintű szoftverek futhatnak a rendszerindítási folyamat során. Ugyanezeket az ellenőrzéseket is alkalmazni kell a rendszerindítás utáni környezetben az illesztőprogramok és más végrehajtható fájlok kernel módú hozzáféréssel való használatával. Ebből a célból egy kód-integritási (CI) szabályzattal határozható meg, hogy mely illesztőprogramokat, bináris fájlokat és más végrehajtható fájlokat tekinti megbízhatónak az érvényes és érvénytelen aláírások megadásával. Ezeket a szabályzatokat a rendszer kényszeríti. A szabályzat megsértése riasztásokat állít elő a biztonsági incidensek válasza csapatának a vizsgálathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a platform integritásának és biztonságának elvégzéséről, olvassa el a következőt:
 
 - [A belső vezérlőprogram biztonsága](firmware.md)

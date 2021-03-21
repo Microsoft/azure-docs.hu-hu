@@ -12,10 +12,10 @@ ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
 ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99063383"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Oktatóanyag: hozzáférés Microsoft Graph a biztonságos alkalmazásból felhasználóként
@@ -114,7 +114,7 @@ Install-Package Microsoft.Identity.Web
 
 ### <a name="startupcs"></a>Startup.cs
 
-A *Startup.cs* fájlban a ```AddMicrosoftIdentityWebApp``` metódus hozzáadja a Microsoft. Identity. Web fájlt a webalkalmazáshoz. A ```AddMicrosoftGraph``` metódus Microsoft Graph támogatást tesz lehetővé.
+A *Startup. cs* fájlban a ```AddMicrosoftIdentityWebApp``` metódus hozzáadja a Microsoft. Identity. Web fájlt a webalkalmazáshoz. A ```AddMicrosoftGraph``` metódus Microsoft Graph támogatást tesz lehetővé.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;

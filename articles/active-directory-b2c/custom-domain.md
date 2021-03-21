@@ -8,20 +8,22 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869bd7b02186873f490d324cec863c7f26ee8469
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 2de419885938b27ebce4a934db5ef966965b3dbd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103555314"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580164"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Egyéni tartományok engedélyezése Azure Active Directory B2Choz
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 Ez a cikk bemutatja, hogyan engedélyezheti az egyéni tartományokat a Azure Active Directory B2C átirányítási URL-címeiben (Azure AD B2C). Ha egyéni tartományt használ az alkalmazással, zökkenőmentesebb felhasználói élményt nyújt. A felhasználó szemszögéből a bejelentkezési folyamat során továbbra is a tartományon belül maradnak, és nem kell átirányítani a Azure AD B2C alapértelmezett tartományra *<bérlő-neve>. b2clogin.com*.
 
@@ -48,7 +50,7 @@ Egyéni tartományok használatakor vegye figyelembe a következőket:
 
 - Több egyéni tartományt is beállíthat. A támogatott egyéni tartományok maximális száma: az Azure [ad szolgáltatás korlátai és korlátozásai](../active-directory/enterprise-users/directory-service-limits-restrictions.md) a Azure ad B2C és az [Azure-előfizetések és a szolgáltatási korlátok, kvóták és](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits) korlátozások az Azure bejárati ajtón.
 - Az Azure bejárati ajtó egy különálló Azure-szolgáltatás, így további költségek is felmerülnek. További információ: a [bejárati ajtó díjszabása](https://azure.microsoft.com/pricing/details/frontdoor).
-- Jelenleg az Azure bejárati ajtó [webalkalmazási tűzfal](../web-application-firewall/afds/afds-overview.md) funkciója nem támogatott.
+- Az Azure-beli elülső [webalkalmazási tűzfal](../web-application-firewall/afds/afds-overview.md)használatához meg kell erősítenie, hogy a tűzfal konfigurációja és a szabályok megfelelően működnek-e a Azure ad B2C felhasználói folyamataival.
 - Az egyéni tartományok konfigurálása után a felhasználók továbbra is hozzáférhetnek a Azure AD B2C alapértelmezett tartománynevéhez *<bérlő neve>. b2clogin.com* (kivéve, ha egyéni házirendet használ, és letiltja a [hozzáférést](#block-access-to-the-default-domain-name).
 - Ha több alkalmazással is rendelkezik, telepítse át őket az egyéni tartományba, mert a böngésző a jelenleg használt tartománynév alatt tárolja a Azure AD B2C munkamenetet.
 
@@ -193,7 +195,7 @@ Cserélje le ezt:
 - **házirend** neve a szabályzat nevével. [További információ a Azure ad B2C szabályzatokról](technical-overview.md#identity-experiences-user-flows-or-custom-policies). 
 
 
-Az [SAML-szolgáltató](connect-with-saml-service-providers.md) metaadatai a következőhöz hasonlóak lehetnek: 
+Az [SAML-szolgáltató](./saml-service-provider.md) metaadatai a következőhöz hasonlóak lehetnek: 
 
 ```html
 https://custom-domain-name/tenant-name/policy-name/Samlp/metadata
@@ -258,12 +260,10 @@ Másolja az URL-címet, módosítsa a tartománynevet manuálisan, majd illessze
 
 Az Azure bejárati ajtó továbbítja a felhasználó eredeti IP-címét. Ezt az IP-címet fogja látni a naplózási jelentésben vagy az egyéni házirendben.
 
-### <a name="can-i-use-a-third-party-wab-application-firewall-waf-with-b2c"></a>Használhatok egy külső féltől származó wab Application Firewall (WAF) szolgáltatást a B2C-vel?
+### <a name="can-i-use-a-third-party-web-application-firewall-waf-with-b2c"></a>Használhatok harmadik féltől származó webalkalmazási tűzfalat (WAF) a B2C-vel?
 
-A Azure AD B2C jelenleg csak az Azure bejárati ajtó használatával támogatja az egyéni tartományt. Ne adjon hozzá egy másik WAF az Azure bejárati ajtó előtt.
-
+Ha saját webalkalmazási tűzfalat szeretne használni az Azure-beli bejárati ajtó előtt, konfigurálnia és ellenőriznie kell, hogy minden megfelelően működik-e a Azure AD B2C felhasználói folyamataival.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információ a [OAuth-engedélyezési kérelmekről](protocols-overview.md).
-

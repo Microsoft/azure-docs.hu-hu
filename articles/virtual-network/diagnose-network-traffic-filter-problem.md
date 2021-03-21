@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98223669"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Virtuális gép hálózati forgalmának szűrésével kapcsolatos probléma diagnosztizálása
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan diagnosztizálhatja a hálózati forgalom 
 
 A NSG lehetővé teszi a virtuális gépeken belüli és kimenő forgalom típusának szabályozását. NSG társíthat egy Azure-beli virtuális hálózatban lévő alhálózathoz, egy virtuális géphez csatolt hálózati adapterhez vagy mindkettőhöz. A hálózati adapterre alkalmazott érvényes biztonsági szabályok a hálózati adapterhez társított NSG található szabályok összesítései, valamint a hálózati adaptert tartalmazó alhálózat. A különböző NSG található szabályok időnként ütközhetnek egymással, és befolyásolhatják a virtuális gép hálózati kapcsolatát. Megtekintheti a virtuális gép hálózati adapterén alkalmazott NSG érvényes biztonsági szabályokat. Ha nem ismeri a virtuális hálózatot, a hálózati adaptert vagy a NSG kapcsolatos fogalmakat, tekintse meg a [virtuális hálózat áttekintése](virtual-networks-overview.md), a [hálózati adapter](virtual-network-network-interface.md)és a [hálózati biztonsági csoportok áttekintése](./network-security-groups-overview.md)című témakört.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Eset
 
 Megpróbál csatlakozni egy virtuális géphez az internetről érkező 80-as porton keresztül, de a kapcsolat meghiúsul. Annak megállapításához, hogy miért nem fér hozzá az internetről a 80-es porthoz, az Azure [Portal](#diagnose-using-azure-portal), a [PowerShell](#diagnose-using-powershell)vagy az [Azure CLI](#diagnose-using-azure-cli)használatával megtekintheti a hálózati adapter érvényes biztonsági szabályait.
 
@@ -171,7 +171,7 @@ Függetlenül attól, hogy az Azure [Portal](#diagnose-using-azure-portal), a [P
 | Tulajdonság                | Érték                                                                              |
 |---------                |---------                                                                           |
 | Forrás                  | Bármely                                                                                |
-| Forrásporttartományok      | Bármely                                                                                |
+| Forrásporttartományok      | Bármelyik                                                                                |
 | Cél             | A virtuális gép IP-címe, az IP-címek tartománya vagy az alhálózat összes címe. |
 | Célporttartományok | 80                                                                                 |
 | Protokoll                | TCP                                                                                |
