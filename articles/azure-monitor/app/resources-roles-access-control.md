@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 4254170ad100b634439cc846dc381e305ae71d1f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100589602"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
@@ -90,7 +90,7 @@ Adott esetben a kapcsolódó hivatalos dokumentációra hivatkozunk.
 
 A "szerkesztés" magában foglalja a következők létrehozását, törlését és frissítését:
 
-* Források
+* Erőforrások
 * Webes tesztek
 * Riasztások
 * Folyamatos exportálás

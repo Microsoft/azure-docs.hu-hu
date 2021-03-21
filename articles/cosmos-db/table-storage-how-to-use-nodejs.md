@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-js
 ms.openlocfilehash: 2d40b70d49b1934c9dd2d911369245b1b2e4f2ff
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93079700"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Az Azure Table Storage és az Azure Cosmos DB Table API használata a Node.js segítségével
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre táblákat, tárolhat adatai
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-**Azure Storage-fiók létrehozása**
+**Azure-tárfiók létrehozása**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
@@ -82,7 +82,7 @@ var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 
 ### <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB-kapcsolat hozzáadása
 
-Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a **Settings**  >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások **közötti kapcsolatok sztringből** másolhatja. Például:
+Azure Cosmos DB-kapcsolatok hozzáadásához hozzon létre egy `TableService` objektumot, és adja meg a fiók nevét, az elsődleges kulcsot és a végpontot. Ezeket az értékeket a   >  Cosmos db-fiókjához tartozó Azure Portalban lévő beállítások **közötti kapcsolatok sztringből** másolhatja. Például:
 
 ```javascript
 var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');

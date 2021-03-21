@@ -6,10 +6,10 @@ ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87089617"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rövid útmutató: Windows-tárolók üzembe helyezése a Service Fabricben
@@ -41,13 +41,13 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, amelynek segítségével a tároló üzembe helyezhető egy Service Fabric-fürtben.
 
-Indítsa el a Visual Studiót „rendszergazdaként”.  Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+Indítsa el a Visual Studiót „rendszergazdaként”.  Válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-Válassza ki **Service Fabric alkalmazást**, nevezze el "MyFirstContainer", majd kattintson a **Létrehozás**gombra.
+Válassza ki **Service Fabric alkalmazást**, nevezze el "MyFirstContainer", majd kattintson a **Létrehozás** gombra.
 
 A **Hosted Containers and Applications** (Üzemeltetett tárolók és alkalmazások) sablonokból válassza a **Container** (Tároló) elemet.
 
-A **rendszerkép neve**mezőbe írja be a "MCR.microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", a [Windows Server Core Server és az IIS alaprendszerképét](https://hub.docker.com/_/microsoft-windows-servercore-iis).
+A **rendszerkép neve** mezőbe írja be a "MCR.microsoft.com/Windows/ServerCore/IIS:windowsservercore-ltsc2016", a [Windows Server Core Server és az IIS alaprendszerképét](https://hub.docker.com/_/microsoft-windows-servercore-iis).
 
 Konfigurálja úgy a tárolóport–gazdagépport leképezést, hogy a szolgáltatáshoz a 80-as porton beérkező kérések a tárolón a 80-as portra legyenek leképezve.  Állítsa a **Tárolóport** beállítást 80, a **Gazdaport** beállítást pedig szintén 80 értékre.  
 
@@ -76,7 +76,7 @@ A Microsoft különböző rendszerképeket tesz közzé a Windows Server külön
 
 A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016`.
 
-A *ApplicationManifest.xml* fájlban is módosítsa a **PasswordEncrypted** **hamis**értékre. A fiók és a jelszó üres a Docker hub-on található nyilvános tároló-rendszerkép esetében, ezért kikapcsoljuk a titkosítást, mivel az üres jelszavak titkosítása felépítési hibát eredményez.
+A *ApplicationManifest.xml* fájlban is módosítsa a **PasswordEncrypted** **hamis** értékre. A fiók és a jelszó üres a Docker hub-on található nyilvános tároló-rendszerkép esetében, ezért kikapcsoljuk a titkosítást, mivel az üres jelszavak titkosítása felépítési hibát eredményez.
 
 ```xml
 <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
@@ -146,11 +146,11 @@ Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsol�
 
  Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
-## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
 A fürt futása során továbbra is felmerülnek a költségek. Érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

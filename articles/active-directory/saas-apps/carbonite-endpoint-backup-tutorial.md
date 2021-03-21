@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.openlocfilehash: ff19275270e5b6572fb7d637b88c4736a3aa6ea0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92456483"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Oktatóanyag: a Carbonite-végpontok biztonsági mentésének integrálása Azure Active Directory
@@ -47,14 +47,14 @@ A Carbonite-végpont biztonsági mentésének Azure AD-be való integrálásána
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Carbonite Endpoint Backup** kifejezést a keresőmezőbe.
 1. Válassza ki a **Carbonite-végpont biztonsági mentését** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Carbonite Endpoint Backup segítségével egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Carbonite Endpoint Backup szolgáltatásban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Carbonite Endpoint Backup segítségével egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Carbonite Endpoint Backup szolgáltatásban.
 
 Az Azure AD SSO és a Carbonite-végpont biztonsági mentésének konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -69,8 +69,8 @@ Az Azure AD SSO és a Carbonite-végpont biztonsági mentésének konfigurálás
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/), a **Carbonite Endpoint Backup** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/), a **Carbonite Endpoint Backup** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -117,7 +117,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="configure-carbonite-endpoint-backup-sso"></a>A Carbonite-végpont biztonsági mentési egyszeri bejelentkezésének konfigurálása
 
-1. A Carbonite-végpont biztonsági másolatán belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A Carbonite-végpont biztonsági másolatán belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -131,7 +131,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Képernyőfelvétel: a kiválasztott vállalatnál látható Carbonite-végpont.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
-5. Kattintson az **egyszeri bejelentkezés**lehetőségre.
+5. Kattintson az **egyszeri bejelentkezés** lehetőségre.
 
     ![Képernyőfelvétel: a vállalat egyszeri bejelentkezéssel van kiválasztva.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
@@ -155,7 +155,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -167,13 +167,13 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja a Carbonite-végpont biztonsági mentéshez való hozzáférés megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza ki a **Carbonite-végpont biztonsági mentése**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza ki a **Carbonite-végpont biztonsági mentése** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -185,7 +185,7 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Egy másik böngészőablakban jelentkezzen be a Carbonite-végpont biztonsági mentési céges webhelyre rendszergazdaként.
 
-1. Kattintson a bal oldali ablaktáblán a **felhasználók** elemre, majd kattintson a **felhasználó hozzáadása**elemre.
+1. Kattintson a bal oldali ablaktáblán a **felhasználók** elemre, majd kattintson a **felhasználó hozzáadása** elemre.
 
     ![Képernyőfelvétel: a Carbonite-végpont lapja a felhasználók és a kiválasztott felhasználók hozzáadásával.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
@@ -193,9 +193,9 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
     ![Képernyőfelvétel: a felhasználó hozzáadása lap, amelyen elvégezheti az itt ismertetett lépéseket.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
-    1. Adja meg a felhasználó **e-mail-címét**, **utónevét**és **vezetéknevét** , és adja meg a szükséges engedélyeket a felhasználónak a szervezeti követelményeknek megfelelően.
+    1. Adja meg a felhasználó **e-mail-címét**, **utónevét** és **vezetéknevét** , és adja meg a szükséges engedélyeket a felhasználónak a szervezeti követelményeknek megfelelően.
 
-    1. Kattintson a **felhasználó hozzáadása**elemre.
+    1. Kattintson a **felhasználó hozzáadása** elemre.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 08/19/2020
 ms.openlocfilehash: 5abe92120c8b822ac86ced90658869a0858d4ff4
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92487687"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-and-arm-template"></a>Gyors útmutató: adatmegosztás az Azure-adatmegosztás és az ARM-sablon használatával
@@ -77,17 +77,17 @@ Ennek oka az, hogy a központi telepítés megkísérli létrehozni az adatkész
     * **Meghívó e-mail**: adja meg az adatmegosztási címzett Azure-beli bejelentkezési e-mail-címét.  Az e-mail alias nem működik.
 
     Használja az alapértelmezett értéket a többi beállításhoz.
-1. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, valamint a **vásárlás**lehetőséget.
+1. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**, valamint a **vásárlás** lehetőséget.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg a létrehozott adatmegosztási fiókot.
-1. A bal oldali menüben válassza a **megosztások küldése**lehetőséget.  Ekkor megjelenik a felsorolt Storage-fiók.
-1. Válassza ki a Storage-fiókot.  A **részletek**területen a szinkronizálási beállítást kell látnia a sablonban konfigurált módon.
+1. A bal oldali menüben válassza a **megosztások küldése** lehetőséget.  Ekkor megjelenik a felsorolt Storage-fiók.
+1. Válassza ki a Storage-fiókot.  A **részletek** területen a szinkronizálási beállítást kell látnia a sablonban konfigurált módon.
 
     ![Azure-adatmegosztás Storage-fiókjának szinkronizálási beállításai](./media/share-your-data-arm/azure-data-share-storage-account-synchronization-settings.png)
-1. Válassza a felül a **meghívókat** . Ekkor meg kell tekintenie a sablon telepítésekor megadott e-mail-címet. Az **állapot** **függőben**van.
+1. Válassza a felül a **meghívókat** . Ekkor meg kell tekintenie a sablon telepítésekor megadott e-mail-címet. Az **állapot** **függőben** van.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

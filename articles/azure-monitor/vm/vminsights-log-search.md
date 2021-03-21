@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 28ee7f3d327c09f5837c7dc9e2f39c0f2ca4d888
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102046533"
 ---
 # <a name="how-to-query-logs-from-vm-insights"></a>Naplók lekérdezése a VM-elemzésből
@@ -111,7 +111,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Leírás |A megfigyelt fenyegetés leírása. |
+|Description |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga* és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Súlyosság |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
@@ -232,7 +232,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Group | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Leírás | A folyamat leírása |
+|Description | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |

@@ -9,10 +9,10 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: sharrai
 ms.openlocfilehash: b9869ae7dfbf5afd6b8d3b870a2ad4e56fd54c1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91250068"
 ---
 # <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>A Windows Server Server/System Center 2012 R2 VMM frissítése a Windows Serverre/VMM 2016 
@@ -75,7 +75,7 @@ A Windows Server 2012 R2 rendszerű gazdagépek frissítése előtt frissítenie
 
 1.  Az ASR-szolgáltató eltávolításához navigáljon a Vezérlőpult – > programok – > programok és szolgáltatások – >Microsoft Azure Site Recovery, és kattintson az Eltávolítás elemre.
 2. [A SCVMM adatbázisának megőrzése és az operációs rendszer frissítése](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#back-up-and-upgrade-the-operating-system)
-3. A **Programok eltávolítása**területen válassza a **VMM**  >  **Eltávolítás**elemet. b. Válassza a **szolgáltatások eltávolítása**lehetőséget, majd válassza a V**mm felügyeleti kiszolgáló és a VMM-konzol**elemet. c. Az **adatbázis beállításai**területen válassza az **adatbázis megőrzése**lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás**gombra.
+3. A **Programok eltávolítása** területen válassza a **VMM**  >  **Eltávolítás** elemet. b. Válassza a **szolgáltatások eltávolítása** lehetőséget, majd válassza a V **mm felügyeleti kiszolgáló és a VMM-konzol** elemet. c. Az **adatbázis beállításai** területen válassza az **adatbázis megőrzése** lehetőséget. d. Tekintse át az összegzést, és kattintson az **Eltávolítás** gombra.
 
 4. [A VMM 2016 telepítése](/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Indítsa el a SCVMM, és győződjön meg arról, hogy az egyes gazdagépek állapota a **hálók** lapon található. A legutóbbi állapot lekéréséhez kattintson a **frissítés** gombra. A "figyelmet igényel" állapotnak kell megjelennie. 

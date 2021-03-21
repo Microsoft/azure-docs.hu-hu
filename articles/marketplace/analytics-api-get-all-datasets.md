@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: 23aac2c94ffd909ca132cbc481998b9eda317156
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102583801"
 ---
 # <a name="get-all-datasets-api"></a>Az összes adatkészlet API beolvasása
@@ -33,7 +33,7 @@ A minden adatkészlet beolvasása API lekéri az összes rendelkezésre álló a
 
 **Elérési út paraméter**
 
-Nincs
+Nincsenek
 
 **Lekérdezési paraméter**
 
@@ -43,11 +43,11 @@ Nincs
 
 **Kérelem tartalma**
 
-Nincs
+Nincsenek
 
 **Szószedet**
 
-Nincs
+Nincsenek
 
 **Válasz**
 

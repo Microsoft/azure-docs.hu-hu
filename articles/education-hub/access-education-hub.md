@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 995956e23e211d2182159f6e61abbbf184983ab0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87102071"
 ---
 # <a name="accessing-the-azure-education-hub"></a>Az Azure-Education-központ elérése
@@ -32,12 +32,12 @@ Az Azure-Education-központ eléréséhez már kapott egy értesítő e-mailt, a
    > [!IMPORTANT]
    > Győződjön meg arról, hogy szervezeti/munkahelyi fiókkal jelentkezik be (például az intézmény @domain.edu ). Ha igen, válassza ezt a lehetőséget az ablak bal oldalán. Ezzel egy másik bejelentkezési képernyőre kerül.
 
-    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Nyisson meg egy titkos böngészőablakot." border="false":::
+    :::image type="content" source="media/access-education-hub/sign-in.png" alt-text="Szervezeti bejelentkezés párbeszédpanel." border="false":::
 
-1. Miután bejelentkezett, a rendszer átirányítja a Azure Portalra. A Education-központ megkereséséhez nyissa meg a **minden szolgáltatás** menüt, és keressen rá az **oktatás**kifejezésre.
+1. Miután bejelentkezett, a rendszer átirányítja a Azure Portalra. A Education-központ megkereséséhez nyissa meg a **minden szolgáltatás** menüt, és keressen rá az **oktatás** kifejezésre.
    Amikor először jelentkezik be, megjelenik a Get Started (első lépések) oldal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerkedés az Azure Education-központ](get-started-education-hub.md)  
 [Támogatási lehetőségek](educator-service-desk.md)

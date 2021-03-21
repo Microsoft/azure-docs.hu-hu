@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727118"
 ---
 # <a name="management-and-operation-of-the-azure-production-network"></a>Az Azure üzemi hálózatának felügyelete és működése    
@@ -50,7 +50,7 @@ A vállalati hálózat felhasználói bázisa az Azure-támogatási munkatársak
 
 A belső Azure-alkalmazásokhoz való hozzáférés vezérlése Active Directory összevonási szolgáltatások (AD FS) (AD FS) hitelesítéssel történik. AD FS a Microsoft Information Technology által üzemeltetett szolgáltatás, amely biztonságos jogkivonat-és felhasználói jogcímek alkalmazásával biztosítja a vállalati hálózati felhasználók hitelesítését. AD FS lehetővé teszi a belső Azure-alkalmazások számára a felhasználók hitelesítését a Microsoft vállalati Active Directory-tartományon. Az éles hálózat vállalati hálózati környezetből való eléréséhez a felhasználóknak a multi-Factor Authentication használatával kell hitelesíteniük magukat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74324514"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench üzenetkezelési integrációja
@@ -344,7 +344,7 @@ Ha a felhasználó a Blockchain Workbenchben megjelenő eseményekről szeretne 
 ### <a name="consuming-event-grid-events-with-logic-apps"></a>Event Grid események felhasználása a Logic Apps
 
 1. Hozzon létre egy új **Azure logikai alkalmazást** a Azure Portal.
-2. Amikor megnyitja az Azure Logic app alkalmazást a portálon, a rendszer kérni fogja, hogy válasszon ki egy triggert. Válassza **a Azure Event Grid – erőforrás-esemény bekövetkezésekor**lehetőséget.
+2. Amikor megnyitja az Azure Logic app alkalmazást a portálon, a rendszer kérni fogja, hogy válasszon ki egy triggert. Válassza **a Azure Event Grid – erőforrás-esemény bekövetkezésekor** lehetőséget.
 3. Amikor megjelenik a Munkafolyamat-tervező, a rendszer kérni fogja, hogy jelentkezzen be.
 4. Válassza ki az előfizetést. Az erőforrást **Microsoft. EventGrid. témakörökként**. Válassza ki **az erőforrás nevét az** Azure Blockchain Workbench erőforráscsoporthoz tartozó erőforrás nevéből.
 5. Válassza ki az Blockchain Workbench erőforráscsoporthoz tartozó Event Grid.
@@ -354,7 +354,7 @@ Ha a felhasználó a Blockchain Workbenchben megjelenő eseményekről szeretne 
 Service Bus témakörökkel értesítheti a felhasználókat a Blockchain Workbenchben előforduló eseményekről. 
 
 1. Keresse meg a Workbench erőforráscsoporthoz tartozó Service Bus.
-2. Válassza a **témakörök**lehetőséget.
+2. Válassza a **Témakörök** lapfület.
 3. Kimenő forgalom kiválasztása **– témakör**.
 4. Hozzon létre egy új előfizetést ehhez a témakörhöz. Szerezze be a kulcsot.
 5. Hozzon létre egy programot, amely előfizet az előfizetésből származó eseményekre.
@@ -364,12 +364,12 @@ Service Bus témakörökkel értesítheti a felhasználókat a Blockchain Workbe
 1. Hozzon létre egy új **Azure logikai alkalmazást** a Azure Portal.
 2. Amikor megnyitja az Azure Logic app alkalmazást a portálon, a rendszer kérni fogja, hogy válasszon ki egy triggert. Írja be a **Service Bus** kifejezést a keresőmezőbe, és válassza ki a kívánt interakció típusát a Service Bus. Például **Service Bus – ha üzenet érkezik egy témakör-előfizetésbe (automatikusan befejeződött)**.
 3. Amikor megjelenik a Munkafolyamat-tervező, a Service Bus kapcsolódási adatait kell megadnia.
-4. Válassza ki az előfizetését, és adja meg a **Workbench-External**témakört.
+4. Válassza ki az előfizetését, és adja meg a **Workbench-External** témakört.
 5. Fejlessze az alkalmazáshoz tartozó logikát, amely a triggerből származó üzenetet használja.
 
 ## <a name="notification-message-reference"></a>Értesítési üzenet referenciája
 
-A **messageName**függően az értesítési üzenetek a következő típusú üzenetek egyikével rendelkeznek.
+A **messageName** függően az értesítési üzenetek a következő típusú üzenetek egyikével rendelkeznek.
 
 ### <a name="block-message"></a>Üzenet letiltása
 
@@ -401,7 +401,7 @@ Az egyes blokkokról tartalmaz információkat. A *BlockMessage* tartalmaz egy s
 | Tranzakcióazonosító      | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
 | transactionHash    | A tranzakció kivonata a főkönyvben |
 | a               | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
-| a következőre:                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
+| felhasználóként a(z)                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
 | provisioningStatus | A tranzakció kiépítési folyamatának aktuális állapotát azonosítja. Lehetséges értékek: </br>0 – a tranzakciót az API hozta létre az adatbázisban.</br>1 – a tranzakció elküldése a főkönyvbe</br>2 – a tranzakció sikeresen véglegesítve lett a főkönyvben</br>3 vagy 4 – a tranzakciót nem sikerült véglegesíteni a főkönyvben</br>5 – a tranzakció sikeresen véglegesítve lett a főkönyvben |
 
 Példa a Blockchain Workbench egyik *BlockMessage* :
@@ -463,7 +463,7 @@ A szerződésre vonatkozó információkat tartalmaz. Az üzenet tartalmaz egy s
 | Tranzakcióazonosító | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
 | transactionHash | A tranzakció kivonata a főkönyvben |
 | a | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
-| a következőre: | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
+| felhasználóként a(z) | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
 
 #### <a name="contract-properties"></a>Szerződés tulajdonságai
 
@@ -561,7 +561,7 @@ Információt tartalmaz egy szerződési függvény meghívásakor, például a 
 | contractId                  | A szerződés egyedi azonosítója az Azure Blockchain Workbenchben |
 | contractLedgerIdentifier    | A szerződés egyedi azonosítója a főkönyvben |
 | Függvénynév                | A függvény neve |
-| parameters                  | [Paraméter adatai](#parameter-information) |
+| parameters                  | [Paraméteradatok](#parameter-information) |
 | tranzakció                 | Tranzakciós adatok |
 | inTransactionSequenceNumber | A blokkban lévő tranzakció sorozatszáma |
 | connectionId                | A kapcsolatok egyedi azonosítója |
@@ -577,7 +577,7 @@ Információt tartalmaz egy szerződési függvény meghívásakor, például a 
 | id | A hívó egyedi azonosítója az Azure Blockchain Workbenchben |
 | ledgerIdentifier | A hívó egyedi azonosítója a főkönyvben |
 
-#### <a name="parameter-information"></a>Paraméter adatai
+#### <a name="parameter-information"></a>Paraméteradatok
 
 | Név | Leírás |
 |------|-------------|
@@ -591,7 +591,7 @@ Információt tartalmaz egy szerződési függvény meghívásakor, például a 
 | Tranzakcióazonosító      | A tranzakció egyedi azonosítója az Azure Blockchain Workbenchben |
 | transactionHash    | A tranzakció kivonata a főkönyvben |
 | a               | Egyedi azonosító a főkönyvben a tranzakció forrásaként |
-| a következőre:                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
+| felhasználóként a(z)                 | A tranzakció célhelyéhez tartozó főkönyvben szereplő egyedi azonosító |
 
 Példa EventMessage- *ContractFunctionInvocation* a Blockchain Workbenchből:
 
@@ -896,6 +896,6 @@ Példa EventMessage- *RoleAssignment* a Blockchain Workbenchből:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Intelligens szerződések integrációs mintái](integration-patterns.md)

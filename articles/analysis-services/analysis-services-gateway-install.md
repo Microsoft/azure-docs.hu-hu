@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 64bd9e4a4cf78d2628e946af30c2d290ff002cf7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93081144"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
@@ -87,23 +87,23 @@ Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az �
 
 Az átjáró telepítése és regisztrálása után létre kell hoznia egy átjáró-erőforrást az Azure-ban. Jelentkezzen be az Azure-ba ugyanazzal a fiókkal, amelyet az átjáró regisztrálásakor használt.
 
-1. Azure Portal kattintson az **erőforrás létrehozása** elemre, majd keresse **meg a helyszíni adatátjárót** , majd kattintson a **Létrehozás** gombra.
+1. Azure Portal kattintson az **erőforrás létrehozása** elemre, majd keresse **meg a helyszíni adatátjárót**, majd kattintson a **Létrehozás** gombra.
 
    ![Átjáró erőforrásának létrehozása](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
 2. Adja meg a következő beállításokat a **kapcsolatok átjárójának létrehozása** területen:
 
-   * **Név** : adja meg az átjáró erőforrásának nevét. 
+   * **Név**: adja meg az átjáró erőforrásának nevét. 
 
-   * **Előfizetés** : válassza ki az átjáró erőforrásához társítandó Azure-előfizetést. 
+   * **Előfizetés**: válassza ki az átjáró erőforrásához társítandó Azure-előfizetést. 
    
      Az alapértelmezett előfizetés a bejelentkezéshez használt Azure-fiókon alapul.
 
-   * **Erőforráscsoport** : Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
 
-   * **Hely** : válassza ki azt a régiót, amelyen az átjárót regisztrálta.
+   * **Hely**: válassza ki azt a régiót, amelyen az átjárót regisztrálta.
 
-   * **Telepítési név** : Ha az átjáró telepítése még nincs kiválasztva, válassza ki a számítógépen telepített átjárót, és regisztrálja azt. 
+   * **Telepítési név**: Ha az átjáró telepítése még nincs kiválasztva, válassza ki a számítógépen telepített átjárót, és regisztrálja azt. 
 
      Ha elkészült, kattintson a **Létrehozás** gombra.
 
@@ -118,14 +118,14 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
    ![Kiszolgáló összekötése az átjáróval](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. A **kapcsolódáshoz válasszon egy helyszíni Adatátjárót** , válassza ki az átjáró-erőforrást, majd kattintson a **kijelölt átjáró összekapcsolása** elemre.
+2. A **kapcsolódáshoz válasszon egy helyszíni Adatátjárót**, válassza ki az átjáró-erőforrást, majd kattintson a **kijelölt átjáró összekapcsolása** elemre.
 
    ![Kiszolgáló és átjáró erőforrásának összekötése](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
     > Ha az átjáró nem jelenik meg a listában, akkor a kiszolgáló valószínűleg nem ugyanabban a régióban található, mint az átjáró regisztrálásakor megadott régió.
 
-    Ha a kiszolgáló és az átjáró-erőforrás közötti kapcsolat sikeresen befejeződött, az **Connected** állapot fog megjelenni.
+    Ha a kiszolgáló és az átjáró-erőforrás közötti kapcsolat sikeresen befejeződött, az állapot fog megjelenni.
 
 
     ![A kiszolgáló és az átjáró erőforrásának összekötése sikeres](media/analysis-services-gateway-install/aas-gateway-connect-success.png)

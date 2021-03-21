@@ -9,10 +9,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: ff14bb1daeef6fc54ee5d11632ad98a29db2a172
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90947092"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rövid útmutató: a Python használata a Azure Database for MySQL rugalmas kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
@@ -81,7 +81,7 @@ A cikkben szereplő kódok mindegyike esetében:
 1. A kód futtatásához nyisson meg egy parancssort vagy egy `bash` rendszerhéjat, és módosítsa a könyvtárat a Project mappájába, például: `cd pythonmysql` . Írja be a `python` parancsot, majd a fájlnevet, `python createtable.py` majd nyomja le az ENTER billentyűt. 
    
    > [!NOTE]
-   > Windows rendszeren, ha *python.exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *python.exe*teljes elérési útját, például: `C:\python27\python.exe createtable.py` .
+   > Windows rendszeren, ha *python.exe* nem található, lehet, hogy hozzá kell adnia a Python elérési útját a PATH környezeti változóhoz, vagy meg kell adnia a *python.exe* teljes elérési útját, például: `C:\python27\python.exe createtable.py` .
 
 ### <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
 
@@ -274,7 +274,7 @@ else:
   print("Done.")
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Titkosított kapcsolat Transport Layer Security (TLS 1,2) használatával Azure Database for MySQL-rugalmas kiszolgálón](./how-to-connect-tls-ssl.md).
 - További információ a [Azure Database for MySQL rugalmas kiszolgáló hálózatkezeléséről](./concepts-networking.md).
 - [Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./how-to-manage-firewall-portal.md).

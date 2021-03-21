@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 577340e485550e84941a33d82b58aa6ff1c933d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90983662"
 ---
 # <a name="configure-azure-firewall-in-a-virtual-wan-hub"></a>Azure Firewall konfigurálása virtuális WAN-központban
@@ -57,12 +57,12 @@ A virtuális WAN **áttekintése** lapon válassza ki a biztonságos hubot. A k�
 
 [![hub-erőforrások megtekintése](./media/howto-firewall/view-resources.png)](./media/howto-firewall/view-resources.png#lightbox)
 
-Ha Azure Firewall beállításokat szeretne megtekinteni a biztonságos hubhoz, a **Biztonság**területen válassza a **biztonságos virtuális központ beállításai**lehetőséget.
+Ha Azure Firewall beállításokat szeretne megtekinteni a biztonságos hubhoz, a **Biztonság** területen válassza a **biztonságos virtuális központ beállításai** lehetőséget.
 [![központ beállításainak megtekintése](./media/howto-firewall/hub-settings.png)](./media/howto-firewall/hub-settings.png#lightbox)
 
 ## <a name="configure-additional-settings"></a>További beállítások konfigurálása
 
-A virtuális központ további Azure Firewall beállításainak konfigurálásához válassza a **Azure Firewall Managerre**mutató hivatkozást. További információ a tűzfal-házirendekről: [Azure Firewall Manager](../firewall-manager/secure-cloud-network.md#create-a-firewall-policy-and-secure-your-hub).
+A virtuális központ további Azure Firewall beállításainak konfigurálásához válassza a **Azure Firewall Managerre** mutató hivatkozást. További információ a tűzfal-házirendekről: [Azure Firewall Manager](../firewall-manager/secure-cloud-network.md#create-a-firewall-policy-and-secure-your-hub).
 
 [![További beállítások](./media/howto-firewall/additional-settings.png)](./media/howto-firewall/additional-settings.png#lightbox)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: d9eb55030c7ec52f9b2ac79fbab19944f0a3e190
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087825"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizált javaslatok a Azure Cosmos DB
@@ -27,9 +27,9 @@ A Azure Cosmos DB javaslatai a következő módokon tekinthetők meg:
 
    :::image type="content" source="./media/automated-recommendations/cosmos-db-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Cosmos DB panelen":::
 
-- Az ajánlásokat a különböző gyűjtők által kategorizált [Azure Advisor](../advisor/advisor-overview.md) is megtalálhatja, például a költségeket, a biztonságot, a megbízhatóságot, a teljesítményt és az operatív kiválóságot. Kiválaszthat bizonyos előfizetéseket és szűrheti az erőforrástípus alapján, amely **Azure Cosmos db fiók** .  Amikor kiválaszt egy konkrét javaslatot, megjeleníti azokat a műveleteket, amelyeket el tud végezni a számítási feladatok kihasználása érdekében.
+- Az ajánlásokat a különböző gyűjtők által kategorizált [Azure Advisor](../advisor/advisor-overview.md) is megtalálhatja, például a költségeket, a biztonságot, a megbízhatóságot, a teljesítményt és az operatív kiválóságot. Kiválaszthat bizonyos előfizetéseket és szűrheti az erőforrástípus alapján, amely **Azure Cosmos db fiók**.  Amikor kiválaszt egy konkrét javaslatot, megjeleníti azokat a műveleteket, amelyeket el tud végezni a számítási feladatok kihasználása érdekében.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Cosmos DB panelen":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Advisor panelen":::
 
 A Azure Cosmos DB ablaktáblán látható összes javaslat nem érhető el a Azure Advisorban, és fordítva. Ennek oka az, hogy a Azure Advisor ablaktáblán, Azure Cosmos DB ablaktáblán vagy mindkettőn lévő javaslat típusa alapján.
 

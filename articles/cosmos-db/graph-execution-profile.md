@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: chrande
 ms.openlocfilehash: 18cefb1dd80368a8ccdad9f6f3ffc30881a8a889
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93087485"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>Gremlin-lekérdezések kiértékelése a végrehajtási profil lépés segítségével
@@ -139,12 +139,12 @@ Az alábbi példa a visszaadott kimenetre mutat be egy megjegyzést:
 ## <a name="execution-profile-response-objects"></a>Végrehajtási profil válaszának objektumai
 
 A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogja eredményezni a következő szerkezettel:
-  - **Gremlin műveleti objektum** : a teljes Gremlin műveletet jelöli. A következő tulajdonságokat tartalmazza.
+  - **Gremlin műveleti objektum**: a teljes Gremlin műveletet jelöli. A következő tulajdonságokat tartalmazza.
     - `gremlin`: A végrehajtott explicit Gremlin utasítás.
     - `totalTime`: Az az idő (ezredmásodpercben), amelyet a lépés végrehajtása során felmerült. 
     - `metrics`: Egy tömb, amely a lekérdezés teljesítéséhez végrehajtott Cosmos DB futtatókörnyezeti operátorokat tartalmazza. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi.
     
-  - **Cosmos db futásidejű operátorok** : a teljes Gremlin művelet összes összetevőjét képviseli. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi. Minden objektum a következő tulajdonságokat tartalmazza:
+  - **Cosmos db futásidejű operátorok**: a teljes Gremlin művelet összes összetevőjét képviseli. Ezt a listát a rendszer a végrehajtás sorrendjében rendezi. Minden objektum a következő tulajdonságokat tartalmazza:
     - `name`: Az operátor neve. A kiértékelt és végrehajtott lépés típusa. További tudnivalókat az alábbi táblázatban talál.
     - `time`: Az adott operátor által tartott időtartam ezredmásodpercben.
     - `annotations`: További információkat tartalmaz, amelyek a végrehajtás alatt álló operátorra vonatkoznak.
@@ -155,7 +155,7 @@ A executionProfile () függvény válasza a JSON-objektumok hierarchiáját fogj
     - `storeOps.count`: A tárolási művelet által visszaadott eredmények számát jelöli.
     - `storeOps.size`: Egy adott tárolási művelet eredményének mérete bájtban kifejezve.
 
-Cosmos DB Gremlin Runtime operátor|Leírás
+Cosmos DB Gremlin Runtime operátor|Description
 ---|---
 `GetVertices`| Ez a lépés egy predikátum-készletet szerez be az adatmegőrzési rétegből. 
 `GetEdges`| Ez a lépés a csúcspontok egy halmazához szomszédos éleket szerzi be. Ez a lépés egy vagy több tárolási művelethez vezethet.
@@ -177,7 +177,7 @@ A következő példák olyan gyakori optimalizációkat mutatnak be, amelyeket a
 
 ### <a name="blind-fan-out-query-patterns"></a>Blind fan-out lekérdezési minták
 
-Tegyük fel, hogy a következő végrehajtási profilt választ egy **particionált gráfból** :
+Tegyük fel, hogy a következő végrehajtási profilt választ egy **particionált gráfból**:
 
 ```json
 [

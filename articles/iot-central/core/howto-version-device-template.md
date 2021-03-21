@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95995760"
 ---
 # <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
@@ -81,7 +81,7 @@ Eszköz sablonjának verziója:
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki azt az eszközt, amelyen a verziót szeretné.
 1. A lap tetején kattintson a **verzió** gombra, és adjon meg egy új nevet a sablonnak. IoT Central egy új nevet javasol, amelyet szerkeszthet.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Most az eszköz sablonja vázlat módban van. Láthatja, hogy a felületek még mindig zárolva vannak. A módosítani kívánt felületek verziója.
 
 ## <a name="version-an-interface"></a>Illesztőfelület verziója
@@ -94,7 +94,7 @@ Illesztőfelület verziója:
 1. Válassza ki a Piszkozat módban lévő sablont.
 1. Válassza ki azt a felületet, amely a verzió és a szerkesztés céljából közzétett módban van.
 1. Kattintson a **verzió** gombra a csatoló oldal tetején.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül hozzáadhat vagy szerkesztheti a felület képességeit.
 
 ## <a name="migrate-a-device-across-versions"></a>Eszköz migrálása a verziók között
@@ -106,7 +106,7 @@ Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatl
 1. Az **áttelepítés** kiválasztása: :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="válassza az eszköz áttelepítésének megkezdése lehetőséget"::: .
 1. Válassza ki azt a verziószámot, amelyen át szeretné telepíteni az eszközt, majd válassza az **áttelepítés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy operátor vagy megoldás-szerkesztő, a következő lépés az [eszközök felügyeletének](./howto-manage-devices.md)megismerése.
 

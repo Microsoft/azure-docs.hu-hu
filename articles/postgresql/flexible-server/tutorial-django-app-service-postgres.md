@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: bcc9ca0175e0e03c62c2ce2b91d8ec337756a3cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92490101"
 ---
 # <a name="tutorial-deploy-django-app-with-app-service-and-azure-database-for-postgresql---flexible-server-preview"></a>Oktatóanyag: a Django alkalmazás üzembe helyezése App Service és Azure Database for PostgreSQL rugalmas kiszolgálóval (előzetes verzió)
@@ -57,9 +57,9 @@ cd djangoapp
 
 # <a name="download"></a>[Letöltés](#tab/download)
 
-Keresse fel [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) a **klónozott**elemet, majd válassza a **zip letöltése**lehetőséget.
+Keresse fel [https://github.com/Azure-Samples/djangoapp](https://github.com/Azure-Samples/djangoapp) a **klónozott** elemet, majd válassza a **zip letöltése** lehetőséget.
 
-Csomagolja ki a ZIP-fájlt egy *djangoapp*nevű mappába.
+Csomagolja ki a ZIP-fájlt egy *djangoapp* nevű mappába.
 
 Ezután nyisson meg egy terminál ablakot a *djangoapp* mappában.
 
@@ -140,7 +140,7 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 1. Nyisson meg egy SSH-munkamenetet a böngészőben, és lépjen a *https:// \<app-name> . SCM.azurewebsites.net/webssh/Host* webhelyre, és jelentkezzen be az Azure-fiókja hitelesítő adataival (nem az adatbázis-kiszolgáló hitelesítő adataival).
 
-1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT**V használatával is beilleszthet parancsokat + **V**):
+1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT** V használatával is beilleszthet parancsokat + ):
 
     ```bash
     cd site/wwwroot
@@ -159,9 +159,9 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 
 ### <a name="create-a-poll-question-in-the-app"></a>Lekérdezési kérdés létrehozása az alkalmazásban
 
-1. A böngészőben nyissa meg a *http: \/ / \<app-name> . azurewebsites.net*URL-címet. Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
+1. A böngészőben nyissa meg a *http: \/ / \<app-name> . azurewebsites.net* URL-címet. Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
 
-1. Keresse meg a *http: \/ / \<app-name> . azurewebsites.net/admin*parancsot. Jelentkezzen be a rendszergazdai hitelesítő adatokkal az előző szakaszban ( `root` és `postgres1` ). A **lekérdezések**területen válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
+1. Keresse meg a *http: \/ / \<app-name> . azurewebsites.net/admin* parancsot. Jelentkezzen be a rendszergazdai hitelesítő adatokkal az előző szakaszban ( `root` és `postgres1` ). A **lekérdezések** területen válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
 1. Tallózással keresse meg újra a *http: \/ / \<app-name> . azurewebsites.net/* , és győződjön meg arról, hogy a kérdések most már jelen vannak a felhasználó számára. Válaszoljon a kérdésekre, azonban szeretne valamilyen adathalmazt előállítani az adatbázisban.
 
@@ -194,17 +194,17 @@ python manage.py runserver
 ```
 A webalkalmazás teljes betöltését követően a Django fejlesztői kiszolgáló a helyi alkalmazás URL-címét biztosítja a "fejlesztési kiszolgáló indítása a következő helyen" című üzenetben: http://127.0.0.1:8000/ . Lépjen ki a kiszolgálóról a CTRL-BREAK billentyűkombinációval.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/django-dev-server-output.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére":::
 
 Tesztelje az alkalmazást helyileg a következő lépésekkel:
 
-1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés" üzenetet jeleníti meg.
+1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a "nincs elérhető lekérdezés" üzenetet jeleníti meg.
 
-1. Lépjen a *http: \/ /localhost: 8000/admin* webpontra, és jelentkezzen be a korábban létrehozott rendszergazda felhasználó használatával. A **lekérdezések**területen ismét válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
+1. Lépjen a *http: \/ /localhost: 8000/admin* webpontra, és jelentkezzen be a korábban létrehozott rendszergazda felhasználó használatával. A **lekérdezések** területen ismét válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
 1. Lépjen a *http: \/ /localhost: 8000* elemre, és válaszolja meg az alkalmazás tesztelésének kérdését.
 
-1. A **CTRL**C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + **C**.
+1. A **CTRL** C billentyűkombináció lenyomásával állítsa le a Django-kiszolgálót + .
 
 Helyileg futtatva az alkalmazás egy helyi Sqlite3-adatbázist használ, és nem zavarja az éles adatbázisát. Igény szerint helyi PostgreSQL-adatbázist is használhat az éles környezet jobb szimulálása érdekében.
 
@@ -226,9 +226,9 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tesztelje az alkalmazást a *http: \/ /localhost: 8000/admin*címen:
+Futtassa újra a fejlesztői kiszolgálót, `python manage.py runserver` és tesztelje az alkalmazást a *http: \/ /localhost: 8000/admin* címen:
 
-Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + **C**.
+Állítsa le újra a Django webkiszolgálót a **CTRL C billentyűkombinációval** + .
 
 
 ### <a name="redeploy-the-code-to-azure"></a>A kód újbóli üzembe helyezése az Azure-ban
@@ -270,19 +270,11 @@ Keresse meg a *http: \/ / \<app-name> . azurewebsites.net* , és tesztelje újra
 
 A [Azure Portal](https://portal.azure.com)keresse meg az alkalmazás nevét, és válassza ki az alkalmazást az eredmények között.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
-
-Tesztelje az alkalmazást helyileg a következő lépésekkel:
-
-1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/navigate-to-django-app-in-app-services-in-the-azure-portal.png" alt-text="Navigáljon a Python Django alkalmazáshoz a Azure Portal":::
 
 Alapértelmezés szerint a portál az alkalmazás **Áttekintés** oldalát jeleníti meg, amely általános teljesítményt nyújt. Itt olyan alapszintű felügyeleti feladatokat is elvégezhet, mint a Tallózás, Leállítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
-:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="Példa a Django fejlesztői kiszolgáló kimenetére&quot;:::
-
-Tesztelje az alkalmazást helyileg a következő lépésekkel:
-
-1. Nyissa meg a *http: \/ /localhost: 8000* -et egy böngészőben, amely a &quot;nincs elérhető lekérdezés":::
+:::image type="content" source="./media/tutorial-django-app-service-postgres/manage-django-app-in-app-services-in-the-azure-portal.png" alt-text="A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

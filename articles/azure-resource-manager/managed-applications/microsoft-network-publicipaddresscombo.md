@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87063282"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo FELHASZNÁLÓIFELÜLET-elem
@@ -80,7 +80,7 @@ Ha a felhasználó új vagy meglévő IP-címet választ, a vezérlő a követke
 }
 ```
 
-- Ha `options.hideNone` a értéke **true (igaz**), `newOrExistingOrNone` akkor csak az **új** vagy a **meglévő**értéket fogja megadni.
+- Ha `options.hideNone` a értéke **true (igaz**), `newOrExistingOrNone` akkor csak az **új** vagy a **meglévő** értéket fogja megadni.
 - Ha `options.hideDomainNameLabel` a értéke **true (igaz**), `domainNameLabel` akkor nincs deklarálva.
 
 ## <a name="remarks"></a>Megjegyzések
@@ -91,7 +91,7 @@ Ha a felhasználó új vagy meglévő IP-címet választ, a vezérlő a követke
 - Ha az `options.hideExisting` értéke igaz, a felhasználó nem választhat meglévő nyilvános IP-címet. Az alapértelmezett érték: **hamis**.
 - A esetében `zone` csak a megadott zónához vagy zónához tartozó nyilvános IP-címek érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

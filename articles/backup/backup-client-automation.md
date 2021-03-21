@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a 
 ms.topic: conceptual
 ms.date: 12/2/2019
 ms.openlocfilehash: 582d8123f16b2d5a543d862b8eb3e45895087e4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90987104"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
@@ -42,7 +42,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testVault* beállításnál a **GeoRedundant**értékre.
+4. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testVault* beállításnál a **GeoRedundant** értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ezért célszerű a Backup Recovery Services Vault-objektumot tárolni egy változóban.
@@ -58,7 +58,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
 
 A **Get-AzRecoveryServicesVault** használatával megtekintheti az aktuális előfizetésben található összes tároló listáját. Ezzel a paranccsal ellenőrizhető, hogy az új tároló létrejött-e, vagy hogy mely tárolók érhetők el az előfizetésben.
 
-Futtassa a parancsot, a **Get-AzRecoveryServicesVault**és az előfizetés összes tárolóját.
+Futtassa a parancsot, a **Get-AzRecoveryServicesVault** és az előfizetés összes tárolóját.
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -97,7 +97,7 @@ MARSAgentInstaller.exe /q
 
 Ezzel telepíti az ügynököt az összes alapértelmezett beállítással. A telepítés eltarthat néhány percig a háttérben. Ha nem adja meg a */Nu* beállítást, akkor a telepítés végén megnyílik a **Windows Update** ablak, hogy ellenőrizze a frissítéseket. A telepítés után az ügynök megjelenik a telepített programok listájában.
 
-A telepített programok listájának megtekintéséhez válassza **a Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemét.
+A telepített programok listájának megtekintéséhez válassza **a Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások** elemét.
 
 ![Ügynök telepítve](./media/backup-client-automation/installed-agent-listing.png)
 
@@ -209,7 +209,7 @@ Server properties updated successfully.
 
 A Azure Backup elküldett biztonsági mentési adatok titkosítva vannak az adatok titkosságának védelme érdekében. A titkosítási jelszó a "password" (jelszó), amely a visszaállításkor visszafejti az adatmennyiséget.
 
-A **Létrehozás**lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a **Settings**  >  **Properties**  >  Azure Portal **Recovery Services** tároló szakaszának beállítások tulajdonságai**biztonsági PIN-kódjában** .
+A **Létrehozás** lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a   >    >  Azure Portal **Recovery Services** tároló szakaszának beállítások tulajdonságai **biztonsági PIN-kódjában** .
 
 >[!NOTE]
 > A biztonsági PIN-kód csak a Azure Portal használatával hozható létre.
@@ -700,7 +700,7 @@ Az Azure-ban tárolt adatok azonban továbbra is megmaradnak, és a megőrzési 
 
 A Azure Backup ügynök, szabályzatok és adatforrások kezelése a PowerShell használatával távolról is elvégezhető. A távolról felügyelni kívánt gépet helyesen kell előkészíteni.
 
-Alapértelmezés szerint a WinRM szolgáltatás kézi indításra van konfigurálva. Az indítási típust *automatikus* értékre kell beállítani, és a szolgáltatásnak elindítva kell lennie. Annak ellenőrzéséhez, hogy a WinRM szolgáltatás fut-e, az állapot tulajdonságnak *futnia*kell.
+Alapértelmezés szerint a WinRM szolgáltatás kézi indításra van konfigurálva. Az indítási típust *automatikus* értékre kell beállítani, és a szolgáltatásnak elindítva kell lennie. Annak ellenőrzéséhez, hogy a WinRM szolgáltatás fut-e, az állapot tulajdonságnak *futnia* kell.
 
 ```powershell
 Get-Service -Name WinRM

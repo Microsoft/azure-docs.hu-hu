@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
 ms.openlocfilehash: 9fe4988b5499943f4b11ec5d640209ceb68e84ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87040231"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Fájlok elérése és kezelése a OneDrive-összekötőben Azure Logic Apps használatával
@@ -28,7 +28,7 @@ Ha többet szeretne megtudni a Logic Appsről, tekintse meg a [Mi a Logic apps](
 
 ## <a name="connect-to-onedrive"></a>Csatlakozás a OneDrive-hoz
 
-Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, először létre kell hoznia egy *kapcsolatot* a szolgáltatással. A kapcsolat kapcsolatot biztosít egy logikai alkalmazás és egy másik szolgáltatás között. Ha például csatlakozni szeretne a OneDrive-hoz, először egy OneDrive- *kapcsolatra*van szüksége. Kapcsolat létrehozásához adja meg azokat a hitelesítő adatokat, amelyeket általában a kapcsolódáshoz használni kívánt szolgáltatás eléréséhez használ. Így a OneDrive esetében adja meg a OneDrive-fiók hitelesítő adatait a kapcsolódás létrehozásához.
+Ahhoz, hogy a logikai alkalmazás hozzáférhessen bármely szolgáltatáshoz, először létre kell hoznia egy *kapcsolatot* a szolgáltatással. A kapcsolat kapcsolatot biztosít egy logikai alkalmazás és egy másik szolgáltatás között. Ha például csatlakozni szeretne a OneDrive-hoz, először egy OneDrive- *kapcsolatra* van szüksége. Kapcsolat létrehozásához adja meg azokat a hitelesítő adatokat, amelyeket általában a kapcsolódáshoz használni kívánt szolgáltatás eléréséhez használ. Így a OneDrive esetében adja meg a OneDrive-fiók hitelesítő adatait a kapcsolódás létrehozásához.
 
 ### <a name="create-the-connection"></a>A kapcsolat létrehozása
 
@@ -60,17 +60,17 @@ Az eseményindító egy olyan esemény, amely a logikai alkalmazásban definiál
 
 A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajtott művelet. [További információ a műveletekről](../logic-apps/logic-apps-overview.md#logic-app-concepts).
 
-1. Válassza ki a plusz jelet. Több lehetőség is megjelenik: **művelet hozzáadása**, **feltétel hozzáadása**vagy a **további** lehetőségek egyike.
+1. Válassza ki a plusz jelet. Több lehetőség is megjelenik: **művelet hozzáadása**, **feltétel hozzáadása** vagy a **további** lehetőségek egyike.
 
    ![A képernyőképen négy gomb látható: "+ új lépés", "művelet hozzáadása", "feltétel hozzáadása" és "... Továbbiak ".](./media/connectors-create-api-onedrive/add-action.png)
 
-2. Válassza **a művelet hozzáadása**lehetőséget.
+2. Válassza **a művelet hozzáadása** lehetőséget.
 
 3. A keresőmezőbe írja be az `onedrive` összes elérhető művelet listáját.
 
    ![Egy "a Microsoft által felügyelt" P I-k megjelenítése "nevű párbeszédpanel tartalmaz egy" onedrive "nevű mezőt. Alább látható a nyolc művelet listája. Az első a "OneDrive-Create file", és ki van választva.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
-4. A példánkban válassza a **OneDrive – fájl létrehozása**lehetőséget. Ha már létezik egy kapcsolódás, válassza ki a **mappa elérési útját** , adja meg a fájl **nevét**, és válassza ki a kívánt **fájlt** :  
+4. A példánkban válassza a **OneDrive – fájl létrehozása** lehetőséget. Ha már létezik egy kapcsolódás, válassza ki a **mappa elérési útját** , adja meg a fájl **nevét**, és válassza ki a kívánt **fájlt** :  
 
    ![A "fájl létrehozása" nevű párbeszédpanel három mezőt jelenít meg a "mappa elérési útja", a "fájlnév" és a "mappa tartalma" címkével. A "mappa elérési útja" mező mellett található egy címtárbeli Tallózás gomb.](./media/connectors-create-api-onedrive/sample-action.png)
 
@@ -86,6 +86,6 @@ A művelet egy logikai alkalmazásban definiált munkafolyamat által végrehajt
 
 Megtekintheti a hencegés során definiált összes eseményindítót és műveletet, valamint az [összekötő részleteiben](/connectors/onedriveconnector/)megjelenő korlátokat is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Logic Apps összekötői](apis-list.md)

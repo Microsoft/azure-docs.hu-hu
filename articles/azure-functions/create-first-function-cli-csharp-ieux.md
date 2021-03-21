@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: a78abea5bcc5925cb2e137d918c7217ae92b118e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102044323"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban a parancssorból
@@ -101,9 +101,9 @@ Ebben a szakaszban létrehoz egy helyi <abbr title="Egy vagy több, együtt tele
     
     <br/>   
     <details>  
-    <summary><strong>Nem kötelező: kód a HttpExample.cs</strong></summary>  
+    <summary><strong>Nem kötelező: kód a HttpExample. cs számára</strong></summary>  
     
-    A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a `req` [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely a **HttpTriggerAttribute** díszített, amely meghatározza az trigger viselkedését.
+    A *HttpExample. cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja a kérelmeket, és a `req` **HttpTriggerAttribute** díszített [HttpRequest](/dotnet/api/microsoft.aspnetcore.http.httprequest) , amely meghatározza az trigger viselkedését.
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
         

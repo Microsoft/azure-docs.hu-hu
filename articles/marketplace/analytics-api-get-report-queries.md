@@ -8,10 +8,10 @@ author: sayantanroy83
 ms.author: sroy
 ms.date: 3/08/2021
 ms.openlocfilehash: e2be43e8402e5179fb62d810fe7b9f41e704c49d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102583868"
 ---
 # <a name="get-report-queries-api"></a>Jelentési lekérdezési API beolvasása
@@ -35,7 +35,7 @@ A jelentések lekérése API beolvassa a jelentésekben használható összes le
 
 **Elérési út paraméter**
 
-Nincs
+Nincsenek
 
 **Lekérdezési paraméter**
 
@@ -49,11 +49,11 @@ Nincs
 
 **Kérelem tartalma**
 
-Nincs
+Nincsenek
 
 **Szószedet**
 
-Nincs
+Nincsenek
 
 **Válasz**
 

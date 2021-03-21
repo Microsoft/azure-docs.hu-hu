@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95993012"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő használata a StorSimple virtuális tömbhöz tartozó riasztások kezelésére
@@ -157,7 +157,7 @@ Az alábbi táblázatok felsorolják az esetlegesen felmerülő StorSimple-riasz
 | Riasztás szövege | Esemény | További információ/javasolt műveletek |
 |:--- |:--- |:--- |
 | Váratlan késéseket tapasztal az adatátvitel során. |Lassú adatátvitel. |Sávszélesség-szabályozási hibák léphetnek fel, ha túllépi a tárolási szolgáltatás skálázhatósági céljait. A Storage szolgáltatás ezzel biztosítja, hogy egyetlen ügyfél vagy bérlő sem használhatja a szolgáltatást mások rovására. Az Azure Storage-fiók hibaelhárításával kapcsolatos további információkért keresse fel az [Microsoft Azure Storage figyelését, diagnosztizálását és hibaelhárítását](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)ismertető témakört. |
-| A <*eszköz nevében* kevés a helyi foglalási lemezterület \> . |Lassú válaszidő. |a <eszköznév teljes kiépített méretének 10% *device name* \> -a a helyi eszközön van fenntartva, és a lefoglalt terület már alacsonyan fut. A <*eszköznév* munkaterhelése \> magasabb mértékű adatvesztést eredményez, vagy előfordulhat, hogy a közelmúltban nagy mennyiségű adat lett áttelepítve. Ez csökkentheti a teljesítményt. A probléma megoldásához vegye figyelembe a következő műveletek egyikét:<ul><li>Növelje a felhő sávszélességét erre az eszközre.</li><li>A munkaterhelések csökkentése vagy áthelyezése egy másik kötetre vagy megosztásra.</li></ul> |
+| A <*eszköz nevében* kevés a helyi foglalási lemezterület \> . |Lassú válaszidő. |a <eszköznév teljes kiépített méretének 10%  \> -a a helyi eszközön van fenntartva, és a lefoglalt terület már alacsonyan fut. A <*eszköznév* munkaterhelése \> magasabb mértékű adatvesztést eredményez, vagy előfordulhat, hogy a közelmúltban nagy mennyiségű adat lett áttelepítve. Ez csökkentheti a teljesítményt. A probléma megoldásához vegye figyelembe a következő műveletek egyikét:<ul><li>Növelje a felhő sávszélességét erre az eszközre.</li><li>A munkaterhelések csökkentése vagy áthelyezése egy másik kötetre vagy megosztásra.</li></ul> |
 
 ### <a name="security-alerts"></a>Biztonsági riasztások
 
@@ -165,6 +165,6 @@ Az alábbi táblázatok felsorolják az esetlegesen felmerülő StorSimple-riasz
 |:--- |:--- |:--- |
 | A <*eszköznév* jelszava \> <*szám* \> nap múlva lejár. |Jelszó figyelmeztetése |A jelszó <*számú* \> nap múlva lejár. Érdemes lehet módosítani a jelszavát. További információért lépjen [a StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)elemre. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a StorSimple virtuális tömbről](storsimple-ova-overview.md).

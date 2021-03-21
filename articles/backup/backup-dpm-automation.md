@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan helyezheti üzembe és kezelheti Data Protectio
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 176cbffe5152462055c4ffdb2367cf9c0ab97c1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90968299"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése DPM-kiszolgálókon a PowerShell-lel
@@ -69,7 +69,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. A következő példa a **BackupStorageRedundancy** beállítást mutatja be a *testVault*  beállításnál a **GeoRedundant**értékre.
+4. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. A következő példa a **BackupStorageRedundancy** beállítást mutatja be a *testVault*  beállításnál a **GeoRedundant** értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ezért célszerű a Backup Recovery Services Vault-objektumot tárolni egy változóban.
@@ -113,7 +113,7 @@ MARSAgentInstaller.exe /q
 
 Ezzel telepíti az ügynököt az összes alapértelmezett beállítással. A telepítés eltarthat néhány percig a háttérben. Ha nem ad meg */Nu* beállítást, a telepítés végén megnyílik a **Windows Update** ablak, hogy ellenőrizze a frissítéseket.
 
-Az ügynök megjelenik a telepített programok listájában. A telepített programok listájának megtekintéséhez válassza **a Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemét.
+Az ügynök megjelenik a telepített programok listájában. A telepített programok listájának megtekintéséhez válassza **a Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások** elemét.
 
 ![Ügynök telepítve](./media/backup-dpm-automation/installed-agent-listing.png)
 
@@ -183,7 +183,7 @@ A rendszer minden módosítást végrehajt a helyi PowerShell-objektumon, ```$se
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 Ha a DPM-gép a Azure Backup szolgáltatáshoz való kapcsolódása egy proxykiszolgálón keresztül történik, akkor a sikeres biztonsági mentéshez meg kell adni a proxykiszolgáló beállításait. Ezt a ```-ProxyServer``` és a ```-ProxyPort``` , ```-ProxyUsername``` valamint a ```ProxyPassword``` [set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting) parancsmaggal végzett paraméterek használatával végezheti el. Ebben a példában nincs proxykiszolgáló, ezért explicit módon töröljük a proxyval kapcsolatos információkat.
 
@@ -247,7 +247,7 @@ Először hozzon létre egy új védelmi csoportot a [New-DPMProtectionGroup](/p
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-A fenti parancsmag létrehoz egy *ProtectGroup01*nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) parancsmag használatával egy *módosítható* objektumhoz kell beszereznie a leírót.
+A fenti parancsmag létrehoz egy *ProtectGroup01* nevű védelmi csoportot. Egy meglévő védelmi csoport később is módosítható a biztonsági mentés Azure-felhőbe való hozzáadásához. Ahhoz azonban, hogy a védelmi csoport módosításait – új vagy meglévő – a [Get-DPMModifiableProtectionGroup](/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup) parancsmag használatával egy *módosítható* objektumhoz kell beszereznie a leírót.
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
