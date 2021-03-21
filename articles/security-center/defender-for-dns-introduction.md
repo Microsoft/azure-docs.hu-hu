@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: dffb505719e6778adfdd8e99f62790df9ebd615a
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102100695"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>A DNS-hez készült Azure Defender bemutatása
@@ -29,7 +29,7 @@ A DNS-hez készült Azure Defender további védelmi réteget biztosít a felhő
 |----|:----|
 |Kiadás állapota:|Előnézet<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Árképzési|A **DNS-hez készült Azure Defender** számlázása [Security Center díjszabásban](https://azure.microsoft.com/pricing/details/security-center/) látható|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Milyen előnyökkel jár az Azure Defender for DNS?

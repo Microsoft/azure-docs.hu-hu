@@ -8,11 +8,11 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 06663e12bbcaee2243be75d6aa9ea9cf4fd125bf
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100523362"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizont-tulajdonosi protokollok
@@ -820,7 +820,7 @@ Ez a szakasz a JSON-konfigurációs mezőket ismerteti.
 | Mező neve | Description | Lehetséges értékek |
 |--|--|--|
 | **ID (Azonosító)** | Egyetlen riasztási azonosítót jelöl. Ebben a kontextusban egyedinek kell lennie. | 0-10000 numerikus érték |
-| **üzenetet** | A felhasználó számára megjelenő információk. Ez a mező különböző mezők használatát teszi lehetővé. | A protokoll bármelyik mezőjét vagy bármely alsóbb rétegbeli protokollt használhat. |
+| **message** | A felhasználó számára megjelenő információk. Ez a mező különböző mezők használatát teszi lehetővé. | A protokoll bármelyik mezőjét vagy bármely alsóbb rétegbeli protokollt használhat. |
 | **Cím** | A riasztás címe |  |
 | **expression** | Ha azt szeretné, hogy ez a riasztás felugorjon. | Az alsó rétegekben vagy az aktuális rétegben található numerikus mezők használata.</br></br> Minden mezőnek burkolóval kell rendelkeznie `{}` , hogy az SDK-t mezőként lehessen felderíteni, a támogatott logikai operátorok</br> = =-EQUAL</br> <= – kisebb vagy egyenlő</br> >= – nagyobb vagy egyenlő</br> > – több, mint</br> < – kisebb, mint</br> ~ =-Nem egyenlő |
 
@@ -1640,6 +1640,6 @@ Figyelés:
 
 Kattintson a beépülő modulhoz tartozó figyelő gombra az áttekintésben.
 
-## <a name="next-steps"></a>Következő lépések
+Következő lépések
 
 A [Horizon API](references-horizon-api.md) beállítása

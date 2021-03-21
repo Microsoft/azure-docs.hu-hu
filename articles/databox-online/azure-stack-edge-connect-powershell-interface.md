@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
 ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96345593"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Azure Stack Edge Pro FPGA-eszköz kezelése a Windows PowerShell használatával
@@ -92,6 +92,6 @@ Ha a számítási szerepkör konfigurálva van az eszközön, a számítási nap
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure stack Edge Pro](azure-stack-edge-deploy-prep.md) üzembe helyezése Azure Portalban.

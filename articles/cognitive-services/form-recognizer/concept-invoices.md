@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103467391"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Űrlap-felismerő előre összeépített számlázási modellje
@@ -73,7 +73,7 @@ A JSON-kimenet 3 részből áll:
 
 A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 számla mezőt. Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert mezők (az alábbi kimenet ezt a [mintát](media/sample-invoice.jpg)használja).
 
-|Név| Típus | Leírás | Szöveg | Érték (szabványosított kimenet) |
+|Név| Típus | Description | Szöveg | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | sztring | Az ügyfél számlázása folyamatban van | Microsoft Corp |  |
 | CustomerId | sztring | Az ügyfél hivatkozási azonosítója | CID-12345 |  |
@@ -104,7 +104,7 @@ A számlázási szolgáltatás kibontja a szöveget, a táblákat és a 26 szám
 
 Az alábbiakban láthatók a JSON-kimenetre adott számlán kinyert sorok. az alábbi kimenet ezt a [mintát](./media/sample-invoice.jpg)használja.  
 
-|Név| Típus | Leírás | Szöveg (sor #1) | Érték (szabványosított kimenet) |
+|Név| Típus | Description | Szöveg (sor #1) | Érték (szabványosított kimenet) |
 |:-----|:----|:----|:----| :----|
 | Elemek | sztring | A sorhoz tartozó teljes karakterlánc-szöveg sora | 3/4/2021 A123 Consulting Services 2 óra $30,00 10% $60,00 | |
 | Összeg | szám | A sor tételének mennyisége | $60,00 | 100 |

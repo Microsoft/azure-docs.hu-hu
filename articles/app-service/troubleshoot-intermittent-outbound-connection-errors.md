@@ -8,10 +8,10 @@ ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
 ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94968298"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
@@ -125,7 +125,7 @@ Habár a PHP nem támogatja a kapcsolatok készletezését, kipróbálhatja az �
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
@@ -157,7 +157,7 @@ A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. 
 * A TCP-kapcsolatok korlátja a feldolgozói példány szintjén történik. Az Azure hálózati kimeneti terheléselosztás nem használja a TCP-kapcsolatok metrikáját a SNAT-portok korlátozásához.
 * A TCP-kapcsolatok korlátozásait a [homokozóban futó virtuális gépek numerikus korlátai – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) című cikk írja le.
 
-|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 

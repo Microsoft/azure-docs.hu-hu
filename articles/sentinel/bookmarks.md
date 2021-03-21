@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: 5e3b6802bab2c5fae97be8e55c8d5c11ff570f78
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94651312"
 ---
-# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>A vadászat során az Azure Sentinel használatával nyomon követheti az adatgyűjtést
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Adatok nyomon követése az Azure Sentinellel való veszélyforrás-keresés közben
 
 A fenyegetések vadászata jellemzően a kártékony viselkedés bizonyítékait keresi a naplózott adatok hegyeinek áttekintéséhez. Ezen eljárás során a nyomozók a lehetséges hipotézisek érvényesítése és a kompromisszumok teljes történetének megismerése során megkeresik azokat az eseményeket, amelyeket érdemes megjegyezni, újra felkeresni és elemezni.
 
-Az Azure Sentinelben elérhető vadászati könyvjelzők segítségével elvégezheti az **Azure Sentinel-logs-naplókban** futtatott lekérdezések megőrzését, valamint a szükségesnek ítélt lekérdezési eredményeket. Feljegyzések és címkék hozzáadásával rögzítheti a kontextusbeli megjegyzéseket, és hivatkozhat az eredményekre. A könyvjelzővel ellátott adatelemek az egyszerű együttműködés érdekében láthatók Önnek és a csapattársaik számára.
+Az Azure Sentinelben elérhető vadászati könyvjelzők segítségével elvégezheti az **Azure Sentinel-logs-naplókban** futtatott lekérdezések megőrzését, valamint a szükségesnek ítélt lekérdezési eredményeket. Megjegyzések és címkék hozzáadásával emellett a környezettel kapcsolatos megfigyeléseit is feljegyezheti és lehivatkozhatja. A könyvjelzővel ellátott adatokat Ön és csapata is láthatja a könnyebb együttműködés érdekében.
 
-A beérkező könyvjelzők adatait bármikor újra felkeresheti a **vadászat** ablaktábla **könyvjelzők** lapján. A szűrési és a keresési beállítások használatával gyorsan megtalálhatja az aktuális vizsgálathoz tartozó konkrét adatait. Azt is megteheti, hogy megtekinti a könyvjelzővel ellátott adatait közvetlenül a Log Analytics munkaterület **HuntingBookmark** táblájában. Például:
+A beérkező könyvjelzők adatait bármikor újra felkeresheti a **vadászat** ablaktábla **könyvjelzők** lapján. Szűrési és keresési lehetőségekkel gyorsan megkereshet adott, az aktuális vizsgálathoz szükséges adatokat. Azt is megteheti, hogy megtekinti a könyvjelzővel ellátott adatait közvetlenül a Log Analytics munkaterület **HuntingBookmark** táblájában. Például:
 
 > [!div class="mx-imgBorder"]
 > ![HuntingBookmark-tábla megtekintése](./media/bookmarks/bookmark-table.png)

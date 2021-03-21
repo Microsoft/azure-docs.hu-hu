@@ -5,10 +5,10 @@ ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96745978"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával
@@ -76,7 +76,7 @@ Az irányítópult egyik szerepköréhez hozzárendelhet egy felhasználói csop
 
 1. Ha befejezte a felhasználók vagy csoportok hozzáadását, válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szerepkörök listáját az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md)című részben tekintheti meg.
 * Az erőforrások kezelésével kapcsolatos további információkért lásd: [Az Azure-erőforrások kezelése a Azure Portal használatával](../azure-resource-manager/management/manage-resources-portal.md).

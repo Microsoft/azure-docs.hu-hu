@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 11/16/2020
 ms.openlocfilehash: 5042c6801678f94c749454dac28eec56fdcb7559
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94811040"
 ---
 # <a name="categories-and-subcategories-in-the-commercial-marketplace"></a>Kategóriák és alkategóriák a kereskedelmi piactéren
@@ -35,7 +35,7 @@ Ez a táblázat az Azure Marketplace-re leképezett elsődleges kategóriákat �
 | Elemzés | Big Data<br>Adatelemzés<br>Adatelemzések<br>Prediktív elemzés<br>Valós idejű/adatfolyam-elemzés |
 | Blockchain | Alkalmazás-gyorsítók<br>Több csomópontos Főkönyv<br>Egycsomópontos Főkönyv<br>Eszközök |
 | Compute | Alkalmazás-infrastruktúra<br>Gyorsítótár<br>Operációs rendszerek |
-| Containers | Tároló alkalmazások<br>Tároló lemezképei<br>Ismerkedés a tárolókkal |
+| Tárolók | Tároló alkalmazások<br>Tároló lemezképei<br>Ismerkedés a tárolókkal |
 | Adatbázis | Adattavak<br>-adatraktár<br>Főkönyv/Blockchain-adatbázisok<br>NoSQL-adatbázisok<br>Relációs adatbázisok |
 | Fejlesztői eszközök | Fejlesztői szolgáltatás<br>Parancsfájlok<br>Eszközök |
 | DevOps | N/A |
@@ -47,9 +47,9 @@ Ez a táblázat az Azure Marketplace-re leképezett elsődleges kategóriákat �
 | Áttelepítés | Adatok áttelepítése |
 | Vegyes valóság | N/A |
 | & diagnosztika figyelése | N/A |
-| Hálózatkezelés | Berendezések kezelői<br>Kapcsolatok<br>Tűzfalak<br>Terheléselosztók |
+| Hálózatkezelés | Berendezések kezelői<br>Kapcsolat<br>Tűzfalak<br>Terheléselosztók |
 | Biztonság | Identitás & hozzáférés-kezelés<br>Information Protection<br>Veszélyforrások elleni védelem |
-| Storage | Biztonsági mentés & helyreállítás<br>Az adatéletciklus-kezelés<br>Vállalati hibrid tárolás<br>Fájlmegosztás |
+| Tárolás | Biztonsági mentés & helyreállítás<br>Az adatéletciklus-kezelés<br>Vállalati hibrid tárolás<br>Fájlmegosztás |
 | Webes | Blogok & CMS<br>E-kereskedelmi<br>Kezdő Web Apps<br>Web Apps<br>Web Apps keretrendszerek |
 |||
 

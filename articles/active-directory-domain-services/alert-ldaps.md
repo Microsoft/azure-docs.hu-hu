@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: 15c1f3a1731edf7b45061646d43688b4aacc6104
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620307"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: Secure LDAP riasztások a Azure Active Directory Domain Services
@@ -39,7 +39,7 @@ Ha engedélyezi a biztonságos LDAP használatát, ajánlott olyan további szab
 1. Válassza a **+ Hozzáadás** elemet a 636-es TCP-porthoz tartozó szabály létrehozásához. Ha szükséges, válassza a **speciális** lehetőséget az ablakban egy szabály létrehozásához.
 1. A **forrás** mezőben válassza az *IP-címek* lehetőséget a legördülő menüből. Adja meg azokat a forrás IP-címeket, amelyekhez hozzáférést szeretne biztosítani a biztonságos LDAP-forgalomhoz.
 1. Válassza *a* **cél** lehetőséget, majd adja meg a *636* értéket a **célport tartományához**.
-1. Állítsa be **Protocol** a protokollt *TCP* -ként, és *engedélyezze* a **műveletet** .
+1. Állítsa be  a protokollt *TCP* -ként, és *engedélyezze* a **műveletet** .
 1. Adja meg a szabály prioritását, majd adjon meg egy nevet, például *RestrictLDAPS*.
 1. Ha elkészült, válassza a **Hozzáadás** elemet a szabály létrehozásához.
 
@@ -58,7 +58,7 @@ A felügyelt tartomány állapota két órán belül automatikusan frissül, és
 
 Hozzon létre egy helyettesítő Secure LDAP-tanúsítványt a [biztonságos LDAP-tanúsítvány létrehozásához](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)szükséges lépések követésével. Alkalmazza a helyettesítő tanúsítványt az Azure AD DSra, és ossza el a tanúsítványt minden olyan ügyfél számára, amely biztonságos LDAP használatával csatlakozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

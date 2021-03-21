@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/09/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.openlocfilehash: 8b0d6ffc00a140073c2dfb5789fbf9760e1767c9
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462762"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579042"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
@@ -44,17 +44,17 @@ Közvetlenül a Microsoft mérnököktől, az Azure legértékesebb szakembereit
 
 [A Microsoft Q&a](/answers/products/) az Azure által ajánlott közösségi támogatási forrás.
 
-Ha nem talál választ a problémára a Microsoft Q&A alkalmazásban való kereséssel, küldjön egy új kérdést. A következő címkék egyikét használhatja, ha a [kiváló minőségű kérdést](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)kéri:
+Ha nem talál választ a problémára a Microsoft Q&A alkalmazásban való kereséssel, küldjön egy új kérdést. A következő címkék egyikét használhatja, ha a [kiváló minőségű kérdést](/answers/articles/24951/how-to-write-a-quality-question.html)kéri:
 
 | Összetevő/régió| Címkék  |
 |------------|---------------------------|
-| Active Directory Authentication Library (ADAL)                              | [adal](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
-| Microsoft Authentication Library (MSAL)                                     | [msal](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
-| A .NET-hez készült webes felület (OWIN) megnyitása                               | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure AD B2B/külső identitások](../external-identities/what-is-b2b.md) | [[Azure-ad-B2B]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
-| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-ad-Graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
-| Minden egyéb hitelesítési és engedélyezési terület                            | [[Azure-Active-Directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| Active Directory Authentication Library (ADAL)                              | [adal](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [msal](/answers/topics/azure-ad-msal.html)                            |
+| A .NET-hez készült webes felület (OWIN) megnyitása                               | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B/külső identitások](../external-identities/what-is-b2b.md) | [[Azure-ad-B2B]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[Azure-ad-Graph]](/answers/topics/azure-ad-graph.html)                 |
+| Minden egyéb hitelesítési és engedélyezési terület                            | [[Azure-Active-Directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
@@ -98,10 +98,8 @@ Ha segítségre van szüksége a Microsoft Authentication librarys (MSAL) egyik�
 
 - [Azure-frissítések](https://azure.microsoft.com/updates/?category=identity): Ismerje meg a fontos termékfrissítéseket, útitervet és hirdetményeket.
 
-- A [docs újdonságai](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs): Ismerje meg a Microsoft Identity platform dokumentációjának újdonságait.
+- A [docs újdonságai](./whats-new-docs.md): Ismerje meg a Microsoft Identity platform dokumentációjának újdonságait.
 
 - [Azure Active Directory Identity blog](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): híreket és információkat kaphat az Azure ad-ről.
 
 - [Technikai Közösség](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): ossza meg tapasztalatait, ismerkedjen meg a szakértőktől.
-
-

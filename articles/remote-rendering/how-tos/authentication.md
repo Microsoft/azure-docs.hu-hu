@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
 ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97724881"
 ---
 # <a name="configure-authentication"></a>A hitelesítés konfigurálása
@@ -58,7 +58,7 @@ A szolgáltatáshoz biztosított hozzáférés szintjének szabályozása érdek
 * **Távoli renderelési rendszergazda**: lehetővé teszi a felhasználó számára a konverziót, a munkamenetek kezelését, a renderelést és a diagnosztikai képességeket az Azure távoli rendereléshez.
 * **Távoli renderelési ügyfél**: a felhasználók számára biztosít munkamenet-, renderelési és diagnosztikai képességeket az Azure távoli rendereléshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fiók létrehozása](create-an-account.md)
 * [Az Azure frontend API-k használata a hitelesítéshez](frontend-apis.md)

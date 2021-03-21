@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
 ms.openlocfilehash: 8b36bb34f4c9081d807998cb8287797443625a6b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460293"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
@@ -45,7 +45,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Maximális kimeneti teljesítmény    | 750 W                     |
 | Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
-| Gyors csatlakoztatás           | Igen                        |
+| Gyors csatlakoztatás           | Yes                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack Edge Pro tápkábel-specifikációk régiónként
 
@@ -153,6 +153,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Stack Edge Pro üzembe helyezése](azure-stack-edge-deploy-prep.md)

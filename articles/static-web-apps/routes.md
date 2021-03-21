@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
 ms.openlocfilehash: 5cbcbcf8914a663a6d039abecd6a4488eaf677b2
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101739644"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
@@ -59,10 +59,10 @@ Az útvonalak a (z) _routes.js_ fájlon vannak definiálva az útválasztási sz
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
-| `serve`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve` az értékeknek tényleges fájlokra kell mutatniuk.  |
-| `allowedRoles` | Nem       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
-| `statusCode`   | Nem       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
+| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \*_ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
+| `serve`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve` az értékeknek tényleges fájlokra kell mutatniuk.  |
+| `allowedRoles` | No       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz vannak társítva a [meghívásokon](authentication-authorization.md)keresztül.</ul> |
+| `statusCode`   | No       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
 

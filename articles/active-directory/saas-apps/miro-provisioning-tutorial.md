@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: Zhchia
 ms.openlocfilehash: d3dee76ada7a9ed48813928937f8f8da8be4add1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96348041"
 ---
 # <a name="tutorial-configure-miro-for-automatic-user-provisioning"></a>Oktatóanyag: a Miro konfigurálása a felhasználók automatikus üzembe helyezéséhez
@@ -130,7 +130,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-13. A Miro Azure AD kiépítési szolgáltatásának engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban **On** .
+13. A Miro Azure AD kiépítési szolgáltatásának engedélyezéséhez módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban  .
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 

@@ -4,10 +4,10 @@ description: A Azure Backup segítségével az Azure import/export szolgáltatá
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98702185"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
@@ -99,7 +99,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 A következő lépésekkel manuálisan feltöltheti az offline biztonsági mentési tanúsítványt egy korábban létrehozott Azure Active Directory alkalmazásba az offline biztonsági mentéshez.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. A **tulajdonban lévő alkalmazások** lapon keresse meg a megjelenítendő név formátumot tartalmazó alkalmazást `AzureOfflineBackup _<Azure User Id` .
 
@@ -281,6 +281,6 @@ Az importálási feladatok befejeződése után a kezdeti biztonsági mentési a
 
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre a kezdeti biztonsági másolaton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure import/export szolgáltatás munkafolyamatával kapcsolatos kérdésekért lásd: [a Microsoft Azure import/export szolgáltatás használata az adatok blob Storage-tárolóba történő átviteléhez](../import-export/storage-import-export-service.md).

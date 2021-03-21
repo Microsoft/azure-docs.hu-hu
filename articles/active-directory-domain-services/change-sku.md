@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: 320bd87aa78d26cee44c48f27365febd1dd426ff
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96620290"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>Meglévő Azure Active Directory Domain Services felügyelt tartomány SKU-jának módosítása
@@ -64,7 +64,7 @@ Felügyelt tartomány SKU-jának a Azure Portal használatával történő módo
 
 Az SKU típusának módosításához egy-két percet is igénybe vehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha rendelkezik erőforrás-erdővel, és további megbízhatósági kapcsolatokat szeretne létrehozni az SKU módosítása után, tekintse [meg a kimenő erdő megbízhatóságának létrehozása helyszíni tartományhoz az Azure AD DS-ban][create-trust]című témakört.
 

@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: b3d09ec4c4ab578a87f0d983c0f243bee2a84597
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94991230"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
@@ -359,13 +359,13 @@ A következő táblázat felsorolja a  *function.js* fájlon és az `SendGrid` a
 
 | *function.jsa* tulajdonságon | Attribútum/Megjegyzés tulajdonság | Description | Választható |
 |--------------------------|-------------------------------|-------------|----------|
-| típus |n/a| Értékre kell állítani `sendGrid` .| No |
-| irány |n/a| Értékre kell állítani `out` .| No |
-| name |n/a| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | No |
+| típus |n.a.| Értékre kell állítani `sendGrid` .| No |
+| irány |n.a.| Értékre kell állítani `out` .| No |
+| name |n.a.| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték akkor van, `$return` Ha csak egy visszatérési érték van. | No |
 | apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| No |
-| a következőre:| Művelet | A címzett e-mail-címe. | Yes |
+| felhasználóként a(z)| Művelet | A címzett e-mail-címe. | Yes |
 | a| Forrás | A feladó e-mail-címe. |  Yes |
-| tulajdonos| Tárgy | Az e-mail tárgya. | Yes |
+| tárgy| Tárgy | Az e-mail tárgya. | Yes |
 | szöveg| Szöveg | Az e-mail tartalma. | Yes |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
@@ -394,7 +394,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 |Tulajdonság  |Alapértelmezett | Description |
 |---------|---------|---------| 
-|a|n/a|A küldő e-mail-címe az összes függvényen belül.| 
+|a|n.a.|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

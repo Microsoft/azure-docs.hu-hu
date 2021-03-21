@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: db6793389df0df169745ddd50551f836d06cf08c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 12e8222ad59aae31baa7a549519c97550b711703
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488754"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579943"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
 
@@ -68,6 +68,8 @@ Ha engedélyezni szeretné a bejelentkezést a Azure Active Directory B2C (Azure
 1. Kattintson a **Mentés** gombra.
 
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>Microsoft Identity Provider hozzáadása felhasználói folyamathoz 
+
+Ezen a ponton a Microsoft Identity Provider beállítása megtörtént, de a bejelentkezési oldalakon még nem érhető el. A Microsoft Identity Provider hozzáadása felhasználói folyamathoz:
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Kattintson arra a felhasználói folyamatra, amelyhez hozzá szeretné adni a Microsoft Identity providert.

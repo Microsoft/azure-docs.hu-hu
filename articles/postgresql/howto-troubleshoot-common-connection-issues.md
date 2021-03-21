@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014618"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
@@ -42,7 +42,7 @@ A Azure Database for PostgreSQLhoz való kapcsolódási problémák általában 
 3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for PostgreSQL korlátozásait](concepts-limits.md).
 4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az [Azure](https://azure.microsoft.com/support/options) támogatási webhelyén, a **támogatás beszerzése** lehetőség választásával kérheti le.
 
-## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
+## <a name="troubleshoot-persistent-errors"></a>Állandó jellegű hibák elhárítása
 
 Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
@@ -59,6 +59,6 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLh
 3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat.
 4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for PostgreSQL.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for PostgreSQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

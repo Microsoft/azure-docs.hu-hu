@@ -4,10 +4,10 @@ description: Ismerje meg a Azure Event Grid újdonságait, például a legújabb
 ms.topic: overview
 ms.date: 07/23/2020
 ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96350007"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>A Azure Event Grid újdonságai
@@ -104,4 +104,4 @@ Azure Event Grid folyamatosan fejleszti a fejlesztéseket. A legújabb fejlemén
     - Az esemény-előfizetések [speciális szűrésének](event-filtering.md#advanced-filtering) bemutatása
     - Az SDK-t az API-verziót célzó stabil verziója `2018-01-01` továbbra is a 1.3.0 verziójának minősül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések

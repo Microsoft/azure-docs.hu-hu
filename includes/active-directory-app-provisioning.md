@@ -1,12 +1,12 @@
 ---
 ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95556272"
 ---
-Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
+Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
 ![Kiépítés – áttekintés diagram](./media/active-directory-app-provisioning/provisioning-overview.png)
 

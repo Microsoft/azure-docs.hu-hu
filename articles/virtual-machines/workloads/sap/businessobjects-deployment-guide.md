@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
 ms.openlocfilehash: 3b3c313df5704e49481c66ad682faccd48d180ea
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505902"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
@@ -255,7 +255,7 @@ Az Azure Storage-ban különböző tárolási típusok érhetők el az ügyfelek
 
 ![SAP BusinessObjects BI platform Storage-elrendezés az Azure-ban](media/businessobjects-deployment-guide/businessobjects-storage-layout.png)
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Az SAP BOBI olyan jelentéskészítési és elemzési BI-platform, amely nem rendelkezik üzleti adattal. Így a rendszer a többi adatbázis-kiszolgálóhoz csatlakozik, ahonnan beolvassa az összes információt, és betekintést nyújt a felhasználók számára. Az Azure egy hálózati infrastruktúrát biztosít, amely lehetővé teszi az SAP BI platformmal megvalósítható összes forgatókönyv leképezését, például a helyszíni rendszerhez való csatlakozást, a különböző virtuális hálózatok rendszereit és egyebeket. További információ: [Microsoft Azure hálózatkezelés az SAP-Munkaterheléshez](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/workloads/sap/planning-guide.md#microsoft-azure-networking).
 

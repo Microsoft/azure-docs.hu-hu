@@ -8,10 +8,10 @@ ms.date: 05/31/2017
 ms.author: cynthn
 ms.reviewer: ''
 ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98701033"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő, ha az Azure-szolgáltatás megszakadásának hatására az Azure virtuális gépek
@@ -41,7 +41,7 @@ Ez a legjobb megoldás, ha nem állított be Azure Site Recovery, a megszakadás
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli virtuális gépeken futó alkalmazások védelmének](../site-recovery/azure-to-azure-quickstart.md) megkezdése Azure site Recovery használatával
 

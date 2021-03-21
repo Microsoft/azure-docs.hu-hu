@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015926"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Magánhálózati IP-cím konfigurálása virtuális géphez a Azure Portal használatával
@@ -57,7 +57,7 @@ Ha egy *DNS01* nevű virtuális gépet szeretne létrehozni egy *TestVNet* nevű
     | **Erőforráscsoport** | **TestRG** (kiválasztás a legördülő listából) |
     | **Virtuális gép neve** | *DNS01* |
     | **Régió** | **(US) Az USA keleti régiója** |
-    | **Rendszerkép** | **Windows Server 2019 Datacenter** |
+    | **Kép** | **Windows Server 2019 Datacenter** |
     | **Méret** | **B1ls** **virtuális gép mérete** , **standard szintű** **ajánlat** |
     | **Felhasználónév** | A rendszergazdai fiók felhasználóneve |
     | **Jelszó** | A rendszergazda fiókja felhasználónevének jelszava |
@@ -128,6 +128,6 @@ Egy virtuális gép operációs rendszerén belül nem kell statikusan hozzáren
 
 Emellett soha ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt *nyilvános* IP-címet a virtuális gép operációs rendszerén belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [IP-címek beállításainak](virtual-network-network-interface-addresses.md)kezeléséről.

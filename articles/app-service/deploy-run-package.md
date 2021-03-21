@@ -3,12 +3,12 @@ title: Alkalmazás futtatása ZIP-csomagból
 description: Az alkalmazás ZIP-csomagjának üzembe helyezése az atomenergia-szolgáltatással. Javíthatja az alkalmazás működésének kiszámíthatóságát és megbízhatóságát a ZIP-telepítési folyamat során.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008129"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577546"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Az alkalmazás futtatása Azure App Service közvetlenül egy ZIP-csomagból
 
@@ -67,6 +67,7 @@ Ha a blob Storage-hoz azonos nevű frissített csomagot tesz közzé, újra kell
 
 - A közvetlenül a csomagból való futtatása `wwwroot` csak olvasható. Az alkalmazás hibaüzenetet küld, ha fájlokat próbál írni ebbe a könyvtárba.
 - A TAR és a GZIP formátum nem támogatott.
+- A ZIP-fájl legfeljebb 1 GB-os lehet
 - Ez a funkció nem kompatibilis a [helyi gyorsítótárral](overview-local-cache.md).
 - A jobb hidegindító teljesítmény érdekében használja a helyi zip-beállítást ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
 

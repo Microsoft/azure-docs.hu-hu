@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 346d58dbe06a29a4ba114ae788dee16e80b8f9df
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 17b2e260f9a90ddda6e246058cefb1bec8b1ac5e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101695481"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>A Linux rendszerű virtuális gépekre vonatkozó Azure Hybrid Benefit alkalmazása
@@ -177,7 +177,7 @@ A Red Hat-előfizetések megfelelőségével, a szoftverfrissítések és a Azur
 
 ### <a name="suse"></a>SUSE
 
-Ha a SLES-alapú virtuális gépekhez Azure Hybrid Benefit szeretne használni, és a SLES-TB a BYOS-re vagy a SLES BYOS-re való áttéréssel kapcsolatos információkért lásd: [SUSE Linux Enterprise és Azure Hybrid Benefit](https://www.suse.com/support/kb/doc/?id=000019868). 
+Ha a SLES-alapú virtuális gépekhez Azure Hybrid Benefit szeretne használni, és a SLES-TB a BYOS-re vagy a SLES BYOS-re való áttéréssel kapcsolatos információkért lásd: [SUSE Linux Enterprise és Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 *K: használhatok `RHEL_BYOS` SLES-lemezképpel rendelkező licencet, vagy fordítva?*

@@ -9,16 +9,16 @@ ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f469664c716ecef6b82de2befa40b33f253e229f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99627706"
 ---
 1. Keresse meg a létrehozott virtuális WAN-t. A virtuális WAN lapon a **kapcsolat** szakaszban válassza a **hubok** lehetőséget.
 2. A **hubok** lapon válassza az **+ új hub** lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
 
-    ![A képernyőképen a virtuális központ létrehozása panel jelenik meg, ahol az alapok lap van kiválasztva.](./media/virtual-wan-tutorial-hub-include/basics.png "Alapbeállítások")
+    ![A képernyőképen a virtuális központ létrehozása panel jelenik meg, ahol az alapok lap van kiválasztva.](./media/virtual-wan-tutorial-hub-include/basics.png "Alapvető beállítások")
 3. A **virtuális központ létrehozása** lap **alapjai** lapon végezze el a következő mezőket:
 
    * **Régió** (korábbi nevén hely)

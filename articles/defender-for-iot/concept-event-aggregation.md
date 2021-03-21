@@ -1,5 +1,5 @@
 ---
-title: Eseményösszesítés
+title: Esemény összesítése (előzetes verzió)
 titleSuffix: Azure Defender for IoT
 description: A Defender for IoT biztonsági ügynökök adatokat és rendszereseményeket gyűjtenek a helyi eszközről, és az adatokat az Azure-felhőbe küldik feldolgozásra és elemzésre.
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: azure
-ms.openlocfilehash: 53811c20330d96b279eeb24e1aa90248b60fcb32
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9ce24a44e48f090a0dc7d355952b3cf50dd4318c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102120045"
 ---
-# <a name="event-aggregation"></a>Eseményösszesítés 
+# <a name="event-aggregation-preview"></a>Esemény összesítése (előzetes verzió)
 
 A Defender for IoT biztonsági ügynökök adatokat és rendszereseményeket gyűjtenek a helyi eszközről, és az adatokat az Azure-felhőbe küldik feldolgozásra és elemzésre. A IoT Micro Agent Defender számos típusú eszköz-eseményt gyűjt, beleértve az új folyamatokat és az összes új kapcsolatfelvételi eseményt. Az új folyamat és az új kapcsolatfelvételi események is gyakran előfordulnak egy adott eszközön egy másodpercen belül. Ez a képesség fontos az átfogó biztonság szempontjából, azonban az üzenetek biztonsági ügynökei által küldött üzenetek száma gyorsan teljesíthető, vagy túllépheti a IoT Hub kvótát és a költségeket. Ezek az események azonban rendkívül értékes biztonsági információkat tartalmaznak, amelyek elengedhetetlenek az eszköz védelméhez. 
 

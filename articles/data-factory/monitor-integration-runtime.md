@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740025"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Integrációs modul monitorozása az Azure Data Factoryben
@@ -44,11 +44,11 @@ A következő táblázat az Azure Integration Runtime parancsmag által visszaad
 | Tulajdonság | Leírás |
 -------- | ------------- | 
 | Név | Az Azure Integration Runtime neve. |  
-| Állam | Az Azure Integration Runtime állapota. | 
+| Állapot | Az Azure Integration Runtime állapota. | 
 | Hely | Az Azure Integration Runtime helye. Az Azure Integration Runtime helyével kapcsolatos részletekért lásd: [az Integration Runtime bemutatása](concepts-integration-runtime.md). |
 | DataFactoryName | Annak az adatelőállítónak a neve, amelyhez az Azure Integration Runtime tartozik. | 
 | ResourceGroupName | Azon erőforráscsoport neve, amelyhez az adatelőállító tartozik.  |
-| Leírás | Az Integration Runtime leírása.  |
+| Description | Az Integration Runtime leírása.  |
 
 ### <a name="status"></a>Állapot
 
@@ -171,13 +171,13 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott tulajdonságok leírásait tartalmazza.
 
-| Tulajdonság/állapot              | Leírás                  |
+| Tulajdonság/állapot              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | A Azure-SSIS IR létrehozásának UTC-ideje. |
 | Csomópontok                        | A Azure-SSIS IR lefoglalt/rendelkezésre álló csomópontjai csomópont-specifikus állapotokkal (kezdő/elérhető/újrahasznosítási/nem elérhető) és végrehajtható hibákkal rendelkeznek. |
 | OtherErrors                  | A nem csomópont-specifikus végrehajtható hibák a Azure-SSIS IR. |
 | LastOperation                | A Azure-SSIS IR utolsó indítási/leállítási műveletének eredménye, ha a művelet sikertelen. |
-| Állam                        | A Azure-SSIS IR teljes állapota (kezdeti/indítás/elindítva/leállítás/leállítva). |
+| Állapot                        | A Azure-SSIS IR teljes állapota (kezdeti/indítás/elindítva/leállítás/leállítva). |
 | Hely                     | A Azure-SSIS IR helye. |
 | NodeSize                     | A Azure-SSIS IR egyes csomópontjainak mérete. |
 | NodeCount                    | A Azure-SSIS IR csomópontjainak száma. |
@@ -193,13 +193,13 @@ A következő táblázat a Azure-SSIS IR a fenti parancsmag által visszaadott t
 | ResourceGroupName            | Azon Azure-erőforráscsoport neve, amelyben az ADF és a Azure-SSIS IR létrejött. |
 | DataFactoryName              | Az ADF neve. |
 | Name                         | A Azure-SSIS IR neve. |
-| Leírás                  | A Azure-SSIS IR leírása. |
+| Description                  | A Azure-SSIS IR leírása. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Állapot (Azure-SSIS IR csomóponton)
 
 Az alábbi táblázat egy Azure-SSIS IR csomópont lehetséges állapotát tartalmazza:
 
-| Csomópont-specifikus állapot | Leírás |
+| Csomópont-specifikus állapot | Description |
 | -------------------- | ----------- | 
 | Indítás             | A csomópont előkészítése folyamatban van. |
 | Elérhető            | Ez a csomópont készen áll a SSIS-csomagok üzembe helyezésére és végrehajtására. |
@@ -210,7 +210,7 @@ Az alábbi táblázat egy Azure-SSIS IR csomópont lehetséges állapotát tarta
 
 Az alábbi táblázat egy Azure-SSIS IR lehetséges általános állapotait tartalmazza. A teljes állapot a Azure-SSIS IRhoz tartozó összes csomópont összesített állapotával függ. 
 
-| Általános állapot | Leírás | 
+| Általános állapot | Description | 
 | -------------- | ----------- | 
 | Kezdeti        | A Azure-SSIS IR csomópontjai nem lettek kiosztva/előkészített állapotban. | 
 | Indítás       | A Azure-SSIS IR csomópontjai vannak lefoglalva/elkészítve, és a számlázás megkezdődött. |

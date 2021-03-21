@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000657"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
@@ -139,7 +139,7 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában defini�
 ## <a name="application-system-health-reports"></a>Alkalmazásrendszer állapotáról készült jelentések
 A Fürtfelügyelő szolgáltatást jelképező System.CM az alkalmazással kapcsolatos információkat kezelő szolgáltató.
 
-### <a name="state"></a>Állam
+### <a name="state"></a>Állapot
 A System.CM-jelentések az alkalmazás létrehozásakor vagy frissítésekor OKként jelennek meg. A szolgáltatás törli az állapot-tárolót az alkalmazás törlésekor, hogy az eltávolítható legyen az áruházból.
 
 * **SourceId forrásazonosító**: System.cm
@@ -172,7 +172,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Szolgáltatási rendszerállapot-jelentések
 A Feladatátvételi felügyelő szolgáltatást jelképező System.FM a szolgáltatásokkal kapcsolatos információkat kezelő szolgáltató.
 
-### <a name="state"></a>Állam
+### <a name="state"></a>Állapot
 A System.FM jelentések a szolgáltatás létrehozásakor rendben vannak. A szolgáltatás törlése után törli az entitást az állapotfigyelő tárolóból.
 
 * **SourceId forrásazonosító**: System.FM
@@ -214,7 +214,7 @@ A **System. PLB** hibát jelez, amikor azt észleli, hogy egy szolgáltatás fri
 ## <a name="partition-system-health-reports"></a>Partíció rendszerállapot-jelentései
 A Feladatátvételi felügyelő szolgáltatást jelölő System.FM az a szolgáltató, amely a szolgáltatási partíciókkal kapcsolatos információkat kezeli.
 
-### <a name="state"></a>Állam
+### <a name="state"></a>Állapot
 A System.FM-jelentések a partíció létrehozásakor és kifogástalan állapotában is rendben vannak. A partíció törlése után törli az entitást az állapotfigyelő tárolóból.
 
 Ha a partíció a replikák minimális száma alatt van, hibát jelez. Ha a partíció nem a replika minimális száma alá esik, de a cél replikák száma alá esik, a rendszer figyelmeztetést jelenít meg. Ha a partíció kvórum elvesztése miatt következik be, a System.FM hibát jelez.
@@ -391,7 +391,7 @@ A **System. PLB** figyelmeztetést küld, ha a replika korlátozásának megsér
 ## <a name="replica-system-health-reports"></a>Replika rendszerállapot-jelentései
 Az újrakonfigurálási ügynök összetevőjét képviselő **System. ra**, a replika állapotának szolgáltatója.
 
-### <a name="state"></a>Állam
+### <a name="state"></a>Állapot
 A System. RA-jelentések a replika létrehozásakor rendben vannak.
 
 * **SourceId forrásazonosító**: System. ra
@@ -872,7 +872,7 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában nincs d
 * **Tulajdonság**: **ResourceGovernance**.
 * **Következő lépések**: a probléma megoldásának előnyben részesített módja a fürt jegyzékfájljának módosítása az elérhető erőforrások automatikus észlelésének engedélyezéséhez. Egy másik lehetőség a fürt jegyzékfájljának frissítése a metrikák megfelelően megadott csomópont-kapacitása alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 * [A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c8454d2ca83d4f406149e7eb73feb19ce59554f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96744125"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Mikor kell Azure Multi-Factor Authentication szolgáltatót használni
@@ -72,6 +72,6 @@ Ha meggyőződött arról, hogy az összes beállítás át lett telepítve, tal
 > [!NOTE]
 > Előfordulhat, hogy a Microsoft Authenticator alkalmazás és az Azure MFA-kiszolgáló régebbi verzióit használó felhasználóknak újra regisztrálniuk kell az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)

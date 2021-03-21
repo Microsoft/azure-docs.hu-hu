@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000402"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Exchange EDI-üzenetek kötegként vagy a kereskedelmi partnerek közötti csoportok között Azure Logic Apps
@@ -191,6 +191,6 @@ Most hozzon létre egy vagy több olyan logikai alkalmazást, amely üzeneteket 
 
 A batching-megoldás teszteléséhez tegye közzé az X12 üzeneteket a [Poster](https://www.getpostman.com/postman) vagy hasonló eszköz használatával a Batch-küldő logikai alkalmazásban. Hamarosan megkezdheti a X12-üzenetek lekérését a kérelem-tárolóban 10 percenként vagy 10 kötegben, mindezt ugyanazzal a partíciós kulccsal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Üzenetek feldolgozása kötegként](../logic-apps/logic-apps-batch-process-send-receive-messages.md) 

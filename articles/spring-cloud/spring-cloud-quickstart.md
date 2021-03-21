@@ -9,10 +9,10 @@ ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: c2121f429b928d58a2df7b4e4663341cf600da3e
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102214473"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Rövid útmutató: az első Azure Spring Cloud-alkalmazás üzembe helyezése
@@ -154,7 +154,7 @@ A Visual Studióban hozzon létre egy "Hello-World" nevű ASP.NET Core webalkalm
 
    A csomagok a Steeltoe Service Discovery és az Azure Spring Cloud ügyféloldali kódtár számára készültek. A `Zip` feladat az Azure-ba való üzembe helyezés. A parancs futtatásakor a `dotnet publish` bináris fájlokat a *közzétételi* mappában hozza létre, és ez a feladat a *közzétételi* mappát egy *. zip* fájlba helyezi, amelyet feltölt az Azure-ba.
 
-3. A *program.cs* fájlban adjon hozzá egy, `using` Az Azure Spring Cloud ügyféloldali kódtárat használó irányelvet és kódot:
+3. A *program. cs* fájlban adjon hozzá egy, `using` Az Azure Spring Cloud ügyféloldali kódtárat használó irányelvet és kódot:
 
    ```csharp
    using Microsoft.Azure.SpringCloud.Client;
@@ -170,7 +170,7 @@ A Visual Studióban hozzon létre egy "Hello-World" nevű ASP.NET Core webalkalm
                    });
    ```
 
-4. A *Startup.cs* fájlban adjon hozzá egy olyan `using` direktívát és kódot, amely a `ConfigureServices` és metódusok végén a Steeltoe szolgáltatás felderítését használja `Configure` :
+4. A *Startup. cs* fájlban adjon hozzá egy olyan `using` irányelvet és kódot, amely a `ConfigureServices` és metódusok végén a Steeltoe szolgáltatás felderítését használja `Configure` :
 
    ```csharp
    using Steeltoe.Discovery.Client;

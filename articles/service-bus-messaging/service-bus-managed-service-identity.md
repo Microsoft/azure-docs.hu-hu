@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identit
 ms.topic: article
 ms.date: 01/21/2021
 ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98954310"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
@@ -125,7 +125,7 @@ Ha egy szerepkört Service Bus névtérhez szeretne rendelni, akkor navigáljon 
 ### <a name="run-the-app"></a>Az alkalmazás futtatása
 Most módosítsa a létrehozott ASP.NET-alkalmazás alapértelmezett oldalát. A webalkalmazás kódját a [GitHub-adattárból](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet)is használhatja.  
 
-Az alapértelmezett. aspx lap a kezdőlapja. A kód a Default.aspx.cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a **küldési** és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
+Az alapértelmezett. aspx lap a kezdőlapja. A kód az alapértelmezett. aspx. cs fájlban található. Az eredmény egy minimális webalkalmazás, amely néhány beviteli mezővel rendelkezik, valamint a **küldési** és **fogadási** gombokkal, amelyek a Service Bushoz csatlakoznak a küldési és fogadási üzenetekhez.
 
 Figyelje meg, hogy a [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) objektum inicializálva van. A megosztott hozzáférési jogkivonat (SAS) jogkivonat-szolgáltató használata helyett a kód létrehoz egy jogkivonat-szolgáltatót a felügyelt identitáshoz a `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` hívással. Így nem kell megőrizni és használni a titkokat. A felügyelt identitás környezetének Service Busre való áramlását, valamint az engedélyezési kézfogást a jogkivonat-szolgáltató automatikusan kezeli. Ez egy egyszerűbb modell, mint az SAS használata.
 

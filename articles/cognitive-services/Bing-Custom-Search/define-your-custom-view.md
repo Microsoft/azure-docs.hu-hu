@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: b2d4eb75002474bbec57753bbf0255cc4c2b4a16
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96338639"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
@@ -30,7 +30,7 @@ A portál lehetővé teszi, hogy olyan keresési példányt hozzon létre, amely
 
 A webes szeletek definiálásához használja az alábbiakat:
 
-| Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
+| Szelet neve | Description                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Tartomány     | A tartományi szeletek az internetes tartományon belül található összes tartalmat tartalmazzák. Például: `www.microsoft.com`. A kihagyás `www.` azt eredményezi, hogy a Bing a tartomány altartományait is keresi. Ha például a értéket adja meg `microsoft.com` , a Bing a vagy a eredményeit is visszaadja `support.microsoft.com` `technet.microsoft.com` . |
 | Aloldalt    | Az aloldali szeletek a aloldalon és az alatta lévő elérési utakon található összes tartalmat tartalmazzák. Az elérési úton legfeljebb két aloldal adható meg. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
@@ -97,7 +97,7 @@ A keresési példány teszteléséhez használja a portál jobb oldalán találh
 
 A portál lehetővé teszi a tartalom keresési rangsorolásának módosítását adott tartományokból, allapokból és weblapokból. Miután elküldte a keresési lekérdezést a betekintő ablaktáblán, minden keresési eredmény tartalmazza az általa elérhetővé tenni kívánt beállítások listáját:  
 
-| Idő beállítása | Leírás |
+| Idő beállítása | Description |
 |------------|-------------|
 | Letiltás      | Áthelyezi a tartományt, az allapot vagy a weblapot a blokkolt listára. A Bing kizárja a kijelölt helyről származó tartalmat a keresési eredmények között.                    |
 | Boost      | Fokozza a tartalmat a tartományból vagy az aloldalról, hogy magasabb legyen a keresési eredmények között.                                                                                        |
@@ -160,7 +160,7 @@ Ha a megfelelő szinten előfizetett az egyéni keresésre (lásd a [díjszabás
 - A szám növelése és lefokozása két rangsorolási beállításként.
 - Az egyes egyéni keresési példányok esetében az elvégezhető PIN-kódok maximális száma a 200-ra korlátozódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni keresés meghívása](./search-your-custom-view.md)
 - [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)

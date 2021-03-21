@@ -8,10 +8,10 @@ ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
 ms.openlocfilehash: 9f960d32dcf1f359327dccc01eeb06825cc3a062
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94541470"
 ---
 # <a name="how-to-generate-an-azure-database-for-mysql-connection-string-with-powershell"></a>Azure Database for MySQL kapcsolódási karakterlánc létrehozása a PowerShell-lel
@@ -26,7 +26,7 @@ Ez a cikk kiindulási pontként a következő útmutatóban létrehozott erőfor
 
 ## <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-A `Get-AzMySqlConnectionString` parancsmag egy kapcsolati sztring létrehozásához használható az alkalmazások Azure Database for MySQLhoz való csatlakoztatásához. A következő példa a **mydemoserver** -ból származó php-ügyfélhez tartozó kapcsolatok karakterláncát adja vissza.
+A `Get-AzMySqlConnectionString` parancsmag egy kapcsolati sztring létrehozásához használható az alkalmazások Azure Database for MySQLhoz való csatlakoztatásához. A következő példa a **mydemoserver**-ból származó php-ügyfélhez tartozó kapcsolatok karakterláncát adja vissza.
 
 ```azurepowershell-interactive
 Get-AzMySqlConnectionString -Client PHP -Name mydemoserver -ResourceGroupName myresourcegroup

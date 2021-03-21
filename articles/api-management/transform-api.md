@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96010231"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Oktatóanyag: az API átalakítása és biztosítása
@@ -20,7 +20,7 @@ Az oktatóanyag bemutatja, hogyan alakíthatja át az API-t, hogy az ne fedje fe
 
 Ez az oktatóanyag azt is bemutatja, hogy milyen egyszerű a háttérrendszer-API védelme, ha az Azure API Management-vel korlátozza a díjszabást. Előfordulhat például, hogy korlátozni szeretné az API-hívások sebességét, hogy az API-t ne használja a fejlesztők. További információ: [API Management szabályzatok](api-management-policies.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
