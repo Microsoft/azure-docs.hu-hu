@@ -18,10 +18,10 @@ ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: c3443cb73e85fc69349e7293597a5f4a723959d3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93130051"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: az adatlekérdezés a Azure Active Directory Reporting API és a tanúsítványok használatával
@@ -34,7 +34,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
 
 1. A bejelentkezési információ eléréséhez győződjön meg arról, hogy rendelkezik egy prémium szintű (P1/P2) licenccel rendelkező Azure Active Directory Bérlővel. A Azure Active Directory kiadásának frissítéséhez tekintse meg a [prémium szintű Azure Active Directory első lépéseivel foglalkozó](../fundamentals/active-directory-get-started-premium.md) témakört. Vegye figyelembe, hogy ha a frissítés előtt nem rendelkezik tevékenységi adataival, a rendszer több napot is igénybe vesz, hogy az adatai megjelenjenek a jelentésekben a prémium szintű licencre való frissítés után. 
 
-2. Hozzon létre vagy váltson át egy felhasználói fiókra a bérlő **globális rendszergazdája** , a **biztonsági rendszergazda** , a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkörben. 
+2. Hozzon létre vagy váltson át egy felhasználói fiókra a bérlő **globális rendszergazdája**, a **biztonsági rendszergazda**, a **biztonsági olvasó** vagy a **jelentéskészítő olvasó** szerepkörben. 
 
 3. Fejezze be a [Azure Active Directory jelentési API eléréséhez szükséges előfeltételeket](howto-configure-prerequisites-for-reporting-api.md). 
 

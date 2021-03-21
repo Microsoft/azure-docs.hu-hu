@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
 ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693324"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>Oktatóanyag: az Azure hatáskörébe tartozó erőforrás-készletek, részletek, sémák és besorolások megismerése (előzetes verzió)
@@ -23,7 +23,7 @@ Ebben az oktatóanyagban a katalógus fő összetevőit tárja fel: erőforrás-
 
 Ez az oktatóanyag *egy öt részből álló oktatóanyag-Sorozat 4. része* , amelyben megtudhatja, hogyan kezelheti az adatkezelési szabályozást az Azure hatáskörébe. Ez az oktatóanyag a 3. részben befejezett munkavégzésre épül: az adategységek [böngészése az Azure hatáskörébe (előzetes verzió), és megtekintheti a leszármazást](tutorial-browse-and-view-lineage.md).
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >

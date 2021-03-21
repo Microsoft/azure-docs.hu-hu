@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 999682c9bf4a4d70d886f0e85cede99f215aa046
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97694723"
 ---
 # <a name="restore-a-vm-with-azure-cli"></a>Virtuális gép visszaállítása az Azure CLI használatával
@@ -72,7 +72,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
         --sku Standard_LRS
     ```
 
-2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a cél erőforráscsoportot is, amelyhez a felügyelt lemezeket a rendszer visszaállítja**.
+2. Állítsa vissza a lemezt a helyreállítási pontról az [az backup restore restore-disks](/cli/azure/backup/restore#az-backup-restore-restore-disks) paranccsal. Cserélje le *mystorageaccount* kifejezést az előző paranccsal létrehozott tárfiók nevére. Cserélje le a *myrecoverypointname kifejezést* elemet az előző az [Backup recoverypoint List](/cli/azure/backup/recoverypoint#az-backup-recoverypoint-list) parancs kimenetében beszerzett helyreállítási pont nevére. ***Adja meg azt a célként megadott erőforráscsoportot is, amelyhez a felügyelt lemezeket vissza kívánja állítani***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Ha a biztonsági másolatban szereplő virtuális gép felügyelt lemezekkel ren
     ```
 
     > [!WARNING]
-    > Ha az _ *cél-erőforráscsoport** nincs megadva, akkor a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az azonnali visszaállítás előnyeit csak akkor érheti el, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a **cél-erőforrás-csoport** paramétert, hanem adja meg a **Restore-as-Unmanaged-Disk** paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
+    > Ha a **cél-erőforrás csoport** nincs megadva, akkor a felügyelt lemezek nem felügyelt lemezként lesznek visszaállítva a megadott Storage-fiókba. Ennek jelentős következményei lesznek a visszaállítási időre, mivel a lemezek visszaállításához szükséges idő teljes mértékben a megadott Storage-fióktól függ. Az azonnali visszaállítás előnyeit csak akkor érheti el, ha a cél-erőforrás-csoport paraméter van megadva. Ha a felügyelt lemezeket nem felügyelt helyre szeretné visszaállítani, akkor ne adja meg a **cél-erőforrás-csoport** paramétert, hanem adja meg a **Restore-as-Unmanaged-Disk** paramétert az alább látható módon. Ez a paraméter az az 3.4.0-től kezdődően érhető el.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -262,7 +262,7 @@ Ha ellenőrizni szeretné, hogy létrejött-e a virtuális gép a helyreállíto
 az vm list --resource-group myResourceGroup --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban visszaállított egy lemezt a helyreállítási pontról, és létrehozott egy virtuális gépet a lemezről. Megtanulta végrehajtani az alábbi műveleteket:
 

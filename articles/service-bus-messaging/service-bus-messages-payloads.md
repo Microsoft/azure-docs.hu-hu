@@ -4,10 +4,10 @@ description: Ez a cikk áttekinti a Azure Service Bus üzeneteket, a hasznos ada
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: e1baca1cd3dedee5917670a00b62c68752b5e4b8
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "101095113"
 ---
 # <a name="messages-payloads-and-serialization"></a>Üzenetek, hasznos adatforgalom és szerializáció

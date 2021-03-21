@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
 ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96013751"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Vész-helyreállítás beállítása többrétegű SharePoint-alkalmazáshoz a vész-helyreállításhoz Azure Site Recovery használatával
@@ -199,5 +199,5 @@ Kövesse [ezt az útmutatót](site-recovery-failover.md) a feladatátvétel vég
 3.  Kattintson a "feladatátvétel" elemre.
 4.  A feladatátvételi folyamat elindításához válassza a helyreállítási pont lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Site Recovery használatával történő [más alkalmazások replikálásáról](site-recovery-workload.md) .

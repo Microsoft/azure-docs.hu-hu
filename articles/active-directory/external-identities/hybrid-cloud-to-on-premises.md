@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd91d1d2c9f5a4a413f9ea64cfdef649823d0f09
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93131020"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Hozzáférés biztosítása az Azure AD-beli B2B-felhasználóknak a helyszíni alkalmazásokhoz
 
 Azure Active Directory (Azure AD) B2B együttműködési képességeket használó szervezetként, amellyel meghívhatja a vendég felhasználókat a partnerszervezetektól az Azure AD-be, mostantól elérhetővé teheti a B2B-felhasználók számára a helyszíni alkalmazásokhoz való hozzáférést. Ezek a helyszíni alkalmazások SAML-alapú hitelesítést vagy integrált Windows-hitelesítést (IWA) használhatnak a Kerberos által korlátozott delegálással (KCD).
 
@@ -39,8 +39,8 @@ A következőket kell tennie:
 
 Ahhoz, hogy a B2B-felhasználók hozzáférhessenek az integrált Windows-hitelesítéssel és a Kerberos által korlátozott delegálással védett helyszíni alkalmazásokhoz, a következő összetevőkre van szükség:
 
-- **Hitelesítés az Azure ad Application Proxyon keresztül** . A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása távoli eléréshez alkalmazásproxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
-- **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban** . Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
+- **Hitelesítés az Azure ad Application Proxyon keresztül**. A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információ: [oktatóanyag: helyszíni alkalmazás hozzáadása távoli eléréshez alkalmazásproxy használatával](../manage-apps/application-proxy-add-on-premises-application.md).
+- **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban**. Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
 
    > [!NOTE]
    > Az Azure-AD Application Proxy konfigurálásakor győződjön meg arról, hogy a **delegált bejelentkezési identitás** az integrált Windows-hitelesítés (IWA) egyszeri bejelentkezési konfigurációjában a **felhasználó egyszerű neve** (alapértelmezett) értékre van beállítva.

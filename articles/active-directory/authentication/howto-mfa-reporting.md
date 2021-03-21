@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861238"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure AD Multi-Factor Authentication eseményeinek áttekintéséhez
@@ -119,7 +119,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Az alábbi táblázat segítséget nyújt az események hibaelhárításához az előző portál lépéseiből vagy a PowerShell-parancsokból származó tevékenységi jelentés letöltött verziójának használatával. Ezek az eredmények nem jelennek meg közvetlenül a Azure Portal.
 
-| Hívás eredménye | Leírás | Széles Leírás |
+| Hívás eredménye | Description | Széles Leírás |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg.  Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg.  Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
 | SUCCESS_NO_PIN | Csak # megadott | Ha a felhasználó PIN módra van beállítva, és a hitelesítés megtagadva, ez azt jelenti, hogy a felhasználó nem adta meg a PIN-kódját, és csak a # értéket adta meg.  Ha a felhasználó szabványos módra van beállítva, és a hitelesítés sikeres, akkor a felhasználó csak a # paramétert adta meg, ami a helyes dolog a standard módban. |
@@ -171,7 +171,7 @@ Az alábbi táblázat segítséget nyújt az események hibaelhárításához az
 
 A következő további információk és jelentések érhetők el az MFA-eseményekhez, beleértve az MFA-kiszolgálókat:
 
-| Jelentés | Hely | Leírás |
+| Jelentés | Hely | Description |
 |:--- |:--- |:--- |
 | Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
 | Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információt nyújt az MFA-kiszolgáló általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |

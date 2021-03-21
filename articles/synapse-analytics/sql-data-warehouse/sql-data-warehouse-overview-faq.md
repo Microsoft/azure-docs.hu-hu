@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: c8f8ae81f6f030245899ec82dbe16b29846dab23
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96460511"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-frequently-asked-questions"></a>Dedikált SQL-készlet (korábban SQL DW) az Azure szinapszis Analyticsben – gyakori kérdések
@@ -109,6 +109,6 @@ K: csatlakozhatok a HDI szolgáltatáshoz?
 
 A: a HDI a ADLS vagy a WASB is használhatja a HDFS rétegként. Ha a HDFS réteggel rendelkezik, ezeket az adatait egy dedikált SQL-készletbe (korábban SQL DW) is betöltheti. Azonban nem hozhatja pushdown számítást a HDI-példányra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a dedikált SQL-készletről (korábbi nevén SQL DW) az Azure Szinapszisban: [Áttekintés](sql-data-warehouse-overview-what-is.md) oldal.

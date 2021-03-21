@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102451779"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Service Bus a várólisták kimenetét Azure Stream Analytics
@@ -23,7 +23,7 @@ A [1,2-es kompatibilitási szinten](stream-analytics-compatibility-level.md)Azur
 
 A következő táblázat felsorolja a tulajdonságok nevét és a várólista kimenetének létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a Service Bus üzenetsor felé történő irányítására szolgál. |
 | Service Bus névtér |Az üzenetküldési entitások készletének tárolója. |

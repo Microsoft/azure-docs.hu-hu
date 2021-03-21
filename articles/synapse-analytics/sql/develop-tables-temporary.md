@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96451788"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Ideiglenes táblák a szinapszis SQL-ben
@@ -232,7 +232,7 @@ A kiszolgáló nélküli SQL-készletben lévő ideiglenes táblák támogatotta
 
 Nem lehet például olyan ideiglenes táblát csatlakoztatni, amely a tárolóban lévő fájlokból származó adatokkal rendelkezik. Az ideiglenes táblák száma 100, a teljes méretük pedig 100 MB-ra van korlátozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A táblázatok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [táblák tervezése a SZINAPSZIS SQL-erőforrások használatával](develop-tables-overview.md) című cikket.
 

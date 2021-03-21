@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96015264"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>CI/CD-folyamat beállítása Azure Data Lake Analyticshoz  
@@ -93,7 +93,7 @@ A parancssoron kívül a Visual Studio Build vagy az MSBuild feladat használat�
 
 ![MSBuild-feladat egy U-SQL-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. Adjon hozzá egy NuGet-visszaállítási feladatot a megoldás által hivatkozott NuGet-csomag beszerzéséhez, hogy az az `Azure.DataLake.USQL.SDK` MSBuild megtalálja az U-SQL nyelvi célokat. **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` Ha a 2. lépésben közvetlenül szeretné használni az MSBuild argumentumok mintát, állítsa be a speciális cél könyvtárat.
+1. Adjon hozzá egy NuGet-visszaállítási feladatot a megoldás által hivatkozott NuGet-csomag beszerzéséhez, hogy az az `Azure.DataLake.USQL.SDK` MSBuild megtalálja az U-SQL nyelvi célokat.   >   `$(Build.SourcesDirectory)/packages` Ha a 2. lépésben közvetlenül szeretné használni az MSBuild argumentumok mintát, állítsa be a speciális cél könyvtárat.
 
    ![NuGet-visszaállítási feladat egy U-SQL-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -332,7 +332,7 @@ A parancssoron kívül a Visual Studio Build vagy az MSBuild feladat használat�
 
    ![CI/CD MSBuild feladat egy U-SQL-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png)
 
-1. Adjon hozzá egy NuGet-visszaállítási feladatot a megoldásra hivatkozott NuGet-csomag beszerzéséhez, amely magában foglalja az `Azure.DataLake.USQL.SDK` , hogy az MSBuild megtalálja az U-SQL nyelvi célokat. **Advanced**  >  **Destination directory** `$(Build.SourcesDirectory)/packages` Ha a 2. lépésben közvetlenül szeretné használni az MSBuild argumentumok mintát, állítsa be a speciális cél könyvtárat.
+1. Adjon hozzá egy NuGet-visszaállítási feladatot a megoldásra hivatkozott NuGet-csomag beszerzéséhez, amely magában foglalja az `Azure.DataLake.USQL.SDK` , hogy az MSBuild megtalálja az U-SQL nyelvi célokat.   >   `$(Build.SourcesDirectory)/packages` Ha a 2. lépésben közvetlenül szeretné használni az MSBuild argumentumok mintát, állítsa be a speciális cél könyvtárat.
 
    ![CI/CD NuGet feladat egy U-SQL-projekthez](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
@@ -489,7 +489,7 @@ Az alábbi lépéseket követve állíthatja be az adatbázis-telepítési felad
 |Bizonyítványfájl|A fájl elmenti az X. 509 minősítést a nem interaktív hitelesítéshez. Az alapértelmezett érték az ügyfél titkos hitelesítésének használata.|null|hamis|
 | JobPrefix | A U-SQL DDL-feladatok adatbázis-telepítésének előtagja. | Deploy_ + DateTime. Now | hamis |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md).
 - [Futtassa a U-SQL-szkriptet a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md).

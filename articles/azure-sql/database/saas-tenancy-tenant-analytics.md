@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 98896b5b728a729a29f989b3b9a76f29131af8d7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93305966"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Több-bérlős elemzés a kinyert adategységek használatával – egybérlős alkalmazás
@@ -63,7 +63,7 @@ Végül a **Power bi** használatával kérdezi le az elemzési tárolót, hogy 
 
 Annak megismerése, hogy az egyes bérlők hogyan használják a szolgáltatást, hogy megismerjék a szolgáltatással kapcsolatos bevételi lehetőségeket, és hogy a bérlők könnyebben tudják segíteni a szolgáltatást. Ez az oktatóanyag alapvető példákat tartalmaz a bérlői adatokból begyűjtött elemzések típusára.
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -79,7 +79,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 Ebben az oktatóanyagban az elemzés a Ticket Sales adatain történik. Az aktuális lépésben a bérlők számára is létrehoz jegyet.  Az adatelemzéshez később kinyeri az adatgyűjtést. *Győződjön meg arról, hogy a korábban leírtaknak megfelelően kiépítte a bérlők kötegét, hogy jelentős mennyiségű adattal rendelkezzen*. Egy elég nagy mennyiségű adattal számos különböző jegy-vásárlási minta is elérhető.
 
-1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* , és állítsa be a következő értéket:
+1. A PowerShell ISE-ben nyissa meg a *. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*, és állítsa be a következő értéket:
     - **$DemoScenario**  =  **1** vásárlási jegyek minden helyszínen
 2. Nyomja le az **F5** billentyűt a szkript futtatásához, és hozzon létre Ticket vásárlási előzményeket minden egyes helyszín eseményeihez.  A szkript több percet is igénybe vehet, hogy több tízezer jegyet lehessen készíteni.
 
@@ -93,7 +93,7 @@ A következő lépésekben telepíti a **tenantanalytics** nevű Analytics-táro
     - Ha SQL Databaset szeretne használni az oszlopos tárolóval, állítsa be az **$DemoScenario**  =  **3**  
 3. Nyomja le az **F5** billentyűt a bemutató parancsfájl futtatásához (amely meghívja az *Deploy-TenantAnalytics \<XX> . ps1* parancsfájlt), amely létrehozza a bérlői elemzési tárolót. 
 
-Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) -t a **tenants1-DPT- &lt; User &gt;** és a **Catalog-DPT- &lt; User &gt;** kiszolgálók bejelentkezési = *fejlesztői* , jelszó = *P \@ ssword1* használatával való összekapcsolásához. További útmutatásért tekintse meg a [bevezető oktatóanyagot](./saas-dbpertenant-wingtip-app-overview.md) .
+Most, hogy telepítette az alkalmazást, és kitöltötte érdekes bérlői adatokkal, használja a [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) -t a **tenants1-DPT- &lt; User &gt;** és a **Catalog-DPT- &lt; User &gt;** kiszolgálók bejelentkezési = *fejlesztői*, jelszó = *P \@ ssword1* használatával való összekapcsolásához. További útmutatásért tekintse meg a [bevezető oktatóanyagot](./saas-dbpertenant-wingtip-app-overview.md) .
 
 ![A SQL Serverhoz való kapcsolódáshoz szükséges adatokat bemutató képernyőkép.](./media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -107,7 +107,7 @@ A Object Explorer hajtsa végre a következő lépéseket:
 Az elemzési tár csomópontjának kibontásával tekintse meg a SSMS Object Explorer következő adatbázis-elemeit:
 
 - A táblák **TicketsRawData** és **EventsRawData** a bérlői adatbázisokból származó nyers kinyert adatokkal rendelkeznek.
-- A Star-Schema táblák a következők: **fact_Tickets** , **dim_Customers** , **dim_Venues** , **dim_Events** és **dim_Dates**.
+- A Star-Schema táblák a következők: **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events** és **dim_Dates**.
 - A tárolt eljárás a Star-Schema táblák nyers adattáblákból való feltöltésére szolgál.
 
 ![Képernyőkép a SSMS Object Explorer látható adatbázis-elemekről.](./media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
@@ -171,7 +171,7 @@ A következő lépésekkel csatlakozhat a Power BIhoz, és importálhatja a kor�
 1. Indítsa el Power BI Desktopot.
 2. A Kezdőlap menüszalagon válassza az **adatok lekérése** lehetőséget, és válassza a **továbbiak...** lehetőséget. a menüből.
 3. Az **adatlekérdezés** ablakban válassza a Azure SQL Database lehetőséget.
-4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-DPT- &lt; User &gt; . database.Windows.net). Válassza **Import** az importálás **adatkapcsolati módra** lehetőséget, majd kattintson az OK gombra. 
+4. Az adatbázis-bejelentkezés ablakban adja meg a kiszolgáló nevét (Catalog-DPT- &lt; User &gt; . database.Windows.net). Válassza  az importálás **adatkapcsolati módra** lehetőséget, majd kattintson az OK gombra. 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 

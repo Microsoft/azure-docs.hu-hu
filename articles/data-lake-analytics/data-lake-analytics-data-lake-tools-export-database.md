@@ -6,10 +6,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.openlocfilehash: 0a768990a33f0d60a3222bd3ad323edcc53c9ec0
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92219088"
 ---
 # <a name="export-a-u-sql-database"></a>U-SQL-adatbázis exportálása
@@ -27,7 +27,7 @@ A fejlesztési és tesztelési környezetekben a U-SQL-lekérdezések fejleszté
 Az összes olyan Data Lake Analytics fiók, amelyhez jogosultsága van, megjelenik a Server Explorerben. Az adatbázis exportálása:
 
 1. A Server Explorerben bontsa ki az exportálni kívánt adatbázist tartalmazó fiókot.
-2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Exportálás**lehetőséget. 
+2. Kattintson a jobb gombbal az adatbázisra, majd válassza az **Exportálás** lehetőséget. 
    
     ![Server Explorer – adatbázis exportálása](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 

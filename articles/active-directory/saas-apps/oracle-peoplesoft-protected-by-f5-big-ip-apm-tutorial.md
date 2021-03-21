@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 3b7c8e024ac8361c08cc41195531a114bb12fcb4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522291"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Oracle PeopleSoft-mel – védett az F5 BIG-IP APM használatával
@@ -58,15 +58,15 @@ Az F5 BIG-IP APM által az Azure AD-be védett Oracle PeopleSoft integrálásáh
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **Oracle PeopleSoft-Protected by F5 Big-IP APM** kifejezést a keresőmezőbe.
 1. Válassza az **Oracle PeopleSoft által védett F5 Big-IP APM** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>Az Azure AD SSO konfigurálása és tesztelése az F5 BIG-IP APM által védett Oracle PeopleSoft-hoz
 
-Az Azure AD SSO konfigurálása és tesztelése az Oracle PeopleSoft használatával – az F5 BIG-IP APM által védett, **B. Simon**nevű felhasználói teszttel. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Oracle PeopleSoft által védett F5 BIG-IP APM használatával.
+Az Azure AD SSO konfigurálása és tesztelése az Oracle PeopleSoft használatával – az F5 BIG-IP APM által védett, **B. Simon** nevű felhasználói teszttel. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Oracle PeopleSoft által védett F5 BIG-IP APM használatával.
 
 Az Azure AD SSO konfigurálásához és teszteléséhez az F5 BIG-IP APM által védett Oracle PeopleSoft használatával végezze el a következő lépéseket:
 
@@ -81,8 +81,8 @@ Az Azure AD SSO konfigurálásához és teszteléséhez az F5 BIG-IP APM által 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal az **Oracle PeopleSoft által védett, az F5 Big-IP APM** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A Azure Portal az **Oracle PeopleSoft által védett, az F5 Big-IP APM** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -120,7 +120,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -132,10 +132,10 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít az F5 BIG-IP APM által védett Oracle PeopleSoft-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listájában válassza ki az **F5 Big-IP APM által védett Oracle PeopleSoft-védelemmel ellátott**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listájában válassza ki az **F5 Big-IP APM által védett Oracle PeopleSoft-védelemmel ellátott** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
@@ -150,7 +150,7 @@ Importálja a metaadat-tanúsítványt az F5-re, amelyet később a telepítési
 
 #### <a name="setup-the-saml-idp-connector"></a>Az SAML IDENTITÁSSZOLGÁLTATÓ-összekötő beállítása 
 
-1. Navigáljon az **> összevonási > SAML: szolgáltató > külső identitásszolgáltató-összekötőhöz** , és kattintson **a > létrehozása metaadatokból**elemre.
+1. Navigáljon az **> összevonási > SAML: szolgáltató > külső identitásszolgáltató-összekötőhöz** , és kattintson **a > létrehozása metaadatokból** elemre.
 
     ![F5 SAML IDENTITÁSSZOLGÁLTATÓ-összekötő](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/saml-idp-connector.png)
 
@@ -166,7 +166,7 @@ Importálja a metaadat-tanúsítványt az F5-re, amelyet később a telepítési
 
 #### <a name="setup-the-saml-sp"></a>Az SAML SP beállítása
 
-1. Navigáljon a **> összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** lehetőségre, és kattintson a **Létrehozás**gombra. Hajtsa végre a következő információkat, majd kattintson **az OK**gombra.
+1. Navigáljon a **> összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** lehetőségre, és kattintson a **Létrehozás** gombra. Hajtsa végre a következő információkat, majd kattintson **az OK** gombra.
 
     * Név: `<Name>`
     * Entitás azonosítója: `https://<FQDN>.peoplesoft.f5.com`
@@ -178,14 +178,14 @@ Importálja a metaadat-tanúsítványt az F5-re, amelyet később a telepítési
     ![Új SAML SP-szolgáltatások](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/new-saml-sp-service.png)
 
 1. Válassza ki az SP-konfigurációt, a PeopleSoftAppSSO, majd **kattintson a identitásszolgáltató-összekötők kötése/megszüntetése elemre**.
-Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** , kattintson a **frissítés**elemre, majd **az OK**gombra.
+Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** , kattintson a **frissítés** elemre, majd **az OK** gombra.
 
     ![SAML SP-szolgáltatások létrehozása](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/edit-saml-idp-use-sp.png)
 
 ## <a name="configuring-application"></a>Alkalmazás konfigurálása
 
 ### <a name="create-a-new-pool"></a>Új készlet létrehozása
-1. Navigáljon a **helyi forgalom > készletek > készlet listára**, kattintson a **Létrehozás**gombra, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+1. Navigáljon a **helyi forgalom > készletek > készlet listára**, kattintson a **Létrehozás** gombra, hajtsa végre a következő információkat, majd kattintson a **kész** gombra.
 
     * Név: `<Name>`
     * Leírás `<Description>`
@@ -198,7 +198,7 @@ Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lép�
 
 ### <a name="create-a-new-client-ssl-profile"></a>Új ügyfél SSL-profil létrehozása
 
-Navigáljon a **helyi forgalom > profilok > SSL > ügyfél > +**, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+Navigáljon a **helyi forgalom > profilok > SSL > ügyfél > +**, hajtsa végre a következő információkat, majd kattintson a **kész** gombra.
 
 * Név: `<Name>`
 * Tanúsítvány `<Certificate>`
@@ -208,7 +208,7 @@ Navigáljon a **helyi forgalom > profilok > SSL > ügyfél > +**, hajtsa végre 
 
 ### <a name="create-a-new-virtual-server"></a>Új virtuális kiszolgáló létrehozása
 
-1. Navigáljon a **helyi forgalom > virtuális kiszolgálók > Virtual Server List > +**, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+1. Navigáljon a **helyi forgalom > virtuális kiszolgálók > Virtual Server List > +**, hajtsa végre a következő információkat, majd kattintson a **kész** gombra.
     * Név: `<Name>`
     * Cél címe/maszk: `<Address>`
     * Szolgáltatási port: Port 443 HTTPS
@@ -244,7 +244,7 @@ A **Peopletools > biztonsági > felhasználói profilok > felhasználói profilo
 
     ![Felhasználói profilok](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/web-profile-configuration.png)
 
-1. A **PeopleTools alkalmazás-tervezőben**nyissa meg a **FUNCLIB_LDAP** rekordot.
+1. A **PeopleTools alkalmazás-tervezőben** nyissa meg a **FUNCLIB_LDAP** rekordot.
 
     ![webprofil konfigurálása](./media/oracle-peoplesoft-protected-by-f5-big-ip-apm-tutorial/funclib.png)
 
@@ -260,7 +260,7 @@ A **getWWWAuthConfig ()** függvényben cserélje le a **&defaultUserId** hozzá
 ## <a name="setting-up-f5-big-ip-apm-to-populate-ps_sso_uid-http-header-with-the-peoplesoft-user-id"></a>Az F5 Big-IP APM beállítása a "PS_SSO_UID" HTTP-fejléc feltöltésére a PeopleSoft felhasználói azonosítójával
 
 ### <a name="configuring-per-request-policy"></a>Per-Request házirend konfigurálása
-1. Navigáljon a **> profil/szabályzatok > Per-Request házirendek**elemre, kattintson a **Létrehozás**gombra, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+1. Navigáljon a **> profil/szabályzatok > Per-Request házirendek** elemre, kattintson a **Létrehozás** gombra, hajtsa végre a következő információkat, majd kattintson a **kész** gombra.
 
     * Név: `<Name>`
     * Profil típusa: ALL
@@ -292,7 +292,7 @@ Ha egyetlen kijelentkezési támogatást szeretne hozzáadni az összes PeopleSo
 
 1. Hozzon létre olyan LTM-iRule, amely átirányítja a felhasználót az APM kijelentkezési URL-címére: `/my.logout.php3`
 
-    * Navigáljon a **helyi forgalom > iRule**, kattintson a **Létrehozás**gombra, hajtsa végre a következő információkat, majd kattintson a **kész**gombra.
+    * Navigáljon a **helyi forgalom > iRule**, kattintson a **Létrehozás** gombra, hajtsa végre a következő információkat, majd kattintson a **kész** gombra.
 
         Név: `<Name>`  
         Definíció:  

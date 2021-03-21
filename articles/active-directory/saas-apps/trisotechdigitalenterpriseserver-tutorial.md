@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 05978b7300c401a0658d6c3316f37735fcb70c20
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92521934"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Oktatóanyag: Azure Active Directory integráció a Trisotech Digital Enterprise Serverrel
@@ -63,13 +63,13 @@ A Trisotech digitális vállalati kiszolgáló Azure AD-be való integrálásán
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Trisotech Digital Enterprise Server**kifejezést, válassza a **Trisotech Digital Enterprise Server** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Trisotech Digital Enterprise Server** kifejezést, válassza a **Trisotech Digital Enterprise Server** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Trisotech digitális vállalati kiszolgáló az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Trisotech Digital Enterprise Serverrel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Trisotech Digital Enterprise Serverrel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Trisotech-alapú digitális vállalati kiszolgáló kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Trisotech Digital Enterprise Server** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Trisotech Digital Enterprise Server** Application Integration oldalon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -118,11 +118,11 @@ Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel va
 
 1. Egy másik böngészőablakban jelentkezzen be a Trisotech Digital Enterprise Server Configuration vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **menü ikonra** , majd válassza az **Adminisztráció**lehetőséget.
+2. Kattintson a **menü ikonra** , majd válassza az **Adminisztráció** lehetőséget.
 
     ![A képernyőképen az adminisztráció ikon látható a Microsoft Digital Enterprise Serverben.](./media/trisotechdigitalenterpriseserver-tutorial/user1.png)
 
-3. Válassza a **felhasználói szolgáltató**lehetőséget.
+3. Válassza a **felhasználói szolgáltató** lehetőséget.
 
     ![A képernyőképen a menüből kiválasztott felhasználói szolgáltató látható.](./media/trisotechdigitalenterpriseserver-tutorial/user2.png)
 
@@ -130,23 +130,23 @@ Az Azure AD egyszeri bejelentkezés az Trisotech Digital Enterprise Serverrel va
 
     ![Képernyőfelvétel: a felhasználói szolgáltató konfigurációi, ahol megadhatja a leírt értékeket.](./media/trisotechdigitalenterpriseserver-tutorial/user3.png)
 
-    a. A **hitelesítési módszer**legördülő menüjében válassza a **biztonságos érvényesítési nyelv 2 (SAML 2)** lehetőséget.
+    a. A **hitelesítési módszer** legördülő menüjében válassza a **biztonságos érvényesítési nyelv 2 (SAML 2)** lehetőséget.
 
     b. A **metaadatok URL-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
     c. Az **alkalmazás-azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.trisotech.com` .
 
-    d. Kattintson a **Mentés** gombra
+    d. Kattintson a **Mentés** gombra.
 
     e. Adja meg a tartománynevet az **engedélyezett tartományokban (üres érték: mindenki)** szövegmezőben, automatikusan hozzárendeli a licenceket az engedélyezett tartományoknak megfelelő felhasználók számára
 
-    f. Kattintson a **Mentés** gombra
+    f. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -170,15 +170,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Trisotech Digital Enterprise Serverhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Trisotech Digital Enterprise Server**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Trisotech Digital Enterprise Server** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Trisotech Digital Enterprise Server**elemet.
+2. Az alkalmazások listában válassza a **Trisotech Digital Enterprise Server** elemet.
 
     ![A Trisotech Digital Enterprise Server-hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

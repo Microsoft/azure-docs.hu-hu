@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96860213"
 ---
 # <a name="conditional-access-programmatic-access"></a>Feltételes hozzáférés: programozott hozzáférés
@@ -50,7 +50,7 @@ A feltételes hozzáférési API-k használatával feltételes hozzáférési h�
 
 - [Feltételes hozzáférési szabályzatok konfigurálása Microsoft Graph API-sablonokkal](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/01-configure/templates)
 
-## <a name="test"></a>Teszt
+## <a name="test"></a>Tesztelés
 
 Ez a példa a biztonságos üzembe helyezési gyakorlatokat modellezi olyan jóváhagyási munkafolyamatokkal, amelyek a feltételes hozzáférési szabályzatokat az egyik környezetből, például az üzem előtti, egy másikhoz, például az éles környezethez is másolhatják.
 
@@ -62,7 +62,7 @@ Ez a példa egy olyan mechanizmust biztosít, amely lehetővé teszi, hogy a fok
 
 - [Feltételes hozzáférési szabályzatok üzembe helyezése üzemi környezetekben jóváhagyási munkafolyamatokkal](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 Ez a példa egy olyan mechanizmust biztosít, amely a feltételes hozzáférési szabályzatok időbeli változásait figyeli, és riasztásokat indíthat a kulcsfontosságú házirendek megváltozásakor.
 

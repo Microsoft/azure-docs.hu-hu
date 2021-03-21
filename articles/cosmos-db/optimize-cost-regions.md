@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459623"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Több régióban való üzemeltetés költségeinek optimalizálása az Azure Cosmos DB-ben
@@ -28,7 +28,7 @@ A többrégiós írások esetében a rendelkezésre álló, írási műveletekhe
 
 Vegye figyelembe, hogy az USA nyugati régiójában olyan tároló található, amely a 10 000 RU/s kapacitással lett kiépítve, és ezen a hónapban 0,5 TB-nyi adatot tárol. Tegyük fel, hogy hozzáad egy régiót, az USA keleti régióját ugyanazzal a tárterülettel és átviteli sebességgel, és szeretné, hogy az alkalmazásból származó régiókban is írni tudja a tárolókat. Az új teljes havi számla (feltéve, hogy havonta 730 óra) a következő lesz:
 
-|**Item**|**Használat (havi)**|**Sebesség**|**Havi költség**|
+|**Elem**|**Használat (havi)**|**Sebesség**|**Havi költség**|
 |----|----|----|----|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (egyetlen írási régió) |10K RU/s * 730 óra |$0,008/100 RU/s óránként |$584 |
 |Adatforgalmi számla a 2 régióban található tárolóhoz – USA nyugati régiója & USA keleti régiója (több írási régió) |2 * 10K RU/s * 730 óra |$0,016/100 RU/s óránként |$2 336 |
@@ -39,7 +39,7 @@ Vegye figyelembe, hogy az USA nyugati régiójában olyan tároló található, 
 
 Ha nem hatékony kihasználtságot használ, például egy vagy több használatban lévő olvasási régiót, akkor hajtsa végre a lépéseket, hogy az olvasási régiókban a hírcsatornák maximálisan használhatók legyenek az olvasási régióból, vagy helyezze át egy másik másodlagosra, ha túlzott kihasználtságú. Először gondoskodnia kell a kiépített átviteli sebesség (RUs) optimalizálásáról az írási régióban. A drágább, mint az olvasási költségeket, kivéve, ha nagyon nagy lekérdezések, így a még kihasználtság fenntartása is kihívást jelenthet. Összességében nyomon követheti a régiókban felhasznált adatátviteli sebességet, és az olvasási és írási sebesség méretezése érdekében igény szerint hozzáadhat vagy eltávolíthat régiókat, így biztos lehet abban, hogy az adott régióban üzembe helyezett alkalmazások késésére is hatással van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

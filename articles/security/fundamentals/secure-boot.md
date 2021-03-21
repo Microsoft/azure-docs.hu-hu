@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
 ms.openlocfilehash: feb28b1d448d0146046ed789d1389a3a42f344de
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94557665"
 ---
 # <a name="secure-boot"></a>Biztonságos rendszerindítás
@@ -55,8 +55,8 @@ Annak ellenőrzése, hogy az adatbázis és a DBX kivonatok helyesek-e, gondosko
 ## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a platform integritásának és biztonságának elvégzéséről, olvassa el a következőt:
 
-- [Belső vezérlőprogram biztonsága](firmware.md)
+- [A belső vezérlőprogram biztonsága](firmware.md)
 - [Mért rendszerindítás és gazdagép-igazolás](measured-boot-host-attestation.md)
-- [Projekt Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Titkosítás inaktív állapotban](encryption-atrest.md)
-- [A hypervisor biztonsága](hypervisor.md)
+- [A hipervizor biztonsága](hypervisor.md)

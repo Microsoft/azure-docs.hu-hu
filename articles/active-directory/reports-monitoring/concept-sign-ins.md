@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93122843"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
@@ -31,7 +31,7 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
-    - Naplók kiépítés **Provisioning logs**  -  A [kiépítési naplók](./concept-provisioning-logs.md) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
+    - Naplók kiépítés   -  A [kiépítési naplók](./concept-provisioning-logs.md) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
@@ -114,7 +114,7 @@ Először Szűkítse le a jelentett adathalmazt egy olyan szintre, amely az Ön 
  
 **Állapot** – a bejelentkezési állapot, amely érdekli:
 
-- Success
+- Siker
 
 - Hiba
 
@@ -143,7 +143,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern hitelesítés|Leírás|
+|Name|Modern hitelesítés|Description|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|
@@ -177,11 +177,11 @@ A **hely** – a hálózatról kezdeményezett hely:
 
 **Feltételes hozzáférés** – az alkalmazott feltételes hozzáférési szabályok állapota
 
-- **Nincs alkalmazva** : a rendszer nem alkalmaz szabályzatot a felhasználóra és az alkalmazásra a bejelentkezés során.
+- **Nincs alkalmazva**: a rendszer nem alkalmaz szabályzatot a felhasználóra és az alkalmazásra a bejelentkezés során.
 
-- **Sikeres** : egy vagy több, a felhasználóra és alkalmazásra alkalmazott feltételes hozzáférési szabályzat (de nem feltétlenül a többi feltétel) a bejelentkezés során. 
+- **Sikeres**: egy vagy több, a felhasználóra és alkalmazásra alkalmazott feltételes hozzáférési szabályzat (de nem feltétlenül a többi feltétel) a bejelentkezés során. 
 
-- **Hiba** : a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
+- **Hiba**: a bejelentkezés megfelelt legalább egy feltételes hozzáférési házirend felhasználói és alkalmazási feltételének, és a vezérlők nem teljesülnek, vagy a hozzáférés letiltására van beállítva.
 
 
 
@@ -228,14 +228,14 @@ A bejelentkezési tevékenységek listájának minden sora a következőkről ad
 Az elemekre kattintva részletes információk érhetők el a bejelentkezési műveletről:
 
 - Felhasználóazonosító
-- Felhasználó
+- User
 - Felhasználónév
 - Alkalmazásazonosító
 - Alkalmazás
 - Ügyfél
 - Hely
 - IP-cím
-- Dátum
+- Date
 - Az MFA megadása kötelező
 - Bejelentkezés állapota
 

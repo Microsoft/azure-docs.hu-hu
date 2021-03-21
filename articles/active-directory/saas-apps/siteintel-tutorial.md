@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 0c8224bf84a2235086d941df7d02ab6f458f3f16
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92509998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SiteIntel
@@ -47,15 +47,15 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 A SiteIntel Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a SiteIntel a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A Hozzáadás a katalógusból mezőbe írja be a **következőt** : **SiteIntel**.
-1. Az eredmények listájában válassza a **SiteIntel**lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Az eredmények listájában válassza a **SiteIntel** lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-siteintel"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a SiteIntel
 
-Konfigurálja és tesztelje az Azure AD SSO-t a SiteIntel egy *B. Simon*nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SiteIntel-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a SiteIntel egy *B. Simon* nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a SiteIntel-ben.
 
 Az Azure AD SSO és a SiteIntel konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -75,9 +75,9 @@ Az Azure AD SSO és a SiteIntel konfigurálásához és teszteléséhez hajtsa v
 
 Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com/) **SiteIntel** alkalmazás-integráció lapján lépjen a **kezelés** szakaszra, majd válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **alapszintű SAML-konfiguráció**mellett válassza a **Szerkesztés** (toll ikon) lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **SiteIntel** alkalmazás-integráció lapján lépjen a **kezelés** szakaszra, majd válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **alapszintű SAML-konfiguráció** mellett válassza a **Szerkesztés** (toll ikon) lehetőséget.
 
    ![Képernyőkép: "egyszeri bejelentkezés beállítása SAML használatával" panel](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
     c. A **továbbítási állapot** mezőbe írja be az URL-címet a következő formátumban: `https://<CLIENT>.siteintel.com`
 
-1. Az alkalmazás SP-kezdeményezésű módban való konfigurálásához válassza a **további URL-címek beállítása**lehetőséget, majd tegye a következőket:
+1. Az alkalmazás SP-kezdeményezésű módban való konfigurálásához válassza a **további URL-címek beállítása** lehetőséget, majd tegye a következőket:
 
    * A **bejelentkezési URL-cím** mezőbe írja be az URL-címet a következő formátumban: `https://<CLIENT>.siteintel.com`
 
@@ -104,7 +104,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** elemet a panel tetején.
 1. A **felhasználó** tulajdonságainál tegye a következőket:
 
@@ -114,23 +114,23 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
-   d. Kattintson a **Létrehozás** gombra.
+   d. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a SiteIntel.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Az **alkalmazások** listában válassza a **SiteIntel**lehetőséget.
-1. Az alkalmazás – Áttekintés lap **kezelés** területén válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az **alkalmazások** listában válassza a **SiteIntel** lehetőséget.
+1. Az alkalmazás – Áttekintés lap **kezelés** területén válassza a **felhasználók és csoportok** lehetőséget.
 
    ![Képernyőkép a "felhasználók és csoportok" hivatkozásról](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználó hozzáadása" gomb képernyőképe](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** panelen válassza a **B. Simon**lehetőséget, majd a képernyő alsó részén kattintson a **kiválasztás** gombra.
+1. A **felhasználók és csoportok** panelen válassza a **B. Simon** lehetőséget, majd a képernyő alsó részén kattintson a **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** panelen kattintson a **hozzárendelés** gombra.
 

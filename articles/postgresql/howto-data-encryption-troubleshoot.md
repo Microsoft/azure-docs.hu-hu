@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 02/13/2020
 ms.openlocfilehash: c315e1df473f3d23bab7e2a78ce166f22272ee70
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93242245"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Az adattitkosítás hibakeresése Azure Database for PostgreSQL – egyetlen kiszolgálón
@@ -19,7 +19,7 @@ Ez a cikk segítséget nyújt a Azure Database for PostgreSQL egykiszolgálós t
 
 ## <a name="introduction"></a>Bevezetés
 
-Ha az adattitkosítást úgy konfigurálja, hogy az Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálónak folyamatos hozzáférést kell adni a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és megváltoztatja az állapotát * nem **elérhető** _ értékre a Azure Portal.
+Ha az adattitkosítást úgy konfigurálja, hogy az Azure Key Vault ügyfél által felügyelt kulcsot használjon, a kiszolgálónak folyamatos hozzáférést kell adni a kulcshoz. Ha a kiszolgáló nem fér hozzá az ügyfél által felügyelt kulcshoz Azure Key Vault-ben, az megtagadja az összes kapcsolatot, visszaadja a megfelelő hibaüzenetet, és úgy módosítja az állapotát, hogy az nem ***érhető*** el a Azure Portal.
 
 Ha már nincs szüksége egy nem elérhető Azure Database for PostgreSQL-kiszolgálóra, törölheti a költségeket. A kiszolgálón semmilyen más művelet nem engedélyezett, amíg a kulcstartóhoz való hozzáférés vissza nem áll, és a kiszolgáló elérhető. Nem lehet módosítani az adattitkosítási lehetőséget a `Yes` (felhasználó által felügyelt) értékről `No` (szolgáltatás által felügyelt) a nem elérhető kiszolgálókon, ha az ügyfél által felügyelt kulccsal van titkosítva. A kulcs ismételt érvényesítéséhez manuálisan kell újraérvényesíteni a kiszolgálót, mielőtt újra elérhetővé válik. Ez a művelet szükséges az adatok jogosulatlan hozzáférés elleni védelme érdekében, az ügyfél által felügyelt kulcs engedélyeinek visszavonása mellett.
 
@@ -44,12 +44,12 @@ A következő helytelen konfiguráció a Azure Key Vault kulcsokat használó ad
 #### <a name="disabled-key-vault"></a>A Key Vault letiltva
 
 - `AzureKeyVaultKeyDisabledMessage`
-- _ * Magyarázat * *: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
+- **Magyarázat**: a művelet nem fejeződött be a kiszolgálón, mert a Azure Key Vault kulcs le van tiltva.
 
 #### <a name="missing-key-vault-permissions"></a>Hiányzó Key Vault-engedélyek
 
 - `AzureKeyVaultMissingPermissionsMessage`
-- **Magyarázat** : a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
+- **Magyarázat**: a kiszolgáló nem rendelkezik a szükséges Get, wrap és unwrap engedélyekkel a Azure Key Vaulthoz. Adja meg a hiányzó engedélyeket az egyszerű szolgáltatásnév számára az AZONOSÍTÓval.
 
 ### <a name="mitigation"></a>Kockázatcsökkentés
 

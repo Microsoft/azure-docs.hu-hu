@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96014380"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Kötetek kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
@@ -39,7 +39,7 @@ A StorSimple kötetek a következőket tehetik:
 ### <a name="provisioned-capacity"></a>Kiosztott kapacitás
 Tekintse meg az alábbi táblázatot az egyes kötetek kiosztott kapacitásának maximális kiosztásáról.
 
-| **Korlátazonosító**                                       | **Korlát**     |
+| **Korlátazonosító**                                       | **Korlátot**     |
 |------------------------------------------------------------|---------------|
 | Egy többszintű kötet minimális mérete                            | 500 GB        |
 | Egy rétegű kötet maximális mérete                            | 5 TB          |
@@ -137,7 +137,7 @@ A kötetek törléséhez hajtsa végre az alábbi lépéseket.
 3. Tekintse meg a törölni kívánt kötet állapotát. Ha a törölni kívánt kötet nem offline állapotban van, először kapcsolja offline állapotba, majd kövesse a [kötet offline](#take-a-volume-offline)állapotba helyezése című témakör lépéseit.
 4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés** gombra. A kötet most már törölve lesz, és a **kötetek** panel megjeleníti a kötetek frissített listáját a virtuális tömbön belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-virtual-array-clone.md).
 

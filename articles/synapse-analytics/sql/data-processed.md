@@ -1,5 +1,5 @@
 ---
-title: Cost Management kiszolgáló nélküli SQL-készlethez
+title: Kiszolgáló nélküli SQL-készlet költségkezelése
 description: Ez a dokumentum ismerteti, hogyan kezelheti a kiszolgáló nélküli SQL-készlet költségeit és a feldolgozott adatmennyiséget az Azure Storage-ban tárolt adatlekérdezés során.
 services: synapse analytics
 author: filippopovic
@@ -10,10 +10,10 @@ ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8a26f8ced5e91810f8cadff0a27796dc817e6517
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94491569"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>A kiszolgáló nélküli SQL-készlet Cost Management az Azure szinapszis Analyticsben
@@ -71,23 +71,23 @@ Képzelje el a három táblázatot.
 - A population_parquet tábla ugyanazokkal az értékekkel rendelkezik, mint a population_csv táblázat. A biztonsági mentés 1 TB-os parketta-fájlokból áll. Ez a tábla kisebb, mint az előző, mert az adattömörítési formátuma egy parketta.
 - A very_small_csv táblát 100 KB-os CSV-fájl támogatja.
 
-**1. lekérdezés** : a Sum (populáció) kiválasztása population_csv
+**1. lekérdezés**: a Sum (populáció) kiválasztása population_csv
 
 Ez a lekérdezés teljes fájlokat olvas és elemez a sokaság oszlop értékeinek lekéréséhez. A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek populációs összegét a rendszer a csomópontok között továbbítja. A végső összeg a végpontra kerül. 
 
 Ez a lekérdezés 5 TB-nyi adat feldolgozását és kis mennyiségű terhelést dolgoz fel a töredékek összegének átadásához.
 
-**2. lekérdezés** : válassza a Sum (populáció) elemet population_parquet
+**2. lekérdezés**: válassza a Sum (populáció) elemet population_parquet
 
 Ha tömörített és oszlopos formátumokat (például a Parquet) kérdez le, a rendszer kevesebb adatmennyiséget olvas be, mint az 1. lekérdezésben. Ez az eredmény jelenik meg, mert a kiszolgáló nélküli SQL-készlet egyetlen tömörített oszlopot olvas a teljes fájl helyett. Ebben az esetben a 0,2 TB olvasható. (Öt egyenlő méretű oszlop 0,2 TB.) A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek populációs összegét a rendszer a csomópontok között továbbítja. A végső összeg a végpontra kerül. 
 
 Ez a lekérdezés 0,2 TB-ot és kis mennyiségű terhelést dolgoz fel a töredékek összegének átadásához.
 
-**3. lekérdezés** : select * from population_parquet
+**3. lekérdezés**: select * from population_parquet
 
 Ez a lekérdezés beolvassa az összes oszlopot, és az összes adatokat tömörítetlen formátumban továbbítja. Ha a tömörítési formátum 5:1, akkor a lekérdezés 6 TB-ot dolgoz fel, mert 1 TB-ot olvas, és 5 TB tömörítetlen adatokat továbbít.
 
-**4. lekérdezés** : válassza a Count (*) elemet very_small_csv
+**4. lekérdezés**: válassza a Count (*) elemet very_small_csv
 
 Ez a lekérdezés teljes fájlokat olvas be. A tábla tárolási fájljainak teljes mérete 100 KB. A csomópontok feldolgozzák ennek a táblának a töredékeit, és az egyes töredékek összegét a csomópontok között továbbítjuk. A végső összeg a végpontra kerül. 
 
@@ -140,6 +140,6 @@ Ha szeretné megtekinteni, hogy mennyi adat lett feldolgozva az aktuális nap, h
 SELECT * FROM sys.dm_external_data_processed
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljesítményre vonatkozó lekérdezések optimalizálásával kapcsolatos további információkért lásd: [ajánlott eljárások kiszolgáló nélküli SQL-készlethez](best-practices-sql-on-demand.md).

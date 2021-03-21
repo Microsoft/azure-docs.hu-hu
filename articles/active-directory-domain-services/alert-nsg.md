@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
 ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97693911"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: hálózati konfigurációval kapcsolatos riasztások Azure Active Directory Domain Services
@@ -38,10 +38,10 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| Prioritás | Név | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Bármelyik | Engedélyezés |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármely | <sup>1</sup> . megtagadás |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Bármelyik | <sup>1</sup> . megtagadás |
 | 65000    | AllVnetInBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerInBound | Bármelyik | Bármelyik | AzureLoadBalancer | Bármelyik | Engedélyezés |
 | 65500    | DenyAllInBound | Bármelyik | Bármelyik | Bármelyik | Bármelyik | Megtagadás |
@@ -54,7 +54,7 @@ A rendszer a következő alapértelmezett bejövő és kimenő biztonsági szab�
 
 ### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| Prioritás | Név | Port | Protokoll | Forrás | Cél | Művelet |
+| Prioritás | Name | Port | Protokoll | Forrás | Cél | Művelet |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Bármelyik | Bármelyik | VirtualNetwork | VirtualNetwork | Engedélyezés |
 | 65001    | AllowAzureLoadBalancerOutBound | Bármelyik | Bármelyik |  Bármelyik | Internet | Engedélyezés |
@@ -86,7 +86,7 @@ Hiányzó biztonsági szabály hozzáadásához hajtsa végre a következő lép
 
 A biztonsági szabály hozzáadására és megjelenítésére néhány percet vesz igénybe a lista.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákba ütközik, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 

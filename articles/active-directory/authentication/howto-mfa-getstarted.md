@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96861306"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication üzemelő példány megtervezése
@@ -35,10 +35,10 @@ Az Azure AD Multi-Factor Authentication működés közbeni gyors megjelenítés
 
 Az Azure AD Multi-Factor Authentication üzembe helyezésének megkezdése előtt meg kell fontolnia az előfeltételként szükséges elemeket.
 
-| Használati példa | Előfeltétel |
+| Eset | Előfeltétel |
 | --- | --- |
 | **Csak felhőalapú** identitás-környezet modern hitelesítéssel | **Nincsenek további előfeltétel-feladatok** |
-| **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory tartományi szolgáltatások a Azure Active Directory. |
+| **Hibrid** identitási forgatókönyvek | [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) települ, és a felhasználói identitások szinkronizálása vagy összevonása a helyszíni Active Directory Domain Services a Azure Active Directory. |
 | Felhőbeli hozzáféréshez közzétett helyszíni örökölt alkalmazások | [Az Azure ad-alkalmazásproxy üzembe](../manage-apps/application-proxy.md) helyezése megtörténik. |
 | Az Azure AD MFA használata RADIUS-hitelesítéssel | A [hálózati házirend-kiszolgáló (NPS)](howto-mfa-nps-extension.md) telepítve van. |
 | A felhasználók Microsoft Office 2010-es vagy korábbi verzióját, vagy az Apple Mail for iOS 11 vagy korábbi verzióját. | Frissítsen [Microsoft Office 2013-es vagy újabb](https://support.microsoft.com/help/4041439/modern-authentication-configuration-requirements-for-transition-from-o) verzióra, valamint az Apple Mail for iOS 12 vagy újabb verzióra. A régi hitelesítési protokollok nem támogatják a feltételes hozzáférést. |
@@ -247,10 +247,10 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
    * OPCIONÁLISan: ha megbízható telephelyeket vagy elnevezett helyeket konfigurált, megadhatja, hogy a rendszer belefoglalja vagy kizárja ezeket a helyeket a szabályzatból.
 1. Győződjön meg **arról, hogy** a **hozzáférés** engedélyezése választógomb be van jelölve.
     * Jelölje be a **többtényezős hitelesítés megkövetelése** jelölőnégyzetet.
-    * Válassza a **Kiválasztás** lehetőséget.
+    * Kattintson a **Kiválasztás** elemre.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 
@@ -357,7 +357,7 @@ Jelentések az Azure AD MFA-hoz
 
 Az Azure AD Multi-Factor Authentication jelentéseket biztosít a Azure Portalon keresztül:
 
-| Jelentés | Hely | Leírás |
+| Jelentés | Hely | Description |
 | --- | --- | --- |
 | Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
 

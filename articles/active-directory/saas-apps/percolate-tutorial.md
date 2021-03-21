@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 913ffc0670e40e749bd28382d492a16891fdc5c9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92522263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Azure Active Directory integráció a átszivárog
@@ -61,7 +61,7 @@ A átszivárog Azure AD-be való integrálásának konfigurálásához hozzá ke
 
     ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **átszivárog**kifejezést. A keresési eredmények között válassza a **átszivárog** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. A keresőmezőbe írja be a **átszivárog** kifejezést. A keresési eredmények között válassza a **átszivárog** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
@@ -85,7 +85,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést fogja engedélyezni a Az
 
 Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **átszivárog** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget:
+1. A [Azure Portal](https://portal.azure.com/) **átszivárog** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget:
 
     ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következőt **https://percolate.com/app/login** :
 
    ![Képernyőkép: a "Bejelentkezés U R L" szövegmezőben a "további U R ls beállítása" szöveg jelenik meg.](common/metadata-upload-additional-signon.png)
-6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse ezt az URL-címet.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének** másolásához. Mentse ezt az URL-címet.
 
     ![Az alkalmazás-összevonás metaadat-URL-címének másolása](common/copy-metadataurl.png)
 
@@ -122,11 +122,11 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
 1. Egy új böngészőablakban jelentkezzen be a átszivárog rendszergazdaként.
 
-2. A Kezdőlap bal oldalán válassza a **Beállítások**lehetőséget:
+2. A Kezdőlap bal oldalán válassza a **Beállítások** lehetőséget:
     
     ![Beállítások kiválasztása](./media/percolate-tutorial/configure01.png)
 
-3. A bal oldali ablaktáblán válassza az **SSO** elemet a **szervezet**területen:
+3. A bal oldali ablaktáblán válassza az **SSO** elemet a **szervezet** területen:
 
     ![Egyszeri bejelentkezés kiválasztása a szervezet alatt](./media/percolate-tutorial/configure02.png)
 
@@ -136,21 +136,21 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
     1. A Jegyzettömbben nyissa meg a Azure Portalból letöltött Base-64 kódolású tanúsítványt. Másolja ki a tartalmát, és illessze be a **x509-tanúsítványok** mezőbe.
 
-    1. Az **e-mail-attribútum** mezőbe írja be az **EmailAddress**értéket.
+    1. Az **e-mail-attribútum** mezőbe írja be az **EmailAddress** értéket.
 
     1. Az **Identity Provider metaadatok URL-címe** mező nem kötelező. Ha a Azure Portalból másolt egy **alkalmazás-összevonási metaadatok URL-címét** , akkor beillesztheti ebbe a mezőbe.
 
-    1. A **AuthNRequests alá kell írni?** listáról válassza a **nem**lehetőséget.
+    1. A **AuthNRequests alá kell írni?** listáról válassza a **nem** lehetőséget.
 
-    1. Az **SSO automatikus kiépítés engedélyezése** listában válassza a **nem**lehetőséget.
+    1. Az **SSO automatikus kiépítés engedélyezése** listában válassza a **nem** lehetőséget.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget:
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** lehetőséget, majd válassza a **minden felhasználó** lehetőséget:
 
     ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
@@ -164,29 +164,29 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension> **. (Például: BrittaSimon@contoso.com .)
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon@ \<yourcompanydomain> . \<extension>**. (Például: BrittaSimon@contoso.com .)
 
-    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
+    1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
-    1. Kattintson a **Létrehozás** gombra.
+    1. Válassza a **Létrehozás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure AD egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a átszivárog.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **átszivárog**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **átszivárog** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában válassza a **átszivárog**lehetőséget.
+2. Az alkalmazások listájában válassza a **átszivárog** lehetőséget.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
+3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok** lehetőséget:
 
     ![Képernyőfelvétel: a bal oldali panelen kiválasztott "felhasználók és csoportok" látható.](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Felhasználók és csoportok kiválasztása](common/add-assign-user.png)
 
@@ -194,7 +194,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure AD eg
 
 6. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-percolate-test-user"></a>Átszivárog-teszt felhasználó létrehozása
 
@@ -204,7 +204,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a átszivárog rendszergazdaként.
 
-2. A bal oldali ablaktáblán válassza a **felhasználók** a **szervezet**alatt lehetőséget. **Új felhasználók**kiválasztása:
+2. A bal oldali ablaktáblán válassza a **felhasználók** a **szervezet** alatt lehetőséget. **Új felhasználók** kiválasztása:
 
     ![Új felhasználók kiválasztása](./media/percolate-tutorial/configure03.png)
 
@@ -216,7 +216,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     1. A **teljes név** mezőben adja meg a felhasználó nevét. Például: **Brittasimon**.
 
-    1. Válassza a **felhasználók létrehozása**lehetőséget.
+    1. Válassza a **felhasználók létrehozása** lehetőséget.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

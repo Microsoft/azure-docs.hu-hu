@@ -6,10 +6,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: daeb587349d885b3e6820b8da2951c3790eb1ac6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102039580"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
@@ -122,12 +122,12 @@ A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák 
 | Begyűjtött metrika mező | Azure Monitor mező |
 |:--|:--|
 | `host` | Computer |
-| `plugin` | Nincs |
+| `plugin` | Nincsenek |
 | `plugin_instance` | Példány neve<br>Ha **plugin_instance** értéke *Null* , akkor példánynév = "*_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Ha **type_instance** értéke *Null* , akkor a CounterName =**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | Nincs |
+| `dstypes` | Nincsenek |
 | `values[]` | Kártyabirtokos számlájának megterhelését |
 
 ## <a name="next-steps"></a>Következő lépések

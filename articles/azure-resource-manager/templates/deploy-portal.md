@@ -4,10 +4,10 @@ description: A Azure Portal és az Azure Erőforrás-kezelés használatával az
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028675"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal
@@ -41,7 +41,7 @@ Ez a cikk mindkét módszert mutatja be.
 
    ![Csoportok értékeinek beállítása](./media/deploy-portal/set-group-properties.png)
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. Tekintse át az értékeket, majd válassza a **Létrehozás** lehetőséget.
 1. Válassza a **frissítés** lehetőséget, mielőtt megtekinti az új erőforráscsoportot a listában.
 
@@ -84,7 +84,7 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
 
    ![Sablon központi telepítésének keresése](./media/deploy-portal/search-template.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 1. A sablonok létrehozásához több lehetőség is megjelenik:
 
     - **Saját sablon készítése a szerkesztőben**: saját sablon létrehozása a portál sablon szerkesztőjében.
@@ -122,11 +122,11 @@ Ha egy központi telepítést kíván végrehajtani, de nem használja a piacté
     - **Hely**: használja az alapértelmezett értéket.
     - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
 
-1. Válassza a **Vásárlás** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A naplók megtekintéséhez lásd: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).
 - Az üzembe helyezési hibák elhárításáról lásd: [telepítési műveletek megtekintése](deployment-history.md).
 - Ha a sablont egy központi telepítésből vagy erőforráscsoporthoz szeretné exportálni, tekintse meg az [ARM-sablonok exportálása](export-template-portal.md)című témakört.
-- A szolgáltatás több régióban való biztonságos kihelyezéséhez lásd: [Azure Telepítéskezelő](deployment-manager-overview.md).
+- A szolgáltatás több régióban való biztonságos kihelyezéséhez lásd: [Azure Deployment Manager](deployment-manager-overview.md).

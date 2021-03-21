@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1dd82fb00c55e3676929999f204eae8755671038
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93314747"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az adatelemzés áttekintése az Azure HDInsight Spark használatával
@@ -156,13 +156,13 @@ A Jupyter Notebook a Azure Portal indítható el. Keresse meg a Spark-fürtöt a
 
 ![Fürt irányítópultok](./media/spark-overview/spark-jupyter-on-portal.png)
 
-Tallózással is megkeresheti *_`https://CLUSTERNAME.azurehdinsight.net/jupyter`_* a * _-t a Jupyter-jegyzetfüzetek eléréséhez. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
+Tallózással is megkeresheti ***`https://CLUSTERNAME.azurehdinsight.net/jupyter`*** a Jupyter-jegyzetfüzetek elérését. Cserélje le az URL CLUSTERNAME részét a saját fürt nevére. A jegyzetfüzetek eléréséhez szüksége lesz a rendszergazdai fiók jelszavára.
 
 ![Jupyter-jegyzetfüzetek tallózása](./media/spark-overview/spark-jupyter-notebook.png)
 
 Válassza a PySpark lehetőséget egy olyan könyvtár megtekintéséhez, amely néhány példát tartalmaz a PySpark API-t használó előre csomagolt jegyzetfüzetekre. A Spark-témakörhöz tartozó kód mintákat tartalmazó jegyzetfüzetek a [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) érhetők el
 
-A jegyzetfüzeteket közvetlenül a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) töltheti fel a Spark-fürtön lévő Jupyter notebook-kiszolgálóra. A Jupyter kezdőlapján kattintson a _ *feltöltés* * gombra a képernyő jobb oldalán. Megnyílik egy fájlkezelő. Itt beillesztheti a GitHub (nyers tartalom) URL-címét, majd kattintson a **Megnyitás** gombra.
+A jegyzetfüzeteket közvetlenül a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/Spark/pySpark) töltheti fel a Spark-fürtön lévő Jupyter notebook-kiszolgálóra. A Jupyter kezdőlapján kattintson a képernyő jobb oldalán található **feltöltés** gombra. Megnyílik egy fájlkezelő. Itt beillesztheti a GitHub (nyers tartalom) URL-címét, majd kattintson a **Megnyitás** gombra.
 
 A Jupyter-fájlok listájában megjelenik a fájl neve, és ismét **feltölthető** gomb jelenik meg. Kattintson erre a **feltöltés** gombra. Most importálta a jegyzetfüzetet. Ismételje meg ezeket a lépéseket a többi jegyzetfüzet ezen útmutatóból való feltöltéséhez.
 
@@ -192,4 +192,4 @@ Most, hogy beállította a HDInsight Spark-fürtöt, és feltöltötte a Jupyter
 
 **Modell felhasználása:** A jelen témakörben létrehozott besorolási és regressziós modellek kiértékelésével kapcsolatban lásd a [Spark által készített gépi tanulási modellek pontszámát és értékelését](spark-model-consumption.md)ismertető témakört.
 
-**Több ellenőrzés és hiperparaméter** : a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható
+**Több ellenőrzés és hiperparaméter**: a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) használatával a modellek több ellenőrzéssel és a Hyper-paraméterrel történő elvetésével is betanítható

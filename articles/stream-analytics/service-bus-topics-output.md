@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: bee6e5547ad78554467f23968230721ba029aba6
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102451762"
 ---
 # <a name="service-bus-topics-output-from-azure-stream-analytics"></a>Service Bus témakörök kimenete Azure Stream Analytics
@@ -19,7 +19,7 @@ Service Bus Queues egy-az-egyhez kommunikációs módszert biztosít a küldő �
 
 A következő táblázat a tulajdonságok nevét és leírásait sorolja fel Service Bus témakör kimenetének létrehozásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a Service Bus témakörbe való irányítására szolgál. |
 | Service Bus névtér |Az üzenetküldési entitások készletének tárolója. Új Event hub létrehozásakor létrehozott egy Service Bus névteret is. |
