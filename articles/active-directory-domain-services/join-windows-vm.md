@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619572"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -52,7 +52,7 @@ Ebben az oktatóanyagban egy Windows Server rendszerű virtuális gépet hoz lé
 
 ## <a name="create-a-windows-server-virtual-machine"></a>Windows Server rendszerű virtuális gép létrehozása
 
-Ha szeretné megtudni, hogyan csatlakozhat egy számítógéphez egy felügyelt tartományhoz, hozzon létre egy Windows Server rendszerű virtuális gépet. Ez a virtuális gép egy Azure-beli virtuális hálózathoz csatlakozik, amely kapcsolatot biztosít a felügyelt tartományhoz. A felügyelt tartományhoz való csatlakozás folyamata megegyezik a normál helyszíni Active Directory tartományi szolgáltatások tartományhoz való csatlakozással.
+Ha szeretné megtudni, hogyan csatlakozhat egy számítógéphez egy felügyelt tartományhoz, hozzon létre egy Windows Server rendszerű virtuális gépet. Ez a virtuális gép egy Azure-beli virtuális hálózathoz csatlakozik, amely kapcsolatot biztosít a felügyelt tartományhoz. A felügyelt tartományhoz való csatlakozás folyamata megegyezik a normál helyszíni Active Directory Domain Services tartományhoz való csatlakozással.
 
 Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne csatlakoztatni, ugorjon a szakaszra, és [csatlakozzon a virtuális géphez a felügyelt tartományhoz](#join-the-vm-to-the-managed-domain).
 
@@ -68,7 +68,7 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
     |----------------------|-------------------|
     | Erőforráscsoport       | Válasszon ki vagy hozzon létre egy erőforráscsoportot, például *myResourceGroup* |
     | Virtuális gép neve | Adja meg a virtuális gép nevét, például *myVM* |
-    | Régió               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
+    | Region               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
     | Felhasználónév             | Adjon meg egy felhasználónevet a virtuális gépen létrehozandó helyi rendszergazdai fiókhoz, például: *Azureus* |
     | Jelszó             | Adja meg és erősítse meg a virtuális gépen a helyi rendszergazda számára létrehozott biztonságos jelszót. Ne határozzon meg tartományi felhasználói fiók hitelesítő adatait. |
 
@@ -137,7 +137,7 @@ Ha szükséges, engedélyezze a webböngésző számára az előugró ablak megn
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>A virtuális gép csatlakoztatása a felügyelt tartományhoz
 
-A létrehozott virtuális géppel és az Azure Bastion használatával létrehozott webalapú RDP-kapcsolattal most csatlakoztassa a Windows Server rendszerű virtuális gépet a felügyelt tartományhoz. Ez a folyamat megegyezik egy normál helyszíni Active Directory tartományi szolgáltatások tartományhoz csatlakozó számítógéppel.
+A létrehozott virtuális géppel és az Azure Bastion használatával létrehozott webalapú RDP-kapcsolattal most csatlakoztassa a Windows Server rendszerű virtuális gépet a felügyelt tartományhoz. Ez a folyamat megegyezik egy normál helyszíni Active Directory Domain Services tartományhoz csatlakozó számítógéppel.
 
 1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő** elemet.
 1. A **Kiszolgálókezelő** ablak bal oldali paneljén válassza a **helyi kiszolgáló** lehetőséget. A jobb oldali ablaktábla **Tulajdonságok** területén válassza a **munkacsoport** lehetőséget.
@@ -199,7 +199,7 @@ Ha nem használja ezt a Windows Server-alapú virtuális gépet, törölje a vir
 
 ## <a name="troubleshoot-domain-join-issues"></a>A tartományhoz való csatlakozással kapcsolatos problémák elhárítása
 
-A Windows Server rendszerű virtuális gépnek sikeresen csatlakoznia kell a felügyelt tartományhoz, ugyanúgy, mint a normál helyi számítógép Active Directory tartományi szolgáltatások tartományhoz. Ha a Windows Server rendszerű virtuális gép nem tud csatlakozni a felügyelt tartományhoz, az azt jelzi, hogy van-e kapcsolat vagy hitelesítő adatokkal kapcsolatos probléma. A felügyelt tartomány sikeres csatlakoztatásához tekintse át a következő hibaelhárítási szakaszt.
+A Windows Server rendszerű virtuális gépnek sikeresen csatlakoznia kell a felügyelt tartományhoz, ugyanúgy, mint a normál helyi számítógép Active Directory Domain Services tartományhoz. Ha a Windows Server rendszerű virtuális gép nem tud csatlakozni a felügyelt tartományhoz, az azt jelzi, hogy van-e kapcsolat vagy hitelesítő adatokkal kapcsolatos probléma. A felügyelt tartomány sikeres csatlakoztatásához tekintse át a következő hibaelhárítási szakaszt.
 
 ### <a name="connectivity-issues"></a>Csatlakozási problémák
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97796635"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
@@ -145,7 +145,7 @@ Jelenleg Service Bus a következő korlátozásokat szabja meg a particionált v
 * A particionált várólisták és témakörök nem támogatják a különböző munkamenetekhez tartozó üzenetek küldését egyetlen tranzakcióban.
 * A Service Bus névterenként jelenleg 100 particionált üzenetsort vagy témakört képes kezelni. Minden particionált üzenetsor vagy témakör a 10 000 entitások névterében számítja fel a kvótát (a prémium szintű csomagra nem vonatkozik).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a AMQP 1,0 üzenetküldési specifikációjának alapvető fogalmait a [AMQP 1,0 protokoll útmutatójában](service-bus-amqp-protocol-guide.md).
 

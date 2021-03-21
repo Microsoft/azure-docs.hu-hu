@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 50f71ee1ce59f5809fe8905c58f0399cf484f11a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94659709"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Tesztkörnyezet beállítása a SQL Server kezeléséhez és fejlesztéséhez
@@ -65,7 +65,7 @@ Most, hogy a dolgok hálózatkezelési oldalát kezelik, lehetővé teszi SQL Se
 24. Kattintson a **Tovább gombra: további beállítások**.
 25. A **meglévő adatértékek használata** beállításnál válassza a **minta** lehetőséget.  Az adatbázis létrehozásakor a AdventureWorksLT-adatbázisból származó adatok lesznek használva.
 26. Kattintson a **Felülvizsgálat + létrehozás** elemre.
-27. Kattintson a **Létrehozás** gombra.
+27. Kattintson a **Létrehozás** lehetőségre.
 
 Miután a SQL Database üzembe helyezése sikeresen befejeződött, létrehozhatjuk a labort, és telepíthetjük a szoftvereket a tesztkörnyezet-sablon számítógépén.
 

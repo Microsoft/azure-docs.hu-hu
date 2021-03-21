@@ -12,27 +12,23 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 54caea62feed6ae7c082a979901999a5dcb3bd71
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: f315f473c3ba9efd4e01f9424f01884a46011dbb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582247"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578370"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
 Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely a felhasználóknál jelentkezik.
 
-## <a name="libraries-for-protecting-web-apps"></a>A webalkalmazások védelméhez használható kódtárak
+## <a name="microsoft-libraries-supporting-web-apps"></a>Web Apps-t támogató Microsoft-kódtárak
 
 <!-- This section can be in an include for web app and web APIs -->
-A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a következők:
+A következő Microsoft-kódtárak védik a webalkalmazásokat (és a webes API-t):
 
-| Platform | Kódtár | Description |
-|----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. A gyakorlatban a bonyolultság a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) könyvtárban van beágyazva. |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python-webalkalmazások támogatása |
+[!INCLUDE [active-directory-develop-libraries-webapp](../../../includes/active-directory-develop-libraries-webapp.md)]
 
 Válassza ki az Önt érdeklő platformhoz tartozó lapot:
 
@@ -51,6 +47,12 @@ A cikkben szereplő kódrészletek és a következők a [ASP.net Web App mintáb
 # <a name="java"></a>[Java](#tab/java)
 
 Ebben a cikkben a kódrészleteket és a következő, a Java- [webalkalmazásban a Microsoft Graph mintát hívó Java-webalkalmazásból](https://github.com/Azure-Samples/ms-identity-java-webapp) kinyert MSAL.
+
+Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+A cikkben szereplő kódrészletek és a következők kinyerve a MSAL [ -csomópontban található mintaNode.js webalkalmazás-aláíró felhasználóinak](https://github.com/Azure-Samples/ms-identity-node) .
 
 Érdemes lehet ezt a mintát a teljes megvalósítás részleteit megtekinteni.
 
@@ -177,6 +179,37 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 A Azure Portalban az alkalmazás **hitelesítési** lapján regisztrált válasz URI-azonosítóknak meg kell egyezniük az `redirectUri` alkalmazás által definiált példányokkal. Tehát a `http://localhost:8080/msal4jsample/secure/aad` és a `http://localhost:8080/msal4jsample/graph/me` .
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Itt a konfigurációs paraméterek a következő helyen találhatók: `index.js`
+
+```javascript
+
+const REDIRECT_URI = "http://localhost:3000/redirect";
+
+const config = {
+    auth: {
+        clientId: "Enter_the_Application_Id_Here",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/",
+        clientSecret: "Enter_the_Client_Secret_Here"
+    },
+    system: {
+        loggerOptions: {
+            loggerCallback(loglevel, message, containsPii) {
+                console.log(message);
+            },
+            piiLoggingEnabled: false,
+            logLevel: msal.LogLevel.Verbose,
+        }
+    }
+};
+```
+
+A Azure Portal az alkalmazás hitelesítési oldalán regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az alkalmazás által definiált redirectUri-példányokkal ( `http://localhost:3000/redirect` ).
+
+> [!NOTE]
+> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát. Az éles alkalmazásban a titkos kulcs (például kulcstartó vagy környezeti változó) tárolására más módszereket is érdemes használni.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Itt látható a Python konfigurációs fájlja [app_config.](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py)a következőben:
@@ -207,7 +240,7 @@ Az inicializálási kód a platformtól függően eltérő. ASP.NET Core és ASP
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert a `[Authorize]` vezérlőn vagy a vezérlő műveletein van egy attribútuma. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazást inicializáló kód a *Startup.cs* fájlban található.
+ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert a `[Authorize]` vezérlőn vagy a vezérlő műveletein van egy attribútuma. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazást inicializáló kód a *Startup. cs* fájlban található.
 
 A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával történő hitelesítés hozzáadásához hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
@@ -246,7 +279,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
      }).AddMicrosoftIdentityUI();
     ```
 
-3. A `Configure` *Startup.cs* metódusában engedélyezze a hitelesítést a következő hívásával: `app.UseAuthentication();`
+3. A `Configure` *Startup. cs* metódusban engedélyezze a hitelesítést a következő hívásával: `app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -319,6 +352,15 @@ További részletekért tekintse `doFilter()` meg a [AuthFilter. Java](https://g
 
 Az ezzel a módszerrel aktiválható engedélyezési kód folyamatáról a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kódjának folyamata](v2-oauth2-auth-code-flow.md)című cikkben olvashat bővebben.
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+```javascript
+const msal = require('@azure/msal-node');
+
+// Create msal application object
+const cca = new msal.ConfidentialClientApplication(config);
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 A Python-minta a lombikot használja. A lombik és a MSAL Python inicializálása az [app. # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
@@ -354,6 +396,10 @@ Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be
 # <a name="java"></a>[Java](#tab/java)
 
 Lépjen be a következő cikkbe ebben a forgatókönyvben, [majd jelentkezzen be, és jelentkezzen ki](./scenario-web-app-sign-user-sign-in.md?tabs=java).
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Lépjen be a következő cikkbe ebben a forgatókönyvben, majd [Jelentkezzen](./scenario-web-app-sign-user-sign-in.md?tabs=nodejs)be.
 
 # <a name="python"></a>[Python](#tab/python)
 

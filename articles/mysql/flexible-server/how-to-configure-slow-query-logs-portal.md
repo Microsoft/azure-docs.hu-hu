@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: a61c8e3451d661dae2e5ad56a0d4a947252ec873
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94540063"
 ---
 # <a name="configure-and-access-slow-query-logs-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése Azure Database for MySQL rugalmas kiszolgálóhoz a Azure Portal használatával
@@ -39,7 +39,7 @@ Konfigurálja a MySQL lassú lekérdezési napló elérését.
 1. Módosítsa a többi szükséges paramétert (pl. `long_query_time`, `log_slow_admin_statements`). További paraméterekért tekintse meg a [lassú lekérdezési naplók](./concepts-slow-query-logs.md#configure-slow-query-logging) dokumentációját.  
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/long-query-time.png" alt-text="Lassú lekérdezési naplóval kapcsolatos paraméterek frissítése":::
 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
    :::image type="content" source="./media/how-to-configure-slow-query-logs-portal/save-parameters.png" alt-text="Lassú lekérdezési napló paramétereinek mentése.":::
 
 A **kiszolgáló paraméterei** lapon a lap bezárásával visszatérhet a naplók listájához.

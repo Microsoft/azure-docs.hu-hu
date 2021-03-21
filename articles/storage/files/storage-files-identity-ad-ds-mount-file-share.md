@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3aa7ab2fd3217377e9c56c8c71a1c1acc959bcd9
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: 1dd2768c7541312b68e2a44a35fc4260d67c5655
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472282"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586998"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Negyedik rész: fájlmegosztási csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről
 
@@ -28,7 +28,7 @@ Jelentkezzen be az ügyfélre az engedélyeket kapott hitelesítő adatokkal, ah
 
 A fájlmegosztás csatlakoztatása előtt győződjön meg arról, hogy a következő előfeltételek vannak:
 
-- Ha olyan ügyfélről csatlakoztatja a fájlmegosztást, amely előzőleg csatlakoztatta a fájlmegosztást a Storage-fiók kulcsa alapján, akkor győződjön meg arról, hogy leválasztotta a megosztást, eltávolította a Storage-fiók kulcsának állandó hitelesítő adatait, és jelenleg AD DS hitelesítő adatokat használ a hitelesítéshez. A csatlakoztatott megosztás Storage-fiók kulccsal való törlésével kapcsolatos utasításokért tekintse meg a [Gyakori kérdések oldalát](https://docs.microsoft.com/azure/storage/files/storage-files-faq#ad-ds--azure-ad-ds-authentication).
+- Ha olyan ügyfélről csatlakoztatja a fájlmegosztást, amely előzőleg csatlakoztatta a fájlmegosztást a Storage-fiók kulcsa alapján, akkor győződjön meg arról, hogy leválasztotta a megosztást, eltávolította a Storage-fiók kulcsának állandó hitelesítő adatait, és jelenleg AD DS hitelesítő adatokat használ a hitelesítéshez. A csatlakoztatott megosztás Storage-fiók kulccsal való törlésével kapcsolatos utasításokért tekintse meg a [Gyakori kérdések oldalát](./storage-files-faq.md#ad-ds--azure-ad-ds-authentication).
 - Az ügyfélnek a AD DSnak kell lennie. Ha a számítógép vagy a virtuális gép kívül esik a AD DS által felügyelt hálózaton, engedélyeznie kell a VPN-t a hitelesítéshez AD DS eléréséhez.
 
 Cserélje le a helyőrző értékeket a saját értékeire, majd az alábbi parancs használatával csatlakoztassa az Azure-fájlmegosztást. Mindig az alább látható elérési úttal kell csatlakoztatnia. A fájl csatlakoztatására szolgáló CNAME használatával nem támogatott az identitás-alapú hitelesítés (AD DS vagy az Azure AD DS).

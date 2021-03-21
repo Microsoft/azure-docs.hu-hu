@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a0c8a42edad08308095469039c048f8dd8552af
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "94413462"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-with-azure-active-directory"></a>Az Azure Active Directory-val nem szinkronizált objektumok hibáinak megoldása
@@ -64,7 +64,7 @@ A hibák megkereséséhez tekintse meg néhány különböző helyet a következ
 
 A lépések megkezdése előtt indítsa el [synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) .
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 A Synchronization Service Manager **Operations (műveletek** ) lapján kell elindítania a hibaelhárítást. Ezen a lapon a legutóbbi műveletek eredményei láthatók. 
 
 ![Synchronization Service Manager képernyőképe – a műveletek lap kijelölve](./media/tshoot-connect-object-not-syncing/operations.png)  
@@ -91,7 +91,7 @@ Először válassza a hiba karakterláncot. (Az előző ábrán a hiba sztring *
 
 Kattintson a jobb gombbal a **hívási verem adatai** mezőre, kattintson az **összes kijelölése** elemre, majd válassza a **Másolás** lehetőséget. Ezután másolja a verembe, és tekintse meg a hibát a kedvenc szerkesztőben, például a Jegyzettömbben.
 
-Ha a hiba a **SyncRulesEngine** -ből származik, a hívási verem adatai először az objektum összes attribútumát listázza. Görgessen lefelé, amíg meg nem jelenik a **InnerException =>** fejléc.  
+Ha a hiba a **SyncRulesEngine**-ből származik, a hívási verem adatai először az objektum összes attribútumát listázza. Görgessen lefelé, amíg meg nem jelenik a **InnerException =>** fejléc.  
 
   ![Képernyőkép a Synchronization Service Managerről, amely a InnerException => vámtarifaszám alá tartozó hibákat mutatja.](./media/tshoot-connect-object-not-syncing/errorinnerexception.png)
   
@@ -138,7 +138,7 @@ Az előző ábrán a **művelet** oszlop egy bejövő szinkronizálási szabály
 
 ![Képernyőkép az összekötő-terület objektumának Lineage lapján lévő Lineage (lenyíló) ablakról Tulajdonságok ablak](./media/tshoot-connect-object-not-syncing/cslineageout.png)  
 
-Az előző ábrán látható, hogy a **PasswordSync** oszlopban a bejövő összekötő területe is hozzájárulhat a jelszó módosításához, mert az egyik szinkronizálási szabály értéke TRUE ( **igaz** ). Ezt a jelszót a rendszer a kimenő szabályon keresztül elküldi az Azure AD-nek.
+Az előző ábrán látható, hogy a **PasswordSync** oszlopban a bejövő összekötő területe is hozzájárulhat a jelszó módosításához, mert az egyik szinkronizálási szabály értéke TRUE ( **igaz**). Ezt a jelszót a rendszer a kimenő szabályon keresztül elküldi az Azure AD-nek.
 
 A **Lineage** lapon a metaverse [**objektum tulajdonságainak**](#mv-attributes)kiválasztásával érheti el a metaverse-t.
 
@@ -158,7 +158,7 @@ Az **előnézet** gomb mellett kattintson a **napló** gombra a **napló** oldal
 Általában jobb, ha megkezdi a keresést a forrás Active Directory-összekötő területéről. De a metaverse használatával is megkezdheti a keresést.
 
 ### <a name="searching-for-an-object-in-the-mv"></a>Objektum keresése az MV-ban
-A Synchronization Service Managerban válassza a **metaverse Search** lehetőséget, ahogy az az alábbi ábrán is látható. Hozzon létre egy lekérdezést, amelyről tudja, hogy megkeresi a felhasználót. Általános attribútumok, például **accountName** ( **sAMAccountName** ) és **userPrincipalName** keresése. További információ: [Sync Service Manager metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
+A Synchronization Service Managerban válassza a **metaverse Search** lehetőséget, ahogy az az alábbi ábrán is látható. Hozzon létre egy lekérdezést, amelyről tudja, hogy megkeresi a felhasználót. Általános attribútumok, például **accountName** (**sAMAccountName**) és **userPrincipalName** keresése. További információ: [Sync Service Manager metaverse Search](how-to-connect-sync-service-manager-ui-mvsearch.md).
 
 ![Képernyőkép a Synchronization Service Managerről, és a metaverse-Keresés lap van kiválasztva](./media/tshoot-connect-object-not-syncing/mvsearch.png)  
 
@@ -208,6 +208,6 @@ Ha hiányzik az összekötő az Azure AD-hoz, tekintse át az [MV-attribútumok]
 
 Az **Összekötők lapon az** [összekötő terület objektumra](#connector-space-object-properties)is léphet. Jelöljön ki egy sort, és kattintson a **Tulajdonságok** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure ad Connect szinkronizálásról](how-to-connect-sync-whatis.md).
 - További információ a [hibrid identitásról](whatis-hybrid-identity.md).

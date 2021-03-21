@@ -7,10 +7,10 @@ ms.date: 2/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96006336"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Események összesítése és gyűjtése a EventFlow segítségével használatával
@@ -146,7 +146,7 @@ servicefabric:/<section-name>/<setting-name>
 
 Indítsa el a szolgáltatást, és figyelje meg a hibakeresési kimenet ablakot a Visual Studióban. A szolgáltatás elindítása után meg kell jelennie arról, hogy a szolgáltatás a konfigurált kimenetre küld rekordokat. Navigáljon az Event Analysis and vizualizációs platformra, és ellenőrizze, hogy a naplók megkezdték-e a megjelenítést (eltarthat néhány percig).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Események elemzése és vizualizáció Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Események elemzése és vizualizáció Azure Monitor naplókkal](service-fabric-diagnostics-event-analysis-oms.md)

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0db101e47a5ec8eb88d3b999058e7c8521f0ff9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98020281"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Stream Analytics feladatok figyelése és kezelése a Visual Studióval
@@ -42,7 +42,7 @@ A hibákat a **hibák** lapra kattintva is figyelheti.
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Azure Stream Analytics-feladatok létrehozása a Visual Studióval](stream-analytics-quick-create-vs.md)
 * [A Visual studióhoz készült Azure Stream Analytics-eszközök telepítése](stream-analytics-tools-for-visual-studio-install.md)

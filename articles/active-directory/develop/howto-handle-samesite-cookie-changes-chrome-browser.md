@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30c4f054259aa7c3f2a9fdfaeeadd64f26dd9bea
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116971"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "94444911"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookie-k változásainak kezelése a Chrome böngészőben
 
@@ -81,11 +81,8 @@ a SameSite-cookie-k ASP.NET és ASP.NET Core való kezelésével kapcsolatos ré
 
 További információ a SameSite és a webalkalmazási forgatókönyvről:
 
-> [!div class="nextstepaction"]
-> [Google Chrome GYIK a SameSite-on](https://www.chromium.org/updates/same-site/faq)
+- [Google Chrome GYIK a SameSite-on](https://www.chromium.org/updates/same-site/faq)
 
-> [!div class="nextstepaction"]
-> [Króm SameSite lapja](https://www.chromium.org/updates/same-site)
+- [Króm SameSite lapja](https://www.chromium.org/updates/same-site)
 
-> [!div class="nextstepaction"]
-> [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](scenario-web-app-sign-user-overview.md)
+- [Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás](scenario-web-app-sign-user-overview.md)

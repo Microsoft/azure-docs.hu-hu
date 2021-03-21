@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d58c476a805b672a6ec8b4d8ec465eba17e559
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 35d2bf33b4a22c14abfb61a87a3697b05188ed31
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169681"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579093"
 ---
 # <a name="building-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -37,7 +37,7 @@ Az összes házirend kikényszerítve két fázisban:
    - A nem teljesített követelmények azonosításához használja az 1. fázisban összegyűjtött munkamenet részleteit. 
    - Ha van olyan házirend, amely a hozzáférés blokkolására van konfigurálva, a tiltás engedélyezése vezérlővel a kényszerítés le lesz tiltva, és a felhasználó blokkolva lesz. 
    - A rendszer felszólítja a felhasználót, hogy hajtsa végre az 1. fázisban az alábbi sorrendben nem teljesített további engedélyezési ellenőrzési követelményeket, amíg a szabályzat nem teljesül:  
-      - Multi-Factor Authentication 
+      - Többtényezős hitelesítés 
       - Jóváhagyott ügyfélalkalmazás/alkalmazás-védelmi szabályzat 
       - Felügyelt eszköz (megfelelő vagy hibrid Azure AD-csatlakozás) 
       - Használati feltételek 
@@ -106,6 +106,8 @@ Az engedélyezési vezérlő egy vagy több vezérlő kényszerítését is elin
 - Hibrid Azure AD-hez csatlakoztatott eszköz megkövetelése
 - Jóváhagyott ügyfélalkalmazás megkövetelése
 - Alkalmazásvédelmi szabályzat megkövetelése
+- Jelszó módosításának megkövetelése
+- Használati feltételek megkövetelése
 
 A rendszergazdák dönthetnek úgy, hogy az alábbi beállítások használatával megkövetelhetik az előző vezérlők vagy az összes kijelölt vezérlő egyikét. A többszörös vezérlők alapértelmezett értéke az összes megkövetelése.
 
@@ -150,7 +152,7 @@ Az [általános feltételes hozzáférési szabályzatok](concept-conditional-ac
 
 [Bejelentkezési viselkedés szimulálása a feltételes hozzáférési What If eszköz használatával](troubleshoot-conditional-access-what-if.md)
 
-[Felhőalapú Azure AD-Multi-Factor Authentication üzembe helyezésének megtervezése](../authentication/howto-mfa-getstarted.md)
+[Felhőalapú Azure AD Multi-Factor Authentication-telepítés megtervezése](../authentication/howto-mfa-getstarted.md)
 
 [Az eszközök megfelelőségének kezelése az Intune-nal](/intune/device-compliance-get-started)
 

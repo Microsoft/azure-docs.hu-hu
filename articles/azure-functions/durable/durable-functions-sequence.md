@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: f8223b1273c2a487e15e3c10d7c6852a119e4cdc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98028250"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Függvények láncolása Durable Functions-Hello Sequence minta
@@ -108,7 +108,7 @@ A tevékenységek az `ActivityTrigger` attribútumot használják. A megadott m�
 
 A megvalósítása `E1_SayHello` viszonylag triviális karakterlánc-formázási művelet.
 
-Az-hoz való kötés helyett `IDurableActivityContext` közvetlenül a tevékenység függvénynek átadott típushoz köthető. Példa:
+Az-hoz való kötés helyett `IDurableActivityContext` közvetlenül a tevékenység függvénynek átadott típushoz köthető. Például:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 
@@ -239,7 +239,7 @@ Amint láthatja, a `runtimeStatus` példány *befejeződik* , és a tartalmazza 
 
 Tekintse meg a függvény-végrehajtási naplókat. A `E1_HelloSequence` függvény többször indult el és fejeződött be, mert a folyamat [megbízhatósága](durable-functions-orchestrations.md#reliability) című témakörben leírt újrajátszás viselkedése történt. Másfelől azonban csak három végrehajtás történt, `E1_SayHello` mivel ezek a függvények végrehajtása nem kerül újra lejátszásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a minta egy egyszerű függvény-láncolási előkészítést mutat be. A következő minta bemutatja, hogyan valósítható meg a ventilátor-out/Fan-in minta.
 

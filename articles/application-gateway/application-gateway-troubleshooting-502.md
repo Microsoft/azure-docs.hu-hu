@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96182937"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása az Application Gatewayben
@@ -108,7 +108,7 @@ A következő további tulajdonságokat adja hozzá a rendszer:
 
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
+| Név |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
 | Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha több hely van konfigurálva az Application gatewayben. Ez különbözik a virtuális gép gazdagépének nevétől. |
 | Elérési út |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. A mintavétel a \<protocol\> :// \<host\> :\<port\>\<path\> |

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
@@ -9,17 +9,17 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 3b9b540e53c46eae0dfbe9dd9c3ed91cd7506a9d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95562381"
 ---
 ## <a name="extended-iot-scenarios"></a>Bővített IoT-forgatókönyvek
 
 Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlakoztatta eszközét az IoT Hubhoz, további forgatókönyveket tekinthet át, amelyek más Azure-eszközöket és -szolgáltatásokat használnak:
 
-| Használati eset                                                   | Azure-szolgáltatás vagy -eszköz              |
+| Eset                                                   | Azure-szolgáltatás vagy -eszköz              |
 |----------------------------------------------------------- |------------------------------------|
 | [IoT Hub-üzenetek kezelése](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub bővítmény|
 | [IoT-eszközök felügyelete](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Az Azure CLI és a IoT bővítmény    |

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: d8edafff9b6534e5f1ce1c4581595ee187dfd432
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96619899"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure Active Directory Domain Services üzembe helyezés és felügyelet az Azure Cloud Solution Providers szolgáltatásban
@@ -37,7 +37,7 @@ További információ: [Azure CSP – áttekintés](/partner-center/azure-plan-l
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Az Azure AD DS Azure CSP-előfizetéssel való használatának előnyei
 
-Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directory tartományi szolgáltatásokekkel. Az évtizedek során számos alkalmazás lett létrehozva az AD-vel való együttműködésre ezen képességek használatával. Számos független szoftvergyártó (ISV) létrehozta és üzembe helyezte az alkalmazásokat az ügyfelek telephelyén. Ezeket az alkalmazásokat nehéz támogatni, mivel gyakran szükséges a különböző környezetekhez való hozzáférés, ahol az alkalmazások telepítve vannak. Az Azure CSP-előfizetésekkel egyszerűbb alternatíva az Azure méretezése és rugalmassága.
+Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directory Domain Servicesekkel. Az évtizedek során számos alkalmazás lett létrehozva az AD-vel való együttműködésre ezen képességek használatával. Számos független szoftvergyártó (ISV) létrehozta és üzembe helyezte az alkalmazásokat az ügyfelek telephelyén. Ezeket az alkalmazásokat nehéz támogatni, mivel gyakran szükséges a különböző környezetekhez való hozzáférés, ahol az alkalmazások telepítve vannak. Az Azure CSP-előfizetésekkel egyszerűbb alternatíva az Azure méretezése és rugalmassága.
 
 Az Azure AD DS támogatja az Azure CSP-előfizetéseket. Az alkalmazást az ügyfél Azure AD-bérlője számára kötött Azure CSP-előfizetésben helyezheti üzembe. Ennek eredményeképpen az alkalmazottak (a támogatási személyzet) kezelhetik, felügyelhetik és szervizelik azokat a virtuális gépeket, amelyeken az alkalmazás üzembe helyezése a szervezet vállalati hitelesítő adataival történik.
 
@@ -93,6 +93,6 @@ A következő fontos szempontokat kell figyelembe venni egy felügyelt tartomán
     
     Ahhoz, hogy egy CSP-partner felügyelt tartományon hajtsa végre ezeket a feladatokat, felhasználói fiókot kell létrehoznia az ügyfél Azure AD-bérlőn belül. A fiók hitelesítő adatait meg kell osztani a CSP-partner rendszergazdai ügynökével. Ezt a felhasználói fiókot is hozzá kell adni a *HRE DC-rendszergazdák* csoportjához, hogy a felügyelt tartományon lévő konfigurációs feladatok ezen felhasználói fiók használatával legyenek elvégezve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként [regisztráljon az Azure CSP programba](/partner-center/enrolling-in-the-csp-program). Ezután engedélyezheti Azure AD Domain Services [a Azure Portal vagy a](tutorial-create-instance.md) [Azure PowerShell](powershell-create-instance.md)használatával.

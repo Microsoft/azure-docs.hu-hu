@@ -11,10 +11,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103470727"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -40,13 +40,13 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie `0.3.0.0` |
-| TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| PolicyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
-| PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production` , vagy `Development` . A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Nem | A naplózáshoz használt végpont. Az értéket úgy kell beállítani, hogy `urn:journeyrecorder:applicationinsights` az attribútum létezik. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| PolicySchemaVersion | Yes | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie `0.3.0.0` |
+| TenantObjectId | No | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
+| TenantId | Yes | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
+| PolicyId | Yes | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
+| PublicPolicyUri | Yes | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
+| Deploymentmode beállítása | No | Lehetséges értékek: `Production` , vagy `Development` . A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | No | A naplózáshoz használt végpont. Az értéket úgy kell beállítani, hogy `urn:journeyrecorder:applicationinsights` az attribútum létezik. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 
 
 Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** elemet:
@@ -64,7 +64,7 @@ Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** eleme
 
 A **TrustFrameworkPolicy** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| Egy alapházirend azonosítója. |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | A szabályzat építőelemei. |
@@ -76,7 +76,7 @@ Ha egy házirendet egy másik házirendből kíván örökölni, egy **BasePolic
 
 A **BasePolicy** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Események | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
 | PolicyId | 1:1 | A szülő házirend azonosítója. |

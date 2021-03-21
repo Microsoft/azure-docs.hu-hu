@@ -13,10 +13,10 @@ ms.date: 01/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
 ms.openlocfilehash: b842934ea6bb458a59a53ea7068aa9ece98aacf1
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98796147"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Adatbetöltés az Azure Data Factoryvel
@@ -155,7 +155,7 @@ prepared_dataset = Dataset.Tabular.from_delimited_files(path=datastore_path)
 
 Innen a használatával `prepared_dataset` hivatkozhat az előkészített adatokra, például a betanítási parancsfájlokban. Megtudhatja, hogyan lehet [modelleket betanítani Azure Machine learning adatkészletekkel](./how-to-train-with-datasets.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Databricks-jegyzetfüzet futtatása Azure Data Factory](../data-factory/transform-data-using-databricks-notebook.md)
 * [Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](./how-to-access-data.md#create-and-register-datastores)

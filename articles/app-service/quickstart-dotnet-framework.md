@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 11/20/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seodec18
 ms.openlocfilehash: a4f7ba288bc27d6079deea9caf0ea315a55d0745
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004067"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>ASP.NET Framework webalkalmazás létrehozása az Azure-ban
@@ -26,7 +26,7 @@ Az oktatóanyag elvégzéséhez telepítse a <a href="https://www.visualstudio.c
 
 Ha már telepítette a Visual Studio 2019-et:
 
-- A **Help**  >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
+- A   >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
 - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások** lehetőséget.
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET-Webalkalmazás létrehozása <a name="create-and-publish-the-web-app"></a>
@@ -43,7 +43,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 4. Bármilyen ASP.NET-webappot üzembe helyezhet az Azure-ban. Ebben a rövid útmutatóban válassza az **MVC** sablont.
 
-5. Győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés**. Kattintson a **Létrehozás** gombra.
+5. Győződjön meg arról, hogy a hitelesítés beállítása **Nincs hitelesítés**. Válassza a **Létrehozás** lehetőséget.
 
    ![ASP.NET-Webalkalmazás létrehozása](./media/quickstart-dotnet-framework/select-mvc-template-vs2019.png)
 
@@ -81,7 +81,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 1. Az **üzemeltetési terv** párbeszédpanelen adja meg a következő táblázat értékeit, majd kattintson az **OK gombra**.
 
-   | Beállítás | Ajánlott érték | Leírás |
+   | Beállítás | Ajánlott érték | Description |
    |-|-|-|
    | Szolgáltatási csomag| myAppServicePlan | Az App Service-csomag neve. |
    | Hely | Nyugat-Európa | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
@@ -144,7 +144,7 @@ A (z) **app Service új lap létrehozása** lapon megadott alkalmazásnév URL-e
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [ASP.NET-alkalmazás és SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)

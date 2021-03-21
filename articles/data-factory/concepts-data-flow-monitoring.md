@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/22/2020
 ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96004871"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
@@ -58,7 +58,7 @@ Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a 
   
 ![Képernyőfelvétel: a frissítési lehetőség.](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")
 
-## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Teljes fogadó feldolgozási idő és átalakítás feldolgozási ideje
+## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>Teljes fogadófeldolgozási idő kontra átalakításfeldolgozási idő
 
 Az egyes átalakítási szakaszok teljes időt biztosítanak ahhoz, hogy az adott fázis befejeződjön az egyes partíciók végrehajtási idejével együtt. Ha a fogadóra kattint, megjelenik a "fogadó feldolgozási idő". Ez az idő magában foglalja az átalakítási idő összegét, *valamint* azt az I/O-időt, amelyet az adatainak a célhelyre való írásához vett igénybe. A fogadó feldolgozási ideje és az átalakítás összege közötti különbség az az I/O-idő, amellyel az adatmennyiséget el kell írni.
 

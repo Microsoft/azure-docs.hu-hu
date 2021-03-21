@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: justinha
 ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96618858"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
@@ -80,7 +80,7 @@ Néhány percet vesz igénybe, hogy a biztonsági beállítások a felügyelt ta
 >
 > Ha az NTLM-jelszó kivonata eltér a Kerberos-jelszó kivonattól, az NTLM-re való tartalék nem fog működni. A gyorsítótárazott hitelesítő adatok szintén nem működnek, ha a virtuális gép a felügyelt tartományvezérlőhöz kapcsolódik.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a szinkronizálási folyamatról: [objektumok és hitelesítő adatok szinkronizálása felügyelt tartományokban][synchronization].
 

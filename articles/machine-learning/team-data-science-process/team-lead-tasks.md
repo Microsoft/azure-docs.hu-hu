@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96000028"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
@@ -91,7 +91,7 @@ Különálló projekt létrehozása a csapat számára:
    
 1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve** alatt, majd válassza a **speciális** lehetőséget. 
    
-1. A **verziókövetés** területen válassza a **git** lehetőséget, majd a **munkaelemek feldolgozása** területen válassza az **agilis** lehetőséget. Ezután válassza a **Létrehozás** elemet. 
+1. A **verziókövetés** területen válassza a **git** lehetőséget, majd a **munkaelemek feldolgozása** területen válassza az **agilis** lehetőséget. Ezután kattintson a **Létrehozás** elemre. 
    
    ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* `git commit` Futtassa a következő két parancsot:
+> Ha első alkalommal véglegesít egy git-tárházat, előfordulhat, hogy a parancs futtatása előtt konfigurálnia kell a *User.name* és a *User.email* globális paramétereket `git commit` . Futtassa a következő két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -324,7 +324,7 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
    
 1. Győződjön meg arról, hogy az új meghajtó és a tároló sikeresen csatlakoztatva van a gépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
