@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.author: jeedes
-ms.openlocfilehash: ac31323547ec2d0b6330b0b1c13dd9f219f224e7
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: c6db83dd46d988b5e8b4122a9e89e3c36136ad89
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104726863"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moqups"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Moqups
 
@@ -127,7 +127,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-moqups-sso"></a>Moqups SSO konfigurálása
 
-Az egyszeri bejelentkezés **Moqups** -oldalon való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Moqups támogatási csapatának](mailto:support@moqups.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+1. Jelentkezzen be rendszergazdaként a Moqups webhelyre.
+
+1.  Nyissa meg a **fiókot** , és válassza az **integráció** fület.
+
+1. Az **SAML hitelesítés** szakaszban illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
+
+    ![Képernyőfelvétel a konfigurációs szakaszról.](./media/moqups-tutorial/saml-authentication.png)
+
+1. Kattintson a **Konfigurálás** gombra.
 
 ### <a name="create-moqups-test-user"></a>Moqups-tesztelési felhasználó létrehozása
 

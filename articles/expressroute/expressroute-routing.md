@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 0dc2b48d02eb8a69afc947891c263ef1510257a7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c65825a6d8d2d7f9059e91a1f248367fa1788e1a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101721837"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799496"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -106,7 +106,7 @@ Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az
 
 Amennyiben a rendszer nem rendeli Önhöz az előtagokat és az AS-számot az előző beállításjegyzékekben, meg kell nyitnia egy támogatási esetet az előtagok és az ASN manuális érvényesítéséhez. Az ügyfélszolgálat olyan dokumentációt (például Engedélyezési nyilatkozatot) kér, amely igazolja, hogy jogosult az erőforrások használatára.
 
-A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre. Ezenkívül eltávolítjuk az AS PATH értékében lévő privát AS-számokat a fogadott előtagok esetében. Ennek eredményeképpen nem fűzhet privát AS-számokat az AS PATH értékéhez [a Microsoft társviszony-létesítés útválasztásának befolyásolásához](expressroute-optimize-routing.md). 
+A saját AS-számok Microsoft társviszony-létesítés esetében engedélyezettek, de ebben az esetben is szükség van manuális érvényesítésre. Ezenkívül eltávolítjuk az AS PATH értékében lévő privát AS-számokat a fogadott előtagok esetében. Ennek eredményeképpen nem fűzhet privát AS-számokat az AS PATH értékéhez [a Microsoft társviszony-létesítés útválasztásának befolyásolásához](expressroute-optimize-routing.md). Emellett a 64496-64511-es számú, az IANA által a dokumentáció céljára fenntartott számok nem engedélyezettek az elérési úton.
 
 > [!IMPORTANT]
 > Ne Hirdessen ugyanazt a nyilvános IP-útvonalat a nyilvános internetre és a ExpressRoute-ra. Az aszimmetrikus útválasztást okozó helytelen konfiguráció kockázatának csökkentése érdekében erősen ajánlott, hogy a Microsofton keresztül hirdetett [NAT IP-címek](expressroute-nat.md) olyan tartományból ExpressRoute legyenek, amely egyáltalán nem hirdeti meg az internetet. Ha ez nem érhető el, elengedhetetlen annak biztosítása, hogy a ExpressRoute több mint egy adott tartományt Hirdessen, mint az internetkapcsolaton. A NAT nyilvános útvonalán kívül a helyszíni hálózatban lévő kiszolgálók által használt nyilvános IP-címeket is meghirdetheti a Microsofton belüli Microsoft 365-végpontokkal kommunikáló ExpressRoute. 

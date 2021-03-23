@@ -5,12 +5,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: 06a73b495cefc361db88d80413f4f4be50e105d1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5788e5ac64c1c74a06c94c5634a05315ee098b8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041144"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799292"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-oktatóanyag
 A Log Analytics egy eszköz a Azure Portalban, amellyel szerkesztheti és futtathatja a Azure Monitor naplók által összegyűjtött adatokból származó naplózott lekérdezéseket, és interaktív módon elemezheti az eredményeket. Log Analytics lekérdezések használatával lekérheti az adott feltételeknek megfelelő rekordokat, azonosíthatja a trendeket, elemezheti a mintákat, és különféle elemzéseket biztosíthat az adataihoz. 
@@ -72,7 +72,7 @@ A kiválasztott értékkel a lekérdezésbe bekerül egy **Where** utasítás. A
 ## <a name="time-range"></a>Időtartomány
 Egy Log Analytics munkaterület összes táblájának van egy **TimeGenerated** nevű oszlopa, amely a rekord létrehozásának időpontja. Minden lekérdezésnek van olyan időtartománya, amely az eredményeket az adott tartományon belüli **TimeGenerated** értékre korlátozza. Az időtartomány beállítható a lekérdezésben vagy a képernyő felső részén található választóval.
 
-Alapértelmezés szerint a lekérdezés a rekordokat az elmúlt 24 órában fogja visszaadni. Válassza ki az **időtartomány** legördülő menüt, és módosítsa **7 napra**. Kattintson ismét a **Futtatás** elemre az eredmények visszaküldéséhez. Láthatja, hogy a rendszer visszaadja az eredményeket, de van egy üzenet arról, hogy nem látjuk az összes eredményt. Ennek az az oka, hogy Log Analytics legfeljebb 10 000 rekordot tud visszaadni, és a lekérdezés további rekordokat adott vissza. 
+Alapértelmezés szerint a lekérdezés a rekordokat az elmúlt 24 órában fogja visszaadni. Válassza ki az **időtartomány** legördülő menüt, és módosítsa **7 napra**. Kattintson ismét a **Futtatás** elemre az eredmények visszaküldéséhez. Láthatja, hogy a rendszer visszaadja az eredményeket, de van egy üzenet arról, hogy nem látjuk az összes eredményt. Ennek az az oka, hogy Log Analytics legfeljebb 30 000 rekordot tud visszaadni, és a lekérdezés további rekordokat adott vissza. 
 
 [![Időtartomány](media/log-analytics-tutorial/query-results-max.png)](media/log-analytics-tutorial/query-results-max.png#lightbox)
 

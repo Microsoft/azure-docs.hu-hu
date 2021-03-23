@@ -3,17 +3,17 @@ title: A Windows rendszerű virtuális asztal újdonságai – Azure
 description: Új szolgáltatások és Termékfrissítések a Windows rendszerű virtuális asztali gépekhez.
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: acb9b6d9d2080c63243ec4b924d07a927d6ccdfd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102499883"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774439"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztal újdonságai
 
@@ -35,6 +35,15 @@ Tekintse meg ezeket a cikkeket a Windows rendszerű virtuális asztali és Távo
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Windows rendszerű virtuális asztali ügynök frissítései
+
+A Windows rendszerű virtuális asztali ügynök havonta legalább egyszer frissül.
+
+Itt módosult a Windows rendszerű virtuális asztali ügynök:
+
+- Verzió 1.0.2800.2800: Ez a frissítés 2021 márciusában, a fordított kapcsolatok hibája javítva.
+- Verzió 1.0.2800.2700: Ez a frissítés a 2021 februárjában lett közzétéve, és rögzített egy hozzáférés-megtagadási problémát.
 
 ## <a name="fslogix-updates"></a>FSLogix-frissítések
 

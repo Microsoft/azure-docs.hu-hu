@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 04446243ed827cca4972a4b606c4930e74a2c704
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88648564"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774966"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Tervezési szempontok a méretezési csoportokhoz
 Ez a cikk a Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat ismerteti. A Virtual Machine Scale Setsával kapcsolatos információkért tekintse meg a [Virtual Machine Scale sets áttekintését](./overview.md).
@@ -67,4 +67,4 @@ A felhasználó által felügyelt Storage-fiókokkal konfigurált méretezési c
 
 Az egyéni rendszerképekre épülő méretezési csoport (amelyet Ön hozott létre) az Azure Managed Disks szolgáltatással akár 600 virtuális gép kapacitása is felhasználható. Ha a méretezési csoport felhasználó által felügyelt Storage-fiókokkal van konfigurálva, akkor az összes operációsrendszer-lemez virtuális merevlemezét egy Storage-fiókon belül kell létrehoznia. Ennek eredményeképpen a méretezési csoportokban az egyéni rendszerképekre és a felhasználó által felügyelt tárterületre épülő virtuális gépek maximálisan ajánlott száma 20. Ha kikapcsolja a túlzott kiépítést, akár 40-ig is megtekintheti.
 
-Ennél a korlátnál több virtuális gép esetén több méretezési csoportot kell telepíteni a [sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)látható módon.
+Ennél a korlátnál több virtuális gép esetén több méretezési csoportot kell telepíteni a [sablonban](https://azure.microsoft.com/resources/templates/301-custom-images-at-scale/)látható módon.

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a4d3f3f9465b8813cdf6ee26760d819d73a08c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5df0a5fc054a12e3fa2ef1e352645c57c357b01
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94353104"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798731"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
@@ -27,6 +27,9 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 
 * Azure Active Directory-bérlő
 * Salesforce.com-bérlő
+
+> [!Note]
+> A szerepkörök importálásakor a szerepköröket nem szabad manuálisan szerkeszteni Azure Active Directoryban.
 
 > [!IMPORTANT]
 > Ha Salesforce.com próbaverziós fiókot használ, akkor nem fogja tudni beállítani az automatikus felhasználó-kiépítés beállítását. A próbaverziós fiókokhoz nincs engedélyezve a szükséges API-hozzáférés, amíg meg nem vásárolják őket. Ezt a korlátozást egy ingyenes [fejlesztői fiók](https://developer.salesforce.com/signup) használatával érheti el az oktatóanyag elvégzéséhez.

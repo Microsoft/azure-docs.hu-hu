@@ -5,15 +5,15 @@ author: ThomasWeiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 10/14/2020
+ms.date: 03/19/2021
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: e488d1acfe116409caf571e7878e454628a9dea9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6b2944c1d29849ea44b5afd878d5b0e030358cc5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201326"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801825"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-api-for-mongodb"></a>A MongoDB Azure Cosmos DB API-ban végrehajtott műveletek igénylési egységének megkeresése
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -34,13 +34,17 @@ Az RU díját egy nevű egyéni adatbázis- [parancs](https://docs.mongodb.com/m
 
 1. Lépjen a **adatkezelő** ablaktáblára, majd válassza ki a használni kívánt tárolót.
 
-1. Válassza az **Új lekérdezés** lehetőséget.
+1. Válassza a **...** elemet a tároló neve mellett, és válassza az **Új lekérdezés** elemet.
 
 1. Adjon meg egy érvényes lekérdezést, majd válassza a **lekérdezés végrehajtása** lehetőséget.
 
-1. A **lekérdezési statisztikák** lehetőség kiválasztásával jelenítheti meg a tényleges kérelmek díját a végrehajtott kérelemért.
+1. A **lekérdezési statisztikák** lehetőség kiválasztásával jelenítheti meg a tényleges kérelmek díját a végrehajtott kérelemért. Ez a lekérdezéstervező lehetővé teszi, hogy csak a lekérdezési predikátumok esetében futtasson és tekintse meg a kérési egység díját. Ez a szerkesztő nem használható adatmanipulációs parancsokhoz, például INSERT utasításokhoz.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Képernyőkép a MongoDB-lekérdezési kérelmekért a Azure Portal":::
+   :::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Képernyőkép a MongoDB-lekérdezési kérelmekért a Azure Portal":::
+
+1. Az adatkezelési parancsok kérelmezési költségeinek lekéréséhez futtassa a `getLastRequestStatistics` parancsot egy rendszerhéj-alapú felhasználói felületen, például a Mongo shell, a [Robo 3T](mongodb-robomongo.md), a [MONGODB Compass](mongodb-compass.md)vagy a vs Code bővítménnyel a Shell Scripting használatával.
+
+   `db.runCommand({getLastRequestStatistics: 1})`
 
 ## <a name="use-the-mongodb-net-driver"></a>A MongoDB .NET-illesztőprogram használata
 

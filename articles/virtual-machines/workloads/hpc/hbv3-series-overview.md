@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: b1f2800c3787cd28437afa70b78ef8388461e413
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1abd03f517f9e0b13a2994418cbae5cfbe22454
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721166"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801866"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>A HBv3 sorozatú virtuális gépek áttekintése 
 
@@ -32,6 +32,9 @@ Ennek eredményeképpen a kiszolgáló 4 NUMA-tartománnyal (2 szoftvercsatorna)
 Ha az Azure Hypervisort úgy kívánja biztosítani, hogy a virtuális gép beavatkozása nélkül működjön, a kiszolgáló 8 fizikai magot foglal le. 
 
 Vegye figyelembe, hogy a korlátozott magok virtuálisgép-méretei csak a virtuális géphez elérhető fizikai magok számát csökkentik. Minden globális megosztott eszköz (RAM, memória-sávszélesség, L3 gyorsítótár, GMI és xGMI kapcsolat, InfiniBand, Azure Ethernet-hálózat, helyi SSD) állandó marad. Ez lehetővé teszi, hogy az ügyfél olyan virtuálisgép-méretet válasszon, amely a legmegfelelőbb munkaterhelés-vagy szoftverlicenc-igényekhez igazodik.
+
+Az alábbi ábrán az Azure hypervisor (sárga) és a HBv3 sorozatú virtuális gép (zöld) számára fenntartott magok elkülönítése látható.
+![Az Azure hypervisor és a HBv3 sorozatú virtuális gép számára fenntartott magok elkülönítése](./media/architecture/hbv3-segregation-cores.png)
 
 ## <a name="infiniband-networking"></a>InfiniBand hálózatkezelés
 A HBv3 VM-EK emellett az NVIDIA Mellanox HDR InfiniBand hálózati adaptereket (ConnectX-6) is üzemeltetik, amelyek akár 200 Gigabit/s-ban üzemelnek. A hálózati ADAPTERt a CSATOLÓJÁHOZ nincs SR-en keresztül továbbítják a virtuális géphez, amely lehetővé teszi a hálózati forgalom számára a hypervisor megkerülését. Ennek eredményeképpen az ügyfelek a standard szintű Mellanox OFED a HBv3 virtuális gépeken, mivel azok operációs rendszer nélküli környezetben történnek.

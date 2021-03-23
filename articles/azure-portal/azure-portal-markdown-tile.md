@@ -1,15 +1,15 @@
 ---
 title: Egyéni Markdown csempe használata az Azure-irányítópultokon
 description: Megtudhatja, hogyan adhat hozzá Markdown-csempét egy Azure-irányítópulthoz a statikus tartalom megjelenítéséhez
-ms.date: 01/08/2020
+ms.date: 03/19/2021
 ms.topic: how-to
 ms.custom: devx-track-js
-ms.openlocfilehash: 5121142ecf568aa1ac9a7ec19f7211c6f9a6253f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8324b736565cfa353e48cf49b76e2784866f47f7
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745757"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774456"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Markdown csempe használata az Azure-irányítópultokon egyéni tartalom megjelenítéséhez
 
@@ -21,7 +21,7 @@ Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csem
 
    ![A portál oldalsávját ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-nav.png)
 
-1. Ha létrehozta az egyéni irányítópultokat, az irányítópult nézetben a legördülő listából válassza ki azt az irányítópultot, amelyben az egyéni Markdown csempének kell megjelennie. Kattintson a Szerkesztés ikonra a **csempék gyűjteményének** megnyitásához.
+1. Az irányítópult nézetében válassza ki azt az irányítópultot, amelyben az egyéni Markdown csempe megjelenjen, majd válassza a **Szerkesztés** lehetőséget.
 
    ![Az irányítópult szerkesztési nézetét bemutató képernyőkép](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
@@ -52,9 +52,9 @@ Az egyéni, statikus tartalmak megjelenítéséhez hozzáadhat egy Markdown csem
 
 A Markdown csempén bármilyen egyszerű szöveg, Markdown szintaxis és HTML-tartalom kombinációja használható. A Azure Portal egy _jelölt_ nevű nyílt forráskódú függvénytárat használ, amely a csempén látható HTML-re alakítja át a tartalmat. A _megjelöléssel_ létrehozott HTML-kódot a portál előre feldolgozta a Megjelenítés előtt. Ez a lépés segít meggyőződni arról, hogy a Testreszabás nem befolyásolja a portál biztonságát vagy elrendezését. Az előzetes feldolgozás során a HTML bármely olyan része törlődik, amely potenciális fenyegetést jelent. A portál a következő típusú tartalmakat nem engedélyezi:
 
-* JavaScript – a `<script>` címkék és a beágyazott JavaScript-értékelések el lesznek távolítva.
+* JavaScript – `<script>` a címkék és a beágyazott JavaScript-értékelések el lesznek távolítva.
 * iframe elemek – `<iframe>` a címkék el lesznek távolítva.
-* Style – `<style>` a címkék el lesznek távolítva. A HTML-elemekben található beágyazott stílusú attribútumok nem támogatottak hivatalosan. Előfordulhat, hogy néhány beágyazott stílusú elem működik Önnek, de ha a portál elrendezését zavarja, bármikor leállíthatja a munkát. A Markdown csempe olyan alapszintű, statikus tartalomhoz készült, amely a portál alapértelmezett stílusait használja.
+* Stílus – `<style>` a címkék el lesznek távolítva. A HTML-elemekben található beágyazott stílusú attribútumok nem támogatottak hivatalosan. Előfordulhat, hogy néhány beágyazott stílusú elem működik Önnek, de ha a portál elrendezését zavarja, bármikor leállíthatja a munkát. A Markdown csempe olyan alapszintű, statikus tartalomhoz készült, amely a portál alapértelmezett stílusait használja.
 
 ## <a name="next-steps"></a>Következő lépések
 

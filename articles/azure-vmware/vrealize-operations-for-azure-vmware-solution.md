@@ -3,12 +3,12 @@ title: VRealize-műveletek beállítása Azure VMware-megoldáshoz
 description: Ismerje meg, hogyan állíthat be vRealize-műveleteket az Azure VMware-megoldás privát felhője számára.
 ms.topic: how-to
 ms.date: 01/26/2021
-ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8015bb61a7401b4c97807e0256e06d4967c39026
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738429"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802488"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>VRealize-műveletek beállítása Azure VMware-megoldáshoz
 
@@ -61,7 +61,7 @@ A példány üzembe helyezését követően konfigurálhatja a vRealize művelet
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 
-- Az Azure VMware-megoldás **cloudadmin \@ vSphere. local** felhasználója [korlátozott jogosultságokkal](concepts-role-based-access-control.md)rendelkezik.  Az Azure VMware-megoldásban a virtuális gépek (VM-EK) nem támogatják a vendégen belüli memória-gyűjtést a VMware-eszközök használatával.  Ebben az esetben az aktív és a felhasznált memória kihasználtsága továbbra is működik.
+- Az Azure VMware-megoldás **cloudadmin \@ vSphere. local** felhasználója [korlátozott jogosultságokkal](concepts-identity.md)rendelkezik.  Az Azure VMware-megoldásban a virtuális gépek (VM-EK) nem támogatják a vendégen belüli memória-gyűjtést a VMware-eszközök használatával.  Ebben az esetben az aktív és a felhasznált memória kihasználtsága továbbra is működik.
 - A gazdagép-alapú üzleti célra való munkaterhelés optimalizálása nem működik, mert az Azure VMware-megoldások kezelik a fürt konfigurációit, beleértve a DRS-beállításokat is.
 - A fürtön belüli elhelyezés SDDC a fürtökön alapuló üzleti szándék használatával teljes mértékben támogatott a vRealize Operations Manager 8,0-es és újabb verziókban. A számítási feladatok optimalizálása azonban nem ismeri az erőforrás-készleteket, és a virtuális gépeket a fürt szintjén helyezi el. A felhasználók manuálisan is kimódosíthatják azt az Azure VMware-megoldás vCenter Server felületén.
 - Az Azure VMware-megoldás vCenter Server hitelesítő adataival nem tud bejelentkezni a vRealize Operations Managerba. 

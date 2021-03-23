@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6c96651fa48acc2f88658148c7e60be2f3fa09da
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96008276"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800159"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.
@@ -79,6 +79,7 @@ Alapértelmezés szerint a Service Fabric szigorú szabályokat alkalmaz (minden
 
 ### <a name="cluster-health-policy"></a>Fürt állapotára vonatkozó házirend
 A [fürt állapot-házirendje](/dotnet/api/system.fabric.health.clusterhealthpolicy) a fürt állapotának és a csomópont állapotának kiértékelésére szolgál. A házirend a fürt jegyzékfájljában határozható meg. Ha nincs jelen, a rendszer az alapértelmezett szabályzatot (a tolerálatlan hibákat) használja.
+
 A fürt állapotára vonatkozó házirend a következőket tartalmazza:
 
 * [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
@@ -87,18 +88,33 @@ A fürt állapotára vonatkozó házirend a következőket tartalmazza:
 * [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. Alapértelmezés szerint a rendszer az összes alkalmazást egy készletbe helyezi, és kiértékeli a MaxPercentUnhealthyApplications. Ha egyes alkalmazás-típusokat másképp kell kezelni, akkor kivehetők a globális készletből. Ehelyett a rendszer kiértékeli azokat a százalékokat, amelyek az alkalmazás típusa nevével vannak társítva a térképen. Egy fürtben például több ezer különböző típusú alkalmazás létezik, és a speciális alkalmazás néhány vezérlő alkalmazás-példánya. A vezérlő alkalmazásoknak soha nem lehetnek hiba. Megadhatja a globális MaxPercentUnhealthyApplications 20%-ra a hibák kihasználása érdekében, de a "ControlApplicationType" alkalmazás típusához állítsa a MaxPercentUnhealthyApplications 0-ra. Így ha a sok alkalmazás nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer figyelmeztetésként értékeli ki a fürtöt. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapotával indított egyéb figyelési állapotot. Egy hiba esetén azonban még egy vezérlő alkalmazás sem fogja a fürtöt sérült állapotba hozni, amely a frissítés konfigurációjától függően visszaállítja vagy szünetelteti a fürt frissítését.
   A térképen definiált alkalmazások típusai esetében az összes alkalmazás-példány kikerül a globális készletből. A kiértékelésük az alkalmazás típusú alkalmazások teljes száma alapján történik, a Térkép adott MaxPercentUnhealthyApplications használatával. Az összes többi alkalmazás a globális készletben marad, és a MaxPercentUnhealthyApplications-mel van kiértékelve.
 
-A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket szeretne megadni az Application Type Térképben, előtagként adja meg a paraméter nevét a "ApplicationTypeMaxPercentUnhealthyApplications-" kifejezéssel, amelyet az alkalmazásnév neve követ.
+  A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket szeretne megadni az Application Type Térképben, előtagként adja meg a paraméter nevét a "ApplicationTypeMaxPercentUnhealthyApplications-" kifejezéssel, amelyet az alkalmazásnév neve követ.
 
-```xml
-<FabricSettings>
-  <Section Name="HealthManager/ClusterHealthPolicy">
-    <Parameter Name="ConsiderWarningAsError" Value="False" />
-    <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
-    <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
-    <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
-  </Section>
-</FabricSettings>
-```
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="ApplicationTypeMaxPercentUnhealthyApplications-ControlApplicationType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
+
+* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap). A fürt állapotának kiértékelése során felhasználható a csomópont-állapotra vonatkozó szabályzat-hozzárendelés a speciális csomópont-típusok leírásához. A csomópont-típusokat a rendszer kiértékeli a csomópont-típus nevével társított százalékok alapján. Ennek az értéknek a beállítása nincs hatással a számára használt csomópontok globális készletére `MaxPercentUnhealthyNodes` . Egy fürt például több száz különböző típusú csomópontot tartalmaz, és néhány csomópont-típust, amelyek fontos munkát futtatnak. Az adott típusú csomópontoknak nem kell megjelenniük. Megadhatja, hogy a globális `MaxPercentUnhealthyNodes` érték 20% legyen az összes csomópont meghibásodása esetén, de a csomópont típusa esetén `SpecialNodeType` állítsa a `MaxPercentUnhealthyNodes` értéket 0-ra. Így ha a sok csomópont állapota nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer kiértékeli a fürtöt a figyelmeztetési állapotnak megfelelően. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapota által aktivált egyéb figyelést. `SpecialNodeType`Egy hiba állapotú csomópontban azonban a fürt nem Kifogástalan állapotba kerül, és a frissítési konfigurációtól függően a fürt frissítését vagy szüneteltetését is elvégezheti. Ezzel szemben a globális érték 0 értékre állítása `MaxPercentUnhealthyNodes` és a nem kifogástalan `SpecialNodeType` állapotú csomópontok maximális százalékos aránya 100-re egy hibás állapotú csomópontnál a fürt a hiba `SpecialNodeType` állapotában marad, mert a globális korlátozás szigorúbb ebben az esetben. 
+
+  A következő példa egy fürt jegyzékfájljának kivonata. A csomópont típusú leképezésben szereplő bejegyzések definiálásához előtagként adja meg a paraméter nevét a "NodeTypeMaxPercentUnhealthyNodes-" kifejezéssel, majd a csomópont típusának nevét.
+
+  ```xml
+  <FabricSettings>
+    <Section Name="HealthManager/ClusterHealthPolicy">
+      <Parameter Name="ConsiderWarningAsError" Value="False" />
+      <Parameter Name="MaxPercentUnhealthyApplications" Value="20" />
+      <Parameter Name="MaxPercentUnhealthyNodes" Value="20" />
+      <Parameter Name="NodeTypeMaxPercentUnhealthyNodes-SpecialNodeType" Value="0" />
+    </Section>
+  </FabricSettings>
+  ```
 
 ### <a name="application-health-policy"></a>Alkalmazás állapotára vonatkozó házirend
 Az [alkalmazás állapotára vonatkozó házirend](/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás jegyzékfájljában, **ApplicationManifest.xml** az alkalmazáscsomagban definiálható. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.

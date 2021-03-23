@@ -8,22 +8,22 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fc3662d8198e6ab6ab215ac1e9e8eac585f4250b
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97516593"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801587"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene lekérdezési szintaxis az Azure Cognitive Search
 
 Lekérdezések létrehozásakor választhatja a [Lucene lekérdezés-elemző](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) szintaxisát speciális lekérdezési űrlapokhoz: helyettesítő karakterekkel, fuzzy kereséssel, közelségi kereséssel, reguláris kifejezésekkel. A Lucene lekérdezés-elemző szintaxisának nagy része [érintetlenül van megvalósítva az Azure Cognitive Searchban](search-lucene-query-architecture.md), a kifejezéseken alapuló *keresési tartományok* kivételével **`$filter`** . 
 
-A teljes Lucene szintaxis a **`search`** [keresési dokumentumok (REST API)](/rest/api/searchservice/search-documents) paraméterében átadott lekérdezési kifejezésekhez használatos, és nem tévesztendő össze az ugyanazon kérelemben és kifejezésekben használt [OData szintaxissal](query-odata-filter-orderby-syntax.md) [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) . A OData paraméterek eltérő szintaxissal és szabályokkal rendelkeznek a lekérdezések összeállításához, a karakterláncok kiszökéséhez stb.
+A teljes Lucene szintaxis használatához a queryType "Full" értékre kell állítani, és a helyettesítő karakterrel, a zavaros kereséssel vagy a teljes szintaxis által támogatott egyéb lekérdezési űrlapokkal kell átadni. A REST-ben a lekérdezési kifejezések a **`search`** [keresési dokumentumok (REST API)](/rest/api/searchservice/search-documents) kérelem paraméterében találhatók.
 
 ## <a name="example-full-syntax"></a>Példa (teljes szintaxis)
 
-Állítsa be a **`queryType`** paramétert a teljes Lucene megadásához. Az alábbi példa a helyszíni keresést és a kifejezés növelését hívja meg. Ez a lekérdezés olyan szállodákat keres, ahol a Kategória mező tartalmazza a "költségvetés" kifejezést. A "legutóbb felújított" kifejezést tartalmazó dokumentumok magasabbra vannak rangsorolva a "Boost Value" (3) kifejezés eredményeképpen.  
+A következő példa egy, a teljes szintaxissal létrehozott keresési kérelem. Ez az adott példa a helyszíni keresés és a kifejezés növelését mutatja be. Olyan szállodákat keres, ahol a Kategória mező tartalmazza a "költségvetés" kifejezést. A "legutóbb felújított" kifejezést tartalmazó dokumentumok magasabbra vannak rangsorolva a "Boost Value" (3) kifejezés eredményeképpen.  
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,9 +34,9 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 }
 ```
 
-A **`searchMode`** paraméter releváns ebben a példában. Ha a kezelők a lekérdezésben vannak, általában úgy kell beállítani, hogy az `searchMode=all` *összes* feltételt egyeztetni lehessen.  
+Habár a lekérdezési típusokra nem vonatkozik, a **`searchMode`** paraméter releváns ebben a példában. Ha a kezelők a lekérdezésben vannak, általában úgy kell beállítani, hogy az `searchMode=all` *összes* feltételt egyeztetni lehessen.  
 
-További Példákért lásd: [Lucene-lekérdezés szintaxisának példái](search-query-lucene-examples.md). A lekérdezési kérelemmel és paraméterekkel kapcsolatos részletekért lásd: [dokumentumok keresése (REST API)](/rest/api/searchservice/Search-Documents).
+További Példákért lásd: [Lucene-lekérdezés szintaxisának példái](search-query-lucene-examples.md). A lekérdezési kérelemről és paraméterekről, beleértve a searchMode is, lásd: [dokumentumok keresése (REST API)](/rest/api/searchservice/Search-Documents).
 
 ## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Szintaxis alapjai  
 

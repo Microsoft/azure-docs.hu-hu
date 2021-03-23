@@ -3,13 +3,13 @@ title: Azure-támogatáskérések létrehozása
 description: Azok az ügyfelek, akiknek segítségre van szükségük, a Azure Portal használhatják az önkiszolgáló megoldásokat, valamint a támogatási kérések létrehozását és kezelését.
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.topic: how-to
-ms.date: 06/25/2020
-ms.openlocfilehash: 71aba8f2769a75805f47d90b71a8db4eeb26a97a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: 395fc0d5905389ffb8f68d8bbc4c6f8b3a871d36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100652394"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774871"
 ---
 # <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
@@ -42,7 +42,7 @@ Támogatási kérelem létrehozásához [tulajdonosnak](../../role-based-access-
 
 Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
-1. Jelölje be a **?** a globális fejlécben. Ezután válassza a **Súgó + támogatás** lehetőséget.
+1. Jelölje be a **?** a globális fejlécben kattintson a **Súgó és támogatás** elemre.
 
    ![Súgó és támogatás](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
@@ -52,7 +52,7 @@ Támogatási kérelem elindítása bárhonnan a Azure Portalban:
 
 ### <a name="go-to-help--support-from-a-resource-menu"></a>Ugrás a Súgó + támogatás erőforrás menüjéből
 
-Ha támogatási kérést szeretne elindítani az erőforrás kontextusában, jelenleg a következővel dolgozik:
+Támogatási kérelem elindítása a jelenleg használt erőforrás kontextusában:
 
 1. Az erőforrás menüben, a **támogatás + hibaelhárítás** szakaszban válassza az **új támogatási kérelem** lehetőséget.
 

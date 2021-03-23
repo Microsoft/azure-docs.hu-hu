@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet elhárítani az Azure-beli vi
 services: automation
 ms.subservice: change-inventory-management
 keywords: változások, nyomon követés, változások nyomon követése, leltár, automatizálás
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100587932"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775806"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure-beli virtuális gépek változásainak hibáinak megoldása
 
@@ -208,15 +208,15 @@ Hasznos, ha követni tudja a végrehajtott módosításokat az Azure Portalon, d
 
 14. A **műveletek** mezőben adja meg a művelet nevét, például az **e-mail rendszergazdák** nevet. 
 
-15. A **MŰVELETTÍPUS mezőben** válassza az **e-mail/SMS/leküldés/hang** lehetőséget. 
+15. A **MŰVELETTÍPUS mezőben** válassza az **e-mail/SMS-üzenet/leküldés/hang** lehetőséget. 
 
 16. **Részletekért** válassza a **részletek szerkesztése** lehetőséget.
 
-    ![Műveletcsoport hozzáadása](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="Használat és becsült költségek." lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. Az E-mail/SMS/leküldés/hang panelen adjon meg egy nevet, jelölje be az **e-mail** jelölőnégyzetet, majd adjon meg egy érvényes e-mail-címet. Ha elkészült, kattintson az **OK gombra** a panelen, majd kattintson az **OK** gombra a műveleti csoport hozzáadása lapon.
+17. Az **e-mail/SMS-üzenet/leküldés/hang** panelen adjon meg egy nevet, jelölje be az **e-mail** jelölőnégyzetet, majd adjon meg egy érvényes e-mail-címet. Ha elkészült, kattintson az **OK gombra** a panelen, majd kattintson az **OK** gombra a **műveleti csoport hozzáadása** lapon.
 
-18. A riasztási e-mail tárgyának testreszabásához válassza a **műveletek testreszabása** lehetőséget. 
+18. A riasztási e-mail tárgyának testreszabásához válassza a **műveletek testreszabása** lehetőséget.
 
 19. A **szabály létrehozása** lapon válassza az **e-mail tárgya**, majd a **riasztási szabály létrehozása** lehetőséget. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés. A következő ábra egy, a W3SVC szolgáltatás leállításakor kapott e-mailt mutat be.
 

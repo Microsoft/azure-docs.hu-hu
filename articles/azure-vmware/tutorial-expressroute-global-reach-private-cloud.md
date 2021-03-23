@@ -3,12 +3,12 @@ title: Oktatóanyag – helyszíni környezetek saját felhőbe
 description: Megtudhatja, hogyan hozhat létre ExpressRoute Global Reach-társítást egy Azure VMware-megoldásban található privát felhőbe.
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ae92bf89a08c5fade8757e3ee596c4ed4a5e6389
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 08a461ab7d441eb813d435086dfcea121ef4a7f1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494161"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786906"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Oktatóanyag: helyszíni helyszíni környezetek egy privát felhőhöz
 
@@ -37,7 +37,7 @@ Mielőtt engedélyezi a kapcsolatot a két ExpressRoute-áramkör között a Exp
 >[!IMPORTANT]
 >Ezeknek az előfeltételeknek a kontextusában a helyszíni ExpressRoute áramkör _1_, a saját Felhőbeli ExpressRoute áramkör pedig egy másik előfizetésben és _2_. címkével ellátott áramkörben található.
 
-## <a name="create-an-expressroute-authorization-key-in-the-on-premises-circuit"></a>ExpressRoute-engedélyezési kulcs létrehozása a helyszíni áramkörben
+## <a name="create-an-expressroute-authorization-key-in-the-private-cloud-expressroute-circuit"></a>ExpressRoute-engedélyezési kulcs létrehozása a Private Cloud ExpressRoute áramkörben
 
 [!INCLUDE [request-authorization-key](includes/request-authorization-key.md)]
  

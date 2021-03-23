@@ -1,19 +1,14 @@
 ---
 title: Tudnivalók a splunk-integrációról
-titleSuffix: Azure Defender for IoT
 description: Annak érdekében, hogy az OT-hálózatok biztonságának és rugalmasságának hiánya is megmaradjon, a IoT Defender a IoT, a IIoT és az ICS veszélyforrások figyelésére szolgáló alkalmazását fejlesztette ki a splunk, a Defender for IoT és a splunk közötti natív integrációt, amely lehetővé teszi az informatikai és biztonsági rendszerek egységes megközelítését.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/4/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 91d877d644b4b5ca7231f5f81f9163a0fd3cbe25
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 28bdc6deaac09d795c45460bb211126a105b80c8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98557986"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785920"
 ---
 # <a name="defender-for-iot-and-ics-threat-monitoring-application-for-splunk"></a>Defender a IoT és az ICS veszélyforrások figyeléséhez alkalmazás a splunk
 
@@ -158,7 +153,7 @@ Továbbítási szabály létrehozása:
     | **Súlyosság kiválasztása** | Az előre megadott minimális biztonsági szint. Ha például a másodlagos elem van kiválasztva, a rendszer továbbítja a másodlagos riasztásokat és az ezen súlyossági szint feletti riasztásokat. |
     | **Protokollok** | Alapértelmezés szerint az összes protokoll ki van választva. Egy adott protokoll kiválasztásához válassza az **adott** lehetőséget, majd válassza ki azt a protokollt, amelyre ez a szabály vonatkozik. |
     | **Végrehajtók** | Alapértelmezés szerint a rendszer minden biztonsági motort érint. Egy adott biztonsági motor kiválasztásához, amelyhez ez a szabály vonatkozik, válassza az **adott** lehetőséget, majd válassza ki a motort. |
-    | **Rendszerértesítések** | Az érzékelő online/offline állapotának továbbítása. Ez a beállítás csak akkor érhető el, ha bejelentkezett a központi kezelőbe. |                                            |
+    | **Rendszerértesítések** | Az érzékelő online/offline állapotának továbbítása. Ez a beállítás csak akkor érhető el, ha bejelentkezett a központi kezelőbe. |
 
 1. Ahhoz, hogy a Defender IoT küldjön az splunk, válassza a **művelet**, majd **a Küldés a splunk-kiszolgálóra** lehetőséget.
 

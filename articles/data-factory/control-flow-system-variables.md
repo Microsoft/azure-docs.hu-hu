@@ -3,16 +3,16 @@ title: Rendszerváltozók a Azure Data Factoryban
 description: Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti. Ezeket a változókat kifejezésekben használhatja Data Factory entitások definiálásához.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: a5d2043c29db87876cc0d5ddb5b3708abad033c5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b85efa7ac4481ab9eb2b2637aee7d9e5e76e8f3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591979"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786056"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott rendszerváltozók
 
@@ -24,7 +24,7 @@ Ez a cikk a Azure Data Factory által támogatott rendszerváltozókat ismerteti
 
 Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @pipeline(). DataFactory |Annak az adatelőállítónak a neve, amelyen a folyamat fut |
 | @pipeline(). Folyamat |A folyamat neve |
@@ -41,7 +41,7 @@ Ezeket a rendszerváltozókat a folyamat JSON-ban bárhol lehet hivatkozni.
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @trigger().scheduledTime |Az az idő, amikor az eseményindító ütemezve lett a folyamat futásának meghívására. |
 | @trigger(). kezdő időpont |Az az idő, amikor az eseményindító **ténylegesen** elindította a folyamat futtatását. Ez kis mértékben eltérhet a trigger ütemezett idejétől. |
@@ -50,7 +50,7 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @trigger(). outputs. windowStartTime |Az trigger futtatásához társított ablak kezdete. |
 | @trigger(). outputs. windowEndTime |Az trigger futtatásához társított ablak vége. |
@@ -61,7 +61,7 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 
 Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatkozni [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)típusú eseményindítók esetén.
 
-| Változó neve | Description |
+| Változó neve | Leírás |
 | --- | --- |
 | @triggerBody(). fájlnév  |Annak a fájlnak a neve, amelynek létrehozása vagy törlése miatt a trigger tüzet okozott.   |
 | @triggerBody(). mappanév  |A által megadott fájlt tartalmazó mappa elérési útja `@triggerBody().fileName` . A mappa elérési útjának első szegmense az Azure Blob Storage tároló neve.  |
@@ -74,7 +74,7 @@ Ezeket a rendszerváltozókat az eseményindító JSON-ban bárhol lehet hivatko
 >[!NOTE]
 >Azure Data Factory azt várja, hogy az egyéni esemény [Azure Event Grid eseményvezérelt sémával](../event-grid/event-schema.md)legyen formázva.
 
-| Változó neve | Description
+| Változó neve | Leírás
 | --- | --- |
 | @triggerBody(). Event. eventType | Az egyéni eseményindító futtatását kiváltó események típusa. Az esemény típusa ügyfél által definiált mező, és tetszőleges karakterlánc típusú értékeket is igénybe veheti. |
 | @triggerBody(). Event. subject | Az eseményindítót a tüzet kiváltó egyéni esemény tárgya. |

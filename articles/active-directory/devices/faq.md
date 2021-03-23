@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 509d267dcdaef58a9792609a60c8a9401e90e867
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: eb468dba1156087bdeb6086f5bc24b214e576e18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103199710"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773300"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
 
@@ -267,7 +267,7 @@ Ez a viselkedés:
 
 **A:** Ha a felhasználók fiókokat vesznek fel egy tartományhoz csatlakoztatott eszközön lévő alkalmazásokba, a rendszer a **fiók hozzáadása a Windowshoz** lehetőséget kér? Ha **Igen** értéket ad meg a parancssorban, az eszköz regisztrálva van az Azure ad-ben. A megbízhatósági kapcsolat típusa az Azure AD-ban regisztráltként van megjelölve. Miután engedélyezte a hibrid Azure AD-csatlakozást a szervezetben, az eszköz a hibrid Azure AD-hez is csatlakoztatva lesz. Ezután két eszköz állapot jelenik meg ugyanarra az eszközre. 
 
-A hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD regisztrált állapotával szemben. Így az eszköz minden hitelesítési és feltételes hozzáférési kiértékeléshez csatlakoztatva lesz a hibrid Azure AD-hez. Biztonságosan törölheti az Azure AD-beli regisztrált eszköz rekordját az Azure AD-portálról. Ebből a [kettős állapotból elkerülheti a Windows 10 rendszerű gépen, vagy megtisztíthatja](hybrid-azuread-join-plan.md#review-things-you-should-know)azt. 
+A legtöbb esetben a hibrid Azure AD-csatlakozás elsőbbséget élvez az Azure AD-ban regisztrált állapottal szemben, így az eszköz a hitelesítés és a feltételes hozzáférés kiértékelése során a hibrid Azure AD-t is figyelembe veszi. Előfordulhat azonban, hogy ez a kettős állapot az eszköz nem determinisztikus értékelését eredményezi, és hozzáférési problémákat okozhat. Javasoljuk, hogy a Windows 10 1803-es vagy újabb verziójára frissítsen, ahol a rendszer automatikusan törli az Azure AD regisztrált állapotát. Megtudhatja, hogyan lehet [elkerülni vagy megtisztítani ezt a kettős állapotot a Windows 10 rendszerű gépen](hybrid-azuread-join-plan.md#review-things-you-should-know). 
 
 ---
 

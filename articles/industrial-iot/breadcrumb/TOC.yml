@@ -1,7 +1,14 @@
 - name: Azure
-  tocHref: /azure/
+  tocHref: /azure
   topicHref: /azure/index
   items:
-    - name: Ipari IoT
-      tocHref: /azure/sql-database/
-      topicHref: /azure/industrial-iot/index
+    - name: Eszközök internetes hálózata
+      tocHref: /azure/iot-fundamentals/
+      topicHref: /azure/iot-fundamentals/index
+      items:
+        - name: Ipari IoT
+          tocHref: /azure/industrial-iot/
+          topicHref: /azure/industrial-iot/index
+        - name: IoT-megoldástámogatók
+          tocHref: /azure/iot-fundamentals/
+          topicHref: /azure/industrial-iot/index

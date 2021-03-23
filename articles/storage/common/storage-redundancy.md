@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/02/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 955d3330d3f08d7e7f024ec2c36941d02244d9ba
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101726836"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802199"
 ---
 # <a name="azure-storage-redundancy"></a>Redundancia az Azure Storage szolgáltatásban
 
@@ -32,6 +32,9 @@ Az Azure Storage-fiókban lévő adategységek mindig háromszor replikálódnak
 
 - A **helyileg redundáns tárolás (LRS)** az adatfeldolgozást az elsődleges régióban lévő egyetlen fizikai helyen belül háromszor másolja. A LRS a legkevésbé költséges replikálási lehetőség, de nem ajánlott magas rendelkezésre állást igénylő alkalmazásokhoz.
 - A **Zone-redundáns tárolás (ZRS)** az elsődleges régió három Azure-beli rendelkezésre állási zónájában szinkron módon másolja az adatait. A magas rendelkezésre állást igénylő alkalmazások esetében a Microsoft javasolja a ZRS használatát az elsődleges régióban, valamint egy másodlagos régióba való replikálást is.
+
+> [!NOTE]
+> A Microsoft a ZRS használatát javasolja az elsődleges régióban Azure Data Lake Storage Gen2 munkaterhelések esetén.
 
 ### <a name="locally-redundant-storage"></a>Helyileg redundáns tárolás
 
@@ -180,8 +183,8 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 
 | Kimaradási forgatókönyv | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Yes |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Yes |
+| Az adatközpontban lévő csomópont elérhetetlenné válik | Igen | Igen | Igen | Igen |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik | Nem | Igen | Igen<sup>1</sup> | Igen |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be | Nem | Nem | Igen<sup>1</sup> | Igen<sup>1</sup> |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem | Nem | Igen (az RA-GRS-vel) | Igen (az RA-GZRS-vel) |
 

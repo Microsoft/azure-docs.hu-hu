@@ -1,18 +1,14 @@
 ---
 title: Felhasználók létrehozása és kezelése
 description: Érzékelők és a helyszíni felügyeleti konzol felhasználóinak létrehozása és kezelése. A felhasználók hozzárendelhetők a rendszergazda, a biztonsági elemző vagy a csak olvasási jogosultsággal rendelkező felhasználó szerepköréhez.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 03/03/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: dff379c99fa7383c7f7844cf8d195a345e88a335
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2afc3cb2b9cfc0ac6b75c98198d9f0965b6dc04c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466269"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779018"
 ---
 # <a name="about-defender-for-iot-console-users"></a>A IoT-konzol felhasználói
 
@@ -185,7 +181,7 @@ Active Directory konfigurálása:
 
 4. Állítsa be a Active Directory kiszolgáló paramétereit az alábbiak szerint:
 
-   | Kiszolgáló paraméter | Description |
+   | Kiszolgáló paraméter | Leírás |
    |--|--|
    | Tartományvezérlő teljes tartományneve | Állítsa a teljes tartománynevet (FQDN) pontosan úgy, ahogy az az LDAP-kiszolgálón megjelenik. Adja meg például a következőt: `host1.subdomain.domain.com`. |
    | Tartományvezérlő portja | Adja meg azt a portot, amelyen az LDAP konfigurálva van. |

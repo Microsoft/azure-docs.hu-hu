@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d68811c5e7b92698944d7b1b1736eef864d97d20
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181481"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802301"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: a SolarWinds Service Desk (korábban Samanage) konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -57,6 +57,9 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * A professzionális csomaggal rendelkező [SolarWinds Service Desk-bérlő](https://www.samanage.com/pricing/) .
 * Egy felhasználói fiók a SolarWinds Service Desk-ben rendszergazdai engedélyekkel.
+
+> [!Note]
+> A szerepkörök importálásakor a szerepköröket nem szabad manuálisan szerkeszteni Azure Active Directoryban.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).

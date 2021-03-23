@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/02/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5c8f835d44896a452a945614332dcbc25ca8bb8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ba538f4753c2365406bd88286b6d54cff1a9e9ea
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694427"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800822"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Szűrők az Azure Cognitive Search 
 
@@ -130,7 +130,6 @@ Az alábbi példák több használati mintát mutatnak be a szűrési forgatók�
 Follow up with these articles for comprehensive guidance on specific use cases:
 
 + [Facet filters](search-filters-facets.md)
-+ [Language filters](search-filters-language.md)
 + [Security trimming](search-security-trimming-for-azure-search.md) 
 
 ## Field requirements for filtering
@@ -158,7 +157,7 @@ A szöveges karakterlánc megkülönbözteti a kis-és nagybetűket. A felső r�
 
 ### <a name="approaches-for-filtering-on-text"></a>A szöveg szűrésének módszerei
 
-| Módszer | Description | A következő esetekben használja |
+| Módszer | Leírás | A következő esetekben használja |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Függvény, amely egy mezőnek felel meg a karakterláncok tagolt listáján. | Ajánlott [biztonsági szűrőkhöz](search-security-trimming-for-azure-search.md) és olyan szűrőkhöz, amelyekben sok nyers szöveges értéket kell összeegyeztetni egy sztring mezővel. A **Search.in** függvény sebességre lett tervezve, és sokkal gyorsabb, mint a mező explicit módon való összehasonlítása az egyes sztringekkel a és a használatával `eq` `or` . | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Függvény, amely lehetővé teszi, hogy a teljes szöveges keresési műveleteket szigorúan logikai szűrési műveletekkel keverje ugyanabban a szűrő kifejezésben. | Használja a **Search. ismatch** (vagy annak pontozási egyenértéke, **Search. ismatchscoring**) kifejezést, ha egy kérelemben több keresési kombinációt szeretne használni. Azt is megteheti, hogy egy olyan szűrőt *tartalmaz* , amely egy nagyobb sztringen belüli részleges karakterláncot szűr. |

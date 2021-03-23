@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/18/2020
+ms.date: 03/22/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 079dcdc9d1667809779489c5d1126bc85cafb881
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fa9861dd1ffbdd33f59abe76c7ebbd1befe3e7a6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96511318"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799428"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Saját Azure AD-szerepkörök aktiválása a PIM-ben
 
@@ -110,11 +110,7 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>A szerepkör aktiválását követően az engedélyek kiosztása nem történik meg
 
-Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amelyhez Kiemelt szerepkör szükséges. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, a következő műveleteket kell végrehajtania.
-
-1. Jelentkezzen ki az Azure Portalról, majd jelentkezzen be újra.
-
-1. A Privileged Identity Managementban ellenőrizze, hogy a szerepkör tagja-e a listához.
+Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amelyhez Kiemelt szerepkör szükséges. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, jelentkezzen ki a portálról, majd jelentkezzen be újra a művelettel. A Azure Portal a PIM automatikusan bejelentkezik.
 
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
@@ -216,13 +212,7 @@ Ha nem igényel olyan szerepkör aktiválását, amely jóváhagyást igényel, 
 
 ### <a name="permissions-are-not-granted-after-activating-a-role"></a>A szerepkör aktiválását követően az engedélyek kiosztása nem történik meg
 
-Amikor Privileged Identity Managementban aktiválja a szerepkört, előfordulhat, hogy az aktiválás nem terjed ki azonnal az összes olyan portálra, amelyhez Kiemelt szerepkör szükséges. Néha az is előfordul, hogy még ha a módosítás propagálása meg is történik, a portálon történő webes gyorsítótárazás miatt a módosítás nem lép azonnal életbe. Ha az aktiválás késleltetve van, a következő műveleteket kell végrehajtania.
-
-1. Jelentkezzen ki az Azure Portalról, majd jelentkezzen be újra.
-
-    Ha aktivál egy Azure AD-szerepkört, látni fogja az aktiválás szakaszait. Ha az összes szakasz kész, megjelenik a **Kijelentkezés** hivatkozás. Ezt a hivatkozást a kijelentkezéshez használhatja. Ez a legtöbb esetben megoldja az aktiválási késleltetést.
-
-1. A Privileged Identity Managementban ellenőrizze, hogy a szerepkör tagja-e a listához.
+Amikor Privileged Identity Managementban aktiválja a szerepkört, az aktiválást a Azure Portaltól eltérő rendszergazdai portálokon, például az Office 365-portálon lehet késleltetni. Ha az aktiválás késleltetve van, jelentkezzen ki a portálról, majd jelentkezzen be újra. Ezután a Privileged Identity Management használatával ellenőrizze, hogy a szerepkör tagja-e a listához.
 
  ---
 

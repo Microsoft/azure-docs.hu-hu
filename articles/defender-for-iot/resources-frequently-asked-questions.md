@@ -1,24 +1,14 @@
 ---
 title: Defender a IoT-hez – gyakori kérdések
 description: Válaszok az Azure Defender IoT funkcióinak és szolgáltatásának leggyakrabban feltett kérdéseire.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: rkarlin
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/02/2021
-ms.author: rkarlin
-ms.openlocfilehash: 89da9ed378118875f0c09d3c23799349a4d093b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0ce8ded3eea344d72679e0f8b805f45b00279b58
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103467697"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778593"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>Azure Defender a IoT-hez – gyakori kérdések
 

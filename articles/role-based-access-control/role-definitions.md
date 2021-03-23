@@ -5,22 +5,18 @@ services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: ''
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/18/2021
+ms.date: 03/22/2021
 ms.author: rolyon
-ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b2ec3289d187997763ee0d9280a777d4fa1f396
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98602460"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801757"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
 
@@ -63,7 +59,7 @@ A következő táblázat ismerteti, hogy a szerepkör tulajdonságai mit jelente
 | Tulajdonság | Leírás |
 | --- | --- |
 | `Name`</br>`roleName` | A szerepkör megjelenített neve. |
-| `Id`</br>`name` | A szerepkör egyedi azonosítója. |
+| `Id`</br>`name` | A szerepkör egyedi azonosítója. A beépített szerepkörök ugyanazzal a szerepkör-AZONOSÍTÓval rendelkeznek, mint a felhők között. |
 | `IsCustom`</br>`roleType` | Azt jelzi, hogy ez egy egyéni szerepkör-e. `true` `CustomRole` Egyéni szerepkörökhöz vagy értékhez. `false` `BuiltInRole` Beépített szerepkörökhöz vagy értékhez. |
 | `Description`</br>`description` | A szerepkör leírása. |
 | `Actions`</br>`actions` | Karakterláncok tömbje, amely meghatározza, hogy a szerepkör milyen kezelési műveleteket hajtson végre. |
@@ -80,7 +76,7 @@ A műveletek a következő formátumú karakterláncokkal vannak megadva:
 
 A `{action}` műveleti karakterláncok része az erőforrástípus által elvégezhető műveletek típusát határozza meg. Például a következő alsztringek jelennek meg a ben `{action}` :
 
-| Művelet alkarakterlánca    | Description         |
+| Művelet alkarakterlánca    | Leírás         |
 | ------------------- | ------------------- |
 | `*` | A helyettesítő karakter a sztringnek megfelelő összes művelethez hozzáférést biztosít. |
 | `read` | Olvasási műveletek (GET) engedélyezése. |
@@ -281,7 +277,7 @@ Az REST APIban lévő adatműveletek megtekintéséhez és használatához az **
 Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyeket a szerepkör engedélyez. Ez a műveleti karakterláncok gyűjteménye, amelyek az Azure-erőforrás-szolgáltatók biztonságos műveleteit azonosítják. Íme néhány példa a szolgáltatásban használható felügyeleti műveletekre `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Description         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
 > | `*/read` | Olvasási műveletekhez való hozzáférést biztosít az összes Azure-erőforrás-szolgáltató összes erőforrás-típusához.|
 > | `Microsoft.Compute/*` | Hozzáférést biztosít minden művelethez a Microsoft. számítási erőforrás-szolgáltató összes erőforrás-típusához.|
@@ -318,7 +314,7 @@ A hozzárendelések megtagadása esetén a felhasználók akkor is elvégezhetne
 Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha például egy felhasználó beolvasta a blob-adathozzáférést egy Storage-fiókhoz, akkor az adott Storage-fiókban található blobokat is elolvashatja. Íme néhány példa a szolgáltatásban használható adatműveletekre `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Description         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blobot vagy Blobok listáját adja vissza. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Egy blob írásának eredményét adja vissza. |

@@ -10,12 +10,12 @@ ms.date: 03/11/2021
 ms.topic: include
 ms.custom: include file
 ms.author: lakshmans
-ms.openlocfilehash: e8424f6b5b7617b00de6dedbece3325f3c5513c8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b975b129f4384c09006a22b1ab124b1906a869d3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103622315"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803521"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások Python SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -28,7 +28,7 @@ A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-- [Python](https://www.python.org/downloads/) 2,7, 3,5 vagy újabb.
+- [Python](https://www.python.org/downloads/) 2,7 vagy 3.6 +.
 - Aktív kommunikációs szolgáltatások erőforrás-és kapcsolati karakterlánca. [Hozzon létre egy kommunikációs szolgáltatások erőforrást](../../create-communication-resource.md).
 - SMS-kompatibilis telefonszám. [Telefonszám beolvasása](../get-phone-number.md).
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aafac1133b2bee54624d5f0b00061c5332fcd90b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5c03d3f9769aec0736d23f18372701e08ad93dac
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102631880"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802794"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -33,9 +33,13 @@ A Windows 10 Enterprise multi-session a Windows 10 Enterprise virtuális kiadás
 
 A Windows 10 Enterprise rendszerű több munkamenet nem futtatható helyszíni éles környezetekben, mert az az Azure-hoz készült Windows Virtual Desktop szolgáltatáshoz van optimalizálva. Ez a licencszerződés arra vonatkozik, hogy az Azure-on kívüli Windows 10 Enterprise-munkamenetet az éles környezetben futtassa. A Windows 10 Enterprise multi-session szolgáltatás nem aktiválja a helyszíni kulcskezelő szolgáltatásokat (KMS).
 
+## <a name="can-i-upgrade-a-windows-10-vm-to-windows-10-enterprise-multi-session"></a>Frissíthetem a Windows 10 rendszerű virtuális gépeket a Windows 10 Enterprise több munkamenetre?
+
+Nem. Jelenleg nem lehetséges olyan meglévő virtuális gép (VM) frissítése, amely Windows 10 Professional vagy Enterprise rendszert futtat Windows 10 Enterprise rendszerű több munkamenetre. Emellett, ha Windows 10 Enterprise rendszerű, több munkamenetből álló virtuális gépet telepít, majd frissíti a termékkulcsot egy másik kiadásra, a virtuális gépet nem lehet visszaváltani a Windows 10-es nagyvállalati munkamenetre, és újra kell telepítenie a virtuális gépet.
+
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Hogyan testre szabhatja a Windows 10 Enterprise multi-session rendszerképet a saját szervezetem számára?
 
-Elindíthat egy virtuális gépet (VM) az Azure-ban a Windows 10 rendszerű Windows 10 Enterprise multi-session modullal, és testre szabhatja a LOB-alkalmazások, a Sysprep/általánosítások telepítésével, majd a rendszerkép létrehozásával a Azure Portal használatával.
+Elindíthat egy virtuális gépet az Azure-ban a Windows 10 Windows 10 Enterprise multi-session modullal, és testre szabhatja a LOB-alkalmazások, a Sysprep/általánosítás, majd a Azure Portal használatával létrehozott rendszerkép létrehozásával.
 
 Első lépésként hozzon létre egy virtuális gépet az Azure-ban a Windows 10 Enterprise több munkamenetből. A virtuális gép Azure-beli elindítása helyett közvetlenül letöltheti a virtuális merevlemezt. Ezután használhatja a letöltött VHD-t egy új generációs 1 virtuális gép létrehozásához egy Windows 10 rendszerű számítógépen, amelyen engedélyezve van a Hyper-V.
 

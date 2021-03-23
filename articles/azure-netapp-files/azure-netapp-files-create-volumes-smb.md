@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 91f4f90658281282cdcb01b091bd9c9647d8d702
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6a8de9b373a14eab45df28b28bb3f94314c1d89a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100635486"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801084"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -89,8 +89,32 @@ Az SMB-kötetek létrehozása előtt létre kell hoznia egy Active Directory-kap
     * Válassza az **SMB** lehetőséget a kötethez tartozó protokoll típusaként. 
     * Válassza ki a **Active Directory** -kapcsolatokat a legördülő listából.
     * Adja meg a megosztott kötet nevét a  **megosztási névben**.
+    * Ha engedélyezni szeretné a folyamatos rendelkezésre állást az SMB-kötethez, válassza a **folyamatos rendelkezésre állás engedélyezése** lehetőséget.    
 
-    ![SMB protokoll meghatározása](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
+        > [!IMPORTANT]   
+        > Az SMB folyamatos rendelkezésre állása szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Be kell küldenie egy várólistára vonatkozó kérelmet a szolgáltatás eléréséhez az **[Azure NETAPP Files SMB folyamatos rendelkezésre állási megosztások nyilvános előzetese-várólista beküldési lapján](https://aka.ms/anfsmbcasharespreviewsignup)**. Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól a folyamatos rendelkezésre állási funkció használata előtt.   
+        > 
+        > A folyamatos rendelkezésre állást csak az SQL-munkaterhelések esetében ajánlott engedélyezni. Az SMB folyamatos rendelkezésre állási megosztások használata a SQL Servertól eltérő munkaterhelések esetén *nem* támogatott. Ez a funkció jelenleg Windows SQL Server rendszeren támogatott. A Linux SQL Server jelenleg nem támogatott. Ha nem rendszergazdai (tartományi) fiókot használ a SQL Server telepítéséhez, győződjön meg arról, hogy a fiók rendelkezik a szükséges biztonsági jogosultságokkal. Ha a tartományi fiók nem rendelkezik a szükséges biztonsági jogosultságokkal ( `SeSecurityPrivilege` ), és a jogosultság nem állítható be a tartományi szinten, akkor a jogosultságot a fiókhoz a Active Directory kapcsolatok **biztonsági jogosultságok felhasználói** mezőjének használatával adhatja meg. Lásd: [Active Directory-kapcsolatok létrehozása](create-active-directory-connections.md#create-an-active-directory-connection).
+
+    <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
+    <!-- 
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+
+        Check the status of the feature registration: 
+
+        > [!NOTE]
+        > The **RegistrationState** may be in the `Registering` state for up to 60 minutes before changing to`Registered`. Wait until the status is `Registered` before continuing.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBCAShare
+        ```
+        
+        You can also use [Azure CLI commands](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` and `az feature show` to register the feature and display the registration status. 
+    --> 
+
+    ![Az SMB-kötetek létrehozásának protokoll lapját ismertető képernyőkép.](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 
 5. A kötet részleteinek áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.  Ezután kattintson a **Létrehozás** gombra az SMB-kötet létrehozásához.
 

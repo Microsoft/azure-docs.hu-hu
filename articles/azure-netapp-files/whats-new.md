@@ -14,18 +14,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 84213832e59c50c85d9731ced39bbce6264df47e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590908"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802930"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
-Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
+A Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókról és fejlesztésekről nyújt összefoglalót. 
 
-## <a name="march-2021"></a>Március 2021 
+## <a name="march-2021"></a>Március 2021
+
+* SMB folyamatos rendelkezésre állási (CA) megosztások (előzetes verzió)  
+
+    Az SMB transzparens feladatátvétel lehetővé teszi a Azure NetApp Files szolgáltatás karbantartási műveleteit anélkül, hogy megszakítja az SMB-köteteken lévő adatok tárolására és elérésére szolgáló kiszolgálói alkalmazásokhoz való kapcsolódást. Az SMB transzparens feladatátvételének támogatásához Azure NetApp Files mostantól támogatja az SMB folyamatos rendelkezésre állási megosztások használatát, amely az Azure-beli virtuális gépeken futó SMB-t használó SQL Server alkalmazásokkal használható. Ez a funkció jelenleg Windows SQL Server rendszeren támogatott. A Linux SQL Server jelenleg nem támogatott. A szolgáltatás engedélyezésével jelentős SQL Server teljesítménnyel kapcsolatos fejlesztéseket és méretezési és költséghatékonysági előnyöket biztosít az [önálló példányok, Always-On a feladatátvevő fürt példánya és a Always-On rendelkezésre állási csoportok üzembe helyezése](azure-netapp-files-solution-architectures.md#sql-server). Lásd: a [Azure NetApp Files használatának előnyei SQL Server üzembe helyezéshez](solutions-benefits-azure-netapp-files-sql-server.md).
 
 * [Régiók közötti replikálási cél kötetének automatikus átméretezése](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 
@@ -33,7 +37,7 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
 ## <a name="december-2020"></a>2020. december
 
-* [Azure Application konzisztens pillanatkép-eszköz](azacsnap-introduction.md) (nyilvános előzetes verzió)    
+* [Azure Application konzisztens pillanatkép-eszköz](azacsnap-introduction.md) (előzetes verzió)    
 
     Az Azure Application konzisztens pillanatkép-eszköz (AzAcSnap) egy olyan parancssori eszköz, amely lehetővé teszi, hogy leegyszerűsítse a harmadik féltől származó adatbázisok SAP HANA (például a SUSE és a RHEL) adatvédelmi funkcióit.   
 
@@ -53,7 +57,7 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
 ## <a name="september-2020"></a>2020. szeptember
 
-* [Régiók közötti replikálás Azure NetApp Files](cross-region-replication-introduction.md) (nyilvános előzetes verzió)
+* [Régiók közötti replikálás Azure NetApp Files](cross-region-replication-introduction.md) (előzetes verzió)
 
   A Azure NetApp Files mostantól támogatja a régiók közötti replikálást. Ezzel az új vész-helyreállítási képességgel gyorsan és költséghatékonyan replikálhatja Azure NetApp Files köteteit az egyik Azure-régióból a másikba, így az adatok az előre nem látható regionális meghibásodások miatt is védelmet biztosíthatnak. Azure NetApp Files a régiók közötti replikáció a NetApp SnapMirror® Technology technológiát használja; a rendszer csak a megváltozott blokkokat tömörített, hatékony formátumban továbbítja a hálózaton. Ez a szabadalmaztatott technológia minimálisra csökkenti a régiók közötti replikáláshoz szükséges adatok mennyiségét, így az adatátviteli költségeket is megtakaríthatja. Emellett lerövidíti a replikálási időt, így elérheti a kisebb visszaállítási pontok célját (RPO) is.
 

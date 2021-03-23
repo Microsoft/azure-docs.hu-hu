@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2020
-ms.openlocfilehash: a480c8f2dfdda0ce7a1eb879554fb79c96adbe1e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/22/2021
+ms.openlocfilehash: 0a203531e026d00b274ac98784076d33b22666d8
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97347812"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800142"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konzisztenciaszintek az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,15 +51,19 @@ Bármikor megadhatja az alapértelmezett konzisztencia-szintet az Azure Cosmos-f
 
 Azure Cosmos DB garantálja, hogy az olvasási kérelmek 100%-ában megfelel a kiválasztott konzisztencia-szint konzisztencia-garanciájának. Az [Azure-Cosmos-tla GitHub-](https://github.com/Azure/azure-cosmos-tla) tárházban megtalálhatók a Azure Cosmos db öt konzisztencia-szintjének pontos definíciói a tla + specifikációs nyelv használatával.
 
-Az öt konzisztencia-szint szemantikai leírása itt található:
+Az öt konzisztencia-szint szemantikai ismertetését a következő szakaszokban találja.
 
-- **Erős**: az erős konzisztencia linearizability garanciát nyújt. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
+### <a name="strong-consistency"></a>Erős konzisztencia
+
+Az erős konzisztencia garantálja a linearizálhatóságot. A Linearizability a kérelmek egyidejű kiszolgálására hivatkozik. Az olvasások garantáltan egy adott tétel legújabb véglegesített verzióját adják vissza. Az ügyfél nem látja a nem véglegesített vagy részleges írást. A felhasználók mindig garantáltan olvasni a legutóbb véglegesített írást.
 
   Az alábbi ábrán a hangjegyzetekkel való erős konzisztencia látható. Miután az adatok az "USA nyugati régiója 2" régiójába kerülnek, a többi régióból származó adatok beolvasása után a legfrissebb értéket kapja:
 
   :::image type="content" source="media/consistency-levels/strong-consistency.gif" alt-text="Erős konzisztencia-szint illusztrációja":::
 
-- **Határos** elavulás: az olvasások garantálva vannak, hogy tiszteletben tartsák a konzisztens előtagú garanciát. Előfordulhat, hogy az olvasások lemaradnak az írások mögött az elemek legfeljebb *"K"* verziójában (azaz "frissítések"), vagy a *"T"* időintervallumban, attól függően, hogy melyik érték van elsőként. Más szóval, ha a kötött elavulás beállítást választja, a "elavulás" két módon konfigurálható:
+### <a name="bounded-staleness-consistency"></a>Korlátozott frissesség konzisztenciaszint
+
+A kötött elavulás konzisztenciája esetén az olvasások garantáltan tiszteletben tartják a konzisztens előtagú garanciát. Előfordulhat, hogy az olvasások lemaradnak az írások mögött az elemek legfeljebb *"K"* verziójában (azaz "frissítések"), vagy a *"T"* időintervallumban, attól függően, hogy melyik érték van elsőként. Más szóval, ha a kötött elavulás beállítást választja, a "elavulás" két módon konfigurálható:
 
 - Az elemek verzióinak (*K*) száma
 - Az írási idő (*T*) az írások mögött is elmaradhat
@@ -79,7 +83,9 @@ Az elavultság ablakon belül a határértékek a következő konzisztencia-gara
 
   :::image type="content" source="media/consistency-levels/bounded-staleness-consistency.gif" alt-text="A kötött elavulás konzisztencia-szintjének illusztrációja":::
 
-- **Munkamenet**: egyetlen ügyfél-munkameneten belül a rendszer garantáltan beolvassa a konzisztens előtagot, az monoton olvasásokat, az monoton írásokat, az olvasást és írást, valamint az írási és olvasási garanciákat. Ez egyetlen "író" munkamenetet feltételez, vagy a munkamenet-tokent több író számára is megosztja.
+### <a name="session-consistency"></a>Munkamenet-konzisztencia
+
+A munkamenet-konzisztencia egyetlen ügyfél-munkameneten belüli olvasási garanciát biztosít a konzisztens előtag, az monoton olvasás, az monoton írás, az olvasás és az írás, valamint az írási és olvasási műveletek elvégzésére. Ez egyetlen "író" munkamenetet feltételez, vagy a munkamenet-tokent több író számára is megosztja.
 
 A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják látni:
 
@@ -92,7 +98,9 @@ A munkamenet-végrehajtón kívüli ügyfelek a következő garanciákat fogják
 
   :::image type="content" source="media/consistency-levels/session-consistency.gif" alt-text="A munkamenet konzisztenciáji szintjének ábrája":::
 
-- **Konzisztens előtag**: a visszaadott frissítések az összes frissítés néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
+### <a name="consistent-prefix-consistency"></a>Konzisztens előtag konzisztenciaszint
+
+Konzisztens előtag esetén a visszaadott frissítések a frissítések néhány előtagját tartalmazzák, és nincsenek rések. Konzisztens előtag-konzisztenciai szint biztosítja, hogy az olvasások soha ne lássák a megrendelésen kívüli írásokat.
 
 Ha az írások sorrendben lettek elvégezve, akkor az ügyfél a következőt látja:, `A, B, C` `A` `A,B` vagy `A,B,C` `A,C` `B,A,C` Az konzisztens előtag a végleges konzisztencia miatti írási késleltetést, rendelkezésre állást és olvasási átviteli sebességet biztosít, ugyanakkor biztosítja az olyan forgatókönyvek igényeit is, amelyek a sorrend szempontjából fontosak.
 
@@ -107,7 +115,9 @@ A következő ábra a konzisztencia-előtagot ábrázolja a zenei megjegyzésekk
 
   :::image type="content" source="media/consistency-levels/consistent-prefix.gif" alt-text="Konzisztens előtag illusztrációja":::
 
-- **Végleges**: nem áll rendelkezésre rendelési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
+### <a name="eventual-consistency"></a>Végleges konzisztencia
+
+A végleges konzisztencia esetében nem áll rendelkezésre rendezési garancia a beolvasáshoz. Ha nincsenek további írások, a replikák végül konvergálnak.  
 A végleges konzisztencia a konzisztencia leggyengébb formája, mivel előfordulhat, hogy az ügyfél elolvashatja azokat az értékeket, amelyek régebbiek, mint a korábban olvasottak. A végleges konzisztencia ideális, ha az alkalmazás nem igényel rendelési garanciát. Ilyenek például a retweets, a Like vagy a nem többszálú megjegyzések száma. Az alábbi ábrán a zenei megjegyzésekkel való végleges konzisztencia látható.
 
   :::image type="content" source="media/consistency-levels/eventual-consistency.gif" alt-text="végleges konzisztencia viIllustration":::

@@ -10,12 +10,12 @@ ms.date: 03/03/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: da869091fb1f7bf31a29ba1bc6db8c1c42254dc4
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b959038753dd15282de357da746ef9b0e0cf2be5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618083"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802267"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -53,9 +53,11 @@ A **blob-tartományok visszaállítása** művelet egy visszaállítási azonos�
 
 Az időponthoz való visszaállításhoz az alábbi Azure Storage-funkciók engedélyezésére van szükség az időponthoz való visszaállítás engedélyezése előtt:
 
-- [Helyreállítható törlés](./soft-delete-blob-overview.md)
+- [Helyreállítható törlés](soft-delete-blob-overview.md)
 - [Csatorna módosítása](storage-blob-change-feed.md)
 - [BLOB verziószámozása](versioning-overview.md)
+
+A szolgáltatások engedélyezése további díjakat eredményezhet. Győződjön meg arról, hogy tisztában van a számlázási szempontokkal, mielőtt engedélyezi az időponthoz való visszaállítást és az előfeltételként szükséges szolgáltatásokat.
 
 ### <a name="retention-period-for-point-in-time-restore"></a>Időponthoz tartozó visszaállítás megőrzési időtartama
 
@@ -88,6 +90,8 @@ A blokk-Blobok időponthoz való visszaállítása a következő korlátozásokk
 > Ha a blokk-blobokat a 2020. szeptember 22. előtti pontra állítja vissza, a rendszer az időponthoz tartozó visszaállításra vonatkozó előzetes korlátozásokat is érvénybe lép. A Microsoft azt javasolja, hogy az általánosan elérhető időpontra vonatkozó visszaállítási funkció kihasználása érdekében válasszon egy olyan visszaállítási pontot, amely a 2020. szeptember 22-én egyenlő vagy annál újabb.
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
+
+Az időponthoz tartozó visszaállítás nem díjköteles. Az időponthoz való visszaállítás engedélyezése azonban lehetővé teszi a blob verziószámozását, a helyreállítható törlést és a hírcsatorna módosítását is, amelyek mindegyike további díjakat eredményezhet.
 
 Az időponthoz való visszaállítás számlázása a visszaállítási művelet végrehajtásához feldolgozott adatok mennyiségétől függ. A feldolgozott adatmennyiség a visszaállítási pont és a jelen pillanatban történt változások száma alapján történik. Tegyük fel például, hogy a blob-adat tárolási fiókban való letiltásának viszonylag állandó változása miatt az 1 nap múlva visszaadott visszaállítási művelet 1 – 10 nap múlva vissza fog térni a visszaállításra.
 

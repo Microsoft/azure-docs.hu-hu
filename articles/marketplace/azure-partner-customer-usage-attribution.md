@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: cpercy737
 ms.author: camper
-ms.date: 03/19/2021
+ms.date: 03/22/2021
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 79f3276347aa64655f0c9086db5f152c4ff5fbcf
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: ed7f27b0b8fde902f4ae9b65b9f6b4ada78f79c6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771090"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799190"
 ---
 # <a name="azure-customer-usage-attribution"></a>Azure Customer használati jóváírás
 
@@ -39,7 +39,9 @@ A kereskedelmi piactéren közzétett Azure-alkalmazások Azure-használatának 
 Ha Azure Resource Manager API-kat használ, hozzá kell adnia a követési AZONOSÍTÓját az [alábbi utasítások](#use-resource-manager-apis) alapján, hogy átadja azt a Azure Resource Managernak, mivel a kód üzembe helyezi az erőforrásokat. Ez az azonosító a csomag technikai konfiguráció oldalán, a partner Centerben látható. 
 
 > [!NOTE]
-> A meglévő Azure-alkalmazások esetében egy egyszeri Migrálás történt a 2021 márciusában, hogy frissítse a követési azonosítókat az egyes csomagokra vonatkozó technikai konfigurációban. Ezen ajánlatok korábbi üzembe helyezésének használata a Microsoft rendszereiben is nyomon követhető.
+> A meglévő Azure-alkalmazások esetében egy egyszeri áttelepítés 2021 márciusában kezdődött, hogy frissítse a követési azonosítókat az egyes csomagokra vonatkozó technikai konfigurációban. Ezen ajánlatok korábbi üzembe helyezésének használata a Microsoft rendszereiben is nyomon követhető.
+>
+>Az ajánlatok frissítése során már nem kell felvennie a **Microsoft. Resources/Deployments** típusú erőforrás típusát a fő sablonfájlba.
 
 ## <a name="other-use-cases"></a>Egyéb használati esetek 
 

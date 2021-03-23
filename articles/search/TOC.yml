@@ -366,8 +366,6 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: A gyűjteményszűrők megismerése
           href: search-query-understand-collection-filters.md
-        - name: Szűrés nyelv szerint
-          href: search-filters-language.md
         - name: Szöveg normalizálása
           href: search-normalizers.md
     - name: Relevancia
