@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 7980003dd63e5e51d87f85542029a1f25e7223df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: feada70c7a461bb4a9cd621c76b5606a7f0e19d5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932871"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865281"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Apache Kafka használata a HDInsight az Azure-ban IoT Hub
 
@@ -22,7 +22,7 @@ A IoT Hub való húzáskor a __forrás__ -összekötőt kell használnia. IoT Hu
 
 Az alábbi ábrán az Azure IoT Hub és a Kafka on HDInsight közötti adatfolyam látható az összekötő használatakor.
 
-![Kép, amely a IoT Hubról a Kafka-re áramló adatokra mutat](./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png)
+:::image type="content" source="./media/apache-kafka-connector-iot-hub/iot-hub-kafka-connector-hdinsight.png" alt-text="Kép, amely a IoT Hubról a Kafka-re áramló adatokra mutat" border="false":::
 
 A csatlakozási API-val kapcsolatos további információkért lásd: [https://kafka.apache.org/documentation/#connect](https://kafka.apache.org/documentation/#connect) .
 

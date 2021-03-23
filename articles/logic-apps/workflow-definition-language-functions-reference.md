@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 03/12/2021
-ms.openlocfilehash: 8093b61213c3e26b93df2a3f495e7efe0a61d523
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1414a7b0f17918caa16ccf854d70ea199fb42a47
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103420034"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870194"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>A függvények kifejezésekben való használatát ismertető útmutató a Azure Logic Apps és az energiagazdálkodás automatizálásához
 
@@ -351,12 +351,12 @@ action()
 action().outputs.body.<property>
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*művelet – kimenet*> | Sztring | Az aktuális művelet vagy tulajdonság kimenete |
 ||||
@@ -373,12 +373,12 @@ Lásd: [Body ()](#body) és [Actions ()](#actions).
 actionBody('<actionName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | A művelet `body` kívánt kimenetének neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*művelet – törzs – kimenet*> | Sztring | A `body` megadott művelet kimenete |
 ||||
@@ -418,12 +418,12 @@ Egy művelet kimenetének visszaadása futásidőben.  a és a rövidítése `ac
 actionOutputs('<actionName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | A művelet kívánt kimenetének neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*kimeneti*> | Sztring | A megadott művelet kimenete |
 ||||
@@ -491,13 +491,13 @@ actions('<actionName>')
 actions('<actionName>').outputs.body.<property>
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | Annak a műveleti objektumnak a neve, amelynek a kimenetét szeretné  |
 | <*tulajdonság*> | Nem | Sztring | A műveleti objektum azon tulajdonságának neve, amelynek a kívánt értéke: **név**, kezdési **időpont, Befejezés**, **bemenet**, **kimenet**, **állapot**, **kód**, **trackingId** és **clientTrackingId**. A Azure Portal a tulajdonságok megkereséséhez tekintse át az adott futtatási előzmények részleteit. További információ: [REST API – munkafolyamat-futtatási műveletek](/rest/api/logic/workflowrunactions/get). |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*művelet – kimenet*> | Sztring | A megadott művelet vagy tulajdonság kimenete |
 ||||
@@ -522,12 +522,12 @@ Az eredmény visszaadása két szám hozzáadásával.
 add(<summand_1>, <summand_2>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1*>, <*summand_2*> | Yes | Egész szám, lebegőpontos vagy vegyes | A hozzáadandó számok |
+| <*summand_1*>, <*summand_2*> | Igen | Egész szám, lebegőpontos vagy vegyes | A hozzáadandó számok |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*eredmény – összeg*> | Egész vagy lebegőpontos | A megadott számok hozzáadásának eredménye |
 ||||
@@ -552,14 +552,14 @@ Adja hozzá a napok számát egy időbélyeghez.
 addDays('<timestamp>', <days>, '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*nap*> | Yes | Egész szám | A hozzáadni kívánt napok pozitív vagy negatív száma |
+| <*nap*> | Igen | Egész szám | A hozzáadni kívánt napok pozitív vagy negatív száma |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg és a megadott számú nap  |
 ||||
@@ -594,14 +594,14 @@ Adja meg az időbélyegzőhöz tartozó órák számát.
 addHours('<timestamp>', <hours>, '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*óra*> | Yes | Egész szám | A hozzáadni kívánt órák pozitív vagy negatív száma |
+| <*óra*> | Igen | Egész szám | A hozzáadni kívánt órák pozitív vagy negatív száma |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg és a megadott számú óra  |
 ||||
@@ -636,14 +636,14 @@ Adjon hozzá néhány percet egy időbélyeghez.
 addMinutes('<timestamp>', <minutes>, '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*perc*> | Yes | Egész szám | A hozzáadni kívánt percek pozitív vagy negatív száma |
+| <*perc*> | Igen | Egész szám | A hozzáadni kívánt percek pozitív vagy negatív száma |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg és a megadott számú perc |
 ||||
@@ -678,33 +678,33 @@ Adjon hozzá egy tulajdonságot és annak értékét, vagy név-érték párokat
 addProperty(<object>, '<property>', <value>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
+| <*objektum*> | Igen | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
 | <*tulajdonság*> | Igen | Sztring | A hozzáadni kívánt tulajdonság neve |
-| <*érték*> | Yes | Bármelyik | A tulajdonság értéke |
+| <*érték*> | Igen | Bármelyik | A tulajdonság értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – objektum*> | Objektum | A frissített JSON-objektum a megadott tulajdonsággal |
 ||||
 
-Ha egy gyermek tulajdonságot meglévő tulajdonsághoz szeretne adni, használja a következő szintaxist:
+Egy szülő tulajdonság meglévő tulajdonsághoz való hozzáadásához használja a függvényt `setProperty()` , ne pedig a `addProperty()` függvényt. Ellenkező esetben a függvény csak a gyermek objektumot adja vissza kimenetként.
 
 ```
-addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+setProperty(<object>['<parent-property>'], '<parent-property>', addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
+| <*objektum*> | Igen | Objektum | A JSON-objektum, amelyben hozzá kíván adni egy tulajdonságot |
 | <*szülő-tulajdonság*> | Igen | Sztring | Annak a szülő tulajdonságnak a neve, amelyhez hozzá kívánja adni a gyermek tulajdonságot |
 | <*gyermek-tulajdonság*> | Igen | Sztring | A hozzáadandó gyermek tulajdonság neve |
-| <*érték*> | Yes | Bármelyik | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – objektum*> | Objektum | A frissített JSON-objektum, amelynek a tulajdonságát beállította |
 ||||
@@ -741,7 +741,7 @@ Itt látható a frissített JSON-objektum:
 Ez a példa hozzáadja a `middleName` Child tulajdonságot `customerName` egy JSON-objektum meglévő tulajdonságához, amelyet a rendszer a JSON [()](#json) függvény használatával konvertál a karakterláncból a JSON-ra. A függvény hozzárendeli a megadott értéket az új tulajdonsághoz, és visszaadja a frissített objektumot:
 
 ```
-addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne'))
 ```
 
 Itt látható az aktuális JSON-objektum:
@@ -777,14 +777,14 @@ Adjon meg néhány másodpercet egy időbélyeghez.
 addSeconds('<timestamp>', <seconds>, '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*másodperc*> | Yes | Egész szám | A hozzáadni kívánt másodpercek pozitív vagy negatív száma |
+| <*másodperc*> | Igen | Egész szám | A hozzáadni kívánt másodpercek pozitív vagy negatív száma |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg és a megadott számú másodperc  |
 ||||
@@ -820,15 +820,15 @@ Lásd még: [getFutureTime ()](#getFutureTime).
 addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*időköz*> | Yes | Egész szám | A hozzáadandó megadott időegységek száma |
+| <*időköz*> | Igen | Egész szám | A hozzáadandó megadott időegységek száma |
 | <*timeUnit*> | Igen | Sztring | Az időegység, amelyet a következő *intervallummal* kell használni: "Second", "minute", "Hour", "Day", "Week", "hónap", "Year" |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg és a megadott számú időegység  |
 ||||
@@ -864,12 +864,12 @@ Igaz értéket ad vissza, ha az összes kifejezés igaz, vagy hamis értéket ad
 and(<expression1>, <expression2>, ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*Kifejezés2*>,... | Yes | Logikai | Az ellenőrzési kifejezések |
+| <*expression1*>, <*Kifejezés2*>,... | Igen | Logikai | Az ellenőrzési kifejezések |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha az összes kifejezés igaz. Hamis értéket ad vissza, ha legalább egy kifejezés hamis. |
 ||||
@@ -917,12 +917,12 @@ Több bemenet esetén lásd: [createArray ()](#createArray).
 array('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Tömb létrehozásához használt karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*érték*>] | Tömb | Egyetlen megadott bemenetet tartalmazó tömb |
 ||||
@@ -950,12 +950,12 @@ Egy sztring Base64 kódolású verziójának visszaadása.
 base64('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | A bemeneti sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Base64-karakterlánc*> | Sztring | A bemeneti karakterlánc Base64 kódolású verziója |
 ||||
@@ -983,12 +983,12 @@ Egy Base64 kódolású karakterlánc bináris verziójának visszaadása.
 base64ToBinary('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó Base64 kódolású karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*bináris-for-Base64-string*> | Sztring | A Base64 kódolású karakterlánc bináris verziója |
 ||||
@@ -1018,12 +1018,12 @@ Egy Base64 kódolású karakterlánc karakterlánc-verziójának visszaadása, a
 base64ToString('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | A dekódolni kívánt Base64 kódolású karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*dekódolás – Base64-string*> | Sztring | Base64 kódolású karakterlánc karakterlánc-verziója |
 ||||
@@ -1048,12 +1048,12 @@ Egy karakterlánc bináris verziójának visszaadása.
 binary('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*bináris a bemenethez – érték*> | Sztring | A megadott karakterlánc bináris verziója |
 ||||
@@ -1082,12 +1082,12 @@ Lásd: [actionBody ()](#actionBody) és [műveletek ()](#actions).
 body('<actionName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | A művelet `body` kívánt kimenetének neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*művelet – törzs – kimenet*> | Sztring | A `body` megadott művelet kimenete |
 ||||
@@ -1127,14 +1127,14 @@ Egy érték logikai változatának visszaadása.
 bool(<value>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Bármelyik | A logikai értékké konvertálandó érték. |
+| <*érték*> | Igen | Bármelyik | A logikai értékké konvertálandó érték. |
 |||||
 
 Ha `bool()` objektumot használ, az objektum értékének egy olyan sztringnek vagy egész számnak kell lennie, amely logikai értékké konvertálható.
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | `true` vagy `false` | Logikai | A megadott érték logikai verziója. |
 ||||
@@ -1162,12 +1162,12 @@ Az üres karakterláncok, üres tömbök és üres objektumok nem null értékű
 coalesce(<object_1>, <object_2>, ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*object_1*>, <*object_2*>,... | Yes | Bármely, többféle típust is tartalmazhat | Egy vagy több, a NULL értékre való keresésre szolgáló elem |
+| <*object_1*>, <*object_2*>,... | Igen | Bármely, többféle típust is tartalmazhat | Egy vagy több, a NULL értékre való keresésre szolgáló elem |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*első – nem null értékű – tétel*> | Bármelyik | Az első olyan érték, amely nem null. Ha az összes paraméter null értékű, a függvény Null értéket ad vissza. |
 ||||
@@ -1198,12 +1198,12 @@ Egyesítse kettő vagy több karakterláncot, és állítsa vissza az egyesítet
 concat('<text1>', '<text2>', ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*text1*>, <*Szöveg2*>,... | Igen | Sztring | Legalább két karakterláncot kell egyesíteni |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*text1text2...*> | Sztring | A kombinált bemeneti sztringből létrehozott sztring |
 ||||
@@ -1237,13 +1237,13 @@ Pontosabban, ez a függvény a következő típusú gyűjteményeken működik:
 * Egy *tömb* , amely egy *értéket* keres
 * A *kulcs* megtalálásához használandó *szótár*
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc, tömb vagy szótár | Az ellenőrzési gyűjtemény |
-| <*érték*> | Yes | Karakterlánc, tömb vagy szótár | A keresendő tétel |
+| <*gyűjtemény*> | Igen | Karakterlánc, tömb vagy szótár | Az ellenőrzési gyűjtemény |
+| <*érték*> | Igen | Karakterlánc, tömb vagy szótár | A keresendő tétel |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha az objektum megtalálható. Hamis értéket ad vissza, ha nem található. |
 ||||
@@ -1274,14 +1274,14 @@ Az időbélyeget az egyezményes világidő (UTC) alapján alakítsa át a cél 
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*destinationTimeZone*> | Igen | Sztring | A cél időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*átalakított időbélyeg*> | Sztring | A cél időzónára konvertált időbélyeg |
 ||||
@@ -1316,7 +1316,7 @@ A forrás időzóna időbélyegének konvertálása a cél időzónára.
 convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
@@ -1324,7 +1324,7 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*átalakított időbélyeg*> | Sztring | A cél időzónára konvertált időbélyeg |
 ||||
@@ -1359,14 +1359,14 @@ A forrás időzóna időbélyegének konvertálása az egyezményes világidő (
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*sourceTimeZone*> | Igen | Sztring | A forrás időzóna neve. Az időzóna neveivel kapcsolatban lásd: a [Microsoft időzóna-index értékei](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values), de előfordulhat, hogy el kell távolítania az összes írásjelet az időzóna nevéből. |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*átalakított időbélyeg*> | Sztring | Az UTC-re konvertált időbélyeg |
 ||||
@@ -1402,12 +1402,12 @@ Egyetlen bemeneti tömbhöz lásd: [array ()](#array).
 createArray('<object1>', '<object2>', ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*>,... | Yes | Bármilyen, de nem vegyes | Legalább két elem a tömb létrehozásához |
+| <*object1*>, <*object2*>,... | Igen | Bármilyen, de nem vegyes | Legalább két elem a tömb létrehozásához |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*object1*>, <*object2*>,...] | Tömb | Az összes bemeneti elemből létrehozott tömb |
 ||||
@@ -1432,12 +1432,12 @@ Egy karakterlánchoz tartozó adat egységes erőforrás-azonosítójának (URI)
 dataUri('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*adaturi*> | Sztring | A bemeneti karakterlánchoz tartozó adat URI-ja |
 ||||
@@ -1464,12 +1464,12 @@ Bár mindkét függvény ugyanúgy működik, `dataUriBinary()` előnyben része
 dataUriToBinary('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó adaturi |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*bináris-for-az-adaturi*> | Sztring | Az adaturi bináris verziója |
 ||||
@@ -1499,12 +1499,12 @@ Az adategységes erőforrás-azonosító (URI) karakterlánc-verziójának vissz
 dataUriToString('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó adaturi |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*karakterlánc-for-az-adaturi*> | Sztring | Az adaturi-azonosító karakterlánc-verziója |
 ||||
@@ -1529,12 +1529,12 @@ A hónap napjának visszaadása egy időbélyegből.
 dayOfMonth('<timestamp>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*hónap napja*> | Egész szám | A hónap napja a megadott időbélyegből |
 ||||
@@ -1559,12 +1559,12 @@ A hét napjának visszaadása egy időbélyegből.
 dayOfWeek('<timestamp>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*hét napja*> | Egész szám | A hét napja a megadott időbélyegtől, ahol a vasárnap 0, hétfő 1, és így tovább |
 ||||
@@ -1589,12 +1589,12 @@ Az év napjának visszaadása egy időbélyegből.
 dayOfYear('<timestamp>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*év napja*> | Egész szám | Az év napja a megadott időbélyegből |
 ||||
@@ -1628,12 +1628,12 @@ Az adategységes erőforrás-azonosító (URI) bináris verziójának visszaadá
 decodeDataUri('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | A dekódolásra szolgáló adaturi-karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*bináris-for-az-adaturi*> | Sztring | Az adaturi-karakterlánc bináris verziója |
 ||||
@@ -1663,12 +1663,12 @@ Olyan karakterláncot ad vissza, amely lecseréli az Escape-karaktereket a dekó
 decodeUriComponent('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | A dekódolni kívánt Escape-karaktereket tartalmazó sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*dekódolású – URI*> | Sztring | A dekódolású Escape-karaktereket tartalmazó frissített sztring |
 ||||
@@ -1693,13 +1693,13 @@ Az eredmény visszaadása két szám elosztásával. A hátralévő eredmény el
 div(<dividend>, <divisor>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*osztalék*> | Yes | Egész vagy lebegőpontos | Az *osztó* által elosztani kívánt szám |
-| <*osztó*> | Yes | Egész vagy lebegőpontos | Az *osztalékot* osztó szám, de nem lehet 0 |
+| <*osztalék*> | Igen | Egész vagy lebegőpontos | Az *osztó* által elosztani kívánt szám |
+| <*osztó*> | Igen | Egész vagy lebegőpontos | Az *osztalékot* osztó szám, de nem lehet 0 |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*hányados – eredmény*> | Egész vagy lebegőpontos | Az első szám második szám szerinti osztásának eredménye. Ha az osztalék vagy az osztó lebegőpontos típusú, az eredmény lebegőpontos típusú. <p><p>**Megjegyzés**: Ha a lebegőpontos eredményt egész számra szeretné átalakítani, próbáljon meg [egy függvényt létrehozni és](../logic-apps/logic-apps-azure-functions.md) meghívni az Azure-ban a logikai alkalmazásból. |
 ||||
@@ -1735,12 +1735,12 @@ Egy egységes erőforrás-azonosító (URI) kódolású verziót ad vissza egy k
 encodeUriComponent('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az URI-kódolású formátumba konvertálandó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*kódolt – URI*> | Sztring | Az URI-kódolású karakterlánc Escape-karakterekkel |
 ||||
@@ -1767,12 +1767,12 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc, tömb vagy objektum | Az ellenőrzési gyűjtemény |
+| <*gyűjtemény*> | Igen | Karakterlánc, tömb vagy objektum | Az ellenőrzési gyűjtemény |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha a gyűjtemény üres. Hamis értéket ad vissza, ha nem üres. |
 ||||
@@ -1803,13 +1803,13 @@ Ez a függvény nem megkülönbözteti a kis-és nagybetűket.
 endsWith('<text>', '<searchText>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | Az ellenőrzési sztring |
 | <*Keresettszöveg*> | Igen | Sztring | A keresett karakterlánc vége |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis)  | Logikai | Igaz értéket ad vissza, ha a záró alsztring található. Hamis értéket ad vissza, ha nem található. |
 ||||
@@ -1845,12 +1845,12 @@ Igaz értéket ad vissza, ha mindkettő egyenértékű, vagy ha nem egyenérték
 equals('<object1>', '<object2>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*object1*>, <*object2*> | Yes | Különböző | Az összehasonlítandó értékek, kifejezések vagy objektumok |
+| <*object1*>, <*object2*> | Igen | Különböző | Az összehasonlítandó értékek, kifejezések vagy objektumok |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha mindkettő egyenértékű. Hamis értéket ad vissza, ha nem egyenértékű. |
 ||||
@@ -1880,12 +1880,12 @@ first('<collection>')
 first([<collection>])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc vagy tömb | A gyűjtemény, ahol az első elemek találhatók |
+| <*gyűjtemény*> | Igen | Karakterlánc vagy tömb | A gyűjtemény, ahol az első elemek találhatók |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*első gyűjtemény – tétel*> | Bármelyik | A gyűjtemény első eleme |
 ||||
@@ -1915,12 +1915,12 @@ Ezt a függvényt csak akkor használhatja, ha egyéni paramétereket továbbít
 float('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó érvényes lebegőpontos számmal rendelkező sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*lebegőpontos érték*> | Float | A megadott karakterlánc lebegőpontos száma |
 ||||
@@ -1945,13 +1945,13 @@ Egy időbélyeget ad vissza a megadott formátumban.
 formatDateTime('<timestamp>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*újraformázva – időbélyeg*> | Sztring | A frissített időbélyeg a megadott formátumban |
 ||||
@@ -1976,13 +1976,13 @@ Tömb visszaadása olyan értékekkel, amelyek megfelelnek egy művelet *űrlap-
 formDataMultiValues('<actionName>', '<key>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | Az a művelet, amelynek a kimenete a kívánt kulcs értéke |
 | <*kulcs*> | Igen | Sztring | Annak a kulcsnak a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*Array-with-Key-values*>] | Tömb | A megadott kulccsal egyező értékeket tartalmazó tömb |
 ||||
@@ -2008,13 +2008,13 @@ Ha a függvény egynél több egyezést talál, a függvény hibát jelez.
 formDataValue('<actionName>', '<key>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | Az a művelet, amelynek a kimenete a kívánt kulcs értéke |
 | <*kulcs*> | Igen | Sztring | Annak a kulcsnak a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*kulcs-érték*> | Sztring | A megadott kulcs értéke  |
 ||||
@@ -2039,14 +2039,14 @@ Egy szám visszaadása karakterláncként a megadott formátum alapján.
 formatNumber(<number>, <format>, <locale>?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*száma*> | Yes | Egész vagy dupla | A formázni kívánt érték. |
+| <*száma*> | Igen | Egész vagy dupla | A formázni kívánt érték. |
 | <*formátumban*> | Igen | Sztring | Egy összetett formázó karakterlánc, amely meghatározza a használni kívánt formátumot. A támogatott numerikus formázási karakterláncokat a által támogatott [szabványos numerikus formázású karakterláncok](/dotnet/standard/base-types/standard-numeric-format-strings)című szakaszban tekintheti meg `number.ToString(<format>, <locale>)` . |
 | <*területi beállítás*> | Nem | Sztring | A által támogatott területi beállítás `number.ToString(<format>, <locale>)` . Ha nincs megadva, az alapértelmezett érték: `en-us` . |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*formázott szám*> | Sztring | A megadott számú karakterlánc a megadott formátumban. Ezt a visszatérési értéket a vagy a értékre is elvégezheti `int` `float` . |
 ||||
@@ -2093,14 +2093,14 @@ Az aktuális időbélyeg és a megadott időegységek visszaadása.
 getFutureTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Yes | Egész szám | A hozzáadandó megadott időegységek száma |
+| <*időköz*> | Igen | Egész szám | A hozzáadandó megadott időegységek száma |
 | <*timeUnit*> | Igen | Sztring | Az időegység, amelyet a következő *intervallummal* kell használni: "Second", "minute", "Hour", "Day", "Week", "hónap", "Year" |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az aktuális időbélyeg és a megadott számú időegység |
 ||||
@@ -2137,14 +2137,14 @@ Az aktuális időbélyeg visszaadása a megadott időegységek mínusz.
 getPastTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*időköz*> | Yes | Egész szám | A kivonandó megadott időegységek száma |
+| <*időköz*> | Igen | Egész szám | A kivonandó megadott időegységek száma |
 | <*timeUnit*> | Igen | Sztring | Az időegység, amelyet a következő *intervallummal* kell használni: "Second", "minute", "Hour", "Day", "Week", "hónap", "Year" |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az aktuális időbélyeg mínusz a megadott számú időegység |
 ||||
@@ -2183,13 +2183,13 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Egész szám, lebegőpontos vagy sztring | Az első érték, amellyel ellenőrizhető, hogy a második érték nagyobb-e |
-| <*Compareto metódus végrehajtása*> | Yes | Egész szám, lebegőpontos vagy sztring | Az összehasonlító érték |
+| <*érték*> | Igen | Egész szám, lebegőpontos vagy sztring | Az első érték, amellyel ellenőrizhető, hogy a második érték nagyobb-e |
+| <*Compareto metódus végrehajtása*> | Igen | Egész szám, lebegőpontos vagy sztring | Az összehasonlító érték |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha az első érték nagyobb, mint a második érték. Hamis értéket ad vissza, ha az első érték egyenlő vagy kisebb a második értéknél. |
 ||||
@@ -2220,13 +2220,13 @@ greaterOrEquals(<value>, <compareTo>)
 greaterOrEquals('<value>', '<compareTo>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Egész szám, lebegőpontos vagy sztring | Az első érték, amellyel ellenőrizhető, hogy a második érték nagyobb vagy egyenlő-e |
-| <*Compareto metódus végrehajtása*> | Yes | Egész szám, lebegőpontos vagy sztring | Az összehasonlító érték |
+| <*érték*> | Igen | Egész szám, lebegőpontos vagy sztring | Az első érték, amellyel ellenőrizhető, hogy a második érték nagyobb vagy egyenlő-e |
+| <*Compareto metódus végrehajtása*> | Igen | Egész szám, lebegőpontos vagy sztring | Az összehasonlító érték |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha az első érték nagyobb vagy egyenlő, mint a második érték. Hamis értéket ad vissza, ha az első érték kisebb a második értéknél. |
 ||||
@@ -2261,12 +2261,12 @@ Emellett eltérő formátumot is megadhat az alapértelmezett "D" formátumtól 
 guid('<format>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*formátumban*> | Nem | Sztring | Egyetlen [Formátum](/dotnet/api/system.guid.tostring#system_guid_tostring_system_string_) megadása a VISSZAADOTT GUID azonosítóhoz. Alapértelmezés szerint a formátum a "D", de az "N", "D", "B", "P" vagy "X" is használható. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*GUID – érték*> | Sztring | Véletlenszerűen generált GUID |
 ||||
@@ -2291,14 +2291,14 @@ Győződjön meg arról, hogy a kifejezés igaz vagy hamis. Az eredmény alapjá
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*kifejezés*> | Yes | Logikai | Az ellenőrzési kifejezés |
-| <*valueIfTrue*> | Yes | Bármelyik | A kifejezés igaz értéke esetén visszaadott érték |
-| <*valueIfFalse*> | Yes | Bármelyik | A kifejezés hamis értéke esetén visszaadott érték |
+| <*kifejezés*> | Igen | Logikai | Az ellenőrzési kifejezés |
+| <*valueIfTrue*> | Igen | Bármelyik | A kifejezés igaz értéke esetén visszaadott érték |
+| <*valueIfFalse*> | Igen | Bármelyik | A kifejezés hamis értéke esetén visszaadott érték |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*megadott – visszatérési érték*> | Bármelyik | A megadott érték, amely attól függ, hogy a kifejezés igaz vagy hamis. |
 ||||
@@ -2323,13 +2323,13 @@ Ez a függvény nem megkülönbözteti a kis-és nagybetűket, és az indexek a 
 indexOf('<text>', '<searchText>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A keresendő alsztringet tartalmazó karakterlánc |
 | <*Keresettszöveg*> | Igen | Sztring | A keresendő alsztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*index – érték*>| Egész szám | A megadott alsztring kezdő pozíciójának vagy indexének értéke. <p>Ha a sztring nem található, az-1 számot kell visszaadnia. |
 ||||
@@ -2354,12 +2354,12 @@ Egy sztring egész változatának visszaadása.
 int('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*egész szám – eredmény*> | Egész szám | A megadott karakterlánc egész számú verziója |
 ||||
@@ -2385,7 +2385,7 @@ Az elem tulajdonságaiból is lekérheti az értékeket.
 item()
 ```
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*aktuális – tömb – elem*> | Bármelyik | A művelet aktuális iterációjának aktuális eleme a tömbben |
 ||||
@@ -2409,12 +2409,12 @@ Használja ezt a függvényt a for-each cikluson belül.
 items('<loopName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*loopName*> | Igen | Sztring | A for-each hurok neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*elem*> | Bármelyik | A megadott a-minden hurokhoz tartozó aktuális ciklusból származó elem |
 ||||
@@ -2437,12 +2437,12 @@ Az aktuális iterációhoz tartozó index értékének visszaadása a hurokon be
 iterationIndexes('<loopName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description | 
+| Paraméter | Kötelező | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
 | <*loopName*> | Igen | Sztring | A csak a ciklushoz tartozó név | 
 ||||| 
 
-| Visszatérési érték | Típus | Description | 
+| Visszatérési érték | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
 | <*index*> | Egész szám | Az aktuális iteráció indexének értéke a megadott ciklusig | 
 |||| 
@@ -2544,12 +2544,12 @@ json(xml('value'))
 >  
 > Ez a viselkedés olyan helyzetekben nem megfelelő, amikor a kimenetnek meg kell felelnie egy jól meghatározott szerződésnek, például a kritikus fontosságú üzleti rendszerekben vagy megoldásokban.
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Karakterlánc vagy XML | Az átalakítandó karakterlánc vagy XML |
+| <*érték*> | Igen | Karakterlánc vagy XML | Az átalakítandó karakterlánc vagy XML |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*JSON – eredmény*> | JSON natív típusa, objektum vagy tömb | A JSON natív típusú érték, objektum vagy objektumok tömbje a bemeneti sztringből vagy XML-ből. <p><p>– Ha olyan XML-kódot ad át, amely a gyökérelem egyetlen gyermek elemmel rendelkezik, a függvény egyetlen JSON-objektumot ad vissza az adott alárendelt elemhez. <p> – Ha olyan XML-kódot ad át, amely a gyökérelem több alárendelt elemét tartalmazza, a függvény egy olyan tömböt ad vissza, amely JSON-objektumokat tartalmaz az adott alárendelt elemekhez. <p>– Ha a karakterlánc null értékű, a függvény üres objektumot ad vissza. |
 ||||
@@ -2646,12 +2646,12 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>,... | Yes | Tömb vagy objektum, de nem mindkettő | Azok a gyűjtemények, amelyekről *csak* az általános elemeket szeretné használni |
+| <*collection1*>, <*collection2*>,... | Igen | Tömb vagy objektum, de nem mindkettő | Azok a gyűjtemények, amelyekről *csak* az általános elemeket szeretné használni |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*gyakori elemek*> | Tömb vagy objektum | Gyűjtemény, amely csak a megadott gyűjtemények közös elemeit tartalmazta |
 ||||
@@ -2676,13 +2676,13 @@ Olyan karakterláncot ad vissza, *amely egy tömb* összes elemét tartalmazhatj
 join([<collection>], '<delimiter>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Tömb | Az a tömb, amelybe az elemek csatlakoznak |
+| <*gyűjtemény*> | Igen | Tömb | Az a tömb, amelybe az elemek csatlakoznak |
 | <*elválasztó*> | Igen | Sztring | Az eredményül kapott karakterlánc egyes karakterei között megjelenő elválasztó |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*char1* >< elválasztó *karakter* >< *char2* >< elválasztó *>.* .. | Sztring | Az eredményül kapott karakterlánc a megadott tömb összes eleme alapján létrehozva |
 ||||
@@ -2708,12 +2708,12 @@ last('<collection>')
 last([<collection>])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc vagy tömb | A gyűjtemény, ahol az utolsó tételt keresi |
+| <*gyűjtemény*> | Igen | Karakterlánc vagy tömb | A gyűjtemény, ahol az utolsó tételt keresi |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*utolsó gyűjtemény – tétel*> | Karakterlánc vagy tömb, illetve | A gyűjtemény utolsó eleme |
 ||||
@@ -2742,13 +2742,13 @@ A kezdő pozíció vagy az index értékének visszaadása egy alsztring utolsó
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A keresendő alsztringet tartalmazó karakterlánc |
 | <*Keresettszöveg*> | Igen | Sztring | A keresendő alsztring |
 |||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*záró index – érték*> | Egész szám | A megadott alsztring utolsó előfordulásának kezdő pozíciója vagy index értéke. |
 |||
@@ -2786,12 +2786,12 @@ length('<collection>')
 length([<collection>])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc vagy tömb | A gyűjtemény és a megszámlálni kívánt elemek |
+| <*gyűjtemény*> | Igen | Karakterlánc vagy tömb | A gyűjtemény és a megszámlálni kívánt elemek |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*hossz vagy darabszám*> | Egész szám | A gyűjtemény elemeinek száma |
 ||||
@@ -2819,13 +2819,13 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Egész szám, lebegőpontos vagy sztring | Az első érték, amely azt vizsgálja, hogy a második érték kisebb-e |
-| <*Compareto metódus végrehajtása*> | Yes | Egész szám, lebegőpontos vagy sztring | Az összehasonlító tétel |
+| <*érték*> | Igen | Egész szám, lebegőpontos vagy sztring | Az első érték, amely azt vizsgálja, hogy a második érték kisebb-e |
+| <*Compareto metódus végrehajtása*> | Igen | Egész szám, lebegőpontos vagy sztring | Az összehasonlító tétel |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha az első érték kisebb a második értéknél. Hamis értéket ad vissza, ha az első érték egyenlő vagy nagyobb, mint a második érték. |
 ||||
@@ -2856,13 +2856,13 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Egész szám, lebegőpontos vagy sztring | Az első érték, amely azt vizsgálja, hogy a második érték kisebb vagy egyenlő-e |
-| <*Compareto metódus végrehajtása*> | Yes | Egész szám, lebegőpontos vagy sztring | Az összehasonlító tétel |
+| <*érték*> | Igen | Egész szám, lebegőpontos vagy sztring | Az első érték, amely azt vizsgálja, hogy a második érték kisebb vagy egyenlő-e |
+| <*Compareto metódus végrehajtása*> | Igen | Egész szám, lebegőpontos vagy sztring | Az összehasonlító tétel |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis)  | Logikai | Igaz értéket ad vissza, ha az első érték kisebb vagy egyenlő, mint a második érték. Hamis értéket ad vissza, ha az első érték nagyobb, mint a második érték. |
 ||||
@@ -2892,7 +2892,7 @@ Ez a függvény csak a **HttpWebhook** és a **ApiConnectionWebhook** összeköt
 listCallbackUrl()
 ```
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*visszahívás – URL*> | Sztring | Egy trigger vagy művelet visszahívási URL-címe |
 ||||
@@ -2914,13 +2914,13 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*szám1*>, <*szám2*>,... | Yes | Egész szám, lebegőpontos vagy mindkettő | Azon számok halmaza, amelyekről a legmagasabb értéket kívánja megadni |
-| [<*szám1*>, <*szám2*>,...] | Yes | Tömb – egész szám, lebegőpontos vagy mindkettő | Azon számok tömbje, amelyekről a legmagasabb értéket kívánja használni |
+| <*szám1*>, <*szám2*>,... | Igen | Egész szám, lebegőpontos vagy mindkettő | Azon számok halmaza, amelyekről a legmagasabb értéket kívánja megadni |
+| [<*szám1*>, <*szám2*>,...] | Igen | Tömb – egész szám, lebegőpontos vagy mindkettő | Azon számok tömbje, amelyekről a legmagasabb értéket kívánja használni |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*maximális érték*> | Egész vagy lebegőpontos | A megadott tömb vagy számok legmagasabb értéke |
 ||||
@@ -2947,13 +2947,13 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*szám1*>, <*szám2*>,... | Yes | Egész szám, lebegőpontos vagy mindkettő | Azon számok halmaza, amelyekről a legalacsonyabb értéket szeretné használni |
-| [<*szám1*>, <*szám2*>,...] | Yes | Tömb – egész szám, lebegőpontos vagy mindkettő | Azon számok tömbje, amelyekről a legalacsonyabb értéket szeretné használni |
+| <*szám1*>, <*szám2*>,... | Igen | Egész szám, lebegőpontos vagy mindkettő | Azon számok halmaza, amelyekről a legalacsonyabb értéket szeretné használni |
+| [<*szám1*>, <*szám2*>,...] | Igen | Tömb – egész szám, lebegőpontos vagy mindkettő | Azon számok tömbje, amelyekről a legalacsonyabb értéket szeretné használni |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*minimális érték*> | Egész vagy lebegőpontos | A megadott számú vagy megadott tömb legalacsonyabb értéke |
 ||||
@@ -2980,13 +2980,13 @@ Az egész szám eredményének lekéréséhez lásd: [div ()](#div).
 mod(<dividend>, <divisor>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*osztalék*> | Yes | Egész vagy lebegőpontos | Az *osztó* által elosztani kívánt szám |
-| <*osztó*> | Yes | Egész vagy lebegőpontos | Az *osztalékot* osztó szám, de nem lehet 0. |
+| <*osztalék*> | Igen | Egész vagy lebegőpontos | Az *osztó* által elosztani kívánt szám |
+| <*osztó*> | Igen | Egész vagy lebegőpontos | Az *osztalékot* osztó szám, de nem lehet 0. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*adatsorozat – eredmény*> | Egész vagy lebegőpontos | A maradék az első számnak a második számmal való felosztásával |
 ||||
@@ -3011,13 +3011,13 @@ A termék visszaküldése két szám szorzatával.
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*multiplicand1*> | Yes | Egész vagy lebegőpontos | A *multiplicand2* által szorozható szám |
-| <*multiplicand2*> | Yes | Egész vagy lebegőpontos | A többszörös *multiplicand1* száma |
+| <*multiplicand1*> | Igen | Egész vagy lebegőpontos | A *multiplicand2* által szorozható szám |
+| <*multiplicand2*> | Igen | Egész vagy lebegőpontos | A többszörös *multiplicand1* száma |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*termék – eredmény*> | Egész vagy lebegőpontos | A termék, amely az első számot a második számmal szorozza meg |
 ||||
@@ -3046,13 +3046,13 @@ Egy művelet adott részének törzsét adja vissza egy olyan kimenetben, amely 
 multipartBody('<actionName>', <index>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | A több részből álló kimenettel rendelkező művelet neve |
-| <*index*> | Yes | Egész szám | A kívánt rész indexének értéke |
+| <*index*> | Igen | Egész szám | A kívánt rész indexének értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*törzse*> | Sztring | A megadott rész törzse |
 ||||
@@ -3068,12 +3068,12 @@ Igaz értéket ad vissza, ha a kifejezés hamis, vagy igaz értéket ad vissza.
 not(<expression>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*kifejezés*> | Yes | Logikai | Az ellenőrzési kifejezés |
+| <*kifejezés*> | Igen | Logikai | Az ellenőrzési kifejezés |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha a kifejezés hamis. Hamis értéket ad vissza, ha a kifejezés igaz. |
 ||||
@@ -3117,12 +3117,12 @@ Igaz értéket ad vissza, ha legalább egy kifejezés igaz értékű, vagy hamis
 or(<expression1>, <expression2>, ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*Kifejezés2*>,... | Yes | Logikai | Az ellenőrzési kifejezések |
+| <*expression1*>, <*Kifejezés2*>,... | Igen | Logikai | Az ellenőrzési kifejezések |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis) | Logikai | Igaz értéket ad vissza, ha legalább egy kifejezés igaz. Hamis értéket ad vissza, ha az összes kifejezés hamis. |
 ||||
@@ -3165,12 +3165,12 @@ Egy művelet kimenetének visszaadása futásidőben. A függvény helyett haszn
 outputs('<actionName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*Műveletnév*> | Igen | Sztring | A művelet kívánt kimenetének neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | -----| ----------- |
 | <*kimeneti*> | Sztring | A megadott művelet kimenete |
 ||||
@@ -3228,12 +3228,12 @@ A munkafolyamat-definícióban leírt paraméterek értékének visszaadása.
 parameters('<parameterName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*parameterName*> | Igen | Sztring | Annak a paraméternek a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*paraméter – érték*> | Bármelyik | A megadott paraméter értéke |
 ||||
@@ -3266,13 +3266,13 @@ Egy, a megadott tartományból származó véletlenszerű egész számot ad viss
 rand(<minValue>, <maxValue>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*minValue*> | Yes | Egész szám | A tartomány legalacsonyabb egésze |
-| <*maxValue*> | Yes | Egész szám | Az egész szám, amely a függvény által visszaadott tartomány legmagasabb egészét követi |
+| <*minValue*> | Igen | Egész szám | A tartomány legalacsonyabb egésze |
+| <*maxValue*> | Igen | Egész szám | Az egész szám, amely a függvény által visszaadott tartomány legmagasabb egészét követi |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*véletlenszerű eredmény*> | Egész szám | A megadott tartományból visszaadott véletlenszerű egész szám |
 ||||
@@ -3297,13 +3297,13 @@ Egy egész tömböt ad vissza, amely egy megadott egész számból indul.
 range(<startIndex>, <count>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*startIndex*> | Yes | Egész szám | Egész érték, amely az első elemként elindítja a tömböt. |
-| <*száma*> | Yes | Egész szám | A tömbben lévő egész számok száma |
+| <*startIndex*> | Igen | Egész szám | Egész érték, amely az első elemként elindítja a tömböt. |
+| <*száma*> | Igen | Egész szám | A tömbben lévő egész számok száma |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*tartomány – eredmény*>] | Tömb | A tömb a megadott indextől kezdődő egész számokkal |
 ||||
@@ -3328,14 +3328,14 @@ Cserélje le az alsztringet a megadott sztringre, és adja vissza az eredmény-k
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A lecserélni kívánt alsztringet tartalmazó karakterlánc |
 | <*oldText*> | Igen | Sztring | A lecserélni kívánt alsztring |
 | <*newText*> | Igen | Sztring | A helyettesítő sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – szöveg*> | Sztring | Az alsztring cseréje után a frissített sztring <p>Ha az alkarakterlánc nem található, az eredeti karakterláncot küldje vissza. |
 ||||
@@ -3360,13 +3360,13 @@ Eltávolít egy tulajdonságot egy objektumból, és visszaküldi a frissített 
 removeProperty(<object>, '<property>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | A JSON-objektum, amelyből el kívánja távolítani a tulajdonságot |
+| <*objektum*> | Igen | Objektum | A JSON-objektum, amelyből el kívánja távolítani a tulajdonságot |
 | <*tulajdonság*> | Igen | Sztring | Az eltávolítandó tulajdonság neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – objektum*> | Objektum | A frissített JSON-objektum a megadott tulajdonság nélkül |
 ||||
@@ -3377,14 +3377,14 @@ Ha el szeretne távolítani egy gyermek tulajdonságot egy meglévő tulajdonsá
 removeProperty(<object>['<parent-property>'], '<child-property>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | A JSON-objektum, amelynek a tulajdonságát el szeretné távolítani |
+| <*objektum*> | Igen | Objektum | A JSON-objektum, amelynek a tulajdonságát el szeretné távolítani |
 | <*szülő-tulajdonság*> | Igen | Sztring | Az eltávolítani kívánt gyermek tulajdonsággal rendelkező Parent tulajdonság neve |
 | <*gyermek-tulajdonság*> | Igen | Sztring | Az eltávolítandó gyermek tulajdonság neve |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – objektum*> | Objektum | A frissített JSON-objektum, amelynek gyermek tulajdonsága el lett távolítva |
 ||||
@@ -3462,12 +3462,12 @@ Ezzel a függvénnyel például lekérheti a sikertelen műveletek eredményeit,
 result('<scopedActionName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*scopedActionName*> | Igen | Sztring | Annak a hatókörön belüli műveletnek a neve, ahol a bemeneteket és kimeneteket szeretné használni a hatókörben lévő legfelső szintű műveletekben |
 ||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*tömb – objektum*> | Tömb objektum | Egy tömb, amely bemeneti és kimeneti adatokat tartalmaz a megadott hatókörben lévő minden legfelső szintű műveletből. |
 ||||
@@ -3583,11 +3583,11 @@ A példában szereplő példa azt szemlélteti, hogy a külső objektum a `outpu
 setProperty(<object>, '<property>', <value>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
+| <*objektum*> | Igen | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
 | <*tulajdonság*> | Igen | Sztring | A beállítani kívánt meglévő vagy új tulajdonság neve |
-| <*érték*> | Yes | Bármelyik | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
 Ha a gyermek tulajdonságot egy alárendelt objektumban szeretné beállítani, használjon `setProperty()` helyette egy beágyazott hívást. Ellenkező esetben a függvény csak a gyermek objektumot adja vissza kimenetként.
@@ -3596,15 +3596,15 @@ Ha a gyermek tulajdonságot egy alárendelt objektumban szeretné beállítani, 
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*objektum*> | Yes | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
+| <*objektum*> | Igen | Objektum | Az a JSON-objektum, amelynek a tulajdonságát be szeretné állítani |
 | <*szülő-tulajdonság*> | Igen | Sztring | A beállítani kívánt gyermek tulajdonsággal rendelkező Parent tulajdonság neve |
 | <*gyermek-tulajdonság*> | Igen | Sztring | A beállítani kívánt gyermek tulajdonság neve |
-| <*érték*> | Yes | Bármelyik | A megadott tulajdonsághoz beállított érték |
+| <*érték*> | Igen | Bármelyik | A megadott tulajdonsághoz beállított érték |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – objektum*> | Objektum | A frissített JSON-objektum, amelynek a tulajdonságát beállította |
 ||||
@@ -3675,13 +3675,13 @@ Elemek eltávolítása egy gyűjtemény elejéről, és *az összes többi* elem
 skip([<collection>], <count>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Tömb | A gyűjtemény, amelynek elemeit el szeretné távolítani |
-| <*száma*> | Yes | Egész szám | Az előtérben eltávolítandó elemek számának pozitív egésze |
+| <*gyűjtemény*> | Igen | Tömb | A gyűjtemény, amelynek elemeit el szeretné távolítani |
+| <*száma*> | Igen | Egész szám | Az előtérben eltávolítandó elemek számának pozitív egésze |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*frissítve – gyűjtemény*>] | Tömb | A frissített gyűjtemény a megadott elemek eltávolítása után |
 ||||
@@ -3706,13 +3706,13 @@ Egy olyan tömböt ad vissza, amely vesszővel elválasztott alsztringeket tarta
 split('<text>', '<delimiter>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A karakterlánc, amely az eredeti sztringben megadott határolójel alapján választja el az alsztringeket |
 | <*elválasztó*> | Igen | Sztring | A határolójelként használandó eredeti karakterláncban szereplő karakter |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*substring1*>, <*substring2*>,...] | Tömb | Egy tömb, amely az eredeti sztringből származó alsztringeket tartalmaz, vesszővel elválasztva |
 ||||
@@ -3737,13 +3737,13 @@ Egy időbélyeghez tartozó nap kezdetének visszaadása.
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | A megadott időbélyeg, de a nap nulla órás megjelölése után |
 ||||
@@ -3768,13 +3768,13 @@ Az óra kezdetének visszaadása egy időbélyeghez.
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | A megadott időbélyeg, de az óra nulla perces jelölése után |
 ||||
@@ -3799,13 +3799,13 @@ A hónap kezdetének visszaadása egy időbélyeghez.
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | A megadott időbélyeg, de a hónap első napján kezdődik a nulla órás jelölés |
 ||||
@@ -3842,13 +3842,13 @@ Ez a függvény nem megkülönbözteti a kis-és nagybetűket.
 startsWith('<text>', '<searchText>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | Az ellenőrzési sztring |
 | <*Keresettszöveg*> | Igen | Sztring | A keresett kezdő sztring |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | true (igaz) vagy false (hamis)  | Logikai | Igaz értéket ad vissza, ha a kezdő alsztring található. Hamis értéket ad vissza, ha nem található. |
 ||||
@@ -3883,12 +3883,12 @@ Egy érték karakterlánc-verziójának visszaadása.
 string(<value>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*érték*> | Yes | Bármelyik | Az átalakítandó érték. Ha ez az érték null értékű, vagy a null értéket ad vissza, az érték üres sztring ( `""` ) értékre lesz konvertálva. <p><p>Ha például egy karakterlánc-változót olyan nem létező tulajdonsághoz rendel hozzá, amely hozzáfér az `?` operátorhoz, akkor a Null érték üres karakterlánccá lesz konvertálva. Egy Null érték összehasonlítása azonban nem ugyanaz, mint egy üres karakterlánc összevetése. |
+| <*érték*> | Igen | Bármelyik | Az átalakítandó érték. Ha ez az érték null értékű, vagy a null értéket ad vissza, az érték üres sztring ( `""` ) értékre lesz konvertálva. <p><p>Ha például egy karakterlánc-változót olyan nem létező tulajdonsághoz rendel hozzá, amely hozzáfér az `?` operátorhoz, akkor a Null érték üres karakterlánccá lesz konvertálva. Egy Null érték összehasonlítása azonban nem ugyanaz, mint egy üres karakterlánc összevetése. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*karakterlánc-érték*> | Sztring | A megadott érték karakterlánc-verziója. Ha a *Value* paraméter értéke null, vagy a rendszer null értéket ad vissza, akkor ez az érték üres karakterlánc ( `""` ) értékként lesz visszaadva. |
 ||||
@@ -3927,13 +3927,13 @@ Az eredmény visszaadása a második számnak az első számból való kivonás�
 sub(<minuend>, <subtrahend>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*kisebbítendőt*> | Yes | Egész vagy lebegőpontos | Az a szám, amelyből ki kell vonni a *kivonandó* |
-| <*kivonandó*> | Yes | Egész vagy lebegőpontos | A *kisebbítendőt* kivonni kívánt szám |
+| <*kisebbítendőt*> | Igen | Egész vagy lebegőpontos | Az a szám, amelyből ki kell vonni a *kivonandó* |
+| <*kivonandó*> | Igen | Egész vagy lebegőpontos | A *kisebbítendőt* kivonni kívánt szám |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*találat*> | Egész vagy lebegőpontos | A második számnak az első számból való kivonásának eredménye |
 ||||
@@ -3958,18 +3958,18 @@ Karaktereket ad vissza egy karakterláncból, a megadott pozíciótól vagy inde
 substring('<text>', <startIndex>, <length>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | Az a karakterlánc, amelynek a karaktereit szeretné |
-| <*startIndex*> | Yes | Egész szám | A kiindulási pozícióként vagy indexként használni kívánt nullánál kisebb vagy nagyobb pozitív érték |
-| <*hossza*> | No | Egész szám | Pozitív számú karakter, amelyet az alkarakterláncban szeretne használni. |
+| <*startIndex*> | Igen | Egész szám | A kiindulási pozícióként vagy indexként használni kívánt nullánál kisebb vagy nagyobb pozitív érték |
+| <*hossza*> | Nem | Egész szám | Pozitív számú karakter, amelyet az alkarakterláncban szeretne használni. |
 |||||
 
 > [!NOTE]
 > Győződjön meg arról, hogy a *startIndex* és a *Length* paraméter hozzáadásának összege kisebb, mint a *szöveges* paraméterhez megadott karakterlánc hossza.
 > Ellenkező esetben hibaüzenet jelenik meg, eltérően más nyelveken a hasonló függvényektől, ahol az eredmény az *startIndex* és a karakterlánc végét jelző alsztring. A *Length* paraméter nem kötelező, és ha nincs megadva, az **alkarakterlánc ()** függvény a *startIndex* elejétől kezdve a karakterlánc végéig tart minden karaktert.
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*alkarakterlánc – eredmény*> | Sztring | A megadott számú karakterből álló alsztring, amely a forrás sztringben megadott index pozíciótól kezdődik. |
 ||||
@@ -3995,15 +3995,15 @@ Lásd még: [getPastTime](#getPastTime).
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeget tartalmazó sztring |
-| <*időköz*> | Yes | Egész szám | A kivonandó megadott időegységek száma |
+| <*időköz*> | Igen | Egész szám | A kivonandó megadott időegységek száma |
 | <*timeUnit*> | Igen | Sztring | Az időegység, amelyet a következő *intervallummal* kell használni: "Second", "minute", "Hour", "Day", "Week", "hónap", "Year" |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Frissítve – timestamp*> | Sztring | Az időbélyeg mínusz a megadott számú időegység |
 ||||
@@ -4039,13 +4039,13 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*gyűjtemény*> | Yes | Karakterlánc vagy tömb | A gyűjtemény, amelynek elemeit szeretné |
-| <*száma*> | Yes | Egész szám | Az elejétől kapott elemek számának pozitív egésze |
+| <*gyűjtemény*> | Igen | Karakterlánc vagy tömb | A gyűjtemény, amelynek elemeit szeretné |
+| <*száma*> | Igen | Egész szám | Az elejétől kapott elemek számának pozitív egésze |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*részhalmaz*> vagy [<*részhalmaz*>] | Karakterlánc vagy tömb, illetve | Olyan karakterlánc vagy tömb, amely az eredeti gyűjtemény elejétől kapott megadott számú elemet tartalmaz. |
 ||||
@@ -4074,12 +4074,12 @@ A 100 ns intervallumok számát adja vissza, a 0001 12:00:00 éjfélkor (vagy a 
 ticks('<timestamp>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*időbélyeg*> | Igen | Sztring | Az időbélyeg karakterlánca |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*osztásjelek – szám*> | Egész szám | A megadott időbélyeg óta a kullancsok száma |
 ||||
@@ -4094,12 +4094,12 @@ Karakterláncot ad vissza kisbetűs formátumban. Ha a karakterlánc egyik karak
 toLower('<text>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A kisbetűs formátumban visszaadni kívánt karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*kisbetűs – szöveg*> | Sztring | Az eredeti sztring kisbetűs formátumban |
 ||||
@@ -4124,12 +4124,12 @@ Karakterláncot ad vissza nagybetűs formátumban. Ha a karakterlánc egyik kara
 toUpper('<text>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | A nagybetűs formátumban visszaadni kívánt karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*nagybetűs szöveg*> | Sztring | Az eredeti sztring nagybetűs formátumban |
 ||||
@@ -4161,7 +4161,7 @@ Emellett a függvénynek van elérhető Gyorsírási verziója, lásd: [triggerO
 trigger()
 ```
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*trigger – kimenet*> | Sztring | Egy trigger kimenete futásidőben |
 ||||
@@ -4178,7 +4178,7 @@ Lásd: [trigger ()](#trigger).
 triggerBody()
 ```
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*trigger-test-output*> | Sztring | Az `body` trigger kimenete |
 ||||
@@ -4193,12 +4193,12 @@ Egy olyan tömböt ad vissza, amely egy trigger *űrlap-* vagy *űrlap-kódolás
 triggerFormDataMultiValues('<key>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*kulcs*> | Igen | Sztring | Annak a kulcsnak a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | [<*Array-with-Key-values*>] | Tömb | A megadott kulccsal egyező értékeket tartalmazó tömb |
 ||||
@@ -4224,12 +4224,12 @@ Ha a függvény egynél több egyezést talál, a függvény hibát jelez.
 triggerFormDataValue('<key>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*kulcs*> | Igen | Sztring | Annak a kulcsnak a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*kulcs-érték*> | Sztring | A megadott kulcs értéke |
 ||||
@@ -4254,12 +4254,12 @@ Egy trigger kimenetének adott részének törzsét adja vissza, amely több ré
 triggerMultipartBody(<index>)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*index*> | Yes | Egész szám | A kívánt rész indexének értéke |
+| <*index*> | Igen | Egész szám | A kívánt rész indexének értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*törzse*> | Sztring | Egy trigger többrészes kimenetében lévő megadott rész törzse |
 ||||
@@ -4276,7 +4276,7 @@ Lásd: [trigger ()](#trigger).
 triggerOutputs()
 ```
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*trigger – kimenet*> | Sztring | Egy trigger kimenete futásidőben  |
 ||||
@@ -4291,12 +4291,12 @@ Távolítsa el a kezdő és záró szóközt egy karakterláncból, és küldje 
 trim('<text>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*szöveg*> | Igen | Sztring | Az eltávolítandó kezdő és záró szóközt tartalmazó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*updatedText*> | Sztring | Frissített verzió az eredeti karakterlánchoz kezdő vagy záró szóközök nélkül |
 ||||
@@ -4323,12 +4323,12 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*collection1*>, <*collection2*>,...  | Yes | Tömb vagy objektum, de nem mindkettő | Azok a gyűjtemények, amelyekről az *összes* elemet meg szeretné jeleníteni |
+| <*collection1*>, <*collection2*>,...  | Igen | Tömb vagy objektum, de nem mindkettő | Azok a gyűjtemények, amelyekről az *összes* elemet meg szeretné jeleníteni |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*updatedCollection*> | Tömb vagy objektum | Gyűjtemény a megadott gyűjtemények összes elemével – nincsenek duplikálva |
 ||||
@@ -4355,12 +4355,12 @@ Bár mindkét függvény ugyanúgy működik, `uriComponent()` előnyben részes
 uriComponent('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az URI-kódolású formátumba konvertálandó karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*kódolt – URI*> | Sztring | Az URI-kódolású karakterlánc Escape-karakterekkel |
 ||||
@@ -4385,12 +4385,12 @@ Egy egységes erőforrás-azonosító (URI) összetevő bináris verziójának v
 uriComponentToBinary('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó URI-kódolású karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*bináris kódolású URI*> | Sztring | Az URI-kódolású karakterlánc bináris verziója. A bináris tartalom Base64 kódolású és a által reprezentált `$content` . |
 ||||
@@ -4420,12 +4420,12 @@ Egy egységes erőforrás-azonosító (URI) kódolású sztring karakterlánc-ve
 uriComponentToString('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | A dekódolni kívánt URI-kódolású karakterlánc |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*dekódolású – URI*> | Sztring | Az URI-kódolású karakterlánc dekódolt verziója |
 ||||
@@ -4450,12 +4450,12 @@ uriComponentToString('https%3A%2F%2Fcontoso.com')
 uriHost('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI, amelynek a `host` kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*gazdagép-érték*> | Sztring | A `host` megadott URI-azonosító értéke |
 ||||
@@ -4480,12 +4480,12 @@ uriHost('https://www.localhost.com:8080')
 uriPath('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI, amelynek a `path` kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*elérési út – érték*> | Sztring | A `path` megadott URI-azonosító értéke. Ha `path` nem rendelkezik értékkel, a "/" karaktert kell visszaadnia. |
 ||||
@@ -4510,12 +4510,12 @@ uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriPathAndQuery('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI `path` , amelynek és a `query` kívánt értékei |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*elérési út – lekérdezés-érték*> | Sztring | A `path` `query` megadott URI-azonosító és-értékek. Ha `path` nem ad meg értéket, a "/" karaktert kell visszaadnia. |
 ||||
@@ -4540,12 +4540,12 @@ uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriPort('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI, amelynek a `port` kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*Port-érték*> | Egész szám | A `port` megadott URI-azonosító értéke. Ha `port` nem ad meg értéket, a protokoll alapértelmezett portját küldje vissza. |
 ||||
@@ -4570,12 +4570,12 @@ uriPort('https://www.localhost:8080')
 uriQuery('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI, amelynek a `query` kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*lekérdezés – érték*> | Sztring | A `query` megadott URI-azonosító értéke |
 ||||
@@ -4600,12 +4600,12 @@ uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 uriScheme('<uri>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*URI*> | Igen | Sztring | Az URI, amelynek a `scheme` kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*séma – érték*> | Sztring | A `scheme` megadott URI-azonosító értéke |
 ||||
@@ -4633,12 +4633,12 @@ utcNow('<format>')
 A <*format*> paraméterrel eltérő formátumot is megadhat.
 
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*formátumban*> | Nem | Sztring | [Egyetlen formátum](/dotnet/standard/base-types/standard-date-and-time-format-strings) megadása vagy [egyéni formázási minta](/dotnet/standard/base-types/custom-date-and-time-format-strings). Az időbélyeg alapértelmezett formátuma az ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (éééé-hh-NNTóó: PP: mm. fffffffk formátumban), amely megfelel az [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) -nek, és megőrzi az időzóna-információkat. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*aktuális – timestamp*> | Sztring | Az aktuális dátum és idő |
 ||||
@@ -4675,12 +4675,12 @@ Egy megadott változó értékét adja vissza.
 variables('<variableName>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*variableName*> | Igen | Sztring | Annak a változónak a neve, amelynek a kívánt értéke |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*változó – érték*> | Bármelyik | A megadott változó értéke |
 ||||
@@ -4706,7 +4706,7 @@ A munkafolyamat összes adatának visszaküldése a Futtatás ideje alatt.
 workflow().<property>
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*tulajdonság*> | Nem | Sztring | Annak a munkafolyamat-tulajdonságnak a neve, amelynek a kívánt értéke <p><p>Alapértelmezés szerint a munkafolyamat-objektumok a következő tulajdonságokkal rendelkeznek:,,,, `name` `type` `id` `location` `run` és `tags` . <p><p>– A `run` tulajdonság értéke egy JSON-objektum, amely a következő tulajdonságokat tartalmazza: `name` , `type` és `id` . <p><p>– A `tags` tulajdonság egy JSON-objektum, amely a [logikai alkalmazáshoz társított címkéket Azure Logic apps vagy a Power gyorsbüféban](../azure-resource-manager/management/tag-resources.md) , illetve a címkék értékeit tartalmazza. További információ az Azure-erőforrásokkal kapcsolatos címkékkel kapcsolatban: az Azure-beli [logikai szervezethez tartozó erőforrások, erőforráscsoportok és előfizetések címkézése](../azure-resource-manager/management/tag-resources.md). <p><p>**Megjegyzés**: alapértelmezés szerint a logikai alkalmazások nem rendelkeznek címkékkel, de az automatizálási folyamat rendelkezik a `flowDisplayName` és a `environmentName` címkével. |
 |||||
@@ -4735,12 +4735,12 @@ Egy JSON-objektumot tartalmazó sztring XML-verziójának visszaadása.
 xml('<value>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
 | <*érték*> | Igen | Sztring | Az átalakítandó JSON-objektumot tartalmazó karakterlánc <p>A JSON-objektumnak csak egy gyökérszintű tulajdonsággal kell rendelkeznie, amely nem lehet tömb. <br>Használja a fordított perjel karaktert ( \\ ) Escape-karakterként az idézőjelek (") számára. |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*XML-verzió*> | Objektum | A megadott karakterlánc-vagy JSON-objektumhoz tartozó kódolt XML |
 ||||
@@ -4793,13 +4793,13 @@ Az XML-t az XPath (XML-elérésiút) kifejezésnek megfelelő csomópontok vagy 
 xpath('<xml>', '<xpath>')
 ```
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 | --------- | -------- | ---- | ----------- |
-| <*XML*> | Yes | Bármelyik | Az XPath-kifejezés értékének megfelelő csomópontok vagy értékek keresésére szolgáló XML-karakterlánc |
-| <*XPath*> | Yes | Bármelyik | Az egyező XML-csomópontok vagy-értékek kereséséhez használt XPath-kifejezés |
+| <*XML*> | Igen | Bármelyik | Az XPath-kifejezés értékének megfelelő csomópontok vagy értékek keresésére szolgáló XML-karakterlánc |
+| <*XPath*> | Igen | Bármelyik | Az egyező XML-csomópontok vagy-értékek kereséséhez használt XPath-kifejezés |
 |||||
 
-| Visszatérési érték | Típus | Description |
+| Visszatérési érték | Típus | Leírás |
 | ------------ | ---- | ----------- |
 | <*XML – csomópont*> | XML | XML-csomópont, ha csak egyetlen csomópont felel meg a megadott XPath-kifejezésnek |
 | <*érték*> | Bármelyik | Egy XML-csomópont értéke, ha csak egyetlen érték egyezik a megadott XPath-kifejezéssel |

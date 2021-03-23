@@ -4,12 +4,12 @@ description: A HDInsight-fürtök által használt különféle magas rendelkez�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 93d2317c85f93ce8a22f2d434fbc081a88265a74
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945303"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863717"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Az Azure HDInsight által támogatott magas rendelkezésre állású szolgáltatások
 
@@ -34,7 +34,7 @@ Ez az infrastruktúra számos szolgáltatás-és szoftver-összetevőből áll, 
 - Slave magas rendelkezésre állási szolgáltatás
 - Fő magas rendelkezésre állási szolgáltatás
 
-![magas rendelkezésre állású infrastruktúra](./media/hdinsight-high-availability-components/high-availability-architecture.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/high-availability-architecture.png" alt-text="magas rendelkezésre állású infrastruktúra" border="false":::
 
 Vannak olyan magas rendelkezésre állású szolgáltatások is, amelyeket a nyílt forráskódú Apache megbízhatósági összetevői támogatnak. Ezek az összetevők a HDInsight-fürtökön is elérhetők:
 
@@ -91,7 +91,7 @@ A Master-ha-Service csak az aktív átjárócsomóponthoz fut, leállítja a HDI
 
 ### <a name="the-failover-process"></a>A feladatátvételi folyamat
 
-![feladatátvételi folyamat](./media/hdinsight-high-availability-components/failover-steps.png)
+:::image type="content" source="./media/hdinsight-high-availability-components/failover-steps.png" alt-text="feladatátvételi folyamat" border="false":::
 
 Az állapotfigyelő az egyes átjárócsomóponthoz, valamint a fő feladatátvételi vezérlővel együtt a Zookeeper kvórumnak küldött szívverési értesítések küldésére is képes. Ebben a forgatókönyvben a átjárócsomóponthoz egy HA szolgáltatásnak számít. Az állapotfigyelő ellenőrzi, hogy az egyes magas rendelkezésre állású szolgáltatások állapota Kifogástalan-e, és hogy készen áll-e a részvételre a vezető választása során. Ha igen, akkor ez a átjárócsomóponthoz fog versenyezni a választásban. Ha nem, akkor kilép a választásból, amíg újra nem válik.
 

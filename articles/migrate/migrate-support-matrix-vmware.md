@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 943223ee99838b2b6d6de7eecb3c3b8c06d3562c
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 520aedd9dbb618788107bc83c5d72ad237acea22
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773589"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870738"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
-Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi a VMware-környezetben futó kiszolgálók felderítésére és értékelésére az Azure-ba való áttelepítéshez a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool használatával. A kiszolgálók értékeléséhez létre kell hoznia egy projektet, amely hozzáadja a Azure Migrate: Discovery and Assessment eszközt a projekthez. Az eszköz hozzáadása után üzembe helyezi a Azure Migrate berendezést. A készülék folyamatosan felfedi a helyszíni kiszolgálókat, és konfigurációs és teljesítménybeli metaadatokat küld az Azure-nak. A felderítés befejezése után a felderített kiszolgálókat csoportokba gyűjtheti, és értékelést futtathat egy csoport számára.
+Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi a VMware-környezetben futó kiszolgálók felderítésére és értékelésére az Azure-ba való áttelepítéshez a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool használatával. A kiszolgálók értékeléséhez létre kell hoznia egy projektet, amely hozzáadja a Azure Migrate: Discovery and Assessment eszközt a projekthez. Az eszköz hozzáadása után üzembe helyezi a Azure Migrate berendezést. A készülék folyamatosan felfedi a helyszíni kiszolgálókat, és konfigurációs és teljesítménybeli metaadatokat küld az Azure-nak. A felderítés befejezése után a felderített kiszolgálókat csoportokba gyűjtheti, és értékelést futtathat egy csoport számára.
 
 Ha a VMware-kiszolgálókat át szeretné telepíteni az Azure-ba, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-vmware-migration.md).
 
@@ -25,7 +25,7 @@ Ha a VMware-kiszolgálókat át szeretné telepíteni az Azure-ba, tekintse át 
 
 **Követelmény** | **Részletek**
 --- | ---
-**Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat.<br/><br/> A VMware-környezetből akár 50 000-kiszolgálót is felderítheti és kivizsgálhat egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects). Egy projekt tartalmazhatja a fizikai kiszolgálókat és a Hyper-V környezetből származó kiszolgálókat is, az értékelési korlátokig.
+**Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat.<br/><br/> A VMware-környezetből akár 50 000-kiszolgálót is felderítheti és kivizsgálhat egyetlen [projektben](migrate-support-matrix.md#project). Egy projekt tartalmazhatja a fizikai kiszolgálókat és a Hyper-V környezetből származó kiszolgálókat is, az értékelési korlátokig.
 **Felderítés** | Az Azure Migrate készülék legfeljebb 10 000 kiszolgálót tud felderíteni egy vCenter Server.
 **Értékelés** | Egyetlen csoportban akár 35 000-kiszolgálót is hozzáadhat.<br/><br/> Egyetlen értékeléssel akár 35 000-kiszolgálót is megvizsgálhat.
 
@@ -78,9 +78,6 @@ A kiszolgálók felderítése mellett Azure Migrate: a felderítés és értéke
 **Port-hozzáférés** | Az Azure Migrate készüléknek képesnek kell lennie csatlakozni az 443-es TCP-porthoz az ESXi-gazdagépeken futtató kiszolgálókon, amelyeken az alkalmazások felderítését el szeretné végezni. A vCenter Server ESXi-gazdagép kapcsolatát adja vissza, hogy letöltse a szoftver leltárának részleteit tartalmazó fájlt.
 
 ## <a name="requirements-for-discovery-of-sql-server-instances-and-databases"></a>SQL Server példányok és adatbázisok felderítésére vonatkozó követelmények
-
-> [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 Az [alkalmazás-felderítés](how-to-discover-applications.md) azonosítja a SQL Server példányokat. Ezen információk alapján a készülék a Windows-hitelesítéssel SQL Server vagy a készüléken megadott hitelesítő adatokkal kísérli meg a kapcsolódást a megfelelő SQL Server példányokhoz. A csatlakozás után a készülék összegyűjti SQL Server példányok és adatbázisok konfigurációs és teljesítményadatokat. A SQL Server konfigurációs adatai 24 óránként frissülnek, és a teljesítményadatokat 30 másodpercenként rögzíti a rendszer.
 

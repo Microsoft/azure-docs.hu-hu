@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 582077c46f5fc7176b457cf0d392af48fbe7d40b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 38846bbe717912092ccfe2b236b717770b79302f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100369339"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867253"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az Azure-beli helyek közötti VPN-kapcsolat időnként megszakad
 
@@ -56,9 +56,7 @@ A házirend-alapú virtuális hálózati átjáró 200 alhálózati biztonsági 
 
 ### <a name="step-6-check-on-premises-vpn-device-external-interface-address"></a>6. lépés a helyszíni VPN-eszköz külső csatolójának keresése
 
-- Ha a VPN-eszköz internet felé irányuló IP-címe az Azure-beli **helyi hálózati átjáró** definíciójában szerepel, időnként leválaszthatja a kapcsolatot.
-- Az eszköz külső felületének közvetlenül az interneten kell lennie. Nem lehet hálózati címfordítás (NAT) vagy tűzfal az Internet és az eszköz között.
--  Ha úgy konfigurálja a tűzfal-fürtözést, hogy virtuális IP-címmel rendelkezzen, meg kell szüntetnie a fürtöt, és a VPN-berendezést közvetlenül egy olyan nyilvános interfészre kell tenni, amelyhez az átjáró képes.
+Ha a VPN-eszköz internet felé irányuló IP-címe az Azure-beli **helyi hálózati átjáró** definíciójában szerepel, időnként leválaszthatja a kapcsolatot.
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>7. lépés azt vizsgálja, hogy a helyszíni VPN-eszközön engedélyezve van-e a megfelelő továbbítási titoktartás
 

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773368"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865587"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -141,7 +141,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ```
  
 
-4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault a megfelelő engedélyekhez, hogy a Cloud Services (bővített támogatás) erőforrás beolvassa a titkos kulcsként tárolt tanúsítványt Key Vault. A Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
+4. Adja hozzá a Key Vault-referenciát az  `OsProfile`   ARM-sablon szakaszában. A Key Vault a Cloud Serviceshoz társított tanúsítványok (kiterjesztett támogatás) tárolására szolgál. Adja hozzá a tanúsítványokat a Key Vaulthoz, majd hivatkozzon a tanúsítvány ujjlenyomatai megfelelnek (. cscfg). Emellett engedélyeznie kell Key Vault "hozzáférési szabályzatokat" az "Azure Virtual Machines for Deployment" (a portálon), hogy a Cloud Services (bővített támogatás) erőforrás lekérheti a titkos kulcsként tárolt tanúsítványt Key Vault. A Key vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata Cloud Services használatával (kiterjesztett támogatás)](certificates-and-key-vault.md).
      
     ```json
     "osProfile": { 

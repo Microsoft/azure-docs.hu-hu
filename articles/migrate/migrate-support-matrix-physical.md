@@ -1,21 +1,21 @@
 ---
-title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
-description: Ismerje meg a fizikai kiszolgálók értékelésének támogatását Azure Migrate felderítéssel és értékeléssel
+title: A fizikai felderítés és értékelés támogatása a Azure Migrateban
+description: Ismerje meg a fizikai felderítés és értékelés támogatását Azure Migrate felderítéssel és értékeléssel
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 18176c5a79eda080c72b387781e6c7c9b0c66673
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b62160861f686c6ea5a8ebfd03d904da2ad5d80a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773198"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869446"
 ---
 # <a name="support-matrix-for-physical-server-discovery-and-assessment"></a>A fizikai kiszolgáló felderítésének és értékelésének támogatási mátrixa 
 
-Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi, ha a fizikai kiszolgálókat az Azure-ba való áttelepítésre értékeli, a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool használatával. Ha fizikai kiszolgálókat szeretne áttelepíteni az Azure-ba, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-physical-migration.md).
+Ez a cikk az előfeltételeket és a támogatási követelményeket összegzi, ha a fizikai kiszolgálókat az Azure-ba való áttelepítésre értékeli, a [Azure Migrate: Discovery and Assessment](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) Tool használatával. Ha fizikai kiszolgálókat szeretne áttelepíteni az Azure-ba, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-physical-migration.md).
 
 A fizikai kiszolgálók értékeléséhez létre kell hoznia egy projektet, és hozzá kell adnia a Azure Migrate: Discovery and Assessment eszközt a projekthez. Az eszköz hozzáadása után üzembe helyezi a [Azure Migrate berendezést](migrate-appliance.md). A készülék folyamatosan felfedi a helyszíni kiszolgálókat, és a kiszolgálók metaadatait és teljesítményadatait az Azure-ba küldi. A felderítés befejezése után a felderített kiszolgálókat csoportokba gyűjtheti, és értékelést futtathat egy csoport számára.
 
@@ -23,7 +23,7 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy projektet, és 
 
 **Támogatás** | **Részletek**
 --- | ---
-**Értékelési korlátok** | Egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 fizikai kiszolgálót is felderítheti és felbecsülheti.
+**Értékelési korlátok** | Egyetlen [projektben](migrate-support-matrix.md#project)akár 35 000 fizikai kiszolgálót is felderítheti és felbecsülheti.
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A fizikai kiszolgálókon kívül a projektek a VMware-en és a Hyper-V-n lévő kiszolgálókat is magukban foglalhatják, az egyes eszközökre vonatkozó értékelési korlátokig.
 **Felderítés** | A Azure Migrate berendezés akár 1000 fizikai kiszolgálót is képes észlelni.
 **Értékelés** | Egyetlen csoportban akár 35 000-kiszolgálót is hozzáadhat.<br/><br/> Egyetlen értékeléssel akár 35 000-kiszolgálót is megvizsgálhat.
@@ -84,4 +84,4 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít az Azur
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Felkészülés a fizikai kiszolgáló értékelésére](./tutorial-discover-physical.md).
+[Felkészülés a fizikai felderítésre és értékelésre](./tutorial-discover-physical.md).

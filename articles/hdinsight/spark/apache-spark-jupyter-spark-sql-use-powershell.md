@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7a04d65d5032e37433fb61c73e5f64fe89bb2d2c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d4a8df4cb6ba47b7772e2ab3b3247d36622dcb6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930498"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865961"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Rövid útmutató: Apache Spark-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
@@ -139,19 +139,19 @@ A [Jupyter notebook](https://jupyter.org/) egy interaktív notebook-környezet, 
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a **HDInsight-fürtök** elemet.
    
-   ![A képernyőképen látható a H D betekintés Azure Portal keresése.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-search-hdinsight-cluster.png" alt-text="A képernyőképen látható a H D betekintés Azure Portal keresése." border="true":::
    
 1. A listából válassza ki a létrehozott fürtöt.
    
-   ![A képernyőképen a H D Insight-fürtöket láthatja a létrehozott fürttel.](./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png)
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/azure-portal-open-hdinsight-cluster.png" alt-text="A képernyőképen a H D Insight-fürtöket láthatja a létrehozott fürttel." border="true":::
    
 1. A fürt **áttekintése** lapon válassza a **fürt irányítópultok** lehetőséget, majd válassza a **Jupyter notebook** lehetőséget. Ha a rendszer kéri, adja meg a fürthöz tartozó bejelentkezési hitelesítő adatokat.
 
-   ![Az interaktív Spark SQL-lekérdezés futtatásához Jupyter Notebook megnyitása](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezés futtatásához Jupyter Notebook megnyitása")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png " alt-text="Az interaktív Spark SQL-lekérdezés futtatásához Jupyter Notebook megnyitása" border="true":::
 
 1.   >  Jegyzetfüzet létrehozásához válassza az új **PySpark** lehetőséget.
 
-   ![Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
+   :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához" border="true":::
 
    Az új notebook létrejött, és Untitled(Untitled.pynb) néven nyílt meg.
 
@@ -161,7 +161,7 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
 1. Ellenőrizze, hogy a kernel készen áll-e. A kernel akkor áll készen, ha a neve mellett a notebookban egy üres kör látható. A teli kör azt jelenti, hogy a kernel foglalt.
 
-    ![kernel állapota](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "kernel állapota")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png " alt-text="kernel állapota" border="true":::
 
     A notebook első indításakor a kernel a háttérben elvégez néhány feladatot. Várja meg, hogy a kernel elkészüljön. 
 1. Illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt annak futtatásához. A parancs felsorolja a fürtön található Hive-táblákat:
@@ -173,7 +173,7 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
     Ha Jupyter Notebookt használ a Spark-fürttel a HDInsight-ben, olyan beállításkészletet kap, amelynek használatával a `sqlContext` Spark SQL segítségével futtathat kaptár-lekérdezéseket. A `%%sql` megadja a Jupyter notebook számára, hogy az előre beállított `sqlContext` elemet használja a Hive-lekérdezés futtatásához. A lekérdezés lekérdezi az első 10 sort egy Hive-táblából (**hivesampletable**), amely alapértelmezés szerint minden HDInsight-fürtben megtalálható. Az eredmények lekérdezése körülbelül 30 másodpercet vesz igénybe. A kimenet a következőképpen fog kinézni:
 
-    ![Apache Hive lekérdezés a Spark on HDInsight](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png "Kaptár-lekérdezés a HDInsight Sparkban")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query.png " alt-text="Apache Hive lekérdezés a Spark on HDInsight" border="true":::
 
     Minden alkalommal, amikor a Jupyterben lekérdezést futtat, a webböngésző ablakának címsorában **(Foglalt)** állapot jelenik meg a notebook neve mellett. A jobb felső sarokban lévő **PySpark** felirat mellett ekkor egy teli kör is megjelenik.
 
@@ -186,7 +186,7 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
     A képernyő frissül, és megjeleníti a lekérdezés kimenetét.
 
-    ![Struktúra-lekérdezés kimenete a HDInsight-ben](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png "Struktúra-lekérdezés kimenete a HDInsight-ben")
+    :::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-spark-get-started-hive-query-output.png " alt-text="Struktúra-lekérdezés kimenete a HDInsight-ben" border="true":::
 
 1. A notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. A notebook leállítása felszabadítja a fürt erőforrásait.
 
@@ -196,7 +196,7 @@ A HDInsight az Azure Storage vagy az Azure Data Lake Storage tárhelyein tárolj
 
 Lépjen vissza az Azure Portalra és válassza a **Törlés** lehetőséget.
 
-![HDInsight-fürt törlése Azure Portal](./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+:::image type="content" source="./media/apache-spark-jupyter-spark-sql-use-powershell/hdinsight-azure-portal-delete-cluster.png " alt-text="HDInsight-fürt törlése Azure Portal" border="true":::
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 

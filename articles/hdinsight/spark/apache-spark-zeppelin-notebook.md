@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 969dda4b57deb35d745cf7c7d263b78e6fe577d2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98928473"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867542"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében
 
@@ -32,13 +32,13 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
 2. Hozzon létre új notebookot. A fejléc panelen navigáljon a **Jegyzetfüzet**  >  **új Megjegyzés létrehozása** elemére.
 
-    ![Új Zeppelin-jegyzetfüzet létrehozása](./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png "Új Zeppelin-jegyzetfüzet létrehozása")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-create-zeppelin-notebook.png " alt-text="Új Zeppelin-jegyzetfüzet létrehozása" border="true":::
 
     Adja meg a jegyzetfüzet nevét, majd válassza a **Megjegyzés létrehozása** lehetőséget.
 
 3. Győződjön meg arról, hogy a jegyzetfüzet fejléce csatlakoztatott állapotot mutat. Ezt a jobb felső sarokban található zöld pont jelöli.
 
-    ![Zeppelin notebook állapota](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png "Zeppelin notebook állapota")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-connected.png " alt-text="Zeppelin notebook állapota" border="true":::
 
 4. Töltse be a mintaadatokat egy ideiglenes táblába. Amikor létrehoz egy Spark-fürtöt a HDInsight-ben, a rendszer átmásolja a minta adatfájlt `hvac.csv` a társított Storage-fiókba `\HdiSamples\SensorSampleData\hvac` .
 
@@ -70,7 +70,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
     Nyomja le a **SHIFT + ENTER** billentyűkombinációt, vagy kattintson a bekezdés **Lejátszás** gombjára a kódrészlet futtatásához. A bekezdés jobb oldali sarkában lévő állapotnak a kész, FÜGGŐben lévő, befejezett értékűre kell mutatnia. A kimenet az azonos bekezdés alján jelenik meg. A képernyőkép a következő képhez hasonlít:
 
-    ![Ideiglenes tábla létrehozása nyers adatokból](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Ideiglenes tábla létrehozása nyers adatokból")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png " alt-text="Ideiglenes tábla létrehozása nyers adatokból" border="true":::
 
     Az egyes bekezdésekhez címet is megadhat. A bekezdés jobb oldali sarkában válassza a **Beállítások** ikont (lánckerék), majd válassza a **title (cím megjelenítése**) lehetőséget.  
 
@@ -88,7 +88,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
 6. Válassza a **oszlopdiagram** ikont a Megjelenítés módosításához.  a **Beállítások**, amelyek a **oszlopdiagram** kiválasztása után jelennek meg, lehetővé teszi a **kulcsok** és **értékek** kiválasztását.  Az alábbi képernyőfelvételen a kimenet látható.
 
-    ![Spark SQL-utasítás futtatása a notebook1 használatával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Spark SQL-utasítás futtatása a notebook1 használatával")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png " alt-text="Spark SQL-utasítás futtatása a notebook1 használatával" border="true":::
 
 7. A Spark SQL-utasításokat a lekérdezésben szereplő változók használatával is futtathatja. A következő kódrészlet bemutatja, hogyan definiálhat egy változót a lekérdezésben a lekérdezéssel megadható `Temp` lehetséges értékekkel. A lekérdezés első futtatásakor a legördülő menü automatikusan kitöltődik a változóhoz megadott értékekkel.
 
@@ -106,7 +106,7 @@ A HDInsight Spark-fürtök közé tartoznak az [Apache Zeppelin](https://zeppeli
 
      Az alábbi képernyőfelvételen a kimenet látható.
 
-     ![Spark SQL-utasítás futtatása a notebook2 használatával](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Spark SQL-utasítás futtatása a notebook2 használatával")
+     :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png " alt-text="Spark SQL-utasítás futtatása a notebook2 használatával" border="true":::
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>A Hogyan külső csomagokat használ a jegyzetfüzettel?
 
@@ -116,15 +116,15 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
 1. Nyissa meg a tolmács beállításait. A jobb felső sarokban válassza ki a bejelentkezett felhasználó nevét, majd válassza a **tolmács** lehetőséget.
 
-    ![Tolmács elindítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Struktúra kimenete")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Tolmács elindítása" border="true":::
 
 2. Görgessen a **livy2**, majd válassza a **Szerkesztés** lehetőséget.
 
-    ![Tolmács beállításai1 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "Tolmács beállításai1 módosítása")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png " alt-text="Tolmács beállításai1 módosítása" border="true":::
 
 3. Navigáljon a kulcshoz `livy.spark.jars.packages` , és állítsa be az értékét a következő formátumban: `group:id:version` . Ha tehát a [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) csomagot szeretné használni, a kulcs értékét a értékre kell állítania `com.databricks:spark-csv_2.10:1.4.0` .
 
-    ![Tolmács settings2 módosítása](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "Tolmács settings2 módosítása")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png " alt-text="Tolmács settings2 módosítása" border="true":::
 
     Válassza a **Mentés** lehetőséget, majd kattintson az **OK gombra** a Livy-értelmező újraindításához.
 
@@ -134,7 +134,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
     b. A tárházból Gyűjtse össze a **GroupID**, a **ArtifactId** és a **verzió** értékeit.
 
-    ![Külső csomagok használata Jupyter Notebook](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Külső csomagok használata Jupyter Notebook")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png " alt-text="Külső csomagok használata Jupyter Notebook" border="true":::
 
     c. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 
@@ -146,7 +146,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a [Spark-CSV-](https://searc
 
 A Zeppelin jegyzetfüzetek a fürt átjárócsomópontokkal lesznek mentve. Tehát ha törli a fürtöt, a jegyzetfüzetek is törlődnek. Ha szeretné megőrizni a jegyzetfüzeteket a későbbi használat érdekében más fürtökön, exportálnia kell azokat a feladatok futtatása után. Jegyzetfüzet exportálásához válassza ki az **Exportálás** ikont az alábbi képen látható módon.
 
-![Jegyzetfüzet letöltése](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "A jegyzetfüzet letöltése")
+:::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png " alt-text="Jegyzetfüzet letöltése" border="true":::
 
 Ez a művelet JSON-fájlként menti a jegyzetfüzetet a letöltési helyen.
 
@@ -178,11 +178,11 @@ Ilyen esetben a következő lépéseket kell elvégeznie, mielőtt elkezdené a 
 
 1. Indítsa újra a Livy-tolmácsot a Zeppelin jegyzetfüzetből. Ehhez nyissa meg a tolmács beállításait úgy, hogy kiválasztja a bejelentkezett felhasználó nevét a jobb felső sarokban, majd kiválasztja a **tolmács** elemet.
 
-    ![Tolmács elindítása](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Struktúra kimenete")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png " alt-text="Tolmács elindítása" border="true":::
 
 2. Görgessen a **livy2**, majd válassza az **Újraindítás** lehetőséget.
 
-    ![A Livy-értelmező újraindítása](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "A Zeppelin-tolmács újraindítása")
+    :::image type="content" source="./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png " alt-text="A Livy-értelmező újraindítása" border="true":::
 
 3. Kód cellájának futtatása meglévő Zeppelin-jegyzetfüzetből. Ez a kód egy új Livy-munkamenetet hoz létre a HDInsight-fürtben.
 

@@ -4,12 +4,12 @@ description: Ismerje meg az Azure HDInsight IO cache-t, és hogyan használhatja
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/23/2019
-ms.openlocfilehash: 32f0756e59f81ad2c5d155581feed8c4fef09808
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9df585c102e2c7307e949e38b6b69147372c38dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940137"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866301"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával
 
@@ -37,7 +37,7 @@ Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van 
 
 1. Válassza a **műveletek** (**szolgáltatási műveletek** a HDI 3,6-ben) és az **aktiválás** lehetőséget.
 
-    ![Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben](./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png "Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-enable-iocache.png " alt-text="Az i/o-gyorsítótár szolgáltatás engedélyezése a Ambari-ben" border="true":::
 
 1. Erősítse meg az összes érintett szolgáltatás újraindítását a fürtön.
 
@@ -52,7 +52,7 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Válassza ki a **konfigurációkat** és a **speciális** lapokat.
 
-    ![HDFS speciális konfigurációjának szerkesztése](./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png "HDFS speciális konfigurációjának szerkesztése")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-hdfs-service-configs-advanced.png " alt-text="HDFS speciális konfigurációjának szerkesztése" border="true":::
 
 1. Görgessen le, és bontsa ki az **Egyéni Core-site** terület elemet.
 
@@ -60,13 +60,13 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Módosítsa az értéket a mezőben.
 
-    ![I/o-gyorsítótár teljes százalékos értékének szerkesztése](./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png "I/o-gyorsítótár teljes százalékos értékének szerkesztése")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-cache-data-fullness-percentage-property.png " alt-text="I/o-gyorsítótár teljes százalékos értékének szerkesztése" border="true":::
 
 1. Kattintson a jobb felső sarokban található **Mentés** gombra.
 
 1. Válassza az **Újraindítási**  >  **újraindítás minden érintett** elemet.
 
-    ![Az Apache Ambari újraindítja az összes érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
+    :::image type="content" source="./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png " alt-text="Az Apache Ambari újraindítja az összes érintett" border="true":::
 
 1. Válassza **az összes újraindításának megerősítése** lehetőséget.
 

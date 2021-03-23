@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: d2c7c4feca32544a0e15e876c7207c49dee39341
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3cbeb1dbd207eec7f58465a24f33808bf2e7c7c0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940523"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867610"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Oktatóanyag: Scala Maven-alkalmazás létrehozása a HDInsight-hez Apache Spark a IntelliJ használatával
 
@@ -46,11 +46,11 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 2. Az üdvözlőképernyőn kattintson a plugins **konfigurálása** elemre  >   a **plugins** ablak megnyitásához.
 
-    !["IntelliJ IDEA – a Scala plugin" engedélyezése](./media/apache-spark-create-standalone-application/enable-scala-plugin1.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/enable-scala-plugin1.png" alt-text="&quot;IntelliJ IDEA – a Scala plugin&quot; engedélyezése" border="true":::
 
 3. Válassza a **telepítés** lehetőséget az új ablakban Kiemelt Scala beépülő modulhoz.  
 
-    ![' IntelliJ IDEA – a Scala plugin "telepítése](./media/apache-spark-create-standalone-application/install-scala-plugin.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/install-scala-plugin.png" alt-text="' IntelliJ IDEA – a Scala plugin &quot;telepítése" border="true":::
 
 4. A beépülő modul sikeres telepítését követően újra kell indítania az IDE-t.
 
@@ -66,7 +66,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
       * **Maven** a Scala projekt-létrehozás varázsló támogatásához.
       * A **SBT** kezelése és a Scala-projekt kiépítése.
 
-   ![IntelliJ az új projekt párbeszédpanel](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
+   :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png" alt-text="IntelliJ az új projekt párbeszédpanel" border="true":::
 
 5. Kattintson a **Tovább** gombra.
 
@@ -79,7 +79,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
   	|Projekt SDK| Ez a mező üresen jelenik meg a gondolat első használatakor.  Válassza az **új...** lehetőséget, és navigáljon a JDK-hez.|
   	|Spark-verzió|A létrehozás varázsló a Spark SDK és a Scala SDK megfelelő verzióját integrálja. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a **Spark 2.3.0 (Scala 2.11.8)** használja.|
 
-    ![IntelliJ ÖTLETE a Spark SDK kiválasztásához](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-scala-new-project.png" alt-text="IntelliJ ÖTLETE a Spark SDK kiválasztásához" border="true":::
 
 7. Válassza a **Befejezés** gombot.
 
@@ -95,7 +95,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 5. Az archetípusok listájából válassza a elemet **`org.scala-tools.archetypes:scala-archetype-simple`** . Ez az archetípus létrehozza a megfelelő címtár-struktúrát, és letölti a szükséges alapértelmezett függőségeket a Scala programba való íráshoz.
 
-    ![A képernyőképen a kiválasztott archetípus látható az új projekt ablakban.](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-project-create-maven.png" alt-text="A képernyőképen a kiválasztott archetípus látható az új projekt ablakban." border="true":::
 
 6. Kattintson a **Tovább** gombra.
 
@@ -104,7 +104,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
     - **GroupID:** com. microsoft. Spark. példa
     - **ArtifactId:** SparkSimpleApp
 
-    ![Képernyőfelvétel: az új projekt ablakban látható az összetevők koordinátái lehetőség.](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png" alt-text="Képernyőfelvétel: az új projekt ablakban látható az összetevők koordinátái lehetőség." border="true":::
 
 8. Kattintson a **Tovább** gombra.
 
@@ -124,7 +124,7 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
 16. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.  Ezután visszakerül a projekt ablakába.
 
-    ![A Maven konfigurálása automatikus letöltésekhez](./media/apache-spark-create-standalone-application/configure-maven-download.png)
+    :::image type="content" source="./media/apache-spark-create-standalone-application/configure-maven-download.png" alt-text="A Maven konfigurálása automatikus letöltésekhez" border="true":::
 
 17. A bal oldali panelen navigáljon a   >  **fő**  >  **Scala**  >  **com. microsoft. Spark. example** parancsra, majd kattintson duplán  az alkalmazás elemre az app. Scala megnyitásához.
 
@@ -182,27 +182,27 @@ A Scala beépülő modul telepítéséhez hajtsa végre a következő lépéseke
 
     2. A **projekt szerkezete** ablakban navigáljon   >  **a plusz szimbólum +**  >  **jar**  >  **elemhez a függőségekkel rendelkező moduloknál..**.
 
-        !["IntelliJ IDEA Project Structure hozzáadása jar"](./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar1.png" alt-text="&quot;IntelliJ IDEA Project Structure hozzáadása jar&quot;" border="true":::
 
     3. A **jar létrehozása a modulokból** ablakban válassza ki a mappa ikont a **Főosztály** szövegmezőben.
 
     4. A **Főosztály kiválasztása** ablakban válassza ki az alapértelmezés szerint megjelenő osztályt, majd kattintson az **OK gombra**.
 
-        !["A IntelliJ IDEA projekt struktúrájának kiválasztása"](./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar2.png" alt-text="&quot;A IntelliJ IDEA projekt struktúrájának kiválasztása&quot;" border="true":::
 
     5. A **jar létrehozása a modulokból** ablakban győződjön meg arról, **hogy a kibontás a cél jar** beállítás be van jelölve, majd kattintson **az OK gombra**.  Ez a beállítás egyetlen JAR-fájlt hoz létre az összes függőséggel együtt.
 
-        ![IntelliJ IDEA Project Structure jar a modulból](./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-create-jar3.png" alt-text="IntelliJ IDEA Project Structure jar a modulból" border="true":::
 
     6. A **kimeneti elrendezés** lap felsorolja a Maven-projekt részét képező összes edényt. Itt kijelölheti és törölheti azokat, amelyek nincsenek közvetlen függőségi viszonyban a Scala-alkalmazással. Az alkalmazáshoz itt hozza létre az összeset, de az utolsót (**SparkSimpleApp fordítási kimenet**). Válassza ki a törölni kívánt tégelyeket, majd válassza ki a negatív szimbólumot **-** .
 
-        !["IntelliJ IDEA Project Structure delete output"](./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-delete-output-jars.png" alt-text="&quot;IntelliJ IDEA Project Structure delete output&quot;" border="true":::
 
         Győződjön meg arról, hogy be van jelölve a **Belefoglalás a Project buildbe** jelölőnégyzet. Ezzel a beállítással biztosíthatja, hogy a rendszer minden alkalommal létrehozza a jar-t, amikor a projekt felépítése vagy frissítése megtörtént. Válassza az **alkalmaz** , majd **az OK gombot**.
 
     7. A jar létrehozásához navigáljon a **Build-összetevők** kiépítéséhez  >    >  . A projekt körülbelül 30 másodperc múlva lesz lefordítva.  A kimeneti JAR-fájl az **\out\artifacts** mappában jön létre.
 
-        ![IntelliJ IDEA Project-összetevő kimenete](./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png)
+        :::image type="content" source="./media/apache-spark-create-standalone-application/hdi-artifact-output-jar.png" alt-text="IntelliJ IDEA Project-összetevő kimenete" border="true":::
 
 ## <a name="run-the-application-on-the-apache-spark-cluster"></a>Az alkalmazás futtatása a Apache Spark-fürtön
 
@@ -226,7 +226,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott fürtöt
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen** lehetőséget.
 
-!["Az Azure Portal HDInsight törlése"](./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png " alt-text="&quot;A HDInsight Azure Portalon törölje" border="true":::a (z)" törlése-fürt "szegélyét =" true ":::
 
 ## <a name="next-step"></a>Következő lépés
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: c2fce6d4ee95a56cc087d50184fcd69ac113620f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 633f01d813fe4e6c56d88052cbc7440c43f350dc
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940838"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870500"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében
 
@@ -34,7 +34,7 @@ A leghasznosabb tükrözési beállítás a vész-helyreállításhoz a Kafka-f�
 
 A következő ábra a tükrözési folyamatot mutatja be, valamint azt, hogy a kommunikáció hogyan folyik a fürtök között:
 
-![A tükrözési folyamat ábrája](./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png)
+:::image type="content" source="./media/apache-kafka-mirroring/kafka-mirroring-vnets2.png" alt-text="A tükrözési folyamat ábrája" border="false":::
 
 Az elsődleges és a másodlagos fürtök eltérőek lehetnek a csomópontok és a partíciók számában, és a témakörökben lévő eltolások eltérőek is. A tükrözéssel megőrzi a particionáláshoz használt kulcs értékét, így a rögzítési sorrendet a kulcs alapján kell megőrizni.
 
@@ -84,14 +84,14 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
     1. Válassza a **Hozzáadás** lehetőséget.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
-        ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/hdi-add-vnet-peering.png" alt-text="HDInsight Kafka vnet-társítás hozzáadása" border="true":::
 
 ### <a name="configure-ip-advertising"></a>IP-hirdetés konfigurálása
 
 Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett a Broker IP-címeivel kapcsolódjon.
 
 1. Nyissa meg az elsődleges fürt Ambari-irányítópultját: `https://PRIMARYCLUSTERNAME.azurehdinsight.net` .
-1. Válassza a **szolgáltatások**  >  **Kafka** lehetőséget. CliSelectck a **konfigurációk** lapon.
+1. Válassza a **szolgáltatások**  >  **Kafka** lehetőséget. Válassza a **konfigurációk** fület.
 1. Adja hozzá a következő konfigurációs sorokat az alsó **Kafka-env sablon** szakaszhoz. Kattintson a **Mentés** gombra.
 
     ```
@@ -107,7 +107,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 1. Kattintson az **OK gombra** a **konfiguráció módosításainak mentése** elemre.
 1.   >  Az újraindítás **szükséges** értesítésnél válassza az **összes érintett újraindítás újraindítása** elemet. Válassza **az összes újraindításának megerősítése** lehetőséget.
 
-    ![Az Apache Ambari újraindítása minden érintett](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/ambari-restart-notification.png" alt-text="Az Apache Ambari újraindítása minden érintett" border="true":::
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>A Kafka beállítása az összes hálózati adapter figyelésére.
     
@@ -120,7 +120,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
 1. Válassza a **gazdagépek** lehetőséget a Ambari irányítópultján.
 1. Jegyezze fel a közvetítők és a Zookeeperek IP-címeit. A közvetítő csomópontok az állomásnév első két betűje szerint **lefelé** , a Zookeeper-csomópontok pedig az **ZK** első két betűjét jelölik.
 
-    ![Apache Ambari-nézet csomópontjának IP-címei](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+    :::image type="content" source="./media/apache-kafka-mirroring/view-node-ip-addresses2.png" alt-text="Apache Ambari-nézet csomópontjának IP-címei" border="true":::
 
 1. Ismételje meg az előző három lépést a második, **Kafka-másodlagos fürthöz**: konfigurálja az IP-hirdetéseket, állítson be figyelőket, és jegyezze fel a közvetítő és a Zookeeper IP-címét.
 
@@ -256,7 +256,7 @@ Konfigurálja az IP-hirdetést úgy, hogy az ügyfél a tartománynevek helyett 
         1. Módosítsa az értéket True értékre `auto.create.topics.enable` , majd válassza a __Mentés__ lehetőséget. Vegyen fel egy megjegyzést, majd válassza a __Mentés__ újra lehetőséget.
         1. Válassza ki a __Kafka__ szolgáltatást, válassza az __Újraindítás__ lehetőséget, majd kattintson az __összes érintett újraindítása__ elemre. Ha a rendszer kéri, válassza __az összes újraindításának megerősítése__ lehetőséget.
 
-        ![a Kafka automatikus létrehozási témaköreinek engedélyezése](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        :::image type="content" source="./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png" alt-text="a Kafka automatikus létrehozási témaköreinek engedélyezése" border="true":::
 
 ## <a name="start-mirrormaker"></a>MirrorMaker elindítása
 

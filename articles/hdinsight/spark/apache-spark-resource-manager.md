@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/12/2021
-ms.openlocfilehash: ff7cfe8ad09201df20db89e14f8c175e678e5107
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7027e4af9c11db628990d42430c6877340de3534
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929803"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868443"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight
 
@@ -28,7 +28,7 @@ A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó
 
 2. A **fürt irányítópultok** területen válassza a **fonal** lehetőséget. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
 
-    ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png" alt-text="A fonal felhasználói felületének indítása" border="true":::
 
    > [!TIP]  
    > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon az  >  Active  >    >  **Resource Manager felhasználói felületén** található fonalak gyors hivatkozásaihoz.
@@ -43,15 +43,15 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
 1. A Ambari felhasználói felületén navigáljon a **Spark2**  >  **configs**  >  **Egyéni Spark2 – Alapértelmezések** elemre.
 
-    ![Paraméterek beállítása a Ambari Custom használatával](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Paraméterek beállítása a Ambari Custom használatával")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png " alt-text="Paraméterek beállítása a Ambari Custom használatával" border="true":::
 
 1. Az alapértelmezett értékek kiválóan alkalmasak arra, hogy négy Spark-alkalmazás párhuzamosan fusson a fürtön. Ezeket az értékeket a felhasználói felületen módosíthatja, ahogy az alábbi képernyőképen is látható:
 
-    ![Paraméterek beállítása a Ambari használatával](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Paraméterek beállítása a Ambari használatával")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png " alt-text="Paraméterek beállítása a Ambari használatával" border="true":::
 
 1. A konfigurációs módosítások mentéséhez kattintson a **Mentés** gombra. A lap tetején a rendszer felszólítja az összes érintett szolgáltatás újraindítására. Válassza az **Újraindítás** lehetőséget.
 
-    ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-services.png" alt-text="Szolgáltatások újraindítása" border="true":::
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook futó alkalmazás paramétereinek módosítása
 
@@ -93,11 +93,11 @@ A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalás�
 
 * A paraméterek frissítéséhez bontsa ki a **speciális spark2-takarékosság-sparkconf** kategóriát `spark.dynamicAllocation.maxExecutors` `spark.dynamicAllocation.minExecutors` .
 
-    ![A Spark takarékosság-kiszolgáló konfigurálása](./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png "A Spark takarékosság-kiszolgáló konfigurálása")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-advanced-thrift-sparkconf.png " alt-text="A Spark takarékosság-kiszolgáló konfigurálása" border="true":::
 
 * Bontsa ki az **Egyéni spark2-takarékosság-sparkconf** kategóriát a paraméterek frissítéséhez `spark.executor.cores` és `spark.executor.memory` .
 
-    ![A Spark takarékosság Server paraméter konfigurálása](./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png "A Spark takarékosság Server paraméter konfigurálása")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-custom-thrift-sparkconf.png " alt-text="A Spark takarékosság Server paraméter konfigurálása" border="true":::
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>A Spark takarékosság-kiszolgáló illesztőprogram-memóriájának módosítása
 
@@ -113,38 +113,38 @@ A Spark dinamikus kiosztása miatt a takarékossági kiszolgáló által felhasz
 
 2. A következő lapon válassza a **Spark2 takarékosság-kiszolgálók** lehetőséget.
 
-    ![A takarékos Kiszolgáló1 újraindítása](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "A takarékos Kiszolgáló1 újraindítása")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png " alt-text="A takarékos Kiszolgáló1 újraindítása" border="true":::
 
 3. Ekkor meg kell jelennie a két átjárócsomópontokkal, amelyen a Spark2-takarékossági kiszolgáló fut. Válassza ki az egyik átjárócsomópontokkal.
 
-    ![A gazdaságosság Kiszolgáló2 újraindítása](./media/apache-spark-resource-manager/restart-thrift-server-2.png "A gazdaságosság Kiszolgáló2 újraindítása")
+    :::image type="content" source="./media/apache-spark-resource-manager/restart-thrift-server-2.png " alt-text="A gazdaságosság Kiszolgáló2 újraindítása" border="true":::
 
 4. A következő oldalon az adott átjárócsomóponthoz futó összes szolgáltatás látható. A listából válassza ki a Spark2 takarékossági kiszolgáló melletti legördülő gombot, majd válassza a **Leállítás** lehetőséget.
 
-    ![A gazdaságosság Server3 újraindítása](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "A gazdaságosság Server3 újraindítása")
+    :::image type="content" source="./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png " alt-text="A gazdaságosság Server3 újraindítása" border="true":::
 5. Ismételje meg ezeket a lépéseket a többi átjárócsomóponthoz is.
 
 ## <a name="restart-the-jupyter-service"></a>A Jupyter szolgáltatás újraindítása
 
 Indítsa el a Ambari webes felhasználói felületét a cikk elején látható módon. A bal oldali navigációs panelen válassza a **Jupyter** lehetőséget, válassza a **szolgáltatási műveletek** lehetőséget, majd kattintson az **összes újraindítása** elemre. Ezzel elindítja a Jupyter szolgáltatást az összes átjárócsomópontokkal.
 
-![Jupyter újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter újraindítása")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png " alt-text="Jupyter újraindítása" border="true":::
 
 ## <a name="monitor-resources"></a>Erőforrások megfigyelése
 
 Indítsa el a fonal felhasználói felületét a cikk elején látható módon. A képernyő felső részén található fürt Metrikái táblában a **felhasznált memória** és a **memória összes** oszlopának értékét kell megnéznie. Ha a két érték be van zárva, előfordulhat, hogy nem áll rendelkezésre elegendő erőforrás a következő alkalmazás elindításához. Ugyanez vonatkozik a **használt virtuális mag** és a **virtuális mag összes** oszlopára is. Emellett a fő nézetben, ha egy alkalmazás **elfogadva** állapotba került, és nem a **futó** és a **sikertelen** állapotra vált, akkor ez azt is jelezheti, hogy nem kap elég erőforrást az induláshoz.
 
-![Erőforrás-korlát](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "Erőforrás-korlát")
+:::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-resource-limit.png " alt-text="Erőforrás-korlát" border="true":::
 
 ## <a name="kill-running-applications"></a>Futó alkalmazások leölése
 
 1. A fonal felhasználói felületén, a bal oldali panelen válassza a **Futtatás** lehetőséget. A futó alkalmazások listájából állapítsa meg a leölési alkalmazást, és válassza ki az **azonosítót**.
 
-    ![App1 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "App1 leölése")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app1.png " alt-text="App1 leölése" border="true":::
 
 2. Válassza az **alkalmazás leölése** lehetőséget a jobb felső sarokban, majd kattintson **az OK gombra**.
 
-    ![App2 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 leölése")
+    :::image type="content" source="./media/apache-spark-resource-manager/apache-ambari-kill-app2.png " alt-text="App2 leölése" border="true":::
 
 ## <a name="see-also"></a>Lásd még
 

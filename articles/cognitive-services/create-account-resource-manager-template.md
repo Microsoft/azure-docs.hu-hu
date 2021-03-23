@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98928643"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864363"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
 
@@ -137,9 +137,10 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="see-also"></a>Lásd még
 
-* [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
-* [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Természetes nyelvi támogatás](language-support.md)
-* [Docker-tárolók támogatása](cognitive-services-container-support.md)
+* Lásd: **[kérelmek hitelesítése az Azure-Cognitive Services](authentication.md)** a Cognitive Services biztonságos kezeléséhez.
+* Ismerje meg, **[Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)** a különböző kategóriák listájának lekéréséhez Cognitive Serviceson belül.
+* A Cognitive Services által támogatott természetes nyelvek listájának megjelenítéséhez tekintse meg a **[természetes nyelvi támogatás](language-support.md)** című témakört.
+* Lásd: a **[Cognitive Services használata tárolóként](cognitive-services-container-support.md)** a Cognitive Services helyszíni használatának megismeréséhez.
+* A Cognitive Services használatának költségeinek **[kiszámításához tekintse meg a Cognitive Services költségeinek tervezése és kezelése](plan-manage-costs.md)** című témakört.

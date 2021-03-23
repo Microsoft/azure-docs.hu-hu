@@ -3,12 +3,12 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: d4607483e64e6b7daa45f576f70ce3f5eeef65ca
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801111"
+ms.locfileid: "104869089"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
@@ -265,7 +265,7 @@ Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMwar
 1. A **hálózati bővítmények számára válassza az elosztott kapcsolók lehetőséget**, válassza ki azokat a kapcsolókat, amelyek az Azure VMware-megoldásba migrálni kívánt virtuális gépeket tartalmazzák egy 2. rétegbeli kiterjesztett hálózaton. Ezután válassza a **Folytatás** elemet.
 
    > [!NOTE]
-   > Ha a 2. rétegbeli kiterjesztett hálózatokon nem telepíti át a virtuális gépeket, akkor kihagyhatja ezt a lépést.
+   > Ha nem telepíti át a virtuális gépeket a 2. rétegbeli (L2) kiterjesztett hálózatokon, kihagyhatja ezt a lépést.
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="Az elosztott virtuális kapcsolók és a Folytatás gomb kijelölését bemutató képernyőkép." lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,4 +376,4 @@ A HCX használatával kapcsolatos további információkért látogasson el a VM
 * [A VMware HCX dokumentációja](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [Virtual Machines áttelepítése VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX szükséges portok](https://ports.vmware.com/home/VMware-HCX)
-* [Hozzon létre egy HCX-proxyt, mielőtt jóváhagyja a licenckulcs](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)
+* [HCX-proxykiszolgáló beállítása a licenckulcs jóváhagyása előtt](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 458f4d3f29cb08a94095167ed45133f5cd70f5f4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737167"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869191"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) telepítése
 
@@ -239,71 +239,6 @@ adatbázis, szükség szerint módosítsa az IP-címet, a felhasználóneveket �
     ENV : <IP_address_of_host>:
     USER: AZACSNAP
     ```
-
-### <a name="additional-instructions-for-using-the-log-trimmer-sap-hana-20-and-later"></a>További utasítások a log Trimmer használatához (SAP HANA 2,0 és újabb verziók)
-
-A log Trimmer használata esetén a következő példában szereplő parancsok egy felhasználót (AZACSNAP) állítanak be a BÉRLŐi adatbázis (ok) ban egy SAP HANA 2,0 adatbázis-rendszeren. Ne felejtse el módosítani az IP-címet, a felhasználóneveket és a jelszavakat, ha szükséges:
-
-1. Kapcsolódjon a BÉRLŐi adatbázishoz a felhasználó létrehozásához, a bérlőre jellemző részletek a következők: `<IP_address_of_host>` és `<SYSTEM_USER_PASSWORD>` .  Emellett jegyezze `30015` fel a bérlői adatbázissal való kommunikációhoz szükséges portot ().
-
-    ```bash
-    hdbsql -n <IP_address_of_host>:30015 - i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD>
-    ```
-
-    ```output  
-    Welcome to the SAP HANA Database interactive terminal.
-
-    Type: \h for help with commands
-    \q to quit
-
-    hdbsql TENANTDB=>
-    ```
-
-1. A felhasználó létrehozása
-
-    Ez a példa a AZACSNAP-felhasználót hozza létre a SYSTEMDB.
-
-    ```sql
-    hdbsql TENANTDB=> CREATE USER AZACSNAP PASSWORD <AZACSNAP_PASSWORD_CHANGE_ME> NO FORCE_FIRST_PASSWORD_CHANGE;
-    ```
-
-1. Felhasználói engedélyek megadása
-
-    Ez a példa azt az engedélyt állítja be, hogy a AZACSNAP-felhasználó engedélyezze az adatbázis-konzisztens tárolási pillanatkép elvégzését.
-
-    ```sql
-    hdbsql TENANTDB=> GRANT BACKUP ADMIN, CATALOG READ, MONITORING TO AZACSNAP;
-    ```
-
-1. Nem *kötelező* – megakadályozza a felhasználó jelszavának lejáratát
-
-    > [!NOTE]
-    > A módosítás előtt érdeklődjön a vállalati szabályzatban.
-
-   Ez a példa letiltja a jelszó lejáratát a AZACSNAP felhasználó számára, anélkül, hogy ez a változás a felhasználó jelszava le fog járni, a pillanatképek megfelelővé tételének megakadályozása.  
-
-   ```sql
-   hdbsql TENANTDB=> ALTER USER AZACSNAP DISABLE PASSWORD LIFETIME;
-   ```
-
-> [!NOTE]  
-> Ismételje meg ezeket a lépéseket az összes bérlői adatbázisra vonatkozóan. A következő SQL-lekérdezéssel kérheti le az összes bérlő kapcsolati adatait a SYSTEMDB.
-
-```sql
-SELECT HOST, SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%'
-```
-
-Tekintse meg a következő példában szereplő lekérdezést és kimenetet.
-
-```bash
-hdbsql -jaxC -n 10.90.0.31:30013 -i 00 -u SYSTEM -p <SYSTEM_USER_PASSWORD> " SELECT HOST,SQL_PORT, DATABASE_NAME FROM SYS_DATABASES.M_SERVICES WHERE SQL_PORT LIKE '3%' "
-```
-
-```output
-sapprdhdb80,30013,SYSTEMDB
-sapprdhdb80,30015,H81
-sapprdhdb80,30041,H82
-```
 
 ### <a name="using-ssl-for-communication-with-sap-hana"></a>Az SSL használata a SAP HANAsal való kommunikációhoz
 

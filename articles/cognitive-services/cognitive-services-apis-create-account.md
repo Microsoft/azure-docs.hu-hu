@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 115457180efab719b406c4e1e021234fa99736ab
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: af957758918b99dcb44732eb536c0ca031231a7a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670507"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868222"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-portal"></a>Gyors útmutató: Cognitive Services-erőforrás létrehozása a Azure Portal használatával
 
@@ -117,8 +117,8 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ## <a name="see-also"></a>Lásd még
 
-* [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
-* [Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)
-* [Új erőforrás létrehozása az Azure felügyeleti ügyféloldali kódtár használatával](.\cognitive-services-apis-create-account-client-library.md)
-* [Természetes nyelvi támogatás](language-support.md)
-* [Docker-tárolók támogatása](cognitive-services-container-support.md)
+* Lásd: **[kérelmek hitelesítése az Azure-Cognitive Services](authentication.md)** a Cognitive Services biztonságos kezeléséhez.
+* Ismerje meg, **[Mi az Azure Cognitive Services?](./what-are-cognitive-services.md)** a különböző kategóriák listájának lekéréséhez Cognitive Serviceson belül.
+* A Cognitive Services által támogatott természetes nyelvek listájának megjelenítéséhez tekintse meg a **[természetes nyelvi támogatás](language-support.md)** című témakört.
+* Lásd: a **[Cognitive Services használata tárolóként](cognitive-services-container-support.md)** a Cognitive Services helyszíni használatának megismeréséhez.
+* A Cognitive Services használatának költségeinek **[kiszámításához tekintse meg a Cognitive Services költségeinek tervezése és kezelése](plan-manage-costs.md)** című témakört.

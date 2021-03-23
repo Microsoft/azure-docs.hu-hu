@@ -5,14 +5,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/16/2019
+ms.date: 03/22/2021
 ms.author: genli
-ms.openlocfilehash: 4454afbe543f374ebd745af7cd59be1ab745036f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cebb05b35379573fc9797e89dee3c0c2bf3de6e2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670887"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867287"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: az Azure-helyek közötti VPN-kapcsolat nem tud csatlakozni, és leáll
 
@@ -81,9 +81,7 @@ Ellenőrizze és távolítsa el a felhasználó által megadott útválasztást 
 
 ### <a name="step-5-check-the-on-premises-vpn-device-external-interface-address"></a>5. lépés Helyszíni VPN-eszköz külső csatolójának címe
 
-- Ha a VPN-eszköz internet felé irányuló IP-címe az Azure-beli **helyi hálózat** definíciójában szerepel, időnként leválaszthatja a kapcsolatot.
-- Az eszköz külső felületének közvetlenül az interneten kell lennie. Nem lehet hálózati címfordítás vagy tűzfal az Internet és az eszköz között.
-- Ha úgy szeretné konfigurálni a tűzfal-fürtözést, hogy virtuális IP-címmel rendelkezzen, meg kell szüntetnie a fürtöt, és közvetlenül egy nyilvános felületen kell közzétennie a VPN-berendezést ahhoz, hogy az átjáró társítható legyen.
+Ha a VPN-eszköz internet felé irányuló IP-címe az Azure-beli **helyi hálózat** definíciójában szerepel, időnként leválaszthatja a kapcsolatot.
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>6. lépés Győződjön meg arról, hogy az alhálózatok pontosan egyeznek (Azure Policy-alapú átjárók)
 

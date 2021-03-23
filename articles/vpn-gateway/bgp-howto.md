@@ -6,14 +6,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 03/22/2021
 ms.author: yushwang
-ms.openlocfilehash: db19b1ae017fa7981747b0e7b4c82e97efc61ed3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 479a8fac111be6e5b1ae2c6ea21fff801ba26f83
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98878884"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863581"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways"></a>A BGP konfigurálása Azure VPN Gateway-átjárók esetén
 
@@ -79,13 +79,15 @@ Ebben a lépésben létrehoz egy VPN-átjárót a megfelelő BGP-paraméterekkel
 
    * Az **Azure APIPA BGP IP-cím** mezője nem kötelező. Ha a helyszíni VPN-eszközök a BGP-vel kapcsolatos APIPA-címeket használnak, ki kell választania egy, az Azure által fenntartott APIPA-címtartományből származó, a **169.254.21.0** -ről **169.254.22.255**-re vonatkozó címeket. Ez a példa az 169.254.21.11-t használja.
 
-   * Ha aktív-aktív VPN-átjárót hoz létre, akkor a BGP szakasz egy további, **második egyéni Azure APIPA-os BGP IP-címet** jelenít meg. Eltérő címeket adhat meg az engedélyezett APIPA-tartományból (**169.254.21.0** – **169.254.22.255**).
+   * Ha aktív-aktív VPN-átjárót hoz létre, akkor a BGP szakasz egy további, **második egyéni Azure APIPA-os BGP IP-címet** jelenít meg. Az engedélyezett APIPA-tartományból (**169.254.21.0** – **169.254.22.255**) Válasszon másik IP-címet. A második IP-címnek az első címtől eltérőnek kell lennie.
 
    > [!IMPORTANT]
    >
    > * Alapértelmezés szerint az Azure automatikusan hozzárendel egy magánhálózati IP-címet a GatewaySubnet előtag-tartományhoz, az Azure-beli VPN-átjárón lévő Azure BGP IP-címként. Az egyéni Azure APIPA BGP-címnek akkor van szüksége, ha a helyszíni VPN-eszközök a BGP-IP-címként használják az APIPA-címet (169.254.0.1 – 169.254.255.254). Az Azure VPN Gateway akkor választja ki az egyéni APIPA-címet, ha a megfelelő helyi hálózati átjáró erőforrás (helyszíni hálózat) APIPA-címmel rendelkezik a BGP-társ IP-címével. Ha a helyi hálózati átjáró egy normál IP-címet (nem APIPA-t) használ, az Azure VPN Gateway a magánhálózati IP-címet a GatewaySubnet tartományból fogja visszaállítani.
    >
    > * Az APIPA BGP-címek nem lehetnek átfedésben a helyszíni VPN-eszközök és az összes csatlakoztatott Azure VPN-átjáró között.
+   >
+   > * Ha az Azure VPN Gateway-átjárók APIPA-címeket használnak, az átjárók nem kezdeményeznek BGP-társas munkameneteket az APIPA-forrás IP-címeivel. A helyszíni VPN-eszköznek BGP-társas kapcsolatokat kell kezdeményeznie.
    >
 
 1. Válassza az **ellenőrzés + létrehozás** lehetőséget az érvényesítés futtatásához. Az érvényesítést követően a **Létrehozás** gombra kattintva telepítheti a VPN-átjárót. Az átjárók teljes létrehozása és üzembe helyezése akár 45 percet is igénybe vehet. A telepítési állapotot az átjáró áttekintés lapján tekintheti meg.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6465acc0d4ce760e0bf89c73dace7c8c66d37c49
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98737133"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869939"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tippek és trükkök az Azure Application konzisztens pillanatkép-eszköz (előzetes verzió) használatához
 
@@ -47,6 +47,27 @@ az role definition create --role-definition '{ \
   "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
 }'
 ```
+
+Ahhoz, hogy a visszaállítási lehetőségek sikeresen működjenek, a AzAcSnap szolgáltatásnak is képesnek kell lennie kötetek létrehozására.  Ebben az esetben a szerepkör-definíciónak további műveletre van szüksége, ezért a teljes szolgáltatásnevet a következő példához hasonlóan kell kinéznie.
+
+```bash
+az role definition create --role-definition '{ \
+  "Name": "Azure Application Consistent Snapshot tool", \
+  "IsCustom": "true", \
+  "Description": "Perform snapshots and restores on ANF volumes.", \
+  "Actions": [ \
+    "Microsoft.NetApp/*/read", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/delete", \
+    "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/write" \
+  ], \
+  "NotActions": [], \
+  "DataActions": [], \
+  "NotDataActions": [], \
+  "AssignableScopes": ["/subscriptions/<insert your subscription id>"] \
+}'
+```
+
 
 ## <a name="take-snapshots-manually"></a>Pillanatképek manuális elkészítése
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 9591551b7d5657803e770bd71b47acb141b40fb6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 19dd5bf94b524ff3eb6eb601c77b503a0040bd75
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942685"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867644"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
@@ -106,13 +106,13 @@ Ha egy alkalmazás telepítése nem sikerült, a következő három helyről lá
 
     Nyissa meg a fürtöt a portálon, és válassza az alkalmazások lehetőséget a beállítások közül:
 
-    ![hdinsight applications application installation error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-error.png" alt-text="hdinsight applications application installation error":::
 
 * HDInsight-parancsfájlművelet: ha a HDInsight-alkalmazás hibaüzenete parancsfájlművelet-hibát jelez, a hibáról további információkat a parancsfájlműveletek paneljén talál.
 
     Válassza a parancsfájl művelet lehetőséget a beállítások közül. A hibaüzeneteket megjelenítő parancsfájlművelet-előzmény
 
-    ![hdinsight applications script action error](./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png)
+    :::image type="content" source="./media/hdinsight-apps-install-custom-applications/hdinsight-apps-script-action-error.png" alt-text="hdinsight applications script action error":::
 
 * Apache Ambari webes felhasználói felület: Ha a hiba oka a telepítési parancsfájl, használja a Ambari webes felhasználói felületét a telepítési parancsfájlok teljes naplóinak megtekintéséhez.
 

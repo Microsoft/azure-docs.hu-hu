@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: d5915316ee9d393b2481eeca6a5da7923b271d9f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6dc91dc07d11f195092343e657911a884d8bf475
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930404"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865995"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter Notebookt a számítógépre, és kapcsolódjon a HDInsight Apache Sparkhoz
 
@@ -142,7 +142,7 @@ Ebben a szakaszban azt a Spark-varázst konfigurálja, amelyet korábban telepí
 
     a. Hozzon létre új notebookot. A jobb oldali sarokban válassza az **új** lehetőséget. Ekkor meg kell jelennie az alapértelmezett kernel **Python 2** vagy **Python 3** és a telepített kerneleknek. A tényleges értékek a telepítési lehetőségektől függően eltérőek lehetnek.  Válassza a **PySpark** lehetőséget.
 
-    ![Elérhető kernelek a Jupyter Notebook](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernelek a Jupyter Notebookban")
+    :::image type="content" source="./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png " alt-text="Elérhető kernelek a Jupyter Notebook" border="true":::
 
     > [!IMPORTANT]  
     > Miután kiválasztotta az **új** rendszerhéj áttekintését a hibákhoz.  Ha úgy látja a hibát, hogy a `TypeError: __init__() got an unexpected keyword argument 'io_loop'` Tornado bizonyos verzióiban ismert probléma merülhet fel.  Ha igen, állítsa le a kernelt, majd a következő paranccsal minősítse le a tornádó telepítését: `pip install tornado==4.5.3` .

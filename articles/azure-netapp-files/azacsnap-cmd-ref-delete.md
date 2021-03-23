@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 0e2e4beebedb93524da43c5a3fad750b0295f5cd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1f2c767d45bb08e25a057c7db1f380ceb250f607
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97632726"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864907"
 ---
 # <a name="delete-using-azure-application-consistent-snapshot-tool-preview"></a>Törlés az Azure Application konzisztens pillanatkép-eszköz használatával (előzetes verzió)
 
@@ -36,11 +36,11 @@ A kötet-Pillanatképek és az adatbázis-katalógus bejegyzései a `azacsnap -c
 
 A `-c delete` parancs a következő beállításokkal rendelkezik:
 
-- `--delete hana` Ha a kapcsolóval együtt használja a beállításokat `--hanasid <SID>` , és `--hanabackupid <HANA backup id>` törli a feltételnek megfelelő SAP HANA biztonsági mentési katalógusból származó bejegyzéseket.
+- `--delete hana` Ha a kapcsolóval együtt használja a beállításokat `--dbsid <SID>` , és `--hanabackupid <HANA backup id>` törli a feltételnek megfelelő SAP HANA biztonsági mentési katalógusból származó bejegyzéseket.
 
 - `--delete storage` Ha a kapcsolóval együtt használja, a `--snapshot <snapshot name>` rendszer törli a pillanatképet a háttérbeli tárolóból.
 
-- `--delete sync` Ha a kapcsolóval együtt használja a beállításokat `--hanasid <SID>` `--hanabackupid <HANA backup id>` , és lekéri a tárolási pillanatkép nevét a biztonsági mentési katalógusból `<HANA backup id>` , majd törli a bejegyzést a biztonsági mentési katalógusban _és_ a pillanatképet a megnevezett pillanatképet tartalmazó összes kötetről.
+- `--delete sync` Ha a kapcsolóval együtt használja a beállításokat `--dbsid <SID>` `--hanabackupid <HANA backup id>` , és lekéri a tárolási pillanatkép nevét a biztonsági mentési katalógusból `<HANA backup id>` , majd törli a bejegyzést a biztonsági mentési katalógusban _és_ a pillanatképet a megnevezett pillanatképet tartalmazó összes kötetről.
 
 - `--delete sync` Ha a szolgáltatással együtt használja, a rendszer a biztonsági mentési `--snapshot <snapshot name>` katalógusban lévő összes bejegyzést beolvassa a `<snapshot name>` SAP HANA biztonsági mentési azonosítót, és törli a biztonsági mentési katalógusban található bejegyzést _és_ a pillanatképet a megnevezett pillanatképet tartalmazó összes kötetről.
 
@@ -51,7 +51,7 @@ A `-c delete` parancs a következő beállításokkal rendelkezik:
 ### <a name="delete-a-snapshot-using-sync-option"></a>Pillanatkép törlése a `sync` kapcsoló használatával
 
 ```bash
-azacsnap -c delete --delete sync --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete sync --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]
@@ -67,7 +67,7 @@ azacsnap -c delete --delete sync --snapshot hana_hourly.2020-01-22_2358
 ### <a name="delete-a-snapshot-using-hana-option"></a>Pillanatkép törlése a `hana` kapcsoló használatával
 
 ```bash
-azacsnap -c delete --delete hana --hanasid H80 --hanabackupid 157979797979
+azacsnap -c delete --delete hana --dbsid H80 --hanabackupid 157979797979
 ```
 
 > [!NOTE]

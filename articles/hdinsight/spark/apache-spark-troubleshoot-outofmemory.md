@@ -4,12 +4,12 @@ description: Különböző működése OutOfMemoryError-kivételek Apache Spark-
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: a15d79f2ae9c3d20a73ec557c57a5c189b18111b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dd33972810ab3b0d51bbd82282d0e6cf6cd9d96c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946350"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868664"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
@@ -59,7 +59,7 @@ Ennek a kivételnek a legvalószínűbb oka az, hogy nem áll rendelkezésre el�
 
 1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ezt úgy határozhatja meg, hogy megtekinti a fürt fonal felhasználói felületének fürt metrikák szakaszát a **felhasznált memória** és a **virtuális mag** **, illetve** a **virtuális mag teljes** száma alapján.
 
-    ![a fonal alapmemóriájának nézete](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    :::image type="content" source="./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png" alt-text="a fonal alapmemóriájának nézete" border="true":::
 
 1. Állítsa be a következő Spark-konfigurációkat a megfelelő értékekre. Az alkalmazásra vonatkozó követelmények elosztása a fürt rendelkezésre álló erőforrásaival. Ezek az értékek nem haladhatják meg a rendelkezésre álló memória és magok 90%-át a fonal alapján megtekintve, és meg kell felelnie a Spark-alkalmazás minimális memória-követelményének is:
 
@@ -117,11 +117,11 @@ A Spark-előzmények kiszolgálójának memóriáját a `SPARK_DAEMON_MEMORY` Sp
 
 Ezt a Ambari böngésző felhasználói felületén végezheti el a Spark2/config/Advanced Spark2-env szakasz kiválasztásával.
 
-![Speciális spark2 – env szakasz](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png" alt-text="Speciális spark2 – env szakasz" border="true":::
 
 Adja hozzá a következő tulajdonságot a Spark History-kiszolgáló memóriájának a 1g-ről 4G-re való módosításához: `SPARK_DAEMON_MEMORY=4g` .
 
-![Spark-tulajdonság](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+:::image type="content" source="./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png" alt-text="Spark-tulajdonság" border="true":::
 
 Győződjön meg arról, hogy az összes érintett szolgáltatást újraindítja a Ambari.
 

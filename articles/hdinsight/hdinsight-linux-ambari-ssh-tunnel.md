@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 5bbc770fa6ae5ac69b2aa939f9d2c70bb01f5403
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ef7e0450725b456a7fb2b1ab61c50d7edece52ce
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945294"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867559"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Az Apache Ambari webes felhasználói felületének, a JobHistory, a NameNode, az Apache Oozie és más felületének eléréséhez használja az SSH-bújtatást
 
@@ -92,7 +92,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 
 1. Válassza a **Mentés** lehetőséget
 
-    ![HDInsight-munkamenet létrehozása](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png" alt-text="HDInsight-munkamenet létrehozása":::
 
 1. A párbeszédpanel bal oldalán található **Kategória** szakaszban bontsa ki a **kapcsolatok** csomópontot, bontsa ki az **SSH** elemet, majd válassza az **alagutak** lehetőséget.
 
@@ -104,7 +104,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
     |Cél|A HDInsight-fürt SSH-címe. Például: **mycluster-ssh.azurehdinsight.net**.|
     |Dinamikus|Engedélyezi a dinamikus SOCKS proxy útválasztását.|
 
-    ![Putty konfigurációs bújtatási beállítások](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-putty-tunnel.png" alt-text="Putty konfigurációs bújtatási beállítások":::
 
 1. A beállítások hozzáadásához válassza a **Hozzáadás** lehetőséget, majd válassza a **Megnyitás** lehetőséget egy SSH-kapcsolatok megnyitásához.
 
@@ -117,7 +117,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
 
 1. Konfigurálja a böngészőt a **localhost** és az alagút a **SOCKS V5** proxyként való létrehozásakor használt port használatára. A Firefox beállításai így néznek ki. Ha a 9876-nál eltérő portot használt, módosítsa a portot a használthoz:
 
-    ![a Firefox böngésző proxybeállításait](./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/firefox-proxy-settings.png" alt-text="a Firefox böngésző proxybeállításait":::
 
    > [!NOTE]  
    > A **távoli DNS** lehetőség kiválasztásával a rendszer a DNS-kérelmeket a HDInsight-fürt használatával oldja fel. Ez a beállítás a fürt fő csomópontjának használatával oldja fel a DNS-t.
@@ -135,11 +135,11 @@ A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elér
 
 2. A Ambari webes felhasználói felületén válassza a HDFS lehetőséget a lap bal oldalán található listából.
 
-    ![Apache Ambari hdfs szolgáltatás kiválasztva](./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdfs-service-selected.png" alt-text="Apache Ambari hdfs szolgáltatás kiválasztva":::
 
 3. Ha megjelenik a HDFS szolgáltatás adatai, válassza a **gyors hivatkozások** lehetőséget. Megjelenik a fürt fő csomópontjainak listája. Válassza ki az egyik fő csomópontot, majd válassza a **NameNode felhasználói felület** lehetőséget.
 
-    ![A gyors menü kibontott képe](./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/namenode-drop-down-menu.png" alt-text="A gyors menü kibontott képe":::
 
     > [!NOTE]  
     > Ha a __gyors hivatkozások__ lehetőséget választja, akkor a várakozási mutatót is elérheti. Ez az állapot akkor fordulhat elő, ha lassú internetkapcsolattal rendelkezik. Várjon egy percet vagy kettőt, amíg az adatok beérkeznek a kiszolgálóról, majd próbálja megismételni a listát.
@@ -148,7 +148,7 @@ A fürt létrejötte után a következő lépésekkel ellenőrizheti, hogy elér
 
 4. A következő képhez hasonló oldal jelenik meg:
 
-    ![A Hadoop NameNode felhasználói felületének képe](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png)
+    :::image type="content" source="./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-namenode-ui.png" alt-text="A Hadoop NameNode felhasználói felületének képe":::
 
     > [!NOTE]  
     > Figyelje meg az oldal URL-címét; a következőhöz hasonlónak kell lennie: `http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster` . Ez az URI a csomópont belső teljesen minősített tartománynevét (FQDN) használja, és csak SSH-alagút használata esetén érhető el.

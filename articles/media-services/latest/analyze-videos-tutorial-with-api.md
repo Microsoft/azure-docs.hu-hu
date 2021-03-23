@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 03/17/2021
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a083fbbf54d6f03316a2e647d47e76cdb5db7c2c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f9c52544160e52c29b2d0e53aa957b40017dc8df
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581234"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870483"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
@@ -66,9 +66,6 @@ A minta a következő műveleteket hajtja végre:
 4. Elküldi a feladatot.
 5. Ellenőrzi a feladat állapotát.
 6. Letölti a feladat futtatásának eredményeként kapott fájlokat.
-
-> [!NOTE]
-> Előzetes Video vagy Audio Analyzer-beállítások használata esetén állítsa be a fiókját 10 S3-as Media szolgáltatás számára fenntartott egységre az Azure Portalon. További információkért lásd: a [médiafájlok feldolgozásának skálázása](media-reserved-units-cli-how-to.md).
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>A Media Services API-k használatának megkezdése a .NET SDK-val
 

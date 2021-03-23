@@ -4,12 +4,12 @@ description: Az Apache Ambari webes FELÜLETének használatával konfigurálhat
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/01/2021
-ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7e54b1347e4c67b99ba87b15c2c15d9d28244ce7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99428200"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864771"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Az Apache HBase optimalizálása az Apache Ambari az Azure HDInsight
 
@@ -28,7 +28,7 @@ A HBase halom mérete határozza meg a *régiók* *és főkiszolgálók* által 
 
 1. Módosítsa az alapértelmezett értéket 5 000 MB-ra.
 
-    !["Apache Ambari HBase Memory heapsize"](./media/optimize-hbase-ambari/ambari-hbase-heapsize.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/ambari-hbase-heapsize.png" alt-text="&quot;Apache Ambari HBase Memory heapsize&quot;" border="true":::
 
 ## <a name="optimize-read-heavy-workloads"></a>Olvasási és nagy terhelések optimalizálása
 
@@ -40,7 +40,7 @@ A blokk gyorsítótára az olvasási gyorsítótár. A méretet a paraméter sza
 
 1. A paraméter módosításához navigáljon a **Beállítások** lapra a HBase **konfigurációk** lapon, majd keresse meg az **olvasási pufferek számára lefoglalt RegionServer%**-át.
 
-    ![Apache HBase-gyorsítótár mérete](./media/optimize-hbase-ambari/hbase-block-cache-size.png)
+    :::image type="content" source="./media/optimize-hbase-ambari/hbase-block-cache-size.png" alt-text="Apache HBase-gyorsítótár mérete" border="true":::
 
 1. Az érték módosításához kattintson a **Szerkesztés** ikonra.
 
@@ -58,7 +58,7 @@ A véletlenszerű olvasások optimalizálásához csökkentheti a Memstore alsó
 
 A `hbase.client.scanner.caching` beállítás határozza meg a lemezről beolvasott sorok számát, ha a `next` metódust egy képolvasó hívja meg.  Az alapértelmezett érték 100. Minél nagyobb a szám, annál kevesebb az ügyfél és a régió-kiszolgáló közötti távoli hívások száma, ami gyorsabb vizsgálatot eredményez. Ez a beállítás azonban növeli a memória terhelését is az ügyfélen.
 
-![Apache HBase beolvasott sorok száma](./media/optimize-hbase-ambari/hbase-num-rows-fetched.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-num-rows-fetched.png" alt-text="Apache HBase beolvasott sorok száma" border="true":::
 
 > [!IMPORTANT]  
 > Ne állítsa be úgy az értéket, hogy a képolvasó következő metódusának hívása közötti idő nagyobb legyen, mint a képolvasó időkorlátja. A képolvasó időtúllépési időtartamát a tulajdonság határozza meg `hbase.regionserver.lease.period` .
@@ -71,7 +71,7 @@ A következő konfigurációk fontosak a nagy mennyiségű számítási feladato
 
 A HBase belső fájlformátumban tárolja az adattárolást, amelynek neve *HFile*. A tulajdonság a `hbase.hregion.max.filesize` régió egyetlen HFile méretét határozza meg.  Ha egy régió összes HFiles összege meghaladja ezt a beállítást, a régió két régióra oszlik.
 
-!["Apache HBase HRegion Max filesize"](./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-max-filesize.png" alt-text="&quot;Apache HBase HRegion Max filesize&quot;" border="true":::
 
 Minél nagyobb a régió fájlmérete, annál kisebb a felosztások száma. Megnövelheti a fájlméretet úgy, hogy meghatározza a maximális írási teljesítményt eredményező értéket.
 
@@ -85,7 +85,7 @@ Minél nagyobb a régió fájlmérete, annál kisebb a felosztások száma. Megn
 
     A kiürítési méret és a szorzó alapértelmezett értékeivel a frissítések le lesznek tiltva, ha a Memstore 128 * 4 = 512 MB méretű. A frissítési blokkolások számának csökkentéséhez növelje a értékét `hbase.hregion.memstore.block.multiplier` .
 
-![Apache HBase region Block szorzó](./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-block-multiplier.png" alt-text="Apache HBase region Block szorzó" border="true":::
 
 ## <a name="define-memstore-size"></a>Memstore méretének meghatározása
 
@@ -95,7 +95,7 @@ A Memstore méretét a és a paraméterek határozzák meg `hbase.regionserver.g
 
 A Memstore helyi kiosztási puffer használatát a tulajdonság határozza meg `hbase.hregion.memstore.mslab.enabled` . Ha engedélyezve van (igaz), ez a beállítás megakadályozza a halom töredezettségét a nehéz írási művelet során. Az alapértelmezett érték az igaz.
 
-![hbase. hregion. memstore. mslab. enabled](./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png)
+:::image type="content" source="./media/optimize-hbase-ambari/hbase-hregion-memstore-mslab-enabled.png" alt-text="hbase. hregion. memstore. mslab. enabled" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

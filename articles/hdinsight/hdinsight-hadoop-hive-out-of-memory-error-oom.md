@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d1e8f596ee022a59baa89e7f78648c98420eb44b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945708"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868868"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive memóriájában észlelt hiba elhárítása
 
@@ -104,7 +104,7 @@ Az hive-site.xml fájlban a **kaptár. Auto. convert. JOIN. noconditionaltask** 
 
 Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
 
-![Tez-tároló memória diagramja: a hiba a memóriában](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
+:::image type="content" source="./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png" alt-text="Tez-tároló memória diagramja: a hiba a memóriában" border="false":::
 
 Ahogy a blogbejegyzés is sugallja, a következő két memória-beállítás határozza meg a halom tárolójának memóriáját: **kaptár. TEZ. Container. size** és **kaptár. TEZ. Java. eldönti**. Tapasztalataink szerint a memórián kívüli kivétel nem azt jelenti, hogy a tároló mérete túl kicsi. Ez azt jelenti, hogy a Java halom mérete (kaptár. TEZ. Java. döntve) túl kicsi. Tehát amikor megjelenik a memória, megpróbálkozhat a **kaptár. TEZ. Java.** kiemeléssel. Szükség esetén előfordulhat, hogy a **kaptár. TEZ. Container. size** értékre kell emelkednie. A **Java.** kikapcsolási beállításnak a **container. size** 80%-ának kell lennie.
 

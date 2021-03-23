@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 1daf59c47bf71ad019011036bf42bf6727754345
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e6ed52f89c38a9c4c5476bd1db0f5a67326954e4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940354"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866267"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával
 
@@ -50,19 +50,19 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. A fő csomópont IP-címének beolvasása. Nyissa meg a Ambari felhasználói felületét a fürthöz. A fürt paneljén válassza az **irányítópult** lehetőséget.
 
-    ![Irányítópult kiválasztása az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png" alt-text="Irányítópult kiválasztása az Apache Ambari" border="true":::
 
 1. A Ambari felhasználói felületén válassza a **gazdagépek** lehetőséget.
 
-    ![Gazdagépek kiválasztása az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png" alt-text="Gazdagépek kiválasztása az Apache Ambari" border="true":::
 
 1. Ekkor megjelenik a fő csomópontok, a feldolgozó csomópontok és a Zookeeper-csomópontok listája. A fő csomópontok **HN*** előtaggal rendelkeznek. Válassza ki az első fő csomópontot.
 
-    ![A fő csomópont megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png" alt-text="A fő csomópont megkeresése az Apache Ambari" border="true":::
 
 1. A megnyíló lap alján található **Összefoglalás** ablaktáblán másolja a fő csomópont és az **állomásnév** **IP-címét** .
 
-    ![Az IP-cím megkeresése az Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png" alt-text="Az IP-cím megkeresése az Apache Ambari" border="true":::
 
 1. Adja hozzá az IP-címet és a fő csomópont állomásnevét a **gazdagépek** fájljához azon a számítógépen, amelyen futtatni kívánja, majd a Spark-feladatot távolról kell elvégeznie. Ez lehetővé teszi, hogy az IP-cím, valamint az állomásnév használatával kommunikáljon a fő csomóponttal.
 
@@ -93,7 +93,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. Nyissa meg a IntelliJ IDEA-t, és hozzon létre egy új projektet. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket:
 
-    ![A IntelliJ IDEA új projekt sablonjának kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png" alt-text="A IntelliJ IDEA új projekt sablonjának kiválasztása" border="true":::
 
     a. Válassza   >  **a HDInsight Spark on HDInsight (Scala)** lehetőséget.
 
@@ -106,7 +106,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     - A **Spark-verzió** legördülő listában a Scala projekt létrehozása varázsló integrálja a Spark SDK és a Scala SDK megfelelő verzióját. Ha a Spark-fürt verziója 2.0-nál korábbi, válassza a **Spark 1.x** lehetőséget. Máskülönben válassza a **Spark2.x** lehetőséget. Ez a példa a következő verziót használja: **Spark 2.0.2 (Scala 2.11.8)**.
   
-   ![A Project SDK és a Spark verziójának kiválasztása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-scala-project-details.png" alt-text="A Project SDK és a Spark verziójának kiválasztása" border="true":::
   
 1. A Spark-projekt automatikusan létrehoz egy összetevőt. Az összetevő megtekintéséhez tegye a következőket:
 
@@ -114,7 +114,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     b. A **projekt szerkezete** **párbeszédpanelen válassza az összetevők elemet a létrehozott** alapértelmezett összetevő megtekintéséhez. Saját összetevőt is létrehozhat a plusz jelre ( **+** ) kattintva.
 
-   ![IntelliJ IDEA-összetevők létrehozása jar](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png)
+   :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-default-artifact.png" alt-text="IntelliJ IDEA-összetevők létrehozása jar" border="true":::
 
 1. Adja hozzá a kódtárakat a projekthez. Tár hozzáadásához tegye a következőket:
 
@@ -122,7 +122,7 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
     b. A **projekt szerkezete** párbeszédpanelen válassza a **könyvtárak** lehetőséget, válassza ki a ( **+** ) szimbólumot, majd válassza ki **a mavenből** lehetőséget.
 
-    ![IntelliJ IDEA letöltési könyvtár](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png" alt-text="IntelliJ IDEA letöltési könyvtár" border="true":::
 
     c. A **könyvtár letöltése a Maven adattárból** párbeszédpanelen keresse meg és adja hozzá a következő könyvtárakat:
 
@@ -178,11 +178,11 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. Adja hozzá az alkalmazás fő osztályát. A **Project Explorerben** kattintson a jobb gombbal az **src** elemre, mutasson az **új** elemre, majd válassza a **Scala osztály** elemet.
 
-    ![IntelliJ IDEA – válassza ki a Main osztályt](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png" alt-text="IntelliJ IDEA – válassza ki a Main osztályt" border="true":::
 
 1. Az **új Scala-osztály létrehozása** párbeszédpanelen adjon meg egy nevet, válassza ki **az objektum** elemet a **fajta** mezőben, majd kattintson **az OK gombra**.
 
-    ![IntelliJ IDEA új Scala-osztály létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png" alt-text="IntelliJ IDEA új Scala-osztály létrehozása" border="true":::
 
 1. A `MyClusterAppMain.scala` fájlban illessze be a következő kódot. Ez a kód létrehozza a Spark-környezetet, és egy `executeJob` metódust nyit meg az `SparkSample` objektumból.
 
@@ -254,49 +254,49 @@ Azt javasoljuk, hogy hozzon létre egy Apache Spark-fürtöt az Azure HDInsight,
 
 1. A `*RemoteClusterDebugging` osztályban kattintson a jobb gombbal a `test` kulcsszóra, majd válassza a **RemoteClusterDebugging-konfiguráció létrehozása** lehetőséget.
 
-    ![IntelliJ IDEA távoli konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png" alt-text="IntelliJ IDEA távoli konfiguráció létrehozása" border="true":::
 
 1. A **RemoteClusterDebugging-konfiguráció létrehozása** párbeszédpanelen adja meg a konfiguráció nevét, **majd válassza a teszt** **neve** lehetőséget. Hagyja meg az összes többi értéket alapértelmezett beállításként. Válassza az **Apply** (Alkalmaz) lehetőséget, majd kattintson az **OK** gombra.
 
-    ![RemoteClusterDebugging-konfiguráció létrehozása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png" alt-text="RemoteClusterDebugging-konfiguráció létrehozása" border="true":::
 
 1. Ekkor a menüsávban megjelenik a **távoli futtatási** konfiguráció legördülő listája.
 
-    ![A távoli Futtatás legördülő lista IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-config-remote-run.png" alt-text="A távoli Futtatás legördülő lista IntelliJ" border="true":::
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. lépés: az alkalmazás futtatása hibakeresési módban
 
 1. A IntelliJ IDEA projektben nyissa meg `SparkSample.scala` és hozzon létre egy töréspontot a mellett `val rdd1` . A **töréspont létrehozása** az előugró menüben válassza a **sor a függvény executeJob** lehetőséget.
 
-    ![IntelliJ-ötlet – töréspont hozzáadása](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png" alt-text="IntelliJ-ötlet – töréspont hozzáadása" border="true":::
 
 1. Az alkalmazás futtatásához kattintson a **távoli futtatási** konfiguráció legördülő lista melletti **hibakeresés Futtatás** gombra.
 
-    ![IntelliJ-ötlet kiválasztása a hibakeresés futtatása gomb](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-run-mode-button.png" alt-text="IntelliJ-ötlet kiválasztása a hibakeresés futtatása gomb" border="true":::
 
 1. Amikor a program végrehajtása eléri a töréspontot, megjelenik egy **hibakereső** lap az alsó ablaktáblán.
 
-    ![IntelliJ IDEA – a hibakereső lap megtekintése](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png" alt-text="IntelliJ IDEA – a hibakereső lap megtekintése" border="true":::
 
 1. Az óra hozzáadásához válassza a ( **+** ) ikont.
 
-    ![IntelliJ hibakeresése – Add-Watch-változó](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png" alt-text="IntelliJ hibakeresése – Add-Watch-változó" border="true":::
 
     Ebben a példában az alkalmazás a változó létrehozása előtt megszakadt `rdd1` . A Watch használatával láthatjuk a változó első öt sorát `rdd` . Nyomja le az **Enter** billentyűt.
 
-    ![A program hibakeresési módban futtatja a IntelliJ](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png" alt-text="A program hibakeresési módban futtatja a IntelliJ" border="true":::
 
     Az előző ábrán látható, hogy futásidőben lekérdezheti a terabájt adatmennyiséget, és hibakeresést végezhet az alkalmazás előrehaladásával. Például az előző képen látható kimenetben láthatja, hogy a kimenet első sora egy fejléc. Ennek a kimenetnek a alapján módosíthatja az alkalmazás kódját, hogy szükség esetén kihagyja a fejlécet.
 
 1. Most kiválaszthatja a **program folytatása** ikont az alkalmazás futtatásának folytatásához.
 
-    ![IntelliJ ötlet válassza a program folytatása lehetőséget](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-continue-remote-run.png" alt-text="IntelliJ ötlet válassza a program folytatása lehetőséget" border="true":::
 
 1. Ha az alkalmazás sikeresen befejeződik, a következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![IntelliJ IDEA hibakereső konzol kimenete](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png)
+    :::image type="content" source="./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-complete-window.png" alt-text="IntelliJ IDEA hibakereső konzol kimenete" border="true":::
 
-## <a name="next-steps"></a><a name="seealso"></a>Következő lépések
+## <a name="next-steps"></a><a name="seealso"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 

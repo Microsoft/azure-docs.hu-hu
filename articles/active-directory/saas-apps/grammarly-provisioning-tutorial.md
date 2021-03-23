@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2021
 ms.author: Zhchia
-ms.openlocfilehash: acfe74577f58cbdc0b1fe235e7fc1f661543fd90
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ca01289ce66afe642081e5be17373e640dd1e46d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609214"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864805"
 ---
 # <a name="tutorial-configure-grammarly-for-automatic-user-provisioning"></a>Oktatóanyag: nyelvtani konfigurálás a felhasználók automatikus üzembe helyezéséhez
 
@@ -85,7 +85,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőfelvétel: a kiépítési mód beállítása automatikus.](common/provisioning-automatic.png)
 
-1. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a nyelvtani **bérlői URL-címet** és a **titkos jogkivonat** adatait. Válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen nyelvtanilag csatlakozni. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a nyelvtani fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+1. A **rendszergazdai hitelesítő adatok** szakaszban a **bérlői URL** megadása mezőbe írja be a címet `https://sso.grammarly.com/scim/v2` , és a **titkos jogkivonat** mezőben adja meg a nyelvtanilag megadott jogkivonatot (lásd a fenti 2. lépést). Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad képes legyen nyelvtanilag csatlakozni. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a nyelvtani fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![A bérlői URL-címet és a titkos jogkivonat-mezőket bemutató képernyőkép.](common/provisioning-testconnection-tenanturltoken.png)
 

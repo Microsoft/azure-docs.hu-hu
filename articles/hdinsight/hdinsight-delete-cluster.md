@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
-ms.openlocfilehash: 55c19ee9b23d43b0f9988363405d76fa16949ec9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2160cfcd1f12f5effe7bb182eb665f85fec863af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946044"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863394"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>HDInsight-fürt törlése a böngésző, a PowerShell vagy az Azure CLI használatával
 
@@ -27,7 +27,7 @@ A HDInsight-fürt számlázása a fürt létrehozásakor kezdődik és a fürt t
 
 3. Az alapértelmezett nézetben válassza a **Törlés** ikont. A fürt törléséhez kövesse a parancssort.
 
-    ![HDInsight-fürt törlése gomb](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
+    :::image type="content" source="./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png" alt-text="HDInsight-fürt törlése gomb":::
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/02/2020
-ms.openlocfilehash: 1189a320d0dc700756c9f7664d0a6303be5dab51
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a608c34225641a3c7764d6c7dd3872c5f61fe3c8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940896"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869718"
 ---
 # <a name="security-options-for-hive-in-azure-hdinsight"></a>Biztonsági beállítások a Kaptárhoz az Azure HDInsight
 
 Ez a dokumentum ismerteti a kaptár ajánlott biztonsági beállításait a HDInsight-ben. Ezek a beállítások az Ambari használatával konfigurálhatók.
 
-!["Biztonsági beállítások a Kaptárhoz"](./media/hdinsight-security-options-for-hive/security-options-hive.png "Biztonsági beállítások a Kaptárhoz")
+:::image type="content" source="./media/hdinsight-security-options-for-hive/security-options-hive.png " alt-text="&quot;Biztonsági beállítások a Kaptárhoz&quot;" border="true":::
 
 ## <a name="hiveserver2-authentication"></a>HiveServer2-hitelesítés
 

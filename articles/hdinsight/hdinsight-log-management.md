@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20a7a7392070a6f888add630398516b2f872cd7d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945266"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865485"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -76,11 +76,11 @@ Az Apache Ambari egy webes felhasználói felületet és egy REST API biztosít 
 
 A szolgáltatási nézetek listájának megnyitásához válassza a **Ambari nézetek** panelt a HDInsight Azure Portal lapján.  Ez a lista attól függően változik, hogy milyen könyvtárakat telepített.  Például megtekintheti a FONALak üzenetsor-kezelőjét, a kaptár nézetet és a TEZ nézetet.  A konfigurálási és a szolgáltatási információk megtekintéséhez válassza a bármely szolgáltatás hivatkozását.  A Ambari felhasználói felületi **verem és verziója** lapon információk szerepelnek a fürtszolgáltatás konfigurációjának és a szolgáltatás verziójának előzményeiről. Ha a Ambari felhasználói felületének ezen szakaszára szeretne navigálni, válassza a **rendszergazda** menüt, majd a **Stacks és a Versions** elemet.  A **verziók** lapon tekintheti meg a szolgáltatás verziószámával kapcsolatos információkat.
 
-![Apache Ambari-rendszergazdai verem és verziók](./media/hdinsight-log-management/ambari-stack-versions.png)
+:::image type="content" source="./media/hdinsight-log-management/ambari-stack-versions.png" alt-text="Apache Ambari-rendszergazdai verem és verziók":::
 
 A Ambari felhasználói felületének használatával letöltheti a fürt egy adott gazdagépén (vagy csomópontján) futó bármely (vagy az összes) szolgáltatás konfigurációját.  Válassza a **gazdagépek** menüt, majd a kívánt gazdagépre mutató hivatkozást. A gazdagép lapján válassza a **gazdagép műveletek** gombot, majd **töltse le az ügyfél konfigurációit**.
 
-![Apache Ambari letöltési gazdagép-ügyfél konfigurációja](./media/hdinsight-log-management/download-client-configs.png)
+:::image type="content" source="./media/hdinsight-log-management/download-client-configs.png" alt-text="Apache Ambari letöltési gazdagép-ügyfél konfigurációja":::
 
 ### <a name="view-the-script-action-logs"></a>A parancsfájl műveleti naplóinak megtekintése
 
@@ -102,7 +102,7 @@ log4j.logger.alerts=DEBUG,alerts
 
 A következő lépés a feladatok végrehajtási naplófájljainak áttekintése a különböző szolgáltatásokhoz.  A szolgáltatások lehetnek például az Apache HBase, a Apache Spark és sok más. A Hadoop-fürtök nagy mennyiségű részletes naplót készítenek, így a hasznos naplók (és amelyek nem) időigényesek lehetnek.  A naplófájlok kezeléséhez fontos a naplózási rendszer ismertetése.  A következő képen egy példa naplófájl található.
 
-![HDInsight példa naplófájl minta kimenete](./media/hdinsight-log-management/hdi-log-file-example.png)
+:::image type="content" source="./media/hdinsight-log-management/hdi-log-file-example.png" alt-text="HDInsight példa naplófájl minta kimenete":::
 
 ### <a name="access-the-hadoop-log-files"></a>A Hadoop naplófájlok elérése
 
@@ -157,7 +157,7 @@ Miután meghatározta, hogy mely naplófájlok törölhetők, a naplózási para
 
 Bizonyos naplófájlok esetében alacsonyabb árú naplófájl-archiválási módszert használhat. Azure Resource Manager tevékenységi naplók esetében ezt a megközelítést a Azure Portal használatával is megismerheti.  Állítsa be a Resource Manager-naplók archiválását úgy, hogy kiválasztja a HDInsight-példányhoz tartozó Azure Portalban található **műveletnapló** hivatkozást.  A tevékenység naplójának keresése lap tetején válassza az **Exportálás** menüpontot az **exportálási tevékenység naplója** panel megnyitásához.  Töltse ki az előfizetést, a régiót, a Storage-fiókba való exportálást, valamint azt, hogy hány napig tart a naplók megőrzése. Ugyanezen az ablaktáblán azt is jelezheti, hogy az egy Event hub-ba exportálható-e.
 
-![Azure Portal exportálási tevékenység naplójának előzetes verziója](./media/hdinsight-log-management/hdi-export-log-files.png)
+:::image type="content" source="./media/hdinsight-log-management/hdi-export-log-files.png" alt-text="Azure Portal exportálási tevékenység naplójának előzetes verziója":::
 
 Azt is megteheti, hogy parancsfájl-archiválást végez a PowerShell használatával.  Példa a PowerShell-parancsfájlra: [Azure Automation naplók archiválása az Azure-ba blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

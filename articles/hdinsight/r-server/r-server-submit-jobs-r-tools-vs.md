@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c5a0b2d21f7d42b8ce96f72d58e5d0a8ab0c572c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee984de22052076618728fbacfc31b73c18c073a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98943940"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864686"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -22,7 +22,7 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visu
 
 1. [A Visual studióhoz készült R Tools](/visualstudio/rtvs/installing-r-tools-for-visual-studio)telepítése.
 
-    ![A RTVS telepítése a Visual Studio 2017-ben](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png" alt-text="A RTVS telepítése a Visual Studio 2017-ben" border="true":::
 
 2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását**, az **r-fejlesztés futásidejű támogatását**, valamint a **Microsoft r-ügyfél** beállításait.
 
@@ -38,7 +38,7 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visu
 
    2. Nyissa meg az **R Tools** menüelemet, majd válassza az **adatelemzési beállítások...** elemet.
 
-       ![A Visual Studio adatelemzési beállításai](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png" alt-text="A Visual Studio adatelemzési beállításai" border="true":::
 
       > [!NOTE]  
       > Az 1. lépésben ismertetett módszer használatával az **adatelemzési beállítások** parancs megismétlése helyett mentheti és visszaállíthatja a személyre szabott adattudós-elrendezést.
@@ -53,11 +53,11 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visu
 6. A fájl elejétől kezdve nyomja le a CTRL + ENTER billentyűkombinációt az egyes sorok egyszerre történő elküldéséhez az R interaktív ablakba. Egyes sorok a csomagok telepítésekor eltarthat egy ideig.
     * Azt is megteheti, hogy kijelöli az R-fájl összes sorát (CTRL + A), majd végrehajtja az összeset (CTRL + ENTER), vagy kiválasztja az interaktív végrehajtás ikont az eszköztáron.
 
-        ![Visual Studio – interaktív végrehajtás](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png" alt-text="Visual Studio – interaktív végrehajtás" border="true":::
 
 7. A parancsfájlban szereplő összes sor futtatása után a következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Visual Studio-munkaterület R-eszközei](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png" alt-text="Visual Studio-munkaterület R-eszközei" border="true":::
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Feladatok elküldése egy HDInsight ML Services-fürtbe
 
@@ -93,7 +93,7 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![az Apache Spark beállítása a kontextusban](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png" alt-text="az Apache Spark beállítása a kontextusban" border="true":::
 
 1. Hajtsa végre a következő parancsokat az R interaktív ablakban:
 
@@ -105,22 +105,23 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
 
     A következőhöz hasonló kimenetnek kell megjelennie:
 
-    ![Az RX-parancs sikeres végrehajtása ](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)
+    :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png" alt-text="Az RX-parancs sikeres végrehajtása" border="true":::
+a
 1. Ellenőrizze, hogy a `rxHadoopCopy` fájl sikeresen átmásolva lett `people.json` -e a példa adatmappából az újonnan létrehozott `/user/RevoShare/newUser` mappába:
 
     1. Az Azure HDInsight ML-szolgáltatások fürtjének paneljén válassza a bal oldali menüben a **Storage-fiókok** lehetőséget.
 
-        ![Azure HDInsight-tár-fiókok](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png" alt-text="Azure HDInsight-tár-fiókok" border="true":::
 
     2. Válassza ki a fürt alapértelmezett Storage-fiókját, jegyezze fel a tároló/könyvtár nevét.
 
     3. A Storage-fiók panel bal oldali menüjében válassza a **tárolók** lehetőséget.
 
-        ![Azure HDInsight-tár tárolók](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png" alt-text="Azure HDInsight-tár tárolók" border="true":::
 
     4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare*, majd a **newUser** lehetőséget. A `people.json` fájlnak a mappában kell megjelennie `newUser` .
 
-        ![HDInsight másolt mappa helye](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        :::image type="content" source="./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png" alt-text="HDInsight másolt mappa helye" border="true":::
 
 1. Miután befejezte az aktuális Apache Spark környezet használatát, le kell állítania azt. Egyszerre nem futtathat több kontextust.
 

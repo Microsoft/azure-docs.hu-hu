@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 08a8dde815a6dea5d69e5e2a385cbaa03fba681a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0c1b67e42e7988a836ec58ac022b11d736210bca
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99832694"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865621"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Felhőalapú szolgáltatás (kiterjesztett támogatás) üzembe helyezése Azure PowerShell használatával
 
@@ -88,7 +88,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. Győződjön meg arról, hogy engedélyezte a "hozzáférési szabályzatok" (a portálon) hozzáférését az "Azure Virtual Machines for Deployment" és a "Azure Resource Manager for template Deployment" eléréséhez. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
+9. Key Vault létrehozása. Ez a Key Vault a Cloud Service (bővített támogatás) szerepköreihez társított tanúsítványok tárolására szolgál. A Key Vaultnak ugyanabban a régióban és előfizetésben kell lennie, mint a Cloud Service, és egyedi névvel kell rendelkeznie. További információ: [tanúsítványok használata az Azure Cloud Services (bővített támogatás)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosOrg” -Location “East US” 
@@ -97,6 +97,7 @@ Tekintse át a Cloud Services [telepítésének előfeltételeit](deploy-prerequ
 10. Frissítse a Key Vault hozzáférési szabályzatot, és adja meg a tanúsítvány engedélyeit a felhasználói fiókjához. 
 
     ```powershell
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -EnabledForDeployment
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosKeyVault' -ResourceGroupName 'ContosOrg' -UserPrincipalName 'user@domain.com' -PermissionsToCertificates create,get,list,delete 
     ```
 

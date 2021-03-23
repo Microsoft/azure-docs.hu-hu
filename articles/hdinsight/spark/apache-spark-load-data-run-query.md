@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 02/12/2020
-ms.openlocfilehash: d3c8a08a14b23492c4bf032dd2b722c59bdf80ff
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de17bf02392f0bb05820fabba3f9057e067391cf
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930092"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865910"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése és lekérdezések futtatása egy Apache Spark-fürtön az Azure HDInsightban
 
@@ -33,7 +33,7 @@ A Jupyter Notebook egy interaktív notebook-környezet, amely számos programoz�
 
 2. A Jupyter weblapon válassza az **új**  >  **PySpark** lehetőséget a jegyzetfüzet létrehozásához.
 
-   ![Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához")
+   :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png " alt-text="Jupyter Notebook létrehozása az interaktív Spark SQL-lekérdezés futtatásához" border="true":::
 
    A rendszer létrehoz egy új jegyzetfüzetet, és a névtelen név () nevet nyitja meg `Untitled.ipynb` .
 
@@ -44,7 +44,7 @@ A Jupyter Notebook egy interaktív notebook-környezet, amely számos programoz�
 
 Az alkalmazások közvetlenül a távoli tárolóban található fájlokból vagy mappákból hozhatnak létre dataframes, például az Azure Storage vagy a Azure Data Lake Storage; egy struktúra táblából; vagy a Spark által támogatott egyéb adatforrásokból, például az Cosmos DB, az Azure SQL DB, a DW stb. A következő képernyőképen az oktatóanyaghoz használt HVAC.csv fájl pillanatfelvétele látható. Ez a csv-fájl minden HDInsight Spark-fürtön megtalálható. Az adatok néhány épület hőmérséklet-változását rögzítik.
 
-![Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png " alt-text="Az interaktív Spark SQL-lekérdezésre vonatkozó adatok pillanatképe" border="true":::
 
 1. Illessze be a következő kódot a Jupyter Notebook egy üres cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt a kód futtatásához. A kód importálja az alábbi forgatókönyvhöz szükséges típusokat:
 
@@ -55,7 +55,7 @@ Az alkalmazások közvetlenül a távoli tárolóban található fájlokból vag
 
     Amikor a Jupyterben interaktív lekérdezést futtatunk, a böngésző ablakának vagy lapjának címsorában a **(Foglalt)** állapot jelenik meg a notebook neve mellett. A jobb felső sarokban lévő **PySpark** felirat mellett ekkor egy teli kör is megjelenik. A feladat befejezése után ez a jel üres körre változik.
 
-    ![Az interaktív Spark SQL-lekérdezés állapota](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Az interaktív Spark SQL-lekérdezés állapota")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png " alt-text="Az interaktív Spark SQL-lekérdezés állapota" border="true":::
 
 1. Megjegyzés: a visszaadott munkamenet-azonosító. A fenti képen a munkamenet-azonosító 0. Ha kívánja, lekérheti a munkamenet részleteit, ha a `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` CLUSTERNAME a Spark-fürt neve, az azonosító pedig a munkamenet-azonosító száma.
 
@@ -80,11 +80,11 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
    Az alábbi táblázatos kimenet jelenik meg.
 
-     ![Interaktív Spark-lekérdezés eredményének táblázatos kimenete](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Interaktív Spark-lekérdezés eredményének táblázatos kimenete")
+     :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png " alt-text="Interaktív Spark-lekérdezés eredményének táblázatos kimenete" border="true":::
 
 2. Az eredményeket egyéb megjelenítési formákban is megtekintheti. Az azonos kimenethez tartozó területgrafikon megjelenítéséhez válassza az **Area** (Terület) lehetőséget, majd állítsa be a további értékeket az ábra szerint.
 
-    ![Az interaktív Spark-lekérdezés eredményének terület gráfja](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Az interaktív Spark-lekérdezés eredményének terület gráfja")
+    :::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png " alt-text="Az interaktív Spark-lekérdezés eredményének terület gráfja" border="true":::
 
 3. A notebook menüsávban navigáljon a **fájl**  >  **Mentés és ellenőrzőpont** elemre.
 
@@ -96,7 +96,7 @@ A HDInsight az adatait és Jupyter jegyzetfüzeteit az Azure Storage vagy a Azur
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 
-![HDInsight-fürt törlése](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+:::image type="content" source="./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png " alt-text="HDInsight-fürt törlése" border="true":::
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésekor a rendszer a HDInsight Spark-fürtöt és az alapértelmezett tárfiókot is törli.
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
-ms.openlocfilehash: e21361b6d491f53f41754831d2bdf896ef2719db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33171527f03b0cc386f683f55f6cf9a70913abdb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101091427"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871214"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -36,7 +36,7 @@ A **HDInsight-fürtök** lapon megjelenik a meglévő fürtök listája.  A port
 
 Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ekkor megnyílik az **Áttekintés** nézet, amely az alábbi képhez hasonlóan néz ki:
 
-![Azure Portal HDInsight-fürt Essentials](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+:::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png" alt-text="Azure Portal HDInsight-fürt Essentials":::
 
 **Felső menü:**  
 
@@ -173,7 +173,7 @@ A [fürt kezdőlapján](#homePage):
 
 1. Válassza a **fürt irányítópultok** lehetőséget.
 
-    ![HDInsight Apache Hadoop-fürt menü](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    :::image type="content" source="./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png" alt-text="HDInsight Apache Hadoop-fürt menü":::
 
 1. Válassza a **Ambari Kezdőlap** lehetőséget az új lapon.
 1. Adja meg a fürt felhasználónevét és jelszavát.  Az alapértelmezett fürt felhasználóneve a _rendszergazda_.

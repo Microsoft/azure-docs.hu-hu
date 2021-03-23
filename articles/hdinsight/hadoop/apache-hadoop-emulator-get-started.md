@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 60f4e4998e1077ca373f47a0cdf35c9d7a064605
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946614"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866675"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
@@ -39,7 +39,7 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók** a
 1. A **fájl** menüben kattintson a **berendezés importálása** elemre, majd adja meg a Hortonworks-homokozó rendszerképét.
 1. Válassza ki a Hortonworks Sandboxot, kattintson a **Start** gombra, majd a **normál indítás** elemre. Ha a virtuális gép befejezte a rendszerindítási folyamatot, a bejelentkezési utasításokat jeleníti meg.
 
-    ![a VirtualBox Manager normál indítása](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    :::image type="content" source="./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png" alt-text="a VirtualBox Manager normál indítása" border="true":::
 
 1. Nyisson meg egy webböngészőt, és navigáljon a megjelenő URL-címhez (általában `http://127.0.0.1:8888` ).
 

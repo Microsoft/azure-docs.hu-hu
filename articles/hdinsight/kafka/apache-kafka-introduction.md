@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: baf41b9e66b14e4b255b6e13b22691357f9e7309
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939269"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870806"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Mi az Azure HDInsight Apache Kafka
 
@@ -44,7 +44,7 @@ A HDInsight-alapú Kafka jellegzetességei:
 
 Az alábbi ábra egy tipikus Kafka-konfigurációt mutat be, amely felhasználói csoportok, particionálás és replikálás használatával biztosítja az események párhuzamos olvasását hibatűréssel:
 
-![Kafka-fürtkonfigurációs ábra](./media/apache-kafka-introduction/kafka-cluster-diagram.png)
+:::image type="content" source="./media/apache-kafka-introduction/kafka-cluster-diagram.png" alt-text="Kafka-fürtkonfigurációs ábra" border="false":::
 
 A Kafka-fürt állapotát az Apache ZooKeeper felügyeli. A ZooKeeper egyidejű, rugalmas és kis késleltetésű tranzakciókhoz készült.
 
@@ -58,7 +58,7 @@ A partíciók csomópontok közötti duplikálásához a rendszer replikációt 
 
 Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvégezhetők:
 
-|Használat |Description |
+|Használat |Leírás |
 |---|---|
 |Apache Kafka-adatmennyiség replikálása|A Kafka biztosítja a MirrorMaker segédprogramot, amely a Kafka-fürtök között replikálja az adatgyűjtést. További információ a MirrorMaker használatáról: [Apache Kafka témakörök replikálása Apache Kafka a HDInsight](apache-kafka-mirroring.md).|
 |Közzététel – előfizetés üzenetkezelési mintája|A Kafka egy termelői API-t biztosít a rekordok egy Kafka-témakörbe való közzétételéhez. A fogyasztói API-ra a témakörökre való feliratkozáskor van szükség. További információ: [Start with apache Kafka on HDInsight](apache-kafka-get-started.md).|

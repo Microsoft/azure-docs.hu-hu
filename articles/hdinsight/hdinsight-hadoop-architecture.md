@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f69917b574c0be8fdacf05934b05544a4f491a9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945909"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864193"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-architektúra a HDInsightban
 
@@ -42,7 +42,7 @@ A Csomópontkezelők futtatják az alkalmazást alkotó feladatokat, majd jelent
 
 Az összes HDInsight-fürt a FONALat helyezi üzembe. A erőforráskezelő a magas rendelkezésre álláshoz van telepítve egy elsődleges és egy másodlagos példánnyal, amely az első és a második főcsomóponton fut a fürtön belül. Egyszerre csak a erőforráskezelő egyetlen példánya aktív. A NodeManager-példányok a fürt rendelkezésre álló munkavégző csomópontjain futnak.
 
-![Apache-fonal az Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+:::image type="content" source="./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png" alt-text="Apache-fonal az Azure HDInsight" border="false":::
 
 ## <a name="soft-delete"></a>Helyreállítható törlés
 

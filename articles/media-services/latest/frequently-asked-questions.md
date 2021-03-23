@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a9394a5e117a577c903eccdf91cf22d0c359df2b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581116"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871401"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 – gyakori kérdések
 
@@ -47,12 +47,6 @@ Lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Media Servi
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Hogyan streamet az Apple iOS-eszközökre?
 
 Győződjön meg arról, hogy az elérési út végén található ( **Format = m3u8-AAPL)** (az URL-cím **/manifest** szakasza után), hogy az adatfolyam-küldő kiszolgáló visszaadja-e a http Live Streaming (HLS) tartalmat az Apple iOS Native-eszközökön való felhasználáshoz. Részletekért lásd: [tartalom továbbítása](dynamic-packaging-overview.md).
-
-### <a name="how-do-i-configure-media-reserved-units"></a>Hogyan a Media szolgáltatás számára fenntartott egységek konfigurálása?
-
-A Media Services v3 vagy Video Indexer által aktivált hangelemzési és videó-elemzési feladatok esetében javasoljuk, hogy a fiókját 10 S3 Media szolgáltatás számára fenntartott egységgel (MRUs) adja meg. Ha több mint 10 S3 MRUs van szüksége, nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com/)használatával.
-
-Részletekért lásd: a [médiafájlok feldolgozásának skálázása](media-reserved-units-cli-how-to.md).
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Mi az ajánlott módszer a videók feldolgozására?
 
