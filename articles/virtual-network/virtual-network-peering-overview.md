@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98216750"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778289"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -25,8 +25,8 @@ A virtuális hálózatok közötti kapcsolat lehetővé teszi két vagy több [v
 
 Az Azure a következő típusú társításokat támogatja:
 
-* Virtuális hálózati társítás: virtuális hálózatok összekötése ugyanazon az Azure-régión belül.
-* Globális virtuális hálózati társítás: virtuális hálózatok összekapcsolása az Azure-régiók között.
+* **Virtuális hálózati** társítás: virtuális hálózatok összekötése ugyanazon az Azure-régión belül.
+* **Globális virtuális hálózati** társítás: virtuális hálózatok összekapcsolása az Azure-régiók között.
 
 A virtuális társhálózatok akár helyi, akár globális létesítésének előnyei:
 
@@ -39,7 +39,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 

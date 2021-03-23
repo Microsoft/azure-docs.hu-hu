@@ -4,34 +4,100 @@ summary: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet virtu
 metadata:
   title: A BareMetal Infrastructure dokumentációja
   description: Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet virtuális gépeket a Microsoft Azure-ban a BareMetal Infrastructure használatával.
-  services: virtual-machines
+  services: baremetal-infrastructure
   ms.service: baremetal-infrastructure
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 12/31/2020
-  ms.openlocfilehash: 285421d12b656290ef5ddbe21136345b718e0ca1
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.date: 03/19/2021
+  ms.openlocfilehash: 9380cd3d0d3184716d980f57e8cc88ab27201b20
+  ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98730272"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104770903"
 landingContent:
 - title: A BareMetal Infrastructure névjegye
   linkLists:
   - linkListType: overview
     links:
     - text: Mi az Azure-beli BareMetal Infrastructure?
-      url: workloads/sap/baremetal-overview-architecture.md
+      url: concepts-baremetal-infrastructure-overview.md
     - text: A feltételek megismerése
       url: know-baremetal-terms.md
+    - text: BareMetal-számításifeladatok típusai
+      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: BareMetal-példány-egységek összekötése az Azure-ban
+      url: connect-baremetal-infrastructure.md
+- title: SAP HANA az Azure-ban (nagyméretű példányok)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Tanúsítvány
+      url: /azure/virtual-machines/workloads/sap/hana-certification?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: HLI-hez elérhető termékváltozatok
+      url: /azure/virtual-machines/workloads/sap/hana-available-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Méretezés
+      url: /azure/virtual-machines/workloads/sap/hana-sizing?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Előkészítési követelmények
+      url: /azure/virtual-machines/workloads/sap/hana-onboarding-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: SAP HANA adatszintezés és bővítménycsomópontok
+      url: /azure/virtual-machines/workloads/sap/hana-data-tiering-extension-nodes?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Működési modell és feladatok
+      url: /azure/virtual-machines/workloads/sap/hana-operations-model?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Kompatibilis operációs rendszerek
+      url: /azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: HLI – támogatott esetek
+      url: /azure/virtual-machines/workloads/sap/hana-supported-scenario?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+  - linkListType: architecture
+    links:
+    - text: Általános architektúra
+      url: /azure/virtual-machines/workloads/sap/hana-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Hálózati architektúra
+      url: /azure/virtual-machines/workloads/sap/hana-network-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Tároló-architektúra
+      url: /azure/virtual-machines/workloads/sap/hana-storage-architecture?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+  - linkListType: get-started
+    links:
+    - text: HLI – üzembe helyezés
+      url: /azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Azure-beli virtuális gépek csatlakozása nagy méretű HANA-példányokhoz
+      url: /azure/virtual-machines/workloads/sap/hana-connect-azure-vm-large-instances?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Virtuális hálózat csatlakoztatása nagy méretű HANA-példányokhoz – ExpressRoute
+      url: /azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: További hálózati követelmények
+      url: /azure/virtual-machines/workloads/sap/hana-additional-network-requirements?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: A konfiguráció ellenőrzése
+      url: /azure/virtual-machines/workloads/sap/hana-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Minta HANA-telepítés
+      url: /azure/virtual-machines/workloads/sap/hana-example-installation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
   - linkListType: reference
     links:
-    - text: BareMetal-számításifeladatok típusai
-      url: ../virtual-machines/workloads/sap/get-started.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
-- title: BareMetal-példányegységek
-  linkLists:
+    - text: Lehetőségek és megfontolandó szempontok
+      url: /azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Biztonsági mentés és visszaállítás
+      url: /azure/virtual-machines/workloads/sap/hana-backup-restore?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Alapelvek és előkészítés
+      url: /azure/virtual-machines/workloads/sap/hana-concept-preparation?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Vészhelyreállítási feladatátvételi eljárás
+      url: /azure/virtual-machines/workloads/sap/hana-failover-procedure?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: A HLI monitorozása
+      url: /azure/virtual-machines/workloads/sap/troubleshooting-monitoring?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: HANA-oldali monitorozás és hibaelhárítás
+      url: /azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot?context=/azure/baremetal-infrastructure/workloads/sap/context/context
   - linkListType: how-to-guide
     links:
-    - text: BareMetal-példányegységek kezelése az Azure-ban
-      url: workloads/sap/baremetal-infrastructure-portal.md
+    - text: Magas rendelkezésre állás beállítása a STONITH használatával
+      url: /azure/virtual-machines/workloads/sap/ha-setup-with-stonith?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
+      url: /azure/virtual-machines/workloads/sap/os-backup-type-ii-skus?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: A Kdump engedélyezése a HANA nagyméretű példányaihoz
+      url: /azure/virtual-machines/workloads/sap/hana-large-instance-enable-kdump?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: HANA nagyméretű példányainak operációsrendszer-frissítése
+      url: /azure/virtual-machines/workloads/sap/os-upgrade-hana-large-instance?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: SMT-kiszolgáló beállítása SUSE Linuxhoz
+      url: /azure/virtual-machines/workloads/sap/hana-setup-smt?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: HLI-ből Azure-beli virtuális gépre irányuló migrálás
+      url: /azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+    - text: SAP HANA nagy méretű példányaira vonatkozó foglalás vásárlása
+      url: /azure/cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity

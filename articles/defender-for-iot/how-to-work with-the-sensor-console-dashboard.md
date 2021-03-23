@@ -1,18 +1,14 @@
 ---
 title: Az érzékelő konzol irányítópultjának használata
 description: Az irányítópult segítségével gyorsan megtekintheti a hálózat biztonsági állapotát. Magas szintű áttekintést nyújt a fenyegetésekről az egész rendszerre vonatkozóan egy idővonalon, valamint a kapcsolódó eszközökre vonatkozó információkkal.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/03/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: c9afc22cd123a782c9ee0247952c78c72ee916c0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9bc650e9c306d12ef63994852816c96e1bdf40a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523634"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781534"
 ---
 # <a name="the-dashboard"></a>Az irányítópult
 
@@ -46,7 +42,7 @@ A nem visszaigazolt riasztások (UA) mérőműszer az oldal közepén jelzi az i
 
 Ebben a szakaszban az egyes állapotok mezőit ismertetjük.
 
-| Állapot mező és mérőműszerek | Description |
+| Állapot mező és mérőműszerek | Leírás |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="Kritikus riasztások"::: | **Kritikus riasztások** – az oldal felső részén található doboz jelzi a kritikus riasztások számát. Jelölje be ezt a jelölőnégyzetet, ha a riasztások leírását szeretné megjeleníteni az idővonalon és a mérőműszerek listáján, ha van ilyen.                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="Főbb riasztások"::: | **Nagyobb riasztások** – az oldal jobb felső sarkában található jelölőnégyzet a fő riasztások számát jelzi. Jelölje be ezt a jelölőnégyzetet, ha a riasztások leírását szeretné megjeleníteni az idővonalon és a mérőműszerek listáján, ha van ilyen.                                     |

@@ -1,30 +1,30 @@
 ---
 title: Azure Migrate készülék beállítása a VMware-hez
-description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a VMware virtuális gépek felméréséhez és áttelepítéséhez.
+description: Ismerje meg, hogyan állíthat be egy Azure Migrate készüléket a kiszolgálók VMware-környezetben való értékeléséhez és áttelepítéséhez.
 author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: bac82b2939e5b6a674c75be2cd330dd0fa4b8487
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102035812"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780871"
 ---
-# <a name="set-up-an-appliance-for-vmware-vms"></a>Készülék beállítása VMware virtuális gépekhez
+# <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Berendezések beállítása a VMware-környezetben található kiszolgálókhoz
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure Migrate készüléket a [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool és az ügynök nélküli áttelepítés számára a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Migrate berendezést a [Azure Migrate: felderítési és értékelési](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszköz, valamint az ügynök nélküli áttelepítés számára a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával.
 
-Az [Azure Migrate készülék](migrate-appliance.md) egy Azure Migrate által használt, könnyű berendezés: a kiszolgálók értékelése és a kiszolgálók áttelepítése az vCenter Server-ban futó kiszolgálók felderítésére, a kiszolgáló konfigurációjának és teljesítmény-metaadatainak küldésére az Azure-ba, valamint a kiszolgálók ügynök nélküli áttelepítéssel történő replikálásához.
+Az [Azure Migrate készülék](migrate-appliance.md) egy Azure Migrate által használt, könnyű berendezés: felderítési és értékelési és kiszolgáló-áttelepítési szolgáltatás a vCenter Server-ben futó kiszolgálók felderítésére, a kiszolgáló konfigurációjának és teljesítmény-metaadatainak küldésére az Azure-ba, valamint a kiszolgálók ügynök nélküli áttelepítéssel történő replikálásához.
 
 A készüléket néhány módszerrel is üzembe helyezheti:
 
 - Hozzon létre egy kiszolgálót a vCenter Server egy letöltött PETESEJT-sablon használatával. Ez a cikkben ismertetett módszer.
 - Állítsa be a készüléket egy meglévő kiszolgálóra egy PowerShell-telepítő parancsfájl használatával. [Ezt a módszert](deploy-appliance-script.md) akkor kell használni, ha nem használhat petesejt-sablont, vagy ha Azure Government van.
 
-A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: kiszolgáló értékeléséhez, regisztrálja a Azure Migrate projekttel, és konfigurálja a berendezést a felderítés elindításához.
+A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez, regisztrálja a Azure Migrate projekttel, és konfigurálja a berendezést a felderítés elindításához.
 
 ## <a name="deploy-with-ova"></a>Üzembe helyezés PETESEJTekkel
 
@@ -36,8 +36,8 @@ Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
 
 ### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
 
-1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
-2. A **felderítési gépeken** a  >  **gépek virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
+1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: felderítés és értékelés**, majd **a felderítés** elemre.
+2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
 3. **1.: hozzon létre Azure Migrate projektfájlt**, adjon meg egy nevet a Azure Migrate berendezés számára, amelyet a VMware-környezetben található kiszolgálók felderítéséhez fog beállítani. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárja be a felderítés oldalt az erőforrások létrehozása során.
 1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
@@ -95,7 +95,7 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 
 1. A vSphere-ügyfél konzolján kattintson a jobb gombbal a kiszolgálóra, majd válassza a **konzol megnyitása** lehetőséget.
 2. Adja meg a berendezés nyelvét, időzónáját és jelszavát.
-3. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozni tud a berendezés-kiszolgálóhoz, és nyissa meg a készülék Configuration Manager URL-címét: `https://appliance name or IP address: 44368` .
+3. Nyisson meg egy böngészőt bármely olyan kiszolgálón, amely képes csatlakozni a berendezés-kiszolgálóhoz, és nyissa meg a készülék Configuration Manager URL-címét: `https://appliance name or IP address: 44368` .
 
    Másik lehetőségként megnyithatja a Configuration Managert a berendezés-kiszolgáló asztaláról a Configuration Manager parancsikonjának kiválasztásával.
 1. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
@@ -117,7 +117,7 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **felderítés és értékelés> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
 1. Szüksége lesz egy eszköz kódjára az Azure-beli hitelesítéshez. A **Bejelentkezés** gombra kattintva megnyílik egy modális az eszköz kódjával az alább látható módon.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Az eszköz kódját ábrázoló modális":::
@@ -141,7 +141,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a kiszolgálók konfigur�
 
 1. Az **1. lépés: vCenter Server hitelesítő adatok** megadása lapon kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** ahhoz a vCenter Server-fiókhoz, amelyet a berendezés a vCenter Server futó kiszolgálók felderítéséhez használ majd.
     - A fenti cikkben leírtak szerint be kell állítania egy fiókot a szükséges engedélyekkel.
-    - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, gazdagépekre vagy egyéni virtuális gépekre) szeretné alkalmazni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
+    - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontok, fürtök, fürtök, gazdagépek, gazdagépek vagy különálló kiszolgálók mappára) szeretné használni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
 1. A **2. lépés: adja meg a vCenter Server részleteket** lehetőségnél kattintson a **felderítési forrás hozzáadása** elemre, hogy a legördülő listából válassza ki a hitelesítő adatok rövid nevét, adja meg a vCenter Server **IP-címét/teljes tartománynevét** . A **portot** meghagyhatja az alapértelmezett értékre (443), vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli, és kattintson a **Save (Mentés**) gombra.
 1. A **Save (Mentés**) gombra kattintva a készülék megpróbálja ellenőrizni a vCenter Serverhoz való kapcsolódást a megadott hitelesítő adatokkal, és megjeleníti az **ellenőrzési állapotot** a táblában a vCenter Server IP-cím/FQDN használatával.
 1. A felderítés elindítása előtt bármikor **újraérvényesítheti** vCenter Server a kapcsolatot.

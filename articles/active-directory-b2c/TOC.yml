@@ -496,6 +496,7 @@
       href: custom-policy-developer-notes.md
     - name: Oldalelrendezési verziók
       href: page-layout.md
+      displayName: Page version
     - name: Régiónkénti elérhetőség és az adatok tárolási helye
       href: data-residency.md
     - name: Rugalmasságot szem előtt tartó kiépítés

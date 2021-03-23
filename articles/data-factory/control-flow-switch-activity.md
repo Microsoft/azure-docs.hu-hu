@@ -3,16 +3,16 @@ title: Váltás a Azure Data Factoryban
 description: A kapcsoló tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 4d58b032fe0371c9b54cf66ab13f525880867fb6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 08d93bd3d49dc345b35a942d4d5db4eef937d3de
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100385353"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786141"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Váltás a Azure Data Factoryban
 
@@ -67,11 +67,11 @@ A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch u
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | A kapcsoló tevékenység neve. | Sztring | Yes
-típus | *Kapcsolót* kell beállítani* | Sztring | Yes
-kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Yes
-esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Yes
-defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Yes
+name | A kapcsoló tevékenység neve. | Sztring | Igen
+típus | *Kapcsolót* kell beállítani* | Sztring | Igen
+kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
+esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Igen
+defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Igen
 
 ## <a name="example"></a>Példa
 

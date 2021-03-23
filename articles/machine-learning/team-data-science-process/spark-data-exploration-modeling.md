@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 531e5cf274d40eae19075514d50aec5a6524aeec
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028087"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775340"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 
@@ -40,7 +40,7 @@ Ebben az útmutatóban a telepítési lépéseket és kódokat a HDInsight Spark
 > [!NOTE]
 > Az alábbi leírások a Spark 1,6-es verzióval kapcsolatosak. Spark 2,0-verziók esetén használja a fentiekben leírt és csatolt jegyzetfüzeteket. 
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Beállítás
 
 A Spark képes olvasni és írni Azure Storage Blob (más néven WASB). Így az ott tárolt meglévő adatai feldolgozhatók a Spark használatával és a WASB-ben újra tárolt eredményekkel.
 
@@ -495,7 +495,8 @@ A fenti cella végrehajtásához szükséges idő: 0,24 másodperc
 
 ### <a name="feature-scaling"></a>Szolgáltatásskálázás
 
-A szolgáltatás skálázása, más néven az adatok normalizálása, nem biztosítja, hogy a széles körben kifizetett értékekkel rendelkező funkciók ne legyenek nagy mértékben mérlegelve az objektív függvényben. A szolgáltatás skálázásának kódja a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) használatával méretezi a szolgáltatásokat az egység variancia számára. A MLlib a lineáris regressziós és a sztochasztikus gradiens (SGD), egy népszerű algoritmus, amely számos más gépi tanulási modellt, például rendszeres regressziós vagy támogató vektoros gépeket (SVM) biztosít.
+A szolgáltatás skálázása, más néven az adatok normalizálása, nem biztosítja, hogy a széles körben kifizetett értékekkel rendelkező funkciók ne legyenek nagy mértékben mérlegelve az objektív függvényben. A szolgáltatás skálázásának kódja a [StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS
+) használatával méretezi a szolgáltatásokat az egység variancia számára. A MLlib a lineáris regressziós és a sztochasztikus gradiens (SGD), egy népszerű algoritmus, amely számos más gépi tanulási modellt, például rendszeres regressziós vagy támogató vektoros gépeket (SVM) biztosít.
 
 > [!NOTE]
 > Találtunk a LinearRegressionWithSGD algoritmust, hogy az érzékeny legyen a szolgáltatás skálázására.

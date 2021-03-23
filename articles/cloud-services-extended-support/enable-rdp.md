@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 53f873013a6f16ce5a28ee5d915afa556057f643
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 94827916f28c9028d46bf7b5461a4fbd941b2a96
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98744421"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773402"
 ---
 # <a name="apply-the-remote-desktop-extension-to-azure-cloud-services-extended-support"></a>A Távoli asztal bővítmény alkalmazása az Azure Cloud Servicesra (bővített támogatás)
 
@@ -27,8 +27,9 @@ A Azure Portal a távoli asztal bővítmény használatával engedélyezheti a T
 2. Válassza a **Hozzáadás** lehetőséget.
 3. Válassza ki azokat a szerepköröket, amelyekkel engedélyezni szeretné a Távoli asztalt.
 4. Adja meg a Felhasználónév, a jelszó, a lejárat és a tanúsítvány kötelező mezőit (nem kötelező).
+> Megjegyzés A távoli asztal jelszavának 8-123 karakter hosszúnak kell lennie, és meg kell felelnie legalább hármat a jelszó bonyolultsági követelményei közül a következők közül: 1) a 2. kisbetűs karaktert tartalmazza, amely a 3. számjegyet tartalmaz, amely a 4. speciális karaktert tartalmazza, és az 5. különleges karakter nem megengedett.
 
-    :::image type="content" source="media/remote-desktop-2.png" alt-text="A képen a távoli asztalhoz való kapcsolódáshoz szükséges információk bevitele látható.":::
+   :::image type="content" source="media/remote-desktop-2.png" alt-text="A képen a távoli asztalhoz való kapcsolódáshoz szükséges információk bevitele látható.":::
 
 5. Ha elkészült, válassza a **Mentés** lehetőséget. Néhány percet is igénybe vehet, mielőtt a szerepkör-példányok megkapják a kapcsolatokat.
 

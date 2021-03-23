@@ -1,18 +1,14 @@
 ---
 title: Riasztási információk továbbítása
 description: Riasztási információkat küldhet a partneri rendszereknek a továbbítási szabályokkal való együttműködéssel.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522733"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778797"
 ---
 # <a name="forward-alert-information"></a>Riasztási információk továbbítása
 
@@ -112,7 +108,7 @@ Adja meg a következő paramétereket:
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="Állítsa be a titkosítást a továbbítási szabályhoz.":::
 
-| Syslog szöveges üzenet kimeneti mezői | Description |
+| Syslog szöveges üzenet kimeneti mezői | Leírás |
 |--|--|
 | Dátum és idő | Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |
 | Prioritás | User. Alert |
@@ -121,7 +117,7 @@ Adja meg a következő paramétereket:
 | Üzenet | Érzékelő: az érzékelő neve.<br /> Riasztás: a riasztás címe.<br /> Típus: a riasztás típusa. A **protokoll megsértését**, a **szabályzat megsértését**, **a kártevőket**, a **rendellenességeket** vagy a **működést** lehet megsérteni.<br /> Súlyosság: a riasztás súlyossága. **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus** lehet.<br /> Forrás: a forrás eszköz neve.<br /> Forrás IP-cím: a forrásoldali eszköz IP-címe.<br /> Cél: a cél eszköz neve.<br /> Cél IP-cím: a céleszköz IP-címe.<br /> Üzenet: a riasztás üzenete.<br /> Riasztási Csoport: a riasztáshoz társított riasztási csoport. |
 
 
-| Syslog-objektum kimenete | Description |
+| Syslog-objektum kimenete | Leírás |
 |--|--|
 | Dátum és idő |   Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |  
 | Prioritás |    User. Alert | 
@@ -129,14 +125,14 @@ Adja meg a következő paramétereket:
 | Üzenet | Érzékelő neve: a készülék neve. <br /> Riasztás időpontja: a riasztás észlelésének időpontja: a syslog-kiszolgáló számítógépének idejétől függően változhat, és a továbbítási szabály időzóna-konfigurációjától függ. <br /> Riasztás címe: a riasztás címe. <br /> Riasztási üzenet: a riasztás üzenete. <br /> Riasztás súlyossága: a riasztás súlyossága: **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus**. <br /> Riasztás típusa: **protokoll megsértése**, **szabályzat megsértése**, **kártevő**, **rendellenesség** vagy **működési**. <br /> Protokoll: a riasztás protokollja.  <br /> **Source_MAC**: a forrásoldali eszköz IP-címe, neve, szállítója vagy operációs rendszere. <br /> Destination_MAC: a célhely IP-címe, neve, szállítója vagy operációs rendszere. Ha hiányzik az adat, az érték **N/a** lesz. <br /> alert_group: a riasztáshoz társított riasztási csoport. |
 
 
-| Syslog CEF kimeneti formátuma | Description |
+| Syslog CEF kimeneti formátuma | Leírás |
 |--|--|
 | Dátum és idő | Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |
 | Prioritás | User. Alert | 
 | Hostname (Gazdanév) | Érzékelő IP-címe |
 | Üzenet | CEF: 0 <br />Azure Defender IoT-hez <br />Érzékelő neve: az érzékelő berendezés neve. <br />Érzékelő verziója <br />Riasztás címe: a riasztás címe. <br />msg: a riasztás üzenete. <br />protokoll: a riasztás protokollja. <br />Súlyosság: **Figyelmeztetés**, **kisebb**, **fő** vagy **kritikus**. <br />típus: **protokoll megsértése**, **szabályzat megsértése**, **kártevő**, **rendellenesség** vagy **működési**. <br /> Kezdés: a riasztás észlelésének időpontja. <br />A syslog-kiszolgáló számítógépének idejétől eltérő lehet, és a továbbítási szabály időzóna-konfigurációjától függ. <br />src_ip: a forrás eszköz IP-címe.  <br />dst_ip: a céleszköz IP-címe.<br />Cat: a riasztáshoz társított riasztási csoport.  |
 
-| Syslog LEEF kimeneti formátuma | Description |
+| Syslog LEEF kimeneti formátuma | Leírás |
 |--|--|
 | Dátum és idő |   Az a dátum és idő, ameddig a syslog-kiszolgáló számítógépe megkapta az információt. |  
 | Prioritás |    User. Alert | 

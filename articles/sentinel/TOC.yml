@@ -323,6 +323,8 @@
           href: /azure/azure-monitor/logs/query-optimization
     - name: UEBA-bővítések
       href: ueba-enrichments.md
+    - name: CEF naplózási mező leképezése
+      href: cef-name-mapping.md
 - name: További források
   items:
     - name: Hasznos források

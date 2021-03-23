@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4f4a8fb82a42c5121105ddf7bb9d3d886b531350
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93321333"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774677"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
@@ -35,7 +35,8 @@ Az itt használt hiperparaméter optimalizálás egyik gyakori módja a rácsos 
 
 Az általunk használt modellek közé tartozik a logisztikai és a lineáris regresszió, a véletlenszerű erdők és a színátmenet-növelő fák:
 
-* A [lineáris regresszió](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) és az SGD egy lineáris regressziós modell, amely egy sztochasztikus átmenetes (SGD) módszert használ, valamint az optimalizálás és a szolgáltatás skálázására, hogy előre megjósolja a kifizetett tip-összegeket. 
+* A [lineáris regresszió](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
+) és az SGD egy lineáris regressziós modell, amely egy sztochasztikus átmenetes (SGD) módszert használ, valamint az optimalizálás és a szolgáltatás skálázására, hogy előre megjósolja a kifizetett tip-összegeket. 
 * A [logisztikai regresszió a LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) vagy a "logit" regresszióval egy regressziós modell, amely akkor használható, ha a függő változó kategorikusan végzi az adatbesorolást. A LBFGS egy kvázi-Newton optimalizálási algoritmus, amely a Broyden – Fletcher – Goldfarb-Shanno (BFGS) algoritmust a korlátozott mennyiségű számítógép memóriájának használatával közelíti meg, és a gépi tanulásban széles körben használatos.
 * A [véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) a döntési fák együttesei.  Számos döntési fát egyesítenek a túlilleszkedés kockázatainak csökkentése érdekében. A véletlenszerű erdők regresszióhoz és besoroláshoz használatosak, és a kategorikus funkciókat kezelhetik, és bővíthetők a többosztályos besorolási beállításokkal. Nem igénylik a szolgáltatások méretezését, és képesek rögzíteni a nem lineáris és a funkciók közötti interakciókat. A véletlenszerű erdők a besorolás és a regresszió egyik legsikeresebb gépi tanulási modellje.
 * A [Gradient által növelt fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS-EK) a döntési fák együttesei. GBTS betanítása a iteratív a veszteségek csökkentése érdekében. A GBTS a regresszió és a besorolás, valamint a kategorikus funkciók kezelésére szolgál, nem szükséges a funkciók skálázása, és képes rögzíteni a nem lineáris és a funkciók közötti interakciókat. Használhatnak többosztályos besorolási beállításban is.

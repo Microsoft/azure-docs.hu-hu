@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: bd196e60fed8a18064bfa59e343e51a878a11237
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217397"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786481"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 Ha kivétel történik, automatikusan gyűjthet egy hibakeresési pillanatképet az élő webalkalmazásból. A pillanatkép a forráskód és a változók állapotát mutatja a kivétel eldobásának pillanatában. Az [Azure Application Insights](./app-insights-overview.md) Snapshot Debugger figyeli a webalkalmazás kivétel-telemetria. Pillanatképeket gyűjt a legfelső szintű kivételekről, így az éles környezetben felmerülő problémák diagnosztizálásához szükséges információkkal rendelkezik. Adja meg a [Pillanatkép-gyűjtő NuGet csomagot](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtemény paramétereit [ApplicationInsights.configban ](./configuration-with-applicationinsights-config.md). A pillanatképek a Application Insights portál [kivételei](./asp-net-exceptions.md) között jelennek meg.
@@ -24,7 +24,10 @@ A hibakeresési Pillanatképek tárolása 15 napig tart. Ez az adatmegőrzési s
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Application Insights Snapshot Debugger engedélyezése az alkalmazáshoz
 A pillanatkép-gyűjtemény a következőhöz érhető el:
 * .NET-keretrendszer és a .NET-keretrendszer 4,5-es vagy újabb verzióját futtató ASP.NET-alkalmazások.
-* A .NET Core 2,0 és a ASP.NET Core 2,0 rendszerű alkalmazások Windows rendszeren futnak.
+* .NET Core-és ASP.NET Core .NET Core 2,1 (LTS) vagy 3,1 (LTS) operációs rendszert futtató alkalmazások Windows rendszeren.
+* .NET 5,0-alkalmazások Windows rendszeren.
+
+A .NET Core 2,0, 2,2 vagy 3,0 használata nem ajánlott, mivel azok nem támogatottak.
 
 A következő környezetek támogatottak:
 

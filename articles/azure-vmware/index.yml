@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 03/12/2021
-  ms.openlocfilehash: edf9adfa316407eb0bf1270bae93d7cfa273d50f
-  ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+  ms.date: 03/22/2021
+  ms.openlocfilehash: 70643a698e089df87a68b93c9f264d15d3735bf5
+  ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/16/2021
-  ms.locfileid: "103490090"
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104782078"
 landingContent:
 - title: Az Azure VMware Solution ismertetése
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
       url: introduction.md
     - text: Platform frissítései
       url: azure-vmware-solution-platform-updates.md
+    - text: GYIK
+      url: faq.yml
   - linkListType: concept
     links:
     - text: Magánfelhő és -fürtök
@@ -130,7 +132,9 @@ landingContent:
     links:
     - text: Biztonsági mentési megoldások virtuális gépekhez
       url: ecosystem-back-up-vms.md
-- title: További források
+    - text: Áttelepítési megoldások a virtuális gépekhez
+      url: ecosystem-migration-vms.md
+- title: Források
   linkLists:
   - linkListType: reference
     links:
@@ -138,8 +142,8 @@ landingContent:
       url: /cli/azure/ext/vmware/vmware
     - text: Azure PowerShell
       url: /powershell/module/az.vmware
-    - text: GYIK
-      url: faq.yml
+    - text: Terraform Azure-szolgáltató
+      url: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud
   - linkListType: video
     links:
     - text: Lejátszási lista

@@ -1,24 +1,14 @@
 ---
 title: A Linux C Agent telepítése & üzembe helyezése
 description: Ismerje meg, hogyan telepítheti és telepítheti a Defender for IoT C-alapú biztonsági ügynököt Linux rendszeren
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: f7f6b28070600ae53242181934ea903a486c25b4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6f59db7ff24412c66a6a4898b14272ea9540fdd2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494563"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778814"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>A Defender üzembe helyezése a IoT C-alapú biztonsági ügynökének Linuxra
 

@@ -1,22 +1,22 @@
 ---
-title: Ismerkedés az Azure AD és az alkalmazások integrálásával
+title: Ismerkedés a Azure Active Directory alkalmazásokkal való integrálásával
 description: Ez a cikk egy első lépéseket ismertető útmutató a Azure Active Directory (AD) helyszíni alkalmazásokkal és felhőalapú alkalmazásokkal való integrálásához.
 services: active-directory
 author: kenwith
 manager: daveba
 ms.service: active-directory
+ms.subservice: app-mgmt
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2018
+ms.date: 03/19/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99258466"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775595"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory integrálása az első lépések útmutató alkalmazásokkal
 
@@ -47,7 +47,7 @@ Az alkalmazások az Azure AD-vel való integrálása előtt fontos tudni, hogy h
   * Hogyan vannak rendszerezve a csoportok?
   * Kik a csoporttagok?
   * Milyen engedélyek/szerepkör-hozzárendelések vannak jelenleg a csoportok számára?
-* Az integrálás előtt törölnie kell a felhasználó/csoport adatbázisait?  (Ez egy nagyon fontos kérdés. Bekerülés a szemétbe.)
+* Az integrálás előtt törölnie kell a felhasználó/csoport adatbázisait?  (Ez egy fontos kérdés. Bekerülés a szemétbe.)
 
 ### <a name="access-management-inventory"></a>Hozzáférés-kezelési leltár
 * Hogyan kezelheti jelenleg az alkalmazásokhoz való felhasználói hozzáférést? Ezt módosítani kell?  Más módszerekkel kezelheti a hozzáférést, például az [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) például?
@@ -66,8 +66,19 @@ A következő cikkek ismertetik az alkalmazások és az Azure AD integrálásán
 * [Alkalmazások használata az Azure Application Galleryben](what-is-single-sign-on.md)
 * [SaaS-alkalmazások integrálása oktatóanyagok listája](../saas-apps/tutorial-list.md)
 
+## <a name="capabilities-for-apps-not-listed-in-the-azure-ad-gallery"></a>Az Azure AD-katalógusban nem szereplő alkalmazások képességei
+
+Hozzáadhat bármely olyan alkalmazást, amely már létezik a szervezetében, vagy bármely harmadik féltől származó alkalmazás olyan szállítótól, amely még nem része az Azure AD-katalógusnak. A [licencszerződéstől](https://azure.microsoft.com/pricing/details/active-directory/)függően a következő lehetőségek érhetők el:
+
+- Bármely olyan alkalmazás önkiszolgáló integrációja, amely támogatja az [Security Assertion Markup Language (SAML) 2,0-](https://wikipedia.org/wiki/SAML_2.0) es identitás-szolgáltatót (SP által kezdeményezett vagy identitásszolgáltató)
+- A HTML-alapú bejelentkezési oldallal rendelkező webalkalmazások önkiszolgáló integrációja [jelszó-alapú egyszeri bejelentkezés](sso-options.md#password-based-sso) használatával
+- Az olyan alkalmazások önkiszolgáló kapcsolata, amelyek a [rendszert a tartományok közötti Identitáskezelés-felügyeleti (scim) protokoll használatával használják a felhasználók üzembe](../app-provisioning/use-scim-to-provision-users-and-groups.md) helyezéséhez
+- Hivatkozás hozzáadása bármely alkalmazáshoz az [Office 365 app launcherben](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) vagy [a saját alkalmazásokban](sso-options.md#linked-sign-on)
+
+Ha az egyéni alkalmazások Azure AD-val való integrálásával kapcsolatos fejlesztői útmutatást keres, tekintse meg az [Azure ad hitelesítési forgatókönyveit](../develop/authentication-vs-authorization.md). Ha olyan alkalmazást fejleszt ki, amely egy modern protokollt használ, például az [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) -t a felhasználók hitelesítéséhez, akkor a Azure Portal [Alkalmazásregisztrációk](../develop/quickstart-register-app.md) felületének használatával regisztrálhatja azt a Microsoft Identity platformon.
+
 ### <a name="authentication-types"></a>Hitelesítési típusok
-Egyes alkalmazásai eltérő hitelesítési követelményekkel rendelkezhetnek. Az Azure AD-vel az aláírási tanúsítványok az SAML 2,0, a WS-Federation vagy az OpenID Connect protokollokat használó alkalmazásokkal, valamint a jelszó egyszeri bejelentkezéssel használhatók. Az Azure AD-vel használható alkalmazás-hitelesítési típusokkal kapcsolatos további információkért lásd: az [összevont egyszeri Sign-On tanúsítványainak kezelése Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) és [jelszó alapú egyszeri bejelentkezéssel](what-is-single-sign-on.md).
+Egyes alkalmazásai eltérő hitelesítési követelményekkel rendelkezhetnek. Az Azure AD-vel az aláírási tanúsítványok az SAML 2,0, a WS-Federation vagy az OpenID Connect protokollokat használó alkalmazásokkal és a jelszó egyszeri bejelentkezésével használhatók. Az alkalmazás hitelesítési típusaival kapcsolatos további információkért lásd: [tanúsítványok kezelése összevont egyszeri Sign-Onhoz Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) és [jelszó alapú egyszeri bejelentkezéssel](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Egyszeri bejelentkezés engedélyezése Azure AD alkalmazás proxyval
 A Microsoft Azure AD alkalmazásproxy segítségével biztonságosan, bárhonnan és bármilyen eszközről biztosíthat hozzáférést a magánhálózaton belül található alkalmazásokhoz. Miután telepítette az alkalmazásproxy-összekötőt a környezetén belül, könnyen konfigurálható az Azure AD-vel.
@@ -85,11 +96,9 @@ A következő cikkek az Azure AD-összekötők és az Azure ad-vel való integr�
 * [Fiókok megosztása](../enterprise-users/users-sharing-accounts.md)
 
 ## <a name="next-steps"></a>Következő lépések
-Részletes információk a [githubról](../fundamentals/active-directory-deployment-plans.md)tölthetők le Azure Active Directory telepítési tervek. A Gallery-alkalmazások esetében az egyszeri bejelentkezéshez, a feltételes hozzáféréshez és a [Azure Portalon](https://portal.azure.com)keresztül történő felhasználói kiépítéshez is letölthetők a telepítési csomagok. 
+Részletes információk a [githubról](../fundamentals/active-directory-deployment-plans.md)tölthetők le Azure Active Directory telepítési tervek. A Gallery-alkalmazások esetében az egyszeri bejelentkezéshez, a feltételes hozzáféréshez és a [Azure Portalon](https://portal.azure.com)keresztül történő felhasználói kiépítéshez is letölthetők a telepítési csomagok.
 
 Telepítési terv letöltése a Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **vállalati alkalmazások** válasszon  |  **egy alkalmazás**-  |  **telepítési csomagot**.
-
-Kérjük, küldjön visszajelzést az üzembe helyezési tervekről az [üzembe helyezési terv felmérésének](https://aka.ms/DeploymentPlanFeedback)megadásával.

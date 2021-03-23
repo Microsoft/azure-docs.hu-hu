@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b76934d3f16ec5f87ed1380135d22bc5d943652c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102487746"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779767"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -45,7 +45,7 @@ Ennek oka az lehet, hogy a frissítési szolgáltatás nem működik megfelelőe
 A frissítési szolgáltatás kifogástalan állapotú, ha fut, és nincsenek hibák rögzítve az eseménynaplóban (alkalmazások és szolgáltatások naplói – > Microsoft-> AadApplicationProxy-> Updater-> admin). 
 
 > [!IMPORTANT]
-> Az automatikus frissítés csak a főverziókat szabadítja fel. Javasoljuk, hogy rendszeres időközönként frissítse az összekötőt. Az új kiadásokkal kapcsolatos további információkért tekintse meg a kiadás típusát (letöltés, automatikus frissítés), hibajavításokat és új szolgáltatásokat, lásd [: Azure ad Application proxy: verzió kiadási előzmények](application-proxy-release-version-history.md).
+> Az automatikus frissítés csak a főverziókat szabadítja fel. Ajánlott manuálisan frissíteni az összekötőt, ha szükséges. Nem várhat például egy nagyobb kiadásra, mert ki kell javítania egy ismert problémát, vagy új funkciót szeretne használni. Az új kiadásokkal kapcsolatos további információkért tekintse meg a kiadás típusát (letöltés, automatikus frissítés), hibajavításokat és új szolgáltatásokat, lásd [: Azure ad Application proxy: verzió kiadási előzmények](application-proxy-release-version-history.md).
 
 Összekötő manuális frissítése:
 

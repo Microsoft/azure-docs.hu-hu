@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 9a4ed5542945b8d281ec750d9bbd3a8f444e44d2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 37f3748b4f0f3db47bbd6fbe9bc06a307781c2f8
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96752260"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786804"
 ---
 # <a name="add-assessment-tools"></a>Felmérőeszközök hozzáadása
 
@@ -25,23 +25,23 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure
 1. A Azure Migrate projektben kattintson az **Áttekintés** elemre.
 2. Válassza ki az értékelési forgatókönyvet:
 
-    - Az Azure-ba való áttelepítéshez szükséges gépek és munkaterhelések felderítéséhez és értékeléséhez válassza a **kiszolgálók felmérése és áttelepítése** lehetőséget.
+    - A kiszolgálók (fizikai vagy virtuális) adatközpontból vagy más felhőből az Azure-ba való felderítéséhez, értékeléséhez és átadásához válassza a **felderítés, értékelés és áttelepítés** lehetőséget. Mostantól a VMware-környezet SQL Server is felfedezheti és felderítheti az áttelepítési cél használatával.
     - A helyszíni SQL Server-adatbázisok értékeléséhez válassza az **adatbázisok felmérése és áttelepíteni** lehetőséget.
     - A helyszíni webalkalmazások értékeléséhez vagy átköltöztetéséhez válassza a **további Web Apps megismerése** lehetőséget  >  .
     - A virtuális asztali infrastruktúra értékeléséhez válassza a **további**  >  **virtuális asztali infrastruktúra** megismerése lehetőséget.
 
     ![Az értékelési forgatókönyv kiválasztásának lehetőségei](./media/how-to-assess/assess-scenario.png)
 
-## <a name="select-a-server-assessment-tool"></a>Kiszolgáló-értékelési eszköz kiválasztása 
+## <a name="select-a-discovery-and-assessment-tool"></a>Felderítési és értékelési eszköz kiválasztása 
 
 
 1. Eszköz hozzáadása:
 
-    - Ha a portálon a **kiszolgálók felmérése és áttelepítése** lehetőség használatával létrehozott egy Azure Migrate projektet, a rendszer automatikusan hozzáadja a Azure Migrate Server Assessment eszközt a projekthez. További értékelési eszközök hozzáadásához a **kiszolgálókon**, az **értékelési eszközök** mellett válassza a **további eszközök hozzáadása** elemet.
-    
+    - Ha a portálon a **kiszolgálók felmérése és áttelepítése** lehetőség használatával létrehozott egy Azure Migrate projektet, a rendszer automatikusan hozzáadja a Azure Migrate felderítési és értékelési eszközt a projekthez. További értékelési eszközök hozzáadásához a **Windows, a Linux és a SQL Server** rendszerben válassza az **értékelési eszközök** lehetőséget, majd kattintson a **további eszközök hozzáadása** lehetőségre.
+
          ![További értékelési eszközök hozzáadására szolgáló gomb](./media/how-to-assess/add-assessment-tool.png)
 
-    - Ha egy másik lehetőséggel hozta létre a projektet, és még nem rendelkezik Assessment-eszközökkel, akkor a **kiszolgálók**  >  **értékelési eszközei** lapon válassza a **kattintson ide**.
+    - Ha más lehetőséggel hozta létre a projektet, és még nem rendelkezik Assessment-eszközökkel, a **Windows, a Linux és a SQL Server**  >  **Assessment Tools eszközben** válassza a **kattintson ide**.
 
         ![Első értékelési eszköz hozzáadására szolgáló gomb](./media/how-to-assess/no-assessment-tool.png)
 
@@ -83,4 +83,4 @@ Ha Azure Migrate projektet hozott létre a portálon a **további**  >  **WebApp
 
 ## <a name="next-steps"></a>Következő lépések
 
-Helyszíni gépek felderítése a [VMware](./tutorial-discover-vmware.md) virtuális gépek, a [Hyper-V](./tutorial-discover-hyper-v.md)vagy a [fizikai kiszolgálók](./tutorial-discover-physical.md) Azure Migrate Server Assessment Tool használatával történő értékeléséhez
+Helyszíni kiszolgálók észlelése a [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)vagy [fizikai kiszolgálók](./tutorial-discover-physical.md) Azure Migrate felderítési és értékelési eszközének használatával

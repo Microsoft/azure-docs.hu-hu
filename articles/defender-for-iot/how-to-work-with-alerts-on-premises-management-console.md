@@ -1,18 +1,14 @@
 ---
 title: Riasztások kezelése a helyszíni felügyeleti konzolon
 description: A helyszíni felügyeleti konzol segítségével vállalati nézetet kaphat a hálózat legutóbbi fenyegetésekről, és jobban megismerheti, hogyan kezelik az érzékelőket a felhasználók.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 878b1b2d5ba13b68b5122e4b9cffc3c408e211e2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a99c489c54b2671a463c0c3dad1909c74b4fa203
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100526323"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781466"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>Riasztások kezelése a helyszíni felügyeleti konzolon 
 

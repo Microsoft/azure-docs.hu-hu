@@ -1,18 +1,14 @@
 ---
 title: A Defender for IoT parancssori felületi parancsainak használata
 description: Ez a cikk az érzékelőkre és a helyszíni felügyeleti konzolokra vonatkozó IoT CLI-parancsait ismerteti.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636560"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778678"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>A Defender for IoT parancssori felületi parancsainak használata
 
@@ -258,7 +254,7 @@ A paranccsal a következő attribútumok használhatók `directions` :
 ## <a name="system-actions"></a>Rendszerműveletek
 A következő táblázat ismerteti a különböző rendszerműveletek végrehajtásához elérhető parancsokat a Defender for IoT:
 
-|Name|Code|Description|
+|Name|Code|Leírás|
 |----|----|-----------|
 |Dátum megjelenítése|`date`|Az aktuális dátumot adja vissza GMT formátumban a gazdagépen.|
 |A gazdagép újraindítása|`system reboot`|Újraindítja a gazdagép eszközét.|
@@ -287,7 +283,7 @@ A parancs a következő bemeneti jelzőket támogatja:
 | – kulcs | A \* . key fájl. A kulcs hosszának legalább 2 048 bitenek kell lennie. |
 | – lánc | A tanúsítványlánc fájljának elérési útja (nem kötelező). |
 | --pass | A tanúsítvány titkosításához használt jelszó (nem kötelező). |
-| --jelszó-készlet | Az alapértelmezett érték **hamis**, nem **használt**. <br />Állítsa **igaz** értékre az előző tanúsítványhoz megadott előző jelszó (nem kötelező) használatára. |  |
+| --jelszó-készlet | Az alapértelmezett érték **hamis**, nem **használt**. <br />Állítsa **igaz** értékre az előző tanúsítványhoz megadott előző jelszó (nem kötelező) használatára. | 
 
 Az eszköz használatakor:
 

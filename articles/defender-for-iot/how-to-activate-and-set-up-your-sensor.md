@@ -1,18 +1,14 @@
 ---
 title: Az érzékelő aktiválása és beállítása
 description: Ez a cikk azt ismerteti, hogyan jelentkezhet be és aktiválható az érzékelő konzolja.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 98d59ec4b37238005e89051064a60fa6a4407394
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fdfa0dd7048bf39ae5b53a729aef578054b30ac
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449832"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779188"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Az érzékelő aktiválása és beállítása
 
@@ -44,7 +40,7 @@ Az érzékelő konzolba való bejelentkezés előtt a rendszergazda felhasznál�
 
 Az érzékelőt egy adott felügyeleti módban IoT az Azure Defender számára:
 
-| Mód típusa | Description |
+| Mód típusa | Leírás |
 |--|--|
 | **Felhőhöz csatlakoztatott mód** | Az érzékelő által észlelt információk az érzékelő konzolján jelennek meg. A riasztási adatokat az IoT hub is továbbítja, és más Azure-szolgáltatásokkal, például az Azure Sentinelrel is megosztható. |
 | **Helyileg csatlakoztatott mód** | Az érzékelő által észlelt információk az érzékelő konzolján jelennek meg. Az észlelési információk a helyszíni felügyeleti konzollal is megoszthatók, ha az érzékelő csatlakoztatva van hozzá. |
@@ -177,7 +173,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Navigáció** 
 
-| Ablak | Ikon | Description |
+| Ablak | Ikon | Leírás |
 | -----------|--|--|
 | Irányítópult | :::image type="icon" source="media/concept-sensor-console-overview/dashboard-icon-azure.png" border="false"::: | Megtekintheti a hálózat biztonsága állapotának intuitív pillanatképét. |
 | Eszköz térképe | :::image type="icon" source="media/concept-sensor-console-overview/asset-map-icon-azure.png" border="false"::: | A hálózati eszközök, az eszközök kapcsolatai és az eszköz tulajdonságainak megtekintése a térképen. A hálózat megjelenítéséhez különböző nagyítások, csúcsfények és szűrési lehetőségek érhetők el. |
@@ -187,13 +183,13 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Elemzés**
 
-| Ablak| Ikon | Description |
+| Ablak| Ikon | Leírás |
 |---|---|---|
 | Esemény idővonala | :::image type="icon" source="media/concept-sensor-console-overview/event-timeline-icon-azure.png" border="false"::: | Megtekintheti a riasztásokkal, a hálózati eseményekkel (tájékoztatással) és a felhasználói műveletekkel kapcsolatos információkat, például a felhasználói bejelentkezéseket és a felhasználók törlését.|
 
 **Navigáció**
 
-| Ablak | Ikon | Description |
+| Ablak | Ikon | Leírás |
 |---|---|---|
 | Adatbányászat | :::image type="icon" source="media/concept-sensor-console-overview/data-mining-icon-azure.png" border="false"::: | Átfogó és részletes információkat hozhat a hálózat eszközeiről a különböző rétegeken. |
 | Vizsgálat | :::image type="icon" source="media/concept-sensor-console-overview/trends-and-statistics-icon-azure.jpg" border="false"::: | A trendeket és a statisztikát a widgetek széles skáláján tekintheti meg. |
@@ -201,7 +197,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Felügyelet**
 
-| Ablak | Ikon | Description |
+| Ablak | Ikon | Leírás |
 |---|---|---|
 | Felhasználók | :::image type="icon" source="media/concept-sensor-console-overview/users-icon-azure.png" border="false"::: | Felhasználók és szerepkörök definiálása különböző hozzáférési szintekkel. |
 | Továbbítás | :::image type="icon" source="media/concept-sensor-console-overview/forwarding-icon-azure.png" border="false"::: | Továbbíthatja a riasztási információkat a partnereknek és a belső forrásoknak (például az Azure Sentinelnek) a Defender for IoT, az e-mail-címek, a webhook-kiszolgálók és sok egyéb szolgáltatás integrálásával. <br /> További részletekért lásd: [riasztási információk továbbítása](how-to-forward-alert-information-to-partners.md) . |
@@ -210,7 +206,7 @@ A konzol eszközei az oldal menüjéből érhetők el.
 
 **Támogatás**
 
-| Ablak| Ikon | Description |
+| Ablak| Ikon | Leírás |
 |----|---|---|
 | Támogatás | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | Segítségért forduljon [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . |
 

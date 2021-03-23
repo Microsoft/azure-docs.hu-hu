@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre egyéni eseményindítót a Azure
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: e372808250b1d5b21cd5f6c5226922d5d6ad0f77
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2d2f26b24e7fa10d9244de8f99d78c64a44b3d61
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104609294"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785648"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-custom-event-preview"></a>Egy folyamatot futtató eseményindító létrehozása egy egyéni eseményre adott válaszként (előzetes verzió)
 
@@ -92,10 +92,10 @@ Az alábbi táblázat áttekintést nyújt az egyéni esemény-eseményindítók
 
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **hatókör** | Az Event Grid-témakör Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Yes |
+| **hatókör** | Az Event Grid-témakör Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
 | **események** | A triggert tüzet kiváltó események típusa. | Karakterláncok tömbje    |  | Igen, legalább egy értéket meg kell várni |
-| **subjectBeginsWith** | A tulajdonos mezőnek a triggerhez megadott mintázattal kell kezdődnie. Például `factories` csak az eseményhez tartozó eseményindítót indítja el a-től kezdődően `factories` . | Sztring   | | No |
-| **subjectEndsWith** | A tulajdonos mezőnek a triggerhez megadott mintázattal kell végződnie. | Sztring   | | No |
+| **subjectBeginsWith** | A tulajdonos mezőnek a triggerhez megadott mintázattal kell kezdődnie. Például `factories` csak az eseményhez tartozó eseményindítót indítja el a-től kezdődően `factories` . | Sztring   | | Nem |
+| **subjectEndsWith** | A tulajdonos mezőnek a triggerhez megadott mintázattal kell végződnie. | Sztring   | | Nem |
 
 ## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 

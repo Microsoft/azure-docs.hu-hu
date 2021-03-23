@@ -3,13 +3,13 @@ title: Több Node-készlet használata az Azure Kubernetes szolgáltatásban (ak
 description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készletet egy fürthöz az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 04/08/2020
-ms.openlocfilehash: 3e029695e9dce79473ada0bae3e7f0bbfd30db89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 02/11/2021
+ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218485"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773504"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -134,7 +134,7 @@ A számítási feladatok esetében előfordulhat, hogy a fürt csomópontjait k�
 * Ha a fürt létrehozása után kibontja a VNET, frissítenie kell a fürtöt (minden felügyelt clster műveletet végre kell hajtania, de a csomópont-készlet műveletei nem számítanak), mielőtt hozzáad egy alhálózatot az eredeti CIDR kívül. Az AK hibát jelez az ügynök-készletben, de most már eredetileg engedélyezte. Ha nem tudja, hogyan kell összeegyeztetni a fürt fájlját, a támogatási jegyet. 
 * A tarka hálózati házirend nem támogatott. 
 * Az Azure hálózati házirendje nem támogatott.
-* A Kube-proxy egyetlen összefüggő CIDR vár, és három optmizations használja ezt. Tekintse meg ezt a [K.E.P.](https://github.com/kubernetes/enhancements/blob/master/keps/sig-network/20191104-iptables-no-cluster-cidr.md ) és--cluster-CIDR [itt talál](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) további információt. Az Azure CNI az első csomópont-készlet alhálózatát a Kube-proxy kapja meg. 
+* A Kube-proxy egyetlen összefüggő CIDR vár, és három optmizations használja ezt. Tekintse meg ezt a [K.E.P.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-network/2450-Remove-knowledge-of-pod-cluster-CIDR-from-iptables-rules) és--cluster-CIDR [itt talál](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/) további információt. Az Azure CNI az első csomópont-készlet alhálózatát a Kube-proxy kapja meg. 
 
 Ha egy dedikált alhálózattal rendelkező csomópont-készletet szeretne létrehozni, adja át az alhálózati erőforrás-azonosítót további paraméterként egy csomópont-készlet létrehozásakor.
 
@@ -716,33 +716,11 @@ az deployment group create \
 
 A Resource Manager-sablonban definiált csomópont-készlet beállításaitól és műveleteitől függően néhány percet is igénybe vehet az AK-fürt frissítése.
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Nyilvános IP-cím társítása a csomópont-készletek számára (előzetes verzió)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools"></a>Nyilvános IP-cím társítása a csomópont-készletekhez
 
-> [!WARNING]
-> A CLI előzetes verziójának 0.4.43 vagy újabb verzióját kell telepítenie a nyilvános IP-cím/csomópont szolgáltatás használatára.
+Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. A forgatókönyvek azonban megkövetelhetik a csomópontok csomópontjait, hogy megkapják a saját dedikált nyilvános IP-címeiket. Gyakori forgatókönyv a játékok számítási feladataihoz, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel a ugrások csökkentése érdekében. Ezt a forgatókönyvet a Node nyilvános IP-cím használatával lehet megvalósítani az AK-ban.
 
-Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. A forgatókönyvek azonban megkövetelhetik a csomópontok csomópontjait, hogy megkapják a saját dedikált nyilvános IP-címeiket. Gyakori forgatókönyv a játékok számítási feladataihoz, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel a ugrások csökkentése érdekében. Ez a forgatókönyv egy előzetes verziójú funkció, a csomópont nyilvános IP-címe (előzetes verzió) regisztrálásával érhető el az AK-on.
-
-A legújabb AK-előnézet bővítmény telepítéséhez és frissítéséhez használja az alábbi Azure CLI-parancsokat:
-
-```azurecli
-az extension add --name aks-preview
-az extension update --name aks-preview
-az extension list
-```
-
-Regisztráljon a Node Public IP szolgáltatásra a következő Azure CLI-paranccsal:
-
-```azurecli-interactive
-az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
-```
-A szolgáltatás regisztrálása több percet is igénybe vehet.  Az állapotot a következő paranccsal tekintheti meg:
-
-```azurecli-interactive
- az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
-```
-
-A sikeres regisztráció után hozzon létre egy új erőforráscsoportot.
+Először hozzon létre egy új erőforráscsoportot.
 
 ```azurecli-interactive
 az group create --name myResourceGroup2 --location eastus
@@ -760,12 +738,9 @@ Meglévő AK-fürtök esetében hozzáadhat egy új csomópont-készletet is, é
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
-> [!Important]
-> Az előzetes verzióban az Azure Instance Metadata Service jelenleg nem támogatja a nyilvános IP-címek lekérését a standard szintű VM SKU-hoz. Ennek a korlátozásnak köszönhetően a kubectl parancsok nem használhatók a csomópontokhoz rendelt nyilvános IP-címek megjelenítéséhez. Az IP-címek azonban hozzá vannak rendelve, és a kívánt módon működnek. A csomópontjaihoz tartozó nyilvános IP-címek a virtuálisgép-méretezési csoport példányaihoz vannak csatolva.
-
 A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 
-* Az Azure CLI parancs használata az [vmss List-instance-Public-IPS][az-list-ips]
+* Használja az Azure CLI-parancsot az [vmss List-instance-Public-IPS][az-list-ips].
 * Használjon [PowerShell-vagy bash-parancsokat][vmss-commands]. 
 * A Azure Portal a nyilvános IP-címeket a virtuálisgép-méretezési csoport példányainak megtekintésével is megtekintheti.
 
@@ -818,20 +793,20 @@ A [közeli elhelyezési csoportok][reduce-latency-ppg] használatával csökkent
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_credentials
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_create
+[az-aks-get-upgrades]: /cli/azure/aks?view=azure-cli-latest&preserve-view=true#az_aks_get_upgrades
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest&preserve-view=true#az_aks_nodepool_delete
+[az-extension-add]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_add
+[az-extension-update]: /cli/azure/extension?view=azure-cli-latest&preserve-view=true#az_extension_update
+[az-group-create]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_create
+[az-group-delete]: /cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete
+[az-deployment-group-create]: /cli/azure/deployment/group?view=azure-cli-latest&preserve-view=true#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
@@ -844,5 +819,5 @@ A [közeli elhelyezési csoportok][reduce-latency-ppg] használatával csökkent
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
-[az-list-ips]: /cli/azure/vmss.md#az-vmss-list-instance-public-ips
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
