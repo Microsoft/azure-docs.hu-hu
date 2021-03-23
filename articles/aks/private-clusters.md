@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 3/5/2021
-ms.openlocfilehash: 190658e23ee02651e64c3718824315c0265c0f04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 21d839df04c868d2c21932f96a6b72a32b0404e5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102556536"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771855"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -72,7 +72,7 @@ A következő paraméterek használhatók a saját DNS zónák konfigurálásáh
 
 - A "System" az alapértelmezett érték. Ha a--Private-DNS-Zone argumentum ki van hagyva, az AK létrehoz egy saját DNS zónát a csomópont-erőforráscsoporthoz.
 - A "None" érték azt jelenti, hogy az AK nem hoz létre saját DNS zónát.  Ehhez a saját DNS-kiszolgálót kell használnia, és konfigurálnia kell a DNS-feloldást a privát FQDN számára.  Ha nem konfigurálja a DNS-feloldást, a DNS csak az ügynök-csomópontokon belül oldható fel, és a telepítés után problémát okoz a fürtben. 
-- A (z) "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" megköveteli, hogy a következő formátumban hozzon létre egy saját DNS zónát az Azure globális felhőhöz: `privatelink.<region>.azmk8s.io` . Szüksége lesz a saját DNS zóna erőforrás-azonosítójára.  Emellett szüksége lesz egy felhasználóhoz rendelt identitásra vagy egyszerű szolgáltatásra legalább a `private dns zone contributor` szerepkörrel.
+- A (z) "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" megköveteli, hogy a következő formátumban hozzon létre egy saját DNS zónát az Azure globális felhőhöz: `privatelink.<region>.azmk8s.io` . Szüksége lesz a saját DNS zóna erőforrás-azonosítójára.  Emellett szüksége lesz egy felhasználóhoz rendelt identitásra vagy egyszerű szolgáltatásnévre legalább a `private dns zone contributor`  és a `vnet contributor` szerepkörökkel.
 - az "FQDN-altartomány" a "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" lehetőséggel csak az altartományi képességek biztosítására használható `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Előfeltételek

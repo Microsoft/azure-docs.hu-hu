@@ -3,17 +3,17 @@ title: Adathalmazok
 description: Tudnivalók a Data Factory adatkészletekről. Az adatkészletek bemeneti/kimeneti adatokat jelölnek.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/24/2020
-ms.openlocfilehash: 4dafb738fd7d44893705994baa962831c101804b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 167fb0014f2f0a9e7a2530fe276289f94347146e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100390028"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785784"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok az Azure Data Factoryben
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -65,10 +65,10 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
 Tulajdonság | Leírás | Kötelező |
 -------- | ----------- | -------- |
-name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Yes |
-típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: DelimitedText, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Yes |
-schema | Az adatkészlet sémája a fizikai adattípust és-alakzatot jelöli. | No |
-typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál. A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Yes |
+name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
+típus | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: DelimitedText, tulajdonsága azuresqltable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
+schema | Az adatkészlet sémája a fizikai adattípust és-alakzatot jelöli. | Nem |
+typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál. A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
 
 Az adatkészlet sémájának importálásakor kattintson a **séma importálása** gombra, és válassza az Importálás a forrásból vagy egy helyi fájlból lehetőséget. A legtöbb esetben közvetlenül a forrásból importálja a sémát. Ha azonban már van helyi sémafájl (egy parketta-fájl vagy egy, a fejlécekkel rendelkező CSV), akkor a Data Factory a fájlra alapozva kiválaszthatja a sémát.
 

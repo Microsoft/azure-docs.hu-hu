@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c42c6465af8e895d833332be847c134b97ee8ddc
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100557140"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781296"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Oktatóanyag: felhasználói folyamatok létrehozása Azure Active Directory B2C
 
@@ -25,8 +25,9 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Regisztrációs és bejelentkezési felhasználói folyamat létrehozása
+> * Új jelszó önkiszolgáló kérésének engedélyezése
 > * Profil szerkesztése felhasználói folyamat létrehozása
-> * Jelszó-visszaállítási felhasználói folyamat létrehozása
+
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre néhány javasolt felhasználói folyamatot a Azure Portal használatával. Ha további információt szeretne arról, hogyan állíthatja be az erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC) az alkalmazásban, tekintse meg [az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure ad B2Cban](add-ropc-policy.md)című témakört.
 
@@ -85,6 +86,24 @@ A regisztrációs és bejelentkezési felhasználói folyamat egyetlen konfigur�
 > [!NOTE]
 > A "felhasználói folyamat futtatása" élmény jelenleg nem kompatibilis a SPA válasz URL-címével, amely az engedélyezési kód folyamatát használja. Ha a "felhasználói folyamat futtatása" funkciót szeretné használni az ilyen típusú alkalmazásokhoz, regisztráljon egy "web" típusú válasz URL-címet, és az [itt](tutorial-register-spa.md)leírtak alapján engedélyezze az implicit folyamatot.
 
+## <a name="enable-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének engedélyezése
+
+Az [önkiszolgáló jelszó-visszaállítás](add-password-reset-policy.md) engedélyezése a regisztrációs vagy bejelentkezési felhasználói folyamat számára:
+
+1. Válassza ki a létrehozott regisztrációs vagy bejelentkezési felhasználói folyamatot.
+1. A bal oldali menü **Beállítások** területén válassza a **Tulajdonságok** lehetőséget.
+1. A **jelszó bonyolultsága** területen válassza az **önkiszolgáló jelszó-visszaállítás** lehetőséget.
+1. Kattintson a **Mentés** gombra.
+
+### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
+
+1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
+1. Válassza a **felhasználói folyamat futtatása** lehetőséget.
+1. A regisztrációs vagy bejelentkezési oldalon válassza a **jelszó elfelejtette?** lehetőséget.
+1. Ellenőrizze a korábban létrehozott fiók e-mail-címét, majd kattintson a **Folytatás** gombra.
+1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás** lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
+
 ## <a name="create-a-profile-editing-user-flow"></a>Profil szerkesztése felhasználói folyamat létrehozása
 
 Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését az alkalmazásban, használja a felhasználói folyamatokat szerkesztő profilt.
@@ -103,26 +122,6 @@ Ha engedélyezni szeretné a felhasználók számára a profil szerkesztését a
 1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
 1. Kattintson a **felhasználói folyamat futtatása** elemre, majd jelentkezzen be a korábban létrehozott fiókkal.
 1. Most már lehetősége van módosítani a felhasználó megjelenítendő nevét és a beosztás címét. Kattintson a **Folytatás** gombra. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
-
-## <a name="create-a-password-reset-user-flow"></a>Jelszó-visszaállítási felhasználói folyamat létrehozása
-
-Ha engedélyezni szeretné, hogy az alkalmazás felhasználói visszaállítsa a jelszavukat, jelszó-visszaállítási felhasználói folyamatot kell használnia.
-
-1. A Azure AD B2C bérlő áttekintő menüjében válassza a **felhasználói folyamatok** lehetőséget, majd válassza az **új felhasználói folyamat** elemet.
-1. A **felhasználói folyamat létrehozása** lapon válassza a **jelszó alaphelyzetbe állítása** lehetőséget. 
-1. **A verzió kiválasztása** területen válassza az **ajánlott** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
-1. Adja meg a felhasználói folyamat **nevét** . Például: *passwordreset1*.
-1. Az **Identity Providers** esetében engedélyezze a **jelszó alaphelyzetbe állítását e-mail-cím használatával**.
-2. Az alkalmazás jogcímei területen kattintson a **továbbiak megjelenítése** lehetőségre, és válassza ki azokat a jogcímeket, amelyeket vissza szeretne állítani az alkalmazásnak visszaküldött engedélyezési jogkivonatokban. Válassza például a **Felhasználó objektumazonosítója** lehetőséget.
-3. Kattintson az **OK** gombra.
-4. A felhasználói folyamat hozzáadásához kattintson a **Létrehozás** gombra. Az *B2C_1* előtagját a rendszer automatikusan hozzáfűzi a névhez.
-
-### <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
-
-1. Válassza ki a létrehozott felhasználói folyamatot az Áttekintés oldal megnyitásához, majd válassza a **felhasználói folyamat futtatása** lehetőséget.
-1. Az **alkalmazás** lapon válassza ki a korábban regisztrált *webapp1* nevű webalkalmazást. A **Válasz URL-címének** meg kell jelennie `https://jwt.ms` .
-1. Kattintson a **felhasználói folyamat futtatása** elemre, ellenőrizze a korábban létrehozott fiók e-mail-címét, majd válassza a **Folytatás** lehetőséget.
-1. Most lehetősége van a felhasználó jelszavának módosítására. Módosítsa a jelszót, és válassza a **Folytatás** lehetőséget. A rendszer visszaküldi a tokent, `https://jwt.ms` és megjelenik Önnek.
 
 ## <a name="next-steps"></a>Következő lépések
 

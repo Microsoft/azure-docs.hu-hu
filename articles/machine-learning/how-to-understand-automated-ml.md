@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: 6d8c56bc306a7ab0bf118d04f64d6523fc385cdd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520778"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773113"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Az automatizált Machine learning-kísérletek eredményeinek kiértékelése
 
@@ -91,6 +91,8 @@ weighted_accuracy|A súlyozott pontosság olyan pontosság, amelyben az egyes mi
 Az automatikus ML nem tesz különbséget a bináris és a többosztályos metrikák között. Ugyanazokat az érvényesítési metrikákat kell jelenteni, hogy az adatkészlet két osztályból vagy kettőből áll-e. Néhány metrika azonban többosztályos besorolásra szolgál. Bináris adatkészletre alkalmazva ezek a mérőszámok nem kezelik osztályként az osztályt `true` , ahogy az várható. A többosztályos használatra szánt metrikák a, a vagy a utótaggal vannak ellátva `micro` `macro` `weighted` . Ilyenek például a következők:,,, `average_precision_score` `f1_score` `precision_score` `recall_score` és `AUC` .
 
 Például a felidézés helyett `tp / (tp + fn)` a többosztályos átlagú visszahívás ( `micro` , `macro` , vagy `weighted` ) átlaga szerepel a bináris besorolási adatkészlet mindkét osztályán. Ez egyenértékű az osztály és az osztály visszahívásának kiszámításával `true` `false` , majd a kettő átlagát veszi figyelembe.
+
+Az automatikus ML nem számítja ki a bináris mérőszámokat, azaz a bináris besorolású adatkészletek mérőszámait. Ezek a metrikák azonban manuálisan is kiszámíthatók a [zavart mátrix](#confusion-matrix) használatával, amely az adott futtatáshoz GENERÁLT automatizált ml-t használja. Kiszámíthatja például a pontosságot, és `tp / (tp + fp)` a valódi pozitív és hamis pozitív értékeket egy 2x2-es zavart mátrix diagramon.
 
 ## <a name="confusion-matrix"></a>Keveredési mátrix
 

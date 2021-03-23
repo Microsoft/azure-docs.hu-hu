@@ -1,18 +1,14 @@
 ---
 title: Az érzékelőeszköz-térkép használata
 description: Az eszköz Térkép az észlelt hálózati eszközök grafikus megjelenítését teszi lehetővé. A Térkép használatával elemezheti és kezelheti az eszköz adatait, a hálózati szeleteket és jelentéseket készíthet.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/7/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: edd1438a665e4917d5dd4cdcfba08d9cee01d3bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f7579cbca618baef404236556993c9831dd84bdf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523838"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784594"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Az érzékelő észlelésének vizsgálata az eszköz térképén
 
@@ -36,7 +32,7 @@ A térképen a következő eszközök használhatók.
 
 A felhasználói szerepkör határozza meg, hogy mely eszközök érhetők el az eszköz Térkép ablakban. A felhasználói szerepkörökkel kapcsolatos részletekért tekintse meg a [felhasználók létrehozása és kezelése](how-to-create-and-manage-users.md) című témakört.
 
-| Szimbólum | Description |
+| Szimbólum | Leírás |
 |---|---|
 | :::image type="icon" source="media/how-to-work-with-maps/search-bar-icon-v2.png" border="false":::| Keresés IP-cím vagy MAC-cím alapján egy adott eszközhöz. Adja meg az IP-címet vagy a MAC-címet a szövegmezőben. A Térkép megjeleníti azt az eszközt, amelyet az eszközhöz csatlakoztatott eszközökkel keres. |
 | Csoport kiemelése és szűrők <br /> :::image type="content" source="media/how-to-work-with-maps/group-highlight-and-filters-v2.png" alt-text="Képernyőkép a csoport kiemeléséről és szűrőkről."::: | Az alapértelmezett és az egyéni eszközcsoport alapján szűrheti vagy kiemelheti a leképezést. |
@@ -118,7 +114,7 @@ Csoportok megtekintése:
 
 A következő előre meghatározott csoportok érhetők el:
 
-| Csoport neve | Description |
+| Csoport neve | Leírás |
 |--|--|
 | **Ismert alkalmazások** | Fenntartott portokat (például TCP) használó eszközök.  |
 | **nem szabványos portok (alapértelmezett)** | Nem szabványos portokat vagy portokat használó eszközök, amelyek nem rendelkeznek aliassal. |
@@ -267,7 +263,7 @@ Számos eszköz érhető el, amelyekkel további információkat tudhat meg az e
 
 A térképen a következő címkék és mutatók jelenhetnek meg az eszközökön:
 
-| Eszköz címkéje | Description |
+| Eszköz címkéje | Leírás |
 |--|--|
 | :::image type="content" source="media/how-to-work-with-maps/host-v2.png" alt-text="IP-állomásnév"::: | IP-cím állomásneve és IP-címe, vagy alhálózat címe |
 | :::image type="content" source="media/how-to-work-with-maps/amount-alerts-v2.png" alt-text="Riasztások száma"::: | Az eszközhöz társított riasztások száma |
@@ -313,7 +309,7 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 
   - Purdue-réteg
 
-  - Description
+  - Leírás
 
 | Elem | Leírás |
 |--|--|
@@ -323,14 +319,14 @@ A következő információk manuálisan is frissíthetők. A manuálisan megadot
 | Szállító | Az eszköz gyártója. Ezt az eszköz MAC-címe vezető karakterei határozzák meg. Ez a mező csak olvasható. |
 | Operációs rendszer | Az érzékelő által észlelt eszköz operációs rendszer. |
 | Purdue-réteg | Az eszköz szenzora által azonosított Purdue-réteg, beleértve a következőket: <br /> – Automatikus <br /> – Folyamat vezérlése <br /> – Felügyelet <br /> – Vállalati |
-| Description | Egy ingyenes szövegmező. <br /> További információk hozzáadása az eszközről. |
+| Leírás | Egy ingyenes szövegmező. <br /> További információk hozzáadása az eszközről. |
 | Attribútumok | Az eszközön a tanulási időszakban felderített további információk, amelyek nem tartoznak más kategóriákhoz, az attribútumok szakaszban jelennek meg. <br /> Az információ a RO. |
 | Beállítások | Az eszközbeállítások manuális módosításával megakadályozhatja a hamis pozitív értéket: <br /> - **Jogosult eszköz**: a tanulási időszak alatt a hálózatban felderített összes eszköz meghatalmazott eszközként van azonosítva. Ha az eszközt a tanulási időszak után észlelik, a rendszer alapértelmezés szerint jogosulatlan eszközként jelenik meg. Ezt a definíciót manuálisan is módosíthatja. <br /> - **Más néven képolvasó**: engedélyezze ezt a beállítást, ha tudja, hogy az eszköz képolvasóként ismert, és nincs szükség riasztásra. <br /> - **Programozási eszköz**: engedélyezze ezt a beállítást, ha tudja, hogy ez az eszköz programozási eszközként ismert, és a programozási módosítások végrehajtásához használatos. A programozási eszközként való azonosítás megakadályozza az adategységből származó programozási változások riasztásait. |
 | Egyéni csoportok | Az eszköz azon egyéni csoportjai, amelyekben ez az eszköz részt vesz. |
 | Állapot | Az eszköz biztonsága és engedélyezési állapota: <br /> – Az állapot akkor jelenik meg, `Secured` Ha nincsenek riasztások <br /> – Ha riasztás van az eszközről, a riasztások száma megjelenik. <br /> – Az állapot `Unauthorized` megjelenik azon eszközök esetében, amelyek a tanulási időszak után a hálózathoz lettek adva. Az eszközt manuálisan is megadhatja `Authorized Device` a beállításokban <br /> – Ha az eszköz címe dinamikus címként van definiálva, az `DHCP` állapothoz kerül. |
 
 
-| Network (Hálózat) | Description |
+| Network (Hálózat) | Leírás |
 |--|--|
 | Interfészek | Az eszköz csatolói. Egy RO mező. |
 | Protokollok | Az eszköz által használt protokollok. Egy RO mező. |
@@ -489,7 +485,7 @@ Ez a szakasz a programozási fájlok megtekintését és a verziók összehasonl
 
 :::image type="content" source="media/how-to-work-with-maps/timeline-view.png" alt-text="ütemezés ütemezése ablak":::
 
-|Programozási idővonal típusa | Description |
+|Programozási idővonal típusa | Leírás |
 |--|--|
 | Programozott eszköz | A programozott eszköz részletes adatait tartalmazza, beleértve az állomásnevet és a fájlt. |
 | Legutóbbi események | Az érzékelő által észlelt 50 legutóbbi eseményeket jeleníti meg. <br />Egy esemény kiemeléséhez vigye az egérmutatót a fölé, és kattintson a csillagra. :::image type="icon" source="media/how-to-work-with-maps/star.png" border="false"::: <br /> Az utolsó 50 esemény megtekinthető. |
@@ -544,7 +540,7 @@ Ez a szakasz a programozási fájlok összehasonlítását ismerteti.
 
 A programozási idővonalban a részletek áttekintése mellett a programozási információk is elérhetők az eszközön Tulajdonságok ablak és az eszközök leltárában.
 
-| Eszköz típusa | Description |
+| Eszköz típusa | Leírás |
 |--|--|
 | Eszköztulajdonságok | Az eszköz tulajdonságai ablak a device\. észlelt utolsó programozási eseményről nyújt információt. :::image type="content" source="media/how-to-work-with-maps/information-from-device-v2.png" alt-text="Az eszköz tulajdonságai"::: |
 | Az eszköz leltára | Az eszköz leltára azt jelzi, hogy az eszköz egy programozási device\. :::image type="content" source="media/how-to-work-with-maps/inventory-v2.png" alt-text="Az eszközök leltára"::: |

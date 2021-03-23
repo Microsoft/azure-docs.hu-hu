@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: b4cf3699243e990b5e7b7478ba643067ac456020
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584703"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774932"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Útmutató a függvények futtatásához a .NET 5,0-ben az Azure-ban
 
@@ -68,37 +68,36 @@ Ezeket a kiterjesztési csomagokat a [Microsoft. Azure. functions. Worker. Exten
 
 ## <a name="start-up-and-configuration"></a>Indítás és konfigurálás 
 
-A .NET elkülönített függvények használatakor Ön hozzáférhet a Function alkalmazás elindításához, amely általában a program. cs. Ön felelős a saját gazdagép-példányának létrehozásához és elindításához. Ennek megfelelően közvetlen hozzáférést is biztosít az alkalmazás konfigurációs folyamatához. A folyamaton kívül sokkal könnyebben lehet függőségeket beszúrni és middleware-t futtatni. 
+A .NET elkülönített függvények használatakor Ön hozzáférhet a Function alkalmazás elindításához, amely általában a program. cs. Ön felelős a saját gazdagép-példányának létrehozásához és elindításához. Ennek megfelelően közvetlen hozzáférést is biztosít az alkalmazás konfigurációs folyamatához. A folyamaton kívüli folyamatok esetében sokkal könnyebben hozzáadhat konfigurációkat, befecskendezheti a függőségeket, és saját middleware-t is futtathat. 
 
-A következő kód egy folyamat példáját mutatja be `HostBuilder` :
+Az alábbi kód egy [HostBuilder] -folyamatra mutat példát:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
-A egy `HostBuilder` teljesen inicializált példány létrehozására és visszaküldésére szolgál `IHost` , amelyet aszinkron módon futtat a Function alkalmazás elindításához. 
+A [HostBuilder] egy teljesen inicializált [IHost] -példány létrehozására és visszaküldésére szolgál, amelyet aszinkron módon futtat a Function alkalmazás indításához. 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
 
 ### <a name="configuration"></a>Konfiguráció
 
-Ha a gazdagép-építő folyamathoz fér hozzá, az inicializálás során bármely alkalmazásspecifikus konfigurációt beállíthat. Ezek a konfigurációk egy külön folyamatban futó Function alkalmazásra vonatkoznak. A functions Host vagy az trigger és a kötési konfiguráció módosításához továbbra is ahost.jskell használnia a [ fájlon](functions-host-json.md).      
+A [ConfigureFunctionsWorkerDefaults] metódussal adhatók hozzá azok a beállítások, amelyek szükségesek a Function alkalmazásnak a folyamaton kívüli futtatásához, amely a következő funkciókat tartalmazza:
 
-<!--The following example shows how to add configuration `args`, which are read as command-line arguments: 
- 
-:::code language="csharp" 
-                .ConfigureAppConfiguration(c =>
-                {
-                    c.AddCommandLine(args);
-                })
-                :::
++ Az átalakítók alapértelmezett készlete.
++ Állítsa be úgy az alapértelmezett [JsonSerializerOptions] , hogy figyelmen kívül hagyja a tulajdonságok neveit.
++ Integrálás Azure Functions naplózással.
++ A kimeneti kötések és szolgáltatások.
++ Függvény-végrehajtási middleware.
++ Alapértelmezett gRPC-támogatás. 
 
-The `ConfigureAppConfiguration` method is used to configure the rest of the build process and application. This example also uses an [IConfigurationBuilder](/dotnet/api/microsoft.extensions.configuration.iconfigurationbuilder?view=dotnet-plat-ext-5.0&preserve-view=true), which makes it easier to add multiple configuration items. Because `ConfigureAppConfiguration` returns the same instance of [`IConfiguration`](/dotnet/api/microsoft.extensions.configuration.iconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true), you can also just call it multiple times to add multiple configuration items.-->  
-A konfigurációk teljes készletét a és a rendszerből is elérheti [`HostBuilderContext.Configuration`](/dotnet/api/microsoft.extensions.hosting.hostbuildercontext.configuration?view=dotnet-plat-ext-5.0&preserve-view=true) [`IHost.Services`](/dotnet/api/microsoft.extensions.hosting.ihost.services?view=dotnet-plat-ext-5.0&preserve-view=true) .
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_configure_defaults" :::   
 
-A konfigurálással kapcsolatos további tudnivalókért tekintse meg [a ASP.net Core konfiguráció](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)című témakört. 
+Ha a gazdagép-építő folyamathoz fér hozzá, akkor az inicializálás során bármely alkalmazásspecifikus konfigurációt is beállíthat. A [ConfigureAppConfiguration] metódust a [HostBuilder] egy vagy több alkalommal is meghívhatja a Function alkalmazás által igényelt konfigurációk hozzáadásához. Az alkalmazás konfigurálásával kapcsolatos további tudnivalókért tekintse meg [a ASP.net Core konfiguráció](/aspnet/core/fundamentals/configuration/?view=aspnetcore-5.0&preserve-view=true)című témakört. 
+
+Ezek a konfigurációk egy külön folyamatban futó Function alkalmazásra vonatkoznak. A functions Host vagy az trigger és a kötési konfiguráció módosításához továbbra is ahost.jskell használnia a [ fájlon](functions-host-json.md).   
 
 ### <a name="dependency-injection"></a>Függőséginjektálás
 
-A függőségi befecskendezés egyszerűsített, a .NET-osztály könyvtáraihoz képest. Ahelyett, hogy a szolgáltatások regisztrálásához indítási osztályt kellene létrehoznia, csak meg kell hívnia a `ConfigureServices` gazdagép-építőt, és a bővítmény metódusait kell használnia az adott szolgáltatások beadásához [`IServiceCollection`](/dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true) . 
+A függőségi befecskendezés egyszerűsített, a .NET-osztály könyvtáraihoz képest. Ahelyett, hogy a szolgáltatások regisztrálásához indítási osztályt kellene létrehoznia, csak meg kell hívnia a [ConfigureServices] -t a gazdagép-építőben, és a [IServiceCollection] bővítményi metódusait kell használnia adott szolgáltatások beadásához. 
 
 Az alábbi példa egy különálló szolgáltatás-függőséget szúr be:  
  
@@ -106,21 +105,23 @@ Az alábbi példa egy különálló szolgáltatás-függőséget szúr be:
 
 További információ: [függőségi befecskendezés ASP.net Coreban](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true).
 
-<!--### Middleware
+### <a name="middleware"></a>Köztes szoftverek
 
-.NET isolated also supports middleware registration, again by using a model similar to what exists in ASP.NET. This model gives you the ability to inject logic into the invocation pipeline, and before and after functions execute.
+A .NET izolált is támogatja a middleware-regisztrációt, a ASP.NET-ben találhatóhoz hasonló modell használatával. Ez a modell lehetővé teszi a logika beírását a Meghívási folyamatba, a függvények végrehajtása előtt és után.
 
-While the full middleware registration set of APIs is not yet exposed, we do support middleware registration and have added an example to the sample application under the Middleware folder.
+A [ConfigureFunctionsWorkerDefaults] -bővítmény metódusának túlterhelése lehetővé teszi a saját middleware regisztrálását, ahogy az a következő példában látható.  
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_middleware" :::-->
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/CustomMiddleware/Program.cs" id="docsnippet_middleware_register" :::
+
+Ha szeretné jobban megtekinteni az egyéni middleware használatát a Function alkalmazásban, tekintse meg az [Egyéni middleware-referenciát ismertető mintát](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/CustomMiddleware).
 
 ## <a name="execution-context"></a>Végrehajtási környezet
 
-A .NET elkülönített egy `FunctionContext` objektumot továbbít a függvények metódusai számára. Ez az objektum lehetővé teszi egy [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) példány írását a naplókba úgy, hogy meghívja a `GetLogger` metódust, és megadja a `categoryName` karakterláncot. További információ: [naplózás](#logging). 
+A .NET elkülönített [FunctionContext] -objektumot továbbít a Function metódusoknak. Ez az objektum lehetővé teszi, hogy egy [ILogger] -példányt írjon a naplókba úgy, hogy meghívja a [GetLogger] metódust, és megad egy `categoryName` karakterláncot. További információ: [naplózás](#logging). 
 
 ## <a name="bindings"></a>Kötések 
 
-A kötések meghatározása a metódusok, paraméterek és visszatérési típusok attribútumainak használatával történik. A Function metódus egy olyan metódus, amelynek a `Function` és egy trigger attribútuma egy bemeneti paraméterre van alkalmazva, az alábbi példában látható módon:
+A kötések meghatározása a metódusok, paraméterek és visszatérési típusok attribútumainak használatával történik. A Function metódus egy olyan metódus, amely egy `Function` attribútummal és egy bemeneti paraméterre alkalmazott trigger attribútummal rendelkezik, az alábbi példában látható módon:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Queue/QueueFunction.cs" id="docsnippet_queue_trigger" :::
 
@@ -128,9 +129,11 @@ Az trigger attribútum meghatározza az trigger típusát, és a bemeneti adatok
 
 Az `Function` attribútum a metódust függvény belépési pontként jelöli. A névnek egyedinek kell lennie a projekten belül, betűvel kell kezdődnie, és csak betűket, számokat, `_` és, `-` legfeljebb 127 karaktert tartalmazhat. A Project templates gyakran létrehoz egy nevű metódust `Run` , de a metódus neve lehet bármely érvényes C#-metódus neve.
 
-Mivel a .NET elkülönített projektek külön munkavégző folyamatban futnak, a kötések nem tudják kihasználni a részletes kötési osztályokat, például, `ICollector<T>` `IAsyncCollector<T>` és `CloudBlockBlob` . Az alapul szolgáló Service SDK-k (például a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) és a [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)) által örökölt típusok esetében nem támogatott a közvetlen támogatás is. Ehelyett a kötések karakterláncokat, tömböket és szerializálható típusokat, például egyszerű, régi osztályú objektumokat (POCOs) használnak. 
+Mivel a .NET elkülönített projektek külön munkavégző folyamatban futnak, a kötések nem tudják kihasználni a részletes kötési osztályokat, például, `ICollector<T>` `IAsyncCollector<T>` és `CloudBlockBlob` . Az alapul szolgáló Service SDK-k (például a [DocumentClient] és a [BrokeredMessage]) által örökölt típusok esetében nem támogatott a közvetlen támogatás is. Ehelyett a kötések karakterláncokat, tömböket és szerializálható típusokat, például egyszerű, régi osztályú objektumokat (POCOs) használnak. 
 
-HTTP-eseményindítók esetén `HttpRequestData` a és a használatával kell `HttpResponseData` elérnie a kérelmeket és a válaszokat. Ennek az az oka, hogy nincs hozzáférése az eredeti HTTP-kérelemhez és a válasz-objektumokhoz a folyamaton kívüli futtatásakor. 
+HTTP-eseményindítók esetén a [HttpRequestData] és a [HttpResponseData] használatával kell elérnie a kérelmeket és a válaszokat. Ennek az az oka, hogy nincs hozzáférése az eredeti HTTP-kérelemhez és a válasz-objektumokhoz a folyamaton kívüli futtatásakor.
+
+Az eseményindítók és kötések folyamaton kívüli futtatásához használható hivatkozási minták teljes készletét a [kötési bővítmények hivatkozási mintája](https://github.com/Azure/azure-functions-dotnet-worker/blob/main/samples/Extensions)tartalmazza. 
 
 ### <a name="input-bindings"></a>Bemeneti kötések
 
@@ -146,13 +149,13 @@ Ha kimeneti kötést szeretne írni, egy kimeneti kötési attribútumot kell al
 
 A kimeneti kötésbe írt adat mindig a függvény visszatérési értéke. Ha egynél több kimeneti kötést kell írnia, egyéni visszatérési típust kell létrehoznia. Ennek a visszatérési típusnak az osztály egy vagy több tulajdonságára alkalmazott kimeneti kötési attribútummal kell rendelkeznie. A következő példa a HTTP-válaszra és egy üzenetsor-kimeneti kötésre ír adatokat:
 
-:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Function1/Function1.cs" id="docsnippet_multiple_outputs":::
+:::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
 
 ### <a name="http-trigger"></a>HTTP-eseményindító
 
-A HTTP-eseményindítók lefordítják a bejövő HTTP-kérési üzenetet egy olyan `HttpRequestData` objektumba, amely át lett adva a függvénynek. Ez az objektum a kérelemből származó adatokkal szolgál, beleértve a következőket:,,, `Headers` `Cookies` `Identities` `URL` és opcionálisan egy üzenetet `Body` . Ez az objektum a HTTP-kérelem objektumának ábrázolása, és nem maga a kérelem. 
+A HTTP-eseményindítók lefordítják a bejövő HTTP-kérési üzenetet egy [HttpRequestData] objektumba, amely át lett adva a függvénynek. Ez az objektum a kérelemből származó adatokkal szolgál, beleértve a következőket:,,, `Headers` `Cookies` `Identities` `URL` és opcionálisan egy üzenetet `Body` . Ez az objektum a HTTP-kérelem objektumának ábrázolása, és nem maga a kérelem. 
 
-Hasonlóképpen, a függvény egy objektumot ad vissza `HttpReponseData` , amely a http-válasz létrehozásához használt adatokkal, például az üzenettel `StatusCode` `Headers` és opcionálisan egy üzenettel rendelkezik `Body` .  
+Hasonlóképpen, a függvény egy [HttpReponseData] objektumot ad vissza, amely a HTTP-válasz létrehozásához, beleértve az üzenetet `StatusCode` , `Headers` és opcionálisan egy üzenetet is tartalmaz `Body` .  
 
 A következő kód egy HTTP-trigger 
 
@@ -160,15 +163,15 @@ A következő kód egy HTTP-trigger
 
 ## <a name="logging"></a>Naplózás
 
-A .NET elkülönített szolgáltatásban a [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) `FunctionContext` függvénynek átadott objektumból beszerzett példány használatával írhat naplókat. Hívja `GetLogger` meg a metódust, és adjon meg egy olyan karakterlánc-értéket, amely a naplók írásának kategóriája. A kategória általában annak az adott függvénynek a neve, amelyből a naplók íródnak. A kategóriákkal kapcsolatos további tudnivalókért tekintse meg a [figyelési cikket](functions-monitoring.md#log-levels-and-categories). 
+A .NET-alapú elkülönítésben a függvénynek átadott [FunctionContext] objektumból beszerzett [ILogger] -példány használatával írhat naplókat. Hívja meg a [GetLogger] metódust, és adjon meg egy olyan karakterlánc-értéket, amely a naplók írásának kategóriája. A kategória általában annak az adott függvénynek a neve, amelyből a naplók íródnak. A kategóriákkal kapcsolatos további tudnivalókért tekintse meg a [figyelési cikket](functions-monitoring.md#log-levels-and-categories). 
 
-Az alábbi példa bemutatja, hogyan kérhet le `ILogger` és írhat naplókat egy függvényen belül:
+Az alábbi példa bemutatja, hogyan szerezhet be egy [ILogger] , és hogyan írhat naplókat egy függvényen belül:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/Http/HttpFunction.cs" id="docsnippet_logging" ::: 
 
-Különféle `ILogger` naplózási szintek írására különböző módszerekkel, például `LogWarning` vagy `LogError` . A naplózási szintekkel kapcsolatos további tudnivalókért tekintse meg a [figyelési cikket](functions-monitoring.md#log-levels-and-categories).
+A különböző naplózási szintek, például a vagy a [ILogger] különböző módszerekkel írhatók `LogWarning` `LogError` . A naplózási szintekkel kapcsolatos további tudnivalókért tekintse meg a [figyelési cikket](functions-monitoring.md#log-levels-and-categories).
 
-A [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) a [függőségi befecskendezés](#dependency-injection)használatakor is meg van biztosítva.
+A [függőségi injektálás](#dependency-injection)használatakor a rendszer [ILogger] is biztosít.
 
 ## <a name="differences-with-net-class-library-functions"></a>A .NET-osztály függvénytár-funkcióival kapcsolatos különbségek
 
@@ -178,13 +181,13 @@ Ez a szakasz ismerteti a .NET 5,0-as folyamaton futó működési és viselkedé
 | ---- | ---- | ---- |
 | .NET-verziók | LTS (.NET Core 3,1) | Aktuális (.NET 5,0) |
 | Alapcsomagok | [Microsoft. NET. SDK. functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) | [Microsoft. Azure. functions. Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/)<br/>[Microsoft. Azure. functions. Worker. SDK](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk) | 
-| Kötési bővítmények csomagjai | [`Microsoft.Azure.WebJobs.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | Alatt [`Microsoft.Azure.Functions.Worker.Extensions.*`](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
-| Naplózás | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) átadva a függvénynek | [`ILogger`](/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true) beszerzés forrása `FunctionContext` |
+| Kötési bővítmények csomagjai | [Microsoft. Azure. webjobs. Extensions. *](https://www.nuget.org/packages?q=Microsoft.Azure.WebJobs.Extensions)  | A [Microsoft. Azure. functions. Worker. Extensions alatt. *](https://www.nuget.org/packages?q=Microsoft.Azure.Functions.Worker.Extensions) | 
+| Naplózás | A függvénynek átadott [ILogger] | A [FunctionContext] -ből beszerzett [ILogger] |
 | Visszavonási tokenek | [Támogatott](functions-dotnet-class-library.md#cancellation-tokens) | Nem támogatott |
 | Kimeneti kötések | Kimenő paraméterek | Visszatérési értékek |
-| Kimeneti kötések fajtái |  `IAsyncCollector`, [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet&preserve-view=true), [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true)és más ügyfél-specifikus típusok | Egyszerű típusok, JSON-szerializálható típusok és tömbök. |
+| Kimeneti kötések fajtái |  `IAsyncCollector`, [DocumentClient], [BrokeredMessage]és más ügyfél-specifikus típusok | Egyszerű típusok, JSON-szerializálható típusok és tömbök. |
 | Több kimeneti kötés | Támogatott | [Támogatott](#multiple-output-bindings) |
-| HTTP-eseményindító | [`HttpRequest`](/dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true)/[`ObjectResult`](/dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true) | `HttpRequestData`/`HttpResponseData` |
+| HTTP-eseményindító | [HttpRequest] / [ObjectResult] | [HttpRequestData] / [HttpResponseData] |
 | Tartós függvények | [Támogatott](durable/durable-functions-overview.md) | Nem támogatott | 
 | Kényszerített kötések | [Támogatott](functions-dotnet-class-library.md#binding-at-runtime) | Nem támogatott |
 | function.jsaz összetevőn | Létrehozott | Nem generált |
@@ -202,3 +205,21 @@ A .NET elkülönített folyamat-függvények futtatásával kapcsolatos megoldá
 
 + [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)
 + [További információ a Azure Functions ajánlott eljárásairól](functions-best-practices.md)
+
+
+[HostBuilder]: /dotnet/api/microsoft.extensions.hosting.hostbuilder?view=dotnet-plat-ext-5.0&preserve-view=true
+[IHost]: /dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureFunctionsWorkerDefaults]: /dotnet/api/microsoft.extensions.hosting.workerhostbuilderextensions.configurefunctionsworkerdefaults?view=azure-dotnet&preserve-view=true#Microsoft_Extensions_Hosting_WorkerHostBuilderExtensions_ConfigureFunctionsWorkerDefaults_Microsoft_Extensions_Hosting_IHostBuilder_
+[ConfigureAppConfiguration]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureappconfiguration?view=dotnet-plat-ext-5.0&preserve-view=true
+[IServiceCollection]: /dotnet/api/microsoft.extensions.dependencyinjection.iservicecollection?view=dotnet-plat-ext-5.0&preserve-view=true
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostbuilder.configureservices?view=dotnet-plat-ext-5.0&preserve-view=true
+[FunctionContext]: /dotnet/api/microsoft.azure.functions.worker.functioncontext?view=azure-dotnet&preserve-view=true
+[ILogger]: /dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0&preserve-view=true
+[GetLogger]: /dotnet/api/microsoft.azure.functions.worker.functioncontextloggerextensions.getlogger?view=azure-dotnet&preserve-view=true
+[DocumentClient]: /dotnet/api/microsoft.azure.documents.client.documentclient
+[BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
+[HttpRequestData]: /dotnet/api/microsoft.azure.functions.worker.http.httprequestdata?view=azure-dotnet&preserve-view=true
+[HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
+[HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
+[ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
+[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

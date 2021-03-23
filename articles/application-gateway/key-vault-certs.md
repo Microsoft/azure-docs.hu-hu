@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 694868f2a75cc66bf9e3ede9d12e30a2cc3d7af9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8a64956deb7849568e70e94c9b58170df60db1e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98185937"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775738"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-visszafejtés Key Vault-tanúsítványokkal
 
@@ -47,10 +47,19 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
 
 1. **A Key Vault konfigurálása**
 
-   Ezután importáljon egy meglévő tanúsítványt, vagy hozzon létre egy újat a kulcstartóban. A tanúsítványt az Application gatewayen keresztül futó alkalmazások fogják használni. Ebben a lépésben egy Key Vault-titkos kulcsot is használhat, amely jelszó nélküli, Base-64 kódolású PFX-fájlként van tárolva. Azt javasoljuk, hogy a Key vaultban a tanúsítvány típusú objektumokhoz elérhető automatikus megújítási képesség miatt a tanúsítvány típusát is használja. Miután létrehozott egy tanúsítványt vagy titkos kulcsot, a kulcstartóban definiált hozzáférési szabályzatok segítségével engedélyezheti, hogy az *identitás hozzáférjen a* titkos kulcshoz.
+   Ezután importáljon egy meglévő tanúsítványt, vagy hozzon létre egy újat a kulcstartóban. A tanúsítványt az Application gatewayen keresztül futó alkalmazások fogják használni. Ebben a lépésben egy Key Vault titkos kulcsot is használhat, amely lehetővé teszi egy jelszó nélküli, Base-64 kódolású PFX-fájl tárolását is. Azt javasoljuk, hogy használja a "tanúsítvány" típust, mert az ilyen típusú objektumokhoz elérhető automatikus megújítási képesség a Key Vault. Miután létrehozott egy tanúsítványt vagy titkos kulcsot, meg kell határoznia a hozzáférési szabályzatokat a Key Vaultban, hogy az identitás hozzáférést kapjon a titkos kulcshoz.
    
    > [!IMPORTANT]
-   > Application Gateway jelenleg Key Vault szükséges, hogy az integráció kihasználása érdekében az összes hálózatról engedélyezze a hozzáférést. Nem támogatja Key Vault integrációt, ha Key Vault úgy van beállítva, hogy csak privát végpontokat engedélyezzen, és válassza a hálózatok elérését. A magán-és Select hálózatok támogatása a Key Vault és a Application Gateway teljes integrációja. 
+   > Március 15-től 2021-Key Vault felismeri az Azure Application Gatewayt az egyik megbízható szolgáltatásként, így lehetővé téve, hogy biztonságos hálózati határt építsen ki az Azure-ban. Ez lehetővé teszi, hogy megtagadja a hozzáférést az összes hálózatról (beleértve az internetes forgalmat is), hogy Key Vault, de továbbra is elérhetővé tegye az előfizetéshez tartozó Application Gateway erőforrás számára. 
+
+   > A Application Gateway a következő módon konfigurálhatja Key Vault korlátozott hálózatán. <br />
+   > a) a Key Vault hálózatkezelés paneljén <br />
+   > b) válassza a privát végpont és a kiválasztott hálózatok elemet a "tűzfal és virtuális hálózatok" lapon <br/>
+   > c) Ezután a virtuális hálózatok használatával adja hozzá a Application Gateway virtuális hálózatát és alhálózatát. A folyamat során a "Microsoft. kulcstartó" szolgáltatás végpontját is konfigurálja a jelölőnégyzet bejelölésével. <br/>
+   > d) végül válassza az "igen" lehetőséget, hogy a megbízható szolgáltatások megkerüljék Key Vault tűzfalát. <br/>
+   > 
+   > ![Key Vault tűzfal](media/key-vault-certs/key-vault-firewall.png)
+
 
    > [!NOTE]
    > Ha az Application Gateway-t az Azure CLI vagy a PowerShell használatával, vagy a Azure Portal központilag telepített Azure-alkalmazáson keresztül telepíti, akkor az SSL-tanúsítványt Base64 kódolású PFX-fájlként tárolja a Key vaultban. Az üzembe helyezés során végre kell hajtania a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)megadásához című témakör lépéseit. 

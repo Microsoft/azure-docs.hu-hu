@@ -1,31 +1,31 @@
 ---
-title: A GCP VM-példányok felderítése Azure Migrate Server Assessment szolgáltatással
-description: Ismerje meg, hogyan derítheti fel a GCP VM-példányokat Azure Migrate Server Assessment használatával.
+title: Kiszolgálók felderítése GCP-példányokon Azure Migrate észleléssel és értékeléssel
+description: Ismerje meg, hogyan derítheti fel a GCP-kiszolgálókat Azure Migrate felderítéssel és értékeléssel.
 author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 03/13/2021
 ms.custom: mvc
-ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5d57705ca0d49db1fb1d67e20beb609f21b1d5b
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98541427"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771430"
 ---
-# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Oktatóanyag: Google Cloud Platform-(GCP-) példányok felderítése kiszolgáló-értékeléssel
+# <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: Google Cloud Platform-(GCP-) példányok észlelése a Azure Migrate: felderítés és Értékelés
 
 Az Azure-ba való Migrálás részeként felderítheti a kiszolgálókat az értékeléshez és az áttelepítéshez.
 
-Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel Google Cloud Platform (GCP) példányokat a Azure Migrate: Server Assessment Tool eszközzel, egy könnyű Azure Migrate berendezéssel. Üzembe helyezi a készüléket egy GCP virtuálisgép-példányon, hogy folyamatosan felderítse a gép és a teljesítmény metaadatait.
+Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel Google Cloud Platform (GCP) példányokat a Azure Migrate: Discovery and Assessment Tool eszközzel, egy egyszerű Azure Migrate berendezés használatával. A berendezést a GCP-kiszolgálón helyezi üzembe a gép és a teljesítmény metaadatainak folyamatos felderítése érdekében.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.
-> * Készítse elő a GCP VM-példányokat a felderítéshez.
-> * Azure Migrate-projekt létrehozása.
+> * Készítse elő a kiszolgálót a GCP a felderítéshez.
+> * Hozzon létre egy projektet.
 > * Állítsa be az Azure Migrate készüléket.
 > * A folyamatos felderítés elindítása.
 
@@ -40,15 +40,16 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 
 **Követelmény** | **Részletek**
 --- | ---
-**Berendezés** | Szüksége van egy GCP virtuálisgép-példányra, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van.<br/> _A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott_.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
-**Windowsos VM-példányok** | Engedélyezze a bejövő kapcsolatokat a WinRM 5985-as porton (HTTP), hogy a készülék lekérje a konfiguráció és a teljesítmény metaadatait.
-**Linuxos VM-példányok** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).
+**Berendezés** | Szüksége van egy kiszolgálóra a GCP, amelyen futtatni szeretné a Azure Migrate készüléket. A gépnek a következőket kell tartalmaznia:<br/><br/> – A Windows Server 2016 telepítve van.<br/> _A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott_.<br/><br/> -16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület, valamint egy külső virtuális kapcsoló.<br/><br/> -Statikus vagy dinamikus IP-cím, internet-hozzáféréssel, közvetlenül vagy proxyn keresztül.
+**Windows Server-példányok** | Engedélyezze a bejövő kapcsolatokat a WinRM 5985-as porton (HTTP), hogy a készülék lekérje a konfiguráció és a teljesítmény metaadatait.
+**Linux Server-példányok** | Bejövő kapcsolatok engedélyezése a 22-es porton (TCP).
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
-Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
-- Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
-- Azure Active Directory-(HRE-) alkalmazások regisztrálásához szükséges engedélyek.
+Projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
+
+* Közreműködő vagy tulajdonosi engedélyek egy Azure-előfizetéshez.
+* Azure Active Directory-(HRE-) alkalmazások regisztrálásához szükséges engedélyek.
 
 Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tulajdonosa. Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együtt az alábbi módon rendelheti hozzá az engedélyeket:
 
@@ -56,7 +57,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
     ![Az Azure-előfizetés kereséséhez használt keresőmező](./media/tutorial-discover-gcp/search-subscription.png)
 
-2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben Azure Migrate projektet kíván létrehozni. 
+2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben létre kíván hozni egy projektet.
 3. Az előfizetésben válassza a hozzáférés- **vezérlés (iam)**  >  **jelölőnégyzetet**.
 4. A **hozzáférés-ellenőrzési** területen keresse meg a megfelelő felhasználói fiókot.
 5. A **szerepkör-hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzáadás** gombra.
@@ -77,21 +78,21 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
 ## <a name="prepare-gcp-instances"></a>GCP-példányok előkészítése
 
-Állítson be egy fiókot, amelyet a készülék használhat a GCP VM-példányok eléréséhez.
+Állítson be egy fiókot, amelyet a készülék használhat a GCP található kiszolgálók eléréséhez.
 
-- **Windows-kiszolgálók** esetén:
-    - Helyi felhasználói fiók beállítása a tartományhoz nem csatlakoztatott gépeken, valamint egy tartományi fiók a tartományhoz nem csatlakoztatott gépeken, amelyeket fel szeretne venni a felderítésbe. Adja hozzá a felhasználói fiókot a következő csoportokhoz: 
-        - Rendszerfelügyeleti felhasználók
-        - Teljesítményfigyelő felhasználói
-        - Teljesítménynapló felhasználói.
-- **Linux-kiszolgálók** esetén:
-    - Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. Ha nem tud főfiókot biztosítani, tekintse meg a [támogatási mátrix](migrate-support-matrix-physical.md#physical-server-requirements) utasításait egy másik megoldáshoz.
-    - A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
+* **Windows-kiszolgálók** esetén:
+    * Helyi felhasználói fiókot állítson be tartományhoz nem csatlakozó kiszolgálókon, valamint egy tartományi fiókot a tartományhoz csatlakoztatott kiszolgálókon, amelyeket fel szeretne venni a felderítésbe. Adja hozzá a felhasználói fiókot a következő csoportokhoz: 
+        * Rendszerfelügyeleti felhasználók
+        * Teljesítményfigyelő felhasználói
+        * Teljesítménynapló felhasználói.
+* **Linux-kiszolgálók** esetén:
+    * Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. Ha nem tud főfiókot biztosítani, tekintse meg a [támogatási mátrix](migrate-support-matrix-physical.md#physical-server-requirements) utasításait egy másik megoldáshoz.
+    * A Azure Migrate a jelszó-hitelesítést használja az AWS-példányok felfedése során. Az AWS-példányok alapértelmezés szerint nem támogatják a jelszó-hitelesítést. A példány felderítése előtt engedélyeznie kell a jelszó-hitelesítést.
         1. Jelentkezzen be az egyes Linux-gépekre.
         2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
         3. A fájlban keresse meg a **PasswordAuthentication** sort, és módosítsa az értéket **Igen** értékre.
         4. Mentse a fájlt, és a bezáráshoz. Indítsa újra az SSH-szolgáltatást.
-    - Ha a Linux rendszerű virtuális gépek felderítéséhez root felhasználót használ, győződjön meg arról, hogy a virtuális gépeken engedélyezve van a rendszergazdai bejelentkezés.
+    * Ha a Linux-kiszolgálók felderítéséhez root felhasználót használ, győződjön meg arról, hogy a kiszolgálókon a rendszergazdai bejelentkezés engedélyezett.
         1. Bejelentkezés az egyes Linux rendszerű gépekre
         2. Nyissa meg a sshd_config fájlt: VI/etc/ssh/sshd_config
         3. A fájlban keresse meg a **PermitRootLogin** sort, és módosítsa az értéket **Igen** értékre.
@@ -99,18 +100,18 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
-Hozzon létre egy új Azure Migrate projektet.
+Új projekt beállítása.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
 3. Az **Áttekintés** területen válassza a **projekt létrehozása** lehetőséget.
-5. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
-6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+4. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
+5. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
 
    ![A projekt neve és a régió mezői](./media/tutorial-discover-gcp/new-project.png)
 
-7. Válassza a **Létrehozás** lehetőséget.
-8. Várjon néhány percet, amíg a Azure Migrate-projekt üzembe helyezése megtörténik. A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
+6. Válassza a **Létrehozás** lehetőséget.
+7. Várjon néhány percet, amíg a projekt üzembe helyezése megtörténik. A **Azure Migrate: a felderítési és értékelési** eszközt alapértelmezés szerint az új projekthez adja hozzá a rendszer.
 
 ![Az alapértelmezés szerint hozzáadott kiszolgáló-értékelési eszközt megjelenítő oldal](./media/tutorial-discover-gcp/added-tool.png)
 
@@ -119,27 +120,28 @@ Hozzon létre egy új Azure Migrate projektet.
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
-A Azure Migrate berendezés egy könnyű berendezés, amelyet Azure Migrate Server Assessment használ a következők elvégzéséhez:
+A Azure Migrate készülék egy könnyű berendezés, amelyet Azure Migrate: a felderítés és az értékelés a következő műveleteket hajtja végre:
 
-- Helyszíni kiszolgálók felderítése.
-- Metaadatok és teljesítményadatok küldése a felderített kiszolgálókhoz Azure Migrate Server Assessment.
+* Helyszíni kiszolgálók felderítése.
+* Metaadatok és teljesítményadatok küldése a felderített kiszolgálókhoz Azure Migrate: felderítés és Értékelés.
 
 [További](migrate-appliance.md) információ az Azure Migrate készülékről.
 
 A készülék beállítása:
-1. Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+
+1. Adja meg a készülék nevét, és állítson be egy Project-kulcsot a portálon.
 1. Töltse le a Azure Migrate telepítő parancsfájlt tartalmazó tömörített fájlt a Azure Portal.
 1. Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
 1. Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
-1. Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel a Azure Migrate Project Key használatával.
+1. Konfigurálja a készüléket első alkalommal, és regisztrálja a projekttel a Project Key használatával.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
+### <a name="1-generate-the-project-key"></a>1. a projekt kulcsának előállítása
 
-1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
-2. A **Discover Machines** szolgáltatásban  >  **a gépek virtualizáltak?**, válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
-3. **1.: Azure Migrate projekt kulcsának létrehozásakor** adja meg a GCP virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
-4. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárjuk be a gépek felderítése lapot az erőforrások létrehozásakor.
-5. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
+1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** **területen** válassza a felderítés lehetőséget.
+2. A **felderítési kiszolgálók**  >  **kiszolgálók virtualizáltak?** területen válassza a **fizikai vagy egyéb (AWS, GCP, Xen stb.)** lehetőséget.
+3. **1: a Project Key létrehozásakor** adja meg a GCP virtuális kiszolgálók felderítéséhez beállítani kívánt Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
+4. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárjuk be a felderítési kiszolgálók lapot.
+5. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **Project-kulcsot** .
 6. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="2-download-the-installer-script"></a>2. a telepítő parancsfájl letöltése
@@ -200,7 +202,7 @@ Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Mi
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhők számára.
+Győződjön meg arról, hogy a készülék tud csatlakozni az Azure URL-címekhez a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkhöz.
 
 ### <a name="4-configure-the-appliance"></a>4. a berendezés konfigurálása
 
@@ -212,16 +214,16 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 2. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
 1. A webalkalmazás-> **Előfeltételek beállítása** lapon tegye a következőket:
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-        - Kattintson a **proxy beállítása** elemre, és adja meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
+        - Kattintson a **telepítési proxy** elemre, és határozza meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
         - Ha hozzáadta a proxy részleteit, vagy letiltotta a proxyt és/vagy a hitelesítést, kattintson a **Save (Mentés** ) gombra a kapcsolat ismételt elindításához.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken a kiszolgáló felderítésének megfelelő működéséhez az idő szinkronizálása szükséges.
-    - **Frissítések telepítése**: Azure Migrate Server Assessment ellenőrzi, hogy a készüléken telepítve vannak-e a legújabb frissítések. Az ellenőrzések befejezése után a berendezés **megtekintése** lehetőségre kattintva megtekintheti a készüléken futó összetevők állapotát és verzióit.
+    - **Frissítések telepítése**: Azure Migrate: a felderítés és az értékelés ellenőrzi, hogy a készüléken telepítve vannak-e a legújabb frissítések. Az ellenőrzések befejezése után a berendezés **megtekintése** lehetőségre kattintva megtekintheti a készüléken futó összetevők állapotát és verzióit.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Illessze be a **projektből** a portálról másolt kulcsot. Ha nem rendelkezik a kulccsal, nyissa meg a **Azure Migrate: felderítés és értékelés> a meglévő készülékek felügyeletének észlelése>**, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
 1. Szüksége lesz egy eszköz kódjára az Azure-beli hitelesítéshez. A **Bejelentkezés** gombra kattintva megnyílik egy modális az eszköz kódjával az alább látható módon.
 
     ![Az eszköz kódját ábrázoló modális](./media/tutorial-discover-vmware/device-code.png)
@@ -245,7 +247,7 @@ Most kapcsolódjon a készülékről a felderíteni kívánt GCP-kiszolgálókho
 1. Ha SSH-kulcson alapuló hitelesítést használ a Linux Serverhez, a forrás típusaként válassza a **Linux-kiszolgáló (SSH-kulcs-alapú)** lehetőséget, adjon meg egy felhasználóbarát nevet a hitelesítő adatokhoz, adja hozzá a felhasználónevet, tallózással keresse meg és válassza ki az SSH titkos kulcsot tartalmazó fájlt. Kattintson a **Save (Mentés**) gombra.
 
     - Azure Migrate támogatja az ssh-keygen parancs által generált SSH titkos kulcsot RSA, DSA, ECDSA és ed25519 algoritmusok használatával.
-    - A Azure Migrate jelenleg nem támogatja a jelszó-alapú SSH-kulcsot. Jelszó nélkül használjon SSH-kulcsot.
+    - A Azure Migrate jelenleg nem támogatja a jelszó-alapú SSH-kulcsot. Egy SSH-kulcsot jelszó nélkül használhat.
     - Jelenleg Azure Migrate nem támogatja a PuTTY által generált SSH titkos kulcs fájlját.
     - Azure Migrate támogatja az SSH titkos kulcs fájljának OpenSSH formátumát az alábbiak szerint:
     
@@ -257,13 +259,13 @@ Most kapcsolódjon a készülékről a felderíteni kívánt GCP-kiszolgálókho
 4. Egyszerre **egyetlen elemet is hozzáadhat** , vagy egy menetben **több elemet is hozzáadhat** . Lehetőség van arra is, hogy a kiszolgáló adatait a **CSV importálásával** adja meg.
 
     - Ha az **egyetlen elem hozzáadása** lehetőséget választja, kiválaszthatja az operációs rendszer típusát, megadhatja a hitelesítő adatok rövid nevét, a kiszolgáló **IP-címét vagy teljes tartománynevét** , majd kattintson a **Mentés** gombra.
-    - Ha úgy dönt, hogy **több elemet ad hozzá**, egyszerre több rekordot is hozzáadhat, ha a szövegmezőben a hitelesítő adatok rövid nevét adja meg a kiszolgáló **IP-címe/teljes tartományneve** mezőben. **Ellenőrizze** a hozzáadott rekordokat, és kattintson a **Save (Mentés**) gombra.
+    - Ha úgy dönt, hogy **több elemet ad hozzá**, egyszerre több rekordot is hozzáadhat, ha a szövegmezőben a hitelesítő adatok rövid nevét adja meg a kiszolgáló **IP-címe/teljes tartományneve** mezőben. Ellenőrizze * * a felvett rekordokat, és kattintson a **Save (Mentés**) gombra.
     - Ha a **CSV importálása** _(alapértelmezés szerint kiválasztva)_ lehetőséget választja, letöltheti a CSV-sablonfájl fájlját, feltöltheti a fájlt a kiszolgáló **IP-címével/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés** gombra.
 
 5. A Save (Mentés) gombra kattintva a készülék megpróbálhatja érvényesíteni a hozzáadott kiszolgálókhoz való kapcsolódást, és megjeleníti az **ellenőrzési állapotot** a táblában az egyes kiszolgálókon.
     - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát, ha a tábla állapot oszlopában a **sikertelen érvényesítés** gombra kattint. Javítsa ki a problémát, és ismételje meg az érvényesítést.
     - Kiszolgáló eltávolításához kattintson a **Törlés** gombra.
-6. A felderítés megkezdése előtt bármikor **újraérvényesítheti** a kiszolgálókkal való kapcsolatot.
+6. A felderítés megkezdése előtt bármikor **újraérvényesítheti** a kiszolgálókhoz való kapcsolódást.
 7. Kattintson a **felderítés indítása** gombra a sikeresen érvényesített kiszolgálók felderítésének elindításához. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot a tábla minden egyes kiszolgálóján.
 
 
@@ -274,9 +276,9 @@ Ez elindítja a felderítést. Kiszolgálónként körülbelül 2 percet vesz ig
 A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjelennek-e a portálon.
 
 1. Nyissa meg az Azure Migrate irányítópultját.
-2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
+2. **Azure Migrate-Windows, Linux és SQL Server**  >  **Azure Migrate: felderítés és értékelés** lapon kattintson a **felderített kiszolgálók** számának megjelenítésére szolgáló ikonra.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [GCP-kiszolgálók értékelése](tutorial-assess-gcp.md) Azure-beli virtuális gépekre való áttelepítéshez.
-- [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.
+* [GCP-kiszolgálók értékelése](tutorial-assess-gcp.md) Azure-beli virtuális gépekre való áttelepítéshez.
+* [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

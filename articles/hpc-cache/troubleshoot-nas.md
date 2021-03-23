@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: d2a5ffa337f789c4edc3a34b3be81285337473e2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb17918774d23dbeb2747fa55eefc4956812e254
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471722"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775697"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>A NAS-konfiguráció és az NFS-tárolási cél problémáinak elhárítása
 
@@ -91,16 +91,15 @@ A háttérbeli tárolórendszer belső aliasokat tart fenn a Fájlkezelőben, de
 
 Ha el szeretné kerülni a fájlok ütközését több exportálási fájl esetében, az Azure HPC cache automatikusan csatlakoztatja a legsekélyebb elérhető exportálást az elérési útban ( ``/ifs`` a példában), és az adott exportálásból származó fájlleíró-t használja. Ha több exportálás ugyanazt az alapútvonalat használja, az Azure HPC-gyorsítótárnak rendszergazdai hozzáférésre van szüksége ehhez az elérési úthoz.
 
-## <a name="enable-export-listing"></a>Exportálási lista engedélyezése
-<!-- link in prereqs article -->
+<!-- ## Enable export listing
 
-A NAS-nak le kell listáznia az exportálást, amikor az Azure HPC cache lekérdezi azt.
+The NAS must list its exports when the Azure HPC Cache queries it.
 
-A legtöbb NFS-tárolási rendszeren tesztelheti ezt úgy, hogy a következő lekérdezést küldi el egy Linux-ügyféltől: ``showmount -e <storage IP address>``
+On most NFS storage systems, you can test this by sending the following query from a Linux client: ``showmount -e <storage IP address>``
 
-Ha lehetséges, használja a Linux-ügyfelet a gyorsítótárral azonos virtuális hálózatból.
+Use a Linux client from the same virtual network as your cache, if possible.
 
-Ha a parancs nem sorolja fel az exportálásokat, a gyorsítótár nem fog tudni csatlakozni a tárolási rendszerhez. A NAS-gyártóval együttműködve engedélyezheti az exportálási listákat.
+If that command doesn't list the exports, the cache will have trouble connecting to your storage system. Work with your NAS vendor to enable export listing.  -->
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>A VPN-csomagok méretére vonatkozó korlátozások módosítása
 <!-- link in prereqs article and configuration article -->

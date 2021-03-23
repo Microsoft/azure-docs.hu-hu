@@ -1,19 +1,14 @@
 ---
 title: Palo Alto-integráció
-titleSuffix: Azure Defender for IoT
 description: A IoT Defender a következő generációs tűzfalakkal integrálta a folyamatos ICS-figyelő platformot, amely lehetővé teszi a kritikus veszélyforrások, gyorsabb és hatékonyabb blokkolását.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 85a7622223861f857ce75b8136b509ba279f3d96
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 49c00f9ad7cc1980a8690e35ed19351e20417c6a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558063"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783931"
 ---
 # <a name="about-the-palo-alto-integration"></a>A Palo Alto-integráció ismertetése
 

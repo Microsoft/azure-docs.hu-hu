@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99584520"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775868"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>A szinapszis Studio használata a Apache Spark-alkalmazások figyelésére
 
@@ -157,9 +157,16 @@ Nyissa meg a **monitort**, majd válassza **Apache Spark alkalmazások** elemet.
    ![Sikertelen feladatok adatai](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
 ## <a name="compare-apache-spark-applications"></a>Apache Spark alkalmazások összehasonlítása
-Kattintson az **alkalmazások összehasonlítása** gombra, és válasszon egy alkalmazást a teljesítmény összehasonlításához, a felhasználók intuitív módon láthatják a két alkalmazás közötti különbséget.
+
+Az alkalmazások összehasonlítására kétféleképpen van lehetőség. Az összehasonlításhoz válasszon egy **alkalmazást**, vagy kattintson az **összehasonlítás jegyzetfüzetbe** gombra a jegyzetfüzetben való megjelenítéshez.
+
+### <a name="compare-by-choose-an-application"></a>Összehasonlítás egy alkalmazás kiválasztásával
+
+Kattintson az **alkalmazások összehasonlítása** gombra, és válasszon egy alkalmazást a teljesítmény összehasonlításához, intuitív módon megtekintheti a két alkalmazás közötti különbséget.
 
 ![alkalmazások összehasonlítása](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+![az alkalmazások összehasonlításának részletei](./media/how-to-monitor-spark-applications/details-compare-applications.png)
 
 1. Az egér használatával vigye az egérmutatót egy alkalmazásra, majd jelenítse meg az **alkalmazások összehasonlítása** ikont.
 
@@ -167,7 +174,7 @@ Kattintson az **alkalmazások összehasonlítása** gombra, és válasszon egy a
 
 3. Kattintson az **alkalmazás kiválasztása** gombra az **összehasonlító alkalmazás kiválasztása** lap megnyitásához.
 
-4. Az összehasonlító alkalmazás kiválasztásakor a felhasználóknak vagy az alkalmazás URL-címét kell megadniuk, vagy az ismétlődő listából kell választaniuk. Ezután kattintson **az OK** gombra. 
+4. Az összehasonlító alkalmazás kiválasztásakor be kell írnia az alkalmazás URL-címét, vagy az ismétlődő listából kell választania. Ezután kattintson **az OK** gombra. 
 
    ![összehasonlító alkalmazás kiválasztása](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
 
@@ -175,6 +182,15 @@ Kattintson az **alkalmazások összehasonlítása** gombra, és válasszon egy a
 
    ![összehasonlítás eredménye](./media/how-to-monitor-spark-applications/comparison-result.png)
 
+### <a name="compare-by-compare-in-notebook"></a>Összehasonlítás a jegyzetfüzetben való összehasonlítással
+
+Kattintson az **összehasonlítás a jegyzetfüzetbe** gombra az **alkalmazások összehasonlítása** lapon a jegyzetfüzet megnyitásához. A. ipynb fájl alapértelmezett neve az alkalmazás- **elemzések ismétlődő** változata.
+
+![összehasonlítás jegyzetfüzetben](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
+
+A jegyzetfüzetben: ismétlődő alkalmazás-elemzési fájl, közvetlenül a Spark-készlet és a nyelv beállítása után is futtatható.
+
+![ismétlődő alkalmazás-elemzés](./media/how-to-monitor-spark-applications/recurrent-application-analytics.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

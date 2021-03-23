@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/19/2017
+ms.date: 03/22/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 040e49ee870704107e1d4118f1484119d98a9ebf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97703415"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781211"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Egy Sign-Out SAML protokoll
 
-Azure Active Directory (Azure AD) támogatja az SAML 2,0 webböngésző egyszeri kijelentkezési profilját. Az egyszeri bejelentkezés megfelelő működéséhez az alkalmazás **LogoutURL** explicit módon regisztrálni kell az Azure ad-ben az alkalmazás regisztrálása során. Az Azure AD a LogoutURL használatával irányítja át a felhasználókat, miután kijelentkezett.
+Azure Active Directory (Azure AD) támogatja az SAML 2,0 webböngésző egyszeri kijelentkezési profilját. Az egyszeri bejelentkezés megfelelő működéséhez az alkalmazás **LogoutURL** explicit módon regisztrálni kell az Azure ad-ben az alkalmazás regisztrálása során. Ha az alkalmazás [hozzá van adva az Azure app Galleryhez](v2-howto-app-gallery-listing.md) , ez az érték alapértelmezés szerint beállítható. Ellenkező esetben az értéket az alkalmazásnak az Azure AD-bérlőhöz való hozzáadását végző személynek kell meghatároznia és beállítania. Az Azure AD a LogoutURL használatával irányítja át a felhasználókat, miután kijelentkezett. 
 
 Az Azure AD támogatja az átirányítás kötését (HTTP GET), és nem HTTP POST kötést.
 

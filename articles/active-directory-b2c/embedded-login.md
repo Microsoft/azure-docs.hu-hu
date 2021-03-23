@@ -8,18 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 03/21/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1255c4962de1fce19efa9c0b0e1d28fc348463ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580147"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772025"
 ---
 # <a name="embedded-sign-in-experience"></a>Beágyazott bejelentkezési élmény
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 Az egyszerűbb bejelentkezési élmény érdekében elkerülheti a felhasználók átirányítását egy külön bejelentkezési oldalra, vagy előugró ablakot hozhat létre. A beágyazott keret elem használatával közvetlenül a `<iframe>` webalkalmazásba ágyazhatja be a Azure ad B2C bejelentkezési felhasználói felületét.
 
@@ -158,3 +169,5 @@ Tekintse meg a következő kapcsolódó cikkeket:
 - [RelyingParty](relyingparty.md) -elem leírása
 - [Szabályzat engedélyezése a JavaScripthez](./javascript-and-page-layout.md)
 - [Kódminták](code-samples.md)
+
+::: zone-end

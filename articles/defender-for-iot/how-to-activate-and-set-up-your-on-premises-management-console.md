@@ -1,18 +1,14 @@
 ---
 title: A helyszíni felügyeleti konzol aktiválása és beállítása
 description: A felügyeleti konzol aktiválása biztosítja, hogy az érzékelők regisztrálva legyenek az Azure-ban, és információt küldjenek a helyszíni felügyeleti konzolra, valamint arról, hogy a helyszíni felügyeleti konzol felügyeleti feladatokat hajt végre a csatlakoztatott érzékelőkön.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: defender-for-iot
-ms.openlocfilehash: f659b25abbbad5f2150ed44766d30dc1f64dd3bb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104602756"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784628"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>A helyszíni felügyeleti konzol aktiválása és beállítása 
 
@@ -236,7 +232,7 @@ A következő táblázat a **hely kezelése** ablakban található paramétereke
 | Név | Az érzékelő neve. Ezt a nevet csak az érzékelőből lehet módosítani. További információ: Defender for IoT felhasználói útmutató. |
 | IP | Az érzékelő IP-címe. |
 | Verzió | Az érzékelő verziója. |
-| Kapcsolat | Az érzékelő kapcsolati állapota. Az állapot lehet **csatlakoztatni** vagy **leválasztani**. |
+| Kapcsolatok | Az érzékelő kapcsolati állapota. Az állapot lehet **csatlakoztatni** vagy **leválasztani**. |
 | Legutóbbi frissítés | Az utolsó frissítés dátuma. |
 | Frissítési folyamat | A folyamatjelző sáv a frissítési folyamat állapotát mutatja a következőképpen:<br />– Csomag feltöltése<br />– Felkészülés a telepítésre<br />– Folyamatok leállítása<br />– Az adatbiztonsági mentés<br />-Pillanatkép készítése<br />– Konfiguráció frissítése<br />-Függőségek frissítése<br />-Kódtárak frissítése<br />– Adatbázisok javítása<br />-Folyamatok indítása<br />-A rendszerjózanság ellenőrzése<br />– Az érvényesítés sikerült<br />– Sikeres<br />– Hiba<br />– A frissítés elindult<br />-Telepítés indításaogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >A frissítéssel kapcsolatos részletekért tekintse meg a [Microsoft ügyfélszolgálata](https://support.microsoft.com/) segítséget. |
 | Eszközök | Az érzékelő által figyelt eszközök száma. |

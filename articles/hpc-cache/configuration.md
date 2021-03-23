@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a gyorsítótár t
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103563378"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773232"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -75,6 +75,8 @@ Ha egyéni DNS-kiszolgálót kell beállítania a gyorsítótárhoz, használja 
   > [!NOTE]
   > The cache will use only the first DNS server it successfully finds. -->
 
+A DNS-beállításokat éles környezetben való használata előtt érdemes egy tesztelési gyorsítótárat használni a DNS-beállítás ellenőrzéséhez és pontosításához.
+
 ### <a name="refresh-storage-target-dns"></a>Tárolási cél DNS frissítése
 
 Ha a DNS-kiszolgáló frissíti az IP-címeket, akkor a társított NFS-tárolási célok átmenetileg elérhetetlenné válnak. Olvassa el, hogyan frissítheti az egyéni DNS-rendszer IP-címeit a [tárolási célok szerkesztése](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)című témakörben.
@@ -94,10 +96,10 @@ Ez a funkció csak az Azure Blob Storage-célokhoz érhető el, és a konfigurá
 
 A pillanatképeket nyolc óránként, UTC 0:00, 08:00 és 16:00 nyelven kell elvégezni.
 
-Az Azure HPC cache napi, heti és havi pillanatképeket tárol, amíg újakat nem helyettesítenek. A korlátok a következők:
+Az Azure HPC cache napi, heti és havi pillanatképeket tárol, amíg újakat nem helyettesítenek. A pillanatképek megőrzési korlátai a következők:
 
 * Akár 20 napi pillanatkép
 * Legfeljebb 8 heti pillanatkép
 * Legfeljebb 3 havi pillanatkép
 
-A pillanatképeket a `.snapshot` blob Storage-tároló névterében lévő könyvtárból érheti el.
+A pillanatképeket a `.snapshot` csatlakoztatott blob Storage-tároló gyökerében található könyvtárból érheti el.

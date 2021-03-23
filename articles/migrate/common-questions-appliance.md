@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate készülék – gyakori kérdések
 description: Választ kaphat a Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre.
-author: vikram1988
-ms.author: vibansa
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: 5a050d9aab9e8665c6048391488e57c9b4af10a5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/22/2021
+ms.openlocfilehash: 74d8018ea4cb2cad5b6726b8abb6bf2f17b8e57c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043065"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778525"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -24,13 +24,13 @@ Ez a cikk az Azure Migrate berendezéssel kapcsolatos gyakori kérdésekre ad v�
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Mi a Azure Migrate készülék?
 
-Az Azure Migrate készülék egy könnyű berendezés, amelyet a Azure Migrate: a kiszolgáló-értékelési eszköz a fizikai vagy virtuális kiszolgálók felderítésére és vizsgálatára használja a helyszíni vagy bármely felhőből. A Azure Migrate: a kiszolgáló áttelepítési eszköze a berendezést is használja a helyszíni VMware virtuális gépek ügynök nélküli áttelepítéséhez.
+A Azure Migrate készülék egy könnyű berendezés, amelyet a Azure Migrate: a felderítési és értékelési eszköz a fizikai vagy virtuális kiszolgálók felderítésére és vizsgálatára használja a helyszíni vagy bármely felhőből. A Azure Migrate: a kiszolgáló áttelepítési eszköze a készüléket a VMware-környezetben futó helyszíni kiszolgálók ügynök nélküli áttelepítésére is használja.
 
 További információ az Azure Migrate készülékről:
 
-- A berendezést virtuális gépre vagy fizikai gépre helyezik üzembe.
-- A készülék felfedi a helyszíni gépeket, és folyamatosan küldi a gépi metaadatokat és teljesítményadatokat a Azure Migrate.
-- A készülék felderítése ügynök nélkül történik. Nincs telepítve a felderített gépekre.
+- A készüléket fizikai kiszolgálóként vagy virtualizált kiszolgálóként helyezi üzembe a helyszínen.
+- A készülék felfedi a helyszíni kiszolgálókat, és folyamatosan küldi a kiszolgálói metaadatokat és teljesítményadatokat Azure Migrate.
+- A készülék felderítése ügynök nélkül történik. Nincs telepítve a felderített kiszolgálókon.
 
 [További](migrate-appliance.md) információ a készülékről.
 
@@ -54,11 +54,11 @@ A készülék az interneten keresztül vagy az Azure ExpressRoute segítségéve
 
 ## <a name="does-appliance-analysis-affect-performance"></a>Befolyásolja a berendezések elemzése a teljesítményt?
 
-A Azure Migrate készülék folyamatosan a teljesítményadatokat méri a helyszíni gépeken. Ez a profilkészítés szinte nem befolyásolja a profilkészítésen átadott gépek teljesítményét.
+A Azure Migrate berendezés a helyszíni kiszolgálókon folyamatosan méri a teljesítményadatokat. Ez a profilkészítés szinte nem befolyásolja a profilkészítésen alapuló kiszolgálók teljesítményét.
 
-## <a name="can-i-harden-the-appliance-vm"></a>Megerősíthető a készülék virtuális gépe?
+## <a name="can-i-harden-the-appliance"></a>Megerősítem a készüléket?
 
-Ha a letöltött sablonnal hozza létre a berendezés virtuális gépet, hozzáadhat összetevőket (például víruskeresőt) a sablonhoz, ha a Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok nem állnak helyre.
+Ha a letöltött sablont használja a készülék létrehozásához, hozzáadhat összetevőket (például víruskeresőt) a sablonhoz, ha a Azure Migrate berendezéshez szükséges kommunikációs és tűzfalszabályok nem állnak helyre.
 
 ## <a name="what-network-connectivity-is-required"></a>Milyen hálózati kapcsolat szükséges?
 
@@ -66,24 +66,24 @@ A készüléknek hozzá kell férnie az Azure URL-címeihez. [Tekintse át](migr
 
 ## <a name="what-data-does-the-appliance-collect"></a>Milyen adatokat gyűjt a készülék?
 
-A következő cikkekben talál információt arról, hogy az Azure Migrate készülék milyen adatokat gyűjt a virtuális gépeken:
+A Azure Migrate készülék által a kiszolgálókon gyűjtött adatokra vonatkozó információkat a következő cikkekben találja:
 
-- **VMWare virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---vmware) az összegyűjtött adatokat.
-- **Hyper-V virtuális gép**: [tekintse át](migrate-appliance.md#collected-data---hyper-v) az összegyűjtött adatokat.
+- **VMware-környezetben található kiszolgálók: az** összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---vmware) .
+- **Hyper-V környezetben található kiszolgálók: az** összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---hyper-v) .
 - **Fizikai vagy virtuális kiszolgálók**: az összegyűjtött adatok [áttekintése](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Hogyan történik az adatok tárolása?
 
-Az Azure Migrate készülék által gyűjtött adatokat az Azure-beli helyen tárolja a rendszer, ahol létrehozta a Azure Migrate projektet.
+Az Azure Migrate készülék által gyűjtött adatokat a projekt létrehozásához használt Azure-helyen tárolja a rendszer.
 
 További információ az adatok tárolásáról:
 
-- Az összegyűjtött adatokat a rendszer biztonságosan tárolja a Microsoft-előfizetések CosmosDB. Az Azure Migrate-projekt törlésekor a rendszer törli az adatvesztést. A tárterületet Azure Migrate kezeli. Nem választhat külön Storage-fiókot az összegyűjtött adatokhoz.
-- Ha [függőségi vizualizációt](concepts-dependency-visualization.md)használ, a gyűjtött adatokat az Azure-előfizetésében létrehozott Azure log Analytics-munkaterületen tárolja a rendszer. Az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében. 
+- Az összegyűjtött adatokat a rendszer biztonságosan tárolja a Microsoft-előfizetések CosmosDB. A projekt törlésekor a rendszer törli az adatvesztést. A tárterületet Azure Migrate kezeli. Nem választhat külön Storage-fiókot az összegyűjtött adatokhoz.
+- Ha [függőségi vizualizációt](concepts-dependency-visualization.md)használ, a gyűjtött adatokat az Azure-előfizetésében létrehozott Azure log Analytics-munkaterületen tárolja a rendszer. Az adatai törlődnek, amikor törli a Log Analytics munkaterületet az előfizetésében.
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>Mekkora mennyiségű adatfeltöltés történik a folyamatos profilkészítés során?
 
-A Azure Migrate elküldett adatok mennyisége több paramétertől függ. Például egy olyan Azure Migrate-projekt, amely 10 géppel rendelkezik (mindkettő egy lemezzel és egy hálózati adapterrel) körülbelül 50 MB adatmennyiséget küld naponta. Ez az érték közelítő; a tényleges érték a lemezek és hálózati adapterek adatpontjainak számától függ. Ha a gépek, lemezek vagy hálózati adapterek száma növekszik, az elküldett adatmennyiség növekedése nem lineáris.
+A Azure Migrate elküldett adatok mennyisége több paramétertől függ. Egy olyan projekt például, amely 10 kiszolgálóval rendelkezik (mindkettő egy lemezzel és egy hálózati adapterrel) körülbelül 50 MB adatmennyiséget küld naponta. Ez az érték közelítő; a tényleges érték a lemezek és hálózati adapterek adatpontjainak számától függ. Ha a kiszolgálók, lemezek vagy hálózati adapterek száma növekszik, az elküldett adatmennyiség növekedése nem lineáris.
 
 ## <a name="is-data-encrypted-at-rest-and-in-transit"></a>Titkosítva van-e az adatok a nyugalmi és a átvitel során?
 
@@ -98,39 +98,39 @@ Igen, mindkettő esetén:
 Ezek a lépések azt írják le, hogyan kapcsolódik a készülék a VMware vCenter Serverhoz:
 
 1. A berendezés a berendezés beállításakor megadott hitelesítő adatok használatával csatlakozik a vCenter Serverhoz (443-es port).
-2. A készülék VMware PowerCLI használatával kérdezi le vCenter Server a vCenter Server által felügyelt virtuális gépekkel kapcsolatos metaadatok gyűjtését.
-3. A berendezés konfigurációs adatokat gyűjt a virtuális gépekről (magok, memória, lemezek, hálózati adapterek) és az egyes virtuális gépek teljesítménybeli előzményeiről az elmúlt hónapban.
-4. Az összegyűjtött metaadatokat a rendszer a Azure Migrate: kiszolgáló-értékelési eszközre (az interneten keresztül HTTPS protokollon keresztül) továbbítja az értékeléshez.
+2. A készülék VMware PowerCLI használatával kérdezi le vCenter Server, hogy metaadatokat gyűjtsön a vCenter Server által felügyelt kiszolgálókról.
+3. A készülék konfigurációs adatokat gyűjt a kiszolgálókról (magok, memória, lemezek, hálózati adapterek) és az egyes kiszolgálók teljesítménybeli előzményeiről az elmúlt hónapban.
+4. Az összegyűjtött metaadatokat a rendszer a Azure Migrate: felderítési és értékelési eszközre (az interneten keresztül HTTPS használatával) elküldi az értékeléshez.
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Csatlakozhat a Azure Migrate készülék több vCenter-kiszolgálóhoz?
 
-Nem. Egy [Azure Migrate berendezés](migrate-appliance.md) és vCenter Server között egy-az-egyhez típusú hozzárendelés található. Több vCenter Server példányon futó virtuális gépek felderítéséhez több berendezést kell telepítenie. 
+Nem. Egy [Azure Migrate berendezés](migrate-appliance.md) és vCenter Server között egy-az-egyhez típusú hozzárendelés található. Több vCenter Server példányon található kiszolgálók felderítéséhez több berendezést kell telepítenie.
 
-## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Rendelkezhet Azure Migrate-projekttel több készülékkel?
+## <a name="can-a-project-have-multiple-appliances"></a>Lehet egy projekthez több készülék is tartozik?
 
 Egy projekthez több készülék is regisztrálva lehet. Egy készüléket azonban csak egyetlen projektben regisztrálhat.
 
 ## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Csatlakozhat a Azure Migrate készülék/replikációs berendezés ugyanahhoz a vCenter?
 
-Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ügynök nélküli VMware áttelepítéshez), mind a replikációs berendezést (amely a VMware virtuális gépek ügynök-alapú áttelepítésére szolgál) ugyanarra a vCenter-kiszolgálóra. Azonban ügyeljen arra, hogy ne állítson be mindkét készüléket ugyanazon a virtuális gépen, és amely jelenleg nem támogatott.
+Igen. Felveheti mind a Azure Migrate készüléket (az értékeléshez és az ügynök nélküli VMware áttelepítéshez), mind a replikációs berendezést (a VMware-ben futó kiszolgálók ügynök-alapú áttelepítéséhez) ugyanarra a vCenter-kiszolgálóra. Azonban ügyeljen arra, hogy ne állítson be mindkét készüléket ugyanazon a kiszolgálón, és jelenleg nem támogatott.
 
-## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hány virtuális gépet vagy kiszolgálót tud felderíteni egy berendezéssel?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Hány kiszolgálót tud felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gép, akár 5 000 Hyper-V virtuális gép, valamint akár 1000 fizikai kiszolgáló is felderíthető egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
+Akár 10 000-kiszolgálót is felfedezheti VMware-környezetben, akár 5 000-kiszolgálókat Hyper-V környezetben, valamint akár 1000 fizikai kiszolgálókat egyetlen berendezéssel. Ha több kiszolgáló található a helyszíni környezetben, olvassa el a [Hyper-V felmérésének](scale-hyper-v-assessment.md)méretezését, [a VMware-értékelés méretezését](scale-vmware-assessment.md)és [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető részt.
 
 ## <a name="can-i-delete-an-appliance"></a>Törölhetek-e készüléket?
 
 A készüléknek a projektből való törlése jelenleg nem támogatott.
 
-A készülék törlésének egyetlen módja, ha törli a berendezéshez társított Azure Migrate projektet tartalmazó erőforráscsoportot.
+A készülék törlésének egyetlen módja, ha törli a berendezéshez társított projektet tartalmazó erőforráscsoportot.
 
 Az erőforráscsoport törlése azonban törli az egyéb regisztrált berendezéseket, a felderített leltárt, az értékeléseket és a projekthez társított erőforráscsoport összes többi Azure-összetevőjét is.
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>Használhatom a készüléket egy másik előfizetéssel vagy projekttel?
 
-Ha másik előfizetéssel vagy projekttel kívánja használni a készüléket, újra kell konfigurálnia a meglévő készüléket úgy, hogy futtatja a PowerShell-telepítő parancsfájlt az adott forgatókönyvhöz (VMware/Hyper-V/fizikai) a készülék számítógépén. A szkript törli a meglévő berendezés összetevőit és beállításait egy új berendezés üzembe helyezéséhez. Győződjön meg arról, hogy az újonnan telepített készülék Configuration Manager használatának megkezdése előtt törölni kell a böngésző gyorsítótárát.
+Ha másik előfizetéssel vagy projekttel kívánja használni a készüléket, újra kell konfigurálnia a meglévő készüléket úgy, hogy futtatja az adott forgatókönyvhöz tartozó PowerShell-telepítő parancsfájlt (VMware/Hyper-V/fizikai) a készüléken. A szkript törli a meglévő berendezés összetevőit és beállításait egy új berendezés üzembe helyezéséhez. Győződjön meg arról, hogy az újonnan telepített készülék Configuration Manager használatának megkezdése előtt törölni kell a böngésző gyorsítótárát.
 
-Egy meglévő Azure Migrate-projekt kulcsát nem használhatja újra konfigurált berendezésen. Győződjön meg arról, hogy létrehoz egy új kulcsot a kívánt előfizetésből/projektből a készülék regisztrációjának befejezéséhez.
+A meglévő projekt-kulcsok újrafelhasználása nem végezhető újra konfigurált berendezésen is. Győződjön meg arról, hogy létrehoz egy új kulcsot a kívánt előfizetésből/projektből a készülék regisztrációjának befejezéséhez.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Be lehet állítani a készüléket egy Azure-beli virtuális gépen?
 
@@ -138,7 +138,7 @@ Nem. Ez a lehetőség jelenleg nem támogatott.
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Felfedezhető egy ESXi-gazdagépen is?
 
-Nem. A VMware virtuális gépek felderítéséhez vCenter Server szükséges.
+Nem. A VMware-környezetben található kiszolgálók felderítéséhez vCenter Server szükséges.
 
 ## <a name="how-do-i-update-the-appliance"></a>Hogyan frissíteni a készüléket?
 
@@ -148,11 +148,11 @@ Ezek az automatikus frissítések csak a készülék és a berendezés ügynöke
 
 ## <a name="can-i-check-agent-health"></a>Ellenőrizhető az ügynök állapota?
 
-Igen. A portálon nyissa meg az Azure Migrate: Server Assessment vagy Azure Migrate: Server áttelepítési eszköz **ügynök állapota** lapját. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
+Igen. A portálon nyissa meg az **ügynök állapota** lapot a Azure Migrate: felderítés és értékelés vagy Azure Migrate: Server áttelepítési eszköz. Itt megtekintheti a kapcsolat állapotát az Azure és a készüléken található felderítési és értékelési ügynökök között.
 
 ## <a name="can-i-add-multiple-server-credentials-on-vmware-appliance"></a>Több kiszolgálói hitelesítő adatot is Hozzáadhatok a VMware készüléken?
 
-Igen, a szoftveres leltár (telepített alkalmazások felderítése), az ügynök nélküli függőségek elemzése és a SQL Server példányok és adatbázisok felderítése érdekében már több kiszolgáló hitelesítő adatait is támogatjuk. [További információ](tutorial-discover-vmware.md#provide-server-credentials) a hitelesítő adatok megadásáról a készülék Configuration Managerben.
+Igen, a szoftveres leltár (telepített alkalmazások felderítése), az ügynök nélküli függőségi elemzés és a SQL Server példányok és adatbázisok felderítése érdekében több kiszolgálói hitelesítő adat is támogatott. [További információ](tutorial-discover-vmware.md#provide-server-credentials) a hitelesítő adatok megadásáról a készülék Configuration Managerben.
 
 ## <a name="what-type-of-server-credentials-can-i-add-on-the-vmware-appliance"></a>Milyen típusú kiszolgálói hitelesítő adatok adhatók hozzá a VMware készüléken?
 Megadhat tartomány/Windows (nem tartományi)/Linux (nem tartományi)/SQL Server hitelesítési hitelesítő adatokat a készülék Configuration Managerben. [További](add-server-credentials.md) információ a hitelesítő adatok megadásáról és kezeléséről.
@@ -160,7 +160,7 @@ Megadhat tartomány/Windows (nem tartományi)/Linux (nem tartományi)/SQL Server
 ## <a name="what-type-of-sql-server-connection-properties-are-supported-by-azure-migrate-for-sql-discovery"></a>Milyen típusú SQL Server-kapcsolatok tulajdonságait támogatja az SQL-felderítési Azure Migrate?
 A Azure Migrate titkosítja Azure Migrate berendezés és a forrás SQL Server példányok közötti kommunikációt (a kapcsolat titkosítása tulajdonság értéke TRUE). Ezek a kapcsolatok a [TrustServerCertificate](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnectionstringbuilder.trustservercertificate) -mel vannak titkosítva (igaz értékre állítva); az átviteli réteg az SSL használatával titkosítja a csatornát, és megkerüli a tanúsítványláncot a megbízhatóság ellenőrzéséhez. A berendezés-kiszolgálót úgy kell beállítani, hogy [megbízzon a tanúsítvány legfelső szintű hitelesítésszolgáltatóján](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
-Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [További információ](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
+Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amely a bejelentkezési csomagok titkosítására szolgál. [További információ](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 
 ## <a name="next-steps"></a>Következő lépések

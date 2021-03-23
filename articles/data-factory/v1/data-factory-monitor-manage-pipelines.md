@@ -3,16 +3,16 @@ title: Folyamatok monitorozása és kezelése a Azure Portal és a PowerShell ha
 description: Megtudhatja, hogyan használhatja a Azure Portal és Azure PowerShell a létrehozott Azure-beli adatüzemek és-folyamatok figyelésére és felügyeletére.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: c728654e868bcb8213e6a4039fa1e2e169b0078c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0744a7d915d6bee868b160abc29964d58947dd28
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576379"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779630"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Description</th>
+    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Leírás</th>
 </tr>
 <tr>
     <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>

@@ -1,18 +1,14 @@
 ---
 title: A szükséges berendezések azonosítása
 description: Ismerje meg a IoT érzékelőkhöz és a helyszíni felügyeleti konzolhoz készült Certified Defender hardvereit és virtuális készülékeit.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 01/13/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 2ad5bf08542cd98f7acae36827b1a7b284a893b0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 242e88e92d6197fd018c56fa55a4dd8166f5d027
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149298"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782758"
 ---
 # <a name="identify-required-appliances"></a>A szükséges berendezések azonosítása
 
@@ -109,7 +105,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Description | Mennyiség |
+| PN | Leírás | Mennyiség |
 |--|--|--|
 | P19766 – B21 | HPE DL360 Gen10 8SFF NC műszaki kiszolgáló | 1 |
 | P19766 – B21 | Európa – többnyelvű honosítás | 1 |
@@ -180,7 +176,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
 
-| PN | Description | Mennyiség |
+| PN | Leírás | Mennyiség |
 |--|--|--|
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
 | P06961 – B21 | HPE DL20 Gen10 NHP 2LFF műszaki igazgató kiszolgáló | 1 |
@@ -216,7 +212,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 | Sokk | 10G 10ms, félórás, három az egyes tengelyekhez. (Pozitív & negatív impulzus) – DIN sín |
 
 ### <a name="appliance-bom"></a>Készülék ANYAGJEGYZÉKe
-| Termék | Description |
+| Termék | Leírás |
 |--|--|
 | P25828 – B21 | HPE Edgeline EL300 v2 konvergált Edge System |
 | P25828 – B21 B19 | HPE EL300 v2 konvergált Edge System |
@@ -248,7 +244,7 @@ Ez a szakasz a következő berendezések hardveres specifikációit ismerteti:
 
 | Típus | Enterprise |
 |--|--|
-| Description | Virtuális berendezés vállalati telepítési típusokhoz |
+| Leírás | Virtuális berendezés vállalati telepítési típusokhoz |
 | vCPU | 8 |
 | Memória | 32 GB |
 | Tárolás | 1,8 TB |
@@ -272,27 +268,6 @@ Ez a szakasz azokat a további készülékeket részletezi, amelyeket a Microsof
 A készülék megvásárlása után nyissa meg a **Defender for IoT**  >  **Network sensors ISO**  >  **Installation** alkalmazást a szoftver letöltéséhez.
 
 :::image type="content" source="media/how-to-prepare-your-network/azure-defender-for-iot-sensor-download-software-screen.png" alt-text="Hálózati érzékelők ISO.":::
-
-## <a name="enterprise-deployment-dell-poweredge-r340-xl"></a>Vállalati telepítés: Dell PowerEdge R340 XL
-
-| Összetevő | Technikai specifikációk |
-|--|--|
-| Váz | 1U rack-kiszolgáló
-| Dimenziók | 42,8 x 434,0 x 596 (mm)/1,67 "x 17,09" x 23,5 "(a) |
-| Tömeg | Max. 29,98 LB/13.6 kg |
-| Processzor | Intel Xeon E-2144G 3,6 GHz, 8P cache, 4C/8T, Turbo (71 W) |
-| Lapkakészletének | Intel C246 |
-| Memória | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
-| Tárolás | 3 x 2 – TB 7,2 K RPM SATA 6 – Gbps 512n 3,5 – Hot-Plug merevlemez – RAID 5 |
-| Hálózati vezérlő | Fedélzeti: 2 x 1 GB-os Broadcom BCM5720<br>Fedélzeti LOM: iDRAC 1 – GB-os Broadcom BCM5720 <br><br>Külső: 1 x Intel Ethernet i350 QP 1 GB-os kiszolgáló adapter, alacsony profil |
-| Kezelés | iDRAC kilenc vállalat |
-| Eszköz-hozzáférés | Két hátsó USB 3,0 <br> Egy elülső USB 3,0 |
-| Energiaellátás | Kettős, gyors plug-tápegységek 350 W |
-| Rack-támogatás | ReadyRails II-es csúszó sínek az eszközre kevésbé szerelhető 4-post állványokban szögletes vagy többszálú kör alakú lyukakkal, illetve a 4 – Threading Hole rackben található, az opcionális eszköz nélküli kábelek felügyeletére szolgáló állványok támogatásával. |
-
-## <a name="dell-r340-bom"></a>Dell R340 ANYAGJEGYZÉK
-
-:::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 ANYAGJEGYZÉK.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

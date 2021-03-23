@@ -3,16 +3,16 @@ title: Az első adatgyár létrehozása (Azure Portal)
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre egy minta Azure Data Factory-folyamatot az Azure Portal Data Factory Editor eszközével.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 449c8ec976a71d68e3ddddfea839ef06094c2176
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9794aa0750a886803aac3fec7622f6b3770acf9d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100392221"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785580"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első adat-előállító létrehozása az Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -204,7 +204,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a Hive-feldolgozás beme
     ```
     Az alábbi táblázat ismerteti a kódrészletben használt JSON-tulajdonságokat.
 
-   | Tulajdonság | Beágyazott alatt | Description |
+   | Tulajdonság | Beágyazott alatt | Leírás |
    |:--- |:--- |:--- |
    | típus | properties |A tulajdonság beállítása **AzureBlob**, mert az adatok blobtárolóban találhatók. |
    | linkedServiceName | formátumban |Az előzőleg létrehozott AzureStorageLinkedService szolgáltatásra hivatkozik. |
@@ -431,7 +431,7 @@ Az oktatóanyag során létrehozott egy adat-előállítót, amely egy HDInsight
 Az oktatóanyag során létrehozott egy folyamatot egy adatátalakítási tevékenységgel (HDInsight-tevékenység), amely egy Hive-szkriptet futtat egy igény szerinti HDInsight-fürtön. A másolási tevékenység a blob Storage-ból Azure SQL Databaseba való másolásával kapcsolatos információkért lásd [: oktatóanyag: adatok másolása blob Storage-ból a SQL Databaseba](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Lásd még
-| Témakör | Description |
+| Témakör | Leírás |
 |:--- |:--- |
 | [Pipelines](data-factory-create-pipelines.md) |Ennek a cikknek a segítségével megismerheti a Data Factory folyamatait és tevékenységeit, és megtudhatja, hogyan hozhat létre velük teljes körű, adatvezérelt munkafolyamatokat saját forgatókönyvéhez vagy vállalkozásához. |
 | [Adatkészletek](data-factory-create-datasets.md) |Ennek a cikknek a segítségével megismerheti a Data Factory adatkészleteit. |
