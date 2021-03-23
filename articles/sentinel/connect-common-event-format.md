@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 54fd6c0c085c0055f3114fde606f8f7d2f2e055e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98747491"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772059"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A külső megoldás összekötése a közös esemény formátumával
 
@@ -99,5 +99,7 @@ Ebből a dokumentumból megtudhatta, hogy az Azure Sentinel hogyan gyűjt CEF-na
 - 3. lépés: a [kapcsolat ellenőrzése](connect-cef-verify.md)
 
 Ha többet szeretne megtudni arról, hogy mi a teendő az Azure Sentinelben összegyűjtött adatokkal, tekintse meg a következő cikkeket:
+
+- További információ a [CEF és a CommonSecurityLog mező-hozzárendelésről](cef-name-mapping.md).
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](./tutorial-detect-threats-built-in.md).

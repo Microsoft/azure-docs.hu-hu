@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 7c9b4032346e61eb3bfd21c0c4067e2364bc28af
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ffc97984a335b72a3aa8c8d8cca65a3fddf7af38
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104670840"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780735"
 ---
 # <a name="containerize-aspnet-applications-and-migrate-to-azure-kubernetes-service"></a>Tárolóba helyezése ASP.NET-alkalmazások és Migrálás az Azure Kubernetes Service-be
 
@@ -105,7 +105,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
 3. A telepítési parancsfájl futtatása a parancs használatával
 
    ```powershell
-   .\App ContainerizationInstaller.ps1
+   .\AppContainerizationInstaller.ps1
    ```
 
 ## <a name="launch-the-app-containerization-tool"></a>Az alkalmazás tárolókra bontás eszközének elindítása

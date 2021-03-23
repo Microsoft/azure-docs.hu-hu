@@ -1,0 +1,23 @@
+### YamlMime:Landing
+title: Az Azure Industrial IoT platform dokumentációja
+summary: Az Azure Industrial IoT platform az Azure-ban üzembe helyezett modulok és szolgáltatások Microsoft-csomagja.
+metadata:
+  description: Tudnivalók a
+  ms.service: industrial-iot
+  ms.topic: landing-page
+  author: philmea
+  ms.author: philmea
+  ms.date: 12/7/2020
+  ms.openlocfilehash: 236cbb059919646910b2cacd53da3f9311225d69
+  ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+  ms.translationtype: MT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/22/2021
+  ms.locfileid: "104787045"
+landingContent:
+- title: Tudnivalók az Azure Industrial IoT platformról
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az ipari IoT (IIoT) platform?
+      url: overview-what-is-industrial-iot-platform.md

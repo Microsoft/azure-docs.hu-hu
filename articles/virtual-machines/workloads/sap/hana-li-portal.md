@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d32adab35852cd19933fe3877c2742a21ddc5f1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 07094e399f153f56746a931a4a100b3c0d38f92f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101676980"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772076"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 
 >[!NOTE]
->A Rev 4,2 esetében kövesse az [BareMetal-példányok kezelése a Azure Portal](../../../baremetal-infrastructure/workloads/sap/baremetal-infrastructure-portal.md) témakör utasításait.
+>A Rev 4,2 esetében kövesse az [BareMetal-példányok kezelése a Azure Portal](../../../baremetal-infrastructure/connect-baremetal-infrastructure.md) témakör utasításait.
 
 Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](./hana-overview-architecture.md) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
 

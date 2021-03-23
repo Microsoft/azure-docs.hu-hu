@@ -1,17 +1,17 @@
 ---
 title: Infrastruktúra – kettős titkosítás – Azure Portal – Azure Database for PostgreSQL
 description: Ismerje meg, hogyan állíthatja be és kezelheti az infrastruktúra kettős titkosítását a Azure Database for PostgreSQL számára.
-author: mksuni
-ms.author: sumuth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: ea486b534ac3e703849ddb3922d7c3a428dd076b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/14/2021
+ms.openlocfilehash: 0b1079a084072556ae79a18a12f6b35f74c92775
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93242228"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771651"
 ---
 # <a name="infrastructure-double-encryption-for-azure-database-for-postgresql"></a>Infrastruktúra kettős titkosítása Azure Database for PostgreSQL
 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan állíthatja be és felügyelheti a Azure Database for Postg
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---portal"></a>Azure Database for PostgreSQL-kiszolgáló létrehozása infrastruktúra-kettős titkosítással – portál
 
-Az alábbi lépéseket követve hozzon létre egy Azure Database for MySQL-kiszolgálót a Azure Portal infrastruktúra-dupla titkosítással:
+Az alábbi lépéseket követve hozzon létre egy Azure Database for PostgreSQL-kiszolgálót a Azure Portal infrastruktúra-dupla titkosítással:
 
 1. A portál bal felső sarkában válassza az **erőforrás létrehozása** (+) lehetőséget.
 
@@ -45,7 +45,7 @@ Az alábbi lépéseket követve hozzon létre egy Azure Database for MySQL-kiszo
 
 ## <a name="create-an-azure-database-for-postgresql-server-with-infrastructure-double-encryption---cli"></a>Azure Database for PostgreSQL-kiszolgáló létrehozása infrastruktúra-kettős titkosítással – parancssori felület
 
-Az alábbi lépéseket követve hozzon létre egy Azure Database for MySQL-kiszolgálót az infrastruktúra kettős titkosításával a CLI-ből:
+Az alábbi lépéseket követve hozzon létre egy Azure Database for PostgreSQL-kiszolgálót az infrastruktúra kettős titkosításával a CLI-ből:
 
 Ez a példa létrehoz egy nevű erőforráscsoportot `myresourcegroup` a `westus` helyen.
 

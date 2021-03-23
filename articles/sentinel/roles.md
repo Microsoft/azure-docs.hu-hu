@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a3b7d4f60877d1301f03aa4f015695a6a4639be
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580708"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772552"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -56,7 +56,7 @@ Előfordulhat, hogy az adott feladatra vonatkozó követelményekkel rendelkező
 
 - A fenyegetésekre adott válaszok automatizálására szolgáló forgatókönyvek használata
 
-    **Az Azure** Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek **Azure Logic Appsre** épülnek, és külön Azure-erőforrások. Előfordulhat, hogy a biztonsági műveletek csapatának meghatározott tagjaihoz szeretne hozzárendelni Logic Apps biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletekhez. A [logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkörét vagy a [Logic app operátori](../role-based-access-control/built-in-roles.md#logic-app-operator) szerepkört használva explicit engedélyeket rendelhet a forgatókönyvek használatához.
+    **Az Azure** Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek **Azure Logic Appsre** épülnek, és külön Azure-erőforrások. Előfordulhat, hogy a biztonsági műveletek csapatának meghatározott tagjaihoz szeretne hozzárendelni Logic Apps biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletekhez. A [Logic app közreműködő](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkör használatával explicit engedélyeket rendelhet a forgatókönyvek használatához.
 
 - Adatforrások összekapcsolása az Azure Sentinel szolgáltatással
 

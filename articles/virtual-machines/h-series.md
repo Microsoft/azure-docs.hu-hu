@@ -1,19 +1,19 @@
 ---
 title: H-sorozat – Azure Virtual Machines
 description: A H-sorozatú virtuális gépek specifikációi.
-author: ju-shim
+author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 7a5ff47bb5de6d54564a86c0700ad69aa450887d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b3e3beb51256bbf22d29d74b51c52ca3a6bee0c4
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102566141"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774779"
 ---
 # <a name="h-series"></a>H-sorozat
 
@@ -40,10 +40,21 @@ A H-sorozatú virtuális gépeket nagy CPU-gyakorisággal vagy nagy memóriával
 
 <sup>1</sup> az MPI-alkalmazások esetében a dedikált RDMA háttérrendszer-hálózatot a FDR InfiniBand hálózata engedélyezte.
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
-
 > [!NOTE]
-> A [RDMA-kompatibilis virtuális gépek](sizes-hpc.md#rdma-capable-instances)között a H-sorozat nem-SR-IOV engedélyezve. Ezért a támogatott virtuálisgép- [rendszerképek](./workloads/hpc/configure.md#vm-images), a [InfiniBand-illesztőprogram](./workloads/hpc/enable-infiniband.md) követelményei és a támogatott MPI- [kódtárak](./workloads/hpc/setup-mpi.md) eltérnek az SR-IOV-kompatibilis virtuális gépektől.
+> A [RDMA-kompatibilis virtuális gépek](sizes-hpc.md#rdma-capable-instances)között a H-sorozat nem engedélyezett az SR-IOV. Ezért a támogatott virtuálisgép- [rendszerképek](./workloads/hpc/configure.md#vm-images), a [InfiniBand-illesztőprogram](./workloads/hpc/enable-infiniband.md) követelményei és a támogatott MPI- [kódtárak](./workloads/hpc/setup-mpi.md) eltérnek az SR-IOV-kompatibilis virtuális gépektől.
+
+## <a name="software-specifications"></a>Szoftverek specifikációi
+
+| Szoftverek specifikációi     |HC sorozatú virtuális gép           |
+|-----------------------------|-----------------------|
+| MPI-feladatok maximális mérete            | 4800 mag (300 virtuális gép egyetlen virtuálisgép-méretezési készletben, singlePlacementGroup = true)  |
+| MPI-támogatás                 | Intel MPI 5. x, MS-MPI  |
+| Operációs rendszer támogatása nem CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 6,5-7,4, SLES 12 SP4 +, WinServer 2012-2016  |
+| Orchestrator-támogatás        | CycleCloud, batch, AK  |
+
+[!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>Egyéb méretek
 
@@ -56,7 +67,6 @@ A H-sorozatú virtuális gépeket nagy CPU-gyakorisággal vagy nagy memóriával
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [virtuális gépek konfigurálásáról, a](./workloads/hpc/configure.md) [InfiniBand engedélyezéséről](./workloads/hpc/enable-infiniband.md), az [MPI beállításáról](./workloads/hpc/setup-mpi.md) és az Azure-hoz készült HPC-alkalmazások optimalizálásáról a [HPC-munkaterhelések](./workloads/hpc/overview.md)esetében.
-- Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
+- Olvassa el a legújabb bejelentéseket, a HPC számítási feladatait és a teljesítmény eredményeit az [Azure számítási technikai közösségi blogokban](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti áttekintését lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.
 - További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

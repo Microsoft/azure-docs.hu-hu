@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 03/22/2021
 ms.custom: project-no-code, devx-track-js
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6bb478038d398226db38dc20e49ed7a14e5d5d0a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d234e57f7c11b0d9f2cd212bde93a8b8e478ef41
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592806"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781364"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript-és lapelrendezés-verziók a Azure Active Directory B2C
 
@@ -155,7 +155,7 @@ Kövesse az alábbi irányelveket, amikor testreszabja az alkalmazás felületé
     - Ne használja közvetlenül a JavaScriptet Azure AD B2C végpontok meghívásához.
 - Beágyazhatja a JavaScriptet, vagy külső JavaScript-fájlokra mutató hivatkozásokat is használhat. Külső JavaScript-fájl használata esetén ügyeljen arra, hogy az abszolút URL-címet használja, nem pedig relatív URL-címet.
 - JavaScript-keretrendszerek:
-    - Azure AD B2C a jQuery egy adott verzióját használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
+    - Azure AD B2C a [jQuery egy adott verzióját](page-layout.md#jquery-version)használja. Ne adja meg a jQuery egy másik verzióját. Ha egynél több verziót használ ugyanazon a lapon, problémákat okoz.
     - A RequireJS használata nem támogatott.
     - Azure AD B2C nem támogatja a legtöbb JavaScript-keretrendszert.
 - Azure AD B2C beállítások a következő módon olvashatók: hívás `window.SETTINGS` , `window.CONTENT` objektumok, például az aktuális felhasználói felület nyelve. Ne módosítsa az objektumok értékét.

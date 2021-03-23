@@ -3,16 +3,16 @@ title: Spark-programok meghívása Azure Data Factory
 description: Ismerje meg, hogyan hívhat meg Spark-programokat egy Azure-beli adatgyárból a MapReduce tevékenység használatával.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: a7fcccad039ff6d737e10cfc57ba97f914645a9d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 644a0d645abb186731ddb1f408cd36e5b9ba3c3f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382667"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780021"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-programok meghívása Azure Data Factory folyamatokból
 
@@ -323,18 +323,18 @@ A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat i
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| name | A folyamatban szereplő tevékenység neve. | Yes |
-| leírás | A tevékenység működését leíró szöveg | No |
-| típus | Ezt a tulajdonságot HDInsightSpark értékre kell beállítani. | Yes |
-| linkedServiceName | Azon HDInsight társított szolgáltatás neve, amelyen a Spark-program fut. | Yes |
-| rootPath | A Spark-fájlt tartalmazó blob-tároló és-mappa. A fájl neve megkülönbözteti a kis-és nagybetűket. | Yes |
-| entryFilePath | A Spark-kód/csomag gyökérkönyvtárának relatív elérési útja. | Yes |
-| className | Az alkalmazás Java/Spark fő osztálya. | No |
-| argumentumok | A Spark programhoz tartozó parancssori argumentumok listája. | No |
-| proxyUser | A Spark-program végrehajtásához megszemélyesíteni kívánt felhasználói fiók. | No |
-| sparkConfig | A Spark- [konfiguráció: alkalmazás tulajdonságai](https://spark.apache.org/docs/latest/configuration.html#available-properties)részen megjelenő Spark-konfigurációs tulajdonságok értékeinek megadása. | No |
-| getDebugInfo | Megadja, hogy a rendszer mikor másolja a Spark-naplófájlokat a sparkJobLinkedService által megadott HDInsight-fürt (vagy) által használt tárolóba. Az engedélyezett értékek a következők: none, mindig vagy hiba. Az alapértelmezett érték none. | No |
-| sparkJobLinkedService | A Spark-munkafájlt, a függőségeket és a naplókat tároló társított szolgáltatás. Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. | No |
+| name | A folyamatban szereplő tevékenység neve. | Igen |
+| leírás | A tevékenység működését leíró szöveg | Nem |
+| típus | Ezt a tulajdonságot HDInsightSpark értékre kell beállítani. | Igen |
+| linkedServiceName | Azon HDInsight társított szolgáltatás neve, amelyen a Spark-program fut. | Igen |
+| rootPath | A Spark-fájlt tartalmazó blob-tároló és-mappa. A fájl neve megkülönbözteti a kis-és nagybetűket. | Igen |
+| entryFilePath | A Spark-kód/csomag gyökérkönyvtárának relatív elérési útja. | Igen |
+| className | Az alkalmazás Java/Spark fő osztálya. | Nem |
+| argumentumok | A Spark programhoz tartozó parancssori argumentumok listája. | Nem |
+| proxyUser | A Spark-program végrehajtásához megszemélyesíteni kívánt felhasználói fiók. | Nem |
+| sparkConfig | A Spark- [konfiguráció: alkalmazás tulajdonságai](https://spark.apache.org/docs/latest/configuration.html#available-properties)részen megjelenő Spark-konfigurációs tulajdonságok értékeinek megadása. | Nem |
+| getDebugInfo | Megadja, hogy a rendszer mikor másolja a Spark-naplófájlokat a sparkJobLinkedService által megadott HDInsight-fürt (vagy) által használt tárolóba. Az engedélyezett értékek a következők: none, mindig vagy hiba. Az alapértelmezett érték none. | Nem |
+| sparkJobLinkedService | A Spark-munkafájlt, a függőségeket és a naplókat tároló társított szolgáltatás. Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. | Nem |
 
 ## <a name="folder-structure"></a>Mappa szerkezete
 A Spark-tevékenység nem támogatja az olyan beágyazott parancsfájlokat, mint a Pig és a kaptár tevékenységek. A Spark-feladatok is bővíthetők, mint a Pig/Kas-feladatok. A Spark-feladatok esetében több függőséget is megadhat, például a jar-csomagokat (a Java OSZTÁLYÚTVONAL helyezik el), a Python-fájlokat (a PYTHONPATH) és minden más fájlt.
@@ -344,7 +344,7 @@ Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltat
 | Elérési út | Leírás | Kötelező | Típus |
 | ---- | ----------- | -------- | ---- |
 | . | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban. | Igen | Mappa |
-| &lt;felhasználó által definiált &gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Yes | Fájl |
+| &lt;felhasználó által definiált &gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | Fájl |
 | ./jars | A rendszer a mappában található összes fájlt feltölti és elhelyezi a fürt Java-osztályútvonal. | Nem | Mappa |
 | ./pyFiles | A rendszer az ebben a mappában található összes fájlt feltölti és elhelyezi a fürt PYTHONPATH. | Nem | Mappa |
 | ./files | A rendszer a mappában található összes fájlt feltöltötte és a végrehajtó munkakönyvtárba helyezi. | Nem | Mappa |

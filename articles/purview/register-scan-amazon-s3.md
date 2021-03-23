@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/07/2021
+ms.date: 03/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102438728"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773453"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Azure-beli hatáskörébe-összekötő az Amazon S3-hoz
 
@@ -49,29 +49,30 @@ Az alábbi táblázat azokat a régiókat ismerteti, amelyekben a rendszer az Az
 | Tárolási régió | Ellenőrzési régió |
 | ------------------------------- | ------------------------------------- |
 | USA keleti régiója (Ohio)                  | USA keleti régiója (Ohio)                        |
-| USA keleti régiója (N. Virginia           | USA keleti régiója (Ohio)                        |
+| USA keleti régiója (N. Virginia           | USA keleti régiója (Ohio) vagy USA keleti régiója (N) Virginia                       |
 | USA nyugati régiója (N. Kalifornia         | USA keleti régiója (Ohio)                        |
 | USA nyugati régiója (Oregon)                | USA keleti régiója (Ohio)                        |
 | Afrika (Cape Town)              | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Hongkong)        | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Mumbai)           | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Osaka-local)      | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Szöul)            | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Szingapúr)        | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Sydney)           | Európa (Frankfurt)                    |
-| Ázsia és a Csendes-óceáni térség (Tokió)            | Európa (Frankfurt)                    |
+| Ázsia és a Csendes-óceáni térség (Hongkong)        | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                   |
+| Ázsia és a Csendes-óceáni térség (Mumbai)           | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                   |
+| Ázsia és a Csendes-óceáni térség (Osaka-local)      | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                   |
+| Ázsia és a Csendes-óceáni térség (Szöul)            | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                   |
+| Ázsia és a Csendes-óceáni térség (Szingapúr)        | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                   |
+| Ázsia és a Csendes-óceáni térség (Sydney)           | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                  |
+| Ázsia és a Csendes-óceáni térség (Tokió)            | Európa (Frankfurt) vagy Ázsia és a Csendes-óceáni térség (Sydney)                 |
 | Kanada (Közép)                | USA keleti régiója (Ohio)                        |
 | Kína (Peking)                 | Nem támogatott                    |
 | Kína (Ningxia)                 | Nem támogatott                   |
 | Európa (Frankfurt)              | Európa (Frankfurt)                    |
-| Európa (Írország)                | Európa (Frankfurt)                    |
-| Európa (London)                 | Európa (Frankfurt)                    |
+| Európa (Írország)                | Európa (Frankfurt) vagy Európa (Írország)                   |
+| Európa (London)                 | Európa (Frankfurt) vagy Európa (Írország)                   |
 | Európa (Milan)                  | Európa (Frankfurt)                    |
 | Európa (Párizs)                  | Európa (Frankfurt)                    |
 | Európa (Stockholm)              | Európa (Frankfurt)                    |
 | Közel-Kelet (Bahrein)           | Európa (Frankfurt)                    |
 | Dél-Amerika (São Paulo)       | USA keleti régiója (Ohio)                        |
 | | |
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Győződjön meg arról, hogy végrehajtotta az alábbi előfeltételeket, mielőtt az Amazon S3-gyűjtőket a hatáskörébe tartozó adatforrásként hozzáadja, és beolvassa az S3-adatait.
@@ -351,7 +352,7 @@ Ha a gyűjtőket a hatáskörébe tartozó adatforrásként adta hozzá, beáll�
 
     Ha új egyéni ellenőrzési szabálykészlet létrehozását választja, a varázslóval adja meg a következő beállításokat:
 
-    |Ablaktábla  |Description  |
+    |Ablaktábla  |Leírás  |
     |---------|---------|
     |**Új ellenőrzési szabály beállítva** /<br>**Vizsgálati szabály leírása**    |   Adjon meg egy értelmes nevet és egy opcionális leírást a szabálykészlet számára      |
     |**Fájltípusok kiválasztása**     | Válassza ki az összes olyan fájltípust, amelyet fel szeretne venni a vizsgálatba, majd válassza a **Folytatás** lehetőséget.<br><br>Új fájltípus hozzáadásához válassza az **új fájltípus** lehetőséget, és adja meg a következőket: <br>– A hozzáadni kívánt fájlkiterjesztés <br>– Opcionális Leírás  <br>– Azt határozza meg, hogy a fájl tartalma rendelkezik-e egyéni elválasztóval vagy rendszerfájl-típussal. Ezután adja meg az egyéni határolójelet, vagy válassza ki a rendszerfájl típusát. <br><br>Válassza a **Létrehozás** lehetőséget az egyéni fájltípus létrehozásához.     |

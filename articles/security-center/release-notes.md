@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/11/2021
+ms.date: 03/22/2021
 ms.author: memildin
-ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f6ec14c577d1203b92085b791f89e4873a97c41a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149637"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786089"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -26,7 +26,6 @@ Ha szeretne többet megtudni a Security Center hamarosan elérhető *tervezett* 
 > Ha hat hónapnál régebbi elemeket keres, az archívumban találhatja meg a [Azure Security Center újdonságait](release-notes-archive.md).
 
 
-
 ## <a name="march-2021"></a>Március 2021
 
 A márciusi frissítések a következők:
@@ -38,6 +37,7 @@ A márciusi frissítések a következők:
 - [Az ajánlásokat az Azure Resource Graphban tekintheti meg az "Explore in ARG" használatával](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [A Munkafolyamat-automatizálás üzembe helyezésére vonatkozó szabályzatok frissítései](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Két örökölt javaslat már nem ír közvetlenül az Azure-tevékenység naplójába](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
+- [Javaslatok oldal továbbfejlesztései](#recommendations-page-enhancements)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall a Security Centerba integrált felügyelet
@@ -140,6 +140,22 @@ A két örökölt javaslat a következők:
 
 Ha a következő két javaslathoz van hozzáférése a "TaskDiscovery típusú javaslat" kategóriában, akkor ez már nem érhető el.
 
+
+### <a name="recommendations-page-enhancements"></a>Javaslatok oldal továbbfejlesztései 
+
+Megjelent a javaslatok listájának továbbfejlesztett verziója, amely a további információkat mutatja be egy pillantással.
+
+Most az oldalon láthatja:
+
+1. Az egyes biztonsági vezérlők maximális pontszáma és aktuális pontszáma.
+1. A címkéket helyettesítő ikonok, például a **gyors javítás** és az **előnézet**.
+1. Egy új oszlop, amely az egyes javaslatokhoz kapcsolódó [házirend-kezdeményezést](security-policy-concept.md) jeleníti meg – akkor látható, ha a "Group By Controls" le van tiltva.
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="A Azure Security Center ajánlásai oldalának továbbfejlesztése – március 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
+
+:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="A Azure Security Center &quot;Flat&quot; listára vonatkozó javaslatainak fejlesztései – március 2021" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
+
+További tudnivalókat a [Azure Security Center biztonsági javaslataiban](security-center-recommendations.md)olvashat.
 
 
 ## <a name="february-2021"></a>2021. február

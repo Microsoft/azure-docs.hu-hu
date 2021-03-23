@@ -3,16 +3,16 @@ title: Webhook-tevékenység Azure Data Factory
 description: A webhook tevékenység nem folytatja a folyamat végrehajtását mindaddig, amíg a felhasználó által megadott feltételekkel ellenőrzi a csatolt adatkészletet.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 59aa395db27c26a7c94eebdc0e3b34d7776ee75f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591996"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785937"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-tevékenység Azure Data Factory
 
@@ -55,15 +55,15 @@ A webhook-tevékenységek az Egyéni kódban vezérelhetik a folyamatok végreha
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-**name** | A webhook tevékenység neve. | Sztring | Yes |
-**típusa** | "Webhook" értékre kell beállítani. | Sztring | Yes |
-**metódus** | A célként megadott végpont REST API metódusa. | Sztring. A támogatott típus a "POST". | Yes |
-**URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Yes |
+**name** | A webhook tevékenység neve. | Sztring | Igen |
+**típusa** | "Webhook" értékre kell beállítani. | Sztring | Igen |
+**metódus** | A célként megadott végpont REST API metódusa. | Sztring. A támogatott típus a "POST". | Igen |
+**URL** | A célként megadott végpont és elérési út. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen |
 **fejlécek** | A kérelembe küldendő fejlécek. Az alábbi példa egy kérelem nyelvét és típusát állítja be: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Igen. Ehhez `Content-Type` hasonló fejlécre `"headers":{ "Content-Type":"application/json"}` van szükség. |
-**törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](./control-flow-web-activity.md#request-payload-schema) . | Yes |
-**hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](./control-flow-web-activity.md#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | No |
-**timeout** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d* TimeSpan formátumban jelennek meg. *óó*:*PP*:mm. | Sztring | No |
-**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | No |
+**törzse** | A végpontnak elküldhető adattartalmat jelöli. | Érvényes JSON vagy kifejezés a JSON **resultType** -értékkel. Lásd a kérelem hasznos adatainak sémájának [kérése adattartalom-sémáját](./control-flow-web-activity.md#request-payload-schema) . | Igen |
+**hitelesítés** | A végpont meghívásához használt hitelesítési módszer. A támogatott típusok az "alapszintű" és a "ClientCertificate". További információért lásd: [Hitelesítés](./control-flow-web-activity.md#authentication). Ha nincs szükség hitelesítésre, zárja be ezt a tulajdonságot. | Karakterlánc vagy kifejezés egy sztring **resultType** értékkel. | Nem |
+**timeout** | Mennyi ideig várakozik a tevékenység a **callBackUri** által meghatározott visszahívás meghívásához. Az alapértelmezett érték 10 perc ("00:10:00"). Az értékek a *d* TimeSpan formátumban jelennek meg. *óó*:*PP*:mm. | Sztring | Nem |
+**Jelentés állapota a visszahívás során** | Lehetővé teszi, hogy a felhasználó jelentést készítsen egy webhook-tevékenység sikertelen állapotáról. | Logikai | Nem |
 
 ## <a name="authentication"></a>Hitelesítés
 

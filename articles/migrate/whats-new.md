@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 41476c5f8165729caa6780f8e74eb6c3ae30a59c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cca4612d3b22296209b4adfc6be97cbe95477aa3
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102614632"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786668"
 ---
 # <a name="whats-new-in-azure-migrate"></a>A Azure Migrate újdonságai
 
@@ -20,7 +20,7 @@ A [Azure Migrate](migrate-services-overview.md) segítségével helyszíni kiszo
 
 ## <a name="update-march-2021"></a>Frissítés (2021. március)
 - Több kiszolgálói hitelesítő adat biztosítása Azure Migrate készüléken a telepített alkalmazások (szoftverek leltározása), az ügynök nélküli függőségek elemzése, valamint a VMware-környezetekben SQL Server példányok és adatbázisok felderítése céljából. [További információ](tutorial-discover-vmware.md#provide-server-credentials)
-- A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. [További információ](concepts-azure-sql-assessment-calculation.md)<br/>A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [ezzel a hivatkozással](https://aka.ms/AzureMigrate/SQL). A kezdéshez tekintse meg a [felderítéssel](tutorial-discover-vmware.md) és az [értékeléssel](tutorial-assess-sql.md) kapcsolatos oktatóanyagokat.
+- A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. [További információ](concepts-azure-sql-assessment-calculation.md) Az első lépésekhez tekintse meg a [felderítési](tutorial-discover-vmware.md) és [értékelési](tutorial-assess-sql.md) oktatóanyagokat.
 - Az ügynök nélküli VMware Migrálás mostantól támogatja a 500 virtuális gépek egyidejű replikálását vCenter.
 - Azure Migrate mostantól automatikusan telepíti az Azure virtuálisgép-ügynököt a VMware virtuális gépekre, miközben az Azure-ba való Migrálás során a VMware Migration ügynök nélküli módszerét használja.
 

@@ -1,18 +1,14 @@
 ---
 title: Fenyegetési intelligencia-adatok frissítése
 description: A veszélyforrások felderítésére szolgáló adatcsomag minden új Defender számára elérhető a IoT-verzióhoz, vagy szükség esetén a kiadások között.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/14/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: ddf2eb2fab6281e76bac0a958024b639d18a7ccc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 386d59d33c4f9695b8fc5243dab345321cff4a5f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100521407"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784050"
 ---
 # <a name="threat-intelligence-research-and-packages"></a>Veszélyforrások elleni kutatás és csomagok
 

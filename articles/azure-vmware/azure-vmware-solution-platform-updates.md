@@ -3,12 +3,12 @@ title: Platform frissítései Azure VMware-megoldáshoz
 description: Ismerje meg az Azure VMware-megoldás platformjának frissítéseit.
 ms.topic: reference
 ms.date: 03/16/2021
-ms.openlocfilehash: 73bd1d088f9055ebd80a28c6247ea9dfa6229093
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ce25df2cb221c032f6dd430f292522fe86e69ceb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586233"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771770"
 ---
 # <a name="platform-updates-for-azure-vmware-solution"></a>Platform frissítései Azure VMware-megoldáshoz
 
@@ -16,7 +16,7 @@ Az Azure VMware-megoldás fontos frissítései a 2021. márciusi naptól kezdőd
 
 ## <a name="march-15-2021"></a>Március 15., 2021 
 
-- Az Azure VMware Solution Service a 20201. március 19-én hajtja végre a karbantartási műveleteket, hogy frissítse a vCenter-kiszolgálót a saját felhőben, hogy vCenter Server 6,7-es frissítést a 3l verzióra.
+- Az Azure VMware Solution Service a 2021. március 19-én hajtja végre a karbantartási műveleteket, hogy frissítse a vCenter-kiszolgálót a saját felhőben, hogy vCenter Server 6,7-es frissítést a 3l verzióra.
 
 - Ebben az időszakban a VMware vCenter nem lesz elérhető, és nem fogja tudni kezelni a virtuális gépeket (leállítás, indítás, létrehozás, törlés). A privát felhő skálázása (kiszolgálók és fürtök hozzáadása/eltávolítása) nem lesz elérhető. A VMware magas rendelkezésre állása (HA) továbbra is működni fog a meglévő virtuális gépek védelmének biztosítása érdekében. 
  

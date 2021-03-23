@@ -4,14 +4,14 @@ description: Tudnivalók a másolási tevékenységek végrehajtásának figyel�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 03/22/2021
 ms.author: jingwang
-ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4aefeea33e61b6ee2541e929dbeb3fc36343cac5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100388294"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771379"
 ---
 # <a name="monitor-copy-activity"></a>Másolási tevékenység figyelése
 
@@ -45,7 +45,7 @@ Az alsó **végrehajtási adatok és időtartamok** a másolási tevékenység l
 
 A másolási tevékenység végrehajtásának részletei és a teljesítmény jellemzői a **másolási tevékenység futtatási eredményének**  >  **kimenete** szakaszban is megjelennek, amely a felhasználói felület figyelési nézetének megjelenítésére szolgál. A következő lista az esetleg visszaadott tulajdonságok teljes listáját tartalmazza. Csak a másolási forgatókönyvre vonatkozó tulajdonságokat fogja látni. További információ a tevékenységek figyeléséről általában programozott módon: Azure-beli adat- [előállító programozott figyelése](monitor-programmatically.md).
 
-| Tulajdonság neve  | Description | Kimeneti egység |
+| Tulajdonság neve  | Leírás | Kimeneti egység |
 |:--- |:--- |:--- |
 | dataRead | A forrásból beolvasott adatok tényleges mennyisége. | Int64 érték bájtban |
 | dataWritten | A fogadóba írt/elkötelezett adatok tényleges csatlakoztatása. A méret különbözhet a `dataRead` mérettől, mivel az egyes adattár az adatok tárolására szolgál. | Int64 érték bájtban |
@@ -59,7 +59,7 @@ A másolási tevékenység végrehajtásának részletei és a teljesítmény je
 | rowsCopied | A fogadóba másolt sorok száma. Ez a metrika nem vonatkozik arra az esetre, ha a fájlok a-ként való másolása nem történik meg, például ha a forrás-és fogadó adatkészletek bináris formátumúak, vagy más formátumúak azonos beállításokkal.  | Int64 érték (egység nélkül) |
 | rowsSkipped | A kihagyott inkompatibilis sorok száma. A nem kompatibilis sorok kihagyása az igaz értékre állításával engedélyezhető `enableSkipIncompatibleRow` . | Int64 érték (egység nélkül) |
 | copyDuration | A másolás futtatásának időtartama. | Int32 érték másodpercben |
-| korlátozások | Adatátviteli sebesség. | Lebegőpontos szám (Kbit/s) |
+| korlátozások | Adatátviteli sebesség, amelyet a alapján `dataRead` oszt ki `copyDuration` . | Lebegőpontos szám (Kbit/s) |
 | sourcePeakConnections | A másolási tevékenység futtatása során a forrás adattárban létesített egyidejű kapcsolatok maximális száma. | Int32 érték (nincs egység) |
 | sinkPeakConnections| A fogadó adattárhoz a másolási tevékenység futtatása során létesített egyidejű kapcsolatok maximális száma.| Int32 érték (nincs egység) |
 | sqlDwPolyBase | Azt határozza meg, hogy a rendszer az adatok Azure szinapszis Analyticsbe való másolásakor használja-e a Base-t. | Logikai |

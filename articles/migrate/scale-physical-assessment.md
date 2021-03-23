@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 01/19/2020
-ms.openlocfilehash: 45954a42613fb1716e3b66305c0485a3966b8e37
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 232475c50ab56fe6fb7a39a3497a8de3947fe851
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96753688"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780310"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Nagy számú fizikai kiszolgáló értékelése az Azure-ba való áttelepítéshez
 
-Ez a cikk azt ismerteti, hogyan értékelhető ki nagy számú helyszíni fizikai kiszolgáló az Azure-ba való áttelepítéshez az Azure Migrate Server Assessment Tool használatával.
+Ez a cikk azt ismerteti, hogyan értékelhető ki nagy számú helyszíni fizikai kiszolgáló az Azure-ba való Migrálás során a Azure Migrate felderítési és értékelési eszköz használatával.
 
 [Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
 
@@ -36,7 +36,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 Ha nagy számú fizikai kiszolgáló értékelését tervezi, néhány dolgot érdemes meggondolni:
 
 - **Tervezze meg Azure Migrate projekteket**: Ismerje meg, hogyan helyezhet üzembe Azure Migrate-projekteket. Ha például az adatközpontok különböző földrajzi területeken vannak, vagy ha a felderítést, az értékelést vagy az áttelepítéssel kapcsolatos metaadatokat más földrajzi helyeken kell tárolnia, akkor lehet, hogy több projektre van szüksége.
-- **Berendezések tervezése**: Azure Migrate egy Windows rendszerű gépen üzembe helyezett helyszíni Azure Migrate berendezést használ, hogy folyamatosan felderítse a kiszolgálók értékelését és áttelepítését. A készülék figyeli a környezet változásait, például virtuális gépek, lemezek vagy hálózati adapterek hozzáadását. Emellett metaadatokat és teljesítményadatokat is küld az Azure-nak. Meg kell állapítani, hogy hány berendezést kell üzembe helyezni.
+- **Berendezések megtervezése**: a Azure Migrate egy Windows Serveren telepített helyszíni Azure Migrate berendezést használ, hogy folyamatosan felderítse a kiszolgálókat az értékeléshez és az áttelepítéshez. A készülék figyeli a környezet változásait, például kiszolgálók, lemezek vagy hálózati adapterek hozzáadását. Emellett metaadatokat és teljesítményadatokat is küld az Azure-nak. Meg kell állapítani, hogy hány berendezést kell üzembe helyezni.
 
 
 ## <a name="planning-limits"></a>Tervezési korlátok
@@ -57,7 +57,7 @@ Használja az ebben a táblázatban foglalt korlátokat a tervezéshez.
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 
-Készítse elő az Azure-t és a fizikai kiszolgálókat a kiszolgálók értékeléséhez. 
+Azure-és fizikai kiszolgálók előkészítése a felderítési és értékelési eszközhöz:  
 
 1. Ellenőrizze [a fizikai kiszolgáló támogatási követelményeit és korlátozásait](migrate-support-matrix-physical.md).
 2. Az Azure-fiók engedélyeinek beállítása a Azure Migrate való interakcióhoz.
@@ -70,7 +70,7 @@ A beállítások konfigurálásához kövesse az [oktatóanyag](./tutorial-disco
 A tervezési követelményekkel összhangban tegye a következőket:
 
 1. Azure Migrate-projekt létrehozása.
-2. Adja hozzá a Azure Migrate Server Assessment eszközt a projektekhez.
+2. Adja hozzá a Azure Migrate felderítési és értékelési eszközt a projektekhez.
 
 [További információ](./create-manage-projects.md)
 

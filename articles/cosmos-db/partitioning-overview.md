@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: b91c846b5a79125c1cee9c36ce81b5c3d3229ba9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: ab1b7028ce5f1afef861e696c98f25b56e78ef36
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99627770"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772467"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Particionálás és horizontális skálázás az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,8 +63,6 @@ Azure Cosmos DB átlátható módon, és automatikusan kezeli a logikai partíci
 A Azure Cosmos DB kivonatoló particionálást használ a logikai partíciók fizikai partíciók közötti elterjesztéséhez. Azure Cosmos DB kivonatok egy adott tétel partíciós kulcsának értékét. A kivonatos eredmény határozza meg a fizikai partíciót. Ezután a Azure Cosmos DB a partíciós kulcsok kivonatait egyenletesen osztja el a fizikai partíciók között.
 
 A tranzakciókat (tárolt eljárásokban vagy eseményindítókban) csak egyetlen logikai partíció elemeire lehet engedélyezni.
-
-További tudnivalókat a [Azure Cosmos db a partíciók kezelése](partitioning-overview.md)című témakörben olvashat. (Nem szükséges megérteni az alkalmazások létrehozásához és futtatásához szükséges belső adatokat, de itt egy kíváncsi olvasóhoz is hozzá lehet adni őket.)
 
 ## <a name="replica-sets"></a>Replikakészletek
 

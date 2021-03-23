@@ -3,16 +3,16 @@ title: Adatátalakítás az Hadoop streaming-tevékenység használatával – A
 description: Megtudhatja, hogyan alakíthatja át az Hadoop streaming-tevékenységet egy Azure-beli adatgyárban az Hadoop streaming-programok futtatásával egy igény szerinti vagy saját HDInsight-fürtön.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 532ece3bcc8c62771511fb2608e824de846b54fe
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 964af993fdcf17bca2caa812bf39ab63e650e807
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383092"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782622"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Adatátalakítás Hadoop-adatfolyam-továbbítási tevékenység használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]

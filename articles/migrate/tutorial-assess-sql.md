@@ -5,20 +5,17 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 02/07/2021
-ms.openlocfilehash: 9b33890d53f67eee870b42462a65b4a0b7ba9981
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d3077878dc02066b8ca5dd4441217e584f961725
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102055532"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782265"
 ---
 # <a name="tutorial-assess-sql-instances-for-migration-to-azure-sql"></a>Oktatóanyag: SQL-példányok felmérése az Azure SQL-re való áttelepítéshez
 
 Az Azure-ba való Migrálás részeként felméri a helyszíni számítási feladatokat a felhő készültségének mérésére, a kockázatok azonosítására, valamint a költségek és a bonyolultság megbecslésére.
 Ebből a cikkből megtudhatja, hogyan értékelheti fel a felderített SQL Server példány-adatbázisokat az Azure SQL-re való áttelepítésre való felkészülés során a Azure Migrate: Discovery and Assessment Tool használatával
-
-> [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -137,27 +134,27 @@ A havi költségbecslés magában foglalja az ajánlott Azure SQL Database és/v
 
         **Azure SQL DB-készültség** | **Azure SQL MI készültség** | **Ajánlott központi telepítési típus** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
          --- | --- | --- | --- |
-        Kész | Kész | [További információ](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) az Azure SQL dB-ben vagy az Azure SQL-ben | Yes
-        Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Yes
-        Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Yes
-        Nem áll készen | Nem áll készen | Lehetséges, hogy az Azure-beli virtuális gép [még többet szeretne megtudni](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | No
-        Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | No
+        Kész | Kész | [További információ](concepts-azure-sql-assessment-calculation.md#recommended-deployment-type) az Azure SQL dB-ben vagy az Azure SQL-ben | Igen
+        Kész | Nem üzemkész vagy ismeretlen | Azure SQL DB | Igen
+        Nem üzemkész vagy ismeretlen | Kész | Azure SQL MI | Igen
+        Nem áll készen | Nem áll készen | Lehetséges, hogy az Azure-beli virtuális gép [még többet szeretne megtudni](concepts-azure-sql-assessment-calculation.md#potentially-ready-for-azure-vm) | Nem
+        Nem üzemkész vagy ismeretlen | Nem üzemkész vagy ismeretlen | Ismeretlen | Nem
     
     - **Cél központi telepítési típus** (az értékelés tulajdonságaiban kiválasztva): **Azure SQL db**
     
         **Azure SQL DB-készültség** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
         --- | --- |
-        Kész | Yes
+        Kész | Igen
         Nem áll készen | Nem
-        Ismeretlen | No
+        Ismeretlen | Nem
     
     - **Cél központi telepítési típus** (az értékelés tulajdonságaiban kiválasztva): **Azure SQL mi**
     
         **Azure SQL MI készültség** | **Kiszámítja az Azure SQL konfigurációját és becsült költségeit?**
          --- | --- |
-        Kész | Yes
+        Kész | Igen
         Nem áll készen | Nem
-        Ismeretlen | No
+        Ismeretlen | Nem
 
 4. A példány neve részletezés elemre kattintva megtekintheti a felhasználói adatbázisok számát, a példányok részleteit, például a példány tulajdonságait, a számítást (a példány hatókörét) és a forrás-adatbázis tárolási részleteit.
 5. Kattintson a felhasználói adatbázisok számára az adatbázisok listájának és a hozzájuk tartozó adatok áttekintéséhez. Példa (csak becslések és költségek például): :::image type="content" source="./media/tutorial-assess-sql/assessment-db.png" alt-text="SQL-példány részletei":::

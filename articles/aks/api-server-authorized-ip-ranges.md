@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan biztonságossá teheti a fürtöt IP-címtartom
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98890636"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771923"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Biztonságos hozzáférés az API-kiszolgálóhoz a jogosult IP-címtartományok használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -27,7 +27,7 @@ Szüksége lesz az Azure CLI-verzió 2.0.76 vagy újabb verziójára, és konfig
 
 Az API-kiszolgáló által jóváhagyott IP-címtartományok funkció a következő korlátozásokkal rendelkezik:
 - Az API-kiszolgáló által engedélyezett IP-címtartományok után létrehozott fürtökön a 2019 októberi időszakban az API-kiszolgáló által engedélyezett IP-címtartományok csak a *standard* SKU Load Balancer esetében támogatottak. Az *alapszintű* SKU Load Balancer és a konfigurált API-kiszolgáló által jóváhagyott IP-címtartományok meglévő fürtök továbbra is ugyanúgy működnek, mint a *standard* SKU Load Balancer. Ezek a meglévő fürtök továbbra is működni fognak, ha a Kubernetes verziója vagy a vezérlő síkja frissül. Az API-kiszolgáló által engedélyezett IP-címtartományok a privát fürtök esetében nem támogatottak.
-- Ez a funkció nem kompatibilis azokkal a fürtökkel, amelyek [nyilvános IP-t használnak a csomóponti csomópontok készletének előzetes](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools-preview)verziójában.
+- Ez a funkció nem kompatibilis a [csomópontok nyilvános IP-címet](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools)használó fürtökkel.
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
 

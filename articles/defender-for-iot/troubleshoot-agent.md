@@ -1,24 +1,14 @@
 ---
 title: A biztonsági ügynök indítási fellépéseinek hibakeresése (Linux)
 description: Az Azure Defender IoT biztonsági ügynökök Linux rendszerhez való használatának hibáinak megoldása.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9c9c36b822ab6acb9f9a48d4ba809ad32f6f4695
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449220"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782588"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>Biztonsági ügynök hibaelhárítási útmutatója (Linux)
 
@@ -91,19 +81,18 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 ```
 
 | Hibakód | Hiba alkódja | A hiba részletei | C szervizelése | C szervizelése # |
-|:-----------|:---------------|:--------|:------------|:------------|
-| Helyi konfiguráció | Hiányzó konfiguráció | Hiányzik egy konfiguráció a helyi konfigurációs fájlból. A hibaüzenetnek meg kell jelennie, hogy melyik kulcs hiányzik. | Adja hozzá a hiányzó kulcsot a/var/LocalConfiguration.jsfájlhoz a részletekért tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című témakört.| Adja hozzá a hiányzó kulcsot a General.config fájlhoz a részletekért lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című témakört. |
-| Helyi konfiguráció | Nem értelmezhető konfiguráció | A konfigurációs érték nem elemezhető. A hibaüzenetnek azt kell megadnia, hogy melyik kulcsot nem lehet elemezni. A konfigurációs érték nem elemezhető, mert az érték nem a várt típusú, vagy az érték a tartományon kívül esik. | Javítsa ki a kulcs értékét a/var/LocalConfiguration.jsfájlban, hogy az megfeleljen a LocalConfiguration sémának, lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című részt a részletekért. |  Javítsa ki a kulcs értékét General.config fájlban, hogy az megfeleljen a sémának, tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című részt a részletekért.|
-| Helyi konfiguráció | Fájlformátum | Nem sikerült elemezni a konfigurációs fájlt. | A konfigurációs fájl sérült, töltse le az ügynököt, és telepítse újra. | |
-| Távoli konfiguráció | Időtúllépés | Az ügynök nem tudja beolvasni a azureiotsecurity modult az időtúllépési időszakon belül. | Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. | Az ügynök nem tudott beolvasni az azureiotsecurity modult az időtúllépési időszakon belül. | Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. |
-| Hitelesítés | A fájl nem létezik | A megadott elérési úton található fájl nem létezik. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa **meg aLocalConfiguration.js** fájlt, és módosítsa a **filepath** konfigurációját. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa meg a **Authentication.config** fájlt, és módosítsa a **filepath** konfigurációját.|
+|--|--|--|--|--|
+| Helyi konfiguráció | Hiányzó konfiguráció | Hiányzik egy konfiguráció a helyi konfigurációs fájlból. A hibaüzenetnek meg kell jelennie, hogy melyik kulcs hiányzik. | Adja hozzá a hiányzó kulcsot a/var/LocalConfiguration.jsfájlhoz a részletekért tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című témakört. | Adja hozzá a hiányzó kulcsot a General.config fájlhoz a részletekért lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című témakört. |
+| Helyi konfiguráció | Nem értelmezhető konfiguráció | A konfigurációs érték nem elemezhető. A hibaüzenetnek azt kell megadnia, hogy melyik kulcsot nem lehet elemezni. A konfigurációs érték nem elemezhető, mert az érték nem a várt típusú, vagy az érték a tartományon kívül esik. | Javítsa ki a kulcs értékét a/var/LocalConfiguration.jsfájlban, hogy az megfeleljen a LocalConfiguration sémának, lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című részt a részletekért. | Javítsa ki a kulcs értékét General.config fájlban, hogy az megfeleljen a sémának, tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című részt a részletekért. |
+| Helyi konfiguráció | Fájlformátum | Nem sikerült elemezni a konfigurációs fájlt. | A konfigurációs fájl sérült, töltse le az ügynököt, és telepítse újra. | - |
+| Távoli konfiguráció | Időtúllépés | Az ügynök nem tudja beolvasni a azureiotsecurity modult az időtúllépési időszakon belül. | Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. | Az ügynök nem tudott beolvasni az azureiotsecurity modult az időtúllépési időszakon belül. Győződjön meg arról, hogy a hitelesítési konfiguráció helyes, és próbálkozzon újra. |
+| Hitelesítés | A fájl nem létezik | A megadott elérési úton található fájl nem létezik. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa **meg aLocalConfiguration.js** fájlt, és módosítsa a **filepath** konfigurációját. | Győződjön meg arról, hogy a fájl létezik a megadott elérési úton, vagy nyissa meg a **Authentication.config** fájlt, és módosítsa a **filepath** konfigurációját. |
 | Hitelesítés | Fájl engedélye | Az ügynök nem rendelkezik megfelelő engedélyekkel a fájl megnyitásához. | A megadott elérési úton adja meg a **asciotagent** -felhasználó olvasási engedélyeit a fájlhoz. | Győződjön meg arról, hogy a fájl elérhető. |
 | Hitelesítés | Fájlformátum | A megadott fájl formátuma nem megfelelő. | Győződjön meg arról, hogy a fájl formátuma megfelelő. A támogatott fájltípusok:. pfx és. PEM. | Győződjön meg arról, hogy a fájl érvényes tanúsítványfájl. |
-| Hitelesítés | Nem engedélyezett | Az ügynök nem tudta hitelesíteni a IoT Hub a megadott hitelesítő adatokkal. | Ellenőrizze a hitelesítési konfigurációt a LocalConfiguration fájlban, hajtsa végre a hitelesítési konfigurációt, és győződjön meg róla, hogy az összes adat helyes, ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással. | Ellenőrizze Authentication.config hitelesítési konfigurációját, hajtsa végre a hitelesítési konfigurációt, és győződjön meg arról, hogy az összes adat helyes, majd ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással.
-| Hitelesítés | Nem található | Az eszköz/modul található. | Hitelesítési konfiguráció ellenőrzése – győződjön meg arról, hogy az állomásnév helyes, az eszköz létezik IoT Hubban, és rendelkezik egy azureiotsecurity Twin modullal. |  Hitelesítési konfiguráció ellenőrzése – győződjön meg arról, hogy az állomásnév helyes, az eszköz létezik IoT Hubban, és rendelkezik egy azureiotsecurity Twin modullal. |
-| Hitelesítés | Hiányzó konfiguráció | Hiányzik egy konfiguráció a *Authentication.config* fájlból. A hibaüzenetnek meg kell jelennie, hogy melyik kulcs hiányzik. | Adja hozzá a hiányzó kulcsot a *LocalConfiguration.js* fájlhoz.| Adja hozzá a hiányzó kulcsot a *Authentication.config* fájlhoz a részletekért lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című témakört. |
-| Hitelesítés | Nem értelmezhető konfiguráció | A konfigurációs érték nem elemezhető. A hibaüzenetnek azt kell megadnia, hogy melyik kulcsot nem lehet elemezni. A konfigurációs érték nem elemezhető, mert vagy az érték nem a várt típusú, vagy az érték a megengedett tartományon kívül esik. |Javítsa ki a kulcs értékét a **LocalConfiguration.js** fájljában. |Javítsa ki a kulcs értékét **Authentication.config** fájlban a séma megegyezéséhez. a részletekért tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című témakört.|
-|
+| Hitelesítés | Nem engedélyezett | Az ügynök nem tudta hitelesíteni a IoT Hub a megadott hitelesítő adatokkal. | Ellenőrizze a hitelesítési konfigurációt a LocalConfiguration fájlban, hajtsa végre a hitelesítési konfigurációt, és győződjön meg róla, hogy az összes adat helyes, ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással. | Ellenőrizze Authentication.config hitelesítési konfigurációját, hajtsa végre a hitelesítési konfigurációt, és győződjön meg arról, hogy az összes adat helyes, majd ellenőrizze, hogy a fájl titkos kulcsa megegyezik-e a hitelesített identitással. |
+| Hitelesítés | Nem található | Az eszköz/modul található. | Hitelesítési konfiguráció ellenőrzése – győződjön meg arról, hogy az állomásnév helyes, az eszköz létezik IoT Hubban, és rendelkezik egy azureiotsecurity Twin modullal. | Hitelesítési konfiguráció ellenőrzése – győződjön meg arról, hogy az állomásnév helyes, az eszköz létezik IoT Hubban, és rendelkezik egy azureiotsecurity Twin modullal. |
+| Hitelesítés | Hiányzó konfiguráció | Hiányzik egy konfiguráció a *Authentication.config* fájlból. A hibaüzenetnek meg kell jelennie, hogy melyik kulcs hiányzik. | Adja hozzá a hiányzó kulcsot a *LocalConfiguration.js* fájlhoz. | Adja hozzá a hiányzó kulcsot a *Authentication.config* fájlhoz a részletekért lásd a [c#-localconfig-Reference](azure-iot-security-local-configuration-csharp.md) című témakört. |
+| Hitelesítés | Nem értelmezhető konfiguráció | A konfigurációs érték nem elemezhető. A hibaüzenetnek azt kell megadnia, hogy melyik kulcsot nem lehet elemezni. A konfigurációs érték nem elemezhető, mert vagy az érték nem a várt típusú, vagy az érték a megengedett tartományon kívül esik. | Javítsa ki a kulcs értékét a **LocalConfiguration.js** fájljában. | Javítsa ki a kulcs értékét **Authentication.config** fájlban a séma megegyezéséhez. a részletekért tekintse meg a [cs-localconfig-Reference](azure-iot-security-local-configuration-c.md) című témakört.|
 
 ## <a name="next-steps"></a>Következő lépések
 

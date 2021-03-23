@@ -61,7 +61,7 @@
     - name: Költségcsökkentés fenntartott példánnyal
       href: reserved-instance.md
     - name: Migrálás kiértékelése
-      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+      href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - name: DHCP kezelése
       href: manage-dhcp.md
     - name: NSX hálózati összetevők konfigurálása
@@ -112,6 +112,8 @@
       items:
         - name: Biztonsági mentési megoldások virtuális gépekhez
           href: ecosystem-back-up-vms.md
+        - name: Áttelepítési megoldások a virtuális gépekhez
+          href: ecosystem-migration-vms.md
 - name: További források
   items:
     - name: Hibaelhárítás

@@ -1,17 +1,17 @@
 ---
 title: A felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos kérdések Azure Migrate
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032568"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782350"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -28,18 +28,15 @@ Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcso
 Tekintse át a [nyilvános](migrate-support-matrix.md#supported-geographies-public-cloud) és a [Government-felhők](migrate-support-matrix.md#supported-geographies-azure-government) támogatott régióit.
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet tudok felderíteni egy berendezéssel?
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>Hány kiszolgálót tud felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és akár 1000 fizikai kiszolgálót is felderítheti egyetlen készülék használatával. Ha több géppel rendelkezik, olvassa el a [Hyper-V felmérés skálázását](scale-hyper-v-assessment.md), [a VMware-értékelés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető cikkét.
+Akár 10 000-kiszolgálót is felderítheti VMware-környezetből, akár 5 000-kiszolgálóra a Hyper-V-környezetből, akár 1000 fizikai kiszolgálókkal egyetlen készülék használatával. Ha több kiszolgálóval rendelkezik, olvassa el a [Hyper-V felmérés skálázását](scale-hyper-v-assessment.md), [a VMware-értékelés méretezését](scale-vmware-assessment.md)vagy [a fizikai kiszolgáló értékelésének](scale-physical-assessment.md)méretezését ismertető cikkét.
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>Hogyan választhatom ki az értékelési típust?
 
-- Az **Azure-beli virtuális gépek felméréseit** az Azure-beli virtuális gépekre való áttelepítéshez használni kívánt helyszíni [VMWare virtuális gépek](how-to-set-up-appliance-vmware.md), [Hyper-V virtuális gépek](how-to-set-up-appliance-hyper-v.md)és [fizikai kiszolgálók](how-to-set-up-appliance-physical.md) értékeléséhez használhatja. [További információ](concepts-assessment-calculation.md)
+- Az **Azure-beli virtuális gépek felméréseit** akkor érdemes használni, ha a helyszíni [VMware](how-to-set-up-appliance-vmware.md) -és [Hyper-V-](how-to-set-up-appliance-hyper-v.md) környezetből származó kiszolgálókat kíván felmérni, valamint [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) szeretne áttelepíteni az Azure-beli virtuális gépekre [További információ](concepts-assessment-calculation.md)
 
 - Használja az értékelés típusát az **Azure SQL** -ben, ha a VMware-környezetből szeretné felmérni a helyszíni SQL Server a Azure SQL Database vagy az Azure SQL felügyelt példányára való áttelepítéshez. [További információ](concepts-assessment-calculation.md)
-
-    > [!Note]
-    > A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 - Ha a helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) szeretné felmérni az [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md) való áttelepítéshez, használja az **Azure VMware Solution (AVS)** értékeléseit. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -48,10 +45,10 @@ Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépet és
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Miért hiányoznak a teljesítményadatok az Azure-beli virtuális gépen és/vagy az AVS Assessment-jelentésben szereplő egyes/összes kiszolgálókon?
 
-„Teljesítményalapú” értékelés esetén az értékelési jelentés exportálása PercentageOfCoresUtilizedMissing vagy PercentageOfMemoryUtilizedMissing hibát jelez, amikor az Azure Migrate-berendezés nem tud teljesítményadatokat gyűjteni a helyszíni virtuális gépekhez. Ellenőrizze a következőket:
+A "teljesítmény-alapú" felmérés esetében az értékelő jelentés exportálása "PercentageOfCoresUtilizedMissing" vagy "PercentageOfMemoryUtilizedMissing", ha a Azure Migrate készülék nem tud teljesítményadatokat gyűjteni a helyszíni kiszolgálók számára. Ellenőrizze a következőket:
 
-- A virtuális gépek be vannak kapcsolva abban az időtartamban, amelyre az értékelést létrehozta
-- Ha csak a teljesítményszámlálók hiányoznak, és a rendszer megkísérli felmérni a Hyper-V virtuális gépeket. Ebben a forgatókönyvben engedélyezze a dinamikus memóriát a virtuális gépeken, és "számítsa újra" az értékelést, hogy tükrözze a legújabb módosításokat. A készülék csak akkor gyűjthet memória-kihasználtsági értékeket a Hyper-V virtuális gépekhez, ha a virtuális gépnek engedélyezve van a dinamikus memória.
+- Ha a kiszolgálók azon időtartamra vannak bekapcsolva, amelyhez az értékelést létrehozza
+- Ha csak a teljesítményszámlálók hiányoznak, és a kiszolgálókat szeretné felmérni a Hyper-V környezetben. Ebben a forgatókönyvben engedélyezze a dinamikus memóriát a kiszolgálókon, és "számítsa újra" az értékelést, hogy tükrözze a legújabb módosításokat. A készülék csak akkor gyűjthet memória-kihasználtsági értékeket a kiszolgálókon a Hyper-V környezetben, ha a kiszolgálón engedélyezve van a dinamikus memória.
 
 - Ha az összes teljesítményszámláló hiányzik, győződjön meg arról, hogy a 443-as (HTTPS) portok kimenő kapcsolatai engedélyezve vannak.
 
@@ -89,11 +86,6 @@ A megbízhatósági minősítés az értékelés kiszámításához szükséges 
 
 - Azure SQL-értékelések esetén néhány SQL-példány vagy -adatbázis a felderítés elindítása után jött létre. Ha például az utolsó egy hónap teljesítmény-előzményeire vonatkozó értékelést hoz létre, néhány SQL-példány vagy-adatbázis csak egy héttel ezelőtt jött létre a környezetben. Ebben az esetben az új kiszolgálókhoz tartozó teljesítményadatok nem lesznek elérhetők a teljes időtartamra, és a megbízhatósági minősítés alacsony lenne. [További információ](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Szeretném kipróbálni az új Azure SQL Assessment funkciót az Azure Migrate-ben
-A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [ezzel a hivatkozással](https://go.microsoft.com/fwlink/?linkid=2155668L).
-- A kezdéshez tekintse meg a [felderítéssel](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware) és az [értékeléssel](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql) kapcsolatos oktatóanyagokat.
-- Vegye figyelembe, hogy a VMware-környezetben futó SQL Server-példányok és -adatbázisok felderítése és értékelése jelenleg előzetes verzióban érhető el.
-
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Nem látok egyes kiszolgálókat, amikor létrehozok egy Azure SQL-értékelést
 
 - Az Azure SQL-értékelés csak olyan futó kiszolgálókon végezhető el, amelyeken SQL-példányok lettek felderítve. Ha nem látja az értékelni kívánt kiszolgálókat és SQL-példányokat, várjon egy ideig, amíg a felderítés befejeződik, majd hozza létre az értékelést. 
@@ -117,7 +109,7 @@ A rendszer 24 óránként egyszer hajtja végre az SQL-felderítést, és előfo
 ## <a name="my-assessment-is-in-outdated-state"></a>Az értékelésem állapota Elavult
 
 ### <a name="azure-vmavs-assessment"></a>Azure-beli virtuális gép/AVS-Értékelés
-Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek egy értékelt csoportban vannak, az értékelés elavultként van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
+Ha helyszíni változások vannak olyan kiszolgálókon, amelyek egy értékelt csoportban vannak, az értékelés elavultként van megjelölve. Az alábbi tulajdonságok egy vagy több módosítása miatt az értékelés "elavultként" jelölhető meg:
 - Processzor-magok száma
 - Lefoglalt memória
 - Rendszerindítási típus vagy belső vezérlőprogram
@@ -129,7 +121,7 @@ Ha olyan helyszíni módosításokat végeznek a virtuális gépeken, amelyek eg
 
 **Számítsa ki** újra az értékelést, hogy tükrözze az értékelés legújabb változásait.
 
-### <a name="azure-sql-assessment"></a>Azure SQL-Értékelés
+### <a name="azure-sql-assessment"></a>Azure SQL-értékelés
 Ha módosítanak olyan helyszíni SQL-példányokat és -adatbázisokat, amelyek egy értékelt csoportban találhatók, az értékelést **elavultként** jelöli meg a rendszer:
 - SQL-példányt adtak hozzá egy kiszolgálóhoz vagy távolítottak el róla
 - SQL-adatbázist adtak hozzá egy SQL-példányhoz vagy távolítottak el róla
@@ -166,18 +158,18 @@ Az Azure SQL felügyelt példányai esetében az első 32 GB/példány/hónap t�
 - Az AVS-értékelés olyan csoportokon hajtható végre, amelyekben csak VMware rendszerű gépek találhatók. Ha AVS-értékelést szeretne végezni, távolítson el minden nem VMware rendszerű gépet a csoportból.
 - Ha először futtat AVS-értékeléseket az Azure Migrate-ben, akkor érdemes létrehozni egy új csoportot VMware rendszerű gépekből.
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Nem látok néhány virtuálisgép-típust Azure Government
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Nem látok néhány virtuálisgép-típust és-méretet a Azure Government
 
-Az értékeléshez és áttelepítéshez támogatott virtuálisgép-típusok Azure Government helyen rendelkezésre állástól függenek. Azure Governmentban [áttekintheti és összehasonlíthatja](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) a virtuális gépek típusait.
+Az értékeléshez és áttelepítéshez támogatott virtuálisgép-típusok és méretek Azure Government helyen rendelkezésre állástól függenek. Azure Governmentban [áttekintheti és összehasonlíthatja](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) a virtuális gépek típusait.
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>A virtuális gép mérete megváltozott. Újraértékelést is Futtathatok?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>A kiszolgáló mérete megváltozott. Újraértékelést is Futtathatok?
 
-A Azure Migrate berendezés folyamatosan gyűjt információkat a helyszíni környezetről.  Az értékelés a helyszíni virtuális gépekre vonatkozó időponthoz kapcsolódó pillanatkép. Ha módosítja egy olyan virtuális gép beállításait, amelyet fel szeretne mérni, használja az újraszámítási lehetőséget az értékelés frissítéséhez a legújabb módosításokkal.
+A Azure Migrate berendezés folyamatosan gyűjt információkat a helyszíni környezetről.  Az értékelés egy időponthoz kapcsolódó pillanatkép a helyszíni kiszolgálókról. Ha módosítja egy olyan kiszolgáló beállításait, amelyet szeretne felmérni, használja az újraszámítás lehetőséget, hogy frissítse az értékelést a legújabb módosításokkal.
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>Hogyan a virtuális gépek felderítését több-bérlős környezetben?
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>Hogyan a kiszolgálók felderítését több-bérlős környezetben?
 
-- **VMware**: Ha egy környezet megosztott a bérlők között, és nem szeretné felderíteni a bérlő virtuális gépei egy másik bérlő előfizetésében, hozzon létre VMware vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt virtuális gépekhez férhetnek hozzá. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
-- **Hyper-v**: a felderítés a Hyper-v gazdagép hitelesítő adatait használja. Ha a virtuális gépek ugyanazt a Hyper-V-gazdagépet használják, jelenleg nincs lehetőség a felderítés elválasztására.  
+- **VMware**: Ha egy környezet megosztott a bérlők között, és nem szeretné felderíteni a bérlő kiszolgálóit egy másik bérlő előfizetésében, akkor hozzon létre VMware vCenter Server hitelesítő adatokat, amelyek csak a felderíteni kívánt kiszolgálókhoz férhetnek hozzá. Ezután használja ezeket a hitelesítő adatokat, amikor elindítja a felderítést a Azure Migrate berendezésben.
+- **Hyper-v**: a felderítés a Hyper-v gazdagép hitelesítő adatait használja. Ha a kiszolgálók ugyanazt a Hyper-V-gazdagépet használják, jelenleg nincs lehetőség a felderítés elválasztására.  
 
 ## <a name="do-i-need-vcenter-server"></a>Szükségem van vCenter Serverre?
 
@@ -185,9 +177,9 @@ Igen, Azure Migrate a felderítés végrehajtásához VMware-környezetben vCent
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Mik a méretezési lehetőségek az Azure-beli virtuális gépek felmérésében?
 
-Helyszíni méretezés esetén a Azure Migrate nem veszi figyelembe a virtuális gépek teljesítményadatait az értékeléshez. Azure Migrate a virtuális gépek méretét a helyszíni konfiguráció alapján méri. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
+Helyszíni méretezés esetén a Azure Migrate nem veszi figyelembe a kiszolgálói teljesítményadatok értékelését. Azure Migrate a virtuális gépek méretét a helyszíni konfiguráció alapján méri. A teljesítmény-alapú méretezéssel a méretezés a kihasználtsági adatain alapul.
 
-Ha például egy helyszíni virtuális gép négy maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtság és 50% memória kihasználtsága:
+Ha például egy helyszíni kiszolgáló négy maggal és 8 GB memóriával rendelkezik, 50%-os CPU-kihasználtság és 50% memória kihasználtsága:
 - A helyszíni méretezés olyan Azure VM SKU-t javasol, amely négy maggal és 8 GB memóriával rendelkezik.
 - A teljesítmény-alapú méretezési szolgáltatás olyan virtuálisgép-SKU-t javasol, amely két maggal és 4 GB memóriával rendelkezik, mert a kihasználtság százalékos arányát veszi figyelembe.
 
@@ -230,7 +222,7 @@ CSV-fájlon keresztül importált gépek esetén az AVS-felmérésben az alapér
 
 ## <a name="what-is-dependency-visualization"></a>Mi a függőségi vizualizáció?
 
-A függőségi vizualizáció segíthet felmérni a virtuális gépek csoportjait, hogy nagyobb megbízhatósággal legyenek áttelepítve. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
+A függőségi vizualizáció segíthet felmérni a kiszolgálók olyan csoportjait, amelyek nagyobb megbízhatósággal telepíthetők át. A függőségi vizualizációk átvizsgálják a számítógép függőségeit az értékelés futtatása előtt. Így biztosítható, hogy semmi sincs hátra, és segít elkerülni a váratlan kimaradásokat az Azure-ba való Migrálás során. Azure Migrate a függőségi vizualizáció engedélyezéséhez a Azure Monitor Service Map megoldását használja. [További információ](concepts-dependency-visualization.md).
 
 > [!NOTE]
 > Az ügynök-alapú függőség elemzése nem érhető el Azure Governmentban. Az ügynök nélküli függőségek elemzését is használhatja
@@ -241,7 +233,7 @@ Az ügynök nélküli vizualizáció és az ügynök-alapú vizualizáció köz�
 
 **Követelmény** | **Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | ---
-Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware virtuális gépekhez használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
+Támogatás | Ez a beállítás jelenleg előzetes verzióban érhető el, és csak a VMware-környezetben található kiszolgálókhoz használható. [Tekintse át](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) a támogatott operációs rendszereket. | Általánosan elérhető (GA).
 Ügynök | Nem kell telepítenie az ügynököket az áttekinteni kívánt gépekre. | Az elemezni kívánt helyszíni gépekre telepítendő ügynökök: a [Microsoft monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)és a [függőségi ügynök](../azure-monitor/agents/agents-overview.md#dependency-agent). 
 Előfeltételek | [Tekintse át](concepts-dependency-visualization.md#agentless-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket. | [Tekintse át](concepts-dependency-visualization.md#agent-based-analysis) az előfeltételeket és az üzembe helyezésre vonatkozó követelményeket.
 Log Analytics | Nem szükségesek. | A Azure Migrate a [Service Map](../azure-monitor/vm/service-map.md) megoldást használja [Azure monitor naplókban](../azure-monitor/logs/log-query-overview.md) a függőségi vizualizációhoz. [További információ](concepts-dependency-visualization.md#agent-based-analysis).
@@ -296,9 +288,9 @@ Az ügynök-alapú vizualizációk esetében akár egy óráig is megjeleníthet
 
 Az ügynök nélküli vizualizációk esetében egy adott kiszolgáló függőségi térképét egy óra és 30 nap közötti időtartamon belül tekintheti meg.
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Megjeleníthető a több mint 10 virtuális gépen lévő csoportok függőségei?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>Megjeleníthető a több mint 10 kiszolgálóból álló csoportok függőségei?
 
-Megjelenítheti a [függőségeket](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) a legfeljebb 10 virtuális géppel rendelkező csoportok esetében. Ha több mint 10 virtuális géppel rendelkező csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
+Megjelenítheti a [függőségeket](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) a legfeljebb 10 kiszolgálóval rendelkező csoportok esetében. Ha több mint 10 kiszolgálót tartalmazó csoporttal rendelkezik, javasoljuk, hogy ossza szét a csoportot kisebb csoportokba, majd jelenítse meg a függőségeket.
 
 ## <a name="next-steps"></a>Következő lépések
 

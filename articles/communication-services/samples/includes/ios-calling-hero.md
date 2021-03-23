@@ -10,16 +10,20 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 1318c47bcded47159006977db09604bb53674973
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: cea425a3f133c54fecda06daa57e6e5e6d22a5d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487928"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104783570"
 ---
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Az **iOS-hez** készült Azure kommunikációs szolgáltatások csoport azt mutatja be, hogy a kommunikációs szolgáltatások hogyan hívhatják meg az iOS-es ügyféloldali kódtárat a hangvételt és a videót tartalmazó csoportos hívás létrehozásához. Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be és futtathatja a mintát. A minta áttekintése a kontextusban.
+
+## <a name="download-code"></a>Kód letöltése
+
+A gyors útmutatóhoz tartozó véglegesített kód megkeresése a [githubon](https://github.com/Azure-Samples/communication-services-ios-calling-hero).
 
 ## <a name="overview"></a>Áttekintés
 
@@ -29,7 +33,7 @@ A minta így néz ki:
 
 :::image type="content" source="../media/calling/landing-page-ios.png" alt-text="A minta alkalmazás kezdőlapját ábrázoló képernyőfelvétel":::
 
-Ha lenyomja az új hívás indítása gombot, az iOS-alkalmazás létrehoz egy új hívást, és csatlakoztatja azt. Az alkalmazás azt is lehetővé teszi, hogy a meglévő hívás AZONOSÍTÓjának megadásával csatlakozzon egy meglévő Azure kommunikációs szolgáltatáshoz.
+Ha lenyomja az új hívás indítása gombot, az iOS-alkalmazás létrehoz egy új hívást, és csatlakoztatja azt. Az alkalmazás lehetővé teszi egy meglévő Azure kommunikációs szolgáltatáshoz való csatlakozást a meglévő hívás AZONOSÍTÓjának megadásával. A Teams Meeting szolgáltatáshoz is csatlakozhat, ha megadja az értekezlet meghívásában található JOIN hivatkozást.  (Az illesztési hivatkozás formátuma a következő: `https://teams.microsoft.com/l/meetup-join/` ). További információ a csapatok együttműködési feladatairól: [Teams együttműködés fogalmi dokumentációja](../../concepts/teams-interop.md).
 
 A híváshoz való csatlakozást követően a rendszer felszólítja, hogy adjon engedélyt az alkalmazásnak a kamerához és a mikrofonhoz való hozzáférésre. A rendszer a megjelenítendő név megadását is kéri.
 
@@ -51,7 +55,7 @@ Az alábbiakban további információkat talál a minta beállításához szüks
 - Aktív előfizetéssel rendelkező Azure-fiók. Részletekért tekintse meg a [fiók ingyenes létrehozását](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)ismertető témakört.
 - Egy [Xcode](https://go.microsoft.com/fwLink/p/?LinkID=266532)-t futtató Mac, valamint egy érvényes, a kulcstartóba telepített fejlesztői tanúsítvány.
 - Egy Azure kommunikációs szolgáltatások erőforrása. További információ: [Azure kommunikációs erőforrás létrehozása](../../quickstarts/create-communication-resource.md).
-- Egy olyan Azure-függvény, amely [megbízható szolgáltatási logikát](../../tutorials/trusted-service-tutorial.md) futtat a hozzáférési jogkivonatok beolvasásához.
+- A [hitelesítési végpontot](../../tutorials/trusted-service-tutorial.md) futtató Azure-függvény a hozzáférési jogkivonatok beolvasására.
 
 ## <a name="running-sample-locally"></a>Minta helyi futtatása
 
@@ -60,8 +64,8 @@ A csoportos hívási minta helyileg futtatható a XCode használatával. A fejle
 ### <a name="before-running-the-sample-for-the-first-time"></a>A minta első futtatása előtt
 
 1. A függőségek telepítése a futtatásával `pod install` .
-2. Megnyitás `ACSCall.xcworkspace` a Xcode-ben.
-3. Frissítés `AppSettings.plist` . A kulcs értékének megadásával adja meg `acsTokenFetchUrl` a hitelesítési végpont URL-címét.
+2. Megnyitás `AzureCalling.xcworkspace` a Xcode-ben.
+3. Frissítés `AppSettings.plist` . A kulcs értékének megadásával adja meg `communicationTokenFetchUrl` a hitelesítési végpont URL-címét.
 
 ### <a name="run-sample"></a>Minta futtatása
 
@@ -69,9 +73,9 @@ Hozza létre és futtassa a mintát a XCode-ben.
 
 ## <a name="optional-securing-an-authentication-endpoint"></a>Választható Hitelesítési végpont biztonságossá tétele
 
-Demonstrációs célokra ez a példa egy nyilvánosan elérhető végpontot használ alapértelmezetten egy Azure kommunikációs szolgáltatásbeli jogkivonat beolvasásához. Éles környezetekben javasolt saját biztonságos végpontot használni a saját tokenek kiépítéséhez.
+Demonstrációs célokra ez a minta egy nyilvánosan elérhető végpontot használ alapértelmezetten egy Azure kommunikációs szolgáltatás hozzáférési jogkivonatának beolvasásához. Éles környezetekben javasolt saját biztonságos végpontot használni a saját tokenek kiépítéséhez.
 
-A további beállításokkal ez a minta támogatja a **Azure Active Directory** (Azure ad) védett végponthoz való csatlakozást, így a felhasználói bejelentkezés szükséges ahhoz, hogy az alkalmazás beolvassa az Azure kommunikációs szolgáltatás tokenjét. Lásd az alábbi lépéseket:
+A további beállításokkal ez a minta támogatja a **Azure Active Directory** (Azure ad) védett végponthoz való csatlakozást, így a felhasználói bejelentkezés szükséges ahhoz, hogy az alkalmazás beolvassa az Azure kommunikációs szolgáltatás hozzáférési jogkivonatát. Lásd az alábbi lépéseket:
 
 1. Azure Active Directory hitelesítés engedélyezése az alkalmazásban.  
    - [Az alkalmazás regisztrálása a Azure Active Directory alatt (iOS/macOS platform beállításainak használatával)](../../../active-directory/develop/tutorial-v2-ios.md) 
@@ -81,7 +85,7 @@ A további beállításokkal ez a minta támogatja a **Azure Active Directory** 
 :::image type="content" source="../media/calling/aad-overview.png" alt-text="Azure Portal Azure Active Directory konfigurálása.":::
 
 3. Nyissa meg `AppSettings.plist` a Xcode, adja hozzá a következő kulcs-értékeket:
-   - `acsTokenFetchUrl`: Az Azure Communication Services-tokent kérő URL-cím 
+   - `communicationTokenFetchUrl`: Az Azure Communication Services-tokent kérő URL-cím 
    - `isAADAuthEnabled`: Logikai érték, amely azt jelzi, hogy az Azure kommunikációs szolgáltatások jogkivonat-hitelesítése kötelező-e
    - `aadClientId`: Az alkalmazás (ügyfél) azonosítója
    - `aadTenantId`: A címtár (bérlő) azonosítója
@@ -94,6 +98,9 @@ Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, tör�
 
 ## <a name="next-steps"></a>Következő lépések
 
+>[!div class="nextstepaction"]
+>[A minta letöltése a GitHubról](https://github.com/Azure-Samples/communication-services-ios-calling-hero)
+
 További információért tekintse át a következő cikkeket:
 
 - Ismerkedjen meg [a hívó ügyféloldali kódtár használatával](../../quickstarts/voice-video-calling/calling-client-samples.md)
@@ -101,4 +108,6 @@ További információért tekintse át a következő cikkeket:
 
 ### <a name="additional-reading"></a>További információ
 
+- [Azure Communication GitHub](https://github.com/Azure/communication) – további példákat és információkat talál a hivatalos GitHub-oldalon
 - [Minták](./../overview.md) – további mintákat és példákat talál a minták áttekintése oldalon.
+- [Azure kommunikációs funkciók](https://docs.microsoft.com/azure/communication-services/concepts/voice-video-calling/calling-sdk-features) – további információ a Calling iOS SDK-ról –[Azure kommunikációs iOS Calling SDK](https://github.com/Azure/Communication/releases/)

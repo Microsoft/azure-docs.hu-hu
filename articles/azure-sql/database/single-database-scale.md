@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 02/22/2021
-ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ce8d4bf36524e3e7e7b3b8c974aa189fa000d845
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101658554"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773249"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis erőforrásainak skálázása az Azure SQL Database-ben
 
@@ -112,7 +112,7 @@ else {
 - Ha a [geo-replikálást](active-geo-replication-configure-portal.md) engedélyező adatbázis visszaminősítése engedélyezve van, az elsődleges adatbázisokat a kívánt szolgáltatási rétegre és számítási méretre kell visszaminősíteni a másodlagos adatbázis visszaminősítése előtt (általános útmutató a legjobb teljesítményhez). Egy másik kiadásra való visszalépéskor követelmény, hogy először az elsődleges adatbázist kell visszaértékelni.
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatási szintek esetében. Ha az **alapszintű szintre vált** , alacsonyabb biztonsági mentési megőrzési idő van. Lásd: [Azure SQL Database biztonsági mentések](automated-backups-overview.md).
 - Az adatbázis új tulajdonságai nem lesznek alkalmazva, amíg a módosítások be nem fejeződik.
-- Ha adatmásolásra van szükség az adatbázis skálázásához (lásd a [késést](#latency)) a szolgáltatási réteg módosításakor, a skálázási művelettel párhuzamos magas erőforrás-kihasználtság hosszú skálázási időt eredményezhet. A [gyorsított adatbázis-helyreállítással (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md)a hosszú ideig futó tranzakciók visszaállítása nem jelentős késési forrás, de a magas párhuzamos erőforrás-használat kevesebb számítási, tárolási és hálózati sávszélesség-erőforrást hagy a méretezéshez, különösen a kisebb számítási méretekhez.
+- Ha adatmásolásra van szükség az adatbázis skálázásához (lásd a [késést](#latency)) a szolgáltatási réteg módosításakor, a skálázási művelettel párhuzamos magas erőforrás-kihasználtság hosszú skálázási időt eredményezhet. A [gyorsított adatbázis-helyreállítással (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts)a hosszú ideig futó tranzakciók visszaállítása nem jelentős késési forrás, de a magas párhuzamos erőforrás-használat kevesebb számítási, tárolási és hálózati sávszélesség-erőforrást hagy a méretezéshez, különösen a kisebb számítási méretekhez.
 
 ## <a name="billing"></a>Számlázás
 

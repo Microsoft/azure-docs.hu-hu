@@ -11,18 +11,22 @@ ms.topic: conceptual
 ms.date: 03/18/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8f3e8d72db6679a766991160c303948557719bb9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1bd91ca63034f77553abb00f4fbf05431a45bd55
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104657739"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773385"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
 ## <a name="speech-sdk-1160-2021-march-release"></a>Speech SDK 1.16.0:2021 – márciusi kiadás
 
 **Megjegyzés**: a Windowson futó Speech SDK a visual Studio 2015, 2017 és 2019 rendszerhez készült Microsoft Visual C++ terjeszthető változattól függ. Töltse le [itt](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
+
+**Ismert problémák**
+
+**C++/c #/Java**: `DialogServiceConnector` az a nem használható `CustomCommandsConfig` egyéni parancsok alkalmazás elérésére, és ehelyett kapcsolódási hiba esetén. Ez az alkalmazás-azonosító manuális hozzáadásával végezhető el a kérelemben a következővel: `config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` . A `CustomCommandsConfig` következő kiadásban a rendszer visszaállítja a várt viselkedést.
 
 **Kiemelt összefoglalás**
 - Kisebb memória-és lemezterület-lábnyom az SDK hatékonyabbá tételéhez – ezúttal a hangsúly az Androidon.

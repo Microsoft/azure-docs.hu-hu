@@ -1,18 +1,14 @@
 ---
 title: A monitorozandó forgalom szabályozása
 description: Az érzékelők automatikusan elvégzik a nagy csomagok észlelését, valamint a forgalom és a hálózati eszközök, például az eszközök attribútumai és a hálózati működés információinak elhárítását. Számos eszköz áll rendelkezésre az egyes érzékelők által észlelt forgalom típusának szabályozására.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b80ef4a4a1fca7383da80fda6fdf42831913f2bd
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100522393"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784441"
 ---
 # <a name="control-what-traffic-is-monitored"></a>A monitorozandó forgalom szabályozása
 

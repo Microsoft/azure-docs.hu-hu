@@ -12,12 +12,12 @@ ms.date: 03/16/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a19babffa63667b0d2deb954d432421a2b7868b8
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 71eaccd615f5c3460e7b48b2e92d5f874c8de12e
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722140"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772110"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -58,7 +58,7 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
 >A kivont verziókkal kapcsolatos korábbi verziókról lásd: [Azure ad Connect verziójának kiadási előzményei archívuma](reference-connect-version-history-archive.md)
 
 
-## <a name="1623"></a>1.6.2.3
+## <a name="1624"></a>1.6.2.4
 
 >[!NOTE]
 > - Ez a kiadás csak letöltésre lesz elérhető.
@@ -66,7 +66,7 @@ Az [automatikus frissítéssel](how-to-connect-install-automatic-upgrade.md) kap
 > - Ez a kiadás alapértelmezés szerint a AADConnect-kiszolgálót az új v2 végpontra irányítja. Vegye figyelembe, hogy ez a végpont nem támogatott a német nemzeti felhőben, a kínai nemzeti felhőben és az Egyesült Államok kormányzati felhőben, és ha ezen a felhőben kell telepítenie ezt a verziót, a v1 végpontra való váltáshoz [ezeket az utasításokat](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2#rollback) kell követnie. Ha ezt nem teszi meg, a szinkronizálás hibákat eredményez.
 
 ### <a name="release-status"></a>Kiadás állapota
-3/17/2021: kiadva a letöltéshez
+3/19/2021: kiadva a letöltéshez
 
 ### <a name="functional-changes"></a>Funkcionális változások
 

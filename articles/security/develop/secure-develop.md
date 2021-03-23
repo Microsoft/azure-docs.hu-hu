@@ -4,7 +4,7 @@ description: Ez a cikk a webalkalmazás-projekt megvalósítási és ellenőrzé
 author: TerryLanfear
 manager: barbkess
 ms.author: terrylan
-ms.date: 06/12/2019
+ms.date: 03/21/2021
 ms.topic: article
 ms.service: security
 ms.subservice: security-develop
@@ -13,14 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 52c93bef4529f27ad38677f17209e7b48e997368
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 8edceb31a0cdde36c987076e91350116a4f81255
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102548444"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782401"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
+
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
@@ -29,6 +30,7 @@ Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 - Ellenőrzés
 
 ## <a name="implementation"></a>Implementálás
+
 A megvalósítási fázis középpontjában a korai megelőzéssel kapcsolatos ajánlott eljárások, valamint a kód biztonsági problémáinak észlelése és eltávolítása szükséges.
 Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeket nem kívánt használni. Ez segít megvédeni az alkalmazás véletlen vagy szándékos visszaélését.
 
@@ -89,7 +91,7 @@ Ez azt jelenti, hogy kevesebb ember fér hozzá a valós adataihoz, ami csökken
 
 A találgatásos és a szótáron alapuló találgatások elleni védelemhez erős jelszóházirend szükséges annak biztosításához, hogy a felhasználók összetett jelszót hozzanak létre (például 12 karakter hosszúságú, alfanumerikus és speciális karaktereket igénylő).
 
-A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](../../active-directory-b2c/user-flow-self-service-password-reset.md)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
+A Azure Active Directory B2C segítséget nyújt a jelszavas felügyelethez, az önkiszolgáló [jelszó-visszaállítást](../../active-directory-b2c/add-password-reset-policy.md), a [jelszó-visszaállítás kényszerítését](../../active-directory-b2c/force-password-reset.md)és egyebeket.
 
 Az alapértelmezett fiókok elleni támadások elleni védelem érdekében ellenőrizze, hogy az összes kulcs és jelszó cserélhető-e, és hogy az erőforrások telepítése után létrejöttek vagy lecseréltek-e.
 
@@ -108,6 +110,7 @@ A [Microsoft antimalware](../fundamentals/antimalware.md) olyan funkciókat tart
 Ne gyorsítótárazza a bizalmas tartalmat a böngészőben. A böngészők adatokat tárolhatnak a gyorsítótárazáshoz és az előzményekhez. Az Internet Explorer esetében a gyorsítótárazott fájlokat a rendszer egy olyan mappában tárolja, mint az ideiglenes Internet Files mappa. Ha ezek az oldalak ismét hivatkoznak rá, a böngésző megjeleníti a lapokat a gyorsítótárból. Ha a bizalmas adatok (a címe, a bankkártya adatai, a társadalombiztosítási szám, a Felhasználónév) megjelenik a felhasználó számára, előfordulhat, hogy az adatok a böngésző gyorsítótárában tárolódnak, és a böngésző gyorsítótárának vizsgálatával, vagy egyszerűen a böngésző **vissza** gombjának megnyomásával olvashatók be.
 
 ## <a name="verification"></a>Ellenőrzés
+
 Az ellenőrzési fázis átfogó erőfeszítéseket tesz annak biztosítására, hogy a kód megfeleljen az előző fázisokban létrehozott biztonsági és adatvédelmi alapelveinek.
 
 ### <a name="find-and-fix-vulnerabilities-in-your-application-dependencies"></a>A biztonsági rések megkeresése és javítása az alkalmazás függőségeiben
@@ -151,6 +154,7 @@ Győződjön meg arról, hogy az alkalmazás biztonságban van, mivel minden má
 Az Azure-hoz készült [Secure DevOps Kit](https://azsk.azurewebsites.net/index.html) (AzSK) az Azure platform több szolgáltatásának SVTs tartalmazza. Ezeket a SVTs rendszeresen futtatva biztosíthatja, hogy az Azure-előfizetése és az alkalmazást alkotó különböző erőforrások biztonságos állapotúak legyenek. Ezeket a teszteket a AzSK folyamatos integráció/folyamatos üzembe helyezés (CI/CD) bővítmények szolgáltatásával is automatizálhatja, amely a Visual Studio-bővítményként elérhetővé teszi a SVTs.
 
 ## <a name="next-steps"></a>Következő lépések
+
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások tervezésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások tervezése](secure-design.md)
