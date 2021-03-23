@@ -93,7 +93,7 @@
               displayName: 'custom, setting, properties'
               href: concept-baseline.md
             - name: Azure Security alapkonfiguráció a IoT készült Azure Defender számára
-              displayName: 'identity management, active directory, privileged access, data protection, asset management, incident response, posture, vulnerability, governance'
+              displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
               href: security-baseline.md
             - name: Defender-IoT-Micro-Agent klasszikus esemény összesítése
               displayName: 'twin, default, configuration, alerts'
@@ -114,10 +114,10 @@
               href: how-to-identify-required-appliances.md
               displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment, DL20, EL300, R340, enterprise, SMB, corporate'
             - name: A hálózat beállítása
-              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
+              displayName: 'passive, browsers, setup, deployment, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
               href: how-to-set-up-your-network.md
             - name: Szoftvertelepítés
-              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
+              displayName: 'setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate'
               href: how-to-install-software.md
         - name: Az érzékelők előkészítése
           items:
@@ -125,12 +125,12 @@
               displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Az érzékelő aktiválása és beállítása
-              displayName: 'onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
+              displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
               href: how-to-activate-and-set-up-your-sensor.md
         - name: A helyszíni felügyeleti konzol előkészítése
           items:
             - name: A helyszíni felügyeleti konzol aktiválása és beállítása
-              displayName: 'activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
+              displayName: 'deployment, activate, certificate, sign in, SSL, TLS, login, setup, initial, committed activation file'
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
             - name: Magas rendelkezésre állás beállítása
               displayName: 'primary, secondary, failover, failback fail, recovery'
@@ -166,19 +166,22 @@
               displayName: classification
             - name: Egy eszközkészlet érzékelői általi észlelések vizsgálata
               href: how-to-investigate-sensor-detections-in-a-device-inventory.md
-              displayName: 'classification, Windows registry, asset, device, firmware, import'
+              displayName: 'classification, Windows registry, device, firmware, import'
         - name: Az érzékelőeszköz-térkép használata
           href: how-to-work-with-the-sensor-device-map.md
           displayName: 'connections, Purdue, zoom, delete device'
         - name: Az érzékelők által észlelt riasztások kezelése
           items:
-            - name: Az érzékelő általi riasztás kezelése
+            - name: Az érzékelőkkel kapcsolatos riasztások
               href: how-to-work-with-alerts-on-your-sensor.md
-            - name: Riasztások megtekintése
+            - name: Riasztások szűrése és kezelése a riasztások lapról
               href: how-to-view-alerts.md
-            - name: A riasztások által biztosított információk megtekintése
+            - name: Tudnivalók a riasztási üzenetekről
               href: how-to-view-information-provided-in-alerts.md
-              displayName: PCAP
+              displayName: 'PCAP, metadata, alerts, link, device map,'
+            - name: A riasztás típusai és leírása
+              href: alert-engine-messages.md
+              displayName: 'alert, alerts, description, engine, anomaly, protocol, policy, malware, violation, operational'
             - name: A riasztási esemény kezelése
               href: how-to-manage-the-alert-event.md
               displayName: 'PCAP, acknowledge, learn, mute, policy'
@@ -191,6 +194,9 @@
         - name: 'A globális, regionális és helyi fenyegetések megismerése'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
           displayName: 'site, business unit, region, map'
+        - name: 'Néhány információs eszköz, riasztás és érzékelő/zóna'
+          href: how-to-view-information-per-zone.md
+          displayName: zones
         - name: Riasztások kezelése a helyszíni felügyeleti konzolon
           href: how-to-work-with-alerts-on-premises-management-console.md
         - name: Jelentések létrehozása

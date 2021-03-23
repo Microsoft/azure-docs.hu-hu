@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: d934d40cad5f4eec929cfd273b6e30ea291e48d5
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103010956"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104803602"
 ---
 Azure Key Vault a szolgáltatás két erőforrástípust támogat: a tárolókat és a felügyelt HSM. A következő két szakasz ismerteti a szolgáltatásra vonatkozó korlátozásokat.
 
@@ -50,6 +50,17 @@ Ez a szakasz az erőforrástípus szolgáltatási korlátait mutatja be `vaults`
 További információ a korlátozásoknak a határértékek túllépése esetén történő kezeléséről: [Azure Key Vault szabályozási útmutató](../articles/key-vault/general/overview-throttling.md).
 
 <sup>1</sup> az összes tranzakciótípus esetében az előfizetésre vonatkozó korlát a Key Vault-korlátnál ötször van. Például HSM – az egyes előfizetésekhez tartozó egyéb tranzakciók 10 másodpercen belül 5 000 tranzakcióra korlátozódnak.
+
+#### <a name="backup-keys-secrets-certificates"></a>Biztonsági mentési kulcsok, titkok, tanúsítványok
+
+A Key Vault-objektumok (például titkos kulcsok, kulcsok vagy tanúsítványok) biztonsági mentésekor a biztonsági mentési művelet titkosított blobként tölti le az objektumot. Ezt a blobot nem lehet visszafejteni az Azure-on kívül. Ennek a blobnak a felhasználható adatainak lekéréséhez vissza kell állítania a blobot egy, az Azure-előfizetésben és az Azure-földrajzban található kulcstartóban
+
+| Tranzakció típusa | A Key Vault-objektumok maximálisan engedélyezett verziói |
+| --- | --- |
+| Egyéni kulcs biztonsági mentése, titkos kód, certfiicate |500 |
+
+> [!NOTE]
+> Hiba történt a kulcs-, titkos vagy tanúsítvány-objektumnak a fentinél újabb verziókkal történő biztonsági mentésére tett kísérlet során. A kulcsok, titkos kódok vagy tanúsítványok korábbi verzióit nem lehet törölni. 
 
 #### <a name="azure-private-link-integration"></a>Azure Private link-integráció
 

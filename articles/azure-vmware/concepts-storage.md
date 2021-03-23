@@ -3,12 +3,12 @@ title: Fogalmak – tárolás
 description: Ismerje meg az Azure VMware-megoldás privát felhők legfontosabb tárolási funkcióit.
 ms.topic: conceptual
 ms.date: 03/13/2021
-ms.openlocfilehash: 2551b11ada8b6118fb7524d9fe36f8b4b568aca1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 83a4a52f8414e656b5bc688796db6e93a53d4d76
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103462473"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801621"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware megoldás tárolási fogalmak
 
@@ -44,7 +44,7 @@ Használhatja az Azure Storage-szolgáltatásokat a saját felhőben futó szám
 Most, hogy elvégezte az Azure VMware-megoldás tárolási fogalmait, érdemes megismernie az alábbiakat:
 
 - [Saját Felhőbeli identitással kapcsolatos fogalmak](concepts-identity.md).
-- [vSphere szerepköralapú hozzáférés-vezérlés az Azure VMware-megoldáshoz](concepts-role-based-access-control.md).
+- [vSphere szerepköralapú hozzáférés-vezérlés az Azure VMware-megoldáshoz](concepts-identity.md).
 - [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md).
 - [Azure NetApp Files Azure VMware-megoldással](netapp-files-with-azure-vmware-solution.md)
 

@@ -64,7 +64,7 @@
           href: reference/v3-0-reference.md
         - name: Nyelvek
           href: reference/v3-0-languages.md
-        - name: Régiónkénti rendelkezésre állás
+        - name: Regionális elérhetőség
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Kérelmekre vonatkozó korlátok
           href: request-limits.md
@@ -147,7 +147,7 @@
     - name: Referencia
       items:
         - name: Dokumentumok fordítása REST API
-          href: /rest/api/cognitiveservices/translator/translation
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Fordítói erőforrások
   items:
     - name: Támogatási lehetőségek

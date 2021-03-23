@@ -63,6 +63,8 @@
       href: how-to-compression.md
     - name: Privát hivatkozás engedélyezése
       items:
+        - name: Kapcsolódás belső terheléselosztóhoz
+          href: how-to-enable-private-link-internal-load-balancer.md
         - name: Csatlakozás egy tárfiókhoz
           href: how-to-enable-private-link-storage-account.md
         - name: Csatlakozás webalkalmazáshoz

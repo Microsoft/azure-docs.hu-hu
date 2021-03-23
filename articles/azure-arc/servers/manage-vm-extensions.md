@@ -1,14 +1,14 @@
 ---
 title: Virtuálisgép-bővítmények kezelése az Azure arc-kompatibilis kiszolgálókkal
 description: Az Azure arc-kompatibilis kiszolgálók kezelhetik azokat a virtuálisgép-bővítmények központi telepítését, amelyek a telepítés utáni konfigurálást és az automatizálási feladatokat nem Azure-beli virtuális gépekkel is rendelkeznek.
-ms.date: 03/01/2021
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 039c52ccbee03636da0f5acc0fc5844be9b646f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9af2700f036352188e646188485285482ee70c69
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687906"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799581"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Virtuálisgép-bővítmények kezelése az Azure Arc-kompatibilis kiszolgálókon
 
@@ -42,6 +42,9 @@ A VM-bővítmény funkció csak a [támogatott régiók](overview.md#supported-r
 Ebben a kiadásban a következő virtuálisgép-bővítményeket támogatjuk a Windows és Linux rendszerű gépeken.
 
 Ha többet szeretne megtudni az Azure-beli csatlakoztatott gépi ügynök csomagról és a bővítmény ügynök összetevőjéről, tekintse meg az [ügynök áttekintése](agent-overview.md#agent-component-details)című témakört.
+
+> [!NOTE]
+> A DSC virtuálisgép-bővítmény nemrégiben támogatott volt az ív használatára képes kiszolgálók esetében. Azt is javasoljuk, hogy az egyéni szkriptek bővítmény használatával felügyelje a kiszolgáló vagy a számítógép telepítés utáni konfigurációját.
 
 ### <a name="windows-extensions"></a>Windows-bővítmények
 

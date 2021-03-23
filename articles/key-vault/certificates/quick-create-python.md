@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2026b1721dbe05af1ecc52324d1dd0ebf2ec3d08
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934917"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802658"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Gyors útmutató: Azure Key Vault Certificate Library for Python
 
@@ -24,14 +24,14 @@ Ismerkedés az Azure Key Vault Certificate Pythonhoz készült ügyféloldali k�
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Python 2.7 + vagy 3.5.3 +](/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 + vagy 3.6 +](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 Ez a rövid útmutató azt feltételezi, hogy az [Azure CLI](/cli/azure/install-azure-cli) -t egy Linux-terminál ablakban futtatja.
 
 ## <a name="set-up-your-local-environment"></a>A helyi környezet beállítása
 
-Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](/java/api/overview/azure/identity-readme) segítségével
+Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatával hitelesíti a felhasználókat az Azure-szolgáltatásokban. A fejlesztők a Visual studiót vagy a Visual Studio Code-ot is használhatják a hívások hitelesítéséhez, további információért lásd: [az ügyfél hitelesítése az Azure Identity Client Library](/python/api/overview/azure/identity-readme) segítségével
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

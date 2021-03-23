@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 03/22/2021
 ms.author: chrande
-ms.openlocfilehash: 806904943f4e4a20734d595f835dc9450afdded5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffe11fafa6ba217572f9d12d40324a5201b62630
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100547277"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801689"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -26,11 +26,14 @@ Ez a cikk áttekintést nyújt a Azure Cosmos DB Gremlin API-ról, és ismerteti
 Azure Cosmos DB Gremlin API-ját nagy mértékben skálázható, felügyelt infrastruktúrával ötvözi a Graph adatbázis-algoritmusok előnyeit, hogy egyedi, rugalmas megoldást nyújtson a rugalmasság és a kapcsolatok hiánya miatti leggyakoribb adatproblémákra.
 
 > [!NOTE]
-> A [kiszolgáló nélküli kapacitás mód](serverless.md) mostantól elérhető a Azure Cosmos db Gremlin API-ban.
+> Azure Cosmos DB Graph Engine szorosan követi az Apache TinkerPop specifikációját. Van azonban néhány eltérés a Azure Cosmos DB vonatkozó implementációs részletekben. Az Apache TinkerPop által támogatott néhány funkció Azure Cosmos DBban nem érhető el, így többet tudhat meg a nem támogatott funkciókról: az [Apache TinkerPop való kompatibilitást](gremlin-support.md) ismertető cikk.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>A Azure Cosmos DB Gremlin API funkciói
- 
+
 Az Azure Cosmos DB egy teljes körűen felügyelt gráfadatbázis, amely globális elosztási, rugalmas tárhely- és teljesítményméretezési, automatikus indexelési és lekérdezési képességeket biztosít, valamint beállítható konzisztenciaszinteket és a TinkerPop szabvány támogatását.
+
+> [!NOTE]
+> A [kiszolgáló nélküli kapacitás mód](serverless.md) mostantól elérhető a Azure Cosmos db Gremlin API-ban.
 
 A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a következők:
 

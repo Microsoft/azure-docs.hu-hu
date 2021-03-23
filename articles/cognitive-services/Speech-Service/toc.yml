@@ -39,30 +39,30 @@
           href: migrate-v2-to-v3.md
         - name: Kiejtés kiértékelése
           href: how-to-pronunciation-assessment.md
+        - name: Testreszabás
+          items:
+            - name: Mi az a Custom Speech?
+              href: custom-speech-overview.md
+            - name: Modell tesztelése hangfájlok használatával a Speech Studióban
+              href: quickstarts/speech-studio-test-model.md
+            - name: Adatok előkészítése a Custom Speech szolgáltatáshoz
+              href: how-to-custom-speech-test-and-train.md
+            - name: Custom Speech-adatok vizsgálata
+              href: how-to-custom-speech-inspect-data.md
+            - name: A Custom Speech pontosságának értékelése és javítása
+              href: how-to-custom-speech-evaluate-data.md
+            - name: A Custom Speech-modellek betanítása és üzembe helyezése
+              href: how-to-custom-speech-train-model.md
+            - name: CI/CD a Custom Speechhez
+              href: how-to-custom-speech-continuous-integration-continuous-deployment.md
+            - name: Ember által címkézett átiratok létrehozása
+              href: how-to-custom-speech-human-labeled-transcriptions.md
+            - name: Modell és végpont életciklusa
+              href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Oktatóanyagok
       items:
         - name: Pontosság javítása bérlőmodellekkel
           href: tutorial-tenant-model.md
-    - name: Testreszabás
-      items:
-        - name: Mi az a Custom Speech?
-          href: custom-speech-overview.md
-        - name: Modell tesztelése hangfájlok használatával a Speech Studióban
-          href: quickstarts/speech-studio-test-model.md
-        - name: Adatok előkészítése a Custom Speech szolgáltatáshoz
-          href: how-to-custom-speech-test-and-train.md
-        - name: Custom Speech-adatok vizsgálata
-          href: how-to-custom-speech-inspect-data.md
-        - name: A Custom Speech pontosságának értékelése és javítása
-          href: how-to-custom-speech-evaluate-data.md
-        - name: A Custom Speech-modellek betanítása és üzembe helyezése
-          href: how-to-custom-speech-train-model.md
-        - name: CI/CD a Custom Speechhez
-          href: how-to-custom-speech-continuous-integration-continuous-deployment.md
-        - name: Ember által címkézett átiratok létrehozása
-          href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Modell és végpont életciklusa
-          href: how-to-custom-speech-model-and-endpoint-lifecycle.md
     - name: Referencia
       items:
         - name: C++
@@ -116,25 +116,25 @@
           href: long-audio-api.md
         - name: Arc-esemény beolvasása a LIP-Sync szolgáltatáshoz
           href: how-to-speech-synthesis-viseme.md
-    - name: Testreszabás
-      items:
-        - name: Custom Voice portál
+        - name: Testreszabás
           items:
-            - name: Mi az egyéni neurális hang?
-              href: custom-neural-voice.md
-            - name: Bevezetés a Custom Voice szolgáltatásba
-              displayName: 'custom voice, neural voice'
-              href: how-to-custom-voice.md
-            - name: Adatok előkészítése
-              href: how-to-custom-voice-prepare-data.md
-            - name: Custom Voice-modellek létrehozása és használata
-              href: how-to-custom-voice-create-voice.md
-            - name: Hangminták felvétele
-              href: record-custom-voice-samples.md
-        - name: Hanganyag létrehozása
-          items:
+            - name: Custom Voice portál
+              items:
+                - name: Mi az egyéni neurális hang?
+                  href: custom-neural-voice.md
+                - name: Bevezetés a Custom Voice szolgáltatásba
+                  displayName: 'custom voice, neural voice'
+                  href: how-to-custom-voice.md
+                - name: Adatok előkészítése
+                  href: how-to-custom-voice-prepare-data.md
+                - name: Custom Voice-modellek létrehozása és használata
+                  href: how-to-custom-voice-create-voice.md
+                - name: Hangminták felvétele
+                  href: record-custom-voice-samples.md
             - name: Hanganyag létrehozása
-              href: how-to-audio-content-creation.md
+              items:
+                - name: Hanganyag létrehozása
+                  href: how-to-audio-content-creation.md
     - name: Az MI felelős használata
       items:
         - name: Egyéni neurális hang

@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 1f9169d4f3f6361e557c41a4d612cf6c439257fb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 23c5d138463a52f4ff4c52b4a919b71a87b7fd6d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722514"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802879"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Cognitive Search indexelő használatával létesített kapcsolatok konfigurálása Azure-beli virtuális gépeken való SQL Server
 
@@ -87,9 +87,12 @@ A `AzureCognitiveSearch` [Service tag](../virtual-network/service-tags-overview.
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Az Azure Cognitive Search-portál IP-címeinek belefoglalása
 
-Ha az Azure Portalt használja az indexelő létrehozásához, az Azure Cognitive Search Portal Logic is hozzáférést igényel a SQL Azure virtuális géphez a létrehozás ideje alatt. Az Azure Cognitive Search-portál IP-címei a pingeléssel találhatók `stamp2.search.ext.azure.com` , amely a Traffic Manager tartománya.
+Ha a Azure Portal indexelő létrehozásához használja, a portál bejövő hozzáférését kell megadnia a SQL Azure virtuális géphez. A tűzfal egyik bejövő szabályához meg kell adnia a portál IP-címét.
 
-A különböző régiókban lévő fürtök csatlakoznak ehhez a Traffic Managerhez. A pingelés az IP-címet és a tartományát is visszaküldheti `stamp2.search.ext.azure.com` , de ha a szolgáltatás egy másik régióban található, akkor az IP-cím és a tartománynév eltérő lesz. A pingelésből visszaadott IP-cím a megfelelő Azure Portal a régiójában.
+A portál IP-címének lekéréséhez Pingelje a `stamp2.ext.search.windows.net` Traffic Manager tartományát. A kérelem időtúllépést eredményez, de az állapotjelző üzenetben az IP-cím látható. Például a "pinging azsyrie.northcentralus.cloudapp.azure.com [52.252.175.48]" üzenetben az IP-cím "52.252.175.48".
+
+> [!NOTE]
+> A különböző régiókban lévő fürtök különböző Traffic managerekhez kapcsolódnak. A tartománynévtől függetlenül a pingelésből visszaadott IP-cím az a megfelelő, amelyet a rendszer a régiójában lévő Azure Portalhoz tartozó bejövő tűzfalszabály definiálásakor használ.
 
 ## <a name="next-steps"></a>Következő lépések
 

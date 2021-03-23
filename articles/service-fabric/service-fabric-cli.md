@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "83681805"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802148"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -22,7 +22,7 @@ Az Azure Service Fabric parancssori felület (CLI) egy parancssori eszköz a Ser
 
 A telepítés előtt győződjön meg arról, hogy a környezetben a Python és a pip is telepítve van. További információkért olvassa el a [pip rövid útmutató dokumentációját](https://pip.pypa.io/en/latest/quickstart/) és a hivatalos [Python-telepítési dokumentációt](https://wiki.python.org/moin/BeginnersGuide/Download).
 
-A CLI a 2,7, 3,5, 3,6 és 3,7 Python-verziókat támogatja. A Python 3. x a javasolt verzió, mivel a Python 2,7 hamarosan megszűnik a támogatás vége.
+A CLI a 2,7-es és a 3.6-os Python-verziókat támogatja, és a Python 3. x használata javasolt.
 
 ### <a name="service-fabric-target-runtime"></a>A Service Fabric cél futtatókörnyezete
 

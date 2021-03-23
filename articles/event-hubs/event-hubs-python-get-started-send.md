@@ -3,12 +3,12 @@ title: Események küldése vagy fogadása az Azure Event Hubs a Python használ
 description: Ez a cikk egy olyan Python-alkalmazás létrehozásához nyújt útmutatást, amely az Azure-Event Hubs a legújabb Azure-eventhub csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: f05f546f19a7944c049b97ba18065159db6fab67
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea2270888830327506df5f43c18f8e798f61cc00
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97605564"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802777"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>Események küldése vagy fogadása az Event hubokból a Python használatával (Azure-eventhub)
 Ez a rövid útmutató azt ismerteti, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure-eventhub Python-** csomag használatával.
@@ -19,7 +19,7 @@ Ha még nem ismeri az Azure Event Hubsét, a rövid útmutató elvégzése előt
 A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
 - **Microsoft Azure előfizetés**. Az Azure-szolgáltatások, például az Azure Event Hubs használatához előfizetésre van szükség.  Ha még nem rendelkezik Azure-fiókkal, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/free/) , vagy a [fiók létrehozásakor](https://azure.microsoft.com)használhatja az MSDN-előfizetői előnyeit.
-- Python 2,7 vagy 3,5 vagy újabb, a PIP telepítve és frissítve.
+- Python 2,7 vagy 3,6 vagy újabb, a PIP telepítve és frissítve.
 - A Event Hubs Python-csomagja. 
 
     A csomag telepítéséhez futtassa ezt a parancsot egy olyan parancssorban, amely a Python elérési útjában van:

@@ -4,7 +4,7 @@ description: Ez a cikk a Microsoft biztonsági kód-elemzési bővítmény össz
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 11/29/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6985107dd8f13e26875cf5ea7428b3280d00cea1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a41a788a84770201996fd369d9b47031674afee3
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85367257"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799547"
 ---
 # <a name="yaml-configuration-options-to-customize-the-build-tasks"></a>YAML konfigurációs beállítások a felépítési feladatok testreszabásához
+
+> [!Note]
+> 2022. március 1-től érvényes a Microsoft biztonsági kód elemzése (MSCA) bővítmény kivonásra kerül. A meglévő MSCA-ügyfelek a 2022. március 1-től megőrzik a MSCA való hozzáférésüket. Az Azure DevOps alternatív lehetőségeiért tekintse meg a [OWASP forráskódját elemző eszközöket](https://owasp.org/www-community/Source_Code_Analysis_Tools) . Azon ügyfelek számára, akik a GitHubra kívánnak áttelepítést végezni, megnézheti a [GitHub fokozott biztonságát](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security).
 
 Ez a cikk felsorolja az egyes összeállítási feladatokban elérhető összes YAML-konfigurációs beállítást. A cikk a biztonsági kód elemzési eszközeinek feladataival kezdődik. A feldolgozás utáni feladatokkal végződik.
 

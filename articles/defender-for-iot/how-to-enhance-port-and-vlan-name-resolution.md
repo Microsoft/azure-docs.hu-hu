@@ -1,20 +1,16 @@
 ---
 title: A port- és VLAN-névfeloldás fejlesztése
 description: A portok és VLAN-nevek testreszabása az érzékelőkön az eszközök feloldása érdekében.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de6fbe70d5a5359ad4e4c276642b9b9ed0cef00f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98803575"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784169"
 ---
-# <a name="enhance-port-and-vlan-name-resolution"></a>A port- és VLAN-névfeloldás fejlesztése
+# <a name="enhance-port-vlan-and-os-resolution"></a>A port, a VLAN és az operációs rendszer felbontásának növelése
 
 A portok és VLAN-nevek testreszabhatók az érzékelőkön az eszközök feloldása érdekében.
 
@@ -72,7 +68,7 @@ A VLAN-nevek legfeljebb 50 ASCII karakterből állhatnak.
 > A VLAN-nevek nincsenek szinkronizálva az érzékelő és a felügyeleti konzol között. A nevet a felügyeleti konzolon is meg kell határoznia.  
 A Cisco kapcsolók esetében adja hozzá a következő sort a span konfigurációhoz: `monitor session 1 destination interface XX/XX encapsulation dot1q` . Ebben a parancsban az *XX/XX* a port neve és száma.
 
-VLAN-ok konfigurálása:
+VLAN-nevek konfigurálása:
 
 1. Az oldalsó menüben válassza a **Rendszerbeállítások** elemet.
 
@@ -81,6 +77,21 @@ VLAN-ok konfigurálása:
     :::image type="content" source="media/how-to-enrich-asset-information/edit-vlan.png" alt-text="Használja a rendszerbeállításokat a VLAN-ok szerkesztéséhez.":::
 
 3. Adjon hozzá egy egyedi nevet az egyes VLAN-AZONOSÍTÓk mellett.
+
+## <a name="improve-device-operating-system-classification-data-enhancement"></a>Az eszköz operációs rendszer besorolásának javítása: adatfejlesztés
+
+Az érzékelők folyamatosan automatikusan észlelik az új eszközöket, valamint a korábban felderített eszközök változásait, például az operációs rendszer típusát.
+
+Bizonyos körülmények között ütközések észlelhetők a felderített operációs rendszerekben. Ez például akkor fordulhat elő, ha olyan operációsrendszer-verzióval rendelkezik, amely asztali vagy kiszolgálói rendszerekre hivatkozik. Ha ez történik, értesítést fog kapni a választható operációs rendszerek besorolásával kapcsolatban.
+
+:::image type="content" source="media/how-to-enrich-asset-information/enhance-data-screen.png" alt-text="Javítsa az adatvédelmet.":::
+
+Vizsgálja meg az ajánlásokat az operációs rendszer besorolásának gazdagítása érdekében. Ez a besorolás megjelenik az eszközök leltárában, az adatbányászati jelentésekben és más megjelenítésekben. Az információk naprakészen hagyása javíthatja a riasztások, fenyegetések és kockázatelemzési jelentések pontosságát.
+
+Az operációs rendszerre vonatkozó javaslatok elérése:
+
+1. Válassza a **Rendszerbeállítások** lehetőséget.
+1. Válassza **az Adatfejlesztés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

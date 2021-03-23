@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 954f4edcd10d701d00d9cd23280aaac7c287992d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91997467"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800873"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>Gyors útmutató: Python-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -22,7 +22,7 @@ Ebben a rövid útmutatóban az Azure app Configuration használatával központ
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- Python 2,7, vagy 3,5 vagy újabb – a Python Windowson való beállításával kapcsolatos információkért tekintse meg a [Python a Windows-dokumentációban]( https://docs.microsoft.com/windows/python/) című témakört.
+- Python 2,7, vagy 3,6 vagy újabb – a Python Windowson való beállításával kapcsolatos információkért tekintse meg a [Python a Windows-dokumentációban]( https://docs.microsoft.com/windows/python/) című témakört.
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 

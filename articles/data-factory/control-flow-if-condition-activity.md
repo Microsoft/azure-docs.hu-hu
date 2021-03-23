@@ -3,16 +3,16 @@ title: Ha a feltétel tevékenysége Azure Data Factory
 description: Az IF Condition tevékenység lehetővé teszi, hogy egy feltétel alapján vezérelje a feldolgozási folyamatot.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c0dbda298cf808dd3caa7a767e0ec5e847c92108
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cd745f90598666e1fc5c849de335c81a2380d99f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100385523"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786226"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -63,11 +63,11 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | Az IF-Condition tevékenység neve. | Sztring | Yes
-típus | **IfCondition** értékre kell állítani | Sztring | Yes
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Yes
-ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Yes
-ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Yes
+name | Az IF-Condition tevékenység neve. | Sztring | Igen
+típus | **IfCondition** értékre kell állítani | Sztring | Igen
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
+ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Igen
+ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Igen
 
 ## <a name="example"></a>Példa
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 03/22/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 11d9b38d71d428a3c6c829b508318389338f5a15
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102506701"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800346"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
@@ -23,7 +23,7 @@ A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérh
 
 Az Azure Storage támogatja a fiókok feladatátvételét a földrajzilag redundáns Storage-fiókok esetében. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik. A feladatátvétel frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges végpont írását.
 
-A fiókok feladatátvétele az általános célú v1, az általános célú v2 és a Blob Storage típusú fiókok esetén érhető el az Azure Resource Manager-környezetekben. A fiók feladatátvétele az összes nyilvános régióban támogatott, de jelenleg nem érhető el szuverén vagy országos felhőkben.
+A fiókok feladatátvétele az általános célú v1, az általános célú v2 és a Blob Storage típusú fiókok esetén érhető el az Azure Resource Manager-környezetekben. A fiók feladatátvétele az összes nyilvános régióban támogatott, de jelenleg nem érhető el szuverén vagy országos felhőkben. A fiók feladatátvétele nem támogatott olyan Storage-fiókok esetében, amelyeken engedélyezve van a hierarchikus névtér.
 
 Ez a cikk a fiók feladatátvételével kapcsolatos fogalmakat és folyamatokat ismerteti, és bemutatja, hogyan készítheti elő a Storage-fiókját a lehető legkevesebb vásárlói hatású helyreállításra. A fiók feladatátvételének elindításáról a Azure Portal vagy a PowerShellben tekintse meg a [fiók feladatátvételének kezdeményezése](storage-initiate-account-failover.md)című témakört.
 
@@ -67,6 +67,8 @@ A Microsoft azt is javasolja, hogy tervezze meg az alkalmazást, hogy előkész�
 ## <a name="understand-the-account-failover-process"></a>A fiók feladatátvételi folyamatának megismerése
 
 Az ügyfél által felügyelt fiók feladatátvétele lehetővé teszi, hogy a teljes Storage-fiókját a másodlagos régióba is felhasználja, ha az elsődleges elérhetetlenné válik bármilyen okból. Ha a feladatátvételt a másodlagos régióra kényszeríti, az ügyfelek megkezdhetik az adatírást a másodlagos végpontnak a feladatátvétel befejeződése után. A feladatátvétel általában körülbelül egy órát vesz igénybe.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ### <a name="how-an-account-failover-works"></a>Hogyan működik a fiók feladatátvétele
 

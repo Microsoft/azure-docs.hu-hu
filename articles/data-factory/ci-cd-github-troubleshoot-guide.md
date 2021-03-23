@@ -1,5 +1,5 @@
 ---
-title: A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben
+title: A CI-CD, az Azure DevOps és a GitHub hibáinak elhárítása az ADF-ben
 description: A CI-CD-vel kapcsolatos hibák elhárításához használja az ADF különböző módszereit.
 author: ssabat
 ms.author: susabat
@@ -7,14 +7,14 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 03/12/2021
-ms.openlocfilehash: 4be015b1a8ba4b6fc6ea3acc74318f9a8b298e8e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103418096"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802033"
 ---
-# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
+# <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD, az Azure DevOps és a GitHub hibáinak elhárítása az ADF-ben 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -101,8 +101,7 @@ Amikor a Data Factory módosításokat próbál közzétenni, a következő hiba
         "details": null
     }
 `
-
-#### <a name="symptom"></a>Hibajelenség
+### <a name="cause"></a>Ok
 
 Leválasztotta a git-konfigurációt, és ismét beállította az "erőforrások importálása" jelzőt, amely a Data Factory "szinkron" értékre állítja. Ez azt jelenti, hogy a közzététel nem módosul.
 
@@ -150,11 +149,7 @@ Felhasználóként létrehozott egy felhasználói szerepkört, és nem rendelke
 
 A probléma megoldásához hozzá kell adnia a következő engedélyeket a szerepkörhöz: *Microsoft. DataFactory/Factorys/queryFeaturesValue/Action*. Ezt az engedélyt alapértelmezés szerint a "Data Factory közreműködő" szerepkörbe kell foglalni.
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>Automatikus közzététel CI/CD-re a közzététel gomb megnyomása nélkül  
-
-#### <a name="issue"></a>Probléma
-
-A manuális közzététel az ADF-portálon kattintson az automatikus CI/CD-művelet lehetőségre.
+###  <a name="cannot-automate-publishing-for-cicd"></a>Nem automatizálható a CI/CD közzétételének automatizálása 
 
 #### <a name="cause"></a>Ok
 
@@ -178,15 +173,14 @@ Azure Resource Manager korlátozza a sablon méretének 4MB nál. Korlátozza a 
 
 Kis és közepes mérető megoldások esetében könnyebb egyetlen sablont megérteni és karbantartani. Így az összes erőforrás és értéke egyetlen fájlban látható. Speciális felhasználási helyzetekben a megoldás csatolt sablonokkal bontható fel a kívánt összetevőkre. A [csatolt és beágyazott sablonok használata esetén](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)kövesse az ajánlott eljárásokat.
 
-### <a name="cannot-connect-to-git-enterprise-cloud"></a>Nem lehet csatlakozni a GIT vállalati felhőhöz 
+### <a name="cannot-connect-to-git-enterprise"></a>Nem lehet csatlakozni a GIT Enterprise-hoz  
 
 ##### <a name="issue"></a>Probléma
 
-Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT vállalati felhőhöz. A következőhöz hasonló hiba látható: **422 – feldolgozható entitás.**
+Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT Enterprise-hoz. A következőhöz hasonló hiba látható: **422 – feldolgozható entitás.**
 
 #### <a name="cause"></a>Ok
 
-* A git Enterprise szolgáltatást használja a Prem-kiszolgálón. 
 * Nem konfigurálta a OAuth az ADF-hez. 
 * Az URL-cím helytelenül van konfigurálva.
 
@@ -194,7 +188,7 @@ Engedélyekkel kapcsolatos problémák miatt nem lehet csatlakozni a GIT vállal
 
 Először a OAuth-hozzáférést kell megadnia az ADF-hez. Ezután a GIT Enterprise-hoz való kapcsolódáshoz a helyes URL-címet kell használnia. A konfigurációt az ügyfél Szervezete (ke) t kell beállítani. Az ADF például először a. *https://hostname/api/v3/search/repositories?q=user%3 <customer credential> ...* időpontban próbálkozik, és sikertelen lesz. Ezután megpróbálja *https://hostname/api/v3/orgs/ <org> / <repo> ...* és sikeres lesz. 
  
-### <a name="recover-from-a-deleted-data-factory"></a>Helyreállítás a törölt adatok gyárból
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>Nem lehet helyreállítani a törölt adatok gyárból
 
 #### <a name="issue"></a>Probléma
 Az ügyfél törölte az adatgyárat vagy a Data Factory tartalmazó erőforráscsoportot. Szeretné tudni, hogyan kell visszaállítani a törölt adatgyárat.
@@ -211,7 +205,7 @@ A következő lépésekkel állíthatja helyre a törölt Data Factory, amely a 
 
  * Hozzon létre egy új Azure Data Factory.
 
- * Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a meglévő Data Factory erőforrásokat importálja a kiválasztott tárházba, és válassza az új ág lehetőséget.
+ * Konfigurálja újra a git-t ugyanazzal a beállításokkal, de győződjön meg arról, hogy meglévő Data Factory erőforrásokat importál a kiválasztott tárházba, és válassza az új ág lehetőséget.
 
  * Hozzon létre egy lekéréses kérelmet az együttműködési ág változásainak egyesítéséhez és közzétételéhez.
 

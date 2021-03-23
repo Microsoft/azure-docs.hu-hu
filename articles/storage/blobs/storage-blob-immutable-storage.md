@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 03/16/2021
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 8d04d1bd758480ec33a7480e4045d28ed750f22e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d1d77e508e627520878dcc27b5a643473d11dd1d
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102430938"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800720"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Az üzlet szempontjából létfontosságú blobadatok tárolása nem módosítható tárolással
 
@@ -63,13 +63,15 @@ Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával
 ## <a name="time-based-retention-policies"></a>Időalapú adatmegőrzési szabályzatok
 
 > [!IMPORTANT]
-> Az időalapú adatmegőrzési szabályzatot *zárolni* kell ahhoz, hogy a blob megfelelő, megváltoztathatatlan (írási és törlési) állapotban legyen a SEC 17a-4 (f) és más szabályozási megfelelőség esetében. Javasoljuk, hogy a szabályzatot ésszerű időn belül, általában 24 óránál rövidebb ideig zárolja. Az alkalmazott időalapú adatmegőrzési szabályzat kezdeti állapota *zárolva* van, így a zárolása előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. Míg a *zárolt* állapot módosíthatatlansági védelmet biztosít, a rövid távú szolgáltatásokra vonatkozó kísérletektől eltérő célra nem ajánlott a *feloldva* állapotot használni. 
+> Az időalapú adatmegőrzési szabályzatot *zárolni* kell ahhoz, hogy a blob megfelelő, megváltoztathatatlan (írási és törlési) állapotban legyen a SEC 17a-4 (f) és más szabályozási megfelelőség esetében. A Microsoft azt javasolja, hogy a szabályzatot ésszerű időn belül, általában 24 óránál rövidebb ideig zárolja. Az alkalmazott időalapú adatmegőrzési szabályzat kezdeti állapota *zárolva* van, így a zárolása előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. Míg a *zárolt* állapot módosíthatatlansági védelmet biztosít, a *kinyitott* állapotot a rövid távú szolgáltatásokra vonatkozó kísérletektől eltérő célra használva nem ajánlott.
+>
+> Az időalapú adatmegőrzési szabályzat zárolása után a szabályzat nem távolítható el, és a tényleges megőrzési időtartam legfeljebb öt nő lehet. A megőrzési időszak nem csökkenthető.
 
 Ha egy tárolón időalapú adatmegőrzési szabályt alkalmaz, a tárolóban lévő összes blob a *tényleges* megőrzési időtartamig nem változtatható állapotban marad. A Blobok tényleges megőrzési időtartama megegyezik a blob **létrehozási ideje** és a felhasználó által megadott megőrzési időtartam közötti különbséggel. Mivel a felhasználóknak lehetőségük van meghosszabbítani az adatmegőrzési időtartamot, a nem módosítható tárolás a felhasználó által legutóbb megadott adatmegőrzési időtartamot fogja használni a tényleges megőrzési időtartam kiszámolásakor.
 
 Tegyük fel például, hogy egy felhasználó egy időalapú adatmegőrzési szabályzatot hoz létre öt év megőrzési időtartammal. A tárolóban meglévő blob, a _testblob1_ egy éve jött létre. tehát a _testblob1_ érvényes megőrzési ideje négy év. Amikor új blobot töltenek fel a tárolóba, a _testblob2_ érvényes megőrzési idő a létrehozástól számított öt év a _testblob2_.
 
-A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások tesztelésére ajánlott, és a házirendet zárolni kell ahhoz, hogy meg lehessen felelni a SEC 17a-4 (f) és más szabályozási megfelelőségnek. Az időalapú adatmegőrzési szabályzat zárolása után a szabályzat nem távolítható el, és a tényleges megőrzési időtartam legfeljebb öt nő lehet.
+A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások tesztelésére ajánlott, és a házirendet zárolni kell ahhoz, hogy meg lehessen felelni a SEC 17a-4 (f) és más szabályozási megfelelőségnek.
 
 Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 

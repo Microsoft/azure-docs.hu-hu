@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: a052364b06ac1b9b30cef76db10a79e8ed85b9a3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c707a6522d037ba3926b55579e501eadd2764416
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89470153"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798272"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
 
@@ -89,7 +89,7 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
-|Python     |2,7 és 3,5 (alapértelmezett)|
+|Python     |2,7 és 3,7 (alapértelmezett)|
 
 ## <a name="next-steps"></a>Következő lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>

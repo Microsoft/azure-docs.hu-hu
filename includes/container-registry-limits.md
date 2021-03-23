@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b4701260a7d8da030f9f3019060aaa83e7a3a483
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98052827"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803377"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|
@@ -30,6 +30,7 @@ ms.locfileid: "98052827"
 | Tartalommegbízhatóság | N.A. | N.A. | [Támogatott][content-trust] |
 | Privát kapcsolat privát végpontokkal | N.A. | N.A. | [Támogatott][plink] |
 | &bull; Privát végpontok | N.A. | N.A. | 10 |
+| Nyilvános IP-hálózati szabályok | N.A. | N.A. | 100 |
 | Szolgáltatási végpont VNet elérése | N.A. | N.A. | [Előnézet][vnet] |
 | Felhasználó által kezelt kulcsok | N.A. | N.A. | [Támogatott][cmk] |
 | Tárház – hatókörön belüli engedélyek | N.A. | N.A. | [Előnézet][token]|

@@ -7,18 +7,20 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2021
+ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 74813fabec4d5fe43cd158bb4aa359c2a3b0188a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99988717"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802896"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>BLOB-indexelés konfigurálása a Cognitive Searchban
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat blob-indexet szöveges dokumentumok indexeléséhez (például PDF-fájlok, Microsoft Office dokumentumok és egyebek) az Azure Cognitive Searchban. Ha nem ismeri az indexelő fogalmait, kezdje az [Azure Cognitive Search indexelő](search-indexer-overview.md) szolgáltatásával, és [hozzon létre egy keresési indexet](search-howto-create-indexers.md) a blob-indexelés előtt.
+A blob-indexelő az Azure Blob Storage-ból származó tartalmak Cognitive Search indexbe való betöltésére szolgál. A blob-indexeket gyakran használják a [mesterséges intelligenciához](cognitive-search-concept-intro.md), ahol a csatolt [készségkészlet](cognitive-search-working-with-skillsets.md) képeket és természetes nyelvi feldolgozást tesz elérhetővé kereshető tartalmak létrehozásához. A blob-indexeket azonban AI-bővítés nélkül is használhatja a szöveges dokumentumokból, például PDF-fájlokból, Microsoft Office dokumentumokból és fájlformátumokból származó tartalmak betöltéséhez.
+
+Ebből a cikkből megtudhatja, hogyan konfigurálhat blob-indexelő mindkét forgatókönyvhöz. Ha nem ismeri az indexelő fogalmait, kezdje az [Azure Cognitive Search indexelő](search-indexer-overview.md) szolgáltatásával, és [hozzon létre egy keresési indexet](search-howto-create-indexers.md) a blob-indexelés előtt.
 
 <a name="SupportedFormats"></a>
 
@@ -30,7 +32,7 @@ Az Azure Cognitive Search blob indexelő a következő dokumentum-formátumokbó
 
 ## <a name="data-source-definitions"></a>Adatforrás-definíciók
 
-A blob indexelő és bármely más indexelő közötti különbség az indexelő számára hozzárendelt adatforrás-definíció. Az adatforrás minden olyan tulajdonságot beágyaz, amely megadja az indexelni kívánt tartalom típusát, a kapcsolódást és a helyét.
+A blob indexelő és bármely más indexelő közötti elsődleges különbség az indexelő számára hozzárendelt adatforrás-definíció. Az adatforrás-definíció meghatározza az adatforrás típusát ("típus": "azureblob"), valamint a hitelesítéshez és az indexelni kívánt tartalomhoz való kapcsolódáshoz szükséges egyéb tulajdonságokat.
 
 A blob-adatforrás definíciója az alábbi példához hasonlóan néz ki:
 
@@ -72,7 +74,7 @@ Az SAS-nek a tárolóban szerepelnie kell a listához és az olvasáshoz szüks�
 
 ## <a name="index-definitions"></a>Index-definíciók
 
-Az index meghatározza a dokumentumok, attribútumok és más, a keresési élményt formáló szerkezetek mezőit. Az alábbi példa egy egyszerű indexet hoz létre a [create index (REST API)](/rest/api/searchservice/create-index)használatával. 
+Az index meghatározza a dokumentumok, attribútumok és más, a keresési élményt formáló szerkezetek mezőit. Az összes indexelő megköveteli a keresési index definíciójának megadását célként. Az alábbi példa egy egyszerű indexet hoz létre a [create index (REST API)](/rest/api/searchservice/create-index)használatával. 
 
 ```http
 POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -90,7 +92,7 @@ api-key: [admin key]
 
 Az index-definíciók a gyűjtemény egy mezőjét igénylik a `"fields"` dokumentum kulcsaként. Az index definícióinak tartalmazniuk kell a tartalom és a metaadatok mezőit is.
 
-A **`content`** blobokból kinyert szöveg tárolására szolgáló mező. A mező definíciója a fentiekhez hasonlóan fog kinézni. Ezt a nevet nem kell használnia, de ezzel lehetővé teszi az implicit mezők leképezésének előnyeit. A blob-indexelő elküldheti a blob tartalmát az index Content EDM. String mezőjébe, nincs szükség mező-hozzárendelésre.
+A **`content`** mezők közösek a blob-tartalmakhoz. A blobokból kinyert szöveget tartalmazza. A mező definíciója a fentiekhez hasonlóan fog kinézni. Ezt a nevet nem kell használnia, de ezzel lehetővé teszi az implicit mezők leképezésének előnyeit. A blob-indexelő elküldheti a blob tartalmát az index Content EDM. String mezőjébe, és nincs szükség mező-hozzárendelésre.
 
 Hozzáadhat mezőket is az indexben használni kívánt blob-metaadatokhoz. Az indexelő képes beolvasni az egyéni metaadat-tulajdonságokat, a [szabványos metaadat](#indexing-blob-metadata) -tulajdonságokat és a [tartalom-specifikus metaadatok](search-blob-metadata-properties.md) tulajdonságait. Az indexekről további információt az [index létrehozása](search-what-is-an-index.md)című témakörben talál.
 

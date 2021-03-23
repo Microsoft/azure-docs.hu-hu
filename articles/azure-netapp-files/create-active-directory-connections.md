@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ccc88cabfa81e2d911546fae776f581885ed8fa6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102183879"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801254"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Active Directory kapcsolatok létrehozása és kezelése Azure NetApp Files
 
@@ -206,6 +206,18 @@ Ez a beállítás a **NetApp-fiókhoz** tartozó **Active Directory-kapcsolatokb
         ```
         
         Használhatja az [Azure CLI-parancsokat](/cli/azure/feature) is, `az feature register` és `az feature show` regisztrálhatja a funkciót, és megjelenítheti a regisztrációs állapotot. 
+
+     * **Biztonsági jogosultsággal rendelkező felhasználók**   <!-- SMB CA share feature -->   
+        Biztonsági jogosultságot () biztosíthat `SeSecurityPrivilege` olyan felhasználók számára, akik emelt szintű jogosultságot igényelnek a Azure NetApp Files kötetek eléréséhez. A megadott felhasználói fiókok elvégezhetnek bizonyos műveleteket olyan Azure NetApp Files SMB-megosztásokon, amelyek a tartományi felhasználók számára alapértelmezés szerint nem rendelt biztonsági jogosultságot igényelnek.   
+
+        A SQL Server bizonyos helyzetekben történő telepítéséhez használt felhasználói fiókoknak például emelt szintű biztonsági jogosultsággal kell rendelkezniük. Ha nem rendszergazdai (tartományi) fiókot használ a SQL Server telepítéséhez, és a fiók nem rendelkezik a hozzárendelt biztonsági jogosultsággal, akkor biztonsági jogosultságot kell adnia a fiókhoz.  
+
+        > [!IMPORTANT]
+        > A SQL Server telepítéséhez használt tartományi fióknak már léteznie kell a **biztonsági jogosultságok felhasználói** mezőhöz való hozzáadása előtt. Ha a SQL Server-telepítő fiókját hozzáadja a **biztonsági jogosultságok felhasználóihoz**, a Azure NetApp Files szolgáltatás a tartományvezérlővel kapcsolatba léphet a fiókkal. Előfordulhat, hogy a parancs meghiúsul, ha nem tud kapcsolatba lépni a tartományvezérlővel.  
+
+        További információ a `SeSecurityPrivilege` és a SQL Serverról: [SQL Server telepítés sikertelen, ha a beállítási fiók nem rendelkezik bizonyos felhasználói jogosultságokkal](/troubleshoot/sql/install/installation-fails-if-remove-user-right).
+
+        ![A Active Directory kapcsolatok ablakának biztonsági jogosultságokat tartalmazó felhasználói mezőjét bemutató képernyőkép.](../media/azure-netapp-files/security-privilege-users.png) 
 
      * **Biztonsági mentési szabályzat felhasználói**  
         Olyan további fiókokat is hozzáadhat, amelyekhez emelt szintű jogosultságok szükségesek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál.  

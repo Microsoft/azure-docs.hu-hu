@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: f45d5710f6feb8af2347ca298e07e8a4870d3d4f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470462"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798527"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Az összesített névtér beállítása
 
@@ -30,6 +30,8 @@ Rendezheti a táblázat oszlopait, hogy jobban megértse a gyorsítótár össze
 ## <a name="add-or-edit-namespace-paths"></a>Névtér elérési útjának hozzáadása vagy szerkesztése
 
 Legalább egy névtér elérési útját létre kell hoznia ahhoz, hogy az ügyfelek hozzáférhessenek a tárolási célhoz. (Az ügyfelek hozzáféréséről [Az Azure HPC cache csatlakoztatása](hpc-cache-mount.md) című cikkből tájékozódhat.)
+
+Ha nemrég hozzáadott egy tárolási célt, vagy testreszabott egy hozzáférési szabályzatot, akkor a névtér elérési útjának létrehozása előtt egy-két percet is igénybe vehet.
 
 ### <a name="blob-namespace-paths"></a>BLOB-névtér elérési útjai
 

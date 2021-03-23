@@ -12,12 +12,12 @@ ms.date: 01/4/2020
 ms.author: metang
 ms.custom: cog-serv-seo-aug-2020
 keywords: olvasók, nyelvi tanulók, képek megjelenítése, az olvasás javítása, tartalom olvasása, fordítás
-ms.openlocfilehash: 6affc0a2b94c7ea950a8995981d63470722d981f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1911d3ce62434f1dc24966798e9ace259ae072bc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599527"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801570"
 ---
 # <a name="what-is-immersive-reader"></a>Mi az a Modern olvasó?
 
@@ -25,8 +25,8 @@ A teljes körűen kialakított [olvasó](https://www.onenote.com/learningtools) 
 
 Ez a dokumentáció a következő típusú cikkeket tartalmazza:  
 
-* **[A gyors](quickstarts/client-libraries.md)** útmutatók részletes útmutatást biztosítanak, amelyekkel hívásokat indíthat a szolgáltatásba, és lekérheti az eredményeket.
-* A **[útmutatók](how-to-create-immersive-reader.md)** útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* **[A gyors](quickstarts/client-libraries.md)** üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.
+* A **[útmutatók](how-to-create-immersive-reader.md)** útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.
 
 ## <a name="use-immersive-reader-to-improve-reading-accessibility"></a>A kisegítő lehetőségek kihasználása az olvasóval 
 

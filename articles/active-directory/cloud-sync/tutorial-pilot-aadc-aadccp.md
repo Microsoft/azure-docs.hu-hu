@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3395afbe95b2a7f35893a0ce7f60c3871597acd0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50eac71203a94ffb5c7dddc8995b56980c3f8815
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98614612"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798714"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Kísérleti felhő szinkronizálása meglévő szinkronizált AD-erdőhöz 
 
@@ -208,20 +208,7 @@ Ha a próbaüzem nem a várt módon működik, térjen vissza a Azure AD Connect
 1.  A Azure Portal kiépítési konfigurációjának letiltása. 
 2.  Tiltsa le a Felhőbeli kiépítés során létrehozott összes egyéni szinkronizálási szabályt a szinkronizálási szabály szerkesztő eszközének használatával. A letiltás esetén az összes összekötőn teljes szinkronizálást kell okozni.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Azure AD Connect szinkronizálás konfigurálása a kísérleti szervezeti egység kizárásához
-Miután meggyőződött róla, hogy a kísérleti szervezeti egységből származó felhasználókat sikeresen felügyelte a Cloud Sync, a Azure AD Connect újrakonfigurálásával kizárhatja a fentebb létrehozott kísérleti szervezeti egységet.  A felhő-kiépítési ügynök kezeli a felhasználók szinkronizálását a jövőben.  Az alábbi lépéseket követve Azure AD Connect hatókörét.
 
- 1. A Azure AD Connect rendszert futtató kiszolgálón kattintson duplán a Azure AD Connect ikonra.
- 2. Kattintson a **Konfigurálás** elemre.
- 3. Válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a Tovább gombra.
- 4. Jelentkezzen be az Azure AD-be, és kattintson a **tovább** gombra.
- 5. A **címtárak összekapcsolása** képernyőn kattintson a **tovább** gombra.
- 6. A **tartomány és szervezeti egység szűrése** képernyőn válassza a **kiválasztott tartományok és szervezeti egységek szinkronizálása** lehetőséget.
- 7. Bontsa ki a tartományt, és **törölje** a **processzorok** szervezeti egységét.  Kattintson a **Tovább** gombra.
-![hatókör](media/tutorial-existing-forest/scope-1.png)</br>
- 9. A **választható szolgáltatások** képernyőn kattintson a **tovább** gombra.
- 10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás** elemre.
- 11. A befejezést követően kattintson a **Kilépés** gombra. 
 
 ## <a name="next-steps"></a>Következő lépések 
 

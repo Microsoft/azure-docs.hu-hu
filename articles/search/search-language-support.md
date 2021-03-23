@@ -1,70 +1,148 @@
 ---
 title: Többnyelvű indexelés a nem angol nyelvű keresési lekérdezésekhez
 titleSuffix: Azure Cognitive Search
-description: Az Azure Cognitive Search támogatja az 56 nyelv használatát, a Lucene és a természetes nyelvi feldolgozási technológiából származó nyelvi elemzők kihasználását a Microsofttól.
+description: Hozzon létre egy olyan indexet, amely támogatja a többnyelvű tartalmat, majd hozzon létre az adott tartalomra kiterjedő lekérdezéseket.
 manager: nitinme
-author: yahnoosh
-ms.author: jlembicz
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 588de9c9cae114b5f5396db17f7ecb19bcde25c6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/22/2021
+ms.openlocfilehash: 627ec77af4e492b4f22404972729cecdb1c40f06
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93423079"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801604"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Index létrehozása több nyelvhez az Azure-ban Cognitive Search
 
-Az indexek olyan mezőket tartalmazhatnak, amelyek több nyelvből származó tartalmat tartalmaznak, például egyéni mezők létrehozása a nyelvspecifikus karakterláncokhoz. Az indexelés és a lekérdezés során a legjobb eredmények elérése érdekében rendeljen hozzá egy nyelvi elemzőt, amely a megfelelő nyelvi szabályokat tartalmazza. 
+A többnyelvű keresőalkalmazás egyik kulcsfontosságú követelménye, hogy a felhasználó saját nyelvén kereshet át és kérhet le eredményeket. Az Azure Cognitive Searchban a többnyelvű alkalmazások nyelvi követelményeinek kielégítése érdekében dedikált mezőket kell létrehoznia a karakterláncok adott nyelven való tárolásához, majd a teljes szöveges keresést csak a lekérdezési időpontra korlátozza.
 
-Az Azure Cognitive Search a Lucene és a Microsofttól származó nyelvi elemzők széles választékát kínálja, amelyeket az analizátor tulajdonság használatával rendelhet hozzá az egyes mezőkhöz. Az ebben a cikkben leírtak szerint megadhat egy Language Analyzert is a portálon.
++ A mezők definíciói területen állítson be egy nyelvi elemzőt, amely meghívja a célnyelv nyelvi szabályait. A támogatott elemzők teljes listájának megtekintéséhez lásd a [nyelvi elemzők hozzáadása](index-add-language-analyzers.md)című témakört.
 
-## <a name="add-analyzers-to-fields"></a>Elemzők hozzáadása a mezőkhöz
++ A lekérdezési kérelemben állítsa be a paramétereket a teljes szöveges keresés hatókörére meghatározott mezőkre, majd vágja le az összes olyan mező eredményét, amely nem kompatibilis a tartalmat a kézbesíteni kívánt keresési felülettel.
 
-Egy adott mező létrehozásakor nyelvi analizátor van megadva. Az analizátor meglévő mezőhöz való hozzáadásához felül kell írni (és újra kell betölteni) az indexet, vagy egy új mezőt kell létrehoznia, amely megegyezik az eredetivel, de egy Analyzer-hozzárendeléssel. Ezután törölheti a nem használt mezőt a kényelemben.
+Ennek a technikának a sikere a mezők tartalmának integritására támaszkodik. Az Azure Cognitive Search nem fordítja le a karakterláncokat, és nem hajt végre nyelvi észlelést a lekérdezés végrehajtásának részeként. Így gondoskodhat arról, hogy a mezők tartalmazzák a várt karakterláncokat.
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a keresési szolgáltatást.
-1. Kattintson az **index hozzáadása** lehetőségre a szolgáltatás irányítópultjának tetején található parancssáv új index elindításához, vagy nyisson meg egy meglévő indexet, hogy a meglévő indexhez hozzáadott új mezőkön állítson be egy elemzőt.
-1. Egy mező definíciójának elindításához adjon meg egy nevet.
-1. Válassza ki a EDM. String adattípust. Csak a karakterlánc mezők teljes szöveges kereshetők.
-1. A **kereshető** attribútum beállításával engedélyezheti az analizátor tulajdonságot. A szövegmezőnek Text-alapúnak kell lennie ahhoz, hogy használni lehessen a nyelvi elemzőt.
-1. Válasszon egyet a rendelkezésre álló elemzők közül. 
+## <a name="define-fields-for-content-in-different-languages"></a>Mezők definiálása különböző nyelveken lévő tartalomhoz
 
-![Nyelvi elemzők kiosztása a mező meghatározása során](media/search-language-support/select-analyzer.png "Nyelvi elemzők kiosztása a mező meghatározása során")
+Az Azure Cognitive Searchban a lekérdezések egyetlen indexet céloznak meg. A fejlesztők, akik egy adott keresési élményben szeretnék megadni a nyelvspecifikus karakterláncokat, jellemzően az értékek tárolására szolgáló dedikált mezőket határozzák meg: az angol karakterláncok egy mezője, egy a francia, és így tovább.
 
-Alapértelmezés szerint minden kereshető mező a [szabványos Lucene-elemzőt](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) használja, amely nyelvtől független. A támogatott elemzők teljes listájának megtekintéséhez lásd: [nyelvi elemzők hozzáadása Azure Cognitive Search indexhez](index-add-language-analyzers.md).
+A mező definíciójában a "Analyzer" tulajdonság a [Language Analyzer](index-add-language-analyzers.md)beállítására szolgál. Az indexeléshez és a lekérdezés végrehajtásához is használni fogja.
 
-A portálon az elemzők célja, hogy használhatók legyenek. Ha testreszabásra vagy szűrők és tokenizers egyedi konfigurációra van szüksége, [hozzon létre egy egyéni elemzőt](index-add-custom-analyzers.md) a kódban. A portál nem támogatja az egyéni elemzők kijelölését és konfigurálását.
+```JSON
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft"
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft"
+    },
+```
 
-## <a name="query-language-specific-fields"></a>Nyelvspecifikus mezők lekérdezése
+## <a name="build-and-load-an-index"></a>Index létrehozása és betöltése
 
-Miután kiválasztotta a Language Analyzert egy mezőhöz, a rendszer az adott mezőhöz tartozó összes indexelési és keresési kéréssel együtt használja. Ha egy lekérdezés több mezőhöz lett kiadva különböző elemzők használatával, a lekérdezés az egyes mezőkhöz rendelt elemzők egymástól függetlenül lesznek feldolgozva.
+Egy közbenső (és talán nyilvánvaló) lépés az, hogy [az indexet fel kell építenie és fel kell töltenie a](search-get-started-dotnet.md) lekérdezés kialakítása előtt. Ez a lépés a teljesség kedvéért van megemlítve. Az indexek rendelkezésre állásának meghatározására az egyik lehetőség a [portál](https://portal.azure.com)indexek listájának ellenőrzése.
 
-Ha a lekérdezést kiállító ügynök nyelve ismert, a keresési kérelem hatóköre egy adott mezőre is kiterjed a **searchFields** lekérdezési paraméter használatával. A következő lekérdezés csak a lengyel nyelvű leírásban lesz kibocsátva:
+> [!TIP]
+> A nyelvfelismerés és a szöveg fordítása a [mesterséges intelligenciával](cognitive-search-concept-intro.md) és a [szakértelmével](cognitive-search-working-with-skillsets.md)való adatfeldolgozás során támogatott. Ha vegyes nyelvi tartalmú Azure-adatforrással rendelkezik, kipróbálhatja a nyelvfelismerés és a fordítási funkciókat az [adatimportálás varázsló](cognitive-search-quickstart-blob.md)segítségével.
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=PolishContent&api-version=2020-06-30`
+## <a name="constrain-the-query-and-trim-results"></a>A lekérdezés és a vágás eredményének korlátozása
 
-Az indexet lekérdezheti a portálról, a [**keresési ablak**](search-explorer.md) használatával beillesztheti a fent láthatóhoz hasonló lekérdezést.
+A lekérdezés paraméterei a keresés adott mezőkre való korlátozására szolgálnak, majd az adott forgatókönyvnek nem megfelelő mezők eredményeinek levágása. 
+
+| Paraméterek | Cél |
+|-----------|--------------|
+| **searchFields** | A teljes szöveges keresést a megnevezett mezők listájára korlátozza. |
+| **$select** | Levágja a választ, hogy csak a megadott mezőket foglalja bele. Alapértelmezés szerint a rendszer az összes beolvasható mezőt visszaadja. A **$Select** paraméterrel kiválaszthatja, hogy melyeket kell visszaadnia. |
+
+A francia sztringeket tartalmazó mezők keresésének célja, hogy a **searchFields** az adott nyelven sztringeket tartalmazó mezőkre célozza.
+
+Nem szükséges megadni az elemzőt a lekérdezési kérelemhez. A lekérdezés feldolgozásakor a rendszer mindig a mező definíciójában lévő nyelvi elemzőt fogja használni. A különböző nyelvi elemzőket meghívó több mezőt megadó lekérdezések esetében a feltételek és kifejezések az egyes mezőkhöz rendelt elemzők egymástól függetlenül lesznek feldolgozva.
+
+Alapértelmezés szerint a keresés visszaadja az összes olyan mezőt, amely beolvasható van megjelölve. Ezért érdemes lehet olyan mezőket kizárni, amelyek nem felelnek meg a megadni kívánt nyelvspecifikus keresési élménynek. Pontosabban, ha a keresés egy francia sztringet tartalmazó mezőre korlátozódik, valószínűleg ki szeretné zárni az eredményekből származó angol nyelvű mezőket. A **$Select** lekérdezési paraméterrel szabályozhatja, hogy a rendszer mely mezőket adja vissza a hívó alkalmazásnak.
+
+#### <a name="example-in-rest"></a>Példa a REST-ben
+
+```http
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+{
+    "search": "animaux acceptés",
+    "searchFields": "Tags, Description_fr",
+    "select": "HotelName, Description_fr, Address/City, Address/StateProvince, Tags",
+    "count": "true"
+}
+```
+
+#### <a name="example-in-c"></a>Példa C-ben #
+
+```csharp
+private static void RunQueries(SearchClient srchclient)
+{
+    SearchOptions options;
+    SearchResults<Hotel> response;
+
+    options = new SearchOptions()
+    {
+        IncludeTotalCount = true,
+        Filter = "",
+        OrderBy = { "" }
+    };
+
+    options.Select.Add("HotelId");
+    options.Select.Add("HotelName");
+    options.Select.Add("Description_fr");
+    options.SearchFields.Add("Tags");
+    options.SearchFields.Add("Description_fr");
+
+    response = srchclient.Search<Hotel>("*", options);
+    WriteDocuments(response);
+}
+```
 
 ## <a name="boost-language-specific-fields"></a>Nyelvi specifikus mezők fellendítése
 
-Előfordulhat, hogy a lekérdezést kiállító ügynök nyelve nem ismert, ebben az esetben a lekérdezés egyszerre adható ki az összes mezővel. Ha szükséges, az eredmények adott nyelven való megadását [pontozási profilok](index-add-scoring-profiles.md)használatával lehet meghatározni. Az alábbi példában az angol nyelvű leírásban található egyezések a lengyel és francia nyelvekhez képest magasabb pontszámot kapnak:
+Előfordulhat, hogy a lekérdezést kiállító ügynök nyelve nem ismert, ebben az esetben a lekérdezés egyszerre adható ki az összes mezővel. Az eredmények egy adott nyelven való megadásának elsőbbségi sorrendje a [pontozási profilok](index-add-scoring-profiles.md)használatával határozható meg. Az alábbi példában az angol nyelvű leírásban található egyezések a többi nyelvhez képest magasabb pontszámot kapnak:
 
-```http
-    "scoringProfiles": [
-      {
-        "name": "englishFirst",
-        "text": {
-          "weights": { "description_en": 2 }
-        }
+```JSON
+  "scoringProfiles": [
+    {
+      "name": "englishFirst",
+      "text": {
+        "weights": { "description": 2 }
       }
-    ]
+    }
+  ]
 ```
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
+Ezt követően a keresési kérelemben szerepelnie kell a pontozási profilnak:
+
+```http
+POST /indexes/hotels/docs/search?api-version=2020-06-30
+{
+  "search": "pets allowed",
+  "searchFields": "Tags, Description",
+  "select": "HotelName, Tags, Description",
+  "scoringProfile": "englishFirst",
+  "count": "true"
+}
+```
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha .NET-fejlesztőként dolgozik, vegye figyelembe, hogy az [Azure Cognitive Search .net SDK](https://www.nuget.org/packages/Microsoft.Azure.Search) és a [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) tulajdonság használatával konfigurálhatja a nyelvi elemzőket.
++ [Nyelvi elemzők](index-add-language-analyzers.md)
++ [A teljes szöveges keresés működése az Azure Cognitive Searchben](search-lucene-query-architecture.md)
++ [Dokumentumok keresése – REST API](/rest/api/searchservice/search-documents)
++ [AI-dúsítás áttekintése](cognitive-search-concept-intro.md)
++ [A szakértelmével áttekintése](cognitive-search-working-with-skillsets.md)

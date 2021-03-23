@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: f9487ac1b5d550380d7cff6196d3f5b99e6b61d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1b33892c0d37cc173fb88fc7e304ef6e48c0af57
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595566"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802947"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: kibocsátási megjegyzések és erőforrások
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "104595566"
 |**API-dokumentáció**|[Python API-referenciák dokumentációja](/python/api/overview/azure/cosmosdb)|
 |**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) vagy [python 3,3, 3,4, 3,5 vagy 3,6](https://www.python.org/downloads/)|
+|**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) vagy [Python 3.6 +](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.

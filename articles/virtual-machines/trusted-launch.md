@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 01c5d4aaa3896e05bc743be309df050471ece5ae
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e500eca601d21f106dbe31236e9b5c2aa76b0d2
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582051"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801927"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Megbízható indítás az Azure Virtual Machines szolgáltatásban (előzetes verzió)
 
@@ -55,6 +55,7 @@ Az Azure a [2. generációs](generation-2.md) virtuális gépek biztonságának 
 - Windows Server 2016
 - Windows 10 Pro
 - Windows 10 Enterprise
+- Windows 10 Enterprise multi-session
 
 **Régiók**: 
 - USA déli középső régiója

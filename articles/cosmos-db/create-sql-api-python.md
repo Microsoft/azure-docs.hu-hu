@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: c74da5e612609ce6a0525b24e5868059f06da179
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fee0591622c1ee07b6e954b3cadc208a300ab6a5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93078781"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798782"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Ebben a rövid útmutatóban egy Azure Cosmos DB SQL API-fiókot hoz létre és 
     * Azure aktív előfizetés nélkül:
         * [Próbálja ki Azure Cosmos db](https://azure.microsoft.com/try/cosmosdb/)ingyen, egy 30 napos tesztelési környezetet.
         * [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) 
-- [Python 2,7 vagy 3.5.3 +](https://www.python.org/downloads/), a `python` végrehajtható fájllal `PATH` .
+- [Python 2,7 vagy 3.6 +](https://www.python.org/downloads/), a `python` végrehajtható fájllal `PATH` .
 - [Visual Studio Code](https://code.visualstudio.com/).
 - A [Python-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)-hoz.
 - [Git](https://www.git-scm.com/downloads). 

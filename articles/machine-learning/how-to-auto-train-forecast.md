@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 66fa56b45e8d3cff7a8ace300a450b9c41df9bc0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 161d565aa1d2dd08434ebd8ea155ac5a92e09ac0
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588715"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802913"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 
@@ -128,11 +128,11 @@ Az automatizált gépi tanulás automatikusan különböző modelleket és algor
 >[!Tip]
 > A rendszer a hagyományos regressziós modelleket is teszteli a javaslatrendszer részeként az előrejelzési kísérletekhez. A modellek teljes listájáért tekintse meg a [támogatott modell táblázatát](how-to-configure-auto-train.md#supported-models) . 
 
-Modellek| Description | Előnyök
+Modellek| Leírás | Előnyök
 ----|----|---
 Próféta (előzetes verzió)|A próféta a legjobb idősorozattal működik, amely erős szezonális hatásokat és több időszakot is tartalmaz. A modell kihasználása érdekében telepítse helyileg a használatával `pip install fbprophet` . | Pontos & gyors, robusztus a kiugró értékek, a hiányzó adatmennyiségek és az idősorozat drámai változásai.
 Automatikus ARIMA (előzetes verzió)|Az automatikusan újradegresszív, integrált mozgóátlag (ARIMA) a legjobbat hajtja végre, ha az adatok állomáson vannak. Ez azt jelenti, hogy a statisztikai tulajdonságok, például a középérték és a variancia állandó a teljes készleten. Ha például egy érme tükrözését hajtja végre, akkor a fejek megszerzésének valószínűsége 50% lesz, függetlenül attól, hogy a mai, a holnapi vagy a következő évre fordít-e.| Kiválóan használható a univariate sorozatokhoz, mivel a korábbi értékeket a jövőbeli értékek előrejelzésére használjuk.
-ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére, a nem lineáris helyi és globális trendek rögzítésére szolgál az adatokban, valamint az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
+ForecastTCN (előzetes verzió)| A ForecastTCN egy olyan neurális hálózati modell, amely a legigényesebb előrejelzési feladatok kezelésére szolgál. A nem lineáris helyi és globális trendeket rögzíti az adataiban és az idősorozatok közötti kapcsolatokat.|Képes az adathalmazok összetett trendjeinek kihasználása és a nagy adatkészletek rugalmas méretezésére.
 
 ### <a name="configuration-settings"></a>Konfigurációs beállítások
 
@@ -146,11 +146,12 @@ A következő táblázat összefoglalja ezeket a további paramétereket. A szin
 |`forecast_horizon`|Meghatározza, hogy hány időszakot továbbítson az előrejelzéshez. A horizont az idősorozat gyakoriságának egységében van. Az egységek a betanítási adatokat tartalmazó időintervallumon alapulnak, például havi, heti rendszerességgel, amelyet az előrejelzésnek meg kell jósolnia.|✓|
 |`enable_dnn`|[Előrejelzési DNN engedélyezése]().||
 |`time_series_id_column_names`|Az oszlop neve (i), amely az azonos időbélyegzővel rendelkező több sorból álló adatsorozatok egyedi azonosítására szolgál. Ha az idősorozat-azonosítók nincsenek meghatározva, az adathalmazt a rendszer egy idősorozatként feltételezi. Az egyidejű adatsorozatokkal kapcsolatos további tudnivalókért tekintse meg a [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
-|`freq`| Az idősorozat-adatkészlet gyakorisága Ez a paraméter azt az időszakot jelöli, amelyben az események várhatóan előfordulnak, például naponta, hetente, évente stb. A gyakoriságnak [pandák eltolású aliasnak](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)kell lennie.||
+|`freq`| Az idősorozat-adatkészlet gyakorisága Ez a paraméter azt az időszakot jelöli, amelyben az események várhatóan előfordulnak, például naponta, hetente, évente stb. A gyakoriságnak [pandák eltolású aliasnak](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)kell lennie. További információ: [Frequency]. (#frequency--cél-adatösszesítés)||
 |`target_lags`|A megcélzott értékeket az adatok gyakorisága alapján késleltető sorok száma. A lag listaként vagy egyetlen egész számként jelenik meg. A késést akkor kell használni, ha a független változók és a függő változó közötti kapcsolat alapértelmezés szerint nem felel meg egymásnak. ||
 |`feature_lags`| A rendszer automatikusan eldönti a lag funkcióit, ha `target_lags` be van állítva, és `feature_lags` be van állítva `auto` . A szolgáltatás lekésésének engedélyezése segíthet a pontosság növelésében. A funkció alapértelmezés szerint le van tiltva. ||
 |`target_rolling_window_size`|*n* korábbi időszakok, amelyeket az előre jelzett értékek előállítására használhat, <= betanítási készlet mérete. Ha nincs megadva, az *n* a teljes betanítási készlet mérete. Akkor válassza ezt a paramétert, ha csak bizonyos mennyiségű előzményt szeretne figyelembe venni a modell betanításakor. További információ a [cél gördülő ablak összesítéséről](#target-rolling-window-aggregation).||
-|`short_series_handling_config`| Lehetővé teszi a rövid idősorozatok kezelését, hogy elkerülje a nem megfelelő adatmennyiséget a betanítás során. A rövid adatsorozatok kezelője alapértelmezés szerint be van állítva `auto` . További információ a [rövid adatsorozatok kezelésére](#short-series-handling).|
+|`short_series_handling_config`| Lehetővé teszi a rövid idősorozatok kezelését, hogy elkerülje a nem megfelelő adatmennyiséget a betanítás során. A rövid adatsorozatok kezelője alapértelmezés szerint be van állítva `auto` . További információ a [rövid adatsorozatok kezelésére](#short-series-handling).||
+|`target_aggregation_function`| Az idősorozat-cél oszlop összesítéséhez használt függvény, amely megfelel a paraméterben megadott gyakoriságnak `freq` . A `freq` paramétert be kell állítani a használatára `target_aggregation_function` . Az alapértelmezett `None` értéke; a legtöbb forgatókönyv esetén a használata `sum` elegendő.<br> További információ a [cél oszlop összesítéséről](#frequency--target-data-aggregation). 
 
 
 A következő kód, 
@@ -174,7 +175,7 @@ forecasting_parameters = ForecastingParameters(time_column_name='day_datetime',
                                               
 ```
 
-Ezeket a `forecasting_parameters` rendszer a szabványos `AutoMLConfig` objektumba továbbítja a `forecasting` feladat típusa, az elsődleges metrika, a kilépési feltételek és a betanítási adatok mellett. 
+Ezeket a rendszer átadja `forecasting_parameters` a standard `AutoMLConfig` objektumnak a `forecasting` feladat típusa, az elsődleges metrika, a kilépési feltételek és a betanítási adatok mellett. 
 
 ```python
 from azureml.core.workspace import Workspace
@@ -258,12 +259,36 @@ Ha a kísérlethez a Azure Machine Learning Studiot használja, tekintse meg [a 
 
 További opcionális konfigurációk is elérhetők az előrejelzési feladatokhoz, például a Deep learning engedélyezéséhez és a cél gördülő ablak összesítésének megadásához. 
 
+### <a name="frequency--target-data-aggregation"></a>A célként megadott adatösszesítés gyakorisága &
+
+Használja ki a gyakoriságot, a `freq` paramétert, hogy elkerülje a szabálytalan adatműveletek okozta hibák elkerülését, azaz olyan adathalmazt, amely nem követi a beállított lépésszám, például óránkénti vagy napi adatvesztést. 
+
+A nagymértékben szabálytalan vagy eltérő üzleti igényeknek megfelelően a felhasználók igény szerint meghatározhatják a kívánt előrejelzési gyakoriságot, `freq` és megadhatják az `target_aggregation_function` idősorozat cél oszlopának összesítését. Az objektum két beállításának kihasználása `AutoMLConfig` segíthet időt takaríthat meg az adatelőkészítés során. 
+
+A `target_aggregation_function` paraméter használatakor
+* A cél oszlop értékeit a megadott művelet alapján összesíti a rendszer. Általában `sum` a legtöbb forgatókönyv esetén megfelelő.
+
+* Az adataiban szereplő numerikus prediktív oszlopokat a Sum, a Mean, a minimális érték és a maximális érték összesíti. Ennek eredményeképpen az automatikus ML új oszlopokat hoz létre az aggregációs függvény nevével, és alkalmazza a kiválasztott összesítő műveletet. 
+
+* A kategorikus előrejelző oszlopok esetében az adatokat a rendszer az ablak legjelentősebb kategóriája szerint összesíti.
+
+* A dátum-előrejelző oszlopokat a minimális érték, a maximális érték és a mód összesíti. 
+
+A cél oszlop értékeinek támogatott aggregációs műveletei a következők:
+
+|Függvény | leírás
+|---|---
+|`sum`| Célértékek összege
+|`mean`| A célként megadott értékek középértéke vagy átlaga
+|`min`| Cél minimális értéke  
+|`max`| Cél maximális értéke  
+
 ### <a name="enable-deep-learning"></a>Mély tanulás engedélyezése
 
 > [!NOTE]
 > Az automatikus Machine Learning DNN támogatása **előzetes** verzióban érhető el, és helyi futtatások esetén nem támogatott.
 
-A részletes tanulási és a mélyreható neurális hálózatokkal is kihasználhatja a DNN, így hatékonyabbá teheti a modell pontszámait. Az automatizált ML mély tanulási funkciói lehetővé teszik az előrejelzési univariate és a többváltozós idősorozatok adatsorait.
+Mély tanulást is alkalmazhat mély neurális hálózatokkal, DNN, hogy javítsa a modell pontszámait. Az automatizált ML mély tanulási funkciói lehetővé teszik az előrejelzési univariate és a többváltozós idősorozatok adatsorait.
 
 A Deep learning-modellek három belső képességgel rendelkeznek:
 1. Tanulhatnak a bemenetekről a kimenetekre való tetszőleges leképezésekről
@@ -283,10 +308,10 @@ automl_config = AutoMLConfig(task='forecasting',
 
 Ha engedélyezni szeretné a DNN a Azure Machine Learning Studióban létrehozott AutoML-kísérlethez, tekintse meg a következő témakörben található feladattípus [-beállításokat: a Studio útmutatója](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-Tekintse meg az [üzemi előrejelzést tartalmazó jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) , amely egy részletes kód, például a DNN kihasználása.
+Tekintse meg a DNN-t használó, részletes programkódot bemutató [ital-üzemi előrejelzési jegyzetfüzetet](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb) .
 
 ### <a name="target-rolling-window-aggregation"></a>Cél gördülő ablak összesítése
-A legjobb információ gyakran a cél legutóbbi értéke lehet.  A cél gördülő ablak összesítései lehetővé teszik, hogy az adatértékek folyamatos összesítését adja hozzá szolgáltatásként. Ezeket a kiegészítő funkciókat további kontextusbeli adatok létrehozásával és használatával segítheti a betanítási modell pontosságát.
+A legjobb információ gyakran a cél legutóbbi értéke lehet.  A cél gördülő ablak összesítései lehetővé teszik, hogy az adatértékek folyamatos összesítését adja hozzá szolgáltatásként. Ezeknek a szolgáltatásoknak a létrehozása és használata további környezetfüggő adatokkal segíti a betanítási modell pontosságát.
 
 Tegyük fel például, hogy meg szeretné jósolni az energia iránti keresletet. Előfordulhat, hogy három napos gördülő ablak-szolgáltatást szeretne hozzáadni a fűtött szóközök termikus változásainak figyelembevételéhez. Ebben a példában hozza létre ezt az ablakot `target_rolling_window_size= 3` a konstruktor beállításával `AutoMLConfig` . 
 
@@ -294,7 +319,7 @@ A táblázat megjeleníti a funkciók mérnöki felépítésének eredményét, 
 
 ![cél gördülő ablak](./media/how-to-auto-train-forecast/target-roll.svg)
 
-Tekintse meg a [cél gördülő ablak összesítési funkcióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)kihasználó Python-kód példáját.
+Egy példa Python-kódrészletre, amely a [cél gördülő ablak összesítési funkcióját](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)alkalmazza.
 
 ### <a name="short-series-handling"></a>Rövid adatsorozat-kezelő
 
