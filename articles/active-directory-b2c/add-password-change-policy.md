@@ -8,20 +8,30 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 21da8f79772d9648836bedec89cb5d7014486dc6
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97629126"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798359"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó módosításának konfigurálása egyéni házirendek használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) esetében engedélyezheti, hogy a helyi fiókkal bejelentkezett felhasználók a jelszavukat úgy tudják megváltoztatni, hogy e-mailben igazolják az identitásukat. A jelszó-módosítási folyamat a következő lépéseket foglalja magában:
+
+1. A felhasználó bejelentkezik a helyi fiókjába. Ha a munkamenet továbbra is aktív, Azure AD B2C engedélyezi a felhasználót, és kihagyja a következő lépéssel.
+1. A felhasználó ellenőrzi a **régi jelszót**, majd létrehozza és megerősíti az **új jelszót**.
+
+![Jelszó-módosítási folyamat](./media/add-password-change-policy/password-change-flow.png)  
+
+> [!TIP]
+> A jelszó-módosítási folyamat lehetővé teszi a felhasználók számára, hogy csak akkor módosítsák a jelszavukat, ha a felhasználó ismeri a jelszavát, és módosítani szeretné. Javasoljuk, hogy az [önkiszolgáló jelszó-visszaállítást](add-password-reset-policy.md) is engedélyezze azon esetek támogatásához, amelyekben a felhasználó elfelejti a jelszavát.
 
 ::: zone pivot="b2c-user-flow"
 
@@ -30,15 +40,6 @@ ms.locfileid: "97629126"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
-
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-Azure Active Directory B2C (Azure AD B2C) esetében engedélyezheti, hogy a helyi fiókkal bejelentkezett felhasználók a jelszavukat úgy változtassák meg, hogy az e-mail-ellenőrzésen alapuló eredetiségük bizonyítása nélkül is megváltozzon. A jelszó-módosítási folyamat a következő lépéseket foglalja magában:
-
-1. Bejelentkezés helyi fiókkal. Ha a munkamenet továbbra is aktív, Azure AD B2C engedélyezi a felhasználó számára, és a következő lépéshez ugorjon.
-1. A felhasználóknak ellenőriznie kell a **régi jelszót**, létre kell hozniuk és meg kell erősíteniük az **új jelszót**.
-
-![Jelszó-módosítási folyamat](./media/add-password-change-policy/password-change-flow.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

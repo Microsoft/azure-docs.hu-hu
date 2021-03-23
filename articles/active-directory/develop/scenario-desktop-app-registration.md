@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 66f11b7a5124f0b9b834b79368d57443ab33e850
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578345"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798935"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívó asztali alkalmazás: alkalmazás regisztrálása
 
@@ -50,6 +50,7 @@ Adja meg az alkalmazás átirányítási URI-JÁT úgy, hogy az Azure Portal **A
   > Biztonsági szempontból ajánlott a explicit módon beállítani, `https://login.microsoftonline.com/common/oauth2/nativeclient` vagy `http://localhost` az átirányítási URI-t. Egyes hitelesítési könyvtárak, például a MSAL.NET alapértelmezett értéket használnak `urn:ietf:wg:oauth:2.0:oob` , ha nincs megadva más átirányítási URI, ami nem ajánlott. Ez az alapértelmezett érték a következő jelentős kiadásban feltört változásként frissül.
 
 - Ha macOS-hez készült natív Objective-C vagy SWIFT alkalmazást hoz létre, regisztrálja az átirányítási URI-t az alkalmazás köteg-azonosítója alapján a következő formátumban: `msauth.<your.app.bundle.id>://auth` . Cserélje le `<your.app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával.
+- Ha Node.js Electron-alkalmazást hoz létre, a normál webes (https://) átirányítási URI helyett egyéni protokollt használjon, hogy kezelje az engedélyezési folyamat átirányítási lépését, például: `msal://redirect` . Az egyéni fájl protokolljának neve nem nyilvánvaló, hogy kitalálja, és követnie kell a [natív alkalmazások OAuth 2.0-specifikációjának](https://tools.ietf.org/html/rfc8252#section-7.1)javaslatait.
 - Ha az alkalmazás kizárólag integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell regisztrálnia az alkalmazás átirányítási URI-JÁT. Ezek a folyamatok a Microsoft Identity platform 2.0-s végpontján keresztül egy oda-vissza. Az alkalmazás nem hívható vissza semmilyen konkrét URI-ra.
 - Ha meg szeretné különböztetni az [eszköz kódjának áramlását](scenario-desktop-acquire-token.md#device-code-flow), az [integrált Windows-hitelesítést](scenario-desktop-acquire-token.md#integrated-windows-authentication), valamint egy olyan bizalmas ügyfélalkalmazás [felhasználónevét és jelszavát](scenario-desktop-acquire-token.md#username-and-password) , amely a [démon-alkalmazásokban](scenario-daemon-overview.md)használt ügyfél-hitelesítő adatokat használja, egyikhez sem kell átirányítási URI-t konfigurálnia, hanem nyilvános ügyfélalkalmazásként kell beállítania. A konfiguráció elérése:
 

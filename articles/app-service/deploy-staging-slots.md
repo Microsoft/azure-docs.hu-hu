@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c4cff264b63506432daf350be3557bae7234584
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c779e95b790d91b801d5d35b4702191f5e7986d5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "100594245"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802964"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -214,6 +214,7 @@ A bemelegítő viselkedést a következő [Alkalmazásbeállítások](configure-
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: A hely bemelegítésének elérési útja. Adja hozzá ezt az alkalmazás-beállítást egy olyan egyéni elérési út megadásával, amely egy perjelként kezdődik az értékként. Például: `/statuscheck`. Az alapértelmezett érték `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Érvényes HTTP-válasz kódok a bemelegítő művelethez. Adja hozzá ezt az alkalmazás-beállítást a HTTP-kódok vesszővel tagolt listájához. Példa: `200,202` . Ha a visszaadott állapotkód nem szerepel a listában, a bemelegedési és a swap művelet leáll. Alapértelmezés szerint az összes válasz kódja érvényes.
+- `WEBSITE_WARMUP_PATH`: Egy relatív elérési út a helyen, amelyet a hely újraindításakor kell pingelni (nem csak a tárolóhelyek cseréjekor). Az értékek például a következők lehetnek: `/statuscheck` vagy a gyökér elérési útja `/` .
 
 > [!NOTE]
 > A `<applicationInitialization>` konfigurációs elem az egyes alkalmazások indításának része, míg a két Warm-up viselkedési alkalmazás beállításai csak a tárolóhelyek felcserélésekor érvényesek.

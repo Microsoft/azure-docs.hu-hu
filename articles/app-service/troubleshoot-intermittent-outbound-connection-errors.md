@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2b4719561ad94d54267410d0af28db6ee8d82b00
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94968298"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799105"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -88,8 +88,8 @@ Az alábbiakban a JDBC-kapcsolatok készletezéséhez használt népszerű kódt
 
 HTTP-kapcsolatok készletezése
 
-* [Apache-kapcsolatok kezelése](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [PoolingHttpClientConnectionManager osztály](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache-kapcsolatok kezelése](https://hc.apache.org/httpcomponents-client-5.0.x/)
+* [PoolingHttpClientConnectionManager osztály](https://hc.apache.org/httpcomponents-client-5.0.x/)
 
 #### <a name="php"></a>PHP
 
@@ -125,7 +125,7 @@ Habár a PHP nem támogatja a kapcsolatok készletezését, kipróbálhatja az �
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 
@@ -157,7 +157,7 @@ A TCP-kapcsolatok és a SNAT portok nem közvetlenül kapcsolódnak egymáshoz. 
 * A TCP-kapcsolatok korlátja a feldolgozói példány szintjén történik. Az Azure hálózati kimeneti terheléselosztás nem használja a TCP-kapcsolatok metrikáját a SNAT-portok korlátozásához.
 * A TCP-kapcsolatok korlátozásait a [homokozóban futó virtuális gépek numerikus korlátai – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits) című cikk írja le.
 
-|Korlát neve|Description|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
+|Korlát neve|Leírás|Kicsi (a1)|Közepes (a2)|Nagyméretű (a3)|Elkülönített rétegek|
 |---|---|---|---|---|---|
 |Kapcsolatok|Kapcsolatok száma a teljes virtuális gépen|1920|3968|8064|16000|
 

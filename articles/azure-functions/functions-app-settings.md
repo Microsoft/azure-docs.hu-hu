@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: fb00f0fe16342bf603d534c34a860278dc21deac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595976"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773079"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -186,22 +186,24 @@ Meghatározza a nyelv munkavégző folyamatainak maximális számát, alapértel
 |---|------------|
 |FUNCTIONs \_ munkavégző \_ folyamatok \_ száma|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma
-
-Meghatározza, hogy a Python nyelvi feldolgozó hány szálat használjon a függvények meghívásának végrehajtásához, a `1` Python-verzió alapértelmezett értékével és az `3.8` alatta. `3.9`A Python és újabb verziók esetében az érték a következőre van beállítva: `None` . Vegye figyelembe, hogy ez a beállítás nem garantálja, hogy hány szálat kell beállítani a végrehajtás során. A beállítás lehetővé teszi a Python számára a szálak számának a megadott értékre való kiterjesztését. A beállítás csak a Python functions-alkalmazásokra vonatkozik. Emellett a beállítás a szinkron függvények meghívására, és nem a munkarutinokra is vonatkozik.
-
-|Kulcs|Mintaérték|Maximális érték|
-|---|------------|---------|
-|PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNCTIONs \_ Worker \_ futtatókörnyezet
 
-A Function alkalmazásban betölteni kívánt nyelvi feldolgozó futtatókörnyezet.  Ez megfelel az alkalmazásban használt nyelvnek (például "DotNet"). A függvények több nyelven is közzétehető több alkalmazásban, amelyek mindegyike egy megfelelő munkavégző futásidejű értékkel rendelkezik.  Érvényes értékek: `dotnet` (C#/f #), `node` (JavaScript/írógéppel), `java` (Java), `powershell` (PowerShell) és `python` (Python).
+A Function alkalmazásban betölteni kívánt nyelvi feldolgozó futtatókörnyezet.  Ez az alkalmazásban használt nyelvnek felel meg (például: `dotnet` ). A Azure Functions futtatókörnyezet 2. x verziójától kezdődően egy adott Function-alkalmazás csak egyetlen nyelvet támogat.   
 
 |Kulcs|Mintaérték|
 |---|------------|
-|FUNCTIONs \_ Worker \_ futtatókörnyezet|dotnet|
+|FUNCTIONs \_ Worker \_ futtatókörnyezet|csomópont|
+
+Érvényes értékek:
+
+| Érték | Nyelv |
+|---|---|
+| `dotnet` | [C# (osztálytár)](functions-dotnet-class-library.md)<br/>[C# (szkript)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (elszigetelt folyamat)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PIP \_ extra \_ index \_ URL-címe
 
@@ -212,6 +214,14 @@ A beállítás értéke a Python-alkalmazások egyéni csomag-indexelési URL-c�
 |PIP \_ extra \_ index \_ URL-címe|http://my.custom.package.repo/simple |
 
 További információ: [Egyéni függőségek](functions-reference-python.md#remote-build-with-extra-index-url) a Python fejlesztői referenciában.
+
+## <a name="python_threadpool_thread_count"></a>PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma
+
+Meghatározza, hogy a Python nyelvi feldolgozó hány szálat használjon a függvények meghívásának végrehajtásához, a `1` Python-verzió alapértelmezett értékével és az `3.8` alatta. `3.9`A Python és újabb verziók esetében az érték a következőre van beállítva: `None` . Vegye figyelembe, hogy ez a beállítás nem garantálja, hogy hány szálat kell beállítani a végrehajtás során. A beállítás lehetővé teszi a Python számára a szálak számának a megadott értékre való kiterjesztését. A beállítás csak a Python functions-alkalmazásokra vonatkozik. Emellett a beállítás a szinkron függvények meghívására, és nem a munkarutinokra is vonatkozik.
+
+|Kulcs|Mintaérték|Maximális érték|
+|---|------------|---------|
+|PYTHON \_ szálkészlet munkaszála belépett \_ szálak \_ száma|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>SKÁLÁZÁSi \_ vezérlő \_ naplózása \_ engedélyezve
 

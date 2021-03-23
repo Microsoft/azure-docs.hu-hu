@@ -3,12 +3,12 @@ title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
 ms.date: 03/11/2021
 ms.topic: sample
-ms.openlocfilehash: 0873de5879a40b13bea03c97e0b78d146f0d6696
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 06dc65ca601c938f6610df3ed22b4ea0f3826208
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200995"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799462"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -34,6 +34,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 | [ISO 27001 – Megosztott szolgáltatások](./iso27001-shared/index.md) | Szabványoknak megfelelő infrastruktúra-minták és szabályzati védőkorlátok együttesét biztosítja, amelyek segítséget nyújtanak az ISO 27001-tanúsítvány megszerzéséhez. |
 | [ISO 27001 App Service Environment/SQL Database-számításifeladat](./iso27001-ase-sql-workload/index.md) | Több infrastruktúrát biztosít az [ISO 27001 Shared Services](./iso27001-shared/index.md) Blueprint minta számára. |
 | [Média](./media/index.md) | Szabályzatkészletet biztosít a Média MPAA előírásainak való megfeleléshez. |
+| [Új-zélandi ISM-korlátozás](./new-zealand-ism.md) | Szabályzatok kiosztása az egyes új-zélandi adatok biztonsági manuális vezérlőinek kezeléséhez. |
 | [NIST SP 800-53 R4](./nist-sp-800-53-r4.md) | A guardrails biztosítja a NIST SP 800-53 R4 megfelelőségét. |
 | [NIST SP 800-171 R2](./nist-sp-800-171-r2.md) | A guardrails biztosítja a NIST SP 800-171 R2 megfelelőségét. |
 | [PCI-DSS 3.2.1](./pci-dss-3.2.1/index.md) | Szabályzatkészletet biztosít PCI-DSS 3.2.1 szabványnak való megfelelőséghez. |

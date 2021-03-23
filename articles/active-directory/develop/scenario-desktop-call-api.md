@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b5b52b679506a5c8b4d183c9ad5925c20238621c
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98756531"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798918"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás: webes API meghívása
 
@@ -28,19 +28,6 @@ Most, hogy rendelkezik egy jogkivonattal, meghívhat egy védett webes API-t.
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
-
-<!--
-More includes will come later for Python and Java
--->
-# <a name="python"></a>[Python](#tab/python)
-
-```Python
-endpoint = "url to the API"
-http_headers = {'Authorization': 'Bearer ' + result['access_token'],
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'}
-data = requests.get(endpoint, headers=http_headers, stream=False).json()
-```
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -126,6 +113,43 @@ catch(MsalUiRequiredException ex)
                   .ExecuteAsync();
 }
 ```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+HTTP-ügyfél (például [Axios](https://www.npmjs.com/package/axios)) használatával hívja meg az API-végponti URI-t egy hozzáférési jogkivonattal az *engedélyezési tulajdonosként*.
+
+```javascript
+const axios = require('axios');
+
+async function callEndpointWithToken(endpoint, accessToken) {
+    const options = {
+        headers: {
+            Authorization: `Bearer ${accessToken}`
+        }
+    };
+
+    console.log('Request made at: ' + new Date().toString());
+
+    const response = await axios.default.get(endpoint, options);
+
+    return response.data;
+}
+
+```
+
+<!--
+More includes will come later for Python and Java
+-->
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+endpoint = "url to the API"
+http_headers = {'Authorization': 'Bearer ' + result['access_token'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'}
+data = requests.get(endpoint, headers=http_headers, stream=False).json()
+```
+
 ---
 
 ## <a name="next-steps"></a>Következő lépések

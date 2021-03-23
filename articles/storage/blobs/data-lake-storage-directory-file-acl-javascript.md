@@ -1,26 +1,26 @@
 ---
-title: A JavaScript használata a Azure Data Lake Storage Gen2ban tárolt adatkezeléshez
+title: A JavaScript (Node.js) használatával kezelheti az adatAzure Data Lake Storage Gen2
 description: Az Azure Storage Data Lake ügyféloldali függvénytárának használatával kezelheti a JavaScript-könyvtárakat és-fájlokat olyan Storage-fiókokban, amelyeken engedélyezve van a hierarchikus névtér.
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100650167"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774762"
 ---
-# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>A JavaScript használata a Azure Data Lake Storage Gen2 könyvtárak és fájlok kezeléséhez
+# <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>A Node.js a JavaScript SDK-t használhatja a könyvtárak és fájlok kezeléséhez Azure Data Lake Storage Gen2
 
-Ez a cikk bemutatja, hogyan használhatja a JavaScriptet olyan könyvtárak és fájlok létrehozásához és kezeléséhez a Storage-fiókokban, amelyek hierarchikus névtérrel rendelkeznek.
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat és fájlokat, amelyek hierarchikus névtérrel rendelkeznek a Node.js használatával.
 
-A címtárak és fájlok hozzáférés-vezérlési listái (ACL) beszerzésével, beállításával és frissítésével kapcsolatos további információkért lásd: a [JavaScript használata a ACL-ek kezelésére a Azure Data Lake Storage Gen2](data-lake-storage-acl-javascript.md).
+A címtárak és fájlok hozzáférés-vezérlési listái (ACL) beszerzésével, beállításával és frissítésével kapcsolatos további információkért lásd: a [JavaScript SDK használata a Node.jsban az ACL-ek Azure Data Lake Storage Gen2-ban való kezeléséhez](data-lake-storage-acl-javascript.md).
 
 [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -43,7 +43,11 @@ npm install @azure/storage-file-datalake
 Importálja a `storage-file-datalake` csomagot úgy, hogy a fájl elejére helyezi ezt az utasítást. 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz 

@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre eseményindítót olyan Azure Dat
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: b559ce31aff7040a61f6a2f788652ffd192420c4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593798"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104780327"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Egy folyamatot futtató eseményindító létrehozása tárolási eseményre válaszként
 
@@ -83,11 +83,11 @@ A következő táblázat áttekintést nyújt a tárolási esemény-eseményind�
 
 | **JSON-elem** | **Leírás** | **Típus** | **Megengedett értékek** | **Kötelező** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Yes |
+| **hatókör** | A Storage-fiók Azure Resource Manager erőforrás-azonosítója. | Sztring | Azure Resource Manager azonosítója | Igen |
 | **események** | A triggert tüzet kiváltó események típusa. | Tömb    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Igen, az értékek bármely kombinációja. |
 | **blobPathBeginsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell kezdődnie. Például csak a `/records/blobs/december/` tárolóban lévő mappában lévő Blobok eseményindítóját kell kiváltani `december` `records` . | Sztring   | | Adja meg a következő tulajdonságok legalább egyikének értékét: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
 | **blobPathEndsWith** | A blob elérési útjának a triggerhez megadott mintázattal kell végződnie. Például `december/boxes.csv` csak a mappában lévő Blobok eseményindítóját kell kiváltani `boxes` `december` . | Sztring   | | Meg kell adnia egy értéket a következő tulajdonságok közül legalább egy számára: `blobPathBeginsWith` vagy `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | No |
+| **ignoreEmptyBlobs** | Azt határozza meg, hogy a nulla bájtos Blobok elindítanak-e egy folyamat futtatását. Alapértelmezés szerint ez igaz értékre van állítva. | Logikai | true (igaz) vagy false (hamis) | Nem |
 
 ## <a name="examples-of-storage-event-triggers"></a>Példák a tárolási események eseményindítóinak tárolására
 

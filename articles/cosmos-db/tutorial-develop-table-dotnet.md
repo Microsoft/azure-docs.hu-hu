@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c641e24a498a6263d6a7c2325eed099b75a82caa
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f4817e53cb36bc96add19d855750a73a151b4891
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102426433"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772297"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Bevezetés az Azure Cosmos DB Table API és az Azure Table Storage a .NET SDK-val való használatába
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -179,4 +179,4 @@ Most jelentkezzen be a Azure Portalba, és ellenőrizze, hogy az adatkészletek 
 Most folytassa a következő oktatóanyaggal, és megtudhatja, hogyan telepítheti át az információkat Azure Cosmos DB Table API-fiókba. 
 
 > [!div class="nextstepaction"]
->[Az adatáttelepítés az Azure Comsos DB-be Table API](../cosmos-db/table-import.md)
+>[Az adatáttelepítés Azure Cosmos DB Table API](../cosmos-db/table-import.md)

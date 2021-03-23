@@ -61,6 +61,8 @@
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
             - name: Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei
               href: solutions-windows-virtual-desktop.md
+            - name: A Azure NetApp Files használatának előnyei SQL Server üzembe helyezéshez
+              href: solutions-benefits-azure-netapp-files-sql-server.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
     - name: Mi az az Azure-beli alkalmazáskonzisztens pillanatkép-készítési eszköz?
@@ -179,3 +181,5 @@
       href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: Videók
       href: azure-netapp-files-videos.md
+    - name: Azure Files és Azure NetApp Files összehasonlítása
+      href: ../storage/files/storage-files-netapp-comparison.md

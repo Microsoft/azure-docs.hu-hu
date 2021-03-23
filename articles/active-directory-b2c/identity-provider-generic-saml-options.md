@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 32f9df410dabf1902e9a7d9aadbf47288bfa90f5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488873"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798238"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>SAML-identitás-szolgáltatói beállítások konfigurálása Azure Active Directory B2C
 
@@ -85,9 +85,11 @@ A következő példa egy Azure AD-beli metaadat-alapú egyszeri bejelentkezési 
 </IDPSSODescriptor>
 ```
 
-Az SAML-válaszokat a rendszer a HTTP POST-kötésen keresztül továbbítja Azure AD B2C. Azure AD B2C házirend metaadatainak beállítja a kötést a következőre: `AssertionConsumerService` `urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST` .
+### <a name="assertion-consumer-service"></a>Kijelentési fogyasztói szolgáltatás
 
-A következőkben egy példa látható egy Azure AD B2C házirend metaadat-felállítására szolgáló fogyasztói szolgáltatási elemre.
+Az állítási fogyasztói szolgáltatás (vagy ACS), ahol az adatszolgáltató SAML-válaszokat küldhet és fogadhat Azure AD B2C. Az SAML-válaszokat a rendszer a HTTP POST-kötésen keresztül továbbítja Azure AD B2C. Az ACS helye a függő entitás alapházirendjére mutat. Ha például a függő házirend *B2C_1A_signup_signin*, az ACS a *B2C_1A_signup_signin* alapházirendje, például *B2C_1A_TrustFrameworkBase*.
+
+A következőkben egy példa látható egy Azure AD B2C házirend metaadat-felállítására szolgáló fogyasztói szolgáltatási elemre. 
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">

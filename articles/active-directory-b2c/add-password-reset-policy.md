@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8b3224333a3915b7827242004d1dec0f4695f479
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f451d08dfbde643d91705f54296e9757a51c9d88
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581915"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798393"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Jelszó-visszaállítási folyamat beállítása Azure Active Directory B2C
 
@@ -35,6 +35,9 @@ A [regisztrációs és bejelentkezési utazás](add-sign-up-and-sign-in-policy.m
 ![Jelszó-visszaállítási folyamat](./media/add-password-reset-policy/password-reset-flow.png)
 
 A jelszó-visszaállítási folyamat az Azure AD B2C helyi fiókjaira vonatkozik, amelyek [e-mail-címet](identity-provider-local.md#email-sign-in) vagy [felhasználónevet](identity-provider-local.md#username-sign-in) használnak a bejelentkezéshez jelszóval.
+
+> [!TIP]
+> Az önkiszolgáló jelszó-visszaállítási folyamat lehetővé teszi, hogy a felhasználók megváltoztassák a jelszavukat, amikor a felhasználó elfelejti a jelszavát, és vissza kívánja állítani. Érdemes lehet [módosítani a jelszó módosítási folyamatát](add-password-change-policy.md) , hogy támogassa azokat az eseteket, amikor a felhasználó ismeri a jelszavát, és módosítani szeretné.
 
 A felhasználók a véletlenszerű jelszavakkal Azure AD B2Cba való áttelepítését követően gyakori eljárás, hogy a felhasználók ellenőrizzék az e-mail-címüket, és az első bejelentkezéskor visszaállítsák a jelszavukat. Gyakori, hogy a felhasználó úgy kényszeríti a jelszót, hogy új jelszó megváltoztatását követően a rendszergazda megváltoztatja a jelszavát; a funkció engedélyezéséhez tekintse meg a [jelszó-visszaállítás kényszerítése](force-password-reset.md) című témakört.
 

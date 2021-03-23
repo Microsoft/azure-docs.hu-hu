@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4aed956fc7052f844080b830aa4cc3b2a07235a1
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93073757"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799394"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Az Azure Cosmos DB gyakori használati helyzetei
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ A IoT-használati esetek gyakran osztoznak bizonyos mintákban az adatfeldolgoz�
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT-hivatkozás architektúrája" border="false":::
 
-Az Azure Event Hubs betöltheti az adatvesztést, mivel a nagy átviteli sebességű adatfeldolgozást biztosít kis késéssel. A valós idejű betekintésre feldolgozható, beolvasott adatmennyiséget a valós idejű elemzések Azure Stream Analyticséhez lehet tölcsérbe állítani. Az Azure Cosmos DB az ad hoc lekérdezésekhez tölthetők be. Az adatAzure Cosmos DBba való betöltését követően az adatlekérdezés készen áll. Emellett az új adatok és a meglévő adatok módosítása is olvasható a változási hírcsatornán. A Change feed egy állandó, csak hozzáfűzési napló, amely szekvenciális sorrendben tárolja a Cosmos-tárolók változásait. A valós idejű elemzések részeként a rendszer az összes adatmennyiséget vagy a Azure Cosmos DB lévő adatváltozásokat is használhatja hivatkozási adatként. Emellett az adatok tovább finomítható és feldolgozhatók, ha összekapcsolja Azure Cosmos DB adatok HDInsight a Pig, a kaptár vagy a Térkép/feladatok csökkentése érdekében.  A rendszer ezután visszahelyezi a finomított adatgyűjtést a jelentéskészítés Azure Cosmos DB.   
+Az Azure Event Hubs betöltheti az adatvesztést, mivel a nagy átviteli sebességű adatfeldolgozást biztosít kis késéssel. A valós idejű betekintésre feldolgozható, beolvasott adatmennyiséget a valós idejű elemzések Azure Stream Analyticséhez lehet tölcsérbe állítani. Az Azure Cosmos DB az ad hoc lekérdezésekhez tölthetők be. Az adatAzure Cosmos DBba való betöltését követően az adatlekérdezés készen áll. Emellett az új adatok és a meglévő adatok módosítása is olvasható a változási hírcsatornán. A Change feed egy állandó, csak hozzáfűzési napló, amely szekvenciális sorrendben tárolja a Cosmos-tárolók változásait. Ezután a valós idejű elemzések részeként a rendszer az összes adatmennyiséget vagy a Azure Cosmos DB lévő adatváltozásokat is használhatja hivatkozási adatként. Emellett az adatok tovább finomítható és feldolgozhatók, ha összekapcsolja Azure Cosmos DB adatok HDInsight a Pig, a kaptár vagy a Térkép/feladatok csökkentése érdekében.  A rendszer ezután visszahelyezi a finomított adatgyűjtést a jelentéskészítés Azure Cosmos DB.   
 
 Azure Cosmos DB, EventHubs és Storm rendszerű minta IoT-megoldáshoz tekintse [meg a hdinsight-Storm-példákat tartalmazó tárházat a githubon](https://github.com/hdinsight/hdinsight-storm-examples/).
 

@@ -2,14 +2,14 @@
 title: Válassza ki a virtuális gépek méretét és lemezképeit a készletekhez
 description: Az elérhető virtuálisgép-méretek és operációsrendszer-verziók kiválasztása Azure Batch-készletekben lévő számítási csomópontokhoz
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455195"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800482"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -35,11 +35,13 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | DC | Nem támogatott |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
-| Dav4, Dasv4 | Minden méret |
+| Dav4 | Minden méret |
+| Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Minden méret |
 | DV4, Dsv4 | Nem támogatott |
 | Ev3, Esv3 | Minden méret, kivéve a E64is_v3 |
-| Eav4, Easv4 | Minden méret |
+| Eav4 | Minden méret |
+| Easv4 | Minden méret |
 | Edv4, Edsv4 |  Minden méret |
 | Ev4, Esv4 | Nem támogatott |
 | F, FS | Minden méret |
@@ -56,7 +58,7 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | NC | Minden méret |
 | NCv2 | Minden méret |
 | NCv3 | Minden méret |
-| NCasT4_v3 | Minden méret |
+| NCasT4_v3 | Nincs – még nem érhető el |
 | ND | Minden méret |
 | NDv2 | Nincs – még nem érhető el |
 | NV | Minden méret |
@@ -100,6 +102,8 @@ A következő API-k egyikével visszaállíthatja a Batch által jelenleg támog
 - Batch szolgáltatás REST API: [támogatott lemezképek listázása](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch Pool által támogatott – lemezképek](/cli/azure/batch/pool/supported-images)
+
+Javasoljuk, hogy kerülje a képeket a közelgő batch-támogatás (EOL) befejezési dátumaival. Ezeket a dátumokat az [ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages), a [POWERSHELL](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images)segítségével derítheti fel. A Batch-készlet virtuálisgép-rendszerképének kiválasztásával kapcsolatos további információkért tekintse meg a [Batch ajánlott eljárásait ismertető útmutatót](best-practices.md) .
 
 ## <a name="next-steps"></a>Következő lépések
 

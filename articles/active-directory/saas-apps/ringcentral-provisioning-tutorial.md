@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1891af9acae2b976a18f68983693a7df559b6476
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96181620"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800769"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés RingCentral konfigurálása
 
@@ -46,15 +46,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>2. lépés RingCentral konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-1. Jelentkezzen be a [RingCentral felügyeleti konzolra](https://login.ringcentral.com/sw.html). Navigáljon az **eszközök > címtár-integráció** elemre.
-
-    ![RingCentral felügyeleti konzol](media/ringcentral-provisioning-tutorial/admin.png)
-
-2.  Válassza a **scim** lehetőséget a **címtár-szolgáltató kiválasztása** területen. (A jövőben egy Azure Active Directory nevű lehetőség lesz). Kattintson a **scim szolgáltatás engedélyezése** lehetőségre.
-
-    ![RingCentral-SCIM hozzáadása](media/ringcentral-provisioning-tutorial/scim.png)
-
-3.  matthew.hunt@ringcentral.comA **scim-hitelesítési tokenért** forduljon az RingCentral ügyfélszolgálatához. Ez az érték a RingCentral alkalmazás üzembe helyezés lapjának titkos jogkivonat mezőjében jelenik meg a Azure Portal.
+Az 5. lépésben a rendszergazdai hitelesítő adatok részben [RingCentral](https://www.ringcentral.com/office/plansandpricing.html) rendszergazdai fiók szükséges.
 
 > [!NOTE]
 > A licencek felhasználókhoz rendeléséhez tekintse meg a videó hivatkozást [itt](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language).
@@ -94,9 +86,13 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://platform.ringcentral.com/scim/v2` meg a **bérlői URL-címet**. Adja meg a **scim-hitelesítési jogkivonat** értékét a **titkos tokenben**. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RingCentral. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RingCentral-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban kattintson az **Engedélyezés** elemre. A rendszer átirányítja a RingCentral bejelentkezési oldalára. Adja meg az E-mail címét, telefonszámát és jelszavát, majd kattintson a **Bejelentkezés** gombra. Az RingCentral **hozzáférési kérelme** lapon kattintson az **Engedélyezés** elemre. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a RingCentral. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a RingCentral-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Képernyőkép a bérlői URL-cím és a titkos jogkivonat szöveges mezőiről, az elnevezett kapcsolat tesztelése lehetőséggel.](./media/ringcentral-provisioning-tutorial/provisioning.png)
+   ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
+
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
+
+   ![Engedélyezés](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
 6. Az **Értesítés e-mailben** mezőben adja meg annak a személynek vagy csoportnak az e-mail-címét, aki az átadással kapcsolatos hibaüzeneteket kapja, és jelölje be az **E-mail-értesítés küldése hiba esetén** jelölőnégyzetet.
 
@@ -151,6 +147,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 ## <a name="change-log"></a>Változási napló
 
 * 09/10/2020 – eltávolította a "displayName" és a "Manager" attribútumok támogatását.
+* 03/15/2021 – frissített engedélyezési módszer az állandó tulajdonosi jogkivonatból a OAuth-kód megadására.
 
 ## <a name="additional-resources"></a>További források
 

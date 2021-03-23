@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 08/26/2020
 ms.author: v-tcassi
-ms.openlocfilehash: c7be10e14daf3ee769e86d51f648cc6b656a416a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b5450e4846c3c49c89830ae65c50a95ee0c8d6eb
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89303053"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104803477"
 ---
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>IoT Edge CI/CD ellenőrzése a létrehozási és kiadási folyamatokkal
 
@@ -36,3 +36,5 @@ A létrehozási feladatok elindításához leküldheti a véglegesítést a forr
 6. A kiadási naplók megjelenítéséhez kattintson a **fejlesztői** fázis elemre.
 
     ![Kiadási naplók](./media/iot-edge-verify-iot-edge-continuous-integration-continuous-deployment/release-logs.png)
+
+7. Ha a folyamat meghiúsul, először tekintse meg a naplókat. A naplók megtekintéséhez navigáljon a folyamat futtatása összegzésre, és válassza ki a feladatot és a feladatot. Ha egy bizonyos feladat meghiúsul, ellenőrizze a feladat naplóit. A naplók konfigurálásával és használatával kapcsolatos részletes utasításokért lásd: [naplók áttekintése a folyamatok diagnosztizálásához](/azure/devops/pipelines/troubleshooting/review-logs).

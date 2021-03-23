@@ -1,20 +1,19 @@
 ---
-title: Riasztások megtekintése
+title: Riasztások szűrése és kezelése a riasztások lapról
 description: A riasztásokat a különböző kategóriák szerint tekintheti meg, és a keresési funkciók segítségével megtalálhatja a fontos riasztásokat.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/02/2020
+ms.date: 3/22/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 6dc2a9683a48f20816adc8ce0ee0c1e8dc57b287
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 391d1872124c7332bdaa6008a244490b47df4bf7
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523668"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781585"
 ---
-# <a name="view-alerts"></a>Riasztások megtekintése
+# <a name="filter-and-manage-alerts-from-the-alerts-page"></a>Riasztások szűrése és kezelése a riasztások lapról 
 
 Ez a cikk bemutatja, hogyan tekintheti meg az érzékelő által aktivált riasztásokat, és hogyan kezelheti őket a riasztási eszközökkel.
 
@@ -32,7 +31,7 @@ Riasztások megtekintése:
 
 A riasztások a **riasztások** főnézetből különböző kategóriák szerint tekinthetők meg. Válasszon ki egy riasztást a részletek áttekintéséhez és az esemény kezeléséhez.
 
-| Rendezés típus szerint | Description |
+| Rendezés típus szerint | Leírás |
 |--|--|
 | **Fontos riasztások** | A riasztások fontosság szerint rendezve jelennek meg. |
 | **Rögzített riasztások** | Riasztások, amelyeket a felhasználó a további vizsgálathoz rögzített. A rögzített riasztások archiválása nem történik meg, és a rögzített mappában 14 napig vannak tárolva. |

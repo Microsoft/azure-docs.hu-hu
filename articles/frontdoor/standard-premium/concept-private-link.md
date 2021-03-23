@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: tyao
 ms.custom: references_regions
-ms.openlocfilehash: 6a1ec6e0b8862c6ad2b884b019e908e7d2a59a1e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88c000c96e632f970db075fafb13ea5eb4bbddfc
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101715513"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799935"
 ---
 # <a name="secure-your-origin-with-private-link-in-azure-front-door-standardpremium-preview"></a>Saját forrásának védelme az Azure-beli előtérben standard/prémium (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az [Azure Private-hivatkozás](../../private-link/private-link-overview.md) lehe
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az Azure bevezető prémium SKU-jának a webalkalmazás-és a Storage-fiókhoz a Private link Service használatával kapcsolódhat, így nincs szükség a forrás nyilvánosan elérhetővé tételére.
+Az Azure bevezető Premium SKU a saját forráshoz is kapcsolódhat a Private link Service használatával. Az alkalmazásai a saját VNet vagy egy, a webalkalmazás-és a Storage-fiók mögötti, a saját forrásának nyilvánosan elérhetővé tételéhez szükségesek.
 
 :::image type="content" source="../media/concept-private-link/front-door-private-endpoint-architecture.png" alt-text="Az első ajtós privát végpontok architektúrája":::
 

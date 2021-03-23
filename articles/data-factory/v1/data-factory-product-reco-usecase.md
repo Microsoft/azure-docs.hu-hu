@@ -3,16 +3,16 @@ title: Data Factory használati eset – termékre vonatkozó javaslatok
 description: További információ a Azure Data Factory használatával megvalósított használati esetekről, valamint más szolgáltatásokkal.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b20eef90cebab59f823e1766d28eb355f317463d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 44c66f5fa89e7293667c930bfd1720d72dc26bf4
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100387189"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104785070"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – termékkel kapcsolatos javaslatok
 Azure Data Factory a megoldási gyorssegédek Cortana Intelligence Suite megvalósításához használt számos szolgáltatás egyike.  A csomaggal kapcsolatos részletekért tekintse meg [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalt. Ebben a dokumentumban általános használati esetet ismertetünk, amelyet az Azure-felhasználók már megoldottak és implementáltak Azure Data Factory és más Cortana Intelligence összetevő-szolgáltatások használatával.

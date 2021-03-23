@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 33172004ac4361de51b92389fbf56bd699f7124f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102096445"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802743"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Az Azure spot Virtual Machines üzembe helyezése Azure PowerShell használatával
 
@@ -76,20 +76,53 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="simulate-an-eviction"></a>Kizárás szimulálása
 
-Az Azure-beli direktszínű virtuális gépek [kizárását szimulálhatja](/rest/api/compute/virtualmachines/simulateeviction) , így tesztelheti, hogy az alkalmazás milyen jól fogja kizárni a hirtelen kizárást. 
+A REST, a PowerShell vagy a CLI használatával szimulálhatja az Azure-beli direktszínű virtuális gépek kizárását annak teszteléséhez, hogy az alkalmazás milyen jól reagáljon a hirtelen kizárásra.
 
-Cserélje le a következőt az adataira: 
+A legtöbb esetben érdemes a REST API [Virtual Machines szimulálni a kizárást](/rest/api/compute/virtualmachines/simulateeviction) , hogy segítsen az alkalmazások automatizált tesztelésében. A REST esetében `Response Code: 204` az azt jelenti, hogy a szimulált kizárás sikeres volt. A szimulált kizárásokat kombinálhatja az [ütemezett esemény szolgáltatással](scheduled-events.md), így automatizálhatja, hogy az alkalmazás hogyan reagáljon a virtuális gép kizárásakor.
 
-- `subscriptionId`
-- `resourceGroupName`
-- `vmName`
+Az ütemezett események működés közbeni megtekintéséhez tekintse meg az [Azure Friday – azure Scheduled Events használatával készítse elő a virtuális gépek karbantartását](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance).
 
 
-```rest
-POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+### <a name="quick-test"></a>Gyorsteszt
+
+Ha egy gyors teszttel bemutatjuk, hogyan fog működni egy szimulált kizárás, lássuk végig az ütemezett esemény szolgáltatás lekérdezését, hogy meglássuk, mi úgy néz ki, mint amikor szimulál egy kizárást a PowerShell használatával.
+
+Az ütemezett esemény szolgáltatás engedélyezve van a szolgáltatáshoz, amikor az első alkalommal kérelmet küld az eseményekre. 
+
+Távolról a virtuális gépre, majd nyisson meg egy parancssort. 
+
+A virtuális gépen a parancssorba írja be a következőt:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
-`Response Code: 204` azt jelenti, hogy a szimulált kizárás sikeres volt. 
+Ez az első válasz akár 2 percet is igénybe vehet. Mostantól szinte azonnal meg kell jelennie a kimenetnek.
+
+Egy olyan számítógépről, amelyen telepítve van az az PowerShell-modul (például a helyi gép), szimuláljon egy kizárást a [set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)használatával. Cserélje le az erőforráscsoport nevét és a virtuális gép nevét a saját nevére. 
+
+```azurepowershell-interactive
+Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction
+```
+
+Ha a kérés sikeresen létrejött, a válasz kimenete lesz `Status: Succeeded` .
+
+Lépjen vissza a helyszíni virtuális géphez való távoli kapcsolódásra, és ismételje meg a Scheduled Events-végpont lekérdezését. Ismételje meg a következő parancsot, amíg olyan kimenetet kap, amely további információkat tartalmaz:
+
+```
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
+```
+
+Ha az ütemezett esemény szolgáltatás lekéri a kizárási értesítést, a következőhöz hasonló választ kap:
+
+```output
+{"DocumentIncarnation":1,"Events":[{"EventId":"A123BC45-1234-5678-AB90-ABCDEF123456","EventStatus":"Scheduled","EventType":"Preempt","ResourceType":"VirtualMachine","Resources":["myspotvm"],"NotBefore":"Tue, 16 Mar 2021 00:58:46 GMT","Description":"","EventSource":"Platform"}]}
+```
+
+Láthatja, hogy az `"EventType":"Preempt"` erőforrás a virtuális gép erőforrása `"Resources":["myspotvm"]` . 
+
+Azt is láthatja, hogy a virtuális gép ki lesz-e zárva az érték ellenőrzésével `"NotBefore"` . A virtuális gépet nem lehet kizárni a-ben megadott idő előtt `NotBefore` , hogy az alkalmazása megfelelően kizárja az alkalmazást.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

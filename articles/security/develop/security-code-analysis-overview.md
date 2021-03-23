@@ -4,7 +4,7 @@ description: További információ a Microsoft biztonsági kód elemzése bőví
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a3af3307892e82ecd0697124954e99837ad5eb9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4443bdbc134f222256c6af8bb1f52c684cdb4624
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94515693"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104801196"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>Tudnivalók a Microsoft biztonsági kódok elemzéséről
+
+> [!Note]
+> 2022. március 1-től érvényes a Microsoft biztonsági kód elemzése (MSCA) bővítmény kivonásra kerül. A meglévő MSCA-ügyfelek a 2022. március 1-től megőrzik a MSCA való hozzáférésüket. Az Azure DevOps alternatív lehetőségeiért tekintse meg a [OWASP forráskódját elemző eszközöket](https://owasp.org/www-community/Source_Code_Analysis_Tools) . Azon ügyfelek számára, akik a GitHubra kívánnak áttelepítést végezni, megnézheti a [GitHub fokozott biztonságát](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security).
 
 A Microsoft biztonsági kód elemzése bővítménnyel a csapatok hozzáadhatják a biztonsági kód elemzését az Azure DevOps folyamatos integrációs és szállítási (CI/CD) folyamataihoz. Ezt az elemzést a [biztonságos fejlesztési életciklus (SDL)](https://www.microsoft.com/securityengineering/sdl/practices) szakértői a Microsoftnál ajánljuk.
 

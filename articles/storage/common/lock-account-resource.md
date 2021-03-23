@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9d80c0b8d4d913322c47d1ad278d6dbc033d2409
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 79b88ad58a2eb95a48a140b3b98d606af495cb94
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102620061"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799785"
 ---
 # <a name="apply-an-azure-resource-manager-lock-to-a-storage-account"></a>Azure Resource Manager zárolásának alkalmazása Storage-fiókra
 
@@ -25,8 +25,8 @@ A Microsoft az összes Storage-fiók zárolását javasolja egy Azure Resource M
 
 A Azure Resource Manager zárolásokkal kapcsolatos további információkért lásd: [erőforrások zárolása a módosítások megelőzése érdekében](../../azure-resource-manager/management/lock-resources.md).
 
-> [!IMPORTANT]
-> A Storage-fiók zárolása nem biztosítja a fiókban lévő adatok frissítését vagy törlését.
+> [!CAUTION]
+> A Storage-fiók zárolása nem biztosítja a fiókban lévő tárolók vagy Blobok törlését vagy felülírását. További információ a blob-adatok védelméről: [Adatvédelem áttekintése](../blobs/data-protection-overview.md).
 
 ## <a name="configure-an-azure-resource-manager-lock"></a>Azure Resource Manager zárolásának konfigurálása
 
@@ -83,4 +83,5 @@ Előfordulhat, hogy a Azure Files vagy a Table serviceban lévő adatok elérhet
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Erőforrások zárolása a módosítások megakadályozása érdekében](../../azure-resource-manager/management/lock-resources.md)
+- [Az adatvédelem áttekintése](../blobs/data-protection-overview.md)
+- [Erőforrások zárolása a módosítások megakadályozása érdekében](../../azure-resource-manager/management/lock-resources.md)

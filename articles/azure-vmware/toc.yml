@@ -46,8 +46,6 @@
       href: concepts-storage.md
     - name: Magánfelhők hozzáférése és identitása
       href: concepts-identity.md
-    - name: vSphere szerepköralapú hozzáférés-vezérlés
-      href: concepts-role-based-access-control.md
     - name: Magánfelhők monitorozása és javítása
       href: concepts-monitor-repair-private-cloud.md
     - name: Magánfelhők frissítései

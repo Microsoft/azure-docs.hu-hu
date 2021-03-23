@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96029347"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798884"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -48,16 +48,16 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
+| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
-|   |   | Windows jelenlegi | Nem állandó | No |
+|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-|   | Felügyelt | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
+|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
 <sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 v1803 vagy újabb, valamint a Windows Server 2019.
@@ -79,6 +79,8 @@ A rendszergazdáknak az identitás-infrastruktúrájuk alapján kell megismerni�
 - [Hibrid Azure Active Directory csatlakozás konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
 - [Hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>Nem állandó VDI
+
 Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák implementálják az alábbi útmutatást. Ennek elmulasztása azt eredményezi, hogy a címtárban sok olyan elavult hibrid Azure AD-csatlakoztatott eszköz található, amely a nem állandó VDI-platformról lett regisztrálva, ami nagyobb terhelést eredményezett a bérlői kvótán, és a szolgáltatás megszakadásának kockázata a bérlői kvóta elfogyása miatt.
 
 - Ha a rendszer-előkészítő eszközre (sysprep.exe) támaszkodik, és ha a telepítés előtt Windows 10 1809 rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem egy olyan eszközről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-hez.
@@ -92,6 +94,15 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
 - Az [elavult eszközök kezelésére](manage-stale-devices.md)szolgáló folyamat meghatározása és implementálása.
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
+
+### <a name="persistent-vdi"></a>Állandó VDI
+
+Állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák implementálják az alábbi útmutatást. Ha ezt nem teszi meg, az üzembe helyezési és hitelesítési problémákhoz vezethet. 
+
+- Ha a rendszer-előkészítő eszközre (sysprep.exe) támaszkodik, és ha a telepítés előtt Windows 10 1809 rendszerképet használ, győződjön meg arról, hogy a rendszerkép nem egy olyan eszközről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-hez.
+- Ha virtuális gép (VM) pillanatképét szeretné létrehozni további virtuális gépek létrehozásához, győződjön meg arról, hogy a pillanatkép nem olyan virtuális gépről származik, amely már regisztrálva van az Azure AD-ben hibrid Azure AD-csatlakozásként.
+
+Emellett azt javasoljuk, hogy az [elavult eszközök felügyeletének](manage-stale-devices.md)folyamatát is implementálja. Ezzel biztosíthatja, hogy a címtára ne legyen felhasználva sok elavult eszközzel, ha rendszeresen alaphelyzetbe állítja a virtuális gépeket.
  
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: bebe9424df24792f7450620657c5e2da5f08196a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 874df4301165aaf253dd0f4316adee7ab9ce7ce5
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046516"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798850"
 ---
 # <a name="create-interactive-reports-vm-insights-with-workbooks"></a>Interaktív jelentések készítése a virtuális gépekről a munkafüzetekből
 
@@ -25,17 +25,17 @@ A munkafüzetek hasznosak a következő forgatókönyvekhez:
 
 A következő táblázat összefoglalja azokat a munkafüzeteket, amelyekkel a virtuális gépek bepillantást nyerhet a kezdéshez.
 
-| Munkafüzet | Description | Hatókör |
+| Munkafüzet | Leírás | Hatókör |
 |----------|-------------|-------|
-| Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Skálán |
-| Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Skálán |
-| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Skálán |
-| Aktív portok | A figyelt virtuális gépek portjaira és a kiválasztott időkeretbe tartozó tevékenységekre vonatkozó folyamatok listáját jeleníti meg. | Skálán |
-| Nyitott portok | Megadja a megfigyelt virtuális gépeken megnyitott portok számát, valamint a nyitott portok részleteit. | Skálán |
-| Sikertelen kapcsolatok | Megjeleníti a sikertelen kapcsolatok számát a figyelt virtuális gépeken, a meghibásodási trendet, és ha a hibák százalékos aránya növekszik az idő múlásával. | Skálán |
-| Biztonság és naplózás | A TCP/IP-forgalom elemzése, amely a teljes kapcsolatokra, valamint a rosszindulatú kapcsolatokra mutat, ahol az IP-végpontok globálisan találhatók.  Az összes funkció engedélyezéséhez engedélyeznie kell a biztonsági észlelést. | Skálán |
-| TCP-forgalom | Egy rangsorolt jelentés a megfigyelt virtuális gépekhez, valamint az elküldött, fogadott és teljes hálózati forgalomhoz egy rácsban, és egy trendvonalként jelenik meg. | Skálán |
-| Adatforgalom-összehasonlítás | Ez a munkafüzet lehetővé teszi a hálózati forgalom trendjeinek összehasonlítását egyetlen gép vagy egy számítógépcsoport esetében. | Skálán |
+| Teljesítmény | A Top N List és Diagrams nézet testreszabható verzióját jeleníti meg egyetlen munkafüzetben, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja.| Több virtuális gép |
+| Teljesítményszámlálók | Felső N diagramos nézet a teljesítményszámlálók széles készletében. | Több virtuális gép |
+| Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a figyelt virtuális gépek bejövő és kimenő kapcsolatairól. | Több virtuális gép |
+| Aktív portok | A figyelt virtuális gépek portjaira és a kiválasztott időkeretbe tartozó tevékenységekre vonatkozó folyamatok listáját jeleníti meg. | Több virtuális gép |
+| Nyitott portok | Megadja a megfigyelt virtuális gépeken megnyitott portok számát, valamint a nyitott portok részleteit. | Több virtuális gép |
+| Sikertelen kapcsolatok | Megjeleníti a sikertelen kapcsolatok számát a figyelt virtuális gépeken, a meghibásodási trendet, és ha a hibák százalékos aránya növekszik az idő múlásával. | Több virtuális gép |
+| Biztonság és naplózás | A TCP/IP-forgalom elemzése, amely a teljes kapcsolatokra, valamint a rosszindulatú kapcsolatokra mutat, ahol az IP-végpontok globálisan találhatók.  Az összes funkció engedélyezéséhez engedélyeznie kell a biztonsági észlelést. | Több virtuális gép |
+| TCP-forgalom | Egy rangsorolt jelentés a megfigyelt virtuális gépekhez, valamint az elküldött, fogadott és teljes hálózati forgalomhoz egy rácsban, és egy trendvonalként jelenik meg. | Több virtuális gép |
+| Adatforgalom-összehasonlítás | Ez a munkafüzet lehetővé teszi a hálózati forgalom trendjeinek összehasonlítását egyetlen gép vagy egy számítógépcsoport esetében. | Több virtuális gép |
 | Teljesítmény | A teljesítmény nézet testreszabható verzióját nyújtja, amely az összes engedélyezett Log Analytics teljesítményszámlálókat kihasználja. | Egyetlen virtuális gép | 
 | Kapcsolatok | A kapcsolatok részletes áttekintést nyújtanak a virtuális gépről érkező bejövő és kimenő kapcsolatokról. | Egyetlen virtuális gép |
  

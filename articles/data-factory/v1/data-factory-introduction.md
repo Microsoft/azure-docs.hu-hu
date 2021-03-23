@@ -3,16 +3,16 @@ title: Az adatintegrációs szolgáltatás Data Factory bemutatása
 description: 'A témakör ismerteti, hogy mi is az Azure Data Factory: egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása.'
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 1cee5f92af4e23a6bc0d195bc13bc3f11f53443d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 220c1969055ffaa5d1bea41ab547efd4596f8a20
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100382973"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786464"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -135,7 +135,7 @@ Az Azure Data Factoryben a következő eszközök és API-k használhatók adatf
 
 A következő oktatóanyagok részletes utasításait követve megtudhatja, hogyan építhet ki adatfolyamatokkal rendelkező adat-előállítókat:
 
-| Oktatóanyag | Description |
+| Oktatóanyag | Leírás |
 | --- | --- |
 | [Két felhőalapú adattár közötti adatáthelyezés](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Hozzon létre egy adatfeldolgozót egy olyan folyamattal, amely a blob Storage-ból SQL Databaseba helyezi át az adatait. |
 | [Adatok átalakítása Hadoop-fürttel](data-factory-build-your-first-pipeline.md) |Kiépítheti az első Azure adat-előállítóját egy olyan adatfolyamattal, amely egy Azure HDInsight- (Hadoop-) fürtön futtatott Hive-szkripttel dolgozza fel az adatokat. |

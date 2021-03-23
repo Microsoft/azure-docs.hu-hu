@@ -1,19 +1,14 @@
 ---
 title: Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
-titleSuffix: Azure Defender for IoT
 description: Megtudhatja, hogyan hozhat létre egyedi DefenderIotMicroAgent-modult az új eszközökhöz.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
-ms.service: azure
-ms.openlocfilehash: e1c2f4e79b9f0f0ba1ec0da0c5a2a29cdc8bc6d7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5036eefbd77a22d492f6ce7d3c7d15f50a081490
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103489879"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781058"
 ---
 # <a name="create-a-defender-iot-micro-agent-module-twin-preview"></a>Defender IoT Micro Agent-modul létrehozása twin (előzetes verzió)
 

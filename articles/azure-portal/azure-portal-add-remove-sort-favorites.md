@@ -2,14 +2,14 @@
 title: Kedvencek hozzáadása, eltávolítása és rendezése Azure Portal
 description: Megtudhatja, hogyan adhat hozzá vagy távolíthat el elemeket a Kedvencek listából, és hogyan rendezheti át az elemek sorrendjét
 keywords: Kedvencek, portál
-ms.date: 12/20/2019
+ms.date: 03/16/2021
 ms.topic: how-to
-ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: dc1e9436c5adb84fbe4b736b2c2217b6e5da2c97
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745791"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774473"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Kedvencek hozzáadása, eltávolítása és átrendezése
 

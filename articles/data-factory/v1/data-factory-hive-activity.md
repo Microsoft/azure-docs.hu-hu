@@ -3,16 +3,16 @@ title: Adatátalakítás a méhkas tevékenységgel – Azure
 description: Ismerje meg, hogyan használhatja a kaptár-tevékenységeket a Azure Data Factory v1-ben a kaptár-lekérdezések futtatásához egy igény szerinti vagy saját HDInsight-fürtön.
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9d14ddb172546e062b62a5a8dd98b49a0a6e1c6f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63e726c98922b789977a884bf747f12186707d57
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100383024"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782707"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
 > [!div class="op_single_selector" title1="Átalakítási tevékenységek"]
@@ -69,15 +69,15 @@ A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúr�
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |A tevékenység neve |Yes |
-| leírás |A tevékenység által használt szöveg leírása |No |
-| típus |HDinsightHive |Yes |
-| bemenetek |A kaptár tevékenység által felhasznált bemenetek |No |
-| kimenetek |A kaptár tevékenység által létrehozott kimenetek |Yes |
-| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Yes |
-| parancsfájl |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |No |
-| scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
-| meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |No |
+| name |A tevékenység neve |Igen |
+| leírás |A tevékenység által használt szöveg leírása |Nem |
+| típus |HDinsightHive |Igen |
+| bemenetek |A kaptár tevékenység által felhasznált bemenetek |Nem |
+| kimenetek |A kaptár tevékenység által létrehozott kimenetek |Igen |
+| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
+| parancsfájl |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |Nem |
+| scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
+| meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát a game logs analyticsre, ahol a felhasználók által a vállalat által elindított játékokkal töltött idő azonosítására van szükség. 

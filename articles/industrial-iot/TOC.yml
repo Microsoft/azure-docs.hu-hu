@@ -1,0 +1,64 @@
+- name: Az Azure Industrial IoT dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az ipari IoT?
+      href: overview-what-is-industrial-iot.md
+    - name: Mi az OPC-közzétevő?
+      href: overview-what-is-opc-publisher.md
+    - name: Mi az az ipari IoT platform?
+      href: overview-what-is-industrial-iot-platform.md
+- name: Oktatóanyagok
+  items:
+    - name: OPC-közzétevő – önálló oktatóanyagok
+      items:
+        - name: OPC-közzétevő önálló üzemmódjának üzembe helyezése
+          href: tutorial-publisher-deploy-opc-publisher-standalone.md
+        - name: Az OPC Publisher konfigurálása
+          href: tutorial-publisher-configure-opc-publisher.md
+        - name: Az OPC-közzétevő teljesítménye és memóriájának finomhangolása
+          href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
+    - name: IIoT platform oktatóanyagok (előkészített mód)
+      items:
+        - name: IIoT platform üzembe helyezése
+          href: tutorial-deploy-industrial-iot-platform.md
+        - name: IIoT-összetevők konfigurálása
+          href: tutorial-configure-industrial-iot-components.md
+        - name: IIoT-ADX beolvasása
+          href: tutorial-industrial-iot-azure-data-explorer.md
+        - name: Az Time Series Insights használatával megjelenítheti és elemezheti az adataikat
+          href: tutorial-visualize-data-time-series-insights.md
+- name: Referencia
+  items:
+    - name: Parancssori argumentumok
+      href: reference-command-line-arguments.md
+    - name: OPC-közzétevő telemetria konfigurációs fájlformátuma
+      href: reference-opc-publisher-telemetry-format.md
+- name: Források
+  items:
+    - name: OPC-közzétevő GitHub-tárháza
+      href: 'https://github.com/Azure/Industrial-IoT'
+    - name: IIoT platform GitHub-adattár
+      href: 'https://github.com/Azure/iot-edge-opc-publisher'
+    - name: Támogatási és súgólehetőségek
+      href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: IoT Szószedet
+      href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json
+    - name: Azure IoT-szolgáltatások
+      items:
+        - name: IoT Hub
+          href: ../iot-hub/index.yml
+        - name: IoT Hub Device Provisioning Service
+          href: ../iot-dps/index.yml
+        - name: IoT-központ
+          href: /microsoft-iot-central/
+        - name: IoT Edge
+          href: ../iot-edge/index.yml
+        - name: IoT-megoldásgyorsítók
+          href: ./index.yml
+        - name: IoT Plug and Play
+          href: ../iot-pnp/index.yml
+        - name: Azure Maps
+          href: ../azure-maps/index.yml
+        - name: Time Series Insights
+          href: ../time-series-insights/index.yml

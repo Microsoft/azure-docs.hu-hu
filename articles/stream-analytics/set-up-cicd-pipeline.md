@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: f62b4c354ffa90bf1a03651fccf8780074344e46
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: dbd6a1a0c8643adc4918cc15e214e903dfb1ccb6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103466422"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775935"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Az Azure DevOps használata CI/CD-folyamat létrehozásához Stream Analytics feladatokhoz
 
@@ -20,13 +20,13 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre [Azure DevOps-létrehozási]
 
 ## <a name="commit-your-stream-analytics-project"></a>Stream Analytics projekt véglegesíte
 
-Mielőtt elkezdené, véglegesítse a teljes Stream Analytics-projekteket forrásfájlként egy [Azure DevOps](/azure/devops/user-guide/source-control) adattárba. Hivatkozhat erre a [minta adattárra](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo) , és [stream Analytics a projekt forráskódját](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) az Azure-folyamatokban.
+Mielőtt elkezdené, véglegesítse a teljes Stream Analytics-projekteket forrásfájlként egy [Azure DevOps](/azure/devops/user-guide/source-control) adattárba. Hivatkozhat erre a [minta adattárra](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo) , és [stream Analytics a projekt forráskódját](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo) az Azure-folyamatokban.
 
 A cikkben ismertetett lépések egy Stream Analytics Visual Studio Code-projektet használnak. Ha Visual Studio-projektet használ, kövesse a [Azure stream Analytics feladatok automatizálása, tesztelése és központi telepítése a CI/CD-eszközök használatával](cicd-tools.md)című témakör lépéseit.
 
 ## <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta [automatikus létrehozási és tesztelési folyamatát](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) az Azure DevOps is hivatkozhatjuk.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre Build-folyamatot. A minta [automatikus létrehozási és tesztelési folyamatát](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_build) az Azure DevOps is hivatkozhatjuk.
 
 1. Nyisson meg egy webböngészőt, és navigáljon a projekthez az Azure DevOps.  
 
@@ -155,7 +155,7 @@ A tesztelési összesítő fájl és a Azure Resource Manager sablonfájlok a **
 
 ## <a name="release-with-azure-pipelines"></a>Kiadás Azure-folyamatokkal
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre kiadási folyamatokat. Hivatkozhat erre a minta [kiadási folyamatra](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) az Azure DevOps-ben.
+Ebből a szakaszból megtudhatja, hogyan hozhat létre kiadási folyamatokat. Hivatkozhat erre a minta [kiadási folyamatra](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2) az Azure DevOps-ben.
 
 Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual Studio Code projekthez.
 
