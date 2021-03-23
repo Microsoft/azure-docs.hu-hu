@@ -2,13 +2,13 @@
 title: Nyilvános beállításjegyzék-hozzáférés konfigurálása
 description: Konfigurálja az IP-szabályokat úgy, hogy engedélyezze az Azure Container Registry elérését a kiválasztott nyilvános IP-címekről vagy címtartományok közül.
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 4e4ee817e2534bcca09cba89daafd379ff3f03f0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/08/2021
+ms.openlocfilehash: 727aa1dc028b5f52a022e54c2cd252ae372e78fe
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89488762"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773062"
 ---
 # <a name="configure-public-ip-network-rules"></a>Nyilvános IP-hálózati szabályok konfigurálása
 
@@ -17,6 +17,8 @@ Az Azure Container Registry alapértelmezés szerint minden hálózaton fogadja 
 Az IP-hálózati szabályok a nyilvános beállításjegyzékbeli végponton vannak konfigurálva. Az IP-hálózati szabályok nem vonatkoznak a [privát kapcsolattal](container-registry-private-link.md) konfigurált privát végpontokra
 
 Az IP-hozzáférési szabályok konfigurálása a **prémium** szintű tároló beállításjegyzék-szolgáltatási szintjén érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry rétegek](container-registry-skus.md).
+
+Mindegyik beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]
 

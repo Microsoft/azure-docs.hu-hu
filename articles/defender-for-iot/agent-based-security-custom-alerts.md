@@ -1,25 +1,14 @@
 ---
 title: Ügynök-alapú biztonsági egyéni riasztások
-titleSuffix: Azure Defender for IoT
 description: Ismerje meg a testreszabható biztonsági riasztásokat, valamint ajánlott szervizelést a Defender használatával a IoT-eszköz funkcióinak és szolgáltatásainak használatához.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 5d0eeb046d7a4ba474a1ed4a2cfb07a07f1c3888
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2fb1385c12cbd9d0479d8528f54aad8816393ad1
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493305"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784917"
 ---
 # <a name="defender-for-iot-devices-custom-security-alerts"></a>Defender IoT-eszközökhöz egyéni biztonsági riasztások
 
@@ -31,7 +20,7 @@ A IoT-riasztások következő listáját a várt IoT-eszköz viselkedése alapj�
 
 ## <a name="agent-based-security-custom-alerts"></a>Ügynök-alapú biztonsági egyéni riasztások
 
-| Súlyosság | Riasztás neve | Adatforrás | Description | Javasolt szervizelés |
+| Súlyosság | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés |
 |--|--|--|--|--|
 | Alacsony | Egyéni riasztás – az aktív kapcsolatok száma kívül esik az engedélyezett tartományon. | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | A megadott időszakon belüli aktív kapcsolatok száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett kapcsolatok listájához. |
 | Alacsony | Egyéni riasztás – a nem engedélyezett IP-címhez létrehozott kimenő kapcsolatok | Klasszikus Defender-IoT-Micro-Agent, Azure RTOS | Egy kimenő kapcsolat egy olyan IP-címhez lett létrehozva, amely kívül esik az engedélyezett IP-listán. | Vizsgálja meg az eszköz naplóit. Ismerje meg, hogy a kapcsolatok honnan származnak, és hogy milyen jóindulatú vagy rosszindulatú. Ha rosszindulatú, távolítsa el a lehetséges kártevőket, és értse a forrást. Ha jóindulatú, adja hozzá a forrást az engedélyezett IP-listához. |

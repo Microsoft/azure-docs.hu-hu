@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: dukek
-ms.openlocfilehash: 0771249e94d3e00cbeaff00406a0dbf33777a14d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490330"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772348"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és felügyelete az Azure Portalon
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. 
@@ -149,7 +149,7 @@ Ha nem kap értesítéseket az *elsődleges e-mail-címére*, akkor a következ�
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
 ### <a name="function"></a>Függvény
-Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure-functions/functions-get-started.md).
+Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure-functions/functions-get-started.md). A kérelem kezeléséhez a végpontnak kezelnie kell a HTTP POST műveletet.
 
 A műveleti csoportban korlátozott számú Function művelet lehet.
 

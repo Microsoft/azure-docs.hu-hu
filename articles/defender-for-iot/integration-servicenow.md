@@ -1,19 +1,14 @@
 ---
 title: Tudnivalók a ServiceNow-integrációról
-titleSuffix: Azure Defender for IoT
 description: A ServiceNow-hez készült IoT ICS-kezelő alkalmazása a SOC-elemzőket többdimenziós láthatósággal biztosítja az ipari környezetekben üzembe helyezett specializált és IoT-eszközökhöz, valamint az ICS-kompatibilis viselkedés-elemzésekkel a gyanús vagy rendellenes viselkedés gyors észlelése érdekében.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f2a4c3e79a762de19c6e8c029256cd70dedfe3dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e39c3d018003983f6dc5b5e16a9791de84d6005
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98558114"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786005"
 ---
 # <a name="the-defender-for-iot-ics-management-application-for-servicenow"></a>A ServiceNow-hez készült IoT ICS-kezelési alkalmazás védelmezője
 
@@ -329,7 +324,7 @@ Ez a cikk az eszköz riasztási információit írja le a ServiceNow.
 | Létrehozva | A riasztás létrehozásának időpontja és dátuma. |
 | Motor | Az eseményt észlelő motor. |
 | Cím | A riasztás címe. |
-| Description | A riasztás leírása. |
+| Leírás | A riasztás leírása. |
 | Protokoll | A protokoll a forgalomban észlelt. |
 | Súlyosság | A Defender által a IoT számára meghatározott riasztás súlyossága. |
 | Berendezés | A forgalmat észlelő érzékelő neve. |
@@ -349,7 +344,7 @@ Válassza ki a létrehozott oszlopban lévő bejegyzést a riasztási informáci
 
 Ez a cikk az egyes motor-eseményindítók riasztási típusait ismerteti.
 
-| Riasztástípus | Description |
+| Riasztástípus | Leírás |
 |--|--|
 | Szabályzat megsértésével kapcsolatos riasztások | Akkor aktiválódik, ha a házirend-megsértési motor észleli a korábban megszerzett forgalomtól való eltérést. Például: <br /><br />– A rendszer új eszközt észlelt. <br /><br />– Új konfiguráció észlelhető az eszközön. <br /><br />– A programozási eszközként nem definiált eszközök programozási változást végeznek. <br /><br />– A belső vezérlőprogram verziója megváltozott. |
 | Protokollok megsértésével kapcsolatos riasztások | Akkor aktiválódik, ha a protokoll-megsértési motor olyan csomagok szerkezetét vagy mezőértékeket észlel, amelyek nem felelnek meg a protokoll specifikációjának. |

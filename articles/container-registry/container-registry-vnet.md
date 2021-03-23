@@ -3,12 +3,12 @@ title: Hozzáférés korlátozása szolgáltatás-végpont használatával
 description: Az Azure Container Registry elérésének korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával. A szolgáltatás-végponti hozzáférés a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5f9bc7c9a6c8f2061765510a6396611502fd4a2a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c49595ee4ee79aef264a87dd48bccd03f3d4f5a5
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93026224"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773895"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 
@@ -26,7 +26,6 @@ A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** 
 * A Azure Container Registry szolgáltatási végpontjának jövőbeni fejlesztése jelenleg nem tervezett. Azt javasoljuk, hogy ehelyett használjon [privát végpontokat](container-registry-private-link.md) .
 * Nem használhatja a Azure Portal a szolgáltatási végpontok konfigurálására a beállításjegyzékben.
 * Csak egy [Azure Kubernetes Service](../aks/intro-kubernetes.md) -fürt vagy Azure-beli [virtuális gép](../virtual-machines/linux/overview.md) használható gazdagépként egy tároló-beállításjegyzék eléréséhez szolgáltatási végpont használatával. *Más Azure-szolgáltatások, többek között a Azure Container Instances nem támogatottak.*
-* Mindegyik beállításjegyzék legfeljebb 100 hálózati hozzáférési szabályt támogat.
 * A Azure Container Registry szolgáltatásbeli végpontok nem támogatottak az Azure US government-felhőben vagy az Azure China Cloud-ban.
 
 [!INCLUDE [container-registry-scanning-limitation](../../includes/container-registry-scanning-limitation.md)]

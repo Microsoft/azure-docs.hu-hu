@@ -3,24 +3,19 @@ title: Azure Portal irányítópultok megosztása az Azure szerepköralapú hozz
 description: Ez a cikk azt ismerteti, hogyan oszthat meg irányítópultokat a Azure Portal az Azure szerepköralapú hozzáférés-vezérlés használatával.
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/19/2021
+ms.openlocfilehash: 336bfe9792c5ba4246458368e008a8c50833ed03
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745978"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771540"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával
 
-Az irányítópult konfigurálását követően közzéteheti és megoszthatja azt a szervezet más felhasználóival. Lehetővé teszi mások számára az irányítópult megtekintését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával. Rendeljen hozzá egy felhasználót vagy egy felhasználói csoportot egy szerepkörhöz. Ez a szerepkör határozza meg, hogy a felhasználók megtekinthetik vagy módosíthatják a közzétett irányítópultot.
+Az irányítópult konfigurálását követően közzéteheti és megoszthatja azt a szervezet más felhasználóival. Lehetővé teszi mások számára az irányítópult megtekintését az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)használatával. Rendeljen egyetlen felhasználót vagy felhasználói csoportot egy szerepkörhöz. Ez a szerepkör határozza meg, hogy a felhasználók megtekinthetik vagy módosíthatják a közzétett irányítópultot.
 
-Minden közzétett irányítópult Azure-erőforrásként van megvalósítva. Az előfizetéshez tartozó felügyelhető elemek, és egy erőforráscsoport tartalmazza őket. Hozzáférés-vezérlési perspektívából az irányítópultok nem különböznek más erőforrásokkal, például egy virtuális géppel vagy egy Storage-fiókkal.
-
-> [!TIP]
-> Az irányítópulton lévő csempék a saját hozzáférés-vezérlési követelményeiket a megjelenített erőforrások alapján kényszerítik ki. Az irányítópultok széles körben is megoszthatók az egyes csempék adatvédelme során.
-> 
-> 
+Minden közzétett irányítópult Azure-erőforrásként van megvalósítva. Az előfizetéshez tartozó felügyelhető elemek, és egy erőforráscsoport tartalmazza őket. Hozzáférés-vezérlési perspektívából az irányítópultok nem különböznek más erőforrásokkal, például egy virtuális géppel vagy egy Storage-fiókkal. Az irányítópulton lévő csempék a saját hozzáférés-vezérlési követelményeiket a megjelenített erőforrások alapján kényszerítik ki. Az irányítópultok széles körben is megoszthatók az egyes csempék adatvédelme során.
 
 ## <a name="understanding-access-control-for-dashboards"></a>Az irányítópultok hozzáférés-vezérlésének ismertetése
 
@@ -34,9 +29,9 @@ A hozzárendelt engedélyek öröklik az előfizetést az erőforrásnak. A köz
 
 Tegyük fel, hogy rendelkezik Azure-előfizetéssel, és a csapat különböző tagjai az előfizetéshez tartozó *tulajdonos*, *közreműködő* vagy *olvasó* szerepkört kaptak. A tulajdonosok vagy közreműködők az előfizetésben lévő irányítópultokat listázhatja, megtekinthetik, létrehozhatják, módosíthatják vagy törölhetik. Azok a felhasználók, akik az olvasók listázzák és megtekinthetik az irányítópultokat, de nem módosíthatják és nem törölhetik azokat. Az olvasói hozzáféréssel rendelkező felhasználók helyi módosításokat végezhetnek egy közzétett irányítópulton, például egy probléma hibaelhárításakor, de a módosításokat nem tehetik vissza a kiszolgálóra. Saját maguk készíthetik el az irányítópult saját példányát.
 
-Emellett engedélyeket is hozzárendelhet az erőforráscsoporthoz, amely több irányítópultot vagy egy egyéni irányítópultot tartalmaz. Dönthet például úgy, hogy egy adott felhasználói csoportnak korlátozott engedélyekkel kell rendelkeznie az előfizetésben, de nagyobb hozzáférésre van szüksége egy adott irányítópulthoz. Rendelje hozzá ezeket a felhasználókat az irányítópult egyik szerepköréhez.
+Engedélyeket rendelhet hozzá az erőforráscsoporthoz, amely több irányítópultot vagy egy egyéni irányítópultot tartalmaz. Dönthet például úgy, hogy egy adott felhasználói csoportnak korlátozott engedélyekkel kell rendelkeznie az előfizetésben, de nagyobb hozzáférésre van szüksége egy adott irányítópulthoz. Rendelje hozzá ezeket a felhasználókat az irányítópult egyik szerepköréhez.
 
-## <a name="publish-dashboard"></a>Irányítópult közzététele
+## <a name="publish-a-dashboard"></a>Irányítópult közzététele
 
 Tegyük fel, hogy olyan irányítópultot konfigurál, amelyet szeretne megosztani az előfizetésében lévő felhasználói csoporttal. A következő lépések bemutatják, hogyan oszthat meg egy irányítópultot a Storage Managers nevű csoportba. Tetszés szerint megadhatja a csoport nevét. További információ: [csoportok kezelése a Azure Active Directoryban](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
@@ -58,19 +53,15 @@ Az irányítópult már közzé van téve. Ha az előfizetésből örökölt eng
 
 Az irányítópult egyik szerepköréhez hozzárendelhet egy felhasználói csoportot.
 
-1. Az irányítópult közzététele után válassza a megosztás **vagy** a **megosztás megszüntetése** lehetőséget a **megosztás + hozzáférés-vezérlés** eléréséhez.
+1. Az irányítópult közzététele után válassza a **megosztás kezelése** lehetőséget.
 
-1. A **megosztás + hozzáférés-vezérlés** területen válassza a **felhasználók kezelése** lehetőséget.
-
-    ![irányítópultok felhasználóinak kezelése](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
-
-1. Válassza a **szerepkör-hozzárendelések** lehetőséget, hogy megtekintse azokat a meglévő felhasználókat, akik már hozzá vannak rendelve ehhez az irányítópulthoz.
+1. A **Access Control** válassza a **szerepkör-hozzárendelések** lehetőséget, hogy megtekintse azokat a meglévő felhasználókat, akik már hozzá lettek rendelve az irányítópulthoz.
 
 1. Új felhasználó vagy csoport hozzáadásához válassza a **Hozzáadás** lehetőséget, majd **adja hozzá a szerepkör-hozzárendelést**.
 
     ![felhasználó hozzáadása az irányítópulthoz való hozzáféréshez](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
-1. Válassza ki azt a szerepkört, amely a megadható engedélyeket jelöli. Ebben a példában válassza a **közreműködő** lehetőséget.
+1. Válassza ki azt a szerepkört, amely a megadható engedélyeket jelöli, például **közreműködő**.
 
 1. Válassza ki a szerepkörhöz hozzárendelni kívánt felhasználót vagy csoportot. Ha nem látja a keresett felhasználót vagy csoportot a listában, használja a keresőmezőt. Az elérhető csoportok listája a Active Directoryban létrehozott csoportoktól függ.
 

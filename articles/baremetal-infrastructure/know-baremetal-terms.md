@@ -3,12 +3,12 @@ title: Ismerje meg az Azure BareMetal-infrastruktúra feltételeit
 description: Ismerje meg az Azure BareMetal-infrastruktúra feltételeit.
 ms.topic: conceptual
 ms.date: 1/4/2021
-ms.openlocfilehash: fd7a39854c86f728ef152f8e7d858157e1ad26f4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b22a6cecb2647df3878cb8fd4ade93d9a7d963fd
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861923"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770886"
 ---
 # <a name="know-the-terms-for-baremetal-infrastructure"></a>A BareMetal-infrastruktúra feltételeinek megismerése
 
@@ -23,4 +23,4 @@ Ebben a cikkben néhány fontos BareMetal-kifejezést ismertetünk.
 - **Bérlő**: a BareMetal-példányban üzembe helyezett ügyfelek elkülönítettek egy *bérlőhöz.* A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a BareMetal-példány Stamp szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. Még akkor sem, ha a bérlők között nincs kommunikáció a BareMetal-példány Stamp szintjén.
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a [BareMetal-infrastruktúráról](workloads/sap/baremetal-overview-architecture.md) , illetve a [BareMetal-példányok egységének azonosításáról és](workloads/sap/baremetal-infrastructure-portal.md)használatáról. 
+További információ a [BareMetal-infrastruktúráról](concepts-baremetal-infrastructure-overview.md) , illetve a [BareMetal-példányok egységének azonosításáról és](connect-baremetal-infrastructure.md)használatáról. 

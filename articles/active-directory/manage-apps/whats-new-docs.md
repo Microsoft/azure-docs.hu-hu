@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601763"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775510"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory Application Management: Újdonságok
 
@@ -141,7 +141,6 @@ ms.locfileid: "103601763"
 
 ### <a name="new-articles"></a>Új cikkek
 - [SAML-alapú egyszeri bejelentkezés konfigurálása](configure-saml-single-sign-on.md)
-- [Az Azure AD használata az App Galleryben nem szereplő alkalmazásokhoz](non-gallery-apps.md)
 - [Letöltés most – alkalmazás hozzáadása az Azure Marketplace-ről](get-it-now-azure-marketplace.md)
 - [Gyors útmutató: alkalmazás tulajdonságainak konfigurálása a Azure Active Directory (Azure AD) bérlőben](add-application-portal-configure.md)
 - [Rövid útmutató: egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben](add-application-portal-setup-sso.md)

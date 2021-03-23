@@ -3,16 +3,16 @@ title: Data Factory függvények és rendszerváltozók
 description: A Azure Data Factory függvények és rendszerváltozók listáját tartalmazza
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d47a26b46fad1ab8238f9fa7a1183aad20530ef5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 498f40a1783903b5dca0a2fe3204cc6aa25a2fec
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100363933"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786430"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
 > [!NOTE]
@@ -22,7 +22,7 @@ Ez a cikk a Azure Data Factory által támogatott függvényekről és változó
 
 ## <a name="data-factory-system-variables"></a>Rendszerváltozók Data Factory
 
-| Változó neve | Description | Objektum hatóköre | JSON-hatókör és-használati esetek |
+| Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és-használati esetek |
 | --- | --- | --- | --- |
 | WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
 | WindowEnd |Az aktuális tevékenység futtatási időszakának vége |tevékenység |ugyanaz, mint a WindowStart. |
@@ -72,7 +72,7 @@ Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](/dotnet/stand
 ### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Kategória | Függvény | Paraméterek | Description |
+| Kategória | Függvény | Paraméterek | Leírás |
 | --- | --- | --- | --- |
 | Idő |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Idő |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

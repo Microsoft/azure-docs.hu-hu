@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 21576b6714c05e5a0ed703c7a1452103c2c4b355
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b435547d7cd3b0fab781cc6cf3b617b13ac1120a
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472839"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774694"
 ---
 # <a name="hbv3-series"></a>HBv3 sorozat
 
@@ -28,7 +28,7 @@ Az összes HBv3 sorozatú virtuális gép 200 GB/s-os HDR-InfiniBand tartalmaz a
 [VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 [Gyorsított hálózat](../virtual-network/create-vm-accelerated-networking-cli.md): hamarosan elérhető<br>
 [Ideiglenes operációsrendszer-lemezek](ephemeral-os-disks.md): nem támogatott <br>
-
+<br>
 
 |Méret |vCPU |Processzor |Memória (GiB) |Memória sávszélessége GB/s |Alapszintű CPU-gyakoriság (GHz) |Teljes magok gyakorisága (GHz, csúcs) |Egymagos gyakoriság (GHz, csúcs) |RDMA teljesítmény (GB/s) |MPI-támogatás |Ideiglenes tároló (GiB) |Adatlemezek max. száma |Maximális Ethernet-Vnic |
 |----|----|----|----|----|----|----|----|----|----|----|----|----|
@@ -38,11 +38,10 @@ Az összes HBv3 sorozatú virtuális gép 200 GB/s-os HDR-InfiniBand tartalmaz a
 |Standard_HB120 – 32rs_v3 |32  |AMD EPYC 7V13 |448 |350 |2.45 |3,1 |3,675 |200 |Mind |2 * 960 |32 |8 |
 |Standard_HB120 – 16rs_v3 |16  |AMD EPYC 7V13 |448 |350 |2.45 |3,1 |3,675 |200 |Mind |2 * 960 |32 |8 |
 
-
-További információk:
-- Alapul szolgáló [architektúra és VM-topológia](./workloads/hpc/hbv3-series-overview.md)
-- [Támogatott szoftveres verem](./workloads/hpc/hbv3-series-overview.md#software-specifications) , beleértve a támogatott operációs rendszert
-- A HBv3 sorozatú virtuális gép várt [teljesítménye](./workloads/hpc/hbv3-performance.md) .
+További információ:
+- [architektúra és VM-topológia](./workloads/hpc/hbv3-series-overview.md),
+- támogatott [szoftver-verem](./workloads/hpc/hbv3-series-overview.md#software-specifications) , beleértve a támogatott operációs rendszereket és
+- a HBv3 sorozatú virtuális gép várt [teljesítménye](./workloads/hpc/hbv3-performance.md) .
 
 [!INCLUDE [hpc-include](./workloads/hpc/includes/hpc-include.md)]
 

@@ -1,19 +1,14 @@
 ---
 title: Tudnivalók a Fortinet-integrációról
-titleSuffix: Azure Defender for IoT
 description: A IoT és a Fortinet Defender technológiai partnerkapcsolatot alakított ki a IoT és az INTERNETKAPCSOLATtal rendelkező hálózatok elleni támadások észlelése és leállítása érdekében.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/17/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 313db90d4c9be30ef588b00caf1d6e4ce32b113b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e2119a9e01a4e58cd9d2ca1b9b3384ec9629784c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98557970"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784016"
 ---
 # <a name="defender-for-iot-and-fortinet-iiot-and-ics-threat-detection--prevention"></a>Defender a IoT és a Fortinet IIoT és az ICS veszélyforrások észlelése & megelőzésére
 

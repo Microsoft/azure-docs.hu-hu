@@ -1,24 +1,14 @@
 ---
 title: Biztonsági ügynök hitelesítési módszerei
 description: Ismerje meg a Defender for IoT szolgáltatás használatakor elérhető különböző hitelesítési módszereket.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: 4aeaa703b5e3203eeb7bc355051e0e8f48f898ac
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bd4d89d8664dae2421ff7f268b3710b5a906427b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103494121"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784611"
 ---
 # <a name="security-agent-authentication-methods"></a>Biztonsági ügynök hitelesítési módszerei
 
@@ -54,7 +44,7 @@ A konfigurálásának megismeréséhez tekintse meg a [biztonsági ügynök tele
 [Biztonsági ügynök telepítésekor a](how-to-deploy-agent.md)hitelesítési adatokat argumentumként kell megadni.
 Ezek az argumentumok a következő táblázatban vannak dokumentálva.
 
-|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Description|Beállítások|
+|Linux-paraméter neve | Windows-paraméter neve | Gyorsírás paraméter |Leírás|Beállítások|
 |---------------------|---------------|---------|---------------|---------------|
 |hitelesítés – identitás|AuthenticationIdentity|AUI|Hitelesítési identitás| **SecurityModule** vagy- **eszköz**|
 |hitelesítés – metódus|AuthenticationMethod|Aum|Hitelesítési módszer|**SymmetricKey** vagy **SelfSignedCertificate**|

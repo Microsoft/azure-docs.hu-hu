@@ -2,13 +2,13 @@
 title: Azure-erőforrások adatainak megtekintése és szűrése
 description: Szűrje az adatokat, és használjon különböző nézeteket az Azure-erőforrások jobb megismeréséhez.
 ms.topic: how-to
-ms.date: 09/11/2020
-ms.openlocfilehash: d3ad0c225a260fd0ae6b131b951b53c28042f4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/16/2021
+ms.openlocfilehash: bb48d0b0a7bf6017fbf407a95c33ef17729e34e3
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101738633"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771634"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure-erőforrások adatainak megtekintése és szűrése
 
@@ -48,7 +48,7 @@ Nézet törlése:
 
 1. Válassza a **kezelés nézet** lehetőséget, majd **tallózással keresse meg az összes nézetet**.
 
-1. A **"minden erőforrás" panel mentett nézeteiben** válassza ki a nézetet, majd válassza a **Törlés** ikon ![ Törlés nézet ikont ](media/manage-filter-resource-views/icon-delete.png) .
+1. A **mentett nézetek** ablaktáblán válassza ki a nézetet, majd válassza a **Törlés** ikon ![ Törlés nézet ikont ](media/manage-filter-resource-views/icon-delete.png) .
 
 ## <a name="export-information-from-a-view"></a>Adatok exportálása nézetből
 
@@ -64,7 +64,7 @@ A portál körüli Navigálás során más területeket is láthat, amelyekben a
 
 ## <a name="summarize-resources-with-visuals"></a>Erőforrások összefoglalása vizualizációkkal
 
-Az eddig megtekintett nézetek _listáját_ láthatjuk, de vannak olyan _összegző nézetek_ is, amelyek vizualizációkat tartalmaznak. Ezeket a nézeteket mentheti és használhatja, ahogyan a nézeteket is listázhatja. A szűrők a két típusú nézet között maradnak. Szabványos nézetek érhetők el, például az alább látható **hely** nézet, valamint az adott szolgáltatásokhoz kapcsolódó nézetek, például az Azure Storage **állapot** nézete.
+Az eddig megtekintett nézetek _listáját_ láthatjuk, de vannak olyan _összegző nézetek_ is, amelyek vizualizációkat tartalmaznak. Ezek a nézetek ugyanúgy menthetők és használhatók, mint a lista nézetei. A szűrők a két típusú nézet között maradnak. Szabványos nézetek érhetők el, például az alább látható **hely** nézet, valamint az adott szolgáltatásokhoz kapcsolódó nézetek, például az Azure Storage **állapot** nézete.
 
 :::image type="content" source="media/manage-filter-resource-views/summary-map.png" alt-text="A Térkép nézet erőforrásainak összefoglalása":::
 

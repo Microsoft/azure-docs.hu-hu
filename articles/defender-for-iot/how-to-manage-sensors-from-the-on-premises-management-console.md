@@ -1,18 +1,14 @@
 ---
 title: Érzékelők kezelése a helyszíni felügyeleti konzolról
 description: Megtudhatja, hogyan kezelheti az érzékelőket a felügyeleti konzolról, beleértve az érzékelők verzióinak frissítését, a rendszerbeállítások az érzékelőkre való leküldését, valamint az érzékelőkön futó motorok engedélyezését
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4706fbcf58b8e5f5eed6532f9a08f65c7716e07e
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523957"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781925"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Érzékelők kezelése a felügyeleti konzolról
 
@@ -144,7 +140,7 @@ A leválasztott érzékelőkkel kapcsolatos információkat tartalmazó harmadik
 
 Az érzékelők védelmét a IoT-motorok öt védelmezője védi. Engedélyezheti vagy letilthatja a csatlakoztatott érzékelőkhöz tartozó motorokat.
 
-| Motor | Description | Példaforgatókönyv |
+| Motor | Leírás | Példaforgatókönyv |
 |--|--|--|
 | Protokoll-megsértési motor | A protokollok megsértése akkor fordul elő, ha a csomag szerkezete vagy a mező értéke nem felel meg a protokoll specifikációjának. | "Szabálytalan MODBUS művelet (kód: nulla)" riasztás. Ez a riasztás azt jelzi, hogy egy elsődleges eszköz 0 értékű kérelmet küld egy másodlagos eszköznek. Ez a protokoll specifikációja szerint nem engedélyezett, és előfordulhat, hogy a másodlagos eszköz nem kezeli helyesen a bemenetet. |
 | Házirend-megsértési motor | A szabályzat megsértése a megtanult vagy konfigurált szabályzatban meghatározott alapkonfigurációi viselkedéstől való eltéréssel történik. | "Jogosulatlan HTTP-felhasználói ügynök" riasztás. Ez a riasztás azt jelzi, hogy a szabályzat által nem megtanult vagy jóváhagyott alkalmazás HTTP-ügyfélként van használatban az eszközön. Ez lehet egy új böngésző vagy alkalmazás az eszközön. |

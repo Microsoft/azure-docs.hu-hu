@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 03/19/2021
 ms.author: chrande
-ms.openlocfilehash: 1818838a68c2712336a3515b2a82b5fdd518d237
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8865a16c2840b65f432de679c6dd63b285b1f760
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101661171"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771809"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>A MongoDB-fiókhoz tartozó Azure Cosmos DB API API-verziójának frissítése
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -67,42 +67,35 @@ Ha a 3,2-es verzióról frissít, akkor a meglévő végpontot le kell cserélni
 
 ## <a name="how-to-upgrade"></a>A frissítés lépései
 
-1. Nyissa meg a Azure Portalt, és navigáljon a MongoDB-fiók áttekintés paneljének Azure Cosmos DB API-hoz. Ellenőrizze, hogy az aktuális kiszolgáló verziója várható-e.
+1. Jelentkezzen be a [Azure Portalba.](https://portal.azure.com/)
 
-    :::image type="content" source="./media/mongodb-version-upgrade/1.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés" border="false":::
+1. Navigáljon a MongoDB-fiókhoz tartozó Azure Cosmos DB API-hoz. Nyissa meg az **Áttekintés** ablaktáblát, és ellenőrizze, hogy az aktuális **kiszolgáló verziója** vagy 3,2 vagy 3,6.
 
-2. A bal oldali beállítások közül válassza ki a panelt `Features` . Ekkor megjelennek az adatbázisfiókhoz elérhető fiókszintű funkciók.
+    :::image type="content" source="./media/mongodb-version-upgrade/check-current-version.png" alt-text="A MongoDB-fiók aktuális verzióját a Azure Portalban találja." border="true":::
 
-    :::image type="content" source="./media/mongodb-version-upgrade/2.png" alt-text="Azure Portal MongoDB-fiókkal – áttekintés a funkciók panel kiemelésével" border="false":::
+1. A bal oldali menüben nyissa meg a `Features` panelt. Ez a panel az adatbázis-fiókjához elérhető fiók szintű funkciókat jeleníti meg.
 
-3. Kattintson a `Upgrade Mongo server version` sorra. Ha nem jelenik meg ez a lehetőség, előfordulhat, hogy a fiók nem jogosult erre a frissítésre. Ha ez a helyzet, küldjön [egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+1. Válassza ki a következő sort: `Upgrade MongoDB server version`. Ha nem jelenik meg ez a lehetőség, előfordulhat, hogy a fiók nem jogosult erre a frissítésre. Ha ez a helyzet, küldjön [egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/3.png" alt-text="Funkciók panel a beállításokkal." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/upgrade-server-version.png" alt-text="Nyissa meg a szolgáltatások panelt, és frissítse a fiókját." border="true":::
 
-4. Tekintse át a frissítéssel kapcsolatban megjelenő információkat. Kattintson a gombra, amint `Enable` készen áll a folyamat elindítására.
+1. Tekintse át a frissítéssel kapcsolatban megjelenő információkat. Válasszon `Set server version to 4.0` (vagy 3,6 a jelenlegi verziótól függően).
 
-    :::image type="content" source="./media/mongodb-version-upgrade/4.png" alt-text="Bővített frissítési útmutató." border="false":::
+    :::image type="content" source="./media/mongodb-version-upgrade/select-upgrade.png" alt-text="Tekintse át a frissítési útmutatót, és válassza a frissítés lehetőséget." border="true":::
 
-5. A folyamat elindítása után a `Features` menü megjeleníti a frissítés állapotát. Az állapot kezdetben `Pending`, majd `In Progress` és végül `Upgraded` lesz. Ez a folyamat nincs hatással az adatbázisfiók meglévő funkcióira vagy műveleteire.
+1. A frissítés megkezdése után a **funkció** menü szürkén jelenik meg, és az állapot *függőre* van állítva. A frissítés elvégzése körülbelül 15 percet vesz igénybe. Ez a folyamat nem befolyásolja az adatbázis-fiókja meglévő funkcióit vagy műveleteit. Miután befejeződött, a **frissítés MongoDB-kiszolgáló verziójának** állapota megjeleníti a frissített verziót. Ha hiba történt a kérelem feldolgozása során, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/en-us/support/create-ticket/) .
 
-    :::image type="content" source="./media/mongodb-version-upgrade/5.png" alt-text="A frissítés állapota az indítás után." border="false":::
+1. A fiók frissítése után a következő szempontokat érdemes figyelembe venni:
 
-6. A frissítés befejezése után az állapot a következő lesz: `Upgraded` . Kattintson ide, ha többet szeretne megtudni a folyamat véglegesítéséhez szükséges következő lépésekről és műveletekről. Ha hiba történt a kérelem feldolgozása során, [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/en-us/support/create-ticket/) .
+    1. Ha 3,2-ról frissített, térjen vissza az **Áttekintés** panelre, és másolja az alkalmazásban használandó új kapcsolódási karakterláncot. A korábbi, 3.2-es verziójú kapcsolati sztring nem szakad meg. A konzisztens felhasználói élmény érdekében az összes alkalmazásnak az új végpontot kell használnia.
 
-    :::image type="content" source="./media/mongodb-version-upgrade/6.png" alt-text="A fiók frissített állapota." border="false":::
-
-7. 
-    1. Ha 3,2-ról frissített, térjen vissza a panelre `Overview` , és másolja az alkalmazásban használandó új kapcsolódási karakterláncot. A korábbi, 3.2-es verziójú kapcsolati sztring nem szakad meg. A konzisztens felhasználói élmény érdekében az összes alkalmazásnak az új végpontot kell használnia.
-    2. Ha a 3.6-os verzióról frissített, a meglévő kapcsolati sztring a megadott verzióra lesz frissítve, és továbbra is ezt kell használni.
-
-    :::image type="content" source="./media/mongodb-version-upgrade/7.png" alt-text="Új áttekintés panel." border="false":::
-
+    1. Ha a 3.6-os verzióról frissített, a meglévő kapcsolati sztring a megadott verzióra lesz frissítve, és továbbra is ezt kell használni.
 
 ## <a name="how-to-downgrade"></a>Váltás korábbi verzióra
-A fiókját a 4,0 – 3,6-as verzióra is leértékelheti a "hogyan frissíthet" szakaszban ismertetett lépések segítségével. 
+
+A fiókját a 4,0 – 3,6-as verzióra is leértékelheti a "hogyan frissíthet" szakaszban ismertetett lépések segítségével.
 
 Ha 3,2-ről (4,0 vagy 3,6) frissítette a frissítést, és vissza szeretne térni a 3,2-re, egyszerűen visszaválthat az előző (3,2) kapcsolódási karakterlánc használatára a gazdagépen, `accountname.documents.azure.com` amely továbbra is aktív frissítést követően fut az 3,2-os verzióban.
-
 
 ## <a name="next-steps"></a>Következő lépések
 

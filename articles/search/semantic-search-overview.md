@@ -9,21 +9,21 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4b0a4107b3894d65dd8e168cd58566d4a4b5090
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720491"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771311"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
 > [!IMPORTANT]
 > A szemantikai keresés nyilvános előzetes verzióban érhető el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
-A szemantikai keresés a lekérdezésekkel kapcsolatos olyan funkciók gyűjteménye, amelyek támogatják a magasabb színvonalú, természetesebb lekérdezési élményt. 
+A szemantikai keresés olyan lekérdezésekkel kapcsolatos képességek gyűjteménye, amelyek szemantikai relevanciát és nyelvi megértést biztosítanak a keresési eredményekhez. A *szemantikai rangsorolás* a feltételek és a velük kapcsolatos viszonyok között úgy néz ki, hogy a lekérdezés több értelmet biztosít. A Language Understanding olyan *feliratokat* és *válaszokat* talál a tartalomon belül, amelyek összefoglalják a megfelelő dokumentumot, vagy megválaszolnak egy adott kérdést, amely a keresési eredmények oldalon hatékonyabb keresési élményt biztosít.
 
-Ezen képességek közé tartozik a keresési eredmények szemantikai újrarangsorolása, valamint a felirat és a válasz kinyerése, amely szemantikai ráfordítást biztosít a vonatkozó kifejezésekre és kifejezésekre. A legmodernebb előre betanított modellek a kinyeréshez és rangsoroláshoz használatosak. A felhasználók által a keresésből várt gyors teljesítmény fenntartása érdekében a szemantikai összefoglalást és a rangsorolást csak az első 50 eredményre alkalmazza a rendszer, az [alapértelmezett hasonlósági pontozási algoritmus](index-similarity-and-scoring.md#similarity-ranking-algorithms)alapján. Ha ezeket az eredményeket a dokumentum-corpusként használja, a szemantikai rangsorolás a egyezés szemantikai erőssége alapján újra kiértékeli az eredményeket.
+A korszerű, előre betanított modellek az összegzéshez és rangsoroláshoz használatosak. A felhasználók által a keresésből várt gyors teljesítmény fenntartása érdekében a szemantikai összefoglalást és a rangsorolást csak az első 50 eredményre alkalmazza a rendszer, az [alapértelmezett hasonlósági pontozási algoritmus](index-similarity-and-scoring.md#similarity-ranking-algorithms)alapján. Ha ezeket az eredményeket a dokumentum-corpusként használja, a szemantikai rangsorolás a egyezés szemantikai erőssége alapján újra kiértékeli az eredményeket.
 
 A mögöttes technológia a Bing és a Microsoft Research szolgáltatásból származik, és a Cognitive Search-infrastruktúrába integráltan vehető igénybe. A szemantikai kereséssel kapcsolatos kutatásról és AI-befektetésekről további információt talál a [Bing által az Azure Cognitive Search (Microsoft Research blog) bekapcsolásával](https://www.microsoft.com/research/blog/the-science-behind-semantic-search-how-ai-from-bing-is-powering-azure-cognitive-search/)foglalkozó témakörben.
 

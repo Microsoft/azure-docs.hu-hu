@@ -144,7 +144,7 @@
               displayName: 'jit, management, ports'
               href: security-center-just-in-time.md
         - name: Végponthoz készült Microsoft Defender-licenc használata
-          displayName: 'ATP, mdatp, wdatp'
+          displayName: 'ATP, mdatp, wdatp, mde, mdfe'
           href: security-center-wdatp.md
         - name: A gépek biztonságos alkalmazásainak listáját definiálja
           displayName: 'aac, whitelist, allowlist, reviewgroup, adaptive application controls'

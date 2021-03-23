@@ -1,25 +1,25 @@
 ---
-title: Irányítópultok létrehozása és megosztása az Azure Portalon
-description: Ez a cikk a Azure Portal irányítópultok létrehozását, testreszabását, közzétételét és megosztását ismerteti.
+title: Irányítópult létrehozása a Azure Portalban
+description: Ez a cikk ismerteti, hogyan hozhat létre és szabhat testre egy irányítópultot a Azure Portalban.
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 03/23/2020
-ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/16/2021
+ms.openlocfilehash: fa7f1813d86571b568d23d64cab5705f8a117faa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96745825"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774605"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Irányítópultok létrehozása és megosztása az Azure Portalon
+# <a name="create-a-dashboard-in-the-azure-portal"></a>Irányítópult létrehozása a Azure Portalban
 
-Az irányítópultok a Azure Portal Felhőbeli erőforrásainak célzott és rendezett nézetét jelentik. Az irányítópultokat munkaterületként használhatja, ahol gyorsan elindíthatja a napi műveletek feladatait, és figyelheti az erőforrásokat. Egyéni irányítópultokat hozhat létre a projektek, feladatok vagy felhasználói szerepkörök alapján, például:.
+Az irányítópultok a Azure Portal Felhőbeli erőforrásainak célzott és rendezett nézetét jelentik. Az irányítópultokat munkaterületként használhatja, ahol nyomon követheti az erőforrásokat, és gyorsan elindíthatja a napi műveletek feladatait. Egyéni irányítópultokat hozhat létre a projektek, feladatok vagy felhasználói szerepkörök alapján, például:.
 
-A Azure Portal kiindulási pontként egy alapértelmezett irányítópultot biztosít. Szerkesztheti az alapértelmezett irányítópultot. Létrehozhat és testreszabhat további irányítópultokat, és közzéteheti és megoszthatja az irányítópultokat, hogy azok elérhetők legyenek más felhasználók számára. Ez a cikk bemutatja, hogyan hozhat létre egy új irányítópultot, hogyan szabhatja testre a felületet, és hogyan tehet közzé és oszthat meg irányítópultokat.
+A Azure Portal kiindulási pontként egy alapértelmezett irányítópultot biztosít. Szerkesztheti az alapértelmezett irányítópultot, és létrehozhat és testreszabhat további irányítópultokat. Ez a cikk bemutatja, hogyan hozhat létre új irányítópultot, és hogyan szabhatja testre. Az irányítópultok megosztásával kapcsolatos információkért lásd: [Azure-irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](azure-portal-dashboard-share-access.md).
 
 ## <a name="create-a-new-dashboard"></a>Új irányítópult létrehozása
 
-Ebben a példában egy új, privát irányítópultot hozunk létre, és hozzárendelünk egy nevet. A kezdéshez kövesse az alábbi lépéseket:
+Ebben a példában egy új privát irányítópultot hozunk létre, és hozzárendelünk egy nevet. A kezdéshez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -27,17 +27,19 @@ Ebben a példában egy új, privát irányítópultot hozunk létre, és hozzár
 
     ![Az irányítópult megnyitása](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
-1. Válassza az **új irányítópult** lehetőséget.
+1. Válassza az **új irányítópult** , majd az **üres irányítópult** lehetőséget.
 
     ![Képernyőfelvétel az új irányítópultról](./media/azure-portal-dashboards/create-new-dashboard.png)
 
     Ez a művelet megnyitja a **csempe-tárat**, amelyből kiválaszthatja a csempéket, és egy üres rácsot, ahol a csempéket rendezni fogja.
 
-    ![Képernyőfelvétel a csempe és az üres rácsról](./media/azure-portal-dashboards/dashboard-name.png)
-
 1. Jelölje ki a **saját irányítópult** szövegét az irányítópult címkéjén, és adjon meg egy nevet, amely megkönnyíti az egyéni irányítópultok azonosítását.
 
-1. A szerkesztési mód kilépéséhez válassza az oldal fejlécének **kész Testreszabás** elemét.
+    ![Képernyőfelvétel a csempe és az üres rácsról](./media/azure-portal-dashboards/dashboard-name.png)
+
+1. Az oldal fejlécében válassza a **kész Testreszabás** lehetőséget a szerkesztési mód kilépéséhez, majd válassza a **Mentés** lehetőséget.
+
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="Képernyőkép az irányítópult mentési folyamatáról":::
 
 Az irányítópult nézet most megjeleníti az új irányítópultot. Válassza az irányítópult neve melletti nyilat az elérhető irányítópultok megtekintéséhez. Előfordulhat, hogy a lista más felhasználók által létrehozott és megosztott irányítópultokat tartalmaz.
 
@@ -45,7 +47,7 @@ Az irányítópult nézet most megjeleníti az új irányítópultot. Válassza 
 
 Most szerkesszük az irányítópultot az Azure-erőforrásokat jelölő csempék hozzáadásához, átméretezéséhez és rendezéséhez.
 
-### <a name="add-tiles-from-the-dashboard"></a>Csempék hozzáadása az irányítópultról
+### <a name="add-tiles-from-the-tile-gallery"></a>Csempék hozzáadása a csempék gyűjteményébe
 
 A csempék irányítópulthoz való hozzáadásához kövesse az alábbi lépéseket:
 
@@ -55,10 +57,13 @@ A csempék irányítópulthoz való hozzáadásához kövesse az alábbi lépés
 
 1. Tallózással keresse meg a **csempét** , vagy a Keresés mező használatával keresse meg a kívánt csempét.
 
-1. Válassza a **Hozzáadás** lehetőséget, hogy hozzáadja a csempét az irányítópulthoz alapértelmezett mérettel és hellyel. Vagy húzza a csempét a rácsra, és helyezze a kívánt helyre.
+1. Válassza a **Hozzáadás** lehetőséget, hogy hozzáadja a csempét az irányítópulthoz alapértelmezett mérettel és hellyel. Vagy húzza a csempét a rácsra, és helyezze a kívánt helyre. Adja hozzá a kívánt csempéket, de íme néhány ötlet:
 
-> [!TIP]
-> Ha egynél több szervezettel dolgozik, vegye fel a **szervezeti identitás** csempét az irányítópultra, hogy egyértelműen megmutassa, melyik szervezethez tartoznak az erőforrások.
+    - Adja hozzá az **összes erőforrást** a már létrehozott erőforrások megtekintéséhez.
+
+    - Ha egynél több szervezettel dolgozik, vegye fel a **szervezeti identitás** csempét az irányítópultra, hogy egyértelműen megmutassa, melyik szervezethez tartoznak az erőforrások.
+
+1. Az oldal fejlécében válassza a **Mentés** lehetőséget.
 
 ### <a name="add-tiles-from-a-resource-page"></a>Csempék hozzáadása egy erőforrás-lapról
 
@@ -80,11 +85,11 @@ A csempe méretének módosításához vagy az irányítópult csempéi átrende
 
 ### <a name="additional-tile-configuration"></a>További csempe-konfiguráció
 
-Előfordulhat, hogy egyes csempék több konfigurációt igényelnek a kívánt információk megjelenítéséhez. Például a **metrikák diagram** csempét úgy kell beállítani, hogy a metrika megjelenjen a **Azure monitor**. Az irányítópult alapértelmezett időbeállításainak felülbírálásához emellett testre is szabhatja a csempét.
+Előfordulhat, hogy egyes csempék több konfigurációt igényelnek a kívánt információk megjelenítéséhez. Például a **metrikák diagram** csempét úgy kell beállítani, hogy a metrika megjelenjen a Azure monitor. Az irányítópult alapértelmezett időbeállításainak felülbírálásához emellett testre is szabhatja a csempét.
 
-Minden olyan csempe, amelyet be kell állítani, egy **csempe** -szalagcímet jelenít meg, amíg testre nem szabja a csempét. A csempe testreszabása:
+Minden olyan csempe, amelyet be kell állítani, megjelenik egy szalagcím, amíg testre nem szabja a csempét. A **metrikák diagramon** a szalagcím a **Mérőszámokban van szerkesztve**. A csempe testreszabása:
 
-1. A szerkesztési mód kilépéséhez válassza az oldal fejlécének **kész Testreszabás** elemét.
+1. Az oldal fejlécében válassza a **Mentés** lehetőséget a szerkesztési mód kilépéséhez.
 
 1. Válassza ki a szalagcímet, majd hajtsa végre a szükséges beállításokat.
 
@@ -97,7 +102,7 @@ Minden olyan csempe, amelyet be kell állítani, egy **csempe** -szalagcímet je
 
 Az irányítópulton lévő adatműveletek automatikusan megjelenítik az elmúlt 24 órában végzett tevékenységet. Ha egy másik időtartományt szeretne megjeleníteni ehhez a csempéhez, kövesse az alábbi lépéseket:
 
-1. Válassza a csempe **adatainak testreszabása** a helyi menüben vagy a ![ szűrő ikon ](./media/azure-portal-dashboards/dashboard-filter.png) szűrő elemet a csempe bal felső sarkában.
+1. Válassza a **csempe adatainak testreszabása** lehetőséget a helyi menüben vagy a ![ szűrő ikon ](./media/azure-portal-dashboards/dashboard-filter.png) szűrőben a csempe bal felső sarkában.
 
     ![Képernyőfelvétel a csempe helyi menüjéről](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -166,6 +171,10 @@ Egy privát vagy megosztott irányítópult végleges törléséhez kövesse az 
 1. Privát irányítópult esetén a megerősítő párbeszédpanelen kattintson az **OK gombra** az irányítópult eltávolításához. Megosztott irányítópult esetén a megerősítő párbeszédpanelen jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy a közzétett irányítópultot mások nem fogják megtekinteni. Ez után válassza az **OK** gombot.
 
     ![Képernyőkép a törlés megerősítéséről](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+
+## <a name="recover-a-deleted-dashboard"></a>Törölt irányítópult helyreállítása
+
+Ha a globális Azure-felhőben van, és töröl egy _közzétett_ irányítópultot a Azure Portal, akkor a törléstől számított 14 napon belül helyreállíthatja az irányítópultot. További információ: [törölt irányítópult helyreállítása a Azure Portalban](recover-shared-deleted-dashboard.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

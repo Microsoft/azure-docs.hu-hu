@@ -1,31 +1,31 @@
 ---
-title: 'VMware-környezetben futó kiszolgálók felderítése Azure Migrate: kiszolgáló értékelése'
-description: Ismerje meg, hogyan derítheti fel a helyszíni VMware virtuális gépeket a Azure Migrate Server Assessment Tool eszközzel
-author: vikram1988
-ms.author: vibansa
+title: VMware-környezetben futó kiszolgálók felderítése Azure Migrate észleléssel és értékeléssel
+description: Ismerje meg, hogyan derítheti fel a VMware környezetben futó helyszíni kiszolgálókat a Azure Migrate felderítési és értékelési eszközzel
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 9/14/2020
+ms.date: 03/17/2021
 ms.custom: mvc
-ms.openlocfilehash: 4d2b0fbb377beacdb75a1a5552855936bee2b205
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d0acf83ddfb0d2a3aff0db0f3d151869bce1c710
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102041311"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771736"
 ---
-# <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-server-assessment"></a>Oktatóanyag: VMware-környezetben futó kiszolgálók felderítése Azure Migrateekkel: kiszolgáló értékelése
+# <a name="tutorial-discover-servers-running-in-vmware-environment-with-azure-migrate-discovery-and-assessment"></a>Oktatóanyag: VMware környezetben futó kiszolgálók felderítése Azure Migrateokkal: felderítés és Értékelés
 
 Az Azure-ba való Migrálás részeként felderítheti a helyszíni leltárt és munkaterheléseket.
 
-Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel a VMware-környezetben futó kiszolgálókat Azure Migrate: kiszolgáló-értékelési eszközzel, egy egyszerűsített Azure Migrate berendezés használatával. A készüléket a vCenter Server futtató kiszolgálóként helyezi üzembe, a kiszolgálók és a hozzájuk tartozó metaadatok, a kiszolgálókon futó alkalmazások, a kiszolgálói függőségek és a SQL Server példányok és adatbázisok folyamatos felderítése érdekében.
+Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel a VMware környezetben futó kiszolgálókat Azure Migrate: felderítési és értékelési eszközzel, egy egyszerű Azure Migrate berendezés használatával. A készüléket a vCenter Server futtató kiszolgálóként helyezi üzembe, a kiszolgálók és a hozzájuk tartozó metaadatok, a kiszolgálókon futó alkalmazások, a kiszolgálói függőségek és a SQL Server példányok és adatbázisok folyamatos felderítése érdekében.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.
 > * Készítse elő a VMware-környezetet a felderítéshez.
-> * Azure Migrate-projekt létrehozása.
+> * Hozzon létre egy projektet.
 > * Állítsa be az Azure Migrate készüléket.
 > * A folyamatos felderítés elindítása.
 
@@ -51,7 +51,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy ezek az előfel
 
 ## <a name="prepare-an-azure-user-account"></a>Azure-beli felhasználói fiók előkészítése
 
-Azure Migrate projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
+Projekt létrehozásához és a Azure Migrate berendezés regisztrálásához a következő fiókra van szüksége:
 - Közreműködő vagy tulajdonosi engedélyek az Azure-előfizetésben
 - Engedélyek a Azure Active Directory-(HRE-) alkalmazások regisztrálásához
 - Tulajdonos vagy közreműködő, valamint felhasználói hozzáférés rendszergazdai engedélyei az Azure-előfizetésben az ügynök nélküli kiszolgáló áttelepítése során használt Key Vault létrehozásához
@@ -63,7 +63,7 @@ Ha most hozott létre egy ingyenes Azure-fiókot, akkor Ön az előfizetés tula
     :::image type="content" source="./media/tutorial-discover-vmware/search-subscription.png" alt-text="Az Azure-előfizetés kereséséhez használt keresőmező":::
 
 
-2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben Azure Migrate projektet kíván létrehozni.
+2. Az **előfizetések** lapon válassza ki azt az előfizetést, amelyben létre kíván hozni egy projektet.
 3. Az előfizetésben válassza a hozzáférés- **vezérlés (iam)**  >  **jelölőnégyzetet**.
 4. A **hozzáférés-ellenőrzési** területen keresse meg a megfelelő felhasználói fiókot.
 5. A **szerepkör-hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzáadás** gombra.
@@ -107,7 +107,7 @@ A vSphere webes ügyfélprogramban az alábbiak szerint állítson be egy fióko
 
 ### <a name="create-an-account-to-access-servers"></a>Fiók létrehozása kiszolgálókhoz való hozzáféréshez
 
-Szüksége van egy olyan felhasználói fiókra, amely rendelkezik a szükséges jogosultságokkal a kiszolgálókon a telepített alkalmazások felderítéséhez, az ügynök nélküli függőségek elemzéséhez és a SQL Server példányok és adatbázisok felderítéséhez. A felhasználói fiókot megadhatja a készülék Configuration Managerben. A készülék nem telepít ügynököket a kiszolgálókon.
+Szüksége van egy olyan felhasználói fiókra, amely rendelkezik a szükséges jogosultságokkal a kiszolgálókon a telepített alkalmazások felderítéséhez, az ügynök nélküli függőségek elemzéséhez, valamint SQL Server példányok és adatbázisok felderítéséhez. A felhasználói fiókot megadhatja a készülék Configuration Managerben. A készülék nem telepít ügynököket a kiszolgálókon.
 
 1. Windows-kiszolgálók esetén hozzon létre egy fiókot (helyi vagy tartományi) rendszergazdai engedélyekkel a kiszolgálókon. SQL Server példányok és adatbázisok felderítéséhez a sysadmin (rendszergazda) kiszolgálói szerepkör tagjának kell lennie a Windows vagy SQL Server fióknak. [További információ](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) a szükséges szerepkör a felhasználói fiókhoz való hozzárendeléséről.
 2. Linux-kiszolgálók esetében hozzon létre egy rendszergazdai jogosultságokkal rendelkező fiókot. Másik lehetőségként létrehozhat egy fiókot ezekkel az engedélyekkel a/bin/netstat-és/bin/ls-fájlokon: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
@@ -117,7 +117,7 @@ Szüksége van egy olyan felhasználói fiókra, amely rendelkezik a szükséges
 
 ## <a name="set-up-a-project"></a>Projekt beállítása
 
-Hozzon létre egy új Azure Migrate projektet.
+Új projekt beállítása.
 
 1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
@@ -128,14 +128,14 @@ Hozzon létre egy új Azure Migrate projektet.
     :::image type="content" source="./media/tutorial-discover-vmware/new-project.png" alt-text="A projekt neve és a régió mezői":::
 
 7. Válassza a **Létrehozás** lehetőséget.
-8. Várjon néhány percet, amíg a Azure Migrate-projekt üzembe helyezése megtörténik. A **Azure Migrate: a Server Assessment** eszköz alapértelmezés szerint hozzá lett adva az új projekthez.
+8. Várjon néhány percet, amíg a projekt üzembe helyezése megtörténik. A **Azure Migrate: a felderítési és értékelési** eszközt alapértelmezés szerint az új projekthez adja hozzá a rendszer.
 
 > [!NOTE]
 > Ha már létrehozott egy projektet, ugyanezzel a projekttel regisztrálhat további készülékeket a felderítéshez és az értékeléshez. a kiszolgálók. [ **További információ**](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
-Azure Migrate: a kiszolgáló értékelése egy könnyű Azure Migrate berendezést használ. A készülék kiszolgáló-felderítést végez, és a kiszolgáló konfigurációját és a teljesítménnyel kapcsolatos metaadatokat küld Azure Migrate. A készülék egy olyan PETESEJT-sablon telepítésével állítható be, amely letölthető a projektből.
+Azure Migrate: a felderítés és az értékelés egy könnyű Azure Migrate berendezést használ. A készülék kiszolgáló-felderítést végez, és a kiszolgáló konfigurációját és a teljesítménnyel kapcsolatos metaadatokat küld Azure Migrate. A készülék egy olyan PETESEJT-sablon telepítésével állítható be, amely letölthető a projektből.
 
 > [!NOTE]
 > Ha valamilyen okból nem tudja beállítani a készüléket a sablon használatával, beállíthatja egy PowerShell-parancsfájl használatával egy meglévő Windows Server 2016-kiszolgálón. [**További információ**](deploy-appliance-script.md#set-up-the-appliance-for-vmware).
@@ -143,18 +143,19 @@ Azure Migrate: a kiszolgáló értékelése egy könnyű Azure Migrate berendez�
 ### <a name="deploy-with-ova"></a>Üzembe helyezés PETESEJTekkel
 
 Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
-1. Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+
+1. Adja meg a készülék nevét, és állítson be egy Project-kulcsot a portálon.
 1. Töltse le a petesejtek sablon fájlját, és importálja vCenter Serverba. Ellenőrizze, hogy a petesejtek biztonságosak-e.
-1. Hozza létre a berendezés virtuális gépet a petesejtek fájlból, és győződjön meg arról, hogy tud kapcsolódni Azure Migratehoz.
-1. Konfigurálja a készüléket első alkalommal, és regisztrálja azt a projektben a Azure Migrate Project Key használatával.
+1. Hozza létre a készüléket a petesejtek fájlból, és győződjön meg róla, hogy tud csatlakozni a Azure Migratehoz.
+1. Konfigurálja a készüléket első alkalommal, és regisztrálja a projekttel a Project Key használatával.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
+### <a name="1-generate-the-project-key"></a>1. a projekt kulcsának előállítása
 
-1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
-2. A **felderítési gépeken** a  >  **gépek virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
-3. **1.: hozzon létre Azure Migrate projektfájlt**, adjon meg egy nevet a Azure Migrate berendezés számára, amelyet a VMware-környezetben található kiszolgálók felderítéséhez fog beállítani. A névnek legfeljebb 14 karakterből kell állnia.
+1. Az **áttelepítési céloknál** a  >  **Windows, a Linux és az SQL Server**  >  **Azure Migrate: felderítés és értékelés** **területen** válassza a felderítés lehetőséget.
+2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
+3. **1.: hozzon létre egy projektfájlt**, adja meg a VMware-környezetben található kiszolgálók felderítéséhez beállított Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárja be a felderítés oldalt az erőforrások létrehozása során.
-1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
+1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **Project-kulcsot** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="2-download-the-ova-template"></a>2. a petesejtek sablon letöltése
@@ -214,13 +215,13 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 
 1. A vSphere-ügyfél konzolján kattintson a jobb gombbal a kiszolgálóra, majd válassza a **konzol megnyitása** lehetőséget.
 2. Adja meg a berendezés nyelvét, időzónáját és jelszavát.
-3. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozni tud a berendezés-kiszolgálóhoz, és nyissa meg a készülék Configuration Manager URL-címét: `https://appliance name or IP address: 44368` .
+3. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a berendezéshez, és nyissa meg a készülék Configuration Manager URL-címét: `https://appliance name or IP address: 44368` .
 
    Másik lehetőségként megnyithatja a Configuration Managert a berendezés-kiszolgáló asztaláról a Configuration Manager parancsikonjának kiválasztásával.
 1. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
 1. A Configuration Manager > **Előfeltételek beállítása** területen tegye a következőket:
    - **Kapcsolat**: a készülék ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-     - Kattintson a **proxy beállítása** elemre a proxy címe `http://ProxyIPAddress` vagy a `http://ProxyFQDN` figyelő port megadásához.
+     - A proxy címe vagy a figyelő port megadásához kattintson a **telepítő proxy** elemre `http://ProxyIPAddress` `http://ProxyFQDN` .
      - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
      - Csak a HTTP-proxyk használata támogatott.
      - Ha hozzáadta a proxy részleteit, vagy letiltotta a proxyt és/vagy a hitelesítést, kattintson a **Save (Mentés** ) gombra a kapcsolat ismételt elindításához.
@@ -236,7 +237,7 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Illessze be a **projektből** a portálról másolt kulcsot. Ha nem rendelkezik a kulccsal, nyissa meg a **Azure Migrate: felderítés és értékelés> a meglévő készülékek felügyeletének észlelése>**, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
 1. Szüksége lesz egy eszköz kódjára az Azure-beli hitelesítéshez. A **Bejelentkezés** gombra kattintva megnyílik egy modális az eszköz kódjával az alább látható módon.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Az eszköz kódját ábrázoló modális":::
@@ -260,16 +261,16 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a kiszolgálók konfigur�
 
 1. Az **1. lépés: vCenter Server hitelesítő adatok** megadása lapon kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** ahhoz a vCenter Server-fiókhoz, amelyet a berendezés a vCenter Server futó kiszolgálók felderítéséhez használ majd.
     - A fenti cikkben leírtak szerint be kell állítania egy fiókot a szükséges engedélyekkel.
-    - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontokra, fürtökre, fürtökre, gazdagépekre, gazdagépekre vagy egyéni virtuális gépekre) szeretné alkalmazni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
+    - Ha a hatókör-felderítést meghatározott VMware-objektumokra (vCenter Server adatközpontok, fürtök, fürtök, gazdagépek, gazdagépek vagy különálló kiszolgálók mappára) szeretné használni, tekintse át az [ebben a cikkben](set-discovery-scope.md) szereplő utasításokat a Azure Migrate által használt fiók korlátozásához.
 1. A **2. lépés: adja meg a vCenter Server részleteket** lehetőségnél kattintson a **felderítési forrás hozzáadása** elemre, hogy a legördülő listából válassza ki a hitelesítő adatok rövid nevét, adja meg a vCenter Server **IP-címét/teljes tartománynevét** . A **portot** meghagyhatja az alapértelmezett értékre (443), vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli, és kattintson a **Save (Mentés**) gombra.
 1. A **Save (Mentés**) gombra kattintva a készülék megpróbálja ellenőrizni a vCenter Serverhoz való kapcsolódást a megadott hitelesítő adatokkal, és megjeleníti az **ellenőrzési állapotot** a táblában a vCenter Server IP-cím/FQDN használatával.
-1. A felderítés elindítása előtt bármikor **újraérvényesítheti** vCenter Server a kapcsolatot.
+1. A felderítés megkezdése előtt bármikor **újraérvényesítheti** vCenter Server a kapcsolatot.
 
     :::image type="content" source="./media/tutorial-discover-vmware/appliance-manage-sources.png" alt-text="3. panel a készülék Configuration Managerben vCenter Server részletekért":::
 
 ### <a name="provide-server-credentials"></a>Kiszolgáló hitelesítő adatainak megadása
 
-A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek leltározásához, az ügynök nélküli függőségek elemzéséhez és a SQL Server példányok és adatbázisok felderítéséhez**, dönthet úgy, hogy több kiszolgáló hitelesítő adatait is megadja, vagy ha nem szeretné használni ezeket a funkciókat, kihagyhatja a lépést, és folytathatja a vCenter Server felderítést. Később bármikor módosíthatja a szándékot.
+A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek leltározásához, az ügynök nélküli függőségek elemzéséhez és a SQL Server példányok és adatbázisok felderítéséhez**, dönthet úgy, hogy több kiszolgáló hitelesítő adatait is megadja, vagy ha nem szeretné használni ezeket a funkciókat, kihagyhatja a lépést, és folytathatja a vCenter Server felderítést. A szándékot később bármikor megváltoztathatja.
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="3. panel a készülék Configuration Manager kiszolgáló adataihoz":::
 
@@ -301,6 +302,7 @@ Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja
 Ha nincs tanúsítvány kiépítve a kiszolgálón az indításkor, SQL Server létrehoz egy önaláírt tanúsítványt, amelyet a rendszer a bejelentkezési csomagok titkosítására használ. [**További információ**](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine).
 
 A felderítés a következőképpen működik:
+
 - Körülbelül 15 percet vesz igénybe, hogy a felderített kiszolgálók leltározása megjelenjen a portálon.
 - A telepített alkalmazások felderítése hosszabb időt is igénybe vehet. Az időtartam a felderített kiszolgálók számától függ. 500-kiszolgálók esetében körülbelül egy óra elteltével a felderített leltár megjelenik a Azure Migrate-portálon.
 - A kiszolgálók felderítését követően a portálon engedélyezheti az ügynök nélküli függőségek elemzését a kiszolgálókon.

@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: b3fd8dcd5f2e73b798f6e9529b5811b9935bc393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e2a0859227ad790763dc9ae07cb408a72538f90
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104605766"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773368"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Cloud Service (kiterjesztett támogatás) üzembe helyezése ARM-sablonok használatával
 
@@ -45,7 +45,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
 ## <a name="deploy-a-cloud-service-extended-support"></a>Cloud Service üzembe helyezése (kiterjesztett támogatás)
 
 > [!NOTE]
-> A felhőalapú szolgáltatás (bővített támogatás) üzembe helyezésének másik módja a [Azure Portalon](https://portal.azure.com)keresztül történik. A [létrehozott ARM-sablon](generate-template-portal.md) a portálon keresztül tölthető le a jövőbeli üzembe helyezésekhez
+> Az ARM-sablon és a paraméter-fájl előállításának egyszerűbb és gyorsabb módja a [Azure Portalon](https://portal.azure.com)keresztül. A [létrehozott ARM-sablon](generate-template-portal.md) a portálon keresztül tölthető le a Cloud Service PowerShell-lel való létrehozásához.
  
 1. Hozzon létre egy virtuális hálózatot. A virtuális hálózat nevének meg kell egyeznie a szolgáltatás konfigurációs (. cscfg) fájljának hivatkozásaival. Ha meglévő virtuális hálózatot használ, hagyja ki ezt a szakaszt az ARM-sablonból.
 
@@ -191,7 +191,9 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre felhőalapú szolgáltatást 
     ```
 
 6. Választható Hozzon létre egy bővítmény-profilt a bővítmények Felhőbeli szolgáltatáshoz való hozzáadásához. Ebben a példában a távoli asztal és a Windows Azure Diagnostics bővítményt vesszük fel.
-    
+   > [!Note] 
+   > A távoli asztal jelszavának 8-123 karakter hosszúnak kell lennie, és meg kell felelnie legalább hármat a jelszó bonyolultsági követelményei közül a következők közül: 1) a 2. kisbetűs karaktert tartalmazza, amely a 3. számjegyet tartalmaz, amely a 4. speciális karaktert tartalmazza, és az 5. különleges karakter nem megengedett.
+
     ```json
         "extensionProfile": {
           "extensions": [

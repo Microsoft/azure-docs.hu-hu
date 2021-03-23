@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: bb65a53f1ba6e97a39bd0c0170c5c41da38aee8b
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1406f865d60e6715b5f6a974225dc48958e8da6d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720508"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775170"
 ---
 # <a name="semantic-ranking-in-azure-cognitive-search"></a>Szemantikai rangsorolás az Azure Cognitive Search
 
@@ -51,7 +51,7 @@ Az összegzésbe való bemenetek az előkészítési fázisból származó hossz
 
 A kimenet egy [szemantikai felirat](semantic-how-to-query-request.md), egyszerű szövegben és kiemeli. A felirat kisebb, mint a hosszú karakterlánc, amely általában kevesebb mint 200 szót tartalmaz a dokumentumban, és a dokumentum leginkább reprezentálja. 
 
-A "válaszok" paraméter megadásakor a rendszer a [szemantikai választ](semantic-answers.md) is visszaadja, ha a lekérdezést feltették a kérdéses lekérdezésre, és ha a hosszú karakterláncban egy olyan szakasz található, amely kézenfekvő választ ad a kérdésre.
+A "válaszok" paraméter megadásakor a rendszer a [szemantikai választ](semantic-answers.md) is visszaadja, ha a lekérdezést feltették kérdésként, és ha egy átjáró olyan hosszú karakterláncban található, amely valószínűleg választ ad a kérdésre.
 
 ## <a name="scoring-and-ranking"></a>Pontozás és rangsorolás
 

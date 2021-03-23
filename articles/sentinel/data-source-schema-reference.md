@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 0cc1a083e1400b5a3167376e374af6c7bf7ab7c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 84d5f1e4035fb730d33b7bc8dd375273610f0bfb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698348"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771940"
 ---
 # <a name="data-source-schema-reference"></a>Adatforrás sémájának referenciája
 
@@ -62,6 +62,9 @@ A következő táblázat felsorolja a harmadik féltől származó gyártókat, 
 |**Állomás** |Trend Micro |Mind |CommonSecurityLog | [Syslog-tartalom leképezése – CEF](https://docs.trendmicro.com/en-us/enterprise/control-manager-70/appendices/syslog-mapping-cef.aspx) |
 | | | | | |
 
+> [!NOTE]
+> További információkért lásd még: [CEF és CommonSecurityLog mező leképezése](cef-name-mapping.md).
+> 
 ## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure Sentinel-összekötők, például a CEF, a syslog, a Direct, az Agent és az egyéni összekötők számára:

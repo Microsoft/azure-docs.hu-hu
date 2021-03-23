@@ -35,11 +35,11 @@
           href: azure-portal-dashboards.md
         - name: Azure-irányítópult megosztása
           href: azure-portal-dashboard-share-access.md
+        - name: Egyéni Markdown-csempe használata
+          href: azure-portal-markdown-tile.md
         - name: Azure-irányítópult programozott létrehozása
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
-        - name: Egyéni Markdown-csempe használata
-          href: azure-portal-markdown-tile.md
     - name: Az Azure Portal útmutató videósorozata
       href: azure-portal-video-series.md
     - name: Támogatási kérések létrehozása és kezelése

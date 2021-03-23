@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/12/2021
-ms.openlocfilehash: d07b52d8abeab34d565ebde4bac58eec66780dce
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/21/2021
+ms.openlocfilehash: d3e1b73789d6bd4df3dfe9a0e05048f9bbbb25bb
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98179265"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104770971"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
-A készségkészlet egy olyan mesterséges intelligencia-alapú szolgáltatás, amely mély tanulási modellekkel gyűjti az információkat és a szerkezetet a nagy, nem megkülönböztetett szöveg-vagy képfájlokból, így a tartalom indexelhető és kereshető az Azure Cognitive Searchban. 
+Ez a rövid útmutató a készségkészlet támogatását mutatja be a portálon, amely bemutatja, hogyan használható az optikai karakterfelismerés (OCR) és az entitások felismerése, hogy kereshető szöveges tartalmakat hozzon létre a képekből és az alkalmazásokból.
 
-Ebben a rövid útmutatóban a készségkészlet létrehozásához egyesíti az Azure-felhőben lévő szolgáltatásokat és az adatszolgáltatásokat. Ha minden megtörtént, a Azure Portal az **adatimportálás** varázsló futtatásával egyesítheti azt. A végeredmény egy olyan kereshető index, amely az AI-feldolgozás által létrehozott adatokkal van feltöltve, amelyet a portálon ([Search Explorer](search-explorer.md)) lehet lekérdezni.
+Az előkészítéshez létre kell hoznia néhány erőforrást, és fel kell töltenie a minta-lemezképeket és az alkalmazás-tartalmi fájlokat. Ha minden megtörtént, a Azure Portal az **adatimportálás** varázsló futtatásával egyesítheti azt. A végeredmény egy olyan kereshető index, amely az AI-feldolgozás által létrehozott adatokkal van feltöltve, amelyet a portálon ([Search Explorer](search-explorer.md)) lehet lekérdezni.
+
+Inkább kódot szeretne kezdeni? Tekintse [meg az oktatóanyagot: az Azure-blobokból származó kereshető tartalmak létrehozásához használja a REST és a AI használatát](cognitive-search-tutorial-blob.md) [: a .net és AI használatával kereshető tartalmakat hozhatja ki az Azure-blobokból](cognitive-search-tutorial-blob-dotnet.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +46,7 @@ A következő lépésekben hozzon létre egy BLOB-tárolót az Azure Storage-ban
 
    + Válassza ki ugyanazt a régiót, mint az Azure Cognitive Search a sávszélességgel kapcsolatos költségek elkerülése érdekében. 
 
-   + Ha később szeretné kipróbálni a Knowledge Store szolgáltatást, akkor válassza a StorageV2 (általános célú v2) fiók típusát, egy másik útmutatóban. Egyéb esetben válassza a tetszőleges típust.
+   + Válassza ki a StorageV2 (általános célú v2).
 
 1. Nyissa meg a blob Services-lapokat, és hozzon létre egy tárolót. Használhatja az alapértelmezett nyilvános hozzáférési szintet. 
 

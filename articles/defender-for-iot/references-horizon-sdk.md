@@ -1,19 +1,14 @@
 ---
 title: Horizon SDK
-titleSuffix: Azure Defender for IoT
 description: A Horizon SDK lehetővé teszi, hogy az Azure Defender IoT-fejlesztőknek tervezzen olyan, a hálózati forgalmat dekódolást nem támogató beépülő modulokat, amelyeket a IoT Network Analysis Programs automatizált Defender feldolgozhat.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 500f1d78a6a2ab91284c993a5c56ef8e679db83f
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100523362"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782486"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Horizont-tulajdonosi protokollok
 
@@ -326,7 +321,7 @@ Ez a szakasz az alapszintű paramétereket ismerteti.
 
 Ez a szakasz a többi mezőt ismerteti.
 
-| Paraméter felirata | Description |
+| Paraméter felirata | Leírás |
 |-----------------|--------|
 | **címlisták engedélyezése** | Indexelheti a protokollok értékeit, és megjelenítheti őket az adatbányászati jelentésekben. Ezek a jelentések a hálózati alapkonfigurációt tükrözik. :::image type="content" source="media/references-horizon-sdk/data-mining.png" alt-text="Az adatbányászati nézet mintája."::: <br /> További információ: [Kapcsolódás egy indexelő szolgáltatáshoz (alapterv)](#connect-to-an-indexing-service-baseline) a részletekért. |
 | **belső vezérlőprogram** | Kinyerheti a belső vezérlőprogram adatait, megadhatja az indexelési értékeket, és aktiválhatja a belső vezérlőprogram riasztásait a beépülő modulhoz. További információ: a [belső vezérlőprogram adatainak kinyerése](#extract-firmware-data) . |
@@ -817,7 +812,7 @@ Adja hozzá a **riasztások** paramétert a `config.json` beépülő modulhoz.
 
 Ez a szakasz a JSON-konfigurációs mezőket ismerteti. 
 
-| Mező neve | Description | Lehetséges értékek |
+| Mező neve | Leírás | Lehetséges értékek |
 |--|--|--|
 | **ID (Azonosító)** | Egyetlen riasztási azonosítót jelöl. Ebben a kontextusban egyedinek kell lennie. | 0-10000 numerikus érték |
 | **message** | A felhasználó számára megjelenő információk. Ez a mező különböző mezők használatát teszi lehetővé. | A protokoll bármelyik mezőjét vagy bármely alsóbb rétegbeli protokollt használhat. |

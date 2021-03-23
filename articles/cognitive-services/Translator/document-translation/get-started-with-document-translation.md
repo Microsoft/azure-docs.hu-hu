@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486658"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773045"
 ---
 # <a name="get-started-with-document-translation-preview"></a>Ismerkedés a dokumentumok fordításával (előzetes verzió)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486658"
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!NOTE]
-> Általában, amikor a Azure Portalban létrehoz egy kognitív szolgáltatási erőforrást, lehetősége van egy több szolgáltatásból álló előfizetési kulcs vagy egy egyszolgáltatásos előfizetési kulcs létrehozására. A dokumentumok fordítása azonban jelenleg csak a Translator (Single Service) erőforrásban támogatott, és **nem** szerepel a Cognitive Services (több szolgáltatás) erőforrásban.
+>
+> 1. Általában, amikor a Azure Portalban létrehoz egy kognitív szolgáltatási erőforrást, lehetősége van egy több szolgáltatásból álló előfizetési kulcs vagy egy egyszolgáltatásos előfizetési kulcs létrehozására. A dokumentumok fordítása azonban jelenleg csak a Translator (Single Service) erőforrásban támogatott, és **nem** szerepel a Cognitive Services (több szolgáltatás) erőforrásban.
+> 2. A dokumentum fordítása jelenleg az **S1 standard Service csomagjában** érhető el. _Lásd:_ [Cognitive Services díjszabása – Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/).
+>
 
 A kezdéshez a következőkre lesz szüksége:
 
@@ -29,8 +32,6 @@ A kezdéshez a következőkre lesz szüksége:
 * Egy [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) Service-erőforrás (**nem** Cognitive Services erőforrás).
 
 * Egy [**Azure Blob Storage-fiók**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). A blob-adatai tárolásához és rendszerezéséhez tárolókat kell létrehoznia a Storage-fiókon belül.
-
-* Egy befejezett [**dokumentum fordítása (előzetes verzió) űrlap**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u) , amely lehetővé teszi, hogy az Azure-előfizetése az új dokumentum-fordítási funkciót használja.
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>Egyéni tartománynév és előfizetési kulcs beszerzése
 
@@ -186,7 +187,7 @@ A Batch-dokumentumok fordítására vonatkozó kérelmet POST kérelem útján k
 
 A következő fejlécek szerepelnek az egyes Document Translator API-kérelmekben:
 
-|HTTP-fejléc|Description|
+|HTTP-fejléc|Leírás|
 |---|--|
 |Ocp-Apim-Subscription-Key|**Kötelező**: az érték a fordítóhoz vagy Cognitive Services erőforráshoz tartozó Azure-előfizetési kulcs.|
 |Content-Type|**Kötelező**: az adattartalom tartalomtípusát adja meg. Az elfogadott értékek az Application/JSON vagy a charset = UTF-8.|

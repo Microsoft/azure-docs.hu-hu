@@ -4,12 +4,12 @@ description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54d3e53b71b5f63da84e41a752bbbb6fce65c045
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 6a7545d4d927418e6153ce3bf439fc8c3e2dc702
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100579588"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104774915"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, -megőrzés és -tárolás az Application Insightsban
 
@@ -294,6 +294,10 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 
 > [!NOTE]
 > Az ügyfél IP-címe a földrajzi hely kiértékelésére szolgál, de alapértelmezés szerint az IP-adatmennyiség már nem tárolódik, és az összes nulla a társított mezőbe íródik. Ha többet szeretne megtudni a személyes adatkezelésről, javasoljuk ezt a [cikket](../logs/personal-data-mgmt.md#application-data). Ha IP-cím adatait kell tárolnia, az [IP-cím gyűjtésével kapcsolatos cikk](./ip-collection.md) végigvezeti Önt a lehetőségein.
+
+## <a name="can-i-modify-or-update-data-after-it-has-been-collected"></a>Módosíthatom vagy frissíthetem az adatokat az adatgyűjtés után?
+
+Nem, az adat csak olvasható, és csak a kiürítési funkció használatával törölhető. Ha többet szeretne megtudni a [log Analytics és Application Insights tárolt személyes adatkezelési útmutatóról](../logs/personal-data-mgmt.md#delete), tekintse meg a következőt:.
 
 ## <a name="credits"></a>Kreditek
 Ez a termék a MaxMind által létrehozott GeoLite2-adatokból áll [https://www.maxmind.com](https://www.maxmind.com) .

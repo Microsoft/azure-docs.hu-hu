@@ -1,24 +1,14 @@
 ---
 title: IoT Hub egyéni biztonsági riasztásai
 description: Ismerje meg a testreszabható biztonsági riasztásokat, valamint ajánlott szervizelést a Defender használatával IoT Hub funkcióit és szolgáltatásait.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/16/2021
-ms.author: shhazam
-ms.openlocfilehash: 04198432f2b600a3c703d5e4f253656f116000db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d7a58bcdb759c3f31290cc7930eba6ca52fcc17b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100636526"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784730"
 ---
 # <a name="defender-for-iot-hub-custom-security-alerts"></a>Defender IoT Hub egyéni biztonsági riasztásokhoz
 
@@ -30,7 +20,7 @@ A IoT-riasztások következő listáját a várt IoT Hub viselkedés alapján me
 
 ## <a name="built-in-custom-alerts-in-the-iot-hub"></a>Beépített egyéni riasztások a IoT Hub
 
-| Súlyosság | Riasztás neve | Adatforrás | Description | Javasolt szervizelés |
+| Súlyosság | Riasztás neve | Adatforrás | Leírás | Javasolt szervizelés |
 |--|--|--|--|--|
 | Alacsony | Egyéni riasztás – az AMQP-protokollban az eszközökön lévő Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon. | IoT Hub | Egy adott időszakon belül a felhőből az eszközre irányuló üzenetek (AMQP protokoll) száma a jelenleg konfigurált és engedélyezett tartományon kívül esik. |  |
 | Alacsony | Egyéni riasztás – az AMQP-protokollban lévő elutasított Felhőbeli üzenetek száma kívül esik az engedélyezett tartományon. | IoT Hub | Az eszköz által visszautasított Felhőbeli üzenetek (AMQP protokoll) száma egy adott időszakon belül a jelenleg konfigurált és engedélyezett tartományon kívül esik. |  |

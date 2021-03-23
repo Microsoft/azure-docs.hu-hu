@@ -1,24 +1,14 @@
 ---
 title: Biztonsági ügynökök kiválasztása és telepítése
 description: Ismerje meg, hogyan válassza ki és telepítse a Defender IoT biztonsági ügynököket a IoT-eszközökön.
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: e35e3dd0bacc0b1e3a44d9338f612a70ca4b52bf
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c71c92ffa79c844f3529265320b46eadd0c158cf
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103496524"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778848"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Biztonsági ügynök kiválasztása és üzembe helyezése a IoT-eszközön
 
@@ -48,10 +38,10 @@ A C-alapú biztonsági ügynök alacsonyabb memória-lábnyomot tartalmaz, és i
 | **A Linux előfeltételei** | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins | libunwind8, libcurl3, UUID-Runtime, auditált, audispd-plugins, sudo, netstat, iptables |
 | **Lemez lábnyoma** | 10,5 MB | 90 MB |
 | **Memória lábnyoma (átlagos)** | 5,5 MB | 33 MB |
-| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Yes |
-| **Biztonsági adatgyűjtés [](how-to-agent-configuration.md#supported-security-events)** | Igen | Yes |
-| **Eseményösszesítés** | Igen | Yes |
-| **Távoli konfiguráció [Defender-IoT-Micro-Agent Twin](concept-security-module.md) használatával** | Igen | Yes |
+| **[Hitelesítés](concept-security-agent-authentication-methods.md) IoT hub** | Igen | Igen |
+| **Biztonsági adatgyűjtés [](how-to-agent-configuration.md#supported-security-events)** | Igen | Igen |
+| **Eseményösszesítés** | Igen | Igen |
+| **Távoli konfiguráció [Defender-IoT-Micro-Agent Twin](concept-security-module.md) használatával** | Igen | Igen |
 
 ## <a name="security-agent-installation-guidelines"></a>Biztonsági ügynök telepítési útmutatója
 

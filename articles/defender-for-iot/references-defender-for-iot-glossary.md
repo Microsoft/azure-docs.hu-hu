@@ -1,18 +1,14 @@
 ---
 title: A Defender for IoT szószedete
 description: Ez a Szószedet a fontos Defender rövid leírását tartalmazza a IoT platform használati feltételeit és fogalmait illetően.
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/09/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: f26cea9442aa3fbbe7f475cc5d16bea792b83fb3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 191b94ca37118ed6413149dd6047f94c5ee568cd
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493985"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786821"
 ---
 # <a name="defender-for-iot-glossary"></a>A Defender for IoT szószedete
 

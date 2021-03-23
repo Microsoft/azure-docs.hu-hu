@@ -6,18 +6,18 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: b3975d30fca1f7f542f27742ef8408b1feecc146
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1d9918786b22faddaeb07a12f0840b36a11ffe4d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101727192"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778381"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Értékelés áttekintése (Migrálás az Azure VMware-megoldásba)
 
 [Azure Migrate](migrate-services-overview.md) központi központot biztosít a helyszíni alkalmazások és munkaterhelések felderítésének, értékelésének és áttelepítésének nyomon követéséhez. Emellett nyomon követi a privát és a nyilvános Felhőbeli példányokat az Azure-ban. Az elosztó Azure Migrate eszközöket kínál az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatait.
 
-A Server Assessment olyan Azure Migrate eszköz, amely a helyszíni kiszolgálókat az Azure IaaS Virtual Machines és az Azure VMware Solution (AVS) szolgáltatásba való áttelepítésre értékeli. Ez a cikk arról nyújt tájékoztatást, hogyan számítják ki az Azure VMware-megoldás (AVS) értékelését.
+A Azure Migrate felderítési és értékelési eszköze a helyszíni kiszolgálókat értékeli az Azure Virtual Machines és az Azure VMware Solution (AVS) szolgáltatásba való áttelepítéshez. Ez a cikk arról nyújt tájékoztatást, hogyan számítják ki az Azure VMware-megoldás (AVS) értékelését.
 
 > [!NOTE]
 > Az Azure VMware-megoldás (AVS) értékelését csak VMware virtuális gépekhez lehet létrehozni.
@@ -26,10 +26,11 @@ A Server Assessment olyan Azure Migrate eszköz, amely a helyszíni kiszolgáló
 
 Az Azure Migrateekkel létrehozott értékelések az adatok időponthoz kapcsolódó pillanatképei. Kétféle értékelést hozhat létre a Azure Migrate használatával:
 
-| **Kiértékelés típusa** | **Részletek** |
-| - | - |
-| **Azure VM** | Kiértékelés a helyszíni kiszolgálók Azure-beli virtuális gépekre történő migrálásához. A[VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md) környezetben futó helyszíni kiszolgálókat, valamint az Azure-ba való áttelepítéshez használható [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) értékelheti ki. [További információ](concepts-assessment-calculation.md) |
-| **Azure VMware Solution (AVS)** | A helyszíni VMware virtuális gépek vagy kiszolgálók[ Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése.  A [VMware](how-to-set-up-appliance-vmware.md) -környezetben futó helyszíni kiszolgálókat felmérhető módon áttelepítheti az Azure VMware-megoldásba (AVS) az értékelés típusának használatával. [További információ](concepts-azure-vmware-solution-assessment-calculation.md) |
+**Kiértékelés típusa** | **Részletek**
+--- | --- 
+**Azure VM** | Kiértékelés a helyszíni kiszolgálók Azure-beli virtuális gépekre történő migrálásához. A helyszíni kiszolgálókat felhasználhatja [VMware](how-to-set-up-appliance-vmware.md) -és [Hyper-V](how-to-set-up-appliance-hyper-v.md) környezetben, valamint [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) az Azure-beli virtuális gépekre való áttelepítéshez ezzel az értékelési típussal.
+**Azure SQL** | A helyszíni SQL Server-kiszolgálók VMware-környezetből Azure SQL Database vagy az Azure SQL felügyelt példányba való átköltöztetésének értékelése.
+**Azure VMware Solution (AVS)** | Kiértékelés a helyszíni kiszolgálók [Azure VMware Solutionbe (AVS-be)](../azure-vmware/introduction.md) történő migrálásához. A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Az Azure VMware-megoldás (AVS) értékelése két méretezési feltétel beállítását biztosítja:
 
@@ -42,18 +43,18 @@ Az Azure VMware-megoldás (AVS) értékelése két méretezési feltétel beáll
 
 Több módon is futtathat értékeléseket.
 
-- A gépeket egy egyszerű Azure Migrate berendezés által gyűjtött kiszolgálói metaadatok használatával értékelheti ki. A készülék felfedi a helyszíni gépeket. Ezután a számítógép metaadatainak és teljesítményadatokat küld Azure Migrate. Ez nagyobb pontosságot tesz lehetővé.
-- A gépeket a vesszővel tagolt (CSV) formátumban importált kiszolgálói metaadatok használatával értékelheti ki.
+- A kiszolgálókat egy egyszerű Azure Migrate berendezés által gyűjtött kiszolgálói metaadatok használatával értékelheti ki. A készülék felfedi a helyszíni kiszolgálókat. Ezután elküldi a kiszolgálói metaadatokat és teljesítményadatokat Azure Migrate. Ez nagyobb pontosságot tesz lehetővé.
+- A kiszolgálókat a vesszővel tagolt (CSV) formátumban importált kiszolgálói metaadatok használatával értékelheti ki.
 
 ## <a name="how-do-i-assess-with-the-appliance"></a>Hogyan az értékelést a berendezéssel?
 
 Ha Azure Migrate berendezést helyez üzembe a helyszíni kiszolgálók felderítése érdekében, hajtsa végre a következő lépéseket:
 
 1. Az Azure és a helyszíni környezet beállítása a Azure Migrate való együttműködéshez.
-2. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
-3. Egyszerűsített Azure Migrate berendezés üzembe helyezése. A készülék folyamatosan felfedi a helyszíni gépeket, és számítógép-metaadatokat és teljesítményadatokat küld Azure Migrate. Telepítse a készüléket virtuális gépre. Semmit nem kell telepítenie az értékelni kívánt gépekre.
+2. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a felderítési és értékelési eszközt.
+3. Egyszerűsített Azure Migrate berendezés üzembe helyezése. A készülék folyamatosan felfedi a helyszíni kiszolgálókat, és elküldi a kiszolgálói metaadatokat és teljesítményadatokat Azure Migrate. Telepítse a készüléket virtuális gépre. Semmit nem kell telepítenie az értékelni kívánt kiszolgálókon.
 
-Miután a készülék megkezdte a számítógép-felderítést, összegyűjtheti azokat a gépeket, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportnak az **Azure VMware Solution (AVS)** típusú értékeléssel.
+Miután a készülék megkezdte a kiszolgáló felderítését, összegyűjtheti azokat a kiszolgálókat, amelyeket fel szeretne mérni egy csoportba, és értékelést kell futtatnia a csoportra vonatkozóan az értékelés típusú **Azure VMware-megoldás (AVS)** használatával.
 
 Hozza létre az első Azure VMware-megoldás (AVS) értékelését az [itt](how-to-create-azure-vmware-solution-assessment.md)leírt lépéseket követve.
 
@@ -62,7 +63,7 @@ Hozza létre az első Azure VMware-megoldás (AVS) értékelését az [itt](how-
 Ha egy CSV-fájl használatával értékeli a kiszolgálókat, nincs szüksége berendezésre. Ehelyett hajtsa végre a következő lépéseket:
 
 1. Állítsa be az Azure-t, hogy működjön együtt Azure Migrateokkal.
-2. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a kiszolgáló-értékelési eszközt.
+2. Az első értékeléshez hozzon létre egy Azure-projektet, és adja hozzá a felderítési és értékelési eszközt.
 3. Töltsön le egy CSV-sablont, és adja hozzá a kiszolgálói adatfájlokat.
 4. Importálja a sablont Azure Migrateba.
 5. Az importálással hozzáadott kiszolgálók felderítése, összegyűjtése egy csoportba, és értékelés futtatása a csoportnak az **Azure VMware Solution (AVS)** típusú értékeléssel.
@@ -97,7 +98,7 @@ A rendszer a következő teljesítményadatokat gyűjti, de nem használja az AV
 
 ## <a name="how-are-avs-assessments-calculated"></a>Hogyan történik az AVS-értékelések kiszámítása?
 
-Az AVS Assessment a helyszíni gépek metaadatait és teljesítményadatait használja az értékelések kiszámításához. Ha telepíti a Azure Migrate készüléket, az értékelés a készülék által gyűjtött adatokat használja. Ha azonban egy CSV-fájllal importált értékelést futtat, akkor megadja a számítás metaadatait.
+Az AVS Assessment a helyszíni kiszolgálók metaadatait és teljesítményadatait használja az értékelések kiszámításához. Ha telepíti a Azure Migrate készüléket, az értékelés a készülék által gyűjtött adatokat használja. Ha azonban egy CSV-fájllal importált értékelést futtat, akkor megadja a számítás metaadatait.
 
 A számítások a következő három szakaszban történnek:
 
@@ -105,7 +106,7 @@ A számítások a következő három szakaszban történnek:
 2. Az **AVS-csomópontok számának és a csomópontok közötti kihasználtságának kiszámítása**: a VMWare virtuális gépek futtatásához szükséges AVS-csomópontok becsült száma, valamint a processzor, a memória és a tárhely kihasználtsága az összes csomóponton.
 3. **Havi költségbecslés**: a helyszíni virtuális gépeket futtató összes Azure VMware Solution (AVS) csomópont becsült havi költségei.
 
-A számítások az előző sorrendben vannak. A számítógép-kiszolgálók csak akkor mozdulnak el egy későbbi fázisra, ha az előzőt átadja. Ha például egy kiszolgáló meghibásodik az AVS készültségi fázisában, az az Azure számára nem megfelelőként van megjelölve. A méretezési és költségszámítási műveletek nem lettek végrehajtva az adott kiszolgálón
+A számítások az előző sorrendben vannak. A kiszolgálók csak akkor mozdulnak el egy későbbi fázisra, ha az előzőt átadja. Ha például egy kiszolgáló meghibásodik az AVS készültségi fázisában, az az Azure számára nem megfelelőként van megjelölve. A méretezési és költségszámítási műveletek nem lettek végrehajtva az adott kiszolgálón
 
 ## <a name="whats-in-an-azure-vmware-solution-avs-assessment"></a>Mi az Azure VMware-megoldás (AVS) értékelése?
 
@@ -119,9 +120,9 @@ A következőkben szerepel az AVS assessment:
 | **Csomópont típusa** | Az Azure-ban használni kívánt [AVS-csomópont típusát](../azure-vmware/concepts-private-clouds-clusters.md) adja meg. Az alapértelmezett csomópont típusa AV36. A jövőben további csomópont-típusok is elérhetők lehetnek.  Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok számát javasolja. |
 | **TRANZAKCIÓs beállítás, RAID-szint** | Meghatározza a hibák és a RAID-kombinációk érvényes kombinációját. A kiválasztott TRANZAKCIÓs lehetőség RAID-szinttel és a helyszíni virtuálisgép-lemezzel kapcsolatos követelménye határozza meg az AVS-ben szükséges teljes vSAN-tárterületet. Az összes rendelkezésre álló tárterület a számítások után is tartalmaz egy, a felügyeleti objektumok, például a vCenter és a b) számára fenntartott területet, amely a vSAN műveletekhez szükséges 25%-os tárolási tartalékidő. |
 | **Méretezési feltétel** | Megadja az AVS-csomópontok memória-, CPU-és tárolási követelményeinek meghatározásához használandó feltételeket. A teljesítmény *-alapú* méretezést vagy *a helyszínen* is dönthet úgy, hogy figyelembe venné a teljesítménnyel kapcsolatos előzményeket. Ha egyszerűen fel szeretné emelni és váltani szeretne, válassza a helyszíni lehetőséget. A használaton alapuló méretezés beszerzéséhez válassza a teljesítmény-alapú lehetőséget. |
-| **Teljesítményelőzmények** | Beállítja a gépek teljesítményi adatai kiértékeléséhez szükséges időtartamot. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*. |
+| **Teljesítményelőzmények** | Beállítja a kiszolgálók teljesítményadatait értékelő időtartamot. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*. |
 | **Százalékos kihasználtság** | Meghatározza a jobb méretezéshez beállított teljesítményi minta százalékos értékét. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés teljesítmény-alapú. |
-| **Kényelmi faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). A rendszer ezt a puffert alkalmazza a virtuális gépek (CPU, memória és lemez) gépi kihasználtsági adataira. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése. Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. |
+| **Kényelmi faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). Ezt a puffert a rendszer a virtuális gépek (CPU, memória és lemez) kiszolgálói kihasználtsági adatain felül alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése. Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. |
 | **Ajánlat** | Megjeleníti a regisztrált [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) . Az Azure Migrate ez alapján becsüli meg a költségeket. |
 | **Pénznem** | A fiók számlázási pénznemét jeleníti meg. |
 | **Kedvezmény (%)** | Felsorolja az Azure-ajánlaton keresztül kapott előfizetés-specifikus kedvezményeket. Az alapértelmezett beállítás 0%. |
@@ -132,39 +133,39 @@ A következőkben szerepel az AVS assessment:
 
 ## <a name="azure-vmware-solution-avs-suitability-analysis"></a>Azure VMware-megoldás (AVS) megfelelőségi elemzés
 
-Az AVS-értékelések a számítógép tulajdonságainak áttekintésével értékelik az egyes helyszíni virtuális gépeket az AVS megfelelőségének érdekében. Emellett az egyes mért gépeket a következő alkalmassági kategóriák valamelyikébe rendeli:
+Az AVS-értékelések a kiszolgáló tulajdonságainak áttekintésével értékelik az egyes helyszíni virtuális gépeket az AVS megfelelőségének érdekében. Emellett az egyes mért kiszolgálókat a következő alkalmassági kategóriák egyikéhez rendeli hozzá:
 
-- **AVS-re kész**: a gép áttelepíthető az Azure-ba (AVS) módosítás nélkül. A teljes AVS-támogatással indul az AVS-ben.
+- **AVS-re kész**: a kiszolgáló áttelepíthető az Azure-ba (AVS) módosítás nélkül. A teljes AVS-támogatással indul az AVS-ben.
 - Felmerülő **feltételek**: a virtuális gép kompatibilitási problémákba ütközhet a jelenlegi vSphere-verzióval, valamint az esetlegesen vmware-eszközök és egyéb beállítások megkövetelésével, mielőtt a virtuális gép teljes funkcionalitása elérhető legyen az AVS-ben.
 - **Nem áll készen az AVS-re**: a virtuális gép nem indul el az AVS-ben. Ha például a helyszíni VMware virtuális gép rendelkezik külső eszközzel, például CD-ROM-meghajtóval, akkor a VMware VMotion művelet meghiúsul (ha VMware VMotion használ).
-- **Felkészültség ismeretlen**: Azure Migrate nem tudta megállapítani a gép készültségét, mert nem áll rendelkezésre elegendő, a helyszíni környezetből gyűjtött metaadatok.
+- **Felkészültség ismeretlen**: Azure Migrate nem tudta meghatározni a kiszolgáló készültségét, mert nem áll rendelkezésre elegendő, a helyszíni környezetből gyűjtött metaadatok.
 
-Az értékelés megvizsgálja a számítógép tulajdonságait, hogy meghatározza a helyszíni gép Azure-készültségét.
+Az értékelés a kiszolgálói tulajdonságok alapján határozza meg a helyszíni kiszolgáló Azure-készültségét.
 
-### <a name="machine-properties"></a>Számítógép tulajdonságai
+### <a name="server-properties"></a>Kiszolgáló tulajdonságai
 
 Az értékelés a helyszíni virtuális gép következő tulajdonságát vizsgálja meg annak megállapításához, hogy futtatható-e az Azure VMware-megoldáson (AVS).
 
 | **Tulajdonság** | **Részletek** | **AVS-készültségi állapot** |
 | - | - | - |
-| **Internet Protocol** | Az Azure jelenleg nem támogatja a végpontok közötti IPv6-alapú internetes címzést. Ha a rendszer azt észleli, hogy a gép IPv6-ot használ, forduljon a helyi MSFT AVS GBB-csapathoz segítségért. | Feltételesen kész Internet Protocol |
+| **Internet Protocol** | Az Azure jelenleg nem támogatja a végpontok közötti IPv6-alapú internetes címzést. Forduljon a helyi MSFT AVS GBB-csapathoz a Szervizelési útmutatóhoz, ha a kiszolgálót IPv6-tal észleli. | Feltételesen kész Internet Protocol |
 
 ### <a name="guest-operating-system"></a>Vendég operációs rendszer
 
 Az AVS-értékelések jelenleg nem tekintik át az operációs rendszert a megfelelőségi elemzés részeként. A helyszíni virtuális gépeken futó összes operációs rendszer valószínűleg Azure VMware-megoldáson (AVS) fut.
 
-A virtuális gép tulajdonságai mellett az értékelés a gépek vendég operációs rendszerét vizsgálja, hogy az az Azure-on is futtatható-e.
+A virtuális gép tulajdonságai mellett az értékelés a kiszolgálók vendég operációs rendszerét vizsgálja, hogy az az Azure-on is futtatható-e.
 
 ## <a name="sizing"></a>Méretezés
 
-Miután egy gép az AVS-re készként van megjelölve, az AVS Assessment lehetővé teszi a csomópontok méretezését, amely magában foglalja a megfelelő helyszíni virtuálisgép-követelmények azonosítását és a szükséges AVS-csomópontok teljes számának megállapítását. Ezek az ajánlások a megadott értékelési tulajdonságokkal függően változnak.
+Ha egy kiszolgáló az AVS-re készként van megjelölve, az AVS Assessment lehetővé teszi a csomópontok méretezését, amely magában foglalja a megfelelő helyszíni virtuálisgép-követelmények azonosítását és a szükséges AVS-csomópontok teljes számának megállapítását. Ezek az ajánlások a megadott értékelési tulajdonságokkal függően változnak.
 
-- Ha az értékelés *teljesítmény-alapú méretezést* használ, Azure Migrate figyelembe veszi a gép teljesítmény-előzményeit, hogy az AVS-re vonatkozó megfelelő méretezési javaslatok legyenek. Ez a módszer különösen akkor hasznos, ha túlterhelte a helyszíni virtuális gépet, de a kihasználtság alacsony, és a virtuális gépet az AVS-ben szeretné megtakarítani a költségek megtakarítása érdekében. Ez a módszer segít optimalizálni a méreteket az áttelepítés során.
-- Ha nem szeretné figyelembe venni a virtuális gép méretezéséhez szükséges teljesítményadatokat, és a helyszíni gépeket az AVS-be szeretné állítani, akkor a méretezési feltételeket * a helyszíni * értékre állíthatja. Ezután az értékelés a helyszíni konfiguráció alapján méretezi a virtuális gépeket a kihasználtsági adatmennyiség figyelembevétele nélkül.
+- Ha az értékelés *teljesítmény-alapú méretezést* használ, a Azure Migrate úgy tekinti a kiszolgáló teljesítményének előzményeit, hogy az AVS-hez megfelelő méretezési javaslatot tegyen. Ez a módszer különösen akkor hasznos, ha túlterhelte a helyszíni virtuális gépet, de a kihasználtság alacsony, és a virtuális gépet az AVS-ben szeretné megtakarítani a költségek megtakarítása érdekében. Ez a módszer segít optimalizálni a méreteket az áttelepítés során.
+- Ha nem szeretné figyelembe venni a virtuális gép méretezéséhez szükséges teljesítményadatokat, és a helyszíni kiszolgálókat az AVS-ként szeretné használni, akkor a méretezési feltételeket * a helyszíni * értékre állíthatja. Ezután az értékelés a helyszíni konfiguráció alapján méretezi a virtuális gépeket a kihasználtsági adatmennyiség figyelembevétele nélkül.
 
 ### <a name="ftt-sizing-parameters"></a>Pénzügyi tranzakció méretezési paraméterei
 
-Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a virtuális gépek tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-Raid kombinációk a következők:
+Az AVS-ben használt vSAN. a vSAN tárolási házirendjei a kiszolgálók tárolási követelményeit határozzák meg. Ezek a szabályzatok garantálják a virtuális gépek szükséges szolgáltatásszintjét, mivel meghatározzák, hogy a tároló hogyan legyen lefoglalva a virtuális gépnek. Az elérhető FTT-Raid kombinációk a következők:
 
 | **Megengedhető hibák (FTT)** | **RAID-konfiguráció** | **Minimálisan szükséges gazdagépek száma** | **Méretezési szempontok** |
 | - | - | - | - |
@@ -254,7 +255,7 @@ Az elérhető adatpontok százalékos arányának függvényében az értékelé
 
 Íme néhány ok, amiért egy értékelés alacsony megbízhatósági minősítést kaphat:
 
-- Nem tudta felmérni a környezetét arra az időtartamra, amelyhez az értékelést létrehozza. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy napot várnia kell a begyűjtéshez.
+- Nem készítette el a környezet profilját abban az időtartamban, amelyre az értékelést létrehozta. Ha például az értékelést egy napra állítja be, akkor az összes adatpont felderítésének megkezdése után legalább egy napot várnia kell a begyűjtéshez.
 - Az értékelés nem tudja összegyűjteni az értékelési időszakban egy vagy több virtuális gép teljesítményadatait. Magas megbízhatósági minősítés esetén ügyeljen a következőre:
 
   - A virtuális gépek az értékelés időtartamára vannak bekapcsolva
@@ -281,8 +282,8 @@ Mivel az Azure VMware-megoldás (AVS) díjszabása csomópontos, a teljes költs
 
 Az Azure VMware Solution- (AVS-) értékelés Azure-kompatibilitási jelentésében a következő ajánlott eszközök szerepelnek:
 
-- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/tutorial-deploy-vmware-hcx.md).
-- **Ismeretlen**: A CSV-fájllal importált gépek esetében az alapértelmezett migrálási eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
+- **VMware HCX vagy Enterprise**: VMware-kiszolgálókhoz a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információk](../azure-vmware/tutorial-deploy-vmware-hcx.md).
+- **Ismeretlen**: a CSV-fájlon keresztül importált kiszolgálók esetében az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-kiszolgálók esetében azonban ajánlott a VMware Hybrid Cloud Extension (HCX) megoldás használata.
 
 ## <a name="next-steps"></a>Következő lépések
 
