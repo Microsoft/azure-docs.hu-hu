@@ -3,12 +3,12 @@ title: Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs házirendet a Windows rendszerhez.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99070644"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887699"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Vendégkonfigurációs szabályzatok létrehozása Windows rendszeren
 
@@ -214,10 +214,11 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker ./Config
+AuditBitLocker
 ```
 
-Mentse ezt a fájlt `config.ps1` a Project mappában található néven. Futtassa a PowerShellben a terminálon történő végrehajtással `./config.ps1` . Létrejön egy új MOF-fájl.
+Futtassa ezt a parancsfájlt egy PowerShell-terminálon, vagy mentse a fájlt a `config.ps1` Project mappában található néven.
+Futtassa a PowerShellben a terminálon történő végrehajtással `./config.ps1` . Létrejön egy új MOF-fájl.
 
 A `Node AuditBitlocker` parancs nem szükséges technikailag, de az alapértelmezett helyett egy nevű fájlt hoz létre `AuditBitlocker.mof` `localhost.mof` . Ha a. MOF-fájlnevet követi, a konfiguráció megkönnyíti a sok fájl rendszerezését nagy léptékű működés esetén.
 
@@ -234,7 +235,7 @@ A következő parancs futtatásával hozzon létre egy csomagot az előző lép�
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
-  -Configuration './Config/AuditBitlocker.mof'
+  -Configuration './AuditBitlocker/AuditBitlocker.mof'
 ```
 
 A konfigurációs csomag létrehozása után, de az Azure-ba való közzététel előtt tesztelheti a csomagot a munkaállomás vagy a folyamatos integráció és a folyamatos üzembe helyezés (CI/CD) környezetből. A GuestConfiguration parancsmag `Test-GuestConfigurationPackage` ugyanazt az ügynököt tartalmazza a fejlesztői környezetben, mint amelyet az Azure-gépeken belül használ. Ezzel a megoldással helyileg végezheti el az integrációs tesztelést, mielőtt kiadná a számlázott felhőalapú környezeteket.
@@ -257,10 +258,16 @@ Test-GuestConfigurationPackage `
 A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A parancsmag kimenetének átadása `New-GuestConfigurationPackage` a `Test-GuestConfigurationPackage` parancsmagnak.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-A következő lépés a fájl közzététele az Azure Blob Storageban. A parancshoz `Publish-GuestConfigurationPackage` a `Az.Storage` modul szükséges.
+A következő lépés a fájl közzététele az Azure Blob Storageban. A Storage-fiókhoz nem tartoznak speciális követelmények, de érdemes a fájlt a gépek közelében lévő régióban üzemeltetni. Ha nincs Storage-fiókja, használja a következő példát. Az alábbi parancsoknak, beleértve `Publish-GuestConfigurationPackage` a modult, szükségesek `Az.Storage` .
+
+```azurepowershell-interactive
+# Creates a new resource group, storage account, and container
+New-AzResourceGroup -name myResourceGroupName -Location WestUS
+New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccountName -SkuName 'Standard_LRS' -Location 'WestUs' | New-AzStorageContainer -Name guestconfiguration -Permission Blob
+```
 
 A parancsmag paraméterei `Publish-GuestConfigurationPackage` :
 
@@ -416,111 +423,6 @@ A közösségi megoldások felderíthető, ha megkeresi a [GuestConfiguration](h
 > A vendég konfiguráció bővíthetősége a "saját licenc használata" forgatókönyv. A használat előtt győződjön meg arról, hogy a harmadik féltől származó eszközök használati feltételei teljesülnek.
 
 Miután telepítette a DSC-erőforrást a fejlesztői környezetbe, a **FilesToInclude** paraméterrel beillesztheti a tartalmat a `New-GuestConfigurationPackage` harmadik féltől származó platformra a tartalmi összetevőben.
-
-### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Lépésről lépésre, külső gyártótól származó eszközöket használó tartalmi összetevő létrehozása
-
-Csak a `New-GuestConfigurationPackage` parancsmag szükséges a DSC-tartalom összetevőinek lépésenkénti útmutatójában. Ebben a példában a modul használatával `gcInSpec` kiterjesztheti a vendég konfigurációját a Windows rendszerű gépek naplózására a inspec platform használatával, nem pedig a Linuxon használt beépített modul helyett. A közösségi modul [nyílt forráskódú projektként van megőrizve a githubban](https://github.com/microsoft/gcinspec).
-
-Telepítse a szükséges modulokat a fejlesztési környezetben:
-
-```azurepowershell-interactive
-# Update PowerShellGet if needed to allow installing PreRelease versions of modules
-Install-Module PowerShellGet -Force
-
-# Install GuestConfiguration module prerelease version
-Install-Module GuestConfiguration -allowprerelease
-
-# Install commmunity supported gcInSpec module
-Install-Module gcInSpec
-```
-
-Először hozza létre az inspec által használt YaML-fájlt. A fájl alapvető információkat biztosít a környezetről. Alább látható egy példa:
-
-```YaML
-name: wmi_service
-title: Verify WMI service is running
-maintainer: Microsoft Corporation
-summary: Validates that the Windows Service 'winmgmt' is running
-copyright: Microsoft Corporation
-license: MIT
-version: 1.0.0
-supports:
-  - os-family: windows
-```
-
-Mentse a nevű fájlt `wmi_service.yml` egy nevű mappában a `wmi_service` projekt könyvtárába.
-
-Ezután hozza létre a Ruby-fájlt a számítógép naplózásához használt inspec nyelvi absztrakcióval.
-
-```Ruby
-control 'wmi_service' do
-  impact 1.0
-  title 'Verify windows service: winmgmt'
-  desc 'Validates that the service, is installed, enabled, and running'
-
-  describe service('winmgmt') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
-
-```
-
-Mentse ezt a fájlt `wmi_service.rb` egy nevű új mappába `controls` a `wmi_service` címtárban.
-
-Végül hozzon létre egy konfigurációt, importálja a **GuestConfiguration** erőforrás-modult, és használja az `gcInSpec` erőforrást az inspec-profil nevének megadásához.
-
-```powershell
-# Define the configuration and import GuestConfiguration
-Configuration wmi_service
-{
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
-    node 'wmi_service'
-    {
-        gcInSpec wmi_service
-        {
-            InSpecProfileName       = 'wmi_service'
-            InSpecVersion           = '3.9.3'
-            WindowsServerVersion    = '2016'
-        }
-    }
-}
-
-# Compile the configuration to create the MOF files
-wmi_service -out ./Config
-```
-
-Most már az alábbiak szerint kell lennie egy projekt struktúrájának:
-
-```file
-/ wmi_service
-    / Config
-        wmi_service.mof
-    / wmi_service
-        wmi_service.yml
-        / controls
-            wmi_service.rb 
-```
-
-A támogató fájlokat össze kell csomagolni. A kitöltött csomagot a vendég konfigurációja használja a Azure Policy definíciók létrehozásához.
-
-A `New-GuestConfigurationPackage` parancsmag létrehozza a csomagot. Harmadik féltől származó tartalom esetén használja a **FilesToInclude** paramétert a csomaghoz tartozó inspec-tartalom hozzáadásához. Nem kell megadnia a **ChefProfilePath** a Linux-csomagokhoz.
-
-- **Name**: vendég konfigurációs csomag neve.
-- **Konfiguráció**: a lefordított konfigurációs dokumentum teljes elérési útja.
-- **Elérési út**: kimeneti mappa elérési útja. Ezt a paramétert nem kötelező megadni. Ha nincs megadva, a csomag az aktuális könyvtárban jön létre.
-- **FilesoInclude**: az inspec-profil teljes elérési útja.
-
-A következő parancs futtatásával hozzon létre egy csomagot az előző lépésben megadott konfiguráció használatával:
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage `
-  -Name 'wmi_service' `
-  -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'  `
-  -Path './package' 
-```
 
 ## <a name="policy-lifecycle"></a>Szabályzat életciklusa
 

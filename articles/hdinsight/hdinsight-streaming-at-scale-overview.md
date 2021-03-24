@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3bf036ff413f720f54deef1a62b502668d1d8ac6
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931712"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871996"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
@@ -18,7 +18,7 @@ A valós idejű big data megoldások a mozgásban lévő adatkezelési művelete
 
 Egy adatfolyam-alkalmazásban egy vagy több adatforrás olyan eseményeket generál (néha több millió másodpercenként), amelyeket gyorsan kell bevezetni a hasznos információk eldobása nélkül. A bejövő eseményeket *adatfolyam-puffereléssel*, más néven *Event Queuing* szolgáltatással kezelik, például [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Az események összegyűjtése után az *adatfolyam-feldolgozási* rétegben található valós idejű elemzési rendszer használatával elemezheti az adatokat, például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók hosszú távú tárolási rendszerekben, például a [Azure Data Lake Storageban](https://azure.microsoft.com/services/storage/data-lake-storage/), és valós időben jeleníthetők meg az üzleti intelligencia irányítópultján, például [Power bi](https://powerbi.microsoft.com), tabló vagy egyéni weblap.
 
-![Azure HDInsight streaming-minták](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+:::image type="content" source="./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png" alt-text="Azure HDInsight streaming-minták":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ac71d8d7830f1d740d0156886a364b1d53ab247f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d78b106464bfbd3c86b9899a5c3543eed5dc0924
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100519558"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888957"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Gépi tanulási és adatelemzési eszközök az Azure adatelemzési Virtual Machines
 Az Azure adatelemzési Virtual Machines (Dsvm) számos eszközt és kódtárat tartalmaz a gépi tanuláshoz, amely népszerű nyelveken érhető el, például a Python, az R és a Julia.
@@ -99,7 +99,7 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 | Támogatott kiadások     | Windows, Linux     |
 | Jellemző felhasználások      | Általános gépi tanulási könyvtár      |
 | Hogyan van konfigurálva vagy telepítve?      |  GPU-támogatással telepítve   |
-| Használat vagy Futtatás      | Python-függvénytárként (2,7 és 3,5), R Package és on-Path parancssori eszköz ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows és Linux rendszerekhez `/dsvm/tools/xgboost/xgboost` )    |
+| Használat vagy Futtatás      | Python-függvénytárként (2,7 és 3.6 +), R Package és on-Path parancssori eszköz ( `C:\dsvm\tools\xgboost\bin\xgboost.exe` Windows és Linux rendszerekhez `/dsvm/tools/xgboost/xgboost` )    |
 | Mintákra mutató hivatkozások      | A minták a virtuális gépen, `/dsvm/tools/xgboost/demo` Linuxon és Windowson is elérhetők `C:\dsvm\tools\xgboost\demo` .   |
 | Kapcsolódó eszközök      | LightGBM, MXNet   |
 

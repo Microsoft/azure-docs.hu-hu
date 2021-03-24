@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 124e3ef734e03606372dc07059841b77c3a548de
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ffa8528da454fd29c937a2d49accdda617fe62dd
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584567"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869021"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -44,7 +44,7 @@ A SSML használata során vegye figyelembe, hogy a speciális karaktereket, pél
 
 ## <a name="supported-ssml-elements"></a>Támogatott SSML elemek
 
-Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az elemek a Pitch, a prosody, a Volume és más beállítások módosítására szolgálnak. A következő szakaszokban részletesen ismertetjük az egyes elemek használatát, és ha egy elem megadása kötelező vagy nem kötelező.  
+Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az elemek a Pitch, a prosody, a Volume és más beállítások módosítására szolgálnak. A következő szakaszokban részletesen ismertetjük az egyes elemek használatát, és ha egy elem megadása kötelező vagy nem kötelező.
 
 > [!IMPORTANT]
 > Ne feledje, hogy idézőjelek között idézőjeleket kell használni. A jól formázott, érvényes XML-fájlokra vonatkozó szabványokhoz idézőjelek közé kell foglalni az attribútumot. Például `<prosody volume="90">` egy jól formázott, érvényes elem, de `<prosody volume=90>` nem. Előfordulhat, hogy a SSML nem ismeri fel az idézőjelek között lévő attribútum-értékeket.
@@ -100,7 +100,7 @@ Az `voice` elem megadása kötelező. A szövegről beszédre használt hang meg
 
 ## <a name="use-multiple-voices"></a>Több hang használata
 
-A `speak` elemen belül több hang is megadható a szöveg – beszéd kimenethez. Ezeket a hangokat különböző nyelveken lehet megtekinteni. Minden hang esetében a szöveget egy elembe kell becsomagolni `voice` . 
+A `speak` elemen belül több hang is megadható a szöveg – beszéd kimenethez. Ezeket a hangokat különböző nyelveken lehet megtekinteni. Minden hang esetében a szöveget egy elembe kell becsomagolni `voice` .
 
 **Attribútumok**
 
@@ -213,7 +213,7 @@ A jelen neurális hangok esetében jelenleg a beszélő stílusának módosítá
 * `zh-CN-XiaoxuanNeural` Előnézet
 * `zh-CN-XiaoruiNeural` Előnézet
 
-A beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen. 
+A beszélő stílus intenzitása tovább módosítható, hogy jobban illeszkedjen a használati esethez. Megadhat egy erősebb vagy lágyabb stílust, `styledegree` hogy a beszéd jobban kifejező vagy visszafogott legyen.
 
 A jelen neurális hangok esetében jelenleg a beszélő stílusának módosításait támogatja a rendszer:
 * `zh-CN-XiaoxiaoNeural`
@@ -250,7 +250,7 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
-| Hang                   | Stílus                     | Description                                                 |
+| Hang                   | Stílus                     | Leírás                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
 |                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
@@ -275,11 +275,11 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
 |                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
 |                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.          |
-|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |     
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |   
-|                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |   
-| `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  | 
-| `zh-CN-YunyeNeural`     | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.    | 
+|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |
+|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
+|                         | `style="lyrical"`         | Az érzelmeket dallamos és szentimentális módon fejezi ki         |
+| `zh-CN-YunyangNeural`   | `style="customerservice"` | Felhasználóbarát és hasznos hangvételt biztosít az ügyfélszolgálat számára  |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Egy ritka elérésű, összegyűjtött és álló hozzáállást fejez ki beszéd közben. A Tone, a Pitch, a prosody sokkal homogénebb más típusú beszédekhez képest.    |
 |                         | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
 |                         | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
@@ -301,22 +301,22 @@ Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismer�
 |                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
 |                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
 |                         | `style="embarrassed"`     | Bizonytalan és tétova hangot ad, ha a beszélő kényelmetlenül érzi magát   |
-|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |     
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |   
+|                         | `style="affectionate"`    | Meleg és szeretetteljes hangvételt biztosít, amely nagyobb hangvételt és hangvételt biztosít. A beszélő olyan állapotban van, amely vonzza a figyelő figyelmét. A beszélő "személyisége" gyakran megnyerő jellegű.          |
+|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
 | `zh-CN-XiaomoNeural`    | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
 |                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
 |                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
 |                         | `style="depressed"`       | Szomorú és csüggedt hangvételt biztosít az alsó és az energia    |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |  
+|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
 | `zh-CN-XiaoxuanNeural`  | `style="cheerful"`        | Optimista és lelkes hangvételt biztosít, amely nagyobb hangvételt és hangmagasság                         |
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
 |                         | `style="disgruntled"`     | Megvető és panaszos hangot ad. Ennek az érzelemnek a beszéde a nem élvezetet és a megvetést mutatja be.              |
 |                         | `style="serious"`         | Egy szigorú és egy parancsra vonatkozó hangjelzést ad. A beszélő gyakran merevebb és sokkal kevésbé jól hangzik.    |
 |                         | `style="depressed"`       | Szomorú és csüggedt hangvételt biztosít az alsó és az energia    |
-|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |   
+|                         | `style="gentle"`          | Enyhe, udvarias és kellemes hangvételt biztosít, amely az alsó és a vokális energia         |
 | `zh-CN-XiaoruiNeural`    | `style="sad"`             | Szomorú hangvételt, nagyobb hangvételt, kevesebb intenzitást és vokális energiát biztosít. Az érzelem gyakori mutatói whimpers vagy sírást okoznak a beszéd során.            |
 |                         | `style="angry"`           | Egy mérges és bosszús hang, amely alacsonyabb hangvételt, nagyobb intenzitást és hangfrekvenciás energiát mutat. A beszélő olyan állapotban van, hogy dühös, nem kívánt és megsértett.       |
 |                         | `style="fearful"`         | Egy megrémült és ideges hangvételt biztosít, amely nagyobb hangvételt, magasabb hangfrekvenciát és gyorsabb hangarányt biztosít. A beszélő a feszültség és a nyugtalanság állapotában van.                          |
@@ -398,7 +398,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
 
-| Erősségét                      | Description |
+| Erősségét                      | Leírás |
 |-------------------------------|-------------|
 | Nincs, vagy ha nincs megadva érték | 0 MS        |
 | x – gyenge                        | 250 MS      |
@@ -418,10 +418,10 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 ```
 ## <a name="add-silence"></a>Csend hozzáadása
 
-Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket szöveg előtt vagy után, vagy a 2 szomszédos mondat között. 
+Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket szöveg előtt vagy után, vagy a 2 szomszédos mondat között.
 
 > [!NOTE]
->A és a közötti különbség a `mstts:silence` `break` `break` szöveg bármely helyére felvehető, de a csend csak a bemeneti szöveg elején vagy végén, vagy a két szomszédos mondat határán működik.  
+>A és a közötti különbség a `mstts:silence` `break` `break` szöveg bármely helyére felvehető, de a csend csak a bemeneti szöveg elején vagy végén, vagy a két szomszédos mondat határán működik.
 
 
 **Syntax**
@@ -434,18 +434,18 @@ Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket s
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
-| `type` | Itt adható meg a csend helye: <ul><li>Sortávolság – a szöveg elején </li><li>Farok – a szöveg végén </li><li>Sentenceboundary – a szomszédos mondatok között </li></ul> | Kötelező |
+| `type` | Itt adható meg a csend helye: <ul><li>`Leading` – a szöveg elején </li><li>`Tailing` – a szöveg végén </li><li>`Sentenceboundary` – a szomszédos mondatok között </li></ul> | Kötelező |
 | `Value` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Kötelező |
 
 **Példa** Ebben a példában az `mtts:silence` 200 MS csendet adja hozzá két mondat között.
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">  
-<voice name="en-US-AriaNeural"> 
-<mstts:silence  type="Sentenceboundary" value="200ms"/> 
-If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way. 
-A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time. 
-</voice> 
-</speak> 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<voice name="en-US-AriaNeural">
+<mstts:silence  type="Sentenceboundary" value="200ms"/>
+If we’re home schooling, the best we can do is roll with what each day brings and try to have fun along the way.
+A good place to start is by trying out the slew of educational apps that are helping children stay happy and smash their schooling at the same time.
+</voice>
+</speak>
 ```
 
 ## <a name="specify-paragraphs-and-sentences"></a>Bekezdések és mondatok meghatározása
@@ -533,7 +533,7 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni a szót. Például egy vállalat neve vagy egy orvosi kifejezés. A fejlesztők meghatározhatják, hogy az egyes entitások hogyan legyenek beolvasva a SSML a `phoneme` és a `sub` címkék használatával. Ha azonban azt is meg kell határoznia, hogy az egyes entitások hogyan legyenek beolvasva, létrehozhat egy egyéni lexikont a `lexicon` címke használatával.
 
 > [!NOTE]
-> Az egyéni lexikon jelenleg támogatja az UTF-8 kódolást. 
+> Az egyéni lexikon jelenleg támogatja az UTF-8 kódolást.
 
 > [!NOTE]
 > Az egyéni lexikon nem támogatott ebben az 5 hangban (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural és MT-MT-GarceNeural).
@@ -557,18 +557,18 @@ Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva,
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
         http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
       alphabet="ipa" xml:lang="en-US">
   <lexeme>
-    <grapheme>BTW</grapheme> 
-    <alias>By the way</alias> 
+    <grapheme>BTW</grapheme>
+    <alias>By the way</alias>
   </lexeme>
   <lexeme>
-    <grapheme> Benigni </grapheme> 
+    <grapheme> Benigni </grapheme>
     <phoneme> bɛˈniːnji</phoneme>
   </lexeme>
 </lexicon>
@@ -580,11 +580,11 @@ Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be 
 
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>ScotlandMV</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>ScotlandMV</alias>
   </lexeme>
   <lexeme>
-    <grapheme>ScotlandMV</grapheme> 
+    <grapheme>ScotlandMV</grapheme>
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
@@ -592,8 +592,8 @@ Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be 
 Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített kifejezéshez adja meg a vártat. Például:
 ```xml
   <lexeme>
-    <grapheme>Scotland MV</grapheme> 
-    <alias>Scotland Media Wave</alias> 
+    <grapheme>Scotland MV</grapheme>
+    <alias>Scotland Media Wave</alias>
   </lexeme>
 ```
 
@@ -610,8 +610,8 @@ Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
 > Az `lexicon` elemnek a elemen belül kell lennie `voice` .
 
 ```xml
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
-          xmlns:mstts="http://www.w3.org/2001/mstts" 
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
+          xmlns:mstts="http://www.w3.org/2001/mstts"
           xml:lang="en-US">
     <voice name="en-US-JennyNeural">
         <lexicon uri="http://www.example.com/customlexicon.xml"/>
@@ -621,7 +621,7 @@ Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
 </speak>
 ```
 
-Ha ezt az egyéni lexikont használja, a "BTW" a "by the way" néven lesz beolvasva. A "Benigni" a megadott IPA "bɛ tɛsɨfɒn ni ː nji" lesz beolvasva.  
+Ha ezt az egyéni lexikont használja, a "BTW" a "by the way" néven lesz beolvasva. A "Benigni" a megadott IPA "bɛ tɛsɨfɒn ni ː nji" lesz beolvasva.
 
 **Korlátozások**
 - Fájlméret: az egyéni lexikon fájlméretének maximális korlátja 100 kb, ha ez meghaladja a méretet, a szintézisi kérelem sikertelen lesz.
@@ -637,7 +637,7 @@ A `sapi` (z) és a (z) az `alphabet` Egyéni lexikonokkal rendelkező attribútu
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<lexicon version="1.0" 
+<lexicon version="1.0"
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
@@ -681,7 +681,7 @@ Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a bes
 
 ### <a name="change-speaking-rate"></a>Beszéd arányának módosítása
 
-A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neurális hangokra és standard hangokra. 
+A felszólalási arány a Word vagy a mondat szintjén is alkalmazható neurális hangokra és standard hangokra.
 
 **Példa**
 
@@ -736,7 +736,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-AriaNeural">
         <prosody contour="(60%,-60%) (100%,+80%)" >
-            Were you the only person in the room? 
+            Were you the only person in the room?
         </prosody>
     </voice>
 </speak>
@@ -782,7 +782,7 @@ Az `say-as` elem csak szöveget tartalmazhat.
 **Példa**
 
 A Speech szintézis motor a következő példát szemlélteti: "az első kérés egy, a tizenkilencedik 20 10-es, a korai érkezési idő pedig a 12 35 ÓRAKOR."
- 
+
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-JennyNeural">
@@ -871,7 +871,12 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 
 ## <a name="bookmark-element"></a>Könyvjelző elem
 
-Az `bookmark` elem lehetővé teszi, hogy könyvjelzőket szúrjon be a SSML, és lekérje az audio stream minden könyvjelző hang-eltolását az aszinkron értesítésekhez.
+A könyvjelző elem lehetővé teszi, hogy egyéni jelölőket helyezzen be a SSML-ben, hogy az egyes jelölők eltolása legyen az audio streamben.
+Nem fogjuk beolvasni a könyvjelző elemeit.
+A Bookmark (könyvjelző) elem használatával egy adott helyre hivatkozhat a szöveg vagy a címke sorrendjében.
+
+> [!NOTE]
+> `bookmark` az elem jelenleg csak az `en-US-AriaNeural` USA nyugati régiójában () található hangra működik `westus` .
 
 **Syntax**
 
@@ -883,15 +888,16 @@ Az `bookmark` elem lehetővé teszi, hogy könyvjelzőket szúrjon be a SSML, é
 
 | Attribútum | Leírás                                   | Kötelező/nem kötelező                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
-| `mark`     | Megadja az elem könyvjelző szövegét `bookmark` . | Kötelező. |
+|  `mark`   | Megadja az elem hivatkozási szövegét `bookmark` . | Kötelező. |
 
 **Példa**
 
+Előfordulhat például, hogy a következő módon szeretné tudni, hogy az egyes virág-szavak milyen időeltolódást mutatnak
+
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-GuyNeural">
-        <bookmark mark='bookmark_one'/> one.
-        <bookmark mark='bookmark_two'/> two. three. four.
+    <voice name="en-US-AriaNeural">
+        We are selling <bookmark mark='flower_1'/>roses and <bookmark mark='flower_2'/>daisies.
     </voice>
 </speak>
 ```
@@ -903,6 +909,10 @@ Előfizethet a `BookmarkReached` SPEECH SDK eseményére a könyvjelzők eltolá
 > [!NOTE]
 > `BookmarkReached` az esemény csak a Speech SDK verzió 1.16.0 óta érhető el.
 
+`BookmarkReached` az események akkor jönnek létre, amikor a kimeneti hangadatok elérhetővé válnak, ami gyorsabb lesz, mint a lejátszás kimeneti eszközön.
+
+* `AudioOffset` azt jelenti, hogy a kimeneti hang eltelt ideje a szintézis és a könyvjelző elem kezdete között van. Ez 100 ns egységben (HNS) mérve, 10 000 HNS egyenértéktel, 1 ezredmásodpercnél.
+* `Text` a könyvjelző elem hivatkozási szövege, amely az `mark` attribútumban beállított sztring.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -917,6 +927,12 @@ synthesizer.BookmarkReached += (s, e) =>
 };
 ```
 
+A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="c"></a>[C++](#tab/cpp)
 
 További információ: <a href="https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#bookmarkreached" target="_blank"> `BookmarkReached` </a>.
@@ -924,11 +940,17 @@ További információ: <a href="https://docs.microsoft.com/cpp/cognitive-service
 ```cpp
 synthesizer->BookmarkReached += [](const SpeechSynthesisBookmarkEventArgs& e)
 {
-    cout << "bookmark reached. "
+    cout << "Bookmark reached. "
         // The unit of e.AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to convert to milliseconds.
         << "Audio offset: " << e.AudioOffset / 10000 << "ms, "
-        << "Bookmark text: " << e.Text << "." << endl;
+        << "bookmark text: " << e.Text << "." << endl;
 };
+```
+
+A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="java"></a>[Java](#tab/java)
@@ -943,6 +965,12 @@ synthesizer.BookmarkReached.addEventListener((o, e) -> {
 });
 ```
 
+A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 További információ: <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer#bookmark-reached" target="_blank"> `bookmark_reached` </a>.
@@ -953,14 +981,26 @@ speech_synthesizer.bookmark_reached.connect(lambda evt: print(
     "Bookmark reached: {}, audio offset: {}ms, bookmark text: {}.".format(evt, evt.audio_offset / 10000, evt.text)))
 ```
 
+A fenti példában SSML az `bookmark_reached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+Bookmark reached, audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached, audio offset: 1462.5ms, bookmark text: flower_2.
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 További információ: <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer#bookmarkReached" target="_blank"> `bookmarkReached` </a>.
 
 ```javascript
 synthesizer.bookmarkReached = function (s, e) {
-    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms. Bookmark text: " + e.text);
+    window.console.log("(Bookmark reached), Audio offset: " + e.audioOffset / 10000 + "ms, bookmark text: " + e.text);
 }
+```
+
+A fenti példában SSML az `bookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+(Bookmark reached), Audio offset: 825ms, bookmark text: flower_1.
+(Bookmark reached), Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="objective-c"></a>[Objective-C](#tab/objectivec)
@@ -972,6 +1012,12 @@ További információ: <a href="https://docs.microsoft.com/objectivec/cognitive-
     // The unit of AudioOffset is tick (1 tick = 100 nanoseconds), divide by 10,000 to converted to milliseconds.
     NSLog(@"Bookmark reached. Audio offset: %fms, bookmark text: %@.", eventArgs.audioOffset/10000., eventArgs.text);
 }];
+```
+
+A fenti példában SSML az `BookmarkReached` eseményt kétszer indítja el a rendszer, és a konzol kimenete a következő lesz:
+```text
+Bookmark reached. Audio offset: 825ms, bookmark text: flower_1.
+Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 ```
 
 # <a name="swift"></a>[Swift](#tab/swift)

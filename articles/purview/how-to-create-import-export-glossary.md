@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 7466e143f345ea305c7e9ef118d09fb6f685ac16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101694486"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952405"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>Szószedet használati feltételeinek létrehozása, importálása és exportálása
 
@@ -80,6 +80,9 @@ Figyelje meg, hogy a kifejezések nevei megkülönböztetik a kis-és nagybetűk
 4. Miután befejezte a. csv-fájl kitöltését, válassza ki az importálni kívánt fájlt, majd kattintson **az OK gombra**.
 
 5. A rendszer feltölti a fájlt, és hozzáadja az összes feltételt a katalógushoz.
+ 
+   > [!Important]
+   > A stewardok és szakértők e-mail-címének a felhasználó elsődleges címének kell lennie a HRE-csoportból. A másodlagos e-mailek, az egyszerű felhasználónév és a nem HRE e-mailek még nem támogatottak. 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>Kifejezések exportálása a szószedetből egyéni attribútumokkal
 

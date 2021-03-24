@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 50216b83475e92cbabb5ed78c3836264ceff4600
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705670"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866607"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
 
@@ -64,11 +64,11 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 A legtöbbek számára az adatok táblázatos formátumban jelennek meg:
 
-![HDInsight Apache HBase táblázatos adatokat](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png" alt-text="HDInsight Apache HBase táblázatos adatokat" border="false":::
 
 A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja) ugyanazokat az adatmennyiségeket keresi:
 
-![HDInsight Apache HBase BigTable-adatbázis](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+:::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png" alt-text="HDInsight Apache HBase BigTable-adatbázis" border="false":::
 
 **A Hbase-rendszerhéj használata**
 
@@ -111,7 +111,7 @@ A HBase (a [Cloud BigTable](https://cloud.google.com/bigtable/)implementációja
     scan 'Contacts'
     ```
 
-    ![HDInsight Apache Hadoop HBase-rendszerhéj](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png" alt-text="HDInsight Apache Hadoop HBase-rendszerhéj" border="false":::
 
 1. `get`Egy sor tartalmának lekéréséhez használja a parancsot. Írja be a következő parancsot:
 
@@ -331,7 +331,7 @@ A HBase a HDInsightban a fürtök megfigyelésére szolgáló webes felhasznál�
 
 1. Válassza a **gyors hivatkozások** lehetőséget az oldal tetején, mutasson az aktív Zookeeper csomópontra, majd válassza ki **HBase Master felhasználói felületet**.  A felület egy új böngészőlapon nyílik meg:
 
-   ![HDInsight Apache HBase HMaster felhasználói felülete](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   :::image type="content" source="./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png" alt-text="HDInsight Apache HBase HMaster felhasználói felülete" border="false":::
 
    A HBase-mesterfelület az alábbi részeket tartalmazza:
 

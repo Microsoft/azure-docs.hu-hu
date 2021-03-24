@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100365514"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952626"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -83,6 +83,7 @@ Igen. A multi-Factor Authentication és a fogyasztói e-mail-fiókok egyaránt t
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Támogatja az Azure AD B2B együttműködési felhasználók jelszavának visszaállítását?
 Ha az Azure AD-bérlő a felhasználó saját könyvtára, [alaphelyzetbe állíthatja a felhasználó jelszavát](../fundamentals/active-directory-users-reset-password-azure-portal.md) a Azure Portal. Azonban nem lehet közvetlenül alaphelyzetbe állítani egy olyan vendég felhasználó jelszavát, aki egy másik Azure AD-címtár vagy külső identitás-szolgáltató által felügyelt fiókkal jelentkezik be. A jelszót csak a vendég felhasználó vagy a felhasználó kezdőkönyvtárának rendszergazdája állíthatja alaphelyzetbe. Íme néhány példa arra, hogyan működik a jelszó-visszaállítás a vendég felhasználói számára:
  
+* A "Guest" (UserType = = Guest) jelölésű Azure AD-bérlő vendég felhasználói nem regisztrálhatnak a SSPR keresztül [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) . Az ilyen típusú vendég felhasználó csak a SSPR képes végrehajtani [https://aka.ms/sspr](https://aka.ms/sspr) . 
 * Azok a vendég felhasználók, akik Microsoft-fiókkal jelentkeznek be (például guestuser@live.com ), visszaállíthatják saját jelszavukat Microsoft-fiók önkiszolgáló jelszó-visszaállítás (SSPR) használatával. Lásd: [a Microsoft-fiók jelszavának alaphelyzetbe állítása](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Azok a vendégek, akik Google-fiókkal vagy más külső identitás-szolgáltatóval jelentkeznek be, visszaállíthatják saját jelszavukat a személyazonosság-szolgáltató SSPR metódusának használatával. A Google-fiókkal rendelkező vendég felhasználó például a guestuser@gmail.com [jelszó módosítása vagy alaphelyzetbe állítása](https://support.google.com/accounts/answer/41078)című részben leírtak szerint állíthatja vissza a jelszavát.
 * Ha az identitás bérlője egy igény szerinti (JIT) vagy "vírusos" bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](../enterprise-users/domains-admin-takeover.md) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.

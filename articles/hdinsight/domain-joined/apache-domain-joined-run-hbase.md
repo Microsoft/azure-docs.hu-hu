@@ -4,12 +4,12 @@ description: Oktatóanyag – megtudhatja, hogyan konfigurálhatja az Apache Ran
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: deefda126602e9b276b74752330a14cc3eb2aa95
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a18e0b252facb4f00d9ba5c9b6bfe9fe6aefe1ef
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98933727"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866998"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -86,7 +86,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase-rendszerhéj kimenete](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png" alt-text="HDInsight Hadoop HBase-rendszerhéj kimenete" border="true":::
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
 
@@ -94,11 +94,11 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson **\<ClusterName> _Hbase** a **hbase** alatt.
 
-   ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png" alt-text="HDInsight Apache Ranger felügyeleti felhasználói felülete" border="true":::
 
 2. A **szabályzatok listája** képernyőn megjelenik a fürthöz létrehozott összes Ranger-szabályzat. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend. Kattintson az **új szabályzat hozzáadása** lehetőségre.
 
-    ![Apache Ranger HBase szabályzatok listája](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png" alt-text="Apache Ranger HBase szabályzatok listája" border="true":::
 
 3. A **házirend létrehozása** képernyőn adja meg a következő értékeket:
 
@@ -117,7 +117,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    * `*` nulla vagy több karakterből álló előfordulást jelez.
    * `?` egyetlen karaktert jelöl.
 
-   ![Apache Ranger-szabályzat – értékesítések létrehozása](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png" alt-text="Apache Ranger-szabályzat – értékesítések létrehozása" border="true":::
 
    >[!NOTE]
    >Várjon néhány pillanatot, míg a Ranger szinkronizálódik az Azure AD-vel, ha a rendszer nem tölt be automatikusan egy tartományi felhasználót a **Select User** (Felhasználó kiválasztása) beállításhoz.
@@ -136,7 +136,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    |Felhasználó kiválasztása  | marketing_user1 |
    |Engedélyek  | Olvasás |
 
-   ![Apache Ranger-szabályzat létrehozása marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png" alt-text="Apache Ranger-szabályzat létrehozása marketing" border="true":::  
 
 6. A házirend mentéséhez kattintson a **Hozzáadás** gombra.
 
@@ -226,7 +226,7 @@ A konfigurált Ranger-szabályzatok alapján a **sales_user1** megtekintheti az 
 
 1. A hozzáférési események naplózása a Ranger felhasználói felületről tekinthető meg.
 
-   ![HDInsight Ranger felhasználói felületi szabályzatának naplózása](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   :::image type="content" source="./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png" alt-text="HDInsight Ranger felhasználói felületi szabályzatának naplózása" border="true":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

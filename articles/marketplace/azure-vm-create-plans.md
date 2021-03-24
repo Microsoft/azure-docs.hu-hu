@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97964429"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956254"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Csomagok létrehozása virtuálisgép-ajánlathoz
 
@@ -221,6 +221,8 @@ Az adatlemezek (válassza az **adatlemez hozzáadása (legfeljebb 16)** lehetős
 A használt operációs rendszertől függetlenül csak a megoldás által igényelt adatlemezek minimális számát adja hozzá. Az üzembe helyezés során az ügyfelek nem tudják eltávolítani a rendszerkép részét képező lemezeket, de mindig hozzáadhatnak lemezeket az üzembe helyezés során vagy azt követően is.
 
 Válassza a **Piszkozat mentése** lehetőséget, majd kattintson a bal felső sarokban található **← terv áttekintése** lehetőségre az imént létrehozott terv megtekintéséhez.
+
+A virtuálisgép-rendszerkép közzététele után törölheti a rendszerképet az Azure Storage-ból.
 
 ## <a name="next-steps"></a>Következő lépések
 

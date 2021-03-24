@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 304ba791d107ca497e65905657e87e84cdb9567d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2078ba177d68cfaa0a91b79611d92e5c68e4e245
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942724"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868415"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Storm használata az Apache Kafka on HDInsighttal
 
@@ -363,7 +363,7 @@ streams:
 
 A projekt tartalmaz egy `dev.properties` nevű fájlt, amely a topológiák által használt paraméterek átadására használatos. A következő tulajdonságokat határozza meg:
 
-| dev.properties fájl | Description |
+| dev.properties fájl | Leírás |
 | --- | --- |
 | `kafka.zookeeper.hosts` | A Kafka-fürt [Apache ZooKeeper](https://zookeeper.apache.org/) gazdagépei. |
 | `kafka.broker.hosts` | A Kafka-közvetítő gazdagépei (feldolgozó csomópontok). |
@@ -377,7 +377,7 @@ Az Apache Kafka on HDInsight nem nyújt hozzáférést a Kafka-közvetítőkhöz
 
 Az alábbi ábra a Storm és a Kafka közötti kommunikáció áramlását mutatja be:
 
-![Azure virtuális hálózatban lévő Storm- és Kafka-fürtök ábrája](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
+:::image type="content" source="./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png" alt-text="Azure virtuális hálózatban lévő Storm- és Kafka-fürtök ábrája":::
 
 > [!NOTE]  
 > A fürt egyéb szolgáltatásai, például az SSH és az [Apache Ambari](https://ambari.apache.org/) is elérhetők az interneten keresztül. További információ a HDInsighttal elérhető nyilvános portokról: [A HDInsight által használt portok és URI-k](hdinsight-hadoop-port-settings-for-services.md).
@@ -415,7 +415,7 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
       | SSH-felhasználónév | A fürtökhöz létrehozandó SSH-felhasználó. |
       | SSH-jelszó | Az SSH-felhasználó jelszava. |
    
-      ![A sablon paramétereinek képe](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      :::image type="content" source="./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png" alt-text="A sablon paramétereinek képe":::
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 

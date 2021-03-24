@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 86e279fef9561397343b3e6cb55ac335a5b39542
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e5f328d6be52732c30478eb49360efb13919a23e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942837"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872217"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Apache Hadoop-fürtök kezelése a HDInsight rendszerében a .NET SDK segítségével
 
@@ -167,7 +167,7 @@ Az adatcsomópontok számának a HDInsight által támogatott különböző típ
     
     A Storm webes felhasználói felülete elérhető a HDInsight-fürtön:
     
-    ![HDInsight Storm skálázási egyensúly](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    :::image type="content" source="./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="HDInsight Storm skálázási egyensúly":::
     
     Az alábbi példa bemutatja, hogyan használhatja a CLI-parancsot a Storm-topológia újraelosztásához:
     

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cf1e71d67424258ccae6794f28d37399cd68996e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: fde57eb3727eda6f810f861102e47a9f5746d1f8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101654323"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955601"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a VMware Horizon-Unified Access Gateway használatával
 
@@ -145,4 +145,4 @@ A Microsoft Access panel használatával bármilyen módban tesztelheti az alkal
 
 ## <a name="next-steps"></a>Következő lépések
 
-A VMware Horizon-Unified Access Gateway konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+A VMware Horizon-Unified Access Gateway konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

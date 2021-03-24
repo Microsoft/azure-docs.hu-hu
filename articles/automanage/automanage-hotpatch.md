@@ -3,17 +3,17 @@ title: HotPatching melletti telepítéséről for Windows Server Azure Edition (
 description: Ismerje meg, hogyan működik a Windows Server Azure Edition HotPatching melletti telepítéséről, és hogyan engedélyezhető
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: automanage
+ms.subservice: hotpatch
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
-ms.openlocfilehash: 710e6902be6ebe28caaf40fb446e4ee7cd2bf4dc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 92b8bf240dfd73cc9191675db07f20816b7156a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101687566"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953391"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>HotPatching melletti telepítéséről az új virtuális gépekhez (előzetes verzió)
 
@@ -129,21 +129,21 @@ az provider register --namespace Microsoft.Compute
 
 ## <a name="patch-installation"></a>Javítás telepítése
 
-Az előzetes verzió során a rendszer automatikusan engedélyezi a [virtuális gépek automatikus javítását](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) a _Windows Server 2019 Datacenter: Azure Edition_ rendszerrel létrehozott összes virtuális gép számára. Ha engedélyezve van az automatikus virtuális gép vendégének javítása:
+Az előzetes verzió során a rendszer automatikusan engedélyezi a [virtuális gépek automatikus javítását](../virtual-machines/automatic-vm-guest-patching.md) a _Windows Server 2019 Datacenter: Azure Edition_ rendszerrel létrehozott összes virtuális gép számára. Ha engedélyezve van az automatikus virtuális gép vendégének javítása:
 * A kritikus vagy biztonsági besorolású javítások automatikusan letöltődnek és alkalmazhatók a virtuális gépen.
 * A javítások a virtuális gép időzónáján kívüli órákon belül lesznek alkalmazva.
-* A javítás-előkészítést az Azure felügyeli, és a javítások a [rendelkezésre állási első alapelveket](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching)követik.
+* A javítás-előkészítést az Azure felügyeli, és a javítások a [rendelkezésre állási első alapelveket](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)követik.
 * A platform állapotára vonatkozó jelek alapján meghatározott virtuálisgép-állapotot a rendszer figyeli a hibajavítások észlelése érdekében.
 
 ### <a name="how-does-automatic-vm-guest-patching-work"></a>Hogyan működik az automatikus VM-vendég-javítás?
 
-Ha egy virtuális gépen engedélyezve van az automatikus virtuálisgép- [javítás](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) , a rendszer automatikusan letölti és alkalmazza a rendelkezésre álló kritikus és biztonsági javításokat. Ez a folyamat minden hónapban automatikusan indul el, amikor új javításokat bocsátanak ki. A javítások értékelése és telepítése automatikusan történik, és a folyamat a virtuális gép szükség szerinti újraindítását is magában foglalja.
+Ha egy virtuális gépen engedélyezve van az automatikus virtuálisgép- [javítás](../virtual-machines/automatic-vm-guest-patching.md) , a rendszer automatikusan letölti és alkalmazza a rendelkezésre álló kritikus és biztonsági javításokat. Ez a folyamat minden hónapban automatikusan indul el, amikor új javításokat bocsátanak ki. A javítások értékelése és telepítése automatikusan történik, és a folyamat a virtuális gép szükség szerinti újraindítását is magában foglalja.
 
 Ha a HotPatching melletti telepítéséről engedélyezve van a _Windows Server 2019 Datacenter rendszerben: az Azure Edition_ rendszerű virtuális gépeken a legtöbb havi biztonsági frissítés olyan hotpatches, amely nem igényel újraindítást. A tervezett vagy nem tervezett alaphónapokban elküldett legújabb összesítő frissítések esetén a virtuális gépek újraindítása szükséges. A további kritikus vagy biztonsági javítások is rendszeres időközönként elérhetővé válhatnak, ami a virtuális gépek újraindítását igényli.
 
 A virtuális gépet az adott virtuális gép megfelelő javításának megállapítása érdekében néhány naponként és többször, a 30 napos időszakon belül automatikusan értékelni kell. Ez az automatikus értékelés biztosítja, hogy a hiányzó javítások a lehető legkorábbi módon legyenek felderítve.
 
-A javítások a havi javításokat követő 30 napon belül települnek, a [rendelkezésre állási első alapelvek](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching#availability-first-patching)alapján. A javítások a virtuális gép időzónájától függően csak a virtuális gép időzónája szerint lesznek telepítve. Ahhoz, hogy a javítások automatikusan telepítve legyenek, a virtuális gépnek le kell futnia a leállási idő alatt. Ha egy virtuális gép ki van kapcsolva egy időszakos értékelés során, a rendszer a virtuális gépet értékeli, és a megfelelő javítások automatikusan települnek a következő rendszeres értékelés során, amikor a virtuális gép be van kapcsolva. A következő időszakos értékelés általában néhány napon belül megtörténik.
+A javítások a havi javításokat követő 30 napon belül települnek, a [rendelkezésre állási első alapelvek](../virtual-machines/automatic-vm-guest-patching.md#availability-first-patching)alapján. A javítások a virtuális gép időzónájától függően csak a virtuális gép időzónája szerint lesznek telepítve. Ahhoz, hogy a javítások automatikusan telepítve legyenek, a virtuális gépnek le kell futnia a leállási idő alatt. Ha egy virtuális gép ki van kapcsolva egy időszakos értékelés során, a rendszer a virtuális gépet értékeli, és a megfelelő javítások automatikusan települnek a következő rendszeres értékelés során, amikor a virtuális gép be van kapcsolva. A következő időszakos értékelés általában néhány napon belül megtörténik.
 
 A definíciós frissítések és a nem kritikus vagy biztonsági besorolású javítások nem települnek automatikusan a virtuális gép vendégének javításával.
 
@@ -151,7 +151,7 @@ A definíciós frissítések és a nem kritikus vagy biztonsági besorolású ja
 
 A virtuális gép javítási állapotának megtekintéséhez navigáljon a **vendég + gazdagép frissítései** szakaszhoz a virtuális gépen a Azure Portal. A **vendég operációs rendszer frissítései** szakaszban kattintson a "Ugrás a HotPatching melletti telepítéséről (előzetes verzió)" lehetőségre a virtuális gép legújabb javítási állapotának megtekintéséhez.
 
-Ezen a képernyőn a virtuális gép HotPatching melletti telepítéséről állapota látható. Azt is megtekintheti, hogy van-e elérhető javítás a virtuális géphez, amely még nincs telepítve. A fenti "javítás telepítése" című szakaszban leírtak szerint a rendszer az összes biztonsági és kritikus frissítést automatikusan telepíti a virtuális gépre a [virtuális gép vendégének automatikus javításával](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching) , és nincs szükség további műveletekre. A más frissítési besorolású javítások nem települnek automatikusan. Ehelyett az elérhető javítások listájában láthatók a "frissítés megfelelősége" lapon. A virtuális gépen található frissítési központi telepítések előzményeit a "frissítési előzmények" segítségével is megtekintheti. Az elmúlt 30 napban frissültek az előzmények, a javítások telepítésének részleteivel együtt.
+Ezen a képernyőn a virtuális gép HotPatching melletti telepítéséről állapota látható. Azt is megtekintheti, hogy van-e elérhető javítás a virtuális géphez, amely még nincs telepítve. A fenti "javítás telepítése" című szakaszban leírtak szerint a rendszer az összes biztonsági és kritikus frissítést automatikusan telepíti a virtuális gépre a [virtuális gép vendégének automatikus javításával](../virtual-machines/automatic-vm-guest-patching.md) , és nincs szükség további műveletekre. A más frissítési besorolású javítások nem települnek automatikusan. Ehelyett az elérhető javítások listájában láthatók a "frissítés megfelelősége" lapon. A virtuális gépen található frissítési központi telepítések előzményeit a "frissítési előzmények" segítségével is megtekintheti. Az elmúlt 30 napban frissültek az előzmények, a javítások telepítésének részleteivel együtt.
 
 
 :::image type="content" source="media\automanage-hotpatch\hotpatch-management-ui.png" alt-text="HotPatching melletti telepítéséről-kezelés.":::
@@ -225,5 +225,5 @@ Fontos szempont, hogy a Windows Server Azure Edition rendszerű virtuális gépe
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tudjon meg többet az [Azure Update Managementról](https://docs.microsoft.com/azure/automation/update-management/overview).
-* További információ az automatikus VM vendég javításáról [](https://docs.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching)
+* Tudjon meg többet az [Azure Update Managementról](../automation/update-management/overview.md).
+* További információ az automatikus VM vendég javításáról [](../virtual-machines/automatic-vm-guest-patching.md)

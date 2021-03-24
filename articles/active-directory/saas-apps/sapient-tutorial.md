@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7d229bfbe281c24f2875ddb327b1d07c23828653
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 65713a27f16a2af7cab5c389c3e9793d0d44ff8c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103202670"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956264"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sapient"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tudálékos
 
@@ -130,11 +130,9 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen közvetlenül a tudálékos bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások tudálékos csempére kattint, a rendszer átirányítja a tudálékos bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások tudálékos csempére kattint, a rendszer átirányítja a tudálékos bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-A tudálékos konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+A tudálékos konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

@@ -9,12 +9,12 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: feb77339c9c7f36eb17b43dfe2c220dfb54efa25
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104720525"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872285"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -203,7 +203,7 @@ A 1,2-es és korábbi verziók közötti főbb különbségek a következők:
 * A csomag neve a **iotedge** értékről a **aziotra** módosult.
 * A **libiothsm-STD** csomag már nem használatos. Ha a IoT Edge kiadás részeként biztosított standard csomagot használta, akkor a konfigurációk átvihetők az új verzióra. Ha a libiothsm-STD eltérő implementációját használta, akkor a felhasználó által megadott összes tanúsítványt, például az eszköz identitási tanúsítványát, az eszköz HITELESÍTÉSSZOLGÁLTATÓját és a megbízhatósági csomagot újra kell konfigurálni.
 * Egy új Identity Service, a **aziot** a 1,2 kiadás részeként lett bevezetve. Ez a szolgáltatás kezeli a IoT Edge az identitás kiépítését és felügyeletét, valamint a IoT Hubokkal kommunikáló egyéb eszközök összetevőit, például az Azure IoT Hub az eszköz frissítését. <!--TODO: add link to ADU when available -->
-* Az alapértelmezett konfigurációs fájl új névvel és hellyel rendelkezik. Korábban `/etc/iotedge/config.yaml` az eszköz konfigurációs adatai mostantól várhatóan bekerülnek a szolgáltatásba `/etc/aziot/congig.toml` . A `iotedge config import` parancs segítségével a konfigurációs adatok áttelepíthetők a régi helyükre és szintaxisra az újat.
+* Az alapértelmezett konfigurációs fájl új névvel és hellyel rendelkezik. Korábban `/etc/iotedge/config.yaml` az eszköz konfigurációs adatai mostantól várhatóan bekerülnek a szolgáltatásba `/etc/aziot/config.toml` . A `iotedge config import` parancs segítségével a konfigurációs adatok áttelepíthetők a régi helyükre és szintaxisra az újat.
 * Minden olyan modul, amely a IoT Edge munkaterhelés API-t használja az állandó adatok titkosításához vagy visszafejtéséhez, a frissítés után nem lehet visszafejteni. IoT Edge dinamikusan generál egy fő azonosító kulcsot és egy titkosítási kulcsot belső használatra. Ez a kulcs nem kerül át az új szolgáltatásba. A IoT Edge v 1.2 egy újat fog előállítani.
 
 A frissítési folyamatok automatizálása előtt ellenőrizze, hogy működik-e tesztelési gépen.

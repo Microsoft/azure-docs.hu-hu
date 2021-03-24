@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9a5f50588c357b56865bc2a8500dcc250e89d930
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9da83746cdaf693922b88841cd9c0fac432611c9
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470632"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870840"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -76,7 +76,7 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Description | Kötelező/nem kötelező |
+| Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
@@ -107,7 +107,7 @@ Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
 
 ```json
 [
-     
+
     {
     "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
     "DisplayName": "Aria",
@@ -127,9 +127,9 @@ Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
     "VoiceType": "Neural",
     "Status": "GA"
   },
-  
+
   ...
-    
+
      {
     "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
     "DisplayName": "Orla",
@@ -141,9 +141,9 @@ Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
     "VoiceType": "Neural",
     "Status": "Preview"
   },
-  
+
   ...
-    
+
    {
     "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
     "DisplayName": "Yunxi",
@@ -168,7 +168,7 @@ Ez a válasz a válasz szerkezetének szemléltetésére lett csonkítva.
   },
 
     ...
-      
+
    {
     "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
     "DisplayName": "Hoda",
@@ -213,7 +213,7 @@ Ezek a régiók a REST API használatával történő szöveg-beszéd kommuniká
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Description | Kötelező/nem kötelező |
+| Fejléc | Leírás | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 | `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml` . | Kötelező |
@@ -234,10 +234,12 @@ audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
 audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 raw-48khz-16bit-mono-pcm            riff-48khz-16bit-mono-pcm
 audio-48khz-96kbitrate-mono-mp3     audio-48khz-192kbitrate-mono-mp3
+webm-16khz-16bit-mono-opus          webm-24khz-16bit-mono-opus
 ```
 
 > [!NOTE]
-> Ha a kiválasztott hang-és kimeneti formátum eltérő átviteli sebességű, akkor a rendszer szükség szerint újratervezi a hangot. az OGG-24khz-16bit-mono-Opus dekódolása [Opus codec](https://opus-codec.org/downloads/) használatával
+> Ha a kiválasztott hang-és kimeneti formátum eltérő átviteli sebességű, akkor a rendszer szükség szerint újratervezi a hangot.
+> az OGG-24khz-16bit-mono-Opus dekódolása [Opus codec](https://opus-codec.org/downloads/) használatával
 
 ### <a name="request-body"></a>A kérés törzse
 

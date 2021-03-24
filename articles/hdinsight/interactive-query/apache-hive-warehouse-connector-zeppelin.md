@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 4859ff098bf3fdffbecc70608cb147d17d9d7f59
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7957041c9d445f4239b8f0100128a531d982b451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941166"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871554"
 ---
 # <a name="integrate-apache-zeppelin-with-hive-warehouse-connector-in-azure-hdinsight"></a>Az Apache Zeppelin integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -97,11 +97,11 @@ A következő konfigurációk szükségesek ahhoz, hogy a Zeppelin-táblákat a 
 
     * Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` oda, ahol a CLUSTERNAME az interaktív lekérdezési fürt neve. Kattintson a **HiveServer2 Interactive** elemre. Megtekintheti annak a fő csomópontnak a teljes tartománynevét (FQDN), amelyen a LLAP fut, ahogy azt a képernyőképen is látható. Cserélje le `<llap-headnode>` erre az értékre.
 
-        ![kaptár-összekötő fő csomópontja](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="kaptár-összekötő fő csomópontja" border="true":::
 
     * Az [SSH-parancs](../hdinsight-hadoop-linux-use-ssh-unix.md) használatával csatlakozzon az interaktív lekérdezési fürthöz. Keresse meg a `default_realm` paramétert a `/etc/krb5.conf` fájlban. Cserélje le `<AAD-DOMAIN>` ezt az értéket nagybetűs karakterláncként, ellenkező esetben a hitelesítő adat nem található.
 
-        ![a méhkas Warehouse-összekötő HRE tartománya](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="a méhkas Warehouse-összekötő HRE tartománya" border="true":::
 
     * Például: `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
 

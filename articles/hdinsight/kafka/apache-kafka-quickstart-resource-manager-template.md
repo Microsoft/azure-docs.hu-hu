@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: bdab80725f66814b9bf6bfa9429e3eff96fbc908
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 72a468057cef5c8616cb3f88063204509aaf7fe0
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505103"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863326"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
@@ -22,7 +22,7 @@ A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások szám
 
 Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+[:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 1. Az Azure-ba való bejelentkezéshez és az ARM-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
-   [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
+   [:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban" border="false":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-kafka%2Fazuredeploy.json)
 
 1. Adja meg vagy válassza ki a következő értékeket:
 
@@ -58,7 +58,7 @@ Két Azure-erőforrás van definiálva a sablonban:
     |SSH-Felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a **sshuser** .|
     |SSH-jelszó|Adja meg a jelszót.|
 
-    ![A sablontulajdonságok képernyőképe](./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png)
+    :::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/resource-manager-template-kafka.png" alt-text="A sablontulajdonságok képernyőképe" border="false":::
 
 1. Tekintse át a **használati** feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás** lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
@@ -221,7 +221,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 A Azure Portal navigáljon a fürthöz, és válassza a **Törlés** lehetőséget.
 
-![Resource Manager-sablon HBase](./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png)
+:::image type="content" source="./media/apache-kafka-quickstart-resource-manager-template/azure-portal-delete-kafka.png" alt-text="Resource Manager-sablon HBase" border="false":::
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 

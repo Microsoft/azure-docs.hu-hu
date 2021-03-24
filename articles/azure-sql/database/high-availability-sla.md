@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 9e292aeb116bd33ce935c951b39015c54dd1a8bc
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 1c210eab0332d01fc6514edc790d729172ed2174
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102486692"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889059"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Magas rendelkezésre állás Azure SQL Database és SQL felügyelt példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -126,7 +126,7 @@ A feladatátvétel a PowerShell, a REST API vagy az Azure CLI használatával in
 |Központi telepítés típusa|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
 |Adatbázis|[Meghívás – AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Adatbázis-feladatátvétel](/rest/api/sql/databases/failover)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
-|Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools(failover)/failover/)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
+|Rugalmas készlet|[Meghívás – AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Rugalmas készlet feladatátvétele](/rest/api/sql/elasticpools/failover)|[az az Rest](/cli/azure/reference-index#az-rest) felhasználható az Azure CLI REST API hívásának meghívására|
 |Felügyelt példány|[Meghívás – AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Felügyelt példányok – feladatátvétel](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mi feladatátvétel](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]

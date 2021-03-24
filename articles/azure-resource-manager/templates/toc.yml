@@ -398,16 +398,16 @@
         - name: Több példány létrehozása
           items:
             - name: További források
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-resources.md
             - name: Tulajdonságok
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-properties.md
             - name: Változók
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-variables.md
             - name: Kimenetek
-              displayName: 'iteration,copy'
+              displayName: 'iteration,copy,multiple'
               href: copy-outputs.md
     - name: Sablonok üzembe helyezése
       items:

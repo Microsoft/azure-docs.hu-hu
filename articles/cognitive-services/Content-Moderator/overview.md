@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content moderátor, Azure Content moderátor, online moderátor, Content Filtering szoftver, Content moderációs szolgáltatás, tartalom moderálása
-ms.openlocfilehash: 57a390a1da1e3a10b9fda4b531a83ee48e91125b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a53611fdad84f06661f3b8928296b6a45851cea4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560373"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867270"
 ---
 # <a name="what-is-azure-content-moderator"></a>Mi az az Azure Content Moderator?
 
@@ -26,6 +26,13 @@ ms.locfileid: "97560373"
 Az Azure Content Moderator egy AI-szolgáltatás, amely potenciálisan sértő, kockázatos vagy egyéb módon nemkívánatos tartalmak kezelésére szolgál. Magában foglalja az AI-alapú Content moderációs szolgáltatást, amely szöveget, képet és videót vizsgál, és automatikusan alkalmazza a tartalmi jelzőket, valamint a felülvizsgálati eszközt, amely egy, az emberi felülvizsgálók csapatának online moderátori környezete.
 
 Előfordulhat, hogy az alkalmazásba kívánja felépíteni a Content Filtering szoftvert, hogy megfeleljen a szabályozásoknak, vagy megőrizze a kívánt környezetet a felhasználók számára.
+
+Ez a dokumentáció a következő cikk-típusokat tartalmazza:  
+
+* [**A gyors**](client-libraries.md) üzembe helyezési útmutató végigvezeti Önt a szolgáltatásra irányuló kérések lépésein.  
+* A [**útmutatók**](try-text-api.md) útmutatói a szolgáltatás részletesebb vagy testreszabott módokon történő használatára vonatkozó utasításokat tartalmaznak.  
+* A [**fogalmak**](text-moderation-api.md) részletesen ismertetik a szolgáltatás funkcióit és funkcióit.  
+* Az [**oktatóanyagok**](ecommerce-retail-catalog-moderation.md) már olyan útmutatók, amelyek bemutatják, hogyan használhatja a szolgáltatást összetevőként a szélesebb körű üzleti megoldásokban.  
 
 ## <a name="where-its-used"></a>Hol használják
 
@@ -79,6 +86,6 @@ A Content Moderator szolgáltatás magában foglalja a webalapú [felülvizsgál
 
 Akárcsak az összes Cognitive Services esetében, a Content Moderator szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Content Moderator a webes portálon való használatának megkezdéséhez kövesse [az interneten található Content moderator kipróbálása](quick-start.md)című témakört. Vagy végezzen el egy [ügyféloldali kódtárat vagy REST API](client-libraries.md) rövid útmutatót a kódban található alapszintű forgatókönyvek megvalósításához.

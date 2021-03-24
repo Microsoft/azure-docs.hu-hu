@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: 27d9d5d30dc4c96516d23acba6a11b411827071e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b283cacf94ff3567428787e50a3d7db9ba91fd9c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100378706"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864040"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
 
@@ -258,10 +258,10 @@ Ha közvetlenül fér hozzá a Azure Maps REST-szolgáltatásokhoz, módosítsa 
 
 Ha JavaScript-keretrendszer használatával fejleszt, a következő nyílt forráskódú projektek egyike hasznos lehet:
 
-- [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -szögletes 10 burkoló az Azure Maps-ben.
-- [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – Azure Maps Blazer-összetevő.
-- [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
-- [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
+* [ng-Azure-Maps](https://github.com/arnaudleclerc/ng-azure-maps) -szögletes 10 burkoló az Azure Maps-ben.
+* [AzureMapsControl. Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) – Azure Maps Blazer-összetevő.
+* [Azure Maps reagáló összetevő](https://github.com/WiredSolutions/react-azure-maps) – a Azure Maps vezérlőre reagáló burkoló.
+* [Vue Azure Maps](https://github.com/rickyruiz/vue-azure-maps) – egy Azure Maps összetevő a Vue alkalmazáshoz.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -275,10 +275,10 @@ A Térkép stílusa:
 > [!div class="nextstepaction"]
 > [Térképstílus kiválasztása](choose-map-style.md)
 
-További információ hozzáadása a térképhez:
+Ismerje meg az ajánlott eljárásokat, és tekintse meg a mintákat:
 
 > [!div class="nextstepaction"]
-> [Térkép létrehozása](map-create.md)
+> [Ajánlott eljárások](web-sdk-best-practices.md)
 
 > [!div class="nextstepaction"]
 > [Kódminták](/samples/browse/?products=azure-maps)

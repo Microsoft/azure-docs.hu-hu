@@ -3,15 +3,16 @@ title: Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 description: Megtudhatja, hogyan helyezhet üzembe egy közelmúltbeli példát a vállalatnak az IBM DB2-környezetből, amely a z/OS-ben fut az Azure-ban az IBM DB2-pureScale.
 author: njray
 ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 481816ca0c1fecfee9396f6cc40582695b0952f2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 33ff6174d7e5107076dda177731c9daec7e57266
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550195"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956145"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 

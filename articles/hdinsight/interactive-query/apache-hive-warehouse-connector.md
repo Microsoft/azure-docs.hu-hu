@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99594434"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869888"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -23,7 +23,7 @@ Apache Hive támogatja az atomi, konzisztens, elkülönített és tartós (savas
 
 A Apache Spark olyan strukturált streaming API-val rendelkezik, amely a Apache Hiveban nem elérhető folyamatos átviteli képességeket biztosít. A HDInsight 4,0-es verziójától kezdve a Apache Spark 2.3.1 és Apache Hive 3.1.0 külön metaadattárak rendelkeznek. A különálló metaadattárak nehézkessé teheti az együttműködési képességet. A méhkas Warehouse-összekötő megkönnyíti a Spark és a struktúra együttes használatát. A ÜZEMELTETHETŐ WEBMAG-könyvtár a LLAP démonokból származó adatokkal párhuzamosan tölti be a Spark-végrehajtókat. Ez a folyamat hatékonyabbá és alkalmazkodóképesvé teszi a Spark és a kaptár közötti szabványos JDBC-kapcsolatok esetében.
 
-![a méhkas Warehouse-összekötő architektúrája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+:::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png" alt-text="a méhkas Warehouse-összekötő architektúrája" border="true":::
 
 A kaptár-tárház összekötője által támogatott néhány művelet:
 
@@ -72,7 +72,7 @@ A méhkas Warehouse-összekötőnek külön fürtökre van szüksége a Spark é
 
 1. Bontsa ki az **Egyéni spark2-alapértékek** elemet.
 
-    ![Apache Ambari Spark2-konfiguráció](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png" alt-text="Apache Ambari Spark2-konfiguráció" border="true":::
 
 1. Válassza a **tulajdonság hozzáadása...** lehetőséget a következő konfigurációk hozzáadásához:
 
@@ -103,11 +103,11 @@ Az előző szakaszban említett konfigurációkon kívül adja hozzá a követke
     
     * Egy webböngészőből navigáljon `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` oda, ahol a CLUSTERNAME az interaktív lekérdezési fürt neve. Kattintson a **HiveServer2 Interactive** elemre. Megtekintheti annak a fő csomópontnak a teljes tartománynevét (FQDN), amelyen a LLAP fut, ahogy azt a képernyőképen is látható. Cserélje le `<llap-headnode>` erre az értékre.
 
-        ![kaptár-összekötő fő csomópontja](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png" alt-text="kaptár-összekötő fő csomópontja" border="true":::
 
     * Az [SSH-parancs](../hdinsight-hadoop-linux-use-ssh-unix.md) használatával csatlakozzon az interaktív lekérdezési fürthöz. Keresse meg a `default_realm` paramétert a `/etc/krb5.conf` fájlban. Cserélje le `<AAD-DOMAIN>` ezt az értéket nagybetűs karakterláncként, ellenkező esetben a hitelesítő adat nem található.
 
-        ![a méhkas Warehouse-összekötő HRE tartománya](./media/apache-hive-warehouse-connector/aad-domain.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="a méhkas Warehouse-összekötő HRE tartománya" border="true":::
 
     * Például: `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
     
@@ -211,21 +211,21 @@ kinit USERNAME
     hive.executeQuery("SELECT * FROM demo").show()
     ```
 
-    ![bemutató táblázat a Ranger-szabályzat alkalmazása előtt](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-before-ranger-policy.png" alt-text="bemutató táblázat a Ranger-szabályzat alkalmazása előtt" border="true":::
 
 1. Alkalmazzon egy oszlop maszkolási szabályzatot, amely csak az oszlop utolsó négy karakterét jeleníti meg.  
     1. Nyissa meg a Ranger felügyeleti felhasználói felületét a következő címen: `https://LLAPCLUSTERNAME.azurehdinsight.net/ranger/` .
     1. Kattintson a kaptár szolgáltatásra a fürthöz a **struktúra** területen.
-        ![Ranger Service Manager](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png" alt-text="Ranger Service Manager" border="true":::
     1. Kattintson a **maszkolás** lapra, és **adja hozzá az új házirendet**
 
-        ![kaptár-raktár összekötő Ranger-struktúra szabályzatának listája](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png" alt-text="kaptár-raktár összekötő Ranger-struktúra szabályzatának listája" border="true":::
 
     1. Adja meg a kívánt szabályzat nevét. Adatbázis kiválasztása: **alapértelmezett**, kaptár-tábla **: bemutató**, struktúra oszlop **: név**, felhasználó: **Rsadmin2**, hozzáférési típusok: **Select** és **részleges maszk: az elmúlt 4 megjelenítése** a **maszkolási beállítások kiválasztása** menüből. Kattintson a **Hozzáadás** parancsra.
-                ![házirend létrehozása](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png" alt-text="házirend létrehozása" border="true":::
 1. Megtekintheti a tábla tartalmát. A Ranger-szabályzat alkalmazása után csak az oszlop utolsó négy karakterét láthatjuk.
 
-    ![bemutató táblázat a Ranger-szabályzat alkalmazása után](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
+    :::image type="content" source="./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png" alt-text="bemutató táblázat a Ranger-szabályzat alkalmazása után" border="true":::
 
 ## <a name="next-steps"></a>Következő lépések
 

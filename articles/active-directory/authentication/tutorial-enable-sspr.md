@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198489"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887767"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
@@ -138,6 +138,22 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **jelszó alaphelyzetbe állítása** lehetőséget.
 1. A **Tulajdonságok** lapon, az *önkiszolgáló jelszó-visszaállítás engedélyezése* lehetőségnél válassza a **nincs** lehetőséget.
 1. A SSPR módosításának alkalmazásához válassza a **Mentés** lehetőséget.
+
+## <a name="faqs"></a>Gyakori kérdések
+
+Ez a szakasz a rendszergazdák és a SSPR kipróbálását végző végfelhasználók gyakori kérdéseit ismerteti:
+
+- Az összevont felhasználók miért várnak akár 2 percet a **jelszó visszaállítását** követően, mielőtt a helyszíni rendszerből szinkronizált jelszavakat használhassanak?
+
+  Azon összevont felhasználók esetében, akiknek a jelszava szinkronizálva van, a jelszavak szolgáltatójának forrása a helyszínen van. Ennek eredményeképpen a SSPR csak a helyszíni jelszavakat frissíti. Az Azure AD-ba való jelszó-kivonatolási szinkronizálás 2 percenként van ütemezve.
+
+- Ha olyan újonnan létrehozott felhasználót, aki előre ki van töltve SSPR-adatokkal, például a telefonos és e-mail-címmel, látogasson el a SSPR regisztrációs oldalára, **ne veszítse el a fiókjához való hozzáférést.** a lap címeként jelenik meg. Miért nem más, előre feltöltött SSPR-adatokkal rendelkező felhasználók láthatják az üzenetet?
+
+  Egy felhasználó, aki **úgy látja, hogy nem veszíti el a fiókjához való hozzáférést.** tagja a bérlőhöz konfigurált SSPR/kombinált regisztrációs csoportoknak. Azok a felhasználók, akik nem látják **, nem veszítik el a fiókjához való hozzáférést.** nem voltak a SSPR/kombinált regisztrációs csoportok részei.
+
+- Ha néhány felhasználó áthalad a SSPR folyamaton, és alaphelyzetbe állítja a jelszavát, akkor miért nem látják a jelszó erősségének jelzőjét?
+
+  Azok a felhasználók, akik nem látják a gyenge/erős jelszó erősségét, engedélyezve vannak a szinkronizált jelszó visszaírási. Mivel a SSPR nem tudja meghatározni az ügyfél helyszíni környezetének jelszavas házirendjét, nem tudja érvényesíteni a jelszó erősségét vagy gyengeségét. 
 
 ## <a name="next-steps"></a>Következő lépések
 

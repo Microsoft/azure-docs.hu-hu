@@ -4,12 +4,12 @@ description: A Apache Hive konfigurálásához és optimalizálásához használ
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 349f58720e6fff52191dfff65108cd1320e41eed
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 69a4e769677b6f0200f4157305a3a125f82ee76d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939256"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864817"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimalizálása az Apache Ambari az Azure HDInsight
 
@@ -26,11 +26,11 @@ A kaptár két végrehajtó motort biztosít: Apache Hadoop MapReduce és Apache
 
 1. A kaptár- **konfigurációk** lapon írja be a végrehajtó **motor** értéket a szűrő mezőbe.
 
-    ![Apache Ambari keresési végrehajtó motor](./media/optimize-hive-ambari/ambari-search-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-search-execution.png" alt-text="Apache Ambari keresési végrehajtó motor" border="true":::
 
 1. Az **optimalizálási** tulajdonság alapértelmezett értéke **TEZ**.
 
-    ![Optimalizálás – Apache TEZ Engine](./media/optimize-hive-ambari/optimization-apache-tez.png)
+    :::image type="content" source="./media/optimize-hive-ambari/optimization-apache-tez.png" alt-text="Optimalizálás – Apache TEZ Engine" border="true":::
 
 ## <a name="tune-mappers"></a>Leképezések hangolása
 
@@ -47,7 +47,7 @@ Ha például négy Mapper-feladatot szeretne beállítani 128 MB adatmérethez, 
 
 1. Mindkét paraméter **33 554 432** bájtra (32 MB) állítható be.
 
-    ![Apache Ambari TEZ-csoportosítási méretek](./media/optimize-hive-ambari/apache-tez-grouping-size.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-tez-grouping-size.png" alt-text="Apache Ambari TEZ-csoportosítási méretek" border="true":::
 
 Ezek a módosítások a kiszolgálón lévő összes TEZ-feladatot érintik. Az optimális eredmény eléréséhez válassza a megfelelő paraméterek értékét.
 
@@ -63,11 +63,11 @@ A `hive.exec.reducers.bytes.per.reducer` paraméter határozza meg a feldolgozha
 
 1. A paraméter módosításához navigáljon a struktúra- **konfigurációk** lapra, és keresse meg a beállítások lapon található, redukáló paraméterrel rendelkező **adatmennyiséget** .
 
-    ![Apache Ambari-adatmennyiség csökkentése](./media/optimize-hive-ambari/ambari-data-per-reducer.png)
+    :::image type="content" source="./media/optimize-hive-ambari/ambari-data-per-reducer.png" alt-text="Apache Ambari-adatmennyiség csökkentése" border="true":::
 
 1. Válassza a **Szerkesztés** lehetőséget az érték 128 MB-ra (134 217 728 bájt) való módosításához, majd nyomja le az **ENTER** billentyűt a mentéshez.
 
-    ![Ambari-adatmennyiség csökkentése – szerkesztett](./media/optimize-hive-ambari/data-per-reducer-edited.png)
+    :::image type="content" source="./media/optimize-hive-ambari/data-per-reducer-edited.png" alt-text="Ambari-adatmennyiség csökkentése – szerkesztett" border="true":::
   
     A bemeneti méret 1 024 MB, a 128 MB adatmennyiség pedig a redukáló értéknél nyolc szűkítő (1024/128).
 
@@ -81,7 +81,7 @@ A kaptár-lekérdezések végrehajtása egy vagy több szakaszban történik. Ha
 
 1. A párhuzamosan futtatandó feladatok számának korlátozásához módosítsa a `hive.exec.parallel.thread.number` tulajdonságot. Az alapértelmezett érték 8.
 
-    ![Apache Hive exec párhuzamos megjelenítés](./media/optimize-hive-ambari/apache-hive-exec-parallel.png)
+    :::image type="content" source="./media/optimize-hive-ambari/apache-hive-exec-parallel.png" alt-text="Apache Hive exec párhuzamos megjelenítés" border="true":::
 
 ## <a name="enable-vectorization"></a>Vektorizációt engedélyezése
 
@@ -91,7 +91,7 @@ A struktúra soronként dolgozza fel az adatsort. A vektorizációt a Kaptárat 
 
 1. A lekérdezés csökkentése érdekében a vektoros végrehajtás engedélyezéséhez állítsa igaz értékre a `hive.vectorized.execution.reduce.enabled` paramétert. Az alapértelmezett érték a hamis.
 
-    ![Vektoros végrehajtás Apache Hive](./media/optimize-hive-ambari/hive-vectorized-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-vectorized-execution.png" alt-text="Vektoros végrehajtás Apache Hive" border="true":::
 
 ## <a name="enable-cost-based-optimization-cbo"></a>Cost-alapú optimalizálás engedélyezése (CBO)
 
@@ -99,7 +99,7 @@ Alapértelmezés szerint a kaptár egy olyan szabályt követ, amely egy optimá
 
 A CBO engedélyezéséhez lépjen a **kaptár**-  >  **konfigurációk**  >  **beállításaihoz** , és keresse meg a **Cost-alapú optimalizáló engedélyezése** lehetőséget, majd kapcsolja be a váltás gombot a **be** értékre.
 
-![HDInsight-alapú optimalizáló](./media/optimize-hive-ambari/hdinsight-cbo-config.png)
+:::image type="content" source="./media/optimize-hive-ambari/hdinsight-cbo-config.png" alt-text="HDInsight-alapú optimalizáló" border="true":::
 
 A következő további konfigurációs paraméterek fokozzák a kaptár-lekérdezések teljesítményét, ha a CBO engedélyezve van:
 
@@ -107,19 +107,19 @@ A következő további konfigurációs paraméterek fokozzák a kaptár-lekérde
 
     Ha igaz értékre van állítva, a struktúra a saját metaadattár tárolt statisztikát használja az egyszerű lekérdezések megválaszolásához, például: `count(*)` .
 
-    ![Számítási lekérdezés Apache Hive statisztikák használatával](./media/optimize-hive-ambari/hive-compute-query-using-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-compute-query-using-stats.png" alt-text="Számítási lekérdezés Apache Hive statisztikák használatával" border="true":::
 
 * `hive.stats.fetch.column.stats`
 
     Az oszlop statisztikái akkor jönnek létre, ha a CBO engedélyezve van. A kaptár a metaadattár tárolt oszlopok statisztikáit használja a lekérdezések optimalizálására. Az oszlopok statisztikáinak beolvasása az egyes oszlopoknál tovább tart, ha az oszlopok száma magas. Ha false értékre van állítva, akkor ez a beállítás letiltja az oszlopok statisztikáinak beolvasását a metaadattár.
 
-    ![Apache Hive statisztika-készlet oszlopainak statisztikája](./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-column-stats.png" alt-text="Apache Hive statisztika-készlet oszlopainak statisztikája" border="true":::
 
 * `hive.stats.fetch.partition.stats`
 
     Az alapszintű partíciók statisztikái, például a sorok száma, az adatok mérete és a fájlméret a metaadattár-ben tárolódnak. Ha igaz értékre van állítva, a partíció statisztikái a metaadattár-ből lesznek beolvasva. Hamis érték esetén a rendszer beolvassa a fájl méretét a fájlrendszerből. És a sorok száma a sor sémából beolvasva.
 
-    ![Struktúra-stats set Partition stats](./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-stats-fetch-partition-stats.png" alt-text="Struktúra-stats set Partition stats" border="true":::
 
 ## <a name="enable-intermediate-compression"></a>Közbenső tömörítés engedélyezése
 
@@ -131,16 +131,16 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlkiterjesztés | Feloszthatók? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | No |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
+| Gzip | Gzip | DEFLATE | `.gz` | Nem |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Igen |
 | LZO | `Lzop` | LZO | `.lzo` | Igen, ha indexelve van |
-| Snappy | N/A | Snappy | Snappy | No |
+| Snappy | N/A | Snappy | Snappy | Nem |
 
 Általános szabály, hogy a tömörítési módszer megosztója fontos, ellenkező esetben a rendszer néhány leképezést hoz létre. Ha a bemeneti adatok szöveg, `bzip2` a legjobb megoldás. Az ork formátum esetében a Snappy a leggyorsabb tömörítési lehetőség.
 
 1. A köztes tömörítés engedélyezéséhez navigáljon a struktúra- **konfigurációk** lapra, és állítsa a `hive.exec.compress.intermediate` paramétert True (igaz) értékre. Az alapértelmezett érték a hamis.
 
-    !["Kaptár exec compress Intermediate"](./media/optimize-hive-ambari/hive-exec-compress-intermediate.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-exec-compress-intermediate.png" alt-text="&quot;Kaptár exec compress Intermediate&quot;" border="true":::
 
     > [!NOTE]  
     > A köztes fájlok tömörítéséhez válassza ki a tömörítési kodeket, amely alacsonyabb CPU-költségeket tartalmaz, még akkor is, ha a kodek nem rendelkezik magas tömörítési kimenettel.
@@ -157,7 +157,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     d. Válassza a **Hozzáadás** lehetőséget.
 
-    !["Apache Hive egyéni tulajdonság hozzáadása"](./media/optimize-hive-ambari/hive-custom-property.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property.png" alt-text="&quot;Apache Hive egyéni tulajdonság hozzáadása&quot;" border="true":::
 
     Ezzel a beállítással a rendszer a köztes fájlt a Snappy Compression használatával tömöríti. A tulajdonság hozzáadása után az megjelenik az egyéni struktúra – hely ablaktáblán.
 
@@ -172,7 +172,7 @@ A struktúra utolsó kimenete is tömöríthető.
 
 1. A kimeneti tömörítési kodek kiválasztásához adja hozzá az `mapred.output.compression.codec` Egyéni tulajdonságot az egyéni struktúra – hely panelhez az előző szakasz 3. lépésében leírtak szerint.
 
-    ![Apache Hive egyéni tulajdonság add2](./media/optimize-hive-ambari/hive-custom-property2.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-custom-property2.png" alt-text="Apache Hive egyéni tulajdonság add2" border="true":::
 
 ## <a name="enable-speculative-execution"></a>Spekulatív végrehajtás engedélyezése
 
@@ -182,7 +182,7 @@ A spekulatív végrehajtás nem kapcsolható be nagy mennyiségű bemenettel ren
 
 * A spekulációs végrehajtás engedélyezéséhez navigáljon a kaptár **konfigurációk** lapra, és állítsa a `hive.mapred.reduce.tasks.speculative.execution` paramétert True (igaz) értékre. Az alapértelmezett érték a hamis.
 
-    !["A kaptár mapred csökkenti a feladatok spekulációs végrehajtását"](./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
+    :::image type="content" source="./media/optimize-hive-ambari/hive-mapred-reduce-tasks-speculative-execution.png" alt-text="&quot;A kaptár mapred csökkenti a feladatok spekulációs végrehajtását&quot;" border="true":::
 
 ## <a name="tune-dynamic-partitions"></a>Dinamikus partíciók hangolása
 
@@ -202,7 +202,7 @@ A helyi mód lehetővé teszi, hogy a kaptár egyetlen gépen hajtsa végre a fe
 
 A helyi mód engedélyezéséhez adja hozzá a (z `hive.exec.mode.local.auto` ) paramétert az egyéni struktúra – hely panelhez a [köztes tömörítés engedélyezése](#enable-intermediate-compression) szakasz 3. lépésében leírtak szerint.
 
-![Apache Hive exec mód helyi automatikus](./media/optimize-hive-ambari/hive-exec-mode-local-auto.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-exec-mode-local-auto.png" alt-text="Apache Hive exec mód helyi automatikus" border="true":::
 
 ## <a name="set-single-mapreduce-multigroup-by"></a>Egyetlen MapReduce többcsoportos beállítása
 
@@ -210,7 +210,7 @@ Ha ez a tulajdonság TRUE (igaz) értékre van állítva, a közös csoport – 
 
 Ha engedélyezni szeretné ezt a viselkedést, adja hozzá a `hive.multigroupby.singlereducer` paramétert az egyéni struktúra – hely ablaktáblához, ahogy az a [köztes tömörítés engedélyezése](#enable-intermediate-compression) szakasz 3. lépésében leírtak szerint.
 
-![Struktúra egyetlen MapReduce többcsoportos beállítása](./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png)
+:::image type="content" source="./media/optimize-hive-ambari/hive-multigroupby-singlereducer.png" alt-text="Struktúra egyetlen MapReduce többcsoportos beállítása" border="true":::
 
 ## <a name="additional-hive-optimizations"></a>További kaptár-optimalizálások
 

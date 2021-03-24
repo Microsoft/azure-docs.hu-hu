@@ -5,24 +5,24 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 8bcdb87e04d90aeb3d807e43c53e74d74299091b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 754b82cb0473e13ee7fb0649ef68c70ab5abe900
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102040005"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868732"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
 A Apache Spark egy párhuzamos feldolgozási keretrendszer, amely támogatja a memóriabeli feldolgozást a Big-adatanalitikai alkalmazások teljesítményének növelése érdekében. Az Azure HDInsight-alapú Apache Spark az Apache Spark felhőbeli megvalósítása, a Microsoft terméke. A HDInsight segítségével leegyszerűsíthető a Spark-fürtök létrehozása és konfigurálása az Azure-ban. A HDInsight-alapú Spark-fürtök kompatibilisek az [Azure Blob Storage](../../storage/common/storage-introduction.md), a [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md)vagy a [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md). A HDInsight-alapú Spark-fürtök segítségével tehát elvégezheti az Azure-ban tárolt adatok feldolgozását. Az összetevők és a verziószámozási információk: [Apache Hadoop összetevők és verziók az Azure HDInsight-ben](../hdinsight-component-versioning.md).
 
-![Spark: egyesített keretrendszer](./media/apache-spark-overview/hdinsight-spark-overview.png)
+:::image type="content" source="./media/apache-spark-overview/hdinsight-spark-overview.png" alt-text="Spark: egyesített keretrendszer" border="false":::
 
 ## <a name="what-is-apache-spark"></a>Mi az az Apache Spark?
 
 a Spark alapelemeket nyújt a memórián belüli fürtszámításhoz. A Spark-feladatokkal az adatok betölthetők és gyorsítótárazhatók a memóriába, majd ismétlődő jelleggel lekérdezhetők. A memórián belüli számítástechnika sokkal gyorsabb, mint a lemezes alkalmazások, például a Hadoop, amelyek az Hadoop elosztott fájlrendszeren (HDFS) keresztül osztják meg az adatmegosztást. A Spark a Scala programozási nyelvbe is integrálható, így a helyi gyűjteményekhez hasonlóan módosíthatja az elosztott adatkészleteket. Nem kell mindent térképként rendszerezni és csökkenteni a műveletek számát.
 
-![Hagyományos MapReduce vs. Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
+:::image type="content" source="./media/apache-spark-overview/map-reduce-vs-spark1.png" alt-text="Hagyományos MapReduce vs. Spark" border="false":::
 
 A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatást nyújtanak. A HDInsight-alapú Spark-fürt létrehozásának előnyeit ez a lista foglalja össze.
 
@@ -54,7 +54,7 @@ A HDInsight Spark-fürtök egy [ODBC-illesztőt](/sql/connect/odbc/download-odbc
 
 ## <a name="spark-cluster-architecture"></a>Spark-fürtarchitektúra
 
-![A HDInsight Spark architektúrája](./media/apache-spark-overview/hdi-spark-architecture.png)
+:::image type="content" source="./media/apache-spark-overview/hdi-spark-architecture.png" alt-text="A HDInsight Spark architektúrája" border="false":::
 
 Könnyen megismerheti a Spark összetevőit azzal, hogy megértette, hogyan fut a Spark a HDInsight-fürtökön.
 

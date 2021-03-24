@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/12/2020
-ms.openlocfilehash: 3a6b55ee2d665ee38df9a0e0f58260e97f3b81f5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d56fa4e1c93cec514076593d229e58b25af142a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942939"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865145"
 ---
 # <a name="quickstart-create-apache-hbase-cluster-in-azure-hdinsight-using-arm-template"></a>Gyors útmutató: Apache HBase-fürt létrehozása az Azure HDInsight az ARM-sablon használatával
 
@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) hasz
 
 Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
-[![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
+[:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Két Azure-erőforrás van definiálva a sablonban:
 
 1. Az Azure-ba való bejelentkezéshez és az ARM-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
-    [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
+    [:::image type="icon" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Üzembe helyezés az Azure-ban":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json)
 
 1. Adja meg vagy válassza ki a következő értékeket:
 
@@ -56,7 +56,7 @@ Két Azure-erőforrás van definiálva a sablonban:
     |SSH-Felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a sshuser.|
     |SSH-jelszó|Adja meg a jelszót.|
 
-    ![Resource Manager-sablon HBase üzembe helyezése](./media/quickstart-resource-manager-template/resource-manager-template-hbase.png)
+    :::image type="content" source="./media/quickstart-resource-manager-template/resource-manager-template-hbase.png" alt-text="Resource Manager-sablon HBase üzembe helyezése" border="true":::
 
 1. Tekintse át a **használati** feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás** lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 

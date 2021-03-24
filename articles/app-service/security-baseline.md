@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dd612e7e3c54a000d989c5a2f3a633d06d6d11cb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3193acf8ef19cdac97f6733a657610801d614f32
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101718336"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952303"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -265,9 +265,9 @@ Tekintse át a részletes biztonsági riasztásokat és javaslatokat Security Ce
 
 Javasoljuk, hogy hozzon létre egy folyamatot automatizált eszközökkel a hálózati erőforrás-konfigurációk figyelésére és a változások gyors észlelésére.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Biztonsági riasztások és javaslatok exportálása](../security-center/continuous-export.md)
 
@@ -285,7 +285,7 @@ Javasoljuk, hogy hozzon létre egy folyamatot automatizált eszközökkel a hál
 
 Az üzleti igények alapján a különböző adatforrásokhoz és összekötőhöz való csatlakozáshoz használható Microsoft Azure Sentinel, skálázható, felhőalapú, biztonsági információkkal foglalkozó esemény-felügyeleti (SIEM) szolgáltatás. Emellett engedélyezheti és elvégezheti az adatok harmadik féltől származó biztonsági információkkal való ellátását (SIEM), például a Barracuda-t az Azure Marketplace-en.
 
-- [Beléptetési tevékenység naplózása](https://docs.microsoft.com/azure/app-service/environment/using-an-ase#logging)
+- [Beléptetési tevékenység naplózása](./environment/using-an-ase.md#logging)
 
 - [A Azure App Service diagnosztikai beállításainak engedélyezése](troubleshoot-diagnostic-logs.md)
 
@@ -305,7 +305,7 @@ A vezérlési sík szintjén végrehajtott összes írási művelethez (PUT, POS
 
 Emellett a Azure Key Vault központosított titkos felügyeletet biztosít a hozzáférési házirendekkel és a naplózási előzményekkel. 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Azure App Service diagnosztikai beállításainak engedélyezése](troubleshoot-diagnostic-logs.md)
 
@@ -322,7 +322,7 @@ Emellett a Azure Key Vault központosított titkos felügyeletet biztosít a hoz
 ### <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
 **Útmutató**: a Azure monitor a szervezet megfelelőségi előírásai szerint állítsa be a app Service erőforrásokhoz társított log Analytics munkaterületek naplózási megőrzési időtartamát.
-- [Napló-megőrzési paraméterek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Napló-megőrzési paraméterek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -338,7 +338,7 @@ Ha telepített egy webalkalmazási tűzfalat (WAF), akkor a valós idejű webalk
 
 Az Azure Sentinel, a skálázható és a Felhőbeli natív biztonsági információkkal foglalkozó esemény kezelése (SIEM) a különböző adatforrásokkal és összekötővel való integrálásra igény szerint. Az Azure Marketplace-en engedélyezheti és elküldheti a harmadik féltől származó biztonsági információkkal kapcsolatos esemény-kezelési megoldást.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [A Application Insights engedélyezése](../azure-monitor/app/app-insights-overview.md)
 
@@ -372,9 +372,9 @@ A valós idejű webalkalmazási tűzfal naplójának egy üzembe helyezett Azure
 
 **Útmutató**: a Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni és lekérdezni. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-- [Felügyelt identitások használata App Service és Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
+- [Felügyelt identitások használata App Service és Azure Functions](./overview-managed-identity.md?tabs=dotnet&context=azure%2factive-directory%2fmanaged-identities-azure-resources%2fcontext%2fmsi-context)
 
 - [Azure-szerepkörök kiosztása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 
@@ -390,7 +390,7 @@ A valós idejű webalkalmazási tűzfal naplójának egy üzembe helyezett Azure
 
 Tiltsa le a névtelen hozzáférést, kivéve, ha támogatni kell azt. 
 
-- [A Azure App Serviceban alapértelmezés szerint elérhetők az identitás-szolgáltatók](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [A Azure App Serviceban alapértelmezés szerint elérhetők az identitás-szolgáltatók](./overview-authentication-authorization.md#identity-providers)
 
 - [Hitelesítés és engedélyezés Azure App Service és Azure Functions](overview-authentication-authorization.md)
 
@@ -437,7 +437,7 @@ App Service-alkalmazások összevont identitást használnak, amelyben a külső
 
 Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyikével, a bejelentkezési végpontja elérhetővé válik a felhasználói hitelesítéshez és a szolgáltatótól származó hitelesítési jogkivonatok érvényesítéséhez.
 
-- [A hitelesítés és az engedélyezés ismertetése Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#identity-providers)
+- [A hitelesítés és az engedélyezés ismertetése Azure App Service](./overview-authentication-authorization.md#identity-providers)
 
 - [Tudnivalók a hitelesítésről és az engedélyezésről Azure App Service](overview-authentication-authorization.md)
 
@@ -451,7 +451,7 @@ Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyi
 
 Többtényezős hitelesítés implementálása az Azure AD-ben. A rendszergazdáknak biztosítaniuk kell, hogy a portálon lévő előfizetési fiókok védve legyenek. Az előfizetés sebezhető a támadásokkal szemben, mert kezeli a létrehozott erőforrásokat. 
 
-- [Azure biztonsági többtényezős hitelesítés](/azure/security/develop/secure-aad-app)
+- [Azure biztonsági többtényezős hitelesítés](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [Többtényezős hitelesítés engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -517,7 +517,7 @@ A Security Center veszélyforrások elleni védelem átfogó védelmet biztosít
 
 **Útmutató**: az elavult fiókok felderítése Azure Active Directory (Azure ad) által biztosított naplók használatával. Az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok és a vállalati alkalmazásokhoz való hozzáférést, valamint a szerepkör-hozzárendeléseket. Rendszeresen tekintse át a felhasználók hozzáférését, és győződjön meg arról, hogy csak a kívánt felhasználók férhetnek hozzá. 
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -533,7 +533,7 @@ Az Azure AD bejelentkezési tevékenységekhez, naplózási és kockázati Esem�
 
 - [A Azure App Service-alkalmazások konfigurálása az Azure AD-bejelentkezés használatára](configure-authentication-provider-aad.md)
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
@@ -561,7 +561,7 @@ A Azure AD Identity Protection használatával konfigurálhatja a felhasználói
 
 **Útmutató**: nem érhető el; A Ügyfélszéf Azure App Service esetén nem támogatott.
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -661,7 +661,7 @@ Az ügyfél által megadott titkos kulcsok titkosítása App Service konfigurác
 
 Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ideiglenes tárolóként (például D:\Local és% TMP%) is használhatják, nem titkosítva vannak.
 
-- [Az Azure App Service adatvédelmes vezérlőinek ismertetése](https://docs.microsoft.com/azure/app-service/security-recommendations#data-protection)
+- [Az Azure App Service adatvédelmes vezérlőinek ismertetése](./security-recommendations.md#data-protection)
 
 - [Az Azure Storage titkosításának megismerése nyugalmi állapotban](../storage/common/storage-service-encryption.md)
 
@@ -673,7 +673,7 @@ Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ide
 
 **Útmutató**: a Azure monitor és az Azure Activity log használatával riasztásokat hozhat létre az éles app Service alkalmazások és egyéb kritikus vagy kapcsolódó erőforrások változásairól.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -689,7 +689,7 @@ Vegye figyelembe, hogy míg a helyileg csatlakoztatott lemezeket a webhelyek ide
 
 Tekintse át és kövesse Security Center a App Service-alkalmazások biztonságossá tételéhez szükséges javaslatokat.
 
-- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&amp;view=azure-devops)
+- [Folyamatos biztonsági ellenőrzés hozzáadása a CI/CD-folyamathoz](/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&preserve-view=true)
 
 - [Azure Security Center sebezhetőségi felméréssel kapcsolatos javaslatok megvalósítása](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -719,7 +719,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?preserve-view=true&amp;view=azps-4.8.0)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&preserve-view=true)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -840,7 +840,7 @@ A App Service webjobs szolgáltatással figyelheti a nem jóváhagyott szoftvera
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 - [Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service](webjobs-create.md)
 
@@ -864,7 +864,7 @@ Ehhez hasonlóan a App Service webjobs szolgáltatásban is használhatja a nem 
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -926,7 +926,7 @@ Beépített szabályzat-definíciók alkalmazása, például:
 
 Azt javasoljuk, hogy a beépített szabályzat-definíciók alkalmazásával dokumentálja a szabványos használatot.   
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&amp;view=azps-4.8.0)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&preserve-view=true)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -952,9 +952,9 @@ Azt javasoljuk, hogy a beépített szabályzat-definíciók alkalmazásával dok
 
 A meglévő folyamatos integrációs (CI) és folyamatos továbbítási (CD) folyamat használatával egy ismert, biztonságos konfigurációt telepíthet.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?preserve-view=true&amp;view=azure-devops)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?preserve-view=true&amp;view=azure-devops)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?view=azure-devops&preserve-view=true)
 
 **Felelősség**: Ügyfél
 
@@ -1060,7 +1060,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 - [Azure App Service-ben futó alkalmazás visszaállítása](web-sites-restore.md)
 
-- [Inaktív adatok Azure-ban való titkosításának ismertetése](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#encryption-at-rest-in-microsoft-cloud-services) 
+- [Inaktív adatok Azure-ban való titkosításának ismertetése](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
 - [Titkosítási modell és kulcskezelő tábla](../security/fundamentals/encryption-atrest.md)
 
@@ -1188,5 +1188,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (például éles körn
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f11b31ba698c193029834caada2e5c4cf3ef2902
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946582"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866641"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -18,7 +18,7 @@ A kinyerési, átalakítási és betöltési (ETL) folyamat a különböző forr
 
 A HDInsight az ETL-folyamatban való használatát az alábbi folyamat összegzi:
 
-![HDInsight ETL – áttekintés](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+:::image type="content" source="./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png" alt-text="HDInsight ETL – áttekintés" border="false":::
 
 A következő szakaszok az ETL fázisok és a hozzájuk társított összetevők megismerését ismertetik.
 

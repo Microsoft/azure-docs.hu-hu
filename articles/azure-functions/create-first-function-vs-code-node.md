@@ -7,12 +7,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-node_uiex
-ms.openlocfilehash: 6c32570c8ebea3c1d127fc26b0d78287dbeb817f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f22a847be5fc750cb3a3d9e6736d08940f30e4fe
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729283"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954462"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: JavaScript-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
@@ -117,8 +117,10 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) használatával egy egyszerű http-triggert használó függvényt hozhat létre. A következő cikkben az Azure Storage-hoz való csatlakozással bővítheti ezt a függvényt. További információ az egyéb Azure-szolgáltatásokhoz való csatlakozásról: [kötések hozzáadása meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=javascript).  
+A [Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) használatával egy egyszerű http-triggert használó függvényt hozhat létre. A következő cikkben a Azure Cosmos DB vagy az Azure Storage szolgáltatáshoz való csatlakozással bővítheti ezt a függvényt. További információ az egyéb Azure-szolgáltatásokhoz való csatlakozásról: [kötések hozzáadása meglévő függvényhez Azure functions](add-bindings-existing-function.md?tabs=javascript).  
 
+> [!div class="nextstepaction"]
+> [Kapcsolódás adatbázishoz](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-javascript)
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-javascript)
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, devx-track-azurepowershell
 ms.date: 05/13/2020
-ms.openlocfilehash: b81a2021cabefd9587d448aa236e7e87bc254741
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dfa89f50dedad41394cb77f1cca9b2dd3a65308
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100590822"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865536"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
@@ -58,7 +58,7 @@ Ebben a szakaszban egy meglévő HDInsight-Hadoop-fürtöt konfigurál egy Azure
 
 1. Kattintson a **Mentés** gombra.  A beállítás mentése néhány percet vesz igénybe.
 
-    ![HDInsight-fürtök figyelésének engedélyezése](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight-fürtök figyelésének engedélyezése")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png" alt-text="HDInsight-fürtök figyelésének engedélyezése":::
 
 ## <a name="enable-azure-monitor-using-azure-powershell"></a>Azure Monitor engedélyezése a Azure PowerShell használatával
 
@@ -138,7 +138,7 @@ Elérhető HDInsight-megoldások:
 
 A felügyeleti megoldással kapcsolatos utasításokért lásd: [felügyeleti megoldások az Azure-ban](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). A kísérlethez telepítsen egy HDInsight Hadoop-figyelési megoldást. Ha elkészült, megjelenik egy **HDInsightHadoop** csempe az **Összefoglalás** területen. Válassza a **HDInsightHadoop** csempét. A HDInsightHadoop-megoldás így néz ki:
 
-![HDInsight-figyelési megoldás nézete](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
+:::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png" alt-text="HDInsight-figyelési megoldás nézete":::
 
 Mivel a fürt egy teljesen új fürt, a jelentés nem jeleníti meg a tevékenységeket.
 

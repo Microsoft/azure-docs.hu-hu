@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ca3ba61de13e0e451b43dc9c8ea40db33fed859a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931112"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869667"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Az Azure HDInsight interaktív lekérdezési fürt (kaptár LLAP) méretezési útmutatója
 
@@ -29,7 +29,7 @@ Ez a dokumentum ismerteti a HDInsight interaktív lekérdezési fürt (kaptár L
 ***Megjegyzés: az összes ajánlott konfigurációs érték a D14 v2 típusú feldolgozó csomóponton alapul.***  
 
 ### <a name="configuration"></a>**Configuration**    
-| Konfigurációs kulcs      | Javasolt érték  | Description |
+| Konfigurációs kulcs      | Javasolt érték  | Leírás |
 | :---        |    :----:   | :---     |
 | fonal. nodemanager. Resource. Memory – MB | 102400 (MB) | Teljes memória (MB-ban megadva) a csomóponton lévő összes fonal-tárolóhoz | 
 | fonal. Scheduler. maximális kiosztása – MB | 102400 (MB) | Az RM-on lévő összes Container-kérelem maximális kiosztása (MB). Az ennél az értéknél nagyobb memória-kérelmek nem lépnek érvénybe |
@@ -47,7 +47,7 @@ Ez a dokumentum ismerteti a HDInsight interaktív lekérdezési fürt (kaptár L
 
 ### <a name="llap-architecturecomponents"></a>**LLAP architektúra/összetevők:**  
 
-!["LLAP architektúra/összetevők"](./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png "LLAP architektúra/összetevők")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_architecture_sizing_guide.png " alt-text="&quot;LLAP architektúra/összetevők&quot;" border="true":::
 
 ### <a name="llap-daemon-size-estimations"></a>**LLAP démonok méretének becslése:** 
 
@@ -81,7 +81,7 @@ Az alapértelmezett HDInsight-fürt négy LLAP-démont futtat négy munkavégző
 
 **Ambari felhasználói felületi csúszka a kaptár konfigurációs változóhoz `hive.server2.tez.sessions.per.default.queue` :**
 
-!["Az egyidejű lekérdezések maximális száma" LLAP](./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png "Az egyidejű lekérdezések maximális száma LLAP")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_max_concurrent_queries.png " alt-text="&quot;Az egyidejű lekérdezések maximális száma&quot; LLAP" border="true":::
 
 #### <a name="5-tez-container-and-tez-application-master-size"></a>**5. TEZ-tároló és TEZ-alkalmazás fő mérete**    
 Konfiguráció: ***TEZ. am. Resource. Memory. MB, kaptár. TEZ. Container. size***  
@@ -165,7 +165,7 @@ A D14 v2 esetében ez az érték 19 x 3 GB = **57 GB**
 
 `Ambari environment variable for LLAP heap size:`
 
-!["LLAP halom mérete"](./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png "LLAP halom mérete")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_llap_heap_size.png " alt-text="&quot;LLAP halom mérete&quot;" border="true":::
 
 Ha az SSD-gyorsítótár le van tiltva, a memórián belüli gyorsítótár olyan memória mennyisége, amely a LLAP Daemon-tároló méretétől számítva a belmagasság méretének és a halom méretének megkezdése után marad.
 
@@ -197,11 +197,11 @@ Ambari környezeti változók: ***num_llap_nodes, num_llap_nodes_for_llap_daemon
 
 **num_llap_nodes** – meghatározza a kaptár llap szolgáltatás által használt csomópontok számát, ez magában foglalja a llap Daemon, a llap Service Master és a TEZ Application Master (TEZ am) rendszert futtató csomópontokat is.  
 
-!["A LLAP szolgáltatás csomópontjainak száma"](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png "A LLAP szolgáltatás csomópontjainak száma")  
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes.png " alt-text="&quot;A LLAP szolgáltatás csomópontjainak száma&quot;" border="true":::  
 
 **num_llap_nodes_for_llap_daemons** – a csak a llap démonokhoz használt csomópontok megadott száma. A LLAP Daemon-tároló méretei a maximálisan illeszkedő csomópontra vannak állítva, így az egyes csomópontokon egy LLAP démont fog eredményezni.
 
-!["A LLAP-démonok száma"](./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png "LLAP-démonok csomópontjainak száma")
+:::image type="content" source="./media/hive-llap-sizing-guide/LLAP_sizing_guide_num_llap_nodes_for_llap_daemons.png " alt-text="&quot;A LLAP-démonok száma&quot;" border="true":::
 
 Az interaktív lekérdezési fürtben a munkavégző csomópontok számával megegyező értékeket érdemes megtartani.
 
@@ -222,7 +222,7 @@ Például: teljes szektorcsoport kapacitása = 100 GB memória, osztva a LLAP, a
 A számítási feladatok felügyeleti várólistájának kapacitása 20 GB, az erőforrás-csomag `QUERY_PARALLELISM` öt értéket határozhat meg, ami azt jelenti, hogy a számítási feladatok kezelése öt TEZ AMs-t indít el egyenként 4 GB méretű tárolóval. Ha `QUERY_PARALLELISM` a nagyobb a kapacitásnál, előfordulhat, hogy néhány TEZ AMs-stop válaszol `ACCEPTED` . A Hiveserver2 Interactive nem tud beküldeni lekérdezési töredékeket a nem állapotú TEZ AMs-nek `RUNNING` .
 
 
-#### <a name="next-steps"></a>**További lépések**
+#### <a name="next-steps"></a>**Következő lépések**
 Ha ezek az értékek nem oldják meg a problémát, látogasson el az alábbiak egyikére...
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).

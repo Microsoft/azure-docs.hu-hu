@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4b85397eeda651678fe66c6e78199dd25630dcc4
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502688"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889908"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Hozzáférési korlátozások beállítása Azure App Service
 
@@ -97,26 +97,25 @@ A szolgáltatási végpontok segítségével az alkalmazást Application Gateway
 > [!NOTE]
 > - A szolgáltatási végpontok jelenleg nem támogatottak az IP-SSL (SSL) virtuális IP-címet (VIP) használó webalkalmazások esetén.
 >
-#### <a name="set-a-service-tag-based-rule-preview"></a>Szolgáltatás-címkén alapuló szabály beállítása (előzetes verzió)
+#### <a name="set-a-service-tag-based-rule"></a>Szolgáltatás-címkén alapuló szabály beállítása
 
-* A 4. lépésnél a **típus** legördülő listában válassza a **Service tag (előzetes verzió)** lehetőséget.
+* A 4. lépésnél a **típus** legördülő listában válassza a **szolgáltatás címkéje** elemet.
 
-   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png" alt-text="Képernyőkép a &quot;korlátozás hozzáadása&quot; panelről a kiválasztott szolgáltatás címkéjének típusával.":::
+   :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-service-tag-add.png?v2" alt-text="Képernyőkép a &quot;korlátozás hozzáadása&quot; panelről a kiválasztott szolgáltatás címkéjének típusával.":::
 
 Az egyes szolgáltatási címkék az Azure-szolgáltatásokból származó IP-címtartományok listáját jelölik. A szolgáltatások listája és az adott tartományokra mutató hivatkozások a [szolgáltatás címkéjének dokumentációjában][servicetags]találhatók.
 
-A hozzáférési korlátozási szabályok az előzetes verzió fázisában a következő szolgáltatási címkéket támogatják:
+Az összes elérhető szolgáltatás címkéje támogatott a hozzáférési korlátozási szabályokban. Az egyszerűség kedvéért csak a leggyakoribb címkék listája érhető el a Azure Portalon keresztül. A speciális szabályok, például a regionális hatókörű szabályok konfigurálásához Azure Resource Manager sablonokat vagy parancsfájlokat használhat. Ezek a címkék Azure Portalon keresztül érhetők el:
+
 * ActionGroup
+* ApplicationInsightsAvailability
 * AzureCloud
 * AzureCognitiveSearch
-* AzureConnectors
 * AzureEventGrid
 * AzureFrontDoor. backend
 * AzureMachineLearning
-* AzureSignalR
 * AzureTrafficManager
 * LogicApps
-* ServiceFabric
 
 ### <a name="edit-a-rule"></a>Szabály szerkesztése
 
@@ -137,6 +136,31 @@ Egy szabály törléséhez a **hozzáférési korlátozások** lapon válassza a
 
 ## <a name="access-restriction-advanced-scenarios"></a>Hozzáférés-korlátozás speciális forgatókönyvek
 A következő szakaszok a hozzáférési korlátozásokat használó speciális forgatókönyveket ismertetik.
+
+### <a name="filter-by-http-header"></a>Szűrés HTTP-fejléc alapján
+
+Bármely szabály részeként további HTTP-fejléc-szűrőket adhat hozzá. A következő HTTP-fejlécek nevei támogatottak:
+* X – továbbított – a következőhöz:
+* X-továbbított-gazdagép
+* X – Azure – FDID
+* X-FD-HealthProbe
+
+Minden fejléc neveként legfeljebb 8 értéket adhat hozzá vesszővel elválasztva. A rendszer kiértékeli a HTTP-fejléc szűrőit, miután maga a szabály, és mindkét feltételnek igaznak kell lennie ahhoz, hogy a szabály vonatkozzon.
+
+### <a name="multi-source-rules"></a>Több forrásra vonatkozó szabályok
+
+A többforrásos szabályok lehetővé teszik legfeljebb 8 IP-tartomány vagy 8 szolgáltatási címke egyesítését egyetlen szabályban. Ezt akkor érdemes használni, ha több mint 512 IP-tartománnyal rendelkezik, vagy olyan logikai szabályokat szeretne létrehozni, amelyekben több IP-tartomány van összekapcsolva egyetlen HTTP-fejléc-szűrővel.
+
+A többforrásos szabályok definiálása ugyanúgy történik, mint az egyforrású szabályok meghatározása, de az egyes tartományok vesszővel elválasztva.
+
+PowerShell-példa:
+
+  ```azurepowershell-interactive
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Multi-source rule" -IpAddress "192.168.1.0/24,192.168.10.0/24,192.168.100.0/24" `
+    -Priority 100 -Action Allow
+  ```
+
 ### <a name="block-a-single-ip-address"></a>Egyetlen IP-cím blokkolása
 
 Az első hozzáférés-korlátozási szabály hozzáadásakor a szolgáltatás hozzáad egy explicit *megtagadási* szabályt, amelynek prioritása 2147483647. A gyakorlatban az összes szabály explicit *megtagadása* a végső szabály, amely letiltja az *engedélyezési* szabályok által explicit módon nem engedélyezett IP-címekhez való hozzáférést.
@@ -151,17 +175,20 @@ Az alkalmazáshoz való hozzáférés szabályozása mellett korlátozhatja az a
 
 :::image type="content" source="media/app-service-ip-restrictions/access-restrictions-scm-browse.png" alt-text="Képernyőkép a Azure Portal hozzáférési korlátozások oldaláról, amely azt mutatja, hogy az SCM-helyhez vagy az alkalmazáshoz nincs hozzáférés-korlátozás beállítva.":::
 
-### <a name="restrict-access-to-a-specific-azure-front-door-instance-preview"></a>Egy adott Azure-beli előtérben lévő példány hozzáférésének korlátozása (előzetes verzió)
-Az Azure bejárati ajtóról az alkalmazásba érkező forgalom a AzureFrontDoor. backend szolgáltatás címkéjében meghatározott IP-címtartományok ismert készletével származik. A szolgáltatási címke korlátozási szabályának használatával korlátozhatja a forgalmat, hogy csak az Azure bejárati ajtóból származzon. Annak biztosítása érdekében, hogy a forgalom csak az adott példányból származzon, további szűrést kell végeznie a beérkező kéréseket az Azure-beli bejárati ajtó által küldött egyedi HTTP-fejléc alapján. Az előzetes verzió ideje alatt ezt a PowerShell vagy a REST/ARM segítségével érheti el. 
+### <a name="restrict-access-to-a-specific-azure-front-door-instance"></a>Egy adott Azure-beli előtérben lévő példány hozzáférésének korlátozása
+Az Azure bejárati ajtóról az alkalmazásba érkező forgalom a AzureFrontDoor. backend szolgáltatás címkéjében meghatározott IP-címtartományok ismert készletével származik. A szolgáltatási címke korlátozási szabályának használatával korlátozhatja a forgalmat, hogy csak az Azure bejárati ajtóból származzon. Annak biztosítása érdekében, hogy a forgalom csak az adott példányból származzon, további szűrést kell végeznie a beérkező kéréseket az Azure-beli bejárati ajtó által küldött egyedi HTTP-fejléc alapján.
 
-* PowerShell-példa (a bejárati ajtó azonosítója a Azure Portalban található):
+:::image type="content" source="media/app-service-ip-restrictions/access-restrictions-frontdoor.png" alt-text="Képernyőkép a Azure Portal &quot;hozzáférési korlátozások&quot; oldaláról, amely bemutatja, hogyan adható hozzá az Azure-beli elülső ajtó korlátozása.":::
 
-   ```azurepowershell-interactive
-    $frontdoorId = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
-      -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
-      -HttpHeader @{'x-azure-fdid' = $frontdoorId}
-    ```
+PowerShell-példa:
+
+  ```azurepowershell-interactive
+  $afd = Get-AzFrontDoor -Name "MyFrontDoorInstanceName"
+  Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName" `
+    -Name "Front Door example rule" -Priority 100 -Action Allow -ServiceTag AzureFrontDoor.Backend `
+    -HttpHeader @{'x-azure-fdid' = $afd.FrontDoorId}
+  ```
+
 ## <a name="manage-access-restriction-rules-programmatically"></a>Hozzáférés-korlátozási szabályok programozott kezelése
 
 A következő módszerek egyikével adhat hozzáférési korlátozásokat programozott módon: 
@@ -181,7 +208,7 @@ A következő módszerek egyikével adhat hozzáférési korlátozásokat progra
       -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
   ```
    > [!NOTE]
-   > A szolgáltatási címkék, a HTTP-fejlécek vagy a többforrásos szabályok használata legalább 5.1.0-verziót igényel. A telepített modul verziójának ellenőrzéséhez a: **Get-InstalledModule-Name** az
+   > A szolgáltatási címkék, a HTTP-fejlécek vagy a többforrásos szabályok használata legalább 5.7.0-verziót igényel. A telepített modul verziójának ellenőrzéséhez a: **Get-InstalledModule-Name** az
 
 Az értékeket manuálisan is megadhatja a következők valamelyikével:
 

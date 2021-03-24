@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941377"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871605"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Oktatóanyag: lekérdezés Apache Hive ODBC-vel és PowerShell-lel
 
@@ -42,7 +42,7 @@ A következő lépések bemutatják, hogyan hozhat létre Apache Hive ODBC-adatf
 
 1. A Windowsban navigáljon a  >  **Windows felügyeleti eszközök**  >  **ODBC-adatforrások (32 bites)/(64 bites)** elindításához.  Megnyílik egy **ODBC adatforrás-rendszergazda** ablak.
 
-    ![OBDC-adatforrás rendszergazdája](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ADATFORRÁS konfigurálása az ODBC-adatforrás rendszergazdájával")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="OBDC-adatforrás rendszergazdája" border="true":::
 
 1. A **felhasználói DSN** lapon válassza a **Hozzáadás** lehetőséget az **új adatforrás létrehozása** ablak megnyitásához.
 
@@ -68,7 +68,7 @@ A következő lépések bemutatják, hogyan hozhat létre Apache Hive ODBC-adatf
    |  Beolvasott sorok száma blokkban |Nagy számú rekord beolvasása esetén a paraméter finomhangolása az optimális teljesítmény biztosítása érdekében szükséges lehet. |
    |  Alapértelmezett karakterlánc-oszlop hossza, Bináris oszlop hossza, decimális oszlop mérete |Az adattípus hossza és pontossága befolyásolhatja az adatvisszaadás módját. A pontosság és a csonkítás elvesztése miatt helytelen adatokat ad vissza. |
 
-    ![Speciális DSN-konfigurációs beállítások](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Speciális DSN-konfigurációs beállítások")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="Speciális DSN-konfigurációs beállítások" border="true":::
 
 1. Válassza a **teszt** lehetőséget az adatforrás teszteléséhez. Ha az adatforrás megfelelően van konfigurálva, a teszt eredménye a **sikert** mutatja.  
 

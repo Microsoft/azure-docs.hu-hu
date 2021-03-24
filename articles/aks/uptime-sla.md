@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: fae95e6f3a73d7539f81e1486c4ad021f181aa11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 69a4955f28bbd42cd7bf5651bd057412e15303de
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176331"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952915"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -37,9 +37,6 @@ A rendelkezésre állási SLA egy fizetős szolgáltatás, és fürtön engedél
 * Az [Azure CLI](/cli/azure/install-azure-cli) 2.8.0 vagy újabb verziójának telepítése
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Új fürt létrehozása a rendelkezésre állási SLA-val
-
-> [!NOTE]
-> Jelenleg, ha engedélyezi a rendelkezésre állási SLA-t, nincs lehetőség a fürtből való eltávolítására.
 
 Ha a rendelkezésre állási SLA-val rendelkező új fürtöt szeretne létrehozni, használja az Azure CLI-t.
 
@@ -106,6 +103,15 @@ A [`az aks update`][az-aks-update] parancs használatával frissítse a meglév�
     "tier": "Paid"
   },
   ```
+
+## <a name="opt-out-of-uptime-sla"></a>A rendelkezésre állási SLA lemondása
+
+A fürt frissítésével az ingyenes szintre válthat, és letilthatja a rendelkezésre állási SLA-t.
+
+```azurecli-interactive
+# Update an existing cluster to opt out of Uptime SLA
+ az aks update --resource-group myResourceGroup --name myAKSCluster --no-uptime-sla
+ ```
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 

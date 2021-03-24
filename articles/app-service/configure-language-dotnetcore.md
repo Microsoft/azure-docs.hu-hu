@@ -6,12 +6,12 @@ ms.custom: devx-track-csharp, devx-track-azurecli
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1223ff5c56d3c7d58b324d2099980bc0b5408125
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e4351529fb7b6a66f554182a195bc26f79c0e2b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97655968"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889484"
 ---
 # <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>ASP.NET Core alkalmazás konfigurálása Azure App Servicehoz
 
@@ -125,7 +125,7 @@ namespace SomeNamespace
 }
 ```
 
-Ha például a App Service és a *appsettings.js* megegyező nevű Alkalmazásbeállítás van konfigurálva, akkor az App Service érték elsőbbséget élvez az *appsettings.js* értéknél. A helyi *appsettings.json* Value lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás futtatását a termékben az éles beállításokkal. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
+Ha például a App Service és a *appsettings.js* megegyező nevű Alkalmazásbeállítás van konfigurálva, akkor az App Service érték elsőbbséget élvez az *appsettings.js* értéknél. Az érték helyi *appsettings.js* lehetővé teszi az alkalmazás helyi hibakeresését, de a app Service érték lehetővé teszi az alkalmazás éles környezetben való futtatását. A kapcsolatok karakterláncai ugyanúgy működnek. Így megtarthatja az alkalmazási titkokat a Code repositoryn kívül, és a kód módosítása nélkül is elérheti a megfelelő értékeket.
 
 > [!NOTE]
 > Figyelje meg, hogy a *appsettings.json* lévő [hierarchikus konfigurációs adatai](/aspnet/core/fundamentals/configuration/#hierarchical-configuration-data) a `:` .net Core szabványnak megfelelő elválasztóval érhetők el. A App Service adott hierarchikus konfigurációs beállításainak felülbírálásához állítsa az Alkalmazásbeállítások nevét ugyanazzal a tagolt formátummal a kulcsban. a következő példát futtathatja a [Cloud Shellban](https://shell.azure.com):

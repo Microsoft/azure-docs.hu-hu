@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 98d18044693bc6f4d23e04e9403e71686df39451
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945821"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872200"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
 
@@ -32,13 +32,13 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
-    ![Új fürt létrehozása a Azure Portalban](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Új fürt létrehozása a Azure Portalban")
+    :::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png" alt-text="Új fürt létrehozása a Azure Portalban":::
 
 1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
 ## <a name="basics"></a>Alapvető beállítások
 
-![HDInsight létrehozása a fürt alapjaival](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása a Azure Portalban")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png" alt-text="HDInsight létrehozása a fürt alapjaival":::
 
 Az **alapok** lapon adja meg a következő információkat:
 
@@ -63,7 +63,7 @@ Válassza a **Tovább: Storage >>** a következő lapra való továbblépés el�
 > [!WARNING] 
 > Június 15-én kezdődően a 2020-es ügyfelek nem fognak tudni új szolgáltatásnevet létrehozni a HDInsight használatával. Lásd: [egyszerű szolgáltatásnév és tanúsítványok létrehozása](../active-directory/develop/howto-create-service-principal-portal.md) Azure Active Directory használatával.
 
-![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Új fürt létrehozása a Azure Portal-Storage-ban")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png" alt-text="HDInsight létrehozása":::
 
 ### <a name="primary-storage"></a>Elsődleges tárterület
 
@@ -90,7 +90,7 @@ Válassza a **Tovább: biztonság és hálózatkezelés >>** a következő lapra
 
 ## <a name="security--networking"></a>Biztonság és hálózatkezelés
 
-![HDInsight-fürt biztonsági hálózatkezelésének létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png "HDInsight-fürt biztonsági hálózatkezelésének létrehozása")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-security-networking.png" alt-text="HDInsight-fürt biztonsági hálózatkezelésének létrehozása":::
 
 A **Biztonság és hálózat** lapon adja meg a következő információkat:
 
@@ -107,7 +107,7 @@ Válassza a **Tovább: Configuration + díjszabás >>** a következő lapra val�
 
 ## <a name="configuration--pricing"></a>Konfiguráció és díjszabás
 
-![HDInsight létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png "Konfiguráció és díjszabás lap")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-configuration.png" alt-text="HDInsight létrehozása":::
 
 A **konfiguráció + díjszabás** lapon adja meg a következő információkat:
 
@@ -123,7 +123,7 @@ Válassza a **felülvizsgálat + >>létrehozása** elemet a fürtkonfiguráció 
 
 ## <a name="review--create"></a>Ellenőrzés és létrehozás
 
-![HDInsight-fürt összesítésének létrehozása](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Fürtcsomópontok számának meghatározása")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png" alt-text="HDInsight-fürt összesítésének létrehozása":::
 
 Tekintse át a beállításokat. A fürt létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -133,7 +133,7 @@ Némi időt vesz igénybe a fürt létrehozása, általában körülbelül 20 pe
 
 A létrehozási folyamat befejeződése után válassza az **Ugrás az erőforráshoz** lehetőséget az **üzembe helyezés sikeres** értesítése elemnél. A fürt ablak a következő információkat tartalmazza.
 
-![A HDI Azure Portal-fürt áttekintése](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Fürt tulajdonságai")
+:::image type="content" source="./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png" alt-text="A HDI Azure Portal-fürt áttekintése":::
 
 Az ablakban az alábbi ikonokat kell megmagyarázni:
 

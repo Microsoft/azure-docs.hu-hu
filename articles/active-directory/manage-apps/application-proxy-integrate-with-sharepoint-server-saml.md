@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cadf5b7d92e26e561e570f824295e69ca421e16
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 34aaafcd03e737b1e59529f8001e0c008bd39b70
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101644517"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888872"
 ---
 # <a name="integrate-with-sharepoint-saml"></a>Integrálás a SharePoint (SAML) szolgáltatással
 
@@ -68,8 +68,8 @@ Ebben a lépésben létrehoz egy alkalmazást az Azure AD-bérlőben, amely alka
 
  1. Hozzon létre egy új Azure AD Application Proxy alkalmazást egyéni tartománnyal. Részletes útmutatásért lásd: [Egyéni tartományok az Azure ad Application proxyban](./application-proxy-configure-custom-domain.md).
 
-    - Belső URL-cím: https://portal.contoso.com/
-    - Külső URL-cím: https://portal.contoso.com/
+    - Belső URL-cím: " https://portal.contoso.com/ "
+    - Külső URL-cím: " https://portal.contoso.com/ "
     - Előzetes hitelesítés: Azure Active Directory
     - URL-címek lefordítása a fejlécekben: nem
     - URL-címek fordítása az alkalmazás törzsében: nem
@@ -84,4 +84,4 @@ Ebben a lépésben létrehoz egy alkalmazást az Azure AD-bérlőben, amely alka
  
 ## <a name="step-3-test-your-application"></a>3. lépés: az alkalmazás tesztelése
 
-Ha külső hálózaton található számítógépről használ böngészőt, navigáljon a https://portal.contoso.com/) közzétételi lépés során konfigurált URL-címre. Ellenőrizze, hogy be tud-e jelentkezni a beállított tesztelési fiókkal.
+Ha külső hálózaton található számítógépről használ böngészőt, navigáljon a közzétételi lépés során konfigurált hivatkozáshoz. Ellenőrizze, hogy be tud-e jelentkezni a beállított tesztelési fiókkal.

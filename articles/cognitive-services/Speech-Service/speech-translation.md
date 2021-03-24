@@ -12,22 +12,18 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: beszéd fordítása
-ms.openlocfilehash: 36c2943d7cd5ce2c5c7c4a8501dc0033aa8c9cbc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95015205"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954960"
 ---
 # <a name="what-is-speech-translation"></a>Mi az a beszédfordítás?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Ebben az áttekintésben megismerheti a beszédfelismerési szolgáltatás előnyeit és képességeit, ami lehetővé teszi a valós idejű, többnyelvű beszédfelismerési és beszéd-szöveges fordítást a hangadatfolyamok számára. A Speech SDK-val az alkalmazások, eszközök és eszközök hozzáférhetnek a forrás-átírásokhoz és a fordítási kimenetekhez a megadott hanghoz. Az ideiglenes átírási és fordítási eredményeket a rendszer beszéd észlelésekor adja vissza, a végső eredmények pedig szintetizált beszédbe alakíthatók.
-
-A Microsoft fordítói motorját két különböző módszer látja el: statisztikai gépi fordítás (SMT) és neurális gépi fordítás (NMT). A SMT speciális statisztikai elemzést használ a lehetséges fordítások megbecslésére néhány szó kontextusában. A NMT-alapú neurális hálózatokkal pontosabb és természetesebb fordításokat biztosítanak a szavak fordításához a mondatok teljes kontextusával.
-
-A Microsoft jelenleg a NMT használja a legnépszerűbb nyelvekre való fordításhoz. A [beszéd-beszéd fordításhoz elérhető összes nyelv](language-support.md#speech-translation) a NMT. A beszédfelismerési és a szöveges fordítás a nyelvi pároktól függően SMT-t vagy NMT-t is használhat. Ha a NMT támogatja a célként megadott nyelvet, a teljes fordítás NMT-alapú. Ha a NMT nem támogatja a célként megadott nyelvet, a fordítás a NMT és az SMT hibrid változata, amely az angol nyelvet használja a két nyelv közötti "pivot" kifejezéssel.
+Ebben az áttekintésben megismerheti a beszédfelismerési szolgáltatás előnyeit és képességeit, ami lehetővé teszi a valós idejű, [többnyelvű beszédfelismerési](language-support.md#speech-translation) és beszéd-szöveges fordítást a hangadatfolyamok számára. A Speech SDK-val az alkalmazások, eszközök és eszközök hozzáférhetnek a forrás-átírásokhoz és a fordítási kimenetekhez a megadott hanghoz. Az ideiglenes átírási és fordítási eredményeket a rendszer beszéd észlelésekor adja vissza, a végső eredmények pedig szintetizált beszédbe alakíthatók.
 
 ## <a name="core-features"></a>Alapvető funkciók
 

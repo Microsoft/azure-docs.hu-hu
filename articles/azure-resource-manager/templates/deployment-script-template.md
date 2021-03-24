@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 03/23/2021
 ms.author: jgao
-ms.openlocfilehash: 130deea4e5998d696065df4854a47bf7ffd1183c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9f4c21a4b7e58c4eed3a62ea844eb11ccf4ecb49
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594242"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889382"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Üzembe helyezési parancsfájlok használata ARM-sablonokban
 
@@ -131,6 +131,9 @@ A következő JSON egy példa. További információ: a legújabb [sablon sémá
 > [!NOTE]
 > A példa demonstrációs célokat szolgál. A tulajdonságok `scriptContent` és a `primaryScriptUri` sablonban nem használhatók.
 
+> [!NOTE]
+> A _scriptContent_ több sorral rendelkező parancsfájlt mutat be.  A Azure Portal és az Azure DevOps-folyamat nem tudja elemezni az üzembe helyezési parancsfájlt több sorral. A PowerShell-parancsokat (pontosvesszővel vagy _\\ r \\ n_ vagy _\\ n_ használatával) összekapcsolhatja egy sorba, vagy használhatja a `primaryScriptUri` tulajdonságot egy külső parancsfájllal. Számos ingyenes JSON-karakterlánc Escape/unescape-eszköz érhető el. Például: [https://www.freeformatter.com/json-escape.html](https://www.freeformatter.com/json-escape.html).
+
 Tulajdonság értékének részletei:
 
 - `identity`: Az üzembe helyezési parancsfájl API 2020-10-01-es vagy újabb verziója esetén a felhasználó által hozzárendelt felügyelt identitás nem kötelező, kivéve, ha a parancsfájlban nem kell végrehajtania az Azure-specifikus műveleteket.  Az API 2019-10-01-es verziójának előzetes verziója esetén felügyelt identitásra van szükség, mivel a telepítési parancsfájl-szolgáltatás azt használja a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
@@ -159,9 +162,6 @@ Tulajdonság értékének részletei:
 
 - `environmentVariables`: Adja meg azokat a környezeti változókat, amelyeket át kell adni a parancsfájlnak. További információ: [telepítési parancsfájlok fejlesztése](#develop-deployment-scripts).
 - `scriptContent`: Adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja `primaryScriptUri` helyette a parancsot. Példák: [beágyazott parancsfájl használata](#use-inline-scripts) és [külső parancsfájl használata](#use-external-scripts).
-  > [!NOTE]
-  > A Azure Portal nem tudja elemezni az üzembe helyezési parancsfájlt több sorral. Ha a Azure Portal segítségével szeretne üzembe helyezni egy sablont a telepítési parancsfájllal, a PowerShell-parancsokat pontosvesszővel kell elosztani egy sorba, vagy a `primaryScriptUri` tulajdonságot külső parancsfájllal is használhatja.
-
 - `primaryScriptUri`: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával. További információ: [külső parancsfájlok használata](#use-external-scripts).
 - `supportingScriptUris`: Adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a vagy a által meghívott fájlokat `scriptContent` `primaryScriptUri` . További információ: [külső parancsfájlok használata](#use-external-scripts).
 - `timeout`: Adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
@@ -566,7 +566,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Description |
+| Hibakód | Leírás |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem lehet törölni a nem terminál állapotú központi telepítési parancsfájl erőforrását, és a végrehajtás nem haladja meg az 1 órát. Vagy nem lehet újból futtatni ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl szövegtörzse is egy időben. |

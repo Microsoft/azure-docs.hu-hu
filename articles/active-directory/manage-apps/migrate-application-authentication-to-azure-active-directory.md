@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db695b55fbef16cb67dce6dc2d3c81ad177c9db6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 629f71c429d6af8583cb15b9ebc96efe6867f78b
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601797"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888889"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Alkalmazás-hitelesítés migrálása Azure Active Directoryre
 
@@ -489,7 +489,7 @@ Az áttelepítés után dönthet úgy, hogy elküldi a sikeres üzembe helyezés
 
 Az áttelepítés folyamata során előfordulhat, hogy az alkalmazás már rendelkezik egy, a normál üzembe helyezés során használt tesztkörnyezetben. Továbbra is használhatja ezt a környezetet az áttelepítési teszteléshez. Ha a tesztkörnyezet jelenleg nem érhető el, előfordulhat, hogy az alkalmazás architektúrája alapján Azure App Service vagy az Azure Virtual Machines használatával lehet beállítani egyet. Dönthet úgy, hogy külön Azure AD-bérlőt állít be, amelyet az alkalmazás konfigurációjának fejlesztésekor használ. Ez a bérlő tiszta állapotba kerül, és nem lesz konfigurálva a rendszerekkel való szinkronizálásra.
 
-Az alkalmazások teszteléséhez jelentkezzen be egy teszt felhasználóval, és győződjön meg arról, hogy az összes funkció ugyanaz, mint az áttelepítés előtt. Ha a tesztelés során azt állapítja meg, hogy a felhasználóknak frissíteniük kell az [MFA](/active-directory/authentication/howto-mfa-userstates) -vagy [SSPR](../authentication/tutorial-enable-sspr.md)-beállításokat, vagy ha ezt a funkciót az áttelepítés során adja hozzá, ne felejtse el hozzáadni a végfelhasználói kommunikációs tervhez. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
+Az alkalmazások teszteléséhez jelentkezzen be egy teszt felhasználóval, és győződjön meg arról, hogy az összes funkció ugyanaz, mint az áttelepítés előtt. Ha a tesztelés során azt állapítja meg, hogy a felhasználóknak frissíteniük kell az [MFA](/azure/active-directory/authentication/howto-mfa-userstates) -vagy [SSPR](../authentication/tutorial-enable-sspr.md)-beállításokat, vagy ha ezt a funkciót az áttelepítés során adja hozzá, ne felejtse el hozzáadni a végfelhasználói kommunikációs tervhez. Lásd: [MFA](https://aka.ms/mfatemplates) és [SSPR](https://aka.ms/ssprtemplates) végfelhasználói kommunikációs sablonok.
 
 Miután áttelepítette az alkalmazásokat, lépjen a [Azure Portal](https://aad.portal.azure.com/) annak teszteléséhez, hogy sikeres volt-e az áttelepítés. Kövesse az alábbi utasításokat:
 
@@ -573,7 +573,7 @@ A felhasználókat az alkalmazások felderítésére vonatkozó útmutatóban ta
 
 A felhasználók az **Intune által felügyelt böngészőt** tölthetik le:
 
-- **Android-eszközök** esetén a [Google Play áruházból](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)
+- **Android-eszközök** esetén a [Google Play áruházból](/azure/active-directory/authentication/howto-mfa-userstates)
 
 - **Apple-eszközök** esetén az [Apple App Store áruházból](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) , vagy letöltheti az iOS rendszerhez készült [My apps Mobile alkalmazást](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)
 

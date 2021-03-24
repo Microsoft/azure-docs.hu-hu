@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 03/22/2021
-ms.openlocfilehash: ede812dc2ce063ec38423db73f4b269a7618e00c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799615"
+ms.locfileid: "104889450"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center Free vs Azure Defender engedélyezve
 Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
@@ -48,7 +48,8 @@ Security Center két üzemmódban érhető el:
 - [Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [A teljes munkaterülethez vagy a gépenként kizárólag a 500 MB-os ingyenes adatfeldolgozást számítjuk ki?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
-- [Milyen adattípusokat tartalmaz a 500 – MB szabad adatkorlát?](#what-data-types-are-included-in-the-500-mb-free-data-limit)
+- [Milyen adattípusokat tartalmaz a 500 MB-os napi adatmennyiség?](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat Security Center?
 Az Azure-előfizetések több rendszergazdai jogosultsággal rendelkezhetnek a díjszabási beállítások módosításához. Ha szeretné megtudni, hogy melyik felhasználó módosította a változást, használja az Azure-tevékenység naplóját.
@@ -116,7 +117,7 @@ Napi 500 MB-nyi ingyenes adatfeldolgozást biztosít minden, a munkaterülethez 
 
 Ez az adatmennyiség az összes csomópont napi átlaga. Így még akkor is, ha egyes gépek 100-MB-ot küldenek, mások pedig 800-MB-ot küldenek, ha az összeg nem lépi túl a **[gépek számát] x 500-MB** szabad korlátot, nem számítunk fel külön díjat.
 
-### <a name="what-data-types-are-included-in-the-500-mb-free-data-limit"></a>Milyen adattípusokat tartalmaz a 500 – MB szabad adatkorlát?
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>Milyen adattípusokat tartalmaz a 500 MB-os napi adatmennyiség?
 
 Security Center számlázása szorosan kötődik a Log Analytics számlázásához. A Security Center a [biztonsági adattípusok](/azure/azure-monitor/reference/tables/tables-category.md#security)következő részhalmaza esetében 500 MB/csomópont/nap kiosztást biztosít:
 - WindowsEvent

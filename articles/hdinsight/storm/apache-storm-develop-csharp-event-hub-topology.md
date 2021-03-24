@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: ee483872535c58bde521cf0a751058fdc2fecd40
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929185"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871452"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (C#) használatával
 
@@ -126,7 +126,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
    | író |Küldés |
    | olvasó |Figyelés |
 
-    ![Képernyőfelvétel a hozzáférési házirendek megosztásáról ablak](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png" alt-text="Képernyőfelvétel a hozzáférési házirendek megosztásáról ablak" border="true":::
 
 2. Válassza ki az **olvasó** és az **író** szabályzatot. Másolja és mentse az elsődleges kulcs értékét mindkét házirendhez, mivel ezeket az értékeket később használják.
 
@@ -168,15 +168,15 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 1. **Megoldáskezelő** kattintson a jobb gombbal a **EventHubReader** projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
-    ![Képernyőkép a Megoldáskezelőről, a Beküldés a Storm on HDInsight kiemelve](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png" alt-text="Képernyőkép a Megoldáskezelőről, a Beküldés a Storm on HDInsight kiemelve" border="true":::
 
 2. A **topológia küldése** párbeszédpanelen válassza ki a **Storm-fürtöt**. Bontsa ki a **további konfigurációk** elemet, válassza a **Java-fájlelérési utak** lehetőséget, majd válassza a **...** lehetőséget, majd válassza ki azt a KÖNYVTÁRAT, amely a korábban letöltött jar-fájlt tartalmazza. Végül kattintson a **Submit (elküldés**) gombra.
 
-    ![A topológia elküldése párbeszédpanel képernyőképe](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png" alt-text="A topológia elküldése párbeszédpanel képernyőképe" border="true":::
 
 3. A topológia elküldését követően megjelenik a **Storm-topológiák megjelenítője** . A topológiával kapcsolatos információk megtekintéséhez válassza ki a **EventHubReader** topológiát a bal oldali ablaktáblán.
 
-    ![Képernyőkép a Storm-topológiák megjelenítőről](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
+    :::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png" alt-text="Képernyőkép a Storm-topológiák megjelenítőről" border="true":::
 
 4. **Megoldáskezelő** kattintson a jobb gombbal a **EventHubWriter** projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
@@ -200,7 +200,7 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 A topológiák leállításához jelölje ki az egyes topológiákat a **Storm topológia-megjelenítőben**, majd kattintson a **kill (Kill**) elemre.
 
-![Képernyőkép a Storm topológia-megjelenítőről, a kill gomb kiemelésével](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
+:::image type="content" source="./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png" alt-text="Képernyőkép a Storm topológia-megjelenítőről, a kill gomb kiemelésével" border="true":::
 
 ## <a name="delete-your-cluster"></a>Fürt törlése
 

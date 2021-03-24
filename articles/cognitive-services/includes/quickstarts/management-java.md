@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/01/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 555a6410418232ff164a441dbc90eb10236b9f36
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4c0d4dd1a834e42a75da5199b7aaed0e123f8e63
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947690"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879678"
 ---
 [Dokumentáció](/java/api/com.microsoft.azure.management.cognitiveservices)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
@@ -124,7 +124,9 @@ A következő metódus törli a megadott erőforrást az adott erőforráscsopor
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Management SDK dokumentációja](/java/api/com.microsoft.azure.management.cognitiveservices)
-* [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Kérelmek hitelesítése az Azure Cognitive Services](../../authentication.md)
-* [Új erőforrás létrehozása az Azure Portal használatával](../../cognitive-services-apis-create-account.md)
+* Lásd: **[kérelmek hitelesítése az Azure-Cognitive Services](../../authentication.md)** a Cognitive Services biztonságos kezeléséhez.
+* Ismerje meg, **[Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)** a különböző kategóriák listájának lekéréséhez Cognitive Serviceson belül.
+* A Cognitive Services által támogatott természetes nyelvek listájának megjelenítéséhez tekintse meg a **[természetes nyelvi támogatás](../../language-support.md)** című témakört.
+* Lásd: a **[Cognitive Services használata tárolóként](../../cognitive-services-container-support.md)** a Cognitive Services helyszíni használatának megismeréséhez.
+* A Cognitive Services használatának költségeinek **[kiszámításához tekintse meg a Cognitive Services költségeinek tervezése és kezelése](../../plan-manage-costs.md)** című témakört.
+* A Management SDK-val kapcsolatos további részletekért tekintse meg az **[Azure Management SDK dokumentációját](/java/api/com.microsoft.azure.management.cognitiveservices)** .

@@ -7,12 +7,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 03/11/2021
-ms.openlocfilehash: deaa414a17240e8cdbdad7f4ba9b3e596b4f191f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: ae8b1eab81e3c898c25a613f552a49c8de64f49d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780327"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889127"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Egy folyamatot futtató eseményindító létrehozása tárolási eseményre válaszként
 
@@ -43,10 +43,10 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-esem�
 
     :::image type="content" source="media/how-to-create-event-trigger/event-based-trigger-image1.png" alt-text="Képernyőkép a szerző lapról új tárolási esemény eseményindítójának létrehozásához Data Factory felhasználói felületen.":::
 
-1. Válassza ki a Storage-fiókját az Azure-előfizetés legördülő menüből, vagy manuálisan használja a Storage-fiókja erőforrás-AZONOSÍTÓját. Válassza ki, hogy melyik tárolón történjen az események betöltése. A tároló kiválasztása nem kötelező, de ne felhagyható, hogy az összes tároló kijelölése nagy számú eseményt eredményezhet.
+1. Válassza ki a Storage-fiókját az Azure-előfizetés legördülő menüből, vagy manuálisan használja a Storage-fiókja erőforrás-AZONOSÍTÓját. Válassza ki, hogy melyik tárolón történjen az események betöltése. A tároló kiválasztására van szükség, de ne felhagyni, hogy az összes tároló kijelölése nagy számú eseményt eredményezhet.
 
    > [!NOTE]
-   > A tárolási esemény eseményindítója jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Egy Azure Event Grid korlátozás miatt Azure Data Factory csak legfeljebb 500 tárolási eseményt támogat a Storage-fiókokban.
+   > A tárolási esemény eseményindítója jelenleg csak a Azure Data Lake Storage Gen2 és az általános célú 2-es verziójú Storage-fiókokat támogatja. Egy Azure Event Grid korlátozás miatt Azure Data Factory csak legfeljebb 500 tárolási eseményt támogat a Storage-fiókokban. Ha eléri a korlátot, vegye fel a kapcsolatot az ügyfélszolgálattal, és növelje a korlátot Event Grid csapat által kiértékelt értékelés alapján. 
 
    > [!NOTE]
    > Új vagy meglévő tárolási esemény eseményindítójának létrehozásához vagy módosításához a Data Factoryba való bejelentkezéshez használt Azure-fióknak és a tárolási esemény eseményindítójának közzétételéhez megfelelő szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedéllyel kell rendelkeznie a Storage-fiókhoz. Nincs szükség további engedélyre: a Azure Data Factory tartozó szolgáltatásnév _nem_ igényel külön engedélyt a Storage-fiókhoz vagy a Event Gridhoz. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [szerepköralapú hozzáférés-vezérlés](#role-based-access-control) szakasz.
@@ -54,7 +54,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre tárolási esemény-esem�
 1. A **blob** elérési útja és a **blob elérési** útja a tulajdonságok segítségével megadhatja azokat a tárolókat, mappákat és blob-neveket, amelyekhez eseményeket szeretne kapni. A tárolási esemény eseményindítójának legalább egy ilyen tulajdonságot meg kell határoznia. Különböző mintákat használhat a **blob elérési útjához** , a **blob elérési útja** pedig tulajdonságok használatával végződik, ahogy az ebben a cikkben szereplő példákban is látható.
 
     * **A blob elérési útja a következőket veszi kezdettel:** A blob elérési útnak a mappa elérési útjával kell kezdődnie. Az érvényes értékek `2018/` a következők: és `2018/april/shoes.csv` . Ez a mező nem választható ki, ha nincs kiválasztva tároló.
-    * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek `shoes.csv` a következők: és `.csv` . A tároló és a mappa neve nem kötelező, de ha meg van adva, egy szegmensnek kell elválasztani őket `/blobs/` . Egy "Orders" nevű tároló például a következő értékkel rendelkezhet: `/orders/blobs/2018/april/shoes.csv` . Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például egy `april/shoes.csv` eseményt indít el bármely `shoes.csv` , a mappában található "April" nevű fájlon bármely tárolóban.
+    * **A blob elérési útja az alábbiakkal végződik:** A blob elérési útjának fájlnevet vagy kiterjesztést kell végződnie. Az érvényes értékek `shoes.csv` a következők: és `.csv` . A tároló-és mappanevek, ha meg vannak adva, egy szegmensnek kell elválasztani őket `/blobs/` . Egy "Orders" nevű tároló például a következő értékkel rendelkezhet: `/orders/blobs/2018/april/shoes.csv` . Ha bármilyen tárolóban szeretne megadni egy mappát, hagyja ki a kezdő "/" karaktert. Például egy `april/shoes.csv` eseményt indít el bármely `shoes.csv` , a mappában található "April" nevű fájlon bármely tárolóban.
     * Vegye figyelembe, hogy a blob elérési útja a és a **végződéssel** **kezdődik** , és az egyetlen, a tárolási esemény eseményindítójában megengedett mintázat. Az trigger típusa nem támogatja más típusú helyettesítő karakterek használatát.
 
 1. Válassza ki, hogy az eseményindító válaszol-e a **blob által létrehozott** eseményre, a **blob törölt** eseményére vagy mindkettőre. A megadott tárolási helyen minden esemény elindítja az eseményindítóhoz társított Data Factory folyamatokat.
