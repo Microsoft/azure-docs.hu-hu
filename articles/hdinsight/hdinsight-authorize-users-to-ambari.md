@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 0b6d4dacf43d80f371a2a4d286af1972198c3be3
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 44f98692131070940514498b6bf648936bea0806
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942709"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872234"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Az Apache Ambari Views használatának engedélyezése felhasználók számára
 
@@ -27,7 +27,7 @@ Ha még nem tette meg, kövesse az [alábbi utasításokat](./domain-joined/apac
 
 Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)található **Ambari-kezelés lap** megnyitásához keresse meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` . Adja meg a fürt létrehozásakor megadott Fürtfelügyelő-felhasználónevet és-jelszót. Ezután a Ambari-irányítópulton válassza a **felügyelet Ambari** alatt a **felügyeleti** menü alatt:
 
-![Apache Ambari-irányítópult kezelése](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png" alt-text="Apache Ambari-irányítópult kezelése":::
 
 ## <a name="add-users"></a>Felhasználók hozzáadása
 
@@ -35,7 +35,7 @@ Az [Apache Ambari webes felületén](hdinsight-hadoop-manage-ambari.md)találhat
 
 1. A felügyelet lapon válassza a **felhasználók** lehetőséget.
 
-    ![Apache Ambari-kezelési oldal felhasználói](./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/apache-ambari-management-page-users.png" alt-text="Apache Ambari-kezelési oldal felhasználói":::
 
 1. Válassza a **+ helyi felhasználó létrehozása** lehetőséget.
 
@@ -168,36 +168,36 @@ A Ambari többek között a [Apache Hive](https://hive.apache.org/) és az [Apac
 
 1. A felügyelet lapon válassza ki a **nézetek** hivatkozást a bal oldali **nézetek** menüpont alatt.
 
-    ![Apache Ambari views – hivatkozások](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png" alt-text="Apache Ambari views – hivatkozások":::
 
 2. A nézetek lapon bontsa ki a **struktúra** sort. Létezik egy alapértelmezett struktúra nézet, amely akkor jön létre, amikor a kaptár szolgáltatás bekerül a fürtbe. Szükség szerint több kaptár-nézetet is létrehozhat. Válasszon kaptár nézetet:
 
-    ![HDInsight nézetek – Apache Hive nézet](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png" alt-text="HDInsight nézetek – Apache Hive nézet":::
 
 3. Görgessen a nézet oldalának aljára. Az *engedélyek* szakaszban két lehetőség közül választhat a tartományi felhasználók számára a nézetre vonatkozó engedélyek megadásához:
 
-**Engedély megadása a felhasználóknak** ![ Engedély megadása a felhasználóknak](./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png)
+Engedély megadása a **felhasználóknak** a :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/hdi-add-user-to-view.png" alt-text="felhasználók számára":::
 
-**Engedélyek megadása ezekhez a csoportokhoz** ![ Engedélyek megadása ezekhez a csoportokhoz](./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png)
+Engedélyek megadása **ezekhez** a csoportokhoz engedélyek :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/add-group-to-view-permission.png" alt-text="megadása ezekhez a csoportokhoz":::
 
 1. Felhasználó hozzáadásához kattintson a **felhasználó hozzáadása** gombra.
 
    * Kezdje el beírni a felhasználónevet, és látni fogja a korábban definiált nevek legördülő listáját.
 
-     ![Apache Ambari-felhasználó automatikus kiegészítése](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png" alt-text="Apache Ambari-felhasználó automatikus kiegészítése":::
 
    * Válassza ki vagy fejezze be a beírást, a felhasználónevet. Ha új felhasználóként szeretné felvenni ezt a felhasználónevet, kattintson az **új** gombra.
 
    * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet**.
 
-     ![Apache Ambari felhasználói engedélyek megadása](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png" alt-text="Apache Ambari felhasználói engedélyek megadása":::
 
 1. Csoport hozzáadásához kattintson a **Csoport hozzáadása** gombra.
 
    * Kezdje el beírni a csoport nevét. A meglévő csoportnév kiválasztásának vagy új csoport hozzáadásának folyamata megegyezik a felhasználók hozzáadásával.
    * A módosítások mentéséhez jelölje be a **kék jelölőnégyzetet**.
 
-     ![Apache Ambari-engedélyek megadása](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png" alt-text="Apache Ambari-engedélyek megadása":::
 
 A felhasználók közvetlenül a nézethez való hozzáadása akkor hasznos, ha engedélyeket szeretne rendelni egy felhasználóhoz a nézet használatához, de nem szeretné, hogy egy olyan csoport tagja legyen, amely további engedélyekkel rendelkezik. A felügyeleti terhelés csökkentése érdekében egyszerűbb lehet engedélyeket rendelni a csoportokhoz.
 
@@ -207,7 +207,7 @@ Az [Apache TEZ](https://tez.apache.org/) -példányok lehetővé teszik a felhas
 
 Ha felhasználókat és csoportokat szeretne hozzárendelni egy TEZ-példányhoz, bontsa ki a **TEZ** sort a nézetek lapon a korábban leírtak szerint.
 
-![HDInsight nézetek – Apache TEZ nézet](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png" alt-text="HDInsight nézetek – Apache TEZ nézet":::
 
 Felhasználók vagy csoportok hozzáadásához ismételje meg a 3-5. lépést az előző szakaszban.
 
@@ -223,11 +223,11 @@ A felhasználók és csoportok öt biztonsági szerepkörrel rendelkeznek, amely
 
 A szerepkörök kezeléséhez nyissa meg a **Ambari-kezelés lapot**, majd válassza ki a **szerepkörök** hivatkozást a *fürtök* menü bal oldali csoportjában.
 
-![Apache Ambari-szerepkörök menü hivatkozásai](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png" alt-text="Apache Ambari-szerepkörök menü hivatkozásai":::
 
 Az egyes szerepkörökhöz tartozó engedélyek listájának megjelenítéséhez kattintson a szerepkörök lap **szerepkörök** táblázat fejléce melletti kék kérdőjelre.
 
-![Apache Ambari-szerepkörök menü hivatkozásának engedélyei](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache Ambari-szerepkörök menü hivatkozásának engedélyei")
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png" alt-text="Apache Ambari-szerepkörök menü hivatkozásának engedélyei":::
 
 Ezen az oldalon két különböző nézet használható a felhasználók és csoportok szerepköreinek kezeléséhez: letiltás és Listázás.
 
@@ -235,7 +235,7 @@ Ezen az oldalon két különböző nézet használható a felhasználók és cso
 
 A blokk nézet a saját sorában jeleníti meg az egyes szerepköröket, és megadja a **szerepkörök hozzárendelését ezekhez a felhasználókhoz** , és **hozzárendeli a szerepköröket** az előzőekben leírtak szerint.
 
-![Apache Ambari-szerepkörök blokkolási nézete](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png" alt-text="Apache Ambari-szerepkörök blokkolási nézete":::
 
 ### <a name="list-view"></a>Listanézet
 
@@ -243,11 +243,11 @@ A listanézet gyors szerkesztési képességeket biztosít két kategóriában: 
 
 * A listanézet Users (felhasználók) kategóriája megjeleníti az összes felhasználó listáját, így a legördülő listában minden felhasználóhoz kiválaszthat egy szerepkört.
 
-    ![Apache Ambari-szerepkörök listája nézet – felhasználók](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png" alt-text="Apache Ambari-szerepkörök listája nézet – felhasználók":::
 
 * A listanézet csoportok kategóriája az összes csoportot és az egyes csoportokhoz rendelt szerepkört jeleníti meg. A példánkban a csoportok listájának szinkronizálása a fürt tartományi beállításainak **hozzáférés felhasználói csoport** tulajdonságában megadott Azure ad-csoportokból történik. Lásd: [HDInsight-fürt létrehozása az ESP-vel engedélyezve](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 
-    ![Apache Ambari-szerepkörök listája nézet – csoportok](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    :::image type="content" source="./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png" alt-text="Apache Ambari-szerepkörök listája nézet – csoportok":::
 
     A fenti képen a "hiveusers" csoport a *fürt felhasználói* szerepköréhez van rendelve. Ez egy írásvédett szerepkör, amely lehetővé teszi, hogy az adott csoport felhasználói megtekintsék a szolgáltatás konfigurációit és a fürt metrikáit.
 
@@ -255,13 +255,13 @@ A listanézet gyors szerkesztési képességeket biztosít két kategóriában: 
 
 Az Azure AD tartományi felhasználó "hiveuser1" engedélyeit hozzárendeljük a Kaptárhoz és a TEZ nézetekhez. Amikor elindítja a Ambari webes felhasználói felületét, és beírja a felhasználó tartományi hitelesítő adatait (az Azure AD felhasználóneve e-mail formátumban és jelszóval), a rendszer átirányítja a felhasználót a Ambari-nézetek lapra. Innen a felhasználó bármelyik elérhető nézetet kiválaszthatja. A felhasználó nem látogathatja meg a webhely bármely másik részét, beleértve az irányítópultot, a szolgáltatásokat, a gazdagépeket, a riasztásokat vagy a felügyeleti lapokat.
 
-![Apache Ambari-felhasználó csak nézetekkel](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png" alt-text="Apache Ambari-felhasználó csak nézetekkel":::
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Jelentkezzen be a Ambari-ba fürt felhasználóként
 
 Az Azure AD-tartományhoz tartozó "hiveuser2" felhasználót hozzárendelte a *fürt felhasználói* szerepköréhez. Ez a szerepkör képes elérni az irányítópultot és az összes menüelemet. A fürt felhasználóinak kevesebb engedélyezett lehetősége van, mint a rendszergazda. Például a hiveuser2 megtekintheti az egyes szolgáltatások konfigurációit, de nem szerkesztheti őket.
 
-![Apache Ambari-irányítópult megjelenítése](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+:::image type="content" source="./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png" alt-text="Apache Ambari-irányítópult megjelenítése":::
 
 ## <a name="next-steps"></a>Következő lépések
 

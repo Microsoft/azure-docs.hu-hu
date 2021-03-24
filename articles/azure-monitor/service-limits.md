@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/10/2019
-ms.openlocfilehash: 73598c7f5733dd65222770b80e79e2cf6ec27fbf
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3589aff65b24563cf21f175ccfc3a706891d699
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102032007"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954003"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor szolgáltatási korlátok
 
@@ -47,5 +47,5 @@ Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat soro
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/)
-- [A használat és a becsült költségek figyelése Azure Monitor](/usage-estimated-costs.md)
+- [A használat és a becsült költségek figyelése Azure Monitor](/azure/azure-monitor/usage-estimated-costs)
 - [Használat és költségek kezelése az Application Insightsban](app/pricing.md)

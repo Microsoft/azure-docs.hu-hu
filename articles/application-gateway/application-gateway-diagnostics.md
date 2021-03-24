@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 32d96ce79844cd89e06035036bfa68703a738ed1
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98065320"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950484"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway háttérbeli állapot-és diagnosztikai naplói
 
@@ -306,7 +306,7 @@ A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az össze
 |ruleSetVersion     | A szabálykészlet verziója használatban van. Az elérhető értékek a következők: 2.2.9 és 3,0.     |
 |ruleId     | Az eseményindító eseményének szabály-azonosítója.        |
 |message     | Felhasználóbarát üzenet az eseményindító eseményhez. További részletek a Részletek szakaszban olvashatók.        |
-|művelet     |  A kérésen végrehajtott művelet. Az elérhető értékek egyeztetése és blokkolása megtörténik.      |
+|művelet     |  A kérésen végrehajtott művelet. Az elérhető értékek le vannak tiltva és engedélyezettek (egyéni szabályok esetén), egyeztetve (ha egy szabály megfelel a kérelem egy részének), és az észlelt és blokkolt (ezek mind a kötelező szabályok esetében érvényesek, attól függően, hogy a WAF észlelési vagy megelőzési módban van-e).      |
 |hely     | A hely, amelyhez a napló létrejött. Jelenleg csak a globális érték van felsorolva, mivel a szabályok globálisak.|
 |Részletek     | Az eseményindító esemény részletei.        |
 |részletek. üzenet     | A szabály leírása.        |

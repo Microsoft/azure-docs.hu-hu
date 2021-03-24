@@ -3,12 +3,12 @@ title: Bicep nyelv a Azure Resource Manager-sablonokhoz
 description: Leírja az infrastruktúra Azure-beli üzembe helyezéséhez Azure Resource Manager sablonokon keresztül.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 0edd0063ea08978b89c3ad3067f41ae743451df7
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889688"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955907"
 ---
 # <a name="what-is-bicep-preview"></a>Mi az a bicep (előzetes verzió)?
 
@@ -16,11 +16,15 @@ A bicep az Azure-erőforrások deklaratív üzembe helyezéséhez használt nyel
 
 A sablon létrehozásához használt JSON-szintaxis részletesen és bonyolult kifejezéssel is megkövetelhető. A bicep a JSON-sablonok bármelyik funkciójának elvesztése nélkül javítja a felhasználói élményt. Ez egy transzparens absztrakt a JSON for ARM-sablonokhoz. Mindegyik bicep-fájl egy standard ARM-sablonhoz lett lefordítva. Az ARM-sablonban érvényes erőforrástípusok, API-verziók és tulajdonságok egy bicep-fájlban érvényesek. A jelenlegi kiadásban néhány [ismert korlátozás](#known-limitations) szerepel.
 
+A bicep jelenleg előzetes verzióban érhető el. A munka állapotának nyomon követéséhez tekintse meg a [bicep Project adattárát](https://github.com/Azure/bicep).
+
 A bicep-ról a következő videóban olvashat bővebben.
+
+> [!VIDEO https://www.youtube.com/embed/sc1kJfcRQgY]
 
 ## <a name="get-started"></a>Bevezetés
 
-A bicep elindításához [telepítse az eszközöket](https://github.com/Azure/bicep/blob/main/docs/installing.md).
+A bicep elindításához [telepítse az eszközöket](bicep-install.md).
 
 Az eszközök telepítése után próbálja ki a [bicep oktatóanyagot](./bicep-tutorial-create-first-bicep.md). Az oktatóanyag-Sorozat végigvezeti a bicep felépítésen és képességein. A bicep-fájlok üzembe helyezése és az ARM-sablon átalakítása az egyenértékű bicep-fájlba.
 

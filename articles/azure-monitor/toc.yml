@@ -722,6 +722,8 @@
                       items:
                         - name: JMX metrikák
                           href: app/java-jmx-metrics-configuration.md
+                        - name: Mintavételezési felülbírálások
+                          href: app/java-standalone-sampling-overrides.md
                         - name: Telemetriai feldolgozók
                           items:
                             - name: Áttekintés
