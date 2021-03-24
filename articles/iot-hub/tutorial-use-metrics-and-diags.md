@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98625199"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889593"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Oktatóanyag: mérőszámok és naplók beállítása és használata IoT hub használatával
 
@@ -219,7 +219,7 @@ Metrikai riasztások beállítása:
 
 1. Először konfigurálja azt a feltételt, amelyet a riasztás aktivál majd.
 
-    1. A **feltétel** területen válassza a **feltétel kiválasztása** lehetőséget. A **jel logikájának konfigurálása** panelen írja be a "telemetria" kifejezést a keresőmezőbe, és válassza ki a **telemetria küldött üzeneteket**.
+    1. A **feltétel** területen válassza a **feltétel hozzáadása** lehetőséget. A **jel logikájának konfigurálása** panelen írja be a "telemetria" kifejezést a keresőmezőbe, és válassza ki a **telemetria küldött üzeneteket**.
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="A metrika kijelölését bemutató képernyőkép.":::
 
@@ -245,7 +245,7 @@ Metrikai riasztások beállítása:
 
 1. Most konfigurálja a riasztás műveletét.
 
-    1. A **riasztási szabály létrehozása** ablaktábla **műveletek** területén válassza a **műveleti csoport kiválasztása** lehetőséget. A **riasztási szabályhoz csatolni kívánt műveleti csoport kiválasztása** panelen válassza a **műveleti csoport létrehozása** lehetőséget.
+    1. Vissza a **riasztási szabály létrehozása** panel **műveletek** területén válassza a **műveleti csoportok hozzáadása** elemet. A **riasztási szabályhoz csatolni kívánt műveleti csoport kiválasztása** panelen válassza a **műveleti csoport létrehozása** lehetőséget.
 
     1. A **műveleti csoport létrehozása** panel **alapismeretek** lapján adja meg a műveleti csoport nevét és a megjelenítendő nevet.
 
@@ -313,7 +313,7 @@ Ezekkel a beállításokkal a rendszer riasztást küld, és e-mailben értesít
 
 ## <a name="run-the-simulated-device-app"></a>A szimulált eszköz alkalmazásának futtatása
 
-Az [erőforrások beállítása](#set-up-resources) szakaszban regisztrálta a IoT-eszköz használatával történő szimulálás során használt eszköz identitását. Ebben a szakaszban olyan .NET-konzol alkalmazást tölt le, amely egy eszközről a felhőbe irányuló üzeneteket küldő eszközt szimulál egy IoT Hubba, konfigurálja úgy, hogy elküldi ezeket az üzeneteket az IoT hubhoz, majd futtassa azt. 
+Az [erőforrások beállítása](#set-up-resources) szakaszban regisztrálta a IoT-eszköz használatával történő szimulálás során használt eszköz identitását. Ebben a szakaszban olyan .NET-konzol alkalmazást tölt le, amely egy eszközről a felhőbe irányuló üzeneteket küldő eszközt szimulál egy IoT Hubba, konfigurálja úgy, hogy elküldi ezeket az üzeneteket az IoT hubhoz, majd futtassa azt.
 
 > [!IMPORTANT]
 >

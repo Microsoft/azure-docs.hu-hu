@@ -12,14 +12,17 @@ ms.date: 03/03/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 8c50bb2c6b4e702a76b22302e7d16247f8bf5b40
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 15fa1dd230b7f07846653278533805fa66ed2195
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654322"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870389"
 ---
 # <a name="get-facial-pose-events"></a>Arc póz-események beolvasása
+
+> [!NOTE]
+> A Viseme csak az `en-US-AriaNeural` USA nyugati régiójában () található hangra működik `westus` , és `en-US` az összes hangra az 2021 április végéig lesz elérhető.
 
 A viseme a beszélt nyelv fonéma vizuális leírása.
 Meghatározza az arc és a száj pozícióját, amikor beszél egy szót.

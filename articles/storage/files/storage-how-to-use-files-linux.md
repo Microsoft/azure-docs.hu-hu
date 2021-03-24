@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4ace5620bf98b06956c294a12b6b08881422e718
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98673687"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952337"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
@@ -94,7 +94,7 @@ uname -r
     Ha nem tudja megnyitni a 445-as portot a vállalati hálózaton, vagy ha az INTERNETSZOLGÁLTATÓ ezt letiltja, akkor VPN-kapcsolattal vagy ExpressRoute kell használnia a 445-es porton való működéshez. További információ: [hálózati megfontolások az Azure-fájlmegosztás közvetlen eléréséhez](storage-files-networking-overview.md).
 
 ## <a name="mounting-azure-file-share"></a>Azure-fájlmegosztás csatlakoztatása
-Ha egy Azure-fájlmegosztást Linux-disztribúcióval szeretne használni, létre kell hoznia egy könyvtárat, amely az Azure-fájlmegosztás csatlakoztatási pontként szolgál. Egy csatlakoztatási pont bárhol létrehozható a Linux rendszeren, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A csatlakoztatási pont után a parancs használatával `mount` férhet hozzá az Azure-fájlmegosztás eléréséhez.
+Ha egy Azure-fájlmegosztást Linux-disztribúcióval szeretne használni, létre kell hoznia egy könyvtárat, amely az Azure-fájlmegosztás csatlakoztatási pontként szolgál. Egy csatlakoztatási pont bárhol létrehozható a Linux rendszeren, de ez a közös konvenció a/Mount. alatt történő létrehozásához. A csatlakoztatási pont után a parancs használatával `mount` férhet hozzá az Azure-fájlmegosztás eléréséhez.
 
 Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja az Azure-fájlmegosztást.
 
@@ -106,7 +106,7 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -135,14 +135,14 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
 Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` a használatával leválaszthatja a megosztást.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Állandó csatlakozási pont létrehozása az Azure-fájlmegosztás számára a következővel: `/etc/fstab`
-1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
+1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/Mount. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
 
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
     fileShareName="<your-file-share>"
 
-    mntPath="/mnt/$storageAccountName/$fileShareName"
+    mntPath="/mount/$storageAccountName/$fileShareName"
 
     sudo mkdir -p $mntPath
     ```
@@ -250,22 +250,22 @@ A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amely `cifs`
 
 | Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE LEAP 15,0 | No |
-| openSUSE ugrás 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| Ubuntu 14.04 – 16.04 | Nem |
+| Ubuntu 18.04 | Igen |
+| Ubuntu 19.04 + | Igen |
+| Debian 8-9 | Nem |
+| Debian 10 + | Igen |
+| Fedora 29 + | Igen |
+| CentOS 7 | Nem | 
+| CentOS 8 + | Igen |
+| Red Hat Enterprise Linux 6. x-7. x | Nem |
+| Red Hat Enterprise Linux 8 + | Igen |
+| openSUSE LEAP 15,0 | Nem |
+| openSUSE ugrás 15.1 + | Igen |
+| openSUSE Tumbleweed | Igen |
+| SUSE Linux Enterprise 11. x-12. x | Nem |
+| SUSE Linux Enterprise 15 | Nem |
+| SUSE Linux Enterprise 15,1 | Nem |
 
 A következő parancs használatával megtekintheti, hogy a Linux-disztribúciója támogatja-e a `disable_legacy_dialects` modul paraméterét.
 

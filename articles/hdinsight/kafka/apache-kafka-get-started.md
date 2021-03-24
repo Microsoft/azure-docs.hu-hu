@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 102bb1a7bf1bd3cb799d52ce13045e01a2a34297
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: acb497b2f0111d36650ec415c8f1f580d116b55e
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102505256"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863292"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával
 
@@ -36,7 +36,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
 1. A felső menüben válassza az **+ erőforrás létrehozása** lehetőséget.
 
-    ![Erőforrás-HDInsight Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-create-resource.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-create-resource.png" alt-text="Erőforrás-HDInsight Azure Portal létrehozása" border="true":::
 
 1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
@@ -54,7 +54,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót szeretné használni az SSH-felhasználó számára, mint a fürt bejelentkezési felhasználójának.|
 
-   ![A fürt alapalapjainak Azure Portal létrehozása](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-basics.png" alt-text="A fürt alapalapjainak Azure Portal létrehozása" border="true":::
 
     Minden egyes Azure-régió (hely) _tartalék tartományokat_ biztosít. A tartalék tartomány az alapul szolgáló hardver logikai csoportosítása egy Azure-adatközpontban. Mindegyik tartalék tartomány közös áramforrással és hálózati kapcsolóval rendelkezik. A HDInsight-fürtön belül a csomópontokat implementáló virtuális gépek és felügyelt lemezek ezek között a tartalék tartományok között vannak elosztva. Ez az architektúra csökkenti a fizikai hardverhibák lehetséges hatását.
 
@@ -71,7 +71,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
     |Az elsődleges tárfiók|A legördülő listából válasszon ki egy meglévő Storage-fiókot, vagy válassza az **új létrehozása** lehetőséget. Új fiók létrehozásakor a névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.|
     |Tároló|Használja az automatikusan feltöltött értéket.|
 
-    ![HDInsight Linux – első lépések – a fürt tárolási értékeinek megadása](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Tárolási értékek megadása HDInsight-fürt létrehozásához")
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-storage.png " alt-text="HDInsight Linux – első lépések – a fürt tárolási értékeinek megadása" border="true":::
 
     Válassza a **Biztonság + hálózatkezelés** lapot.
 
@@ -79,7 +79,7 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
    Ha szeretné egy virtuális hálózathoz csatlakoztatni a fürtöt, válasszon egy virtuális hálózatot a **Virtuális hálózat** legördülő listából.
 
-   ![Fürt hozzáadása egy virtuális hálózathoz](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png" alt-text="Fürt hozzáadása egy virtuális hálózathoz" border="true":::
 
     Válassza a **konfiguráció + díjszabás** lapot.
 
@@ -87,13 +87,13 @@ Apache Kafka-fürt HDInsight való létrehozásához kövesse az alábbi lépés
 
     A **szabványos lemezek/feldolgozó csomópontok** bejegyzései a Apache Kafka méretezhetőségét konfigurálja a HDInsight. Az Apache Kafka on HDInsight a fürt virtuális gépeinek helyi lemezén tárolja az adatokat. Mivel az Apache Kafka nagy ki- és bemenő adatforgalmat kezel, az [Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) szolgáltatás gondoskodik a magas átviteli sebességről és csomópontonként több tárhelyről. A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. A lemez típusa a feldolgozó csomópontok (Apache Kafka-közvetítők) által használt virtuálisgép-mérettől függ. A DS és GS sorozatbeli virtuális gépek automatikusan prémium lemezeket használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
-   ![Az Apache Kafka-fürt méretének beállítása](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
+   :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png" alt-text="Az Apache Kafka-fürt méretének beállítása" border="true":::
 
     Válassza a **felülvizsgálat + létrehozás** lapot.
 
 1. Tekintse át a fürt konfigurációját. Módosítsa a helytelen beállításokat. Végül válassza a **Létrehozás** elemet a fürt létrehozásához.
 
-    ![a Kafka-fürt konfigurációjának összegzése](./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png)
+    :::image type="content" source="./media/apache-kafka-get-started/azure-portal-cluster-review-create-kafka.png" alt-text="a Kafka-fürt konfigurációjának összegzése" border="true":::
 
     A fürt létrehozása 20 percig is eltarthat.
 

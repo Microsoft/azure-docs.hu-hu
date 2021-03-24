@@ -4,15 +4,15 @@ description: Ismerkedjen meg a Azure App Service hálózatkezelési funkcióiró
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 10/18/2020
+ms.date: 03/26/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 730f26039db0f5441563ac7bf5d6b0ab536cbcd2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9ba85ecfe2b57ceb1eed5c51929107a95f5a4669
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99593129"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889144"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
@@ -129,11 +129,15 @@ A szolgáltatás egyes használati esetei:
 ![A szolgáltatás-végpontok Application Gateway használatával történő használatát bemutató diagram.](media/networking-features/service-endpoints-appgw.png)
 
 A szolgáltatási végpontok alkalmazással történő konfigurálásával kapcsolatos további tudnivalókért tekintse meg [Azure app Service hozzáférési korlátozásokat][serviceendpoints].
-#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Hozzáférési korlátozási szabályok a szolgáltatás címkéi alapján (előzetes verzió)
+
+#### <a name="access-restriction-rules-based-on-service-tags"></a>Hozzáférési korlátozási szabályok szolgáltatási címkék alapján
+
 Az [Azure-szolgáltatás címkéi][servicetags] az Azure-szolgáltatásokhoz tartozó IP-címek jól definiált készletei. A szolgáltatás-címkék csoportba foglalják a különböző Azure-szolgáltatásokban használt IP-tartományokat, és gyakran az adott régióra is kiterjednek. Ez lehetővé teszi a *bejövő* forgalom szűrését adott Azure-szolgáltatásokból. 
 
 A címkék és további információk teljes listájáért látogasson el a Service tag fenti hivatkozására. A szolgáltatás engedélyezésével kapcsolatos további információkért lásd: [hozzáférési korlátozások konfigurálása][iprestrictions].
-#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Http-fejléc szűrése hozzáférési korlátozási szabályokhoz (előzetes verzió)
+
+#### <a name="http-header-filtering-for-access-restriction-rules"></a>Http-fejléc szűrése hozzáférési korlátozási szabályokhoz
+
 Az egyes hozzáférés-korlátozási szabályokhoz további HTTP-fejléceket adhat hozzá. Ez lehetővé teszi a bejövő kérések és a szűrők további vizsgálatát a HTTP-fejlécek megadott értékei alapján. Minden fejléc legfeljebb 8 értéket tartalmazhat. A következő HTTP-fejlécek jelenleg támogatottak: 
 * X – továbbított – a következőhöz:
 * X-továbbított-gazdagép
@@ -143,6 +147,7 @@ Az egyes hozzáférés-korlátozási szabályokhoz további HTTP-fejléceket adh
 A HTTP-fejléc szűrésének egyes használati esetei a következők:
 * Az állomásnév továbbítására szolgáló proxykiszolgálók hozzáférésének korlátozása
 * Egy adott Azure-beli előtérben lévő példányhoz való hozzáférés korlátozása szolgáltatás-címkézési szabállyal és X-Azure-FDID fejléc korlátozásával
+
 ### <a name="private-endpoint"></a>Privát végpont
 
 A privát végpont egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztül csatlakozik a webalkalmazáshoz. A privát végpont egy magánhálózati IP-címet használ a virtuális hálózatról, amely hatékonyan hozza a webalkalmazást a virtuális hálózatba. Ez a funkció csak a webalkalmazás *bejövő* folyamatai számára érhető el.

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0780f66c981f0cebebc1ab327d783954753db965
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946663"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866726"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Deep Dive – fejlett Analitika
 
@@ -20,7 +20,7 @@ A HDInsight lehetővé teszi értékes információk beszerzését nagy mennyis�
 
 ## <a name="advanced-analytics-process"></a>Fejlett elemzési folyamat
 
-![Fejlett elemzési folyamat](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png" alt-text="Fejlett elemzési folyamat" border="false":::
 
 Miután azonosította az üzleti problémát, és megkezdte az adatok gyűjtését és feldolgozását, létre kell hoznia egy modellt, amely az előre jelezni kívánt kérdést jelöli. A modell egy vagy több gépi tanulási algoritmust használ az üzleti igényeknek leginkább megfelelő előrejelzési típus elvégzéséhez.  Az adatok többségét a modell betanítására kell használni, a többit pedig tesztelésre vagy kiértékelésre használják.
 
@@ -30,7 +30,7 @@ A modell létrehozását, betöltését, tesztelését és értékelését köve
 
 A speciális elemzési megoldások gépi tanulási algoritmusokat biztosítanak. Itt látható az algoritmusok és a kapcsolódó gyakori üzleti használati esetek kategóriáinak összefoglalása.
 
-![Machine Learning kategória összefoglalói](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png" alt-text="Machine Learning kategória összefoglalói" border="false":::
 
 A legjobban illeszkedő algoritmus (ok) kiválasztásával együtt kell megfontolnia, hogy szükséges-e az adatképzésben. A gépi tanulási algoritmusok a következőképpen vannak kategorizálva:
 
@@ -92,7 +92,7 @@ Ebben a fejlett elemzési forgatókönyvben három kulcsfontosságú feladat van
 
 Ez a példa a CIFAR-10 képkészletet használja, amelyet Alex Krizhevsky, vino Siro és Geoffrey Hinton lefordított és elosztott. A CIFAR-10 adatkészlet 60 000 32 × 32 színes képet tartalmaz, amelyek a 10 egymást kölcsönösen kizáró osztályhoz tartozóak:
 
-![Machine Learning képek](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png" alt-text="Machine Learning képek" border="false":::
 
 Az adatkészlettel kapcsolatos további információkért tekintse meg az Alex Krizhevsky [learning több rétegét a Tiny images szolgáltatásban](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -105,7 +105,7 @@ Az adatkészlet 50 000 rendszerképekből és 10 000-es rendszerképekből áll�
 
 Az 10 000-es lemezképek teljes előfeldolgozása/pontozása kevesebb mint egy percet vesz igénybe egy 4 munkavégző csomóponttal rendelkező fürtön. A modell pontosan megjósolja a ~ 9 100 (91%) címkéit képek. A zűrzavaros mátrix a leggyakoribb besorolási hibákat mutatja be. A mátrix például azt mutatja, hogy a kutyák macskákként való címkézése és fordítva gyakrabban történik, mint a többi címke pároknál.
 
-![Machine Learning eredmények diagramja](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+:::image type="content" source="./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png" alt-text="Machine Learning eredmények diagramja" border="false":::
 
 ### <a name="try-it-out"></a>Próbálja ki!
 

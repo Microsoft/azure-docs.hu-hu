@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: has-adal-ref, devx-track-python
 ms.date: 04/03/2020
-ms.openlocfilehash: a9a007d33226c508e193368b08b189001bf53401
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bc3cbe5d0d7cf5e5a78112ae5df63ebb88a97f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944082"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864839"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -22,7 +22,7 @@ A Kafka REST API által támogatott műveletekhez tekintse meg a [HDInsight KAFK
 
 ## <a name="background"></a>Háttér
 
-![Kafka REST-proxy kialakítása](./media/rest-proxy/rest-proxy-architecture.png)
+:::image type="content" source="./media/rest-proxy/rest-proxy-architecture.png" alt-text="Kafka REST-proxy kialakítása" border="false":::
 
 Az API által támogatott műveletek teljes leírását lásd: [Apache KAFKA Rest proxy API](/rest/api/hdinsight-kafka-rest-proxy).
 
@@ -49,10 +49,10 @@ Ha saját VNet használ, és hálózati biztonsági csoportokkal vezérli a hál
 1. Hozzon létre biztonsági csoportot az Azure AD-ben. Adja hozzá az Azure AD-ben regisztrált alkalmazást a csoport **tagjaként** a biztonsági csoporthoz. Ezzel a biztonsági csoporttal szabályozhatja, hogy mely alkalmazások használhatják a REST-proxyt. Az Azure AD-csoportok létrehozásával kapcsolatos további információkért lásd: [alapszintű csoport létrehozása és Tagok hozzáadása Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
     Ellenőrizze, hogy a csoport **Biztonság** típusú-e.
-    ![Biztonsági csoport](./media/rest-proxy/rest-proxy-group.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-group.png" alt-text="Biztonsági csoport" border="true":::
 
     Annak ellenőrzése, hogy az alkalmazás tagja-e a csoportnak.
-    ![Tagság beadása](./media/rest-proxy/rest-proxy-membergroup.png)
+    :::image type="content" source="./media/rest-proxy/rest-proxy-membergroup.png" alt-text="Tagság beadása" border="true":::
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Kafka-fürt létrehozása REST proxyval engedélyezve
 
@@ -60,17 +60,17 @@ Az alábbi lépések a Azure Portal használják. Az Azure CLI használatával k
 
 1. A Kafka-fürt létrehozási munkafolyamata alatt, a **Biztonság és hálózatkezelés** lapon jelölje be a **Kafka Rest-proxy engedélyezése** lehetőséget.
 
-     ![Képernyőfelvétel: a H D Insight-fürt létrehozása lap a biztonság és a hálózat kiválasztásával.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png" alt-text="Képernyőfelvétel: a H D Insight-fürt létrehozása lap a biztonság és a hálózat kiválasztásával." border="true":::
 
 1. Kattintson a **biztonsági csoport kiválasztása** elemre. A biztonsági csoportok listájából válassza ki azt a biztonsági csoportot, amelyhez hozzáférést szeretne biztosítani a REST-proxyhoz. A keresőmező segítségével megkeresheti a megfelelő biztonsági csoportot. Kattintson a lap alján található **kiválasztás** gombra.
 
-     ![Képernyőfelvétel: a H D Insight-fürt létrehozása lap, amely a biztonsági csoportok kiválasztásának lehetőségét mutatja be.](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
+     :::image type="content" source="./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png" alt-text="Képernyőfelvétel: a H D Insight-fürt létrehozása lap, amely a biztonsági csoportok kiválasztásának lehetőségét mutatja be." border="true":::
 
 1. Hajtsa végre a további lépéseket a fürt létrehozásához a következő témakörben leírtak szerint: [Apache Kafka-fürt létrehozása az Azure HDInsight Azure Portal használatával](./apache-kafka-get-started.md).
 
 1. A fürt létrehozása után lépjen a fürt tulajdonságaiba, és jegyezze fel a Kafka REST-proxy URL-címét.
 
-     ![REST-proxy URL-címének megtekintése](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     :::image type="content" source="./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png" alt-text="REST-proxy URL-címének megtekintése" border="true":::
 
 ## <a name="client-application-sample"></a>Ügyfélalkalmazás mintája
 

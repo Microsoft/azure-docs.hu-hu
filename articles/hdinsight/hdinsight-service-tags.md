@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 99a61d3e445bf6887db0c97e365e6e4489eb79e1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931770"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872013"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
 
@@ -40,7 +40,7 @@ A HDInsight-fürthöz tartozó szolgáltatás-címkék használatának legegysze
 
 1. A **forrás szolgáltatás címkéje** legördülő listában válassza a **HDInsight** lehetőséget.
 
-    ![Adja hozzá a szolgáltatás címkéjét a Azure Portal](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    :::image type="content" source="./media/hdinsight-service-tags/azure-portal-add-service-tag.png" alt-text="Adja hozzá a szolgáltatás címkéjét a Azure Portal":::
 
 Ez a címke tartalmazza az állapot-és felügyeleti szolgáltatások IP-címeit minden olyan régió esetében, ahol a HDInsight elérhető. A címke biztosítja, hogy a fürt a létrehozásuk helyétől függetlenül képes legyen kommunikálni a szükséges egészségügyi és felügyeleti szolgáltatásokkal.
 

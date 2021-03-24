@@ -6,16 +6,16 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1217b51ea91758d25b76394b27d3b21b2e9808b3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 64be28838abb5d5021f0a8cefc0eed2c2516498b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780871"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865230"
 ---
 # <a name="set-up-an-appliance-for-servers-in-vmware-environment"></a>Berendezések beállítása a VMware-környezetben található kiszolgálókhoz
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Migrate berendezést a [Azure Migrate: felderítési és értékelési](migrate-services-overview.md#azure-migrate-server-assessment-tool) eszköz, valamint az ügynök nélküli áttelepítés számára a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával.
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Migrate berendezést a [Azure Migrate: felderítési és értékelési](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool) eszköz, valamint az ügynök nélküli áttelepítés számára a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz használatával.
 
 Az [Azure Migrate készülék](migrate-appliance.md) egy Azure Migrate által használt, könnyű berendezés: felderítési és értékelési és kiszolgáló-áttelepítési szolgáltatás a vCenter Server-ben futó kiszolgálók felderítésére, a kiszolgáló konfigurációjának és teljesítmény-metaadatainak küldésére az Azure-ba, valamint a kiszolgálók ügynök nélküli áttelepítéssel történő replikálásához.
 
@@ -24,23 +24,23 @@ A készüléket néhány módszerrel is üzembe helyezheti:
 - Hozzon létre egy kiszolgálót a vCenter Server egy letöltött PETESEJT-sablon használatával. Ez a cikkben ismertetett módszer.
 - Állítsa be a készüléket egy meglévő kiszolgálóra egy PowerShell-telepítő parancsfájl használatával. [Ezt a módszert](deploy-appliance-script.md) akkor kell használni, ha nem használhat petesejt-sablont, vagy ha Azure Government van.
 
-A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez, regisztrálja a Azure Migrate projekttel, és konfigurálja a berendezést a felderítés elindításához.
+A berendezés létrehozása után győződjön meg róla, hogy tud csatlakozni Azure Migrate: felderítéshez és értékeléshez, regisztrálja a projektben, és konfigurálja a berendezést a felderítés elindításához.
 
 ## <a name="deploy-with-ova"></a>Üzembe helyezés PETESEJTekkel
 
 Ha a készüléket a következő PETESEJT-sablonnal szeretné beállítani:
-1. Adja meg a készülék nevét, és állítson be egy Azure Migrate Project-kulcsot a portálon.
+1. Adja meg a készülék nevét, és állítson be egy Project-kulcsot a portálon.
 1. Töltse le a petesejtek sablon fájlját, és importálja vCenter Serverba. Ellenőrizze, hogy a petesejtek biztonságosak-e.
 1. Hozza létre a berendezés virtuális gépet a petesejtek fájlból, és győződjön meg arról, hogy tud kapcsolódni Azure Migratehoz.
-1. Konfigurálja a készüléket első alkalommal, és regisztrálja azt a projektben a Azure Migrate Project Key használatával.
+1. Konfigurálja a készüléket első alkalommal, és regisztrálja a projekttel a Project Key használatával.
 
-### <a name="1-generate-the-azure-migrate-project-key"></a>1. a Azure Migrate projekt kulcsának előállítása
+### <a name="1-generate-the-project-key"></a>1. a projekt kulcsának előállítása
 
 1. Az **áttelepítési célok**  >  **kiszolgálói**  >  **Azure Migrate: felderítés és értékelés**, majd **a felderítés** elemre.
 2. A **felderítési kiszolgálók** a  >  **kiszolgálók virtualizáltak?** területen válassza **az igen, VMware vSphere Hypervisort**.
-3. **1.: hozzon létre Azure Migrate projektfájlt**, adjon meg egy nevet a Azure Migrate berendezés számára, amelyet a VMware-környezetben található kiszolgálók felderítéséhez fog beállítani. A névnek legfeljebb 14 karakterből kell állnia.
+3. **1.: hozzon létre egy projektfájlt**, adja meg a VMware-környezetben található kiszolgálók felderítéséhez beállított Azure Migrate berendezés nevét. A névnek legfeljebb 14 karakterből kell állnia.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Ne zárja be a felderítés oldalt az erőforrások létrehozása során.
-1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
+1. Az Azure-erőforrások sikeres létrehozása után a rendszer létrehoz egy **projekt-kulcsot** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="2-download-the-ova-template"></a>2. a petesejtek sablon letöltése
@@ -117,7 +117,7 @@ Győződjön meg arról, hogy a berendezés-kiszolgáló tud csatlakozni az Azur
 
 ## <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **felderítés és értékelés> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Illessze be a **projektből** a portálról másolt kulcsot. Ha nem rendelkezik a kulccsal, lépjen a **felderítés és értékelés> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
 1. Szüksége lesz egy eszköz kódjára az Azure-beli hitelesítéshez. A **Bejelentkezés** gombra kattintva megnyílik egy modális az eszköz kódjával az alább látható módon.
 
     :::image type="content" source="./media/tutorial-discover-vmware/device-code.png" alt-text="Az eszköz kódját ábrázoló modális":::
@@ -154,8 +154,6 @@ A **3. lépés: adja meg a kiszolgálói hitelesítő adatokat a szoftverek lelt
 
 :::image type="content" source="./media/tutorial-discover-vmware/appliance-server-credentials-mapping.png" alt-text="3. panel a készülék Configuration Manager kiszolgáló adataihoz":::
 
-> [!Note]
-> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 Ha ezeket a funkciókat szeretné használni, az alábbi lépésekkel megadhatja a kiszolgálói hitelesítő adatokat. A készülék megkísérli automatikusan leképezni a hitelesítő adatokat a kiszolgálók számára a felderítési funkciók végrehajtásához.
 

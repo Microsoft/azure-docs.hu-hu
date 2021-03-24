@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: hafowler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23c74a8a35255162c7c9ddee6c917d4d98d83b89
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 4269ba32a22538eeba35ba484fae0c98cd219b7c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561651"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952779"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Eszközidentitások kezelése az Azure Portal használatával
 
@@ -174,7 +174,7 @@ A Azure Portal eszköz beállításainak megtekintéséhez vagy kezeléséhez a 
 > - Javasoljuk, hogy a feltételes hozzáférésben a ["regisztráció vagy csatlakozás eszközökhöz" felhasználói beavatkozást](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) használja a többtényezős hitelesítés kényszerítéséhez az eszközök csatlakoztatásához vagy regisztrálásához. 
 > - Ezt a beállítást a **nem** értékre kell állítani, ha feltételes hozzáférési szabályzatot használ a multi-Factor authencation megköveteléséhez. 
 
-- **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték a **50**.
+- **Eszközök maximális száma** – ez a beállítás lehetővé teszi, hogy kiválassza az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközök maximális számát, amelyet a felhasználók az Azure ad-ben használhatnak. Ha a felhasználó eléri ezt a kvótát, nem tud további eszközöket hozzáadni, amíg a meglévő eszközök közül egy vagy több el nem távolítva. Az alapértelmezett érték a **50**. Növelheti az értéket akár 100-ra, és ha a 100-nál nagyobb értéket ad meg, az Azure AD beállítja az 100-ra. Korlátlan számú értéket is használhat, ha a korlátozás nem korlátozza a meglévő kvótákat.
 
 > [!NOTE]
 > **Az eszközök maximális száma** beállítás az Azure ad-hez csatlakoztatott vagy az Azure ad-ban regisztrált eszközökre vonatkozik. Ez a beállítás nem vonatkozik a hibrid Azure AD-hez csatlakoztatott eszközökre.

@@ -3,14 +3,13 @@ title: A BareMetal-infrastruktúra előzetes verziójának áttekintése az Azur
 description: A BareMetal-infrastruktúra áttekintése az Azure-ban.
 ms.custom: references_regions
 ms.topic: conceptual
-ms.subservice: workloads
 ms.date: 1/4/2021
-ms.openlocfilehash: 94cee52eccd8cc9e9631b47bdf84892d763d86d3
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 603aa6504531ef8a75fccbc9d9cc6de648b42373
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104776217"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954632"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Mi a BareMetal-infrastruktúra előzetes verziója az Azure-on?
 

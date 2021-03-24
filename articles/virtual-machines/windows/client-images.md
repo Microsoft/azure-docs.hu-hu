@@ -1,19 +1,19 @@
 ---
 title: Windows-rendszerképek használata az Azure-ban
 description: A Visual Studio előfizetési előnyeinek használata a Windows 7, Windows 8 vagy Windows 10 Azure-ban való üzembe helyezéséhez fejlesztési és tesztelési helyzetekben
-author: cynthn
+author: mimckitt
 ms.subservice: imaging
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
-ms.author: cynthn
-ms.openlocfilehash: 21038a8d1eabfcca21329c093b866607f0343070
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.author: mimckitt
+ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200003"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869055"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési helyzetekben
 A fejlesztői és tesztelési forgatókönyvekhez használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) rendszert az Azure-ban, amennyiben rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. 
@@ -28,6 +28,9 @@ Bizonyos Windows-ügyfélprogramok elérhetők az Azure piactéren. A Visual Stu
 
 ## <a name="eligible-offers-and-client-images"></a>Jogosult ajánlatok és ügyféloldali rendszerképek
 Az alábbi táblázat a Windows-rendszerképek Azure piactéren való üzembe helyezésére jogosult ajánlat-azonosítókat ismerteti. A Windows-ügyfél lemezképei csak a következő ajánlatokban láthatók. 
+
+> [!NOTE]
+> A rendszerkép-ajánlatok az Azure piactéren a **Windows-ügyfél** alatt találhatók. A **Windows-ügyfél** használata a Visual Studio-előfizetők számára elérhető ügyféloldali rendszerképek keresésekor. 
 
 | Offer Name | Ajánlat száma | Elérhető ügyféloldali rendszerképek | 
 |:--- |:---:|:---:|

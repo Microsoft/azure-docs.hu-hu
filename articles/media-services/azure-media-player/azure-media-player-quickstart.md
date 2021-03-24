@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0d0fa88fdf182ae2214da40ee3fe8b20ced025e4
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98879190"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956060"
 ---
 # <a name="azure-media-player-quickstart"></a>Az Azure Media Player gyorsútmutatója
 A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igénybe, hogy lekérje a médiatartalom alapszintű lejátszását a Azure Media Services-fiókjából. Ez a szakasz nagy vonalakban ismerteti az alapvető lépéseket. Az alábbi szakaszokban a Azure Media Player beállításával és konfigurálásával kapcsolatos konkrét tudnivalókat talál.  Egyszerűen adja hozzá a következőket a dokumentum `<head>` eleméhez:
@@ -39,7 +39,7 @@ Ezután egyszerűen használja az `<video>` elemet úgy, ahogy a szokásos módo
 
 Ha nem szeretné az automatikus telepítést használni, kihagyhatja az `data-setup` attribútumot, és manuálisan is inicializálhatja a videó elemet.
 
-```html
+```javascript
     var myPlayer = amp('vid1', { /* Options */
             "nativeControlsForTouch": false,
             autoplay: false,
@@ -52,7 +52,7 @@ Ha nem szeretné az automatikus telepítést használni, kihagyhatja az `data-se
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

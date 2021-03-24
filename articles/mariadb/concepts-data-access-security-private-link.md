@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a1b97586eeeab1d5d1917f2d1cec9e0f71e9e329
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98665140"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867457"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás a Azure Database for MariaDB
 
@@ -85,7 +85,8 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-mariadb"></a>Privát hivatkozás használata Azure Database for MariaDB esetén
 
-Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
+
+Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, azonos régióban vagy régiókban található [VNet](../virtual-network/virtual-network-peering-overview.md) , illetve a régiók közötti [VNet-VNet kapcsolaton](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
 ![Válassza ki a privát végpont áttekintését](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 

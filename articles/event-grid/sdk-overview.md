@@ -3,12 +3,12 @@ title: SDK-k Azure Event Grid
 description: A Azure Event Grid SDK-kat ismerteti. Ezek az SDK-k felügyeletet, közzétételt és felhasználást biztosítanak.
 ms.topic: reference
 ms.date: 07/07/2019
-ms.openlocfilehash: c5b79f7cb7ae0112e2dacd077289786fc7b5c956
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: aa53aaa89a703bb88df6611cdb0dd38341248a55
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100516755"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955924"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>SDK-k Event Grid a felügyelethez és a közzétételhez
 
@@ -30,13 +30,13 @@ A felügyeleti SDK-k lehetővé teszik az Event Grid-témakörök és-előfizet�
 Az adatközponti SDK-k lehetővé teszik események küldését a témakörökbe a hitelesítés, az esemény kialakítása és a megadott végpontra történő aszinkron közzététel megtételével. Azt is lehetővé teszik, hogy az első féltől származó eseményeket használja. Jelenleg a következő SDK-k érhetők el:
 
 | Programozási nyelv | SDK | 
-| -------------------- | ---------- | ---------- | 
+| -------------------- | ---------- | 
 | .NET | Stabil SDK: [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)<p>Előzetes verzió SDK: [Azure. Messaging. EventGrid](https://www.nuget.org/packages/Azure.Messaging.EventGrid/) |
 | Java | Stabil SDK: [Azure-eventgrid](https://mvnrepository.com/artifact/com.microsoft.azure/azure-eventgrid)<p>Előzetes verzió SDK: [Azure-Messaging-eventgrid](https://search.maven.org/artifact/com.azure/azure-messaging-eventgrid/)</p> |  
 | Python | [Azure-eventgrid](https://pypi.org/project/azure-eventgrid/#history) (lásd a legújabb stabil és előzetes verziókat a **kiadási előzmények** oldalon) |
 | JavaScript | [@azure/eventgrid](https://www.npmjs.com/package/@azure/eventgrid/) (váltson a **verziók** lapra a legújabb stabil és bétaverziós csomagok megtekintéséhez). | 
-| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) | | 
-| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) | | 
+| Go | [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go) |
+| Ruby | [azure_event_grid](https://rubygems.org/gems/azure_event_grid) |
 
 
 ## <a name="next-steps"></a>Következő lépések

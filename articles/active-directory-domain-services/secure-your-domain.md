@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96618858"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951936"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure Active Directory Domain Services felügyelt tartomány biztonságossá tételéhez tiltsa le a gyenge titkosításokat és a jelszó-kivonatolási szinkronizálást
 
@@ -34,14 +34,25 @@ A cikk végrehajtásához a következő erőforrásokra van szükség:
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, [hozzon létre és konfiguráljon egy Azure Active Directory Domain Services felügyelt tartományt][create-azure-ad-ds-instance].
-* Az Azure PowerShell telepítése és konfigurálása.
-    * Ha szükséges, kövesse az utasításokat a [Azure PowerShell modul telepítéséhez és az Azure-előfizetéshez való kapcsolódáshoz](/powershell/azure/install-az-ps).
-    * Győződjön meg róla, hogy bejelentkezik az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] parancsmag használatával.
-* Az Azure AD PowerShell telepítése és konfigurálása.
-    * Ha szükséges, kövesse az [Azure ad PowerShell-modul telepítésére és az Azure ad-hez való kapcsolódásra](/powershell/azure/active-directory/install-adv2)vonatkozó utasításokat.
-    * Győződjön meg arról, hogy bejelentkezik az Azure AD-bérlőbe a [AzureAD][Connect-AzureAD] parancsmag használatával.
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Gyenge titkosítási és NTLM-jelszó-kivonatolási szinkronizálás letiltása
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>Biztonsági beállítások használata a gyenge titkosítások és az NTLM-jelszó kivonatának szinkronizálásának letiltásához
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keresse meg és válassza ki a **Azure ad Domain Services**.
+1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*.
+1. A bal oldali oldalon válassza a **biztonsági beállítások** lehetőséget.
+1. A következő beállításokhoz kattintson a **Letiltás** lehetőségre:
+   - **Csak TLS 1,2 mód**
+   - **NTLM-hitelesítés**
+   - **NTLM-jelszó szinkronizálása a helyszíni környezetből**
+
+   ![Képernyőfelvétel a biztonsági beállításokról a gyenge titkosítások és az NTLM-jelszó kivonatának szinkronizálásának letiltásához](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>A PowerShell használata a gyenge titkosítások és az NTLM-jelszó kivonatának szinkronizálásának letiltásához
+
+Ha szükséges, [telepítse és konfigurálja Azure PowerShell](/powershell/azure/install-az-ps). Győződjön meg róla, hogy bejelentkezik az Azure-előfizetésbe a [AzAccount][Connect-AzAccount] parancsmag használatával. 
+
+Szükség esetén [telepítse és konfigurálja az Azure ad PowerShellt](/powershell/azure/active-directory/install-adv2)is. Győződjön meg arról, hogy bejelentkezik az Azure AD-bérlőbe a [AzureAD][Connect-AzureAD] parancsmag használatával.
 
 A gyenge titkosítási csomagok és az NTLM hitelesítő adatok kivonatának szinkronizálásának letiltásához jelentkezzen be az Azure-fiókjába, majd szerezze be az Azure AD DS-erőforrást a [Get-AzResource][Get-AzResource] parancsmag használatával:
 

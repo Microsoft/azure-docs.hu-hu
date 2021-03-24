@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7c5fbbd8cdfd75819bffcfb93fc81900feb4a612
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d965ec2f846f09dd61342b3961e7ea8106f6a19f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101652368"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954887"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -52,7 +52,7 @@ A bejövő és a kimenő forgalom abba az alhálózatba, amelyben a API Manageme
 
 Vigyázat: Ha a API Management alhálózaton NSG konfigurál, a megnyitható portok halmaza szükséges. Ha a portok bármelyike nem érhető el, előfordulhat, hogy API Management nem működik megfelelően, és elérhetetlenné válhat.
 
-- [Az Azure API Management NSG-konfigurációinak megismerése](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Az Azure API Management NSG-konfigurációinak megismerése](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -75,7 +75,7 @@ Megjegyzés: Ez a funkció a API Management prémium és fejlesztői szintjein �
 
 - [API Management integrálása belső VNET a Application Gateway](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Az Azure Application Gateway ismertetése](/azure/application-gateway/)
+- [Az Azure Application Gateway ismertetése](../application-gateway/index.yml)
 
 **Felelősség**: Ügyfél
 
@@ -96,7 +96,7 @@ A Azure Security Center integrált fenyegetési intelligencia használatával me
 
 - [API Management integrálása belső VNET a Application Gateway](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Az Azure Application Gateway ismertetése](/azure/application-gateway/)
+- [Az Azure Application Gateway ismertetése](../application-gateway/index.yml)
 
 - [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/azure-defender.md)
 
@@ -110,7 +110,7 @@ A Azure Security Center integrált fenyegetési intelligencia használatával me
 
 Vigyázat: Ha a API Management alhálózaton NSG konfigurál, a megnyitható portok halmaza szükséges. Ha a portok bármelyike nem érhető el, előfordulhat, hogy API Management nem működik megfelelően, és elérhetetlenné válhat.
 
-- [Az Azure API Management NSG-konfigurációinak megismerése](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Az Azure API Management NSG-konfigurációinak megismerése](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -160,7 +160,7 @@ Megjegyzés: Ez a funkció a API Management prémium és fejlesztői szintjein �
 
 - [Azure webalkalmazási tűzfal az Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
 
-- [Az Azure Application Gateway ismertetése](/azure/application-gateway/overview)
+- [Az Azure Application Gateway ismertetése](../application-gateway/overview.md)
 
 **Felelősség**: Ügyfél
 
@@ -174,7 +174,7 @@ Vigyázat: Ha a API Management alhálózaton NSG konfigurál, a megnyitható por
 
 - [A szolgáltatási címkék megismerése és használata](../virtual-network/service-tags-overview.md)
 
-- [A API Managementhoz szükséges portok](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [A API Managementhoz szükséges portok](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Felelősség**: Ügyfél
 
@@ -198,7 +198,7 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: használja a hálózati biztonsági csoportokhoz (NSG) és a hálózati biztonsággal és a forgalommal kapcsolatos egyéb erőforrásokhoz tartozó címkéket. Az egyes NSG-szabályok esetében a "Leírás" mező használatával megadhatja az üzleti igényeket és/vagy időtartamot (stb.) minden olyan szabályhoz, amely engedélyezi a hálózatra irányuló adatforgalmat.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 - [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
@@ -212,9 +212,9 @@ Az Azure-tervrajzok segítségével leegyszerűsítheti a nagy léptékű Azure-
 
 **Útmutató**: az Azure-Tevékenységnaplók használatával figyelheti a hálózati erőforrás-konfigurációkat, és felderítheti az Azure API Management üzemelő példányokhoz társított hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -232,7 +232,7 @@ A Azure Monitoron kívül az Azure API Management egy vagy több Azure Applicati
 
 Opcionálisan, engedélyezheti és elküldheti az Azure Sentinel vagy egy harmadik féltől származó biztonsági incidensek és események kezelése (SIEM) szolgáltatásait.
 
-- [Diagnosztikai beállítások konfigurálása](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [Diagnosztikai beállítások konfigurálása](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
@@ -252,9 +252,9 @@ Opcionálisan, engedélyezheti és elküldheti az Azure Sentinel vagy egy harmad
 
 Az adatsík naplózási naplózásához a diagnosztikai naplók részletes információkat biztosítanak a naplózáshoz és a hibaelhárításhoz fontos műveletekről és hibákról. A diagnosztikai naplók különböznek a tevékenységnaplóktól. A tevékenységnaplók az Azure-erőforrásokon végrehajtott műveletekkel kapcsolatos információkat tartalmaznak. A diagnosztikai naplókban az erőforrás által végrehajtott műveletekkel kapcsolatos információk találhatók meg.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Az Azure API Management diagnosztikai beállításainak engedélyezése](/Azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Az Azure API Management diagnosztikai beállításainak engedélyezése](./api-management-howto-use-azure-monitor.md#resource-logs)
 
 **Felelősség**: Ügyfél
 
@@ -264,9 +264,9 @@ Az adatsík naplózási naplózásához a diagnosztikai naplók részletes infor
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Naplók archiválása Azure Storage-fiókba](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [Naplók archiválása Azure Storage-fiókba](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Felelősség**: Ügyfél
 
@@ -278,11 +278,11 @@ Az adatsík naplózási naplózásához a diagnosztikai naplók részletes infor
 
 Opcionálisan integrálhatja API Management az Azure Application Insights-nal, és használhatja elsődleges vagy másodlagos figyelési, nyomkövetési, jelentéskészítési és riasztási eszközként.
 
-- [Az Azure-beli naplók figyelése és áttekintése API Management](/Azure/api-management/api-management-howto-use-azure-monitor)
+- [Az Azure-beli naplók figyelése és áttekintése API Management](./api-management-howto-use-azure-monitor.md)
 
-- [Egyéni lekérdezések végrehajtása a Azure Monitorban](/azure/azure-monitor/log-query/get-started-queries)
+- [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/logs/get-started-queries.md)
 
-- [Log Analytics munkaterület ismertetése](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics munkaterület ismertetése](../azure-monitor/logs/log-analytics-tutorial.md)
 
 - [Az Azure Application Insights integrációja](api-management-howto-app-insights.md)
 
@@ -300,11 +300,11 @@ Opcionálisan integrálhatja API Management az Azure Application Insights-nal, �
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
-- [Az Azure API Management diagnosztikai beállításainak engedélyezése](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Az Azure API Management diagnosztikai beállításainak engedélyezése](./api-management-howto-use-azure-monitor.md#resource-logs)
 
-- [Riasztási szabály konfigurálása az Azure API Management](/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+- [Riasztási szabály konfigurálása az Azure API Management](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 - [Azure API Management-példány kapacitási metrikáinak megtekintése](api-management-capacity.md)
 
@@ -338,7 +338,7 @@ A rendszergazdai fiókok kezelésével és karbantartásával kapcsolatban Azure
 
 - [Címtárbeli szerepkör-definíció beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/az.resources/get-azroledefinition)
 
-- [A Azure Security Center identitás-és hozzáférési javaslatainak megismerése](https://docs.microsoft.com/azure/security-center/recommendations-reference#identityandaccess-recommendations)
+- [A Azure Security Center identitás-és hozzáférési javaslatainak megismerése](../security-center/recommendations-reference.md#identityandaccess-recommendations)
 
 **Felelősség**: Ügyfél
 
@@ -419,7 +419,7 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 - [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Az Azure AD kockázati észlelések ismertetése](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Felelősség**: Ügyfél
 
@@ -505,7 +505,7 @@ A speciális figyelést a API Management használatával konfigurálhatja a `log
 
 **Útmutató**: a fiók bejelentkezési viselkedése a vezérlési síkon (a Azure Portal) a Azure Active Directory (Azure ad) Identity Protection és a kockázati észlelési funkciók használatával konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezéseinek megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -519,7 +519,7 @@ A speciális figyelést a API Management használatával konfigurálhatja a `log
 
 **Útmutató**: jelenleg nem érhető el; Az Azure API Management jelenleg nem támogatja a Ügyfélszéf.
 
-- [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Felelősség**: Ügyfél
 
@@ -533,7 +533,7 @@ A speciális figyelést a API Management használatával konfigurálhatja a `log
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -543,11 +543,11 @@ A speciális figyelést a API Management használatával konfigurálhatja a `log
 
 **Útmutató**: különálló előfizetések és/vagy felügyeleti csoportok megvalósítása fejlesztési, tesztelési és éles környezetekhez. Az Azure API Management példányokat a Virtual Network (VNet)/subnet és a megfelelő címkével kell elválasztani.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
 - [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 - [Az Azure API Management használata virtuális hálózatokkal](api-management-using-with-vnet.md)
 
@@ -571,7 +571,7 @@ A Microsoft felügyeli az Azure API Management mögöttes infrastruktúráját, 
 
 **Útmutató**: a felügyeleti sík hívások Azure Resource Manager TLS-n keresztül történik. Érvényes JSON webes jogkivonat (JWT) szükséges. Az adatsík hívások a TLS-vel és az egyik támogatott hitelesítési mechanizmussal (például ügyféltanúsítvány vagy JWT) védhetők.
 
-- [Az adatvédelem megismerése az Azure API Management](/azure/api-management/api-management-security-controls#data-protection)
+- [Az adatvédelem megismerése az Azure API Management](#data-protection)
 
 - [TLS-beállítások kezelése az Azure-ban API Management](api-management-howto-manage-protocols-ciphers.md)
 
@@ -621,7 +621,7 @@ A Microsoft felügyeli az Azure API Management mögöttes infrastruktúráját, 
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, amikor a módosítások a termelési Azure functions alkalmazásokra, valamint más kritikus vagy kapcsolódó erőforrásokra is vonatkoznak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [A Azure Monitor és az Azure-beli tevékenységek naplójának használata az Azure-ban API Management](api-management-howto-use-azure-monitor.md)
 
@@ -639,7 +639,7 @@ A Microsoft felügyeli az Azure API Management mögöttes infrastruktúráját, 
 
 A Microsoft által beolvasott és javított mögöttes platform. Tekintse át a rendelkezésre álló biztonsági ellenőrzéseket a szolgáltatás konfigurálásával kapcsolatos biztonsági rések csökkentése érdekében.
 
-- [Az Azure API Management számára elérhető biztonsági vezérlők ismertetése](/azure/api-management/api-management-security-controls)
+- [Az Azure API Management számára elérhető biztonsági vezérlők ismertetése]()
 
 **Felelősség**: Ügyfél
 
@@ -675,7 +675,6 @@ A Microsoft által beolvasott és javított mögöttes platform. Tekintse át a 
 
 A Microsoft által beolvasott és javított mögöttes platform. A szolgáltatás-konfigurációval kapcsolatos biztonsági rések csökkentése érdekében az ügyfelek áttekinthetik a számukra elérhető biztonsági vezérlőket.
 
-- [Az Azure API Management számára elérhető biztonsági vezérlők ismertetése](/azure/api-management/api-management-security-controls)
 
 **Felelősség**: Ügyfél
 
@@ -693,7 +692,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -705,7 +704,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-- [Címkék létrehozása és felhasználása](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és felhasználása](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -719,11 +718,11 @@ Emellett az Azure Policy használatával korlátozásokat állíthat be az ügyf
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
 - [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -785,7 +784,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -835,7 +834,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure API Management szolgáltatás szabványos biztonsági konfigurációinak meghatározása és implementálása Azure Policy használatával. Használjon Azure Policy aliasokat a "Microsoft. ApiManagement" névtérben egyéni szabályzatok létrehozásához az Azure API Management-szolgáltatások konfigurációjának naplózásához vagy érvényesítéséhez.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -939,7 +938,7 @@ Emellett az Azure API Management-szolgáltatások szabványos biztonsági konfig
 
 - [Felügyelt identitás létrehozása API Management-példányhoz](api-management-howto-use-managed-service-identity.md)
 
-- [Házirend a felügyelt identitással történő hitelesítéshez](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+- [Házirend a felügyelt identitással történő hitelesítéshez](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Felelősség**: Ügyfél
 
@@ -1001,7 +1000,7 @@ A API Management szolgáltatás biztonsági mentési és visszaállítási funkc
 
 - [API Management adatsík üzembe helyezése több régióban](api-management-howto-deploy-multi-region.md)
 
-- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [A API Management biztonsági mentési művelet meghívása](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
 
@@ -1017,9 +1016,9 @@ A API Management szolgáltatás biztonsági mentési és visszaállítási funkc
 
 A felügyelt identitások használatával Azure Key Vault tanúsítványok szerezhetők be API Management egyéni tartománynevek számára. Biztonsági másolat készítése a Azure Key Vaulton belül tárolt tanúsítványokról.
 
-- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-- [Azure Key Vault tanúsítványok biztonsági mentése](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure Key Vault tanúsítványok biztonsági mentése](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 **Felelősség**: Ügyfél
 
@@ -1041,7 +1040,7 @@ A felügyelt identitások használatával Azure Key Vault tanúsítványok szere
 
 **Útmutató**: az Azure API Management a biztonsági mentéseket az ügyfél által birtokolt Azure Storage-fiókba írja. A biztonsági mentés védelme érdekében kövesse az Azure Storage biztonsági javaslatait.
 
-- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [A blob Storage biztonsági javaslata](../storage/blobs/security-recommendations.md)
 
@@ -1079,7 +1078,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -1143,5 +1142,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

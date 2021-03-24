@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: af488cd253e8a8ebedd838aa5286185ea556f69d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: b54b9d932505ada890ac21c1b8de3178ad2f0042
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98942512"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867508"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Az Apache Spark hibaelhárítása az Azure HDInsighttal
 
@@ -25,49 +25,49 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elker
 
 1. Navigáljon a **Spark2**-  >  **konfigurációkhoz**.
 
-    ![Válassza a konfigurációk fület](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png" alt-text="Válassza a konfigurációk fület" border="true":::
 
 1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket**.
 
 1. Keresse meg a módosítani kívánt érték beállítást, például **spark.executor. Memory**. Ebben az esetben a **9728m** értéke túl magas.
 
-    ![Egyéni-Spark – alapértékek kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png" alt-text="Egyéni-Spark – alapértékek kiválasztása" border="true":::
 
 1. Állítsa be az értéket az ajánlott beállításra. Ehhez a beállításhoz a **2048m** érték használata javasolt.
 
 1. Mentse az értéket, majd mentse a konfigurációt. Kattintson a **Mentés** gombra.
 
-    ![Érték módosítása 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png" alt-text="Érték módosítása 2048m" border="true":::
 
     Jegyezze fel a konfigurációs módosításokat, majd kattintson a **Mentés** gombra.
 
-    ![Adjon meg egy megjegyzést az elvégzett módosításokról](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png" alt-text="Adjon meg egy megjegyzést az elvégzett módosításokról" border="true":::
 
     Értesítést kap, ha bármilyen konfigurációhoz beavatkozásra van szükség. Jegyezze fel az elemeket, majd válassza a **Folytatás egyébként** lehetőséget.
 
-    ![Válassza a folytatás](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png" alt-text="Válassza a folytatás" border="true":::
 
 1. Amikor egy konfiguráció mentve lett, a rendszer felszólítja a szolgáltatás újraindítására. Válassza az **Újraindítás** lehetőséget.
 
-    ![Újraindítás kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png" alt-text="Újraindítás kiválasztása" border="true":::
 
     Erősítse meg az újraindítást.
 
-    ![Válassza az összes újraindításának megerősítése lehetőséget.](./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7b.png" alt-text="Válassza az összes újraindításának megerősítése lehetőséget." border="true":::
 
     Áttekintheti a futó folyamatokat.
 
-    ![Futó folyamatok áttekintése](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png" alt-text="Futó folyamatok áttekintése" border="true":::
 
 1. Hozzáadhat konfigurációkat is. A konfigurációk listájában válassza az **Egyéni-spark2-alapértékek** lehetőséget, majd kattintson a **tulajdonság hozzáadása** lehetőségre.
 
-    ![Válassza a tulajdonság hozzáadása lehetőséget](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png" alt-text="Válassza a tulajdonság hozzáadása lehetőséget" border="true":::
 
 1. Adjon meg egy új tulajdonságot. Egyetlen tulajdonságot az egyes beállításokhoz, például az adattípushoz tartozó párbeszédpanel használatával adhat meg. Másik lehetőségként több tulajdonságot is megadhat, ha egy definíciót használ soronként.
 
     Ebben a példában a **Spark. Driver. Memory** tulajdonság a **4G** értékkel van definiálva.
 
-    ![Új tulajdonság definiálása](./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png)
+    :::image type="content" source="./media/apache-troubleshoot-spark/apache-spark-ambari-config9.png" alt-text="Új tulajdonság definiálása" border="true":::
 
 1. Mentse a konfigurációt, majd indítsa újra a szolgáltatást a 6. és 7. lépésekben leírtak szerint.
 
@@ -77,7 +77,7 @@ Ezek a változások a fürtre kiterjedő, de a Spark-feladatok elküldésekor fe
 
 A Jupyter Notebook első cellájában a **(z)%% configure** direktíva után adja meg a Spark-konfigurációkat érvényes JSON formátumban. Módosítsa a tényleges értékeket szükség szerint:
 
-![Konfiguráció hozzáadása](./media/apache-troubleshoot-spark/add-configuration-cell.png)
+:::image type="content" source="./media/apache-troubleshoot-spark/add-configuration-cell.png" alt-text="Konfiguráció hozzáadása" border="true":::
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Hogyan konfigurálható egy Apache Spark-alkalmazás az Apache Livy fürtökön történő használatával?
 

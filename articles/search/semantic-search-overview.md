@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: e0656c06f446ed6241b64040f063ed7ba419a942
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 7e3bfa9d91929530ae53c87ceabf639a16a5a0e6
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104771311"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104888906"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Szemantikai keresés az Azure Cognitive Search
 
 > [!IMPORTANT]
-> A szemantikai keresés nyilvános előzetes verzióban érhető el, csak az előzetes verziójú REST API. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
+> A szemantikai keresés nyilvános előzetes verzióban érhető el, az előzetes verziójú REST API és a portálon keresztül. Az előzetes verziójú funkciók a szolgáltatásban is elérhetők, a [kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)alatt, és nem garantált, hogy az általánosan elérhető implementációja azonos. Ezek a funkciók számlázva vannak. További információkért lásd a [rendelkezésre állást és a díjszabást](semantic-search-overview.md#availability-and-pricing).
 
 A szemantikai keresés olyan lekérdezésekkel kapcsolatos képességek gyűjteménye, amelyek szemantikai relevanciát és nyelvi megértést biztosítanak a keresési eredményekhez. A *szemantikai rangsorolás* a feltételek és a velük kapcsolatos viszonyok között úgy néz ki, hogy a lekérdezés több értelmet biztosít. A Language Understanding olyan *feliratokat* és *válaszokat* talál a tartalomon belül, amelyek összefoglalják a megfelelő dokumentumot, vagy megválaszolnak egy adott kérdést, amely a keresési eredmények oldalon hatékonyabb keresési élményt biztosít.
 

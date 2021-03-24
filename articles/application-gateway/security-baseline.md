@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 75d219a207fef4f1f122799af5f4f4ef2765bca4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4fc26d8e154dc0a58bb3436a8161d2e21efa2b86
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101723860"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952014"
 ---
 # <a name="azure-security-baseline-for-application-gateway"></a>Application Gateway Azure biztonsági alapterve
 
@@ -60,7 +60,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 - [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-- [Az Azure Application Gateway diagnosztikai és naplózási kérdései](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Az Azure Application Gateway diagnosztikai és naplózási kérdései](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Felelősség**: Ügyfél
 
@@ -118,7 +118,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 - [A Azure Security Center által biztosított hálózati biztonság ismertetése](../security-center/security-center-network-recommendations.md)
 
-- [Az Azure Application Gateway diagnosztikai és naplózási kérdései](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Az Azure Application Gateway diagnosztikai és naplózási kérdései](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **Felelősség**: Ügyfél
 
@@ -140,7 +140,7 @@ Azt is megteheti, hogy több Piactéri lehetőség áll rendelkezésre, példáu
 
 - [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [A Barracuda WAF Cloud Service ismertetése](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [A Barracuda WAF Cloud Service ismertetése](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **Felelősség**: Ügyfél
 
@@ -210,9 +210,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használata a hálózati erőforrás-konfigurációk figyelésére és a hálózati beállítások és az Azure Application Gateway üzemelő példányokhoz kapcsolódó erőforrások változásainak észlelésére. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati beállításokat vagy erőforrásokat módosítják.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Riasztások létrehozása a Azure Monitorban](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása a Azure Monitorban](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -230,7 +230,7 @@ A tevékenységek naplóin kívül az Azure Application Gateway üzemelő péld�
 
 Az Azure Application Gateway az Azure Application Insights beépített integrációját is biztosítja. Application Insights gyűjti a napló-, a teljesítmény-és a hiba adatait. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a webalkalmazások használatának megismerésében. A folyamatos exportálást engedélyezheti a telemetria exportálásához a Application Insightsból egy központi helyre, hogy az adatok továbbra is a normál megőrzési időtartamnál hosszabbak maradjanak.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](application-gateway-diagnostics.md)
 
@@ -250,7 +250,7 @@ A tevékenységek naplóin kívül az Azure Application Gateway üzemelő péld�
 
 Az Azure Application Gateway az Azure Application Insights beépített integrációját is biztosítja. Application Insights gyűjti a napló-, a teljesítmény-és a hiba adatait. Application Insights automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket, és hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a webalkalmazások használatának megismerésében. A folyamatos exportálást engedélyezheti a telemetria exportálásához a Application Insightsból egy központi helyre, hogy az adatok továbbra is a normál megőrzési időtartamnál hosszabbak maradjanak.
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](application-gateway-diagnostics.md)
 
@@ -266,7 +266,7 @@ Az Azure Application Gateway az Azure Application Insights beépített integrác
 
 **Útmutató**: Azure monitoron belül állítsa be a log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi előírásai szerint. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Felelősség**: Ügyfél
 
@@ -280,7 +280,7 @@ Az összes telepített hálózati erőforrás, beleértve az Azure Application G
 
 Opcionálisan engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et. 
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](application-gateway-diagnostics.md)
 
@@ -300,13 +300,13 @@ Az összes telepített hálózati erőforrás, beleértve az Azure Application G
 
 - [Az Azure WAF üzembe helyezése](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](/azure/azure-monitor/platform/activity-log)
+- [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/essentials/activity-log.md)
 
 - [Az Azure Application Gateway diagnosztikai beállításainak engedélyezése](application-gateway-diagnostics.md)
 
 - [Hálózati Azure Monitor használata](../azure-monitor/insights/network-insights-overview.md)
 
-- [Riasztások létrehozása az Azure-ban](/azure/azure-monitor/learn/tutorial-response)
+- [Riasztások létrehozása az Azure-ban](../azure-monitor/alerts/tutorial-response.md)
 
 **Felelősség**: Ügyfél
 
@@ -334,9 +334,9 @@ Konfigurálja az Azure Application Gateway üzemelő példányok diagnosztikai b
 
 **Útmutató**: Azure Active Directory (Azure ad) beépített szerepkörökkel rendelkezik, amelyeket explicit módon kell hozzárendelni, és lekérdezhető. Az Azure AD PowerShell-modullal ad hoc lekérdezéseket hajthat végre a felügyeleti csoportok tagjait futtató fiókok felderítéséhez.
 
-- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Felelősség**: Ügyfél
 
@@ -444,7 +444,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 **Útmutató**: a Azure Active Directory (Azure ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -458,7 +458,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics munkaterületen belül konfigurálhatja a kívánt riasztásokat.
 
-- [Azure-tevékenységnaplók integrálása az Azure Monitorba](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure-tevékenységnaplók integrálása az Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Felelősség**: Ügyfél
 
@@ -486,7 +486,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését. 
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Felelősség**: Ügyfél
 
@@ -546,7 +546,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használatával riasztásokat hozhat létre, amelyekkel az Azure Application Gateway-példányok, valamint más kritikus vagy kapcsolódó erőforrások változásai zajlanak.
 
-- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](/azure/azure-monitor/platform/alerts-activity-log)
+- [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Felelősség**: Ügyfél
 
@@ -604,7 +604,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 - [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-- [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
@@ -667,7 +667,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/built-in-policies.md#general)
 
 **Felelősség**: Ügyfél
 
@@ -709,7 +709,7 @@ További információkért lásd az alábbi hivatkozásokat.
 
 **Útmutató**: az Azure Application Gateway üzemelő példányokhoz kapcsolódó hálózati beállítások szabványos biztonsági konfigurációinak meghatározása és implementálása. A "Microsoft. Network" névtérben Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Azure Application Gateway-, Azure-alapú virtuális hálózatok és hálózati biztonsági csoportok hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Használhatja a beépített szabályzat-definíciót is.
 
-- [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Az Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
@@ -733,9 +733,9 @@ További információkért lásd az alábbi hivatkozásokat.
 
 **Útmutató**: Ha egyéni Azure-szabályzat-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -817,7 +817,7 @@ Konfigurálja az Azure Application Gateway üzemelő példányok diagnosztikai b
 
 **Útmutató**: az Azure webalkalmazási TŰZFAL (WAF) használata esetén WAF házirendeket konfigurálhat. A WAF-szabályzatok két különböző típusú biztonsági szabályt alkotnak: az ügyfél által létrehozott egyéni szabályokat, valamint a felügyelt szabálykészlet, amely az Azure által felügyelt, előre konfigurált szabályok gyűjteménye. Az Azure által felügyelt szabálykészlet egyszerű módszert kínál a védelem közös biztonsági fenyegetésekkel való üzembe helyezésére. Mivel az ilyen szabályrendszerek az Azure felügyeli, a szabályok az új támadási aláírások elleni védelemhez szükséges módon frissülnek.
 
-- [Az Azure által felügyelt WAF-szabályok ismertetése](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy-and-rules)
+- [Az Azure által felügyelt WAF-szabályok ismertetése](../web-application-firewall/ag/ag-overview.md#waf-policy-and-rules)
 
 **Felelősség**: Megosztott
 
@@ -833,11 +833,11 @@ Konfigurálja az Azure Application Gateway üzemelő példányok diagnosztikai b
 
 Az Azure DevOps Services számos Azure Storage-funkciót használ, hogy gondoskodni tudjon az adatok rendelkezésre állásáról hardverhiba, szolgáltatáskimaradás vagy régiós katasztrófa esetén. Az Azure DevOps csapata olyan eljárásokat is követ, amelyek a véletlen vagy rosszindulatú törlésektől védi az adatokat.
 
-- [Az adatelérhetőség ismertetése az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Az adatelérhetőség ismertetése az Azure DevOps](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Az Azure Repos dokumentációja](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Felelősség**: Ügyfél
 
@@ -963,5 +963,5 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Security Benchmark v2 áttekintésének](/azure/security/benchmarks/overview) megtekintése
-- További tudnivalók az [Azure biztonsági alapterveiről](/azure/security/benchmarks/security-baselines-overview)
+- [Az Azure Security Benchmark v2 áttekintésének](../security/benchmarks/overview.md) megtekintése
+- További tudnivalók az [Azure biztonsági alapterveiről](../security/benchmarks/security-baselines-overview.md)

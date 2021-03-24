@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: ef1a49301cf150f92d30c163dee262a22f1515d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 95ee4e5f326dd9b76645d22ff735bc36437c72fb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101714952"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870116"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -35,7 +35,19 @@ Az elsődleges csomópont típusához javasolt topológiához az alábbi erőfor
 >[!NOTE]
 > A virtuálisgép-méretezési csoport egyhelyes csoportok tulajdonságát igaz értékre kell állítani, mivel Service Fabric nem támogatja egyetlen virtuálisgép-méretezési csoportot, amely zónákra terjed ki.
 
- ![Az Azure Service Fabric rendelkezésre állási zóna architektúráját bemutató diagram.][sf-architecture]
+Az Azure Service Fabric rendelkezésre állási zóna architektúrájának ábrája ![ , amely az azure Service Fabric rendelkezésre állási zóna architektúráját mutatja.][sf-architecture]
+
+A virtuálisgép-méretezési csoportokban az FD/UD formátumait ábrázoló minta-csomópontok listája
+
+ ![A virtuálisgép-méretezési csoportokban az FD/UD formátumokat ábrázoló minta-csomópontok listája.][sf-multi-az-nodes]
+
+A **szolgáltatási replikák eloszlása a zónák között**: Ha a nodeTypes olyan szolgáltatás van telepítve, amely zónákra terjed ki, a replikák úgy lesznek elhelyezve, hogy azok külön zónákban legyenek kihelyezve. Ez gondoskodik arról, hogy a tartalék tartomány az egyes nodeTypes lévő csomópontokon legyen konfigurálva a zóna adataival (azaz FD = FD:/(1/1, stb.). Például: 5 replika vagy egy szolgáltatás példányai esetében a terjesztés 2-2-1, a futtatókörnyezet pedig a AZs közötti egyenlő eloszlást fogja biztosítani.
+
+**Felhasználói szolgáltatás replikájának konfigurációja**: a rendszer a rendelkezésre állási zóna nodeTypes üzembe helyezett állapot-nyilvántartó felhasználói szolgáltatásokat konfigurálja ehhez a konfigurációhoz: a replika száma a TARGET = 9, a min = 5. Ez a konfiguráció segíti a szolgáltatást abban az esetben is, ha egy zóna leáll, mivel a 6 replika még mindig a másik két zónában fog működni. Egy ilyen forgatókönyvben az alkalmazás frissítése is megtörténik.
+
+**Fürt ReliabilityLevel**: Ez határozza meg a fürtben lévő mag-csomópontok számát, valamint a rendszerszolgáltatások replikájának méretét is. Mivel a többhelyes rendelkezésre állási zónák beállítása nagyobb számú csomópontot tartalmaz, amelyek több zónában vannak elosztva a zónák rugalmasságának lehetővé tételéhez, a magasabb megbízhatósági érték biztosítja, hogy a csomópontok több vetőmag-csomópontot és rendszerszolgáltatás-replikákat biztosítanak, és egyenletesen oszlanak el a zónák között, így ha egy zóna meghibásodása esetén a fürt és a rendszerszolgáltatások nem A "ReliabilityLevel = Platinum" biztosítja, hogy 9 mag-csomópont legyen elosztva a fürt zónái között, és mindegyik zónában 3 magot biztosít, ezért ez a rendelkezésre állási zóna telepítésének ajánlása.
+
+**Zóna lefelé mutató forgatókönyv**: Ha egy zóna leáll, a zónában lévő összes csomópont le lesz jelenítve. Ezen csomópontokon a szolgáltatási replikák is le lesznek kapcsolva. Mivel a többi zónában replikák vannak, a szolgáltatás továbbra is reagálni fog az elsődleges replikákkal, és a rendszer a működés közbeni zónákat is felhasználja. A szolgáltatások figyelmeztetési állapotban jelennek meg, mivel a célként megadott replika száma még nem érhető el, és mivel a virtuális gépek száma továbbra is meghaladja a minimálisan megcélzott replika méretét. Ezt követően Service Fabric Load Balancer replikákat hoz létre a munkazónákban a beállított replika-számnak megfelelően. Ezen a ponton a szolgáltatások Kifogástalan állapotba kerülnek. Ha az a zóna, amelyről nem érkezik biztonsági másolat, a terheléselosztás újra elosztja az összes szolgáltatási replikát az összes zónában.
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 ### <a name="public-ip-and-load-balancer-resource"></a>Nyilvános IP-cím és Load Balancer erőforrás
@@ -345,7 +357,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
 
 * Az első érték a **Zones** tulajdonság, amely meghatározza a virtuálisgép-méretezési csoport Availability Zones.
 * A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani. **A 3 AZ-ra kiterjedő méretezési csoport legfeljebb 300 virtuális gépet képes méretezni, akár "singlePlacementGroup = true" értékkel.**
-* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását. Ennek "igaz" értékűnek kell lennie a virtuális gépek zónák közötti kiegyensúlyozatlan eloszlásának elkerüléséhez. A zónák közötti, kiegyensúlyozatlan virtuálisgép-eloszlású fürtök kevésbé valószínű, hogy megmaradnak a zónában a scenatio. További információ a [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
+* A harmadik érték a "zoneBalance", amely biztosítja a zónák szigorú kiegyensúlyozását. Ennek a következőnek kell lennie: "true". Ez biztosítja, hogy a zónák közötti virtuális gépek eloszlása ne legyen kiegyensúlyozatlan, gondoskodjon arról, hogy ha az egyik zóna leáll, a másik két zónának elegendő virtuális géppel kell rendelkeznie annak biztosításához, hogy a fürt zavartalanul fusson. A nem kiegyensúlyozatlan virtuálisgép-eloszlású fürtök esetében előfordulhat, hogy a zónák nem maradhatnak le, mert az adott zóna a virtuális gépek többségével rendelkezhet. A kiegyensúlyozatlan virtuálisgép-eloszlás a zónák között a szolgáltatások elhelyezésével kapcsolatos problémákat is eredményez & az infrastruktúra frissítései beragadtak. További információ a [zoneBalancing](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing).
 * A FaultDomain és a UpgradeDomain felülbírálásokat nem szükséges konfigurálni.
 
 ```json
@@ -363,7 +375,7 @@ A zónák virtuálisgép-méretezési csoportokon való engedélyezéséhez a k�
 ```
 
 >[!NOTE]
-> * **Az SF-fürtöknek legalább egy elsődleges nodeType kell rendelkezniük. Az elsődleges nodeTypes DurabilityLevel Silver vagy Above értéknek kell lennie.**
+> * **Service Fabric fürtöknek legalább egy elsődleges nodeType kell rendelkezniük. Az elsődleges nodeTypes DurabilityLevel Silver vagy Above értéknek kell lennie.**
 > * Az az átfedő virtuálisgép-méretezési csoportnak legalább 3 rendelkezésre állási zónával kell konfigurálnia a durabilityLevel függetlenül.
 > * AZ AZ átfedő virtuálisgép-méretezési csoportnak az ezüst tartósságával (vagy újabb verzióval) legalább 15 virtuális géppel kell rendelkeznie.
 > * AZ AZ spanning virtuálisgép-méretezési csoport bronz tartóssággal, legalább 6 virtuális géppel kell rendelkeznie.
@@ -373,13 +385,13 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 
 * Az első érték a **multipleAvailabilityZones** , amelyet igaz értékűre kell állítani a nodeType esetében.
 * A második érték a **sfZonalUpgradeMode** , és nem kötelező. Ez a tulajdonság nem módosítható, ha a fürtben már szerepel egy olyan NodeType, amely több AZ az.
-      A tulajdonság a virtuális gépek logikai csoportosítását vezérli a frissítési tartományokban.
-          Ha értéke "Parallel" (párhuzamos) értékre van állítva: a NodeType alatti virtuális gépek a frissítési-ben lesznek csoportosítva, figyelmen kívül hagyva a zóna adatait 5 frissítési.
-          Ha az érték ki van hagyva vagy "hierarchikus" értékűre van állítva: a virtuális gépek úgy vannak csoportosítva, hogy tükrözzék a zóna szerinti eloszlást akár 15 frissítési. A 3 zóna mindegyike 5 frissítési fog rendelkezni.
-          Ez a tulajdonság csak a ServiceFabric alkalmazás és a kód verziófrissítésének frissítési viselkedését határozza meg. Az alapul szolgáló virtuálisgép-méretezési csoport frissítései továbbra is párhuzamosak lesznek az AZ-ban.
-      Ez a tulajdonság nem befolyásolja az UD-eloszlást olyan csomópont-típusok esetén, amelyeken nincs engedélyezve több zóna.
+  A tulajdonság a virtuális gépek logikai csoportosítását vezérli a frissítési tartományokban.
+  **Ha az érték "Parallel" (párhuzamos) értékre van állítva:** A NodeType alá tartozó virtuális gépek a frissítési figyelmen kívül hagyják a zóna adatait 5 frissítési. Ez azt eredményezi, hogy az összes zónában UD0, hogy egyszerre legyen frissítve. Ez az üzembe helyezési mód gyorsabb a frissítésekhez, de nem ajánlott, mert az a SDP irányelvek szerint működik, amely azt adja meg, hogy a frissítések egyszerre csak egy zónát alkalmazzanak.
+  **Ha az érték nincs megadva, vagy a "hierarchikus" értéket adja meg:** A virtuális gépek úgy lesznek csoportosítva, hogy tükrözzék a zóna szerinti eloszlást akár 15 frissítési. A 3 zóna mindegyike 5 frissítési fog rendelkezni. Ez biztosítja, hogy a frissítések go Zone Wise legyen, a következő zónára való áttérés után csak az első zónán belüli 5 frissítési befejezése után, lassan 15 frissítési (3 zóna, 5 frissítési), ami biztonságosabb a fürt és a felhasználói alkalmazás szempontjából.
+  Ez a tulajdonság csak a ServiceFabric alkalmazás és a kód verziófrissítésének frissítési viselkedését határozza meg. Az alapul szolgáló virtuálisgép-méretezési csoport frissítései továbbra is párhuzamosak lesznek az AZ-ban.
+  Ez a tulajdonság nem befolyásolja az UD-eloszlást olyan csomópont-típusok esetén, amelyeken nincs engedélyezve több zóna.
 * A harmadik érték a **vmssZonalUpgradeMode = Parallel**. Ez egy *kötelező* tulajdonság, amelyet konfigurálni kell a fürtben, ha több AZs rendelkező nodeType van hozzáadva. Ez a tulajdonság határozza meg a virtuálisgép-méretezési csoport frissítéseinek frissítési módját, amely párhuzamosan fog történni az AZ összes időpontban.
-      Most ezt a tulajdonságot csak párhuzamosra lehet beállítani.
+  Most ezt a tulajdonságot csak párhuzamosra lehet beállítani.
 * A Service Fabric fürterőforrás-apiVersion "2020-12-01-Preview" vagy magasabb értékűnek kell lennie.
 * A fürt kódjának a következőnek kell lennie: "7.2.445" vagy újabb.
 
@@ -408,7 +420,7 @@ A több rendelkezésre állási zóna támogatásához engedélyezni kell a Serv
 >[!NOTE]
 > * A nyilvános IP-cím és a Load Balancer erőforrásnak a cikkben korábban ismertetett standard SKU-t kell használnia.
 > * a nodeType "multipleAvailabilityZones" tulajdonsága csak a nodeType létrehozásakor adható meg, és később nem módosítható. Ezért a meglévő nodeTypes nem konfigurálhatók ezzel a tulajdonsággal.
-> * Ha a "sfZonalUpgradeMode" ki van hagyva vagy "hierarchikus" értékre van állítva, a fürt és az alkalmazás központi telepítése lassabb lesz, mert a fürtben több frissítési tartomány található. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve.
+> * Ha a "sfZonalUpgradeMode" ki van hagyva vagy "hierarchikus" értékre van állítva, a fürt és az alkalmazás központi telepítése lassabb lesz, mert a fürtben több frissítési tartomány található. Fontos, hogy megfelelően módosítsa a frissítési szabályzat időtúllépését, hogy az a 15 frissítési tartományhoz tartozó frissítési idő időtartamára legyen beépítve. Az alkalmazás és a fürt frissítési szabályzatát frissíteni kell, hogy az üzemelő példány ne lépje túl a 12hours Azure Resource Serbice üzembe helyezési időtúllépését. Ez azt jelenti, hogy a telepítés nem haladhatja meg a 12hours-t a 15UDs esetében, azaz legfeljebb 40 perc/UD lehet.
 > * Állítsa be a **reliabilityLevel = Platinum** fürtöt annak biztosítására, hogy a fürt megmaradjon az egy zóna lefelé irányuló forgatókönyvben.
 
 >[!NOTE]
@@ -426,3 +438,4 @@ A cikk [itt](./service-fabric-scale-up-primary-node-type.md) rögzíti az új no
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
 [sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png
+[sf-multi-az-nodes]: ./media/service-fabric-cross-availability-zones/sf-multi-az-nodes.png

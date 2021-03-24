@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 3524b5d2274c52aa94fa1c3420fb0d3245d9b730
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e6c692e8fc13d1703df44c99e9969ba4db5f119
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98932057"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872098"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -36,7 +36,7 @@ A Microsoft a következő segédprogramokat biztosítja a fürtök méretezésé
 |[Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
 |[Azure Portal](https://portal.azure.com)|Nyissa meg a HDInsight-fürt panelt, válassza ki a **fürt méretét** a bal oldali menüben, majd a fürt mérete panelen írja be a munkavégző csomópontok számát, majd kattintson a Mentés gombra.|  
 
-![Azure Portal méretezési fürt beállítása](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png" alt-text="Azure Portal méretezési fürt beállítása":::
 
 A módszerek bármelyikével akár percek alatt is méretezheti a HDInsight-fürtöt.
 
@@ -82,7 +82,7 @@ Az adatcsomópontok számának módosításának következményei a HDInsight á
 
     1. Válassza ki a megismételni kívánt topológiát, majd kattintson az **újraelosztás** gombra. Adja meg az újraelosztási művelet végrehajtása előtti késleltetést.
 
-        ![HDInsight Storm skálázási egyensúly](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+        :::image type="content" source="./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png" alt-text="HDInsight Storm skálázási egyensúly":::
 
   * Parancssori felület (CLI) eszköz
 
@@ -130,13 +130,13 @@ A függőben lévő és futó feladatok listájának megtekintéséhez a követk
 3. A Ambari felhasználói felületén válassza a **fonal** elemet a szolgáltatások listájában a bal oldali menüben.  
 4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **Resource Manager felhasználói felület** lehetőséget.
 
-    ![Apache Ambari – a Resource Manager felhasználói felületének gyors hivatkozásai](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
+    :::image type="content" source="./media/hdinsight-scaling-best-practices/resource-manager-ui1.png" alt-text="Apache Ambari – a Resource Manager felhasználói felületének gyors hivatkozásai":::
 
 A Resource Manager felhasználói felületét közvetlenül is elérheti `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` .
 
 Ekkor megjelenik a feladatok listája, valamint a jelenlegi állapotuk. A képernyőképen egy jelenleg futó feladatot futtatunk:
 
-![Resource Manager felhasználói felületi alkalmazások](./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png)
+:::image type="content" source="./media/hdinsight-scaling-best-practices/resourcemanager-ui-applications.png" alt-text="Resource Manager felhasználói felületi alkalmazások":::
 
 Ha manuálisan szeretné megölni a futó alkalmazást, hajtsa végre a következő parancsot az SSH-rendszerhéjból:
 

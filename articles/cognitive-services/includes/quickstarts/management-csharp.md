@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/05/2020
+ms.date: 3/22/2021
 ms.author: pafarley
-ms.openlocfilehash: 7da10fbdff0b6771fcffb6cc303d5ab183df190a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1ecfd58e961e70182bfc2e0cc8eaf77f5053eb77
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947392"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104879578"
 ---
 [Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/management)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
@@ -28,7 +28,7 @@ ms.locfileid: "98947392"
 
 ## <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core-alkalmazást. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `azure-management-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*. 
+Hozzon létre egy új .NET Core-alkalmazást. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `azure-management-quickstart` . Ez a parancs egy egyszerű "Hello World" C#-projektet hoz létre egyetlen forrásfájl: *program. cs*. 
 
 ```console
 dotnet new console -n azure-management-quickstart
@@ -64,13 +64,13 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 ### <a name="import-libraries"></a>Kódtárak importálása
 
-Nyissa meg a *program.cs* , és adja hozzá a következő `using` utasításokat a fájl elejéhez:
+Nyissa meg a *program. cs* fájlt, és adja hozzá a következő `using` utasításokat a fájl elejéhez:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_using)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Adja hozzá a következő mezőket a *program.cs* gyökeréhez, és töltse fel az értékeit a létrehozott egyszerű szolgáltatásnév és az Azure-fiók adatai alapján.
+Adja hozzá a következő mezőket a program gyökeréhez *. cs* , és töltse fel az értékeit a létrehozott egyszerű szolgáltatásnév és az Azure-fiók adatai alapján.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_constants)]
 
@@ -122,7 +122,9 @@ dotnet run
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Management SDK dokumentációja](/dotnet/api/overview/azure/cognitiveservices/management)
-* [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
-* [Kérelmek hitelesítése az Azure Cognitive Services](../../authentication.md)
-* [Új erőforrás létrehozása az Azure Portal használatával](../../cognitive-services-apis-create-account.md)
+* Lásd: **[kérelmek hitelesítése az Azure-Cognitive Services](../../authentication.md)** a Cognitive Services biztonságos kezeléséhez.
+* Ismerje meg, **[Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)** a különböző kategóriák listájának lekéréséhez Cognitive Serviceson belül.
+* A Cognitive Services által támogatott természetes nyelvek listájának megjelenítéséhez tekintse meg a **[természetes nyelvi támogatás](../../language-support.md)** című témakört.
+* Lásd: a **[Cognitive Services használata tárolóként](../../cognitive-services-container-support.md)** a Cognitive Services helyszíni használatának megismeréséhez.
+* A Cognitive Services használatának költségeinek **[kiszámításához tekintse meg a Cognitive Services költségeinek tervezése és kezelése](../../plan-manage-costs.md)** című témakört.
+* A Management SDK-val kapcsolatos további részletekért tekintse meg **[Cognitive Services Management SDK dokumentációját](/dotnet/api/overview/azure/cognitiveservices/management)** .

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 98b50673b464044af2a038fa93c3b6a022fa2899
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103149703"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954649"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -129,9 +129,7 @@ A `object result = await client.GetDigitalTwinAsync("my-moon");` *Hold* típusú
 
 A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következő értékeket tartalmazzák:
 * `$dtId`: Az Azure Digital Twins-példányban található Digital Twin azonosító
-* `$etag`: A webkiszolgáló által hozzárendelt szabványos HTTP-mező. Ezt a rendszer minden egyes frissítésekor új értékre frissíti, ami hasznos lehet annak megállapítására, hogy a Twin-adatbázis frissítve lett-e a kiszolgálón az előző ellenőrzések óta. A HTTP-fejlécekben is használható a következő módokon:
-  - olvasási műveletekkel a nem módosított tartalom beolvasásának elkerüléséhez
-  - az optimista párhuzamosságot támogató írási műveletekkel
+* `$etag`: A webkiszolgáló által hozzárendelt szabványos HTTP-mező. Ezt a rendszer minden egyes frissítésekor új értékre frissíti, ami hasznos lehet annak megállapítására, hogy a Twin-adatbázis frissítve lett-e a kiszolgálón az előző ellenőrzések óta. A használatával `If-Match` olyan frissítéseket és törléseket végezhet, amelyek csak akkor fejeződnek be, ha az entitás ETAG megegyezik a megadott ETAG. A műveletekkel kapcsolatos további információkért tekintse meg a [DigitalTwins Update](/rest/api/digital-twins/dataplane/twins/digitaltwins_update) és a [DigitalTwins delete](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete)dokumentációját.
 * `$metadata`: Más tulajdonságok készlete, beleértve a következőket:
   - A digitális iker modell DTMI.
   - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.

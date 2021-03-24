@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
-ms.openlocfilehash: 1199fee82532eacf1f0ef41b877b970d7d9f2cf5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 75f758054f867c58dd4180fe5e728e66785e3b11
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98941056"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869769"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel
 
@@ -28,7 +28,7 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
 
 2. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát. A Zeppelin lapon létrehozhat egy új megjegyzést, vagy megnyithatja a meglévő megjegyzéseket. A **HiveSample** tartalmaz néhány minta kaptár-lekérdezést.  
 
-    ![HDInsight interaktív lekérdezés Zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png" alt-text="HDInsight interaktív lekérdezés Zeppelin" border="true":::
 
 3. Válassza az **új Megjegyzés létrehozása** lehetőséget.
 
@@ -46,7 +46,7 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
     show tables
     ```
 
-    ![A HDInsight interaktív lekérdezési Zeppelin lekérdezéseket futtat](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    :::image type="content" source="./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png" alt-text="A HDInsight interaktív lekérdezési Zeppelin lekérdezéseket futtat" border="true":::
 
     Az első sorban található **% JDBC (kaptár)** utasítás azt jelzi, hogy a jegyzetfüzet a kaptár JDBC-értelmező használatát mutatja be.
 

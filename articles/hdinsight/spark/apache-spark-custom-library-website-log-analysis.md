@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 591804a31c100e5c8211ec6d73fc483c9ac85c72
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d99bf914d3ef746fe328d2447426565fc15e52b4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98940309"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866318"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
 
@@ -30,11 +30,11 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
 
 1. Hozzon létre új notebookot. Válassza az **új**, majd a **PySpark** lehetőséget.
 
-    ![Új Apache-Jupyter Notebook létrehozása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Új Jupyter Notebook létrehozása")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png " alt-text="Új Apache-Jupyter notebook létrehozása" border="true"::: Jegyzetfüzet "Border =" true ":::
 
 1. Az új notebook létrejött, és Untitled.pynb néven nyílt meg. Válassza ki a jegyzetfüzet nevét a tetején, és adjon meg egy rövid nevet.
 
-    ![A notebook elnevezése](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "A notebook elnevezése")
+    :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png " alt-text="Adja meg a" border="true":::"Border =" true "notebook tebook nevét:::
 
 1. Mivel a PySpark kernel használatával létrehozott egy jegyzetfüzetet, nem kell explicit módon létrehoznia a környezeteket. Az első kódcella futtatásakor a Spark- és Hive-környezetek automatikusan létrejönnek. Először importálja a forgatókönyvhöz szükséges típusokat. Illessze be a következő kódrészletet egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt.
 
@@ -173,7 +173,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
 
    A következő képhez hasonló kimenetnek kell megjelennie:
 
-   ![hdinsight jupyter SQL-lekérdezés kimenete](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL-lekérdezés kimenete")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png " alt-text="hdinsight jupyter SQL-lekérdezés kimeneti" border="true":::yter SQL-lekérdezés kimenete "Border =" true ":::
 
    A Magic szolgáltatással kapcsolatos további információkért `%%sql` lásd: [%% SQL Magic által támogatott paraméterek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
@@ -191,7 +191,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
 
    A következő képhez hasonló kimenetnek kell megjelennie:
 
-   ![az Apache Spark webes naplójának elemzési ábrázolása](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib kimenete")
+   :::image type="content" source="./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png " alt-text="Apache Spark web log Analysis Plot" border="true":::az EB log Analysis Plot "Border =" true ":::
 
 1. Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a jegyzetfüzetet.
 

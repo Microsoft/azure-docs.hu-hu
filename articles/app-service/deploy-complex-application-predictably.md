@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 8742b590af89954cb8480e5282827bcd5228673b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aec23c28e075dd38fa65f1315f9abd9e21cdc9cb
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101095833"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951470"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan alkalmazásokat, amelyekben a [Azure app Service](https://azure.microsoft.com/services/app-service/) egy egységként, a [JSON-erőforráscsoportok](https://en.wikipedia.org/wiki/Microservices) és a PowerShell-parancsfájlok használatával kiszámítható módon használható. 
@@ -45,7 +45,7 @@ További információ: a [Azure PowerShell használata a Azure Resource Manager]
 Ez az [előnézeti eszköz](https://resources.azure.com) lehetővé teszi az előfizetésben lévő erőforráscsoportok és az egyes erőforrások JSON-definícióinak megismerését. Az eszközben szerkesztheti az erőforrások JSON-definícióit, törölheti az erőforrások teljes hierarchiáját, és új erőforrásokat hozhat létre.  Az eszközön könnyen elérhető információk nagyon hasznosak a sablon készítéséhez, mert megmutatja, hogy milyen tulajdonságokat kell beállítania egy adott típusú erőforráshoz, a helyes értékekhez stb. Az erőforráscsoportot az [Azure Portalon](https://portal.azure.com/)is létrehozhatja, majd megvizsgálhatja a JSON-definíciókat az Explorer eszközben, hogy segítsen az templatize.
 
 ### <a name="deploy-to-azure-button"></a>Üzembe helyezés az Azure-ban gomb
-Ha a GitHubot használja a verziókövetés számára, a README-ban üzembe helyezheti az Azure-ban [gombot](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-to-azure-button) . Az MD, amely lehetővé teszi egy kulcsrakész üzembe helyezési felület használatát az Azure-ban. Ezt bármely egyszerű alkalmazás esetében kiterjesztheti úgy, hogy lehetővé tegye egy teljes erőforráscsoport üzembe helyezését azáltal, hogy egy azuredeploy.jst helyez el a tárház gyökerében lévő fájlon. Ezt a JSON-fájlt, amely tartalmazza az erőforráscsoport-sablont, az üzembe helyezés az Azure-ban gombra kattintva hozza létre az erőforráscsoportot. Példaként tekintse meg a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) mintát, amelyet ebben az oktatóanyagban fog használni.
+Ha a GitHubot használja a verziókövetés számára, a README-ban üzembe helyezheti az Azure-ban [gombot](../azure-resource-manager/templates/deploy-to-azure-button.md) . Az MD, amely lehetővé teszi egy kulcsrakész üzembe helyezési felület használatát az Azure-ban. Ezt bármely egyszerű alkalmazás esetében kiterjesztheti úgy, hogy lehetővé tegye egy teljes erőforráscsoport üzembe helyezését azáltal, hogy egy azuredeploy.jst helyez el a tárház gyökerében lévő fájlon. Ezt a JSON-fájlt, amely tartalmazza az erőforráscsoport-sablont, az üzembe helyezés az Azure-ban gombra kattintva hozza létre az erőforráscsoportot. Példaként tekintse meg a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) mintát, amelyet ebben az oktatóanyagban fog használni.
 
 ## <a name="get-the-sample-resource-group-template"></a>A minta erőforráscsoport sablonjának beolvasása
 Most nézzük meg a jogot.
@@ -90,7 +90,7 @@ Nem fogom leírni a JSON formátum minden részletét, de a [További erőforrá
 ### <a name="parameters"></a>Paraméterek
 Tekintse meg a parameters (paraméterek) szakaszt, amelyből megtudhatja, hogy a paraméterek többsége az, amit az **Azure-beli üzembe helyezés** gomb kér a bevitelhez. A **telepítés az Azure** -ba gomb mögötti hely feltölti a bemeneti felhasználói felületet a azuredeploy.json paraméterben meghatározott paraméterek használatával. Ezeket a paramétereket az erőforrás-definíciók, például az erőforrások neve, a tulajdonságértékek stb. használják.
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>Források
 A Resources (erőforrások) csomópontban láthatja, hogy 4 legfelső szintű erőforrás van definiálva, beleértve egy SQL Server példányt, egy App Service tervet és két alkalmazást. 
 
 #### <a name="app-service-plan"></a>App Service-csomag

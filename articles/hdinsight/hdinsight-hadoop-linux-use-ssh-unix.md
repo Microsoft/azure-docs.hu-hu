@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 02/28/2020
-ms.openlocfilehash: a649c448e4d51929421a8dadbcd1948d7e130df1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a8ad0c787235b94a600d14a3b447bbfee052321b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945673"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864856"
 ---
 # <a name="connect-to-hdinsight-apache-hadoop-using-ssh"></a>Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val
 
@@ -86,7 +86,7 @@ A rendszer a kulcs létrehozási folyamata során kér információt. Például 
 
 | Létrehozási metódus | A nyilvános kulcs használata |
 | ------- | ------- |
-| Azure Portal | Törölje __a fürt bejelentkezési jelszavának használata SSH__-hoz beállítást, majd válassza a __nyilvános kulcs__ lehetőséget az SSH-hitelesítési típusként. Végül válassza ki a nyilvános kulcs fájlját, vagy illessze be a fájl szöveges tartalmát a __Nyilvános SSH-kulcs__ mezőbe.</br>![Nyilvános SSH-kulcs párbeszédpanel a HDInsight-fürt létrehozásakor](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| Azure Portal | Törölje __a fürt bejelentkezési jelszavának használata SSH__-hoz beállítást, majd válassza a __nyilvános kulcs__ lehetőséget az SSH-hitelesítési típusként. Végül válassza ki a nyilvános kulcs fájlját, vagy illessze be a fájl szöveges tartalmát a __Nyilvános SSH-kulcs__ mezőbe.</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png" alt-text="Nyilvános SSH-kulcs párbeszédpanel a HDInsight-fürt létrehozásakor"::: |
 | Azure PowerShell | Használja a `-SshPublicKey` [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag paraméterét, és adja át a nyilvános kulcs tartalmát karakterláncként.|
 | Azure CLI | Használja a `--sshPublicKey` parancs paraméterét [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) , és adja át a nyilvános kulcs tartalmát karakterláncként. |
 | Resource Manager-sablon | Az SSH-kulcsok sablonnal történő használatának példájáért tekintse meg a [HDInsight Linux rendszeren, SSH-kulccsal való telepítéséről](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) szóló témakört. Az [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) fájlban lévő `publicKeys` elemmel illeszthetők be a kulcsok az Azure-ba a fürt létrehozásakor. |
@@ -105,7 +105,7 @@ Az SSH-fiókok jelszóval védhetők. Ha SSH-val csatlakozik a HDInsight-hez, a 
 
 | Létrehozási metódus | Jelszó megadása |
 | --------------- | ---------------- |
-| Azure Portal | Alapértelmezés szerint az SSH-felhasználói fióknak ugyanaz a jelszava, mint a fürt bejelentkezési fiókjának. Ha más jelszót szeretne használni, törölje a __fürt bejelentkezési jelszavának használata SSH__-hoz lehetőséget, majd írja be a jelszót az __SSH-jelszó__ mezőbe.</br>![SSH-jelszó párbeszédpanel a HDInsight-fürt létrehozásakor](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| Azure Portal | Alapértelmezés szerint az SSH-felhasználói fióknak ugyanaz a jelszava, mint a fürt bejelentkezési fiókjának. Ha más jelszót szeretne használni, törölje a __fürt bejelentkezési jelszavának használata SSH__-hoz lehetőséget, majd írja be a jelszót az __SSH-jelszó__ mezőbe.</br>:::image type="content" source="./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png" alt-text="SSH-jelszó párbeszédpanel a HDInsight-fürt létrehozásakor":::|
 | Azure PowerShell | Használja a `--SshCredential` [New-AzHdinsightCluster](/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsmag paraméterét, és adjon át egy olyan `PSCredential` objektumot, amely tartalmazza az SSH-felhasználói fiók nevét és jelszavát. |
 | Azure CLI | Használja a `--ssh-password` parancs paraméterét [`az hdinsight create`](/cli/azure/hdinsight#az-hdinsight-create) , és adja meg a jelszó értékét. |
 | Resource Manager-sablon | A jelszavak sablonnal történő használatának példájáért tekintse meg a [HDInsight Linux rendszeren, SSH-kulccsal való telepítéséről](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) szóló témakört. Az [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) fájlban lévő `linuxOperatingSystemProfile` elemmel illeszthető be az SSH-fióknév és -jelszó az Azure-ba a fürt létrehozásakor.|

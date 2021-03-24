@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: a4cc898744109475bc119f37350d1b689c550f58
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4d36b2c2178c7205246cd7c59aefedef3358e473
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209560"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951742"
 ---
 # <a name="managed-hsm-role-management"></a>A Managed HSM szerepkörkezelése
 
@@ -33,7 +33,7 @@ Az összes felügyelt HSM beépített szerepkör és az általuk engedélyezett 
 A cikkben szereplő Azure CLI-parancsok használatához a következő elemek szükségesek:
 
 * Egy Microsoft Azure-előfizetésre. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial).
-* Az Azure CLI verziója 2.12.0 vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
+* Az Azure CLI verziója 2.21.0 vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 * Felügyelt HSM az előfizetésében. Lásd [: gyors útmutató: felügyelt HSM kiépítése és aktiválása az Azure CLI használatával](quick-create-cli.md) a FELÜGYELt HSM üzembe helyezéséhez és aktiválásához.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -113,6 +113,70 @@ az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Cr
 ```azurecli-interactive
 az keyvault role definition list --hsm-name ContosoMHSM
 ```
+
+## <a name="create-a-new-role-definition"></a>Új szerepkör-definíció létrehozása
+
+A felügyelt HSM számos beépített (előre definiált) szerepkörrel rendelkezik, amelyek a leggyakoribb felhasználási helyzetekben hasznosak. Megadhatja a saját szerepkörét a szerepkör által elvégezhető konkrét műveletek listájával. Ezt követően ezt a szerepkört hozzárendelheti a résztvevőhöz, hogy az engedélyt adjon nekik a megadott műveletekhez. 
+
+Használja a `az keyvault role definition create` parancsot egy **Egyéni szerepkört** használó SZEREPKÖRhöz egy JSON-karakterlánc használatával.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+    "roleName": "My Custom Role",
+    "description": "The description of the custom rule.",
+    "actions": [],
+    "notActions": [],
+    "dataActions": [
+        "Microsoft.KeyVault/managedHsm/keys/read/action"
+    ],
+    "notDataActions": []
+}'
+```
+
+Használja a `az keyvault role definition create` parancsot egy **my-custom-role-definition.js** nevű fájl egyik szerepköréhez, amely egy SZEREPKÖR-definíció JSON-karakterláncát tartalmazza. Lásd a fenti példát.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition @my-custom-role-definition.json
+```
+
+## <a name="show-details-of-a-role-definition"></a>Szerepkör-definíció részleteinek megjelenítése
+
+A `az keyvault role definition show` parancs használatával megtekintheti egy adott szerepkör-definíció részleteit a név (GUID) használatával.
+
+```azurecli-interactive
+az keyvault role definition show --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+## <a name="update-a-custom-role-definition"></a>Egyéni szerepkör-definíció frissítése
+
+A `az keyvault role definition update` paranccsal egy **Egyéni szerepkörrel** rendelkező szerepkört használhat egy JSON-karakterlánc használatával.
+```azurecli-interactive
+az keyvault role definition create --hsm-name ContosoMHSM --role-definition '{
+            "roleName": "My Custom Role",
+            "name": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "id": "Microsoft.KeyVault/providers/Microsoft.Authorization/roleDefinitions/xxxxxxxx-
+        xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "The description of the custom rule.",
+            "actions": [],
+            "notActions": [],
+            "dataActions": [
+                "Microsoft.KeyVault/managedHsm/keys/read/action",
+                "Microsoft.KeyVault/managedHsm/keys/write/action",
+                "Microsoft.KeyVault/managedHsm/keys/backup/action",
+                "Microsoft.KeyVault/managedHsm/keys/create"
+            ],
+            "notDataActions": []
+        }'
+```
+
+## <a name="delete-custom-role-definition"></a>Egyéni szerepkör-definíció törlése
+
+A `az keyvault role definition delete` parancs használatával megtekintheti egy adott szerepkör-definíció részleteit a név (GUID) használatával. 
+```azurecli-interactive
+az keyvault role definition delete --hsm-name ContosoMHSM --name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+
+> [!NOTE]
+> A beépített szerepkörök nem törölhetők. Az egyéni szerepkörök törlésekor az adott egyéni szerepkört használó összes szerepkör-hozzárendelés megszűnik.
+
 
 ## <a name="next-steps"></a>Következő lépések
 

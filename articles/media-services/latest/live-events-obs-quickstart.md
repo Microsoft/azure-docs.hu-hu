@@ -6,19 +6,19 @@ ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
-ms.date: 08/31/2020
-ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 03/20/2021
+ms.openlocfilehash: d52affbdc4dc433c40be687f2e56afae4bcf4c2a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98956072"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949890"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Azure Media Services élő stream létrehozása a OBS
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Ez a rövid útmutató segítséget nyújt egy Azure Media Services élő stream létrehozásához a Azure Portal és a Open Broadcasting Studio (OBS) használatával. Feltételezi, hogy rendelkezik Azure-előfizetéssel, és létrehozott egy Media Services fiókot.
+Ez a rövid útmutató segítséget nyújt egy Media Services élő esemény létrehozásához a Azure Portal és a Broadcast for Open Broadcasting Studio (OBS) használatával. Feltételezi, hogy rendelkezik Azure-előfizetéssel, és létrehozott egy Media Services fiókot.
 
 Ebben a rövid útmutatóban a következőket mutatjuk be:
 
@@ -45,17 +45,17 @@ Nyissa meg a webböngészőt, és lépjen a [Microsoft Azure Portal](https://por
 
 1. Válassza a **folyamatos átviteli végpontok** lehetőséget a Media Services listájában.
 
-   ![Adatfolyam-végpontok menüelem](media/live-events-obs-quickstart/streaming-endpoints.png)
+   ![Adatfolyam-végpontok menüeleme](media/live-events-obs-quickstart/streaming-endpoints.png)
 1. Ha az alapértelmezett folyamatos átviteli végpont állapota leáll, válassza ki. Ezzel a lépéssel megtekintheti az adott végpont lapját.
 1. Válassza az **Indítás** elemet.
 
-   ![A streaming végpont Start gombja](media/live-events-obs-quickstart/start.png)
+   ![A streaming végpont Start gombja.](media/live-events-obs-quickstart/start.png)
 
 ## <a name="set-up-an-azure-media-services-live-stream"></a>Azure Media Services élő stream beállítása
 
 1. Nyissa meg a Azure Media Services fiókot a portálon belül, majd válassza az **élő közvetítés** lehetőséget a **Media Services** listában.
 
-   ![Élő közvetítés hivatkozása](media/live-events-obs-quickstart/select-live-streaming.png)
+   ![Élő közvetítés hivatkozása.](media/live-events-obs-quickstart/select-live-streaming.png)
 1. Válassza az **élő esemény hozzáadása** lehetőséget az új élő közvetítési esemény létrehozásához.
 
    ![Élő esemény ikonjának hozzáadása](media/live-events-obs-quickstart/add-live-event.png)
@@ -65,14 +65,14 @@ Nyissa meg a webböngészőt, és lépjen a [Microsoft Azure Portal](https://por
 1. A **Leírás** mezőben adja meg az esemény opcionális leírását.
 1. Válassza a **pass-through – nincs felhőalapú kódolási** beállítás lehetőséget.
 
-   ![Felhőalapú kódolási lehetőség](media/live-events-obs-quickstart/cloud-encoding.png)
+   ![Felhőalapú kódolási lehetőség.](media/live-events-obs-quickstart/cloud-encoding.png)
 1. Válassza az **RTMP** lehetőséget.
 1. Győződjön meg arról, hogy a **nincs** lehetőség van kiválasztva az **élő esemény indításához**, hogy elkerülje az élő esemény számlázását, mielőtt a rendszer készen áll. (A számlázás az élő esemény indításakor kezdődik.)
 
-   ![Élő esemény indítása lehetőség](media/live-events-obs-quickstart/start-live-event-no.png)
+   ![Élő esemény megkezdése lehetőség.](media/live-events-obs-quickstart/start-live-event-no.png)
 1. A beállítások áttekintéséhez kattintson a **felülvizsgálat + létrehozás** gombra.
 1. Válassza a **Létrehozás** gombot az élő esemény létrehozásához. Ezután visszatér az élő események listájára.
-1. Válassza ki az imént létrehozott élő eseményre mutató hivatkozást. Figyelje meg, hogy az esemény leáll.
+1. Válassza ki a létrehozott élő eseményre mutató hivatkozást. Figyelje meg, hogy az esemény leáll.
 1. Tartsa meg a lapot a böngészőben. Később ismét vissza fogunk térni.
 
 ## <a name="set-up-a-live-stream-by-using-obs-studio"></a>Élő stream beállítása a OBS Studio használatával
@@ -83,53 +83,53 @@ A OBS egy alapértelmezett jelenettel kezdődik, de nincsenek bemenetek kijelöl
 
 ### <a name="add-a-video-source"></a>Videó forrásának hozzáadása
 
-1. A **források** panelen kattintson a **Hozzáadás** ikonra egy új forrásoldali eszköz kiválasztásához. Ekkor megnyílik a **források** menü.
+1. Az új forrásoldali eszköz kiválasztásához válassza a **források** panel **Hozzáadás** ikonját. Ekkor megnyílik a **források** menü.
 
 1. Válassza ki a **videó rögzítése eszközt** a forrás eszköz menüjéből. Ekkor megnyílik a **Forrás létrehozása/kiválasztása** menü.
 
-   ![OBS-források menü kiválasztva](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
+   ![OBS-források menü kiválasztva.](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
 
-1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK** gombra. Ekkor megnyílik a **videoeszköz tulajdonságai** menü.
+1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK gombra**. Ekkor megnyílik a **videoeszköz tulajdonságai** menü.
 
-   ![Új OBS menü megnyitása meglévő kijelölés hozzáadásával](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
+   ![Új OBS menü megnyitása meglévő kijelölés hozzáadásával.](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
 
-1. Az **eszköz** legördülő listából válassza ki a szóráshoz használni kívánt videó bemenetet. Hagyja a többi beállítást egyelőre, és kattintson az **OK** gombra. A bemeneti forrás hozzá lesz adva a **források** panelhez, és a videó bemeneti nézete megjelenik az **előnézet** területen.
+1. Az **eszköz** legördülő listából válassza ki a szóráshoz használni kívánt videó bemenetet. Hagyja a többi beállítást egyelőre, és kattintson az **OK gombra**. A bemeneti forrás hozzá lesz adva a **források** panelhez, és a videó bemeneti nézete megjelenik az **előnézet** területen.
 
    ![OBS kamera beállításai](media/live-events-obs-quickstart/live-event-surface-camera.png)
 
 ### <a name="add-an-audio-source"></a>Hangforrás hozzáadása
 
-1. A **források** panelen kattintson a **Hozzáadás** ikonra egy új forrásoldali eszköz kiválasztásához. Ekkor megnyílik a forrás eszköz menüje.
+1. Az új forrásoldali eszköz kiválasztásához válassza a **források** panel **Hozzáadás** ikonját. Ekkor megnyílik a forrás eszköz menüje.
 
 1. Válassza a **hangbemenet rögzítése** lehetőséget a forrás eszköz menüjében. Ekkor megnyílik a **Forrás létrehozása/kiválasztása** menü.
 
-   ![OBS-források menü a kijelölt hangeszközzel](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
+   ![OBS-források menü a kiválasztott hangeszközzel.](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
 
-1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK** gombra. Ekkor megnyílik a **hangbemenet rögzítése menü tulajdonságai** .
+1. Jelölje be a **meglévő választógomb hozzáadása** gombot, majd kattintson **az OK gombra**. Ekkor megnyílik a **hangbemenet rögzítése menü tulajdonságai** .
 
-   ![OBS hangforrása a meglévő kijelölés hozzáadásával ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
+   ![OBS hangforrása a meglévő kijelölések hozzáadásával.](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
 
 1. Az **eszköz** legördülő listából válassza ki a szóráshoz használni kívánt hangrögzítési eszközt. Hagyja a többi beállítást egyelőre, és kattintson az OK gombra. A hangrögzítési eszköz hozzá lesz adva a hangkeverő panelhez.
 
    ![OBS hangeszköz kiválasztása legördülő lista](media/live-events-obs-quickstart/live-event-select-audio-device.png)
 
-### <a name="set-up-streaming-in-obs"></a>Folyamatos átvitel beállítása a OBS-ben
+### <a name="set-up-streaming-and-advanced-encoding-settings-in-obs"></a>A streaming és a speciális kódolási beállítások beállítása a OBS-ben
 
 A következő eljárásban visszatérhet Azure Media Services a böngészőben a bemeneti URL-cím másolásához a kimeneti beállításokba való belépéshez:
 
 1. A portál Azure Media Services lapján kattintson a **Start** gombra az élő stream esemény elindításához. (A számlázás most kezdődik.)
 
-   ![Start ikon](media/live-events-obs-quickstart/start.png)
+   ![Start ikon.](media/live-events-obs-quickstart/start.png)
 1. Állítsa be az **RTMP** -kapcsolót **RTMP**-re.
 1. A **bemeneti URL-cím** mezőben másolja a vágólapra az URL-címet.
 
-   ![Bemeneti URL-cím](media/live-events-obs-quickstart/input-url.png)
+   ![Bemeneti URL-cím.](media/live-events-obs-quickstart/input-url.png)
 
 1. Váltson a OBS alkalmazásra.
 
 1. Kattintson a **Beállítások** gombra a **vezérlők** panelen. Ekkor megnyílik a beállítások lehetőség.
 
-   ![OBS vezérlők panel a kiválasztott beállításokkal](media/live-events-obs-quickstart/live-event-obs-settings.png)
+   ![A OBS vezérlők panel a kiválasztott beállításokkal.](media/live-events-obs-quickstart/live-event-obs-settings.png)
 
 1. Válassza a **stream** lehetőséget a **Beállítások** menüből.
 
@@ -139,23 +139,97 @@ A következő eljárásban visszatérhet Azure Media Services a böngészőben a
 
 1. Írjon be valamit a **stream Key (adatfolyam-kulcs** ) mezőbe.  Nem igazán számít, hogy mi az, de értékkel kell rendelkeznie.
 
-    ![OBS-adatfolyam beállításai](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
+    ![OBS-adatfolyam beállításai.](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
 
 1. Válassza a **kimenet** lehetőséget a **Beállítások** menüből.
 
-1. Adja meg a *2* értéket a **kulcsképek intervalluma** mezőben. Ez a kódrészlet hosszát 2 másodpercre állítja. Az alacsony késésű élő kézbesítéshez használja az 1 másodperces értéket.
+1. Válassza ki a **kimeneti mód** legördülő menüt az oldal tetején, és válassza a **speciális** lehetőséget az összes rendelkezésre álló kódoló-beállítás eléréséhez.
 
-1. Nem kötelező: állítsa be a **CPU-használat beállításkészletét** a *veryfast* értékre, ha olyan számítógépet használ, amely kevés a feldolgozási teljesítménynél. Igény szerint beállíthatja a kbit/s-ot, ha nem kívánatos hálózati feltételek vannak.
+1. A kódoló beállításához válassza a **folyamatos átvitel** lapot.
 
-   ![OBS kimeneti beállításai](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
+1. Válassza ki a megfelelő kódolót a rendszer számára.  Ha a hardver támogatja a GPU-gyorsítást, válassza az NVIDIA **NVENC** h. 264 vagy az Intel **QuickSync** h. 264 elemet. Ha a rendszer nem rendelkezik támogatott GPU-val, válassza az **x264** szoftver kódoló lehetőséget.
 
-1. Hagyja változatlanul a beállítások hátralévő részét, és kattintson **az OK** gombra.
+#### <a name="x264-encoder-settings"></a>X264 kódoló beállításai
+
+1. Ha az **x264** -kódolás lehetőséget választotta, jelölje be a **kimenet újraméretezése** jelölőnégyzetet. Ha standard (720P) élő eseményt használ, válassza a 1920 × 1080 lehetőséget, ha Media Services vagy 1280x720 Premium Live-eseményt használ.  Ha átmenő élő eseményt használ, választhatja az összes rendelkezésre álló felbontást is.
+
+1. Állítsa a **sebességet a 1500** kbps és 4000 kbps közötti tetszőleges értékre. Ha standard kódolású élő eseményt használ a 720P-ban, ajánlott 2500 kbps. Ha 1080P Premium Live-eseményt használ, 4000 kbps ajánlott. Előfordulhat, hogy az elérhető CPU-képességek és a hálózat sávszélessége alapján szeretné beállítani a sebességet a kívánt minőségi beállítás eléréséhez.
+
+1. Adja meg a *2* értéket a **kulcsképek intervalluma** mezőben. Az érték 2 másodpercre állítja be a kulcs keretének intervallumát, amely a Media Services HLS vagy KÖTŐJELen keresztül továbbított töredékek végső méretét vezérli. A kulcs keretének intervallumát ne állítsa 4 másodpercnél nagyobb értékre.  Ha a szórás nagy késést mutat, mindig ellenőrizze vagy tájékoztassa az alkalmazás felhasználóit, hogy mindig 2 másodpercre állítsa be ezt az értéket. Ha kisebb késleltetésű élő kézbesítést próbál elérni, beállíthatja, hogy ez az érték 1 másodpercnél rövidebb legyen.
+
+1. Nem kötelező: állítsa be a CPU-használat beállításkészletét **veryfast** , és futtasson néhány kísérletet, hogy megtudja, a helyi CPU képes-e kezelni a bitrátát és a készletet elég terheléssel. Próbálja meg elkerülni azokat a beállításokat, amelyek a 80%-nál nagyobb átlagos PROCESSZORt eredményeznek az élő közvetítés során felmerülő problémák elkerülése érdekében. A minőség javítása érdekében a **gyorsabb** és **gyors** előre beállított beállításokkal tesztelheti a CPU-korlátozásokat.
+
+   ![OBS x264-kódoló beállításai](media/live-events-obs-quickstart/live-event-obs-x264-settings.png)
+
+1. Hagyja változatlanul a beállítások hátralévő részét, és válassza az **OK gombot**.
+
+#### <a name="nvidia-nvenc-encoder-settings"></a>NVIDIA NVENC-kódoló beállításai
+
+1. Ha a **NVENC** GPU-kódolás lehetőséget választotta, jelölje be a **kimenet újraméretezése** jelölőnégyzetet, és válassza a 1920 × 1080 lehetőséget, ha prémium szintű élő eseményt használ a Media Services-ban, vagy 1280x720, ha standard (720p) élő eseményt használ. Ha átmenő élő eseményt használ, választhatja az összes rendelkezésre álló felbontást is.
+
+1. Állítsa a **sebesség vezérlőelemet** a CBR értékre az állandó bitráta-arány szabályozásához.
+
+1. Állítsa a **bitrátát** bárhol, 1500 kbps és 4000 kbps között. Ha standard kódolású élő eseményt használ a 720P-ban, ajánlott 2500 kbps. Ha 1080P Premium Live-eseményt használ, 4000 kbps ajánlott. A kívánt minőségi beállítás eléréséhez dönthet úgy, hogy az elérhető CPU-képességek és sávszélesség alapján módosítja a hálózatot.
+
+1. Állítsa a **kulcsképek intervallumát** 2 másodpercre a fentiekben leírtak szerint az x264 beállítások alatt. Ne haladja meg a 4 másodpercet, mivel ez jelentős hatással lehet az élő közvetítés késésére.
+
+1. Állítsa be az **előre beállított** értéket az alacsony késleltetésű, Low-Latency teljesítményre vagy a Low-Latency minőségi értékre a helyi GÉPEN lévő CPU-sebességtől függően. Ezekkel a beállításokkal kísérletezhet a minőség és a CPU kihasználtsága közötti legjobb egyensúly elérése érdekében a saját hardverén.
+
+1. Ha nagyobb teljesítményű hardveres konfigurációt használ, állítsa a **profilt** "Main" vagy "High" (magas) értékre.
+
+1. Hagyja üresen a **megjelenő** jelet. Ha nagyon nagy teljesítményű géppel rendelkezik, ezt megtekintheti.
+
+1. Hagyja üresen a **pszicho vizualizáció finomhangolását** . Ha nagyon nagy teljesítményű géppel rendelkezik, ezt megtekintheti.
+
+1. Állítsa a **GPU** -t 0-ra, hogy automatikusan eldöntse, melyik GPU-t kell lefoglalni. Ha szükséges, korlátozhatja a GPU-használatot.
+
+1. A **maximális B-képkockák** beállítása 2 értékre
+
+   ![OBS NVidia NVidia NVENC GPU kódoló beállításai.](media/live-events-obs-quickstart/live-event-obs-nvidia-settings.png)
+
+#### <a name="intel-quicksync-encoder-settings"></a>Intel QuickSync-kódoló beállításai
+
+1. Ha az Intel **QuickSync** GPU-kódolás lehetőséget választotta, jelölje be a **kimenet újraméretezése** jelölőnégyzetet, és válassza a 1920 × 1080 lehetőséget, ha prémium szintű élő eseményt használ a Media Services-ban, vagy 1280x720, ha standard (720p) élő eseményt használ. Ha átmenő élő eseményt használ, választhatja az összes rendelkezésre álló felbontást is.
+
+1. Állítsa a **cél használatát** "kiegyensúlyozott" értékre, vagy módosítsa a processzor és a GPU együttes terhelése alapján. Szükség szerint módosítsa a processzort, és kísérletezzen a maximális CPU-kihasználtság 80%-ban átlagosan a hardver által előállítható minőségi minőség érdekében. Ha nagyobb mértékben korlátozott hardverre van szüksége, tesztelje a "Fast" (gyors) vagy a "nagyon gyors" kifejezést, ha teljesítménnyel kapcsolatos problémákat tapasztal.
+
+1. Ha nagyobb teljesítményű hardveres konfigurációt használ, állítsa a **profilt** "Main" vagy "High" (magas) értékre.
+
+1. Állítsa a **kulcsképek intervallumát** 2 másodpercre a fentiekben leírtak szerint az x264 beállítások alatt. Ne haladja meg a 4 másodpercet, mivel ez jelentős hatással lehet az élő közvetítés késésére.
+
+1. Állítsa a **sebesség vezérlőelemet** a CBR értékre az állandó bitráta-arány szabályozásához.
+
+1. Állítsa a **bitrátát** bárhol, 1500 és 4000 kbps között.  Ha standard kódolású élő eseményt használ a 720P-ban, ajánlott 2500 kbps. Ha 1080P Premium Live-eseményt használ, 4000 kbps ajánlott. A kívánt minőségi beállítás eléréséhez dönthet úgy, hogy az elérhető CPU-képességek és sávszélesség alapján módosítja a hálózatot.
+
+1. Állítsa a **késést** az "alacsony" értékre.
+
+1. Állítsa a **B képkockákat** 2 értékre.
+
+1. Hagyja üresen a **szubjektív videó fejlesztéseit** .
+
+   ![OBS Intel QuickSync GPU-kódoló beállításai.](media/live-events-obs-quickstart/live-event-obs-intel-settings.png)
+
+### <a name="set-audio-settings"></a>Hangbeállítások megadása
+
+A következő eljárásban módosítani fogja a hangkódolás beállításait.
+
+1. Válassza a kimenet – >hang fület a beállítások területen.
+
+1. Állítsa az 1. számú **Hangfrekvenciát** 128 kbps-ra.
+
+   ![OBS az audió bitráta beállításait.](media/live-events-obs-quickstart/live-event-obs-audio-output-panel.png)
+
+1. Válassza a hang fület a beállítások területen.
+
+1. Állítsa a **mintavételezési sebességet** 44,1 kHz-re.
+
+   ![OBS hangmintavételezési beállítások.](media/live-events-obs-quickstart/live-event-obs-audio-sample-rate-settings.png)
 
 ### <a name="start-streaming"></a>Streaming indítása
 
 1. A **vezérlők** panelen kattintson a **streaming indítása** lehetőségre.
 
-    ![OBS Start streaming gomb](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
+    ![OBS indítása gomb.](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
 
 2. Váltson a böngészőben a Azure Media Services Live Event (élő esemény) képernyőre, és kattintson a **lejátszó újratöltésére** szolgáló hivatkozásra. Ekkor látnia kell a streamet az előzetes verzióban.
 

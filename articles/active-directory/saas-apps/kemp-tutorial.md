@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: aa36d8522f548101ef3354237d93128b0f041eac
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "101648954"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953663"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
 
@@ -371,8 +371,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie a Kemp LoadMaster Azure AD-integrációba, amelyhez be szeretné állítani az egyszeri bejelentkezést.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások LoadMaster az Azure AD-integráció csempére kattint, automatikusan be kell jelentkeznie a Kemp LoadMaster Azure AD-integrációba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások LoadMaster az Azure AD-integráció csempére kattint, automatikusan be kell jelentkeznie a Kemp LoadMaster Azure AD-integrációba, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Miután konfigurálta a Kemp LoadMaster az Azure AD-integrációt, kikényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

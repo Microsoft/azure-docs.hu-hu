@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használható az SendGrid az Apache
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5b344c0c4b1db9159d0223c861e5d371cb225f5a
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98946964"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867202"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Oktatóanyag: az Apache Ambari e-mail értesítéseinek konfigurálása az Azure HDInsight
 
@@ -33,15 +33,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. Az Áttekintés lapon válassza a **kezelés** lehetőséget, hogy a fiókja SendGrid weboldalát lépjen.
 
-    ![A SendGrid áttekintése az Azure Portalon](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-sendgrid-manage.png" alt-text="A SendGrid áttekintése az Azure Portalon":::
 
 1. A bal oldali menüben navigáljon a fiók nevére, majd adja meg a **fiók adatait**.
 
-    ![SendGrid-irányítópult navigációja](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-dashboard-navigation.png" alt-text="SendGrid-irányítópult navigációja":::
 
 1. A **fiók részletei** lapon jegyezze fel a **felhasználónevet**.
 
-    ![SendGrid-fiók részletei](./media/apache-ambari-email/sendgrid-account-details.png)
+    :::image type="content" source="./media/apache-ambari-email/sendgrid-account-details.png" alt-text="SendGrid-fiók részletei":::
 
 ## <a name="configure-ambari-e-mail-notification"></a>Ambari e-mail értesítések konfigurálása
 
@@ -51,7 +51,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 1. A **Riasztási értesítések kezelése** ablakban válassza ki az **+** ikont.
 
-    ![A képernyőkép a riasztási értesítések kezelése párbeszédpanelt jeleníti meg.](./media/apache-ambari-email/azure-portal-create-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/azure-portal-create-notification.png" alt-text="A képernyőkép a riasztási értesítések kezelése párbeszédpanelt jeleníti meg.":::
 
 1. A **riasztási értesítés létrehozása** párbeszédpanelen adja meg a következő információkat:
 
@@ -60,7 +60,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Név|Adja meg az értesítés nevét.|
     |Csoportok|Konfigurálja a kívánt módon.|
     |Súlyosság|Konfigurálja a kívánt módon.|
-    |Description|Választható.|
+    |Leírás|Választható.|
     |Metódus|Hagyjon **e-mailt**.|
     |E-mail cím|Adja meg az e-maileket az értesítések fogadásához, vesszővel elválasztva.|
     |SMTP-kiszolgáló|`smtp.sendgrid.net`|
@@ -72,7 +72,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     |Jelszó megerősítése|Adja meg újra a jelszót.|
     |TLS indítása|Jelölje be ezt a jelölőnégyzetet|
 
-    ![A riasztási értesítés létrehozása párbeszédpanelt a képernyőképen jelenítheti meg.](./media/apache-ambari-email/ambari-create-alert-notification.png)
+    :::image type="content" source="./media/apache-ambari-email/ambari-create-alert-notification.png" alt-text="A riasztási értesítés létrehozása párbeszédpanelt a képernyőképen jelenítheti meg.":::
 
     Kattintson a **Mentés** gombra. Visszatér a **Riasztási értesítések kezelése** ablakra.
 

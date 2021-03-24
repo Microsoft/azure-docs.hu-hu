@@ -8,19 +8,21 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: e8d191dfed5b33116dadaf34b17d5f6525060e13
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104721206"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889824"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>A H- és N-sorozatú virtuális gépek ismert problémái
 
 Ez a cikk a [H-sorozat](../../sizes-hpc.md) és az [N-sorozat](../../sizes-gpu.md) HPC-és GPU-alapú virtuális gépek használatakor a legutóbbi gyakori problémákat és azok megoldásait próbálja meglistázni.
 
 ## <a name="mofed-installation-on-ubuntu"></a>MOFED-telepítés Ubuntu rendszeren
-Az Ubuntu-18,04-es verzióban a 5.4.0-1041-Azure kernel verziója nem kompatibilis a MOFED 5.2-2 és 5.2-1.0.4.0 verziójával. Javasoljuk, hogy visszagörgetje a kernel 5.4.0-1040-Azure-ra vagy egy régebbi kernelt használó piactér-rendszerképet, és ne frissítse a kernelt. Ezt a problémát várhatóan egy újabb MOFED kell feloldani.
+Az Ubuntu-18,04-es verzióban a Mellanox OFED a kernelek és újabb verziók inkompatibilitását `5.4.0-1039-azure #42` eredményezte, ami miatt a virtuális gép indítási ideje körülbelül 30 percet vesz igénybe. Ez a jelentés mind az 5.2-1.0.4.0, mind az 5.2-2.2.0.0 Mellanox OFED.
+Az ideiglenes megoldás a **Canonical: UbuntuServer: 18_04-LTS-Gen2:18.04.202101290 Marketplace-** rendszerkép vagy régebbi verzió használata, és nem lehet frissíteni a kernelt.
+Ezt a problémát várhatóan egy újabb MOFED kell feloldani.
 
 ## <a name="known-issues-on-hbv3"></a>A HBv3 ismert problémái
 - A InfiniBand jelenleg csak az 120-Core virtuális gépen (Standard_HB120rs_v3) támogatott.

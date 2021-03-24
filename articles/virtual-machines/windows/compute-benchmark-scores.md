@@ -3,18 +3,18 @@ title: Számítási teljesítményteszt-pontszámok az Azure Windows rendszerű 
 description: Hasonlítsa össze a Windows Servert futtató Azure-beli virtuális gépek SPECint számítási teljesítményteszt-pontszámait.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: azure-compute-unit
+ms.subservice: benchmark
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: bf809b695e8df14288c2c55e580ee76d37f487d4
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c3cd1595f0c760ee8b749a0fedace6b55527bfab
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102550773"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956196"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows rendszerű virtuális gépek számítási teljesítményteszt-pontszámai
 A következő SPECInt-teljesítménytesztek a Windows Server rendszert futtató Azure-beli virtuális gépek számítási teljesítményét mutatják be. A számítási teljesítménytesztek pontszámai Linux rendszerű [virtuális gépek](../linux/compute-benchmark-scores.md)esetén is elérhetők.

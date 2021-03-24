@@ -5,12 +5,12 @@ author: tfitzmac
 ms.date: 12/14/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 1d3e7c6ee6d19d4d2cd3828d5abf95ccb5457e76
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 28987486726f5a88d20efe9fe8a766e536062c2c
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97511348"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889960"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Gyors útmutató: sablon létrehozása és üzembe helyezése specifikáció (előzetes verzió)
 
@@ -335,7 +335,7 @@ A sablon specifikációjának telepítéséhez ugyanazokat a telepítési paranc
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2020-10-01",
           "name": "demo",
           "properties": {
             "templateLink": {
@@ -597,7 +597,7 @@ Ahelyett, hogy a módosított sablonhoz új sablont hozna létre, adjon hozzá e
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-06-01",
+          "apiVersion": "2020-10-01",
           "name": "demo",
           "properties": {
             "templateLink": {

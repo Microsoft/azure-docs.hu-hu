@@ -5,58 +5,62 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 74e7d1a54b1d760979dbf9833e85ec728b4e5e3a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 722beda6eddb64581be3b724a8de5235f953bc6e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595889"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953782"
 ---
 # <a name="azure-percept-dk-overview"></a>Az Azure Percept DK áttekintése
 
-Az Azure Percept DK egy élvonalbeli AI-és IoT-fejlesztési csomag, amely a fogalmak kialakításához és hangalapú AI-igazolásához készült. Az [Azure Percept Studióval](./overview-azure-percept-studio.md) és az [Azure Percept hanggal](./overview-azure-percept-audio.md)kombinálva hatékony, mégis egyszerűen használható platformot kínál a Edge AI-megoldások széles körének kialakításához a különböző látási vagy audio AI-alkalmazások számára. A [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270)megvásárolható.
+Az Azure Percept DK egy Edge AI fejlesztői csomag, amelynek célja, hogy az [Azure Percept Studio](./overview-azure-percept-studio.md)alkalmazással látási és audio AI-megoldásokat fejlesszen. Az Azure Percept DK megvásárolható a [Microsoft online áruházban](https://go.microsoft.com/fwlink/p/?LinkId=2155270).
 
 > [!div class="nextstepaction"]
-> [Vásárlás](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+> [Vásárlás most](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-<!---
-:::image type="content" source="./media/overview-azure-percept-dk/dk-image.png" alt-text="Azure Percept DK device.":::
---->
 </br>
 
 > [!VIDEO https://www.youtube.com/embed/Qj8NGn-7s5A]
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-- **Lehetőség a mesterséges intelligencia futtatására az Edge-** ben. A beépített hardveres gyorsítás lehetővé teszi, hogy a felhőhöz való kapcsolódás nélkül is futtasson látási AI-modelleket.
-- A **megbízhatósági kapcsolat biztonságának beépített hardveres gyökere**. További részletekért tekintse meg az [Azure Percept Security](./overview-percept-security.md) áttekintését.
-- **Zökkenőmentes integráció az [Azure Percept Studióval](https://go.microsoft.com/fwlink/?linkid=2135819)** és más Azure-szolgáltatásokkal. Például az Azure IoT Hub, az Azure Cognitive Services és az [élő videó Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview)
-- **Zökkenőmentes integráció opcionális [Azure Percept hanggal](./overview-azure-percept-audio.md)**
-- **Támogatás a legfontosabb AI-platformokhoz**. Ilyenek például a ONNX és a TensorFlow.
-- **Integráció az 80/20 railing rendszerrel**. Így könnyebben hozhat létre prototípusokat éles környezetekben. További információ az [80/20-integrációról](./overview-8020-integration.md).
+- Futtassa az AI-t a peremhálózat szélén. A beépített hardveres gyorsítással a fejlesztői készlet a felhőhöz való kapcsolódás nélkül is futtathat AI-modelleket.
+
+- A megbízhatósági kapcsolat biztonságának beépített hardveres gyökere. További információ az [Azure Percept biztonságáról](./overview-percept-security.md).
+
+- Zökkenőmentes integráció az [Azure Percept Studióval](https://go.microsoft.com/fwlink/?linkid=2135819) és más Azure-szolgáltatásokkal, mint például az Azure IoT hub, az Azure Cognitive Services és az [élő video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview).
+
+- Kompatibilis az [Azure Percept audio](./overview-azure-percept-audio.md)szolgáltatással, amely egy opcionális tartozék a mesterséges intelligenciát használó megoldások létrehozásához.
+
+- Harmadik féltől származó AI-eszközök, például a ONNX és a TensorFlow támogatása.
+
+- Integráció az 80/20-es korláttal, amely lehetővé teszi a végtelen eszköz-csatlakoztatási konfigurációk használatát. További információ az [80/20-integrációról](./overview-8020-integration.md).
 
 ## <a name="hardware-components"></a>Hardver-összetevők
 
-- Az Azure Percept DK Carrier Board
+- Azure Percept DK Carrier Board:
     - NXP iMX8m processzor
     - Platformmegbízhatósági modul (TPM) 2,0-es verzió
-    - WiFi és Bluetooth kapcsolat
-    - Tekintse meg a teljes [adatlapot](./azure-percept-dk-datasheet.md)
-- Az Azure Percept látási rendszer a modulon (SoM)
+    - Wi-Fi és Bluetooth-kapcsolat
+    - További információ: [Azure PERCEPT DK adatlap](./azure-percept-dk-datasheet.md)
+
+- Azure Percept látási rendszer – modul (SoM):
     - Intel Movidius – számtalan X (MA2085) látási feldolgozó egység (VPU)
-    - RGB-kamera érzékelő, amely lehetővé teszi a másodpercek hozzáadását
-    - Tekintse meg a teljes [adatlapot](./azure-percept-vision-datasheet.md)
+    - RGB-kamera érzékelője
+    - További információ: [Azure Percept-jövőkép Adatlapja](./azure-percept-vision-datasheet.md)
 
-## <a name="get-started-with-the-azure-percept-dk"></a>Ismerkedés az Azure Percept DK-mel
+## <a name="getting-started-with-azure-percept-dk"></a>Ismerkedés az Azure Percept DK-mel
 
-- A gyors indítások befejezése
+- A fejlesztői csomag beállítása:
     - [Az Azure Percept DK testetlen és összegyűjtése](./quickstart-percept-dk-unboxing.md)
-    - [Az Azure Percept DK beállítása és az első víziós AI-modell futtatása](./quickstart-percept-dk-set-up.md)
-- Az oktatóanyagokkal kapcsolatos fogalmak bizonyításának megkezdése
+    - [Az Azure Percept DK telepítési felületének befejezése](./quickstart-percept-dk-set-up.md)
+
+- Megkezdheti a jövőkép és az Audio megoldások létrehozását:
     - [Kód nélküli jövőkép megoldás létrehozása az Azure Percept Studióban](./tutorial-nocode-vision.md)
-    - [Hangsegéd létrehozása az Azure Percept Studióban](./tutorial-no-code-speech.md)
+    - [Kód nélküli beszédfelismerési megoldás létrehozása az Azure Percept Studióban](./tutorial-no-code-speech.md) (Azure Percept audio kellék szükséges)
 
 ## <a name="next-steps"></a>Következő lépések
 

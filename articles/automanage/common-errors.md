@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: alsin
-ms.openlocfilehash: 2bdf04143121e1286ffc7bfa86b4a9ee291ae6ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 18165ce5f39b32fe1c5af28bc88e8e1bd0e9cb62
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103561862"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955550"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Gyakori autokezelési hibák elhárítása
 Előfordulhat, hogy az automanage utasítás nem tud bejelentkezni egy gépet a szolgáltatásba. Ez a dokumentum ismerteti, hogyan lehet elhárítani az üzembe helyezési hibákat, és megoszthatja azokat a gyakori okokat, amelyek miatt előfordulhat, hogy a központi telepítések meghiúsulnak, és leírja a lehetséges
@@ -38,7 +38,11 @@ Hiba |  Kockázatcsökkentés
 :-----|:-------------|
 Nem megfelelő engedélyekkel rendelkező fiókra vonatkozó engedélyek hibájának kezelése | Ez akkor fordulhat elő, ha nemrég áthelyezett egy új, egy új bérlőbe egy új automanage-fiókot tartalmazó előfizetést. A megoldásának lépései [itt](./repair-automanage-account.md)találhatók.
 Munkaterület-régió nem felel meg a régió megfeleltetési követelményeinek | Az automatikus felügyelet nem tudta bekészíteni a gépet, de a Log Analytics munkaterületet, amelyhez a gép jelenleg kapcsolódik, nincs leképezve támogatott Automation-régióra. Győződjön meg arról, hogy a meglévő Log Analytics munkaterület és az Automation-fiók egy [támogatott régió-hozzárendelésben](../automation/how-to/region-mappings.md)található.
-"A hozzáférés megtagadva a (z)" {0} "nevű, felügyelt alkalmazás által létrehozott rendszer-megtagadási hozzárendelés miatt | A rendszer létrehoz egy [denyAssignment](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) az erőforráson, amely megakadályozta, hogy az automanage hozzáférjen az erőforráshoz. Ezt egy [tervezet](https://docs.microsoft.com/azure/governance/blueprints/concepts/resource-locking) vagy egy [felügyelt alkalmazás](https://docs.microsoft.com/azure/azure-resource-manager/managed-applications/overview)okozta.
+"A hozzáférés megtagadva a (z)" {0} "nevű, felügyelt alkalmazás által létrehozott rendszer-megtagadási hozzárendelés miatt | A rendszer létrehoz egy [denyAssignment](../role-based-access-control/deny-assignments.md) az erőforráson, amely megakadályozta, hogy az automanage hozzáférjen az erőforráshoz. Ezt egy [tervezet](../governance/blueprints/concepts/resource-locking.md) vagy egy [felügyelt alkalmazás](../azure-resource-manager/managed-applications/overview.md)okozta.
+"Operációs rendszer adatai: Name =" (null) ", ver =" (null) ", ügynök állapota =" nem üzemkész "." | Győződjön meg arról, hogy a [támogatott ügynök minimális verziója](/troubleshoot/azure/virtual-machines/support-extensions-agent-version)fut, az ügynök fut ([Linux](/troubleshoot/azure/virtual-machines/linux-azure-guest-agent) és [Windows](/troubleshoot/azure/virtual-machines/windows-azure-guest-agent)), és hogy az ügynök naprakész ([Linux](../virtual-machines/extensions/update-linux-agent.md) és [Windows](../virtual-machines/extensions/agent-windows.md)).
+"A virtuális gép hibát jelzett a következő bővítmény feldolgozásakor:" IaaSAntimalware " | Győződjön meg arról, hogy a virtuális gépen már telepítve van egy másik antimalware/Antivirus-ajánlat. Ha ez nem sikerül, forduljon az ügyfélszolgálathoz.
+ASC munkaterület: az automanage jelenleg nem támogatja a Log Analytics szolgáltatást a _helyen_. | Győződjön meg arról, hogy a virtuális gép egy [támogatott régióban](./automanage-virtual-machines.md#supported-regions)található.
+A sablon központi telepítése a szabályzat megsértése miatt nem sikerült. További információért tekintse meg a részleteket. | Létezik egy szabályzat, amely megakadályozza a virtuális gép bevezetését. Tekintse át az előfizetésre vagy az erőforrás-csoportra alkalmazott szabályzatokat, amelyek a bevezetéshez használni kívánt virtuális gépet tartalmazzák.
 "A hozzárendelés sikertelen; nem érhető el további információ " | Nyisson meg egy esetet Microsoft Azure támogatással.
 
 ## <a name="next-steps"></a>Következő lépések

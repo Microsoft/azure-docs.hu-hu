@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: e4b6a6090bf0e5e332a960cba8ec565df9dd55c2
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98881061"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872268"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privát hivatkozás az Azure Database for PostgreSQL-Single Serverhez
 
@@ -84,7 +84,8 @@ Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE
 
 ## <a name="use-cases-of-private-link-for-azure-database-for-postgresql"></a>Privát hivatkozás használata Azure Database for PostgreSQL esetén
 
-Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
+
+Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, azonos régióban vagy régiókban található [VNet](../virtual-network/virtual-network-peering-overview.md) , illetve a régiók közötti [VNet-VNet kapcsolaton](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
 
 :::image type="content" source="media/concepts-data-access-and-security-private-link/show-private-link-overview.png" alt-text="Válassza ki a privát végpont áttekintését":::
 

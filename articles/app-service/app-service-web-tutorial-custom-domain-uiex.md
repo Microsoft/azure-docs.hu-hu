@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102216530"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954853"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -121,7 +121,7 @@ Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a 
 
     <details>
         <summary>Kezelhetem a DNS-t a tartományom szolgáltatójából az Azure használatával?</summary>
-        Ha szeretné, a Azure DNS segítségével kezelheti a tartomány DNS-rekordjait, és konfigurálhatja a Azure App Service egyéni DNS-nevét. További információ: <a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">oktatóanyag: a tartomány üzemeltetése Azure DNS></a>.
+        Ha szeretné, a Azure DNS segítségével kezelheti a tartomány DNS-rekordjait, és konfigurálhatja a Azure App Service egyéni DNS-nevét. További információ: <a href="/azure/dns/dns-delegate-domain-azure-dns">oktatóanyag: a tartomány üzemeltetése Azure DNS></a>.
     </details>
 
 1. Keresse meg a DNS-rekordok kezelésére szolgáló oldalt. 
@@ -146,7 +146,7 @@ Ha egyéni tartományt szeretne felvenni az alkalmazásba, ellenőriznie kell a 
             <ul>
             <li>A legfelső szintű tartomány (például) leképezéséhez <code>contoso.com</code> használjon egy rekordot. Ne használja a gyökérszintű rekord CNAME rekordját (További információ: <a href="https://en.wikipedia.org/wiki/CNAME_record">wikipedia bejegyzés</a>).</li>
             <li>Egy altartomány hozzárendeléséhez (például <code>www.contoso.com</code> ) használjon CNAME rekordot.</li>
-            <li>Egy altartományt közvetlenül az alkalmazás IP-címére képezhető le egy rekorddal, de lehetséges, <a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">hogy az IP-cím változhat</a>. A CNAME leképezése az alkalmazás állomásneve, ami kevésbé hajlamos a módosításra.</li>
+            <li>Egy altartományt közvetlenül az alkalmazás IP-címére képezhető le egy rekorddal, de lehetséges, <a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">hogy az IP-cím változhat</a>. A CNAME leképezése az alkalmazás állomásneve, ami kevésbé hajlamos a módosításra.</li>
             <li><a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">Helyettesítő karakteres tartomány</a> (például) leképezéséhez <code>*.contoso.com</code> használjon CNAME rekordot.</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ A (z) rendszerbeli helyettesítő karakterekhez hasonlóan `*` `*.contoso.com` h
 
     <details>
         <summary>Mi a <strong>nem biztonságos</strong> figyelmeztetési címke?</summary>
-        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
+        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
     </details>
 
     Ha kihagyott egy lépést, vagy korábban elgépelt egy hibát, a lap alján egy ellenőrző hiba jelenik meg.
@@ -274,7 +274,7 @@ A (z) rendszerbeli helyettesítő karakterekhez hasonlóan `*` `*.contoso.com` h
 
     <details>
         <summary>Mi a <strong>nem biztonságos</strong> figyelmeztetési címke?</summary>
-        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
+        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
     </details>
     
     Ha kihagyott egy lépést, vagy korábban elgépelt egy hibát, a lap alján egy ellenőrző hiba jelenik meg.
@@ -297,7 +297,7 @@ A (z) rendszerbeli helyettesítő karakterekhez hasonlóan `*` `*.contoso.com` h
 
     <details>
         <summary>Mi a <strong>nem biztonságos</strong> figyelmeztetési címke?</summary>
-        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
+        Az egyéni tartományra vonatkozó figyelmeztetési címke azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz. A böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásával kapcsolatban lásd: <a href="/azure/app-service/configure-ssl-bindings">Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban</a>.
     </details>
 
 -----

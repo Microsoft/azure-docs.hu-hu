@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Ez a cikk az Azure arc-kompatibilis Kubernetes-ügynökök építészeti áttekintését tartalmazza
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121898"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953068"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure arc-kompatibilis Kubernetes-ügynök architektúrája
 
@@ -85,7 +85,7 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
 ## <a name="understand-connectivity-modes"></a>A csatlakozási módok ismertetése
 
-| Kapcsolati mód | Description |
+| Kapcsolati mód | Leírás |
 | ----------------- | ----------- |
 | Teljesen csatlakoztatva | Az ügynökök csak kis késleltetéssel kommunikálhatnak az Azure-ban a GitOps-konfigurációk propagálásával, Azure Policy és forgalomirányító házirendek betartatásával, valamint a számítási feladatok metrikáinak és naplófájljainak Azure Monitor való összegyűjtésével. |
 | Félig csatlakoztatott | A által lekért MSI-tanúsítvány `clusteridentityoperator` legfeljebb 90 napig érvényes a tanúsítvány lejárata előtt. A lejárat után az Azure arc-kompatibilis Kubernetes-erőforrás nem működik. Az Azure arc összes funkciójának újraaktiválásához a fürtön törölje és hozza létre újból az Azure arc-kompatibilis Kubernetes-erőforrást és-ügynököket. A 90 nap során legalább 30 naponta egyszer össze kell kapcsolni a fürtöt. |
@@ -93,5 +93,5 @@ A legtöbb helyszíni adatközpont szigorú hálózati szabályokat kényszerít
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Útmutató a [Kubernetes-fürtök Azure arc-hoz való összekapcsolásához](./connect-cluster.md).
+* Útmutató a [Kubernetes-fürtök Azure arc-hoz való összekapcsolásához](./quickstart-connect-cluster.md).
 * További információ a fürt és a git-tárház közötti kapcsolatok létrehozásáról az [Azure arc-kompatibilis Kubernetes rendelkező konfigurációs erőforrásként](./conceptual-configurations.md).

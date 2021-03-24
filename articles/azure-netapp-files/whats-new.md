@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/11/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: f4019a28e98e06ad4a115e57b2cc9d3fb6f0a807
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: f2167159b03cd0387acfccf4bbd0a2e840f739df
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802930"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955229"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
 
@@ -27,7 +27,7 @@ A Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókr
 
 ## <a name="march-2021"></a>Március 2021
 
-* SMB folyamatos rendelkezésre állási (CA) megosztások (előzetes verzió)  
+* [SMB folyamatos rendelkezésre állási (CA) megosztások](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (előzetes verzió)  
 
     Az SMB transzparens feladatátvétel lehetővé teszi a Azure NetApp Files szolgáltatás karbantartási műveleteit anélkül, hogy megszakítja az SMB-köteteken lévő adatok tárolására és elérésére szolgáló kiszolgálói alkalmazásokhoz való kapcsolódást. Az SMB transzparens feladatátvételének támogatásához Azure NetApp Files mostantól támogatja az SMB folyamatos rendelkezésre állási megosztások használatát, amely az Azure-beli virtuális gépeken futó SMB-t használó SQL Server alkalmazásokkal használható. Ez a funkció jelenleg Windows SQL Server rendszeren támogatott. A Linux SQL Server jelenleg nem támogatott. A szolgáltatás engedélyezésével jelentős SQL Server teljesítménnyel kapcsolatos fejlesztéseket és méretezési és költséghatékonysági előnyöket biztosít az [önálló példányok, Always-On a feladatátvevő fürt példánya és a Always-On rendelkezésre állási csoportok üzembe helyezése](azure-netapp-files-solution-architectures.md#sql-server). Lásd: a [Azure NetApp Files használatának előnyei SQL Server üzembe helyezéshez](solutions-benefits-azure-netapp-files-sql-server.md).
 

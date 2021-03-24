@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 602fa1cab71a797dd25aca263e0c6a9f2aa616bb
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929705"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870228"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Magas rendelkezésre állású Apache Spark folyamatos átviteli feladatok létrehozása a FONALral
 
@@ -18,7 +18,7 @@ ms.locfileid: "98929705"
 
 A Spark streaming olyan hosszan futó feladatokat hoz létre, amelyekben az adatok átalakítását el tudja végezni, majd az eredményeket elküldheti a fájlrendszer, az adatbázisok, az irányítópultok és a konzol számára. A Spark streaming az adatok mikro-kötegeit dolgozza fel, és először egy adott időintervallumban gyűjti össze az események kötegét. Ezt követően a köteg feldolgozásra és kimenetre lesz küldve. A Batch-időintervallumok általában egy másodperc töredékében vannak meghatározva.
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-streaming.png" alt-text="Spark streaming" border="false":::
 
 ## <a name="dstreams"></a>DStreams
 
@@ -26,13 +26,13 @@ A Spark streaming az *diszkretizált stream* (DStream) használatával folyamato
 
 A Spark Core *rugalmasan elosztott adatkészleteket* (RDD-ket) használ. A RDD a fürt több csomópontja között osztja el az adatelosztást, ahol az egyes csomópontok általában a legjobb teljesítmény érdekében teljes mértékben megőrzik az adataikat a memóriában. Mindegyik RDD a Batch-intervallumban összegyűjtött eseményeket jelöli. Ha a Batch-intervallum eltelik, a Spark streaming egy új RDD hoz létre, amely az adott intervallumban lévő összes adathalmazt tartalmazza. Ezt a folyamatos RDD-készletet egy DStream gyűjti. A Spark streaming-alkalmazások feldolgozzák az egyes kötegek RDD tárolt adategységeket.
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-dstream.png" alt-text="Spark DStream" border="false":::
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark strukturált streaming-feladatok
 
 A Spark strukturált adatfolyamot a Spark 2,0-ben vezették be analitikus motorként, amely strukturált adatátvitelt használ. A Spark strukturált streaming a SparkSQL batching Engine API-kat használja. A Spark streaminghez hasonlóan a Spark strukturált streaming a folyamatosan érkező, a mikro-kötegekben tárolt adatokra vonatkozó számításokat is futtatja. A Spark Structured streaming az adatok streamjét egy korlátlan számú bemeneti táblázatként jelöli. Vagyis a bemeneti tábla folyamatosan növekszik, ahogy új adatok érkeznek. Ezt a bemeneti táblázatot egy hosszan futó lekérdezés folyamatosan dolgozza fel, és az eredményeket egy kimeneti táblába írja a rendszer.
 
-![Spark strukturált streaming](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/structured-streaming.png" alt-text="Spark strukturált streaming" border="false":::
 
 A strukturált adatfolyamban az adatok beérkeznek a rendszerbe, és azonnal bekerülnek a bemeneti táblába. A bemeneti táblán műveleteket végrehajtó lekérdezések írhatók. A lekérdezés kimenete egy másik, a Results (eredmények) tábla nevű táblát eredményez. A Results (eredmények) tábla a lekérdezés eredményét tartalmazza, amelyből megrajzolhatja az adatok küldését egy külső adattárba, például a kapcsolódó adatbázisba. Az *aktiválási intervallum* beállítja az időzítést, hogy mikor dolgozza fel az adatokat a bemeneti táblából. Alapértelmezés szerint a strukturált adatfolyam a megérkezése után azonnal feldolgozza az adatfeldolgozást. Azt is beállíthatja, hogy az triggert a rendszer a hosszú időintervallumon belül futtassa, így a folyamatos átviteli adatkötegekben dolgozza fel az adatfolyam-továbbítási időt. Előfordulhat, hogy az eredmények táblázatában lévő adatokat a rendszer minden alkalommal frissíti, amikor új adatokat tartalmaz, így az az összes kimeneti adatokat magában foglalja az adatfolyam-lekérdezés megkezdése óta (*teljes mód*), vagy csak a lekérdezés legutóbbi feldolgozása óta új adatokat tartalmazza (*hozzáfűzési mód*).
 
@@ -54,7 +54,7 @@ Ha olyan alkalmazást szeretne létrehozni, amely az egyes eseményeket egyszer 
 
 A HDInsight a fürt működését *egy másik erőforrás-tárgyaló* (fonal) koordinálja. A Spark streaming magas rendelkezésre állásának megtervezése magában foglalja a Spark streaming technikáit, valamint a fonal-összetevőket is.  Alább látható egy példa a FONALat használó konfigurációra.
 
-![FONAL architektúrája](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png" alt-text="FONAL architektúrája" border="false":::
 
 A következő szakaszok a konfigurációra vonatkozó tervezési szempontokat ismertetik.
 
