@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 86efd7781c7353b4846c77eba01ed34fb63067ff
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 75911e91bb61b84d2e9315421f794739f2b5088b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433250"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953697"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure digitális Twins-modellek kezelése
 
@@ -179,7 +179,7 @@ Az alábbiakban áttekintheti, hogy mit tehet és nem tud olyan ikrekkel dolgozn
 * Tulajdonságok olvasása
 * Kimenő kapcsolatok olvasása
 * Bejövő kapcsolatok hozzáadása és törlése (a verzióban a más ikrek továbbra is *létrehozhatnak kapcsolatokat ehhez a Twin* )
-  - A `target` kapcsolat definíciója továbbra is tükrözheti a törölt modell DTMI. Itt is működhet egy meghatározott céllal nem rendelkező kapcsolat.
+  - A `target` kapcsolat definíciója továbbra is tükrözheti a törölt modell DTMI. Itt is működhet egy meghatározott céllal nem rendelkező kapcsolat.      
 * Kapcsolatok törlése
 * A Twin törlése
 

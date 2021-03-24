@@ -2,25 +2,20 @@
 title: Válassza ki a virtuális gépek méretét és lemezképeit a készletekhez
 description: Az elérhető virtuálisgép-méretek és operációsrendszer-verziók kiválasztása Azure Batch-készletekben lévő számítási csomópontokhoz
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800482"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027380"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
 Ha kijelöl egy Azure Batch készlethez tartozó csomópont-méretet, az Azure-ban elérhető szinte minden virtuálisgép-méret közül választhat. Az Azure különféle számítási feladatokhoz biztosít különböző méretű Linux és Windows rendszerű virtuális gépeket.
 
 ## <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
-
-A Batch-készlethez a virtuális gépek méretének kiválasztására néhány kivétel és korlátozás vonatkozik:
-
-- Néhány virtuálisgép-sorozat vagy virtuálisgép-méret nem támogatott a Batchben.
-- Bizonyos virtuálisgép-méretek korlátozottak, és a lefoglalásuk előtt kifejezetten engedélyezni kell őket.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Készletek a virtuális gép konfigurációjában
 
@@ -32,16 +27,14 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | A | Minden méret Standard_A0, Standard_A8, Standard_A9, Standard_A10, *kivéve* Standard_A11 |
 | Av2 | Minden méret |
 | B | Nem támogatott |
-| DC | Nem támogatott |
+| DCsv2 | Minden méret |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
-| Dav4 | Minden méret |
-| Dasv4 | Minden méret |
+| Dav4, Dasv4 | Minden méret |
 | Ddv4, Ddsv4 |  Minden méret |
 | DV4, Dsv4 | Nem támogatott |
 | Ev3, Esv3 | Minden méret, kivéve a E64is_v3 |
-| Eav4 | Minden méret |
-| Easv4 | Minden méret |
+| Eav4, Easv4 | Minden méret |
 | Edv4, Edsv4 |  Minden méret |
 | Ev4, Esv4 | Nem támogatott |
 | F, FS | Minden méret |
@@ -50,6 +43,7 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | H | Minden méret |
 | HB | Minden méret |
 | HBv2 | Minden méret |
+| HBv3 | Standard_HB120rs_v3 (a többi méret még nem érhető el) |
 | HIBRID kapcsolat | Minden méret |
 | Ls | Minden méret |
 | Lsv2 | Minden méret |
@@ -58,7 +52,7 @@ A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuál
 | NC | Minden méret |
 | NCv2 | Minden méret |
 | NCv3 | Minden méret |
-| NCasT4_v3 | Nincs – még nem érhető el |
+| NCasT4_v3 | Minden méret |
 | ND | Minden méret |
 | NDv2 | Nincs – még nem érhető el |
 | NV | Minden méret |

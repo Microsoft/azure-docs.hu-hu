@@ -4,19 +4,19 @@ description: A Azure IoT Edge használatával olyan transzparens, átlátszatlan
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/10/2020
+ms.date: 03/23/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ca8f02b375420590bcf1cc732c067a165e22b3fa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: aa8b7372af91fc7cb194dfc3a6212cb4ce1fa0a2
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492710"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027346"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz használata átjáróként
 
@@ -24,12 +24,7 @@ ms.locfileid: "103492710"
 
 IoT Edge-eszközök átjáróként működhetnek, és kapcsolatot biztosítanak a hálózaton lévő más eszközök és a IoT Hub között.
 
-Az IoT Edge hub-modul úgy viselkedik, mint IoT Hub, így képes kezelni az olyan eszközök kapcsolatait, amelyeknek identitása IoT Hub, beleértve az egyéb IoT Edge eszközöket is. Az ilyen típusú átjárók mintázatát *transzparensnek* nevezzük, mivel az üzenetek átadhatók az alsóbb rétegbeli eszközökről IoT hubnak, mintha nem voltak közöttük átjárók.
-
-<!-- 1.2.0 -->
-::: moniker range=">=iotedge-2020-11"
-A IoT Edge 1,2-es verziójától kezdve az átlátszó átjárók más IoT Edge-eszközökről is kezelhetik az alsóbb rétegbeli kapcsolatokat.
-::: moniker-end
+Az IoT Edge hub modul úgy viselkedik, mint IoT Hub, így képes a más eszközök kapcsolatainak kezelésére, amelyeknek azonos az IoT hub identitása. Az ilyen típusú átjárók mintázatát *transzparensnek* nevezzük, mivel az üzenetek átadhatók az alsóbb rétegbeli eszközökről IoT hubnak, mintha nem voltak közöttük átjárók.
 
 Azon eszközök esetében, amelyek nem tudnak saját IoT Hub csatlakozni, IoT Edge átjárók biztosíthatják ezt a kapcsolatot. Az ilyen típusú átjárók mintáját *fordításnak* nevezzük, mivel a IoT Edge eszköznek feldolgozást kell végeznie a bejövő alsóbb szintű eszközön lévő üzenetekben, mielőtt továbbítani lehetne őket a IoT hubba. Ezeknek a forgatókönyveknek további modulokra van szükségük a IoT Edge átjárón a feldolgozási lépések kezeléséhez.
 
@@ -51,17 +46,19 @@ További információ arról, hogy az IoT Edge hub hogyan kezeli az alsóbb rét
 
 <!-- 1.1 -->
 ::: moniker range="iotedge-2018-06"
-
-IoT Edge-eszközök nem lehetnek IoT Edge átjárók alsóbb rétegében.
-
 ![Diagram – transzparens átjáró mintája](./media/iot-edge-as-gateway/edge-as-gateway-transparent.png)
+
+>[!NOTE]
+>A IoT Edge 1,1-es és régebbi verziójában a IoT Edge-eszközök nem lehetnek IoT Edge átjárók alsóbb rétegében.
+>
+>A IoT Edge 1,2-es verziójától kezdve az átlátszó átjárók képesek kezelni az alsóbb rétegbeli IoT Edge-eszközök kapcsolatait. További információért váltson a cikk [IoT Edge 1,2](?view=iotedge-2020-11&preserve-view=true) -es verziójára.
 
 ::: moniker-end
 
-<!-- 1.2.0 -->
+<!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-A 1.2.0 verziótól kezdődően IoT Edge eszközök transzparens átjárón keresztül csatlakozhatnak.
+A IoT Edge 1,2-es verziójától kezdve az átlátszó átjárók képesek kezelni az alsóbb rétegbeli IoT Edge-eszközök kapcsolatait.
 
 <!-- TODO add a downstream IoT Edge device to graphic -->
 

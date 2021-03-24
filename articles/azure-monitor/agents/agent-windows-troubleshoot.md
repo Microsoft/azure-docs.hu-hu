@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ab67602ebba2ae5446ecc0052ef4b03bba1e1bf
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100613521"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952983"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>A Windowshoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -19,7 +19,7 @@ Ez a cikk segítséget nyújt a Windows rendszerhez készült Log Analytics ügy
 Ha a fenti lépések egyike sem működik, a következő támogatási csatornák is elérhetők:
 
 * A Premier szintű támogatási csomaggal rendelkező ügyfelek a [Premier](https://premier.microsoft.com/)szintű támogatási kérést is megnyithatják.
-* Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://manage.windowsazure.com/?getsupport=true).
+* Az Azure-támogatási szerződéssel rendelkező ügyfelek támogatási kérelmet is megnyithatnak [a Azure Portal](https://azure.microsoft.com/support/options/).
 * Látogasson el a Log Analytics visszajelzési oldalra, és tekintse át az elküldött ötleteket és hibákat, [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) vagy egy újat. 
 
 ## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics hibaelhárítási eszköz
@@ -68,10 +68,10 @@ Ellenőrizze, hogy a tűzfal vagy a proxy úgy van-e konfigurálva, hogy engedé
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
-|*.blob.core.windows.net |443-es port |Kimenő|Yes |  
-|*. agentsvc.azure-automation.net |443-es port |Kimenő|Yes |  
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
+|*.blob.core.windows.net |443-es port |Kimenő|Igen |  
+|*. agentsvc.azure-automation.net |443-es port |Kimenő|Igen |  
 
 A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). Ha azt tervezi, hogy a Azure Automation Hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztrálja az runbookok-vagy felügyeleti megoldásokat a környezetben, hozzá kell férnie a portszámhoz és a [hálózat konfigurálása a hibrid Runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című témakörben leírt URL-címekhez. 
 
@@ -89,7 +89,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
     Ha a számítógép sikeresen kommunikál a szolgáltatással, a lekérdezésnek eredményt kell visszaadnia. Ha a lekérdezés nem adott vissza eredményt, először ellenőrizze, hogy az ügynök úgy van-e konfigurálva, hogy a megfelelő munkaterületre jelentsen. Ha megfelelően van konfigurálva, folytassa a 3. lépéssel, és keresse meg a Windows eseménynaplóját annak azonosításához, hogy az ügynök naplózza-e, hogy milyen problémát okozhat a Azure Monitorával folytatott kommunikáció.
 
-- A kapcsolódási problémák azonosítására szolgáló másik módszer a **TestCloudConnectivity** eszköz futtatása. Az eszköz alapértelmezés szerint telepítve van a *%systemroot%\Program Files\Microsoft monitoring Agent\Agent* mappában található ügynökkel. Egy rendszergazda jogú parancssorból navigáljon a mappához, és futtassa az eszközt. Az eszköz visszaadja az eredményeket, és kiemeli, hogy a teszt sikertelen volt-e (például ha egy adott porthoz/URL-címhez kapcsolódott). 
+- A kapcsolódási problémák azonosítására szolgáló másik módszer a **TestCloudConnectivity** eszköz futtatása. Az eszköz alapértelmezés szerint telepítve van a *%systemroot%\Program Files\Microsoft monitoring Agent\Agent* mappában található ügynökkel. Egy rendszergazda jogú parancssorból keresse meg a mappát, és futtassa az eszközt. Az eszköz visszaadja az eredményeket, és kiemeli, hogy a teszt sikertelen volt-e (például ha egy adott porthoz/URL-címhez kapcsolódott). 
 
     ![TestCloudConnection-eszköz végrehajtási eredményei](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 

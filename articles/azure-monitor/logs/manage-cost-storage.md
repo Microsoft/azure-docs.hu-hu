@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 4d546401baa7edc7725e3fdb23065009895f9c1e
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772280"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027431"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -93,7 +93,7 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
     
 3. A becsült költségeknek az utolsó 31 nap használaton alapuló áttekintése után, ha úgy dönt, hogy megváltoztatja az árképzési szintet, kattintson a **kiválasztás** elemre.  
 
-[Az árképzési szintet Azure Resource Manager használatával is beállíthatja](../samples/resource-manager-workspace.md) a `sku` ( `pricingTier` Azure Resource Manager sablonban) paraméterrel. 
+[Az árképzési szintet Azure Resource Manager használatával is beállíthatja](./resource-manager-workspace.md) a `sku` ( `pricingTier` Azure Resource Manager sablonban) paraméterrel. 
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt tarifacsomagok
 
@@ -145,7 +145,7 @@ A munkaterület alapértelmezett megőrzésének beállításához
 
 A megőrzési idő csökkentése után az új megőrzési beállításnál régebbi adatok törlődnek. 
 
-Az **adatmegőrzési** oldal lehetővé teszi a 30, 31, 60, 90, 120, 180, 270, 365, 550 és 730 nap megőrzési beállításait. Ha másik beállításra van szükség, akkor a paraméter használatával konfigurálható [Azure Resource Manager](../samples/resource-manager-workspace.md) használatával `retentionInDays` . Ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` (több napos türelmi időszakot megszüntető) paraméter használatával azonnal törölheti a régebbi adatok törlését. Ez akkor lehet hasznos, ha a megfelelőséggel kapcsolatos forgatókönyvek esetében azonnali adateltávolításra van szükség. Ez az azonnali törlési funkció csak Azure Resource Manageron keresztül érhető el. 
+Az **adatmegőrzési** oldal lehetővé teszi a 30, 31, 60, 90, 120, 180, 270, 365, 550 és 730 nap megőrzési beállításait. Ha másik beállításra van szükség, akkor a paraméter használatával konfigurálható [Azure Resource Manager](./resource-manager-workspace.md) használatával `retentionInDays` . Ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` (több napos türelmi időszakot megszüntető) paraméter használatával azonnal törölheti a régebbi adatok törlését. Ez akkor lehet hasznos, ha a megfelelőséggel kapcsolatos forgatókönyvek esetében azonnali adateltávolításra van szükség. Ez az azonnali törlési funkció csak Azure Resource Manageron keresztül érhető el. 
 
 A 30 napos megőrzéssel rendelkező munkaterületek 31 napig ténylegesen megőrzik az adatmegőrzési időt. Ha fontos, hogy az adatok csak 30 napig legyenek tárolva, a Azure Resource Manager segítségével állítsa be az adatmegőrzést 30 napra és a `immediatePurgeDataOn30Days` paraméterrel.  
 
@@ -322,7 +322,7 @@ A számlán lévő egységek száma a (z `billableNodeMonthsPerDay` ) által a l
 
 
 > [!TIP]
-> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](../log-query/query-optimization.md#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a használati adattípus lekérdezése (lásd alább).
+> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](./query-optimization.md#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a használati adattípus lekérdezése (lásd alább).
 
 ## <a name="understanding-ingested-data-volume"></a>A betöltött adatmennyiség ismertetése
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](../log-query/query-optimization.md#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a lekérdezés a használati adattípuson történik.
+> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](./query-optimization.md#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a lekérdezés a használati adattípuson történik.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Adatmennyiség Azure-erőforrás, erőforráscsoport vagy előfizetés alapján
 
@@ -445,7 +445,7 @@ Azt is megteheti `_ResourceId` , hogy a teljes mértékben, ha szükséges, a
 ```
 
 > [!TIP]
-> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](../log-query/query-optimization.md#query-performance-pane) végrehajtáshoz. Ha nincs szüksége az eredményekre az előfizetés, a erőforrás-csoport vagy az erőforrás neve alapján, akkor a lekérdezés a használati adatok típusát adja meg.
+> Ezekben a `find` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](./query-optimization.md#query-performance-pane) végrehajtáshoz. Ha nincs szüksége az eredményekre az előfizetés, a erőforrás-csoport vagy az erőforrás neve alapján, akkor a lekérdezés a használati adatok típusát adja meg.
 
 > [!WARNING]
 > A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**).
@@ -479,7 +479,7 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 
 | A nagy adatmennyiség forrása | Az adatmennyiség csökkentésének módja |
 | -------------------------- | ------------------------- |
-| Tárolóval kapcsolatos megállapítások         | [Konfigurálja a tároló](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost) -elemzéseket úgy, hogy csak a szükséges adatokat gyűjtsön. |
+| Tárolóval kapcsolatos megállapítások         | [Konfigurálja a tároló](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost) -elemzéseket úgy, hogy csak a szükséges adatokat gyűjtsön. |
 | Biztonsági események            | Válassza a [gyakori vagy minimális biztonsági események](../../security-center/security-center-enable-data-collection.md#data-collection-tier) lehetőséget <br> Módosítsa a biztonsági naplózási szabályzatot, hogy csak a szükséges eseményeket gyűjtse be. Tekintse át a következőkhöz való eseménygyűjtés szükségességét: <br> - [szűrőplatform naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [beállításjegyzék naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [fájlrendszer naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernelobjektum naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [leírókezelés naplózása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – Cserélhető tároló naplózása |
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](../agents/data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](../agents/data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
@@ -487,8 +487,8 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 | AzureDiagnostics           | [Erőforrás-napló gyűjteményének](../essentials/diagnostic-settings.md#create-in-azure-portal) módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldás célcsoportja](../insights/solution-targeting.md) csak a szükséges számítógépek adatainak gyűjtésére használható. |
 | Application Insights | A következő lehetőségeinek áttekintése: [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) |
-| [SQL-elemzés](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | A naplózási beállítások finomhangolásához használja a [set-AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) . |
-| Azure Sentinel | Tekintse át azokat a [Sentinel-adatforrásokat](https://docs.microsoft.com/azure/sentinel/connect-data-sources) , amelyeket mostanában engedélyezett a további adatmennyiség forrásaként. |
+| [SQL-elemzés](../insights/azure-sql.md) | A naplózási beállítások finomhangolásához használja a [set-AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) . |
+| Azure Sentinel | Tekintse át azokat a [Sentinel-adatforrásokat](../../sentinel/connect-data-sources.md) , amelyeket mostanában engedélyezett a további adatmennyiség forrásaként. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Csomópontok beolvasása az egyes csomópontok díjszabási szintjei szerint
 

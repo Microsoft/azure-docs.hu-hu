@@ -2,14 +2,14 @@
 title: Felügyelt identitások konfigurálása a Batch-készletekben
 description: Megtudhatja, hogyan engedélyezheti a felhasználó által hozzárendelt felügyelt identitásokat a Batch-készletekben, és hogyan használhatja a felügyelt identitásokat a csomópontokon belül.
 ms.topic: conceptual
-ms.date: 02/10/2021
+ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 4a59383d119f88bb3ee180f629ba0a6ea6ac2f44
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7fab213ac1545c0bff9b74bc46504717b6038e8e
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100417618"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950161"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Felügyelt identitások konfigurálása a Batch-készletekben
 
@@ -100,3 +100,4 @@ További információkért lásd: a [felügyelt identitások használata Azure-b
 
 - További információ az [Azure-erőforrások felügyelt identitásáról](../active-directory/managed-identities-azure-resources/overview.md).
 - Megtudhatja, hogyan használhatja az [ügyfél által felügyelt kulcsokat felhasználó által felügyelt identitásokkal](batch-customer-managed-key.md).
+- Megtudhatja, hogyan [engedélyezheti az automatikus tanúsítvány-elforgatást egy batch-készletben](automatic-certificate-rotation.md).

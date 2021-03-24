@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102561925"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951232"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Azure Storage-fiók integrálása Azure CDN
 
@@ -118,4 +118,4 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: a CDN használata a webalkalmazások statikus tartalmának lekérdezéséhez](cdn-add-to-web-app.md)
+> [Oktatóanyag: a CDN használata a statikus tartalmak kiszolgálására egy webalkalmazásból](cdn-add-to-web-app.md)
