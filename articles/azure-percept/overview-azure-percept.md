@@ -5,14 +5,14 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12ca7dff7d106941cc8947d9d3040bcefefde00a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103490109"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953592"
 ---
 # <a name="introduction-to-azure-percept"></a>Az Azure Percept bemutatása
 
@@ -22,30 +22,30 @@ Az integrációs kihívások az egyik arca, amikor az Edge AI-megoldások nagy l
 
 - Azonosítsa és válassza ki a megfelelő szilíciumot a megoldások kikapcsolásához.
 - A hardver, a szoftver, a modellek és az adattípusok kollektív biztonságának biztosítása.
-- Képes a zökkenőmentesen működő, nagy léptékű megoldások létrehozására és kezelésére.
+- Képes olyan megoldások létrehozására és kezelésére, amelyek zökkenőmentesen dolgozhatnak a skálán.
 
 ## <a name="components-of-azure-percept"></a>Az Azure Percept összetevői
 
 Az Azure Percept fő összetevői a következők:
 
-1. AI hardver-referenciák tervezési és minősítési programjai.
+1. [Azure Percept DK.](./overview-azure-percept-dk.md)
 
-    - Az Azure AI-és IoT-szolgáltatásokkal egyszerűen integrálható, az Edge AI-hardverek fejlesztésére szolgáló mintázatokkal és ajánlott eljárásokkal biztosítja a hardveres fejlesztők ökoszisztémáját.
-
-2. Azure Percept DK (fejlesztői készlet).
-
-    - Az eszköz-építők, a megoldás-építők és az ügyfelek számára a prototípus-forgatókönyvek széles választékát támogató fejlesztői csomag.
+    - Az eszköz-építők, a megoldás-építők és az ügyfelek számára a prototípus-forgatókönyvek széles skáláját támogató fejlesztői csomag.
 
         > [!div class="nextstepaction"]
         > [Vásárlás most](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
-3. Szolgáltatások és munkafolyamatok az Edge AI-modell és a megoldás-fejlesztés felgyorsításához.
+1. Olyan szolgáltatások és munkafolyamatok, amelyek felgyorsítják az Edge AI-modellt és a megoldások fejlesztését.
 
     - Az [Azure Percept studióból](https://go.microsoft.com/fwlink/?linkid=2135819)elérhető fejlesztői munkafolyamatok és előre elkészített modellek.
     - Modell-fejlesztési szolgáltatások.
-    - Eszközkezelés a méretezéshez.
+    - Eszközkezelés a skálázáshoz.
     - Végpontok közötti biztonság.
+
+1. AI hardver-referenciák tervezési és minősítési programjai.
+
+    - Az Azure AI-és IoT-szolgáltatásokkal egyszerűen integrálható, az Edge AI-hardverek fejlesztésére szolgáló mintázatokkal és ajánlott eljárásokkal biztosítja a hardveres fejlesztők ökoszisztémáját.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerkedés az [Azure PERCEPT DK](./overview-azure-percept-dk.md)-mel. 
+További információ az [Azure PERCEPT DK](./overview-azure-percept-dk.md) és az [Azure Percept Studio](./overview-azure-percept-studio.md)szolgáltatásról.

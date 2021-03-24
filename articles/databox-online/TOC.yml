@@ -240,8 +240,12 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: Virtuálisgép-rendszerkép létrehozása
               href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: Windows általánosított rendszerkép használata
+              href: azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md
             - name: Támogatott virtuálisgép-méretek és -típusok
               href: azure-stack-edge-gpu-virtual-machine-sizes.md
+            - name: Kapcsolódás a VM-konzolhoz
+              href: azure-stack-edge-gpu-connect-virtual-machine-console.md
         - name: Tanúsítványok kezelése
           items:
             - name: Követelmények
@@ -310,7 +314,9 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Megosztott kibocsátási megjegyzések
       items:
-        - name: 2101 – jelenlegi
+        - name: 2103 – jelenlegi
+          href: azure-stack-edge-gpu-2103-release-notes.md
+        - name: 2101
           href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2010-release-notes.md

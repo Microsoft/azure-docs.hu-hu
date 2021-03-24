@@ -2,13 +2,13 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "91652482"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951963"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
@@ -53,6 +53,12 @@ Ha a zárolás törléséhez az Azure CLI-t szeretné használni, futtassa a kö
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>Szükséges engedélyek
+
+A rendszer a törlést a sablont telepítő felhasználó identitása alapján kéri le. A központi telepítések törléséhez a felhasználónak hozzáféréssel kell rendelkeznie a **Microsoft. Resources/Deployments/delete** művelethez. Ha a felhasználó nem rendelkezik a szükséges engedélyekkel, a rendszer nem törli a központi telepítéseket az előzményekből.
+
+Ha az aktuális felhasználó nem rendelkezik a szükséges engedélyekkel, az automatikus törlés a következő üzemelő példányon újra próbálkozik.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Automatikus törlés engedélyezése
 

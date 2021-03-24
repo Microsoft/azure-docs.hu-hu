@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102425889"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954870"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -27,8 +27,8 @@ Egy új [HDInsight-fürtszolgáltatási](../role-based-access-control/built-in-r
 
 | Szerepkör                                  | Korábban                                                                                       | Továbbítás folyamatban       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Olvasó                                | – Olvasási hozzáférés, beleértve a titkokat is.                                                                   | – Olvasási hozzáférés, a titkok **kivételével** |           |   |   |
-| HDInsight-fürt operátora<br>(Új szerepkör) | N/A                                                                                              | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat         |   |   |
+| Olvasó                                | – Olvasási hozzáférés, beleértve a titkokat is.                                                                   | – Olvasási hozzáférés, a titkok **kivételével** | 
+| HDInsight-fürt operátora<br>(Új szerepkör) | N/A                                                                                              | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat         | 
 | Közreműködő                           | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat is.<br>– Az Azure-erőforrások összes típusának létrehozása és kezelése.<br>– Parancsfájl-műveletek végrehajtása.     | Nincs változás besorolás |
 | Tulajdonos                                 | – Olvasási/írási hozzáférés, beleértve a titkokat.<br>– Teljes hozzáférés az összes erőforráshoz<br>– A másokhoz való hozzáférés delegálása.<br>– Parancsfájl-műveletek végrehajtása. | Nincs változás besorolás |
 

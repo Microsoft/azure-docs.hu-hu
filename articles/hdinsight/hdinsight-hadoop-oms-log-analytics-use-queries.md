@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
-ms.openlocfilehash: 360a9730025dc24eda93868903fcd356c37d06ef
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3cf97039983ecec44a7c3a32e178fdcf9f9c45ff
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100576332"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872183"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor naplók lekérdezése HDInsight-fürtök figyeléséhez
 
@@ -37,13 +37,13 @@ Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
     search *
     ```
 
-    ![Apache Ambari Analytics keresés az összes mérőszámban](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "Keresés az összes mérőszámban")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png" alt-text="Apache Ambari Analytics keresés az összes mérőszámban":::
 
 1. A bal oldali menüben válassza a **szűrő** fület.
 
 1. A **típus** területen válassza a **szívverés** lehetőséget. Ezután válassza az **alkalmaz & Futtatás** elemet.
 
-    ![log Analytics-keresés – specifikus mérőszámok](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "Konkrét mérőszámok keresése")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png" alt-text="log Analytics-keresés – specifikus mérőszámok":::
 
 1. Figyelje meg, hogy a szövegmezőben a lekérdezés a következőre változik:
 
@@ -54,13 +54,13 @@ Megtudhatja, hogyan kereshet konkrét mérőszámokat a HDInsight-fürthöz.
 
 1. A bal oldali menüben elérhető beállításokkal mélyebbre is kihasználhatja. Például:
 
-    - Egy adott csomópont naplófájljainak megtekintéséhez:
+   - Egy adott csomópont naplófájljainak megtekintéséhez:
 
-        ![Adott hibák keresése output1](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png "Adott hibák keresése output1")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-node.png" alt-text="Adott hibák keresése output1":::
 
-    - Naplók megtekintése bizonyos időpontokban:
+   - Naplók megtekintése bizonyos időpontokban:
 
-        ![Adott hibák keresése output2](./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png "Adott hibák keresése output2")
+     :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/log-analytics-specific-time.png" alt-text="Adott hibák keresése output2":::
 
 1. Válassza az **alkalmaz & Futtatás** elemet, és tekintse át az eredményeket. Azt is vegye figyelembe, hogy a lekérdezés frissítve lett a következőre:
 
@@ -102,11 +102,11 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
 1. Az oldal tetején válassza az **új riasztási szabály** lehetőséget.
 
-    ![Lekérdezés megadása alert1 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png "Lekérdezés megadása alert1 létrehozásához")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert-query.png" alt-text="Új riasztási szabály":::
 
 1. A **szabály létrehozása** ablakban adja meg a lekérdezést és egyéb adatokat a riasztás létrehozásához, majd válassza a **riasztási szabály létrehozása** lehetőséget.
 
-    ![Lekérdezés megadása alert2 létrehozásához](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png "Lekérdezés megadása alert2 létrehozásához")
+    :::image type="content" source="./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-create-alert.png" alt-text="Adja meg a riasztási feltételt.":::
 
 ### <a name="edit-or-delete-an-existing-alert"></a>Meglévő riasztás szerkesztése vagy törlése
 
@@ -120,7 +120,7 @@ A riasztás létrehozásának első lépése egy olyan lekérdezés megérkezés
 
 1. A következő lehetőségek közül választhat: **Mentés**, **Elvetés**, **Letiltás** és **Törlés**.
 
-    ![HDInsight Azure Monitor naplók riasztás törlésének szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    :::image type="content" source="media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png" alt-text="HDInsight Azure Monitor naplók riasztás törlésének szerkesztése":::
 
 További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../azure-monitor/alerts/alerts-metric.md).
 

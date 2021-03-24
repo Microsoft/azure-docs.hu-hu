@@ -5,18 +5,18 @@ author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: e31a696dfb443c20566f13f5a228eefac7af5ecc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b644adb98de5ef5e3af6e1c8d45ea1a207d05cc7
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104595923"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956128"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI-modellek
 
-Az Azure Percept lehetővé teszi, hogy AI-modelleket fejlesszen és helyezzen üzembe közvetlenül az Azure [Percept studióból](https://go.microsoft.com/fwlink/?linkid=2135819)az Azure Percept DK-be. A modell üzembe helyezése az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/) és [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview)használatát is felhasználja.
+Az Azure Percept lehetővé teszi, hogy AI-modelleket fejlesszen és helyezzen üzembe közvetlenül az Azure [Percept studióból](https://go.microsoft.com/fwlink/?linkid=2135819)az [Azure Percept DK](./overview-azure-percept-dk.md) -be. A modell üzembe helyezése az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/) és [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/#iotedge-overview)használatát is felhasználja.
 
 ## <a name="sample-ai-models"></a>Minta AI-modellek
 
@@ -27,7 +27,7 @@ Az Azure Percept Studio a következő alkalmazásokhoz tartalmaz minta modelleke
 - általános objektumok észlelése
 - termékek – helyszíni észlelés
 
-Az előre betanított modellek esetében nincs szükség kódolási vagy betanítási adatgyűjtésre. Egyszerűen üzembe helyezheti a kívánt modellt az Azure Percept DK-be a portálon, és megnyithatja a fejlesztői készlet video streamjét, hogy megtekintse a modellen alapuló műveletet. A Model következtetési telemetria az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) eszköz használatával is elérhetők.
+Az előre betanított modellek esetében nincs szükség kódolási vagy betanítási adatgyűjtésre. Egyszerűen [üzembe helyezheti a kívánt modellt](./how-to-deploy-model.md) az Azure Percept DK-be a portálon, és megnyithatja a fejlesztői készlet [video streamjét](./how-to-view-video-stream.md) , hogy megtekintse a modellen alapuló műveletet. A [Model következtetési telemetria](./how-to-view-telemetry.md) az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) eszköz használatával is elérhetők.
 
 ## <a name="reference-solutions"></a>Referenciamegoldások
 
@@ -37,7 +37,7 @@ A rendszer szintén elérhetővé teszi A [felhasználók számlálására szolg
 
 ## <a name="custom-no-code-solutions"></a>Egyéni kód nélküli megoldások
 
-Az Azure Percept Studio segítségével egyéni [jövőkép](./tutorial-nocode-vision.md) -és beszédfelismerési megoldásokat fejleszthet, és nincs szükség kódolásra.
+Az Azure Percept Studio segítségével egyéni [jövőkép](./tutorial-nocode-vision.md) -és [beszédfelismerési](./tutorial-no-code-speech.md) megoldásokat fejleszthet, és nincs szükség kódolásra.
 
 Az egyéni látási megoldások esetében mind az objektum-észlelési, mind a besorolási AI-modellek elérhetők. Egyszerűen töltse fel és címkézze fel a betanítási lemezképeket, amelyek igény szerint közvetlenül az Azure Percept DK Azure Percept-víziójának használatával hozhatók létre. A modell betanítása és kiértékelése könnyen elvégezhető az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/#overview)részét képező [Custom Visionban](https://www.customvision.ai/).
 
@@ -58,6 +58,6 @@ Az előre elkészített hangasszisztensi kulcsszavak és parancsok közvetlenül
 
 Tekintse meg az [Azure PERCEPT DK Advanced Development githubot](https://github.com/microsoft/azure-percept-advanced-development) , amely naprakész útmutatást, oktatóanyagokat és példákat tartalmaz a következőkhöz:
 
-* Egyéni AI-modell üzembe helyezése az eszközön
-* Modell frissítése már támogatott az adatátviteli tanulással
-* És még sok minden más
+- Egyéni AI-modell üzembe helyezése az Azure Percept DK-ben
+- Támogatott modell frissítése az adatátviteli tanulással
+- És még sok minden más

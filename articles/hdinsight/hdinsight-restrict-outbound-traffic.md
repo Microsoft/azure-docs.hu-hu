@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 4761c1fb6d245071a02fc69677fc9cd50a972fdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 297c1d4afca5a1d605a046d69b086a05a9322bc7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100574598"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872081"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -52,7 +52,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
 1. Navigáljon a **Beállítások**  >  **szabályok**  >  **alkalmazás-szabály gyűjtemény**  >  **+ alkalmazás-szabály hozzáadása gyűjteményhez**.
 
-    ![Title: alkalmazás-szabály gyűjtemény hozzáadása](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+    :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png" alt-text="Title: alkalmazás-szabály gyűjtemény hozzáadása":::
 
 1. Az **alkalmazási szabály felvétele** képernyőn adja meg a következő információkat:
 
@@ -78,7 +78,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
     | Rule_3 | * | https:443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. Core. Windows. net | Cserélje le a helyére a `storage_account_name` tényleges Storage-fiók nevét. Ha csak HTTPS-kapcsolatot szeretne használni, győződjön meg arról, hogy a ["biztonságos átvitel szükséges"](../storage/common/storage-require-secure-transfer.md) beállítás engedélyezve van a Storage-fiókon. Ha privát végpontot használ a Storage-fiókok eléréséhez, ez a lépés nem szükséges, és a tárolási forgalmat nem továbbítja a tűzfal.|
 
-   ![Title: adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png" alt-text="Title: adja meg az alkalmazási szabály gyűjtésének részleteit":::
 
 1. Válassza a **Hozzáadás** lehetőséget.
 
@@ -105,7 +105,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
     | Rule_5 | TCP | * | SQL | 1433 | Ha a HDInsight által biztosított alapértelmezett SQL Server-kiszolgálókat használja, állítson be egy hálózati szabályt az SQL-hez tartozó szolgáltatás címkék szakaszában, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. Ha egyéni SQL Servert használ a Ambari, a Oozie, a Ranger és a kaptár metaadattárak, akkor csak a saját egyéni SQL-kiszolgálóira kell engedélyeznie a forgalmat.|
     | Rule_6 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
     
-   ![Title: adja meg az alkalmazási szabálygyűjtemény gyűjteményét](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   :::image type="content" source="./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png" alt-text="Title: adja meg az alkalmazási szabálygyűjtemény gyűjteményét":::
 
 1. Válassza a **Hozzáadás** lehetőséget.
 

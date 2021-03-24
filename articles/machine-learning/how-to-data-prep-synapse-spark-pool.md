@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d7cc948d3631e69882eb252672e5a3eb5d5f9751
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104867440"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956213"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>Az Azure szinapszis Analytics szolgáltatással rendelkező Apache Spark-készletek csatlakoztatása a huzavona (előzetes verzió)
 
@@ -127,6 +127,21 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>A szinapszis Spark-készlet elindítása adatelőkészítési feladatokhoz
 
+Az Apache Spark készlettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét:
+
+> [!IMPORTANT]
+> A Apache Spark készlet használatának folytatásához jeleznie kell, hogy melyik számítási erőforrást kell használnia az összes adat huzavona-feladatban, `%synapse` egyetlen sornyi kóddal és `%%synapse` több sorba. 
+
+```python
+%synapse start -c SynapseSparkPoolAlias
+```
+
+A munkamenet megkezdése után megtekintheti a munkamenet metaadatait.
+
+```python
+%synapse meta
+```
+
 Megadhat egy [Azure Machine learning környezetet](concept-environments.md) , amelyet a Apache Spark-munkamenet során használhat. Csak a környezetben megadott Conda-függőségek lépnek életbe. A Docker-rendszerkép nem támogatott.
 
 >[!WARNING]
@@ -146,21 +161,11 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Az Apache Spark készlettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét, és adja meg az előfizetés-AZONOSÍTÓját, a Machine learning-munkaterület erőforráscsoportot, a Machine learning-munkaterület nevét, valamint azt, hogy melyik környezetet kell használni a Apache Spark-munkamenet során. 
-
-> [!IMPORTANT]
-> A Apache Spark készlet használatának folytatásához jeleznie kell, hogy melyik számítási erőforrást kell használnia az összes adat huzavona-feladatban, `%synapse` egyetlen sornyi kóddal és `%%synapse` több sorba. 
+Az Apache Spark készlettel és az egyéni környezettel való adatelőkészítés megkezdéséhez adja meg a Apache Spark készlet nevét, valamint azt, hogy melyik környezetet kívánja használni a Apache Spark munkamenetben. Emellett megadhatja az előfizetés AZONOSÍTÓját, a Machine learning-munkaterület erőforráscsoportot és a Machine learning-munkaterület nevét.
 
 ```python
-%synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
+%synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
-
-A munkamenet megkezdése után megtekintheti a munkamenet metaadatait.
-
-```python
-%synapse meta
-```
-
 ## <a name="load-data-from-storage"></a>Adatok betöltése a tárolóból
 
 A Apache Spark-munkamenet elindítása után olvassa el az előkészíteni kívánt adatait. Az Azure Blob Storage és a Azure Data Lake Storage Generations 1. és 2. generációja támogatja az betöltést.
@@ -226,14 +231,22 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ### <a name="read-in-data-from-registered-datasets"></a>Adatok beolvasása a regisztrált adatkészletekből
 
-Egy meglévő regisztrált adatkészletet is beszerezhet a munkaterületen, és elvégezheti az adatok előkészítését egy Spark-dataframe való átalakítással.  
+Egy meglévő regisztrált adatkészletet is beszerezhet a munkaterületen, és elvégezheti az adatok előkészítését egy Spark-dataframe való átalakítással.
 
-A következő példa egy regisztrált TabularDataset kap, `blob_dset` amely a blob Storage-ban lévő fájlokra hivatkozik, és egy Spark-dataframe alakítja át. Amikor egy Spark-dataframe alakítja át az adatkészleteket, kihasználhatja az `pyspark` adatfeltárási és-előkészítési kódtárakat.  
+A következő példa hitelesíti a munkaterületet, beolvas egy regisztrált TabularDataset, `blob_dset` amely a blob Storage-ban lévő fájlokra hivatkozik, és egy Spark-dataframe alakítja át. Amikor egy Spark-dataframe alakítja át az adatkészleteket, kihasználhatja az `pyspark` adatfeltárási és-előkészítési kódtárakat.  
 
 ``` python
 
 %%synapse
 from azureml.core import Workspace, Dataset
+
+subscription_id = "<enter your subscription ID>"
+resource_group = "<enter your resource group>"
+workspace_name = "<enter your workspace name>"
+
+ws = Workspace(workspace_name = workspace_name,
+               subscription_id = subscription_id,
+               resource_group = resource_group)
 
 dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()

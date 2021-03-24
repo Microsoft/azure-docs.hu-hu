@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: d36c8f1f592bbe714a9e31cad8131523049f29ad
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a3bfcfbe59ccc15278b30470c6a060a9c1dd609c
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931357"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871744"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -18,7 +18,7 @@ A HDInsight lehetővé teszi az adatok és a metaadatok külső adattárral val�
 
 A HDInsight Apache Hive metaadattár a Apache Hadoop architektúra alapvető részét képezi. A metaadattár a központi séma tárháza. A metaadattár más big data hozzáférési eszközök, például a Apache Spark, az interaktív lekérdezés (LLAP), a Presto vagy az Apache Pig használják. A HDInsight Azure SQL Database használ Hive-metaadattárként.
 
-![HDInsight struktúra metaadat-tárolójának architektúrája](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png" alt-text="HDInsight struktúra metaadat-tárolójának architektúrája" border="false":::
 
 A HDInsight-fürtökhöz kétféleképpen állíthat be metaadattár:
 
@@ -56,7 +56,7 @@ A HDInsight az éles fürtökhöz ajánlott egyéni metaadattárak is támogatja
 
 * A fürtöt és a külső metaadattár ugyanabban a régióban kell üzemeltetni.
 
-![HDInsight-struktúra metaadatainak tárolójának használati esete](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png" alt-text="HDInsight-struktúra metaadatainak tárolójának használati esete" border="false":::
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>Az egyéni metaadattár létrehozási és konfigurációs Azure SQL Database
 
@@ -66,15 +66,15 @@ A fürt létrehozása során a HDInsight szolgáltatásnak csatlakoznia kell a k
 
 Az SQL-áruházakhoz tartozó magánhálózati végpontok csak a ResourceProviderConnection-mel létrehozott fürtökön támogatottak `outbound` . További információért tekintse meg ezt a [dokumentációt](./hdinsight-private-link.md).
 
-![kiszolgáló tűzfalának beállítása gomb](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png" alt-text="kiszolgáló tűzfalának beállítása gomb":::
 
-![Azure-szolgáltatások hozzáférésének engedélyezése](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png" alt-text="Azure-szolgáltatások hozzáférésének engedélyezése":::
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Egyéni metaadattár kiválasztása a fürt létrehozása során
 
 A fürtöt egy korábban létrehozott Azure SQL Databasere irányíthatja bármikor. A portálon keresztüli fürt létrehozásához a beállítás a **Storage > metaadattár beállításainál** adható meg.
 
-![HDInsight struktúra metaadatainak tárolója Azure Portal](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
+:::image type="content" source="./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png" alt-text="HDInsight struktúra metaadatainak tárolója Azure Portal":::
 
 ## <a name="hive-metastore-guidelines"></a>Hive-metaadattár irányelvek
 

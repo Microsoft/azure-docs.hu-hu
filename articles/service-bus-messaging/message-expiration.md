@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenet lejárata
 description: Ez a cikk a Azure Service Bus üzenetek érvényességének lejáratát és időpontját ismerteti. Az ilyen határidő lejárta után az üzenet már nem érkezik meg.
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: 74df8909633c2fa048c23c559ffdd315a8616e11
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5d60d84bdc0d437d97c369296a414d55beda4167
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042827"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952320"
 ---
 # <a name="message-expiration-time-to-live"></a>Üzenetek lejárata (élettartama)
 Az üzenetben szereplő hasznos adatok, illetve az üzenetek fogadóknak küldött utasításait vagy lekérdezéseit szinte mindig az alkalmazási szintű lejárati határidő valamilyen formája adja. Az ilyen határidő lejárta után a rendszer már nem továbbítja a tartalmat, vagy a kért művelet már nem lesz végrehajtva.
@@ -46,7 +46,7 @@ Service Bus várólisták, témakörök és előfizetések ideiglenes entitásk�
  
 Az automatikus tisztítás olyan fejlesztési és tesztelési helyzetekben hasznos, amelyekben az entitások dinamikusan jönnek létre, és a használat után nem törlődnek, mert a teszt vagy a hibakeresés futtatása megszakad. Akkor is hasznos, ha egy alkalmazás dinamikus entitásokat (például egy válasz-várólistát) hoz létre a válaszok fogadásához egy webkiszolgálói folyamatba, vagy egy másik viszonylag rövid életű objektumba, ahol nehéz megbízhatóan megtisztítani ezeket az entitásokat, amikor az objektum példánya eltűnik.
 
-A szolgáltatás engedélyezve van a névtér **automatikus törlés inaktív** tulajdonságának használatával. Ez a tulajdonság arra az időtartamra van beállítva, ameddig az entitásnak tétlennek kell lennie (használaton kívül), mielőtt automatikusan törölné. A tulajdonság minimális értéke 5.
+A szolgáltatás engedélyezve van a névtér **automatikus törlés inaktív** tulajdonságának használatával. Ez a tulajdonság arra az időtartamra van beállítva, ameddig az entitásnak tétlennek kell lennie (használaton kívül), mielőtt automatikusan törölné. A tulajdonság minimális értéke 5 perc.
  
 ## <a name="idleness"></a>Semmittevés
 
