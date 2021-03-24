@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0be7805493e5acc41254c57ca912b5a2ecf02dae
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c725e7b4e7af33181cb616d2bce2ae19521a5e7d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98931456"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871877"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Apache Hadoop HDFS hibaelhárítása az Azure HDInsighttal
 
@@ -116,7 +116,7 @@ Az `fs.azure.write.request.size` Apache Ambari használatával globálisan is n�
 3. A **szűrő...** mezőbe írja be a értéket `fs.azure.write.request.size` .
 4. Módosítsa a 262144 (256 KB) értéket az új értékre. Például 4194304 (4 MB).
 
-    ![Az érték Ambari webes felhasználói felületén keresztüli módosításának képe](./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png)
+    :::image type="content" source="./media/hdinsight-troubleshoot-hdfs/hbase-change-block-write-size.png" alt-text="Az érték Ambari webes felhasználói felületén keresztüli módosításának képe" border="false":::
 
 A Ambari használatával kapcsolatos további információkért lásd: [HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felületén](hdinsight-hadoop-manage-ambari.md).
 

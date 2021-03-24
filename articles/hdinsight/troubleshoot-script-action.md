@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 73b958964db2d0b308dd6dfc34024d61ce5ad8af
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944680"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871435"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájl-műveletek hibakeresése az Azure HDInsight
 
@@ -26,11 +26,11 @@ Az Apache Ambari webes FELÜLETén megtekintheti a parancsfájlok műveletei ál
 
 1. Az oldal tetején található sávban válassza az **Ops** bejegyzést. A lista a fürtön a Ambari használatával végzett aktuális és korábbi műveleteket jeleníti meg.
 
-    ![Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel](./media/troubleshoot-script-action/hdi-apache-ambari-nav.png)
+    :::image type="content" source="./media/troubleshoot-script-action/hdi-apache-ambari-nav.png" alt-text="Ambari webes FELHASZNÁLÓIFELÜLET-sáv kijelölése az Ops-mel" border="true":::
 
 1. Keresse meg azokat a bejegyzéseket, amelyek a **\_ customscriptaction futtatták** az **Operations** oszlopban. Ezek a bejegyzések a parancsfájl műveleteinek futtatásakor jönnek létre.
 
-    ![Apache Ambari parancsfájl műveleti műveletei](./media/troubleshoot-script-action/ambari-script-action.png)
+    :::image type="content" source="./media/troubleshoot-script-action/ambari-script-action.png" alt-text="Apache Ambari parancsfájl műveleti műveletei" border="true":::
 
     Az **StdOut** és a **stderr** kimenetének megtekintéséhez válassza ki a **run\customscriptaction** bejegyzést, és részletezse a hivatkozásokat. Ezt a kimenetet a szkript futtatásakor generálja a rendszer, és hasznos információkhoz vezethet.
 
@@ -40,7 +40,7 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
 
 * A tárolási naplók a következő címen érhetők el: `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` .
 
-    ![Parancsfájl műveleti naplói](./media/troubleshoot-script-action/script-action-logs-in-storage.png)
+    :::image type="content" source="./media/troubleshoot-script-action/script-action-logs-in-storage.png" alt-text="Parancsfájl műveleti naplói" border="true":::
 
     Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz**, a **munkavégző csomópont** és a **Zookeeper csomópont** számára. Lásd az alábbi példákat:
 

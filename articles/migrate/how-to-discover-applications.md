@@ -6,21 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 47ea06fa2143f9a5dc5808ccb98fc80c87fefd93
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: d68c3729e8a63f8342cd51b62413aec3276c6165
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786702"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871010"
 ---
 # <a name="discover-installed-software-inventory-and-sql-server-instances-and-databases"></a>Telepített szoftverek felderítése, és SQL Server példányok és adatbázisok
 
 Ez a cikk bemutatja, hogyan derítheti fel a telepített szoftvereket, és hogyan SQL Server példányokat és adatbázisokat a VMware-környezetben futó kiszolgálókon Azure Migrate: felderítési és értékelési eszköz használatával.
 
 A szoftver leltározása segít azonosítani és testre szabni az Azure-ba történő áttelepítési útvonalat a számítási feladatokhoz. A szoftveres leltár a Azure Migrate berendezés használatával hajtja végre a felderítést a kiszolgálói hitelesítő adatokkal. Teljesen ügynök nélküli – nincsenek ügynökök telepítve a kiszolgálókra az adatok összegyűjtéséhez.
-
-> [!NOTE]
-> A szoftveres leltár jelenleg előzetes verzióban érhető el a VMware-környezetben futó kiszolgálók esetében, és csak a felderítésre korlátozódik. Jelenleg nem biztosítunk alkalmazás-alapú értékelést.<br/> A VMware-környezetben futó SQL Server példányok és adatbázisok felderítése és értékelése már előzetes verzióban érhető el. A funkció kipróbálásához hozzon létre egy projektet a **Kelet-Ausztrália** régióban [**ezzel a hivatkozással**](https://aka.ms/AzureMigrate/SQL). Ha már van egy projektje Kelet-Ausztráliában, és szeretné kipróbálni ezt a funkciót, ellenőrizze, hogy eleget tett-e ezeknek az [**előfeltételeknek**](how-to-discover-sql-existing-project.md) a portálon.
 
 ## <a name="before-you-start"></a>Előkészületek
 

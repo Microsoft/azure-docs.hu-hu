@@ -2,29 +2,27 @@
 title: A Media szolgáltatás számára fenntartott egységek (MRUs) parancssori felületének méretezése
 description: Ez a témakör bemutatja, hogyan méretezheti a CLI-t a médiafájlok feldolgozásának méretezésére Azure Media Services használatával.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: a07c4a20b854e09daf3b320b8c99757ca99b2578
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102213810"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870160"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>A Media szolgáltatás számára fenntartott egységek méretezése
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Ez a cikk bemutatja, hogyan méretezhető a Media szolgáltatás számára fenntartott egységek (MRSs) a gyorsabb kódolás érdekében.
+
+> [!WARNING]
+> Ez a parancs már nem fog Media Services működni az API 2020-05-01-es verziójával vagy újabb verzióval létrehozott fiókokhoz. Ezekhez a fiókokhoz a Media szolgáltatás számára fenntartott egységek már nem szükségesek, mivel a rendszer a terhelés alapján automatikusan fel-és leskálázást végez. Ha nem látja a MRUs kezelését a Azure Portal, akkor olyan fiókot használ, amely az 2020-05-01 API-val vagy később lett létrehozva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e02ad9187743603d46259d70965e49d6839ecd71
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97695850"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949838"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Az Azure hatáskörébe telepítése – ajánlott eljárások
 
@@ -91,7 +91,7 @@ Néhány fontos érintett fél, akikkel a következőket teheti:
 |**Adatelemző**|Képes az üzleti problémák keretbe való bevezetésére és az adatelemzésre, hogy a vezetők üzleti döntéseket hozhassanak|
 |**Adatfejlesztő**|Tervezze meg az üzleti szempontból kritikus fontosságú üzletági alkalmazások kialakítását és az adatbiztonság megtervezését és megvalósítását|
 |**Adatmérnök**|Az adatverem üzemeltetése és karbantartása, különböző forrásokból származó adatok lekérése, adatok integrálása és előkészítése, adatfolyamatok beállítása|
-|**Adatelemző**|Elemzési modellek létrehozása és az API-k által elérhetővé tett adattermékek beállítása|
+|**Adatszakértő**|Elemzési modellek létrehozása és az API-k által elérhetővé tett adattermékek beállítása|
 |**ADATBÁZIS-rendszergazda**|Az adatbázisokkal kapcsolatos incidensek és kérelmek saját, nyomon követése és feloldása a szolgáltatói szerződések (SLA) keretében; Az adatfolyamatokat is beállíthat|
 |**DevOps**|Üzletági alkalmazások fejlesztése és megvalósítása; tartalmazhat parancsfájlokat és hangszerelési képességeket|
 |**Adatbiztonsági specialista**|A hálózat és az adatbiztonság teljes körű felmérése, amely magában foglalja a hatáskörébe tartozó és kívüli adatforgalomot|
@@ -150,7 +150,7 @@ A hatáskörébe tartoznak több olyan terület, ahol a katalógus-rendszergazd�
 
 ### <a name="plan-and-implement-different-integration-points-with-purview"></a>Különböző integrációs pontok tervezése és implementálása a hatáskörébe
 
-Valószínű, hogy egy érett szervezet már rendelkezik egy meglévő adatkatalógussal. A legfontosabb kérdés, hogy továbbra is használja-e a meglévő technológiát, és szinkronizálja a hatáskörébe. A hatáskörébe az Atlas API-kon keresztül teszi közzé az adatokat, de valójában nem támogatja ezt a forgatókönyvet. Egyes szervezetek kezdetben dönthetnek úgy, hogy a meglévő adatforrások más adatkatalógus-megoldásokból való áttelepítésével elindítják a hatáskörébe tartozó használatot. Ezt az Atlas API-kon keresztül teheti meg egyirányú megközelítéssel. A különböző katalógus-technológiák közötti szinkronizálást nem kell figyelembe venni a hosszú távú kialakításban. Általában az is előfordulhat, hogy az egyes üzleti egységek továbbra is használhatják a régebbi adategységek meglévő megoldásait, míg a hatáskörébe az újabb adatforrások elleni vizsgálatra lenne szükség.
+Valószínű, hogy egy érett szervezet már rendelkezik egy meglévő adatkatalógussal. A legfontosabb kérdés az, hogy továbbra is használja-e a meglévő technológiát, és szinkronizáljon a hatáskörébe vagy sem. A szervezet meglévő termékeivel való szinkronizálás kezeléséhez a hatáskörébe tartozik az Atlas REST API-k. Az Atlas API-k hatékony és rugalmas mechanizmust biztosítanak a leküldéses és lekéréses forgatókönyvek kezelésére. Az információ közzétehető a hatáskörébe az Atlas API-k használatával, vagy leküldheti a legújabb frissítéseket egy másik rendszerről a hatáskörébe. A hatáskörébe tartozó információk olvashatók az Atlas API-k használatával, majd a meglévő termékekhez való szinkronizálása is lehetséges. 
 
 Más integrációs forgatókönyvek, például a jegyek, az egyéni felhasználói felület és az összehangolás esetében az Atlas API-kat és a Kafka-végpontokat használhatja. Általában négy integrációs pont van a hatáskörébe:
 

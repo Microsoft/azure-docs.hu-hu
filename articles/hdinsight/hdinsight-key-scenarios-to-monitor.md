@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
-ms.openlocfilehash: f910054c803093eb62db494a596219c50791d136
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 5e6bec71c44d7fbcf2841e087af9887d99c94e6f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98945348"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104867576"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -24,7 +24,7 @@ A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a für
 
 Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
-| Szín | Description |
+| Szín | Leírás |
 | --- | --- |
 | Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
@@ -33,11 +33,11 @@ Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és bet�
 
 Emellett az egyes gazdagépek magok számát és a RAM mennyiségét, valamint a lemezek kihasználtságát és a terhelés átlagát ábrázoló oszlopokat is láthat.
 
-![Apache Ambari-gazdagépek lapja – áttekintés](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png" alt-text="Apache Ambari-gazdagépek lapja – áttekintés":::
 
 A gazdagépen futó összetevők és azok metrikáinak részletes megtekintéséhez válassza ki az állomásnév bármelyikét. A metrikák a CPU-használat, a terhelés, a lemezhasználat, a memóriahasználat, a hálózati használat és a folyamatok száma szerint választható idővonalként jelennek meg.
 
-![Az Apache Ambari-gazdagép részleteinek áttekintése](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png" alt-text="Az Apache Ambari-gazdagép részleteinek áttekintése":::
 
 A riasztások beállításával és a metrikák megtekintésével kapcsolatos részletekért lásd: [HDInsight-fürtök kezelése az Apache Ambari webes felületének használatával](hdinsight-hadoop-manage-ambari.md) .
 
@@ -53,19 +53,19 @@ Ha több bérlő is osztozik egy nagy fürtön, a fürt erőforrásainak verseny
 
 A fonal lehetővé teszi, hogy erőforrásokat foglaljon le ezekhez a várólistákhoz, és megjeleníti, hogy az összes rendelkezésre álló erőforrás hozzá van-e rendelve. A várólistákkal kapcsolatos információk megtekintéséhez jelentkezzen be a Ambari webes felhasználói felületére, majd a felső menüben válassza a **fonal Queue Manager** lehetőséget.
 
-![Apache Ambari-FONALak üzenetsor-kezelője](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png" alt-text="Apache Ambari-FONALak üzenetsor-kezelője":::
 
 A FONALak üzenetsor-kezelője lapon láthatók a bal oldali várólisták listája, valamint az egyesekhez rendelt kapacitások százalékos aránya.
 
-![A CÉRNA üzenetsor-kezelő részletei lap](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png" alt-text="A CÉRNA üzenetsor-kezelő részletei lap":::
 
 Részletesebben tekintse meg a várólistákat a Ambari irányítópultján, a bal oldali listából válassza ki a **fonal** szolgáltatást. Ezután a **gyors hivatkozások** legördülő menüben válassza ki a **Resource Manager felhasználói felületét** az aktív csomópont alatt.
 
-![Resource Manager felhasználói felület menü hivatkozásai](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png" alt-text="Resource Manager felhasználói felület menü hivatkozásai":::
 
 A Resource Manager felhasználói felületén válassza a **Scheduler** lehetőséget a bal oldali menüben. Megjelenik az *alkalmazás-várólisták* alatt található várólisták listája. Itt megtekintheti az egyes várólistákhoz használt kapacitást, a feladatok elosztásának módját, valamint azt, hogy az adott feladatok erőforrás-korlátozottak-e.
 
-![Apache HAdoop Resource Manager felhasználói felület menü](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+:::image type="content" source="./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png" alt-text="Apache HAdoop Resource Manager felhasználói felület menü":::
 
 ## <a name="storage-throttling"></a>Tárterület-szabályozás
 

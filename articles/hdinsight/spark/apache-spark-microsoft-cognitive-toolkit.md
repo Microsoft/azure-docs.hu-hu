@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: cddbc4b6a5c7a2c787c8305fdf703e34543746f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6be70f448cec7cf6db2b8152565ad8102d3a3294
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98929970"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868749"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit Deep learning-modell használata Azure HDInsight Spark-fürttel
 
@@ -73,7 +73,7 @@ Ahhoz, hogy a Microsoft Cognitive Toolkitt a Azure HDInsight Spark fürthöz has
 
 1. A Jupyter Notebook válassza a jobb felső sarokban található **feltöltés** lehetőséget, majd navigáljon a letöltés és a fájl kiválasztása elemre `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre")
+    :::image type="content" source="./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png " alt-text="Jupyter Notebook feltöltése Azure HDInsight Spark-fürtre" border="true":::
 
 1. Válassza a **feltöltés** újra lehetőséget.
 

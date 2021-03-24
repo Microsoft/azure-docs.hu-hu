@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: f0673523c74a0ea298e7d2d520952c3e98877e91
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c950903522d42b3c279cb89f3a6031043fd49bf3
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98930052"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868800"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark-alkalmazások függőségeinek kezelése
 
@@ -43,7 +43,7 @@ A Magic használatával úgy `%%configure` konfigurálhatja a jegyzetfüzetet, h
 
 Miután megtalálta a csomagot a Maven adattárból, Gyűjtse össze a **GroupID**, a **ArtifactId** és a **verzió** értékeit. Összefűzi a három értéket kettősponttal elválasztva (**:**).
 
-   ![Csomag sémájának összefűzése](./media/apache-spark-manage-dependencies/spark-package-schema.png "Csomag sémájának összefűzése")
+   A :::image type="content" source="./media/apache-spark-manage-dependencies/spark-package-schema.png " alt-text="csomag sémájának" border="true":::"Border =" true ":::
 
 Győződjön meg arról, hogy az összegyűjtött értékek megfelelnek a fürtnek. Ebben az esetben a HDInsight 3,6 Spark-fürthöz készült Spark Cosmos DB Connector-csomagot használjuk a Scala 2,11 és a Spark 2,3 számára. Ha nem biztos abban, hogy a `scala.util.Properties.versionString` fürt Scala-verziójának lekéréséhez a Spark kernel kód cellájában futtassa a parancsot. Futtassa `sc.version` a parancsot a fürt Spark-verziójának beolvasásához.
 
@@ -70,7 +70,7 @@ import com.microsoft.azure.cosmosdb.spark._
 ### <a name="use-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ használata
 [Azure Toolkit for IntelliJ beépülő](./apache-spark-intellij-tool-plugin.md) modul felhasználói felületi élményt nyújt a Spark Scala-alkalmazás HDInsight-fürthöz való beküldéséhez. A szolgáltatás `Referenced Jars` `Referenced Files` a Spark-alkalmazás elküldésekor a jar könyvtárak elérési útjainak konfigurálására és tulajdonságaira szolgál. További információ a [HDInsight Azure Toolkit for IntelliJ beépülő moduljának használatáról](./apache-spark-intellij-tool-plugin.md#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
 
-![A Spark beküldése párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png)
+:::image type="content" source="./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-02.png" alt-text="A Spark beküldése párbeszédpanel" border="true":::
 
 ## <a name="jar-libs-for-cluster"></a>Jar könyvtárak a fürthöz
 Bizonyos esetekben előfordulhat, hogy a jar-függőségeket a fürt szintjén kell konfigurálni, hogy az egyes alkalmazások alapértelmezés szerint azonos függőségekkel is beállíthatók legyenek. A módszer a jar-elérési utak hozzáadása a Spark-illesztőprogramhoz és a végrehajtó osztály elérési útjához.
@@ -89,11 +89,11 @@ Bizonyos esetekben előfordulhat, hogy a jar-függőségeket a fürt szintjén k
     spark.executor.extraClassPath=/usr/libs/sparklibs/*
     ```
 
-   ![A Spark alapértelmezett konfigurációjának módosítása](./media/apache-spark-manage-dependencies/change-spark-default-config.png "A Spark alapértelmezett konfigurációjának módosítása")
+   A :::image type="content" source="./media/apache-spark-manage-dependencies/change-spark-default-config.png " alt-text="Spark alapértelmezett konfigurációjának módosítása" border="true":::QL config "Border =" true ":::
 
 3. Mentse a módosított konfigurációkat, és indítsa újra az érintett szolgáltatásokat.
 
-   ![Érintett szolgáltatások újraindítása](./media/apache-spark-manage-dependencies/restart-impacted-services.png "Érintett szolgáltatások újraindítása")
+   Az érintett :::image type="content" source="./media/apache-spark-manage-dependencies/restart-impacted-services.png " alt-text="szolgáltatások újraindítása" border="true":::a "Border =" true ":::
 
 A lépéseket [parancsfájl-műveletek](../hdinsight-hadoop-customize-cluster-linux.md)használatával automatizálhatja. A [kaptár egyéni kódtárainak hozzáadására](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh) szolgáló parancsfájl-művelet jó hivatkozás. A Spark szolgáltatás konfigurációjának módosításakor ügyeljen arra, hogy a Ambari API-kat használja közvetlenül a konfigurációs fájlok módosítása helyett. 
 

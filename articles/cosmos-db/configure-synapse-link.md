@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
-ms.custom: references_regions
-ms.openlocfilehash: 7accf705ee64be5ba416be9df2f92693b07e8a8c
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.custom: references_regions, synapse-cosmos-db
+ms.openlocfilehash: 60b720f3f5d91570e32ecf3d03aa7065f93990c5
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799649"
+ms.locfileid: "104868205"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Az Azure Cosmos DB-hez készült Azure Synapse Link konfigurálása és használata
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
