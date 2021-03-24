@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 0cee343e6769c815ecfb4b9c791783bd246caaac
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 458c93fd3e13a958137c762a0979af918a70d930
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/24/2021
-ms.locfileid: "104953901"
+ms.locfileid: "105023060"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
 
@@ -91,7 +91,7 @@ IoT Central alkalmazást úgy konfigurálhatja, hogy folyamatosan exportálja a 
 1. A Azure Portal navigáljon a Event Hubs névtérhez, és válassza a **+ Event hub** elemet.
 1. Nevezze el az Event hub- **centralexport**.
 1. A névtérben található Event hubok listájában válassza a **centralexport** lehetőséget. Ezután válassza a **megosztott hozzáférési házirendek** elemet.
-1. Válassza a **+ Hozzáadás** lehetőséget. Hozzon létre egy **figyelés** nevű szabályzatot a **figyelési** jogcímen.
+1. Válassza a **+ Hozzáadás** lehetőséget. Hozzon létre egy **SendListen** nevű szabályzatot a **küldési** és **figyelési** jogcímekkel.
 1. Ha a házirend elkészült, jelölje ki azt a listában, majd másolja ki a **kapcsolódási karakterlánc – elsődleges kulcs** értékét.
 1. Jegyezze fel ezt a kapcsolati karakterláncot, később, amikor konfigurálja a Databricks-jegyzetfüzetet az Event hub-ból való olvasáshoz.
 
@@ -99,42 +99,46 @@ A Event Hubs névtere a következő képernyőképre hasonlít:
 
 :::image type="content" source="media/howto-create-custom-analytics/event-hubs-namespace.png" alt-text="Event Hubs névtér képe.":::
 
-## <a name="configure-export-in-iot-central-and-create-a-new-destination"></a>Az Exportálás konfigurálása IoT Centralban és új célhely létrehozása
+## <a name="configure-export-in-iot-central"></a>Az Exportálás konfigurálása IoT Central
 
-Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a contoso-sablonból létrehozott IoT Central alkalmazáshoz. Ebben a szakaszban úgy konfigurálja az alkalmazást, hogy a szimulált eszközökről az telemetria továbbítsa az alkalmazást. Az Exportálás konfigurálása:
+Ebben a szakaszban az alkalmazást úgy konfigurálja, hogy a szimulált eszközökről az Event hub-ra továbbítsa a telemetria.
+
+Az [Azure IoT Central Application Manager](https://aka.ms/iotcentral) webhelyén navigáljon a korábban létrehozott IoT Central alkalmazáshoz. Az Exportálás konfigurálásához először hozzon létre egy célhelyet:
+
+1. Navigáljon az **adatexportálás** lapra, majd válassza a **Célhelyek** lehetőséget.
+1. Válassza az **+ új cél** lehetőséget.
+1. A cél létrehozásához használja az alábbi táblázatban szereplő értékeket:
+
+    | Beállítás | Érték |
+    | ----- | ----- |
+    | Cél neve | Telemetria Event hub |
+    | Cél típusa | Azure Event Hubs |
+    | Kapcsolati sztring | Az Event hub kapcsolati karakterlánca, amelyet korábban jegyzett tett |
+
+    Az **Event hub** **centralexport**-ként jelenik meg.
+
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Az adatexportálás célhelyét ábrázoló képernyőfelvétel":::
+
+1. Kattintson a **Mentés** gombra.
+
+Az exportálási definíció létrehozása:
 
 1. Navigáljon az **adatexportálás** lapra, és válassza az **+ új Exportálás** lehetőséget.
-1. Az első ablak befejezése előtt válassza **a cél létrehozása** lehetőséget.
 
-Az ablak az alábbihoz hasonlóan fog kinézni.  
-
-:::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="az adatexportálási célhely konfigurációjának képe.":::
-
-3. Írja be a következő értékeket:
-
-| Beállítás | Érték |
-| ------- | ----- |
-| Cél neve | A célhely neve |
-| Cél típusa | Azure Event Hubs |
-| Kapcsolati sztring| Az Event hub kapcsolati karakterlánca korábban már feljegyzést készített. | 
-| Eseményközpont| Az Event hub neve|
-
-4. A befejezéshez kattintson a **Létrehozás** gombra.
-
-5. Az Exportálás konfigurálásához használja az alábbi beállításokat:
+1. Az Exportálás konfigurálásához használja az alábbi táblázatban szereplő értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Adja meg az Exportálás nevét | eventhubexport |
+    | Exportálás neve | Event hub-exportálás |
     | Engedélyezve | Be |
-    | Adatok| Telemetria kiválasztása | 
-    | Célhelyek| Hozzon létre egy célhelyet a lent látható módon az exportáláshoz, majd válassza ki azt a cél legördülő menüben. |
+    | Exportálandó adattípusok | Telemetria |
+    | Célhelyek | Válassza a **+ cél**, majd az **telemetria Event hub** elemet. |
 
-:::image type="content" source="media/howto-create-custom-analytics/data-export-1.png" alt-text="Az adatexportálási célhely konfigurációjának képernyőképe.":::
+1. Kattintson a **Mentés** gombra.
 
-6. Ha elkészült, válassza a **Mentés** lehetőséget.
+    :::image type="content" source="media/howto-create-custom-analytics/data-export-2.png" alt-text="Az adatexportálási definíciót ábrázoló képernyőfelvétel":::
 
-A folytatás előtt várjon, amíg az Exportálás állapota **fut** .
+A folytatás előtt várjon, amíg az Exportálás állapota **kifogástalan** állapotú az **adatexportálási** lapon.
 
 ## <a name="configure-databricks-workspace"></a>Databricks-munkaterület konfigurálása
 

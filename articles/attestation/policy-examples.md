@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6a5460a691658bda1cd60e503be8c98433c9c343
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: de003025e98109599ecd69c0459e29950c9bd1fd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720154"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950569"
 ---
 # <a name="examples-of-an-attestation-policy"></a>Példa igazolási házirendre
 
@@ -35,9 +35,9 @@ c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
 };
 
 ```
-További információ az Azure-igazolás által generált bejövő jogcímekről: [jogcím-készletek](/azure/attestation/claim-sets). A bejövő jogcímeket a szabályzatok szerzői az egyéni szabályzatok engedélyezési szabályainak meghatározására használhatják. 
+További információ az Azure-igazolás által generált bejövő jogcímekről: [jogcím-készletek](./claim-sets.md). A bejövő jogcímeket a szabályzatok szerzői az egyéni szabályzatok engedélyezési szabályainak meghatározására használhatják. 
 
-A kiállítási szabályok szakasz nem kötelező. Ebben a szakaszban a felhasználók további kimenő jogcímeket hozhatnak létre az igazolási jogkivonatban egyéni névvel. További információ a szolgáltatás által az igazolási jogkivonatban létrehozott kimenő jogcímekről: [jogcím-készletek](/azure/attestation/claim-sets).
+A kiállítási szabályok szakasz nem kötelező. Ebben a szakaszban a felhasználók további kimenő jogcímeket hozhatnak létre az igazolási jogkivonatban egyéni névvel. További információ a szolgáltatás által az igazolási jogkivonatban létrehozott kimenő jogcímekről: [jogcím-készletek](./claim-sets.md).
 
 ## <a name="default-policy-for-an-sgx-enclave"></a>SGX ENKLÁVÉHOZ enklávé alapértelmezett szabályzata
 
@@ -59,7 +59,7 @@ issuancerules
 };
 ```
 
-Az alapértelmezett házirendben használt jogcímek elavultnak tekintendők, de teljes mértékben támogatottak, és a jövőben is szerepelni fognak. A nem elavult jogcím-nevek használata javasolt. A javasolt jogcímek neveivel kapcsolatos további információkért lásd: [jogcím-készletek](/azure/attestation/claim-sets). 
+Az alapértelmezett házirendben használt jogcímek elavultnak tekintendők, de teljes mértékben támogatottak, és a jövőben is szerepelni fognak. A nem elavult jogcím-nevek használata javasolt. A javasolt jogcímek neveivel kapcsolatos további információkért lásd: [jogcím-készletek](./claim-sets.md). 
 
 ## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>Egyéni szabályzat mintája több SGX ENKLÁVÉHOZ enklávé támogatásához
 

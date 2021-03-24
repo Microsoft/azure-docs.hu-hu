@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2020
-ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2020
+ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100379981"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105027397"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Adatkezelőba vagy onnan a Azure Data Factory használatával
 
@@ -52,7 +52,14 @@ A következő szakaszokban részletesen ismertetjük az Azure Adatkezelő connec
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-Az Azure Adatkezelő-összekötő az egyszerű szolgáltatásnév hitelesítését használja. Az alábbi lépéseket követve beszerezhet egy egyszerű szolgáltatásnevet és engedélyeket adhat meg:
+Az Azure Adatkezelő-összekötő a következő hitelesítési típusokat támogatja. A részletekért tekintse meg a megfelelő részeket:
+
+- [Egyszerű szolgáltatásnév hitelesítése](#service-principal-authentication)
+- [Felügyelt identitások az Azure-erőforrások hitelesítéséhez](#managed-identity)
+
+### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
+
+Az egyszerű szolgáltatás hitelesítésének használatához kövesse az alábbi lépéseket egy egyszerű szolgáltatás beszerzéséhez és az engedélyek megadásához:
 
 1. Az [alkalmazás regisztrálása Azure ad-Bérlővel](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)című témakör lépéseit követve regisztrálja Azure Active Directory alkalmazás entitását. Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
 
@@ -66,20 +73,21 @@ Az Azure Adatkezelő-összekötő az egyszerű szolgáltatásnév hitelesítés�
     - Fogadóként legalább az **adatbázis** betöltési szerepkörét adja meg az adatbázisnak
 
 >[!NOTE]
->Ha a Data Factory felhasználói felületet használja a létrehozáshoz, a bejelentkezési felhasználói fiók az Azure Adatkezelő-fürtök,-adatbázisok és-táblák listázására szolgál. Ha nincs engedélye ezekhez a műveletekhez, manuálisan adja meg a nevet.
+>Ha a Data Factory felhasználói felületet használja a szerzőhöz, a bejelentkezési felhasználói fiók alapértelmezés szerint az Azure Adatkezelő-fürtök,-adatbázisok és-táblák listázására szolgál. A szolgáltatásnév melletti legördülő listára kattintva kiválaszthatja az objektumokat, vagy manuálisan is megadhatja a nevet, ha nem rendelkezik ezzel a művelettel.
 
 Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Yes |
-| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Yes |
-| adatbázis | Az adatbázis neve. | Yes |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Yes |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Yes |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Yes |
+| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Igen |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
+| adatbázis | Az adatbázis neve. | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Ez a [Kusto-kapcsolatok karakterláncának](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)"Authority id" néven ismert. Lekéréséhez vigye az egérmutatót a Azure Portal jobb felső sarkában. | Igen |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. Ez az úgynevezett "HRE Application Client ID" a Kusto-alapú [kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Ez az úgynevezett "HRE Application Key" néven ismert a [Kusto-kapcsolatok karakterláncában](/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [a Azure Key Vault tárolt biztonságos](store-credentials-in-key-vault.md)adattárolásra hivatkozik. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
 
-**Társított szolgáltatás tulajdonságai – példa:**
+**Példa: egyszerű szolgáltatásnév hitelesítésének használata**
 
 ```json
 {
@@ -100,6 +108,44 @@ Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat t
 }
 ```
 
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Felügyelt identitások az Azure-erőforrások hitelesítéséhez
+
+Az Azure erőforrás-hitelesítéshez használt felügyelt identitások használatához kövesse az alábbi lépéseket az engedélyek megadásához:
+
+1. [Kérje le a Data Factory felügyelt identitás adatait](data-factory-service-identity.md#retrieve-managed-identity) úgy, hogy átmásolja a **felügyelt identitás objektum azonosítóját** a gyári értékkel együtt.
+
+2. Adja meg a felügyelt identitásnak megfelelő engedélyeket az Azure Adatkezelőban. A szerepkörökkel és engedélyekkel, valamint az engedélyek kezelésével kapcsolatos részletes információkért tekintse meg az [Azure adatkezelő Database-engedélyek kezelése](/azure/data-explorer/manage-database-permissions) című témakört. Általánosságban a következőket kell tennie:
+
+    - **Forrásként** legalább az **adatbázis-megjelenítői** szerepkört adja meg az adatbázisnak
+    - Fogadóként legalább az **adatbázis** betöltési szerepkörét adja meg az adatbázisnak
+
+>[!NOTE]
+>Ha a Data Factory felhasználói felületet használja a létrehozáshoz, a bejelentkezési felhasználói fiók az Azure Adatkezelő-fürtök,-adatbázisok és-táblák listázására szolgál. Ha nincs engedélye ezekhez a műveletekhez, manuálisan adja meg a nevet.
+
+Az Azure Adatkezelő társított szolgáltatás a következő tulajdonságokat támogatja:
+
+| Tulajdonság | Leírás | Kötelező |
+|:--- |:--- |:--- |
+| típus | A **Type** tulajdonságot **AzureDataExplorer** értékre kell beállítani. | Igen |
+| endpoint | Az Azure Adatkezelő-fürt végponti URL-címe, amelynek formátuma: `https://<clusterName>.<regionName>.kusto.windows.net` . | Igen |
+| adatbázis | Az adatbázis neve. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Az Azure Integration Runtime vagy egy saját üzemeltetésű integrációs modult is használhat, ha az adattár egy magánhálózaton található. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+
+**Példa: felügyelt identitásos hitelesítés használata**
+
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
+        }
+    }
+}
+```
+
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listájáért lásd: [Adatkészletek Azure Data Factoryban](concepts-datasets-linked-services.md). Ez a szakasz felsorolja az Azure Adatkezelő adatkészlet által támogatott tulajdonságokat.
@@ -110,7 +156,7 @@ A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **AzureDataExplorerTable** értékre kell beállítani. | Yes |
+| típus | A **Type** tulajdonságot **AzureDataExplorerTable** értékre kell beállítani. | Igen |
 | tábla | Annak a táblának a neve, amelyre a társított szolgáltatás hivatkozik. | Igen a fogadó számára; Nem a forráshoz |
 
 **Adatkészlet tulajdonságai – példa:**
@@ -142,10 +188,10 @@ Az adatok Azure-Adatkezelőból való másolásához állítsa a **Type (típus*
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Yes |
-| lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Yes |
-| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | No |
-| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |No |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSource** | Igen |
+| lekérdezés | Egy [KQL-formátumban](/azure/kusto/query/)megadott írásvédett kérelem. Hivatkozásként használja az egyéni KQL-lekérdezést. | Igen |
+| queryTimeout | A lekérdezési kérelem időtúllépése előtti várakozási idő. Az alapértelmezett érték 10 perc (00:10:00); az engedélyezett maximális érték 1 óra (01:00:00). | Nem |
+| nincs csonkítás | Azt jelzi, hogy le kell-e vágni a visszaadott eredményhalmaz értékét. Alapértelmezés szerint a rendszer a 500 000-es rekordok vagy a 64 megabájt (MB) után csonkolja az eredményt. Erősen ajánlott a csonkítás a tevékenység megfelelő működésének biztosítása érdekében. |Nem |
 
 >[!NOTE]
 >Alapértelmezés szerint az Azure Adatkezelő forrásának mérete 500 000 rekord vagy 64 MB. Ha az összes rekordot csonkítás nélkül szeretné lekérni, megadhatja a `set notruncation;` lekérdezés elején. További információ: [lekérdezési korlátok](/azure/kusto/concepts/querylimits).
@@ -189,9 +235,9 @@ Az Azure Adatkezelőba való adatmásoláshoz állítsa a másolási tevékenys�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Yes |
-| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | No |
-| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](/azure/data-explorer/ingestion-properties). | No |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a **következőre** kell beállítani: **AzureDataExplorerSink**. | Igen |
+| ingestionMappingName | Egy előre létrehozott [hozzárendelés](/azure/kusto/management/mappings#csv-mapping) neve egy Kusto táblán. Ha az oszlopokat a forrásról az Azure-ra Adatkezelő (amely az [összes támogatott forrás-és formátumra](copy-activity-overview.md#supported-data-stores-and-formats)vonatkozik, beleértve a CSV/JSON/Avro formátumokat), használhatja a másolási tevékenység [oszlop-hozzárendelést](copy-activity-schema-and-type-mapping.md) (implicit módon, név vagy explicit módon konfiguráltként) és/vagy az Azure adatkezelő-hozzárendeléseket. | Nem |
+| additionalProperties | Az Azure Adatkezelő fogadó által már nem beállított betöltési tulajdonságok megadásához használható tulajdonság-táska. Különösen hasznos lehet betöltési címkék megadására. További információ az [Azure-beli adatfeldolgozási dokumentációból](/azure/data-explorer/ingestion-properties). | Nem |
 
 **Példa**
 
