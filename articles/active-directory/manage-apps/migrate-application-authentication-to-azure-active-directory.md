@@ -14,12 +14,12 @@ ms.date: 02/05/2021
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 629f71c429d6af8583cb15b9ebc96efe6867f78b
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888889"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952966"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>Alkalmazás-hitelesítés migrálása Azure Active Directoryre
 
@@ -573,7 +573,7 @@ A felhasználókat az alkalmazások felderítésére vonatkozó útmutatóban ta
 
 A felhasználók az **Intune által felügyelt böngészőt** tölthetik le:
 
-- **Android-eszközök** esetén a [Google Play áruházból](/azure/active-directory/authentication/howto-mfa-userstates)
+- **Android-eszközök** esetén a [Google Play áruházból](https://play.google.com/store/apps/details?id=com.microsoft.intune)
 
 - **Apple-eszközök** esetén az [Apple App Store áruházból](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) , vagy letöltheti az iOS rendszerhez készült [My apps Mobile alkalmazást](https://apps.apple.com/us/app/my-apps-azure-active-directory/id824048653)
 

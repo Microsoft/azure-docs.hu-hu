@@ -4,16 +4,17 @@ description: Ismerje meg az Azure automatikus felügyeletét a Virtual Machines 
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
+ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: b4ca9a69ab56a81e192560a3a61ec90f82cbbe80
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3aab43be49cb98fbe136e1f0216590785d650392
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101688399"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953249"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Azure-beli automanage-alapú virtuális gépek – ajánlott eljárások – Linux
 
@@ -37,14 +38,14 @@ Az automanage a következő Linux-disztribúciókat és-verziókat támogatja:
 
 |Szolgáltatás    |Leírás    |Támogatott környezetek<sup>1</sup>    |Támogatott beállítások<sup>1</sup>    |
 |-----------|---------------|----------------------|-------------------------|
-|A VM-alapú adatvizsgálatok figyelése    |Azure Monitor for VMs figyeli a virtuális gépek teljesítményét és állapotát, beleértve a futó folyamatokat és a más erőforrásokra vonatkozó függőségeket. [További](../azure-monitor/vm/vminsights-overview.md)információ.    |Production    |No    |
-|Backup    |Az Azure Backup független és elkülönített biztonsági másolatokat biztosít, ezzel védelmet nyújtva a virtuális gépeken lévő adatok nem szándékos megsemmisítésével szemben. [További](../backup/backup-azure-vms-introduction.md)információ. A díjak a védett virtuális gépek számán és méretén alapulnak. [További](https://azure.microsoft.com/pricing/details/backup/)információ.    |Production    |Yes    |
-|Azure Security Center    |Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz. [További](../security-center/security-center-introduction.md)információ.  Az automanage Beállítja azt az előfizetést, amelyben a virtuális gép a Azure Security Center ingyenes szintű ajánlatában található. Ha az előfizetése már bekerült a Azure Security Centerba, az automanage nem konfigurálja újra.    |Éles üzem, fejlesztés/tesztelés    |No    |
-|Frissítéskezelés    |A virtuális gépek operációs rendszerének frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát. [További](../automation/update-management/overview.md)információ.    |Éles üzem, fejlesztés/tesztelés    |No    |
-|Change Tracking & leltár    |A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetekben, a Daemon-szoftvereket, a beállításjegyzéket és az adott környezetben található fájlokat, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.  [További](../automation/change-tracking/overview.md)információ.    |Éles üzem, fejlesztés/tesztelés    |No    |
-|Azure Guest Configuration    | A vendég konfigurációs szabályzattal figyelhető a konfiguráció és a jelentés a gép megfelelőségéről. Az automatikus kezelés szolgáltatás az Azure Linux alapkonfigurációját a vendég konfigurációs bővítménnyel fogja telepíteni. A Linux rendszerű gépek esetében a vendég konfigurációs szolgáltatás csak naplózási módban telepíti az alaptervet. Láthatja, hogy a virtuális gép hol nem felel meg az alapkonfigurációnak, de a nem megfelelőséget nem lehet automatikusan szervizelni. [További](../governance/policy/concepts/guest-configuration.md)információ.    |Éles üzem, fejlesztés/tesztelés    |No    |
-|Azure Automation-fiók    |Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazások életciklusa során. [További](../automation/automation-intro.md)információ.    |Éles üzem, fejlesztés/tesztelés    |No    |
-|Log Analytics-munkaterület    |A Azure Monitor egy Log Analytics-munkaterületen tárolja a napló adatokat, amely egy Azure-erőforrás, valamint egy olyan tároló, amelybe az adatok gyűjtése, összesítése és felügyeleti határként szolgál. [További](../azure-monitor/logs/design-logs-deployment.md)információ.    |Éles üzem, fejlesztés/tesztelés    |No    |
+|A VM-alapú adatvizsgálatok figyelése    |Azure Monitor for VMs figyeli a virtuális gépek teljesítményét és állapotát, beleértve a futó folyamatokat és a más erőforrásokra vonatkozó függőségeket. [További](../azure-monitor/vm/vminsights-overview.md)információ.    |Production    |Nem    |
+|Backup    |Az Azure Backup független és elkülönített biztonsági másolatokat biztosít, ezzel védelmet nyújtva a virtuális gépeken lévő adatok nem szándékos megsemmisítésével szemben. [További](../backup/backup-azure-vms-introduction.md)információ. A díjak a védett virtuális gépek számán és méretén alapulnak. [További](https://azure.microsoft.com/pricing/details/backup/)információ.    |Production    |Igen    |
+|Azure Security Center    |Azure Security Center egy egységes infrastruktúra-alapú biztonsági felügyeleti rendszer, amely erősíti az adatközpontok biztonsági állapotát, és komplex veszélyforrások elleni védelmet biztosít a felhőben futó hibrid számítási feladatokhoz. [További](../security-center/security-center-introduction.md)információ.  Az automanage Beállítja azt az előfizetést, amelyben a virtuális gép a Azure Security Center ingyenes szintű ajánlatában található. Ha az előfizetése már bekerült a Azure Security Centerba, az automanage nem konfigurálja újra.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
+|Frissítéskezelés    |A virtuális gépek operációs rendszerének frissítéseinek kezeléséhez Azure Automation Update Management is használhatja. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát. [További](../automation/update-management/overview.md)információ.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
+|Change Tracking & leltár    |A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függvényeket, így nyomon követheti a virtuális gépek és a kiszolgálói infrastruktúra változásait. A szolgáltatás támogatja a változások nyomon követését a környezetekben, a Daemon-szoftvereket, a beállításjegyzéket és az adott környezetben található fájlokat, így segít a nemkívánatos módosítások diagnosztizálásában és a riasztások felemelésében. A leltár-támogatás lehetővé teszi a vendég erőforrásainak lekérdezését a telepített alkalmazások és egyéb konfigurációs elemek láthatóságának érdekében.  [További](../automation/change-tracking/overview.md)információ.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
+|Azure Guest Configuration    | A vendég konfigurációs szabályzattal figyelhető a konfiguráció és a jelentés a gép megfelelőségéről. Az automatikus kezelés szolgáltatás az Azure Linux alapkonfigurációját a vendég konfigurációs bővítménnyel fogja telepíteni. A Linux rendszerű gépek esetében a vendég konfigurációs szolgáltatás csak naplózási módban telepíti az alaptervet. Láthatja, hogy a virtuális gép hol nem felel meg az alapkonfigurációnak, de a nem megfelelőséget nem lehet automatikusan szervizelni. [További](../governance/policy/concepts/guest-configuration.md)információ.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
+|Azure Automation-fiók    |Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazások életciklusa során. [További](../automation/automation-intro.md)információ.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
+|Log Analytics-munkaterület    |A Azure Monitor egy Log Analytics-munkaterületen tárolja a napló adatokat, amely egy Azure-erőforrás, valamint egy olyan tároló, amelybe az adatok gyűjtése, összesítése és felügyeleti határként szolgál. [További](../azure-monitor/logs/design-logs-deployment.md)információ.    |Éles üzem, fejlesztés/tesztelés    |Nem    |
 
 
 <sup>1</sup> a környezet kiválasztása az automanage engedélyezésekor érhető el. [További](automanage-virtual-machines.md#environment-configuration)információ. Emellett módosíthatja a környezet alapértelmezett beállításait, és az ajánlott eljárások korlátain belül beállíthatja a saját beállításait is.

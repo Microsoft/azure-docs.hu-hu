@@ -5,13 +5,14 @@ author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: storage
-ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 27f625e7fced5ff710a6fa0e8b2045a8c5434258
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97095355"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954360"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Nagyszámítógépes tároló áthelyezése az Azure-ba
 
@@ -51,7 +52,7 @@ Az Azure Storage Azure- [lemezként](../../../managed-disks-overview.md), [Azure
 
 <table>
 <thead>
-    <tr><th>Típus</th><th>Description</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 347fc931dcc7f794fe7376daaac21ce7ed9198df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 58e2a19f2d57eafc7d2967141d584dc7a22fe76c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102184743"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955669"
 ---
 # <a name="tutorial-integrate-zscaler-private-access-zpa-with-azure-active-directory"></a>Oktatóanyag: a Zscaler privát hozzáférésének (ZPA) integrálása Azure Active Directory
 
@@ -163,8 +163,8 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Lépjen a Zscaler privát hozzáférés (ZPA) bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
 
-* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Zscaler privát hozzáférés (ZPA) csempére kattint, a rendszer átirányítja a Zscaler Private Access (ZPA) bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+* Használhatja a Microsoft saját alkalmazásait. Ha a saját alkalmazások Zscaler privát hozzáférés (ZPA) csempére kattint, a rendszer átirányítja a Zscaler Private Access (ZPA) bejelentkezési URL-címére. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután konfigurálta a Zscaler privát hozzáférését (ZPA), megadhatja a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Miután konfigurálta a Zscaler privát hozzáférését (ZPA), megadhatja a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

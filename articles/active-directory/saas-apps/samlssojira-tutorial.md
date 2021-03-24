@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 450db7c01de4ea7db0133ceca962941ae1a927e5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 827a05a8dfbf05b0dacb0bd812fb964567f39b3f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173135"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -243,7 +243,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre, és automatikusan be kell jelentkeznie az SAML SSO-ba a JIRA által a megoldási GmbH számára, amelyhez be kell állítania az egyszeri bejelentkezést. 
 
-A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások JIRA által használt SAML SSO-ra kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához, illetve ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az SAML SSO-ra a JIRA by Solution GmbH számára, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
+A Microsoft My Apps használatával bármilyen módban tesztelheti az alkalmazást. Ha a saját alkalmazások JIRA által használt SAML SSO-ra kattint, ha az SP módban van konfigurálva, akkor a bejelentkezési folyamat elindításához, illetve ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie az SAML SSO-ra a JIRA by Solution GmbH számára, amelyhez be kell állítania az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](../user-help/my-apps-portal-end-user-access.md)használatába.
 
 ## <a name="enable-sso-redirection-for-jira"></a>SSO-átirányítás engedélyezése a JIRA
 
@@ -268,4 +268,4 @@ A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jel
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután konfigurálta az SAML SSO-t a JIRA by Solution GmbH használatával, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Miután konfigurálta az SAML SSO-t a JIRA by Solution GmbH használatával, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-any-app).

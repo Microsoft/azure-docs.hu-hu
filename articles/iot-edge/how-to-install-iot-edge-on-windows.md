@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 6361a9c337f5d3897cf15d4739b0410d3e820e57
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104600938"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889535"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>A Linux rendszerhez készült Azure IoT Edge telepítése és üzembe helyezése Windows-eszközön (előzetes verzió)
 
@@ -52,7 +52,9 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
 
    1. Töltse le a [Windows felügyeleti központ telepítőjét](https://aka.ms/wacdownload).
 
-   1. Futtassa a letöltött telepítőt, és kövesse a telepítés varázsló utasításait a Windows felügyeleti központ telepítéséhez. A telepítés után nyissa meg a Windows felügyeleti központot.
+   1. Futtassa a letöltött telepítőt, és kövesse a telepítés varázsló utasításait a Windows felügyeleti központ telepítéséhez. 
+
+   1. A telepítés után a Windows felügyeleti központ megnyitásához használjon egy támogatott böngészőt. A támogatott böngészők közé tartozik a Microsoft Edge (Windows 10, 1709-es vagy újabb verzió), a Google Chrome és a Microsoft Edge Insider.
 
    1. A Windows felügyeleti központ első használatakor a rendszer kérni fogja a használni kívánt tanúsítvány kiválasztását. Tanúsítványként válassza a **Windows felügyeleti központ ügyfele** lehetőséget.
 
@@ -61,12 +63,6 @@ Ez a cikk a IoT Edge Windows-eszközökön való beállításának lépéseit so
       ![A beállítások eléréséhez kattintson az irányítópult jobb felső sarkában található fogaskerék ikonra.](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. A **Beállítások** menü **átjáró** területén válassza a **bővítmények** lehetőséget.
-
-   1. Válassza a **csatornák** fület, és válassza a **Hozzáadás** lehetőséget.
-
-   1. Adja meg https://aka.ms/wac-insiders-feed a szövegmezőt, és válassza a **Hozzáadás** lehetőséget.
-
-   1. A hírcsatorna hozzáadása után navigáljon az **elérhető bővítmények** lapra. A bővítmények listájának frissítése eltarthat egy kis ideig.
 
    1. Az **elérhető bővítmények** lapon keresse meg **Azure IoT Edge** a bővítmények listájában. Válassza ki, majd a bővítmények listáján válassza a **telepítési** kérést.
 
@@ -346,6 +342,9 @@ Ellenőrizze, hogy a Windows Linux rendszerhez készült IoT Edge telepítése �
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >Az egyetlen fiók, amely az SSH-t engedélyezi a virtuális géphez, az azt létrehozó felhasználó.
 
 1. Miután bejelentkezett, a következő Linux-paranccsal tekintheti meg a futó IoT Edge modulok listáját:
 

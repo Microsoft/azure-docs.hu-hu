@@ -9,12 +9,12 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e17943d7867bfd6b93d95b6ec0b6e0049a784ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a5b3a94a0b1253b946239cd26113e9dfc955dd9a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103555790"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104955958"
 ---
 # <a name="samples"></a>Példák
 
@@ -22,9 +22,9 @@ Az Azure kommunikációs szolgáltatás számos elérhető mintát tartalmaz, am
 
 ## <a name="application-samples"></a>Alkalmazások mintái
 
-| Minta neve                                                                                          | Description                                                         | Elérhető nyelvek/platformok      |
+| Minta neve                                                                                          | Leírás                                                         | Elérhető nyelvek/platformok      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
-| [Csoport hívása – hős minta](./calling-hero-sample.md)                                                | A csoportos hívási alkalmazás létrehozására szolgáló mintát nyújt.          | Web, iOS                           |
+| [Csoport hívása – hős minta](./calling-hero-sample.md)                                                | A csoportos hívási alkalmazás létrehozására szolgáló mintát nyújt.          | Web, iOS, Android                           |
 | [Webes hívás mintája](./web-calling-sample.md)                                                        | Lépésről lépésre haladó végigvezeti a webes ACS-hívási funkciókon. | Webes                                |
 | [Csevegési hős minta](./chat-hero-sample.md)                                                            | A csevegési alkalmazások létrehozásának mintáját biztosítja.                   | Web & C# .NET                      |
 | [Contoso orvosi alkalmazás](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | A beteg orvos folyamatát bemutató minta alkalmazás.                     | Webes & Node.js                      |

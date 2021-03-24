@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2021
 ms.author: Zhchia
-ms.openlocfilehash: 7e3e119c81f6417110d34b7b9b97af9fa1738d35
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 19436b7faef081757e4500c76e7537ee78081bfa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102054850"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950380"
 ---
 # <a name="tutorial-configure-travelperk-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés TravelPerk konfigurálása
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a TravelPerk és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [TravelPerk](https://www.travelperk.com/) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a TravelPerk és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat a [TravelPerk](https://www.travelperk.com/) az Azure ad kiépítési szolgáltatás használatával. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 
@@ -33,23 +33,23 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a TravelPerk és a 
 > - Felhasználók létrehozása a TravelPerk-ben
 > - Felhasználók eltávolítása a TravelPerk-ben, ha már nincs szükség hozzáférésre
 > - Felhasználói attribútumok szinkronizálása az Azure AD és a TravelPerk között
-> - [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/travelperk-tutorial) a TravelPerk-be (ajánlott)
+> - [Egyszeri bejelentkezés](./travelperk-tutorial.md) a TravelPerk-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-- [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
-- Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
+- [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md).
+- Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
 - Aktív [TravelPerk](https://app.travelperk.com/signup) -rendszergazdai fiók.
 - Prémium/Pro [csomag](https://www.travelperk.com/pricing/).
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 
-1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-2. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-3. Határozza meg, hogy az [Azure ad és a TravelPerk között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
+2. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+3. Határozza meg, hogy az [Azure ad és a TravelPerk között milyen adatleképezést kell leképezni](../app-provisioning/customize-application-attributes.md).
 
 ## <a name="step-2-configure-travelperk-to-support-provisioning-with-azure-ad"></a>2. lépés TravelPerk konfigurálása az Azure AD-vel való kiépítés támogatásához
 
@@ -74,15 +74,15 @@ Nem jönnek létre jóváhagyók, ha nincsenek megfelelően konfigurálva a Trav
 
 ## <a name="step-3-add-travelperk-from-the-azure-ad-application-gallery"></a>3. lépés TravelPerk hozzáadása az Azure AD Application Galleryből
 
-Vegyen fel TravelPerk az Azure AD-alkalmazás-katalógusból a TravelPerk való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a TravelPerk-t az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet.
+Vegyen fel TravelPerk az Azure AD-alkalmazás-katalógusból a TravelPerk való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a TravelPerk-t az egyszeri bejelentkezéshez, használhatja ugyanazt az alkalmazást. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](../manage-apps/add-application-portal.md) tudhat meg többet.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása
 
-Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja.
+Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) leírt hatókörszűrőt használhatja.
 
-- Amikor felhasználókat rendel a TravelPerk, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
+- Amikor felhasználókat rendel a TravelPerk, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](../develop/howto-add-app-roles-in-azure-ad-apps.md).
 
-- Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-travelperk"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a TravelPerk
 
@@ -122,7 +122,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a TravelPerk** lehetőséget.
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő TravelPerk. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a TravelPerk felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a TravelPerk API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő TravelPerk. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a TravelPerk felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](../app-provisioning/customize-application-attributes.md), akkor biztosítania kell, hogy a TravelPerk API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    | Attribútum                                                                         | Típus      | Szűréshez támogatott |
    | --------------------------------------------------------------------------------- | --------- | ----------------------- |
@@ -147,7 +147,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    | urn: IETF: params: scim: sémák: bővítmény: travelperk: 2.0: felhasználó: emergencyContact. Phone | Sztring    |
    | urn: IETF: params: scim: sémák: bővítmény: travelperk: 2.0: felhasználó: travelPolicy           | Sztring    |
 
-10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 11. Az Azure AD-kiépítési szolgáltatás TravelPerk való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
@@ -167,15 +167,15 @@ Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatároz
 
 Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja az üzemelő példányt:
 
-1. Az [átadási naplókkal](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
-2. A [folyamatjelzőn](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
-3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) találhat további információt.
+1. Az [átadási naplókkal](../reports-monitoring/concept-provisioning-logs.md) határozhatja meg, hogy mely felhasználók átadása sikeres, és melyeké sikertelen.
+2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
+3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
 ## <a name="additional-resources"></a>További források
 
-- [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+- [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)
+- [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
