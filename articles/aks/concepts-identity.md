@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102181448"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949991"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -73,6 +73,7 @@ Az alábbi további engedélyek szükségesek a fürt identitása számára, ha 
 | Microsoft. Network/virtualNetworks/alhálózatok/olvasás <br/> Microsoft. Network/virtualNetworks/alhálózatok/csatlakozás/művelet | Kötelező, ha egy alhálózatot használ egy másik erőforráscsoporthoz, például egy egyéni VNET. |
 | Microsoft. Network/routeTables/Routes/READ <br/> Microsoft. Network/routeTables/Routes/Write | Kötelező, ha egy másik erőforráscsoport útválasztási táblájához társított alhálózatot használ, például egy egyéni VNET egyéni útválasztási táblázattal. Szükséges annak ellenőrzéséhez, hogy egy alhálózat már létezik-e a másik erőforráscsoport alhálózatához. |
 | Microsoft. Network/virtualNetworks/alhálózatok/olvasás | A belső terheléselosztó egy másik erőforráscsoporthoz való használata esetén kötelező. Szükséges annak ellenőrzéséhez, hogy már létezik-e alhálózat a belső terheléselosztó számára az erőforráscsoporthoz. |
+| Microsoft. Network/privatednszones/* | Kötelező, ha egy privát DNS-zónát használ egy másik erőforráscsoporthoz, például egy egyéni privateDNSZone. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes szerepköralapú hozzáférés-vezérlés (Kubernetes RBAC)
 
@@ -199,7 +200,7 @@ Ez a táblázat összefoglalja, hogy a felhasználók hogyan hitelesíthetők a 
 
 A második oszlopban szereplő szerepkör-támogatás a Azure Portal **Access Control** lapján látható Azure RBAC szerepkör-támogatás. A fürt rendszergazdája Azure AD-csoport a portál **konfiguráció** lapján (vagy az Azure CLI-ben található paraméter nevével) jelenik meg `--aad-admin-group-object-ids` .
 
-| Description        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
+| Leírás        | Szerepkör megadása kötelező| Fürt rendszergazdai Azure AD-csoport (ok) | A következő esetekben használja |
 | -------------------|------------|----------------------------|-------------|
 | Örökölt rendszergazdai bejelentkezés ügyféltanúsítvány használatával| Az **Azure Kubernetes rendszergazdai szerepköre**. Ez a szerepkör lehetővé teszi `az aks get-credentials` a jelzővel való használatot `--admin` , amely egy [örökölt (nem Azure ad-) fürt rendszergazdai tanúsítványát](control-kubeconfig-access.md) tölti le a felhasználó számára `.kube/config` . Ez az egyetlen célja az "Azure Kubernetes-rendszergazdai szerepkör".|n.a.|Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz.| 
 | Azure AD manuális (fürt) RoleBindings| Az **Azure Kubernetes felhasználói szerepköre**. A "user" szerepkör lehetővé teszi a `az aks get-credentials` jelző nélküli használatot `--admin` . (Ez az egyetlen célja az "Azure Kubernetes felhasználói szerepkör".) Ennek eredményeképpen egy Azure AD-kompatibilis fürtön [egy üres bejegyzés](control-kubeconfig-access.md) tölthető le `.kube/config` , amely a böngészőalapú hitelesítést indítja el, amikor először használja `kubectl` .| A felhasználó nem szerepel ezen csoportok egyikében sem. Mivel a felhasználó nem tagja a fürt rendszergazdai csoportjainak, a jogosultságokat teljes mértékben a RoleBindings vagy ClusterRoleBindings vezérli. A (fürt) RoleBindings az [Azure ad-felhasználókat vagy az Azure ad-csoportokat jelölik](azure-ad-rbac.md) `subjects` . Ha nincsenek beállítva ilyen kötések, a felhasználó nem fog tudni Excute egyetlen `kubectl` parancsot sem.|Ha részletes hozzáférés-vezérlést szeretne, és nem használja az Azure RBAC-t a Kubernetes engedélyezéséhez. Vegye figyelembe, hogy a kötéseket beállító felhasználónak a táblázatban felsorolt más módszerek egyikével kell bejelentkeznie.|

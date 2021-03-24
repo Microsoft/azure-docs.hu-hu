@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: a7b1c1b3fc3196557b862c488ee01af8b8e1f04f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0eb9ce24f9ead44b7ba5a4d28d24177e62cb7757
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "86529250"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950518"
 ---
 # <a name="monitoring-and-diagnostic-best-practices-for-azure-service-fabric"></a>Az Azure Service Fabric monitorozási és diagnosztikai eljárásai
 
@@ -34,7 +34,7 @@ A fürt szintű események figyeléséhez [Azure monitor naplók](./service-fabr
 
 ## <a name="watchdogs"></a>Házőrző
 
-A watchdog általában egy különálló szolgáltatás, amely figyeli az állapotot és a terhelést a szolgáltatások között, Pingeli a végpontokat, és nem várt állapotú eseményeket jelez a fürtben. Ez segít megakadályozni, hogy az észlelt hibák csak egyetlen szolgáltatás teljesítményén alapulnak. A watchdog is jó hely a kód futtatására, amely olyan javító műveleteket hajt végre, amelyek nem igényelnek felhasználói beavatkozást, például a naplófájlok bizonyos időközönkénti törlését. A syslog-ben  [Service Fabric Linux-fürt eseményeiben](https://github.com/Azure-Samples/service-fabric-watchdog-service)tekintse meg a minta watchdog szolgáltatás implementációját.
+A watchdog általában egy különálló szolgáltatás, amely figyeli az állapotot és a terhelést a szolgáltatások között, Pingeli a végpontokat, és nem várt állapotú eseményeket jelez a fürtben. Ez segít megakadályozni, hogy az észlelt hibák csak egyetlen szolgáltatás teljesítményén alapulnak. A watchdog is jó hely a kód futtatására, amely olyan javító műveleteket hajt végre, amelyek nem igényelnek felhasználói beavatkozást, például a naplófájlok bizonyos időközönkénti törlését. Ha teljes körűen megvalósított, nyílt forráskódú SF watchdog-szolgáltatást szeretne használni, amely egy könnyen használható watchdog-bővíthetőségi modellt tartalmaz, amely Windows-és Linux-fürtökön is fut, tekintse meg a [FabricObserver](https://aka.ms/sf/FabricObserver) projektet. A FabricObserver éles használatra kész szoftver. Javasoljuk, hogy helyezze üzembe a FabricObserver a tesztelési és a termelési fürtökön, és terjessze ki a saját igényeinek megfelelően a beépülő modullal, vagy a saját beépített megfigyelők megírásával. A korábbi (beépülő modulok) az ajánlott módszer.
 
 ## <a name="next-steps"></a>Következő lépések
 
