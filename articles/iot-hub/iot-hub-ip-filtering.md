@@ -5,14 +5,14 @@ author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/12/2021
+ms.date: 03/22/2021
 ms.author: jlian
-ms.openlocfilehash: 2a76cede4bc72da9f30564f98ab9bb84028680f7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf9d58926c5a0fdc7c305e1d9daebfa1c8c9cf63
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581490"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023605"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -32,11 +32,11 @@ Alapértelmezés szerint a IoT hub-portálon található **IP-szűrő** rács ü
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>IP-szűrési szabály hozzáadása vagy szerkesztése
 
-IP-szűrési szabály hozzáadásához válassza a **+ IP-szűrési szabály hozzáadása** lehetőséget.
+IP-szűrési szabály hozzáadásához válassza a **+ IP-szűrési szabály hozzáadása** lehetőséget. A számítógép IP-címének gyors hozzáadásához kattintson az **ügyfél IP-címének hozzáadása** elemre. 
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-add-rule.png" alt-text="IP-szűrési szabály hozzáadása egy IoT hubhoz":::
 
-Az **IP-szűrési szabály hozzáadása** lehetőség kiválasztása után töltse ki a mezőket.
+Az **IP-szűrési szabály hozzáadása** lehetőség kiválasztása után töltse ki a mezőket. Ezek a mezők előre ki vannak töltve, ha az ügyfél IP-címét adja meg.
 
 :::image type="content" source="./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png" alt-text="Az IP-szűrési szabály hozzáadása lehetőség kiválasztása után":::
 
@@ -85,6 +85,10 @@ A explicit módon nem engedélyezett IP-címről érkező kapcsolódási kísér
 Az IP-szűrési szabályok *engedélyezik* a szabályokat, és a rendelés nélkül is alkalmazhatók. Csak az Ön által hozzáadott IP-címek csatlakozhatnak IoT Hubhoz. 
 
 Ha például el szeretné fogadni a címeket a tartományban, és el `192.168.100.0/22` kell utasítania minden mást, akkor csak egy szabályt kell hozzáadnia a rácshoz címtartomány használatával `192.168.100.0/22` .
+
+### <a name="azure-portal"></a>Azure Portal 
+
+Az IP-szűrési szabályok akkor is érvényesek, ha a IoT Hubt Azure Portalon keresztül használja. Ennek az az oka, hogy az IoT Hub szolgáltatáshoz való API-hívások közvetlenül a böngészőjében, a hitelesítő adataival vannak ellátva, amelyek konzisztensek a többi Azure-szolgáltatással. Ha az IP-szűrő engedélyezve van a Azure Portal használatával való IoT Hub eléréséhez, adja hozzá a számítógép IP-címét a engedélyezési. 
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>IP-szűrők beolvasása és frissítése az Azure CLI-vel
 

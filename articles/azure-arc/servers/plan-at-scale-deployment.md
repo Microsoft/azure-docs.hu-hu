@@ -3,12 +3,12 @@ title: Azure arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
 description: Megtudhatja, hogyan engedélyezheti a nagy számú gépet az Azure arc használatára képes kiszolgálókon az Azure-ban az alapvető biztonsági, felügyeleti és monitorozási képességek konfigurálásának egyszerűbbé tételéhez.
 ms.date: 03/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 401725dcfed85a6675c95434270dd7dbff482b6e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104591180"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023282"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Arc-kompatibilis kiszolgálók tervezése és üzembe helyezése
 
@@ -57,7 +57,7 @@ Ebben a fázisban a rendszermérnökök vagy a rendszergazdák lehetővé teszik
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
 | [Erőforráscsoport létrehozása](../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) | Egy dedikált erőforráscsoport, amely csak az ív használatára képes kiszolgálókat tartalmazza, és központosítja ezeknek az erőforrásoknak a felügyeletét és figyelését. | Egy óra |
-| [Címkék](../../azure-resource-manager/management/tag-resources.md) alkalmazása a gépek rendszerezéséhez. | Kiértékelheti és kifejlesztheti az ÁLTALa igazított [címkézési stratégiát](/cloud-adoption-framework/decision-guides/resource-tagging/) , amely csökkentheti az ív-kompatibilis kiszolgálók kezelésének bonyolultságát, és egyszerűbbé teheti a felügyeleti döntések meghozatalát. | Egy nap |
+| [Címkék](../../azure-resource-manager/management/tag-resources.md) alkalmazása a gépek rendszerezéséhez. | Kiértékelheti és kifejlesztheti az ÁLTALa igazított [címkézési stratégiát](/azure/cloud-adoption-framework/decision-guides/resource-tagging/) , amely csökkentheti az ív-kompatibilis kiszolgálók kezelésének bonyolultságát, és egyszerűbbé teheti a felügyeleti döntések meghozatalát. | Egy nap |
 | [Azure monitor naplók](../../azure-monitor/logs/data-platform-logs.md) megtervezése és üzembe helyezése | A [tervezési és telepítési szempontok](../../azure-monitor/logs/design-logs-deployment.md) kiértékelésével megállapíthatja, hogy a szervezetnek meglévő vagy egy másik log Analytics-munkaterületet kell-e használnia az összegyűjtött naplófájlok hibrid kiszolgálókról és gépekről történő tárolásához. <sup>1</sup> | Egy nap |
 | [Azure Policy](../../governance/policy/overview.md) irányítási terv kidolgozása | Határozza meg, hogyan fogja megvalósítani a hibrid kiszolgálók és gépek irányítását az előfizetésben vagy az erőforráscsoport hatókörében Azure Policy. | Egy nap |
 | [Szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md) konfigurálása (RBAC) | Kialakíthat egy hozzáférési tervet, amellyel szabályozhatja, hogy ki férhet hozzá az arc-kompatibilis kiszolgálók kezeléséhez, és hogy a többi Azure-szolgáltatásból és-megoldásból származó adatok megtekinthessék. | Egy nap |
@@ -71,7 +71,7 @@ Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz az arc-kompat
 
 |Feladat |Részletek |Időtartam |
 |-----|-------|---------|
-| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Minta a Scale bevezetési erőforrásoknál:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[A Scale bevezetési VMware vSphere Windows Server-alapú virtuális gépeken](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_win.md)</ul></li> <ul><li>[VMware vSphere Linux rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/vmware_scaled_powercli_linux.md)</ul></li> <ul><li>[A Scale bevezetési AWS EC2-példányok a Ansible használatával](https://github.com/microsoft/azure_arc/blob/master/azure_arc_servers_jumpstart/docs/aws_scale_ansible.md)</ul></li> <ul><li>[A skálázás központi telepítése a PowerShell-távelérés használatával](https://docs.microsoft.com/azure/azure-arc/servers/onboard-powershell) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
+| Az előre definiált telepítési parancsfájl letöltése | Tekintse át és szabja testre az előre definiált telepítési parancsfájlt a csatlakoztatott számítógép-ügynök helyszíni telepítéséhez, hogy támogassa az automatikus üzembe helyezési követelményeket.<br><br> Példa a bevezetési erőforrások méretezésére:<br><br> <ul><li> [Alapszintű üzembe helyezési parancsfájl](onboard-service-principal.md)</ul></li> <ul><li>[VMware vSphere Windows Server rendszerű virtuális gépek méretezése](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_win/_index.md)</ul></li> <ul><li>[Nagyszabású bevezetési VMware vSphere Linux rendszerű virtuális gépek](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/vmware_scaled_powercli_linux/_index.md)</ul></li> <ul><li>[Integrált AWS EC2-példányok méretezése a Ansible használatával](https://github.com/microsoft/azure_arc/blob/main/docs/azure_arc_jumpstart/azure_arc_servers/scaled_deployment/aws_scaled_ansible/_index.md)</ul></li> <ul><li>[Központi telepítés a PowerShell távelérési szolgáltatásával](./onboard-powershell.md) (csak Windows)</ul></li>| Egy vagy több nap a követelményektől, a szervezeti folyamattól (például a módosítási és kiadási felügyelettől) és az Automation-módszertől függően. |
 | [Egyszerű szolgáltatás létrehozása](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) |Hozzon létre egy egyszerű szolgáltatást, amely nem interaktív módon, Azure PowerShell vagy a portálon keresztül csatlakozik a gépekhez.| Egy óra |
 | A csatlakoztatott számítógép ügynökének üzembe helyezése a célkiszolgálón és a gépeken |Az Automation eszközzel telepítse a parancsfájlokat a kiszolgálókra, és kapcsolódjon az Azure-hoz.| Egy vagy több nap a kiadási tervtől függően, és a szakaszos bevezetést követően. |
 

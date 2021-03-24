@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102099012"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105022891"
 ---
 # <a name="managing-your-voice-assistant"></a>A hangsegéd kezelése
 
@@ -60,7 +60,7 @@ A kulcsszó egy beszéd asszisztens aktiválásához használt szó vagy rövid 
 
 A [Speech Studio](https://speech.microsoft.com/)használatával létrehozhat egy egyéni kulcsszót a hangsegédhez. Akár 30 percet is igénybe vehet egy alapszintű egyéni kulcsszavas modell betanításához.
 
-Az egyéni kulcsszó létrehozásával kapcsolatos útmutatásért kövesse a [Speech Studio dokumentációját](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) . A konfigurálást követően az új kulcsszó elérhető lesz a Project Santa Cruz portálon a hangsegéd alkalmazással való használatra.
+Az egyéni kulcsszó létrehozásával kapcsolatos útmutatásért kövesse a [Speech Studio dokumentációját](../cognitive-services/speech-service/custom-keyword-basics.md) . A konfigurálást követően az új kulcsszó elérhető lesz a Project Santa Cruz portálon a hangsegéd alkalmazással való használatra.
 
 ## <a name="commands-configuration"></a>Parancsok konfigurálása
 
@@ -88,7 +88,7 @@ Az egyéni parancsok megkönnyítik a hangvezérelt hangvezérelt alkalmazások 
 
 A [Speech Studio](https://speech.microsoft.com/)használatával egyéni parancsokat hozhat létre a hangsegéd végrehajtásához.
 
-Az egyéni parancsok létrehozásával kapcsolatos útmutatásért kövesse a [Speech Studio dokumentációját](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application) . A konfigurálást követően az új parancsok az Azure Percept Studióban lesznek elérhetők a hangsegéd alkalmazással való használatra.
+Az egyéni parancsok létrehozásával kapcsolatos útmutatásért kövesse a [Speech Studio dokumentációját](../cognitive-services/speech-service/quickstart-custom-commands-application.md) . A konfigurálást követően az új parancsok az Azure Percept Studióban lesznek elérhetők a hangsegéd alkalmazással való használatra.
 
 ## <a name="next-steps"></a>Következő lépések
 

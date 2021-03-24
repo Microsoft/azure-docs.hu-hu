@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 03/16/2021
-ms.openlocfilehash: ee8cb054f3f10c3b33d5235b2b03cdfeac266139
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d8239a9305560eb77ac2c714b993373f0d5b16fb
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592161"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105023010"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -28,7 +28,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
 | Microsoft. ApiManagement | [API Management](../../api-management/index.yml) |
 | Microsoft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
-| Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft. igazolás | Azure-igazolási szolgáltatás |
 | Microsoft. Authorization – [regisztrált](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft. Automation | [Automatizálás](../../automation/index.yml) |
@@ -125,7 +125,7 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. MarketplaceApps | Core |
 | Microsoft. MarketplaceOrdering – [regisztrált](#registration) | Core |
 | Microsoft. Media | [Media Services](../../media-services/index.yml) |
-| Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft. Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft. Migrálás | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft. MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft. NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
@@ -155,12 +155,12 @@ Az előfizetéshez tartozó, **regisztráltként** megjelölt erőforrás-szolg�
 | Microsoft. Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft. Security | [Biztonsági központ](../../security-center/index.yml) |
 | Microsoft. SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| Microsoft. SerialConsole – [regisztrált](#registration) | [Windows rendszerhez készült Azure soros konzol](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Microsoft. SerialConsole – [regisztrált](#registration) | [Windows rendszerhez készült Azure soros konzol](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [Szolgáltatásbusz](/azure/service-bus/) |
 | Microsoft. ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft. ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
 | Microsoft. Services | Core |
-| Microsoft. SignalRService | [Azure SignalR szolgáltatás](../../azure-signalr/index.yml) |
+| Microsoft. SignalRService | [Azure SignalR Service](../../azure-signalr/index.yml) |
 | Microsoft. SoftwarePlan | Licenc |
 | Microsoft. Solutions | [Azure Managed Applications](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Felügyelt Azure SQL-példány](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
