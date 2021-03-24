@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: f22642ae94ea01a798b1eab639c93fda31f87581
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9aa11be42aca59458fea0462a90b6aeb70df893d
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98944050"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863139"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Tárhely és méretezhetőség konfigurálása HDInsight-beli Apache Kafka platformon
 
@@ -20,7 +20,7 @@ A HDInsight-beli Kafka a HDInsight-fürt virtuális gépeinek helyi lemezét has
 
 A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket használó HDInsight-beli Kafka összehasonlítása:
 
-![Kafka felügyelt lemezekkel architektúrával](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+:::image type="content" source="./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png" alt-text="Kafka felügyelt lemezekkel architektúrával" border="false":::
 
 ## <a name="configure-managed-disks-azure-portal"></a>Felügyelt lemezek konfigurálása: Azure Portal
 
@@ -31,7 +31,7 @@ A következő ábra a felügyelt lemezek nélküli és a felügyelt lemezeket ha
     > [!NOTE]  
     > A felügyelt lemez típusa __Standard__ (HDD) vagy __Prémium__ (SSD) lehet. Prémium lemezeket DS és GS sorozatbeli virtuális gépek használnak. Minden más virtuálisgép-típus standard lemezeket használ.
 
-    ![fürt méret szakasza a lemezek száma munkavégző csomóponttal kiemelve](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png)
+    :::image type="content" source="./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka-disks.png" alt-text="fürt méret szakasza a lemezek száma munkavégző csomóponttal kiemelve" border="true":::
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>Felügyelt lemezek használata: Resource Manager-sablon
 

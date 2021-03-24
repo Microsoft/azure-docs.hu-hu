@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan konfigurálhatja az Apache Ranger-szabályzatok
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: fbe4361033321f2ba81478c41a138937f70b5498
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15c406576b373577a2a3a50108acad7ccbf36699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705704"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863258"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -30,7 +30,7 @@ Megtudhatja, hogyan konfigurálhatja a Apache Hive Apache Ranger-szabályzatait.
 
 2. Jelentkezzen be a fürt rendszergazdai tartományi felhasználónevével és jelszavával:
 
-    ![HDInsight ESP Ranger kezdőlapja](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png" alt-text="HDInsight ESP Ranger kezdőlapja" border="true":::
 
     A Ranger jelenleg csak a Yarn és a Hive rendszerrel működik.
 
@@ -57,7 +57,7 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |Felhasználó kiválasztása|hiveuser1|
     |Engedélyek|Válassza|
 
-    ![HDInsight ESP Ranger kaptár-szabályzatok konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    :::image type="content" source="./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png" alt-text="HDINSIGHT ESP Ranger kaptár-szabályzatok konfigurálása" border="true":::.
 
     > [!NOTE]  
     > Ha egy tartományi felhasználó nem töltődik be a Felhasználó kiválasztása részben, várjon néhány másodpercig, amíg a Ranger szinkronizálódik az AAD-val.
@@ -101,7 +101,7 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Az **adatok** lapon navigáljon az **adatok beolvasása**  >  **más forrásokból** az ODBC-ből,  >   hogy elindítsa a **from ODBC** ablakot.
 
-    ![Az adatkapcsolatok varázsló megnyitása](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
+    :::image type="content" source="./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png" alt-text="Az adatkapcsolatok varázsló megnyitása" border="true":::
 
 1. A legördülő listában válassza ki az előző szakaszban létrehozott adatforrás nevét, majd kattintson az **OK gombra**.
 

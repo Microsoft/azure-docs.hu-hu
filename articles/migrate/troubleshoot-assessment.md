@@ -6,16 +6,16 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 09fbc97b84365cc1d6d40b8e1147e1b8e951cc1f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 78e54543c94cd6e8434023b61516242c2491f353
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104780701"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863598"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
-Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizációval kapcsolatos hibák elhárításában [Azure Migrate: felderítés és értékelés](migrate-services-overview.md#azure-migrate-server-assessment-tool).
+Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizációval kapcsolatos hibák elhárításában [Azure Migrate: felderítés és értékelés](migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool).
 
 
 ## <a name="assessment-readiness-issues"></a>Értékelési készültséggel kapcsolatos problémák
@@ -222,7 +222,7 @@ A kiszolgálók az Azure-ba való áttelepítését követően a kiszolgálók a
 Az ügynök nélküli függőségek elemzésében a folyamat neveit a rendszer a legjobb erőfeszítést követően rögzíti. Bizonyos helyzetekben, bár a forrás-és a célkiszolgáló neve és a célport is rögzítve van, nem valósítható meg a függőségek mindkét végén található folyamat neve. Ilyen esetekben a folyamat "ismeretlen folyamat" jelöléssel van megjelölve.
 
 ## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-azure-migrate"></a>A Log Analytics munkaterület nem szerepel a munkaterületnek a Azure Migrate-ben való konfigurálására tett kísérlet során.
-Az Azure Migrate jelenleg csak a következő régiókban támogatja OMS-munkaterületek létrehozását: az USA keleti régiója, Délkelet-Ázsia és Nyugat-Európa. Ha a munkaterületet a Azure Migrateon kívül más régióban hozza létre, akkor jelenleg nem rendelhető hozzá Azure Migrate projekthez.
+Az Azure Migrate jelenleg csak a következő régiókban támogatja OMS-munkaterületek létrehozását: az USA keleti régiója, Délkelet-Ázsia és Nyugat-Európa. Ha a munkaterületet a Azure Migrateon kívül más régióban hozza létre, a rendszer jelenleg nem társítható projekthez.
 
 
 ## <a name="capture-network-traffic"></a>Hálózati forgalom rögzítése

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c81eb092fa59cb890093e1e9acd0511e39b5047b
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98939529"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864210"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Adatelemzési folyamat üzembe helyezése
 
@@ -30,7 +30,7 @@ A példában szereplő folyamat megvárja, amíg az új időszak repülési adat
 
 Az alábbi ábrán a példa folyamat látható.
 
-![A HDI Flight példa adatfolyamatának áttekintése](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png" alt-text="A HDI Flight példa adatfolyamatának áttekintése" border="false":::
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie-megoldás áttekintése
 
@@ -40,7 +40,7 @@ A Oozie a *műveletek*, *munkafolyamatok* és *koordinátorok* tekintetében ism
 
 Az alábbi ábrán a példa Oozie folyamatának magas szintű kialakítása látható.
 
-![Oozie repülési példa adatfolyamata](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+:::image type="content" source="./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png" alt-text="Oozie repülési példa adatfolyamata" border="false":::
 
 ## <a name="provision-azure-resources"></a>Azure-erőforrások kiépítése
 
@@ -131,11 +131,11 @@ A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázat
 
 2. A szolgáltatások listájából válassza a **struktúra** elemet.
 
-    ![Az Apache Ambari Services-lista struktúra kiválasztása](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png" alt-text="Az Apache Ambari Services-lista struktúra kiválasztása":::
 
 3. A struktúra nézet 2,0 címkéjén válassza a **Ugrás** a következőhöz lehetőséget.
 
-    ![Ambari Apache Hive összefoglaló lista](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png" alt-text="Ambari Apache Hive összefoglaló lista":::
 
 4. A lekérdezés szövege területen illessze be a következő utasításokat a tábla létrehozásához `rawFlights` . A `rawFlights` tábla az `/example/data/flights` Azure Storage-ban lévő MAPPÁBAN található CSV-fájlok sémájának beolvasását is lehetővé teszi.
 
@@ -164,7 +164,7 @@ A mintaadatok mostantól elérhetők. A folyamat azonban két kaptár-táblázat
 
 5. Válassza a **végrehajtás** lehetőséget a tábla létrehozásához.
 
-    ![HDI ambari Services-struktúra lekérdezése](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png" alt-text="HDI ambari Services-struktúra lekérdezése":::
 
 6. A tábla létrehozásához `flights` cserélje le a szöveget a lekérdezés szövege területen az alábbi utasításokra. A `flights` tábla egy struktúra által felügyelt tábla, amely az év, hónap és hónap napja szerint betöltött adatmennyiséget. Ez a táblázat tartalmazza az összes korábbi repülési adatokat, amelyek a legalacsonyabb részletességgel jelennek meg a forrásadatok egy sorában.
 
@@ -253,18 +253,18 @@ Ezután frissítse az adott környezet értékeit. A szöveg alatti tábla össz
     INSERT OVERWRITE TABLE flights
     PARTITION (YEAR, MONTH, DAY_OF_MONTH)
     SELECT 
-        FL_DATE,
-        CARRIER,
-        FL_NUM,
-        ORIGIN,
-        DEST,
-        DEP_DELAY,
-        ARR_DELAY,
-        ACTUAL_ELAPSED_TIME,
-        DISTANCE,
+          FL_DATE,
+          CARRIER,
+          FL_NUM,
+          ORIGIN,
+          DEST,
+          DEP_DELAY,
+          ARR_DELAY,
+          ACTUAL_ELAPSED_TIME,
+          DISTANCE,
         YEAR,
-        MONTH,
-        DAY_OF_MONTH
+          MONTH,
+          DAY_OF_MONTH
     FROM rawflights
     WHERE year = ${year} AND month = ${month} AND day_of_month = ${day};
     ```
@@ -278,17 +278,17 @@ Ezután frissítse az adott környezet értékeit. A szöveg alatti tábla össz
     CREATE EXTERNAL TABLE ${hiveTableName}
     (
         YEAR INT,
-        MONTH INT,
-        DAY_OF_MONTH INT,
-        CARRIER STRING,
-        AVG_DEP_DELAY FLOAT,
-        AVG_ARR_DELAY FLOAT,
-        TOTAL_DISTANCE FLOAT
+          MONTH INT,
+          DAY_OF_MONTH INT,
+          CARRIER STRING,
+          AVG_DEP_DELAY FLOAT,
+          AVG_ARR_DELAY FLOAT,
+          TOTAL_DISTANCE FLOAT
     )
     ROW FORMAT DELIMITED
     FIELDS TERMINATED BY '\t' STORED AS TEXTFILE LOCATION '${hiveDataFolder}';
     INSERT OVERWRITE TABLE ${hiveTableName}
-    SELECT  year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
+    SELECT     year, month, day_of_month, carrier, avg(dep_delay) avg_dep_delay, 
             avg(arr_delay) avg_arr_delay, sum(distance) total_distance 
     FROM flights
     GROUP BY year, month, day_of_month, carrier 
@@ -415,7 +415,7 @@ A bash-munkamenet SZOLGÁLTATÁSKAPCSOLÓDÁSI pontjának használatával üzemb
 
 1. Figyelje meg az állapotot a Oozie webkonzol használatával. A Ambari-on belül válassza a **Oozie**, a **gyors hivatkozások**, majd a **Oozie webkonzol** lehetőséget. A **munkafolyamat-feladatok** lapon válassza a **minden feladat** lehetőséget.
 
-    ![HDI oozie webkonzol-munkafolyamatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png" alt-text="HDI oozie webkonzol-munkafolyamatok":::
 
 1. Ha az állapot sikeres, a beszúrt sorok megjelenítéséhez kérdezze le a SQL Database táblát. A Azure Portal használatával navigáljon a SQL Database ablaktáblához, válassza az **eszközök** lehetőséget, majd nyissa meg a **lekérdezés-szerkesztőt**.
 
@@ -593,11 +593,11 @@ Ha a folyamatot egy koordinátorral szeretné futtatni, folytassa a munkafolyama
 
 5. Ellenőrizze az állapotot a Oozie webkonzolon, ezúttal válassza a **koordinátori feladatok** fület, majd az  **összes feladatot**.
 
-    ![Oozie webkonzol-koordinátori feladatok](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-jobs.png" alt-text="Oozie webkonzol-koordinátori feladatok":::
 
 6. Válasszon ki egy koordinátori példányt az ütemezett műveletek listájának megjelenítéséhez. Ebben az esetben négy műveletet kell látnia a névleges időpontok között a 1/1/2017 és 1/4/2017 közötti tartományban.
 
-    ![Oozie webkonzol-koordinátori feladata](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png)
+    :::image type="content" source="./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-coordinator-instance.png" alt-text="Oozie webkonzol-koordinátori feladata":::
 
     Az ebben a listában szereplő műveletek a munkafolyamat egy olyan példányának felelnek meg, amely egy nap értékű adatot dolgoz fel, és az adott nap kezdetét a névleges idő jelzi.
 
